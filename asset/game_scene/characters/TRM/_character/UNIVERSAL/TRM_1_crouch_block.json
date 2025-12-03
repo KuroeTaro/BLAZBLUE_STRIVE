@@ -1,0 +1,60 @@
+{"frames": {
+
+"0":
+{
+	"frame": {"x":0,"y":0,"w":480,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":300},
+	"sourceSize": {"w":480,"h":300}
+},
+"1":
+{
+	"frame": {"x":480,"y":0,"w":480,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":300},
+	"sourceSize": {"w":480,"h":300}
+},
+"2":
+{
+	"frame": {"x":960,"y":0,"w":480,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":300},
+	"sourceSize": {"w":480,"h":300}
+},
+"3":
+{
+	"frame": {"x":1440,"y":0,"w":480,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":300},
+	"sourceSize": {"w":480,"h":300}
+},
+"4":
+{
+	"frame": {"x":1920,"y":0,"w":480,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":300},
+	"sourceSize": {"w":480,"h":300}
+},
+"5":
+{
+	"frame": {"x":2400,"y":0,"w":480,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":300},
+	"sourceSize": {"w":480,"h":300}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_1_crouch_block",
+	"format": "RGBA8888",
+	"size": {"w":2880,"h":300},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:a940f2b76fc47dc6a78bb76356871cff:bc9e248d21965ce49a79931b14a3a506:881244c03d5ae5308d80a580d6590e50$"
+}
+}

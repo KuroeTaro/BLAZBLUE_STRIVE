@@ -1,0 +1,52 @@
+{"frames": {
+
+"0":
+{
+	"frame": {"x":0,"y":0,"w":480,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":500},
+	"sourceSize": {"w":480,"h":500}
+},
+"1":
+{
+	"frame": {"x":480,"y":0,"w":480,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":500},
+	"sourceSize": {"w":480,"h":500}
+},
+"2":
+{
+	"frame": {"x":960,"y":0,"w":480,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":500},
+	"sourceSize": {"w":480,"h":500}
+},
+"3":
+{
+	"frame": {"x":1440,"y":0,"w":480,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":500},
+	"sourceSize": {"w":480,"h":500}
+},
+"4":
+{
+	"frame": {"x":1920,"y":0,"w":480,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":500},
+	"sourceSize": {"w":480,"h":500}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_0_general_hurt_lanuched_wallbounce",
+	"format": "RGBA8888",
+	"size": {"w":2400,"h":500},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:8f1eb476dc71cc978e35b89156bf4567:76d73bcba42e701691c2d649761723d5:1c1829426bc0434767a31a4860eb28e0$"
+}
+}

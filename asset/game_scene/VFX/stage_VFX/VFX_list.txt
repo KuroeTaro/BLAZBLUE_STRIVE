@@ -1,0 +1,31 @@
+-- smoke
+    horizontal shot*
+    vertal shot*
+    dash burst*
+    dcc burst*
+    land blow*
+-- shock wave
+    air dash burst
+    air back dash burst
+    wallbounce
+-- shatter
+    wallbreak*
+
+
+hit_VFX
+    -- 打击 轻重
+    -- 斩击 轻重
+    -- 气流爆破特效
+    -- RRC&SPECIAL MOVE 全屏 两种
+    -- counter类 
+        打击轻为 缩小 加粒子
+        打击重为 放大 加全屏粒子
+        斩击轻为 增加双向 缩小 加粒子
+        斩击重为 增加双向 放大 加粒子
+        RRC&SPECIAL MOVE 不变大小 加粒子
+-- ver_0 ver_1
+-- counter
+-- blast slash all_screen 
+
+-- burst
+-- UA_common

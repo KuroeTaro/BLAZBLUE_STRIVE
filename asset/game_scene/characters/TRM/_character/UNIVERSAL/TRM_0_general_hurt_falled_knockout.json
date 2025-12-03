@@ -1,0 +1,100 @@
+{"frames": {
+
+"0":
+{
+	"frame": {"x":0,"y":0,"w":600,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":600,"h":480},
+	"sourceSize": {"w":600,"h":480}
+},
+"1":
+{
+	"frame": {"x":600,"y":0,"w":600,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":600,"h":480},
+	"sourceSize": {"w":600,"h":480}
+},
+"2":
+{
+	"frame": {"x":1200,"y":0,"w":600,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":600,"h":480},
+	"sourceSize": {"w":600,"h":480}
+},
+"3":
+{
+	"frame": {"x":1800,"y":0,"w":600,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":600,"h":480},
+	"sourceSize": {"w":600,"h":480}
+},
+"4":
+{
+	"frame": {"x":2400,"y":0,"w":600,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":600,"h":480},
+	"sourceSize": {"w":600,"h":480}
+},
+"5":
+{
+	"frame": {"x":3000,"y":0,"w":600,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":600,"h":480},
+	"sourceSize": {"w":600,"h":480}
+},
+"6":
+{
+	"frame": {"x":3600,"y":0,"w":600,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":600,"h":480},
+	"sourceSize": {"w":600,"h":480}
+},
+"7":
+{
+	"frame": {"x":4200,"y":0,"w":600,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":600,"h":480},
+	"sourceSize": {"w":600,"h":480}
+},
+"8":
+{
+	"frame": {"x":4800,"y":0,"w":600,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":600,"h":480},
+	"sourceSize": {"w":600,"h":480}
+},
+"9":
+{
+	"frame": {"x":5400,"y":0,"w":600,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":600,"h":480},
+	"sourceSize": {"w":600,"h":480}
+},
+"10":
+{
+	"frame": {"x":6000,"y":0,"w":600,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":600,"h":480},
+	"sourceSize": {"w":600,"h":480}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_0_general_hurt_falled_knockout",
+	"format": "RGBA8888",
+	"size": {"w":6600,"h":480},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:cb9101fdfa5edb7747c4ccbe10e1bdb3:a5c4b054cd050f57dad637271c0b0f41:acc3d0649324a3885f15e9ecdcf64192$"
+}
+}

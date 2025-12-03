@@ -1,0 +1,5 @@
+function draw_load_scene_general()
+    draw_2d_image(obj_UI_load_scene_loading_text,image_UI_load_scene_loading_text)
+    draw_2d_image(obj_UI_load_scene_type_in_mark,image_UI_load_scene_type_in_mark)
+    draw_2d_image(obj_UI_load_scene_dabo_trig,image_UI_load_scene_dabo_trig)
+end

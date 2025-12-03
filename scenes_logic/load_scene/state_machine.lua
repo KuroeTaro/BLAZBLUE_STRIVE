@@ -1,0 +1,2 @@
+-- state machine 只在持续更新同一个object时使用
+-- 格式参考input state machine

@@ -1,0 +1,100 @@
+{"frames": {
+
+"0":
+{
+	"frame": {"x":0,"y":0,"w":720,"h":340},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":720,"h":340},
+	"sourceSize": {"w":720,"h":340}
+},
+"1":
+{
+	"frame": {"x":0,"y":340,"w":720,"h":340},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":720,"h":340},
+	"sourceSize": {"w":720,"h":340}
+},
+"2":
+{
+	"frame": {"x":0,"y":680,"w":720,"h":340},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":720,"h":340},
+	"sourceSize": {"w":720,"h":340}
+},
+"3":
+{
+	"frame": {"x":0,"y":1020,"w":720,"h":340},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":720,"h":340},
+	"sourceSize": {"w":720,"h":340}
+},
+"4":
+{
+	"frame": {"x":0,"y":1360,"w":720,"h":340},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":720,"h":340},
+	"sourceSize": {"w":720,"h":340}
+},
+"5":
+{
+	"frame": {"x":0,"y":1700,"w":720,"h":340},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":720,"h":340},
+	"sourceSize": {"w":720,"h":340}
+},
+"6":
+{
+	"frame": {"x":0,"y":2040,"w":720,"h":340},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":720,"h":340},
+	"sourceSize": {"w":720,"h":340}
+},
+"7":
+{
+	"frame": {"x":0,"y":2380,"w":720,"h":340},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":720,"h":340},
+	"sourceSize": {"w":720,"h":340}
+},
+"8":
+{
+	"frame": {"x":0,"y":2720,"w":720,"h":340},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":720,"h":340},
+	"sourceSize": {"w":720,"h":340}
+},
+"9":
+{
+	"frame": {"x":0,"y":3060,"w":720,"h":340},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":720,"h":340},
+	"sourceSize": {"w":720,"h":340}
+},
+"10":
+{
+	"frame": {"x":0,"y":3400,"w":720,"h":340},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":720,"h":340},
+	"sourceSize": {"w":720,"h":340}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_2Luncher",
+	"format": "RGBA8888",
+	"size": {"w":720,"h":3740},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:f3cb714f539f2b04b00e4219aa82fe5e:0e821a9162fb59a545cc0376e51c8c2c:ddf7a4f394d1f068eab773a62fe24bd0$"
+}
+}

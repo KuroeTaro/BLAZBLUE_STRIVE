@@ -1,0 +1,186 @@
+obj_char["x"]
+obj_char["y"]
+obj_char["f"]
+
+obj_char["state"]
+obj_char["sprite_sheet_state"]
+obj_char["height_state"]
+obj_char["hurt_state_target"]
+obj_char["move_state"]
+
+obj_char["startup_frame"] = 0
+obj_char["active_frame"] = 0
+obj_char["recovery_frame"] = 0
+obj_char["frame_adv"] = 0
+
+obj_char["current_animation_length"] = 0
+
+obj_char["strike_inv"] = false
+obj_char["strike_inv_countdown"] = 0
+obj_char["throw_inv"] = false
+obj_char["throw_inv_countdown"] = 0
+obj_char["projectile_inv"] = false
+obj_char["projectile_inv_countdown"] = 0
+obj_char["burst_inv"] = false
+obj_char["burst_inv_countdown"] = 0
+
+obj_char["velocity"] = {0,0}
+obj_char["velocity_cache"] = {0,0}
+obj_char["gravity"] = 2.5
+obj_char["friction"] = 1 -- 包括地面移动和空中dash的水平阻力
+
+obj_char["horizontal_velocity_correction"] = 1
+obj_char["gravity_correction"] = 1
+obj_char["damage_correction"] = 1
+
+obj_char["pushbox"] = {0, -185,130, 370}
+obj_char["hitbox_table"] = {}
+obj_char["hurtbox_table"] = {{0, -215, 170, 430},{0, -455, 100, 50}}
+obj_char["collision_move_available"] = {1,1}
+obj_char["collision_test_ground_height_offset"] = 0 -- 用于检测和地面碰撞的
+
+obj_char[8] = 0
+obj_char["anchor_pos"] = {215,510}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+obj_char["x"]
+obj_char["y"]
+obj_char["f"]
+
+obj_char["state"]
+obj_char["sprite_sheet_state"]
+obj_char["height_state"]
+obj_char["hit_type_state"]
+obj_char["hit_guard_type_state"]
+obj_char["hurt_state_target"]
+obj_char["move_state"]
+
+obj_char["startup_frame"] = 0
+obj_char["active_frame"] = 0
+obj_char["recovery_frame"] = 0
+obj_char["frame_adv"] = 0
+
+obj_char["hit_damage"] = 0
+obj_char["hit_heat_gain"] = 0
+obj_char["hit_wallbreak_damage"] = 0
+obj_char["blocked_heat_gain"] = 0
+obj_char["hurt_heat_gain"] = 0
+obj_char["block_heat_gain"] = 0
+obj_char["FD_block_heat_drain"] = 0
+obj_char["stand_hurt_animation"] = nil
+obj_char["stand_block_animation"] = nil
+obj_char["crouch_hurt_animation"] = nil
+obj_char["crouch_block_animation"] = nil
+obj_char["air_hurt_animation"] = nil
+obj_char["air_block_animation"] = nil
+obj_char["OTG_hurt_animation"] = nil
+
+obj_char["current_animation_length"] = 0
+
+obj_char["hit_cancel"] = false -- 取消链
+obj_char["idle_cancel"] = true -- 取消链
+
+obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
+obj_char["throw_active"] = false -- 防止在同一动作的active多次触发
+
+obj_char["strike_inv"] = false
+obj_char["strike_inv_countdown"] = 0
+obj_char["throw_inv"] = false
+obj_char["throw_inv_countdown"] = 0
+obj_char["projectile_inv"] = false
+obj_char["projectile_inv_countdown"] = 0
+obj_char["burst_inv"] = false
+obj_char["burst_inv_countdown"] = 0
+
+obj_char["hit_function"] = function() end
+obj_char["hurt_function"] = function() end
+obj_char["parry_function"] = function() end
+obj_char["hit_counter_ver_function"] = function() end
+
+obj_char["oroboros_state"] = "idle"
+obj_char["oroboros_anchor_pos"] = {168,210}
+obj_char["oroboros_animation"] = nil
+obj_char["oroboros_8"] = 0 -- obj[oroboros_8]匕首图形上的帧数
+obj_char["oroboros_f"] = 0 -- obj[oroboros_8]匕首逻辑上的帧数
+
+obj_char["velocity"] = {0,0}
+obj_char["velocity_cache"] = {0,0}
+obj_char["gravity"] = 2.5
+obj_char["friction"] = 1 -- 包括地面移动和空中dash的水平阻力
+
+obj_char["health_gauge"] = {12000, 12000, 12000, "fade_off"}
+obj_char["heat_gauge"] = {0.0, 200.0} -- 0.0 - 200.0
+obj_char["ability_gauge"] = {600.0, 600.0} -- 0.0 - 600.0
+obj_char["overdrive_gauge"] = {600.0, 600.0, "off"} -- 0.0 - 600.0
+obj_char["overdrive_timer"] = {0,0,0,0} -- 0f 00:00 
+obj_char["overdrive_drain_speed"] = 24
+obj_char["overdrive_disabling_countdown"] = 0
+obj_char["risk_gauge"] = {0.0, 300.0}-- 0.0 - 300.0
+obj_char["wallbreak_gauge"] = {0.0, 300.0, false}-- 0.0 - 300.0
+
+obj_char["heat_penalty"] = false
+obj_char["heat_penalty_countdown"] = 0
+obj_char["ability_recover_pause"] = false
+obj_char["ability_recover_pause_countdown"] = 0
+
+obj_char["horizontal_velocity_correction"] = 1
+obj_char["gravity_correction"] = 1
+obj_char["damage_correction"] = 1
+
+obj_char["game_speed"] = 1
+obj_char["game_speed_subframe"] = 1
+obj_char["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
+obj_char["hit_hurt_blockstop_countdown"] = 0
+obj_char["hit_hurt_block_slowdown_countdown"] = 0
+
+obj_char["pushbox"] = {0, -185,130, 370}
+obj_char["hitbox_table"] = {}
+obj_char["hurtbox_table"] = {{0, -215, 170, 430},{0, -455, 100, 50}}
+obj_char["collision_move_available"] = {1,1}
+obj_char["collision_test_ground_height_offset"] = 0 -- 用于检测和地面碰撞的
+
+obj_char["hit_VFX_insert_function"] = nil
+obj_char["hit_VFX_insert_function_argument"] = nil
+obj_char["hit_SFX"] = nil
+obj_char["counter_VFX_insert_function"] = nil
+obj_char["counter_VFX_insert_function_argument"] = nil
+obj_char["counter_SFX"] = nil
+obj_char["block_VFX_insert_function"] = nil
+obj_char["block_SFX"] = nil
+
+obj_char["oroboros_bite_pos"] = {0,0}
+obj_char["oroboros_aim_pos"] = {0,0}
+
+obj_char[8] = 0
+obj_char["anchor_pos"] = {215,510}
+obj_char["hurtstop_wiggle_x_animation"] = nil
+obj_char["hurtstop_wiggle_y_animation"] = nil
+
+obj_char["camera_x_shake_anim"] = nil
+obj_char["camera_y_shake_anim"] = nil
+obj_char["camera_enclosing_anim"] = nil

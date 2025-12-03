@@ -1,0 +1,18 @@
+Airborne Guard
+    18 frames blockstun when landling after block in the air.
+    Landing while in air blockstun will replace any remaining air blockstun with ground blockstun.
+
+Landing Recovery
+    Whenever the player lands from being in the air, they experience landing recovery.
+    During the first 5 frames of landing the following actions are disabled: 
+        - forward/backward walk, all jumps, and backdash
+    All other actions are available immediately on landing 
+        - notably attacking, guarding, run, and forward dash
+
+Disabling Blue Burst
+    Bursts will be disabled while:
+    Being thrown
+    Being hit by a hitgrab
+    Being hit by an Overdrive
+    Being hit by attacks that force the opponent into non-standard hitstun, 
+    such as a Wall Stick state

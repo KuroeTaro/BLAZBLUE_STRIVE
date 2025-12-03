@@ -1,0 +1,36 @@
+{"frames": {
+
+"0":
+{
+	"frame": {"x":0,"y":0,"w":440,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":440,"h":440},
+	"sourceSize": {"w":440,"h":440}
+},
+"1":
+{
+	"frame": {"x":440,"y":0,"w":440,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":440,"h":440},
+	"sourceSize": {"w":440,"h":440}
+},
+"2":
+{
+	"frame": {"x":880,"y":0,"w":440,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":440,"h":440},
+	"sourceSize": {"w":440,"h":440}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_7_8_9_pre_jump",
+	"format": "RGBA8888",
+	"size": {"w":1320,"h":440},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:f1519a2b19e8a5a656afbb14211e15c9:17a8e0d266b4d36c499e327f60ae1089:fcb6140418e946e7dcfbfc63a72a4eee$"
+}
+}

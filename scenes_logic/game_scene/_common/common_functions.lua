@@ -1,0 +1,725 @@
+function common_game_scene_toggle_dynamic_HUD(toggle_value)
+    obj_HUD_game_scene_timer[4] = toggle_value
+    obj_HUD_game_scene_win_marks_LP[4] = toggle_value
+    obj_HUD_game_scene_win_marks_RP[4] = toggle_value
+    obj_HUD_game_scene_match_point_LP[4] = MATCH_POINT["L"]
+    obj_HUD_game_scene_match_point_RP[4] = MATCH_POINT["R"]
+    obj_HUD_game_scene_health_bar_LP[4] = toggle_value
+    obj_HUD_game_scene_health_bar_RP[4] = toggle_value
+    obj_HUD_game_scene_health_bar_LP_fade[4] = toggle_value*0.5
+    obj_HUD_game_scene_health_bar_RP_fade[4] = toggle_value*0.5
+    obj_HUD_game_scene_heat_bar_LP[4] = toggle_value
+    obj_HUD_game_scene_heat_bar_RP[4] = toggle_value
+    obj_HUD_game_scene_ability_bar_LP[4] = toggle_value
+    obj_HUD_game_scene_ability_bar_RP[4] = toggle_value
+    obj_HUD_game_scene_overdrive_pie_LP[4] = toggle_value
+    obj_HUD_game_scene_overdrive_pie_RP[4] = toggle_value
+    obj_HUD_game_scene_overdrive_text_LP[4] = toggle_value
+    obj_HUD_game_scene_overdrive_text_RP[4] = toggle_value
+    obj_HUD_game_scene_risk_LP[4] = toggle_value
+    obj_HUD_game_scene_risk_RP[4] = toggle_value
+    obj_HUD_game_scene_background_gauge[4] = toggle_value
+end
+function common_game_scene_toggle_ease_in(toggle_value)
+    obj_annoucer_game_scene_act_common[4] = toggle_value
+    obj_annoucer_game_scene_act_num[4] = toggle_value
+    obj_HUD_game_scene_ease_in[4] = toggle_value
+    obj_annoucer_game_scene_lets_dance[4] = toggle_value
+end
+
+function common_game_scene_get_SFX_side(side)
+    if side == "L" then
+        return audio_SFX_game_scene_LP
+    elseif side == "R" then
+        return audio_SFX_game_scene_RP
+    end
+end
+function common_game_scene_get_VFX_spwan_anchor_pos(side)
+    if side == "L" then
+        return obj_VFX_spawn_anchor_pos_data_game_scene_char_LP
+    elseif side == "R" then
+        return obj_VFX_spawn_anchor_pos_data_game_scene_char_RP
+    end
+end
+
+function common_update_game_scene_input_direction(obj_char)
+    local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local right = (test_input_sys_press_or_hold(input["right"]) and 1 or 0)
+    local left  = (test_input_sys_press_or_hold(input["left"]) and 1 or 0)
+    local up    = (test_input_sys_press_or_hold(input["up"]) and 1 or 0)
+    local down  = (test_input_sys_press_or_hold(input["down"]) and 1 or 0)
+    if obj_char[5] == -1 then
+        left,right = right,left
+    end
+    obj_char["direction_input"] = 5 + 3*up - 3*down + right*1 - left*1
+end
+function common_game_scene_get_character_animation_end(obj_char)
+    return obj_char["f"] >= obj_char["current_animation_length"] 
+end
+function common_game_scene_get_character_facing_currect(obj_char)
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    if obj_char[5] == -1 and obj_char["x"] < obj_char_other_side["x"] then
+        return false
+    end
+    if obj_char[5] == 1 and obj_char["x"] > obj_char_other_side["x"] then
+        return false
+    end
+    return true
+end
+function common_game_scene_char_enclose_heat_gain(obj_char)
+end
+
+function common_game_scene_change_character(side)
+    if side == "L" then
+        return obj_char_game_scene_char_RP
+    elseif side == "R" then
+        return obj_char_game_scene_char_LP
+    end
+end
+function common_game_scene_change_character_pushbox(side)
+    if side == "L" then
+        return obj_pushboxs_data_game_scene_char_RP
+    elseif side == "R" then
+        return obj_pushboxs_data_game_scene_char_LP
+    end
+end
+function common_game_scene_change_character_hurtbox(side)
+    if side == "L" then
+        return obj_hurtboxs_data_game_scene_char_RP
+    elseif side == "R" then
+        return obj_hurtboxs_data_game_scene_char_LP
+    end
+end
+function common_game_scene_change_character_anchor(side)
+    if side == "L" then
+        return obj_anchor_data_game_scene_char_RP
+    elseif side == "R" then
+        return obj_anchor_data_game_scene_char_LP
+    end
+end
+function common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    if side == "L" then
+        return obj_VFX_spawn_anchor_pos_data_game_scene_char_RP
+    elseif side == "R" then
+        return obj_VFX_spawn_anchor_pos_data_game_scene_char_LP
+    end
+end
+
+function common_game_scene_check_block_direction(obj_char)
+    return
+    (
+        obj_char["direction_input"] == 1 or
+        obj_char["direction_input"] == 4 or
+        obj_char["direction_input"] == 7
+    ) 
+end
+function common_game_scene_check_jump_direction(obj_char)
+    return
+    (
+        obj_char["direction_input"] == 7 or
+        obj_char["direction_input"] == 8 or
+        obj_char["direction_input"] == 9
+    ) 
+end
+function common_game_scene_check_stand_direction(obj_char)
+    return
+    (
+        obj_char["direction_input"] == 4 or
+        obj_char["direction_input"] == 5 or
+        obj_char["direction_input"] == 6
+    ) 
+end
+function common_game_scene_check_crouch_direction(obj_char)
+    return
+    (
+        obj_char["direction_input"] == 1 or
+        obj_char["direction_input"] == 2 or
+        obj_char["direction_input"] == 3
+    ) 
+end
+
+function common_game_scene_strike_hit_function(obj_char)
+    -- 只需要设置hitstop
+    local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
+    hit_side_obj_char["state_cache"] = hit_side_obj_char["state"]
+    hit_side_obj_char["state"] = "hitstop"
+    hit_side_obj_char["last_hitstop_frame"] = 0
+    hit_side_obj_char["strike_active"] = false
+    hit_side_obj_char["hit_cancel"] = true -- 取消链
+    hit_side_obj_char["game_speed"] = 1
+    hit_side_obj_char["game_speed_subframe"] = 1
+    hit_side_obj_char["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
+    if obj_char["x"] <= -1485 and hit_side_obj_char["x"] < -1430 and hit_side_obj_char[5] == -1 then
+        hit_side_obj_char["x"] = -1430
+    elseif obj_char["x"] >= 1485 and hit_side_obj_char["x"] > 1430 and hit_side_obj_char[5] == 1 then
+        hit_side_obj_char["x"] = 1430
+    end
+    -- block_test
+    local block_bool = false
+    local block_direction = obj_char["direction_input"]
+    if obj_char["hurt_state"] == "idle" and common_game_scene_check_block_direction(obj_char) then
+        if hit_side_obj_char["hit_guard_type_state"] == "all" then
+            block_bool = true
+        elseif obj_char["height_state"] == "air" and common_game_scene_check_block_direction(obj_char) then
+            block_bool = true
+        elseif block_direction == 1 and hit_side_obj_char["hit_guard_type_state"] == "high" then
+            block_bool = true
+        elseif block_direction == 4 and hit_side_obj_char["hit_guard_type_state"] == "low" then
+            block_bool = true
+        end
+    end
+
+    if obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
+        hit_side_obj_char["hit_damage"] = hit_side_obj_char["hit_damage"]*1.1
+        hit_side_obj_char["hit_counter_ver_function"](hit_side_obj_char,obj_char)
+        local counter_VFX_insert_function_argument = hit_side_obj_char["counter_VFX_insert_function_argument"]
+        hit_side_obj_char["counter_VFX_insert_function"](
+            counter_VFX_insert_function_argument[1],
+            counter_VFX_insert_function_argument[2],
+            counter_VFX_insert_function_argument[3],
+            counter_VFX_insert_function_argument[4],
+            counter_VFX_insert_function_argument[5],
+            counter_VFX_insert_function_argument[6],
+            counter_VFX_insert_function_argument[7]
+        )
+    elseif obj_char["hurt_state"] ~= "idle" or (not block_bool) then
+        local hit_VFX_insert_function_argument = hit_side_obj_char["hit_VFX_insert_function_argument"]
+        hit_side_obj_char["hit_VFX_insert_function"](
+            hit_VFX_insert_function_argument[1],
+            hit_VFX_insert_function_argument[2],
+            hit_VFX_insert_function_argument[3],
+            hit_VFX_insert_function_argument[4],
+            hit_VFX_insert_function_argument[5],
+            hit_VFX_insert_function_argument[6],
+            hit_VFX_insert_function_argument[7]
+        )
+    end
+end
+function common_game_scene_strike_hurt_function(obj_char)
+    -- idle unblock punish counter GP parry
+    -- stand crouch air OTG
+    local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
+    local obj_camera = obj_stage_game_scene_camera
+    local function stand_hurt()
+        obj_char["state_cache"] = "hurt"
+        obj_char["state"] = "hurtstop"
+        obj_char["current_animation"] = hit_side_obj_char["stand_hurt_animation"]
+    end
+    local function crouch_hurt()
+        obj_char["state_cache"] = "hurt"
+        obj_char["state"] = "hurtstop"
+        obj_char["current_animation"] = hit_side_obj_char["crouch_hurt_animation"]
+    end
+    local function air_hurt()
+        obj_char["state_cache"] = "hurt"
+        obj_char["state"] = "hurtstop"
+        obj_char["current_animation"] = hit_side_obj_char["air_hurt_animation"]
+    end
+    local function OTG_hurt()
+        obj_char["state_cache"] = "hurt"
+        obj_char["state"] = "hurtstop"
+        obj_char["current_animation"] = hit_side_obj_char["OTG_hurt_animation"]
+    end
+    local function GP_hurt()
+        obj_camera["state"] = "hit_camera_move"
+        obj_char["state_cache"] = obj_char["state"]
+        obj_char["state"] = "hurtstop"
+        anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
+        anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
+        
+        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+
+        obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
+        obj_char["last_hitstop_frame"] = 0
+        obj_char["hurtstop_wiggle_x_animation"] = 
+        common_game_scene_create_wiggle_animation(
+            obj_char["hit_hurt_blockstop_countdown"] - 1,
+            "hurtstop_wiggle_x",
+            5
+        )
+        obj_char["hurtstop_wiggle_y_animation"] = 
+        common_game_scene_create_wiggle_animation(
+            obj_char["hit_hurt_blockstop_countdown"] - 1,
+            "hurtstop_wiggle_y",
+            2
+        )
+
+        -- wiggle animation
+        init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_x_animation"])
+        init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_y_animation"])
+        insert_VFX_game_scene_char_GP(obj_char)
+    end
+    local function common_hurt()
+        obj_camera["state"] = "hit_camera_move"
+        anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
+        anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
+
+        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+
+        obj_char["game_speed"] = 1
+        obj_char["game_speed_subframe"] = 1
+        obj_char["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
+
+        if obj_char["height_state"] == "stand" then
+            stand_hurt()
+        elseif obj_char["height_state"] == "crouch" then
+            crouch_hurt()
+        elseif obj_char["height_state"] == "air" then
+            air_hurt()
+        elseif obj_char["height_state"] == "OTG" then
+            OTG_hurt()
+        end
+
+        obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
+        obj_char["last_hitstop_frame"] = 0
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["hurtstop_wiggle_x_animation"] = 
+        common_game_scene_create_wiggle_animation(
+            obj_char["hit_hurt_blockstop_countdown"] - 1,
+            "hurtstop_wiggle_x",
+            5
+        )
+        obj_char["hurtstop_wiggle_y_animation"] = 
+        common_game_scene_create_wiggle_animation(
+            obj_char["hit_hurt_blockstop_countdown"] - 1,
+            "hurtstop_wiggle_y",
+            2
+        )
+        
+        -- wiggle animation
+        init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_x_animation"])
+        init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_y_animation"])
+    end
+    local function common_block()
+        local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
+        obj_char["state_cache"] = "block"
+        obj_char["state"] = "blockstop"
+        if obj_char["height_state"] == "stand" then
+            obj_char["current_animation"] = hit_side_obj_char["stand_block_animation"]
+        elseif obj_char["height_state"] == "crouch" then
+            obj_char["current_animation"] = hit_side_obj_char["crouch_block_animation"]
+        elseif obj_char["height_state"] == "air" then
+            obj_char["current_animation"] = hit_side_obj_char["air_block_animation"]
+        end
+        obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
+        obj_char["last_hitstop_frame"] = 0
+        obj_char["hurtstop_wiggle_x_animation"] = 
+        common_game_scene_create_wiggle_animation(
+            obj_char["hit_hurt_blockstop_countdown"] - 1,
+            "hurtstop_wiggle_x",
+            5
+        )
+        obj_char["hurtstop_wiggle_y_animation"] = 
+        common_game_scene_create_wiggle_animation(
+            obj_char["hit_hurt_blockstop_countdown"] - 1,
+            "hurtstop_wiggle_y",
+            2
+        )
+        -- wiggle animation
+        init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_x_animation"])
+        init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_y_animation"])
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        hit_side_obj_char["block_VFX_insert_function"](obj_char)
+        if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
+            insert_VFX_game_sceme_char_FD_block(obj_char)
+        end
+    end
+
+    -- change draw front
+    CHARACTER_VISUAL_FRONT = hit_side_obj_char["player_side"]
+    -- block_test
+    local block_bool = false
+    local block_direction = obj_char["direction_input"]
+    if obj_char["hurt_state"] == "idle" and common_game_scene_check_block_direction(obj_char) then
+        if obj_char["height_state"] == "air" and common_game_scene_check_block_direction(obj_char) then
+            block_bool = true
+        elseif block_direction == 1 and hit_side_obj_char["hit_guard_type_state"] == "low" then
+            block_bool = true
+        elseif ( block_direction == 4 or block_direction == 7 ) and hit_side_obj_char["hit_guard_type_state"] == "high" then
+            block_bool = true
+        elseif hit_side_obj_char["hit_guard_type_state"] == "all" then
+            block_bool = true
+        end
+    end
+    -- idle block
+    if block_bool then
+        common_block()
+    -- GP
+    elseif obj_char["hurt_state"] == "GP" then -- idle unblock punish counter GP parry
+        -- insert GP
+        GP_hurt()
+    -- parry
+    elseif obj_char["hurt_state"] == "parry" then -- idle unblock punish counter GP parry
+        -- parry function
+        obj_char["parry_function"](hit_side_obj_char,obj_char)
+
+    -- idle and unblock
+    else
+        if obj_char["hurt_state"] == "punish" then
+            insert_VFX_HUD_game_scene_punish(hit_side_obj_char)
+        end
+        common_hurt()
+    end
+end
+
+function common_game_scene_create_wiggle_animation(length,prop,wiggle_amount)
+    local mid_length = (length-length%2)/2
+    local res_anim = {}
+    res_anim[0] = {0, mid_length}
+    res_anim[mid_length] = {wiggle_amount, length}
+    res_anim[length] = {0, length}
+    res_anim["prop"] = prop
+    res_anim["length"] = length
+    res_anim["loop"] = false
+    res_anim["fix_type"] = true
+    return res_anim
+end
+
+function common_game_scene_counter_ver0(hit_obj,hurt_obj)
+    insert_VFX_HUD_game_scene_counter_ver0_2(hit_obj)
+end
+function common_game_scene_counter_ver1(hit_obj,hurt_obj)
+    insert_VFX_HUD_game_scene_counter_ver0_2(hit_obj)
+    hurt_obj["hit_hurt_block_slowdown_countdown"] = 12
+    hurt_obj["game_speed_subframe"] = 0
+end
+function common_game_scene_counter_ver2(hit_obj,hurt_obj)
+    insert_VFX_HUD_game_scene_counter_ver0_2(hit_obj)
+    hit_obj["hit_hurt_blockstop_countdown"] = 22
+    hit_obj["hit_hurt_block_slowdown_countdown"] = 0
+    hurt_obj["hit_hurt_block_slowdown_countdown"] = 26
+    hurt_obj["hit_hurt_blockstop_countdown"] = 22
+    hurt_obj["game_speed_subframe"] = 0
+end
+function common_game_scene_counter_ver3(hit_obj,hurt_obj)
+    local obj_camera = obj_stage_game_scene_camera
+    insert_VFX_HUD_game_scene_counter_ver3(hit_obj)
+    common_game_scene_counter_ver3_load_camera_enclose_anim(hit_obj)
+    anim_camera_point_linear_game_scene_camera_enclosing = hit_obj["camera_enclosing_anim"]
+    init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
+    obj_camera["enclose_position_offset"] = {
+        (((hit_obj["x"]+hurt_obj["x"])/2+obj_camera["3d_pos_x"])/2 - obj_camera["3d_pos_x"])*0.5, 
+        80,
+        100
+    }
+    hit_obj["hit_hurt_blockstop_countdown"] = 32
+    hit_obj["hit_hurt_block_slowdown_countdown"] = 0
+    hurt_obj["hit_hurt_block_slowdown_countdown"] = 36
+    hurt_obj["hit_hurt_blockstop_countdown"] = 32
+end
+
+function common_game_scene_nil_load_camera_enclose_anim(obj_char)
+    local anim = {}
+    anim[0] = {0.00, 0}
+    anim["prop"] = "enclose_percentage"
+    anim["length"] = 0
+    anim["loop"] = false
+    anim["fix_type"] = true
+
+    obj_char["camera_enclosing_anim"] = anim
+end
+function common_game_scene_counter_ver3_load_camera_enclose_anim(obj_char)
+    local anim = {}
+    anim[0] = {0.00, 1}
+    anim[1] = {0.56, 2}
+    anim[2] = {0.70, 4}
+    anim[4] = {0.82, 6}
+    anim[6] = {0.86, 8}
+    anim[8] = {0.90, 10}
+    anim[10] = {0.94, 20}
+    anim[20] = {0.98, 30}
+    anim[30] = {0.99, 40}
+    anim[40] = {1.00, 45}
+    anim[45] = {1.00, 50}
+    anim[50] = {0.97, 60}
+    anim[60] = {0.69, 70}
+    anim[70] = {0.20, 80}
+    anim[80] = {0.03, 90}
+    anim[90] = {0.00, 90}
+    anim["prop"] = "enclose_percentage"
+    anim["length"] = 90
+    anim["loop"] = false
+    anim["fix_type"] = true
+
+    obj_char["camera_enclosing_anim"] = anim
+end
+function common_game_scene_overdrive_load_camera_anim(obj_char)
+    local anim = {}
+    anim = {}
+    anim[0] = {0.00, 28}
+    anim[28] = {0.00, 29}
+    anim[29] = {3.25, 30}
+    anim[30] = {-10.34, 31}
+    anim[31] = {-3.93, 32}
+    anim[32] = {-1.02, 33}
+    anim[33] = {-12.10, 34}
+    anim[34] = {-6.69, 35}
+    anim[35] = {4.72, 36}
+    anim[36] = {6.47, 37}
+    anim[37] = {-3.78, 38}
+    anim[38] = {2.46, 39}
+    anim[39] = {18.31, 40}
+    anim[40] = {10.65, 41}
+    anim[41] = {11.00, 42}
+    anim[42] = {17.81, 43}
+    anim[43] = {2.63, 44}
+    anim[44] = {11.94, 45}
+    anim[45] = {13.25, 46}
+    anim[46] = {-2.44, 47}
+    anim[47] = {-4.13, 48}
+    anim[48] = {15.69, 49}
+    anim[49] = {13.50, 50}
+    anim[50] = {-2.19, 51}
+    anim[51] = {8.63, 52}
+    anim[52] = {5.44, 53}
+    anim[53] = {1.35, 54}
+    anim[54] = {-2.74, 55}
+    anim[55] = {2.18, 57}
+    anim[57] = {0.00, 78}
+    anim[78] = {0.00, 78}
+    anim["prop"] = "3d_pos_x"
+    anim["length"] = 78
+    anim["loop"] = false
+    anim["fix_type"] = false
+    obj_char["camera_x_shake_anim"] = anim
+
+    anim = {}
+    anim[0] = {0.00, 28}
+    anim[28] = {0.00, 29}
+    anim[29] = {0.35, 30}
+    anim[30] = {-0.92, 31}
+    anim[31] = {2.67, 32}
+    anim[32] = {-4.00, 33}
+    anim[33] = {-5.26, 34}
+    anim[34] = {0.60, 35}
+    anim[35] = {-2.15, 36}
+    anim[36] = {0.35, 37}
+    anim[37] = {0.04, 38}
+    anim[38] = {1.75, 39}
+    anim[39] = {1.44, 40}
+    anim[40] = {-2.69, 41}
+    anim[41] = {-4.00, 42}
+    anim[42] = {2.67, 43}
+    anim[43] = {-3.13, 44}
+    anim[44] = {4.11, 45}
+    anim[45] = {4.55, 46}
+    anim[46] = {-1.82, 47}
+    anim[47] = {1.75, 48}
+    anim[48] = {-0.95, 49}
+    anim[49] = {-2.15, 50}
+    anim[50] = {-0.08, 51}
+    anim[51] = {4.11, 52}
+    anim[52] = {0.79, 53}
+    anim[53] = {2.67, 54}
+    anim[54] = {-0.95, 55}
+    anim[55] = {0.50, 57}
+    anim[57] = {0.00, 78}
+    anim[78] = {0.00, 78}
+    anim["prop"] = "3d_pos_y"
+    anim["length"] = 78
+    anim["loop"] = false
+    anim["fix_type"] = false
+    obj_char["camera_y_shake_anim"] = anim
+end
+function common_game_scene_hit_load_camera_anim(obj_char,multiplyer)
+    local anim = {}
+    anim = {}
+    anim[0] = {13.25*multiplyer, 1}
+    anim[1] = {-10.34*multiplyer, 2}
+    anim[2] = {-9.93*multiplyer, 3}
+    anim[3] = {9.02*multiplyer, 4}
+    anim[4] = {-8.10*multiplyer, 5}
+    anim[5] = {8.69*multiplyer, 6}
+    anim[6] = {-6.72*multiplyer, 7}
+    anim[7] = {6.47*multiplyer, 8}
+    anim[8] = {-5.78*multiplyer, 9}
+    anim[9] = {5.46*multiplyer, 10}
+    anim[10] = {4.31*multiplyer, 11}
+    anim[11] = {-4.65*multiplyer, 12}
+    anim[12] = {2.00*multiplyer, 13}
+    anim[13] = {-2.81*multiplyer, 14}
+    anim[14] = {1.63*multiplyer, 15}
+    anim[15] = {0*multiplyer, 15}
+    anim["prop"] = "3d_pos_x"
+    anim["length"] = 15
+    anim["loop"] = false
+    anim["fix_type"] = false
+    obj_char["camera_x_shake_anim"] = anim
+
+    local multiplyer_fix = multiplyer*0.2
+    anim = {}
+    anim[0] = {10.92*multiplyer_fix, 1}
+    anim[1] = {2.67*multiplyer_fix, 2}
+    anim[2] = {-4.00*multiplyer_fix, 3}
+    anim[3] = {-8.26*multiplyer_fix, 4}
+    anim[4] = {3.60*multiplyer_fix, 5}
+    anim[5] = {8.15*multiplyer_fix, 6}
+    anim[6] = {-2.35*multiplyer_fix, 7}
+    anim[7] = {-6.04*multiplyer_fix, 8}
+    anim[8] = {1.75*multiplyer_fix, 9}
+    anim[9] = {5.44*multiplyer_fix, 10}
+    anim[10] = {-1.69*multiplyer_fix, 11}
+    anim[11] = {1.00*multiplyer_fix, 12}
+    anim[12] = {3.67*multiplyer_fix, 13}
+    anim[13] = {-1.13*multiplyer_fix, 14}
+    anim[14] = {2.11*multiplyer_fix, 15}
+    anim[15] = {0*multiplyer_fix, 15}
+    anim["prop"] = "3d_pos_y"
+    anim["length"] = 15
+    anim["loop"] = false
+    anim["fix_type"] = false
+    obj_char["camera_y_shake_anim"] = anim
+end
+
+function common_update_game_scene_char_hitstop_countdown(obj_char)
+    if obj_char["hit_hurt_blockstop_countdown"] > 1 then
+        obj_char["hit_hurt_blockstop_countdown"] = obj_char["hit_hurt_blockstop_countdown"] - 1
+    else
+        obj_char["game_speed_abnormal_realtime_countdown"] = 0
+        obj_char["hit_hurt_blockstop_countdown"] = 0 
+        obj_char["hit_hurt_block_slowdown_countdown"] = 0
+        obj_char["game_speed"] = 1
+    end
+end
+function common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
+    if obj_char["hit_hurt_blockstop_countdown"] > 1 then
+        obj_char["hit_hurt_blockstop_countdown"] = obj_char["hit_hurt_blockstop_countdown"] - 1
+        point_linear_animator(obj_char,obj_char["hurtstop_wiggle_x_animation"])
+        point_linear_animator(obj_char,obj_char["hurtstop_wiggle_y_animation"])
+    else
+        obj_char["game_speed_abnormal_realtime_countdown"] = obj_char["hit_hurt_block_slowdown_countdown"]
+        obj_char["hit_hurt_blockstop_countdown"] = 0 
+        obj_char["hit_hurt_block_slowdown_countdown"] = 0
+        obj_char["game_speed"] = 2
+        obj_char["hurtstop_wiggle_x"] = 0
+        obj_char["hurtstop_wiggle_y"] = 0
+    end
+end
+function common_update_game_scene_char_game_speed_abnormal_realtime_countdown(obj_char)
+    if obj_char["game_speed"] >= 1 then
+        obj_char["game_speed_subframe"] = obj_char["game_speed_subframe"] + 1
+    end
+    if obj_char["game_speed"] ~= 1 then 
+        if obj_char["game_speed_abnormal_realtime_countdown"] > 0 then
+            obj_char["game_speed_abnormal_realtime_countdown"] = obj_char["game_speed_abnormal_realtime_countdown"] - 1
+        else
+            obj_char["game_speed_abnormal_realtime_countdown"] = 0
+            obj_char["game_speed"] = 1
+        end
+    end
+end
+
+function common_game_scene_char_get_wallbreak_VFX_spawn_location(side)
+end
+
+function common_game_scene_char_apply_hurt_velocity(
+    obj_char,obj_char_other_side,
+    hurt_horizontal_velocity,
+    hurt_horizontal_friction,
+    hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,
+    hurt_vertical_gravity,
+    hurt_vertical_gravity_correction
+)
+    local final_hurt_horizontal_velocity = obj_char[5]*hurt_horizontal_velocity
+    obj_char_other_side["gravity_correction"] 
+    = obj_char_other_side["gravity_correction"]*hurt_vertical_gravity_correction
+    if obj_char["x"] < obj_char_other_side["x"] then
+        if obj_char_other_side["collision_move_available"][2] == 1 or final_hurt_horizontal_velocity <= 0 then
+            obj_char_other_side["friction"] = hurt_horizontal_friction
+            obj_char_other_side["horizontal_velocity_correction"] 
+            = obj_char_other_side["horizontal_velocity_correction"]*hurt_horizontal_velocity_correction
+            obj_char_other_side["velocity_cache"] = {
+                final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]+obj_char_other_side["velocity"][1]*0.15,
+                hurt_vertical_velocity
+            } -- 根据当前敌我x位置变化
+            obj_char_other_side["velocity"] = {0,0}
+            obj_char["velocity_cache"] = obj_char["velocity"]
+            obj_char["velocity"] = {0,0}
+        elseif obj_char_other_side["collision_move_available"][2] == 0 then
+            obj_char["friction"] = hurt_horizontal_friction
+            obj_char_other_side["horizontal_velocity_correction"] 
+            = obj_char_other_side["horizontal_velocity_correction"]*hurt_horizontal_velocity_correction
+            obj_char["velocity_cache"] = {
+                - final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]+obj_char["velocity"][1]*0.15,
+                obj_char["velocity"][2]
+            } -- 根据当前敌我x位置变化
+            obj_char["velocity"] = {0,0}
+            obj_char_other_side["velocity_cache"] = {
+                obj_char_other_side["velocity"][1],
+                hurt_vertical_velocity,
+            }
+            obj_char_other_side["velocity"] = {0,0}
+        end
+    elseif obj_char["x"] > obj_char_other_side["x"] then
+        if obj_char_other_side["collision_move_available"][1] == 1 or final_hurt_horizontal_velocity >= 0 then
+            obj_char_other_side["friction"] = hurt_horizontal_friction
+            obj_char_other_side["horizontal_velocity_correction"] 
+            = obj_char_other_side["horizontal_velocity_correction"]*hurt_horizontal_velocity_correction
+            obj_char_other_side["velocity_cache"] = {
+                final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]+obj_char_other_side["velocity"][1]*0.15,
+                hurt_vertical_velocity
+            } -- 根据当前敌我x位置变化
+            obj_char_other_side["velocity"] = {0,0}
+            obj_char["velocity_cache"] = obj_char["velocity"]
+            obj_char["velocity"] = {0,0}
+        elseif obj_char_other_side["collision_move_available"][1] == 0 then
+            obj_char["friction"] = hurt_horizontal_friction
+            obj_char["horizontal_velocity_correction"] 
+            = obj_char["horizontal_velocity_correction"]*hurt_horizontal_velocity_correction
+            obj_char["velocity_cache"] = {
+                - final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]+obj_char["velocity"][1]*0.15,
+                obj_char["velocity"][2]
+            } -- 根据当前敌我x位置变化
+            obj_char["velocity"] = {0,0}
+            obj_char_other_side["velocity_cache"] = {
+                obj_char_other_side["velocity"][1],
+                hurt_vertical_velocity,
+            }
+            obj_char_other_side["velocity"] = {0,0}
+        end
+    else
+        obj_char_other_side["velocity_cache"] ={0,hurt_vertical_velocity}
+        -- 根据当前敌我x位置变化
+        obj_char_other_side["velocity"] = {0,0}
+        obj_char_other_side["friction"] = hurt_horizontal_friction
+        obj_char["velocity_cache"] = obj_char["velocity"]
+        obj_char["velocity"] = {0,0}
+    end
+end
+
+function common_game_scene_init_chars_trainning()
+    load_game_scene_obj_char_LP()
+    load_game_scene_obj_char_RP()
+    load_game_scene_anim_char_LP()
+    load_game_scene_anim_char_RP()
+    obj_char_game_scene_char_LP["state"] = "5_stand_idle"
+    obj_char_game_scene_char_RP["state"] = "5_stand_idle"
+    
+    if test_input_sys_press_or_hold(INPUT_SYS_CURRENT_COMMAND_STATE["L"]["up"]) then
+        if DEBUG_TRAINNING_SPAWN_SIDE == 0 then
+            DEBUG_TRAINNING_SPAWN_SIDE = 1
+        else
+            DEBUG_TRAINNING_SPAWN_SIDE = 0
+        end
+    elseif test_input_sys_press_or_hold(INPUT_SYS_CURRENT_COMMAND_STATE["L"]["down"]) then
+        DEBUG_TRAINNING_SPAWN_POS = 1
+    elseif test_input_sys_press_or_hold(INPUT_SYS_CURRENT_COMMAND_STATE["L"]["left"]) then
+        DEBUG_TRAINNING_SPAWN_POS = 0
+    elseif test_input_sys_press_or_hold(INPUT_SYS_CURRENT_COMMAND_STATE["L"]["right"]) then
+        DEBUG_TRAINNING_SPAWN_POS = 2
+    end
+    obj_char_game_scene_char_LP["x"] = DEBUG_TRAINNING_SPAWN_ARRAY[DEBUG_TRAINNING_SPAWN_POS][DEBUG_TRAINNING_SPAWN_SIDE][1]
+    obj_char_game_scene_char_RP["x"] = DEBUG_TRAINNING_SPAWN_ARRAY[DEBUG_TRAINNING_SPAWN_POS][DEBUG_TRAINNING_SPAWN_SIDE][2]
+    obj_char_game_scene_char_LP[5] = DEBUG_TRAINNING_SPAWN_ARRAY[DEBUG_TRAINNING_SPAWN_POS][DEBUG_TRAINNING_SPAWN_SIDE][3]
+    obj_char_game_scene_char_RP[5] = DEBUG_TRAINNING_SPAWN_ARRAY[DEBUG_TRAINNING_SPAWN_POS][DEBUG_TRAINNING_SPAWN_SIDE][4]
+    if 	CHAR_SELECT_LR["L"] == 	CHAR_SELECT_LR["R"] then
+        obj_char_game_scene_char_RP["brightness"] = -0.5
+        obj_char_game_scene_char_RP["brightness_const"] = -0.5
+        obj_char_game_scene_char_RP["brightness_overdrive_const"] = -0.3
+        obj_char_game_scene_char_RP["contrast"] = 1
+    end
+end

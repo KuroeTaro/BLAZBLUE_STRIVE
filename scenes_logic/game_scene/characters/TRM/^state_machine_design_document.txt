@@ -1,0 +1,523 @@
+-- commmon
+_common_ground_idle_to_move
+    _burst_overdrive
+    _RC_blue_rc
+    _active_FD_block
+    _4UA
+    _6UA
+    _4sp_P
+    _6sp_P
+    _4sp_K
+    _6sp_K
+    _4sp_S
+    _6sp_S
+    _sp_H
+    _2P
+    _6P
+    _5P
+    _2K
+    _6K
+    _5K
+    _2S
+    _6S
+    _cS
+    _fS
+    _2Luncher
+    _46Luncher
+    _5Luncher
+    _4dash_backdash
+    _6dash_dash
+_common_ground_to_special_move
+    _4sp_P
+    _6sp_P
+    _4sp_K
+    _6sp_K
+    _4sp_S
+    _6sp_S
+    _sp_H
+    _2UA
+    _4UA
+    _6UA
+    _5UA
+_common_air_idle_to_move
+    _burst_overdrive
+    _RC_blue_rc
+    _active_FD_block
+    _jsp_S
+    _jsp_H
+    _jP
+    _jK
+    _j2K
+    _jS
+    _j2S
+    _j46Luncher
+    _j5Luncher
+    _4dash_air_backdash
+    _6dash_air_dash
+_common_air_to_special_move
+    _jsp_S
+    _jsp_H
+    _j6UA
+
+
+_before_ease_in
+    _5_stand_idle
+
+
+_active_FD_block
+    _active_FD_block_to_idle
+_active_FD_block_to_idle
+    _1_2_3_crouch
+    _7_8_9_jump_air
+    _5_stand_idle
+_block
+    _burst_burst
+    _1_2_3_crouch
+    _5_stand_idle
+_hurt
+    _burst_burst
+    _1_2_3_crouch
+    _5_stand_idle
+    _knockdown
+    _knockdown_recovery
+
+
+_hitstop
+    _RC_red_rc
+    _burst_overdrive
+    _[any_sp_hit_state_saved_in_state_cache]
+_blockstop
+    _burst_overdrive
+    _RC_yellow_rc
+    _block
+_hurtstop
+    _burst_burst
+    _hurt
+
+
+_wallbreak_transporting_entering
+    _7_8_9_jump_air
+    _hurt
+_wallbreak_transporting_exiting
+    _7_8_9_jump_air
+    _knockdown
+    _knockdown_recovery
+
+
+_knockdown
+    _knockdown_recovery
+_knockdown_recovery
+    _5_stand_idle
+
+
+_knockout
+    -----
+
+
+_1_2_3_crouch   -- done
+    _1_2_3_crouch_turn
+    _common_ground_idle_to_move
+    _7_8_9_pre_jump
+    _4_walk
+    _6_walk
+    _1_2_3_crouch_to_stand_idle
+_1_2_3_crouch_turn  -- done
+    _common_ground_idle_to_move
+    _7_8_9_pre_jump
+    _4_walk
+    _6_walk
+    _1_2_3_crouch_to_stand_idle
+    _1_2_3_crouch
+_1_2_3_crouch_to_stand_idle -- done
+    _5_stand_turn
+    _common_ground_idle_to_move
+    _7_8_9_pre_jump
+    _1_2_3_crouch
+    _4_walk
+    _6_walk
+    _5_stand_idle
+_5_stand_idle   -- done
+    _5_stand_turn
+    _common_ground_idle_to_move
+    _7_8_9_pre_jump
+    _1_2_3_crouch
+    _4_walk
+    _6_walk
+_5_stand_turn   -- done
+    _common_ground_idle_to_move
+    _7_8_9_pre_jump
+    _1_2_3_crouch
+    _4_walk
+    _6_walk
+    _5_stand_idle
+_5_stand_dash_skid     -- done
+    _common_ground_idle_to_move
+    _7_8_9_pre_jump
+    _5_stand_idle
+_4_walk     -- done
+    _5_stand_turn
+    _common_ground_idle_to_move
+    _7_8_9_pre_jump
+    _1_2_3_crouch
+    _6_walk
+    _4_walk_to_stand_idle
+_4_walk_to_stand_idle   -- done
+    _5_stand_turn
+    _common_ground_idle_to_move
+    _7_8_9_pre_jump
+    _1_2_3_crouch
+    _4_walk
+    _6_walk
+    _5_stand_idle
+_6_walk     -- done
+    _5_stand_turn
+    _common_ground_idle_to_move
+    _7_8_9_pre_jump
+    _1_2_3_crouch
+    _4_walk
+    _6_walk_to_stand_idle
+_6_walk_to_stand_idle   -- done
+    _5_stand_turn
+    _common_ground_idle_to_move
+    _7_8_9_pre_jump
+    _1_2_3_crouch
+    _4_walk
+    _6_walk
+    _5_stand_idle
+
+
+_7_8_9_jump_air_to_stand_idle   -- done
+    _RC_blue_rc
+    _5_stand_turn
+    _common_ground_idle_to_move(idle_cancel)
+    _7_8_9_pre_jump
+    _1_2_3_crouch
+    _4_walk
+    _6_walk
+    _5_stand_idle
+_7_8_9_jump_air     -- done
+    _7_8_9_jump_air_to_stand_idle
+    _RC_blue_rc
+    _common_air_idle_to_move(idle_cancel)
+    _7_8_9_jump_air(second_air_jump)
+_7_8_9_pre_jump     -- done
+    _RC_blue_rc
+    _7_8_9_jump_air
+
+
+_4dash_backdash
+    _RC_blue_rc
+    _common_ground_idle_to_move(idle_cancel)
+    _5_stand_idle
+_4dash_air_backdash
+    _7_8_9_jump_air_to_stand_idle
+    _RC_blue_rc
+    _common_air_idle_to_move(idle_cancel)
+    _7_8_9_jump_air
+_6dash_dash
+    _common_ground_idle_to_move
+    _7_8_9_pre_jump
+    _5_stand_dash_skid
+_6dash_air_dash
+    _7_8_9_jump_air_to_stand_idle
+    _RC_blue_rc
+    _common_air_idle_to_move(idle_cancel)
+    _7_8_9_jump_air
+_6dash_dash_cancel
+    _common_ground_to_special_move(idle_cancel)
+    _5_stand_dash_skid
+
+
+_RC_blue_rc
+    _common_ground_idle_to_move
+    _5_stand_idle
+    _7_8_9_jump_air
+_RC_purple_rc
+    _common_ground_idle_to_move
+    _5_stand_idle
+    _7_8_9_jump_air
+_RC_red_rc
+    _common_ground_idle_to_move
+    _5_stand_idle
+    _7_8_9_jump_air
+_RC_yellow_rc
+    _5_stand_idle
+    _7_8_9_jump_air
+
+
+_burst_overdrive
+    _RC_purple_rc
+    _5_stand_idle
+    _7_8_9_jump_air
+_burst_burst
+    _5_stand_idle
+    _7_8_9_jump_air
+
+
+_2P
+    _common_ground_to_special_move
+    _RC_purple_rc
+    _2P
+    _6P
+    _5P
+    _6K
+    _6S
+    _1_2_3_crouch
+_6P
+    _common_ground_to_special_move
+    _RC_purple_rc
+    _5_stand_idle
+_5P
+    _common_ground_to_special_move
+    _RC_purple_rc
+    _2P
+    _6P
+    _5P
+    _6K
+    _6S
+    _5_stand_idle
+_2K
+    _common_ground_to_special_move
+    _RC_purple_rc
+    _6P
+    _6K
+    _6S
+    _2Luncher
+    _5Luncher
+    _1_2_3_crouch
+_6k
+    _common_ground_to_special_move
+    _RC_purple_rc
+    _5_stand_idle
+_5K
+    _7_8_9_pre_jump
+    _common_ground_to_special_move
+    _RC_purple_rc
+    _6P
+    _6K
+    _6S
+    _2Luncher
+    _5Luncher
+    _6dash_dash_cancel
+    _5_stand_idle
+_2S
+    _common_ground_to_special_move
+    _RC_purple_rc
+    _1_2_3_crouch
+_6S
+    _common_ground_to_special_move
+    _RC_purple_rc
+    _5_stand_idle
+_cS
+    _7_8_9_pre_jump
+    _common_ground_to_special_move
+    _RC_purple_rc
+    _6P
+    _6K
+    _2S
+    _6S
+    _fS
+    _2Luncher
+    _5Luncher
+    _6dash_dash_cancel
+    _5_stand_idle
+_fS
+    _common_ground_to_special_move
+    _RC_purple_rc
+    _5_stand_idle
+_2Luncher
+    _common_ground_to_special_move
+    _RC_purple_rc
+    _1_2_3_crouch
+_46Luncher
+    _RC_red_rc
+    _RC_purple_rc
+    _5_stand_idle
+_5Luncher
+    _RC_purple_rc
+    _5_stand_idle
+_5Lanucher_hold
+    _RC_purple_rc
+    _5_stand_idle
+
+
+_jP
+    _7_8_9_jump_air_to_stand_idle(landing)
+    _common_air_to_special_move
+    _RC_purple_rc
+    _jP
+    _j2K
+    _j2S
+    _7_8_9_jump_air(air_move+hit_cancel)(animation_end)
+_jK
+    _7_8_9_jump_air_to_stand_idle(landing)
+    _common_air_to_special_move
+    _RC_purple_rc
+    _j5Luncher
+    _j2K
+    _j2S
+    _7_8_9_jump_air(air_move+hit_cancel)(animation_end)
+_j2K
+    _7_8_9_jump_air_to_stand_idle(landing)
+    _common_air_to_special_move
+    _RC_purple_rc
+    _7_8_9_jump_air(air_move+hit_cancel)(animation_end)
+_jS
+    _7_8_9_jump_air_to_stand_idle(landing)
+    _common_air_to_special_move
+    _RC_purple_rc
+    _jS(2_5+hit_cancel)
+    _j5Luncher
+    _7_8_9_jump_air(air_move+hit_cancel)(animation_end)
+_j2S
+    _7_8_9_jump_air_to_stand_idle(landing)
+    _common_air_to_special_move
+    _RC_purple_rc
+    _7_8_9_jump_air(air_move+hit_cancel)(animation_end)
+_j46Luncher
+    _7_8_9_jump_air_to_stand_idle(landing)
+    _RC_red_rc
+    _RC_purple_rc
+    _7_8_9_jump_air(air_move+hit_cancel)(animation_end)
+_j5Luncher
+    _7_8_9_jump_air_to_stand_idle(landing)
+    _common_air_to_special_move
+    _RC_purple_rc
+    _7_8_9_jump_air(air_move+hit_cancel)(animation_end)
+
+
+!all sp move has a overdrive version
+_4sp_P
+    _RC_purple_rc
+    _7_8_9_pre_jump
+    _5_stand_idle
+_6sp_P
+    _RC_purple_rc
+    _5_stand_idle
+_4sp_K
+    _RC_purple_rc
+    _5_stand_idle
+_6sp_K
+    _RC_purple_rc
+    _5_stand_idle
+_4sp_S
+    _RC_purple_rc
+    _2UA
+    _4sp_S_4UA
+    _6UA
+    _5UA
+    _4sp_S_4dash
+    _4sp_S_6dash
+    _4sp_P||_4sp_S_4P
+    _6sp_P||_4sp_S_6P
+    _4sp_K||_4sp_S_4K
+    _6sp_K||_4sp_S_6K
+    _4sp_S_4sp_S||_4sp_S_4S
+    _4sp_S_2Luncher
+    _4sp_S_6Luncher
+    _4sp_S_5Luncher
+    _6sp_S||_4sp_S_6S
+    _4sp_S_sp_H||_4sp_S_H
+    _5_stand_idle
+_4sp_S_4dash
+    _RC_purple_rc
+    _4sp_S_5UA
+    _4sp_P
+    _6sp_P
+    _4sp_K
+    _6sp_K
+    _6sp_S
+    _5_stand_idle
+_4sp_S_6dash
+    _RC_purple_rc
+    _4sp_S_5UA
+    _4sp_P
+    _6sp_P
+    _4sp_K
+    _6sp_K
+    _6sp_S
+    _5_stand_idle
+_4sp_S_S
+    _RC_purple_rc
+    _5_stand_idle
+_4sp_S_H||_4sp_S_sp_H
+    _RC_purple_rc
+    _5_stand_idle
+_4sp_S_2Luncher
+    _RC_purple_rc
+    _5_stand_idle
+_4sp_S_6Luncher
+    _RC_purple_rc
+    _5_stand_idle
+_4sp_S_5Luncher
+    _RC_purple_rc
+    _5_stand_idle
+_6sp_S
+    _RC_purple_rc
+    _5_stand_idle
+_sp_H
+    _RC_purple_rc
+    _sp_H_P
+    _sp_H_K
+    _sp_H_S
+    _sp_H_H
+    _4sp_P
+    _6sp_P
+    _4sp_K
+    _6sp_K
+    _4sp_S
+    _6sp_S
+    _5_stand_idle
+_sp_H_P
+    _5_stand_idle
+_sp_H_K
+    _7_8_9_jump_air
+_sp_H_S
+    _7_8_9_jump_air
+_sp_H_H
+    _7_8_9_jump_air
+
+
+_jsp_S
+    _RC_purple_rc
+    _7_8_9_jump_air
+_jsp_H
+    _RC_purple_rc
+    _jsp_H_P
+    _jsp_H_K
+    _jsp_H_S
+    _jsp_H_H
+    _jsp_S
+    _7_8_9_jump_air
+_jsp_H_P
+    _7_8_9_jump_air
+_jsp_H_K
+    _7_8_9_jump_air
+_jsp_H_S
+    _7_8_9_jump_air
+_jsp_H_H
+    _7_8_9_jump_air 
+
+
+_4UA
+    _RC_purple_rc
+    _5_stand_idle
+_6UA
+    _RC_purple_rc
+    _5_stand_idle
+_5UA
+    _RC_purple_rc
+    _5_stand_idle
+_4sp_S_5UA
+    _RC_purple_rc
+    _5_stand_idle
+
+
+
+
+
+
+
+
+
+________________________________________

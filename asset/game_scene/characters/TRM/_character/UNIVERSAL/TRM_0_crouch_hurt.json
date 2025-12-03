@@ -1,0 +1,52 @@
+{"frames": {
+
+"0":
+{
+	"frame": {"x":0,"y":0,"w":460,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":440},
+	"sourceSize": {"w":460,"h":440}
+},
+"1":
+{
+	"frame": {"x":460,"y":0,"w":460,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":440},
+	"sourceSize": {"w":460,"h":440}
+},
+"2":
+{
+	"frame": {"x":920,"y":0,"w":460,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":440},
+	"sourceSize": {"w":460,"h":440}
+},
+"3":
+{
+	"frame": {"x":1380,"y":0,"w":460,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":440},
+	"sourceSize": {"w":460,"h":440}
+},
+"4":
+{
+	"frame": {"x":1840,"y":0,"w":460,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":440},
+	"sourceSize": {"w":460,"h":440}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_0_crouch_hurt",
+	"format": "RGBA8888",
+	"size": {"w":2300,"h":440},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:5bb549c89151557eef7b1a5041b2a419:0f37846ef4b1edd5154d4b6fc07eed11:11cd55e011ad30ff743183e75b6db58f$"
+}
+}

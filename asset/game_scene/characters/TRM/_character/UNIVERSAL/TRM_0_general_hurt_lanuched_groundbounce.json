@@ -1,0 +1,60 @@
+{"frames": {
+
+"0":
+{
+	"frame": {"x":0,"y":0,"w":540,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":540,"h":480},
+	"sourceSize": {"w":540,"h":480}
+},
+"1":
+{
+	"frame": {"x":540,"y":0,"w":540,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":540,"h":480},
+	"sourceSize": {"w":540,"h":480}
+},
+"2":
+{
+	"frame": {"x":1080,"y":0,"w":540,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":540,"h":480},
+	"sourceSize": {"w":540,"h":480}
+},
+"3":
+{
+	"frame": {"x":0,"y":480,"w":540,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":540,"h":480},
+	"sourceSize": {"w":540,"h":480}
+},
+"4":
+{
+	"frame": {"x":540,"y":480,"w":540,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":540,"h":480},
+	"sourceSize": {"w":540,"h":480}
+},
+"5":
+{
+	"frame": {"x":1080,"y":480,"w":540,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":540,"h":480},
+	"sourceSize": {"w":540,"h":480}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_0_general_hurt_lanuched_groundbounce",
+	"format": "RGBA8888",
+	"size": {"w":1620,"h":960},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c8dd7e35e9db5b8b5ac8dcc205696b7f:c8cc7b6c223997c748c56a2b1da14cec:62614e2386aa18c70e01e860b4f0d8bb$"
+}
+}

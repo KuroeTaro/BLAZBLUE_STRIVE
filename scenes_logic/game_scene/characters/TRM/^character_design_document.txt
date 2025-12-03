@@ -1,0 +1,51 @@
+Happy Chaos 					Terumi
+5p 								5a
+5k 								6drive
+cs 								5b
+fs 								6b
+5dust/launcher 					6a
+2p 								2a
+2k 								2b
+2s 								2c
+2dust/launcher 					3c
+6p 								214c
+6k 								22ccc
+6s 								6c
+jp								ja
+jk								jb
+js								jc
+js								j5drive
+j2s								j5drive(modify)
+jdust/launcher					623b(od hit5)
+46dust/launcher					tm311_00 tm602_09
+j46dust/launcher				jbc
+AtTheReady						oroboros				    	H
+AtTheReady 236s					tm610							6sp_S
+Fire							oroboros				    	AtTheReady_]H[/SteadyAim_]H[
+SteadyAim						tm340_04						4sp_S
+CancelAim						tm340_00						AtTheReady_sp_launcher/SteadyAim_AtTheReady_1_4_sp_launcher
+Reload							tm340_00		                4sp_p
+Focus							tm340_00
+Curse							44								6sp_P
+Scapegoat						44								6sp_K
+Roll							tm110_00						4sp_K
+DeusExMachina					tm450_00		                5UA
+SuperFocus						tm611_11 tm401_21*				4UA
+
+
+Hazama							Terumi
+5D 2D 6D 4D						tm430_03						5sp_H 2sp_H 6sp_H 4sp_H
+JD J2D J6D														j5sp_H j2sp_H j6sp_H j4sp_H j8sp_H
+J4D J8D							tm431_01
+4628 ACD follow					tm431_05						P K S H
+4628 B follow					tm431_04
+623Drive						tm436_09 tm400_13				6sp_Luncher XXXXX
+J214B							tm313_07						jsp_S
+236236B							tm440_21						6UA
+632146DD						tm435_07                	    AtTheReady_4UA
+EA_4_types_UA_enhence_ver
+
+Terumi
+2D+22CCCCC					    2D								2sp_Luncher XXXXX
+4D								4D								4sp_P
+2626A                           tm030_00ex tm400_00 tm430_06    4UA

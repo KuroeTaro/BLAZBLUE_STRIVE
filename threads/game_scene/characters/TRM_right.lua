@@ -1,0 +1,89 @@
+local filesys_module = require "love.filesystem"
+local image_module = require "love.image"
+local compress_module = image_module.newCompressedData
+local non_compress_module = love.image.newImageData
+local image_data = {}
+
+-- 通用类
+local load_universal_name_table = {
+    "0_crouch_hurt",
+    "0_general_hurt_falled_knockout",
+    "0_general_hurt_hard_knockdown_down",
+    "0_general_hurt_hard_knockdown_head_down",
+    "0_general_hurt_hard_knockdown_up",
+    "0_general_hurt_hard_knockdown_wallstick_ground",
+    "0_general_hurt_hard_recovery_down",
+    "0_general_hurt_hard_recovery_up",
+    "0_general_hurt_hard_recovery_wallstick_ground",
+    "0_general_hurt_lanuched_float",
+    "0_general_hurt_lanuched_groundbounce",
+    "0_general_hurt_lanuched_high",
+    "0_general_hurt_lanuched_low",
+    "0_general_hurt_lanuched_mid_hori_heavy",
+    "0_general_hurt_lanuched_mid_up",
+    "0_general_hurt_lanuched_rolling",
+    "0_general_hurt_lanuched_rotate",
+    "0_general_hurt_lanuched_wallbounce",
+    "0_general_hurt_semi_lanuched_mid",
+    "0_general_hurt_semi_lanuched_rotate",
+    "0_general_hurt_soft_knockdown_wallstick_air",
+    "0_general_hurt_soft_recovery_ground",
+    "0_general_hurt_soft_recovery_wallstick_air",
+    "0_stand_hurt_high",
+    "0_stand_hurt_low",
+    "0_stand_hurt_mid",
+    "1_2_3_crouch",
+    "1_2_3_crouch_to_stand_idle",
+    "1_2_3_crouch_turn",
+    "1_4_7_air_block",
+    "1_4_7_air_block_guard_crash",
+    "1_crouch_block",
+    "1_crouch_block_guard_crash",
+    "4_stand_block_guard_crash",
+    "4_stand_block_high",
+    "4_stand_block_mid",
+    "4_walk",
+    "4_walk_to_stand_idle",
+    "4dash_air_backdash",
+    "4dash_backdash",
+    "5_stand_idle",
+    "5_stand_dash_skid",
+    "5_stand_turn",
+    "6_walk",
+    "6_walk_to_stand_idle",
+    "6dash_air_dash",
+    "6dash_dash",
+    "7_8_9[launcher]_follow_jump",
+    "7_8_9_jump_air_to_stand_idle",
+    "7_8_9_pre_jump",
+    "7_jump",
+    "8_jump",
+    "9_jump"
+}
+for i, v in ipairs(load_universal_name_table) do
+    image_data[v] = compress_module("asset/game_scene/characters/TRM/_character/UNIVERSAL/TRM_"..v..".dds")
+end 
+
+-- 攻击类
+local load_attack_name_table = {
+    "burst_overdrive_rc", --burst会生成一个伤害为0的攻击判定
+    "5P",
+    "cS"
+}
+for i, v in ipairs(load_attack_name_table) do
+    image_data[v] = compress_module("asset/game_scene/characters/TRM/_character/ATTACK/TRM_"..v..".dds")
+end
+
+-- 角色whiff_VFX类
+local load_whiff_VFX_name_table = {
+    "5P",
+    "cS"
+}
+for i, v in ipairs(load_whiff_VFX_name_table) do
+    image_data[v.."_whiff_VFX"] = compress_module("asset/game_scene/VFX/whiff_VFX/TRM/".."TRM_"..v..".dds")
+end
+
+-- special
+image_data["overdrive_badge"] = compress_module("asset/game_scene/VFX/overdrive_badge/TRM_overdrive_badge.dds")
+
+love.thread.getChannel( 'image_3' ):push( image_data )
