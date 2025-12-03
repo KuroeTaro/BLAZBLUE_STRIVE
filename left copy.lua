@@ -273,7 +273,7 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "6_walk_to_stand_idle",
                 "6dash_air_dash",
                 "6dash_dash",
-                "7_8_9[launcher]_follow_jump",
+                "7_8_9[Launcher]_follow_jump",
                 "7_8_9_jump_air_to_stand_idle",
                 "7_8_9_pre_jump",
                 "7_jump",
@@ -747,11 +747,11 @@ function state_machine_char_game_scene_char_LP()
     -- INPUT_SYS_COMMAND_TABLE = {
     --     "up","down","left","right",
     --     "P","S","HS","K",
-    --     "SP","launcher","back","start",
+    --     "SP","Launcher","back","start",
     --     "RC","dash","burst","UA"
     -- }
 
-    -- sp + luncher 普通投
+    -- sp + Launcher 普通投
 
     local input = INPUT_SYS_CURRENT_COMMAND_STATE["L"]
     local obj_char = obj_char_game_scene_char_LP
@@ -1058,22 +1058,22 @@ function state_machine_char_game_scene_char_LP_input_sys_cache()
                 obj_char["input_sys_cache"]["P"] = true
                 obj_char["input_sys_cache"]["S"] = false
                 obj_char["input_sys_cache"]["K"] = false
-                obj_char["input_sys_cache"]["launcher"] = false
+                obj_char["input_sys_cache"]["Launcher"] = false
             elseif input["S"] == "Pressing" then
                 obj_char["input_sys_cache"]["P"] = false
                 obj_char["input_sys_cache"]["S"] = true
                 obj_char["input_sys_cache"]["K"] = false
-                obj_char["input_sys_cache"]["launcher"] = false
+                obj_char["input_sys_cache"]["Launcher"] = false
             elseif input["K"] == "Pressing" then
                 obj_char["input_sys_cache"]["P"] = false
                 obj_char["input_sys_cache"]["S"] = false
                 obj_char["input_sys_cache"]["K"] = true
-                obj_char["input_sys_cache"]["launcher"] = false
-            elseif input["launcher"] == "Pressing" then
+                obj_char["input_sys_cache"]["Launcher"] = false
+            elseif input["Launcher"] == "Pressing" then
                 obj_char["input_sys_cache"]["P"] = false
                 obj_char["input_sys_cache"]["S"] = false
                 obj_char["input_sys_cache"]["K"] = false
-                obj_char["input_sys_cache"]["launcher"] = true
+                obj_char["input_sys_cache"]["Launcher"] = true
             end
             if input["RC"] == "Pressing" then
                 obj_char["input_sys_cache"]["RC"] = true
@@ -1698,9 +1698,9 @@ function state_gate_game_scene_char_LP_common_ground_idle_to_move(input,obj_char
     -- _6S
     -- _cS
     -- _fS
-    -- _2Luncher
-    -- _46Luncher
-    -- _5Luncher
+    -- _2Launcher
+    -- _46Launcher
+    -- _5Launcher
     -- _4dash_backdash
     -- _6dash_dash
 end

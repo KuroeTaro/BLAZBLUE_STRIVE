@@ -22,9 +22,9 @@ _common_ground_idle_to_move
     _6S
     _cS
     _fS
-    _2Luncher
-    _46Luncher
-    _5Luncher
+    _2Launcher
+    _46Launcher
+    _5Launcher
     _4dash_backdash
     _6dash_dash
 _common_ground_to_special_move
@@ -50,8 +50,8 @@ _common_air_idle_to_move
     _j2K
     _jS
     _j2S
-    _j46Luncher
-    _j5Luncher
+    _j46Launcher
+    _j5Launcher
     _4dash_air_backdash
     _6dash_air_dash
 _common_air_to_special_move
@@ -282,8 +282,8 @@ _2K
     _6P
     _6K
     _6S
-    _2Luncher
-    _5Luncher
+    _2Launcher
+    _5Launcher
     _1_2_3_crouch
 _6k
     _common_ground_to_special_move
@@ -296,8 +296,8 @@ _5K
     _6P
     _6K
     _6S
-    _2Luncher
-    _5Luncher
+    _2Launcher
+    _5Launcher
     _6dash_dash_cancel
     _5_stand_idle
 _2S
@@ -317,26 +317,26 @@ _cS
     _2S
     _6S
     _fS
-    _2Luncher
-    _5Luncher
+    _2Launcher
+    _5Launcher
     _6dash_dash_cancel
     _5_stand_idle
 _fS
     _common_ground_to_special_move
     _RC_purple_rc
     _5_stand_idle
-_2Luncher
+_2Launcher
     _common_ground_to_special_move
     _RC_purple_rc
     _1_2_3_crouch
-_46Luncher
+_46Launcher
     _RC_red_rc
     _RC_purple_rc
     _5_stand_idle
-_5Luncher
+_5Launcher
     _RC_purple_rc
     _5_stand_idle
-_5Lanucher_hold
+_5Launcher_hold
     _RC_purple_rc
     _5_stand_idle
 
@@ -353,7 +353,7 @@ _jK
     _7_8_9_jump_air_to_stand_idle(landing)
     _common_air_to_special_move
     _RC_purple_rc
-    _j5Luncher
+    _j5Launcher
     _j2K
     _j2S
     _7_8_9_jump_air(air_move+hit_cancel)(animation_end)
@@ -367,19 +367,19 @@ _jS
     _common_air_to_special_move
     _RC_purple_rc
     _jS(2_5+hit_cancel)
-    _j5Luncher
+    _j5Launcher
     _7_8_9_jump_air(air_move+hit_cancel)(animation_end)
 _j2S
     _7_8_9_jump_air_to_stand_idle(landing)
     _common_air_to_special_move
     _RC_purple_rc
     _7_8_9_jump_air(air_move+hit_cancel)(animation_end)
-_j46Luncher
+_j46Launcher
     _7_8_9_jump_air_to_stand_idle(landing)
     _RC_red_rc
     _RC_purple_rc
     _7_8_9_jump_air(air_move+hit_cancel)(animation_end)
-_j5Luncher
+_j5Launcher
     _7_8_9_jump_air_to_stand_idle(landing)
     _common_air_to_special_move
     _RC_purple_rc
@@ -413,9 +413,9 @@ _4sp_S
     _4sp_K||_4sp_S_4K
     _6sp_K||_4sp_S_6K
     _4sp_S_4sp_S||_4sp_S_4S
-    _4sp_S_2Luncher
-    _4sp_S_6Luncher
-    _4sp_S_5Luncher
+    _4sp_S_2Launcher
+    _4sp_S_6Launcher
+    _4sp_S_5Launcher
     _6sp_S||_4sp_S_6S
     _4sp_S_sp_H||_4sp_S_H
     _5_stand_idle
@@ -443,13 +443,13 @@ _4sp_S_S
 _4sp_S_H||_4sp_S_sp_H
     _RC_purple_rc
     _5_stand_idle
-_4sp_S_2Luncher
+_4sp_S_2Launcher
     _RC_purple_rc
     _5_stand_idle
-_4sp_S_6Luncher
+_4sp_S_6Launcher
     _RC_purple_rc
     _5_stand_idle
-_4sp_S_5Luncher
+_4sp_S_5Launcher
     _RC_purple_rc
     _5_stand_idle
 _6sp_S

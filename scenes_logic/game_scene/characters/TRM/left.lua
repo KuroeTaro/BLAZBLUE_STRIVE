@@ -274,7 +274,7 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "6_walk_to_stand_idle",
                 "6dash_air_dash",
                 "6dash_dash",
-                "7_8_9[launcher]_follow_jump",
+                "7_8_9[Launcher]_follow_jump",
                 "7_8_9_jump_air_to_stand_idle",
                 "7_8_9_pre_jump",
                 "7_jump",
@@ -294,7 +294,8 @@ function order_load_game_scene_char_LP_frames(load_order)
             local load_name_table = {
                 "burst_overdrive_rc",
                 "5P",
-                "cS"
+                "cS",
+                "2Launcher",
             }
             for i, v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_LP[v] = 
@@ -332,7 +333,8 @@ function order_load_game_scene_char_LP_frames(load_order)
 
             local load_name_table = {
                 "5P",
-                "cS"
+                "cS",
+                -- 2Launcher
             }
             for i, v in ipairs(load_name_table) do
                 image_sprite_sheet_VFX_game_scene_LP[v.."_whiff_VFX"] = 
@@ -750,11 +752,11 @@ function state_machine_char_game_scene_char_LP()
     -- INPUT_SYS_COMMAND_TABLE = {
     --     "up","down","left","right",
     --     "P","S","HS","K",
-    --     "SP","launcher","back","start",
+    --     "SP","Launcher","back","start",
     --     "RC","dash","burst","UA"
     -- }
 
-    -- sp + luncher 普通投
+    -- sp + Launcher 普通投
 
     local input = INPUT_SYS_CURRENT_COMMAND_STATE["L"]
     local obj_char = obj_char_game_scene_char_LP
@@ -979,25 +981,25 @@ function state_machine_char_game_scene_char_LP()
             character_animator(obj_char,obj_char["current_animation"])
             state_gate_game_scene_char_LP_from_fS(input,obj_char)
         end,
-        ["2Luncher"] = function()
+        ["2Launcher"] = function()
             state_machine_char_game_scene_char_LP_input_sys_cache()
             character_animator(obj_char,obj_char["current_animation"])
-            state_gate_game_scene_char_LP_from_2Luncher(input,obj_char)
+            state_gate_game_scene_char_LP_from_2Launcher(input,obj_char)
         end,
-        ["46Luncher"] = function()
+        ["46Launcher"] = function()
             state_machine_char_game_scene_char_LP_input_sys_cache()
             character_animator(obj_char,obj_char["current_animation"])
-            state_gate_game_scene_char_LP_from_46Luncher(input,obj_char)
+            state_gate_game_scene_char_LP_from_46Launcher(input,obj_char)
         end,
-        ["5Luncher"] = function()
+        ["5Launcher"] = function()
             state_machine_char_game_scene_char_LP_input_sys_cache()
             character_animator(obj_char,obj_char["current_animation"])
-            state_gate_game_scene_char_LP_from_5Luncher(input,obj_char)
+            state_gate_game_scene_char_LP_from_5Launcher(input,obj_char)
         end,
-        ["5Lanucher_hold"] = function()
+        ["5Launcher_hold"] = function()
             state_machine_char_game_scene_char_LP_input_sys_cache()
             character_animator(obj_char,obj_char["current_animation"])
-            state_gate_game_scene_char_LP_from_5Lanucher_hold(input,obj_char)
+            state_gate_game_scene_char_LP_from_5Launcher_hold(input,obj_char)
         end,
 
         ["jP"] = function()
@@ -1025,15 +1027,15 @@ function state_machine_char_game_scene_char_LP()
             character_animator(obj_char,obj_char["current_animation"])
             state_gate_game_scene_char_LP_from_j2S(input,obj_char)
         end,
-        ["j46Luncher"] = function()
+        ["j46Launcher"] = function()
             state_machine_char_game_scene_char_LP_input_sys_cache()
             character_animator(obj_char,obj_char["current_animation"])
-            state_gate_game_scene_char_LP_from_j46Luncher(input,obj_char)
+            state_gate_game_scene_char_LP_from_j46Launcher(input,obj_char)
         end,
-        ["j5Luncher"] = function()
+        ["j5Launcher"] = function()
             state_machine_char_game_scene_char_LP_input_sys_cache()
             character_animator(obj_char,obj_char["current_animation"])
-            state_gate_game_scene_char_LP_from_j5Luncher(input,obj_char)
+            state_gate_game_scene_char_LP_from_j5Launcher(input,obj_char)
         end,
 
         ["4sp_P"] = function()
@@ -1081,20 +1083,20 @@ function state_machine_char_game_scene_char_LP()
             character_animator(obj_char,obj_char["current_animation"])
             state_gate_game_scene_char_LP_from_4sp_S_H(input,obj_char)
         end,
-        ["4sp_S_2Luncher"] = function()
+        ["4sp_S_2Launcher"] = function()
             state_machine_char_game_scene_char_LP_input_sys_cache()
             character_animator(obj_char,obj_char["current_animation"])
-            state_gate_game_scene_char_LP_from_4sp_S_2Luncher(input,obj_char)
+            state_gate_game_scene_char_LP_from_4sp_S_2Launcher(input,obj_char)
         end,
-        ["4sp_S_6Luncher"] = function()
+        ["4sp_S_6Launcher"] = function()
             state_machine_char_game_scene_char_LP_input_sys_cache()
             character_animator(obj_char,obj_char["current_animation"])
-            state_gate_game_scene_char_LP_from_4sp_S_6Luncher(input,obj_char)
+            state_gate_game_scene_char_LP_from_4sp_S_6Launcher(input,obj_char)
         end,
-        ["4sp_S_5Luncher"] = function()
+        ["4sp_S_5Launcher"] = function()
             state_machine_char_game_scene_char_LP_input_sys_cache()
             character_animator(obj_char,obj_char["current_animation"])
-            state_gate_game_scene_char_LP_from_4sp_S_5Luncher(input,obj_char)
+            state_gate_game_scene_char_LP_from_4sp_S_5Launcher(input,obj_char)
         end,
         ["6sp_S"] = function()
             state_machine_char_game_scene_char_LP_input_sys_cache()
@@ -1225,31 +1227,31 @@ function state_machine_char_game_scene_char_LP_input_sys_cache()
                 obj_char["input_sys_cache"]["S"] = false
                 obj_char["input_sys_cache"]["K"] = false
                 obj_char["input_sys_cache"]["HS"] = false
-                obj_char["input_sys_cache"]["launcher"] = false
+                obj_char["input_sys_cache"]["Launcher"] = false
             elseif input["S"] == "Pressing" then
                 obj_char["input_sys_cache"]["P"] = false
                 obj_char["input_sys_cache"]["S"] = true
                 obj_char["input_sys_cache"]["K"] = false
                 obj_char["input_sys_cache"]["HS"] = false
-                obj_char["input_sys_cache"]["launcher"] = false
+                obj_char["input_sys_cache"]["Launcher"] = false
             elseif input["K"] == "Pressing" then
                 obj_char["input_sys_cache"]["P"] = false
                 obj_char["input_sys_cache"]["S"] = false
                 obj_char["input_sys_cache"]["K"] = true
                 obj_char["input_sys_cache"]["HS"] = false
-                obj_char["input_sys_cache"]["launcher"] = false
+                obj_char["input_sys_cache"]["Launcher"] = false
             elseif input["HS"] == "Pressing" then
                 obj_char["input_sys_cache"]["P"] = false
                 obj_char["input_sys_cache"]["S"] = false
                 obj_char["input_sys_cache"]["K"] = false
                 obj_char["input_sys_cache"]["HS"] = true
-                obj_char["input_sys_cache"]["launcher"] = false
-            elseif input["launcher"] == "Pressing" then
+                obj_char["input_sys_cache"]["Launcher"] = false
+            elseif input["Launcher"] == "Pressing" then
                 obj_char["input_sys_cache"]["P"] = false
                 obj_char["input_sys_cache"]["S"] = false
                 obj_char["input_sys_cache"]["K"] = false
                 obj_char["input_sys_cache"]["HS"] = false
-                obj_char["input_sys_cache"]["launcher"] = true
+                obj_char["input_sys_cache"]["Launcher"] = true
             end
             if input["RC"] == "Pressing" then
                 obj_char["input_sys_cache"]["RC"] = true
@@ -1356,9 +1358,18 @@ function state_gate_game_scene_char_LP_common_ground_idle_to_move(input,obj_char
         return true
     end
     -- _fS
-    -- _2Luncher
-    -- _46Luncher
-    -- _5Luncher
+    -- _2Launcher
+    if test_input_sys_press(input["Launcher"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_2Launcher(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "2Launcher"
+        return true
+    end
+    -- _46Launcher
+    -- _5Launcher
     -- _4dash_backdash
     if obj_char["direction_input"] == 4 and test_input_sys_press(input["dash"]) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
@@ -1391,8 +1402,8 @@ function state_gate_game_scene_char_LP_common_air_idle_to_move(input,obj_char)
     -- _j2K
     -- _jS
     -- _j2S
-    -- _j46Luncher
-    -- _j5Luncher
+    -- _j46Launcher
+    -- _j5Launcher
     -- _4dash_air_backdash
     if obj_char["y"] < 120 and (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 1)
     and test_input_sys_press_or_hold(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
@@ -1418,6 +1429,7 @@ end
 function state_gate_game_scene_char_LP_common_air_to_special_move(input,obj_char)
 end
 function state_gate_game_scene_char_LP_common_ground_idle_to_move_hold_ver(input,obj_char)
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     -- _burst_overdrive
     if test_input_sys_press_or_hold(input["burst"]) and obj_char["overdrive_gauge"][1] == obj_char["overdrive_gauge"][2] then
         if not common_game_scene_get_character_facing_currect(obj_char) then
@@ -1479,9 +1491,18 @@ function state_gate_game_scene_char_LP_common_ground_idle_to_move_hold_ver(input
         return true
     end
     -- _fS
-    -- _2Luncher
-    -- _46Luncher
-    -- _5Luncher
+    -- _2Launcher
+    if test_input_sys_press_or_hold(input["Launcher"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_2Launcher(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "2Launcher"
+        return true
+    end
+    -- _46Launcher
+    -- _5Launcher
     -- _4dash_backdash
     if obj_char["direction_input"] == 4 and test_input_sys_press_or_hold(input["dash"]) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
@@ -1535,6 +1556,7 @@ function state_gate_game_scene_char_LP_from_hurt(input,obj_char)
             obj_char["current_animation"] = obj_char["self_groundbounce_hurt_animation"]
             init_character_anim_with(obj_char,obj_char["current_animation"])
         elseif test_char_on_ground(obj_char) then
+            obj_char["y"] = 365
             obj_char["state"] = obj_char["state_cache"]
             if obj_char["state"] == "knockdown" then
                 obj_char["current_animation"] = obj_char["self_knockdown_animation"] 
@@ -1598,6 +1620,13 @@ function state_gate_game_scene_char_LP_from_wallbreak_transporting_exiting(input
 end
 
 function state_gate_game_scene_char_LP_from_knockdown(input,obj_char)
+    -- _knockdown_recover
+    if common_game_scene_get_character_animation_end(obj_char) then
+        obj_char["current_animation"] = obj_char["self_knockdown_recovery_animation"]
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "knockdown_recovery"
+        return true
+    end
 end
 function state_gate_game_scene_char_LP_from_knockdown_recovery(input,obj_char)
     -- _5_stand_idle
@@ -2447,11 +2476,14 @@ function state_gate_game_scene_char_LP_from_6S(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_cS(input,obj_char)
     -- hit_cancel
-    if obj_char["idle_cancel"] then
+    if obj_char["hit_cancel"] then
 
     end
     -- idle_cancel
     if obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_idle_to_move_hold_ver(input,obj_char) then
+            return true
+        end
         if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
             return true
         end
@@ -2466,13 +2498,35 @@ function state_gate_game_scene_char_LP_from_cS(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_fS(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_2Luncher(input,obj_char)
+function state_gate_game_scene_char_LP_from_2Launcher(input,obj_char)
+    -- hit_cancel
+    if obj_char["hit_cancel"] then
+
+    end
+    -- idle_cancel
+    if obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_idle_to_move_hold_ver(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_LP_from_1_2_3_crouch(input,obj_char) then
+            return true
+        end
+    end
+    -- _1_2_3_crouch
+    if common_game_scene_get_character_animation_end(obj_char) then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "1_2_3_crouch"
+        obj_char["f"] = 4
+        character_animator(obj_char,obj_char["current_animation"])
+        return true
+    end
 end
-function state_gate_game_scene_char_LP_from_46Luncher(input,obj_char)
+function state_gate_game_scene_char_LP_from_46Launcher(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_5Luncher(input,obj_char)
+function state_gate_game_scene_char_LP_from_5Launcher(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_5Lanucher_hold(input,obj_char)
+function state_gate_game_scene_char_LP_from_5Launcher_hold(input,obj_char)
 end
 
 function state_gate_game_scene_char_LP_from_jP(input,obj_char)
@@ -2485,9 +2539,9 @@ function state_gate_game_scene_char_LP_from_jS(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_j2S(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_j46Luncher(input,obj_char)
+function state_gate_game_scene_char_LP_from_j46Launcher(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_j5Luncher(input,obj_char)
+function state_gate_game_scene_char_LP_from_j5Launcher(input,obj_char)
 end
 
 function state_gate_game_scene_char_LP_from_4sp_P(input,obj_char)
@@ -2508,11 +2562,11 @@ function state_gate_game_scene_char_LP_from_4sp_S_S(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_4sp_S_H(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_4sp_S_2Luncher(input,obj_char)
+function state_gate_game_scene_char_LP_from_4sp_S_2Launcher(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_4sp_S_6Luncher(input,obj_char)
+function state_gate_game_scene_char_LP_from_4sp_S_6Launcher(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_4sp_S_5Luncher(input,obj_char)
+function state_gate_game_scene_char_LP_from_4sp_S_5Launcher(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_6sp_S(input,obj_char)
 end

@@ -785,7 +785,7 @@ function insert_VFX_game_sceme_char_block_ver1(obj_char)
 end
 function insert_VFX_game_sceme_char_FD_block(obj_char)
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
-    local VFX_spwan_anchor_pos = {-300,-390}
+    local VFX_spwan_anchor_pos = {-300,-420}
     if obj_char["height_state"] == "air" then
         VFX_spwan_anchor_pos = {-300,-440}
     elseif obj_char["height_state"] == "stand" then

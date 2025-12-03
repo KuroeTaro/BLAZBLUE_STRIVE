@@ -203,10 +203,10 @@ function update_game_scene_main_training()
             -- debug_delete_after
             if DEBUG_TRAINNING_COUNTER then
                 obj_char_game_scene_char_RP["hurt_state_target"] = "counter"
-            else
+            elseif obj_char_game_scene_char_RP["hurt_state_target"] ~= "unblock" then
                 obj_char_game_scene_char_RP["hurt_state_target"] = "idle"
             end
-            if DEBUG_TRAINNING_BLOCK ~= 0 then
+            if DEBUG_TRAINNING_BLOCK ~= 0 and obj_char_game_scene_char_RP["hurt_state_target"] ~= "unblock" then
                 obj_char_game_scene_char_RP["hurt_state_target"] = "idle"
                 if DEBUG_TRAINNING_HEIGHT == 2 then
                     obj_char_game_scene_char_RP["direction_input"] = 1

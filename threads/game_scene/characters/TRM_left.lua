@@ -53,7 +53,7 @@ local load_universal_name_table = {
     "6_walk_to_stand_idle",
     "6dash_air_dash",
     "6dash_dash",
-    "7_8_9[launcher]_follow_jump",
+    "7_8_9[Launcher]_follow_jump",
     "7_8_9_jump_air_to_stand_idle",
     "7_8_9_pre_jump",
     "7_jump",
@@ -68,7 +68,8 @@ end
 local load_attack_name_table = {
     "burst_overdrive_rc", --burst会生成一个伤害为0的攻击判定
     "5P",
-    "cS"
+    "cS",
+    "2Launcher"
 }
 for i, v in ipairs(load_attack_name_table) do
     image_data[v] = compress_module("asset/game_scene/characters/TRM/_character/ATTACK/TRM_"..v..".dds")
@@ -77,7 +78,8 @@ end
 -- 角色whiff_VFX类
 local load_whiff_VFX_name_table = {
     "5P",
-    "cS"
+    "cS",
+    -- "2Launcher"
 }
 for i, v in ipairs(load_whiff_VFX_name_table) do
     image_data[v.."_whiff_VFX"] = compress_module("asset/game_scene/VFX/whiff_VFX/TRM/".."TRM_"..v..".dds")

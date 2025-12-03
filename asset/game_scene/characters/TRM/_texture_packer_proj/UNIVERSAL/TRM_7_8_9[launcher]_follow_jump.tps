@@ -124,7 +124,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../_character/UNIVERSAL/TRM_7_8_9[launcher]_follow_jump.json</filename>
+                <filename>../../_character/UNIVERSAL/TRM_7_8_9[Launcher]_follow_jump.json</filename>
             </struct>
         </map>
         <key>multiPackMode</key>
@@ -173,14 +173,14 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../../UNIVERSAL_IMG/7_8_9[launcher]_follow_jump/0.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/7_8_9[launcher]_follow_jump/1.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/7_8_9[launcher]_follow_jump/2.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/7_8_9[launcher]_follow_jump/3.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/7_8_9[launcher]_follow_jump/4.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/7_8_9[launcher]_follow_jump/5.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/7_8_9[launcher]_follow_jump/6.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/7_8_9[launcher]_follow_jump/7.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/7_8_9[Launcher]_follow_jump/0.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/7_8_9[Launcher]_follow_jump/1.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/7_8_9[Launcher]_follow_jump/2.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/7_8_9[Launcher]_follow_jump/3.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/7_8_9[Launcher]_follow_jump/4.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/7_8_9[Launcher]_follow_jump/5.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/7_8_9[Launcher]_follow_jump/6.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/7_8_9[Launcher]_follow_jump/7.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -202,7 +202,7 @@
             <struct type="SpriteSheet">
                 <key>files</key>
                 <array>
-                    <filename>../../UNIVERSAL_IMG/7_8_9[launcher]_follow_jump</filename>
+                    <filename>../../UNIVERSAL_IMG/7_8_9[Launcher]_follow_jump</filename>
                 </array>
             </struct>
         </map>

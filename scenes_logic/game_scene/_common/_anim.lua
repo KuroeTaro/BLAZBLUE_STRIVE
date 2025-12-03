@@ -1716,7 +1716,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
         if not common_game_scene_get_character_facing_currect(obj_char_other_side) then
             obj_char_other_side[5] = -obj_char_other_side[5]
         end
-        common_game_scene_char_apply_hurt_velocity(
+        common_game_scene_char_apply_knockdown_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
@@ -1849,7 +1849,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
 
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
-        common_game_scene_char_apply_hurt_velocity(
+        common_game_scene_char_apply_knockdown_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
@@ -1879,9 +1879,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
 
         -- special_update
         frame_0_special_update_function()
-
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[1] = function()
         -- update
@@ -1981,7 +1978,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
 
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
-        common_game_scene_char_apply_hurt_velocity(
+        common_game_scene_char_apply_knockdown_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
@@ -2011,9 +2008,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
 
         -- special_update
         frame_0_special_update_function()
-
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[1] = function()
         -- update
@@ -2113,7 +2107,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
 
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
-        common_game_scene_char_apply_hurt_velocity(
+        common_game_scene_char_apply_knockdown_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
@@ -2143,9 +2137,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
 
         -- special_update
         frame_0_special_update_function()
-
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[1] = function()
         -- update
@@ -2251,7 +2242,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
 
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
-        common_game_scene_char_apply_hurt_velocity(
+        common_game_scene_char_apply_knockdown_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
@@ -2282,13 +2273,9 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
 
         -- special_update
         frame_0_special_update_function()
-
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[1] = function()
         obj_char_other_side["state_cache"] = state_cache
-        obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
     end
     res[60] = function()
         -- state
@@ -3611,7 +3598,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_low(
 
     for i = 0,12 do
         res[i] = function()
-            update_before_land()
+            update_throw_inv()
         end
     end
 

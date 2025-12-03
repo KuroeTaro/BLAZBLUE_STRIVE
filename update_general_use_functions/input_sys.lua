@@ -34,7 +34,7 @@ function init_input()
     INPUT_SYS_COMMAND_TABLE = {
         "up","down","left","right",
         "P","S","HS","K",
-        "SP","launcher","back","start",
+        "SP","Launcher","back","start",
         "RC","dash","burst","UA",
         "correction_up","correction_down",
         "correction_left","correction_right"
