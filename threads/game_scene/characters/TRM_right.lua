@@ -69,7 +69,8 @@ local load_attack_name_table = {
     "burst_overdrive_rc", --burst会生成一个伤害为0的攻击判定
     "5P",
     "cS",
-    "2Launcher"
+    "2Launcher",
+    "5Launcher"
 }
 for i, v in ipairs(load_attack_name_table) do
     image_data[v] = compress_module("asset/game_scene/characters/TRM/_character/ATTACK/TRM_"..v..".dds")
@@ -80,6 +81,7 @@ local load_whiff_VFX_name_table = {
     "5P",
     "cS",
     -- "2Launcher"
+    "5Launcher"
 }
 for i, v in ipairs(load_whiff_VFX_name_table) do
     image_data[v.."_whiff_VFX"] = compress_module("asset/game_scene/VFX/whiff_VFX/TRM/".."TRM_"..v..".dds")

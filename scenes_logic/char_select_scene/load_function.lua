@@ -69,7 +69,6 @@ function order_load_char_select_scene_UI_char(load_order)
             load_char_select_scene_anim()
             load_char_select_scene_audio()
             load_char_select_scene_shader()
-            
         end,
     }
     local this_function = switch[load_order]

@@ -296,6 +296,7 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "5P",
                 "cS",
                 "2Launcher",
+                "5Launcher",
             }
             for i, v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_LP[v] = 
@@ -1359,7 +1360,7 @@ function state_gate_game_scene_char_LP_common_ground_idle_to_move(input,obj_char
     end
     -- _fS
     -- _2Launcher
-    if test_input_sys_press(input["Launcher"]) then
+    if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["Launcher"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -1370,6 +1371,15 @@ function state_gate_game_scene_char_LP_common_ground_idle_to_move(input,obj_char
     end
     -- _46Launcher
     -- _5Launcher
+    if test_input_sys_press(input["Launcher"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_5Launcher(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "5Launcher"
+        return true
+    end
     -- _4dash_backdash
     if obj_char["direction_input"] == 4 and test_input_sys_press(input["dash"]) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
@@ -2525,6 +2535,22 @@ end
 function state_gate_game_scene_char_LP_from_46Launcher(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_5Launcher(input,obj_char)
+    -- idle_cancel
+    if obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_idle_to_move_hold_ver(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+            return true
+        end
+    end
+    -- _5_stand_idle
+    if common_game_scene_get_character_animation_end(obj_char) then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "5_stand_idle"
+        return true
+    end
 end
 function state_gate_game_scene_char_LP_from_5Launcher_hold(input,obj_char)
 end
