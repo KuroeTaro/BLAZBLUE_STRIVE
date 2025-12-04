@@ -32,6 +32,7 @@ function unload_disclaimer_and_logos_scene_all()
             _G[key] = nil -- 删除该变量
         end
     end
+    unrequire_prefix("scenes_logic.disclaimer_and_logos_scene.")
 end
 function preset_disclaimer_and_logos_scene()
     -- 空功能用于填充标准化的load scene

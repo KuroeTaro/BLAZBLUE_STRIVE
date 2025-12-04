@@ -201,7 +201,7 @@ function update_game_scene_main_training()
             update_game_scene_char()
 
             -- debug_delete_after
-            if DEBUG_TRAINNING_COUNTER then
+            if DEBUG_TRAINNING_COUNTER and obj_char_game_scene_char_RP["hurt_state_target"] ~= "unblock" then
                 obj_char_game_scene_char_RP["hurt_state_target"] = "counter"
             elseif obj_char_game_scene_char_RP["hurt_state_target"] ~= "unblock" then
                 obj_char_game_scene_char_RP["hurt_state_target"] = "idle"

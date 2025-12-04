@@ -221,6 +221,7 @@ function unload_game_scene_all()
             _G[key] = nil -- 删除该变量
         end
     end
+    unrequire_prefix("scenes_logic.game_scene.")
 end
 function preset_game_scene_training()
     obj_UI_game_scene_black_solid[4] = 1

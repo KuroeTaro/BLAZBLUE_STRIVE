@@ -647,6 +647,7 @@ function unload_start_scene_all()
             _G[key] = nil -- 删除该变量
         end
     end
+    unrequire_prefix("scenes_logic.start_scene.")
 end
 function preset_start_scene()
     init_point_linear_anim_with(obj_UI_start_scene_solid_color,anim_UI_point_linear_start_scene_solid_ease_in_opacity)

@@ -1346,9 +1346,9 @@ function state_gate_game_scene_char_LP_common_ground_idle_to_move(input,obj_char
     -- _6S
     -- _cS
     if test_input_sys_press(input["S"]) 
-    and math.abs(obj_char["x"]-obj_char_other_side["x"]) + obj_char["velocity"][1]
+    and math.abs(obj_char["x"]-obj_char_other_side["x"]) + obj_char["velocity"][1] * 0.9
     * ((obj_char["x"]-obj_char_other_side["x"]) / math.abs(obj_char["x"]-obj_char_other_side["x"])) 
-    * 10 < 300.0 then
+    * 10 < 395.0 then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end

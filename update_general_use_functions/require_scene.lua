@@ -19,3 +19,11 @@ function require_all_in_folder(folder)
         end
     end
 end
+
+function unrequire_prefix(prefix)
+    for name,_ in pairs(package.loaded) do
+        if name:sub(1, #prefix) == prefix then
+            package.loaded[name] = nil
+        end
+    end
+end
