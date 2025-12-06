@@ -120,3 +120,61 @@ function insert_VFX_game_scene_char_TRM_cS_whiff(obj_char)
     end
     table.insert(obj_char["VFX_front_table"],obj)
 end
+function insert_VFX_game_scene_char_TRM_5Launcher_glow(obj_char)
+    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local image_sprite_sheet = nil
+    local side = obj_char["player_side"]
+    if side == "L" then
+        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["5Launcher_glow_whiff_VFX"]
+    elseif side == "R" then
+        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["5Launcher_glow_whiff_VFX"]
+    end 
+
+    obj["life"] = 18
+    obj[1] = obj_char["x"] + obj_char[5]*(-380)
+    obj[2] = obj_char["y"] + obj_char[6]*(-636)
+    obj[3] = obj_char[3]
+    obj[4] = 0.65
+    obj[5] = obj_char[5]
+    obj[6] = obj_char[6]
+    obj[7] = obj_char[7]
+    obj[8] = -1
+    obj["FCT"] = {0,0,0,0,0,0,0,0}
+    obj["LCT"] = {0,0,0,0,0,0,0,0}
+    obj["LCD"] = {0,0,0,0,0,0,0,0}
+    obj["animation"] = {}
+    for i=0,17 do
+        obj["animation"][i] = i
+    end
+    obj["animation"]["prop"] = 8
+    obj["animation"]["length"] = 18
+    obj["animation"]["loop"] = false
+    obj["animation"]["fix_type"] = true
+    init_frame_anim_with(obj,obj["animation"])
+    obj["update"] = function(self)
+        -- self[1] = obj_char["x"] + obj_char[5]*(-860)/2
+        -- self[2] = obj_char["y"] + obj_char[6]*(840)
+        self[1] = obj_char["x"] + obj_char[5]*(-380)
+        self[2] = obj_char["y"] + obj_char[6]*(-636)
+        if obj_char["state"] == "5Launcher" then
+            frame_animator(self,self["animation"])
+            self["life"] = self["life"] - 1
+        elseif obj_char["state"] == "hitstop" then
+            -- do nothing
+        else
+            self["life"] = 0
+        end
+    end
+    obj["draw"] = function(self)
+        local obj_camera = obj_stage_game_scene_camera
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,tostring(self[8]))
+
+        love.graphics.setBlendMode("add")
+        love.graphics.setColor(1,1,1,obj[4])
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setColor(1,1,1,1)
+        love.graphics.setBlendMode("alpha")
+    end
+    table.insert(obj_char["VFX_front_table"],obj)
+end

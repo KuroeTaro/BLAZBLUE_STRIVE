@@ -92,13 +92,16 @@ function update_game_scene_stage()
     local obj_camera = obj_stage_game_scene_camera
     local obj_char_L = obj_char_game_scene_char_LP
     local obj_char_R = obj_char_game_scene_char_RP
+    
     obj_camera["3d_pos_x_target"] = (obj_char_L["x"] + obj_char_R["x"])/2   -- 必须要保持两个pushbox宽度相同
     obj_camera["3d_pos_x_target"] = math.max(obj_camera["3d_pos_x_target"],-850)
     obj_camera["3d_pos_x_target"] = math.min(obj_camera["3d_pos_x_target"],850)
+
     obj_camera["3d_pos_y_target"] = math.max((obj_char_L["y"] + obj_char_R["y"])/2-365,math.min(obj_char_L["y"],obj_char_R["y"]))
     obj_camera["3d_pos_y_target"] = math.min(obj_camera["3d_pos_y_target"],0)
-    obj_camera["3d_pos_y_target"] = obj_camera["3d_pos_y_target"] - (math.max(math.abs(obj_char_L["x"]-obj_char_R["x"]),1100)-1100)*0.1
+    obj_camera["3d_pos_y_target"] = obj_camera["3d_pos_y_target"] - (math.max(math.abs(obj_char_L["x"]-obj_char_R["x"]),1400)-1400)*0.2
     obj_camera["3d_pos_y_target"] = math.max(obj_camera["3d_pos_y_target"],-850)
+
     obj_camera["3d_pos_z_target"] = -math.max(math.abs(obj_char_L["x"]-obj_char_R["x"])+200,1600)/1600*800-obj_camera["3d_pos_y_target"]*0.25
 
     local div_value = 3

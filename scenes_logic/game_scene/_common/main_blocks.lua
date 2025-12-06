@@ -201,11 +201,6 @@ function update_game_scene_main_training()
             update_game_scene_char()
 
             -- debug_delete_after
-            if DEBUG_TRAINNING_COUNTER and obj_char_game_scene_char_RP["hurt_state_target"] ~= "unblock" then
-                obj_char_game_scene_char_RP["hurt_state_target"] = "counter"
-            elseif obj_char_game_scene_char_RP["hurt_state_target"] ~= "unblock" then
-                obj_char_game_scene_char_RP["hurt_state_target"] = "idle"
-            end
             if DEBUG_TRAINNING_BLOCK ~= 0 and obj_char_game_scene_char_RP["hurt_state_target"] ~= "unblock" then
                 obj_char_game_scene_char_RP["hurt_state_target"] = "idle"
                 if DEBUG_TRAINNING_HEIGHT == 2 then
@@ -219,6 +214,9 @@ function update_game_scene_main_training()
                     INPUT_SYS_CURRENT_COMMAND_STATE["R"]["correction_left"] = "Holding"
                     INPUT_SYS_CURRENT_COMMAND_STATE["R"]["correction_right"] = "Holding"
                 end
+            end
+            if DEBUG_TRAINNING_COUNTER and obj_char_game_scene_char_RP["hurt_state_target"] ~= "unblock" then
+                obj_char_game_scene_char_RP["hurt_state_target"] = "counter"
             end
 
             -- 更新飞行道具

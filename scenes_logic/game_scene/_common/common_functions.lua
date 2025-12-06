@@ -49,6 +49,11 @@ function common_update_game_scene_input_direction(obj_char)
     local left  = (test_input_sys_press_or_hold(input["left"]) and 1 or 0)
     local up    = (test_input_sys_press_or_hold(input["up"]) and 1 or 0)
     local down  = (test_input_sys_press_or_hold(input["down"]) and 1 or 0)
+    if test_input_sys_press_or_hold(input["correction_up"]) then
+        up = 1 down = 0
+    elseif test_input_sys_press_or_hold(input["correction_down"]) then
+        down = 1 up = 0
+    end
     if obj_char[5] == -1 then
         left,right = right,left
     end

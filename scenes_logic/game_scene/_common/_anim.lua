@@ -4614,9 +4614,9 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
 
-    for i = 2,14 do
+    for i = 0,28 do
         res[i] = function()
-            obj_char_other_side["y"] = 195 + (i-2)*170/12
+            obj_char_other_side["y"] = 180 + 0.736*i^2 - 14.732*i
         end
     end
 
@@ -4631,12 +4631,12 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["current_animation_length"] = 28
+        obj_char_other_side["current_animation_length"] = 38
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 33
+        obj_char_other_side["throw_inv_countdown"] = 43
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
@@ -4665,7 +4665,8 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
 
         -- update
-        obj_char_other_side["y"] = 370
+        local i = 0
+        obj_char_other_side["y"] = 180 + 0.736*i^2 - 14.732*i
 
         -- special_update
         frame_0_special_update_function()
@@ -4673,11 +4674,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
         -- set_frame_adv
         obj_char["frame_adv"] = 0
     end
-    res[1] = function()
-        -- update
-        obj_char_other_side["y"] = 185
-    end
-    res[2] = function()
+    res[7] = function()
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
 
@@ -4685,16 +4682,18 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
         obj_char_other_side[8] = 1
 
         -- update
-        obj_char_other_side["y"] = 195
+        local i = 7
+        obj_char_other_side["y"] = 180 + 0.736*i^2 - 14.732*i
     end
-    res[6] = function()
+    res[14] = function()
         -- draw_correction
         obj_char_other_side[8] = 2
 
         -- update
-        obj_char_other_side["y"] = 195 + 4*170/12
+        local i = 14
+        obj_char_other_side["y"] = 180 + 0.736*i^2 - 14.732*i
     end
-    res[10] = function()
+    res[21] = function()
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][3]
 
@@ -4702,11 +4701,13 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
         obj_char_other_side[8] = 3
 
         -- update
-        obj_char_other_side["y"] = 195 + 8*170/12
+        local i = 21
+        obj_char_other_side["y"] = 180 + 0.736*i^2 - 14.732*i
     end
-    res[14] = function()
+    res[28] = function()
         -- state
         obj_char_other_side["height_state"] = "crouch"
+        obj_char_other_side["move_state"] = "none" -- none startup active recovery
 
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][4]
@@ -4718,11 +4719,11 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
         -- update
         obj_char_other_side["y"] = 365
     end
-    res[18] = function()
+    res[29] = function()
         -- draw_correction
         obj_char_other_side[8] = 5
     end
-    res[22] = function()
+    res[32] = function()
         -- state
         obj_char_other_side["height_state"] = "stand"
 
@@ -4733,14 +4734,15 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
         -- draw_correction
         obj_char_other_side[8] = 6
     end
-    res[26] = function()
+    res[36] = function()
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][7]
 
         -- draw_correction
         obj_char_other_side[8] = 7
     end
-    res[28] = function()
+    res[38] = function()
         -- animation_end
     end
+    return res
 end

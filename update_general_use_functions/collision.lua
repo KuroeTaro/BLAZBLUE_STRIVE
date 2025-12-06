@@ -67,14 +67,14 @@ function pushbox_state_relocate_in_character_x(obj_char_LP,obj_char_RP)
     local box_R = collision_box_to_real_world_box(obj_char_RP,"pushbox")
     local obj_camera = obj_stage_game_scene_camera
     if obj_char_LP["x"] < obj_char_RP["x"] then
-        if (box_R[1] + box_R[3]/2)-(box_L[1] - box_L[3]/2) > 1800 then
-            obj_char_LP["x"] = obj_camera["3d_pos_x_target"] - 900 + box_L[3]/2
-            obj_char_RP["x"] = obj_camera["3d_pos_x_target"] + 900 - box_R[3]/2
+        if (box_R[1] + box_R[3]/2)-(box_L[1] - box_L[3]/2) > 1900 then
+            obj_char_LP["x"] = obj_camera["3d_pos_x_target"] - 950 + box_L[3]/2
+            obj_char_RP["x"] = obj_camera["3d_pos_x_target"] + 950 - box_R[3]/2
         end
     elseif obj_char_LP["x"] > obj_char_RP["x"] then
-        if (box_L[1] + box_L[3]/2)-(box_R[1] - box_R[3]/2) > 1800 then
-            obj_char_LP["x"] = obj_camera["3d_pos_x_target"] + 900 - box_L[3]/2
-            obj_char_RP["x"] = obj_camera["3d_pos_x_target"] - 900 + box_R[3]/2
+        if (box_L[1] + box_L[3]/2)-(box_R[1] - box_R[3]/2) > 1900 then
+            obj_char_LP["x"] = obj_camera["3d_pos_x_target"] + 950 - box_L[3]/2
+            obj_char_RP["x"] = obj_camera["3d_pos_x_target"] - 950 + box_R[3]/2
         end
     end
 end
@@ -177,6 +177,19 @@ function strike_hurtbox_test(hit_obj,hurt_obj)
     return false
 end
 function throw_hurtbox_test(hit_obj,hurt_obj)
+    if hit_obj["hit_type_state"] ~= "throw" or hurt_obj["throw_inv"] == true or hit_obj["throw_active"] == false then
+        return false
+    end
+    for i=1,#hit_obj["hitbox_table"] do
+        local current_hitbox = collision_box_to_real_world_box(hit_obj,"hitbox",hit_obj["hitbox_table"][i])
+        for j=1,#hurt_obj["hurtbox_table"] do
+            local current_hurtbox = collision_box_to_real_world_box(hurt_obj,"hurtbox",hurt_obj["hurtbox_table"][j])
+            if collision_box_aabb_detection(current_hitbox,current_hurtbox) then
+                return true
+            end
+        end
+    end
+    return false
 end
 function projectile_hurtbox_test(hit_obj,hurt_obj)
 end
