@@ -3245,10 +3245,10 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
 
         -- sub_obj
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
-        obj_char["hit_VFX_insert_function_argument"] = {obj_char,-10,-680,0.6,0.75,0.75,0}
+        obj_char["hit_VFX_insert_function_argument"] = {obj_char,-20,-690,0.6,0.75,0.75,0}
         obj_char["hit_SFX"] = nil
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,-10,-680,0.75,0.75,0.75,0}
+        obj_char["counter_VFX_insert_function_argument"] = {obj_char,-20,-690,0.75,0.75,0.75,0}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
@@ -3302,6 +3302,9 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
 
         -- draw_correction
         obj_char[8] = 4
+        
+         -- insert_VFX
+        insert_VFX_game_scene_char_TRM_5Launcher(obj_char)
 
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load

@@ -336,6 +336,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 "5P",
                 "cS",
                 -- 2Launcher
+                "5Launcher",
                 "5Launcher_glow"
             }
             for i, v in ipairs(load_name_table) do

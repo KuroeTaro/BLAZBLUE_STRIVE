@@ -81,6 +81,7 @@ local load_whiff_VFX_name_table = {
     "5P",
     "cS",
     -- "2Launcher"
+    "5Launcher",
     "5Launcher_glow"
 }
 for i, v in ipairs(load_whiff_VFX_name_table) do
