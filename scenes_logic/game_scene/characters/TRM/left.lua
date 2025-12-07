@@ -57,6 +57,8 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["air_hurt_animation"] = nil
     obj_char_game_scene_char_LP["air_block_animation"] = nil
     obj_char_game_scene_char_LP["OTG_hurt_animation"] = nil
+    obj_char_game_scene_char_LP["throw_hurt_full_animation"] = nil
+    obj_char_game_scene_char_LP["throw_hurt_PRC_animation"] = nil
 
     obj_char_game_scene_char_LP["self_wallbounce_hurt_animation"] = nil
     obj_char_game_scene_char_LP["self_groundbounce_hurt_animation"] = nil
@@ -703,17 +705,14 @@ function load_game_scene_box_anchor_data_LP()
     obj_anchor_data_game_scene_char_LP["0_general_hurt_lanuched_wallbounce"] = {233, 317}
 
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"] = {}
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][0] = air_pushbox
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][0] = stand_pushbox
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][4] = crouch_pushbox
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][6] = stand_pushbox
     obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"] = {}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][0] = {{0, -145, 285, 450}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][1] = {{0, -100, 285, 390}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][3] = {{0, -190, 270, 380}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][4] = {{0, -182.5, 250, 365}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][6] = {{0, -175, 255, 350}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][7] = {{0, -205, 215, 410}}
-    obj_anchor_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"] = {275, 420}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][0] = {{0, -230, 220, 460}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][1] = {{0, -255, 230, 510}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][3] = {{0, -225, 220, 450}}
+    obj_anchor_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"] = {275, 515}
 
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_rotate"] = {}
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_rotate"][0] = stand_pushbox
@@ -1588,18 +1587,6 @@ function state_gate_game_scene_char_LP_from_hurt(input,obj_char)
             end
         end
         return
-    end
-    -- idle_cancel
-    if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_idle_to_move_hold_ver(input,obj_char) then
-            return true
-        end
-        if obj_char["height_state"] == "crouch" and state_gate_game_scene_char_LP_from_1_2_3_crouch(input,obj_char) then
-            return true
-        end
-        if obj_char["height_state"] == "stand" and state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
-            return true
-        end
     end
     if common_game_scene_get_character_animation_end(obj_char) then
         if obj_char["height_state"] == "stand" then

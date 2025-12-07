@@ -2,75 +2,43 @@
 
 "0":
 {
-	"frame": {"x":0,"y":0,"w":440,"h":520},
+	"frame": {"x":0,"y":0,"w":440,"h":540},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":440,"h":520},
-	"sourceSize": {"w":440,"h":520}
+	"spriteSourceSize": {"x":0,"y":0,"w":440,"h":540},
+	"sourceSize": {"w":440,"h":540}
 },
 "1":
 {
-	"frame": {"x":440,"y":0,"w":440,"h":520},
+	"frame": {"x":440,"y":0,"w":440,"h":540},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":440,"h":520},
-	"sourceSize": {"w":440,"h":520}
+	"spriteSourceSize": {"x":0,"y":0,"w":440,"h":540},
+	"sourceSize": {"w":440,"h":540}
 },
 "2":
 {
-	"frame": {"x":880,"y":0,"w":440,"h":520},
+	"frame": {"x":880,"y":0,"w":440,"h":540},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":440,"h":520},
-	"sourceSize": {"w":440,"h":520}
+	"spriteSourceSize": {"x":0,"y":0,"w":440,"h":540},
+	"sourceSize": {"w":440,"h":540}
 },
 "3":
 {
-	"frame": {"x":1320,"y":0,"w":440,"h":520},
+	"frame": {"x":1320,"y":0,"w":440,"h":540},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":440,"h":520},
-	"sourceSize": {"w":440,"h":520}
-},
-"4":
-{
-	"frame": {"x":0,"y":520,"w":440,"h":520},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":440,"h":520},
-	"sourceSize": {"w":440,"h":520}
-},
-"5":
-{
-	"frame": {"x":440,"y":520,"w":440,"h":520},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":440,"h":520},
-	"sourceSize": {"w":440,"h":520}
-},
-"6":
-{
-	"frame": {"x":880,"y":520,"w":440,"h":520},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":440,"h":520},
-	"sourceSize": {"w":440,"h":520}
-},
-"7":
-{
-	"frame": {"x":1320,"y":520,"w":440,"h":520},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":440,"h":520},
-	"sourceSize": {"w":440,"h":520}
+	"spriteSourceSize": {"x":0,"y":0,"w":440,"h":540},
+	"sourceSize": {"w":440,"h":540}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "TRM_0_general_hurt_semi_lanuched_mid",
 	"format": "RGBA8888",
-	"size": {"w":1760,"h":1040},
+	"size": {"w":1760,"h":540},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:7bdcd599adccf699952f9c11ab30794b:d4657720d1e2e07ca12c08e5430b8275:3ed2dae6b0298ef31a7d170f1553f817$"
+	"smartupdate": "$TexturePacker:SmartUpdate:c9eff518783d7e9c10c0431efde673b8:1040ff09b7a47a5198a2713f0a276459:3ed2dae6b0298ef31a7d170f1553f817$"
 }
 }

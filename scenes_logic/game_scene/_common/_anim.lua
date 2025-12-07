@@ -81,6 +81,7 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
         obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["current_animation_length"] = 94
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = true
         obj_char_other_side["strike_inv_countdown"] = 1000
@@ -256,6 +257,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["current_animation_length"] = 13
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -371,6 +373,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["current_animation_length"] = 15
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -493,6 +496,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["current_animation_length"] = 17
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -622,6 +626,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["current_animation_length"] = 20
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -751,6 +756,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["current_animation_length"] = 22
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -915,6 +921,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["current_animation_length"] = 9
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -1025,6 +1032,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["current_animation_length"] = 11
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -1138,6 +1146,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["current_animation_length"] = 13
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -1252,6 +1261,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["current_animation_length"] = 16
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -1370,6 +1380,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["current_animation_length"] = 18
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -1517,6 +1528,7 @@ function load_game_scene_anim_char_common_0_air_block(
         obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["current_animation_length"] = 31
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -1702,6 +1714,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
         obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
 
         obj_char_other_side["current_animation_length"] = 60
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -1837,6 +1850,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
         obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["current_animation_length"] = 25
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -1966,6 +1980,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
         obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["current_animation_length"] = 25
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -2095,6 +2110,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
         obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["current_animation_length"] = 25
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -2230,6 +2246,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["current_animation_length"] = 85
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -2382,6 +2399,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
         obj_char_other_side["current_animation_length"] = 30
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -2508,6 +2526,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
         obj_char_other_side["current_animation_length"] = 30
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -2634,6 +2653,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
         obj_char_other_side["current_animation_length"] = 25
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = true
         obj_char_other_side["strike_inv_countdown"] = 25
@@ -2740,6 +2760,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
         obj_char_other_side["current_animation_length"] = 30
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -2882,6 +2903,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
         obj_char_other_side["move_state"] = "none" -- none startup active recovery
 
         obj_char_other_side["current_animation_length"] = 10
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = true
         obj_char_other_side["strike_inv_countdown"] = 25
@@ -3147,6 +3169,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_float(
         obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
 
         obj_char_other_side["current_animation_length"] = 45
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -3405,6 +3428,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_high(
         obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
 
         obj_char_other_side["current_animation_length"] = 34
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -3619,6 +3643,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_low(
         obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
 
         obj_char_other_side["current_animation_length"] = 13
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -3760,6 +3785,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_mid_hori_heavy
         obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
 
         obj_char_other_side["current_animation_length"] = 10
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -3902,6 +3928,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_mid_up(
         obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
 
         obj_char_other_side["current_animation_length"] = 25
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -4069,6 +4096,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_rolling(
         obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
 
         obj_char_other_side["current_animation_length"] = 25
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -4206,6 +4234,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_rotate(
         obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
 
         obj_char_other_side["current_animation_length"] = 16
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -4325,6 +4354,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_wallbounce(
         obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["current_animation_length"] = 16
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -4486,6 +4516,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_groundbounce(
         obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["current_animation_length"] = 22
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -4614,12 +4645,6 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
 
-    for i = 0,28 do
-        res[i] = function()
-            obj_char_other_side["y"] = 180 + 0.736*i^2 - 14.732*i
-        end
-    end
-
     res[0] = function()
         -- state
         obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
@@ -4631,7 +4656,8 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["current_animation_length"] = 38
+        obj_char_other_side["current_animation_length"] = 28
+        obj_char_other_side["idle_cancel"] = false -- 取消链
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -4665,8 +4691,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
 
         -- update
-        local i = 0
-        obj_char_other_side["y"] = 180 + 0.736*i^2 - 14.732*i
+        obj_char_other_side["y"] = 365
 
         -- special_update
         frame_0_special_update_function()
@@ -4680,18 +4705,10 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
 
         -- draw_correction
         obj_char_other_side[8] = 1
-
-        -- update
-        local i = 7
-        obj_char_other_side["y"] = 180 + 0.736*i^2 - 14.732*i
     end
     res[14] = function()
         -- draw_correction
         obj_char_other_side[8] = 2
-
-        -- update
-        local i = 14
-        obj_char_other_side["y"] = 180 + 0.736*i^2 - 14.732*i
     end
     res[21] = function()
         -- collide
@@ -4699,50 +4716,15 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
 
         -- draw_correction
         obj_char_other_side[8] = 3
-
-        -- update
-        local i = 21
-        obj_char_other_side["y"] = 180 + 0.736*i^2 - 14.732*i
     end
-    res[28] = function()
-        -- state
-        obj_char_other_side["height_state"] = "crouch"
-        obj_char_other_side["move_state"] = "none" -- none startup active recovery
-
-        -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][4]
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][4]
-
-        -- draw_correction
-        obj_char_other_side[8] = 4
-
-        -- update
-        obj_char_other_side["y"] = 365
-    end
-    res[29] = function()
-        -- draw_correction
-        obj_char_other_side[8] = 5
-    end
-    res[32] = function()
+    res[25] = function()
         -- state
         obj_char_other_side["height_state"] = "stand"
-
-        -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][6]
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][6]
-
-        -- draw_correction
-        obj_char_other_side[8] = 6
+        obj_char_other_side["move_state"] = "none" -- none startup active recovery
+        obj_char_other_side["idle_cancel"] = true -- 取消链
     end
-    res[36] = function()
-        -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][7]
-
-        -- draw_correction
-        obj_char_other_side[8] = 7
-    end
-    res[38] = function()
-        -- animation_end
+    res[28] = function()
+         -- animation_end
     end
     return res
 end
