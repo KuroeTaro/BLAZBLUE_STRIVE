@@ -3127,7 +3127,7 @@ function load_game_scene_anim_char_TRM_46Launcher(obj_char)
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
             obj_char,
             "0_general_hurt_semi_lanuched_mid",
-            "air",
+            "stand",
             "5_stand_idle",
             2,20,1.05,
             0,0,1.05,
@@ -3146,7 +3146,7 @@ function load_game_scene_anim_char_TRM_46Launcher(obj_char)
         obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
             obj_char,
             "0_general_hurt_semi_lanuched_mid",
-            "air",
+            "stand",
             "5_stand_idle",
             2,20,1.05,
             0,0,1.05,
@@ -3440,7 +3440,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
             obj_char,
             "0_general_hurt_semi_lanuched_mid",
-            "air",
+            "stand",
             "5_stand_idle",
             2,20,1.05,
             -20,2,1.05,
@@ -3459,7 +3459,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
             obj_char,
             "0_general_hurt_semi_lanuched_mid",
-            "air",
+            "stand",
             "5_stand_idle",
             2,20,1.05,
             -20,2,1.05,

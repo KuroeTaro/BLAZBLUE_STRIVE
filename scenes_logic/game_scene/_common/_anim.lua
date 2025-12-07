@@ -4700,6 +4700,9 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
         obj_char["frame_adv"] = 0
     end
     res[7] = function()
+        -- state
+        obj_char_other_side["height_state"] = "stand"
+
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
 
@@ -4709,6 +4712,10 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
     res[14] = function()
         -- draw_correction
         obj_char_other_side[8] = 2
+    end
+    res[18] = function()
+        -- state
+        obj_char_other_side["hurt_state"] = "idle"
     end
     res[21] = function()
         -- collide
