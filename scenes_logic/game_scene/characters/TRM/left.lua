@@ -162,6 +162,8 @@ function load_game_scene_obj_char_LP()
     -- special
     obj_char_game_scene_char_LP["oroboros_bite_pos"] = {0,0}
     obj_char_game_scene_char_LP["oroboros_aim_pos"] = {0,0}
+    obj_char_game_scene_char_LP["oroboros_aim_speed"] = 0
+    obj_char_game_scene_char_LP["oroboros_release_shooting_auto_timing_pass"] = false
     
     -- draw_correction
     obj_char_game_scene_char_LP[8] = 0
@@ -705,14 +707,16 @@ function load_game_scene_box_anchor_data_LP()
     obj_anchor_data_game_scene_char_LP["0_general_hurt_lanuched_wallbounce"] = {233, 317}
 
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"] = {}
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][0] = stand_pushbox
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][4] = crouch_pushbox
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][6] = stand_pushbox
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][0] = air_pushbox
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][3] = stand_pushbox
     obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"] = {}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][0] = {{0, -230, 220, 460}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][1] = {{0, -255, 230, 510}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][3] = {{0, -225, 220, 450}}
-    obj_anchor_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"] = {275, 515}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][0] = {{0, -145, 285, 450}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][1] = {{0, -148, 270, 360}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][3] = {{0, -187.5, 290, 375}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][4] = {{0, -190, 210, 380}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][5] = {{0, -207.5, 190, 415}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][6] = {{0, -215, 170, 430},{0, -455, 100, 50}}
+    obj_anchor_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"] = {265, 510}
 
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_rotate"] = {}
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_rotate"][0] = stand_pushbox

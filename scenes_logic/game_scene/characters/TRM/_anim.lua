@@ -3127,10 +3127,10 @@ function load_game_scene_anim_char_TRM_46Launcher(obj_char)
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
             obj_char,
             "0_general_hurt_semi_lanuched_mid",
-            "stand",
+            "air",
             "5_stand_idle",
             2,20,1.05,
-            0,0,1.05,
+            -20,5.6,1.05,
             nil,nil,nil,nil,
             function() end
         )
@@ -3146,10 +3146,10 @@ function load_game_scene_anim_char_TRM_46Launcher(obj_char)
         obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
             obj_char,
             "0_general_hurt_semi_lanuched_mid",
-            "stand",
+            "air",
             "5_stand_idle",
             2,20,1.05,
-            0,0,1.05,
+            -20,5.6,1.05,
             nil,nil,nil,nil,
             function() end
         )
@@ -3440,10 +3440,10 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
             obj_char,
             "0_general_hurt_semi_lanuched_mid",
-            "stand",
+            "air",
             "5_stand_idle",
-            2,20,1.05,
-            -20,2,1.05,
+            5,7,1.05,
+            0,2,1.05,
             nil,nil,nil,nil,
             function() end
         )
@@ -3459,10 +3459,10 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
             obj_char,
             "0_general_hurt_semi_lanuched_mid",
-            "stand",
+            "air",
             "5_stand_idle",
-            2,20,1.05,
-            -20,2,1.05,
+            5,7,1.05,
+            0,2,1.05,
             nil,nil,nil,nil,
             function() end
         )
@@ -3547,7 +3547,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char["damage_correction"] = 1
 
         -- game_speed
-        obj_char["hit_hurt_blockstop_countdown"] = 12
+        obj_char["hit_hurt_blockstop_countdown"] = 16
 
         -- collide
         obj_char["pushbox"] = {0, -185, 121.5, 370}

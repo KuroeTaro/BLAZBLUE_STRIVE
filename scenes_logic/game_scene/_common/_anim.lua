@@ -4488,9 +4488,6 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_groundbounce(
             
             -- draw_correction
             obj_char_other_side[8] = 2
-
-            -- update
-            update_throw_inv()
         end
     end
     for i = 0,22 do
@@ -4691,7 +4688,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
 
         -- update
-        obj_char_other_side["y"] = 365
+        obj_char_other_side["y"] = 100
 
         -- special_update
         frame_0_special_update_function()
@@ -4699,36 +4696,54 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
         -- set_frame_adv
         obj_char["frame_adv"] = 0
     end
-    res[7] = function()
-        -- state
-        obj_char_other_side["height_state"] = "stand"
-
+    res[4] = function()
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
 
         -- draw_correction
         obj_char_other_side[8] = 1
     end
-    res[14] = function()
+    res[8] = function()
         -- draw_correction
         obj_char_other_side[8] = 2
     end
-    res[18] = function()
+    res[11] = function()
         -- state
-        obj_char_other_side["hurt_state"] = "idle"
-    end
-    res[21] = function()
+        obj_char_other_side["height_state"] = "stand"
+
         -- collide
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][3]
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][3]
+
+        -- update
+        obj_char_other_side["y"] = 365
 
         -- draw_correction
         obj_char_other_side[8] = 3
     end
-    res[25] = function()
+    res[14] = function()
+        -- collide
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][4]
+        
+        -- draw_correction
+        obj_char_other_side[8] = 4
+    end
+    res[18] = function()
         -- state
-        obj_char_other_side["height_state"] = "stand"
-        obj_char_other_side["move_state"] = "none" -- none startup active recovery
-        obj_char_other_side["idle_cancel"] = true -- 取消链
+        obj_char_other_side["hurt_state"] = "idle"
+
+        -- collide
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][5]
+        
+        -- draw_correction
+        obj_char_other_side[8] = 5
+    end
+    res[23] = function()
+        -- collide
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][6]
+
+        -- draw_correction
+        obj_char_other_side[8] = 6
     end
     res[28] = function()
          -- animation_end
