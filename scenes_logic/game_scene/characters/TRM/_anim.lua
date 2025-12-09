@@ -2360,6 +2360,9 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char["hit_counter_ver_function"] = common_game_scene_counter_ver1
 
         -- state_number
+        if obj_char["velocity"][1]*obj_char[5] < 0 then
+            obj_char["velocity"][1] = 0
+        end
         obj_char["gravity"] = gravity
         obj_char["friction"] = friction
         obj_char["horizontal_velocity_correction"] = 1
@@ -2623,6 +2626,9 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         obj_char["hit_counter_ver_function"] = common_game_scene_counter_ver2
 
         -- state_number
+        if obj_char["velocity"][1]*obj_char[5] < 0 then
+            obj_char["velocity"][1] = 0
+        end
         obj_char["gravity"] = gravity
         obj_char["friction"] = friction
         obj_char["horizontal_velocity_correction"] = 1
@@ -2664,14 +2670,14 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
     end
     res[4] = function()
         -- state & state_number
-        if not common_game_scene_get_character_facing_currect(obj_char_other_side) then
-            obj_char_other_side[5] = -obj_char_other_side[5]
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
         end
     end
     res[7] = function() 
         -- state & state_number
-        if not common_game_scene_get_character_facing_currect(obj_char_other_side) then
-            obj_char_other_side[5] = -obj_char_other_side[5]
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
         end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true 
@@ -2801,14 +2807,14 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             obj_char,
             "0_general_hurt_lanuched_low",
             "air","knockdown",
-            -4,5,1.05,
+            5,5,1.05,
             -15,1.6,1.05,
             load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
                 obj_char,
                 "0_general_hurt_hard_knockdown_down",
                 "air",
                 "knockdown_recovery",
-                -10,5,1.05,
+                5,5,1.05,
                 -10,2.5,1.05,
                 nil,nil,nil,nil,function() end
             ),
@@ -2838,14 +2844,14 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             obj_char,
             "0_general_hurt_lanuched_low",
             "air","knockdown",
-            -4,5,1.05,
+            5,5,1.05,
             -15,1.6,1.05,
             load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
                 obj_char,
                 "0_general_hurt_hard_knockdown_down",
                 "air",
                 "knockdown_recovery",
-                -10,5,1.05,
+                5,5,1.05,
                 -10,2.5,1.05,
                 nil,nil,nil,nil,function() end
             ),
@@ -2875,7 +2881,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             obj_char,
             "0_general_hurt_lanuched_low",
             "air","knockdown_recovery",
-            -4,5,1.05,
+            5,5,1.05,
             -15,1.6,1.05,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
@@ -2903,7 +2909,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             obj_char,
             "0_general_hurt_lanuched_low",
             "air","knockdown_recovery",
-            -4,5,1.05,
+            5,5,1.05,
             0,2.5,1.05,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
@@ -2938,6 +2944,9 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         obj_char["hit_counter_ver_function"] = common_game_scene_counter_ver3
 
         -- state_number
+        if obj_char["velocity"][1]*obj_char[5] < 0 then
+            obj_char["velocity"][1] = 0
+        end
         obj_char["gravity"] = gravity
         obj_char["friction"] = friction
         obj_char["horizontal_velocity_correction"] = 1
@@ -2979,8 +2988,8 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
     end
     res[5] = function()
         -- state & state_number
-        if not common_game_scene_get_character_facing_currect(obj_char_other_side) then
-            obj_char_other_side[5] = -obj_char_other_side[5]
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
         end
 
         -- draw_correction
@@ -2988,8 +2997,8 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
     end
     res[9] = function() 
         -- state & state_number
-        if not common_game_scene_get_character_facing_currect(obj_char_other_side) then
-            obj_char_other_side[5] = -obj_char_other_side[5]
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
         end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true 
@@ -3227,6 +3236,9 @@ function load_game_scene_anim_char_TRM_46Launcher(obj_char)
         obj_char["hit_counter_ver_function"] = common_game_scene_counter_ver2
 
         -- state_number
+        if obj_char["velocity"][1]*obj_char[5] < 0 then
+            obj_char["velocity"][1] = 0
+        end
         obj_char["gravity"] = gravity
         obj_char["friction"] = friction
         obj_char["horizontal_velocity_correction"] = 1
@@ -3286,8 +3298,8 @@ function load_game_scene_anim_char_TRM_46Launcher(obj_char)
     end
     res[20] = function()
         -- state & state_number
-        if not common_game_scene_get_character_facing_currect(obj_char_other_side) then
-            obj_char_other_side[5] = -obj_char_other_side[5]
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
         end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true 
@@ -3540,6 +3552,9 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char["hit_counter_ver_function"] = common_game_scene_counter_ver2
 
         -- state_number
+        if obj_char["velocity"][1]*obj_char[5] < 0 then
+            obj_char["velocity"][1] = 0
+        end
         obj_char["gravity"] = gravity
         obj_char["friction"] = friction
         obj_char["horizontal_velocity_correction"] = 1
@@ -3599,8 +3614,8 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
     end
     res[20] = function()
         -- state & state_number
-        if not common_game_scene_get_character_facing_currect(obj_char_other_side) then
-            obj_char_other_side[5] = -obj_char_other_side[5]
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
         end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true 
