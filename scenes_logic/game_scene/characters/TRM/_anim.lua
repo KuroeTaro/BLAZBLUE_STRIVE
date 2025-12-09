@@ -2982,11 +2982,11 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
     end
-    res[2] = function()
+    res[1] = function()
         -- draw_correction
         obj_char[8] = 1
     end
-    res[5] = function()
+    res[4] = function()
         -- state & state_number
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
@@ -3029,13 +3029,10 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         -- collide
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -150, 200, 300},{145,-110,90,220}}
-
+    end
+    res[15] = function() 
         -- draw_correction
         obj_char[8] = 4
-    end
-    res[16] = function() 
-        -- draw_correction
-        obj_char[8] = 5
 
         -- collide
         obj_char["hurtbox_table"] = {{0, -150, 200, 300},{120,-115,40,230}}
@@ -3044,22 +3041,22 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         -- collide
         obj_char["hurtbox_table"] = {{0, -150, 200, 300}}
     end
-    res[20] = function()
+    res[19] = function()
+        -- draw_correction
+        obj_char[8] = 5
+    end
+    res[23] = function()
         -- draw_correction
         obj_char[8] = 6
-    end
-    res[24] = function()
-        -- draw_correction
-        obj_char[8] = 7
     end
     res[26] = function()
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
         init_input_sys_cache(obj_char)
     end
-    res[28] = function()
+    res[27] = function()
         -- draw_correction
-        obj_char[8] = 8
+        obj_char[8] = 7
     end
     res[31] = function()
         -- state
@@ -3088,8 +3085,11 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -150, 200, 300}}
         obj_char["collision_test_ground_height_offset"] = 0
+
+        -- draw_correction
+        obj_char[8] = 8
     end
-    res[32] = function()
+    res[34] = function()
         -- draw_correction
         obj_char[8] = 9
     end
