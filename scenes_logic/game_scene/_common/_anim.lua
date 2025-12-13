@@ -92,6 +92,9 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
         obj_char_other_side["burst_inv"] = true
         obj_char_other_side["burst_inv_countdown"] = 1000
 
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
+
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
         obj_char_other_side["velocity"] = {0,0}
@@ -268,6 +271,9 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
 
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
+
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
         common_game_scene_char_apply_hurt_velocity(
@@ -383,6 +389,9 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
+
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
 
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
@@ -506,6 +515,9 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
+
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
 
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
@@ -637,6 +649,9 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
 
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
+
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
         common_game_scene_char_apply_hurt_velocity(
@@ -766,6 +781,9 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
+
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
 
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
@@ -932,6 +950,9 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
 
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
+
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
@@ -1042,6 +1063,9 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
+
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
 
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
@@ -1157,6 +1181,9 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
 
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
+
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
@@ -1271,6 +1298,9 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
+
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
 
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
@@ -1390,6 +1420,9 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
+
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
 
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
@@ -1539,6 +1572,9 @@ function load_game_scene_anim_char_common_0_air_block(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
 
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
+
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
@@ -1640,6 +1676,46 @@ function load_game_scene_anim_char_common_0_air_block(
     return res
 end
 
+-- teching&teched
+function load_game_scene_anim_char_common_0_Launcher_teching(
+    obj_char,
+    sprite_sheet_state,
+    height_state,
+    state_cache,
+    hurt_horizontal_velocity,
+    hurt_horizontal_friction,
+    hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,
+    hurt_vertical_gravity,
+    hurt_vertical_gravity_correction,
+    self_knockdown_animation,
+    self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,
+    self_groundbounce_hurt_animation,
+    frame_0_special_update_function
+)
+
+end
+function load_game_scene_anim_char_common_0_Launcher_teched(
+    obj_char,
+    sprite_sheet_state,
+    height_state,
+    state_cache,
+    hurt_horizontal_velocity,
+    hurt_horizontal_friction,
+    hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,
+    hurt_vertical_gravity,
+    hurt_vertical_gravity_correction,
+    self_knockdown_animation,
+    self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,
+    self_groundbounce_hurt_animation,
+    frame_0_special_update_function
+)
+
+end
+
 -- hurt_soft_knockdown_wallstick_air
     -- 需要修改的角色属性
         -- 打击方
@@ -1724,6 +1800,9 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
+
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
 
         -- state_number
         if not common_game_scene_get_character_facing_currect(obj_char_other_side) then
@@ -1988,8 +2067,9 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
         obj_char_other_side["throw_inv_countdown"] = 30
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
+
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
 
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
@@ -2962,7 +3042,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
     return res
 end
 
--- hurt_lanuched
+-- hurt_launched
     -- 需要修改的角色属性
         -- 打击方
             -- velocity
@@ -3000,7 +3080,7 @@ end
             -- 8
             -- anchor_pos
             ------
-function load_game_scene_anim_char_common_0_general_hurt_lanuched_float(
+function load_game_scene_anim_char_common_0_general_hurt_launched_float(
     obj_char,
     sprite_sheet_state,
     height_state,
@@ -3179,6 +3259,9 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_float(
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
+
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
 
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
@@ -3375,7 +3458,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_float(
 
     return res
 end
-function load_game_scene_anim_char_common_0_general_hurt_lanuched_high(
+function load_game_scene_anim_char_common_0_general_hurt_launched_high(
     obj_char,
     sprite_sheet_state,
     height_state,
@@ -3438,6 +3521,9 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_high(
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
+
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
 
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
@@ -3590,7 +3676,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_high(
 
     return res
 end
-function load_game_scene_anim_char_common_0_general_hurt_lanuched_low(
+function load_game_scene_anim_char_common_0_general_hurt_launched_low(
     obj_char,
     sprite_sheet_state,
     height_state,
@@ -3653,6 +3739,9 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_low(
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
+
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
 
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
@@ -3732,7 +3821,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_low(
 
     return res
 end
-function load_game_scene_anim_char_common_0_general_hurt_lanuched_mid_hori_heavy(
+function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy(
     obj_char,
     sprite_sheet_state,
     height_state,
@@ -3795,6 +3884,9 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_mid_hori_heavy
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
+
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
 
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
@@ -3865,7 +3957,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_mid_hori_heavy
 
     return res
 end
-function load_game_scene_anim_char_common_0_general_hurt_lanuched_mid_up(
+function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
     obj_char,
     sprite_sheet_state,
     height_state,
@@ -3938,6 +4030,9 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_mid_up(
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
+
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
 
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
@@ -4046,7 +4141,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_mid_up(
 
     return res
 end
-function load_game_scene_anim_char_common_0_general_hurt_lanuched_rolling(
+function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
     obj_char,
     sprite_sheet_state,
     height_state,
@@ -4106,6 +4201,9 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_rolling(
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
+
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
 
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
@@ -4182,7 +4280,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_rolling(
 
     return res
 end
-function load_game_scene_anim_char_common_0_general_hurt_lanuched_rotate(
+function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
     obj_char,
     sprite_sheet_state,
     height_state,
@@ -4244,6 +4342,9 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_rotate(
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
+
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
 
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
@@ -4308,7 +4409,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_rotate(
 
     return res
 end
-function load_game_scene_anim_char_common_0_general_hurt_lanuched_wallbounce(
+function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
     obj_char,
     sprite_sheet_state,
     height_state,
@@ -4364,6 +4465,9 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_wallbounce(
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
+
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
 
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
@@ -4451,7 +4555,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_wallbounce(
 
     return res
 end
-function load_game_scene_anim_char_common_0_general_hurt_lanuched_groundbounce(
+function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
     obj_char,
     sprite_sheet_state,
     height_state,
@@ -4523,6 +4627,9 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_groundbounce(
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
+
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
 
         -- state_number
         obj_char_other_side[5] = -obj_char[5]
@@ -4616,8 +4723,8 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_groundbounce(
     return res
 end
 
--- semi_lanuched
-function load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
+-- semi_launched
+function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
     obj_char,
     sprite_sheet_state,
     height_state,
@@ -4664,6 +4771,9 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_lanuched_mid(
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
+
+        obj_char_other_side["overdrive_disabling"] = false
+        obj_char_other_side["overdrive_disabling_countdown"] = 0
 
         -- state_number
         obj_char_other_side[5] = -obj_char[5]

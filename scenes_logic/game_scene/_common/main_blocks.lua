@@ -428,11 +428,15 @@ function update_game_scene_main_training()
 
             for i = 1,#char_LP["projectile_table"] do
                 local current_projectile = char_LP["projectile_table"][i]
-                current_projectile["interact_function"]()
+                if current_projectile["interact_function"] then
+                    current_projectile["interact_function"]()
+                end
             end
             for i = 1,#char_RP["projectile_table"] do
                 local current_projectile = char_RP["projectile_table"][i]
-                current_projectile["interact_function"]()
+                if current_projectile["interact_function"] then
+                    current_projectile["interact_function"]()
+                end
             end
 
             -- 更新阻力

@@ -43,7 +43,7 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "TRM_0_general_hurt_lanuched_wallbounce",
+	"image": "TRM_0_general_hurt_launched_wallbounce",
 	"format": "RGBA8888",
 	"size": {"w":2400,"h":500},
 	"scale": "1",

@@ -124,7 +124,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../_character/UNIVERSAL/TRM_0_general_hurt_lanuched_float.json</filename>
+                <filename>../../_character/UNIVERSAL/TRM_0_general_hurt_launched_float.json</filename>
             </struct>
         </map>
         <key>multiPackMode</key>
@@ -173,19 +173,19 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_lanuched_float/0.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_lanuched_float/1.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_lanuched_float/10.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_lanuched_float/11.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_lanuched_float/12.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_lanuched_float/2.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_lanuched_float/3.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_lanuched_float/4.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_lanuched_float/5.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_lanuched_float/6.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_lanuched_float/7.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_lanuched_float/8.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_lanuched_float/9.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_launched_float/0.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_launched_float/1.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_launched_float/10.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_launched_float/11.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_launched_float/12.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_launched_float/2.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_launched_float/3.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_launched_float/4.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_launched_float/5.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_launched_float/6.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_launched_float/7.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_launched_float/8.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_launched_float/9.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -207,7 +207,7 @@
             <struct type="SpriteSheet">
                 <key>files</key>
                 <array>
-                    <filename>../../UNIVERSAL_IMG/0_general_hurt_lanuched_float</filename>
+                    <filename>../../UNIVERSAL_IMG/0_general_hurt_launched_float</filename>
                 </array>
             </struct>
         </map>

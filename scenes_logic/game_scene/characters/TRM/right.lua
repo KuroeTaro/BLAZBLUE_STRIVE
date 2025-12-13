@@ -57,7 +57,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["air_hurt_animation"] = nil
     obj_char_game_scene_char_RP["air_block_animation"] = nil
     obj_char_game_scene_char_RP["OTG_hurt_animation"] = nil
-    obj_char_game_scene_char_RP["throw_hurt_full_animation"] = nil
+    obj_char_game_scene_char_RP["throw_hurt_success_animation"] = nil
     obj_char_game_scene_char_RP["throw_hurt_PRC_animation"] = nil
 
     obj_char_game_scene_char_RP["self_wallbounce_hurt_animation"] = nil
@@ -109,8 +109,6 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["overdrive_gauge"] = {600.0, 600.0, "off"} -- 0.0 - 600.0
     obj_char_game_scene_char_RP["overdrive_timer"] = {0,0,0,0} -- 0f 00:00 
     obj_char_game_scene_char_RP["overdrive_drain_speed"] = 24
-    obj_char_game_scene_char_RP["overdrive_disabling"] = false
-    obj_char_game_scene_char_RP["overdrive_disabling_countdown"] = 0
     obj_char_game_scene_char_RP["risk_gauge"] = {0.0, 300.0}-- 0.0 - 300.0
     obj_char_game_scene_char_RP["wallbreak_gauge"] = {0.0, 300.0, false}-- 0.0 - 300.0
 
@@ -118,6 +116,8 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["heat_penalty_countdown"] = 0
     obj_char_game_scene_char_RP["ability_recover_pause"] = false
     obj_char_game_scene_char_RP["ability_recover_pause_countdown"] = 0
+    obj_char_game_scene_char_RP["overdrive_disabling"] = false
+    obj_char_game_scene_char_RP["overdrive_disabling_countdown"] = 0
     obj_char_game_scene_char_RP["positive_bonus"] = false
     obj_char_game_scene_char_RP["positive_bonus_countdown"] = 0
 
@@ -218,15 +218,15 @@ function order_load_game_scene_char_RP_frames(load_order)
                 "0_general_hurt_hard_recovery_down",
                 "0_general_hurt_hard_recovery_up",
                 "0_general_hurt_hard_recovery_wallstick_ground",
-                "0_general_hurt_lanuched_float",
-                "0_general_hurt_lanuched_groundbounce",
-                "0_general_hurt_lanuched_high",
-                "0_general_hurt_lanuched_low",
-                "0_general_hurt_lanuched_mid_hori_heavy",
-                "0_general_hurt_lanuched_mid_up",
-                "0_general_hurt_lanuched_rolling",
-                "0_general_hurt_lanuched_rotate",
-                "0_general_hurt_lanuched_wallbounce"
+                "0_general_hurt_launched_float",
+                "0_general_hurt_launched_groundbounce",
+                "0_general_hurt_launched_high",
+                "0_general_hurt_launched_low",
+                "0_general_hurt_launched_mid_hori_heavy",
+                "0_general_hurt_launched_mid_up",
+                "0_general_hurt_launched_rolling",
+                "0_general_hurt_launched_rotate",
+                "0_general_hurt_launched_wallbounce"
             }
             for i, v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] = 
@@ -238,11 +238,13 @@ function order_load_game_scene_char_RP_frames(load_order)
         end,
         [2] = function()
             local load_name_table = {
-                "0_general_hurt_semi_lanuched_mid",
-                "0_general_hurt_semi_lanuched_rotate",
+                "0_general_hurt_semi_launched_mid",
+                "0_general_hurt_semi_launched_rotate",
                 "0_general_hurt_soft_knockdown_wallstick_air",
                 "0_general_hurt_soft_recovery_ground",
                 "0_general_hurt_soft_recovery_wallstick_air",
+                "0_Launcher_teched",
+                "0_Launcher_teching",
                 "0_stand_hurt_high",
                 "0_stand_hurt_low",
                 "0_stand_hurt_mid",
@@ -300,6 +302,8 @@ function order_load_game_scene_char_RP_frames(load_order)
                 "5P",
                 "cS",
                 "2Launcher",
+                "4_6Launcher",
+                "4_6Launcher_success",
                 "5Launcher",
             }
             for i, v in ipairs(load_name_table) do
@@ -625,110 +629,110 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_soft_recovery_wallstick_air"][0] = {}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_soft_recovery_wallstick_air"] = {340, 410}
 
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_lanuched_float"] = {}
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_lanuched_float"][0] = air_pushbox
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_float"] = {}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_float"][0] = {{0, -60, 320, 420}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_float"][1] = {{0, -60, 280, 360}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_float"][3] = {{0, -60, 300, 330}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_float"][5] = {{0, -60, 310, 300}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_float"][7] = {{0, -60, 350, 290}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_float"][9] = {{0, -60, 410, 280}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_float"][11] = {{0, -60, 410, 300}}
-    obj_anchor_data_game_scene_char_RP["0_general_hurt_lanuched_float"] = {269, 275}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_float"] = {}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_float"][0] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_float"] = {}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_float"][0] = {{0, -60, 320, 420}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_float"][1] = {{0, -60, 280, 360}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_float"][3] = {{0, -60, 300, 330}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_float"][5] = {{0, -60, 310, 300}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_float"][7] = {{0, -60, 350, 290}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_float"][9] = {{0, -60, 410, 280}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_float"][11] = {{0, -60, 410, 300}}
+    obj_anchor_data_game_scene_char_RP["0_general_hurt_launched_float"] = {269, 275}
 
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_lanuched_groundbounce"] = {}
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_lanuched_groundbounce"][0] = air_pushbox
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_groundbounce"] = {}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_groundbounce"][0] = {{0, -75, 440, 300}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_groundbounce"][2] = {{0, -80, 470, 290}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_groundbounce"][3] = {{0, -130, 430, 290}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_groundbounce"][4] = {{0, -135, 400, 290}}
-    obj_anchor_data_game_scene_char_RP["0_general_hurt_lanuched_groundbounce"] = {270, 290}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_groundbounce"] = {}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_groundbounce"][0] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_groundbounce"] = {}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_groundbounce"][0] = {{0, -75, 440, 300}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_groundbounce"][2] = {{0, -80, 470, 290}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_groundbounce"][3] = {{0, -130, 430, 290}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_groundbounce"][4] = {{0, -135, 400, 290}}
+    obj_anchor_data_game_scene_char_RP["0_general_hurt_launched_groundbounce"] = {270, 290}
 
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_lanuched_high"] = {}
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_lanuched_high"][0] = air_pushbox
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_high"] = {}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_high"][0] = {{0, -60, 320, 420}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_high"][1] = {{0, -60, 400, 330}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_high"][3] = {{0, -60, 426, 310}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_high"][5] = {{0, -75, 440, 300}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_high"][7] = {{0, -80, 470, 290}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_high"][8] = {{0, -130, 430, 290}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_high"][9] = {{0, -135, 400, 290}}
-    obj_anchor_data_game_scene_char_RP["0_general_hurt_lanuched_high"] = {270, 290}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_high"] = {}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_high"][0] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_high"] = {}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_high"][0] = {{0, -60, 320, 420}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_high"][1] = {{0, -60, 400, 330}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_high"][3] = {{0, -60, 426, 310}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_high"][5] = {{0, -75, 440, 300}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_high"][7] = {{0, -80, 470, 290}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_high"][8] = {{0, -130, 430, 290}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_high"][9] = {{0, -135, 400, 290}}
+    obj_anchor_data_game_scene_char_RP["0_general_hurt_launched_high"] = {270, 290}
 
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_lanuched_low"] = {}
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_lanuched_low"][0] = air_pushbox
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_low"] = {}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_low"][0] = {{0, -96, 330, 360}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_low"][1] = {{0, -107, 375, 320}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_low"][2] = {{0, -110, 460, 220}}
-    obj_anchor_data_game_scene_char_RP["0_general_hurt_lanuched_low"] = {300, 330}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_low"] = {}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_low"][0] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_low"] = {}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_low"][0] = {{0, -96, 330, 360}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_low"][1] = {{0, -107, 375, 320}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_low"][2] = {{0, -110, 460, 220}}
+    obj_anchor_data_game_scene_char_RP["0_general_hurt_launched_low"] = {300, 330}
 
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_lanuched_mid_hori_heavy"] = {}
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_lanuched_mid_hori_heavy"][0] = air_pushbox
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_mid_hori_heavy"] = {}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_mid_hori_heavy"][0] = {{0, -106, 260, 350}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_mid_hori_heavy"][1] = {{0, -100, 355, 261}}
-    obj_anchor_data_game_scene_char_RP["0_general_hurt_lanuched_mid_hori_heavy"] = {186, 286}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_hori_heavy"] = {}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_hori_heavy"][0] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_hori_heavy"] = {}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_hori_heavy"][0] = {{0, -106, 260, 350}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_hori_heavy"][1] = {{0, -100, 355, 261}}
+    obj_anchor_data_game_scene_char_RP["0_general_hurt_launched_mid_hori_heavy"] = {186, 286}
 
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_lanuched_mid_up"] = {}
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_lanuched_mid_up"][0] = air_pushbox
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_mid_up"] = {}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_mid_up"][0] = {{-12, -215, 320, 420}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_mid_up"][1] = {{-12, -255, 240, 500}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_mid_up"][3] = {{-12, -230, 280, 460}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_mid_up"][4] = {{-12, -205, 340, 420}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_mid_up"][5] = {{-12, -195, 340, 400}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_mid_up"][6] = {{-12, -220, 335, 350}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_mid_up"][7] = {{-12, -265, 240, 550}}
-    obj_anchor_data_game_scene_char_RP["0_general_hurt_lanuched_mid_up"] = {282, 550}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_up"] = {}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_up"][0] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_up"] = {}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_up"][0] = {{-12, -215, 320, 420}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_up"][1] = {{-12, -255, 240, 500}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_up"][3] = {{-12, -230, 280, 460}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_up"][4] = {{-12, -205, 340, 420}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_up"][5] = {{-12, -195, 340, 400}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_up"][6] = {{-12, -220, 335, 350}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_up"][7] = {{-12, -265, 240, 550}}
+    obj_anchor_data_game_scene_char_RP["0_general_hurt_launched_mid_up"] = {282, 550}
 
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_lanuched_rolling"] = {}
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_lanuched_rolling"][0] = air_pushbox
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_rolling"] = {}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_rolling"][0] = {{0, -50, 370, 380}}
-    obj_anchor_data_game_scene_char_RP["0_general_hurt_lanuched_rolling"] = {215, 265}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_rolling"] = {}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_rolling"][0] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_rolling"] = {}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_rolling"][0] = {{0, -50, 370, 380}}
+    obj_anchor_data_game_scene_char_RP["0_general_hurt_launched_rolling"] = {215, 265}
 
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_lanuched_rotate"] = {}
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_lanuched_rotate"][0] = air_pushbox
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_rotate"] = {}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_rotate"][0] = {{0, -74, 400, 390}}
-    obj_anchor_data_game_scene_char_RP["0_general_hurt_lanuched_rotate"] = {225, 290}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_rotate"] = {}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_rotate"][0] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_rotate"] = {}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_rotate"][0] = {{0, -74, 400, 390}}
+    obj_anchor_data_game_scene_char_RP["0_general_hurt_launched_rotate"] = {225, 290}
 
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_lanuched_wallbounce"] = {}
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_lanuched_wallbounce"][0] = air_pushbox
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_wallbounce"] = {}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_wallbounce"][0] = {{0, -68, 270, 350}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_wallbounce"][1] = {{0, -68, 250, 480}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_wallbounce"][2] = {{0, -68, 330, 450}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_lanuched_wallbounce"][3] = {{0, -68, 374, 380}}
-    obj_anchor_data_game_scene_char_RP["0_general_hurt_lanuched_wallbounce"] = {233, 317}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_wallbounce"] = {}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_wallbounce"][0] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_wallbounce"] = {}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_wallbounce"][0] = {{0, -68, 270, 350}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_wallbounce"][1] = {{0, -68, 250, 480}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_wallbounce"][2] = {{0, -68, 330, 450}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_wallbounce"][3] = {{0, -68, 374, 380}}
+    obj_anchor_data_game_scene_char_RP["0_general_hurt_launched_wallbounce"] = {233, 317}
 
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_semi_lanuched_mid"] = {}
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_semi_lanuched_mid"][0] = air_pushbox
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_semi_lanuched_mid"][3] = stand_pushbox
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_lanuched_mid"] = {}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_lanuched_mid"][0] = {{0, -145, 285, 450}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_lanuched_mid"][1] = {{0, -148, 270, 360}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_lanuched_mid"][3] = {{0, -187.5, 290, 375}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_lanuched_mid"][4] = {{0, -190, 210, 380}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_lanuched_mid"][5] = {{0, -207.5, 190, 415}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_lanuched_mid"][6] = {{0, -215, 170, 430},{0, -455, 100, 50}}
-    obj_anchor_data_game_scene_char_RP["0_general_hurt_semi_lanuched_mid"] = {265, 510}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"] = {}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"][0] = air_pushbox
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"][3] = stand_pushbox
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"] = {}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"][0] = {{0, -145, 285, 450}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"][1] = {{0, -148, 270, 360}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"][3] = {{0, -187.5, 290, 375}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"][4] = {{0, -190, 210, 380}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"][5] = {{0, -207.5, 190, 415}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"][6] = {{0, -215, 170, 430},{0, -455, 100, 50}}
+    obj_anchor_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"] = {265, 510}
 
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_semi_lanuched_rotate"] = {}
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_semi_lanuched_rotate"][0] = stand_pushbox
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_semi_lanuched_rotate"][12] = OTG_pushbox
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_lanuched_rotate"] = {}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_lanuched_rotate"][0] = {{0, -225, 220, 450}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_lanuched_rotate"][1] = {{0, -240, 220, 480}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_lanuched_rotate"][2] = {{0, -252.5, 220, 505}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_lanuched_rotate"][10] = {{0, -230, 270, 460}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_lanuched_rotate"][11] = {{0, -190, 350, 380}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_lanuched_rotate"][12] = {{0, -150, 380, 300}}
-    obj_anchor_data_game_scene_char_RP["0_general_hurt_semi_lanuched_rotate"] = {255, 525}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_rotate"] = {}
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_rotate"][0] = stand_pushbox
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_rotate"][12] = OTG_pushbox
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_rotate"] = {}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_rotate"][0] = {{0, -225, 220, 450}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_rotate"][1] = {{0, -240, 220, 480}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_rotate"][2] = {{0, -252.5, 220, 505}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_rotate"][10] = {{0, -230, 270, 460}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_rotate"][11] = {{0, -190, 350, 380}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_rotate"][12] = {{0, -150, 380, 300}}
+    obj_anchor_data_game_scene_char_RP["0_general_hurt_semi_launched_rotate"] = {255, 525}
 end
 function load_game_scene_audio_char_RP()
     audio_SFX_game_scene_RP = {}
@@ -788,6 +792,16 @@ function state_machine_char_game_scene_char_RP()
             state_machine_char_game_scene_char_RP_input_sys_cache()
             character_animator(obj_char,obj_char["current_animation"])
             state_gate_game_scene_char_RP_from_hurt(input,obj_char)
+        end,
+        ["throw_success"] = function()
+        end,
+        ["throw_testing"] = function()
+        end,
+        ["throw_tested"] = function()
+        end,
+        ["throw_teching"] = function()
+        end,
+        ["throw_teched"] = function()
         end,
 
         ["hitstop"] = function()
@@ -992,10 +1006,10 @@ function state_machine_char_game_scene_char_RP()
             character_animator(obj_char,obj_char["current_animation"])
             state_gate_game_scene_char_RP_from_2Launcher(input,obj_char)
         end,
-        ["46Launcher"] = function()
+        ["4_6Launcher"] = function()
             state_machine_char_game_scene_char_RP_input_sys_cache()
             character_animator(obj_char,obj_char["current_animation"])
-            state_gate_game_scene_char_RP_from_46Launcher(input,obj_char)
+            state_gate_game_scene_char_RP_from_4_6Launcher(input,obj_char)
         end,
         ["5Launcher"] = function()
             state_machine_char_game_scene_char_RP_input_sys_cache()
@@ -1033,10 +1047,10 @@ function state_machine_char_game_scene_char_RP()
             character_animator(obj_char,obj_char["current_animation"])
             state_gate_game_scene_char_RP_from_j2S(input,obj_char)
         end,
-        ["j46Launcher"] = function()
+        ["j4_6Launcher"] = function()
             state_machine_char_game_scene_char_RP_input_sys_cache()
             character_animator(obj_char,obj_char["current_animation"])
-            state_gate_game_scene_char_RP_from_j46Launcher(input,obj_char)
+            state_gate_game_scene_char_RP_from_j4_6Launcher(input,obj_char)
         end,
         ["j5Launcher"] = function()
             state_machine_char_game_scene_char_RP_input_sys_cache()
@@ -1374,7 +1388,7 @@ function state_gate_game_scene_char_RP_common_ground_idle_to_move(input,obj_char
         obj_char["state"] = "2Launcher"
         return true
     end
-    -- _46Launcher
+    -- _4_6Launcher
     -- _5Launcher
     if test_input_sys_press(input["Launcher"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
@@ -1417,7 +1431,7 @@ function state_gate_game_scene_char_RP_common_air_idle_to_move(input,obj_char)
     -- _j2K
     -- _jS
     -- _j2S
-    -- _j46Launcher
+    -- _j4_6Launcher
     -- _j5Launcher
     -- _4dash_air_backdash
     if obj_char["y"] < 120 and (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 1)
@@ -1516,7 +1530,7 @@ function state_gate_game_scene_char_RP_common_ground_idle_to_move_hold_ver(input
         obj_char["state"] = "2Launcher"
         return true
     end
-    -- _46Launcher
+    -- _4_6Launcher
     -- _5Launcher
     if test_input_sys_press_or_hold(input["Launcher"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
@@ -2546,7 +2560,7 @@ function state_gate_game_scene_char_RP_from_2Launcher(input,obj_char)
         return true
     end
 end
-function state_gate_game_scene_char_RP_from_46Launcher(input,obj_char)
+function state_gate_game_scene_char_RP_from_4_6Launcher(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_5Launcher(input,obj_char)
     -- idle_cancel
@@ -2579,7 +2593,7 @@ function state_gate_game_scene_char_RP_from_jS(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_j2S(input,obj_char)
 end
-function state_gate_game_scene_char_RP_from_j46Launcher(input,obj_char)
+function state_gate_game_scene_char_RP_from_j4_6Launcher(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_j5Launcher(input,obj_char)
 end

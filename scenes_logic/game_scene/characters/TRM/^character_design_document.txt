@@ -17,8 +17,8 @@ js								jc
 js								j5drive
 j2s								j5drive(modify)
 jdust/Launcher					623b(od hit5)
-46dust/Launcher					tm311_00 tm602_09
-j46dust/Launcher				jbc
+4_6dust/Launcher					tm311_00 tm602_09
+j4_6dust/Launcher				jbc
 AtTheReady						oroboros				    	H
 AtTheReady 236s					tm610							6sp_S
 Fire							oroboros				    	AtTheReady_]H[/SteadyAim_]H[

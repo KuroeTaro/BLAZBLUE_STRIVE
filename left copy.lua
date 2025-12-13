@@ -213,15 +213,15 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "0_general_hurt_hard_recovery_down",
                 "0_general_hurt_hard_recovery_up",
                 "0_general_hurt_hard_recovery_wallstick_ground",
-                "0_general_hurt_lanuched_float",
-                "0_general_hurt_lanuched_groundbounce",
-                "0_general_hurt_lanuched_high",
-                "0_general_hurt_lanuched_low",
-                "0_general_hurt_lanuched_mid_hori_heavy",
-                "0_general_hurt_lanuched_mid_up",
-                "0_general_hurt_lanuched_rolling",
-                "0_general_hurt_lanuched_rotate",
-                "0_general_hurt_lanuched_wallbounce"
+                "0_general_hurt_launched_float",
+                "0_general_hurt_launched_groundbounce",
+                "0_general_hurt_launched_high",
+                "0_general_hurt_launched_low",
+                "0_general_hurt_launched_mid_hori_heavy",
+                "0_general_hurt_launched_mid_up",
+                "0_general_hurt_launched_rolling",
+                "0_general_hurt_launched_rotate",
+                "0_general_hurt_launched_wallbounce"
             }
             for i, v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_LP[v] = 
@@ -234,8 +234,8 @@ function order_load_game_scene_char_LP_frames(load_order)
         end,
         [2] = function()
             local load_name_table = {
-                "0_general_hurt_semi_lanuched_mid",
-                "0_general_hurt_semi_lanuched_rotate",
+                "0_general_hurt_semi_launched_mid",
+                "0_general_hurt_semi_launched_rotate",
                 "0_general_hurt_soft_knockdown_wallstick_air",
                 "0_general_hurt_soft_recovery_ground",
                 "0_general_hurt_soft_recovery_wallstick_air",
@@ -605,111 +605,111 @@ function load_game_scene_box_anchor_data_LP()
     obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_soft_recovery_wallstick_air"][0] = {}
     obj_anchor_data_game_scene_char_LP["0_general_hurt_soft_recovery_wallstick_air"] = {340, 410}
 
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_lanuched_float"] = {}
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_lanuched_float"][0] = air_pushbox
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_float"] = {}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_float"][0] = {{0, -60, 320, 420}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_float"][1] = {{0, -60, 280, 360}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_float"][3] = {{0, -60, 300, 330}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_float"][5] = {{0, -60, 310, 300}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_float"][7] = {{0, -60, 350, 290}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_float"][9] = {{0, -60, 410, 280}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_float"][11] = {{0, -60, 410, 300}}
-    obj_anchor_data_game_scene_char_LP["0_general_hurt_lanuched_float"] = {269, 275}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_launched_float"] = {}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_launched_float"][0] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_float"] = {}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_float"][0] = {{0, -60, 320, 420}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_float"][1] = {{0, -60, 280, 360}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_float"][3] = {{0, -60, 300, 330}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_float"][5] = {{0, -60, 310, 300}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_float"][7] = {{0, -60, 350, 290}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_float"][9] = {{0, -60, 410, 280}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_float"][11] = {{0, -60, 410, 300}}
+    obj_anchor_data_game_scene_char_LP["0_general_hurt_launched_float"] = {269, 275}
 
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_lanuched_groundbounce"] = {}
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_lanuched_groundbounce"][0] = air_pushbox
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_groundbounce"] = {}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_groundbounce"][0] = {{0, -75, 440, 300}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_groundbounce"][2] = {{0, -80, 470, 290}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_groundbounce"][3] = {{0, -130, 430, 290}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_groundbounce"][4] = {{0, -135, 400, 290}}
-    obj_anchor_data_game_scene_char_LP["0_general_hurt_lanuched_groundbounce"] = {270, 290}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_launched_groundbounce"] = {}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_launched_groundbounce"][0] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_groundbounce"] = {}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_groundbounce"][0] = {{0, -75, 440, 300}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_groundbounce"][2] = {{0, -80, 470, 290}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_groundbounce"][3] = {{0, -130, 430, 290}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_groundbounce"][4] = {{0, -135, 400, 290}}
+    obj_anchor_data_game_scene_char_LP["0_general_hurt_launched_groundbounce"] = {270, 290}
 
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_lanuched_high"] = {}
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_lanuched_high"][0] = air_pushbox
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_high"] = {}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_high"][0] = {{0, -60, 320, 420}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_high"][1] = {{0, -60, 400, 330}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_high"][3] = {{0, -60, 426, 310}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_high"][5] = {{0, -75, 440, 300}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_high"][7] = {{0, -80, 470, 290}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_high"][8] = {{0, -130, 430, 290}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_high"][9] = {{0, -135, 400, 290}}
-    obj_anchor_data_game_scene_char_LP["0_general_hurt_lanuched_high"] = {270, 290}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_launched_high"] = {}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_launched_high"][0] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_high"] = {}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_high"][0] = {{0, -60, 320, 420}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_high"][1] = {{0, -60, 400, 330}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_high"][3] = {{0, -60, 426, 310}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_high"][5] = {{0, -75, 440, 300}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_high"][7] = {{0, -80, 470, 290}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_high"][8] = {{0, -130, 430, 290}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_high"][9] = {{0, -135, 400, 290}}
+    obj_anchor_data_game_scene_char_LP["0_general_hurt_launched_high"] = {270, 290}
 
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_lanuched_low"] = {}
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_lanuched_low"][0] = air_pushbox
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_low"] = {}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_low"][0] = {{0, -96, 330, 360}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_low"][1] = {{0, -107, 375, 320}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_low"][2] = {{0, -110, 460, 220}}
-    obj_anchor_data_game_scene_char_LP["0_general_hurt_lanuched_low"] = {300, 330}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_launched_low"] = {}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_launched_low"][0] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_low"] = {}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_low"][0] = {{0, -96, 330, 360}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_low"][1] = {{0, -107, 375, 320}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_low"][2] = {{0, -110, 460, 220}}
+    obj_anchor_data_game_scene_char_LP["0_general_hurt_launched_low"] = {300, 330}
 
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_lanuched_mid_hori_heavy"] = {}
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_lanuched_mid_hori_heavy"][0] = air_pushbox
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_mid_hori_heavy"] = {}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_mid_hori_heavy"][0] = {{0, -106, 260, 350}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_mid_hori_heavy"][1] = {{0, -100, 355, 261}}
-    obj_anchor_data_game_scene_char_LP["0_general_hurt_lanuched_mid_hori_heavy"] = {186, 286}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_launched_mid_hori_heavy"] = {}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_launched_mid_hori_heavy"][0] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_mid_hori_heavy"] = {}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_mid_hori_heavy"][0] = {{0, -106, 260, 350}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_mid_hori_heavy"][1] = {{0, -100, 355, 261}}
+    obj_anchor_data_game_scene_char_LP["0_general_hurt_launched_mid_hori_heavy"] = {186, 286}
 
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_lanuched_mid_up"] = {}
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_lanuched_mid_up"][0] = air_pushbox
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_mid_up"] = {}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_mid_up"][0] = {{-12, -215, 320, 420}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_mid_up"][1] = {{-12, -255, 240, 500}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_mid_up"][3] = {{-12, -230, 280, 460}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_mid_up"][4] = {{-12, -205, 340, 420}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_mid_up"][5] = {{-12, -195, 340, 400}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_mid_up"][6] = {{-12, -220, 335, 350}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_mid_up"][7] = {{-12, -265, 240, 550}}
-    obj_anchor_data_game_scene_char_LP["0_general_hurt_lanuched_mid_up"] = {282, 550}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_launched_mid_up"] = {}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_launched_mid_up"][0] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_mid_up"] = {}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_mid_up"][0] = {{-12, -215, 320, 420}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_mid_up"][1] = {{-12, -255, 240, 500}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_mid_up"][3] = {{-12, -230, 280, 460}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_mid_up"][4] = {{-12, -205, 340, 420}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_mid_up"][5] = {{-12, -195, 340, 400}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_mid_up"][6] = {{-12, -220, 335, 350}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_mid_up"][7] = {{-12, -265, 240, 550}}
+    obj_anchor_data_game_scene_char_LP["0_general_hurt_launched_mid_up"] = {282, 550}
 
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_lanuched_rolling"] = {}
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_lanuched_rolling"][0] = air_pushbox
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_rolling"] = {}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_rolling"][0] = {{0, -50, 370, 380}}
-    obj_anchor_data_game_scene_char_LP["0_general_hurt_lanuched_rolling"] = {215, 265}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_launched_rolling"] = {}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_launched_rolling"][0] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_rolling"] = {}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_rolling"][0] = {{0, -50, 370, 380}}
+    obj_anchor_data_game_scene_char_LP["0_general_hurt_launched_rolling"] = {215, 265}
 
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_lanuched_rotate"] = {}
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_lanuched_rotate"][0] = air_pushbox
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_rotate"] = {}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_rotate"][0] = {{0, -74, 400, 390}}
-    obj_anchor_data_game_scene_char_LP["0_general_hurt_lanuched_rotate"] = {225, 290}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_launched_rotate"] = {}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_launched_rotate"][0] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_rotate"] = {}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_rotate"][0] = {{0, -74, 400, 390}}
+    obj_anchor_data_game_scene_char_LP["0_general_hurt_launched_rotate"] = {225, 290}
 
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_lanuched_wallbounce"] = {}
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_lanuched_wallbounce"][0] = air_pushbox
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_wallbounce"] = {}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_wallbounce"][0] = {{0, -68, 270, 350}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_wallbounce"][1] = {{0, -68, 250, 480}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_wallbounce"][2] = {{0, -68, 330, 450}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_lanuched_wallbounce"][3] = {{0, -68, 374, 380}}
-    obj_anchor_data_game_scene_char_LP["0_general_hurt_lanuched_wallbounce"] = {233, 317}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_launched_wallbounce"] = {}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_launched_wallbounce"][0] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_wallbounce"] = {}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_wallbounce"][0] = {{0, -68, 270, 350}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_wallbounce"][1] = {{0, -68, 250, 480}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_wallbounce"][2] = {{0, -68, 330, 450}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_launched_wallbounce"][3] = {{0, -68, 374, 380}}
+    obj_anchor_data_game_scene_char_LP["0_general_hurt_launched_wallbounce"] = {233, 317}
 
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"] = {}
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][0] = air_pushbox
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][4] = crouch_pushbox
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][6] = stand_pushbox
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"] = {}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][0] = {{0, -145, 285, 450}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][1] = {{0, -100, 285, 390}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][3] = {{0, -190, 270, 380}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][4] = {{0, -182.5, 250, 365}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][6] = {{0, -175, 255, 350}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"][7] = {{0, -205, 215, 410}}
-    obj_anchor_data_game_scene_char_LP["0_general_hurt_semi_lanuched_mid"] = {275, 515}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_mid"] = {}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_mid"][0] = air_pushbox
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_mid"][4] = crouch_pushbox
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_mid"][6] = stand_pushbox
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_mid"] = {}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_mid"][0] = {{0, -145, 285, 450}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_mid"][1] = {{0, -100, 285, 390}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_mid"][3] = {{0, -190, 270, 380}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_mid"][4] = {{0, -182.5, 250, 365}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_mid"][6] = {{0, -175, 255, 350}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_mid"][7] = {{0, -205, 215, 410}}
+    obj_anchor_data_game_scene_char_LP["0_general_hurt_semi_launched_mid"] = {275, 515}
 
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_rotate"] = {}
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_rotate"][0] = stand_pushbox
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_rotate"][12] = OTG_pushbox
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_rotate"] = {}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_rotate"][0] = {{0, -225, 220, 450}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_rotate"][1] = {{0, -240, 220, 480}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_rotate"][2] = {{0, -252.5, 220, 505}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_rotate"][10] = {{0, -230, 270, 460}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_rotate"][11] = {{0, -190, 350, 380}}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_lanuched_rotate"][12] = {{0, -150, 380, 300}}
-    obj_anchor_data_game_scene_char_LP["0_general_hurt_semi_lanuched_rotate"] = {255, 525}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_rotate"] = {}
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_rotate"][0] = stand_pushbox
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_rotate"][12] = OTG_pushbox
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_rotate"] = {}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_rotate"][0] = {{0, -225, 220, 450}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_rotate"][1] = {{0, -240, 220, 480}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_rotate"][2] = {{0, -252.5, 220, 505}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_rotate"][10] = {{0, -230, 270, 460}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_rotate"][11] = {{0, -190, 350, 380}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_rotate"][12] = {{0, -150, 380, 300}}
+    obj_anchor_data_game_scene_char_LP["0_general_hurt_semi_launched_rotate"] = {255, 525}
 
 end
 

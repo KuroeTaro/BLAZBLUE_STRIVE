@@ -124,7 +124,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../_character/UNIVERSAL/TRM_0_general_hurt_lanuched_wallbounce.json</filename>
+                <filename>../../_character/UNIVERSAL/TRM_0_general_hurt_launched_wallbounce.json</filename>
             </struct>
         </map>
         <key>multiPackMode</key>
@@ -173,11 +173,11 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_lanuched_wallbounce/0.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_lanuched_wallbounce/1.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_lanuched_wallbounce/2.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_lanuched_wallbounce/3.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_lanuched_wallbounce/4.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_launched_wallbounce/0.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_launched_wallbounce/1.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_launched_wallbounce/2.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_launched_wallbounce/3.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_launched_wallbounce/4.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -199,7 +199,7 @@
             <struct type="SpriteSheet">
                 <key>files</key>
                 <array>
-                    <filename>../../UNIVERSAL_IMG/0_general_hurt_lanuched_wallbounce</filename>
+                    <filename>../../UNIVERSAL_IMG/0_general_hurt_launched_wallbounce</filename>
                 </array>
             </struct>
         </map>

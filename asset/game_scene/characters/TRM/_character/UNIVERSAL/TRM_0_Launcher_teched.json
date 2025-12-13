@@ -1,0 +1,52 @@
+{"frames": {
+
+"0":
+{
+	"frame": {"x":0,"y":0,"w":380,"h":540},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":380,"h":540},
+	"sourceSize": {"w":380,"h":540}
+},
+"1":
+{
+	"frame": {"x":380,"y":0,"w":380,"h":540},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":380,"h":540},
+	"sourceSize": {"w":380,"h":540}
+},
+"2":
+{
+	"frame": {"x":760,"y":0,"w":380,"h":540},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":380,"h":540},
+	"sourceSize": {"w":380,"h":540}
+},
+"3":
+{
+	"frame": {"x":1140,"y":0,"w":380,"h":540},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":380,"h":540},
+	"sourceSize": {"w":380,"h":540}
+},
+"4":
+{
+	"frame": {"x":1520,"y":0,"w":380,"h":540},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":380,"h":540},
+	"sourceSize": {"w":380,"h":540}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_4_stand_block_guard_crash",
+	"format": "RGBA8888",
+	"size": {"w":1900,"h":540},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:b506ce4dd7b2c9630e5b2fa338a7173b:c88138b7c5ca2c71eb914b4be157ad0b:ac6dd0575a7b70f09d8a511c71fcc61d$"
+}
+}

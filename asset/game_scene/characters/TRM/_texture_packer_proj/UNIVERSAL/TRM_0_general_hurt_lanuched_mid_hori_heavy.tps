@@ -124,7 +124,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../_character/UNIVERSAL/TRM_0_general_hurt_lanuched_mid_hori_heavy.json</filename>
+                <filename>../../_character/UNIVERSAL/TRM_0_general_hurt_launched_mid_hori_heavy.json</filename>
             </struct>
         </map>
         <key>multiPackMode</key>
@@ -173,9 +173,9 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_lanuched_mid_hori_heavy/0.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_lanuched_mid_hori_heavy/1.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_lanuched_mid_hori_heavy/2.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_launched_mid_hori_heavy/0.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_launched_mid_hori_heavy/1.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_launched_mid_hori_heavy/2.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -197,7 +197,7 @@
             <struct type="SpriteSheet">
                 <key>files</key>
                 <array>
-                    <filename>../../UNIVERSAL_IMG/0_general_hurt_lanuched_mid_hori_heavy</filename>
+                    <filename>../../UNIVERSAL_IMG/0_general_hurt_launched_mid_hori_heavy</filename>
                 </array>
             </struct>
         </map>

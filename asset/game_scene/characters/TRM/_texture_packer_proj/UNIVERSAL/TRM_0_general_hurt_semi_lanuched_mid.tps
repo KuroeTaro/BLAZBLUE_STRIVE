@@ -124,7 +124,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../_character/UNIVERSAL/TRM_0_general_hurt_semi_lanuched_mid.json</filename>
+                <filename>../../_character/UNIVERSAL/TRM_0_general_hurt_semi_launched_mid.json</filename>
             </struct>
         </map>
         <key>multiPackMode</key>
@@ -173,14 +173,14 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_semi_lanuched_mid/0.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_semi_lanuched_mid/1.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_semi_lanuched_mid/2.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_semi_lanuched_mid/3.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_semi_lanuched_mid/4.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_semi_lanuched_mid/5.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_semi_lanuched_mid/6.png</key>
-            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_semi_lanuched_mid/7.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_semi_launched_mid/0.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_semi_launched_mid/1.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_semi_launched_mid/2.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_semi_launched_mid/3.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_semi_launched_mid/4.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_semi_launched_mid/5.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_semi_launched_mid/6.png</key>
+            <key type="filename">../../UNIVERSAL_IMG/0_general_hurt_semi_launched_mid/7.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -202,7 +202,7 @@
             <struct type="SpriteSheet">
                 <key>files</key>
                 <array>
-                    <filename>../../UNIVERSAL_IMG/0_general_hurt_semi_lanuched_mid</filename>
+                    <filename>../../UNIVERSAL_IMG/0_general_hurt_semi_launched_mid</filename>
                 </array>
             </struct>
         </map>

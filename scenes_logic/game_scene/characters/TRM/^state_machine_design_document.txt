@@ -23,7 +23,7 @@ _common_ground_idle_to_move
     _cS
     _fS
     _2Launcher
-    _46Launcher
+    _4_6Launcher
     _5Launcher
     _4dash_backdash
     _6dash_dash
@@ -50,7 +50,7 @@ _common_air_idle_to_move
     _j2K
     _jS
     _j2S
-    _j46Launcher
+    _j4_6Launcher
     _j5Launcher
     _4dash_air_backdash
     _6dash_air_dash
@@ -329,7 +329,7 @@ _2Launcher
     _common_ground_to_special_move
     _RC_purple_rc
     _1_2_3_crouch
-_46Launcher
+_4_6Launcher
     _RC_red_rc
     _RC_purple_rc
     _5_stand_idle
@@ -374,7 +374,7 @@ _j2S
     _common_air_to_special_move
     _RC_purple_rc
     _7_8_9_jump_air(air_move+hit_cancel)(animation_end)
-_j46Launcher
+_j4_6Launcher
     _7_8_9_jump_air_to_stand_idle(landing)
     _RC_red_rc
     _RC_purple_rc

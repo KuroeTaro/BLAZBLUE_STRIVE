@@ -368,6 +368,16 @@ function common_game_scene_strike_hurt_function(obj_char)
         common_hurt()
     end
 end
+function common_game_scene_throw_hit_function(obj_char)
+
+end
+function common_game_scene_throw_hurt_function(obj_char)
+
+end
+function common_game_scene_throw_reposition(obj_char,dx)
+
+end
+
 
 function common_game_scene_create_wiggle_animation(length,prop,wiggle_amount)
     local mid_length = (length-length%2)/2
