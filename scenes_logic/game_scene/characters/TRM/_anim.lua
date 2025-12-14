@@ -19,6 +19,7 @@
             -- horizontal_velocity_correction
             -- gravity_correction
             -- damage_correction
+            -- pushbox_other_side_char_active
             -- pushbox
             -- hitbox_table
             -- hurtbox_table
@@ -64,6 +65,7 @@ function load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -142.5, 121.5, 285}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -175, 180, 350}}
         obj_char["collision_test_ground_height_offset"] = 0 
@@ -129,6 +131,7 @@ function load_game_scene_anim_char_TRM_1_2_3_crouch_turn(obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -142.5, 121.5, 285}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -150, 200, 300}}
         obj_char["collision_test_ground_height_offset"] = 0 
@@ -179,8 +182,9 @@ function load_game_scene_anim_char_TRM_1_2_3_crouch_to_stand_idle(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
 
-        -- collide
+        -- collid
         obj_char["pushbox"] = {0, -142.5, 121.5, 285}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -190, 190, 380}}
         obj_char["collision_test_ground_height_offset"] = 0 
@@ -238,6 +242,7 @@ function load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -185, 121.5, 370}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{0, -455, 100, 50}}
         obj_char["collision_test_ground_height_offset"] = 0 
@@ -289,6 +294,7 @@ function load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -185, 121.5, 370}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{0, -455, 100, 50}}
         obj_char["collision_test_ground_height_offset"] = 0 
@@ -341,6 +347,7 @@ function load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -142.5, 121.5, 285}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -160, 290, 320}}
         obj_char["collision_test_ground_height_offset"] = 0 
@@ -447,6 +454,7 @@ function load_game_scene_anim_char_TRM_4_walk(obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -185, 121.5, 370}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{-7, -455, 100, 50}}
         obj_char["collision_test_ground_height_offset"] = 0 
@@ -582,6 +590,7 @@ function load_game_scene_anim_char_TRM_4_walk_to_stand_idle(obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -185, 121.5, 370}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{0, -455, 100, 50}}
         obj_char["collision_test_ground_height_offset"] = 0 
@@ -638,6 +647,7 @@ function load_game_scene_anim_char_TRM_6_walk(obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -185, 121.5, 370}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{7, -455, 100, 50}}
         obj_char["collision_test_ground_height_offset"] = 0 
@@ -773,6 +783,7 @@ function load_game_scene_anim_char_TRM_6_walk_to_stand_idle(obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -185, 121.5, 370}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{0, -455, 100, 50}}
         obj_char["collision_test_ground_height_offset"] = 0 
@@ -869,6 +880,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -185, 121.5, 370}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -215, 175, 430}}
         obj_char["collision_test_ground_height_offset"] = 0
@@ -1019,6 +1031,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet_stat
 
         -- collide
         obj_char["pushbox"] = {0, -100, 121.5, 200}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -180, 200, 380}}
         obj_char["collision_test_ground_height_offset"] = 180
@@ -1203,6 +1216,7 @@ function load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -185, 121.5, 370}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430}}
         obj_char["collision_test_ground_height_offset"] = 0
@@ -1313,6 +1327,7 @@ function load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -100, 121.5, 200}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {}
         obj_char["collision_test_ground_height_offset"] = 180
@@ -1500,6 +1515,7 @@ function load_game_scene_anim_char_TRM_4dash_air_backdash(input,obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -100, 121.5, 200}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -125, 260, 270}}
         obj_char["collision_test_ground_height_offset"] = 180
@@ -1637,6 +1653,7 @@ function load_game_scene_anim_char_TRM_6dash_dash(input,obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -185, 121.5, 370}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -190, 285, 380}}
         obj_char["collision_test_ground_height_offset"] = 0 
@@ -1836,6 +1853,7 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(input,obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -100, 121.5, 200}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -120, 260, 270}}
         obj_char["collision_test_ground_height_offset"] = 180
@@ -2050,6 +2068,7 @@ function load_game_scene_anim_char_TRM_burst_overdrive_ground(obj_char,other_sid
 
         -- collide
         obj_char["pushbox"] = {0, -185, 121.5, 370}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {} --{ 攻击类型 是投还是打， function值 内部为命中后的逻辑, 具体的box形状}
         obj_char["hurtbox_table"] = {}
         obj_char["collision_test_ground_height_offset"] = 0 
@@ -2374,6 +2393,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -185, 121.5, 370}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{0, -455, 100, 50}}
         obj_char["collision_test_ground_height_offset"] = 0 
@@ -2640,6 +2660,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -185, 121.5, 370}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{0, -455, 100, 50}}
         obj_char["collision_test_ground_height_offset"] = 0 
@@ -2958,6 +2979,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -142.5, 121.5, 285}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -150, 200, 300}}
         obj_char["collision_test_ground_height_offset"] = 0 
@@ -3175,6 +3197,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -185, 121.5, 370}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{-18, -455, 100, 50}}
         obj_char["collision_test_ground_height_offset"] = 0 
@@ -3261,6 +3284,35 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
     local obj_char_other_side = common_game_scene_change_character(side)
     local sprite_sheet_state = "0_stand_hurt"
 
+    local function update_y_37f_48f()
+        obj_char_other_side["y"] = 115
+    end
+    local function update_y_49f_55f()
+        obj_char_other_side["y"] = 115
+    end
+    local function update_y_56f_60f()
+        obj_char_other_side["y"] = 115
+        if obj_char_other_side["f"] == 60 then
+            obj_char_other_side["y"] = 365
+        end
+    end
+
+    for i = 37,48 do
+        res[i] = function()
+            update_y_37f_48f()
+        end
+    end
+    for i = 49,55 do
+        res[i] = function()
+            update_y_49f_55f()
+        end
+    end
+    for i = 56,60 do
+        res[i] = function()
+            update_y_56f_60f()
+        end
+    end
+
     res[0] = function() 
         -- state
         obj_char_other_side["sprite_sheet_state"] = "0_stand_hurt"
@@ -3278,14 +3330,14 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["current_animation_length"] = 91
         obj_char_other_side["idle_cancel"] = false -- 取消链
 
-        obj_char_other_side["strike_inv"] = false
-        obj_char_other_side["strike_inv_countdown"] = 0
+        obj_char_other_side["strike_inv"] = true
+        obj_char_other_side["strike_inv_countdown"] = 91
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 1
-        obj_char_other_side["projectile_inv"] = false
-        obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
+        obj_char_other_side["throw_inv_countdown"] = 91
+        obj_char_other_side["projectile_inv"] = true
+        obj_char_other_side["projectile_inv_countdown"] = 91
+        obj_char_other_side["burst_inv"] = true
+        obj_char_other_side["burst_inv_countdown"] = 91
 
         obj_char_other_side["overdrive_disabling"] = true
         obj_char_other_side["overdrive_disabling_countdown"] = 91
@@ -3296,22 +3348,21 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side["0_stand_hurt"][0]
+        obj_char_other_side["pushbox_other_side_char_active"] = false
         obj_char_other_side["hitbox_table"] = {}
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["0_stand_hurt"][0]
-        obj_char_other_side["collision_test_ground_height_offset"] = 180
+        obj_char_other_side["collision_test_ground_height_offset"] = 0
         
         -- draw_correction
-        obj_char_other_side[8] = 5
+        obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side["0_stand_hurt"]
-        
-        -- update
-        update_before_land()
-
-        -- special_update
-        frame_0_special_update_function()
 
         -- set_frame_adv
         obj_char["frame_adv"] = 0
+    end
+    res[1] = function()
+        -- state
+        obj_char_other_side["state_cache"] = "knockdown_recovery"
     end
     res[27] = function()
         -- state
@@ -3319,47 +3370,105 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["sprite_sheet_state"] = "0_general_hurt_launched_high"
 
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
-        obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
-        obj_char_other_side["collision_test_ground_height_offset"] = 180
+        obj_char_other_side["pushbox"] = pushbox_data_other_side["0_general_hurt_launched_high"][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["0_general_hurt_launched_high"][0]
 
         -- draw_correction
         obj_char[8] = 1
     end
-    res[4] = function()
-        -- state & state_number
-        obj_char["move_state"] = "recovery" -- none startup active recovery
-        obj_char["throw_active"] = false 
-        
+    res[37] = function()
+        -- state
+        common_game_scene_char_apply_hurt_velocity(
+            obj_char,obj_char_other_side,
+            -15,
+            7,
+            1,
+            0,
+            0,
+            1
+        )
+
+        -- update
+        update_y_37f_48f()
+    end
+    res[40] = function()
         -- collide
-        obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = {{0, -150, 200, 300},{228,-72.5,330,145}}
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["0_general_hurt_launched_high"][3]
+
+        -- draw_correction
+        obj_char[8] = 3
+
+        -- update
+        update_y_37f_48f()
+    end
+    res[44] = function()
+        -- state
+        obj_char_other_side["sprite_sheet_state"] = "0_general_hurt_hard_knockdown_up"
+
+        -- collide
+        obj_char_other_side["pushbox"] = pushbox_data_other_side["0_general_hurt_hard_knockdown_up"][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["0_general_hurt_hard_knockdown_up"][0]
+
+        -- draw_correction
+        obj_char[8] = 0
+
+        -- update
+        update_y_37f_48f()
+    end
+    res[48] = function()
+        -- draw_correction
+        obj_char[8] = 1
+
+        -- update
+        update_y_37f_48f()
+    end
+    res[49] = function()
+        -- collide
+        obj_char_other_side["pushbox"] = pushbox_data_other_side["0_general_hurt_hard_knockdown_up"][2]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["0_general_hurt_hard_knockdown_up"][2]
 
         -- draw_correction
         obj_char[8] = 2
+
+        -- update
+        update_y_49f_55f()
     end
-    res[12] = function()
+    res[52] = function()
         -- draw_correction
         obj_char[8] = 3
+
+        -- update
+        update_y_49f_55f()
     end
-    res[14] = function()
+    res[55] = function()
         -- draw_correction
         obj_char[8] = 4
+
+        -- update
+        update_y_49f_55f()
     end
-    res[19] = function()
+    res[56] = function()
         -- draw_correction
         obj_char[8] = 5
+
+        -- update
+        update_y_56f_60f()
     end
-    res[35] = function()
+    res[60] = function()
+        -- collide
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["0_general_hurt_hard_knockdown_up"][6]
+        
         -- draw_correction
         obj_char[8] = 6
+
+        -- update
+        update_y_56f_60f()
     end
-    res[40] = function()
+    res[65] = function()
         -- draw_correction
         obj_char[8] = 7
     end
-    res[42] = function()
+    res[91] = function()
         -- animation_end
     end
     return res
@@ -3431,6 +3540,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -185, 121.5, 370}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {}
         obj_char["collision_test_ground_height_offset"] = 0 
@@ -3679,6 +3789,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -185, 121.5, 370}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{-25, -455, 100, 50}}
         obj_char["collision_test_ground_height_offset"] = 0 
@@ -3994,6 +4105,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
 
         -- collide
         obj_char["pushbox"] = {0, -185, 121.5, 370}
+        obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{-25, -455, 100, 50}}
         obj_char["collision_test_ground_height_offset"] = 0 

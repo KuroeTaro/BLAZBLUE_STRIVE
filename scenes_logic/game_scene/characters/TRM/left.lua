@@ -17,6 +17,7 @@ function load_game_scene_obj_char_LP()
     -- state
     obj_char_game_scene_char_LP["player_side"] = "L"
     obj_char_game_scene_char_LP["type"] = "character"
+    obj_char_game_scene_char_LP["default_pushbox_width"] = 121.5
     obj_char_game_scene_char_LP["state"] = "before_ease_in"
     obj_char_game_scene_char_LP["state_cache"] = "none"
     obj_char_game_scene_char_LP["sprite_sheet_state"] = "5_stand_idle"
@@ -138,6 +139,7 @@ function load_game_scene_obj_char_LP()
 
     -- collide
     obj_char_game_scene_char_LP["pushbox"] = {0, -185, 121.5, 370}
+    obj_char_game_scene_char_LP["pushbox_other_side_char_active"] = true
     obj_char_game_scene_char_LP["hitbox_table"] = {}
     obj_char_game_scene_char_LP["hurtbox_table"] = {{0, -215, 170, 430},{0, -455, 100, 50}}
     obj_char_game_scene_char_LP["collision_move_available"] = {1,1}
