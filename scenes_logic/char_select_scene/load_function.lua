@@ -83,7 +83,6 @@ function order_load_char_select_scene_UI_start_0_110f(load_order)
                 "asset/char_select_scene/scene_start_0_110f.json",
                 love.graphics.newImage(ASSET_DATA[2]["scene_start_0_110f"])
             )
-
         end,
     }
     local this_function = switch[load_order]

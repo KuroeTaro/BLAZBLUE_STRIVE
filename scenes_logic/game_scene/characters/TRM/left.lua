@@ -1391,6 +1391,16 @@ function state_gate_game_scene_char_LP_common_ground_idle_to_move(input,obj_char
         return true
     end
     -- _4_6Launcher
+    if (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 6) 
+    and test_input_sys_press(input["Launcher"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "4_6Launcher"
+        return true
+    end
     -- _5Launcher
     if test_input_sys_press(input["Launcher"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
@@ -2563,6 +2573,22 @@ function state_gate_game_scene_char_LP_from_2Launcher(input,obj_char)
     end
 end
 function state_gate_game_scene_char_LP_from_4_6Launcher(input,obj_char)
+    -- idle_cancel
+    if obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_idle_to_move_hold_ver(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+            return true
+        end
+    end
+    -- _5_stand_idle
+    if common_game_scene_get_character_animation_end(obj_char) then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "5_stand_idle"
+        return true
+    end
 end
 function state_gate_game_scene_char_LP_from_5Launcher(input,obj_char)
     -- idle_cancel

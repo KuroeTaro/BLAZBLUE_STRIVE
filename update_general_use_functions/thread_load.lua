@@ -27,6 +27,7 @@ function run_table_order_load()
     i = 1
     while (i<=THREAD_AMOUNT)
     do
+        local loop_time = love.timer.getTime()
         if ASSET_DATA[i] ~= nil and LOAD_ONCE_TABLE[i] == false then
             ORDER_LOAD_TABLE[i](CURRENT_ORDER_TABLE[i])
             CURRENT_ORDER_TABLE[i] = CURRENT_ORDER_TABLE[i] + 1
@@ -35,6 +36,10 @@ function run_table_order_load()
                 LOAD_ONCE_TABLE[i] = true
                 LOADING_FUNCTION_AMOUNT = LOADING_FUNCTION_AMOUNT -1
             end
+        end
+        loop_time = love.timer.getTime() - loop_time
+        if loop_time > 0.01 then
+            print(i,loop_time)
         end
         i = i + 1
     end

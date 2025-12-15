@@ -142,3 +142,39 @@ obj_stage_game_scene_match_scene_BG_solid_gray["LCT"] = {0,0,0,0,0,0,0}
 obj_stage_game_scene_match_scene_BG_solid_gray["LCD"] = {0,0,0,0,0,0,0}
 obj_stage_game_scene_match_scene_BG_solid_gray["state"] = "default"
 
+
+
+asset/char_select_scene/movie_cover.json        2.3338571
+2.337962        24
+0.0184842       25
+0.0719124       77
+0.3370139       0
+0.5547816       0
+6.6070239       1
+asset/game_scene/common/act_common.json 0.2693478
+asset/game_scene/common/act_1.json      0.4068851
+asset/game_scene/common/act_2.json      0.2791501
+1.0394695       13
+asset/game_scene/common/HUD/HUD_common.json     0.4004402
+asset/game_scene/common/HUD/HUD_ease_in.json    0.2692425
+0.6832411       14
+asset/game_scene/common/lets_dance.json 0.1380254
+0.1562781       15
+asset/game_scene/common/movie_cover.json        0.3098882
+0.3149734       19
+0.6188222       343
+asset/game_scene/VFX/hit_VFX/special/radial_white.json  0.1361258
+0.3952026       344
+asset/game_scene/VFX/stage_VFX/shockwave.json   0.1469376
+0.2288666       345
+asset/game_scene/VFX/overdrive_partical.json    0.1496068
+asset/game_scene/VFX/UA_common.json     0.4156789
+0.73505059999999        346
+0.1991503       347
+0.1959735       348
+0.2564727       349
+0.1054119       350
+0.030559099999998       353
+0.011455099999999       0
+0.015913099999999       131
+0.010063699999996       1091

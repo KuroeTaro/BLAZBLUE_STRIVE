@@ -334,6 +334,12 @@ function common_game_scene_strike_hurt_function(obj_char)
 
     -- change draw front
     CHARACTER_VISUAL_FRONT = hit_side_obj_char["player_side"]
+
+    -- change character face
+    if not common_game_scene_get_character_facing_currect(obj_char) then
+        obj_char[5] = -obj_char[5]
+    end
+    
     -- block_test
     local block_bool = false
     local block_direction = obj_char["direction_input"]

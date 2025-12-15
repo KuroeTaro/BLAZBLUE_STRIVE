@@ -78,7 +78,12 @@ function update_load_scene_general()
     frame_animator(obj_UI_load_scene_type_in_mark,anim_UI_frame_load_scene_type_in_mark_blink_opacity)
 
     -- 加载图像的实际线程功能
+    -- local loop_time = love.timer.getTime()
     run_table_order_load()
+    -- loop_time = love.timer.getTime() - loop_time
+    -- if loop_time > 0.1 then
+    --     print("run_table_order_load",loop_time)
+    -- end
 
     -- 场景出口
     if LOADING_FUNCTION_AMOUNT == 0 and SCENE_TIMER >= 60 then

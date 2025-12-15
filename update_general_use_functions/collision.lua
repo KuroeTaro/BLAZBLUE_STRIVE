@@ -65,10 +65,6 @@ function pushbox_stage_relocate_x(obj)
     end
 end
 function pushbox_state_relocate_in_character_x(obj_char_LP,obj_char_RP)
-    if not obj_char_LP["pushbox_other_side_char_active"] 
-    or not obj_char_RP["pushbox_other_side_char_active"] then
-        return
-    end
     local box_L = collision_box_to_real_world_box(obj_char_LP,"pushbox")
     local box_R = collision_box_to_real_world_box(obj_char_RP,"pushbox")
     local obj_camera = obj_stage_game_scene_camera
@@ -84,18 +80,19 @@ function pushbox_state_relocate_in_character_x(obj_char_LP,obj_char_RP)
         end
     end
 end
-function pushbox_dynamic_normal_aabb_relocate_x(obj_L,obj_R)
-    local box_L = collision_box_to_real_world_box(obj_L,"pushbox")
-    local box_R = collision_box_to_real_world_box(obj_R,"pushbox")
-    if box_L == nil or box_R == nil then
+function pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_RP)
+    local box_L = collision_box_to_real_world_box(obj_char_LP,"pushbox")
+    local box_R = collision_box_to_real_world_box(obj_char_RP,"pushbox")
+    if (not obj_char_LP["pushbox_other_side_char_active"])
+    or (not obj_char_RP["pushbox_other_side_char_active"]) then
         return
     end
     if collision_box_aabb_detection(box_L,box_R) then
         local collision_state = table.concat({
-            obj_L["collision_move_available"][1],
-            obj_L["collision_move_available"][2],
-            obj_R["collision_move_available"][1],
-            obj_R["collision_move_available"][2]
+            obj_char_LP["collision_move_available"][1],
+            obj_char_LP["collision_move_available"][2],
+            obj_char_RP["collision_move_available"][1],
+            obj_char_RP["collision_move_available"][2]
         })
         if collision_state == "1111" then
             local branch_flag = -1
@@ -108,60 +105,35 @@ function pushbox_dynamic_normal_aabb_relocate_x(obj_L,obj_R)
             end
             if box_L[1] < box_R[1] or branch_flag == 1 then
                 local mid = (box_L[1]+box_L[3]/2+box_R[1]-box_R[3]/2)/2
-                obj_L["x"] = mid-box_L[3]/2
-                obj_R["x"] = mid+box_R[3]/2
+                obj_char_LP["x"] = mid-box_L[3]/2
+                obj_char_RP["x"] = mid+box_R[3]/2
             elseif box_L[1] > box_R[1] or branch_flag == 0 then
                 local mid = (box_R[1]+box_R[3]/2+box_L[1]-box_L[3]/2)/2
-                obj_L["x"] = mid+box_L[3]/2
-                obj_R["x"] = mid-box_R[3]/2
+                obj_char_LP["x"] = mid+box_L[3]/2
+                obj_char_RP["x"] = mid-box_R[3]/2
             end
 
         elseif collision_state == "0111" then
-            obj_R["x"] = box_L[1]+box_L[3]/2+box_R[3]/2
+            obj_char_RP["x"] = box_L[1]+box_L[3]/2+box_R[3]/2
         elseif collision_state == "1101" then
-            obj_L["x"] = box_R[1]+box_R[3]/2+box_L[3]/2
+            obj_char_LP["x"] = box_R[1]+box_R[3]/2+box_L[3]/2
         elseif collision_state == "0101" then
-            -- if obj_L["y"] == obj_R["y"] then
-            --     if math.random() < 0.5 then
-            --         branch_flag = 1
-            --     else
-            --         branch_flag = 0
-            --     end
-            -- end
-            -- if obj_L["y"] > obj_R["y"] or branch_flag == 1 then
-            --     obj_R["x"] = box_L[1]+box_L[3]/2+box_R[3]/2
-            -- elseif obj_L["y"] < obj_R["y"] or branch_flag == 0 then
-            --     obj_L["x"] = box_R[1]+box_R[3]/2+box_L[3]/2
-            -- end
-            if obj_L[5] == -1 then
-                obj_L["x"] = box_R[1]+box_R[3]/2+box_L[3]/2
-            elseif obj_L[5] == 1 then
-                obj_R["x"] = box_L[1]+box_L[3]/2+box_R[3]/2
+            if obj_char_LP[5] == -1 then
+                obj_char_LP["x"] = box_R[1]+box_R[3]/2+box_L[3]/2
+            elseif obj_char_LP[5] == 1 then
+                obj_char_RP["x"] = box_L[1]+box_L[3]/2+box_R[3]/2
             end
         elseif collision_state == "1011" then
-            obj_R["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
+            obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
 
         elseif collision_state == "1110" then
-            obj_L["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
+            obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
 
         elseif collision_state == "1010" then
-            -- local branch_flag = -1
-            -- if obj_L["y"] == obj_R["y"] then
-            --     if math.random() < 0.5 then
-            --         branch_flag = 1
-            --     else
-            --         branch_flag = 0
-            --     end
-            -- end
-            -- if obj_L["y"] > obj_R["y"] or branch_flag == 1 then
-            --     obj_R["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
-            -- elseif obj_L["y"] < obj_R["y"] or branch_flag == 0 then
-            --     obj_L["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
-            -- end
-            if obj_L[5] == 1 then
-                obj_L["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
-            elseif obj_L[5] == -1 then
-                obj_R["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
+            if obj_char_LP[5] == 1 then
+                obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
+            elseif obj_char_LP[5] == -1 then
+                obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
             end
         end
     end

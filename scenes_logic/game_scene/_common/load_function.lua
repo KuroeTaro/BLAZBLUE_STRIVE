@@ -86,22 +86,10 @@ function order_load_game_scene_common(load_order)
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
-    
 end
 function order_load_game_scene_act(load_order)
     local switch = 
     {   
-        [1] = function()end,
-        [2] = function()end,
-        [3] = function()end,
-        [4] = function()end,
-        [5] = function()end,
-        [6] = function()end,
-        [7] = function()end,
-        [8] = function()end,
-        [9] = function()end,
-        [10] = function()end,
-        [11] = function()end,
         [12] = function()
             image_sprite_sheet_announcer_game_scene_act_common = 
             sprite_sheet_load(
@@ -134,18 +122,6 @@ end
 function order_load_game_scene_HUD(load_order)
     local switch = 
     {
-        [1] = function()end,
-        [2] = function()end,
-        [3] = function()end,
-        [4] = function()end,
-        [5] = function()end,
-        [6] = function()end,
-        [7] = function()end,
-        [8] = function()end,
-        [9] = function()end,
-        [10] = function()end,
-        [11] = function()end,
-        [12] = function()end,
         [13] = function()
             image_HUD_game_scene_background_gauge = love.graphics.newImage(ASSET_DATA[6]["HUD_background_gauge"])
             
@@ -169,19 +145,6 @@ end
 function order_load_game_scene_lets_dance(load_order)
     local switch = 
     {
-        [1] = function()end,
-        [2] = function()end,
-        [3] = function()end,
-        [4] = function()end,
-        [5] = function()end,
-        [6] = function()end,
-        [7] = function()end,
-        [8] = function()end,
-        [9] = function()end,
-        [10] = function()end,
-        [11] = function()end,
-        [12] = function()end,
-        [13] = function()end,
         [14] = function()
             image_sprite_sheet_announcer_game_scene_lets_dance = 
             sprite_sheet_load(
@@ -197,20 +160,6 @@ end
 function order_load_game_scene_VFX(load_order)
     local switch = 
     {
-        [1] = function()end,
-        [2] = function()end,
-        [3] = function()end,
-        [4] = function()end,
-        [5] = function()end,
-        [6] = function()end,
-        [7] = function()end,
-        [8] = function()end,
-        [9] = function()end,
-        [10] = function()end,
-        [11] = function()end,
-        [12] = function()end,
-        [13] = function()end,
-        [14] = function()end,
         [15] = function()
             -- hit normal
             image_sprite_sheet_VFX_game_scene_air_blow = 
