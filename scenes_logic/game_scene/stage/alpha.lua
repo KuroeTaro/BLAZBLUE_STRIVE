@@ -61,17 +61,7 @@ end
 function order_load_game_scene_stage(load_order)
     local switch = 
     {
-        [1] = function()end,
-        [2] = function()end,
-        [3] = function()end,
-        [4] = function()end,
-        [5] = function()end,
-        [6] = function()end,
-        [7] = function()end,
-        [8] = function()end,
-        [9] = function()end,
-        [10] = function()end,
-        [11] = function()
+        [21] = function()
             image_stage_game_scene_ground = love.graphics.newImage(ASSET_DATA[4][1])
             image_stage_game_scene_stair = love.graphics.newImage(ASSET_DATA[4][2])
             image_stage_game_scene_stage_liner_fade_alpha = love.graphics.newImage(ASSET_DATA[4][3])

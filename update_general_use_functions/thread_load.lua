@@ -39,7 +39,7 @@ function run_table_order_load()
         end
         loop_time = love.timer.getTime() - loop_time
         if loop_time > 0.01 then
-            print(i,loop_time)
+            print(i,CURRENT_ORDER_TABLE[i]-1,loop_time)
         end
         i = i + 1
     end

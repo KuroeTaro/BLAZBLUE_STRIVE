@@ -21,9 +21,7 @@ function update_game_scene_main_training()
                     update_flow_controller["state"] = "annoucer_ease_in_1"
                     common_game_scene_toggle_ease_in(1)
                     play_obj_audio(audio_SFX_game_scene_annoucer_ease_in)
-
                 end
-
             end
         end,
         ["black_solid_ease_in"] = function()

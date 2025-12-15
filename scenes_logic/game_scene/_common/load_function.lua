@@ -38,7 +38,7 @@ function load_game_scene_prep()
         order_load_game_scene_VFX
     }    -- load function table
     CURRENT_ORDER_TABLE = {1,1,1,1,1,1,1,1}  -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
-    ORDER_SIZE_TABLE = {2,10,10,11,12,13,14,18}  -- 每个load function的最大值
+    ORDER_SIZE_TABLE = {10,20,20,21,22,23,24,28}  -- 每个load function的最大值
     LOAD_ONCE_TABLE = {false,false,false,false,false,false,false,false}   -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     LOADING_FUNCTION_AMOUNT = 8 -- 和线程数相同
 
@@ -67,16 +67,32 @@ function order_load_game_scene_common(load_order)
     {
         [1] = function()
             load_game_scene_common_obj()
-            load_game_scene_box_anchor_data()
-            load_game_scene_common_anim()
-            load_game_scene_common_audio()
-            load_game_scene_common_shader()
-            load_game_scene_audio_char_LP()
-            load_game_scene_audio_char_RP()
-            load_game_scene_shader_char_LP()
-            load_game_scene_shader_char_RP()
         end,
         [2] = function()
+            load_game_scene_box_anchor_data()
+        end,
+        [3] = function()
+            load_game_scene_common_anim()
+        end,
+        [4] = function()
+            load_game_scene_common_audio()
+        end,
+        [5] = function()
+            load_game_scene_common_shader()
+        end,
+        [6] = function()
+            load_game_scene_audio_char_LP()
+        end,
+        [7] = function()
+            load_game_scene_audio_char_RP()
+        end,
+        [8] = function()
+            load_game_scene_shader_char_LP()
+        end,
+        [9] = function()
+            load_game_scene_shader_char_RP()
+        end,
+        [10] = function()
             image_sprite_sheet_UI_game_scene_movie_cover = 
             sprite_sheet_load(
                 "asset/game_scene/common/movie_cover.json",
@@ -90,7 +106,7 @@ end
 function order_load_game_scene_act(load_order)
     local switch = 
     {   
-        [12] = function()
+        [22] = function()
             image_sprite_sheet_announcer_game_scene_act_common = 
             sprite_sheet_load(
                 "asset/game_scene/common/act_common.json",
@@ -122,7 +138,7 @@ end
 function order_load_game_scene_HUD(load_order)
     local switch = 
     {
-        [13] = function()
+        [23] = function()
             image_HUD_game_scene_background_gauge = love.graphics.newImage(ASSET_DATA[6]["HUD_background_gauge"])
             
             image_sprite_sheet_HUD_game_scene_common = 
@@ -145,7 +161,7 @@ end
 function order_load_game_scene_lets_dance(load_order)
     local switch = 
     {
-        [14] = function()
+        [24] = function()
             image_sprite_sheet_announcer_game_scene_lets_dance = 
             sprite_sheet_load(
                 "asset/game_scene/common/lets_dance.json",
@@ -160,7 +176,7 @@ end
 function order_load_game_scene_VFX(load_order)
     local switch = 
     {
-        [15] = function()
+        [25] = function()
             -- hit normal
             image_sprite_sheet_VFX_game_scene_air_blow = 
             sprite_sheet_load(
@@ -220,7 +236,7 @@ function order_load_game_scene_VFX(load_order)
                 love.graphics.newImage(ASSET_DATA[8]["slash_ver1_sprite_batch"])
             )
         end,
-        [16] = function()
+        [26] = function()
             -- hit special
             image_sprite_sheet_VFX_game_scene_lighting_black_0 = 
             sprite_sheet_load(
@@ -253,7 +269,7 @@ function order_load_game_scene_VFX(load_order)
                 love.graphics.newImage(ASSET_DATA[8]["radial_white_sprite_batch"])
             )
         end,
-        [17] = function()
+        [27] = function()
             -- stage_VFX
                 -- shockwave
             image_sprite_sheet_VFX_game_scene_shockwave = 
@@ -295,7 +311,7 @@ function order_load_game_scene_VFX(load_order)
                 love.graphics.newImage(ASSET_DATA[8]["wallbreak"])
             )
         end,
-        [18]  = function()
+        [28]  = function()
             -- overdrive
             image_sprite_sheet_VFX_game_scene_overdrive_airflow = 
             sprite_sheet_load(

@@ -206,7 +206,7 @@ function order_load_game_scene_char_LP_frames(load_order)
     local PLAYER_ASSET_DATA = ASSET_DATA[2]
     local switch = 
     {
-        [1] = function()
+        [11] = function()
             -- UNIVERSAL 1 2 3
             image_sprite_sheet_table_char_game_scene_LP = {}
 
@@ -238,7 +238,7 @@ function order_load_game_scene_char_LP_frames(load_order)
                 )
             end 
         end,
-        [2] = function()
+        [12] = function()
             local load_name_table = {
                 "0_general_hurt_semi_launched_mid",
                 "0_general_hurt_semi_launched_rotate",
@@ -269,7 +269,7 @@ function order_load_game_scene_char_LP_frames(load_order)
                 )
             end 
         end,
-        [3] = function()
+        [13] = function()
             local load_name_table = {
                 "4_walk",
                 "4_walk_to_stand_idle",
@@ -297,7 +297,7 @@ function order_load_game_scene_char_LP_frames(load_order)
                 )
             end 
         end,
-        [4] = function()
+        [14] = function()
             -- ATTACK 4 5 6
             local load_name_table = {
                 "burst_overdrive_rc",
@@ -316,7 +316,7 @@ function order_load_game_scene_char_LP_frames(load_order)
                 )
             end 
         end,
-        [5] = function()
+        [15] = function()
             local load_name_table = {
             }
             for i, v in ipairs(load_name_table) do
@@ -327,7 +327,7 @@ function order_load_game_scene_char_LP_frames(load_order)
                 )
             end 
         end,
-        [6] = function()
+        [16] = function()
             local load_name_table = {
             }
             for i, v in ipairs(load_name_table) do
@@ -338,7 +338,7 @@ function order_load_game_scene_char_LP_frames(load_order)
                 )
             end 
         end,
-        [7] = function()
+        [17] = function()
             -- whiff_VFX 7 8 9
             image_sprite_sheet_VFX_game_scene_LP = {}
 
@@ -357,7 +357,7 @@ function order_load_game_scene_char_LP_frames(load_order)
                 )
             end 
         end,
-        [8] = function()
+        [18] = function()
             local load_name_table = {
             }
             for i, v in ipairs(load_name_table) do
@@ -368,7 +368,7 @@ function order_load_game_scene_char_LP_frames(load_order)
                 )
             end 
         end,
-        [9] = function()
+        [19] = function()
             local load_name_table = {
             }
             for i, v in ipairs(load_name_table) do
@@ -379,7 +379,7 @@ function order_load_game_scene_char_LP_frames(load_order)
                 )
             end 
         end,
-        [10] = function()
+        [20] = function()
             -- special
             image_sprite_sheet_VFX_game_scene_LP_overdrive_badge = 
             sprite_sheet_load(

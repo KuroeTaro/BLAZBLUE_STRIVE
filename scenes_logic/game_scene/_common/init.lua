@@ -17,50 +17,32 @@ function load_game_scene_common_anim()
     load_game_scene_anim_char_RP()
     load_game_scene_anim_stage()
     load_game_scene_announcer_HUD_anim()
-    
 end
 function load_game_scene_box_anchor_data()
     load_game_scene_box_anchor_data_LP()
     load_game_scene_box_anchor_data_RP()
-    
 end
 function load_game_scene_common_audio()
     audio_SFX_game_scene_annoucer_ease_in = {1}
     audio_SFX_game_scene_annoucer_ease_in["LCT"] = {0}
     audio_SFX_game_scene_annoucer_ease_in["LCD"] = {0}
-    audio_SFX_game_scene_annoucer_ease_in["audio"] = love.audio.newSource("asset/game_scene/common/audio/annoucer_ease_in.wav","static")
+    audio_SFX_game_scene_annoucer_ease_in["audio"] = love.audio.newSource("asset/game_scene/common/audio/annoucer_ease_in.mp3","stream")
 
     audio_SFX_game_scene_overdrive = {1}
     audio_SFX_game_scene_overdrive["LCT"] = {0}
     audio_SFX_game_scene_overdrive["LCD"] = {0}
-    audio_SFX_game_scene_overdrive["audio"] = love.audio.newSource("asset/game_scene/common/audio/overdrive.wav","static")
+    audio_SFX_game_scene_overdrive["audio"] = love.audio.newSource("asset/game_scene/common/audio/overdrive.mp3","stream")
 
 
     update_SFX_VOLUME(audio_SFX_game_scene_annoucer_ease_in)
     update_SFX_VOLUME(audio_SFX_game_scene_overdrive)
-
 end
 function load_game_scene_common_shader()
     shader_game_scene_fractal_noise = love.graphics.newShader("shaders/game_fractal_noise.glsl")
-
     shader_game_scene_radial_blur = love.graphics.newShader("shaders/radial_blur.glsl")
-
     shader_game_scene_shadow_radial_blur = love.graphics.newShader("shaders/shadow_radial_blur.glsl")
-    shader_game_scene_shadow_radial_blur:send("blur_start", 0.5)
-    shader_game_scene_shadow_radial_blur:send("blur_width", 0.5)
-
     shader_game_scene_brightness_contrast = love.graphics.newShader("shaders/brightness_contrast.glsl")
-
     shader_game_scene_gaussian_blur = love.graphics.newShader("shaders/gaussian_blur.glsl")
-    shader_game_scene_gaussian_blur:send("Directions", 16)
-    shader_game_scene_gaussian_blur:send("Quality", 5)
-    shader_game_scene_gaussian_blur:send("Size", 8)
-    shader_game_scene_gaussian_blur:send("resolution", {love.graphics.getWidth(), love.graphics.getHeight()})
-
-    shader_game_scene_character_blur = love.graphics.newShader("shaders/character_blur.glsl")
-    shader_game_scene_character_blur:send("radius", 1.0 / 1000.0) -- 模糊强度，基于画布分辨率
-    shader_game_scene_character_blur:send("alpha", 0.5) -- 透明度
-
 end
 
 function load_game_scene_announcer_HUD_obj()
@@ -211,7 +193,6 @@ function load_game_scene_announcer_HUD_anim()
     anim_char_point_linear_overdrive_brightness_ease_out["length"] = 10
     anim_char_point_linear_overdrive_brightness_ease_out["loop"] = false
     anim_char_point_linear_overdrive_brightness_ease_out["fix_type"] = false
-
 end
 
 function unload_game_scene_all()
