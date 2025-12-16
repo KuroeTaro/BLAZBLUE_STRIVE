@@ -155,7 +155,11 @@ function strike_hurtbox_test(hit_obj,hurt_obj)
     return false
 end
 function throw_hurtbox_test(hit_obj,hurt_obj)
-    if hit_obj["hit_type_state"] ~= "throw" or hurt_obj["throw_inv"] == true or hit_obj["throw_active"] == false then
+    if hit_obj["hit_type_state"] ~= "throw" 
+    or hurt_obj["throw_inv"] == true 
+    or hit_obj["throw_active"] == false 
+    or throw_air_or_not_test(hit_obj,hurt_obj)
+    or math.abs(hit_obj["x"]-hurt_obj["x"]) > hit_obj["default_throw_distance"] then
         return false
     end
     for i=1,#hit_obj["hitbox_table"] do
@@ -168,6 +172,15 @@ function throw_hurtbox_test(hit_obj,hurt_obj)
         end
     end
     return false
+end
+function throw_air_or_not_test(hit_obj,hurt_obj)
+    if hit_obj["height_state"] == "air" and hurt_obj["height_state"] ~= "air" then
+        return true
+    elseif hurt_obj["height_state"] == "air" and hit_obj["height_state"] ~= "air" then
+        return true
+    else
+        return false
+    end
 end
 function projectile_hurtbox_test(hit_obj,hurt_obj)
 end

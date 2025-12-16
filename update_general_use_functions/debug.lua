@@ -106,6 +106,42 @@ function set_show_info()
     local this_function = switch[DEBUG_INFO_SHOWS_STATE]
     if this_function then this_function() end
 end
+function set_toggle()
+    local switch = 
+    {
+        ["Released"] = function()
+            if love.keyboard.isDown("0") then
+                DEBUG_TRAINNING_TOGGLE_STATE = "Pressing"
+                if DEBUG_TRAINNING_TOGGLE == false then
+                    DEBUG_TRAINNING_TOGGLE = true
+                elseif DEBUG_TRAINNING_TOGGLE == true then
+                    DEBUG_TRAINNING_TOGGLE = false
+                end
+            end
+        end,
+        ["Releasing"] = function()
+            if love.keyboard.isDown("0") then
+                DEBUG_TRAINNING_TOGGLE_STATE = "Pressing"
+            else
+                DEBUG_TRAINNING_TOGGLE_STATE = "Released"
+            end
+        end,
+        ["Pressing"] = function()
+            if love.keyboard.isDown("0") then
+                DEBUG_TRAINNING_TOGGLE_STATE = "Holding"
+            else
+                DEBUG_TRAINNING_TOGGLE_STATE = "Releasing"
+            end
+        end,
+        ["Holding"] = function()
+            if not love.keyboard.isDown("0") then
+                DEBUG_TRAINNING_TOGGLE_STATE = "Releasing"
+            end
+        end
+    }
+    local this_function = switch[DEBUG_TRAINNING_TOGGLE_STATE]
+    if this_function then this_function() end
+end
 function set_counter()
     local switch = 
     {

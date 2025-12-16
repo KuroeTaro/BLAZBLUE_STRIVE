@@ -17,12 +17,6 @@ function update_load_scene_load_pre_timer()
 end
 function update_load_scene_ease_in()
     SCENE_TIMER = SCENE_TIMER + 1
-
-    -- debug
-    -- print(obj_UI_load_scene_dabo_trig["FCT"][1],
-    -- obj_UI_load_scene_type_in_mark["FCT"][4],
-    -- obj_UI_load_scene_loading_text["FCT"][4],
-    -- SCENE_TIMER)
     
     -- 动画机的运行 每个obj的FCT和SCENE timer保持一致
     frame_animator(obj_UI_load_scene_dabo_trig,anim_UI_frame_load_scene_dabo_trig_ease_in_x)
@@ -69,10 +63,6 @@ function update_load_scene_ease_in()
 end
 function update_load_scene_general()
     SCENE_TIMER = SCENE_TIMER + 1
-    
-    -- -- debug
-    -- print(UI_load_scene_type_in_mark["FCT"][4],
-    -- SCENE_TIMER)
 
     -- 动画机的运行 每个obj的FCT和SCENE timer保持一致
     frame_animator(obj_UI_load_scene_type_in_mark,anim_UI_frame_load_scene_type_in_mark_blink_opacity)
@@ -113,12 +103,6 @@ function update_load_scene_general()
 end
 function update_load_scene_ease_out()
     SCENE_TIMER = SCENE_TIMER + 1
-    
-    -- -- debug
-    -- print(obj_UI_load_scene_dabo_trig["FCT"][1],
-    -- obj_UI_load_scene_dabo_trig["FCT"][4],
-    -- obj_UI_load_scene_loading_text["FCT"][4],
-    -- SCENE_TIMER)
 
     -- 动画机的运行 每个obj的FCT和SCENE timer保持一致
     frame_animator(obj_UI_load_scene_dabo_trig,anim_UI_frame_load_scene_dabo_trig_ease_out_x)

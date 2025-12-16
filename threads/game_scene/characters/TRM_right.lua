@@ -1,8 +1,10 @@
 local filesys_module = require "love.filesystem"
 local image_module = require "love.image"
+local auido_module = require "love.sound"
 local compress_module = image_module.newCompressedData
-local non_compress_module = love.image.newImageData
-local image_data = {}
+local non_compress_module = image_module.newImageData
+local sound_module = auido_module.newSoundData
+local thread_data = {}
 
 -- 通用类
 local load_universal_name_table = {
@@ -63,7 +65,7 @@ local load_universal_name_table = {
     "9_jump"
 }
 for i, v in ipairs(load_universal_name_table) do
-    image_data[v] = compress_module("asset/game_scene/characters/TRM/_character/UNIVERSAL/TRM_"..v..".dds")
+    thread_data[v] = compress_module("asset/game_scene/characters/TRM/_character/UNIVERSAL/TRM_"..v..".dds")
 end 
 
 -- 攻击类
@@ -77,7 +79,7 @@ local load_attack_name_table = {
     "5Launcher"
 }
 for i, v in ipairs(load_attack_name_table) do
-    image_data[v] = compress_module("asset/game_scene/characters/TRM/_character/ATTACK/TRM_"..v..".dds")
+    thread_data[v] = compress_module("asset/game_scene/characters/TRM/_character/ATTACK/TRM_"..v..".dds")
 end
 
 -- 角色whiff_VFX类
@@ -89,10 +91,10 @@ local load_whiff_VFX_name_table = {
     "5Launcher_glow"
 }
 for i, v in ipairs(load_whiff_VFX_name_table) do
-    image_data[v.."_whiff_VFX"] = compress_module("asset/game_scene/VFX/whiff_VFX/TRM/".."TRM_"..v..".dds")
+    thread_data[v.."_whiff_VFX"] = compress_module("asset/game_scene/VFX/whiff_VFX/TRM/".."TRM_"..v..".dds")
 end
 
 -- special
-image_data["overdrive_badge"] = compress_module("asset/game_scene/VFX/overdrive_badge/TRM_overdrive_badge.dds")
+thread_data["overdrive_badge"] = compress_module("asset/game_scene/VFX/overdrive_badge/TRM_overdrive_badge.dds")
 
-love.thread.getChannel( 'image_3' ):push( image_data )
+love.thread.getChannel( 'thread_data_3' ):push( thread_data )

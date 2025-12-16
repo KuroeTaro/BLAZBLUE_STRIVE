@@ -3132,7 +3132,7 @@ end
 -- _4_6Launcher
 function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
     local res = {}
-    local friction = 10
+    local friction = 7
     local gravity = 2.5
     local side = obj_char["player_side"]
     local side_SFX_table = common_game_scene_get_SFX_side(side)
@@ -3140,6 +3140,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
 
     res[0] = function() 
         -- state
+        obj_char["default_throw_distance"] = 0
+        
         obj_char["sprite_sheet_state"] = "4_6Launcher"
         obj_char["height_state"] = "stand" -- stand crouch air OTG
         obj_char["hit_type_state"] = "throw" -- none strike throw burst
@@ -3224,6 +3226,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
     end
     res[1] = function()
         -- state & state_number
+        obj_char["default_throw_distance"] = 240
+        
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -3231,14 +3235,16 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
         obj_char["throw_active"] = true 
         
         -- collide
-        obj_char["hitbox_table"] = {{75, -190, 160, 340}}
-        obj_char["hurtbox_table"] = {{0, -215, 170, 430},{-18, -455, 100, 50},{75,-190,180,360}}
+        obj_char["hitbox_table"] = {{75, -190, 160, 350}}
+        obj_char["hurtbox_table"] = {{0, -215, 170, 430},{-18, -455, 100, 50},{75,-190,180,370}}
 
         -- draw_correction
         obj_char[8] = 1
     end
     res[4] = function()
         -- state & state_number
+        obj_char["default_throw_distance"] = 0
+
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["throw_active"] = false 
         
@@ -3494,6 +3500,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
 
     res[0] = function() 
         -- state
+        obj_char["default_throw_distance"] = 0
+
         obj_char["sprite_sheet_state"] = "4_6Launcher_success"
         obj_char["height_state"] = "stand" -- stand crouch air OTG
         obj_char["hit_type_state"] = "throw" -- none strike throw burst

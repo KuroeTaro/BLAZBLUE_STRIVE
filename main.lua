@@ -104,6 +104,8 @@ function love.load()
 	DEBUG_INFO_SHOWS = false
 	DEBUG_INFO_SHOWS_STATE = "Released"
 
+	DEBUG_TRAINNING_TOGGLE = false
+	DEBUG_TRAINNING_TOGGLE_STATE = "Released"
 	DEBUG_TRAINNING_COUNTER = false
 	DEBUG_TRAINNING_COUNTER_STATE = "Released"
 	DEBUG_TRAINNING_HEIGHT = 5
@@ -290,6 +292,7 @@ function love.update()
 	set_pause()
 	set_show_hitbox()
 	set_show_info()
+	set_toggle()
 	set_counter()
 	set_height()
 	set_block()

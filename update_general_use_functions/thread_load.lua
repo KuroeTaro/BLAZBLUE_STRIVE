@@ -19,7 +19,7 @@ function run_table_order_load()
     while (i<=THREAD_AMOUNT)
     do
         if ASSET_DATA[i] == nil then 
-            ASSET_DATA[i] = love.thread.getChannel("image_"..i..""):pop()
+            ASSET_DATA[i] = love.thread.getChannel("thread_data_"..i..""):pop()
         end
         i = i + 1
     end
@@ -27,7 +27,7 @@ function run_table_order_load()
     i = 1
     while (i<=THREAD_AMOUNT)
     do
-        local loop_time = love.timer.getTime()
+        -- local loop_time = love.timer.getTime()
         if ASSET_DATA[i] ~= nil and LOAD_ONCE_TABLE[i] == false then
             ORDER_LOAD_TABLE[i](CURRENT_ORDER_TABLE[i])
             CURRENT_ORDER_TABLE[i] = CURRENT_ORDER_TABLE[i] + 1
@@ -37,10 +37,10 @@ function run_table_order_load()
                 LOADING_FUNCTION_AMOUNT = LOADING_FUNCTION_AMOUNT -1
             end
         end
-        loop_time = love.timer.getTime() - loop_time
-        if loop_time > 0.01 then
-            print(i,CURRENT_ORDER_TABLE[i]-1,loop_time)
-        end
+        -- loop_time = love.timer.getTime() - loop_time
+        -- if loop_time > 0.01 then
+        --     print(i,CURRENT_ORDER_TABLE[i]-1,loop_time)
+        -- end
         i = i + 1
     end
 end

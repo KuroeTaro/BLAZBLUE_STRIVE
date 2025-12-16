@@ -167,8 +167,8 @@ function update_game_scene_main_training()
             local char_LP = obj_char_game_scene_char_LP
             local char_RP = obj_char_game_scene_char_RP
 
-            -- debug_delete_after
-            if DEBUG_TRAINNING_SPAWN_STATE == "Pressing" then
+            -- debug_delete_after 
+            if DEBUG_TRAINNING_SPAWN_STATE == "Pressing" and DEBUG_TRAINNING_TOGGLE then
                 common_game_scene_init_chars_trainning()
             end
 
@@ -180,41 +180,45 @@ function update_game_scene_main_training()
             common_update_game_scene_input_direction(char_RP)
 
             -- debug_delete_after
-            INPUT_SYS_CURRENT_COMMAND_STATE["R"]["left"] = "Released"
-            INPUT_SYS_CURRENT_COMMAND_STATE["R"]["right"] = "Released"
-            INPUT_SYS_CURRENT_COMMAND_STATE["R"]["up"] = "Released"
-            INPUT_SYS_CURRENT_COMMAND_STATE["R"]["down"] = "Released"
-            if DEBUG_TRAINNING_HEIGHT == 2 then
-                INPUT_SYS_CURRENT_COMMAND_STATE["R"]["down"] = "Holding"
-            elseif DEBUG_TRAINNING_HEIGHT == 8 then
-                INPUT_SYS_CURRENT_COMMAND_STATE["R"]["up"] = "Holding"
-            end
-            obj_char_game_scene_char_RP["direction_input"] = DEBUG_TRAINNING_HEIGHT
+            if DEBUG_TRAINNING_TOGGLE then
+                INPUT_SYS_CURRENT_COMMAND_STATE["R"]["left"] = "Released"
+                INPUT_SYS_CURRENT_COMMAND_STATE["R"]["right"] = "Released"
+                INPUT_SYS_CURRENT_COMMAND_STATE["R"]["up"] = "Released"
+                INPUT_SYS_CURRENT_COMMAND_STATE["R"]["down"] = "Released"
+                if DEBUG_TRAINNING_HEIGHT == 2 then
+                    INPUT_SYS_CURRENT_COMMAND_STATE["R"]["down"] = "Holding"
+                elseif DEBUG_TRAINNING_HEIGHT == 8 then
+                    INPUT_SYS_CURRENT_COMMAND_STATE["R"]["up"] = "Holding"
+                end
+                obj_char_game_scene_char_RP["direction_input"] = DEBUG_TRAINNING_HEIGHT
 
-            if obj_char_game_scene_char_RP["state"] == "knockdown" then
-                obj_char_game_scene_char_RP["direction_input"] = DEBUG_TRAINNING_WALLSTICK_SOFT_RECOVER_POS
+                if obj_char_game_scene_char_RP["state"] == "knockdown" then
+                    obj_char_game_scene_char_RP["direction_input"] = DEBUG_TRAINNING_WALLSTICK_SOFT_RECOVER_POS
+                end
             end
 
             -- 更新角色
             update_game_scene_char()
 
             -- debug_delete_after
-            if DEBUG_TRAINNING_BLOCK ~= 0 and obj_char_game_scene_char_RP["hurt_state_target"] ~= "unblock" then
-                obj_char_game_scene_char_RP["hurt_state_target"] = "idle"
-                if DEBUG_TRAINNING_HEIGHT == 2 then
-                    obj_char_game_scene_char_RP["direction_input"] = 1
-                elseif DEBUG_TRAINNING_HEIGHT == 5 then
-                    obj_char_game_scene_char_RP["direction_input"] = 4
-                elseif DEBUG_TRAINNING_HEIGHT == 8 then
-                    obj_char_game_scene_char_RP["direction_input"] = 4
+            if DEBUG_TRAINNING_TOGGLE then
+                if DEBUG_TRAINNING_BLOCK ~= 0 and obj_char_game_scene_char_RP["hurt_state_target"] ~= "unblock" then
+                    obj_char_game_scene_char_RP["hurt_state_target"] = "idle"
+                    if DEBUG_TRAINNING_HEIGHT == 2 then
+                        obj_char_game_scene_char_RP["direction_input"] = 1
+                    elseif DEBUG_TRAINNING_HEIGHT == 5 then
+                        obj_char_game_scene_char_RP["direction_input"] = 4
+                    elseif DEBUG_TRAINNING_HEIGHT == 8 then
+                        obj_char_game_scene_char_RP["direction_input"] = 4
+                    end
+                    if DEBUG_TRAINNING_BLOCK == 2 then
+                        INPUT_SYS_CURRENT_COMMAND_STATE["R"]["correction_left"] = "Holding"
+                        INPUT_SYS_CURRENT_COMMAND_STATE["R"]["correction_right"] = "Holding"
+                    end
                 end
-                if DEBUG_TRAINNING_BLOCK == 2 then
-                    INPUT_SYS_CURRENT_COMMAND_STATE["R"]["correction_left"] = "Holding"
-                    INPUT_SYS_CURRENT_COMMAND_STATE["R"]["correction_right"] = "Holding"
+                if DEBUG_TRAINNING_COUNTER and obj_char_game_scene_char_RP["hurt_state_target"] ~= "unblock" then
+                    obj_char_game_scene_char_RP["hurt_state_target"] = "counter"
                 end
-            end
-            if DEBUG_TRAINNING_COUNTER and obj_char_game_scene_char_RP["hurt_state_target"] ~= "unblock" then
-                obj_char_game_scene_char_RP["hurt_state_target"] = "counter"
             end
 
             -- 更新飞行道具
@@ -301,16 +305,18 @@ function update_game_scene_main_training()
 
                 -- 检测打击受击盒交互
                 if LP_hurt_throw_accur then
-                    char_RP["hit_function"](char_LP) -- RP更新主动攻击状态
+                    print("LP_thrown")
+                    -- char_RP["hit_function"](char_LP) -- RP更新主动攻击状态
                 end
                 if RP_hurt_throw_accur then
-                    char_LP["hit_function"](char_RP) -- LP更新主动攻击状态
+                    print("RP_thrown")
+                    -- char_LP["hit_function"](char_RP) -- LP更新主动攻击状态
                 end
                 if LP_hurt_throw_accur then
-                    char_RP["hurt_function"](char_LP) -- RP更新被攻击状态
+                    -- char_RP["hurt_function"](char_LP) -- RP更新被攻击状态
                 end
                 if RP_hurt_throw_accur then
-                    char_LP["hurt_function"](char_RP) -- LP更新被攻击状态
+                    -- char_LP["hurt_function"](char_RP) -- LP更新被攻击状态
                 end
 
                 -- 检测飞行道具人物打击盒交互
@@ -387,7 +393,7 @@ function update_game_scene_main_training()
                 end
 
                 -- debug_delete_after
-                if DEBUG_TRAINNING_THROW_CLASH then
+                if DEBUG_TRAINNING_THROW_CLASH and DEBUG_TRAINNING_TOGGLE then
 
                 end
 
