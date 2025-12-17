@@ -305,18 +305,24 @@ function update_game_scene_main_training()
 
                 -- 检测打击受击盒交互
                 if LP_hurt_throw_accur then
-                    print("LP_thrown")
-                    -- char_RP["hit_function"](char_LP) -- RP更新主动攻击状态
+                    char_RP["hit_function"](char_LP) -- RP更新主动攻击状态
                 end
                 if RP_hurt_throw_accur then
-                    print("RP_thrown")
-                    -- char_LP["hit_function"](char_RP) -- LP更新主动攻击状态
+                    char_LP["hit_function"](char_RP) -- LP更新主动攻击状态
                 end
                 if LP_hurt_throw_accur then
-                    -- char_RP["hurt_function"](char_LP) -- RP更新被攻击状态
+                    char_RP["hurt_function"](char_LP) -- RP更新被攻击状态
                 end
                 if RP_hurt_throw_accur then
-                    -- char_LP["hurt_function"](char_RP) -- LP更新被攻击状态
+                    char_LP["hurt_function"](char_RP) -- LP更新被攻击状态
+                end
+
+                -- debug_delete_after
+                if (DEBUG_TRAINNING_THROW_CLASH and DEBUG_TRAINNING_TOGGLE) 
+                or (char_LP["state"] == "throw_testing" and char_RP["state"] == "throw_tested")
+                or (char_RP["state"] == "throw_testing" and char_LP["state"] == "throw_tested")
+                then
+
                 end
 
                 -- 检测飞行道具人物打击盒交互
@@ -390,11 +396,6 @@ function update_game_scene_main_training()
                     obj_camera["state"] = "main"
                     obj_camera["enclose_percentage"] = 0.0
                     obj_camera["enclose_position_offset"] = {0, 0, 0}
-                end
-
-                -- debug_delete_after
-                if DEBUG_TRAINNING_THROW_CLASH and DEBUG_TRAINNING_TOGGLE then
-
                 end
 
                 -- 检测相杀

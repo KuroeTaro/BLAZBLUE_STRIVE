@@ -60,6 +60,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["air_hurt_animation"] = nil
     obj_char_game_scene_char_LP["air_block_animation"] = nil
     obj_char_game_scene_char_LP["OTG_hurt_animation"] = nil
+    obj_char_game_scene_char_LP["throw_success_animation"] = nil
     obj_char_game_scene_char_LP["throw_hurt_success_animation"] = nil
     obj_char_game_scene_char_LP["throw_hurt_PRC_animation"] = nil
 
@@ -737,6 +738,8 @@ function load_game_scene_box_anchor_data_LP()
     obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_rotate"][11] = {{0, -190, 350, 380}}
     obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_rotate"][12] = {{0, -150, 380, 300}}
     obj_anchor_data_game_scene_char_LP["0_general_hurt_semi_launched_rotate"] = {255, 525}
+
+    obj_anchor_data_game_scene_char_LP["thrown_tested"] = {150, 530}
 end
 function load_game_scene_audio_char_LP()
     audio_SFX_game_scene_LP = {}

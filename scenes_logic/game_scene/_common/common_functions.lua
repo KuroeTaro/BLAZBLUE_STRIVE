@@ -34,6 +34,13 @@ function common_game_scene_get_SFX_side(side)
         return audio_SFX_game_scene_RP
     end
 end
+function common_game_scene_get_anchor_side(side)
+    if side == "L" then
+        return obj_anchor_data_game_scene_char_LP
+    elseif side == "R" then
+        return obj_anchor_data_game_scene_char_RP
+    end
+end
 function common_game_scene_get_VFX_spwan_anchor_pos(side)
     if side == "L" then
         return obj_VFX_spawn_anchor_pos_data_game_scene_char_LP
@@ -375,15 +382,48 @@ function common_game_scene_strike_hurt_function(obj_char)
     end
 end
 function common_game_scene_throw_hit_function(obj_char)
+    local side = obj_char["player_side"]
+    local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
 
+    if not common_game_scene_get_character_facing_currect(hit_side_obj_char) then
+        hit_side_obj_char[5] = -hit_side_obj_char[5]
+    end
+
+    CHARACTER_VISUAL_FRONT = side
+
+    hit_side_obj_char["state"] = "throw_testing"
+    hit_side_obj_char["throw_active"] = false
+    hit_side_obj_char["velocity"] = {0,0}
+    hit_side_obj_char["game_speed"] = 1
+    hit_side_obj_char["game_speed_subframe"] = 1
+    hit_side_obj_char["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
 end
 function common_game_scene_throw_hurt_function(obj_char)
+    local side = obj_char["player_side"]
+    local hit_side_obj_char = common_game_scene_change_character(side)
+    local anchor_data = common_game_scene_get_anchor_side(side)
 
+    if not common_game_scene_get_character_facing_currect(obj_char) then
+        obj_char[5] = -obj_char[5]
+    end
+
+    hit_side_obj_char["x"] = obj_char["x"] + obj_char[5]*160
+    pushbox_stage_relocate_x(hit_side_obj_char)
+    obj_char["x"] = hit_side_obj_char["x"] + hit_side_obj_char[5]*160
+
+    obj_char["f"] = 0
+    obj_char["state"] = "throw_tested"
+
+    obj_char[8] = 4
+    obj_char["sprite_sheet_state"] = "4_stand_block_high"
+    obj_char["anchor_pos"] = anchor_data["thrown_tested"]
+
+    obj_char["velocity"] = {0,0}
+
+    obj_char["game_speed"] = 1
+    obj_char["game_speed_subframe"] = 1
+    obj_char["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
 end
-function common_game_scene_throw_reposition(obj_char,dx)
-
-end
-
 
 function common_game_scene_create_wiggle_animation(length,prop,wiggle_amount)
     local mid_length = (length-length%2)/2

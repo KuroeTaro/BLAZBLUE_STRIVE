@@ -2321,7 +2321,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
     local side = obj_char["player_side"]
     local side_SFX_table = common_game_scene_get_SFX_side(side)
 
-    res[0] = function() 
+    res[0] = function()
         -- state
         obj_char["sprite_sheet_state"] = "5P"
         obj_char["height_state"] = "stand" -- stand crouch air OTG
@@ -2417,6 +2417,9 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
 
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
+
+        -- visual_front
+        CHARACTER_VISUAL_FRONT = obj_char["player_side"]
     end
     res[1] = function() 
         -- draw_correction
@@ -2684,6 +2687,9 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
 
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
+
+        -- visual_front
+        CHARACTER_VISUAL_FRONT = obj_char["player_side"]
     end
     res[3] = function()
         -- draw_correction
@@ -3003,6 +3009,9 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
 
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
+
+        -- visual_front
+        CHARACTER_VISUAL_FRONT = obj_char["player_side"]
     end
     res[4] = function()
         -- draw_correction
@@ -3162,7 +3171,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
 
-        obj_char["throw_hurt_success_animation"] = load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
+        obj_char["throw_success_animation"] = load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
+        obj_char["throw_hurt_success_animation"] = load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char["throw_hurt_PRC_animation"] = load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
 
         obj_char["current_animation_length"] = 42
@@ -3223,6 +3233,9 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
 
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
+
+        -- visual_front
+        CHARACTER_VISUAL_FRONT = obj_char["player_side"]
     end
     res[1] = function()
         -- state & state_number
@@ -3583,6 +3596,9 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
 
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
+
+        -- visual_front
+        CHARACTER_VISUAL_FRONT = obj_char["player_side"]
     end
     res[7] = function()
         -- draw_correction
@@ -3832,6 +3848,9 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
 
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
+
+        -- visual_front
+        CHARACTER_VISUAL_FRONT = obj_char["player_side"]
     end
     res[1] = function()
         -- draw_correction
@@ -4148,6 +4167,9 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
 
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
+
+        -- visual_front
+        CHARACTER_VISUAL_FRONT = obj_char["player_side"]
     end
     res[1] = function()
         -- draw_correction
