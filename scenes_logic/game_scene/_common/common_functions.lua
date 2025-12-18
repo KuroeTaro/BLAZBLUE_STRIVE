@@ -34,6 +34,13 @@ function common_game_scene_get_SFX_side(side)
         return audio_SFX_game_scene_RP
     end
 end
+function common_game_scene_get_pushbox_side(side)
+    if side == "L" then
+        return obj_pushboxs_data_game_scene_char_LP
+    elseif side == "R" then
+        return obj_pushboxs_data_game_scene_char_RP
+    end
+end
 function common_game_scene_get_anchor_side(side)
     if side == "L" then
         return obj_anchor_data_game_scene_char_LP
@@ -115,6 +122,13 @@ function common_game_scene_change_character_VFX_spawn_anchor_pos(side)
         return obj_VFX_spawn_anchor_pos_data_game_scene_char_RP
     elseif side == "R" then
         return obj_VFX_spawn_anchor_pos_data_game_scene_char_LP
+    end
+end
+function common_game_scene_change_input_state(side)
+    if side == "L" then
+        return INPUT_SYS_CURRENT_COMMAND_STATE["R"]
+    elseif side == "R" then
+        return INPUT_SYS_CURRENT_COMMAND_STATE["L"]
     end
 end
 
@@ -391,8 +405,13 @@ function common_game_scene_throw_hit_function(obj_char)
 
     CHARACTER_VISUAL_FRONT = side
 
+    obj_char["y"] = hit_side_obj_char["y"]
+
+    hit_side_obj_char["f"] = 0
     hit_side_obj_char["state"] = "throw_testing"
+
     hit_side_obj_char["throw_active"] = false
+
     hit_side_obj_char["velocity"] = {0,0}
     hit_side_obj_char["game_speed"] = 1
     hit_side_obj_char["game_speed_subframe"] = 1
@@ -401,11 +420,33 @@ end
 function common_game_scene_throw_hurt_function(obj_char)
     local side = obj_char["player_side"]
     local hit_side_obj_char = common_game_scene_change_character(side)
+    local pushbox_data = common_game_scene_get_pushbox_side(side)
     local anchor_data = common_game_scene_get_anchor_side(side)
+    local sprite_sheet_state = nil
+    local collision_test_ground_height_offset = nil
 
     if not common_game_scene_get_character_facing_currect(obj_char) then
         obj_char[5] = -obj_char[5]
     end
+
+    obj_char[8] = 4
+    if obj_char["height_state"] == "air" then
+        obj_char["sprite_sheet_state"] = "1_4_7_air_block"
+        obj_char["anchor_pos"] = anchor_data["air_thrown_tested"]
+        collision_test_ground_height_offset = 180
+    else
+        obj_char["sprite_sheet_state"] = "4_stand_block_high"
+        obj_char["anchor_pos"] = anchor_data["ground_thrown_tested"]
+        collision_test_ground_height_offset = 0
+    end
+
+    sprite_sheet_state = obj_char["sprite_sheet_state"]
+
+    obj_char["pushbox"] = pushbox_data[sprite_sheet_state][0]
+    obj_char["pushbox_other_side_char_active"] = false
+    obj_char["hitbox_table"] = {}
+    obj_char["hurtbox_table"] = {}
+    obj_char["collision_test_ground_height_offset"] = collision_test_ground_height_offset    
 
     hit_side_obj_char["x"] = obj_char["x"] + obj_char[5]*160
     pushbox_stage_relocate_x(hit_side_obj_char)
@@ -414,15 +455,33 @@ function common_game_scene_throw_hurt_function(obj_char)
     obj_char["f"] = 0
     obj_char["state"] = "throw_tested"
 
-    obj_char[8] = 4
-    obj_char["sprite_sheet_state"] = "4_stand_block_high"
-    obj_char["anchor_pos"] = anchor_data["thrown_tested"]
+    obj_char["startup_frame"] = 0
+    obj_char["active_frame"] = 0
+    obj_char["recovery_frame"] = 0
+    obj_char["frame_adv"] = 0
+
+    obj_char["current_animation_length"] = 0
+    obj_char["idle_cancel"] = false -- 取消链
+
+    obj_char["strike_inv"] = false
+    obj_char["strike_inv_countdown"] = 0
+    obj_char["throw_inv"] = false
+    obj_char["throw_inv_countdown"] = 0
+    obj_char["projectile_inv"] = false
+    obj_char["projectile_inv_countdown"] = 0
+    obj_char["burst_inv"] = false
+    obj_char["burst_inv_countdown"] = 0
+
+    obj_char["overdrive_disabling"] = true
+    obj_char["overdrive_disabling_countdown"] = 1
 
     obj_char["velocity"] = {0,0}
 
     obj_char["game_speed"] = 1
     obj_char["game_speed_subframe"] = 1
     obj_char["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
+
+    hit_side_obj_char["frame_adv"] = 0
 end
 
 function common_game_scene_create_wiggle_animation(length,prop,wiggle_amount)

@@ -1678,77 +1678,76 @@ end
 
 -- teching&teched
 function load_game_scene_anim_char_common_0_Launcher_tech(
-    obj_char,
-    sprite_sheet_state,
-    height_state,
-    state_cache,
-    hurt_horizontal_velocity,
-    hurt_horizontal_friction,
-    hurt_horizontal_velocity_correction,
-    hurt_vertical_velocity,
-    hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,
-    self_knockdown_animation,
-    self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,
-    self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    obj_char,teching_or_teched
 )
     local res = {}
     local side = obj_char["player_side"]
     local obj_char_other_side = common_game_scene_change_character(side)
     local pushbox_data_other_side = common_game_scene_change_character_pushbox(side)
-    local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local sprite_sheet_state = nil
+    local pushbox = nil
+    local collision_test_ground_height_offset = nil
+    if obj_char["height_state"] == "air" then
+        if teching_or_teched == "teching" then
+            sprite_sheet_state = "0_air_Launcher_teching"
+        elseif teching_or_teched == "teched" then
+            sprite_sheet_state = "0_air_Launcher_teched"
+        end
+        pushbox = pushbox_data_other_side["1_4_7_air_block"][0]
+        collision_test_ground_height_offset = 180
+    else
+        if teching_or_teched == "teching" then
+            sprite_sheet_state = "0_ground_Launcher_teching"
+        elseif teching_or_teched == "teched" then
+            sprite_sheet_state = "0_ground_Launcher_teched"
+        end
+        pushbox = pushbox_data_other_side["4_stand_block_high"][0]
+        collision_test_ground_height_offset = 0
+    end
 
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG
-        obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
-        obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
-        obj_char_other_side["startup_frame"] = 0
-        obj_char_other_side["active_frame"] = 0
-        obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
+        obj_char["sprite_sheet_state"] = sprite_sheet_state
+        obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
+        obj_char["move_state"] = "recovery" -- none startup active recovery
+        obj_char["startup_frame"] = 0
+        obj_char["active_frame"] = 0
+        obj_char["recovery_frame"] = 0
+        obj_char["frame_adv"] = 0
 
-        obj_char_other_side["current_animation_length"] = 30
-        obj_char_other_side["idle_cancel"] = false -- 取消链
+        obj_char["current_animation_length"] = 30
+        obj_char["idle_cancel"] = false -- 取消链
 
-        obj_char_other_side["strike_inv"] = true
-        obj_char_other_side["strike_inv_countdown"] = 30
-        obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 30
-        obj_char_other_side["projectile_inv"] = true
-        obj_char_other_side["projectile_inv_countdown"] = 30
-        obj_char_other_side["burst_inv"] = true
-        obj_char_other_side["burst_inv_countdown"] = 30
+        obj_char["strike_inv"] = true
+        obj_char["strike_inv_countdown"] = 30
+        obj_char["throw_inv"] = true
+        obj_char["throw_inv_countdown"] = 30
+        obj_char["projectile_inv"] = true
+        obj_char["projectile_inv_countdown"] = 30
+        obj_char["burst_inv"] = true
+        obj_char["burst_inv_countdown"] = 30
 
-        obj_char_other_side["overdrive_disabling"] = true
-        obj_char_other_side["overdrive_disabling_countdown"] = 30
+        obj_char["overdrive_disabling"] = true
+        obj_char["overdrive_disabling_countdown"] = 30
 
         -- state_number
-        common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
-            hurt_horizontal_velocity,
-            hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,
-            hurt_vertical_velocity,
-            hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
-        )
+        obj_char["velocity"] = {-obj_char[5]*20,0}
+        obj_char["velocity_cache"] = {0,0}
+        obj_char["gravity"] = 2.5
+        obj_char["friction"] = 10 -- 包括地面移动和空中dash的水平阻力
 
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
-        obj_char_other_side["pushbox_other_side_char_active"] = true
-        obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = {}
-        obj_char_other_side["collision_test_ground_height_offset"] = 0
+        obj_char["pushbox"] = pushbox
+        obj_char["pushbox_other_side_char_active"] = false
+        obj_char["hitbox_table"] = {}
+        obj_char["hurtbox_table"] = {}
+        obj_char["collision_test_ground_height_offset"] = collision_test_ground_height_offset
         
         -- draw_correction
-        obj_char_other_side[8] = 0
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char[8] = 0
+        obj_char["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
 
         -- special_update
         frame_0_special_update_function()
@@ -1758,24 +1757,24 @@ function load_game_scene_anim_char_common_0_Launcher_tech(
     end
     res[3] = function()
         -- draw_correction
-        obj_char_other_side[8] = 1
+        obj_char[8] = 1
     end
     res[7] = function()
         -- draw_correction
-        obj_char_other_side[8] = 2
+        obj_char[8] = 2
     end
     res[24] = function()
         -- draw_correction
-        obj_char_other_side[8] = 3
+        obj_char[8] = 3
     end
     res[25] = function()
         -- input_sys_cache
-        obj_char_other_side["input_sys_state"] = "save" -- none save load
-        init_input_sys_cache(obj_char_other_side)
+        obj_char["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char)
     end
     res[28] = function()
         -- draw_correction
-        obj_char_other_side[8] = 4
+        obj_char[8] = 4
     end
     res[30] = function()
         -- animation end

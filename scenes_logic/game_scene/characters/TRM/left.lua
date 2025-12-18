@@ -248,8 +248,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "0_general_hurt_soft_knockdown_wallstick_air",
                 "0_general_hurt_soft_recovery_ground",
                 "0_general_hurt_soft_recovery_wallstick_air",
-                "0_Launcher_teched",
-                "0_Launcher_teching",
+                "0_ground_Launcher_teched",
+                "0_ground_Launcher_teching",
                 "0_stand_hurt_high",
                 "0_stand_hurt_low",
                 "0_stand_hurt_mid",
@@ -739,7 +739,8 @@ function load_game_scene_box_anchor_data_LP()
     obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_rotate"][12] = {{0, -150, 380, 300}}
     obj_anchor_data_game_scene_char_LP["0_general_hurt_semi_launched_rotate"] = {255, 525}
 
-    obj_anchor_data_game_scene_char_LP["thrown_tested"] = {150, 530}
+    obj_anchor_data_game_scene_char_LP["air_thrown_tested"] = {340, 430}
+    obj_anchor_data_game_scene_char_LP["ground_thrown_tested"] = {150, 530}
 end
 function load_game_scene_audio_char_LP()
     audio_SFX_game_scene_LP = {}
@@ -776,6 +777,7 @@ function state_machine_char_game_scene_char_LP()
     -- sp + Launcher 普通投
 
     local input = INPUT_SYS_CURRENT_COMMAND_STATE["L"]
+    local input_other_side = common_game_scene_change_input_state("L")
     local obj_char = obj_char_game_scene_char_LP
     local switch = {
         ["before_ease_in"] = function()
@@ -801,14 +803,53 @@ function state_machine_char_game_scene_char_LP()
             state_gate_game_scene_char_LP_from_hurt(input,obj_char)
         end,
         ["throw_success"] = function()
+            state_machine_char_game_scene_char_LP_input_sys_cache()
+            character_animator(obj_char,obj_char["current_animation"])
+            state_gate_game_scene_char_LP_from_throw_success(input,obj_char)
+        end,
+        ["throw_hurt_success"] = function()
+            state_machine_char_game_scene_char_LP_input_sys_cache()
+            character_animator(obj_char,obj_char["current_animation"])
+            state_gate_game_scene_char_LP_from_throw_hurt_success(input,obj_char)
         end,
         ["throw_testing"] = function()
+            obj_char["f"] = obj_char["f"] + 1
+            if obj_char["f"] <= 9 and input_other_side["Launcher"] == "Pressing" then
+                obj_char["state"] = "throw_teched"
+                obj_char["current_animation"] = load_game_scene_anim_char_common_0_Launcher_tech(
+                    obj_char,"teched"
+                )
+                init_character_anim_with(obj_char,obj_char["current_animation"])
+            elseif obj_char["f"] > 9 then
+                obj_char["state"] = "throw_success"
+                obj_char["current_animation"] = obj_char["throw_success_animation"]
+                init_character_anim_with(obj_char,obj_char["current_animation"])
+            end
         end,
         ["throw_tested"] = function()
+            local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+            obj_char["f"] = obj_char["f"] + 1
+            if obj_char["f"] <= 9 and input["Launcher"] == "Pressing" then
+                obj_char["state"] = "throw_teching"
+                obj_char["current_animation"] = load_game_scene_anim_char_common_0_Launcher_tech(
+                    obj_char,"teching"
+                )
+                init_character_anim_with(obj_char,obj_char["current_animation"])
+            elseif obj_char["f"] > 9 then
+                obj_char["state"] = "throw_hurt_success"
+                obj_char["current_animation"] = obj_char_other_side["throw_hurt_success_animation"]
+                init_character_anim_with(obj_char,obj_char["current_animation"])
+            end
         end,
         ["throw_teching"] = function()
+            state_machine_char_game_scene_char_LP_input_sys_cache()
+            character_animator(obj_char,obj_char["current_animation"])
+            state_gate_game_scene_char_LP_from_throw_tech(input,obj_char)
         end,
         ["throw_teched"] = function()
+            state_machine_char_game_scene_char_LP_input_sys_cache()
+            character_animator(obj_char,obj_char["current_animation"])
+            state_gate_game_scene_char_LP_from_throw_tech(input,obj_char)
         end,
 
         ["hitstop"] = function()
@@ -1642,6 +1683,13 @@ function state_gate_game_scene_char_LP_from_hurt(input,obj_char)
         end
         return
     end
+end
+
+function state_gate_game_scene_char_LP_from_throw_success(input,obj_char)
+end
+function state_gate_game_scene_char_LP_from_throw_hurt_success(input,obj_char)
+end
+function state_gate_game_scene_char_LP_from_throw_tech(input,obj_char)
 end
 
 function state_gate_game_scene_char_LP_from_hitstop(input,obj_char)

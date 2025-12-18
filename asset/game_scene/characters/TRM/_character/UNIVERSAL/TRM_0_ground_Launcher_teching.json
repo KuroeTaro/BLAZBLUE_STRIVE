@@ -43,7 +43,7 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "TRM_0_Launcher_teching",
+	"image": "TRM_0_ground_Launcher_teching",
 	"format": "RGBA8888",
 	"size": {"w":2500,"h":440},
 	"scale": "1",
