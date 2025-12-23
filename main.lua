@@ -85,7 +85,7 @@ function love.run()
 			GFRST = GFRST%(1/120)
 		end
 		-- loop_time = love.timer.getTime() - loop_time
-		-- if loop_time > 0.01 then
+		-- if loop_time > 0.016 then
 		-- 	print(loop_time)
 		-- end
 		DEBUG_LAST_SLEEP = math.max(0,(1/120-GFRST))

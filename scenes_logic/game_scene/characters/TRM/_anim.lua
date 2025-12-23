@@ -3308,8 +3308,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
 end
 function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
     local res = {}
-    local friction = 10
-    local gravity = 2.5
     local side = obj_char["player_side"]
     local side_SFX_table = common_game_scene_get_SFX_side(side)
     local obj_char_other_side = common_game_scene_change_character(side)
@@ -3317,32 +3315,29 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
 
-    local function update_y_37f_48f()
-        obj_char_other_side["y"] = 155
+    local function update_y_37f_43f(i)
+        obj_char_other_side["y"] = 2.5*(i-39)^2+185
     end
-    local function update_y_49f_55f()
-        obj_char_other_side["y"] = 155
+    local function update_y_44f_55f(i)
+        obj_char_other_side["y"] = 1.5*(i-49)^2+335
     end
-    local function update_y_56f_60f()
-        obj_char_other_side["y"] = 155
-        if obj_char_other_side["f"] == 60 then
-            obj_char_other_side["y"] = 365
-        end
+    local function update_y_56f_60f(i)
+        obj_char_other_side["y"] = 1.111*(i-58)^2+355
     end
 
-    for i = 37,48 do
+    for i = 37,43 do
         res[i] = function()
-            update_y_37f_48f()
+            update_y_37f_43f(i)
         end
     end
-    for i = 49,55 do
+    for i = 44,55 do
         res[i] = function()
-            update_y_49f_55f()
+            update_y_44f_55f(i)
         end
     end
     for i = 56,60 do
         res[i] = function()
-            update_y_56f_60f()
+            update_y_56f_60f(i)
         end
     end
 
@@ -3403,7 +3398,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["x"] = obj_char["x"] + obj_char[5]*160
         pushbox_stage_relocate_x(obj_char_other_side)
         obj_char["x"] = obj_char_other_side["x"] + obj_char_other_side[5]*160
-        obj_char_other_side["y"] = 155
+        obj_char_other_side["y"] = 205
         obj_char_other_side["sprite_sheet_state"] = "0_general_hurt_launched_high"
         obj_char_other_side["height_state"] = "air"
 
@@ -3420,7 +3415,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             10,
-            7,
+            1,
             1,
             0,
             0,
@@ -3436,7 +3431,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side[8] = 1
 
         -- update
-        update_y_37f_48f()
+        update_y_37f_43f(37)
     end
     res[40] = function()
         -- collide
@@ -3446,7 +3441,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side[8] = 3
 
         -- update
-        update_y_37f_48f()
+        update_y_37f_43f(40)
     end
     res[44] = function()
         -- state
@@ -3461,14 +3456,14 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side["0_general_hurt_hard_knockdown_up"]
 
         -- update
-        update_y_37f_48f()
+        update_y_44f_55f(44)
     end
     res[48] = function()
         -- draw_correction
         obj_char_other_side[8] = 1
 
         -- update
-        update_y_37f_48f()
+        update_y_44f_55f(48)
     end
     res[49] = function()
         -- collide
@@ -3479,28 +3474,28 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side[8] = 2
 
         -- update
-        update_y_49f_55f()
+        update_y_44f_55f(49)
     end
     res[52] = function()
         -- draw_correction
         obj_char_other_side[8] = 3
 
         -- update
-        update_y_49f_55f()
+        update_y_44f_55f(52)
     end
     res[55] = function()
         -- draw_correction
         obj_char_other_side[8] = 4
 
         -- update
-        update_y_49f_55f()
+        update_y_44f_55f(55)
     end
     res[56] = function()
         -- draw_correction
         obj_char_other_side[8] = 5
 
         -- update
-        update_y_56f_60f()
+        update_y_56f_60f(56)
     end
     res[60] = function()
         -- state
@@ -3513,7 +3508,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side[8] = 6
 
         -- update
-        update_y_56f_60f()
+        update_y_56f_60f(60)
     end
     res[65] = function()
         -- draw_correction
@@ -3527,7 +3522,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
 end
 function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
     local res = {}
-    local friction = 10
+    local friction = 1
     local gravity = 2.5
     local side = obj_char["player_side"]
     local side_SFX_table = common_game_scene_get_SFX_side(side)

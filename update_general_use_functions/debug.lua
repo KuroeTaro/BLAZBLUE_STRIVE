@@ -414,7 +414,7 @@ function draw_debug_info_all(x_offset,y_offset)
     love.graphics.print("Draw Calls: " .. stats.drawcalls, 250+x_offset, 150+y_offset)
     love.graphics.print("Canvas Switches: " .. stats.canvasswitches, 250+x_offset, 30+y_offset)
     love.graphics.print("Texture Memory: " .. stats.texturememory / 1024 / 1024 .. " MB", 250+x_offset, 50+y_offset)
-    love.graphics.print("Images Loaded: " .. stats.images, 250+x_offset, 70+y_offset)
+    -- love.graphics.print("Images Loaded: " .. stats.images, 250+x_offset, 70+y_offset)
     -- love.graphics.print("Global variables: " .. globalCount, 250+x_offset, 90+y_offset)
 
     -- 绘制角色帧数

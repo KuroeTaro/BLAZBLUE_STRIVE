@@ -1,4 +1,5 @@
 extern float time;
+
 float hash(float x){
     return mod(sin(cos(x * 12.13) * 19.123) * 17.321, 1.0);
 }
@@ -13,7 +14,7 @@ float noise(vec2 p){
     v2 = mix(v2, v3, smoothstep(0.0, 1.0, pm.x));
     return mix(v0, v2, smoothstep(0.0, 1.0, pm.y));
 }
-vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords){
+vec4 effect(vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords){
     vec2 uv = screen_coords.xy / 900;
     uv *= 0.8;
     float v = 0.0;
