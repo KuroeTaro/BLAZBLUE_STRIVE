@@ -1,5 +1,4 @@
 local filesys_module = require "love.filesystem"
-local graphics_module
 local image_module = require "love.image"
 local auido_module = require "love.sound"
 local compress_module = image_module.newCompressedData
