@@ -1,37 +1,8 @@
-require("update_general_use_functions/animator")
-require("update_general_use_functions/audio_volume")
-require("update_general_use_functions/collision")
-require("update_general_use_functions/common")
-require("update_general_use_functions/debug")
-require("update_general_use_functions/game_duration")
-require("update_general_use_functions/require_scene")
-require("update_general_use_functions/input_sys")
-require("update_general_use_functions/resolution")
-require("update_general_use_functions/thread_load")
+require("advance_require_functions")
 require("draw_general_use_functions")
-
-require("scenes_logic/load_scene/draw_functions")
-require("scenes_logic/load_scene/init")
-require("scenes_logic/load_scene/main_blocks")
-
-require("scenes_logic/disclaimer_and_logos_scene/load_function")
-require("scenes_logic/disclaimer_and_logos_scene/init")
-require("scenes_logic/start_scene/load_function")
-require("scenes_logic/start_scene/init")
-require("scenes_logic/char_select_scene/load_function")
-require("scenes_logic/char_select_scene/init")
-require("scenes_logic/game_scene/_common/load_function")
-require("scenes_logic/game_scene/_common/init")
-
--- local function countGlobals()
---     local count = 0
---     for k, v in pairs(_G) do
---         count = count + 1
---     end
---     return count
--- end
-
--- globalCount = countGlobals()
+require_all_in_folder("update_general_use_functions")
+require_all_in_folder("scenes_logic/load_scene")
+require_all_init_load_function()
 
 function love.run()
 	if love.load then love.load(love.arg.parseGameArguments(arg), arg) end

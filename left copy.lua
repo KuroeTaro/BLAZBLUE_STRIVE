@@ -227,7 +227,7 @@ function order_load_game_scene_char_LP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_LP[v] = 
                 sprite_sheet_load(
                     "asset/game_scene/characters/TRM/_character/UNIVERSAL/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    love.graphics.newTexture(PLAYER_ASSET_DATA[v])
                 )
             end 
 

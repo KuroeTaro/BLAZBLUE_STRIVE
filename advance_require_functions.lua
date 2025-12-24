@@ -26,4 +26,16 @@ function unrequire_prefix(prefix)
             package.loaded[name] = nil
         end
     end
+    require_all_init_load_function()
+end
+
+function require_all_init_load_function()
+    require("scenes_logic.disclaimer_and_logos_scene.load_function")
+    require("scenes_logic.disclaimer_and_logos_scene.init")
+    require("scenes_logic.start_scene.load_function")
+    require("scenes_logic.start_scene.init")
+    require("scenes_logic.char_select_scene.load_function")
+    require("scenes_logic.char_select_scene.init")
+    require("scenes_logic.game_scene._common.load_function")
+    require("scenes_logic.game_scene._common.init")
 end

@@ -13,10 +13,12 @@ function love.conf(t)
 
     t.console = true
     t.window.title = "BLAZBLUE_STRIVE.ver.1/8.003"
-    t.window.vsync = 1
+    t.window.vsync = 0
     t.modules.physics = false 
     t.modules.touch = false 
     t.modules.video = false
     t.modules.math = false
     t.modules.mouse = false
+    t.graphics.renderers = {"vulkan"} 
+    -- t.graphics.lowpower = true
 end 
