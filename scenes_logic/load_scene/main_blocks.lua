@@ -98,7 +98,6 @@ function update_load_scene_general()
 
         -- 下一个场景为 update_load_scene_ease_out
         current_update_block = update_load_scene_ease_out
-
     end
 end
 function update_load_scene_ease_out()
