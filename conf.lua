@@ -19,7 +19,7 @@ function love.conf(t)
     t.modules.video = false
     t.modules.math = false
     t.modules.mouse = false
-    if t.version ~= "11.5" then
+    if t.version == "12.0" then
         t.graphics.renderers = {"vulkan"} 
     end
 end 

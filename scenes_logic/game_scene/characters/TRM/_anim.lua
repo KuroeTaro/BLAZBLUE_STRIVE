@@ -903,8 +903,8 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
     end
     res[3] = function()
         -- state
-        obj_char["idle_cancel"] = true
         obj_char["move_state"] = "none" -- none startup active recovery
+        obj_char["idle_cancel"] = true
 
         -- collide
         obj_char["hurtbox_table"] = {{0, -190, 180, 380}}
@@ -1203,6 +1203,19 @@ function load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
         obj_char["burst_inv_countdown"] = 0
 
         -- state_number
+        if test_input_sys_press_or_hold(INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]["dash"]) 
+        and obj_char["velocity"][1] <= 1.0
+        and obj_char["direction_input"] == 9
+        then
+            obj_char["velocity"][1] = 20*obj_char[5]
+        end
+        if obj_char["direction_input"] == 7 then
+            obj_char["velocity"][1] = math.max(7,math.abs(obj_char["velocity"][1]))
+            obj_char["velocity"][1] = -obj_char["velocity"][1]*obj_char[5]
+        elseif obj_char["direction_input"] == 9 then
+            obj_char["velocity"][1] = math.max(9,math.abs(obj_char["velocity"][1]))
+            obj_char["velocity"][1] = obj_char["velocity"][1]*obj_char[5]
+        end
         obj_char["velocity_cache"] = {obj_char["velocity"][1],0}
         obj_char["velocity"] = {0,0}
         obj_char["gravity"] = 2.5
@@ -2513,11 +2526,11 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
 
     return res
 end
--- 2k
--- 6k
--- 5k
+-- 2K
+-- 6K
+-- 5K
 -- 2S
--- 6s
+-- 6S
 -- cS
 function load_game_scene_anim_char_TRM_cS(obj_char)
     local res = {}
@@ -3146,6 +3159,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
     local side = obj_char["player_side"]
     local side_SFX_table = common_game_scene_get_SFX_side(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
 
     res[0] = function() 
         -- state
@@ -3227,12 +3241,22 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {245,530}
-            -- hurtstop_wiggle_x_animation hurtstop_wiggle_y_animation hurtstop_enclose_animation
+
+        -- hurtstop_wiggle_x_animation hurtstop_wiggle_y_animation hurtstop_enclose_animation
         common_game_scene_hit_load_camera_anim(obj_char,0.8)
-        common_game_scene_nil_load_camera_enclose_anim(obj_char)
+        load_game_scene_anim_char_TRM_4_6Launcher_camera_enclose_anim(obj_char)
 
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
+
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char)
+        if test_input_sys_press_or_hold(input["left"]) then
+            obj_char["input_sys_cache"]["left"] = true
+        elseif test_input_sys_press_or_hold(input["right"]) then
+            obj_char["input_sys_cache"]["right"] = true
+        end
 
         -- visual_front
         CHARACTER_VISUAL_FRONT = obj_char["player_side"]
@@ -3311,6 +3335,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
     local side = obj_char["player_side"]
     local side_SFX_table = common_game_scene_get_SFX_side(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    local obj_camera = obj_stage_game_scene_camera
     local pushbox_data_other_side = common_game_scene_change_character_pushbox(side)
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
@@ -3325,6 +3350,12 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["y"] = 1.111*(i-58)^2+355
     end
 
+    for i = 28,36 do
+        res[i] = function()
+            point_linear_animator(obj_char_other_side,obj_char_other_side["hurtstop_wiggle_x_animation"])
+            point_linear_animator(obj_char_other_side,obj_char_other_side["hurtstop_wiggle_y_animation"])
+        end
+    end
     for i = 37,43 do
         res[i] = function()
             update_y_37f_43f(i)
@@ -3353,23 +3384,27 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["self_knockdown_animation"] = self_knockdown_animation
-        obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
+        obj_char_other_side["self_knockdown_animation"] = nil
+        obj_char_other_side["self_knockdown_recovery_animation"] = 
+        load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
+            obj_char,
+            "0_general_hurt_hard_recovery_up",
+            "OTG",
+            "5_stand_idle",
+            nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
+        )
 
-        obj_char_other_side["current_animation_length"] = 91
+        obj_char_other_side["current_animation_length"] = 90
         obj_char_other_side["idle_cancel"] = false -- 取消链
 
-        obj_char_other_side["strike_inv"] = true
-        obj_char_other_side["strike_inv_countdown"] = 91
+        obj_char_other_side["strike_inv"] = false
+        obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 91
+        obj_char_other_side["throw_inv_countdown"] = 95
         obj_char_other_side["projectile_inv"] = true
-        obj_char_other_side["projectile_inv_countdown"] = 91
-        obj_char_other_side["burst_inv"] = true
-        obj_char_other_side["burst_inv_countdown"] = 91
-
-        obj_char_other_side["overdrive_disabling"] = true
-        obj_char_other_side["overdrive_disabling_countdown"] = 91
+        obj_char_other_side["projectile_inv_countdown"] = 95
+        obj_char_other_side["burst_inv"] = false
+        obj_char_other_side["burst_inv_countdown"] = 0
 
         -- state_number
         obj_char_other_side["velocity"] = {0,0}
@@ -3388,6 +3423,16 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
 
         -- set_frame_adv
         obj_char["frame_adv"] = 0
+
+        -- camera_enclose
+        anim_camera_point_linear_game_scene_camera_enclosing = obj_char["camera_enclosing_anim"]
+        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
+        obj_camera["enclose_position_offset"] = {
+            (obj_char["x"]+obj_char_other_side["x"])/16, 
+            (obj_char["y"]+obj_char_other_side["y"])/8 - obj_camera["3d_pos_y"],
+            120
+        }
+        obj_camera["state"] = "throw_camera_move"
     end
     res[1] = function()
         -- state
@@ -3395,9 +3440,9 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
     end
     res[27] = function()
         -- state
-        obj_char_other_side["x"] = obj_char["x"] + obj_char[5]*160
+        obj_char_other_side["x"] = obj_char["x"] + obj_char[5]*320
         pushbox_stage_relocate_x(obj_char_other_side)
-        obj_char["x"] = obj_char_other_side["x"] + obj_char_other_side[5]*160
+        obj_char["x"] = obj_char_other_side["x"] + obj_char_other_side[5]*320
         obj_char_other_side["y"] = 205
         obj_char_other_side["sprite_sheet_state"] = "0_general_hurt_launched_high"
         obj_char_other_side["height_state"] = "air"
@@ -3409,6 +3454,30 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         -- draw_correction
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side["0_general_hurt_launched_high"]
+
+        -- camera_shake
+        obj_camera["state"] = "hit_camera_move"
+        common_game_scene_hit_load_camera_anim(obj_char,0.8)
+        anim_camera_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
+        anim_camera_point_linear_game_scene_camera_shake_y = obj_char["camera_y_shake_anim"]
+        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+
+        -- character_shake
+        obj_char_other_side["hurtstop_wiggle_x_animation"] = 
+        common_game_scene_create_wiggle_animation(
+            9,
+            "hurtstop_wiggle_x",
+            10
+        )
+        obj_char_other_side["hurtstop_wiggle_y_animation"] = 
+        common_game_scene_create_wiggle_animation(
+            9,
+            "hurtstop_wiggle_y",
+            4
+        )
+        init_point_linear_anim_with(obj_char_other_side,obj_char_other_side["hurtstop_wiggle_x_animation"])
+        init_point_linear_anim_with(obj_char_other_side,obj_char_other_side["hurtstop_wiggle_y_animation"])
     end
     res[37] = function()
         -- state
@@ -3429,6 +3498,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
 
         -- draw_correction
         obj_char_other_side[8] = 1
+        obj_char_other_side["hurtstop_wiggle_x"] = 0
+        obj_char_other_side["hurtstop_wiggle_y"] = 0
 
         -- update
         update_y_37f_43f(37)
@@ -3458,13 +3529,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         -- update
         update_y_44f_55f(44)
     end
-    res[48] = function()
-        -- draw_correction
-        obj_char_other_side[8] = 1
-
-        -- update
-        update_y_44f_55f(48)
-    end
     res[49] = function()
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side["0_general_hurt_hard_knockdown_up"][2]
@@ -3476,21 +3540,14 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         -- update
         update_y_44f_55f(49)
     end
-    res[52] = function()
-        -- draw_correction
-        obj_char_other_side[8] = 3
-
-        -- update
-        update_y_44f_55f(52)
-    end
-    res[55] = function()
+    res[53] = function()
         -- draw_correction
         obj_char_other_side[8] = 4
 
         -- update
         update_y_44f_55f(55)
     end
-    res[56] = function()
+    res[57] = function()
         -- draw_correction
         obj_char_other_side[8] = 5
 
@@ -3514,7 +3571,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         -- draw_correction
         obj_char_other_side[8] = 7
     end
-    res[91] = function()
+    res[90] = function()
         -- animation_end
     end
     
@@ -3527,6 +3584,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
     local side = obj_char["player_side"]
     local side_SFX_table = common_game_scene_get_SFX_side(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
 
     res[0] = function() 
         -- state
@@ -3552,7 +3610,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
 
-        obj_char["current_animation_length"] = 42
+        obj_char["current_animation_length"] = 129
 
         obj_char["hit_cancel"] = false -- 取消链
         obj_char["idle_cancel"] = false -- 取消链
@@ -3592,11 +3650,11 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         obj_char["collision_test_ground_height_offset"] = 0 
 
         -- sub_obj
-        obj_char["hit_VFX_insert_function"] = nil
-        obj_char["hit_VFX_insert_function_argument"] = nil
+        obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
+        obj_char["hit_VFX_insert_function_argument"] = {obj_char,250,-500,0.8,0.6,0.6,0.262}
         obj_char["hit_SFX"] = nil
         obj_char["counter_VFX_insert_function"] = nil
-        obj_char["counter_VFX_insert_function_argument"] = nil
+        obj_char["counter_VFX_insert_function_argument"] = {}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = nil
         obj_char["block_SFX"] = nil
@@ -3604,12 +3662,27 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {249,530}
-            -- hurtstop_wiggle_x_animation hurtstop_wiggle_y_animation hurtstop_enclose_animation
-        common_game_scene_hit_load_camera_anim(obj_char,0.8)
-        common_game_scene_nil_load_camera_enclose_anim(obj_char)
 
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
+
+        -- throw_relocate_x
+        obj_char["input_sys_state"] = "load" -- none save load
+        state_machine_char_game_scene_char_LP_input_sys_cache()
+
+        local dx = obj_char[5]*200
+        if test_input_sys_press_or_hold(input["left"]) then
+            dx = -200
+        elseif test_input_sys_press_or_hold(input["right"]) then
+            dx = 200
+        end
+        obj_char_other_side["x"] = obj_char["x"] + dx
+        pushbox_stage_relocate_x(obj_char_other_side)
+        obj_char["x"] = obj_char_other_side["x"] - dx
+            
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end  
 
         -- visual_front
         CHARACTER_VISUAL_FRONT = obj_char["player_side"]
@@ -3632,7 +3705,16 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
     end
     res[27] = function()
         -- insert_VFX
-
+        local hit_VFX_insert_function_argument = obj_char["hit_VFX_insert_function_argument"]
+        obj_char["hit_VFX_insert_function"](
+            hit_VFX_insert_function_argument[1],
+            hit_VFX_insert_function_argument[2],
+            hit_VFX_insert_function_argument[3],
+            hit_VFX_insert_function_argument[4],
+            hit_VFX_insert_function_argument[5],
+            hit_VFX_insert_function_argument[6],
+            hit_VFX_insert_function_argument[7]
+        )
         -- draw_correction
         obj_char[8] = 5
     end
@@ -3661,8 +3743,25 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         obj_char[8] = 11
     end
     res[77] = function()
-        -- state
+        obj_char["height_state"] = "stand" -- stand crouch air OTG
+        obj_char["hit_type_state"] = "none" -- none strike throw burst
+        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
+        obj_char["move_state"] = "none" -- none startup active recovery
+
+        obj_char["hit_cancel"] = false -- 取消链
         obj_char["idle_cancel"] = true -- 取消链
+
+        obj_char["hit_function"] = function() end
+        obj_char["hurt_function"] = function() end
+        obj_char["parry_function"] = function() end
+        obj_char["hit_counter_ver_function"] = function() end
+
+        -- state_number
+        obj_char["gravity"] = 2.5
+        obj_char["horizontal_velocity_correction"] = 1
+        obj_char["gravity_correction"] = 1
+        obj_char["damage_correction"] = 1
 
         -- collide
         obj_char["pushbox"] = {0, -185, 121.5, 370}
@@ -3690,6 +3789,32 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
     end
     
     return res
+end
+
+function load_game_scene_anim_char_TRM_4_6Launcher_camera_enclose_anim(obj_char)
+    local anim = {}
+    anim[0] = {0.00, 1}
+    anim[1] = {0.56, 2}
+    anim[2] = {0.70, 4}
+    anim[4] = {0.82, 6}
+    anim[6] = {0.86, 8}
+    anim[8] = {0.90, 10}
+    anim[10] = {0.94, 20}
+    anim[20] = {0.98, 30}
+    anim[30] = {0.99, 35}
+    anim[35] = {1.00, 40}
+    anim[40] = {1.00, 45}
+    anim[45] = {0.97, 50}
+    anim[50] = {0.69, 55}
+    anim[55] = {0.20, 60}
+    anim[60] = {0.03, 65}
+    anim[65] = {0.00, 65}
+    anim["prop"] = "enclose_percentage"
+    anim["length"] = 65
+    anim["loop"] = false
+    anim["fix_type"] = true
+
+    obj_char["camera_enclosing_anim"] = anim
 end
 -- _5Launcher
 function load_game_scene_anim_char_TRM_5Launcher(obj_char)

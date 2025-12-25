@@ -120,8 +120,6 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["heat_penalty_countdown"] = 0
     obj_char_game_scene_char_RP["ability_recover_pause"] = false
     obj_char_game_scene_char_RP["ability_recover_pause_countdown"] = 0
-    obj_char_game_scene_char_RP["overdrive_disabling"] = false
-    obj_char_game_scene_char_RP["overdrive_disabling_countdown"] = 0
     obj_char_game_scene_char_RP["positive_bonus"] = false
     obj_char_game_scene_char_RP["positive_bonus_countdown"] = 0
 
@@ -779,6 +777,7 @@ function state_machine_char_game_scene_char_RP()
     local input = INPUT_SYS_CURRENT_COMMAND_STATE["R"]
     local input_other_side = common_game_scene_change_input_state("R")
     local obj_char = obj_char_game_scene_char_RP
+    local obj_char_other_side = common_game_scene_change_character("R")
     local switch = {
         ["before_ease_in"] = function()
             character_animator(obj_char,obj_char["current_animation"])
@@ -816,7 +815,7 @@ function state_machine_char_game_scene_char_RP()
             obj_char["f"] = obj_char["f"] + 1
             if obj_char["f"] <= 9 and input_other_side["Launcher"] == "Pressing" then
                 obj_char["state"] = "throw_teched"
-                obj_char["current_animation"] = load_game_scene_anim_char_common_0_Launcher_tech(
+                obj_char["current_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
                     obj_char,"teched"
                 )
                 init_character_anim_with(obj_char,obj_char["current_animation"])
@@ -824,6 +823,10 @@ function state_machine_char_game_scene_char_RP()
                 obj_char["state"] = "throw_success"
                 obj_char["current_animation"] = obj_char["throw_success_animation"]
                 init_character_anim_with(obj_char,obj_char["current_animation"])
+                   
+                if not common_game_scene_get_character_facing_currect(obj_char) then
+                    obj_char[5] = -obj_char[5]
+                end       
             end
         end,
         ["throw_tested"] = function()
@@ -831,7 +834,7 @@ function state_machine_char_game_scene_char_RP()
             obj_char["f"] = obj_char["f"] + 1
             if obj_char["f"] <= 9 and input["Launcher"] == "Pressing" then
                 obj_char["state"] = "throw_teching"
-                obj_char["current_animation"] = load_game_scene_anim_char_common_0_Launcher_tech(
+                obj_char["current_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
                     obj_char,"teching"
                 )
                 init_character_anim_with(obj_char,obj_char["current_animation"])
@@ -839,6 +842,10 @@ function state_machine_char_game_scene_char_RP()
                 obj_char["state"] = "throw_hurt_success"
                 obj_char["current_animation"] = obj_char_other_side["throw_hurt_success_animation"]
                 init_character_anim_with(obj_char,obj_char["current_animation"])
+
+                if not common_game_scene_get_character_facing_currect(obj_char) then
+                    obj_char[5] = -obj_char[5]
+                end 
             end
         end,
         ["throw_teching"] = function()
@@ -1686,8 +1693,45 @@ function state_gate_game_scene_char_RP_from_hurt(input,obj_char)
 end
 
 function state_gate_game_scene_char_RP_from_throw_success(input,obj_char)
+    -- air stand_dile
+    if common_game_scene_get_character_animation_end(obj_char) then
+        if obj_char["height_state"] == "air" then
+            obj_char["y"] = math.min(225,obj_char["y"])
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,585},0,0)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "7_8_9_jump_air"
+        elseif obj_char["height_state"] == "stand" then
+            obj_char["y"] = 365
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "5_stand_idle"
+        end
+        return
+    end
+    -- idle_cancel
+    if obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_RP_common_ground_idle_to_move_hold_ver(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
+            return true
+        end
+    end
 end
 function state_gate_game_scene_char_RP_from_throw_hurt_success(input,obj_char)
+    -- knockdown knockdown_recovery
+    if common_game_scene_get_character_animation_end(obj_char) then
+        obj_char["y"] = 365
+        obj_char["state"] = obj_char["state_cache"]
+        if obj_char["state"] == "knockdown" then
+            obj_char["current_animation"] = obj_char["self_knockdown_animation"] 
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+        elseif obj_char["state"] == "knockdown_recovery" then
+            obj_char["current_animation"] = obj_char["self_knockdown_recovery_animation"] 
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+        end
+        return
+    end
 end
 function state_gate_game_scene_char_RP_from_throw_tech(input,obj_char)
 end

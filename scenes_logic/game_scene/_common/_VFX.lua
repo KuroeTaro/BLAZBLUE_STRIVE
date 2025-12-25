@@ -245,6 +245,7 @@ end
 -- blast slash directional ray_impact
 function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
+    r = obj_char[5]*r
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
     obj["life"] = 11
     obj[1] = obj_char["x"] + obj_char[5]*(x)
@@ -300,6 +301,7 @@ function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r)
 end
 function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
+    r = obj_char[5]*r
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
     obj["life"] = 21
     obj[1] = obj_char["x"] + obj_char[5]*(x)
@@ -354,11 +356,11 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r)
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
     local dx = -100
     local dy = -200
-    local rot_dx = dx * math.cos(r) - dy * math.sin(r)
-    local rot_dy = dx * math.sin(r) + dy * math.cos(r)
+    local rot_dx = dx * obj_char[5] * math.cos(r) - dy * obj_char[6] * math.sin(r)
+    local rot_dy = dx * obj_char[5] * math.sin(r) + dy * obj_char[6] * math.cos(r)
     obj["life"] = 16
-    obj[1] = obj_char["x"] + obj_char[5]*(x + rot_dx)
-    obj[2] = obj_char["y"] + obj_char[6]*(y + rot_dy)
+    obj[1] = obj_char["x"] + obj_char[5]*(x) + rot_dx
+    obj[2] = obj_char["y"] + obj_char[6]*(y) + rot_dy
     obj[3] = obj_char[3]
     obj[4] = opacity
     obj[5] = obj_char[5]*sx
@@ -389,8 +391,8 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r)
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            obj[1] = obj_char["x"] + obj_char[5]*(x + rot_dx)
-            obj[2] = obj_char["y"] + obj_char[6]*(y + rot_dy)
+            obj[1] = obj_char["x"] + obj_char[5]*(x) + rot_dx
+            obj[2] = obj_char["y"] + obj_char[6]*(y) + rot_dy
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
         end
@@ -414,6 +416,7 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r)
 end
 function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
+    r = obj_char[5]*r
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
     obj["life"] = 27
     obj[1] = obj_char["x"] + obj_char[5]*(x)
@@ -534,11 +537,11 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
     local dx = -100
     local dy = -200
-    local rot_dx = dx * math.cos(r) - dy * math.sin(r)
-    local rot_dy = dx * math.sin(r) + dy * math.cos(r)
+    local rot_dx = dx * obj_char[5] * math.cos(r) - dy * obj_char[6] * math.sin(r)
+    local rot_dy = dx * obj_char[5] * math.sin(r) + dy * obj_char[6] * math.cos(r)
     obj["life"] = 16
-    obj[1] = obj_char["x"] + obj_char[5]*(x + rot_dx)
-    obj[2] = obj_char["y"] + obj_char[6]*(y + rot_dy)
+    obj[1] = obj_char["x"] + obj_char[5]*(x) + rot_dx
+    obj[2] = obj_char["y"] + obj_char[6]*(y) + rot_dy
     obj[3] = obj_char[3]
     obj[4] = opacity
     obj[5] = obj_char[5]*sx
@@ -569,8 +572,8 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            obj[1] = obj_char["x"] + obj_char[5]*(x + rot_dx)
-            obj[2] = obj_char["y"] + obj_char[6]*(y + rot_dy)
+            obj[1] = obj_char["x"] + obj_char[5]*(x) + rot_dx
+            obj[2] = obj_char["y"] + obj_char[6]*(y) + rot_dy
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
         end
@@ -596,11 +599,11 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
     local dx = 45
     local dy = 30
-    local rot_dx = dx * math.cos(r) - dy * math.sin(r)
-    local rot_dy = dx * math.sin(r) + dy * math.cos(r)
+    local rot_dx = dx * obj_char[5] * math.cos(r) - dy * obj_char[6] * math.sin(r)
+    local rot_dy = dx * obj_char[5] * math.sin(r) + dy * obj_char[6] * math.cos(r)
     obj["life"] = 5
-    obj[1] = obj_char["x"] + obj_char[5]*(x + rot_dx)
-    obj[2] = obj_char["y"] + obj_char[6]*(y + rot_dy)
+    obj[1] = obj_char["x"] + obj_char[5]*(x) + rot_dx
+    obj[2] = obj_char["y"] + obj_char[6]*(y) + rot_dy
     obj[3] = obj_char[3]
     obj[4] = opacity*0.65
     obj[5] = obj_char[5]*sx
@@ -621,8 +624,8 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            obj[1] = obj_char["x"] + obj_char[5]*(x + rot_dx)
-            obj[2] = obj_char["y"] + obj_char[6]*(y + rot_dy)
+            obj[1] = obj_char["x"] + obj_char[5]*(x) + rot_dx
+            obj[2] = obj_char["y"] + obj_char[6]*(y) + rot_dy
             point_linear_animator(self,self["opacity_point_linear_animation"])
             self["life"] = self["life"] - 1
         end

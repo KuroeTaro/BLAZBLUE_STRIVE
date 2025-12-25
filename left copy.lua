@@ -107,7 +107,6 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["overdrive_gauge"] = {600.0, 600.0, "off"} -- 0.0 - 600.0
     obj_char_game_scene_char_LP["overdrive_timer"] = {0,0,0,0} -- 0f 00:00 
     obj_char_game_scene_char_LP["overdrive_drain_speed"] = 24
-    obj_char_game_scene_char_LP["overdrive_disabling_countdown"] = 0
     obj_char_game_scene_char_LP["risk_gauge"] = {0.0, 300.0}-- 0.0 - 300.0
     obj_char_game_scene_char_LP["wallbreak_gauge"] = {0.0, 300.0, false}-- 0.0 - 300.0
 

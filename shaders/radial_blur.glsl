@@ -1,7 +1,7 @@
 extern vec2 start_coods; // 模糊中心 (像素坐标)
 extern vec2 input_screen_coords; // 屏幕分辨率
 
-const int nsamples = 32; // 大幅减少采样次数
+const int nsamples = 16; // 大幅减少采样次数
 
 // 生成伪随机噪声
 float rand(vec2 co) {

@@ -56,7 +56,6 @@ function load_game_scene_anim_stage()
 
     anim_camera_point_linear_game_scene_camera_shake_x = {}
     anim_camera_point_linear_game_scene_camera_shake_y = {}
-
 end
 function order_load_game_scene_stage(load_order)
     local switch = 
@@ -70,7 +69,6 @@ function order_load_game_scene_stage(load_order)
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
-
 end
 
 -- update
@@ -128,8 +126,15 @@ function update_game_scene_stage()
             point_linear_animator(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
             point_linear_animator(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
             point_linear_animator(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
-            if get_point_linear_anim_end_state(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing) 
-            and get_point_linear_anim_end_state(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x) then
+            if get_point_linear_anim_end_state(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
+            and get_point_linear_anim_end_state(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+            and get_point_linear_anim_end_state(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y) then
+                obj_camera["state"] = "main"
+            end
+        end,
+        ["throw_camera_move"] = function()
+            point_linear_animator(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
+            if get_point_linear_anim_end_state(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing) then
                 obj_camera["state"] = "main"
             end
         end,
@@ -236,5 +241,4 @@ function draw_game_scene_stage_glow()
     love.graphics.draw(DRAW_STAGE_ALPHA_COMP_CANVAS)
     love.graphics.setColor(1, 1, 1, 1)
     love.graphics.setBlendMode("alpha")
-
 end
