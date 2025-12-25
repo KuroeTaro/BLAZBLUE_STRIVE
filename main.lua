@@ -65,7 +65,6 @@ function love.run()
 end
 
 function love.load()
-
 	DEBUG_GAP_NUM = 0
 	DEBUG_LAST_SLEEP = 0
 	DEBUG_PAUSE = false
