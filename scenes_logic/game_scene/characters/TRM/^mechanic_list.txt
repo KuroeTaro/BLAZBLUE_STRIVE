@@ -16,3 +16,7 @@ Disabling Blue Burst
     Being hit by an Overdrive
     Being hit by attacks that force the opponent into non-standard hitstun, 
     such as a Wall Stick state
+
+    test by
+    opponent's overdirve statius
+    current_state_gate
