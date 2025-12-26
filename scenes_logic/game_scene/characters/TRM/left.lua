@@ -2128,7 +2128,6 @@ function state_gate_game_scene_char_LP_from_4_walk(input,obj_char)
         state_gate_game_scene_char_LP_from_5_stand_turn(input,obj_char)
         return true
     end
-
     -- no obj_char["velocity"][1] = 0 if not attack move only
     if state_gate_game_scene_char_LP_common_ground_idle_to_not_attack_move_hold_ver(input,obj_char) then
         return true
