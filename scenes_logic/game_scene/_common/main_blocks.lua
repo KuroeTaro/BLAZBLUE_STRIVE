@@ -159,6 +159,8 @@ function update_game_scene_main_training()
             state_machine_UI_game_scene_movie_cover_loop(obj_UI_game_scene_movie_cover)
 
             if SCENE_TIMER == 0 then
+                state_machine_char_game_scene_char_LP_input_sys_cache()
+                state_machine_char_game_scene_char_RP_input_sys_cache()
                 obj_char_game_scene_char_LP["input_sys_state"] = "load"
                 obj_char_game_scene_char_RP["input_sys_state"] = "load"
             end

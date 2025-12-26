@@ -18,7 +18,7 @@ vec4 effect(vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords) {
     
     vec4 final_color = vec4(0.0);
     float blur_width = 0.5;
-    float blur_start = 0.5;
+    float blur_start = 0.75;
     
     for (int i = 0; i < nsamples; i++) {
         // 使用 (float(i) + offset) 让采样点随机化
