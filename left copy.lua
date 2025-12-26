@@ -67,8 +67,8 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["current_animation"] = nil
     obj_char_game_scene_char_LP["current_animation_length"] = 0
 
-    obj_char_game_scene_char_LP["hit_cancel"] = false -- 取消链
-    obj_char_game_scene_char_LP["idle_cancel"] = false -- 取消链
+    obj_char_game_scene_char_LP["hit_cancel"] = false
+    obj_char_game_scene_char_LP["idle_cancel"] = false
 
     obj_char_game_scene_char_LP["strike_active"] = false -- 防止在同一动作的active多次触发
     obj_char_game_scene_char_LP["throw_active"] = false -- 防止在同一动作的active多次触发
@@ -964,7 +964,7 @@ function state_machine_char_game_scene_char_LP()
             end
             if common_game_scene_get_character_animation_end(obj_char) then
                 -- to stand_idle
-                obj_char["idle_cancel"] = true -- 取消链
+                obj_char["idle_cancel"] = true
                 obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)   
                 init_character_anim_with(obj_char,obj_char["current_animation"])
                 obj_char["f"] = 28

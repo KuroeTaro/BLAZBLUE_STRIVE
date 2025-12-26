@@ -73,8 +73,8 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["current_animation"] = nil
     obj_char_game_scene_char_LP["current_animation_length"] = 0
 
-    obj_char_game_scene_char_LP["hit_cancel"] = false -- 取消链
-    obj_char_game_scene_char_LP["idle_cancel"] = false -- 取消链
+    obj_char_game_scene_char_LP["hit_cancel"] = false
+    obj_char_game_scene_char_LP["idle_cancel"] = false
 
     obj_char_game_scene_char_LP["strike_active"] = false -- 防止在同一动作的active多次触发
     obj_char_game_scene_char_LP["throw_active"] = false -- 防止在同一动作的active多次触发
@@ -1482,46 +1482,6 @@ function state_gate_game_scene_char_LP_common_ground_idle_to_move(input,obj_char
     end
     return false
 end
-function state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char)
-end
-function state_gate_game_scene_char_LP_common_air_idle_to_move(input,obj_char)
-    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
-    -- _burst_overdrive
-    -- _RC_blue_rc
-    -- _active_FD_block
-    -- _jsp_S
-    -- _jsp_H
-    -- _jP
-    -- _jK
-    -- _j2K
-    -- _jS
-    -- _j2S
-    -- _j4_6Launcher
-    -- _j5Launcher
-    -- _4dash_air_backdash
-    if obj_char["y"] < 120 and (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 1)
-    and test_input_sys_press_or_hold(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
-        obj_char["air_move"]["jump"][1] = 0
-        obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
-        obj_char["current_animation"] = load_game_scene_anim_char_TRM_4dash_air_backdash(input,obj_char)
-        init_character_anim_with(obj_char,obj_char["current_animation"])
-        obj_char["state"] = "4dash_air_backdash"
-        return true
-    end
-    -- _6dash_air_dash
-    if (not common_game_scene_check_crouch_direction(obj_char)) and obj_char["y"] < 120
-    and test_input_sys_press(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
-        obj_char["air_move"]["jump"][1] = 0
-        obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
-        obj_char["current_animation"] = load_game_scene_anim_char_TRM_6dash_air_dash(input,obj_char)
-        init_character_anim_with(obj_char,obj_char["current_animation"])
-        obj_char["state"] = "6dash_air_dash"
-        return true
-    end
-    return false
-end
-function state_gate_game_scene_char_LP_common_air_to_special_move(input,obj_char)
-end
 function state_gate_game_scene_char_LP_common_ground_idle_to_move_hold_ver(input,obj_char)
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     -- _burst_overdrive
@@ -1624,6 +1584,52 @@ function state_gate_game_scene_char_LP_common_ground_idle_to_move_hold_ver(input
     end
     return false
 end
+function state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char)
+end
+function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,obj_char)
+end
+function state_gate_game_scene_char_LP_common_air_idle_to_move(input,obj_char)
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    -- _burst_overdrive
+    -- _RC_blue_rc
+    -- _active_FD_block
+    -- _jsp_S
+    -- _jsp_H
+    -- _jP
+    -- _jK
+    -- _j2K
+    -- _jS
+    -- _j2S
+    -- _j4_6Launcher
+    -- _j5Launcher
+    -- _4dash_air_backdash
+    if obj_char["y"] < 120 and (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 1)
+    and test_input_sys_press_or_hold(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
+        obj_char["air_move"]["jump"][1] = 0
+        obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_4dash_air_backdash(input,obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "4dash_air_backdash"
+        return true
+    end
+    -- _6dash_air_dash
+    if (not common_game_scene_check_crouch_direction(obj_char)) and obj_char["y"] < 120
+    and test_input_sys_press(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
+        obj_char["air_move"]["jump"][1] = 0
+        obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_6dash_air_dash(input,obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "6dash_air_dash"
+        return true
+    end
+    return false
+end
+function state_gate_game_scene_char_LP_common_air_idle_to_move_hold_ver(input,obj_char)
+end
+function state_gate_game_scene_char_LP_common_air_to_special_move(input,obj_char)
+end
+function state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver(input,obj_char)
+end
 
 function state_gate_game_scene_char_LP_from_active_FD_block(input,obj_char)
 end
@@ -1631,13 +1637,17 @@ function state_gate_game_scene_char_LP_from_block(input,obj_char)
     if not common_game_scene_get_character_animation_end(obj_char) then
         return
     end
+
+    obj_char["input_sys_state"] = "load" -- none save load
+    state_machine_char_game_scene_char_LP_input_sys_cache()
     -- _5_stand_idle
     if obj_char["height_state"] == "stand" then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)   
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "5_stand_idle"
-        state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char)
-        return
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+            return true
+        end
     end
     -- _1_2_3_crouch
     if obj_char["height_state"] == "crouch" then
@@ -1646,7 +1656,9 @@ function state_gate_game_scene_char_LP_from_block(input,obj_char)
         obj_char["state"] = "1_2_3_crouch"
         obj_char["f"] = 4
         character_animator(obj_char,obj_char["current_animation"])
-        return
+        if state_gate_game_scene_char_LP_from_1_2_3_crouch(input,obj_char) then
+            return true
+        end
     end
 end
 function state_gate_game_scene_char_LP_from_hurt(input,obj_char)
@@ -1672,19 +1684,26 @@ function state_gate_game_scene_char_LP_from_hurt(input,obj_char)
         return
     end
     if common_game_scene_get_character_animation_end(obj_char) then
+        obj_char["input_sys_state"] = "load" -- none save load
+        state_machine_char_game_scene_char_LP_input_sys_cache()
+        -- 5_stand_idle
         if obj_char["height_state"] == "stand" then
-            -- _5_stand_idle
             obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)   
             init_character_anim_with(obj_char,obj_char["current_animation"])
             obj_char["state"] = "5_stand_idle"
-            state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char)
+            if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+                return true
+            end
+        -- 1_2_3_crouch
         elseif obj_char["height_state"] == "crouch" then
-            -- _1_2_3_crouch
             obj_char["current_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
             init_character_anim_with(obj_char,obj_char["current_animation"])
             obj_char["state"] = "1_2_3_crouch"
             obj_char["f"] = 4
             character_animator(obj_char,obj_char["current_animation"])
+            if state_gate_game_scene_char_LP_from_1_2_3_crouch(input,obj_char) then
+                return true
+            end
         elseif obj_char["height_state"] == "OTG" then
             assert("此受伤动画为OTG状态中结束了")
         end
@@ -1695,26 +1714,45 @@ end
 function state_gate_game_scene_char_LP_from_throw_success(input,obj_char)
     -- air stand_dile
     if common_game_scene_get_character_animation_end(obj_char) then
+        obj_char["input_sys_state"] = "load" -- none save load
+        state_machine_char_game_scene_char_LP_input_sys_cache()
         if obj_char["height_state"] == "air" then
             obj_char["y"] = math.min(225,obj_char["y"])
             obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,585},0,0)
             init_character_anim_with(obj_char,obj_char["current_animation"])
             obj_char["state"] = "7_8_9_jump_air"
+
+            if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
+                return true
+            end
         elseif obj_char["height_state"] == "stand" then
             obj_char["y"] = 365
             obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
             init_character_anim_with(obj_char,obj_char["current_animation"])
             obj_char["state"] = "5_stand_idle"
+
+            if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+                return true
+            end
         end
         return
     end
     -- idle_cancel
     if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_idle_to_move_hold_ver(input,obj_char) then
-            return true
-        end
-        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
-            return true
+        if obj_char["height_state"] == "air" then
+            if state_gate_game_scene_char_LP_common_air_idle_to_move_hold_ver(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
+                return true
+            end
+        elseif obj_char["height_state"] == "stand" then
+            if state_gate_game_scene_char_LP_common_ground_idle_to_move_hold_ver(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+                return true
+            end
         end
     end
 end
@@ -1781,7 +1819,13 @@ function state_gate_game_scene_char_LP_from_knockdown_recovery(input,obj_char)
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "5_stand_idle"
-        return true
+
+        obj_char["input_sys_state"] = "load" -- none save load
+        state_machine_char_game_scene_char_LP_input_sys_cache()
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+            return true
+        end
+        return
     end
 end
 
@@ -2268,9 +2312,6 @@ function state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,o
     end
     -- _common_ground_idle_to_move
     if obj_char["idle_cancel"] then
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
-        state_machine_char_game_scene_char_LP_input_sys_cache()
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
             obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
@@ -2322,9 +2363,6 @@ function state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char)
     end
     -- _common_air_idle_to_move
     if obj_char["idle_cancel"] then
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
-        state_machine_char_game_scene_char_LP_input_sys_cache()
         if state_gate_game_scene_char_LP_common_air_idle_to_move(input,obj_char) then
             return true
         end
@@ -2334,9 +2372,6 @@ function state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char)
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
-        state_machine_char_game_scene_char_LP_input_sys_cache()
         common_update_game_scene_input_direction(obj_char)
         -- air_move
         obj_char["air_move"]["jump"][1] = math.max(math.min(obj_char["air_move"]["jump"][1]-1,obj_char["air_move"]["jump"][2]),0)
@@ -2434,9 +2469,6 @@ function state_gate_game_scene_char_LP_from_4dash_backdash(input,obj_char)
     end
     -- _common_ground_idle_to_move
     if obj_char["idle_cancel"] then
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
-        state_machine_char_game_scene_char_LP_input_sys_cache()
         if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
             return true
         end
@@ -2481,9 +2513,6 @@ function state_gate_game_scene_char_LP_from_4dash_air_backdash(input,obj_char)
     end
     -- _common_air_idle_to_move
     if obj_char["idle_cancel"] then
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
-        state_machine_char_game_scene_char_LP_input_sys_cache()
         if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
             return true
         end
@@ -2553,9 +2582,6 @@ function state_gate_game_scene_char_LP_from_6dash_air_dash(input,obj_char)
     end
     -- _common_air_idle_to_move
     if obj_char["idle_cancel"] then
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
-        state_machine_char_game_scene_char_LP_input_sys_cache()
         if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
             return true
         end
@@ -2574,9 +2600,6 @@ end
 function state_gate_game_scene_char_LP_from_6dash_dash_cancel(input,obj_char)
     -- common_ground_to_special_move
     if obj_char["idle_cancel"] then
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
-        state_machine_char_game_scene_char_LP_input_sys_cache()
         if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
             return true
         end

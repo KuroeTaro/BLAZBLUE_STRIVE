@@ -55,6 +55,13 @@ function common_game_scene_get_VFX_spwan_anchor_pos(side)
         return obj_VFX_spawn_anchor_pos_data_game_scene_char_RP
     end
 end
+function common_game_scene_get_input_sys_cache_state_machine(side)
+    if side == "L" then
+        return state_machine_char_game_scene_char_LP_input_sys_cache
+    elseif side == "R" then
+        return state_machine_char_game_scene_char_RP_input_sys_cache
+    end
+end
 
 function common_update_game_scene_input_direction(obj_char)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
@@ -172,7 +179,7 @@ function common_game_scene_strike_hit_function(obj_char)
     hit_side_obj_char["state"] = "hitstop"
     hit_side_obj_char["last_hitstop_frame"] = 0
     hit_side_obj_char["strike_active"] = false
-    hit_side_obj_char["hit_cancel"] = true -- 取消链
+    hit_side_obj_char["hit_cancel"] = true
     hit_side_obj_char["game_speed"] = 1
     hit_side_obj_char["game_speed_subframe"] = 1
     hit_side_obj_char["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
@@ -462,7 +469,7 @@ function common_game_scene_throw_hurt_function(obj_char)
     obj_char["frame_adv"] = 0
 
     obj_char["current_animation_length"] = 0
-    obj_char["idle_cancel"] = false -- 取消链
+    obj_char["idle_cancel"] = false
 
     obj_char["strike_inv"] = false
     obj_char["strike_inv_countdown"] = 0

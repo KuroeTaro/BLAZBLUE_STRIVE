@@ -102,8 +102,8 @@ obj_char["OTG_hurt_animation"] = nil
 
 obj_char["current_animation_length"] = 0
 
-obj_char["hit_cancel"] = false -- 取消链
-obj_char["idle_cancel"] = true -- 取消链
+obj_char["hit_cancel"] = false
+obj_char["idle_cancel"] = true
 
 obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
 obj_char["throw_active"] = false -- 防止在同一动作的active多次触发

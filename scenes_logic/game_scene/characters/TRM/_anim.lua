@@ -855,7 +855,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
 
         obj_char["current_animation_length"] = 17
 
-        obj_char["idle_cancel"] = false -- 取消链
+        obj_char["idle_cancel"] = false
 
         obj_char["strike_inv"] = false
         obj_char["strike_inv_countdown"] = 0
@@ -908,6 +908,10 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
 
         -- collide
         obj_char["hurtbox_table"] = {{0, -190, 180, 380}}
+
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
 
         -- draw_correction
         obj_char[8] = 1
@@ -1005,7 +1009,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet_stat
 
         obj_char["current_animation_length"] = 35
 
-        obj_char["idle_cancel"] = false -- 取消链
+        obj_char["idle_cancel"] = false
 
         obj_char["strike_inv"] = false
         obj_char["strike_inv_countdown"] = 0
@@ -1045,7 +1049,11 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet_stat
     end
     res[4] = function()
         -- state
-        obj_char["idle_cancel"] = true -- 取消链
+        obj_char["idle_cancel"] = true
+
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
 
         -- draw_correction
         obj_char[8] = 1
@@ -1424,6 +1432,10 @@ function load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
         -- collide
         obj_char["hurtbox_table"] = {{0, -195, 205, 390}}
 
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
+
         -- draw_correction
         obj_char[8] = 4
     end
@@ -1564,7 +1576,11 @@ function load_game_scene_anim_char_TRM_4dash_air_backdash(input,obj_char)
         -- state
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
-        obj_char["idle_cancel"] = false
+        obj_char["idle_cancel"] = true
+
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
 
         -- update
         obj_char["velocity"][1] = -25*obj_char[5]
@@ -1923,11 +1939,15 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(input,obj_char)
         -- state
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
-        obj_char["idle_cancel"] = false
+        obj_char["idle_cancel"] = true
 
         -- collide
         obj_char["pushbox"] = {0, -100, 121.5, 200}
         obj_char["hurtbox_table"] = {{0, -120, 260, 270},{-65, -45, 260, 120}}
+
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
 
         -- draw_correction
         obj_char[8] = 3
@@ -2373,8 +2393,8 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
 
         obj_char["current_animation_length"] = 27
 
-        obj_char["hit_cancel"] = false -- 取消链
-        obj_char["idle_cancel"] = false -- 取消链
+        obj_char["hit_cancel"] = false
+        obj_char["idle_cancel"] = false
 
         obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
 
@@ -2424,7 +2444,8 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {233,520}
-            -- hurtstop_wiggle_x_animation hurtstop_wiggle_y_animation hurtstop_enclose_animation
+
+        -- hurtstop_wiggle_x_animation hurtstop_wiggle_y_animation hurtstop_enclose_animation
         common_game_scene_hit_load_camera_anim(obj_char,0.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
 
@@ -2498,13 +2519,17 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
 
-        obj_char["hit_cancel"] = false -- 取消链
-        obj_char["idle_cancel"] = true -- 取消链
+        obj_char["hit_cancel"] = false
+        obj_char["idle_cancel"] = true
 
         obj_char["hit_function"] = function() end
         obj_char["hurt_function"] = function() end
         obj_char["parry_function"] = function() end
         obj_char["hit_counter_ver_function"] = function() end
+
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
 
         -- state_number
         obj_char["gravity"] = 2.5
@@ -2643,8 +2668,8 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
 
         obj_char["current_animation_length"] = 29
 
-        obj_char["hit_cancel"] = false -- 取消链
-        obj_char["idle_cancel"] = false -- 取消链
+        obj_char["hit_cancel"] = false
+        obj_char["idle_cancel"] = false
 
         obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
 
@@ -2694,8 +2719,9 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {320,510}
-            -- hurtstop_wiggle_x_animation hurtstop_wiggle_y_animation hurtstop_enclose_animation
-        common_game_scene_hit_load_camera_anim(obj_char,0.8)
+
+        -- hurtstop_wiggle_x_animation hurtstop_wiggle_y_animation hurtstop_enclose_animation
+        common_game_scene_hit_load_camera_anim(obj_char,1.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
 
         -- set_frame_adv
@@ -2779,8 +2805,12 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
 
-        obj_char["hit_cancel"] = false -- 取消链
-        obj_char["idle_cancel"] = true -- 取消链
+        obj_char["hit_cancel"] = false
+        obj_char["idle_cancel"] = true
+
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
 
         obj_char["hit_function"] = function() end
         obj_char["hurt_function"] = function() end
@@ -2965,8 +2995,8 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
 
         obj_char["current_animation_length"] = 50
 
-        obj_char["hit_cancel"] = false -- 取消链
-        obj_char["idle_cancel"] = false -- 取消链
+        obj_char["hit_cancel"] = false
+        obj_char["idle_cancel"] = false
 
         obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
 
@@ -3016,8 +3046,9 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {330,310}
-            -- hurtstop_wiggle_x_animation hurtstop_wiggle_y_animation hurtstop_enclose_animation
-        common_game_scene_hit_load_camera_anim(obj_char,0.8)
+
+        -- hurtstop_wiggle_x_animation hurtstop_wiggle_y_animation hurtstop_enclose_animation
+        common_game_scene_hit_load_camera_anim(obj_char,1.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
 
         -- set_frame_adv
@@ -3113,13 +3144,17 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
 
-        obj_char["hit_cancel"] = false -- 取消链
-        obj_char["idle_cancel"] = true -- 取消链
+        obj_char["hit_cancel"] = false
+        obj_char["idle_cancel"] = true
 
         obj_char["hit_function"] = function() end
         obj_char["hurt_function"] = function() end
         obj_char["parry_function"] = function() end
         obj_char["hit_counter_ver_function"] = function() end
+
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
 
         -- state_number
         obj_char["gravity"] = 2.5
@@ -3191,8 +3226,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
 
         obj_char["current_animation_length"] = 42
 
-        obj_char["hit_cancel"] = false -- 取消链
-        obj_char["idle_cancel"] = false -- 取消链
+        obj_char["hit_cancel"] = false
+        obj_char["idle_cancel"] = false
 
         obj_char["throw_active"] = false -- 防止在同一动作的active多次触发
 
@@ -3243,7 +3278,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
         obj_char["anchor_pos"] = {245,530}
 
         -- hurtstop_wiggle_x_animation hurtstop_wiggle_y_animation hurtstop_enclose_animation
-        common_game_scene_hit_load_camera_anim(obj_char,0.8)
+        common_game_scene_hit_load_camera_anim(obj_char,1.2)
         load_game_scene_anim_char_TRM_4_6Launcher_camera_enclose_anim(obj_char)
 
         -- set_frame_adv
@@ -3315,6 +3350,11 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
     res[35] = function()
         -- draw_correction
         obj_char[8] = 6
+    end
+    res[37] = function()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
     end
     res[40] = function()
         -- collide
@@ -3395,7 +3435,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         )
 
         obj_char_other_side["current_animation_length"] = 90
-        obj_char_other_side["idle_cancel"] = false -- 取消链
+        obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
@@ -3457,7 +3497,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
 
         -- camera_shake
         obj_camera["state"] = "hit_camera_move"
-        common_game_scene_hit_load_camera_anim(obj_char,0.8)
         anim_camera_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
         anim_camera_point_linear_game_scene_camera_shake_y = obj_char["camera_y_shake_anim"]
         init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
@@ -3612,8 +3651,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
 
         obj_char["current_animation_length"] = 129
 
-        obj_char["hit_cancel"] = false -- 取消链
-        obj_char["idle_cancel"] = false -- 取消链
+        obj_char["hit_cancel"] = false
+        obj_char["idle_cancel"] = false
 
         obj_char["throw_active"] = false -- 防止在同一动作的active多次触发
 
@@ -3731,6 +3770,10 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         obj_char[8] = 8
     end
     res[67] = function()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char)
+
         -- draw_correction
         obj_char[8] = 9
     end
@@ -3749,13 +3792,17 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
 
-        obj_char["hit_cancel"] = false -- 取消链
-        obj_char["idle_cancel"] = true -- 取消链
+        obj_char["hit_cancel"] = false
+        obj_char["idle_cancel"] = true
 
         obj_char["hit_function"] = function() end
         obj_char["hurt_function"] = function() end
         obj_char["parry_function"] = function() end
         obj_char["hit_counter_ver_function"] = function() end
+
+        -- input_sys
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
 
         -- state_number
         obj_char["gravity"] = 2.5
@@ -3930,8 +3977,8 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
 
         obj_char["current_animation_length"] = 65
 
-        obj_char["hit_cancel"] = false -- 取消链
-        obj_char["idle_cancel"] = false -- 取消链
+        obj_char["hit_cancel"] = false
+        obj_char["idle_cancel"] = false
 
         obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
 
@@ -3982,7 +4029,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char[8] = 0
         obj_char["anchor_pos"] = {415,635}
             -- hurtstop_wiggle_x_animation hurtstop_wiggle_y_animation hurtstop_enclose_animation
-        common_game_scene_hit_load_camera_anim(obj_char,0.8)
+        common_game_scene_hit_load_camera_anim(obj_char,1.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
 
         -- set_frame_adv
@@ -4095,13 +4142,17 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
 
-        obj_char["hit_cancel"] = false -- 取消链
-        obj_char["idle_cancel"] = true -- 取消链
+        obj_char["hit_cancel"] = false
+        obj_char["idle_cancel"] = true
 
         obj_char["hit_function"] = function() end
         obj_char["hurt_function"] = function() end
         obj_char["parry_function"] = function() end
         obj_char["hit_counter_ver_function"] = function() end
+
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
 
         -- state_number
         obj_char["gravity"] = 2.5
@@ -4249,8 +4300,8 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
 
         obj_char["current_animation_length"] = 65
 
-        obj_char["hit_cancel"] = false -- 取消链
-        obj_char["idle_cancel"] = false -- 取消链
+        obj_char["hit_cancel"] = false
+        obj_char["idle_cancel"] = false
 
         obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
 
@@ -4301,7 +4352,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
         obj_char[8] = 0
         obj_char["anchor_pos"] = {415,635}
             -- hurtstop_wiggle_x_animation hurtstop_wiggle_y_animation hurtstop_enclose_animation
-        common_game_scene_hit_load_camera_anim(obj_char,0.8)
+        common_game_scene_hit_load_camera_anim(obj_char,1.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
 
         -- set_frame_adv
@@ -4414,13 +4465,17 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
 
-        obj_char["hit_cancel"] = false -- 取消链
-        obj_char["idle_cancel"] = true -- 取消链
+        obj_char["hit_cancel"] = false
+        obj_char["idle_cancel"] = true
 
         obj_char["hit_function"] = function() end
         obj_char["hurt_function"] = function() end
         obj_char["parry_function"] = function() end
         obj_char["hit_counter_ver_function"] = function() end
+
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
 
         -- state_number
         obj_char["gravity"] = 2.5
