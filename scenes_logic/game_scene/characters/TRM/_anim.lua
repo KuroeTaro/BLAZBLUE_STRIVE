@@ -2036,7 +2036,7 @@ end
             -- game_speed
             -- game_speed_subframe
             -- game_speed_abnormal_realtime_countdown
-function load_game_scene_anim_char_TRM_burst_overdrive_ground(obj_char,other_side_countdown)
+function load_game_scene_anim_char_TRM_burst_overdrive(obj_char,other_side_countdown)
     local res = {}
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     -- 更新hitbox table 有一个全屏的红框
@@ -2062,8 +2062,7 @@ function load_game_scene_anim_char_TRM_burst_overdrive_ground(obj_char,other_sid
     end
     res[0] = function()
         -- state
-        obj_char["sprite_sheet_state"] = "burst_overdrive_rc"
-        obj_char["height_state"] = "stand"
+        obj_char["sprite_sheet_state"] = "burst_overdrive_rc_ground"
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -2097,6 +2096,11 @@ function load_game_scene_anim_char_TRM_burst_overdrive_ground(obj_char,other_sid
         obj_char["overdrive_gauge"][3] = "on"
 
         play_obj_audio(audio_SFX_game_scene_overdrive)
+
+        -- air_move
+        obj_char["air_move"] = {}
+        obj_char["air_move"]["jump"] = {1,1}
+        obj_char["air_move"]["air_dash"] = {1,1}
 
         -- game_speed
         obj_char["game_speed"] = 1
@@ -3650,6 +3654,9 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side["0_general_hurt_hard_knockdown_up"]
 
+        -- insert_VFX
+        insert_VFX_game_scene_stage_smoke_land_blow(obj_char,-355,-160,1,1,1,0)
+        
         -- update
         update_y_44f_55f(44)
     end

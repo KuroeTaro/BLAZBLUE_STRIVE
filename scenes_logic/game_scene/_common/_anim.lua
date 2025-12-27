@@ -1661,6 +1661,7 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         end
         pushbox = pushbox_data_other_side["1_4_7_air_block"][0]
         collision_test_ground_height_offset = 180
+        obj_char["y"] = math.max(obj_char["y"],160)
     else
         if teching_or_teched == "teching" then
             sprite_sheet_state = "0_ground_Launcher_teching"
@@ -1694,10 +1695,10 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         obj_char["burst_inv_countdown"] = 30
 
         -- state_number
-        obj_char["velocity"] = {-obj_char[5]*20,0}
+        obj_char["velocity"] = {-obj_char[5]*80,0}
         obj_char["velocity_cache"] = {0,0}
         obj_char["gravity"] = 2.5
-        obj_char["friction"] = 10 -- 包括地面移动和空中dash的水平阻力
+        obj_char["friction"] = 5 -- 包括地面移动和空中dash的水平阻力
 
         -- collide
         obj_char["pushbox"] = pushbox
@@ -1709,9 +1710,6 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
-
-        -- special_update
-        frame_0_special_update_function()
 
         -- set_frame_adv
         obj_char["frame_adv"] = 0
@@ -2551,33 +2549,21 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
         -- draw_correction
         obj_char_other_side[8] = 3
     end
-    -- res[10] = function()
-    --     -- draw_correction
-    --     obj_char_other_side[8] = 4
-    -- end
     res[10] = function()
+        -- draw_correction
+        obj_char_other_side[8] = 4
+    end
+    res[15] = function()
         -- draw_correction
         obj_char_other_side[8] = 5
     end
-    -- res[16] = function()
-    --     -- draw_correction
-    --     obj_char_other_side[8] = 6
-    -- end
-    res[15] = function()
-        -- draw_correction
-        obj_char_other_side[8] = 7
-    end
     res[20] = function()
         -- draw_correction
-        obj_char_other_side[8] = 8
+        obj_char_other_side[8] = 6
     end
-    -- res[22] = function()
-    --     -- draw_correction
-    --     obj_char_other_side[8] = 9
-    -- end
     res[24] = function()
         -- draw_correction
-        obj_char_other_side[8] = 10
+        obj_char_other_side[8] = 7
     end
     res[25] = function()
         -- input_sys_cache
@@ -2586,7 +2572,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
     end
     res[27] = function()
         -- draw_correction
-        obj_char_other_side[8] = 11
+        obj_char_other_side[8] = 8
     end
     res[30] = function()
         -- animation_end
@@ -2679,33 +2665,21 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
         -- draw_correction
         obj_char_other_side[8] = 3
     end
-    -- res[10] = function()
-    --     -- draw_correction
-    --     obj_char_other_side[8] = 4
-    -- end
     res[10] = function()
+        -- draw_correction
+        obj_char_other_side[8] = 4
+    end
+    res[15] = function()
         -- draw_correction
         obj_char_other_side[8] = 5
     end
-    -- res[16] = function()
-    --     -- draw_correction
-    --     obj_char_other_side[8] = 6
-    -- end
-    res[15] = function()
-        -- draw_correction
-        obj_char_other_side[8] = 7
-    end
     res[20] = function()
         -- draw_correction
-        obj_char_other_side[8] = 8
+        obj_char_other_side[8] = 6
     end
-    -- res[22] = function()
-    --     -- draw_correction
-    --     obj_char_other_side[8] = 9
-    -- end
     res[24] = function()
         -- draw_correction
-        obj_char_other_side[8] = 10
+        obj_char_other_side[8] = 7
     end
     res[25] = function()
         -- input_sys_cache
@@ -2714,7 +2688,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
     end
     res[27] = function()
         -- draw_correction
-        obj_char_other_side[8] = 11
+        obj_char_other_side[8] = 8
     end
     res[30] = function()
         -- animation_end

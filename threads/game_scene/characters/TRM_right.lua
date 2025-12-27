@@ -70,7 +70,7 @@ end
 
 -- 攻击类
 local load_attack_name_table = {
-    "burst_overdrive_rc", --burst会生成一个伤害为0的攻击判定
+    "burst_overdrive_rc_ground", --burst会生成一个伤害为0的攻击判定
     "5P",
     "cS",
     "2Launcher",

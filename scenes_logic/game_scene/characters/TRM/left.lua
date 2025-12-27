@@ -301,7 +301,7 @@ function order_load_game_scene_char_LP_frames(load_order)
         [18] = function()
             -- ATTACK 4 5 6
             local load_name_table = {
-                "burst_overdrive_rc",
+                "burst_overdrive_rc_ground",
                 "5P",
                 "cS",
                 "2Launcher",
@@ -736,6 +736,9 @@ function load_game_scene_box_anchor_data_LP()
     obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_rotate"][11] = {{0, -190, 350, 380}}
     obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_semi_launched_rotate"][12] = {{0, -150, 380, 300}}
     obj_anchor_data_game_scene_char_LP["0_general_hurt_semi_launched_rotate"] = {255, 525}
+
+    obj_anchor_data_game_scene_char_LP["0_ground_Launcher_teching"] = {205, 395}
+    obj_anchor_data_game_scene_char_LP["0_ground_Launcher_teched"] = {223, 510}
 
     obj_anchor_data_game_scene_char_LP["air_thrown_tested"] = {340, 430}
     obj_anchor_data_game_scene_char_LP["ground_thrown_tested"] = {150, 530}
@@ -1378,11 +1381,11 @@ function state_gate_game_scene_char_LP_common_ground_idle_to_move(input,obj_char
             obj_char[5] = -obj_char[5]
         end
         if obj_char["hit_cancel"] then
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive_ground(obj_char,70-3)
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive(obj_char,70-3)
         elseif obj_char["state"] == "block_stop" then
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive_ground(obj_char,70-23)
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive(obj_char,70-23)
         else
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive_ground(obj_char,70-13)
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive(obj_char,70-13)
         end
         init_character_anim_with(obj_char,obj_char["current_animation"])
         common_game_scene_overdrive_load_camera_anim(obj_char)
@@ -1488,11 +1491,11 @@ function state_gate_game_scene_char_LP_common_ground_idle_to_move_hold_ver(input
             obj_char[5] = -obj_char[5]
         end
         if obj_char["hit_cancel"] then
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive_ground(obj_char,70-3)
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive(obj_char,70-3)
         elseif obj_char["state"] == "block_stop" then
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive_ground(obj_char,70-23)
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive(obj_char,70-23)
         else
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive_ground(obj_char,70-13)
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive(obj_char,70-13)
         end
         init_character_anim_with(obj_char,obj_char["current_animation"])
         common_game_scene_overdrive_load_camera_anim(obj_char)
@@ -1796,6 +1799,12 @@ function state_gate_game_scene_char_LP_from_throw_hurt_success(input,obj_char)
     end
 end
 function state_gate_game_scene_char_LP_from_throw_tech(input,obj_char)
+    if common_game_scene_get_character_animation_end(obj_char) then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "5_stand_idle"
+        return true
+    end
 end
 
 function state_gate_game_scene_char_LP_from_hitstop(input,obj_char)
@@ -2663,6 +2672,27 @@ end
 function state_gate_game_scene_char_LP_from_6P(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_5P(input,obj_char)
+    -- _RC_purple_rc
+    if test_input_sys_press(input["RC"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+            common_update_game_scene_input_direction(obj_char)
+        end
+        if test_input_sys_press(input["dash"]) then
+            obj_char["velocity"] = {5.0*obj_char[5], 0}
+        elseif test_input_sys_press(input["up"]) then
+            obj_char["velocity"] = {0, -5.0}
+        elseif test_input_sys_press(input["left"]) then
+            obj_char["velocity"] = {-5.0, 0}
+        elseif test_input_sys_press(input["right"]) then
+            obj_char["velocity"] = {5.0, 0}
+        end
+        obj_char["current_animation"] = load_game_scene_anim_char_common_RC_purple_rc(obj_char)
+        obj_char["state"] = "RC_purple_rc"
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        return true
+    end
+
     -- hit_cancel
     if obj_char["hit_cancel"] then
         if test_input_sys_press(input["P"]) then
@@ -2703,6 +2733,27 @@ end
 function state_gate_game_scene_char_LP_from_6S(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_cS(input,obj_char)
+    -- _RC_purple_rc
+    if test_input_sys_press(input["RC"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+            common_update_game_scene_input_direction(obj_char)
+        end
+        if test_input_sys_press(input["dash"]) then
+            obj_char["velocity"] = {5.0*obj_char[5], 0}
+        elseif test_input_sys_press(input["up"]) then
+            obj_char["velocity"] = {0, -5.0}
+        elseif test_input_sys_press(input["left"]) then
+            obj_char["velocity"] = {-5.0, 0}
+        elseif test_input_sys_press(input["right"]) then
+            obj_char["velocity"] = {5.0, 0}
+        end
+        obj_char["current_animation"] = load_game_scene_anim_char_common_RC_purple_rc(obj_char)
+        obj_char["state"] = "RC_purple_rc"
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        return true
+    end
+
     -- hit_cancel
     if obj_char["hit_cancel"] then
 
@@ -2727,6 +2778,27 @@ end
 function state_gate_game_scene_char_LP_from_fS(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_2Launcher(input,obj_char)
+    -- _RC_purple_rc
+    if test_input_sys_press(input["RC"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+            common_update_game_scene_input_direction(obj_char)
+        end
+        if test_input_sys_press(input["dash"]) then
+            obj_char["velocity"] = {5.0*obj_char[5], 0}
+        elseif test_input_sys_press(input["up"]) then
+            obj_char["velocity"] = {0, -5.0}
+        elseif test_input_sys_press(input["left"]) then
+            obj_char["velocity"] = {-5.0, 0}
+        elseif test_input_sys_press(input["right"]) then
+            obj_char["velocity"] = {5.0, 0}
+        end
+        obj_char["current_animation"] = load_game_scene_anim_char_common_RC_purple_rc(obj_char)
+        obj_char["state"] = "RC_purple_rc"
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        return true
+    end
+
     -- hit_cancel
     if obj_char["hit_cancel"] then
 
@@ -2751,6 +2823,27 @@ function state_gate_game_scene_char_LP_from_2Launcher(input,obj_char)
     end
 end
 function state_gate_game_scene_char_LP_from_4_6Launcher(input,obj_char)
+    -- _RC_purple_rc
+    if test_input_sys_press(input["RC"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+            common_update_game_scene_input_direction(obj_char)
+        end
+        if test_input_sys_press(input["dash"]) then
+            obj_char["velocity"] = {5.0*obj_char[5], 0}
+        elseif test_input_sys_press(input["up"]) then
+            obj_char["velocity"] = {0, -5.0}
+        elseif test_input_sys_press(input["left"]) then
+            obj_char["velocity"] = {-5.0, 0}
+        elseif test_input_sys_press(input["right"]) then
+            obj_char["velocity"] = {5.0, 0}
+        end
+        obj_char["current_animation"] = load_game_scene_anim_char_common_RC_purple_rc(obj_char)
+        obj_char["state"] = "RC_purple_rc"
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        return true
+    end
+
     -- idle_cancel
     if obj_char["idle_cancel"] then
         if state_gate_game_scene_char_LP_common_ground_idle_to_not_attack_move_hold_ver(input,obj_char) then
@@ -2760,6 +2853,7 @@ function state_gate_game_scene_char_LP_from_4_6Launcher(input,obj_char)
             return true
         end
     end
+
     -- _5_stand_idle
     if common_game_scene_get_character_animation_end(obj_char) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
@@ -2769,6 +2863,27 @@ function state_gate_game_scene_char_LP_from_4_6Launcher(input,obj_char)
     end
 end
 function state_gate_game_scene_char_LP_from_5Launcher(input,obj_char)
+    -- _RC_purple_rc
+    if test_input_sys_press(input["RC"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+            common_update_game_scene_input_direction(obj_char)
+        end
+        if test_input_sys_press(input["dash"]) then
+            obj_char["velocity"] = {5.0*obj_char[5], 0}
+        elseif test_input_sys_press(input["up"]) then
+            obj_char["velocity"] = {0, -5.0}
+        elseif test_input_sys_press(input["left"]) then
+            obj_char["velocity"] = {-5.0, 0}
+        elseif test_input_sys_press(input["right"]) then
+            obj_char["velocity"] = {5.0, 0}
+        end
+        obj_char["current_animation"] = load_game_scene_anim_char_common_RC_purple_rc(obj_char)
+        obj_char["state"] = "RC_purple_rc"
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        return true
+    end
+
     -- idle_cancel
     if obj_char["idle_cancel"] then
         if state_gate_game_scene_char_LP_common_ground_idle_to_not_attack_move_hold_ver(input,obj_char) then
@@ -2778,6 +2893,7 @@ function state_gate_game_scene_char_LP_from_5Launcher(input,obj_char)
             return true
         end
     end
+
     -- _5_stand_idle
     if common_game_scene_get_character_animation_end(obj_char) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)

@@ -290,7 +290,7 @@ function order_load_game_scene_char_LP_frames(load_order)
         [4] = function()
             -- ATTACK 4 5 6
             local load_name_table = {
-                "burst_overdrive_rc",
+                "burst_overdrive_rc_ground",
                 "5P"
             }
             for i, v in ipairs(load_name_table) do
@@ -1471,7 +1471,7 @@ function state_gate_game_scene_char_LP_from_stand_idle(input,obj_char)
     if test_input_sys_press(input["burst"]) and obj_char["overdrive_gauge"][1] == obj_char["overdrive_gauge"][2] then
         -- to over_drive
         obj_char["idle_cancel"] = false
-        obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive_ground(obj_char)
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         common_game_scene_overdrive_load_camera_anim(obj_char)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
@@ -1527,7 +1527,7 @@ function state_gate_game_scene_char_LP_from_4_walk(input,obj_char)
     if test_input_sys_press(input["burst"]) and obj_char["overdrive_gauge"][1] == obj_char["overdrive_gauge"][2] then
         -- to over_drive
         obj_char["idle_cancel"] = false
-        obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive_ground(obj_char)
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         common_game_scene_overdrive_load_camera_anim(obj_char)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
@@ -1588,7 +1588,7 @@ function state_gate_game_scene_char_LP_from_6_walk(input,obj_char)
     if test_input_sys_press(input["burst"]) and obj_char["overdrive_gauge"][1] == obj_char["overdrive_gauge"][2] then
         -- to over_drive
         obj_char["idle_cancel"] = false
-        obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive_ground(obj_char)
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         common_game_scene_overdrive_load_camera_anim(obj_char)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
@@ -1662,7 +1662,7 @@ end
 function state_gate_game_scene_char_LP_common_ground_idle_to_move(input,obj_char)
     -- _burst_overdrive
     if test_input_sys_press(input["burst"]) and obj_char["overdrive_gauge"][1] == obj_char["overdrive_gauge"][2] then
-        obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive_ground(obj_char)
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         common_game_scene_overdrive_load_camera_anim(obj_char)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)

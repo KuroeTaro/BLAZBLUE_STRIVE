@@ -320,11 +320,30 @@ function update_game_scene_main_training()
                 end
 
                 -- debug_delete_after
-                if (DEBUG_TRAINNING_THROW_CLASH and DEBUG_TRAINNING_TOGGLE) 
-                or (char_LP["state"] == "throw_testing" and char_RP["state"] == "throw_tested")
-                or (char_RP["state"] == "throw_testing" and char_LP["state"] == "throw_tested")
-                then
-
+                if (DEBUG_TRAINNING_THROW_CLASH and DEBUG_TRAINNING_TOGGLE) then
+                    if (char_LP["state"] == "throw_testing" and char_RP["state"] == "throw_tested") then
+                        char_LP["state"] = "throw_teched"
+                        char_LP["current_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
+                            char_LP,"teched"
+                        )
+                        init_character_anim_with(char_LP,char_LP["current_animation"])
+                        char_RP["state"] = "throw_teching"
+                        char_RP["current_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
+                            char_RP,"teching"
+                        )
+                        init_character_anim_with(char_RP,char_RP["current_animation"])
+                    elseif (char_RP["state"] == "throw_testing" and char_LP["state"] == "throw_tested") then
+                        char_RP["state"] = "throw_teched"
+                        char_RP["current_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
+                            char_RP,"teched"
+                        )
+                        init_character_anim_with(char_RP,char_RP["current_animation"])
+                        char_LP["state"] = "throw_teching"
+                        char_LP["current_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
+                            char_LP,"teching"
+                        )
+                        init_character_anim_with(char_LP,char_LP["current_animation"])
+                    end
                 end
 
                 -- 检测飞行道具人物打击盒交互
