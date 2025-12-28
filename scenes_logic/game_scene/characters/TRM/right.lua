@@ -1413,25 +1413,6 @@ function state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver(input
 end
 function state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_char)
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
-    -- _burst_overdrive
-    if test_input_sys_press(input["burst"]) and obj_char["overdrive_gauge"][1] == obj_char["overdrive_gauge"][2] then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
-        if obj_char["hit_cancel"] then
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive(obj_char,70-3)
-        elseif obj_char["state"] == "block_stop" then
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive(obj_char,70-23)
-        else
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive(obj_char,70-13)
-        end
-        init_character_anim_with(obj_char,obj_char["current_animation"])
-        common_game_scene_overdrive_load_camera_anim(obj_char)
-        common_game_scene_nil_load_camera_enclose_anim(obj_char)
-        obj_char["state"] = "burst_overdrive"
-        return true
-    end
-    -- _RC_blue_rc
     -- _active_FD_block
     -- _4UA
     -- _6UA
@@ -1461,8 +1442,15 @@ function state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_ch
     -- _2S
     -- _6S
     -- _cS
+    local compare_distance = 305.0
+    compare_distance = compare_distance + math.abs(obj_char["velocity"][1]-obj_char_other_side["velocity"][1])*0.9 
+    if obj_char_other_side["hurtbox_table"][1] then
+        compare_distance = compare_distance + obj_char_other_side["hurtbox_table"][1][3]/2
+    else
+        compare_distance = compare_distance + 85
+    end
     if test_input_sys_press(input["S"]) 
-    and math.abs(obj_char["x"]-obj_char_other_side["x"]) < 390.0 then
+    and math.abs(obj_char["x"]-obj_char_other_side["x"]) < compare_distance then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -1507,25 +1495,6 @@ function state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_ch
 end
 function state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(input,obj_char)
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
-    -- _burst_overdrive
-    if test_input_sys_press_or_hold(input["burst"]) and obj_char["overdrive_gauge"][1] == obj_char["overdrive_gauge"][2] then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
-        if obj_char["hit_cancel"] then
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive(obj_char,70-3)
-        elseif obj_char["state"] == "block_stop" then
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive(obj_char,70-23)
-        else
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive(obj_char,70-13)
-        end
-        init_character_anim_with(obj_char,obj_char["current_animation"])
-        common_game_scene_overdrive_load_camera_anim(obj_char)
-        common_game_scene_nil_load_camera_enclose_anim(obj_char)
-        obj_char["state"] = "burst_overdrive"
-        return true
-    end
-    -- _RC_blue_rc
     -- _active_FD_block
     -- _4UA
     -- _6UA
@@ -1555,8 +1524,15 @@ function state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(inp
     -- _2S
     -- _6S
     -- _cS
+    local compare_distance = 305.0
+    compare_distance = compare_distance + math.abs(obj_char["velocity"][1]-obj_char_other_side["velocity"][1])*0.9 
+    if obj_char_other_side["hurtbox_table"][1] then
+        compare_distance = compare_distance + obj_char_other_side["hurtbox_table"][1][3]/2
+    else
+        compare_distance = compare_distance + 85
+    end
     if test_input_sys_press_or_hold(input["S"]) 
-    and math.abs(obj_char["x"]-obj_char_other_side["x"]) < 390.0 then
+    and math.abs(obj_char["x"]-obj_char_other_side["x"]) < compare_distance then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -1651,21 +1627,56 @@ end
 function state_gate_game_scene_char_RP_common_air_to_special_move_hold_ver(input,obj_char)
 end
 
+function state_gate_game_scene_char_RP_common_RC_move(input,obj_char,color)
+    -- _RC_blue_rc
+    if test_input_sys_press(input["RC"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+            common_update_game_scene_input_direction(obj_char)
+        end
+        if test_input_sys_press(input["dash"]) then
+            obj_char["velocity"] = {5.0*obj_char[5], 0}
+        elseif test_input_sys_press(input["up"]) then
+            obj_char["velocity"] = {0, -5.0}
+        elseif test_input_sys_press(input["left"]) then
+            obj_char["velocity"] = {-5.0, 0}
+        elseif test_input_sys_press(input["right"]) then
+            obj_char["velocity"] = {5.0, 0}
+        end
+        obj_char["current_animation"] = load_game_scene_anim_char_common_RC_blue_rc(obj_char)
+        obj_char["state"] = "RC_blue_rc"
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        return true
+    end
+end
+function state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,type)
+    -- _overdrive
+    if test_input_sys_press(input["burst"]) and obj_char["overdrive_gauge"][1] == obj_char["overdrive_gauge"][2] then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
+        if obj_char["state"] == "hitstop" then
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive(obj_char,70-3)
+        else
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive(obj_char,70-13)
+        end
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        common_game_scene_overdrive_load_camera_anim(obj_char)
+        common_game_scene_nil_load_camera_enclose_anim(obj_char)
+        obj_char["state"] = "burst_overdrive"
+        return true
+    end
+end
+
 function state_gate_game_scene_char_RP_from_active_FD_block(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_block(input,obj_char)
-    -- overdrive_burst
-    if test_input_sys_press(input["burst"]) then
-        -- burst
+    -- _burst
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"burst") then
         return true
     end
-    -- _RC
-    if test_input_sys_press(input["RC"]) then
-        if common_game_scene_get_character_animation_end(obj_char) then
-            -- purple_rc
-        else
-            -- yellow_rc
-        end
+    -- _YRC
+    if state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"YRC") then
         return true
     end
     -- animation_end
@@ -1720,31 +1731,12 @@ function state_gate_game_scene_char_RP_from_block(input,obj_char)
     end
 end
 function state_gate_game_scene_char_RP_from_hurt(input,obj_char)
-    -- overdrive_burst
-    if test_input_sys_press(input["burst"]) then
-        -- burst
+    -- _burst
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"burst") then
         return true
     end
-    -- _RC_blue_rc
-    if test_input_sys_press(input["RC"]) and common_game_scene_get_character_animation_end(obj_char) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-            common_update_game_scene_input_direction(obj_char)
-        end
-        if test_input_sys_press(input["dash"]) then
-            obj_char["velocity"] = {5.0*obj_char[5], 0}
-        elseif test_input_sys_press(input["up"]) then
-            obj_char["velocity"] = {0, -5.0}
-        elseif test_input_sys_press(input["left"]) then
-            obj_char["velocity"] = {-5.0, 0}
-        elseif test_input_sys_press(input["right"]) then
-            obj_char["velocity"] = {5.0, 0}
-        end
-        obj_char["current_animation"] = load_game_scene_anim_char_common_RC_blue_rc(obj_char)
-        obj_char["state"] = "RC_blue_rc"
-        init_character_anim_with(obj_char,obj_char["current_animation"])
-        return true
-    end
+    -- _BRC
+    if state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"BRC") then
         return true
     end
     -- until land
@@ -1822,18 +1814,16 @@ function state_gate_game_scene_char_RP_from_hurt(input,obj_char)
 end
 
 function state_gate_game_scene_char_RP_from_throw_success(input,obj_char)
-    -- overdrive_burst
-    if test_input_sys_press(input["burst"]) and obj_char["hit_cancel"] then
-        -- overdrive
+    -- _overdrive
+    if obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
         return true
     end
-    -- RC
-    if test_input_sys_press(input["RC"]) then
-        if obj_char["hit_cancel"] then
-            -- red_rc
-        else
-            -- purple_rc
-        end
+    -- _RRC
+    if obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"RRC") then
+        return true
+    end
+    -- _PRC
+    if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- animation_end
@@ -1985,14 +1975,12 @@ function state_gate_game_scene_char_RP_from_throw_tech(input,obj_char)
 end
 
 function state_gate_game_scene_char_RP_from_hitstop(input,obj_char)
-    -- overdrive_burst
-    if test_input_sys_press(input["burst"]) then
-        -- overdrive
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
         return true
     end
-    -- RC
-    if test_input_sys_press(input["RC"]) then
-        -- red_rc
+    -- _RRC
+    if obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"RRC") then
         return true
     end
     -- _[any_sp_hit_state_saved_in_state_cache]
@@ -2009,6 +1997,10 @@ function state_gate_game_scene_char_RP_from_hitstop(input,obj_char)
     end
 end
 function state_gate_game_scene_char_RP_from_blockstop(input,obj_char)
+    -- _burst
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"burst") then
+        return true
+    end
     -- _block
     if obj_char["hit_hurt_blockstop_countdown"] <= 0 then
         obj_char["state"] = obj_char["state_cache"]
@@ -2023,6 +2015,10 @@ function state_gate_game_scene_char_RP_from_blockstop(input,obj_char)
     end
 end
 function state_gate_game_scene_char_RP_from_hurtstop(input,obj_char)
+    -- _burst
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"burst") then
+        return true
+    end
     -- _hurtstop
     if obj_char["hit_hurt_blockstop_countdown"] <= 0 then
         obj_char["state"] = obj_char["state_cache"]
@@ -2043,9 +2039,8 @@ function state_gate_game_scene_char_RP_from_wallbreak_transporting_exiting(input
 end
 
 function state_gate_game_scene_char_RP_from_knockdown(input,obj_char)
-    -- overdrive_burst
-    if test_input_sys_press(input["burst"]) then
-        -- burst
+    -- _burst
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"burst") then
         return true
     end
     -- _knockdown_recover
@@ -2057,9 +2052,8 @@ function state_gate_game_scene_char_RP_from_knockdown(input,obj_char)
     end
 end
 function state_gate_game_scene_char_RP_from_knockdown_recovery(input,obj_char)
-    -- overdrive_burst
-    if test_input_sys_press(input["burst"]) then
-        -- burst
+    -- _burst
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"burst") then
         return true
     end
     -- animation_end
@@ -2099,6 +2093,14 @@ function state_gate_game_scene_char_RP_from_1_2_3_crouch(input,obj_char)
         obj_char["state"] = "1_2_3_crouch_turn"
         common_update_game_scene_input_direction(obj_char)
         state_gate_game_scene_char_RP_from_1_2_3_crouch_turn(input,obj_char)
+        return true
+    end
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _BRC
+    if state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"BRC") then
         return true
     end
     -- _common_ground_idle_to_move
@@ -2148,6 +2150,14 @@ function state_gate_game_scene_char_RP_from_1_2_3_crouch_turn(input,obj_char)
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch_turn(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         common_update_game_scene_input_direction(obj_char)
+    end
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _BRC
+    if state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"BRC") then
+        return true
     end
     -- _common_ground_idle_to_move
     if state_gate_game_scene_char_RP_common_ground_to_dash_move(input,obj_char) then
@@ -2209,6 +2219,14 @@ function state_gate_game_scene_char_RP_from_1_2_3_crouch_to_stand_idle(input,obj
         common_update_game_scene_input_direction(obj_char)
         return true
     end
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _BRC
+    if state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"BRC") then
+        return true
+    end
     -- _common_ground_idle_to_move
     if state_gate_game_scene_char_RP_common_ground_to_dash_move(input,obj_char) then
         return true
@@ -2267,6 +2285,14 @@ function state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char)
         common_update_game_scene_input_direction(obj_char)
         return true
     end
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _BRC
+    if state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"BRC") then
+        return true
+    end
     -- _common_ground_idle_to_move
     if state_gate_game_scene_char_RP_common_ground_to_dash_move(input,obj_char) then
         return true
@@ -2314,6 +2340,14 @@ function state_gate_game_scene_char_RP_from_5_stand_turn(input,obj_char)
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         common_update_game_scene_input_direction(obj_char)
+    end
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _BRC
+    if state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"BRC") then
+        return true
     end
     -- _common_ground_idle_to_move
     if state_gate_game_scene_char_RP_common_ground_to_dash_move(input,obj_char) then
@@ -2363,6 +2397,14 @@ function state_gate_game_scene_char_RP_from_5_stand_turn(input,obj_char)
     end
 end
 function state_gate_game_scene_char_RP_from_5_stand_dash_skid(input,obj_char)
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _BRC
+    if state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"BRC") then
+        return true
+    end
     -- _common_ground_idle_to_move
     if state_gate_game_scene_char_RP_common_ground_to_dash_move(input,obj_char) then
         return true
@@ -2400,8 +2442,16 @@ function state_gate_game_scene_char_RP_from_4_walk(input,obj_char)
         state_gate_game_scene_char_RP_from_5_stand_turn(input,obj_char)
         return true
     end
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _BRC
+    if state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"BRC") then
+        return true
+    end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move(input,obj_char) then
         return true
     end
     -- no obj_char["velocity"][1] = 0 if not attack move only
@@ -2453,6 +2503,14 @@ function state_gate_game_scene_char_RP_from_4_walk_to_stand_idle(input,obj_char)
         obj_char["state"] = "5_stand_turn"
         common_update_game_scene_input_direction(obj_char)
         state_gate_game_scene_char_RP_from_5_stand_turn(input,obj_char)
+        return true
+    end
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _BRC
+    if state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"BRC") then
         return true
     end
     -- _common_ground_idle_to_move
@@ -2515,6 +2573,14 @@ function state_gate_game_scene_char_RP_from_6_walk(input,obj_char)
         state_gate_game_scene_char_RP_from_5_stand_turn(input,obj_char)
         return true
     end
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _BRC
+    if state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"BRC") then
+        return true
+    end
     -- _common_ground_idle_to_move
     if state_gate_game_scene_char_RP_common_ground_to_dash_move(input,obj_char) then
         return true
@@ -2566,6 +2632,14 @@ function state_gate_game_scene_char_RP_from_6_walk_to_stand_idle(input,obj_char)
         state_gate_game_scene_char_RP_from_5_stand_turn(input,obj_char)
         return true
     end
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _BRC
+    if state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"BRC") then
+        return true
+    end
     -- _common_ground_idle_to_move
     if state_gate_game_scene_char_RP_common_ground_to_dash_move(input,obj_char) then
         return true
@@ -2615,24 +2689,12 @@ function state_gate_game_scene_char_RP_from_6_walk_to_stand_idle(input,obj_char)
 end
 
 function state_gate_game_scene_char_RP_from_7_8_9_jump_air_to_stand_idle(input,obj_char)
-    -- _RC_blue_rc
-    if test_input_sys_press(input["RC"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-            common_update_game_scene_input_direction(obj_char)
-        end
-        if test_input_sys_press(input["dash"]) then
-            obj_char["velocity"] = {5.0*obj_char[5], 0}
-        elseif test_input_sys_press(input["up"]) then
-            obj_char["velocity"] = {0, -5.0}
-        elseif test_input_sys_press(input["left"]) then
-            obj_char["velocity"] = {-5.0, 0}
-        elseif test_input_sys_press(input["right"]) then
-            obj_char["velocity"] = {5.0, 0}
-        end
-        obj_char["current_animation"] = load_game_scene_anim_char_common_RC_blue_rc(obj_char)
-        obj_char["state"] = "RC_blue_rc"
-        init_character_anim_with(obj_char,obj_char["current_animation"])
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _BRC
+    if state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"BRC") then
         return true
     end
     -- _common_ground_idle_to_move
@@ -2670,31 +2732,19 @@ function state_gate_game_scene_char_RP_from_7_8_9_jump_air_to_stand_idle(input,o
     end
 end
 function state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char)
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _BRC
+    if state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"BRC") then
+        return true
+    end
     -- _7_8_9_jump_air_to_stand_idle
     if test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
-        return true
-    end
-    -- _RC_blue_rc
-    if test_input_sys_press(input["RC"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-            common_update_game_scene_input_direction(obj_char)
-        end
-        if test_input_sys_press(input["dash"]) then
-            obj_char["velocity"] = {5.0*obj_char[5], 0}
-        elseif test_input_sys_press(input["up"]) then
-            obj_char["velocity"] = {0, -5.0}
-        elseif test_input_sys_press(input["left"]) then
-            obj_char["velocity"] = {-5.0, 0}
-        elseif test_input_sys_press(input["right"]) then
-            obj_char["velocity"] = {5.0, 0}
-        end
-        obj_char["current_animation"] = load_game_scene_anim_char_common_RC_blue_rc(obj_char)
-        obj_char["state"] = "RC_blue_rc"
-        init_character_anim_with(obj_char,obj_char["current_animation"])
         return true
     end
     -- _common_air_idle_to_move
@@ -2736,24 +2786,12 @@ function state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char)
     end
 end
 function state_gate_game_scene_char_RP_from_7_8_9_pre_jump(input,obj_char)
-    -- _RC_blue_rc
-    if test_input_sys_press(input["RC"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-            common_update_game_scene_input_direction(obj_char)
-        end
-        if test_input_sys_press(input["dash"]) then
-            obj_char["velocity"] = {5.0*obj_char[5], 0}
-        elseif test_input_sys_press(input["up"]) then
-            obj_char["velocity"] = {0, -5.0}
-        elseif test_input_sys_press(input["left"]) then
-            obj_char["velocity"] = {-5.0, 0}
-        elseif test_input_sys_press(input["right"]) then
-            obj_char["velocity"] = {5.0, 0}
-        end
-        obj_char["current_animation"] = load_game_scene_anim_char_common_RC_blue_rc(obj_char)
-        obj_char["state"] = "RC_blue_rc"
-        init_character_anim_with(obj_char,obj_char["current_animation"])
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _BRC
+    if state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"BRC") then
         return true
     end
     -- _7_8_9_jump_air
@@ -2784,30 +2822,20 @@ function state_gate_game_scene_char_RP_from_7_8_9_pre_jump(input,obj_char)
         obj_char["y"] = 225
         obj_char["state"] = "7_8_9_jump_air"
         obj_char["velocity"][1] = obj_char["velocity_cache"][1]
-        state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char)
+        if state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char) then
+            return true
+        end
         return true
     end
 end
 
 function state_gate_game_scene_char_RP_from_4dash_backdash(input,obj_char)
-    -- _RC_blue_rc
-    if test_input_sys_press(input["RC"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-            common_update_game_scene_input_direction(obj_char)
-        end
-        if test_input_sys_press(input["dash"]) then
-            obj_char["velocity"] = {5.0*obj_char[5], 0}
-        elseif test_input_sys_press(input["up"]) then
-            obj_char["velocity"] = {0, -5.0}
-        elseif test_input_sys_press(input["left"]) then
-            obj_char["velocity"] = {-5.0, 0}
-        elseif test_input_sys_press(input["right"]) then
-            obj_char["velocity"] = {5.0, 0}
-        end
-        obj_char["current_animation"] = load_game_scene_anim_char_common_RC_blue_rc(obj_char)
-        obj_char["state"] = "RC_blue_rc"
-        init_character_anim_with(obj_char,obj_char["current_animation"])
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _BRC
+    if state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"BRC") then
         return true
     end
     -- _common_ground_idle_to_move
@@ -2821,37 +2849,29 @@ function state_gate_game_scene_char_RP_from_4dash_backdash(input,obj_char)
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "5_stand_idle"
-        state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char)
+        if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
+            return true
+        end
         return true
     end
 end
 function state_gate_game_scene_char_RP_from_4dash_air_backdash(input,obj_char)
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _BRC
+    if state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"BRC") then
+        return true
+    end
     -- _7_8_9_jump_air_to_stand_idle
     if test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
-        state_gate_game_scene_char_RP_from_7_8_9_jump_air_to_stand_idle(input,obj_char)
-        return true
-    end
-    -- _RC_blue_rc
-    if test_input_sys_press(input["RC"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-            common_update_game_scene_input_direction(obj_char)
+        if state_gate_game_scene_char_RP_from_7_8_9_jump_air_to_stand_idle(input,obj_char) then
+            return true
         end
-        if test_input_sys_press(input["dash"]) then
-            obj_char["velocity"] = {5.0*obj_char[5], 0}
-        elseif test_input_sys_press(input["up"]) then
-            obj_char["velocity"] = {0, -5.0}
-        elseif test_input_sys_press(input["left"]) then
-            obj_char["velocity"] = {-5.0, 0}
-        elseif test_input_sys_press(input["right"]) then
-            obj_char["velocity"] = {5.0, 0}
-        end
-        obj_char["current_animation"] = load_game_scene_anim_char_common_RC_blue_rc(obj_char)
-        obj_char["state"] = "RC_blue_rc"
-        init_character_anim_with(obj_char,obj_char["current_animation"])
         return true
     end
     -- _common_air_idle_to_move
@@ -2867,11 +2887,21 @@ function state_gate_game_scene_char_RP_from_4dash_air_backdash(input,obj_char)
         obj_char["state"] = "7_8_9_jump_air"
         obj_char["f"] = 24
         character_animator(obj_char,obj_char["current_animation"])
-        state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char)
+        if state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char) then
+            return true
+        end
         return true
     end
 end
 function state_gate_game_scene_char_RP_from_6dash_dash(input,obj_char)
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _BRC
+    if state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"BRC") then
+        return true
+    end
     -- _common_ground_idle_to_move
     if obj_char["direction_input"] == 4 and test_input_sys_press_or_hold(input["dash"]) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
@@ -2891,7 +2921,9 @@ function state_gate_game_scene_char_RP_from_6dash_dash(input,obj_char)
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "7_8_9_pre_jump"
-        state_gate_game_scene_char_RP_from_7_8_9_pre_jump(input,obj_char)
+        if state_gate_game_scene_char_RP_from_7_8_9_pre_jump(input,obj_char) then
+            return true
+        end
         return true
     end
     -- _5_stand_dash_skid
@@ -2899,37 +2931,27 @@ function state_gate_game_scene_char_RP_from_6dash_dash(input,obj_char)
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "5_stand_dash_skid"
-        state_gate_game_scene_char_RP_from_5_stand_dash_skid(input,obj_char)
+        if state_gate_game_scene_char_RP_from_5_stand_dash_skid(input,obj_char) then
+            return true
+        end
         return true
     end
 end
 function state_gate_game_scene_char_RP_from_6dash_air_dash(input,obj_char)
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _BRC
+    if state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"BRC") then
+        return true
+    end
     -- _7_8_9_jump_air_to_stand_idle
     if test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
         state_gate_game_scene_char_RP_from_7_8_9_jump_air_to_stand_idle(input,obj_char)
-        return true
-    end
-    -- _RC_blue_rc
-    if test_input_sys_press(input["RC"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-            common_update_game_scene_input_direction(obj_char)
-        end
-        if test_input_sys_press(input["dash"]) then
-            obj_char["velocity"] = {5.0*obj_char[5], 0}
-        elseif test_input_sys_press(input["up"]) then
-            obj_char["velocity"] = {0, -5.0}
-        elseif test_input_sys_press(input["left"]) then
-            obj_char["velocity"] = {-5.0, 0}
-        elseif test_input_sys_press(input["right"]) then
-            obj_char["velocity"] = {5.0, 0}
-        end
-        obj_char["current_animation"] = load_game_scene_anim_char_common_RC_blue_rc(obj_char)
-        obj_char["state"] = "RC_blue_rc"
-        init_character_anim_with(obj_char,obj_char["current_animation"])
         return true
     end
     -- _common_air_idle_to_move
@@ -2950,6 +2972,14 @@ function state_gate_game_scene_char_RP_from_6dash_air_dash(input,obj_char)
     end
 end
 function state_gate_game_scene_char_RP_from_6dash_dash_cancel(input,obj_char)
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _BRC
+    if state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"BRC") then
+        return true
+    end
     -- common_ground_to_special_move
     if obj_char["idle_cancel"] then
         if state_gate_game_scene_char_RP_common_ground_to_special_move(input,obj_char) then
@@ -2985,24 +3015,12 @@ end
 function state_gate_game_scene_char_RP_from_6P(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_5P(input,obj_char)
-    -- _RC_purple_rc
-    if test_input_sys_press(input["RC"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-            common_update_game_scene_input_direction(obj_char)
-        end
-        if test_input_sys_press(input["dash"]) then
-            obj_char["velocity"] = {5.0*obj_char[5], 0}
-        elseif test_input_sys_press(input["up"]) then
-            obj_char["velocity"] = {0, -5.0}
-        elseif test_input_sys_press(input["left"]) then
-            obj_char["velocity"] = {-5.0, 0}
-        elseif test_input_sys_press(input["right"]) then
-            obj_char["velocity"] = {5.0, 0}
-        end
-        obj_char["current_animation"] = load_game_scene_anim_char_common_RC_purple_rc(obj_char)
-        obj_char["state"] = "RC_purple_rc"
-        init_character_anim_with(obj_char,obj_char["current_animation"])
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _PRC
+    if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- hit_cancel
@@ -3051,24 +3069,12 @@ end
 function state_gate_game_scene_char_RP_from_6S(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_cS(input,obj_char)
-    -- _RC_purple_rc
-    if test_input_sys_press(input["RC"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-            common_update_game_scene_input_direction(obj_char)
-        end
-        if test_input_sys_press(input["dash"]) then
-            obj_char["velocity"] = {5.0*obj_char[5], 0}
-        elseif test_input_sys_press(input["up"]) then
-            obj_char["velocity"] = {0, -5.0}
-        elseif test_input_sys_press(input["left"]) then
-            obj_char["velocity"] = {-5.0, 0}
-        elseif test_input_sys_press(input["right"]) then
-            obj_char["velocity"] = {5.0, 0}
-        end
-        obj_char["current_animation"] = load_game_scene_anim_char_common_RC_purple_rc(obj_char)
-        obj_char["state"] = "RC_purple_rc"
-        init_character_anim_with(obj_char,obj_char["current_animation"])
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _PRC
+    if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- hit_cancel
@@ -3100,24 +3106,12 @@ end
 function state_gate_game_scene_char_RP_from_fS(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_2Launcher(input,obj_char)
-    -- _RC_purple_rc
-    if test_input_sys_press(input["RC"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-            common_update_game_scene_input_direction(obj_char)
-        end
-        if test_input_sys_press(input["dash"]) then
-            obj_char["velocity"] = {5.0*obj_char[5], 0}
-        elseif test_input_sys_press(input["up"]) then
-            obj_char["velocity"] = {0, -5.0}
-        elseif test_input_sys_press(input["left"]) then
-            obj_char["velocity"] = {-5.0, 0}
-        elseif test_input_sys_press(input["right"]) then
-            obj_char["velocity"] = {5.0, 0}
-        end
-        obj_char["current_animation"] = load_game_scene_anim_char_common_RC_purple_rc(obj_char)
-        obj_char["state"] = "RC_purple_rc"
-        init_character_anim_with(obj_char,obj_char["current_animation"])
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _PRC
+    if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- hit_cancel
@@ -3149,24 +3143,12 @@ function state_gate_game_scene_char_RP_from_2Launcher(input,obj_char)
     end
 end
 function state_gate_game_scene_char_RP_from_4_6Launcher(input,obj_char)
-    -- _RC_purple_rc
-    if test_input_sys_press(input["RC"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-            common_update_game_scene_input_direction(obj_char)
-        end
-        if test_input_sys_press(input["dash"]) then
-            obj_char["velocity"] = {5.0*obj_char[5], 0}
-        elseif test_input_sys_press(input["up"]) then
-            obj_char["velocity"] = {0, -5.0}
-        elseif test_input_sys_press(input["left"]) then
-            obj_char["velocity"] = {-5.0, 0}
-        elseif test_input_sys_press(input["right"]) then
-            obj_char["velocity"] = {5.0, 0}
-        end
-        obj_char["current_animation"] = load_game_scene_anim_char_common_RC_purple_rc(obj_char)
-        obj_char["state"] = "RC_purple_rc"
-        init_character_anim_with(obj_char,obj_char["current_animation"])
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _PRC
+    if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- idle_cancel
@@ -3193,24 +3175,12 @@ function state_gate_game_scene_char_RP_from_4_6Launcher(input,obj_char)
     end
 end
 function state_gate_game_scene_char_RP_from_5Launcher(input,obj_char)
-    -- _RC_purple_rc
-    if test_input_sys_press(input["RC"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-            common_update_game_scene_input_direction(obj_char)
-        end
-        if test_input_sys_press(input["dash"]) then
-            obj_char["velocity"] = {5.0*obj_char[5], 0}
-        elseif test_input_sys_press(input["up"]) then
-            obj_char["velocity"] = {0, -5.0}
-        elseif test_input_sys_press(input["left"]) then
-            obj_char["velocity"] = {-5.0, 0}
-        elseif test_input_sys_press(input["right"]) then
-            obj_char["velocity"] = {5.0, 0}
-        end
-        obj_char["current_animation"] = load_game_scene_anim_char_common_RC_purple_rc(obj_char)
-        obj_char["state"] = "RC_purple_rc"
-        init_character_anim_with(obj_char,obj_char["current_animation"])
+    -- _overdrive
+    if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+        return true
+    end
+    -- _PRC
+    if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- idle_cancel
