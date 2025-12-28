@@ -1373,7 +1373,45 @@ function state_machine_char_game_scene_char_RP_input_sys_cache()
 end
 
 -- 状态机连接门
-function state_gate_game_scene_char_RP_common_ground_idle_to_move(input,obj_char)
+function state_gate_game_scene_char_RP_common_ground_to_dash_move(input,obj_char)
+    -- _4dash_backdash
+    if obj_char["direction_input"] == 4 and test_input_sys_press(input["dash"]) then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "4dash_backdash"
+        return true
+    end
+    -- _6dash_dash
+    if (obj_char["direction_input"] == 5 or obj_char["direction_input"] == 6) 
+    and test_input_sys_press(input["dash"]) 
+    and obj_char["state"] ~= "6dash_dash" then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_6dash_dash(input,obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "6dash_dash"
+        return true
+    end
+    return false
+end
+function state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver(input,obj_char)
+    -- _4dash_backdash
+    if obj_char["direction_input"] == 4 and test_input_sys_press_or_hold(input["dash"]) then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "4dash_backdash"
+        return true
+    end
+    -- _6dash_dash
+    if (obj_char["direction_input"] == 5 or obj_char["direction_input"] == 6) 
+    and test_input_sys_press_or_hold(input["dash"]) 
+    and obj_char["state"] ~= "6dash_dash" then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_6dash_dash(input,obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "6dash_dash"
+        return true
+    end
+    return false
+end
+function state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_char)
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     -- _burst_overdrive
     if test_input_sys_press(input["burst"]) and obj_char["overdrive_gauge"][1] == obj_char["overdrive_gauge"][2] then
@@ -1465,25 +1503,9 @@ function state_gate_game_scene_char_RP_common_ground_idle_to_move(input,obj_char
         obj_char["state"] = "5Launcher"
         return true
     end
-    -- _4dash_backdash
-    if obj_char["direction_input"] == 4 and test_input_sys_press(input["dash"]) then
-        obj_char["current_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
-        init_character_anim_with(obj_char,obj_char["current_animation"])
-        obj_char["state"] = "4dash_backdash"
-        return true
-    end
-    -- _6dash_dash
-    if (obj_char["direction_input"] == 5 or obj_char["direction_input"] == 6) 
-    and test_input_sys_press(input["dash"]) 
-    and obj_char["state"] ~= "6dash_dash" then
-        obj_char["current_animation"] = load_game_scene_anim_char_TRM_6dash_dash(input,obj_char)
-        init_character_anim_with(obj_char,obj_char["current_animation"])
-        obj_char["state"] = "6dash_dash"
-        return true
-    end
     return false
 end
-function state_gate_game_scene_char_RP_common_ground_idle_to_move_hold_ver(input,obj_char)
+function state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(input,obj_char)
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     -- _burst_overdrive
     if test_input_sys_press_or_hold(input["burst"]) and obj_char["overdrive_gauge"][1] == obj_char["overdrive_gauge"][2] then
@@ -1534,9 +1556,7 @@ function state_gate_game_scene_char_RP_common_ground_idle_to_move_hold_ver(input
     -- _6S
     -- _cS
     if test_input_sys_press_or_hold(input["S"]) 
-    and math.abs(obj_char["x"]-obj_char_other_side["x"]) + obj_char["velocity"][1]
-    * ((obj_char["x"]-obj_char_other_side["x"]) / math.abs(obj_char["x"]-obj_char_other_side["x"])) 
-    * 10 < 335.0 then
+    and math.abs(obj_char["x"]-obj_char_other_side["x"]) < 390.0 then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -1557,6 +1577,16 @@ function state_gate_game_scene_char_RP_common_ground_idle_to_move_hold_ver(input
         return true
     end
     -- _4_6Launcher
+    if (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 6) 
+    and test_input_sys_press_or_hold(input["Launcher"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "4_6Launcher"
+        return true
+    end
     -- _5Launcher
     if test_input_sys_press_or_hold(input["Launcher"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
@@ -1567,50 +1597,18 @@ function state_gate_game_scene_char_RP_common_ground_idle_to_move_hold_ver(input
         obj_char["state"] = "5Launcher"
         return true
     end
-    -- _4dash_backdash
-    if obj_char["direction_input"] == 4 and test_input_sys_press_or_hold(input["dash"]) then
-        obj_char["current_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
-        init_character_anim_with(obj_char,obj_char["current_animation"])
-        obj_char["state"] = "4dash_backdash"
-        return true
-    end
-    -- _6dash_dash
-    if (obj_char["direction_input"] == 5 or obj_char["direction_input"] == 6) 
-    and test_input_sys_press_or_hold(input["dash"]) 
-    and obj_char["state"] ~= "6dash_dash" then
-        obj_char["current_animation"] = load_game_scene_anim_char_TRM_6dash_dash(input,obj_char)
-        init_character_anim_with(obj_char,obj_char["current_animation"])
-        obj_char["state"] = "6dash_dash"
-        return true
-    end
-    return false
-end
-function state_gate_game_scene_char_RP_common_ground_idle_to_not_attack_move_hold_ver(input,obj_char)
-    -- _4sp_K
-
-    -- _4dash_backdash
-    if obj_char["direction_input"] == 4 and test_input_sys_press_or_hold(input["dash"]) then
-        obj_char["current_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
-        init_character_anim_with(obj_char,obj_char["current_animation"])
-        obj_char["state"] = "4dash_backdash"
-        return true
-    end
-    -- _6dash_dash
-    if (obj_char["direction_input"] == 5 or obj_char["direction_input"] == 6) 
-    and test_input_sys_press_or_hold(input["dash"]) 
-    and obj_char["state"] ~= "6dash_dash" then
-        obj_char["current_animation"] = load_game_scene_anim_char_TRM_6dash_dash(input,obj_char)
-        init_character_anim_with(obj_char,obj_char["current_animation"])
-        obj_char["state"] = "6dash_dash"
-        return true
-    end
     return false
 end
 function state_gate_game_scene_char_RP_common_ground_to_special_move(input,obj_char)
 end
 function state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(input,obj_char)
 end
-function state_gate_game_scene_char_RP_common_air_idle_to_move(input,obj_char)
+
+function state_gate_game_scene_char_RP_common_air_to_dash_move(input,obj_char)
+end
+function state_gate_game_scene_char_RP_common_air_to_dash_move_hold_ver(input,obj_char)
+end
+function state_gate_game_scene_char_RP_common_air_to_attack_move(input,obj_char)
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     -- _burst_overdrive
     -- _RC_blue_rc
@@ -1646,9 +1644,7 @@ function state_gate_game_scene_char_RP_common_air_idle_to_move(input,obj_char)
     end
     return false
 end
-function state_gate_game_scene_char_RP_common_air_idle_to_move_hold_ver(input,obj_char)
-end
-function state_gate_game_scene_char_RP_common_air_idle_to_not_attack_move_hold_ver(input,obj_char)
+function state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,obj_char)
 end
 function state_gate_game_scene_char_RP_common_air_to_special_move(input,obj_char)
 end
@@ -1658,10 +1654,25 @@ end
 function state_gate_game_scene_char_RP_from_active_FD_block(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_block(input,obj_char)
+    -- overdrive_burst
+    if test_input_sys_press(input["burst"]) then
+        -- burst
+        return true
+    end
+    -- _RC
+    if test_input_sys_press(input["RC"]) then
+        if common_game_scene_get_character_animation_end(obj_char) then
+            -- purple_rc
+        else
+            -- yellow_rc
+        end
+        return true
+    end
+    -- animation_end
     if not common_game_scene_get_character_animation_end(obj_char) then
         return
     end
-
+    -- input_sys_cache load
     state_machine_char_game_scene_char_RP_input_sys_cache()
     obj_char["input_sys_state"] = "load" -- none save load
     state_machine_char_game_scene_char_RP_input_sys_cache()
@@ -1670,6 +1681,17 @@ function state_gate_game_scene_char_RP_from_block(input,obj_char)
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)   
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "5_stand_idle"
+        -- _common_ground_idle_to_move
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(input,obj_char) then
+            return true
+        end
+        -- 5_stand_idle
         if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
             return true
         end
@@ -1681,12 +1703,51 @@ function state_gate_game_scene_char_RP_from_block(input,obj_char)
         obj_char["state"] = "1_2_3_crouch"
         obj_char["f"] = 4
         character_animator(obj_char,obj_char["current_animation"])
+        -- _common_ground_idle_to_move
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(input,obj_char) then
+            return true
+        end
+        -- 1_2_3_crouch
         if state_gate_game_scene_char_RP_from_1_2_3_crouch(input,obj_char) then
             return true
         end
     end
 end
 function state_gate_game_scene_char_RP_from_hurt(input,obj_char)
+    -- overdrive_burst
+    if test_input_sys_press(input["burst"]) then
+        -- burst
+        return true
+    end
+    -- _RC_blue_rc
+    if test_input_sys_press(input["RC"]) and common_game_scene_get_character_animation_end(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+            common_update_game_scene_input_direction(obj_char)
+        end
+        if test_input_sys_press(input["dash"]) then
+            obj_char["velocity"] = {5.0*obj_char[5], 0}
+        elseif test_input_sys_press(input["up"]) then
+            obj_char["velocity"] = {0, -5.0}
+        elseif test_input_sys_press(input["left"]) then
+            obj_char["velocity"] = {-5.0, 0}
+        elseif test_input_sys_press(input["right"]) then
+            obj_char["velocity"] = {5.0, 0}
+        end
+        obj_char["current_animation"] = load_game_scene_anim_char_common_RC_blue_rc(obj_char)
+        obj_char["state"] = "RC_blue_rc"
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        return true
+    end
+        return true
+    end
+    -- until land
     if obj_char["height_state"] == "air" then
         if (obj_char["collision_move_available"][1] == 0 or obj_char["collision_move_available"][2] == 0) 
         and obj_char["self_wallbounce_hurt_animation"] ~= nil then
@@ -1708,6 +1769,7 @@ function state_gate_game_scene_char_RP_from_hurt(input,obj_char)
         end
         return
     end
+    -- animation_end
     if common_game_scene_get_character_animation_end(obj_char) then
         state_machine_char_game_scene_char_RP_input_sys_cache()
         obj_char["input_sys_state"] = "load" -- none save load
@@ -1717,6 +1779,17 @@ function state_gate_game_scene_char_RP_from_hurt(input,obj_char)
             obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)   
             init_character_anim_with(obj_char,obj_char["current_animation"])
             obj_char["state"] = "5_stand_idle"
+            -- _common_ground_idle_to_move
+            if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(input,obj_char) then
+                return true
+            end
+            -- 5_stand_idle
             if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
                 return true
             end
@@ -1727,6 +1800,17 @@ function state_gate_game_scene_char_RP_from_hurt(input,obj_char)
             obj_char["state"] = "1_2_3_crouch"
             obj_char["f"] = 4
             character_animator(obj_char,obj_char["current_animation"])
+            -- _common_ground_idle_to_move
+            if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(input,obj_char) then
+                return true
+            end
+            -- 1_2_3_crouch
             if state_gate_game_scene_char_RP_from_1_2_3_crouch(input,obj_char) then
                 return true
             end
@@ -1738,26 +1822,60 @@ function state_gate_game_scene_char_RP_from_hurt(input,obj_char)
 end
 
 function state_gate_game_scene_char_RP_from_throw_success(input,obj_char)
-    -- air stand_dile
+    -- overdrive_burst
+    if test_input_sys_press(input["burst"]) and obj_char["hit_cancel"] then
+        -- overdrive
+        return true
+    end
+    -- RC
+    if test_input_sys_press(input["RC"]) then
+        if obj_char["hit_cancel"] then
+            -- red_rc
+        else
+            -- purple_rc
+        end
+        return true
+    end
+    -- animation_end
     if common_game_scene_get_character_animation_end(obj_char) then
         state_machine_char_game_scene_char_RP_input_sys_cache()
         obj_char["input_sys_state"] = "load" -- none save load
         state_machine_char_game_scene_char_RP_input_sys_cache()
+        -- air
         if obj_char["height_state"] == "air" then
-            obj_char["y"] = math.min(225,obj_char["y"])
             obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,585},0,0)
             init_character_anim_with(obj_char,obj_char["current_animation"])
             obj_char["state"] = "7_8_9_jump_air"
-
+            -- _common_air_to_move
+            if state_gate_game_scene_char_RP_common_air_to_dash_move_hold_ver(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_air_to_special_move_hold_ver(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,obj_char) then
+                return true
+            end
+            -- 7_8_9_jump_air
             if state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char) then
                 return true
             end
+        -- stand_idle
         elseif obj_char["height_state"] == "stand" then
-            obj_char["y"] = 365
             obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
             init_character_anim_with(obj_char,obj_char["current_animation"])
             obj_char["state"] = "5_stand_idle"
-
+            -- _common_ground_idle_to_move
+            if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(input,obj_char) then
+                return true
+            end
+            -- 5_stand_idle
             if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
                 return true
             end
@@ -1766,17 +1884,35 @@ function state_gate_game_scene_char_RP_from_throw_success(input,obj_char)
     end
     -- idle_cancel
     if obj_char["idle_cancel"] then
+        -- air
         if obj_char["height_state"] == "air" then
-            if state_gate_game_scene_char_RP_common_air_idle_to_move_hold_ver(input,obj_char) then
+            -- _common_air_to_move
+            if state_gate_game_scene_char_RP_common_air_to_dash_move_hold_ver(input,obj_char) then
                 return true
             end
+            if state_gate_game_scene_char_RP_common_air_to_special_move_hold_ver(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,obj_char) then
+                return true
+            end
+            -- 7_8_9_jump_air
             if state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char) then
                 return true
             end
+        -- stand_idle
         elseif obj_char["height_state"] == "stand" then
-            if state_gate_game_scene_char_RP_common_ground_idle_to_move_hold_ver(input,obj_char) then
+            -- _common_ground_idle_to_move
+            if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver(input,obj_char) then
                 return true
             end
+            if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(input,obj_char) then
+                return true
+            end
+            -- 5_stand_idle
             if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
                 return true
             end
@@ -1799,19 +1935,76 @@ function state_gate_game_scene_char_RP_from_throw_hurt_success(input,obj_char)
     end
 end
 function state_gate_game_scene_char_RP_from_throw_tech(input,obj_char)
+    -- animation_end
     if common_game_scene_get_character_animation_end(obj_char) then
-        obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["current_animation"])
-        obj_char["state"] = "5_stand_idle"
-        return true
+        -- input_sys_cache
+        state_machine_char_game_scene_char_RP_input_sys_cache()
+        obj_char["input_sys_state"] = "load" -- none save load
+        state_machine_char_game_scene_char_RP_input_sys_cache()
+        -- air
+        if obj_char["height_state"] == "air" then
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,585},0,0)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "7_8_9_jump_air"
+            -- _common_air_to_move
+            if state_gate_game_scene_char_RP_common_air_to_dash_move_hold_ver(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_air_to_special_move_hold_ver(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,obj_char) then
+                return true
+            end
+            -- 7_8_9_jump_air
+            if state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char) then
+                return true
+            end
+        -- stand_idle
+        elseif obj_char["height_state"] == "stand" then
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "5_stand_idle"
+            -- _common_ground_idle_to_move
+            if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(input,obj_char) then
+                return true
+            end
+            -- 5_stand_idle
+            if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
+                return true
+            end
+        end
+        return
     end
 end
 
 function state_gate_game_scene_char_RP_from_hitstop(input,obj_char)
+    -- overdrive_burst
+    if test_input_sys_press(input["burst"]) then
+        -- overdrive
+        return true
+    end
+    -- RC
+    if test_input_sys_press(input["RC"]) then
+        -- red_rc
+        return true
+    end
     -- _[any_sp_hit_state_saved_in_state_cache]
     if obj_char["hit_hurt_blockstop_countdown"] <= 0 then
         obj_char["state"] = obj_char["state_cache"]
         obj_char["velocity"] = obj_char["velocity_cache"]
+
+        state_machine_char_game_scene_char_RP_input_sys_cache()
+        obj_char["input_sys_state"] = "load" -- none save load
+        state_machine_char_game_scene_char_RP_input_sys_cache()
+
+        state_machine_char_game_scene_char_RP()
         return
     end
 end
@@ -1820,6 +2013,12 @@ function state_gate_game_scene_char_RP_from_blockstop(input,obj_char)
     if obj_char["hit_hurt_blockstop_countdown"] <= 0 then
         obj_char["state"] = obj_char["state_cache"]
         obj_char["velocity"] = obj_char["velocity_cache"]
+
+        state_machine_char_game_scene_char_RP_input_sys_cache()
+        obj_char["input_sys_state"] = "load" -- none save load
+        state_machine_char_game_scene_char_RP_input_sys_cache()
+
+        state_machine_char_game_scene_char_RP()
         return
     end
 end
@@ -1828,6 +2027,12 @@ function state_gate_game_scene_char_RP_from_hurtstop(input,obj_char)
     if obj_char["hit_hurt_blockstop_countdown"] <= 0 then
         obj_char["state"] = obj_char["state_cache"]
         obj_char["velocity"] = obj_char["velocity_cache"]
+
+        state_machine_char_game_scene_char_RP_input_sys_cache()
+        obj_char["input_sys_state"] = "load" -- none save load
+        state_machine_char_game_scene_char_RP_input_sys_cache()
+
+        state_machine_char_game_scene_char_RP()
         return
     end
 end
@@ -1838,6 +2043,11 @@ function state_gate_game_scene_char_RP_from_wallbreak_transporting_exiting(input
 end
 
 function state_gate_game_scene_char_RP_from_knockdown(input,obj_char)
+    -- overdrive_burst
+    if test_input_sys_press(input["burst"]) then
+        -- burst
+        return true
+    end
     -- _knockdown_recover
     if common_game_scene_get_character_animation_end(obj_char) then
         obj_char["current_animation"] = obj_char["self_knockdown_recovery_animation"]
@@ -1847,15 +2057,32 @@ function state_gate_game_scene_char_RP_from_knockdown(input,obj_char)
     end
 end
 function state_gate_game_scene_char_RP_from_knockdown_recovery(input,obj_char)
-    -- _5_stand_idle
+    -- overdrive_burst
+    if test_input_sys_press(input["burst"]) then
+        -- burst
+        return true
+    end
+    -- animation_end
     if common_game_scene_get_character_animation_end(obj_char) then
-        obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["current_animation"])
-        obj_char["state"] = "5_stand_idle"
-
+        -- input_sys_cache
         state_machine_char_game_scene_char_RP_input_sys_cache()
         obj_char["input_sys_state"] = "load" -- none save load
         state_machine_char_game_scene_char_RP_input_sys_cache()
+        -- 5_stand_idle
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "5_stand_idle"
+        -- _common_ground_idle_to_move
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(input,obj_char) then
+            return true
+        end
+        -- 5_stand_idle
         if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
             return true
         end
@@ -1875,7 +2102,13 @@ function state_gate_game_scene_char_RP_from_1_2_3_crouch(input,obj_char)
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_idle_to_move(input,obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move(input,obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_special_move(input,obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
@@ -1917,7 +2150,13 @@ function state_gate_game_scene_char_RP_from_1_2_3_crouch_turn(input,obj_char)
         common_update_game_scene_input_direction(obj_char)
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_idle_to_move(input,obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move(input,obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_special_move(input,obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
@@ -1949,7 +2188,7 @@ function state_gate_game_scene_char_RP_from_1_2_3_crouch_turn(input,obj_char)
         obj_char["state"] = "1_2_3_crouch_to_stand_idle"
         return true
     end
-    -- _1_2_3_crouch
+    -- animation_end
     if common_game_scene_get_character_animation_end(obj_char) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
@@ -1971,7 +2210,13 @@ function state_gate_game_scene_char_RP_from_1_2_3_crouch_to_stand_idle(input,obj
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_idle_to_move(input,obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move(input,obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_special_move(input,obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
@@ -2003,7 +2248,7 @@ function state_gate_game_scene_char_RP_from_1_2_3_crouch_to_stand_idle(input,obj
         obj_char["state"] = "6_walk"
         return true
     end
-    -- _5_stand_idle
+    -- animation_end
     if common_game_scene_get_character_animation_end(obj_char) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
@@ -2023,7 +2268,13 @@ function state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char)
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_idle_to_move(input,obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move(input,obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_special_move(input,obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
@@ -2065,7 +2316,13 @@ function state_gate_game_scene_char_RP_from_5_stand_turn(input,obj_char)
         common_update_game_scene_input_direction(obj_char)
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_idle_to_move(input,obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move(input,obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_special_move(input,obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
@@ -2097,7 +2354,7 @@ function state_gate_game_scene_char_RP_from_5_stand_turn(input,obj_char)
         obj_char["state"] = "6_walk"
         return true
     end
-    -- _5_stand_idle
+    -- animation_end
     if common_game_scene_get_character_animation_end(obj_char) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
@@ -2107,7 +2364,13 @@ function state_gate_game_scene_char_RP_from_5_stand_turn(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_5_stand_dash_skid(input,obj_char)
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_idle_to_move(input,obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move(input,obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_special_move(input,obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
@@ -2118,7 +2381,7 @@ function state_gate_game_scene_char_RP_from_5_stand_dash_skid(input,obj_char)
         obj_char["state"] = "7_8_9_pre_jump"
         return true
     end
-    -- _5_stand_idle
+    -- animation_end
     if common_game_scene_get_character_animation_end(obj_char) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
@@ -2137,15 +2400,20 @@ function state_gate_game_scene_char_RP_from_4_walk(input,obj_char)
         state_gate_game_scene_char_RP_from_5_stand_turn(input,obj_char)
         return true
     end
-    -- no obj_char["velocity"][1] = 0 if not attack move only
-    if state_gate_game_scene_char_RP_common_ground_idle_to_not_attack_move_hold_ver(input,obj_char) then
-        return true
-    end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_idle_to_move(input,obj_char) then
-        obj_char["velocity"][1] = 0
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver(input,obj_char) then
         return true
     end
+    -- no obj_char["velocity"][1] = 0 if not attack move only
+    obj_char["velocity_cache"][1] = obj_char["velocity"][1]
+    obj_char["velocity"][1] = 0
+    if state_gate_game_scene_char_RP_common_ground_to_special_move(input,obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_char) then
+        return true
+    end
+    obj_char["velocity"][1] = obj_char["velocity_cache"][1]
     -- _7_8_9_pre_jump
     if common_game_scene_check_jump_direction(obj_char) then
         obj_char["direction_input_cache"] = obj_char["direction_input"]
@@ -2188,7 +2456,13 @@ function state_gate_game_scene_char_RP_from_4_walk_to_stand_idle(input,obj_char)
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_idle_to_move(input,obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move(input,obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_special_move(input,obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
@@ -2220,7 +2494,7 @@ function state_gate_game_scene_char_RP_from_4_walk_to_stand_idle(input,obj_char)
         obj_char["state"] = "6_walk"
         return true
     end
-    -- _5_stand_idle
+    -- animation_end
     if common_game_scene_get_character_animation_end(obj_char) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
@@ -2242,7 +2516,13 @@ function state_gate_game_scene_char_RP_from_6_walk(input,obj_char)
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_idle_to_move(input,obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move(input,obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_special_move(input,obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
@@ -2287,7 +2567,13 @@ function state_gate_game_scene_char_RP_from_6_walk_to_stand_idle(input,obj_char)
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_idle_to_move(input,obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move(input,obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_special_move(input,obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
@@ -2319,7 +2605,7 @@ function state_gate_game_scene_char_RP_from_6_walk_to_stand_idle(input,obj_char)
         obj_char["state"] = "6_walk"
         return true
     end
-    -- _5_stand_idle
+    -- animation_end
     if common_game_scene_get_character_animation_end(obj_char) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
@@ -2357,18 +2643,29 @@ function state_gate_game_scene_char_RP_from_7_8_9_jump_air_to_stand_idle(input,o
             init_character_anim_with(obj_char,obj_char["current_animation"])
             common_update_game_scene_input_direction(obj_char)
         end
-        if state_gate_game_scene_char_RP_common_ground_idle_to_move_hold_ver(input,obj_char) then
+        -- _common_ground_idle_to_move
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver(input,obj_char) then
             return true
         end
+        if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(input,obj_char) then
+            return true
+        end
+        -- 5_stand_idle
         if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
             return true
         end
     end
-    -- _5_stand_idle
+    -- animation_end
     if common_game_scene_get_character_animation_end(obj_char) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "5_stand_idle"
+        if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
+            return true
+        end
         return true
     end
 end
@@ -2402,7 +2699,14 @@ function state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char)
     end
     -- _common_air_idle_to_move
     if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_RP_common_air_idle_to_move(input,obj_char) then
+        -- _common_air_idle_to_move
+        if state_gate_game_scene_char_RP_common_air_to_dash_move(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_air_to_special_move(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_air_to_attack_move(input,obj_char) then
             return true
         end
     end
@@ -2569,7 +2873,16 @@ function state_gate_game_scene_char_RP_from_4dash_air_backdash(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_6dash_dash(input,obj_char)
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_idle_to_move_hold_ver(input,obj_char) then
+    if obj_char["direction_input"] == 4 and test_input_sys_press_or_hold(input["dash"]) then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "4dash_backdash"
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(input,obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(input,obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
@@ -2692,7 +3005,6 @@ function state_gate_game_scene_char_RP_from_5P(input,obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         return true
     end
-
     -- hit_cancel
     if obj_char["hit_cancel"] then
         if test_input_sys_press(input["P"]) then
@@ -2707,7 +3019,13 @@ function state_gate_game_scene_char_RP_from_5P(input,obj_char)
     end
     -- idle_cancel
     if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_RP_common_ground_idle_to_not_attack_move_hold_ver(input,obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_ground_to_special_move(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_char) then
             return true
         end
         if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
@@ -2753,14 +3071,18 @@ function state_gate_game_scene_char_RP_from_cS(input,obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         return true
     end
-
     -- hit_cancel
     if obj_char["hit_cancel"] then
-
     end
     -- idle_cancel
     if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_RP_common_ground_idle_to_not_attack_move_hold_ver(input,obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_ground_to_special_move(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_char) then
             return true
         end
         if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
@@ -2798,14 +3120,18 @@ function state_gate_game_scene_char_RP_from_2Launcher(input,obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         return true
     end
-
     -- hit_cancel
     if obj_char["hit_cancel"] then
-
     end
     -- idle_cancel
     if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_RP_common_ground_idle_to_not_attack_move_hold_ver(input,obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_ground_to_special_move(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_char) then
             return true
         end
         if state_gate_game_scene_char_RP_from_1_2_3_crouch(input,obj_char) then
@@ -2843,17 +3169,21 @@ function state_gate_game_scene_char_RP_from_4_6Launcher(input,obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         return true
     end
-
     -- idle_cancel
     if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_RP_common_ground_idle_to_not_attack_move_hold_ver(input,obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_ground_to_special_move(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_char) then
             return true
         end
         if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
             return true
         end
     end
-
     -- _5_stand_idle
     if common_game_scene_get_character_animation_end(obj_char) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
@@ -2883,17 +3213,21 @@ function state_gate_game_scene_char_RP_from_5Launcher(input,obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         return true
     end
-
     -- idle_cancel
     if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_RP_common_ground_idle_to_not_attack_move_hold_ver(input,obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_ground_to_special_move(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_char) then
             return true
         end
         if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
             return true
         end
     end
-
     -- _5_stand_idle
     if common_game_scene_get_character_animation_end(obj_char) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)

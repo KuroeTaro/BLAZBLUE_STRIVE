@@ -111,6 +111,10 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
 
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
+
         -- special_update
         frame_0_special_update_function()
     end
@@ -298,6 +302,10 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
             0.5,-1,1,0
         )
 
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
+
         -- special_update
         frame_0_special_update_function()
 
@@ -413,6 +421,10 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
             VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,-1,1,0
         )
+
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
 
         -- special_update
         frame_0_special_update_function()
@@ -536,6 +548,10 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
             VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,-1,1,0
         )
+
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
 
         -- special_update
         frame_0_special_update_function()
@@ -667,6 +683,10 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
             0.5,-1,1,0
         )
 
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
+
         -- special_update
         frame_0_special_update_function()
 
@@ -796,6 +816,10 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
             VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,-1,1,0
         )
+
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
 
         -- special_update
         frame_0_special_update_function()
@@ -966,6 +990,10 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
             0.5,-1,1,0
         )
 
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
+
         -- special_update
         frame_0_special_update_function()
 
@@ -1076,6 +1104,10 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
             VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,-1,1,0
         )
+
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
 
         -- special_update
         frame_0_special_update_function()
@@ -1191,6 +1223,10 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
             0.5,-1,1,0
         )
 
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
+
         -- special_update
         frame_0_special_update_function()
 
@@ -1305,6 +1341,10 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
             VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,-1,1,0
         )
+
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
 
         -- special_update
         frame_0_special_update_function()
@@ -1424,6 +1464,10 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
             VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,-1,1,0
         )
+
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
 
         -- special_update
         frame_0_special_update_function()
@@ -1565,6 +1609,10 @@ function load_game_scene_anim_char_common_0_air_block(
         -- draw_correction
         obj_char_other_side[8] = 5
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
 
         -- special_update
         frame_0_special_update_function()
@@ -1710,6 +1758,10 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
 
         -- set_frame_adv
         obj_char["frame_adv"] = 0
@@ -3284,6 +3336,10 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
         -- update
         update_before_land()
 
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
+
         -- special_update
         frame_0_special_update_function()
 
@@ -3543,6 +3599,10 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         -- update
         update_throw_inv()
 
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
+
         -- special_update
         frame_0_special_update_function()
 
@@ -3758,6 +3818,10 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         -- update
         update_throw_inv()
 
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
+
         -- special_update
         frame_0_special_update_function()
 
@@ -3899,6 +3963,10 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
 
         -- update
         update_throw_inv()
+
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
 
         -- special_update
         frame_0_special_update_function()
@@ -4042,6 +4110,10 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
         
         -- update
         update_before_falling()
+
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
 
         -- special_update
         frame_0_special_update_function()
@@ -4211,6 +4283,10 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
         -- update
         update_throw_inv()
 
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
+
         -- special_update
         frame_0_special_update_function()
 
@@ -4349,6 +4425,10 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         -- update
         update_throw_inv()
 
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
+
         -- special_update
         frame_0_special_update_function()
 
@@ -4466,6 +4546,10 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
+
         -- update
         update_throw_inv()
 
@@ -4625,6 +4709,10 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
+
         -- update
         update_before_land()
 
@@ -4768,6 +4856,10 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
 
         -- update
         obj_char_other_side["y"] = 100
+
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char_other_side)
 
         -- special_update
         frame_0_special_update_function()
