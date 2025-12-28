@@ -1392,7 +1392,7 @@ function state_gate_game_scene_char_LP_common_ground_to_dash_move(input,obj_char
     end
     return false
 end
-function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver(input,obj_char)
+function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char)
     -- _4dash_backdash
     if obj_char["direction_input"] == 4 and test_input_sys_press_or_hold(input["dash"]) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
@@ -1411,6 +1411,38 @@ function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver(input
     end
     return false
 end
+function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char)
+    -- _4dash_backdash
+    if obj_char["direction_input"] == 4 and test_input_sys_press(input["dash"]) then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "4dash_backdash"
+        return true
+    end
+    -- _6dash_dash
+    if (obj_char["direction_input"] == 5 or obj_char["direction_input"] == 6) 
+    and test_input_sys_press_or_hold(input["dash"]) 
+    and obj_char["state"] ~= "6dash_dash" then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_6dash_dash(input,obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "6dash_dash"
+        return true
+    end
+    return false
+end
+function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_4dash_to_walk(input,obj_char)
+    -- _6dash_dash
+    if (obj_char["direction_input"] == 5 or obj_char["direction_input"] == 6) 
+    and test_input_sys_press_or_hold(input["dash"]) 
+    and obj_char["state"] ~= "6dash_dash" then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_6dash_dash(input,obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "6dash_dash"
+        return true
+    end
+    return false
+end
+
 function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char)
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     -- _active_FD_block
@@ -1693,7 +1725,7 @@ function state_gate_game_scene_char_LP_from_block(input,obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "5_stand_idle"
         -- _common_ground_idle_to_move
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
             return true
         end
         if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,obj_char) then
@@ -1715,7 +1747,7 @@ function state_gate_game_scene_char_LP_from_block(input,obj_char)
         obj_char["f"] = 4
         character_animator(obj_char,obj_char["current_animation"])
         -- _common_ground_idle_to_move
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
             return true
         end
         if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,obj_char) then
@@ -1772,7 +1804,7 @@ function state_gate_game_scene_char_LP_from_hurt(input,obj_char)
             init_character_anim_with(obj_char,obj_char["current_animation"])
             obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
                 return true
             end
             if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,obj_char) then
@@ -1793,7 +1825,7 @@ function state_gate_game_scene_char_LP_from_hurt(input,obj_char)
             obj_char["f"] = 4
             character_animator(obj_char,obj_char["current_animation"])
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
                 return true
             end
             if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,obj_char) then
@@ -1856,7 +1888,7 @@ function state_gate_game_scene_char_LP_from_throw_success(input,obj_char)
             init_character_anim_with(obj_char,obj_char["current_animation"])
             obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
                 return true
             end
             if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,obj_char) then
@@ -1893,7 +1925,7 @@ function state_gate_game_scene_char_LP_from_throw_success(input,obj_char)
         -- stand_idle
         elseif obj_char["height_state"] == "stand" then
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
                 return true
             end
             if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,obj_char) then
@@ -1956,7 +1988,7 @@ function state_gate_game_scene_char_LP_from_throw_tech(input,obj_char)
             init_character_anim_with(obj_char,obj_char["current_animation"])
             obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
                 return true
             end
             if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,obj_char) then
@@ -2067,7 +2099,7 @@ function state_gate_game_scene_char_LP_from_knockdown_recovery(input,obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "5_stand_idle"
         -- _common_ground_idle_to_move
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
             return true
         end
         if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,obj_char) then
@@ -2104,7 +2136,7 @@ function state_gate_game_scene_char_LP_from_1_2_3_crouch(input,obj_char)
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_LP_common_ground_to_dash_move(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
         return true
     end
     if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
@@ -2160,7 +2192,7 @@ function state_gate_game_scene_char_LP_from_1_2_3_crouch_turn(input,obj_char)
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_LP_common_ground_to_dash_move(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
         return true
     end
     if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
@@ -2228,7 +2260,7 @@ function state_gate_game_scene_char_LP_from_1_2_3_crouch_to_stand_idle(input,obj
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_LP_common_ground_to_dash_move(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
         return true
     end
     if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
@@ -2294,7 +2326,7 @@ function state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char)
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_LP_common_ground_to_dash_move(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
         return true
     end
     if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
@@ -2350,7 +2382,7 @@ function state_gate_game_scene_char_LP_from_5_stand_turn(input,obj_char)
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_LP_common_ground_to_dash_move(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
         return true
     end
     if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
@@ -2406,7 +2438,7 @@ function state_gate_game_scene_char_LP_from_5_stand_dash_skid(input,obj_char)
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_LP_common_ground_to_dash_move(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
         return true
     end
     if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
@@ -2451,7 +2483,7 @@ function state_gate_game_scene_char_LP_from_4_walk(input,obj_char)
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_LP_common_ground_to_dash_move(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
         return true
     end
     -- no obj_char["velocity"][1] = 0 if not attack move only
@@ -2514,7 +2546,7 @@ function state_gate_game_scene_char_LP_from_4_walk_to_stand_idle(input,obj_char)
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_LP_common_ground_to_dash_move(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
         return true
     end
     if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
@@ -2582,7 +2614,7 @@ function state_gate_game_scene_char_LP_from_6_walk(input,obj_char)
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_LP_common_ground_to_dash_move(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
         return true
     end
     if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
@@ -2641,7 +2673,7 @@ function state_gate_game_scene_char_LP_from_6_walk_to_stand_idle(input,obj_char)
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_LP_common_ground_to_dash_move(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
         return true
     end
     if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
@@ -2706,7 +2738,7 @@ function state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,o
             common_update_game_scene_input_direction(obj_char)
         end
         -- _common_ground_idle_to_move
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
             return true
         end
         if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,obj_char) then
@@ -2903,7 +2935,7 @@ function state_gate_game_scene_char_LP_from_6dash_dash(input,obj_char)
         return true
     end
     -- _common_ground_idle_to_move
-    if obj_char["direction_input"] == 4 and test_input_sys_press_or_hold(input["dash"]) then
+    if obj_char["direction_input"] == 4 and test_input_sys_press(input["dash"]) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "4dash_backdash"
@@ -3037,7 +3069,7 @@ function state_gate_game_scene_char_LP_from_5P(input,obj_char)
     end
     -- idle_cancel
     if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
             return true
         end
         if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
@@ -3082,7 +3114,7 @@ function state_gate_game_scene_char_LP_from_cS(input,obj_char)
     end
     -- idle_cancel
     if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
             return true
         end
         if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
@@ -3119,7 +3151,7 @@ function state_gate_game_scene_char_LP_from_2Launcher(input,obj_char)
     end
     -- idle_cancel
     if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
             return true
         end
         if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
@@ -3153,7 +3185,7 @@ function state_gate_game_scene_char_LP_from_4_6Launcher(input,obj_char)
     end
     -- idle_cancel
     if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
             return true
         end
         if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
@@ -3185,7 +3217,7 @@ function state_gate_game_scene_char_LP_from_5Launcher(input,obj_char)
     end
     -- idle_cancel
     if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
             return true
         end
         if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
