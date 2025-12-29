@@ -738,7 +738,9 @@ function load_game_scene_box_anchor_data_LP()
     obj_anchor_data_game_scene_char_LP["0_general_hurt_semi_launched_rotate"] = {255, 525}
 
     obj_anchor_data_game_scene_char_LP["0_ground_Launcher_teching"] = {205, 395}
+    obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["smoke_spawn_anchor_pos"]["0_ground_Launcher_teching"] = {-800,-195}
     obj_anchor_data_game_scene_char_LP["0_ground_Launcher_teched"] = {223, 510}
+    obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["smoke_spawn_anchor_pos"]["0_ground_Launcher_teched"] = {-900,-195}
 
     obj_anchor_data_game_scene_char_LP["air_thrown_tested"] = {340, 430}
     obj_anchor_data_game_scene_char_LP["ground_thrown_tested"] = {150, 530}

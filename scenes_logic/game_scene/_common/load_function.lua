@@ -246,6 +246,11 @@ function order_load_game_scene_VFX(load_order)
                 "asset/game_scene/VFX/hit_VFX/slash_ver1.json",
                 love.graphics.newImage(ASSET_DATA[8]["slash_ver1_sprite_batch"])
             )
+            image_sprite_sheet_VFX_game_scene_throw_tech = 
+            sprite_sheet_load(
+                "asset/game_scene/VFX/hit_VFX/throw_tech.json",
+                love.graphics.newImage(ASSET_DATA[8]["throw_tech_sprite_batch"])
+            )
         end,
         [30] = function()
             -- hit special

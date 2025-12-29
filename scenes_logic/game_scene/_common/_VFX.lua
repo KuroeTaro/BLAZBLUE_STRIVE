@@ -93,7 +93,7 @@ function insert_VFX_game_scene_char_overdrive_partical(obj_char)
         obj[6] = 1
         obj[7] = 0
         obj[8] = 0
-        obj["f"] = -1
+        obj["f"] = 0
     elseif obj_char["player_side"] == "R" then
         obj["life"] = 80
         obj[1] = obj_camera[1] + 800
@@ -108,9 +108,9 @@ function insert_VFX_game_scene_char_overdrive_partical(obj_char)
     end
     obj["update"] = function(self)
         self["f"] = self["f"] + 1
-        if self["f"] >= 1 then
+        if self["f"] >= 2 then
             self[8] = self[8] + 1
-            self["f"] = -1
+            self["f"] = 0
         end
         self["life"] = self["life"] - 1
         if obj_char["state"] ~= "burst_overdrive" then
@@ -843,6 +843,38 @@ function insert_VFX_game_sceme_char_FD_block(obj_char)
     end
     table.insert(obj_char["VFX_front_table"],obj)
 end
+function insert_VFX_game_scene_char_throw_tech(obj_char,x,y,opacity,sx,sy,r)
+    -- x y z opacity sx sy r f
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    obj["life"] = 20
+    obj[1] = (obj_char["x"] + obj_char_other_side["x"])/2 + obj_char[5]*(x)
+    obj[2] = (obj_char["y"] + obj_char_other_side["y"])/2 + obj_char[6]*(y)
+    obj[3] = obj_char[3]
+    obj[4] = opacity
+    obj[5] = obj_char[5]*sx
+    obj[6] = obj_char[6]*sy
+    obj[7] = r
+    obj[8] = 0
+    obj["f"] = 0
+    obj["update"] = function(self)
+        self["f"] = self["f"] + 1
+        if self["f"] >= 2 then
+            self[8] = math.min(self[8] + 1, 24)
+            self["f"] = 0
+        end
+        self["life"] = self["life"] - 1
+    end
+    obj["draw"] = function(self)
+        local obj_camera = obj_stage_game_scene_camera
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_throw_tech
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+    end
+    table.insert(obj_char["VFX_back_table"],obj)
+end
 
 -- smoke
 function insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,x,y,opacity,sx,sy,r)
@@ -901,12 +933,12 @@ function insert_VFX_game_scene_stage_smoke_horizontal_shot(obj_char,x,y,opacity,
     obj[6] = obj_char[6]*sy
     obj[7] = r
     obj[8] = 0
-    obj["f"] = -1
+    obj["f"] = 0
     obj["update"] = function(self)
         self["f"] = self["f"] + 1
-        if self["f"] >= 2 then
+        if self["f"] >= 3 then
             self[8] = math.min(self[8] + 1, 24)
-            self["f"] = -1
+            self["f"] = 0
         end
         self["life"] = self["life"] - 1
     end
@@ -932,12 +964,12 @@ function insert_VFX_game_scene_stage_smoke_land_blow(obj_char,x,y,opacity,sx,sy,
     obj[6] = obj_char[6]*sy
     obj[7] = r
     obj[8] = 0
-    obj["f"] = -1
+    obj["f"] = 0
     obj["update"] = function(self)
         self["f"] = self["f"] + 1
-        if self["f"] >= 2 then
+        if self["f"] >= 3 then
             self[8] = math.min(self[8] + 1, 20)
-            self["f"] = -1
+            self["f"] = 0
         end
         self["life"] = self["life"] - 1
     end
@@ -962,12 +994,12 @@ function insert_VFX_game_scene_stage_smoke_vertical_shot(obj_char,x,y,opacity,sx
     obj[6] = obj_char[6]*sy
     obj[7] = r
     obj[8] = 0
-    obj["f"] = -1
+    obj["f"] = 0
     obj["update"] = function(self)
         self["f"] = self["f"] + 1
-        if self["f"] >= 1 then
+        if self["f"] >= 2 then
             self[8] = math.min(self[8] + 1, 17)
-            self["f"] = -1
+            self["f"] = 0
         end
         self["life"] = self["life"] - 1
     end
@@ -996,12 +1028,12 @@ function insert_VFX_game_scene_stage_4dash_air_backdash_shockwave(obj_char,x,y,o
     obj[6] = obj_char[6]*sy
     obj[7] = r
     obj[8] = 0
-    obj["f"] = -1
+    obj["f"] = 0
     obj["update"] = function(self)
         self["f"] = self["f"] + 1
-        if self["f"] >= 1 then
+        if self["f"] >= 2 then
             self[8] = math.min(self[8] + 1, 12)
-            self["f"] = -1
+            self["f"] = 0
         end
         -- self[1] = self[1] + self[5]*10
         self["life"] = self["life"] - 1
@@ -1034,12 +1066,12 @@ function insert_VFX_game_scene_stage_6dash_air_dash_shockwave(obj_char,x,y,opaci
     elseif obj_char[5] == -1 then
         obj[1] = math.max(obj[1],-1000)
     end
-    obj["f"] = -1
+    obj["f"] = 0
     obj["update"] = function(self)
         self["f"] = self["f"] + 1
-        if self["f"] >= 1 then
+        if self["f"] >= 2 then
             self[8] = math.min(self[8] + 1, 12)
-            self["f"] = -1
+            self["f"] = 0
         end
         self[1] = self[1] + self[5]*-0.2
         self["life"] = self["life"] - 1

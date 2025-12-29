@@ -30,6 +30,7 @@ thread_data["partical_ver1_counter_sprite_batch"] = compress_module("asset/game_
 thread_data["slash_ver0_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/slash_ver0.dds")
 thread_data["slash_ver0_counter_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/slash_ver0_counter.dds")
 thread_data["slash_ver1_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/slash_ver1.dds")
+thread_data["throw_tech_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/throw_tech.dds")
     -- special
 thread_data["lighting_black_0_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/special/lighting_black_0.dds")
 thread_data["lighting_black_1_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/special/lighting_black_1.dds")
