@@ -27,21 +27,21 @@ function common_game_scene_toggle_ease_in(toggle_value)
     obj_annoucer_game_scene_lets_dance[4] = toggle_value
 end
 
-function common_game_scene_get_SFX_side(side)
+function common_game_scene_get_SFX_table(side)
     if side == "L" then
         return audio_SFX_game_scene_LP
     elseif side == "R" then
         return audio_SFX_game_scene_RP
     end
 end
-function common_game_scene_get_pushbox_side(side)
+function common_game_scene_get_pushbox(side)
     if side == "L" then
         return obj_pushboxs_data_game_scene_char_LP
     elseif side == "R" then
         return obj_pushboxs_data_game_scene_char_RP
     end
 end
-function common_game_scene_get_anchor_side(side)
+function common_game_scene_get_anchor(side)
     if side == "L" then
         return obj_anchor_data_game_scene_char_LP
     elseif side == "R" then
@@ -428,8 +428,8 @@ function common_game_scene_throw_hurt_function(obj_char)
     local side = obj_char["player_side"]
     local hit_side_obj_char = common_game_scene_change_character(side)
     local obj_camera = obj_stage_game_scene_camera
-    local pushbox_data = common_game_scene_get_pushbox_side(side)
-    local anchor_data = common_game_scene_get_anchor_side(side)
+    local pushbox_data = common_game_scene_get_pushbox(side)
+    local anchor_data = common_game_scene_get_anchor(side)
     local sprite_sheet_state = nil
     local collision_test_ground_height_offset = nil
 

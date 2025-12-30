@@ -8,6 +8,8 @@ function load_game_scene_obj_stage()
     DRAW_STAGE_ALPHA_COMP_CANVAS = love.graphics.newCanvas(width,height)
     DRAW_STAGE_ALPHA_ONLY_CANVAS = love.graphics.newCanvas(width,height)
 
+    obj_stage_game_scene_mid_collision_anchor = 0
+
     obj_stage_game_scene_camera = {0, 0, -800}
     obj_stage_game_scene_camera["3d_pos_x"] = 0
     obj_stage_game_scene_camera["3d_pos_y"] = 0
@@ -80,18 +82,28 @@ function update_game_scene_stage()
     local obj_camera = obj_stage_game_scene_camera
     local obj_char_L = obj_char_game_scene_char_LP
     local obj_char_R = obj_char_game_scene_char_RP
-    
+
+    obj_stage_game_scene_mid_collision_anchor = (obj_char_L["x"] + obj_char_R["x"])/2
+
+    -- x = 720 y = -800
+    -- x = 1440 y = -970
+    -- y = (x-720)*(-170)/720 -800
+    obj_camera["3d_pos_z_target"] = (math.abs(obj_char_L["x"]-obj_char_R["x"])-720)*(-170)/720-800
+    obj_camera["3d_pos_z_target"] = math.min(obj_camera["3d_pos_z_target"],-800)
+    obj_camera["3d_pos_z_target"] = math.max(obj_camera["3d_pos_z_target"],-970)
+
     obj_camera["3d_pos_x_target"] = (obj_char_L["x"] + obj_char_R["x"])/2   -- 必须要保持两个pushbox宽度相同
-    obj_camera["3d_pos_x_target"] = math.max(obj_camera["3d_pos_x_target"],-850)
-    obj_camera["3d_pos_x_target"] = math.min(obj_camera["3d_pos_x_target"],850)
+    obj_camera["3d_pos_x_target"] = math.max(obj_camera["3d_pos_x_target"],-850-(obj_camera["3d_pos_z_target"]+800)*1)
+    obj_camera["3d_pos_x_target"] = math.min(obj_camera["3d_pos_x_target"],850+(obj_camera["3d_pos_z_target"]+800)*1)
 
     obj_camera["3d_pos_y_target"] = math.max((obj_char_L["y"] + obj_char_R["y"])/2-365,math.min(obj_char_L["y"],obj_char_R["y"]))
     obj_camera["3d_pos_y_target"] = math.min(obj_camera["3d_pos_y_target"],0)
-    obj_camera["3d_pos_y_target"] = obj_camera["3d_pos_y_target"] - (math.max(math.abs(obj_char_L["x"]-obj_char_R["x"]),1400)-1400)*0.2
+    obj_camera["3d_pos_y_target"] = obj_camera["3d_pos_y_target"]+(800+obj_camera["3d_pos_z_target"])*0.5
     obj_camera["3d_pos_y_target"] = math.max(obj_camera["3d_pos_y_target"],-850)
 
-    obj_camera["3d_pos_z_target"] = -math.max(math.abs(obj_char_L["x"]-obj_char_R["x"])+200,1600)/1600*800-obj_camera["3d_pos_y_target"]*0.25
+    obj_camera["3d_pos_z_target"] = obj_camera["3d_pos_z_target"]-obj_camera["3d_pos_y_target"]*0.25
 
+    -- camera smooth move
     local div_value = 3
     obj_camera["3d_pos_x"] = (obj_camera["3d_pos_x"]*(div_value-1)+obj_camera["3d_pos_x_target"])/div_value
     obj_camera["3d_pos_y"] = (obj_camera["3d_pos_y"]*(div_value-1)+obj_camera["3d_pos_y_target"])/div_value

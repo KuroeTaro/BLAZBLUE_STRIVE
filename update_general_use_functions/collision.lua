@@ -64,19 +64,19 @@ function pushbox_stage_relocate_x(obj)
         obj["collision_move_available"] = {1,1}
     end
 end
-function pushbox_state_relocate_in_character_x(obj_char_LP,obj_char_RP)
+function pushbox_state_relocate_in_character_x(obj_char_LP,obj_char_RP,mid_anchor)
     local box_L = collision_box_to_real_world_box(obj_char_LP,"pushbox")
     local box_R = collision_box_to_real_world_box(obj_char_RP,"pushbox")
     local obj_camera = obj_stage_game_scene_camera
     if obj_char_LP["x"] < obj_char_RP["x"] then
-        if (box_R[1] + box_R[3]/2)-(box_L[1] - box_L[3]/2) > 1900 then
-            obj_char_LP["x"] = obj_camera["3d_pos_x_target"] - 950 + box_L[3]/2
-            obj_char_RP["x"] = obj_camera["3d_pos_x_target"] + 950 - box_R[3]/2
+        if (box_R[1] + box_R[3]/2)-(box_L[1] - box_L[3]/2) > 1840 then
+            obj_char_LP["x"] = mid_anchor - 920 + box_L[3]/2
+            obj_char_RP["x"] = mid_anchor + 920 - box_R[3]/2
         end
     elseif obj_char_LP["x"] > obj_char_RP["x"] then
-        if (box_L[1] + box_L[3]/2)-(box_R[1] - box_R[3]/2) > 1900 then
-            obj_char_LP["x"] = obj_camera["3d_pos_x_target"] + 950 - box_L[3]/2
-            obj_char_RP["x"] = obj_camera["3d_pos_x_target"] - 950 + box_R[3]/2
+        if (box_L[1] + box_L[3]/2)-(box_R[1] - box_R[3]/2) > 1840 then
+            obj_char_LP["x"] = mid_anchor + 920 - box_L[3]/2
+            obj_char_RP["x"] = mid_anchor - 920 + box_R[3]/2
         end
     end
 end

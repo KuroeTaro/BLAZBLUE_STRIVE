@@ -2164,7 +2164,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
     local friction = 4
     local gravity = 2.5
     local side = obj_char["player_side"]
-    local side_SFX_table = common_game_scene_get_SFX_side(side)
+    local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
 
     res[0] = function()
@@ -2337,7 +2337,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char["hitbox_table"] = {{130, -416, 260, 98}}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{0, -455, 100, 50},{130, -416, 290, 128}}
         -- SFX
-        play_obj_audio(side_SFX_table["5P"])
+        play_obj_audio(SFX_table["5P"])
         -- VFX
         insert_VFX_game_scene_char_TRM_5P_whiff(obj_char)
         -- draw_correction
@@ -2424,7 +2424,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
     local friction = 10
     local gravity = 2.5
     local side = obj_char["player_side"]
-    local side_SFX_table = common_game_scene_get_SFX_side(side)
+    local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
 
     res[0] = function() 
@@ -2605,7 +2605,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         obj_char["hitbox_table"] = {{185, -230, 240, 350}}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{0, -440, 100, 20},{185, -230, 290, 400}}
         -- SFX
-        play_obj_audio(side_SFX_table["5P"])
+        play_obj_audio(SFX_table["5P"])
         -- VFX
         insert_VFX_game_scene_char_TRM_cS_whiff(obj_char)
         -- draw_correction
@@ -2696,7 +2696,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
     local friction = 20
     local gravity = 2.5
     local side = obj_char["player_side"]
-    local side_SFX_table = common_game_scene_get_SFX_side(side)
+    local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
 
     res[0] = function() 
@@ -2919,7 +2919,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         obj_char["hitbox_table"] = {{228, -65, 300, 130}}
         obj_char["hurtbox_table"] = {{0, -150, 200, 300},{228,-72.5,330,145}}
         -- SFX
-        play_obj_audio(side_SFX_table["5P"])
+        play_obj_audio(SFX_table["5P"])
         -- draw_correction
         obj_char[8] = 3
         -- input_sys_cache
@@ -3024,7 +3024,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
     local friction = 7
     local gravity = 2.5
     local side = obj_char["player_side"]
-    local side_SFX_table = common_game_scene_get_SFX_side(side)
+    local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
 
@@ -3189,7 +3189,7 @@ end
 function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
     local res = {}
     local side = obj_char["player_side"]
-    local side_SFX_table = common_game_scene_get_SFX_side(side)
+    local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     local obj_camera = obj_stage_game_scene_camera
     local pushbox_data_other_side = common_game_scene_change_character_pushbox(side)
@@ -3414,7 +3414,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
     local friction = 1
     local gravity = 2.5
     local side = obj_char["player_side"]
-    local side_SFX_table = common_game_scene_get_SFX_side(side)
+    local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
 
@@ -3651,7 +3651,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
     local friction = 10
     local gravity = 2.5
     local side = obj_char["player_side"]
-    local side_SFX_table = common_game_scene_get_SFX_side(side)
+    local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
 
     res[0] = function() 
@@ -3844,7 +3844,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char["hitbox_table"] = {{-30, -400, 490, 230},{140, -170, 150, 230}}
         obj_char["hurtbox_table"] = {{0, -237.5, 210, 475},{-30, -400, 540, 280},{140, -170, 200, 280}}
         -- SFX
-        play_obj_audio(side_SFX_table["5P"])
+        play_obj_audio(SFX_table["5P"])
         -- draw_correction
         obj_char[8] = 4
         
@@ -3953,7 +3953,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
     local friction = 10
     local gravity = 2.5
     local side = obj_char["player_side"]
-    local side_SFX_table = common_game_scene_get_SFX_side(side)
+    local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
 
     res[0] = function() 
@@ -4146,7 +4146,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
         obj_char["hitbox_table"] = {{-30, -400, 490, 230},{140, -170, 150, 230}}
         obj_char["hurtbox_table"] = {{0, -237.5, 210, 475},{-30, -400, 540, 280},{140, -170, 200, 280}}
         -- SFX
-        play_obj_audio(side_SFX_table["5P"])
+        play_obj_audio(SFX_table["5P"])
         -- draw_correction
         obj_char[8] = 4
         

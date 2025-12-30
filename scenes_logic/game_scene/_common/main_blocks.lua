@@ -281,7 +281,7 @@ function update_game_scene_main_training()
                 -- 检测pushbox 更新X位置 static_relocate_x
                 pushbox_stage_relocate_x(char_LP)
                 pushbox_stage_relocate_x(char_RP)
-                pushbox_state_relocate_in_character_x(char_LP,char_RP)
+                pushbox_state_relocate_in_character_x(char_LP,char_RP,obj_stage_game_scene_mid_collision_anchor)
 
                 -- 检测pushbox 更新X位置 dynamic_relocate_x
                 pushbox_dynamic_normal_aabb_relocate_x(char_LP,char_RP)
@@ -433,7 +433,7 @@ function update_game_scene_main_training()
             -- 检测pushbox 更新X位置 static_relocate_x
             pushbox_stage_relocate_x(char_LP)
             pushbox_stage_relocate_x(char_RP)
-            pushbox_state_relocate_in_character_x(char_LP,char_RP)
+            pushbox_state_relocate_in_character_x(char_LP,char_RP,obj_stage_game_scene_mid_collision_anchor)
 
             -- 检测pushbox 更新X位置 dynamic_relocate_x
             pushbox_dynamic_normal_aabb_relocate_x(char_LP,char_RP)
