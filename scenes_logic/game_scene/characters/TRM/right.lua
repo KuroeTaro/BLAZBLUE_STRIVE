@@ -302,6 +302,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             -- ATTACK 4 5 6
             local load_name_table = {
                 "burst_overdrive_rc_ground",
+                "2P",
                 "5P",
                 "cS",
                 "2Launcher",
@@ -344,6 +345,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             image_sprite_sheet_VFX_game_scene_RP = {}
 
             local load_name_table = {
+                "2P",
                 "5P",
                 "cS",
                 -- 2Launcher
@@ -1427,6 +1429,15 @@ function state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_ch
     -- _6sp_S
     -- _sp_H
     -- _2P
+    if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["P"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_2P(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "2P"
+        return true
+    end
     -- _6P
     -- _5P
     if test_input_sys_press(input["P"]) then
@@ -1509,6 +1520,15 @@ function state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(inp
     -- _6sp_S
     -- _sp_H
     -- _2P
+    if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press_or_hold(input["P"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_2P(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "2P"
+        return true
+    end
     -- _6P
     -- _5P
     if test_input_sys_press_or_hold(input["P"]) then
@@ -3080,6 +3100,51 @@ function state_gate_game_scene_char_RP_from_burst_burst(input,obj_char)
 end
 
 function state_gate_game_scene_char_RP_from_2P(input,obj_char)
+    -- _PRC
+    if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"PRC") then
+        return true
+    end
+    -- hit_cancel
+    if obj_char["hit_cancel"] then
+        -- _overdrive
+        if state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,"overdrive") then
+            return true
+        end
+        -- _2P
+        if test_input_sys_press(input["P"]) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_2P(obj_char)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "2P"
+            return true
+        end
+    end
+    -- idle_cancel
+    if obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_ground_to_special_move(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_from_1_2_3_crouch(input,obj_char) then
+            return true
+        end
+    end
+    -- _1_2_3_crouch
+    if common_game_scene_get_character_animation_end(obj_char) then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "1_2_3_crouch"
+        obj_char["f"] = 4
+        character_animator(obj_char,obj_char["current_animation"])
+        return true
+    end
 end
 function state_gate_game_scene_char_RP_from_6P(input,obj_char)
 end

@@ -71,6 +71,7 @@ end
 -- 攻击类
 local load_attack_name_table = {
     "burst_overdrive_rc_ground", --burst会生成一个伤害为0的攻击判定
+    "2P",
     "5P",
     "cS",
     "2Launcher",
@@ -84,6 +85,7 @@ end
 
 -- 角色whiff_VFX类
 local load_whiff_VFX_name_table = {
+    "2P",
     "5P",
     "cS",
     -- "2Launcher"

@@ -329,6 +329,13 @@ function common_game_scene_strike_hurt_function(obj_char)
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
         obj_char["state_cache"] = "block"
         obj_char["state"] = "blockstop"
+
+        if common_game_scene_check_crouch_direction(obj_char) and obj_char["height_state"] == "stand" then
+            obj_char["height_state"] = "crouch"
+        elseif common_game_scene_check_stand_direction(obj_char) and obj_char["height_state"] == "crouch" then
+            obj_char["height_state"] = "stand"
+        end
+        
         if obj_char["height_state"] == "stand" then
             obj_char["current_animation"] = hit_side_obj_char["stand_block_animation"]
         elseif obj_char["height_state"] == "crouch" then
