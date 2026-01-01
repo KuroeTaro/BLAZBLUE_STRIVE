@@ -1,3 +1,2 @@
-hurt_animation 变量名修改
 2p
 6p

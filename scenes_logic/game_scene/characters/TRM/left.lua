@@ -31,8 +31,8 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["move_state"] = "none" -- none startup active recovery
 
         -- input
-    obj_char_game_scene_char_LP["direction_input"] = 0
-    obj_char_game_scene_char_LP["direction_input_cache"] = 0
+    obj_char_game_scene_char_LP["direction_input"] = 5
+    obj_char_game_scene_char_LP["direction_input_cache"] = 5
     obj_char_game_scene_char_LP["SP_intput_dealy_countdown"] = 0
     obj_char_game_scene_char_LP["startup_frame"] = 0
     obj_char_game_scene_char_LP["active_frame"] = 0
@@ -780,7 +780,6 @@ function state_machine_char_game_scene_char_LP()
     -- sp + Launcher 普通投
 
     local input = INPUT_SYS_CURRENT_COMMAND_STATE["L"]
-    local input_other_side = common_game_scene_change_input_state("L")
     local obj_char = obj_char_game_scene_char_LP
     local obj_char_other_side = common_game_scene_change_character("L")
     local switch = {
@@ -817,41 +816,10 @@ function state_machine_char_game_scene_char_LP()
             state_gate_game_scene_char_LP_from_throw_hurt_success(input,obj_char)
         end,
         ["throw_testing"] = function()
-            obj_char["f"] = obj_char["f"] + 1
-            if obj_char["f"] <= 9 and input_other_side["Launcher"] == "Pressing" then
-                obj_char["state"] = "throw_teched"
-                obj_char["current_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
-                    obj_char,"teched"
-                )
-                init_character_anim_with(obj_char,obj_char["current_animation"])
-            elseif obj_char["f"] > 9 then
-                obj_char["state"] = "throw_success"
-                obj_char["current_animation"] = obj_char["throw_success_animation"]
-                init_character_anim_with(obj_char,obj_char["current_animation"])
-                   
-                if not common_game_scene_get_character_facing_currect(obj_char) then
-                    obj_char[5] = -obj_char[5]
-                end       
-            end
+            state_gate_game_scene_char_LP_from_throw_testing(input,obj_char)
         end,
         ["throw_tested"] = function()
-            local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
-            obj_char["f"] = obj_char["f"] + 1
-            if obj_char["f"] <= 9 and input["Launcher"] == "Pressing" then
-                obj_char["state"] = "throw_teching"
-                obj_char["current_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
-                    obj_char,"teching"
-                )
-                init_character_anim_with(obj_char,obj_char["current_animation"])
-            elseif obj_char["f"] > 9 then
-                obj_char["state"] = "throw_hurt_success"
-                obj_char["current_animation"] = obj_char_other_side["throw_hurt_success_animation"]
-                init_character_anim_with(obj_char,obj_char["current_animation"])
-
-                if not common_game_scene_get_character_facing_currect(obj_char) then
-                    obj_char[5] = -obj_char[5]
-                end 
-            end
+            state_gate_game_scene_char_LP_from_throw_tested(input,obj_char)
         end,
         ["throw_teching"] = function()
             state_machine_char_game_scene_char_LP_input_sys_cache()
@@ -1685,7 +1653,7 @@ function state_gate_game_scene_char_LP_common_RC_move(input,obj_char,color)
 end
 function state_gate_game_scene_char_LP_common_burst_overdrive(input,obj_char,type)
     -- _overdrive
-    if test_input_sys_press(input["burst"]) and obj_char["overdrive_gauge"][1] == obj_char["overdrive_gauge"][2] then
+    if type == "overdrive" and test_input_sys_press(input["burst"]) and obj_char["overdrive_gauge"][1] == obj_char["overdrive_gauge"][2] then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -1958,6 +1926,43 @@ function state_gate_game_scene_char_LP_from_throw_hurt_success(input,obj_char)
         return
     end
 end
+function state_gate_game_scene_char_LP_from_throw_testing(input,obj_char)
+    obj_char["f"] = obj_char["f"] + 1
+    if obj_char["f"] <= 9 and common_game_scene_change_input_state("L")["Launcher"] == "Pressing" then
+        obj_char["state"] = "throw_teched"
+        obj_char["current_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
+            obj_char,"teched"
+        )
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+    elseif obj_char["f"] > 9 then
+        obj_char["state"] = "throw_success"
+        obj_char["current_animation"] = obj_char["throw_success_animation"]
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+            
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end       
+    end
+end
+function state_gate_game_scene_char_LP_from_throw_tested(input,obj_char)
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    obj_char["f"] = obj_char["f"] + 1
+    if obj_char["f"] <= 9 and input["Launcher"] == "Pressing" then
+        obj_char["state"] = "throw_teching"
+        obj_char["current_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
+            obj_char,"teching"
+        )
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+    elseif obj_char["f"] > 9 then
+        obj_char["state"] = "throw_hurt_success"
+        obj_char["current_animation"] = obj_char_other_side["throw_hurt_success_animation"]
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end 
+    end
+end
 function state_gate_game_scene_char_LP_from_throw_tech(input,obj_char)
     -- animation_end
     if common_game_scene_get_character_animation_end(obj_char) then
@@ -2009,16 +2014,9 @@ function state_gate_game_scene_char_LP_from_throw_tech(input,obj_char)
 end
 
 function state_gate_game_scene_char_LP_from_hitstop(input,obj_char)
-    -- _overdrive
-    if state_gate_game_scene_char_LP_common_burst_overdrive(input,obj_char,"overdrive") then
-        return true
-    end
-    -- _RRC
-    if obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"RRC") then
-        return true
-    end
     -- _[any_sp_hit_state_saved_in_state_cache]
     if obj_char["hit_hurt_blockstop_countdown"] <= 0 then
+        -- original_state
         obj_char["state"] = obj_char["state_cache"]
         obj_char["velocity"] = obj_char["velocity_cache"]
 
@@ -2026,15 +2024,21 @@ function state_gate_game_scene_char_LP_from_hitstop(input,obj_char)
         obj_char["input_sys_state"] = "load" -- none save load
         state_machine_char_game_scene_char_LP_input_sys_cache()
 
+        -- _overdrive
+        if obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_burst_overdrive(input,obj_char,"overdrive") then
+            return true
+        end
+
+        -- _RRC
+        if obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"RRC") then
+            return true
+        end
+
         state_machine_char_game_scene_char_LP()
         return
     end
 end
 function state_gate_game_scene_char_LP_from_blockstop(input,obj_char)
-    -- _burst
-    if state_gate_game_scene_char_LP_common_burst_overdrive(input,obj_char,"burst") then
-        return true
-    end
     -- _block
     if obj_char["hit_hurt_blockstop_countdown"] <= 0 then
         obj_char["state"] = obj_char["state_cache"]
@@ -2044,15 +2048,16 @@ function state_gate_game_scene_char_LP_from_blockstop(input,obj_char)
         obj_char["input_sys_state"] = "load" -- none save load
         state_machine_char_game_scene_char_LP_input_sys_cache()
 
+        -- _burst
+        if state_gate_game_scene_char_LP_common_burst_overdrive(input,obj_char,"burst") then
+            return true
+        end
+
         state_machine_char_game_scene_char_LP()
         return
     end
 end
 function state_gate_game_scene_char_LP_from_hurtstop(input,obj_char)
-    -- _burst
-    if state_gate_game_scene_char_LP_common_burst_overdrive(input,obj_char,"burst") then
-        return true
-    end
     -- _hurtstop
     if obj_char["hit_hurt_blockstop_countdown"] <= 0 then
         obj_char["state"] = obj_char["state_cache"]
@@ -2061,6 +2066,11 @@ function state_gate_game_scene_char_LP_from_hurtstop(input,obj_char)
         state_machine_char_game_scene_char_LP_input_sys_cache()
         obj_char["input_sys_state"] = "load" -- none save load
         state_machine_char_game_scene_char_LP_input_sys_cache()
+
+        -- _burst
+        if state_gate_game_scene_char_LP_common_burst_overdrive(input,obj_char,"burst") then
+            return true
+        end
 
         state_machine_char_game_scene_char_LP()
         return
@@ -3040,6 +3050,31 @@ function state_gate_game_scene_char_LP_from_RC_yellow_rc(input,obj_char)
 end
 
 function state_gate_game_scene_char_LP_from_burst_overdrive(input,obj_char)
+    -- _PRC
+    if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+        obj_char["f"] = 28
+        character_animator(obj_char,obj_char["current_animation"])
+        return true
+    end
+    if common_game_scene_get_character_animation_end(obj_char) then
+        -- to stand_idle
+        obj_char["idle_cancel"] = true
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)   
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["f"] = 28
+        character_animator(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "5_stand_idle"
+
+        obj_char["input_sys_state"] = "load" -- none save load
+        state_machine_char_game_scene_char_LP_input_sys_cache()
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+            return true
+        end
+        return true
+    end
 end
 function state_gate_game_scene_char_LP_from_burst_burst(input,obj_char)
 end
@@ -3049,16 +3084,17 @@ end
 function state_gate_game_scene_char_LP_from_6P(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_5P(input,obj_char)
-    -- _overdrive
-    if state_gate_game_scene_char_LP_common_burst_overdrive(input,obj_char,"overdrive") then
-        return true
-    end
     -- _PRC
     if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- hit_cancel
     if obj_char["hit_cancel"] then
+        -- _overdrive
+        if state_gate_game_scene_char_LP_common_burst_overdrive(input,obj_char,"overdrive") then
+            return true
+        end
+        -- _5P
         if test_input_sys_press(input["P"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
@@ -3103,16 +3139,16 @@ end
 function state_gate_game_scene_char_LP_from_6S(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_cS(input,obj_char)
-    -- _overdrive
-    if state_gate_game_scene_char_LP_common_burst_overdrive(input,obj_char,"overdrive") then
-        return true
-    end
     -- _PRC
     if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- hit_cancel
     if obj_char["hit_cancel"] then
+        -- _overdrive
+        if state_gate_game_scene_char_LP_common_burst_overdrive(input,obj_char,"overdrive") then
+            return true
+        end
     end
     -- idle_cancel
     if obj_char["idle_cancel"] then
@@ -3140,16 +3176,16 @@ end
 function state_gate_game_scene_char_LP_from_fS(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_2Launcher(input,obj_char)
-    -- _overdrive
-    if state_gate_game_scene_char_LP_common_burst_overdrive(input,obj_char,"overdrive") then
-        return true
-    end
     -- _PRC
     if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- hit_cancel
     if obj_char["hit_cancel"] then
+        -- _overdrive
+        if state_gate_game_scene_char_LP_common_burst_overdrive(input,obj_char,"overdrive") then
+            return true
+        end
     end
     -- idle_cancel
     if obj_char["idle_cancel"] then
@@ -3177,10 +3213,6 @@ function state_gate_game_scene_char_LP_from_2Launcher(input,obj_char)
     end
 end
 function state_gate_game_scene_char_LP_from_4_6Launcher(input,obj_char)
-    -- _overdrive
-    if state_gate_game_scene_char_LP_common_burst_overdrive(input,obj_char,"overdrive") then
-        return true
-    end
     -- _PRC
     if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
@@ -3209,13 +3241,16 @@ function state_gate_game_scene_char_LP_from_4_6Launcher(input,obj_char)
     end
 end
 function state_gate_game_scene_char_LP_from_5Launcher(input,obj_char)
-    -- _overdrive
-    if state_gate_game_scene_char_LP_common_burst_overdrive(input,obj_char,"overdrive") then
-        return true
-    end
     -- _PRC
     if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
+    end
+    -- hit_cancel
+    if obj_char["hit_cancel"] then
+        -- _overdrive
+        if state_gate_game_scene_char_LP_common_burst_overdrive(input,obj_char,"overdrive") then
+            return true
+        end
     end
     -- idle_cancel
     if obj_char["idle_cancel"] then

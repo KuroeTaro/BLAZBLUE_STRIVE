@@ -172,6 +172,7 @@ function update_game_scene_main_training()
             -- debug_delete_after 
             if DEBUG_TRAINNING_SPAWN_STATE == "Pressing" and DEBUG_TRAINNING_TOGGLE then
                 common_game_scene_init_chars_trainning()
+                return
             end
 
             -- 获得输入 更新角色 状态 速度 和 碰撞盒
@@ -423,7 +424,6 @@ function update_game_scene_main_training()
                 if strike_hitbox_clash_test() then
 
                 end
-
             end
 
             -- 检测pushbox 更新Y位置

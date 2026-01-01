@@ -870,7 +870,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["current_animation_length"] = 9
+        obj_char_other_side["current_animation_length"] = 10
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -936,7 +936,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         -- draw_correction
         obj_char_other_side[8] = 0
     end
-    res[9] = function()
+    res[10] = function()
         -- animation end
     end
     return res
@@ -977,7 +977,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["current_animation_length"] = 11
+        obj_char_other_side["current_animation_length"] = 12
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -1045,7 +1045,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         -- draw_correction
         obj_char_other_side[8] = 0
     end
-    res[11] = function()
+    res[12] = function()
         -- animation end
     end
     return res
@@ -1086,7 +1086,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["current_animation_length"] = 13
+        obj_char_other_side["current_animation_length"] = 14
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -1156,7 +1156,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         -- draw_correction
         obj_char_other_side[8] = 0
     end
-    res[13] = function()
+    res[14] = function()
         -- animation end
     end
     return res
@@ -1197,7 +1197,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["current_animation_length"] = 16
+        obj_char_other_side["current_animation_length"] = 17
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -1271,7 +1271,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         -- draw_correction
         obj_char_other_side[8] = 0
     end
-    res[16] = function()
+    res[17] = function()
         -- animation end
     end
     return res
@@ -1312,7 +1312,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["current_animation_length"] = 18
+        obj_char_other_side["current_animation_length"] = 19
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -1386,7 +1386,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         -- draw_correction
         obj_char_other_side[8] = 0
     end
-    res[18] = function()
+    res[19] = function()
         -- animation end
     end
     return res
@@ -1457,7 +1457,7 @@ function load_game_scene_anim_char_common_0_air_block(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["current_animation_length"] = 31
+        obj_char_other_side["current_animation_length"] = 32
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -1554,7 +1554,7 @@ function load_game_scene_anim_char_common_0_air_block(
         -- draw_correction
         obj_char_other_side[8] = 8
     end
-    res[31] = function()
+    res[32] = function()
         -- animation end
     end
     return res
@@ -4505,12 +4505,14 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
         obj_char_other_side[8] = 4
     end
     res[18] = function()
-        -- state
-        obj_char_other_side["hurt_state_target"] = "idle"
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][5]
         -- draw_correction
         obj_char_other_side[8] = 5
+    end
+    res[20] = function()
+        -- state
+        obj_char_other_side["hurt_state_target"] = "idle"
     end
     res[21] = function()
         -- collide

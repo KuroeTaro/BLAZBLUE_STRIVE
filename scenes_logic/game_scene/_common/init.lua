@@ -151,8 +151,6 @@ function load_game_scene_announcer_HUD_obj()
     obj_HUD_game_scene_background_gauge["LCT"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_background_gauge["LCD"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_background_gauge["state"] = "default"
-
-
 end
 function load_game_scene_announcer_HUD_anim()
     anim_UI_point_linear_game_scene_solid_ease_in_opacity_0_1 = {}
