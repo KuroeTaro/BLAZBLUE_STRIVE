@@ -12,7 +12,7 @@ function insert_VFX_game_scene_char_TRM_2P_whiff(obj_char)
     obj[1] = obj_char["x"] + obj_char[5]*(35)
     obj[2] = obj_char["y"] + obj_char[6]*(-260)
     obj[3] = obj_char[3]
-    obj[4] = 1
+    obj[4] = 0.75
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = obj_char[7]
@@ -35,11 +35,75 @@ function insert_VFX_game_scene_char_TRM_2P_whiff(obj_char)
         self[1] = obj_char["x"] + obj_char[5]*(35)
         self[2] = obj_char["y"] + obj_char[6]*(-260)
         self[3] = obj_char[3]
-        self[4] = 1
+        self[4] = 0.75
         self[5] = obj_char[5]
         self[6] = obj_char[6]
         self[7] = obj_char[7]
         if obj_char["state"] == "2P" then
+            frame_animator(self,self["animation"])
+            self["life"] = self["life"] - 1
+        elseif obj_char["state"] == "hitstop" then
+            -- do nothing
+        else
+            self["life"] = 0
+        end
+    end
+    obj["draw"] = function(self)
+        local obj_camera = obj_stage_game_scene_camera
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,tostring(self[8]))
+
+        love.graphics.setColor(1,1,1,self[4])
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setColor(1,1,1,1)
+    end
+    table.insert(obj_char["VFX_front_table"],obj)
+end
+function insert_VFX_game_scene_char_TRM_6P_whiff(obj_char)
+    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local image_sprite_sheet = nil
+    local side = obj_char["player_side"]
+    if side == "L" then
+        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["6P_whiff_VFX"]
+    elseif side == "R" then
+        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["6P_whiff_VFX"]
+    end 
+
+    obj["life"] = 17
+    obj[1] = obj_char["x"] + obj_char[5]*(-294)
+    obj[2] = obj_char["y"] + obj_char[6]*(-543)
+    obj[3] = obj_char[3]
+    obj[4] = 0.75
+    obj[5] = obj_char[5]
+    obj[6] = obj_char[6]
+    obj[7] = obj_char[7]
+    obj[8] = -1
+    obj["FCT"] = {0,0,0,0,0,0,0,0}
+    obj["LCT"] = {0,0,0,0,0,0,0,0}
+    obj["LCD"] = {0,0,0,0,0,0,0,0}
+    obj["animation"] = {}
+    obj["animation"][0] = 0
+    obj["animation"][2] = 1
+    obj["animation"][4] = 2
+    obj["animation"][7] = 3
+    obj["animation"][12] = 4
+    obj["animation"][15] = 5
+    obj["animation"]["prop"] = 8
+    obj["animation"]["length"] = 17
+    obj["animation"]["loop"] = false
+    obj["animation"]["fix_type"] = true
+    init_frame_anim_with(obj,obj["animation"])
+    obj["update"] = function(self)
+        -- self[1] = obj_char["x"] + obj_char[5]*(-860)/2
+        -- self[2] = obj_char["y"] + obj_char[6]*(840)
+        self[1] = obj_char["x"] + obj_char[5]*(-294)
+        self[2] = obj_char["y"] + obj_char[6]*(-543)
+        self[3] = obj_char[3]
+        self[4] = 0.75
+        self[5] = obj_char[5]
+        self[6] = obj_char[6]
+        self[7] = obj_char[7]
+        if obj_char["state"] == "6P" then
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
         elseif obj_char["state"] == "hitstop" then

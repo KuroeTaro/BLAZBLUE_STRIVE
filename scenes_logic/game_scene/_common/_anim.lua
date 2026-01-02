@@ -4437,7 +4437,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["current_animation_length"] = 28
+        obj_char_other_side["current_animation_length"] = 29
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -4520,12 +4520,12 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
         -- draw_correction
         obj_char_other_side[8] = 6
     end
-    res[23] = function()
+    res[24] = function()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         init_input_sys_cache(obj_char_other_side)
     end
-    res[28] = function()
+    res[29] = function()
         -- animation_end
     end
     return res
