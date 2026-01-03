@@ -236,6 +236,7 @@ function common_game_scene_strike_hurt_function(obj_char)
     local function GP_hurt()
         obj_char["state_cache"] = obj_char["state"]
         obj_char["state"] = "hurtstop"
+        obj_camera["state"] = "hit_camera_move"
         anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
         anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
         init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
@@ -264,6 +265,7 @@ function common_game_scene_strike_hurt_function(obj_char)
     local function common_hurt()
         obj_char["state_cache"] = "hurt"
         obj_char["state"] = "hurtstop"
+        obj_camera["state"] = "hit_camera_move"
         anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
         anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
 

@@ -143,6 +143,19 @@ function update_game_scene_stage()
             and get_point_linear_anim_end_state(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y) then
                 obj_camera["state"] = "main"
             end
+            if obj_char_L["state"] == "burst_overdrive" then
+                obj_camera["state"] = "overdrive_shake"
+                anim_camera_point_linear_game_scene_camera_shake_x = obj_char_L["camera_x_shake_anim"]
+                anim_camera_point_linear_game_scene_camera_shake_y = obj_char_L["camera_y_shake_anim"]
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+            elseif obj_char_R["state"] == "burst_overdrive" then
+                obj_camera["state"] = "overdrive_shake"
+                anim_camera_point_linear_game_scene_camera_shake_x = obj_char_R["camera_x_shake_anim"]
+                anim_camera_point_linear_game_scene_camera_shake_y = obj_char_R["camera_y_shake_anim"]
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+            end
         end,
         ["throw_camera_move"] = function()
             point_linear_animator(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
