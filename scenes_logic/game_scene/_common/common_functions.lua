@@ -233,33 +233,11 @@ function common_game_scene_strike_hurt_function(obj_char)
     -- stand crouch air OTG
     local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
     local obj_camera = obj_stage_game_scene_camera
-    local function stand_hurt()
-        obj_char["state_cache"] = "hurt"
-        obj_char["state"] = "hurtstop"
-        obj_char["current_animation"] = hit_side_obj_char["stand_hurt_animation"]
-    end
-    local function crouch_hurt()
-        obj_char["state_cache"] = "hurt"
-        obj_char["state"] = "hurtstop"
-        obj_char["current_animation"] = hit_side_obj_char["crouch_hurt_animation"]
-    end
-    local function air_hurt()
-        obj_char["state_cache"] = "hurt"
-        obj_char["state"] = "hurtstop"
-        obj_char["current_animation"] = hit_side_obj_char["air_hurt_animation"]
-    end
-    local function OTG_hurt()
-        obj_char["state_cache"] = "hurt"
-        obj_char["state"] = "hurtstop"
-        obj_char["current_animation"] = hit_side_obj_char["OTG_hurt_animation"]
-    end
     local function GP_hurt()
-        obj_camera["state"] = "hit_camera_move"
         obj_char["state_cache"] = obj_char["state"]
         obj_char["state"] = "hurtstop"
         anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
         anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
-        
         init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
         init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
 
@@ -284,7 +262,8 @@ function common_game_scene_strike_hurt_function(obj_char)
         insert_VFX_game_scene_char_GP(obj_char)
     end
     local function common_hurt()
-        obj_camera["state"] = "hit_camera_move"
+        obj_char["state_cache"] = "hurt"
+        obj_char["state"] = "hurtstop"
         anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
         anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
 
@@ -296,13 +275,13 @@ function common_game_scene_strike_hurt_function(obj_char)
         obj_char["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
 
         if obj_char["height_state"] == "stand" then
-            stand_hurt()
+            obj_char["current_animation"] = hit_side_obj_char["stand_hurt_animation"]
         elseif obj_char["height_state"] == "crouch" then
-            crouch_hurt()
+            obj_char["current_animation"] = hit_side_obj_char["crouch_hurt_animation"]
         elseif obj_char["height_state"] == "air" then
-            air_hurt()
+            obj_char["current_animation"] = hit_side_obj_char["air_hurt_animation"]
         elseif obj_char["height_state"] == "OTG" then
-            OTG_hurt()
+            obj_char["current_animation"] = hit_side_obj_char["OTG_hurt_animation"]
         end
 
         obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]

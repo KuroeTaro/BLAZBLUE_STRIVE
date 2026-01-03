@@ -1694,6 +1694,7 @@ end
 function state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,type)
     -- _overdrive
     if type == "overdrive" and test_input_sys_press(input["burst"]) and obj_char["overdrive_gauge"][1] == obj_char["overdrive_gauge"][2] then
+        local obj_camera = obj_stage_game_scene_camera
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -1703,8 +1704,6 @@ function state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,typ
             obj_char["current_animation"] = load_game_scene_anim_char_TRM_burst_overdrive(obj_char,70-13)
         end
         init_character_anim_with(obj_char,obj_char["current_animation"])
-        common_game_scene_overdrive_load_camera_anim(obj_char)
-        common_game_scene_nil_load_camera_enclose_anim(obj_char)
         obj_char["state"] = "burst_overdrive"
         return true
     end
@@ -3674,7 +3673,7 @@ function draw_game_scene_char_RP_VFX_back()
     end
 end
 function update_game_scene_char_RP_black_overlay()
-    for i = 1, #obj_char_game_scene_char_RP["black_overlay_table"], 1 do -- 反向遍历，便于删除元素
+    for i = #obj_char_game_scene_char_RP["black_overlay_table"], 1, -1 do -- 反向遍历，便于删除元素
         local object = obj_char_game_scene_char_RP["black_overlay_table"][i]
         object["update"](object)
         if object["life"] <= 0 then
