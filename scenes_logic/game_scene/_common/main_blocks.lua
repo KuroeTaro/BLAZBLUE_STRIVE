@@ -658,4 +658,21 @@ function update_game_scene_char()
         game_speed_cache_RP,char_RP["game_speed"] = char_RP["game_speed"],game_speed_cache_RP
         game_speed_subframe_cache_RP,char_RP["game_speed_subframe"] = char_RP["game_speed_subframe"],game_speed_subframe_cache_RP
     end
+
+    local game_speed_abnormal_realtime_countdown_LP = char_LP["game_speed_abnormal_realtime_countdown"]
+    local game_speed_abnormal_realtime_countdown_RP = char_LP["game_speed_abnormal_realtime_countdown"]
+    if char_LP["game_speed"] == 0 and char_RP["game_speed"] == 0 then
+        if game_speed_abnormal_realtime_countdown_LP > game_speed_abnormal_realtime_countdown_RP then
+            char_LP["game_speed_abnormal_realtime_countdown"] = 
+            game_speed_abnormal_realtime_countdown_LP - game_speed_abnormal_realtime_countdown_RP
+            char_RP["game_speed_abnormal_realtime_countdown"] = 0
+        elseif game_speed_abnormal_realtime_countdown_RP > game_speed_abnormal_realtime_countdown_LP then
+            char_RP["game_speed_abnormal_realtime_countdown"] = 
+            game_speed_abnormal_realtime_countdown_RP - game_speed_abnormal_realtime_countdown_LP
+            char_LP["game_speed_abnormal_realtime_countdown"] = 0
+        else
+            char_LP["game_speed_abnormal_realtime_countdown"] = 0
+            char_RP["game_speed_abnormal_realtime_countdown"] = 0
+        end
+    end
 end
