@@ -204,7 +204,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["camera_x_shake_anim"] = nil
     obj_char_game_scene_char_RP["camera_y_shake_anim"] = nil
     obj_char_game_scene_char_RP["camera_enclosing_anim"] = nil
-    obj_char_game_scene_char_RP["enclose_position_offset"] = nil
+    obj_char_game_scene_char_RP["enclose_position_offset"] = {0,0,0}
 end
 function order_load_game_scene_char_RP_frames(load_order)
     local PLAYER_ASSET_DATA = ASSET_DATA[3]

@@ -73,7 +73,7 @@ function insert_VFX_game_scene_char_TRM_6P_whiff(obj_char)
     obj[1] = obj_char["x"] + obj_char[5]*(-294)
     obj[2] = obj_char["y"] + obj_char[6]*(-543)
     obj[3] = obj_char[3]
-    obj[4] = 0.75
+    obj[4] = 0.675
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = obj_char[7]
@@ -99,7 +99,7 @@ function insert_VFX_game_scene_char_TRM_6P_whiff(obj_char)
         self[1] = obj_char["x"] + obj_char[5]*(-294)
         self[2] = obj_char["y"] + obj_char[6]*(-543)
         self[3] = obj_char[3]
-        self[4] = 0.75
+        self[4] = 0.675
         self[5] = obj_char[5]
         self[6] = obj_char[6]
         self[7] = obj_char[7]

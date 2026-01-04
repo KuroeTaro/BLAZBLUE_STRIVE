@@ -204,7 +204,6 @@ function common_game_scene_strike_hit_function(obj_char)
     end
     if obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
         hit_side_obj_char["hit_damage"] = hit_side_obj_char["hit_damage"]*1.1
-        hit_side_obj_char["hit_counter_ver_function"](hit_side_obj_char,obj_char)
         local counter_VFX_insert_function_argument = hit_side_obj_char["counter_VFX_insert_function_argument"]
         hit_side_obj_char["counter_VFX_insert_function"](
             counter_VFX_insert_function_argument[1],
@@ -236,6 +235,7 @@ function common_game_scene_strike_hurt_function(obj_char)
     local function GP_hurt()
         obj_char["state_cache"] = obj_char["state"]
         obj_char["state"] = "hurtstop"
+        common_game_scene_nil_load_camera_enclose_anim(hit_side_obj_char)
         table.insert(obj_camera["active_application_table"],
             function()
                 anim_camera_point_linear_game_scene_camera_enclosing = hit_side_obj_char["camera_enclosing_anim"]
@@ -274,6 +274,10 @@ function common_game_scene_strike_hurt_function(obj_char)
     local function common_hurt()
         obj_char["state_cache"] = "hurt"
         obj_char["state"] = "hurtstop"
+        common_game_scene_nil_load_camera_enclose_anim(hit_side_obj_char)
+        if obj_char["hurt_state"] == "counter" then 
+            hit_side_obj_char["hit_counter_ver_function"](hit_side_obj_char,obj_char)
+        end
         table.insert(obj_camera["active_application_table"],
             function()
                 anim_camera_point_linear_game_scene_camera_enclosing = hit_side_obj_char["camera_enclosing_anim"]

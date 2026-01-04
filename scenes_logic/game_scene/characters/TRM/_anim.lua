@@ -2264,7 +2264,6 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         -- camera_animation_load
         common_game_scene_nil_load_camera_shake_anim(obj_char,0.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
-        obj_char["enclose_position_offset"] = {0,0,0}
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
         -- visual_front
@@ -2515,7 +2514,6 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         -- camera_animation_load
         common_game_scene_hit_load_camera_shake_anim(obj_char,1.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
-        obj_char["enclose_position_offset"] = {0,0,0}
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
         -- visual_front
@@ -2854,7 +2852,6 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         -- camera_animation_load
         common_game_scene_hit_load_camera_shake_anim(obj_char,0.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
-        obj_char["enclose_position_offset"] = {0,0,0}
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
         -- visual_front
@@ -3118,7 +3115,6 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         -- camera_animation_load
         common_game_scene_hit_load_camera_shake_anim(obj_char,1.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
-        obj_char["enclose_position_offset"] = {0,0,0}
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
         -- visual_front
@@ -3431,7 +3427,6 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         -- camera_animation_load
         common_game_scene_hit_load_camera_shake_anim(obj_char,1.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
-        obj_char["enclose_position_offset"] = {0,0,0}
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
         -- visual_front
@@ -4411,7 +4406,6 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         -- camera_animation_load
         common_game_scene_hit_load_camera_shake_anim(obj_char,1.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
-        obj_char["enclose_position_offset"] = {0,0,0}
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
         -- visual_front
@@ -4713,7 +4707,6 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
         -- camera_animation_load
         common_game_scene_hit_load_camera_shake_anim(obj_char,1.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
-        obj_char["enclose_position_offset"] = {0,0,0}
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
         -- visual_front

@@ -1127,7 +1127,7 @@ end
 -- HUD
 function insert_VFX_HUD_game_scene_counter_ver0_2(obj_char)
     local side = obj_char["player_side"]
-    local obj = {0, 0, 0, 0, 1, 0.82, 0, 0}
+    local obj = {0, 0, 0, 0, 1, 1, 0, 0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
     obj["image"] = image_VFX_game_scene_HUD_counter_ver0_2
@@ -1333,7 +1333,7 @@ function insert_VFX_HUD_game_scene_counter_ver3(obj_char)
 end
 function insert_VFX_HUD_game_scene_punish(obj_char)
     local side = obj_char["player_side"]
-    local obj = {0, 0, 0, 0, 1, 0.82, 0, 0}
+    local obj = {0, 0, 0, 0, 1, 1, 0, 0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
     obj["image"] = image_VFX_game_scene_HUD_punish
