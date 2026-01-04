@@ -607,7 +607,7 @@ function update_game_scene_HUD_overdrive_timer(obj_char,timer_obj)
             point_linear_animator(timer_obj,anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0)
             point_linear_animator(obj_char,anim_char_point_linear_overdrive_brightness_ease_out)
             if get_point_linear_anim_end_state(timer_obj,anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0) 
-            and get_point_linear_anim_end_state(timer_obj,anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0)  then
+            and get_point_linear_anim_end_state(obj_char,anim_char_point_linear_overdrive_brightness_ease_out) then
                 timer_obj["state"] = "default"
                 obj_char["brightness"] = obj_char["brightness_const"]
             elseif obj_char["overdrive_gauge"][3] == "on" then

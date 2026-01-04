@@ -48,7 +48,7 @@ function common_game_scene_get_anchor(side)
         return obj_anchor_data_game_scene_char_RP
     end
 end
-function common_game_scene_get_VFX_spwan_anchor_pos(side)
+function common_game_scene_get_VFX_spawn_anchor_pos(side)
     if side == "L" then
         return obj_VFX_spawn_anchor_pos_data_game_scene_char_LP
     elseif side == "R" then
@@ -236,14 +236,23 @@ function common_game_scene_strike_hurt_function(obj_char)
     local function GP_hurt()
         obj_char["state_cache"] = obj_char["state"]
         obj_char["state"] = "hurtstop"
-        obj_camera["state"] = "hit_camera_move"
-        anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
-        anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
-        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+        table.insert(obj_camera["active_application_table"],
+            function()
+                anim_camera_point_linear_game_scene_camera_enclosing = hit_side_obj_char["camera_enclosing_anim"]
+                anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
+                anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+                obj_camera["enclose_position_offset"] = hit_side_obj_char["enclose_position_offset"]
+                obj_camera["state"] = "active"
+            end
+        )
 
         obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
         obj_char["last_hitstop_frame"] = 0
+
+        -- character_shake
         obj_char["hurtstop_wiggle_x_animation"] = 
         common_game_scene_create_wiggle_animation(
             obj_char["hit_hurt_blockstop_countdown"] - 1,
@@ -256,8 +265,6 @@ function common_game_scene_strike_hurt_function(obj_char)
             "hurtstop_wiggle_y",
             7
         )
-
-        -- wiggle animation
         init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_x_animation"])
         init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_y_animation"])
         obj_char["hurtstop_wiggle_current_x"] = (obj_char["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
@@ -267,13 +274,18 @@ function common_game_scene_strike_hurt_function(obj_char)
     local function common_hurt()
         obj_char["state_cache"] = "hurt"
         obj_char["state"] = "hurtstop"
-        obj_camera["state"] = "hit_camera_move"
-        anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
-        anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
-
-        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
-
+        table.insert(obj_camera["active_application_table"],
+            function()
+                anim_camera_point_linear_game_scene_camera_enclosing = hit_side_obj_char["camera_enclosing_anim"]
+                anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
+                anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+                obj_camera["enclose_position_offset"] = hit_side_obj_char["enclose_position_offset"]
+                obj_camera["state"] = "active"
+            end
+        )
         obj_char["game_speed"] = 1
         obj_char["game_speed_subframe"] = 1
         obj_char["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
@@ -291,6 +303,8 @@ function common_game_scene_strike_hurt_function(obj_char)
         obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
         obj_char["last_hitstop_frame"] = 0
         init_character_anim_with(obj_char,obj_char["current_animation"])
+
+        -- character_shake
         obj_char["hurtstop_wiggle_x_animation"] = 
         common_game_scene_create_wiggle_animation(
             obj_char["hit_hurt_blockstop_countdown"] - 1,
@@ -303,8 +317,6 @@ function common_game_scene_strike_hurt_function(obj_char)
             "hurtstop_wiggle_y",
             7
         )
-        
-        -- wiggle animation
         init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_x_animation"])
         init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_y_animation"])
         obj_char["hurtstop_wiggle_current_x"] = (obj_char["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
@@ -330,6 +342,9 @@ function common_game_scene_strike_hurt_function(obj_char)
         end
         obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
         obj_char["last_hitstop_frame"] = 0
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        
+        -- character_shake
         obj_char["hurtstop_wiggle_x_animation"] = 
         common_game_scene_create_wiggle_animation(
             obj_char["hit_hurt_blockstop_countdown"] - 1,
@@ -342,12 +357,10 @@ function common_game_scene_strike_hurt_function(obj_char)
             "hurtstop_wiggle_y",
             7
         )
-        -- wiggle animation
         init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_x_animation"])
         init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_y_animation"])
         obj_char["hurtstop_wiggle_current_x"] = (obj_char["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
         obj_char["hurtstop_wiggle_current_y"] = (obj_char["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
-        init_character_anim_with(obj_char,obj_char["current_animation"])
         hit_side_obj_char["block_VFX_insert_function"](obj_char)
         if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
             insert_VFX_game_sceme_char_FD_block(obj_char)
@@ -516,9 +529,7 @@ function common_game_scene_counter_ver3(hit_side_obj_char,hurt_side_obj_char)
     local obj_camera = obj_stage_game_scene_camera
     insert_VFX_HUD_game_scene_counter_ver3(hit_side_obj_char)
     common_game_scene_counter_ver3_load_camera_enclose_anim(hit_side_obj_char)
-    anim_camera_point_linear_game_scene_camera_enclosing = hit_side_obj_char["camera_enclosing_anim"]
-    init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
-    obj_camera["enclose_position_offset"] = {
+    hit_side_obj_char["enclose_position_offset"] = {
         (hit_side_obj_char["x"]+hurt_side_obj_char["x"])/2 - obj_camera["3d_pos_x"],
         (hit_side_obj_char["y"]+hurt_side_obj_char["y"])/8 - obj_camera["3d_pos_y"],
         100
@@ -530,10 +541,14 @@ function common_game_scene_counter_ver3(hit_side_obj_char,hurt_side_obj_char)
 end
 
 function common_game_scene_nil_load_camera_enclose_anim(obj_char)
+    local obj_camera = obj_stage_game_scene_camera
     local anim = {}
-    anim[0] = {0.00, 0}
+    anim[0] = {obj_camera["enclose_percentage"], 5}
+    anim[5] = {obj_camera["enclose_percentage"]*0.25, 10}
+    anim[10] = {obj_camera["enclose_percentage"]*0.125, 15}
+    anim[15] = {0.00, 15}
     anim["prop"] = "enclose_percentage"
-    anim["length"] = 0
+    anim["length"] = 15
     anim["loop"] = false
     anim["fix_type"] = true
 
@@ -541,15 +556,12 @@ function common_game_scene_nil_load_camera_enclose_anim(obj_char)
 end
 function common_game_scene_counter_ver3_load_camera_enclose_anim(obj_char)
     local anim = {}
-    anim[0] = {0.00, 1}
-    anim[1] = {0.56, 2}
-    anim[2] = {0.70, 4}
-    anim[4] = {0.82, 6}
-    anim[6] = {0.86, 8}
-    anim[8] = {0.90, 10}
-    anim[10] = {0.94, 20}
-    anim[20] = {0.98, 30}
-    anim[30] = {0.99, 40}
+    local obj_camera = obj_stage_game_scene_camera
+    anim[0] = {obj_camera["enclose_percentage"], 5}
+    anim[5] = {obj_camera["enclose_percentage"]*0.5+0.5, 10}
+    anim[10] = {obj_camera["enclose_percentage"]*0.25+0.75, 20}
+    anim[20] = {obj_camera["enclose_percentage"]*0.0625+0.9375, 30}
+    anim[30] = {obj_camera["enclose_percentage"]*0.0156+0.9844, 40}
     anim[40] = {1.00, 45}
     anim[45] = {1.00, 50}
     anim[50] = {0.97, 60}
@@ -564,7 +576,25 @@ function common_game_scene_counter_ver3_load_camera_enclose_anim(obj_char)
 
     obj_char["camera_enclosing_anim"] = anim
 end
-function common_game_scene_overdrive_load_camera_anim(obj_char)
+function common_game_scene_nil_load_camera_shake_anim(obj_char)
+    local anim = {}
+    anim = {}
+    anim[0] = {0,0}
+    anim["prop"] = "3d_pos_x"
+    anim["length"] = 0
+    anim["loop"] = false
+    anim["fix_type"] = false
+    obj_char["camera_x_shake_anim"] = anim
+
+    anim = {}
+    anim[0] = {0,0}
+    anim["prop"] = "3d_pos_y"
+    anim["length"] = 0
+    anim["loop"] = false
+    anim["fix_type"] = false
+    obj_char["camera_y_shake_anim"] = anim
+end
+function common_game_scene_overdrive_load_camera_shake_anim(obj_char)
     local anim = {}
     anim = {}
     anim[0] = {0.00, 28}
@@ -642,7 +672,7 @@ function common_game_scene_overdrive_load_camera_anim(obj_char)
     anim["fix_type"] = false
     obj_char["camera_y_shake_anim"] = anim
 end
-function common_game_scene_hit_load_camera_anim(obj_char,multiplyer)
+function common_game_scene_hit_load_camera_shake_anim(obj_char,multiplyer)
     local anim = {}
     anim = {}
     anim[0] = {13.25*multiplyer, 1}
@@ -856,7 +886,6 @@ function common_game_scene_init_chars_trainning()
     load_game_scene_anim_char_RP()
     obj_char_game_scene_char_LP["state"] = "5_stand_idle"
     obj_char_game_scene_char_RP["state"] = "5_stand_idle"
-    load_game_scene_obj_stage()
     load_game_scene_announcer_HUD_obj()
     
     if test_input_sys_press_or_hold(INPUT_SYS_CURRENT_COMMAND_STATE["L"]["up"]) then
@@ -876,6 +905,15 @@ function common_game_scene_init_chars_trainning()
     obj_char_game_scene_char_RP["x"] = DEBUG_TRAINNING_SPAWN_ARRAY[DEBUG_TRAINNING_SPAWN_POS][DEBUG_TRAINNING_SPAWN_SIDE][2]
     obj_char_game_scene_char_LP[5] = DEBUG_TRAINNING_SPAWN_ARRAY[DEBUG_TRAINNING_SPAWN_POS][DEBUG_TRAINNING_SPAWN_SIDE][3]
     obj_char_game_scene_char_RP[5] = DEBUG_TRAINNING_SPAWN_ARRAY[DEBUG_TRAINNING_SPAWN_POS][DEBUG_TRAINNING_SPAWN_SIDE][4]
+
+    obj_char_game_scene_char_LP["brightness"] = -0.05
+    obj_char_game_scene_char_LP["brightness_const"] = -0.05
+    obj_char_game_scene_char_LP["brightness_overdrive_const"] = 0.15
+    obj_char_game_scene_char_LP["contrast"] = 0.8
+    obj_char_game_scene_char_RP["brightness"] = -0.05
+    obj_char_game_scene_char_RP["brightness_const"] = -0.05
+    obj_char_game_scene_char_RP["contrast"] = 0.8
+    obj_char_game_scene_char_RP["brightness_overdrive_const"] = 0.15
     if 	CHAR_SELECT_LR["L"] == 	CHAR_SELECT_LR["R"] then
         obj_char_game_scene_char_RP["brightness"] = -0.5
         obj_char_game_scene_char_RP["brightness_const"] = -0.5

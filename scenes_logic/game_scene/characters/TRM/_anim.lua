@@ -1942,6 +1942,23 @@ function load_game_scene_anim_char_TRM_burst_overdrive(obj_char,other_side_count
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {296,615}
+        -- camera_animation_load
+        common_game_scene_overdrive_load_camera_shake_anim(obj_char)
+        common_game_scene_nil_load_camera_enclose_anim(obj_char)
+        -- camera_animation_application
+        local obj_camera = obj_stage_game_scene_camera
+        table.insert(obj_camera["active_application_table"],
+            function()
+                anim_camera_point_linear_game_scene_camera_enclosing = obj_char["camera_enclosing_anim"]
+                anim_camera_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
+                anim_camera_point_linear_game_scene_camera_shake_y = obj_char["camera_y_shake_anim"]
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+                obj_camera["state"] = "active"
+            end
+        )
+        obj_char["enclose_position_offset"] = {0,0,0}
         -- VFX
         insert_VFX_game_scene_char_overdrive_badge(obj_char)
         insert_VFX_game_scene_char_overdrive_partical(obj_char)
@@ -2244,9 +2261,10 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {295,315}
-        -- hurtstop_enclose_animation
-        common_game_scene_hit_load_camera_anim(obj_char,0.2)
+        -- camera_animation_load
+        common_game_scene_nil_load_camera_shake_anim(obj_char,0.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
+        obj_char["enclose_position_offset"] = {0,0,0}
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
         -- visual_front
@@ -2494,9 +2512,10 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {280,495}
-        -- hurtstop_enclose_animation
-        common_game_scene_hit_load_camera_anim(obj_char,1.2)
+        -- camera_animation_load
+        common_game_scene_hit_load_camera_shake_anim(obj_char,1.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
+        obj_char["enclose_position_offset"] = {0,0,0}
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
         -- visual_front
@@ -2832,9 +2851,10 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {233,520}
-        -- hurtstop_enclose_animation
-        common_game_scene_hit_load_camera_anim(obj_char,0.2)
+        -- camera_animation_load
+        common_game_scene_hit_load_camera_shake_anim(obj_char,0.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
+        obj_char["enclose_position_offset"] = {0,0,0}
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
         -- visual_front
@@ -3095,9 +3115,10 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {320,510}
-        -- hurtstop_enclose_animation
-        common_game_scene_hit_load_camera_anim(obj_char,1.2)
+        -- camera_animation_load
+        common_game_scene_hit_load_camera_shake_anim(obj_char,1.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
+        obj_char["enclose_position_offset"] = {0,0,0}
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
         -- visual_front
@@ -3407,9 +3428,10 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {330,310}
-        -- hurtstop_enclose_animation
-        common_game_scene_hit_load_camera_anim(obj_char,1.2)
+        -- camera_animation_load
+        common_game_scene_hit_load_camera_shake_anim(obj_char,1.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
+        obj_char["enclose_position_offset"] = {0,0,0}
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
         -- visual_front
@@ -3630,9 +3652,14 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {245,530}
-        -- hurtstop_enclose_animation
-        common_game_scene_hit_load_camera_anim(obj_char,1.2)
+        -- camera_animation_load
+        load_game_scene_anim_char_TRM_4_6Launcher_camera_shake_anim(obj_char,1.2)
         load_game_scene_anim_char_TRM_4_6Launcher_camera_enclose_anim(obj_char)
+        obj_char["enclose_position_offset"] = {
+            (obj_char["x"]+obj_char_other_side["x"])/16, 
+            (obj_char["y"]+obj_char_other_side["y"])/8 - obj_stage_game_scene_camera["3d_pos_y"],
+            120
+        }
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
         -- visual_front
@@ -3795,15 +3822,19 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side["0_stand_hurt_high"]
         -- set_frame_adv
         obj_char["frame_adv"] = 0
-        -- camera_enclose
-        anim_camera_point_linear_game_scene_camera_enclosing = obj_char["camera_enclosing_anim"]
-        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
-        obj_camera["enclose_position_offset"] = {
-            (obj_char["x"]+obj_char_other_side["x"])/16, 
-            (obj_char["y"]+obj_char_other_side["y"])/8 - obj_camera["3d_pos_y"],
-            120
-        }
-        obj_camera["state"] = "throw_camera_move"
+        -- camera_animation_application
+        table.insert(obj_camera["active_application_table"],
+            function()
+                anim_camera_point_linear_game_scene_camera_enclosing = obj_char["camera_enclosing_anim"]
+                anim_camera_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
+                anim_camera_point_linear_game_scene_camera_shake_y = obj_char["camera_y_shake_anim"]
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+                obj_camera["enclose_position_offset"] = obj_char["enclose_position_offset"]
+                obj_camera["state"] = "active"
+            end
+        )
     end
     res[1] = function()
         -- state
@@ -3823,12 +3854,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         -- draw_correction
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side["0_general_hurt_launched_high"]
-        -- camera_shake
-        obj_camera["state"] = "hit_camera_move"
-        anim_camera_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
-        anim_camera_point_linear_game_scene_camera_shake_y = obj_char["camera_y_shake_anim"]
-        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
         -- character_shake
         obj_char_other_side["hurtstop_wiggle_x_animation"] = 
         common_game_scene_create_wiggle_animation(
@@ -4170,6 +4195,59 @@ function load_game_scene_anim_char_TRM_4_6Launcher_camera_enclose_anim(obj_char)
 
     obj_char["camera_enclosing_anim"] = anim
 end
+function load_game_scene_anim_char_TRM_4_6Launcher_camera_shake_anim(obj_char,multiplyer)
+    local anim = {}
+    anim = {}
+    anim[0] = {0, 27}
+    anim[27] = {0, 28}
+    anim[28] = {13.25*multiplyer, 29}
+    anim[29] = {-10.34*multiplyer, 30}
+    anim[30] = {-9.93*multiplyer, 31}
+    anim[31] = {9.02*multiplyer, 32}
+    anim[32] = {-8.10*multiplyer, 33}
+    anim[33] = {8.69*multiplyer, 34}
+    anim[34] = {-6.72*multiplyer, 35}
+    anim[35] = {6.47*multiplyer, 36}
+    anim[36] = {-5.78*multiplyer, 37}
+    anim[37] = {5.46*multiplyer, 38}
+    anim[38] = {4.31*multiplyer, 39}
+    anim[39] = {-4.65*multiplyer, 40}
+    anim[40] = {2.00*multiplyer, 41}
+    anim[41] = {-2.81*multiplyer, 42}
+    anim[42] = {1.63*multiplyer, 43}
+    anim[43] = {0*multiplyer, 43}
+    anim["prop"] = "3d_pos_x"
+    anim["length"] = 43
+    anim["loop"] = false
+    anim["fix_type"] = false
+    obj_char["camera_x_shake_anim"] = anim
+
+    local multiplyer_fix = multiplyer*2
+    anim = {}
+    anim[0] = {0, 27}
+    anim[27] = {0, 28}
+    anim[28] = {10.92*multiplyer_fix, 29}
+    anim[29] = {2.67*multiplyer_fix, 30}
+    anim[30] = {-4.00*multiplyer_fix, 31}
+    anim[31] = {-8.26*multiplyer_fix, 32}
+    anim[32] = {3.60*multiplyer_fix, 33}
+    anim[33] = {8.15*multiplyer_fix, 34}
+    anim[34] = {-2.35*multiplyer_fix, 35}
+    anim[35] = {-6.04*multiplyer_fix, 36}
+    anim[36] = {1.75*multiplyer_fix, 37}
+    anim[37] = {5.44*multiplyer_fix, 38}
+    anim[38] = {-1.69*multiplyer_fix, 39}
+    anim[39] = {1.00*multiplyer_fix, 40}
+    anim[40] = {3.67*multiplyer_fix, 41}
+    anim[41] = {-1.13*multiplyer_fix, 42}
+    anim[42] = {2.11*multiplyer_fix, 43}
+    anim[43] = {0*multiplyer_fix, 43}
+    anim["prop"] = "3d_pos_y"
+    anim["length"] = 43
+    anim["loop"] = false
+    anim["fix_type"] = false
+    obj_char["camera_y_shake_anim"] = anim
+end
 -- _5Launcher
 function load_game_scene_anim_char_TRM_5Launcher(obj_char)
     local res = {}
@@ -4330,9 +4408,10 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {415,635}
-            -- hurtstop_wiggle_x_animation hurtstop_wiggle_y_animation hurtstop_enclose_animation
-        common_game_scene_hit_load_camera_anim(obj_char,1.2)
+        -- camera_animation_load
+        common_game_scene_hit_load_camera_shake_anim(obj_char,1.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
+        obj_char["enclose_position_offset"] = {0,0,0}
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
         -- visual_front
@@ -4631,9 +4710,10 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {415,635}
-            -- hurtstop_wiggle_x_animation hurtstop_wiggle_y_animation hurtstop_enclose_animation
-        common_game_scene_hit_load_camera_anim(obj_char,1.2)
+        -- camera_animation_load
+        common_game_scene_hit_load_camera_shake_anim(obj_char,1.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
+        obj_char["enclose_position_offset"] = {0,0,0}
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
         -- visual_front

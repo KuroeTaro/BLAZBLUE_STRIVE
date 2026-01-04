@@ -27,6 +27,8 @@ function load_game_scene_obj_stage()
     obj_stage_game_scene_camera["LCT"]["enclose_percentage"] = 0.0
     obj_stage_game_scene_camera["LCD"]["enclose_percentage"] = 0.0
 
+    obj_stage_game_scene_camera["active_application_table"] = {}
+
     obj_stage_game_scene_ground = {-2400, 320, 200, 1, 1, 1, 0, 0}
     obj_stage_game_scene_stair = {-2400, 175, 300, 1, 1, 1, 0, 0}
     obj_stage_game_scene_glow = {0, 0, -800, 1, 1, 1, 0, 0}
@@ -41,6 +43,7 @@ function load_game_scene_obj_stage()
     obj_char_game_scene_char_RP["brightness"] = -0.05
     obj_char_game_scene_char_RP["brightness_const"] = -0.05
     obj_char_game_scene_char_RP["contrast"] = 0.8
+    obj_char_game_scene_char_RP["brightness_overdrive_const"] = 0.15
     if 	CHAR_SELECT_LR["L"] == 	CHAR_SELECT_LR["R"] then
         obj_char_game_scene_char_RP["brightness"] = -0.5
         obj_char_game_scene_char_RP["brightness_const"] = -0.5
@@ -118,23 +121,12 @@ function update_game_scene_stage()
         obj_camera["3d_pos_z"] = obj_camera["3d_pos_z_target"]
     end
 
+    update_game_scene_camera_application_table()
     local switch = {
         ["main"] = function()
-            if obj_char_L["state"] == "burst_overdrive" then
-                obj_camera["state"] = "overdrive_shake"
-                anim_camera_point_linear_game_scene_camera_shake_x = obj_char_L["camera_x_shake_anim"]
-                anim_camera_point_linear_game_scene_camera_shake_y = obj_char_L["camera_y_shake_anim"]
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
-            elseif obj_char_R["state"] == "burst_overdrive" then
-                obj_camera["state"] = "overdrive_shake"
-                anim_camera_point_linear_game_scene_camera_shake_x = obj_char_R["camera_x_shake_anim"]
-                anim_camera_point_linear_game_scene_camera_shake_y = obj_char_R["camera_y_shake_anim"]
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
-            end
+            return
         end,
-        ["hit_camera_move"] = function()
+        ["active"] = function()
             point_linear_animator(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
             point_linear_animator(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
             point_linear_animator(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
@@ -142,19 +134,7 @@ function update_game_scene_stage()
             and get_point_linear_anim_end_state(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
             and get_point_linear_anim_end_state(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y) then
                 obj_camera["state"] = "main"
-            end
-        end,
-        ["throw_camera_move"] = function()
-            point_linear_animator(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
-            if get_point_linear_anim_end_state(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing) then
-                obj_camera["state"] = "main"
-            end
-        end,
-        ["overdrive_shake"] = function()
-            point_linear_animator(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-            point_linear_animator(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
-            if get_point_linear_anim_end_state(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x) then
-                obj_camera["state"] = "main"
+                obj_camera["enclose_position_offset"] = {0,0,0}
             end
         end,
     }
@@ -164,6 +144,20 @@ function update_game_scene_stage()
     obj_camera[1] = obj_camera["3d_pos_x"]+obj_camera["enclose_position_offset"][1]*obj_camera["enclose_percentage"]
     obj_camera[2] = obj_camera["3d_pos_y"]+obj_camera["enclose_position_offset"][2]*obj_camera["enclose_percentage"]
     obj_camera[3] = obj_camera["3d_pos_z"]+obj_camera["enclose_position_offset"][3]*obj_camera["enclose_percentage"]+obj_camera[2]*0.25
+end
+function update_game_scene_camera_application_table()
+    if #obj_stage_game_scene_camera["active_application_table"] == 0 then
+        return
+    end
+    if #obj_stage_game_scene_camera["active_application_table"] == 1 then
+        obj_stage_game_scene_camera["active_application_table"][1]()
+        obj_stage_game_scene_camera["active_application_table"] = {}
+    elseif #obj_stage_game_scene_camera["active_application_table"] > 1 then
+        -- nil shake 动画
+        -- nil enclose 动画
+        -- 更新状态
+        obj_stage_game_scene_camera["active_application_table"] = {}
+    end
 end
 
 -- draw

@@ -200,9 +200,7 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
                 point_linear_animator(self,self["size_anim"])
                 point_linear_animator(self,self["opacity_ease_in_anim"])
                 self["life"] = 42
-                if obj_char["overdrive_timer"][1] + obj_char["overdrive_timer"][2] 
-                + obj_char["overdrive_timer"][3] + obj_char["overdrive_timer"][4] == 0 
-                and obj_char["state"] ~= "burst_overdrive" then
+                if obj_char["overdrive_gauge"][3] == "off" then
                     self["state"] = "ease_out"
                     self["life"] = 10
                     self[4] = 0.50
@@ -686,10 +684,10 @@ end
 function insert_VFX_game_sceme_char_block_ver0(obj_char)
     -- x y z opacity sx sy r f
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
-    local VFX_spwan_anchor_pos = common_game_scene_get_VFX_spwan_anchor_pos(obj_char["player_side"])["block_ver0_spawn_anchor_pos"][obj_char["sprite_sheet_state"]]
+    local VFX_spawn_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["block_ver0_spawn_anchor_pos"][obj_char["sprite_sheet_state"]]
     obj["life"] = 11
-    obj[1] = obj_char["x"] + obj_char[5]*(VFX_spwan_anchor_pos[1])
-    obj[2] = obj_char["y"] + obj_char[6]*(VFX_spwan_anchor_pos[2])
+    obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
+    obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
     obj[3] = obj_char[3]
     obj[4] = 1
     obj[5] = obj_char[5]*1
@@ -711,13 +709,13 @@ function insert_VFX_game_sceme_char_block_ver0(obj_char)
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
     init_frame_anim_with(obj,obj["animation"])
-    obj[1] = obj_char["x"] + obj_char[5]*(VFX_spwan_anchor_pos[1])
+    obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
     obj["update"] = function(self)
         if obj_char["state"] == "blockstop" then
             -- do nothing
         else
-            obj[1] = obj_char["x"] + obj_char[5]*(VFX_spwan_anchor_pos[1])
-            obj[2] = obj_char["y"] + obj_char[6]*(VFX_spwan_anchor_pos[2])
+            obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
+            obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
         end
@@ -737,10 +735,10 @@ end
 function insert_VFX_game_sceme_char_block_ver1(obj_char)
     -- x y z opacity sx sy r f
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
-    local VFX_spwan_anchor_pos = common_game_scene_get_VFX_spwan_anchor_pos(obj_char["player_side"])["block_ver1_spawn_anchor_pos"][obj_char["sprite_sheet_state"]]
+    local VFX_spawn_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["block_ver1_spawn_anchor_pos"][obj_char["sprite_sheet_state"]]
     obj["life"] = 21
-    obj[1] = obj_char["x"] + obj_char[5]*(VFX_spwan_anchor_pos[1])
-    obj[2] = obj_char["y"] + obj_char[6]*(VFX_spwan_anchor_pos[2])
+    obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
+    obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
     obj[3] = obj_char[3]
     obj[4] = 1
     obj[5] = obj_char[5]*1
@@ -763,13 +761,13 @@ function insert_VFX_game_sceme_char_block_ver1(obj_char)
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
     init_frame_anim_with(obj,obj["animation"])
-    obj[1] = obj_char["x"] + obj_char[5]*(VFX_spwan_anchor_pos[1])
+    obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
     obj["update"] = function(self)
         if obj_char["state"] == "blockstop" then
             -- do nothing
         else
-            obj[1] = obj_char["x"] + obj_char[5]*(VFX_spwan_anchor_pos[1])
-            obj[2] = obj_char["y"] + obj_char[6]*(VFX_spwan_anchor_pos[2])
+            obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
+            obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
         end
@@ -788,15 +786,15 @@ function insert_VFX_game_sceme_char_block_ver1(obj_char)
 end
 function insert_VFX_game_sceme_char_FD_block(obj_char)
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
-    local VFX_spwan_anchor_pos = {-300,-420}
+    local VFX_spawn_anchor_pos = {-300,-420}
     if obj_char["height_state"] == "air" then
-        VFX_spwan_anchor_pos = {-300,-440}
+        VFX_spawn_anchor_pos = {-300,-440}
     elseif obj_char["height_state"] == "stand" then
-        VFX_spwan_anchor_pos = {-300,-540}
+        VFX_spawn_anchor_pos = {-300,-540}
     end
     obj["life"] = 21
-    obj[1] = obj_char["x"] + obj_char[5]*(VFX_spwan_anchor_pos[1])
-    obj[2] = obj_char["y"] + obj_char[6]*(VFX_spwan_anchor_pos[2])
+    obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
+    obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
     obj[3] = obj_char[3]
     obj[4] = 0.75
     obj[5] = obj_char[5]*1
@@ -820,13 +818,13 @@ function insert_VFX_game_sceme_char_FD_block(obj_char)
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
     init_frame_anim_with(obj,obj["animation"])
-    obj[1] = obj_char["x"] + obj_char[5]*(VFX_spwan_anchor_pos[1])
+    obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
     obj["update"] = function(self)
         if obj_char["state"] == "blockstop" then
             -- do nothing
         else
-            obj[1] = obj_char["x"] + obj_char[5]*(VFX_spwan_anchor_pos[1])
-            obj[2] = obj_char["y"] + obj_char[6]*(VFX_spwan_anchor_pos[2])
+            obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
+            obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
         end
@@ -1135,25 +1133,25 @@ function insert_VFX_HUD_game_scene_counter_ver0_2(obj_char)
     obj["image"] = image_VFX_game_scene_HUD_counter_ver0_2
     obj["life"] = 70
     if side == "L" then
-        obj[1] = 201
+        obj[1] = 501
     elseif side == "R" then
-        obj[1] = 1238
+        obj[1] = 952
     end
-    obj[2] = 150
+    obj[2] = 145
 
 -- y_anim
     obj["y_anim"] = {}
-    obj["y_anim"][0] = {150.00, 1}
-    obj["y_anim"][1] = {152.00, 2}
-    obj["y_anim"][2] = {148.00, 3}
-    obj["y_anim"][3] = {151.00, 5}
-    obj["y_anim"][5] = {150.00, 35}
-    obj["y_anim"][35] = {150.00, 40}
-    obj["y_anim"][40] = {150.07, 45}
-    obj["y_anim"][45] = {150.45, 47}
-    obj["y_anim"][47] = {150.85, 49}
-    obj["y_anim"][49] = {151.87, 50}
-    obj["y_anim"][50] = {154.00, 50}
+    obj["y_anim"][0] = {145.00, 1}
+    obj["y_anim"][1] = {148.00, 2}
+    obj["y_anim"][2] = {143.00, 3}
+    obj["y_anim"][3] = {146.00, 5}
+    obj["y_anim"][5] = {145.00, 35}
+    obj["y_anim"][35] = {145.00, 40}
+    obj["y_anim"][40] = {145.07, 45}
+    obj["y_anim"][45] = {145.45, 47}
+    obj["y_anim"][47] = {145.85, 49}
+    obj["y_anim"][49] = {146.87, 50}
+    obj["y_anim"][50] = {149.00, 50}
     obj["y_anim"]["prop"] = 2
     obj["y_anim"]["length"] = 50
     obj["y_anim"]["loop"] = false
@@ -1341,25 +1339,25 @@ function insert_VFX_HUD_game_scene_punish(obj_char)
     obj["image"] = image_VFX_game_scene_HUD_punish
     obj["life"] = 70
     if side == "L" then
-        obj[1] = 201
+        obj[1] = 501
     elseif side == "R" then
-        obj[1] = 1252
+        obj[1] = 952
     end
-    obj[2] = 150
+    obj[2] = 145
 
 -- y_anim
     obj["y_anim"] = {}
-    obj["y_anim"][0] = {150.00, 1}
-    obj["y_anim"][1] = {152.00, 2}
-    obj["y_anim"][2] = {148.00, 3}
-    obj["y_anim"][3] = {151.00, 5}
-    obj["y_anim"][5] = {150.00, 35}
-    obj["y_anim"][35] = {150.00, 40}
-    obj["y_anim"][40] = {150.07, 45}
-    obj["y_anim"][45] = {150.45, 47}
-    obj["y_anim"][47] = {150.85, 49}
-    obj["y_anim"][49] = {151.87, 50}
-    obj["y_anim"][50] = {154.00, 50}
+    obj["y_anim"][0] = {145.00, 1}
+    obj["y_anim"][1] = {148.00, 2}
+    obj["y_anim"][2] = {143.00, 3}
+    obj["y_anim"][3] = {146.00, 5}
+    obj["y_anim"][5] = {145.00, 35}
+    obj["y_anim"][35] = {145.00, 40}
+    obj["y_anim"][40] = {145.07, 45}
+    obj["y_anim"][45] = {145.45, 47}
+    obj["y_anim"][47] = {145.85, 49}
+    obj["y_anim"][49] = {146.87, 50}
+    obj["y_anim"][50] = {149.00, 50}
     obj["y_anim"]["prop"] = 2
     obj["y_anim"]["length"] = 50
     obj["y_anim"]["loop"] = false
