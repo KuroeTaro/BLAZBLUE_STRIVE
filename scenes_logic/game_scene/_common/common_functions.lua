@@ -236,6 +236,7 @@ function common_game_scene_strike_hurt_function(obj_char)
     local function GP_hurt()
         obj_char["state_cache"] = obj_char["state"]
         obj_char["state"] = "hurtstop"
+        obj_camera["state"] = "hit_camera_move"
         anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
         anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
         init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
@@ -247,23 +248,26 @@ function common_game_scene_strike_hurt_function(obj_char)
         common_game_scene_create_wiggle_animation(
             obj_char["hit_hurt_blockstop_countdown"] - 1,
             "hurtstop_wiggle_x",
-            5
+            15
         )
         obj_char["hurtstop_wiggle_y_animation"] = 
         common_game_scene_create_wiggle_animation(
             obj_char["hit_hurt_blockstop_countdown"] - 1,
             "hurtstop_wiggle_y",
-            2
+            7
         )
 
         -- wiggle animation
         init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_x_animation"])
         init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_y_animation"])
+        obj_char["hurtstop_wiggle_current_x"] = (obj_char["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
+        obj_char["hurtstop_wiggle_current_y"] = (obj_char["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
         insert_VFX_game_scene_char_GP(obj_char)
     end
     local function common_hurt()
         obj_char["state_cache"] = "hurt"
         obj_char["state"] = "hurtstop"
+        obj_camera["state"] = "hit_camera_move"
         anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
         anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
 
@@ -291,18 +295,20 @@ function common_game_scene_strike_hurt_function(obj_char)
         common_game_scene_create_wiggle_animation(
             obj_char["hit_hurt_blockstop_countdown"] - 1,
             "hurtstop_wiggle_x",
-            5
+            15
         )
         obj_char["hurtstop_wiggle_y_animation"] = 
         common_game_scene_create_wiggle_animation(
             obj_char["hit_hurt_blockstop_countdown"] - 1,
             "hurtstop_wiggle_y",
-            2
+            7
         )
         
         -- wiggle animation
         init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_x_animation"])
         init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_y_animation"])
+        obj_char["hurtstop_wiggle_current_x"] = (obj_char["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
+        obj_char["hurtstop_wiggle_current_y"] = (obj_char["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
     end
     local function common_block()
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
@@ -328,17 +334,19 @@ function common_game_scene_strike_hurt_function(obj_char)
         common_game_scene_create_wiggle_animation(
             obj_char["hit_hurt_blockstop_countdown"] - 1,
             "hurtstop_wiggle_x",
-            5
+            15
         )
         obj_char["hurtstop_wiggle_y_animation"] = 
         common_game_scene_create_wiggle_animation(
             obj_char["hit_hurt_blockstop_countdown"] - 1,
             "hurtstop_wiggle_y",
-            2
+            7
         )
         -- wiggle animation
         init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_x_animation"])
         init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_y_animation"])
+        obj_char["hurtstop_wiggle_current_x"] = (obj_char["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
+        obj_char["hurtstop_wiggle_current_y"] = (obj_char["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         hit_side_obj_char["block_VFX_insert_function"](obj_char)
         if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
@@ -699,6 +707,8 @@ function common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
         obj_char["hit_hurt_blockstop_countdown"] = obj_char["hit_hurt_blockstop_countdown"] - 1
         point_linear_animator(obj_char,obj_char["hurtstop_wiggle_x_animation"])
         point_linear_animator(obj_char,obj_char["hurtstop_wiggle_y_animation"])
+        obj_char["hurtstop_wiggle_current_x"] = (obj_char["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
+        obj_char["hurtstop_wiggle_current_y"] = (obj_char["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
     else
         obj_char["game_speed_abnormal_realtime_countdown"] = obj_char["hit_hurt_block_slowdown_countdown"]
         obj_char["hit_hurt_blockstop_countdown"] = 0 
@@ -706,6 +716,8 @@ function common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
         obj_char["game_speed"] = 2
         obj_char["hurtstop_wiggle_x"] = 0
         obj_char["hurtstop_wiggle_y"] = 0
+        obj_char["hurtstop_wiggle_current_x"] = 0
+        obj_char["hurtstop_wiggle_current_y"] = 0
     end
 end
 function common_update_game_scene_char_game_speed_abnormal_realtime_countdown(obj_char)

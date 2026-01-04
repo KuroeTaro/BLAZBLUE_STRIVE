@@ -2244,7 +2244,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {295,315}
-        -- hurtstop_wiggle_x_animation hurtstop_wiggle_y_animation hurtstop_enclose_animation
+        -- hurtstop_enclose_animation
         common_game_scene_hit_load_camera_anim(obj_char,0.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
         -- set_frame_adv
@@ -2494,7 +2494,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {280,495}
-        -- hurtstop_wiggle_x_animation hurtstop_wiggle_y_animation hurtstop_enclose_animation
+        -- hurtstop_enclose_animation
         common_game_scene_hit_load_camera_anim(obj_char,1.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
         -- set_frame_adv
@@ -2832,7 +2832,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {233,520}
-        -- hurtstop_wiggle_x_animation hurtstop_wiggle_y_animation hurtstop_enclose_animation
+        -- hurtstop_enclose_animation
         common_game_scene_hit_load_camera_anim(obj_char,0.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
         -- set_frame_adv
@@ -3095,7 +3095,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {320,510}
-        -- hurtstop_wiggle_x_animation hurtstop_wiggle_y_animation hurtstop_enclose_animation
+        -- hurtstop_enclose_animation
         common_game_scene_hit_load_camera_anim(obj_char,1.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
         -- set_frame_adv
@@ -3407,7 +3407,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {330,310}
-        -- hurtstop_wiggle_x_animation hurtstop_wiggle_y_animation hurtstop_enclose_animation
+        -- hurtstop_enclose_animation
         common_game_scene_hit_load_camera_anim(obj_char,1.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
         -- set_frame_adv
@@ -3630,7 +3630,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {245,530}
-        -- hurtstop_wiggle_x_animation hurtstop_wiggle_y_animation hurtstop_enclose_animation
+        -- hurtstop_enclose_animation
         common_game_scene_hit_load_camera_anim(obj_char,1.2)
         load_game_scene_anim_char_TRM_4_6Launcher_camera_enclose_anim(obj_char)
         -- set_frame_adv
@@ -3728,6 +3728,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         res[i] = function()
             point_linear_animator(obj_char_other_side,obj_char_other_side["hurtstop_wiggle_x_animation"])
             point_linear_animator(obj_char_other_side,obj_char_other_side["hurtstop_wiggle_y_animation"])
+            obj_char_other_side["hurtstop_wiggle_current_x"] = (obj_char_other_side["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
+            obj_char_other_side["hurtstop_wiggle_current_y"] = (obj_char_other_side["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
         end
     end
     for i = 37,43 do
@@ -3832,16 +3834,18 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         common_game_scene_create_wiggle_animation(
             9,
             "hurtstop_wiggle_x",
-            10
+            15
         )
         obj_char_other_side["hurtstop_wiggle_y_animation"] = 
         common_game_scene_create_wiggle_animation(
             9,
             "hurtstop_wiggle_y",
-            4
+            7
         )
         init_point_linear_anim_with(obj_char_other_side,obj_char_other_side["hurtstop_wiggle_x_animation"])
         init_point_linear_anim_with(obj_char_other_side,obj_char_other_side["hurtstop_wiggle_y_animation"])
+        obj_char_other_side["hurtstop_wiggle_current_x"] = (obj_char_other_side["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
+        obj_char_other_side["hurtstop_wiggle_current_y"] = (obj_char_other_side["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
     end
     res[37] = function()
         -- state
@@ -3862,6 +3866,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side[8] = 1
         obj_char_other_side["hurtstop_wiggle_x"] = 0
         obj_char_other_side["hurtstop_wiggle_y"] = 0
+        obj_char_other_side["hurtstop_wiggle_current_x"] = 0
+        obj_char_other_side["hurtstop_wiggle_current_y"] = 0
         -- update
         update_y_37f_43f(37)
     end

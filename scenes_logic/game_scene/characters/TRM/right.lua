@@ -177,6 +177,8 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["brightness_overdrive_const"] = 0
     obj_char_game_scene_char_RP["hurtstop_wiggle_x"] = 0
     obj_char_game_scene_char_RP["hurtstop_wiggle_y"] = 0
+    obj_char_game_scene_char_RP["hurtstop_wiggle_current_x"] = 0
+    obj_char_game_scene_char_RP["hurtstop_wiggle_current_y"] = 0
     obj_char_game_scene_char_RP["hurtstop_wiggle_x_animation"] = nil
     obj_char_game_scene_char_RP["hurtstop_wiggle_y_animation"] = nil
 
@@ -3449,8 +3451,8 @@ end
 -- draw
 function draw_game_scene_char_RP_logic_graphic_pos_sync()
     local obj = obj_char_game_scene_char_RP
-    obj[1] = obj["x"]+(obj["hurtstop_wiggle_x"]*(math.random()-0.5)*2)-obj[5]*obj["anchor_pos"][1]
-    obj[2] = obj["y"]+(obj["hurtstop_wiggle_y"]*(math.random()-0.5)*2)-obj[6]*obj["anchor_pos"][2]
+    obj[1] = obj["x"]+obj["hurtstop_wiggle_current_x"]-obj[5]*obj["anchor_pos"][1]
+    obj[2] = obj["y"]+obj["hurtstop_wiggle_current_y"]-obj[6]*obj["anchor_pos"][2]
 end
 function draw_game_scene_char_RP()
     local obj = obj_char_game_scene_char_RP
