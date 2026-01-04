@@ -880,13 +880,8 @@ function common_game_scene_char_apply_knockdown_velocity(
 end
 
 function common_game_scene_init_chars_trainning()
-    load_game_scene_obj_char_LP()
-    load_game_scene_obj_char_RP()
-    load_game_scene_anim_char_LP()
-    load_game_scene_anim_char_RP()
-    obj_char_game_scene_char_LP["state"] = "5_stand_idle"
-    obj_char_game_scene_char_RP["state"] = "5_stand_idle"
-    load_game_scene_announcer_HUD_obj()
+    load_game_scene_common_obj()
+    load_game_scene_common_anim()
     
     if test_input_sys_press_or_hold(INPUT_SYS_CURRENT_COMMAND_STATE["L"]["up"]) then
         if DEBUG_TRAINNING_SPAWN_SIDE == 0 then
@@ -920,4 +915,6 @@ function common_game_scene_init_chars_trainning()
         obj_char_game_scene_char_RP["brightness_overdrive_const"] = -0.3
         obj_char_game_scene_char_RP["contrast"] = 1
     end
+
+    preset_game_scene_training()
 end

@@ -1127,7 +1127,7 @@ end
 -- HUD
 function insert_VFX_HUD_game_scene_counter_ver0_2(obj_char)
     local side = obj_char["player_side"]
-    local obj = {0, 0, 0, 0, 1, 1, 0, 0}
+    local obj = {0, 0, 0, 0, 1, 0.82, 0, 0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
     obj["image"] = image_VFX_game_scene_HUD_counter_ver0_2
@@ -1137,25 +1137,25 @@ function insert_VFX_HUD_game_scene_counter_ver0_2(obj_char)
     elseif side == "R" then
         obj[1] = 952
     end
-    obj[2] = 145
+    obj[2] = 150
 
 -- y_anim
     obj["y_anim"] = {}
-    obj["y_anim"][0] = {145.00, 1}
-    obj["y_anim"][1] = {148.00, 2}
-    obj["y_anim"][2] = {143.00, 3}
-    obj["y_anim"][3] = {146.00, 5}
-    obj["y_anim"][5] = {145.00, 35}
-    obj["y_anim"][35] = {145.00, 40}
-    obj["y_anim"][40] = {145.07, 45}
-    obj["y_anim"][45] = {145.45, 47}
-    obj["y_anim"][47] = {145.85, 49}
-    obj["y_anim"][49] = {146.87, 50}
-    obj["y_anim"][50] = {149.00, 50}
+    obj["y_anim"][0] = {0.00, 1}
+    obj["y_anim"][1] = {3.00, 2}
+    obj["y_anim"][2] = {-2.00, 3}
+    obj["y_anim"][3] = {1.00, 5}
+    obj["y_anim"][5] = {0.00, 35}
+    obj["y_anim"][35] = {0.00, 40}
+    obj["y_anim"][40] = {0.07, 45}
+    obj["y_anim"][45] = {0.45, 47}
+    obj["y_anim"][47] = {0.85, 49}
+    obj["y_anim"][49] = {1.87, 50}
+    obj["y_anim"][50] = {4.00, 50}
     obj["y_anim"]["prop"] = 2
     obj["y_anim"]["length"] = 50
     obj["y_anim"]["loop"] = false
-    obj["y_anim"]["fix_type"] = true
+    obj["y_anim"]["fix_type"] = false
 -- opacity_anim
     obj["opacity_anim"] = {}
     obj["opacity_anim"][0] = {0.00, 1}
@@ -1333,7 +1333,7 @@ function insert_VFX_HUD_game_scene_counter_ver3(obj_char)
 end
 function insert_VFX_HUD_game_scene_punish(obj_char)
     local side = obj_char["player_side"]
-    local obj = {0, 0, 0, 0, 1, 1, 0, 0}
+    local obj = {0, 0, 0, 0, 1, 0.82, 0, 0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
     obj["image"] = image_VFX_game_scene_HUD_punish
@@ -1343,25 +1343,25 @@ function insert_VFX_HUD_game_scene_punish(obj_char)
     elseif side == "R" then
         obj[1] = 952
     end
-    obj[2] = 145
+    obj[2] = 150
 
 -- y_anim
     obj["y_anim"] = {}
-    obj["y_anim"][0] = {145.00, 1}
-    obj["y_anim"][1] = {148.00, 2}
-    obj["y_anim"][2] = {143.00, 3}
-    obj["y_anim"][3] = {146.00, 5}
-    obj["y_anim"][5] = {145.00, 35}
-    obj["y_anim"][35] = {145.00, 40}
-    obj["y_anim"][40] = {145.07, 45}
-    obj["y_anim"][45] = {145.45, 47}
-    obj["y_anim"][47] = {145.85, 49}
-    obj["y_anim"][49] = {146.87, 50}
-    obj["y_anim"][50] = {149.00, 50}
+    obj["y_anim"][0] = {0.00, 1}
+    obj["y_anim"][1] = {3.00, 2}
+    obj["y_anim"][2] = {-2.00, 3}
+    obj["y_anim"][3] = {1.00, 5}
+    obj["y_anim"][5] = {0.00, 35}
+    obj["y_anim"][35] = {0.00, 40}
+    obj["y_anim"][40] = {0.07, 45}
+    obj["y_anim"][45] = {0.45, 47}
+    obj["y_anim"][47] = {0.85, 49}
+    obj["y_anim"][49] = {1.87, 50}
+    obj["y_anim"][50] = {4.00, 50}
     obj["y_anim"]["prop"] = 2
     obj["y_anim"]["length"] = 50
     obj["y_anim"]["loop"] = false
-    obj["y_anim"]["fix_type"] = true
+    obj["y_anim"]["fix_type"] = false
 -- opacity_anim
     obj["opacity_anim"] = {}
     obj["opacity_anim"][0] = {0.00, 1}
