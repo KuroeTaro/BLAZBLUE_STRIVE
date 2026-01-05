@@ -887,18 +887,31 @@ function common_game_scene_init_chars_trainning()
     load_game_scene_common_obj()
     load_game_scene_common_anim()
     
+    local obj_camera = obj_stage_game_scene_camera
     if test_input_sys_press_or_hold(INPUT_SYS_CURRENT_COMMAND_STATE["L"]["up"]) then
         if DEBUG_TRAINNING_SPAWN_SIDE == 0 then
             DEBUG_TRAINNING_SPAWN_SIDE = 1
         else
             DEBUG_TRAINNING_SPAWN_SIDE = 0
         end
+        obj_camera[1] = 0
+        obj_camera["3d_pos_x"] = 0
+        obj_camera["3d_pos_x_target"] = 0
     elseif test_input_sys_press_or_hold(INPUT_SYS_CURRENT_COMMAND_STATE["L"]["down"]) then
         DEBUG_TRAINNING_SPAWN_POS = 1
+        obj_camera[1] = 0
+        obj_camera["3d_pos_x"] = 0
+        obj_camera["3d_pos_x_target"] = 0
     elseif test_input_sys_press_or_hold(INPUT_SYS_CURRENT_COMMAND_STATE["L"]["left"]) then
         DEBUG_TRAINNING_SPAWN_POS = 0
+        obj_camera[1] = -850
+        obj_camera["3d_pos_x"] = -850
+        obj_camera["3d_pos_x_target"] = -850
     elseif test_input_sys_press_or_hold(INPUT_SYS_CURRENT_COMMAND_STATE["L"]["right"]) then
         DEBUG_TRAINNING_SPAWN_POS = 2
+        obj_camera[1] = 850
+        obj_camera["3d_pos_x"] = 850
+        obj_camera["3d_pos_x_target"] = 850
     end
     obj_char_game_scene_char_LP["x"] = DEBUG_TRAINNING_SPAWN_ARRAY[DEBUG_TRAINNING_SPAWN_POS][DEBUG_TRAINNING_SPAWN_SIDE][1]
     obj_char_game_scene_char_RP["x"] = DEBUG_TRAINNING_SPAWN_ARRAY[DEBUG_TRAINNING_SPAWN_POS][DEBUG_TRAINNING_SPAWN_SIDE][2]

@@ -134,13 +134,13 @@ function load_game_scene_announcer_HUD_obj()
     obj_HUD_game_scene_overdrive_text_RP["LCD"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_overdrive_text_RP["state"] = "default"
 
-    obj_HUD_game_scene_overdrive_timer_LP = {192, 149, nil, 0, 1, 1, 0, 0}
+    obj_HUD_game_scene_overdrive_timer_LP = {217, 149, nil, 0, 1, 1, 0, 0}
     obj_HUD_game_scene_overdrive_timer_LP["FCT"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_overdrive_timer_LP["LCT"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_overdrive_timer_LP["LCD"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_overdrive_timer_LP["state"] = "default"
 
-    obj_HUD_game_scene_overdrive_timer_RP = {1290, 149, nil, 0, 1, 1, 0, 0}
+    obj_HUD_game_scene_overdrive_timer_RP = {1265, 149, nil, 0, 1, 1, 0, 0}
     obj_HUD_game_scene_overdrive_timer_RP["FCT"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_overdrive_timer_RP["LCT"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_overdrive_timer_RP["LCD"] = {0,0,0,0,0,0,0,0}
