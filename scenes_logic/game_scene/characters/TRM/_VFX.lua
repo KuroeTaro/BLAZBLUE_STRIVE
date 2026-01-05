@@ -73,7 +73,7 @@ function insert_VFX_game_scene_char_TRM_6P_whiff(obj_char)
     obj[1] = obj_char["x"] + obj_char[5]*(-294)
     obj[2] = obj_char["y"] + obj_char[6]*(-543)
     obj[3] = obj_char[3]
-    obj[4] = 0.675
+    obj[4] = 1
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = obj_char[7]
@@ -99,7 +99,7 @@ function insert_VFX_game_scene_char_TRM_6P_whiff(obj_char)
         self[1] = obj_char["x"] + obj_char[5]*(-294)
         self[2] = obj_char["y"] + obj_char[6]*(-543)
         self[3] = obj_char[3]
-        self[4] = 0.675
+        self[4] = 1
         self[5] = obj_char[5]
         self[6] = obj_char[6]
         self[7] = obj_char[7]
@@ -117,9 +117,11 @@ function insert_VFX_game_scene_char_TRM_6P_whiff(obj_char)
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,tostring(self[8]))
 
+        love.graphics.setBlendMode("add")
         love.graphics.setColor(1,1,1,self[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
+        love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_front_table"],obj)
 end

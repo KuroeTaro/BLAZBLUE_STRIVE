@@ -2568,11 +2568,11 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         -- draw_correction
         obj_char[8] = 5
     end
-    res[19] = function()
+    res[16] = function()
         -- draw_correction
         obj_char[8] = 6
     end
-    res[24] = function()
+    res[19] = function()
         -- draw_correction
         obj_char[8] = 7
     end
@@ -2586,16 +2586,14 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         -- collide
         obj_char["hurtbox_table"] = {{0, -205, 180, 410}}
     end
-    res[33] = function()
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "save" -- none save load
-        init_input_sys_cache(obj_char)
-    end
     res[36] = function()
         -- draw_correction
         obj_char[8] = 10
         -- collide
         obj_char["hurtbox_table"] = {{0, -215, 170, 430}}
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char)
     end
     res[38] = function()
         obj_char["height_state"] = "stand" -- stand crouch air OTG

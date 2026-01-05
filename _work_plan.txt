@@ -1,2 +1,3 @@
-修正 hit throw overdrive 和未来rc之间交接摄像头控制关系的系统
-统一化 hit throw overdrive 和未来rc的摄像头都在角色状态机内进行启动（包括参数等）
+5k
+2k
+6k

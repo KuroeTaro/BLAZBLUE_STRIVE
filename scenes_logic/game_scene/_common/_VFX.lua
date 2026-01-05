@@ -1127,17 +1127,17 @@ end
 -- HUD
 function insert_VFX_HUD_game_scene_counter_ver0_2(obj_char)
     local side = obj_char["player_side"]
-    local obj = {0, 0, 0, 0, 1, 1, 0, 0}
+    local obj = {0, 0, 0, 0, 0.75, 0.75, 0, 0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
     obj["image"] = image_VFX_game_scene_HUD_counter_ver0_2
     obj["life"] = 70
     if side == "L" then
-        obj[1] = 501
+        obj[1] = 565
     elseif side == "R" then
-        obj[1] = 952
+        obj[1] = 914
     end
-    obj[2] = 150
+    obj[2] = 28
 
 -- y_anim
     obj["y_anim"] = {}
@@ -1333,17 +1333,17 @@ function insert_VFX_HUD_game_scene_counter_ver3(obj_char)
 end
 function insert_VFX_HUD_game_scene_punish(obj_char)
     local side = obj_char["player_side"]
-    local obj = {0, 0, 0, 0, 1, 1, 0, 0}
+    local obj = {0, 0, 0, 0, 0.75, 0.75, 0, 0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
     obj["image"] = image_VFX_game_scene_HUD_punish
     obj["life"] = 70
     if side == "L" then
-        obj[1] = 501
+        obj[1] = 565
     elseif side == "R" then
-        obj[1] = 952
+        obj[1] = 914
     end
-    obj[2] = 150
+    obj[2] = 28
 
 -- y_anim
     obj["y_anim"] = {}
