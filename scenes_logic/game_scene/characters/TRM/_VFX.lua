@@ -10,9 +10,9 @@ function insert_VFX_game_scene_char_TRM_2P_whiff(obj_char)
 
     obj["life"] = 8
     obj[1] = obj_char["x"] + obj_char[5]*(35)
-    obj[2] = obj_char["y"] + obj_char[6]*(-260)
+    obj[2] = obj_char["y"] + obj_char[6]*(-230)
     obj[3] = obj_char[3]
-    obj[4] = 0.5
+    obj[4] = 1
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = obj_char[7]
@@ -33,9 +33,9 @@ function insert_VFX_game_scene_char_TRM_2P_whiff(obj_char)
         -- self[1] = obj_char["x"] + obj_char[5]*(-860)/2
         -- self[2] = obj_char["y"] + obj_char[6]*(840)
         self[1] = obj_char["x"] + obj_char[5]*(35)
-        self[2] = obj_char["y"] + obj_char[6]*(-260)
+        self[2] = obj_char["y"] + obj_char[6]*(-230)
         self[3] = obj_char[3]
-        self[4] = 0.5
+        self[4] = 1
         self[5] = obj_char[5]
         self[6] = obj_char[6]
         self[7] = obj_char[7]

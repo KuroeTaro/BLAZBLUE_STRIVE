@@ -2269,9 +2269,13 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         -- visual_front
         CHARACTER_VISUAL_FRONT = obj_char["player_side"]
     end
-    res[2] = function()
+    res[1] = function()
         -- draw_correction
         obj_char[8] = 1
+    end
+    res[2] = function()
+        -- draw_correction
+        obj_char[8] = 2
     end
     res[4] = function()
         -- state & state_number
@@ -2288,11 +2292,11 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         -- VFX
         insert_VFX_game_scene_char_TRM_2P_whiff(obj_char)
         -- draw_correction
-        obj_char[8] = 2
+        obj_char[8] = 3
     end
     res[5] = function()
         -- draw_correction
-        obj_char[8] = 3
+        obj_char[8] = 4
     end
     res[6] = function()
         -- state
@@ -2310,14 +2314,14 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -150, 200, 300}}
     end
-    res[8] = function()
-        -- draw_correction
-        obj_char[8] = 4
-    end
     res[11] = function()
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
         init_input_sys_cache(obj_char)
+    end
+    res[15] = function()
+        -- draw_correction
+        obj_char[8] = 5
     end
     res[16] = function()
         obj_char["height_state"] = "crouch" -- stand crouch air OTG
@@ -2345,11 +2349,11 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
     end
     res[19] = function()
         -- draw_correction
-        obj_char[8] = 5
-    end
-    res[22] = function()
-        -- draw_correction
         obj_char[8] = 6
+    end
+    res[23] = function()
+        -- draw_correction
+        obj_char[8] = 7
     end
     res[27] = function()
         -- animation end
@@ -2568,11 +2572,11 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         -- draw_correction
         obj_char[8] = 5
     end
-    res[16] = function()
+    res[18] = function()
         -- draw_correction
         obj_char[8] = 6
     end
-    res[19] = function()
+    res[23] = function()
         -- draw_correction
         obj_char[8] = 7
     end
