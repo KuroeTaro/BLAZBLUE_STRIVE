@@ -74,6 +74,7 @@ local load_attack_name_table = {
     "2P",
     "6P",
     "5P",
+    "5K",
     "cS",
     "2Launcher",
     "4_6Launcher",
