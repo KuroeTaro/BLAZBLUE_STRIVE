@@ -3105,6 +3105,13 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
+        -- VFX
+        insert_VFX_game_scene_stage_smoke_horizontal_shot(
+            obj_char,
+            -550,
+            -160,
+            0.5,0.8,0.8,0
+        )
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {235,510}
@@ -3687,6 +3694,12 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
+        insert_VFX_game_scene_stage_smoke_horizontal_shot(
+            obj_char,
+            -550,
+            -160,
+            0.5,0.8,0.8,0
+        )
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {330,310}
