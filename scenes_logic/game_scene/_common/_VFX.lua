@@ -247,6 +247,10 @@ function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r)
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
     x = math.min(dx,x)
     r = obj_char[5]*r
+
+    obj_char["VFX_hit_front_table"] = {}
+    obj_char["VFX_hit_back_table"] = {}
+
     obj["life"] = 11
     obj[1] = obj_char["x"] + obj_char[5]*(x)
     obj[2] = obj_char["y"] + obj_char[6]*(y)
@@ -296,7 +300,7 @@ function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r)
         love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("alpha")
     end
-    table.insert(obj_char["VFX_front_table"],obj)
+    table.insert(obj_char["VFX_hit_front_table"],obj)
 end
 function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
@@ -304,7 +308,10 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r)
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
     x = math.min(dx,x)
     r = obj_char[5]*r
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+
+    obj_char["VFX_hit_front_table"] = {}
+    obj_char["VFX_hit_back_table"] = {}
+
     obj["life"] = 21
     obj[1] = obj_char["x"] + obj_char[5]*(x)
     obj[2] = obj_char["y"] + obj_char[6]*(y)
@@ -352,7 +359,7 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r)
         love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("alpha")
     end
-    table.insert(obj_char["VFX_front_table"],obj)
+    table.insert(obj_char["VFX_hit_front_table"],obj)
 
     -- air_blow
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
@@ -414,7 +421,7 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r)
         -- love.graphics.draw(image_sprite_sheet["sprite_batch"])
         -- love.graphics.setColor(1,1,1,1)
     end
-    table.insert(obj_char["VFX_front_table"],obj)
+    table.insert(obj_char["VFX_hit_front_table"],obj)
 end
 function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
@@ -422,7 +429,10 @@ function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,s
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
     x = math.min(dx,x)
     r = obj_char[5]*r
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+
+    obj_char["VFX_hit_front_table"] = {}
+    obj_char["VFX_hit_back_table"] = {}
+
     obj["life"] = 27
     obj[1] = obj_char["x"] + obj_char[5]*(x)
     obj[2] = obj_char["y"] + obj_char[6]*(y)
@@ -476,14 +486,17 @@ function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,s
         love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("alpha")
     end
-    table.insert(obj_char["VFX_front_table"],obj)
+    table.insert(obj_char["VFX_hit_front_table"],obj)
 end
 function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
     local dx = math.abs(common_game_scene_change_character(obj_char["player_side"])["x"]-obj_char["x"])-310*sx
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
     x = math.min(dx,x)
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+
+    obj_char["VFX_hit_front_table"] = {}
+    obj_char["VFX_hit_back_table"] = {}
+
     obj["life"] = 21
     obj[1] = obj_char["x"] + obj_char[5]*(x)
     obj[2] = obj_char["y"] + obj_char[6]*(y)
@@ -537,7 +550,7 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
         love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("alpha")
     end
-    table.insert(obj_char["VFX_front_table"],obj)
+    table.insert(obj_char["VFX_hit_front_table"],obj)
 
     -- air_blow
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
@@ -599,7 +612,7 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
         -- love.graphics.draw(image_sprite_sheet["sprite_batch"])
         -- love.graphics.setColor(1,1,1,1)
     end
-    table.insert(obj_char["VFX_front_table"],obj)
+    table.insert(obj_char["VFX_hit_front_table"],obj)
     
     -- counter_glow
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
@@ -643,7 +656,7 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
         draw_3d_image(obj_camera,self,image)
         love.graphics.setColor(1,1,1,1)
     end
-    table.insert(obj_char["VFX_back_table"],obj)
+    table.insert(obj_char["VFX_hit_back_table"],obj)
 
     -- partical
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
@@ -687,12 +700,16 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
     end
-    table.insert(obj_char["VFX_front_table"],obj)
+    table.insert(obj_char["VFX_hit_front_table"],obj)
 end
 function insert_VFX_game_sceme_char_block_ver0(obj_char)
     -- x y z opacity sx sy r f
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
     local VFX_spawn_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["block_ver0_spawn_anchor_pos"][obj_char["sprite_sheet_state"]]
+    
+    obj_char["VFX_hit_front_table"] = {}
+    obj_char["VFX_hit_back_table"] = {}
+
     obj["life"] = 11
     obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
     obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
@@ -738,12 +755,16 @@ function insert_VFX_game_sceme_char_block_ver0(obj_char)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
     end
-    table.insert(obj_char["VFX_front_table"],obj)
+    table.insert(obj_char["VFX_hit_front_table"],obj)
 end
 function insert_VFX_game_sceme_char_block_ver1(obj_char)
     -- x y z opacity sx sy r f
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
     local VFX_spawn_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["block_ver1_spawn_anchor_pos"][obj_char["sprite_sheet_state"]]
+    
+    obj_char["VFX_hit_front_table"] = {}
+    obj_char["VFX_hit_back_table"] = {}
+
     obj["life"] = 21
     obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
     obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
@@ -790,7 +811,7 @@ function insert_VFX_game_sceme_char_block_ver1(obj_char)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
     end
-    table.insert(obj_char["VFX_front_table"],obj)
+    table.insert(obj_char["VFX_hit_front_table"],obj)
 end
 function insert_VFX_game_sceme_char_FD_block(obj_char)
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
@@ -800,6 +821,10 @@ function insert_VFX_game_sceme_char_FD_block(obj_char)
     elseif obj_char["height_state"] == "stand" then
         VFX_spawn_anchor_pos = {-300,-540}
     end
+
+    obj_char["VFX_hit_front_table"] = {}
+    obj_char["VFX_hit_back_table"] = {}
+
     obj["life"] = 21
     obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
     obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
@@ -847,12 +872,16 @@ function insert_VFX_game_sceme_char_FD_block(obj_char)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
     end
-    table.insert(obj_char["VFX_front_table"],obj)
+    table.insert(obj_char["VFX_hit_front_table"],obj)
 end
 function insert_VFX_game_scene_char_throw_tech(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    
+    obj_char["VFX_hit_front_table"] = {}
+    obj_char["VFX_hit_back_table"] = {}
+
     obj["life"] = 20
     obj[1] = (obj_char["x"] + obj_char_other_side["x"])/2 + obj_char[5]*(x)
     obj[2] = (obj_char["y"] + obj_char_other_side["y"])/2 + obj_char[6]*(y)
@@ -879,7 +908,7 @@ function insert_VFX_game_scene_char_throw_tech(obj_char,x,y,opacity,sx,sy,r)
 
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
-    table.insert(obj_char["VFX_back_table"],obj)
+    table.insert(obj_char["VFX_hit_back_table"],obj)
 end
 
 -- smoke

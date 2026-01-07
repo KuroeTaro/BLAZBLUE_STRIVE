@@ -151,6 +151,8 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["VFX_HUD_table"] = {}
     obj_char_game_scene_char_LP["VFX_front_table"] = {}
     obj_char_game_scene_char_LP["VFX_back_table"] = {}
+    obj_char_game_scene_char_LP["VFX_hit_front_table"] = {}
+    obj_char_game_scene_char_LP["VFX_hit_back_table"] = {}
     obj_char_game_scene_char_LP["black_overlay_table"] = {}
 
     obj_char_game_scene_char_LP["hit_VFX_insert_function"] = nil
@@ -3643,11 +3645,25 @@ function update_game_scene_char_LP_VFX()
             table.remove(obj_char_game_scene_char_LP["VFX_HUD_table"], i) -- 寿命耗尽，从列表中移除
         end
     end
+    for i = #obj_char_game_scene_char_LP["VFX_hit_front_table"], 1, -1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["VFX_hit_front_table"][i]
+        object["update"](object)
+        if object["life"] <= 0 then
+            table.remove(obj_char_game_scene_char_LP["VFX_hit_front_table"], i) -- 寿命耗尽，从列表中移除
+        end
+    end
     for i = #obj_char_game_scene_char_LP["VFX_front_table"], 1, -1 do -- 反向遍历，便于删除元素
         local object = obj_char_game_scene_char_LP["VFX_front_table"][i]
         object["update"](object)
         if object["life"] <= 0 then
             table.remove(obj_char_game_scene_char_LP["VFX_front_table"], i) -- 寿命耗尽，从列表中移除
+        end
+    end
+    for i = #obj_char_game_scene_char_LP["VFX_hit_back_table"], 1, -1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["VFX_hit_back_table"][i]
+        object["update"](object)
+        if object["life"] <= 0 then
+            table.remove(obj_char_game_scene_char_LP["VFX_hit_back_table"], i) -- 寿命耗尽，从列表中移除
         end
     end
     for i = #obj_char_game_scene_char_LP["VFX_back_table"], 1, -1 do -- 反向遍历，便于删除元素
@@ -3665,12 +3681,20 @@ function draw_game_scene_char_LP_VFX_HUD()
     end
 end
 function draw_game_scene_char_LP_VFX_front()
+    for i = 1, #obj_char_game_scene_char_LP["VFX_hit_front_table"], 1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["VFX_hit_front_table"][i]
+        object["draw"](object)
+    end
     for i = 1, #obj_char_game_scene_char_LP["VFX_front_table"], 1 do -- 反向遍历，便于删除元素
         local object = obj_char_game_scene_char_LP["VFX_front_table"][i]
         object["draw"](object)
     end
 end
 function draw_game_scene_char_LP_VFX_back()
+    for i = 1, #obj_char_game_scene_char_LP["VFX_hit_back_table"], 1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["VFX_hit_back_table"][i]
+        object["draw"](object)
+    end
     for i = 1, #obj_char_game_scene_char_LP["VFX_back_table"], 1 do -- 反向遍历，便于删除元素
         local object = obj_char_game_scene_char_LP["VFX_back_table"][i]
         object["draw"](object)
