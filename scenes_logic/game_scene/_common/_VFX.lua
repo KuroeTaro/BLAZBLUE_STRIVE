@@ -423,6 +423,125 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r)
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
 end
+function insert_VFX_game_scene_char_blast_ver1_pos_fixed(obj_char,x,y,opacity,sx,sy,r)
+    -- x y z opacity sx sy r f
+    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    r = obj_char[5]*r
+
+    obj_char["VFX_hit_front_table"] = {}
+    obj_char["VFX_hit_back_table"] = {}
+
+    obj["life"] = 21
+    obj[1] = obj_char["x"] + obj_char[5]*(x)
+    obj[2] = obj_char["y"] + obj_char[6]*(y)
+    obj[3] = obj_char[3]
+    obj[4] = opacity*0.75
+    obj[5] = obj_char[5]*sx
+    obj[6] = obj_char[6]*sy
+    obj[7] = r
+    obj[8] = -1
+    obj["FCT"] = {0,0,0,0,0,0,0,0}
+    obj["LCT"] = {0,0,0,0,0,0,0,0}
+    obj["LCD"] = {0,0,0,0,0,0,0,0}
+    obj["animation"] = {}
+    obj["animation"][0] = 0
+    obj["animation"][2] = 1
+    obj["animation"][4] = 2
+    obj["animation"][7] = 3
+    obj["animation"][10] = 4
+    obj["animation"][13] = 5
+    obj["animation"][17] = 6
+    obj["animation"]["prop"] = 8
+    obj["animation"]["length"] = 21
+    obj["animation"]["loop"] = false
+    obj["animation"]["fix_type"] = true
+    init_frame_anim_with(obj,obj["animation"])
+    obj["update"] = function(self)
+        if obj_char["state"] == "hitstop" then
+            -- do nothing
+        else
+            obj[1] = obj_char["x"] + obj_char[5]*(x)
+            obj[2] = obj_char["y"] + obj_char[6]*(y)
+            frame_animator(self,self["animation"])
+            self["life"] = self["life"] - 1
+        end
+    end
+    obj["draw"] = function(self)
+        local obj_camera = obj_stage_game_scene_camera
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_blast_ver1
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+
+        love.graphics.setBlendMode("add")
+        love.graphics.setColor(1,1,1,obj[4])
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setColor(1,1,1,1)
+        love.graphics.setBlendMode("alpha")
+    end
+    table.insert(obj_char["VFX_hit_front_table"],obj)
+
+    -- air_blow
+    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local dx = -100
+    local dy = -200
+    local rot_dx = dx * obj_char[5] * math.cos(r) - dy * obj_char[6] * math.sin(r)
+    local rot_dy = dx * obj_char[5] * math.sin(r) + dy * obj_char[6] * math.cos(r)
+    obj["life"] = 16
+    obj[1] = obj_char["x"] + obj_char[5]*(x) + rot_dx
+    obj[2] = obj_char["y"] + obj_char[6]*(y) + rot_dy
+    obj[3] = obj_char[3]
+    obj[4] = opacity
+    obj[5] = obj_char[5]*sx
+    obj[6] = obj_char[6]*sy
+    obj[7] = r
+    obj[8] = -1
+    obj["FCT"] = {0,0,0,0,0,0,0,0}
+    obj["LCT"] = {0,0,0,0,0,0,0,0}
+    obj["LCD"] = {0,0,0,0,0,0,0,0}
+    obj["animation"] = {}
+    obj["animation"][0] = 0
+    obj["animation"][1] = 1
+    obj["animation"][2] = 2
+    obj["animation"][3] = 3
+    obj["animation"][4] = 4
+    obj["animation"][6] = 5
+    obj["animation"][8] = 6
+    obj["animation"][10] = 7
+    obj["animation"][11] = 8
+    obj["animation"][12] = 9
+    obj["animation"][15] = 10
+    obj["animation"]["prop"] = 8
+    obj["animation"]["length"] = 16
+    obj["animation"]["loop"] = false
+    obj["animation"]["fix_type"] = true
+    init_frame_anim_with(obj,obj["animation"])
+    obj["update"] = function(self)
+        if obj_char["state"] == "hitstop" then
+            -- do nothing
+        else
+            obj[1] = obj_char["x"] + obj_char[5]*(x) + rot_dx
+            obj[2] = obj_char["y"] + obj_char[6]*(y) + rot_dy
+            frame_animator(self,self["animation"])
+            self["life"] = self["life"] - 1
+        end
+    end
+    obj["draw"] = function(self)
+        local obj_camera = obj_stage_game_scene_camera
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_air_blow
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+
+        love.graphics.setBlendMode("add")
+        love.graphics.setColor(1,1,1,obj[4])
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setColor(1,1,1,1)
+        love.graphics.setBlendMode("alpha")
+        -- love.graphics.setColor(1,1,1,obj[4])
+        -- love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        -- love.graphics.setColor(1,1,1,1)
+    end
+    table.insert(obj_char["VFX_hit_front_table"],obj)
+end
 function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
     local dx = math.abs(common_game_scene_change_character(obj_char["player_side"])["x"]-obj_char["x"])-185*sx
