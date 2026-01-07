@@ -265,7 +265,6 @@ function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r)
     obj["animation"][3] = 2
     obj["animation"][6] = 3
     obj["animation"][8] = 4
-    obj["animation"][11] = 4
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 11
     obj["animation"]["loop"] = false

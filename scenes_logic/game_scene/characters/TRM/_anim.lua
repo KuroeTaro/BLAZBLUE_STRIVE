@@ -2251,7 +2251,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         obj_char["collision_test_ground_height_offset"] = 0 
         -- sub_obj
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver0
-        obj_char["hit_VFX_insert_function_argument"] = {obj_char,95,-385,0.8,0.75,0.75,0}
+        obj_char["hit_VFX_insert_function_argument"] = {obj_char,95,-400,0.8,0.75,0.75,0}
         obj_char["hit_SFX"] = nil
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver0
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,70,-700,1,1.1,1.1,0}
@@ -2262,7 +2262,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         obj_char[8] = 0
         obj_char["anchor_pos"] = {295,315}
         -- camera_animation_load
-        common_game_scene_nil_load_camera_shake_anim(obj_char,0.2)
+        common_game_scene_hit_load_camera_shake_anim(obj_char,0.3)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
@@ -2516,7 +2516,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         obj_char[8] = 0
         obj_char["anchor_pos"] = {280,495}
         -- camera_animation_load
-        common_game_scene_hit_load_camera_shake_anim(obj_char,1.2)
+        common_game_scene_hit_load_camera_shake_anim(obj_char,2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
@@ -2852,7 +2852,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char[8] = 0
         obj_char["anchor_pos"] = {233,520}
         -- camera_animation_load
-        common_game_scene_hit_load_camera_shake_anim(obj_char,0.2)
+        common_game_scene_hit_load_camera_shake_anim(obj_char,0.3)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
@@ -3116,7 +3116,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         obj_char[8] = 0
         obj_char["anchor_pos"] = {235,510}
         -- camera_animation_load
-        common_game_scene_hit_load_camera_shake_anim(obj_char,0.2)
+        common_game_scene_hit_load_camera_shake_anim(obj_char,0.45)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0

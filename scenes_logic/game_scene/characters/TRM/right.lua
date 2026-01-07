@@ -1576,6 +1576,15 @@ function state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(inp
     -- _2K
     -- _6K
     -- _5K
+    if test_input_sys_press_or_hold(input["K"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_5K(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "5K"
+        return true
+    end
     -- _2S
     -- _6S
     -- _cS
