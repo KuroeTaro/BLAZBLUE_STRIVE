@@ -2550,6 +2550,12 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         init_input_sys_cache(obj_char)
         -- collide
         obj_char["hitbox_table"] = {{120, -360, 200, 350}}
+        insert_VFX_game_scene_stage_smoke_horizontal_shot(
+            obj_char,
+            500,
+            -160,
+            0.5,-0.8,0.8,0
+        )
         -- draw_correction
         obj_char[8] = 4
     end
@@ -2954,7 +2960,7 @@ end
 -- 2K
 function load_game_scene_anim_char_TRM_2K(obj_char)
     local res = {}
-    local friction = 15
+    local friction = 10
     local gravity = 2.5
     local side = obj_char["player_side"]
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[side]
@@ -3104,13 +3110,6 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
-        -- VFX
-        insert_VFX_game_scene_stage_smoke_horizontal_shot(
-            obj_char,
-            -550,
-            -160,
-            0.5,0.8,0.8,0
-        )
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {290,300}
@@ -3129,6 +3128,13 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
     res[3] = function()
         -- draw_correction
         obj_char[8] = 1
+        -- VFX
+        insert_VFX_game_scene_stage_smoke_horizontal_shot(
+            obj_char,
+            550,
+            -160,
+            0.5,-0.8,0.8,0
+        )
     end
     res[4] = function()
         -- collide
@@ -3175,7 +3181,7 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
         -- collide
         obj_char["hurtbox_table"] = {{0, -75, 200, 150}}
     end
-    res[11] = function()
+    res[15] = function()
         -- draw_correction
         obj_char[8] = 5
     end
@@ -3395,13 +3401,6 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
-        -- VFX
-        insert_VFX_game_scene_stage_smoke_horizontal_shot(
-            obj_char,
-            -550,
-            -160,
-            0.5,0.8,0.8,0
-        )
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {235,510}
@@ -3467,6 +3466,15 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
         init_input_sys_cache(obj_char)
+    end
+    res[18] = function()
+        -- VFX
+        insert_VFX_game_scene_stage_smoke_horizontal_shot(
+            obj_char,
+            -550,
+            -160,
+            0.5,0.8,0.8,0
+        )
     end
     res[20] = function()
         obj_char["height_state"] = "stand" -- stand crouch air OTG
@@ -3856,7 +3864,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             obj_char,
             "4_stand_block_mid",
             "stand","5_stand_idle",
-            32,5,1.05,
+            -8,5,1.05,
             0,2.5,1.05,
             nil,nil,nil,nil,
             function() end
@@ -3893,7 +3901,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            32,5,1.05,
+            -8,5,1.05,
             0,2.5,1.05,
             nil,nil,nil,nil,
             function() end
@@ -3921,7 +3929,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            5,5,1.05,
+            -8,5,1.05,
             -5,2.5,1.05,
             nil,nil,nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
@@ -3944,7 +3952,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
 
-        obj_char["current_animation_length"] = 40
+        obj_char["current_animation_length"] = 50
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -3989,11 +3997,12 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
+        -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char,
-            -550,
+            640,
             -160,
-            0.5,0.8,0.8,0
+            0.5,-0.8,0.8,0
         )
         -- draw_correction
         obj_char[8] = 0
@@ -4068,7 +4077,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         -- draw_correction
         obj_char[8] = 6
     end
-    res[24] = function()
+    res[23] = function()
         -- draw_correction
         obj_char[8] = 7
     end
@@ -4077,9 +4086,13 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         obj_char["input_sys_state"] = "save" -- none save load
         init_input_sys_cache(obj_char)
     end
-    res[28] = function()
+    res[27] = function()
         -- draw_correction
         obj_char[8] = 8
+    end
+    res[30] = function()
+        -- draw_correction
+        obj_char[8] = 9
     end
     res[31] = function()
         -- state
@@ -4110,12 +4123,22 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -150, 200, 300}}
         obj_char["collision_test_ground_height_offset"] = 0
-    end
-    res[34] = function()
         -- draw_correction
-        obj_char[8] = 9
+        obj_char[8] = 10
+    end
+    res[37] = function()
+        -- draw_correction
+        obj_char[8] = 11
     end
     res[40] = function()
+        -- draw_correction
+        obj_char[8] = 12
+    end
+    res[44] = function()
+        -- draw_correction
+        obj_char[8] = 13
+    end
+    res[50] = function()
         -- animation_end
     end
     return res
@@ -5000,6 +5023,15 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char["hurtbox_table"] = {{-10, -215, 190, 430},{-40, -455, 100, 50}}
         -- draw_correction
         obj_char[8] = 2
+    end
+    res[15] = function()
+        -- VFX
+        insert_VFX_game_scene_stage_smoke_horizontal_shot(
+            obj_char,
+            500,
+            -160,
+            0.5,-0.8,0.8,0
+        )
     end
     res[17] = function()
         -- collide
