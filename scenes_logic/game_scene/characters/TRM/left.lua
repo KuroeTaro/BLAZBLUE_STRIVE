@@ -1491,15 +1491,8 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_ch
     -- _2S
     -- _6S
     -- _cS
-    local compare_distance = 305.0
-    compare_distance = compare_distance + math.abs(obj_char["velocity"][1]-obj_char_other_side["velocity"][1])*0.9 
-    if obj_char_other_side["hurtbox_table"][1] then
-        compare_distance = compare_distance + obj_char_other_side["hurtbox_table"][1][3]/2
-    else
-        compare_distance = compare_distance + 85
-    end
     if test_input_sys_press(input["S"]) 
-    and math.abs(obj_char["x"]-obj_char_other_side["x"]) < compare_distance then
+    and math.abs(obj_char["x"]-obj_char_other_side["x"]) < 350 then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -3224,7 +3217,15 @@ function state_gate_game_scene_char_LP_from_5K(input,obj_char)
     end
     -- hit_cancel
     if obj_char["hit_cancel"] then
-
+        if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["Launcher"]) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_2Launcher(obj_char)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "2Launcher"
+            return true
+        end
     end
     -- idle_cancel
     if obj_char["idle_cancel"] then
