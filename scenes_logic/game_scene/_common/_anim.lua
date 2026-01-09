@@ -3478,7 +3478,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         obj_char_other_side["throw_inv"] = true
         obj_char_other_side["throw_inv_countdown"] = 1
     end
-    for i = 0,12 do
+    for i = 0,18 do
         res[i] = function()
             update_throw_inv()
         end
@@ -3500,7 +3500,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         obj_char_other_side["self_knockdown_animation"] = self_knockdown_animation
         obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
 
-        obj_char_other_side["current_animation_length"] = 13
+        obj_char_other_side["current_animation_length"] = 19
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -3560,21 +3560,21 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         -- update
         update_throw_inv()
     end
-    res[9] = function()
+    res[12] = function()
         -- draw_correction
         obj_char_other_side[8] = 3
         -- update
         update_throw_inv()
     end
-    res[12] = function()
+    res[18] = function()
         -- state
-        obj_char_other_side["f"] = 9
+        obj_char_other_side["f"] = 6
         -- draw_correction
         obj_char_other_side[8] = 2
         -- update
         update_throw_inv()
     end
-    res[13] = function()
+    res[19] = function()
         -- animation_end
     end
     return res

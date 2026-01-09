@@ -75,6 +75,7 @@ local load_attack_name_table = {
     "6P",
     "5P",
     "2K",
+    "6K",
     "5K",
     "cS",
     "2Launcher",
@@ -91,8 +92,13 @@ local load_whiff_VFX_name_table = {
     "2P",
     "6P",
     "5P",
+    -- "2K",
+    -- "6K",
+    -- "5K",
     "cS",
     -- "2Launcher"
+    -- "4_6Launcher",
+    -- "4_6Launcher_success",
     "5Launcher",
     "5Launcher_glow"
 }

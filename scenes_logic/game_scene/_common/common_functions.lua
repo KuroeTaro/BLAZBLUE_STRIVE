@@ -347,7 +347,20 @@ function common_game_scene_strike_hurt_function(obj_char)
         obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
         obj_char["last_hitstop_frame"] = 0
         init_character_anim_with(obj_char,obj_char["current_animation"])
-        
+        common_game_scene_nil_load_camera_enclose_anim(hit_side_obj_char)
+        common_game_scene_hit_load_camera_shake_anim(hit_side_obj_char,0.5)
+        table.insert(obj_camera["active_application_table"],
+            function()
+                anim_camera_point_linear_game_scene_camera_enclosing = hit_side_obj_char["camera_enclosing_anim"]
+                anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
+                anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+                obj_camera["enclose_position_offset"] = hit_side_obj_char["enclose_position_offset"]
+                obj_camera["state"] = "active"
+            end
+        )
         -- character_shake
         obj_char["hurtstop_wiggle_x_animation"] = 
         common_game_scene_create_wiggle_animation(
