@@ -200,6 +200,5 @@ function draw_3d_color_box(camera,obj_box,color)
 
     love.graphics.setColor(color[1], color[2], color[3], color[4])
     love.graphics.rectangle("fill", cood_res[1], cood_res[2], obj_box["w"]*scale*sx, obj_box["h"]*scale*sy)
-    love.graphics.rectangle("line", cood_res[1], cood_res[2], obj_box["w"]*scale*sx, obj_box["h"]*scale*sy)
     love.graphics.setColor(1,1,1,1)
 end

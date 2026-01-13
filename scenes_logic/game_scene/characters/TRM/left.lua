@@ -313,7 +313,10 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "2K",
                 "6K",
                 "5K",
+                "2S",
+                "6S",
                 "cS",
+                "fS",
                 "2Launcher",
                 "4_6Launcher",
                 "4_6Launcher_success",
@@ -357,8 +360,16 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "2P",
                 "6P",
                 "5P",
+                -- "2K",
+                -- "6K",
+                -- "5K",
+                "2S",
+                "6S",
                 "cS",
-                -- 2Launcher
+                -- "fS",
+                -- "2Launcher"
+                -- "4_6Launcher",
+                -- "4_6Launcher_success",
                 "5Launcher",
                 "5Launcher_glow"
             }

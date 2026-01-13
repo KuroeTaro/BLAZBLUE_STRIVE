@@ -117,11 +117,9 @@ function insert_VFX_game_scene_char_TRM_6P_whiff(obj_char)
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,tostring(self[8]))
 
-        love.graphics.setBlendMode("add")
         love.graphics.setColor(1,1,1,self[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
-        love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_front_table"],obj)
 end
