@@ -310,6 +310,9 @@ function load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
         
         obj_char["current_animation_length"] = 16
 
+        obj_char["hit_cancel"] = false
+        obj_char["idle_cancel"] = false
+
         obj_char["strike_inv"] = false
         obj_char["strike_inv_countdown"] = 0
         obj_char["throw_inv"] = false
@@ -343,6 +346,8 @@ function load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
         obj_char[8] = 1
     end
     res[8] = function()
+        -- state
+        obj_char["idle_cancel"] = true
         -- collide
         obj_char["pushbox"] = {0,-185,121.5,370}
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-455,100,50}}
@@ -2338,6 +2343,8 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
+        -- collide
+        obj_char["hurtbox_table"] = {{0,-150,200,300}}
     end
     res[19] = function()
         -- draw_correction
@@ -3235,8 +3242,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[side]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
-    local velocity_cache = obj_char["velocity"][1]/2
-    velocity_cache = math.max(velocity_cache,0)
+    local velocity_cache = obj_char["velocity"][1]*1
     
     res[0] = function()
         -- state
@@ -3339,7 +3345,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
 
-        obj_char["current_animation_length"] = 52
+        obj_char["current_animation_length"] = 44
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -3453,30 +3459,26 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         -- draw_correction
         obj_char[8] = 5
     end
-    res[23] = function()
+    res[24] = function()
         -- collide
         obj_char["hurtbox_table"] = {{-50,-240,180,480}}
         -- draw_correction
         obj_char[8] = 6
     end
-    res[25] = function()
+    res[28] = function()
         -- draw_correction
         obj_char[8] = 7
-    end
-    res[30] = function()
-        -- draw_correction
-        obj_char[8] = 8
     end
     res[31] = function()
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
         init_input_sys_cache(obj_char)
     end
-    res[33] = function()
+    res[32] = function()
         -- collide
-        obj_char["hurtbox_table"] = {{-20,-220,200,440}}
+        obj_char["hurtbox_table"] = {{-30,-240,180,480}}
         -- draw_correction
-        obj_char[8] = 9
+        obj_char[8] = 8
     end
     res[36] = function()
         obj_char["height_state"] = "stand" -- stand crouch air OTG
@@ -3495,31 +3497,27 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- state_number
-        obj_char["velocity"] = {obj_char[5]*(20+velocity_cache),0}
         obj_char["gravity"] = gravity
         obj_char["friction"] = friction
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- collide
-        obj_char["hurtbox_table"] = {{-5,-210,190,420}}
+        obj_char["hurtbox_table"] = {{-15,-215,170,430},{-40,-455,100,50}}
+        -- draw_correction
+        obj_char[8] = 9
+    end
+    res[40] = function()
+        -- state_number
+        obj_char["velocity"] = {obj_char[5]*(5),0}
+        -- collide
+        obj_char["hurtbox_table"] = {{-5,-215,170,430},{-15,-455,100,50}}
         -- draw_correction
         obj_char[8] = 10
     end
-    res[40] = function()
-        obj_char["velocity"] = {obj_char[5]*(20+velocity_cache),0}
-        -- collide
-        obj_char["hurtbox_table"] = {{0,-195,185,390}}
-        -- draw_correction
-        obj_char[8] = 11
-    end
-    res[47] = function()
-        -- collide
-        obj_char["hurtbox_table"] = {{0,-200,180,400}}
-        -- draw_correction
-        obj_char[8] = 12
-    end
-    res[52] = function()
+    res[44] = function()
+        -- state_number
+        obj_char["velocity"] = {obj_char[5]*(25),0}
         -- animation end
     end
     return res

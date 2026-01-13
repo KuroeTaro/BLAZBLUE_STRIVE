@@ -884,7 +884,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
         if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
-            hurt_horizontal_velocity = hurt_horizontal_velocity * 1.2
+            hurt_horizontal_velocity = hurt_horizontal_velocity * 2
         end
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
@@ -991,7 +991,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
         if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
-            hurt_horizontal_velocity = hurt_horizontal_velocity * 1.2
+            hurt_horizontal_velocity = hurt_horizontal_velocity * 2
         end
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
@@ -1100,7 +1100,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
         if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
-            hurt_horizontal_velocity = hurt_horizontal_velocity * 1.2
+            hurt_horizontal_velocity = hurt_horizontal_velocity * 2
         end
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
@@ -1211,7 +1211,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
         if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
-            hurt_horizontal_velocity = hurt_horizontal_velocity * 1.2
+            hurt_horizontal_velocity = hurt_horizontal_velocity * 2
         end
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
@@ -1326,7 +1326,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
         if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
-            hurt_horizontal_velocity = hurt_horizontal_velocity * 1.2
+            hurt_horizontal_velocity = hurt_horizontal_velocity * 2
         end
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
@@ -1471,7 +1471,7 @@ function load_game_scene_anim_char_common_0_air_block(
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
         if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
-            hurt_horizontal_velocity = hurt_horizontal_velocity * 1.2
+            hurt_horizontal_velocity = hurt_horizontal_velocity * 2
             hurt_vertical_velocity = hurt_vertical_velocity + math.abs(hurt_vertical_velocity)*0.2
         end
         common_game_scene_char_apply_hurt_velocity(

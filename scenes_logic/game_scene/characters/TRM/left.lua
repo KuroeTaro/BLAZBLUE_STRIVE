@@ -2408,6 +2408,9 @@ function state_gate_game_scene_char_LP_from_5_stand_dash_skid(input,obj_char)
     if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
         return true
     end
+    if obj_char["idle_cancel"] and state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+        return true
+    end
     -- animation_end
     if common_game_scene_get_character_animation_end(obj_char) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
