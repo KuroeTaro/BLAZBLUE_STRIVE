@@ -42,7 +42,10 @@ function load_game_scene_obj_char_RP()
 
     obj_char_game_scene_char_RP["input_sys_state"] = "none" -- none save load
     obj_char_game_scene_char_RP["input_sys_cache"] = {}
+    obj_char_game_scene_char_RP["input_sys_state_negative_edge"] = "none" -- none save load
+    obj_char_game_scene_char_RP["input_sys_cache_negative_edge"] = {}
     init_input_sys_cache(obj_char_game_scene_char_RP)
+    init_input_sys_cache_negative_edge(obj_char_game_scene_char_RP)
 
         -- hit_hurt_block_animation
     obj_char_game_scene_char_RP["hit_damage"] = 0
@@ -1220,6 +1223,9 @@ function state_machine_char_game_scene_char_RP_input_sys_cache()
                 obj_char["input_sys_cache"]["left"] = false
                 obj_char["input_sys_cache"]["right"] = true
             end
+            if test_input_sys_press_or_hold(input["up"]) then
+                obj_char["input_sys_cache"]["jump"] = true
+            end
             if test_input_sys_press(input["P"]) then
                 obj_char["input_sys_cache"]["P"] = true
                 obj_char["input_sys_cache"]["S"] = false
@@ -1286,12 +1292,100 @@ function state_machine_char_game_scene_char_RP_input_sys_cache()
             end
             obj_char["input_sys_state"] = "none"
             init_input_sys_cache(obj_char)
-            common_update_game_scene_input_direction(obj_char)
         end,
     }
     local this_function = switch[obj_char["input_sys_state"]]
     if this_function then this_function() end
 end
+function state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
+    local obj_char = obj_char_game_scene_char_RP
+    local input = INPUT_SYS_CURRENT_COMMAND_STATE["R"]
+    local switch = {
+        ["none"] = function()
+        end,
+        ["save"] = function()
+            if test_input_sys_releasing(input["left"]) then
+                obj_char["input_sys_cache_negative_edge"]["left"] = true
+                obj_char["input_sys_cache_negative_edge"]["right"] = false
+            elseif test_input_sys_releasing(input["right"]) then
+                obj_char["input_sys_cache_negative_edge"]["left"] = false
+                obj_char["input_sys_cache_negative_edge"]["right"] = true
+            end
+            if test_input_sys_releasing(input["up"]) then
+                obj_char["input_sys_cache_negative_edge"]["jump"] = true
+            end
+            if test_input_sys_releasing(input["P"]) then
+                obj_char["input_sys_cache_negative_edge"]["P"] = true
+                obj_char["input_sys_cache_negative_edge"]["S"] = false
+                obj_char["input_sys_cache_negative_edge"]["K"] = false
+                obj_char["input_sys_cache_negative_edge"]["HS"] = false
+                obj_char["input_sys_cache_negative_edge"]["Launcher"] = false
+            elseif test_input_sys_releasing(input["S"]) then
+                obj_char["input_sys_cache_negative_edge"]["P"] = false
+                obj_char["input_sys_cache_negative_edge"]["S"] = true
+                obj_char["input_sys_cache_negative_edge"]["K"] = false
+                obj_char["input_sys_cache_negative_edge"]["HS"] = false
+                obj_char["input_sys_cache_negative_edge"]["Launcher"] = false
+            elseif test_input_sys_releasing(input["K"]) then
+                obj_char["input_sys_cache_negative_edge"]["P"] = false
+                obj_char["input_sys_cache_negative_edge"]["S"] = false
+                obj_char["input_sys_cache_negative_edge"]["K"] = true
+                obj_char["input_sys_cache_negative_edge"]["HS"] = false
+                obj_char["input_sys_cache_negative_edge"]["Launcher"] = false
+            elseif test_input_sys_releasing(input["HS"]) then
+                obj_char["input_sys_cache_negative_edge"]["P"] = false
+                obj_char["input_sys_cache_negative_edge"]["S"] = false
+                obj_char["input_sys_cache_negative_edge"]["K"] = false
+                obj_char["input_sys_cache_negative_edge"]["HS"] = true
+                obj_char["input_sys_cache_negative_edge"]["Launcher"] = false
+            elseif test_input_sys_releasing(input["Launcher"]) then
+                obj_char["input_sys_cache_negative_edge"]["P"] = false
+                obj_char["input_sys_cache_negative_edge"]["S"] = false
+                obj_char["input_sys_cache_negative_edge"]["K"] = false
+                obj_char["input_sys_cache_negative_edge"]["HS"] = false
+                obj_char["input_sys_cache_negative_edge"]["Launcher"] = true
+            end
+            if test_input_sys_releasing(input["RC"]) then
+                obj_char["input_sys_cache_negative_edge"]["RC"] = true
+            end
+            if test_input_sys_releasing(input["burst"]) then
+                obj_char["input_sys_cache_negative_edge"]["burst"] = true
+            end
+            if test_input_sys_releasing(input["dash"]) then
+                obj_char["input_sys_cache_negative_edge"]["dash"] = true
+            end
+            if test_input_sys_releasing(input["UA"]) then
+                obj_char["input_sys_cache_negative_edge"]["UA"] = true
+            end
+            if test_input_sys_releasing(input["correction_up"]) then
+                obj_char["input_sys_cache_negative_edge"]["correction_up"] = true
+                obj_char["input_sys_cache_negative_edge"]["correction_down"] = false
+            elseif test_input_sys_releasing(input["correction_down"]) then
+                obj_char["input_sys_cache_negative_edge"]["correction_up"] = false
+                obj_char["input_sys_cache_negative_edge"]["correction_down"] = true
+            end
+            if test_input_sys_releasing(input["correction_left"]) then
+                obj_char["input_sys_cache_negative_edge"]["correction_left"] = true
+                obj_char["input_sys_cache_negative_edge"]["correction_right"] = false
+            elseif test_input_sys_releasing(input["correction_right"]) then
+                obj_char["input_sys_cache_negative_edge"]["correction_left"] = false
+                obj_char["input_sys_cache_negative_edge"]["correction_right"] = true
+            end
+        end,
+        ["load"] = function()
+            for i=1,20 do
+                if obj_char["input_sys_cache_negative_edge"][INPUT_SYS_COMMAND_TABLE[i]] then
+                    input[INPUT_SYS_COMMAND_TABLE[i]] = "Releasing"
+                end
+            end
+            obj_char["input_sys_state"] = "none"
+            init_input_sys_cache_negative_edge(obj_char)
+        end,
+    }
+    local this_function = switch[obj_char["input_sys_state"]]
+    if this_function then this_function() end
+end
+
 
 -- 状态机连接门
 function state_gate_game_scene_char_RP_common_ground_to_dash_move(input,obj_char)

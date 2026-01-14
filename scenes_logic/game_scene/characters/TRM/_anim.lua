@@ -4281,7 +4281,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
         if obj_char["velocity"][1]*obj_char[5] < 0 then
             obj_char["velocity"][1] = 0
         end
-        obj_char["velocity"][1] = obj_char["velocity"][1]+25*obj_char[5]
+        obj_char["velocity"][1] = obj_char["velocity"][1]+25*obj_char[5]*0.5
         obj_char["gravity"] = gravity
         obj_char["friction"] = friction
         obj_char["horizontal_velocity_correction"] = 1

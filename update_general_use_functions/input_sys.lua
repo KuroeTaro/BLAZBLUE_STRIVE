@@ -390,10 +390,25 @@ function test_input_sys_press(input)
         return false
     end
 end
+function test_input_sys_releasing(input)
+    if input == "Releasing" then
+        return true
+    else
+        return false
+    end
+end
+
 
 -- 初始化inpt
 function init_input_sys_cache(obj_char)
     for i=1,20 do
         obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] = false
     end
+    obj_char["input_sys_cache"]["jump"] = false
+end
+function init_input_sys_cache_negative_edge(obj_char)
+    for i=1,20 do
+        obj_char["input_sys_cache_negative_edge"][INPUT_SYS_COMMAND_TABLE[i]] = false
+    end
+    obj_char["input_sys_cache_negative_edge"]["jump"] = false
 end

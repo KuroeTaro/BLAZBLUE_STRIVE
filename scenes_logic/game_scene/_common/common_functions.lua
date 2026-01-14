@@ -62,6 +62,13 @@ function common_game_scene_get_input_sys_cache_state_machine(side)
         return state_machine_char_game_scene_char_RP_input_sys_cache
     end
 end
+function common_game_scene_get_input_sys_cache_negative_edge_state_machine(side)
+    if side == "L" then
+        return state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge
+    elseif side == "R" then
+        return state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge
+    end
+end
 
 function common_update_game_scene_input_direction(obj_char)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]

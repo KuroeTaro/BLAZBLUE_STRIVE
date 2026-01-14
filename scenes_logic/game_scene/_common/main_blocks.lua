@@ -98,7 +98,6 @@ function update_game_scene_main_training()
                 state_machine_automatic_player_game_scene(obj_annoucer_game_scene_lets_dance,40)
                 state_machine_char_game_scene_char_LP_input_sys_cache()
                 state_machine_char_game_scene_char_RP_input_sys_cache()
-            
             elseif SCENE_TIMER == 165 then
                 state_machine_automatic_player_game_scene(obj_annoucer_game_scene_lets_dance,40)
                 state_machine_char_game_scene_char_LP_input_sys_cache()
@@ -179,6 +178,8 @@ function update_game_scene_main_training()
             -- 会被game_speed限制
             state_machine_char_game_scene_char_LP_input_sys_cache()
             state_machine_char_game_scene_char_RP_input_sys_cache()
+            state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
+            state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
             common_update_game_scene_input_direction(char_LP)
             common_update_game_scene_input_direction(char_RP)
 
