@@ -1,23 +1,23 @@
 Happy Chaos 					Terumi
-5p 								5a
-5k 								6drive
-cs 								5b
+5p 								5a                              √
+5k 								6drive                          √
+cs 								5b                              √
 fs 								6b
-5dust/Launcher 					6a
-2p 								2a
-2k 								2b
+5dust/Launcher 					6a                              √
+2p 								2a                              √
+2k 								2b                              √
 2s 								2c
-2dust/Launcher 					3c
-6p 								214c
-6k 								22ccc
+2dust/Launcher 					3c                              √
+6p 								214c                            √
+6k 								22ccc                           √
 6s 								6c
 jp								ja
 jk								jb
+j2k
 js								jc
-js								j5drive
-j2s								j5drive(modify)
+j2s								j5drive
 jdust/Launcher					623b(od hit5)
-4_6dust/Launcher					tm311_00 tm602_09
+4_6dust/Launcher			    tm311_00 tm602_09               √
 j4_6dust/Launcher				jbc
 AtTheReady						oroboros				    	H
 AtTheReady 236s					tm610							6sp_S
@@ -25,12 +25,12 @@ Fire							oroboros				    	AtTheReady_]H[/SteadyAim_]H[
 SteadyAim						tm340_04						4sp_S
 CancelAim						tm340_00						AtTheReady_sp_Launcher/SteadyAim_AtTheReady_1_4_sp_Launcher
 Reload							tm340_00		                4sp_p
-Focus							tm340_00
+Focus							tm340_00                        XXXXX
 Curse							44								6sp_P
 Scapegoat						44								6sp_K
 Roll							tm110_00						4sp_K
 DeusExMachina					tm450_00		                5UA
-SuperFocus						tm611_11 tm401_21*				4UA
+SuperFocus						tm611_11 tm401_21*				4UA XXXXX
 
 
 Hazama							Terumi
