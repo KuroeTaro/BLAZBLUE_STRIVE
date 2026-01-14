@@ -1438,7 +1438,25 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_ch
         return true
     end
     -- _2S
+    if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["S"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_2S(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "2S"
+        return true
+    end
     -- _6S
+    if obj_char["direction_input"] == 6 and test_input_sys_press(input["S"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_6S(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "6S"
+        return true
+    end
     -- _cS
     if test_input_sys_press(input["S"]) 
     and math.abs(obj_char["x"]-obj_char_other_side["x"]) < 350 then
@@ -1451,6 +1469,15 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_ch
         return true
     end
     -- _fS
+    if test_input_sys_press(input["S"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_fS(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "fS"
+        return true
+    end
     -- _2Launcher
     if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["Launcher"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
@@ -1558,7 +1585,25 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(inp
         return true
     end
     -- _2S
+    if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press_or_hold(input["S"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_2S(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "2S"
+        return true
+    end
     -- _6S
+    if obj_char["direction_input"] == 6 and test_input_sys_press_or_hold(input["S"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_6S(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "6S"
+        return true
+    end
     -- _cS
     local compare_distance = 305.0
     compare_distance = compare_distance + math.abs(obj_char["velocity"][1]-obj_char_other_side["velocity"][1])*0.9 
@@ -1578,6 +1623,15 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(inp
         return true
     end
     -- _fS
+    if test_input_sys_press_or_hold(input["S"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_fS(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "fS"
+        return true
+    end
     -- _2Launcher
     if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press_or_hold(input["Launcher"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
@@ -2465,6 +2519,9 @@ function state_gate_game_scene_char_LP_from_4_walk(input,obj_char)
         return true
     end
     if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
+        if obj_char["velocity"][1]*obj_char[5] < 0 then
+            obj_char["velocity"][1] = 0
+        end
         return true
     end
     -- _1_2_3_crouch
@@ -3223,8 +3280,58 @@ function state_gate_game_scene_char_LP_from_5K(input,obj_char)
     end
 end
 function state_gate_game_scene_char_LP_from_2S(input,obj_char)
+    -- _PRC
+    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+        return true
+    end
+    -- hit_cancel
+    if obj_char["hit_cancel"] then
+
+    end
+    -- idle_cancel
+    if obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_LP_from_1_2_3_crouch(input,obj_char) then
+            return true
+        end
+    end
+    -- _1_2_3_crouch
+    if common_game_scene_get_character_animation_end(obj_char) then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "1_2_3_crouch"
+        obj_char["f"] = 4
+        character_animator(obj_char,obj_char["current_animation"])
+        return true
+    end
 end
 function state_gate_game_scene_char_LP_from_6S(input,obj_char)
+    -- _PRC
+    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+        return true
+    end
+    -- hit_cancel
+    if obj_char["hit_cancel"] then
+
+    end
+    -- idle_cancel
+    if obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+            return true
+        end
+    end
+    -- _5_stand_idle
+    if common_game_scene_get_character_animation_end(obj_char) then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "5_stand_idle"
+        return true
+    end
 end
 function state_gate_game_scene_char_LP_from_cS(input,obj_char)
     -- _PRC
@@ -3261,6 +3368,30 @@ function state_gate_game_scene_char_LP_from_cS(input,obj_char)
     end
 end
 function state_gate_game_scene_char_LP_from_fS(input,obj_char)
+    -- _PRC
+    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+        return true
+    end
+    -- hit_cancel
+    if obj_char["hit_cancel"] then
+
+    end
+    -- idle_cancel
+    if obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+            return true
+        end
+    end
+    -- _5_stand_idle
+    if common_game_scene_get_character_animation_end(obj_char) then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "5_stand_idle"
+        return true
+    end
 end
 function state_gate_game_scene_char_LP_from_2Launcher(input,obj_char)
     -- _PRC
@@ -3642,22 +3773,22 @@ function draw_game_scene_char_LP_VFX_HUD()
     end
 end
 function draw_game_scene_char_LP_VFX_front()
-    for i = 1, #obj_char_game_scene_char_LP["VFX_hit_front_table"], 1 do -- 反向遍历，便于删除元素
-        local object = obj_char_game_scene_char_LP["VFX_hit_front_table"][i]
-        object["draw"](object)
-    end
     for i = 1, #obj_char_game_scene_char_LP["VFX_front_table"], 1 do -- 反向遍历，便于删除元素
         local object = obj_char_game_scene_char_LP["VFX_front_table"][i]
         object["draw"](object)
     end
-end
-function draw_game_scene_char_LP_VFX_back()
-    for i = 1, #obj_char_game_scene_char_LP["VFX_hit_back_table"], 1 do -- 反向遍历，便于删除元素
-        local object = obj_char_game_scene_char_LP["VFX_hit_back_table"][i]
+    for i = 1, #obj_char_game_scene_char_LP["VFX_hit_front_table"], 1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["VFX_hit_front_table"][i]
         object["draw"](object)
     end
+end
+function draw_game_scene_char_LP_VFX_back()
     for i = 1, #obj_char_game_scene_char_LP["VFX_back_table"], 1 do -- 反向遍历，便于删除元素
         local object = obj_char_game_scene_char_LP["VFX_back_table"][i]
+        object["draw"](object)
+    end
+    for i = 1, #obj_char_game_scene_char_LP["VFX_hit_back_table"], 1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["VFX_hit_back_table"][i]
         object["draw"](object)
     end
 end

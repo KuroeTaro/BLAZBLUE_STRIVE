@@ -2,15 +2,15 @@ Happy Chaos 					Terumi
 5p 								5a                              √
 5k 								6drive                          √
 cs 								5b                              √
-fs 								6b
+fs 								6b                              √
 5dust/Launcher 					6a                              √
 2p 								2a                              √
 2k 								2b                              √
-2s 								2c
+2s 								2c                              √
 2dust/Launcher 					3c                              √
 6p 								214c                            √
 6k 								22ccc                           √
-6s 								6c
+6s 								6c                              √
 jp								ja
 jk								jb
 j2k
