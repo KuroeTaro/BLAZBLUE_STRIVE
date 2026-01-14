@@ -4002,6 +4002,19 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
         obj_char["hurtbox_table"] = {{20,-150,240,300}}
         -- draw_correction
         obj_char[8] = 3
+        -- VFX
+        insert_VFX_game_scene_stage_smoke_horizontal_shot(
+            obj_char,
+            760,
+            -160,
+            0.5,-0.8,0.8,0
+        )
+        insert_VFX_game_scene_stage_smoke_horizontal_shot(
+            obj_char,
+            -550,
+            -160,
+            0.5,0.8,0.8,0
+        )
     end
     res[10] = function()
         -- state & state_number
@@ -4284,13 +4297,20 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
         obj_char["collision_test_ground_height_offset"] = 0 
         -- sub_obj
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
-        obj_char["hit_VFX_insert_function_argument"] = {obj_char,220,-580,0.9,0.75,0.75,0}
+        obj_char["hit_VFX_insert_function_argument"] = {obj_char,270,-650,0.9,0.75,0.75,0}
         obj_char["hit_SFX"] = nil
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,220,-580,1,0.75,0.75,0}
+        obj_char["counter_VFX_insert_function_argument"] = {obj_char,270,-650,1,0.75,0.75,0}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
+        -- VFX
+        insert_VFX_game_scene_stage_smoke_horizontal_shot(
+            obj_char,
+            -420,
+            -160,
+            0.5,0.8,0.8,0
+        )
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {375,510}
@@ -4339,6 +4359,13 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
         obj_char["hurtbox_table"] = {{0,-190,270,380},{80,-410,60,60},{210,-135,150,270},{300,-350,380,190}}
         -- draw_correction
         obj_char[8] = 4
+        -- VFX
+        insert_VFX_game_scene_stage_smoke_horizontal_shot(
+            obj_char,
+            760,
+            -160,
+            0.5,-0.8,0.8,0
+        )
     end
     res[19] = function()
         -- state
@@ -4841,10 +4868,10 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
         obj_char["collision_test_ground_height_offset"] = 0 
         -- sub_obj
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
-        obj_char["hit_VFX_insert_function_argument"] = {obj_char,10,-580,0.6,0.75,0.75,0}
+        obj_char["hit_VFX_insert_function_argument"] = {obj_char,-40,-600,0.6,0.75,0.75,0}
         obj_char["hit_SFX"] = nil
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,10,-580,0.75,0.75,0.75,0}
+        obj_char["counter_VFX_insert_function_argument"] = {obj_char,-40,-600,0.75,0.75,0.75,0}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
@@ -4872,6 +4899,13 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
         obj_char["hurtbox_table"] = {{-65,-190,250,380}}
         -- draw_correction
         obj_char[8] = 2
+        -- VFX
+        insert_VFX_game_scene_stage_smoke_horizontal_shot(
+            obj_char,
+            -550,
+            -160,
+            0.5,0.8,0.8,0
+        )
     end
     res[9] = function()
         -- state & state_number
