@@ -89,10 +89,10 @@ function update_input()
 end
 
 --将手柄按键的值转化为指令表内的数值
-function get_joystick_buttom_command(js,buttom_name)
+function get_joystick_buttom_command(js,button_name)
     local result = nil
     if js ~= nil then
-        result = js:isGamepadDown(buttom_name)
+        result = js:isGamepadDown(button_name)
     else result = false end 
     return result 
 end 
@@ -398,8 +398,7 @@ function test_input_sys_releasing(input)
     end
 end
 
-
--- 初始化inpt
+-- 初始化input_sys_cache
 function init_input_sys_cache(obj_char)
     for i=1,20 do
         obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] = false
@@ -411,4 +410,23 @@ function init_input_sys_cache_negative_edge(obj_char)
         obj_char["input_sys_cache_negative_edge"][INPUT_SYS_COMMAND_TABLE[i]] = false
     end
     obj_char["input_sys_cache_negative_edge"]["jump"] = false
+end
+
+-- 加载后input_sys_cahce重新缓存
+function load_input_sys_cache_manual_release(input,obj_char,button_name)
+    input[button_name] = "Released"
+end
+function load_input_sys_cache_recache(input,obj_char)
+    for i=1,20 do
+        if input[INPUT_SYS_COMMAND_TABLE[i]] == "Pressing" then
+            obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] = true
+        end
+    end
+end
+function load_input_sys_cache_recache_negative_edge(input,obj_char)
+    for i=1,20 do
+        if input[INPUT_SYS_COMMAND_TABLE[i]] == "Releasing" then
+            obj_char["input_sys_cache_negative_edge"][INPUT_SYS_COMMAND_TABLE[i]] = true
+        end
+    end
 end
