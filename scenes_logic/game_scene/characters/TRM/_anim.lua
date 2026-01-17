@@ -6726,8 +6726,8 @@ function load_game_scene_anim_cahr_TRM_jP(obj_char)
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true 
         -- collide
-        obj_char["hitbox_table"] = {{102,-130,230,265},{232,-170,30,185},{276,-185,58,155}}
-        obj_char["hurtbox_table"] = {{0,-140,235,320},{102,-130,260,295},{232,-170,60,215},{276,-185,88,185}}
+        obj_char["hitbox_table"] = {{102,-130,230,265},{232,-170,30,185},{281,-185,68,155}}
+        obj_char["hurtbox_table"] = {{0,-140,235,320},{102,-130,260,295},{232,-170,60,215},{281,-185,98,185}}
         -- SFX
         play_obj_audio(SFX_table["5P"])
         -- draw_correction
@@ -6745,13 +6745,13 @@ function load_game_scene_anim_cahr_TRM_jP(obj_char)
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- collide
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = {{0,-140,235,320},{100,-130,224,260},{227,-168,40,180},{272,-188,50,140}}
+        obj_char["hurtbox_table"] = {{0,-140,235,320},{100,-130,224,260},{232,-170,40,180},{277,-190,50,140}}
         -- draw_correction
         obj_char[8] = 4
     end
     res[8] = function()
         -- collide
-        obj_char["hurtbox_table"] = {{0,-140,235,320},{100,-130,224,260},{227,-168,40,180},{272,-188,50,140}}
+        obj_char["hurtbox_table"] = {{0,-140,235,320},{76,-128,170,220},{176,-163,30,150},{201,-188,20,100}}
         -- draw_correction
         obj_char[8] = 5
     end
