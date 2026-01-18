@@ -324,7 +324,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "4_6Launcher",
                 "4_6Launcher_success",
                 "5Launcher",
-                "jP"
+                "jP",
+                "jK"
             }
             for i, v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_LP[v] = 
@@ -1838,6 +1839,12 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move(input,obj_char)
         return true
     end
     -- _jK
+    if obj_char["y"] < 180 and test_input_sys_press(input["K"]) then
+        obj_char["current_animation"] = load_game_scene_anim_cahr_TRM_jK(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "jK"
+        return true
+    end
     -- _j2K
     -- _jS
     -- _j2S
@@ -1860,6 +1867,12 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,
         return true
     end
     -- _jK
+    if obj_char["y"] < 180 and test_input_sys_press_or_hold(input["K"]) then
+        obj_char["current_animation"] = load_game_scene_anim_cahr_TRM_jK(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "jK"
+        return true
+    end
     -- _j2K
     -- _jS
     -- _j2S
@@ -2906,12 +2919,6 @@ function state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,o
     end
     -- _common_ground_idle_to_move
     if obj_char["idle_cancel"] then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
-            init_character_anim_with(obj_char,obj_char["current_animation"])
-            common_update_game_scene_input_direction(obj_char)
-        end
         -- _common_ground_idle_to_move
         if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
             return true
@@ -2923,7 +2930,7 @@ function state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,o
             return true
         end
         -- 5_stand_idle
-        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+        if state_gate_game_scene_char_LP_from_5_stand_turn(input,obj_char) then
             return true
         end
     end
@@ -3086,7 +3093,7 @@ function state_gate_game_scene_char_LP_from_4dash_air_backdash(input,obj_char)
     -- _common_air_idle_to_move
     if obj_char["idle_cancel"] then
         if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
-            obj_char["velocity"][1] = obj_char["velocity"][1]/math.abs(obj_char["velocity"][1])*15
+            obj_char["velocity"][1] = obj_char["velocity"][1]/math.abs(obj_char["velocity"][1])*math.min(15,math.abs(obj_char["velocity"][1]))
             return true
         end
     end
@@ -3095,8 +3102,8 @@ function state_gate_game_scene_char_LP_from_4dash_air_backdash(input,obj_char)
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,570},-9.0*obj_char[5],nil)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "7_8_9_jump_air"
-        obj_char["f"] = 24
         obj_char["idle_cancel"] = true
+        obj_char["f"] = 8
         character_animator(obj_char,obj_char["current_animation"])
         if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
             return true
@@ -3168,7 +3175,7 @@ function state_gate_game_scene_char_LP_from_6dash_air_dash(input,obj_char)
     -- _common_air_idle_to_move
     if obj_char["idle_cancel"] then
         if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
-            obj_char["velocity"][1] = obj_char["velocity"][1]/math.abs(obj_char["velocity"][1])*35
+            obj_char["velocity"][1] = obj_char["velocity"][1]/math.abs(obj_char["velocity"][1])*math.min(35,math.abs(obj_char["velocity"][1]))
             return true
         end
     end
@@ -3177,7 +3184,7 @@ function state_gate_game_scene_char_LP_from_6dash_air_dash(input,obj_char)
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{300,520},18.0*obj_char[5],nil)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "7_8_9_jump_air"
-        obj_char["f"] = 24
+        obj_char["f"] = 8
         obj_char["idle_cancel"] = true
         character_animator(obj_char,obj_char["current_animation"])
         state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char)
@@ -3670,6 +3677,42 @@ function state_gate_game_scene_char_LP_from_jP(input,obj_char)
     end
 end
 function state_gate_game_scene_char_LP_from_jK(input,obj_char)
+    -- _PRC
+    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+        return true
+    end
+    -- _7_8_9_jump_air_to_stand_idle
+    if test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
+        if state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,obj_char) then
+            return true
+        end
+        return true
+    end
+    -- hit_cancel
+    if obj_char["hit_cancel"] then
+    end
+    -- _7_8_9_jump_air
+    if common_game_scene_get_character_animation_end(obj_char) then
+        if math.abs(obj_char["velocity"][1]) <= 5 then
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,585},obj_char["velocity"][1],obj_char["velocity"][2])
+        elseif obj_char["velocity"][1]*obj_char[5] > 0 then
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{300,520},obj_char["velocity"][1],obj_char["velocity"][2])
+        elseif obj_char["velocity"][1]*obj_char[5] < 0 then
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,570},obj_char["velocity"][1],obj_char["velocity"][2])
+        end
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "7_8_9_jump_air"
+        obj_char["idle_cancel"] = true
+        obj_char["f"] = 16
+        character_animator(obj_char,obj_char["current_animation"])
+        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
+            return true
+        end
+        return true
+    end
 end
 function state_gate_game_scene_char_LP_from_j2K(input,obj_char)
 end

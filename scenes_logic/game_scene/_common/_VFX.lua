@@ -282,8 +282,6 @@ function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r)
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            obj[1] = obj_char["x"] + obj_char[5]*(x)
-            obj[2] = obj_char["y"] + obj_char[6]*(y)
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
         end
@@ -341,8 +339,6 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r)
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            obj[1] = obj_char["x"] + obj_char[5]*(x)
-            obj[2] = obj_char["y"] + obj_char[6]*(y)
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
         end
@@ -519,8 +515,6 @@ function insert_VFX_game_scene_char_blast_ver1_pos_fixed(obj_char,x,y,opacity,sx
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            obj[1] = obj_char["x"] + obj_char[5]*(x) + rot_dx
-            obj[2] = obj_char["y"] + obj_char[6]*(y) + rot_dy
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
         end
@@ -587,8 +581,6 @@ function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,s
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            obj[1] = obj_char["x"] + obj_char[5]*(x)
-            obj[2] = obj_char["y"] + obj_char[6]*(y)
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
         end
@@ -645,8 +637,6 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            obj[1] = obj_char["x"] + obj_char[5]*(x)
-            obj[2] = obj_char["y"] + obj_char[6]*(y)
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
         end
@@ -710,8 +700,6 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            obj[1] = obj_char["x"] + obj_char[5]*(x) + rot_dx
-            obj[2] = obj_char["y"] + obj_char[6]*(y) + rot_dy
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
         end
@@ -762,8 +750,6 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            obj[1] = obj_char["x"] + obj_char[5]*(x) + rot_dx
-            obj[2] = obj_char["y"] + obj_char[6]*(y) + rot_dy
             point_linear_animator(self,self["opacity_point_linear_animation"])
             self["life"] = self["life"] - 1
         end
