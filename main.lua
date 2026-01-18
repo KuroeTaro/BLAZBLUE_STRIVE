@@ -35,7 +35,7 @@ function love.run()
 		LFRST = LFRST + dt
 		GFRST = GFRST + dt
 		-- Call update and draw
-		-- local loop_time = love.timer.getTime()
+		local loop_time = love.timer.getTime()
 		if LFRST >= 1/60 then
 			-- local update_time = love.timer.getTime()
 			if love.update then love.update() end -- will pass 0 if love.timer is disabled
@@ -55,10 +55,10 @@ function love.run()
 			-- print(gc_time)
 			GFRST = GFRST%(1/120)
 		end
-		-- loop_time = love.timer.getTime() - loop_time
-		-- if loop_time > 0.016 then
-		-- 	print(loop_time)
-		-- end
+		loop_time = love.timer.getTime() - loop_time
+		if loop_time > 0.016 then
+			print(loop_time)
+		end
 		DEBUG_LAST_SLEEP = math.max(0,(1/120-GFRST))
 		if love.timer then love.timer.sleep(DEBUG_LAST_SLEEP) end
 	end

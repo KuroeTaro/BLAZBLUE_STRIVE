@@ -43,6 +43,22 @@ function test_char_on_ground(obj)
     box_B_collision = box[2]+box[4]/2+obj["collision_test_ground_height_offset"]
     return box_B_collision >= stage_B_collision
 end
+function test_cS_distance_check(obj_char,max_distance)
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local hurtbox = {}
+    local hurtbox_front_x = 0
+    local hurtbox_edge_x = 0
+    for i=1,#obj_char_other_side["hurtbox_table"] do
+        hurtbox = obj_char_other_side["hurtbox_table"][i]
+        hurtbox_front_x = hurtbox[1] * obj_char_other_side[5] + obj_char_other_side["x"]
+        -- hurtbox_front_x 是hurtbox中心，加减width/2得到前后边界
+        hurtbox_edge_x = hurtbox_front_x + (hurtbox[3]/2) * obj_char_other_side[5]
+        if math.abs(hurtbox_edge_x - obj_char["x"]) < max_distance then
+            return true
+        end
+    end
+    return false
+end
 function pushbox_relocate_y(obj)
     local box = collision_box_to_real_world_box(obj,"pushbox")
     local stage_B_collision = 365
@@ -186,6 +202,8 @@ function projectile_hurtbox_test(hit_obj,hurt_obj)
 end
 function strike_hitbox_clash_test()
 end
+
+function trestcS_distance_check
 
 -- optimal CCD algo but not 100% currect
 -------------------------------------------------------------------------------------------------
