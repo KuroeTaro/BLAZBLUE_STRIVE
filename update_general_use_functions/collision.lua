@@ -203,8 +203,6 @@ end
 function strike_hitbox_clash_test()
 end
 
-function trestcS_distance_check
-
 -- optimal CCD algo but not 100% currect
 -------------------------------------------------------------------------------------------------
     -- function pushbox_dynamic_CCD(obj_A,obj_B,time_enter,time_exit)
