@@ -6940,7 +6940,7 @@ function load_game_scene_anim_cahr_TRM_jK(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- game_speed
-        obj_char["hit_hurt_blockstop_countdown"] = 12
+        obj_char["hit_hurt_blockstop_countdown"] = 13
         -- collide
         obj_char["pushbox"] = {0,-100,121.5,200}
         obj_char["pushbox_other_side_char_active"] = true

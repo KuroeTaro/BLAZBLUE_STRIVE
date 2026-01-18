@@ -1293,6 +1293,7 @@ function state_machine_char_game_scene_char_RP_input_sys_cache()
                     input[INPUT_SYS_COMMAND_TABLE[i]] = "Pressing"
                 end
             end
+            common_update_game_scene_input_direction(obj_char)
             obj_char["input_sys_state"] = "none"
             init_input_sys_cache(obj_char)
         end,
@@ -2006,6 +2007,8 @@ function state_gate_game_scene_char_RP_from_hurt(input,obj_char)
     -- animation_end
     if common_game_scene_get_character_animation_end(obj_char) then
         obj_char["input_sys_state"] = "load" -- none save load
+        -- something could use for combo HUD
+        print("hurt animation end")
         state_machine_char_game_scene_char_RP_input_sys_cache()
         -- 5_stand_idle
         if obj_char["height_state"] == "stand" then
