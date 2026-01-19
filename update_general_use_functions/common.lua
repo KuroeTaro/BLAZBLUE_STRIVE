@@ -12,6 +12,8 @@ function sprite_sheet_load(json_file, image)
             image:getDimensions()
         }
     end
+    sprite_batch:add(0,0)
+    love.graphics.draw(sprite_batch)
     return {
         sprite_batch = sprite_batch,
         frames = frames

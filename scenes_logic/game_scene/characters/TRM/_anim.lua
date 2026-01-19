@@ -796,7 +796,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         obj_char["recovery_frame"] = 0
         obj_char["frame_adv"] = 0
 
-        obj_char["current_animation_length"] = 17
+        obj_char["current_animation_length"] = 8
 
         obj_char["idle_cancel"] = false
 
@@ -823,7 +823,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         obj_char["pushbox"] = {0,-185,121.5,370}
         obj_char["pushbox_other_side_char_active"] = true
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = {{0,-215,175,430}}
+        obj_char["hurtbox_table"] = {{0,-190,180,380}}
         obj_char["collision_test_ground_height_offset"] = 0
         -- draw_correction
         obj_char[8] = 0
@@ -835,7 +835,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
     end
-    res[3] = function()
+    res[5] = function()
         -- state
         obj_char["move_state"] = "none" -- none startup active recovery
         obj_char["idle_cancel"] = true
@@ -843,31 +843,11 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- collide
-        obj_char["hurtbox_table"] = {{0,-190,180,380}}
+        obj_char["hurtbox_table"] = {{0,-215,170,430},{15,-455,100,50}}
         -- draw_correction
         obj_char[8] = 1
     end
-    res[6] = function()
-        -- draw_correction
-        obj_char[8] = 2
-    end
-    res[10] = function()
-        -- collide
-        obj_char["hurtbox_table"] = {{0,-215,175,430}}
-        -- draw_correction
-        obj_char[8] = 3
-    end
-    res[13] = function()
-        -- draw_correction
-        obj_char[8] = 4
-    end
-    res[15] = function()
-        -- collide
-        obj_char["hurtbox_table"] = {{0,-215,170,430},{15,-455,100,50}}
-        -- draw_correction
-        obj_char[8] = 5
-    end
-    res[17] = function()
+    res[8] = function()
         -- animation end
     end
     return res
@@ -909,6 +889,12 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet_stat
         obj_char["velocity_cache"][1] = horizontal_velocity
     end
     local res = {}
+    local width_table = {200,200,230,260,270,235,200}
+    width_table[0] = 200
+    if sprite_sheet_state == "8_jump" then
+        width_table = {200,200,200,200,200,200,200}
+        width_table[0] = 200
+    end
     local function update_maintain_horizontal_velocity()
         -- state_number
         obj_char["velocity"][1] = obj_char["velocity_cache"][1]
@@ -918,6 +904,8 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet_stat
         obj_char["velocity"][1] = obj_char["velocity_cache"][1]
         if obj_char["velocity"][2] >= - 16.0 and obj_char["f"] <= 8 then
             obj_char["f"] = 9
+            update_maintain_horizontal_velocity()
+            obj_char["hurtbox_table"] = {{0,-150,width_table[2],320}}
             obj_char[8] = 2
         end
     end
@@ -926,12 +914,6 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet_stat
     end
     for i=0,8 do
         res[i] = function() update_before_falling() end
-    end
-    local width_table = {200,200,230,260,270,235,200}
-    width_table[0] = 200
-    if sprite_sheet_state == "8_jump" then
-        width_table = {200,200,200,200,200,200,200}
-        width_table[0] = 200
     end
     res[0] = function()
         -- 上升阶段开始

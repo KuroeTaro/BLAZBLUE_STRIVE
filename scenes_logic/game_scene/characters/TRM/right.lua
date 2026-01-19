@@ -1556,7 +1556,7 @@ function state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_ch
         return true
     end
     -- _cS
-    if test_input_sys_press(input["S"]) and test_cS_distance_check(obj_char,390) then
+    if test_input_sys_press(input["S"]) and test_cS_distance_check(obj_char,350) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -1702,7 +1702,7 @@ function state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(inp
         return true
     end
     -- _cS
-    if test_input_sys_press_or_hold(input["S"]) and test_cS_distance_check(obj_char,390) then
+    if test_input_sys_press_or_hold(input["S"]) and test_cS_distance_check(obj_char,350) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -2062,7 +2062,7 @@ function state_gate_game_scene_char_RP_from_throw_success(input,obj_char)
     if common_game_scene_get_character_animation_end(obj_char) then
         -- air
         if obj_char["height_state"] == "air" then
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,585},0,0)
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},0,0)
             init_character_anim_with(obj_char,obj_char["current_animation"])
             obj_char["state"] = "7_8_9_jump_air"
             -- _common_air_to_move
@@ -2174,7 +2174,7 @@ function state_gate_game_scene_char_RP_from_throw_tech(input,obj_char)
         state_machine_char_game_scene_char_RP_input_sys_cache()
         -- air
         if obj_char["height_state"] == "air" then
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,585},0,0)
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},0,0)
             init_character_anim_with(obj_char,obj_char["current_animation"])
             obj_char["state"] = "7_8_9_jump_air"
             -- _common_air_to_move
@@ -2991,13 +2991,13 @@ function state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char)
         -- velocity_cache
         if obj_char["direction_input"] == 7 then
             obj_char["velocity_cache"][1] = obj_char["velocity_cache"][1]*0.1 - obj_char[5]*11.5
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,570},nil,-45.0)
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,470},nil,-45.0)
         elseif obj_char["direction_input"] == 8 then
             obj_char["velocity_cache"][1] = obj_char["velocity_cache"][1]*0.25
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,585},0,-45.0)
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},0,-45.0)
         elseif obj_char["direction_input"] == 9 then
             obj_char["velocity_cache"][1] = obj_char["velocity_cache"][1]*0.1 + obj_char[5]*11.5
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{300,520},nil,-45.0)
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{320,430},nil,-45.0)
         end
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "7_8_9_jump_air"
@@ -3024,17 +3024,17 @@ function state_gate_game_scene_char_RP_from_7_8_9_pre_jump(input,obj_char)
         if obj_char["direction_input_cache"] == 7 then
             if (obj_char[5]*obj_char["velocity_cache"][1] <= 0) then
                 obj_char["velocity_cache"][1] = obj_char["velocity_cache"][1]*0.6 - obj_char[5]*2.75
-                obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,570},nil,-55.0*multiplyer)
+                obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,470},nil,-55.0*multiplyer)
             else
                 obj_char["velocity_cache"][1] = obj_char["velocity_cache"][1]*0.6 - obj_char[5]*2.75
-                obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,585},nil,-55.0*multiplyer)
+                obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},nil,-55.0*multiplyer)
             end
         elseif obj_char["direction_input_cache"] == 8 then
             obj_char["velocity_cache"][1] = obj_char["velocity_cache"][1]*0.25
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,585},nil,-55.0*multiplyer)
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},nil,-55.0*multiplyer)
         elseif obj_char["direction_input_cache"] == 9 then
             obj_char["velocity_cache"][1] = obj_char["velocity_cache"][1]*0.6 + obj_char[5]*2.75
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{300,520},nil,-55.0*multiplyer)
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{320,430},nil,-55.0*multiplyer)
         end
         obj_char["velocity_cache"][1] = obj_char["velocity_cache"][1]*multiplyer
         init_character_anim_with(obj_char,obj_char["current_animation"])
@@ -3102,7 +3102,7 @@ function state_gate_game_scene_char_RP_from_4dash_air_backdash(input,obj_char)
     end
     -- _7_8_9_jump_air
     if common_game_scene_get_character_animation_end(obj_char) then
-        obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,570},-9.0*obj_char[5],nil)
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,470},-9.0*obj_char[5],nil)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "7_8_9_jump_air"
         obj_char["idle_cancel"] = true
@@ -3184,7 +3184,7 @@ function state_gate_game_scene_char_RP_from_6dash_air_dash(input,obj_char)
     end
     -- _7_8_9_jump_air
     if common_game_scene_get_character_animation_end(obj_char) then
-        obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{300,520},18.0*obj_char[5],nil)
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{320,430},18.0*obj_char[5],nil)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "7_8_9_jump_air"
         obj_char["f"] = 8
@@ -3662,11 +3662,11 @@ function state_gate_game_scene_char_RP_from_jP(input,obj_char)
     -- _7_8_9_jump_air
     if common_game_scene_get_character_animation_end(obj_char) then
         if math.abs(obj_char["velocity"][1]) <= 5 then
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,585},obj_char["velocity"][1],obj_char["velocity"][2])
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
         elseif obj_char["velocity"][1]*obj_char[5] > 0 then
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{300,520},obj_char["velocity"][1],obj_char["velocity"][2])
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{320,430},obj_char["velocity"][1],obj_char["velocity"][2])
         elseif obj_char["velocity"][1]*obj_char[5] < 0 then
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,570},obj_char["velocity"][1],obj_char["velocity"][2])
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,470},obj_char["velocity"][1],obj_char["velocity"][2])
         end
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "7_8_9_jump_air"
@@ -3700,11 +3700,11 @@ function state_gate_game_scene_char_RP_from_jK(input,obj_char)
     -- _7_8_9_jump_air
     if common_game_scene_get_character_animation_end(obj_char) then
         if math.abs(obj_char["velocity"][1]) <= 5 then
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,585},obj_char["velocity"][1],obj_char["velocity"][2])
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
         elseif obj_char["velocity"][1]*obj_char[5] > 0 then
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{300,520},obj_char["velocity"][1],obj_char["velocity"][2])
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{320,430},obj_char["velocity"][1],obj_char["velocity"][2])
         elseif obj_char["velocity"][1]*obj_char[5] < 0 then
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,570},obj_char["velocity"][1],obj_char["velocity"][2])
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,470},obj_char["velocity"][1],obj_char["velocity"][2])
         end
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "7_8_9_jump_air"
