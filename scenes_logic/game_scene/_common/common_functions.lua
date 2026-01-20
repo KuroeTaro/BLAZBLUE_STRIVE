@@ -100,6 +100,9 @@ function common_game_scene_get_character_facing_currect(obj_char)
     end
     return true
 end
+function common_game_scene_get_character_hurt_direction(obj_char,obj_char_other_side,hurt_horizontal_velocity)
+    return hurt_horizontal_velocity*((obj_char_other_side["x"] - obj_char["x"])/math.abs(obj_char_other_side["x"] - obj_char["x"]))
+end
 function common_game_scene_char_enclose_heat_gain(obj_char)
 end
 
@@ -800,7 +803,7 @@ function common_game_scene_char_apply_hurt_velocity(
     hurt_vertical_gravity,
     hurt_vertical_gravity_correction
 )
-    local final_hurt_horizontal_velocity = obj_char[5]*hurt_horizontal_velocity
+    local final_hurt_horizontal_velocity = common_game_scene_get_character_hurt_direction(obj_char,obj_char_other_side,hurt_horizontal_velocity)
     obj_char_other_side["gravity"] = hurt_vertical_gravity
     obj_char_other_side["gravity_correction"] 
     = obj_char_other_side["gravity_correction"]*hurt_vertical_gravity_correction

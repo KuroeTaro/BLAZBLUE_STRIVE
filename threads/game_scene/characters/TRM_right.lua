@@ -86,7 +86,8 @@ local load_attack_name_table = {
     "4_6Launcher_success",
     "5Launcher",
     "jP",
-    "jK"
+    "jK",
+    "jS"
 }
 for i, v in ipairs(load_attack_name_table) do
     thread_data[v] = compress_module("asset/game_scene/characters/TRM/_character/ATTACK/TRM_"..v..".dds")
@@ -108,8 +109,10 @@ local load_whiff_VFX_name_table = {
     -- "4_6Launcher",
     -- "4_6Launcher_success",
     "5Launcher",
-    "5Launcher_glow"
-    -- "jP"
+    "5Launcher_glow",
+    -- "jP",
+    -- "jK",
+    "jS"
 }
 for i, v in ipairs(load_whiff_VFX_name_table) do
     thread_data[v.."_whiff_VFX"] = compress_module("asset/game_scene/VFX/whiff_VFX/TRM/".."TRM_"..v..".dds")
