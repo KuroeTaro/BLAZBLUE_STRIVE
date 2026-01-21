@@ -10,11 +10,16 @@ function love.run()
 	-- We don't want the first frame's dt to include time taken by love.load.
 	if love.timer then love.timer.step() end
 
-	local dt = 0
-	local LFRST = 1/60  --logic frame rate stabilization timer
-	local GFRST = 1/120 --graphic frame rate stabilization timer
-	-- global_counter = 0
+	local UPDATE_RATE = 60
+	local DRAW_RATE = 120
 
+	local dt = 0
+	local LFRST = 1/UPDATE_RATE  --logic frame rate stabilization timer
+	local GFRST = 1/DRAW_RATE --graphic frame rate stabilization timer
+	-- global_counter = 0
+	local loop_time = love.timer.getTime()
+	local update_time = love.timer.getTime()
+	local draw_time = love.timer.getTime()
 	-- Main loop time.
 	return function()
 		-- Process events.
@@ -34,32 +39,36 @@ function love.run()
 		dt = love.timer.step()
 		LFRST = LFRST + dt
 		GFRST = GFRST + dt
+		loop_time = love.timer.getTime()
 		-- Call update and draw
-		local loop_time = love.timer.getTime()
-		if LFRST >= 1/60 then
-			-- local update_time = love.timer.getTime()
+		if LFRST >= 1/UPDATE_RATE then
+			update_time = love.timer.getTime()
 			if love.update then love.update() end -- will pass 0 if love.timer is disabled
-			-- update_time = love.timer.getTime() - update_time
+			update_time = love.timer.getTime() - update_time
 			-- print(update_time)
-			LFRST = LFRST%(1/60)
+			LFRST = LFRST%(1/UPDATE_RATE)
 		end
-		if GFRST >= 1/120 then
-			-- local draw_time = love.timer.getTime()
+		if GFRST >= 1/DRAW_RATE then
+			draw_time = love.timer.getTime()
 			if love.draw then love.draw() end
-			-- draw_time = love.timer.getTime() - draw_time
-			-- print(draw_time)
+			draw_time = love.timer.getTime() - draw_time
+			-- if draw_time > 0.016 then
+			-- 	print(draw_time)
+			-- end
 			love.graphics.present()
 			-- local gc_time = love.timer.getTime()
 			-- collectgarbage()
 			-- gc_time = love.timer.getTime() - gc_time
-			-- print(gc_time)
-			GFRST = GFRST%(1/120)
+			-- if gc_time > 0.016 then
+			-- 	print(gc_time)
+			-- end
+			GFRST = GFRST%(1/DRAW_RATE)
 		end
 		loop_time = love.timer.getTime() - loop_time
 		if loop_time > 0.016 then
-			print(loop_time)
+			print(update_time,draw_time)
 		end
-		DEBUG_LAST_SLEEP = math.max(0,(1/120-GFRST))
+		DEBUG_LAST_SLEEP = math.max(0,(1/DRAW_RATE-GFRST))
 		if love.timer then love.timer.sleep(DEBUG_LAST_SLEEP) end
 	end
 end
