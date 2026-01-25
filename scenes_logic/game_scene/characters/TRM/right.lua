@@ -3119,7 +3119,7 @@ function state_gate_game_scene_char_RP_from_4dash_air_backdash(input,obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "7_8_9_jump_air"
         obj_char["idle_cancel"] = true
-        obj_char["f"] = 8
+        obj_char["f"] = 24
         character_animator(obj_char,obj_char["current_animation"])
         if state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char) then
             return true
@@ -3200,7 +3200,7 @@ function state_gate_game_scene_char_RP_from_6dash_air_dash(input,obj_char)
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{320,430},18.0*obj_char[5],nil)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "7_8_9_jump_air"
-        obj_char["f"] = 8
+        obj_char["f"] = 24
         obj_char["idle_cancel"] = true
         character_animator(obj_char,obj_char["current_animation"])
         state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char)
@@ -3684,7 +3684,7 @@ function state_gate_game_scene_char_RP_from_jP(input,obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "7_8_9_jump_air"
         obj_char["idle_cancel"] = true
-        obj_char["f"] = 16
+        obj_char["f"] = 24
         character_animator(obj_char,obj_char["current_animation"])
         if state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char) then
             return true
@@ -3722,7 +3722,7 @@ function state_gate_game_scene_char_RP_from_jK(input,obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "7_8_9_jump_air"
         obj_char["idle_cancel"] = true
-        obj_char["f"] = 16
+        obj_char["f"] = 24
         character_animator(obj_char,obj_char["current_animation"])
         if state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char) then
             return true
@@ -3762,15 +3762,13 @@ function state_gate_game_scene_char_RP_from_jS(input,obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "7_8_9_jump_air"
         obj_char["idle_cancel"] = true
-        obj_char["f"] = 16
+        obj_char["f"] = 24
         character_animator(obj_char,obj_char["current_animation"])
         if state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char) then
             return true
         end
         return true
     end
-end
-function state_gate_game_scene_char_RP_from_j2S(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_j4_6Launcher(input,obj_char)
 end
