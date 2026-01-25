@@ -952,7 +952,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet_stat
         obj_char["pushbox_other_side_char_active"] = true
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-180,width_table[0],380}}
-        obj_char["collision_test_ground_height_offset"] = 240
+        obj_char["collision_test_ground_height_offset"] = 180
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = anchor_pos
@@ -1241,7 +1241,7 @@ function load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
         obj_char["pushbox_other_side_char_active"] = true
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {}
-        obj_char["collision_test_ground_height_offset"] = 240
+        obj_char["collision_test_ground_height_offset"] = 180
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {275,505}
@@ -1416,7 +1416,7 @@ function load_game_scene_anim_char_TRM_4dash_air_backdash(input,obj_char)
         obj_char["pushbox_other_side_char_active"] = true
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-125,260,270}}
-        obj_char["collision_test_ground_height_offset"] = 240
+        obj_char["collision_test_ground_height_offset"] = 180
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {242,285}
@@ -1729,7 +1729,7 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(input,obj_char)
         obj_char["pushbox_other_side_char_active"] = true
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-125,260,270}}
-        obj_char["collision_test_ground_height_offset"] = 240
+        obj_char["collision_test_ground_height_offset"] = 180
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {350,283}
@@ -1770,18 +1770,13 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(input,obj_char)
         end
     end
     res[12] = function()
+        -- state
+        obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
+        obj_char["move_state"] = "none" -- none startup active recovery
         -- state_number
         obj_char["velocity"][1] = (90-(12-12)*6)*obj_char[5]
         obj_char["velocity"][2] = 0
         obj_char["gravity"] = 0
-        -- state
-        obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
-        obj_char["move_state"] = "none" -- none startup active recovery
-
-        obj_char["idle_cancel"] = true
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
-        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- collide
         obj_char["hurtbox_table"] = {{0,-125,260,270},{-65,-50,260,120}}
         -- draw_correction
@@ -1796,8 +1791,12 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(input,obj_char)
         obj_char[8] = 4
     end
     res[18] = function()
-        -- state_number
+        -- state & state_number
+        obj_char["idle_cancel"] = true
         obj_char["velocity"][1] = (90-(18-12)*6)*obj_char[5]
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- draw_correction
         obj_char[8] = 5
     end
@@ -2536,9 +2535,6 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
     end
     res[8] = function()
         -- state & state_number
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true
         -- collide
@@ -2587,15 +2583,16 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         obj_char["hurtbox_table"] = {{0,-205,180,410}}
     end
     res[36] = function()
-        -- draw_correction
-        obj_char[8] = 10
-        -- collide
-        obj_char["hurtbox_table"] = {{0,-215,170,430}}
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
         init_input_sys_cache(obj_char)
+        -- collide
+        obj_char["hurtbox_table"] = {{0,-215,170,430}}
+        -- draw_correction
+        obj_char[8] = 10
     end
     res[38] = function()
+        -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
         obj_char["hit_guard_type_state"] = "none" -- none all low high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
@@ -3172,6 +3169,7 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
         obj_char[8] = 6
     end
     res[22] = function()
+        -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
         obj_char["hit_guard_type_state"] = "none" -- none all low high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
@@ -3410,9 +3408,6 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
     end
     res[15] = function()
         -- state & state_number
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true 
         obj_char["velocity"] = {obj_char[5]*(20+velocity_cache),0}
@@ -3462,6 +3457,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         obj_char[8] = 8
     end
     res[36] = function()
+        -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
         obj_char["hit_guard_type_state"] = "none" -- none all low high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
@@ -3731,6 +3727,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         )
     end
     res[20] = function()
+        -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
         obj_char["hit_guard_type_state"] = "none" -- none all low high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
@@ -4280,9 +4277,6 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
     end
     res[11] = function()
         -- state & state_number
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true 
         -- collide
@@ -4905,13 +4899,13 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
         obj_char[8] = 8
     end
     res[32] = function()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char)
         -- collide
         obj_char["hurtbox_table"] = {{0,-215,170,430},{-30,-455,100,50}}
         -- draw_correction
         obj_char[8] = 9
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "save" -- none save load
-        init_input_sys_cache(obj_char)
     end
     res[36] = function()
         -- collide
@@ -6677,7 +6671,7 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
         obj_char["pushbox_other_side_char_active"] = true
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-130,270,280}}
-        obj_char["collision_test_ground_height_offset"] = 240
+        obj_char["collision_test_ground_height_offset"] = 180
         -- sub_obj
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver0
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,55,-255,0.8,0.75,0.75,0}
@@ -6929,7 +6923,7 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
         obj_char["pushbox_other_side_char_active"] = true
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-150,235,320}}
-        obj_char["collision_test_ground_height_offset"] = 240
+        obj_char["collision_test_ground_height_offset"] = 180
         -- sub_obj
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver0
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,205,-400,0.8,0.75,0.75,0}
@@ -7173,7 +7167,7 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
         obj_char["pushbox_other_side_char_active"] = true
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-140,260,300}}
-        obj_char["collision_test_ground_height_offset"] = 240
+        obj_char["collision_test_ground_height_offset"] = 180
         -- sub_obj
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,10,-315,0.6,1,1,0}

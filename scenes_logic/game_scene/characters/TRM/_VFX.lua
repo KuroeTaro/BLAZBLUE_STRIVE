@@ -221,6 +221,11 @@ function insert_VFX_game_scene_char_TRM_2S_whiff(obj_char)
         -- self[2] = obj_char["y"] + obj_char[6]*(840)
         self[1] = obj_char["x"] + obj_char[5]*(166)
         self[2] = obj_char["y"] + obj_char[6]*(-247)
+        self[3] = obj_char[3]
+        self[4] = 1
+        self[5] = obj_char[5]
+        self[6] = obj_char[6]
+        self[7] = obj_char[7]
         if obj_char["state"] == "2S" then
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
@@ -280,6 +285,11 @@ function insert_VFX_game_scene_char_TRM_6S_whiff(obj_char)
     obj["update"] = function(self)
         self[1] = obj_char["x"] + obj_char[5]*(-430)
         self[2] = obj_char["y"] + obj_char[6]*(-520)
+        self[3] = obj_char[3]
+        self[4] = 1
+        self[5] = obj_char[5]
+        self[6] = obj_char[6]
+        self[7] = obj_char[7]
         if obj_char["state"] == "6S" then
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
@@ -341,6 +351,11 @@ function insert_VFX_game_scene_char_TRM_cS_whiff(obj_char)
         -- self[2] = obj_char["y"] + obj_char[6]*(840)
         self[1] = obj_char["x"] + obj_char[5]*(140)
         self[2] = obj_char["y"] + obj_char[6]*(-440)
+        self[3] = obj_char[3]
+        self[4] = 1
+        self[5] = obj_char[5]
+        self[6] = obj_char[6]
+        self[7] = obj_char[7]
         if obj_char["state"] == "cS" then
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
@@ -398,6 +413,11 @@ function insert_VFX_game_scene_char_TRM_5Launcher(obj_char)
         -- self[2] = obj_char["y"] + obj_char[6]*(840)
         self[1] = obj_char["x"] + obj_char[5]*(-285)
         self[2] = obj_char["y"] + obj_char[6]*(-535)
+        self[3] = obj_char[3]
+        self[4] = 1
+        self[5] = obj_char[5]
+        self[6] = obj_char[6]
+        self[7] = obj_char[7]
         if obj_char["state"] == "5Launcher" then
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
@@ -454,6 +474,11 @@ function insert_VFX_game_scene_char_TRM_5Launcher_glow(obj_char)
         -- self[2] = obj_char["y"] + obj_char[6]*(840)
         self[1] = obj_char["x"] + obj_char[5]*(-380)
         self[2] = obj_char["y"] + obj_char[6]*(-636)
+        self[3] = obj_char[3]
+        self[4] = 1
+        self[5] = obj_char[5]
+        self[6] = obj_char[6]
+        self[7] = obj_char[7]
         if obj_char["state"] == "5Launcher" then
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
@@ -511,8 +536,13 @@ function insert_VFX_game_scene_char_TRM_jS_whiff(obj_char)
     init_frame_anim_with(obj,obj["animation"])
     obj["update"] = function(self)
         if obj["FCT"][8] < 8 then
-            obj[1] = obj_char["x"] + obj_char[5]*(-130)
-            obj[2] = obj_char["y"] + obj_char[6]*(-400)
+            self[1] = obj_char["x"] + obj_char[5]*(-130)
+            self[2] = obj_char["y"] + obj_char[6]*(-400)
+            self[3] = obj_char[3]
+            self[4] = 1
+            self[5] = obj_char[5]
+            self[6] = obj_char[6]
+            self[7] = obj_char[7]
         end
         if obj_char["state"] == "jS" then
             frame_animator(self,self["animation"])
