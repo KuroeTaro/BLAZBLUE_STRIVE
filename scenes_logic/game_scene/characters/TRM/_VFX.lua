@@ -513,8 +513,8 @@ function insert_VFX_game_scene_char_TRM_jS_whiff(obj_char)
     end 
 
     obj["life"] = 13
-    obj[1] = obj_char["x"] + obj_char[5]*(-130)
-    obj[2] = obj_char["y"] + obj_char[6]*(-400)
+    obj[1] = obj_char["x"] + obj_char[5]*(-160)
+    obj[2] = obj_char["y"] + obj_char[6]*(-370)
     obj[3] = obj_char[3]
     obj[4] = 1
     obj[5] = obj_char[5]
@@ -526,8 +526,8 @@ function insert_VFX_game_scene_char_TRM_jS_whiff(obj_char)
     obj["LCD"] = {0,0,0,0,0,0,0,0}
     obj["animation"] = {}
     obj["animation"][0] = 0
-    obj["animation"][3] = 1
-    obj["animation"][7] = 2
+    obj["animation"][4] = 1
+    obj["animation"][8] = 2
     obj["animation"][10] = 3
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 13
@@ -535,11 +535,19 @@ function insert_VFX_game_scene_char_TRM_jS_whiff(obj_char)
     obj["animation"]["fix_type"] = true
     init_frame_anim_with(obj,obj["animation"])
     obj["update"] = function(self)
-        if obj["FCT"][8] < 8 then
-            self[1] = obj_char["x"] + obj_char[5]*(-130)
-            self[2] = obj_char["y"] + obj_char[6]*(-400)
+        if obj["FCT"][8] < 7 then
+            self[1] = obj_char["x"] + obj_char[5]*(-160)
+            self[2] = obj_char["y"] + obj_char[6]*(-370)
             self[3] = obj_char[3]
             self[4] = 1
+            self[5] = obj_char[5]
+            self[6] = obj_char[6]
+            self[7] = obj_char[7]
+        else
+            self[1] = obj_char["x"] + obj_char[5]*(-60)
+            self[2] = obj_char["y"] + obj_char[6]*(-250)
+            self[3] = obj_char[3]
+            self[4] = 0.75
             self[5] = obj_char[5]
             self[6] = obj_char[6]
             self[7] = obj_char[7]
