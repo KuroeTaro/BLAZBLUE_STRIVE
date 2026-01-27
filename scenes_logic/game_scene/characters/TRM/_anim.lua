@@ -4217,8 +4217,8 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
         obj_char["input_sys_state"] = "save" -- none save load
         init_input_sys_cache(obj_char)
         -- state_number
-        if obj_char["velocity"][1]*obj_char[5] < 0 then
-            obj_char["velocity"][1] = 0
+        if obj_char["velocity"][1]*obj_char[5] < 9.0 then
+            obj_char["velocity"][1] = 9.0*obj_char[5]
         end
         obj_char["velocity"][1] = obj_char["velocity"][1]+25*obj_char[5]*0.5
         obj_char["gravity"] = gravity
@@ -4771,10 +4771,10 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
         obj_char["input_sys_state"] = "save" -- none save load
         init_input_sys_cache(obj_char)
         -- state_number
-        if obj_char["velocity"][1]*obj_char[5] < 0 then
-            obj_char["velocity"][1] = 0
+        if obj_char["velocity"][1]*obj_char[5] < 9.0 then
+            obj_char["velocity"][1] = 9.0*obj_char[5]
         end
-        obj_char["velocity"][1] = obj_char["velocity"][1]+55*obj_char[5]
+        obj_char["velocity"][1] = obj_char["velocity"][1]+46.0*obj_char[5]
         obj_char["gravity"] = gravity
         obj_char["friction"] = friction
         obj_char["horizontal_velocity_correction"] = 1

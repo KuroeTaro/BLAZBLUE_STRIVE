@@ -236,6 +236,8 @@ function common_game_scene_strike_hit_function(obj_char)
             hit_VFX_insert_function_argument[7]
         )
     end
+    -- debug
+    hit_side_obj_char["active_frame"] = hit_side_obj_char["active_frame"] + 1
 end
 function common_game_scene_strike_hurt_function(obj_char)
     -- idle unblock punish counter GP parry

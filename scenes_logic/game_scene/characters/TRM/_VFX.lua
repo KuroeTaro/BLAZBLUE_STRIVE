@@ -475,7 +475,7 @@ function insert_VFX_game_scene_char_TRM_5Launcher_glow(obj_char)
         self[1] = obj_char["x"] + obj_char[5]*(-380)
         self[2] = obj_char["y"] + obj_char[6]*(-636)
         self[3] = obj_char[3]
-        self[4] = 1
+        self[4] = 0.65
         self[5] = obj_char[5]
         self[6] = obj_char[6]
         self[7] = obj_char[7]
@@ -536,18 +536,18 @@ function insert_VFX_game_scene_char_TRM_jS_whiff(obj_char)
     init_frame_anim_with(obj,obj["animation"])
     obj["update"] = function(self)
         if obj["FCT"][8] < 7 and obj_char["state"] == "jS" then
-            self[1] = obj_char["x"] + obj_char[5]*(-160)
-            self[2] = obj_char["y"] + obj_char[6]*(-370)
+            self[1] = obj_char["x"] + obj_char["velocity"][1] + obj_char[5]*(-120)
+            self[2] = obj_char["y"] + obj_char["velocity"][2] +obj_char[6]*(-370)
             self[3] = obj_char[3]
             self[4] = 1
             self[5] = obj_char[5]
             self[6] = obj_char[6]
             self[7] = obj_char[7]
         elseif obj_char["state"] == "jS" then
-            self[1] = obj_char["x"] + obj_char[5]*(-60)
-            self[2] = obj_char["y"] + obj_char[6]*(-250)
+            self[1] = obj_char["x"] + obj_char["velocity"][1] + obj_char[5]*(-120)
+            self[2] = obj_char["y"] + obj_char["velocity"][2] + obj_char[6]*(-370)
             self[3] = obj_char[3]
-            self[4] = 1
+            self[4] = 0.75
             self[5] = obj_char[5]
             self[6] = obj_char[6]
             self[7] = obj_char[7]
