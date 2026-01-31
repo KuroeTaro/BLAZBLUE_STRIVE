@@ -7297,7 +7297,7 @@ end
 function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
     local res = {}
     local friction = 4
-    local gravity = 2.5
+    local gravity = 2.575
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
@@ -7432,7 +7432,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- game_speed
-        obj_char["hit_hurt_blockstop_countdown"] = 14
+        obj_char["hit_hurt_blockstop_countdown"] = 17
         -- collide
         obj_char["pushbox"] = {0,-100,121.5,200}
         obj_char["pushbox_other_side_char_active"] = true
