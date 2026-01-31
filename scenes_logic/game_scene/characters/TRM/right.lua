@@ -2231,7 +2231,7 @@ end
 
 function state_gate_game_scene_char_RP_from_hitstop(input,obj_char)
     -- _[any_sp_hit_state_saved_in_state_cache]
-    if obj_char["hit_hurt_blockstop_countdown"] <= 5 then
+    if obj_char["hit_hurt_blockstop_countdown"] <= 6 then
         if test_input_sys_press_or_hold(input["down"]) then
             obj_char["input_sys_cache"]["down"] = true
         end
