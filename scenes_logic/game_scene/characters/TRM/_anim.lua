@@ -1115,7 +1115,7 @@ function load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
         and obj_char["velocity"][1] <= 1.0
         and obj_char["direction_input"] == 9
         then
-            obj_char["velocity"][1] = 20*obj_char[5]
+            obj_char["velocity"][1] = 25*obj_char[5]
         end
         if obj_char["direction_input"] == 7 then
             obj_char["velocity"][1] = math.max(7,math.abs(obj_char["velocity"][1]))
@@ -6787,7 +6787,7 @@ end
 function load_game_scene_anim_char_TRM_jK(obj_char)
     local res = {}
     local friction = 4
-    local gravity = 2.5
+    local gravity = 2.575
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
