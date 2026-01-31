@@ -2034,7 +2034,7 @@ function state_gate_game_scene_char_LP_from_hurt(input,obj_char)
     if common_game_scene_get_character_animation_end(obj_char) then
         obj_char["input_sys_state"] = "load" -- none save load
         -- something could use for combo HUD
-        print("hurt animation end")
+        -- print("hurt animation end")
         state_machine_char_game_scene_char_LP_input_sys_cache()
         -- 5_stand_idle
         if obj_char["height_state"] == "stand" then
