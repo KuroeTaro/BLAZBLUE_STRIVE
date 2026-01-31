@@ -1223,10 +1223,10 @@ function state_machine_char_game_scene_char_RP_input_sys_cache()
         ["none"] = function()
         end,
         ["save"] = function()
-            if test_input_sys_press_or_hold(input["left"]) then
+            if test_input_sys_press(input["left"]) then
                 obj_char["input_sys_cache"]["left"] = true
                 obj_char["input_sys_cache"]["right"] = false
-            elseif test_input_sys_press_or_hold(input["right"]) then
+            elseif test_input_sys_press(input["right"]) then
                 obj_char["input_sys_cache"]["left"] = false
                 obj_char["input_sys_cache"]["right"] = true
             end
@@ -2231,6 +2231,11 @@ end
 
 function state_gate_game_scene_char_RP_from_hitstop(input,obj_char)
     -- _[any_sp_hit_state_saved_in_state_cache]
+    if obj_char["hit_hurt_blockstop_countdown"] <= 5 then
+        if test_input_sys_press_or_hold(input["down"]) then
+            obj_char["input_sys_cache"]["down"] = true
+        end
+    end
     if obj_char["hit_hurt_blockstop_countdown"] <= 0 then
         -- original_state
         obj_char["state"] = obj_char["state_cache"]
@@ -3288,6 +3293,21 @@ function state_gate_game_scene_char_RP_from_2P(input,obj_char)
     if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
+    -- kara
+    if obj_char["f"] < 4 then
+        local cache_frame = obj_char["f"] - 1
+        if obj_char["direction_input"] == 6 then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_6P(obj_char)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "6P"
+            obj_char["f"] = cache_frame
+            character_animator(obj_char,obj_char["current_animation"])
+            return true
+        end
+    end
     -- hit_cancel
     if obj_char["hit_cancel"] then
         -- _2P
@@ -3325,6 +3345,21 @@ function state_gate_game_scene_char_RP_from_6P(input,obj_char)
     if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
+    -- kara
+    if obj_char["f"] < 3 then
+        local cache_frame = obj_char["f"] - 1
+        if common_game_scene_check_crouch_direction(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_2P(obj_char)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "2P"
+            obj_char["f"] = cache_frame
+            character_animator(obj_char,obj_char["current_animation"])
+            return true
+        end
+    end
     -- hit_cancel
     if obj_char["hit_cancel"] then
 
@@ -3350,6 +3385,32 @@ function state_gate_game_scene_char_RP_from_5P(input,obj_char)
     -- _PRC
     if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"PRC") then
         return true
+    end
+    -- kara
+    if obj_char["f"] < 4 then
+        local cache_frame = obj_char["f"] - 1
+        if common_game_scene_check_crouch_direction(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_2P(obj_char)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "2P"
+            obj_char["f"] = cache_frame
+            character_animator(obj_char,obj_char["current_animation"])
+            return true
+        end
+        if obj_char["direction_input"] == 6 then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_6P(obj_char)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "6P"
+            obj_char["f"] = cache_frame
+            character_animator(obj_char,obj_char["current_animation"])
+            return true
+        end
     end
     -- hit_cancel
     if obj_char["hit_cancel"] then
@@ -3385,6 +3446,20 @@ function state_gate_game_scene_char_RP_from_2K(input,obj_char)
     -- _PRC
     if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"PRC") then
         return true
+    end
+    if obj_char["f"] < 3 then
+        local cache_frame = obj_char["f"] - 1
+        if obj_char["direction_input"] == 6 then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_6K(obj_char)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "6K"
+            obj_char["f"] = cache_frame
+            character_animator(obj_char,obj_char["current_animation"])
+            return true
+        end
     end
     -- hit_cancel
     if obj_char["hit_cancel"] then
@@ -3422,6 +3497,20 @@ function state_gate_game_scene_char_RP_from_6K(input,obj_char)
     if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
+    if obj_char["f"] < 3 then
+        local cache_frame = obj_char["f"] - 1
+        if common_game_scene_check_crouch_direction(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_2K(obj_char)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "2K"
+            obj_char["f"] = cache_frame
+            character_animator(obj_char,obj_char["current_animation"])
+            return true
+        end
+    end
     -- hit_cancel
     if obj_char["hit_cancel"] then
 
@@ -3447,6 +3536,32 @@ function state_gate_game_scene_char_RP_from_5K(input,obj_char)
     -- _PRC
     if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"PRC") then
         return true
+    end
+    -- _kara
+    if obj_char["f"] < 5 then
+        local cache_frame = obj_char["f"] - 1
+        if common_game_scene_check_crouch_direction(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_2K(obj_char)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "2K"
+            obj_char["f"] = cache_frame
+            character_animator(obj_char,obj_char["current_animation"])
+            return true
+        end
+        if obj_char["direction_input"] == 6 then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_6K(obj_char)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "6K"
+            obj_char["f"] = cache_frame
+            character_animator(obj_char,obj_char["current_animation"])
+            return true
+        end
     end
     -- hit_cancel
     if obj_char["hit_cancel"] then
@@ -3482,6 +3597,21 @@ function state_gate_game_scene_char_RP_from_2S(input,obj_char)
     if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
+    -- _kara
+    if obj_char["f"] < 3 then
+        local cache_frame = obj_char["f"] - 1
+        if obj_char["direction_input"] == 6 then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_6S(obj_char)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "6S"
+            obj_char["f"] = cache_frame
+            character_animator(obj_char,obj_char["current_animation"])
+            return true
+        end
+    end
     -- hit_cancel
     if obj_char["hit_cancel"] then
 
@@ -3510,6 +3640,21 @@ function state_gate_game_scene_char_RP_from_6S(input,obj_char)
     if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
+    -- _kara
+    if obj_char["f"] < 3 then
+        local cache_frame = obj_char["f"] - 1
+        if common_game_scene_check_crouch_direction(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_2S(obj_char)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "2S"
+            obj_char["f"] = cache_frame
+            character_animator(obj_char,obj_char["current_animation"])
+            return true
+        end
+    end
     -- hit_cancel
     if obj_char["hit_cancel"] then
 
@@ -3535,6 +3680,32 @@ function state_gate_game_scene_char_RP_from_cS(input,obj_char)
     -- _PRC
     if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"PRC") then
         return true
+    end
+    -- _kara
+    if obj_char["f"] < 3 then
+        local cache_frame = obj_char["f"] - 1
+        if common_game_scene_check_crouch_direction(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_2S(obj_char)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "2S"
+            obj_char["f"] = cache_frame
+            character_animator(obj_char,obj_char["current_animation"])
+            return true
+        end
+        if obj_char["direction_input"] == 6 then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_6S(obj_char)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "6S"
+            obj_char["f"] = cache_frame
+            character_animator(obj_char,obj_char["current_animation"])
+            return true
+        end
     end
     -- hit_cancel
     if obj_char["hit_cancel"] then
@@ -3569,6 +3740,22 @@ function state_gate_game_scene_char_RP_from_fS(input,obj_char)
     -- _PRC
     if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"PRC") then
         return true
+    end
+    -- _kara
+    if obj_char["f"] < 3 then
+        local cache_frame = obj_char["f"] - 1
+        if obj_char["direction_input"] == 6 then
+            obj_char["velocity"][1] = obj_char["velocity"][1]*0.1
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_6S(obj_char)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "6S"
+            obj_char["f"] = cache_frame
+            character_animator(obj_char,obj_char["current_animation"])
+            return true
+        end
     end
     -- hit_cancel
     if obj_char["hit_cancel"] then
@@ -3644,6 +3831,21 @@ function state_gate_game_scene_char_RP_from_5Launcher(input,obj_char)
     -- _PRC
     if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"PRC") then
         return true
+    end
+    -- _kara
+    if obj_char["f"] < 3 then
+        local cache_frame = obj_char["f"] - 1
+        if common_game_scene_check_crouch_direction(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_2Launcher(obj_char)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "2Launcher"
+            obj_char["f"] = cache_frame
+            character_animator(obj_char,obj_char["current_animation"])
+            return true
+        end
     end
     -- hit_cancel
     if obj_char["hit_cancel"] then
@@ -3809,6 +4011,8 @@ function state_gate_game_scene_char_RP_from_j5Launcher(input,obj_char)
             end
             init_character_anim_with(obj_char,obj_char["current_animation"])
             obj_char["state"] = "7_8_9_jump_air"
+            load_input_sys_cache_manual_release(input,obj_char,"up")
+            load_input_sys_cache_recache(input,obj_char)
             return true
         end
     end
