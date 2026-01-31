@@ -241,11 +241,17 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
 end
 
 -- blast slash directional ray_impact
-function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r)
+function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r,fix_pos,negative_side)
     -- x y z opacity sx sy r f
-    local dx = math.abs(common_game_scene_change_character(obj_char["player_side"])["x"]-obj_char["x"])-220*sx
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
-    x = math.min(dx,x)
+    local dx = math.abs(common_game_scene_change_character(obj_char["player_side"])["x"]-obj_char["x"])-220*sx
+    if not fix_pos then
+        if negative_side then
+            x = math.max(-dx,x)
+        else
+            x = math.min(dx,x)
+        end
+    end
     r = obj_char[5]*r
 
     obj_char["VFX_hit_front_table"] = {}
@@ -282,8 +288,6 @@ function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r)
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            obj[1] = obj_char["x"] + obj_char[5]*(x)
-            obj[2] = obj_char["y"] + obj_char[6]*(y)
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
         end
@@ -302,11 +306,17 @@ function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r)
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
 end
-function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r)
+function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_pos,negative_side)
     -- x y z opacity sx sy r f
-    local dx = math.abs(common_game_scene_change_character(obj_char["player_side"])["x"]-obj_char["x"])-310*sx
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
-    x = math.min(dx,x)
+    local dx = math.abs(common_game_scene_change_character(obj_char["player_side"])["x"]-obj_char["x"])-310*sx
+    if not fix_pos then
+        if negative_side then
+            x = math.max(-dx,x)
+        else
+            x = math.min(dx,x)
+        end
+    end
     r = obj_char[5]*r
 
     obj_char["VFX_hit_front_table"] = {}
@@ -341,8 +351,6 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r)
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            obj[1] = obj_char["x"] + obj_char[5]*(x)
-            obj[2] = obj_char["y"] + obj_char[6]*(y)
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
         end
@@ -400,8 +408,6 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r)
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            obj[1] = obj_char["x"] + obj_char[5]*(x) + rot_dx
-            obj[2] = obj_char["y"] + obj_char[6]*(y) + rot_dy
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
         end
@@ -423,11 +429,17 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r)
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
 end
-function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,sy,r)
+function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,sy,r,fix_pos,negative_side)
     -- x y z opacity sx sy r f
-    local dx = math.abs(common_game_scene_change_character(obj_char["player_side"])["x"]-obj_char["x"])-185*sx
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
-    x = math.min(dx,x)
+    local dx = math.abs(common_game_scene_change_character(obj_char["player_side"])["x"]-obj_char["x"])-185*sx
+    if not fix_pos then
+        if negative_side then
+            x = math.max(-dx,x)
+        else
+            x = math.min(dx,x)
+        end
+    end
     r = obj_char[5]*r
 
     obj_char["VFX_hit_front_table"] = {}
@@ -468,8 +480,6 @@ function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,s
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            obj[1] = obj_char["x"] + obj_char[5]*(x)
-            obj[2] = obj_char["y"] + obj_char[6]*(y)
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
         end
@@ -488,11 +498,18 @@ function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,s
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
 end
-function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,sy,r)
+function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_pos,negative_side)
     -- x y z opacity sx sy r f
-    local dx = math.abs(common_game_scene_change_character(obj_char["player_side"])["x"]-obj_char["x"])-310*sx
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
-    x = math.min(dx,x)
+    local dx = math.abs(common_game_scene_change_character(obj_char["player_side"])["x"]-obj_char["x"])-310*sx
+    if not fix_pos then
+        if negative_side then
+            x = math.max(-dx,x)
+        else
+            x = math.min(dx,x)
+        end
+    end
+    r = obj_char[5]*r
 
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
@@ -526,8 +543,6 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            obj[1] = obj_char["x"] + obj_char[5]*(x)
-            obj[2] = obj_char["y"] + obj_char[6]*(y)
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
         end
@@ -591,8 +606,6 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            obj[1] = obj_char["x"] + obj_char[5]*(x) + rot_dx
-            obj[2] = obj_char["y"] + obj_char[6]*(y) + rot_dy
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
         end
@@ -643,8 +656,6 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            obj[1] = obj_char["x"] + obj_char[5]*(x) + rot_dx
-            obj[2] = obj_char["y"] + obj_char[6]*(y) + rot_dy
             point_linear_animator(self,self["opacity_point_linear_animation"])
             self["life"] = self["life"] - 1
         end

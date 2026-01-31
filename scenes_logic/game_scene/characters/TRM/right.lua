@@ -326,7 +326,8 @@ function order_load_game_scene_char_RP_frames(load_order)
                 "5Launcher",
                 "jP",
                 "jK",
-                "jS"
+                "jS",
+                "j5Launcher"
             }
             for i, v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] = 
@@ -1836,7 +1837,7 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move(input,obj_char)
     -- _jsp_S
     -- _jsp_H
     -- _jP
-    if obj_char["y"] < 180 and test_input_sys_press(input["P"]) then
+    if obj_char["y"] < 125 and test_input_sys_press(input["P"]) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_jP(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "jP"
@@ -1844,14 +1845,14 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move(input,obj_char)
     end
     -- _j2K
     -- _jK
-    if obj_char["y"] < 180 and test_input_sys_press(input["K"]) then
+    if obj_char["y"] < 125 and test_input_sys_press(input["K"]) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_jK(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "jK"
         return true
     end
     -- _jS
-    if obj_char["y"] < 180 and test_input_sys_press(input["S"]) then
+    if obj_char["y"] < 125 and test_input_sys_press(input["S"]) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_jS(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "jS"
@@ -1859,6 +1860,12 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move(input,obj_char)
     end
     -- _j4_6Launcher
     -- _j5Launcher
+    if obj_char["y"] < 125 and test_input_sys_press(input["Launcher"]) then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_j5Launcher(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "j5Launcher"
+        return true
+    end
     return false
 end
 function state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,obj_char)
@@ -1869,7 +1876,7 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,
     -- _jsp_S
     -- _jsp_H
     -- _jP
-    if obj_char["y"] < 180 and test_input_sys_press_or_hold(input["P"]) then
+    if obj_char["y"] < 125 and test_input_sys_press_or_hold(input["P"]) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_jP(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "jP"
@@ -1877,14 +1884,14 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,
     end
     -- _j2K
     -- _jK
-    if obj_char["y"] < 180 and test_input_sys_press_or_hold(input["K"]) then
+    if obj_char["y"] < 125 and test_input_sys_press_or_hold(input["K"]) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_jK(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "jK"
         return true
     end
     -- _jS
-    if obj_char["y"] < 180 and test_input_sys_press_or_hold(input["S"]) then
+    if obj_char["y"] < 125 and test_input_sys_press_or_hold(input["S"]) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_jS(obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "jS"
@@ -1892,6 +1899,12 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,
     end
     -- _j4_6Launcher
     -- _j5Launcher
+    if obj_char["y"] < 125 and test_input_sys_press_or_hold(input["Launcher"]) then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_j5Launcher(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "j5Launcher"
+        return true
+    end
     return false
 end
 function state_gate_game_scene_char_RP_common_air_to_special_move(input,obj_char)
@@ -3756,6 +3769,36 @@ end
 function state_gate_game_scene_char_RP_from_j4_6Launcher(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_j5Launcher(input,obj_char)
+    -- _PRC
+    if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"PRC") then
+        return true
+    end
+    -- _7_8_9_jump_air_to_stand_idle
+    if test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
+        if state_gate_game_scene_char_RP_from_7_8_9_jump_air_to_stand_idle(input,obj_char) then
+            return true
+        end
+        return true
+    end
+    -- hit_cancel
+    if obj_char["hit_cancel"] then
+    end
+    -- _7_8_9_jump_air
+    if common_game_scene_get_character_animation_end(obj_char) then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "7_8_9_jump_air"
+        obj_char["idle_cancel"] = true
+        obj_char["f"] = 24
+        character_animator(obj_char,obj_char["current_animation"])
+        if state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char) then
+            return true
+        end
+        return true
+    end
 end
 
 function state_gate_game_scene_char_RP_from_4sp_P(input,obj_char)

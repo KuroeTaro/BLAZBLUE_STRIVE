@@ -222,7 +222,9 @@ function common_game_scene_strike_hit_function(obj_char)
             counter_VFX_insert_function_argument[4],
             counter_VFX_insert_function_argument[5],
             counter_VFX_insert_function_argument[6],
-            counter_VFX_insert_function_argument[7]
+            counter_VFX_insert_function_argument[7],
+            counter_VFX_insert_function_argument[8],
+            counter_VFX_insert_function_argument[9]
         )
     elseif obj_char["hurt_state"] ~= "idle" or (not block_bool) then
         local hit_VFX_insert_function_argument = hit_side_obj_char["hit_VFX_insert_function_argument"]
@@ -233,7 +235,9 @@ function common_game_scene_strike_hit_function(obj_char)
             hit_VFX_insert_function_argument[4],
             hit_VFX_insert_function_argument[5],
             hit_VFX_insert_function_argument[6],
-            hit_VFX_insert_function_argument[7]
+            hit_VFX_insert_function_argument[7],
+            hit_VFX_insert_function_argument[8],
+            hit_VFX_insert_function_argument[9]
         )
     end
     -- debug
