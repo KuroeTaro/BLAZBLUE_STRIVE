@@ -326,6 +326,7 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "5Launcher",
                 "jP",
                 "jK",
+                "j2K",
                 "jS",
                 "j5Launcher"
             }

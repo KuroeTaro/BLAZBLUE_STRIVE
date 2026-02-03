@@ -87,6 +87,7 @@ local load_attack_name_table = {
     "5Launcher",
     "jP",
     "jK",
+    "j2K",
     "jS",
     "j5Launcher"
 }
