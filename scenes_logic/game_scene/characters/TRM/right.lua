@@ -1845,6 +1845,12 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move(input,obj_char)
         return true
     end
     -- _j2K
+    if obj_char["y"] < 125 and common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["K"]) then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_j2K(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "j2K"
+        return true
+    end
     -- _jK
     if obj_char["y"] < 125 and test_input_sys_press(input["K"]) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_jK(obj_char)
@@ -1884,6 +1890,13 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,
         return true
     end
     -- _j2K
+    -- _j2K
+    if obj_char["y"] < 125 and common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press_or_hold(input["K"]) then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_j2K(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "j2K"
+        return true
+    end
     -- _jK
     if obj_char["y"] < 125 and test_input_sys_press_or_hold(input["K"]) then
         obj_char["current_animation"] = load_game_scene_anim_char_TRM_jK(obj_char)
@@ -3936,6 +3949,36 @@ function state_gate_game_scene_char_RP_from_jK(input,obj_char)
     end
 end
 function state_gate_game_scene_char_RP_from_j2K(input,obj_char)
+    -- _PRC
+    if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"PRC") then
+        return true
+    end
+    -- _7_8_9_jump_air_to_stand_idle
+    if test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
+        if state_gate_game_scene_char_RP_from_7_8_9_jump_air_to_stand_idle(input,obj_char) then
+            return true
+        end
+        return true
+    end
+    -- hit_cancel
+    if obj_char["hit_cancel"] then
+    end
+    -- _7_8_9_jump_air
+    if common_game_scene_get_character_animation_end(obj_char) then
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "7_8_9_jump_air"
+        obj_char["idle_cancel"] = true
+        obj_char["f"] = 20
+        character_animator(obj_char,obj_char["current_animation"])
+        if state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char) then
+            return true
+        end
+        return true
+    end
 end
 function state_gate_game_scene_char_RP_from_jS(input,obj_char)
     -- _PRC

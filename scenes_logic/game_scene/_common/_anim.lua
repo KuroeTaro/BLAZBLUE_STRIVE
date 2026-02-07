@@ -4162,6 +4162,11 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
+        obj_char_other_side["self_wallbounce_hurt_animation"] = self_wallbounce_hurt_animation
+        obj_char_other_side["self_groundbounce_hurt_animation"] = self_groundbounce_hurt_animation
+        obj_char_other_side["self_knockdown_animation"] = self_knockdown_animation
+        obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
+
         obj_char_other_side["current_animation_length"] = 16
         obj_char_other_side["idle_cancel"] = false
 
@@ -4174,15 +4179,15 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
-            hurt_horizontal_velocity,
-            hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,
-            hurt_vertical_velocity,
-            hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
-        )
+        -- common_game_scene_char_apply_hurt_velocity(
+        --     obj_char,obj_char_other_side,
+        --     hurt_horizontal_velocity,
+        --     hurt_horizontal_friction,
+        --     hurt_horizontal_velocity_correction,
+        --     hurt_vertical_velocity,
+        --     hurt_vertical_gravity,
+        --     hurt_vertical_gravity_correction
+        -- )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
@@ -4307,6 +4312,11 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
+        obj_char_other_side["self_wallbounce_hurt_animation"] = self_wallbounce_hurt_animation
+        obj_char_other_side["self_groundbounce_hurt_animation"] = self_groundbounce_hurt_animation
+        obj_char_other_side["self_knockdown_animation"] = self_knockdown_animation
+        obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
+
         obj_char_other_side["current_animation_length"] = 22
         obj_char_other_side["idle_cancel"] = false
 
@@ -4319,15 +4329,20 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
-            hurt_horizontal_velocity,
-            hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,
-            hurt_vertical_velocity,
-            hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
-        )
+        -- common_game_scene_char_apply_hurt_velocity(
+        --     obj_char,obj_char_other_side,
+        --     hurt_horizontal_velocity,
+        --     hurt_horizontal_friction,
+        --     hurt_horizontal_velocity_correction,
+        --     hurt_vertical_velocity,
+        --     hurt_vertical_gravity,
+        --     hurt_vertical_gravity_correction
+        -- )
+        obj_char_other_side["friction"] = hurt_horizontal_friction
+        obj_char_other_side["gravity"] = hurt_vertical_gravity*hurt_vertical_gravity_correction
+        obj_char_other_side["velocity"][1] = hurt_horizontal_velocity*hurt_horizontal_velocity_correction*(-obj_char_other_side[5])
+        obj_char_other_side["velocity"][2] = hurt_vertical_velocity
+
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true

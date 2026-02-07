@@ -9,7 +9,11 @@ function character_function_TRM_j2K_game_scene_strike_hit_function(obj_char)
     hit_side_obj_char["game_speed"] = 1
     hit_side_obj_char["game_speed_subframe"] = 1
     hit_side_obj_char["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
-    hit_side_obj_char["velocity"][2] = -15
+    if hit_side_obj_char["direction_input"] == 3 then
+        hit_side_obj_char["velocity"][1] = 20*hit_side_obj_char[5]
+    else
+        hit_side_obj_char["velocity"][1] = -10*hit_side_obj_char[5]
+    end
     if obj_char["x"] <= -1485 and hit_side_obj_char["x"] < -1430 and hit_side_obj_char[5] == -1 then
         hit_side_obj_char["x"] = -1430
     elseif obj_char["x"] >= 1485 and hit_side_obj_char["x"] > 1430 and hit_side_obj_char[5] == 1 then
@@ -56,6 +60,21 @@ function character_function_TRM_j2K_game_scene_strike_hit_function(obj_char)
             hit_VFX_insert_function_argument[8],
             hit_VFX_insert_function_argument[9]
         )
+    end
+    -- velocity
+    hit_side_obj_char["velocity"][2] = -15
+    if block_bool then
+        if hit_side_obj_char["direction_input"] == 3 then
+            hit_side_obj_char["velocity"][1] = 20*hit_side_obj_char[5]
+        else
+            hit_side_obj_char["velocity"][1] = -10*hit_side_obj_char[5]
+        end
+    else 
+        if hit_side_obj_char["direction_input"] == 3 then
+            hit_side_obj_char["velocity"][1] = 20*hit_side_obj_char[5]
+        else
+            hit_side_obj_char["velocity"][1] = 10*hit_side_obj_char[5]
+        end
     end
     -- debug
     hit_side_obj_char["active_frame"] = hit_side_obj_char["active_frame"] + 1

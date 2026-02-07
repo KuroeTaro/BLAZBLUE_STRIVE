@@ -868,7 +868,7 @@ function common_game_scene_char_apply_hurt_velocity(
             obj_char_other_side["velocity"] = {0,0}
         end
     else
-        obj_char_other_side["velocity_cache"] ={0,hurt_vertical_velocity}
+        obj_char_other_side["velocity_cache"] = {0,hurt_vertical_velocity}
         -- 根据当前敌我x位置变化
         obj_char_other_side["velocity"] = {0,0}
         obj_char_other_side["friction"] = hurt_horizontal_friction
