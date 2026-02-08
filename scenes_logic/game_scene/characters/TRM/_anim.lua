@@ -7066,7 +7066,16 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
-        obj_char["stand_hurt_animation"] = load_game_scene_anim_char_TRM_j2K_hurt(obj_char)
+        -- obj_char["stand_hurt_animation"] = load_game_scene_anim_char_TRM_j2K_hurt(obj_char)
+        obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
+            obj_char,
+            "0_stand_hurt_high",
+            "stand","5_stand_idle",
+            16,5,1.05,
+            0,2.5,1.05,
+            nil,nil,nil,nil,
+            function() end
+        )
         obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
             obj_char,
             "4_stand_block_high",
@@ -7076,7 +7085,16 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
             nil,nil,nil,nil,
             function() end
         )
-        obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_TRM_j2K_hurt(obj_char)
+        -- obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_TRM_j2K_hurt(obj_char)
+        obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
+            obj_char,
+            "0_crouch_hurt",
+            "crouch","1_2_3_crouch",
+            16,5,1.05,
+            0,2.5,1.05,
+            nil,nil,nil,nil,
+            function() end
+        )
         obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
             obj_char,
             "1_crouch_block",
@@ -7156,10 +7174,10 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
         obj_char["collision_test_ground_height_offset"] = 240
         -- sub_obj
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
-        obj_char["hit_VFX_insert_function_argument"] = {obj_char,205,-400,0.8,0.75,0.75,0,false,false}
+        obj_char["hit_VFX_insert_function_argument"] = {obj_char,245,-120,0.8,0.75,0.75,1.571,true,false}
         obj_char["hit_SFX"] = nil
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,170,-675,1,1,1,0,false,false}
+        obj_char["counter_VFX_insert_function_argument"] = {obj_char,245,-120,0.9,0.75,0.75,1.571,true,false}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
@@ -7785,7 +7803,7 @@ function load_game_scene_anim_char_TRM_j2K_hurt(obj_char)
         obj_char,
         "0_general_hurt_launched_high",
         "air","hurt",
-        8,5,1.05,
+        4,5,1.05,
         10,2.5,1.05,
         nil,nil,nil,
         load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
