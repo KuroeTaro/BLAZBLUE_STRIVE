@@ -3360,7 +3360,7 @@ function state_gate_game_scene_char_LP_from_6P(input,obj_char)
         return true
     end
     -- kara
-    if obj_char["f"] < 3 then
+    if obj_char["f"] < 4 then
         local cache_frame = obj_char["f"] - 1
         if common_game_scene_check_crouch_direction(obj_char) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
@@ -3461,7 +3461,8 @@ function state_gate_game_scene_char_LP_from_2K(input,obj_char)
     if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
-    if obj_char["f"] < 3 then
+    -- kara
+    if obj_char["f"] < 5 then
         local cache_frame = obj_char["f"] - 1
         if obj_char["direction_input"] == 6 then
             if not common_game_scene_get_character_facing_currect(obj_char) then
@@ -3511,7 +3512,8 @@ function state_gate_game_scene_char_LP_from_6K(input,obj_char)
     if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
-    if obj_char["f"] < 3 then
+    -- kara
+    if obj_char["f"] < 5 then
         local cache_frame = obj_char["f"] - 1
         if common_game_scene_check_crouch_direction(obj_char) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
@@ -4037,6 +4039,34 @@ function state_gate_game_scene_char_LP_from_jS(input,obj_char)
     end
     -- hit_cancel
     if obj_char["hit_cancel"] then
+        if test_input_sys_press(input["up"]) and obj_char["air_move"]["jump"][1] > 0 then
+            local down_cache = input["down"]
+            input["down"] = false
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            common_update_game_scene_input_direction(obj_char)
+            input["down"] = down_cache
+            -- air_move
+            obj_char["air_move"]["jump"][1] = math.max(math.min(obj_char["air_move"]["jump"][1]-1,obj_char["air_move"]["jump"][2]),0)
+            obj_char["air_move"]["air_dash"][1] = 0
+            -- velocity_cache
+            if obj_char["direction_input"] == 7 then
+                obj_char["velocity_cache"][1] = obj_char["velocity_cache"][1]*0.1 - obj_char[5]*11.5
+                obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,470},nil,-30.0)
+            elseif obj_char["direction_input"] == 8 then
+                obj_char["velocity_cache"][1] = obj_char["velocity_cache"][1]*0.25
+                obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},0,-30.0)
+            elseif obj_char["direction_input"] == 9 then
+                obj_char["velocity_cache"][1] = obj_char["velocity_cache"][1]*0.1 + obj_char[5]*11.5
+                obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{320,430},nil,-30.0)
+            end
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "7_8_9_jump_air"
+            load_input_sys_cache_manual_release(input,obj_char,"up")
+            load_input_sys_cache_recache(input,obj_char)
+            return true
+        end
     end
     -- _7_8_9_jump_air
     if common_game_scene_get_character_animation_end(obj_char) then
