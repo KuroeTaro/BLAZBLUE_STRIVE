@@ -10,10 +10,12 @@ function character_function_TRM_j2K_game_scene_strike_hit_function(obj_char)
     hit_side_obj_char["game_speed_subframe"] = 1
     hit_side_obj_char["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
     if hit_side_obj_char["direction_input"] == 3 then
-        hit_side_obj_char["velocity"][1] = 20*hit_side_obj_char[5]
+        hit_side_obj_char["velocity_cache"][1] = 20*hit_side_obj_char[5]
     else
-        hit_side_obj_char["velocity"][1] = -10*hit_side_obj_char[5]
+        hit_side_obj_char["velocity_cache"][1] = -10*hit_side_obj_char[5]
     end
+    hit_side_obj_char["velocity_cache"][2] = hit_side_obj_char["velocity"][2]
+    hit_side_obj_char["velocity"] = {0,0}
     if obj_char["x"] <= -1485 and hit_side_obj_char["x"] < -1430 and hit_side_obj_char[5] == -1 then
         hit_side_obj_char["x"] = -1430
     elseif obj_char["x"] >= 1485 and hit_side_obj_char["x"] > 1430 and hit_side_obj_char[5] == 1 then
