@@ -108,7 +108,9 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["velocity_debug"] = {0,0}
     obj_char_game_scene_char_RP["velocity_cache"] = {0,0}
     obj_char_game_scene_char_RP["gravity"] = 2.5
-    obj_char_game_scene_char_RP["friction"] = 1 -- 包括地面移动和空中dash的水平阻力
+    obj_char_game_scene_char_RP["gravity_cache"] = 2.5
+    obj_char_game_scene_char_RP["friction"] = 1
+    obj_char_game_scene_char_RP["friction_cache"] = 1
     
     obj_char_game_scene_char_RP["health_gauge"] = {12000, 12000, 12000, "fade_off"}
     obj_char_game_scene_char_RP["heat_gauge"] = {0.0, 200.0} -- 0.0 - 200.0
@@ -2254,6 +2256,8 @@ function state_gate_game_scene_char_RP_from_hitstop(input,obj_char)
         -- original_state
         obj_char["state"] = obj_char["state_cache"]
         obj_char["velocity"] = obj_char["velocity_cache"]
+        obj_char["gravity"] = obj_char["gravity_cache"]
+        obj_char["friction"] = obj_char["friction_cache"]
 
         obj_char["input_sys_state"] = "load" -- none save load
         state_machine_char_game_scene_char_RP_input_sys_cache()
@@ -2277,6 +2281,8 @@ function state_gate_game_scene_char_RP_from_blockstop(input,obj_char)
     if obj_char["hit_hurt_blockstop_countdown"] <= 0 then
         obj_char["state"] = obj_char["state_cache"]
         obj_char["velocity"] = obj_char["velocity_cache"]
+        obj_char["gravity"] = obj_char["gravity_cache"]
+        obj_char["friction"] = obj_char["friction_cache"]
 
         obj_char["input_sys_state"] = "load" -- none save load
         state_machine_char_game_scene_char_RP_input_sys_cache()
@@ -2295,6 +2301,8 @@ function state_gate_game_scene_char_RP_from_hurtstop(input,obj_char)
     if obj_char["hit_hurt_blockstop_countdown"] <= 0 then
         obj_char["state"] = obj_char["state_cache"]
         obj_char["velocity"] = obj_char["velocity_cache"]
+        obj_char["gravity"] = obj_char["gravity_cache"]
+        obj_char["friction"] = obj_char["friction_cache"]
 
         obj_char["input_sys_state"] = "load" -- none save load
         state_machine_char_game_scene_char_RP_input_sys_cache()

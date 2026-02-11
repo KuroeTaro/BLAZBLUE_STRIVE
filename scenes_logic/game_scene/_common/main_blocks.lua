@@ -506,7 +506,7 @@ function update_game_scene_gravity()
     elseif char_LP["y"] > 365 then
         char_LP["y"] = 365
         char_LP["velocity"][2] = 0
-        char_LP["gravity_correction"] = 0.0
+        char_LP["gravity_correction"] = 1
     elseif char_LP["game_speed_subframe"] > char_LP["game_speed"] then
         char_LP["velocity"][2] = char_LP["velocity"][2] + char_LP["gravity"]*char_LP["gravity_correction"]
     end
@@ -516,7 +516,7 @@ function update_game_scene_gravity()
     elseif char_RP["y"] > 365 then
         char_RP["y"] = 365
         char_RP["velocity"][2] = 0
-        char_LP["gravity_correction"] = 0.0
+        char_LP["gravity_correction"] = 1
     elseif char_RP["game_speed_subframe"] > char_RP["game_speed"] then
         char_RP["velocity"][2] = char_RP["velocity"][2] + char_RP["gravity"]*char_RP["gravity_correction"]
     end
