@@ -249,8 +249,7 @@ function update_game_scene_main_training()
             -- 进行push box hit box hurt box的检测
             for i = 1,16 do
                 -- 更新角色和飞行道具位置
-                if char_LP["game_speed"] ~= 0 and char_LP["state"] ~= "hitstop" 
-                and char_LP["state"] ~= "hurtstop" and char_LP["state"] ~= "blockstop" then
+                if char_LP["game_speed"] ~= 0 and not char_LP["physics_lock"] then
                     -- 角色更新位置 1/16
                     char_LP["x"] = char_LP["x"] + char_LP_velocity[1]/(16* char_LP["game_speed"])
                     char_LP["y"] = char_LP["y"] + char_LP_velocity[2]/(16* char_LP["game_speed"])
@@ -262,8 +261,7 @@ function update_game_scene_main_training()
                         current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(16* char_LP["game_speed"])
                     end
                 end
-                if char_RP["game_speed"] ~= 0 and char_RP["state"] ~= "hitstop" 
-                and char_RP["state"] ~= "hurtstop" and char_RP["state"] ~= "blockstop" then
+                if char_RP["game_speed"] ~= 0 and not char_RP["physics_lock"] then
                     -- 角色更新位置 1/10
                     char_RP["x"] = char_RP["x"] + char_RP_velocity[1]/(16* char_RP["game_speed"])
                     char_RP["y"] = char_RP["y"] + char_RP_velocity[2]/(16* char_RP["game_speed"])
@@ -507,7 +505,7 @@ function update_game_scene_gravity()
         char_LP["y"] = 365
         char_LP["velocity"][2] = 0
         char_LP["gravity_correction"] = 1
-    elseif char_LP["game_speed_subframe"] > char_LP["game_speed"] then
+    elseif char_LP["game_speed_subframe"] > char_LP["game_speed"] and not char_LP["physics_lock"] then
         char_LP["velocity"][2] = char_LP["velocity"][2] + char_LP["gravity"]*char_LP["gravity_correction"]
     end
 
@@ -517,7 +515,7 @@ function update_game_scene_gravity()
         char_RP["y"] = 365
         char_RP["velocity"][2] = 0
         char_LP["gravity_correction"] = 1
-    elseif char_RP["game_speed_subframe"] > char_RP["game_speed"] then
+    elseif char_RP["game_speed_subframe"] > char_RP["game_speed"] and not char_RP["physics_lock"] then
         char_RP["velocity"][2] = char_RP["velocity"][2] + char_RP["gravity"]*char_RP["gravity_correction"]
     end
 end
@@ -526,12 +524,12 @@ function update_game_scene_friction()
     local char_RP = obj_char_game_scene_char_RP
     local LP_game_speed = char_LP["game_speed"]
     local RP_game_speed = char_LP["game_speed"]
-    local horizontal_velocity_cache = 0
+    
     char_LP["velocity_debug"][1] = char_LP["velocity"][1]
     char_LP["velocity_debug"][2] = char_LP["velocity"][2]
     char_RP["velocity_debug"][1] = char_RP["velocity"][1]
     char_RP["velocity_debug"][2] = char_RP["velocity"][2]
-    if char_LP["height_state"] ~= "air" and char_LP["game_speed"] ~= 0 and char_LP["game_speed_subframe"] > char_LP["game_speed"] then
+    if char_LP["height_state"] ~= "air" and char_LP["game_speed"] ~= 0 and char_LP["game_speed_subframe"] > char_LP["game_speed"] and not char_LP["physics_lock"] then
         if char_LP["friction"] == 0 then
             char_LP["velocity"][1] = char_LP["velocity"][1]
         else
@@ -541,7 +539,7 @@ function update_game_scene_friction()
             char_LP["velocity"][1] = 0
         end
     end
-    if char_RP["height_state"] ~= "air" and char_RP["game_speed"] ~= 0 and char_RP["game_speed_subframe"] > char_RP["game_speed"] then
+    if char_RP["height_state"] ~= "air" and char_RP["game_speed"] ~= 0 and char_RP["game_speed_subframe"] > char_RP["game_speed"] and not char_RP["physics_lock"] then
         if char_RP["friction"] == 0 then
             char_RP["velocity"][1] = char_RP["velocity"][1]
         else

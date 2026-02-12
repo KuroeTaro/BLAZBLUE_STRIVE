@@ -198,6 +198,8 @@ function common_game_scene_strike_hit_function(obj_char)
     elseif obj_char["x"] >= 1485 and hit_side_obj_char["x"] > 1430 and hit_side_obj_char[5] == 1 then
         hit_side_obj_char["x"] = 1430
     end
+    -- physics_lock
+    hit_side_obj_char["physics_lock"] = true
     -- block_test
     local block_bool = false
     local block_direction = obj_char["direction_input"]
@@ -399,15 +401,14 @@ function common_game_scene_strike_hurt_function(obj_char)
             insert_VFX_game_sceme_char_FD_block(obj_char)
         end
     end
-
-    -- change draw front
+    -- physics_lock
+    obj_char["physics_lock"] = true
+    -- change_draw_front
     CHARACTER_VISUAL_FRONT = hit_side_obj_char["player_side"]
-
-    -- change character face
+    -- change_character_face
     if not common_game_scene_get_character_facing_currect(obj_char) then
         obj_char[5] = -obj_char[5]
     end
-    
     -- block_test
     local block_bool = false
     local block_direction = obj_char["direction_input"]
@@ -434,7 +435,7 @@ function common_game_scene_strike_hurt_function(obj_char)
         -- parry function
         obj_char["parry_function"](hit_side_obj_char,obj_char)
 
-    -- idle and unblock
+    -- idle_and_unblock
     else
         if obj_char["hurt_state"] == "punish" then
             insert_VFX_HUD_game_scene_punish(hit_side_obj_char)
@@ -445,12 +446,14 @@ end
 function common_game_scene_throw_hit_function(obj_char)
     local side = obj_char["player_side"]
     local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
-
+    -- physics_lock
+    obj_char["physics_lock"] = true
+    -- change_draw_front
+    CHARACTER_VISUAL_FRONT = side
+    -- change_character_face
     if not common_game_scene_get_character_facing_currect(hit_side_obj_char) then
         hit_side_obj_char[5] = -hit_side_obj_char[5]
     end
-
-    CHARACTER_VISUAL_FRONT = side
 
     obj_char["y"] = hit_side_obj_char["y"]
 
@@ -472,7 +475,9 @@ function common_game_scene_throw_hurt_function(obj_char)
     local anchor_data = common_game_scene_get_anchor(side)
     local sprite_sheet_state = nil
     local collision_test_ground_height_offset = nil
-
+    -- physics_lock
+    obj_char["physics_lock"] = true
+    -- change_character_face
     if not common_game_scene_get_character_facing_currect(obj_char) then
         obj_char[5] = -obj_char[5]
     end
@@ -810,10 +815,7 @@ function common_game_scene_char_apply_hurt_velocity(
     hurt_vertical_gravity_correction
 )
     local final_hurt_horizontal_velocity = common_game_scene_get_character_hurt_direction(obj_char,obj_char_other_side,hurt_horizontal_velocity)
-    obj_char["gravity_cache"] = obj_char["gravity"]
-    obj_char["gravity"] = 0
-    obj_char_other_side["gravity_cache"] = hurt_vertical_gravity
-    obj_char_other_side["gravity"] = 0
+    obj_char_other_side["gravity"] = hurt_vertical_gravity
 
     obj_char_other_side["gravity_correction"] 
     = obj_char_other_side["gravity_correction"]*hurt_vertical_gravity_correction
@@ -821,76 +823,37 @@ function common_game_scene_char_apply_hurt_velocity(
     = obj_char_other_side["horizontal_velocity_correction"]*hurt_horizontal_velocity_correction
     if obj_char["x"] < obj_char_other_side["x"] then
         if obj_char_other_side["collision_move_available"][2] == 1 or final_hurt_horizontal_velocity <= 0 then
-            obj_char_other_side["friction_cache"] = hurt_horizontal_friction
-            obj_char_other_side["friction"] = 1
-            obj_char_other_side["velocity_cache"] = {
+            obj_char_other_side["friction"] = hurt_horizontal_friction
+            obj_char_other_side["velocity"] = {
                 final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]+obj_char_other_side["velocity"][1]*0.15,
                 hurt_vertical_velocity
             }
-            obj_char_other_side["velocity"] = {0,0}
-
-            obj_char["friction_cache"] = obj_char_other_side["friction"]
-            obj_char["friction"] = 1
-            obj_char["velocity_cache"] = obj_char["velocity"]
-            obj_char["velocity"] = {0,0}
         elseif obj_char_other_side["collision_move_available"][2] == 0 then
-            obj_char["friction_cache"] = hurt_horizontal_friction
-            obj_char["friction"] = 1
-            obj_char["velocity_cache"] = {
+            obj_char["friction"] = hurt_horizontal_friction
+            obj_char["velocity"] = {
                 - final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]+obj_char["velocity"][1]*0.15,
                 obj_char["velocity"][2]
             }
-            obj_char["velocity"] = {0,0}
-
-            obj_char_other_side["friction_cache"] = obj_char_other_side["friction"]
-            obj_char_other_side["friction"] = 1
-            obj_char_other_side["velocity_cache"] = {
-                obj_char_other_side["velocity"][1],
-                hurt_vertical_velocity,
-            }
-            obj_char_other_side["velocity"] = {0,0}
+            obj_char_other_side["velocity"] = {obj_char_other_side["velocity"][1],hurt_vertical_velocity}
         end
     elseif obj_char["x"] > obj_char_other_side["x"] then
         if obj_char_other_side["collision_move_available"][1] == 1 or final_hurt_horizontal_velocity >= 0 then
-            obj_char_other_side["friction_cache"] = hurt_horizontal_friction
-            obj_char_other_side["friction"] = 1
-            obj_char_other_side["velocity_cache"] = {
+            obj_char_other_side["friction"] = hurt_horizontal_friction
+            obj_char_other_side["velocity"] = {
                 final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]+obj_char_other_side["velocity"][1]*0.15,
                 hurt_vertical_velocity
             }
-            obj_char_other_side["velocity"] = {0,0}
-
-            obj_char["friction_cache"] = obj_char_other_side["friction"]
-            obj_char["friction"] = 1
-            obj_char["velocity_cache"] = obj_char["velocity"]
-            obj_char["velocity"] = {0,0}
         elseif obj_char_other_side["collision_move_available"][1] == 0 then
-            obj_char["friction_cache"] = hurt_horizontal_friction
-            obj_char["friction"] = 1
-            obj_char["velocity_cache"] = {
+            obj_char["friction"] = hurt_horizontal_friction
+            obj_char["velocity"] = {
                 - final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]+obj_char["velocity"][1]*0.15,
                 obj_char["velocity"][2]
             }
-            obj_char["velocity"] = {0,0}
-
-            obj_char_other_side["friction_cache"] = obj_char_other_side["friction"]
-            obj_char_other_side["friction"] = 1
-            obj_char_other_side["velocity_cache"] = {
-                obj_char_other_side["velocity"][1],
-                hurt_vertical_velocity,
-            }
-            obj_char_other_side["velocity"] = {0,0}
+            obj_char_other_side["velocity"] = {obj_char_other_side["velocity"][1],hurt_vertical_velocity}
         end
     else
-        obj_char_other_side["friction_cache"] = hurt_horizontal_friction
-        obj_char_other_side["friction"] = 1
-        obj_char_other_side["velocity_cache"] = {0,hurt_vertical_velocity}
-        obj_char_other_side["velocity"] = {0,0}
-
-        obj_char["friction_cache"] = obj_char_other_side["friction"]
-        obj_char["friction"] = 1
-        obj_char["velocity_cache"] = obj_char["velocity"]
-        obj_char["velocity"] = {0,0}
+        obj_char_other_side["friction"] = hurt_horizontal_friction
+        obj_char_other_side["velocity"] = {0,hurt_vertical_velocity}
     end
 end
 function common_game_scene_char_apply_knockdown_velocity(

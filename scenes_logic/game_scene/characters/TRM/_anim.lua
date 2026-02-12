@@ -884,10 +884,6 @@ end
         -- 对方
             ------
 function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet_state,anchor_pos,horizontal_velocity,vertical_velocity)
-    if horizontal_velocity ~= nil then
-        -- state_number
-        obj_char["velocity_cache"][1] = horizontal_velocity
-    end
     local res = {}
     local width_table = {200,200,230,260,270,235,200}
     width_table[0] = 200
@@ -897,11 +893,11 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet_stat
     end
     local function update_maintain_horizontal_velocity()
         -- state_number
-        obj_char["velocity"][1] = obj_char["velocity_cache"][1]
+        obj_char["velocity"][1] = horizontal_velocity
     end
     local function update_before_falling()
         -- state_number
-        obj_char["velocity"][1] = obj_char["velocity_cache"][1]
+        obj_char["velocity"][1] = horizontal_velocity
         if obj_char["velocity"][2] >= - 16.0 and obj_char["f"] <= 8 then
             obj_char["f"] = 9
             update_maintain_horizontal_velocity()
@@ -936,7 +932,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet_stat
         obj_char["burst_inv"] = false
         obj_char["burst_inv_countdown"] = 0
         -- state_number
-        obj_char["velocity"][1] = obj_char["velocity_cache"][1]
+        obj_char["velocity"][1] = horizontal_velocity
         if vertical_velocity ~= nil then
             obj_char["velocity"][2] = vertical_velocity
         else
@@ -5560,8 +5556,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
             0,
             1
         )
-        obj_char["velocity"] = obj_char["velocity_cache"]
-        obj_char_other_side["velocity"] = obj_char_other_side["velocity_cache"]
+        obj_char["physics_lock"] = false
+        obj_char_other_side["physics_lock"] = false
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["0_general_hurt_launched_high"][1]
         -- draw_correction

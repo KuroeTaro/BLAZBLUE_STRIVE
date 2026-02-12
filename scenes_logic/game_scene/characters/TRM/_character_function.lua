@@ -9,18 +9,13 @@ function character_function_TRM_j2K_game_scene_strike_hit_function(obj_char)
     hit_side_obj_char["game_speed"] = 1
     hit_side_obj_char["game_speed_subframe"] = 1
     hit_side_obj_char["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
-    if hit_side_obj_char["direction_input"] == 3 then
-        hit_side_obj_char["velocity_cache"][1] = 20*hit_side_obj_char[5]
-    else
-        hit_side_obj_char["velocity_cache"][1] = -10*hit_side_obj_char[5]
-    end
-    hit_side_obj_char["velocity_cache"][2] = hit_side_obj_char["velocity"][2]
-    hit_side_obj_char["velocity"] = {0,0}
     if obj_char["x"] <= -1485 and hit_side_obj_char["x"] < -1430 and hit_side_obj_char[5] == -1 then
         hit_side_obj_char["x"] = -1430
     elseif obj_char["x"] >= 1485 and hit_side_obj_char["x"] > 1430 and hit_side_obj_char[5] == 1 then
         hit_side_obj_char["x"] = 1430
     end
+    -- physics_lock
+    hit_side_obj_char["physics_lock"] = true
     -- block_test
     local block_bool = false
     local block_direction = obj_char["direction_input"]
@@ -65,18 +60,10 @@ function character_function_TRM_j2K_game_scene_strike_hit_function(obj_char)
     end
     -- velocity
     hit_side_obj_char["velocity"][2] = -15
-    if block_bool then
-        if hit_side_obj_char["direction_input"] == 3 then
-            hit_side_obj_char["velocity"][1] = 20*hit_side_obj_char[5]
-        else
-            hit_side_obj_char["velocity"][1] = -10*hit_side_obj_char[5]
-        end
-    else 
-        if hit_side_obj_char["direction_input"] == 3 then
-            hit_side_obj_char["velocity"][1] = 20*hit_side_obj_char[5]
-        else
-            hit_side_obj_char["velocity"][1] = 10*hit_side_obj_char[5]
-        end
+    if hit_side_obj_char["direction_input"] == 3 then
+        hit_side_obj_char["velocity"][1] = 20*hit_side_obj_char[5]
+    else
+        hit_side_obj_char["velocity"][1] = -10*hit_side_obj_char[5]
     end
     -- debug
     hit_side_obj_char["active_frame"] = hit_side_obj_char["active_frame"] + 1
@@ -237,15 +224,14 @@ function character_function_TRM_j2K_game_scene_strike_hurt_function(obj_char)
             insert_VFX_game_sceme_char_FD_block(obj_char)
         end
     end
-
+    -- physics_lock
+    obj_char["physics_lock"] = true
     -- change draw front
     CHARACTER_VISUAL_FRONT = hit_side_obj_char["player_side"]
-
     -- change character face
     if not common_game_scene_get_character_facing_currect(obj_char) then
         obj_char[5] = -obj_char[5]
     end
-    
     -- block_test
     local block_bool = false
     local block_direction = obj_char["direction_input"]
