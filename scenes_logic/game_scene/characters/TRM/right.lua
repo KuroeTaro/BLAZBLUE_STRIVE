@@ -331,7 +331,9 @@ function order_load_game_scene_char_RP_frames(load_order)
                 "jK",
                 "j2K",
                 "jS",
-                "j5Launcher"
+                "j5Launcher",
+                "j4_6Launcher",
+                "j4_6Launcher_success"
             }
             for i, v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] = 
