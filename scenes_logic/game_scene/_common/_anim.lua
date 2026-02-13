@@ -1633,6 +1633,9 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         -- insert VFX
         if teching_or_teched == "teching" then
             insert_VFX_game_scene_char_throw_tech(obj_char,-450,-900,1,1.2,1.2,0)
+            obj_char["physics_lock"] = false
+        else
+            obj_char_other_side["physics_lock"] = false
         end
         if obj_char["height_state"] ~= "air" then
             insert_VFX_game_scene_stage_smoke_horizontal_shot(

@@ -5556,7 +5556,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
             0,
             1
         )
-        obj_char["physics_lock"] = false
         obj_char_other_side["physics_lock"] = false
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["0_general_hurt_launched_high"][1]
@@ -8087,7 +8086,6 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
             0,
             1
         )
-        obj_char["physics_lock"] = false
         obj_char_other_side["physics_lock"] = false
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["0_general_hurt_launched_high"][1]

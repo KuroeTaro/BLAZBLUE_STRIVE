@@ -8,6 +8,8 @@ local thread_data = {}
 
 -- 通用类
 local load_universal_name_table = {
+    "0_air_Launcher_teched",
+    "0_air_Launcher_teching",
     "0_crouch_hurt",
     "0_general_hurt_falled_knockout",
     "0_general_hurt_hard_knockdown_down",
@@ -89,7 +91,9 @@ local load_attack_name_table = {
     "jK",
     "j2K",
     "jS",
-    "j5Launcher"
+    "j5Launcher",
+    "j4_6Launcher",
+    "j4_6Launcher_success"
 }
 for i, v in ipairs(load_attack_name_table) do
     thread_data[v] = compress_module("asset/game_scene/characters/TRM/_character/ATTACK/TRM_"..v..".dds")
