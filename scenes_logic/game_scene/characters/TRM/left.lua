@@ -221,6 +221,8 @@ function order_load_game_scene_char_LP_frames(load_order)
             image_sprite_sheet_table_char_game_scene_LP = {}
 
             local load_name_table = {
+                "0_air_Launcher_teched",
+                "0_air_Launcher_teching",
                 "0_crouch_hurt",
                 "0_general_hurt_falled_knockout",
                 "0_general_hurt_hard_knockdown_down",
@@ -457,6 +459,20 @@ function load_game_scene_box_anchor_data_LP()
     -- obj_pushboxs_data_game_scene_char_LP["__"][0] = 
     -- obj_anchor_data_game_scene_char_LP["__"] = {__, __}
 
+    obj_anchor_data_game_scene_char_LP["0_air_Launcher_teched"] = {340, 297}
+    obj_anchor_data_game_scene_char_LP["0_air_Launcher_teching"] = {275, 360}
+
+    obj_pushboxs_data_game_scene_char_LP["0_crouch_hurt"] = {}
+    obj_pushboxs_data_game_scene_char_LP["0_crouch_hurt"][0] = crouch_pushbox
+    obj_hurtboxs_data_game_scene_char_LP["0_crouch_hurt"] = {}
+    obj_hurtboxs_data_game_scene_char_LP["0_crouch_hurt"][0] = crouch_hurtbox
+    obj_hurtboxs_data_game_scene_char_LP["0_crouch_hurt"][1] = {{0, -157.5, 230, 307.5}}
+    obj_hurtboxs_data_game_scene_char_LP["0_crouch_hurt"][2] = {{0, -155, 240, 305}}
+    obj_hurtboxs_data_game_scene_char_LP["0_crouch_hurt"][3] = {{0, -152.5, 250, 302.5}}
+    obj_hurtboxs_data_game_scene_char_LP["0_crouch_hurt"][4] = {{0, -150, 260, 300}}
+    obj_anchor_data_game_scene_char_LP["0_crouch_hurt"] = {297, 420}
+    obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["smoke_spawn_anchor_pos"]["0_crouch_hurt"] = {600,-195}
+
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_falled_knockout"] = {}
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_falled_knockout"][0] = stand_pushbox
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_falled_knockout"][1] = crouch_pushbox
@@ -506,17 +522,6 @@ function load_game_scene_box_anchor_data_LP()
     obj_hurtboxs_data_game_scene_char_LP["0_stand_hurt_mid"][4] = {{0, -190, 260, 380}}
     obj_anchor_data_game_scene_char_LP["0_stand_hurt_mid"] = {205, 475}
     obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["smoke_spawn_anchor_pos"]["0_stand_hurt_mid"] = {600,-195}
-
-    obj_pushboxs_data_game_scene_char_LP["0_crouch_hurt"] = {}
-    obj_pushboxs_data_game_scene_char_LP["0_crouch_hurt"][0] = crouch_pushbox
-    obj_hurtboxs_data_game_scene_char_LP["0_crouch_hurt"] = {}
-    obj_hurtboxs_data_game_scene_char_LP["0_crouch_hurt"][0] = crouch_hurtbox
-    obj_hurtboxs_data_game_scene_char_LP["0_crouch_hurt"][1] = {{0, -157.5, 230, 307.5}}
-    obj_hurtboxs_data_game_scene_char_LP["0_crouch_hurt"][2] = {{0, -155, 240, 305}}
-    obj_hurtboxs_data_game_scene_char_LP["0_crouch_hurt"][3] = {{0, -152.5, 250, 302.5}}
-    obj_hurtboxs_data_game_scene_char_LP["0_crouch_hurt"][4] = {{0, -150, 260, 300}}
-    obj_anchor_data_game_scene_char_LP["0_crouch_hurt"] = {297, 420}
-    obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["smoke_spawn_anchor_pos"]["0_crouch_hurt"] = {600,-195}
 
     obj_pushboxs_data_game_scene_char_LP["4_stand_block_guard_crash"] = {}
     obj_pushboxs_data_game_scene_char_LP["4_stand_block_guard_crash"][0] = stand_pushbox
