@@ -447,7 +447,7 @@ function common_game_scene_throw_hit_function(obj_char)
     local side = obj_char["player_side"]
     local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
     -- physics_lock
-    obj_char["physics_lock"] = true
+    hit_side_obj_char["physics_lock"] = true
     -- change_draw_front
     CHARACTER_VISUAL_FRONT = side
     -- change_character_face

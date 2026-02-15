@@ -1613,8 +1613,10 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         obj_char["projectile_inv_countdown"] = 30
         obj_char["burst_inv"] = true
         obj_char["burst_inv_countdown"] = 30
+
+        obj_char["physics_lock"] = false
         -- state_number
-        obj_char["velocity"] = {-obj_char[5]*80,0}
+        obj_char["velocity"] = {-obj_char[5]*60,0}
         obj_char["velocity_cache"] = {0,0}
         obj_char["gravity"] = 2.5
         obj_char["friction"] = 5 -- 包括地面移动和空中dash的水平阻力
@@ -1628,14 +1630,11 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         obj_char[8] = 0
         obj_char["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- input_sys_cache
-        obj_char_other_side["input_sys_state"] = "save" -- none save load
-        init_input_sys_cache(obj_char_other_side)
+        obj_char["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char)
         -- insert VFX
         if teching_or_teched == "teching" then
             insert_VFX_game_scene_char_throw_tech(obj_char,-450,-900,1,1.2,1.2,0)
-            obj_char["physics_lock"] = false
-        else
-            obj_char_other_side["physics_lock"] = false
         end
         if obj_char["height_state"] ~= "air" then
             insert_VFX_game_scene_stage_smoke_horizontal_shot(

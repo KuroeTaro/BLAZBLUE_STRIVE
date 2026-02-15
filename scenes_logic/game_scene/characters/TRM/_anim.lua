@@ -5791,6 +5791,10 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         -- draw_correction
         obj_char[8] = 5
     end
+    res[37] = function()
+        -- state
+        obj_char["physics_lock"] = false
+    end
     res[45] = function()
         -- draw_correction
         obj_char[8] = 6
@@ -6992,14 +6996,14 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
         -- draw_correction
         obj_char[8] = 5
     end
-    res[17] = function()
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "save" -- none save load
-        init_input_sys_cache(obj_char)
-    end
     res[20] = function()
         -- draw_correction
         obj_char[8] = 6
+    end
+    res[22] = function()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char)
     end
     res[24] = function()
         -- collide
@@ -7221,6 +7225,11 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
     end
+    res[16] = function()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char)
+    end
     res[19] = function()
         -- collide
         obj_char["hurtbox_table"] = {{0,-165,210,350}}
@@ -7248,6 +7257,9 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
         end
     end
     res[25] = function()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char)
         -- collide
         obj_char["hurtbox_table"] = {{0,-155,230,330}}
         -- draw_correction
@@ -7800,8 +7812,8 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
         -- state
         obj_char["default_throw_distance"] = 0
         
-        obj_char["sprite_sheet_state"] = "4_6Launcher"
-        obj_char["height_state"] = "stand" -- stand crouch air OTG
+        obj_char["sprite_sheet_state"] = "j4_6Launcher"
+        obj_char["height_state"] = "air" -- stand crouch air OTG
         obj_char["hit_type_state"] = "throw" -- none strike throw burst
         obj_char["hit_guard_type_state"] = "all" -- none all low high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
@@ -7820,9 +7832,9 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
 
-        obj_char["throw_success_animation"] = load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
-        obj_char["throw_hurt_success_animation"] = load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
-        obj_char["throw_hurt_PRC_animation"] = load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
+        obj_char["throw_success_animation"] = load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
+        obj_char["throw_hurt_success_animation"] = load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
+        obj_char["throw_hurt_PRC_animation"] = load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
 
         obj_char["current_animation_length"] = 42
 
@@ -7859,10 +7871,10 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
         -- game_speed
         obj_char["hit_hurt_blockstop_countdown"] = 12
         -- collide
-        obj_char["pushbox"] = {0,-185,121.5,370}
+        obj_char["pushbox"] = {0,-100,121.5,200}
         obj_char["pushbox_other_side_char_active"] = true
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = {{0,-215,170,430},{-18,-455,100,50}}
+        obj_char["hurtbox_table"] = {{0,-140,250,300}}
         obj_char["collision_test_ground_height_offset"] = 0
         -- sub_obj
         obj_char["hit_VFX_insert_function"] = nil
@@ -7875,10 +7887,10 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
         obj_char["block_SFX"] = nil
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = {245,530}
+        obj_char["anchor_pos"] = {300,310}
         -- camera_animation_load
-        load_game_scene_anim_char_TRM_4_6Launcher_camera_shake_anim(obj_char,1.2)
-        load_game_scene_anim_char_TRM_4_6Launcher_camera_enclose_anim(obj_char)
+        load_game_scene_anim_char_TRM_j4_6Launcher_camera_shake_anim(obj_char,1.2)
+        load_game_scene_anim_char_TRM_j4_6Launcher_camera_enclose_anim(obj_char)
         obj_char["enclose_position_offset"] = {0,0,0}
         -- set_frame_adv
         common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
@@ -7887,15 +7899,15 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
     end
     res[1] = function()
         -- state & state_number
-        obj_char["default_throw_distance"] = 240
+        obj_char["default_throw_distance"] = 360
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["throw_active"] = true 
         -- collide
-        obj_char["hitbox_table"] = {{75,-190,160,350}}
-        obj_char["hurtbox_table"] = {{0,-215,170,430},{-18,-455,100,50},{75,-190,180,370}}
+        obj_char["hitbox_table"] = {{0,-160,560,80}}
+        obj_char["hurtbox_table"] = {{0,-140,250,300}}
         -- draw_correction
         obj_char[8] = 1
     end
@@ -7908,38 +7920,48 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
         obj_char["throw_active"] = false
         -- collide
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = {{0,-215,170,430},{-2,-455,100,50}}
+        obj_char["hurtbox_table"] = {{0,-140,250,300}}
         -- draw_correction
         obj_char[8] = 2
     end
-    res[12] = function()
-        -- collide
-        obj_char["hurtbox_table"] = {{0,-215,170,430},{22,-455,100,50}}
+    res[7] = function()
         -- draw_correction
         obj_char[8] = 3
     end
-    res[14] = function()
-        -- collide
-        obj_char["hurtbox_table"] = {{0,-215,170,430},{35,-455,100,50}}
+    res[11] = function()
         -- draw_correction
         obj_char[8] = 4
     end
-    res[19] = function()
+    res[18] = function()
         -- draw_correction
         obj_char[8] = 5
     end
-    res[35] = function()
+    res[33] = function()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char)
         -- draw_correction
         obj_char[8] = 6
     end
-    res[37] = function()
+    res[38] = function()
+        -- state
+        obj_char["hit_type_state"] = "none" -- none strike throw burst
+        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
+        obj_char["move_state"] = "none" -- none startup active recovery
+        obj_char["hit_cancel"] = false
+        obj_char["idle_cancel"] = true
         -- input_sys_cache
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
-    end
-    res[40] = function()
+        -- state_number
+        obj_char["gravity"] = 2.5
+        obj_char["horizontal_velocity_correction"] = 1
+        obj_char["gravity_correction"] = 1
+        obj_char["damage_correction"] = 1
         -- collide
-        obj_char["hurtbox_table"] = {{0,-215,170,430},{16,-455,100,50}}
+        obj_char["hitbox_table"] = {}
+        obj_char["hurtbox_table"] = {{0,-140,250,300}}
         -- draw_correction
         obj_char[8] = 7
     end
@@ -7957,6 +7979,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
     local pushbox_data_other_side = common_game_scene_change_character_pushbox(side)
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
+    -- 总而言之需要 +66f
     local function update_y_37f_43f(i)
         obj_char_other_side["y"] = 2.5*(i-39)^2+185
     end
@@ -8164,7 +8187,7 @@ end
 function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
     local res = {}
     local friction = 1
-    local gravity = 2.5
+    local gravity = math.abs(obj_char["y"]-365)/400
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
@@ -8174,7 +8197,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         -- state
         obj_char["default_throw_distance"] = 0
 
-        obj_char["sprite_sheet_state"] = "4_6Launcher_success"
+        obj_char["sprite_sheet_state"] = "j4_6Launcher_success"
         obj_char["height_state"] = "stand" -- stand crouch air OTG
         obj_char["hit_type_state"] = "throw" -- none strike throw burst
         obj_char["hit_guard_type_state"] = "all" -- none all low high
@@ -8288,23 +8311,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         -- visual_front
         CHARACTER_VISUAL_FRONT = obj_char["player_side"]
     end
-    res[7] = function()
-        -- draw_correction
-        obj_char[8] = 1
-    end
-    res[13] = function()
-        -- draw_correction
-        obj_char[8] = 2
-    end
-    res[22] = function()
-        -- draw_correction
-        obj_char[8] = 3
-    end
-    res[26] = function()
-        -- draw_correction
-        obj_char[8] = 4
-    end
-    res[27] = function()
+    res[12] = function()
         -- VFX
         local hit_VFX_insert_function_argument = obj_char["hit_VFX_insert_function_argument"]
         obj_char["hit_VFX_insert_function"](
@@ -8321,17 +8328,9 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         -- draw_correction
         obj_char[8] = 5
     end
-    res[45] = function()
-        -- draw_correction
-        obj_char[8] = 6
-    end
-    res[55] = function()
-        -- draw_correction
-        obj_char[8] = 7
-    end
-    res[60] = function()
-        -- draw_correction
-        obj_char[8] = 8
+    res[19] = function()
+        -- state
+        obj_char["physics_lock"] = false
     end
     res[67] = function()
         -- input_sys_cache
@@ -8339,14 +8338,6 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         init_input_sys_cache(obj_char)
         -- draw_correction
         obj_char[8] = 9
-    end
-    res[72] = function()
-        -- draw_correction
-        obj_char[8] = 10
-    end
-    res[74] = function()
-        -- draw_correction
-        obj_char[8] = 11
     end
     res[77] = function()
         -- state
@@ -8368,26 +8359,166 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-215,170,430}}
     end
-    res[81] = function()
-        -- draw_correction
-        obj_char[8] = 12
-    end
-    res[84] = function()
-        -- draw_correction
-        obj_char[8] = 13
-    end
-    res[120] = function()
-        -- draw_correction
-        obj_char[8] = 14
-    end
-    res[125] = function()
-        -- draw_correction
-        obj_char[8] = 15
-    end
     res[129] = function()
         -- animation_end
     end
     return res
+end
+function load_game_scene_anim_char_TRM_j4_6Launcher_land_special(obj_char)
+    -- mod version of 7_8_9_jump_air_to_stand_idle
+    local res = {}
+
+    res[0] = function()
+        -- state
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
+        obj_char["sprite_sheet_state"] = "7_8_9_jump_air_to_stand_idle"
+        obj_char["height_state"] = "stand" -- stand crouch air OTG
+        obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
+        obj_char["move_state"] = "recovery" -- none startup active recovery
+        obj_char["startup_frame"] = 0
+        obj_char["active_frame"] = 0
+        obj_char["recovery_frame"] = 0
+        obj_char["frame_adv"] = 0
+
+        obj_char["current_animation_length"] = 8
+
+        obj_char["idle_cancel"] = false
+
+        obj_char["strike_inv"] = false
+        obj_char["strike_inv_countdown"] = 0
+        obj_char["throw_inv"] = false
+        obj_char["throw_inv_countdown"] = 0
+        obj_char["projectile_inv"] = false
+        obj_char["projectile_inv_countdown"] = 0
+        obj_char["burst_inv"] = false
+        obj_char["burst_inv_countdown"] = 0
+        -- state_number
+        obj_char["velocity"] = {0,0}
+        obj_char["velocity_cache"] = {0,0}
+        obj_char["gravity"] = 2.5
+        obj_char["friction"] = 1
+        obj_char["horizontal_velocity_correction"] = 1
+        obj_char["gravity_correction"] = 1
+        obj_char["damage_correction"] = 1
+
+        obj_char["air_move"]["jump"][1] = obj_char["air_move"]["jump"][2]
+        obj_char["air_move"]["air_dash"][1] = obj_char["air_move"]["air_dash"][2]
+        -- collide
+        obj_char["pushbox"] = {0,-185,121.5,370}
+        obj_char["pushbox_other_side_char_active"] = true
+        obj_char["hitbox_table"] = {}
+        obj_char["hurtbox_table"] = {{0,-190,180,380}}
+        obj_char["collision_test_ground_height_offset"] = 0
+        -- draw_correction
+        obj_char[8] = 0
+        obj_char["anchor_pos"] = {325,690}
+        -- update
+        obj_char["y"] = 365
+        -- VFX
+        insert_VFX_game_scene_stage_smoke_land_blow(obj_char,-355,-160,1,1,1,0)
+        -- set_frame_adv
+        common_game_scene_change_character(obj_char["player_side"])["frame_adv"] = 0
+    end
+    res[5] = function()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "save" -- none save load
+        init_input_sys_cache(obj_char)
+        -- collide
+        obj_char["hurtbox_table"] = {{0,-215,170,430},{15,-455,100,50}}
+        -- draw_correction
+        obj_char[8] = 1
+    end
+    res[10] = function()
+        -- state
+        obj_char["move_state"] = "none" -- none startup active recovery
+        obj_char["idle_cancel"] = true
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
+        -- animation end
+    end
+    return res
+end
+
+function load_game_scene_anim_char_TRM_j4_6Launcher_camera_enclose_anim(obj_char)
+    local anim = {}
+    anim[0] = {0.00,1}
+    anim[1] = {0.56,2}
+    anim[2] = {0.70,4}
+    anim[4] = {0.82,6}
+    anim[6] = {0.86,8}
+    anim[8] = {0.90,10}
+    anim[10] = {0.94,20}
+    anim[20] = {0.98,30}
+    anim[30] = {0.99,35}
+    anim[35] = {1.00,40}
+    anim[40] = {1.00,45}
+    anim[45] = {0.97,50}
+    anim[50] = {0.69,55}
+    anim[55] = {0.20,60}
+    anim[60] = {0.03,65}
+    anim[65] = {0.00,65}
+    anim["prop"] = "enclose_percentage"
+    anim["length"] = 65
+    anim["loop"] = false
+    anim["fix_type"] = true
+
+    obj_char["camera_enclosing_anim"] = anim
+end
+function load_game_scene_anim_char_TRM_j4_6Launcher_camera_shake_anim(obj_char,multiplyer)
+    local anim = {}
+    anim = {}
+    anim[0] = {0,27}
+    anim[27] = {0,28}
+    anim[28] = {13.25*multiplyer,29}
+    anim[29] = {-10.34*multiplyer,30}
+    anim[30] = {-9.93*multiplyer,31}
+    anim[31] = {9.02*multiplyer,32}
+    anim[32] = {-8.10*multiplyer,33}
+    anim[33] = {8.69*multiplyer,34}
+    anim[34] = {-6.72*multiplyer,35}
+    anim[35] = {6.47*multiplyer,36}
+    anim[36] = {-5.78*multiplyer,37}
+    anim[37] = {5.46*multiplyer,38}
+    anim[38] = {4.31*multiplyer,39}
+    anim[39] = {-4.65*multiplyer,40}
+    anim[40] = {2.00*multiplyer,41}
+    anim[41] = {-2.81*multiplyer,42}
+    anim[42] = {1.63*multiplyer,43}
+    anim[43] = {0*multiplyer,43}
+    anim["prop"] = "3d_pos_x"
+    anim["length"] = 43
+    anim["loop"] = false
+    anim["fix_type"] = false
+    obj_char["camera_x_shake_anim"] = anim
+
+    local multiplyer_fix = multiplyer*2
+    anim = {}
+    anim[0] = {0,27}
+    anim[27] = {0,28}
+    anim[28] = {10.92*multiplyer_fix,29}
+    anim[29] = {2.67*multiplyer_fix,30}
+    anim[30] = {-4.00*multiplyer_fix,31}
+    anim[31] = {-8.26*multiplyer_fix,32}
+    anim[32] = {3.60*multiplyer_fix,33}
+    anim[33] = {8.15*multiplyer_fix,34}
+    anim[34] = {-2.35*multiplyer_fix,35}
+    anim[35] = {-6.04*multiplyer_fix,36}
+    anim[36] = {1.75*multiplyer_fix,37}
+    anim[37] = {5.44*multiplyer_fix,38}
+    anim[38] = {-1.69*multiplyer_fix,39}
+    anim[39] = {1.00*multiplyer_fix,40}
+    anim[40] = {3.67*multiplyer_fix,41}
+    anim[41] = {-1.13*multiplyer_fix,42}
+    anim[42] = {2.11*multiplyer_fix,43}
+    anim[43] = {0*multiplyer_fix,43}
+    anim["prop"] = "3d_pos_y"
+    anim["length"] = 43
+    anim["loop"] = false
+    anim["fix_type"] = false
+    obj_char["camera_y_shake_anim"] = anim
 end
 
 -- special_hurt_animations
