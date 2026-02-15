@@ -827,7 +827,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         obj_char["collision_test_ground_height_offset"] = 0
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = {325,690}
+        obj_char["anchor_pos"] = {325,480}
         -- update
         obj_char["y"] = 365
         -- VFX
@@ -5724,7 +5724,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         obj_char_other_side["x"] = obj_char["x"] + dx
         pushbox_stage_relocate_x(obj_char_other_side)
         obj_char["x"] = obj_char_other_side["x"] - dx
-            
+        -- facing_currect
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -8277,39 +8277,24 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         obj_char_other_side["x"] = obj_char["x"] + dx
         pushbox_stage_relocate_x(obj_char_other_side)
         obj_char["x"] = obj_char_other_side["x"] - dx
-            
+        -- facing_currect
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
-        -- camera_animation_application
-        local obj_camera = obj_stage_game_scene_camera
-        obj_camera["3d_pos_z_target"] = (math.abs(obj_char["x"]-obj_char_other_side["x"])-720)*(-170)/720-800
-        obj_camera["3d_pos_z_target"] = math.min(obj_camera["3d_pos_z_target"],-800)
-        obj_camera["3d_pos_z_target"] = math.max(obj_camera["3d_pos_z_target"],-970)
-
-        obj_camera["3d_pos_x_target"] = (obj_char["x"] + obj_char_other_side["x"])/2   -- 必须要保持两个pushbox宽度相同
-        obj_camera["3d_pos_x_target"] = math.max(obj_camera["3d_pos_x_target"],-850-(obj_camera["3d_pos_z_target"]+800)*1)
-        obj_camera["3d_pos_x_target"] = math.min(obj_camera["3d_pos_x_target"],850+(obj_camera["3d_pos_z_target"]+800)*1)
-        local x = math.max(math.min((obj_char["x"]+obj_char_other_side["x"])/2,1000),-1000)
-        obj_char["enclose_position_offset"] = {
-            x - obj_camera["3d_pos_x_target"],
-            (obj_char["y"]+obj_char_other_side["y"])/8 - obj_camera["3d_pos_y_target"],
-            120
-        }
-        table.insert(obj_camera["active_application_table"],
-            function()
-                anim_camera_point_linear_game_scene_camera_enclosing = obj_char["camera_enclosing_anim"]
-                anim_camera_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
-                anim_camera_point_linear_game_scene_camera_shake_y = obj_char["camera_y_shake_anim"]
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
-                obj_camera["enclose_position_offset"] = obj_char["enclose_position_offset"]
-                obj_camera["state"] = "active"
-            end
-        )
         -- visual_front
         CHARACTER_VISUAL_FRONT = obj_char["player_side"]
+    end
+    res[2] = function()
+        -- draw_correction
+        obj_char[8] = 1
+    end
+    res[5] = function()
+        -- draw_correction
+        obj_char[8] = 2
+    end
+    res[9] = function()
+        -- draw_correction
+        obj_char[8] = 3
     end
     res[12] = function()
         -- VFX
@@ -8326,20 +8311,53 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
             hit_VFX_insert_function_argument[9]
         )
         -- draw_correction
-        obj_char[8] = 5
+        obj_char[8] = 4
     end
     res[19] = function()
         -- state
         obj_char["physics_lock"] = false
+        -- draw_correction
+        obj_char[8] = 5
     end
-    res[67] = function()
+    res[24] = function()
+        -- draw_correction
+        obj_char[8] = 6
+    end
+    res[27] = function()
+        -- state
+        obj_char["sprite_sheet_state"] = "8_jump"
+        -- draw_correction
+        obj_char[8] = 6
+        obj_char["anchor_pos"] = {350,430}
+    end
+    res[32] = function()
+        -- draw_correction
+        obj_char[8] = 7
+    end
+    res[37] = function()
+        -- draw_correction
+        obj_char[8] = 8
+    end
+    res[40] = function()
+        -- state
+        obj_char["y"] = 365
+        obj_char["sprite_sheet_state"] = "7_8_9_jump_air_to_stand_idle"
+        -- draw_correction
+        obj_char[8] = 0
+        obj_char["anchor_pos"] = {325,480}
+    end
+    res[43] = function()
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
         init_input_sys_cache(obj_char)
         -- draw_correction
         obj_char[8] = 9
     end
-    res[77] = function()
+    res[45] = function()
+        -- draw_correction
+        obj_char[8] = 1
+    end
+    res[48] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
         obj_char["hit_guard_type_state"] = "none" -- none all low high
@@ -8358,8 +8376,6 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         -- collide
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-215,170,430}}
-    end
-    res[129] = function()
         -- animation_end
     end
     return res
@@ -8413,7 +8429,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_land_special(obj_char)
         obj_char["collision_test_ground_height_offset"] = 0
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = {325,690}
+        obj_char["anchor_pos"] = {325,480}
         -- update
         obj_char["y"] = 365
         -- VFX
