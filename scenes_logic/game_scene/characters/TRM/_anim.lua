@@ -8187,7 +8187,7 @@ end
 function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
     local res = {}
     local friction = 1
-    local gravity = math.abs(obj_char["y"]-365)/400
+    local gravity = math.abs(obj_char["y"]-125)/400
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
@@ -8198,7 +8198,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         obj_char["default_throw_distance"] = 0
 
         obj_char["sprite_sheet_state"] = "j4_6Launcher_success"
-        obj_char["height_state"] = "stand" -- stand crouch air OTG
+        obj_char["height_state"] = "air" -- stand crouch air OTG
         obj_char["hit_type_state"] = "throw" -- none strike throw burst
         obj_char["hit_guard_type_state"] = "all" -- none all low high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
