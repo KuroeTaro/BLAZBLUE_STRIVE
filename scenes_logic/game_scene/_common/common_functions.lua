@@ -454,7 +454,10 @@ function common_game_scene_throw_hit_function(obj_char)
     if not common_game_scene_get_character_facing_currect(hit_side_obj_char) then
         hit_side_obj_char[5] = -hit_side_obj_char[5]
     end
-
+    -- set min hight of air throw
+    if obj_char["height_state"] == "air" then
+        hit_side_obj_char["y"] = math.min(hit_side_obj_char["y"],125)
+    end
     obj_char["y"] = hit_side_obj_char["y"]
 
     hit_side_obj_char["f"] = 0

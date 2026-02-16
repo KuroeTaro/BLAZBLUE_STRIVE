@@ -1497,7 +1497,7 @@ function load_game_scene_anim_char_common_0_air_block(
         init_input_sys_cache(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
-        if obj_char_other_side["y"] > 160 then obj_char_other_side["y"] = 160 end
+        if obj_char_other_side["y"] > 125 then obj_char_other_side["y"] = 125 end
         -- set_frame_adv
         obj_char["frame_adv"] = 0
     end
@@ -1573,6 +1573,7 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
     local sprite_sheet_state = nil
     local pushbox = nil
     local collision_test_ground_height_offset = nil
+    local vertical_velocity = nil
     if obj_char["height_state"] == "air" then
         if teching_or_teched == "teching" then
             sprite_sheet_state = "0_air_Launcher_teching"
@@ -1581,7 +1582,8 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         end
         pushbox = pushbox_data_other_side["1_4_7_air_block"][0]
         collision_test_ground_height_offset = 180
-        obj_char["y"] = math.max(obj_char["y"],160)
+        vertical_velocity = -25
+        obj_char["y"] = math.max(obj_char["y"],125)
     else
         if teching_or_teched == "teching" then
             sprite_sheet_state = "0_ground_Launcher_teching"
@@ -1590,6 +1592,7 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         end
         pushbox = pushbox_data_other_side["4_stand_block_high"][0]
         collision_test_ground_height_offset = 0
+        vertical_velocity = 0
     end
 
     res[0] = function()
@@ -1616,7 +1619,7 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
 
         obj_char["physics_lock"] = false
         -- state_number
-        obj_char["velocity"] = {-obj_char[5]*60,0}
+        obj_char["velocity"] = {-obj_char[5]*60,vertical_velocity}
         obj_char["velocity_cache"] = {0,0}
         obj_char["gravity"] = 2.5
         obj_char["friction"] = 5 -- 包括地面移动和空中dash的水平阻力
@@ -2283,6 +2286,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         frame_0_special_update_function()
     end
     res[1] = function()
+        -- update
         obj_char_other_side["state_cache"] = state_cache
     end
     res[60] = function()
@@ -3543,6 +3547,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         obj_char["frame_adv"] = 0
     end
     res[1] = function()
+        -- update
         update_throw_inv()
         obj_char_other_side["state_cache"] = state_cache
     end

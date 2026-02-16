@@ -2108,32 +2108,16 @@ function state_gate_game_scene_char_RP_from_throw_success(input,obj_char)
     end
     -- animation_end
     if common_game_scene_get_character_animation_end(obj_char) then
-        -- air
-        if obj_char["height_state"] == "air" then
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},0,0)
-            init_character_anim_with(obj_char,obj_char["current_animation"])
-            obj_char["state"] = "7_8_9_jump_air"
-            -- _common_air_to_move
-            if state_gate_game_scene_char_RP_common_air_to_dash_move_hold_ver(input,obj_char) then
-                return true
-            end
-            -- 7_8_9_jump_air
-            if state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char) then
-                return true
-            end
-        -- stand_idle
-        elseif obj_char["height_state"] == "stand" then
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-            init_character_anim_with(obj_char,obj_char["current_animation"])
-            obj_char["state"] = "5_stand_idle"
-            -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
-                return true
-            end
-            -- 5_stand_idle
-            if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
-                return true
-            end
+        obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
+        init_character_anim_with(obj_char,obj_char["current_animation"])
+        obj_char["state"] = "5_stand_idle"
+        -- _common_ground_idle_to_move
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+            return true
+        end
+        -- 5_stand_idle
+        if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
+            return true
         end
         return
     end
@@ -2222,7 +2206,7 @@ function state_gate_game_scene_char_RP_from_throw_tech(input,obj_char)
         state_machine_char_game_scene_char_RP_input_sys_cache()
         -- air
         if obj_char["height_state"] == "air" then
-            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},0,0)
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},-50,0)
             init_character_anim_with(obj_char,obj_char["current_animation"])
             obj_char["state"] = "7_8_9_jump_air"
             -- _common_air_to_move
