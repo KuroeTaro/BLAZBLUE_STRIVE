@@ -10,7 +10,7 @@
 },
 "1":
 {
-	"frame": {"x":580,"y":0,"w":580,"h":400},
+	"frame": {"x":0,"y":400,"w":580,"h":400},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":580,"h":400},
@@ -18,7 +18,7 @@
 },
 "2":
 {
-	"frame": {"x":1160,"y":0,"w":580,"h":400},
+	"frame": {"x":0,"y":800,"w":580,"h":400},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":580,"h":400},
@@ -26,7 +26,7 @@
 },
 "3":
 {
-	"frame": {"x":1740,"y":0,"w":580,"h":400},
+	"frame": {"x":0,"y":1200,"w":580,"h":400},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":580,"h":400},
@@ -34,7 +34,7 @@
 },
 "4":
 {
-	"frame": {"x":2320,"y":0,"w":580,"h":400},
+	"frame": {"x":0,"y":1600,"w":580,"h":400},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":580,"h":400},
@@ -42,7 +42,7 @@
 },
 "5":
 {
-	"frame": {"x":2900,"y":0,"w":580,"h":400},
+	"frame": {"x":0,"y":2000,"w":580,"h":400},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":580,"h":400},
@@ -50,7 +50,7 @@
 },
 "6":
 {
-	"frame": {"x":3480,"y":0,"w":580,"h":400},
+	"frame": {"x":0,"y":2400,"w":580,"h":400},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":580,"h":400},
@@ -58,7 +58,7 @@
 },
 "7":
 {
-	"frame": {"x":4060,"y":0,"w":580,"h":400},
+	"frame": {"x":0,"y":2800,"w":580,"h":400},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":580,"h":400},
@@ -67,10 +67,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "TRM_j46Launcher",
+	"image": "TRM_j4_6Launcher",
 	"format": "RGBA8888",
-	"size": {"w":4640,"h":400},
+	"size": {"w":580,"h":3200},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:d590a2d31514c3ee09992fe458b531cb:db3bbd6bdb14773d5a3dbc250fbc5a01:62044e54acf94495b4d83afb2c680cf0$"
+	"smartupdate": "$TexturePacker:SmartUpdate:0512abc7e7210b954d6b2fce64cc8c0a:8fc1e5bf11e20cf48b039047fa5671ac:886801f245f0c5e35ee660c9183f6dc0$"
 }
 }

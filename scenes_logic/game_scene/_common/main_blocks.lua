@@ -500,7 +500,7 @@ function update_game_scene_gravity()
     local char_RP = obj_char_game_scene_char_RP
 
     if char_LP["y"] == 365 then
-        char_LP["velocity"][2] = math.max(char_LP["velocity"][2],0)
+        char_LP["velocity"][2] = math.min(char_LP["velocity"][2],0)
     elseif char_LP["y"] > 365 then
         char_LP["y"] = 365
         char_LP["velocity"][2] = 0
@@ -510,7 +510,7 @@ function update_game_scene_gravity()
     end
 
     if char_RP["y"] == 365 then
-        char_RP["velocity"][2] = math.max(char_RP["velocity"][2],0)
+        char_RP["velocity"][2] = math.min(char_RP["velocity"][2],0)
     elseif char_RP["y"] > 365 then
         char_RP["y"] = 365
         char_RP["velocity"][2] = 0

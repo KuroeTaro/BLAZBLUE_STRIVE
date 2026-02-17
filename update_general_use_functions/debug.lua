@@ -12,26 +12,48 @@ function set_pause()
             end
         end,
         ["Releasing"] = function()
-            if love.keyboard.isDown("f1") or test_input_sys_press(INPUT_SYS_CURRENT_COMMAND_STATE["L"]["start"]) then
+            if love.keyboard.isDown("f1") or test_input_sys_press(INPUT_SYS_CURRENT_COMMAND_STATE["L"]["back"]) then
                 DEBUG_PAUSE_STATE = "Pressing"
             else
                 DEBUG_PAUSE_STATE = "Released"
             end
         end,
         ["Pressing"] = function()
-            if love.keyboard.isDown("f1") or test_input_sys_press(INPUT_SYS_CURRENT_COMMAND_STATE["L"]["start"]) then
+            if love.keyboard.isDown("f1") or test_input_sys_press(INPUT_SYS_CURRENT_COMMAND_STATE["L"]["back"]) then
                 DEBUG_PAUSE_STATE = "Holding"
             else
                 DEBUG_PAUSE_STATE = "Releasing"
             end
         end,
         ["Holding"] = function()
-            if (not love.keyboard.isDown("f1")) or (not test_input_sys_press(INPUT_SYS_CURRENT_COMMAND_STATE["L"]["start"])) then
+            if (not love.keyboard.isDown("f1")) or (not test_input_sys_press(INPUT_SYS_CURRENT_COMMAND_STATE["L"]["back"])) then
                 DEBUG_PAUSE_STATE = "Releasing"
             end
         end
     }
     local this_function = switch[DEBUG_PAUSE_STATE]
+    if this_function then this_function() end
+end
+function set_jump_breakpoint()
+    local switch = 
+    {
+        ["Jumping"] = function()
+            DEBUG_PAUSE = true
+            DEBUG_JUMPING_BREAKPOINT_STATE = "Holding"
+        end,
+        ["Stop"] = function()
+            if love.keyboard.isDown("f12") and DEBUG_PAUSE then
+                DEBUG_PAUSE = false
+                DEBUG_JUMPING_BREAKPOINT_STATE = "Jumping"
+            end
+        end,
+        ["Holding"] = function()
+            if (not love.keyboard.isDown("f12")) then
+                DEBUG_JUMPING_BREAKPOINT_STATE = "Stop"
+            end
+        end
+    }
+    local this_function = switch[DEBUG_JUMPING_BREAKPOINT_STATE]
     if this_function then this_function() end
 end
 function set_show_hitbox()

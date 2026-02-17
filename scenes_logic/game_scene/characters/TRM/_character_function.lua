@@ -59,11 +59,13 @@ function character_function_TRM_j2K_game_scene_strike_hit_function(obj_char)
         )
     end
     -- velocity
-    hit_side_obj_char["velocity"][2] = -15
+    hit_side_obj_char["velocity"][2] = -5
     if hit_side_obj_char["direction_input"] == 3 then
-        hit_side_obj_char["velocity"][1] = 20*hit_side_obj_char[5]
-    else
+        hit_side_obj_char["velocity"][1] = 30*hit_side_obj_char[5]
+    elseif hit_side_obj_char["direction_input"] == 1 then
         hit_side_obj_char["velocity"][1] = -10*hit_side_obj_char[5]
+    else
+        hit_side_obj_char["velocity"][1] = 10*hit_side_obj_char[5]
     end
     -- debug
     hit_side_obj_char["active_frame"] = hit_side_obj_char["active_frame"] + 1

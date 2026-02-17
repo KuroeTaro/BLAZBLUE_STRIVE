@@ -78,6 +78,7 @@ function love.load()
 	DEBUG_LAST_SLEEP = 0
 	DEBUG_PAUSE = false
 	DEBUG_PAUSE_STATE = "Released"
+	DEBUG_JUMPING_BREAKPOINT_STATE = "Stop"
 	DEBUG_HITBOX_SHOWS = false
 	DEBUG_HITBOX_SHOWS_STATE = "Released"
 	DEBUG_INFO_SHOWS = false
@@ -269,6 +270,7 @@ function love.update()
 	require("lovebird").update()
 	-- globalCount = countGlobals()
 	set_pause()
+	set_jump_breakpoint()
 	set_show_hitbox()
 	set_show_info()
 	set_toggle()
