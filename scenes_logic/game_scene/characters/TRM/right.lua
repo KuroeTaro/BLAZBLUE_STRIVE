@@ -461,7 +461,7 @@ function load_game_scene_box_anchor_data_RP()
     -- obj_pushboxs_data_game_scene_char_RP["__"][0] = 
     -- obj_anchor_data_game_scene_char_RP["__"] = {__, __}
 
-    obj_anchor_data_game_scene_char_RP["0_air_Launcher_teched"] = {340, 297}
+    obj_anchor_data_game_scene_char_RP["0_air_Launcher_teched"] = {370, 310}
     obj_anchor_data_game_scene_char_RP["0_air_Launcher_teching"] = {275, 360}
 
     obj_pushboxs_data_game_scene_char_RP["0_crouch_hurt"] = {}

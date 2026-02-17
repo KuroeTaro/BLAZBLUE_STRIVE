@@ -1574,6 +1574,12 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
     local pushbox = nil
     local collision_test_ground_height_offset = nil
     local velocity = nil
+    local function update_1f_30f_air(i)
+        -- state_number
+        if obj_char["height_state"] == "air" then
+            obj_char["velocity"][1] = -obj_char[5]*(32-i)
+        end
+    end
     if obj_char["height_state"] == "air" then
         if teching_or_teched == "teching" then
             sprite_sheet_state = "0_air_Launcher_teching"
@@ -1582,7 +1588,7 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         end
         pushbox = pushbox_data_other_side["1_4_7_air_block"][0]
         collision_test_ground_height_offset = 180
-        velocity = {-obj_char[5]*15,-40}
+        velocity = {-obj_char[5]*30,-40}
         obj_char["y"] = math.min(obj_char["y"],125)
     else
         if teching_or_teched == "teching" then
@@ -1594,6 +1600,11 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         collision_test_ground_height_offset = 0
         velocity = {-obj_char[5]*60,0}
         obj_char["y"] = 365
+    end
+    for i=1,30 do
+        if obj_char["height_state"] == "air" then
+            obj_char["velocity"][1] = -obj_char[5]*(30-i)
+        end
     end
 
     res[0] = function()
@@ -1652,27 +1663,39 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         obj_char["frame_adv"] = 0
     end
     res[3] = function()
+        -- state_number
+        update_1f_30f_air(3)
         -- draw_correction
         obj_char[8] = 1
     end
     res[7] = function()
+        -- state_number
+        update_1f_30f_air(7)
         -- draw_correction
         obj_char[8] = 2
     end
     res[24] = function()
+        -- state_number
+        update_1f_30f_air(24)
         -- draw_correction
         obj_char[8] = 3
     end
     res[25] = function()
+        -- state_number
+        update_1f_30f_air(25)
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
         init_input_sys_cache(obj_char)
     end
     res[28] = function()
+        -- state_number
+        update_1f_30f_air(28)
         -- draw_correction
         obj_char[8] = 4
     end
     res[30] = function()
+        -- state_number
+        update_1f_30f_air(30)
         -- animation end
     end
     return res
