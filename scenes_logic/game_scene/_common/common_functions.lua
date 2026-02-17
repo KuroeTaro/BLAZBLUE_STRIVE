@@ -491,6 +491,7 @@ function common_game_scene_throw_hurt_function(obj_char)
         obj_char["anchor_pos"] = anchor_data["air_thrown_tested"]
         collision_test_ground_height_offset = 180
     else
+        obj_char["height_state"] = "stand"
         obj_char["sprite_sheet_state"] = "4_stand_block_high"
         obj_char["anchor_pos"] = anchor_data["ground_thrown_tested"]
         collision_test_ground_height_offset = 0
