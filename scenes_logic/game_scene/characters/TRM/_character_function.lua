@@ -62,6 +62,7 @@ function character_function_TRM_j2K_game_scene_strike_hit_function(obj_char)
     hit_side_obj_char["velocity"][2] = -5
     if hit_side_obj_char["direction_input"] == 3 then
         hit_side_obj_char["velocity"][1] = 20*hit_side_obj_char[5]
+        hit_side_obj_char["velocity"][2] = -10
     elseif hit_side_obj_char["direction_input"] == 1 then
         hit_side_obj_char["velocity"][1] = 5*hit_side_obj_char[5]
     else
@@ -294,7 +295,7 @@ function character_game_scene_char_TRM_j2K_apply_hurt_velocity(
         elseif obj_char_other_side["collision_move_available"][2] == 0 then
             obj_char["friction"] = hurt_horizontal_friction
             obj_char["velocity"] = {
-                - final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]*0.25+obj_char["velocity"][1]*0.05,
+                - final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]*0.1+obj_char["velocity"][1]*0.05,
                 obj_char["velocity"][2]
             }
             obj_char_other_side["velocity"] = {obj_char_other_side["velocity"][1],hurt_vertical_velocity}
@@ -309,7 +310,7 @@ function character_game_scene_char_TRM_j2K_apply_hurt_velocity(
         elseif obj_char_other_side["collision_move_available"][1] == 0 then
             obj_char["friction"] = hurt_horizontal_friction
             obj_char["velocity"] = {
-                - final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]*0.25+obj_char["velocity"][1]*0.05,
+                - final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]*0.1+obj_char["velocity"][1]*0.05,
                 obj_char["velocity"][2]
             }
             obj_char_other_side["velocity"] = {obj_char_other_side["velocity"][1],hurt_vertical_velocity}

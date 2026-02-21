@@ -4039,7 +4039,7 @@ function state_gate_game_scene_char_LP_from_jS(input,obj_char)
             elseif obj_char["direction_input"] == 8 then
                 obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},0,-30.0)
             elseif obj_char["direction_input"] == 9 then
-                obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{320,430},obj_char["velocity"][1]*0.1 + obj_char[5]*11.5,-30.0)
+                obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{320,430},obj_char["velocity"][1]*0.1 + obj_char[5]*11.5,-25.0)
             end
             init_character_anim_with(obj_char,obj_char["current_animation"])
             obj_char["state"] = "7_8_9_jump_air"
@@ -4125,7 +4125,7 @@ function state_gate_game_scene_char_LP_from_j5Launcher(input,obj_char)
             elseif obj_char["direction_input"] == 8 then
                 obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},0,-30.0)
             elseif obj_char["direction_input"] == 9 then
-                obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{320,430},obj_char["velocity"][1]*0.1 + obj_char[5]*11.5,-30.0)
+                obj_char["current_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{320,430},obj_char["velocity"][1]*0.1 + obj_char[5]*11.5,-29.5)
             end
             init_character_anim_with(obj_char,obj_char["current_animation"])
             obj_char["state"] = "7_8_9_jump_air"
