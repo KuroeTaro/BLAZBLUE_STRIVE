@@ -749,6 +749,8 @@ function insert_VFX_game_sceme_char_block_ver0(obj_char)
     obj["update"] = function(self)
         if obj_char["state"] == "blockstop" then
             -- do nothing
+        elseif obj_char["state"] == "hurtstop" then
+            self["life"] = 0
         else
             obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
             obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
@@ -805,6 +807,8 @@ function insert_VFX_game_sceme_char_block_ver1(obj_char)
     obj["update"] = function(self)
         if obj_char["state"] == "blockstop" then
             -- do nothing
+        elseif obj_char["state"] == "hurtstop" then
+            self["life"] = 0
         else
             obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
             obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])

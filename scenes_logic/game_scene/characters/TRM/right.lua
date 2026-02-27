@@ -3745,6 +3745,24 @@ function state_gate_game_scene_char_RP_from_cS(input,obj_char)
             obj_char["state"] = "6K"
             return true
         end
+        if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["Launcher"]) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_2Launcher(obj_char)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "2Launcher"
+            return true
+        end
+        if test_input_sys_press(input["Launcher"]) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["current_animation"] = load_game_scene_anim_char_TRM_5Launcher(obj_char)
+            init_character_anim_with(obj_char,obj_char["current_animation"])
+            obj_char["state"] = "5Launcher"
+            return true
+        end
     end
     -- idle_cancel
     if obj_char["idle_cancel"] then
