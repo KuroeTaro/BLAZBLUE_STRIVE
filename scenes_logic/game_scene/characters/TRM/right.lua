@@ -4227,14 +4227,13 @@ function draw_game_scene_char_RP()
     local sy = obj[6]
     local r = obj[7]
     local f = obj[8]
-
+    
     local shader = shader_game_scene_brightness_contrast
     shader:send("contrast", obj["contrast"])
     shader:send("brightness", obj["brightness"])
     love.graphics.setShader(shader)
 
     local oroboros_state = obj["oroboros_state"]
-
     if oroboros_state == "on" then
         local oroboros_8 = obj["oroboros_8"]
     
@@ -4253,9 +4252,8 @@ function draw_game_scene_char_RP()
         -- draw_3d_image_table(camera,oroboros,oroboros_image_table)
         local oroboros_image_table = image_UI_load_scene_loading_text
         draw_3d_image(camera,oroboros,oroboros_image_table)
-
     end
-
+    
     -- draw_3d_image_table(camera,obj,character_image_table)
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,tostring(f))
