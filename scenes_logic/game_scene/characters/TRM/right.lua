@@ -4550,7 +4550,16 @@ function update_game_scene_char_RP_inv_state_countdown()
         obj_char["burst_inv_countdown"] = 0
     end
 end
+function update_game_scene_char_RP_heat_penalty_countdown()
+end
+function update_game_scene_char_RP_ability_recover_pause_countdown()
+end
+function update_game_scene_char_RP_positive_bonus_countdown()
+end
 function update_game_scene_char_RP_uncommon_countdown()
     update_game_scene_char_RP_overdrive_countdown()
     update_game_scene_char_RP_inv_state_countdown()
+    update_game_scene_char_RP_heat_penalty_countdown()
+    update_game_scene_char_RP_ability_recover_pause_countdown()
+    update_game_scene_char_RP_positive_bonus_countdown()
 end

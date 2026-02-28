@@ -652,7 +652,7 @@ function update_game_scene_char()
         update_game_scene_char_RP_VFX()
         update_game_scene_char_RP_black_overlay()
     end
-
+    
     if game_speed_cache_RP == 0 and char_RP["game_speed"] ~= 0 then
         game_speed_cache_RP,char_RP["game_speed"] = char_RP["game_speed"],game_speed_cache_RP
         game_speed_subframe_cache_RP,char_RP["game_speed_subframe"] = char_RP["game_speed_subframe"],game_speed_subframe_cache_RP
