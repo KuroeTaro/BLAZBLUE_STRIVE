@@ -256,32 +256,32 @@ function order_load_game_scene_VFX(load_order)
             -- hit special
             image_sprite_sheet_VFX_game_scene_lighting_black_0 = 
             sprite_sheet_load(
-                "asset/game_scene/VFX/hit_VFX/special/lighting_black_0.json",
+                "asset/game_scene/VFX/hit_VFX/_special/lighting_black_0.json",
                 love.graphics.newImage(ASSET_DATA[8]["lighting_black_0_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_lighting_black_1 = 
             sprite_sheet_load(
-                "asset/game_scene/VFX/hit_VFX/special/lighting_black_1.json",
+                "asset/game_scene/VFX/hit_VFX/_special/lighting_black_1.json",
                 love.graphics.newImage(ASSET_DATA[8]["lighting_black_1_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_lighting_white_0 = 
             sprite_sheet_load(
-                "asset/game_scene/VFX/hit_VFX/special/lighting_white_0.json",
+                "asset/game_scene/VFX/hit_VFX/_special/lighting_white_0.json",
                 love.graphics.newImage(ASSET_DATA[8]["lighting_white_0_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_lighting_white_1 = 
             sprite_sheet_load(
-                "asset/game_scene/VFX/hit_VFX/special/lighting_white_1.json",
+                "asset/game_scene/VFX/hit_VFX/_special/lighting_white_1.json",
                 love.graphics.newImage(ASSET_DATA[8]["lighting_white_1_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_radial_black = 
             sprite_sheet_load(
-                "asset/game_scene/VFX/hit_VFX/special/radial_black.json",
+                "asset/game_scene/VFX/hit_VFX/_special/radial_black.json",
                 love.graphics.newImage(ASSET_DATA[8]["radial_black_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_radial_white = 
             sprite_sheet_load(
-                "asset/game_scene/VFX/hit_VFX/special/radial_white.json",
+                "asset/game_scene/VFX/hit_VFX/_special/radial_white.json",
                 love.graphics.newImage(ASSET_DATA[8]["radial_white_sprite_batch"])
             )
         end,
@@ -296,28 +296,28 @@ function order_load_game_scene_VFX(load_order)
                 -- smoke
             image_sprite_sheet_VFX_game_scene_smoke_dash_burst = 
             sprite_sheet_load(
-                "asset/game_scene/VFX/stage_VFX/smoke/dash_burst.json",
+                "asset/game_scene/VFX/stage_VFX/_smoke/dash_burst.json",
                 love.graphics.newImage(ASSET_DATA[8]["smoke_dash_burst"])
             )
             image_sprite_sheet_VFX_game_scene_smoke_horizontal_shot = 
             sprite_sheet_load(
-                "asset/game_scene/VFX/stage_VFX/smoke/horizontal_shot.json",
+                "asset/game_scene/VFX/stage_VFX/_smoke/horizontal_shot.json",
                 love.graphics.newImage(ASSET_DATA[8]["smoke_horizontal_shot"])
             )
             image_sprite_sheet_VFX_game_scene_smoke_land_blow = 
             sprite_sheet_load(
-                "asset/game_scene/VFX/stage_VFX/smoke/land_blow.json",
+                "asset/game_scene/VFX/stage_VFX/_smoke/land_blow.json",
                 love.graphics.newImage(ASSET_DATA[8]["smoke_land_blow"])
             )
             image_sprite_sheet_VFX_game_scene_smoke_vertical_shot = 
             sprite_sheet_load(
-                "asset/game_scene/VFX/stage_VFX/smoke/vertical_shot.json",
+                "asset/game_scene/VFX/stage_VFX/_smoke/vertical_shot.json",
                 love.graphics.newImage(ASSET_DATA[8]["smoke_vertical_shot"])
             )
                 -- spark
             image_sprite_sheet_VFX_game_scene_spark_dcc_burst = 
             sprite_sheet_load(
-                "asset/game_scene/VFX/stage_VFX/spark/dcc_burst.json",
+                "asset/game_scene/VFX/stage_VFX/_spark/dcc_burst.json",
                 love.graphics.newImage(ASSET_DATA[8]["spark_dcc_burst"])
             )
                 -- wallbreak
