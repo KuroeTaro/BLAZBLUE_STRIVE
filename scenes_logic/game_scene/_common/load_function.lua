@@ -288,10 +288,10 @@ function order_load_game_scene_VFX(load_order)
         [31] = function()
             -- stage_VFX
                 -- shockwave
-            image_sprite_sheet_VFX_game_scene_shockwave = 
+            image_sprite_sheet_VFX_game_scene_air_dash_shockwave =
             sprite_sheet_load(
-                "asset/game_scene/VFX/stage_VFX/shockwave.json",
-                love.graphics.newImage(ASSET_DATA[8]["shockwave"])
+                "asset/game_scene/VFX/stage_VFX/air_dash_shockwave.json",
+                love.graphics.newImage(ASSET_DATA[8]["air_dash_shockwave"])
             )
                 -- smoke
             image_sprite_sheet_VFX_game_scene_smoke_dash_burst = 

@@ -50,7 +50,7 @@ thread_data["HUD_positive_bouns_RP"] = compress_module("asset/game_scene/VFX/HUD
 
 -- stage_VFX
     -- shockwave
-thread_data["shockwave"] = compress_module("asset/game_scene/VFX/stage_VFX/shockwave.dds")
+thread_data["air_dash_shockwave"] = compress_module("asset/game_scene/VFX/stage_VFX/air_dash_shockwave.dds")
     -- smoke
 thread_data["smoke_dash_burst"] = compress_module("asset/game_scene/VFX/stage_VFX/smoke/dash_burst.dds")
 thread_data["smoke_horizontal_shot"] = compress_module("asset/game_scene/VFX/stage_VFX/smoke/horizontal_shot.dds")

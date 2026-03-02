@@ -1090,7 +1090,7 @@ function insert_VFX_game_scene_stage_4dash_air_backdash_shockwave(obj_char,x,y,o
     end
     obj["draw"] = function(self)
         local obj_camera = obj_stage_game_scene_camera
-        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_shockwave
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_air_dash_shockwave
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
         love.graphics.setColor(1,1,1,obj[4])
@@ -1128,7 +1128,7 @@ function insert_VFX_game_scene_stage_6dash_air_dash_shockwave(obj_char,x,y,opaci
     end
     obj["draw"] = function(self)
         local obj_camera = obj_stage_game_scene_camera
-        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_shockwave
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_air_dash_shockwave
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
         love.graphics.setColor(1,1,1,obj[4])
