@@ -97,7 +97,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["hit_counter_ver_function"] = function() end
 
         -- oroboros
-    obj_char_game_scene_char_LP["oroboros_state"] = "idle"
+    obj_char_game_scene_char_LP["oroboros_state"] = "off"
     obj_char_game_scene_char_LP["oroboros_anchor_pos"] = {168,210}
     obj_char_game_scene_char_LP["oroboros_animation"] = nil
     obj_char_game_scene_char_LP["oroboros_8"] = 0 -- obj[oroboros_8]匕首图形上的帧数
@@ -1223,13 +1223,19 @@ end
 function state_machine_char_game_scene_char_LP_oroboros()
     local obj = obj_char_game_scene_char_LP
     local switch = {
-        ["idle"] = function()
+        ["off"] = function()
             obj["hurt_state"] = obj["hurt_state_target"]
         end,
-        ["ready"] = function()
+        ["ease_in"] = function()
 
         end,
-        ["steady"] = function()
+        ["ease_out"] = function()
+
+        end,
+        ["loop"] = function()
+
+        end,
+        ["shot"] = function()
 
         end,
     }
