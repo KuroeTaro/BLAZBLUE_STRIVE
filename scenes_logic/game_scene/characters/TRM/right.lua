@@ -4237,6 +4237,17 @@ end
 function state_gate_game_scene_char_RP_from_4sp_S_5UA(input,obj_char)
 end
 
+function state_gate_game_scene_char_RP_oroboros_from_off(input,obj_char)
+end
+function state_gate_game_scene_char_RP_oroboros_from_ease_in(input,obj_char)
+end
+function state_gate_game_scene_char_RP_oroboros_from_ease_out(input,obj_char)
+end
+function state_gate_game_scene_char_RP_oroboros_from_loop(input,obj_char)
+end
+function state_gate_game_scene_char_RP_oroboros_from_shot(input,obj_char)
+end
+
 -- draw
 function draw_game_scene_char_RP_logic_graphic_pos_sync()
     local obj = obj_char_game_scene_char_RP
