@@ -1955,7 +1955,75 @@ function load_game_scene_anim_char_TRM_burst_overdrive(obj_char,other_side_count
     return res
 end
 
--- 2P
+-- _2P
+    -- 需要修改的角色属性
+        -- 我方
+            -- sprite_sheet_state
+            -- height_state
+            -- hit_type_state
+            -- hit_guard_type_state
+            -- hurt_state_target
+            -- move_state
+            -- startup_frame
+            -- active_frame
+            -- recovery_frame
+            -- frame_adv
+            -- hit_damage
+            -- hit_heat_gain
+            -- hit_wallbreak_damage
+            -- hurt_heat_gain
+            -- blocked_heat_gain
+            -- block_heat_gain
+            -- block_risk_gauge_gain
+            -- FD_block_heat_drain
+            -- stand_hurt_animation
+            -- stand_block_animation
+            -- crouch_hurt_animation
+            -- crouch_block_animation
+            -- air_hurt_animation
+            -- air_block_animation
+            -- OTG_hurt_animation
+            -- current_animation_length
+            -- hit_cancel
+            -- idle_cancel
+            -- strike_active
+            -- strike_inv
+            -- strike_inv_countdown
+            -- throw_inv
+            -- throw_inv_countdown
+            -- projectile_inv
+            -- projectile_inv_countdown
+            -- burst_inv
+            -- burst_inv_countdown
+            -- hit_function
+            -- hurt_function
+            -- hit_counter_ver_function
+            -- gravity
+            -- friction
+            -- horizontal_velocity_correction
+            -- gravity_correction
+            -- damage_correction
+            -- hit_hurt_blockstop_countdown
+            -- pushbox
+            -- hitbox_table
+            -- hurtbox_table
+            -- collision_test_ground_height_offset
+            -- hit_VFX_insert_function
+            -- hit_VFX_insert_function_argument
+            -- hit_SFX
+            -- counter_VFX_insert_function
+            -- counter_VFX_insert_function_argument
+            -- counter_SFX
+            -- block_VFX_insert_function
+            -- block_VFX_insert_function_argument
+            -- block_SFX
+            -- 8
+            -- anchor_pos
+            -- hurtstop_wiggle_x_animation
+            -- hurtstop_wiggle_y_animation
+            -- hurtstop_enclose_animation
+        -- 对方
+            -- frame_adv
 function load_game_scene_anim_char_TRM_2P(obj_char)
     local res = {}
     local friction = 4
@@ -2205,7 +2273,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
     end
     return res
 end
--- 6P
+-- _6P
 function load_game_scene_anim_char_TRM_6P(obj_char)
     local res = {}
     local friction = 10
@@ -2469,75 +2537,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
     end
     return res
 end
--- 5P
-    -- 需要修改的角色属性
-        -- 我方
-            -- sprite_sheet_state
-            -- height_state
-            -- hit_type_state
-            -- hit_guard_type_state
-            -- hurt_state_target
-            -- move_state
-            -- startup_frame
-            -- active_frame
-            -- recovery_frame
-            -- frame_adv
-            -- hit_damage
-            -- hit_heat_gain
-            -- hit_wallbreak_damage
-            -- hurt_heat_gain
-            -- blocked_heat_gain
-            -- block_heat_gain
-            -- block_risk_gauge_gain
-            -- FD_block_heat_drain
-            -- stand_hurt_animation
-            -- stand_block_animation
-            -- crouch_hurt_animation
-            -- crouch_block_animation
-            -- air_hurt_animation
-            -- air_block_animation
-            -- OTG_hurt_animation
-            -- current_animation_length
-            -- hit_cancel
-            -- idle_cancel
-            -- strike_active
-            -- strike_inv
-            -- strike_inv_countdown
-            -- throw_inv
-            -- throw_inv_countdown
-            -- projectile_inv
-            -- projectile_inv_countdown
-            -- burst_inv
-            -- burst_inv_countdown
-            -- hit_function
-            -- hurt_function
-            -- hit_counter_ver_function
-            -- gravity
-            -- friction
-            -- horizontal_velocity_correction
-            -- gravity_correction
-            -- damage_correction
-            -- hit_hurt_blockstop_countdown
-            -- pushbox
-            -- hitbox_table
-            -- hurtbox_table
-            -- collision_test_ground_height_offset
-            -- hit_VFX_insert_function
-            -- hit_VFX_insert_function_argument
-            -- hit_SFX
-            -- counter_VFX_insert_function
-            -- counter_VFX_insert_function_argument
-            -- counter_SFX
-            -- block_VFX_insert_function
-            -- block_VFX_insert_function_argument
-            -- block_SFX
-            -- 8
-            -- anchor_pos
-            -- hurtstop_wiggle_x_animation
-            -- hurtstop_wiggle_y_animation
-            -- hurtstop_enclose_animation
-        -- 对方
-            -- frame_adv
+-- _5P
 function load_game_scene_anim_char_TRM_5P(obj_char)
     local res = {}
     local friction = 4
@@ -2785,7 +2785,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
     end
     return res
 end
--- 2K
+-- _2K
 function load_game_scene_anim_char_TRM_2K(obj_char)
     local res = {}
     local friction = 10
@@ -3067,7 +3067,7 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
     end
     return res
 end
--- 6K
+-- _6K
 function load_game_scene_anim_char_TRM_6K(obj_char)
     local res = {}
     local friction = 1
@@ -3350,7 +3350,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
     end
     return res
 end
--- 5K
+-- _5K
 function load_game_scene_anim_char_TRM_5K(obj_char)
     local res = {}
     local friction = 7
@@ -3624,7 +3624,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
     end
     return res
 end
--- 2S
+-- _2S
 function load_game_scene_anim_char_TRM_2S(obj_char)
     local res = {}
     local friction = 10
@@ -3925,7 +3925,7 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
 
     return res
 end
--- 6S
+-- _6S
 function load_game_scene_anim_char_TRM_6S(obj_char)
     local res = {}
     local friction = 20
@@ -4247,7 +4247,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
 
     return res
 end
--- cS
+-- _cS
 function load_game_scene_anim_char_TRM_cS(obj_char)
     local res = {}
     local friction = 10
@@ -4792,6 +4792,25 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
     end
 
     return res
+end
+-- _5H
+function load_game_scene_anim_char_TRM_5H(obj_char)
+end
+function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char)
+end
+function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char)
+end
+function load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char)
+end
+function load_game_scene_anim_char_TRM_5H_oroboros_chain_shot(obj_char)
+end
+function load_game_scene_anim_char_TRM_5H_oroboros_mid_ease_in(obj_char)
+end
+function load_game_scene_anim_char_TRM_5H_oroboros_mid_ease_out(obj_char)
+end
+function load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char)
+end
+function load_game_scene_anim_char_TRM_5H_oroboros_mid_shot(obj_char)
 end
 -- _2Launcher
 function load_game_scene_anim_char_TRM_2Launcher(obj_char)
@@ -5976,7 +5995,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
     end
     res[3] = function()
         -- VFX
-        insert_VFX_game_scene_char_TRM_5Launcher_glow(obj_char)
+        insert_VFX_game_scene_char_TRM_5Launcher_whiff_glow(obj_char)
     end
     res[5] = function()
         -- collide
@@ -6014,7 +6033,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         -- SFX
         play_obj_audio(SFX_table["5P"])
         -- VFX
-        insert_VFX_game_scene_char_TRM_5Launcher(obj_char)
+        insert_VFX_game_scene_char_TRM_5Launcher_whiff_slash(obj_char)
     end
     res[20] = function()
         -- draw_correction
@@ -6272,7 +6291,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
     end
     res[3] = function()
         -- VFX
-        insert_VFX_game_scene_char_TRM_5Launcher_glow(obj_char)
+        insert_VFX_game_scene_char_TRM_5Launcher_whiff_glow(obj_char)
     end
     res[5] = function()
         -- collide
@@ -6301,7 +6320,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
         -- SFX
         play_obj_audio(SFX_table["5P"])
         -- VFX
-        insert_VFX_game_scene_char_TRM_5Launcher(obj_char)
+        insert_VFX_game_scene_char_TRM_5Launcher_whiff_slash(obj_char)
     end
     res[20] = function()
         -- collide

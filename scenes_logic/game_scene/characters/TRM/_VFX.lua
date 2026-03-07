@@ -378,7 +378,11 @@ function insert_VFX_game_scene_char_TRM_cS_whiff(obj_char)
     end
     table.insert(obj_char["VFX_front_table"],obj)
 end
-function insert_VFX_game_scene_char_TRM_5Launcher(obj_char)
+function insert_VFX_game_scene_char_TRM_5H_whiff_switch(obj_char)
+end
+function insert_VFX_game_scene_char_TRM_5H_whiff_shot(obj_char)
+end
+function insert_VFX_game_scene_char_TRM_5Launcher_whiff_slash(obj_char)
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
     local image_sprite_sheet = nil
     local side = obj_char["player_side"]
@@ -438,7 +442,7 @@ function insert_VFX_game_scene_char_TRM_5Launcher(obj_char)
     end
     table.insert(obj_char["VFX_front_table"],obj)
 end
-function insert_VFX_game_scene_char_TRM_5Launcher_glow(obj_char)
+function insert_VFX_game_scene_char_TRM_5Launcher_whiff_glow(obj_char)
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
     local image_sprite_sheet = nil
     local side = obj_char["player_side"]
