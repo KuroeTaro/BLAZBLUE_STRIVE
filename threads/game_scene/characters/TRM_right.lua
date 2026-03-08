@@ -84,8 +84,6 @@ local load_attack_name_table = {
     "cS",
     "fS",
     "5H",
-    "5H_oroboros_ease_in_back",
-    "5H_oroboros_ease_in_front",
     "5H_oroboros_ease_in_mid",
     "5H_oroboros_ease_out_mid",
     "5H_oroboros_loop_back",

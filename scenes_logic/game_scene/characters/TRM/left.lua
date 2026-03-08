@@ -98,10 +98,22 @@ function load_game_scene_obj_char_LP()
 
         -- oroboros
     obj_char_game_scene_char_LP["oroboros_state"] = "off"
+    obj_char_game_scene_char_LP["oroboros_shot_aim_r"] = 0
+    obj_char_game_scene_char_LP["oroboros_front_offset"] = {0,0}
+    obj_char_game_scene_char_LP["oroboros_mid_offset"] = {0,0}
+    obj_char_game_scene_char_LP["oroboros_back_offset"] = {0,0}
+    obj_char_game_scene_char_LP["oroboros_shot_offset"] = 0
+    obj_char_game_scene_char_LP["oroboros_front_f"] = 0
+    obj_char_game_scene_char_LP["oroboros_mid_f"] = 0
+    obj_char_game_scene_char_LP["oroboros_back_f"] = 0
+    obj_char_game_scene_char_LP["oroboros_front_8"] = 0
+    obj_char_game_scene_char_LP["oroboros_mid_8"] = 0
+    obj_char_game_scene_char_LP["oroboros_back_8"] = 0
+    obj_char_game_scene_char_LP["oroboros_front_4"] = 0
+    obj_char_game_scene_char_LP["oroboros_mid_4"] = 0
+    obj_char_game_scene_char_LP["oroboros_back_4"] = 0
     obj_char_game_scene_char_LP["oroboros_anchor_pos"] = {168,210}
-    obj_char_game_scene_char_LP["oroboros_animation"] = nil
-    obj_char_game_scene_char_LP["oroboros_8"] = 0 -- obj[oroboros_8]匕首图形上的帧数
-    obj_char_game_scene_char_LP["oroboros_f"] = 0 -- obj[oroboros_8]匕首逻辑上的帧数
+    obj_char_game_scene_char_LP["oroboros_anchor_pos_target"] = {168,210}
 
     -- state_number
     obj_char_game_scene_char_LP["velocity"] = {0,0}
@@ -324,8 +336,6 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "cS",
                 "fS",
                 "5H",
-                "5H_oroboros_ease_in_back",
-                "5H_oroboros_ease_in_front",
                 "5H_oroboros_ease_in_mid",
                 "5H_oroboros_ease_out_mid",
                 "5H_oroboros_loop_back",
