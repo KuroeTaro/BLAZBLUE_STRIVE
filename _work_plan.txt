@@ -1,1 +1,26 @@
 config选项中自定义要不要79空投
+制作瞄准准心动态图
+
+
+5H制作逻辑
+    瞄准速度 未诅咒：10 诅咒：20
+    瞄准进度 命中需求：420 最大值：540
+    瞄准进度加减因素
+        1.敌方绝对速度
+        2.水平相对速度
+        3.命中对方
+        4.空拳脚 开枪
+        5.诅咒
+        6.特定的己方模组（哈皮的翻滚）
+
+    off -> ease_in 处于未受伤状态(hurtstop hurt block blockstop)按下5h 进入
+
+    ease_in -> loop 动画结束进入
+    ease_in -> shot 处于未受伤状态(hurtstop hurt block blockstop)松开5h 进入
+    ease_in -> ease_out 受伤 或者 处于未受伤状态(hurtstop hurt block blockstop)按下2h 进入
+
+    loop -> shot 处于未受伤状态(hurtstop hurt block blockstop)松开5h 进入
+    loop -> ease_out 受伤 或者 处于未受伤状态(hurtstop hurt block blockstop)按下2h 进入
+
+    ease_out -> off 动画结束进入
+    ease_out -> ease_in 处于未受伤状态(hurtstop hurt block blockstop)按下5h 进入
