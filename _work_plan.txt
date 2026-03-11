@@ -13,7 +13,7 @@ config选项中自定义要不要79空投
         5.诅咒
         6.特定的己方模组（哈皮的翻滚）
 
-    off -> ease_in 处于未受伤状态(hurtstop hurt block blockstop)按下5h 进入
+    off -> ease_in 处于未受伤状态(hurtstop hurt block blockstop)按下h 进入
 
     ease_in -> loop 动画结束进入
     ease_in -> shot 处于未受伤状态(hurtstop hurt block blockstop)松开5h 进入
@@ -23,4 +23,4 @@ config选项中自定义要不要79空投
     loop -> ease_out 受伤 或者 处于未受伤状态(hurtstop hurt block blockstop)按下2h 进入
 
     ease_out -> off 动画结束进入
-    ease_out -> ease_in 处于未受伤状态(hurtstop hurt block blockstop)按下5h 进入
+    ease_out -> ease_in 处于未受伤状态(hurtstop hurt block blockstop)按下h 进入
