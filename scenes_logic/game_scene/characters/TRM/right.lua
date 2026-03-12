@@ -98,6 +98,7 @@ function load_game_scene_obj_char_RP()
 
         -- oroboros
     obj_char_game_scene_char_RP["oroboros_state"] = "off"
+    obj_char_game_scene_char_RP["oroboros_shot_aim_process"] = {0,420,540}
     obj_char_game_scene_char_RP["oroboros_shot_aim_r"] = 0
     obj_char_game_scene_char_RP["oroboros_front_offset"] = {0,0}
     obj_char_game_scene_char_RP["oroboros_mid_offset"] = {0,0}
@@ -116,8 +117,10 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["oroboros_anchor_pos_target"] = {168,210}
 
     obj_char_game_scene_char_RP["crosshair_state"] = "off"
-    obj_char_game_scene_char_RP["crosshair_aim_process"] = {0,420,540}
     obj_char_game_scene_char_RP["crosshair_visual_offset"] = {0,0}
+    obj_char_game_scene_char_RP["crosshair_f"] = 0
+    obj_char_game_scene_char_RP["crosshair_8"] = 0
+    obj_char_game_scene_char_RP["crosshair_4"] = 0
 
     -- state_number
     obj_char_game_scene_char_RP["velocity"] = {0,0}
@@ -183,12 +186,6 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["counter_SFX"] = nil
     obj_char_game_scene_char_RP["block_VFX_insert_function"] = nil
     obj_char_game_scene_char_RP["block_SFX"] = nil
-
-    -- special
-    obj_char_game_scene_char_RP["oroboros_bite_pos"] = {0,0}
-    obj_char_game_scene_char_RP["oroboros_aim_pos"] = {0,0}
-    obj_char_game_scene_char_RP["oroboros_aim_speed"] = 0
-    obj_char_game_scene_char_RP["oroboros_release_shooting_auto_timing_pass"] = false
     
     -- draw_correction
     obj_char_game_scene_char_RP[8] = 0
@@ -1265,7 +1262,10 @@ function state_machine_char_game_scene_char_RP_crosshair()
         ["ease_in"] = function()
 
         end,
-        ["aimming"] = function()
+        ["at_the_ready_aimming"] = function()
+
+        end,
+        ["steady_aimming"] = function()
 
         end,
         ["ease_out"] = function()
