@@ -1260,10 +1260,16 @@ function state_machine_char_game_scene_char_RP_crosshair()
     local obj = obj_char_game_scene_char_RP
     local switch = {
         ["off"] = function()
-            obj["crosshair_active"] = false
+
         end,
-        ["on"] = function()
-            obj["crosshair_active"] = true
+        ["ease_in"] = function()
+
+        end,
+        ["aimming"] = function()
+
+        end,
+        ["ease_out"] = function()
+
         end,
     }
     local this_function = switch[obj["crosshair_state"]]
