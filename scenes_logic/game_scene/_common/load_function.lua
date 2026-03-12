@@ -163,7 +163,6 @@ function order_load_game_scene_HUD(load_order)
                 "asset/game_scene/common/HUD/HUD_ease_in.json",
                 love.graphics.newImage(ASSET_DATA[6]["HUD_ease_in_sprite_batch"])
             )
-
         end,
     }
     local this_function = switch[load_order]
@@ -327,7 +326,7 @@ function order_load_game_scene_VFX(load_order)
                 love.graphics.newImage(ASSET_DATA[8]["wallbreak"])
             )
         end,
-        [32]  = function()
+        [32] = function()
             -- overdrive
             image_sprite_sheet_VFX_game_scene_overdrive_airflow = 
             sprite_sheet_load(
