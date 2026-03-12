@@ -96,32 +96,6 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["parry_function"] = function() end
     obj_char_game_scene_char_RP["hit_counter_ver_function"] = function() end
 
-        -- oroboros
-    obj_char_game_scene_char_RP["oroboros_state"] = "off"
-    obj_char_game_scene_char_RP["oroboros_shot_aim_process"] = {0,420,540}
-    obj_char_game_scene_char_RP["oroboros_shot_aim_r"] = 0
-    obj_char_game_scene_char_RP["oroboros_front_offset"] = {0,0}
-    obj_char_game_scene_char_RP["oroboros_mid_offset"] = {0,0}
-    obj_char_game_scene_char_RP["oroboros_back_offset"] = {0,0}
-    obj_char_game_scene_char_RP["oroboros_shot_offset"] = 0
-    obj_char_game_scene_char_RP["oroboros_front_f"] = 0
-    obj_char_game_scene_char_RP["oroboros_mid_f"] = 0
-    obj_char_game_scene_char_RP["oroboros_back_f"] = 0
-    obj_char_game_scene_char_RP["oroboros_front_8"] = 0
-    obj_char_game_scene_char_RP["oroboros_mid_8"] = 0
-    obj_char_game_scene_char_RP["oroboros_back_8"] = 0
-    obj_char_game_scene_char_RP["oroboros_front_4"] = 0
-    obj_char_game_scene_char_RP["oroboros_mid_4"] = 0
-    obj_char_game_scene_char_RP["oroboros_back_4"] = 0
-    obj_char_game_scene_char_RP["oroboros_anchor_pos"] = {168,210}
-    obj_char_game_scene_char_RP["oroboros_anchor_pos_target"] = {168,210}
-
-    obj_char_game_scene_char_RP["crosshair_state"] = "off"
-    obj_char_game_scene_char_RP["crosshair_visual_offset"] = {0,0}
-    obj_char_game_scene_char_RP["crosshair_f"] = 0
-    obj_char_game_scene_char_RP["crosshair_8"] = 0
-    obj_char_game_scene_char_RP["crosshair_4"] = 0
-
     -- state_number
     obj_char_game_scene_char_RP["velocity"] = {0,0}
     obj_char_game_scene_char_RP["velocity_debug"] = {0,0}
@@ -186,6 +160,31 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["counter_SFX"] = nil
     obj_char_game_scene_char_RP["block_VFX_insert_function"] = nil
     obj_char_game_scene_char_RP["block_SFX"] = nil
+
+    obj_char_game_scene_char_RP["oroboros_state"] = "off"
+    obj_char_game_scene_char_RP["oroboros_shot_aim_process"] = {0,420,540}
+    obj_char_game_scene_char_RP["oroboros_shot_aim_r"] = 0
+    obj_char_game_scene_char_RP["oroboros_front_offset"] = {0,0}
+    obj_char_game_scene_char_RP["oroboros_mid_offset"] = {0,0}
+    obj_char_game_scene_char_RP["oroboros_back_offset"] = {0,0}
+    obj_char_game_scene_char_RP["oroboros_shot_offset"] = 0
+    obj_char_game_scene_char_RP["oroboros_front_f"] = 0
+    obj_char_game_scene_char_RP["oroboros_mid_f"] = 0
+    obj_char_game_scene_char_RP["oroboros_back_f"] = 0
+    obj_char_game_scene_char_RP["oroboros_front_8"] = 0
+    obj_char_game_scene_char_RP["oroboros_mid_8"] = 0
+    obj_char_game_scene_char_RP["oroboros_back_8"] = 0
+    obj_char_game_scene_char_RP["oroboros_front_4"] = 0
+    obj_char_game_scene_char_RP["oroboros_mid_4"] = 0
+    obj_char_game_scene_char_RP["oroboros_back_4"] = 0
+    obj_char_game_scene_char_RP["oroboros_anchor_pos"] = {168,210}
+    obj_char_game_scene_char_RP["oroboros_anchor_pos_target"] = {168,210}
+
+    obj_char_game_scene_char_RP["crosshair_state"] = "off"
+    obj_char_game_scene_char_RP["crosshair_visual_offset"] = {0,0}
+    obj_char_game_scene_char_RP["crosshair_f"] = 0
+    obj_char_game_scene_char_RP["crosshair_8"] = 0
+    obj_char_game_scene_char_RP["crosshair_4"] = 0
     
     -- draw_correction
     obj_char_game_scene_char_RP[8] = 0

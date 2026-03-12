@@ -1692,7 +1692,6 @@ end
             -- projectile_inv_countdown
             -- burst_inv
             -- burst_inv_countdown
-            -- oroboros_state
             -- velocity
             -- velocity_cache
             -- gravity
@@ -1758,8 +1757,6 @@ function load_game_scene_anim_char_TRM_burst_overdrive(obj_char,other_side_count
         obj_char["projectile_inv_countdown"] = 70
         obj_char["burst_inv"] = true
         obj_char["burst_inv_countdown"] = 70
-
-        obj_char["oroboros_state"] = "idle"
         -- state_number
         obj_char["velocity"] = {0,0}
         obj_char["velocity_cache"] = {0,0}
