@@ -115,6 +115,10 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["oroboros_anchor_pos"] = {168,210}
     obj_char_game_scene_char_RP["oroboros_anchor_pos_target"] = {168,210}
 
+    obj_char_game_scene_char_RP["crosshair_state"] = "off"
+    obj_char_game_scene_char_RP["crosshair_aim_process"] = {0,420,540}
+    obj_char_game_scene_char_RP["crosshair_visual_offset"] = {0,0}
+
     -- state_number
     obj_char_game_scene_char_RP["velocity"] = {0,0}
     obj_char_game_scene_char_RP["velocity_debug"] = {0,0}
@@ -1250,6 +1254,19 @@ function state_machine_char_game_scene_char_RP_oroboros()
         end,
     }
     local this_function = switch[obj["oroboros_state"]]
+    if this_function then this_function() end
+end
+function state_machine_char_game_scene_char_RP_crosshair()
+    local obj = obj_char_game_scene_char_RP
+    local switch = {
+        ["off"] = function()
+            obj["crosshair_active"] = false
+        end,
+        ["on"] = function()
+            obj["crosshair_active"] = true
+        end,
+    }
+    local this_function = switch[obj["crosshair_state"]]
     if this_function then this_function() end
 end
 function state_machine_char_game_scene_char_RP_input_sys_cache()
