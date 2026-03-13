@@ -187,7 +187,6 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["crosshair_4"] = 0
     
     -- draw_correction
-    obj_char_game_scene_char_RP[8] = 0
     obj_char_game_scene_char_RP["anchor_pos"] = {215,510}
     obj_char_game_scene_char_RP["contrast"] = 1
     obj_char_game_scene_char_RP["brightness"] = 0
