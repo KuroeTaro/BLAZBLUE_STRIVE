@@ -162,7 +162,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["block_SFX"] = nil
 
     obj_char_game_scene_char_LP["oroboros_state"] = "off"
-    obj_char_game_scene_char_LP["oroboros_shot_aim_process"] = {0,420,540}
+    obj_char_game_scene_char_LP["oroboros_shot_aim_process"] = {0,420,480,540}
     obj_char_game_scene_char_LP["oroboros_shot_aim_r"] = 0
     obj_char_game_scene_char_LP["oroboros_front_offset"] = {0,0}
     obj_char_game_scene_char_LP["oroboros_mid_offset"] = {0,0}
