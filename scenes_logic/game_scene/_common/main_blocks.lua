@@ -471,10 +471,10 @@ function update_game_scene_main_training()
             -- 更新sub_frame
             update_game_scene_game_speed_sub_frame()
 
-            -- 更新HUD
-            -- 更新场景
+            -- 更新HUD 场景 角色最后更新
             update_game_scene_HUD()
             update_game_scene_stage()
+            update_game_scene_char_revise()
 
             -- 更新角色DEBUG信息
             update_character_frame_info(obj_char_game_scene_char_LP)
@@ -674,4 +674,8 @@ function update_game_scene_char()
             char_RP["game_speed_abnormal_realtime_countdown"] = 0
         end
     end
+end
+function update_game_scene_char_revise()
+    update_game_scene_char_LP_revise()
+    update_game_scene_char_RP_revise()
 end

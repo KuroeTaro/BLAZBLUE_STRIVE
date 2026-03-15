@@ -839,6 +839,8 @@ function update_game_scene_char_RP()
     state_machine_char_game_scene_char_RP()
     state_machine_char_game_scene_char_RP_oroboros()
 end
+function update_game_scene_char_RP_revise()
+end
 function state_machine_char_game_scene_char_RP()
     -- 拉后最高优先级 然后是拉下 然后是拉前 然后是跳
     -- 然后是方向组合拳脚 普通拳脚 从轻到重
