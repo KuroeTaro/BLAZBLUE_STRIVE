@@ -1,7 +1,7 @@
 var comp = app.project.activeItem;
 if (comp && comp instanceof CompItem) {
     var outputFile = new File("F:/LOVE/DRRR_refactoring/key.txt");
-    outputFile.open("w", "TEXT", "????");
+    outputFile.open("w","TEXT","????");
     outputFile.encoding = "UTF-8";
     // 遍历所有选定的图层
     for (var i = 0; i < comp.selectedLayers.length; i++) {
@@ -39,7 +39,7 @@ if (comp && comp instanceof CompItem) {
                     var nextKeyTime = k < property.numKeys ? Math.round(property.keyTime(k + 1) * comp.frameRate) : null;
 
                     if (prop === "x" || prop === "y" || prop === "z") {
-                        var positionValue = property.valueAtTime(property.keyTime(k), false);
+                        var positionValue = property.valueAtTime(property.keyTime(k),false);
                         if (prop === "x") {
                             keyValue = positionValue[0];
                         } else if (prop === "y") {
@@ -48,21 +48,21 @@ if (comp && comp instanceof CompItem) {
                             keyValue = positionValue[2];
                         }
                     } else if (prop === "scale_x" || prop === "scale_y") {
-                        var scaleValue = property.valueAtTime(property.keyTime(k), false);
+                        var scaleValue = property.valueAtTime(property.keyTime(k),false);
                         if (prop === "scale_x") {
                             keyValue = scaleValue[0];
                         } else if (prop === "scale_y") {
                             keyValue = scaleValue[1];
                         }
                     } else if (prop === "opacity") {
-                        var opacityValue = property.valueAtTime(property.keyTime(k), false);
+                        var opacityValue = property.valueAtTime(property.keyTime(k),false);
                         keyValue = opacityValue/100;
                     } else {
-                        keyValue = property.valueAtTime(property.keyTime(k), false);
+                        keyValue = property.valueAtTime(property.keyTime(k),false);
                     }
 
                     keyValue = keyValue.toFixed(2);
-                    animData[keyTime] = [keyValue, nextKeyTime];
+                    animData[keyTime] = [keyValue,nextKeyTime];
                 }
 
                 // 写入文件
@@ -73,7 +73,7 @@ if (comp && comp instanceof CompItem) {
                         if (nextKeyTimeValue === null) {
                             nextKeyTimeValue = animData["length"];
                         }
-                        outputFile.writeln(animName + "[" + key + "] = {" + animData[key][0] + ", " + nextKeyTimeValue + "}");
+                        outputFile.writeln(animName + "[" + key + "] = {" + animData[key][0] + "," + nextKeyTimeValue + "}");
                     }
                 }
                 if(prop === "x"){

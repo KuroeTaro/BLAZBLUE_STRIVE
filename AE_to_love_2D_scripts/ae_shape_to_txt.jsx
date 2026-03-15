@@ -6,7 +6,7 @@ if (comp && comp instanceof CompItem) {
     // 获取所选图层
     var selectedLayer = comp.selectedLayers[0];
 
-    var rect = selectedLayer.sourceRectAtTime(0, false);
+    var rect = selectedLayer.sourceRectAtTime(0,false);
     var width = rect.width;
     var height = rect.height;
 
@@ -46,12 +46,12 @@ if (comp && comp instanceof CompItem) {
                         if (i > 0) {
                             file.writeln(",");
                         }
-                        file.writeln("    {" + ((vertex[0]).toFixed(2)) + ", " + ((vertex[1]).toFixed(2)) + ",");
-                        file.writeln("     " + ((nextVertex[0]).toFixed(2)) + ", " + ((nextVertex[1]).toFixed(2)) + "}");
+                        file.writeln("    {" + ((vertex[0]).toFixed(2)) + "," + ((vertex[1]).toFixed(2)) + ",");
+                        file.writeln("     " + ((nextVertex[0]).toFixed(2)) + "," + ((nextVertex[1]).toFixed(2)) + "}");
                     }
 
                     file.writeln("\n}"); // 结束 lines 字典
-                    file.writeln((width).toFixed(2) + ", " + (height).toFixed(2) + "\n"); // 结束 lines 字典
+                    file.writeln((width).toFixed(2) + "," + (height).toFixed(2) + "\n"); // 结束 lines 字典
                     file.close(); // 关闭文件
                     alert("点信息已保存到 shape_points.txt 文件！");
                 } else {

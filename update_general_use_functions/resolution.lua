@@ -1,5 +1,5 @@
 function get_current_resolution()
-    local width, height, flags = love.window.getMode()
+    local width,height,flags = love.window.getMode()
     if width < 1600 then RES_PARTTEN = 0 
     elseif width < 1920 then RES_PARTTEN = 1
     elseif width < 2560 then RES_PARTTEN = 2

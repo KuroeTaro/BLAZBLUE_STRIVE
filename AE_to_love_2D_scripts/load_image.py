@@ -6,12 +6,12 @@ folder_path = "asset/disclaimer_and_logo_scene"
 image_data_code = []
 graph_code = []
 
-def generate_code_for_folder(folder, base_index=0):
+def generate_code_for_folder(folder,base_index=0):
     index = base_index
-    for root, dirs, files in os.walk(folder):
+    for root,dirs,files in os.walk(folder):
         for file_name in files:
             # 获取文件完整路径并转换路径分隔符
-            address = os.path.join(root, file_name).replace("\\", "/")
+            address = os.path.join(root,file_name).replace("\\","/")
             # 获取不带扩展名的文件名
             name_without_ext = os.path.splitext(file_name)[0]
             # 生成 imageData 代码

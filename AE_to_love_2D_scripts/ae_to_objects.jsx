@@ -31,12 +31,12 @@ if (comp && comp instanceof CompItem) {
 
             // 输出图层信息
             var output = layerName + ' = {' +
-                formatNumber(position[0]) + ', ' +
-                formatNumber(position[1]) + ', ' +
-                (z !== "nil" ? formatNumber(z) : "nil") + ', ' +
-                formatNumber(opacity)/100 + ', ' +  // 添加连接符号
-                formatNumber(scale[0]/100) + ', ' +
-                formatNumber(scale[1]/100) + ', 0' + ', 0' +
+                formatNumber(position[0]) + ',' +
+                formatNumber(position[1]) + ',' +
+                (z !== "nil" ? formatNumber(z) : "nil") + ',' +
+                formatNumber(opacity)/100 + ',' +  // 添加连接符号
+                formatNumber(scale[0]/100) + ',' +
+                formatNumber(scale[1]/100) + ',0' + ',0' +
                 '}\n';
 
             outputFile.write(output);

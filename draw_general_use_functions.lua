@@ -16,9 +16,9 @@ function draw_2d_image(obj,image)
         return
     end
 
-    love.graphics.setColor(1, 1, 1, obj[4])
+    love.graphics.setColor(1,1,1,obj[4])
     love.graphics.draw(image,x,y,r,sx,sy)
-    love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.setColor(1,1,1,1)
 end 
 function draw_2d_image_table(obj,image_table)
     local x = draw_resolution_correction(obj[1])
@@ -33,9 +33,9 @@ function draw_2d_image_table(obj,image_table)
         return
     end
 
-    love.graphics.setColor(1, 1, 1, obj[4])
+    love.graphics.setColor(1,1,1,obj[4])
     love.graphics.draw(image_table[f],x,y,r,sx,sy)
-    love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.setColor(1,1,1,1)
 end
 
 function draw_solid(obj)
@@ -47,9 +47,9 @@ function draw_solid(obj)
         return
     end
 
-    love.graphics.setColor(obj["rgb"][1],obj["rgb"][2],obj["rgb"][3], obj[4])
-    love.graphics.rectangle("fill", 0,0, w,h)
-    love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.setColor(obj["rgb"][1],obj["rgb"][2],obj["rgb"][3],obj[4])
+    love.graphics.rectangle("fill",0,0,w,h)
+    love.graphics.setColor(1,1,1,1)
 end
 
 function draw_3d_image(camera,obj,image)
@@ -67,9 +67,9 @@ function draw_3d_image(camera,obj,image)
         return
     end
 
-    love.graphics.setColor(1, 1, 1, opacity)
+    love.graphics.setColor(1,1,1,opacity)
     love.graphics.draw(image,cood_res[1],cood_res[2],r,sx*scale,sy*scale)
-    love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.setColor(1,1,1,1)
 end
 function draw_3d_image_table(camera,obj,image_table)
     local z = obj[3]
@@ -86,9 +86,9 @@ function draw_3d_image_table(camera,obj,image_table)
         return
     end
 
-    love.graphics.setColor(1, 1, 1, opacity)
+    love.graphics.setColor(1,1,1,opacity)
     love.graphics.draw(image_table[f],cood_res[1],cood_res[2],r,sx*scale,sy*scale)
-    love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.setColor(1,1,1,1)
 end
 function draw_3d_point_to_2D(camera,obj)
     -- x y z opacity sx sy r f
@@ -103,19 +103,19 @@ function draw_3d_point_to_2D(camera,obj)
     local scale = draw_resolution_correction(800)/(z-camera_z)
 
     local cood_res = {
-        scale * (x - camera_x) + draw_resolution_correction(800), 
+        scale * (x - camera_x) + draw_resolution_correction(800),
         scale * (y - camera_y) + draw_resolution_correction(450)
     }
     
     return cood_res
 end
 
-function draw_sector(x, y, radius, startAngle, endAngle, segments)
+function draw_sector(x,y,radius,startAngle,endAngle,segments)
     -- 计算每个三角形的角度增量
     local angleIncrement = (endAngle - startAngle) / segments
 
     -- 画扇形
-    for i = 0, segments do
+    for i = 0,segments do
         local angle1 = startAngle + i * angleIncrement
         local angle2 = startAngle + (i + 1) * angleIncrement
 
@@ -126,7 +126,7 @@ function draw_sector(x, y, radius, startAngle, endAngle, segments)
         local y2 = y + radius * math.sin(angle2)
 
         -- 绘制三角形
-        love.graphics.polygon("fill", x, y, x1, y1, x2, y2)
+        love.graphics.polygon("fill",x,y,x1,y1,x2,y2)
     end
 end
 
@@ -153,9 +153,9 @@ function draw_2d_image_sprite_batch(obj,image_sprite_sheet,quad_name)
         frame[6]
     )
 
-    image_sprite_sheet["sprite_batch"]:setColor(1, 1, 1, opacity)
-    image_sprite_sheet["sprite_batch"]:add(quad, x, y, r, sx, sy)
-    image_sprite_sheet["sprite_batch"]:setColor(1, 1, 1, 1)
+    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,opacity)
+    image_sprite_sheet["sprite_batch"]:add(quad,x,y,r,sx,sy)
+    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
 end
 function draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,quad_name)
     local z = obj[3]
@@ -183,9 +183,9 @@ function draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,quad_name)
         frame[6]
     )
 
-    image_sprite_sheet["sprite_batch"]:setColor(1, 1, 1, opacity)
-    image_sprite_sheet["sprite_batch"]:add(quad, cood_res[1], cood_res[2], r, sx*scale, sy*scale)
-    image_sprite_sheet["sprite_batch"]:setColor(1, 1, 1, 1)
+    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,opacity)
+    image_sprite_sheet["sprite_batch"]:add(quad,cood_res[1],cood_res[2],r,sx*scale,sy*scale)
+    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
 end
 function draw_3d_color_box(camera,obj_box,color)
     local cood_res = draw_3d_point_to_2D(camera,obj_box)
@@ -198,7 +198,7 @@ function draw_3d_color_box(camera,obj_box,color)
 
     local scale = draw_resolution_correction(800)/(z-camera_z)
 
-    love.graphics.setColor(color[1], color[2], color[3], color[4])
-    love.graphics.rectangle("fill", cood_res[1], cood_res[2], obj_box["w"]*scale*sx, obj_box["h"]*scale*sy)
+    love.graphics.setColor(color[1],color[2],color[3],color[4])
+    love.graphics.rectangle("fill",cood_res[1],cood_res[2],obj_box["w"]*scale*sx,obj_box["h"]*scale*sy)
     love.graphics.setColor(1,1,1,1)
 end

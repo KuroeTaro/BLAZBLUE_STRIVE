@@ -1,8 +1,8 @@
 function love.conf(t)
     local res = love.filesystem.read( 'resolution_config.lua',8 )
     if res then 
-        local width = tonumber(string.sub(res, 1, 4))
-        local height = tonumber(string.sub(res, 5, 8))
+        local width = tonumber(string.sub(res,1,4))
+        local height = tonumber(string.sub(res,5,8))
         t.window.width = width
         t.window.height = height
     else

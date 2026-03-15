@@ -1,5 +1,5 @@
 -- frame_animator的示例
--- obj = {175, 125, nil, 0, 1, 1, 0, 0}
+-- obj = {175,125,nil,0,1,1,0,0}
 -- obj["width"] = 1248
 -- obj["height"] = 648
 -- obj["LCT"] = {0,0,0,0,0,0,0,0}
@@ -80,16 +80,16 @@ end
 
 
 -- point_linear_animator的示例
--- obj = {175, 125, nil, 0, 1, 1, 0, 0}
+-- obj = {175,125,nil,0,1,1,0,0}
 -- obj["width"] = 1248
 -- obj["height"] = 648
 -- obj["LCT"] = {0,0,0,0,0,0,0,0}
 -- obj["LCD"] = {0,0,0,0,0,0,0,0}
 
 -- anim = {}
--- anim[0] = {0, 5}
--- anim[5] = {1, 12}
--- anim[12] = {-9, 12}
+-- anim[0] = {0,5}
+-- anim[5] = {1,12}
+-- anim[12] = {-9,12}
 -- anim["prop"] = 4
 -- anim["length"] = 12
 -- anim["loop"] = false

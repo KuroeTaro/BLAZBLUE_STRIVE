@@ -10,7 +10,7 @@ function load_game_scene_obj_stage()
 
     obj_stage_game_scene_mid_collision_anchor = 0
 
-    obj_stage_game_scene_camera = {0, 0, -800}
+    obj_stage_game_scene_camera = {0,0,-800}
     obj_stage_game_scene_camera["3d_pos_x"] = 0
     obj_stage_game_scene_camera["3d_pos_y"] = 0
     obj_stage_game_scene_camera["3d_pos_z"] = -800
@@ -22,18 +22,18 @@ function load_game_scene_obj_stage()
     obj_stage_game_scene_camera["LCD"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_camera["state"] = "main"
     obj_stage_game_scene_camera["enclose_percentage"] = 0.0
-    obj_stage_game_scene_camera["enclose_position_offset"] = {0, 0, 0}
+    obj_stage_game_scene_camera["enclose_position_offset"] = {0,0,0}
 
     obj_stage_game_scene_camera["LCT"]["enclose_percentage"] = 0.0
     obj_stage_game_scene_camera["LCD"]["enclose_percentage"] = 0.0
 
     obj_stage_game_scene_camera["active_application_table"] = {}
 
-    obj_stage_game_scene_ground = {-2400, 320, 200, 1, 1, 1, 0, 0}
-    obj_stage_game_scene_stair = {-2400, 175, 300, 1, 1, 1, 0, 0}
-    obj_stage_game_scene_glow = {0, 0, -800, 1, 1, 1, 0, 0}
+    obj_stage_game_scene_ground = {-2400,320,200,1,1,1,0,0}
+    obj_stage_game_scene_stair = {-2400,175,300,1,1,1,0,0}
+    obj_stage_game_scene_glow = {0,0,-800,1,1,1,0,0}
     obj_stage_game_scene_glow["glow_3d_pos"] = {0,-2200,1600}
-    obj_stage_game_scene_tile_map = {-3600, -1995, 800, 1, 1, 1, 0, 0}
+    obj_stage_game_scene_tile_map = {-3600,-1995,800,1,1,1,0,0}
 
     -- adjust_character_color
     obj_char_game_scene_char_LP["brightness"] = -0.05
@@ -53,7 +53,7 @@ function load_game_scene_obj_stage()
 end
 function load_game_scene_anim_stage()
     anim_camera_point_linear_game_scene_camera_enclosing = {}
-    anim_camera_point_linear_game_scene_camera_enclosing[0] = {0.00, 0}
+    anim_camera_point_linear_game_scene_camera_enclosing[0] = {0.00,0}
     anim_camera_point_linear_game_scene_camera_enclosing["prop"] = "enclose_percentage"
     anim_camera_point_linear_game_scene_camera_enclosing["length"] = 0
     anim_camera_point_linear_game_scene_camera_enclosing["loop"] = false
@@ -171,17 +171,17 @@ function draw_game_scene_stage_static()
     obj = obj_stage_game_scene_stair
     sprite_batch = love.graphics.newSpriteBatch(image_stage_game_scene_stair)
     sprite_batch:clear()
-    sprite_batch:add(0, 0)
-    sprite_batch:add(1600, 0)
-    sprite_batch:add(3200, 0)
+    sprite_batch:add(0,0)
+    sprite_batch:add(1600,0)
+    sprite_batch:add(3200,0)
     draw_3d_image(camera,obj,sprite_batch)
 
     obj = obj_stage_game_scene_ground
     sprite_batch = love.graphics.newSpriteBatch(image_stage_game_scene_ground)
     sprite_batch:clear()
-    sprite_batch:add(0, 0)
-    sprite_batch:add(1600, 0)
-    sprite_batch:add(3200, 0)
+    sprite_batch:add(0,0)
+    sprite_batch:add(1600,0)
+    sprite_batch:add(3200,0)
     draw_3d_image(camera,obj,sprite_batch)
 
 end
@@ -209,7 +209,7 @@ function draw_game_scene_stage_glow()
 
     love.graphics.setCanvas(DRAW_STAGE_ALPHA_ONLY_CANVAS)
     love.graphics.clear(0,0,0,0)
-    love.graphics.rectangle("fill", 0, 0, width, height/2)
+    love.graphics.rectangle("fill",0,0,width,height/2)
     love.graphics.draw(
         image_stage_game_scene_stage_liner_fade_alpha,
         0,-camera_y*0.5,0,
@@ -220,29 +220,29 @@ function draw_game_scene_stage_glow()
     love.graphics.setCanvas(DRAW_STAGE_GLOW_CANVAS)
     love.graphics.clear(0,0,0,0)
     love.graphics.setShader(shader_game_scene_fractal_noise)
-    shader_game_scene_fractal_noise:send("time", love.timer.getTime())
-    shader_game_scene_fractal_noise:send("input_x", 0)
-    love.graphics.rectangle("fill", 0, 0, width, height)
+    shader_game_scene_fractal_noise:send("time",love.timer.getTime())
+    shader_game_scene_fractal_noise:send("input_x",0)
+    love.graphics.rectangle("fill",0,0,width,height)
 
     love.graphics.setCanvas(DRAW_STAGE_RADIAL_BLUR_CANVAS)
     love.graphics.clear(0,0,0,0)
     love.graphics.setShader(shader_game_scene_radial_blur)
-    shader_game_scene_radial_blur:send("start_coods", cood_res)
-    shader_game_scene_radial_blur:send("input_screen_coords", {width, height})
-    love.graphics.draw(DRAW_STAGE_GLOW_CANVAS, 0, 0)
+    shader_game_scene_radial_blur:send("start_coods",cood_res)
+    shader_game_scene_radial_blur:send("input_screen_coords",{width,height})
+    love.graphics.draw(DRAW_STAGE_GLOW_CANVAS,0,0)
     love.graphics.setShader()
 
     love.graphics.setCanvas(DRAW_STAGE_ALPHA_COMP_CANVAS)
     love.graphics.clear(0,0,0,0)
     love.graphics.draw(DRAW_STAGE_RADIAL_BLUR_CANVAS)
-    love.graphics.setBlendMode('multiply', 'premultiplied')
+    love.graphics.setBlendMode('multiply','premultiplied')
     love.graphics.draw(DRAW_STAGE_ALPHA_ONLY_CANVAS)
-    love.graphics.setBlendMode('alpha', 'alphamultiply')
+    love.graphics.setBlendMode('alpha','alphamultiply')
     love.graphics.setCanvas()
 
     love.graphics.setBlendMode("add")
-    love.graphics.setColor(1, 1, 1, 0.8)
+    love.graphics.setColor(1,1,1,0.8)
     love.graphics.draw(DRAW_STAGE_ALPHA_COMP_CANVAS)
-    love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.setColor(1,1,1,1)
     love.graphics.setBlendMode("alpha")
 end

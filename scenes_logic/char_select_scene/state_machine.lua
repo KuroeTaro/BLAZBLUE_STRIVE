@@ -39,7 +39,7 @@ function state_machine_UI_char_select_scene_timer(obj)
     end
 end
 function state_machine_UI_char_select_scene_ring_blink(obj)
-    obj[4] = 0.8+math.random(-1, 1)*0.03
+    obj[4] = 0.8+math.random(-1,1)*0.03
 end
 
 -- match

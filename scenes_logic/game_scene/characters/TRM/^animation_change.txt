@@ -33,9 +33,9 @@ obj_char["horizontal_velocity_correction"] = 1
 obj_char["gravity_correction"] = 1
 obj_char["damage_correction"] = 1
 
-obj_char["pushbox"] = {0, -185,130, 370}
+obj_char["pushbox"] = {0,-185,130,370}
 obj_char["hitbox_table"] = {}
-obj_char["hurtbox_table"] = {{0, -215, 170, 430},{0, -455, 100, 50}}
+obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-455,100,50}}
 obj_char["collision_move_available"] = {1,1}
 obj_char["collision_test_ground_height_offset"] = 0 -- 用于检测和地面碰撞的
 
@@ -133,14 +133,14 @@ obj_char["velocity_cache"] = {0,0}
 obj_char["gravity"] = 2.5
 obj_char["friction"] = 1 -- 包括地面移动和空中dash的水平阻力
 
-obj_char["health_gauge"] = {12000, 12000, 12000, "fade_off"}
-obj_char["heat_gauge"] = {0.0, 200.0} -- 0.0 - 200.0
-obj_char["ability_gauge"] = {600.0, 600.0} -- 0.0 - 600.0
-obj_char["overdrive_gauge"] = {600.0, 600.0, "off"} -- 0.0 - 600.0
+obj_char["health_gauge"] = {12000,12000,12000,"fade_off"}
+obj_char["heat_gauge"] = {0.0,200.0} -- 0.0 - 200.0
+obj_char["ability_gauge"] = {600.0,600.0} -- 0.0 - 600.0
+obj_char["overdrive_gauge"] = {600.0,600.0,"off"} -- 0.0 - 600.0
 obj_char["overdrive_timer"] = {0,0,0,0} -- 0f 00:00 
 obj_char["overdrive_drain_speed"] = 24
-obj_char["risk_gauge"] = {0.0, 300.0}-- 0.0 - 300.0
-obj_char["wallbreak_gauge"] = {0.0, 300.0, false}-- 0.0 - 300.0
+obj_char["risk_gauge"] = {0.0,300.0}-- 0.0 - 300.0
+obj_char["wallbreak_gauge"] = {0.0,300.0,false}-- 0.0 - 300.0
 
 obj_char["heat_penalty"] = false
 obj_char["heat_penalty_countdown"] = 0
@@ -157,9 +157,9 @@ obj_char["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的
 obj_char["hit_hurt_blockstop_countdown"] = 0
 obj_char["hit_hurt_block_slowdown_countdown"] = 0
 
-obj_char["pushbox"] = {0, -185,130, 370}
+obj_char["pushbox"] = {0,-185,130,370}
 obj_char["hitbox_table"] = {}
-obj_char["hurtbox_table"] = {{0, -215, 170, 430},{0, -455, 100, 50}}
+obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-455,100,50}}
 obj_char["collision_move_available"] = {1,1}
 obj_char["collision_test_ground_height_offset"] = 0 -- 用于检测和地面碰撞的
 

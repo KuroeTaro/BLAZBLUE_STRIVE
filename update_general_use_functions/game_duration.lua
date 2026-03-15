@@ -16,7 +16,7 @@ function read_game_duration()
 end
 function write_game_duration_record()
     local chunk = "GAME_DURATION = "..
-    "{" ..table.concat(GAME_DURATION, ", ").."}" ..
+    "{" ..table.concat(GAME_DURATION,",").."}" ..
     "\n"..
     "CTO_COUNT = ".. CTO_COUNT.. "" ..
     "\n".. ""

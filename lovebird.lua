@@ -35,12 +35,12 @@ lovebird.pages["index"] = [[
 if req.parsedbody.input then
   local str = req.parsedbody.input
   if lovebird.echoinput then
-    lovebird.pushline({ type = 'input', str = str })
+    lovebird.pushline({ type = 'input',str = str })
   end
   if str:find("^=") then
     str = "print(" .. str:sub(2) .. ")"
   end
-  xpcall(function() assert(lovebird.loadstring(str, "input"))() end,
+  xpcall(function() assert(lovebird.loadstring(str,"input"))() end,
          lovebird.onerror)
 end
 ?>
@@ -55,7 +55,7 @@ end
     body {
       margin: 0px;
       font-size: 14px;
-      font-family: helvetica, verdana, sans;
+      font-family: helvetica,verdana,sans;
       background: #FFFFFF;
     }
     form {
@@ -97,7 +97,7 @@ end
       border-radius: 3px;
     }
     .inputline {
-      font-family: mono, courier;
+      font-family: mono,courier;
       font-size: 13px;
       color: #606060;
     }
@@ -158,7 +158,7 @@ end
     }
     #inputbox {
       width: 100%;
-      font-family: mono, courier;
+      font-family: mono,courier;
       font-size: 13px;
     }
     #output {
@@ -225,11 +225,11 @@ end
         document.head.appendChild(link);
       }
 
-      var truncate = function(str, len) {
+      var truncate = function(str,len) {
         return str
       }
 
-      var geturl = function(url, onComplete, onFail) {
+      var geturl = function(url,onComplete,onFail) {
         var req = new XMLHttpRequest();
         req.onreadystatechange = function() {
           if (req.readyState != 4) return;
@@ -240,12 +240,12 @@ end
           }
         }
         url += (url.indexOf("?") > -1 ? "&_=" : "?_=") + Math.random();
-        req.open("GET", url, true);
+        req.open("GET",url,true);
         req.send();
       }
 
       var divContentCache = {}
-      var updateDivContent = function(id, content) {
+      var updateDivContent = function(id,content) {
         if (divContentCache[id] != content) {
           document.getElementById(id).innerHTML = content;
           divContentCache[id] = content
@@ -257,7 +257,7 @@ end
       var onInputSubmit = function() {
         var b = document.getElementById("inputbox");
         var req = new XMLHttpRequest();
-        req.open("POST", "/", true);
+        req.open("POST","/",true);
         req.send("input=" + encodeURIComponent(b.value));
         /* Do input history */
         if (b.value && inputHistory[0] != b.value) {
@@ -291,9 +291,9 @@ end
 
       /* Output buffer and status */
       var refreshOutput = function() {
-        geturl("/buffer", function(text) {
-          updateDivContent("status", "connected &#9679;");
-          if (updateDivContent("output", text)) {
+        geturl("/buffer",function(text) {
+          updateDivContent("status","connected &#9679;");
+          if (updateDivContent("output",text)) {
             var div = document.getElementById("output");
             div.scrollTop = div.scrollHeight;
           }
@@ -306,7 +306,7 @@ end
           );
         },
         function(text) {
-          updateDivContent("status", "disconnected &#9675;");
+          updateDivContent("status","disconnected &#9675;");
           /* Update favicon */
           changeFavicon("data:image/png;base64," +
 "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAYFBMVEUAAAAAAAAAAADZ2dm4uLgM"+
@@ -323,7 +323,7 @@ end
       /* Environment variable view */
       var envPath = "";
       var refreshEnv = function() {
-        geturl("/env.json?p=" + envPath, function(text) {
+        geturl("/env.json?p=" + envPath,function(text) {
           var json = eval("(" + text + ")");
 
           /* Header */
@@ -333,13 +333,13 @@ end
           for (var i = 0; i < p.length; i++) {
             acc += "." + p[i];
             html += " <a href='#' onclick=\"setEnvPath('" + acc + "')\">" +
-                    truncate(p[i], 10) + "</a>";
+                    truncate(p[i],10) + "</a>";
           }
-          updateDivContent("envheader", html);
+          updateDivContent("envheader",html);
 
           /* Handle invalid table path */
           if (!json.valid) {
-            updateDivContent("envvars", "Bad path");
+            updateDivContent("envvars","Bad path");
             return;
           }
 
@@ -392,8 +392,8 @@ end
           ];
           for (var i = 0; json.vars[i]; i++) {
             var x = json.vars[i];
-            var fullpath = (json.path + "." + x.key).replace(/^\./, "");
-            var k = truncate(x.key, 15);
+            var fullpath = (json.path + "." + x.key).replace(/^\./,"");
+            var k = truncate(x.key,15);
             if(init_check_list.includes(k)){
               continue;
             }
@@ -402,12 +402,12 @@ end
                   k + "</a>";
             }
             var v = "<a href='#' onclick=\"insertVar('" +
-                    fullpath.replace(/\.(-?[0-9]+)/g, "[$1]") +
+                    fullpath.replace(/\.(-?[0-9]+)/g,"[$1]") +
                     "');\">" + x.value + "</a>"
             html += "<tr><td>" + k + "</td><td>" + v + "</td></tr>";
           }
           html += "</table>";
-          updateDivContent("envvars", html);
+          updateDivContent("envvars",html);
         });
       }
       var setEnvPath = function(p) {
@@ -419,7 +419,7 @@ end
         b.value += p;
         b.focus();
       }
-      setInterval(refreshEnv, <?lua echo(lovebird.updateinterval) ?> * 1000);
+      setInterval(refreshEnv,<?lua echo(lovebird.updateinterval) ?> * 1000);
     </script>
   </body>
 </html>
@@ -433,13 +433,13 @@ lovebird.pages["env.json"] = [[
 <?lua
   local t = _G
   local p = req.parsedurl.query.p or ""
-  p = p:gsub("%.+", "."):match("^[%.]*(.*)[%.]*$")
+  p = p:gsub("%.+","."):match("^[%.]*(.*)[%.]*$")
   if p ~= "" then
     for x in p:gmatch("[^%.]+") do
       t = t[x] or t[tonumber(x)]
       -- Return early if path does not exist
       if type(t) ~= "table" then
-        echo('{ "valid": false, "path": ' .. string.format("%q", p) .. ' }')
+        echo('{ "valid": false,"path": ' .. string.format("%q",p) .. ' }')
         return
       end
     end
@@ -453,11 +453,11 @@ lovebird.pages["env.json"] = [[
       local keys = {}
       for k in pairs(t) do
         if type(k) == "number" or type(k) == "string" then
-          table.insert(keys, k)
+          table.insert(keys,k)
         end
       end
-      table.sort(keys, lovebird.compare)
-      for _, k in pairs(keys) do
+      table.sort(keys,lovebird.compare)
+      for _,k in pairs(keys) do
         local v = t[k]
     ?>
       {
@@ -466,7 +466,7 @@ lovebird.pages["env.json"] = [[
                           string.format("%q",
                             lovebird.truncate(
                               lovebird.htmlescape(
-                                tostring(v)), 26))) ?>,
+                                tostring(v)),26))) ?>,
         "type": "<?lua echo(type(v)) ?>",
       },
     <?lua end ?>
@@ -478,8 +478,8 @@ lovebird.pages["env.json"] = [[
 
 function lovebird.init()
   -- Init server
-  lovebird.server = assert(socket.bind(lovebird.host, lovebird.port))
-  lovebird.addr, lovebird.port = lovebird.server:getsockname()
+  lovebird.server = assert(socket.bind(lovebird.host,lovebird.port))
+  lovebird.addr,lovebird.port = lovebird.server:getsockname()
   lovebird.server:settimeout(0)
   -- Wrap print
   lovebird.origprint = print
@@ -491,38 +491,38 @@ function lovebird.init()
     end
   end
   -- Compile page templates
-  for k, page in pairs(lovebird.pages) do
-    lovebird.pages[k] = lovebird.template(page, "lovebird, req",
+  for k,page in pairs(lovebird.pages) do
+    lovebird.pages[k] = lovebird.template(page,"lovebird,req",
                                           "pages." .. k)
   end
   lovebird.inited = true
 end
 
 
-function lovebird.template(str, params, chunkname)
+function lovebird.template(str,params,chunkname)
   params = params and ("," .. params) or ""
-  local f = function(x) return string.format(" echo(%q)", x) end
-  str = ("?>"..str.."<?lua"):gsub("%?>(.-)<%?lua", f)
+  local f = function(x) return string.format(" echo(%q)",x) end
+  str = ("?>"..str.."<?lua"):gsub("%?>(.-)<%?lua",f)
   str = "local echo " .. params .. " = ..." .. str
-  local fn = assert(lovebird.loadstring(str, chunkname))
+  local fn = assert(lovebird.loadstring(str,chunkname))
   return function(...)
     local output = {}
-    local echo = function(str) table.insert(output, str) end
-    fn(echo, ...)
-    return table.concat(lovebird.map(output, tostring))
+    local echo = function(str) table.insert(output,str) end
+    fn(echo,...)
+    return table.concat(lovebird.map(output,tostring))
   end
 end
 
 
-function lovebird.map(t, fn)
+function lovebird.map(t,fn)
   local res = {}
-  for k, v in pairs(t) do res[k] = fn(v) end
+  for k,v in pairs(t) do res[k] = fn(v) end
   return res
 end
 
 
 function lovebird.trace(...)
-  local str = "[lovebird] " .. table.concat(lovebird.map({...}, tostring), " ")
+  local str = "[lovebird] " .. table.concat(lovebird.map({...},tostring)," ")
   print(str)
   if not lovebird.wrapprint then lovebird.print(str) end
 end
@@ -530,15 +530,15 @@ end
 
 function lovebird.unescape(str)
   local f = function(x) return string.char(tonumber("0x"..x)) end
-  return (str:gsub("%+", " "):gsub("%%(..)", f))
+  return (str:gsub("%+"," "):gsub("%%(..)",f))
 end
 
 
 function lovebird.parseurl(url)
   local res = {}
-  res.path, res.search = url:match("/([^%?]*)%??(.*)")
+  res.path,res.search = url:match("/([^%?]*)%??(.*)")
   res.query = {}
-  for k, v in res.search:gmatch("([^&^?]-)=([^&^#]*)") do
+  for k,v in res.search:gmatch("([^&^?]-)=([^&^#]*)") do
     res.query[k] = lovebird.unescape(v)
   end
   return res
@@ -553,20 +553,20 @@ local htmlescapemap = {
 }
 
 function lovebird.htmlescape(str)
-  return ( str:gsub("[<&\"']", htmlescapemap) )
+  return ( str:gsub("[<&\"']",htmlescapemap) )
 end
 
 
-function lovebird.truncate(str, len)
+function lovebird.truncate(str,len)
   if #str <= len then
     return str
   end
-  return str:sub(1, len - 3) .. "..."
+  return str:sub(1,len - 3) .. "..."
 end
 
 
-function lovebird.compare(a, b)
-  local na, nb = tonumber(a), tonumber(b)
+function lovebird.compare(a,b)
+  local na,nb = tonumber(a),tonumber(b)
   if na then
     if nb then return na < nb end
     return false
@@ -579,8 +579,8 @@ end
 
 function lovebird.checkwhitelist(addr)
   if lovebird.whitelist == nil then return true end
-  for _, a in pairs(lovebird.whitelist) do
-    local ptn = "^" .. a:gsub("%.", "%%."):gsub("%*", "%%d*") .. "$"
+  for _,a in pairs(lovebird.whitelist) do
+    local ptn = "^" .. a:gsub("%.","%%."):gsub("%*","%%d*") .. "$"
     if addr:match(ptn) then return true end
   end
   return false
@@ -596,9 +596,9 @@ end
 function lovebird.pushline(line)
   line.time = os.time()
   line.count = 1
-  table.insert(lovebird.lines, line)
+  table.insert(lovebird.lines,line)
   if #lovebird.lines > lovebird.maxlines then
-    table.remove(lovebird.lines, 1)
+    table.remove(lovebird.lines,1)
   end
   lovebird.recalcbuffer()
 end
@@ -608,7 +608,7 @@ function lovebird.recalcbuffer()
   local function doline(line)
     local str = line.str
     if not lovebird.allowhtml then
-      str = lovebird.htmlescape(line.str):gsub("\n", "<br>")
+      str = lovebird.htmlescape(line.str):gsub("\n","<br>")
     end
     if line.type == "input" then
       str = '<span class="inputline">' .. str .. '</span>'
@@ -621,22 +621,22 @@ function lovebird.recalcbuffer()
         str = '<span class="repeatcount">' .. line.count .. '</span> ' .. str
       end
       if lovebird.timestamp then
-        str = os.date('<span class="timestamp">%H:%M:%S</span> ', line.time) ..
+        str = os.date('<span class="timestamp">%H:%M:%S</span> ',line.time) ..
               str
       end
     end
     return str
   end
-  lovebird.buffer = table.concat(lovebird.map(lovebird.lines, doline), "<br>")
+  lovebird.buffer = table.concat(lovebird.map(lovebird.lines,doline),"<br>")
 end
 
 
 function lovebird.print(...)
   local t = {}
-  for i = 1, select("#", ...) do
-    table.insert(t, tostring(select(i, ...)))
+  for i = 1,select("#",...) do
+    table.insert(t,tostring(select(i,...)))
   end
-  local str = table.concat(t, " ")
+  local str = table.concat(t," ")
   local last = lovebird.lines[#lovebird.lines]
   if last and str == last.str then
     -- Update last line if this line is a duplicate of it
@@ -645,20 +645,20 @@ function lovebird.print(...)
     lovebird.recalcbuffer()
   else
     -- Create new line
-    lovebird.pushline({ type = "output", str = str })
+    lovebird.pushline({ type = "output",str = str })
   end
 end
 
 
 function lovebird.onerror(err)
-  lovebird.pushline({ type = "error", str = err })
+  lovebird.pushline({ type = "error",str = err })
   if lovebird.wrapprint then
     lovebird.origprint("[lovebird] ERROR: " .. err)
   end
 end
 
 
-function lovebird.onrequest(req, client)
+function lovebird.onrequest(req,client)
   local page = req.parsedurl.path
   page = page ~= "" and page or "index"
   -- Handle "page not found"
@@ -668,23 +668,23 @@ function lovebird.onrequest(req, client)
   -- Handle page
   local str
   xpcall(function()
-    local data = lovebird.pages[page](lovebird, req)
+    local data = lovebird.pages[page](lovebird,req)
     local contenttype = "text/html"
-    if string.match(page, "%.json$") then
+    if string.match(page,"%.json$") then
       contenttype = "application/json"
     end
     str = "HTTP/1.1 200 OK\r\n" ..
           "Content-Type: " .. contenttype .. "\r\n" ..
           "Content-Length: " .. #data .. "\r\n" ..
           "\r\n" .. data
-  end, lovebird.onerror)
+  end,lovebird.onerror)
   return str
 end
 
 
-function lovebird.receive(client, pattern)
+function lovebird.receive(client,pattern)
   while 1 do
-    local data, msg = client:receive(pattern)
+    local data,msg = client:receive(pattern)
     if not data then
       if msg == "timeout" then
         -- Wait for more data
@@ -700,10 +700,10 @@ function lovebird.receive(client, pattern)
 end
 
 
-function lovebird.send(client, data)
+function lovebird.send(client,data)
   local idx = 1
   while idx < #data do
-    local res, msg = client:send(data, idx)
+    local res,msg = client:send(data,idx)
     if not res and msg == "closed" then
       -- Handle disconnect
       coroutine.yield(nil)
@@ -720,23 +720,23 @@ function lovebird.onconnect(client)
   local requestptn = "(%S*)%s*(%S*)%s*(%S*)"
   local req = {}
   req.socket = client
-  req.addr, req.port = client:getsockname()
-  req.request = lovebird.receive(client, "*l")
-  req.method, req.url, req.proto = req.request:match(requestptn)
+  req.addr,req.port = client:getsockname()
+  req.request = lovebird.receive(client,"*l")
+  req.method,req.url,req.proto = req.request:match(requestptn)
   req.headers = {}
   while 1 do
-    local line, msg = lovebird.receive(client, "*l")
+    local line,msg = lovebird.receive(client,"*l")
     if not line or #line == 0 then break end
-    local k, v = line:match("(.-):%s*(.*)$")
+    local k,v = line:match("(.-):%s*(.*)$")
     req.headers[k] = v
   end
   if req.headers["Content-Length"] then
-    req.body = lovebird.receive(client, req.headers["Content-Length"])
+    req.body = lovebird.receive(client,req.headers["Content-Length"])
   end
   -- Parse body
   req.parsedbody = {}
   if req.body then
-    for k, v in req.body:gmatch("([^&]-)=([^&^#]*)") do
+    for k,v in req.body:gmatch("([^&]-)=([^&^#]*)") do
       req.parsedbody[k] = lovebird.unescape(v)
     end
   end
@@ -744,7 +744,7 @@ function lovebird.onconnect(client)
   req.parsedurl = lovebird.parseurl(req.url)
   -- Handle request; get data to send and send
   local data = lovebird.onrequest(req)
-  lovebird.send(client, data)
+  lovebird.send(client,data)
   -- Clear up
   client:close()
 end
@@ -762,18 +762,18 @@ function lovebird.update()
     if lovebird.checkwhitelist(addr) then
       -- Connection okay -- create and add coroutine to set
       local conn = coroutine.wrap(function()
-        xpcall(function() lovebird.onconnect(client) end, function() end)
+        xpcall(function() lovebird.onconnect(client) end,function() end)
       end)
       lovebird.connections[conn] = true
     else
       -- Reject connection not on whitelist
-      lovebird.trace("got non-whitelisted connection attempt: ", addr)
+      lovebird.trace("got non-whitelisted connection attempt: ",addr)
       client:close()
     end
   end
   -- Handle existing connections
   for conn in pairs(lovebird.connections) do
-    -- Resume coroutine, remove if it has finished
+    -- Resume coroutine,remove if it has finished
     local status = conn()
     if status == nil then
       lovebird.connections[conn] = nil

@@ -212,42 +212,42 @@ function draw_char_select_scene_glow(obj,f_shader,r_shader)
     end
 
     love.graphics.setCanvas(CANVAS_ALPHA_ONLY)
-    love.graphics.clear(0, 0, 0, 0)  
-    love.graphics.polygon("fill", alpha_points)
+    love.graphics.clear(0,0,0,0)  
+    love.graphics.polygon("fill",alpha_points)
 
     love.graphics.setCanvas(CANVAS)
-    love.graphics.clear(0, 0, 0, 0)  
+    love.graphics.clear(0,0,0,0)  
     love.graphics.setShader(shader_char_select_scene_fractal_noise)
-    shader_char_select_scene_fractal_noise:send("time", love.timer.getTime())
-    love.graphics.rectangle("fill", 0, 0, width, height)
+    shader_char_select_scene_fractal_noise:send("time",love.timer.getTime())
+    love.graphics.rectangle("fill",0,0,width,height)
 
     love.graphics.setCanvas(CANVAS_RADIAL_BLUR)
-    love.graphics.clear(0, 0, 0, 0)  
+    love.graphics.clear(0,0,0,0)  
     love.graphics.setShader(shader_char_select_scene_radial_blur)
     shader_char_select_scene_radial_blur:send(
-        "start_coods", 
+        "start_coods",
         {
-            draw_resolution_correction(-230), 
+            draw_resolution_correction(-230),
             draw_resolution_correction(-120)
         }
     )
-    shader_char_select_scene_radial_blur:send("input_screen_coords", { width, height })
-    love.graphics.setColor(1, 1, 1)
+    shader_char_select_scene_radial_blur:send("input_screen_coords",{ width,height })
+    love.graphics.setColor(1,1,1)
     love.graphics.draw(CANVAS)
     love.graphics.setShader()
 
     love.graphics.setCanvas(CANVAS_ALPHA_COMP)
-    love.graphics.clear(0, 0, 0, 0)  
+    love.graphics.clear(0,0,0,0)  
     love.graphics.draw(CANVAS_RADIAL_BLUR)
-    love.graphics.setBlendMode('multiply', 'premultiplied')
+    love.graphics.setBlendMode('multiply','premultiplied')
     love.graphics.draw(CANVAS_ALPHA_ONLY)
-    love.graphics.setBlendMode('alpha', 'alphamultiply')
+    love.graphics.setBlendMode('alpha','alphamultiply')
     love.graphics.setCanvas()
 
     love.graphics.setBlendMode("add")
-    love.graphics.setColor(1, 1, 1, opacity)
+    love.graphics.setColor(1,1,1,opacity)
     love.graphics.draw(CANVAS_ALPHA_COMP)
-    love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.setColor(1,1,1,1)
     love.graphics.setBlendMode("alpha")
 end
 function draw_char_select_scene_char_select_LR(id)
@@ -279,7 +279,7 @@ function draw_char_select_scene_char_select_LR(id)
     end
 
     love.graphics.setCanvas(CANVAS_CHAR_COMP_LR)
-    love.graphics.clear(24/255, 30/255, 39/255, 1)
+    love.graphics.clear(24/255,30/255,39/255,1)
     love.graphics.draw(
         image_table_UI_char_select_scene_char_select_char_txt[f],
         obj_UI_char_select_scene_char_select_text[1],
@@ -296,12 +296,12 @@ function draw_char_select_scene_char_select_LR(id)
         obj_UI_char_select_scene_char_select_char[3],
         obj_UI_char_select_scene_char_select_char[4]
     )
-    love.graphics.setBlendMode('multiply', 'premultiplied')
+    love.graphics.setBlendMode('multiply','premultiplied')
     love.graphics.draw(image_UI_char_select_scene_char_select_alpha,0,0,0,1,1)
-    love.graphics.setBlendMode('alpha', 'alphamultiply')
+    love.graphics.setBlendMode('alpha','alphamultiply')
     love.graphics.setCanvas()
     
-    love.graphics.setColor(1, 1, 1, opacity)
+    love.graphics.setColor(1,1,1,opacity)
     love.graphics.draw(CANVAS_CHAR_COMP_LR,x,y,0,sx,sy)
-    love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.setColor(1,1,1,1)
 end

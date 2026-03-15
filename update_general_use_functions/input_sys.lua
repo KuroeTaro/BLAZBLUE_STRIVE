@@ -336,10 +336,10 @@ function state_machine_input(INPUT_SYS_CURRENT_COMMAND_STATE,INPUT_SYS_CURRENT_C
 end
 -- 绘制input_sys
 function draw_input_sys(x_offset,y_offset)
-    for i, v in ipairs(INPUT_SYS_COMMAND_TABLE) do
-        love.graphics.print(v, 0+x_offset, i*15-15+y_offset)
-        love.graphics.print(INPUT_SYS_CURRENT_COMMAND_STATE["L"][v], 100+x_offset, i*15-15+y_offset)
-        love.graphics.print(INPUT_SYS_CURRENT_COMMAND_STATE["R"][v], 160+x_offset, i*15-15+y_offset)
+    for i,v in ipairs(INPUT_SYS_COMMAND_TABLE) do
+        love.graphics.print(v,0+x_offset,i*15-15+y_offset)
+        love.graphics.print(INPUT_SYS_CURRENT_COMMAND_STATE["L"][v],100+x_offset,i*15-15+y_offset)
+        love.graphics.print(INPUT_SYS_CURRENT_COMMAND_STATE["R"][v],160+x_offset,i*15-15+y_offset)
     end 
 end
 

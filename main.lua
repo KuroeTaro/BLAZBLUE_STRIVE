@@ -5,7 +5,7 @@ require_all_in_folder("scenes_logic/load_scene")
 require_all_init_load_function()
 
 function love.run()
-	if love.load then love.load(love.arg.parseGameArguments(arg), arg) end
+	if love.load then love.load(love.arg.parseGameArguments(arg),arg) end
 
 	-- We don't want the first frame's dt to include time taken by love.load.
 	if love.timer then love.timer.step() end
@@ -25,7 +25,7 @@ function love.run()
 		-- Process events.
 		if love.event then
 			love.event.pump()
-			for name, a,b,c,d,e,f in love.event.poll() do
+			for name,a,b,c,d,e,f in love.event.poll() do
 				if name == "quit" then
 					if not love.quit or not love.quit() then
 						return a or 0
@@ -35,7 +35,7 @@ function love.run()
 			end
 		end
 
-		-- Update dt, as we'll be passing it to update
+		-- Update dt,as we'll be passing it to update
 		dt = love.timer.step()
 		LFRST = LFRST + dt
 		GFRST = GFRST + dt
@@ -293,12 +293,12 @@ function love.draw()
 	love.graphics.clear(7/255,19/255,31/255,1)
 	current_draw_block()
 	if DEBUG_INFO_SHOWS then
-		love.graphics.setColor(0, 0, 0, 0.5)
+		love.graphics.setColor(0,0,0,0.5)
 		draw_debug_info_all(2,2)
 		draw_debug_info_all(0,2)
 		draw_debug_info_all(2,0)
 		draw_debug_info_all(0,0)
-		love.graphics.setColor(1, 1, 1, 1)
+		love.graphics.setColor(1,1,1,1)
 		draw_debug_info_all(1,1)
 	end
 end

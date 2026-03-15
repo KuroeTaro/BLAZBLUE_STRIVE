@@ -1,5 +1,5 @@
 function insert_VFX_game_scene_char_overdrive_badge(obj_char)
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     local image_sprite_sheet = nil
     if obj_char["player_side"] == "L" then
         image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP_overdrive_badge
@@ -42,7 +42,7 @@ function insert_VFX_game_scene_char_overdrive_badge(obj_char)
     table.insert(obj_char["VFX_back_table"],obj)
 end
 function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     obj["life"] = 35
     obj[1] = obj_char["x"] - obj_char[5]*(860)
     obj[2] = obj_char["y"] - obj_char[6]*(845)
@@ -81,7 +81,7 @@ function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
     table.insert(obj_char["VFX_back_table"],obj)
 end
 function insert_VFX_game_scene_char_overdrive_partical(obj_char)
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     if obj_char["player_side"] == "L" then
         obj["life"] = 80
@@ -130,7 +130,7 @@ function insert_VFX_game_scene_char_overdrive_partical(obj_char)
     table.insert(obj_char["VFX_back_table"],obj)
 end
 function insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
-    local obj = {0, 0, 0, 1, 0, 0, 0, 0}
+    local obj = {0,0,0,1,0,0,0,0}
     local obj_camera = obj_stage_game_scene_camera
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
@@ -147,46 +147,46 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
     obj["cood_res"] = draw_3d_point_to_2D(obj_camera,obj_char)
     obj["state"] = "ease_in"
     obj["blur_shader"] = shader_game_scene_gaussian_blur
-    obj["blur_shader"]:send("Directions", 16)
-    obj["blur_shader"]:send("Quality", 5)
-    obj["blur_shader"]:send("Size", 8)
-    obj["blur_shader"]:send("resolution", {love.graphics.getWidth(), love.graphics.getHeight()})
+    obj["blur_shader"]:send("Directions",16)
+    obj["blur_shader"]:send("Quality",5)
+    obj["blur_shader"]:send("Size",8)
+    obj["blur_shader"]:send("resolution",{love.graphics.getWidth(),love.graphics.getHeight()})
 
     obj["opacity_ease_in_anim"] = {}
-    obj["opacity_ease_in_anim"][0] = {0.00, 1}
-    obj["opacity_ease_in_anim"][1] = {0.04, 3}
-    obj["opacity_ease_in_anim"][3] = {0.08, 7}
-    obj["opacity_ease_in_anim"][7] = {0.14, 14}
-    obj["opacity_ease_in_anim"][14] = {0.18, 18}
-    obj["opacity_ease_in_anim"][18] = {0.20, 28}
-    obj["opacity_ease_in_anim"][28] = {0.22, 29}
-    obj["opacity_ease_in_anim"][29] = {0.36, 30}
-    obj["opacity_ease_in_anim"][30] = {0.44, 31}
-    obj["opacity_ease_in_anim"][31] = {0.48, 33}
-    obj["opacity_ease_in_anim"][33] = {0.50, 33}
+    obj["opacity_ease_in_anim"][0] = {0.00,1}
+    obj["opacity_ease_in_anim"][1] = {0.04,3}
+    obj["opacity_ease_in_anim"][3] = {0.08,7}
+    obj["opacity_ease_in_anim"][7] = {0.14,14}
+    obj["opacity_ease_in_anim"][14] = {0.18,18}
+    obj["opacity_ease_in_anim"][18] = {0.20,28}
+    obj["opacity_ease_in_anim"][28] = {0.22,29}
+    obj["opacity_ease_in_anim"][29] = {0.36,30}
+    obj["opacity_ease_in_anim"][30] = {0.44,31}
+    obj["opacity_ease_in_anim"][31] = {0.48,33}
+    obj["opacity_ease_in_anim"][33] = {0.50,33}
     obj["opacity_ease_in_anim"]["prop"] = 4
     obj["opacity_ease_in_anim"]["length"] = 33
     obj["opacity_ease_in_anim"]["loop"] = false
     obj["opacity_ease_in_anim"]["fix_type"] = true
 
     obj["opacity_ease_out_anim"] = {}
-    obj["opacity_ease_out_anim"][0] = {0.50, 10}
-    obj["opacity_ease_out_anim"][10] = {0.00, 10}
+    obj["opacity_ease_out_anim"][0] = {0.50,10}
+    obj["opacity_ease_out_anim"][10] = {0.00,10}
     obj["opacity_ease_out_anim"]["prop"] = 4
     obj["opacity_ease_out_anim"]["length"] = 10
     obj["opacity_ease_out_anim"]["loop"] = false
     obj["opacity_ease_out_anim"]["fix_type"] = true
 
     obj["size_anim"] = {}
-    obj["size_anim"][0] = {200, 28}
-    obj["size_anim"][28] = {800, 33}
-    obj["size_anim"][33] = {2600, 33} 
+    obj["size_anim"][0] = {200,28}
+    obj["size_anim"][28] = {800,33}
+    obj["size_anim"][33] = {2600,33} 
     obj["size_anim"]["prop"] = 5
     obj["size_anim"]["length"] = 33
     obj["size_anim"]["loop"] = false
     obj["size_anim"]["fix_type"] = true
 
-    obj["draw_canvas"] = love.graphics.newCanvas(love.graphics.getWidth(), love.graphics.getHeight())
+    obj["draw_canvas"] = love.graphics.newCanvas(love.graphics.getWidth(),love.graphics.getHeight())
 
     obj["update"] = function(self)
         self[1] = obj_char["x"]
@@ -223,15 +223,15 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
     obj["draw"] = function(self)
         love.graphics.setCanvas(self["draw_canvas"])
         love.graphics.clear(0,0,0,0)
-        love.graphics.setColor(0, 0, 0, self[4])
-        love.graphics.circle( "fill", self["cood_res"][1], self["cood_res"][2], draw_resolution_correction(self[5]) )
-        love.graphics.setColor(1, 1, 1, 1)
+        love.graphics.setColor(0,0,0,self[4])
+        love.graphics.circle( "fill",self["cood_res"][1],self["cood_res"][2],draw_resolution_correction(self[5]) )
+        love.graphics.setColor(1,1,1,1)
         love.graphics.setCanvas()
 
-        self["blur_shader"]:send("Directions", 16)
-        self["blur_shader"]:send("Quality", 5)
-        self["blur_shader"]:send("Size", 8)
-        self["blur_shader"]:send("resolution", {love.graphics.getWidth(), love.graphics.getHeight()})
+        self["blur_shader"]:send("Directions",16)
+        self["blur_shader"]:send("Quality",5)
+        self["blur_shader"]:send("Size",8)
+        self["blur_shader"]:send("resolution",{love.graphics.getWidth(),love.graphics.getHeight()})
         love.graphics.setShader(self["blur_shader"])
         love.graphics.draw(self["draw_canvas"]) -- 画到屏幕上
         love.graphics.setShader()
@@ -243,7 +243,7 @@ end
 -- blast slash directional ray_impact
 function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r,fix_pos,negative_side)
     -- x y z opacity sx sy r f
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     local dx = math.abs(common_game_scene_change_character(obj_char["player_side"])["x"]-obj_char["x"])-220*sx
     if not fix_pos then
         if negative_side then
@@ -308,7 +308,7 @@ function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r,fix_
 end
 function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_pos,negative_side)
     -- x y z opacity sx sy r f
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     local dx = math.abs(common_game_scene_change_character(obj_char["player_side"])["x"]-obj_char["x"])-310*sx
     if not fix_pos then
         if negative_side then
@@ -370,7 +370,7 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_
     table.insert(obj_char["VFX_hit_front_table"],obj)
 
     -- air_blow
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     local dx = -100
     local dy = -200
     local rot_dx = dx * obj_char[5] * math.cos(r) - dy * obj_char[6] * math.sin(r)
@@ -431,7 +431,7 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_
 end
 function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,sy,r,fix_pos,negative_side)
     -- x y z opacity sx sy r f
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     local dx = math.abs(common_game_scene_change_character(obj_char["player_side"])["x"]-obj_char["x"])-185*sx
     if not fix_pos then
         if negative_side then
@@ -500,7 +500,7 @@ function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,s
 end
 function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_pos,negative_side)
     -- x y z opacity sx sy r f
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     local dx = math.abs(common_game_scene_change_character(obj_char["player_side"])["x"]-obj_char["x"])-310*sx
     if not fix_pos then
         if negative_side then
@@ -568,7 +568,7 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     table.insert(obj_char["VFX_hit_front_table"],obj)
 
     -- air_blow
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     local dx = -100
     local dy = -200
     local rot_dx = dx * obj_char[5] * math.cos(r) - dy * obj_char[6] * math.sin(r)
@@ -628,7 +628,7 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     table.insert(obj_char["VFX_hit_front_table"],obj)
     
     -- counter_glow
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     local dx = 45
     local dy = 30
     local rot_dx = dx * obj_char[5] * math.cos(r) - dy * obj_char[6] * math.sin(r)
@@ -646,8 +646,8 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
     obj["opacity_point_linear_animation"] = {}
-    obj["opacity_point_linear_animation"][0] = {0.9*opacity, 5}
-    obj["opacity_point_linear_animation"][5] = {0, 5}
+    obj["opacity_point_linear_animation"][0] = {0.9*opacity,5}
+    obj["opacity_point_linear_animation"][5] = {0,5}
     obj["opacity_point_linear_animation"]["prop"] = 4
     obj["opacity_point_linear_animation"]["length"] = 5
     obj["opacity_point_linear_animation"]["loop"] = false
@@ -670,7 +670,7 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     table.insert(obj_char["VFX_hit_back_table"],obj)
 
     -- partical
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     obj["life"] = 30
     obj[1] = obj_camera["3d_pos_x"] - 900
@@ -715,7 +715,7 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
 end
 function insert_VFX_game_sceme_char_block_ver0(obj_char)
     -- x y z opacity sx sy r f
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     local VFX_spawn_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["block_ver0_spawn_anchor_pos"][obj_char["sprite_sheet_state"]]
     
     obj_char["VFX_hit_front_table"] = {}
@@ -772,7 +772,7 @@ function insert_VFX_game_sceme_char_block_ver0(obj_char)
 end
 function insert_VFX_game_sceme_char_block_ver1(obj_char)
     -- x y z opacity sx sy r f
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     local VFX_spawn_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["block_ver1_spawn_anchor_pos"][obj_char["sprite_sheet_state"]]
     
     obj_char["VFX_hit_front_table"] = {}
@@ -829,7 +829,7 @@ function insert_VFX_game_sceme_char_block_ver1(obj_char)
     table.insert(obj_char["VFX_hit_front_table"],obj)
 end
 function insert_VFX_game_sceme_char_FD_block(obj_char)
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     local VFX_spawn_anchor_pos = {-300,-420}
     if obj_char["height_state"] == "air" then
         VFX_spawn_anchor_pos = {-300,-440}
@@ -892,7 +892,7 @@ end
 function insert_VFX_game_scene_char_throw_tech(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
@@ -910,7 +910,7 @@ function insert_VFX_game_scene_char_throw_tech(obj_char,x,y,opacity,sx,sy,r)
     obj["update"] = function(self)
         self["f"] = self["f"] + 1
         if self["f"] >= 2 then
-            self[8] = math.min(self[8] + 1, 24)
+            self[8] = math.min(self[8] + 1,24)
             self["f"] = 0
         end
         self["life"] = self["life"] - 1
@@ -929,7 +929,7 @@ end
 -- smoke
 function insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     obj["life"] = 30
     obj[1] = obj_char["x"] + obj_char[5]*(x-math.random()*150)
     obj[2] = obj_char["y"] + obj_char[6]*(y)
@@ -943,8 +943,8 @@ function insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,x,y,opacity,sx,sy
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
     obj["opacity_point_linear_animation"] = {}
-    obj["opacity_point_linear_animation"][0] = {1*opacity, 30}
-    obj["opacity_point_linear_animation"][30] = {0, 30}
+    obj["opacity_point_linear_animation"][0] = {1*opacity,30}
+    obj["opacity_point_linear_animation"][30] = {0,30}
     obj["opacity_point_linear_animation"]["prop"] = 4
     obj["opacity_point_linear_animation"]["length"] = 30
     obj["opacity_point_linear_animation"]["loop"] = false
@@ -973,7 +973,7 @@ function insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,x,y,opacity,sx,sy
 end
 function insert_VFX_game_scene_stage_smoke_horizontal_shot(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     obj["life"] = 75
     obj[1] = obj_char["x"] + obj_char[5]*(x)
     obj[2] = obj_char["y"] + obj_char[6]*(y)
@@ -987,7 +987,7 @@ function insert_VFX_game_scene_stage_smoke_horizontal_shot(obj_char,x,y,opacity,
     obj["update"] = function(self)
         self["f"] = self["f"] + 1
         if self["f"] >= 3 then
-            self[8] = math.min(self[8] + 1, 24)
+            self[8] = math.min(self[8] + 1,24)
             self["f"] = 0
         end
         self["life"] = self["life"] - 1
@@ -1004,7 +1004,7 @@ function insert_VFX_game_scene_stage_smoke_horizontal_shot(obj_char,x,y,opacity,
 end
 function insert_VFX_game_scene_stage_smoke_land_blow(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     obj["life"] = 63
     obj[1] = obj_char["x"] + obj_char[5]*(x)
     obj[2] = obj_char["y"] + obj_char[6]*(y)
@@ -1018,7 +1018,7 @@ function insert_VFX_game_scene_stage_smoke_land_blow(obj_char,x,y,opacity,sx,sy,
     obj["update"] = function(self)
         self["f"] = self["f"] + 1
         if self["f"] >= 3 then
-            self[8] = math.min(self[8] + 1, 20)
+            self[8] = math.min(self[8] + 1,20)
             self["f"] = 0
         end
         self["life"] = self["life"] - 1
@@ -1034,7 +1034,7 @@ function insert_VFX_game_scene_stage_smoke_land_blow(obj_char,x,y,opacity,sx,sy,
 end
 function insert_VFX_game_scene_stage_smoke_vertical_shot(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     obj["life"] = 72
     obj[1] = obj_char["x"] + obj_char[5]*(x)
     obj[2] = obj_char["y"] + obj_char[6]*(y)
@@ -1048,7 +1048,7 @@ function insert_VFX_game_scene_stage_smoke_vertical_shot(obj_char,x,y,opacity,sx
     obj["update"] = function(self)
         self["f"] = self["f"] + 1
         if self["f"] >= 2 then
-            self[8] = math.min(self[8] + 1, 17)
+            self[8] = math.min(self[8] + 1,17)
             self["f"] = 0
         end
         self["life"] = self["life"] - 1
@@ -1068,7 +1068,7 @@ end
 -- shockwave
 function insert_VFX_game_scene_stage_4dash_air_backdash_shockwave(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     obj["life"] = 26
     obj[1] = obj_char["x"] + obj_char[5]*(x)
     obj[2] = obj_char["y"] + obj_char[6]*(y)
@@ -1082,7 +1082,7 @@ function insert_VFX_game_scene_stage_4dash_air_backdash_shockwave(obj_char,x,y,o
     obj["update"] = function(self)
         self["f"] = self["f"] + 1
         if self["f"] >= 2 then
-            self[8] = math.min(self[8] + 1, 12)
+            self[8] = math.min(self[8] + 1,12)
             self["f"] = 0
         end
         -- self[1] = self[1] + self[5]*10
@@ -1101,7 +1101,7 @@ function insert_VFX_game_scene_stage_4dash_air_backdash_shockwave(obj_char,x,y,o
 end
 function insert_VFX_game_scene_stage_6dash_air_dash_shockwave(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     obj["life"] = 26
     obj[1] = obj_char["x"] + obj_char[5]*(x)
     obj[2] = obj_char["y"] + obj_char[6]*(y)
@@ -1120,7 +1120,7 @@ function insert_VFX_game_scene_stage_6dash_air_dash_shockwave(obj_char,x,y,opaci
     obj["update"] = function(self)
         self["f"] = self["f"] + 1
         if self["f"] >= 2 then
-            self[8] = math.min(self[8] + 1, 12)
+            self[8] = math.min(self[8] + 1,12)
             self["f"] = 0
         end
         self[1] = self[1] + self[5]*-0.2
@@ -1145,7 +1145,7 @@ end
 -- GP
 function insert_VFX_game_scene_char_GP(obj_char)
     -- x y z opacity sx sy r f
-    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    local obj = {0,0,0,1,1,1,0,0}
     obj["life"] = 42
     obj["update"] = function(self)
         self["life"] = 42
@@ -1179,7 +1179,7 @@ end
 -- HUD
 function insert_VFX_HUD_game_scene_counter_ver0_2(obj_char)
     local side = obj_char["player_side"]
-    local obj = {0, 0, 0, 0, 0.75, 0.65, 0, 0}
+    local obj = {0,0,0,0,0.75,0.65,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
     obj["image"] = image_VFX_game_scene_HUD_counter_ver0_2
@@ -1193,35 +1193,35 @@ function insert_VFX_HUD_game_scene_counter_ver0_2(obj_char)
 
 -- y_anim
     obj["y_anim"] = {}
-    obj["y_anim"][0] = {0.00, 1}
-    obj["y_anim"][1] = {3.00, 2}
-    obj["y_anim"][2] = {-2.00, 3}
-    obj["y_anim"][3] = {1.00, 5}
-    obj["y_anim"][5] = {0.00, 35}
-    obj["y_anim"][35] = {0.00, 40}
-    obj["y_anim"][40] = {0.07, 45}
-    obj["y_anim"][45] = {0.45, 47}
-    obj["y_anim"][47] = {0.85, 49}
-    obj["y_anim"][49] = {1.87, 50}
-    obj["y_anim"][50] = {4.00, 50}
+    obj["y_anim"][0] = {0.00,1}
+    obj["y_anim"][1] = {3.00,2}
+    obj["y_anim"][2] = {-2.00,3}
+    obj["y_anim"][3] = {1.00,5}
+    obj["y_anim"][5] = {0.00,35}
+    obj["y_anim"][35] = {0.00,40}
+    obj["y_anim"][40] = {0.07,45}
+    obj["y_anim"][45] = {0.45,47}
+    obj["y_anim"][47] = {0.85,49}
+    obj["y_anim"][49] = {1.87,50}
+    obj["y_anim"][50] = {4.00,50}
     obj["y_anim"]["prop"] = 2
     obj["y_anim"]["length"] = 50
     obj["y_anim"]["loop"] = false
     obj["y_anim"]["fix_type"] = false
 -- opacity_anim
     obj["opacity_anim"] = {}
-    obj["opacity_anim"][0] = {0.00, 1}
-    obj["opacity_anim"][1] = {0.87, 2}
-    obj["opacity_anim"][2] = {1.00, 5}
-    obj["opacity_anim"][5] = {1.00, 15}
-    obj["opacity_anim"][15] = {0.99, 25}
-    obj["opacity_anim"][25] = {0.95, 35}
-    obj["opacity_anim"][35] = {0.84, 40}
-    obj["opacity_anim"][40] = {0.75, 45}
-    obj["opacity_anim"][45] = {0.57, 47}
-    obj["opacity_anim"][47] = {0.45, 49}
-    obj["opacity_anim"][49] = {0.25, 50}
-    obj["opacity_anim"][50] = {0.00, 50}
+    obj["opacity_anim"][0] = {0.00,1}
+    obj["opacity_anim"][1] = {0.87,2}
+    obj["opacity_anim"][2] = {1.00,5}
+    obj["opacity_anim"][5] = {1.00,15}
+    obj["opacity_anim"][15] = {0.99,25}
+    obj["opacity_anim"][25] = {0.95,35}
+    obj["opacity_anim"][35] = {0.84,40}
+    obj["opacity_anim"][40] = {0.75,45}
+    obj["opacity_anim"][45] = {0.57,47}
+    obj["opacity_anim"][47] = {0.45,49}
+    obj["opacity_anim"][49] = {0.25,50}
+    obj["opacity_anim"][50] = {0.00,50}
     obj["opacity_anim"]["prop"] = 4
     obj["opacity_anim"]["length"] = 50
     obj["opacity_anim"]["loop"] = false
@@ -1239,7 +1239,7 @@ function insert_VFX_HUD_game_scene_counter_ver0_2(obj_char)
 end
 function insert_VFX_HUD_game_scene_counter_ver3(obj_char)
     -- x y z opacity sx sy r f
-    local obj = {0, 0, 0, 0, 1, 1, 0, 0}
+    local obj = {0,0,0,0,1,1,0,0}
     obj["x"] = 800
     obj["y"] = 600
     obj["LCT"] = {0,0,0,0,0,0,0,0}
@@ -1253,81 +1253,81 @@ function insert_VFX_HUD_game_scene_counter_ver3(obj_char)
 
 -- sx_anim
     obj["sx_anim"] = {}
-    obj["sx_anim"][0] = {1.000, 1}
-    obj["sx_anim"][1] = {1.134, 2}
-    obj["sx_anim"][2] = {1.176, 3}
-    obj["sx_anim"][3] = {1.199, 4}
-    obj["sx_anim"][4] = {1.213, 5}
-    obj["sx_anim"][5] = {1.220, 7}
-    obj["sx_anim"][7] = {1.228, 9}
-    obj["sx_anim"][9] = {1.234, 10}
-    obj["sx_anim"][10] = {1.236, 12}
-    obj["sx_anim"][12] = {1.240, 14}
-    obj["sx_anim"][14] = {1.245, 16}
-    obj["sx_anim"][16] = {1.246, 18}
-    obj["sx_anim"][18] = {1.247, 20}
-    obj["sx_anim"][20] = {1.248, 25}
-    obj["sx_anim"][25] = {1.249, 30}
-    obj["sx_anim"][30] = {1.250, 32}
-    obj["sx_anim"][32] = {1.251, 33}
-    obj["sx_anim"][33] = {1.252, 34}
-    obj["sx_anim"][34] = {1.253, 35}
-    obj["sx_anim"][35] = {1.256, 36}
-    obj["sx_anim"][36] = {1.258, 37}
-    obj["sx_anim"][37] = {1.263, 38}
-    obj["sx_anim"][38] = {1.270, 39}
-    obj["sx_anim"][39] = {1.281, 40}
-    obj["sx_anim"][40] = {1.300, 40}
+    obj["sx_anim"][0] = {1.000,1}
+    obj["sx_anim"][1] = {1.134,2}
+    obj["sx_anim"][2] = {1.176,3}
+    obj["sx_anim"][3] = {1.199,4}
+    obj["sx_anim"][4] = {1.213,5}
+    obj["sx_anim"][5] = {1.220,7}
+    obj["sx_anim"][7] = {1.228,9}
+    obj["sx_anim"][9] = {1.234,10}
+    obj["sx_anim"][10] = {1.236,12}
+    obj["sx_anim"][12] = {1.240,14}
+    obj["sx_anim"][14] = {1.245,16}
+    obj["sx_anim"][16] = {1.246,18}
+    obj["sx_anim"][18] = {1.247,20}
+    obj["sx_anim"][20] = {1.248,25}
+    obj["sx_anim"][25] = {1.249,30}
+    obj["sx_anim"][30] = {1.250,32}
+    obj["sx_anim"][32] = {1.251,33}
+    obj["sx_anim"][33] = {1.252,34}
+    obj["sx_anim"][34] = {1.253,35}
+    obj["sx_anim"][35] = {1.256,36}
+    obj["sx_anim"][36] = {1.258,37}
+    obj["sx_anim"][37] = {1.263,38}
+    obj["sx_anim"][38] = {1.270,39}
+    obj["sx_anim"][39] = {1.281,40}
+    obj["sx_anim"][40] = {1.300,40}
     obj["sx_anim"]["prop"] = 5
     obj["sx_anim"]["length"] = 40
     obj["sx_anim"]["loop"] = false
     obj["sx_anim"]["fix_type"] = true
 -- y_anim
     obj["y_anim"] = {}
-    obj["y_anim"][0] = {600.00, 1}
-    obj["y_anim"][1] = {584.41, 2}
-    obj["y_anim"][2] = {575.88, 3}
-    obj["y_anim"][3] = {571.29, 4}
-    obj["y_anim"][4] = {568.60, 5}
-    obj["y_anim"][5] = {567.10, 7}
-    obj["y_anim"][7] = {565.20, 9}
-    obj["y_anim"][9] = {563.69, 11}
-    obj["y_anim"][11] = {562.51, 14}
-    obj["y_anim"][14] = {561.24, 16}
-    obj["y_anim"][16] = {560.69, 20}
-    obj["y_anim"][20] = {560.00, 30}
-    obj["y_anim"][30] = {560.00, 40}
-    obj["y_anim"][40] = {560.00, 40}
+    obj["y_anim"][0] = {600.00,1}
+    obj["y_anim"][1] = {584.41,2}
+    obj["y_anim"][2] = {575.88,3}
+    obj["y_anim"][3] = {571.29,4}
+    obj["y_anim"][4] = {568.60,5}
+    obj["y_anim"][5] = {567.10,7}
+    obj["y_anim"][7] = {565.20,9}
+    obj["y_anim"][9] = {563.69,11}
+    obj["y_anim"][11] = {562.51,14}
+    obj["y_anim"][14] = {561.24,16}
+    obj["y_anim"][16] = {560.69,20}
+    obj["y_anim"][20] = {560.00,30}
+    obj["y_anim"][30] = {560.00,40}
+    obj["y_anim"][40] = {560.00,40}
     obj["y_anim"]["prop"] = "y"
     obj["y_anim"]["length"] = 40
     obj["y_anim"]["loop"] = false
     obj["y_anim"]["fix_type"] = true
 -- opacity_anim
     obj["opacity_anim"] = {}
-    obj["opacity_anim"][0] = {0.00, 1}
-    obj["opacity_anim"][1] = {0.58, 2}
-    obj["opacity_anim"][2] = {0.70, 3}
-    obj["opacity_anim"][3] = {0.77, 4}
-    obj["opacity_anim"][4] = {0.82, 5}
-    obj["opacity_anim"][5] = {0.85, 6}
-    obj["opacity_anim"][6] = {0.88, 7}
-    obj["opacity_anim"][7] = {0.90, 9}
-    obj["opacity_anim"][9] = {0.93, 11}
-    obj["opacity_anim"][11] = {0.95, 13}
-    obj["opacity_anim"][13] = {0.97, 15}
-    obj["opacity_anim"][15] = {0.98, 20}
-    obj["opacity_anim"][20] = {0.99, 30}
-    obj["opacity_anim"][30] = {1.00, 31}
-    obj["opacity_anim"][31] = {1.00, 32}
-    obj["opacity_anim"][32] = {0.99, 33}
-    obj["opacity_anim"][33] = {0.96, 34}
-    obj["opacity_anim"][34] = {0.93, 35}
-    obj["opacity_anim"][35] = {0.89, 36}
-    obj["opacity_anim"][36] = {0.82, 37}
-    obj["opacity_anim"][37] = {0.73, 38}
-    obj["opacity_anim"][38] = {0.60, 39}
-    obj["opacity_anim"][39] = {0.38, 40}
-    obj["opacity_anim"][40] = {0.00, 40}
+    obj["opacity_anim"][0] = {0.00,1}
+    obj["opacity_anim"][1] = {0.58,2}
+    obj["opacity_anim"][2] = {0.70,3}
+    obj["opacity_anim"][3] = {0.77,4}
+    obj["opacity_anim"][4] = {0.82,5}
+    obj["opacity_anim"][5] = {0.85,6}
+    obj["opacity_anim"][6] = {0.88,7}
+    obj["opacity_anim"][7] = {0.90,9}
+    obj["opacity_anim"][9] = {0.93,11}
+    obj["opacity_anim"][11] = {0.95,13}
+    obj["opacity_anim"][13] = {0.97,15}
+    obj["opacity_anim"][15] = {0.98,20}
+    obj["opacity_anim"][20] = {0.99,30}
+    obj["opacity_anim"][30] = {1.00,31}
+    obj["opacity_anim"][31] = {1.00,32}
+    obj["opacity_anim"][32] = {0.99,33}
+    obj["opacity_anim"][33] = {0.96,34}
+    obj["opacity_anim"][34] = {0.93,35}
+    obj["opacity_anim"][35] = {0.89,36}
+    obj["opacity_anim"][36] = {0.82,37}
+    obj["opacity_anim"][37] = {0.73,38}
+    obj["opacity_anim"][38] = {0.60,39}
+    obj["opacity_anim"][39] = {0.38,40}
+    obj["opacity_anim"][40] = {0.00,40}
     obj["opacity_anim"]["prop"] = 4
     obj["opacity_anim"]["length"] = 40
     obj["opacity_anim"]["loop"] = false
@@ -1355,7 +1355,7 @@ function insert_VFX_HUD_game_scene_counter_ver3(obj_char)
     table.insert(obj_char["VFX_HUD_table"],obj)
 
 -- black_overlay
-    local obj = {0, 0, 0, 0.5, 0, 0, 0, 0}
+    local obj = {0,0,0,0.5,0,0,0,0}
     local width = love.graphics.getWidth()
     local height = love.graphics.getHeight()
     obj["FCT"] = {0,0,0,0,0,0,0,0}
@@ -1363,8 +1363,8 @@ function insert_VFX_HUD_game_scene_counter_ver3(obj_char)
     obj["LCD"] = {0,0,0,0,0,0,0,0}
     obj["life"] = 60
     obj["opacity_anim"] = {}
-    obj["opacity_anim"][0] = {0.5, 60}
-    obj["opacity_anim"][60] = {0, 60}
+    obj["opacity_anim"][0] = {0.5,60}
+    obj["opacity_anim"][60] = {0,60}
     obj["opacity_anim"]["prop"] = 4
     obj["opacity_anim"]["length"] = 60
     obj["opacity_anim"]["loop"] = false
@@ -1378,14 +1378,14 @@ function insert_VFX_HUD_game_scene_counter_ver3(obj_char)
 
     obj["draw"] = function(self)
         love.graphics.setColor(0,0,0,self[4])
-        love.graphics.rectangle("fill", 0, 0, width, height)
+        love.graphics.rectangle("fill",0,0,width,height)
         love.graphics.setColor(1,1,1,1)
     end
     table.insert(obj_char["black_overlay_table"],obj)
 end
 function insert_VFX_HUD_game_scene_punish(obj_char)
     local side = obj_char["player_side"]
-    local obj = {0, 0, 0, 0, 0.75, 0.65, 0, 0}
+    local obj = {0,0,0,0,0.75,0.65,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
     obj["image"] = image_VFX_game_scene_HUD_punish
@@ -1399,35 +1399,35 @@ function insert_VFX_HUD_game_scene_punish(obj_char)
 
 -- y_anim
     obj["y_anim"] = {}
-    obj["y_anim"][0] = {0.00, 1}
-    obj["y_anim"][1] = {3.00, 2}
-    obj["y_anim"][2] = {-2.00, 3}
-    obj["y_anim"][3] = {1.00, 5}
-    obj["y_anim"][5] = {0.00, 35}
-    obj["y_anim"][35] = {0.00, 40}
-    obj["y_anim"][40] = {0.07, 45}
-    obj["y_anim"][45] = {0.45, 47}
-    obj["y_anim"][47] = {0.85, 49}
-    obj["y_anim"][49] = {1.87, 50}
-    obj["y_anim"][50] = {4.00, 50}
+    obj["y_anim"][0] = {0.00,1}
+    obj["y_anim"][1] = {3.00,2}
+    obj["y_anim"][2] = {-2.00,3}
+    obj["y_anim"][3] = {1.00,5}
+    obj["y_anim"][5] = {0.00,35}
+    obj["y_anim"][35] = {0.00,40}
+    obj["y_anim"][40] = {0.07,45}
+    obj["y_anim"][45] = {0.45,47}
+    obj["y_anim"][47] = {0.85,49}
+    obj["y_anim"][49] = {1.87,50}
+    obj["y_anim"][50] = {4.00,50}
     obj["y_anim"]["prop"] = 2
     obj["y_anim"]["length"] = 50
     obj["y_anim"]["loop"] = false
     obj["y_anim"]["fix_type"] = false
 -- opacity_anim
     obj["opacity_anim"] = {}
-    obj["opacity_anim"][0] = {0.00, 1}
-    obj["opacity_anim"][1] = {0.87, 2}
-    obj["opacity_anim"][2] = {1.00, 5}
-    obj["opacity_anim"][5] = {1.00, 15}
-    obj["opacity_anim"][15] = {0.99, 25}
-    obj["opacity_anim"][25] = {0.95, 35}
-    obj["opacity_anim"][35] = {0.84, 40}
-    obj["opacity_anim"][40] = {0.75, 45}
-    obj["opacity_anim"][45] = {0.57, 47}
-    obj["opacity_anim"][47] = {0.45, 49}
-    obj["opacity_anim"][49] = {0.25, 50}
-    obj["opacity_anim"][50] = {0.00, 50}
+    obj["opacity_anim"][0] = {0.00,1}
+    obj["opacity_anim"][1] = {0.87,2}
+    obj["opacity_anim"][2] = {1.00,5}
+    obj["opacity_anim"][5] = {1.00,15}
+    obj["opacity_anim"][15] = {0.99,25}
+    obj["opacity_anim"][25] = {0.95,35}
+    obj["opacity_anim"][35] = {0.84,40}
+    obj["opacity_anim"][40] = {0.75,45}
+    obj["opacity_anim"][45] = {0.57,47}
+    obj["opacity_anim"][47] = {0.45,49}
+    obj["opacity_anim"][49] = {0.25,50}
+    obj["opacity_anim"][50] = {0.00,50}
     obj["opacity_anim"]["prop"] = 4
     obj["opacity_anim"]["length"] = 50
     obj["opacity_anim"]["loop"] = false

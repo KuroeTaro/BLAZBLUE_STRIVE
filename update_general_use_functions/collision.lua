@@ -241,11 +241,11 @@ end
     --         )/velocity_rel_x
             
     --         if velocity_rel_x > 0 then
-    --             time_enter = math.max(time_enter, overlap_start)
-    --             time_exit = math.min(time_exit, overlap_end)
+    --             time_enter = math.max(time_enter,overlap_start)
+    --             time_exit = math.min(time_exit,overlap_end)
     --         else
-    --             time_enter = math.max(time_enter, overlap_end)
-    --             time_exit = math.min(time_exit, overlap_start)
+    --             time_enter = math.max(time_enter,overlap_end)
+    --             time_exit = math.min(time_exit,overlap_start)
     --         end
     --     else
     --         -- X轴无相对速度，直接判断是否重叠
@@ -268,11 +268,11 @@ end
     --         )/velocity_rel_y
             
     --         if velocity_rel_y > 0 then
-    --             time_enter = math.max(time_enter, overlap_start)
-    --             time_exit = math.min(time_exit, overlap_end)
+    --             time_enter = math.max(time_enter,overlap_start)
+    --             time_exit = math.min(time_exit,overlap_end)
     --         else
-    --             time_enter = math.max(time_enter, overlap_end)
-    --             time_exit = math.min(time_exit, overlap_start)
+    --             time_enter = math.max(time_enter,overlap_end)
+    --             time_exit = math.min(time_exit,overlap_start)
     --         end
     --     else
     --         -- Y轴无相对速度，直接判断是否重叠
@@ -289,7 +289,7 @@ end
     --     end
 
     --     -- 返回最早碰撞时间和碰撞点
-    --     local t = math.max(time_enter, 0)
+    --     local t = math.max(time_enter,0)
     --     obj_A["x"] = round(obj_A["x"] + velocity_A * t)
     --     obj_B["x"] = obj_A["x"] + box_A_end[3]/2 + box_B_end[3]/2
     --     local res_velocity = (obj_A["velocity"][1] + obj_B["velocity"][1])/2
