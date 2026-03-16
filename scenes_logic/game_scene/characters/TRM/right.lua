@@ -165,11 +165,11 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["oroboros_shot_aim_process"] = {0,420,480,540}
     obj_char_game_scene_char_RP["oroboros_shot_aim_r"] = 0
     obj_char_game_scene_char_RP["oroboros_front_offset"] = {-80,-80}
-    obj_char_game_scene_char_RP["oroboros_mid_offset"] = {0,0}
+    obj_char_game_scene_char_RP["oroboros_mid_offset"] = {-85,-85}
     obj_char_game_scene_char_RP["oroboros_back_offset"] = {-15,-50}
     obj_char_game_scene_char_RP["oroboros_shot_offset"] = 0
     obj_char_game_scene_char_RP["oroboros_front_sprite_state"] = "5H_oroboros_loop_front"
-    obj_char_game_scene_char_RP["oroboros_mid_sprite_state"] = "5H_oroboros_ease_in_mid"
+    obj_char_game_scene_char_RP["oroboros_mid_sprite_state"] = "5H_oroboros_loop_mid"
     obj_char_game_scene_char_RP["oroboros_back_sprite_state"] = "5H_oroboros_loop_back"
     obj_char_game_scene_char_RP["oroboros_front_f"] = 0
     obj_char_game_scene_char_RP["oroboros_mid_f"] = 0
@@ -182,14 +182,14 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["oroboros_back_4"] = 1
     obj_char_game_scene_char_RP["oroboros_anchor_pos"] = {-110,-455}
     obj_char_game_scene_char_RP["oroboros_ease_current"] = {
-        obj_char_game_scene_char_RP["x"],
-        obj_char_game_scene_char_RP["y"],
+        obj_char_game_scene_char_RP["x"] + obj_char_game_scene_char_RP[5] * obj_char_game_scene_char_RP["oroboros_anchor_pos"][1],
+        obj_char_game_scene_char_RP["y"] + obj_char_game_scene_char_RP[6] * obj_char_game_scene_char_RP["oroboros_anchor_pos"][2],
         obj_char_game_scene_char_RP[5],
         obj_char_game_scene_char_RP[6]
     }
     obj_char_game_scene_char_RP["oroboros_ease_target"] = {
-        obj_char_game_scene_char_RP["x"],
-        obj_char_game_scene_char_RP["y"],
+        obj_char_game_scene_char_RP["x"] + obj_char_game_scene_char_RP[5] * obj_char_game_scene_char_RP["oroboros_anchor_pos"][1],
+        obj_char_game_scene_char_RP["y"] + obj_char_game_scene_char_RP[6] * obj_char_game_scene_char_RP["oroboros_anchor_pos"][2],
         obj_char_game_scene_char_RP[5],
         obj_char_game_scene_char_RP[6]
     }
@@ -1267,18 +1267,19 @@ function state_machine_char_game_scene_char_RP_oroboros()
     local this_function = switch[obj_char["oroboros_state"]]
     if this_function then this_function() end
 
-    local div_value = 2
+    local x_div_value = 3
+    local y_div_value = 3
     obj_char["oroboros_ease_target"] = {
-        obj_char["x"],
-        obj_char["y"],
+        obj_char["x"] + obj_char[5]*obj_char["oroboros_anchor_pos"][1],
+        obj_char["y"] + obj_char[6]*obj_char["oroboros_anchor_pos"][2],
         obj_char[5],
         obj_char[6]
     }
     obj_char["oroboros_ease_current"] = {
-        (obj_char["oroboros_ease_current"][1]*(div_value-1)+obj_char["oroboros_ease_target"][1])/div_value,
-        (obj_char["oroboros_ease_current"][2]*(div_value-1)+obj_char["oroboros_ease_target"][2])/div_value,
-        (obj_char["oroboros_ease_current"][3]*(div_value-1)+obj_char["oroboros_ease_target"][3])/div_value,
-        (obj_char["oroboros_ease_current"][4]*(div_value-1)+obj_char["oroboros_ease_target"][4])/div_value
+        (obj_char["oroboros_ease_target"][1]*(x_div_value-1) + obj_char["oroboros_ease_current"][1])/x_div_value,
+        (obj_char["oroboros_ease_target"][2]*(y_div_value-1) + obj_char["oroboros_ease_current"][2])/y_div_value,
+        (obj_char["oroboros_ease_target"][3]*(x_div_value-1) + obj_char["oroboros_ease_current"][3])/x_div_value,
+        (obj_char["oroboros_ease_target"][4]*(y_div_value-1) + obj_char["oroboros_ease_current"][4])/y_div_value
     }
 end
 function state_machine_char_game_scene_char_RP_crosshair()
@@ -1647,7 +1648,7 @@ function state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_ch
         return true
     end
     -- _cS
-    if test_input_sys_press(input["S"]) and test_cS_distance_check(obj_char,350) then
+    if test_input_sys_press(input["S"]) and test_cS_distance_check(obj_char,320) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -4329,15 +4330,27 @@ function draw_game_scene_char_RP()
     local shader = shader_game_scene_brightness_contrast
     shader:send("contrast",obj_char["contrast"])
     shader:send("brightness",obj_char["brightness"])
+
+    -- -- debug_use
+    -- local x_div_value = 3
+    -- local y_div_value = 3
+    -- obj_char["oroboros_ease_target"] = {
+    --     obj_char["x"] + obj_char[5]*obj_char["oroboros_anchor_pos"][1],
+    --     obj_char["y"] + obj_char[6]*obj_char["oroboros_anchor_pos"][2],
+    --     obj_char[5],
+    --     obj_char[6]
+    -- }
+    -- obj_char["oroboros_ease_current"] = {
+    --     (obj_char["oroboros_ease_target"][1]*(x_div_value-1) + obj_char["oroboros_ease_current"][1])/x_div_value,
+    --     (obj_char["oroboros_ease_target"][2]*(y_div_value-1) + obj_char["oroboros_ease_current"][2])/y_div_value,
+    --     (obj_char["oroboros_ease_target"][3]*(x_div_value-1) + obj_char["oroboros_ease_current"][3])/x_div_value,
+    --     (obj_char["oroboros_ease_target"][4]*(y_div_value-1) + obj_char["oroboros_ease_current"][4])/y_div_value
+    -- }
     
     -- draw_back
     -- x y z opacity sx sy r f
-    obj[1] = obj_char["oroboros_ease_current"][1]
-        +obj_char["oroboros_ease_current"][3]*(obj_char["oroboros_back_offset"][1]
-        +obj_char["oroboros_anchor_pos"][1])
-    obj[2] = obj_char["oroboros_ease_current"][2]
-        +obj_char["oroboros_ease_current"][4]*(obj_char["oroboros_back_offset"][2]
-        +obj_char["oroboros_anchor_pos"][2])
+    obj[1] = obj_char["oroboros_ease_current"][1] + obj_char["oroboros_ease_current"][3]*obj_char["oroboros_back_offset"][1]
+    obj[2] = obj_char["oroboros_ease_current"][2] + obj_char["oroboros_ease_current"][4]*obj_char["oroboros_back_offset"][2]
     obj[3] = obj_char[3]
     obj[4] = obj_char["oroboros_back_4"]
     obj[5] = obj_char[5]
@@ -4358,15 +4371,29 @@ function draw_game_scene_char_RP()
     love.graphics.setShader()
 
     -- draw_mid
+    -- x y z opacity sx sy r f
+    local dx = obj_char["oroboros_mid_offset"][1]
+    local dy = obj_char["oroboros_mid_offset"][2]
+    local r = obj_char["oroboros_shot_aim_r"]
+    local rot_dx = dx*obj_char["oroboros_ease_current"][3]*math.cos(r) - dy*obj_char["oroboros_ease_current"][4]*math.sin(r)
+    local rot_dy = dx*obj_char["oroboros_ease_current"][3]*math.sin(r) + dy*obj_char["oroboros_ease_current"][4]*math.cos(r)
+    obj[1] = obj_char["oroboros_ease_current"][1] + rot_dx
+    obj[2] = obj_char["oroboros_ease_current"][2] + rot_dy
+    obj[3] = obj_char[3]
+    obj[4] = obj_char["oroboros_mid_4"]
+    obj[5] = obj_char[5]
+    obj[6] = obj_char[6]
+    obj[7] = r
+    obj[8] = obj_char["oroboros_mid_8"]
+    local image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj_char["oroboros_mid_sprite_state"]]
+    image_sprite_sheet["sprite_batch"]:clear()
+    draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,tostring(obj[8]))
+    love.graphics.draw(image_sprite_sheet["sprite_batch"])
 
     -- darw_front
     -- x y z opacity sx sy r f
-    obj[1] = obj_char["oroboros_ease_current"][1]
-        +obj_char["oroboros_ease_current"][3]*(obj_char["oroboros_front_offset"][1]
-        +obj_char["oroboros_anchor_pos"][1])
-    obj[2] = obj_char["oroboros_ease_current"][2]
-        +obj_char["oroboros_ease_current"][4]*(obj_char["oroboros_front_offset"][2]
-        +obj_char["oroboros_anchor_pos"][2])
+    obj[1] = obj_char["oroboros_ease_current"][1] + obj_char["oroboros_ease_current"][3]*obj_char["oroboros_front_offset"][1]
+    obj[2] = obj_char["oroboros_ease_current"][2] + obj_char["oroboros_ease_current"][4]*obj_char["oroboros_front_offset"][2]
     obj[3] = obj_char[3]
     obj[4] = obj_char["oroboros_front_4"]
     obj[5] = obj_char[5]

@@ -15,7 +15,7 @@ function insert_VFX_game_scene_char_overdrive_badge(obj_char)
     obj[5] = obj_char[5]*2
     obj[6] = obj_char[6]*2
     obj[7] = obj_char[7]
-    obj[8] = -1
+    obj[8] = 0
     obj["update"] = function(self)
         self[1] = obj_char["x"] - obj_char[5]*(500)
         self[2] = obj_char["y"] - obj_char[6]*(865)
@@ -51,7 +51,7 @@ function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
     obj[5] = obj_char[5]*2
     obj[6] = obj_char[6]*2
     obj[7] = obj_char[7]
-    obj[8] = -1
+    obj[8] = 0
     obj["update"] = function(self)
         -- self[1] = obj_char["x"] + obj_char[5]*(-860)/2
         -- self[2] = obj_char["y"] + obj_char[6]*(840)
@@ -265,7 +265,7 @@ function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r,fix_
     obj[5] = obj_char[5]*sx
     obj[6] = obj_char[6]*sy
     obj[7] = r
-    obj[8] = -1
+    obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
@@ -279,7 +279,7 @@ function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r,fix_
     obj["animation"]["length"] = 11
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with(obj,obj["animation"])
+    init_frame_anim_with_out(obj,obj["animation"])
     obj["update"] = function(self)
         self[4] = opacity
         self[5] = obj_char[5]*sx
@@ -330,7 +330,7 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_
     obj[5] = obj_char[5]*sx
     obj[6] = obj_char[6]*sy
     obj[7] = r
-    obj[8] = -1
+    obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
@@ -346,7 +346,7 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_
     obj["animation"]["length"] = 21
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with(obj,obj["animation"])
+    init_frame_anim_with_out(obj,obj["animation"])
     obj["update"] = function(self)
         if obj_char["state"] == "hitstop" then
             -- do nothing
@@ -383,7 +383,7 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_
     obj[5] = obj_char[5]*sx
     obj[6] = obj_char[6]*sy
     obj[7] = r
-    obj[8] = -1
+    obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
@@ -403,7 +403,7 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_
     obj["animation"]["length"] = 16
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with(obj,obj["animation"])
+    init_frame_anim_with_out(obj,obj["animation"])
     obj["update"] = function(self)
         if obj_char["state"] == "hitstop" then
             -- do nothing
@@ -453,7 +453,7 @@ function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,s
     obj[5] = obj_char[5]*sx
     obj[6] = obj_char[6]*sy
     obj[7] = r
-    obj[8] = -1
+    obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
@@ -475,7 +475,7 @@ function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,s
     obj["animation"]["length"] = 27
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with(obj,obj["animation"])
+    init_frame_anim_with_out(obj,obj["animation"])
     obj["update"] = function(self)
         if obj_char["state"] == "hitstop" then
             -- do nothing
@@ -522,7 +522,7 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     obj[5] = obj_char[5]*sx
     obj[6] = obj_char[6]*sy
     obj[7] = r
-    obj[8] = -1
+    obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
@@ -538,7 +538,7 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     obj["animation"]["length"] = 21
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with(obj,obj["animation"])
+    init_frame_anim_with_out(obj,obj["animation"])
     obj["update"] = function(self)
         if obj_char["state"] == "hitstop" then
             -- do nothing
@@ -581,7 +581,7 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     obj[5] = obj_char[5]*sx
     obj[6] = obj_char[6]*sy
     obj[7] = r
-    obj[8] = -1
+    obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
@@ -601,7 +601,7 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     obj["animation"]["length"] = 16
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with(obj,obj["animation"])
+    init_frame_anim_with_out(obj,obj["animation"])
     obj["update"] = function(self)
         if obj_char["state"] == "hitstop" then
             -- do nothing
@@ -641,7 +641,7 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     obj[5] = obj_char[5]*sx
     obj[6] = obj_char[6]*sy
     obj[7] = r
-    obj[8] = -1
+    obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
@@ -680,7 +680,7 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     obj[5] = 1
     obj[6] = 1
     obj[7] = 0
-    obj[8] = -1
+    obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
@@ -692,7 +692,7 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     obj["animation"]["length"] = 30
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with(obj,obj["animation"])
+    init_frame_anim_with_out(obj,obj["animation"])
     obj["update"] = function(self)
         if obj_char["state"] == "hitstop" then
             -- do nothing
@@ -729,7 +729,7 @@ function insert_VFX_game_sceme_char_block_ver0(obj_char)
     obj[5] = obj_char[5]*1
     obj[6] = obj_char[6]*1
     obj[7] = 0
-    obj[8] = -1
+    obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
@@ -744,7 +744,7 @@ function insert_VFX_game_sceme_char_block_ver0(obj_char)
     obj["animation"]["length"] = 11
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with(obj,obj["animation"])
+    init_frame_anim_with_out(obj,obj["animation"])
     obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
     obj["update"] = function(self)
         if obj_char["state"] == "blockstop" then
@@ -786,7 +786,7 @@ function insert_VFX_game_sceme_char_block_ver1(obj_char)
     obj[5] = obj_char[5]*1
     obj[6] = obj_char[6]*1
     obj[7] = 0
-    obj[8] = -1
+    obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
@@ -802,7 +802,7 @@ function insert_VFX_game_sceme_char_block_ver1(obj_char)
     obj["animation"]["length"] = 21
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with(obj,obj["animation"])
+    init_frame_anim_with_out(obj,obj["animation"])
     obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
     obj["update"] = function(self)
         if obj_char["state"] == "blockstop" then
@@ -848,7 +848,7 @@ function insert_VFX_game_sceme_char_FD_block(obj_char)
     obj[5] = obj_char[5]*1
     obj[6] = obj_char[6]*1
     obj[7] = 0
-    obj[8] = -1
+    obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
@@ -865,7 +865,7 @@ function insert_VFX_game_sceme_char_FD_block(obj_char)
     obj["animation"]["length"] = 21
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with(obj,obj["animation"])
+    init_frame_anim_with_out(obj,obj["animation"])
     obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
     obj["update"] = function(self)
         if obj_char["state"] == "blockstop" then

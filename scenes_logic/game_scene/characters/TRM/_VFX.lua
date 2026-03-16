@@ -28,7 +28,7 @@ function insert_VFX_game_scene_char_TRM_2P_whiff(obj_char)
     obj["animation"]["length"] = 8
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with(obj,obj["animation"])
+    init_frame_anim_with_out(obj,obj["animation"])
     obj["update"] = function(self)
         -- self[1] = obj_char["x"] + obj_char[5]*(-860)/2
         -- self[2] = obj_char["y"] + obj_char[6]*(840)
@@ -85,14 +85,14 @@ function insert_VFX_game_scene_char_TRM_6P_whiff(obj_char)
     obj["animation"][0] = 0
     obj["animation"][2] = 1
     obj["animation"][4] = 2
-    obj["animation"][7] = 3
+    obj["animation"][8] = 3
     obj["animation"][12] = 4
     obj["animation"][15] = 5
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 17
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with(obj,obj["animation"])
+    init_frame_anim_with_out(obj,obj["animation"])
     obj["update"] = function(self)
         -- self[1] = obj_char["x"] + obj_char[5]*(-860)/2
         -- self[2] = obj_char["y"] + obj_char[6]*(840)
@@ -155,7 +155,7 @@ function insert_VFX_game_scene_char_TRM_5P_whiff(obj_char)
     obj["animation"]["length"] = 8
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with(obj,obj["animation"])
+    init_frame_anim_with_out(obj,obj["animation"])
     obj["update"] = function(self)
         -- self[1] = obj_char["x"] + obj_char[5]*(-860)/2
         -- self[2] = obj_char["y"] + obj_char[6]*(840)
@@ -215,7 +215,7 @@ function insert_VFX_game_scene_char_TRM_2S_whiff(obj_char)
     obj["animation"]["length"] = 3
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with(obj,obj["animation"])
+    init_frame_anim_with_out(obj,obj["animation"])
     obj["update"] = function(self)
         -- self[1] = obj_char["x"] + obj_char[5]*(-860)/2
         -- self[2] = obj_char["y"] + obj_char[6]*(840)
@@ -281,7 +281,7 @@ function insert_VFX_game_scene_char_TRM_6S_whiff(obj_char)
     obj["animation"]["length"] = 36
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with(obj,obj["animation"])
+    init_frame_anim_with_out(obj,obj["animation"])
     obj["update"] = function(self)
         self[1] = obj_char["x"] + obj_char[5]*(-430)
         self[2] = obj_char["y"] + obj_char[6]*(-520)
@@ -345,7 +345,7 @@ function insert_VFX_game_scene_char_TRM_cS_whiff(obj_char)
     obj["animation"]["length"] = 19
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with(obj,obj["animation"])
+    init_frame_anim_with_out(obj,obj["animation"])
     obj["update"] = function(self)
         -- self[1] = obj_char["x"] + obj_char[5]*(-860)/2
         -- self[2] = obj_char["y"] + obj_char[6]*(840)
@@ -411,7 +411,7 @@ function insert_VFX_game_scene_char_TRM_5Launcher_whiff_slash(obj_char)
     obj["animation"]["length"] = 3
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with(obj,obj["animation"])
+    init_frame_anim_with_out(obj,obj["animation"])
     obj["update"] = function(self)
         -- self[1] = obj_char["x"] + obj_char[5]*(-860)/2
         -- self[2] = obj_char["y"] + obj_char[6]*(840)
@@ -472,7 +472,7 @@ function insert_VFX_game_scene_char_TRM_5Launcher_whiff_glow(obj_char)
     obj["animation"]["length"] = 18
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with(obj,obj["animation"])
+    init_frame_anim_with_out(obj,obj["animation"])
     obj["update"] = function(self)
         -- self[1] = obj_char["x"] + obj_char[5]*(-860)/2
         -- self[2] = obj_char["y"] + obj_char[6]*(840)
@@ -537,7 +537,7 @@ function insert_VFX_game_scene_char_TRM_jS_whiff(obj_char)
     obj["animation"]["length"] = 13
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with(obj,obj["animation"])
+    init_frame_anim_with_out(obj,obj["animation"])
     obj["update"] = function(self)
         if obj["FCT"][8] < 7 and obj_char["state"] == "jS" then
             self[1] = obj_char["x"] + obj_char["velocity"][1] + obj_char[5]*(-120)

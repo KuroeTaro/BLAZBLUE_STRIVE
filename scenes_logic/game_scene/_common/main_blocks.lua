@@ -471,10 +471,12 @@ function update_game_scene_main_training()
             -- 更新sub_frame
             update_game_scene_game_speed_sub_frame()
 
-            -- 更新HUD 场景 角色最后更新
+            -- 更新角色修订
+            update_game_scene_char_revise()
+
+            -- 更新HUD 场景
             update_game_scene_HUD()
             update_game_scene_stage()
-            update_game_scene_char_revise()
 
             -- 更新角色DEBUG信息
             update_character_frame_info(obj_char_game_scene_char_LP)

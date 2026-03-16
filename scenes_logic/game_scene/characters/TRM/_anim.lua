@@ -59,6 +59,8 @@ function load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-175,180,350}}
         obj_char["collision_test_ground_height_offset"] = 0
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {292,420}
@@ -110,6 +112,8 @@ function load_game_scene_anim_char_TRM_1_2_3_crouch_turn(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-150,200,300}}
         obj_char["collision_test_ground_height_offset"] = 0
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {292,297}
@@ -151,6 +155,8 @@ function load_game_scene_anim_char_TRM_1_2_3_crouch_to_stand_idle(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-190,190,380}}
         obj_char["collision_test_ground_height_offset"] = 0
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {292,420}
@@ -196,6 +202,8 @@ function load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-455,100,50}}
         obj_char["collision_test_ground_height_offset"] = 0
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {215,510}
@@ -235,6 +243,8 @@ function load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-455,100,50}}
         obj_char["collision_test_ground_height_offset"] = 0
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {220,510}
@@ -279,6 +289,8 @@ function load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-160,290,320}}
         obj_char["collision_test_ground_height_offset"] = 0
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {323,515}
@@ -373,6 +385,8 @@ function load_game_scene_anim_char_TRM_4_walk(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-215,170,430},{-7,-455,100,50}}
         obj_char["collision_test_ground_height_offset"] = 0
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-120,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {170,510}
@@ -483,6 +497,8 @@ function load_game_scene_anim_char_TRM_4_walk_to_stand_idle(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-455,100,50}}
         obj_char["collision_test_ground_height_offset"] = 0
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {155,515}
@@ -528,6 +544,8 @@ function load_game_scene_anim_char_TRM_6_walk(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-215,170,430},{7,-455,100,50}}
         obj_char["collision_test_ground_height_offset"] = 0
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {288,510}
@@ -638,6 +656,8 @@ function load_game_scene_anim_char_TRM_6_walk_to_stand_idle(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-455,100,50}}
         obj_char["collision_test_ground_height_offset"] = 0
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {155,510}
@@ -726,6 +746,8 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-190,180,380}}
         obj_char["collision_test_ground_height_offset"] = 0
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {325,480}
@@ -841,6 +863,8 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet_stat
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-180,width_table[0],380}}
         obj_char["collision_test_ground_height_offset"] = 180
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-130,-320}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = anchor_pos
@@ -1022,6 +1046,8 @@ function load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-215,170,430}}
         obj_char["collision_test_ground_height_offset"] = 0
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {275,415}
@@ -1124,6 +1150,8 @@ function load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {}
         obj_char["collision_test_ground_height_offset"] = 0
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-175,-200}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {275,505}
@@ -1174,6 +1202,8 @@ function load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
         obj_char["pushbox"] = {0,-185,121.5,370}
         obj_char["hurtbox_table"] = {{0,-225,180,450}}
         obj_char["collision_test_ground_height_offset"] = 0
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 3
         -- update
@@ -1290,6 +1320,8 @@ function load_game_scene_anim_char_TRM_4dash_air_backdash(input,obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-125,260,270}}
         obj_char["collision_test_ground_height_offset"] = 180
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {242,285}
@@ -1414,6 +1446,8 @@ function load_game_scene_anim_char_TRM_6dash_dash(input,obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-190,285,380}}
         obj_char["collision_test_ground_height_offset"] = 0
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {60,-350}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {288,510}
@@ -1585,6 +1619,8 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(input,obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-125,260,270}}
         obj_char["collision_test_ground_height_offset"] = 180
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {350,283}
@@ -1785,6 +1821,8 @@ function load_game_scene_anim_char_TRM_burst_overdrive(obj_char,other_side_count
         obj_char["hitbox_table"] = {} --{ 攻击类型 是投还是打， function值 内部为命中后的逻辑,具体的box形状}
         obj_char["hurtbox_table"] = {}
         obj_char["collision_test_ground_height_offset"] = 0
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {296,615}
@@ -2175,6 +2213,8 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {295,315}
@@ -2425,6 +2465,8 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-170,-435}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {280,495}
@@ -2443,6 +2485,8 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         play_obj_audio(SFX_table["5P"])
         -- VFX
         insert_VFX_game_scene_char_TRM_6P_whiff(obj_char)
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-225,-455}
         -- draw_correction
         obj_char[8] = 1
     end
@@ -2466,6 +2510,8 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
             -160,
             0.5,-0.8,0.8,0
         )
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-90,-405}
         -- draw_correction
         obj_char[8] = 4
     end
@@ -2498,10 +2544,12 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         obj_char[8] = 8
     end
     res[32] = function()
-        -- draw_correction
-        obj_char[8] = 9
         -- collide
         obj_char["hurtbox_table"] = {{0,-205,180,410}}
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-105,-445}
+        -- draw_correction
+        obj_char[8] = 9
     end
     res[36] = function()
         -- input_sys_cache
@@ -2509,6 +2557,8 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         init_input_sys_cache(obj_char)
         -- collide
         obj_char["hurtbox_table"] = {{0,-215,170,430}}
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 10
     end
@@ -2689,6 +2739,8 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {233,520}
@@ -2938,6 +2990,8 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-355}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {290,300}
@@ -3046,6 +3100,8 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
     res[26] = function()
         -- collide
         obj_char["hurtbox_table"] = {{0,-125,200,250}}
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         obj_char[8] = 8
     end
@@ -3222,6 +3278,8 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {370,540}
@@ -3270,6 +3328,8 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         obj_char["hurtbox_table"] = {{-15,-215,200,430},{130,-375,90,110},{100,-180,150,280},{200,-140,110,200}}
         -- SFX
         play_obj_audio(SFX_table["5P"])
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-180,-455}
         -- draw_correction
         obj_char[8] = 4
     end
@@ -3337,6 +3397,8 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         obj_char["velocity"] = {obj_char[5]*(5),0}
         -- collide
         obj_char["hurtbox_table"] = {{-5,-215,170,430},{-15,-455,100,50}}
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 10
     end
@@ -3503,6 +3565,8 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-145,-440}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {235,510}
@@ -3523,6 +3587,8 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
     res[4] = function()
         -- collide
         obj_char["hurtbox_table"] = {{-28,-325,200,250},{-50,-100,154,200}}
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-170,-400}
         -- draw_correction
         obj_char[8] = 2
     end
@@ -3596,6 +3662,8 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-140,-425}
         -- collide
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{-5,-225,180,450}}
@@ -3603,6 +3671,8 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         obj_char[8] = 6
     end
     res[23] = function()
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 7
     end
@@ -3776,6 +3846,8 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-50,-345}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {292,405}
@@ -3878,6 +3950,8 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
     res[28] = function()
         -- collide
         obj_char["hurtbox_table"] = {{10,-150,220,300}}
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         obj_char[8] = 8
     end
@@ -4104,6 +4178,8 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
             -160,
             0.5,0.8,0.8,0
         )
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-430}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {375,510}
@@ -4126,6 +4202,8 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
     res[5] = function()
         -- collide
         obj_char["hurtbox_table"] = {{0,-215,190,430},{125,-215,60,280}}
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-90,-420}
         -- draw_correction
         obj_char[8] = 2
     end
@@ -4152,6 +4230,8 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,175,-615,0.9,0.75,0.75,0,false,false}
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,175,-615,1,0.75,0.75,0,false,false}
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-100,-355}
         -- draw_correction
         obj_char[8] = 4
         -- VFX
@@ -4225,6 +4305,8 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
     res[47] = function()
         -- collide
         obj_char["hurtbox_table"] = {{0,-215,170,430}}
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 10
     end
@@ -4399,6 +4481,8 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {320,510}
@@ -4411,6 +4495,8 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         CHARACTER_VISUAL_FRONT = obj_char["player_side"]
     end
     res[3] = function()
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-145,-455}
         -- draw_correction
         obj_char[8] = 1
     end
@@ -4483,6 +4569,8 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         obj_char[8] = 5
     end
     res[26] = function()
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-120,-455}
         -- draw_correction
         obj_char[8] = 6
     end
@@ -4651,6 +4739,8 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-20,-375}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {320,510}
@@ -4758,12 +4848,16 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
         init_input_sys_cache(obj_char)
         -- collide
         obj_char["hurtbox_table"] = {{0,-215,170,430},{-30,-455,100,50}}
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-100,-405}
         -- draw_correction
         obj_char[8] = 9
     end
     res[36] = function()
         -- collide
         obj_char["hurtbox_table"] = {{-20,-215,170,430},{-30,-455,100,50}}
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-105,-445}
         -- draw_correction
         obj_char[8] = 10
     end
@@ -5011,6 +5105,8 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             -160,
             0.5,-0.8,0.8,0
         )
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {330,310}
@@ -5062,6 +5158,8 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
     res[14] = function()
         -- collide
         obj_char["hurtbox_table"] = {{0,-150,200,300},{120,-115,40,230}}
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-120,-355}
         -- draw_correction
         obj_char[8] = 4
     end
@@ -5115,10 +5213,14 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         obj_char[8] = 10
     end
     res[37] = function()
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-90,-355}
         -- draw_correction
         obj_char[8] = 11
     end
     res[40] = function()
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         obj_char[8] = 12
     end
@@ -5218,6 +5320,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = nil
         obj_char["block_SFX"] = nil
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-150,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {245,530}
@@ -5259,6 +5363,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
     res[12] = function()
         -- collide
         obj_char["hurtbox_table"] = {{0,-215,170,430},{22,-455,100,50}}
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 3
     end
@@ -5584,6 +5690,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = nil
         obj_char["block_SFX"] = nil
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {249,530}
@@ -5975,6 +6083,8 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-170,-425}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {415,635}
@@ -6025,6 +6135,8 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         -- collide
         obj_char["hitbox_table"] = {{140,-285,120,450}}
         obj_char["hurtbox_table"] = {{0,-237.5,210,475},{140,-285,170,500}}
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-150,-385}
         -- draw_correction
         obj_char[8] = 4
         -- SFX
@@ -6107,6 +6219,8 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
     res[59] = function()
         -- collide
         obj_char["hurtbox_table"] = {{0,-215,170,430},{-12,-455,100,50}}
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 12
     end
@@ -6564,6 +6678,8 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {310,290}
@@ -6819,6 +6935,8 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver0
         obj_char["block_SFX"] = nil
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {330,370}
@@ -7071,6 +7189,8 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {240,480}
@@ -7334,6 +7454,8 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {350,330}
@@ -7594,6 +7716,8 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
         obj_char["block_SFX"] = nil
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {325,380}
@@ -7776,6 +7900,8 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = nil
         obj_char["block_SFX"] = nil
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {300,310}
@@ -8131,6 +8257,8 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = nil
         obj_char["block_SFX"] = nil
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {335,435}
