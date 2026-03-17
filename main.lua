@@ -138,14 +138,14 @@ function love.load()
 	-- game_scene
 	TRAINING_MODE_CONFIG = {}
 	TRAINING_MODE_CONFIG["announcer"] = false
-	CHARACTER_VISUAL_FRONT = "L"
 		-- network
 	NETWORK_MATCH_SIDE = "L"
 	NETWORK_OTHER_SIDE = "R"
 	ROLLBACK_INPUT_TABLE = {}
 	ROLLBACK_INPUT_STATE_TABLE = {}
 	ROLLBACK_GAME_CACHE_TABLE = {}
-		-- HUD
+		-- draw & HUD
+	CHARACTER_VISUAL_FRONT = "L"
 	WIN_MARK = {}
 	WIN_MARK["L"] = 0
 	WIN_MARK["R"] = 0
