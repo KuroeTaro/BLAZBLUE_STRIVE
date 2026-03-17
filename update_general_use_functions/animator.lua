@@ -71,7 +71,7 @@ function init_frame_anim_with_out(obj,anim)
     obj["FCT"][anim["prop"]] = -1 
 end
 function get_frame_anim_end_state(obj,anim)
-    if obj["FCT"][anim["prop"]] > anim["length"] then
+    if obj["FCT"][anim["prop"]] >= anim["length"] then
         return true
     else
         return false
@@ -155,7 +155,7 @@ function init_point_linear_anim_with_out(obj,anim)
     obj["LCD"][anim["prop"]] = 0
 end
 function get_point_linear_anim_end_state(obj,anim)
-    if obj["LCT"][anim["prop"]] > anim["length"] then
+    if obj["LCT"][anim["prop"]] >= anim["length"] then
         return true
     else
         return false
@@ -163,16 +163,16 @@ function get_point_linear_anim_end_state(obj,anim)
 end
 
 function init_character_anim_with(obj,anim)
-    obj["f"] = -1
+    obj[anim["prop_f"]] = -1
     character_animator(obj,anim)
 end
 function init_character_anim_without(obj,anim)
-    obj["f"] = -1
+    obj[anim["prop_f"]] = -1
 end
 function character_animator(obj,anim)
-    obj["f"] = obj["f"] + 1
     
-    local key_frame_funciton = anim[obj["f"]]
+    obj[anim["prop_f"]] = obj[anim["prop_f"]] + 1
+    local key_frame_funciton = anim[obj[anim["prop_f"]]]
 
     if key_frame_funciton then 
         key_frame_funciton()

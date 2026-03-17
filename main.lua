@@ -127,37 +127,33 @@ function love.load()
 
 	JSON = require("dkjson")
 
+	-- character_select_scene & game_scene
 	GAME_MODE = 0 -- 1.训练模式 2.本地多人 3.在线多人
-	NETWORK_MATCH_SIDE = "L"
-	NETWORK_OTHER_SIDE = "R"
-
-	CHARACTER_VISUAL_FRONT = "L"
-
-	TRAINING_MODE_CONFIG = {}
-	TRAINING_MODE_CONFIG["LP_character_pos"] = -320 -- -1600 -> 1600
-	TRAINING_MODE_CONFIG["RP_character_pos"] = 320
-	TRAINING_MODE_CONFIG["announcer"] = false
-
 	CHAR_SELECT_LR = {}
 	CHAR_SELECT_LR["L"] = 4
 	CHAR_SELECT_LR["R"] = 5
 	CONTROL_METHOD = {}
 	CONTROL_METHOD["L"] = 1
 	CONTROL_METHOD["R"] = 1
+	-- game_scene
+	TRAINING_MODE_CONFIG = {}
+	TRAINING_MODE_CONFIG["announcer"] = false
+	CHARACTER_VISUAL_FRONT = "L"
+		-- network
+	NETWORK_MATCH_SIDE = "L"
+	NETWORK_OTHER_SIDE = "R"
+	ROLLBACK_INPUT_TABLE = {}
+	ROLLBACK_INPUT_STATE_TABLE = {}
+	ROLLBACK_GAME_CACHE_TABLE = {}
+		-- HUD
 	WIN_MARK = {}
 	WIN_MARK["L"] = 0
 	WIN_MARK["R"] = 0
 	MATCH_POINT = {}
 	MATCH_POINT["L"] = 0
 	MATCH_POINT["R"] = 0
-
 	ROUND_COUNTER = 1
 	ROUND_TIMER = {9,9,6,0} -- 99s and 60f
-	CHARACTER_DRAW_PRIORITY = 1
-
-	ROLLBACK_INPUT_TABLE = {}
-	ROLLBACK_INPUT_STATE_TABLE = {}
-	ROLLBACK_GAME_CACHE_TABLE = {}
 
 	-- to be continue
 

@@ -16,7 +16,7 @@ function insert_VFX_game_scene_char_TRM_2P_whiff(obj_char)
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = obj_char[7]
-    obj[8] = -1
+    obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
@@ -69,7 +69,7 @@ function insert_VFX_game_scene_char_TRM_6P_whiff(obj_char)
         image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["6P_whiff_VFX"]
     end 
 
-    obj["life"] = 17
+    obj["life"] = 15
     obj[1] = obj_char["x"] + obj_char[5]*(-294)
     obj[2] = obj_char["y"] + obj_char[6]*(-543)
     obj[3] = obj_char[3]
@@ -77,7 +77,7 @@ function insert_VFX_game_scene_char_TRM_6P_whiff(obj_char)
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = obj_char[7]
-    obj[8] = -1
+    obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
@@ -85,11 +85,11 @@ function insert_VFX_game_scene_char_TRM_6P_whiff(obj_char)
     obj["animation"][0] = 0
     obj["animation"][2] = 1
     obj["animation"][4] = 2
-    obj["animation"][8] = 3
-    obj["animation"][12] = 4
-    obj["animation"][15] = 5
+    obj["animation"][6] = 3
+    obj["animation"][10] = 4
+    obj["animation"][13] = 5
     obj["animation"]["prop"] = 8
-    obj["animation"]["length"] = 17
+    obj["animation"]["length"] = 15
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
     init_frame_anim_with_out(obj,obj["animation"])
@@ -143,7 +143,7 @@ function insert_VFX_game_scene_char_TRM_5P_whiff(obj_char)
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = obj_char[7]
-    obj[8] = -1
+    obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
@@ -204,7 +204,7 @@ function insert_VFX_game_scene_char_TRM_2S_whiff(obj_char)
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = obj_char[7]
-    obj[8] = -1
+    obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
@@ -264,7 +264,7 @@ function insert_VFX_game_scene_char_TRM_6S_whiff(obj_char)
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = obj_char[7]
-    obj[8] = -1
+    obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
@@ -330,7 +330,7 @@ function insert_VFX_game_scene_char_TRM_cS_whiff(obj_char)
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = obj_char[7]
-    obj[8] = -1
+    obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
@@ -400,7 +400,7 @@ function insert_VFX_game_scene_char_TRM_5Launcher_whiff_slash(obj_char)
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = obj_char[7]
-    obj[8] = -1
+    obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
@@ -460,7 +460,7 @@ function insert_VFX_game_scene_char_TRM_5Launcher_whiff_glow(obj_char)
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = obj_char[7]
-    obj[8] = -1
+    obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
@@ -524,7 +524,7 @@ function insert_VFX_game_scene_char_TRM_jS_whiff(obj_char)
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = obj_char[7]
-    obj[8] = -1
+    obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}

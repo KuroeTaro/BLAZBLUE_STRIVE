@@ -713,7 +713,7 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
 end
-function insert_VFX_game_sceme_char_block_ver0(obj_char)
+function insert_VFX_game_scene_char_block_ver0(obj_char)
     -- x y z opacity sx sy r f
     local obj = {0,0,0,1,1,1,0,0}
     local VFX_spawn_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["block_ver0_spawn_anchor_pos"][obj_char["sprite_sheet_state"]]
@@ -770,7 +770,7 @@ function insert_VFX_game_sceme_char_block_ver0(obj_char)
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
 end
-function insert_VFX_game_sceme_char_block_ver1(obj_char)
+function insert_VFX_game_scene_char_block_ver1(obj_char)
     -- x y z opacity sx sy r f
     local obj = {0,0,0,1,1,1,0,0}
     local VFX_spawn_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["block_ver1_spawn_anchor_pos"][obj_char["sprite_sheet_state"]]
@@ -828,7 +828,7 @@ function insert_VFX_game_sceme_char_block_ver1(obj_char)
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
 end
-function insert_VFX_game_sceme_char_FD_block(obj_char)
+function insert_VFX_game_scene_char_FD_block(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
     local VFX_spawn_anchor_pos = {-300,-420}
     if obj_char["height_state"] == "air" then

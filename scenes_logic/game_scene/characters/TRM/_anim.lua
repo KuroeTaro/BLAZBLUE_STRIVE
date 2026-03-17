@@ -32,6 +32,7 @@
 -- _1_2_3_crouch
 function load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
     local res = {}
+    res["prop_f"] = "f"
     for i = 1,7 do
         res[i*7+5] = function()
             -- draw_correction
@@ -91,6 +92,7 @@ end
 -- _1_2_3_crouch_turn
 function load_game_scene_anim_char_TRM_1_2_3_crouch_turn(obj_char)
     local res = {}
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -134,6 +136,7 @@ end
 -- _1_2_3_crouch_to_stand_idle
 function load_game_scene_anim_char_TRM_1_2_3_crouch_to_stand_idle(obj_char)
     local res = {}
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -175,6 +178,7 @@ end
 -- _5_stand_idle
 function load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
     local res = {}
+    res["prop_f"] = "f"
     for i = 0,7 do
         res[i*7] = function()
             -- draw_correction
@@ -222,6 +226,7 @@ end
 -- _5_stand_turn
 function load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
     local res = {}
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -265,6 +270,7 @@ end
 -- _5_stand_dash_skid
 function load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
     local res = {}
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -357,6 +363,7 @@ end
 function load_game_scene_anim_char_TRM_4_walk(obj_char)
     local walk_speed = -7.0
     local res = {}
+    res["prop_f"] = "f"
     for i = 0,89 do
         res[i] = function()
             -- state_number
@@ -475,6 +482,7 @@ end
 -- _4_walk_to_stand_idle
 function load_game_scene_anim_char_TRM_4_walk_to_stand_idle(obj_char)
     local res = {}
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -516,6 +524,7 @@ end
 function load_game_scene_anim_char_TRM_6_walk(obj_char)
     local walk_speed = 9.0
     local res = {}
+    res["prop_f"] = "f"
     for i = 0,84 do
         res[i] = function()
             -- state_number
@@ -634,6 +643,7 @@ end
 -- _6_walk_to_stand_idle
 function load_game_scene_anim_char_TRM_6_walk_to_stand_idle(obj_char)
     local res = {}
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -711,6 +721,7 @@ end
             -- frame_adv
 function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
     local res = {}
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -809,6 +820,7 @@ end
 function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet_state,anchor_pos,horizontal_velocity,vertical_velocity)
     local res = {}
     local width_table = {200,200,230,260,270,235,200}
+    res["prop_f"] = "f"
     width_table[0] = 200
     if sprite_sheet_state == "8_jump" then
         width_table = {200,200,200,200,200,200,200}
@@ -997,6 +1009,7 @@ end
             -- frame_adv
 function load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
     local res = {}
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -1107,6 +1120,7 @@ end
             -- frame_adv
 function load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
     local res = {}
+    res["prop_f"] = "f"
     for i=0,10 do
         res[i] = function()
             -- state_number
@@ -1279,6 +1293,7 @@ end
             -- frame_adv
 function load_game_scene_anim_char_TRM_4dash_air_backdash(input,obj_char)
     local res = {}
+    res["prop_f"] = "f"
     for i=0,6 do
         res[i] = function()
             -- state_number
@@ -1414,6 +1429,7 @@ function load_game_scene_anim_char_TRM_6dash_dash(input,obj_char)
             obj_char[5]*dash_acceleration+obj_char["velocity"][1],0
         }
     end
+    res["prop_f"] = "f"
     for i = 0,37 do
         res[i] = function()
             -- state_number
@@ -1571,6 +1587,7 @@ end
             -- frame_adv
 function load_game_scene_anim_char_TRM_6dash_air_dash(input,obj_char)
     local res = {}
+    res["prop_f"] = "f"
     for i=0,11 do
         res[i] = function()
             -- state_number
@@ -1704,6 +1721,7 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(input,obj_char)
 end
 function load_game_scene_anim_char_TRM_6dash_dash_cancel(input,obj_char)
     local res = {}
+    res["prop_f"] = "f"
 
     return res
 end
@@ -1766,6 +1784,7 @@ function load_game_scene_anim_char_TRM_burst_overdrive(obj_char,other_side_count
             obj_char["move_state"] = "recovery"
         end
     end
+    res["prop_f"] = "f"
     for i = 0,69 do
         res[i] = function()
             -- state
@@ -2066,6 +2085,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -2211,7 +2231,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver0
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,70,-700,1,1.1,1.1,0,false,false}
         obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
+        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
         obj_char["oroboros_anchor_pos"] = {-80,-355}
@@ -2318,6 +2338,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -2463,7 +2484,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,-150,-510,1,0.8,0.8,0,false,false}
         obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
+        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
         obj_char["oroboros_anchor_pos"] = {-170,-435}
@@ -2592,6 +2613,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -2737,7 +2759,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver0
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,75,-915,1,1.1,1.1,0,false,false}
         obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
+        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
         obj_char["oroboros_anchor_pos"] = {-110,-455}
@@ -2843,6 +2865,7 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[side]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -2988,7 +3011,7 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver0
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,100,-614,0.9,1.2,1.2,0,false,false}
         obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
+        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
         obj_char["oroboros_anchor_pos"] = {-110,-355}
@@ -3130,6 +3153,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     local velocity_cache = obj_char["velocity"][1]*obj_char[5]
+    res["prop_f"] = "f"
     
     res[0] = function()
         -- state
@@ -3276,7 +3300,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,-60,-420,0.8,0.8,0.8,0,false,false}
         obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
+        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
         obj_char["oroboros_anchor_pos"] = {-110,-455}
@@ -3418,6 +3442,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[side]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -3563,7 +3588,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver0
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,150,-860,0.9,1.2,1.2,0,false,false}
         obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
+        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
         obj_char["oroboros_anchor_pos"] = {-145,-440}
@@ -3699,6 +3724,7 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -3844,7 +3870,7 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,305,-325,1,0.75,0.75,0,false,false}
         obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
+        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
         obj_char["oroboros_anchor_pos"] = {-50,-345}
@@ -4004,6 +4030,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -4169,7 +4196,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,130,-640,1,0.75,0.75,0,false,false}
         obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
+        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
@@ -4334,6 +4361,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -4479,7 +4507,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,10,-580,0.75,0.75,0.75,0,false,false}
         obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
+        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
         obj_char["oroboros_anchor_pos"] = {-110,-455}
@@ -4588,6 +4616,7 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -4737,7 +4766,7 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,-40,-600,0.75,0.75,0.75,0,false,false}
         obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
+        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
         obj_char["oroboros_anchor_pos"] = {-20,-375}
@@ -4799,7 +4828,7 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,35,-600,0.75,0.75,0.75,0,false,false}
         obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
+        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- draw_correction
         obj_char[8] = 4
@@ -4886,8 +4915,84 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
 end
 -- _5H
 function load_game_scene_anim_char_TRM_5H(obj_char)
+    local res = {}
+    res["prop_f"] = "f"
+
+    res[0] = function()
+        -- state
+        obj_char["sprite_sheet_state"] = "5H"
+        obj_char["height_state"] = "stand" -- stand crouch air OTG
+        obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
+        obj_char["move_state"] = "none" -- none startup active recovery
+        
+        obj_char["current_animation_length"] = 60
+        -- state_number
+        obj_char["gravity"] = 2.5
+        obj_char["friction"] = 1
+        obj_char["horizontal_velocity_correction"] = 1
+        obj_char["gravity_correction"] = 1
+        obj_char["damage_correction"] = 1
+        -- collide
+        obj_char["pushbox"] = {0,-185,121.5,370}
+        obj_char["pushbox_other_side_char_active"] = true
+        obj_char["hitbox_table"] = {}
+        obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-455,100,50}}
+        obj_char["collision_test_ground_height_offset"] = 0
+        -- oroboros
+        obj_char["oroboros_anchor_pos"] = {-110,-455}
+        -- draw_correction
+        obj_char[8] = 0
+        obj_char["anchor_pos"] = {200,520}
+    end
+    res[3] = function()
+        -- draw_correction
+        obj_char[8] = 1
+    end
+    res[7] = function()
+        -- draw_correction
+        obj_char[8] = 2
+    end
+    res[11] = function()
+        -- draw_correction
+        obj_char[8] = 3
+    end
+    res[16] = function()
+        -- draw_correction
+        obj_char[8] = 4
+    end
+    res[22] = function()
+        -- draw_correction
+        obj_char[8] = 5
+    end
+    res[28] = function()
+        -- draw_correction
+        obj_char[8] = 6
+    end
+    res[35] = function()
+        -- draw_correction
+        obj_char[8] = 7
+    end
+    res[41] = function()
+        -- draw_correction
+        obj_char[8] = 8
+    end
+    res[50] = function()
+        -- draw_correction
+        obj_char[8] = 9
+    end
+    res[60] = function()
+        -- animation_end
+    end
+    return res
 end
-function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char)
+function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char,prop_f)
+    local res = {}
+    res["prop_f"] = prop_f
+
+    res[0] = function()
+        obj_char[8] = 0
+    end
+    return res
 end
 function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char)
 end
@@ -4911,6 +5016,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -5096,7 +5202,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,100,-350,0.75,0.75,0.75,0,false,false}
         obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
+        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
@@ -5242,6 +5348,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -5416,6 +5523,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
     local function update_y_56f_60f(i)
         obj_char_other_side["y"] = 3*(i-57)^2+338
     end
+    res["prop_f"] = "f"
 
     for i = 28,36 do
         res[i] = function()
@@ -5620,6 +5728,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -5934,6 +6043,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -6081,7 +6191,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,-20,-690,0.75,0.75,0.75,0,false,false}
         obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
+        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
         obj_char["oroboros_anchor_pos"] = {-170,-425}
@@ -6236,6 +6346,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -6383,7 +6494,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,-20,-690,0.75,0.75,0.75,0,false,false}
         obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
+        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- draw_correction
         obj_char[8] = 0
@@ -6528,6 +6639,7 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -6676,7 +6788,7 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver0
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,35,-535,1,1.1,1.1,0,false,false}
         obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
+        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
         obj_char["oroboros_anchor_pos"] = {-130,-260}
@@ -6785,6 +6897,7 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -6933,7 +7046,7 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver0
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,80,-915,0.85,1.5,1.5,0,false,false}
         obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver0
+        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver0
         obj_char["block_SFX"] = nil
         -- oroboros
         obj_char["oroboros_anchor_pos"] = {-130,-260}
@@ -7034,6 +7147,7 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -7187,7 +7301,7 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,245,-120,0.9,0.75,0.75,1.571,true,false}
         obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
+        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
         obj_char["oroboros_anchor_pos"] = {-130,-260}
@@ -7304,6 +7418,7 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -7452,7 +7567,7 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,10,-315,0.75,1,1,0,false,false}
         obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
+        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
         obj_char["oroboros_anchor_pos"] = {-130,-260}
@@ -7569,6 +7684,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -7714,7 +7830,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,-10,200,0.75,0.8,0.8,3.14,false,true}
         obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_sceme_char_block_ver1
+        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
         obj_char["oroboros_anchor_pos"] = {-130,-260}
@@ -7822,6 +7938,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -8003,6 +8120,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
     local function update_y_46f_53f(i)
         obj_char_other_side["y"] = 2*(i-49)^2+333
     end
+    res["prop_f"] = "f"
     
     for i = 13,18 do
         res[i] = function()
@@ -8187,6 +8305,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -8515,6 +8634,7 @@ function load_game_scene_anim_char_TRM_j2K_ground_hurt(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -8636,6 +8756,7 @@ function load_game_scene_anim_char_TRM_j2K_ground_block(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state

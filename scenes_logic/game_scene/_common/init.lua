@@ -185,21 +185,21 @@ function load_game_scene_announcer_HUD_anim()
     anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0["loop"] = false
     anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0["fix_type"] = true
 
-    anim_char_point_linear_overdrive_brightness_ease_in = {}
-    anim_char_point_linear_overdrive_brightness_ease_in[0] = {0,32}
-    anim_char_point_linear_overdrive_brightness_ease_in[32] = {0.2,32}
-    anim_char_point_linear_overdrive_brightness_ease_in["prop"] = "brightness"
-    anim_char_point_linear_overdrive_brightness_ease_in["length"] = 32
-    anim_char_point_linear_overdrive_brightness_ease_in["loop"] = false
-    anim_char_point_linear_overdrive_brightness_ease_in["fix_type"] = false
+    anim_char_point_linear_game_scene_overdrive_brightness_ease_in = {}
+    anim_char_point_linear_game_scene_overdrive_brightness_ease_in[0] = {0,32}
+    anim_char_point_linear_game_scene_overdrive_brightness_ease_in[32] = {0.2,32}
+    anim_char_point_linear_game_scene_overdrive_brightness_ease_in["prop"] = "brightness"
+    anim_char_point_linear_game_scene_overdrive_brightness_ease_in["length"] = 32
+    anim_char_point_linear_game_scene_overdrive_brightness_ease_in["loop"] = false
+    anim_char_point_linear_game_scene_overdrive_brightness_ease_in["fix_type"] = false
 
-    anim_char_point_linear_overdrive_brightness_ease_out = {}
-    anim_char_point_linear_overdrive_brightness_ease_out[0] = {0.2,10}
-    anim_char_point_linear_overdrive_brightness_ease_out[10] = {0,10}
-    anim_char_point_linear_overdrive_brightness_ease_out["prop"] = "brightness"
-    anim_char_point_linear_overdrive_brightness_ease_out["length"] = 10
-    anim_char_point_linear_overdrive_brightness_ease_out["loop"] = false
-    anim_char_point_linear_overdrive_brightness_ease_out["fix_type"] = false
+    anim_char_point_linear_game_scene_overdrive_brightness_ease_out = {}
+    anim_char_point_linear_game_scene_overdrive_brightness_ease_out[0] = {0.2,10}
+    anim_char_point_linear_game_scene_overdrive_brightness_ease_out[10] = {0,10}
+    anim_char_point_linear_game_scene_overdrive_brightness_ease_out["prop"] = "brightness"
+    anim_char_point_linear_game_scene_overdrive_brightness_ease_out["length"] = 10
+    anim_char_point_linear_game_scene_overdrive_brightness_ease_out["loop"] = false
+    anim_char_point_linear_game_scene_overdrive_brightness_ease_out["fix_type"] = false
 end
 
 function unload_game_scene_all()

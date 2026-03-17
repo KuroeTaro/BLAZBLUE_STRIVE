@@ -469,6 +469,8 @@ function load_game_scene_anim_char_RP()
     local obj_char = obj_char_game_scene_char_RP
     obj_char["current_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
     init_character_anim_with(obj_char,obj_char["current_animation"])
+
+    -- 加载角色会使用的线性动画和帧动画
 end
 function load_game_scene_box_anchor_data_RP()
     local stand_pushbox = {0,-185,121.5,370}

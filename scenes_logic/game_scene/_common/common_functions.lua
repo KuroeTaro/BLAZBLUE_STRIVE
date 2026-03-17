@@ -398,7 +398,7 @@ function common_game_scene_strike_hurt_function(obj_char)
         obj_char["hurtstop_wiggle_current_y"] = (obj_char["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
         hit_side_obj_char["block_VFX_insert_function"](obj_char)
         if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
-            insert_VFX_game_sceme_char_FD_block(obj_char)
+            insert_VFX_game_scene_char_FD_block(obj_char)
         end
     end
     -- physics_lock

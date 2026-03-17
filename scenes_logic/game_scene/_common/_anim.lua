@@ -68,6 +68,7 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -236,6 +237,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -345,6 +347,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -460,6 +463,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -581,6 +585,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -702,6 +707,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -858,6 +864,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -965,6 +972,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -1074,6 +1082,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -1185,6 +1194,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -1300,6 +1310,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -1445,6 +1456,7 @@ function load_game_scene_anim_char_common_0_air_block(
             )
         end
     end
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -1580,6 +1592,8 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
             obj_char["velocity"][1] = -obj_char[5]*(32-2*i)
         end
     end
+    res["prop_f"] = "f"
+    
     if obj_char["height_state"] == "air" then
         obj_char["y"] = math.min(obj_char["y"],125)
         if teching_or_teched == "teching" then
@@ -1754,6 +1768,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -1883,6 +1898,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -2004,6 +2020,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -2123,6 +2140,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -2244,6 +2262,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
     for i = 60,69 do
         res[i] = function()
             obj_char_other_side["y"] = 155 + (i-59)*10
@@ -2400,6 +2419,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -2511,6 +2531,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -2622,6 +2643,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -2725,6 +2747,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
@@ -2857,6 +2880,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
     
     res[0] = function()
         -- state
@@ -3087,6 +3111,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
             math.floor((obj_char_other_side["velocity"][2] + obj_char_other_side["gravity"] * obj_char_other_side["gravity_correction"] + 60) / 20) + 1
         ]()
     end
+    res["prop_f"] = "f"
     for i = 0,37 do
         res[i] = function()
             update_before_land()
@@ -3313,6 +3338,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         obj_char_other_side["throw_inv"] = true
         obj_char_other_side["throw_inv_countdown"] = 1
     end
+    res["prop_f"] = "f"
     for i = 0,33 do
         res[i] = function()
             update_throw_inv()
@@ -3502,6 +3528,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         obj_char_other_side["throw_inv"] = true
         obj_char_other_side["throw_inv_countdown"] = 1
     end
+    res["prop_f"] = "f"
     for i = 0,18 do
         res[i] = function()
             update_throw_inv()
@@ -3632,6 +3659,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
         obj_char_other_side["throw_inv"] = true
         obj_char_other_side["throw_inv_countdown"] = 1
     end
+    res["prop_f"] = "f"
     for i = 0,9 do
         res[i] = function()
             update_throw_inv()
@@ -3762,6 +3790,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
             obj_char_other_side[8] = 3
         end
     end
+    res["prop_f"] = "f"
     for i = 0,9 do
         res[i] = function()
             update_before_falling()
@@ -3916,6 +3945,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
         obj_char_other_side["throw_inv"] = true
         obj_char_other_side["throw_inv_countdown"] = 1
     end
+    res["prop_f"] = "f"
     for i = 0,24 do
         res[i] = function()
             update_throw_inv()
@@ -4049,12 +4079,13 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         obj_char_other_side["throw_inv"] = true
         obj_char_other_side["throw_inv_countdown"] = 1
     end
-
+    res["prop_f"] = "f"
     for i = 0,15 do
         res[i] = function()
             update_throw_inv()
         end
     end
+
     res[0] = function()
         -- state
         obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
@@ -4170,6 +4201,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         obj_char_other_side["throw_inv"] = true
         obj_char_other_side["throw_inv_countdown"] = 1
     end
+    res["prop_f"] = "f"
     for i = 0,16 do
         res[i] = function()
             update_throw_inv()
@@ -4315,6 +4347,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
             obj_char_other_side[8] = 2
         end
     end
+    res["prop_f"] = "f"
     for i = 0,22 do
         res[i] = function()
             update_throw_inv()
@@ -4465,6 +4498,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
 
     res[0] = function()
         -- state
