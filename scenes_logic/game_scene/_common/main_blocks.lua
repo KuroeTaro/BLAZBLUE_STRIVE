@@ -323,26 +323,26 @@ function update_game_scene_main_training()
                 if (DEBUG_TRAINNING_THROW_CLASH and DEBUG_TRAINNING_TOGGLE) then
                     if (char_LP["state"] == "throw_testing" and char_RP["state"] == "throw_tested") then
                         char_LP["state"] = "throw_teched"
-                        char_LP["current_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
+                        char_LP["characte_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
                             char_LP,"teched"
                         )
-                        init_character_anim_with(char_LP,char_LP["current_animation"])
+                        init_character_anim_with(char_LP,char_LP["characte_animation"])
                         char_RP["state"] = "throw_teching"
-                        char_RP["current_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
+                        char_RP["characte_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
                             char_RP,"teching"
                         )
-                        init_character_anim_with(char_RP,char_RP["current_animation"])
+                        init_character_anim_with(char_RP,char_RP["characte_animation"])
                     elseif (char_RP["state"] == "throw_testing" and char_LP["state"] == "throw_tested") then
                         char_RP["state"] = "throw_teched"
-                        char_RP["current_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
+                        char_RP["characte_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
                             char_RP,"teched"
                         )
-                        init_character_anim_with(char_RP,char_RP["current_animation"])
+                        init_character_anim_with(char_RP,char_RP["characte_animation"])
                         char_LP["state"] = "throw_teching"
-                        char_LP["current_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
+                        char_LP["characte_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
                             char_LP,"teching"
                         )
-                        init_character_anim_with(char_LP,char_LP["current_animation"])
+                        init_character_anim_with(char_LP,char_LP["characte_animation"])
                     end
                 end
 
