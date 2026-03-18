@@ -69,6 +69,7 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 94
 
     res[0] = function()
         -- state
@@ -81,7 +82,6 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["characte_animation_length"] = 94
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = true
@@ -238,6 +238,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 13
 
     res[0] = function()
         -- state
@@ -250,7 +251,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["characte_animation_length"] = 13
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -348,6 +348,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 15
 
     res[0] = function()
         -- state
@@ -360,7 +361,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["characte_animation_length"] = 15
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -464,6 +464,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 17
 
     res[0] = function()
         -- state
@@ -476,7 +477,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["characte_animation_length"] = 17
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -586,6 +586,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 20
 
     res[0] = function()
         -- state
@@ -598,7 +599,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["characte_animation_length"] = 20
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -708,6 +708,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 22
 
     res[0] = function()
         -- state
@@ -720,7 +721,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["characte_animation_length"] = 22
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -865,6 +865,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 10
 
     res[0] = function()
         -- state
@@ -877,7 +878,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["characte_animation_length"] = 10
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -973,6 +973,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 12
 
     res[0] = function()
         -- state
@@ -985,7 +986,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["characte_animation_length"] = 12
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -1083,6 +1083,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 14
 
     res[0] = function()
         -- state
@@ -1095,7 +1096,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["characte_animation_length"] = 14
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -1195,6 +1195,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 17
 
     res[0] = function()
         -- state
@@ -1207,7 +1208,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["characte_animation_length"] = 17
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -1311,6 +1311,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 19
 
     res[0] = function()
         -- state
@@ -1323,7 +1324,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["characte_animation_length"] = 19
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -1457,6 +1457,7 @@ function load_game_scene_anim_char_common_0_air_block(
         end
     end
     res["prop_f"] = "f"
+    res["anim_length"] = 32
 
     res[0] = function()
         -- state
@@ -1469,7 +1470,6 @@ function load_game_scene_anim_char_common_0_air_block(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["characte_animation_length"] = 32
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -1593,6 +1593,7 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         end
     end
     res["prop_f"] = "f"
+    res["anim_length"] = 30
     
     if obj_char["height_state"] == "air" then
         obj_char["y"] = math.min(obj_char["y"],125)
@@ -1631,7 +1632,6 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         obj_char["recovery_frame"] = 0
         obj_char["frame_adv"] = 0
 
-        obj_char["characte_animation_length"] = 30
         obj_char["idle_cancel"] = false
 
         obj_char["strike_inv"] = true
@@ -1769,6 +1769,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 60
 
     res[0] = function()
         -- state
@@ -1783,7 +1784,6 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
 
         obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
 
-        obj_char_other_side["characte_animation_length"] = 60
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -1899,6 +1899,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 25
 
     res[0] = function()
         -- state
@@ -1911,7 +1912,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["characte_animation_length"] = 25
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -2021,6 +2021,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 25
 
     res[0] = function()
         -- state
@@ -2033,7 +2034,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["characte_animation_length"] = 25
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -2141,6 +2141,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 25
 
     res[0] = function()
         -- state
@@ -2153,7 +2154,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["characte_animation_length"] = 25
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -2263,6 +2263,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 85
     for i = 60,69 do
         res[i] = function()
             obj_char_other_side["y"] = 155 + (i-59)*10
@@ -2280,7 +2281,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["characte_animation_length"] = 85
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -2420,6 +2420,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 30
 
     res[0] = function()
         -- state
@@ -2428,7 +2429,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["characte_animation_length"] = 30
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -2532,6 +2532,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 30
 
     res[0] = function()
         -- state
@@ -2540,7 +2541,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["characte_animation_length"] = 30
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -2644,6 +2644,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 25
 
     res[0] = function()
         -- state
@@ -2652,7 +2653,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["characte_animation_length"] = 25
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = true
@@ -2748,6 +2748,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 30
 
     res[0] = function()
         -- state
@@ -2756,7 +2757,6 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["characte_animation_length"] = 30
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -2881,6 +2881,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 10
     
     res[0] = function()
         -- state
@@ -2889,7 +2890,6 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "none" -- none startup active recovery
 
-        obj_char_other_side["characte_animation_length"] = 10
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = true
@@ -3112,6 +3112,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
         ]()
     end
     res["prop_f"] = "f"
+    res["anim_length"] = 45
     for i = 0,37 do
         res[i] = function()
             update_before_land()
@@ -3134,7 +3135,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
         obj_char_other_side["self_knockdown_animation"] = self_knockdown_animation
         obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
 
-        obj_char_other_side["characte_animation_length"] = 45
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -3339,6 +3339,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         obj_char_other_side["throw_inv_countdown"] = 1
     end
     res["prop_f"] = "f"
+    res["anim_length"] = 34
     for i = 0,33 do
         res[i] = function()
             update_throw_inv()
@@ -3361,7 +3362,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         obj_char_other_side["self_knockdown_animation"] = self_knockdown_animation
         obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
 
-        obj_char_other_side["characte_animation_length"] = 34
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -3529,6 +3529,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         obj_char_other_side["throw_inv_countdown"] = 1
     end
     res["prop_f"] = "f"
+    res["anim_length"] = 19
     for i = 0,18 do
         res[i] = function()
             update_throw_inv()
@@ -3551,7 +3552,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         obj_char_other_side["self_knockdown_animation"] = self_knockdown_animation
         obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
 
-        obj_char_other_side["characte_animation_length"] = 19
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -3660,6 +3660,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
         obj_char_other_side["throw_inv_countdown"] = 1
     end
     res["prop_f"] = "f"
+    res["anim_length"] = 10
     for i = 0,9 do
         res[i] = function()
             update_throw_inv()
@@ -3682,7 +3683,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
         obj_char_other_side["self_knockdown_animation"] = self_knockdown_animation
         obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
 
-        obj_char_other_side["characte_animation_length"] = 10
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -3791,6 +3791,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
         end
     end
     res["prop_f"] = "f"
+    res["anim_length"] = 25
     for i = 0,9 do
         res[i] = function()
             update_before_falling()
@@ -3813,7 +3814,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
         obj_char_other_side["self_knockdown_animation"] = self_knockdown_animation
         obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
 
-        obj_char_other_side["characte_animation_length"] = 25
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -3946,6 +3946,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
         obj_char_other_side["throw_inv_countdown"] = 1
     end
     res["prop_f"] = "f"
+    res["anim_length"] = 25
     for i = 0,24 do
         res[i] = function()
             update_throw_inv()
@@ -3968,7 +3969,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
         obj_char_other_side["self_knockdown_animation"] = self_knockdown_animation
         obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
 
-        obj_char_other_side["characte_animation_length"] = 25
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -4080,6 +4080,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         obj_char_other_side["throw_inv_countdown"] = 1
     end
     res["prop_f"] = "f"
+    res["anim_length"] = 16
     for i = 0,15 do
         res[i] = function()
             update_throw_inv()
@@ -4102,7 +4103,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         obj_char_other_side["self_knockdown_animation"] = self_knockdown_animation
         obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
 
-        obj_char_other_side["characte_animation_length"] = 16
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -4202,6 +4202,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         obj_char_other_side["throw_inv_countdown"] = 1
     end
     res["prop_f"] = "f"
+    res["anim_length"] = 16
     for i = 0,16 do
         res[i] = function()
             update_throw_inv()
@@ -4224,7 +4225,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         obj_char_other_side["self_knockdown_animation"] = self_knockdown_animation
         obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
 
-        obj_char_other_side["characte_animation_length"] = 16
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -4348,6 +4348,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
         end
     end
     res["prop_f"] = "f"
+    res["anim_length"] = 22
     for i = 0,22 do
         res[i] = function()
             update_throw_inv()
@@ -4375,7 +4376,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
         obj_char_other_side["self_knockdown_animation"] = self_knockdown_animation
         obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
 
-        obj_char_other_side["characte_animation_length"] = 22
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -4499,6 +4499,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 29
 
     res[0] = function()
         -- state
@@ -4511,7 +4512,6 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["characte_animation_length"] = 29
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false

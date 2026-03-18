@@ -310,18 +310,18 @@ function common_game_scene_strike_hurt_function(obj_char)
         obj_char["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
 
         if obj_char["height_state"] == "stand" then
-            obj_char["characte_animation"] = hit_side_obj_char["stand_hurt_animation"]
+            obj_char["character_animation"] = hit_side_obj_char["stand_hurt_animation"]
         elseif obj_char["height_state"] == "crouch" then
-            obj_char["characte_animation"] = hit_side_obj_char["crouch_hurt_animation"]
+            obj_char["character_animation"] = hit_side_obj_char["crouch_hurt_animation"]
         elseif obj_char["height_state"] == "air" then
-            obj_char["characte_animation"] = hit_side_obj_char["air_hurt_animation"]
+            obj_char["character_animation"] = hit_side_obj_char["air_hurt_animation"]
         elseif obj_char["height_state"] == "OTG" then
-            obj_char["characte_animation"] = hit_side_obj_char["OTG_hurt_animation"]
+            obj_char["character_animation"] = hit_side_obj_char["OTG_hurt_animation"]
         end
 
         obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
         obj_char["last_hitstop_frame"] = 0
-        init_character_anim_with(obj_char,obj_char["characte_animation"])
+        init_character_anim_with(obj_char,obj_char["character_animation"])
 
         -- character_shake
         obj_char["hurtstop_wiggle_x_animation"] = 
@@ -353,15 +353,15 @@ function common_game_scene_strike_hurt_function(obj_char)
         end
         
         if obj_char["height_state"] == "stand" then
-            obj_char["characte_animation"] = hit_side_obj_char["stand_block_animation"]
+            obj_char["character_animation"] = hit_side_obj_char["stand_block_animation"]
         elseif obj_char["height_state"] == "crouch" then
-            obj_char["characte_animation"] = hit_side_obj_char["crouch_block_animation"]
+            obj_char["character_animation"] = hit_side_obj_char["crouch_block_animation"]
         elseif obj_char["height_state"] == "air" then
-            obj_char["characte_animation"] = hit_side_obj_char["air_block_animation"]
+            obj_char["character_animation"] = hit_side_obj_char["air_block_animation"]
         end
         obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
         obj_char["last_hitstop_frame"] = 0
-        init_character_anim_with(obj_char,obj_char["characte_animation"])
+        init_character_anim_with(obj_char,obj_char["character_animation"])
         common_game_scene_nil_load_camera_enclose_anim(hit_side_obj_char)
         common_game_scene_hit_load_camera_shake_anim(hit_side_obj_char,0.5)
         table.insert(obj_camera["active_application_table"],
@@ -514,7 +514,6 @@ function common_game_scene_throw_hurt_function(obj_char)
     obj_char["recovery_frame"] = 0
     obj_char["frame_adv"] = 0
 
-    obj_char["characte_animation_length"] = 0
     obj_char["idle_cancel"] = false
 
     obj_char["strike_inv"] = false

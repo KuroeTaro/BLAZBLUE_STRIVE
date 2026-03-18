@@ -468,7 +468,7 @@ local function scanstring (str,pos)
             if strsub (str,nextpos + 6,nextpos + 7) == "\\u" then
               value2 = tonumber (strsub (str,nextpos + 8,nextpos + 11),16)
               if value2 and 0xDC00 <= value2 and value2 <= 0xDFFF then
-                value = (value - 0xD800)  * 0x400 + (value2 - 0xDC00) + 0x10000
+                value = (value - 0xD800) * 0x400 + (value2 - 0xDC00) + 0x10000
               else
                 value2 = nil -- in case it was out of range for a low surrogate
               end
@@ -629,7 +629,7 @@ function json.use_lpeg ()
   local function UTF16Surrogate (match,pos,high,low)
     high,low = tonumber (high,16),tonumber (low,16)
     if 0xD800 <= high and high <= 0xDBff and 0xDC00 <= low and low <= 0xDFFF then
-      return true,unichar ((high - 0xD800)  * 0x400 + (low - 0xDC00) + 0x10000)
+      return true,unichar ((high - 0xD800) * 0x400 + (low - 0xDC00) + 0x10000)
     else
       return false
     end

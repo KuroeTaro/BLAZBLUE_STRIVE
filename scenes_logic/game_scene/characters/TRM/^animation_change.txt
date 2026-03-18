@@ -13,8 +13,6 @@ obj_char["active_frame"] = 0
 obj_char["recovery_frame"] = 0
 obj_char["frame_adv"] = 0
 
-obj_char["characte_animation_length"] = 0
-
 obj_char["strike_inv"] = false
 obj_char["strike_inv_countdown"] = 0
 obj_char["throw_inv"] = false
@@ -99,8 +97,6 @@ obj_char["crouch_block_animation"] = nil
 obj_char["air_hurt_animation"] = nil
 obj_char["air_block_animation"] = nil
 obj_char["OTG_hurt_animation"] = nil
-
-obj_char["characte_animation_length"] = 0
 
 obj_char["hit_cancel"] = false
 obj_char["idle_cancel"] = true

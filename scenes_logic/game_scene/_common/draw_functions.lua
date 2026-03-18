@@ -12,7 +12,7 @@ function draw_game_scene_main()
 
     -- 绘制背侧VFX
     draw_game_scene_char_LP_VFX_back()
-    draw_game_scene_char_RP_VFX_back()    
+    draw_game_scene_char_RP_VFX_back()   
 
     -- 绘制角色阴影
     draw_game_scene_char_LP_shadow()

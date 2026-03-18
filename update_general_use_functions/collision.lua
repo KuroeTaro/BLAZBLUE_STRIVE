@@ -33,7 +33,7 @@ function collision_box_aabb_detection(box_a,box_b)
     local x_overlap = ( box_a_R >= box_b_L and box_b_R >= box_a_L )
     local y_overlap = ( box_a_T <= box_b_B and box_b_T <= box_a_B )
 
-    return (x_overlap and y_overlap)    
+    return (x_overlap and y_overlap)   
 end
 
 function test_char_on_ground(obj)

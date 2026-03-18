@@ -33,6 +33,7 @@
 function load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
     local res = {}
     res["prop_f"] = "f"
+    res["anim_length"] = 62
     for i = 1,7 do
         res[i*7+5] = function()
             -- draw_correction
@@ -46,8 +47,6 @@ function load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
         obj_char["height_state"] = "crouch" -- stand crouch air OTG
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
-        
-        obj_char["characte_animation_length"] = 62
         -- state_number
         obj_char["gravity"] = 2.5
         obj_char["friction"] = 1
@@ -93,6 +92,7 @@ end
 function load_game_scene_anim_char_TRM_1_2_3_crouch_turn(obj_char)
     local res = {}
     res["prop_f"] = "f"
+    res["anim_length"] = 12
 
     res[0] = function()
         -- state
@@ -100,8 +100,6 @@ function load_game_scene_anim_char_TRM_1_2_3_crouch_turn(obj_char)
         obj_char["height_state"] = "crouch" -- stand crouch air OTG
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
-        
-        obj_char["characte_animation_length"] = 12
         -- state_number
         obj_char["gravity"] = 2.5
         obj_char["friction"] = 1
@@ -137,6 +135,7 @@ end
 function load_game_scene_anim_char_TRM_1_2_3_crouch_to_stand_idle(obj_char)
     local res = {}
     res["prop_f"] = "f"
+    res["anim_length"] = 5
 
     res[0] = function()
         -- state
@@ -144,8 +143,6 @@ function load_game_scene_anim_char_TRM_1_2_3_crouch_to_stand_idle(obj_char)
         obj_char["height_state"] = "stand" -- stand crouch air OTG
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
-        
-        obj_char["characte_animation_length"] = 5
         -- state_number
         obj_char["gravity"] = 2.5
         obj_char["friction"] = 1
@@ -179,6 +176,7 @@ end
 function load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
     local res = {}
     res["prop_f"] = "f"
+    res["anim_length"] = 57
     for i = 0,7 do
         res[i*7] = function()
             -- draw_correction
@@ -192,8 +190,6 @@ function load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         obj_char["height_state"] = "stand" -- stand crouch air OTG
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
-        
-        obj_char["characte_animation_length"] = 57
         -- state_number
         obj_char["gravity"] = 2.5
         obj_char["friction"] = 1
@@ -227,6 +223,7 @@ end
 function load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
     local res = {}
     res["prop_f"] = "f"
+    res["anim_length"] = 12
 
     res[0] = function()
         -- state
@@ -234,8 +231,6 @@ function load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
         obj_char["height_state"] = "stand" -- stand crouch air OTG
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
-        
-        obj_char["characte_animation_length"] = 12
         -- state_number
         obj_char["gravity"] = 2.5
         obj_char["friction"] = 1
@@ -271,6 +266,7 @@ end
 function load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
     local res = {}
     res["prop_f"] = "f"
+    res["anim_length"] = 16
 
     res[0] = function()
         -- state
@@ -278,10 +274,7 @@ function load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
         obj_char["height_state"] = "stand" -- stand crouch air OTG
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
-        
-        obj_char["characte_animation_length"] = 16
 
-        obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
         -- state_number
         obj_char["gravity"] = 2.5
@@ -364,7 +357,9 @@ function load_game_scene_anim_char_TRM_4_walk(obj_char)
     local walk_speed = -7.0
     local res = {}
     res["prop_f"] = "f"
-    for i = 0,89 do
+    res["anim_length"] = 85
+
+    for i = 0,84 do
         res[i] = function()
             -- state_number
             obj_char["velocity"] = {obj_char[5]*walk_speed,0}
@@ -377,8 +372,6 @@ function load_game_scene_anim_char_TRM_4_walk(obj_char)
         obj_char["height_state"] = "stand" -- stand crouch air OTG
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
-
-        obj_char["characte_animation_length"] = 85
         -- state_number
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
         obj_char["gravity"] = 2.5
@@ -483,6 +476,7 @@ end
 function load_game_scene_anim_char_TRM_4_walk_to_stand_idle(obj_char)
     local res = {}
     res["prop_f"] = "f"
+    res["anim_length"] = 8
 
     res[0] = function()
         -- state
@@ -490,8 +484,6 @@ function load_game_scene_anim_char_TRM_4_walk_to_stand_idle(obj_char)
         obj_char["height_state"] = "stand" -- stand crouch air OTG
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
-
-        obj_char["characte_animation_length"] = 8
         -- state_number
         obj_char["velocity"] = {0,0}
         obj_char["gravity"] = 2.5
@@ -525,6 +517,7 @@ function load_game_scene_anim_char_TRM_6_walk(obj_char)
     local walk_speed = 9.0
     local res = {}
     res["prop_f"] = "f"
+    res["anim_length"] = 85
     for i = 0,84 do
         res[i] = function()
             -- state_number
@@ -538,8 +531,6 @@ function load_game_scene_anim_char_TRM_6_walk(obj_char)
         obj_char["height_state"] = "stand" -- stand crouch air OTG
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
-
-        obj_char["characte_animation_length"] = 84
         -- state_number
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
         obj_char["gravity"] = 2.5
@@ -644,6 +635,7 @@ end
 function load_game_scene_anim_char_TRM_6_walk_to_stand_idle(obj_char)
     local res = {}
     res["prop_f"] = "f"
+    res["anim_length"] = 8
 
     res[0] = function()
         -- state
@@ -651,8 +643,6 @@ function load_game_scene_anim_char_TRM_6_walk_to_stand_idle(obj_char)
         obj_char["height_state"] = "stand" -- stand crouch air OTG
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
-
-        obj_char["characte_animation_length"] = 8
         -- state_number
         obj_char["velocity"] = {0,0}
         obj_char["gravity"] = 2.5
@@ -722,6 +712,7 @@ end
 function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
     local res = {}
     res["prop_f"] = "f"
+    res["anim_length"] = 8
 
     res[0] = function()
         -- state
@@ -736,8 +727,6 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
         obj_char["frame_adv"] = 0
-
-        obj_char["characte_animation_length"] = 8
 
         obj_char["idle_cancel"] = false
         -- state_number
@@ -820,12 +809,6 @@ end
 function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet_state,anchor_pos,horizontal_velocity,vertical_velocity)
     local res = {}
     local width_table = {200,200,230,260,270,235,200}
-    res["prop_f"] = "f"
-    width_table[0] = 200
-    if sprite_sheet_state == "8_jump" then
-        width_table = {200,200,200,200,200,200,200}
-        width_table[0] = 200
-    end
     local function update_maintain_horizontal_velocity()
         -- state_number
         obj_char["velocity"][1] = horizontal_velocity
@@ -840,12 +823,20 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet_stat
             obj_char[8] = 2
         end
     end
+    res["prop_f"] = "f"
+    res["anim_length"] = 35
+    width_table[0] = 200
+    if sprite_sheet_state == "8_jump" then
+        width_table = {200,200,200,200,200,200,200}
+        width_table[0] = 200
+    end
     for i=0,35 do
         res[i] = function() update_maintain_horizontal_velocity() end
     end
     for i=0,8 do
         res[i] = function() update_before_falling() end
     end
+    
     res[0] = function()
         -- 上升阶段开始
         -- state
@@ -853,8 +844,6 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet_stat
         obj_char["height_state"] = "air" -- stand crouch air OTG
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
-
-        obj_char["characte_animation_length"] = 35
 
         obj_char["idle_cancel"] = false
         -- state_number
@@ -1010,6 +999,7 @@ end
 function load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
     local res = {}
     res["prop_f"] = "f"
+    res["anim_length"] = 4
 
     res[0] = function()
         -- state
@@ -1021,8 +1011,6 @@ function load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
         obj_char["frame_adv"] = 0
-
-        obj_char["characte_animation_length"] = 4
 
         obj_char["throw_inv"] = true
         obj_char["throw_inv_countdown"] = 4
@@ -1121,6 +1109,7 @@ end
 function load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
     local res = {}
     res["prop_f"] = "f"
+    res["anim_length"] = 30
     for i=0,10 do
         res[i] = function()
             -- state_number
@@ -1138,8 +1127,6 @@ function load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
         obj_char["frame_adv"] = 0
-
-        obj_char["characte_animation_length"] = 30
 
         obj_char["idle_cancel"] = false
 
@@ -1294,6 +1281,7 @@ end
 function load_game_scene_anim_char_TRM_4dash_air_backdash(input,obj_char)
     local res = {}
     res["prop_f"] = "f"
+    res["anim_length"] = 11
     for i=0,6 do
         res[i] = function()
             -- state_number
@@ -1314,8 +1302,6 @@ function load_game_scene_anim_char_TRM_4dash_air_backdash(input,obj_char)
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
         obj_char["frame_adv"] = 0
-
-        obj_char["characte_animation_length"] = 11
 
         obj_char["idle_cancel"] = false
         -- input_sys_cache
@@ -1430,7 +1416,8 @@ function load_game_scene_anim_char_TRM_6dash_dash(input,obj_char)
         }
     end
     res["prop_f"] = "f"
-    for i = 0,37 do
+    res["anim_length"] = 37
+    for i = 0,36 do
         res[i] = function()
             -- state_number
             update_horizontal_velocity()
@@ -1447,8 +1434,6 @@ function load_game_scene_anim_char_TRM_6dash_dash(input,obj_char)
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
         obj_char["frame_adv"] = 0
-
-        obj_char["characte_animation_length"] = 37
         -- state_number
         obj_char["velocity"] = {obj_char[5]*20.0,0}
         obj_char["gravity"] = 2.5
@@ -1588,6 +1573,7 @@ end
 function load_game_scene_anim_char_TRM_6dash_air_dash(input,obj_char)
     local res = {}
     res["prop_f"] = "f"
+    res["anim_length"] = 24
     for i=0,11 do
         res[i] = function()
             -- state_number
@@ -1598,7 +1584,7 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(input,obj_char)
             end
         end
     end
-    for i=12,24 do
+    for i=12,23 do
         res[i] = function()
             -- state_number
             obj_char["velocity"][1] = (90-(i-12)*6)*obj_char[5]
@@ -1615,8 +1601,6 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(input,obj_char)
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
         obj_char["frame_adv"] = 0
-
-        obj_char["characte_animation_length"] = 24
 
         obj_char["idle_cancel"] = false
         -- input_sys_cache
@@ -1722,6 +1706,7 @@ end
 function load_game_scene_anim_char_TRM_6dash_dash_cancel(input,obj_char)
     local res = {}
     res["prop_f"] = "f"
+    res["anim_length"] = 30
 
     return res
 end
@@ -1785,6 +1770,7 @@ function load_game_scene_anim_char_TRM_burst_overdrive(obj_char,other_side_count
         end
     end
     res["prop_f"] = "f"
+    res["anim_length"] = 70
     for i = 0,69 do
         res[i] = function()
             -- state
@@ -1801,8 +1787,6 @@ function load_game_scene_anim_char_TRM_burst_overdrive(obj_char,other_side_count
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
         obj_char["frame_adv"] = 0
-
-        obj_char["characte_animation_length"] = 70
 
         obj_char["strike_inv"] = true
         obj_char["strike_inv_countdown"] = 70
@@ -2086,6 +2070,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 27
 
     res[0] = function()
         -- state
@@ -2187,8 +2172,6 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
             nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
-
-        obj_char["characte_animation_length"] = 27
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -2339,6 +2322,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 42
 
     res[0] = function()
         -- state
@@ -2440,8 +2424,6 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
             nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
-
-        obj_char["characte_animation_length"] = 42
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -2614,6 +2596,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 27
 
     res[0] = function()
         -- state
@@ -2715,8 +2698,6 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
             nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
-
-        obj_char["characte_animation_length"] = 27
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -2866,6 +2847,7 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 39
 
     res[0] = function()
         -- state
@@ -2967,8 +2949,6 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
             nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
-
-        obj_char["characte_animation_length"] = 39
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -3154,6 +3134,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
     local obj_char_other_side = common_game_scene_change_character(side)
     local velocity_cache = obj_char["velocity"][1]*obj_char[5]
     res["prop_f"] = "f"
+    res["anim_length"] = 44
     
     res[0] = function()
         -- state
@@ -3255,8 +3236,6 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
             nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
-
-        obj_char["characte_animation_length"] = 44
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -3443,6 +3422,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 36
 
     res[0] = function()
         -- state
@@ -3544,8 +3524,6 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
             nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
-
-        obj_char["characte_animation_length"] = 36
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -3725,6 +3703,7 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 56
 
     res[0] = function()
         -- state
@@ -3826,8 +3805,6 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
             nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
-
-        obj_char["characte_animation_length"] = 56
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -4031,6 +4008,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 59
 
     res[0] = function()
         -- state
@@ -4148,8 +4126,6 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
             nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
-
-        obj_char["characte_animation_length"] = 59
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -4362,6 +4338,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 29
 
     res[0] = function()
         -- state
@@ -4463,8 +4440,6 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
             nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
-
-        obj_char["characte_animation_length"] = 29
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -4617,6 +4592,7 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 40
 
     res[0] = function()
         -- state
@@ -4718,8 +4694,6 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
             nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
-
-        obj_char["characte_animation_length"] = 40
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -4917,6 +4891,7 @@ end
 function load_game_scene_anim_char_TRM_5H(obj_char)
     local res = {}
     res["prop_f"] = "f"
+    res["anim_length"] = 60
 
     res[0] = function()
         -- state
@@ -4924,8 +4899,6 @@ function load_game_scene_anim_char_TRM_5H(obj_char)
         obj_char["height_state"] = "stand" -- stand crouch air OTG
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
-        
-        obj_char["characte_animation_length"] = 60
         -- state_number
         obj_char["gravity"] = 2.5
         obj_char["friction"] = 1
@@ -4985,31 +4958,56 @@ function load_game_scene_anim_char_TRM_5H(obj_char)
     end
     return res
 end
-function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char,prop_f)
+function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj,prop_f)
     local res = {}
     res["prop_f"] = prop_f
+    res["anim_length"] = 20
 
     res[0] = function()
-        obj_char[4] = 0
+        obj[4] = 0
     end
     res[3] = function()
-        obj_char[4] = 0.56
+        obj[4] = 0.56
     end
     res[7] = function()
-        obj_char[4] = 0.80
+        obj[4] = 0.80
     end
     res[11] = function()
-        obj_char[4] = 0.92
+        obj[4] = 0.92
     end
     res[15] = function()
-        obj_char[4] = 0.98
+        obj[4] = 0.98
     end
-    res[21] = function()
-        obj_char[4] = 1
+    res[20] = function()
+        obj[4] = 1
     end
     return res
 end
-function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char)
+function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj,prop_f)
+    local res = {}
+    res["prop_f"] = prop_f
+    res["anim_length"] = 20
+
+    for i in 0,10 do
+        res[i] = function()
+            obj[4] = 1-0.8*(i/10)
+        end
+    end
+    for i in 11,20 do
+        res[i] = function()
+            obj[4] = 0.2-0.2*((i-10)/10)
+        end
+    end
+    res[0] = function()
+        obj[4] = 1
+    end
+    res[10] = function()
+        obj[4] = 0.2
+    end
+    res[20] = function()
+        obj[4] = 0
+    end
+    return res
 end
 function load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char)
 end
@@ -5032,6 +5030,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 50
 
     res[0] = function()
         -- state
@@ -5173,8 +5172,6 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
-
-        obj_char["characte_animation_length"] = 50
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -5364,6 +5361,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
     local obj_char_other_side = common_game_scene_change_character(side)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
     res["prop_f"] = "f"
+    res["anim_length"] = 42
 
     res[0] = function()
         -- state
@@ -5392,8 +5390,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
         obj_char["throw_success_animation"] = load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         obj_char["throw_hurt_success_animation"] = load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char["throw_hurt_PRC_animation"] = load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
-
-        obj_char["characte_animation_length"] = 42
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -5539,6 +5535,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["y"] = 3*(i-57)^2+338
     end
     res["prop_f"] = "f"
+    res["anim_length"] = 90
 
     for i = 28,36 do
         res[i] = function()
@@ -5586,7 +5583,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         )
 
-        obj_char_other_side["characte_animation_length"] = 90
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -5744,6 +5740,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
     local obj_char_other_side = common_game_scene_change_character(side)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
     res["prop_f"] = "f"
+    res["anim_length"] = 129
 
     res[0] = function()
         -- state
@@ -5768,8 +5765,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
-
-        obj_char["characte_animation_length"] = 129
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -6059,6 +6054,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 65
 
     res[0] = function()
         -- state
@@ -6162,8 +6158,6 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
             nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
-
-        obj_char["characte_animation_length"] = 65
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -6362,6 +6356,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 65
 
     res[0] = function()
         -- state
@@ -6465,8 +6460,6 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
             nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
-
-        obj_char["characte_animation_length"] = 65
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -6655,6 +6648,7 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 24
 
     res[0] = function()
         -- state
@@ -6759,8 +6753,6 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
             nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
-
-        obj_char["characte_animation_length"] = 24
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -6913,6 +6905,7 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 27
 
     res[0] = function()
         -- state
@@ -7017,8 +7010,6 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
             nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
-
-        obj_char["characte_animation_length"] = 27
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -7163,6 +7154,7 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 30
 
     res[0] = function()
         -- state
@@ -7269,11 +7261,9 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
             function()
                 obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155)
                 obj_char_other_side["f"] = 26
-                character_animator(obj_char_other_side,obj_char_other_side["characte_animation"])
+                character_animator(obj_char_other_side,obj_char_other_side["character_animation"])
             end
         )
-
-        obj_char["characte_animation_length"] = 30
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -7434,6 +7424,7 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 50
 
     res[0] = function()
         -- state
@@ -7538,8 +7529,6 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
             nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
-
-        obj_char["characte_animation_length"] = 50
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -7700,6 +7689,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 40
 
     res[0] = function()
         -- state
@@ -7801,8 +7791,6 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
             nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
-
-        obj_char["characte_animation_length"] = 40
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -7954,6 +7942,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
     local obj_char_other_side = common_game_scene_change_character(side)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
     res["prop_f"] = "f"
+    res["anim_length"] = 42
 
     res[0] = function()
         -- state
@@ -7982,8 +7971,6 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
         obj_char["throw_success_animation"] = load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         obj_char["throw_hurt_success_animation"] = load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
         obj_char["throw_hurt_PRC_animation"] = load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
-
-        obj_char["characte_animation_length"] = 42
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -8136,6 +8123,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["y"] = 2*(i-49)^2+333
     end
     res["prop_f"] = "f"
+    res["anim_length"] = 84
     
     for i = 13,18 do
         res[i] = function()
@@ -8177,7 +8165,6 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         )
 
-        obj_char_other_side["characte_animation_length"] = 84
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -8321,6 +8308,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
     local obj_char_other_side = common_game_scene_change_character(side)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
     res["prop_f"] = "f"
+    res["anim_length"] = 48
 
     res[0] = function()
         -- state
@@ -8345,8 +8333,6 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
-
-        obj_char["characte_animation_length"] = 48
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -8620,7 +8606,7 @@ end
 --         function()
 --             obj_char_other_side["y"] = math.min(obj_char_other_side["y"],335)
 --             obj_char_other_side["f"] = 26
---             character_animator(obj_char_other_side,obj_char_other_side["characte_animation"])
+--             character_animator(obj_char_other_side,obj_char_other_side["character_animation"])
 --         end
 --     )
 --     return res
@@ -8650,6 +8636,7 @@ function load_game_scene_anim_char_TRM_j2K_ground_hurt(
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 17
 
     res[0] = function()
         -- state
@@ -8662,7 +8649,6 @@ function load_game_scene_anim_char_TRM_j2K_ground_hurt(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["characte_animation_length"] = 17
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false
@@ -8772,6 +8758,7 @@ function load_game_scene_anim_char_TRM_j2K_ground_block(
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
+    res["anim_length"] = 14
 
     res[0] = function()
         -- state
@@ -8784,7 +8771,6 @@ function load_game_scene_anim_char_TRM_j2K_ground_block(
         obj_char_other_side["recovery_frame"] = 0
         obj_char_other_side["frame_adv"] = 0
 
-        obj_char_other_side["characte_animation_length"] = 14
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = false

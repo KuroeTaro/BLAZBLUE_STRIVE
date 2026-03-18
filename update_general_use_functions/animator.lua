@@ -176,6 +176,6 @@ function character_animator(obj,anim)
         key_frame_funciton()
     end
 end
-function get_character_anim_end_state(obj_char,prop_f,prop_anim_length)
-    return obj_char[prop_f] >= obj_char[prop_anim_length] 
+function get_character_anim_end_state(obj_char,prop_f,anim)
+    return obj_char[prop_f] >= anim["anim_length"]
 end

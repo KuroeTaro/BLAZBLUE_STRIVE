@@ -212,17 +212,17 @@ function draw_char_select_scene_glow(obj,f_shader,r_shader)
     end
 
     love.graphics.setCanvas(CANVAS_ALPHA_ONLY)
-    love.graphics.clear(0,0,0,0)  
+    love.graphics.clear(0,0,0,0) 
     love.graphics.polygon("fill",alpha_points)
 
     love.graphics.setCanvas(CANVAS)
-    love.graphics.clear(0,0,0,0)  
+    love.graphics.clear(0,0,0,0) 
     love.graphics.setShader(shader_char_select_scene_fractal_noise)
     shader_char_select_scene_fractal_noise:send("time",love.timer.getTime())
     love.graphics.rectangle("fill",0,0,width,height)
 
     love.graphics.setCanvas(CANVAS_RADIAL_BLUR)
-    love.graphics.clear(0,0,0,0)  
+    love.graphics.clear(0,0,0,0) 
     love.graphics.setShader(shader_char_select_scene_radial_blur)
     shader_char_select_scene_radial_blur:send(
         "start_coods",
@@ -237,7 +237,7 @@ function draw_char_select_scene_glow(obj,f_shader,r_shader)
     love.graphics.setShader()
 
     love.graphics.setCanvas(CANVAS_ALPHA_COMP)
-    love.graphics.clear(0,0,0,0)  
+    love.graphics.clear(0,0,0,0) 
     love.graphics.draw(CANVAS_RADIAL_BLUR)
     love.graphics.setBlendMode('multiply','premultiplied')
     love.graphics.draw(CANVAS_ALPHA_ONLY)
