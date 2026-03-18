@@ -162,16 +162,17 @@ function get_point_linear_anim_end_state(obj,anim)
     end
 end
 
-function init_character_anim_with(obj,anim)
-    obj[anim["prop_f"]] = -1
-    character_animator(obj,anim)
+function init_character_anim_with(obj_char,anim)
+    obj_char[anim["prop_f"]] = -1
+    character_animator(obj_char,anim)
 end
-function init_character_anim_without(obj,anim)
-    obj[anim["prop_f"]] = -1
+function init_character_anim_without(obj_char,anim)
+    obj_char[anim["prop_f"]] = -1
 end
-function character_animator(obj,anim)
-    obj[anim["prop_f"]] = obj[anim["prop_f"]] + 1
-    local key_frame_funciton = anim[obj[anim["prop_f"]]]
+function character_animator(obj_char,anim)
+    local f = obj_char[anim["prop_f"]]
+    obj_char[anim["prop_f"]] = f+1
+    local key_frame_funciton = anim[f+1]
     if key_frame_funciton then 
         key_frame_funciton()
     end

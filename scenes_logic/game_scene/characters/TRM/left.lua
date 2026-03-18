@@ -168,26 +168,18 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["oroboros_mid_offset"] = {-85,-85}
     obj_char_game_scene_char_LP["oroboros_back_offset"] = {-15,-50}
     obj_char_game_scene_char_LP["oroboros_shot_offset"] = 0
-    obj_char_game_scene_char_LP["oroboros_front_sprite_state"] = "5H_oroboros_loop_front"
-    obj_char_game_scene_char_LP["oroboros_mid_sprite_state"] = "5H_oroboros_loop_mid"
-    obj_char_game_scene_char_LP["oroboros_back_sprite_state"] = "5H_oroboros_loop_back"
+    obj_char_game_scene_char_LP["oroboros_front_sprite_sheet_state"] = "5H_oroboros_loop_front"
+    obj_char_game_scene_char_LP["oroboros_mid_sprite_sheet_state"] = "5H_oroboros_loop_mid"
+    obj_char_game_scene_char_LP["oroboros_back_sprite_sheet_state"] = "5H_oroboros_loop_back"
     obj_char_game_scene_char_LP["oroboros_front_f_8"] = 0
     obj_char_game_scene_char_LP["oroboros_mid_f_8"] = 0
     obj_char_game_scene_char_LP["oroboros_back_f_8"] = 0
     obj_char_game_scene_char_LP["oroboros_front_f_4"] = 0
-    obj_char_game_scene_char_LP["oroboros_mid_f_4"] = 0
     obj_char_game_scene_char_LP["oroboros_back_f_4"] = 0
-    obj_char_game_scene_char_LP["oroboros_front_8_animation_length"] = 0
-    obj_char_game_scene_char_LP["oroboros_mid_8_animation_length"] = 0
-    obj_char_game_scene_char_LP["oroboros_back_8_animation_length"] = 0
-    obj_char_game_scene_char_LP["oroboros_front_4_animation_length"] = 0
-    obj_char_game_scene_char_LP["oroboros_mid_4_animation_length"] = 0
-    obj_char_game_scene_char_LP["oroboros_back_4_animation_length"] = 0
     obj_char_game_scene_char_LP["oroboros_front_8"] = 0
     obj_char_game_scene_char_LP["oroboros_mid_8"] = 0
     obj_char_game_scene_char_LP["oroboros_back_8"] = 0
     obj_char_game_scene_char_LP["oroboros_front_4"] = 1
-    obj_char_game_scene_char_LP["oroboros_mid_4"] = 1
     obj_char_game_scene_char_LP["oroboros_back_4"] = 1
     
     obj_char_game_scene_char_LP["oroboros_anchor_pos"] = {-110,-455}
@@ -4369,7 +4361,7 @@ function draw_game_scene_char_LP()
     obj[6] = obj_char[6]
     obj[7] = obj_char[7]
     obj[8] = obj_char["oroboros_back_8"]
-    local image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj_char["oroboros_back_sprite_state"]]
+    local image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj_char["oroboros_back_sprite_sheet_state"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,tostring(obj[8]))
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -4397,7 +4389,7 @@ function draw_game_scene_char_LP()
     obj[6] = obj_char[6]
     obj[7] = r
     obj[8] = obj_char["oroboros_mid_8"]
-    local image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj_char["oroboros_mid_sprite_state"]]
+    local image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj_char["oroboros_mid_sprite_sheet_state"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,tostring(obj[8]))
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -4412,7 +4404,7 @@ function draw_game_scene_char_LP()
     obj[6] = obj_char[6]
     obj[7] = obj_char[7]
     obj[8] = obj_char["oroboros_front_8"]
-    local image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj_char["oroboros_front_sprite_state"]]
+    local image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj_char["oroboros_front_sprite_sheet_state"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,tostring(obj[8]))
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
