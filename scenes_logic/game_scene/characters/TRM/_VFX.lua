@@ -379,6 +379,60 @@ function insert_VFX_game_scene_char_TRM_cS_whiff(obj_char)
     table.insert(obj_char["VFX_front_table"],obj)
 end
 function insert_VFX_game_scene_char_TRM_5H_whiff_switch(obj_char)
+    local obj = {0,0,0,1,1,1,0,0}
+    local image_sprite_sheet = nil
+    local side = obj_char["player_side"]
+    if side == "L" then
+        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["5H_whiff_switch"]
+    elseif side == "R" then
+        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["5H_whiff_switch"]
+    end 
+
+    obj["life"] = 11
+    obj[1] = obj_char["x"] + obj_char[5]*(-420)
+    obj[2] = obj_char["y"] + obj_char[6]*(-780)
+    obj[3] = obj_char[3]
+    obj[4] = 1
+    obj[5] = obj_char[5]
+    obj[6] = obj_char[6]
+    obj[7] = obj_char[7]
+    obj[8] = 0
+    obj["FCT"] = {0,0,0,0,0,0,0,0}
+    obj["LCT"] = {0,0,0,0,0,0,0,0}
+    obj["LCD"] = {0,0,0,0,0,0,0,0}
+    obj["animation"] = {}
+    obj["animation"][0] = 0
+    obj["animation"][1] = 1
+    obj["animation"][2] = 2
+    obj["animation"][3] = 3
+    obj["animation"][4] = 4
+    obj["animation"][6] = 5
+    obj["animation"]["prop"] = 8
+    obj["animation"]["length"] = 11
+    obj["animation"]["loop"] = false
+    obj["animation"]["fix_type"] = true
+    init_frame_anim_with_out(obj,obj["animation"])
+    obj["update"] = function(self)
+        self[1] = obj_char["x"] + obj_char[5]*(-420)
+        self[2] = obj_char["y"] + obj_char[6]*(-780)
+        self[3] = obj_char[3]
+        self[4] = 1
+        self[5] = obj_char[5]
+        self[6] = obj_char[6]
+        self[7] = obj_char[7]
+        frame_animator(self,self["animation"])
+        self["life"] = self["life"] - 1
+    end
+    obj["draw"] = function(self)
+        local obj_camera = obj_stage_game_scene_camera
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,tostring(self[8]))
+
+        love.graphics.setColor(1,1,1,self[4])
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setColor(1,1,1,1)
+    end
+    table.insert(obj_char["VFX_front_table"],obj)
 end
 function insert_VFX_game_scene_char_TRM_5H_whiff_shot(obj_char)
     -- x y z opacity sx sy r f
@@ -387,7 +441,7 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_shot(obj_char)
     local side = obj_char["player_side"]
     local dx = 35
     local dy = -210
-    local r = obj_char["oroboros_shot_aim_r"]
+    local r = obj_char["oroboros_shot_aim_r"]*obj_char[5]
     local rot_dx = dx*obj_char["oroboros_ease_current"][3]*math.cos(r) - dy*obj_char["oroboros_ease_current"][4]*math.sin(r)
     local rot_dy = dx*obj_char["oroboros_ease_current"][3]*math.sin(r) + dy*obj_char["oroboros_ease_current"][4]*math.cos(r)
     if side == "L" then

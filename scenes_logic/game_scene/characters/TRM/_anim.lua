@@ -4958,215 +4958,215 @@ function load_game_scene_anim_char_TRM_5H(obj_char)
     end
     return res
 end
-function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char,prop,prop_f)
+function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj)
     local res = {}
-    res["prop_f"] = prop_f
+    res["prop_f"] = "f_4"
     res["anim_length"] = 20
 
     res[0] = function()
-        obj_char[prop] = 0
+        obj[4] = 0
     end
     res[3] = function()
-        obj_char[prop] = 0.56
+        obj[4] = 0.56
     end
     res[7] = function()
-        obj_char[prop] = 0.80
+        obj[4] = 0.80
     end
     res[11] = function()
-        obj_char[prop] = 0.92
+        obj[4] = 0.92
     end
     res[15] = function()
-        obj_char[prop] = 0.98
+        obj[4] = 0.98
     end
     res[20] = function()
         -- animation_end
     end
     return res
 end
-function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char,prop,prop_f)
+function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj)
     local res = {}
-    res["prop_f"] = prop_f
+    res["prop_f"] = "f_4"
     res["anim_length"] = 20
 
     for i in 0,10 do
         res[i] = function()
-            obj_char[prop] = 1-0.8*(i/10)
+            obj[4] = 1-0.8*(i/10)
         end
     end
     for i in 11,19 do
         res[i] = function()
-            obj_char[prop] = 0.2-0.2*((i-10)/10)
+            obj[4] = 0.2-0.2*((i-10)/10)
         end
     end
     res[0] = function()
-        obj_char[prop] = 1
+        obj[4] = 1
     end
     res[10] = function()
-        obj_char[prop] = 0.2
+        obj[4] = 0.2
     end
     res[20] = function()
         -- animation_end
     end
     return res
 end
-function load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char,sprite_sheet_state_name,sprite_sheet_state,prop,prop_f)
+function load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj,sprite_sheet_state)
     local res = {}
-    res["prop_f"] = prop_f
+    res["prop_f"] = "f_8"
     res["anim_length"] = 111
 
     res[0] = function()
-        obj_char[sprite_sheet_state_name] = sprite_sheet_state
-        obj_char[prop] = 0
+        obj["sprite_sheet_state"] = sprite_sheet_state
+        obj[8] = 0
     end
     res[3] = function()
-        obj_char[prop] = 1
+        obj[8] = 1
     end
     res[7] = function()
-        obj_char[prop] = 2
+        obj[8] = 2
     end
     res[11] = function()
-        obj_char[prop] = 3
+        obj[8] = 3
     end
     res[15] = function()
-        obj_char[prop] = 4
+        obj[8] = 4
     end
     res[20] = function()
-        obj_char[prop] = 5
+        obj[8] = 5
     end
     res[26] = function()
-        obj_char[prop] = 6
+        obj[8] = 6
     end
     res[32] = function()
-        obj_char[prop] = 7
+        obj[8] = 7
     end
     res[38] = function()
-        obj_char[prop] = 8
+        obj[8] = 8
     end
     res[44] = function()
-        obj_char[prop] = 9
+        obj[8] = 9
     end
     res[50] = function()
-        obj_char[prop] = 10
+        obj[8] = 10
     end
     res[56] = function()
-        obj_char[prop] = 11
+        obj[8] = 11
     end
     res[62] = function()
-        obj_char[prop] = 12
+        obj[8] = 12
     end
     res[68] = function()
-        obj_char[prop] = 13
+        obj[8] = 13
     end
     res[74] = function()
-        obj_char[prop] = 14
+        obj[8] = 14
     end
     res[80] = function()
-        obj_char[prop] = 15
+        obj[8] = 15
     end
     res[86] = function()
-        obj_char[prop] = 16
+        obj[8] = 16
     end
     res[92] = function()
-        obj_char[prop] = 17
+        obj[8] = 17
     end
     res[98] = function()
-        obj_char[prop] = 18
+        obj[8] = 18
     end
     res[104] = function()
-        obj_char[prop] = 19
+        obj[8] = 19
     end
     res[110] = function()
-        obj_char[prop_f] = 20
-        obj_char[prop] = 6
+        obj["f_8"] = 20
+        obj[8] = 6
     end
     res[111] = function()
         -- animation_end
     end
     return res
 end
-function load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char,sprite_sheet_state)
+function load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj,sprite_sheet_state)
     local res = {}
-    res["prop_f"] = "oroboros_mid_f_8"
+    res["prop_f"] = "f_8"
     res["anim_length"] = 20
 
     res[0] = function()
-        obj_char["oroboros_mid_sprite_sheet_state"] = sprite_sheet_state
-        obj_char["oroboros_mid_8"] = 0
+        obj["sprite_sheet_state"]  = sprite_sheet_state
+        obj[8] = 0
     end
     res[3] = function()
-        obj_char["oroboros_mid_8"] = 1
+        obj[8] = 1
     end
     res[7] = function()
-        obj_char["oroboros_mid_8"] = 2
+        obj[8] = 2
     end
     res[11] = function()
-        obj_char["oroboros_mid_8"] = 3
+        obj[8] = 3
     end
     res[15] = function()
-        obj_char["oroboros_mid_8"] = 4
+        obj[8] = 4
     end
     res[20] = function()
         -- animation_end
     end
     return res
 end
-function load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char)
+function load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj)
     local res = {}
-    res["prop_f"] = "oroboros_mid_f_8"
+    res["prop_f"] = "f_8"
     res["anim_length"] = 97
 
     res[0] = function()
-        obj_char["oroboros_mid_sprite_sheet_state"] = "5H_oroboros_loop_mid"
-        obj_char["oroboros_mid_8"] = 0
+        obj["sprite_sheet_state"]  = "5H_oroboros_loop_mid"
+        obj[8] = 0
     end
     res[6] = function()
-        obj_char["oroboros_mid_8"] = 1
+        obj[8] = 1
     end
     res[12] = function()
-        obj_char["oroboros_mid_8"] = 2
+        obj[8] = 2
     end
     res[18] = function()
-        obj_char["oroboros_mid_8"] = 3
+        obj[8] = 3
     end
     res[24] = function()
-        obj_char["oroboros_mid_8"] = 4
+        obj[8] = 4
     end
     res[30] = function()
-        obj_char["oroboros_mid_8"] = 5
+        obj[8] = 5
     end
     res[36] = function()
-        obj_char["oroboros_mid_8"] = 6
+        obj[8] = 6
     end
     res[42] = function()
-        obj_char["oroboros_mid_8"] = 7
+        obj[8] = 7
     end
     res[48] = function()
-        obj_char["oroboros_mid_8"] = 8
+        obj[8] = 8
     end
     res[54] = function()
-        obj_char["oroboros_mid_8"] = 9
+        obj[8] = 9
     end
     res[60] = function()
-        obj_char["oroboros_mid_8"] = 10
+        obj[8] = 10
     end
     res[66] = function()
-        obj_char["oroboros_mid_8"] = 11
+        obj[8] = 11
     end
     res[72] = function()
-        obj_char["oroboros_mid_8"] = 12
+        obj[8] = 12
     end
     res[78] = function()
-        obj_char["oroboros_mid_8"] = 13
+        obj[8] = 13
     end
     res[84] = function()
-        obj_char["oroboros_mid_8"] = 14
+        obj[8] = 14
     end
     res[90] = function()
-        obj_char["oroboros_mid_8"] = 15
+        obj[8] = 15
     end
     res[96] = function()
-        obj_char["oroboros_mid_f_8"] = 0
-        obj_char["oroboros_mid_8"] = 0
+        obj["f_8"] = 0
+        obj[8] = 0
     end
     res[97] = function()
         -- animation_end
@@ -5189,41 +5189,41 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     for i = 10,27 do
         res[i] = function()
             obj_char["oroboros_shot_aim_r"] = r*(27-i)/17
-            obj_char["oroboros_shot_offset"] = 100*(27-i)/17
+            obj_char["oroboros_shot_offset_amount"] = 100*(27-i)/17
         end
     end
 
     res[0] = function()
-        obj_char["oroboros_mid_sprite_sheet_state"] = "5H_oroboros_shot"
-        obj_char["oroboros_mid_8"] = 0
+        obj_char["oroboros_mid"]["sprite_sheet_state"]  = "5H_oroboros_shot"
+        obj_char["oroboros_mid"][8] = 0
         obj_char["oroboros_shot_aim_r"] = r
-        obj_char["oroboros_shot_offset"] = 100
+        obj_char["oroboros_shot_offset_amount"] = 100
     end
     res[2] = function()
-        obj_char["oroboros_mid_8"] = 1
+        obj_char["oroboros_mid"][8] = 1
     end
     res[3] = function()
-        obj_char["oroboros_mid_8"] = 2
+        obj_char["oroboros_mid"][8] = 2
     end
     res[10] = function()
-        obj_char["oroboros_mid_8"] = 3
+        obj_char["oroboros_mid"][8] = 3
         obj_char["oroboros_shot_aim_r"] = r*(17-0)/17
-        obj_char["oroboros_shot_offset"] = 100*(17-0)/17
+        obj_char["oroboros_shot_offset_amount"] = 100*(17-0)/17
     end
     res[15] = function()
-        obj_char["oroboros_mid_8"] = 4
+        obj_char["oroboros_mid"][8] = 4
         obj_char["oroboros_shot_aim_r"] = r*(17-5)/17
-        obj_char["oroboros_shot_offset"] = 100*(17-5)/17
+        obj_char["oroboros_shot_offset_amount"] = 100*(17-5)/17
     end
     res[19] = function()
-        obj_char["oroboros_mid_8"] = 5
+        obj_char["oroboros_mid"][8] = 5
         obj_char["oroboros_shot_aim_r"] = r*(17-9)/17
-        obj_char["oroboros_shot_offset"] = 100*(17-9)/17
+        obj_char["oroboros_shot_offset_amount"] = 100*(17-9)/17
     end
     res[23] = function()
-        obj_char["oroboros_mid_8"] = 6
+        obj_char["oroboros_mid"][8] = 6
         obj_char["oroboros_shot_aim_r"] = r*(17-13)/17
-        obj_char["oroboros_shot_offset"] = 100*(17-13)/17
+        obj_char["oroboros_shot_offset_amount"] = 100*(17-13)/17
     end
     res[27] = function()
         -- animation_end
