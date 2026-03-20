@@ -5174,9 +5174,61 @@ function load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char)
     return res
 end
 function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
-    -- oroboros_mid_f_8
+    -- oroboros_mid_8
     -- oroboros_shot_aim_r
     -- oroboros_shot_offset
+    local res = {}
+    local side = obj_char["player_side"]
+    local obj_char_other_side = common_game_scene_change_character(side)
+    local oroboros_pos = {obj_char["oroboros_ease_current"][1],obj_char["oroboros_ease_current"][2]}
+    local obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]-pushbox[4]/2}
+    local tan = (obj_char_other_side_pos[2]-oroboros_pos[2])/(obj_char_other_side_pos[1]-oroboros_pos[1])
+    local r = math.deg(math.atan(tan))*obj_char[5]
+    res["prop_f"] = "oroboros_shot_f"
+    res["anim_length"] = 27
+    for i = 10,27 do
+        res[i] = function()
+            obj_char["oroboros_shot_aim_r"] = r*(27-i)/17
+            obj_char["oroboros_shot_offset"] = 100*(27-i)/17
+        end
+    end
+
+    res[0] = function()
+        obj_char["oroboros_mid_sprite_sheet_state"] = "5H_oroboros_shot"
+        obj_char["oroboros_mid_8"] = 0
+        obj_char["oroboros_shot_aim_r"] = r
+        obj_char["oroboros_shot_offset"] = 100
+    end
+    res[2] = function()
+        obj_char["oroboros_mid_8"] = 1
+    end
+    res[3] = function()
+        obj_char["oroboros_mid_8"] = 2
+    end
+    res[10] = function()
+        obj_char["oroboros_mid_8"] = 3
+        obj_char["oroboros_shot_aim_r"] = r*(17-0)/17
+        obj_char["oroboros_shot_offset"] = 100*(17-0)/17
+    end
+    res[15] = function()
+        obj_char["oroboros_mid_8"] = 4
+        obj_char["oroboros_shot_aim_r"] = r*(17-5)/17
+        obj_char["oroboros_shot_offset"] = 100*(17-5)/17
+    end
+    res[19] = function()
+        obj_char["oroboros_mid_8"] = 5
+        obj_char["oroboros_shot_aim_r"] = r*(17-9)/17
+        obj_char["oroboros_shot_offset"] = 100*(17-9)/17
+    end
+    res[23] = function()
+        obj_char["oroboros_mid_8"] = 6
+        obj_char["oroboros_shot_aim_r"] = r*(17-13)/17
+        obj_char["oroboros_shot_offset"] = 100*(17-13)/17
+    end
+    res[27] = function()
+        -- animation_end
+    end
+    return res
 end
 -- _2Launcher
 function load_game_scene_anim_char_TRM_2Launcher(obj_char)

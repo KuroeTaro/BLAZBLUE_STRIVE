@@ -2768,7 +2768,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        obj_char_other_side["velocity"] = {obj_char_other_side[5]*-25.0,0}
+        obj_char_other_side["velocity"] = {-25.0*obj_char_other_side[5],0}
         obj_char_other_side["gravity"] = 2.5
         obj_char_other_side["friction"] = 0
         obj_char_other_side["horizontal_velocity_correction"] = 1

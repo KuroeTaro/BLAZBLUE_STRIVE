@@ -163,6 +163,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["oroboros_state"] = "off"
     obj_char_game_scene_char_RP["oroboros_shot_aim_process"] = {0,420,480,540}
     obj_char_game_scene_char_RP["oroboros_shot_aim_r"] = 0
+    obj_char_game_scene_char_RP["oroboros_shot_f"] = 0
 
     obj_char_game_scene_char_RP["oroboros_front_offset"] = {-80,-80}
     obj_char_game_scene_char_RP["oroboros_mid_offset"] = {-85,-85}
@@ -4329,6 +4330,8 @@ end
 function draw_game_scene_char_RP()
     local obj = {0,0,0,0,0,0,0,0}
     local obj_char = obj_char_game_scene_char_RP
+    local shot_offset = obj_char["oroboros_shot_offset"] 
+    local shot_r = obj_char["oroboros_shot_aim_r"]
     local camera = obj_stage_game_scene_camera
     
     local shader = shader_game_scene_brightness_contrast
@@ -4353,8 +4356,12 @@ function draw_game_scene_char_RP()
     
     -- draw_back
     -- x y z opacity sx sy r f
-    obj[1] = obj_char["oroboros_ease_current"][1] + obj_char["oroboros_ease_current"][3]*obj_char["oroboros_back_offset"][1]
-    obj[2] = obj_char["oroboros_ease_current"][2] + obj_char["oroboros_ease_current"][4]*obj_char["oroboros_back_offset"][2]
+    obj[1] = obj_char["oroboros_ease_current"][1] + 
+        obj_char["oroboros_ease_current"][3]*
+        (obj_char["oroboros_back_offset"][1] - math.cos(shot_r)*shot_offset*0.7)
+    obj[2] = obj_char["oroboros_ease_current"][2] + 
+        obj_char["oroboros_ease_current"][4]*
+        (obj_char["oroboros_back_offset"][2] - math.sin(shot_r)*shot_offset*0.7)
     obj[3] = obj_char[3]
     obj[4] = obj_char["oroboros_back_4"]
     obj[5] = obj_char[5]
@@ -4396,8 +4403,12 @@ function draw_game_scene_char_RP()
 
     -- darw_front
     -- x y z opacity sx sy r f
-    obj[1] = obj_char["oroboros_ease_current"][1] + obj_char["oroboros_ease_current"][3]*obj_char["oroboros_front_offset"][1]
-    obj[2] = obj_char["oroboros_ease_current"][2] + obj_char["oroboros_ease_current"][4]*obj_char["oroboros_front_offset"][2]
+    obj[1] = obj_char["oroboros_ease_current"][1] + 
+        obj_char["oroboros_ease_current"][3]*
+        (obj_char["oroboros_front_offset"][1] - math.cos(shot_r)*shot_offset*0.5)
+    obj[2] = obj_char["oroboros_ease_current"][2] + 
+        obj_char["oroboros_ease_current"][4]*
+        (obj_char["oroboros_front_offset"][2] - math.sin(shot_r)*shot_offset*0.5)
     obj[3] = obj_char[3]
     obj[4] = obj_char["oroboros_front_4"]
     obj[5] = obj_char[5]

@@ -1120,10 +1120,10 @@ function insert_VFX_game_scene_stage_6dash_air_dash_shockwave(obj_char,x,y,opaci
     obj["update"] = function(self)
         self["f"] = self["f"] + 1
         if self["f"] >= 2 then
-            self[8] = math.min(self[8] + 1,12)
+            self[8] = math.min(self[8]+1,12)
             self["f"] = 0
         end
-        self[1] = self[1] + self[5]*-0.2
+        self[1] = self[1] - 0.2*self[5]
         self["life"] = self["life"] - 1
     end
     obj["draw"] = function(self)
