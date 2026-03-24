@@ -4402,11 +4402,13 @@ function draw_game_scene_char_LP_logic_graphic_pos_sync()
     local oroboros_ease_current = obj_char["oroboros_ease_current"]
     local shot_offset_amount = obj_char["oroboros_shot_offset_amount"] 
     local shot_r = obj_char["oroboros_shot_aim_r"]
-    local r = nil
     local dx = -15
     local dy = -50
     local rot_dx = nil
     local rot_dy = nil
+
+    shot_r = math.min(shot_r,0.8)
+    shot_r = math.max(shot_r,-0.4)
 
     -- oroboros_back
     obj = obj_char["oroboros_back"]
@@ -4425,18 +4427,17 @@ function draw_game_scene_char_LP_logic_graphic_pos_sync()
 
     -- oroboros_mid
     obj = obj_char["oroboros_mid"]
-    r = obj_char["oroboros_shot_aim_r"]*obj_char[5]
     dx = -85
     dy = -85
-    rot_dx = dx*oroboros_ease_current[3]*math.cos(r) - dy*oroboros_ease_current[4]*math.sin(r)
-    rot_dy = dx*oroboros_ease_current[3]*math.sin(r) + dy*oroboros_ease_current[4]*math.cos(r)
+    rot_dx = dx*oroboros_ease_current[3]*math.cos(shot_r) - dy*oroboros_ease_current[4]*math.sin(shot_r)
+    rot_dy = dx*oroboros_ease_current[3]*math.sin(shot_r) + dy*oroboros_ease_current[4]*math.cos(shot_r)
     obj[1] = oroboros_ease_current[1] + rot_dx
     obj[2] = oroboros_ease_current[2] + rot_dy
     obj[3] = obj_char[3]
     obj[4] = obj_char["oroboros_mid_4"]
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
-    obj[7] = r
+    obj[7] = shot_r
     obj[8] = obj_char["oroboros_mid"][8]
 
     -- oroboros_front
