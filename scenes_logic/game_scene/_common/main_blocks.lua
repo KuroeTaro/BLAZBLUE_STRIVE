@@ -88,11 +88,15 @@ function update_game_scene_main_training()
 
             elseif SCENE_TIMER == 160 then
                 -- input_sys save
-                obj_char_game_scene_char_LP["input_sys_state"] = "save"
-                init_input_sys_cache(obj_char_game_scene_char_LP)
-                obj_char_game_scene_char_RP["input_sys_state"] = "save"
-                init_input_sys_cache(obj_char_game_scene_char_RP)
+                obj_char_game_scene_char_LP["input_sys_state"] = "save" -- none save load
+                init_input_sys_cache_LP()
+                obj_char_game_scene_char_LP["input_sys_state_negative_edge"] = "save" -- none save load
+                init_input_sys_cache_negative_edge_LP()
 
+                obj_char_game_scene_char_RP["input_sys_state"] = "save" -- none save load
+                init_input_sys_cache_RP()
+                obj_char_game_scene_char_RP["input_sys_state_negative_edge"] = "save" -- none save load
+                init_input_sys_cache_negative_edge_RP()
             elseif SCENE_TIMER < 165 then
                 state_machine_automatic_player_game_scene(obj_HUD_game_scene_ease_in,50)
                 state_machine_automatic_player_game_scene(obj_annoucer_game_scene_lets_dance,40)

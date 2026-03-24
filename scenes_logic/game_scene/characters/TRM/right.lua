@@ -44,8 +44,8 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["input_sys_cache"] = {}
     obj_char_game_scene_char_RP["input_sys_state_negative_edge"] = "none" -- none save load
     obj_char_game_scene_char_RP["input_sys_cache_negative_edge"] = {}
-    init_input_sys_cache(obj_char_game_scene_char_RP)
-    init_input_sys_cache_negative_edge(obj_char_game_scene_char_RP)
+    init_input_sys_cache_RP(obj_char_game_scene_char_RP)
+    init_input_sys_cache_negative_edge_RP(obj_char_game_scene_char_RP)
 
         -- hit_hurt_block_animation
     obj_char_game_scene_char_RP["hit_damage"] = 0
@@ -164,8 +164,10 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["oroboros_state"] = "off"
     obj_char_game_scene_char_RP["oroboros_shot_aim_process"] = {0,420,480,540}
     obj_char_game_scene_char_RP["oroboros_shot_aim_r"] = 0
-    obj_char_game_scene_char_RP["oroboros_shot_f"] = 0
-    obj_char_game_scene_char_RP["oroboros_animation"] = {}
+    obj_char_game_scene_char_RP["oroboros_f"] = 0
+    obj_char_game_scene_char_RP["oroboros_animation_table"] = {}
+    obj_char_game_scene_char_RP["oroboros_shot_cancel"] = false
+    obj_char_game_scene_char_RP["oroboros_idle_cancel"] = false
         -- sub_obj
     obj_char_game_scene_char_RP["oroboros_front"] = {0,0,0,1,1,1,0,0}
     obj_char_game_scene_char_RP["oroboros_front"]["f_8"] = 0
@@ -173,7 +175,6 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["oroboros_front"]["sprite_sheet_state"] = "5H_oroboros_loop_front"
     obj_char_game_scene_char_RP["oroboros_mid"] = {0,0,0,1,1,1,0,0}
     obj_char_game_scene_char_RP["oroboros_mid"]["f_8"] = 0
-    obj_char_game_scene_char_RP["oroboros_mid"]["f_4"] = 0
     obj_char_game_scene_char_RP["oroboros_mid"]["sprite_sheet_state"] = "5H_oroboros_loop_mid"
     obj_char_game_scene_char_RP["oroboros_back"] = {0,0,0,1,1,1,0,0}
     obj_char_game_scene_char_RP["oroboros_back"]["f_8"] = 0
@@ -1249,27 +1250,160 @@ function state_machine_char_game_scene_char_RP()
     if this_function then this_function() end
 end
 function state_machine_char_game_scene_char_RP_oroboros()
+    local input = INPUT_SYS_CURRENT_COMMAND_STATE["R"]
     local obj_char = obj_char_game_scene_char_RP
     local switch = {
         ["off"] = function()
             obj_char["hurt_state"] = obj_char["hurt_state_target"]
+            -- ease_in
+            if test_input_sys_press(input["HS"]) then
+                obj_char["oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["oroboros_front"])
+                obj_char["oroboros_animation_table"][2] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char["oroboros_front"],"5H_oroboros_loop_front")
+                obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["oroboros_mid"],"5H_oroboros_ease_in_mid")
+                obj_char["oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["oroboros_back"])
+                obj_char["oroboros_animation_table"][5] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char["oroboros_back"],"5H_oroboros_loop_back")
+                obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_ease_in(obj_char)
+                init_character_anim_with(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
+                init_character_anim_with(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][2])
+                init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
+                init_character_anim_with(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
+                init_character_anim_with(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][5])
+                init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
+                obj_char["oroboros_state"] = "ease_in"
+                return true
+            end
         end,
         ["ease_in"] = function()
-
+            character_animator(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
+            character_animator(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][2])
+            character_animator(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
+            character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
+            character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][5])
+            character_animator(obj_char,obj_char["oroboros_animation_table"][6])
+            if get_character_anim_end_state(obj_char["oroboros_front"],"f_4",obj_char["oroboros_animation_table"][1])
+            and get_character_anim_end_state(obj_char["oroboros_mid"],"f_8",obj_char["oroboros_animation_table"][3])
+            and get_character_anim_end_state(obj_char["oroboros_back"],"f_4",obj_char["oroboros_animation_table"][4])
+            and get_character_anim_end_state(obj_char,"oroboros_f",obj_char["oroboros_animation_table"][6])
+            then
+                obj_char["oroboros_front"][4] = 1
+                obj_char["oroboros_back"][4] = 1
+                obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["oroboros_mid"])
+                init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
+                obj_char["oroboros_state"] = "loop"
+                return true
+            end
+            if obj_char["oroboros_idle_cancel"] and
+            (
+                (test_input_sys_press(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
+                (test_input_sys_press_or_hold(input["HS"]) and test_input_sys_press(input["SP"]))
+            )
+            then
+                obj_char["oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["oroboros_front"])
+                obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["oroboros_mid"],"5H_oroboros_ease_out_mid")
+                obj_char["oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["oroboros_back"])
+                init_character_anim_with(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
+                init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
+                init_character_anim_with(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
+                obj_char["oroboros_state"] = "ease_out"
+                return true
+            end
+            if obj_char["oroboros_shot_cancel"] and test_input_sys_release(input["HS"]) then
+                obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
+                init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
+                obj_char["oroboros_state"] = "shot"
+                return
+            end
         end,
         ["ease_out"] = function()
-
+            character_animator(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
+            character_animator(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][2])
+            character_animator(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
+            character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
+            character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][5])
+            if get_character_anim_end_state(obj_char["oroboros_front"],"f_4",obj_char["oroboros_animation_table"][1])
+            and get_character_anim_end_state(obj_char["oroboros_mid"],"f_8",obj_char["oroboros_animation_table"][3])
+            and get_character_anim_end_state(obj_char["oroboros_back"],"f_4",obj_char["oroboros_animation_table"][4])
+            then
+                obj_char["oroboros_front"][4] = 0
+                obj_char["oroboros_back"][4] = 0
+                obj_char["oroboros_state"] = "off"
+                return true
+            end
+            if test_input_sys_press(input["HS"]) then
+                obj_char["oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["oroboros_front"])
+                obj_char["oroboros_animation_table"][2] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char["oroboros_front"],"5H_oroboros_loop_front")
+                obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["oroboros_mid"],"5H_oroboros_ease_in_mid")
+                obj_char["oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["oroboros_back"])
+                obj_char["oroboros_animation_table"][5] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char["oroboros_back"],"5H_oroboros_loop_back")
+                init_character_anim_with(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
+                init_character_anim_with(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][2])
+                init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
+                init_character_anim_with(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
+                init_character_anim_with(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][5])
+                obj_char["oroboros_state"] = "ease_in"
+                return true
+            end
         end,
         ["loop"] = function()
-
+            character_animator(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][2])
+            character_animator(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
+            character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][5])
+            if(test_input_sys_press(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
+            (test_input_sys_press_or_hold(input["HS"]) and test_input_sys_press(input["SP"]))
+            then
+                obj_char["oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["oroboros_front"])
+                obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["oroboros_mid"],"5H_oroboros_ease_out_mid")
+                obj_char["oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["oroboros_back"])
+                init_character_anim_with(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
+                init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
+                init_character_anim_with(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
+                obj_char["oroboros_state"] = "ease_out"
+                return true
+            end
+            if obj_char["oroboros_shot_cancel"] and test_input_sys_release(input["HS"]) then
+                obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
+                init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
+                obj_char["oroboros_state"] = "shot"
+                return
+            end
         end,
         ["shot"] = function()
-
+            character_animator(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
+            character_animator(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][2])
+            character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
+            character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][5])
+            character_animator(obj_char,obj_char["oroboros_animation_table"][6])
+            if obj_char["oroboros_shot_cancel"] and test_input_sys_release(input["HS"]) then
+                obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
+                init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
+                obj_char["oroboros_state"] = "shot"
+            end
+            if obj_char["oroboros_idle_cancel"] and 
+            (
+                (test_input_sys_press(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
+                (test_input_sys_press_or_hold(input["HS"]) and test_input_sys_press(input["SP"]))
+            )
+            then
+                obj_char["oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["oroboros_front"])
+                obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["oroboros_mid"],"5H_oroboros_ease_out_mid")
+                obj_char["oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["oroboros_back"])
+                init_character_anim_with(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
+                init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
+                init_character_anim_with(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
+                obj_char["oroboros_state"] = "ease_out"
+                return true
+            end
+            if get_character_anim_end_state(obj_char,"oroboros_f",obj_char["oroboros_animation_table"][6]) then
+                obj_char["oroboros_front"][4] = 1
+                obj_char["oroboros_back"][4] = 1
+                obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["oroboros_mid"])
+                init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
+                obj_char["oroboros_state"] = "loop"
+                return true
+            end
         end,
     }
     local this_function = switch[obj_char["oroboros_state"]]
-    if this_function then this_function() end
-
     obj_char["oroboros_ease_target"] = {
         obj_char["x"] + obj_char[5]*obj_char["oroboros_anchor_pos"][1],
         obj_char["y"] + obj_char[6]*obj_char["oroboros_anchor_pos"][2],
@@ -1282,6 +1416,7 @@ function state_machine_char_game_scene_char_RP_oroboros()
         (obj_char["oroboros_ease_target"][3]*2 + obj_char["oroboros_ease_current"][3])/3,
         (obj_char["oroboros_ease_target"][4]*2 + obj_char["oroboros_ease_current"][4])/3
     }
+    if this_function then this_function() end
 end
 function state_machine_char_game_scene_char_RP_crosshair()
     local obj_char = obj_char_game_scene_char_RP
@@ -1305,6 +1440,8 @@ function state_machine_char_game_scene_char_RP_crosshair()
     local this_function = switch[obj_char["crosshair_state"]]
     if this_function then this_function() end
 end
+
+-- input_sys
 function state_machine_char_game_scene_char_RP_input_sys_cache()
     local obj_char = obj_char_game_scene_char_RP
     local input = INPUT_SYS_CURRENT_COMMAND_STATE["R"]
@@ -1326,31 +1463,21 @@ function state_machine_char_game_scene_char_RP_input_sys_cache()
                 obj_char["input_sys_cache"]["P"] = true
                 obj_char["input_sys_cache"]["S"] = false
                 obj_char["input_sys_cache"]["K"] = false
-                obj_char["input_sys_cache"]["HS"] = false
                 obj_char["input_sys_cache"]["Launcher"] = false
             elseif test_input_sys_press(input["S"]) then
                 obj_char["input_sys_cache"]["P"] = false
                 obj_char["input_sys_cache"]["S"] = true
                 obj_char["input_sys_cache"]["K"] = false
-                obj_char["input_sys_cache"]["HS"] = false
                 obj_char["input_sys_cache"]["Launcher"] = false
             elseif test_input_sys_press(input["K"]) then
                 obj_char["input_sys_cache"]["P"] = false
                 obj_char["input_sys_cache"]["S"] = false
                 obj_char["input_sys_cache"]["K"] = true
-                obj_char["input_sys_cache"]["HS"] = false
-                obj_char["input_sys_cache"]["Launcher"] = false
-            elseif test_input_sys_press(input["HS"]) then
-                obj_char["input_sys_cache"]["P"] = false
-                obj_char["input_sys_cache"]["S"] = false
-                obj_char["input_sys_cache"]["K"] = false
-                obj_char["input_sys_cache"]["HS"] = true
                 obj_char["input_sys_cache"]["Launcher"] = false
             elseif test_input_sys_press(input["Launcher"]) then
                 obj_char["input_sys_cache"]["P"] = false
                 obj_char["input_sys_cache"]["S"] = false
                 obj_char["input_sys_cache"]["K"] = false
-                obj_char["input_sys_cache"]["HS"] = false
                 obj_char["input_sys_cache"]["Launcher"] = true
             end
             if test_input_sys_press(input["RC"]) then
@@ -1388,7 +1515,7 @@ function state_machine_char_game_scene_char_RP_input_sys_cache()
             end
             common_update_game_scene_input_direction(obj_char)
             obj_char["input_sys_state"] = "none"
-            init_input_sys_cache(obj_char)
+            init_input_sys_cache_RP(obj_char)
         end,
     }
     local this_function = switch[obj_char["input_sys_state"]]
@@ -1401,88 +1528,50 @@ function state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
         ["none"] = function()
         end,
         ["save"] = function()
-            if test_input_sys_releasing(input["left"]) then
-                obj_char["input_sys_cache_negative_edge"]["left"] = true
-                obj_char["input_sys_cache_negative_edge"]["right"] = false
-            elseif test_input_sys_releasing(input["right"]) then
-                obj_char["input_sys_cache_negative_edge"]["left"] = false
-                obj_char["input_sys_cache_negative_edge"]["right"] = true
-            end
-            if test_input_sys_releasing(input["up"]) then
-                obj_char["input_sys_cache_negative_edge"]["jump"] = true
-            end
-            if test_input_sys_releasing(input["P"]) then
-                obj_char["input_sys_cache_negative_edge"]["P"] = true
-                obj_char["input_sys_cache_negative_edge"]["S"] = false
-                obj_char["input_sys_cache_negative_edge"]["K"] = false
-                obj_char["input_sys_cache_negative_edge"]["HS"] = false
-                obj_char["input_sys_cache_negative_edge"]["Launcher"] = false
-            elseif test_input_sys_releasing(input["S"]) then
-                obj_char["input_sys_cache_negative_edge"]["P"] = false
-                obj_char["input_sys_cache_negative_edge"]["S"] = true
-                obj_char["input_sys_cache_negative_edge"]["K"] = false
-                obj_char["input_sys_cache_negative_edge"]["HS"] = false
-                obj_char["input_sys_cache_negative_edge"]["Launcher"] = false
-            elseif test_input_sys_releasing(input["K"]) then
-                obj_char["input_sys_cache_negative_edge"]["P"] = false
-                obj_char["input_sys_cache_negative_edge"]["S"] = false
-                obj_char["input_sys_cache_negative_edge"]["K"] = true
-                obj_char["input_sys_cache_negative_edge"]["HS"] = false
-                obj_char["input_sys_cache_negative_edge"]["Launcher"] = false
-            elseif test_input_sys_releasing(input["HS"]) then
-                obj_char["input_sys_cache_negative_edge"]["P"] = false
-                obj_char["input_sys_cache_negative_edge"]["S"] = false
-                obj_char["input_sys_cache_negative_edge"]["K"] = false
-                obj_char["input_sys_cache_negative_edge"]["HS"] = true
-                obj_char["input_sys_cache_negative_edge"]["Launcher"] = false
-            elseif test_input_sys_releasing(input["Launcher"]) then
-                obj_char["input_sys_cache_negative_edge"]["P"] = false
-                obj_char["input_sys_cache_negative_edge"]["S"] = false
-                obj_char["input_sys_cache_negative_edge"]["K"] = false
-                obj_char["input_sys_cache_negative_edge"]["HS"] = false
-                obj_char["input_sys_cache_negative_edge"]["Launcher"] = true
-            end
-            if test_input_sys_releasing(input["RC"]) then
-                obj_char["input_sys_cache_negative_edge"]["RC"] = true
-            end
-            if test_input_sys_releasing(input["burst"]) then
-                obj_char["input_sys_cache_negative_edge"]["burst"] = true
-            end
-            if test_input_sys_releasing(input["dash"]) then
-                obj_char["input_sys_cache_negative_edge"]["dash"] = true
-            end
-            if test_input_sys_releasing(input["UA"]) then
-                obj_char["input_sys_cache_negative_edge"]["UA"] = true
-            end
-            if test_input_sys_releasing(input["correction_up"]) then
-                obj_char["input_sys_cache_negative_edge"]["correction_up"] = true
-                obj_char["input_sys_cache_negative_edge"]["correction_down"] = false
-            elseif test_input_sys_releasing(input["correction_down"]) then
-                obj_char["input_sys_cache_negative_edge"]["correction_up"] = false
-                obj_char["input_sys_cache_negative_edge"]["correction_down"] = true
-            end
-            if test_input_sys_releasing(input["correction_left"]) then
-                obj_char["input_sys_cache_negative_edge"]["correction_left"] = true
-                obj_char["input_sys_cache_negative_edge"]["correction_right"] = false
-            elseif test_input_sys_releasing(input["correction_right"]) then
-                obj_char["input_sys_cache_negative_edge"]["correction_left"] = false
-                obj_char["input_sys_cache_negative_edge"]["correction_right"] = true
+            local HS_state = obj_char["input_sys_cache_negative_edge"]["HS"]
+            if test_input_sys_release(input["HS"]) and (HS_state == "Pressing" or HS_state == "Holding") then
+                obj_char["input_sys_cache_negative_edge"]["HS"] = "Releasing"
+            elseif test_input_sys_press(input["HS"]) and (HS_state == "Released" or HS_state == "Releasing") then
+                obj_char["input_sys_cache_negative_edge"]["HS"] = "Pressing"
             end
         end,
         ["load"] = function()
-            for i=1,20 do
-                if obj_char["input_sys_cache_negative_edge"][INPUT_SYS_COMMAND_TABLE[i]] then
-                    input[INPUT_SYS_COMMAND_TABLE[i]] = "Releasing"
-                end
+            if obj_char["input_sys_cache_negative_edge"]["HS"] ~= "Released" then
+                input["HS"] = obj_char["input_sys_cache_negative_edge"]["HS"]
             end
-            obj_char["input_sys_state"] = "none"
-            init_input_sys_cache_negative_edge(obj_char)
+            obj_char["input_sys_state_negative_edge"] = "none"
+            init_input_sys_cache_negative_edge_RP(obj_char_game_scene_char_RP)
         end,
     }
-    local this_function = switch[obj_char["input_sys_state"]]
+    local this_function = switch[obj_char["input_sys_state_negative_edge"]]
     if this_function then this_function() end
 end
+function init_input_sys_cache_RP(obj_char)
+    for i=1,20 do
+        obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] = false
+    end
+    obj_char["input_sys_cache"]["jump"] = false
+end
+function init_input_sys_cache_negative_edge_RP(obj_char)
+    obj_char["input_sys_cache_negative_edge"]["HS"] = "Released"
+end
 
+-- 加载后input_sys_cahce重新缓存
+function load_input_sys_cache_manual_release_RP(input,obj_char,button_name)
+    input[button_name] = "Released"
+end
+function load_input_sys_cache_recache_RP(input,obj_char)
+    for i=1,20 do
+        if input[INPUT_SYS_COMMAND_TABLE[i]] == "Pressing" then
+            obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] = true
+        end
+    end
+end
+function load_input_sys_cache_recache_negative_edge_RP(input,obj_char)
+    if input["HS"] == "Releasing" then
+        obj_char["input_sys_cache_negative_edge"]["HS"] = "Released"
+    end
+end
 
 -- 状态机连接门
 function state_gate_game_scene_char_RP_common_ground_to_dash_move(input,obj_char)
@@ -2369,7 +2458,7 @@ function state_gate_game_scene_char_RP_from_hitstop(input,obj_char)
         end
         -- input_sys_cache(load at not special case eg:force delay gtr cancel)
         if obj_char["state"] == "j2K" then
-            load_input_sys_cache_recache(input,obj_char)
+            load_input_sys_cache_recache_RP(input,obj_char)
         end
         update_game_scene_char_RP()
         return
@@ -3112,8 +3201,8 @@ function state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char)
     if obj_char["idle_cancel"] then
         -- _common_air_idle_to_move
         if state_gate_game_scene_char_RP_common_air_to_dash_move_hold_ver_4dash_only(input,obj_char) then
-            load_input_sys_cache_manual_release(input,obj_char,"dash")
-            load_input_sys_cache_recache(input,obj_char)
+            load_input_sys_cache_manual_release_RP(input,obj_char,"dash")
+            load_input_sys_cache_recache_RP(input,obj_char)
             return true
         end
         if state_gate_game_scene_char_RP_common_air_to_special_move(input,obj_char) then
@@ -4141,8 +4230,8 @@ function state_gate_game_scene_char_RP_from_jS(input,obj_char)
             end
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "7_8_9_jump_air"
-            load_input_sys_cache_manual_release(input,obj_char,"up")
-            load_input_sys_cache_recache(input,obj_char)
+            load_input_sys_cache_manual_release_RP(input,obj_char,"up")
+            load_input_sys_cache_recache_RP(input,obj_char)
             return true
         end
     end
@@ -4227,8 +4316,8 @@ function state_gate_game_scene_char_RP_from_j5Launcher(input,obj_char)
             end
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "7_8_9_jump_air"
-            load_input_sys_cache_manual_release(input,obj_char,"up")
-            load_input_sys_cache_recache(input,obj_char)
+            load_input_sys_cache_manual_release_RP(input,obj_char,"up")
+            load_input_sys_cache_recache_RP(input,obj_char)
             return true
         end
     end
@@ -4306,17 +4395,6 @@ end
 function state_gate_game_scene_char_RP_from_4sp_S_5UA(input,obj_char)
 end
 
-function state_gate_game_scene_char_RP_oroboros_from_off(input,obj_char)
-end
-function state_gate_game_scene_char_RP_oroboros_from_ease_in(input,obj_char)
-end
-function state_gate_game_scene_char_RP_oroboros_from_ease_out(input,obj_char)
-end
-function state_gate_game_scene_char_RP_oroboros_from_loop(input,obj_char)
-end
-function state_gate_game_scene_char_RP_oroboros_from_shot(input,obj_char)
-end
-
 -- draw
 function draw_game_scene_char_RP_logic_graphic_pos_sync()
     local obj = nil
@@ -4332,8 +4410,8 @@ function draw_game_scene_char_RP_logic_graphic_pos_sync()
 
     -- oroboros_back
     obj = obj_char["oroboros_back"]
-    obj[1] = oroboros_ease_current[1] + oroboros_ease_current[3]*(dx - math.cos(shot_r)*shot_offset_amount*0.7)
-    obj[2] = oroboros_ease_current[2] + oroboros_ease_current[4]*(dy - math.sin(shot_r)*shot_offset_amount*0.7)
+    obj[1] = oroboros_ease_current[1] + oroboros_ease_current[3]*(dx - math.cos(shot_r)*shot_offset_amount*0.5)
+    obj[2] = oroboros_ease_current[2] + oroboros_ease_current[4]*(dy - math.sin(shot_r)*shot_offset_amount*0.5)
     obj[3] = obj_char[3]
     obj[4] = obj_char["oroboros_back"][4]
     obj[5] = obj_char[5]
@@ -4365,8 +4443,8 @@ function draw_game_scene_char_RP_logic_graphic_pos_sync()
     obj = obj_char["oroboros_front"]
     dx = -80
     dy = -80
-    obj[1] = oroboros_ease_current[1] + oroboros_ease_current[3]*(dx - math.cos(shot_r)*shot_offset_amount*0.5)
-    obj[2] = oroboros_ease_current[2] + oroboros_ease_current[4]*(dy - math.sin(shot_r)*shot_offset_amount*0.5)
+    obj[1] = oroboros_ease_current[1] + oroboros_ease_current[3]*(dx - math.cos(shot_r)*shot_offset_amount*0.7)
+    obj[2] = oroboros_ease_current[2] + oroboros_ease_current[4]*(dy - math.sin(shot_r)*shot_offset_amount*0.7)
     obj[3] = obj_char[3]
     obj[4] = obj_char["oroboros_front"][4]
     obj[5] = obj_char[5]
@@ -4384,22 +4462,6 @@ function draw_game_scene_char_RP()
     shader:send("contrast",obj_char["contrast"])
     shader:send("brightness",obj_char["brightness"])
 
-    -- -- debug_use
-    -- local x_div_value = 3
-    -- local y_div_value = 3
-    -- obj_char["oroboros_ease_target"] = {
-    --     obj_char["x"] + obj_char[5]*obj_char["oroboros_anchor_pos"][1],
-    --     obj_char["y"] + obj_char[6]*obj_char["oroboros_anchor_pos"][2],
-    --     obj_char[5],
-    --     obj_char[6]
-    -- }
-    -- obj_char["oroboros_ease_current"] = {
-    --     (obj_char["oroboros_ease_target"][1]*(x_div_value-1) + obj_char["oroboros_ease_current"][1])/x_div_value,
-    --     (obj_char["oroboros_ease_target"][2]*(y_div_value-1) + obj_char["oroboros_ease_current"][2])/y_div_value,
-    --     (obj_char["oroboros_ease_target"][3]*(x_div_value-1) + obj_char["oroboros_ease_current"][3])/x_div_value,
-    --     (obj_char["oroboros_ease_target"][4]*(y_div_value-1) + obj_char["oroboros_ease_current"][4])/y_div_value
-    -- }
-    
     -- draw_back
     -- x y z opacity sx sy r f
     if obj_char["oroboros_state"] ~= "off" then
@@ -4421,14 +4483,14 @@ function draw_game_scene_char_RP()
     -- draw_mid
     if obj_char["oroboros_state"] ~= "off" then
         obj = obj_char["oroboros_mid"]
-        image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj["sprite_sheet_state"] ]
+        image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj["sprite_sheet_state"]]
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,tostring(obj[8]))
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
 
         -- darw_front
         obj = obj_char["oroboros_front"]
-        image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj["sprite_sheet_state"] ]
+        image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj["sprite_sheet_state"]]
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,tostring(obj[8]))
         love.graphics.draw(image_sprite_sheet["sprite_batch"])

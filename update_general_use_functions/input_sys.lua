@@ -122,7 +122,6 @@ function update_controller()
                 break
             end
         end
-
     else
         local L_controller = INPUT_SYS_CURRENT_CONTROLLER["L"]
         local R_controller = INPUT_SYS_CURRENT_CONTROLLER["R"]
@@ -163,7 +162,6 @@ function update_controller()
                     break
                 end
             end
-
         end
 
         local L_controller = INPUT_SYS_CURRENT_CONTROLLER["L"]
@@ -203,9 +201,7 @@ function update_controller()
                     break
                 end
             end
-
         end
-
     end
 
     INPUT_SYS_JOYSTICK_STATE[2] = INPUT_SYS_JOYSTICK_STATE[0]
@@ -222,7 +218,6 @@ function update_controller()
     else 
         INPUT_SYS_JOYSTICK_STATE[1] = 1
     end 
-
 end
 --获得所有指令的现在布尔值和上一帧布尔值（键盘）
 function get_input_sys_current_command(INPUT_SYS_CURRENT_COMMAND,INPUT_SYS_CURRENT_CONTROLLER)
@@ -390,43 +385,10 @@ function test_input_sys_press(input)
         return false
     end
 end
-function test_input_sys_releasing(input)
+function test_input_sys_release(input)
     if input == "Releasing" then
         return true
     else
         return false
-    end
-end
-
--- 初始化input_sys_cache
-function init_input_sys_cache(obj_char)
-    for i=1,20 do
-        obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] = false
-    end
-    obj_char["input_sys_cache"]["jump"] = false
-end
-function init_input_sys_cache_negative_edge(obj_char)
-    for i=1,20 do
-        obj_char["input_sys_cache_negative_edge"][INPUT_SYS_COMMAND_TABLE[i]] = false
-    end
-    obj_char["input_sys_cache_negative_edge"]["jump"] = false
-end
-
--- 加载后input_sys_cahce重新缓存
-function load_input_sys_cache_manual_release(input,obj_char,button_name)
-    input[button_name] = "Released"
-end
-function load_input_sys_cache_recache(input,obj_char)
-    for i=1,20 do
-        if input[INPUT_SYS_COMMAND_TABLE[i]] == "Pressing" then
-            obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] = true
-        end
-    end
-end
-function load_input_sys_cache_recache_negative_edge(input,obj_char)
-    for i=1,20 do
-        if input[INPUT_SYS_COMMAND_TABLE[i]] == "Releasing" then
-            obj_char["input_sys_cache_negative_edge"][INPUT_SYS_COMMAND_TABLE[i]] = true
-        end
     end
 end
