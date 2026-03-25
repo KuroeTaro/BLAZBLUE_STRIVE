@@ -1270,7 +1270,7 @@ function state_machine_char_game_scene_char_LP_oroboros()
                 init_character_anim_with(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][5])
                 init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
                 obj_char["oroboros_state"] = "ease_in"
-                return true
+                return
             end
         end,
         ["ease_in"] = function()
@@ -1290,7 +1290,7 @@ function state_machine_char_game_scene_char_LP_oroboros()
                 obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["oroboros_mid"])
                 init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
                 obj_char["oroboros_state"] = "loop"
-                return true
+                return
             end
             if obj_char["oroboros_idle_cancel"] and
             (
@@ -1301,11 +1301,13 @@ function state_machine_char_game_scene_char_LP_oroboros()
                 obj_char["oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["oroboros_front"])
                 obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["oroboros_mid"],"5H_oroboros_ease_out_mid")
                 obj_char["oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["oroboros_back"])
+                obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_ororboros_ease_out(obj_char)
                 init_character_anim_with(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
                 init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
                 init_character_anim_with(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
+                init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
                 obj_char["oroboros_state"] = "ease_out"
-                return true
+                return
             end
             if obj_char["oroboros_shot_cancel"] and test_input_sys_release(input["HS"]) then
                 obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
@@ -1320,6 +1322,7 @@ function state_machine_char_game_scene_char_LP_oroboros()
             character_animator(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
             character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
             character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][5])
+            character_animator(obj_char,obj_char["oroboros_animation_table"][6])
             if get_character_anim_end_state(obj_char["oroboros_front"],"f_4",obj_char["oroboros_animation_table"][1])
             and get_character_anim_end_state(obj_char["oroboros_mid"],"f_8",obj_char["oroboros_animation_table"][3])
             and get_character_anim_end_state(obj_char["oroboros_back"],"f_4",obj_char["oroboros_animation_table"][4])
@@ -1327,7 +1330,7 @@ function state_machine_char_game_scene_char_LP_oroboros()
                 obj_char["oroboros_front"][4] = 0
                 obj_char["oroboros_back"][4] = 0
                 obj_char["oroboros_state"] = "off"
-                return true
+                return
             end
             if test_input_sys_press(input["HS"]) then
                 obj_char["oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["oroboros_front"])
@@ -1335,13 +1338,15 @@ function state_machine_char_game_scene_char_LP_oroboros()
                 obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["oroboros_mid"],"5H_oroboros_ease_in_mid")
                 obj_char["oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["oroboros_back"])
                 obj_char["oroboros_animation_table"][5] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char["oroboros_back"],"5H_oroboros_loop_back")
+                obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_ease_in(obj_char)
                 init_character_anim_with(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
                 init_character_anim_with(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][2])
                 init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
                 init_character_anim_with(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
                 init_character_anim_with(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][5])
+                init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
                 obj_char["oroboros_state"] = "ease_in"
-                return true
+                return
             end
         end,
         ["loop"] = function()
@@ -1354,11 +1359,13 @@ function state_machine_char_game_scene_char_LP_oroboros()
                 obj_char["oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["oroboros_front"])
                 obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["oroboros_mid"],"5H_oroboros_ease_out_mid")
                 obj_char["oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["oroboros_back"])
+                obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_ororboros_ease_out(obj_char)
                 init_character_anim_with(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
                 init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
                 init_character_anim_with(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
+                init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
                 obj_char["oroboros_state"] = "ease_out"
-                return true
+                return
             end
             if obj_char["oroboros_shot_cancel"] and test_input_sys_release(input["HS"]) then
                 obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
@@ -1373,25 +1380,28 @@ function state_machine_char_game_scene_char_LP_oroboros()
             character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
             character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][5])
             character_animator(obj_char,obj_char["oroboros_animation_table"][6])
-            if obj_char["oroboros_shot_cancel"] and test_input_sys_release(input["HS"]) then
-                obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
-                init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
-                obj_char["oroboros_state"] = "shot"
-            end
             if obj_char["oroboros_idle_cancel"] and 
             (
-                (test_input_sys_press(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
+                (test_input_sys_press_or_hold(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
                 (test_input_sys_press_or_hold(input["HS"]) and test_input_sys_press(input["SP"]))
             )
             then
                 obj_char["oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["oroboros_front"])
                 obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["oroboros_mid"],"5H_oroboros_ease_out_mid")
                 obj_char["oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["oroboros_back"])
+                obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_ororboros_ease_out(obj_char)
                 init_character_anim_with(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
                 init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
                 init_character_anim_with(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
+                init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
                 obj_char["oroboros_state"] = "ease_out"
-                return true
+                return
+            end
+            if obj_char["oroboros_shot_cancel"] and test_input_sys_release(input["HS"]) then
+                obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
+                init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
+                obj_char["oroboros_state"] = "shot"
+                return
             end
             if get_character_anim_end_state(obj_char,"oroboros_f",obj_char["oroboros_animation_table"][6]) then
                 obj_char["oroboros_front"][4] = 1
@@ -1399,7 +1409,7 @@ function state_machine_char_game_scene_char_LP_oroboros()
                 obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["oroboros_mid"])
                 init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
                 obj_char["oroboros_state"] = "loop"
-                return true
+                return
             end
         end,
     }
@@ -1569,7 +1579,7 @@ function load_input_sys_cache_recache_LP(input,obj_char)
 end
 function load_input_sys_cache_recache_negative_edge_LP(input,obj_char)
     if input["HS"] == "Releasing" then
-        obj_char["input_sys_cache_negative_edge"]["HS"] = "Released"
+        obj_char["input_sys_cache_negative_edge"]["HS"] = "Releasing"
     end
 end
 
@@ -2449,17 +2459,20 @@ function state_gate_game_scene_char_LP_from_hitstop(input,obj_char)
         obj_char["input_sys_state"] = "load" -- none save load
         state_machine_char_game_scene_char_LP_input_sys_cache()
         -- _overdrive
-        if obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_burst_overdrive(input,obj_char,"overdrive") then
+        if state_gate_game_scene_char_LP_common_burst_overdrive(input,obj_char,"overdrive") then
             return true
         end
         -- _RRC
-        if obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"RRC") then
+        if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"RRC") then
             return true
         end
-        -- input_sys_cache(load at not special case eg:force delay gtr cancel)
+
+        -- force_delayed_gatling_cancel_input_sys_cache_processing
         if obj_char["state"] == "j2K" then
             load_input_sys_cache_recache_LP(input,obj_char)
+            obj_char["input_sys_state"] = "save" -- none save load
         end
+
         update_game_scene_char_LP()
         return
     end
@@ -3201,8 +3214,10 @@ function state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char)
     if obj_char["idle_cancel"] then
         -- _common_air_idle_to_move
         if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_4dash_only(input,obj_char) then
+            -- save_input_sys_cache_from_pre_jump_and_7_8_9_jump_air
             load_input_sys_cache_manual_release_LP(input,obj_char,"dash")
             load_input_sys_cache_recache_LP(input,obj_char)
+            obj_char["input_sys_state"] = "save" -- none save load
             return true
         end
         if state_gate_game_scene_char_LP_common_air_to_special_move(input,obj_char) then
@@ -3484,7 +3499,7 @@ end
 
 function state_gate_game_scene_char_LP_from_2P(input,obj_char)
     -- _PRC
-    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- kara
@@ -3536,7 +3551,7 @@ function state_gate_game_scene_char_LP_from_2P(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_6P(input,obj_char)
     -- _PRC
-    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- kara
@@ -3577,7 +3592,7 @@ function state_gate_game_scene_char_LP_from_6P(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_5P(input,obj_char)
     -- _PRC
-    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- kara
@@ -3638,7 +3653,7 @@ function state_gate_game_scene_char_LP_from_5P(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_2K(input,obj_char)
     -- _PRC
-    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- kara
@@ -3689,7 +3704,7 @@ function state_gate_game_scene_char_LP_from_2K(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_6K(input,obj_char)
     -- _PRC
-    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- kara
@@ -3730,7 +3745,7 @@ function state_gate_game_scene_char_LP_from_6K(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_5K(input,obj_char)
     -- _PRC
-    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- _kara
@@ -3790,7 +3805,7 @@ function state_gate_game_scene_char_LP_from_5K(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_2S(input,obj_char)
     -- _PRC
-    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- _kara
@@ -3833,7 +3848,7 @@ function state_gate_game_scene_char_LP_from_2S(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_6S(input,obj_char)
     -- _PRC
-    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- _kara
@@ -3874,7 +3889,7 @@ function state_gate_game_scene_char_LP_from_6S(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_cS(input,obj_char)
     -- _PRC
-    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- _kara
@@ -3952,7 +3967,7 @@ function state_gate_game_scene_char_LP_from_cS(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_fS(input,obj_char)
     -- _PRC
-    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- _kara
@@ -3994,7 +4009,7 @@ function state_gate_game_scene_char_LP_from_fS(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_2Launcher(input,obj_char)
     -- _PRC
-    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- hit_cancel
@@ -4021,7 +4036,7 @@ function state_gate_game_scene_char_LP_from_2Launcher(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_4_6Launcher(input,obj_char)
     -- _PRC
-    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- idle_cancel
@@ -4043,7 +4058,7 @@ function state_gate_game_scene_char_LP_from_4_6Launcher(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_5Launcher(input,obj_char)
     -- _PRC
-    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- _kara
@@ -4086,7 +4101,7 @@ end
 
 function state_gate_game_scene_char_LP_from_jP(input,obj_char)
     -- _PRC
-    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
@@ -4118,7 +4133,7 @@ function state_gate_game_scene_char_LP_from_jP(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_jK(input,obj_char)
     -- _PRC
-    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
@@ -4150,7 +4165,7 @@ function state_gate_game_scene_char_LP_from_jK(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_j2K(input,obj_char)
     -- _PRC
-    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
@@ -4194,7 +4209,7 @@ function state_gate_game_scene_char_LP_from_j2K(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_jS(input,obj_char)
     -- _PRC
-    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
@@ -4230,8 +4245,10 @@ function state_gate_game_scene_char_LP_from_jS(input,obj_char)
             end
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "7_8_9_jump_air"
+            -- save_input_sys_cache_from_jS_and_7_8_9_jump_air
             load_input_sys_cache_manual_release_LP(input,obj_char,"up")
             load_input_sys_cache_recache_LP(input,obj_char)
+            obj_char["input_sys_state"] = "save" -- none save load
             return true
         end
     end
@@ -4251,7 +4268,7 @@ function state_gate_game_scene_char_LP_from_jS(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_j4_6Launcher(input,obj_char)
     -- _PRC
-    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
@@ -4280,7 +4297,7 @@ function state_gate_game_scene_char_LP_from_j4_6Launcher(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_j5Launcher(input,obj_char)
     -- _PRC
-    if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"PRC") then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
@@ -4316,8 +4333,10 @@ function state_gate_game_scene_char_LP_from_j5Launcher(input,obj_char)
             end
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "7_8_9_jump_air"
+            -- save_input_sys_cache_from_j5Launcher_and_7_8_9_jump_air
             load_input_sys_cache_manual_release_LP(input,obj_char,"up")
             load_input_sys_cache_recache_LP(input,obj_char)
+            obj_char["input_sys_state"] = "save" -- none save load
             return true
         end
     end

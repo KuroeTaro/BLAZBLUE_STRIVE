@@ -850,8 +850,6 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet_stat
         obj_char["velocity"][1] = horizontal_velocity
         if vertical_velocity ~= nil then
             obj_char["velocity"][2] = vertical_velocity
-        else
-            assert("null vertical_velocity")
         end
         obj_char["gravity"] = 2.5
         obj_char["friction"] = 0
@@ -5225,22 +5223,14 @@ function load_game_scene_anim_char_TRM_5H_oroboros_ease_in(obj_char)
     res[0] = function()
         -- oroboros
         obj_char["oroboros_shot_cancel"] = false
-        obj_char["oroboros_idle_cancel"] = false
+        obj_char["oroboros_idle_cancel"] = true
         --VFX
         insert_VFX_game_scene_char_TRM_5H_whiff_switch(obj_char)
-    end
-    res[5] = function()
-        -- input_sys_cache
-        obj_char["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char["player_side"])(obj_char)
     end
     res[12] = function()
         -- oroboros
         obj_char["oroboros_shot_cancel"] = true
         obj_char["oroboros_idle_cancel"] = true
-        -- input_sys_cache
-        obj_char["input_sys_state_negative_edge"] = "load" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_state_machine(obj_char["player_side"])()
     end
     return res
 end
@@ -5252,7 +5242,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     local obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]-obj_char_other_side["pushbox"][4]}
     local r = math.atan2((obj_char_other_side_pos[2]-oroboros_pos[2]),obj_char[5]*(obj_char_other_side_pos[1]-oroboros_pos[1]))*obj_char[5]
     res["prop_f"] = "oroboros_f"
-    res["anim_length"] = 27
+    res["anim_length"] = 36
 
     res[0] = function()
         -- oroboros
@@ -5274,11 +5264,6 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
         -- oroboros
         obj_char["oroboros_mid"][8] = 2
     end
-    res[5] = function()
-        -- input_sys_cache
-        obj_char["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char["player_side"])(obj_char)
-    end
     res[10] = function()
         -- oroboros
         obj_char["oroboros_shot_aim_r"] = r*(17-0)/17
@@ -5293,13 +5278,9 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
 
         obj_char["oroboros_mid"][8] = 4
     end
-    res[18] = function()
+    res[17] = function()
         -- oroboros
-        obj_char["oroboros_shot_cancel"] = true
         obj_char["oroboros_idle_cancel"] = true
-        -- input_sys_cache
-        obj_char["input_sys_state_negative_edge"] = "load" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_state_machine(obj_char["player_side"])()
     end
     res[19] = function()
         -- oroboros
@@ -5307,6 +5288,10 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
         obj_char["oroboros_shot_offset_amount"] = 100*(17-9)/17
 
         obj_char["oroboros_mid"][8] = 5
+    end
+    res[21] = function()
+        -- oroboros
+        obj_char["oroboros_shot_cancel"] = true
     end
     res[23] = function()
         -- oroboros
@@ -5319,6 +5304,24 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
         -- oroboros
         obj_char["oroboros_shot_aim_r"] = 0
         obj_char["oroboros_shot_offset_amount"] = 0
+        -- animation_end
+    end
+    res[36] = function()
+
+    end
+    return res
+end
+function load_game_scene_anim_char_TRM_5H_ororboros_ease_out(obj_char)
+    local res = {}
+    res["prop_f"] = "oroboros_f"
+    res["anim_length"] = 12
+
+    res[0] = function()
+        -- oroboros
+        obj_char["oroboros_shot_offset_amount"] = 0
+        insert_VFX_game_scene_char_TRM_5H_whiff_switch(obj_char)
+    end
+    res[12] = function()
         -- animation_end
     end
     return res

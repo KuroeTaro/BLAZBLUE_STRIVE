@@ -386,7 +386,7 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_switch(obj_char)
     if obj_char["height_state"] == "stand" then
         y = -780
     elseif obj_char["height_state"] == "crouch" then
-        y = -540
+        y = -580
     elseif obj_char["height_state"] == "air" then
         y = -490
     elseif obj_char["height_state"] == "OTG" then
@@ -641,7 +641,7 @@ function insert_VFX_game_scene_char_TRM_jS_whiff(obj_char)
     obj["LCD"] = {0,0,0,0,0,0,0,0}
     obj["animation"] = {}
     obj["animation"][0] = 0
-    obj["animation"][4] = 1
+    obj["animation"][3] = 1
     obj["animation"][8] = 2
     obj["animation"][10] = 3
     obj["animation"]["prop"] = 8
