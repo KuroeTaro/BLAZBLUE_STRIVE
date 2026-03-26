@@ -839,9 +839,10 @@ end
 -- 更新和状态机
 function update_game_scene_char_RP()
     state_machine_char_game_scene_char_RP()
-    state_machine_char_game_scene_char_RP_oroboros()
 end
-function update_game_scene_char_RP_revise()
+function update_game_scene_char_RP_attachment()
+    state_machine_char_game_scene_char_RP_oroboros()
+    state_machine_char_game_scene_char_RP_crosshair()
 end
 function state_machine_char_game_scene_char_RP()
     -- 拉后最高优先级 然后是拉下 然后是拉前 然后是跳
@@ -1287,7 +1288,7 @@ function state_machine_char_game_scene_char_RP_oroboros()
                 obj_char["oroboros_back"][4] = 1
                 obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["oroboros_mid"])
                 init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
-                obj_char["oroboros_state"] = "loop"
+                obj_char["oroboros_state"] = "at_the_ready_aimming"
                 return
             end
             if obj_char["oroboros_idle_cancel"] and
@@ -1347,7 +1348,7 @@ function state_machine_char_game_scene_char_RP_oroboros()
                 return
             end
         end,
-        ["loop"] = function()
+        ["at_the_ready_aimming"] = function()
             character_animator(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][2])
             character_animator(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
             character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][5])
@@ -1371,6 +1372,8 @@ function state_machine_char_game_scene_char_RP_oroboros()
                 obj_char["oroboros_state"] = "shot"
                 return
             end
+        end,
+        ["steady_aimming"] = function()
         end,
         ["shot"] = function()
             character_animator(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
@@ -1406,7 +1409,7 @@ function state_machine_char_game_scene_char_RP_oroboros()
                 obj_char["oroboros_back"][4] = 1
                 obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["oroboros_mid"])
                 init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
-                obj_char["oroboros_state"] = "loop"
+                obj_char["oroboros_state"] = "at_the_ready_aimming"
                 return
             end
         end,
@@ -1435,13 +1438,16 @@ function state_machine_char_game_scene_char_RP_crosshair()
         ["ease_in"] = function()
 
         end,
+        ["ease_out"] = function()
+
+        end,
         ["at_the_ready_aimming"] = function()
 
         end,
         ["steady_aimming"] = function()
 
         end,
-        ["ease_out"] = function()
+        ["shoot"] = function()
 
         end,
     }

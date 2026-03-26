@@ -223,24 +223,6 @@ function update_game_scene_main_training()
                 end
             end
 
-            -- 更新飞行道具
-            for i = #char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
-                local object = char_LP["projectile_table"][i]
-                object["life"] = object["life"] - 1 -- 减少寿命
-                object["update"](object)
-                if object["life"] <= 0 then
-                    table.remove(char_LP["projectile_table"],i) -- 寿命耗尽，从列表中移除
-                end
-            end
-            for i = #char_RP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
-                local object = char_RP["projectile_table"][i]
-                object["life"] = object["life"] - 1 -- 减少寿命
-                object["update"](object)
-                if object["life"] <= 0 then
-                    table.remove(char_RP["projectile_table"],i) -- 寿命耗尽，从列表中移除
-                end
-            end
-
             local char_LP_velocity = char_LP["velocity"]
             local char_RP_velocity = char_RP["velocity"]
 
@@ -469,9 +451,6 @@ function update_game_scene_main_training()
             -- 更新sub_frame
             update_game_scene_game_speed_sub_frame()
 
-            -- 更新角色修订
-            update_game_scene_char_revise()
-
             -- 更新HUD 场景
             update_game_scene_HUD()
             update_game_scene_stage()
@@ -628,10 +607,12 @@ function update_game_scene_char()
     common_update_game_scene_char_game_speed_abnormal_realtime_countdown(char_RP)
 
     -- 计算摩擦力时再将game_speed_subframe初始化
+    local game_speed_cache_LP = char_LP["game_speed"]
+    local game_speed_subframe_cache_LP = char_LP["game_speed_subframe"]
     local game_speed_cache_RP = char_RP["game_speed"]
     local game_speed_subframe_cache_RP = char_RP["game_speed_subframe"]
-    if char_LP["game_speed"] ~= 0 
-    and char_LP["game_speed_subframe"] > char_LP["game_speed"]
+    if game_speed_cache_LP ~= 0 
+    and game_speed_subframe_cache_LP > game_speed_cache_LP
     then
         update_game_scene_char_LP()
         update_game_scene_char_LP_projectile()
@@ -639,23 +620,25 @@ function update_game_scene_char()
         update_game_scene_char_LP_black_overlay()
     end
 
-    if game_speed_cache_RP ~= 0 and char_RP["game_speed"] == 0 then
-        game_speed_cache_RP,char_RP["game_speed"] = char_RP["game_speed"],game_speed_cache_RP
-        game_speed_subframe_cache_RP,char_RP["game_speed_subframe"] = char_RP["game_speed_subframe"],game_speed_subframe_cache_RP
-    end
-
-    if char_RP["game_speed"] ~= 0 
-    and char_RP["game_speed_subframe"] > char_RP["game_speed"]
+    if game_speed_cache_RP ~= 0 
+    and game_speed_subframe_cache_RP > game_speed_cache_RP
     then
         update_game_scene_char_RP()
         update_game_scene_char_RP_projectile()
         update_game_scene_char_RP_VFX()
         update_game_scene_char_RP_black_overlay()
     end
-    
-    if game_speed_cache_RP == 0 and char_RP["game_speed"] ~= 0 then
-        game_speed_cache_RP,char_RP["game_speed"] = char_RP["game_speed"],game_speed_cache_RP
-        game_speed_subframe_cache_RP,char_RP["game_speed_subframe"] = char_RP["game_speed_subframe"],game_speed_subframe_cache_RP
+
+    if game_speed_cache_LP ~= 0 
+    and game_speed_subframe_cache_LP > game_speed_cache_LP
+    then
+        update_game_scene_char_LP_attachment()
+    end
+
+    if game_speed_cache_RP ~= 0 
+    and game_speed_subframe_cache_RP > game_speed_cache_RP
+    then
+        update_game_scene_char_RP_attachment()
     end
 
     local game_speed_abnormal_realtime_countdown_LP = char_LP["game_speed_abnormal_realtime_countdown"]
@@ -674,8 +657,4 @@ function update_game_scene_char()
             char_RP["game_speed_abnormal_realtime_countdown"] = 0
         end
     end
-end
-function update_game_scene_char_revise()
-    update_game_scene_char_LP_revise()
-    update_game_scene_char_RP_revise()
 end
