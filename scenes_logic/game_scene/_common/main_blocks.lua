@@ -90,13 +90,9 @@ function update_game_scene_main_training()
                 -- input_sys save
                 obj_char_game_scene_char_LP["input_sys_state"] = "save" -- none save load
                 init_input_sys_cache_LP()
-                obj_char_game_scene_char_LP["input_sys_state_negative_edge"] = "save" -- none save load
-                init_input_sys_cache_negative_edge_LP()
 
                 obj_char_game_scene_char_RP["input_sys_state"] = "save" -- none save load
                 init_input_sys_cache_RP()
-                obj_char_game_scene_char_RP["input_sys_state_negative_edge"] = "save" -- none save load
-                init_input_sys_cache_negative_edge_RP()
             elseif SCENE_TIMER < 165 then
                 state_machine_automatic_player_game_scene(obj_HUD_game_scene_ease_in,50)
                 state_machine_automatic_player_game_scene(obj_annoucer_game_scene_lets_dance,40)
@@ -182,8 +178,6 @@ function update_game_scene_main_training()
             -- 会被game_speed限制
             state_machine_char_game_scene_char_LP_input_sys_cache()
             state_machine_char_game_scene_char_RP_input_sys_cache()
-            state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
-            state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
             common_update_game_scene_input_direction(char_LP)
             common_update_game_scene_input_direction(char_RP)
 

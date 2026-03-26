@@ -5101,7 +5101,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj,sprite_sheet_s
     res[110] = function()
         -- oroboros
         obj["f_8"] = 20
-        obj[8] = 6
+        obj[8] = 5
     end
     res[111] = function()
         -- animation_end
@@ -5227,10 +5227,13 @@ function load_game_scene_anim_char_TRM_5H_oroboros_ease_in(obj_char)
         --VFX
         insert_VFX_game_scene_char_TRM_5H_whiff_switch(obj_char)
     end
-    res[12] = function()
+    res[9] = function()
         -- oroboros
         obj_char["oroboros_shot_cancel"] = true
         obj_char["oroboros_idle_cancel"] = true
+    end
+    res[12] = function()
+        -- animation_end
     end
     return res
 end
@@ -5239,10 +5242,41 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     local side = obj_char["player_side"]
     local obj_char_other_side = common_game_scene_change_character(side)
     local oroboros_pos = {obj_char["oroboros_ease_current"][1],obj_char["oroboros_ease_current"][2]}
-    local obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]-obj_char_other_side["pushbox"][4]}
+    local obj_char_other_side_pos = {}
+    if obj_char_other_side["pushbox"][4] ~= nil then
+        obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]-obj_char_other_side["pushbox"][4]}
+    else
+        obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]}
+    end
     local r = math.atan2((obj_char_other_side_pos[2]-oroboros_pos[2]),obj_char[5]*(obj_char_other_side_pos[1]-oroboros_pos[1]))*obj_char[5]
     res["prop_f"] = "oroboros_f"
     res["anim_length"] = 36
+
+    local function update_r(obj_char,i)
+        -- local_value
+        oroboros_pos = {obj_char["oroboros_ease_current"][1],obj_char["oroboros_ease_current"][2]}
+        if obj_char_other_side["pushbox"][4] ~= nil then
+            obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]-obj_char_other_side["pushbox"][4]}
+        else
+            obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]-285}
+        end
+        r = math.atan2((obj_char_other_side_pos[2]-oroboros_pos[2]),obj_char[5]*(obj_char_other_side_pos[1]-oroboros_pos[1]))*obj_char[5]
+        obj_char["oroboros_shot_aim_r"] = r*(27-i)/17
+    end
+    for i = 0,9 do
+        res[i] = function()
+            if obj_char[5] ~= obj_char["basic_prop_cache"][5] then
+                update_r(obj_char,10)
+            end
+        end
+    end
+    for i = 10,27 do
+        res[i] = function()
+            if obj_char[5] ~= obj_char["basic_prop_cache"][5] then
+                update_r(obj_char,i)
+            end
+        end
+    end
 
     res[0] = function()
         -- oroboros
@@ -5256,24 +5290,28 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     end
     res[1] = function()
         -- oroboros
+        update_r(obj_char,10)
+        
         obj_char["oroboros_mid"][8] = 1
         -- VFX
         insert_VFX_game_scene_char_TRM_5H_whiff_shot(obj_char)
     end
     res[3] = function()
         -- oroboros
+        update_r(obj_char,10)
+
         obj_char["oroboros_mid"][8] = 2
     end
     res[10] = function()
         -- oroboros
-        obj_char["oroboros_shot_aim_r"] = r*(17-0)/17
+        update_r(obj_char,10)
         obj_char["oroboros_shot_offset_amount"] = 100*(17-0)/17
 
         obj_char["oroboros_mid"][8] = 3
     end
     res[15] = function()
         -- oroboros
-        obj_char["oroboros_shot_aim_r"] = r*(17-5)/17
+        update_r(obj_char,15)
         obj_char["oroboros_shot_offset_amount"] = 100*(17-5)/17
 
         obj_char["oroboros_mid"][8] = 4
@@ -5284,7 +5322,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     end
     res[19] = function()
         -- oroboros
-        obj_char["oroboros_shot_aim_r"] = r*(17-9)/17
+        update_r(obj_char,19)
         obj_char["oroboros_shot_offset_amount"] = 100*(17-9)/17
 
         obj_char["oroboros_mid"][8] = 5
@@ -5295,7 +5333,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     end
     res[23] = function()
         -- oroboros
-        obj_char["oroboros_shot_aim_r"] = r*(17-13)/17
+        update_r(obj_char,23)
         obj_char["oroboros_shot_offset_amount"] = 100*(17-13)/17
 
         obj_char["oroboros_mid"][8] = 6
@@ -7597,8 +7635,8 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
         obj_char["burst_inv"] = false
         obj_char["burst_inv_countdown"] = 0
 
-        obj_char["hit_function"] = character_function_TRM_j2K_game_scene_strike_hit_function
-        obj_char["hurt_function"] = character_function_TRM_j2K_game_scene_strike_hurt_function
+        obj_char["hit_function"] = character_function_game_scene_TRM_j2K_strike_hit_function
+        obj_char["hurt_function"] = character_function_game_scene_TRM_j2K_strike_hurt_function
         obj_char["hit_counter_ver_function"] = common_game_scene_counter_ver2
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
@@ -8979,7 +9017,7 @@ function load_game_scene_anim_char_TRM_j2K_ground_hurt(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        character_game_scene_char_TRM_j2K_apply_hurt_velocity(
+        character_function_game_scene_TRM_j2K_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
@@ -9007,8 +9045,6 @@ function load_game_scene_anim_char_TRM_j2K_ground_hurt(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
         -- set_frame_adv
@@ -9036,8 +9072,6 @@ function load_game_scene_anim_char_TRM_j2K_ground_hurt(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
     end
     res[13] = function()
         -- collide
@@ -9109,7 +9143,7 @@ function load_game_scene_anim_char_TRM_j2K_ground_block(
         if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
             hurt_horizontal_velocity = hurt_horizontal_velocity * 2
         end
-        character_game_scene_char_TRM_j2K_apply_hurt_velocity(
+        character_function_game_scene_TRM_j2K_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
@@ -9137,8 +9171,6 @@ function load_game_scene_anim_char_TRM_j2K_ground_block(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
         -- set_frame_adv
@@ -9156,8 +9188,6 @@ function load_game_scene_anim_char_TRM_j2K_ground_block(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
     end
     res[9] = function()
         -- draw_correction

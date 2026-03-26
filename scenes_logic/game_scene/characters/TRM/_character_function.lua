@@ -1,4 +1,4 @@
-function character_function_TRM_j2K_game_scene_strike_hit_function(obj_char)
+function character_function_game_scene_TRM_j2K_strike_hit_function(obj_char)
     -- 只需要设置hitstop
     local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
     hit_side_obj_char["state_cache"] = hit_side_obj_char["state"]
@@ -71,7 +71,7 @@ function character_function_TRM_j2K_game_scene_strike_hit_function(obj_char)
     -- debug
     hit_side_obj_char["active_frame"] = hit_side_obj_char["active_frame"] + 1
 end
-function character_function_TRM_j2K_game_scene_strike_hurt_function(obj_char)
+function character_function_game_scene_TRM_j2K_strike_hurt_function(obj_char)
     -- idle unblock punish counter GP parry
     -- stand crouch air OTG
     local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
@@ -269,7 +269,7 @@ function character_function_TRM_j2K_game_scene_strike_hurt_function(obj_char)
         common_hurt()
     end
 end
-function character_game_scene_char_TRM_j2K_apply_hurt_velocity(
+function character_function_game_scene_TRM_j2K_apply_hurt_velocity(
     obj_char,obj_char_other_side,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -318,5 +318,51 @@ function character_game_scene_char_TRM_j2K_apply_hurt_velocity(
     else
         obj_char_other_side["friction"] = hurt_horizontal_friction
         obj_char_other_side["velocity"] = {0,hurt_vertical_velocity}
+    end
+end
+
+function character_function_game_scene_TRM_hitstop_jump_cancel(
+    input,obj_char,
+    v1,v2,v3,v4,v5,v6,v7,v8,v9
+)
+    local down_cache = input["down"]
+    input["down"] = false
+    if not common_game_scene_get_character_facing_currect(obj_char) then
+        obj_char[5] = -obj_char[5]
+    end
+    common_update_game_scene_input_direction(obj_char)
+    input["down"] = down_cache
+    -- air_move
+    obj_char["air_move"]["jump"][1] = math.max(math.min(obj_char["air_move"]["jump"][1]-1,obj_char["air_move"]["jump"][2]),0)
+    obj_char["air_move"]["air_dash"][1] = 0
+    -- velocity_cache
+    if obj_char["direction_input"] == 7 then
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,470},obj_char["velocity"][1]*v1 + obj_char[5]*v2,v3)
+    elseif obj_char["direction_input"] == 8 then
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1]*v4 + obj_char[5]*v5,v6)
+    elseif obj_char["direction_input"] == 9 then
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{320,430},obj_char["velocity"][1]*v7 + obj_char[5]*v8,v9)
+    end
+    init_character_anim_with(obj_char,obj_char["character_animation"])
+    obj_char["state"] = "7_8_9_jump_air"
+    -- save_input_sys_cache_from_jS_and_7_8_9_jump_air
+    load_input_sys_cache_manual_release(input,obj_char,"up")
+    load_input_sys_cache_recache(input,obj_char)
+    obj_char["input_sys_state"] = "save" -- none save load
+end
+function character_function_game_scene_TRM_hitstop_dash_cancel(
+    input,obj_char,
+    v1,v2,v3,v4,v5,v6,v7,v8,v9
+)
+end
+function character_function_game_scene_TRM_hitstop_air_dash_cancel(
+    input,obj_char,
+    v1,v2,v3,v4,v5,v6,v7,v8,v9
+)
+end
+function character_function_game_scene_TRM_hitstop_force_delay_gatling_cancel_input_sys_cache_process(input,obj_char)
+    if obj_char["state"] == "j2K" then
+        load_input_sys_cache_recache(input,obj_char)
+        obj_char["input_sys_state"] = "save" -- none save load
     end
 end

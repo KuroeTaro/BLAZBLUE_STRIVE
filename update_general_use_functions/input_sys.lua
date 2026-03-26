@@ -329,6 +329,19 @@ function state_machine_input(INPUT_SYS_CURRENT_COMMAND_STATE,INPUT_SYS_CURRENT_C
         if this_function then this_function() end
     end
 end
+
+-- 加载后input_sys_cahce重新缓存
+function load_input_sys_cache_manual_release(input,obj_char,button_name)
+    input[button_name] = "Released"
+end
+function load_input_sys_cache_recache(input,obj_char)
+    for i=1,20 do
+        if input[INPUT_SYS_COMMAND_TABLE[i]] == "Pressing" then
+            obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] = true
+        end
+    end
+end
+
 -- 绘制input_sys
 function draw_input_sys(x_offset,y_offset)
     for i,v in ipairs(INPUT_SYS_COMMAND_TABLE) do

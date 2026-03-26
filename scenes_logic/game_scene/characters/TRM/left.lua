@@ -7,6 +7,7 @@
 function load_game_scene_obj_char_LP()
     -- x y z opacity sx sy r f
     obj_char_game_scene_char_LP = {0,0,0,1,1,1,0,0} -- obj[1-8]都为图形上的数据 obj[8]为图形上的帧数
+    obj_char_game_scene_char_LP["basic_prop_cache"] = {0,0,0,1,1,1,0,0}
     obj_char_game_scene_char_LP["x"] = -320
     obj_char_game_scene_char_LP["y"] = 365
     obj_char_game_scene_char_LP["f"] = -1 -- obj["f"] 逻辑上的帧数
@@ -42,10 +43,7 @@ function load_game_scene_obj_char_LP()
 
     obj_char_game_scene_char_LP["input_sys_state"] = "none" -- none save load
     obj_char_game_scene_char_LP["input_sys_cache"] = {}
-    obj_char_game_scene_char_LP["input_sys_state_negative_edge"] = "none" -- none save load
-    obj_char_game_scene_char_LP["input_sys_cache_negative_edge"] = {}
     init_input_sys_cache_LP(obj_char_game_scene_char_LP)
-    init_input_sys_cache_negative_edge_LP(obj_char_game_scene_char_LP)
 
         -- hit_hurt_block_animation
     obj_char_game_scene_char_LP["hit_damage"] = 0
@@ -1245,7 +1243,7 @@ function state_machine_char_game_scene_char_LP()
             state_gate_game_scene_char_LP_from_4sp_S_5UA(input,obj_char)
         end,
     }
-    update_game_scene_char_LP_uncommon_countdown()
+    update_game_scene_char_LP_uncommon()
     local this_function = switch[obj_char["state"]]
     if this_function then this_function() end
 end
@@ -1382,7 +1380,7 @@ function state_machine_char_game_scene_char_LP_oroboros()
             character_animator(obj_char,obj_char["oroboros_animation_table"][6])
             if obj_char["oroboros_idle_cancel"] and 
             (
-                (test_input_sys_press_or_hold(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
+                (test_input_sys_press(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
                 (test_input_sys_press_or_hold(input["HS"]) and test_input_sys_press(input["SP"]))
             )
             then
@@ -1531,56 +1529,11 @@ function state_machine_char_game_scene_char_LP_input_sys_cache()
     local this_function = switch[obj_char["input_sys_state"]]
     if this_function then this_function() end
 end
-function state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
-    local obj_char = obj_char_game_scene_char_LP
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE["L"]
-    local switch = {
-        ["none"] = function()
-        end,
-        ["save"] = function()
-            local HS_state = obj_char["input_sys_cache_negative_edge"]["HS"]
-            if test_input_sys_release(input["HS"]) and (HS_state == "Pressing" or HS_state == "Holding") then
-                obj_char["input_sys_cache_negative_edge"]["HS"] = "Releasing"
-            elseif test_input_sys_press(input["HS"]) and (HS_state == "Released" or HS_state == "Releasing") then
-                obj_char["input_sys_cache_negative_edge"]["HS"] = "Pressing"
-            end
-        end,
-        ["load"] = function()
-            if obj_char["input_sys_cache_negative_edge"]["HS"] ~= "Released" then
-                input["HS"] = obj_char["input_sys_cache_negative_edge"]["HS"]
-            end
-            obj_char["input_sys_state_negative_edge"] = "none"
-            init_input_sys_cache_negative_edge_LP(obj_char_game_scene_char_LP)
-        end,
-    }
-    local this_function = switch[obj_char["input_sys_state_negative_edge"]]
-    if this_function then this_function() end
-end
 function init_input_sys_cache_LP(obj_char)
     for i=1,20 do
         obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] = false
     end
     obj_char["input_sys_cache"]["jump"] = false
-end
-function init_input_sys_cache_negative_edge_LP(obj_char)
-    obj_char["input_sys_cache_negative_edge"]["HS"] = "Released"
-end
-
--- 加载后input_sys_cahce重新缓存
-function load_input_sys_cache_manual_release_LP(input,obj_char,button_name)
-    input[button_name] = "Released"
-end
-function load_input_sys_cache_recache_LP(input,obj_char)
-    for i=1,20 do
-        if input[INPUT_SYS_COMMAND_TABLE[i]] == "Pressing" then
-            obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] = true
-        end
-    end
-end
-function load_input_sys_cache_recache_negative_edge_LP(input,obj_char)
-    if input["HS"] == "Releasing" then
-        obj_char["input_sys_cache_negative_edge"]["HS"] = "Releasing"
-    end
 end
 
 -- 状态机连接门
@@ -2092,7 +2045,6 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,
         return true
     end
     -- _j2K
-    -- _j2K
     if obj_char["y"] < 125 and common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press_or_hold(input["K"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
@@ -2466,13 +2418,8 @@ function state_gate_game_scene_char_LP_from_hitstop(input,obj_char)
         if state_gate_game_scene_char_LP_common_RC_move(input,obj_char,"RRC") then
             return true
         end
-
         -- force_delayed_gatling_cancel_input_sys_cache_processing
-        if obj_char["state"] == "j2K" then
-            load_input_sys_cache_recache_LP(input,obj_char)
-            obj_char["input_sys_state"] = "save" -- none save load
-        end
-
+        character_function_game_scene_TRM_hitstop_force_delay_gatling_cancel_input_sys_cache_process(input,obj_char)
         update_game_scene_char_LP()
         return
     end
@@ -3215,8 +3162,8 @@ function state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char)
         -- _common_air_idle_to_move
         if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_4dash_only(input,obj_char) then
             -- save_input_sys_cache_from_pre_jump_and_7_8_9_jump_air
-            load_input_sys_cache_manual_release_LP(input,obj_char,"dash")
-            load_input_sys_cache_recache_LP(input,obj_char)
+            load_input_sys_cache_manual_release(input,obj_char,"dash")
+            load_input_sys_cache_recache(input,obj_char)
             obj_char["input_sys_state"] = "save" -- none save load
             return true
         end
@@ -4224,31 +4171,14 @@ function state_gate_game_scene_char_LP_from_jS(input,obj_char)
     end
     -- hit_cancel
     if obj_char["hit_cancel"] then
+        -- jump_cancel
         if test_input_sys_press(input["up"]) and obj_char["air_move"]["jump"][1] > 0 then
-            local down_cache = input["down"]
-            input["down"] = false
-            if not common_game_scene_get_character_facing_currect(obj_char) then
-                obj_char[5] = -obj_char[5]
-            end
-            common_update_game_scene_input_direction(obj_char)
-            input["down"] = down_cache
-            -- air_move
-            obj_char["air_move"]["jump"][1] = math.max(math.min(obj_char["air_move"]["jump"][1]-1,obj_char["air_move"]["jump"][2]),0)
-            obj_char["air_move"]["air_dash"][1] = 0
-            -- velocity_cache
-            if obj_char["direction_input"] == 7 then
-                obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,470},obj_char["velocity"][1]*0.1 - obj_char[5]*11.5,-30.0)
-            elseif obj_char["direction_input"] == 8 then
-                obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},0,-30.0)
-            elseif obj_char["direction_input"] == 9 then
-                obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{320,430},obj_char["velocity"][1]*0.1 + obj_char[5]*11.5,-25.0)
-            end
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "7_8_9_jump_air"
-            -- save_input_sys_cache_from_jS_and_7_8_9_jump_air
-            load_input_sys_cache_manual_release_LP(input,obj_char,"up")
-            load_input_sys_cache_recache_LP(input,obj_char)
-            obj_char["input_sys_state"] = "save" -- none save load
+            character_function_game_scene_TRM_hitstop_jump_cancel(
+                input,obj_char,
+                0.1,-11.5,-30,
+                0,0,-30,
+                0.1,11.5,-25
+            )
             return true
         end
     end
@@ -4313,30 +4243,13 @@ function state_gate_game_scene_char_LP_from_j5Launcher(input,obj_char)
     -- hit_cancel
     if obj_char["hit_cancel"] then
         if test_input_sys_press(input["up"]) and obj_char["air_move"]["jump"][1] > 0 then
-            local down_cache = input["down"]
-            input["down"] = false
-            if not common_game_scene_get_character_facing_currect(obj_char) then
-                obj_char[5] = -obj_char[5]
-            end
-            common_update_game_scene_input_direction(obj_char)
-            input["down"] = down_cache
-            -- air_move
-            obj_char["air_move"]["jump"][1] = math.max(math.min(obj_char["air_move"]["jump"][1]-1,obj_char["air_move"]["jump"][2]),0)
-            obj_char["air_move"]["air_dash"][1] = 0
-            -- velocity_cache
-            if obj_char["direction_input"] == 7 then
-                obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,470},obj_char["velocity"][1]*0.1 - obj_char[5]*11.5,-30.0)
-            elseif obj_char["direction_input"] == 8 then
-                obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},0,-30.0)
-            elseif obj_char["direction_input"] == 9 then
-                obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{320,430},obj_char["velocity"][1]*0.1 + obj_char[5]*11.5,-29.5)
-            end
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "7_8_9_jump_air"
-            -- save_input_sys_cache_from_j5Launcher_and_7_8_9_jump_air
-            load_input_sys_cache_manual_release_LP(input,obj_char,"up")
-            load_input_sys_cache_recache_LP(input,obj_char)
-            obj_char["input_sys_state"] = "save" -- none save load
+            -- jump_cancel
+            character_function_game_scene_TRM_hitstop_jump_cancel(
+                input,obj_char,
+                0.1,-11.5,-30,
+                0,0,-30,
+                0.1,11.5,-29.5
+            )
             return true
         end
     end
@@ -4794,10 +4707,15 @@ function update_game_scene_char_LP_ability_recover_pause_countdown()
 end
 function update_game_scene_char_LP_positive_bonus_countdown()
 end
-function update_game_scene_char_LP_uncommon_countdown()
+function update_game_scene_char_LP_uncommon()
+    -- countdown
     update_game_scene_char_LP_overdrive_countdown()
     update_game_scene_char_LP_inv_state_countdown()
     update_game_scene_char_LP_heat_penalty_countdown()
     update_game_scene_char_LP_ability_recover_pause_countdown()
     update_game_scene_char_LP_positive_bonus_countdown()
+    -- basic_prop_cache
+    for i = 1,8 do
+        obj_char_game_scene_char_LP["basic_prop_cache"][i] = obj_char_game_scene_char_LP[i]
+    end
 end

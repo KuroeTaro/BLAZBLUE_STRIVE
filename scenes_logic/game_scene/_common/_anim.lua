@@ -111,8 +111,6 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
     end
@@ -292,8 +290,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
         -- set_frame_adv
@@ -309,8 +305,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
     end
     res[9] = function()
         -- collide
@@ -406,8 +400,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
         -- set_frame_adv
@@ -429,8 +421,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
     end
     res[11] = function()
         -- collide
@@ -526,8 +516,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
         -- set_frame_adv
@@ -555,8 +543,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
     end
     res[13] = function()
         -- collide
@@ -652,8 +638,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
         -- set_frame_adv
@@ -681,8 +665,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
     end
     res[16] = function()
         -- collide
@@ -778,8 +760,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
         -- set_frame_adv
@@ -807,8 +787,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
     end
     res[18] = function()
         -- collide
@@ -943,8 +921,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
         -- set_frame_adv
@@ -958,8 +934,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
     end
     res[6] = function()
         -- draw_correction
@@ -1055,8 +1029,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
         -- set_frame_adv
@@ -1070,8 +1042,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- draw_correction
         obj_char_other_side[8] = 2
     end
@@ -1169,8 +1139,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
         -- set_frame_adv
@@ -1188,8 +1156,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
     end
     res[9] = function()
         -- draw_correction
@@ -1285,8 +1251,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
         -- set_frame_adv
@@ -1308,8 +1272,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
     end
     res[12] = function()
         -- draw_correction
@@ -1405,8 +1367,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
         -- set_frame_adv
@@ -1432,8 +1392,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
     end
     res[16] = function()
         -- draw_correction
@@ -1549,8 +1507,6 @@ function load_game_scene_anim_char_common_0_air_block(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
         if obj_char_other_side["y"] > 125 then obj_char_other_side["y"] = 125 end
@@ -1603,8 +1559,6 @@ function load_game_scene_anim_char_common_0_air_block(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
     end
     res[28] = function()
         -- collide
@@ -1707,8 +1661,6 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
-        obj_char["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char["player_side"])(obj_char)
         -- insert VFX
         if teching_or_teched == "teching" then
             insert_VFX_game_scene_char_throw_tech(obj_char,-450,-900,1,1.2,1.2,0)
@@ -1746,8 +1698,6 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
-        obj_char["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char["player_side"])(obj_char)
     end
     res[28] = function()
         -- draw_correction
@@ -1883,8 +1833,6 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
     end
     res[60] = function()
         -- animation
@@ -2549,8 +2497,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
     end
     res[27] = function()
         -- draw_correction
@@ -2663,8 +2609,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
     end
     res[27] = function()
         -- draw_correction
@@ -2769,8 +2713,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
     end
     res[21] = function()
         -- draw_correction
@@ -2904,8 +2846,6 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
     end
     res[28] = function()
         -- draw_correction
@@ -2994,8 +2934,6 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
     end
     res[7] = function()
         -- draw_correction
@@ -3231,8 +3169,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
         -- set_frame_adv
@@ -3460,8 +3396,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
         -- set_frame_adv
@@ -3652,8 +3586,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
         -- set_frame_adv
@@ -3785,8 +3717,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
         -- set_frame_adv
@@ -3918,8 +3848,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
         -- set_frame_adv
@@ -4075,8 +4003,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
         -- set_frame_adv
@@ -4211,8 +4137,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
         -- set_frame_adv
@@ -4333,8 +4257,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- update
         update_throw_inv()
         -- special_update
@@ -4491,8 +4413,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- update
         update_before_land()
         -- special_update
@@ -4626,8 +4546,6 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
         -- set_frame_adv
@@ -4680,8 +4598,6 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        obj_char_other_side["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char_other_side["player_side"])(obj_char_other_side)
     end
     res[29] = function()
         -- animation_end
