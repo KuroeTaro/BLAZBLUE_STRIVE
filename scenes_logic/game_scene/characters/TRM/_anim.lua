@@ -5240,6 +5240,7 @@ end
 function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     local res = {}
     local side = obj_char["player_side"]
+    local obj_camera = obj_stage_game_scene_camera
     local obj_char_other_side = common_game_scene_change_character(side)
     local oroboros_pos = {obj_char["oroboros_ease_current"][1],obj_char["oroboros_ease_current"][2]}
     local obj_char_other_side_pos = {}
@@ -5281,12 +5282,27 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     res[0] = function()
         -- oroboros
         obj_char["oroboros_shot_aim_r"] = r
-        obj_char["oroboros_shot_offset_amount"] = 100
+        obj_char["oroboros_shot_offset_amount"] = 75
         obj_char["oroboros_shot_cancel"] = false
         obj_char["oroboros_idle_cancel"] = false
 
         obj_char["oroboros_mid"]["sprite_sheet_state"]  = "5H_oroboros_shot"
         obj_char["oroboros_mid"][8] = 0
+
+        common_game_scene_nil_load_camera_enclose_anim(obj_char)
+        common_game_scene_hit_load_camera_shake_anim(obj_char,0.5)
+        table.insert(obj_camera["active_application_table"],
+            function()
+                anim_camera_point_linear_game_scene_camera_enclosing = obj_char["camera_enclosing_anim"]
+                anim_camera_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
+                anim_camera_point_linear_game_scene_camera_shake_y = obj_char["camera_y_shake_anim"]
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+                obj_camera["enclose_position_offset"] = obj_char["enclose_position_offset"]
+                obj_camera["state"] = "active"
+            end
+        )
     end
     res[1] = function()
         -- oroboros
@@ -5305,7 +5321,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     res[10] = function()
         -- oroboros
         update_r(obj_char,10)
-        obj_char["oroboros_shot_offset_amount"] = 100*(17-0)/17
+        obj_char["oroboros_shot_offset_amount"] = 75*(17-0)/17
 
         obj_char["oroboros_mid"][8] = 3
     end
@@ -5316,7 +5332,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     res[15] = function()
         -- oroboros
         update_r(obj_char,15)
-        obj_char["oroboros_shot_offset_amount"] = 100*(17-5)/17
+        obj_char["oroboros_shot_offset_amount"] = 75*(17-5)/17
 
         obj_char["oroboros_mid"][8] = 4
     end
@@ -5327,14 +5343,14 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     res[19] = function()
         -- oroboros
         update_r(obj_char,19)
-        obj_char["oroboros_shot_offset_amount"] = 100*(17-9)/17
+        obj_char["oroboros_shot_offset_amount"] = 75*(17-9)/17
 
         obj_char["oroboros_mid"][8] = 5
     end
     res[23] = function()
         -- oroboros
         update_r(obj_char,23)
-        obj_char["oroboros_shot_offset_amount"] = 100*(17-13)/17
+        obj_char["oroboros_shot_offset_amount"] = 75*(17-13)/17
 
         obj_char["oroboros_mid"][8] = 6
     end
