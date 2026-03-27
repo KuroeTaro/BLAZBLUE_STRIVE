@@ -5309,6 +5309,10 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
 
         obj_char["oroboros_mid"][8] = 3
     end
+    res[12] = function()
+        -- oroboros
+        obj_char["oroboros_shot_cancel"] = true
+    end
     res[15] = function()
         -- oroboros
         update_r(obj_char,15)
@@ -5326,10 +5330,6 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
         obj_char["oroboros_shot_offset_amount"] = 100*(17-9)/17
 
         obj_char["oroboros_mid"][8] = 5
-    end
-    res[21] = function()
-        -- oroboros
-        obj_char["oroboros_shot_cancel"] = true
     end
     res[23] = function()
         -- oroboros
@@ -5364,16 +5364,16 @@ function load_game_scene_anim_char_TRM_5H_ororboros_ease_out(obj_char)
     end
     return res
 end
-function load_game_scene_anim_char_TRM_5H_crosshair_ease_in(obj_char)
+function load_game_scene_anim_char_TRM_5H_reticle_ease_in(obj_char)
 
 end
-function load_game_scene_anim_char_TRM_5H_crosshair_at_the_ready_aimming(obj_char)
+function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_aimming(obj_char)
 
 end
-function load_game_scene_anim_char_TRM_5H_crosshair_steady_aimming(obj_char)
+function load_game_scene_anim_char_TRM_5H_reticle_steady_aimming(obj_char)
 
 end
-function load_game_scene_anim_char_TRM_5H_crosshair_ease_out(obj_char)
+function load_game_scene_anim_char_TRM_5H_reticle_ease_out(obj_char)
 
 end
 -- _2Launcher

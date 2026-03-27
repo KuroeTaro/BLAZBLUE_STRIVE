@@ -193,12 +193,12 @@ function load_game_scene_obj_char_LP()
         obj_char_game_scene_char_LP[5],
         obj_char_game_scene_char_LP[6]
     }
-    -- crosshair
-    obj_char_game_scene_char_LP["crosshair"] = {0,0,0,1,1,1,0,0}
-    obj_char_game_scene_char_LP["crosshair_state"] = "off"
-    obj_char_game_scene_char_LP["crosshair_visual_offset"] = {0,0}
-    obj_char_game_scene_char_LP["crosshair_visual_offset_amount"] = 0
-    obj_char_game_scene_char_LP["crosshair_f"] = 0
+    -- reticle
+    obj_char_game_scene_char_LP["reticle"] = {0,0,0,1,1,1,0,0}
+    obj_char_game_scene_char_LP["reticle_state"] = "off"
+    obj_char_game_scene_char_LP["reticle_visual_offset"] = {0,0}
+    obj_char_game_scene_char_LP["reticle_visual_offset_amount"] = 0
+    obj_char_game_scene_char_LP["reticle_f"] = 0
     
     -- draw_correction
     obj_char_game_scene_char_LP["anchor_pos"] = {215,510}
@@ -842,7 +842,7 @@ function update_game_scene_char_LP()
 end
 function update_game_scene_char_LP_attachment()
     state_machine_char_game_scene_char_LP_oroboros()
-    state_machine_char_game_scene_char_LP_crosshair()
+    state_machine_char_game_scene_char_LP_reticle()
 end
 function state_machine_char_game_scene_char_LP()
     -- 拉后最高优先级 然后是拉下 然后是拉前 然后是跳
@@ -1429,7 +1429,7 @@ function state_machine_char_game_scene_char_LP_oroboros()
     }
     if this_function then this_function() end
 end
-function state_machine_char_game_scene_char_LP_crosshair()
+function state_machine_char_game_scene_char_LP_reticle()
     local obj_char = obj_char_game_scene_char_LP
     local switch = {
         ["off"] = function()
@@ -1451,7 +1451,7 @@ function state_machine_char_game_scene_char_LP_crosshair()
 
         end,
     }
-    local this_function = switch[obj_char["crosshair_state"]]
+    local this_function = switch[obj_char["reticle_state"]]
     if this_function then this_function() end
 end
 
