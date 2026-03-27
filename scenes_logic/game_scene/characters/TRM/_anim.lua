@@ -5373,6 +5373,9 @@ end
 function load_game_scene_anim_char_TRM_5H_reticle_steady_aimming(obj_char)
 
 end
+function load_game_scene_anim_char_TRM_5H_reticle_shot(obj_char)
+
+end
 function load_game_scene_anim_char_TRM_5H_reticle_ease_out(obj_char)
 
 end
