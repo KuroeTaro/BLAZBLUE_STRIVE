@@ -641,6 +641,7 @@ function update_game_scene_char()
         update_game_scene_char_RP_black_overlay()
     end
 
+    -- attachment 用于某些需要根据角色本身本帧数据来更新的部分
     if game_speed_cache_LP ~= 0 
     and game_speed_subframe_cache_LP > game_speed_cache_LP
     then
