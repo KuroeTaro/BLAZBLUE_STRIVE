@@ -4990,22 +4990,22 @@ function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj)
     for i = 0,10 do
         res[i] = function()
             -- oroboros
-            obj[4] = 1-0.8*(i/10)
+            obj[4] = 1-0.8*(i+1/10)
         end
     end
-    for i = 11,19 do
+    for i = 11,20 do
         res[i] = function()
             -- oroboros
-            obj[4] = 0.2-0.2*((i-10)/10)
+            obj[4] = 0.12-0.12*((i-10)/10)
         end
     end
     res[0] = function()
         -- oroboros
-        obj[4] = 1
+        obj[4] = 0.92
     end
     res[10] = function()
         -- oroboros
-        obj[4] = 0.2
+        obj[4] = 0.12
     end
     res[20] = function()
         -- animation_end
@@ -5020,6 +5020,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj,sprite_sheet_s
     res[0] = function()
         -- oroboros
         obj["sprite_sheet_state"] = sprite_sheet_state
+        obj[4] = 1
         obj[8] = 0
     end
     res[3] = function()
@@ -5251,15 +5252,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     local obj_char_other_side = common_game_scene_change_character(side)
     local oroboros_pos = {obj_char["oroboros_ease_current"][1],obj_char["oroboros_ease_current"][2]}
     local obj_char_other_side_pos = {}
-    if obj_char_other_side["pushbox"][4] ~= nil then
-        obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]-obj_char_other_side["pushbox"][4]}
-    else
-        obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]}
-    end
-    local r = math.atan2((obj_char_other_side_pos[2]-oroboros_pos[2]),obj_char[5]*(obj_char_other_side_pos[1]-oroboros_pos[1]))*obj_char[5]
-    res["prop_f"] = "oroboros_f"
-    res["anim_length"] = 28
-
+    local r = 0
     local function update_r(obj_char,i)
         -- local_value
         oroboros_pos = {obj_char["oroboros_ease_current"][1],obj_char["oroboros_ease_current"][2]}
@@ -5271,6 +5264,15 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
         r = math.atan2((obj_char_other_side_pos[2]-oroboros_pos[2]),obj_char[5]*(obj_char_other_side_pos[1]-oroboros_pos[1]))*obj_char[5]
         obj_char["oroboros_shot_aim_r"] = r*(27-i)/17
     end
+    res["prop_f"] = "oroboros_f"
+    res["anim_length"] = 28
+    if obj_char_other_side["pushbox"][4] ~= nil then
+        obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]-obj_char_other_side["pushbox"][4]}
+    else
+        obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]}
+    end
+    r = math.atan2((obj_char_other_side_pos[2]-oroboros_pos[2]),obj_char[5]*(obj_char_other_side_pos[1]-oroboros_pos[1]))*obj_char[5]
+
     for i = 0,9 do
         res[i] = function()
             if obj_char[5] ~= obj_char["basic_prop_cache"][5] then
@@ -5285,7 +5287,6 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
             end
         end
     end
-
     res[0] = function()
         -- oroboros
         obj_char["oroboros_shot_aim_r"] = r
@@ -5397,23 +5398,25 @@ end
 function load_game_scene_anim_char_TRM_5H_reticle_ease_in(obj_char)
     local res = {}
     res["prop_f"] = "reticle_f"
-    res["anim_length"] = 6
+    res["anim_length"] = 5
+    
     res[0] = function()
-        obj_char["reticle"][4] = 0.4
+        -- reticle
+        obj_char["reticle"][4] = 0.5
     end
     res[1] = function()
-        obj_char["reticle"][4] = 0.6
+        -- reticle
+        obj_char["reticle"][4] = 0.75
     end
     res[3] = function()
-        obj_char["reticle"][4] = 0.8
-    end
-    res[4] = function()
+        -- reticle
         obj_char["reticle"][4] = 0.9
     end
-    res[5] = function()
+    res[4] = function()
+        -- reticle
         obj_char["reticle"][4] = 1
     end
-    res[6] = function()
+    res[5] = function()
         -- animation_end
     end
     return res
@@ -5422,10 +5425,15 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_aimming(obj_char)
     local res = {}
     res["prop_f"] = "reticle_f"
     res["anim_length"] = 41
-    for i = 0,10 do
+    for i = 0,9 do
         res[i*4] = function()
-            
+            obj_char["reticle"] = i
         end
+    end
+    res[40] = function()
+        -- oroboros
+        obj_char["reticle_f"] = 0
+        obj_char["reticle"] = 0
     end
     res[41] = function()
         -- animation_end
