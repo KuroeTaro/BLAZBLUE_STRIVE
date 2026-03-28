@@ -5228,7 +5228,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_ease_in(obj_char)
         --VFX
         insert_VFX_game_scene_char_TRM_5H_whiff_switch(obj_char)
     end
-    res[6] = function()
+    res[9] = function()
         -- input_sys_cache
         obj_char["input_sys_state_negative_edge"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_negative_edge_init(obj_char["player_side"])(obj_char)

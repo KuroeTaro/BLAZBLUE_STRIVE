@@ -1394,6 +1394,7 @@ function state_machine_char_game_scene_char_LP_oroboros()
             if obj_char["oroboros_idle_cancel"] and 
             (
                 (test_input_sys_press(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
+                (test_input_sys_release(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
                 (test_input_sys_press_or_hold(input["HS"]) and test_input_sys_press(input["SP"]))
             )
             then
