@@ -5218,7 +5218,7 @@ end
 function load_game_scene_anim_char_TRM_5H_oroboros_ease_in(obj_char)
     local res = {}
     res["prop_f"] = "oroboros_f"
-    res["anim_length"] = 12
+    res["anim_length"] = 13
 
     res[0] = function()
         -- oroboros
@@ -5238,6 +5238,8 @@ function load_game_scene_anim_char_TRM_5H_oroboros_ease_in(obj_char)
         common_game_scene_get_input_sys_cache_negative_edge_state_machine(obj_char["player_side"])()
         -- oroboros
         obj_char["oroboros_shot_cancel"] = true
+    end
+    res[13] = function()
         -- animation_end
     end
     return res
@@ -5256,7 +5258,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     end
     local r = math.atan2((obj_char_other_side_pos[2]-oroboros_pos[2]),obj_char[5]*(obj_char_other_side_pos[1]-oroboros_pos[1]))*obj_char[5]
     res["prop_f"] = "oroboros_f"
-    res["anim_length"] = 36
+    res["anim_length"] = 28
 
     local function update_r(obj_char,i)
         -- local_value
@@ -5371,24 +5373,23 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
         -- oroboros
         obj_char["oroboros_shot_aim_r"] = 0
         obj_char["oroboros_shot_offset_amount"] = 0
-        -- animation_end
     end
-    res[36] = function()
-
+    res[28] = function()
+        -- animation_end
     end
     return res
 end
 function load_game_scene_anim_char_TRM_5H_ororboros_ease_out(obj_char)
     local res = {}
     res["prop_f"] = "oroboros_f"
-    res["anim_length"] = 12
+    res["anim_length"] = 13
 
     res[0] = function()
         -- oroboros
         obj_char["oroboros_shot_offset_amount"] = 0
         insert_VFX_game_scene_char_TRM_5H_whiff_switch(obj_char)
     end
-    res[12] = function()
+    res[13] = function()
         -- animation_end
     end
     return res
@@ -5396,20 +5397,23 @@ end
 function load_game_scene_anim_char_TRM_5H_reticle_ease_in(obj_char)
     local res = {}
     res["prop_f"] = "reticle_f"
-    res["anim_length"] = 5
+    res["anim_length"] = 6
     res[0] = function()
-
+        obj_char["reticle"][4] = 0.4
     end
     res[1] = function()
-
+        obj_char["reticle"][4] = 0.6
     end
     res[3] = function()
-
+        obj_char["reticle"][4] = 0.8
     end
     res[4] = function()
-
+        obj_char["reticle"][4] = 0.9
     end
     res[5] = function()
+        obj_char["reticle"][4] = 1
+    end
+    res[6] = function()
         -- animation_end
     end
     return res
@@ -5417,13 +5421,13 @@ end
 function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_aimming(obj_char)
     local res = {}
     res["prop_f"] = "reticle_f"
-    res["anim_length"] = 40
+    res["anim_length"] = 41
     for i = 0,10 do
         res[i*4] = function()
             
         end
     end
-    res[40] = function()
+    res[41] = function()
         -- animation_end
     end
     return res
@@ -5431,9 +5435,9 @@ end
 function load_game_scene_anim_char_TRM_5H_reticle_steady_aimming(obj_char)
     local res = {}
     res["prop_f"] = "reticle_f"
-    res["anim_length"] = 15
+    res["anim_length"] = 16
     res[0] = function()
-
+        obj_char["reticle"][4] = 1
     end
     res[9] = function()
 
@@ -5442,6 +5446,9 @@ function load_game_scene_anim_char_TRM_5H_reticle_steady_aimming(obj_char)
 
     end
     res[15] = function()
+
+    end
+    res[16] = function()
         -- animation_end
     end
     return res
@@ -5449,9 +5456,9 @@ end
 function load_game_scene_anim_char_TRM_5H_reticle_shot(obj_char)
     local res = {}
     res["prop_f"] = "reticle_f"
-    res["anim_length"] = 12
+    res["anim_length"] = 13
     res[0] = function()
-
+        obj_char["reticle"][4] = 1
     end
     res[5] = function()
 
@@ -5460,6 +5467,9 @@ function load_game_scene_anim_char_TRM_5H_reticle_shot(obj_char)
 
     end
     res[12] = function()
+
+    end
+    res[13] = function()
         -- animation_end
     end
     return res
@@ -5467,9 +5477,9 @@ end
 function load_game_scene_anim_char_TRM_5H_reticle_ease_out(obj_char)
     local res = {}
     res["prop_f"] = "reticle_f"
-    res["anim_length"] = 12
+    res["anim_length"] = 13
     res[0] = function()
-
+        obj_char["reticle"][4] = 1
     end
     res[5] = function()
 
@@ -5478,6 +5488,9 @@ function load_game_scene_anim_char_TRM_5H_reticle_ease_out(obj_char)
 
     end
     res[12] = function()
+
+    end
+    res[13] = function()
         -- animation_end
     end
     return res
