@@ -160,50 +160,51 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["counter_SFX"] = nil
     obj_char_game_scene_char_LP["block_VFX_insert_function"] = nil
     obj_char_game_scene_char_LP["block_SFX"] = nil
-    -- orobors
-        -- controller
-    obj_char_game_scene_char_LP["oroboros_state"] = "off"
-    obj_char_game_scene_char_LP["oroboros_shot_aim_process"] = {0,420,480,540}
-    obj_char_game_scene_char_LP["oroboros_shot_aim_r"] = 0
-    obj_char_game_scene_char_LP["oroboros_f"] = 0
-    obj_char_game_scene_char_LP["oroboros_animation_table"] = {}
-    obj_char_game_scene_char_LP["oroboros_shot_cancel"] = false
-    obj_char_game_scene_char_LP["oroboros_idle_cancel"] = false
-        -- sub_obj
-    obj_char_game_scene_char_LP["oroboros_front"] = {0,0,0,1,1,1,0,0}
-    obj_char_game_scene_char_LP["oroboros_front"]["f_8"] = 0
-    obj_char_game_scene_char_LP["oroboros_front"]["f_4"] = 0
-    obj_char_game_scene_char_LP["oroboros_front"]["sprite_sheet_state"] = "5H_oroboros_loop_front"
-    obj_char_game_scene_char_LP["oroboros_mid"] = {0,0,0,1,1,1,0,0}
-    obj_char_game_scene_char_LP["oroboros_mid"]["f_8"] = 0
-    obj_char_game_scene_char_LP["oroboros_mid"]["sprite_sheet_state"] = "5H_oroboros_loop_mid"
-    obj_char_game_scene_char_LP["oroboros_back"] = {0,0,0,1,1,1,0,0}
-    obj_char_game_scene_char_LP["oroboros_back"]["f_8"] = 0
-    obj_char_game_scene_char_LP["oroboros_back"]["f_4"] = 0
-    obj_char_game_scene_char_LP["oroboros_back"]["sprite_sheet_state"] = "5H_oroboros_loop_back"
-        -- update_value
-    obj_char_game_scene_char_LP["oroboros_shot_offset_amount"] = 0
-    obj_char_game_scene_char_LP["oroboros_anchor_pos"] = {-110,-455}
-    obj_char_game_scene_char_LP["oroboros_ease_current"] = {
-        obj_char_game_scene_char_LP["x"] + obj_char_game_scene_char_LP[5] * obj_char_game_scene_char_LP["oroboros_anchor_pos"][1],
-        obj_char_game_scene_char_LP["y"] + obj_char_game_scene_char_LP[6] * obj_char_game_scene_char_LP["oroboros_anchor_pos"][2],
+    -- 5H_shot_sys
+        -- oroboros
+    obj_char_game_scene_char_LP["5H_oroboros_state"] = "off"
+    obj_char_game_scene_char_LP["5H_oroboros_aim_process"] = {0,420,480,540}
+    obj_char_game_scene_char_LP["5H_oroboros_aim_r"] = 0
+    obj_char_game_scene_char_LP["5H_oroboros_f"] = 0
+    obj_char_game_scene_char_LP["5H_oroboros_animation_table"] = {}
+    obj_char_game_scene_char_LP["5H_oroboros_fire_cancel"] = false
+    obj_char_game_scene_char_LP["5H_oroboros_idle_cancel"] = false
+            -- sub_obj
+    obj_char_game_scene_char_LP["5H_oroboros_front"] = {0,0,0,0,1,1,0,0}
+    obj_char_game_scene_char_LP["5H_oroboros_front"]["f_8"] = 0
+    obj_char_game_scene_char_LP["5H_oroboros_front"]["f_4"] = 0
+    obj_char_game_scene_char_LP["5H_oroboros_front"]["sprite_sheet_state"] = "5H_oroboros_loop_front"
+    obj_char_game_scene_char_LP["5H_oroboros_mid"] = {0,0,0,0,1,1,0,0}
+    obj_char_game_scene_char_LP["5H_oroboros_mid"]["f_8"] = 0
+    obj_char_game_scene_char_LP["5H_oroboros_mid"]["sprite_sheet_state"] = "5H_oroboros_loop_mid"
+    obj_char_game_scene_char_LP["5H_oroboros_back"] = {0,0,0,0,1,1,0,0}
+    obj_char_game_scene_char_LP["5H_oroboros_back"]["f_8"] = 0
+    obj_char_game_scene_char_LP["5H_oroboros_back"]["f_4"] = 0
+    obj_char_game_scene_char_LP["5H_oroboros_back"]["sprite_sheet_state"] = "5H_oroboros_loop_back"
+            -- update_value
+    obj_char_game_scene_char_LP["5H_oroboros_offset_amount"] = 0
+    obj_char_game_scene_char_LP["5H_oroboros_anchor_pos"] = {-110,-455}
+    obj_char_game_scene_char_LP["5H_oroboros_ease_current"] = {
+        obj_char_game_scene_char_LP["x"] + obj_char_game_scene_char_LP[5] * obj_char_game_scene_char_LP["5H_oroboros_anchor_pos"][1],
+        obj_char_game_scene_char_LP["y"] + obj_char_game_scene_char_LP[6] * obj_char_game_scene_char_LP["5H_oroboros_anchor_pos"][2],
         obj_char_game_scene_char_LP[5],
         obj_char_game_scene_char_LP[6]
     }
-    obj_char_game_scene_char_LP["oroboros_ease_target"] = {
-        obj_char_game_scene_char_LP["x"] + obj_char_game_scene_char_LP[5] * obj_char_game_scene_char_LP["oroboros_anchor_pos"][1],
-        obj_char_game_scene_char_LP["y"] + obj_char_game_scene_char_LP[6] * obj_char_game_scene_char_LP["oroboros_anchor_pos"][2],
+    obj_char_game_scene_char_LP["5H_oroboros_ease_target"] = {
+        obj_char_game_scene_char_LP["x"] + obj_char_game_scene_char_LP[5] * obj_char_game_scene_char_LP["5H_oroboros_anchor_pos"][1],
+        obj_char_game_scene_char_LP["y"] + obj_char_game_scene_char_LP[6] * obj_char_game_scene_char_LP["5H_oroboros_anchor_pos"][2],
         obj_char_game_scene_char_LP[5],
         obj_char_game_scene_char_LP[6]
     }
-    -- reticle
-    obj_char_game_scene_char_LP["reticle"] = {0,0,0,1,1,1,0,0}
-    obj_char_game_scene_char_LP["reticle_f"] = 0
-    obj_char_game_scene_char_LP["reticle_state"] = "off"
-    obj_char_game_scene_char_LP["reticle_animation"] = nil
-    obj_char_game_scene_char_LP["reticle_visual_offset_amount"] = 0
-    obj_char_game_scene_char_LP["reticle_visual_offset"] = {0,0}
-    obj_char_game_scene_char_LP["reticle_sprite_sheet_state"] = "5H_reticle_at_the_ready"
+        -- reticle
+    obj_char_game_scene_char_LP["5H_reticle"] = {0,0,0,1,1,1,0,0}
+    obj_char_game_scene_char_LP["5H_reticle_f"] = 0
+    obj_char_game_scene_char_LP["5H_reticle_state"] = "off"
+    obj_char_game_scene_char_LP["5H_reticle_animation"] = nil
+    obj_char_game_scene_char_LP["5H_reticle_visual_offset_amount_target"] = 0
+    obj_char_game_scene_char_LP["5H_reticle_visual_offset_amount_current"] = 0
+    obj_char_game_scene_char_LP["5H_reticle_visual_offset"] = {0,0}
+    obj_char_game_scene_char_LP["5H_reticle_sprite_sheet_state"] = "5H_reticle_at_the_ready"
     
     -- draw_correction
     obj_char_game_scene_char_LP["anchor_pos"] = {215,510}
@@ -1266,177 +1267,177 @@ function state_machine_char_game_scene_char_LP_oroboros()
             obj_char["hurt_state"] = obj_char["hurt_state_target"]
             -- ease_in
             if test_input_sys_press(input["HS"]) then
-                obj_char["oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["oroboros_front"])
-                obj_char["oroboros_animation_table"][2] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char["oroboros_front"],"5H_oroboros_loop_front")
-                obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["oroboros_mid"],"5H_oroboros_ease_in_mid")
-                obj_char["oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["oroboros_back"])
-                obj_char["oroboros_animation_table"][5] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char["oroboros_back"],"5H_oroboros_loop_back")
-                obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_ease_in(obj_char)
-                init_character_anim_with(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
-                init_character_anim_with(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][2])
-                init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
-                init_character_anim_with(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
-                init_character_anim_with(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][5])
-                init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
-                obj_char["oroboros_state"] = "ease_in"
+                obj_char["5H_oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["5H_oroboros_front"])
+                obj_char["5H_oroboros_animation_table"][2] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char["5H_oroboros_front"],"5H_oroboros_loop_front")
+                obj_char["5H_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["5H_oroboros_mid"],"5H_oroboros_ease_in_mid")
+                obj_char["5H_oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["5H_oroboros_back"])
+                obj_char["5H_oroboros_animation_table"][5] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char["5H_oroboros_back"],"5H_oroboros_loop_back")
+                obj_char["5H_oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_ease_in(obj_char)
+                init_character_anim_with(obj_char["5H_oroboros_front"],obj_char["5H_oroboros_animation_table"][1])
+                init_character_anim_with(obj_char["5H_oroboros_front"],obj_char["5H_oroboros_animation_table"][2])
+                init_character_anim_with(obj_char["5H_oroboros_mid"],obj_char["5H_oroboros_animation_table"][3])
+                init_character_anim_with(obj_char["5H_oroboros_back"],obj_char["5H_oroboros_animation_table"][4])
+                init_character_anim_with(obj_char["5H_oroboros_back"],obj_char["5H_oroboros_animation_table"][5])
+                init_character_anim_with(obj_char,obj_char["5H_oroboros_animation_table"][6])
+                obj_char["5H_oroboros_state"] = "ease_in"
                 return
             end
         end,
         ["ease_in"] = function()
-            character_animator(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
-            character_animator(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][2])
-            character_animator(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
-            character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
-            character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][5])
-            character_animator(obj_char,obj_char["oroboros_animation_table"][6])
-            if obj_char["oroboros_idle_cancel"] and
+            character_animator(obj_char["5H_oroboros_front"],obj_char["5H_oroboros_animation_table"][1])
+            character_animator(obj_char["5H_oroboros_front"],obj_char["5H_oroboros_animation_table"][2])
+            character_animator(obj_char["5H_oroboros_mid"],obj_char["5H_oroboros_animation_table"][3])
+            character_animator(obj_char["5H_oroboros_back"],obj_char["5H_oroboros_animation_table"][4])
+            character_animator(obj_char["5H_oroboros_back"],obj_char["5H_oroboros_animation_table"][5])
+            character_animator(obj_char,obj_char["5H_oroboros_animation_table"][6])
+            if obj_char["5H_oroboros_idle_cancel"] and
             (
                 (test_input_sys_press(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
                 (test_input_sys_press_or_hold(input["HS"]) and test_input_sys_press(input["SP"]))
             )
             then
-                obj_char["oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["oroboros_front"])
-                obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["oroboros_mid"],"5H_oroboros_ease_out_mid")
-                obj_char["oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["oroboros_back"])
-                obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_ororboros_ease_out(obj_char)
-                init_character_anim_with(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
-                init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
-                init_character_anim_with(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
-                init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
-                obj_char["oroboros_state"] = "ease_out"
+                obj_char["5H_oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["5H_oroboros_front"])
+                obj_char["5H_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["5H_oroboros_mid"],"5H_oroboros_ease_out_mid")
+                obj_char["5H_oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["5H_oroboros_back"])
+                obj_char["5H_oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_ease_out(obj_char)
+                init_character_anim_with(obj_char["5H_oroboros_front"],obj_char["5H_oroboros_animation_table"][1])
+                init_character_anim_with(obj_char["5H_oroboros_mid"],obj_char["5H_oroboros_animation_table"][3])
+                init_character_anim_with(obj_char["5H_oroboros_back"],obj_char["5H_oroboros_animation_table"][4])
+                init_character_anim_with(obj_char,obj_char["5H_oroboros_animation_table"][6])
+                obj_char["5H_oroboros_state"] = "ease_out"
                 return
             end
-            if obj_char["oroboros_shot_cancel"] and test_input_sys_release(input["HS"]) then
-                obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
-                init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
-                obj_char["oroboros_state"] = "shot"
+            if obj_char["5H_oroboros_fire_cancel"] and test_input_sys_release(input["HS"]) then
+                obj_char["5H_oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
+                init_character_anim_with(obj_char,obj_char["5H_oroboros_animation_table"][6])
+                obj_char["5H_oroboros_state"] = "shot"
                 return
             end
-            if get_character_anim_end_state(obj_char["oroboros_front"],"f_4",obj_char["oroboros_animation_table"][1])
-            and get_character_anim_end_state(obj_char["oroboros_mid"],"f_8",obj_char["oroboros_animation_table"][3])
-            and get_character_anim_end_state(obj_char["oroboros_back"],"f_4",obj_char["oroboros_animation_table"][4])
-            and get_character_anim_end_state(obj_char,"oroboros_f",obj_char["oroboros_animation_table"][6])
+            if get_character_anim_end_state(obj_char["5H_oroboros_front"],"f_4",obj_char["5H_oroboros_animation_table"][1])
+            and get_character_anim_end_state(obj_char["5H_oroboros_mid"],"f_8",obj_char["5H_oroboros_animation_table"][3])
+            and get_character_anim_end_state(obj_char["5H_oroboros_back"],"f_4",obj_char["5H_oroboros_animation_table"][4])
+            and get_character_anim_end_state(obj_char,"5H_oroboros_f",obj_char["5H_oroboros_animation_table"][6])
             then
-                obj_char["oroboros_front"][4] = 1
-                obj_char["oroboros_back"][4] = 1
-                obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["oroboros_mid"])
-                init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
-                obj_char["oroboros_state"] = "at_the_ready_aimming"
+                obj_char["5H_oroboros_front"][4] = 1
+                obj_char["5H_oroboros_back"][4] = 1
+                obj_char["5H_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["5H_oroboros_mid"])
+                init_character_anim_with(obj_char["5H_oroboros_mid"],obj_char["5H_oroboros_animation_table"][3])
+                obj_char["5H_oroboros_state"] = "at_the_ready_aimming"
                 return
             end
         end,
         ["ease_out"] = function()
-            character_animator(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
-            character_animator(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][2])
-            character_animator(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
-            character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
-            character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][5])
-            character_animator(obj_char,obj_char["oroboros_animation_table"][6])
+            character_animator(obj_char["5H_oroboros_front"],obj_char["5H_oroboros_animation_table"][1])
+            character_animator(obj_char["5H_oroboros_front"],obj_char["5H_oroboros_animation_table"][2])
+            character_animator(obj_char["5H_oroboros_mid"],obj_char["5H_oroboros_animation_table"][3])
+            character_animator(obj_char["5H_oroboros_back"],obj_char["5H_oroboros_animation_table"][4])
+            character_animator(obj_char["5H_oroboros_back"],obj_char["5H_oroboros_animation_table"][5])
+            character_animator(obj_char,obj_char["5H_oroboros_animation_table"][6])
             if test_input_sys_press(input["HS"]) then
-                obj_char["oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["oroboros_front"])
-                obj_char["oroboros_animation_table"][2] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char["oroboros_front"],"5H_oroboros_loop_front")
-                obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["oroboros_mid"],"5H_oroboros_ease_in_mid")
-                obj_char["oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["oroboros_back"])
-                obj_char["oroboros_animation_table"][5] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char["oroboros_back"],"5H_oroboros_loop_back")
-                obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_ease_in(obj_char)
-                init_character_anim_with(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
-                init_character_anim_with(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][2])
-                init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
-                init_character_anim_with(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
-                init_character_anim_with(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][5])
-                init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
-                obj_char["oroboros_state"] = "ease_in"
+                obj_char["5H_oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["5H_oroboros_front"])
+                obj_char["5H_oroboros_animation_table"][2] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char["5H_oroboros_front"],"5H_oroboros_loop_front")
+                obj_char["5H_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["5H_oroboros_mid"],"5H_oroboros_ease_in_mid")
+                obj_char["5H_oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["5H_oroboros_back"])
+                obj_char["5H_oroboros_animation_table"][5] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char["5H_oroboros_back"],"5H_oroboros_loop_back")
+                obj_char["5H_oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_ease_in(obj_char)
+                init_character_anim_with(obj_char["5H_oroboros_front"],obj_char["5H_oroboros_animation_table"][1])
+                init_character_anim_with(obj_char["5H_oroboros_front"],obj_char["5H_oroboros_animation_table"][2])
+                init_character_anim_with(obj_char["5H_oroboros_mid"],obj_char["5H_oroboros_animation_table"][3])
+                init_character_anim_with(obj_char["5H_oroboros_back"],obj_char["5H_oroboros_animation_table"][4])
+                init_character_anim_with(obj_char["5H_oroboros_back"],obj_char["5H_oroboros_animation_table"][5])
+                init_character_anim_with(obj_char,obj_char["5H_oroboros_animation_table"][6])
+                obj_char["5H_oroboros_state"] = "ease_in"
                 return
             end
-            if get_character_anim_end_state(obj_char["oroboros_front"],"f_4",obj_char["oroboros_animation_table"][1])
-            and get_character_anim_end_state(obj_char["oroboros_mid"],"f_8",obj_char["oroboros_animation_table"][3])
-            and get_character_anim_end_state(obj_char["oroboros_back"],"f_4",obj_char["oroboros_animation_table"][4])
+            if get_character_anim_end_state(obj_char["5H_oroboros_front"],"f_4",obj_char["5H_oroboros_animation_table"][1])
+            and get_character_anim_end_state(obj_char["5H_oroboros_mid"],"f_8",obj_char["5H_oroboros_animation_table"][3])
+            and get_character_anim_end_state(obj_char["5H_oroboros_back"],"f_4",obj_char["5H_oroboros_animation_table"][4])
             then
-                obj_char["oroboros_front"][4] = 0
-                obj_char["oroboros_back"][4] = 0
-                obj_char["oroboros_state"] = "off"
+                obj_char["5H_oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_off(obj_char)
+                init_character_anim_with(obj_char,obj_char["5H_oroboros_animation_table"][6])
+                obj_char["5H_oroboros_state"] = "off"
                 return
             end
         end,
         ["at_the_ready_aimming"] = function()
-            character_animator(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][2])
-            character_animator(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
-            character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][5])
-            if obj_char["oroboros_shot_cancel"] and test_input_sys_release(input["HS"]) then
-                obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
-                init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
-                obj_char["oroboros_state"] = "shot"
+            character_animator(obj_char["5H_oroboros_front"],obj_char["5H_oroboros_animation_table"][2])
+            character_animator(obj_char["5H_oroboros_mid"],obj_char["5H_oroboros_animation_table"][3])
+            character_animator(obj_char["5H_oroboros_back"],obj_char["5H_oroboros_animation_table"][5])
+            if obj_char["5H_oroboros_fire_cancel"] and test_input_sys_release(input["HS"]) then
+                obj_char["5H_oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
+                init_character_anim_with(obj_char,obj_char["5H_oroboros_animation_table"][6])
+                obj_char["5H_oroboros_state"] = "shot"
                 return
             end
             if(test_input_sys_press(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
             (test_input_sys_press_or_hold(input["HS"]) and test_input_sys_press(input["SP"]))
             then
-                obj_char["oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["oroboros_front"])
-                obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["oroboros_mid"],"5H_oroboros_ease_out_mid")
-                obj_char["oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["oroboros_back"])
-                obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_ororboros_ease_out(obj_char)
-                init_character_anim_with(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
-                init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
-                init_character_anim_with(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
-                init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
-                obj_char["oroboros_state"] = "ease_out"
+                obj_char["5H_oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["5H_oroboros_front"])
+                obj_char["5H_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["5H_oroboros_mid"],"5H_oroboros_ease_out_mid")
+                obj_char["5H_oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["5H_oroboros_back"])
+                obj_char["5H_oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_ease_out(obj_char)
+                init_character_anim_with(obj_char["5H_oroboros_front"],obj_char["5H_oroboros_animation_table"][1])
+                init_character_anim_with(obj_char["5H_oroboros_mid"],obj_char["5H_oroboros_animation_table"][3])
+                init_character_anim_with(obj_char["5H_oroboros_back"],obj_char["5H_oroboros_animation_table"][4])
+                init_character_anim_with(obj_char,obj_char["5H_oroboros_animation_table"][6])
+                obj_char["5H_oroboros_state"] = "ease_out"
                 return
             end
         end,
         ["steady_aimming"] = function()
         end,
         ["shot"] = function()
-            character_animator(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
-            character_animator(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][2])
-            character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
-            character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][5])
-            character_animator(obj_char,obj_char["oroboros_animation_table"][6])
-            if obj_char["oroboros_idle_cancel"] and 
+            character_animator(obj_char["5H_oroboros_front"],obj_char["5H_oroboros_animation_table"][1])
+            character_animator(obj_char["5H_oroboros_front"],obj_char["5H_oroboros_animation_table"][2])
+            character_animator(obj_char["5H_oroboros_back"],obj_char["5H_oroboros_animation_table"][4])
+            character_animator(obj_char["5H_oroboros_back"],obj_char["5H_oroboros_animation_table"][5])
+            character_animator(obj_char,obj_char["5H_oroboros_animation_table"][6])
+            if obj_char["5H_oroboros_idle_cancel"] and 
             (
                 (test_input_sys_press(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
                 (test_input_sys_release(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
                 (test_input_sys_press_or_hold(input["HS"]) and test_input_sys_press(input["SP"]))
             )
             then
-                obj_char["oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["oroboros_front"])
-                obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["oroboros_mid"],"5H_oroboros_ease_out_mid")
-                obj_char["oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["oroboros_back"])
-                obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_ororboros_ease_out(obj_char)
-                init_character_anim_with(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
-                init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
-                init_character_anim_with(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
-                init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
-                obj_char["oroboros_state"] = "ease_out"
+                obj_char["5H_oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["5H_oroboros_front"])
+                obj_char["5H_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["5H_oroboros_mid"],"5H_oroboros_ease_out_mid")
+                obj_char["5H_oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["5H_oroboros_back"])
+                obj_char["5H_oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_ease_out(obj_char)
+                init_character_anim_with(obj_char["5H_oroboros_front"],obj_char["5H_oroboros_animation_table"][1])
+                init_character_anim_with(obj_char["5H_oroboros_mid"],obj_char["5H_oroboros_animation_table"][3])
+                init_character_anim_with(obj_char["5H_oroboros_back"],obj_char["5H_oroboros_animation_table"][4])
+                init_character_anim_with(obj_char,obj_char["5H_oroboros_animation_table"][6])
+                obj_char["5H_oroboros_state"] = "ease_out"
                 return
             end
-            if obj_char["oroboros_shot_cancel"] and test_input_sys_release(input["HS"]) then
-                obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
-                init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
-                obj_char["oroboros_state"] = "shot"
+            if obj_char["5H_oroboros_fire_cancel"] and test_input_sys_release(input["HS"]) then
+                obj_char["5H_oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
+                init_character_anim_with(obj_char,obj_char["5H_oroboros_animation_table"][6])
+                obj_char["5H_oroboros_state"] = "shot"
                 return
             end
-            if get_character_anim_end_state(obj_char,"oroboros_f",obj_char["oroboros_animation_table"][6]) then
-                obj_char["oroboros_front"][4] = 1
-                obj_char["oroboros_back"][4] = 1
-                obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["oroboros_mid"])
-                init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
-                obj_char["oroboros_state"] = "at_the_ready_aimming"
+            if get_character_anim_end_state(obj_char,"5H_oroboros_f",obj_char["5H_oroboros_animation_table"][6]) then
+                obj_char["5H_oroboros_front"][4] = 1
+                obj_char["5H_oroboros_back"][4] = 1
+                obj_char["5H_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["5H_oroboros_mid"])
+                init_character_anim_with(obj_char["5H_oroboros_mid"],obj_char["5H_oroboros_animation_table"][3])
+                obj_char["5H_oroboros_state"] = "at_the_ready_aimming"
                 return
             end
         end,
     }
-    local this_function = switch[obj_char["oroboros_state"]]
-    obj_char["oroboros_ease_target"] = {
-        obj_char["x"] + obj_char[5]*obj_char["oroboros_anchor_pos"][1],
-        obj_char["y"] + obj_char[6]*obj_char["oroboros_anchor_pos"][2],
+    local this_function = switch[obj_char["5H_oroboros_state"]]
+    obj_char["5H_oroboros_ease_target"] = {
+        obj_char["x"] + obj_char[5]*obj_char["5H_oroboros_anchor_pos"][1],
+        obj_char["y"] + obj_char[6]*obj_char["5H_oroboros_anchor_pos"][2],
         obj_char[5],
         obj_char[6]
     }
-    obj_char["oroboros_ease_current"] = {
-        (obj_char["oroboros_ease_target"][1]*2 + obj_char["oroboros_ease_current"][1])/3,
-        (obj_char["oroboros_ease_target"][2]*2 + obj_char["oroboros_ease_current"][2])/3,
-        (obj_char["oroboros_ease_target"][3]*2 + obj_char["oroboros_ease_current"][3])/3,
-        (obj_char["oroboros_ease_target"][4]*2 + obj_char["oroboros_ease_current"][4])/3
+    obj_char["5H_oroboros_ease_current"] = {
+        (obj_char["5H_oroboros_ease_target"][1]*2 + obj_char["5H_oroboros_ease_current"][1])/3,
+        (obj_char["5H_oroboros_ease_target"][2]*2 + obj_char["5H_oroboros_ease_current"][2])/3,
+        (obj_char["5H_oroboros_ease_target"][3]*2 + obj_char["5H_oroboros_ease_current"][3])/3,
+        (obj_char["5H_oroboros_ease_target"][4]*2 + obj_char["5H_oroboros_ease_current"][4])/3
     }
     if this_function then this_function() end
 end
@@ -1462,7 +1463,7 @@ function state_machine_char_game_scene_char_LP_reticle()
 
         end,
     }
-    local this_function = switch[obj_char["reticle_state"]]
+    local this_function = switch[obj_char["5H_reticle_state"]]
     if this_function then this_function() end
 end
 
@@ -4375,9 +4376,9 @@ end
 function draw_game_scene_char_LP_logic_graphic_pos_sync()
     local obj = nil
     local obj_char = obj_char_game_scene_char_LP
-    local oroboros_ease_current = obj_char["oroboros_ease_current"]
-    local shot_offset_amount = obj_char["oroboros_shot_offset_amount"] 
-    local shot_r = obj_char["oroboros_shot_aim_r"]
+    local oroboros_ease_current = obj_char["5H_oroboros_ease_current"]
+    local shot_offset_amount = obj_char["5H_oroboros_offset_amount"] 
+    local shot_r = obj_char["5H_oroboros_aim_r"]
     local dx = -15
     local dy = -50
     local rot_dx = nil
@@ -4387,22 +4388,22 @@ function draw_game_scene_char_LP_logic_graphic_pos_sync()
     shot_r = math.max(shot_r,-0.4)
 
     -- oroboros_back
-    obj = obj_char["oroboros_back"]
+    obj = obj_char["5H_oroboros_back"]
     obj[1] = oroboros_ease_current[1] + oroboros_ease_current[3]*(dx - math.cos(shot_r)*shot_offset_amount*0.5)
     obj[2] = oroboros_ease_current[2] + oroboros_ease_current[4]*(dy - math.sin(shot_r)*shot_offset_amount*0.5)
     obj[3] = obj_char[3]
-    obj[4] = obj_char["oroboros_back"][4]
+    obj[4] = obj_char["5H_oroboros_back"][4]
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = obj_char[7]
-    obj[8] = obj_char["oroboros_back"][8]
+    obj[8] = obj_char["5H_oroboros_back"][8]
 
     -- character
     obj_char[1] = obj_char["x"]+obj_char["hurtstop_wiggle_current_x"]-obj_char[5]*obj_char["anchor_pos"][1]
     obj_char[2] = obj_char["y"]+obj_char["hurtstop_wiggle_current_y"]-obj_char[6]*obj_char["anchor_pos"][2]
 
     -- oroboros_mid
-    obj = obj_char["oroboros_mid"]
+    obj = obj_char["5H_oroboros_mid"]
     dx = -85
     dy = -85
     rot_dx = dx*oroboros_ease_current[3]*math.cos(shot_r) - dy*oroboros_ease_current[4]*math.sin(shot_r)
@@ -4414,20 +4415,20 @@ function draw_game_scene_char_LP_logic_graphic_pos_sync()
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = shot_r
-    obj[8] = obj_char["oroboros_mid"][8]
+    obj[8] = obj_char["5H_oroboros_mid"][8]
 
     -- oroboros_front
-    obj = obj_char["oroboros_front"]
+    obj = obj_char["5H_oroboros_front"]
     dx = -80
     dy = -80
     obj[1] = oroboros_ease_current[1] + oroboros_ease_current[3]*(dx - math.cos(shot_r)*shot_offset_amount*0.7)
     obj[2] = oroboros_ease_current[2] + oroboros_ease_current[4]*(dy - math.sin(shot_r)*shot_offset_amount*0.7)
     obj[3] = obj_char[3]
-    obj[4] = obj_char["oroboros_front"][4]
+    obj[4] = obj_char["5H_oroboros_front"][4]
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = obj_char[7]
-    obj[8] = obj_char["oroboros_front"][8]
+    obj[8] = obj_char["5H_oroboros_front"][8]
 end
 function draw_game_scene_char_LP()
     local obj = {0,0,0,0,0,0,0,0}
@@ -4441,8 +4442,8 @@ function draw_game_scene_char_LP()
 
     -- draw_back
     -- x y z opacity sx sy r f
-    if obj_char["oroboros_state"] ~= "off" then
-        obj = obj_char["oroboros_back"]
+    if obj_char["5H_oroboros_state"] ~= "off" then
+        obj = obj_char["5H_oroboros_back"]
         image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj["sprite_sheet_state"]]
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,tostring(obj[8]))
@@ -4458,15 +4459,15 @@ function draw_game_scene_char_LP()
     love.graphics.setShader()
 
     -- draw_mid
-    if obj_char["oroboros_state"] ~= "off" then
-        obj = obj_char["oroboros_mid"]
+    if obj_char["5H_oroboros_state"] ~= "off" then
+        obj = obj_char["5H_oroboros_mid"]
         image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj["sprite_sheet_state"]]
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,tostring(obj[8]))
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
 
         -- darw_front
-        obj = obj_char["oroboros_front"]
+        obj = obj_char["5H_oroboros_front"]
         image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj["sprite_sheet_state"]]
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,tostring(obj[8]))
