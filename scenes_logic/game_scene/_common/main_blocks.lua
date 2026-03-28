@@ -98,25 +98,31 @@ function update_game_scene_main_training()
                 state_machine_automatic_player_game_scene(obj_annoucer_game_scene_lets_dance,40)
                 state_machine_char_game_scene_char_LP_input_sys_cache()
                 state_machine_char_game_scene_char_RP_input_sys_cache()
+                state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
+                state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
             elseif SCENE_TIMER == 165 then
                 state_machine_automatic_player_game_scene(obj_annoucer_game_scene_lets_dance,40)
                 state_machine_char_game_scene_char_LP_input_sys_cache()
                 state_machine_char_game_scene_char_RP_input_sys_cache()
-
+                state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
+                state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
             elseif SCENE_TIMER < 175 then
                 state_machine_automatic_player_game_scene(obj_annoucer_game_scene_lets_dance,40)
                 state_machine_char_game_scene_char_LP_input_sys_cache()
                 state_machine_char_game_scene_char_RP_input_sys_cache()
-
+                state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
+                state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
             elseif SCENE_TIMER == 175 then
                 obj_annoucer_game_scene_lets_dance[4] = 0
                 state_machine_char_game_scene_char_LP_input_sys_cache()
                 state_machine_char_game_scene_char_RP_input_sys_cache()
-
+                state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
+                state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
             elseif SCENE_TIMER < 180 then
                 state_machine_char_game_scene_char_LP_input_sys_cache()
                 state_machine_char_game_scene_char_RP_input_sys_cache()
-
+                state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
+                state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
             elseif SCENE_TIMER == 180 then
                 SCENE_TIMER = 0
                 -- 改变char_LP RP的状态到可运行
@@ -126,6 +132,8 @@ function update_game_scene_main_training()
 
                 state_machine_char_game_scene_char_LP_input_sys_cache()
                 state_machine_char_game_scene_char_RP_input_sys_cache()
+                state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
+                state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
 
                 common_game_scene_toggle_dynamic_HUD(1)
                 common_game_scene_toggle_ease_in(0)
@@ -160,6 +168,8 @@ function update_game_scene_main_training()
             if SCENE_TIMER == 0 then
                 state_machine_char_game_scene_char_LP_input_sys_cache()
                 state_machine_char_game_scene_char_RP_input_sys_cache()
+                state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
+                state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
                 obj_char_game_scene_char_LP["input_sys_state"] = "load"
                 obj_char_game_scene_char_RP["input_sys_state"] = "load"
             end
@@ -178,6 +188,8 @@ function update_game_scene_main_training()
             -- 会被game_speed限制
             state_machine_char_game_scene_char_LP_input_sys_cache()
             state_machine_char_game_scene_char_RP_input_sys_cache()
+            state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
+            state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
             common_update_game_scene_input_direction(char_LP)
             common_update_game_scene_input_direction(char_RP)
 

@@ -43,7 +43,10 @@ function load_game_scene_obj_char_LP()
 
     obj_char_game_scene_char_LP["input_sys_state"] = "none" -- none save load
     obj_char_game_scene_char_LP["input_sys_cache"] = {}
+    obj_char_game_scene_char_LP["input_sys_state_negative_edge"] = "none"
+    obj_char_game_scene_char_LP["input_sys_cache_negative_edge"] = {}
     init_input_sys_cache_LP(obj_char_game_scene_char_LP)
+    init_input_sys_cache_negative_edge_LP(obj_char_game_scene_char_LP)
 
         -- hit_hurt_block_animation
     obj_char_game_scene_char_LP["hit_damage"] = 0
@@ -1284,18 +1287,6 @@ function state_machine_char_game_scene_char_LP_oroboros()
             character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
             character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][5])
             character_animator(obj_char,obj_char["oroboros_animation_table"][6])
-            if get_character_anim_end_state(obj_char["oroboros_front"],"f_4",obj_char["oroboros_animation_table"][1])
-            and get_character_anim_end_state(obj_char["oroboros_mid"],"f_8",obj_char["oroboros_animation_table"][3])
-            and get_character_anim_end_state(obj_char["oroboros_back"],"f_4",obj_char["oroboros_animation_table"][4])
-            and get_character_anim_end_state(obj_char,"oroboros_f",obj_char["oroboros_animation_table"][6])
-            then
-                obj_char["oroboros_front"][4] = 1
-                obj_char["oroboros_back"][4] = 1
-                obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["oroboros_mid"])
-                init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
-                obj_char["oroboros_state"] = "at_the_ready_aimming"
-                return
-            end
             if obj_char["oroboros_idle_cancel"] and
             (
                 (test_input_sys_press(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
@@ -1319,6 +1310,18 @@ function state_machine_char_game_scene_char_LP_oroboros()
                 obj_char["oroboros_state"] = "shot"
                 return
             end
+            if get_character_anim_end_state(obj_char["oroboros_front"],"f_4",obj_char["oroboros_animation_table"][1])
+            and get_character_anim_end_state(obj_char["oroboros_mid"],"f_8",obj_char["oroboros_animation_table"][3])
+            and get_character_anim_end_state(obj_char["oroboros_back"],"f_4",obj_char["oroboros_animation_table"][4])
+            and get_character_anim_end_state(obj_char,"oroboros_f",obj_char["oroboros_animation_table"][6])
+            then
+                obj_char["oroboros_front"][4] = 1
+                obj_char["oroboros_back"][4] = 1
+                obj_char["oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["oroboros_mid"])
+                init_character_anim_with(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
+                obj_char["oroboros_state"] = "at_the_ready_aimming"
+                return
+            end
         end,
         ["ease_out"] = function()
             character_animator(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][1])
@@ -1327,15 +1330,6 @@ function state_machine_char_game_scene_char_LP_oroboros()
             character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
             character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][5])
             character_animator(obj_char,obj_char["oroboros_animation_table"][6])
-            if get_character_anim_end_state(obj_char["oroboros_front"],"f_4",obj_char["oroboros_animation_table"][1])
-            and get_character_anim_end_state(obj_char["oroboros_mid"],"f_8",obj_char["oroboros_animation_table"][3])
-            and get_character_anim_end_state(obj_char["oroboros_back"],"f_4",obj_char["oroboros_animation_table"][4])
-            then
-                obj_char["oroboros_front"][4] = 0
-                obj_char["oroboros_back"][4] = 0
-                obj_char["oroboros_state"] = "off"
-                return
-            end
             if test_input_sys_press(input["HS"]) then
                 obj_char["oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["oroboros_front"])
                 obj_char["oroboros_animation_table"][2] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char["oroboros_front"],"5H_oroboros_loop_front")
@@ -1352,11 +1346,26 @@ function state_machine_char_game_scene_char_LP_oroboros()
                 obj_char["oroboros_state"] = "ease_in"
                 return
             end
+            if get_character_anim_end_state(obj_char["oroboros_front"],"f_4",obj_char["oroboros_animation_table"][1])
+            and get_character_anim_end_state(obj_char["oroboros_mid"],"f_8",obj_char["oroboros_animation_table"][3])
+            and get_character_anim_end_state(obj_char["oroboros_back"],"f_4",obj_char["oroboros_animation_table"][4])
+            then
+                obj_char["oroboros_front"][4] = 0
+                obj_char["oroboros_back"][4] = 0
+                obj_char["oroboros_state"] = "off"
+                return
+            end
         end,
         ["at_the_ready_aimming"] = function()
             character_animator(obj_char["oroboros_front"],obj_char["oroboros_animation_table"][2])
             character_animator(obj_char["oroboros_mid"],obj_char["oroboros_animation_table"][3])
             character_animator(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][5])
+            if obj_char["oroboros_shot_cancel"] and test_input_sys_release(input["HS"]) then
+                obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
+                init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
+                obj_char["oroboros_state"] = "shot"
+                return
+            end
             if(test_input_sys_press(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
             (test_input_sys_press_or_hold(input["HS"]) and test_input_sys_press(input["SP"]))
             then
@@ -1369,12 +1378,6 @@ function state_machine_char_game_scene_char_LP_oroboros()
                 init_character_anim_with(obj_char["oroboros_back"],obj_char["oroboros_animation_table"][4])
                 init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
                 obj_char["oroboros_state"] = "ease_out"
-                return
-            end
-            if obj_char["oroboros_shot_cancel"] and test_input_sys_release(input["HS"]) then
-                obj_char["oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
-                init_character_anim_with(obj_char,obj_char["oroboros_animation_table"][6])
-                obj_char["oroboros_state"] = "shot"
                 return
             end
         end,
@@ -1540,11 +1543,38 @@ function state_machine_char_game_scene_char_LP_input_sys_cache()
     local this_function = switch[obj_char["input_sys_state"]]
     if this_function then this_function() end
 end
+function state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
+    local obj_char = obj_char_game_scene_char_LP
+    local input = INPUT_SYS_CURRENT_COMMAND_STATE["L"]
+    local switch = {
+        ["none"] = function()
+        end,
+        ["save"] = function()
+            if test_input_sys_release(input["HS"]) then
+                obj_char["input_sys_cache_negative_edge"]["HS"] = true
+            end
+        end,
+        ["load"] = function()
+            if obj_char["input_sys_cache_negative_edge"]["HS"] then
+                input["HS"] = "Releasing"
+            end
+            obj_char["input_sys_state_negative_edge"] = "none"
+            init_input_sys_cache_negative_edge_LP(obj_char)
+        end,
+    }
+    local this_function = switch[obj_char["input_sys_state_negative_edge"]]
+    if this_function then this_function() end
+end
 function init_input_sys_cache_LP(obj_char)
     for i=1,20 do
         obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] = false
     end
     obj_char["input_sys_cache"]["jump"] = false
+end
+function init_input_sys_cache_negative_edge_LP(obj_char)
+    for i=1,20 do
+        obj_char["input_sys_cache_negative_edge"][INPUT_SYS_COMMAND_TABLE[i]] = false
+    end
 end
 
 -- 状态机连接门

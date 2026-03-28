@@ -341,6 +341,13 @@ function load_input_sys_cache_recache(input,obj_char)
         end
     end
 end
+function load_input_sys_cache_negative_edge_recache(input,obj_char)
+    for i=1,20 do
+        if input[INPUT_SYS_COMMAND_TABLE[i]] == "Pressing" then
+            obj_char["input_sys_cache_negative_edge"][INPUT_SYS_COMMAND_TABLE[i]] = true
+        end
+    end
+end
 
 -- 绘制input_sys
 function draw_input_sys(x_offset,y_offset)
