@@ -5394,19 +5394,93 @@ function load_game_scene_anim_char_TRM_5H_ororboros_ease_out(obj_char)
     return res
 end
 function load_game_scene_anim_char_TRM_5H_reticle_ease_in(obj_char)
+    local res = {}
+    res["prop_f"] = "reticle_f"
+    res["anim_length"] = 5
+    res[0] = function()
 
+    end
+    res[1] = function()
+
+    end
+    res[3] = function()
+
+    end
+    res[4] = function()
+
+    end
+    res[5] = function()
+        -- animation_end
+    end
+    return res
 end
 function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_aimming(obj_char)
-
+    local res = {}
+    res["prop_f"] = "reticle_f"
+    res["anim_length"] = 40
+    for i = 0,10 do
+        res[i*4] = function()
+            
+        end
+    end
+    res[40] = function()
+        -- animation_end
+    end
+    return res
 end
 function load_game_scene_anim_char_TRM_5H_reticle_steady_aimming(obj_char)
+    local res = {}
+    res["prop_f"] = "reticle_f"
+    res["anim_length"] = 15
+    res[0] = function()
 
+    end
+    res[9] = function()
+
+    end
+    res[12] = function()
+
+    end
+    res[15] = function()
+        -- animation_end
+    end
+    return res
 end
 function load_game_scene_anim_char_TRM_5H_reticle_shot(obj_char)
+    local res = {}
+    res["prop_f"] = "reticle_f"
+    res["anim_length"] = 12
+    res[0] = function()
 
+    end
+    res[5] = function()
+
+    end
+    res[10] = function()
+
+    end
+    res[12] = function()
+        -- animation_end
+    end
+    return res
 end
 function load_game_scene_anim_char_TRM_5H_reticle_ease_out(obj_char)
+    local res = {}
+    res["prop_f"] = "reticle_f"
+    res["anim_length"] = 12
+    res[0] = function()
 
+    end
+    res[5] = function()
+
+    end
+    res[9] = function()
+
+    end
+    res[12] = function()
+        -- animation_end
+    end
+    return res
 end
 -- _2Launcher
 function load_game_scene_anim_char_TRM_2Launcher(obj_char)

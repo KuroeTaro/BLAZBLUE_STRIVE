@@ -198,10 +198,11 @@ function load_game_scene_obj_char_LP()
     }
     -- reticle
     obj_char_game_scene_char_LP["reticle"] = {0,0,0,1,1,1,0,0}
-    obj_char_game_scene_char_LP["reticle_state"] = "off"
-    obj_char_game_scene_char_LP["reticle_visual_offset"] = {0,0}
-    obj_char_game_scene_char_LP["reticle_visual_offset_amount"] = 0
     obj_char_game_scene_char_LP["reticle_f"] = 0
+    obj_char_game_scene_char_LP["reticle_state"] = "off"
+    obj_char_game_scene_char_LP["reticle_visual_offset_amount"] = 0
+    obj_char_game_scene_char_LP["reticle_visual_offset"] = {0,0}
+    obj_char_game_scene_char_LP["reticle_sprite_sheet_state"] = "5H_reticle_at_the_ready"
     
     -- draw_correction
     obj_char_game_scene_char_LP["anchor_pos"] = {215,510}
