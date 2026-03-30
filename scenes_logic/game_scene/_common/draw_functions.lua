@@ -12,7 +12,11 @@ function draw_game_scene_main()
 
     -- 绘制背侧VFX
     draw_game_scene_char_LP_VFX_back()
-    draw_game_scene_char_RP_VFX_back()   
+    draw_game_scene_char_RP_VFX_back()
+
+    -- 绘制背侧挂件
+    draw_game_scene_char_LP_attachment_back()
+    draw_game_scene_char_RP_attachment_back()
 
     -- 绘制角色阴影
     draw_game_scene_char_LP_shadow()
@@ -200,9 +204,15 @@ function draw_game_scene_main()
     love.graphics.draw(DRAW_MAIN_CHARACTER_CANVAS) -- 1 draw call 13
     love.graphics.setColor(1,1,1,1)
 
+    -- 绘制前侧挂件
+    draw_game_scene_char_LP_attachment_front()
+    draw_game_scene_char_RP_attachment_front()
+
+    -- 绘制前侧VFX
     draw_game_scene_char_LP_VFX_front()
     draw_game_scene_char_RP_VFX_front()
 
+    -- 绘制飞行道具
     draw_game_scene_char_LP_projectile()
     draw_game_scene_char_RP_projectile()
 

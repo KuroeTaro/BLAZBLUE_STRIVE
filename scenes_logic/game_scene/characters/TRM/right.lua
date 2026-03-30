@@ -18,7 +18,7 @@ function load_game_scene_obj_char_RP()
     -- state
     obj_char_game_scene_char_RP["player_side"] = "R"
     obj_char_game_scene_char_RP["type"] = "character"
-    obj_char_game_scene_char_RP["default_pushbox_width"] = 121.5
+    obj_char_game_scene_char_RP["default_pushbox_width"] = 120
     obj_char_game_scene_char_RP["default_throw_distance"] = 0
 
     obj_char_game_scene_char_RP["state"] = "before_ease_in"
@@ -30,8 +30,8 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["hurt_state"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_RP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_RP["move_state"] = "none" -- none startup active recovery
-
-        -- input
+    
+    -- input
     obj_char_game_scene_char_RP["direction_input"] = 5
     obj_char_game_scene_char_RP["direction_input_cache"] = 5
     obj_char_game_scene_char_RP["SP_intput_dealy_countdown"] = 0
@@ -136,7 +136,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["hit_hurt_block_slowdown_countdown"] = 0
 
     -- collide
-    obj_char_game_scene_char_RP["pushbox"] = {0,-185,121.5,370}
+    obj_char_game_scene_char_RP["pushbox"] = {0,-185,120,370}
     obj_char_game_scene_char_RP["pushbox_other_side_char_active"] = true
     obj_char_game_scene_char_RP["hitbox_table"] = {}
     obj_char_game_scene_char_RP["hurtbox_table"] = {{0,-215,170,430},{0,-455,100,50}}
@@ -208,11 +208,11 @@ function load_game_scene_obj_char_RP()
         ["5UA"] = true,
         ["4sp_S_5UA"] = true
     }
-    --      oroboros
+    -- 5H_shot_sys_oroboros
     obj_char_game_scene_char_RP["shot_sys_oroboros_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_aim_r"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_animation_table"] = {}
-    --          sub_obj
+    -- 5H_shot_sys_oroboros_sub_obj
     obj_char_game_scene_char_RP["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
     obj_char_game_scene_char_RP["shot_sys_oroboros_front"]["f_8"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_front"]["f_4"] = 0
@@ -239,13 +239,13 @@ function load_game_scene_obj_char_RP()
         obj_char_game_scene_char_RP[5],
         obj_char_game_scene_char_RP[6]
     }
-    --      reticle
+    -- 5H_shot_sys_reticle
     obj_char_game_scene_char_RP["shot_sys_reticle"] = {0,0,0,1,1,1,0,0}
     obj_char_game_scene_char_RP["shot_sys_reticle_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_reticle_animation"] = nil
     obj_char_game_scene_char_RP["shot_sys_reticle_visual_offset_amount_target"] = 0
     obj_char_game_scene_char_RP["shot_sys_reticle_visual_offset_amount_current"] = 0
-    obj_char_game_scene_char_RP["shot_sys_reticle_visual_offset"] = {0,0}
+    obj_char_game_scene_char_RP["shot_sys_reticle_visual_offset_r"] = 0
     obj_char_game_scene_char_RP["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_at_the_ready"
     
     -- draw_correction
@@ -526,10 +526,10 @@ function load_game_scene_anim_char_RP()
     -- 加载角色会使用的线性动画和帧动画
 end
 function load_game_scene_box_anchor_data_RP()
-    local stand_pushbox = {0,-185,121.5,370}
-    local crouch_pushbox = {0,-142.5,121.5,285}
-    local air_pushbox = {0,-100,121.5,200}
-    local OTG_pushbox = {0,-65,121.5,130}
+    local stand_pushbox = {0,-185,120,370}
+    local crouch_pushbox = {0,-142.5,120,285}
+    local air_pushbox = {0,-100,120,200}
+    local OTG_pushbox = {0,-65,120,130}
 
     local stand_hurtbox = {{0,-220,210,440},{0,-465,120,50}}
     local crouch_hurtbox = {{0,-155,220,310}}
@@ -4466,6 +4466,12 @@ function draw_game_scene_char_RP_shadow()
     love.graphics.setColor(0,0,0,0.5)
     love.graphics.draw(DRAW_SHADOW_CANVAS)
     love.graphics.setColor(1,1,1,1)
+end
+function draw_game_scene_char_RP_attachment_front()
+    -- retcile
+end
+function draw_game_scene_char_RP_attachment_back()
+    -- nil
 end
 function draw_game_scene_char_RP_hurtbox()
     if not DEBUG_HITBOX_SHOWS then
