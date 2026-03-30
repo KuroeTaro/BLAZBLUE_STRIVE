@@ -443,9 +443,9 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_shot(obj_char)
     local side = obj_char["player_side"]
     local dx = 35
     local dy = -210
-    local r = obj_char["5H_oroboros_aim_r"]
-    local rot_dx = dx*obj_char["5H_oroboros_ease_current"][3]*math.cos(r) - dy*obj_char["5H_oroboros_ease_current"][4]*math.sin(r)
-    local rot_dy = dx*obj_char["5H_oroboros_ease_current"][3]*math.sin(r) + dy*obj_char["5H_oroboros_ease_current"][4]*math.cos(r)
+    local r = obj_char["shot_sys_oroboros_aim_r"]
+    local rot_dx = dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.cos(r) - dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.sin(r)
+    local rot_dy = dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.sin(r) + dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.cos(r)
     if side == "L" then
         image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["5H_shot_whiff_VFX"]
     elseif side == "R" then
@@ -453,8 +453,8 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_shot(obj_char)
     end 
 
     obj["life"] = 21
-    obj[1] = obj_char["5H_oroboros_ease_current"][1] + rot_dx
-    obj[2] = obj_char["5H_oroboros_ease_current"][2] + rot_dy
+    obj[1] = obj_char["shot_sys_oroboros_ease_current"][1] + rot_dx
+    obj[2] = obj_char["shot_sys_oroboros_ease_current"][2] + rot_dy
     obj[3] = obj_char[3]
     obj[4] = 1
     obj[5] = obj_char[5]
@@ -476,7 +476,7 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_shot(obj_char)
     obj["animation"]["fix_type"] = true
     init_frame_anim_with_out(obj,obj["animation"])
     obj["update"] = function(self)
-        if obj_char["5H_oroboros_state"] == "shot" then
+        if obj_char["shot_sys_state"] == "shot" then
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
         else

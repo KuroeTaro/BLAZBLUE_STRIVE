@@ -1,0 +1,3 @@
+function insert_projectile_game_scene_char_TRM_5H_shot(obj_char)
+
+end

@@ -1,3 +1,4 @@
+-- hit_function
 function character_function_game_scene_TRM_j2K_strike_hit_function(obj_char)
     -- 只需要设置hitstop
     local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
@@ -321,6 +322,7 @@ function character_function_game_scene_TRM_j2K_apply_hurt_velocity(
     end
 end
 
+-- cancel_function
 function character_function_game_scene_TRM_hitstop_jump_cancel(
     input,obj_char,
     v1,v2,v3,v4,v5,v6,v7,v8,v9
@@ -365,4 +367,200 @@ function character_function_game_scene_TRM_hitstop_force_delay_gatling_cancel_in
         load_input_sys_cache_recache(input,obj_char)
         obj_char["input_sys_state"] = "save" -- none save load
     end
+end
+
+-- shot_sys_function
+-- main
+function character_function_game_scene_TRM_aiming_process_update(obj_char)
+    if instant_aim_state[obj_char_other_side["state"]] then
+        obj_char["shot_sys_aim_process"][1] = 420
+        obj_char["shot_sys_aim_process"][5] = true
+    end
+    if obj_char["shot_sys_curse"] then
+        obj_char["shot_sys_aim_process"][2] = 20
+    end
+    obj_char["shot_sys_aim_process"][2] = 10
+end
+-- reticle
+function character_function_game_scene_TRM_shot_sys_reticle_8_updater(obj_char)
+    if obj_char["shot_sys_state"] == "at_the_ready_aimming" then
+        obj_char["shot_sys_reticle_animation"]["current_frame"] = 1
+        init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation"])
+    end
+end
+-- emplayment_function
+function character_function_game_scene_TRM_shot_sys_off_init(obj_char)
+    -- hurt_state
+    obj_char["hurt_state"] = obj_char["hurt_state_target"]
+    -- shot_sys
+    obj_char["shot_sys_fire_cancel"] = false
+    obj_char["shot_sys_idle_cancel"] = false
+    -- oroboros
+    obj_char["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
+    obj_char["shot_sys_oroboros_front"]["f_8"] = 0
+    obj_char["shot_sys_oroboros_front"]["f_4"] = 0
+    obj_char["shot_sys_oroboros_front"]["sprite_sheet_state"] = "5H_oroboros_loop_front"
+    obj_char["shot_sys_oroboros_mid"] = {0,0,0,0,1,1,0,0}
+    obj_char["shot_sys_oroboros_mid"]["f_8"] = 0
+    obj_char["shot_sys_oroboros_mid"]["sprite_sheet_state"] = "5H_oroboros_loop_mid"
+    obj_char["shot_sys_oroboros_back"] = {0,0,0,0,1,1,0,0}
+    obj_char["shot_sys_oroboros_back"]["f_8"] = 0
+    obj_char["shot_sys_oroboros_back"]["f_4"] = 0
+    obj_char["shot_sys_oroboros_back"]["sprite_sheet_state"] = "5H_oroboros_loop_back"
+    -- reticle
+    obj_char_game_scene_char_LP["shot_sys_reticle"] = {0,0,0,1,1,1,0,0}
+    obj_char_game_scene_char_LP["shot_sys_reticle_f"] = 0
+    obj_char_game_scene_char_LP["shot_sys_reticle_visual_offset_amount_target"] = 0
+    obj_char_game_scene_char_LP["shot_sys_reticle_visual_offset_amount_current"] = 0
+    obj_char_game_scene_char_LP["shot_sys_reticle_visual_offset"] = {0,0}
+    obj_char_game_scene_char_LP["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_at_the_ready"
+    return
+end
+function character_function_game_scene_TRM_shot_sys_off_update(obj_char)
+    -- hurt_state
+    obj_char["hurt_state"] = obj_char["hurt_state_target"]
+    return
+end
+function character_function_game_scene_TRM_shot_sys_ease_in_init(obj_char)
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local instant_aim_state = {
+        ["block"] = true,
+        ["hurt"] = true,
+        ["hurtstop"] = true,
+        ["blockstop"] = true,
+        ["knockdown"] = true,
+        ["knockdown_recovery"] = true,
+        ["knockout"] = true
+    }
+    -- hurt_state
+    obj_char["hurt_state"] = "unblock"
+    -- shot_sys
+    obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_5H_shot_sys_ease_in(obj_char)
+    init_character_anim_with(obj_char,obj_char["shot_sys_animation"])
+    obj_char["shot_sys_aim_process"] = {0,0,420,540,false}
+    character_function_game_scene_TRM_aiming_process_update(obj_char)
+    -- oroboros
+    obj_char["shot_sys_oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["shot_sys_oroboros_front"])
+    obj_char["shot_sys_oroboros_animation_table"][2] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char["shot_sys_oroboros_front"],"5H_oroboros_loop_front")
+    obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["shot_sys_oroboros_mid"],"5H_oroboros_ease_in_mid")
+    obj_char["shot_sys_oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["shot_sys_oroboros_back"])
+    obj_char["shot_sys_oroboros_animation_table"][5] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char["shot_sys_oroboros_back"],"5H_oroboros_loop_back")
+    init_character_anim_with(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
+    init_character_anim_with(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
+    init_character_anim_with(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
+    init_character_anim_with(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
+    init_character_anim_with(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
+    -- reticle
+    return
+end
+function character_function_game_scene_TRM_shot_sys_ease_in_update(obj_char)
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local instant_aim_state = {
+        ["block"] = true,
+        ["hurt"] = true,
+        ["hurtstop"] = true,
+        ["blockstop"] = true,
+        ["knockdown"] = true,
+        ["knockdown_recovery"] = true,
+        ["knockout"] = true
+    }
+    -- hurt_state
+    obj_char["hurt_state"] = "unblock"
+    -- shot_sys
+    character_animator(obj_char,obj_char["shot_sys_animation"])
+    character_function_game_scene_TRM_aiming_process_update(obj_char)
+    -- oroboros
+    character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
+    character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
+    character_animator(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
+    character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
+    character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
+    -- reticle
+    return
+end
+function character_function_game_scene_TRM_shot_sys_ease_out_init(obj_char)
+    -- hurt_state
+    obj_char["hurt_state"] = obj_char["hurt_state_target"]
+    -- shot_sys
+    obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_5H_shot_sys_ease_out(obj_char)
+    init_character_anim_with(obj_char,obj_char["shot_sys_animation"])
+    obj_char["shot_sys_aim_process"] = {0,0,420,540,false}
+    -- oroboros
+    obj_char["shot_sys_oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["shot_sys_oroboros_front"])
+    obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["shot_sys_oroboros_mid"],"5H_oroboros_ease_out_mid")
+    obj_char["shot_sys_oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["shot_sys_oroboros_back"])
+    init_character_anim_with(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
+    init_character_anim_with(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
+    init_character_anim_with(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
+    -- reticle
+    return
+end
+function character_function_game_scene_TRM_shot_sys_ease_out_update(obj_char)
+    -- hurt_state
+    obj_char["hurt_state"] = obj_char["hurt_state_target"]
+    -- shot_sys
+    character_animator(obj_char,obj_char["shot_sys_animation"])
+    -- oroboros
+    character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
+    character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
+    character_animator(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
+    character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
+    character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
+    -- reticle
+    return
+end
+function character_function_game_scene_TRM_shot_sys_at_the_ready_aimming_init(obj_char)
+    -- hurt_state
+    obj_char["hurt_state"] = "unblock"
+    -- shot_sys
+    character_function_game_scene_TRM_aiming_process_update(obj_char)
+    -- oroboros
+    obj_char["shot_sys_oroboros_front"][4] = 1
+    obj_char["shot_sys_oroboros_back"][4] = 1
+    obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["shot_sys_oroboros_mid"])
+    init_character_anim_with(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
+    -- reticle
+    return
+end
+function character_function_game_scene_TRM_shot_sys_at_the_ready_aimming_update(obj_char)
+    -- hurt_state
+    obj_char["hurt_state"] = "unblock"
+    -- shot_sys
+    character_function_game_scene_TRM_aiming_process_update(obj_char)
+    -- oroboros
+    character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
+    character_animator(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
+    character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
+    -- reticle
+    return
+end
+function character_function_game_scene_TRM_shot_sys_steady_aimming_init(obj_char)
+end
+function character_function_game_scene_TRM_shot_sys_steady_aimming_update(obj_char)
+end
+function character_function_game_scene_TRM_shot_sys_shot_init(obj_char)
+    -- hurt_state
+    obj_char["hurt_state"] = "unblock"
+    -- shot_sys
+    obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_5H_shot_sys_shot(obj_char)
+    init_character_anim_with(obj_char,obj_char["shot_sys_animation"])
+    -- oroboros
+    obj_char["shot_sys_oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
+    init_character_anim_with(obj_char,obj_char["shot_sys_oroboros_animation_table"][6])
+    -- reticle
+    return
+end
+function character_function_game_scene_TRM_shot_sys_shot_update(obj_char)
+    -- hurt_state
+    obj_char["hurt_state"] = "unblock"
+    -- shot_sys
+    character_animator(obj_char,obj_char["shot_sys_animation"])
+    -- oroboros
+    character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
+    character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
+    character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
+    character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
+    character_animator(obj_char,obj_char["shot_sys_oroboros_animation_table"][6])
+    -- reticle
+    return
 end

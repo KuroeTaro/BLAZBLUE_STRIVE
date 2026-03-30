@@ -60,7 +60,7 @@ function load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
         obj_char["hurtbox_table"] = {{0,-175,180,350}}
         obj_char["collision_test_ground_height_offset"] = 0
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-80,-355}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {292,420}
@@ -113,7 +113,7 @@ function load_game_scene_anim_char_TRM_1_2_3_crouch_turn(obj_char)
         obj_char["hurtbox_table"] = {{0,-150,200,300}}
         obj_char["collision_test_ground_height_offset"] = 0
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-80,-355}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {292,297}
@@ -156,7 +156,7 @@ function load_game_scene_anim_char_TRM_1_2_3_crouch_to_stand_idle(obj_char)
         obj_char["hurtbox_table"] = {{0,-190,190,380}}
         obj_char["collision_test_ground_height_offset"] = 0
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {292,420}
@@ -203,7 +203,7 @@ function load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-455,100,50}}
         obj_char["collision_test_ground_height_offset"] = 0
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {215,510}
@@ -244,7 +244,7 @@ function load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-455,100,50}}
         obj_char["collision_test_ground_height_offset"] = 0
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {220,510}
@@ -289,7 +289,7 @@ function load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
         obj_char["hurtbox_table"] = {{0,-160,290,320}}
         obj_char["collision_test_ground_height_offset"] = 0
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {323,515}
@@ -386,7 +386,7 @@ function load_game_scene_anim_char_TRM_4_walk(obj_char)
         obj_char["hurtbox_table"] = {{0,-215,170,430},{-7,-455,100,50}}
         obj_char["collision_test_ground_height_offset"] = 0
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-120,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-120,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {170,510}
@@ -498,7 +498,7 @@ function load_game_scene_anim_char_TRM_4_walk_to_stand_idle(obj_char)
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-455,100,50}}
         obj_char["collision_test_ground_height_offset"] = 0
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {155,515}
@@ -545,7 +545,7 @@ function load_game_scene_anim_char_TRM_6_walk(obj_char)
         obj_char["hurtbox_table"] = {{0,-215,170,430},{7,-455,100,50}}
         obj_char["collision_test_ground_height_offset"] = 0
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {288,510}
@@ -657,7 +657,7 @@ function load_game_scene_anim_char_TRM_6_walk_to_stand_idle(obj_char)
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-455,100,50}}
         obj_char["collision_test_ground_height_offset"] = 0
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {155,510}
@@ -747,7 +747,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         obj_char["hurtbox_table"] = {{0,-190,180,380}}
         obj_char["collision_test_ground_height_offset"] = 0
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {325,480}
@@ -863,7 +863,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet_stat
         obj_char["hurtbox_table"] = {{0,-180,width_table[0],380}}
         obj_char["collision_test_ground_height_offset"] = 180
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-130,-320}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = anchor_pos
@@ -1046,7 +1046,7 @@ function load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
         obj_char["hurtbox_table"] = {{0,-215,170,430}}
         obj_char["collision_test_ground_height_offset"] = 0
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {275,415}
@@ -1150,7 +1150,7 @@ function load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
         obj_char["hurtbox_table"] = {}
         obj_char["collision_test_ground_height_offset"] = 0
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-175,-200}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-175,-200}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {275,505}
@@ -1202,7 +1202,7 @@ function load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
         obj_char["hurtbox_table"] = {{0,-225,180,450}}
         obj_char["collision_test_ground_height_offset"] = 0
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 3
         -- update
@@ -1320,7 +1320,7 @@ function load_game_scene_anim_char_TRM_4dash_air_backdash(input,obj_char)
         obj_char["hurtbox_table"] = {{0,-125,260,270}}
         obj_char["collision_test_ground_height_offset"] = 180
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-130,-260}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {242,285}
@@ -1446,7 +1446,7 @@ function load_game_scene_anim_char_TRM_6dash_dash(input,obj_char)
         obj_char["hurtbox_table"] = {{0,-190,285,380}}
         obj_char["collision_test_ground_height_offset"] = 0
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {60,-350}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {60,-350}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {288,510}
@@ -1619,7 +1619,7 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(input,obj_char)
         obj_char["hurtbox_table"] = {{0,-125,260,270}}
         obj_char["collision_test_ground_height_offset"] = 180
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-130,-260}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {350,283}
@@ -1823,7 +1823,7 @@ function load_game_scene_anim_char_TRM_burst_overdrive(obj_char,other_side_count
         obj_char["hurtbox_table"] = {}
         obj_char["collision_test_ground_height_offset"] = 0
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {296,615}
@@ -2215,7 +2215,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-80,-355}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {295,315}
@@ -2467,7 +2467,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-170,-435}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-170,-435}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {280,495}
@@ -2487,7 +2487,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         -- VFX
         insert_VFX_game_scene_char_TRM_6P_whiff(obj_char)
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-225,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-225,-455}
         -- draw_correction
         obj_char[8] = 1
     end
@@ -2512,7 +2512,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
             0.5,-0.8,0.8,0
         )
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-90,-405}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-90,-405}
         -- draw_correction
         obj_char[8] = 4
     end
@@ -2548,7 +2548,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         -- collide
         obj_char["hurtbox_table"] = {{0,-205,180,410}}
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-105,-445}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-105,-445}
         -- draw_correction
         obj_char[8] = 9
     end
@@ -2559,7 +2559,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         -- collide
         obj_char["hurtbox_table"] = {{0,-215,170,430}}
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 10
     end
@@ -2741,7 +2741,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {233,520}
@@ -2992,7 +2992,7 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-355}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-355}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {290,300}
@@ -3102,7 +3102,7 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
         -- collide
         obj_char["hurtbox_table"] = {{0,-125,200,250}}
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-80,-355}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         obj_char[8] = 8
     end
@@ -3280,7 +3280,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {370,540}
@@ -3330,7 +3330,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         -- SFX
         play_obj_audio(SFX_table["5P"])
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-180,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-180,-455}
         -- draw_correction
         obj_char[8] = 4
     end
@@ -3399,7 +3399,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         -- collide
         obj_char["hurtbox_table"] = {{-5,-215,170,430},{-15,-455,100,50}}
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 10
     end
@@ -3567,7 +3567,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-145,-440}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-145,-440}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {235,510}
@@ -3589,7 +3589,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         -- collide
         obj_char["hurtbox_table"] = {{-28,-325,200,250},{-50,-100,154,200}}
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-170,-400}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-170,-400}
         -- draw_correction
         obj_char[8] = 2
     end
@@ -3664,7 +3664,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-140,-425}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-140,-425}
         -- collide
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{-5,-225,180,450}}
@@ -3673,7 +3673,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
     end
     res[23] = function()
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 7
     end
@@ -3848,7 +3848,7 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-50,-345}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-50,-345}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {292,405}
@@ -3952,7 +3952,7 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
         -- collide
         obj_char["hurtbox_table"] = {{10,-150,220,300}}
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-80,-355}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         obj_char[8] = 8
     end
@@ -4179,7 +4179,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
             0.5,0.8,0.8,0
         )
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-430}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-430}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {375,510}
@@ -4203,7 +4203,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
         -- collide
         obj_char["hurtbox_table"] = {{0,-215,190,430},{125,-215,60,280}}
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-90,-420}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-90,-420}
         -- draw_correction
         obj_char[8] = 2
     end
@@ -4231,7 +4231,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,175,-615,1,0.75,0.75,0,false,false}
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-100,-355}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-100,-355}
         -- draw_correction
         obj_char[8] = 4
         -- VFX
@@ -4306,7 +4306,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
         -- collide
         obj_char["hurtbox_table"] = {{0,-215,170,430}}
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 10
     end
@@ -4481,7 +4481,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {320,510}
@@ -4495,7 +4495,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
     end
     res[3] = function()
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-145,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-145,-455}
         -- draw_correction
         obj_char[8] = 1
     end
@@ -4569,7 +4569,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
     end
     res[26] = function()
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-120,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-120,-455}
         -- draw_correction
         obj_char[8] = 6
     end
@@ -4738,7 +4738,7 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-20,-375}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-20,-375}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {320,510}
@@ -4847,7 +4847,7 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
         -- collide
         obj_char["hurtbox_table"] = {{0,-215,170,430},{-30,-455,100,50}}
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-100,-405}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-100,-405}
         -- draw_correction
         obj_char[8] = 9
     end
@@ -4855,7 +4855,7 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
         -- collide
         obj_char["hurtbox_table"] = {{-20,-215,170,430},{-30,-455,100,50}}
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-105,-445}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-105,-445}
         -- draw_correction
         obj_char[8] = 10
     end
@@ -4906,7 +4906,7 @@ function load_game_scene_anim_char_TRM_5H(obj_char)
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-455,100,50}}
         obj_char["collision_test_ground_height_offset"] = 0
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {200,520}
@@ -4952,6 +4952,130 @@ function load_game_scene_anim_char_TRM_5H(obj_char)
     end
     return res
 end
+--  shot_sys
+function load_game_scene_anim_char_TRM_5H_shot_sys_ease_in(obj_char)
+    local res = {}
+    res["prop_f"] = "shot_sys_f"
+    res["anim_length"] = 20
+
+    res[0] = function()
+        -- oroboros
+        obj_char["shot_sys_fire_cancel"] = false
+        obj_char["shot_sys_idle_cancel"] = true
+        --VFX
+        insert_VFX_game_scene_char_TRM_5H_whiff_switch(obj_char)
+    end
+    res[9] = function()
+        -- input_sys_cache
+        obj_char["input_sys_state_negative_edge"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char["player_side"])(obj_char)
+    end
+    res[12] = function()
+        -- input_sys_cache
+        obj_char["input_sys_state_negative_edge"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_negative_edge_state_machine(obj_char["player_side"])()
+        -- oroboros
+        obj_char["shot_sys_fire_cancel"] = true
+    end
+    res[20] = function()
+        -- animation_end
+    end
+    return res
+end
+function load_game_scene_anim_char_TRM_5H_shot_sys_shot(obj_char)
+    local res = {}
+    local obj_camera = obj_stage_game_scene_camera
+    res["prop_f"] = "shot_sys_f"
+    res["anim_length"] = 28
+
+    res[0] = function()
+        -- shot_sys
+        obj_char["shot_sys_fire_cancel"] = false
+        obj_char["shot_sys_idle_cancel"] = false
+        character_function_game_scene_TRM_aiming_process_update(obj_char)
+        -- cameara_animation_load
+        common_game_scene_nil_load_camera_enclose_anim(obj_char)
+        common_game_scene_hit_load_camera_shake_anim(obj_char,0.5)
+        table.insert(obj_camera["active_application_table"],
+            function()
+                anim_camera_point_linear_game_scene_camera_enclosing = obj_char["camera_enclosing_anim"]
+                anim_camera_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
+                anim_camera_point_linear_game_scene_camera_shake_y = obj_char["camera_y_shake_anim"]
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+                obj_camera["enclose_position_offset"] = obj_char["enclose_position_offset"]
+                obj_camera["state"] = "active"
+            end
+        )
+    end
+    res[1] = function()
+        -- insert_projectile
+        insert_projectile_game_scene_char_TRM_5H_shot(obj_char)
+    end
+    res[6] = function()
+        -- input_sys_cache
+        obj_char["input_sys_state_negative_edge"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char["player_side"])(obj_char)
+    end
+    res[12] = function()
+        -- input_sys_cache
+        obj_char["input_sys_state_negative_edge"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_negative_edge_state_machine(obj_char["player_side"])()
+        -- oroboros
+        obj_char["shot_sys_fire_cancel"] = true
+    end
+    res[17] = function()
+        -- oroboros
+        obj_char["shot_sys_idle_cancel"] = true
+    end
+    res[28] = function()
+        -- animation_end
+    end
+    return res
+end
+function load_game_scene_anim_char_TRM_5H_shot_sys_ease_out(obj_char)
+    local res = {}
+    res["prop_f"] = "shot_sys_f"
+    res["anim_length"] = 20
+
+    res[0] = function()
+        -- oroboros
+        obj_char["shot_sys_oroboros_offset_amount"] = 0
+        insert_VFX_game_scene_char_TRM_5H_whiff_switch(obj_char)
+    end
+    res[20] = function()
+        -- animation_end
+    end
+    return res
+end
+function load_game_scene_anim_char_TRM_5H_shot_sys_off(obj_char)
+    local res = {}
+    res["prop_f"] = "shot_sys_f"
+    res["anim_length"] = 1
+
+    res[0] = function()
+        -- oroboros
+        obj_char["shot_sys_fire_cancel"] = false
+        obj_char["shot_sys_idle_cancel"] = false
+        obj_char["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
+        obj_char["shot_sys_oroboros_front"]["f_8"] = 0
+        obj_char["shot_sys_oroboros_front"]["f_4"] = 0
+        obj_char["shot_sys_oroboros_front"]["sprite_sheet_state"] = "5H_oroboros_loop_front"
+        obj_char["shot_sys_oroboros_mid"] = {0,0,0,0,1,1,0,0}
+        obj_char["shot_sys_oroboros_mid"]["f_8"] = 0
+        obj_char["shot_sys_oroboros_mid"]["sprite_sheet_state"] = "5H_oroboros_loop_mid"
+        obj_char["shot_sys_oroboros_back"] = {0,0,0,0,1,1,0,0}
+        obj_char["shot_sys_oroboros_back"]["f_8"] = 0
+        obj_char["shot_sys_oroboros_back"]["f_4"] = 0
+        obj_char["shot_sys_oroboros_back"]["sprite_sheet_state"] = "5H_oroboros_loop_back"
+    end
+    res[1] = function()
+        -- animation_end
+    end
+    return res
+end
+--      oroboros
 function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj)
     local res = {}
     res["prop_f"] = "f_4"
@@ -5217,55 +5341,26 @@ function load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj)
     end
     return res
 end
-function load_game_scene_anim_char_TRM_5H_oroboros_ease_in(obj_char)
-    local res = {}
-    res["prop_f"] = "5H_oroboros_f"
-    res["anim_length"] = 13
-
-    res[0] = function()
-        -- oroboros
-        obj_char["5H_oroboros_fire_cancel"] = false
-        obj_char["5H_oroboros_idle_cancel"] = true
-        --VFX
-        insert_VFX_game_scene_char_TRM_5H_whiff_switch(obj_char)
-    end
-    res[9] = function()
-        -- input_sys_cache
-        obj_char["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char["player_side"])(obj_char)
-    end
-    res[12] = function()
-        -- input_sys_cache
-        obj_char["input_sys_state_negative_edge"] = "load" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_state_machine(obj_char["player_side"])()
-        -- oroboros
-        obj_char["5H_oroboros_fire_cancel"] = true
-    end
-    res[13] = function()
-        -- animation_end
-    end
-    return res
-end
 function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     local res = {}
     local side = obj_char["player_side"]
     local obj_camera = obj_stage_game_scene_camera
     local obj_char_other_side = common_game_scene_change_character(side)
-    local oroboros_pos = {obj_char["5H_oroboros_ease_current"][1],obj_char["5H_oroboros_ease_current"][2]}
+    local oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
     local obj_char_other_side_pos = {}
     local r = 0
-    local function update_r(obj_char,i)
+    local function update_oroboros_r(obj_char,i)
         -- local_value
-        oroboros_pos = {obj_char["5H_oroboros_ease_current"][1],obj_char["5H_oroboros_ease_current"][2]}
+        oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
         if obj_char_other_side["pushbox"][4] ~= nil then
             obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]-obj_char_other_side["pushbox"][4]}
         else
             obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]-285}
         end
         r = math.atan2((obj_char_other_side_pos[2]-oroboros_pos[2]),obj_char[5]*(obj_char_other_side_pos[1]-oroboros_pos[1]))*obj_char[5]
-        obj_char["5H_oroboros_aim_r"] = r*(27-i)/17
+        obj_char["shot_sys_oroboros_aim_r"] = r*(27-i)/17
     end
-    res["prop_f"] = "5H_oroboros_f"
+    res["prop_f"] = "shot_sys_oroboros_f"
     res["anim_length"] = 28
     if obj_char_other_side["pushbox"][4] ~= nil then
         obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]-obj_char_other_side["pushbox"][4]}
@@ -5277,170 +5372,96 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     for i = 0,9 do
         res[i] = function()
             if obj_char[5] ~= obj_char["basic_prop_cache"][5] then
-                update_r(obj_char,10)
+                update_oroboros_r(obj_char,10)
             end
         end
     end
     for i = 10,27 do
         res[i] = function()
             if obj_char[5] ~= obj_char["basic_prop_cache"][5] then
-                update_r(obj_char,i)
+                update_oroboros_r(obj_char,i)
             end
         end
     end
     res[0] = function()
         -- oroboros
-        obj_char["5H_oroboros_aim_r"] = r
-        obj_char["5H_oroboros_offset_amount"] = 75
-        obj_char["5H_oroboros_fire_cancel"] = false
-        obj_char["5H_oroboros_idle_cancel"] = false
+        obj_char["shot_sys_oroboros_aim_r"] = r
+        obj_char["shot_sys_oroboros_offset_amount"] = 75
 
-        obj_char["5H_oroboros_mid"]["sprite_sheet_state"]  = "5H_oroboros_shot"
-        obj_char["5H_oroboros_mid"][8] = 0
-
-        common_game_scene_nil_load_camera_enclose_anim(obj_char)
-        common_game_scene_hit_load_camera_shake_anim(obj_char,0.5)
-        table.insert(obj_camera["active_application_table"],
-            function()
-                anim_camera_point_linear_game_scene_camera_enclosing = obj_char["camera_enclosing_anim"]
-                anim_camera_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
-                anim_camera_point_linear_game_scene_camera_shake_y = obj_char["camera_y_shake_anim"]
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
-                obj_camera["enclose_position_offset"] = obj_char["enclose_position_offset"]
-                obj_camera["state"] = "active"
-            end
-        )
+        obj_char["shot_sys_oroboros_mid"]["sprite_sheet_state"]  = "5H_oroboros_shot"
+        obj_char["shot_sys_oroboros_mid"][8] = 0
     end
     res[1] = function()
         -- oroboros
-        update_r(obj_char,10)
-        
-        obj_char["5H_oroboros_mid"][8] = 1
+        update_oroboros_r(obj_char,10)
+        obj_char["shot_sys_oroboros_mid"][8] = 1
         -- VFX
         insert_VFX_game_scene_char_TRM_5H_whiff_shot(obj_char)
     end
     res[3] = function()
         -- oroboros
-        update_r(obj_char,10)
-
-        obj_char["5H_oroboros_mid"][8] = 2
-    end
-    res[6] = function()
-        -- input_sys_cache
-        obj_char["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char["player_side"])(obj_char)
+        update_oroboros_r(obj_char,10)
+        obj_char["shot_sys_oroboros_mid"][8] = 2
     end
     res[10] = function()
         -- oroboros
-        update_r(obj_char,10)
-        obj_char["5H_oroboros_offset_amount"] = 75*(17-0)/17
-
-        obj_char["5H_oroboros_mid"][8] = 3
-    end
-    res[12] = function()
-        -- input_sys_cache
-        obj_char["input_sys_state_negative_edge"] = "load" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_state_machine(obj_char["player_side"])()
-        -- oroboros
-        obj_char["5H_oroboros_fire_cancel"] = true
+        update_oroboros_r(obj_char,10)
+        obj_char["shot_sys_oroboros_offset_amount"] = 75*(17-0)/17
+        obj_char["shot_sys_oroboros_mid"][8] = 3
     end
     res[15] = function()
         -- oroboros
-        update_r(obj_char,15)
-        obj_char["5H_oroboros_offset_amount"] = 75*(17-5)/17
-
-        obj_char["5H_oroboros_mid"][8] = 4
+        update_oroboros_r(obj_char,15)
+        obj_char["shot_sys_oroboros_offset_amount"] = 75*(17-5)/17
+        obj_char["shot_sys_oroboros_mid"][8] = 4
     end
     res[17] = function()
         -- oroboros
-        obj_char["5H_oroboros_idle_cancel"] = true
+        obj_char["shot_sys_idle_cancel"] = true
     end
     res[19] = function()
         -- oroboros
-        update_r(obj_char,19)
-        obj_char["5H_oroboros_offset_amount"] = 75*(17-9)/17
-
-        obj_char["5H_oroboros_mid"][8] = 5
+        update_oroboros_r(obj_char,19)
+        obj_char["shot_sys_oroboros_offset_amount"] = 75*(17-9)/17
+        obj_char["shot_sys_oroboros_mid"][8] = 5
     end
     res[23] = function()
         -- oroboros
-        update_r(obj_char,23)
-        obj_char["5H_oroboros_offset_amount"] = 75*(17-13)/17
-
-        obj_char["5H_oroboros_mid"][8] = 6
+        update_oroboros_r(obj_char,23)
+        obj_char["shot_sys_oroboros_offset_amount"] = 75*(17-13)/17
+        obj_char["shot_sys_oroboros_mid"][8] = 6
     end
     res[27] = function()
         -- oroboros
-        obj_char["5H_oroboros_aim_r"] = 0
-        obj_char["5H_oroboros_offset_amount"] = 0
+        obj_char["shot_sys_oroboros_aim_r"] = 0
+        obj_char["shot_sys_oroboros_offset_amount"] = 0
     end
     res[28] = function()
         -- animation_end
     end
     return res
 end
-function load_game_scene_anim_char_TRM_5H_oroboros_ease_out(obj_char)
-    local res = {}
-    res["prop_f"] = "5H_oroboros_f"
-    res["anim_length"] = 13
-
-    res[0] = function()
-        -- oroboros
-        obj_char["5H_oroboros_offset_amount"] = 0
-        insert_VFX_game_scene_char_TRM_5H_whiff_switch(obj_char)
-    end
-    res[13] = function()
-        -- animation_end
-    end
-    return res
-end
-function load_game_scene_anim_char_TRM_5H_oroboros_off(obj_char)
-    local res = {}
-    res["prop_f"] = "5H_oroboros_f"
-    res["anim_length"] = 1
-
-    res[0] = function()
-        obj_char["5H_oroboros_fire_cancel"] = false
-        obj_char["5H_oroboros_idle_cancel"] = false
-        obj_char["5H_oroboros_front"] = {0,0,0,0,1,1,0,0}
-        obj_char["5H_oroboros_front"]["f_8"] = 0
-        obj_char["5H_oroboros_front"]["f_4"] = 0
-        obj_char["5H_oroboros_front"]["sprite_sheet_state"] = "5H_oroboros_loop_front"
-        obj_char["5H_oroboros_mid"] = {0,0,0,0,1,1,0,0}
-        obj_char["5H_oroboros_mid"]["f_8"] = 0
-        obj_char["5H_oroboros_mid"]["sprite_sheet_state"] = "5H_oroboros_loop_mid"
-        obj_char["5H_oroboros_back"] = {0,0,0,0,1,1,0,0}
-        obj_char["5H_oroboros_back"]["f_8"] = 0
-        obj_char["5H_oroboros_back"]["f_4"] = 0
-        obj_char["5H_oroboros_back"]["sprite_sheet_state"] = "5H_oroboros_loop_back"
-    end
-    res[1] = function()
-        -- animation_end
-    end
-    return res
-end
+--      reticle
 function load_game_scene_anim_char_TRM_5H_reticle_ease_in(obj_char)
     local res = {}
-    res["prop_f"] = "5H_reticle_f"
+    res["prop_f"] = "shot_sys_reticle_f"
     res["anim_length"] = 5
     
     res[0] = function()
         -- reticle
-        obj_char["5H_reticle"][4] = 0.5
+        obj_char["shot_sys_reticle"][4] = 0.5
     end
     res[1] = function()
         -- reticle
-        obj_char["5H_reticle"][4] = 0.75
+        obj_char["shot_sys_reticle"][4] = 0.75
     end
     res[3] = function()
         -- reticle
-        obj_char["5H_reticle"][4] = 0.9
+        obj_char["shot_sys_reticle"][4] = 0.9
     end
     res[4] = function()
         -- reticle
-        obj_char["5H_reticle"][4] = 1
+        obj_char["shot_sys_reticle"][4] = 1
     end
     res[5] = function()
         -- animation_end
@@ -5449,24 +5470,24 @@ function load_game_scene_anim_char_TRM_5H_reticle_ease_in(obj_char)
 end
 function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_aimming(obj_char)
     local res = {}
-    res["prop_f"] = "5H_reticle_f"
+    res["prop_f"] = "shot_sys_reticle_f"
     res["anim_length"] = 41
 
     for i = 0,9 do
         res[i*4] = function()
-            obj_char["5H_reticle"][8] = i
+            obj_char["shot_sys_reticle"][8] = i
         end
     end
     res[0] = function()
         -- reticle
-        obj_char["5H_reticle"][4] = 1
-        obj_char["5H_reticle"][8] = 0
-        obj_char["5H_reticle_sprite_sheet_state"] = "5H_reticle_at_the_ready"
+        obj_char["shot_sys_reticle"][4] = 1
+        obj_char["shot_sys_reticle"][8] = 0
+        obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_at_the_ready"
     end
     res[40] = function()
         -- reticle
-        obj_char["5H_reticle"][8] = 0
-        obj_char["5H_reticle_f"] = 0
+        obj_char["shot_sys_reticle"][8] = 0
+        obj_char["shot_sys_reticle_f"] = 0
     end
     res[41] = function()
         -- animation_end
@@ -5475,22 +5496,22 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_aimming(obj_char)
 end
 function load_game_scene_anim_char_TRM_5H_reticle_steady_aimming(obj_char)
     local res = {}
-    res["prop_f"] = "5H_reticle_f"
+    res["prop_f"] = "shot_sys_reticle_f"
     res["anim_length"] = 16
 
     res[0] = function()
-        obj_char["5H_reticle"][4] = 1
-        obj_char["5H_reticle"][8] = 0
-        obj_char["5H_reticle_sprite_sheet_state"] = "5H_reticle_staedy_aim"
+        obj_char["shot_sys_reticle"][4] = 1
+        obj_char["shot_sys_reticle"][8] = 0
+        obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_staedy_aim"
     end
     res[9] = function()
-        obj_char["5H_reticle"][8] = 1
+        obj_char["shot_sys_reticle"][8] = 1
     end
     res[12] = function()
-        obj_char["5H_reticle"][8] = 2
+        obj_char["shot_sys_reticle"][8] = 2
     end
     res[15] = function()
-        obj_char["5H_reticle"][8] = 3
+        obj_char["shot_sys_reticle"][8] = 3
     end
     res[16] = function()
         -- animation_end
@@ -5499,18 +5520,18 @@ function load_game_scene_anim_char_TRM_5H_reticle_steady_aimming(obj_char)
 end
 function load_game_scene_anim_char_TRM_5H_reticle_shot(obj_char)
     local res = {}
-    res["prop_f"] = "5H_reticle_f"
+    res["prop_f"] = "shot_sys_reticle_f"
     res["anim_length"] = 12
 
     res[0] = function()
-        obj_char["5H_reticle"][4] = 1
-        obj_char["5H_reticle"][8] = 0
+        obj_char["shot_sys_reticle"][4] = 1
+        obj_char["shot_sys_reticle"][8] = 0
     end
     res[5] = function()
-        obj_char["5H_reticle"][8] = 1
+        obj_char["shot_sys_reticle"][8] = 1
     end
     res[10] = function()
-        obj_char["5H_reticle"][8] = 2
+        obj_char["shot_sys_reticle"][8] = 2
     end
     res[12] = function()
         -- animation_end
@@ -5519,18 +5540,18 @@ function load_game_scene_anim_char_TRM_5H_reticle_shot(obj_char)
 end
 function load_game_scene_anim_char_TRM_5H_reticle_ease_out(obj_char)
     local res = {}
-    res["prop_f"] = "5H_reticle_f"
+    res["prop_f"] = "shot_sys_reticle_f"
     res["anim_length"] = 12
 
     res[0] = function()
-        obj_char["5H_reticle"][4] = 1
-        obj_char["5H_reticle"][8] = 0
+        obj_char["shot_sys_reticle"][4] = 1
+        obj_char["shot_sys_reticle"][8] = 0
     end
     res[5] = function()
-        obj_char["5H_reticle"][8] = 1
+        obj_char["shot_sys_reticle"][8] = 1
     end
     res[9] = function()
-        obj_char["5H_reticle"][8] = 2
+        obj_char["shot_sys_reticle"][8] = 2
     end
     res[12] = function()
         -- animation_end
@@ -5740,7 +5761,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             0.5,-0.8,0.8,0
         )
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-80,-355}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {330,310}
@@ -5793,7 +5814,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         -- collide
         obj_char["hurtbox_table"] = {{0,-150,200,300},{120,-115,40,230}}
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-120,-355}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-120,-355}
         -- draw_correction
         obj_char[8] = 4
     end
@@ -5848,13 +5869,13 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
     end
     res[37] = function()
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-90,-355}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-90,-355}
         -- draw_correction
         obj_char[8] = 11
     end
     res[40] = function()
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-80,-355}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         obj_char[8] = 12
     end
@@ -5956,7 +5977,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
         obj_char["block_VFX_insert_function"] = nil
         obj_char["block_SFX"] = nil
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-150,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-150,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {245,530}
@@ -5999,7 +6020,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
         -- collide
         obj_char["hurtbox_table"] = {{0,-215,170,430},{22,-455,100,50}}
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 3
     end
@@ -6327,7 +6348,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         obj_char["block_VFX_insert_function"] = nil
         obj_char["block_SFX"] = nil
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {249,530}
@@ -6720,7 +6741,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-170,-425}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-170,-425}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {415,635}
@@ -6772,7 +6793,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char["hitbox_table"] = {{140,-285,120,450}}
         obj_char["hurtbox_table"] = {{0,-237.5,210,475},{140,-285,170,500}}
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-150,-385}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-150,-385}
         -- draw_correction
         obj_char[8] = 4
         -- SFX
@@ -6856,7 +6877,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         -- collide
         obj_char["hurtbox_table"] = {{0,-215,170,430},{-12,-455,100,50}}
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-110,-455}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 12
     end
@@ -7315,7 +7336,7 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-130,-260}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {310,290}
@@ -7572,7 +7593,7 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver0
         obj_char["block_SFX"] = nil
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-130,-260}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {330,370}
@@ -7698,7 +7719,7 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
         -- obj_char["stand_hurt_animation"] = load_game_scene_anim_char_TRM_j2K_hurt(obj_char)
-        obj_char["stand_hurt_animation"] = load_game_scene_anim_char_TRM_j2K_ground_hurt(
+        obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
             obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
@@ -7707,7 +7728,7 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
             nil,nil,nil,nil,
             function() end
         )
-        obj_char["stand_block_animation"] = load_game_scene_anim_char_TRM_j2K_ground_block(
+        obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
             obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
@@ -7716,7 +7737,7 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
             nil,nil,nil,nil,
             function() end
         )
-        obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_TRM_j2K_ground_hurt(
+        obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
             obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
@@ -7725,7 +7746,7 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
             nil,nil,nil,nil,
             function() end
         )
-        obj_char["crouch_block_animation"] = load_game_scene_anim_char_TRM_j2K_ground_block(
+        obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
@@ -7826,7 +7847,7 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-130,-260}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {240,480}
@@ -8091,7 +8112,7 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-130,-260}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {350,330}
@@ -8353,7 +8374,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-130,-260}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {325,380}
@@ -8538,7 +8559,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
         obj_char["block_VFX_insert_function"] = nil
         obj_char["block_SFX"] = nil
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-130,-260}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {300,310}
@@ -8896,7 +8917,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         obj_char["block_VFX_insert_function"] = nil
         obj_char["block_SFX"] = nil
         -- oroboros
-        obj_char["5H_oroboros_anchor_pos"] = {-130,-260}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {335,435}
@@ -9094,6 +9115,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_camera_shake_anim(obj_char,m
 end
 
 -- special_hurt_animations
+-- groundbounce
 -- j2K
 -- function load_game_scene_anim_char_TRM_j2K_hurt(obj_char)
 --     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
@@ -9129,237 +9151,3 @@ end
 --     )
 --     return res
 -- end
-function load_game_scene_anim_char_TRM_j2K_ground_hurt(
-    obj_char,
-    sprite_sheet_state,
-    height_state,
-    state_cache,
-    hurt_horizontal_velocity,
-    hurt_horizontal_friction,
-    hurt_horizontal_velocity_correction,
-    hurt_vertical_velocity,
-    hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,
-    self_knockdown_animation,
-    self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,
-    self_groundbounce_hurt_animation,
-    frame_0_special_update_function
-)
-    local res = {}
-    local side = obj_char["player_side"]
-    local obj_char_other_side = common_game_scene_change_character(side)
-    local pushbox_data_other_side = common_game_scene_change_character_pushbox(side)
-    local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
-    local anchor_data_other_side = common_game_scene_change_character_anchor(side)
-    local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
-    res["prop_f"] = "f"
-    res["anim_length"] = 17
-
-    res[0] = function()
-        -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG
-        obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
-        obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
-        obj_char_other_side["startup_frame"] = 0
-        obj_char_other_side["active_frame"] = 0
-        obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
-
-        obj_char_other_side["idle_cancel"] = false
-
-        obj_char_other_side["strike_inv"] = false
-        obj_char_other_side["strike_inv_countdown"] = 0
-        obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 22
-        obj_char_other_side["projectile_inv"] = false
-        obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
-        -- state_number
-        character_function_game_scene_TRM_j2K_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
-            hurt_horizontal_velocity,
-            hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,
-            hurt_vertical_velocity,
-            hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
-        )
-        -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
-        obj_char_other_side["pushbox_other_side_char_active"] = true
-        obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
-        obj_char_other_side["collision_test_ground_height_offset"] = 0
-        -- draw_correction
-        obj_char_other_side[8] = 0
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
-        -- VFX
-        insert_VFX_game_scene_stage_smoke_horizontal_shot(
-            obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
-            0.5,-1,1,0
-        )
-        -- input_sys_cache
-        obj_char_other_side["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        -- special_update
-        frame_0_special_update_function()
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
-    end
-    res[2] = function()
-        -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][4]
-        -- draw_correction
-        obj_char_other_side[8] = 4
-    end
-    res[9] = function()
-        -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][3]
-        -- draw_correction
-        obj_char_other_side[8] = 3
-    end
-    res[11] = function()
-        -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][2]
-        -- draw_correction
-        obj_char_other_side[8] = 2
-    end
-    res[12] = function()
-        -- input_sys_cache
-        obj_char_other_side["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-    end
-    res[13] = function()
-        -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
-        -- draw_correction
-        obj_char_other_side[8] = 1
-    end
-    res[15] = function()
-        -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
-        -- draw_correction
-        obj_char_other_side[8] = 0
-    end
-    res[17] = function()
-        -- animation end
-    end
-    return res
-end
-function load_game_scene_anim_char_TRM_j2K_ground_block(
-    obj_char,
-    sprite_sheet_state,
-    height_state,
-    state_cache,
-    hurt_horizontal_velocity,
-    hurt_horizontal_friction,
-    hurt_horizontal_velocity_correction,
-    hurt_vertical_velocity,
-    hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,
-    self_knockdown_animation,
-    self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,
-    self_groundbounce_hurt_animation,
-    frame_0_special_update_function
-)
-    local res = {}
-    local side = obj_char["player_side"]
-    local obj_char_other_side = common_game_scene_change_character(side)
-    local pushbox_data_other_side = common_game_scene_change_character_pushbox(side)
-    local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
-    local anchor_data_other_side = common_game_scene_change_character_anchor(side)
-    local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
-    res["prop_f"] = "f"
-    res["anim_length"] = 14
-
-    res[0] = function()
-        -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG
-        obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
-        obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
-        obj_char_other_side["startup_frame"] = 0
-        obj_char_other_side["active_frame"] = 0
-        obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
-
-        obj_char_other_side["idle_cancel"] = false
-
-        obj_char_other_side["strike_inv"] = false
-        obj_char_other_side["strike_inv_countdown"] = 0
-        obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 18
-        obj_char_other_side["projectile_inv"] = false
-        obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
-        -- state_number
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
-        if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
-            hurt_horizontal_velocity = hurt_horizontal_velocity * 2
-        end
-        character_function_game_scene_TRM_j2K_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
-            hurt_horizontal_velocity,
-            hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,
-            hurt_vertical_velocity,
-            hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
-        )
-        -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
-        obj_char_other_side["pushbox_other_side_char_active"] = true
-        obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
-        obj_char_other_side["collision_test_ground_height_offset"] = 0
-        -- draw_correction
-        obj_char_other_side[8] = 5
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
-        -- VFX
-        insert_VFX_game_scene_stage_smoke_horizontal_shot(
-            obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
-            0.5,-1,1,0
-        )
-        -- input_sys_cache
-        obj_char_other_side["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        -- special_update
-        frame_0_special_update_function()
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
-    end
-    res[3] = function()
-        -- draw_correction
-        obj_char_other_side[8] = 3
-    end
-    res[6] = function()
-        -- draw_correction
-        obj_char_other_side[8] = 2
-    end
-    res[8] = function()
-        -- input_sys_cache
-        obj_char_other_side["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-    end
-    res[9] = function()
-        -- draw_correction
-        obj_char_other_side[8] = 1
-    end
-    res[12] = function()
-        -- draw_correction
-        obj_char_other_side[8] = 0
-    end
-    res[14] = function()
-        -- animation end
-    end
-    return res
-end

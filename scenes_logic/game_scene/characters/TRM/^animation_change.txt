@@ -118,11 +118,11 @@ obj_char["hurt_function"] = function() end
 obj_char["parry_function"] = function() end
 obj_char["hit_counter_ver_function"] = function() end
 
-obj_char["5H_oroboros_state"] = "idle"
-obj_char["5H_oroboros_anchor_pos"] = {168,210}
+obj_char["shot_sys_state"] = "idle"
+obj_char["shot_sys_oroboros_anchor_pos"] = {168,210}
 obj_char["oroboros_animation"] = nil
 obj_char["oroboros_8"] = 0 -- obj[oroboros_8]匕首图形上的帧数
-obj_char["5H_oroboros_f"] = 0 -- obj[oroboros_8]匕首逻辑上的帧数
+obj_char["shot_sys_f"] = 0 -- obj[oroboros_8]匕首逻辑上的帧数
 
 obj_char["velocity"] = {0,0}
 obj_char["velocity_cache"] = {0,0}
