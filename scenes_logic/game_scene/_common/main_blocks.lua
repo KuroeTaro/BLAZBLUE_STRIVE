@@ -60,14 +60,11 @@ function update_game_scene_main_training()
                     anim_UI_point_linear_game_scene_solid_ease_out_opacity_1_0
                 )
                 state_machine_automatic_player_game_scene(obj_annoucer_game_scene_act_common,105)
-
             elseif SCENE_TIMER <= 30 then
                 state_machine_automatic_player_game_scene(obj_annoucer_game_scene_act_common,105)
-
             elseif SCENE_TIMER < 105 then
                 state_machine_automatic_player_game_scene(obj_annoucer_game_scene_act_common,105)
                 state_machine_automatic_player_game_scene(obj_annoucer_game_scene_act_num,75)
-
             elseif SCENE_TIMER == 105 then
                 obj_annoucer_game_scene_act_common[4] = 0
                 obj_annoucer_game_scene_act_num[4] = 0
@@ -76,7 +73,6 @@ function update_game_scene_main_training()
                     obj_HUD_game_scene_timer,
                     anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1
                 )
-
             elseif SCENE_TIMER <= 115 then
                 -- do nothing
             elseif SCENE_TIMER < 135 then
@@ -85,14 +81,13 @@ function update_game_scene_main_training()
                     obj_HUD_game_scene_timer,
                     anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1
                 )
-
             elseif SCENE_TIMER == 160 then
                 -- input_sys save
                 obj_char_game_scene_char_LP["input_sys_state"] = "save" -- none save load
-                init_input_sys_cache_LP()
+                init_input_sys_cache_LP(obj_char_game_scene_char_LP)
 
                 obj_char_game_scene_char_RP["input_sys_state"] = "save" -- none save load
-                init_input_sys_cache_RP()
+                init_input_sys_cache_RP(obj_char_game_scene_char_RP)
             elseif SCENE_TIMER < 165 then
                 state_machine_automatic_player_game_scene(obj_HUD_game_scene_ease_in,50)
                 state_machine_automatic_player_game_scene(obj_annoucer_game_scene_lets_dance,40)
@@ -137,9 +132,7 @@ function update_game_scene_main_training()
 
                 common_game_scene_toggle_dynamic_HUD(1)
                 common_game_scene_toggle_ease_in(0)
-                
             end
-
         end,
         ["main"] = function()
             -- 获得输入 更新角色 状态 速度 和 碰撞盒

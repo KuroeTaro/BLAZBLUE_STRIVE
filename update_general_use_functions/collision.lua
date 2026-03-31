@@ -110,48 +110,55 @@ function pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_RP)
             obj_char_RP["collision_move_available"][1],
             obj_char_RP["collision_move_available"][2]
         })
-        if collision_state == "1111" then
-            local branch_flag = -1
-            if box_L[1] == box_R[1] then
-                if math.random() < 0.5 then
-                    branch_flag = 1
-                else
-                    branch_flag = 0
+        local switch = {
+            ["1111"] = function()
+                local branch_flag = -1
+                if box_L[1] == box_R[1] then
+                    if math.random() < 0.5 then
+                        branch_flag = 1
+                    else
+                        branch_flag = 0
+                    end
+                end
+                if box_L[1] < box_R[1] or branch_flag == 1 then
+                    local mid = (box_L[1]+box_L[3]/2+box_R[1]-box_R[3]/2)/2
+                    obj_char_LP["x"] = mid-box_L[3]/2
+                    obj_char_RP["x"] = mid+box_R[3]/2
+                elseif box_L[1] > box_R[1] or branch_flag == 0 then
+                    local mid = (box_R[1]+box_R[3]/2+box_L[1]-box_L[3]/2)/2
+                    obj_char_LP["x"] = mid+box_L[3]/2
+                    obj_char_RP["x"] = mid-box_R[3]/2
+                end
+            end,
+            ["0111"] = function()
+                obj_char_RP["x"] = box_L[1]+box_L[3]/2+box_R[3]/2
+            end,
+            ["1101"] = function()
+                obj_char_LP["x"] = box_R[1]+box_R[3]/2+box_L[3]/2
+            end,
+            ["0101"] = function()
+                if obj_char_LP[5] == -1 then
+                    obj_char_LP["x"] = box_R[1]+box_R[3]/2+box_L[3]/2
+                elseif obj_char_LP[5] == 1 then
+                    obj_char_RP["x"] = box_L[1]+box_L[3]/2+box_R[3]/2
+                end
+            end,
+            ["1011"] = function()
+                obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
+            end,
+            ["1110"] = function()
+                obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
+            end,
+            ["1010"] = function()
+                if obj_char_LP[5] == 1 then
+                    obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
+                elseif obj_char_LP[5] == -1 then
+                    obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
                 end
             end
-            if box_L[1] < box_R[1] or branch_flag == 1 then
-                local mid = (box_L[1]+box_L[3]/2+box_R[1]-box_R[3]/2)/2
-                obj_char_LP["x"] = mid-box_L[3]/2
-                obj_char_RP["x"] = mid+box_R[3]/2
-            elseif box_L[1] > box_R[1] or branch_flag == 0 then
-                local mid = (box_R[1]+box_R[3]/2+box_L[1]-box_L[3]/2)/2
-                obj_char_LP["x"] = mid+box_L[3]/2
-                obj_char_RP["x"] = mid-box_R[3]/2
-            end
-
-        elseif collision_state == "0111" then
-            obj_char_RP["x"] = box_L[1]+box_L[3]/2+box_R[3]/2
-        elseif collision_state == "1101" then
-            obj_char_LP["x"] = box_R[1]+box_R[3]/2+box_L[3]/2
-        elseif collision_state == "0101" then
-            if obj_char_LP[5] == -1 then
-                obj_char_LP["x"] = box_R[1]+box_R[3]/2+box_L[3]/2
-            elseif obj_char_LP[5] == 1 then
-                obj_char_RP["x"] = box_L[1]+box_L[3]/2+box_R[3]/2
-            end
-        elseif collision_state == "1011" then
-            obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
-
-        elseif collision_state == "1110" then
-            obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
-
-        elseif collision_state == "1010" then
-            if obj_char_LP[5] == 1 then
-                obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
-            elseif obj_char_LP[5] == -1 then
-                obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
-            end
-        end
+        }
+        local this_function = switch[collision_state]
+        if this_function then this_function() end
     end
 end
 

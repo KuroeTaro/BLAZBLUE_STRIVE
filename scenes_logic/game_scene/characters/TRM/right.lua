@@ -243,9 +243,9 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["shot_sys_reticle"] = {0,0,0,1,1,1,0,0}
     obj_char_game_scene_char_RP["shot_sys_reticle_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_reticle_animation"] = nil
-    obj_char_game_scene_char_RP["shot_sys_reticle_visual_offset_amount_target"] = 0
-    obj_char_game_scene_char_RP["shot_sys_reticle_visual_offset_amount_current"] = 0
-    obj_char_game_scene_char_RP["shot_sys_reticle_visual_offset_r"] = 0
+    obj_char_game_scene_char_RP["shot_sys_reticle_stage_pos_current"] = {0,0}
+    obj_char_game_scene_char_RP["shot_sys_reticle_stage_pos_target"] = {0,0}
+    obj_char_game_scene_char_RP["shot_sys_reticle_offset_r"] = 0
     obj_char_game_scene_char_RP["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_at_the_ready"
     
     -- draw_correction

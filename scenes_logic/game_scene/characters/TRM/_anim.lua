@@ -4995,7 +4995,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_shot(obj_char)
         character_function_game_scene_TRM_shot_sys_aiming_process_update(obj_char)
         -- cameara_animation_load
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
-        common_game_scene_hit_load_camera_shake_anim(obj_char,0.5)
+        common_game_scene_hit_load_camera_shake_anim(obj_char,0.25)
         table.insert(obj_camera["active_application_table"],
             function()
                 anim_camera_point_linear_game_scene_camera_enclosing = obj_char["camera_enclosing_anim"]
@@ -5360,13 +5360,15 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
         r = math.atan2((obj_char_other_side_pos[2]-oroboros_pos[2]),obj_char[5]*(obj_char_other_side_pos[1]-oroboros_pos[1]))*obj_char[5]
         obj_char["shot_sys_oroboros_aim_r"] = r*(27-i)/17
     end
+    local height_offset = {
+        ["stand"] = 250,
+        ["crouch"] = 200,
+        ["air"] = 100,
+        ["OTG"] = 100
+    }
     res["prop_f"] = "shot_sys_oroboros_f"
     res["anim_length"] = 28
-    if obj_char_other_side["pushbox"][4] ~= nil then
-        obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]-obj_char_other_side["pushbox"][4]}
-    else
-        obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]}
-    end
+    obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]-height_offset[obj_char_other_side["height_state"]]}
     r = math.atan2((obj_char_other_side_pos[2]-oroboros_pos[2]),obj_char[5]*(obj_char_other_side_pos[1]-oroboros_pos[1]))*obj_char[5]
 
     for i = 0,9 do

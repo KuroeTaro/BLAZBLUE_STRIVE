@@ -82,7 +82,6 @@ function update_char_select_scene_ease_in_40f_130f()
             obj_UI_char_select_scene_glow["alpha_points"],
             anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
         )
-
     elseif SCENE_TIMER == 60 then
         point_linear_animator(
             obj_UI_char_select_scene_glow,
@@ -112,7 +111,6 @@ function update_char_select_scene_ease_in_40f_130f()
             obj_UI_char_select_scene_icon_select_R,
             anim_UI_point_linear_char_select_scene_icon_select_ease_in_opacity_0_0p5
         )
-
     elseif SCENE_TIMER < 65 then
         point_linear_animator(
             obj_UI_char_select_scene_glow,
@@ -139,7 +137,6 @@ function update_char_select_scene_ease_in_40f_130f()
             obj_UI_char_select_scene_icon_select_R,
             anim_UI_point_linear_char_select_scene_icon_select_ease_in_opacity_0_0p5
         )
-
     elseif SCENE_TIMER == 65 then
         point_linear_animator(
             obj_UI_char_select_scene_glow,
@@ -344,7 +341,6 @@ function update_char_select_scene_ease_in_40f_130f()
                 anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x
             )
         end
-
     elseif SCENE_TIMER == 75 then
         point_linear_animator(
             obj_UI_char_select_scene_glow["alpha_points"],
@@ -363,12 +359,10 @@ function update_char_select_scene_ease_in_40f_130f()
             anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
         )
 
-
         point_linear_animator(
             obj_UI_char_select_scene_icon_select_L,
             anim_UI_point_linear_char_select_scene_icon_select_ease_in_opacity_0_0p5
         )
-
 
         point_linear_animator(
             obj_UI_char_select_scene_char_select_left_char,
@@ -392,7 +386,6 @@ function update_char_select_scene_ease_in_40f_130f()
                 anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x
             )
         end
-
     elseif SCENE_TIMER < 90 then
         point_linear_animator(
             obj_UI_char_select_scene_glow["alpha_points"],
@@ -410,7 +403,6 @@ function update_char_select_scene_ease_in_40f_130f()
             obj_UI_char_select_scene_glow["alpha_points"],
             anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
         )
-
 
         point_linear_animator(
             obj_UI_char_select_scene_char_select_left_char,
@@ -430,7 +422,6 @@ function update_char_select_scene_ease_in_40f_130f()
                 anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x
             )
         end
-        
     elseif SCENE_TIMER == 90 then
         point_linear_animator(
             obj_UI_char_select_scene_glow["alpha_points"],
@@ -448,7 +439,6 @@ function update_char_select_scene_ease_in_40f_130f()
             obj_UI_char_select_scene_glow["alpha_points"],
             anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
         )
-
 
         point_linear_animator(
             obj_UI_char_select_scene_char_select_left_char,
