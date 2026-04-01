@@ -167,7 +167,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["shot_sys_curse_countdown"] = 0
     obj_char_game_scene_char_RP["shot_sys_fire_cancel"] = false
     obj_char_game_scene_char_RP["shot_sys_idle_cancel"] = false
-    obj_char_game_scene_char_RP["shot_sys_aim_process"] = {0,0,420,540,false} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值 上一帧是否高于瞄准命中最低数值
+    obj_char_game_scene_char_RP["shot_sys_aim_process"] = {0,0,420,450,false} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值 上一帧是否高于瞄准命中最低数值
     obj_char_game_scene_char_RP["shot_sys_animation"] = nil
     obj_char_game_scene_char_RP["shot_sys_ban_state"] = {
         ["before_ease_in"] = true,
@@ -245,7 +245,6 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["shot_sys_reticle_animation"] = nil
     obj_char_game_scene_char_RP["shot_sys_reticle_stage_pos_current"] = {0,0}
     obj_char_game_scene_char_RP["shot_sys_reticle_stage_pos_target"] = {0,0}
-    obj_char_game_scene_char_RP["shot_sys_reticle_offset_r"] = 0
     obj_char_game_scene_char_RP["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_at_the_ready"
     
     -- draw_correction
@@ -1311,23 +1310,6 @@ function state_machine_char_game_scene_char_RP_shot_sys()
     (test_input_sys_release(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
     (test_input_sys_press_or_hold(input["HS"]) and test_input_sys_press(input["SP"]))
     local test_shot_sys_ban_state = obj_char["shot_sys_ban_state"][obj_char["state"]]
-
-    -- static_update
-        -- shot_sys_aim_process_update
-    obj_char["shot_sys_aim_process"] = {0,0,420,540,false}
-        -- oroboros_pos_update
-    obj_char["shot_sys_oroboros_ease_target"] = {
-        obj_char["x"] + obj_char[5]*obj_char["shot_sys_oroboros_anchor_pos"][1],
-        obj_char["y"] + obj_char[6]*obj_char["shot_sys_oroboros_anchor_pos"][2],
-        obj_char[5],
-        obj_char[6]
-    }
-    obj_char["shot_sys_oroboros_ease_current"] = {
-        (obj_char["shot_sys_oroboros_ease_target"][1]*2 + obj_char["shot_sys_oroboros_ease_current"][1])/3,
-        (obj_char["shot_sys_oroboros_ease_target"][2]*2 + obj_char["shot_sys_oroboros_ease_current"][2])/3,
-        (obj_char["shot_sys_oroboros_ease_target"][3]*2 + obj_char["shot_sys_oroboros_ease_current"][3])/3,
-        (obj_char["shot_sys_oroboros_ease_target"][4]*2 + obj_char["shot_sys_oroboros_ease_current"][4])/3
-    }
     -- state_machine
     local switch = {
         ["off"] = function()
@@ -1351,8 +1333,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 obj_char["shot_sys_state"] = "shot"
                 return
             end
-            if get_character_anim_end_state(obj_char,"shot_sys_f",obj_char["shot_sys_animation"])
-            then
+            if get_character_anim_end_state(obj_char,"shot_sys_f",obj_char["shot_sys_animation"])  then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_aimming_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready_aimming"
                 return
@@ -4469,6 +4450,14 @@ function draw_game_scene_char_RP_shadow()
 end
 function draw_game_scene_char_RP_attachment_front()
     -- retcile
+    local obj_char = obj_char_game_scene_char_RP
+    local camera = obj_stage_game_scene_camera
+    local image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj_char["shot_sys_reticle_sprite_sheet_state"]]
+    if obj_char["shot_sys_state"] ~= "off" then
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(camera,obj_char["shot_sys_reticle"],image_sprite_sheet,tostring(obj_char["shot_sys_reticle"][8]))
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+    end
 end
 function draw_game_scene_char_RP_attachment_back()
     -- nil

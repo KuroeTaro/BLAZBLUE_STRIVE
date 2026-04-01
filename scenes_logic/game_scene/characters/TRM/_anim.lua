@@ -4992,7 +4992,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_shot(obj_char)
         -- shot_sys
         obj_char["shot_sys_fire_cancel"] = false
         obj_char["shot_sys_idle_cancel"] = false
-        character_function_game_scene_TRM_shot_sys_aiming_process_update(obj_char)
+        character_function_game_scene_TRM_shot_sys_at_the_ready_aiming_process_update(obj_char)
         -- cameara_animation_load
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
         common_game_scene_hit_load_camera_shake_anim(obj_char,0.25)
@@ -5010,8 +5010,14 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_shot(obj_char)
         )
     end
     res[1] = function()
+        -- shot_sys
+        character_function_game_scene_TRM_shot_sys_at_the_ready_aiming_process_update(obj_char)
         -- insert_projectile
         insert_projectile_game_scene_char_TRM_5H_shot(obj_char)
+    end
+    res[3] = function()
+        -- shot_sys
+        obj_char["shot_sys_aim_process"][1] = 0
     end
     res[6] = function()
         -- input_sys_cache
