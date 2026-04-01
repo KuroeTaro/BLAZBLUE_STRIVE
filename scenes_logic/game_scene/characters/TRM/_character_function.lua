@@ -489,7 +489,7 @@ function character_function_game_scene_TRM_shot_sys_reticle_8_update(obj_char)
             obj_char_shot_sys_aim_process[5] = false
             obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_ease_in"
         end
-        obj_char["shot_sys_reticle"][8] = 0
+        obj_char["shot_sys_reticle"][8] = math.floor(obj_char_shot_sys_aim_process[1]*3/(obj_char_shot_sys_aim_process[3]))
     end
     return
 end
