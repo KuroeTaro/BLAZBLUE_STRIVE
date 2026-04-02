@@ -548,7 +548,7 @@ function character_function_game_scene_TRM_shot_sys_ease_in_init(obj_char)
     init_character_anim_with(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
     character_function_game_scene_TRM_shot_sys_oroboros_pos_init(obj_char)
     -- reticle
-    obj_char["shot_sys_reticle_animation"] = load_game_scene_anim_char_TRM_5H_reticle_ease_in_opecity(obj_char)
+    obj_char["shot_sys_reticle_animation"] = load_game_scene_anim_char_TRM_5H_reticle_ease_in(obj_char)
     init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation"])
     character_function_game_scene_TRM_shot_sys_reticle_8_update(obj_char)
     return

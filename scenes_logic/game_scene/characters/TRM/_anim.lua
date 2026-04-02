@@ -5450,7 +5450,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     return res
 end
 -- shot_sys_reticle
-function load_game_scene_anim_char_TRM_5H_reticle_ease_in_opecity(obj_char)
+function load_game_scene_anim_char_TRM_5H_reticle_ease_in(obj_char)
     local res = {}
     res["prop_f"] = "shot_sys_reticle_f"
     res["anim_length"] = 5
@@ -5458,6 +5458,8 @@ function load_game_scene_anim_char_TRM_5H_reticle_ease_in_opecity(obj_char)
     res[0] = function()
         -- reticle
         obj_char["shot_sys_reticle"][4] = 0.5
+        obj_char["shot_sys_reticle"][8] = 0
+        obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_at_the_ready"
     end
     res[1] = function()
         -- reticle
@@ -5476,20 +5478,27 @@ function load_game_scene_anim_char_TRM_5H_reticle_ease_in_opecity(obj_char)
     end
     return res
 end
-function load_game_scene_anim_char_TRM_5H_reticle_ease_in_8(obj_char)
+function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_aimming(obj_char)
     local res = {}
     res["prop_f"] = "shot_sys_reticle_f"
-    res["anim_length"] = 5
-    
+    res["anim_length"] = 46
+
+    for i = 0,9 do
+        res[i*4+5] = function()
+            obj_char["shot_sys_reticle"][8] = i+4
+        end
+    end
     res[0] = function()
         -- reticle
+        obj_char["shot_sys_reticle"][4] = 1
         obj_char["shot_sys_reticle"][8] = 0
+        obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_at_the_ready"
     end
     res[1] = function()
         -- reticle
         obj_char["shot_sys_reticle"][8] = 1
     end
-    res[3] = function()
+    res[2] = function()
         -- reticle
         obj_char["shot_sys_reticle"][8] = 2
     end
@@ -5498,29 +5507,12 @@ function load_game_scene_anim_char_TRM_5H_reticle_ease_in_8(obj_char)
         obj_char["shot_sys_reticle"][8] = 3
     end
     res[5] = function()
-        -- animation_end
-    end
-    return res
-end
-function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_aimming(obj_char)
-    local res = {}
-    res["prop_f"] = "shot_sys_reticle_f"
-    res["anim_length"] = 46
-
-    for i = 0,9 do
-        res[i*4+5] = function()
-            obj_char["shot_sys_reticle"][8] = i
-        end
-    end
-    res[5] = function()
         -- reticle
-        obj_char["shot_sys_reticle"][4] = 1
-        obj_char["shot_sys_reticle"][8] = 0
-        obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_at_the_ready"
+        obj_char["shot_sys_reticle"][8] = 4
     end
     res[45] = function()
         -- reticle
-        obj_char["shot_sys_reticle"][8] = 0
+        obj_char["shot_sys_reticle"][8] = 4
         obj_char["shot_sys_reticle_f"] = 5
     end
     res[46] = function()
