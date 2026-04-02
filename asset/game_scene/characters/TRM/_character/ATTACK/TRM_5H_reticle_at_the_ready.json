@@ -32,7 +32,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":320},
 	"sourceSize": {"w":320,"h":320}
 },
-"4":
+"5":
 {
 	"frame": {"x":1280,"y":0,"w":320,"h":320},
 	"rotated": false,
@@ -40,17 +40,9 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":320},
 	"sourceSize": {"w":320,"h":320}
 },
-"5":
-{
-	"frame": {"x":0,"y":320,"w":320,"h":320},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":320},
-	"sourceSize": {"w":320,"h":320}
-},
 "6":
 {
-	"frame": {"x":320,"y":320,"w":320,"h":320},
+	"frame": {"x":1600,"y":0,"w":320,"h":320},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":320},
@@ -58,7 +50,7 @@
 },
 "7":
 {
-	"frame": {"x":640,"y":320,"w":320,"h":320},
+	"frame": {"x":1920,"y":0,"w":320,"h":320},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":320},
@@ -66,7 +58,7 @@
 },
 "8":
 {
-	"frame": {"x":960,"y":320,"w":320,"h":320},
+	"frame": {"x":2240,"y":0,"w":320,"h":320},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":320},
@@ -74,7 +66,47 @@
 },
 "9":
 {
-	"frame": {"x":1280,"y":320,"w":320,"h":320},
+	"frame": {"x":2560,"y":0,"w":320,"h":320},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":320},
+	"sourceSize": {"w":320,"h":320}
+},
+"10":
+{
+	"frame": {"x":2880,"y":0,"w":320,"h":320},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":320},
+	"sourceSize": {"w":320,"h":320}
+},
+"11":
+{
+	"frame": {"x":3200,"y":0,"w":320,"h":320},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":320},
+	"sourceSize": {"w":320,"h":320}
+},
+"12":
+{
+	"frame": {"x":3520,"y":0,"w":320,"h":320},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":320},
+	"sourceSize": {"w":320,"h":320}
+},
+"13":
+{
+	"frame": {"x":3840,"y":0,"w":320,"h":320},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":320},
+	"sourceSize": {"w":320,"h":320}
+},
+"14":
+{
+	"frame": {"x":4160,"y":0,"w":320,"h":320},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":320},
@@ -85,8 +117,8 @@
 	"version": "1.0",
 	"image": "TRM_5H_reticle_at_the_ready",
 	"format": "RGBA8888",
-	"size": {"w":1600,"h":640},
+	"size": {"w":4480,"h":320},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:9db3371da987c222f63cf732fe23f832:7fb42812aff4e79431e5be7ac9a5df83:333dbeae218129164ee590c1e939f941$"
+	"smartupdate": "$TexturePacker:SmartUpdate:fc3cc4093fa1eebb5006e426824aa24e:8959376df16c9389551a8472b10792c7:333dbeae218129164ee590c1e939f941$"
 }
 }

@@ -91,7 +91,7 @@ local load_attack_name_table = {
     "5H_oroboros_loop_mid",
     "5H_oroboros_shot",
     "5H_reticle_at_the_ready",
-    "5H_reticle_ease_in",
+    "5H_reticle_at_the_ready_off",
     "5H_reticle_ease_out",
     "5H_reticle_shot",
     "5H_reticle_steady_aim",
