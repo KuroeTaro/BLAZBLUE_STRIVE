@@ -487,9 +487,11 @@ function character_function_game_scene_TRM_shot_sys_reticle_8_update(obj_char)
     else
         if obj_char_shot_sys_aim_process[5] == true then
             obj_char_shot_sys_aim_process[5] = false
-            obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_at_the_ready_off"
+            obj_char["shot_sys_reticle_animation"] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_aimming_off(obj_char)
+            init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation"])
+        else
+            character_animator(obj_char,obj_char["shot_sys_reticle_animation"])
         end
-        obj_char["shot_sys_reticle"][8] = math.floor(obj_char_shot_sys_aim_process[1]*3/(obj_char_shot_sys_aim_process[3]))
     end
     return
 end
