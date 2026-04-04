@@ -5580,6 +5580,7 @@ function load_game_scene_anim_char_TRM_5H_reticle_shot(obj_char)
     res[0] = function()
         obj_char["shot_sys_reticle"][4] = 1
         obj_char["shot_sys_reticle"][8] = 0
+        obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_shot"
     end
     res[5] = function()
         obj_char["shot_sys_reticle"][8] = 1

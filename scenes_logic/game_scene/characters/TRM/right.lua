@@ -1315,7 +1315,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
         ["off"] = function()
             character_function_game_scene_TRM_shot_sys_off_update(obj_char)
             -- ease_in
-            if test_input_sys_press_or_hold(input["HS"]) and (not test_shot_sys_ban_state) then
+            if test_input_sys_press(input["HS"]) and (not test_shot_sys_ban_state) then
                 character_function_game_scene_TRM_shot_sys_ease_in_init(obj_char)
                 obj_char["shot_sys_state"] = "ease_in"
                 return
