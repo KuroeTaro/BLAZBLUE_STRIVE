@@ -4423,7 +4423,7 @@ function draw_game_scene_char_RP_logic_graphic_pos_sync()
     local rot_dy = nil
 
     shot_r = math.min(shot_r,0.8)
-    shot_r = math.max(shot_r,-0.4)
+    shot_r = math.max(shot_r,-0.8)
 
     -- x y z opacity sx sy r f
     -- oroboros_back
