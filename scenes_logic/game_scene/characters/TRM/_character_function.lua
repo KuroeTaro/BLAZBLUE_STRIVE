@@ -495,6 +495,24 @@ function character_function_game_scene_TRM_shot_sys_reticle_8_update(obj_char)
     end
     return
 end
+function character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(obj_char)
+    local random_offset = (math.random(2) == 1) and 1 or -1
+    local random_index = math.random(1, 2)
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local height_offset = {
+        [370] = 365,
+        [285] = 200,
+        [200] = 100,
+        [130] = 100
+    }
+
+    obj_char["shot_sys_reticle_stage_pos_current"][1] = obj_char_other_side["x"]-160 + random_offset*150
+    random_offset = (math.random(2) == 1) and 1 or -1
+    obj_char["shot_sys_reticle_stage_pos_current"][2] = obj_char_other_side["y"]-height_offset[obj_char_other_side["pushbox"][4]]-160 + random_offset*150
+    obj_char["shot_sys_reticle_stage_pos_current"][random_index] = (math.random() * 2 - 1) * 150
+    obj_char["shot_sys_reticle"][1] = obj_char["shot_sys_reticle_stage_pos_current"][1]
+    obj_char["shot_sys_reticle"][2] = obj_char["shot_sys_reticle_stage_pos_current"][2]
+end
 -- emplayment_function
 function character_function_game_scene_TRM_shot_sys_off_init(obj_char)
     -- hurt_state
@@ -548,6 +566,7 @@ function character_function_game_scene_TRM_shot_sys_ease_in_init(obj_char)
     init_character_anim_with(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
     character_function_game_scene_TRM_shot_sys_oroboros_pos_init(obj_char)
     -- reticle
+    character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(obj_char)
     obj_char["shot_sys_reticle_animation"] = load_game_scene_anim_char_TRM_5H_reticle_ease_in(obj_char)
     init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation"])
     character_function_game_scene_TRM_shot_sys_reticle_8_update(obj_char)

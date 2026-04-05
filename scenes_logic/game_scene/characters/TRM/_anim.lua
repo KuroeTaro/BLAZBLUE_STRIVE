@@ -5453,12 +5453,17 @@ end
 function load_game_scene_anim_char_TRM_5H_reticle_ease_in(obj_char)
     local res = {}
     res["prop_f"] = "shot_sys_reticle_f"
-    res["anim_length"] = 5
+    res["anim_length"] = 20
     
+    for i = 12,19 do
+        res[i] = function()
+            character_function_game_scene_TRM_shot_sys_reticle_pos_update(obj_char)
+        end
+    end
+
     res[0] = function()
         -- reticle
         obj_char["shot_sys_reticle"][4] = 0.5
-        obj_char["shot_sys_reticle"][8] = 0
         obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_at_the_ready"
     end
     res[1] = function()
@@ -5473,7 +5478,7 @@ function load_game_scene_anim_char_TRM_5H_reticle_ease_in(obj_char)
         -- reticle
         obj_char["shot_sys_reticle"][4] = 1
     end
-    res[5] = function()
+    res[20] = function()
         -- animation_end
     end
     return res
@@ -5575,20 +5580,35 @@ end
 function load_game_scene_anim_char_TRM_5H_reticle_shot(obj_char)
     local res = {}
     res["prop_f"] = "shot_sys_reticle_f"
-    res["anim_length"] = 12
+    res["anim_length"] = 28
+    for i = 12,27 do
+        res[i] = function()
+            character_function_game_scene_TRM_shot_sys_reticle_pos_update(obj_char)
+        end
+    end
 
     res[0] = function()
+        -- reticle
         obj_char["shot_sys_reticle"][4] = 1
         obj_char["shot_sys_reticle"][8] = 0
         obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_shot"
     end
-    res[5] = function()
+    res[1] = function()
+        -- reticle
         obj_char["shot_sys_reticle"][8] = 1
     end
-    res[10] = function()
+    res[2] = function()
+        -- reticle
         obj_char["shot_sys_reticle"][8] = 2
     end
-    res[12] = function()
+    res[3] = function()
+        -- reticle
+        obj_char["shot_sys_reticle"][4] = 1
+        obj_char["shot_sys_reticle"][8] = 0
+        obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_at_the_ready"
+        character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(obj_char)
+    end
+    res[28] = function()
         -- animation_end
     end
     return res
