@@ -4425,10 +4425,15 @@ function draw_game_scene_char_LP_logic_graphic_pos_sync()
     shot_r = math.min(shot_r,0.8)
     shot_r = math.max(shot_r,-0.4)
 
+    -- x y z opacity sx sy r f
     -- oroboros_back
     obj = obj_char["shot_sys_oroboros_back"]
     obj[1] = oroboros_ease_current[1] + oroboros_ease_current[3]*(dx - math.cos(shot_r)*shot_offset_amount*0.5)
     obj[2] = oroboros_ease_current[2] + oroboros_ease_current[4]*(dy - math.sin(shot_r)*shot_offset_amount*0.5)
+    obj[3] = obj_char[3]
+    obj[5] = obj_char[5]
+    obj[6] = obj_char[6]
+    obj[7] = obj_char[7]
 
     -- character
     obj_char[1] = obj_char["x"]+obj_char["hurtstop_wiggle_current_x"]-obj_char[5]*obj_char["anchor_pos"][1]
@@ -4442,6 +4447,10 @@ function draw_game_scene_char_LP_logic_graphic_pos_sync()
     rot_dy = dx*oroboros_ease_current[3]*math.sin(shot_r) + dy*oroboros_ease_current[4]*math.cos(shot_r)
     obj[1] = oroboros_ease_current[1] + rot_dx
     obj[2] = oroboros_ease_current[2] + rot_dy
+    obj[3] = obj_char[3]
+    obj[5] = obj_char[5]
+    obj[6] = obj_char[6]
+    obj[7] = shot_r
 
     -- oroboros_front
     obj = obj_char["shot_sys_oroboros_front"]
@@ -4449,6 +4458,10 @@ function draw_game_scene_char_LP_logic_graphic_pos_sync()
     dy = -80
     obj[1] = oroboros_ease_current[1] + oroboros_ease_current[3]*(dx - math.cos(shot_r)*shot_offset_amount*0.7)
     obj[2] = oroboros_ease_current[2] + oroboros_ease_current[4]*(dy - math.sin(shot_r)*shot_offset_amount*0.7)
+    obj[3] = obj_char[3]
+    obj[5] = obj_char[5]
+    obj[6] = obj_char[6]
+    obj[7] = obj_char[7]
 end
 function draw_game_scene_char_LP()
     local obj = {0,0,0,0,0,0,0,0}
