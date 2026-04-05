@@ -209,6 +209,7 @@ function load_game_scene_obj_char_RP()
         ["4sp_S_5UA"] = true
     }
     -- 5H_shot_sys_oroboros
+    obj_char_game_scene_char_RP["shot_sys_oroboros_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_oroboros_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_aim_r"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_animation_table"] = {}
@@ -240,8 +241,11 @@ function load_game_scene_obj_char_RP()
         obj_char_game_scene_char_RP[6]
     }
     -- 5H_shot_sys_reticle
+    obj_char_game_scene_char_RP["shot_sys_reticle_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_reticle"] = {0,0,0,1,1,1,0,0}
     obj_char_game_scene_char_RP["shot_sys_reticle_f"] = 0
+    obj_char_game_scene_char_RP["shot_sys_reticle_f_4"] = 0
+    obj_char_game_scene_char_RP["shot_sys_reticle_f_8"] = 0
     obj_char_game_scene_char_RP["shot_sys_reticle_animation"] = nil
     obj_char_game_scene_char_RP["shot_sys_reticle_stage_pos_current"] = {0,0}
     obj_char_game_scene_char_RP["shot_sys_reticle_stage_pos_target"] = {0,0}
@@ -894,6 +898,7 @@ function update_game_scene_char_RP()
 end
 function update_game_scene_char_RP_attachment()
     state_machine_char_game_scene_char_RP_shot_sys()
+    state_machine_char_game_scene_char_RP_shot_sys_oroboros()
 end
 function state_machine_char_game_scene_char_RP()
     -- 拉后最高优先级 然后是拉下 然后是拉前 然后是跳
@@ -1334,8 +1339,8 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 return
             end
             if get_character_anim_end_state(obj_char,"shot_sys_f",obj_char["shot_sys_animation"])  then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_aimming_init(obj_char)
-                obj_char["shot_sys_state"] = "at_the_ready_aimming"
+                character_function_game_scene_TRM_shot_sys_at_the_ready_aim_init(obj_char)
+                obj_char["shot_sys_state"] = "at_the_ready_aim"
                 return
             end
         end,
@@ -1352,8 +1357,8 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 return
             end
         end,
-        ["at_the_ready_aimming"] = function()
-            character_function_game_scene_TRM_shot_sys_at_the_ready_aimming_update(obj_char)
+        ["at_the_ready_aim"] = function()
+            character_function_game_scene_TRM_shot_sys_at_the_ready_aim_update(obj_char)
             if test_input_idle_to_ease_out or test_shot_sys_ban_state then
                 character_function_game_scene_TRM_shot_sys_ease_out_init(obj_char)
                 obj_char["shot_sys_state"] = "ease_out"
@@ -1365,9 +1370,9 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 return
             end
         end,
-        ["steady_aimming"] = function()
+        ["steady_aim"] = function()
             obj_char["hurt_state"] = "counter"
-            character_function_game_scene_TRM_shot_sys_reticle_steady_aimming_update(obj_char)
+            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(obj_char)
         end,
         ["shot"] = function()
             character_function_game_scene_TRM_shot_sys_shot_update(obj_char)
@@ -1382,13 +1387,121 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 return
             end
             if get_character_anim_end_state(obj_char,"shot_sys_f",obj_char["shot_sys_animation"]) then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_aimming_init(obj_char)
-                obj_char["shot_sys_state"] = "at_the_ready_aimming"
+                character_function_game_scene_TRM_shot_sys_at_the_ready_aim_init(obj_char)
+                obj_char["shot_sys_state"] = "at_the_ready_aim"
                 return
             end
         end,
     }
     local this_function = switch[obj_char["shot_sys_state"]]
+    if this_function then this_function() end
+end
+function state_machine_char_game_scene_char_RP_shot_sys_oroboros()
+    local obj_char = obj_char_game_scene_char_RP
+    local switch = {
+        ["off"] = function()
+        end,
+        ["ease_in"] = function()
+            character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
+            character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
+            character_animator(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
+            character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
+            character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
+            character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
+            if get_character_anim_end_state(obj_char["shot_sys_oroboros_mid"],"f_8",obj_char["shot_sys_oroboros_animation_table"][3]) then
+                obj_char["shot_sys_oroboros_front"][4] = 1
+                obj_char["shot_sys_oroboros_back"][4] = 1
+                obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["shot_sys_oroboros_mid"])
+                init_character_anim_with(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
+                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
+                obj_char["shot_sys_oroboros_state"] = "loop"
+                return
+            end
+        end,
+        ["loop"] = function()
+            character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
+            character_animator(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
+            character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
+            character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
+        end,
+        ["ease_out"] = function()
+            character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
+            character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
+            character_animator(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
+            character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
+            character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
+            character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
+            if get_character_anim_end_state(obj_char["shot_sys_oroboros_mid"],"f_8",obj_char["shot_sys_oroboros_animation_table"][3]) then
+                obj_char["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
+                obj_char["shot_sys_oroboros_front"]["f_8"] = 0
+                obj_char["shot_sys_oroboros_front"]["f_4"] = 0
+                obj_char["shot_sys_oroboros_front"]["sprite_sheet_state"] = "5H_oroboros_loop_front"
+                obj_char["shot_sys_oroboros_mid"] = {0,0,0,0,1,1,0,0}
+                obj_char["shot_sys_oroboros_mid"]["f_8"] = 0
+                obj_char["shot_sys_oroboros_mid"]["sprite_sheet_state"] = "5H_oroboros_loop_mid"
+                obj_char["shot_sys_oroboros_back"] = {0,0,0,0,1,1,0,0}
+                obj_char["shot_sys_oroboros_back"]["f_8"] = 0
+                obj_char["shot_sys_oroboros_back"]["f_4"] = 0
+                obj_char["shot_sys_oroboros_back"]["sprite_sheet_state"] = "5H_oroboros_loop_back"
+                obj_char["shot_sys_oroboros_state"] = "off"
+                return
+            end
+        end,
+        ["shot"] = function()
+            -- oroboros
+            character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
+            character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
+            character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
+            character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
+            character_animator(obj_char,obj_char["shot_sys_oroboros_animation_table"][6])
+            character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
+            if get_character_anim_end_state(obj_char,"shot_sys_oroboros_f",obj_char["shot_sys_oroboros_animation_table"][6]) then
+                obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["shot_sys_oroboros_mid"])
+                init_character_anim_with(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
+                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
+                obj_char["shot_sys_oroboros_state"] = "loop"
+                return
+            end
+        end,
+    }
+    local this_function = switch[obj_char["shot_sys_oroboros_state"]]
+    if this_function then this_function() end
+end
+function state_machine_char_game_scene_char_RP_shot_sys_reticle()
+    -- ease_in
+    -- at_the_ready_aim_locking
+    -- at_the_ready_aim_locked
+    -- at_the_ready_aim_unlocking
+    -- staedy_aim
+    -- ease_out
+    -- shot
+    local obj_char = obj_char_game_scene_char_RP
+    local switch = {
+        ["off"] = function()
+        end,
+        ["ease_in"] = function()
+            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(obj_char)
+        end,
+        ["at_the_ready_aim_locking"] = function()
+            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(obj_char)
+        end,
+        ["at_the_ready_aim_locked"] = function()
+            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(obj_char)
+        end,
+        ["at_the_ready_aim_unlocking"] = function()
+            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(obj_char)
+        end,
+        ["steady_aim"] = function()
+            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(obj_char)
+        end,
+        ["ease_out"] = function()
+            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(obj_char)
+        end,
+         ["shot"] = function()
+            character_function_game_scene_TRM_shot_sys_reticle_shot_update(obj_char)
+        end,
+    }
+    local this_function = switch[obj_char["shot_sys_reticle_state"]]
     if this_function then this_function() end
 end
 
@@ -4316,12 +4429,6 @@ function draw_game_scene_char_RP_logic_graphic_pos_sync()
     obj = obj_char["shot_sys_oroboros_back"]
     obj[1] = oroboros_ease_current[1] + oroboros_ease_current[3]*(dx - math.cos(shot_r)*shot_offset_amount*0.5)
     obj[2] = oroboros_ease_current[2] + oroboros_ease_current[4]*(dy - math.sin(shot_r)*shot_offset_amount*0.5)
-    obj[3] = obj_char[3]
-    obj[4] = obj_char["shot_sys_oroboros_back"][4]
-    obj[5] = obj_char[5]
-    obj[6] = obj_char[6]
-    obj[7] = obj_char[7]
-    obj[8] = obj_char["shot_sys_oroboros_back"][8]
 
     -- character
     obj_char[1] = obj_char["x"]+obj_char["hurtstop_wiggle_current_x"]-obj_char[5]*obj_char["anchor_pos"][1]
@@ -4335,12 +4442,6 @@ function draw_game_scene_char_RP_logic_graphic_pos_sync()
     rot_dy = dx*oroboros_ease_current[3]*math.sin(shot_r) + dy*oroboros_ease_current[4]*math.cos(shot_r)
     obj[1] = oroboros_ease_current[1] + rot_dx
     obj[2] = oroboros_ease_current[2] + rot_dy
-    obj[3] = obj_char[3]
-    obj[4] = obj_char["oroboros_mid_4"]
-    obj[5] = obj_char[5]
-    obj[6] = obj_char[6]
-    obj[7] = shot_r
-    obj[8] = obj_char["shot_sys_oroboros_mid"][8]
 
     -- oroboros_front
     obj = obj_char["shot_sys_oroboros_front"]
@@ -4348,12 +4449,6 @@ function draw_game_scene_char_RP_logic_graphic_pos_sync()
     dy = -80
     obj[1] = oroboros_ease_current[1] + oroboros_ease_current[3]*(dx - math.cos(shot_r)*shot_offset_amount*0.7)
     obj[2] = oroboros_ease_current[2] + oroboros_ease_current[4]*(dy - math.sin(shot_r)*shot_offset_amount*0.7)
-    obj[3] = obj_char[3]
-    obj[4] = obj_char["shot_sys_oroboros_front"][4]
-    obj[5] = obj_char[5]
-    obj[6] = obj_char[6]
-    obj[7] = obj_char[7]
-    obj[8] = obj_char["shot_sys_oroboros_front"][8]
 end
 function draw_game_scene_char_RP()
     local obj = {0,0,0,0,0,0,0,0}
@@ -4367,13 +4462,11 @@ function draw_game_scene_char_RP()
 
     -- draw_back
     -- x y z opacity sx sy r f
-    if obj_char["shot_sys_state"] ~= "off" then
-        obj = obj_char["shot_sys_oroboros_back"]
-        image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj["sprite_sheet_state"]]
-        image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,tostring(obj[8]))
-        love.graphics.draw(image_sprite_sheet["sprite_batch"])
-    end
+    obj = obj_char["shot_sys_oroboros_back"]
+    image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj["sprite_sheet_state"]]
+    image_sprite_sheet["sprite_batch"]:clear()
+    draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,tostring(obj[8]))
+    love.graphics.draw(image_sprite_sheet["sprite_batch"])
     
     -- draw_3d_image_table(camera,obj,character_image_table)
     image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj_char["sprite_sheet_state"]]
@@ -4384,20 +4477,18 @@ function draw_game_scene_char_RP()
     love.graphics.setShader()
 
     -- draw_mid
-    if obj_char["shot_sys_state"] ~= "off" then
-        obj = obj_char["shot_sys_oroboros_mid"]
-        image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj["sprite_sheet_state"]]
-        image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,tostring(obj[8]))
-        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+    obj = obj_char["shot_sys_oroboros_mid"]
+    image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj["sprite_sheet_state"]]
+    image_sprite_sheet["sprite_batch"]:clear()
+    draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,tostring(obj[8]))
+    love.graphics.draw(image_sprite_sheet["sprite_batch"])
 
-        -- darw_front
-        obj = obj_char["shot_sys_oroboros_front"]
-        image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj["sprite_sheet_state"]]
-        image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,tostring(obj[8]))
-        love.graphics.draw(image_sprite_sheet["sprite_batch"])
-    end
+    -- darw_front
+    obj = obj_char["shot_sys_oroboros_front"]
+    image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj["sprite_sheet_state"]]
+    image_sprite_sheet["sprite_batch"]:clear()
+    draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,tostring(obj[8]))
+    love.graphics.draw(image_sprite_sheet["sprite_batch"])
 end
 function draw_game_scene_char_RP_shadow()
     local obj = obj_char_game_scene_char_RP

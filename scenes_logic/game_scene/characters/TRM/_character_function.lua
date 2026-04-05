@@ -479,7 +479,7 @@ function character_function_game_scene_TRM_shot_sys_reticle_8_update(obj_char)
     if obj_char_shot_sys_aim_process[1] >= obj_char_shot_sys_aim_process[3] then
         if obj_char_shot_sys_aim_process[5] == false then
             obj_char_shot_sys_aim_process[5] = true
-            obj_char["shot_sys_reticle_animation"] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_aimming(obj_char)
+            obj_char["shot_sys_reticle_animation"] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_aim(obj_char)
             init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation"])
         else
             character_animator(obj_char,obj_char["shot_sys_reticle_animation"])
@@ -487,7 +487,7 @@ function character_function_game_scene_TRM_shot_sys_reticle_8_update(obj_char)
     else
         if obj_char_shot_sys_aim_process[5] == true then
             obj_char_shot_sys_aim_process[5] = false
-            obj_char["shot_sys_reticle_animation"] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_aimming_off(obj_char)
+            obj_char["shot_sys_reticle_animation"] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_aim_off(obj_char)
             init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation"])
         else
             character_animator(obj_char,obj_char["shot_sys_reticle_animation"])
@@ -520,18 +520,6 @@ function character_function_game_scene_TRM_shot_sys_off_init(obj_char)
     -- shot_sys
     obj_char["shot_sys_fire_cancel"] = false
     obj_char["shot_sys_idle_cancel"] = false
-    -- oroboros
-    obj_char["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
-    obj_char["shot_sys_oroboros_front"]["f_8"] = 0
-    obj_char["shot_sys_oroboros_front"]["f_4"] = 0
-    obj_char["shot_sys_oroboros_front"]["sprite_sheet_state"] = "5H_oroboros_loop_front"
-    obj_char["shot_sys_oroboros_mid"] = {0,0,0,0,1,1,0,0}
-    obj_char["shot_sys_oroboros_mid"]["f_8"] = 0
-    obj_char["shot_sys_oroboros_mid"]["sprite_sheet_state"] = "5H_oroboros_loop_mid"
-    obj_char["shot_sys_oroboros_back"] = {0,0,0,0,1,1,0,0}
-    obj_char["shot_sys_oroboros_back"]["f_8"] = 0
-    obj_char["shot_sys_oroboros_back"]["f_4"] = 0
-    obj_char["shot_sys_oroboros_back"]["sprite_sheet_state"] = "5H_oroboros_loop_back"
     -- reticle
     obj_char["shot_sys_reticle"] = {0,0,0,1,1,1,0,0}
     obj_char["shot_sys_reticle_f"] = 0
@@ -554,22 +542,25 @@ function character_function_game_scene_TRM_shot_sys_ease_in_init(obj_char)
     obj_char["shot_sys_aim_process"] = {0,0,420,450,false}
     character_function_game_scene_TRM_shot_sys_at_the_ready_aiming_process_update(obj_char)
     -- oroboros
+    obj_char["shot_sys_oroboros_mid"][4] = 1
     obj_char["shot_sys_oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["shot_sys_oroboros_front"])
     obj_char["shot_sys_oroboros_animation_table"][2] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char["shot_sys_oroboros_front"],"5H_oroboros_loop_front")
     obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["shot_sys_oroboros_mid"],"5H_oroboros_ease_in_mid")
     obj_char["shot_sys_oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["shot_sys_oroboros_back"])
     obj_char["shot_sys_oroboros_animation_table"][5] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char["shot_sys_oroboros_back"],"5H_oroboros_loop_back")
-    init_character_anim_with(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
-    init_character_anim_with(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
-    init_character_anim_with(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
-    init_character_anim_with(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
-    init_character_anim_with(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
+    init_character_anim_without(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
+    init_character_anim_without(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
+    init_character_anim_without(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
+    init_character_anim_without(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
+    init_character_anim_without(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
     character_function_game_scene_TRM_shot_sys_oroboros_pos_init(obj_char)
+    obj_char["shot_sys_oroboros_state"] = "ease_in"
     -- reticle
     character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(obj_char)
     obj_char["shot_sys_reticle_animation"] = load_game_scene_anim_char_TRM_5H_reticle_ease_in(obj_char)
-    init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation"])
+    init_character_anim_without(obj_char,obj_char["shot_sys_reticle_animation"])
     character_function_game_scene_TRM_shot_sys_reticle_8_update(obj_char)
+    obj_char["shot_sys_reticle_state"] = "ease_in"
     return
 end
 function character_function_game_scene_TRM_shot_sys_ease_in_update(obj_char)
@@ -578,13 +569,6 @@ function character_function_game_scene_TRM_shot_sys_ease_in_update(obj_char)
     -- shot_sys
     character_animator(obj_char,obj_char["shot_sys_animation"])
     character_function_game_scene_TRM_shot_sys_at_the_ready_aiming_process_update(obj_char)
-    -- oroboros
-    character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
-    character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
-    character_animator(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
-    character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
-    character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
-    character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
     -- reticle
     character_animator(obj_char,obj_char["shot_sys_reticle_animation"])
     character_function_game_scene_TRM_shot_sys_reticle_8_update(obj_char)
@@ -601,10 +585,11 @@ function character_function_game_scene_TRM_shot_sys_ease_out_init(obj_char)
     obj_char["shot_sys_oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["shot_sys_oroboros_front"])
     obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["shot_sys_oroboros_mid"],"5H_oroboros_ease_out_mid")
     obj_char["shot_sys_oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["shot_sys_oroboros_back"])
-    init_character_anim_with(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
-    init_character_anim_with(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
-    init_character_anim_with(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
+    init_character_anim_without(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
+    init_character_anim_without(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
+    init_character_anim_without(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
     character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
+    obj_char["shot_sys_oroboros_state"] = "ease_out"
     -- reticle
     obj_char["shot_sys_reticle_animation"] = load_game_scene_anim_char_TRM_5H_reticle_ease_out(obj_char)
     init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation"])
@@ -616,53 +601,35 @@ function character_function_game_scene_TRM_shot_sys_ease_out_update(obj_char)
     obj_char["hurt_state"] = obj_char["hurt_state_target"]
     -- shot_sys
     character_animator(obj_char,obj_char["shot_sys_animation"])
-    -- oroboros
-    character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
-    character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
-    character_animator(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
-    character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
-    character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
-    character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
     -- reticle
     character_animator(obj_char,obj_char["shot_sys_reticle_animation"])
     character_function_game_scene_TRM_shot_sys_reticle_8_update(obj_char)
     return
 end
-function character_function_game_scene_TRM_shot_sys_at_the_ready_aimming_init(obj_char)
+function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_init(obj_char)
     -- hurt_state
     obj_char["hurt_state"] = "unblock"
     -- shot_sys
     -- 已经在ease_in阶段完成了当前帧数的aim_process
-    -- oroboros
-    obj_char["shot_sys_oroboros_front"][4] = 1
-    obj_char["shot_sys_oroboros_back"][4] = 1
-    obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["shot_sys_oroboros_mid"])
-    init_character_anim_with(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
-    character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
     -- reticle
     obj_char["shot_sys_reticle"][4] = 1
     character_function_game_scene_TRM_shot_sys_reticle_pos_update(obj_char)
     character_function_game_scene_TRM_shot_sys_reticle_8_update(obj_char)
     return
 end
-function character_function_game_scene_TRM_shot_sys_at_the_ready_aimming_update(obj_char)
+function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_update(obj_char)
     -- hurt_state
     obj_char["hurt_state"] = "unblock"
     -- shot_sys
     character_function_game_scene_TRM_shot_sys_at_the_ready_aiming_process_update(obj_char)
-    -- oroboros
-    character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
-    character_animator(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
-    character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
-    character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
     -- reticle
     character_function_game_scene_TRM_shot_sys_reticle_pos_update(obj_char)
     character_function_game_scene_TRM_shot_sys_reticle_8_update(obj_char)
     return
 end
-function character_function_game_scene_TRM_shot_sys_steady_aimming_init(obj_char)
+function character_function_game_scene_TRM_shot_sys_steady_aim_init(obj_char)
 end
-function character_function_game_scene_TRM_shot_sys_steady_aimming_update(obj_char)
+function character_function_game_scene_TRM_shot_sys_steady_aim_update(obj_char)
 end
 function character_function_game_scene_TRM_shot_sys_shot_init(obj_char)
     -- hurt_state
@@ -673,8 +640,9 @@ function character_function_game_scene_TRM_shot_sys_shot_init(obj_char)
     -- 已经在ease_in阶段完成了当前帧数的aim_process
     -- oroboros
     obj_char["shot_sys_oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
-    init_character_anim_with(obj_char,obj_char["shot_sys_oroboros_animation_table"][6])
+    init_character_anim_without(obj_char,obj_char["shot_sys_oroboros_animation_table"][6])
     character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
+    obj_char["shot_sys_oroboros_state"] = "shot"
     -- reticle
     obj_char["shot_sys_reticle_animation"] = load_game_scene_anim_char_TRM_5H_reticle_shot(obj_char)
     init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation"])
@@ -687,13 +655,6 @@ function character_function_game_scene_TRM_shot_sys_shot_update(obj_char)
     obj_char["hurt_state"] = "unblock"
     -- shot_sys
     character_animator(obj_char,obj_char["shot_sys_animation"])
-    -- oroboros
-    character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
-    character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
-    character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
-    character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
-    character_animator(obj_char,obj_char["shot_sys_oroboros_animation_table"][6])
-    character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
     -- reticle
     character_animator(obj_char,obj_char["shot_sys_reticle_animation"])
     -- 由reticle_shot动画控制reticle[8] 
