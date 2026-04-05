@@ -449,10 +449,37 @@ function character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char
     }
 end
 -- reticle_basic_prop_update
-function character_function_game_scene_TRM_shot_sys_reticle_pos_update(obj_char)
+function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready_aim(obj_char)
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local obj_char_shot_sys_aim_process = obj_char["shot_sys_aim_process"]
-    local div_value = 32-obj_char_shot_sys_aim_process[1]/15
+    local div_value = 32-math.min(obj_char_shot_sys_aim_process[1],obj_char_shot_sys_aim_process[3])/15
+
+    local height_offset = {
+        [370] = 365,
+        [285] = 200,
+        [200] = 100,
+        [130] = 100
+    }
+    -- update_shot_sys_reticle_visual_offset
+    obj_char["shot_sys_reticle_stage_pos_target"] = {
+        obj_char_other_side["x"]-160,
+        obj_char_other_side["y"]-height_offset[obj_char_other_side["pushbox"][4]]-160
+    }
+    obj_char["shot_sys_reticle_stage_pos_current"] = {
+        (obj_char["shot_sys_reticle_stage_pos_current"][1]*(div_value-1)+obj_char["shot_sys_reticle_stage_pos_target"][1])/div_value,
+        (obj_char["shot_sys_reticle_stage_pos_current"][2]*(div_value-1)+obj_char["shot_sys_reticle_stage_pos_target"][2])/div_value
+    }
+    obj_char["shot_sys_reticle"][1] = obj_char["shot_sys_reticle_stage_pos_current"][1]
+    obj_char["shot_sys_reticle"][2] = obj_char["shot_sys_reticle_stage_pos_current"][2]
+    return
+end
+function character_function_game_scene_TRM_shot_sys_reticle_pos_update_ease_in(obj_char)
+    if obj_char["shot_sys_aim_process"][1] < obj_char["shot_sys_aim_process"][3] then
+        character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready_aim(obj_char)
+    end
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local obj_char_shot_sys_aim_process = obj_char["shot_sys_aim_process"]
+    local div_value = 32-math.min(obj_char_shot_sys_aim_process[1],obj_char_shot_sys_aim_process[3])/15
 
     local height_offset = {
         [370] = 365,
@@ -613,7 +640,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_init(obj_ch
     -- 已经在ease_in阶段完成了当前帧数的aim_process
     -- reticle
     obj_char["shot_sys_reticle"][4] = 1
-    character_function_game_scene_TRM_shot_sys_reticle_pos_update(obj_char)
+    character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready_aim(obj_char)
     character_function_game_scene_TRM_shot_sys_reticle_8_update(obj_char)
     return
 end
@@ -623,7 +650,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_update(obj_
     -- shot_sys
     character_function_game_scene_TRM_shot_sys_at_the_ready_aiming_process_update(obj_char)
     -- reticle
-    character_function_game_scene_TRM_shot_sys_reticle_pos_update(obj_char)
+    character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready_aim(obj_char)
     character_function_game_scene_TRM_shot_sys_reticle_8_update(obj_char)
     return
 end

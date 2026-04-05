@@ -5459,13 +5459,7 @@ end
 function load_game_scene_anim_char_TRM_5H_reticle_ease_in(obj_char)
     local res = {}
     res["prop_f"] = "shot_sys_reticle_f_4"
-    res["anim_length"] = 20
-    
-    for i = 12,19 do
-        res[i] = function()
-            character_function_game_scene_TRM_shot_sys_reticle_pos_update(obj_char)
-        end
-    end
+    res["anim_length"] = 13
 
     res[0] = function()
         -- reticle
@@ -5484,7 +5478,7 @@ function load_game_scene_anim_char_TRM_5H_reticle_ease_in(obj_char)
         -- reticle
         obj_char["shot_sys_reticle"][4] = 1
     end
-    res[20] = function()
+    res[13] = function()
         -- animation_end
     end
     return res
@@ -5589,7 +5583,7 @@ function load_game_scene_anim_char_TRM_5H_reticle_shot(obj_char)
     res["anim_length"] = 28
     for i = 12,27 do
         res[i] = function()
-            character_function_game_scene_TRM_shot_sys_reticle_pos_update(obj_char)
+            character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready_aim(obj_char)
         end
     end
 
