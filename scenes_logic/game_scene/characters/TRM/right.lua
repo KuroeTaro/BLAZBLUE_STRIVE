@@ -242,7 +242,7 @@ function load_game_scene_obj_char_RP()
     }
     -- 5H_shot_sys_reticle
     obj_char_game_scene_char_RP["shot_sys_reticle_state"] = "off"
-    obj_char_game_scene_char_RP["shot_sys_reticle"] = {0,0,0,1,1,1,0,0}
+    obj_char_game_scene_char_RP["shot_sys_reticle"] = {0,0,0,0,1,1,0,0}
     obj_char_game_scene_char_RP["shot_sys_reticle_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_reticle_f_4"] = 0
     obj_char_game_scene_char_RP["shot_sys_reticle_f_8"] = 0
@@ -1321,34 +1321,34 @@ function state_machine_char_game_scene_char_RP_shot_sys()
             character_function_game_scene_TRM_shot_sys_off_update(obj_char)
             -- ease_in
             if test_input_sys_press(input["HS"]) and (not test_shot_sys_ban_state) then
-                character_function_game_scene_TRM_shot_sys_ease_in_init(obj_char)
-                obj_char["shot_sys_state"] = "ease_in"
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(obj_char)
+                obj_char["shot_sys_state"] = "at_the_ready_ease_in"
                 return
             end
         end,
-        ["ease_in"] = function()
-            character_function_game_scene_TRM_shot_sys_ease_in_update(obj_char)
+        ["at_the_ready_ease_in"] = function()
+            character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_update(obj_char)
             if (obj_char["shot_sys_idle_cancel"] and test_input_idle_to_ease_out) or test_shot_sys_ban_state then
-                character_function_game_scene_TRM_shot_sys_ease_out_init(obj_char)
-                obj_char["shot_sys_state"] = "ease_out"
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(obj_char)
+                obj_char["shot_sys_state"] = "at_the_ready_ease_out"
                 return
             end
             if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) then
-                character_function_game_scene_TRM_shot_sys_shot_init(obj_char)
-                obj_char["shot_sys_state"] = "shot"
+                character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
+                obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return
             end
             if get_character_anim_end_state(obj_char,"shot_sys_f",obj_char["shot_sys_animation"])  then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_aim_init(obj_char)
-                obj_char["shot_sys_state"] = "at_the_ready_aim"
+                character_function_game_scene_TRM_shot_sys_at_the_read_init(obj_char)
+                obj_char["shot_sys_state"] = "at_the_ready"
                 return
             end
         end,
-        ["ease_out"] = function()
-            character_function_game_scene_TRM_shot_sys_ease_out_update(obj_char)
+        ["at_the_ready_ease_out"] = function()
+            character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_update(obj_char)
             if test_input_sys_press(input["HS"]) and (not test_shot_sys_ban_state) then
-                character_function_game_scene_TRM_shot_sys_ease_in_init(obj_char)
-                obj_char["shot_sys_state"] = "ease_in"
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(obj_char)
+                obj_char["shot_sys_state"] = "at_the_ready_ease_in"
                 return
             end
             if get_character_anim_end_state(obj_char,"shot_sys_f",obj_char["shot_sys_animation"]) then
@@ -1357,38 +1357,64 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 return
             end
         end,
-        ["at_the_ready_aim"] = function()
-            character_function_game_scene_TRM_shot_sys_at_the_ready_aim_update(obj_char)
+        ["at_the_ready"] = function()
+            character_function_game_scene_TRM_shot_sys_at_the_ready_update(obj_char)
             if test_input_idle_to_ease_out or test_shot_sys_ban_state then
-                character_function_game_scene_TRM_shot_sys_ease_out_init(obj_char)
-                obj_char["shot_sys_state"] = "ease_out"
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(obj_char)
+                obj_char["shot_sys_state"] = "at_the_ready_ease_out"
                 return
             end
             if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) then
-                character_function_game_scene_TRM_shot_sys_shot_init(obj_char)
-                obj_char["shot_sys_state"] = "shot"
+                character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
+                obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return
             end
+        end,
+        ["at_the_ready_shot"] = function()
+            character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(obj_char)
+            if (obj_char["shot_sys_idle_cancel"] and test_input_shot_to_ease_out) or test_shot_sys_ban_state then
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(obj_char)
+                obj_char["shot_sys_state"] = "at_the_ready_ease_out"
+                return
+            end
+            if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) then
+                character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
+                obj_char["shot_sys_state"] = "at_the_ready_shot"
+                return
+            end
+            if get_character_anim_end_state(obj_char,"shot_sys_f",obj_char["shot_sys_animation"]) then
+                character_function_game_scene_TRM_shot_sys_at_the_read_init(obj_char)
+                obj_char["shot_sys_state"] = "at_the_ready"
+                return
+            end
+        end,
+        ["steady_aim_ease_in"] = function()
+            obj_char["hurt_state"] = "counter"
+            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(obj_char)
+        end,
+        ["steady_aim_ease_out"] = function()
+            obj_char["hurt_state"] = "counter"
+            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(obj_char)
         end,
         ["steady_aim"] = function()
             obj_char["hurt_state"] = "counter"
             character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(obj_char)
         end,
-        ["shot"] = function()
-            character_function_game_scene_TRM_shot_sys_shot_update(obj_char)
+        ["steady_aim_shot"] = function()
+            character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(obj_char)
             if (obj_char["shot_sys_idle_cancel"] and test_input_shot_to_ease_out) or test_shot_sys_ban_state then
-                character_function_game_scene_TRM_shot_sys_ease_out_init(obj_char)
-                obj_char["shot_sys_state"] = "ease_out"
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(obj_char)
+                obj_char["shot_sys_state"] = "at_the_ready_ease_out"
                 return
             end
             if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) then
-                character_function_game_scene_TRM_shot_sys_shot_init(obj_char)
-                obj_char["shot_sys_state"] = "shot"
+                character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
+                obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return
             end
             if get_character_anim_end_state(obj_char,"shot_sys_f",obj_char["shot_sys_animation"]) then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_aim_init(obj_char)
-                obj_char["shot_sys_state"] = "at_the_ready_aim"
+                character_function_game_scene_TRM_shot_sys_at_the_read_init(obj_char)
+                obj_char["shot_sys_state"] = "at_the_ready"
                 return
             end
         end,
@@ -1479,26 +1505,29 @@ function state_machine_char_game_scene_char_RP_shot_sys_reticle()
     local switch = {
         ["off"] = function()
         end,
-        ["ease_in"] = function()
-            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(obj_char)
+        ["at_the_ready_ease_in"] = function()
         end,
-        ["at_the_ready_aim_locking"] = function()
-            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(obj_char)
+        ["at_the_ready_locking"] = function()
         end,
-        ["at_the_ready_aim_locked"] = function()
-            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(obj_char)
+        ["at_the_ready_locked"] = function()
         end,
-        ["at_the_ready_aim_unlocking"] = function()
-            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(obj_char)
+        ["at_the_ready_unlocking"] = function()
         end,
-        ["steady_aim"] = function()
-            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(obj_char)
+        ["at_the_ready_ease_out"] = function()
         end,
-        ["ease_out"] = function()
-            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(obj_char)
+        ["at_the_ready_shot"] = function()
         end,
-         ["shot"] = function()
-            character_function_game_scene_TRM_shot_sys_reticle_shot_update(obj_char)
+        ["steady_aim_ease_in"] = function()
+        end,
+        ["steady_aim_locking"] = function()
+        end,
+        ["steady_aim_locked"] = function()
+        end,
+        ["steady_aim_unlocking"] = function()
+        end,
+        ["steady_aim_ease_out"] = function()
+        end,
+        ["steady_aim_shot"] = function()
         end,
     }
     local this_function = switch[obj_char["shot_sys_reticle_state"]]
@@ -4557,11 +4586,9 @@ function draw_game_scene_char_RP_attachment_front()
     local obj_char = obj_char_game_scene_char_RP
     local camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj_char["shot_sys_reticle_sprite_sheet_state"]]
-    if obj_char["shot_sys_state"] ~= "off" then
-        image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(camera,obj_char["shot_sys_reticle"],image_sprite_sheet,tostring(obj_char["shot_sys_reticle"][8]))
-        love.graphics.draw(image_sprite_sheet["sprite_batch"])
-    end
+    image_sprite_sheet["sprite_batch"]:clear()
+    draw_3d_image_sprite_batch(camera,obj_char["shot_sys_reticle"],image_sprite_sheet,tostring(obj_char["shot_sys_reticle"][8]))
+    love.graphics.draw(image_sprite_sheet["sprite_batch"])
 end
 function draw_game_scene_char_RP_attachment_back()
     -- nil

@@ -4953,7 +4953,7 @@ function load_game_scene_anim_char_TRM_5H(obj_char)
     return res
 end
 -- shot_sys
-function load_game_scene_anim_char_TRM_5H_shot_sys_ease_in(obj_char)
+function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_in(obj_char)
     local res = {}
     res["prop_f"] = "shot_sys_f"
     res["anim_length"] = 13
@@ -4963,7 +4963,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_ease_in(obj_char)
         obj_char["shot_sys_fire_cancel"] = false
         obj_char["shot_sys_idle_cancel"] = true
         --VFX
-        insert_VFX_game_scene_char_TRM_5H_whiff_switch(obj_char)
+        insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_switch(obj_char)
     end
     res[9] = function()
         -- input_sys_cache
@@ -4982,7 +4982,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_ease_in(obj_char)
     end
     return res
 end
-function load_game_scene_anim_char_TRM_5H_shot_sys_shot(obj_char)
+function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(obj_char)
     local res = {}
     local obj_camera = obj_stage_game_scene_camera
     res["prop_f"] = "shot_sys_f"
@@ -4992,7 +4992,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_shot(obj_char)
         -- shot_sys
         obj_char["shot_sys_fire_cancel"] = false
         obj_char["shot_sys_idle_cancel"] = false
-        character_function_game_scene_TRM_shot_sys_at_the_ready_aiming_process_update(obj_char)
+        character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
         -- cameara_animation_load
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
         common_game_scene_hit_load_camera_shake_anim(obj_char,0.25)
@@ -5011,7 +5011,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_shot(obj_char)
     end
     res[1] = function()
         -- shot_sys
-        character_function_game_scene_TRM_shot_sys_at_the_ready_aiming_process_update(obj_char)
+        character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
         -- insert_projectile
         insert_projectile_game_scene_char_TRM_5H_shot(obj_char)
     end
@@ -5040,7 +5040,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_shot(obj_char)
     end
     return res
 end
-function load_game_scene_anim_char_TRM_5H_shot_sys_ease_out(obj_char)
+function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_out(obj_char)
     local res = {}
     res["prop_f"] = "shot_sys_f"
     res["anim_length"] = 1
@@ -5048,33 +5048,44 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_ease_out(obj_char)
     res[0] = function()
         -- oroboros
         obj_char["shot_sys_oroboros_offset_amount"] = 0
-        insert_VFX_game_scene_char_TRM_5H_whiff_switch(obj_char)
+        insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_switch(obj_char)
     end
     res[1] = function()
         -- animation_end
     end
     return res
 end
-function load_game_scene_anim_char_TRM_5H_shot_sys_off(obj_char)
+function load_game_scene_anim_char_TRM_5H_shot_sys_steady_aim_ease_in(obj_char)
     local res = {}
     res["prop_f"] = "shot_sys_f"
     res["anim_length"] = 1
 
     res[0] = function()
-        -- oroboros
-        obj_char["shot_sys_fire_cancel"] = false
-        obj_char["shot_sys_idle_cancel"] = false
-        obj_char["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
-        obj_char["shot_sys_oroboros_front"]["f_8"] = 0
-        obj_char["shot_sys_oroboros_front"]["f_4"] = 0
-        obj_char["shot_sys_oroboros_front"]["sprite_sheet_state"] = "5H_oroboros_loop_front"
-        obj_char["shot_sys_oroboros_mid"] = {0,0,0,0,1,1,0,0}
-        obj_char["shot_sys_oroboros_mid"]["f_8"] = 0
-        obj_char["shot_sys_oroboros_mid"]["sprite_sheet_state"] = "5H_oroboros_loop_mid"
-        obj_char["shot_sys_oroboros_back"] = {0,0,0,0,1,1,0,0}
-        obj_char["shot_sys_oroboros_back"]["f_8"] = 0
-        obj_char["shot_sys_oroboros_back"]["f_4"] = 0
-        obj_char["shot_sys_oroboros_back"]["sprite_sheet_state"] = "5H_oroboros_loop_back"
+    end
+    res[1] = function()
+        -- animation_end
+    end
+    return res
+end
+function load_game_scene_anim_char_TRM_5H_shot_sys_steady_aim_shot(obj_char)
+    local res = {}
+    local obj_camera = obj_stage_game_scene_camera
+    res["prop_f"] = "shot_sys_f"
+    res["anim_length"] = 1
+
+    res[0] = function()
+    end
+    res[1] = function()
+        -- animation_end
+    end
+    return res
+end
+function load_game_scene_anim_char_TRM_5H_shot_sys_steady_aim_ease_out(obj_char)
+    local res = {}
+    res["prop_f"] = "shot_sys_f"
+    res["anim_length"] = 1
+
+    res[0] = function()
     end
     res[1] = function()
         -- animation_end
@@ -5403,7 +5414,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
         update_oroboros_r(obj_char,10)
         obj_char["shot_sys_oroboros_mid"][8] = 1
         -- VFX
-        insert_VFX_game_scene_char_TRM_5H_whiff_shot(obj_char)
+        insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot(obj_char)
     end
     res[3] = function()
         -- oroboros
@@ -5457,181 +5468,26 @@ end
     -- shot
     -- ease_out
 function load_game_scene_anim_char_TRM_5H_reticle_ease_in(obj_char)
-    local res = {}
-    res["prop_f"] = "shot_sys_reticle_f_4"
-    res["anim_length"] = 13
-
-    res[0] = function()
-        -- reticle
-        obj_char["shot_sys_reticle"][4] = 0.5
-        obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_at_the_ready"
-    end
-    res[1] = function()
-        -- reticle
-        obj_char["shot_sys_reticle"][4] = 0.75
-    end
-    res[3] = function()
-        -- reticle
-        obj_char["shot_sys_reticle"][4] = 0.9
-    end
-    res[4] = function()
-        -- reticle
-        obj_char["shot_sys_reticle"][4] = 1
-    end
-    res[13] = function()
-        -- animation_end
-    end
-    return res
 end
-function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_aim(obj_char)
-    local res = {}
-    res["prop_f"] = "shot_sys_reticle_f_8"
-    res["anim_length"] = 46
-
-    for i = 0,9 do
-        res[i*4+5] = function()
-            obj_char["shot_sys_reticle"][8] = i+4
-        end
-    end
-    res[0] = function()
-        -- reticle
-        obj_char["shot_sys_reticle"][4] = 1
-        obj_char["shot_sys_reticle"][8] = 0
-        obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_at_the_ready"
-    end
-    res[1] = function()
-        -- reticle
-        obj_char["shot_sys_reticle"][8] = 1
-    end
-    res[2] = function()
-        -- reticle
-        obj_char["shot_sys_reticle"][8] = 2
-    end
-    res[4] = function()
-        -- reticle
-        obj_char["shot_sys_reticle"][8] = 3
-    end
-    res[5] = function()
-        -- reticle
-        obj_char["shot_sys_reticle"][8] = 4
-    end
-    res[45] = function()
-        -- reticle
-        obj_char["shot_sys_reticle"][8] = 4
-        obj_char["shot_sys_reticle_f_8"] = 5
-    end
-    res[46] = function()
-        -- animation_end
-    end
-    return res
+function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking(obj_char)
 end
-function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_aim_off(obj_char)
-    local res = {}
-    res["prop_f"] = "shot_sys_reticle_f_8"
-    res["anim_length"] = 5
-
-    res[0] = function()
-        -- reticle
-        obj_char["shot_sys_reticle"][4] = 1
-        obj_char["shot_sys_reticle"][8] = 0
-        obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_at_the_ready_off"
-    end
-    res[1] = function()
-        -- reticle
-        obj_char["shot_sys_reticle"][8] = 1
-    end
-    res[2] = function()
-        -- reticle
-        obj_char["shot_sys_reticle"][8] = 2
-    end
-    res[4] = function()
-        -- reticle
-        obj_char["shot_sys_reticle"][8] = 3
-    end
-    res[5] = function()
-        -- animation_end
-    end
-    return res
+function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locked(obj_char)
 end
-function load_game_scene_anim_char_TRM_5H_reticle_steady_aim(obj_char)
-    local res = {}
-    res["prop_f"] = "shot_sys_reticle_f_8"
-    res["anim_length"] = 16
-
-    res[0] = function()
-        obj_char["shot_sys_reticle"][4] = 1
-        obj_char["shot_sys_reticle"][8] = 0
-        obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_staedy_aim"
-    end
-    res[9] = function()
-        obj_char["shot_sys_reticle"][8] = 1
-    end
-    res[12] = function()
-        obj_char["shot_sys_reticle"][8] = 2
-    end
-    res[15] = function()
-        obj_char["shot_sys_reticle"][8] = 3
-    end
-    res[16] = function()
-        -- animation_end
-    end
-    return res
+function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_unlocking(obj_char)
 end
-function load_game_scene_anim_char_TRM_5H_reticle_shot(obj_char)
-    local res = {}
-    res["prop_f"] = "shot_sys_reticle_f"
-    res["anim_length"] = 28
-    for i = 12,27 do
-        res[i] = function()
-            character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready_aim(obj_char)
-        end
-    end
-
-    res[0] = function()
-        -- reticle
-        obj_char["shot_sys_reticle"][4] = 1
-        obj_char["shot_sys_reticle"][8] = 0
-        obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_shot"
-    end
-    res[1] = function()
-        -- reticle
-        obj_char["shot_sys_reticle"][8] = 1
-    end
-    res[2] = function()
-        -- reticle
-        obj_char["shot_sys_reticle"][8] = 2
-    end
-    res[3] = function()
-        -- reticle
-        obj_char["shot_sys_reticle"][4] = 1
-        obj_char["shot_sys_reticle"][8] = 0
-        obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_at_the_ready"
-        character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(obj_char)
-    end
-    res[28] = function()
-        -- animation_end
-    end
-    return res
+function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_out(obj_char)
 end
-function load_game_scene_anim_char_TRM_5H_reticle_ease_out(obj_char)
-    local res = {}
-    res["prop_f"] = "shot_sys_reticle_f_8"
-    res["anim_length"] = 12
-
-    res[0] = function()
-        obj_char["shot_sys_reticle"][4] = 1
-        obj_char["shot_sys_reticle"][8] = 0
-    end
-    res[5] = function()
-        obj_char["shot_sys_reticle"][8] = 1
-    end
-    res[9] = function()
-        obj_char["shot_sys_reticle"][8] = 2
-    end
-    res[12] = function()
-        -- animation_end
-    end
-    return res
+function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_shot(obj_char)
+end
+function load_game_scene_anim_char_TRM_5H_reticle_steady_aim_locking(obj_char)
+end
+function load_game_scene_anim_char_TRM_5H_reticle_steady_aim_locked(obj_char)
+end
+function load_game_scene_anim_char_TRM_5H_reticle_steady_aim_unlocking(obj_char)
+end
+function load_game_scene_anim_char_TRM_5H_reticle_steady_aim_ease_out(obj_char)
+end
+function load_game_scene_anim_char_TRM_5H_reticle_steady_aim_shot(obj_char)
 end
 -- _2Launcher
 function load_game_scene_anim_char_TRM_2Launcher(obj_char)

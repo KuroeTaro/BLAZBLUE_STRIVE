@@ -370,8 +370,8 @@ function character_function_game_scene_TRM_hitstop_force_delay_gatling_cancel_in
 end
 
 -- shot_sys_function
--- aiming_process_update
-function character_function_game_scene_TRM_shot_sys_at_the_ready_aiming_process_update(obj_char)
+-- aim_process_update
+function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
     -- 0.敌我之间距离
     -- 1.敌方绝对速度
     -- 2.水平相对速度
@@ -449,7 +449,7 @@ function character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char
     }
 end
 -- reticle_basic_prop_update
-function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready_aim(obj_char)
+function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(obj_char)
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local obj_char_shot_sys_aim_process = obj_char["shot_sys_aim_process"]
     local div_value = 32-math.min(obj_char_shot_sys_aim_process[1],obj_char_shot_sys_aim_process[3])/15
@@ -475,7 +475,7 @@ function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_re
 end
 function character_function_game_scene_TRM_shot_sys_reticle_pos_update_ease_in(obj_char)
     if obj_char["shot_sys_aim_process"][1] < obj_char["shot_sys_aim_process"][3] then
-        character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready_aim(obj_char)
+        return
     end
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local obj_char_shot_sys_aim_process = obj_char["shot_sys_aim_process"]
@@ -500,31 +500,10 @@ function character_function_game_scene_TRM_shot_sys_reticle_pos_update_ease_in(o
     obj_char["shot_sys_reticle"][2] = obj_char["shot_sys_reticle_stage_pos_current"][2]
     return
 end
-function character_function_game_scene_TRM_shot_sys_reticle_8_update(obj_char)
-    local obj_char_shot_sys_aim_process = obj_char["shot_sys_aim_process"]
-    -- update_shot_sys_reticle_8
-    if obj_char_shot_sys_aim_process[1] >= obj_char_shot_sys_aim_process[3] then
-        if obj_char_shot_sys_aim_process[5] == false then
-            obj_char_shot_sys_aim_process[5] = true
-            obj_char["shot_sys_reticle_animation"] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_aim(obj_char)
-            init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation"])
-        else
-            character_animator(obj_char,obj_char["shot_sys_reticle_animation"])
-        end
-    else
-        if obj_char_shot_sys_aim_process[5] == true then
-            obj_char_shot_sys_aim_process[5] = false
-            obj_char["shot_sys_reticle_animation"] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_aim_off(obj_char)
-            init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation"])
-        else
-            character_animator(obj_char,obj_char["shot_sys_reticle_animation"])
-        end
-    end
-    return
-end
 function character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(obj_char)
-    local random_offset = (math.random(2) == 1) and 1 or -1
+    local random_offset = (math.random(2) == 1) and 1 or 0
     local random_index = math.random(1, 2)
+    local offset_multiplier = 200
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local height_offset = {
         [370] = 365,
@@ -533,10 +512,19 @@ function character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(obj_cha
         [130] = 100
     }
 
-    obj_char["shot_sys_reticle_stage_pos_current"][1] = obj_char_other_side["x"]-160 + random_offset*150
-    random_offset = (math.random(2) == 1) and 1 or -1
-    obj_char["shot_sys_reticle_stage_pos_current"][2] = obj_char_other_side["y"]-height_offset[obj_char_other_side["pushbox"][4]]-160 + random_offset*150
-    obj_char["shot_sys_reticle_stage_pos_current"][random_index] = (math.random() * 2 - 1) * 150
+    if random_index == 1 then
+        obj_char["shot_sys_reticle_stage_pos_current"][1] = obj_char_other_side["x"]-160
+            +(math.random() * 2 - 1)*offset_multiplier
+        obj_char["shot_sys_reticle_stage_pos_current"][2] = obj_char_other_side["y"]
+            -height_offset[obj_char_other_side["pushbox"][4]]-160
+            +((math.random(2) == 1) and 1 or -1)*offset_multiplier
+    else
+        obj_char["shot_sys_reticle_stage_pos_current"][1] = obj_char_other_side["x"]-160
+            +((math.random(2) == 1) and 1 or -1)*offset_multiplier
+        obj_char["shot_sys_reticle_stage_pos_current"][2] = obj_char_other_side["y"]
+            -height_offset[obj_char_other_side["pushbox"][4]]-160
+            +(math.random() * 2 - 1)*offset_multiplier
+    end
     obj_char["shot_sys_reticle"][1] = obj_char["shot_sys_reticle_stage_pos_current"][1]
     obj_char["shot_sys_reticle"][2] = obj_char["shot_sys_reticle_stage_pos_current"][2]
 end
@@ -548,11 +536,7 @@ function character_function_game_scene_TRM_shot_sys_off_init(obj_char)
     obj_char["shot_sys_fire_cancel"] = false
     obj_char["shot_sys_idle_cancel"] = false
     -- reticle
-    obj_char["shot_sys_reticle"] = {0,0,0,1,1,1,0,0}
-    obj_char["shot_sys_reticle_f"] = 0
-    obj_char["shot_sys_reticle_stage_pos_current"] = {0,0}
-    obj_char["shot_sys_reticle_stage_pos_target"] = {0,0}
-    obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_at_the_ready"
+    -- rewrite in case of aim_process change in off
     return
 end
 function character_function_game_scene_TRM_shot_sys_off_update(obj_char)
@@ -560,14 +544,14 @@ function character_function_game_scene_TRM_shot_sys_off_update(obj_char)
     obj_char["hurt_state"] = obj_char["hurt_state_target"]
     return
 end
-function character_function_game_scene_TRM_shot_sys_ease_in_init(obj_char)
+function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(obj_char)
     -- hurt_state
     obj_char["hurt_state"] = "unblock"
     -- shot_sys
-    obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_5H_shot_sys_ease_in(obj_char)
+    obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_in(obj_char)
     init_character_anim_with(obj_char,obj_char["shot_sys_animation"])
     obj_char["shot_sys_aim_process"] = {0,0,420,450,false}
-    character_function_game_scene_TRM_shot_sys_at_the_ready_aiming_process_update(obj_char)
+    character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
     -- oroboros
     obj_char["shot_sys_oroboros_mid"][4] = 1
     obj_char["shot_sys_oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["shot_sys_oroboros_front"])
@@ -583,30 +567,25 @@ function character_function_game_scene_TRM_shot_sys_ease_in_init(obj_char)
     character_function_game_scene_TRM_shot_sys_oroboros_pos_init(obj_char)
     obj_char["shot_sys_oroboros_state"] = "ease_in"
     -- reticle
-    character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(obj_char)
-    obj_char["shot_sys_reticle_animation"] = load_game_scene_anim_char_TRM_5H_reticle_ease_in(obj_char)
-    init_character_anim_without(obj_char,obj_char["shot_sys_reticle_animation"])
-    character_function_game_scene_TRM_shot_sys_reticle_8_update(obj_char)
-    obj_char["shot_sys_reticle_state"] = "ease_in"
+    -- rewrite in case of aim_process change in ease_in
     return
 end
-function character_function_game_scene_TRM_shot_sys_ease_in_update(obj_char)
+function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_update(obj_char)
     -- hurt_state
     obj_char["hurt_state"] = "unblock"
     -- shot_sys
     character_animator(obj_char,obj_char["shot_sys_animation"])
-    character_function_game_scene_TRM_shot_sys_at_the_ready_aiming_process_update(obj_char)
+    character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
     -- reticle
-    character_animator(obj_char,obj_char["shot_sys_reticle_animation"])
-    character_function_game_scene_TRM_shot_sys_reticle_8_update(obj_char)
+    -- rewrite in case of aim_process change in ease_in
     return
 end
-function character_function_game_scene_TRM_shot_sys_ease_out_init(obj_char)
+function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(obj_char)
     -- hurt_state
     obj_char["hurt_state"] = obj_char["hurt_state_target"]
     -- shot_sys
     obj_char["shot_sys_aim_process"][1] = 0
-    obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_5H_shot_sys_ease_out(obj_char)
+    obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_out(obj_char)
     init_character_anim_with(obj_char,obj_char["shot_sys_animation"])
     -- oroboros
     obj_char["shot_sys_oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj_char["shot_sys_oroboros_front"])
@@ -618,51 +597,53 @@ function character_function_game_scene_TRM_shot_sys_ease_out_init(obj_char)
     character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
     obj_char["shot_sys_oroboros_state"] = "ease_out"
     -- reticle
-    obj_char["shot_sys_reticle_animation"] = load_game_scene_anim_char_TRM_5H_reticle_ease_out(obj_char)
-    init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation"])
-    character_function_game_scene_TRM_shot_sys_reticle_8_update(obj_char)
+    -- rewrite in case of aim_process change in ease_out
     return
 end
-function character_function_game_scene_TRM_shot_sys_ease_out_update(obj_char)
+function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_update(obj_char)
     -- hurt_state
     obj_char["hurt_state"] = obj_char["hurt_state_target"]
     -- shot_sys
     character_animator(obj_char,obj_char["shot_sys_animation"])
     -- reticle
-    character_animator(obj_char,obj_char["shot_sys_reticle_animation"])
-    character_function_game_scene_TRM_shot_sys_reticle_8_update(obj_char)
+    -- rewrite in case of aim_process change in ease_out
     return
 end
-function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_init(obj_char)
+function character_function_game_scene_TRM_shot_sys_at_the_read_init(obj_char)
     -- hurt_state
     obj_char["hurt_state"] = "unblock"
     -- shot_sys
     -- 已经在ease_in阶段完成了当前帧数的aim_process
     -- reticle
-    obj_char["shot_sys_reticle"][4] = 1
-    character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready_aim(obj_char)
-    character_function_game_scene_TRM_shot_sys_reticle_8_update(obj_char)
+    -- rewrite in case of aim_process change in at_the_ready
     return
 end
-function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_update(obj_char)
+function character_function_game_scene_TRM_shot_sys_at_the_ready_update(obj_char)
     -- hurt_state
     obj_char["hurt_state"] = "unblock"
     -- shot_sys
-    character_function_game_scene_TRM_shot_sys_at_the_ready_aiming_process_update(obj_char)
+    character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
     -- reticle
-    character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready_aim(obj_char)
-    character_function_game_scene_TRM_shot_sys_reticle_8_update(obj_char)
+    -- rewrite in case of aim_process change in at_the_ready
     return
+end
+function character_function_game_scene_TRM_shot_sys_steady_aim_ease_in_init(obj_char)
+end
+function character_function_game_scene_TRM_shot_sys_steady_aim_ease_in_update(obj_char)
+end
+function character_function_game_scene_TRM_shot_sys_steady_aim_ease_out_init(obj_char)
+end
+function character_function_game_scene_TRM_shot_sys_steady_aim_ease_out_update(obj_char)
 end
 function character_function_game_scene_TRM_shot_sys_steady_aim_init(obj_char)
 end
 function character_function_game_scene_TRM_shot_sys_steady_aim_update(obj_char)
 end
-function character_function_game_scene_TRM_shot_sys_shot_init(obj_char)
+function character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
     -- hurt_state
     obj_char["hurt_state"] = "unblock"
     -- shot_sys
-    obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_5H_shot_sys_shot(obj_char)
+    obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(obj_char)
     init_character_anim_with(obj_char,obj_char["shot_sys_animation"])
     -- 已经在ease_in阶段完成了当前帧数的aim_process
     -- oroboros
@@ -671,20 +652,15 @@ function character_function_game_scene_TRM_shot_sys_shot_init(obj_char)
     character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
     obj_char["shot_sys_oroboros_state"] = "shot"
     -- reticle
-    obj_char["shot_sys_reticle_animation"] = load_game_scene_anim_char_TRM_5H_reticle_shot(obj_char)
-    init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation"])
-    -- 由reticle_shot动画控制reticle[8] 
-    -- 不使用character_function_game_scene_TRM_shot_sys_reticle_8_update函数控制
+    -- rewrite in case of aim_process change in at_the_ready_shot
     return
 end
-function character_function_game_scene_TRM_shot_sys_shot_update(obj_char)
+function character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(obj_char)
     -- hurt_state
     obj_char["hurt_state"] = "unblock"
     -- shot_sys
     character_animator(obj_char,obj_char["shot_sys_animation"])
     -- reticle
-    character_animator(obj_char,obj_char["shot_sys_reticle_animation"])
-    -- 由reticle_shot动画控制reticle[8] 
-    -- 不使用character_function_game_scene_TRM_shot_sys_reticle_8_update函数控制
+    -- rewrite in case of aim_process change in at_the_ready_shot
     return
 end

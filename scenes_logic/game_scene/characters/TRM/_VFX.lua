@@ -378,7 +378,7 @@ function insert_VFX_game_scene_char_TRM_cS_whiff(obj_char)
     end
     table.insert(obj_char["VFX_front_table"],obj)
 end
-function insert_VFX_game_scene_char_TRM_5H_whiff_switch(obj_char)
+function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_switch(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
     local image_sprite_sheet = nil
     local side = obj_char["player_side"]
@@ -436,7 +436,7 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_switch(obj_char)
     end
     table.insert(obj_char["VFX_back_table"],obj)
 end
-function insert_VFX_game_scene_char_TRM_5H_whiff_shot(obj_char)
+function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot(obj_char)
     -- x y z opacity sx sy r f
     local obj = {0,0,0,1,1,1,0,0}
     local image_sprite_sheet = nil
@@ -476,7 +476,7 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_shot(obj_char)
     obj["animation"]["fix_type"] = true
     init_frame_anim_with_out(obj,obj["animation"])
     obj["update"] = function(self)
-        if obj_char["shot_sys_state"] == "shot" then
+        if obj_char["shot_sys_state"] == "at_the_ready_shot" then
             frame_animator(self,self["animation"])
             self["life"] = self["life"] - 1
         else
