@@ -4962,7 +4962,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_in(obj_char
         -- oroboros
         obj_char["shot_sys_fire_cancel"] = false
         obj_char["shot_sys_idle_cancel"] = true
-        obj_char["shot_sys_oroboros_aim_r"] = 0.418
+        obj_char["shot_sys_oroboros_aim_r"] = 0.42
         --VFX
         insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_switch(obj_char)
     end
@@ -5374,7 +5374,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
             obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]-285}
         end
         r = math.atan2((obj_char_other_side_pos[2]-oroboros_pos[2]),obj_char[5]*(obj_char_other_side_pos[1]-oroboros_pos[1]))
-        obj_char["shot_sys_oroboros_aim_r"] = r*(27-i)/17 + 0.418*(1-(27-i)/17)
+        obj_char["shot_sys_oroboros_aim_r"] = r*(27-i)/17 + 0.42*(1-(27-i)/17)
     end
     local height_offset = {
         ["stand"] = 250,
@@ -5440,7 +5440,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     end
     res[27] = function()
         -- oroboros
-        obj_char["shot_sys_oroboros_aim_r"] = 0.418
+        obj_char["shot_sys_oroboros_aim_r"] = 0.42
         obj_char["shot_sys_oroboros_offset_amount"] = 0
     end
     res[28] = function()

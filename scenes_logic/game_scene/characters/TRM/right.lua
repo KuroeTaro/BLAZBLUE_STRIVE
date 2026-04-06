@@ -211,7 +211,7 @@ function load_game_scene_obj_char_RP()
     -- 5H_shot_sys_oroboros
     obj_char_game_scene_char_RP["shot_sys_oroboros_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_oroboros_f"] = 0
-    obj_char_game_scene_char_RP["shot_sys_oroboros_aim_r"] = 0.418
+    obj_char_game_scene_char_RP["shot_sys_oroboros_aim_r"] = 0.42
     obj_char_game_scene_char_RP["shot_sys_oroboros_animation_table"] = {}
     -- 5H_shot_sys_oroboros_sub_obj
     obj_char_game_scene_char_RP["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
@@ -1482,7 +1482,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_oroboros()
             character_animator(obj_char,obj_char["shot_sys_oroboros_animation_table"][6])
             character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
             if get_character_anim_end_state(obj_char,"shot_sys_oroboros_f",obj_char["shot_sys_oroboros_animation_table"][6]) then
-                obj_char["shot_sys_oroboros_aim_r"] = 0.418
+                obj_char["shot_sys_oroboros_aim_r"] = 0.42
                 obj_char["shot_sys_oroboros_offset_amount"] = 0
                 obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["shot_sys_oroboros_mid"])
                 init_character_anim_with(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
@@ -4454,10 +4454,10 @@ function draw_game_scene_char_RP_logic_graphic_pos_sync()
     local rot_dy = nil
 
     if obj_char[5] > 0 then
-        shot_r = math.min(shot_r,0.418)
+        shot_r = math.min(shot_r,0.42)
         shot_r = math.max(shot_r,-0.8)
     else
-        shot_r = math.max(shot_r,-0.418)
+        shot_r = math.max(shot_r,-0.42)
         shot_r = math.min(shot_r,0.8)
     end
 
