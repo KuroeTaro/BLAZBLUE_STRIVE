@@ -211,7 +211,7 @@ function load_game_scene_obj_char_LP()
     -- 5H_shot_sys_oroboros
     obj_char_game_scene_char_LP["shot_sys_oroboros_state"] = "off"
     obj_char_game_scene_char_LP["shot_sys_oroboros_f"] = 0
-    obj_char_game_scene_char_LP["shot_sys_oroboros_aim_r"] = 0
+    obj_char_game_scene_char_LP["shot_sys_oroboros_aim_r"] = 0.418
     obj_char_game_scene_char_LP["shot_sys_oroboros_animation_table"] = {}
     -- 5H_shot_sys_oroboros_sub_obj
     obj_char_game_scene_char_LP["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
@@ -225,7 +225,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["shot_sys_oroboros_back"]["f_8"] = 0
     obj_char_game_scene_char_LP["shot_sys_oroboros_back"]["f_4"] = 0
     obj_char_game_scene_char_LP["shot_sys_oroboros_back"]["sprite_sheet_state"] = "5H_oroboros_loop_back"
-            -- update_value
+    -- 5H_shot_sys_oroboros_sub_obj_update_value
     obj_char_game_scene_char_LP["shot_sys_oroboros_offset_amount"] = 0
     obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"] = {-110,-455}
     obj_char_game_scene_char_LP["shot_sys_oroboros_ease_current"] = {
@@ -1482,6 +1482,8 @@ function state_machine_char_game_scene_char_LP_shot_sys_oroboros()
             character_animator(obj_char,obj_char["shot_sys_oroboros_animation_table"][6])
             character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
             if get_character_anim_end_state(obj_char,"shot_sys_oroboros_f",obj_char["shot_sys_oroboros_animation_table"][6]) then
+                obj_char["shot_sys_oroboros_aim_r"] = 0.418
+                obj_char["shot_sys_oroboros_offset_amount"] = 0
                 obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["shot_sys_oroboros_mid"])
                 init_character_anim_with(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
                 character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
@@ -4445,14 +4447,19 @@ function draw_game_scene_char_LP_logic_graphic_pos_sync()
     local obj_char = obj_char_game_scene_char_LP
     local oroboros_ease_current = obj_char["shot_sys_oroboros_ease_current"]
     local shot_offset_amount = obj_char["shot_sys_oroboros_offset_amount"] 
-    local shot_r = obj_char["shot_sys_oroboros_aim_r"]
+    local shot_r = obj_char["shot_sys_oroboros_aim_r"]*obj_char[5]
     local dx = -15
     local dy = -50
     local rot_dx = nil
     local rot_dy = nil
 
-    shot_r = math.min(shot_r,0.8)
-    shot_r = math.max(shot_r,-0.8)
+    if obj_char[5] > 0 then
+        shot_r = math.min(shot_r,0.418)
+        shot_r = math.max(shot_r,-0.8)
+    else
+        shot_r = math.max(shot_r,-0.418)
+        shot_r = math.min(shot_r,0.8)
+    end
 
     -- x y z opacity sx sy r f
     -- oroboros_back
@@ -4470,8 +4477,8 @@ function draw_game_scene_char_LP_logic_graphic_pos_sync()
 
     -- oroboros_mid
     obj = obj_char["shot_sys_oroboros_mid"]
-    dx = -85
-    dy = -85
+    dx = -80
+    dy = -95
     rot_dx = dx*oroboros_ease_current[3]*math.cos(shot_r) - dy*oroboros_ease_current[4]*math.sin(shot_r)
     rot_dy = dx*oroboros_ease_current[3]*math.sin(shot_r) + dy*oroboros_ease_current[4]*math.cos(shot_r)
     obj[1] = oroboros_ease_current[1] + rot_dx

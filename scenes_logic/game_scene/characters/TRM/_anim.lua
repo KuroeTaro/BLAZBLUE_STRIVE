@@ -4962,6 +4962,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_in(obj_char
         -- oroboros
         obj_char["shot_sys_fire_cancel"] = false
         obj_char["shot_sys_idle_cancel"] = true
+        obj_char["shot_sys_oroboros_aim_r"] = 0.418
         --VFX
         insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_switch(obj_char)
     end
@@ -5254,7 +5255,6 @@ function load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj,sprite_sheet_sta
     local res = {}
     res["prop_f"] = "f_8"
     res["anim_length"] = 20
-
     res[0] = function()
         -- oroboros
         obj["sprite_sheet_state"]  = sprite_sheet_state
@@ -5373,8 +5373,8 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
         else
             obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]-285}
         end
-        r = math.atan2((obj_char_other_side_pos[2]-oroboros_pos[2]),obj_char[5]*(obj_char_other_side_pos[1]-oroboros_pos[1]))*obj_char[5]
-        obj_char["shot_sys_oroboros_aim_r"] = r*(27-i)/17
+        r = math.atan2((obj_char_other_side_pos[2]-oroboros_pos[2]),obj_char[5]*(obj_char_other_side_pos[1]-oroboros_pos[1]))
+        obj_char["shot_sys_oroboros_aim_r"] = r*(27-i)/17 + 0.418*(1-(27-i)/17)
     end
     local height_offset = {
         ["stand"] = 250,
@@ -5385,22 +5385,8 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     res["prop_f"] = "shot_sys_oroboros_f"
     res["anim_length"] = 28
     obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]-height_offset[obj_char_other_side["height_state"]]}
-    r = math.atan2((obj_char_other_side_pos[2]-oroboros_pos[2]),obj_char[5]*(obj_char_other_side_pos[1]-oroboros_pos[1]))*obj_char[5]
-
-    for i = 0,9 do
-        res[i] = function()
-            if obj_char[5] ~= obj_char["basic_prop_cache"][5] then
-                update_oroboros_r(obj_char,10)
-            end
-        end
-    end
-    for i = 10,27 do
-        res[i] = function()
-            if obj_char[5] ~= obj_char["basic_prop_cache"][5] then
-                update_oroboros_r(obj_char,i)
-            end
-        end
-    end
+    r = math.atan2((obj_char_other_side_pos[2]-oroboros_pos[2]),obj_char[5]*(obj_char_other_side_pos[1]-oroboros_pos[1]))
+    
     res[0] = function()
         -- oroboros
         obj_char["shot_sys_oroboros_aim_r"] = r
@@ -5435,6 +5421,9 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     end
     res[17] = function()
         -- oroboros
+        if obj_char[5] ~= obj_char["basic_prop_cache"][5] then
+            update_oroboros_r(obj_char,17)
+        end
         obj_char["shot_sys_idle_cancel"] = true
     end
     res[19] = function()
@@ -5451,7 +5440,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     end
     res[27] = function()
         -- oroboros
-        obj_char["shot_sys_oroboros_aim_r"] = 0
+        obj_char["shot_sys_oroboros_aim_r"] = 0.418
         obj_char["shot_sys_oroboros_offset_amount"] = 0
     end
     res[28] = function()

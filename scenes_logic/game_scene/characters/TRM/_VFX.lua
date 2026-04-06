@@ -443,7 +443,7 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot(obj_char)
     local side = obj_char["player_side"]
     local dx = 35
     local dy = -210
-    local r = obj_char["shot_sys_oroboros_aim_r"]
+    local r = obj_char["shot_sys_oroboros_aim_r"]*obj_char[5]
     local rot_dx = dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.cos(r) - dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.sin(r)
     local rot_dy = dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.sin(r) + dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.cos(r)
     if side == "L" then
