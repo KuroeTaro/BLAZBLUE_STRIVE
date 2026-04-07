@@ -374,29 +374,17 @@ function update_game_scene_main_training()
                 end
 
                 -- 检测飞行道具人物受击盒交互
-                for i = 1,#char_RP["projectile_table"] do
-                    local current_projectile = char_RP["projectile_table"][i]
-                    if collision_projectile_hurtbox_test(current_projectile,char_LP) then
-                        current_projectile["hit_enemy_function"](current_projectile,char_LP)
-                    end
-                end
                 for i = 1,#char_LP["projectile_table"] do
-                    local current_projectile = char_LP["projectile_table"][i]
-                    if collision_projectile_hurtbox_test(current_projectile,char_RP) then
-                        current_projectile["hit_enemy_function"](current_projectile,char_RP)
-                    end
+                    char_LP["projectile_table"][i]["enemy_interact_function"]()
                 end
                 for i = 1,#char_RP["projectile_table"] do
-                    local current_projectile = char_RP["projectile_table"][i]
-                    if collision_projectile_hurtbox_test(current_projectile,char_RP) then
-                        current_projectile["hit_friendly_function"](current_projectile,char_RP)
-                    end
+                    char_RP["projectile_table"][i]["enemy_interact_function"]()
                 end
                 for i = 1,#char_LP["projectile_table"] do
-                    local current_projectile = char_LP["projectile_table"][i]
-                    if collision_projectile_hurtbox_test(current_projectile,char_LP) then
-                        current_projectile["hit_friendly_function"](current_projectile,char_LP)
-                    end
+                    char_LP["projectile_table"][i]["friendly_interact_function"]()
+                end
+                for i = 1,#char_RP["projectile_table"] do
+                    char_RP["projectile_table"][i]["friendly_interact_function"]()
                 end
 
                 -- 保留双康后的LP_hurt_strike_accur RP_hurt_strike_accur
