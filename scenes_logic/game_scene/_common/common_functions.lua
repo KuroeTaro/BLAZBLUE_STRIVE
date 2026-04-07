@@ -516,7 +516,7 @@ function common_game_scene_throw_hurt_function(obj_char)
     obj_char["collision_test_ground_height_offset"] = collision_test_ground_height_offset    
 
     hit_side_obj_char["x"] = obj_char["x"] + obj_char[5]*160
-    pushbox_stage_relocate_x(hit_side_obj_char)
+    collision_pushbox_stage_relocate_x(hit_side_obj_char)
     obj_char["x"] = hit_side_obj_char["x"] + hit_side_obj_char[5]*160
 
     obj_char["f"] = 0

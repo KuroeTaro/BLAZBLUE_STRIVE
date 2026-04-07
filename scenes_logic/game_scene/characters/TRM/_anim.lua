@@ -6191,7 +6191,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
     res[27] = function()
         -- state
         obj_char_other_side["x"] = obj_char["x"] + obj_char[5]*315
-        pushbox_stage_relocate_x(obj_char_other_side)
+        collision_pushbox_stage_relocate_x(obj_char_other_side)
         obj_char["x"] = obj_char_other_side["x"] + obj_char_other_side[5]*315
         obj_char_other_side["y"] = 205
         obj_char_other_side["sprite_sheet_state"] = "0_general_hurt_launched_high"
@@ -6400,7 +6400,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
             dx = 200
         end
         obj_char_other_side["x"] = obj_char["x"] + dx
-        pushbox_stage_relocate_x(obj_char_other_side)
+        collision_pushbox_stage_relocate_x(obj_char_other_side)
         obj_char["x"] = obj_char_other_side["x"] - dx
         -- facing_currect
         if not common_game_scene_get_character_facing_currect(obj_char) then
@@ -8969,7 +8969,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
             dx = 200
         end
         obj_char_other_side["x"] = obj_char["x"] + dx
-        pushbox_stage_relocate_x(obj_char_other_side)
+        collision_pushbox_stage_relocate_x(obj_char_other_side)
         obj_char["x"] = obj_char_other_side["x"] - dx
         -- facing_currect
         if not common_game_scene_get_character_facing_currect(obj_char) then

@@ -30,7 +30,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["hurt_state"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_RP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_RP["move_state"] = "none" -- none startup active recovery
-    
+
     -- input
     obj_char_game_scene_char_RP["direction_input"] = 5
     obj_char_game_scene_char_RP["direction_input_cache"] = 5
@@ -160,6 +160,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["counter_SFX"] = nil
     obj_char_game_scene_char_RP["block_VFX_insert_function"] = nil
     obj_char_game_scene_char_RP["block_SFX"] = nil
+    
     -- 5H_shot_sys
     obj_char_game_scene_char_RP["shot_sys_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_f"] = 0
@@ -263,7 +264,6 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["hurtstop_wiggle_current_y"] = 0
     obj_char_game_scene_char_RP["hurtstop_wiggle_x_animation"] = nil
     obj_char_game_scene_char_RP["hurtstop_wiggle_y_animation"] = nil
-
     -- smoke spawn pos
         -- attack button(not need to record in obj_char)
         -- move button(not need to record in obj_char)
@@ -282,7 +282,6 @@ function load_game_scene_obj_char_RP()
             -- air_hurt_high/mid/low
             -- air_launched/semi_launched_high/mid/low
             -- air_launched_land/semi_launched_land_high/mid/low
-
     obj_char_game_scene_char_RP["camera_x_shake_anim"] = nil
     obj_char_game_scene_char_RP["camera_y_shake_anim"] = nil
     obj_char_game_scene_char_RP["camera_enclosing_anim"] = nil
@@ -1910,7 +1909,7 @@ function state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_ch
         return true
     end
     -- _cS
-    if test_input_sys_press(input["S"]) and test_cS_distance_check(obj_char,320) then
+    if test_input_sys_press(input["S"]) and collision_test_cS_distance_check(obj_char,320) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -2056,7 +2055,7 @@ function state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(inp
         return true
     end
     -- _cS
-    if test_input_sys_press_or_hold(input["S"]) and test_cS_distance_check(obj_char,350) then
+    if test_input_sys_press_or_hold(input["S"]) and collision_test_cS_distance_check(obj_char,350) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -2406,10 +2405,10 @@ function state_gate_game_scene_char_RP_from_hurt(input,obj_char)
         and obj_char["self_wallbounce_hurt_animation"] ~= nil then
             obj_char["character_animation"] = obj_char["self_wallbounce_hurt_animation"]
             init_character_anim_with(obj_char,obj_char["character_animation"])
-        elseif test_char_on_ground(obj_char) and obj_char["self_groundbounce_hurt_animation"] ~= nil then
+        elseif collision_test_char_on_ground(obj_char) and obj_char["self_groundbounce_hurt_animation"] ~= nil then
             obj_char["character_animation"] = obj_char["self_groundbounce_hurt_animation"]
             init_character_anim_with(obj_char,obj_char["character_animation"])
-        elseif test_char_on_ground(obj_char) then
+        elseif collision_test_char_on_ground(obj_char) then
             obj_char["y"] = 365
             obj_char["state"] = obj_char["state_cache"]
             if obj_char["state"] == "knockdown" then
@@ -3360,7 +3359,7 @@ function state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char)
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
-    if test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
+    if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
@@ -3480,7 +3479,7 @@ function state_gate_game_scene_char_RP_from_4dash_air_backdash(input,obj_char)
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
-    if test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
+    if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
@@ -3565,7 +3564,7 @@ function state_gate_game_scene_char_RP_from_6dash_air_dash(input,obj_char)
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
-    if test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
+    if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
@@ -4261,7 +4260,7 @@ function state_gate_game_scene_char_RP_from_jP(input,obj_char)
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
-    if test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
+    if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
@@ -4293,7 +4292,7 @@ function state_gate_game_scene_char_RP_from_jK(input,obj_char)
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
-    if test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
+    if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
@@ -4325,7 +4324,7 @@ function state_gate_game_scene_char_RP_from_j2K(input,obj_char)
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
-    if test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
+    if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
@@ -4369,7 +4368,7 @@ function state_gate_game_scene_char_RP_from_jS(input,obj_char)
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
-    if test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
+    if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
@@ -4411,7 +4410,7 @@ function state_gate_game_scene_char_RP_from_j4_6Launcher(input,obj_char)
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
-    if test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
+    if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
@@ -4440,7 +4439,7 @@ function state_gate_game_scene_char_RP_from_j5Launcher(input,obj_char)
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
-    if test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
+    if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air_to_stand_idle"

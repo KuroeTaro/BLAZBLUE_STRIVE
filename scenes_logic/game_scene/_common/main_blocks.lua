@@ -260,16 +260,16 @@ function update_game_scene_main_training()
                 end
 
                 -- 检测pushbox 更新Y位置
-                pushbox_relocate_y(char_LP)
-                pushbox_relocate_y(char_RP)
+                collision_pushbox_relocate_y(char_LP)
+                collision_pushbox_relocate_y(char_RP)
 
                 -- 检测pushbox 更新X位置 static_relocate_x
-                pushbox_stage_relocate_x(char_LP)
-                pushbox_stage_relocate_x(char_RP)
-                pushbox_state_relocate_in_character_x(char_LP,char_RP,obj_stage_game_scene_mid_collision_anchor)
+                collision_pushbox_stage_relocate_x(char_LP)
+                collision_pushbox_stage_relocate_x(char_RP)
+                collision_pushbox_state_relocate_in_character_x(char_LP,char_RP,obj_stage_game_scene_mid_collision_anchor)
 
                 -- 检测pushbox 更新X位置 dynamic_relocate_x
-                pushbox_dynamic_normal_aabb_relocate_x(char_LP,char_RP)
+                collision_pushbox_dynamic_normal_aabb_relocate_x(char_LP,char_RP)
 
                 -- 更新飞行道具 与角色碰撞交互
                 for i = #char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
@@ -287,8 +287,8 @@ function update_game_scene_main_training()
 
                 -- 打击受击检测
                 -- 检测投受击盒交互
-                local LP_hurt_throw_accur = throw_hurtbox_test(char_RP,char_LP) -- (obj_hit,obj_hurt)
-                local RP_hurt_throw_accur = throw_hurtbox_test(char_LP,char_RP)
+                local LP_hurt_throw_accur = collision_throw_hurtbox_test(char_RP,char_LP) -- (obj_hit,obj_hurt)
+                local RP_hurt_throw_accur = collision_throw_hurtbox_test(char_LP,char_RP)
 
                 -- 检测打击受击盒交互
                 if LP_hurt_throw_accur then
@@ -305,8 +305,8 @@ function update_game_scene_main_training()
                 end
 
                 -- 保留双康和后续飞行道具交互后的LP_hurt_strike_accur RP_hurt_strike_accur
-                local LP_hurt_strike_accur = strike_hurtbox_test(char_RP,char_LP) -- (obj_hit,obj_hurt)
-                local RP_hurt_strike_accur = strike_hurtbox_test(char_LP,char_RP)
+                local LP_hurt_strike_accur = collision_strike_hurtbox_test(char_RP,char_LP) -- (obj_hit,obj_hurt)
+                local RP_hurt_strike_accur = collision_strike_hurtbox_test(char_LP,char_RP)
 
                 -- debug_delete_after
                 if (DEBUG_TRAINNING_THROW_CLASH and DEBUG_TRAINNING_TOGGLE) then
@@ -338,14 +338,14 @@ function update_game_scene_main_training()
                 -- 检测飞行道具人物打击盒交互
                 for i = 1,#char_RP["projectile_table"] do
                     local current_projectile = char_RP["projectile_table"][i]
-                    if strike_hurtbox_test(char_LP,current_projectile) then
+                    if collision_strike_hurtbox_test(char_LP,current_projectile) then
                         char_LP["hit_function"](current_projectile)
                         current_projectile["hurt_function"](char_LP)
                     end
                 end
                 for i = 1,#char_LP["projectile_table"] do
                     local current_projectile = char_RP["projectile_table"][i]
-                    if strike_hurtbox_test(char_RP,current_projectile) then
+                    if collision_strike_hurtbox_test(char_RP,current_projectile) then
                         char_RP["hit_function"](current_projectile)
                         current_projectile["hurt_function"](char_RP)
                     end
@@ -363,14 +363,14 @@ function update_game_scene_main_training()
                 -- 检测飞行道具人物受击盒交互
                 for i = 1,#char_RP["projectile_table"] do
                     local current_projectile = char_RP["projectile_table"][i]
-                    if projectile_hurtbox_test(current_projectile,char_LP) then
+                    if collision_projectile_hurtbox_test(current_projectile,char_LP) then
                         current_projectile["hit_function"](char_LP) -- 飞行道具更新主动攻击状态
                         current_projectile["hurt_function"](char_LP)
                     end
                 end
                 for i = 1,#char_LP["projectile_table"] do
                     local current_projectile = char_LP["projectile_table"][i]
-                    if projectile_hurtbox_test(current_projectile,char_RP) then
+                    if collision_projectile_hurtbox_test(current_projectile,char_RP) then
                         current_projectile["hit_function"](char_RP)
                         current_projectile["hurt_function"](char_RP)
                     end
@@ -405,22 +405,22 @@ function update_game_scene_main_training()
                 end
 
                 -- 检测相杀
-                if strike_hitbox_clash_test() then
+                if collision_strike_hitbox_clash_test() then
 
                 end
             end
 
             -- 检测pushbox 更新Y位置
-            pushbox_relocate_y(char_LP)
-            pushbox_relocate_y(char_RP)
+            collision_pushbox_relocate_y(char_LP)
+            collision_pushbox_relocate_y(char_RP)
 
             -- 检测pushbox 更新X位置 static_relocate_x
-            pushbox_stage_relocate_x(char_LP)
-            pushbox_stage_relocate_x(char_RP)
-            pushbox_state_relocate_in_character_x(char_LP,char_RP,obj_stage_game_scene_mid_collision_anchor)
+            collision_pushbox_stage_relocate_x(char_LP)
+            collision_pushbox_stage_relocate_x(char_RP)
+            collision_pushbox_state_relocate_in_character_x(char_LP,char_RP,obj_stage_game_scene_mid_collision_anchor)
 
             -- 检测pushbox 更新X位置 dynamic_relocate_x
-            pushbox_dynamic_normal_aabb_relocate_x(char_LP,char_RP)
+            collision_pushbox_dynamic_normal_aabb_relocate_x(char_LP,char_RP)
 
             -- 更新飞行道具 与角色碰撞交互
             for i = #char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
@@ -454,7 +454,6 @@ function update_game_scene_main_training()
     }
     local this_function = switch[update_flow_controller["state"]]
     if this_function then this_function() end
-
 end
 
 function update_game_scene_main_local_match()

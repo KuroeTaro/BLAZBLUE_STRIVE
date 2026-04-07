@@ -1429,7 +1429,7 @@ function load_game_scene_anim_char_common_0_air_block(
     local function update_before_land()
         obj_char_other_side["throw_inv"] = true
         obj_char_other_side["throw_inv_countdown"] = 1
-        if test_char_on_ground(obj_char_other_side) then
+        if collision_test_char_on_ground(obj_char_other_side) then
             -- state
             obj_char_other_side["y"] = 365
             obj_char_other_side["f"] = 13

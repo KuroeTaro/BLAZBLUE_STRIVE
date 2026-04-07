@@ -36,14 +36,14 @@ function collision_box_aabb_detection(box_a,box_b)
     return (x_overlap and y_overlap)   
 end
 
-function test_char_on_ground(obj)
+function collision_test_char_on_ground(obj)
     local box = collision_box_to_real_world_box(obj,"pushbox")
     local stage_B_collision = 365
     local box_B_collision = 0
     box_B_collision = box[2]+box[4]/2+obj["collision_test_ground_height_offset"]
     return box_B_collision >= stage_B_collision
 end
-function test_cS_distance_check(obj_char,max_distance)
+function collision_test_cS_distance_check(obj_char,max_distance)
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local hurtbox = {}
     local hurtbox_front_x = 0
@@ -59,14 +59,14 @@ function test_cS_distance_check(obj_char,max_distance)
     end
     return false
 end
-function pushbox_relocate_y(obj)
+function collision_pushbox_relocate_y(obj)
     local box = collision_box_to_real_world_box(obj,"pushbox")
     local stage_B_collision = 365
     local box_B_collision = 0
     box_B_collision = box[2]+box[4]/2
     obj["y"] = math.min(box_B_collision,stage_B_collision)
 end
-function pushbox_stage_relocate_x(obj)
+function collision_pushbox_stage_relocate_x(obj)
     local box = collision_box_to_real_world_box(obj,"pushbox")
     local left_stage_collision = -1600.0
     local right_stage_collision = 1600.0
@@ -80,7 +80,7 @@ function pushbox_stage_relocate_x(obj)
         obj["collision_move_available"] = {1,1}
     end
 end
-function pushbox_state_relocate_in_character_x(obj_char_LP,obj_char_RP,mid_anchor)
+function collision_pushbox_state_relocate_in_character_x(obj_char_LP,obj_char_RP,mid_anchor)
     local box_L = collision_box_to_real_world_box(obj_char_LP,"pushbox")
     local box_R = collision_box_to_real_world_box(obj_char_RP,"pushbox")
     local obj_camera = obj_stage_game_scene_camera
@@ -96,7 +96,7 @@ function pushbox_state_relocate_in_character_x(obj_char_LP,obj_char_RP,mid_ancho
         end
     end
 end
-function pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_RP)
+function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_RP)
     local box_L = collision_box_to_real_world_box(obj_char_LP,"pushbox")
     local box_R = collision_box_to_real_world_box(obj_char_RP,"pushbox")
     if (not obj_char_LP["pushbox_other_side_char_active"])
@@ -162,7 +162,7 @@ function pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_RP)
     end
 end
 
-function strike_hurtbox_test(hit_obj,hurt_obj)
+function collision_strike_hurtbox_test(hit_obj,hurt_obj)
     if hit_obj["hit_type_state"] ~= "strike" or hurt_obj["strike_inv"] == true or hit_obj["strike_active"] == false then
         return false
     end
@@ -177,11 +177,11 @@ function strike_hurtbox_test(hit_obj,hurt_obj)
     end
     return false
 end
-function throw_hurtbox_test(hit_obj,hurt_obj)
+function collision_throw_hurtbox_test(hit_obj,hurt_obj)
     if hit_obj["hit_type_state"] ~= "throw" 
     or hurt_obj["throw_inv"] == true 
     or hit_obj["throw_active"] == false 
-    or throw_air_or_not_test(hit_obj,hurt_obj)
+    or collision_throw_air_or_not_test(hit_obj,hurt_obj)
     or math.abs(hit_obj["x"]-hurt_obj["x"]) > hit_obj["default_throw_distance"] then
         return false
     end
@@ -196,7 +196,7 @@ function throw_hurtbox_test(hit_obj,hurt_obj)
     end
     return false
 end
-function throw_air_or_not_test(hit_obj,hurt_obj)
+function collision_throw_air_or_not_test(hit_obj,hurt_obj)
     if hit_obj["height_state"] == "air" and hurt_obj["height_state"] ~= "air" then
         return true
     elseif hurt_obj["height_state"] == "air" and hit_obj["height_state"] ~= "air" then
@@ -205,7 +205,7 @@ function throw_air_or_not_test(hit_obj,hurt_obj)
         return false
     end
 end
-function projectile_hurtbox_test(hit_obj,hurt_obj)
+function collision_projectile_hurtbox_test(hit_obj,hurt_obj)
     -- none strike throw burst projectile
     if hit_obj["hit_type_state"] == "none" then
         return false
@@ -232,7 +232,7 @@ function projectile_hurtbox_test(hit_obj,hurt_obj)
         end
     end
 end
-function burst_hurtbox_test(hit_obj,hurt_obj)
+function collision_burst_hurtbox_test(hit_obj,hurt_obj)
     if hit_obj["hit_type_state"] ~= "burst" or hurt_obj["burst_inv"] == true or hit_obj["burst_active"] == false then
         return false
     end
@@ -247,7 +247,7 @@ function burst_hurtbox_test(hit_obj,hurt_obj)
     end
     return false
 end
-function strike_hitbox_clash_test()
+function collision_strike_hitbox_clash_test()
 end
 
 -- optimal CCD algo but not 100% currect
