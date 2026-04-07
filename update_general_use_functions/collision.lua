@@ -206,6 +206,46 @@ function throw_air_or_not_test(hit_obj,hurt_obj)
     end
 end
 function projectile_hurtbox_test(hit_obj,hurt_obj)
+    -- none strike throw burst projectile
+    if hit_obj["hit_type_state"] == "none" then
+        return false
+    end
+    if hit_obj["hit_type_state"] == "strike" and (hurt_obj["strike_inv"] == true or hit_obj["strike_active"] == false) then
+        return false
+    end
+    if hit_obj["hit_type_state"] == "throw" and (hurt_obj["throw_inv"] == true or hit_obj["throw_active"] == false) then
+        return false
+    end
+    if hit_obj["hit_type_state"] == "burst" and (hurt_obj["burst_inv"] == true or hit_obj["burst_active"] == false) then
+        return false
+    end
+    if hit_obj["hit_type_state"] == "projectile" and (hurt_obj["projectile_inv"] == true or hit_obj["projectile_active"] == false) then
+        return false
+    end
+    for i=1,#hit_obj["hitbox_table"] do
+        local current_hitbox = collision_box_to_real_world_box(hit_obj,"hitbox",hit_obj["hitbox_table"][i])
+        for j=1,#hurt_obj["hurtbox_table"] do
+            local current_hurtbox = collision_box_to_real_world_box(hurt_obj,"hurtbox",hurt_obj["hurtbox_table"][j])
+            if collision_box_aabb_detection(current_hitbox,current_hurtbox) then
+                return true
+            end
+        end
+    end
+end
+function burst_hurtbox_test(hit_obj,hurt_obj)
+    if hit_obj["hit_type_state"] ~= "burst" or hurt_obj["burst_inv"] == true or hit_obj["burst_active"] == false then
+        return false
+    end
+    for i=1,#hit_obj["hitbox_table"] do
+        local current_hitbox = collision_box_to_real_world_box(hit_obj,"hitbox",hit_obj["hitbox_table"][i])
+        for j=1,#hurt_obj["hurtbox_table"] do
+            local current_hurtbox = collision_box_to_real_world_box(hurt_obj,"hurtbox",hurt_obj["hurtbox_table"][j])
+            if collision_box_aabb_detection(current_hitbox,current_hurtbox) then
+                return true
+            end
+        end
+    end
+    return false
 end
 function strike_hitbox_clash_test()
 end

@@ -304,6 +304,10 @@ function update_game_scene_main_training()
                     char_LP["hurt_function"](char_RP) -- LP更新被攻击状态
                 end
 
+                -- 保留双康和后续飞行道具交互后的LP_hurt_strike_accur RP_hurt_strike_accur
+                local LP_hurt_strike_accur = strike_hurtbox_test(char_RP,char_LP) -- (obj_hit,obj_hurt)
+                local RP_hurt_strike_accur = strike_hurtbox_test(char_LP,char_RP)
+
                 -- debug_delete_after
                 if (DEBUG_TRAINNING_THROW_CLASH and DEBUG_TRAINNING_TOGGLE) then
                     if (char_LP["state"] == "throw_testing" and char_RP["state"] == "throw_tested") then
@@ -361,20 +365,16 @@ function update_game_scene_main_training()
                     local current_projectile = char_RP["projectile_table"][i]
                     if projectile_hurtbox_test(current_projectile,char_LP) then
                         current_projectile["hit_function"](char_LP) -- 飞行道具更新主动攻击状态
-                        char_LP["hurt_function"](current_projectile) --LP更新
+                        current_projectile["hurt_function"](char_LP)
                     end
                 end
                 for i = 1,#char_LP["projectile_table"] do
                     local current_projectile = char_LP["projectile_table"][i]
                     if projectile_hurtbox_test(current_projectile,char_RP) then
                         current_projectile["hit_function"](char_RP)
-                        char_RP["hurt_function"](current_projectile)
+                        current_projectile["hurt_function"](char_RP)
                     end
                 end
-
-                -- 保留双康使用的LP_hurt_strike_accur RP_hurt_strike_accur
-                local LP_hurt_strike_accur = strike_hurtbox_test(char_RP,char_LP) -- (obj_hit,obj_hurt)
-                local RP_hurt_strike_accur = strike_hurtbox_test(char_LP,char_RP)
 
                 -- 检测打击受击盒交互
                 if LP_hurt_strike_accur then
@@ -433,19 +433,6 @@ function update_game_scene_main_training()
                 local object = char_RP["projectile_table"][i]
                 if object["push_box_interact_update"] then
                     object["push_box_interact_update"]()
-                end
-            end
-
-            for i = 1,#char_LP["projectile_table"] do
-                local current_projectile = char_LP["projectile_table"][i]
-                if current_projectile["interact_function"] then
-                    current_projectile["interact_function"]()
-                end
-            end
-            for i = 1,#char_RP["projectile_table"] do
-                local current_projectile = char_RP["projectile_table"][i]
-                if current_projectile["interact_function"] then
-                    current_projectile["interact_function"]()
                 end
             end
 

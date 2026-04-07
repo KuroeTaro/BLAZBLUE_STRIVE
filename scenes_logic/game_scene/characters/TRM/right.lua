@@ -246,10 +246,10 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["shot_sys_reticle_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_reticle_f_4"] = 0
     obj_char_game_scene_char_RP["shot_sys_reticle_f_8"] = 0
-    obj_char_game_scene_char_RP["shot_sys_reticle_animation"] = nil
+    obj_char_game_scene_char_RP["shot_sys_reticle_animation_table"] = {}
     obj_char_game_scene_char_RP["shot_sys_reticle_stage_pos_current"] = {0,0}
     obj_char_game_scene_char_RP["shot_sys_reticle_stage_pos_target"] = {0,0}
-    obj_char_game_scene_char_RP["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_locking"
+    obj_char_game_scene_char_RP["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_unlocked"
     
     -- draw_correction
     obj_char_game_scene_char_RP["anchor_pos"] = {215,510}
@@ -410,6 +410,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 "5H_reticle_locked",
                 "5H_reticle_locking",
                 "5H_reticle_shot",
+                "5H_reticle_unlocked",
                 "5H_reticle_unlocking",
                 "2Launcher",
                 "4_6Launcher",
@@ -899,6 +900,7 @@ end
 function update_game_scene_char_RP_attachment()
     state_machine_char_game_scene_char_RP_shot_sys()
     state_machine_char_game_scene_char_RP_shot_sys_oroboros()
+    state_machine_char_game_scene_char_RP_shot_sys_reticle()
 end
 function state_machine_char_game_scene_char_RP()
     -- 拉后最高优先级 然后是拉下 然后是拉前 然后是跳
@@ -1338,7 +1340,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return
             end
-            if get_character_anim_end_state(obj_char,"shot_sys_f",obj_char["shot_sys_animation"])  then
+            if get_character_anim_end_state(obj_char,obj_char["shot_sys_animation"])  then
                 character_function_game_scene_TRM_shot_sys_at_the_read_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready"
                 return
@@ -1351,7 +1353,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 obj_char["shot_sys_state"] = "at_the_ready_ease_in"
                 return
             end
-            if get_character_anim_end_state(obj_char,"shot_sys_f",obj_char["shot_sys_animation"]) then
+            if get_character_anim_end_state(obj_char,obj_char["shot_sys_animation"]) then
                 character_function_game_scene_TRM_shot_sys_off_init(obj_char)
                 obj_char["shot_sys_state"] = "off"
                 return
@@ -1382,7 +1384,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return
             end
-            if get_character_anim_end_state(obj_char,"shot_sys_f",obj_char["shot_sys_animation"]) then
+            if get_character_anim_end_state(obj_char,obj_char["shot_sys_animation"]) then
                 character_function_game_scene_TRM_shot_sys_at_the_read_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready"
                 return
@@ -1412,7 +1414,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return
             end
-            if get_character_anim_end_state(obj_char,"shot_sys_f",obj_char["shot_sys_animation"]) then
+            if get_character_anim_end_state(obj_char,obj_char["shot_sys_animation"]) then
                 character_function_game_scene_TRM_shot_sys_at_the_read_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready"
                 return
@@ -1434,7 +1436,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_oroboros()
             character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
             character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
             character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
-            if get_character_anim_end_state(obj_char["shot_sys_oroboros_mid"],"f_8",obj_char["shot_sys_oroboros_animation_table"][3]) then
+            if get_character_anim_end_state(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3]) then
                 obj_char["shot_sys_oroboros_front"][4] = 1
                 obj_char["shot_sys_oroboros_back"][4] = 1
                 obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["shot_sys_oroboros_mid"])
@@ -1457,7 +1459,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_oroboros()
             character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
             character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
             character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
-            if get_character_anim_end_state(obj_char["shot_sys_oroboros_mid"],"f_8",obj_char["shot_sys_oroboros_animation_table"][3]) then
+            if get_character_anim_end_state(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3]) then
                 obj_char["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
                 obj_char["shot_sys_oroboros_front"]["f_8"] = 0
                 obj_char["shot_sys_oroboros_front"]["f_4"] = 0
@@ -1481,7 +1483,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_oroboros()
             character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
             character_animator(obj_char,obj_char["shot_sys_oroboros_animation_table"][6])
             character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
-            if get_character_anim_end_state(obj_char,"shot_sys_oroboros_f",obj_char["shot_sys_oroboros_animation_table"][6]) then
+            if get_character_anim_end_state(obj_char,obj_char["shot_sys_oroboros_animation_table"][6]) then
                 obj_char["shot_sys_oroboros_aim_r"] = 0.42
                 obj_char["shot_sys_oroboros_offset_amount"] = 0
                 obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["shot_sys_oroboros_mid"])
@@ -1508,16 +1510,109 @@ function state_machine_char_game_scene_char_RP_shot_sys_reticle()
         ["off"] = function()
         end,
         ["at_the_ready_ease_in"] = function()
+            character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
+            character_function_game_scene_TRM_shot_sys_reticle_pos_update_ease_in(obj_char)
+            if obj_char["shot_sys_aim_process"][1] >= obj_char["shot_sys_aim_process"][3] then
+                obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(obj_char,"5H_reticle_locking")
+                init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+                obj_char["shot_sys_reticle_state"] = "at_the_ready_locking"
+                return
+            end
+            if get_character_anim_end_state(obj_char,obj_char["shot_sys_reticle_animation_table"][1]) then
+                obj_char["shot_sys_reticle"][8] = 0
+                obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_unlocked"
+                obj_char["shot_sys_reticle_state"] = "at_the_ready_unlocked"
+            end
         end,
         ["at_the_ready_locking"] = function()
+            character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
+            character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+            character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(obj_char)
+            if obj_char["shot_sys_aim_process"][1] < obj_char["shot_sys_aim_process"][3] then
+                obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(obj_char,"5H_reticle_unlocking")
+                init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+                obj_char["shot_sys_reticle_state"] = "at_the_ready_unlocking"
+                return
+            end
+            if get_character_anim_end_state(obj_char,obj_char["shot_sys_reticle_animation_table"][2]) then
+                obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locked(obj_char)
+                init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+                obj_char["shot_sys_reticle_state"] = "at_the_ready_locked"
+                return
+            end
         end,
         ["at_the_ready_locked"] = function()
+            character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
+            character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+            character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(obj_char)
+            if obj_char["shot_sys_aim_process"][1] < obj_char["shot_sys_aim_process"][3] then
+                obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(obj_char,"5H_reticle_unlocking")
+                init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+                obj_char["shot_sys_reticle_state"] = "at_the_ready_unlocking"
+                return
+            end
         end,
         ["at_the_ready_unlocking"] = function()
+            character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
+            character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+            character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(obj_char)
+            if obj_char["shot_sys_aim_process"][1] >= obj_char["shot_sys_aim_process"][3] then
+                obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(obj_char,"5H_reticle_locking")
+                init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+                obj_char["shot_sys_reticle_state"] = "at_the_ready_locking"
+                return
+            end
+            if get_character_anim_end_state(obj_char,obj_char["shot_sys_reticle_animation_table"][2]) then
+                obj_char["shot_sys_reticle"][8] = 0
+                obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_unlocked"
+                obj_char["shot_sys_reticle_state"] = "at_the_ready_unlocked"
+                return
+            end
+        end,
+        ["at_the_ready_unlocked"] = function()
+            character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(obj_char)
+            if obj_char["shot_sys_aim_process"][1] >= obj_char["shot_sys_aim_process"][3] then
+                obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(obj_char,"5H_reticle_locking")
+                init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+                obj_char["shot_sys_reticle_state"] = "at_the_ready_locking"
+                return
+            end
         end,
         ["at_the_ready_ease_out"] = function()
+            character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+            if get_character_anim_end_state(obj_char,obj_char["shot_sys_reticle_animation_table"][2]) then
+                obj_char["shot_sys_reticle"] = {0,0,0,0,1,1,0,0}
+                obj_char["shot_sys_reticle_f"] = 0
+                obj_char["shot_sys_reticle_f_4"] = 0
+                obj_char["shot_sys_reticle_f_8"] = 0
+                obj_char["shot_sys_reticle_animation_table"] = {}
+                obj_char["shot_sys_reticle_stage_pos_current"] = {0,0}
+                obj_char["shot_sys_reticle_stage_pos_target"] = {0,0}
+                obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_unlocked"
+                obj_char["shot_sys_reticle_state"] = "off"
+                return
+            end
         end,
         ["at_the_ready_shot"] = function()
+            character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+            if get_character_anim_end_state(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+            and obj_char["shot_sys_aim_process"][1] >= obj_char["shot_sys_aim_process"][3] 
+            then
+                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(obj_char)
+                obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(obj_char,"5H_reticle_locking")
+                init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+                obj_char["shot_sys_reticle_state"] = "at_the_ready_locking"
+                return
+            end
+            if get_character_anim_end_state(obj_char,obj_char["shot_sys_reticle_animation_table"][2]) then
+                obj_char["shot_sys_reticle"][8] = 0
+                obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_unlocked"
+                obj_char["shot_sys_reticle_animation_table"][1] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(obj_char)
+                init_character_anim_without(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
+                character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(obj_char)
+                obj_char["shot_sys_reticle_state"] = "at_the_ready_ease_in"
+                return
+            end
         end,
         ["steady_aim_ease_in"] = function()
         end,
@@ -2261,7 +2356,7 @@ function state_gate_game_scene_char_RP_from_block(input,obj_char)
         return true
     end
     -- animation_end
-    if not get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if not get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         return
     end
     obj_char["input_sys_state"] = "load" -- none save load
@@ -2328,7 +2423,7 @@ function state_gate_game_scene_char_RP_from_hurt(input,obj_char)
         return
     end
     -- animation_end
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["input_sys_state"] = "load" -- none save load
         -- something could use for combo HUD
         -- print("hurt animation end")
@@ -2382,7 +2477,7 @@ function state_gate_game_scene_char_RP_from_throw_success(input,obj_char)
         return true
     end
     -- animation_end
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "5_stand_idle"
@@ -2423,7 +2518,7 @@ function state_gate_game_scene_char_RP_from_throw_success(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_throw_hurt_success(input,obj_char)
     -- knockdown knockdown_recovery
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["y"] = 365
         obj_char["state"] = obj_char["state_cache"]
         if obj_char["state"] == "knockdown" then
@@ -2475,7 +2570,7 @@ function state_gate_game_scene_char_RP_from_throw_tested(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_throw_tech(input,obj_char)
     -- animation_end
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         -- input_sys_cache
         obj_char["input_sys_state"] = "load" -- none save load
         state_machine_char_game_scene_char_RP_input_sys_cache()
@@ -2582,7 +2677,7 @@ function state_gate_game_scene_char_RP_from_knockdown(input,obj_char)
         return true
     end
     -- _knockdown_recover
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = obj_char["self_knockdown_recovery_animation"]
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "knockdown_recovery"
@@ -2595,7 +2690,7 @@ function state_gate_game_scene_char_RP_from_knockdown_recovery(input,obj_char)
         return true
     end
     -- animation_end
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         -- 5_stand_idle
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
@@ -2727,7 +2822,7 @@ function state_gate_game_scene_char_RP_from_1_2_3_crouch_turn(input,obj_char)
         return true
     end
     -- animation_end
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "1_2_3_crouch"
@@ -2795,7 +2890,7 @@ function state_gate_game_scene_char_RP_from_1_2_3_crouch_to_stand_idle(input,obj
         return true
     end
     -- animation_end
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "5_stand_idle"
@@ -2917,7 +3012,7 @@ function state_gate_game_scene_char_RP_from_5_stand_turn(input,obj_char)
         return true
     end
     -- animation_end
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "5_stand_idle"
@@ -2955,7 +3050,7 @@ function state_gate_game_scene_char_RP_from_5_stand_dash_skid(input,obj_char)
         return true
     end
     -- animation_end
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "5_stand_idle"
@@ -3083,7 +3178,7 @@ function state_gate_game_scene_char_RP_from_4_walk_to_stand_idle(input,obj_char)
         return true
     end
     -- animation_end
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "5_stand_idle"
@@ -3210,7 +3305,7 @@ function state_gate_game_scene_char_RP_from_6_walk_to_stand_idle(input,obj_char)
         return true
     end
     -- animation_end
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "5_stand_idle"
@@ -3245,7 +3340,7 @@ function state_gate_game_scene_char_RP_from_7_8_9_jump_air_to_stand_idle(input,o
         end
     end
     -- animation_end
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "5_stand_idle"
@@ -3320,7 +3415,7 @@ function state_gate_game_scene_char_RP_from_7_8_9_pre_jump(input,obj_char)
         return true
     end
     -- _7_8_9_jump_air
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         -- velocity_cache
         local multiplyer = 1
         if test_input_sys_press_or_hold(input["SP"]) then
@@ -3365,7 +3460,7 @@ function state_gate_game_scene_char_RP_from_4dash_backdash(input,obj_char)
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "5_stand_idle"
@@ -3403,7 +3498,7 @@ function state_gate_game_scene_char_RP_from_4dash_air_backdash(input,obj_char)
         end
     end
     -- _7_8_9_jump_air
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,470},-9.0*obj_char[5],nil)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air"
@@ -3485,7 +3580,7 @@ function state_gate_game_scene_char_RP_from_6dash_air_dash(input,obj_char)
         end
     end
     -- _7_8_9_jump_air
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{320,430},18.0*obj_char[5],nil)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air"
@@ -3512,7 +3607,7 @@ function state_gate_game_scene_char_RP_from_6dash_dash_cancel(input,obj_char)
         end
     end
     -- _5_stand_dash_skid
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "5_stand_dash_skid"
@@ -3537,7 +3632,7 @@ function state_gate_game_scene_char_RP_from_burst_overdrive(input,obj_char)
         character_animator(obj_char,obj_char["character_animation"])
         return true
     end
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         -- to stand_idle
         obj_char["idle_cancel"] = true
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)  
@@ -3601,7 +3696,7 @@ function state_gate_game_scene_char_RP_from_2P(input,obj_char)
         end
     end
     -- _1_2_3_crouch
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "1_2_3_crouch"
@@ -3644,7 +3739,7 @@ function state_gate_game_scene_char_RP_from_6P(input,obj_char)
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "5_stand_idle"
@@ -3705,7 +3800,7 @@ function state_gate_game_scene_char_RP_from_5P(input,obj_char)
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "5_stand_idle"
@@ -3754,7 +3849,7 @@ function state_gate_game_scene_char_RP_from_2K(input,obj_char)
         end
     end
     -- _1_2_3_crouch
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "1_2_3_crouch"
@@ -3797,7 +3892,7 @@ function state_gate_game_scene_char_RP_from_6K(input,obj_char)
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "5_stand_idle"
@@ -3857,7 +3952,7 @@ function state_gate_game_scene_char_RP_from_5K(input,obj_char)
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "5_stand_idle"
@@ -3898,7 +3993,7 @@ function state_gate_game_scene_char_RP_from_2S(input,obj_char)
         end
     end
     -- _1_2_3_crouch
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "1_2_3_crouch"
@@ -3941,7 +4036,7 @@ function state_gate_game_scene_char_RP_from_6S(input,obj_char)
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "5_stand_idle"
@@ -4019,7 +4114,7 @@ function state_gate_game_scene_char_RP_from_cS(input,obj_char)
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "5_stand_idle"
@@ -4061,7 +4156,7 @@ function state_gate_game_scene_char_RP_from_fS(input,obj_char)
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "5_stand_idle"
@@ -4086,7 +4181,7 @@ function state_gate_game_scene_char_RP_from_2Launcher(input,obj_char)
         end
     end
     -- _1_2_3_crouch
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "1_2_3_crouch"
@@ -4110,7 +4205,7 @@ function state_gate_game_scene_char_RP_from_4_6Launcher(input,obj_char)
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "5_stand_idle"
@@ -4150,7 +4245,7 @@ function state_gate_game_scene_char_RP_from_5Launcher(input,obj_char)
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "5_stand_idle"
@@ -4179,7 +4274,7 @@ function state_gate_game_scene_char_RP_from_jP(input,obj_char)
     if obj_char["hit_cancel"] then
     end
     -- _7_8_9_jump_air
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air"
@@ -4211,7 +4306,7 @@ function state_gate_game_scene_char_RP_from_jK(input,obj_char)
     if obj_char["hit_cancel"] then
     end
     -- _7_8_9_jump_air
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air"
@@ -4255,7 +4350,7 @@ function state_gate_game_scene_char_RP_from_j2K(input,obj_char)
         end
     end
     -- _7_8_9_jump_air
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air"
@@ -4297,7 +4392,7 @@ function state_gate_game_scene_char_RP_from_jS(input,obj_char)
         end
     end
     -- _7_8_9_jump_air
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air"
@@ -4326,7 +4421,7 @@ function state_gate_game_scene_char_RP_from_j4_6Launcher(input,obj_char)
         return true
     end
     -- _7_8_9_jump_air
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air"
@@ -4368,7 +4463,7 @@ function state_gate_game_scene_char_RP_from_j5Launcher(input,obj_char)
         end
     end
     -- _7_8_9_jump_air
-    if get_character_anim_end_state(obj_char,"f",obj_char["character_animation"]) then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air"

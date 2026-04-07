@@ -94,6 +94,7 @@ local load_attack_name_table = {
     "5H_reticle_locked",
     "5H_reticle_locking",
     "5H_reticle_shot",
+    "5H_reticle_unlocked",
     "5H_reticle_unlocking",
     "2Launcher",
     "4_6Launcher",
