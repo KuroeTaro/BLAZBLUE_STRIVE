@@ -31,14 +31,22 @@
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":320},
 	"sourceSize": {"w":320,"h":320}
+},
+"4":
+{
+	"frame": {"x":1280,"y":0,"w":320,"h":320},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":320},
+	"sourceSize": {"w":320,"h":320}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "TRM_5H_reticle_at_the_ready_off",
+	"image": "TRM_5H_reticle_unlocking",
 	"format": "RGBA8888",
-	"size": {"w":1280,"h":320},
+	"size": {"w":1600,"h":320},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:743019d9751dbc79693ecce7ab18b132:7c564c639eefc3eb5e23ce95a997fb57:6be5fca8b11d00432434a81e22d94671$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e8cb4662d31c21e932a2dbb983766b18:4fd8c9a17db4c5a9321660abdfabf4df:fc4a0b8c44076d4b0d89c84436ff408e$"
 }
 }

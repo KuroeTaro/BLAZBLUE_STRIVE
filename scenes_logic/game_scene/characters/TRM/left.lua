@@ -249,7 +249,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["shot_sys_reticle_animation"] = nil
     obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_current"] = {0,0}
     obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_target"] = {0,0}
-    obj_char_game_scene_char_LP["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_at_the_ready"
+    obj_char_game_scene_char_LP["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_locking"
     
     -- draw_correction
     obj_char_game_scene_char_LP["anchor_pos"] = {215,510}
@@ -406,11 +406,11 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "5H_oroboros_loop_front",
                 "5H_oroboros_loop_mid",
                 "5H_oroboros_shot",
-                "5H_reticle_at_the_ready",
-                "5H_reticle_at_the_ready_off",
                 "5H_reticle_ease_out",
+                "5H_reticle_locked",
+                "5H_reticle_locking",
                 "5H_reticle_shot",
-                "5H_reticle_steady_aim",
+                "5H_reticle_unlocking",
                 "2Launcher",
                 "4_6Launcher",
                 "4_6Launcher_success",
@@ -1440,11 +1440,11 @@ function state_machine_char_game_scene_char_LP_shot_sys_oroboros()
                 obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["shot_sys_oroboros_mid"])
                 init_character_anim_with(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
                 character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
-                obj_char["shot_sys_oroboros_state"] = "loop"
+                obj_char["shot_sys_oroboros_state"] = "at_the_ready_or_steady_aim"
                 return
             end
         end,
-        ["loop"] = function()
+        ["at_the_ready_or_steady_aim"] = function()
             character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
             character_animator(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
             character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
@@ -1487,7 +1487,7 @@ function state_machine_char_game_scene_char_LP_shot_sys_oroboros()
                 obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["shot_sys_oroboros_mid"])
                 init_character_anim_with(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
                 character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
-                obj_char["shot_sys_oroboros_state"] = "loop"
+                obj_char["shot_sys_oroboros_state"] = "at_the_ready_or_steady_aim"
                 return
             end
         end,
