@@ -304,10 +304,6 @@ function update_game_scene_main_training()
                     char_LP["hurt_function"](char_RP) -- LP更新被攻击状态
                 end
 
-                -- 保留双康和后续飞行道具交互后的LP_hurt_strike_accur RP_hurt_strike_accur
-                local LP_hurt_strike_accur = collision_strike_hurtbox_test(char_RP,char_LP) -- (obj_hit,obj_hurt)
-                local RP_hurt_strike_accur = collision_strike_hurtbox_test(char_LP,char_RP)
-
                 -- debug_delete_after
                 if (DEBUG_TRAINNING_THROW_CLASH and DEBUG_TRAINNING_TOGGLE) then
                     if (char_LP["state"] == "throw_testing" and char_RP["state"] == "throw_tested") then
@@ -335,28 +331,45 @@ function update_game_scene_main_training()
                     end
                 end
 
+                -- friendly_strike
+                -- enemy_strike
+                -- hit_friendly
+                -- hit_enemy
+
                 -- 检测飞行道具人物打击盒交互
                 for i = 1,#char_RP["projectile_table"] do
                     local current_projectile = char_RP["projectile_table"][i]
                     if collision_strike_hurtbox_test(char_LP,current_projectile) then
-                        char_LP["hit_function"](current_projectile)
-                        current_projectile["hurt_function"](char_LP)
+                        current_projectile["enemy_strike_function"](char_LP,current_projectile)
                     end
                 end
                 for i = 1,#char_LP["projectile_table"] do
                     local current_projectile = char_RP["projectile_table"][i]
                     if collision_strike_hurtbox_test(char_RP,current_projectile) then
-                        char_RP["hit_function"](current_projectile)
-                        current_projectile["hurt_function"](char_RP)
+                        current_projectile["enemy_strike_function"](char_RP,current_projectile)
+                    end
+                end
+                for i = 1,#char_RP["projectile_table"] do
+                    local current_projectile = char_RP["projectile_table"][i]
+                    if collision_strike_hurtbox_test(char_RP,current_projectile) then
+                        current_projectile["friendly_strike_function"](char_RP,current_projectile)
+                    end
+                end
+                for i = 1,#char_LP["projectile_table"] do
+                    local current_projectile = char_RP["projectile_table"][i]
+                    if collision_strike_hurtbox_test(char_LP,current_projectile) then
+                        current_projectile["friendly_strike_function"](char_LP,current_projectile)
                     end
                 end
 
                 -- 检测飞行道具相杀
                 for i = 1,#char_RP["projectile_table"] do
                     local RP_projectile = char_RP["projectile_table"][i]
-                    for i = j,#char_LP["projectile_table"] do
+                    for j = 1,#char_LP["projectile_table"] do
                         local LP_projectile = char_LP["projectile_table"][j]
-                        projectile_clash_test(RP_projectile,LP_projectile)
+                        if collision_projectile_clash_test(RP_projectile,LP_projectile) then
+
+                        end
                     end
                 end
 
@@ -364,17 +377,31 @@ function update_game_scene_main_training()
                 for i = 1,#char_RP["projectile_table"] do
                     local current_projectile = char_RP["projectile_table"][i]
                     if collision_projectile_hurtbox_test(current_projectile,char_LP) then
-                        current_projectile["hit_function"](char_LP) -- 飞行道具更新主动攻击状态
-                        current_projectile["hurt_function"](char_LP)
+                        current_projectile["hit_enemy_function"](current_projectile,char_LP)
                     end
                 end
                 for i = 1,#char_LP["projectile_table"] do
                     local current_projectile = char_LP["projectile_table"][i]
                     if collision_projectile_hurtbox_test(current_projectile,char_RP) then
-                        current_projectile["hit_function"](char_RP)
-                        current_projectile["hurt_function"](char_RP)
+                        current_projectile["hit_enemy_function"](current_projectile,char_RP)
                     end
                 end
+                for i = 1,#char_RP["projectile_table"] do
+                    local current_projectile = char_RP["projectile_table"][i]
+                    if collision_projectile_hurtbox_test(current_projectile,char_RP) then
+                        current_projectile["hit_friendly_function"](current_projectile,char_RP)
+                    end
+                end
+                for i = 1,#char_LP["projectile_table"] do
+                    local current_projectile = char_LP["projectile_table"][i]
+                    if collision_projectile_hurtbox_test(current_projectile,char_LP) then
+                        current_projectile["hit_friendly_function"](current_projectile,char_LP)
+                    end
+                end
+
+                -- 保留双康后的LP_hurt_strike_accur RP_hurt_strike_accur
+                local LP_hurt_strike_accur = collision_strike_hurtbox_test(char_RP,char_LP) -- (obj_hit,obj_hurt)
+                local RP_hurt_strike_accur = collision_strike_hurtbox_test(char_LP,char_RP)
 
                 -- 检测打击受击盒交互
                 if LP_hurt_strike_accur then

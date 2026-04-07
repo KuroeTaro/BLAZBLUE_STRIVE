@@ -249,6 +249,8 @@ function collision_burst_hurtbox_test(hit_obj,hurt_obj)
 end
 function collision_strike_hitbox_clash_test()
 end
+function collision_projectile_clash_test(obj_A,obj_B)
+end
 
 -- optimal CCD algo but not 100% currect
 -------------------------------------------------------------------------------------------------

@@ -260,157 +260,6 @@ function common_game_scene_strike_hurt_function(obj_char)
     -- stand crouch air OTG
     local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
     local obj_camera = obj_stage_game_scene_camera
-    local function GP_hurt()
-        obj_char["state_cache"] = obj_char["state"]
-        obj_char["state"] = "hurtstop"
-        common_game_scene_nil_load_camera_enclose_anim(hit_side_obj_char)
-        table.insert(obj_camera["active_application_table"],
-            function()
-                anim_camera_point_linear_game_scene_camera_enclosing = hit_side_obj_char["camera_enclosing_anim"]
-                anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
-                anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
-                obj_camera["enclose_position_offset"] = hit_side_obj_char["enclose_position_offset"]
-                obj_camera["state"] = "active"
-            end
-        )
-
-        obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
-        obj_char["last_hitstop_frame"] = 0
-
-        -- character_shake
-        obj_char["hurtstop_wiggle_x_animation"] = 
-        common_game_scene_create_wiggle_animation(
-            obj_char["hit_hurt_blockstop_countdown"] - 1,
-            "hurtstop_wiggle_x",
-            15
-        )
-        obj_char["hurtstop_wiggle_y_animation"] = 
-        common_game_scene_create_wiggle_animation(
-            obj_char["hit_hurt_blockstop_countdown"] - 1,
-            "hurtstop_wiggle_y",
-            7
-        )
-        init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_x_animation"])
-        init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_y_animation"])
-        obj_char["hurtstop_wiggle_current_x"] = (obj_char["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
-        obj_char["hurtstop_wiggle_current_y"] = (obj_char["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
-        insert_VFX_game_scene_char_GP(obj_char)
-    end
-    local function common_hurt()
-        obj_char["state_cache"] = "hurt"
-        obj_char["state"] = "hurtstop"
-        common_game_scene_nil_load_camera_enclose_anim(hit_side_obj_char)
-        if obj_char["hurt_state"] == "counter" then 
-            hit_side_obj_char["hit_counter_ver_function"](hit_side_obj_char,obj_char)
-        end
-        table.insert(obj_camera["active_application_table"],
-            function()
-                anim_camera_point_linear_game_scene_camera_enclosing = hit_side_obj_char["camera_enclosing_anim"]
-                anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
-                anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
-                obj_camera["enclose_position_offset"] = hit_side_obj_char["enclose_position_offset"]
-                obj_camera["state"] = "active"
-            end
-        )
-        obj_char["game_speed"] = 1
-        obj_char["game_speed_subframe"] = 1
-        obj_char["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
-
-        if obj_char["height_state"] == "stand" then
-            obj_char["character_animation"] = hit_side_obj_char["stand_hurt_animation"]
-        elseif obj_char["height_state"] == "crouch" then
-            obj_char["character_animation"] = hit_side_obj_char["crouch_hurt_animation"]
-        elseif obj_char["height_state"] == "air" then
-            obj_char["character_animation"] = hit_side_obj_char["air_hurt_animation"]
-        elseif obj_char["height_state"] == "OTG" then
-            obj_char["character_animation"] = hit_side_obj_char["OTG_hurt_animation"]
-        end
-
-        obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
-        obj_char["last_hitstop_frame"] = 0
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-
-        -- character_shake
-        obj_char["hurtstop_wiggle_x_animation"] = 
-        common_game_scene_create_wiggle_animation(
-            obj_char["hit_hurt_blockstop_countdown"] - 1,
-            "hurtstop_wiggle_x",
-            15
-        )
-        obj_char["hurtstop_wiggle_y_animation"] = 
-        common_game_scene_create_wiggle_animation(
-            obj_char["hit_hurt_blockstop_countdown"] - 1,
-            "hurtstop_wiggle_y",
-            7
-        )
-        init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_x_animation"])
-        init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_y_animation"])
-        obj_char["hurtstop_wiggle_current_x"] = (obj_char["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
-        obj_char["hurtstop_wiggle_current_y"] = (obj_char["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
-    end
-    local function common_block()
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
-        obj_char["state_cache"] = "block"
-        obj_char["state"] = "blockstop"
-
-        if common_game_scene_check_crouch_direction(obj_char) and obj_char["height_state"] == "stand" then
-            obj_char["height_state"] = "crouch"
-        elseif common_game_scene_check_stand_direction(obj_char) and obj_char["height_state"] == "crouch" then
-            obj_char["height_state"] = "stand"
-        end
-        
-        if obj_char["height_state"] == "stand" then
-            obj_char["character_animation"] = hit_side_obj_char["stand_block_animation"]
-        elseif obj_char["height_state"] == "crouch" then
-            obj_char["character_animation"] = hit_side_obj_char["crouch_block_animation"]
-        elseif obj_char["height_state"] == "air" then
-            obj_char["character_animation"] = hit_side_obj_char["air_block_animation"]
-        end
-        obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
-        obj_char["last_hitstop_frame"] = 0
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        common_game_scene_nil_load_camera_enclose_anim(hit_side_obj_char)
-        common_game_scene_hit_load_camera_shake_anim(hit_side_obj_char,0.5)
-        table.insert(obj_camera["active_application_table"],
-            function()
-                anim_camera_point_linear_game_scene_camera_enclosing = hit_side_obj_char["camera_enclosing_anim"]
-                anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
-                anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
-                obj_camera["enclose_position_offset"] = hit_side_obj_char["enclose_position_offset"]
-                obj_camera["state"] = "active"
-            end
-        )
-        -- character_shake
-        obj_char["hurtstop_wiggle_x_animation"] = 
-        common_game_scene_create_wiggle_animation(
-            obj_char["hit_hurt_blockstop_countdown"] - 1,
-            "hurtstop_wiggle_x",
-            15
-        )
-        obj_char["hurtstop_wiggle_y_animation"] = 
-        common_game_scene_create_wiggle_animation(
-            obj_char["hit_hurt_blockstop_countdown"] - 1,
-            "hurtstop_wiggle_y",
-            7
-        )
-        init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_x_animation"])
-        init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_y_animation"])
-        obj_char["hurtstop_wiggle_current_x"] = (obj_char["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
-        obj_char["hurtstop_wiggle_current_y"] = (obj_char["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
-        hit_side_obj_char["block_VFX_insert_function"](obj_char)
-        if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
-            insert_VFX_game_scene_char_FD_block(obj_char)
-        end
-    end
     -- physics_lock
     obj_char["physics_lock"] = true
     -- change_draw_front
@@ -435,11 +284,11 @@ function common_game_scene_strike_hurt_function(obj_char)
     end
     -- idle block
     if block_bool then
-        common_block()
+        common_game_scene_strike_hurt_function_common_block(obj_char,hit_side_obj_char,obj_camera)
     -- GP
     elseif obj_char["hurt_state"] == "GP" then -- idle unblock punish counter GP parry
         -- insert GP
-        GP_hurt()
+        common_game_scene_strike_hurt_function_GP_hurt(obj_char,hit_side_obj_char,obj_camera)
     -- parry
     elseif obj_char["hurt_state"] == "parry" then -- idle unblock punish counter GP parry
         -- parry function
@@ -450,7 +299,158 @@ function common_game_scene_strike_hurt_function(obj_char)
         if obj_char["hurt_state"] == "punish" then
             insert_VFX_HUD_game_scene_punish(hit_side_obj_char)
         end
-        common_hurt()
+        common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_obj_char,obj_camera)
+    end
+end
+function common_game_scene_strike_hurt_function_GP_hurt(obj_char,hit_side_obj_char,obj_camera)
+    obj_char["state_cache"] = obj_char["state"]
+    obj_char["state"] = "hurtstop"
+    common_game_scene_nil_load_camera_enclose_anim(hit_side_obj_char)
+    table.insert(obj_camera["active_application_table"],
+        function()
+            anim_camera_point_linear_game_scene_camera_enclosing = hit_side_obj_char["camera_enclosing_anim"]
+            anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
+            anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
+            init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
+            init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+            init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+            obj_camera["enclose_position_offset"] = hit_side_obj_char["enclose_position_offset"]
+            obj_camera["state"] = "active"
+        end
+    )
+
+    obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
+    obj_char["last_hitstop_frame"] = 0
+
+    -- character_shake
+    obj_char["hurtstop_wiggle_x_animation"] = 
+    common_game_scene_create_wiggle_animation(
+        obj_char["hit_hurt_blockstop_countdown"] - 1,
+        "hurtstop_wiggle_x",
+        15
+    )
+    obj_char["hurtstop_wiggle_y_animation"] = 
+    common_game_scene_create_wiggle_animation(
+        obj_char["hit_hurt_blockstop_countdown"] - 1,
+        "hurtstop_wiggle_y",
+        7
+    )
+    init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_x_animation"])
+    init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_y_animation"])
+    obj_char["hurtstop_wiggle_current_x"] = (obj_char["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
+    obj_char["hurtstop_wiggle_current_y"] = (obj_char["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
+    insert_VFX_game_scene_char_GP(obj_char)
+end
+function common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_obj_char,obj_camera)
+    obj_char["state_cache"] = "hurt"
+    obj_char["state"] = "hurtstop"
+    common_game_scene_nil_load_camera_enclose_anim(hit_side_obj_char)
+    if obj_char["hurt_state"] == "counter" then 
+        hit_side_obj_char["hit_counter_ver_function"](hit_side_obj_char,obj_char)
+    end
+    table.insert(obj_camera["active_application_table"],
+        function()
+            anim_camera_point_linear_game_scene_camera_enclosing = hit_side_obj_char["camera_enclosing_anim"]
+            anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
+            anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
+            init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
+            init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+            init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+            obj_camera["enclose_position_offset"] = hit_side_obj_char["enclose_position_offset"]
+            obj_camera["state"] = "active"
+        end
+    )
+    obj_char["game_speed"] = 1
+    obj_char["game_speed_subframe"] = 1
+    obj_char["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
+
+    if obj_char["height_state"] == "stand" then
+        obj_char["character_animation"] = hit_side_obj_char["stand_hurt_animation"]
+    elseif obj_char["height_state"] == "crouch" then
+        obj_char["character_animation"] = hit_side_obj_char["crouch_hurt_animation"]
+    elseif obj_char["height_state"] == "air" then
+        obj_char["character_animation"] = hit_side_obj_char["air_hurt_animation"]
+    elseif obj_char["height_state"] == "OTG" then
+        obj_char["character_animation"] = hit_side_obj_char["OTG_hurt_animation"]
+    end
+
+    obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
+    obj_char["last_hitstop_frame"] = 0
+    init_character_anim_with(obj_char,obj_char["character_animation"])
+
+    -- character_shake
+    obj_char["hurtstop_wiggle_x_animation"] = 
+    common_game_scene_create_wiggle_animation(
+        obj_char["hit_hurt_blockstop_countdown"] - 1,
+        "hurtstop_wiggle_x",
+        15
+    )
+    obj_char["hurtstop_wiggle_y_animation"] = 
+    common_game_scene_create_wiggle_animation(
+        obj_char["hit_hurt_blockstop_countdown"] - 1,
+        "hurtstop_wiggle_y",
+        7
+    )
+    init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_x_animation"])
+    init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_y_animation"])
+    obj_char["hurtstop_wiggle_current_x"] = (obj_char["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
+    obj_char["hurtstop_wiggle_current_y"] = (obj_char["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
+end
+function common_game_scene_strike_hurt_function_common_block(obj_char,hit_side_obj_char,obj_camera)
+    local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
+    obj_char["state_cache"] = "block"
+    obj_char["state"] = "blockstop"
+
+    if common_game_scene_check_crouch_direction(obj_char) and obj_char["height_state"] == "stand" then
+        obj_char["height_state"] = "crouch"
+    elseif common_game_scene_check_stand_direction(obj_char) and obj_char["height_state"] == "crouch" then
+        obj_char["height_state"] = "stand"
+    end
+    
+    if obj_char["height_state"] == "stand" then
+        obj_char["character_animation"] = hit_side_obj_char["stand_block_animation"]
+    elseif obj_char["height_state"] == "crouch" then
+        obj_char["character_animation"] = hit_side_obj_char["crouch_block_animation"]
+    elseif obj_char["height_state"] == "air" then
+        obj_char["character_animation"] = hit_side_obj_char["air_block_animation"]
+    end
+    obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
+    obj_char["last_hitstop_frame"] = 0
+    init_character_anim_with(obj_char,obj_char["character_animation"])
+    common_game_scene_nil_load_camera_enclose_anim(hit_side_obj_char)
+    common_game_scene_hit_load_camera_shake_anim(hit_side_obj_char,0.5)
+    table.insert(obj_camera["active_application_table"],
+        function()
+            anim_camera_point_linear_game_scene_camera_enclosing = hit_side_obj_char["camera_enclosing_anim"]
+            anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
+            anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
+            init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
+            init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+            init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+            obj_camera["enclose_position_offset"] = hit_side_obj_char["enclose_position_offset"]
+            obj_camera["state"] = "active"
+        end
+    )
+    -- character_shake
+    obj_char["hurtstop_wiggle_x_animation"] = 
+    common_game_scene_create_wiggle_animation(
+        obj_char["hit_hurt_blockstop_countdown"] - 1,
+        "hurtstop_wiggle_x",
+        15
+    )
+    obj_char["hurtstop_wiggle_y_animation"] = 
+    common_game_scene_create_wiggle_animation(
+        obj_char["hit_hurt_blockstop_countdown"] - 1,
+        "hurtstop_wiggle_y",
+        7
+    )
+    init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_x_animation"])
+    init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_y_animation"])
+    obj_char["hurtstop_wiggle_current_x"] = (obj_char["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
+    obj_char["hurtstop_wiggle_current_y"] = (obj_char["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
+    hit_side_obj_char["block_VFX_insert_function"](obj_char)
+    if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
+        insert_VFX_game_scene_char_FD_block(obj_char)
     end
 end
 function common_game_scene_throw_hit_function(obj_char)
