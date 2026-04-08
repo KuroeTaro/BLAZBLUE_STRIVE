@@ -866,6 +866,14 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
     init_frame_anim_with_out(obj,obj["animation"])
+    obj["opacity_point_linear_animation"] = {}
+    obj["opacity_point_linear_animation"][0] = {0.25,5}
+    obj["opacity_point_linear_animation"][5] = {1,15}
+    obj["opacity_point_linear_animation"][15] = {0,15}
+    obj["opacity_point_linear_animation"]["prop"] = 4
+    obj["opacity_point_linear_animation"]["length"] = 15
+    obj["opacity_point_linear_animation"]["loop"] = false
+    init_point_linear_anim_with_out(obj,obj["opacity_point_linear_animation"])
     obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
     obj["update"] = function()
         if obj_char["state"] == "blockstop" then
@@ -874,6 +882,7 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
             obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
             obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
             frame_animator(obj,obj["animation"])
+            point_linear_animator(obj,obj["opacity_point_linear_animation"])
             obj["life"] = obj["life"] - 1
         end
     end
@@ -883,9 +892,11 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
 
-        love.graphics.setColor(1,1,1,obj[4])
+        love.graphics.setColor(1,1,1,1)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
+
+        draw_3d_image(obj_camera,obj,image_VFX_game_scene_FD_bubble)
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
 end

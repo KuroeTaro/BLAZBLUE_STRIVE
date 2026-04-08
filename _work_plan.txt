@@ -1,6 +1,4 @@
 config选项中自定义要不要79空投
-制作瞄准准心动态图
-
 
 5H制作逻辑
     瞄准速度 未诅咒：10 诅咒：20
@@ -24,3 +22,10 @@ config选项中自定义要不要79空投
 
     ease_out -> off 动画结束进入
     ease_out -> ease_in 处于未受伤状态(hurtstop hurt block blockstop)按下h 进入
+
+common_projectile_hit_function
+common_projectile_hurt_function
+
+5H_at_the_ready_projectile_animation
+5H_at_the_ready_stand_crouch_air_block_animation
+5H_at_the_ready_stand_crouch_air_OTG_hurt_animation
