@@ -16,25 +16,25 @@ function insert_VFX_game_scene_char_overdrive_badge(obj_char)
     obj[6] = obj_char[6]*2
     obj[7] = obj_char[7]
     obj[8] = 0
-    obj["update"] = function(self)
-        self[1] = obj_char["x"] - obj_char[5]*(500)
-        self[2] = obj_char["y"] - obj_char[6]*(865)
-        self[3] = obj_char[3]
-        self[4] = 1
-        self[5] = obj_char[5]*2
-        self[6] = obj_char[6]*2
-        self[7] = obj_char[7]
-        self[8] = self[8] + 1
-        self["life"] = self["life"] - 1
+    obj["update"] = function()
+        obj[1] = obj_char["x"] - obj_char[5]*(500)
+        obj[2] = obj_char["y"] - obj_char[6]*(865)
+        obj[3] = obj_char[3]
+        obj[4] = 1
+        obj[5] = obj_char[5]*2
+        obj[6] = obj_char[6]*2
+        obj[7] = obj_char[7]
+        obj[8] = obj[8] + 1
+        obj["life"] = obj["life"] - 1
         if obj_char["state"] ~= "burst_overdrive" then
-            self["life"] = 0
+            obj["life"] = 0
         end
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local camera = obj_stage_game_scene_camera
-        local f = self[8]
+        local f = obj[8]
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(camera,self,image_sprite_sheet,""..f.."")
+        draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,""..f.."")
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
@@ -52,27 +52,27 @@ function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
     obj[6] = obj_char[6]*2
     obj[7] = obj_char[7]
     obj[8] = 0
-    obj["update"] = function(self)
-        -- self[1] = obj_char["x"] + obj_char[5]*(-860)/2
-        -- self[2] = obj_char["y"] + obj_char[6]*(840)
-        self[1] = obj_char["x"] - obj_char[5]*(860)
-        self[2] = obj_char["y"] - obj_char[6]*(845)
-        self[3] = obj_char[3]
-        self[4] = 1
-        self[5] = obj_char[5]*2
-        self[6] = obj_char[6]*2
-        self[7] = obj_char[7]
-        self[8] = self[8] + 1
-        self["life"] = self["life"] - 1
+    obj["update"] = function()
+        -- obj[1] = obj_char["x"] + obj_char[5]*(-860)/2
+        -- obj[2] = obj_char["y"] + obj_char[6]*(840)
+        obj[1] = obj_char["x"] - obj_char[5]*(860)
+        obj[2] = obj_char["y"] - obj_char[6]*(845)
+        obj[3] = obj_char[3]
+        obj[4] = 1
+        obj[5] = obj_char[5]*2
+        obj[6] = obj_char[6]*2
+        obj[7] = obj_char[7]
+        obj[8] = obj[8] + 1
+        obj["life"] = obj["life"] - 1
         if obj_char["state"] ~= "burst_overdrive" then
-            self["life"] = 0
+            obj["life"] = 0
         end
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_overdrive_airflow
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
     
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -106,22 +106,22 @@ function insert_VFX_game_scene_char_overdrive_partical(obj_char)
         obj[8] = 0
         obj["f"] = -1
     end
-    obj["update"] = function(self)
-        self["f"] = self["f"] + 1
-        if self["f"] >= 2 then
-            self[8] = self[8] + 1
-            self["f"] = 0
+    obj["update"] = function()
+        obj["f"] = obj["f"] + 1
+        if obj["f"] >= 2 then
+            obj[8] = obj[8] + 1
+            obj["f"] = 0
         end
-        self["life"] = self["life"] - 1
+        obj["life"] = obj["life"] - 1
         if obj_char["state"] ~= "burst_overdrive" then
-            self["life"] = 0
+            obj["life"] = 0
         end
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_overdrive_partical
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
     
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -188,52 +188,52 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
 
     obj["draw_canvas"] = love.graphics.newCanvas(love.graphics.getWidth(),love.graphics.getHeight())
 
-    obj["update"] = function(self)
-        self[1] = obj_char["x"]
-        self[2] = obj_char["y"] - obj_char[6]*(300)
-        self[3] = obj_char[3]
-        self["cood_res"] = draw_3d_point_to_2D(obj_camera,self)
+    obj["update"] = function()
+        obj[1] = obj_char["x"]
+        obj[2] = obj_char["y"] - obj_char[6]*(300)
+        obj[3] = obj_char[3]
+        obj["cood_res"] = draw_3d_point_to_2D(obj_camera,obj)
 
         local switch = {
             -- ease_in 之前的状态 如果达到第10帧则为下一个动画的第0帧 
             ["ease_in"] = function()
-                point_linear_animator(self,self["size_anim"])
-                point_linear_animator(self,self["opacity_ease_in_anim"])
-                self["life"] = 42
+                point_linear_animator(obj,obj["size_anim"])
+                point_linear_animator(obj,obj["opacity_ease_in_anim"])
+                obj["life"] = 42
                 if obj_char["overdrive_gauge"][3] == "off" then
-                    self["state"] = "ease_out"
-                    self["life"] = 10
-                    self[4] = 0.50
-                    init_point_linear_anim_with(self,self["opacity_ease_out_anim"])
+                    obj["state"] = "ease_out"
+                    obj["life"] = 10
+                    obj[4] = 0.50
+                    init_point_linear_anim_with(obj,obj["opacity_ease_out_anim"])
                 end
             end,
             ["ease_out"] = function()
-                point_linear_animator(self,self["opacity_ease_out_anim"])
-                if get_point_linear_anim_end_state(self,self["opacity_ease_out_anim"]) then
-                    self["life"] = 0
+                point_linear_animator(obj,obj["opacity_ease_out_anim"])
+                if get_point_linear_anim_end_state(obj,obj["opacity_ease_out_anim"]) then
+                    obj["life"] = 0
                 end
             end,
         }
-        local this_function = switch[self["state"]]
+        local this_function = switch[obj["state"]]
         if this_function then this_function() end
 
-        self["life"] = self["life"] - 1
+        obj["life"] = obj["life"] - 1
     end
 
-    obj["draw"] = function(self)
-        love.graphics.setCanvas(self["draw_canvas"])
+    obj["draw"] = function()
+        love.graphics.setCanvas(obj["draw_canvas"])
         love.graphics.clear(0,0,0,0)
-        love.graphics.setColor(0,0,0,self[4])
-        love.graphics.circle( "fill",self["cood_res"][1],self["cood_res"][2],draw_resolution_correction(self[5]) )
+        love.graphics.setColor(0,0,0,obj[4])
+        love.graphics.circle( "fill",obj["cood_res"][1],obj["cood_res"][2],draw_resolution_correction(obj[5]) )
         love.graphics.setColor(1,1,1,1)
         love.graphics.setCanvas()
 
-        self["blur_shader"]:send("Directions",16)
-        self["blur_shader"]:send("Quality",5)
-        self["blur_shader"]:send("Size",8)
-        self["blur_shader"]:send("resolution",{love.graphics.getWidth(),love.graphics.getHeight()})
-        love.graphics.setShader(self["blur_shader"])
-        love.graphics.draw(self["draw_canvas"]) -- 画到屏幕上
+        obj["blur_shader"]:send("Directions",16)
+        obj["blur_shader"]:send("Quality",5)
+        obj["blur_shader"]:send("Size",8)
+        obj["blur_shader"]:send("resolution",{love.graphics.getWidth(),love.graphics.getHeight()})
+        love.graphics.setShader(obj["blur_shader"])
+        love.graphics.draw(obj["draw_canvas"]) -- 画到屏幕上
         love.graphics.setShader()
 
     end
@@ -280,23 +280,23 @@ function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r,fix_
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
     init_frame_anim_with_out(obj,obj["animation"])
-    obj["update"] = function(self)
-        self[4] = opacity
-        self[5] = obj_char[5]*sx
-        self[6] = obj_char[6]*sy
-        self[7] = r
+    obj["update"] = function()
+        obj[4] = opacity
+        obj[5] = obj_char[5]*sx
+        obj[6] = obj_char[6]*sy
+        obj[7] = r
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            frame_animator(self,self["animation"])
-            self["life"] = self["life"] - 1
+            frame_animator(obj,obj["animation"])
+            obj["life"] = obj["life"] - 1
         end
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_blast_ver0
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
 
         love.graphics.setBlendMode("add")
         love.graphics.setColor(1,1,1,obj[4])
@@ -347,19 +347,19 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
     init_frame_anim_with_out(obj,obj["animation"])
-    obj["update"] = function(self)
+    obj["update"] = function()
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            frame_animator(self,self["animation"])
-            self["life"] = self["life"] - 1
+            frame_animator(obj,obj["animation"])
+            obj["life"] = obj["life"] - 1
         end
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_blast_ver1
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
 
         love.graphics.setBlendMode("add")
         love.graphics.setColor(1,1,1,obj[4])
@@ -404,19 +404,19 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
     init_frame_anim_with_out(obj,obj["animation"])
-    obj["update"] = function(self)
+    obj["update"] = function()
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            frame_animator(self,self["animation"])
-            self["life"] = self["life"] - 1
+            frame_animator(obj,obj["animation"])
+            obj["life"] = obj["life"] - 1
         end
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_air_blow
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
 
         love.graphics.setBlendMode("add")
         love.graphics.setColor(1,1,1,obj[4])
@@ -476,19 +476,19 @@ function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,s
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
     init_frame_anim_with_out(obj,obj["animation"])
-    obj["update"] = function(self)
+    obj["update"] = function()
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            frame_animator(self,self["animation"])
-            self["life"] = self["life"] - 1
+            frame_animator(obj,obj["animation"])
+            obj["life"] = obj["life"] - 1
         end
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_blast_ver0_counter
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
 
         love.graphics.setBlendMode("add")
         love.graphics.setColor(1,1,1,obj[4])
@@ -539,19 +539,19 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
     init_frame_anim_with_out(obj,obj["animation"])
-    obj["update"] = function(self)
+    obj["update"] = function()
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            frame_animator(self,self["animation"])
-            self["life"] = self["life"] - 1
+            frame_animator(obj,obj["animation"])
+            obj["life"] = obj["life"] - 1
         end
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_blast_ver1
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
 
         -- love.graphics.setBlendMode("add")
         -- love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -602,19 +602,19 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
     init_frame_anim_with_out(obj,obj["animation"])
-    obj["update"] = function(self)
+    obj["update"] = function()
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            frame_animator(self,self["animation"])
-            self["life"] = self["life"] - 1
+            frame_animator(obj,obj["animation"])
+            obj["life"] = obj["life"] - 1
         end
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_air_blow
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
 
         love.graphics.setBlendMode("add")
         love.graphics.setColor(1,1,1,obj[4])
@@ -652,19 +652,19 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     obj["opacity_point_linear_animation"]["length"] = 5
     obj["opacity_point_linear_animation"]["loop"] = false
     init_point_linear_anim_with_out(obj,obj["opacity_point_linear_animation"])
-    obj["update"] = function(self)
+    obj["update"] = function()
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            point_linear_animator(self,self["opacity_point_linear_animation"])
-            self["life"] = self["life"] - 1
+            point_linear_animator(obj,obj["opacity_point_linear_animation"])
+            obj["life"] = obj["life"] - 1
         end
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image = image_VFX_game_scene_counter_glow
         love.graphics.setColor(1,1,1,obj[4])
-        draw_3d_image(obj_camera,self,image)
+        draw_3d_image(obj_camera,obj,image)
         love.graphics.setColor(1,1,1,1)
     end
     table.insert(obj_char["VFX_hit_back_table"],obj)
@@ -693,19 +693,19 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
     init_frame_anim_with_out(obj,obj["animation"])
-    obj["update"] = function(self)
+    obj["update"] = function()
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            frame_animator(self,self["animation"])
-            self["life"] = self["life"] - 1
+            frame_animator(obj,obj["animation"])
+            obj["life"] = obj["life"] - 1
         end
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_partical_ver1_counter
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
 
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -746,23 +746,23 @@ function insert_VFX_game_scene_char_block_ver0(obj_char)
     obj["animation"]["fix_type"] = true
     init_frame_anim_with_out(obj,obj["animation"])
     obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
-    obj["update"] = function(self)
+    obj["update"] = function()
         if obj_char["state"] == "blockstop" then
             -- do nothing
         elseif obj_char["state"] == "hurtstop" then
-            self["life"] = 0
+            obj["life"] = 0
         else
             obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
             obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
-            frame_animator(self,self["animation"])
-            self["life"] = self["life"] - 1
+            frame_animator(obj,obj["animation"])
+            obj["life"] = obj["life"] - 1
         end
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_block_ver0
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
 
         love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -804,23 +804,23 @@ function insert_VFX_game_scene_char_block_ver1(obj_char)
     obj["animation"]["fix_type"] = true
     init_frame_anim_with_out(obj,obj["animation"])
     obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
-    obj["update"] = function(self)
+    obj["update"] = function()
         if obj_char["state"] == "blockstop" then
             -- do nothing
         elseif obj_char["state"] == "hurtstop" then
-            self["life"] = 0
+            obj["life"] = 0
         else
             obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
             obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
-            frame_animator(self,self["animation"])
-            self["life"] = self["life"] - 1
+            frame_animator(obj,obj["animation"])
+            obj["life"] = obj["life"] - 1
         end
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_block_ver1
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
 
         love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -867,21 +867,21 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
     obj["animation"]["fix_type"] = true
     init_frame_anim_with_out(obj,obj["animation"])
     obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
-    obj["update"] = function(self)
+    obj["update"] = function()
         if obj_char["state"] == "blockstop" then
             -- do nothing
         else
             obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
             obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
-            frame_animator(self,self["animation"])
-            self["life"] = self["life"] - 1
+            frame_animator(obj,obj["animation"])
+            obj["life"] = obj["life"] - 1
         end
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_block_FD
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
 
         love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -907,19 +907,19 @@ function insert_VFX_game_scene_char_throw_tech(obj_char,x,y,opacity,sx,sy,r)
     obj[7] = r
     obj[8] = 0
     obj["f"] = 0
-    obj["update"] = function(self)
-        self["f"] = self["f"] + 1
-        if self["f"] >= 2 then
-            self[8] = math.min(self[8] + 1,24)
-            self["f"] = 0
+    obj["update"] = function()
+        obj["f"] = obj["f"] + 1
+        if obj["f"] >= 2 then
+            obj[8] = math.min(obj[8] + 1,24)
+            obj["f"] = 0
         end
-        self["life"] = self["life"] - 1
+        obj["life"] = obj["life"] - 1
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_throw_tech
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
 
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
@@ -950,23 +950,23 @@ function insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,x,y,opacity,sx,sy
     obj["opacity_point_linear_animation"]["loop"] = false
     init_point_linear_anim_with_out(obj,obj["opacity_point_linear_animation"])
     obj["8_change_countdown"] = 0
-    obj["update"] = function(self)
-        point_linear_animator(self,self["opacity_point_linear_animation"])
-        if self["8_change_countdown"] == 0 then
-            self["8_change_countdown"] = 2
+    obj["update"] = function()
+        point_linear_animator(obj,obj["opacity_point_linear_animation"])
+        if obj["8_change_countdown"] == 0 then
+            obj["8_change_countdown"] = 2
             obj[8] = obj[8] + 1
             if obj[8] == 6 then
                 obj[8] = 0
             end
         end
-        self["8_change_countdown"] = self["8_change_countdown"] - 1
+        obj["8_change_countdown"] = obj["8_change_countdown"] - 1
         obj["life"] = obj["life"] - 1
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_smoke_dash_burst
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
     table.insert(obj_char["VFX_front_table"],obj)
@@ -984,19 +984,19 @@ function insert_VFX_game_scene_stage_smoke_horizontal_shot(obj_char,x,y,opacity,
     obj[7] = r
     obj[8] = 0
     obj["f"] = 0
-    obj["update"] = function(self)
-        self["f"] = self["f"] + 1
-        if self["f"] >= 3 then
-            self[8] = math.min(self[8] + 1,24)
-            self["f"] = 0
+    obj["update"] = function()
+        obj["f"] = obj["f"] + 1
+        if obj["f"] >= 3 then
+            obj[8] = math.min(obj[8] + 1,24)
+            obj["f"] = 0
         end
-        self["life"] = self["life"] - 1
+        obj["life"] = obj["life"] - 1
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_smoke_horizontal_shot
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
 
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
@@ -1015,19 +1015,19 @@ function insert_VFX_game_scene_stage_smoke_land_blow(obj_char,x,y,opacity,sx,sy,
     obj[7] = r
     obj[8] = 0
     obj["f"] = 0
-    obj["update"] = function(self)
-        self["f"] = self["f"] + 1
-        if self["f"] >= 3 then
-            self[8] = math.min(self[8] + 1,20)
-            self["f"] = 0
+    obj["update"] = function()
+        obj["f"] = obj["f"] + 1
+        if obj["f"] >= 3 then
+            obj[8] = math.min(obj[8] + 1,20)
+            obj["f"] = 0
         end
-        self["life"] = self["life"] - 1
+        obj["life"] = obj["life"] - 1
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_smoke_land_blow
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
     table.insert(obj_char["VFX_back_table"],obj)
@@ -1045,19 +1045,19 @@ function insert_VFX_game_scene_stage_smoke_vertical_shot(obj_char,x,y,opacity,sx
     obj[7] = r
     obj[8] = 0
     obj["f"] = 0
-    obj["update"] = function(self)
-        self["f"] = self["f"] + 1
-        if self["f"] >= 2 then
-            self[8] = math.min(self[8] + 1,17)
-            self["f"] = 0
+    obj["update"] = function()
+        obj["f"] = obj["f"] + 1
+        if obj["f"] >= 2 then
+            obj[8] = math.min(obj[8] + 1,17)
+            obj["f"] = 0
         end
-        self["life"] = self["life"] - 1
+        obj["life"] = obj["life"] - 1
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_smoke_vertical_shot
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
@@ -1079,20 +1079,20 @@ function insert_VFX_game_scene_stage_4dash_air_backdash_shockwave(obj_char,x,y,o
     obj[7] = r
     obj[8] = 0
     obj["f"] = 0
-    obj["update"] = function(self)
-        self["f"] = self["f"] + 1
-        if self["f"] >= 2 then
-            self[8] = math.min(self[8] + 1,12)
-            self["f"] = 0
+    obj["update"] = function()
+        obj["f"] = obj["f"] + 1
+        if obj["f"] >= 2 then
+            obj[8] = math.min(obj[8] + 1,12)
+            obj["f"] = 0
         end
-        -- self[1] = self[1] + self[5]*10
-        self["life"] = self["life"] - 1
+        -- obj[1] = obj[1] + obj[5]*10
+        obj["life"] = obj["life"] - 1
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_air_dash_shockwave
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
@@ -1117,20 +1117,20 @@ function insert_VFX_game_scene_stage_6dash_air_dash_shockwave(obj_char,x,y,opaci
         obj[1] = math.max(obj[1],-1000)
     end
     obj["f"] = 0
-    obj["update"] = function(self)
-        self["f"] = self["f"] + 1
-        if self["f"] >= 2 then
-            self[8] = math.min(self[8]+1,12)
-            self["f"] = 0
+    obj["update"] = function()
+        obj["f"] = obj["f"] + 1
+        if obj["f"] >= 2 then
+            obj[8] = math.min(obj[8]+1,12)
+            obj["f"] = 0
         end
-        self[1] = self[1] - 0.2*self[5]
-        self["life"] = self["life"] - 1
+        obj[1] = obj[1] - 0.2*obj[5]
+        obj["life"] = obj["life"] - 1
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_air_dash_shockwave
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
@@ -1147,13 +1147,13 @@ function insert_VFX_game_scene_char_GP(obj_char)
     -- x y z opacity sx sy r f
     local obj = {0,0,0,1,1,1,0,0}
     obj["life"] = 42
-    obj["update"] = function(self)
-        self["life"] = 42
+    obj["update"] = function()
+        obj["life"] = 42
         if obj_char["state"] ~= "hurtstop" then
-            self["life"] = 0
+            obj["life"] = 0
         end
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         local opacity_cache = obj_char[4]
         local contrast_cache = obj_char["contrast"]
         local brightness_cache = obj_char["brightness"]
@@ -1227,13 +1227,13 @@ function insert_VFX_HUD_game_scene_counter_ver0_2(obj_char)
     obj["opacity_anim"]["loop"] = false
     obj["opacity_anim"]["fix_type"] = true
 -- update
-    obj["update"] = function(self)
+    obj["update"] = function()
         point_linear_animator(obj,obj["y_anim"])
         point_linear_animator(obj,obj["opacity_anim"])
-        self["life"] = self["life"] - 1
+        obj["life"] = obj["life"] - 1
     end
-    obj["draw"] = function(self)
-        draw_2d_image(self,self["image"])
+    obj["draw"] = function()
+        draw_2d_image(obj,obj["image"])
     end
     table.insert(obj_char["VFX_HUD_table"],obj)
 end
@@ -1333,23 +1333,23 @@ function insert_VFX_HUD_game_scene_counter_ver3(obj_char)
     obj["opacity_anim"]["loop"] = false
     obj["opacity_anim"]["fix_type"] = true
 -- update
-    obj["update"] = function(self)
-        point_linear_animator(self,self["sx_anim"])
-        point_linear_animator(self,self["y_anim"])
-        point_linear_animator(self,self["opacity_anim"])
-        self[1] = self["x"] - self[5]*(600)
-        self[2] = self["y"] - self[6]*(200)
-        self["life"] = self["life"] - 1
+    obj["update"] = function()
+        point_linear_animator(obj,obj["sx_anim"])
+        point_linear_animator(obj,obj["y_anim"])
+        point_linear_animator(obj,obj["opacity_anim"])
+        obj[1] = obj["x"] - obj[5]*(600)
+        obj[2] = obj["y"] - obj[6]*(200)
+        obj["life"] = obj["life"] - 1
         if(obj_char["state"] == "hurt" 
         or obj_char["state"] == "hurtstop")
         and obj_char["player_side"] == "R"
         then
-            self["life"] = 0
+            obj["life"] = 0
         end
     end
-    obj["draw"] = function(self)
+    obj["draw"] = function()
         love.graphics.setBlendMode("add")
-        draw_2d_image(self,self["image"])
+        draw_2d_image(obj,obj["image"])
         love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_HUD_table"],obj)
@@ -1371,13 +1371,13 @@ function insert_VFX_HUD_game_scene_counter_ver3(obj_char)
     obj["opacity_anim"]["fix_type"] = true
     init_point_linear_anim_with_out(obj,obj["opacity_anim"])
 
-    obj["update"] = function(self)
-        point_linear_animator(self,self["opacity_anim"])
-        self["life"] = self["life"] - 1
+    obj["update"] = function()
+        point_linear_animator(obj,obj["opacity_anim"])
+        obj["life"] = obj["life"] - 1
     end
 
-    obj["draw"] = function(self)
-        love.graphics.setColor(0,0,0,self[4])
+    obj["draw"] = function()
+        love.graphics.setColor(0,0,0,obj[4])
         love.graphics.rectangle("fill",0,0,width,height)
         love.graphics.setColor(1,1,1,1)
     end
@@ -1433,13 +1433,13 @@ function insert_VFX_HUD_game_scene_punish(obj_char)
     obj["opacity_anim"]["loop"] = false
     obj["opacity_anim"]["fix_type"] = true
 -- update
-    obj["update"] = function(self)
+    obj["update"] = function()
         point_linear_animator(obj,obj["y_anim"])
         point_linear_animator(obj,obj["opacity_anim"])
-        self["life"] = self["life"] - 1
+        obj["life"] = obj["life"] - 1
     end
-    obj["draw"] = function(self)
-        draw_2d_image(self,self["image"])
+    obj["draw"] = function()
+        draw_2d_image(obj,obj["image"])
     end
     table.insert(obj_char["VFX_HUD_table"],obj)
 end

@@ -331,60 +331,37 @@ function update_game_scene_main_training()
                     end
                 end
 
-                -- friendly_strike
-                -- enemy_strike
-                -- hit_friendly
-                -- hit_enemy
+                -- enemy_interact_function
+                    -- strike_clash
+                    -- projectile_and_projectile_interaction
+                    -- interaction_with_enemy
+                -- friendly_interact_function
+                    -- interaction_with_friendly
 
-                -- 检测飞行道具人物打击盒交互
-                for i = 1,#char_RP["projectile_table"] do
-                    local current_projectile = char_RP["projectile_table"][i]
-                    if collision_strike_hurtbox_test(char_LP,current_projectile) then
-                        current_projectile["enemy_strike_function"](char_LP,current_projectile)
-                    end
-                end
+                -- 检测飞行道具人物交互
                 for i = 1,#char_LP["projectile_table"] do
-                    local current_projectile = char_RP["projectile_table"][i]
-                    if collision_strike_hurtbox_test(char_RP,current_projectile) then
-                        current_projectile["enemy_strike_function"](char_RP,current_projectile)
+                    local current_projectile = char_LP["projectile_table"][i]
+                    if current_projectile["enemy_interact_function"] then
+                        current_projectile["enemy_interact_function"]()
                     end
                 end
                 for i = 1,#char_RP["projectile_table"] do
                     local current_projectile = char_RP["projectile_table"][i]
-                    if collision_strike_hurtbox_test(char_RP,current_projectile) then
-                        current_projectile["friendly_strike_function"](char_RP,current_projectile)
+                    if current_projectile["enemy_interact_function"] then
+                        current_projectile["enemy_interact_function"]()
                     end
                 end
                 for i = 1,#char_LP["projectile_table"] do
+                    local current_projectile = char_LP["projectile_table"][i]
+                    if current_projectile["friendly_interact_function"] then
+                        current_projectile["friendly_interact_function"]()
+                    end
+                end
+                for i = 1,#char_RP["projectile_table"] do
                     local current_projectile = char_RP["projectile_table"][i]
-                    if collision_strike_hurtbox_test(char_LP,current_projectile) then
-                        current_projectile["friendly_strike_function"](char_LP,current_projectile)
+                    if current_projectile["friendly_interact_function"] then
+                        current_projectilei["friendly_interact_function"]()
                     end
-                end
-
-                -- 检测飞行道具相杀
-                for i = 1,#char_RP["projectile_table"] do
-                    local RP_projectile = char_RP["projectile_table"][i]
-                    for j = 1,#char_LP["projectile_table"] do
-                        local LP_projectile = char_LP["projectile_table"][j]
-                        if collision_projectile_clash_test(RP_projectile,LP_projectile) then
-
-                        end
-                    end
-                end
-
-                -- 检测飞行道具人物受击盒交互
-                for i = 1,#char_LP["projectile_table"] do
-                    char_LP["projectile_table"][i]["enemy_interact_function"]()
-                end
-                for i = 1,#char_RP["projectile_table"] do
-                    char_RP["projectile_table"][i]["enemy_interact_function"]()
-                end
-                for i = 1,#char_LP["projectile_table"] do
-                    char_LP["projectile_table"][i]["friendly_interact_function"]()
-                end
-                for i = 1,#char_RP["projectile_table"] do
-                    char_RP["projectile_table"][i]["friendly_interact_function"]()
                 end
 
                 -- 保留双康后的LP_hurt_strike_accur RP_hurt_strike_accur
