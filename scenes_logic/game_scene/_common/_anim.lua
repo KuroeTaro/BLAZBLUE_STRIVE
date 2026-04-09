@@ -269,7 +269,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hurt_vertical_gravity_correction,
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -379,7 +380,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hurt_vertical_gravity_correction,
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -495,7 +497,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hurt_vertical_gravity_correction,
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -617,7 +620,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hurt_vertical_gravity_correction,
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -739,7 +743,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hurt_vertical_gravity_correction,
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -900,7 +905,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hurt_vertical_gravity_correction,
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -1008,7 +1014,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hurt_vertical_gravity_correction,
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -1118,7 +1125,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hurt_vertical_gravity_correction,
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -1230,7 +1238,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hurt_vertical_gravity_correction,
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -1346,7 +1355,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hurt_vertical_gravity_correction,
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -1493,7 +1503,8 @@ function load_game_scene_anim_char_common_0_air_block(
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hurt_vertical_gravity_correction,
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -3153,7 +3164,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hurt_vertical_gravity_correction,
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -3380,7 +3392,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hurt_vertical_gravity_correction,
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -3570,7 +3583,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hurt_vertical_gravity_correction,
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -3701,7 +3715,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hurt_vertical_gravity_correction,
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -3832,7 +3847,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hurt_vertical_gravity_correction,
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -3987,7 +4003,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hurt_vertical_gravity_correction,
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -4121,7 +4138,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hurt_vertical_gravity_correction,
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -4530,7 +4548,8 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hurt_vertical_gravity_correction,
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]

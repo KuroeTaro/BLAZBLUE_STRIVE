@@ -829,9 +829,15 @@ function common_game_scene_char_apply_hurt_velocity(
     hurt_horizontal_velocity_correction,
     hurt_vertical_velocity,
     hurt_vertical_gravity,
-    hurt_vertical_gravity_correction
+    hurt_vertical_gravity_correction,
+    fix_direction
 )
-    local final_hurt_horizontal_velocity = common_game_scene_get_character_hurt_direction(obj_char,obj_char_other_side,hurt_horizontal_velocity)
+    local final_hurt_horizontal_velocity = nil
+    if fix_direction then
+        final_hurt_horizontal_velocity = hurt_horizontal_velocity * obj_char[5]
+    else
+        final_hurt_horizontal_velocity = common_game_scene_get_character_hurt_direction(obj_char,obj_char_other_side,hurt_horizontal_velocity)
+    end
     obj_char_other_side["gravity"] = hurt_vertical_gravity
 
     obj_char_other_side["gravity_correction"] 
@@ -851,7 +857,7 @@ function common_game_scene_char_apply_hurt_velocity(
                 - final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]+obj_char["velocity"][1]*0.15,
                 obj_char["velocity"][2]
             }
-            obj_char_other_side["velocity"] = {obj_char_other_side["velocity"][1],hurt_vertical_velocity}
+            obj_char_other_side["velocity"] = {0,hurt_vertical_velocity}
         end
     elseif obj_char["x"] > obj_char_other_side["x"] then
         if obj_char_other_side["collision_move_available"][1] == 1 or final_hurt_horizontal_velocity >= 0 then
@@ -866,7 +872,7 @@ function common_game_scene_char_apply_hurt_velocity(
                 - final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]+obj_char["velocity"][1]*0.15,
                 obj_char["velocity"][2]
             }
-            obj_char_other_side["velocity"] = {obj_char_other_side["velocity"][1],hurt_vertical_velocity}
+            obj_char_other_side["velocity"] = {0,hurt_vertical_velocity}
         end
     else
         obj_char_other_side["friction"] = hurt_horizontal_friction
@@ -906,6 +912,45 @@ function common_game_scene_char_apply_knockdown_velocity(
         obj_char_other_side["velocity"] ={0,hurt_vertical_velocity}
         -- 根据当前敌我x位置变化
         obj_char_other_side["friction"] = hurt_horizontal_friction
+    end
+end
+
+function common_game_scene_projectile_apply_hurt_velocity(
+    obj_char,obj_char_other_side,projectile,
+    hurt_horizontal_velocity,
+    hurt_horizontal_friction,
+    hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,
+    hurt_vertical_gravity,
+    hurt_vertical_gravity_correction,
+    fix_direction,
+    velocity_center
+)
+    local final_hurt_horizontal_velocity = nil
+    if fix_direction then
+        final_hurt_horizontal_velocity = hurt_horizontal_velocity*projectile[5]
+    elseif velocity_center == "character" then
+        final_hurt_horizontal_velocity = common_game_scene_get_character_hurt_direction(obj_char,obj_char_other_side,hurt_horizontal_velocity)
+    elseif velocity_center == "projectile" then
+        final_hurt_horizontal_velocity = common_game_scene_get_character_hurt_direction(projectile,obj_char_other_side,hurt_horizontal_velocity)
+    end
+    obj_char_other_side["gravity"] = hurt_vertical_gravity
+
+    obj_char_other_side["gravity_correction"] 
+    = obj_char_other_side["gravity_correction"]*hurt_vertical_gravity_correction
+    obj_char_other_side["horizontal_velocity_correction"] 
+    = obj_char_other_side["horizontal_velocity_correction"]*hurt_horizontal_velocity_correction
+
+    obj_char_other_side["friction"] = hurt_horizontal_friction
+    obj_char_other_side["velocity"] = {
+        final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]+obj_char_other_side["velocity"][1]*0.15,
+        hurt_vertical_velocity
+    }
+
+    if (final_hurt_horizontal_velocity > 0 and obj_char_other_side["collision_move_available"][2] == 0) or
+    (final_hurt_horizontal_velocity < 0 and obj_char_other_side["collision_move_available"][1] == 0)
+    then
+        obj_char_other_side["velocity"][1] = 0
     end
 end
 

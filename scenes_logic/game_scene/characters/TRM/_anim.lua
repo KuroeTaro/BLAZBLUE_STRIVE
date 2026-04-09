@@ -5018,7 +5018,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(obj_char)
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
         -- insert_projectile
-        insert_projectile_game_scene_char_TRM_5H_shot(obj_char)
+        insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     end
     res[2] = function()
         -- shot_sys
@@ -5596,6 +5596,10 @@ function load_game_scene_anim_char_TRM_5H_reticle_steady_aim_ease_out(obj_char)
 end
 function load_game_scene_anim_char_TRM_5H_reticle_steady_aim_shot(obj_char)
 end
+-- 5H_projectile_animation
+-- 5H_projectile_hurt_animation
+-- 5H_projectile_block_animation
+
 -- _2Launcher
 function load_game_scene_anim_char_TRM_2Launcher(obj_char)
     local res = {}
@@ -6229,7 +6233,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
             1,
             0,
             0,
-            1
+            1,
+            false
         )
         obj_char_other_side["physics_lock"] = false
         obj_char_other_side["pushbox_other_side_char_active"] = true
