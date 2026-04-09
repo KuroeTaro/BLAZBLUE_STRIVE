@@ -726,8 +726,8 @@ function insert_VFX_game_scene_char_block_ver0(obj_char)
     obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
     obj[3] = obj_char[3]
     obj[4] = 1
-    obj[5] = obj_char[5]*1
-    obj[6] = obj_char[6]*1
+    obj[5] = obj_char[5]
+    obj[6] = obj_char[6]
     obj[7] = 0
     obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
@@ -754,6 +754,8 @@ function insert_VFX_game_scene_char_block_ver0(obj_char)
         else
             obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
             obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
+            obj[5] = obj_char[5]
+            obj[6] = obj_char[6]
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
         end
@@ -783,8 +785,8 @@ function insert_VFX_game_scene_char_block_ver1(obj_char)
     obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
     obj[3] = obj_char[3]
     obj[4] = 1
-    obj[5] = obj_char[5]*1
-    obj[6] = obj_char[6]*1
+    obj[5] = obj_char[5]
+    obj[6] = obj_char[6]
     obj[7] = 0
     obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
@@ -812,6 +814,8 @@ function insert_VFX_game_scene_char_block_ver1(obj_char)
         else
             obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
             obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
+            obj[5] = obj_char[5]
+            obj[6] = obj_char[6]
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
         end
@@ -845,8 +849,8 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
     obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
     obj[3] = obj_char[3]
     obj[4] = 0.75
-    obj[5] = obj_char[5]*1
-    obj[6] = obj_char[6]*1
+    obj[5] = obj_char[5]
+    obj[6] = obj_char[6]
     obj[7] = 0
     obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
@@ -881,6 +885,8 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
         else
             obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
             obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
+            obj[5] = obj_char[5]
+            obj[6] = obj_char[6]
             frame_animator(obj,obj["animation"])
             point_linear_animator(obj,obj["opacity_point_linear_animation"])
             obj["life"] = obj["life"] - 1
