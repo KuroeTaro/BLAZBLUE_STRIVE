@@ -1,14 +1,26 @@
 function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
-    local obj = {0,0,0,0,0,0,0,0}
+    -- x y z opacity sx sy r f
+    local obj = {0,0,0,1,1,1,0,0}
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local obj_char_velocity = {obj_char["velocity"][1],obj_char["velocity"][2]}
+    local camera = obj_stage_game_scene_camera
+    local image_sprite_sheet_table = nil
+    local side = obj_char["player_side"]
+    if side == "L" then
+        image_sprite_sheet_table = image_sprite_sheet_projectile_game_scene_LP
+    elseif side == "R" then
+        image_sprite_sheet_table = image_sprite_sheet_projectile_game_scene_RP
+    end 
+    obj[1] = obj_char["shot_sys_reticle"][1]
+    obj[2] = obj_char["shot_sys_reticle"][2]
     obj["x"] = 0
     obj["y"] = 0
+    obj["f"] = 0
     obj["type"] = "projectile"
     obj["hit_type_state"] = "strike"
     obj["life"] = 42
-    obj["animation"] = {}
-    obj["sprite_sheet_state"] = nil
+    obj["animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main_anim(obj,obj_char,obj_char_other_side,image_sprite_sheet_table)
+    obj["sprite_sheet_state"] = "5H_miss_projectile"
 
     obj["velocity"] = {0,0}
 
@@ -113,9 +125,14 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     obj["hit_counter_ver_function"] = common_game_scene_counter_ver0
 
     obj["update"] = function()
+        character_animator(obj,obj["animation"])
         obj["life"] = obj["life"] - 1
     end
     obj["draw"] = function()
+        local image_sprite_sheet = image_sprite_sheet_table[obj["sprite_sheet_state"]]
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,tostring(obj[8]))
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
     obj["enemy_interact_function"] = function()
         -- strike_clash
@@ -200,8 +217,44 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     table.insert(obj_char["projectile_table"],obj)
 end
 
-function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main_anim(obj)
+function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main_anim(obj,obj_char,obj_char_other_side)
+    local res = {}
+    res["prop_f"] = "f"
+    res["anim_length"] = 40
 
+    for i = 0,19 do
+        res[i*2] = function()
+            -- draw_correction
+            obj[8] = i
+        end
+    end
+    res[0] = function()
+        -- state
+        obj[1] = obj_char["shot_sys_reticle"][1]
+        obj[2] = obj_char["shot_sys_reticle"][2]
+        -- collide
+        obj["hitbox_table"] = {}
+        -- draw_correction
+        obj[8] = 0
+    end
+    res[1] = function()
+        -- state
+        obj[1] = obj_char["shot_sys_reticle"][1]
+        obj[2] = obj_char["shot_sys_reticle"][2]
+    end
+    res[2] = function()
+        -- state
+        obj[1] = obj_char["shot_sys_reticle"][1]
+        obj[2] = obj_char["shot_sys_reticle"][2]
+        -- collide
+        obj["hitbox_table"] = {}
+        -- draw_correction
+        obj[8] = 1
+    end
+    res[40] = function()
+        -- animation_end
+    end
+    return res
 end
 
 function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(

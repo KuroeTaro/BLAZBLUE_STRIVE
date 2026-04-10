@@ -139,6 +139,15 @@ for i,v in ipairs(load_whiff_VFX_name_table) do
     thread_data[v.."_whiff_VFX"] = compress_module("asset/game_scene/VFX/whiff_VFX/TRM/".."TRM_"..v..".dds")
 end
 
+-- projectile
+local load_projectile_name_table = {
+    "5H",
+    "5H_miss"
+}
+for i,v in ipairs(load_projectile_name_table) do
+    thread_data[v.."_projectile"] = compress_module("asset/game_scene/characters/TRM/_character/PROJECTILE/".."TRM_"..v..".dds")
+end
+
 -- special
 thread_data["overdrive_badge"] = compress_module("asset/game_scene/VFX/overdrive_badge/TRM_overdrive_badge.dds")
 

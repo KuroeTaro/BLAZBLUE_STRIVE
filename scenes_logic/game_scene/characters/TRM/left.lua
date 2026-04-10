@@ -454,7 +454,7 @@ function order_load_game_scene_char_LP_frames(load_order)
             end 
         end,
         [21] = function()
-            -- whiff_VFX 7 8 9
+            -- whiff_VFX 7 8
             image_sprite_sheet_VFX_game_scene_LP = {}
 
             local load_name_table = {
@@ -499,13 +499,18 @@ function order_load_game_scene_char_LP_frames(load_order)
             end 
         end,
         [23] = function()
+            -- projectile 9
+            image_sprite_sheet_projectile_game_scene_LP = {}
+
             local load_name_table = {
+                "5H",
+                "5H_miss",
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_VFX_game_scene_LP[v.."_whiff_VFX"] = 
+                image_sprite_sheet_projectile_game_scene_LP[v.."_projectile"] = 
                 sprite_sheet_load(
-                    "asset/game_scene/VFX/whiff_VFX/TRM/"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_whiff_VFX"])
+                    "asset/game_scene/characters/TRM/_character/PROJECTILE/TRM_"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_projectile"])
                 )
             end 
         end,

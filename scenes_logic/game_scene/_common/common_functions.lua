@@ -55,6 +55,13 @@ function common_game_scene_get_VFX_spawn_anchor_pos(side)
         return obj_VFX_spawn_anchor_pos_data_game_scene_char_RP
     end
 end
+function common_game_scene_get_image_sprite_sheet_table(side)
+    if side == "L" then
+        return image_sprite_sheet_table_char_game_scene_LP
+    elseif side == "R" then
+        return image_sprite_sheet_table_char_game_scene_RP
+    end
+end
 function common_game_scene_get_input_sys_cache_state_machine(side)
     if side == "L" then
         return state_machine_char_game_scene_char_LP_input_sys_cache

@@ -34,13 +34,13 @@ function load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
     local res = {}
     res["prop_f"] = "f"
     res["anim_length"] = 62
+
     for i = 1,7 do
         res[i*7+5] = function()
             -- draw_correction
             obj_char[8] = i+2
         end
     end
-
     res[0] = function()
         -- state
         obj_char["sprite_sheet_state"] = "1_2_3_crouch"
@@ -177,13 +177,13 @@ function load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
     local res = {}
     res["prop_f"] = "f"
     res["anim_length"] = 57
+
     for i = 0,7 do
         res[i*7] = function()
             -- draw_correction
             obj_char[8] = i
         end
     end
-
     res[0] = function()
         -- state
         obj_char["sprite_sheet_state"] = "5_stand_idle"
@@ -365,7 +365,6 @@ function load_game_scene_anim_char_TRM_4_walk(obj_char)
             obj_char["velocity"] = {obj_char[5]*walk_speed,0}
         end
     end
-
     res[0] = function()
         -- state
         obj_char["sprite_sheet_state"] = "4_walk"
@@ -518,13 +517,13 @@ function load_game_scene_anim_char_TRM_6_walk(obj_char)
     local res = {}
     res["prop_f"] = "f"
     res["anim_length"] = 85
+
     for i = 0,84 do
         res[i] = function()
             -- state_number
             obj_char["velocity"] = {obj_char[5]*walk_speed,0}
         end
     end
-
     res[0] = function()
         -- state
         obj_char["sprite_sheet_state"] = "6_walk"
@@ -829,13 +828,13 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet_stat
         width_table = {200,200,200,200,200,200,200}
         width_table[0] = 200
     end
+
     for i=0,35 do
         res[i] = function() update_maintain_horizontal_velocity() end
     end
     for i=0,8 do
         res[i] = function() update_before_falling() end
     end
-    
     res[0] = function()
         -- 上升阶段开始
         -- state
@@ -1107,13 +1106,13 @@ function load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
     local res = {}
     res["prop_f"] = "f"
     res["anim_length"] = 30
+
     for i=0,10 do
         res[i] = function()
             -- state_number
             obj_char["velocity"][1] = (-32.0+i)*obj_char[5]
         end
     end
-
     res[0] = function()
         -- state
         obj_char["y"] = 185
@@ -1277,6 +1276,7 @@ function load_game_scene_anim_char_TRM_4dash_air_backdash(input,obj_char)
     local res = {}
     res["prop_f"] = "f"
     res["anim_length"] = 11
+
     for i=0,6 do
         res[i] = function()
             -- state_number
@@ -1286,7 +1286,6 @@ function load_game_scene_anim_char_TRM_4dash_air_backdash(input,obj_char)
             end
         end
     end
-
     res[0] = function()
         -- state
         obj_char["sprite_sheet_state"] = "4dash_air_backdash"
@@ -1412,13 +1411,13 @@ function load_game_scene_anim_char_TRM_6dash_dash(input,obj_char)
     end
     res["prop_f"] = "f"
     res["anim_length"] = 37
+
     for i = 0,36 do
         res[i] = function()
             -- state_number
             update_horizontal_velocity()
         end
     end
-
     res[0] = function()
         -- state
         obj_char["sprite_sheet_state"] = "6dash_dash"
@@ -1569,6 +1568,7 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(input,obj_char)
     local res = {}
     res["prop_f"] = "f"
     res["anim_length"] = 24
+
     for i=0,11 do
         res[i] = function()
             -- state_number
@@ -1585,7 +1585,6 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(input,obj_char)
             obj_char["velocity"][1] = (90-(i-12)*6)*obj_char[5]
         end
     end
-
     res[0] = function()
         -- state
         obj_char["sprite_sheet_state"] = "6dash_air_dash"
@@ -1765,13 +1764,13 @@ function load_game_scene_anim_char_TRM_burst_overdrive(obj_char,other_side_count
     end
     res["prop_f"] = "f"
     res["anim_length"] = 70
+
     for i = 0,69 do
         res[i] = function()
             -- state
             update_move_overdrive_state()
         end
     end
-
     res[0] = function()
         -- state
         obj_char["sprite_sheet_state"] = "burst_overdrive_rc_ground"
@@ -6136,7 +6135,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
             update_y_56f_60f(i)
         end
     end
-
     res[0] = function()
         -- state
         obj_char_other_side["y"] = 365
@@ -8721,7 +8719,6 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
             update_y_46f_53f(i)
         end
     end
-    
     res[0] = function()
         -- state
         obj_char_other_side["sprite_sheet_state"] = "0_general_hurt_launched_high"

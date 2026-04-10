@@ -3123,12 +3123,12 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 45
+
     for i = 0,37 do
         res[i] = function()
             update_before_land()
         end
     end
-
     res[0] = function()
         -- state
         obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
@@ -3352,12 +3352,12 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 34
+
     for i = 0,33 do
         res[i] = function()
             update_before_land()
         end
     end
-
     res[0] = function()
         -- state
         obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
@@ -3545,12 +3545,12 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 19
+
     for i = 0,18 do
         res[i] = function()
             update_before_land()
         end
     end
-
     res[0] = function()
         -- state
         obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
@@ -3678,12 +3678,12 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
     end
     res["prop_f"] = "f"
     res["anim_length"] = 10
+
     for i = 0,9 do
         res[i] = function()
             update_before_land()
         end
     end
-
     res[0] = function()
         -- state
         obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
@@ -3813,6 +3813,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 25
+
     for i = 0,9 do
         res[i] = function()
             update_before_falling()
@@ -3823,7 +3824,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
             update_before_land()
         end
     end
-
     res[0] = function()
         -- state
         obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
@@ -3984,12 +3984,12 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 25
+
     for i = 0,24 do
         res[i] = function()
             update_before_land()
         end
     end
-
     res[0] = function()
         -- state
         obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
@@ -4136,12 +4136,12 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 16
+
     for i = 0,15 do
         res[i] = function()
             update_before_land()
         end
     end
-
     res[0] = function()
         -- state
         obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
@@ -4270,12 +4270,12 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 16
+
     for i = 0,15 do
         res[i] = function()
             update_before_land()
         end
     end
-
     res[0] = function()
         -- state
         obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
@@ -4407,6 +4407,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 22
+    
     for i = 0,22 do
         res[i] = function()
             update_before_land()
@@ -4417,7 +4418,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
             update_before_land()
         end
     end
-
     res[0] = function()
         -- state
         obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
