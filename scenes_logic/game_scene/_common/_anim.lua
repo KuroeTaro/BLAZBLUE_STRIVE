@@ -256,7 +256,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 18
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
@@ -367,7 +367,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 20
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
@@ -484,7 +484,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 22
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
@@ -607,7 +607,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 25
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
@@ -730,7 +730,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 27
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
@@ -888,7 +888,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 14
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
@@ -997,7 +997,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 16
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
@@ -1108,7 +1108,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 18
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
@@ -1221,7 +1221,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 21
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
@@ -1338,7 +1338,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 23
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
@@ -1445,7 +1445,7 @@ function load_game_scene_anim_char_common_0_air_block(
             obj_char_other_side["f"] = 13
             obj_char_other_side["height_state"]  = "stand"
             obj_char_other_side["throw_inv"] = true
-            obj_char_other_side["throw_inv_countdown"] = 23
+            obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4-13
             obj_char_other_side["gravity"] = 2.5
             obj_char_other_side["friction"] = 7
 
@@ -1525,29 +1525,30 @@ function load_game_scene_anim_char_common_0_air_block(
         obj_char["frame_adv"] = 0
     end
     res[3] = function()
-        -- state
-        update_before_land()
         -- draw_correction
         obj_char_other_side[8] = 4
+        -- update
+        update_before_land()
     end
     res[6] = function()
-        -- state
-        update_before_land()
         -- draw_correction
         obj_char_other_side[8] = 3
+        -- update
+        update_before_land()
     end
     res[9] = function()
-        -- state
-        update_before_land()
         -- draw_correction
         obj_char_other_side[8] = 2
+        -- update
+        update_before_land()
     end
     res[12] = function()
         -- state
         obj_char_other_side["f"] = 3
-        update_before_land()
         -- draw_correction
         obj_char_other_side[8] = 4
+        -- update
+        update_before_land()
     end
     res[13] = function()
         -- land animation start
@@ -1655,6 +1656,8 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         obj_char["burst_inv_countdown"] = 30
 
         obj_char["physics_lock"] = false
+
+        update_1f_15f_air(0)
         -- state_number
         obj_char["velocity"] = velocity
         obj_char["velocity_cache"] = {0,0}
@@ -1684,8 +1687,6 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
                 0.5,1,1,0
             )
         end
-        -- update
-        update_1f_15f_air(0)
         -- set_frame_adv
         obj_char["frame_adv"] = 0
     end
@@ -1800,7 +1801,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 65
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
@@ -1837,7 +1838,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
         obj_char["frame_adv"] = 0
     end
     res[1] = function()
-        -- update
+        -- state
         obj_char_other_side["state_cache"] = state_cache
     end
     res[55] = function()
@@ -1928,7 +1929,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 30
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
@@ -1963,7 +1964,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
         frame_0_special_update_function()
     end
     res[1] = function()
-        -- update
+        -- state
         obj_char_other_side["state_cache"] = state_cache
     end
     res[3] = function()
@@ -2050,7 +2051,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 30
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
@@ -2083,7 +2084,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
         frame_0_special_update_function()
     end
     res[1] = function()
-        -- update
+        -- state
         obj_char_other_side["state_cache"] = state_cache
     end
     res[3] = function()
@@ -2170,7 +2171,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 30
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
@@ -2205,7 +2206,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
         frame_0_special_update_function()
     end
     res[1] = function()
-        -- update
+        -- state
         obj_char_other_side["state_cache"] = state_cache
     end
     res[3] = function()
@@ -2283,6 +2284,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
 
     res[0] = function()
         -- state
+        obj_char_other_side["y"] = 155
         obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
         obj_char_other_side["height_state"] = height_state -- stand crouch air OTG
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
@@ -2297,7 +2299,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 90
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
@@ -2328,13 +2330,11 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
             VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,-1,1,0
         )
-        -- update
-        obj_char_other_side["y"] = 155
         -- special_update
         frame_0_special_update_function()
     end
     res[1] = function()
-        -- update
+        -- state
         obj_char_other_side["state_cache"] = state_cache
     end
     res[60] = function()
@@ -2445,7 +2445,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 35
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
@@ -2473,7 +2473,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
         frame_0_special_update_function()
     end
     res[1] = function()
-        -- update
+        -- state
         obj_char_other_side["state_cache"] = state_cache
     end
     res[3] = function()
@@ -2557,7 +2557,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 35
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
@@ -2585,7 +2585,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
         frame_0_special_update_function()
     end
     res[1] = function()
-        -- update
+        -- state
         obj_char_other_side["state_cache"] = state_cache
     end
     res[3] = function()
@@ -2666,14 +2666,14 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
 
         obj_char_other_side["idle_cancel"] = false
 
-        obj_char_other_side["strike_inv"] = true
-        obj_char_other_side["strike_inv_countdown"] = 25
+        obj_char_other_side["strike_inv"] = false
+        obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 30
-        obj_char_other_side["projectile_inv"] = true
-        obj_char_other_side["projectile_inv_countdown"] = 25
-        obj_char_other_side["burst_inv"] = true
-        obj_char_other_side["burst_inv_countdown"] = 25
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["projectile_inv"] = false
+        obj_char_other_side["projectile_inv_countdown"] = 0
+        obj_char_other_side["burst_inv"] = false
+        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         obj_char_other_side["velocity"] = {0,0}
         obj_char_other_side["gravity"] = 2.5
@@ -2697,7 +2697,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
         frame_0_special_update_function()
     end
     res[1] = function()
-        -- update
+        -- state
         obj_char_other_side["state_cache"] = state_cache
     end
     res[4] = function()
@@ -2763,6 +2763,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
 
     res[0] = function()
         -- state
+        obj_char_other_side["y"] = 365
         obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
         obj_char_other_side["height_state"] = height_state -- stand crouch air OTG
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
@@ -2773,7 +2774,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 35
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
@@ -2797,8 +2798,6 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         -- draw_correction
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
-        -- update
-        obj_char_other_side["y"] = 365
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
@@ -2810,7 +2809,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         frame_0_special_update_function()
     end
     res[1] = function()
-        -- update
+        -- state
         obj_char_other_side["state_cache"] = state_cache
     end
     res[2] = function()
@@ -2903,14 +2902,14 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
 
         obj_char_other_side["idle_cancel"] = false
 
-        obj_char_other_side["strike_inv"] = true
-        obj_char_other_side["strike_inv_countdown"] = 25
+        obj_char_other_side["strike_inv"] = false
+        obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 25
-        obj_char_other_side["projectile_inv"] = true
-        obj_char_other_side["projectile_inv_countdown"] = 25
-        obj_char_other_side["burst_inv"] = true
-        obj_char_other_side["burst_inv_countdown"] = 25
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["projectile_inv"] = false
+        obj_char_other_side["projectile_inv_countdown"] = 0
+        obj_char_other_side["burst_inv"] = false
+        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         obj_char_other_side["velocity"] = {obj_char_other_side[5]*hurt_horizontal_velocity,hurt_vertical_velocity}
         obj_char_other_side["gravity"] = 2.5
@@ -2934,7 +2933,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
         frame_0_special_update_function()
     end
     res[1] = function()
-        -- update
+        -- state
         obj_char_other_side["state_cache"] = state_cache
     end
     res[4] = function()
@@ -3187,9 +3186,10 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
         obj_char["frame_adv"] = 0
     end
     res[1] = function()
+        -- state
+        obj_char_other_side["state_cache"] = state_cache
         -- update
         update_before_land()
-        obj_char_other_side["state_cache"] = state_cache
     end
     res[3] = function()
         -- collide
@@ -3346,7 +3346,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
-    local function update_throw_inv()
+    local function update_before_land()
         obj_char_other_side["throw_inv"] = true
         obj_char_other_side["throw_inv_countdown"] = 1
     end
@@ -3354,7 +3354,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
     res["anim_length"] = 34
     for i = 0,33 do
         res[i] = function()
-            update_throw_inv()
+            update_before_land()
         end
     end
 
@@ -3405,7 +3405,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- update
-        update_throw_inv()
+        update_before_land()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
@@ -3415,9 +3415,10 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         obj_char["frame_adv"] = 0
     end
     res[1] = function()
-        -- update
-        update_throw_inv()
+        -- state
         obj_char_other_side["state_cache"] = state_cache
+        -- update
+        update_before_land()
     end
     res[3] = function()
         -- collide
@@ -3425,13 +3426,13 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         -- draw_correction
         obj_char_other_side[8] = 1
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[6] = function()
         -- draw_correction
         obj_char_other_side[8] = 2
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[9] = function()
         -- collide
@@ -3439,13 +3440,13 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         -- draw_correction
         obj_char_other_side[8] = 3
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[12] = function()
         -- draw_correction
         obj_char_other_side[8] = 4
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[15] = function()
         -- collide
@@ -3453,15 +3454,16 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         -- draw_correction
         obj_char_other_side[8] = 5
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[18] = function()
         -- draw_correction
         obj_char_other_side[8] = 6
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[21] = function()
+        -- state
         if obj_char_other_side["velocity"][2] <= math.abs(obj_char_other_side["velocity"][1])*2 then
             -- collide
             obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][7]
@@ -3474,7 +3476,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
             obj_char_other_side[8] = 5
         end
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[24] = function()
         -- collide
@@ -3482,7 +3484,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         -- draw_correction
         obj_char_other_side[8] = 8
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[27] = function()
         -- collide
@@ -3490,13 +3492,13 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         -- draw_correction
         obj_char_other_side[8] = 9
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[30] = function()
         -- draw_correction
         obj_char_other_side[8] = 10
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[33] = function()
         -- state
@@ -3506,7 +3508,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         -- draw_correction
         obj_char_other_side[8] = 9
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[34] = function()
         -- animation_end
@@ -3537,7 +3539,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
-    local function update_throw_inv()
+    local function update_before_land()
         obj_char_other_side["throw_inv"] = true
         obj_char_other_side["throw_inv_countdown"] = 1
     end
@@ -3545,7 +3547,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
     res["anim_length"] = 19
     for i = 0,18 do
         res[i] = function()
-            update_throw_inv()
+            update_before_land()
         end
     end
 
@@ -3596,7 +3598,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- update
-        update_throw_inv()
+        update_before_land()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
@@ -3606,9 +3608,10 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         obj_char["frame_adv"] = 0
     end
     res[1] = function()
-        -- update
-        update_throw_inv()
+        -- state
         obj_char_other_side["state_cache"] = state_cache
+        -- update
+        update_before_land()
     end
     res[3] = function()
         -- collide
@@ -3616,7 +3619,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         -- draw_correction
         obj_char_other_side[8] = 1
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[6] = function()
         -- collide
@@ -3624,13 +3627,13 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         -- draw_correction
         obj_char_other_side[8] = 2
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[12] = function()
         -- draw_correction
         obj_char_other_side[8] = 3
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[18] = function()
         -- state
@@ -3638,7 +3641,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         -- draw_correction
         obj_char_other_side[8] = 2
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[19] = function()
         -- animation_end
@@ -3669,7 +3672,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
-    local function update_throw_inv()
+    local function update_before_land()
         obj_char_other_side["throw_inv"] = true
         obj_char_other_side["throw_inv_countdown"] = 1
     end
@@ -3677,7 +3680,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
     res["anim_length"] = 10
     for i = 0,9 do
         res[i] = function()
-            update_throw_inv()
+            update_before_land()
         end
     end
 
@@ -3727,8 +3730,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
         -- draw_correction
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
-        -- update
-        update_throw_inv()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
@@ -3738,9 +3739,10 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
         obj_char["frame_adv"] = 0
     end
     res[1] = function()
-        -- update
-        update_throw_inv()
+        -- state
         obj_char_other_side["state_cache"] = state_cache
+        -- update
+        update_before_land()
     end
     res[3] = function()
         -- collide
@@ -3748,13 +3750,13 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
         -- draw_correction
         obj_char_other_side[8] = 1
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[6] = function()
         -- draw_correction
         obj_char_other_side[8] = 2
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[9] = function()
         -- state
@@ -3762,7 +3764,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
         -- draw_correction
         obj_char_other_side[8] = 1
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[10] = function()
         -- animation_end
@@ -3805,11 +3807,20 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
             obj_char_other_side[8] = 3
         end
     end
+    local function update_before_land()
+        obj_char_other_side["throw_inv"] = true
+        obj_char_other_side["throw_inv_countdown"] = 1
+    end
     res["prop_f"] = "f"
     res["anim_length"] = 25
     for i = 0,9 do
         res[i] = function()
             update_before_falling()
+        end
+    end
+    for i = 10,24 do
+        res[i] = function()
+            update_before_land()
         end
     end
 
@@ -3859,20 +3870,21 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
         -- draw_correction
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
-        -- update
-        update_before_falling()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
+        -- update
+        update_before_falling()
         -- special_update
         frame_0_special_update_function()
         -- set_frame_adv
         obj_char["frame_adv"] = 0
     end
     res[1] = function()
+        -- state
+        obj_char_other_side["state_cache"] = state_cache
         -- update
         update_before_falling()
-        obj_char_other_side["state_cache"] = state_cache
     end
     res[3] = function()
         -- collide
@@ -3901,32 +3913,41 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][4]
         -- draw_correction
         obj_char_other_side[8] = 4
+        -- update
+        update_before_land()
     end
     res[15] = function()
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][5]
         -- draw_correction
         obj_char_other_side[8] = 5
+        -- update
+        update_before_land()
     end
     res[18] = function()
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][6]
         -- draw_correction
         obj_char_other_side[8] = 6
+        -- update
+        update_before_land()
     end
     res[21] = function()
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][7]
         -- draw_correction
         obj_char_other_side[8] = 7
+        -- update
+        update_before_land()
     end
     res[24] = function()
-        -- state
         obj_char_other_side["f"] = 18
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][6]
         -- draw_correction
         obj_char_other_side[8] = 6
+        -- update
+        update_before_land()
     end
     res[25] = function()
         -- animation_end
@@ -3957,7 +3978,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
-    local function update_throw_inv()
+    local function update_before_land()
         obj_char_other_side["throw_inv"] = true
         obj_char_other_side["throw_inv_countdown"] = 1
     end
@@ -3965,7 +3986,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
     res["anim_length"] = 25
     for i = 0,24 do
         res[i] = function()
-            update_throw_inv()
+            update_before_land()
         end
     end
 
@@ -4016,7 +4037,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- update
-        update_throw_inv()
+        update_before_land()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
@@ -4026,42 +4047,59 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
         obj_char["frame_adv"] = 0
     end
     res[1] = function()
-        -- update
-        update_throw_inv()
+        -- state
         obj_char_other_side["state_cache"] = state_cache
+        -- update
+        update_before_land()
     end
     res[3] = function()
-        update_throw_inv()
+        -- state
         obj_char_other_side[8] = 1
+        -- update
+        update_before_land()
     end
     res[6] = function()
-        update_throw_inv()
+        -- state
         obj_char_other_side[8] = 2
+        -- update
+        update_before_land()
     end
     res[9] = function()
-        update_throw_inv()
+        -- state
         obj_char_other_side[8] = 3
+        -- update
+        update_before_land()
     end
     res[12] = function()
-        update_throw_inv()
+        -- state
         obj_char_other_side[8] = 4
+        -- update
+        update_before_land()
     end
     res[15] = function()
-        update_throw_inv()
+        -- state
         obj_char_other_side[8] = 5
+        -- update
+        update_before_land()
     end
     res[18] = function()
-        update_throw_inv()
+        -- state
         obj_char_other_side[8] = 6
+        -- update
+        update_before_land()
     end
     res[21] = function()
-        update_throw_inv()
+        -- state
         obj_char_other_side[8] = 7
+        -- update
+        update_before_land()
     end
     res[24] = function()
-        update_throw_inv()
+        -- state
         obj_char_other_side[8] = 1
         obj_char_other_side["f"] = 1
+        -- update
+        update_before_land()
     end
     res[25] = function()
         -- animation_end
@@ -4092,7 +4130,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
-    local function update_throw_inv()
+    local function update_before_land()
         obj_char_other_side["throw_inv"] = true
         obj_char_other_side["throw_inv_countdown"] = 1
     end
@@ -4100,7 +4138,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
     res["anim_length"] = 16
     for i = 0,15 do
         res[i] = function()
-            update_throw_inv()
+            update_before_land()
         end
     end
 
@@ -4151,7 +4189,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- update
-        update_throw_inv()
+        update_before_land()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
@@ -4161,30 +4199,41 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         obj_char["frame_adv"] = 0
     end
     res[1] = function()
-        -- update
-        update_throw_inv()
+        -- state
         obj_char_other_side["state_cache"] = state_cache
+        -- update
+        update_before_land()
     end
     res[3] = function()
-        update_throw_inv()
+        -- state
         obj_char_other_side[8] = 1
+        -- update
+        update_before_land()
     end
     res[6] = function()
-        update_throw_inv()
+        -- state
         obj_char_other_side[8] = 2
+        -- update
+        update_before_land()
     end
     res[9] = function()
-        update_throw_inv()
+        -- state
         obj_char_other_side[8] = 3
+        -- update
+        update_before_land()
     end
     res[12] = function()
-        update_throw_inv()
+        -- state
         obj_char_other_side[8] = 4
+        -- update
+        update_before_land()
     end
     res[15] = function()
-        update_throw_inv()
+        -- state
         obj_char_other_side[8] = 1
         obj_char_other_side["f"] = 1
+        -- update
+        update_before_land()
     end
     res[16] = function()
         -- animation_end
@@ -4215,15 +4264,15 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
-    local function update_throw_inv()
+    local function update_before_land()
         obj_char_other_side["throw_inv"] = true
         obj_char_other_side["throw_inv_countdown"] = 1
     end
     res["prop_f"] = "f"
     res["anim_length"] = 16
-    for i = 0,16 do
+    for i = 0,15 do
         res[i] = function()
-            update_throw_inv()
+            update_before_land()
         end
     end
 
@@ -4253,16 +4302,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
-        -- state_number
-        -- common_game_scene_char_apply_hurt_velocity(
-        --     obj_char,obj_char_other_side,
-        --     hurt_horizontal_velocity,
-        --     hurt_horizontal_friction,
-        --     hurt_horizontal_velocity_correction,
-        --     hurt_vertical_velocity,
-        --     hurt_vertical_gravity,
-        --     hurt_vertical_gravity_correction
-        -- )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
@@ -4272,18 +4311,19 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         -- draw_correction
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        -- update
+        update_before_land()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        -- update
-        update_throw_inv()
         -- special_update
         frame_0_special_update_function()
     end
     res[1] = function()
-        -- update
-        update_throw_inv()
+        -- state
         obj_char_other_side["state_cache"] = state_cache
+        -- update
+        update_before_land()
     end
     res[3] = function()
         -- collide
@@ -4291,7 +4331,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         -- draw_correction
         obj_char_other_side[8] = 1
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[6] = function()
         -- collide
@@ -4299,7 +4339,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         -- draw_correction
         obj_char_other_side[8] = 2
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[9] = function()
         -- collide
@@ -4307,13 +4347,13 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         -- draw_correction
         obj_char_other_side[8] = 3
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[12] = function()
         -- draw_correction
         obj_char_other_side[8] = 4
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[15] = function()
         -- state
@@ -4321,7 +4361,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         -- draw_correction
         obj_char_other_side[8] = 3
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[16] = function()
         -- animation_end
@@ -4352,12 +4392,12 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
-    local function update_throw_inv()
+    local function update_before_land()
         obj_char_other_side["throw_inv"] = true
         obj_char_other_side["throw_inv_countdown"] = 1
     end
     local function update_before_land()
-        update_throw_inv()
+        update_before_land()
         if obj_char_other_side["velocity"][2] >= 0 then
             -- collide
             obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][2]
@@ -4369,7 +4409,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
     res["anim_length"] = 22
     for i = 0,22 do
         res[i] = function()
-            update_throw_inv()
+            update_before_land()
         end
     end
     for i = 0,6 do
@@ -4405,15 +4445,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        -- common_game_scene_char_apply_hurt_velocity(
-        --     obj_char,obj_char_other_side,
-        --     hurt_horizontal_velocity,
-        --     hurt_horizontal_friction,
-        --     hurt_horizontal_velocity_correction,
-        --     hurt_vertical_velocity,
-        --     hurt_vertical_gravity,
-        --     hurt_vertical_gravity_correction
-        -- )
         obj_char_other_side["friction"] = hurt_horizontal_friction
         obj_char_other_side["gravity"] = hurt_vertical_gravity*hurt_vertical_gravity_correction
         obj_char_other_side["velocity"][1] = hurt_horizontal_velocity*hurt_horizontal_velocity_correction*(-obj_char_other_side[5])
@@ -4428,18 +4459,19 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
         -- draw_correction
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        -- update
+        update_before_land()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        -- update
-        update_before_land()
         -- special_update
         frame_0_special_update_function()
     end
     res[1] = function()
-        -- update
-        update_throw_inv()
+        -- state
         obj_char_other_side["state_cache"] = state_cache
+        -- update
+        update_before_land()
     end
     res[3] = function()
         -- draw_correction
@@ -4461,7 +4493,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
         -- draw_correction
         obj_char_other_side[8] = 2
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[12] = function()
         -- collide
@@ -4521,6 +4553,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
 
     res[0] = function()
         -- state
+        obj_char_other_side["y"] = 100
         obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
         obj_char_other_side["height_state"] = height_state -- stand crouch air OTG
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
@@ -4535,7 +4568,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 43
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
@@ -4560,8 +4593,6 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
         -- draw_correction
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
-        -- update
-        obj_char_other_side["y"] = 100
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
@@ -4582,12 +4613,11 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
     end
     res[11] = function()
         -- state
+        obj_char_other_side["y"] = 365
         obj_char_other_side["height_state"] = "stand"
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][3]
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][3]
-        -- update
-        obj_char_other_side["y"] = 365
         -- draw_correction
         obj_char_other_side[8] = 3
     end

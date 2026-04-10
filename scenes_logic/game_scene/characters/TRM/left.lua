@@ -623,7 +623,7 @@ function load_game_scene_box_anchor_data_LP()
     obj_hurtboxs_data_game_scene_char_LP["4_stand_block_guard_crash"][0] = stand_hurtbox
     obj_anchor_data_game_scene_char_LP["4_stand_block_guard_crash"] = {223,510}
     obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["smoke_spawn_anchor_pos"]["4_stand_block_guard_crash"] = {600,-195}
-    obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["block_ver0_spawn_anchor_pos"]["4_stand_block_guard_crash"] = {-305,-495}
+    obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["block_ver0_spawn_anchor_pos"]["4_stand_block_guard_crash"] = {-430,-595}
     obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["block_ver1_spawn_anchor_pos"]["4_stand_block_guard_crash"] = {-430,-595}
 
     obj_pushboxs_data_game_scene_char_LP["4_stand_block_high"] = {}
@@ -659,7 +659,7 @@ function load_game_scene_box_anchor_data_LP()
     obj_hurtboxs_data_game_scene_char_LP["1_crouch_block_guard_crash"][0] = crouch_hurtbox
     obj_anchor_data_game_scene_char_LP["1_crouch_block_guard_crash"] = {340,297}
     obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["smoke_spawn_anchor_pos"]["1_crouch_block_guard_crash"] = {600,-195}
-    obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["block_ver0_spawn_anchor_pos"]["1_crouch_block_guard_crash"] = {-305,-375}
+    obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["block_ver0_spawn_anchor_pos"]["1_crouch_block_guard_crash"] = {-430,-475}
     obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["block_ver1_spawn_anchor_pos"]["1_crouch_block_guard_crash"] = {-430,-475}
 
     obj_pushboxs_data_game_scene_char_LP["1_4_7_air_block"] = {}
@@ -672,7 +672,7 @@ function load_game_scene_box_anchor_data_LP()
     obj_hurtboxs_data_game_scene_char_LP["1_4_7_air_block"][8] = {{0,-200,200,400}}
     obj_anchor_data_game_scene_char_LP["1_4_7_air_block"] = {340,410}
     obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["smoke_spawn_anchor_pos"]["1_4_7_air_block"] = {-355,-160}
-    obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["block_ver0_spawn_anchor_pos"]["1_4_7_air_block"] = {-255,-365}
+    obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["block_ver0_spawn_anchor_pos"]["1_4_7_air_block"] = {-380,-465}
     obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["block_ver1_spawn_anchor_pos"]["1_4_7_air_block"] = {-380,-465}
 
     obj_pushboxs_data_game_scene_char_LP["1_4_7_air_block_guard_crash"] = {}
@@ -681,7 +681,7 @@ function load_game_scene_box_anchor_data_LP()
     obj_hurtboxs_data_game_scene_char_LP["1_4_7_air_block_guard_crash"][0] = air_hurtbox
     obj_anchor_data_game_scene_char_LP["1_4_7_air_block_guard_crash"] = {370,310}
     obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["smoke_spawn_anchor_pos"]["1_4_7_air_block_guard_crash"] = {600,-195}
-    obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["block_ver0_spawn_anchor_pos"]["1_4_7_air_block_guard_crash"] = {-255,-390}
+    obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["block_ver0_spawn_anchor_pos"]["1_4_7_air_block_guard_crash"] = {-380,-490}
     obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["block_ver1_spawn_anchor_pos"]["1_4_7_air_block_guard_crash"] = {-380,-490}
 
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_soft_knockdown_wallstick_air"] = {}

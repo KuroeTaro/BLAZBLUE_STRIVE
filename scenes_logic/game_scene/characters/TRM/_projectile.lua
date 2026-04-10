@@ -10,6 +10,8 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     obj["animation"] = {}
     obj["sprite_sheet_state"] = nil
 
+    obj["velocity"] = {0,0}
+
     obj["shot_hit_confirm"] = (obj_char["shot_sys_aim_process"][1] >= obj_char["shot_sys_aim_process"][3])
 
     obj["camera_enclosing_anim"] = nil
@@ -97,7 +99,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
         nil,nil,
         function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
     )
-    obj["hit_hurt_blockstop_countdown"] = 10
+    obj["hit_hurt_blockstop_countdown"] = 13
 
     obj["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver0
     obj["hit_VFX_insert_function_argument"] = {obj_char,55,-255,0.8,0.75,0.75,0,false,false}
@@ -111,6 +113,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     obj["hit_counter_ver_function"] = common_game_scene_counter_ver0
 
     obj["update"] = function()
+        obj["life"] = obj["life"] - 1
     end
     obj["draw"] = function()
     end
@@ -155,10 +158,10 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
         -- interaction_with_enemy
             -- normal_hit
             -- if hit
-        if collision_strike_hurtbox_test(obj,obj_char_other_side) then
+        -- if collision_strike_hurtbox_test(obj,obj_char_other_side) then
                 -- insert_hit_VFX
                 -- set_physics_lock
-        end
+        -- end
                 -- insert_hit_VFX
                 -- if block
                     -- set_state_and_state_cache
@@ -194,6 +197,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     -- obj["friendly_interact_function"] = function()
 
     -- end
+    table.insert(obj_char["projectile_table"],obj)
 end
 
 function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main_anim(obj)
@@ -243,7 +247,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 14
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
@@ -253,16 +257,15 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
             hurt_horizontal_velocity = hurt_horizontal_velocity * 2
         end
-        common_game_scene_projectile_apply_hurt_velocity(
-            obj_char,obj_char_other_side,projectile,
+        common_game_scene_char_apply_hurt_velocity(
+            obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
             hurt_vertical_gravity_correction,
-            fix_direction,
-            velocity_center
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -343,7 +346,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
             obj_char_other_side["f"] = 13
             obj_char_other_side["height_state"]  = "stand"
             obj_char_other_side["throw_inv"] = true
-            obj_char_other_side["throw_inv_countdown"] = 23
+            obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4-13
             obj_char_other_side["gravity"] = 2.5
             obj_char_other_side["friction"] = 7
 
@@ -394,16 +397,15 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
             hurt_horizontal_velocity = hurt_horizontal_velocity * 2
             hurt_vertical_velocity = hurt_vertical_velocity + math.abs(hurt_vertical_velocity)*0.2
         end
-        common_game_scene_projectile_apply_hurt_velocity(
-            obj_char,obj_char_other_side,projectile,
+        common_game_scene_char_apply_hurt_velocity(
+            obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
             hurt_vertical_gravity_correction,
-            fix_direction,
-            velocity_center
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -424,29 +426,30 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
         obj_char["frame_adv"] = 0
     end
     res[3] = function()
-        -- state
-        update_before_land()
         -- draw_correction
         obj_char_other_side[8] = 4
+        -- update
+        update_before_land()
     end
     res[6] = function()
-        -- state
-        update_before_land()
         -- draw_correction
         obj_char_other_side[8] = 3
+        -- update
+        update_before_land()
     end
     res[9] = function()
-        -- state
-        update_before_land()
         -- draw_correction
         obj_char_other_side[8] = 2
+        -- update
+        update_before_land()
     end
     res[12] = function()
         -- state
         obj_char_other_side["f"] = 3
-        update_before_land()
         -- draw_correction
         obj_char_other_side[8] = 4
+        -- update
+        update_before_land()
     end
     res[13] = function()
         -- land animation start
@@ -524,22 +527,21 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = 18
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        common_game_scene_projectile_apply_hurt_velocity(
-            obj_char,obj_char_other_side,projectile,
+        common_game_scene_char_apply_hurt_velocity(
+            obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
             hurt_vertical_gravity_correction,
-            fix_direction,
-            velocity_center
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -617,7 +619,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
-    local function update_throw_inv()
+    local function update_before_land()
         obj_char_other_side["throw_inv"] = true
         obj_char_other_side["throw_inv_countdown"] = 1
     end
@@ -625,7 +627,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
     res["anim_length"] = 34
     for i = 0,33 do
         res[i] = function()
-            update_throw_inv()
+            update_before_land()
         end
     end
 
@@ -656,16 +658,15 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        common_game_scene_projectile_apply_hurt_velocity(
-            obj_char,obj_char_other_side,projectile,
+        common_game_scene_char_apply_hurt_velocity(
+            obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
             hurt_vertical_velocity,
             hurt_vertical_gravity,
             hurt_vertical_gravity_correction,
-            fix_direction,
-            velocity_center
+            false
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -677,7 +678,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- update
-        update_throw_inv()
+        update_before_land()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
@@ -687,9 +688,10 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         obj_char["frame_adv"] = 0
     end
     res[1] = function()
-        -- update
-        update_throw_inv()
+        -- state
         obj_char_other_side["state_cache"] = state_cache
+        -- update
+        update_before_land()
     end
     res[3] = function()
         -- collide
@@ -697,13 +699,13 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         -- draw_correction
         obj_char_other_side[8] = 1
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[6] = function()
         -- draw_correction
         obj_char_other_side[8] = 2
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[9] = function()
         -- collide
@@ -711,13 +713,13 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         -- draw_correction
         obj_char_other_side[8] = 3
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[12] = function()
         -- draw_correction
         obj_char_other_side[8] = 4
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[15] = function()
         -- collide
@@ -725,15 +727,16 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         -- draw_correction
         obj_char_other_side[8] = 5
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[18] = function()
         -- draw_correction
         obj_char_other_side[8] = 6
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[21] = function()
+        -- state
         if obj_char_other_side["velocity"][2] <= math.abs(obj_char_other_side["velocity"][1])*2 then
             -- collide
             obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][7]
@@ -746,7 +749,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
             obj_char_other_side[8] = 5
         end
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[24] = function()
         -- collide
@@ -754,7 +757,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         -- draw_correction
         obj_char_other_side[8] = 8
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[27] = function()
         -- collide
@@ -762,13 +765,13 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         -- draw_correction
         obj_char_other_side[8] = 9
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[30] = function()
         -- draw_correction
         obj_char_other_side[8] = 10
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[33] = function()
         -- state
@@ -778,7 +781,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         -- draw_correction
         obj_char_other_side[8] = 9
         -- update
-        update_throw_inv()
+        update_before_land()
     end
     res[34] = function()
         -- animation_end
