@@ -4699,6 +4699,39 @@ end
 function draw_game_scene_char_RP_attachment_back()
     -- nil
 end
+function draw_game_scene_char_RP_pushbox()
+    if not DEBUG_HITBOX_SHOWS then
+        return
+    end
+
+    local obj_char = obj_char_game_scene_char_RP
+    local camera = obj_stage_game_scene_camera
+
+    -- push box
+    local color = DEBUG_BOX_COLOR_YELLOW
+    local draw_box = {
+        obj_char["x"] + (obj_char["pushbox"][1] - obj_char["pushbox"][3]/2)*obj_char[5],
+        obj_char["y"] + obj_char["pushbox"][2] - obj_char["pushbox"][4]/2,
+        obj_char[3],obj_char[5],1
+    }
+    draw_box["w"] = obj_char["pushbox"][3]
+    draw_box["h"] = obj_char["pushbox"][4]
+    draw_3d_color_box(camera,draw_box,color)
+    for i=1,#obj_char["projectile_table"] do
+        local current_projectile = obj_char["projectile_table"][i]
+        local current_pushbox = current_projectile["pushbox"]
+        if current_pushbox then
+            local draw_box = {
+                current_projectile["x"] + (current_pushbox[1] - current_pushbox[3]/2)*current_projectile[5],
+                current_projectile["y"] + current_pushbox[2] - current_pushbox[4]/2,
+                current_projectile[3],current_projectile[5],1
+            }
+            draw_box["w"] = current_hurtbox[3]
+            draw_box["h"] = current_hurtbox[4]
+            draw_3d_color_box(camera,draw_box,color)
+        end
+    end
+end
 function draw_game_scene_char_RP_hurtbox()
     if not DEBUG_HITBOX_SHOWS then
         return
@@ -4719,6 +4752,22 @@ function draw_game_scene_char_RP_hurtbox()
         draw_box["w"] = current_hurtbox[3]
         draw_box["h"] = current_hurtbox[4]
         draw_3d_color_box(camera,draw_box,color)
+    end
+    for i=1,#obj_char["projectile_table"] do
+        local current_projectile = obj_char["projectile_table"][i]
+        for j=1,#current_projectile["hurtbox_table"] do
+            local current_hurtbox = current_projectile["hurtbox_table"][j]
+            if current_hurtbox then
+                local draw_box = {
+                    current_projectile["x"] + (current_hurtbox[1] - current_hurtbox[3]/2)*current_projectile[5],
+                    current_projectile["y"] + current_hurtbox[2] - current_hurtbox[4]/2,
+                    current_projectile[3],current_projectile[5],1
+                }
+                draw_box["w"] = current_hurtbox[3]
+                draw_box["h"] = current_hurtbox[4]
+                draw_3d_color_box(camera,draw_box,color)
+            end
+        end
     end
 end
 function draw_game_scene_char_RP_hitbox()
@@ -4742,25 +4791,22 @@ function draw_game_scene_char_RP_hitbox()
         draw_box["h"] = current_hitbox[4]
         draw_3d_color_box(camera,draw_box,color)
     end
-end
-function draw_game_scene_char_RP_pushbox()
-    if not DEBUG_HITBOX_SHOWS then
-        return
+    for i=1,#obj_char["projectile_table"] do
+        local current_projectile = obj_char["projectile_table"][i]
+        for j=1,#current_projectile["hitbox_table"] do
+            local current_hitbox = current_projectile["hitbox_table"][j]
+            if current_hitbox then
+                local draw_box = {
+                    current_projectile["x"] + (current_hitbox[1] - current_hitbox[3]/2)*current_projectile[5],
+                    current_projectile["y"] + current_hitbox[2] - current_hitbox[4]/2,
+                    current_projectile[3],current_projectile[5],1
+                }
+                draw_box["w"] = current_hitbox[3]
+                draw_box["h"] = current_hitbox[4]
+                draw_3d_color_box(camera,draw_box,color)
+            end
+        end
     end
-
-    local obj_char = obj_char_game_scene_char_RP
-    local camera = obj_stage_game_scene_camera
-
-    -- push box
-    local color = DEBUG_BOX_COLOR_YELLOW
-    local pushbox = {
-        obj_char["x"] + (obj_char["pushbox"][1] - obj_char["pushbox"][3]/2)*obj_char[5],
-        obj_char["y"] + obj_char["pushbox"][2] - obj_char["pushbox"][4]/2,
-        obj_char[3],obj_char[5],1
-    }
-    pushbox["w"] = obj_char["pushbox"][3]
-    pushbox["h"] = obj_char["pushbox"][4]
-    draw_3d_color_box(camera,pushbox,color)
 end
 
 -- projectile

@@ -13,18 +13,24 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     end 
     obj[1] = obj_char["shot_sys_reticle"][1]
     obj[2] = obj_char["shot_sys_reticle"][2]
-    obj["x"] = 0
-    obj["y"] = 0
+    obj["x"] = obj_char_other_side["x"]
+    obj["y"] = obj_char_other_side["y"]-obj_char_other_side["pushbox"][4]/2
     obj["f"] = 0
     obj["type"] = "projectile"
     obj["hit_type_state"] = "strike"
     obj["life"] = 42
-    obj["animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main_anim(obj,obj_char,obj_char_other_side,image_sprite_sheet_table)
     obj["sprite_sheet_state"] = "5H_miss_projectile"
 
     obj["velocity"] = {0,0}
 
     obj["shot_hit_confirm"] = (obj_char["shot_sys_aim_process"][1] >= obj_char["shot_sys_aim_process"][3])
+
+    obj["pushbox"] = nil
+    obj["hitbox_table"] = {}
+    obj["hurtbox_table"] = {}
+
+    obj["animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main_anim(obj,obj_char,obj_char_other_side)
+    init_character_anim_with(obj,obj["animation"] )
 
     obj["camera_enclosing_anim"] = nil
     obj["camera_x_shake_anim"] = nil
@@ -125,6 +131,8 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     obj["hit_counter_ver_function"] = common_game_scene_counter_ver0
 
     obj["update"] = function()
+        obj["x"] = obj_char_other_side["x"]
+        obj["y"] = obj_char_other_side["y"]-obj_char_other_side["pushbox"][4]/2
         character_animator(obj,obj["animation"])
         obj["life"] = obj["life"] - 1
     end
@@ -233,7 +241,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main_anim(obj,
         obj[1] = obj_char["shot_sys_reticle"][1]
         obj[2] = obj_char["shot_sys_reticle"][2]
         -- collide
-        obj["hitbox_table"] = {}
+        obj["hitbox_table"] = {{0,0,100,100}}
         -- draw_correction
         obj[8] = 0
     end

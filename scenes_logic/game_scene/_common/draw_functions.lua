@@ -256,11 +256,10 @@ function draw_game_scene_main()
     -- DEBUG
     draw_game_scene_char_LP_hurtbox()
     draw_game_scene_char_RP_hurtbox()
-    draw_game_scene_char_LP_hitbox()
-    draw_game_scene_char_RP_hitbox()
     draw_game_scene_char_LP_pushbox()
     draw_game_scene_char_RP_pushbox()
-
+    draw_game_scene_char_LP_hitbox()
+    draw_game_scene_char_RP_hitbox()
 
     -- 绘制ease in black solid
     draw_solid(obj_UI_game_scene_black_solid)

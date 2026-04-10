@@ -360,7 +360,7 @@ function update_game_scene_main_training()
                 for i = 1,#char_RP["projectile_table"] do
                     local current_projectile = char_RP["projectile_table"][i]
                     if current_projectile["friendly_interact_function"] then
-                        current_projectilei["friendly_interact_function"]()
+                        current_projectile["friendly_interact_function"]()
                     end
                 end
 
