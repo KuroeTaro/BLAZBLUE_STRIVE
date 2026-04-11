@@ -2090,8 +2090,8 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
             obj_char,
             "0_stand_hurt_low",
             "stand","5_stand_idle",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -2099,8 +2099,8 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
             obj_char,
             "4_stand_block_mid",
             "stand","5_stand_idle",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -2108,8 +2108,8 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
             obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -2117,8 +2117,8 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -2143,8 +2143,8 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
             obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            32,5,1.05,
-            -30,2.5,1.05,
+            32,5,1.00,
+            -30,2.5,1.00,
             nil,nil,nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
@@ -2152,8 +2152,8 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            27,5,1.05,
-            -5,2.5,1.05,
+            27,5,1.00,
+            -5,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -2342,8 +2342,8 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
             obj_char,
             "0_stand_hurt_mid",
             "stand","5_stand_idle",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -2351,8 +2351,8 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
             obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -2360,8 +2360,8 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
             obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -2369,8 +2369,8 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -2395,8 +2395,8 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
             obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            32,5,1.05,
-            -30,2.5,1.05,
+            32,5,1.00,
+            -30,2.5,1.00,
             nil,nil,nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
@@ -2404,8 +2404,8 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            32,5,1.05,
-            -5,2.5,1.05,
+            32,5,1.00,
+            -5,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -2616,8 +2616,8 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
             obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -2625,8 +2625,8 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
             obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -2634,8 +2634,8 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
             obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -2643,8 +2643,8 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -2669,8 +2669,8 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
             obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            32,5,1.05,
-            -30,2.5,1.05,
+            32,5,1.00,
+            -30,2.5,1.00,
             nil,nil,nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
@@ -2678,8 +2678,8 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            27,5,1.05,
-            -5,2.5,1.05,
+            27,5,1.00,
+            -5,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -2867,8 +2867,8 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
             obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
-            27,5,1.05,
-            0,2.5,1.05,
+            27,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -2876,8 +2876,8 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
             obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
-            27,5,1.05,
-            0,2.5,1.05,
+            27,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -2885,8 +2885,8 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
             obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
-            27,5,1.05,
-            0,2.5,1.05,
+            27,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -2894,8 +2894,8 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            27,5,1.05,
-            0,2.5,1.05,
+            27,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -2920,8 +2920,8 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
             obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            27,5,1.05,
-            -30,2.5,1.05,
+            27,5,1.00,
+            -30,2.5,1.00,
             nil,nil,nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
@@ -2929,8 +2929,8 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            27,5,1.05,
-            -5,2.5,1.05,
+            27,5,1.00,
+            -5,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -3154,8 +3154,8 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
             obj_char,
             "0_stand_hurt_low",
             "stand","5_stand_idle",
-            27,5,1.05,
-            0,2.5,1.05,
+            27,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -3163,8 +3163,8 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
             obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
-            27,5,1.05,
-            0,2.5,1.05,
+            27,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -3172,8 +3172,8 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
             obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
-            27,5,1.05,
-            0,2.5,1.05,
+            27,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -3181,8 +3181,8 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            27,5,1.05,
-            0,2.5,1.05,
+            27,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -3207,8 +3207,8 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
             obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            27,5,1.05,
-            -30,2.5,1.05,
+            27,5,1.00,
+            -30,2.5,1.00,
             nil,nil,nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
@@ -3216,8 +3216,8 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            27,5,1.05,
-            -5,2.5,1.05,
+            27,5,1.00,
+            -5,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -3442,8 +3442,8 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
             obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
-            18,5,1.05,
-            0,2.5,1.05,
+            18,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -3451,8 +3451,8 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
             obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
-            18,5,1.05,
-            0,2.5,1.05,
+            18,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -3460,8 +3460,8 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
             obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
-            18,5,1.05,
-            0,2.5,1.05,
+            18,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -3469,8 +3469,8 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            18,5,1.05,
-            0,2.5,1.05,
+            18,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -3495,8 +3495,8 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
             obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            18,5,1.05,
-            -30,2.5,1.05,
+            18,5,1.00,
+            -30,2.5,1.00,
             nil,nil,nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
@@ -3504,8 +3504,8 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            27,5,1.05,
-            -5,2.5,1.05,
+            27,5,1.00,
+            -5,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -3723,8 +3723,8 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
             obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -3732,8 +3732,8 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
             obj_char,
             "4_stand_block_mid",
             "stand","5_stand_idle",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -3741,8 +3741,8 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
             obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -3750,8 +3750,8 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -3776,8 +3776,8 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
             obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            32,5,1.05,
-            -30,2.5,1.05,
+            32,5,1.00,
+            -30,2.5,1.00,
             nil,nil,nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
@@ -3785,8 +3785,8 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            32,5,1.05,
-            -5,2.5,1.05,
+            32,5,1.00,
+            -5,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -4027,8 +4027,8 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            32,5,1.05,
-            -30,2.5,1.05,
+            32,5,1.00,
+            -30,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -4044,8 +4044,8 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
             obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -4053,8 +4053,8 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            32,5,1.05,
-            -30,2.5,1.05,
+            32,5,1.00,
+            -30,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -4070,8 +4070,8 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -4096,8 +4096,8 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
             obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            32,5,1.05,
-            -30,2.5,1.05,
+            32,5,1.00,
+            -30,2.5,1.00,
             nil,nil,nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
@@ -4105,8 +4105,8 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            32,5,1.05,
-            -5,2.5,1.05,
+            32,5,1.00,
+            -5,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -4356,8 +4356,8 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
             obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -4365,8 +4365,8 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
             obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -4374,8 +4374,8 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
             obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -4383,8 +4383,8 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -4409,8 +4409,8 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
             obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            32,5,1.05,
-            -30,2.5,1.05,
+            32,5,1.00,
+            -30,2.5,1.00,
             nil,nil,nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
@@ -4418,8 +4418,8 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            32,5,1.05,
-            -5,2.5,1.05,
+            32,5,1.00,
+            -5,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -4609,8 +4609,8 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
             obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -4618,8 +4618,8 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
             obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -4627,8 +4627,8 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
             obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -4636,8 +4636,8 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -4662,8 +4662,8 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
             obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            32,5,1.05,
-            -30,2.5,1.05,
+            32,5,1.00,
+            -30,2.5,1.00,
             nil,nil,nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
@@ -4671,8 +4671,8 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            32,5,1.05,
-            -5,2.5,1.05,
+            32,5,1.00,
+            -5,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -5015,9 +5015,13 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(obj_char)
         -- insert_projectile
         insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     end
-    res[2] = function()
+    res[3] = function()
         -- shot_sys
         obj_char["shot_sys_aim_process"][1] = 0
+        character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
+        if obj_char["shot_sys_aim_process"][1] < obj_char["shot_sys_aim_process"][3] then
+            character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(obj_char)
+        end
     end
     res[6] = function()
         -- input_sys_cache
@@ -5631,15 +5635,15 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             obj_char,
             "0_general_hurt_launched_low",
             "air","knockdown",
-            8,5,1.05,
-            -15,1.6,1.05,
+            8,5,1.00,
+            -15,1.6,1.00,
             load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
                 obj_char,
                 "0_general_hurt_hard_knockdown_down",
                 "air",
                 "knockdown_recovery",
-                5,5,1.05,
-                -10,2.5,1.05,
+                5,5,1.00,
+                -10,2.5,1.00,
                 nil,nil,nil,nil,function() end
             ),
             load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
@@ -5659,8 +5663,8 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             obj_char,
             "4_stand_block_mid",
             "stand","5_stand_idle",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -5668,15 +5672,15 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             obj_char,
             "0_general_hurt_launched_low",
             "air","knockdown",
-            8,5,1.05,
-            -15,1.6,1.05,
+            8,5,1.00,
+            -15,1.6,1.00,
             load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
                 obj_char,
                 "0_general_hurt_hard_knockdown_down",
                 "air",
                 "knockdown_recovery",
-                5,5,1.05,
-                -10,2.5,1.05,
+                5,5,1.00,
+                -10,2.5,1.00,
                 nil,nil,nil,nil,function() end
             ),
             load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
@@ -5696,8 +5700,8 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            32,5,1.05,
-            0,2.5,1.05,
+            32,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -5724,8 +5728,8 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            32,5,1.05,
-            -5,2.5,1.05,
+            32,5,1.00,
+            -5,2.5,1.00,
             nil,nil,nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
@@ -5733,8 +5737,8 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            32,5,1.05,
-            -5,2.5,1.05,
+            32,5,1.00,
+            -5,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -6657,8 +6661,8 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
             "0_general_hurt_semi_launched_mid",
             "air",
             "5_stand_idle",
-            5,7,1.05,
-            0,2,1.05,
+            5,7,1.00,
+            0,2,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -6666,8 +6670,8 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
             obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
-            5,7,1.05,
-            0,2.5,1.05,
+            5,7,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -6676,8 +6680,8 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
             "0_general_hurt_semi_launched_mid",
             "air",
             "5_stand_idle",
-            5,7,1.05,
-            0,2,1.05,
+            5,7,1.00,
+            0,2,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -6685,8 +6689,8 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            5,7,1.05,
-            0,2.5,1.05,
+            5,7,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -6711,8 +6715,8 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
             obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            5,7,1.05,
-            -5,2.5,1.05,
+            5,7,1.00,
+            -5,2.5,1.00,
             nil,nil,nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
@@ -6720,8 +6724,8 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            32,5,1.05,
-            -5,2.5,1.05,
+            32,5,1.00,
+            -5,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -6959,8 +6963,8 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
             "0_general_hurt_semi_launched_mid",
             "air",
             "5_stand_idle",
-            5,7,1.05,
-            0,2,1.05,
+            5,7,1.00,
+            0,2,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -6968,8 +6972,8 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
             obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
-            5,7,1.05,
-            0,2.5,1.05,
+            5,7,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -6978,8 +6982,8 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
             "0_general_hurt_semi_launched_mid",
             "air",
             "5_stand_idle",
-            5,7,1.05,
-            0,2,1.05,
+            5,7,1.00,
+            0,2,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -6987,8 +6991,8 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            5,7,1.05,
-            0,2.5,1.05,
+            5,7,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -7013,8 +7017,8 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
             obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            5,7,1.05,
-            -5,2.5,1.05,
+            5,7,1.00,
+            -5,2.5,1.00,
             nil,nil,nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
@@ -7022,8 +7026,8 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            32,5,1.05,
-            -5,2.5,1.05,
+            32,5,1.00,
+            -5,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -7253,8 +7257,8 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
             obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
-            8,5,1.05,
-            0,2.5,1.05,
+            8,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -7262,8 +7266,8 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
             obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
-            8,5,1.05,
-            0,2.5,1.05,
+            8,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -7271,8 +7275,8 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
             obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
-            8,5,1.05,
-            0,2.5,1.05,
+            8,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -7280,8 +7284,8 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            8,5,1.05,
-            0,2.5,1.05,
+            8,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -7306,8 +7310,8 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
             obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            4,5,1.05,
-            -30,2.5,1.05,
+            4,5,1.00,
+            -30,2.5,1.00,
             nil,nil,nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
@@ -7315,8 +7319,8 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            27,5,1.05,
-            -5,2.5,1.05,
+            27,5,1.00,
+            -5,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -7510,8 +7514,8 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
             obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
-            8,5,1.05,
-            0,2.5,1.05,
+            8,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -7519,8 +7523,8 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
             obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
-            8,5,1.05,
-            0,2.5,1.05,
+            8,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -7528,8 +7532,8 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
             obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
-            8,5,1.05,
-            0,2.5,1.05,
+            8,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -7537,8 +7541,8 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            8,5,1.05,
-            0,2.5,1.05,
+            8,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -7563,8 +7567,8 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
             obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            4,5,1.05,
-            -30,2.5,1.05,
+            4,5,1.00,
+            -30,2.5,1.00,
             nil,nil,nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
@@ -7572,8 +7576,8 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            27,5,1.05,
-            -5,2.5,1.05,
+            27,5,1.00,
+            -5,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -7760,8 +7764,8 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
             obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
-            16,5,1.05,
-            0,2.5,1.05,
+            16,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -7769,8 +7773,8 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
             obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
-            16,5,1.05,
-            0,2.5,1.05,
+            16,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -7778,8 +7782,8 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
             obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
-            16,5,1.05,
-            0,2.5,1.05,
+            16,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -7787,8 +7791,8 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            16,5,1.05,
-            0,2.5,1.05,
+            16,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -7813,8 +7817,8 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
             obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            4,5,1.05,
-            10,2.5,1.05,
+            4,5,1.00,
+            10,2.5,1.00,
             nil,nil,nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
@@ -7822,8 +7826,8 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            32,5,1.05,
-            -5,2.5,1.05,
+            32,5,1.00,
+            -5,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -8029,8 +8033,8 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
             obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
-            12,5,1.05,
-            0,2.5,1.05,
+            12,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -8038,8 +8042,8 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
             obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
-            12,5,1.05,
-            0,2.5,1.05,
+            12,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -8047,8 +8051,8 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
             obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
-            12,5,1.05,
-            0,2.5,1.05,
+            12,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -8056,8 +8060,8 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            12,5,1.05,
-            0,2.5,1.05,
+            12,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -8082,8 +8086,8 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
             obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            4,5,1.05,
-            -30,2.5,1.05,
+            4,5,1.00,
+            -30,2.5,1.00,
             nil,nil,nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
@@ -8091,8 +8095,8 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            16,5,1.05,
-            -5,2.5,1.05,
+            16,5,1.00,
+            -5,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -8291,8 +8295,8 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
             obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
-            2,5,1.05,
-            0,2.5,1.05,
+            2,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -8300,8 +8304,8 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
             obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
-            2,5,1.05,
-            0,2.5,1.05,
+            2,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -8309,8 +8313,8 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
             obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
-            2,5,1.05,
-            0,2.5,1.05,
+            2,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -8318,8 +8322,8 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            2,5,1.05,
-            0,2.5,1.05,
+            2,5,1.00,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -8344,8 +8348,8 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
             obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            2,5,1.05,
-            -30,2.5,1.05,
+            2,5,1.00,
+            -30,2.5,1.00,
             nil,nil,nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
@@ -8353,8 +8357,8 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            12,5,1.05,
-            -5,2.5,1.05,
+            12,5,1.00,
+            -5,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -9158,8 +9162,8 @@ end
 --         obj_char,
 --         "0_general_hurt_launched_high",
 --         "air","hurt",
---         4,5,1.05,
---         10,2.5,1.05,
+--         4,5,1.00,
+--         10,2.5,1.00,
 --         nil,nil,nil,
 --         load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
 --             obj_char,

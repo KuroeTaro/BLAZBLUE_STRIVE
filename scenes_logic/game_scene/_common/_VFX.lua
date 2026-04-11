@@ -253,7 +253,6 @@ function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r,fix_
         end
     end
     r = obj_char[5]*r
-
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
 
@@ -299,9 +298,7 @@ function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r,fix_
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
 
         love.graphics.setBlendMode("add")
-        love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
@@ -318,7 +315,6 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_
         end
     end
     r = obj_char[5]*r
-
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
 
@@ -362,9 +358,7 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
 
         love.graphics.setBlendMode("add")
-        love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
@@ -419,13 +413,8 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
 
         love.graphics.setBlendMode("add")
-        love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("alpha")
-        -- love.graphics.setColor(1,1,1,obj[4])
-        -- love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        -- love.graphics.setColor(1,1,1,1)
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
 end
@@ -441,7 +430,6 @@ function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,s
         end
     end
     r = obj_char[5]*r
-
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
 
@@ -491,9 +479,7 @@ function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,s
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
 
         love.graphics.setBlendMode("add")
-        love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
@@ -510,7 +496,6 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
         end
     end
     r = obj_char[5]*r
-
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
 
@@ -553,16 +538,8 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
 
-        -- love.graphics.setBlendMode("add")
-        -- love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        -- love.graphics.setBlendMode("alpha")
-        -- love.graphics.setColor(1,1,1,obj[4])
-        -- love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        -- love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("add")
-        love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
@@ -617,13 +594,8 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
 
         love.graphics.setBlendMode("add")
-        love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("alpha")
-        -- love.graphics.setColor(1,1,1,obj[4])
-        -- love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        -- love.graphics.setColor(1,1,1,1)
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
     
@@ -717,7 +689,6 @@ function insert_VFX_game_scene_char_block_ver0(obj_char)
     -- x y z opacity sx sy r f
     local obj = {0,0,0,1,1,1,0,0}
     local VFX_spawn_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["block_ver0_spawn_anchor_pos"][obj_char["sprite_sheet_state"]]
-    
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
 
@@ -749,8 +720,6 @@ function insert_VFX_game_scene_char_block_ver0(obj_char)
     obj["update"] = function()
         if obj_char["state"] == "blockstop" then
             -- do nothing
-        elseif obj_char["state"] == "hurtstop" then
-            obj["life"] = 0
         else
             obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
             obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
@@ -766,9 +735,7 @@ function insert_VFX_game_scene_char_block_ver0(obj_char)
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
 
-        love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
 end
@@ -776,7 +743,6 @@ function insert_VFX_game_scene_char_block_ver1(obj_char)
     -- x y z opacity sx sy r f
     local obj = {0,0,0,1,1,1,0,0}
     local VFX_spawn_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["block_ver1_spawn_anchor_pos"][obj_char["sprite_sheet_state"]]
-    
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
 
@@ -809,8 +775,6 @@ function insert_VFX_game_scene_char_block_ver1(obj_char)
     obj["update"] = function()
         if obj_char["state"] == "blockstop" then
             -- do nothing
-        elseif obj_char["state"] == "hurtstop" then
-            obj["life"] = 0
         else
             obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
             obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
@@ -825,10 +789,7 @@ function insert_VFX_game_scene_char_block_ver1(obj_char)
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_block_ver1
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
-
-        love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
 end
@@ -840,7 +801,6 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
     elseif obj_char["height_state"] == "stand" then
         VFX_spawn_anchor_pos = {-300,-540}
     end
-
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
 
@@ -897,11 +857,7 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_block_FD
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
-
-        love.graphics.setColor(1,1,1,1)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
-
         draw_3d_image(obj_camera,obj,image_VFX_game_scene_FD_bubble)
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
@@ -910,7 +866,6 @@ function insert_VFX_game_scene_char_throw_tech(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local obj = {0,0,0,1,1,1,0,0}
-    
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
 
@@ -937,7 +892,6 @@ function insert_VFX_game_scene_char_throw_tech(obj_char,x,y,opacity,sx,sy,r)
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_throw_tech
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
-
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
     table.insert(obj_char["VFX_hit_back_table"],obj)
@@ -1014,7 +968,6 @@ function insert_VFX_game_scene_stage_smoke_horizontal_shot(obj_char,x,y,opacity,
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_smoke_horizontal_shot
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
-
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
     table.insert(obj_char["VFX_back_table"],obj)
@@ -1075,9 +1028,7 @@ function insert_VFX_game_scene_stage_smoke_vertical_shot(obj_char,x,y,opacity,sx
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_smoke_vertical_shot
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
-        love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
     end
     table.insert(obj_char["VFX_back_table"],obj)
 end
@@ -1110,9 +1061,7 @@ function insert_VFX_game_scene_stage_4dash_air_backdash_shockwave(obj_char,x,y,o
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_air_dash_shockwave
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
-        love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
     end
     table.insert(obj_char["VFX_back_table"],obj)
 end
@@ -1148,9 +1097,7 @@ function insert_VFX_game_scene_stage_6dash_air_dash_shockwave(obj_char,x,y,opaci
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_air_dash_shockwave
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
-        love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
     end
     table.insert(obj_char["VFX_back_table"],obj)
 end
@@ -1357,12 +1304,6 @@ function insert_VFX_HUD_game_scene_counter_ver3(obj_char)
         obj[1] = obj["x"] - obj[5]*(600)
         obj[2] = obj["y"] - obj[6]*(200)
         obj["life"] = obj["life"] - 1
-        if(obj_char["state"] == "hurt" 
-        or obj_char["state"] == "hurtstop")
-        and obj_char["player_side"] == "R"
-        then
-            obj["life"] = 0
-        end
     end
     obj["draw"] = function()
         love.graphics.setBlendMode("add")

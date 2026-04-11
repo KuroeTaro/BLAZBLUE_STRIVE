@@ -124,7 +124,7 @@ local load_whiff_VFX_name_table = {
     "6S",
     "cS",
     -- "fS",
-    "5H_shot",
+    "5H_shot_oroboros_blast",
     "5H_switch",
     -- "2Launcher"
     -- "4_6Launcher",

@@ -52,10 +52,7 @@ function insert_VFX_game_scene_char_TRM_2P_whiff(obj_char)
         local obj_camera = obj_stage_game_scene_camera
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
-
-        love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
     end
     table.insert(obj_char["VFX_front_table"],obj)
 end
@@ -118,9 +115,7 @@ function insert_VFX_game_scene_char_TRM_6P_whiff(obj_char)
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
 
         love.graphics.setBlendMode("add")
-        love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_front_table"],obj)
@@ -179,10 +174,7 @@ function insert_VFX_game_scene_char_TRM_5P_whiff(obj_char)
         local obj_camera = obj_stage_game_scene_camera
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
-
-        love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
     end
     table.insert(obj_char["VFX_front_table"],obj)
 end
@@ -239,10 +231,7 @@ function insert_VFX_game_scene_char_TRM_2S_whiff(obj_char)
         local obj_camera = obj_stage_game_scene_camera
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
-
-        love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
     end
     table.insert(obj_char["VFX_front_table"],obj)
 end
@@ -305,9 +294,7 @@ function insert_VFX_game_scene_char_TRM_6S_whiff(obj_char)
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
 
         love.graphics.setBlendMode("add")
-        love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_front_table"],obj)
@@ -371,9 +358,7 @@ function insert_VFX_game_scene_char_TRM_cS_whiff(obj_char)
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
 
         love.graphics.setBlendMode("add")
-        love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_front_table"],obj)
@@ -430,7 +415,7 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_switch(obj_char)
         local obj_camera = obj_stage_game_scene_camera
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
-        love.graphics.setColor(5/255,5/255,5/255,obj[4])
+        love.graphics.setColor(5/255,5/255,5/255,1)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
     end
@@ -447,9 +432,9 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot(obj_char)
     local rot_dx = dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.cos(r) - dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.sin(r)
     local rot_dy = dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.sin(r) + dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.cos(r)
     if side == "L" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["5H_shot_whiff_VFX"]
+        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["5H_shot_oroboros_blast_whiff_VFX"]
     elseif side == "R" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["5H_shot_whiff_VFX"]
+        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["5H_shot_oroboros_blast_whiff_VFX"]
     end 
 
     obj["life"] = 21
@@ -487,9 +472,7 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot(obj_char)
         local obj_camera = obj_stage_game_scene_camera
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
-        love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
     end
     table.insert(obj_char["VFX_front_table"],obj)
 end
@@ -546,10 +529,7 @@ function insert_VFX_game_scene_char_TRM_5Launcher_whiff_slash(obj_char)
         local obj_camera = obj_stage_game_scene_camera
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
-
-        love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
     end
     table.insert(obj_char["VFX_front_table"],obj)
 end
@@ -609,9 +589,7 @@ function insert_VFX_game_scene_char_TRM_5Launcher_whiff_glow(obj_char)
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
 
         love.graphics.setBlendMode("add")
-        love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_front_table"],obj)
@@ -680,9 +658,7 @@ function insert_VFX_game_scene_char_TRM_jS_whiff(obj_char)
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
 
         love.graphics.setBlendMode("add")
-        love.graphics.setColor(1,1,1,obj[4])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_front_table"],obj)

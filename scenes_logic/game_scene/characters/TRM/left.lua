@@ -468,7 +468,7 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "6S",
                 "cS",
                 -- "fS",
-                "5H_shot",
+                "5H_shot_oroboros_blast",
                 "5H_switch",
                 -- "2Launcher"
                 -- "4_6Launcher",
@@ -1613,7 +1613,6 @@ function state_machine_char_game_scene_char_LP_shot_sys_reticle()
                 obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_unlocked"
                 obj_char["shot_sys_reticle_animation_table"][1] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(obj_char)
                 init_character_anim_without(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
-                character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(obj_char)
                 obj_char["shot_sys_reticle_state"] = "at_the_ready_ease_in"
                 return
             end
@@ -4822,7 +4821,7 @@ end
 function draw_game_scene_char_LP_projectile()
     for i = #obj_char_game_scene_char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
         local object = obj_char_game_scene_char_LP["projectile_table"][i]
-        object["draw"](object)
+        object["draw"]()
     end
 end
 
@@ -4867,27 +4866,27 @@ end
 function draw_game_scene_char_LP_VFX_HUD()
     for i = 1,#obj_char_game_scene_char_LP["VFX_HUD_table"],1 do -- 反向遍历，便于删除元素
         local object = obj_char_game_scene_char_LP["VFX_HUD_table"][i]
-        object["draw"](object)
+        object["draw"]()
     end
 end
 function draw_game_scene_char_LP_VFX_front()
     for i = 1,#obj_char_game_scene_char_LP["VFX_front_table"],1 do -- 反向遍历，便于删除元素
         local object = obj_char_game_scene_char_LP["VFX_front_table"][i]
-        object["draw"](object)
+        object["draw"]()
     end
     for i = 1,#obj_char_game_scene_char_LP["VFX_hit_front_table"],1 do -- 反向遍历，便于删除元素
         local object = obj_char_game_scene_char_LP["VFX_hit_front_table"][i]
-        object["draw"](object)
+        object["draw"]()
     end
 end
 function draw_game_scene_char_LP_VFX_back()
     for i = 1,#obj_char_game_scene_char_LP["VFX_back_table"],1 do -- 反向遍历，便于删除元素
         local object = obj_char_game_scene_char_LP["VFX_back_table"][i]
-        object["draw"](object)
+        object["draw"]()
     end
     for i = 1,#obj_char_game_scene_char_LP["VFX_hit_back_table"],1 do -- 反向遍历，便于删除元素
         local object = obj_char_game_scene_char_LP["VFX_hit_back_table"][i]
-        object["draw"](object)
+        object["draw"]()
     end
 end
 function update_game_scene_char_LP_black_overlay()
@@ -4902,7 +4901,7 @@ end
 function draw_game_scene_char_LP_black_overlay()
     for i = 1,#obj_char_game_scene_char_LP["black_overlay_table"],1 do -- 反向遍历，便于删除元素
         local object = obj_char_game_scene_char_LP["black_overlay_table"][i]
-        object["draw"](object)
+        object["draw"]()
     end
 end
 
