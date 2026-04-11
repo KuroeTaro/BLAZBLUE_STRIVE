@@ -721,6 +721,13 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local function oscillator_obj8()
+        if obj_char_other_side[8] == 3 then
+            obj_char_other_side[8] = 2
+        else
+            obj_char_other_side[8] = 3
+        end
+    end
     res["prop_f"] = "f"
     res["anim_length"] = 15
 
@@ -764,7 +771,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
         obj_char_other_side["collision_test_ground_height_offset"] = 0
         -- draw_correction
-        obj_char_other_side[8] = 0
+        oscillator_obj8()
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
@@ -779,17 +786,11 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         -- special_update
         frame_0_special_update_function()
     end
-    res[2] = function()
+    res[7] = function()
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][3]
         -- draw_correction
-        obj_char_other_side[8] = 3
-    end
-    res[9] = function()
-        -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][2]
-        -- draw_correction
-        obj_char_other_side[8] = 2
+        obj_char_other_side[8] = 1
     end
     res[10] = function()
         -- input_sys_cache
@@ -797,12 +798,6 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
     end
     res[11] = function()
-        -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
-        -- draw_correction
-        obj_char_other_side[8] = 1
-    end
-    res[13] = function()
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
         -- draw_correction

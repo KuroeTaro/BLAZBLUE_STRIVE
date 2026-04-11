@@ -455,7 +455,7 @@ function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_re
     local div_value = 32-math.min(obj_char_shot_sys_aim_process[1],obj_char_shot_sys_aim_process[3])/15
 
     local height_offset = {
-        [370] = 365,
+        [370] = 315,
         [285] = 200,
         [200] = 100,
         [130] = 100
@@ -482,7 +482,7 @@ function character_function_game_scene_TRM_shot_sys_reticle_pos_update_ease_in(o
     local div_value = 32-math.min(obj_char_shot_sys_aim_process[1],obj_char_shot_sys_aim_process[3])/15
 
     local height_offset = {
-        [370] = 365,
+        [370] = 315,
         [285] = 200,
         [200] = 100,
         [130] = 100
@@ -506,7 +506,7 @@ function character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(obj_cha
     local offset_multiplier = 200
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local height_offset = {
-        [370] = 365,
+        [370] = 315,
         [285] = 200,
         [200] = 100,
         [130] = 100

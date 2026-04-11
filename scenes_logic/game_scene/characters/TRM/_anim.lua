@@ -5019,15 +5019,15 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(obj_char)
         -- shot_sys
         obj_char["shot_sys_aim_process"][1] = 0
         character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
-        if obj_char["shot_sys_aim_process"][1] < obj_char["shot_sys_aim_process"][3] then
-            character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(obj_char)
-        end
     end
     res[6] = function()
         -- input_sys_cache
         obj_char["input_sys_state_negative_edge"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_negative_edge_init(obj_char["player_side"])(obj_char)
         -- shot_sys
+        if obj_char["shot_sys_aim_process"][1] < obj_char["shot_sys_aim_process"][3] then
+            character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(obj_char)
+        end
     end
     res[12] = function()
         -- input_sys_cache
