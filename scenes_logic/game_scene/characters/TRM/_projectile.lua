@@ -454,7 +454,6 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -740,7 +739,6 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 

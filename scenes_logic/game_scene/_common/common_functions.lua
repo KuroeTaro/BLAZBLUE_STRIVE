@@ -536,7 +536,6 @@ function common_game_scene_throw_hurt_function(obj_char)
     obj_char["startup_frame"] = 0
     obj_char["active_frame"] = 0
     obj_char["recovery_frame"] = 0
-    obj_char["frame_adv"] = 0
 
     obj_char["idle_cancel"] = false
 
@@ -554,8 +553,6 @@ function common_game_scene_throw_hurt_function(obj_char)
     obj_char["game_speed"] = 1
     obj_char["game_speed_subframe"] = 1
     obj_char["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
-
-    hit_side_obj_char["frame_adv"] = 0
 end
 
 function common_game_scene_create_wiggle_animation(length,prop,wiggle_amount)

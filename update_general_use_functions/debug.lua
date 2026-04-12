@@ -389,6 +389,15 @@ end
 function update_character_frame_info(obj_char)
     -- none startup active recovery
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    if obj_char["last_move_state"] == "none" and obj_char["move_state"] ~= "none" then
+        if obj_char_other_side["move_state"] == "none" then
+            obj_char_other_side["frame_adv"] = 1
+        else
+            obj_char_other_side["frame_adv"] = 0
+        end
+    end
+    obj_char["last_move_state"] = obj_char["move_state"]
+
     if obj_char["move_state"] == "none" and obj_char_other_side["move_state"] ~= "none" then
         obj_char["frame_adv"] = obj_char["frame_adv"] + 1
         return
@@ -397,10 +406,6 @@ function update_character_frame_info(obj_char)
         return
     end
 
-    -- obj_char["startup_frame"] = 0
-    -- obj_char["active_frame"] = 0
-    -- obj_char["recovery_frame"] = 0
-    -- obj_char["frame_adv"] = 0
     if obj_char["move_state"] == "startup" then
         obj_char["startup_frame"] = obj_char["startup_frame"] + 1
     end

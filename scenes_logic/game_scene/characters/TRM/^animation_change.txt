@@ -11,7 +11,6 @@ obj_char["move_state"]
 obj_char["startup_frame"] = 0
 obj_char["active_frame"] = 0
 obj_char["recovery_frame"] = 0
-obj_char["frame_adv"] = 0
 
 obj_char["strike_inv"] = false
 obj_char["strike_inv_countdown"] = 0
@@ -81,7 +80,6 @@ obj_char["move_state"]
 obj_char["startup_frame"] = 0
 obj_char["active_frame"] = 0
 obj_char["recovery_frame"] = 0
-obj_char["frame_adv"] = 0
 
 obj_char["hit_damage"] = 0
 obj_char["hit_heat_gain"] = 0

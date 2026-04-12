@@ -80,7 +80,6 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -249,7 +248,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -293,8 +291,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[2] = function()
         -- collide
@@ -360,7 +356,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -404,8 +399,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[2] = function()
         -- collide
@@ -477,7 +470,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -521,8 +513,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[2] = function()
         -- collide
@@ -600,7 +590,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -644,8 +633,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[2] = function()
         -- collide
@@ -723,7 +710,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -767,8 +753,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[2] = function()
         -- collide
@@ -881,7 +865,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -929,8 +912,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[3] = function()
         -- draw_correction
@@ -990,7 +971,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -1038,8 +1018,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[3] = function()
         -- draw_correction
@@ -1101,7 +1079,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -1149,8 +1126,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[3] = function()
         -- draw_correction
@@ -1214,7 +1189,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -1262,8 +1236,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[3] = function()
         -- draw_correction
@@ -1331,7 +1303,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -1379,8 +1350,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[3] = function()
         -- draw_correction
@@ -1478,7 +1447,6 @@ function load_game_scene_anim_char_common_0_air_block(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -1521,8 +1489,6 @@ function load_game_scene_anim_char_common_0_air_block(
         -- special_update
         frame_0_special_update_function()
         if obj_char_other_side["y"] > 125 then obj_char_other_side["y"] = 125 end
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[3] = function()
         -- draw_correction
@@ -1642,7 +1608,6 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         obj_char["startup_frame"] = 0
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
-        obj_char["frame_adv"] = 0
 
         obj_char["idle_cancel"] = false
 
@@ -1687,8 +1652,6 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
                 0.5,1,1,0
             )
         end
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[3] = function()
         -- state_number
@@ -1792,7 +1755,6 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
 
@@ -1834,8 +1796,6 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
         )
         -- special_update
         frame_0_special_update_function()
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[1] = function()
         -- state
@@ -1922,7 +1882,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -2044,7 +2003,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -2164,7 +2122,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -2292,7 +2249,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -3138,7 +3094,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["self_wallbounce_hurt_animation"] = self_wallbounce_hurt_animation
         obj_char_other_side["self_groundbounce_hurt_animation"] = self_groundbounce_hurt_animation
@@ -3182,8 +3137,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[1] = function()
         -- state
@@ -3367,7 +3320,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["self_wallbounce_hurt_animation"] = self_wallbounce_hurt_animation
         obj_char_other_side["self_groundbounce_hurt_animation"] = self_groundbounce_hurt_animation
@@ -3411,8 +3363,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[1] = function()
         -- state
@@ -3560,7 +3510,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["self_wallbounce_hurt_animation"] = self_wallbounce_hurt_animation
         obj_char_other_side["self_groundbounce_hurt_animation"] = self_groundbounce_hurt_animation
@@ -3604,8 +3553,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[1] = function()
         -- state
@@ -3693,7 +3640,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["self_wallbounce_hurt_animation"] = self_wallbounce_hurt_animation
         obj_char_other_side["self_groundbounce_hurt_animation"] = self_groundbounce_hurt_animation
@@ -3735,8 +3681,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[1] = function()
         -- state
@@ -3833,7 +3777,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["self_wallbounce_hurt_animation"] = self_wallbounce_hurt_animation
         obj_char_other_side["self_groundbounce_hurt_animation"] = self_groundbounce_hurt_animation
@@ -3877,8 +3820,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
         update_before_falling()
         -- special_update
         frame_0_special_update_function()
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[1] = function()
         -- state
@@ -3999,7 +3940,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["self_wallbounce_hurt_animation"] = self_wallbounce_hurt_animation
         obj_char_other_side["self_groundbounce_hurt_animation"] = self_groundbounce_hurt_animation
@@ -4043,8 +3983,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[1] = function()
         -- state
@@ -4151,7 +4089,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["self_wallbounce_hurt_animation"] = self_wallbounce_hurt_animation
         obj_char_other_side["self_groundbounce_hurt_animation"] = self_groundbounce_hurt_animation
@@ -4195,8 +4132,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[1] = function()
         -- state
@@ -4285,7 +4220,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["self_wallbounce_hurt_animation"] = self_wallbounce_hurt_animation
         obj_char_other_side["self_groundbounce_hurt_animation"] = self_groundbounce_hurt_animation
@@ -4427,7 +4361,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["self_wallbounce_hurt_animation"] = self_wallbounce_hurt_animation
         obj_char_other_side["self_groundbounce_hurt_animation"] = self_groundbounce_hurt_animation
@@ -4561,7 +4494,6 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
-        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -4598,8 +4530,6 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
         frame_0_special_update_function()
-        -- set_frame_adv
-        obj_char["frame_adv"] = 0
     end
     res[4] = function()
         -- collide

@@ -1106,6 +1106,37 @@ end
 function insert_VFX_game_scene_stage_wallbreaks(x,y,opacity,sx,sy,r)
 end
 
+-- burst
+function insert_VFX_game_scne_stage_dash_cancel_burst(x,y,opacity,sx,sy,r)
+    -- x y z opacity sx sy r f
+    local obj = {0,0,0,1,1,1,0,0}
+    obj["life"] = 20
+    obj[1] = obj_char["x"] + obj_char[5]*(x)
+    obj[2] = obj_char["y"] + obj_char[6]*(y)
+    obj[3] = obj_char[3]
+    obj[4] = opacity
+    obj[5] = obj_char[5]*sx
+    obj[6] = obj_char[6]*sy
+    obj[7] = r
+    obj[8] = 0
+    obj["f"] = 0
+    obj["update"] = function()
+        obj["f"] = obj["f"] + 1
+        if obj["f"] >= 2 then
+            obj[8] = math.min(obj[8]+1,12)
+            obj["f"] = 0
+        end
+        obj["life"] = obj["life"] - 1
+    end
+    obj["draw"] = function()
+        local obj_camera = obj_stage_game_scene_camera
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_dcc_burst
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+    end
+    table.insert(obj_char["VFX_back_table"],obj)
+end
 -- GP
 function insert_VFX_game_scene_char_GP(obj_char)
     -- x y z opacity sx sy r f

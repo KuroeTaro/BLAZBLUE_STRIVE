@@ -253,7 +253,7 @@ function update_game_scene_main_training()
 
                     -- 飞行道具更新位置 1/10
                     for i = 1,#char_RP["projectile_table"] do
-                        local current_projectile = char_LP["projectile_table"][i]
+                        local current_projectile = char_RP["projectile_table"][i]
                         current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(16*char_RP["game_speed"])
                         current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(16*char_RP["game_speed"])
                     end
