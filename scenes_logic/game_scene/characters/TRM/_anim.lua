@@ -1096,7 +1096,7 @@ end
             -- anchor_pos
         -- 对方
             -- frame_adv
-function load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
+function load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
     local res = {}
     res["prop_f"] = "f"
     res["anim_length"] = 30
@@ -1263,7 +1263,7 @@ end
             -- anchor_pos
         -- 对方
             -- frame_adv
-function load_game_scene_anim_char_TRM_4dash_air_backdash(input,obj_char)
+function load_game_scene_anim_char_TRM_4dash_air_backdash(obj_char)
     local res = {}
     res["prop_f"] = "f"
     res["anim_length"] = 11
@@ -1389,7 +1389,7 @@ end
             -- anchor_pos
         -- 对方
             ------
-function load_game_scene_anim_char_TRM_6dash_dash(input,obj_char)
+function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
     local dash_acceleration = 0.4
     local res = {}
     local function update_horizontal_velocity()
@@ -1551,7 +1551,7 @@ end
             -- anchor_pos
         -- 对方
             -- frame_adv
-function load_game_scene_anim_char_TRM_6dash_air_dash(input,obj_char)
+function load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
     local res = {}
     res["prop_f"] = "f"
     res["anim_length"] = 24
@@ -1680,30 +1680,29 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(input,obj_char)
     end
     return res
 end
-function load_game_scene_anim_char_TRM_6dash_dash_cancel(input,obj_char)
-    local dash_acceleration = 0.4
+function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
+    local dash_acceleration = 0.9
     local res = {}
-    local function update_horizontal_velocity_and_dash_cancel_countdown()
+    local function update_horizontal_velocity()
         obj_char["velocity"] = {
             obj_char[5]*dash_acceleration+obj_char["velocity"][1],0
         }
-        obj_char["dash_cancel_coundown"] = obj_char["dash_cancel_coundown"] - 1
     end
     res["prop_f"] = "f"
-    res["anim_length"] = 37
+    res["anim_length"] = 26
 
-    for i = 0,36 do
+    for i = 0,26 do
         res[i] = function()
             -- state_number
-            update_horizontal_velocity_and_dash_cancel_countdown()
+            update_horizontal_velocity()
         end
     end
     res[0] = function()
         -- state
-        obj_char["sprite_sheet_state"] = "6dash_dash_cancle"
+        obj_char["sprite_sheet_state"] = "6dash_dash"
         obj_char["height_state"] = "stand" -- stand crouch air OTG
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
-        obj_char["move_state"] = "none" -- none startup active recovery
+        obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["startup_frame"] = 0
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
@@ -1723,17 +1722,13 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(input,obj_char)
         obj_char["collision_test_ground_height_offset"] = 0
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {60,-350}
-        -- dash_cancel_countdown
-        obj_char["dash_cancel_coundown"] = 120
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {288,510}
         -- insert_VFX
-        insert_VFX_game_scne_stage_dash_cancel_burst(0,0,1,1,1,0)
+        insert_VFX_game_scne_stage_dash_cancel_burst(obj_char,-850,-175,1,1,1,0)
     end
     res[4] = function()
-        -- state
-        obj_char["idle_cancel"] = false
         -- state_number
         update_horizontal_velocity()
         -- collide
@@ -1784,33 +1779,7 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(input,obj_char)
         -- VFX
         insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,-1800,-600,0.5,1,1,0)
     end
-    res[28] = function()
-        -- state_number
-        update_horizontal_velocity()
-        -- draw_correction
-        obj_char[8] = 7
-        -- VFX
-        insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,-1800,-600,0.5,1,1,0)
-    end
-    res[32] = function()
-        -- state_number
-        update_horizontal_velocity()
-        -- draw_correction
-        obj_char[8] = 8
-        -- VFX
-        insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,-1800,-600,0.5,1,1,0)
-    end
-    res[36] = function()
-        -- state
-        obj_char["f"] = 4
-        -- state_number
-        update_horizontal_velocity()
-        -- draw_correction
-        obj_char[8] = 1
-        -- VFX
-        insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,-1800,-600,0.5,1,1,0)
-    end
-    res[37] = function()
+    res[26] = function()
         -- animation_end
     end
     return res
@@ -5487,7 +5456,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
         update_oroboros_r(obj_char,10)
         obj_char["shot_sys_oroboros_mid"][8] = 1
         -- VFX
-        insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot(obj_char)
+        insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot_oroboros_blast(obj_char)
     end
     res[3] = function()
         -- oroboros

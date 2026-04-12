@@ -395,6 +395,7 @@ function update_character_frame_info(obj_char)
         else
             obj_char_other_side["frame_adv"] = 0
         end
+        obj_char["frame_adv"] = 0
     end
     obj_char["last_move_state"] = obj_char["move_state"]
 

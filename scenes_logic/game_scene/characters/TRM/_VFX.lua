@@ -421,7 +421,7 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_switch(obj_char)
     end
     table.insert(obj_char["VFX_back_table"],obj)
 end
-function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot(obj_char)
+function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot_oroboros_blast(obj_char)
     -- x y z opacity sx sy r f
     local obj = {0,0,0,1,1,1,0,0}
     local image_sprite_sheet = nil
@@ -441,7 +441,7 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot(obj_char)
     obj[1] = obj_char["shot_sys_oroboros_ease_current"][1] + rot_dx
     obj[2] = obj_char["shot_sys_oroboros_ease_current"][2] + rot_dy
     obj[3] = obj_char[3]
-    obj[4] = 1
+    obj[4] = 0.65
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = r

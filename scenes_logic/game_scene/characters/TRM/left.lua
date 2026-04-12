@@ -162,9 +162,6 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["counter_SFX"] = nil
     obj_char_game_scene_char_LP["block_VFX_insert_function"] = nil
     obj_char_game_scene_char_LP["block_SFX"] = nil
-
-    -- dash_cancel_coundown
-    obj_char_game_scene_char_LP["dash_cancel_coundown"] = 0
     
     -- 5H_shot_sys
     obj_char_game_scene_char_LP["shot_sys_state"] = "off"
@@ -1757,7 +1754,7 @@ end
 function state_gate_game_scene_char_LP_common_ground_to_dash_move(input,obj_char)
     -- _4dash_backdash
     if obj_char["direction_input"] == 4 and test_input_sys_press(input["dash"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "4dash_backdash"
         return true
@@ -1766,7 +1763,7 @@ function state_gate_game_scene_char_LP_common_ground_to_dash_move(input,obj_char
     if (obj_char["direction_input"] == 5 or obj_char["direction_input"] == 6) 
     and test_input_sys_press(input["dash"]) 
     and obj_char["state"] ~= "6dash_dash" then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(input,obj_char)
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "6dash_dash"
         return true
@@ -1776,7 +1773,7 @@ end
 function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char)
     -- _4dash_backdash
     if obj_char["direction_input"] == 4 and test_input_sys_press_or_hold(input["dash"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "4dash_backdash"
         return true
@@ -1785,7 +1782,7 @@ function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(i
     if (obj_char["direction_input"] == 5 or obj_char["direction_input"] == 6) 
     and test_input_sys_press_or_hold(input["dash"]) 
     and obj_char["state"] ~= "6dash_dash" then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(input,obj_char)
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "6dash_dash"
         return true
@@ -1795,7 +1792,7 @@ end
 function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char)
     -- _4dash_backdash
     if obj_char["direction_input"] == 4 and test_input_sys_press(input["dash"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "4dash_backdash"
         return true
@@ -1804,7 +1801,7 @@ function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash
     if (obj_char["direction_input"] == 5 or obj_char["direction_input"] == 6) 
     and test_input_sys_press_or_hold(input["dash"]) 
     and obj_char["state"] ~= "6dash_dash" then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(input,obj_char)
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "6dash_dash"
         return true
@@ -1816,7 +1813,7 @@ function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_4dash
     if (obj_char["direction_input"] == 5 or obj_char["direction_input"] == 6) 
     and test_input_sys_press_or_hold(input["dash"]) 
     and obj_char["state"] ~= "6dash_dash" then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(input,obj_char)
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "6dash_dash"
         return true
@@ -2127,7 +2124,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move(input,obj_char)
     and test_input_sys_press(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
         obj_char["air_move"]["jump"][1] = 0
         obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_air_backdash(input,obj_char)
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_air_backdash(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "4dash_air_backdash"
         return true
@@ -2137,7 +2134,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move(input,obj_char)
     and test_input_sys_press(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
         obj_char["air_move"]["jump"][1] = 0
         obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_air_dash(input,obj_char)
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "6dash_air_dash"
         return true
@@ -2149,7 +2146,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(inpu
     and test_input_sys_press_or_hold(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
         obj_char["air_move"]["jump"][1] = 0
         obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_air_backdash(input,obj_char)
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_air_backdash(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "4dash_air_backdash"
         return true
@@ -2159,7 +2156,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(inpu
     and test_input_sys_press_or_hold(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
         obj_char["air_move"]["jump"][1] = 0
         obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_air_dash(input,obj_char)
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "6dash_air_dash"
         return true
@@ -2171,7 +2168,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_4dash_on
     and test_input_sys_press_or_hold(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
         obj_char["air_move"]["jump"][1] = 0
         obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_air_backdash(input,obj_char)
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_air_backdash(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "4dash_air_backdash"
         return true
@@ -2181,7 +2178,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_4dash_on
     and test_input_sys_press(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
         obj_char["air_move"]["jump"][1] = 0
         obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_air_dash(input,obj_char)
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "6dash_air_dash"
         return true
@@ -3541,7 +3538,7 @@ function state_gate_game_scene_char_LP_from_6dash_dash(input,obj_char)
     end
     -- _common_ground_idle_to_move
     if obj_char["direction_input"] == 4 and test_input_sys_press(input["dash"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(input,obj_char)
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "4dash_backdash"
         return true
@@ -3615,11 +3612,10 @@ function state_gate_game_scene_char_LP_from_6dash_dash_cancel(input,obj_char)
         end
     end
     -- _5_stand_dash_skid
-    if obj_char["dash_cancel_coundown"] <= 0 then
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "5_stand_dash_skid"
-        obj_char["dash_cancel_coundown"] = 0
         state_gate_game_scene_char_LP_from_5_stand_dash_skid(input,obj_char)
         return true
     end
@@ -4102,6 +4098,16 @@ function state_gate_game_scene_char_LP_from_5K(input,obj_char)
             obj_char["state"] = "5Launcher"
             return true
         end
+        -- _6dash_dash_cancel
+        if test_input_sys_press(input["dash"]) and obj_char["f"] < 8 then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
+            init_character_anim_with(obj_char,obj_char["character_animation"])
+            obj_char["state"] = "6dash_dash_cancel"
+            return true
+        end
         -- _7_8_9_pre_jump
         if common_game_scene_check_jump_direction(obj_char) then
             obj_char["direction_input_cache"] = obj_char["direction_input"]
@@ -4293,6 +4299,16 @@ function state_gate_game_scene_char_LP_from_cS(input,obj_char)
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_5Launcher(obj_char)
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "5Launcher"
+            return true
+        end
+        -- _6dash_dash_cancel
+        if test_input_sys_press(input["dash"]) and obj_char["f"] < 12 then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
+            init_character_anim_with(obj_char,obj_char["character_animation"])
+            obj_char["state"] = "6dash_dash_cancel"
             return true
         end
         -- _7_8_9_pre_jump
