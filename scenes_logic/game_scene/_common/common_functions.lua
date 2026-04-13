@@ -208,10 +208,10 @@ function common_game_scene_strike_hit_function(obj_char)
     hit_side_obj_char["strike_active"] = false
     hit_side_obj_char["hit_cancel"] = true
     -- stage_collide
-    if obj_char["x"] <= -1485 and hit_side_obj_char["x"] < -1430 and hit_side_obj_char[5] == -1 then
-        hit_side_obj_char["x"] = -1430
-    elseif obj_char["x"] >= 1485 and hit_side_obj_char["x"] > 1430 and hit_side_obj_char[5] == 1 then
-        hit_side_obj_char["x"] = 1430
+    if obj_char["x"] <= -1985 and hit_side_obj_char["x"] < -1930 and hit_side_obj_char[5] == -1 then
+        hit_side_obj_char["x"] = -1930
+    elseif obj_char["x"] >= 1985 and hit_side_obj_char["x"] > 1930 and hit_side_obj_char[5] == 1 then
+        hit_side_obj_char["x"] = 1930
     end
     -- physics_lock
     hit_side_obj_char["physics_lock"] = true
@@ -842,10 +842,9 @@ function common_game_scene_char_apply_hurt_velocity(
     else
         final_hurt_horizontal_velocity = common_game_scene_get_character_hurt_direction(obj_char,obj_char_other_side,hurt_horizontal_velocity)
     end
-    obj_char_other_side["gravity"] = hurt_vertical_gravity
-
     obj_char_other_side["gravity_correction"] 
     = obj_char_other_side["gravity_correction"]*hurt_vertical_gravity_correction
+    obj_char_other_side["gravity"] = hurt_vertical_gravity*obj_char_other_side["gravity_correction"] 
     obj_char_other_side["horizontal_velocity_correction"] 
     = obj_char_other_side["horizontal_velocity_correction"]*hurt_horizontal_velocity_correction
     if obj_char["x"] < obj_char_other_side["x"] then
@@ -893,19 +892,21 @@ function common_game_scene_char_apply_knockdown_velocity(
     hurt_vertical_gravity_correction
 )
     local final_hurt_horizontal_velocity = obj_char[5]*hurt_horizontal_velocity
-    obj_char_other_side["gravity"] = hurt_vertical_gravity
     obj_char_other_side["gravity_correction"] 
     = obj_char_other_side["gravity_correction"]*hurt_vertical_gravity_correction
+    obj_char_other_side["gravity"] = hurt_vertical_gravity*obj_char_other_side["gravity_correction"] 
+    obj_char_other_side["horizontal_velocity_correction"] 
+    = obj_char_other_side["horizontal_velocity_correction"]*hurt_horizontal_velocity_correction
     if obj_char["x"] < obj_char_other_side["x"] then
         obj_char_other_side["friction"] = hurt_horizontal_friction
         obj_char_other_side["velocity"] = {
-            final_hurt_horizontal_velocity,
+            final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"],
             hurt_vertical_velocity
         } -- 根据当前敌我x位置变化
     elseif obj_char["x"] > obj_char_other_side["x"] then
         obj_char_other_side["friction"] = hurt_horizontal_friction
         obj_char_other_side["velocity"] = {
-            final_hurt_horizontal_velocity,
+            -final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"],
             hurt_vertical_velocity
         } -- 根据当前敌我x位置变化
     else
@@ -934,9 +935,9 @@ function common_game_scene_projectile_apply_hurt_velocity(
     elseif velocity_center == "projectile" then
         final_hurt_horizontal_velocity = common_game_scene_get_character_hurt_direction(projectile,obj_char_other_side,hurt_horizontal_velocity)
     end
-    obj_char_other_side["gravity"] = hurt_vertical_gravity
     obj_char_other_side["gravity_correction"] 
     = obj_char_other_side["gravity_correction"]*hurt_vertical_gravity_correction
+    obj_char_other_side["gravity"] = hurt_vertical_gravity*obj_char_other_side["gravity_correction"] 
     obj_char_other_side["horizontal_velocity_correction"] 
     = obj_char_other_side["horizontal_velocity_correction"]*hurt_horizontal_velocity_correction
     obj_char_other_side["friction"] = hurt_horizontal_friction
@@ -977,14 +978,14 @@ function common_game_scene_init_chars_trainning()
         obj_camera["3d_pos_x_target"] = 0
     elseif test_input_sys_press_or_hold(INPUT_SYS_CURRENT_COMMAND_STATE["L"]["left"]) then
         DEBUG_TRAINNING_SPAWN_POS = 0
-        obj_camera[1] = -850
-        obj_camera["3d_pos_x"] = -850
-        obj_camera["3d_pos_x_target"] = -850
+        obj_camera[1] = -1350
+        obj_camera["3d_pos_x"] = -1350
+        obj_camera["3d_pos_x_target"] = -1350
     elseif test_input_sys_press_or_hold(INPUT_SYS_CURRENT_COMMAND_STATE["L"]["right"]) then
         DEBUG_TRAINNING_SPAWN_POS = 2
-        obj_camera[1] = 850
-        obj_camera["3d_pos_x"] = 850
-        obj_camera["3d_pos_x_target"] = 850
+        obj_camera[1] = 1350
+        obj_camera["3d_pos_x"] = 1350
+        obj_camera["3d_pos_x_target"] = 1350
     end
     obj_char_game_scene_char_LP["x"] = DEBUG_TRAINNING_SPAWN_ARRAY[DEBUG_TRAINNING_SPAWN_POS][DEBUG_TRAINNING_SPAWN_SIDE][1]
     obj_char_game_scene_char_RP["x"] = DEBUG_TRAINNING_SPAWN_ARRAY[DEBUG_TRAINNING_SPAWN_POS][DEBUG_TRAINNING_SPAWN_SIDE][2]

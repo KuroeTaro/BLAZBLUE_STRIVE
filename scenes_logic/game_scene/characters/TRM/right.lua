@@ -1915,7 +1915,7 @@ function state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_ch
         return true
     end
     -- _cS
-    if test_input_sys_press(input["S"]) and collision_test_cS_distance_check(obj_char,320) then
+    if test_input_sys_press(input["S"]) and collision_test_cS_distance_check(obj_char,375) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -2061,7 +2061,7 @@ function state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(inp
         return true
     end
     -- _cS
-    if test_input_sys_press_or_hold(input["S"]) and collision_test_cS_distance_check(obj_char,350) then
+    if test_input_sys_press_or_hold(input["S"]) and collision_test_cS_distance_check(obj_char,375) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -2404,9 +2404,6 @@ function state_gate_game_scene_char_RP_from_hurt(input,obj_char)
     end
     -- until land
     if obj_char["height_state"] == "air" then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         if (obj_char["collision_move_available"][1] == 0 or obj_char["collision_move_available"][2] == 0) 
         and obj_char["self_wallbounce_hurt_animation"] ~= nil then
             obj_char["character_animation"] = obj_char["self_wallbounce_hurt_animation"]
@@ -3680,18 +3677,8 @@ function state_gate_game_scene_char_RP_from_2P(input,obj_char)
     end
     -- hit_cancel
     if obj_char["hit_cancel"] then
-        -- _5P
-        if test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
-                obj_char[5] = -obj_char[5]
-            end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_5P(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "5P"
-            return true
-        end
         -- _2P
-        if test_input_sys_press(input["P"]) then
+        if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["P"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end
@@ -3708,6 +3695,16 @@ function state_gate_game_scene_char_RP_from_2P(input,obj_char)
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_6P(obj_char)
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "6P"
+            return true
+        end
+        -- _5P
+        if test_input_sys_press(input["P"]) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["character_animation"] = load_game_scene_anim_char_TRM_5P(obj_char)
+            init_character_anim_with(obj_char,obj_char["character_animation"])
+            obj_char["state"] = "5P"
             return true
         end
         -- _6K
@@ -3824,18 +3821,8 @@ function state_gate_game_scene_char_RP_from_5P(input,obj_char)
     end
     -- hit_cancel
     if obj_char["hit_cancel"] then
-        -- _5P
-        if test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
-                obj_char[5] = -obj_char[5]
-            end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_5P(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "5P"
-            return true
-        end
         -- _2P
-        if test_input_sys_press(input["P"]) then
+        if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["P"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end
@@ -3852,6 +3839,16 @@ function state_gate_game_scene_char_RP_from_5P(input,obj_char)
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_6P(obj_char)
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "6P"
+            return true
+        end
+        -- _5P
+        if test_input_sys_press(input["P"]) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["character_animation"] = load_game_scene_anim_char_TRM_5P(obj_char)
+            init_character_anim_with(obj_char,obj_char["character_animation"])
+            obj_char["state"] = "5P"
             return true
         end
         -- _6K
