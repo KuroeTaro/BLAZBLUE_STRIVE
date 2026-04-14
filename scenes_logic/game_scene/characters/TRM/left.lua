@@ -4278,6 +4278,16 @@ function state_gate_game_scene_char_LP_from_cS(input,obj_char)
             obj_char["state"] = "6S"
             return true
         end
+        -- _fS
+        if test_input_sys_press(input["S"]) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["character_animation"] = load_game_scene_anim_char_TRM_fS(obj_char)
+            init_character_anim_with(obj_char,obj_char["character_animation"])
+            obj_char["state"] = "fS"
+            return true
+        end
         -- _2Launcher
         if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["Launcher"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then

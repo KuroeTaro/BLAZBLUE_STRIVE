@@ -244,7 +244,8 @@ end
 function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r,fix_pos,negative_side)
     -- x y z opacity sx sy r f
     local obj = {0,0,0,1,1,1,0,0}
-    local dx = math.abs(common_game_scene_change_character(obj_char["player_side"])["x"]-obj_char["x"])-220*sx
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local dx = math.abs(obj_char_other_side["x"]-obj_char["x"])-220*sx
     if not fix_pos then
         if negative_side then
             x = math.max(-dx,x)
@@ -255,6 +256,8 @@ function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r,fix_
     r = obj_char[5]*r
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
+    obj_char_other_side["VFX_hit_front_table"] = {}
+    obj_char_other_side["VFX_hit_back_table"] = {}
 
     obj["life"] = 11
     obj[1] = obj_char["x"] + obj_char[5]*(x)
@@ -306,7 +309,8 @@ end
 function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_pos,negative_side)
     -- x y z opacity sx sy r f
     local obj = {0,0,0,1,1,1,0,0}
-    local dx = math.abs(common_game_scene_change_character(obj_char["player_side"])["x"]-obj_char["x"])-310*sx
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local dx = math.abs(obj_char_other_side["x"]-obj_char["x"])-310*sx
     if not fix_pos then
         if negative_side then
             x = math.max(-dx,x)
@@ -317,6 +321,8 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_
     r = obj_char[5]*r
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
+    obj_char_other_side["VFX_hit_front_table"] = {}
+    obj_char_other_side["VFX_hit_back_table"] = {}
 
     obj["life"] = 21
     obj[1] = obj_char["x"] + obj_char[5]*(x)
@@ -421,7 +427,8 @@ end
 function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,sy,r,fix_pos,negative_side)
     -- x y z opacity sx sy r f
     local obj = {0,0,0,1,1,1,0,0}
-    local dx = math.abs(common_game_scene_change_character(obj_char["player_side"])["x"]-obj_char["x"])-185*sx
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local dx = math.abs(obj_char_other_side["x"]-obj_char["x"])-185*sx
     if not fix_pos then
         if negative_side then
             x = math.max(-dx,x)
@@ -432,6 +439,8 @@ function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,s
     r = obj_char[5]*r
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
+    obj_char_other_side["VFX_hit_front_table"] = {}
+    obj_char_other_side["VFX_hit_back_table"] = {}
 
     obj["life"] = 27
     obj[1] = obj_char["x"] + obj_char[5]*(x)
@@ -487,7 +496,8 @@ end
 function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_pos,negative_side)
     -- x y z opacity sx sy r f
     local obj = {0,0,0,1,1,1,0,0}
-    local dx = math.abs(common_game_scene_change_character(obj_char["player_side"])["x"]-obj_char["x"])-310*sx
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local dx = math.abs(obj_char_other_side["x"]-obj_char["x"])-310*sx
     if not fix_pos then
         if negative_side then
             x = math.max(-dx,x)
@@ -498,6 +508,8 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     r = obj_char[5]*r
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
+    obj_char_other_side["VFX_hit_front_table"] = {}
+    obj_char_other_side["VFX_hit_back_table"] = {}
 
     obj["life"] = 21
     obj[1] = obj_char["x"] + obj_char[5]*(x)
@@ -868,6 +880,8 @@ function insert_VFX_game_scene_char_throw_tech(obj_char,x,y,opacity,sx,sy,r)
     local obj = {0,0,0,1,1,1,0,0}
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
+    obj_char_other_side["VFX_hit_front_table"] = {}
+    obj_char_other_side["VFX_hit_back_table"] = {}
 
     obj["life"] = 20
     obj[1] = (obj_char["x"] + obj_char_other_side["x"])/2 + obj_char[5]*(x)

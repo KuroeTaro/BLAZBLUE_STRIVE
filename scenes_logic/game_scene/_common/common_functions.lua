@@ -897,18 +897,12 @@ function common_game_scene_char_apply_knockdown_velocity(
     obj_char_other_side["gravity"] = hurt_vertical_gravity*obj_char_other_side["gravity_correction"] 
     obj_char_other_side["horizontal_velocity_correction"] 
     = obj_char_other_side["horizontal_velocity_correction"]*hurt_horizontal_velocity_correction
-    if obj_char["x"] < obj_char_other_side["x"] then
+    if obj_char["x"] ~= obj_char_other_side["x"] then
         obj_char_other_side["friction"] = hurt_horizontal_friction
         obj_char_other_side["velocity"] = {
             final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"],
             hurt_vertical_velocity
-        } -- 根据当前敌我x位置变化
-    elseif obj_char["x"] > obj_char_other_side["x"] then
-        obj_char_other_side["friction"] = hurt_horizontal_friction
-        obj_char_other_side["velocity"] = {
-            -final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"],
-            hurt_vertical_velocity
-        } -- 根据当前敌我x位置变化
+        }
     else
         obj_char_other_side["velocity"] ={0,hurt_vertical_velocity}
         -- 根据当前敌我x位置变化
