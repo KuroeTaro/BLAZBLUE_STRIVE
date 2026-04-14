@@ -1368,9 +1368,13 @@ function state_machine_char_game_scene_char_LP_shot_sys()
         ["at_the_ready"] = function()
             character_function_game_scene_TRM_shot_sys_at_the_ready_update(obj_char)
             if test_input_idle_to_ease_out or test_shot_sys_ban_state then
+                obj_char["input_sys_cache_negative_edge"]["HS"] = false
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready_ease_out"
                 return
+            end
+            if test_input_sys_release(input["HS"]) and obj_char["state"] == "hitstop" then
+                obj_char["input_sys_cache_negative_edge"]["HS"] = true
             end
             if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
@@ -2621,6 +2625,8 @@ function state_gate_game_scene_char_LP_from_hitstop(input,obj_char)
         -- input_sys_cache
         obj_char["input_sys_state"] = "load" -- none save load
         state_machine_char_game_scene_char_LP_input_sys_cache()
+        obj_char["input_sys_state_negative_edge"] = "load" -- none save load
+        state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
         -- _overdrive
         if state_gate_game_scene_char_LP_common_burst_overdrive(input,obj_char,"overdrive") then
             return true
