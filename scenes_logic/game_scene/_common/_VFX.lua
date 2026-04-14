@@ -371,8 +371,8 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_
 
     -- air_blow
     local obj = {0,0,0,1,1,1,0,0}
-    local dx = -100
-    local dy = -200
+    local dx = -50*sx
+    local dy = -200*sy
     local rot_dx = dx * obj_char[5] * math.cos(r) - dy * obj_char[6] * math.sin(r)
     local rot_dy = dx * obj_char[5] * math.sin(r) + dy * obj_char[6] * math.cos(r)
     obj["life"] = 16
@@ -558,8 +558,8 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
 
     -- air_blow
     local obj = {0,0,0,1,1,1,0,0}
-    local dx = -100
-    local dy = -200
+    local dx = -50*sx
+    local dy = -200*sy
     local rot_dx = dx * obj_char[5] * math.cos(r) - dy * obj_char[6] * math.sin(r)
     local rot_dy = dx * obj_char[5] * math.sin(r) + dy * obj_char[6] * math.cos(r)
     obj["life"] = 16
@@ -613,8 +613,8 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     
     -- counter_glow
     local obj = {0,0,0,1,1,1,0,0}
-    local dx = 45
-    local dy = 30
+    local dx = 45*sx
+    local dy = 30*sy
     local rot_dx = dx * obj_char[5] * math.cos(r) - dy * obj_char[6] * math.sin(r)
     local rot_dy = dx * obj_char[5] * math.sin(r) + dy * obj_char[6] * math.cos(r)
     obj["life"] = 5
