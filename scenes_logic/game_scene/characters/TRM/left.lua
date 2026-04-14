@@ -768,7 +768,7 @@ function load_game_scene_box_anchor_data_LP()
     obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["smoke_spawn_anchor_pos"]["0_general_hurt_soft_recovery_ground"][1] = {-335,-160}
 
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_soft_recovery_wallstick_air"] = {}
-    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_soft_recovery_wallstick_air"][0] = nil
+    obj_pushboxs_data_game_scene_char_LP["0_general_hurt_soft_recovery_wallstick_air"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_soft_recovery_wallstick_air"] = {}
     obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_soft_recovery_wallstick_air"][0] = {}
     obj_anchor_data_game_scene_char_LP["0_general_hurt_soft_recovery_wallstick_air"] = {340,410}
@@ -905,8 +905,8 @@ function update_game_scene_char_LP()
 end
 function update_game_scene_char_LP_attachment()
     state_machine_char_game_scene_char_LP_shot_sys()
-    state_machine_char_game_scene_char_LP_shot_sys_oroboros()
     state_machine_char_game_scene_char_LP_shot_sys_reticle()
+    state_machine_char_game_scene_char_LP_shot_sys_oroboros()
 end
 function state_machine_char_game_scene_char_LP()
     -- 拉后最高优先级 然后是拉下 然后是拉前 然后是跳

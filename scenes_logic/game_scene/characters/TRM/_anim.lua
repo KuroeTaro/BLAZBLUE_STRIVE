@@ -5425,29 +5425,19 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     local obj_camera = obj_stage_game_scene_camera
     local obj_char_other_side = common_game_scene_change_character(side)
     local oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
-    local obj_char_other_side_pos = {}
+    local rectile_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1]+160,obj_char["shot_sys_reticle_stage_pos_current"][2]+160}
     local r = 0
     local function update_oroboros_r(obj_char,i)
         -- local_value
         oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
-        if obj_char_other_side["pushbox"][4] ~= nil then
-            obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]-obj_char_other_side["pushbox"][4]}
-        else
-            obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]-285}
-        end
-        r = math.atan2((obj_char_other_side_pos[2]-oroboros_pos[2]),obj_char[5]*(obj_char_other_side_pos[1]-oroboros_pos[1]))
+        rectile_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1]+160,obj_char["shot_sys_reticle_stage_pos_current"][2]+160}
+        r = math.atan2((rectile_pos[2]-oroboros_pos[2]),obj_char[5]*(rectile_pos[1]-oroboros_pos[1]))
         obj_char["shot_sys_oroboros_aim_r"] = r*(27-i)/17 + 0.42*(1-(27-i)/17)
     end
-    local height_offset = {
-        ["stand"] = 250,
-        ["crouch"] = 200,
-        ["air"] = 100,
-        ["OTG"] = 100
-    }
     res["prop_f"] = "shot_sys_oroboros_f"
     res["anim_length"] = 28
-    obj_char_other_side_pos = {obj_char_other_side["x"],obj_char_other_side["y"]-height_offset[obj_char_other_side["height_state"]]}
-    r = math.atan2((obj_char_other_side_pos[2]-oroboros_pos[2]),obj_char[5]*(obj_char_other_side_pos[1]-oroboros_pos[1]))
+    rectile_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1]+160,obj_char["shot_sys_reticle_stage_pos_current"][2]+160}
+    r = math.atan2((rectile_pos[2]-oroboros_pos[2]),obj_char[5]*(rectile_pos[1]-oroboros_pos[1]))
     
     res[0] = function()
         -- oroboros
