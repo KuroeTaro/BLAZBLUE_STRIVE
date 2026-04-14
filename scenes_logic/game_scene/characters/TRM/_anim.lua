@@ -3391,8 +3391,8 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         obj_char["strike_active"] = true 
         obj_char["velocity"] = {obj_char[5]*(20+velocity_cache),0}
         -- collide
-        obj_char["hitbox_table"] = {{100,-180,120,250},{180,-140,40,170}}
-        obj_char["hurtbox_table"] = {{-15,-215,200,430},{130,-375,90,110},{100,-180,150,280},{180,-140,70,200}}
+        obj_char["hitbox_table"] = {{110,-180,100,250},{180,-140,40,170}}
+        obj_char["hurtbox_table"] = {{-15,-215,200,430},{130,-375,90,110},{110,-180,130,280},{180,-140,70,200}}
         -- SFX
         -- play_obj_audio(SFX_table["5P"])
         -- oroboros

@@ -323,7 +323,7 @@ function character_function_game_scene_TRM_j2K_apply_hurt_velocity(
 end
 
 -- cancel_function
-function character_function_game_scene_TRM_hitstop_jump_cancel(
+function character_function_game_scene_TRM_hitstop_air_jump_cancel(
     input,obj_char,
     v1,v2,v3,v4,v5,v6,v7,v8,v9
 )
@@ -351,6 +351,20 @@ function character_function_game_scene_TRM_hitstop_jump_cancel(
     load_input_sys_cache_manual_release(input,obj_char,"up")
     load_input_sys_cache_recache(input,obj_char)
     obj_char["input_sys_state"] = "save" -- none save load
+end
+function character_function_game_scene_TRM_histop_ground_jump_cancel(input,obj_char)
+    local down_cache = input["down"]
+    input["down"] = false
+    if not common_game_scene_get_character_facing_currect(obj_char) then
+        obj_char[5] = -obj_char[5]
+    end
+    common_update_game_scene_input_direction(obj_char)
+    input["down"] = down_cache
+    obj_char["direction_input_cache"] = obj_char["direction_input"]
+    common_update_game_scene_input_direction(obj_char)
+    obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
+    init_character_anim_with(obj_char,obj_char["character_animation"])
+    obj_char["state"] = "7_8_9_pre_jump"
 end
 function character_function_game_scene_TRM_hitstop_dash_cancel(
     input,obj_char,

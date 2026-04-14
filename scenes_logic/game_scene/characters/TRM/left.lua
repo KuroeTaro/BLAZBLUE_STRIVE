@@ -36,6 +36,7 @@ function load_game_scene_obj_char_LP()
     -- input
     obj_char_game_scene_char_LP["direction_input"] = 5
     obj_char_game_scene_char_LP["direction_input_cache"] = 5
+    obj_char_game_scene_char_LP["hit_jump_use_direction_input_cache"] = 5
     obj_char_game_scene_char_LP["SP_intput_dealy_countdown"] = 0
     obj_char_game_scene_char_LP["startup_frame"] = 0
     obj_char_game_scene_char_LP["active_frame"] = 0
@@ -47,6 +48,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["input_sys_cache"] = {}
     obj_char_game_scene_char_LP["input_sys_state_negative_edge"] = "none"
     obj_char_game_scene_char_LP["input_sys_cache_negative_edge"] = {}
+    obj_char_game_scene_char_LP["input_sys_cache_hit_jump_cancel"] = {}
     init_input_sys_cache_LP(obj_char_game_scene_char_LP)
     init_input_sys_cache_negative_edge_LP(obj_char_game_scene_char_LP)
 
@@ -1341,7 +1343,10 @@ function state_machine_char_game_scene_char_LP_shot_sys()
                 obj_char["shot_sys_state"] = "at_the_ready_ease_out"
                 return
             end
-            if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) then
+            if test_input_sys_release(input["HS"]) and obj_char["state"] == "hitstop" then
+                obj_char["input_sys_cache_negative_edge"]["HS"] = true
+            end
+            if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) and obj_char["state"] ~= "hitstop" then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return
@@ -1376,7 +1381,7 @@ function state_machine_char_game_scene_char_LP_shot_sys()
             if test_input_sys_release(input["HS"]) and obj_char["state"] == "hitstop" then
                 obj_char["input_sys_cache_negative_edge"]["HS"] = true
             end
-            if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) then
+            if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) and obj_char["state"] ~= "hitstop" then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return
@@ -1389,7 +1394,7 @@ function state_machine_char_game_scene_char_LP_shot_sys()
                 obj_char["shot_sys_state"] = "at_the_ready_ease_out"
                 return
             end
-            if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) then
+            if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) and obj_char["state"] ~= "hitstop" then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return
@@ -1419,7 +1424,10 @@ function state_machine_char_game_scene_char_LP_shot_sys()
                 obj_char["shot_sys_state"] = "at_the_ready_ease_out"
                 return
             end
-            if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) then
+            if test_input_sys_release(input["HS"]) and obj_char["state"] == "hitstop" then
+                obj_char["input_sys_cache_negative_edge"]["HS"] = true
+            end
+            if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) and obj_char["state"] ~= "hitstop" then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return
@@ -1775,6 +1783,11 @@ function state_gate_game_scene_char_LP_common_ground_to_dash_move(input,obj_char
     return false
 end
 function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char)
+    -- direction_input
+    if not common_game_scene_get_character_facing_currect(obj_char) and test_input_sys_press_or_hold(input["dash"]) then
+        obj_char[5] = -obj_char[5]
+        common_update_game_scene_input_direction(obj_char)
+    end
     -- _4dash_backdash
     if obj_char["direction_input"] == 4 and test_input_sys_press_or_hold(input["dash"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
@@ -1794,6 +1807,11 @@ function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(i
     return false
 end
 function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char)
+    -- direction_input
+    if not common_game_scene_get_character_facing_currect(obj_char) and test_input_sys_press_or_hold(input["dash"]) then
+        obj_char[5] = -obj_char[5]
+        common_update_game_scene_input_direction(obj_char)
+    end
     -- _4dash_backdash
     if obj_char["direction_input"] == 4 and test_input_sys_press(input["dash"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
@@ -1813,6 +1831,11 @@ function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash
     return false
 end
 function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_4dash_to_walk(input,obj_char)
+    -- direction_input
+    if not common_game_scene_get_character_facing_currect(obj_char) and test_input_sys_press_or_hold(input["dash"]) then
+        obj_char[5] = -obj_char[5]
+        common_update_game_scene_input_direction(obj_char)
+    end
     -- _6dash_dash
     if (obj_char["direction_input"] == 5 or obj_char["direction_input"] == 6) 
     and test_input_sys_press_or_hold(input["dash"]) 
@@ -2613,7 +2636,7 @@ end
 
 function state_gate_game_scene_char_LP_from_hitstop(input,obj_char)
     -- _[any_sp_hit_state_saved_in_state_cache]
-    if obj_char["hit_hurt_blockstop_countdown"] <= 6 then
+    if obj_char["hit_hurt_blockstop_countdown"] <= 10 then
         if test_input_sys_press_or_hold(input["down"]) then
             obj_char["input_sys_cache"]["down"] = true
         end
@@ -2625,8 +2648,6 @@ function state_gate_game_scene_char_LP_from_hitstop(input,obj_char)
         -- input_sys_cache
         obj_char["input_sys_state"] = "load" -- none save load
         state_machine_char_game_scene_char_LP_input_sys_cache()
-        obj_char["input_sys_state_negative_edge"] = "load" -- none save load
-        state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
         -- _overdrive
         if state_gate_game_scene_char_LP_common_burst_overdrive(input,obj_char,"overdrive") then
             return true
@@ -4112,11 +4133,8 @@ function state_gate_game_scene_char_LP_from_5K(input,obj_char)
             return true
         end
         -- _7_8_9_pre_jump
-        if common_game_scene_check_jump_direction(obj_char) then
-            obj_char["direction_input_cache"] = obj_char["direction_input"]
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "7_8_9_pre_jump"
+        if test_input_sys_press(input["up"]) then
+            character_function_game_scene_TRM_histop_ground_jump_cancel(input,obj_char)
             return true
         end
     end
@@ -4325,11 +4343,8 @@ function state_gate_game_scene_char_LP_from_cS(input,obj_char)
             return true
         end
         -- _7_8_9_pre_jump
-        if common_game_scene_check_jump_direction(obj_char) then
-            obj_char["direction_input_cache"] = obj_char["direction_input"]
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "7_8_9_pre_jump"
+        if test_input_sys_press(input["up"]) then
+            character_function_game_scene_TRM_histop_ground_jump_cancel(input,obj_char)
             return true
         end
     end
@@ -4678,7 +4693,7 @@ function state_gate_game_scene_char_LP_from_jS(input,obj_char)
         end
         -- jump_cancel
         if test_input_sys_press(input["up"]) and obj_char["air_move"]["jump"][1] > 0 then
-            character_function_game_scene_TRM_hitstop_jump_cancel(
+            character_function_game_scene_TRM_hitstop_air_jump_cancel(
                 input,obj_char,
                 0.1,-11.5,-30,
                 0,0,-30,
@@ -4749,7 +4764,7 @@ function state_gate_game_scene_char_LP_from_j5Launcher(input,obj_char)
     if obj_char["hit_cancel"] then
         if test_input_sys_press(input["up"]) and obj_char["air_move"]["jump"][1] > 0 then
             -- jump_cancel
-            character_function_game_scene_TRM_hitstop_jump_cancel(
+            character_function_game_scene_TRM_hitstop_air_jump_cancel(
                 input,obj_char,
                 0.1,-11.5,-30,
                 0,0,-30,

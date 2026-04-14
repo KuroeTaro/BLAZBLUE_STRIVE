@@ -14,7 +14,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     obj[1] = obj_char["shot_sys_reticle"][1]
     obj[2] = obj_char["shot_sys_reticle"][2]
     obj["x"] = obj_char_other_side["x"]
-    obj["y"] = obj_char_other_side["y"]-obj_char_other_side["pushbox"][4]/2
+    obj["y"] = obj_char_other_side["y"]-100
     obj["f"] = 0
     obj["type"] = "projectile"
     obj["hit_type_state"] = "strike"
@@ -22,8 +22,6 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     obj["sprite_sheet_state"] = "5H_miss_projectile"
 
     obj["velocity"] = {0,0}
-
-    obj["enclose_position_offset"] = {0,0,0}
 
     obj["pushbox"] = nil
     obj["hitbox_table"] = {}
@@ -223,7 +221,6 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                         init_point_linear_anim_with(camera,anim_camera_point_linear_game_scene_camera_enclosing)
                         init_point_linear_anim_with(camera,anim_camera_point_linear_game_scene_camera_shake_x)
                         init_point_linear_anim_with(camera,anim_camera_point_linear_game_scene_camera_shake_y)
-                        camera["enclose_position_offset"] = obj["enclose_position_offset"]
                         camera["state"] = "active"
                     end
                 )
@@ -282,7 +279,6 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                         init_point_linear_anim_with(camera,anim_camera_point_linear_game_scene_camera_enclosing)
                         init_point_linear_anim_with(camera,anim_camera_point_linear_game_scene_camera_shake_x)
                         init_point_linear_anim_with(camera,anim_camera_point_linear_game_scene_camera_shake_y)
-                        camera["enclose_position_offset"] = obj["enclose_position_offset"]
                         camera["state"] = "active"
                     end
                 )
@@ -325,7 +321,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                 common_game_scene_nil_load_camera_enclose_anim(obj)
                 -- hit_counter_ver_function
                 if obj_char_other_side["hurt_state"] == "counter" then 
-                    obj["hit_counter_ver_function"](obj,obj_char_other_side)
+                    obj["hit_counter_ver_function"](obj_char,obj_char_other_side)
                 end
                 -- set_play_character_shake_animation
                 table.insert(camera["active_application_table"],
@@ -336,7 +332,6 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                         init_point_linear_anim_with(camera,anim_camera_point_linear_game_scene_camera_enclosing)
                         init_point_linear_anim_with(camera,anim_camera_point_linear_game_scene_camera_shake_x)
                         init_point_linear_anim_with(camera,anim_camera_point_linear_game_scene_camera_shake_y)
-                        camera["enclose_position_offset"] = obj["enclose_position_offset"]
                         camera["state"] = "active"
                     end
                 )
