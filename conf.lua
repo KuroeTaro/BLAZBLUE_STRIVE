@@ -12,7 +12,7 @@ function love.conf(t)
     end
 
     t.console = true
-    t.window.title = "BLAZBLUE_STRIVE.ver.1/8.003"
+    t.window.title = "BLAZBLUE_STRIVE.ver.1/4.004"
     t.window.vsync = 0
     t.modules.physics = false 
     t.modules.touch = false 
