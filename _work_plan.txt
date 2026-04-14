@@ -1,31 +1,10 @@
 config选项中自定义要不要79空投
 
-5H制作逻辑
-    瞄准速度 未诅咒：10 诅咒：20
-    瞄准进度 命中需求：420 最大值：540
-    瞄准进度加减因素
-        1.敌方绝对速度
-        2.水平相对速度
-        3.命中对方
-        4.空拳脚 开枪
-        5.诅咒
-        6.特定的己方模组（哈皮的翻滚）
+-- 碎墙
+-- RC
+-- 各个必杀
+-- 超必杀
+-- 数值
 
-    off -> ease_in 处于未受伤状态(hurtstop hurt block blockstop)按下h 进入
-
-    ease_in -> loop 动画结束进入
-    ease_in -> shot 处于未受伤状态(hurtstop hurt block blockstop)松开5h 进入
-    ease_in -> ease_out 受伤 或者 处于未受伤状态(hurtstop hurt block blockstop)按下2h 进入
-
-    loop -> shot 处于未受伤状态(hurtstop hurt block blockstop)松开5h 进入
-    loop -> ease_out 受伤 或者 处于未受伤状态(hurtstop hurt block blockstop)按下2h 进入
-
-    ease_out -> off 动画结束进入
-    ease_out -> ease_in 处于未受伤状态(hurtstop hurt block blockstop)按下h 进入
-
-common_projectile_hit_function
-common_projectile_hurt_function
-
-5H_at_the_ready_projectile_animation
-5H_at_the_ready_stand_crouch_air_block_animation
-5H_at_the_ready_stand_crouch_air_OTG_hurt_animation
+-- 开始界面重做
+-- 联机
