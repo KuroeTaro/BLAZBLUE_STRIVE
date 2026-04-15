@@ -1945,7 +1945,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_ch
         return true
     end
     -- _cS
-    if test_input_sys_press(input["S"]) and collision_test_cS_distance_check(obj_char,375) then
+    if test_input_sys_press(input["S"]) and collision_test_cS_distance_check(obj_char,300) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -2091,7 +2091,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(inp
         return true
     end
     -- _cS
-    if test_input_sys_press_or_hold(input["S"]) and collision_test_cS_distance_check(obj_char,375) then
+    if test_input_sys_press_or_hold(input["S"]) and collision_test_cS_distance_check(obj_char,300) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
