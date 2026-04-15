@@ -3,7 +3,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     local obj = {0,0,0,0.5,1,1,0,0}
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local obj_char_velocity = {obj_char["velocity"][1],obj_char["velocity"][2]}
-    local camera = obj_stage_game_scene_camera
+    local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet_table = nil
     local side = obj_char["player_side"]
     if side == "L" then
@@ -40,10 +40,8 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     obj["animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main_anim(obj,obj_char,obj_char_other_side)
     init_character_anim_with(obj,obj["animation"] )
 
-    obj["camera_enclosing_anim"] = nil
     obj["camera_x_shake_anim"] = nil
     obj["camera_y_shake_anim"] = nil
-    common_game_scene_nil_load_camera_enclose_anim(obj)
     common_game_scene_hit_load_camera_shake_anim(obj,0.5)
 
     obj["stand_block_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
@@ -141,7 +139,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     obj["draw"] = function()
         local image_sprite_sheet = image_sprite_sheet_table[obj["sprite_sheet_state"]]
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,tostring(obj[8]))
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
     obj["enemy_interact_function"] = function()
@@ -213,15 +211,13 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                 obj_char_other_side["state_cache"] = "block"
                 obj_char_other_side["state"] = "blockstop"
                 -- set_insert_camera_anim
-                table.insert(camera["active_application_table"],
+                table.insert(obj_camera["active_application_table"],
                     function()
-                        anim_camera_point_linear_game_scene_camera_enclosing = obj["camera_enclosing_anim"]
                         anim_camera_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
                         anim_camera_point_linear_game_scene_camera_shake_y = obj["camera_y_shake_anim"]
-                        init_point_linear_anim_with(camera,anim_camera_point_linear_game_scene_camera_enclosing)
-                        init_point_linear_anim_with(camera,anim_camera_point_linear_game_scene_camera_shake_x)
-                        init_point_linear_anim_with(camera,anim_camera_point_linear_game_scene_camera_shake_y)
-                        camera["state"] = "active"
+                        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+                        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+                        obj_camera["state"] = "active"
                     end
                 )
                 -- set_play_character_shake_animation
@@ -271,15 +267,13 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                 obj_char_other_side["state_cache"] = obj_char_other_side["state"]
                 obj_char_other_side["state"] = "hurtstop"
                 -- set_insert_camera_anim
-                table.insert(camera["active_application_table"],
+                table.insert(obj_camera["active_application_table"],
                     function()
-                        anim_camera_point_linear_game_scene_camera_enclosing = obj["camera_enclosing_anim"]
                         anim_camera_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
                         anim_camera_point_linear_game_scene_camera_shake_y = obj["camera_y_shake_anim"]
-                        init_point_linear_anim_with(camera,anim_camera_point_linear_game_scene_camera_enclosing)
-                        init_point_linear_anim_with(camera,anim_camera_point_linear_game_scene_camera_shake_x)
-                        init_point_linear_anim_with(camera,anim_camera_point_linear_game_scene_camera_shake_y)
-                        camera["state"] = "active"
+                        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+                        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+                        obj_camera["state"] = "active"
                     end
                 )
                 -- set_play_character_shake_animation
@@ -317,22 +311,18 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                 -- set_state_and_state_cache
                 obj_char_other_side["state_cache"] = "hurt"
                 obj_char_other_side["state"] = "hurtstop"
-                -- set_nil_camera_enclose
-                common_game_scene_nil_load_camera_enclose_anim(obj)
                 -- hit_counter_ver_function
                 if obj_char_other_side["hurt_state"] == "counter" then 
                     obj["hit_counter_ver_function"](obj_char,obj_char_other_side)
                 end
                 -- set_play_character_shake_animation
-                table.insert(camera["active_application_table"],
+                table.insert(obj_camera["active_application_table"],
                     function()
-                        anim_camera_point_linear_game_scene_camera_enclosing = obj["camera_enclosing_anim"]
                         anim_camera_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
                         anim_camera_point_linear_game_scene_camera_shake_y = obj["camera_y_shake_anim"]
-                        init_point_linear_anim_with(camera,anim_camera_point_linear_game_scene_camera_enclosing)
-                        init_point_linear_anim_with(camera,anim_camera_point_linear_game_scene_camera_shake_x)
-                        init_point_linear_anim_with(camera,anim_camera_point_linear_game_scene_camera_shake_y)
-                        camera["state"] = "active"
+                        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+                        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+                        obj_camera["state"] = "active"
                     end
                 )
                 -- character_shake
@@ -1042,10 +1032,10 @@ function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(obj
         obj["life"] = obj["life"] - 1
     end
     obj["draw"] = function()
-        local camera = obj_stage_game_scene_camera
+        local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_blast_ver0_counter
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,""..obj[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
 
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])

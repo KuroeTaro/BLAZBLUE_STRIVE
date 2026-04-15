@@ -1921,10 +1921,10 @@ function load_game_scene_anim_char_TRM_burst_overdrive(obj_char,other_side_count
                 init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
                 init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
                 init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+                obj_camera["enclose_position_offset"] = obj_char["enclose_position_offset"]
                 obj_camera["state"] = "active"
             end
         )
-        obj_char["enclose_position_offset"] = {0,0,0}
         -- VFX
         insert_VFX_game_scene_char_overdrive_badge(obj_char)
         insert_VFX_game_scene_char_overdrive_partical(obj_char)
@@ -3006,7 +3006,7 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             10,5,1.02,
-            -5,2.5,1.02,
+            -10,2.5,1.02,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -5049,21 +5049,23 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(obj_char)
         obj_char["shot_sys_fire_cancel"] = false
         obj_char["shot_sys_idle_cancel"] = false
         character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
-        -- cameara_animation_load
-        common_game_scene_nil_load_camera_enclose_anim(obj_char)
-        common_game_scene_hit_load_camera_shake_anim(obj_char,0.1)
+        -- cache_camera_shake_anim
+        local camera_shake_anim_cache = {obj_char["camera_x_shake_anim"],obj_char["camera_y_shake_anim"]}
+        -- camera_animation_application
         table.insert(obj_camera["active_application_table"],
             function()
-                anim_camera_point_linear_game_scene_camera_enclosing = obj_char["camera_enclosing_anim"]
-                anim_camera_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
-                anim_camera_point_linear_game_scene_camera_shake_y = obj_char["camera_y_shake_anim"]
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
+                -- cameara_animation_load
+                local cache_obj = {}
+                common_game_scene_hit_load_camera_shake_anim(cache_obj,0.1)
+                anim_camera_point_linear_game_scene_camera_shake_x = cache_obj["camera_x_shake_anim"]
+                anim_camera_point_linear_game_scene_camera_shake_y = cache_obj["camera_y_shake_anim"]
                 init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
                 init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
-                obj_camera["enclose_position_offset"] = obj_char["enclose_position_offset"]
                 obj_camera["state"] = "active"
             end
         )
+        obj_char["camera_x_shake_anim"] = camera_shake_anim_cache[1]
+        obj_char["camera_y_shake_anim"] = camera_shake_anim_cache[2]
     end
     res[1] = function()
         -- shot_sys
@@ -8989,16 +8991,12 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         end
         -- camera_animation_application
         local obj_camera = obj_stage_game_scene_camera
-        obj_char["enclose_position_offset"] = {0,0,0}
         table.insert(obj_camera["active_application_table"],
             function()
-                anim_camera_point_linear_game_scene_camera_enclosing = obj_char["camera_enclosing_anim"]
                 anim_camera_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
                 anim_camera_point_linear_game_scene_camera_shake_y = obj_char["camera_y_shake_anim"]
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
                 init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
                 init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
-                obj_camera["enclose_position_offset"] = obj_char["enclose_position_offset"]
                 obj_camera["state"] = "active"
             end
         )

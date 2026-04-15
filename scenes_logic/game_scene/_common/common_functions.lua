@@ -298,7 +298,6 @@ function common_game_scene_strike_hurt_function(obj_char)
     elseif obj_char["hurt_state"] == "parry" then -- idle unblock punish counter GP parry
         -- parry function
         obj_char["parry_function"](hit_side_obj_char,obj_char)
-
     -- idle_and_unblock
     else
         if obj_char["hurt_state"] == "punish" then
@@ -313,17 +312,13 @@ function common_game_scene_strike_hurt_function_common_block(obj_char,hit_side_o
     obj_char["state_cache"] = "block"
     obj_char["state"] = "blockstop"
     -- camera_shake_enclose
-    common_game_scene_nil_load_camera_enclose_anim(hit_side_obj_char)
     common_game_scene_hit_load_camera_shake_anim(hit_side_obj_char,0.5)
     table.insert(obj_camera["active_application_table"],
         function()
-            anim_camera_point_linear_game_scene_camera_enclosing = hit_side_obj_char["camera_enclosing_anim"]
             anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
             anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
-            init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
             init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
             init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
-            obj_camera["enclose_position_offset"] = hit_side_obj_char["enclose_position_offset"]
             obj_camera["state"] = "active"
         end
     )
@@ -372,17 +367,13 @@ function common_game_scene_strike_hurt_function_GP_hurt(obj_char,hit_side_obj_ch
     obj_char["state_cache"] = obj_char["state"]
     obj_char["state"] = "hurtstop"
     -- camera_shake_enclose
-    common_game_scene_nil_load_camera_enclose_anim(hit_side_obj_char)
     common_game_scene_hit_load_camera_shake_anim(hit_side_obj_char,0.5)
     table.insert(obj_camera["active_application_table"],
         function()
-            anim_camera_point_linear_game_scene_camera_enclosing = hit_side_obj_char["camera_enclosing_anim"]
             anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
             anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
-            init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
             init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
             init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
-            obj_camera["enclose_position_offset"] = hit_side_obj_char["enclose_position_offset"]
             obj_camera["state"] = "active"
         end
     )
@@ -413,25 +404,38 @@ function common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_ob
     -- state
     obj_char["state_cache"] = "hurt"
     obj_char["state"] = "hurtstop"
-    -- set_nil_camera_enclose
-    common_game_scene_nil_load_camera_enclose_anim(hit_side_obj_char)
     -- hit_counter_ver_function
     if obj_char["hurt_state"] == "counter" then 
         hit_side_obj_char["hit_counter_ver_function"](hit_side_obj_char,obj_char)
+    else
+         -- set_nil_camera_enclose
+        common_game_scene_nil_load_camera_enclose_anim(hit_side_obj_char)
     end
     -- insert_camera_shake_enclose
-    table.insert(obj_camera["active_application_table"],
-        function()
-            anim_camera_point_linear_game_scene_camera_enclosing = hit_side_obj_char["camera_enclosing_anim"]
-            anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
-            anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
-            init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
-            init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-            init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
-            obj_camera["enclose_position_offset"] = hit_side_obj_char["enclose_position_offset"]
-            obj_camera["state"] = "active"
-        end
-    )
+    if not hit_side_obj_char["camera_enclosing_anim"]["nil_mark"] then
+        table.insert(obj_camera["active_application_table"],
+            function()
+                anim_camera_point_linear_game_scene_camera_enclosing = hit_side_obj_char["camera_enclosing_anim"]
+                anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
+                anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+                obj_camera["enclose_position_offset"] = hit_side_obj_char["enclose_position_offset"]
+                obj_camera["state"] = "active"
+            end
+        )
+    else
+        table.insert(obj_camera["active_application_table"],
+            function()
+                anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
+                anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+                obj_camera["state"] = "active"
+            end
+        )
+    end
     -- character_shake
     obj_char["hurtstop_wiggle_x_animation"] = 
     common_game_scene_create_wiggle_animation(
@@ -610,6 +614,7 @@ function common_game_scene_nil_load_camera_enclose_anim(obj_char)
     anim["length"] = 15
     anim["loop"] = false
     anim["fix_type"] = true
+    anim["nil_mark"] = true
 
     obj_char["camera_enclosing_anim"] = anim
 end
@@ -632,26 +637,9 @@ function common_game_scene_counter_ver3_load_camera_enclose_anim(obj_char)
     anim["length"] = 90
     anim["loop"] = false
     anim["fix_type"] = true
+    anim["nil_mark"] = false
 
     obj_char["camera_enclosing_anim"] = anim
-end
-function common_game_scene_nil_load_camera_shake_anim(obj_char)
-    local anim = {}
-    anim = {}
-    anim[0] = {0,0}
-    anim["prop"] = "3d_pos_x"
-    anim["length"] = 0
-    anim["loop"] = false
-    anim["fix_type"] = false
-    obj_char["camera_x_shake_anim"] = anim
-
-    anim = {}
-    anim[0] = {0,0}
-    anim["prop"] = "3d_pos_y"
-    anim["length"] = 0
-    anim["loop"] = false
-    anim["fix_type"] = false
-    obj_char["camera_y_shake_anim"] = anim
 end
 function common_game_scene_overdrive_load_camera_shake_anim(obj_char)
     local anim = {}
