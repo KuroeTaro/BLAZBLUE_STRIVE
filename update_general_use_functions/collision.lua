@@ -44,24 +44,28 @@ function collision_test_char_on_ground(obj)
     return box_B_collision >= stage_B_collision
 end
 function collision_test_cS_distance_check(obj_char,max_distance)
-    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
-    if math.abs(obj_char_other_side["x"] - obj_char["x"]) < max_distance then
-        return true
-    end
-    return false
-    -- local hurtbox = {}
-    -- local hurtbox_front_x = 0
-    -- local hurtbox_edge_x = 0
-    -- for i=1,#obj_char_other_side["hurtbox_table"] do
-    --     hurtbox = obj_char_other_side["hurtbox_table"][i]
-    --     hurtbox_front_x = hurtbox[1] * obj_char_other_side[5] + obj_char_other_side["x"]
-    --     -- hurtbox_front_x 是hurtbox中心，加减width/2得到前后边界
-    --     hurtbox_edge_x = hurtbox_front_x + (hurtbox[3]/2) * obj_char_other_side[5]
-    --     if math.abs(hurtbox_edge_x - obj_char["x"]) < max_distance then
-    --         return true
-    --     end
+    -- local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    -- if math.abs(obj_char_other_side["x"] - obj_char["x"]) < max_distance+200 then
+    --     return true
     -- end
     -- return false
+    
+    local hurtbox = {}
+    local hurtbox_front_x = 0
+    local hurtbox_edge_x = 0
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local num_hurtbox_table = #obj_char_other_side["hurtbox_table"]
+    if #obj_char_other_side["hurtbox_table"] == 0 then return true end
+    for i=1,num_hurtbox_table do
+        hurtbox = obj_char_other_side["hurtbox_table"][i]
+        hurtbox_front_x = hurtbox[1] * obj_char_other_side[5] + obj_char_other_side["x"]
+        -- hurtbox_front_x 是hurtbox中心，加减width/2得到前后边界
+        hurtbox_edge_x = hurtbox_front_x + (hurtbox[3]/2) * obj_char_other_side[5]
+        if math.abs(hurtbox_edge_x - obj_char["x"]) < max_distance then
+            return true
+        end
+    end
+    return false
 end
 function collision_pushbox_relocate_y(obj)
     local box = collision_box_to_real_world_box(obj,"pushbox")

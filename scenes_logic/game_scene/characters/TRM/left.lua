@@ -1344,6 +1344,9 @@ function state_machine_char_game_scene_char_LP_shot_sys()
                 return
             end
             if test_input_sys_release(input["HS"]) and obj_char["state"] == "hitstop" then
+                -- input_sys_cache
+                obj_char["input_sys_state_negative_edge"] = "save" -- none save load
+                common_game_scene_get_input_sys_cache_negative_edge_init(obj_char["player_side"])(obj_char)
                 obj_char["input_sys_cache_negative_edge"]["HS"] = true
             end
             if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) and obj_char["state"] ~= "hitstop" then
