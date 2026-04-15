@@ -2160,7 +2160,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move(input,obj_char)
         return true
     end
     -- _6dash_air_dash
-    if (not common_game_scene_check_crouch_direction(obj_char)) and obj_char["y"] < 0
+    if (not common_game_scene_check_crouch_direction(obj_char)) and obj_char["y"] < 125
     and test_input_sys_press(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
         obj_char["air_move"]["jump"][1] = 0
         obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
@@ -2182,7 +2182,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(inpu
         return true
     end
     -- _6dash_air_dash
-    if (not common_game_scene_check_crouch_direction(obj_char)) and obj_char["y"] < 0
+    if (not common_game_scene_check_crouch_direction(obj_char)) and obj_char["y"] < 125
     and test_input_sys_press_or_hold(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
         obj_char["air_move"]["jump"][1] = 0
         obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
@@ -2204,7 +2204,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_4dash_on
         return true
     end
     -- _6dash_air_dash
-    if (not common_game_scene_check_crouch_direction(obj_char)) and obj_char["y"] < 0
+    if (not common_game_scene_check_crouch_direction(obj_char)) and obj_char["y"] < 125
     and test_input_sys_press(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
         obj_char["air_move"]["jump"][1] = 0
         obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
