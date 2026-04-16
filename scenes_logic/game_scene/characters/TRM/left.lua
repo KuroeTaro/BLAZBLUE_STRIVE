@@ -18,7 +18,6 @@ function load_game_scene_obj_char_LP()
     -- state
     obj_char_game_scene_char_LP["player_side"] = "L"
     obj_char_game_scene_char_LP["type"] = "character"
-    obj_char_game_scene_char_LP["default_pushbox_width"] = 120
     obj_char_game_scene_char_LP["default_throw_distance"] = 0
 
     obj_char_game_scene_char_LP["state"] = "before_ease_in"
@@ -36,7 +35,6 @@ function load_game_scene_obj_char_LP()
     -- input
     obj_char_game_scene_char_LP["direction_input"] = 5
     obj_char_game_scene_char_LP["direction_input_cache"] = 5
-    obj_char_game_scene_char_LP["hit_jump_use_direction_input_cache"] = 5
     obj_char_game_scene_char_LP["SP_intput_dealy_countdown"] = 0
     obj_char_game_scene_char_LP["startup_frame"] = 0
     obj_char_game_scene_char_LP["active_frame"] = 0

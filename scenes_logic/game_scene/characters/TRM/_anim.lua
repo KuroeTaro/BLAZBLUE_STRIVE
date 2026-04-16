@@ -3485,8 +3485,19 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[side]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    local function direction_input_mapping()
+        if obj_char["direction_input"] >= 7 then
+            obj_char["direction_input_cache"] = obj_char["direction_input"]
+            return
+        end
+    end
     res["prop_f"] = "f"
     res["anim_length"] = 36
+    for i = 0,9 do
+        res[i] = function()
+            direction_input_mapping()
+        end
+    end
 
     res[0] = function()
         -- state
@@ -3500,6 +3511,9 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
         
+        obj_char["direction_input_cache"] = 9
+        direction_input_mapping()
+
         obj_char["hit_damage"] = 300.0
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
@@ -3643,12 +3657,16 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         CHARACTER_VISUAL_FRONT = obj_char["player_side"]
     end
     res[2] = function()
+        -- state
+        direction_input_mapping()
         -- collide
         obj_char["hurtbox_table"] = {{-24,-220,200,440},{-60,-460,100,40}}
         -- draw_correction
         obj_char[8] = 1
     end
     res[4] = function()
+        -- state
+        direction_input_mapping()
         -- collide
         obj_char["hurtbox_table"] = {{-28,-325,200,250},{-50,-100,154,200}}
         -- oroboros
@@ -3663,6 +3681,8 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true 
+        
+        direction_input_mapping()
         -- collide
         obj_char["hitbox_table"] = {{187,-300,320,100},{87,-210,120,80}}
         obj_char["hurtbox_table"] = {{-28,-325,200,250},{-50,-100,154,200},{187,-300,360,140},{87,-210,160,120}}
@@ -3678,6 +3698,8 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
+        
+        direction_input_mapping()
         -- input_sys_cache
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
@@ -4390,8 +4412,19 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_char_other_side = common_game_scene_change_character(side)
+    local function direction_input_mapping()
+        if obj_char["direction_input"] >= 7 then
+            obj_char["direction_input_cache"] = obj_char["direction_input"]
+            return
+        end
+    end
     res["prop_f"] = "f"
     res["anim_length"] = 29
+    for i = 0,13 do
+        res[i] = function()
+            direction_input_mapping()
+        end
+    end
 
     res[0] = function()
         -- state
@@ -4404,7 +4437,10 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         obj_char["startup_frame"] = 0
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
-        
+
+        obj_char["direction_input_cache"] = 9
+        direction_input_mapping()
+
         obj_char["hit_damage"] = 300.0
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
@@ -4548,6 +4584,8 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         CHARACTER_VISUAL_FRONT = obj_char["player_side"]
     end
     res[3] = function()
+        -- state
+        direction_input_mapping()
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-145,-455}
         -- draw_correction
@@ -4559,7 +4597,9 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
             obj_char[5] = -obj_char[5]
         end
         obj_char["move_state"] = "active" -- none startup active recovery
-        obj_char["strike_active"] = true 
+        obj_char["strike_active"] = true
+
+        direction_input_mapping()
         -- collide
         obj_char["hitbox_table"] = {{185,-230,240,350}}
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-440,100,20},{185,-230,290,400}}
@@ -4571,6 +4611,8 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         insert_VFX_game_scene_char_TRM_cS_whiff(obj_char)
     end
     res[10] = function()
+        -- state
+        direction_input_mapping()
         -- draw_correction
         obj_char[8] = 3
     end
@@ -4581,6 +4623,8 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
+        
+        direction_input_mapping()
         -- input_sys_cache
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()

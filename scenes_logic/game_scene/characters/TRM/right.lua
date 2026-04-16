@@ -18,7 +18,6 @@ function load_game_scene_obj_char_RP()
     -- state
     obj_char_game_scene_char_RP["player_side"] = "R"
     obj_char_game_scene_char_RP["type"] = "character"
-    obj_char_game_scene_char_RP["default_pushbox_width"] = 120
     obj_char_game_scene_char_RP["default_throw_distance"] = 0
 
     obj_char_game_scene_char_RP["state"] = "before_ease_in"
@@ -36,7 +35,6 @@ function load_game_scene_obj_char_RP()
     -- input
     obj_char_game_scene_char_RP["direction_input"] = 5
     obj_char_game_scene_char_RP["direction_input_cache"] = 5
-    obj_char_game_scene_char_RP["hit_jump_use_direction_input_cache"] = 5
     obj_char_game_scene_char_RP["SP_intput_dealy_countdown"] = 0
     obj_char_game_scene_char_RP["startup_frame"] = 0
     obj_char_game_scene_char_RP["active_frame"] = 0
