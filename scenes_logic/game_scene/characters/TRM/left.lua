@@ -4487,13 +4487,6 @@ function state_gate_game_scene_char_LP_from_jS(input,obj_char)
     end
     -- hit_cancel
     if obj_char["hit_cancel"] then
-        -- _jS
-        if obj_char["y"] < 125 and test_input_sys_press(input["S"]) then
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "jS"
-            return true
-        end
         -- jump_cancel
         if test_input_sys_press(input["up"]) and obj_char["air_move"]["jump"][1] > 0 then
             character_function_game_scene_TRM_hitstop_air_jump_cancel(
