@@ -1348,6 +1348,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 obj_char["input_sys_cache_negative_edge"]["HS"] = true
             end
             if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) and obj_char["state"] ~= "hitstop" then
+                obj_char["input_sys_cache_negative_edge"]["HS"] = false
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return
@@ -1383,6 +1384,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 obj_char["input_sys_cache_negative_edge"]["HS"] = true
             end
             if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) and obj_char["state"] ~= "hitstop" then
+                obj_char["input_sys_cache_negative_edge"]["HS"] = false
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return
@@ -1396,6 +1398,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 return
             end
             if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) and obj_char["state"] ~= "hitstop" then
+                obj_char["input_sys_cache_negative_edge"]["HS"] = false
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return
@@ -1429,6 +1432,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 obj_char["input_sys_cache_negative_edge"]["HS"] = true
             end
             if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) and obj_char["state"] ~= "hitstop" then
+                obj_char["input_sys_cache_negative_edge"]["HS"] = false
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return

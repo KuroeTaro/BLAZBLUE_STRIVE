@@ -65,6 +65,10 @@ function load_game_scene_anim_stage()
 
     anim_camera_point_linear_game_scene_camera_shake_x = {}
     anim_camera_point_linear_game_scene_camera_shake_y = {}
+
+    anim_stage_wallbreak_transport = {}
+    anim_stage_wallbreak_transport["prop"] = "f"
+    anim_stage_wallbreak_transport["length"] = 120
 end
 function order_load_game_scene_stage(load_order)
     local switch = 
