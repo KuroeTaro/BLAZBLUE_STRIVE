@@ -55,12 +55,6 @@ function load_game_scene_common_shader(i)
 end
 
 function load_game_scene_announcer_HUD_obj()
-    obj_update_flow_controller_game_scene_common = {0,0,nil,0,1,1,0,0}
-    obj_update_flow_controller_game_scene_common["FCT"] = {0,0,0,0,0,0,0,0}
-    obj_update_flow_controller_game_scene_common["LCT"] = {0,0,0,0,0,0,0,0}
-    obj_update_flow_controller_game_scene_common["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_update_flow_controller_game_scene_common["state"] = "before_ease_in"
-
     obj_UI_game_scene_black_solid = {0,0,nil,0,1,1,0,0}
     obj_UI_game_scene_black_solid["FCT"] = {0,0,0,0,0,0,0,0}
     obj_UI_game_scene_black_solid["LCT"] = {0,0,0,0,0,0,0,0}

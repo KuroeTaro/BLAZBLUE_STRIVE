@@ -263,7 +263,6 @@ function draw_game_scene_main()
 
     -- 绘制ease in black solid
     draw_solid(obj_UI_game_scene_black_solid)
-    
 end
 
 -- x y z opacity sx sy r f

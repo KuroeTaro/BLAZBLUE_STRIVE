@@ -502,7 +502,6 @@ function update_char_select_scene_ease_in_40f_130f()
         -- 更新 current_update_block
         current_update_block = update_char_select_scene_main
         current_draw_block = draw_char_select_scene_main
-
     end
 end
 function update_char_select_scene_main()
@@ -570,7 +569,6 @@ function update_char_select_scene_main()
 
         -- 更新 current_update_block
         current_update_block = update_char_select_scene_ease_out
-
     end
 end
 function update_char_select_scene_train_dummy_select()
@@ -664,7 +662,6 @@ function update_char_select_scene_train_dummy_select()
 
         -- 更新 current_update_block
         current_update_block = update_char_select_scene_main
-
     end
 end 
 function update_char_select_scene_ease_out()

@@ -46,17 +46,17 @@ function load_game_scene_prep()
     -- TRAINING_MODE_CONFIG["announcer"] = true
     -- 训练模式
     if GAME_MODE == 0 then
-        NEXT_UPDATE_BLOCK = update_game_scene_main_training
+        NEXT_UPDATE_BLOCK = update_game_scene_training_before_ease_in
         NEXT_DRAW_BLOCK = draw_game_scene_main
         NEXT_PRESET = preset_game_scene_training
     -- 本地多人模式
     elseif GAME_MODE == 1 then
-        NEXT_UPDATE_BLOCK = update_game_scene_main_local_match
+        NEXT_UPDATE_BLOCK = update_game_scene_local_match_before_ease_in
         NEXT_DRAW_BLOCK = draw_game_scene_main
         NEXT_PRESET = preset_game_scene_match
     -- 线上多人模式
     elseif GAME_MODE == 2 then
-        NEXT_UPDATE_BLOCK = update_game_scene_main_online_match
+        NEXT_UPDATE_BLOCK = update_game_scene_online_match_synchronizing
         NEXT_DRAW_BLOCK = draw_game_scene_synchronizing
         NEXT_PRESET = preset_game_scene_match
     end

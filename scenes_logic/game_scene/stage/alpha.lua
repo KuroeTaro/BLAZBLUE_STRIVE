@@ -10,6 +10,10 @@ function load_game_scene_obj_stage()
 
     obj_stage_game_scene_mid_collision_anchor = 0
 
+    obj_stage_game_scene_main = {}
+    obj_stage_game_scene_main["f"] = 0
+    obj_stage_game_scene_main["current_animation"] = {}
+
     obj_stage_game_scene_camera = {0,0,-800}
     obj_stage_game_scene_camera["3d_pos_x"] = 0
     obj_stage_game_scene_camera["3d_pos_y"] = 0
@@ -33,7 +37,7 @@ function load_game_scene_obj_stage()
     obj_stage_game_scene_stair = {-4000,175,300,1,1,1,0,0}
     obj_stage_game_scene_glow = {0,0,-800,1,1,1,0,0}
     obj_stage_game_scene_glow["glow_3d_pos"] = {0,-2200,1600}
-    obj_stage_game_scene_tile_map = {-3600,-1995,800,1,1,1,0,0}
+    obj_stage_game_scene_tile_map = {-3600,-1850,800,1,1,1,0,0}
 
     -- adjust_character_color
     obj_char_game_scene_char_LP["brightness"] = -0.05
@@ -119,7 +123,7 @@ function update_game_scene_stage()
     obj_camera["3d_pos_y_target"] = math.min(obj_char_L["y"],obj_char_R["y"])+75
     obj_camera["3d_pos_y_target"] = math.min(obj_camera["3d_pos_y_target"],0)
     obj_camera["3d_pos_y_target"] = obj_camera["3d_pos_y_target"]+(800+obj_camera["3d_pos_z_target"])*0.5
-    obj_camera["3d_pos_y_target"] = math.max(obj_camera["3d_pos_y_target"],-1000)
+    obj_camera["3d_pos_y_target"] = math.max(obj_camera["3d_pos_y_target"],-900)
 
     obj_camera["3d_pos_z_target"] = obj_camera["3d_pos_z_target"]-obj_camera["3d_pos_y_target"]*0.25
     -- camera smooth move
