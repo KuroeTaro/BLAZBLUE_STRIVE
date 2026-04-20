@@ -1117,7 +1117,7 @@ function insert_VFX_game_scene_stage_6dash_air_dash_shockwave(obj_char,x,y,opaci
 end
 
 -- wallbreak
-function insert_VFX_game_scene_stage_wallbreaks(x,y,opacity,sx,sy,r)
+function insert_VFX_game_scene_stage_wallbreaks(side)
 end
 
 -- burst

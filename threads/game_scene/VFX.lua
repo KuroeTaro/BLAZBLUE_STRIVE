@@ -58,7 +58,5 @@ thread_data["smoke_land_blow"] = compress_module("asset/game_scene/VFX/stage_VFX
 thread_data["smoke_vertical_shot"] = compress_module("asset/game_scene/VFX/stage_VFX/_smoke/vertical_shot.dds")
     -- spark
 thread_data["spark_dcc_burst"] = compress_module("asset/game_scene/VFX/stage_VFX/_spark/dcc_burst.dds")
-    -- wallbreak
-thread_data["wallbreak"] = compress_module("asset/game_scene/VFX/stage_VFX/wallbreak.dds")
 
 love.thread.getChannel( 'thread_data_8' ):push( thread_data )

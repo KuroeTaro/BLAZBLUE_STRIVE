@@ -319,12 +319,6 @@ function order_load_game_scene_VFX(load_order)
                 "asset/game_scene/VFX/stage_VFX/_spark/dcc_burst.json",
                 love.graphics.newImage(ASSET_DATA[8]["spark_dcc_burst"])
             )
-                -- wallbreak
-            image_sprite_sheet_VFX_game_scene_wallbreak = 
-            sprite_sheet_load(
-                "asset/game_scene/VFX/stage_VFX/wallbreak.json",
-                love.graphics.newImage(ASSET_DATA[8]["wallbreak"])
-            )
         end,
         [32] = function()
             -- overdrive

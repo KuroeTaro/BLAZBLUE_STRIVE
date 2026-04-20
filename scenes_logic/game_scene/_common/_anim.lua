@@ -1787,13 +1787,6 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
         -- draw_correction
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
-        -- VFX
-        insert_VFX_game_scene_stage_wallbreaks(
-            obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
-            0.5,-1,1,0
-        )
         -- special_update
         frame_0_special_update_function()
     end
@@ -2279,13 +2272,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         -- draw_correction
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
-        -- VFX
-        insert_VFX_game_scene_stage_wallbreaks(
-            obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
-            0.5,-1,1,0
-        )
         -- special_update
         frame_0_special_update_function()
     end

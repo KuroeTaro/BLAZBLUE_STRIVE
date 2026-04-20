@@ -811,9 +811,6 @@ function common_update_game_scene_char_game_speed_abnormal_realtime_countdown(ob
     end
 end
 
-function common_game_scene_char_get_wallbreak_VFX_spawn_location(side)
-end
-
 function common_game_scene_char_apply_hurt_velocity(
     obj_char,obj_char_other_side,
     hurt_horizontal_velocity,

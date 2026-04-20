@@ -14,6 +14,10 @@ function load_game_scene_obj_stage()
     obj_stage_game_scene_main["f"] = 0
     obj_stage_game_scene_main["current_animation"] = {}
 
+    -- x y z opecity level
+    obj_stage_game_scene_wallbreak_static = {0,0,0,0,0}
+    obj_stage_game_scene_wallbreak_static["state"] = "off"
+
     obj_stage_game_scene_camera = {0,0,-800}
     obj_stage_game_scene_camera["3d_pos_x"] = 0
     obj_stage_game_scene_camera["3d_pos_y"] = 0
@@ -56,6 +60,7 @@ function load_game_scene_obj_stage()
     end
 end
 function load_game_scene_anim_stage()
+    -- camera_animation
     anim_camera_point_linear_game_scene_camera_enclosing = {}
     anim_camera_point_linear_game_scene_camera_enclosing[0] = {0.00,0}
     anim_camera_point_linear_game_scene_camera_enclosing["prop"] = "enclose_percentage"
@@ -66,6 +71,52 @@ function load_game_scene_anim_stage()
     anim_camera_point_linear_game_scene_camera_shake_x = {}
     anim_camera_point_linear_game_scene_camera_shake_y = {}
 
+    -- wallbreak_static_opacity_anim
+    anim_stage_wallbreak_static_opacity_LV0 = {}
+    anim_stage_wallbreak_static_opacity_LV0[0] = {0,5}
+    anim_stage_wallbreak_static_opacity_LV0[5] = {1,30}
+    anim_stage_wallbreak_static_opacity_LV0[30] = {1,35}
+    anim_stage_wallbreak_static_opacity_LV0[35] = {0,35}
+    anim_stage_wallbreak_static_opacity_LV0["prop"] = 4
+    anim_stage_wallbreak_static_opacity_LV0["length"] = 35
+    anim_stage_wallbreak_static_opacity_LV0["loop"] = false
+    anim_stage_wallbreak_static_opacity_LV0["fix_type"] = true
+
+    anim_stage_wallbreak_static_opacity_LV1 = {}
+    anim_stage_wallbreak_static_opacity_LV1[0] = {0,5}
+    anim_stage_wallbreak_static_opacity_LV1[5] = {1,60}
+    anim_stage_wallbreak_static_opacity_LV1[60] = {1,65}
+    anim_stage_wallbreak_static_opacity_LV1[65] = {0,65}
+    anim_stage_wallbreak_static_opacity_LV1["prop"] = 4
+    anim_stage_wallbreak_static_opacity_LV1["length"] = 65
+    anim_stage_wallbreak_static_opacity_LV1["loop"] = false
+    anim_stage_wallbreak_static_opacity_LV1["fix_type"] = true
+
+    anim_stage_wallbreak_static_opacity_LV2 = {}
+    anim_stage_wallbreak_static_opacity_LV2[0] = {0,5}
+    anim_stage_wallbreak_static_opacity_LV2[5] = {1,180}
+    anim_stage_wallbreak_static_opacity_LV2[180] = {1,185}
+    anim_stage_wallbreak_static_opacity_LV2[185] = {0,185}
+    anim_stage_wallbreak_static_opacity_LV2["prop"] = 4
+    anim_stage_wallbreak_static_opacity_LV2["length"] = 185
+    anim_stage_wallbreak_static_opacity_LV2["loop"] = false
+    anim_stage_wallbreak_static_opacity_LV2["fix_type"] = true
+
+    -- transport_glow_opacity
+    anim_stage_wallbreak_transport_glow = {}
+    anim_stage_wallbreak_transport_glow[0] = {0,5}
+    anim_stage_wallbreak_transport_glow[5] = {0.07,10}
+    anim_stage_wallbreak_transport_glow[10] = {0.26,15}
+    anim_stage_wallbreak_transport_glow[15] = {0.5,20}
+    anim_stage_wallbreak_transport_glow[20] = {0.74,25}
+    anim_stage_wallbreak_transport_glow[25] = {0.93,30}
+    anim_stage_wallbreak_transport_glow[30] = {1,30}
+    anim_stage_wallbreak_transport_glow["prop"] = 4
+    anim_stage_wallbreak_transport_glow["length"] = 30
+    anim_stage_wallbreak_transport_glow["loop"] = false
+    anim_stage_wallbreak_transport_glow["fix_type"] = true
+
+    -- stage_animation
     anim_stage_wallbreak_transport = {}
     anim_stage_wallbreak_transport["prop"] = "f"
     anim_stage_wallbreak_transport["length"] = 120
@@ -74,13 +125,33 @@ function order_load_game_scene_stage(load_order)
     local switch = 
     {
         [21] = function()
+
+            -- thread_data[1] = compress_module("asset/game_scene/stage/alpha/ground.dds")
+            -- thread_data[2] = compress_module("asset/game_scene/stage/alpha/stage_liner_fade.dds")
+            -- thread_data[3] = compress_module("asset/game_scene/stage/alpha/stair.dds")
+            -- thread_data[4] = compress_module("asset/game_scene/stage/alpha/tile_map.dds")
+            -- thread_data[5] = compress_module("asset/game_scene/stage/alpha/wallbreak_after_debris.dds")
+            -- thread_data[6] = compress_module("asset/game_scene/stage/alpha/wallbreak_dynamic.dds")
+            -- thread_data[7] = compress_module("asset/game_scene/stage/alpha/wallbreak_static.dds")
+            -- thread_data[8] = compress_module("asset/game_scene/stage/alpha/wallbreak_trans_smoke.dds")
+            -- thread_data[9] = compress_module("asset/game_scene/stage/alpha/wallbreak_transport_glow.dds")
+
             image_stage_game_scene_ground = love.graphics.newImage(ASSET_DATA[4][1])
-            image_stage_game_scene_stair = love.graphics.newImage(ASSET_DATA[4][2])
-            image_stage_game_scene_stage_liner_fade_alpha = love.graphics.newImage(ASSET_DATA[4][3])
+            image_stage_game_scene_stage_liner_fade_alpha = love.graphics.newImage(ASSET_DATA[4][2])
+            image_stage_game_scene_stair = love.graphics.newImage(ASSET_DATA[4][3])
             image_stage_game_scene_tile_map = love.graphics.newImage(ASSET_DATA[4][4])
+            image_stage_game_scene_wallbreak_after_debris = love.graphics.newImage(ASSET_DATA[4][5])
+            image_stage_game_scene_wallbreak_dynamic = love.graphics.newImage(ASSET_DATA[4][6])
+            image_stage_game_scene_wallbreak_static = love.graphics.newImage(ASSET_DATA[4][7])
+            image_stage_game_scene_wallbreak_trans_smoke = love.graphics.newImage(ASSET_DATA[4][8])
+            image_stage_game_scene_wallbreak_transport_glow = love.graphics.newImage(ASSET_DATA[4][9])
 
             image_sprite_batch_stage_game_scene_ground = love.graphics.newSpriteBatch(image_stage_game_scene_ground)
             image_sprite_batch_stage_game_scene_stair = love.graphics.newSpriteBatch(image_stage_game_scene_stair)
+            image_sprite_batch_stage_game_scene_wallbreak_after_debris = love.graphics.newSpriteBatch(image_stage_game_scene_wallbreak_after_debris)
+            image_sprite_batch_stage_game_scene_wallbreak_dynamic = love.graphics.newSpriteBatch(image_stage_game_scene_wallbreak_dynamic)
+            image_sprite_batch_stage_game_scene_wallbreak_static = love.graphics.newSpriteBatch(image_stage_game_scene_wallbreak_static)
+            image_sprite_batch_stage_game_scene_wallbreak_trans_smoke = love.graphics.newSpriteBatch(image_stage_game_scene_wallbreak_trans_smoke)
 
             image_sprite_batch_stage_game_scene_ground:clear()
             image_sprite_batch_stage_game_scene_ground:add(0,0)
@@ -98,6 +169,20 @@ function order_load_game_scene_stage(load_order)
         end,
     }
     local this_function = switch[load_order]
+    if this_function then this_function() end
+end
+
+-- state_machine
+function state_machine_stage_game_scene_wallbreak_static()
+    local switch = {
+        ["off"] = function()
+
+        end,
+        ["on"] = function()
+
+        end,
+    }
+    local this_function = switch[obj_stage_game_scene_wallbreak_static["state"]]
     if this_function then this_function() end
 end
 
