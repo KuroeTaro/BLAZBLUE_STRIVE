@@ -53,12 +53,12 @@ function update_game_scene_training_annoucer_ease_in()
             obj_UI_game_scene_black_solid,
             anim_UI_point_linear_game_scene_solid_ease_out_opacity_1_0
         )
-        state_machine_automatic_player_game_scene(obj_annoucer_game_scene_act_common,105)
+        state_machine_UI_game_scene_HUD_ACT_common(obj_annoucer_game_scene_act_common,105)
     elseif SCENE_TIMER <= 30 then
-        state_machine_automatic_player_game_scene(obj_annoucer_game_scene_act_common,105)
+        state_machine_UI_game_scene_HUD_ACT_common(obj_annoucer_game_scene_act_common,105)
     elseif SCENE_TIMER < 105 then
-        state_machine_automatic_player_game_scene(obj_annoucer_game_scene_act_common,105)
-        state_machine_automatic_player_game_scene(obj_annoucer_game_scene_act_num,75)
+        state_machine_UI_game_scene_HUD_ACT_common(obj_annoucer_game_scene_act_common,105)
+        state_machine_UI_game_scene_HUD_ACT_common(obj_annoucer_game_scene_act_num,75)
     elseif SCENE_TIMER == 105 then
         obj_annoucer_game_scene_act_common[4] = 0
         obj_annoucer_game_scene_act_num[4] = 0
@@ -70,7 +70,7 @@ function update_game_scene_training_annoucer_ease_in()
     elseif SCENE_TIMER <= 115 then
         -- do nothing
     elseif SCENE_TIMER < 135 then
-        state_machine_automatic_player_game_scene(obj_HUD_game_scene_ease_in,50)
+        state_machine_UI_game_scene_HUD_ACT_common(obj_HUD_game_scene_ease_in,50)
         point_linear_animator(
             obj_HUD_game_scene_timer,
             anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1
@@ -83,20 +83,20 @@ function update_game_scene_training_annoucer_ease_in()
         obj_char_game_scene_char_RP["input_sys_state"] = "save" -- none save load
         init_input_sys_cache_RP(obj_char_game_scene_char_RP)
     elseif SCENE_TIMER < 165 then
-        state_machine_automatic_player_game_scene(obj_HUD_game_scene_ease_in,50)
-        state_machine_automatic_player_game_scene(obj_annoucer_game_scene_lets_dance,40)
+        state_machine_UI_game_scene_HUD_ACT_common(obj_HUD_game_scene_ease_in,50)
+        state_machine_UI_game_scene_HUD_ACT_common(obj_annoucer_game_scene_lets_dance,40)
         state_machine_char_game_scene_char_LP_input_sys_cache()
         state_machine_char_game_scene_char_RP_input_sys_cache()
         state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
         state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
     elseif SCENE_TIMER == 165 then
-        state_machine_automatic_player_game_scene(obj_annoucer_game_scene_lets_dance,40)
+        state_machine_UI_game_scene_HUD_ACT_common(obj_annoucer_game_scene_lets_dance,40)
         state_machine_char_game_scene_char_LP_input_sys_cache()
         state_machine_char_game_scene_char_RP_input_sys_cache()
         state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
         state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
     elseif SCENE_TIMER < 175 then
-        state_machine_automatic_player_game_scene(obj_annoucer_game_scene_lets_dance,40)
+        state_machine_UI_game_scene_HUD_ACT_common(obj_annoucer_game_scene_lets_dance,40)
         state_machine_char_game_scene_char_LP_input_sys_cache()
         state_machine_char_game_scene_char_RP_input_sys_cache()
         state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()

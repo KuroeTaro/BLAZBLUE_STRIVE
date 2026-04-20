@@ -1,4 +1,4 @@
-function state_machine_automatic_player_game_scene(obj,length)
+function state_machine_UI_game_scene_HUD_ACT_common(obj,length)
     local speed = 0
     if obj[8] >= length - 1 then
         return

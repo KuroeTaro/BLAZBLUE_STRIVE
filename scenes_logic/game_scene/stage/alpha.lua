@@ -10,14 +10,12 @@ function load_game_scene_obj_stage()
 
     obj_stage_game_scene_mid_collision_anchor = 0
 
+    -- main
     obj_stage_game_scene_main = {}
     obj_stage_game_scene_main["f"] = 0
     obj_stage_game_scene_main["current_animation"] = {}
 
-    -- x y z opecity level
-    obj_stage_game_scene_wallbreak_static = {0,0,0,0,0}
-    obj_stage_game_scene_wallbreak_static["state"] = "off"
-
+    -- camera
     obj_stage_game_scene_camera = {0,0,-800}
     obj_stage_game_scene_camera["3d_pos_x"] = 0
     obj_stage_game_scene_camera["3d_pos_y"] = 0
@@ -37,11 +35,42 @@ function load_game_scene_obj_stage()
 
     obj_stage_game_scene_camera["active_application_table"] = {}
 
+    -- stage_objects
     obj_stage_game_scene_ground = {-4000,320,200,1,1,1,0,0}
+
+    obj_stage_game_scene_glow_with_linear_fade_alpha = {0,0,-800,1,1,1,0,0}
+    obj_stage_game_scene_glow_with_linear_fade_alpha["glow_3d_pos"] = {0,-2200,1600}
+
     obj_stage_game_scene_stair = {-4000,175,300,1,1,1,0,0}
-    obj_stage_game_scene_glow = {0,0,-800,1,1,1,0,0}
-    obj_stage_game_scene_glow["glow_3d_pos"] = {0,-2200,1600}
+
     obj_stage_game_scene_tile_map = {-3600,-1850,800,1,1,1,0,0}
+
+    obj_stage_game_scene_wallbreak_after_debris = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallbreak_after_debris["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallbreak_after_debris["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallbreak_after_debris["LCD"] = {0,0,0,0,0,0,0,0}
+
+    obj_stage_game_scene_wallbreak_dynamic = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallbreak_dynamic["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallbreak_dynamic["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallbreak_dynamic["LCD"] = {0,0,0,0,0,0,0,0}
+
+    obj_stage_game_scene_wallbreak_static = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallbreak_static["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallbreak_static["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallbreak_static["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallbreak_static["state"] = "off"
+    obj_stage_game_scene_wallbreak_static["level"] = 0
+
+    obj_stage_game_scene_wallbreak_transport_smoke = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallbreak_transport_smoke["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallbreak_transport_smoke["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallbreak_transport_smoke["LCD"] = {0,0,0,0,0,0,0,0}
+
+    obj_stage_game_scene_wallbreak_transport_glow = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallbreak_transport_glow["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallbreak_transport_glow["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallbreak_transport_glow["LCD"] = {0,0,0,0,0,0,0,0}
 
     -- adjust_character_color
     obj_char_game_scene_char_LP["brightness"] = -0.05
@@ -70,6 +99,12 @@ function load_game_scene_anim_stage()
 
     anim_camera_point_linear_game_scene_camera_shake_x = {}
     anim_camera_point_linear_game_scene_camera_shake_y = {}
+
+    -- wallbreak_after_debris_opacity_anim
+    anim_stage_wallbreak_after_debris_opacity = {}
+
+    -- wallbreak_dynamic_opacity_anim
+    anim_stage_wallbreak_dynamic_opacity = {}
 
     -- wallbreak_static_opacity_anim
     anim_stage_wallbreak_static_opacity_LV0 = {}
@@ -102,7 +137,10 @@ function load_game_scene_anim_stage()
     anim_stage_wallbreak_static_opacity_LV2["loop"] = false
     anim_stage_wallbreak_static_opacity_LV2["fix_type"] = true
 
-    -- transport_glow_opacity
+    -- wallbreak_transport_smoke_opacity_anim
+    anim_stage_wallbreak_transport_smoke_opacity = {}
+
+    -- wallbreak_transport_glow_opacity
     anim_stage_wallbreak_transport_glow = {}
     anim_stage_wallbreak_transport_glow[0] = {0,5}
     anim_stage_wallbreak_transport_glow[5] = {0.07,10}
@@ -119,23 +157,14 @@ function load_game_scene_anim_stage()
     -- stage_animation
     anim_stage_wallbreak_transport = {}
     anim_stage_wallbreak_transport["prop"] = "f"
-    anim_stage_wallbreak_transport["length"] = 120
+    anim_stage_wallbreak_transport["length"] = 150
+    anim_stage_wallbreak_transport[0] = function()
+    end
 end
 function order_load_game_scene_stage(load_order)
     local switch = 
     {
         [21] = function()
-
-            -- thread_data[1] = compress_module("asset/game_scene/stage/alpha/ground.dds")
-            -- thread_data[2] = compress_module("asset/game_scene/stage/alpha/stage_liner_fade.dds")
-            -- thread_data[3] = compress_module("asset/game_scene/stage/alpha/stair.dds")
-            -- thread_data[4] = compress_module("asset/game_scene/stage/alpha/tile_map.dds")
-            -- thread_data[5] = compress_module("asset/game_scene/stage/alpha/wallbreak_after_debris.dds")
-            -- thread_data[6] = compress_module("asset/game_scene/stage/alpha/wallbreak_dynamic.dds")
-            -- thread_data[7] = compress_module("asset/game_scene/stage/alpha/wallbreak_static.dds")
-            -- thread_data[8] = compress_module("asset/game_scene/stage/alpha/wallbreak_trans_smoke.dds")
-            -- thread_data[9] = compress_module("asset/game_scene/stage/alpha/wallbreak_transport_glow.dds")
-
             image_stage_game_scene_ground = love.graphics.newImage(ASSET_DATA[4][1])
             image_stage_game_scene_stage_liner_fade_alpha = love.graphics.newImage(ASSET_DATA[4][2])
             image_stage_game_scene_stair = love.graphics.newImage(ASSET_DATA[4][3])
@@ -184,6 +213,16 @@ function state_machine_stage_game_scene_wallbreak_static()
     }
     local this_function = switch[obj_stage_game_scene_wallbreak_static["state"]]
     if this_function then this_function() end
+end
+function state_machine_stage_game_scene_wallbreak_frame(obj,length,speed)
+    if obj[8] >= length - 1 then
+        return
+    end
+    obj["FCT"][8] = obj["FCT"][8] + 1
+    if obj["FCT"][8] > speed then
+        obj[8] = obj[8] + 1
+        obj["FCT"][8] = 0
+    end
 end
 
 -- update
@@ -284,7 +323,7 @@ function draw_game_scene_stage_static()
 end
 function draw_game_scene_stage_glow()
     local camera = obj_stage_game_scene_camera
-    local obj = obj_stage_game_scene_glow
+    local obj = obj_stage_game_scene_glow_with_linear_fade_alpha
 
     local x = obj["glow_3d_pos"][1]
     local y = obj["glow_3d_pos"][2]

@@ -30,7 +30,8 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_LP["move_state"] = "none" -- none startup active recovery
     obj_char_game_scene_char_LP["last_move_state"] = "none" -- none startup active recovery
-    obj_char_game_scene_char_LP["wallbreak_transport_air"] = false
+    obj_char_game_scene_char_LP["wallstick_side"] = "none"
+    obj_char_game_scene_char_LP["5Launcher_hold_stage_transport_air"] = false
 
     -- input
     obj_char_game_scene_char_LP["direction_input"] = 5
@@ -4744,7 +4745,7 @@ end
 function draw_game_scene_char_LP_shadow()
     local obj = obj_char_game_scene_char_LP
     local camera = obj_stage_game_scene_camera
-    local light_obj = obj_stage_game_scene_glow
+    local light_obj = obj_stage_game_scene_glow_with_linear_fade_alpha
 
     local light_x = light_obj["glow_3d_pos"][1]
     local light_y = light_obj["glow_3d_pos"][2]
