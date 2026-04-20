@@ -30,7 +30,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_RP["move_state"] = "none" -- none startup active recovery
     obj_char_game_scene_char_RP["last_move_state"] = "none" -- none startup active recovery
-    obj_char_game_scene_char_RP["wallstick_side"] = "none"
+    obj_char_game_scene_char_RP["wallstick_side"] = 0
     obj_char_game_scene_char_RP["5Launcher_hold_stage_transport_air"] = false
 
     -- input
