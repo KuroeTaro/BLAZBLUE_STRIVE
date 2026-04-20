@@ -985,6 +985,8 @@ function state_machine_char_game_scene_char_RP()
             state_gate_game_scene_char_RP_from_blockstop(input,obj_char)
         end,
 
+        ["wallstick"] = function()
+        end,
         ["wallbreak_transporting_entering"] = function()
             character_animator(obj_char,obj_char["character_animation"])
             state_gate_game_scene_char_RP_from_wallbreak_transporting_entering(input,obj_char)

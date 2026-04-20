@@ -11,6 +11,7 @@ function load_game_scene_obj_stage()
     obj_stage_game_scene_mid_collision_anchor = 0
 
     -- main
+    -- stage_animation_container
     obj_stage_game_scene_main = {}
     obj_stage_game_scene_main["f"] = 0
     obj_stage_game_scene_main["current_animation"] = {}
@@ -158,8 +159,6 @@ function load_game_scene_anim_stage()
     anim_stage_wallbreak_transport = {}
     anim_stage_wallbreak_transport["prop"] = "f"
     anim_stage_wallbreak_transport["length"] = 150
-    anim_stage_wallbreak_transport[0] = function()
-    end
 end
 function order_load_game_scene_stage(load_order)
     local switch = 
