@@ -987,11 +987,13 @@ function state_machine_char_game_scene_char_LP()
 
         ["wallstick"] = function()
         end,
-        ["wallbreak_transporting_entering"] = function()
+        ["wallbreak_transporting"] = function()
+        end,
+        ["5Launcher_hold_transporting_entering"] = function()
             character_animator(obj_char,obj_char["character_animation"])
             state_gate_game_scene_char_LP_from_wallbreak_transporting_entering(input,obj_char)
         end,
-        ["wallbreak_transporting_exiting"] = function()
+        ["5Launcher_hold_transporting_exiting"] = function()
             character_animator(obj_char,obj_char["character_animation"])
             state_gate_game_scene_char_LP_from_wallbreak_transporting_exiting(input,obj_char)
         end,
