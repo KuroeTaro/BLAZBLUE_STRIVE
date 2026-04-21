@@ -436,6 +436,11 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         obj_char_other_side["height_state"] = height_state -- stand crouch air OTG
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
+
+        obj_char_other_side["wallstickable"] = false
+        obj_char_other_side["wallbreakable_with_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
+
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
@@ -575,6 +580,11 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
         obj_char_other_side["height_state"] = height_state -- stand crouch air OTG
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
+
+        obj_char_other_side["wallstickable"] = false
+        obj_char_other_side["wallbreakable_with_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
+
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
@@ -721,6 +731,11 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         obj_char_other_side["height_state"] = height_state -- stand crouch air OTG
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
+
+        obj_char_other_side["wallstickable"] = true
+        obj_char_other_side["wallbreakable_with_wallstick"] = true
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
+
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
@@ -833,6 +848,11 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         obj_char_other_side["height_state"] = height_state -- stand crouch air OTG
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
+
+        obj_char_other_side["wallstickable"] = true
+        obj_char_other_side["wallbreakable_with_wallstick"] = true
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
+
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0

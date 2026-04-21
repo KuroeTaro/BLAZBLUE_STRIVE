@@ -27,6 +27,54 @@ function common_game_scene_toggle_ease_in(toggle_value)
     obj_annoucer_game_scene_lets_dance[4] = toggle_value
 end
 
+function common_game_scene_test_and_apply_wallstick()
+    local char_LP = obj_char_game_scene_char_LP
+    local char_RP = obj_char_game_scene_char_RP
+    local stage_collision = false
+
+    stage_collision = char_LP["collision_move_available"][1] == 0 or char_LP["collision_move_available"][2] == 0
+    if char_LP["state"] ~= "wallstick" and char_LP["wallbreakable_with_wallstick"] and 
+    char_LP["wallbreak_gauge"][1] >= char_LP["wallbreak_gauge"][2] and stage_collision 
+    then
+        if char_LP["height_state"] == "air" then
+            char_LP["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(char_LP)
+            init_character_anim_with(char_LP,char_LP["character_animation"])
+        else
+            char_LP["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(char_LP)
+            init_character_anim_with(char_LP,char_LP["character_animation"])
+        end
+        char_LP["state"] = "wallstick"
+    end
+    stage_collision = char_RP["collision_move_available"][1] == 0 or char_RP["collision_move_available"][2] == 0
+    if char_RP["state"] ~= "wallstick" and char_RP["wallbreakable_with_wallstick"] and 
+    char_RP["wallbreak_gauge"][1] >= char_RP["wallbreak_gauge"][2] and stage_collision 
+    then
+        if char_RP["height_state"] == "air" then
+            char_RP["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(char_RP)
+            init_character_anim_with(char_RP,char_RP["character_animation"])
+        else
+            char_RP["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(char_RP)
+            init_character_anim_with(char_RP,char_RP["character_animation"])
+        end
+        char_RP["state"] = "wallstick"
+    end
+    if char_LP["state"] == "wallstick" and char_RP["state"] == "wallstick" then
+    end
+end
+function common_game_scene_test_and_apply_wallbreak(obj_char)
+    local stage_collision = false
+    stage_collision = obj_char["collision_move_available"][1] == 0 or obj_char["collision_move_available"][2] == 0
+
+    if (obj_char["state"] == "wallstick" and obj_char["wallbreakable_with_wallstick"]) or
+    (stage_collision and obj_char["wallbreakable_without_wallstick"]) 
+    then
+        return true
+    end
+    return false
+end
+function common_game_scene_apply_wallbreak_transport()
+end
+
 function common_game_scene_get_SFX_table(side)
     if side == "L" then
         return audio_SFX_game_scene_LP

@@ -43,3 +43,12 @@ Disabling Blue Burst
 
     ease_out -> off 动画结束进入
     ease_out -> ease_in 处于未受伤状态(hurtstop hurt block blockstop)按下h 进入
+
+wallstick机制
+    攻击类型：
+        1. 未上墙状态：攻击会上墙 已上墙状态：攻击会碎墙
+        2. 未上墙状态：攻击会上墙 已上墙状态：攻击会从墙上强制打下来
+        3. 未上墙状态：攻击不会上墙 已上墙状态：攻击会碎墙
+        4. 未上墙状态：攻击不会上墙 已上墙状态：攻击会从墙上强制打下来
+
+        记录在受击动画上 应用在hurt_function

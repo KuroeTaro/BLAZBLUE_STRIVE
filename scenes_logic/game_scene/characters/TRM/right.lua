@@ -30,8 +30,6 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_RP["move_state"] = "none" -- none startup active recovery
     obj_char_game_scene_char_RP["last_move_state"] = "none" -- none startup active recovery
-    obj_char_game_scene_char_RP["wallstick_side"] = 0
-    obj_char_game_scene_char_RP["5Launcher_hold_stage_transport_air"] = false
 
     -- input
     obj_char_game_scene_char_RP["direction_input"] = 5
@@ -60,6 +58,11 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["block_heat_gain"] = 0
     obj_char_game_scene_char_RP["block_risk_gauge_gain"] = 0
     obj_char_game_scene_char_RP["FD_block_heat_drain"] = 0
+
+    obj_char_game_scene_char_RP["wallstickable"] = false
+    obj_char_game_scene_char_RP["wallbreakable_with_wallstick"] = false
+    obj_char_game_scene_char_RP["wallbreakable_without_wallstick"] = false
+    
     obj_char_game_scene_char_RP["stand_hurt_animation"] = nil
     obj_char_game_scene_char_RP["stand_block_animation"] = nil
     obj_char_game_scene_char_RP["crouch_hurt_animation"] = nil
@@ -114,7 +117,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["overdrive_timer"] = {0,0,0,0} -- 0f 00:00 
     obj_char_game_scene_char_RP["overdrive_drain_speed"] = 24
     obj_char_game_scene_char_RP["risk_gauge"] = {0.0,300.0}-- 0.0 - 300.0
-    obj_char_game_scene_char_RP["wallbreak_gauge"] = {0.0,300.0,false}-- 0.0 - 300.0
+    obj_char_game_scene_char_RP["wallbreak_gauge"] = {0.0,300.0}-- 0.0 - 300.0
 
     obj_char_game_scene_char_RP["heat_penalty"] = false
     obj_char_game_scene_char_RP["heat_penalty_countdown"] = 0

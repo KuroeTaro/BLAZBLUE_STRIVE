@@ -6229,6 +6229,11 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["height_state"] = "stand" -- stand crouch air OTG
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
+
+        obj_char_other_side["wallstickable"] = false
+        obj_char_other_side["wallbreakable_with_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
+
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0
@@ -8789,6 +8794,11 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["height_state"] = "air" -- stand crouch air OTG
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
+
+        obj_char_other_side["wallstickable"] = false
+        obj_char_other_side["wallbreakable_with_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
+
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
         obj_char_other_side["recovery_frame"] = 0

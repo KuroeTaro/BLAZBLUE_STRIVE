@@ -424,6 +424,10 @@ function update_game_scene_training_main()
         end
     end
 
+    -- 如果LP或者RP的wallbreak_damage满了且贴墙(obj["collision_move_available"][1] == 0 or obj["collision_move_available"][2] == 0)
+        -- 调整hitstop_countdown
+        -- LP和RP进入hitstop或者hurtstop 搭配对应的state_cache
+
     -- 更新阻力
     update_game_scene_friction()
     -- 更新角色重力方向速度
@@ -441,7 +445,7 @@ function update_game_scene_training_main()
 end
 function update_game_scene_training_wallbreak_transport()
 end
-function update_game_scene_training_5Launcher_hold_transport()
+function update_game_scene_training_5Launcher_hold_transport_entering()
 end
 
 function update_game_scene_local_match_before_ease_in()
