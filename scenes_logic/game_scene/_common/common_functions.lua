@@ -963,7 +963,7 @@ function common_game_scene_char_apply_gauge(
                 hurt_side_obj_char["heat_gauge"][2]
             ) 
             -- apply risk gauge
-            hurt_side_obj_char["risk_gauge"][1] = math.max(
+            hurt_side_obj_char["risk_gauge"][1] = math.min(
                 hurt_side_obj_char["risk_gauge"][1] + hit_side_obj_char["block_risk_gauge_gain"], -- block_risk_gauge_gain
                 hurt_side_obj_char["risk_gauge"][2]
             )
@@ -1116,7 +1116,7 @@ function common_game_scene_projectile_apply_gauge(
                 hurt_side_obj_char["heat_gauge"][2]
             ) 
             -- apply risk gauge
-            hurt_side_obj_char["risk_gauge"][1] = math.max(
+            hurt_side_obj_char["risk_gauge"][1] = math.min(
                 hurt_side_obj_char["risk_gauge"][1] + hit_side_obj_char["block_risk_gauge_gain"],
                 hurt_side_obj_char["risk_gauge"][2]
             )

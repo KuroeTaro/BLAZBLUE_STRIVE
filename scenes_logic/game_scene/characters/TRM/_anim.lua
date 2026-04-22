@@ -6733,7 +6733,7 @@ end
 -- _5Launcher
 function load_game_scene_anim_char_TRM_5Launcher(obj_char)
     local res = {}
-    local friction = 10
+    local friction = 4
     local gravity = 2.5
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
