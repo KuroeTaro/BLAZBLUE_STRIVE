@@ -2128,8 +2128,8 @@ end
             -- hit_VFX_insert_function
             -- hit_VFX_insert_function_argument
             -- hit_SFX
-            -- counter_VFX_insert_function
-            -- counter_VFX_insert_function_argument
+            -- hit_counter_VFX_insert_function
+            -- hit_counter_VFX_insert_function_argument
             -- counter_SFX
             -- block_VFX_insert_function
             -- block_VFX_insert_function_argument
@@ -2290,8 +2290,8 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver0
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,95,-400,0.8,0.75,0.75,0,false,false}
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver0
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,70,-700,1,1.1,1.1,0,false,false}
+        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver0
+        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,70,-700,1,1.1,1.1,0,false,false}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver0
         obj_char["block_SFX"] = nil
@@ -2540,8 +2540,8 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,-150,-510,0.9,0.8,0.8,0,false,false}
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,-150,-510,1,0.8,0.8,0,false,false}
+        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
+        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,-150,-510,1,0.8,0.8,0,false,false}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
@@ -2812,8 +2812,8 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver0
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,99,-600,0.8,0.75,0.75,0,false,false}
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver0
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,75,-915,1,1.1,1.1,0,false,false}
+        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver0
+        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,75,-915,1,1.1,1.1,0,false,false}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver0
         obj_char["block_SFX"] = nil
@@ -3061,8 +3061,8 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver0
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,115,-306,0.8,1,1,0,false,false}
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver0
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,100,-614,0.9,1.2,1.2,0,false,false}
+        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver0
+        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,100,-614,0.9,1.2,1.2,0,false,false}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
@@ -3347,8 +3347,8 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,0,-350,0.6,0.6,0.6,0,false,false}
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,-60,-420,0.8,0.8,0.8,0,false,false}
+        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
+        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,-60,-420,0.8,0.8,0.8,0,false,false}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
@@ -3646,8 +3646,8 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver0
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,145,-555,0.8,1,1,0,false,false}
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver0
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,150,-860,0.9,1.2,1.2,0,false,false}
+        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver0
+        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,150,-860,0.9,1.2,1.2,0,false,false}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
@@ -3933,8 +3933,8 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,305,-325,0.9,0.75,0.75,0,false,false}
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,305,-325,1,0.75,0.75,0,false,false}
+        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
+        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,305,-325,1,0.75,0.75,0,false,false}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
@@ -4255,8 +4255,8 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,130,-640,0.9,0.75,0.75,0,false,false}
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,130,-640,1,0.75,0.75,0,false,false}
+        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
+        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,130,-640,1,0.75,0.75,0,false,false}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
@@ -4315,8 +4315,8 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
         -- sub_obj
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,175,-615,0.9,0.75,0.75,0,false,false}
-        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,175,-615,1,0.75,0.75,0,false,false}
+        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
+        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,175,-615,1,0.75,0.75,0,false,false}
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-100,-355}
         -- draw_correction
@@ -4576,8 +4576,8 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,10,-580,0.6,0.75,0.75,0,false,false}
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,10,-580,0.75,0.75,0.75,0,false,false}
+        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
+        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,10,-580,0.75,0.75,0.75,0,false,false}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
@@ -4839,8 +4839,8 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,-40,-600,0.6,0.75,0.75,0,false,false}
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,-40,-600,0.75,0.75,0.75,0,false,false}
+        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
+        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,-40,-600,0.75,0.75,0.75,0,false,false}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
@@ -4899,8 +4899,8 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,35,-600,0.6,0.75,0.75,0,false,false}
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,35,-600,0.75,0.75,0.75,0,false,false}
+        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
+        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,35,-600,0.75,0.75,0.75,0,false,false}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
@@ -5888,8 +5888,8 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,100,-350,0.6,0.75,0.75,0,false,false}
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,100,-350,0.75,0.75,0.75,0,false,false}
+        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
+        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,100,-350,0.75,0.75,0.75,0,false,false}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
@@ -6109,8 +6109,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
         obj_char["hit_VFX_insert_function"] = nil
         obj_char["hit_VFX_insert_function_argument"] = nil
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = nil
-        obj_char["counter_VFX_insert_function_argument"] = nil
+        obj_char["hit_counter_VFX_insert_function"] = nil
+        obj_char["hit_counter_VFX_insert_function_argument"] = nil
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = nil
         obj_char["block_SFX"] = nil
@@ -6484,8 +6484,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,250,-500,0.8,0.6,0.6,0.262,true,false}
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = nil
-        obj_char["counter_VFX_insert_function_argument"] = {}
+        obj_char["hit_counter_VFX_insert_function"] = nil
+        obj_char["hit_counter_VFX_insert_function_argument"] = {}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = nil
         obj_char["block_SFX"] = nil
@@ -6882,8 +6882,8 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,-20,-690,0.6,0.75,0.75,0,false,false}
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,-20,-690,0.75,0.75,0.75,0,false,false}
+        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
+        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,-20,-690,0.75,0.75,0.75,0,false,false}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
@@ -7182,8 +7182,8 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,-20,-690,0.6,0.75,0.75,0,false,false}
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,-20,-690,0.75,0.75,0.75,0,false,false}
+        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
+        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,-20,-690,0.75,0.75,0.75,0,false,false}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
@@ -7473,8 +7473,8 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver0
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,55,-255,0.8,0.75,0.75,0,false,false}
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver0
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,35,-535,1,1.1,1.1,0,false,false}
+        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver0
+        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,35,-535,1,1.1,1.1,0,false,false}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver0
         obj_char["block_SFX"] = nil
@@ -7728,8 +7728,8 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver0
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,135,-460,0.8,1,1,0,false,false}
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver0
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,80,-915,0.85,1.5,1.5,0,false,false}
+        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver0
+        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,80,-915,0.85,1.5,1.5,0,false,false}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
@@ -7980,8 +7980,8 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,245,-120,0.8,0.75,0.75,1.571,true,false}
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,245,-120,0.9,0.75,0.75,1.571,true,false}
+        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
+        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,245,-120,0.9,0.75,0.75,1.571,true,false}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
@@ -8243,8 +8243,8 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,10,-315,0.6,1,1,0,false,false}
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,10,-315,0.75,1,1,0,false,false}
+        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
+        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,10,-315,0.75,1,1,0,false,false}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
@@ -8503,8 +8503,8 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,-10,200,0.6,0.8,0.8,3.14,false,true}
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,-10,200,0.75,0.8,0.8,3.14,false,true}
+        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
+        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,-10,200,0.75,0.8,0.8,3.14,false,true}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil
@@ -8686,8 +8686,8 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
         obj_char["hit_VFX_insert_function"] = nil
         obj_char["hit_VFX_insert_function_argument"] = nil
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = nil
-        obj_char["counter_VFX_insert_function_argument"] = nil
+        obj_char["hit_counter_VFX_insert_function"] = nil
+        obj_char["hit_counter_VFX_insert_function_argument"] = nil
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = nil
         obj_char["block_SFX"] = nil
@@ -9043,8 +9043,8 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,355,-595,0.9,1,1,1.047,true,false}
         obj_char["hit_SFX"] = nil
-        obj_char["counter_VFX_insert_function"] = nil
-        obj_char["counter_VFX_insert_function_argument"] = {}
+        obj_char["hit_counter_VFX_insert_function"] = nil
+        obj_char["hit_counter_VFX_insert_function_argument"] = {}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = nil
         obj_char["block_SFX"] = nil

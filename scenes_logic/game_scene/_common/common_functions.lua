@@ -318,19 +318,25 @@ function common_game_scene_strike_hit_function(obj_char)
             block_bool = true
         end
     end
+    if obj_char["risk_gauge"][1] >= obj_char["risk_gauge"][2] and not block_bool then
+        obj_char["hurt_state"] = "counter"
+        hit_side_obj_char["hit_function"] = common_game_scene_strike_hit_function
+        hit_side_obj_char["hurt_function"] = common_game_scene_strike_hurt_function
+        hit_side_obj_char["hit_counter_ver_function"] = common_game_scene_counter_ver3
+    end
     if obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
         hit_side_obj_char["hit_damage"] = hit_side_obj_char["hit_damage"]*1.1
-        local counter_VFX_insert_function_argument = hit_side_obj_char["counter_VFX_insert_function_argument"]
-        hit_side_obj_char["counter_VFX_insert_function"](
-            counter_VFX_insert_function_argument[1],
-            counter_VFX_insert_function_argument[2],
-            counter_VFX_insert_function_argument[3],
-            counter_VFX_insert_function_argument[4],
-            counter_VFX_insert_function_argument[5],
-            counter_VFX_insert_function_argument[6],
-            counter_VFX_insert_function_argument[7],
-            counter_VFX_insert_function_argument[8],
-            counter_VFX_insert_function_argument[9]
+        local hit_counter_VFX_insert_function_argument = hit_side_obj_char["hit_counter_VFX_insert_function_argument"]
+        hit_side_obj_char["hit_counter_VFX_insert_function"](
+            hit_counter_VFX_insert_function_argument[1],
+            hit_counter_VFX_insert_function_argument[2],
+            hit_counter_VFX_insert_function_argument[3],
+            hit_counter_VFX_insert_function_argument[4],
+            hit_counter_VFX_insert_function_argument[5],
+            hit_counter_VFX_insert_function_argument[6],
+            hit_counter_VFX_insert_function_argument[7],
+            hit_counter_VFX_insert_function_argument[8],
+            hit_counter_VFX_insert_function_argument[9]
         )
     elseif obj_char["hurt_state"] ~= "idle" or (not block_bool) then
         local hit_VFX_insert_function_argument = hit_side_obj_char["hit_VFX_insert_function_argument"]
@@ -913,57 +919,67 @@ function common_game_scene_char_apply_gauge(
     local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
     if block_or_hurt == "hurt" then
         -- hit_side
-        -- apply heat gain
-        hit_side_obj_char["heat_gauge"][1] = math.min(
-            hit_side_obj_char["heat_gauge"][1] + hit_side_obj_char["hurt_heat_gain"],
-            hit_side_obj_char["heat_gauge"][2]
-        )
+            -- apply heat gain
+            hit_side_obj_char["heat_gauge"][1] = math.min(
+                hit_side_obj_char["heat_gauge"][1] + hit_side_obj_char["hit_heat_gain"], -- hit_heat_gain
+                hit_side_obj_char["heat_gauge"][2]
+            )
         -- hurt_side
-        -- apply hit damage
-        hurt_side_obj_char["health_gauge"][1] = math.max(
-            hurt_side_obj_char["health_gauge"][1] - hit_side_obj_char["hit_damage"]*hurt_side_obj_char["damage_correction"],
-            0
-        )
-        -- apply risk gauge and damage_correction
-        if hurt_side_obj_char["risk_gauge"][1] < 0 then
-            hurt_side_obj_char["damage_correction"] = hurt_side_obj_char["damage_correction"]*hit_side_obj_char["hit_damage_correction_factor"]
-        else
-            hurt_side_obj_char["risk_gauge"][1] = math.max(
-                hurt_side_obj_char["risk_gauge"][1]-100,
+            -- apply hit damage
+            hurt_side_obj_char["health_gauge"][1] = math.max(
+                hurt_side_obj_char["health_gauge"][1] - hit_side_obj_char["hit_damage"]*hurt_side_obj_char["damage_correction"], -- hit_damage
                 0
             )
-        end
-        -- apply wallbreak damage
-        hurt_side_obj_char["wallbreak_gauge"][1] = math.min(
-            hurt_side_obj_char["wallbreak_gauge"][1] + hit_side_obj_char["hit_wallbreak_damage"],
-            hurt_side_obj_char["wallbreak_gauge"][2]
-        )
+            -- apply heat gain
+            hurt_side_obj_char["heat_gauge"][1] = math.min(
+                hurt_side_obj_char["heat_gauge"][1] + hit_side_obj_char["hurt_heat_gain"], -- hurt_heat_gain
+                hurt_side_obj_char["heat_gauge"][2]
+            ) 
+            -- apply risk gauge and damage_correction
+            if hurt_side_obj_char["risk_gauge"][1] < 0 then
+                hurt_side_obj_char["damage_correction"] = hurt_side_obj_char["damage_correction"]*hit_side_obj_char["hit_damage_correction_factor"] -- hit_damage_correction_factor
+            else
+                hurt_side_obj_char["risk_gauge"][1] = math.max(
+                    hurt_side_obj_char["risk_gauge"][1]-100,
+                    0
+                )
+            end
+            -- apply wallbreak damage
+            hurt_side_obj_char["wallbreak_gauge"][1] = math.min(
+                hurt_side_obj_char["wallbreak_gauge"][1] + hit_side_obj_char["hit_wallbreak_damage"], -- hit_wallbreak_damage
+                hurt_side_obj_char["wallbreak_gauge"][2]
+            )
     elseif not FD_block then
         -- hit_side
-        -- apply heat gain
-        hit_side_obj_char["heat_gauge"][1] = math.min(
-            hit_side_obj_char["heat_gauge"][1] + hit_side_obj_char["blocked_heat_gain"],
-            hit_side_obj_char["heat_gauge"][2]
-        )
+            -- apply heat gain
+            hit_side_obj_char["heat_gauge"][1] = math.min(
+                hit_side_obj_char["heat_gauge"][1] + hit_side_obj_char["blocked_heat_gain"], -- blocked_heat_gain
+                hit_side_obj_char["heat_gauge"][2]
+            )
         -- hurt_side
-        -- apply risk gauge
-        hurt_side_obj_char["risk_gauge"][1] = math.max(
-            hurt_side_obj_char["risk_gauge"][1] + hit_side_obj_char["block_risk_gauge_gain"],
-            hurt_side_obj_char["risk_gauge"][2]
-        )
+            -- apply heat gain
+            hurt_side_obj_char["heat_gauge"][1] = math.min(
+                hurt_side_obj_char["heat_gauge"][1] + hit_side_obj_char["block_heat_gain"], -- block_heat_gain
+                hurt_side_obj_char["heat_gauge"][2]
+            ) 
+            -- apply risk gauge
+            hurt_side_obj_char["risk_gauge"][1] = math.max(
+                hurt_side_obj_char["risk_gauge"][1] + hit_side_obj_char["block_risk_gauge_gain"], -- block_risk_gauge_gain
+                hurt_side_obj_char["risk_gauge"][2]
+            )
     else
         -- hit_side
-        -- apply heat gain
-        hit_side_obj_char["heat_gauge"][1] = math.min(
-            hit_side_obj_char["heat_gauge"][1] + hit_side_obj_char["blocked_heat_gain"],
-            hit_side_obj_char["heat_gauge"][2]
-        )
+            -- apply heat gain
+            hit_side_obj_char["heat_gauge"][1] = math.min(
+                hit_side_obj_char["heat_gauge"][1] + hit_side_obj_char["blocked_heat_gain"],
+                hit_side_obj_char["heat_gauge"][2]
+            )
         -- hurt_side
-        -- apply heat drain
-        hurt_side_obj_char["heat_gauge"][1] = math.max(
-            hurt_side_obj_char["heat_gauge"][1] - hit_side_obj_char["FD_block_heat_drain"],
-            0
-        )
+            -- apply heat drain
+            hurt_side_obj_char["heat_gauge"][1] = math.max(
+                hurt_side_obj_char["heat_gauge"][1] - hit_side_obj_char["FD_block_heat_drain"], -- FD_block_heat_drain
+                0
+            )
     end
 end
 function common_game_scene_char_apply_hurt_velocity(
@@ -1051,63 +1067,72 @@ function common_game_scene_char_apply_knockdown_velocity(
 end
 
 function common_game_scene_projectile_apply_gauge(
-    hit_side_obj_char,hurt_side_obj_char,block_or_hurt,projectile
+    hit_side_obj_char,hurt_side_obj_char,block_or_hurt,FD_block,projectile
 )
     local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
-    local FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
     if block_or_hurt == "hurt" then
         -- hit_side
-        -- apply heat gain
-        hit_side_obj_char["heat_gauge"][1] = math.min(
-            hit_side_obj_char["heat_gauge"][1] + projectile["hurt_heat_gain"],
-            hit_side_obj_char["heat_gauge"][2]
-        )
+            -- apply heat gain
+            hit_side_obj_char["heat_gauge"][1] = math.min(
+                hit_side_obj_char["heat_gauge"][1] + projectile["hit_heat_gain"],
+                hit_side_obj_char["heat_gauge"][2]
+            )
         -- hurt_side
-        -- apply hit damage
-        hurt_side_obj_char["health_gauge"][1] = math.max(
-            hurt_side_obj_char["health_gauge"][1] - projectile["hit_damage"]*hurt_side_obj_char["damage_correction"],
-            0
-        )
-        -- apply risk gauge and damage_correction
-        if hurt_side_obj_char["risk_gauge"][1] < 0 then
-            hurt_side_obj_char["damage_correction"] = hurt_side_obj_char["damage_correction"]*projectile["hit_damage_correction_factor"]
-        else
-            hurt_side_obj_char["risk_gauge"][1] = math.max(
-                hurt_side_obj_char["risk_gauge"][1]-100,
+            -- apply hit damage
+            hurt_side_obj_char["health_gauge"][1] = math.max(
+                hurt_side_obj_char["health_gauge"][1] - projectile["hit_damage"]*hurt_side_obj_char["damage_correction"],
                 0
             )
-        end
-        -- apply wallbreak damage
-        hurt_side_obj_char["wallbreak_gauge"][1] = math.min(
-            hurt_side_obj_char["wallbreak_gauge"][1] + projectile["hit_wallbreak_damage"],
-            hurt_side_obj_char["wallbreak_gauge"][2]
-        )
+            -- apply heat gain
+            hurt_side_obj_char["heat_gauge"][1] = math.min(
+                hurt_side_obj_char["heat_gauge"][1] + projectile["hurt_heat_gain"],
+                hurt_side_obj_char["heat_gauge"][2]
+            ) 
+            -- apply risk gauge and damage_correction
+            if hurt_side_obj_char["risk_gauge"][1] < 0 then
+                hurt_side_obj_char["damage_correction"] = hurt_side_obj_char["damage_correction"]*hit_side_obj_char["hit_damage_correction_factor"]
+            else
+                hurt_side_obj_char["risk_gauge"][1] = math.max(
+                    hurt_side_obj_char["risk_gauge"][1]-100,
+                    0
+                )
+            end
+            -- apply wallbreak damage
+            hurt_side_obj_char["wallbreak_gauge"][1] = math.min(
+                hurt_side_obj_char["wallbreak_gauge"][1] + hit_side_obj_char["hit_wallbreak_damage"],
+                hurt_side_obj_char["wallbreak_gauge"][2]
+            )
     elseif not FD_block then
         -- hit_side
-        -- apply heat gain
-        hit_side_obj_char["heat_gauge"][1] = math.min(
-            hit_side_obj_char["heat_gauge"][1] + projectile["blocked_heat_gain"],
-            hit_side_obj_char["heat_gauge"][2]
-        )
+            -- apply heat gain
+            hit_side_obj_char["heat_gauge"][1] = math.min(
+                hit_side_obj_char["heat_gauge"][1] + projectile["blocked_heat_gain"],
+                hit_side_obj_char["heat_gauge"][2]
+            )
         -- hurt_side
-        -- apply risk gauge
-        hurt_side_obj_char["risk_gauge"][1] = math.max(
-            hurt_side_obj_char["risk_gauge"][1] + projectile["block_risk_gauge_gain"],
-            hurt_side_obj_char["risk_gauge"][2]
-        )
+            -- apply heat gain
+            hurt_side_obj_char["heat_gauge"][1] = math.min(
+                hurt_side_obj_char["heat_gauge"][1] + hit_side_obj_char["block_heat_gain"],
+                hurt_side_obj_char["heat_gauge"][2]
+            ) 
+            -- apply risk gauge
+            hurt_side_obj_char["risk_gauge"][1] = math.max(
+                hurt_side_obj_char["risk_gauge"][1] + hit_side_obj_char["block_risk_gauge_gain"],
+                hurt_side_obj_char["risk_gauge"][2]
+            )
     else
         -- hit_side
-        -- apply heat gain
-        hit_side_obj_char["heat_gauge"][1] = math.min(
-            hit_side_obj_char["heat_gauge"][1] + projectile["blocked_heat_gain"],
-            hit_side_obj_char["heat_gauge"][2]
-        )
+            -- apply heat gain
+            hit_side_obj_char["heat_gauge"][1] = math.min(
+                hit_side_obj_char["heat_gauge"][1] + projectile["blocked_heat_gain"],
+                hit_side_obj_char["heat_gauge"][2]
+            )
         -- hurt_side
-        -- apply heat drain
-        hurt_side_obj_char["heat_gauge"][1] = math.max(
-            hurt_side_obj_char["heat_gauge"][1] - projectile["FD_block_heat_drain"],
-            0
-        )
+            -- apply heat drain
+            hurt_side_obj_char["heat_gauge"][1] = math.max(
+                hurt_side_obj_char["heat_gauge"][1] - projectile["FD_block_heat_drain"],
+                0
+            )
     end
 end
 function common_game_scene_projectile_apply_hurt_velocity(

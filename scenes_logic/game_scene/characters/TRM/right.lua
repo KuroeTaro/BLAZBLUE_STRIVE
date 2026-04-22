@@ -187,8 +187,8 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["hit_VFX_insert_function"] = nil
     obj_char_game_scene_char_RP["hit_VFX_insert_function_argument"] = nil
     obj_char_game_scene_char_RP["hit_SFX"] = nil
-    obj_char_game_scene_char_RP["counter_VFX_insert_function"] = nil
-    obj_char_game_scene_char_RP["counter_VFX_insert_function_argument"] = nil
+    obj_char_game_scene_char_RP["hit_counter_VFX_insert_function"] = nil
+    obj_char_game_scene_char_RP["hit_counter_VFX_insert_function_argument"] = nil
     obj_char_game_scene_char_RP["counter_SFX"] = nil
     obj_char_game_scene_char_RP["block_VFX_insert_function"] = nil
     obj_char_game_scene_char_RP["block_SFX"] = nil

@@ -21,6 +21,16 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     obj["life"] = 42
     obj["sprite_sheet_state"] = "5H_miss_projectile"
 
+    obj["hit_damage"] = 0
+    obj["hit_damage_correction_factor"] = 1
+    obj["hit_heat_gain"] = 0
+    obj["hit_wallbreak_damage"] = 0
+    obj["hurt_heat_gain"] = 0
+    obj["blocked_heat_gain"] = 0
+    obj["block_heat_gain"] = 0
+    obj["block_risk_gauge_gain"] = 0
+    obj["FD_block_heat_drain"] = 0
+
     obj["velocity"] = {0,0}
 
     obj["pushbox"] = nil
@@ -364,6 +374,16 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main_anim(obj,
         -- state
         obj[1] = obj_char["shot_sys_reticle"][1]
         obj[2] = obj_char["shot_sys_reticle"][2]
+        -- state_number
+        obj["hit_damage"] = 300.0
+        obj["hit_damage_correction_factor"] = 1
+        obj["hit_heat_gain"] = 10.0
+        obj["hit_wallbreak_damage"] = 20.0
+        obj["hurt_heat_gain"] = 2.0
+        obj["blocked_heat_gain"] = 8.0
+        obj["block_heat_gain"] = 2.0
+        obj["block_risk_gauge_gain"] = 25.0
+        obj["FD_block_heat_drain"] = 5.0
         -- draw_correction
         obj[8] = 0
     end
@@ -442,9 +462,13 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
-        if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
+        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
+        if FD_block then
             hurt_horizontal_velocity = hurt_horizontal_velocity * 2
         end
+        common_game_scene_projectile_apply_gauge(
+            obj_char,obj_char_other_side,"block",FD_block,projectile
+        )
         common_game_scene_projectile_apply_hurt_velocity(
             obj_char,obj_char_other_side,projectile,
             hurt_horizontal_velocity,
@@ -587,10 +611,13 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
-        if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
+        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
+        if FD_block then
             hurt_horizontal_velocity = hurt_horizontal_velocity * 2
-            hurt_vertical_velocity = hurt_vertical_velocity + math.abs(hurt_vertical_velocity)*0.2
         end
+        common_game_scene_projectile_apply_gauge(
+            obj_char,obj_char_other_side,"block",FD_block,projectile
+        )
         common_game_scene_projectile_apply_hurt_velocity(
             obj_char,obj_char_other_side,projectile,
             hurt_horizontal_velocity,
@@ -738,6 +765,9 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
+        common_game_scene_projectile_apply_gauge(
+            obj_char,obj_char_other_side,"hurt",false,projectile
+        )
         common_game_scene_projectile_apply_hurt_velocity(
             obj_char,obj_char_other_side,projectile,
             hurt_horizontal_velocity,
@@ -861,6 +891,9 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
+        common_game_scene_projectile_apply_gauge(
+            obj_char,obj_char_other_side,"hurt",false,projectile
+        )
         common_game_scene_projectile_apply_hurt_velocity(
             obj_char,obj_char_other_side,projectile,
             hurt_horizontal_velocity,
