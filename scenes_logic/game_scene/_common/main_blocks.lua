@@ -428,10 +428,16 @@ function update_game_scene_training_main()
         -- 调整hitstop_countdown
         -- LP和RP进入hitstop或者hurtstop 搭配对应的state_cache
 
+    -- 更新hurt_block_at_current_frame
+    char_LP["hurt_block_at_current_frame"] = false
+    char_RP["hurt_block_at_current_frame"] = false
+
     -- 更新阻力
     update_game_scene_friction()
     -- 更新角色重力方向速度
     update_game_scene_gravity()
+    -- 更新资源槽
+    update_game_scene_gauge()
     -- 更新sub_frame
     update_game_scene_game_speed_sub_frame()
 
@@ -457,6 +463,26 @@ function update_game_scene_online_match_synchronizing()
     update_game_scene_char_RP()
 end
 
+function update_game_scene_gauge()
+    local char_LP = obj_char_game_scene_char_LP
+    local char_RP = obj_char_game_scene_char_RP
+
+    if not char_LP["gauge_update_ban_states"][char_LP["state"]] then
+        char_LP["health_gauge_update_function"]()
+        char_LP["overdrive_gauge_update_function"]()
+        char_LP["ability_gauge_update_function"]()
+        char_LP["risk_gauge_update_function"]()
+        char_LP["wallbreak_gauge_update_function"]()
+    end
+    char_RP["health_gauge_update_function"]()
+    if not char_RP["gauge_update_ban_states"][char_RP["state"]] then
+        char_LP["health_gauge_update_function"]()
+        char_RP["overdrive_gauge_update_function"]()
+        char_RP["ability_gauge_update_function"]()
+        char_RP["risk_gauge_update_function"]()
+        char_RP["wallbreak_gauge_update_function"]()
+    end
+end
 function update_game_scene_gravity()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP

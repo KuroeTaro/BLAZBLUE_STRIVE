@@ -31,10 +31,15 @@ function common_game_scene_test_and_apply_wallstick()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
     local stage_collision = false
+    local collision_side = 0
 
-    stage_collision = char_LP["collision_move_available"][1] == 0 or char_LP["collision_move_available"][2] == 0
+    if char_LP["collision_move_available"][1] == 0 then
+        collision_side = -1
+    elseif char_LP["collision_move_available"][2] == 0 then
+        collision_side = 1
+    end
     if char_LP["state"] ~= "wallstick" and char_LP["wallbreakable_with_wallstick"] and 
-    char_LP["wallbreak_gauge"][1] >= char_LP["wallbreak_gauge"][2] and stage_collision 
+    char_LP["wallbreak_gauge"][1] >= char_LP["wallbreak_gauge"][2] and collision_side ~= 0 
     then
         if char_LP["height_state"] == "air" then
             char_LP["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(char_LP)
@@ -43,11 +48,25 @@ function common_game_scene_test_and_apply_wallstick()
             char_LP["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(char_LP)
             init_character_anim_with(char_LP,char_LP["character_animation"])
         end
-        char_LP["state"] = "wallstick"
+        char_LP["state_cache"] = "wallstick"
+        char_LP["state"] = "hurtstop"
+        char_LP["wallstick_on"] = collision_side
+        char_RP["state_cache"] = char_RP["state"]
+        char_RP["state"] = "hitstop"
+        -- hit_hurt_blockstop_countdown
+        char_LP["hit_hurt_blockstop_countdown"] = 30
+        char_LP["last_hitstop_frame"] = 0
+        char_RP["hit_hurt_blockstop_countdown"] = 30
+        char_RP["last_hitstop_frame"] = 0
     end
-    stage_collision = char_RP["collision_move_available"][1] == 0 or char_RP["collision_move_available"][2] == 0
+
+    if char_RP["collision_move_available"][1] == 0 then
+        collision_side = -1
+    elseif char_RP["collision_move_available"][2] == 0 then
+        collision_side = 1
+    end
     if char_RP["state"] ~= "wallstick" and char_RP["wallbreakable_with_wallstick"] and 
-    char_RP["wallbreak_gauge"][1] >= char_RP["wallbreak_gauge"][2] and stage_collision 
+    char_RP["wallbreak_gauge"][1] >= char_RP["wallbreak_gauge"][2] and collision_side ~= 0  
     then
         if char_RP["height_state"] == "air" then
             char_RP["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(char_RP)
@@ -56,23 +75,45 @@ function common_game_scene_test_and_apply_wallstick()
             char_RP["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(char_RP)
             init_character_anim_with(char_RP,char_RP["character_animation"])
         end
-        char_RP["state"] = "wallstick"
+        char_RP["state_cache"] = "wallstick"
+        char_RP["state"] = "hurtstop"
+        char_RP["wallstick_on"] = collision_side
+        char_LP["state_cache"] = char_RP["state"]
+        char_LP["state"] = "hitstop"
+        -- hit_hurt_blockstop_countdown
+        char_RP["hit_hurt_blockstop_countdown"] = 30
+        char_RP["last_hitstop_frame"] = 0
+        char_LP["hit_hurt_blockstop_countdown"] = 30
+        char_LP["last_hitstop_frame"] = 0
     end
-    if char_LP["state"] == "wallstick" and char_RP["state"] == "wallstick" then
+
+    if char_LP["wallstick_on"] ~= 0 and char_RP["wallstick_on"] ~= 0  then
+        local obj_camera = obj_stage_game_scene_camera
+        char_LP["hit_hurt_blockstop_countdown"] = 0
+        char_RP["hit_hurt_blockstop_countdown"] = 0
+        char_LP["hit_hurt_block_slowdown_countdown"] = 0
+        char_RP["hit_hurt_block_slowdown_countdown"] = 0
+        char_LP["game_speed"] = 1
+        char_RP["game_speed"] = 1
+        obj_camera["state"] = "main"
+        obj_camera["enclose_percentage"] = 0.0
+        obj_camera["enclose_position_offset"] = {0,0,0}
     end
 end
 function common_game_scene_test_and_apply_wallbreak(obj_char)
     local stage_collision = false
+    
     stage_collision = obj_char["collision_move_available"][1] == 0 or obj_char["collision_move_available"][2] == 0
-
-    if (obj_char["state"] == "wallstick" and obj_char["wallbreakable_with_wallstick"]) or
+    if (obj_char["wallstick_on"] ~= 0 and obj_char["wallbreakable_with_wallstick"]) or
     (stage_collision and obj_char["wallbreakable_without_wallstick"]) 
     then
+        common_game_scene_apply_wallbreak_transport()
         return true
     end
     return false
 end
 function common_game_scene_apply_wallbreak_transport()
+    print("it dose")
 end
 
 function common_game_scene_get_SFX_table(side)
@@ -315,11 +356,17 @@ function common_game_scene_strike_hurt_function(obj_char)
     local obj_camera = obj_stage_game_scene_camera
     -- physics_lock
     obj_char["physics_lock"] = true
+    -- hurt_block_at_current_frame
+    obj_char["hurt_block_at_current_frame"] = true
     -- change_draw_front
     CHARACTER_VISUAL_FRONT = hit_side_obj_char["player_side"]
     -- change_character_face
     if not common_game_scene_get_character_facing_currect(obj_char) then
         obj_char[5] = -obj_char[5]
+    end
+    -- wallbreak_test_and_apply
+    if common_game_scene_test_and_apply_wallbreak(obj_char) then
+        return
     end
     -- block_test
     local block_bool = false
@@ -356,6 +403,7 @@ function common_game_scene_strike_hurt_function(obj_char)
 end
 function common_game_scene_strike_hurt_function_common_block(obj_char,hit_side_obj_char,obj_camera)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
+    local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
     -- state
     obj_char["state_cache"] = "block"
     obj_char["state"] = "blockstop"
@@ -406,7 +454,7 @@ function common_game_scene_strike_hurt_function_common_block(obj_char,hit_side_o
     obj_char["last_hitstop_frame"] = 0
     -- block_VFX
     hit_side_obj_char["block_VFX_insert_function"](obj_char)
-    if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
+    if FD_block then
         insert_VFX_game_scene_char_FD_block(obj_char)
     end
 end
@@ -456,7 +504,7 @@ function common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_ob
     if obj_char["hurt_state"] == "counter" then 
         hit_side_obj_char["hit_counter_ver_function"](hit_side_obj_char,obj_char)
     else
-         -- set_nil_camera_enclose
+    -- set_nil_camera_enclose
         common_game_scene_nil_load_camera_enclose_anim(hit_side_obj_char)
     end
     -- insert_camera_shake_enclose
@@ -859,6 +907,65 @@ function common_update_game_scene_char_game_speed_abnormal_realtime_countdown(ob
     end
 end
 
+function common_game_scene_char_apply_gauge(
+    hit_side_obj_char,hurt_side_obj_char,block_or_hurt,FD_block
+)
+    local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
+    if block_or_hurt == "hurt" then
+        -- hit_side
+        -- apply heat gain
+        hit_side_obj_char["heat_gauge"][1] = math.min(
+            hit_side_obj_char["heat_gauge"][1] + hit_side_obj_char["hurt_heat_gain"],
+            hit_side_obj_char["heat_gauge"][2]
+        )
+        -- hurt_side
+        -- apply hit damage
+        hurt_side_obj_char["health_gauge"][1] = math.max(
+            hurt_side_obj_char["health_gauge"][1] - hit_side_obj_char["hit_damage"]*hurt_side_obj_char["damage_correction"],
+            0
+        )
+        -- apply risk gauge and damage_correction
+        if hurt_side_obj_char["risk_gauge"][1] < 0 then
+            hurt_side_obj_char["damage_correction"] = hurt_side_obj_char["damage_correction"]*hit_side_obj_char["hit_damage_correction_factor"]
+        else
+            hurt_side_obj_char["risk_gauge"][1] = math.max(
+                hurt_side_obj_char["risk_gauge"][1]-100,
+                0
+            )
+        end
+        -- apply wallbreak damage
+        hurt_side_obj_char["wallbreak_gauge"][1] = math.min(
+            hurt_side_obj_char["wallbreak_gauge"][1] + hit_side_obj_char["hit_wallbreak_damage"],
+            hurt_side_obj_char["wallbreak_gauge"][2]
+        )
+    elseif not FD_block then
+        -- hit_side
+        -- apply heat gain
+        hit_side_obj_char["heat_gauge"][1] = math.min(
+            hit_side_obj_char["heat_gauge"][1] + hit_side_obj_char["blocked_heat_gain"],
+            hit_side_obj_char["heat_gauge"][2]
+        )
+        -- hurt_side
+        -- apply risk gauge
+        hurt_side_obj_char["risk_gauge"][1] = math.max(
+            hurt_side_obj_char["risk_gauge"][1] + hit_side_obj_char["block_risk_gauge_gain"],
+            hurt_side_obj_char["risk_gauge"][2]
+        )
+    else
+        -- hit_side
+        -- apply heat gain
+        hit_side_obj_char["heat_gauge"][1] = math.min(
+            hit_side_obj_char["heat_gauge"][1] + hit_side_obj_char["blocked_heat_gain"],
+            hit_side_obj_char["heat_gauge"][2]
+        )
+        -- hurt_side
+        -- apply heat drain
+        hurt_side_obj_char["heat_gauge"][1] = math.max(
+            hurt_side_obj_char["heat_gauge"][1] - hit_side_obj_char["FD_block_heat_drain"],
+            0
+        )
+    end
+end
 function common_game_scene_char_apply_hurt_velocity(
     obj_char,obj_char_other_side,
     hurt_horizontal_velocity,
@@ -943,6 +1050,66 @@ function common_game_scene_char_apply_knockdown_velocity(
     end
 end
 
+function common_game_scene_projectile_apply_gauge(
+    hit_side_obj_char,hurt_side_obj_char,block_or_hurt,projectile
+)
+    local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
+    local FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
+    if block_or_hurt == "hurt" then
+        -- hit_side
+        -- apply heat gain
+        hit_side_obj_char["heat_gauge"][1] = math.min(
+            hit_side_obj_char["heat_gauge"][1] + projectile["hurt_heat_gain"],
+            hit_side_obj_char["heat_gauge"][2]
+        )
+        -- hurt_side
+        -- apply hit damage
+        hurt_side_obj_char["health_gauge"][1] = math.max(
+            hurt_side_obj_char["health_gauge"][1] - projectile["hit_damage"]*hurt_side_obj_char["damage_correction"],
+            0
+        )
+        -- apply risk gauge and damage_correction
+        if hurt_side_obj_char["risk_gauge"][1] < 0 then
+            hurt_side_obj_char["damage_correction"] = hurt_side_obj_char["damage_correction"]*projectile["hit_damage_correction_factor"]
+        else
+            hurt_side_obj_char["risk_gauge"][1] = math.max(
+                hurt_side_obj_char["risk_gauge"][1]-100,
+                0
+            )
+        end
+        -- apply wallbreak damage
+        hurt_side_obj_char["wallbreak_gauge"][1] = math.min(
+            hurt_side_obj_char["wallbreak_gauge"][1] + projectile["hit_wallbreak_damage"],
+            hurt_side_obj_char["wallbreak_gauge"][2]
+        )
+    elseif not FD_block then
+        -- hit_side
+        -- apply heat gain
+        hit_side_obj_char["heat_gauge"][1] = math.min(
+            hit_side_obj_char["heat_gauge"][1] + projectile["blocked_heat_gain"],
+            hit_side_obj_char["heat_gauge"][2]
+        )
+        -- hurt_side
+        -- apply risk gauge
+        hurt_side_obj_char["risk_gauge"][1] = math.max(
+            hurt_side_obj_char["risk_gauge"][1] + projectile["block_risk_gauge_gain"],
+            hurt_side_obj_char["risk_gauge"][2]
+        )
+    else
+        -- hit_side
+        -- apply heat gain
+        hit_side_obj_char["heat_gauge"][1] = math.min(
+            hit_side_obj_char["heat_gauge"][1] + projectile["blocked_heat_gain"],
+            hit_side_obj_char["heat_gauge"][2]
+        )
+        -- hurt_side
+        -- apply heat drain
+        hurt_side_obj_char["heat_gauge"][1] = math.max(
+            hurt_side_obj_char["heat_gauge"][1] - projectile["FD_block_heat_drain"],
+            0
+        )
+    end
+end
 function common_game_scene_projectile_apply_hurt_velocity(
     obj_char,obj_char_other_side,projectile,
     hurt_horizontal_velocity,

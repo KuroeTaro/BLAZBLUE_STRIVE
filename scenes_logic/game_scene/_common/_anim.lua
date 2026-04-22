@@ -81,6 +81,7 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -254,6 +255,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
         
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -270,6 +272,9 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
+        common_game_scene_char_apply_gauge(
+            obj_char,obj_char_other_side,"hurt",false
+        )
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
@@ -367,6 +372,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -383,6 +389,9 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
+        common_game_scene_char_apply_gauge(
+            obj_char,obj_char_other_side,"hurt",false
+        )
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
@@ -486,6 +495,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -502,6 +512,9 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
+        common_game_scene_char_apply_gauge(
+            obj_char,obj_char_other_side,"hurt",false
+        )
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
@@ -611,6 +624,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -627,6 +641,9 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
+        common_game_scene_char_apply_gauge(
+            obj_char,obj_char_other_side,"hurt",false
+        )
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
@@ -736,6 +753,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -752,6 +770,9 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
+        common_game_scene_char_apply_gauge(
+            obj_char,obj_char_other_side,"hurt",false
+        )
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
@@ -896,6 +917,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -913,9 +935,13 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
-        if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
+        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
+        if FD_block then
             hurt_horizontal_velocity = hurt_horizontal_velocity * 2
         end
+        common_game_scene_char_apply_gauge(
+            obj_char,obj_char_other_side,"block",FD_block
+        )
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
@@ -1007,6 +1033,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -1024,9 +1051,13 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
-        if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
+        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
+        if FD_block then
             hurt_horizontal_velocity = hurt_horizontal_velocity * 2
         end
+        common_game_scene_char_apply_gauge(
+            obj_char,obj_char_other_side,"block",FD_block
+        )
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
@@ -1120,6 +1151,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -1137,9 +1169,13 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
-        if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
+        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
+        if FD_block then
             hurt_horizontal_velocity = hurt_horizontal_velocity * 2
         end
+        common_game_scene_char_apply_gauge(
+            obj_char,obj_char_other_side,"block",FD_block
+        )
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
@@ -1235,6 +1271,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -1252,9 +1289,13 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
-        if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
+        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
+        if FD_block then
             hurt_horizontal_velocity = hurt_horizontal_velocity * 2
         end
+        common_game_scene_char_apply_gauge(
+            obj_char,obj_char_other_side,"block",FD_block
+        )
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
@@ -1354,6 +1395,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -1371,9 +1413,13 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
-        if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
+        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
+        if FD_block then
             hurt_horizontal_velocity = hurt_horizontal_velocity * 2
         end
+        common_game_scene_char_apply_gauge(
+            obj_char,obj_char_other_side,"block",FD_block
+        )
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
@@ -1503,6 +1549,7 @@ function load_game_scene_anim_char_common_0_air_block(
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -1520,10 +1567,13 @@ function load_game_scene_anim_char_common_0_air_block(
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
-        if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
+        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
+        if FD_block then
             hurt_horizontal_velocity = hurt_horizontal_velocity * 2
-            hurt_vertical_velocity = hurt_vertical_velocity + math.abs(hurt_vertical_velocity)*0.2
         end
+        common_game_scene_char_apply_gauge(
+            obj_char,obj_char_other_side,"block",FD_block
+        )
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
@@ -1669,6 +1719,7 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         obj_char["wallstickable"] = false
         obj_char["wallbreakable_with_wallstick"] = false
         obj_char["wallbreakable_without_wallstick"] = false
+        obj_char["wallstick_on"] = 0
 
         obj_char["startup_frame"] = 0
         obj_char["active_frame"] = 0
@@ -1946,6 +1997,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -2072,6 +2124,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -2196,6 +2249,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -2475,6 +2529,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -2591,6 +2646,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -2707,6 +2763,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -2816,6 +2873,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -2951,6 +3009,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["idle_cancel"] = false
 
@@ -3191,6 +3250,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -3212,6 +3272,9 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
+        common_game_scene_char_apply_gauge(
+            obj_char,obj_char_other_side,"hurt",false
+        )
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
@@ -3422,6 +3485,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -3443,6 +3507,9 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
+        common_game_scene_char_apply_gauge(
+            obj_char,obj_char_other_side,"hurt",false
+        )
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
@@ -3617,6 +3684,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -3638,6 +3706,9 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
+        common_game_scene_char_apply_gauge(
+            obj_char,obj_char_other_side,"hurt",false
+        )
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
@@ -3752,6 +3823,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -3773,6 +3845,9 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
+        common_game_scene_char_apply_gauge(
+            obj_char,obj_char_other_side,"hurt",false
+        )
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
@@ -3894,6 +3969,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -3915,6 +3991,9 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
+        common_game_scene_char_apply_gauge(
+            obj_char,obj_char_other_side,"hurt",false
+        )
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
@@ -4062,6 +4141,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -4083,6 +4163,9 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
+        common_game_scene_char_apply_gauge(
+            obj_char,obj_char_other_side,"hurt",false
+        )
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
@@ -4216,6 +4299,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -4237,6 +4321,9 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
+        common_game_scene_char_apply_gauge(
+            obj_char,obj_char_other_side,"hurt",false
+        )
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,
@@ -4352,6 +4439,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -4498,6 +4586,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -4636,6 +4725,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -4652,6 +4742,9 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
+        common_game_scene_char_apply_gauge(
+            obj_char,obj_char_other_side,"hurt",false
+        )
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             hurt_horizontal_velocity,

@@ -2164,6 +2164,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         obj_char["recovery_frame"] = 0
         
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0
@@ -2413,6 +2414,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         obj_char["recovery_frame"] = 0
         
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0
@@ -2684,6 +2686,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char["recovery_frame"] = 0
         
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0
@@ -2932,6 +2935,7 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
         obj_char["recovery_frame"] = 0
         
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0
@@ -3216,6 +3220,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         obj_char["recovery_frame"] = 0
         
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0
@@ -3515,6 +3520,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         direction_input_mapping()
 
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0
@@ -3801,6 +3807,7 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
         obj_char["recovery_frame"] = 0
         
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0
@@ -4102,6 +4109,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
         obj_char["recovery_frame"] = 0
         
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0
@@ -4442,6 +4450,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         direction_input_mapping()
 
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0
@@ -4700,6 +4709,7 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
         obj_char["recovery_frame"] = 0
         
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0
@@ -5712,6 +5722,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         obj_char["recovery_frame"] = 0
         
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0
@@ -6042,6 +6053,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
         obj_char["recovery_frame"] = 0
 
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0
@@ -6233,6 +6245,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -6309,6 +6322,9 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
     end
     res[37] = function()
         -- state
+        common_game_scene_char_apply_gauge(
+            obj_char,obj_char_other_side,"hurt",false
+        )
         common_game_scene_char_apply_hurt_velocity(
             obj_char,obj_char_other_side,
             10,
@@ -6421,6 +6437,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         obj_char["recovery_frame"] = 0
         
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0
@@ -6737,6 +6754,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char["recovery_frame"] = 0
         
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0
@@ -7036,6 +7054,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
         obj_char["recovery_frame"] = 0
         
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0
@@ -7328,6 +7347,7 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
         obj_char["recovery_frame"] = 0
         
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0
@@ -7582,6 +7602,7 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
         obj_char["recovery_frame"] = 0
         
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0
@@ -7828,6 +7849,7 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
         obj_char["recovery_frame"] = 0
         
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0
@@ -8095,6 +8117,7 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
         obj_char["recovery_frame"] = 0
         
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0
@@ -8354,6 +8377,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
         obj_char["recovery_frame"] = 0
         
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0
@@ -8606,6 +8630,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
         obj_char["recovery_frame"] = 0
         
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0
@@ -8798,6 +8823,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -8970,6 +8996,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         obj_char["recovery_frame"] = 0
         
         obj_char["hit_damage"] = 300.0
+        obj_char["hit_damage_correction_factor"] = 1
         obj_char["hit_heat_gain"] = 10.0
         obj_char["hit_wallbreak_damage"] = 20.0
         obj_char["hurt_heat_gain"] = 2.0

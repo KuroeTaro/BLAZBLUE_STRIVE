@@ -30,6 +30,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_LP["move_state"] = "none" -- none startup active recovery
     obj_char_game_scene_char_LP["last_move_state"] = "none" -- none startup active recovery
+    obj_char_game_scene_char_LP["hurt_block_at_current_frame"] = false
 
     -- input
     obj_char_game_scene_char_LP["direction_input"] = 5
@@ -51,6 +52,7 @@ function load_game_scene_obj_char_LP()
 
         -- hit_hurt_block_animation
     obj_char_game_scene_char_LP["hit_damage"] = 0
+    obj_char_game_scene_char_LP["hit_damage_correction_factor"] = 1
     obj_char_game_scene_char_LP["hit_heat_gain"] = 0
     obj_char_game_scene_char_LP["hit_wallbreak_damage"] = 0
     obj_char_game_scene_char_LP["hurt_heat_gain"] = 0
@@ -62,6 +64,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["wallstickable"] = false
     obj_char_game_scene_char_LP["wallbreakable_with_wallstick"] = false
     obj_char_game_scene_char_LP["wallbreakable_without_wallstick"] = false
+    obj_char_game_scene_char_LP["wallstick_on"] = 0
     
     obj_char_game_scene_char_LP["stand_hurt_animation"] = nil
     obj_char_game_scene_char_LP["stand_block_animation"] = nil
@@ -102,6 +105,12 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["parry_function"] = function() end
     obj_char_game_scene_char_LP["hit_counter_ver_function"] = function() end
 
+    obj_char_game_scene_char_LP["health_gauge_update_function"] = function() end
+    obj_char_game_scene_char_LP["overdrive_gauge_update_function"] = function() end
+    obj_char_game_scene_char_LP["ability_gauge_update_function"] = function() end
+    obj_char_game_scene_char_LP["risk_gauge_update_function"] = function() end
+    obj_char_game_scene_char_LP["wallbreak_gauge_update_function"] = function() end
+
     -- state_number
     obj_char_game_scene_char_LP["velocity"] = {0,0}
     obj_char_game_scene_char_LP["velocity_debug"] = {0,0}
@@ -125,6 +134,23 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["ability_recover_pause_countdown"] = 0
     obj_char_game_scene_char_LP["positive_bonus"] = false
     obj_char_game_scene_char_LP["positive_bonus_countdown"] = 0
+
+    obj_char_game_scene_char_LP["gauge_update_ban_states"] = {
+        ["throw_success"] = true,
+        ["throw_hurt_success"] = true,
+        ["throw_testing"] = true,
+        ["throw_tested"] = true,
+        ["throw_teching"] = true,
+        ["throw_teched"] = true,
+        ["hitstop"] = true,
+        ["hurtstop"] = true,
+        ["blockstop"] = true,
+        ["wallstick"] = true,
+        ["wallbreak_transporting"] = true,
+        ["5Launcher_hold_transport_entering"] = true,
+        ["5Launcher_hold_transport_exiting"] = true,
+        ["before_ease_in"] = true
+    }
 
     obj_char_game_scene_char_LP["horizontal_velocity_correction"] = 1
     obj_char_game_scene_char_LP["gravity_correction"] = 1
@@ -187,8 +213,8 @@ function load_game_scene_obj_char_LP()
         ["throw_tested"] = true,
         ["hurtstop"] = true,
         ["blockstop"] = true,
-        ["wallbreak_transporting_entering"] = true,
-        ["wallbreak_transporting_exiting"] = true,
+        ["wallbreak_transport_entering"] = true,
+        ["wallbreak_transport_exiting"] = true,
         ["knockdown"] = true,
         ["knockdown_recovery"] = true,
         ["knockout"] = true,
@@ -992,13 +1018,15 @@ function state_machine_char_game_scene_char_LP()
         end,
         ["wallbreak_transporting"] = function()
         end,
-        ["5Launcher_hold_transporting_entering"] = function()
+        ["5Launcher_hold_transport_entering"] = function()
             character_animator(obj_char,obj_char["character_animation"])
-            state_gate_game_scene_char_LP_from_wallbreak_transporting_entering(input,obj_char)
+            state_gate_game_scene_char_LP_from_wallbreak_transport_entering(input,obj_char)
         end,
-        ["5Launcher_hold_transporting_exiting"] = function()
+        ["5Launcher_hold_transport_air"] = function()
+        end,
+        ["5Launcher_hold_transport_exiting"] = function()
             character_animator(obj_char,obj_char["character_animation"])
-            state_gate_game_scene_char_LP_from_wallbreak_transporting_exiting(input,obj_char)
+            state_gate_game_scene_char_LP_from_wallbreak_transport_exiting(input,obj_char)
         end,
 
         ["knockdown"] = function()
@@ -2705,9 +2733,9 @@ function state_gate_game_scene_char_LP_from_hurtstop(input,obj_char)
     end
 end
 
-function state_gate_game_scene_char_LP_from_wallbreak_transporting_entering(input,obj_char)
+function state_gate_game_scene_char_LP_from_wallbreak_transport_entering(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_wallbreak_transporting_exiting(input,obj_char)
+function state_gate_game_scene_char_LP_from_wallbreak_transport_exiting(input,obj_char)
 end
 
 function state_gate_game_scene_char_LP_from_knockdown(input,obj_char)

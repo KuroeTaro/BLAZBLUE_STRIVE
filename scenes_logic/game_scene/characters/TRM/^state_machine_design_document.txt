@@ -95,10 +95,10 @@ _hurtstop
     _hurt
 
 
-_wallbreak_transporting_entering
+_wallbreak_transport_entering
     _7_8_9_jump_air
     _hurt
-_wallbreak_transporting_exiting
+_wallbreak_transport_exiting
     _7_8_9_jump_air
     _knockdown
     _knockdown_recovery
