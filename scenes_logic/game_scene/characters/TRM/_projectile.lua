@@ -387,15 +387,12 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main_anim(obj,
         -- draw_correction
         obj[8] = 0
     end
-    res[1] = function()
-        -- state
-        obj[1] = obj_char["shot_sys_reticle"][1]
-        obj[2] = obj_char["shot_sys_reticle"][2]
-    end
     res[2] = function()
         -- state
-        obj[1] = obj_char["shot_sys_reticle"][1]
-        obj[2] = obj_char["shot_sys_reticle"][2]
+        if obj_char["shot_sys_state"] == "at_the_ready_shot" then
+            obj[1] = obj_char["shot_sys_reticle"][1]
+            obj[2] = obj_char["shot_sys_reticle"][2]
+        end
         -- collide
         obj["hitbox_table"] = {}
         -- draw_correction

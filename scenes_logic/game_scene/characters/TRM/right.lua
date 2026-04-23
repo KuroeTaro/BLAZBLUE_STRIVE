@@ -1015,18 +1015,8 @@ function state_machine_char_game_scene_char_RP()
         end,
 
         ["wallstick"] = function()
-        end,
-        ["wallbreak_transporting"] = function()
-        end,
-        ["5Launcher_hold_transport_entering"] = function()
             character_animator(obj_char,obj_char["character_animation"])
-            state_gate_game_scene_char_RP_from_wallbreak_transport_entering(input,obj_char)
-        end,
-        ["5Launcher_hold_transport_air"] = function()
-        end,
-        ["5Launcher_hold_transport_exiting"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
-            state_gate_game_scene_char_RP_from_wallbreak_transport_exiting(input,obj_char)
+            state_gate_game_scene_char_RP_from_wallstick(input,obj_char)
         end,
 
         ["knockdown"] = function()
@@ -1037,7 +1027,10 @@ function state_machine_char_game_scene_char_RP()
             character_animator(obj_char,obj_char["character_animation"])
             state_gate_game_scene_char_RP_from_knockdown_recovery(input,obj_char)
         end,
-
+        ["knockdown_recovery_wallstick"] = function()
+            character_animator(obj_char,obj_char["character_animation"])
+            state_gate_game_scene_char_RP_from_knockdown_recovery_wallstick(input,obj_char)
+        end,
         ["knockout"] = function()
             character_animator(obj_char,obj_char["character_animation"])
         end,
@@ -2733,9 +2726,14 @@ function state_gate_game_scene_char_RP_from_hurtstop(input,obj_char)
     end
 end
 
-function state_gate_game_scene_char_RP_from_wallbreak_transport_entering(input,obj_char)
-end
-function state_gate_game_scene_char_RP_from_wallbreak_transport_exiting(input,obj_char)
+function state_gate_game_scene_char_RP_from_wallstick(input,obj_char)
+    -- animation_end
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
+        obj_char["state"] = obj_char["state_cache"]
+        obj_char["character_animation"] = obj_char["self_knockdown_recovery_animation"] 
+        init_character_anim_with(obj_char,obj_char["character_animation"])
+        return
+    end
 end
 
 function state_gate_game_scene_char_RP_from_knockdown(input,obj_char)
@@ -2758,6 +2756,9 @@ function state_gate_game_scene_char_RP_from_knockdown_recovery(input,obj_char)
     end
     -- animation_end
     if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        state_machine_char_game_scene_char_RP_input_sys_cache()
         -- 5_stand_idle
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
@@ -2771,6 +2772,39 @@ function state_gate_game_scene_char_RP_from_knockdown_recovery(input,obj_char)
             return true
         end
         return
+    end
+end
+function state_gate_game_scene_char_RP_from_knockdown_recovery_wallstick(input,obj_char)
+    -- animation_end
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        state_machine_char_game_scene_char_RP_input_sys_cache()
+        obj_char["state"] = obj_char["state_cache"]
+        if obj_char["state"] == "5_stand_idle" then
+            -- 5_stand_idle
+            obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
+            init_character_anim_with(obj_char,obj_char["character_animation"])
+            -- _common_ground_idle_to_move
+            if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+                return true
+            end
+            -- 5_stand_idle
+            if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
+                return true
+            end
+            return
+        elseif obj_char["state"] == "7_8_9_jump_air" then
+            obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
+            init_character_anim_with(obj_char,obj_char["character_animation"])
+            obj_char["idle_cancel"] = true
+            obj_char["f"] = 20
+            character_animator(obj_char,obj_char["character_animation"])
+            if state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char) then
+                return true
+            end
+            return true
+        end
     end
 end
 
@@ -5074,7 +5108,6 @@ function update_game_scene_char_RP_overdrive_countdown()
     obj_char["overdrive_timer"][3] + obj_char["overdrive_timer"][4] < 1
     then
         obj_char["overdrive_gauge"][3] = "off"
-        obj_char["overdrive_timer"] = {0,0,0,0}
     end
 end
 function update_game_scene_char_RP_inv_state_countdown()

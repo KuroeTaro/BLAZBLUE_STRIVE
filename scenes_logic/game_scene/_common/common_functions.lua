@@ -27,79 +27,6 @@ function common_game_scene_toggle_ease_in(toggle_value)
     obj_annoucer_game_scene_lets_dance[4] = toggle_value
 end
 
-function common_game_scene_test_and_apply_wallstick()
-    local char_LP = obj_char_game_scene_char_LP
-    local char_RP = obj_char_game_scene_char_RP
-    local stage_collision = false
-    local collision_side = 0
-
-    if char_LP["collision_move_available"][1] == 0 then
-        collision_side = -1
-    elseif char_LP["collision_move_available"][2] == 0 then
-        collision_side = 1
-    end
-    if char_LP["state"] ~= "wallstick" and char_LP["wallbreakable_with_wallstick"] and 
-    char_LP["wallbreak_gauge"][1] >= char_LP["wallbreak_gauge"][2] and collision_side ~= 0 
-    then
-        if char_LP["height_state"] == "air" then
-            char_LP["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(char_LP)
-            init_character_anim_with(char_LP,char_LP["character_animation"])
-        else
-            char_LP["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(char_LP)
-            init_character_anim_with(char_LP,char_LP["character_animation"])
-        end
-        char_LP["state_cache"] = "wallstick"
-        char_LP["state"] = "hurtstop"
-        char_LP["wallstick_on"] = collision_side
-        char_RP["state_cache"] = char_RP["state"]
-        char_RP["state"] = "hitstop"
-        -- hit_hurt_blockstop_countdown
-        char_LP["hit_hurt_blockstop_countdown"] = 30
-        char_LP["last_hitstop_frame"] = 0
-        char_RP["hit_hurt_blockstop_countdown"] = 30
-        char_RP["last_hitstop_frame"] = 0
-    end
-
-    if char_RP["collision_move_available"][1] == 0 then
-        collision_side = -1
-    elseif char_RP["collision_move_available"][2] == 0 then
-        collision_side = 1
-    end
-    if char_RP["state"] ~= "wallstick" and char_RP["wallbreakable_with_wallstick"] and 
-    char_RP["wallbreak_gauge"][1] >= char_RP["wallbreak_gauge"][2] and collision_side ~= 0  
-    then
-        if char_RP["height_state"] == "air" then
-            char_RP["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(char_RP)
-            init_character_anim_with(char_RP,char_RP["character_animation"])
-        else
-            char_RP["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(char_RP)
-            init_character_anim_with(char_RP,char_RP["character_animation"])
-        end
-        char_RP["state_cache"] = "wallstick"
-        char_RP["state"] = "hurtstop"
-        char_RP["wallstick_on"] = collision_side
-        char_LP["state_cache"] = char_RP["state"]
-        char_LP["state"] = "hitstop"
-        -- hit_hurt_blockstop_countdown
-        char_RP["hit_hurt_blockstop_countdown"] = 30
-        char_RP["last_hitstop_frame"] = 0
-        char_LP["hit_hurt_blockstop_countdown"] = 30
-        char_LP["last_hitstop_frame"] = 0
-    end
-
-    if char_LP["wallstick_on"] ~= 0 and char_RP["wallstick_on"] ~= 0  then
-        local obj_camera = obj_stage_game_scene_camera
-        char_LP["hit_hurt_blockstop_countdown"] = 0
-        char_RP["hit_hurt_blockstop_countdown"] = 0
-        char_LP["hit_hurt_block_slowdown_countdown"] = 0
-        char_RP["hit_hurt_block_slowdown_countdown"] = 0
-        char_LP["game_speed"] = 1
-        char_RP["game_speed"] = 1
-        obj_camera["state"] = "main"
-        obj_camera["enclose_percentage"] = 0.0
-        obj_camera["enclose_position_offset"] = {0,0,0}
-    end
-end
 function common_game_scene_test_and_apply_wallbreak(obj_char)
     local stage_collision = false
     
@@ -128,6 +55,13 @@ function common_game_scene_get_pushbox(side)
         return obj_pushboxs_data_game_scene_char_LP
     elseif side == "R" then
         return obj_pushboxs_data_game_scene_char_RP
+    end
+end
+function common_game_scene_get_hurtbox(side)
+    if side == "L" then
+        return obj_hurtboxs_data_game_scene_char_LP
+    elseif side == "R" then
+        return obj_hurtboxs_data_game_scene_char_RP
     end
 end
 function common_game_scene_get_anchor(side)
@@ -261,6 +195,14 @@ function common_game_scene_check_block_direction(obj_char)
         obj_char["direction_input"] == 1 or
         obj_char["direction_input"] == 4 or
         obj_char["direction_input"] == 7
+    ) 
+end
+function common_game_scene_check_forward_direction(obj_char)
+    return
+    (
+        obj_char["direction_input"] == 9 or
+        obj_char["direction_input"] == 6 or
+        obj_char["direction_input"] == 3
     ) 
 end
 function common_game_scene_check_jump_direction(obj_char)

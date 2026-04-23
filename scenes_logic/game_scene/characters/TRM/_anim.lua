@@ -2322,8 +2322,8 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true
         -- collide
-        obj_char["hitbox_table"] = {{150,-200,260,98}}
-        obj_char["hurtbox_table"] = {{0,-150,200,300},{150,-200,290,128}}
+        obj_char["hitbox_table"] = {{150,-200,240,100}}
+        obj_char["hurtbox_table"] = {{0,-150,200,300},{150,-200,290,150}}
         -- SFX
         -- play_obj_audio(SFX_table["5P"])
         -- VFX

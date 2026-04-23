@@ -102,8 +102,8 @@ function load_game_scene_announcer_HUD_obj()
     obj_HUD_game_scene_health_bar_RP = {915,65,nil,0,1,1,0,0}
     obj_HUD_game_scene_health_bar_LP_fade = {685,65,nil,0,-1,1,0,0}
     obj_HUD_game_scene_health_bar_RP_fade = {915,65,nil,0,1,1,0,0}
-    obj_HUD_game_scene_heat_bar_LP = {678,120,nil,0,-1,1,0,0}
-    obj_HUD_game_scene_heat_bar_RP = {922,120,nil,0,1,1,0,0}
+    obj_HUD_game_scene_heat_bar_LP = {678,124,nil,0,-1,1,0,0}
+    obj_HUD_game_scene_heat_bar_RP = {922,124,nil,0,1,1,0,0}
     obj_HUD_game_scene_ability_bar_LP = {670,102,nil,0,-1,1,0,0}
     obj_HUD_game_scene_ability_bar_RP = {930,102,nil,0,1,1,0,0}
 

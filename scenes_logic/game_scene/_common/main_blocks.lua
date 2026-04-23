@@ -438,6 +438,8 @@ function update_game_scene_training_main()
     update_game_scene_gravity()
     -- 更新资源槽
     update_game_scene_gauge()
+    -- 更新上墙
+    update_game_scene_test_and_apply_wallstick()
     -- 更新sub_frame
     update_game_scene_game_speed_sub_frame()
 
@@ -481,6 +483,91 @@ function update_game_scene_gauge()
         char_RP["ability_gauge_update_function"]()
         char_RP["risk_gauge_update_function"]()
         char_RP["wallbreak_gauge_update_function"]()
+    end
+end
+function update_game_scene_test_and_apply_wallstick()
+    local char_LP = obj_char_game_scene_char_LP
+    local char_RP = obj_char_game_scene_char_RP
+    local stage_collision = false
+    local collision_side = 0
+
+    if char_LP["collision_move_available"][1] == 0 then
+        collision_side = -1
+    elseif char_LP["collision_move_available"][2] == 0 then
+        collision_side = 1
+    end
+    if char_LP["wallbreakable_with_wallstick"] and 
+    char_LP["wallbreak_gauge"][1] >= char_LP["wallbreak_gauge"][2] and 
+    collision_side ~= 0 
+    then
+        if char_LP["height_state"] == "air" then
+            char_LP["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(char_LP)
+            init_character_anim_with(char_LP,char_LP["character_animation"])
+        else
+            char_LP["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstick_ground(char_LP)
+            init_character_anim_with(char_LP,char_LP["character_animation"])
+        end
+        char_LP[5] = -collision_side
+        char_LP["state_cache"] = "wallstick"
+        char_LP["state"] = "hurtstop"
+        char_LP["wallstick_on"] = collision_side
+        char_LP["physics_lock"] = true
+        if char_RP["state"] ~= "hitstop" then
+            char_RP["state_cache"] = char_RP["state"]
+            char_RP["state"] = "hitstop"
+            char_RP["physics_lock"] = true
+        end
+        -- hit_hurt_blockstop_countdown
+        char_LP["hit_hurt_blockstop_countdown"] = 30
+        char_LP["last_hitstop_frame"] = 0
+        char_RP["hit_hurt_blockstop_countdown"] = 30
+        char_RP["last_hitstop_frame"] = 0
+    end
+
+    if char_RP["collision_move_available"][1] == 0 then
+        collision_side = -1
+    elseif char_RP["collision_move_available"][2] == 0 then
+        collision_side = 1
+    end
+    if char_RP["wallbreakable_with_wallstick"] and 
+    char_RP["wallbreak_gauge"][1] >= char_RP["wallbreak_gauge"][2] and 
+    collision_side ~= 0  
+    then
+        if char_RP["height_state"] == "air" then
+            char_RP["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(char_RP)
+            init_character_anim_with(char_RP,char_RP["character_animation"])
+        else
+            char_RP["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstick_ground(char_RP)
+            init_character_anim_with(char_RP,char_RP["character_animation"])
+        end
+        char_RP[5] = -collision_side
+        char_RP["state_cache"] = "wallstick"
+        char_RP["state"] = "hurtstop"
+        char_RP["wallstick_on"] = collision_side
+        char_RP["physics_lock"] = true
+        if char_LP["state"] ~= "hitstop" then
+            char_LP["state_cache"] = char_LP["state"]
+            char_LP["state"] = "hitstop"
+            char_LP["physics_lock"] = true
+        end
+        -- hit_hurt_blockstop_countdown
+        char_RP["hit_hurt_blockstop_countdown"] = 30
+        char_RP["last_hitstop_frame"] = 0
+        char_LP["hit_hurt_blockstop_countdown"] = 30
+        char_LP["last_hitstop_frame"] = 0
+    end
+
+    if char_LP["wallstick_on"] ~= 0 and char_RP["wallstick_on"] ~= 0  then
+        local obj_camera = obj_stage_game_scene_camera
+        char_LP["hit_hurt_blockstop_countdown"] = 0
+        char_RP["hit_hurt_blockstop_countdown"] = 0
+        char_LP["hit_hurt_block_slowdown_countdown"] = 0
+        char_RP["hit_hurt_block_slowdown_countdown"] = 0
+        char_LP["game_speed"] = 1
+        char_RP["game_speed"] = 1
+        obj_camera["state"] = "main"
+        obj_camera["enclose_percentage"] = 0.0
+        obj_camera["enclose_position_offset"] = {0,0,0}
     end
 end
 function update_game_scene_gravity()
