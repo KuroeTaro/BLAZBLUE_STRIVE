@@ -2,59 +2,59 @@
 
 "0":
 {
-	"frame": {"x":0,"y":0,"w":460,"h":500},
+	"frame": {"x":0,"y":0,"w":380,"h":560},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":500},
-	"sourceSize": {"w":460,"h":500}
+	"spriteSourceSize": {"x":0,"y":0,"w":380,"h":560},
+	"sourceSize": {"w":380,"h":560}
 },
 "1":
 {
-	"frame": {"x":460,"y":0,"w":460,"h":500},
+	"frame": {"x":380,"y":0,"w":380,"h":560},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":500},
-	"sourceSize": {"w":460,"h":500}
+	"spriteSourceSize": {"x":0,"y":0,"w":380,"h":560},
+	"sourceSize": {"w":380,"h":560}
 },
 "2":
 {
-	"frame": {"x":0,"y":500,"w":460,"h":500},
+	"frame": {"x":0,"y":560,"w":380,"h":560},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":500},
-	"sourceSize": {"w":460,"h":500}
+	"spriteSourceSize": {"x":0,"y":0,"w":380,"h":560},
+	"sourceSize": {"w":380,"h":560}
 },
 "3":
 {
-	"frame": {"x":460,"y":500,"w":460,"h":500},
+	"frame": {"x":380,"y":560,"w":380,"h":560},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":500},
-	"sourceSize": {"w":460,"h":500}
+	"spriteSourceSize": {"x":0,"y":0,"w":380,"h":560},
+	"sourceSize": {"w":380,"h":560}
 },
 "4":
 {
-	"frame": {"x":0,"y":1000,"w":460,"h":500},
+	"frame": {"x":0,"y":1120,"w":380,"h":560},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":500},
-	"sourceSize": {"w":460,"h":500}
+	"spriteSourceSize": {"x":0,"y":0,"w":380,"h":560},
+	"sourceSize": {"w":380,"h":560}
 },
 "5":
 {
-	"frame": {"x":460,"y":1000,"w":460,"h":500},
+	"frame": {"x":380,"y":1120,"w":380,"h":560},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":500},
-	"sourceSize": {"w":460,"h":500}
+	"spriteSourceSize": {"x":0,"y":0,"w":380,"h":560},
+	"sourceSize": {"w":380,"h":560}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "TRM_0_general_hurt_hard_knockdown_wallstick_ground",
 	"format": "RGBA8888",
-	"size": {"w":920,"h":1500},
+	"size": {"w":760,"h":1680},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:465f68ef69653a73e1e3fdc75d94e749:ffc8077d0409be1b3ea57b599e075d6d:e42d22b1ccb9ec8dbbf76453d151261f$"
+	"smartupdate": "$TexturePacker:SmartUpdate:2f163095be8765584e27fcc308e83aae:cccd93b29dce3f3c0aa5fa19dabcba72:e42d22b1ccb9ec8dbbf76453d151261f$"
 }
 }

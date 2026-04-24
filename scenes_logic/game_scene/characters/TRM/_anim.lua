@@ -1121,7 +1121,7 @@ function load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
         obj_char["idle_cancel"] = false
 
         obj_char["strike_inv"] = true
-        obj_char["strike_inv_countdown"] = 4
+        obj_char["strike_inv_countdown"] = 5
         obj_char["throw_inv"] = true
         obj_char["throw_inv_countdown"] = 15
         obj_char["projectile_inv"] = true
@@ -1153,9 +1153,9 @@ function load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
         -- draw_correction
         obj_char[8] = 1
     end
-    res[4] = function()
+    res[5] = function()
         -- state_number
-        obj_char["velocity"][1] = -28.0*obj_char[5]
+        obj_char["velocity"][1] = -27.0*obj_char[5]
         -- collide
         obj_char["hurtbox_table"] = {{-15,-100,170,360}}
     end

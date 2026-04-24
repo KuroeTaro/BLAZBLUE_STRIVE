@@ -1837,7 +1837,7 @@ end
             ------
 function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(obj_char)
     local res = {}
-    local sprite_sheet_state = "0_general_hurt_hard_knockdown_wallstick_ground"
+    local sprite_sheet_state = "0_general_hurt_soft_knockdown_wallstick_air"
     local side = obj_char["player_side"]
     local pushbox_data = common_game_scene_get_pushbox(side)
     local hurtbox_data = common_game_scene_get_hurtbox(side)
@@ -2331,7 +2331,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
     res["anim_length"] = 85
     for i = 60,69 do
         res[i] = function()
-            obj_char["y"] = 155 + (i-59)*10
+            obj_char["y"] = 155 + (i-59)*5
         end
     end
 
@@ -2387,13 +2387,13 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
     end
     res[60] = function()
         -- state
-        obj_char["y"] = 165
-        obj_char[8] = 0
+        obj_char["y"] = 160
+        obj_char[8] = 1
     end
     res[65] = function()
         -- state
-        obj_char["y"] = 215
-        obj_char[8] = 0
+        obj_char["y"] = 185
+        obj_char[8] = 2
     end
     res[70] = function()
         -- state
