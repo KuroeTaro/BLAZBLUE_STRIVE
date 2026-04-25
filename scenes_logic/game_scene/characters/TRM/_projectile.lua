@@ -305,6 +305,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                 -- set_state_and_state_cache
                 obj_char_other_side["state_cache"] = "hurt"
                 obj_char_other_side["state"] = "hurtstop"
+                obj_char_other_side["collision_move_available_cache"] = {1,1}
                 -- hit_counter_ver_function
                 if obj_char_other_side["hurt_state"] == "counter" then 
                     obj["hit_counter_ver_function"](obj_char,obj_char_other_side)

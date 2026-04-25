@@ -5138,16 +5138,13 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(obj_char)
             character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(obj_char)
         end
     end
-    res[12] = function()
+    res[13] = function()
         -- input_sys_cache
         obj_char["input_sys_state_negative_edge"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_negative_edge_state_machine(obj_char["player_side"])()
         -- shot_sys
-        obj_char["shot_sys_fire_cancel"] = true
-    end
-    res[17] = function()
-        -- shot_sys
         obj_char["shot_sys_idle_cancel"] = true
+        obj_char["shot_sys_fire_cancel"] = true
         character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
     end
     res[18] = function()

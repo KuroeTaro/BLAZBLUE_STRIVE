@@ -448,6 +448,7 @@ function common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_ob
     -- state
     obj_char["state_cache"] = "hurt"
     obj_char["state"] = "hurtstop"
+    obj_char["collision_move_available_cache"] = {1,1}
     -- hit_counter_ver_function
     if obj_char["hurt_state"] == "counter" then 
         hit_side_obj_char["hit_counter_ver_function"](hit_side_obj_char,obj_char)
@@ -812,6 +813,56 @@ function common_game_scene_hit_load_camera_shake_anim(obj_char,multiplyer)
     anim["fix_type"] = false
     obj_char["camera_y_shake_anim"] = anim
 end
+function common_game_scene_wallbreak_load_camera_shake_anim(multiplyer)
+    local anim_x = {}
+    local anim_y = {}
+
+    anim_x[0] = {13.25*multiplyer,1}
+    anim_x[1] = {-10.34*multiplyer,2}
+    anim_x[2] = {-9.93*multiplyer,3}
+    anim_x[3] = {9.02*multiplyer,4}
+    anim_x[4] = {-8.10*multiplyer,5}
+    anim_x[5] = {8.69*multiplyer,6}
+    anim_x[6] = {-6.72*multiplyer,7}
+    anim_x[7] = {6.47*multiplyer,8}
+    anim_x[8] = {-5.78*multiplyer,9}
+    anim_x[9] = {5.46*multiplyer,10}
+    anim_x[10] = {4.31*multiplyer,11}
+    anim_x[11] = {-4.65*multiplyer,12}
+    anim_x[12] = {2.00*multiplyer,13}
+    anim_x[13] = {-2.81*multiplyer,14}
+    anim_x[14] = {1.63*multiplyer,15}
+    anim_x[15] = {0*multiplyer,15}
+    anim_x["prop"] = "3d_pos_x"
+    anim_x["length"] = 15
+    anim_x["loop"] = false
+    anim_x["fix_type"] = false
+
+    local multiplyer_fix = multiplyer*0.2
+    anim_y = {}
+    anim_y[0] = {10.92*multiplyer_fix,1}
+    anim_y[1] = {2.67*multiplyer_fix,2}
+    anim_y[2] = {-4.00*multiplyer_fix,3}
+    anim_y[3] = {-8.26*multiplyer_fix,4}
+    anim_y[4] = {3.60*multiplyer_fix,5}
+    anim_y[5] = {8.15*multiplyer_fix,6}
+    anim_y[6] = {-2.35*multiplyer_fix,7}
+    anim_y[7] = {-6.04*multiplyer_fix,8}
+    anim_y[8] = {1.75*multiplyer_fix,9}
+    anim_y[9] = {5.44*multiplyer_fix,10}
+    anim_y[10] = {-1.69*multiplyer_fix,11}
+    anim_y[11] = {1.00*multiplyer_fix,12}
+    anim_y[12] = {3.67*multiplyer_fix,13}
+    anim_y[13] = {-1.13*multiplyer_fix,14}
+    anim_y[14] = {2.11*multiplyer_fix,15}
+    anim_y[15] = {0*multiplyer_fix,15}
+    anim_y["prop"] = "3d_pos_y"
+    anim_y["length"] = 15
+    anim_y["loop"] = false
+    anim_y["fix_type"] = false
+
+    return anim_x,anim_y
+end
 
 function common_update_game_scene_char_hitstop_countdown(obj_char)
     if obj_char["hit_hurt_blockstop_countdown"] > 1 then
@@ -1041,7 +1092,7 @@ function common_game_scene_projectile_apply_gauge(
             end
             -- apply wallbreak damage
             hurt_side_obj_char["wallbreak_gauge"][1] = math.min(
-                hurt_side_obj_char["wallbreak_gauge"][1] + hit_side_obj_char["hit_wallbreak_damage"],
+                hurt_side_obj_char["wallbreak_gauge"][1] + projectile["hit_wallbreak_damage"],
                 hurt_side_obj_char["wallbreak_gauge"][2]
             )
     elseif not FD_block then

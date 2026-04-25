@@ -31,10 +31,10 @@ function insert_VFX_game_scene_char_overdrive_badge(obj_char)
         end
     end
     obj["draw"] = function()
-        local camera = obj_stage_game_scene_camera
+        local obj_camera = obj_stage_game_scene_camera
         local f = obj[8]
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,""..f.."")
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..f.."")
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")

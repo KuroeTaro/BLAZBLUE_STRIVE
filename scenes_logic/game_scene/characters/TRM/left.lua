@@ -173,6 +173,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["hitbox_table"] = {}
     obj_char_game_scene_char_LP["hurtbox_table"] = {{0,-215,170,430},{0,-455,100,50}}
     obj_char_game_scene_char_LP["collision_move_available"] = {1,1}
+    obj_char_game_scene_char_LP["collision_move_available_cache"] = {1,1}
     obj_char_game_scene_char_LP["collision_test_ground_height_offset"] = 0 -- 用于检测和地面碰撞的
 
     -- sub_obj_table
@@ -4774,7 +4775,7 @@ end
 function draw_game_scene_char_LP()
     local obj = {0,0,0,0,0,0,0,0}
     local obj_char = obj_char_game_scene_char_LP
-    local camera = obj_stage_game_scene_camera
+    local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = nil
     
     local shader = shader_game_scene_brightness_contrast
@@ -4786,13 +4787,13 @@ function draw_game_scene_char_LP()
     obj = obj_char["shot_sys_oroboros_back"]
     image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj["sprite_sheet_state"]]
     image_sprite_sheet["sprite_batch"]:clear()
-    draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,tostring(obj[8]))
+    draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     
-    -- draw_3d_image_table(camera,obj,character_image_table)
+    -- draw_3d_image_table(obj_camera,obj,character_image_table)
     image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj_char["sprite_sheet_state"]]
     image_sprite_sheet["sprite_batch"]:clear()
-    draw_3d_image_sprite_batch(camera,obj_char,image_sprite_sheet,tostring(obj_char[8]))
+    draw_3d_image_sprite_batch(obj_camera,obj_char,image_sprite_sheet,tostring(obj_char[8]))
     love.graphics.setShader(shader)
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     love.graphics.setShader()
@@ -4801,28 +4802,28 @@ function draw_game_scene_char_LP()
     obj = obj_char["shot_sys_oroboros_mid"]
     image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj["sprite_sheet_state"]]
     image_sprite_sheet["sprite_batch"]:clear()
-    draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,tostring(obj[8]))
+    draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
 
     -- darw_front
     obj = obj_char["shot_sys_oroboros_front"]
     image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj["sprite_sheet_state"]]
     image_sprite_sheet["sprite_batch"]:clear()
-    draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,tostring(obj[8]))
+    draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
 end
 function draw_game_scene_char_LP_shadow()
     local obj = obj_char_game_scene_char_LP
-    local camera = obj_stage_game_scene_camera
+    local obj_camera = obj_stage_game_scene_camera
     local light_obj = obj_stage_game_scene_glow_with_linear_fade_alpha
 
     local light_x = light_obj["glow_3d_pos"][1]
     local light_y = light_obj["glow_3d_pos"][2]
     local light_z = light_obj["glow_3d_pos"][3]
 
-    local camera_x = camera[1]
-    local camera_y = camera[2]
-    local camera_z = camera[3]
+    local camera_x = obj_camera[1]
+    local camera_y = obj_camera[2]
+    local camera_z = obj_camera[3]
 
     local scale = draw_resolution_correction(800)/(light_z-camera_z)
 
@@ -4863,10 +4864,10 @@ end
 function draw_game_scene_char_LP_attachment_front()
     -- retcile
     local obj_char = obj_char_game_scene_char_LP
-    local camera = obj_stage_game_scene_camera
+    local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj_char["shot_sys_reticle_sprite_sheet_state"]]
     image_sprite_sheet["sprite_batch"]:clear()
-    draw_3d_image_sprite_batch(camera,obj_char["shot_sys_reticle"],image_sprite_sheet,tostring(obj_char["shot_sys_reticle"][8]))
+    draw_3d_image_sprite_batch(obj_camera,obj_char["shot_sys_reticle"],image_sprite_sheet,tostring(obj_char["shot_sys_reticle"][8]))
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
 end
 function draw_game_scene_char_LP_attachment_back()
@@ -4878,7 +4879,7 @@ function draw_game_scene_char_LP_pushbox()
     end
 
     local obj_char = obj_char_game_scene_char_LP
-    local camera = obj_stage_game_scene_camera
+    local obj_camera = obj_stage_game_scene_camera
 
     -- push box
     local color = DEBUG_BOX_COLOR_YELLOW
@@ -4889,7 +4890,7 @@ function draw_game_scene_char_LP_pushbox()
     }
     draw_box["w"] = obj_char["pushbox"][3]
     draw_box["h"] = obj_char["pushbox"][4]
-    draw_3d_color_box(camera,draw_box,color)
+    draw_3d_color_box(obj_camera,draw_box,color)
     for i=1,#obj_char["projectile_table"] do
         local current_projectile = obj_char["projectile_table"][i]
         local current_pushbox = current_projectile["pushbox"]
@@ -4901,7 +4902,7 @@ function draw_game_scene_char_LP_pushbox()
             }
             draw_box["w"] = current_hurtbox[3]
             draw_box["h"] = current_hurtbox[4]
-            draw_3d_color_box(camera,draw_box,color)
+            draw_3d_color_box(obj_camera,draw_box,color)
         end
     end
 end
@@ -4911,7 +4912,7 @@ function draw_game_scene_char_LP_hurtbox()
     end
 
     local obj_char = obj_char_game_scene_char_LP
-    local camera = obj_stage_game_scene_camera
+    local obj_camera = obj_stage_game_scene_camera
 
     -- hurt box
     local color = DEBUG_BOX_COLOR_BLUE
@@ -4924,7 +4925,7 @@ function draw_game_scene_char_LP_hurtbox()
         }
         draw_box["w"] = current_hurtbox[3]
         draw_box["h"] = current_hurtbox[4]
-        draw_3d_color_box(camera,draw_box,color)
+        draw_3d_color_box(obj_camera,draw_box,color)
     end
     for i=1,#obj_char["projectile_table"] do
         local current_projectile = obj_char["projectile_table"][i]
@@ -4938,7 +4939,7 @@ function draw_game_scene_char_LP_hurtbox()
                 }
                 draw_box["w"] = current_hurtbox[3]
                 draw_box["h"] = current_hurtbox[4]
-                draw_3d_color_box(camera,draw_box,color)
+                draw_3d_color_box(obj_camera,draw_box,color)
             end
         end
     end
@@ -4949,7 +4950,7 @@ function draw_game_scene_char_LP_hitbox()
     end
 
     local obj_char = obj_char_game_scene_char_LP
-    local camera = obj_stage_game_scene_camera
+    local obj_camera = obj_stage_game_scene_camera
 
     -- hit box
     local color = DEBUG_BOX_COLOR_RED
@@ -4962,7 +4963,7 @@ function draw_game_scene_char_LP_hitbox()
         }
         draw_box["w"] = current_hitbox[3]
         draw_box["h"] = current_hitbox[4]
-        draw_3d_color_box(camera,draw_box,color)
+        draw_3d_color_box(obj_camera,draw_box,color)
     end
     for i=1,#obj_char["projectile_table"] do
         local current_projectile = obj_char["projectile_table"][i]
@@ -4976,7 +4977,7 @@ function draw_game_scene_char_LP_hitbox()
                 }
                 draw_box["w"] = current_hitbox[3]
                 draw_box["h"] = current_hitbox[4]
-                draw_3d_color_box(camera,draw_box,color)
+                draw_3d_color_box(obj_camera,draw_box,color)
             end
         end
     end

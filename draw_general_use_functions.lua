@@ -52,16 +52,16 @@ function draw_solid(obj)
     love.graphics.setColor(1,1,1,1)
 end
 
-function draw_3d_image(camera,obj,image)
+function draw_3d_image(obj_camera,obj,image)
     local z = obj[3]
     local sx = obj[5]
     local sy = obj[6]
     local r = obj[7]
     local f = obj[8]
     local opacity = obj[4]
-    local camera_z = camera[3]
+    local camera_z = obj_camera[3]
     local scale = draw_resolution_correction(800)/(z-camera_z)
-    local cood_res = draw_3d_point_to_2D(camera,obj)
+    local cood_res = draw_3d_point_to_2D(obj_camera,obj)
 
     if opacity == 0 then
         return
@@ -71,16 +71,16 @@ function draw_3d_image(camera,obj,image)
     love.graphics.draw(image,cood_res[1],cood_res[2],r,sx*scale,sy*scale)
     love.graphics.setColor(1,1,1,1)
 end
-function draw_3d_image_table(camera,obj,image_table)
+function draw_3d_image_table(obj_camera,obj,image_table)
     local z = obj[3]
     local sx = obj[5]
     local sy = obj[6]
     local r = obj[7]
     local f = obj[8]
     local opacity = obj[4]
-    local camera_z = camera[3]
+    local camera_z = obj_camera[3]
     local scale = draw_resolution_correction(800)/(z-camera_z)
-    local cood_res = draw_3d_point_to_2D(camera,obj)
+    local cood_res = draw_3d_point_to_2D(obj_camera,obj)
 
     if opacity == 0 then
         return
@@ -90,15 +90,15 @@ function draw_3d_image_table(camera,obj,image_table)
     love.graphics.draw(image_table[f],cood_res[1],cood_res[2],r,sx*scale,sy*scale)
     love.graphics.setColor(1,1,1,1)
 end
-function draw_3d_point_to_2D(camera,obj)
+function draw_3d_point_to_2D(obj_camera,obj)
     -- x y z opacity sx sy r f
     local x = obj[1]
     local y = obj[2]
     local z = obj[3]
     
-    local camera_x = camera[1]
-    local camera_y = camera[2]
-    local camera_z = camera[3]
+    local camera_x = obj_camera[1]
+    local camera_y = obj_camera[2]
+    local camera_z = obj_camera[3]
 
     local scale = draw_resolution_correction(800)/(z-camera_z)
 
@@ -157,16 +157,16 @@ function draw_2d_image_sprite_batch(obj,image_sprite_sheet,quad_name)
     image_sprite_sheet["sprite_batch"]:add(quad,x,y,r,sx,sy)
     image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
 end
-function draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,quad_name)
+function draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,quad_name)
     local z = obj[3]
     local sx = obj[5]
     local sy = obj[6]
     local r = obj[7]
     local f = obj[8]
     local opacity = obj[4]
-    local camera_z = camera[3]
+    local camera_z = obj_camera[3]
     local scale = draw_resolution_correction(800)/(z-camera_z)
-    local cood_res = draw_3d_point_to_2D(camera,obj)
+    local cood_res = draw_3d_point_to_2D(obj_camera,obj)
 
     if opacity == 0 then
         return
@@ -187,14 +187,14 @@ function draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,quad_name)
     image_sprite_sheet["sprite_batch"]:add(quad,cood_res[1],cood_res[2],r,sx*scale,sy*scale)
     image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
 end
-function draw_3d_color_box(camera,obj_box,color)
-    local cood_res = draw_3d_point_to_2D(camera,obj_box)
+function draw_3d_color_box(obj_camera,obj_box,color)
+    local cood_res = draw_3d_point_to_2D(obj_camera,obj_box)
     local x = draw_resolution_correction(cood_res[1])
     local y = draw_resolution_correction(cood_res[2])
     local sx = obj_box[4]
     local sy = obj_box[5]
     local z = obj_box[3]
-    local camera_z = camera[3]
+    local camera_z = obj_camera[3]
 
     local scale = draw_resolution_correction(800)/(z-camera_z)
 
