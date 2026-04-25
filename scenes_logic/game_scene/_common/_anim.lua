@@ -2331,7 +2331,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
     res["anim_length"] = 85
     for i = 60,69 do
         res[i] = function()
-            obj_char["y"] = 165 + (i-59)*20
+            obj_char["y"] = 155 + (i-59)*10
         end
     end
 
@@ -2387,12 +2387,12 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
     end
     res[60] = function()
         -- state
-        obj_char["y"] = 185
+        obj_char["y"] = 165
         obj_char[8] = 1
     end
     res[65] = function()
         -- state
-        obj_char["y"] = 265
+        obj_char["y"] = 215
         obj_char[8] = 2
     end
     res[70] = function()
