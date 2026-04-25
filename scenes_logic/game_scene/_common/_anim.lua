@@ -2331,13 +2331,13 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
     res["anim_length"] = 85
     for i = 60,69 do
         res[i] = function()
-            obj_char["y"] = 155 + (i-59)*5
+            obj_char["y"] = 165 + (i-59)*20
         end
     end
 
     res[0] = function()
         -- state
-        obj_char["y"] = 155
+        obj_char["y"] = 165
         obj_char["sprite_sheet_state"] = sprite_sheet_state
         obj_char["height_state"] = "OTG" -- stand crouch air OTG
         obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
@@ -2387,12 +2387,12 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
     end
     res[60] = function()
         -- state
-        obj_char["y"] = 160
+        obj_char["y"] = 185
         obj_char[8] = 1
     end
     res[65] = function()
         -- state
-        obj_char["y"] = 185
+        obj_char["y"] = 265
         obj_char[8] = 2
     end
     res[70] = function()
@@ -2403,6 +2403,12 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         -- collide
         obj_char["pushbox"] = pushbox_data[sprite_sheet_state][3]
         obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet_state][3]
+        insert_VFX_game_scene_stage_smoke_land_blow(
+            obj_char,
+            VFX_spawn_anchor_pos_data["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
+            VFX_spawn_anchor_pos_data["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
+            0.5,1,1,0
+        )
     end
     res[72] = function()
         -- state

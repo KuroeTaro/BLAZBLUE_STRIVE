@@ -2,19 +2,19 @@
 
 "0":
 {
-	"frame": {"x":0,"y":0,"w":360,"h":420},
+	"frame": {"x":0,"y":0,"w":320,"h":500},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":360,"h":420},
-	"sourceSize": {"w":360,"h":420}
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":500},
+	"sourceSize": {"w":320,"h":500}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "TRM_0_general_hurt_soft_knockdown_wallstick_air.png",
 	"format": "RGBA8888",
-	"size": {"w":360,"h":420},
+	"size": {"w":320,"h":500},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:a80bcdf1e46db06b3cd22014c04e135e:2442354d9b541b9de16345fdc2c5cbff:ac6194f8fc01a1caf2d38a8955342bbe$"
+	"smartupdate": "$TexturePacker:SmartUpdate:74f197e67848b53f0b1c26bc13d712b4:f9d33e11c174aa9cee280049815cc371:ac6194f8fc01a1caf2d38a8955342bbe$"
 }
 }
