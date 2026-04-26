@@ -920,7 +920,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_anchor_data_game_scene_char_RP["ground_thrown_tested"] = {150,530}
 
     obj_VFX_spawn_anchor_pos_data_game_scene_char_RP["wallstick_spawn_anchor_pos"] = {
-        ["stand"] = 915,
+        ["stand"] = 865,
         ["crouch"] = 765,
         ["air"] = 715,
         ["OTG"] = 775,

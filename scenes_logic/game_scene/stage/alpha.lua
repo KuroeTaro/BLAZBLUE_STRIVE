@@ -36,23 +36,24 @@ function load_game_scene_obj_stage()
 
     obj_stage_game_scene_camera["active_application_table"] = {}
 
-    -- wallstick_static
-    obj_stage_game_scene_wallstick_table = {}
-    obj_stage_game_scene_wallstick_table[1] = {1800,-450,0,0,1,1,0,0}
-    obj_stage_game_scene_wallstick_table[1]["FCT"] = {0,0,0,0,0,0,0,0}
-    obj_stage_game_scene_wallstick_table[1]["LCT"] = {0,0,0,0,0,0,0,0}
-    obj_stage_game_scene_wallstick_table[1]["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_stage_game_scene_wallstick_table[1]["state"] = "off"
-    obj_stage_game_scene_wallstick_table[1]["sprite_sheet"] = 0
-    obj_stage_game_scene_wallstick_table[1]["current_animation"] = {}
-    obj_stage_game_scene_wallstick_table[-1] = {-1800,-450,0,0,-1,1,0,0}
-    obj_stage_game_scene_wallstick_table[-1]["FCT"] = {0,0,0,0,0,0,0,0}
-    obj_stage_game_scene_wallstick_table[-1]["LCT"] = {0,0,0,0,0,0,0,0}
-    obj_stage_game_scene_wallstick_table[-1]["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_stage_game_scene_wallstick_table[-1]["state"] = "off"
-    obj_stage_game_scene_wallstick_table[-1]["sprite_sheet"] = 0
-    obj_stage_game_scene_wallstick_table[-1]["current_animation"] = {}
+    -- wallstick
+    obj_stage_game_scene_wallstick_L = {}
+    obj_stage_game_scene_wallstick_L = {-1800,-450,0,0,-1,1,0,0}
+    obj_stage_game_scene_wallstick_L["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallstick_L["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallstick_L["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallstick_L["state"] = "off"
+    obj_stage_game_scene_wallstick_L["sprite_sheet"] = 0
 
+    obj_stage_game_scene_wallstick_R = {}
+    obj_stage_game_scene_wallstick_R = {1800,-450,0,0,1,1,0,0}
+    obj_stage_game_scene_wallstick_R["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallstick_R["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallstick_R["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallstick_R["state"] = "off"
+    obj_stage_game_scene_wallstick_R["sprite_sheet"] = 0
+
+    -- wallbreak
     obj_stage_game_scene_wallbreak_after_debris = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallbreak_after_debris["FCT"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallbreak_after_debris["LCT"] = {0,0,0,0,0,0,0,0}
@@ -301,8 +302,8 @@ function update_game_scene_stage()
     obj_camera[3] = obj_camera["3d_pos_z"]+obj_camera["enclose_position_offset"][3]*obj_camera["enclose_percentage"]+obj_camera[2]*0.25
 
     -- wallbreak_static_update
-    update_stage_game_scene_wallbreak_static(obj_stage_game_scene_wallstick_table[1])
-    update_stage_game_scene_wallbreak_static(obj_stage_game_scene_wallstick_table[-1])
+    update_stage_game_scene_wallbreak_static(obj_stage_game_scene_wallstick_L)
+    update_stage_game_scene_wallbreak_static(obj_stage_game_scene_wallstick_R)
 end
 function update_game_scene_camera_application_table()
     if #obj_stage_game_scene_camera["active_application_table"] == 0 then
@@ -334,7 +335,7 @@ function draw_game_scene_stage_static()
     draw_3d_image(obj_camera,obj,image_sprite_batch_stage_game_scene_ground)
 
     -- common
-    obj = obj_stage_game_scene_wallstick_table[1]
+    obj = obj_stage_game_scene_wallstick_L
     image_sprite_sheet = image_sprite_sheet_stage_game_scene_wallstick[obj["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
@@ -342,7 +343,7 @@ function draw_game_scene_stage_static()
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     love.graphics.setBlendMode("alpha")
 
-    obj = obj_stage_game_scene_wallstick_table[-1]
+    obj = obj_stage_game_scene_wallstick_R
     image_sprite_sheet = image_sprite_sheet_stage_game_scene_wallstick[obj["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")

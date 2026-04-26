@@ -503,7 +503,6 @@ function update_game_scene_test_and_apply_wallstick()
 end
 function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_side)
     local obj_camera = obj_stage_game_scene_camera
-    local wallbreak_static_table = obj_stage_game_scene_wallstick_table
     local wallbreak_static = nil
     local wallbreak_spwan_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["wallstick_spawn_anchor_pos"]
     local stage_collision = false
@@ -526,7 +525,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
     elseif obj_char["collision_move_available_cache"][2] == 0 then
         collision_side_cache = 1
     end
-    wallbreak_static = wallbreak_static_table[collision_side]
+    wallbreak_static = common_game_scene_get_scene_wallbreak(collision_side)
     if collision_side ~= 0 and collision_side ~= collision_side_cache then
         -- wallstick_VFX
         wallbreak_static[2] = obj_char["y"] - wallbreak_spwan_anchor_pos[obj_char["height_state"]]
