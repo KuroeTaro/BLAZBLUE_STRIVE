@@ -163,10 +163,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "TRM_5H_projectile_smoke",
+	"image": "TRM_5H",
 	"format": "RGBA8888",
 	"size": {"w":1600,"h":1280},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:79071152b2d1a65938a7ffdb8d4ea87b:bee78b23a3dd1eafecde40bc2b8598b2:a03a42d01e07fe485648b65d8acf7cdf$"
+	"smartupdate": "$TexturePacker:SmartUpdate:2f3efe66a2eec6b1fdfe48f1fc4f5b3b:621990a5949dcce714b73917e3b915e4:42625f06469a5313809ea3b9a49eb696$"
 }
 }
