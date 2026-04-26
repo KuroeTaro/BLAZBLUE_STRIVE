@@ -503,8 +503,9 @@ function update_game_scene_test_and_apply_wallstick()
 end
 function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_side)
     local obj_camera = obj_stage_game_scene_camera
-    local wallbreak_static_table = obj_stage_game_scene_wallbreak_static_table
+    local wallbreak_static_table = obj_stage_game_scene_wallstick_table
     local wallbreak_static = nil
+    local wallbreak_spwan_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["wallstick_spawn_anchor_pos"]
     local stage_collision = false
     local collision_side = 0
     local collision_side_cache = 0
@@ -528,37 +529,28 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
     wallbreak_static = wallbreak_static_table[collision_side]
     if collision_side ~= 0 and collision_side ~= collision_side_cache then
         -- wallstick_VFX
-        if obj_char["height_state"] ~= "air" then
-            wallbreak_static[2] = -550
-        else
-            wallbreak_static[2] = obj_char["y"] - 650
-        end
-        -- camera_shake
-        obj_camera["active_application_table"] = {}
-        table.insert(obj_camera["active_application_table"],
-            function()
-                anim_camera_point_linear_game_scene_camera_shake_x,
-                anim_camera_point_linear_game_scene_camera_shake_y 
-                = common_game_scene_wallbreak_load_camera_shake_anim(0.5)
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
-                obj_camera["state"] = "active"
-            end
-        )
+        wallbreak_static[2] = obj_char["y"] - wallbreak_spwan_anchor_pos[obj_char["height_state"]]
         if obj_char["wallbreak_gauge"][1] >= obj_char["wallbreak_gauge"][2] then
-            wallbreak_static[8] = 2
-            wallbreak_static["current_animation"] = anim_stage_wallbreak_static_opacity_lv2
-            init_point_linear_anim_with(wallbreak_static,wallbreak_static["current_animation"])
+            -- camera_shake
+            obj_camera["active_application_table"] = {}
+            table.insert(obj_camera["active_application_table"],
+                function()
+                    anim_camera_point_linear_game_scene_camera_shake_x,
+                    anim_camera_point_linear_game_scene_camera_shake_y 
+                    = common_game_scene_wallbreak_load_camera_shake_anim(1.5)
+                    init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+                    init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+                    obj_camera["state"] = "active"
+                end
+            )
+            wallbreak_static[4] = 1
+            wallbreak_static["sprite_sheet"] = 1
+            init_frame_anim_with(wallbreak_static,anim_stage_wallstick)
             wallbreak_static["state"] = "on"
-        elseif obj_char["wallbreak_gauge"][1] >= obj_char["wallbreak_gauge"][2]/3*2 then
-            wallbreak_static[8] = 1
-            wallbreak_static["current_animation"] = anim_stage_wallbreak_static_opacity_lv1
-            init_point_linear_anim_with(wallbreak_static,wallbreak_static["current_animation"])
-            wallbreak_static["state"] = "on"
-        elseif obj_char["wallbreak_gauge"][1] >= obj_char["wallbreak_gauge"][2]/3*1 then
-            wallbreak_static[8] = 0
-            wallbreak_static["current_animation"] = anim_stage_wallbreak_static_opacity_lv0
-            init_point_linear_anim_with(wallbreak_static,wallbreak_static["current_animation"])
+        else
+            wallbreak_static[4] = 1
+            wallbreak_static["sprite_sheet"] = 0
+            init_frame_anim_with(wallbreak_static,anim_stage_wallstick)
             wallbreak_static["state"] = "on"
         end
     end

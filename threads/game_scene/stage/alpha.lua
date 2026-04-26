@@ -8,13 +8,15 @@ local thread_data = {}
 
 thread_data[1] = compress_module("asset/game_scene/stage/alpha/wallbreak_after_debris.dds")
 thread_data[2] = compress_module("asset/game_scene/stage/alpha/wallbreak_dynamic.dds")
-thread_data[3] = compress_module("asset/game_scene/stage/alpha/wallbreak_static.dds")
-thread_data[4] = compress_module("asset/game_scene/stage/alpha/wallbreak_trans_smoke.dds")
-thread_data[5] = compress_module("asset/game_scene/stage/alpha/wallbreak_transport_glow.dds")
+thread_data[3] = compress_module("asset/game_scene/stage/alpha/wallbreak_trans_smoke.dds")
+thread_data[4] = compress_module("asset/game_scene/stage/alpha/wallbreak_transport_glow.dds")
 
-thread_data[6] = compress_module("asset/game_scene/stage/alpha/ground.dds")
-thread_data[7] = compress_module("asset/game_scene/stage/alpha/stage_liner_fade.dds")
-thread_data[8] = compress_module("asset/game_scene/stage/alpha/stair.dds")
-thread_data[9] = compress_module("asset/game_scene/stage/alpha/tile_map.dds")
+thread_data[5] = compress_module("asset/game_scene/stage/alpha/wallstick_ver0.dds")
+thread_data[6] = compress_module("asset/game_scene/stage/alpha/wallstick_ver1.dds")
+
+thread_data[7] = compress_module("asset/game_scene/stage/alpha/ground.dds")
+thread_data[8] = compress_module("asset/game_scene/stage/alpha/stage_liner_fade.dds")
+thread_data[9] = compress_module("asset/game_scene/stage/alpha/stair.dds")
+thread_data[10] = compress_module("asset/game_scene/stage/alpha/tile_map.dds")
 
 love.thread.getChannel( 'thread_data_4' ):push( thread_data )

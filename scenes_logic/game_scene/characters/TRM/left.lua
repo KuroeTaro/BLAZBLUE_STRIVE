@@ -580,10 +580,12 @@ function load_game_scene_box_anchor_data_LP()
     obj_hurtboxs_data_game_scene_char_LP = {}
     obj_pushboxs_data_game_scene_char_LP = {}
     obj_anchor_data_game_scene_char_LP = {}
+    
     obj_VFX_spawn_anchor_pos_data_game_scene_char_LP = {}
     obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["smoke_spawn_anchor_pos"] = {}
     obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["block_ver0_spawn_anchor_pos"] = {}
     obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["block_ver1_spawn_anchor_pos"] = {}
+    obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["wallstick_spawn_anchor_pos"] = {}
 
     -- obj_hurtboxs_data_game_scene_char_LP["__"] = {}
     -- obj_hurtboxs_data_game_scene_char_LP["__"][0] = {{__,__,__,__}}
@@ -916,6 +918,13 @@ function load_game_scene_box_anchor_data_LP()
 
     obj_anchor_data_game_scene_char_LP["air_thrown_tested"] = {340,430}
     obj_anchor_data_game_scene_char_LP["ground_thrown_tested"] = {150,530}
+
+    obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["wallstick_spawn_anchor_pos"] = {
+        ["stand"] = 915,
+        ["crouch"] = 765,
+        ["air"] = 715,
+        ["OTG"] = 775,
+    }
 end
 function load_game_scene_audio_char_LP()
     audio_SFX_game_scene_LP = {}

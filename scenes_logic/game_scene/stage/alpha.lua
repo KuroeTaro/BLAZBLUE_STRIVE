@@ -37,19 +37,21 @@ function load_game_scene_obj_stage()
     obj_stage_game_scene_camera["active_application_table"] = {}
 
     -- wallstick_static
-    obj_stage_game_scene_wallbreak_static_table = {}
-    obj_stage_game_scene_wallbreak_static_table[1] = {1970,-550,0,0,1,1,0,0}
-    obj_stage_game_scene_wallbreak_static_table[1]["FCT"] = {0,0,0,0,0,0,0,0}
-    obj_stage_game_scene_wallbreak_static_table[1]["LCT"] = {0,0,0,0,0,0,0,0}
-    obj_stage_game_scene_wallbreak_static_table[1]["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_stage_game_scene_wallbreak_static_table[1]["state"] = "off"
-    obj_stage_game_scene_wallbreak_static_table[1]["current_animation"] = {}
-    obj_stage_game_scene_wallbreak_static_table[-1] = {-1970,-550,0,0,-1,1,0,0}
-    obj_stage_game_scene_wallbreak_static_table[-1]["FCT"] = {0,0,0,0,0,0,0,0}
-    obj_stage_game_scene_wallbreak_static_table[-1]["LCT"] = {0,0,0,0,0,0,0,0}
-    obj_stage_game_scene_wallbreak_static_table[-1]["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_stage_game_scene_wallbreak_static_table[-1]["state"] = "off"
-    obj_stage_game_scene_wallbreak_static_table[-1]["current_animation"] = {}
+    obj_stage_game_scene_wallstick_table = {}
+    obj_stage_game_scene_wallstick_table[1] = {1800,-450,0,0,1,1,0,0}
+    obj_stage_game_scene_wallstick_table[1]["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallstick_table[1]["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallstick_table[1]["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallstick_table[1]["state"] = "off"
+    obj_stage_game_scene_wallstick_table[1]["sprite_sheet"] = 0
+    obj_stage_game_scene_wallstick_table[1]["current_animation"] = {}
+    obj_stage_game_scene_wallstick_table[-1] = {-1800,-450,0,0,-1,1,0,0}
+    obj_stage_game_scene_wallstick_table[-1]["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallstick_table[-1]["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallstick_table[-1]["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_stage_game_scene_wallstick_table[-1]["state"] = "off"
+    obj_stage_game_scene_wallstick_table[-1]["sprite_sheet"] = 0
+    obj_stage_game_scene_wallstick_table[-1]["current_animation"] = {}
 
     obj_stage_game_scene_wallbreak_after_debris = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallbreak_after_debris["FCT"] = {0,0,0,0,0,0,0,0}
@@ -118,35 +120,14 @@ function load_game_scene_anim_stage()
     anim_stage_wallbreak_dynamic_opacity = {}
 
     -- wallbreak_static_opacity_anim
-    anim_stage_wallbreak_static_opacity_lv0 = {}
-    anim_stage_wallbreak_static_opacity_lv0[0] = {0,5}
-    anim_stage_wallbreak_static_opacity_lv0[5] = {1,30}
-    anim_stage_wallbreak_static_opacity_lv0[30] = {1,35}
-    anim_stage_wallbreak_static_opacity_lv0[35] = {0,35}
-    anim_stage_wallbreak_static_opacity_lv0["prop"] = 4
-    anim_stage_wallbreak_static_opacity_lv0["length"] = 35
-    anim_stage_wallbreak_static_opacity_lv0["loop"] = false
-    anim_stage_wallbreak_static_opacity_lv0["fix_type"] = true
-
-    anim_stage_wallbreak_static_opacity_lv1 = {}
-    anim_stage_wallbreak_static_opacity_lv1[0] = {0,5}
-    anim_stage_wallbreak_static_opacity_lv1[5] = {1,60}
-    anim_stage_wallbreak_static_opacity_lv1[60] = {1,65}
-    anim_stage_wallbreak_static_opacity_lv1[65] = {0,65}
-    anim_stage_wallbreak_static_opacity_lv1["prop"] = 4
-    anim_stage_wallbreak_static_opacity_lv1["length"] = 65
-    anim_stage_wallbreak_static_opacity_lv1["loop"] = false
-    anim_stage_wallbreak_static_opacity_lv1["fix_type"] = true
-
-    anim_stage_wallbreak_static_opacity_lv2 = {}
-    anim_stage_wallbreak_static_opacity_lv2[0] = {0,5}
-    anim_stage_wallbreak_static_opacity_lv2[5] = {1,90}
-    anim_stage_wallbreak_static_opacity_lv2[90] = {1,95}
-    anim_stage_wallbreak_static_opacity_lv2[95] = {0,95}
-    anim_stage_wallbreak_static_opacity_lv2["prop"] = 4
-    anim_stage_wallbreak_static_opacity_lv2["length"] = 125
-    anim_stage_wallbreak_static_opacity_lv2["loop"] = false
-    anim_stage_wallbreak_static_opacity_lv2["fix_type"] = true
+    anim_stage_wallstick = {}
+    for i = 0,19 do
+        anim_stage_wallstick[i] = i
+    end
+    anim_stage_wallstick["prop"] = 8
+    anim_stage_wallstick["length"] = 19
+    anim_stage_wallstick["loop"] = false
+    anim_stage_wallstick["fix_type"] = true
 
     -- wallbreak_transport_smoke_opacity_anim
     anim_stage_wallbreak_transport_smoke_opacity = {}
@@ -186,22 +167,29 @@ function order_load_game_scene_stage(load_order)
                 "asset/game_scene/stage/alpha/wallbreak_dynamic.json",
                 love.graphics.newImage(ASSET_DATA[4][2])
             )
-            image_sprite_sheet_stage_game_scene_wallbreak_static = 
-            sprite_sheet_load(
-                "asset/game_scene/stage/alpha/wallbreak_static.json",
-                love.graphics.newImage(ASSET_DATA[4][3])
-            )
             image_sprite_sheet_stage_game_scene_wallbreak_trans_smoke = 
             sprite_sheet_load(
                 "asset/game_scene/stage/alpha/wallbreak_trans_smoke.json",
-                love.graphics.newImage(ASSET_DATA[4][4])
+                love.graphics.newImage(ASSET_DATA[4][3])
             )
-            image_stage_game_scene_wallbreak_transport_glow = love.graphics.newImage(ASSET_DATA[4][5])
+            image_stage_game_scene_wallbreak_transport_glow = love.graphics.newImage(ASSET_DATA[4][4])
 
-            image_stage_game_scene_ground = love.graphics.newImage(ASSET_DATA[4][6])
-            image_stage_game_scene_stage_liner_fade_alpha = love.graphics.newImage(ASSET_DATA[4][7])
-            image_stage_game_scene_stair = love.graphics.newImage(ASSET_DATA[4][8])
-            image_stage_game_scene_tile_map = love.graphics.newImage(ASSET_DATA[4][9])
+            image_sprite_sheet_stage_game_scene_wallstick = {}
+            image_sprite_sheet_stage_game_scene_wallstick[0] = 
+            sprite_sheet_load(
+                "asset/game_scene/stage/alpha/wallstick_ver0.json",
+                love.graphics.newImage(ASSET_DATA[4][5])
+            )
+            image_sprite_sheet_stage_game_scene_wallstick[1] = 
+            sprite_sheet_load(
+                "asset/game_scene/stage/alpha/wallstick_ver1.json",
+                love.graphics.newImage(ASSET_DATA[4][6])
+            )
+
+            image_stage_game_scene_ground = love.graphics.newImage(ASSET_DATA[4][7])
+            image_stage_game_scene_stage_liner_fade_alpha = love.graphics.newImage(ASSET_DATA[4][8])
+            image_stage_game_scene_stair = love.graphics.newImage(ASSET_DATA[4][9])
+            image_stage_game_scene_tile_map = love.graphics.newImage(ASSET_DATA[4][10])
 
             image_sprite_batch_stage_game_scene_ground = love.graphics.newSpriteBatch(image_stage_game_scene_ground)
             image_sprite_batch_stage_game_scene_stair = love.graphics.newSpriteBatch(image_stage_game_scene_stair)
@@ -232,25 +220,16 @@ function update_stage_game_scene_wallbreak_static(obj)
 
         end,
         ["on"] = function()
-            point_linear_animator(obj,obj["current_animation"])
-            if get_point_linear_anim_end_state(obj,obj["current_animation"]) then
+            frame_animator(obj,anim_stage_wallstick)
+            if get_frame_anim_end_state(obj,anim_stage_wallstick) then
                 obj[4] = 0
+                obj[8] = 0
                 obj["state"] = "off"
             end
         end,
     }
     local this_function = switch[obj["state"]]
     if this_function then this_function() end
-end
-function state_machine_stage_game_scene_wallbreak_frame(obj,length,speed)
-    if obj[8] >= length - 1 then
-        return
-    end
-    obj["FCT"][8] = obj["FCT"][8] + 1
-    if obj["FCT"][8] > speed then
-        obj[8] = obj[8] + 1
-        obj["FCT"][8] = 0
-    end
 end
 
 -- update
@@ -322,8 +301,8 @@ function update_game_scene_stage()
     obj_camera[3] = obj_camera["3d_pos_z"]+obj_camera["enclose_position_offset"][3]*obj_camera["enclose_percentage"]+obj_camera[2]*0.25
 
     -- wallbreak_static_update
-    update_stage_game_scene_wallbreak_static(obj_stage_game_scene_wallbreak_static_table[1])
-    update_stage_game_scene_wallbreak_static(obj_stage_game_scene_wallbreak_static_table[-1])
+    update_stage_game_scene_wallbreak_static(obj_stage_game_scene_wallstick_table[1])
+    update_stage_game_scene_wallbreak_static(obj_stage_game_scene_wallstick_table[-1])
 end
 function update_game_scene_camera_application_table()
     if #obj_stage_game_scene_camera["active_application_table"] == 0 then
@@ -345,7 +324,7 @@ function draw_game_scene_stage_static()
     love.graphics.clear(125/255,125/255,125/255,1)
 
     local obj_camera = obj_stage_game_scene_camera
-    local image_sprite_sheet = image_sprite_sheet_stage_game_scene_wallbreak_static
+    local image_sprite_sheet = nil
 
     local obj = obj_stage_game_scene_tile_map
     draw_3d_image(obj_camera,obj,image_stage_game_scene_tile_map)
@@ -355,10 +334,17 @@ function draw_game_scene_stage_static()
     draw_3d_image(obj_camera,obj,image_sprite_batch_stage_game_scene_ground)
 
     -- common
+    obj = obj_stage_game_scene_wallstick_table[1]
+    image_sprite_sheet = image_sprite_sheet_stage_game_scene_wallstick[obj["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
-    obj = obj_stage_game_scene_wallbreak_static_table[1]
     draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
-    obj = obj_stage_game_scene_wallbreak_static_table[-1]
+    love.graphics.setBlendMode("add")
+    love.graphics.draw(image_sprite_sheet["sprite_batch"])
+    love.graphics.setBlendMode("alpha")
+
+    obj = obj_stage_game_scene_wallstick_table[-1]
+    image_sprite_sheet = image_sprite_sheet_stage_game_scene_wallstick[obj["sprite_sheet"]]
+    image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
     love.graphics.setBlendMode("add")
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
