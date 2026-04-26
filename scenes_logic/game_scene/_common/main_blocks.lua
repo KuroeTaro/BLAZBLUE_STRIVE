@@ -430,19 +430,23 @@ function update_game_scene_training_main()
 
     -- 更新阻力
     update_game_scene_friction()
+
     -- 更新角色重力方向速度
     update_game_scene_gravity()
+
     -- 更新资源槽
     update_game_scene_gauge()
+
     -- 更新上墙
     update_game_scene_test_and_apply_wallstick()
+
     -- 更新sub_frame
     update_game_scene_game_speed_sub_frame()
 
     -- 更新HUD 场景
     update_game_scene_HUD()
     update_game_scene_stage()
-
+    
     -- 更新角色DEBUG信息
     update_character_frame_info(obj_char_game_scene_char_LP)
     update_character_frame_info(obj_char_game_scene_char_RP)
