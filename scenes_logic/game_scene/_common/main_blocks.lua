@@ -507,7 +507,7 @@ function update_game_scene_test_and_apply_wallstick()
 end
 function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_side)
     local obj_camera = obj_stage_game_scene_camera
-    local wallbreak_static = nil
+    local obj_wallstick = obj_stage_game_scene_wallstick
     local wallbreak_spwan_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["wallstick_spawn_anchor_pos"]
     local stage_collision = false
     local collision_side = 0
@@ -529,10 +529,11 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
     elseif obj_char["collision_move_available_cache"][2] == 0 then
         collision_side_cache = 1
     end
-    wallbreak_static = common_game_scene_get_scene_wallbreak(collision_side)
+    obj_wallstick[1] = math.abs(obj_wallstick[1])*collision_side
+    obj_wallstick[5] = collision_side
     if collision_side ~= 0 and collision_side ~= collision_side_cache then
         -- wallstick_VFX
-        wallbreak_static[2] = obj_char["y"] - wallbreak_spwan_anchor_pos[obj_char["height_state"]]
+        obj_wallstick[2] = obj_char["y"] - wallbreak_spwan_anchor_pos[obj_char["height_state"]]
         if obj_char["wallbreak_gauge"][1] >= obj_char["wallbreak_gauge"][2] then
             -- camera_shake
             obj_camera["active_application_table"] = {}
@@ -546,15 +547,15 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
                     obj_camera["state"] = "active"
                 end
             )
-            wallbreak_static[4] = 1
-            wallbreak_static["sprite_sheet"] = 1
-            init_frame_anim_with(wallbreak_static,anim_stage_wallstick)
-            wallbreak_static["state"] = "on"
+            obj_wallstick[4] = 1
+            obj_wallstick["sprite_sheet"] = 1
+            init_frame_anim_with(obj_wallstick,anim_stage_wallstick)
+            obj_wallstick["state"] = "on"
         else
-            wallbreak_static[4] = 1
-            wallbreak_static["sprite_sheet"] = 0
-            init_frame_anim_with(wallbreak_static,anim_stage_wallstick)
-            wallbreak_static["state"] = "on"
+            obj_wallstick[4] = 1
+            obj_wallstick["sprite_sheet"] = 0
+            init_frame_anim_with(obj_wallstick,anim_stage_wallstick)
+            obj_wallstick["state"] = "on"
         end
     end
     if obj_char["wallbreakable_with_wallstick"] and 

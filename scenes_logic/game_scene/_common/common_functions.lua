@@ -146,15 +146,6 @@ end
 function common_game_scene_char_enclose_heat_gain(obj_char)
 end
 
-function common_game_scene_get_scene_wallbreak(side)
-    if side < 0 then
-        return obj_stage_game_scene_wallstick_L
-    elseif side > 0 then
-        return obj_stage_game_scene_wallstick_R
-    end
-    return nil
-end
-
 function common_game_scene_change_character(side)
     if side == "L" then
         return obj_char_game_scene_char_RP
