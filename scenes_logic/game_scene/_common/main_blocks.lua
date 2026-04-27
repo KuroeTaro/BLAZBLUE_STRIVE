@@ -465,6 +465,121 @@ function update_game_scene_online_match_synchronizing()
     update_game_scene_char_RP()
 end
 
+function update_game_scene_char()
+    local char_LP = obj_char_game_scene_char_LP
+    local char_RP = obj_char_game_scene_char_RP
+    
+    common_update_game_scene_char_game_speed_abnormal_realtime_countdown(char_LP)
+    common_update_game_scene_char_game_speed_abnormal_realtime_countdown(char_RP)
+
+    -- 计算摩擦力时再将game_speed_subframe初始化
+    local game_speed_cache_LP = char_LP["game_speed"]
+    local game_speed_subframe_cache_LP = char_LP["game_speed_subframe"]
+    local game_speed_cache_RP = char_RP["game_speed"]
+    local game_speed_subframe_cache_RP = char_RP["game_speed_subframe"]
+    if game_speed_cache_LP ~= 0 
+    and game_speed_subframe_cache_LP > game_speed_cache_LP
+    then
+        update_game_scene_char_LP()
+        update_game_scene_char_LP_projectile()
+        update_game_scene_char_LP_VFX()
+        update_game_scene_char_LP_black_overlay()
+    end
+
+    if game_speed_cache_RP ~= 0 
+    and game_speed_subframe_cache_RP > game_speed_cache_RP
+    then
+        update_game_scene_char_RP()
+        update_game_scene_char_RP_projectile()
+        update_game_scene_char_RP_VFX()
+        update_game_scene_char_RP_black_overlay()
+    end
+
+    -- attachment 用于某些需要根据角色本身本帧数据来更新的部分
+    if game_speed_cache_LP ~= 0 
+    and game_speed_subframe_cache_LP > game_speed_cache_LP
+    then
+        update_game_scene_char_LP_attachment()
+    end
+
+    if game_speed_cache_RP ~= 0 
+    and game_speed_subframe_cache_RP > game_speed_cache_RP
+    then
+        update_game_scene_char_RP_attachment()
+    end
+
+    local game_speed_abnormal_realtime_countdown_LP = char_LP["game_speed_abnormal_realtime_countdown"]
+    local game_speed_abnormal_realtime_countdown_RP = char_LP["game_speed_abnormal_realtime_countdown"]
+    if char_LP["game_speed"] == 0 and char_RP["game_speed"] == 0 then
+        if game_speed_abnormal_realtime_countdown_LP > game_speed_abnormal_realtime_countdown_RP then
+            char_LP["game_speed_abnormal_realtime_countdown"] = 
+            game_speed_abnormal_realtime_countdown_LP - game_speed_abnormal_realtime_countdown_RP
+            char_RP["game_speed_abnormal_realtime_countdown"] = 0
+        elseif game_speed_abnormal_realtime_countdown_RP > game_speed_abnormal_realtime_countdown_LP then
+            char_RP["game_speed_abnormal_realtime_countdown"] = 
+            game_speed_abnormal_realtime_countdown_RP - game_speed_abnormal_realtime_countdown_LP
+            char_LP["game_speed_abnormal_realtime_countdown"] = 0
+        else
+            char_LP["game_speed_abnormal_realtime_countdown"] = 0
+            char_RP["game_speed_abnormal_realtime_countdown"] = 0
+        end
+    end
+end
+function update_game_scene_friction()
+    local char_LP = obj_char_game_scene_char_LP
+    local char_RP = obj_char_game_scene_char_RP
+    local LP_game_speed = char_LP["game_speed"]
+    local RP_game_speed = char_LP["game_speed"]
+    
+    char_LP["velocity_debug"][1] = char_LP["velocity"][1]
+    char_LP["velocity_debug"][2] = char_LP["velocity"][2]
+    char_RP["velocity_debug"][1] = char_RP["velocity"][1]
+    char_RP["velocity_debug"][2] = char_RP["velocity"][2]
+    if char_LP["height_state"] ~= "air" and char_LP["game_speed"] ~= 0 and char_LP["game_speed_subframe"] > char_LP["game_speed"] and not char_LP["physics_lock"] then
+        if char_LP["friction"] == 0 then
+            char_LP["velocity"][1] = char_LP["velocity"][1]
+        else
+            char_LP["velocity"][1] = char_LP["velocity"][1] - (char_LP["velocity"][1] / char_LP["friction"])
+        end
+        if math.abs(char_LP["velocity"][1]) < 0.001 then
+            char_LP["velocity"][1] = 0
+        end
+    end
+    if char_RP["height_state"] ~= "air" and char_RP["game_speed"] ~= 0 and char_RP["game_speed_subframe"] > char_RP["game_speed"] and not char_RP["physics_lock"] then
+        if char_RP["friction"] == 0 then
+            char_RP["velocity"][1] = char_RP["velocity"][1]
+        else
+            char_RP["velocity"][1] = char_RP["velocity"][1] - (char_RP["velocity"][1] / char_RP["friction"])
+        end
+        if math.abs(char_RP["velocity"][1]) < 0.001 then
+            char_RP["velocity"][1] = 0
+        end
+    end
+end
+function update_game_scene_gravity()
+    local char_LP = obj_char_game_scene_char_LP
+    local char_RP = obj_char_game_scene_char_RP
+
+    if char_LP["y"] == 365 then
+        char_LP["velocity"][2] = math.min(char_LP["velocity"][2],0)
+    elseif char_LP["y"] > 365 then
+        char_LP["y"] = 365
+        char_LP["velocity"][2] = 0
+        char_LP["gravity_correction"] = 1
+    elseif char_LP["game_speed_subframe"] > char_LP["game_speed"] and not char_LP["physics_lock"] then
+        char_LP["velocity"][2] = char_LP["velocity"][2] + char_LP["gravity"]*char_LP["gravity_correction"]
+    end
+
+    if char_RP["y"] == 365 then
+        char_RP["velocity"][2] = math.min(char_RP["velocity"][2],0)
+    elseif char_RP["y"] > 365 then
+        char_RP["y"] = 365
+        char_RP["velocity"][2] = 0
+        char_LP["gravity_correction"] = 1
+    elseif char_RP["game_speed_subframe"] > char_RP["game_speed"] and not char_RP["physics_lock"] then
+        char_RP["velocity"][2] = char_RP["velocity"][2] + char_RP["gravity"]*char_RP["gravity_correction"]
+    end
+end
 function update_game_scene_gauge()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
@@ -485,6 +600,10 @@ function update_game_scene_gauge()
         char_RP["wallbreak_gauge_update_function"]()
     end
 end
+function update_game_scene_test_and_apply_wallbreak()
+end
+function update_game_scene_test_and_apply_wallbreak_sub()
+end
 function update_game_scene_test_and_apply_wallstick()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
@@ -494,8 +613,8 @@ function update_game_scene_test_and_apply_wallstick()
     update_game_scene_test_and_apply_wallstick_sub(char_RP,char_LP)
     char_RP["collision_move_available_cache"] = char_RP["collision_move_available"]
     if char_LP["wallstick_on"] ~= 0 and char_RP["wallstick_on"] ~= 0  then
-        char_LP["hit_hurt_blockstop_countdown"] = 0
-        char_RP["hit_hurt_blockstop_countdown"] = 0
+        char_LP["hit_hurt_blockstop_countdown"] = 30
+        char_RP["hit_hurt_blockstop_countdown"] = 30
         char_LP["hit_hurt_block_slowdown_countdown"] = 0
         char_RP["hit_hurt_block_slowdown_countdown"] = 0
         char_LP["game_speed"] = 1
@@ -532,7 +651,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
     obj_wallstick[1] = math.abs(obj_wallstick[1])*collision_side
     obj_wallstick[5] = collision_side
     if collision_side ~= 0 and collision_side ~= collision_side_cache then
-        -- wallstick_VFX
+        -- wallstick_stage_obj
         obj_wallstick[2] = obj_char["y"] - wallbreak_spwan_anchor_pos[obj_char["height_state"]]
         if obj_char["wallbreak_gauge"][1] >= obj_char["wallbreak_gauge"][2] then
             -- camera_shake
@@ -584,61 +703,6 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
         obj_char["last_hitstop_frame"] = 0
         obj_char_other_side["hit_hurt_blockstop_countdown"] = 30
         obj_char_other_side["last_hitstop_frame"] = 0
-    end
-end
-function update_game_scene_gravity()
-    local char_LP = obj_char_game_scene_char_LP
-    local char_RP = obj_char_game_scene_char_RP
-
-    if char_LP["y"] == 365 then
-        char_LP["velocity"][2] = math.min(char_LP["velocity"][2],0)
-    elseif char_LP["y"] > 365 then
-        char_LP["y"] = 365
-        char_LP["velocity"][2] = 0
-        char_LP["gravity_correction"] = 1
-    elseif char_LP["game_speed_subframe"] > char_LP["game_speed"] and not char_LP["physics_lock"] then
-        char_LP["velocity"][2] = char_LP["velocity"][2] + char_LP["gravity"]*char_LP["gravity_correction"]
-    end
-
-    if char_RP["y"] == 365 then
-        char_RP["velocity"][2] = math.min(char_RP["velocity"][2],0)
-    elseif char_RP["y"] > 365 then
-        char_RP["y"] = 365
-        char_RP["velocity"][2] = 0
-        char_LP["gravity_correction"] = 1
-    elseif char_RP["game_speed_subframe"] > char_RP["game_speed"] and not char_RP["physics_lock"] then
-        char_RP["velocity"][2] = char_RP["velocity"][2] + char_RP["gravity"]*char_RP["gravity_correction"]
-    end
-end
-function update_game_scene_friction()
-    local char_LP = obj_char_game_scene_char_LP
-    local char_RP = obj_char_game_scene_char_RP
-    local LP_game_speed = char_LP["game_speed"]
-    local RP_game_speed = char_LP["game_speed"]
-    
-    char_LP["velocity_debug"][1] = char_LP["velocity"][1]
-    char_LP["velocity_debug"][2] = char_LP["velocity"][2]
-    char_RP["velocity_debug"][1] = char_RP["velocity"][1]
-    char_RP["velocity_debug"][2] = char_RP["velocity"][2]
-    if char_LP["height_state"] ~= "air" and char_LP["game_speed"] ~= 0 and char_LP["game_speed_subframe"] > char_LP["game_speed"] and not char_LP["physics_lock"] then
-        if char_LP["friction"] == 0 then
-            char_LP["velocity"][1] = char_LP["velocity"][1]
-        else
-            char_LP["velocity"][1] = char_LP["velocity"][1] - (char_LP["velocity"][1] / char_LP["friction"])
-        end
-        if math.abs(char_LP["velocity"][1]) < 0.001 then
-            char_LP["velocity"][1] = 0
-        end
-    end
-    if char_RP["height_state"] ~= "air" and char_RP["game_speed"] ~= 0 and char_RP["game_speed_subframe"] > char_RP["game_speed"] and not char_RP["physics_lock"] then
-        if char_RP["friction"] == 0 then
-            char_RP["velocity"][1] = char_RP["velocity"][1]
-        else
-            char_RP["velocity"][1] = char_RP["velocity"][1] - (char_RP["velocity"][1] / char_RP["friction"])
-        end
-        if math.abs(char_RP["velocity"][1]) < 0.001 then
-            char_RP["velocity"][1] = 0
-        end
     end
 end
 function update_game_scene_game_speed_sub_frame()
@@ -710,64 +774,4 @@ function update_game_scene_HUD_overdrive_timer(obj_char,timer_obj)
     }
     local this_function = switch[timer_obj["state"]]
     if this_function then this_function() end
-end
-function update_game_scene_char()
-    local char_LP = obj_char_game_scene_char_LP
-    local char_RP = obj_char_game_scene_char_RP
-    
-    common_update_game_scene_char_game_speed_abnormal_realtime_countdown(char_LP)
-    common_update_game_scene_char_game_speed_abnormal_realtime_countdown(char_RP)
-
-    -- 计算摩擦力时再将game_speed_subframe初始化
-    local game_speed_cache_LP = char_LP["game_speed"]
-    local game_speed_subframe_cache_LP = char_LP["game_speed_subframe"]
-    local game_speed_cache_RP = char_RP["game_speed"]
-    local game_speed_subframe_cache_RP = char_RP["game_speed_subframe"]
-    if game_speed_cache_LP ~= 0 
-    and game_speed_subframe_cache_LP > game_speed_cache_LP
-    then
-        update_game_scene_char_LP()
-        update_game_scene_char_LP_projectile()
-        update_game_scene_char_LP_VFX()
-        update_game_scene_char_LP_black_overlay()
-    end
-
-    if game_speed_cache_RP ~= 0 
-    and game_speed_subframe_cache_RP > game_speed_cache_RP
-    then
-        update_game_scene_char_RP()
-        update_game_scene_char_RP_projectile()
-        update_game_scene_char_RP_VFX()
-        update_game_scene_char_RP_black_overlay()
-    end
-
-    -- attachment 用于某些需要根据角色本身本帧数据来更新的部分
-    if game_speed_cache_LP ~= 0 
-    and game_speed_subframe_cache_LP > game_speed_cache_LP
-    then
-        update_game_scene_char_LP_attachment()
-    end
-
-    if game_speed_cache_RP ~= 0 
-    and game_speed_subframe_cache_RP > game_speed_cache_RP
-    then
-        update_game_scene_char_RP_attachment()
-    end
-
-    local game_speed_abnormal_realtime_countdown_LP = char_LP["game_speed_abnormal_realtime_countdown"]
-    local game_speed_abnormal_realtime_countdown_RP = char_LP["game_speed_abnormal_realtime_countdown"]
-    if char_LP["game_speed"] == 0 and char_RP["game_speed"] == 0 then
-        if game_speed_abnormal_realtime_countdown_LP > game_speed_abnormal_realtime_countdown_RP then
-            char_LP["game_speed_abnormal_realtime_countdown"] = 
-            game_speed_abnormal_realtime_countdown_LP - game_speed_abnormal_realtime_countdown_RP
-            char_RP["game_speed_abnormal_realtime_countdown"] = 0
-        elseif game_speed_abnormal_realtime_countdown_RP > game_speed_abnormal_realtime_countdown_LP then
-            char_RP["game_speed_abnormal_realtime_countdown"] = 
-            game_speed_abnormal_realtime_countdown_RP - game_speed_abnormal_realtime_countdown_LP
-            char_LP["game_speed_abnormal_realtime_countdown"] = 0
-        else
-            char_LP["game_speed_abnormal_realtime_countdown"] = 0
-            char_RP["game_speed_abnormal_realtime_countdown"] = 0
-        end
-    end
 end
