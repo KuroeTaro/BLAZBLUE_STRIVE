@@ -131,29 +131,6 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_upd
         obj_char_shot_sys_aim_process[1] = math.max(obj_char_shot_sys_aim_process[1], obj_char_shot_sys_aim_process[3])
     end
 end
--- oroboros_pos_update
-function character_function_game_scene_TRM_shot_sys_oroboros_pos_init(obj_char)
-    obj_char["shot_sys_oroboros_ease_current"] = {
-        obj_char["x"] + obj_char[5]*obj_char["shot_sys_oroboros_anchor_pos"][1],
-        obj_char["y"] + obj_char[6]*obj_char["shot_sys_oroboros_anchor_pos"][2],
-        obj_char[5],
-        obj_char[6]
-    }
-end
-function character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
-    obj_char["shot_sys_oroboros_ease_target"] = {
-        obj_char["x"] + obj_char[5]*obj_char["shot_sys_oroboros_anchor_pos"][1],
-        obj_char["y"] + obj_char[6]*obj_char["shot_sys_oroboros_anchor_pos"][2],
-        obj_char[5],
-        obj_char[6]
-    }
-    obj_char["shot_sys_oroboros_ease_current"] = {
-        (obj_char["shot_sys_oroboros_ease_target"][1]*2 + obj_char["shot_sys_oroboros_ease_current"][1])/3,
-        (obj_char["shot_sys_oroboros_ease_target"][2]*2 + obj_char["shot_sys_oroboros_ease_current"][2])/3,
-        (obj_char["shot_sys_oroboros_ease_target"][3]*2 + obj_char["shot_sys_oroboros_ease_current"][3])/3,
-        (obj_char["shot_sys_oroboros_ease_target"][4]*2 + obj_char["shot_sys_oroboros_ease_current"][4])/3
-    }
-end
 -- reticle_basic_prop_update
 function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(obj_char)
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
@@ -233,6 +210,29 @@ function character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(obj_cha
     end
     obj_char["shot_sys_reticle"][1] = obj_char["shot_sys_reticle_stage_pos_current"][1]
     obj_char["shot_sys_reticle"][2] = obj_char["shot_sys_reticle_stage_pos_current"][2]
+end
+-- oroboros_pos_update
+function character_function_game_scene_TRM_shot_sys_oroboros_pos_init(obj_char)
+    obj_char["shot_sys_oroboros_ease_current"] = {
+        obj_char["x"] + obj_char[5]*obj_char["shot_sys_oroboros_anchor_pos"][1],
+        obj_char["y"] + obj_char[6]*obj_char["shot_sys_oroboros_anchor_pos"][2],
+        obj_char[5],
+        obj_char[6]
+    }
+end
+function character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
+    obj_char["shot_sys_oroboros_ease_target"] = {
+        obj_char["x"] + obj_char[5]*obj_char["shot_sys_oroboros_anchor_pos"][1],
+        obj_char["y"] + obj_char[6]*obj_char["shot_sys_oroboros_anchor_pos"][2],
+        obj_char[5],
+        obj_char[6]
+    }
+    obj_char["shot_sys_oroboros_ease_current"] = {
+        (obj_char["shot_sys_oroboros_ease_target"][1]*2 + obj_char["shot_sys_oroboros_ease_current"][1])/3,
+        (obj_char["shot_sys_oroboros_ease_target"][2]*2 + obj_char["shot_sys_oroboros_ease_current"][2])/3,
+        (obj_char["shot_sys_oroboros_ease_target"][3]*2 + obj_char["shot_sys_oroboros_ease_current"][3])/3,
+        (obj_char["shot_sys_oroboros_ease_target"][4]*2 + obj_char["shot_sys_oroboros_ease_current"][4])/3
+    }
 end
 -- emplayment_function
 function character_function_game_scene_TRM_shot_sys_off_init(obj_char)
