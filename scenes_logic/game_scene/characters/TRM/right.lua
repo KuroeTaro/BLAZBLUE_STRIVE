@@ -327,7 +327,6 @@ function order_load_game_scene_char_RP_frames(load_order)
         [15] = function()
             -- UNIVERSAL 1 2 3
             image_sprite_sheet_table_char_game_scene_RP = {}
-
             local load_name_table = {
                 "0_air_Launcher_teched",
                 "0_air_Launcher_teching",
@@ -489,7 +488,6 @@ function order_load_game_scene_char_RP_frames(load_order)
         [21] = function()
             -- whiff_VFX 7 8
             image_sprite_sheet_VFX_game_scene_RP = {}
-
             local load_name_table = {
                 "2P",
                 "6P",
@@ -534,7 +532,6 @@ function order_load_game_scene_char_RP_frames(load_order)
         [23] = function()
             -- projectile 9
             image_sprite_sheet_projectile_game_scene_RP = {}
-
             local load_name_table = {
                 "5H",
                 "5H_miss",
