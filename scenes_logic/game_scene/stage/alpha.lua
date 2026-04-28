@@ -15,6 +15,9 @@ function load_game_scene_obj_stage()
     obj_stage_game_scene_main = {}
     obj_stage_game_scene_main["f"] = 0
     obj_stage_game_scene_main["current_animation"] = {}
+    obj_stage_game_scene_main["camera_active_application_table"] = {}
+    obj_stage_game_scene_main["wallstick_active_application_table"] = {}
+    obj_stage_game_scene_main["wallbreak_active_application_table"] = {}
 
     -- camera
     obj_stage_game_scene_camera = {0,0,-800}
@@ -33,8 +36,6 @@ function load_game_scene_obj_stage()
 
     obj_stage_game_scene_camera["LCT"]["enclose_percentage"] = 0.0
     obj_stage_game_scene_camera["LCD"]["enclose_percentage"] = 0.0
-
-    obj_stage_game_scene_camera["active_application_table"] = {}
 
     -- wallstick
     obj_stage_game_scene_wallstick = {}
@@ -297,17 +298,18 @@ function update_game_scene_stage()
     update_stage_game_scene_wallbreak_static(obj_stage_game_scene_wallstick)
 end
 function update_game_scene_camera_application_table()
-    if #obj_stage_game_scene_camera["active_application_table"] == 0 then
+    local obj_stage_main = obj_stage_game_scene_main
+    if #obj_stage_main["camera_active_application_table"] == 0 then
         return
     end
-    if #obj_stage_game_scene_camera["active_application_table"] == 1 then
-        obj_stage_game_scene_camera["active_application_table"][1]()
-        obj_stage_game_scene_camera["active_application_table"] = {}
-    elseif #obj_stage_game_scene_camera["active_application_table"] > 1 then
+    if #obj_stage_main["camera_active_application_table"] == 1 then
+        obj_stage_main["camera_active_application_table"][1]()
+        obj_stage_main["camera_active_application_table"] = {}
+    elseif #obj_stage_main["camera_active_application_table"] > 1 then
         -- nil shake 动画
         -- nil enclose 动画
         -- 更新状态
-        obj_stage_game_scene_camera["active_application_table"] = {}
+        obj_stage_main["camera_active_application_table"] = {}
     end
 end
 

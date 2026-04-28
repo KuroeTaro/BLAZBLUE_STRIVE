@@ -625,6 +625,7 @@ function update_game_scene_test_and_apply_wallstick()
     end
 end
 function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_side)
+    local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local obj_wallstick = obj_stage_game_scene_wallstick
     local wallbreak_spwan_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["wallstick_spawn_anchor_pos"]
@@ -655,8 +656,8 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
         obj_wallstick[2] = obj_char["y"] - wallbreak_spwan_anchor_pos[obj_char["height_state"]]
         if obj_char["wallbreak_gauge"][1] >= obj_char["wallbreak_gauge"][2] then
             -- camera_shake
-            obj_camera["active_application_table"] = {}
-            table.insert(obj_camera["active_application_table"],
+            obj_stage_main["camera_active_application_table"] = {}
+            table.insert(obj_stage_main["camera_active_application_table"],
                 function()
                     anim_camera_point_linear_game_scene_camera_shake_x,
                     anim_camera_point_linear_game_scene_camera_shake_y 

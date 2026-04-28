@@ -11,12 +11,10 @@ config选项中自定义要不要79空投
 
 
 -- 碎墙
--- 先写伤害系统
-    -- 普通伤害
-    -- 伤害修正
-    -- 命中获得的气
-    -- 碎墙伤害
-    -- 受伤获得的气
-    -- 防御获得的气
-    -- 防御获得的risk
-    -- FD防御削减的气
+    obj_stage_game_scene_main["active_camera_application_table"] = {}
+    obj_stage_game_scene_main["active_wallbreak_application_table"] = {}
+    obj_stage_game_scene_main["active_wallstick_application_table"] = {}
+    应用这三个
+    将camera的application table 转移到main
+    将wallstick的应用方式修改为application table
+    将

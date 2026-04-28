@@ -159,8 +159,10 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
         -- strike_clash
         -- projectile_and_projectile_interaction
         -- interaction_with_enemy
-    local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
-    local obj_camera = obj_stage_game_scene_camera
+        local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
+        local obj_stage_main = obj_stage_game_scene_main
+        local obj_camera = obj_stage_game_scene_camera
+        local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
             -- if hit
         if collision_strike_hurtbox_test(obj,obj_char_other_side) and obj["strike_active"] and (not obj_char_other_side["strike_inv"]) then
             -- insert_hit_VFX
@@ -200,12 +202,11 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
             end
             -- if block
             if block_bool then
-                local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
                 -- set_state_and_state_cache
                 obj_char_other_side["state_cache"] = "block"
                 obj_char_other_side["state"] = "blockstop"
                 -- set_insert_camera_anim
-                table.insert(obj_camera["active_application_table"],
+                table.insert(obj_stage_main["camera_active_application_table"],
                     function()
                         anim_camera_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
                         anim_camera_point_linear_game_scene_camera_shake_y = obj["camera_y_shake_anim"]
@@ -261,7 +262,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                 obj_char_other_side["state_cache"] = obj_char_other_side["state"]
                 obj_char_other_side["state"] = "hurtstop"
                 -- set_insert_camera_anim
-                table.insert(obj_camera["active_application_table"],
+                table.insert(obj_stage_main["camera_active_application_table"],
                     function()
                         anim_camera_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
                         anim_camera_point_linear_game_scene_camera_shake_y = obj["camera_y_shake_anim"]
@@ -311,7 +312,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                     obj["hit_counter_ver_function"](obj_char,obj_char_other_side)
                 end
                 -- set_play_character_shake_animation
-                table.insert(obj_camera["active_application_table"],
+                table.insert(obj_stage_main["camera_active_application_table"],
                     function()
                         anim_camera_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
                         anim_camera_point_linear_game_scene_camera_shake_y = obj["camera_y_shake_anim"]
