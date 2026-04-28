@@ -203,6 +203,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["shot_sys_idle_cancel"] = false
     obj_char_game_scene_char_LP["shot_sys_aim_process"] = {0,0,420,450,false} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值 上一帧是否高于瞄准命中最低数值
     obj_char_game_scene_char_LP["shot_sys_animation"] = nil
+    obj_char_game_scene_char_LP["shot_sys_camera_shake_table"] = {}
     obj_char_game_scene_char_LP["shot_sys_ban_state"] = {
         ["before_ease_in"] = true,
         ["active_FD_block"] = true,

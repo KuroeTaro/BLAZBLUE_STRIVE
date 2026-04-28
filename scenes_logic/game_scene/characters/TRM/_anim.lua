@@ -5105,23 +5105,18 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(obj_char)
         obj_char["shot_sys_fire_cancel"] = false
         obj_char["shot_sys_idle_cancel"] = false
         character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
-        -- cache_camera_shake_anim
-        local camera_shake_anim_cache = {obj_char["camera_x_shake_anim"],obj_char["camera_y_shake_anim"]}
         -- camera_animation_application
         table.insert(obj_stage_main["camera_active_application_table"],
             function()
                 -- cameara_animation_load
-                local cache_obj = {}
-                common_game_scene_hit_load_camera_shake_anim(cache_obj,0.1)
-                anim_camera_point_linear_game_scene_camera_shake_x = cache_obj["camera_x_shake_anim"]
-                anim_camera_point_linear_game_scene_camera_shake_y = cache_obj["camera_y_shake_anim"]
+                common_game_scene_hit_load_camera_shake_anim(obj_char["shot_sys_camera_shake_table"],0.1)
+                anim_camera_point_linear_game_scene_camera_shake_x = obj_char["shot_sys_camera_shake_table"]["camera_x_shake_anim"]
+                anim_camera_point_linear_game_scene_camera_shake_y = obj_char["shot_sys_camera_shake_table"]["camera_y_shake_anim"]
                 init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
                 init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
                 obj_camera["state"] = "active"
             end
         )
-        obj_char["camera_x_shake_anim"] = camera_shake_anim_cache[1]
-        obj_char["camera_y_shake_anim"] = camera_shake_anim_cache[2]
     end
     res[1] = function()
         -- shot_sys

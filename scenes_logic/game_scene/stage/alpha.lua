@@ -214,6 +214,7 @@ function update_game_scene_stage()
     -- glow update no need for this stage
 
     -- application_table
+    update_game_scene_stage_application_table_validation()
     update_game_scene_wallstick_stage_obj_application_table()
     update_game_scene_wallstick_char_obj_application_table()
     update_game_scene_camera_application_table()
@@ -222,8 +223,20 @@ function update_game_scene_stage()
     -- wallstick_update
     state_machine_stage_game_scene_wallstick()
 end
+function update_game_scene_stage_application_table_validation()
+    local obj_stage_main = obj_stage_game_scene_main
+    if #obj_stage_main["wallstick_stage_obj_active_application_table"] > 1 or #obj_stage_main["wallstick_char_obj_active_application_table"] > 1 then
+        print("Did you code a guarantee projectile that active after the owner was hurt?")
+        print("or you made a extremely fucking wired hurt animation that could cause both characters to be in wallstick state at the same frame?")
+        print("These texts only show when you have a sync wallstick or wallbreak process that cause more than 1 wallstick or wallbreak effect at the same frame.")
+        print("You could do that but I won't code a wallstick with it since this would cause a sync wallstick or wallbreak.")
+        print("That is a issue even arcsys deal it shity.")
+        print("I would just ban the wallbreak/wallstick process with it. BTW I don't like guarantee projectile either")
+    end
+end
 function update_game_scene_camera_application_table()
     local obj_stage_main = obj_stage_game_scene_main
+    local obj_camera = obj_stage_game_scene_camera
     if #obj_stage_main["camera_active_application_table"] == 0 then
         return
     end
@@ -231,31 +244,43 @@ function update_game_scene_camera_application_table()
         obj_stage_main["camera_active_application_table"][1]()
         obj_stage_main["camera_active_application_table"] = {}
     elseif #obj_stage_main["camera_active_application_table"] > 1 then
-        -- nil shake 动画
-        -- nil enclose 动画
         -- 更新状态
         obj_stage_main["camera_active_application_table"] = {}
     end
 end
 function update_game_scene_wallstick_stage_obj_application_table()
     local obj_stage_main = obj_stage_game_scene_main
+    local char_LP = obj_char_game_scene_char_LP
+    local char_RP = obj_char_game_scene_char_RP
     if #obj_stage_main["wallstick_stage_obj_active_application_table"] == 0 then
         return
     end
-    for i = 1,#obj_stage_main["wallstick_stage_obj_active_application_table"] do
-        obj_stage_main["wallstick_stage_obj_active_application_table"][i]()
+    if #obj_stage_main["wallstick_stage_obj_active_application_table"] == 1 then
+        obj_stage_main["wallstick_stage_obj_active_application_table"][1]()
+        obj_stage_main["wallstick_stage_obj_active_application_table"] = {}
+    elseif #obj_stage_main["wallstick_stage_obj_active_application_table"] > 1 then
+        -- nil shake 动画
+        -- nil enclose 动画
+        -- 更新状态
+        obj_stage_main["wallstick_stage_obj_active_application_table"] = {}
+        print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000001")
     end
-    obj_stage_main["wallstick_stage_obj_active_application_table"] = {}
 end
 function update_game_scene_wallstick_char_obj_application_table()
     local obj_stage_main = obj_stage_game_scene_main
     if #obj_stage_main["wallstick_char_obj_active_application_table"] == 0 then
         return
     end
-    for i = 1,#obj_stage_main["wallstick_char_obj_active_application_table"] do
-        obj_stage_main["wallstick_char_obj_active_application_table"][i]()
+    if #obj_stage_main["wallstick_char_obj_active_application_table"] == 1 then
+        obj_stage_main["wallstick_char_obj_active_application_table"][1]()
+        obj_stage_main["wallstick_char_obj_active_application_table"] = {}
+    elseif #obj_stage_main["wallstick_char_obj_active_application_table"] > 1 then
+        -- nil shake 动画
+        -- nil enclose 动画
+        -- 更新状态
+        obj_stage_main["wallstick_char_obj_active_application_table"] = {}
+        print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000002")
     end
-    obj_stage_main["wallstick_char_obj_active_application_table"] = {}
 end
 -- state_machine
 function state_machine_stage_game_scene_camera()

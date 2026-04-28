@@ -602,10 +602,6 @@ function update_game_scene_gauge()
         char_RP["wallbreak_gauge_update_function"]()
     end
 end
-function update_game_scene_test_and_apply_wallbreak()
-end
-function update_game_scene_test_and_apply_wallbreak_sub()
-end
 function update_game_scene_test_and_apply_wallstick()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
@@ -637,21 +633,6 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
     elseif obj_char["collision_move_available"][2] == 0 then
         collision_side = 1
     else
-        return
-    end
-
-    if obj_char["wallbreak_gauge"][1] >= obj_char["wallbreak_gauge"][2] and (
-        obj_char_other_side["state"] == "hurt" or 
-        obj_char_other_side["state"] == "hurtstop" or 
-        obj_char_other_side["state"] == "wallstick" or
-        obj_char_other_side["state"] == "wallbreak"
-    )
-    then
-        print("Did you code a guarantee projectile that active after the owner was hurt?")
-        print("or you made a extremely fucking wired hurt animation that could cause both characters to be in wallstick state at the same frame?")
-        print("You could do that but I won't code a wallstick with it since this would cause a sync wallstick or wallbreak.")
-        print("That is a issue even arcsys deal it shity.")
-        print("I would just ban the wallbreak/wallstick process with it. BTW I don't like guarantee projectile either")
         return
     end
 
