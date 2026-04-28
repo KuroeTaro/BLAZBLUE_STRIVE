@@ -1025,6 +1025,10 @@ function state_machine_char_game_scene_char_RP()
             character_animator(obj_char,obj_char["character_animation"])
             state_gate_game_scene_char_RP_from_wallstick(input,obj_char)
         end,
+        ["wallbreak"] = function()
+            character_animator(obj_char,obj_char["character_animation"])
+            state_gate_game_scene_char_RP_from_wallbreak(input,obj_char)
+        end,
 
         ["knockdown"] = function()
             character_animator(obj_char,obj_char["character_animation"])
@@ -2734,6 +2738,15 @@ function state_gate_game_scene_char_RP_from_hurtstop(input,obj_char)
 end
 
 function state_gate_game_scene_char_RP_from_wallstick(input,obj_char)
+    -- animation_end
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
+        obj_char["state"] = obj_char["state_cache"]
+        obj_char["character_animation"] = obj_char["self_knockdown_recovery_animation"] 
+        init_character_anim_with(obj_char,obj_char["character_animation"])
+        return
+    end
+end
+function state_gate_game_scene_char_RP_from_wallbreak(input,obj_char)
     -- animation_end
     if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         obj_char["state"] = obj_char["state_cache"]
