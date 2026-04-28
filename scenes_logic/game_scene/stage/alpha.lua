@@ -16,7 +16,8 @@ function load_game_scene_obj_stage()
     obj_stage_game_scene_main["f"] = 0
     obj_stage_game_scene_main["current_animation"] = {}
     obj_stage_game_scene_main["camera_active_application_table"] = {}
-    obj_stage_game_scene_main["wallstick_active_application_table"] = {}
+    obj_stage_game_scene_main["wallstick_char_obj_active_application_table"] = {}
+    obj_stage_game_scene_main["wallstick_stage_obj_active_application_table"] = {}
     obj_stage_game_scene_main["wallbreak_active_application_table"] = {}
 
     -- camera
@@ -207,31 +208,57 @@ function order_load_game_scene_stage(load_order)
     if this_function then this_function() end
 end
 
--- state_machine
-function update_stage_game_scene_wallbreak_static(obj)
-    local switch = {
-        ["off"] = function()
-
-        end,
-        ["on"] = function()
-            frame_animator(obj,anim_stage_wallstick)
-            if get_frame_anim_end_state(obj,anim_stage_wallstick) then
-                obj[4] = 0
-                obj[8] = 0
-                obj["state"] = "off"
-            end
-        end,
-    }
-    local this_function = switch[obj["state"]]
-    if this_function then this_function() end
-end
-
 -- update
 function update_game_scene_stage()
     -- static stage no update need
     -- glow update no need for this stage
 
-    -- camera update
+    -- application_table
+    update_game_scene_wallstick_stage_obj_application_table()
+    update_game_scene_wallstick_char_obj_application_table()
+    update_game_scene_camera_application_table()
+    -- camera_update
+    state_machine_stage_game_scene_camera()
+    -- wallstick_update
+    state_machine_stage_game_scene_wallstick()
+end
+function update_game_scene_camera_application_table()
+    local obj_stage_main = obj_stage_game_scene_main
+    if #obj_stage_main["camera_active_application_table"] == 0 then
+        return
+    end
+    if #obj_stage_main["camera_active_application_table"] == 1 then
+        obj_stage_main["camera_active_application_table"][1]()
+        obj_stage_main["camera_active_application_table"] = {}
+    elseif #obj_stage_main["camera_active_application_table"] > 1 then
+        -- nil shake 动画
+        -- nil enclose 动画
+        -- 更新状态
+        obj_stage_main["camera_active_application_table"] = {}
+    end
+end
+function update_game_scene_wallstick_stage_obj_application_table()
+    local obj_stage_main = obj_stage_game_scene_main
+    if #obj_stage_main["wallstick_stage_obj_active_application_table"] == 0 then
+        return
+    end
+    for i = 1,#obj_stage_main["wallstick_stage_obj_active_application_table"] do
+        obj_stage_main["wallstick_stage_obj_active_application_table"][i]()
+    end
+    obj_stage_main["wallstick_stage_obj_active_application_table"] = {}
+end
+function update_game_scene_wallstick_char_obj_application_table()
+    local obj_stage_main = obj_stage_game_scene_main
+    if #obj_stage_main["wallstick_char_obj_active_application_table"] == 0 then
+        return
+    end
+    for i = 1,#obj_stage_main["wallstick_char_obj_active_application_table"] do
+        obj_stage_main["wallstick_char_obj_active_application_table"][i]()
+    end
+    obj_stage_main["wallstick_char_obj_active_application_table"] = {}
+end
+-- state_machine
+function state_machine_stage_game_scene_camera()
     local obj_camera = obj_stage_game_scene_camera
     local obj_char_L = obj_char_game_scene_char_LP
     local obj_char_R = obj_char_game_scene_char_RP
@@ -255,7 +282,7 @@ function update_game_scene_stage()
     obj_camera["3d_pos_y_target"] = math.max(obj_camera["3d_pos_y_target"],-900)
 
     obj_camera["3d_pos_z_target"] = obj_camera["3d_pos_z_target"]-obj_camera["3d_pos_y_target"]*0.25
-    -- camera smooth move
+    -- camera_smooth_move
     local div_value = 3
     obj_camera["3d_pos_x"] = (obj_camera["3d_pos_x"]*(div_value-1)+obj_camera["3d_pos_x_target"])/div_value
     obj_camera["3d_pos_y"] = (obj_camera["3d_pos_y"]*(div_value-1)+obj_camera["3d_pos_y_target"])/div_value
@@ -270,7 +297,6 @@ function update_game_scene_stage()
         obj_camera["3d_pos_z"] = obj_camera["3d_pos_z_target"]
     end
 
-    update_game_scene_camera_application_table()
     local switch = {
         ["main"] = function()
             return
@@ -293,24 +319,24 @@ function update_game_scene_stage()
     obj_camera[1] = obj_camera["3d_pos_x"]+obj_camera["enclose_position_offset"][1]*obj_camera["enclose_percentage"]
     obj_camera[2] = obj_camera["3d_pos_y"]+obj_camera["enclose_position_offset"][2]*obj_camera["enclose_percentage"]
     obj_camera[3] = obj_camera["3d_pos_z"]+obj_camera["enclose_position_offset"][3]*obj_camera["enclose_percentage"]+obj_camera[2]*0.25
-
-    -- wallbreak_static_update
-    update_stage_game_scene_wallbreak_static(obj_stage_game_scene_wallstick)
 end
-function update_game_scene_camera_application_table()
-    local obj_stage_main = obj_stage_game_scene_main
-    if #obj_stage_main["camera_active_application_table"] == 0 then
-        return
-    end
-    if #obj_stage_main["camera_active_application_table"] == 1 then
-        obj_stage_main["camera_active_application_table"][1]()
-        obj_stage_main["camera_active_application_table"] = {}
-    elseif #obj_stage_main["camera_active_application_table"] > 1 then
-        -- nil shake 动画
-        -- nil enclose 动画
-        -- 更新状态
-        obj_stage_main["camera_active_application_table"] = {}
-    end
+function state_machine_stage_game_scene_wallstick()
+    local obj_stage_wallstick = obj_stage_game_scene_wallstick
+    local switch = {
+        ["off"] = function()
+
+        end,
+        ["on"] = function()
+            frame_animator(obj_stage_wallstick,anim_stage_wallstick)
+            if get_frame_anim_end_state(obj_stage_wallstick,anim_stage_wallstick) then
+                obj_stage_wallstick[4] = 0
+                obj_stage_wallstick[8] = 0
+                obj_stage_wallstick["state"] = "off"
+            end
+        end,
+    }
+    local this_function = switch[obj_stage_wallstick["state"]]
+    if this_function then this_function() end
 end
 
 -- draw

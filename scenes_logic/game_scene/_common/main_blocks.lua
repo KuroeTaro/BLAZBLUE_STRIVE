@@ -443,8 +443,10 @@ function update_game_scene_training_main()
     -- 更新sub_frame
     update_game_scene_game_speed_sub_frame()
 
-    -- 更新HUD 场景
+    -- 更新HUD
     update_game_scene_HUD()
+
+    -- 更新场景
     update_game_scene_stage()
     
     -- 更新角色DEBUG信息
@@ -612,17 +614,6 @@ function update_game_scene_test_and_apply_wallstick()
     char_LP["collision_move_available_cache"] = char_LP["collision_move_available"]
     update_game_scene_test_and_apply_wallstick_sub(char_RP,char_LP)
     char_RP["collision_move_available_cache"] = char_RP["collision_move_available"]
-    if char_LP["wallstick_on"] ~= 0 and char_RP["wallstick_on"] ~= 0  then
-        char_LP["hit_hurt_blockstop_countdown"] = 30
-        char_RP["hit_hurt_blockstop_countdown"] = 30
-        char_LP["hit_hurt_block_slowdown_countdown"] = 0
-        char_RP["hit_hurt_block_slowdown_countdown"] = 0
-        char_LP["game_speed"] = 1
-        char_RP["game_speed"] = 1
-        obj_camera["state"] = "main"
-        obj_camera["enclose_percentage"] = 0.0
-        obj_camera["enclose_position_offset"] = {0,0,0}
-    end
 end
 function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_side)
     local obj_stage_main = obj_stage_game_scene_main
@@ -637,6 +628,10 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
         return
     end
 
+    if obj_char["state"] == "hurtstop" and obj_char["state_cache"] == "wallstick" then
+        return
+    end
+
     if obj_char["collision_move_available"][1] == 0 then
         collision_side = -1
     elseif obj_char["collision_move_available"][2] == 0 then
@@ -644,6 +639,17 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
     else
         return
     end
+
+    if obj_char["wallbreak_gauge"][1] >= obj_char["wallbreak_gauge"][2] and 
+    (obj_char_other_side["state"] == "hurt" or obj_char_other_side["state"] == "hurtstop" or obj_char_other_side["state"] == "wallstick")
+    then
+        print("Did you code a guarantee projectile that active after the owner was hurt?")
+        print("You could do that but I won't code a wallstick with it since this would cause a sync wallstick or wallbreak.")
+        print("That is a issue even arcsys deal it shity.")
+        print("I would just ban the wallbreak/wallstick process with it since I don't like guarantee projectile either")
+        return
+    end
+
     if obj_char["collision_move_available_cache"][1] == 0 then
         collision_side_cache = -1
     elseif obj_char["collision_move_available_cache"][2] == 0 then
@@ -651,9 +657,11 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
     end
     obj_wallstick[1] = math.abs(obj_wallstick[1])*collision_side
     obj_wallstick[5] = collision_side
+    -- wallstick_visual_effect
     if collision_side ~= 0 and collision_side ~= collision_side_cache then
         -- wallstick_stage_obj
         obj_wallstick[2] = obj_char["y"] - wallbreak_spwan_anchor_pos[obj_char["height_state"]]
+        -- wallstick
         if obj_char["wallbreak_gauge"][1] >= obj_char["wallbreak_gauge"][2] then
             -- camera_shake
             obj_stage_main["camera_active_application_table"] = {}
@@ -667,42 +675,57 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
                     obj_camera["state"] = "active"
                 end
             )
-            obj_wallstick[4] = 1
-            obj_wallstick["sprite_sheet"] = 1
-            init_frame_anim_with(obj_wallstick,anim_stage_wallstick)
-            obj_wallstick["state"] = "on"
+            -- onwall_hit_effect_stage_obj
+            table.insert(obj_stage_main["wallstick_stage_obj_active_application_table"],
+                function()
+                    obj_wallstick[4] = 1
+                    obj_wallstick["sprite_sheet"] = 1
+                    init_frame_anim_with(obj_wallstick,anim_stage_wallstick)
+                    obj_wallstick["state"] = "on"
+                end
+            )
+        -- not_engage_wallstick_but_shows_onwall_hit_effect_stage_obj
         else
-            obj_wallstick[4] = 1
-            obj_wallstick["sprite_sheet"] = 0
-            init_frame_anim_with(obj_wallstick,anim_stage_wallstick)
-            obj_wallstick["state"] = "on"
+            table.insert(obj_stage_main["wallstick_stage_obj_active_application_table"],
+                function()
+                    obj_wallstick[4] = 1
+                    obj_wallstick["sprite_sheet"] = 0
+                    init_frame_anim_with(obj_wallstick,anim_stage_wallstick)
+                    obj_wallstick["state"] = "on"
+                end
+            )
         end
     end
+    -- wallstick_state_change
     if obj_char["wallstickable"] and collision_side ~= 0 
     and obj_char["wallbreak_gauge"][1] >= obj_char["wallbreak_gauge"][2]
     then
-        if obj_char["height_state"] == "air" then
-            obj_char["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-        else
-            obj_char["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstick_ground(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-        end
-        obj_char[5] = -collision_side
-        obj_char["state_cache"] = "wallstick"
-        obj_char["state"] = "hurtstop"
-        obj_char["wallstick_on"] = collision_side
-        obj_char["physics_lock"] = true
-        if obj_char_other_side["state"] ~= "hitstop" then
-            obj_char_other_side["state_cache"] = obj_char_other_side["state"]
-            obj_char_other_side["state"] = "hitstop"
-            obj_char_other_side["physics_lock"] = true
-        end
-        -- hit_hurt_blockstop_countdown
-        obj_char["hit_hurt_blockstop_countdown"] = 30
-        obj_char["last_hitstop_frame"] = 0
-        obj_char_other_side["hit_hurt_blockstop_countdown"] = 30
-        obj_char_other_side["last_hitstop_frame"] = 0
+        table.insert(obj_stage_main["wallstick_char_obj_active_application_table"],
+            function()
+                if obj_char["height_state"] == "air" then
+                    obj_char["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(obj_char)
+                    init_character_anim_with(obj_char,obj_char["character_animation"])
+                else
+                    obj_char["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstick_ground(obj_char)
+                    init_character_anim_with(obj_char,obj_char["character_animation"])
+                end
+                obj_char[5] = -collision_side
+                obj_char["state_cache"] = "wallstick"
+                obj_char["state"] = "hurtstop"
+                obj_char["wallstick_on"] = collision_side
+                obj_char["physics_lock"] = true
+                if obj_char_other_side["state"] ~= "hitstop" then
+                    obj_char_other_side["state_cache"] = obj_char_other_side["state"]
+                    obj_char_other_side["state"] = "hitstop"
+                    obj_char_other_side["physics_lock"] = true
+                end
+                -- hit_hurt_blockstop_countdown
+                obj_char["hit_hurt_blockstop_countdown"] = 30
+                obj_char["last_hitstop_frame"] = 0
+                obj_char_other_side["hit_hurt_blockstop_countdown"] = 30
+                obj_char_other_side["last_hitstop_frame"] = 0
+            end
+        )
     end
 end
 function update_game_scene_game_speed_sub_frame()

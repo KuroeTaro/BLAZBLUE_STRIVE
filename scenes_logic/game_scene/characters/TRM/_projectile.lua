@@ -376,6 +376,9 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main_anim(obj,
         -- state
         obj[1] = obj_char["shot_sys_reticle"][1]
         obj[2] = obj_char["shot_sys_reticle"][2]
+        if obj_char["state"] == "hurt" or obj_char["state"] == "hurtstop" or obj_char["state"] == "wallstick" then
+            obj["strike_active"] = false
+        end
         -- state_number
         obj["hit_damage"] = 300.0
         obj["hit_damage_correction_factor"] = 1
@@ -389,6 +392,11 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main_anim(obj,
         -- draw_correction
         obj[8] = 0
     end
+    res[1] = function()
+        if obj_char["state"] == "hurt" or obj_char["state"] == "hurtstop" or obj_char["state"] == "wallstick" then
+            obj["strike_active"] = false
+        end
+    end
     res[2] = function()
         -- state
         if obj_char["shot_sys_state"] == "at_the_ready_shot" then
@@ -397,6 +405,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main_anim(obj,
         end
         -- collide
         obj["hitbox_table"] = {}
+        obj["strike_active"] = false
         -- draw_correction
         obj[8] = 1
     end
