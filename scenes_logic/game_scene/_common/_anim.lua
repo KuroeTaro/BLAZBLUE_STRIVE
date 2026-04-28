@@ -1854,7 +1854,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
         obj_char["move_state"] = "recovery" -- none startup active recovery
 
         obj_char["wallstickable"] = false
-        obj_char["wallbreakable_with_wallstick"] = false
+        obj_char["wallbreakable_with_wallstick"] = true
         obj_char["wallbreakable_without_wallstick"] = false
 
         obj_char["startup_frame"] = 0
@@ -2344,7 +2344,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         obj_char["move_state"] = "recovery" -- none startup active recovery
 
         obj_char["wallstickable"] = false
-        obj_char["wallbreakable_with_wallstick"] = false
+        obj_char["wallbreakable_with_wallstick"] = true
         obj_char["wallbreakable_without_wallstick"] = false
 
         obj_char["startup_frame"] = 0
