@@ -631,7 +631,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
     local stage_collision = false
     local collision_side = 0
     local collision_side_cache = 0
-    
+
     if obj_char["state"] ~= "hurt" and obj_char["state"] ~= "hurtstop" then
         return
     end
@@ -677,9 +677,8 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
             obj_wallstick["state"] = "on"
         end
     end
-    if obj_char["wallbreakable_with_wallstick"] and 
-    obj_char["wallbreak_gauge"][1] >= obj_char["wallbreak_gauge"][2] and 
-    collision_side ~= 0 
+    if obj_char["wallstickable"] and collision_side ~= 0 
+    and obj_char["wallbreak_gauge"][1] >= obj_char["wallbreak_gauge"][2]
     then
         if obj_char["height_state"] == "air" then
             obj_char["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(obj_char)

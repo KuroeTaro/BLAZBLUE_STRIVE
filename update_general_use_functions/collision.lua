@@ -60,8 +60,9 @@ function collision_test_cS_distance_check(obj_char,max_distance)
         hurtbox = obj_char_other_side["hurtbox_table"][i]
         hurtbox_front_x = hurtbox[1] * obj_char_other_side[5] + obj_char_other_side["x"]
         -- hurtbox_front_x 是hurtbox中心，加减width/2得到前后边界
-        hurtbox_edge_x = hurtbox_front_x + (hurtbox[3]/2) * obj_char_other_side[5]
-        if math.abs(hurtbox_edge_x - obj_char["x"]) < max_distance then
+        hurtbox_edge_x1 = hurtbox_front_x + (hurtbox[3]/2) * obj_char_other_side[5]
+        hurtbox_edge_x2 = hurtbox_front_x - (hurtbox[3]/2) * obj_char_other_side[5]
+        if math.abs(hurtbox_edge_x1 - obj_char["x"]) < max_distance or math.abs(hurtbox_edge_x2 - obj_char["x"]) < max_distance then
             return true
         end
     end
