@@ -617,7 +617,6 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
     if obj_char["state"] ~= "hurt" and obj_char["state"] ~= "hurtstop" then
         return
     end
-
     if obj_char["state"] == "hurtstop" and obj_char["state_cache"] == "wallstick" then
         return
     end
