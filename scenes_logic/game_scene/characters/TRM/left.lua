@@ -135,7 +135,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["positive_bonus"] = false
     obj_char_game_scene_char_LP["positive_bonus_countdown"] = 0
 
-    obj_char_game_scene_char_LP["gauge_update_ban_states"] = {
+    obj_char_game_scene_char_LP["health_gauge_update_ban_states"] = {
         ["throw_success"] = true,
         ["throw_hurt_success"] = true,
         ["throw_testing"] = true,
