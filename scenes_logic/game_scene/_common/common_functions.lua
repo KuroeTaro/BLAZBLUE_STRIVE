@@ -907,7 +907,7 @@ function common_update_game_scene_char_game_speed_abnormal_realtime_countdown(ob
     end
 end
 
-function common_game_scene_char_apply_gauge(
+function common_game_scene_char_apply_damage_heat(
     hit_side_obj_char,hurt_side_obj_char,block_or_hurt,FD_block
 )
     local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
@@ -1060,7 +1060,7 @@ function common_game_scene_char_apply_knockdown_velocity(
     end
 end
 
-function common_game_scene_projectile_apply_gauge(
+function common_game_scene_projectile_apply_damage_heat(
     hit_side_obj_char,hurt_side_obj_char,block_or_hurt,FD_block,projectile
 )
     local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]

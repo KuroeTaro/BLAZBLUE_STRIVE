@@ -6313,7 +6313,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
     end
     res[37] = function()
         -- state
-        common_game_scene_char_apply_gauge(
+        common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(

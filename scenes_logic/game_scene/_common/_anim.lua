@@ -272,7 +272,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        common_game_scene_char_apply_gauge(
+        common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
@@ -389,7 +389,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        common_game_scene_char_apply_gauge(
+        common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
@@ -512,7 +512,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        common_game_scene_char_apply_gauge(
+        common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
@@ -641,7 +641,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        common_game_scene_char_apply_gauge(
+        common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
@@ -770,7 +770,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        common_game_scene_char_apply_gauge(
+        common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
@@ -939,7 +939,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         if FD_block then
             hurt_horizontal_velocity = hurt_horizontal_velocity * 2
         end
-        common_game_scene_char_apply_gauge(
+        common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"block",FD_block
         )
         common_game_scene_char_apply_hurt_velocity(
@@ -1055,7 +1055,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         if FD_block then
             hurt_horizontal_velocity = hurt_horizontal_velocity * 2
         end
-        common_game_scene_char_apply_gauge(
+        common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"block",FD_block
         )
         common_game_scene_char_apply_hurt_velocity(
@@ -1173,7 +1173,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         if FD_block then
             hurt_horizontal_velocity = hurt_horizontal_velocity * 2
         end
-        common_game_scene_char_apply_gauge(
+        common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"block",FD_block
         )
         common_game_scene_char_apply_hurt_velocity(
@@ -1293,7 +1293,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         if FD_block then
             hurt_horizontal_velocity = hurt_horizontal_velocity * 2
         end
-        common_game_scene_char_apply_gauge(
+        common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"block",FD_block
         )
         common_game_scene_char_apply_hurt_velocity(
@@ -1417,7 +1417,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         if FD_block then
             hurt_horizontal_velocity = hurt_horizontal_velocity * 2
         end
-        common_game_scene_char_apply_gauge(
+        common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"block",FD_block
         )
         common_game_scene_char_apply_hurt_velocity(
@@ -1571,7 +1571,7 @@ function load_game_scene_anim_char_common_0_air_block(
         if FD_block then
             hurt_horizontal_velocity = hurt_horizontal_velocity * 2
         end
-        common_game_scene_char_apply_gauge(
+        common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"block",FD_block
         )
         common_game_scene_char_apply_hurt_velocity(
@@ -3213,7 +3213,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        common_game_scene_char_apply_gauge(
+        common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
@@ -3448,7 +3448,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        common_game_scene_char_apply_gauge(
+        common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
@@ -3647,7 +3647,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        common_game_scene_char_apply_gauge(
+        common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
@@ -3786,7 +3786,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        common_game_scene_char_apply_gauge(
+        common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
@@ -3932,7 +3932,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        common_game_scene_char_apply_gauge(
+        common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
@@ -4104,7 +4104,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        common_game_scene_char_apply_gauge(
+        common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
@@ -4262,7 +4262,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        common_game_scene_char_apply_gauge(
+        common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
@@ -4683,7 +4683,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        common_game_scene_char_apply_gauge(
+        common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(

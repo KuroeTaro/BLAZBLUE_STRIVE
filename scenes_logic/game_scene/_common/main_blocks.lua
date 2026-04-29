@@ -434,14 +434,14 @@ function update_game_scene_training_main()
     -- 更新角色重力方向速度
     update_game_scene_gravity()
 
-    -- 更新资源槽
-    update_game_scene_gauge()
-
     -- 更新上墙
     update_game_scene_test_and_apply_wallstick()
 
     -- 更新sub_frame
     update_game_scene_game_speed_sub_frame()
+
+    -- 更新资源槽
+    update_game_scene_gauge_visual_and_resource_gain_natural()
 
     -- 更新HUD
     update_game_scene_HUD()
@@ -582,20 +582,17 @@ function update_game_scene_gravity()
         char_RP["velocity"][2] = char_RP["velocity"][2] + char_RP["gravity"]*char_RP["gravity_correction"]
     end
 end
-function update_game_scene_gauge()
+function update_game_scene_gauge_visual_and_resource_gain_natural()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
 
-    if not char_LP["health_gauge_update_ban_states"][char_LP["state"]] then
-        char_LP["health_gauge_update_function"]()
-    end
+    char_LP["health_gauge_update_function"]()
     char_LP["overdrive_gauge_update_function"]()
     char_LP["ability_gauge_update_function"]()
     char_LP["risk_gauge_update_function"]()
     char_LP["wallbreak_gauge_update_function"]()
-    if not char_RP["health_gauge_update_ban_states"][char_RP["state"]] then
-        char_RP["health_gauge_update_function"]()
-    end
+    
+    char_RP["health_gauge_update_function"]()
     char_RP["overdrive_gauge_update_function"]()
     char_RP["ability_gauge_update_function"]()
     char_RP["risk_gauge_update_function"]()
@@ -724,6 +721,24 @@ function update_game_scene_game_speed_sub_frame()
     end
 end
 function update_game_scene_HUD()
+    local char_LP = obj_char_game_scene_char_LP
+    local char_RP = obj_char_game_scene_char_RP
+
+    if not char_LP["health_gauge_update_ban_states"][char_LP["state"]] then
+        char_LP["health_gauge_update_function"]()
+    end
+    char_LP["overdrive_gauge_update_function"]()
+    char_LP["ability_gauge_update_function"]()
+    char_LP["risk_gauge_update_function"]()
+    char_LP["wallbreak_gauge_update_function"]()
+    if not char_RP["health_gauge_update_ban_states"][char_RP["state"]] then
+        char_RP["health_gauge_update_function"]()
+    end
+    char_RP["overdrive_gauge_update_function"]()
+    char_RP["ability_gauge_update_function"]()
+    char_RP["risk_gauge_update_function"]()
+    char_RP["wallbreak_gauge_update_function"]()
+
     update_game_scene_HUD_overdrive_timer(
         obj_char_game_scene_char_LP,
         obj_HUD_game_scene_overdrive_timer_LP

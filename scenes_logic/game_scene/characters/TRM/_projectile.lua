@@ -474,7 +474,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         if FD_block then
             hurt_horizontal_velocity = hurt_horizontal_velocity * 2
         end
-        common_game_scene_projectile_apply_gauge(
+        common_game_scene_projectile_apply_damage_heat(
             obj_char,obj_char_other_side,"block",FD_block,projectile
         )
         common_game_scene_projectile_apply_hurt_velocity(
@@ -623,7 +623,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
         if FD_block then
             hurt_horizontal_velocity = hurt_horizontal_velocity * 2
         end
-        common_game_scene_projectile_apply_gauge(
+        common_game_scene_projectile_apply_damage_heat(
             obj_char,obj_char_other_side,"block",FD_block,projectile
         )
         common_game_scene_projectile_apply_hurt_velocity(
@@ -773,7 +773,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        common_game_scene_projectile_apply_gauge(
+        common_game_scene_projectile_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false,projectile
         )
         common_game_scene_projectile_apply_hurt_velocity(
@@ -899,7 +899,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         obj_char_other_side["burst_inv"] = false
         obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
-        common_game_scene_projectile_apply_gauge(
+        common_game_scene_projectile_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false,projectile
         )
         common_game_scene_projectile_apply_hurt_velocity(
