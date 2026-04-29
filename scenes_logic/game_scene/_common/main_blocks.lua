@@ -724,21 +724,6 @@ function update_game_scene_HUD()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
 
-    if not char_LP["health_gauge_update_ban_states"][char_LP["state"]] then
-        char_LP["health_gauge_update_function"]()
-    end
-    char_LP["overdrive_gauge_update_function"]()
-    char_LP["ability_gauge_update_function"]()
-    char_LP["risk_gauge_update_function"]()
-    char_LP["wallbreak_gauge_update_function"]()
-    if not char_RP["health_gauge_update_ban_states"][char_RP["state"]] then
-        char_RP["health_gauge_update_function"]()
-    end
-    char_RP["overdrive_gauge_update_function"]()
-    char_RP["ability_gauge_update_function"]()
-    char_RP["risk_gauge_update_function"]()
-    char_RP["wallbreak_gauge_update_function"]()
-
     update_game_scene_HUD_overdrive_timer(
         obj_char_game_scene_char_LP,
         obj_HUD_game_scene_overdrive_timer_LP
