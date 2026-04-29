@@ -34,12 +34,12 @@ function common_game_scene_test_and_apply_wallbreak(obj_char)
     if (obj_char["wallstick_on"] ~= 0 and obj_char["wallbreakable_with_wallstick"]) or
     (stage_collision and obj_char["wallbreakable_without_wallstick"]) 
     then
-        common_game_scene_apply_wallbreak_transport()
+        common_game_scene_apply_wallbreak_transport(obj_char)
         return true
     end
     return false
 end
-function common_game_scene_apply_wallbreak_transport()
+function common_game_scene_apply_wallbreak_transport(obj_char)
     print("it dose")
 end
 
@@ -360,10 +360,10 @@ function common_game_scene_strike_hurt_function_common_block(obj_char,hit_side_o
     common_game_scene_hit_load_camera_shake_anim(hit_side_obj_char,0.5)
     table.insert(obj_stage_main["camera_active_application_table"],
         function()
-            anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
-            anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
-            init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-            init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+            anim_stage_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
+            anim_stage_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
+            init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+            init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
             obj_camera["state"] = "active"
         end
     )
@@ -415,10 +415,10 @@ function common_game_scene_strike_hurt_function_GP_hurt(obj_char,hit_side_obj_ch
     common_game_scene_hit_load_camera_shake_anim(hit_side_obj_char,0.5)
     table.insert(obj_stage_main["camera_active_application_table"],
         function()
-            anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
-            anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
-            init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-            init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+            anim_stage_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
+            anim_stage_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
+            init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+            init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
             obj_camera["state"] = "active"
         end
     )
@@ -461,12 +461,12 @@ function common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_ob
     if not hit_side_obj_char["camera_enclosing_anim"]["nil_mark"] then
         table.insert(obj_stage_main["camera_active_application_table"],
             function()
-                anim_camera_point_linear_game_scene_camera_enclosing = hit_side_obj_char["camera_enclosing_anim"]
-                anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
-                anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+                anim_stage_point_linear_game_scene_camera_enclosing = hit_side_obj_char["camera_enclosing_anim"]
+                anim_stage_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
+                anim_stage_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
+                init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_enclosing)
+                init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+                init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
                 obj_camera["enclose_position_offset"] = hit_side_obj_char["enclose_position_offset"]
                 obj_camera["state"] = "active"
             end
@@ -474,10 +474,10 @@ function common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_ob
     else
         table.insert(obj_stage_main["camera_active_application_table"],
             function()
-                anim_camera_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
-                anim_camera_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-                init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+                anim_stage_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
+                anim_stage_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
+                init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+                init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
                 obj_camera["state"] = "active"
             end
         )

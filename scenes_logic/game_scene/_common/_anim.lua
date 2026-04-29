@@ -9,6 +9,7 @@
     -- hurt_vertical_gravity_correction,
     -- self_knockdown_animation
 
+-- character_animation
 -- 0_general_hurt_falled_knockout
     -- 需要修改的角色属性
         -- 打击方

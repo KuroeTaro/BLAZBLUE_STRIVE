@@ -558,7 +558,7 @@ function update_char_select_scene_main()
         -- 初始化此出口所需要的动画机
         init_point_linear_anim_with(
             obj_UI_char_select_scene_black_solid,
-            anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out
+            anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity 
         )
         init_point_linear_anim_with(
             audio_BGM_char_select_scene_moonlight_re_edit,
@@ -606,7 +606,7 @@ function update_char_select_scene_train_dummy_select()
         -- 初始化此出口所需要的动画机
         init_point_linear_anim_with(
             obj_UI_char_select_scene_black_solid,
-            anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out
+            anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity 
         )
         init_point_linear_anim_with(
             audio_BGM_char_select_scene_moonlight_re_edit,
@@ -673,7 +673,7 @@ function update_char_select_scene_ease_out()
 
     point_linear_animator(
         obj_UI_char_select_scene_black_solid,
-        anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out
+        anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity 
     )
     point_linear_animator(
         audio_BGM_char_select_scene_moonlight_re_edit,

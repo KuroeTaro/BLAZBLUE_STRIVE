@@ -39,15 +39,15 @@ Purpose: give an AI agent the minimal,high-value knowledge to be productive in t
   - Use `init_point_linear_anim_with(obj,anim)` or `init_frame_anim_with(obj,anim)` before animating; these functions initialize `LCT`/`LCD`/`FCT` entries.
   - `point_linear_animator(obj,anim)` expects `obj[anim.prop]` and `obj["LCT"][anim.prop]` to exist.
 - Naming pitfalls:
-  - Many globals do *not* include the subsystem name (e.g.,`DRAW_STAGE_GLOW_CANVAS`,`SCENE_TIMER`,`CHARACTER_VISUAL_FRONT`). Expect potential naming collisions when adding new globals.\n  - Some globals are shared state (e.g.,`anim_camera_point_linear_game_scene_camera_shake_x`) and can be overwritten if multiple sources assign them concurrently.
+  - Many globals do *not* include the subsystem name (e.g.,`DRAW_STAGE_GLOW_CANVAS`,`SCENE_TIMER`,`CHARACTER_VISUAL_FRONT`). Expect potential naming collisions when adding new globals.\n  - Some globals are shared state (e.g.,`anim_stage_point_linear_game_scene_camera_shake_x`) and can be overwritten if multiple sources assign them concurrently.
 
 ---
 
 ## Common gotchas & safety checks ✅
 - Always guard animation init/calls against `nil` anim tables. Example safe pattern:
 ```lua
-if anim_camera_point_linear_game_scene_camera_shake_x then
-  init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
+if anim_stage_point_linear_game_scene_camera_shake_x then
+  init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
 end
 ```
 - When adding animation triggers,prefer storing the anim on the target object (e.g.,`obj_camera._shake_x = anim`) rather than reusing a single global,to avoid cross-trigger overwrites.

@@ -98,48 +98,88 @@ end
 function load_game_scene_anim_stage()
     -- common
     -- camera_animation
-    anim_camera_point_linear_game_scene_camera_enclosing = {}
-    anim_camera_point_linear_game_scene_camera_enclosing[0] = {0.00,0}
-    anim_camera_point_linear_game_scene_camera_enclosing["prop"] = "enclose_percentage"
-    anim_camera_point_linear_game_scene_camera_enclosing["length"] = 0
-    anim_camera_point_linear_game_scene_camera_enclosing["loop"] = false
-    anim_camera_point_linear_game_scene_camera_enclosing["fix_type"] = true
+    anim_stage_point_linear_game_scene_camera_enclosing = {}
+    anim_stage_point_linear_game_scene_camera_enclosing[0] = {0.00,0}
+    anim_stage_point_linear_game_scene_camera_enclosing["prop"] = "enclose_percentage"
+    anim_stage_point_linear_game_scene_camera_enclosing["length"] = 0
+    anim_stage_point_linear_game_scene_camera_enclosing["loop"] = false
+    anim_stage_point_linear_game_scene_camera_enclosing["fix_type"] = true
 
-    anim_camera_point_linear_game_scene_camera_shake_x = {}
-    anim_camera_point_linear_game_scene_camera_shake_y = {}
+    anim_stage_point_linear_game_scene_camera_shake_x = {}
+    anim_stage_point_linear_game_scene_camera_shake_y = {}
 
     -- wallbreak_after_debris_opacity_anim
-    anim_stage_wallbreak_after_debris_opacity = {}
-
-    -- wallbreak_dynamic_opacity_anim
-    anim_stage_wallbreak_dynamic_opacity = {}
-
-    -- wallbreak_static_opacity_anim
-    anim_stage_wallstick = {}
-    for i = 0,19 do
-        anim_stage_wallstick[i] = i
+    anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity = {}
+    anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity[0] = {1,20}
+    anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity[20] = {1,50}
+    anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity[50] = {0,50}
+    anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity["prop"] = 4
+    anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity["length"] = 50
+    anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity["loop"] = false
+    anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity["fix_type"] = true
+    -- wallbreak_after_debris_frame_anim
+    anim_stage_frame_game_scene_wallbreak_after_debris_frame = {}
+    for i = 0,24 do
+        anim_stage_frame_game_scene_wallbreak_after_debris_frame[i*2] = i
     end
-    anim_stage_wallstick["prop"] = 8
-    anim_stage_wallstick["length"] = 19
-    anim_stage_wallstick["loop"] = false
-    anim_stage_wallstick["fix_type"] = true
+    anim_stage_frame_game_scene_wallbreak_after_debris_frame["prop"] = 8
+    anim_stage_frame_game_scene_wallbreak_after_debris_frame["length"] = 50
+    anim_stage_frame_game_scene_wallbreak_after_debris_frame["loop"] = false
+    anim_stage_frame_game_scene_wallbreak_after_debris_frame["fix_type"] = true
+
+    -- wallbreak_dynamic_frame_anim
+    anim_stage_frame_game_scene_wallbreak_dynamic_frame = {}
+    for i = 0,29 do
+        anim_stage_frame_game_scene_wallbreak_dynamic_frame[i*2] = i
+    end
+    anim_stage_frame_game_scene_wallbreak_dynamic_frame["prop"] = 8
+    anim_stage_frame_game_scene_wallbreak_dynamic_frame["length"] = 60
+    anim_stage_frame_game_scene_wallbreak_dynamic_frame["loop"] = false
+    anim_stage_frame_game_scene_wallbreak_dynamic_frame["fix_type"] = true
 
     -- wallbreak_transport_smoke_opacity_anim
-    anim_stage_wallbreak_transport_smoke_opacity = {}
+    anim_stage_point_linear_game_scene_wallbreak_transport_smoke_opacity = {}
+    anim_stage_point_linear_game_scene_wallbreak_transport_smoke_opacity[0] = {0,10}
+    anim_stage_point_linear_game_scene_wallbreak_transport_smoke_opacity[10] = {1,60}
+    anim_stage_point_linear_game_scene_wallbreak_transport_smoke_opacity[60] = {1,75}
+    anim_stage_point_linear_game_scene_wallbreak_transport_smoke_opacity[75] = {0,75}
+    anim_stage_point_linear_game_scene_wallbreak_transport_smoke_opacity["prop"] = 4
+    anim_stage_point_linear_game_scene_wallbreak_transport_smoke_opacity["length"] = 75
+    anim_stage_point_linear_game_scene_wallbreak_transport_smoke_opacity["loop"] = false
+    anim_stage_point_linear_game_scene_wallbreak_transport_smoke_opacity["fix_type"] = true
+    -- wallbreak_transport_smoke_frame_anim
+    anim_stage_frame_game_scene_wallbreak_transport_smoke_frame = {}
+    for i = 0,24 do
+        anim_stage_frame_game_scene_wallbreak_transport_smoke_frame[i*3] = i
+    end
+    anim_stage_frame_game_scene_wallbreak_transport_smoke_frame["prop"] = 8
+    anim_stage_frame_game_scene_wallbreak_transport_smoke_frame["length"] = 75
+    anim_stage_frame_game_scene_wallbreak_transport_smoke_frame["loop"] = false
+    anim_stage_frame_game_scene_wallbreak_transport_smoke_frame["fix_type"] = true
 
     -- wallbreak_transport_glow_opacity
-    anim_stage_wallbreak_transport_glow = {}
-    anim_stage_wallbreak_transport_glow[0] = {0,5}
-    anim_stage_wallbreak_transport_glow[5] = {0.07,10}
-    anim_stage_wallbreak_transport_glow[10] = {0.26,15}
-    anim_stage_wallbreak_transport_glow[15] = {0.5,20}
-    anim_stage_wallbreak_transport_glow[20] = {0.74,25}
-    anim_stage_wallbreak_transport_glow[25] = {0.93,30}
-    anim_stage_wallbreak_transport_glow[30] = {1,30}
-    anim_stage_wallbreak_transport_glow["prop"] = 4
-    anim_stage_wallbreak_transport_glow["length"] = 30
-    anim_stage_wallbreak_transport_glow["loop"] = false
-    anim_stage_wallbreak_transport_glow["fix_type"] = true
+    anim_stage_point_linear_game_scene_wallbreak_transport_glow_opacity = {}
+    anim_stage_point_linear_game_scene_wallbreak_transport_glow_opacity[0] = {0,5}
+    anim_stage_point_linear_game_scene_wallbreak_transport_glow_opacity[5] = {0.07,10}
+    anim_stage_point_linear_game_scene_wallbreak_transport_glow_opacity[10] = {0.26,15}
+    anim_stage_point_linear_game_scene_wallbreak_transport_glow_opacity[15] = {0.5,20}
+    anim_stage_point_linear_game_scene_wallbreak_transport_glow_opacity[20] = {0.74,25}
+    anim_stage_point_linear_game_scene_wallbreak_transport_glow_opacity[25] = {0.93,30}
+    anim_stage_point_linear_game_scene_wallbreak_transport_glow_opacity[30] = {1,30}
+    anim_stage_point_linear_game_scene_wallbreak_transport_glow_opacity["prop"] = 4
+    anim_stage_point_linear_game_scene_wallbreak_transport_glow_opacity["length"] = 30
+    anim_stage_point_linear_game_scene_wallbreak_transport_glow_opacity["loop"] = false
+    anim_stage_point_linear_game_scene_wallbreak_transport_glow_opacity["fix_type"] = true
+
+    -- wallbreak_static_opacity_anim
+    anim_state_frame_game_scene_wallstick_frame = {}
+    for i = 0,19 do
+        anim_state_frame_game_scene_wallstick_frame[i] = i
+    end
+    anim_state_frame_game_scene_wallstick_frame["prop"] = 8
+    anim_state_frame_game_scene_wallstick_frame["length"] = 19
+    anim_state_frame_game_scene_wallstick_frame["loop"] = false
+    anim_state_frame_game_scene_wallstick_frame["fix_type"] = true
 
     -- stage_wallbreak_animation
     anim_stage_wallbreak_transport = {}
@@ -225,13 +265,52 @@ function update_game_scene_stage()
 end
 function update_game_scene_stage_application_table_validation()
     local obj_stage_main = obj_stage_game_scene_main
-    if #obj_stage_main["wallstick_stage_obj_active_application_table"] > 1 or #obj_stage_main["wallstick_char_obj_active_application_table"] > 1 then
+    local char_LP = obj_char_game_scene_char_LP
+    local char_RP = obj_char_game_scene_char_RP
+    if #obj_stage_main["wallstick_stage_obj_active_application_table"] > 1
+    or #obj_stage_main["wallstick_char_obj_active_application_table"] > 1
+    or (#obj_stage_main["wallstick_stage_obj_active_application_table"] and (char_LP["wallstick_on"] ~= 0 or char_RP["wallstick_on"] ~= 0))
+    or (#obj_stage_main["wallstick_char_obj_active_application_table"] and (char_LP["state"] == "wallbreak" or char_RP["state"] == "wallbreak"))
+    then
         print("Did you code a guarantee projectile that active after the owner was hurt?")
         print("or you made a extremely fucking wired hurt animation that could cause both characters to be in wallstick state at the same frame?")
         print("These texts only show when you have a sync wallstick or wallbreak process that cause more than 1 wallstick or wallbreak effect at the same frame.")
         print("You could do that but I won't code a wallstick with it since this would cause a sync wallstick or wallbreak.")
         print("That is a issue even arcsys deal it shity.")
         print("I would just ban the wallbreak/wallstick process with it. BTW I don't like guarantee projectile either")
+        print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000000")
+    end
+end
+function update_game_scene_wallstick_stage_obj_application_table()
+    local obj_stage_main = obj_stage_game_scene_main
+    local char_LP = obj_char_game_scene_char_LP
+    local char_RP = obj_char_game_scene_char_RP
+    if #obj_stage_main["wallstick_stage_obj_active_application_table"] == 0 then
+        return
+    end
+    if #obj_stage_main["wallstick_stage_obj_active_application_table"] == 1 then
+        obj_stage_main["wallstick_stage_obj_active_application_table"][1]()
+        obj_stage_main["wallstick_stage_obj_active_application_table"] = {}
+    elseif #obj_stage_main["wallstick_stage_obj_active_application_table"] > 1 then
+        obj_stage_main["wallstick_stage_obj_active_application_table"] = {}
+        print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000001")
+    end
+end
+function update_game_scene_wallstick_char_obj_application_table()
+    local obj_stage_main = obj_stage_game_scene_main
+    if #obj_stage_main["wallstick_char_obj_active_application_table"] == 0 then
+        char_LP["collision_move_available_cache"] = char_LP["collision_move_available"]
+        char_RP["collision_move_available_cache"] = char_RP["collision_move_available"]
+        return
+    end
+    if #obj_stage_main["wallstick_char_obj_active_application_table"] == 1 then
+        char_LP["collision_move_available_cache"] = char_LP["collision_move_available"]
+        char_RP["collision_move_available_cache"] = char_RP["collision_move_available"]
+        obj_stage_main["wallstick_char_obj_active_application_table"][1]()
+        obj_stage_main["wallstick_char_obj_active_application_table"] = {}
+    elseif #obj_stage_main["wallstick_char_obj_active_application_table"] > 1 then
+        obj_stage_main["wallstick_char_obj_active_application_table"] = {}
+        print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000002")
     end
 end
 function update_game_scene_camera_application_table()
@@ -246,40 +325,6 @@ function update_game_scene_camera_application_table()
     elseif #obj_stage_main["camera_active_application_table"] > 1 then
         -- 更新状态
         obj_stage_main["camera_active_application_table"] = {}
-    end
-end
-function update_game_scene_wallstick_stage_obj_application_table()
-    local obj_stage_main = obj_stage_game_scene_main
-    local char_LP = obj_char_game_scene_char_LP
-    local char_RP = obj_char_game_scene_char_RP
-    if #obj_stage_main["wallstick_stage_obj_active_application_table"] == 0 then
-        return
-    end
-    if #obj_stage_main["wallstick_stage_obj_active_application_table"] == 1 then
-        obj_stage_main["wallstick_stage_obj_active_application_table"][1]()
-        obj_stage_main["wallstick_stage_obj_active_application_table"] = {}
-    elseif #obj_stage_main["wallstick_stage_obj_active_application_table"] > 1 then
-        -- nil shake 动画
-        -- nil enclose 动画
-        -- 更新状态
-        obj_stage_main["wallstick_stage_obj_active_application_table"] = {}
-        print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000001")
-    end
-end
-function update_game_scene_wallstick_char_obj_application_table()
-    local obj_stage_main = obj_stage_game_scene_main
-    if #obj_stage_main["wallstick_char_obj_active_application_table"] == 0 then
-        return
-    end
-    if #obj_stage_main["wallstick_char_obj_active_application_table"] == 1 then
-        obj_stage_main["wallstick_char_obj_active_application_table"][1]()
-        obj_stage_main["wallstick_char_obj_active_application_table"] = {}
-    elseif #obj_stage_main["wallstick_char_obj_active_application_table"] > 1 then
-        -- nil shake 动画
-        -- nil enclose 动画
-        -- 更新状态
-        obj_stage_main["wallstick_char_obj_active_application_table"] = {}
-        print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000002")
     end
 end
 -- state_machine
@@ -327,14 +372,22 @@ function state_machine_stage_game_scene_camera()
             return
         end,
         ["active"] = function()
-            point_linear_animator(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
-            point_linear_animator(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-            point_linear_animator(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
-            if get_point_linear_anim_end_state(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
-            and get_point_linear_anim_end_state(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-            and get_point_linear_anim_end_state(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y) then
+            point_linear_animator(obj_camera,anim_stage_point_linear_game_scene_camera_enclosing)
+            point_linear_animator(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+            point_linear_animator(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
+            if get_point_linear_anim_end_state(obj_camera,anim_stage_point_linear_game_scene_camera_enclosing)
+            and get_point_linear_anim_end_state(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+            and get_point_linear_anim_end_state(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y) then
                 obj_camera["state"] = "main"
                 obj_camera["enclose_position_offset"] = {0,0,0}
+            end
+        end,
+        ["wallbreak_shake"] = function()
+            point_linear_animator(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+            point_linear_animator(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
+            if get_point_linear_anim_end_state(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+            and get_point_linear_anim_end_state(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y) then
+                obj_camera["state"] = "main"
             end
         end,
     }
@@ -352,8 +405,8 @@ function state_machine_stage_game_scene_wallstick()
 
         end,
         ["on"] = function()
-            frame_animator(obj_stage_wallstick,anim_stage_wallstick)
-            if get_frame_anim_end_state(obj_stage_wallstick,anim_stage_wallstick) then
+            frame_animator(obj_stage_wallstick,anim_state_frame_game_scene_wallstick_frame)
+            if get_frame_anim_end_state(obj_stage_wallstick,anim_state_frame_game_scene_wallstick_frame) then
                 obj_stage_wallstick[4] = 0
                 obj_stage_wallstick[8] = 0
                 obj_stage_wallstick["state"] = "off"
@@ -447,4 +500,12 @@ function draw_game_scene_stage_glow()
     love.graphics.draw(DRAW_STAGE_ALPHA_COMP_CANVAS)
     love.graphics.setColor(1,1,1,1)
     love.graphics.setBlendMode("alpha")
+end
+
+-- stage_animation_load_function
+function load_game_scene_anim_stage_camera_wallbreak_anim(obj_camera,wallside)
+end
+function load_game_scene_anim_stage_wallbreak_dynamic_anim(obj_wallstick,wallside)
+end
+function load_game_scene_anim_stage_wallbreak_after_debris_anim(obj_wallstick,wallside)
 end

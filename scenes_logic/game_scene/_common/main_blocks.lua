@@ -603,9 +603,7 @@ function update_game_scene_test_and_apply_wallstick()
     local char_RP = obj_char_game_scene_char_RP
     local obj_camera = obj_stage_game_scene_camera
     update_game_scene_test_and_apply_wallstick_sub(char_LP,char_RP)
-    char_LP["collision_move_available_cache"] = char_LP["collision_move_available"]
     update_game_scene_test_and_apply_wallstick_sub(char_RP,char_LP)
-    char_RP["collision_move_available_cache"] = char_RP["collision_move_available"]
 end
 function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_side)
     local obj_stage_main = obj_stage_game_scene_main
@@ -649,11 +647,11 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
             obj_stage_main["camera_active_application_table"] = {}
             table.insert(obj_stage_main["camera_active_application_table"],
                 function()
-                    anim_camera_point_linear_game_scene_camera_shake_x,
-                    anim_camera_point_linear_game_scene_camera_shake_y 
+                    anim_stage_point_linear_game_scene_camera_shake_x,
+                    anim_stage_point_linear_game_scene_camera_shake_y 
                     = common_game_scene_wallbreak_load_camera_shake_anim(1.5)
-                    init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-                    init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+                    init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+                    init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
                     obj_camera["state"] = "active"
                 end
             )
@@ -662,7 +660,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
                 function()
                     obj_wallstick[4] = 1
                     obj_wallstick["sprite_sheet"] = 1
-                    init_frame_anim_with(obj_wallstick,anim_stage_wallstick)
+                    init_frame_anim_with(obj_wallstick,anim_state_frame_game_scene_wallstick_frame)
                     obj_wallstick["state"] = "on"
                 end
             )
@@ -672,7 +670,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
                 function()
                     obj_wallstick[4] = 1
                     obj_wallstick["sprite_sheet"] = 0
-                    init_frame_anim_with(obj_wallstick,anim_stage_wallstick)
+                    init_frame_anim_with(obj_wallstick,anim_state_frame_game_scene_wallstick_frame)
                     obj_wallstick["state"] = "on"
                 end
             )

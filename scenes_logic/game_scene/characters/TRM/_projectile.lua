@@ -208,10 +208,10 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                 -- set_insert_camera_anim
                 table.insert(obj_stage_main["camera_active_application_table"],
                     function()
-                        anim_camera_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
-                        anim_camera_point_linear_game_scene_camera_shake_y = obj["camera_y_shake_anim"]
-                        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-                        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+                        anim_stage_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
+                        anim_stage_point_linear_game_scene_camera_shake_y = obj["camera_y_shake_anim"]
+                        init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+                        init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
                         obj_camera["state"] = "active"
                     end
                 )
@@ -264,10 +264,10 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                 -- set_insert_camera_anim
                 table.insert(obj_stage_main["camera_active_application_table"],
                     function()
-                        anim_camera_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
-                        anim_camera_point_linear_game_scene_camera_shake_y = obj["camera_y_shake_anim"]
-                        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-                        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+                        anim_stage_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
+                        anim_stage_point_linear_game_scene_camera_shake_y = obj["camera_y_shake_anim"]
+                        init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+                        init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
                         obj_camera["state"] = "active"
                     end
                 )
@@ -314,10 +314,10 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                 -- set_play_character_shake_animation
                 table.insert(obj_stage_main["camera_active_application_table"],
                     function()
-                        anim_camera_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
-                        anim_camera_point_linear_game_scene_camera_shake_y = obj["camera_y_shake_anim"]
-                        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_x)
-                        init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_shake_y)
+                        anim_stage_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
+                        anim_stage_point_linear_game_scene_camera_shake_y = obj["camera_y_shake_anim"]
+                        init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+                        init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
                         obj_camera["state"] = "active"
                     end
                 )

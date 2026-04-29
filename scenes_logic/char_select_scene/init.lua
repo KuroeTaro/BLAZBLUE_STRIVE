@@ -425,21 +425,21 @@ function load_char_select_scene_anim()
     anim_UI_point_linear_char_select_scene_bar_mark_down_y["loop"] = false
     anim_UI_point_linear_char_select_scene_bar_mark_down_y["fix_type"] = false
 
-    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out = {}
-    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out[0] = {0.00,2}
-    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out[2] = {0.01,4}
-    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out[4] = {0.03,6}
-    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out[6] = {0.07,8}
-    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out[8] = {0.13,10}
-    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out[10] = {0.23,12}
-    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out[12] = {0.39,13}
-    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out[13] = {0.52,14}
-    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out[14] = {0.70,15}
-    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out[15] = {1.00,15}
-    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out["prop"] = 4
-    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out["length"] = 15
-    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out["loop"] = false
-    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out["fix_type"] = false
+    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity  = {}
+    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity [0] = {0.00,2}
+    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity [2] = {0.01,4}
+    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity [4] = {0.03,6}
+    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity [6] = {0.07,8}
+    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity [8] = {0.13,10}
+    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity [10] = {0.23,12}
+    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity [12] = {0.39,13}
+    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity [13] = {0.52,14}
+    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity [14] = {0.70,15}
+    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity [15] = {1.00,15}
+    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity ["prop"] = 4
+    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity ["length"] = 15
+    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity ["loop"] = false
+    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity ["fix_type"] = false
 end
 function load_char_select_scene_audio()
     -- confirm
