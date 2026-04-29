@@ -441,7 +441,7 @@ function update_game_scene_training_main()
     update_game_scene_game_speed_sub_frame()
 
     -- 更新资源槽
-    update_game_scene_gauge_visual_and_resource_gain_natural()
+    update_game_scene_gauge()
 
     -- 更新HUD
     update_game_scene_HUD()
@@ -582,7 +582,7 @@ function update_game_scene_gravity()
         char_RP["velocity"][2] = char_RP["velocity"][2] + char_RP["gravity"]*char_RP["gravity_correction"]
     end
 end
-function update_game_scene_gauge_visual_and_resource_gain_natural()
+function update_game_scene_gauge()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
 
