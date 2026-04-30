@@ -434,21 +434,24 @@ function update_game_scene_training_main()
     -- 更新角色重力方向速度
     update_game_scene_gravity()
 
+    -- 更新sub_frame
+    update_game_scene_game_speed_sub_frame()
+
     -- 更新上墙
     update_game_scene_test_and_apply_wallstick()
 
-    -- 更新sub_frame
-    update_game_scene_game_speed_sub_frame()
+    -- 更新application_table
+    update_game_scene_application_table()
 
     -- 更新资源槽
     update_game_scene_gauge()
 
+    -- 更新场景
+    update_game_scene_stage()
+
     -- 更新HUD
     update_game_scene_HUD()
 
-    -- 更新场景
-    update_game_scene_stage()
-    
     -- 更新角色DEBUG信息
     update_character_frame_info(obj_char_game_scene_char_LP)
     update_character_frame_info(obj_char_game_scene_char_RP)
@@ -598,6 +601,13 @@ function update_game_scene_gauge()
     char_RP["risk_gauge_update_function"]()
     char_RP["wallbreak_gauge_update_function"]()
 end
+function update_game_scene_application_table()
+    -- application_table
+    update_game_scene_stage_application_table_validation()
+    update_game_scene_wallstick_stage_obj_application_table()
+    update_game_scene_wallstick_char_obj_application_table()
+    update_game_scene_camera_application_table()
+end
 function update_game_scene_test_and_apply_wallstick()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
@@ -649,8 +659,8 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
                     anim_stage_point_linear_game_scene_camera_shake_x,
                     anim_stage_point_linear_game_scene_camera_shake_y 
                     = common_game_scene_wallbreak_load_camera_shake_anim(1.5)
-                    init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-                    init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
+                    init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+                    init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
                     obj_camera["state"] = "active"
                 end
             )

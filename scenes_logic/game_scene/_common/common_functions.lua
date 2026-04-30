@@ -362,8 +362,8 @@ function common_game_scene_strike_hurt_function_common_block(obj_char,hit_side_o
         function()
             anim_stage_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
             anim_stage_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
-            init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-            init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
+            init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+            init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
             obj_camera["state"] = "active"
         end
     )
@@ -417,8 +417,8 @@ function common_game_scene_strike_hurt_function_GP_hurt(obj_char,hit_side_obj_ch
         function()
             anim_stage_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
             anim_stage_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
-            init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-            init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
+            init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+            init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
             obj_camera["state"] = "active"
         end
     )
@@ -464,9 +464,9 @@ function common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_ob
                 anim_stage_point_linear_game_scene_camera_enclosing = hit_side_obj_char["camera_enclosing_anim"]
                 anim_stage_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
                 anim_stage_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
-                init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_enclosing)
-                init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-                init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
+                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_enclosing)
+                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
                 obj_camera["enclose_position_offset"] = hit_side_obj_char["enclose_position_offset"]
                 obj_camera["state"] = "active"
             end
@@ -476,8 +476,8 @@ function common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_ob
             function()
                 anim_stage_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
                 anim_stage_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
-                init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-                init_point_linear_anim_with(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
+                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
                 obj_camera["state"] = "active"
             end
         )

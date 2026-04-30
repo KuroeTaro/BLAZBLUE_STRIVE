@@ -284,12 +284,7 @@ end
 function update_game_scene_stage()
     -- static stage no update need
     -- glow update no need for this stage
-
-    -- application_table
-    update_game_scene_stage_application_table_validation()
-    update_game_scene_wallstick_stage_obj_application_table()
-    update_game_scene_wallstick_char_obj_application_table()
-    update_game_scene_camera_application_table()
+    
     -- camera_update
     state_machine_stage_game_scene_camera()
     -- wallstick_update
