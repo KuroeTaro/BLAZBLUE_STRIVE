@@ -659,8 +659,8 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
                     anim_stage_point_linear_game_scene_camera_shake_x,
                     anim_stage_point_linear_game_scene_camera_shake_y 
                     = common_game_scene_wallbreak_load_camera_shake_anim(1.5)
-                    init_point_linear_anim_with_out(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-                    init_point_linear_anim_with_out(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
+                    init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+                    init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
                     obj_camera["state"] = "active"
                 end
             )

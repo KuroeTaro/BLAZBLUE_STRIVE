@@ -81,7 +81,7 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
 
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -255,7 +255,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
 
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
         
         obj_char_other_side["startup_frame"] = 0
@@ -372,7 +372,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
 
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -495,7 +495,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
 
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -624,7 +624,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
 
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -753,7 +753,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
 
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -917,7 +917,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
 
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -1033,7 +1033,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
 
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -1151,7 +1151,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
 
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -1271,7 +1271,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
 
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -1395,7 +1395,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
 
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -1549,7 +1549,7 @@ function load_game_scene_anim_char_common_0_air_block(
 
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -1719,7 +1719,7 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
 
         obj_char["wallstickable"] = false
         obj_char["wallbreakable_with_wallstick"] = false
-        obj_char["wallbreakable_with_out_wallstick"] = false
+        obj_char["wallbreakable_without_wallstick"] = false
         obj_char["wallstick_on"] = 0
 
         obj_char["startup_frame"] = 0
@@ -1856,7 +1856,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
 
         obj_char["wallstickable"] = false
         obj_char["wallbreakable_with_wallstick"] = true
-        obj_char["wallbreakable_with_out_wallstick"] = false
+        obj_char["wallbreakable_without_wallstick"] = false
 
         obj_char["startup_frame"] = 0
         obj_char["active_frame"] = 0
@@ -1977,7 +1977,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
 
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -2104,7 +2104,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
 
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -2229,7 +2229,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
 
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -2346,7 +2346,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
 
         obj_char["wallstickable"] = false
         obj_char["wallbreakable_with_wallstick"] = true
-        obj_char["wallbreakable_with_out_wallstick"] = false
+        obj_char["wallbreakable_without_wallstick"] = false
 
         obj_char["startup_frame"] = 0
         obj_char["active_frame"] = 0
@@ -2497,7 +2497,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
 
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["idle_cancel"] = false
@@ -2614,7 +2614,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
 
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["idle_cancel"] = false
@@ -2716,7 +2716,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
 
         obj_char["wallstickable"] = false
         obj_char["wallbreakable_with_wallstick"] = false
-        obj_char["wallbreakable_with_out_wallstick"] = false
+        obj_char["wallbreakable_without_wallstick"] = false
         obj_char["wallstick_on"] = 0
 
         obj_char["idle_cancel"] = false
@@ -2824,7 +2824,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
 
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["idle_cancel"] = false
@@ -2944,7 +2944,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
 
         obj_char["wallstickable"] = false
         obj_char["wallbreakable_with_wallstick"] = false
-        obj_char["wallbreakable_with_out_wallstick"] = false
+        obj_char["wallbreakable_without_wallstick"] = false
         obj_char["wallstick_on"] = 0
 
         obj_char["idle_cancel"] = false
@@ -3191,7 +3191,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
 
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -3426,7 +3426,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
 
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -3625,7 +3625,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
 
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -3764,7 +3764,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
 
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -3910,7 +3910,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
 
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -4082,7 +4082,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
 
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -4240,7 +4240,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
 
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -4380,7 +4380,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
 
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -4527,7 +4527,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
 
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -4666,7 +4666,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
 
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
-        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0

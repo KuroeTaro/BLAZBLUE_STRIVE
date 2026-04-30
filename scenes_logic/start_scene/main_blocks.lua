@@ -1196,7 +1196,7 @@ function update_start_scene_config_audio_main()
 
         else
             -- 更新 current_update_block
-            current_update_block = update_start_scene_config_audio_bar_mark_twtich_left_with_out_alpha
+            current_update_block = update_start_scene_config_audio_bar_mark_twtich_left_without_alpha
 
         end
 
@@ -1250,7 +1250,7 @@ function update_start_scene_config_audio_main()
         else
             -- 不带alpha
             -- 更新 current_update_block
-            current_update_block = update_start_scene_config_audio_bar_mark_twtich_right_with_out_alpha
+            current_update_block = update_start_scene_config_audio_bar_mark_twtich_right_without_alpha
             
         end
 
@@ -1433,7 +1433,7 @@ function update_start_scene_config_audio_bar_mark_twtich_left_with_alpha()
         current_update_block = update_start_scene_config_audio_main
     end
 end 
-function update_start_scene_config_audio_bar_mark_twtich_left_with_out_alpha()
+function update_start_scene_config_audio_bar_mark_twtich_left_without_alpha()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
     point_linear_animator(
@@ -1515,7 +1515,7 @@ function update_start_scene_config_audio_bar_mark_twtich_right_with_alpha()
         current_update_block = update_start_scene_config_audio_main
     end
 end 
-function update_start_scene_config_audio_bar_mark_twtich_right_with_out_alpha()
+function update_start_scene_config_audio_bar_mark_twtich_right_without_alpha()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
     point_linear_animator(

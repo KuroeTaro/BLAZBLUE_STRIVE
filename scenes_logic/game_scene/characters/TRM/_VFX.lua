@@ -28,7 +28,7 @@ function insert_VFX_game_scene_char_TRM_2P_whiff(obj_char)
     obj["animation"]["length"] = 8
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with_out(obj,obj["animation"])
+    init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         -- obj[1] = obj_char["x"] + obj_char[5]*(-860)/2
         -- obj[2] = obj_char["y"] + obj_char[6]*(840)
@@ -89,7 +89,7 @@ function insert_VFX_game_scene_char_TRM_6P_whiff(obj_char)
     obj["animation"]["length"] = 15
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with_out(obj,obj["animation"])
+    init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         -- obj[1] = obj_char["x"] + obj_char[5]*(-860)/2
         -- obj[2] = obj_char["y"] + obj_char[6]*(840)
@@ -150,7 +150,7 @@ function insert_VFX_game_scene_char_TRM_5P_whiff(obj_char)
     obj["animation"]["length"] = 8
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with_out(obj,obj["animation"])
+    init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         -- obj[1] = obj_char["x"] + obj_char[5]*(-860)/2
         -- obj[2] = obj_char["y"] + obj_char[6]*(840)
@@ -207,7 +207,7 @@ function insert_VFX_game_scene_char_TRM_2S_whiff(obj_char)
     obj["animation"]["length"] = 3
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with_out(obj,obj["animation"])
+    init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         -- obj[1] = obj_char["x"] + obj_char[5]*(-860)/2
         -- obj[2] = obj_char["y"] + obj_char[6]*(840)
@@ -270,7 +270,7 @@ function insert_VFX_game_scene_char_TRM_6S_whiff(obj_char)
     obj["animation"]["length"] = 36
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with_out(obj,obj["animation"])
+    init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         obj[1] = obj_char["x"] + obj_char[5]*(-430)
         obj[2] = obj_char["y"] + obj_char[6]*(-520)
@@ -332,7 +332,7 @@ function insert_VFX_game_scene_char_TRM_cS_whiff(obj_char)
     obj["animation"]["length"] = 19
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with_out(obj,obj["animation"])
+    init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         -- obj[1] = obj_char["x"] + obj_char[5]*(-860)/2
         -- obj[2] = obj_char["y"] + obj_char[6]*(840)
@@ -406,7 +406,7 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_switch(obj_char)
     obj["animation"]["length"] = 22
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with_out(obj,obj["animation"])
+    init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         frame_animator(obj,obj["animation"])
         obj["life"] = obj["life"] - 1
@@ -459,7 +459,7 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot_oroboros_blas
     obj["animation"]["length"] = 21
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with_out(obj,obj["animation"])
+    init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["shot_sys_state"] == "at_the_ready_shot" then
             frame_animator(obj,obj["animation"])
@@ -505,7 +505,7 @@ function insert_VFX_game_scene_char_TRM_5Launcher_whiff_slash(obj_char)
     obj["animation"]["length"] = 3
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with_out(obj,obj["animation"])
+    init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         -- obj[1] = obj_char["x"] + obj_char[5]*(-860)/2
         -- obj[2] = obj_char["y"] + obj_char[6]*(840)
@@ -563,7 +563,7 @@ function insert_VFX_game_scene_char_TRM_5Launcher_whiff_glow(obj_char)
     obj["animation"]["length"] = 18
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with_out(obj,obj["animation"])
+    init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         -- obj[1] = obj_char["x"] + obj_char[5]*(-860)/2
         -- obj[2] = obj_char["y"] + obj_char[6]*(840)
@@ -626,7 +626,7 @@ function insert_VFX_game_scene_char_TRM_jS_whiff(obj_char)
     obj["animation"]["length"] = 13
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with_out(obj,obj["animation"])
+    init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj["FCT"][8] < 7 and obj_char["state"] == "jS" then
             obj[1] = obj_char["x"] + obj_char["velocity"][1] + obj_char[5]*(-120)

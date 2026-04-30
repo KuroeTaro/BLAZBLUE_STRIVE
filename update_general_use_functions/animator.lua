@@ -67,7 +67,7 @@ function init_frame_anim_with(obj,anim)
     obj["FCT"][anim["prop"]] = -1 
     frame_animator(obj,anim)
 end
-function init_frame_anim_with_out(obj,anim)
+function init_frame_anim_without(obj,anim)
     obj["FCT"][anim["prop"]] = -1 
 end
 function get_frame_anim_end_state(obj,anim)
@@ -150,7 +150,7 @@ function init_point_linear_anim_with(obj,anim)
     obj["LCD"][anim["prop"]] = 0
     point_linear_animator(obj,anim)
 end
-function init_point_linear_anim_with_out(obj,anim)
+function init_point_linear_anim_without(obj,anim)
     obj["LCT"][anim["prop"]] = -1 
     obj["LCD"][anim["prop"]] = 0
 end
@@ -166,7 +166,7 @@ function init_character_anim_with(obj_char,anim)
     obj_char[anim["prop_f"]] = -1
     character_animator(obj_char,anim)
 end
-function init_character_anim_with_out(obj_char,anim)
+function init_character_anim_without(obj_char,anim)
     obj_char[anim["prop_f"]] = -1
 end
 function character_animator(obj_char,anim)
@@ -185,7 +185,7 @@ function init_stage_anim_with(obj_stage,anim)
     obj_char[anim["prop_f"]] = -1
     character_animator(obj_char,anim)
 end
-function init_stage_anim_with_out(obj_stage,anim)
+function init_stage_anim_without(obj_stage,anim)
     obj_char[anim["prop_f"]] = -1
 end
 function stage_animator(obj_stage,anim)

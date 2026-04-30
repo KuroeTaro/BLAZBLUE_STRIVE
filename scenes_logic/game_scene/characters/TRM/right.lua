@@ -63,7 +63,7 @@ function load_game_scene_obj_char_RP()
 
     obj_char_game_scene_char_RP["wallstickable"] = false
     obj_char_game_scene_char_RP["wallbreakable_with_wallstick"] = false
-    obj_char_game_scene_char_RP["wallbreakable_with_out_wallstick"] = false
+    obj_char_game_scene_char_RP["wallbreakable_without_wallstick"] = false
     obj_char_game_scene_char_RP["wallstick_on"] = 0
     
     obj_char_game_scene_char_RP["stand_hurt_animation"] = nil
@@ -1672,7 +1672,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_reticle()
                 obj_char["shot_sys_reticle"][8] = 0
                 obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_unlocked"
                 obj_char["shot_sys_reticle_animation_table"][1] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(obj_char)
-                init_character_anim_with_out(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
+                init_character_anim_without(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
                 obj_char["shot_sys_reticle_state"] = "at_the_ready_ease_in"
                 return
             end

@@ -281,7 +281,7 @@ function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r,fix_
     obj["animation"]["length"] = 11
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with_out(obj,obj["animation"])
+    init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         obj[4] = opacity
         obj[5] = obj_char[5]*sx
@@ -348,7 +348,7 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_
     obj["animation"]["length"] = 21
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with_out(obj,obj["animation"])
+    init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
             -- do nothing
@@ -403,7 +403,7 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_
     obj["animation"]["length"] = 16
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with_out(obj,obj["animation"])
+    init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
             -- do nothing
@@ -472,7 +472,7 @@ function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,s
     obj["animation"]["length"] = 27
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with_out(obj,obj["animation"])
+    init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
             -- do nothing
@@ -535,7 +535,7 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     obj["animation"]["length"] = 21
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with_out(obj,obj["animation"])
+    init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
             -- do nothing
@@ -590,7 +590,7 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     obj["animation"]["length"] = 16
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with_out(obj,obj["animation"])
+    init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
             -- do nothing
@@ -635,7 +635,7 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     obj["opacity_point_linear_animation"]["prop"] = 4
     obj["opacity_point_linear_animation"]["length"] = 5
     obj["opacity_point_linear_animation"]["loop"] = false
-    init_point_linear_anim_with_out(obj,obj["opacity_point_linear_animation"])
+    init_point_linear_anim_without(obj,obj["opacity_point_linear_animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
             -- do nothing
@@ -676,7 +676,7 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
     obj["animation"]["length"] = 30
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with_out(obj,obj["animation"])
+    init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
             -- do nothing
@@ -727,7 +727,7 @@ function insert_VFX_game_scene_char_block_ver0(obj_char)
     obj["animation"]["length"] = 11
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with_out(obj,obj["animation"])
+    init_frame_anim_without(obj,obj["animation"])
     obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
     obj["update"] = function()
         if obj_char["state"] == "blockstop" then
@@ -782,7 +782,7 @@ function insert_VFX_game_scene_char_block_ver1(obj_char)
     obj["animation"]["length"] = 21
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with_out(obj,obj["animation"])
+    init_frame_anim_without(obj,obj["animation"])
     obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
     obj["update"] = function()
         if obj_char["state"] == "blockstop" then
@@ -841,7 +841,7 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
     obj["animation"]["length"] = 21
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
-    init_frame_anim_with_out(obj,obj["animation"])
+    init_frame_anim_without(obj,obj["animation"])
     obj["opacity_point_linear_animation"] = {}
     obj["opacity_point_linear_animation"][0] = {0.25,5}
     obj["opacity_point_linear_animation"][5] = {1,15}
@@ -849,7 +849,7 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
     obj["opacity_point_linear_animation"]["prop"] = 4
     obj["opacity_point_linear_animation"]["length"] = 15
     obj["opacity_point_linear_animation"]["loop"] = false
-    init_point_linear_anim_with_out(obj,obj["opacity_point_linear_animation"])
+    init_point_linear_anim_without(obj,obj["opacity_point_linear_animation"])
     obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
     obj["update"] = function()
         if obj_char["state"] == "blockstop" then
@@ -933,7 +933,7 @@ function insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,x,y,opacity,sx,sy
     obj["opacity_point_linear_animation"]["prop"] = 4
     obj["opacity_point_linear_animation"]["length"] = 30
     obj["opacity_point_linear_animation"]["loop"] = false
-    init_point_linear_anim_with_out(obj,obj["opacity_point_linear_animation"])
+    init_point_linear_anim_without(obj,obj["opacity_point_linear_animation"])
     obj["8_change_countdown"] = 0
     obj["update"] = function()
         point_linear_animator(obj,obj["opacity_point_linear_animation"])
@@ -1372,7 +1372,7 @@ function insert_VFX_HUD_game_scene_counter_ver3(obj_char)
     obj["opacity_anim"]["length"] = 60
     obj["opacity_anim"]["loop"] = false
     obj["opacity_anim"]["fix_type"] = true
-    init_point_linear_anim_with_out(obj,obj["opacity_anim"])
+    init_point_linear_anim_without(obj,obj["opacity_anim"])
 
     obj["update"] = function()
         point_linear_animator(obj,obj["opacity_anim"])
