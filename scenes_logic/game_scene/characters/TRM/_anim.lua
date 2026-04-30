@@ -1919,9 +1919,9 @@ function load_game_scene_anim_char_TRM_burst_overdrive(obj_char,other_side_count
                 anim_stage_point_linear_game_scene_camera_enclosing = obj_char["camera_enclosing_anim"]
                 anim_stage_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
                 anim_stage_point_linear_game_scene_camera_shake_y = obj_char["camera_y_shake_anim"]
-                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_enclosing)
-                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
+                init_point_linear_anim_with_out(obj_camera,anim_stage_point_linear_game_scene_camera_enclosing)
+                init_point_linear_anim_with_out(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+                init_point_linear_anim_with_out(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
                 obj_camera["enclose_position_offset"] = obj_char["enclose_position_offset"]
                 obj_camera["state"] = "active"
             end
@@ -5112,8 +5112,8 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(obj_char)
                 common_game_scene_hit_load_camera_shake_anim(obj_char["shot_sys_camera_shake_table"],0.1)
                 anim_stage_point_linear_game_scene_camera_shake_x = obj_char["shot_sys_camera_shake_table"]["camera_x_shake_anim"]
                 anim_stage_point_linear_game_scene_camera_shake_y = obj_char["shot_sys_camera_shake_table"]["camera_y_shake_anim"]
-                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
+                init_point_linear_anim_with_out(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+                init_point_linear_anim_with_out(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
                 obj_camera["state"] = "active"
             end
         )
@@ -6235,7 +6235,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
 
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
-        obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -6527,9 +6527,9 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
                 anim_stage_point_linear_game_scene_camera_enclosing = obj_char["camera_enclosing_anim"]
                 anim_stage_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
                 anim_stage_point_linear_game_scene_camera_shake_y = obj_char["camera_y_shake_anim"]
-                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_enclosing)
-                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
+                init_point_linear_anim_with_out(obj_camera,anim_stage_point_linear_game_scene_camera_enclosing)
+                init_point_linear_anim_with_out(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+                init_point_linear_anim_with_out(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
                 obj_camera["enclose_position_offset"] = obj_char["enclose_position_offset"]
                 obj_camera["state"] = "active"
             end
@@ -8814,7 +8814,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
 
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
-        obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -9066,8 +9066,8 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
             function()
                 anim_stage_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
                 anim_stage_point_linear_game_scene_camera_shake_y = obj_char["camera_y_shake_anim"]
-                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
+                init_point_linear_anim_with_out(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+                init_point_linear_anim_with_out(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
                 obj_camera["state"] = "active"
             end
         )

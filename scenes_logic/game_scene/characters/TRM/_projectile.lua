@@ -210,8 +210,8 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                     function()
                         anim_stage_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
                         anim_stage_point_linear_game_scene_camera_shake_y = obj["camera_y_shake_anim"]
-                        init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-                        init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
+                        init_point_linear_anim_with_out(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+                        init_point_linear_anim_with_out(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
                         obj_camera["state"] = "active"
                     end
                 )
@@ -266,8 +266,8 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                     function()
                         anim_stage_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
                         anim_stage_point_linear_game_scene_camera_shake_y = obj["camera_y_shake_anim"]
-                        init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-                        init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
+                        init_point_linear_anim_with_out(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+                        init_point_linear_anim_with_out(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
                         obj_camera["state"] = "active"
                     end
                 )
@@ -316,8 +316,8 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                     function()
                         anim_stage_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
                         anim_stage_point_linear_game_scene_camera_shake_y = obj["camera_y_shake_anim"]
-                        init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-                        init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
+                        init_point_linear_anim_with_out(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+                        init_point_linear_anim_with_out(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
                         obj_camera["state"] = "active"
                     end
                 )
@@ -451,7 +451,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
 
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
-        obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -600,7 +600,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
 
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
-        obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -755,7 +755,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
 
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
-        obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0
@@ -876,7 +876,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
 
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
-        obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallbreakable_with_out_wallstick"] = false
         obj_char_other_side["wallstick_on"] = 0
 
         obj_char_other_side["startup_frame"] = 0

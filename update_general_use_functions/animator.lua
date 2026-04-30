@@ -166,7 +166,7 @@ function init_character_anim_with(obj_char,anim)
     obj_char[anim["prop_f"]] = -1
     character_animator(obj_char,anim)
 end
-function init_character_anim_without(obj_char,anim)
+function init_character_anim_with_out(obj_char,anim)
     obj_char[anim["prop_f"]] = -1
 end
 function character_animator(obj_char,anim)
@@ -185,7 +185,7 @@ function init_stage_anim_with(obj_stage,anim)
     obj_char[anim["prop_f"]] = -1
     character_animator(obj_char,anim)
 end
-function init_stage_anim_without(obj_stage,anim)
+function init_stage_anim_with_out(obj_stage,anim)
     obj_char[anim["prop_f"]] = -1
 end
 function stage_animator(obj_stage,anim)

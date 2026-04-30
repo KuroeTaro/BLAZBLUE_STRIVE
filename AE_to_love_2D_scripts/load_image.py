@@ -13,12 +13,12 @@ def generate_code_for_folder(folder,base_index=0):
             # 获取文件完整路径并转换路径分隔符
             address = os.path.join(root,file_name).replace("\\","/")
             # 获取不带扩展名的文件名
-            name_without_ext = os.path.splitext(file_name)[0]
+            name_with_out_ext = os.path.splitext(file_name)[0]
             # 生成 imageData 代码
             image_data_line = f'imageData[{index}] = love.image.newCompressedData("{address}")'
             image_data_code.append(image_data_line)
             # 生成 file_name_image 代码
-            graph_line = f'{name_without_ext}_image = love.graphics.newImage(imageData[{index}])'
+            graph_line = f'{name_with_out_ext}_image = love.graphics.newImage(imageData[{index}])'
             graph_code.append(graph_line)
             index += 1
     return index
