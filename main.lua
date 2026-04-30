@@ -273,7 +273,7 @@ function love.update()
 	-- http://127.0.0.1:8000
 	require("lovebird").update()
 	-- globalCount = countGlobals()
-	set_nuGC(nil, nil, true)
+	set_nuGC(0.005, 10, true)
 	set_pause()
 	set_jump_breakpoint()
 	set_show_hitbox()

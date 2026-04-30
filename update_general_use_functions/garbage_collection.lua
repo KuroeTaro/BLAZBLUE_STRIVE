@@ -17,8 +17,6 @@
 --3. This notice may not be removed or altered from any source distribution.
 --This function was slightly modified from it's original state
 function set_nuGC(time_budget, memory_ceiling, disable_otherwise)
-	time_budget = time_budget or 3e-4
-	memory_ceiling = memory_ceiling or 300
 	local max_steps = 1000
 	local steps = 0
 	local start_time = love.timer.getTime()
