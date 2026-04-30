@@ -19,7 +19,7 @@ Purpose: give an AI agent the minimal,high-value knowledge to be productive in t
 
 ## Big-picture architecture 🏗️
 - main.lua: custom `love.run()` and initialization. It bulk-loads modules with `require_all_in_folder` and `require_all_init_load_function`.
-- Scenes are organized under `scenes_logic/` with subfolders per scene: `disclaimer_and_logos_scene`,`start_scene`,`char_select_scene`,`game_scene`.
+- Scenes are organized under `scenes/` with subfolders per scene: `disclaimer_and_logos_scene`,`start_scene`,`char_select_scene`,`game_scene`.
 - `game_scene` splits into logical subfolders
   - `_common/` — shared game-scene helpers (collision,common animations,load & init functions).
   - `characters/` — each character has initialization,logic,and animation tables.
@@ -59,9 +59,9 @@ end
 - `main.lua` — app loop,global flags,debug toggles
 - `advance_require_functions.lua` — module loading patterns
 - `update_general_use_functions/animator.lua` — animation primitives (must-read for anim work)
-- `scenes_logic/game_scene/_common/common_functions.lua` — shared game_scene helpers and typical patterns
-- `scenes_logic/game_scene/stage/alpha.lua` — example of camera,draw,and shader usage
-- `scenes_logic/game_scene/characters/` — examples of character data layouts and animation setup
+- `scenes/game_scene/_common/common_functions.lua` — shared game_scene helpers and typical patterns
+- `scenes/game_scene/stage/alpha.lua` — example of camera,draw,and shader usage
+- `scenes/game_scene/characters/` — examples of character data layouts and animation setup
 - `AE_to_love_2D_scripts/` and `load_image.py` — asset export pipeline
 
 ---

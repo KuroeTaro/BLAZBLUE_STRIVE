@@ -1,7 +1,7 @@
 require("advance_require_functions")
 require("draw_general_use_functions")
 require_all_in_folder("update_general_use_functions")
-require_all_in_folder("scenes_logic/load_scene")
+require_all_in_folder("scenes/load_scene")
 require_all_init_load_function()
 
 DEBUG_DATA_TABLE = {

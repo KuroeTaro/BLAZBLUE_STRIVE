@@ -564,7 +564,7 @@ function unload_char_select_scene_all()
             _G[key] = nil -- 删除该变量
         end
     end
-    unrequire_prefix("scenes_logic.char_select_scene.")
+    unrequire_prefix("scenes.char_select_scene.")
 end
 function preset_char_select_scene()
     init_point_linear_anim_with(obj_UI_char_select_scene_black_solid,anim_UI_point_linear_char_select_scene_black_solid_ease_out_opacity)

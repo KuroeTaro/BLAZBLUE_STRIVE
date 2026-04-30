@@ -105,5 +105,5 @@ end
 
 -- reuqire
 function load_char_select_scene_require()
-    require_all_in_folder("scenes_logic/char_select_scene")
+    require_all_in_folder("scenes/char_select_scene")
 end

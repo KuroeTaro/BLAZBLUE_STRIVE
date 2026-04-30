@@ -44,11 +44,11 @@ end
 
 -- require
 function load_disclaimer_and_logos_scene_require()
-    require_all_in_folder("scenes_logic/disclaimer_and_logos_scene")
-    -- require("scenes_logic/disclaimer_and_logos_scene/draw_functions")
-    -- require("scenes_logic/disclaimer_and_logos_scene/init")
-    -- require("scenes_logic/disclaimer_and_logos_scene/load_function")
-    -- require("scenes_logic/disclaimer_and_logos_scene/main_blocks")
-    -- require("scenes_logic/disclaimer_and_logos_scene/state_machine")
-    -- require("scenes_logic/disclaimer_and_logos_scene/sub_blocks")
+    require_all_in_folder("scenes/disclaimer_and_logos_scene")
+    -- require("scenes/disclaimer_and_logos_scene/draw_functions")
+    -- require("scenes/disclaimer_and_logos_scene/init")
+    -- require("scenes/disclaimer_and_logos_scene/load_function")
+    -- require("scenes/disclaimer_and_logos_scene/main_blocks")
+    -- require("scenes/disclaimer_and_logos_scene/state_machine")
+    -- require("scenes/disclaimer_and_logos_scene/sub_blocks")
 end
