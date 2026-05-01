@@ -93,11 +93,14 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_upd
     local instant_aim_state = {
         ["block"] = true,
         ["hurt"] = true,
+        ["throw_hurt_success"] = true,
         ["hurtstop"] = true,
         ["blockstop"] = true,
+        ["wallstick"] = true,
+        ["wallbreak"] = true,
         ["knockdown"] = true,
         ["knockdown_recovery"] = true,
-        ["knockout"] = true
+        ["knockdown_recovery_wallstick"] = true
     }
     function debuff(obj_char, obj_char_other_side)
         local dx = obj_char_other_side["x"] - obj_char["x"]

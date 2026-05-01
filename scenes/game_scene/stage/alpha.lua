@@ -166,14 +166,41 @@ function load_game_scene_anim_stage()
 
     -- wallbreak_hurt_side_character
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x = {}
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y = {}
-    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame = {}
-    anim_stage_frame_game_scene_char_hurt_side_wallbreak_sprite_sheet ={}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["prop"] = "x"
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["length"] = 150
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["loop"] = false
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["fix_type"] = true
 
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y = {}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["prop"] = "y"
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["length"] = 150
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["loop"] = false
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["fix_type"] = true
+
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame = {}
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["prop"] = 8
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["length"] = 150
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["loop"] = false
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["fix_type"] = true
+
+    -- wallbreak_hit_side_character
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x = {}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x["prop"] = "x"
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x["length"] = 45
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x["loop"] = false
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x["fix_type"] = true
+
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y = {}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x["prop"] = "y"
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x["length"] = 45
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x["loop"] = false
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x["fix_type"] = true
+
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame = {}
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet ={}
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["prop"] = 8
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["length"] = 45
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["loop"] = false
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["fix_type"] = true
 
     -- wallbreak_after_debris_opacity_anim
     anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity = {}
@@ -636,16 +663,4 @@ function load_game_scene_anim_stage_camera_wallbreak(obj_camera,hurt_side_char,w
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[54] = {z_persentage_to_value(223.0/300),57}
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[57] = {z_persentage_to_value(249.6/300),59}
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[59] = {z_persentage_to_value(277.0/300),60}
-end
-function load_game_scene_anim_stage_char_hit_side_wallbreak(obj_camera,hurt_side_char,wallside,adv)
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x = {}
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y = {}
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame = {}
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet ={}
-end
-function load_game_scene_anim_stage_char_hurt_side_wallbreak(obj_camera,hurt_side_char,wallside,adv)
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x = {}
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y = {}
-    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame = {}
-    anim_stage_frame_game_scene_char_hurt_side_wallbreak_sprite_sheet ={}
 end

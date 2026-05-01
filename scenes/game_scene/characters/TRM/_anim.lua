@@ -1,3 +1,135 @@
+-- frame_and_point_linear_animation
+function load_game_scene_anim_point_linear_TRM_hit_side_wallbreak(wallside)
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[0] = {-wallside*1500,20}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[20] = {-wallside*630,21}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[21] = {-wallside*586.8,23}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[23] = {-wallside*481.1,26}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[26] = {-wallside*406.0,30}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[30] = {-wallside*355.7,35}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[35] = {-wallside*327.4,40}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[40] = {-wallside*320,45}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[45] = {-wallside*320,45}
+
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[0] = {365,45}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[45] = {365,45}
+
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[0] = 0
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[8] = 1
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[16] = 2
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[20] = 3
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[25] = 4
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[31] = 5
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[39] = 6
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[43] = 7
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[45] = 7
+end
+function load_game_scene_anim_point_linear_TRM_hurt_side_wallbreak(hurt_side_obj_char,wallside,adv)
+
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[0] = {wallside*2100.0,30}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[30] = {wallside*2270.0,35}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[35] = {wallside*2307.8,40}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[40] = {wallside*2361.6,45}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[45] = {wallside*2439.8,49}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[49] = {wallside*2533.0,52}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[52] = {wallside*2641.0,54}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[54] = {wallside*2764.3,55}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[55] = {wallside*2850.0,104}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[104] = {wallside*2850.0,105}
+
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[0] = {hurt_side_obj_char["y"],104}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[104] = {hurt_side_obj_char["y"],105}
+
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[0] = 0
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[4] = 1
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[9] = 2
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[15] = 1
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[21] = 2
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[27] = 1
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[33] = 2
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[39] = 1
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[43] = 3
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[47] = 4
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[52] = 5
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[104] = 5
+    if adv then
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[105] = {-wallside*1200.0,125}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[125] = {wallside*320.0,126}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[126] = {wallside*362.2,128}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[128] = {wallside*445.9,131}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[131] = {wallside*547.4,135}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[135] = {wallside*638.4,140}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[140] = {wallside*680.0,150}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[150] = {wallside*680.0,150}
+
+        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[105] = {-90.0,110}
+        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[110] = {-79.2,116}
+        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[116] = {-26.0,119}
+        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[119] = {29.3,121}
+        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[121] = {86.3,123}
+        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[123] = {175.4,124}
+        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[124] = {247.7,125}
+        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[125] = {365.0,126}
+        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[126] = {358.5,129}
+        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[129] = {309.4,130}
+        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[130] = {303.0,131}
+        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[131] = {309.4,134}
+        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[134] = {358.5,135}
+        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[135] = {365.0,138}
+        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[138] = {345.0,140}
+        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[140] = {365.0,150}
+        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[150] = {365.0,150}
+
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[105] = 5
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[110] = 6
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[115] = 5
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[120] = 6
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[125] = 7
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[126] = 8
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[128] = 9
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[130] = 10
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[136] = 11
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[143] = 12
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[148] = 13
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[150] = 14
+    else
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[105] = {-wallside*1220.0,125}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[125] = {-wallside*0.0,130}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[130] = {wallside*205.0,130}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[131] = {wallside*228.9,133}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[133] = {wallside*258.7,135}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[135] = {wallside*278.5,140}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[140] = {wallside*307.5,145}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[145] = {wallside*320.0,150}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[150] = {wallside*320.0,150}
+
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[105] = {-90.0,110}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[110] = {-81.8258,115}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[115] = {-51.4536,117}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[117] = {29.3,119}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[119] = {86.3,121}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[121] = {175.4,123}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[123] = {247.7,124}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[124] = {247.7,125}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[125] = {365.0,150}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[150] = {365.0,150}
+
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[105] = 5
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[110] = 6
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[115] = 5
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[120] = 6
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[125] = 7
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[128] = 8
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[130] = 9
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[133] = 10
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[135] = 11
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[138] = 12
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[140] = 13
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[143] = 14
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[150] = 14
+    end
+end
+
+-- character_animation
 -- all_ground_idle_animation
     -- 需要修改的角色属性
         -- 我方

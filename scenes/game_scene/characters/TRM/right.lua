@@ -298,28 +298,16 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["hurtstop_wiggle_current_y"] = 0
     obj_char_game_scene_char_RP["hurtstop_wiggle_x_animation"] = nil
     obj_char_game_scene_char_RP["hurtstop_wiggle_y_animation"] = nil
-    -- smoke spawn pos
-        -- attack button(not need to record in obj_char)
-        -- move button(not need to record in obj_char)
-            -- jump
-            -- jump land
-            -- dash
-            -- dash stop
-            -- any special move
-        -- stand_block
-        -- crouch_block
-        -- stand_hurt_high/mid/low
-        -- crouch_hurt
-        -- launched/semi_launched_high/mid/low
-        -- launched_land/semi_launched_land_high/mid/low
-        -- no need
-            -- air_hurt_high/mid/low
-            -- air_launched/semi_launched_high/mid/low
-            -- air_launched_land/semi_launched_land_high/mid/low
+
+    -- stage_relate
+    -- camera
     obj_char_game_scene_char_RP["camera_x_shake_anim"] = nil
     obj_char_game_scene_char_RP["camera_y_shake_anim"] = nil
     obj_char_game_scene_char_RP["camera_enclosing_anim"] = nil
     obj_char_game_scene_char_RP["enclose_position_offset"] = {0,0,0}
+    -- wallbreak_animation
+    obj_char_game_scene_char_RP["wallbreak_hit_side_animation_load_function"] = load_game_scene_anim_point_linear_TRM_hit_side_wallbreak
+    obj_char_game_scene_char_RP["wallbreak_hurt_side_animation_load_function"] = load_game_scene_anim_point_linear_TRM_hurt_side_wallbreak
 end
 function order_load_game_scene_char_RP_frames(load_order)
     local PLAYER_ASSET_DATA = ASSET_DATA[3]
