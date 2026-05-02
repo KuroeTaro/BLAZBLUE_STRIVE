@@ -1,30 +1,38 @@
 -- frame_and_point_linear_animation
-function load_game_scene_anim_point_linear_TRM_hit_side_wallbreak(wallstick_on_side)
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[0] = {-wallstick_on_side*1500,20}
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[20] = {-wallstick_on_side*630,21}
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[21] = {-wallstick_on_side*586.8,23}
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[23] = {-wallstick_on_side*481.1,26}
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[26] = {-wallstick_on_side*406.0,30}
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[30] = {-wallstick_on_side*355.7,35}
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[35] = {-wallstick_on_side*327.4,40}
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[40] = {-wallstick_on_side*320,45}
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[45] = {-wallstick_on_side*320,45}
+function load_game_scene_anim_point_linear_TRM_hit_side_wallbreak(hit_side_obj_char,wallstick_on_side)
+    -- 105f-150f
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[0] = {hit_side_obj_char["x"],105}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[105] = {-wallstick_on_side*1500,125}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[125] = {-wallstick_on_side*630,126}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[126] = {-wallstick_on_side*586.8,128}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[128] = {-wallstick_on_side*481.1,131}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[131] = {-wallstick_on_side*406.0,135}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[135] = {-wallstick_on_side*355.7,140}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[140] = {-wallstick_on_side*327.4,145}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[145] = {-wallstick_on_side*320,150}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[150] = {-wallstick_on_side*320,150}
 
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[0] = {365,45}
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[45] = {365,45}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[0] = {hit_side_obj_char["y"],105}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[105] = {365,45}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[150] = {365,45}
 
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[0] = 0
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[8] = 1
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[16] = 2
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[20] = 3
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[25] = 4
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[31] = 5
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[39] = 6
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[43] = 7
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[45] = 7
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[0] = hit_side_obj_char[8]
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[105] = 0
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[113] = 1
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[121] = 2
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[125] = 3
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[130] = 4
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[136] = 5
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[144] = 6
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[148] = 7
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[150] = 7
+
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet[0] = hit_side_obj_char["sprite_sheet_state"]
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet[105] = "wallbreak_hit"
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet[150] = "wallbreak_hit"
 end
 function load_game_scene_anim_point_linear_TRM_hurt_side_wallbreak(hurt_side_obj_char,wallstick_on_side,adv)
-
+    -- 0f-150f
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[0] = {wallstick_on_side*2100.0,30}
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[30] = {wallstick_on_side*2270.0,35}
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[35] = {wallstick_on_side*2307.8,40}
@@ -127,6 +135,9 @@ function load_game_scene_anim_point_linear_TRM_hurt_side_wallbreak(hurt_side_obj
         anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[143] = 14
         anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[150] = 14
     end
+
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_sprite_sheet[0] = "wallbreak_hurt"
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_sprite_sheet[150] = "wallbreak_hurt"
 end
 
 -- character_animation

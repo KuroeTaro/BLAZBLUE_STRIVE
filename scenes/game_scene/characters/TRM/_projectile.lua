@@ -182,7 +182,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                 obj_char_other_side[5] = -obj_char_other_side[5]
             end
             -- wallbreak_test_and_apply
-            if common_game_scene_test_and_apply_wallbreak(obj_char_other_side) then
+            if common_game_scene_test_and_apply_wallbreak(obj_char_other_side,obj_char) then
                 return
             end
             -- block_test

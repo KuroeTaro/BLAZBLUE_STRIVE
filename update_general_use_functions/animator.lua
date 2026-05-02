@@ -180,22 +180,3 @@ end
 function get_character_anim_end_state(obj_char,anim)
     return obj_char[anim["prop_f"]] >= anim["anim_length"]
 end
-
-function init_stage_anim_with(obj_stage,anim)
-    obj_char[anim["prop_f"]] = -1
-    character_animator(obj_char,anim)
-end
-function init_stage_anim_without(obj_stage,anim)
-    obj_char[anim["prop_f"]] = -1
-end
-function stage_animator(obj_stage,anim)
-    local f = obj_char[anim["prop_f"]]
-    obj_char[anim["prop_f"]] = f+1
-    local key_frame_funciton = anim[f+1]
-    if key_frame_funciton then 
-        key_frame_funciton()
-    end
-end
-function get_stage_anim_end_state(obj_stage,anim)
-    return obj_char[anim["prop_f"]] >= anim["anim_length"]
-end

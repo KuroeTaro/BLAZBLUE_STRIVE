@@ -27,19 +27,22 @@ function common_game_scene_toggle_ease_in(toggle_value)
     obj_annoucer_game_scene_lets_dance[4] = toggle_value
 end
 
-function common_game_scene_test_and_apply_wallbreak(obj_char)
+function common_game_scene_test_and_apply_wallbreak(hurt_side_obj_char,hit_side_obj_char)
     local stage_collision = false
     
-    stage_collision = obj_char["collision_move_available"][1] == 0 or obj_char["collision_move_available"][2] == 0
-    if (obj_char["wallstick_on_side"] ~= 0 and obj_char["wallbreakable_with_wallstick"]) or
-    (stage_collision and obj_char["wallbreakable_without_wallstick"]) 
+    stage_collision = hurt_side_obj_char["collision_move_available"][1] == 0 or hurt_side_obj_char["collision_move_available"][2] == 0
+    if (hurt_side_obj_char["wallstick_on_side"] ~= 0 and hurt_side_obj_char["wallbreakable_with_wallstick"]) or
+    (stage_collision and hurt_side_obj_char["wallbreakable_without_wallstick"]) 
     then
-        common_game_scene_apply_wallbreak_transport(obj_char)
+        common_game_scene_apply_wallbreak_transport(hurt_side_obj_char,hit_side_obj_char)
         return true
     end
     return false
 end
-function common_game_scene_apply_wallbreak_transport(obj_char)
+function common_game_scene_apply_wallbreak_transport(hurt_side_obj_char,hit_side_obj_char)
+    -- character_state
+    -- camera_state
+    -- init_animation
     print("it dose")
 end
 
@@ -314,7 +317,7 @@ function common_game_scene_strike_hurt_function(obj_char)
         obj_char[5] = -obj_char[5]
     end
     -- wallbreak_test_and_apply
-    if common_game_scene_test_and_apply_wallbreak(obj_char) then
+    if common_game_scene_test_and_apply_wallbreak(obj_char,hit_side_obj_char) then
         return
     end
     -- block_test
