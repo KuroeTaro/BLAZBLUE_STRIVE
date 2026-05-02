@@ -1965,7 +1965,7 @@ end
             -- game_speed_abnormal_realtime_countdown
 function load_game_scene_anim_char_TRM_burst_overdrive(obj_char,other_side_countdown)
     local res = {}
-    local obj_stage_main = obj_stage_game_scene_main
+    local obj_flow_controller = obj_flow_controller_game_scene
     local obj_camera = obj_stage_game_scene_camera
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     -- 更新hitbox table 有一个全屏的红框
@@ -2044,7 +2044,7 @@ function load_game_scene_anim_char_TRM_burst_overdrive(obj_char,other_side_count
         common_game_scene_overdrive_load_camera_shake_anim(obj_char)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
         -- camera_animation_application
-        table.insert(obj_stage_main["camera_active_application_table"],
+        table.insert(obj_flow_controller["camera_active_application_table"],
             function()
                 anim_stage_point_linear_game_scene_camera_enclosing = obj_char["camera_enclosing_anim"]
                 anim_stage_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
@@ -5220,7 +5220,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_in(obj_char
 end
 function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(obj_char)
     local res = {}
-    local obj_stage_main = obj_stage_game_scene_main
+    local obj_flow_controller = obj_flow_controller_game_scene
     local obj_camera = obj_stage_game_scene_camera
     res["prop_f"] = "shot_sys_f"
     res["anim_length"] = 18
@@ -5236,7 +5236,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(obj_char)
         obj_char["shot_sys_idle_cancel"] = false
         character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
         -- camera_animation_application
-        table.insert(obj_stage_main["camera_active_application_table"],
+        table.insert(obj_flow_controller["camera_active_application_table"],
             function()
                 -- cameara_animation_load
                 common_game_scene_hit_load_camera_shake_anim(obj_char["shot_sys_camera_shake_table"],0.1)
@@ -6538,7 +6538,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
     local gravity = 2.5
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
-    local obj_stage_main = obj_stage_game_scene_main
+    local obj_flow_controller = obj_flow_controller_game_scene
     local obj_camera = obj_stage_game_scene_camera
     local obj_char_other_side = common_game_scene_change_character(side)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
@@ -6652,7 +6652,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
             (obj_char["y"]+obj_char_other_side["y"])/8 - obj_camera["3d_pos_y_target"],
             120
         }
-        table.insert(obj_stage_main["camera_active_application_table"],
+        table.insert(obj_flow_controller["camera_active_application_table"],
             function()
                 anim_stage_point_linear_game_scene_camera_enclosing = obj_char["camera_enclosing_anim"]
                 anim_stage_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
@@ -8942,10 +8942,11 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
+        obj_char_other_side["wallstick_on"] = 0
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallbreak_adv"] = false
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -9098,7 +9099,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
     local gravity = math.max(math.abs(obj_char["y"]-125)/200,1)
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
-    local obj_stage_main = obj_stage_game_scene_main
+    local obj_flow_controller = obj_flow_controller_game_scene
     local obj_camera = obj_stage_game_scene_camera
     local obj_char_other_side = common_game_scene_change_character(side)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
@@ -9192,7 +9193,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
             obj_char[5] = -obj_char[5]
         end
         -- camera_animation_application
-        table.insert(obj_stage_main["camera_active_application_table"],
+        table.insert(obj_flow_controller["camera_active_application_table"],
             function()
                 anim_stage_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
                 anim_stage_point_linear_game_scene_camera_shake_y = obj_char["camera_y_shake_anim"]

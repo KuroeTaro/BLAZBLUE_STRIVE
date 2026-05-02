@@ -301,7 +301,7 @@ function common_game_scene_strike_hurt_function(obj_char)
     -- idle unblock punish counter GP parry
     -- stand crouch air OTG
     local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
-    local obj_stage_main = obj_stage_game_scene_main
+    local obj_flow_controller = obj_flow_controller_game_scene
     local obj_camera = obj_stage_game_scene_camera
     -- physics_lock
     obj_char["physics_lock"] = true
@@ -333,11 +333,11 @@ function common_game_scene_strike_hurt_function(obj_char)
     end
     -- idle block
     if block_bool then
-        common_game_scene_strike_hurt_function_common_block(obj_char,hit_side_obj_char,obj_stage_main,obj_camera)
+        common_game_scene_strike_hurt_function_common_block(obj_char,hit_side_obj_char,obj_flow_controller,obj_camera)
     -- GP
     elseif obj_char["hurt_state"] == "GP" then -- idle unblock punish counter GP parry
         -- insert GP
-        common_game_scene_strike_hurt_function_GP_hurt(obj_char,hit_side_obj_char,obj_stage_main,obj_camera)
+        common_game_scene_strike_hurt_function_GP_hurt(obj_char,hit_side_obj_char,obj_flow_controller,obj_camera)
     -- parry
     elseif obj_char["hurt_state"] == "parry" then -- idle unblock punish counter GP parry
         -- parry function
@@ -347,10 +347,10 @@ function common_game_scene_strike_hurt_function(obj_char)
         if obj_char["hurt_state"] == "punish" then
             insert_VFX_HUD_game_scene_punish(hit_side_obj_char)
         end
-        common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_obj_char,obj_stage_main,obj_camera)
+        common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_obj_char,obj_flow_controller,obj_camera)
     end
 end
-function common_game_scene_strike_hurt_function_common_block(obj_char,hit_side_obj_char,obj_stage_main,obj_camera)
+function common_game_scene_strike_hurt_function_common_block(obj_char,hit_side_obj_char,obj_flow_controller,obj_camera)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
     local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
     -- state
@@ -358,7 +358,7 @@ function common_game_scene_strike_hurt_function_common_block(obj_char,hit_side_o
     obj_char["state"] = "blockstop"
     -- camera_shake_enclose
     common_game_scene_hit_load_camera_shake_anim(hit_side_obj_char,0.5)
-    table.insert(obj_stage_main["camera_active_application_table"],
+    table.insert(obj_flow_controller["camera_active_application_table"],
         function()
             anim_stage_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
             anim_stage_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
@@ -407,13 +407,13 @@ function common_game_scene_strike_hurt_function_common_block(obj_char,hit_side_o
         insert_VFX_game_scene_char_FD_block(obj_char)
     end
 end
-function common_game_scene_strike_hurt_function_GP_hurt(obj_char,hit_side_obj_char,obj_stage_main,obj_camera)
+function common_game_scene_strike_hurt_function_GP_hurt(obj_char,hit_side_obj_char,obj_flow_controller,obj_camera)
     -- state
     obj_char["state_cache"] = obj_char["state"]
     obj_char["state"] = "hurtstop"
     -- camera_shake_enclose
     common_game_scene_hit_load_camera_shake_anim(hit_side_obj_char,0.5)
-    table.insert(obj_stage_main["camera_active_application_table"],
+    table.insert(obj_flow_controller["camera_active_application_table"],
         function()
             anim_stage_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
             anim_stage_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
@@ -445,7 +445,7 @@ function common_game_scene_strike_hurt_function_GP_hurt(obj_char,hit_side_obj_ch
     -- insert_GP_VFX
     insert_VFX_game_scene_char_GP(obj_char)
 end
-function common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_obj_char,obj_stage_main,obj_camera)
+function common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_obj_char,obj_flow_controller,obj_camera)
     -- state
     obj_char["state_cache"] = "hurt"
     obj_char["state"] = "hurtstop"
@@ -459,7 +459,7 @@ function common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_ob
     end
     -- insert_camera_shake_enclose
     if not hit_side_obj_char["camera_enclosing_anim"]["nil_mark"] then
-        table.insert(obj_stage_main["camera_active_application_table"],
+        table.insert(obj_flow_controller["camera_active_application_table"],
             function()
                 anim_stage_point_linear_game_scene_camera_enclosing = hit_side_obj_char["camera_enclosing_anim"]
                 anim_stage_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
@@ -472,7 +472,7 @@ function common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_ob
             end
         )
     else
-        table.insert(obj_stage_main["camera_active_application_table"],
+        table.insert(obj_flow_controller["camera_active_application_table"],
             function()
                 anim_stage_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
                 anim_stage_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]

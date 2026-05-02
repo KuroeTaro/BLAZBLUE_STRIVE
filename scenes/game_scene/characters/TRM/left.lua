@@ -61,10 +61,11 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["block_risk_gauge_gain"] = 0
     obj_char_game_scene_char_LP["FD_block_heat_drain"] = 0
 
+    obj_char_game_scene_char_LP["wallstick_on"] = 0
     obj_char_game_scene_char_LP["wallstickable"] = false
     obj_char_game_scene_char_LP["wallbreakable_with_wallstick"] = false
     obj_char_game_scene_char_LP["wallbreakable_without_wallstick"] = false
-    obj_char_game_scene_char_LP["wallstick_on"] = 0
+    obj_char_game_scene_char_LP["wallbreak_adv"] = false
     
     obj_char_game_scene_char_LP["stand_hurt_animation"] = nil
     obj_char_game_scene_char_LP["stand_block_animation"] = nil

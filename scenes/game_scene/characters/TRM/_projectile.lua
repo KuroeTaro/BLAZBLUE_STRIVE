@@ -160,7 +160,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
         -- projectile_and_projectile_interaction
         -- interaction_with_enemy
         local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
-        local obj_stage_main = obj_stage_game_scene_main
+        local obj_flow_controller = obj_flow_controller_game_scene
         local obj_camera = obj_stage_game_scene_camera
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
             -- if hit
@@ -206,7 +206,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                 obj_char_other_side["state_cache"] = "block"
                 obj_char_other_side["state"] = "blockstop"
                 -- set_insert_camera_anim
-                table.insert(obj_stage_main["camera_active_application_table"],
+                table.insert(obj_flow_controller["camera_active_application_table"],
                     function()
                         anim_stage_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
                         anim_stage_point_linear_game_scene_camera_shake_y = obj["camera_y_shake_anim"]
@@ -262,7 +262,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                 obj_char_other_side["state_cache"] = obj_char_other_side["state"]
                 obj_char_other_side["state"] = "hurtstop"
                 -- set_insert_camera_anim
-                table.insert(obj_stage_main["camera_active_application_table"],
+                table.insert(obj_flow_controller["camera_active_application_table"],
                     function()
                         anim_stage_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
                         anim_stage_point_linear_game_scene_camera_shake_y = obj["camera_y_shake_anim"]
@@ -312,7 +312,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                     obj["hit_counter_ver_function"](obj_char,obj_char_other_side)
                 end
                 -- set_play_character_shake_animation
-                table.insert(obj_stage_main["camera_active_application_table"],
+                table.insert(obj_flow_controller["camera_active_application_table"],
                     function()
                         anim_stage_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
                         anim_stage_point_linear_game_scene_camera_shake_y = obj["camera_y_shake_anim"]
@@ -449,10 +449,11 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
+        obj_char_other_side["wallstick_on"] = 0
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallbreak_adv"] = false
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -598,10 +599,11 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
+        obj_char_other_side["wallstick_on"] = 0
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallbreak_adv"] = false
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -753,10 +755,11 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
+        obj_char_other_side["wallstick_on"] = 0
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallbreak_adv"] = false
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -874,10 +877,11 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
+        obj_char_other_side["wallstick_on"] = 0
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallbreak_adv"] = false
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
