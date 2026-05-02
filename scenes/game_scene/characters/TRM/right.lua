@@ -61,7 +61,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["block_risk_gauge_gain"] = 0
     obj_char_game_scene_char_RP["FD_block_heat_drain"] = 0
 
-    obj_char_game_scene_char_RP["wallstick_on"] = 0
+    obj_char_game_scene_char_RP["wallstick_on_side"] = 0
     obj_char_game_scene_char_RP["wallstickable"] = false
     obj_char_game_scene_char_RP["wallbreakable_with_wallstick"] = false
     obj_char_game_scene_char_RP["wallbreakable_without_wallstick"] = false

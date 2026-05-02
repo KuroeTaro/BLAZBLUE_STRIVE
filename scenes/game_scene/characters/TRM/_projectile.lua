@@ -159,7 +159,6 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
         -- strike_clash
         -- projectile_and_projectile_interaction
         -- interaction_with_enemy
-        local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
         local obj_flow_controller = obj_flow_controller_game_scene
         local obj_camera = obj_stage_game_scene_camera
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
@@ -183,7 +182,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                 obj_char_other_side[5] = -obj_char_other_side[5]
             end
             -- wallbreak_test_and_apply
-            if common_game_scene_test_and_apply_wallbreak(obj_char) then
+            if common_game_scene_test_and_apply_wallbreak(obj_char_other_side) then
                 return
             end
             -- block_test
@@ -449,7 +448,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -599,7 +598,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -755,7 +754,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -877,7 +876,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false

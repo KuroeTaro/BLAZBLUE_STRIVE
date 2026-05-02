@@ -1,14 +1,14 @@
 -- frame_and_point_linear_animation
-function load_game_scene_anim_point_linear_TRM_hit_side_wallbreak(wallside)
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[0] = {-wallside*1500,20}
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[20] = {-wallside*630,21}
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[21] = {-wallside*586.8,23}
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[23] = {-wallside*481.1,26}
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[26] = {-wallside*406.0,30}
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[30] = {-wallside*355.7,35}
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[35] = {-wallside*327.4,40}
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[40] = {-wallside*320,45}
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[45] = {-wallside*320,45}
+function load_game_scene_anim_point_linear_TRM_hit_side_wallbreak(wallstick_on_side)
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[0] = {-wallstick_on_side*1500,20}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[20] = {-wallstick_on_side*630,21}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[21] = {-wallstick_on_side*586.8,23}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[23] = {-wallstick_on_side*481.1,26}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[26] = {-wallstick_on_side*406.0,30}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[30] = {-wallstick_on_side*355.7,35}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[35] = {-wallstick_on_side*327.4,40}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[40] = {-wallstick_on_side*320,45}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[45] = {-wallstick_on_side*320,45}
 
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[0] = {365,45}
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[45] = {365,45}
@@ -23,18 +23,18 @@ function load_game_scene_anim_point_linear_TRM_hit_side_wallbreak(wallside)
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[43] = 7
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[45] = 7
 end
-function load_game_scene_anim_point_linear_TRM_hurt_side_wallbreak(hurt_side_obj_char,wallside,adv)
+function load_game_scene_anim_point_linear_TRM_hurt_side_wallbreak(hurt_side_obj_char,wallstick_on_side,adv)
 
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[0] = {wallside*2100.0,30}
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[30] = {wallside*2270.0,35}
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[35] = {wallside*2307.8,40}
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[40] = {wallside*2361.6,45}
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[45] = {wallside*2439.8,49}
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[49] = {wallside*2533.0,52}
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[52] = {wallside*2641.0,54}
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[54] = {wallside*2764.3,55}
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[55] = {wallside*2850.0,104}
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[104] = {wallside*2850.0,105}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[0] = {wallstick_on_side*2100.0,30}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[30] = {wallstick_on_side*2270.0,35}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[35] = {wallstick_on_side*2307.8,40}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[40] = {wallstick_on_side*2361.6,45}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[45] = {wallstick_on_side*2439.8,49}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[49] = {wallstick_on_side*2533.0,52}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[52] = {wallstick_on_side*2641.0,54}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[54] = {wallstick_on_side*2764.3,55}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[55] = {wallstick_on_side*2850.0,104}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[104] = {wallstick_on_side*2850.0,105}
 
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[0] = {hurt_side_obj_char["y"],104}
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[104] = {hurt_side_obj_char["y"],105}
@@ -52,14 +52,14 @@ function load_game_scene_anim_point_linear_TRM_hurt_side_wallbreak(hurt_side_obj
     anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[52] = 5
     anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[104] = 5
     if adv then
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[105] = {-wallside*1200.0,125}
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[125] = {wallside*320.0,126}
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[126] = {wallside*362.2,128}
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[128] = {wallside*445.9,131}
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[131] = {wallside*547.4,135}
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[135] = {wallside*638.4,140}
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[140] = {wallside*680.0,150}
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[150] = {wallside*680.0,150}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[105] = {-wallstick_on_side*1200.0,125}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[125] = {wallstick_on_side*320.0,126}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[126] = {wallstick_on_side*362.2,128}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[128] = {wallstick_on_side*445.9,131}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[131] = {wallstick_on_side*547.4,135}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[135] = {wallstick_on_side*638.4,140}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[140] = {wallstick_on_side*680.0,150}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[150] = {wallstick_on_side*680.0,150}
 
         anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[105] = {-90.0,110}
         anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[110] = {-79.2,116}
@@ -92,15 +92,15 @@ function load_game_scene_anim_point_linear_TRM_hurt_side_wallbreak(hurt_side_obj
         anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[148] = 13
         anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[150] = 14
     else
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[105] = {-wallside*1220.0,125}
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[125] = {-wallside*0.0,130}
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[130] = {wallside*205.0,130}
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[131] = {wallside*228.9,133}
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[133] = {wallside*258.7,135}
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[135] = {wallside*278.5,140}
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[140] = {wallside*307.5,145}
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[145] = {wallside*320.0,150}
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[150] = {wallside*320.0,150}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[105] = {-wallstick_on_side*1220.0,125}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[125] = {-wallstick_on_side*0.0,130}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[130] = {wallstick_on_side*205.0,130}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[131] = {wallstick_on_side*228.9,133}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[133] = {wallstick_on_side*258.7,135}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[135] = {wallstick_on_side*278.5,140}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[140] = {wallstick_on_side*307.5,145}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[145] = {wallstick_on_side*320.0,150}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[150] = {wallstick_on_side*320.0,150}
 
         anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[105] = {-90.0,110}
         anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[110] = {-81.8258,115}
@@ -6366,7 +6366,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -8942,7 +8942,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false

@@ -9,6 +9,12 @@
     -- hurt_vertical_gravity_correction,
     -- self_knockdown_animation
 
+-- flow_controller_animation
+function load_game_scene_anim_flow_controller_common_wallbreak(hit_side_obj_char,hurt_side_obj_char)
+    local wallstick_side = hurt_side_obj_char["wallstick_on_side"]
+
+end
+
 -- character_animation
 -- 0_general_hurt_falled_knockout
     -- 需要修改的角色属性
@@ -79,7 +85,7 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -254,7 +260,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -372,7 +378,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -496,7 +502,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -626,7 +632,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -756,7 +762,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -921,7 +927,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -1038,7 +1044,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -1157,7 +1163,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -1278,7 +1284,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -1403,7 +1409,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -1558,7 +1564,7 @@ function load_game_scene_anim_char_common_0_air_block(
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -1729,7 +1735,7 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char["wallstick_on"] = 0
+        obj_char["wallstick_on_side"] = 0
         obj_char["wallstickable"] = false
         obj_char["wallbreakable_with_wallstick"] = false
         obj_char["wallbreakable_without_wallstick"] = false
@@ -1989,7 +1995,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -2117,7 +2123,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -2243,7 +2249,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -2513,7 +2519,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -2631,7 +2637,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -2734,7 +2740,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char["wallstick_on"] = 0
+        obj_char["wallstick_on_side"] = 0
         obj_char["wallstickable"] = false
         obj_char["wallbreakable_with_wallstick"] = false
         obj_char["wallbreakable_without_wallstick"] = false
@@ -2843,7 +2849,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -2964,7 +2970,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
 
-        obj_char["wallstick_on"] = 0
+        obj_char["wallstick_on_side"] = 0
         obj_char["wallstickable"] = false
         obj_char["wallbreakable_with_wallstick"] = false
         obj_char["wallbreakable_without_wallstick"] = false
@@ -3212,7 +3218,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -3448,7 +3454,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -3648,7 +3654,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -3788,7 +3794,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -3935,7 +3941,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -4108,7 +4114,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -4267,7 +4273,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -4408,7 +4414,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -4556,7 +4562,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false
@@ -4696,7 +4702,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on"] = 0
+        obj_char_other_side["wallstick_on_side"] = 0
         obj_char_other_side["wallstickable"] = true
         obj_char_other_side["wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallbreakable_without_wallstick"] = false

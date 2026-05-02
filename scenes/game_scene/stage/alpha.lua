@@ -333,91 +333,6 @@ function update_game_scene_stage()
     -- wallstick_update
     state_machine_stage_game_scene_wallstick()
 end
-function update_game_scene_application_table_validation()
-    local obj_flow_controller = obj_flow_controller_game_scene
-    local char_LP = obj_char_game_scene_char_LP
-    local char_RP = obj_char_game_scene_char_RP
-    if #obj_flow_controller["wallstick_stage_obj_active_application_table"] > 1
-    or #obj_flow_controller["wallstick_char_obj_active_application_table"] > 1
-    or (#obj_flow_controller["wallstick_stage_obj_active_application_table"] > 0 and (char_LP["wallstick_on"] ~= 0 or char_RP["wallstick_on"] ~= 0))
-    or (#obj_flow_controller["wallstick_char_obj_active_application_table"] > 0 and (char_LP["state"] == "wallbreak" or char_RP["state"] == "wallbreak"))
-    then
-        print("Did you code a guarantee projectile that active after the owner was hurt?")
-        print("or you made a extremely fucking wired hurt animation that could cause both characters to be in wallstick state at the same frame?")
-        print("These texts only show when you have a sync wallstick or wallbreak process that cause more than 1 wallstick or wallbreak effect at the same frame.")
-        print("You could do that but I won't code a wallstick with it since this would cause a sync wallstick or wallbreak.")
-        print("That is a issue even arcsys deal it shity.")
-        print("I would just ban the wallbreak/wallstick process with it. BTW I don't like guarantee projectile either")
-        print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000000")
-    end
-end
-function update_game_scene_wallbreak_application_table()
-    local obj_flow_controller = obj_flow_controller_game_scene
-    local char_LP = obj_char_game_scene_char_LP
-    local char_RP = obj_char_game_scene_char_RP
-    if #obj_flow_controller["wallstick_char_obj_active_application_table"] == 0 then
-        char_LP["collision_move_available_cache"] = char_LP["collision_move_available"]
-        char_RP["collision_move_available_cache"] = char_RP["collision_move_available"]
-        return
-    end
-    if #obj_flow_controller["wallstick_char_obj_active_application_table"] == 1 then
-        char_LP["collision_move_available_cache"] = char_LP["collision_move_available"]
-        char_RP["collision_move_available_cache"] = char_RP["collision_move_available"]
-        obj_flow_controller["wallstick_char_obj_active_application_table"][1]()
-        obj_flow_controller["wallstick_char_obj_active_application_table"] = {}
-    elseif #obj_flow_controller["wallstick_char_obj_active_application_table"] > 1 then
-        obj_flow_controller["wallstick_char_obj_active_application_table"] = {}
-        print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000002")
-    end
-end
-function update_game_scene_wallstick_stage_obj_application_table()
-    local obj_flow_controller = obj_flow_controller_game_scene
-    local char_LP = obj_char_game_scene_char_LP
-    local char_RP = obj_char_game_scene_char_RP
-    if #obj_flow_controller["wallstick_stage_obj_active_application_table"] == 0 then
-        return
-    end
-    if #obj_flow_controller["wallstick_stage_obj_active_application_table"] == 1 then
-        obj_flow_controller["wallstick_stage_obj_active_application_table"][1]()
-        obj_flow_controller["wallstick_stage_obj_active_application_table"] = {}
-    elseif #obj_flow_controller["wallstick_stage_obj_active_application_table"] > 1 then
-        obj_flow_controller["wallstick_stage_obj_active_application_table"] = {}
-        print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000001")
-    end
-end
-function update_game_scene_wallstick_char_obj_application_table()
-    local obj_flow_controller = obj_flow_controller_game_scene
-    local char_LP = obj_char_game_scene_char_LP
-    local char_RP = obj_char_game_scene_char_RP
-    if #obj_flow_controller["wallstick_char_obj_active_application_table"] == 0 then
-        char_LP["collision_move_available_cache"] = char_LP["collision_move_available"]
-        char_RP["collision_move_available_cache"] = char_RP["collision_move_available"]
-        return
-    end
-    if #obj_flow_controller["wallstick_char_obj_active_application_table"] == 1 then
-        char_LP["collision_move_available_cache"] = char_LP["collision_move_available"]
-        char_RP["collision_move_available_cache"] = char_RP["collision_move_available"]
-        obj_flow_controller["wallstick_char_obj_active_application_table"][1]()
-        obj_flow_controller["wallstick_char_obj_active_application_table"] = {}
-    elseif #obj_flow_controller["wallstick_char_obj_active_application_table"] > 1 then
-        obj_flow_controller["wallstick_char_obj_active_application_table"] = {}
-        print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000002")
-    end
-end
-function update_game_scene_camera_application_table()
-    local obj_flow_controller = obj_flow_controller_game_scene
-    local obj_camera = obj_stage_game_scene_camera
-    if #obj_flow_controller["camera_active_application_table"] == 0 then
-        return
-    end
-    if #obj_flow_controller["camera_active_application_table"] == 1 then
-        obj_flow_controller["camera_active_application_table"][1]()
-        obj_flow_controller["camera_active_application_table"] = {}
-    elseif #obj_flow_controller["camera_active_application_table"] > 1 then
-        -- 更新状态
-        obj_flow_controller["camera_active_application_table"] = {}
-    end
-end
 
 -- state_machine
 function state_machine_stage_game_scene_camera()
@@ -587,11 +502,11 @@ function draw_game_scene_stage_glow()
 end
 
 -- stage_animation_load_function
-function load_game_scene_anim_stage_camera_wallbreak(obj_camera,hurt_side_char,wallside,adv)
+function load_game_scene_anim_stage_camera_wallbreak(obj_camera,hurt_side_char,wallstick_on_side,adv)
     local x_dst = 3040
     local obj_camera_start_x = obj_camera["3d_pos_x"]
     local function x_persentage_to_value(x_percentage)
-        return obj_camera_start_x*(1-x_percentage)+wallside*x_dst*x_percentage
+        return obj_camera_start_x*(1-x_percentage)+wallstick_on_side*x_dst*x_percentage
     end
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[0] = {x_persentage_to_value(0.0/940),1}
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[1] = {x_persentage_to_value(99.0/940),3}
@@ -608,31 +523,31 @@ function load_game_scene_anim_stage_camera_wallbreak(obj_camera,hurt_side_char,w
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[60] = {x_persentage_to_value(940.0/940),104}
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[104] = {x_persentage_to_value(940.0/940),105}
     if adv then
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[105] = {-wallside*(950.0),106}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[106] = {-wallside*(754.3),108}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[108] = {-wallside*(537.0),111}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[111] = {-wallside*(342.7),115}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[115] = {-wallside*(174.9),120}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[120] = {-wallside*(36.9),125}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[125] = {-wallside*(-54.7),130}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[130] = {-wallside*(-115.3),135}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[135] = {-wallside*(-153.3),140}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[140] = {-wallside*(-173.8),145}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[145] = {-wallside*(-180),150}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[150] = {-wallside*(-180),150}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[105] = {-wallstick_on_side*(950.0),106}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[106] = {-wallstick_on_side*(754.3),108}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[108] = {-wallstick_on_side*(537.0),111}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[111] = {-wallstick_on_side*(342.7),115}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[115] = {-wallstick_on_side*(174.9),120}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[120] = {-wallstick_on_side*(36.9),125}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[125] = {-wallstick_on_side*(-54.7),130}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[130] = {-wallstick_on_side*(-115.3),135}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[135] = {-wallstick_on_side*(-153.3),140}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[140] = {-wallstick_on_side*(-173.8),145}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[145] = {-wallstick_on_side*(-180),150}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[150] = {-wallstick_on_side*(-180),150}
     else
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[105] = {-wallside*(950.0),106}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[106] = {-wallside*(785.5),108}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[108] = {-wallside*(602.8),111}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[111] = {-wallside*(439.5),115}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[115] = {-wallside*(298.4),120}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[120] = {-wallside*(182.3),125}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[125] = {-wallside*(105.4),130}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[130] = {-wallside*(54.4),135}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[135] = {-wallside*(22.4),140}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[140] = {-wallside*(5.3),145}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[145] = {-wallside*(0),150}
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[150] = {-wallside*(0),150}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[105] = {-wallstick_on_side*(950.0),106}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[106] = {-wallstick_on_side*(785.5),108}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[108] = {-wallstick_on_side*(602.8),111}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[111] = {-wallstick_on_side*(439.5),115}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[115] = {-wallstick_on_side*(298.4),120}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[120] = {-wallstick_on_side*(182.3),125}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[125] = {-wallstick_on_side*(105.4),130}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[130] = {-wallstick_on_side*(54.4),135}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[135] = {-wallstick_on_side*(22.4),140}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[140] = {-wallstick_on_side*(5.3),145}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[145] = {-wallstick_on_side*(0),150}
+        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[150] = {-wallstick_on_side*(0),150}
     end
 
     -- 3d_pos_y

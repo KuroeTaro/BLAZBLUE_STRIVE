@@ -31,7 +31,7 @@ function common_game_scene_test_and_apply_wallbreak(obj_char)
     local stage_collision = false
     
     stage_collision = obj_char["collision_move_available"][1] == 0 or obj_char["collision_move_available"][2] == 0
-    if (obj_char["wallstick_on"] ~= 0 and obj_char["wallbreakable_with_wallstick"]) or
+    if (obj_char["wallstick_on_side"] ~= 0 and obj_char["wallbreakable_with_wallstick"]) or
     (stage_collision and obj_char["wallbreakable_without_wallstick"]) 
     then
         common_game_scene_apply_wallbreak_transport(obj_char)
