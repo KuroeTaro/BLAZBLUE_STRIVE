@@ -237,7 +237,7 @@ function character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char
         (obj_char["shot_sys_oroboros_ease_target"][4]*2 + obj_char["shot_sys_oroboros_ease_current"][4])/3
     }
 end
--- emplayment_function
+-- employment_function
 function character_function_game_scene_TRM_shot_sys_off_init(obj_char)
     -- hurt_state
     obj_char["hurt_state"] = obj_char["hurt_state_target"]
