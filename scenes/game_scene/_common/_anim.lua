@@ -9,12 +9,6 @@
     -- hurt_vertical_gravity_correction,
     -- self_knockdown_animation
 
--- flow_controller_animation
-function load_game_scene_anim_flow_controller_common_wallbreak(hit_side_obj_char,hurt_side_obj_char)
-    local wallstick_side = hurt_side_obj_char["wallstick_on_side"]
-
-end
-
 -- character_animation
 -- 0_general_hurt_falled_knockout
     -- 需要修改的角色属性

@@ -10,11 +10,9 @@ function update_game_scene_training_before_ease_in()
             anim_UI_point_linear_game_scene_solid_ease_out_opacity_1_0
         )
         if TRAINING_MODE_CONFIG["announcer"] == false then
-            obj_flow_controller_game_scene["state"] = "black_solid_ease_in"
             current_update_block = update_game_scene_training_black_solid_ease_in
             common_game_scene_toggle_dynamic_HUD(1)
         else
-            obj_flow_controller_game_scene["state"] = "annoucer_ease_in"
             current_update_block = update_game_scene_training_annoucer_ease_in
             common_game_scene_toggle_ease_in(1)
             play_obj_audio(audio_SFX_game_scene_annoucer_ease_in)
@@ -39,7 +37,6 @@ function update_game_scene_training_black_solid_ease_in()
     )
     then
         SCENE_TIMER = 0
-        obj_flow_controller_game_scene["state"] = "main"
         current_update_block = update_game_scene_training_main
         obj_char_game_scene_char_LP["state"] = "5_stand_idle"
         obj_char_game_scene_char_RP["state"] = "5_stand_idle"
@@ -118,7 +115,6 @@ function update_game_scene_training_annoucer_ease_in()
     elseif SCENE_TIMER == 180 then
         SCENE_TIMER = 0
         -- 改变char_LP RP的状态到可运行
-        obj_flow_controller_game_scene["state"] = "main"
         current_update_block = update_game_scene_training_main
         obj_char_game_scene_char_LP["state"] = "5_stand_idle"
         obj_char_game_scene_char_RP["state"] = "5_stand_idle"
@@ -172,7 +168,6 @@ function update_game_scene_training_main()
     -- debug_delete_after 
     if DEBUG_TRAINNING_SPAWN_STATE == "Pressing" and DEBUG_TRAINNING_TOGGLE then
         SCENE_TIMER = 5
-        obj_flow_controller_game_scene["state"] = "before_ease_in"
         common_game_scene_init_chars_trainning()
         current_update_block = update_game_scene_training_before_ease_in
         return
@@ -461,7 +456,7 @@ function update_game_scene_training_main()
     update_character_frame_info(obj_char_game_scene_char_LP)
     update_character_frame_info(obj_char_game_scene_char_RP)
 
-    if obj_flow_controller_game_scene["state"] == "wallbreak_transport" then
+    if obj_char_game_scene_char_LP["state"] == "wallbreak_hurt" or obj_char_game_scene_char_RP["state"] == "wallbreak_hurt" then
         current_update_block = update_game_scene_training_wallbreak_transport
     end
 end
@@ -620,13 +615,13 @@ function update_game_scene_application_table()
     update_game_scene_camera_application_table()
 end
 function update_game_scene_application_table_validation()
-    local obj_flow_controller = obj_flow_controller_game_scene
+    local obj_stage_main = obj_stage_game_scene_main
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
-    if #obj_flow_controller["wallstick_stage_obj_active_application_table"] > 1
-    or #obj_flow_controller["wallstick_char_obj_active_application_table"] > 1
-    or (#obj_flow_controller["wallstick_stage_obj_active_application_table"] > 0 and (char_LP["wallstick_on_side"] ~= 0 or char_RP["wallstick_on_side"] ~= 0))
-    or (#obj_flow_controller["wallstick_char_obj_active_application_table"] > 0 and (char_LP["state"] == "wallbreak" or char_RP["state"] == "wallbreak"))
+    if #obj_stage_main["wallstick_stage_obj_active_application_table"] > 1
+    or #obj_stage_main["wallstick_char_obj_active_application_table"] > 1
+    or (#obj_stage_main["wallstick_stage_obj_active_application_table"] > 0 and (char_LP["wallstick_on_side"] ~= 0 or char_RP["wallstick_on_side"] ~= 0))
+    or (#obj_stage_main["wallstick_char_obj_active_application_table"] > 0 and (char_LP["state"] == "wallbreak_hurt" or char_RP["state"] == "wallbreak_hurt"))
     then
         print("Did you code a guarantee projectile that active after the owner was hurt?")
         print("or you made a extremely fucking wired hurt animation that could cause both characters to be in wallstick state at the same frame?")
@@ -638,78 +633,78 @@ function update_game_scene_application_table_validation()
     end
 end
 function update_game_scene_wallbreak_application_table()
-    local obj_flow_controller = obj_flow_controller_game_scene
+    local obj_stage_main = obj_stage_game_scene_main
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
-    if #obj_flow_controller["wallstick_char_obj_active_application_table"] == 0 then
+    if #obj_stage_main["wallstick_char_obj_active_application_table"] == 0 then
         char_LP["collision_move_available_cache"] = char_LP["collision_move_available"]
         char_RP["collision_move_available_cache"] = char_RP["collision_move_available"]
         return
     end
-    if #obj_flow_controller["wallstick_char_obj_active_application_table"] == 1 then
+    if #obj_stage_main["wallstick_char_obj_active_application_table"] == 1 then
         char_LP["collision_move_available_cache"] = char_LP["collision_move_available"]
         char_RP["collision_move_available_cache"] = char_RP["collision_move_available"]
-        obj_flow_controller["wallstick_char_obj_active_application_table"][1]()
-        obj_flow_controller["wallstick_char_obj_active_application_table"] = {}
-    elseif #obj_flow_controller["wallstick_char_obj_active_application_table"] > 1 then
-        obj_flow_controller["wallstick_char_obj_active_application_table"] = {}
+        obj_stage_main["wallstick_char_obj_active_application_table"][1]()
+        obj_stage_main["wallstick_char_obj_active_application_table"] = {}
+    elseif #obj_stage_main["wallstick_char_obj_active_application_table"] > 1 then
+        obj_stage_main["wallstick_char_obj_active_application_table"] = {}
         print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000001")
     end
 end
 function update_game_scene_wallstick_stage_obj_application_table()
-    local obj_flow_controller = obj_flow_controller_game_scene
+    local obj_stage_main = obj_stage_game_scene_main
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
-    if #obj_flow_controller["wallstick_stage_obj_active_application_table"] == 0 then
+    if #obj_stage_main["wallstick_stage_obj_active_application_table"] == 0 then
         return
     end
-    if #obj_flow_controller["wallstick_stage_obj_active_application_table"] == 1 then
-        if obj_flow_controller["state"] == "wallbreak_transport" then
+    if #obj_stage_main["wallstick_stage_obj_active_application_table"] == 1 then
+        if obj_stage_main["state"] == "wallbreak_transport" then
             print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000002")
             return
         end
-        obj_flow_controller["wallstick_stage_obj_active_application_table"][1]()
-        obj_flow_controller["wallstick_stage_obj_active_application_table"] = {}
-    elseif #obj_flow_controller["wallstick_stage_obj_active_application_table"] > 1 then
-        obj_flow_controller["wallstick_stage_obj_active_application_table"] = {}
+        obj_stage_main["wallstick_stage_obj_active_application_table"][1]()
+        obj_stage_main["wallstick_stage_obj_active_application_table"] = {}
+    elseif #obj_stage_main["wallstick_stage_obj_active_application_table"] > 1 then
+        obj_stage_main["wallstick_stage_obj_active_application_table"] = {}
         print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000003")
     end
 end
 function update_game_scene_wallstick_char_obj_application_table()
-    local obj_flow_controller = obj_flow_controller_game_scene
+    local obj_stage_main = obj_stage_game_scene_main
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
-    if #obj_flow_controller["wallstick_char_obj_active_application_table"] == 0 then
+    if #obj_stage_main["wallstick_char_obj_active_application_table"] == 0 then
         char_LP["collision_move_available_cache"] = char_LP["collision_move_available"]
         char_RP["collision_move_available_cache"] = char_RP["collision_move_available"]
         return
     end
-    if #obj_flow_controller["wallstick_char_obj_active_application_table"] == 1 then
-        if obj_flow_controller["state"] == "wallbreak_transport" then
+    if #obj_stage_main["wallstick_char_obj_active_application_table"] == 1 then
+        if obj_stage_main["state"] == "wallbreak_transport" then
             print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000004")
             return
         end
         char_LP["collision_move_available_cache"] = char_LP["collision_move_available"]
         char_RP["collision_move_available_cache"] = char_RP["collision_move_available"]
-        obj_flow_controller["wallstick_char_obj_active_application_table"][1]()
-        obj_flow_controller["wallstick_char_obj_active_application_table"] = {}
-    elseif #obj_flow_controller["wallstick_char_obj_active_application_table"] > 1 then
-        obj_flow_controller["wallstick_char_obj_active_application_table"] = {}
+        obj_stage_main["wallstick_char_obj_active_application_table"][1]()
+        obj_stage_main["wallstick_char_obj_active_application_table"] = {}
+    elseif #obj_stage_main["wallstick_char_obj_active_application_table"] > 1 then
+        obj_stage_main["wallstick_char_obj_active_application_table"] = {}
         print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000005")
     end
 end
 function update_game_scene_camera_application_table()
-    local obj_flow_controller = obj_flow_controller_game_scene
+    local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
-    if #obj_flow_controller["camera_active_application_table"] == 0 then
+    if #obj_stage_main["camera_active_application_table"] == 0 then
         return
     end
-    if #obj_flow_controller["camera_active_application_table"] == 1 then
-        obj_flow_controller["camera_active_application_table"][1]()
-        obj_flow_controller["camera_active_application_table"] = {}
-    elseif #obj_flow_controller["camera_active_application_table"] > 1 then
+    if #obj_stage_main["camera_active_application_table"] == 1 then
+        obj_stage_main["camera_active_application_table"][1]()
+        obj_stage_main["camera_active_application_table"] = {}
+    elseif #obj_stage_main["camera_active_application_table"] > 1 then
         -- 更新状态
-        obj_flow_controller["camera_active_application_table"] = {}
+        obj_stage_main["camera_active_application_table"] = {}
     end
 end
 
@@ -721,7 +716,7 @@ function update_game_scene_test_and_apply_wallstick()
     update_game_scene_test_and_apply_wallstick_sub(char_RP,char_LP)
 end
 function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_side)
-    local obj_flow_controller = obj_flow_controller_game_scene
+    local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local obj_wallstick = obj_stage_game_scene_wallstick
     local wallbreak_spwan_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["wallstick_spawn_anchor_pos"]
@@ -758,8 +753,8 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
         -- wallstick
         if obj_char["wallbreak_gauge"][1] >= obj_char["wallbreak_gauge"][2] then
             -- camera_shake
-            obj_flow_controller["camera_active_application_table"] = {}
-            table.insert(obj_flow_controller["camera_active_application_table"],
+            obj_stage_main["camera_active_application_table"] = {}
+            table.insert(obj_stage_main["camera_active_application_table"],
                 function()
                     anim_stage_point_linear_game_scene_camera_shake_x,
                     anim_stage_point_linear_game_scene_camera_shake_y 
@@ -770,7 +765,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
                 end
             )
             -- onwall_hit_effect_stage_obj
-            table.insert(obj_flow_controller["wallstick_stage_obj_active_application_table"],
+            table.insert(obj_stage_main["wallstick_stage_obj_active_application_table"],
                 function()
                     obj_wallstick[4] = 1
                     obj_wallstick["sprite_sheet"] = 1
@@ -780,7 +775,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
             )
         -- not_engage_wallstick_but_shows_onwall_hit_effect_stage_obj
         else
-            table.insert(obj_flow_controller["wallstick_stage_obj_active_application_table"],
+            table.insert(obj_stage_main["wallstick_stage_obj_active_application_table"],
                 function()
                     obj_wallstick[4] = 1
                     obj_wallstick["sprite_sheet"] = 0
@@ -794,7 +789,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
     if obj_char["wallstickable"] and collision_side ~= 0 
     and obj_char["wallbreak_gauge"][1] >= obj_char["wallbreak_gauge"][2]
     then
-        table.insert(obj_flow_controller["wallstick_char_obj_active_application_table"],
+        table.insert(obj_stage_main["wallstick_char_obj_active_application_table"],
             function()
                 if obj_char["height_state"] == "air" then
                     obj_char["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(obj_char)

@@ -11,9 +11,9 @@ config选项中自定义要不要79空投
 
 
 -- 碎墙
-    obj_flow_controller_game_scene["active_camera_application_table"] = {}
-    obj_flow_controller_game_scene["active_wallbreak_application_table"] = {}
-    obj_flow_controller_game_scene["active_wallstick_application_table"] = {}
+    obj_stage_game_scene_main["active_camera_application_table"] = {}
+    obj_stage_game_scene_main["active_wallbreak_application_table"] = {}
+    obj_stage_game_scene_main["active_wallstick_application_table"] = {}
     应用这三个
     将camera的application table 转移到main
     将wallstick的应用方式修改为application table

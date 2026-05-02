@@ -6,14 +6,6 @@ function load_game_scene_common_obj()
     DRAW_CHARACTER_CANVAS = love.graphics.newCanvas(width,height)
     DRAW_SHADOW_CANVAS = love.graphics.newCanvas(width,height)
 
-    obj_flow_controller_game_scene = {}
-    obj_flow_controller_game_scene["f"] = 0
-    obj_flow_controller_game_scene["state"] = nil
-    obj_flow_controller_game_scene["camera_active_application_table"] = {}
-    obj_flow_controller_game_scene["wallstick_char_obj_active_application_table"] = {}
-    obj_flow_controller_game_scene["wallstick_stage_obj_active_application_table"] = {}
-    obj_flow_controller_game_scene["wallbreak_active_application_table"] = {}
-
     load_game_scene_obj_char_LP()
     load_game_scene_obj_char_RP()
     load_game_scene_obj_stage()
@@ -215,7 +207,6 @@ function unload_game_scene_all()
 end
 function preset_game_scene_training()
     obj_UI_game_scene_black_solid[4] = 1
-    obj_flow_controller_game_scene["state"] = "before_ease_in"
     init_character_anim_with(obj_char_game_scene_char_LP,load_game_scene_anim_char_TRM_5_stand_idle(obj_char_game_scene_char_LP))
     init_character_anim_with(obj_char_game_scene_char_RP,load_game_scene_anim_char_TRM_5_stand_idle(obj_char_game_scene_char_RP))
 end

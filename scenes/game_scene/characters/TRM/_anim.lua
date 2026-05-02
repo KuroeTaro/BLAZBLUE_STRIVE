@@ -36,8 +36,8 @@ function load_game_scene_anim_point_linear_TRM_hurt_side_wallbreak(hurt_side_obj
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[55] = {wallstick_on_side*2850.0,104}
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[104] = {wallstick_on_side*2850.0,105}
 
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[0] = {hurt_side_obj_char["y"],104}
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[104] = {hurt_side_obj_char["y"],105}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[0] = {hurt_side_obj_char["y"],104}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[104] = {hurt_side_obj_char["y"],105}
 
     anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[0] = 0
     anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[4] = 1
@@ -61,23 +61,23 @@ function load_game_scene_anim_point_linear_TRM_hurt_side_wallbreak(hurt_side_obj
         anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[140] = {wallstick_on_side*680.0,150}
         anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[150] = {wallstick_on_side*680.0,150}
 
-        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[105] = {-90.0,110}
-        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[110] = {-79.2,116}
-        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[116] = {-26.0,119}
-        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[119] = {29.3,121}
-        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[121] = {86.3,123}
-        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[123] = {175.4,124}
-        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[124] = {247.7,125}
-        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[125] = {365.0,126}
-        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[126] = {358.5,129}
-        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[129] = {309.4,130}
-        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[130] = {303.0,131}
-        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[131] = {309.4,134}
-        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[134] = {358.5,135}
-        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[135] = {365.0,138}
-        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[138] = {345.0,140}
-        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[140] = {365.0,150}
-        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[150] = {365.0,150}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[105] = {-90.0,110}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[110] = {-79.2,116}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[116] = {-26.0,119}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[119] = {29.3,121}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[121] = {86.3,123}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[123] = {175.4,124}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[124] = {247.7,125}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[125] = {365.0,126}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[126] = {358.5,129}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[129] = {309.4,130}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[130] = {303.0,131}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[131] = {309.4,134}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[134] = {358.5,135}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[135] = {365.0,138}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[138] = {345.0,140}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[140] = {365.0,150}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[150] = {365.0,150}
 
         anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[105] = 5
         anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[110] = 6
@@ -1965,7 +1965,7 @@ end
             -- game_speed_abnormal_realtime_countdown
 function load_game_scene_anim_char_TRM_burst_overdrive(obj_char,other_side_countdown)
     local res = {}
-    local obj_flow_controller = obj_flow_controller_game_scene
+    local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     -- 更新hitbox table 有一个全屏的红框
@@ -2044,7 +2044,7 @@ function load_game_scene_anim_char_TRM_burst_overdrive(obj_char,other_side_count
         common_game_scene_overdrive_load_camera_shake_anim(obj_char)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
         -- camera_animation_application
-        table.insert(obj_flow_controller["camera_active_application_table"],
+        table.insert(obj_stage_main["camera_active_application_table"],
             function()
                 anim_stage_point_linear_game_scene_camera_enclosing = obj_char["camera_enclosing_anim"]
                 anim_stage_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
@@ -5220,7 +5220,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_in(obj_char
 end
 function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(obj_char)
     local res = {}
-    local obj_flow_controller = obj_flow_controller_game_scene
+    local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     res["prop_f"] = "shot_sys_f"
     res["anim_length"] = 18
@@ -5236,7 +5236,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(obj_char)
         obj_char["shot_sys_idle_cancel"] = false
         character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
         -- camera_animation_application
-        table.insert(obj_flow_controller["camera_active_application_table"],
+        table.insert(obj_stage_main["camera_active_application_table"],
             function()
                 -- cameara_animation_load
                 common_game_scene_hit_load_camera_shake_anim(obj_char["shot_sys_camera_shake_table"],0.1)
@@ -6538,7 +6538,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
     local gravity = 2.5
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
-    local obj_flow_controller = obj_flow_controller_game_scene
+    local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local obj_char_other_side = common_game_scene_change_character(side)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
@@ -6652,7 +6652,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
             (obj_char["y"]+obj_char_other_side["y"])/8 - obj_camera["3d_pos_y_target"],
             120
         }
-        table.insert(obj_flow_controller["camera_active_application_table"],
+        table.insert(obj_stage_main["camera_active_application_table"],
             function()
                 anim_stage_point_linear_game_scene_camera_enclosing = obj_char["camera_enclosing_anim"]
                 anim_stage_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
@@ -9099,7 +9099,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
     local gravity = math.max(math.abs(obj_char["y"]-125)/200,1)
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
-    local obj_flow_controller = obj_flow_controller_game_scene
+    local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local obj_char_other_side = common_game_scene_change_character(side)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
@@ -9193,7 +9193,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
             obj_char[5] = -obj_char[5]
         end
         -- camera_animation_application
-        table.insert(obj_flow_controller["camera_active_application_table"],
+        table.insert(obj_stage_main["camera_active_application_table"],
             function()
                 anim_stage_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
                 anim_stage_point_linear_game_scene_camera_shake_y = obj_char["camera_y_shake_anim"]
