@@ -204,6 +204,12 @@ function load_game_scene_anim_stage()
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["loop"] = false
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["fix_type"] = true
 
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state = {}
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state["prop"] = "sprite_sheet_state"
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state["length"] = 150
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state["loop"] = false
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state["fix_type"] = true
+
     -- wallbreak_after_debris_opacity_anim after_debris 105f-150f
     anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity = {}
     anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity[0] = {0,104}

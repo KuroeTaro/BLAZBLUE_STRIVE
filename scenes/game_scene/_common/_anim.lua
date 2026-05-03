@@ -2357,7 +2357,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         -- state
         obj_char["y"] = 165
         obj_char["sprite_sheet_state"] = sprite_sheet_state
-        obj_char["height_state"] = "OTG" -- stand crouch air OTG
+        obj_char["height_state"] = "air" -- stand crouch air OTG
         obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
 

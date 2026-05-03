@@ -42,16 +42,20 @@ end
 function common_game_scene_apply_wallbreak_start_init(hurt_side_obj_char,hit_side_obj_char)
     local adv = hurt_side_obj_char["wallbreak_adv"]
     local wallstick_on_side = hurt_side_obj_char["wallstick_on_side"]
+    local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side_obj_char["player_side"])
     
     -- character_init
     hurt_side_obj_char["state"] = "wallbreak_hurt"
     hit_side_obj_char["state"] = "wallbreak_hit"
     if adv then
-        hurt_side_obj_char["sprite_sheet_state"] = "wallbreak_hurt_adv"
+        hurt_side_obj_char["sprite_sheet_state"] = "0_wallbreak_hurt_adv"
+        hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[hurt_side_obj_char["sprite_sheet_state"]]
     else
-        hurt_side_obj_char["sprite_sheet_state"] = "wallbreak_hurt_non_adv"
+        hurt_side_obj_char["sprite_sheet_state"] = "0_wallbreak_hurt_non_adv"
+        hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[hurt_side_obj_char["sprite_sheet_state"]]
     end
-    hit_side_obj_char["sprite_sheet_state"] = "wallbreak_hit"
+    hurt_side_obj_char["y"] = math.min(165,hurt_side_obj_char["y"])
+    hurt_side_obj_char["pushbox"] = {0,-100,120,200}
     load_game_scene_wallbreak_start_init_LP()
     load_game_scene_wallbreak_start_init_RP()
     -- stage_init
@@ -83,6 +87,7 @@ function common_game_scene_apply_wallbreak_start_init(hurt_side_obj_char,hit_sid
     init_point_linear_anim_with(hit_side_obj_char,anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x)
     init_point_linear_anim_with(hit_side_obj_char,anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y)
     init_frame_anim_with(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_frame)
+    init_frame_anim_with(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state)
     init_point_linear_anim_with(obj_stage_game_scene_wallbreak_after_debris,anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity)
     init_frame_anim_with(obj_stage_game_scene_wallbreak_after_debris,anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity)
     init_frame_anim_with(obj_stage_game_scene_wallbreak_dynamic,anim_stage_frame_game_scene_wallbreak_dynamic_opacity)

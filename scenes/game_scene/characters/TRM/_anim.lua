@@ -26,6 +26,10 @@ function load_game_scene_anim_point_linear_TRM_hit_side_wallbreak(hit_side_obj_c
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[144] = 6
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[148] = 7
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[150] = 7
+
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state[0] = hit_side_obj_char["sprite_sheet_state"]
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state[105] = "0_wallbreak_hit"
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[150] = 7
 end
 function load_game_scene_anim_point_linear_TRM_hurt_side_wallbreak(hurt_side_obj_char,wallstick_on_side,adv)
     -- 0f-150f

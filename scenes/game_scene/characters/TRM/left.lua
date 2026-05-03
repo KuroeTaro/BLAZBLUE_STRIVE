@@ -14,6 +14,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["FCT"] = {0,0,0,0,0,0,0,0}
     obj_char_game_scene_char_LP["LCT"] = {0,0,0,0,0,0,0,0}
     obj_char_game_scene_char_LP["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_char_game_scene_char_LP["FCT"]["sprite_sheet_state"] = 0
 
     -- state
     obj_char_game_scene_char_LP["player_side"] = "L"
@@ -946,6 +947,10 @@ function load_game_scene_shader_char_LP()
     -- no shader for now
 end
 function load_game_scene_wallbreak_start_init_LP()
+    local stand_pushbox = {0,-185,120,370}
+    local crouch_pushbox = {0,-142.5,120,285}
+    local air_pushbox = {0,-100,120,200}
+    local OTG_pushbox = {0,-65,120,130}
     -- init_char
     obj_char_game_scene_char_LP["strike_inv"] = false
     obj_char_game_scene_char_LP["strike_inv_countdown"] = 0
@@ -969,8 +974,9 @@ function load_game_scene_wallbreak_start_init_LP()
     obj_char_game_scene_char_LP["hit_hurt_blockstop_countdown"] = 0
     obj_char_game_scene_char_LP["hit_hurt_block_slowdown_countdown"] = 0
 
-    obj_char_game_scene_char_LP["pushbox"] = obj_pushboxs_data_game_scene_char_LP[obj_char_game_scene_char_LP["sprite_sheet_state"]][0]
-    obj_char_game_scene_char_LP["hurtbox"] = obj_hurtboxs_data_game_scene_char_LP[obj_char_game_scene_char_LP["sprite_sheet_state"]][0]
+    obj_char_game_scene_char_LP["pushbox_other_side_char_active"] = false
+    obj_char_game_scene_char_LP["hitbox_table"] = {}
+    obj_char_game_scene_char_LP["hurtbox_table"] = {}
 
     obj_char_game_scene_char_LP["projectile_table"] = {}
     obj_char_game_scene_char_LP["VFX_front_table"] = {}
@@ -1007,8 +1013,6 @@ function load_game_scene_wallbreak_start_init_LP()
     obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_current"] = {0,0}
     obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_target"] = {0,0}
     obj_char_game_scene_char_LP["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_unlocked"
-
-    obj_char_game_scene_char_LP["anchor_pos"] = obj_anchor_data_game_scene_char_LP[obj_char_game_scene_char_LP["sprite_sheet_state"]]
 end
 
 -- 更新和状态机
