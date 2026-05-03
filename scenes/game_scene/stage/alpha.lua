@@ -210,6 +210,12 @@ function load_game_scene_anim_stage()
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state["loop"] = false
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state["fix_type"] = true
 
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos = {}
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["prop"] = "anchor_pos"
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["length"] = 150
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["loop"] = false
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["fix_type"] = true
+
     -- wallbreak_after_debris_opacity_anim after_debris 105f-150f
     anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity = {}
     anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity[0] = {0,104}
@@ -434,6 +440,9 @@ function state_machine_stage_game_scene_camera()
             obj_camera[3] = obj_camera["3d_pos_z"]+obj_camera["enclose_position_offset"][3]*obj_camera["enclose_percentage"]+obj_camera[2]*0.25
         end,
         ["wallbreak"] = function()
+            obj_camera[1] = obj_camera["3d_pos_x"]
+            obj_camera[2] = obj_camera["3d_pos_y"]
+            obj_camera[3] = obj_camera["3d_pos_z"]
         end
     }
     local this_function = switch[obj_camera["state"]]
@@ -604,7 +613,7 @@ function load_game_scene_anim_stage_camera_wallbreak(obj_camera,hurt_side_obj_ch
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[3] = {y_persentage_to_value(61.2/100),6}
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[6] = {y_persentage_to_value(82.5/100),10}
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[10] = {y_persentage_to_value(95.6/100),15}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[15] = {y_persentage_to_value(100.0/100),30}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[15] = {y_persentage_to_value(100.0/100),104}
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[104] = {y_persentage_to_value(100.0/100),105}
 
     local z_dst = -500

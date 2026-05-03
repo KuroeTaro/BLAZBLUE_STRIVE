@@ -456,13 +456,42 @@ function update_game_scene_training_main()
     update_character_frame_info(obj_char_game_scene_char_LP)
     update_character_frame_info(obj_char_game_scene_char_RP)
 
-    if obj_char_game_scene_char_LP["state"] == "wallbreak_hurt" or obj_char_game_scene_char_RP["state"] == "wallbreak_hurt" then
-        current_update_block = update_game_scene_training_wallbreak_transport
+    if obj_stage_game_scene_main["state"] == "wallbreak" then
+        current_update_block = update_game_scene_training_wallbreak
     end
 end
-function update_game_scene_training_wallbreak_transport()
+function update_game_scene_training_wallbreak()
+    local obj_stage_main = obj_stage_game_scene_main
+    local hurt_side_obj_char = obj_stage_main["wallbreak_hurt_side_obj_char"]
+    local hit_side_obj_char = obj_stage_main["wallbreak_hit_side_obj_char"]
+    -- animator
+    point_linear_animator(obj_stage_game_scene_camera,anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x)
+    point_linear_animator(obj_stage_game_scene_camera,anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y)
+    point_linear_animator(obj_stage_game_scene_camera,anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z)
+    point_linear_animator(hurt_side_obj_char,anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x)
+    point_linear_animator(hurt_side_obj_char,anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y)
+    frame_animator(hurt_side_obj_char,anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame)
+    point_linear_animator(hit_side_obj_char,anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x)
+    point_linear_animator(hit_side_obj_char,anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y)
+    frame_animator(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_frame)
+    frame_animator(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state)
+    frame_animator(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos)
+    point_linear_animator(obj_stage_game_scene_wallbreak_after_debris,anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity)
+    frame_animator(obj_stage_game_scene_wallbreak_after_debris,anim_stage_frame_game_scene_wallbreak_after_debris_frame)
+    frame_animator(obj_stage_game_scene_wallbreak_dynamic,anim_stage_frame_game_scene_wallbreak_dynamic_opacity)
+    frame_animator(obj_stage_game_scene_wallbreak_dynamic,anim_stage_frame_game_scene_wallbreak_dynamic_frame)
+    point_linear_animator(obj_stage_game_scene_wallbreak_smoke,anim_stage_point_linear_game_scene_wallbreak_smoke_opacity)
+    frame_animator(obj_stage_game_scene_wallbreak_smoke,anim_stage_frame_game_scene_wallbreak_smoke_frame)
+    point_linear_animator(obj_stage_game_scene_wallbreak_glow,anim_stage_point_linear_game_scene_wallbreak_glow_opacity)
+    -- state_machine
+    state_machine_stage_game_scene_camera()
+    -- obj_stage_game_scene_f_update
+    obj_stage_main["f"] = obj_stage_main["f"] + 1
+    if obj_stage_main["f"] >= 150 then
+
+    end
 end
-function update_game_scene_training_5Launcher_hold_transport_entering()
+function update_game_scene_training_5Launcher_hold()
 end
 
 function update_game_scene_local_match_before_ease_in()
@@ -634,20 +663,14 @@ function update_game_scene_application_table_validation()
 end
 function update_game_scene_wallbreak_application_table()
     local obj_stage_main = obj_stage_game_scene_main
-    local char_LP = obj_char_game_scene_char_LP
-    local char_RP = obj_char_game_scene_char_RP
-    if #obj_stage_main["wallstick_char_obj_active_application_table"] == 0 then
-        char_LP["collision_move_available_cache"] = char_LP["collision_move_available"]
-        char_RP["collision_move_available_cache"] = char_RP["collision_move_available"]
+    if #obj_stage_main["wallbreak_active_application_table"] == 0 then
         return
     end
-    if #obj_stage_main["wallstick_char_obj_active_application_table"] == 1 then
-        char_LP["collision_move_available_cache"] = char_LP["collision_move_available"]
-        char_RP["collision_move_available_cache"] = char_RP["collision_move_available"]
-        obj_stage_main["wallstick_char_obj_active_application_table"][1]()
-        obj_stage_main["wallstick_char_obj_active_application_table"] = {}
-    elseif #obj_stage_main["wallstick_char_obj_active_application_table"] > 1 then
-        obj_stage_main["wallstick_char_obj_active_application_table"] = {}
+    if #obj_stage_main["wallbreak_active_application_table"] == 1 then
+        obj_stage_main["wallbreak_active_application_table"][1]()
+        obj_stage_main["wallbreak_active_application_table"] = {}
+    elseif #obj_stage_main["wallbreak_active_application_table"] > 1 then
+        obj_stage_main["wallbreak_active_application_table"] = {}
         print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000001")
     end
 end

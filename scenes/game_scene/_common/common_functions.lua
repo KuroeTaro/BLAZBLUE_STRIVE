@@ -34,7 +34,11 @@ function common_game_scene_test_and_apply_wallbreak(hurt_side_obj_char,hit_side_
     if (hurt_side_obj_char["wallstick_on_side"] ~= 0 and hurt_side_obj_char["wallbreakable_with_wallstick"]) or
     (stage_collision and hurt_side_obj_char["wallbreakable_without_wallstick"]) 
     then
-        common_game_scene_apply_wallbreak_start_init(hurt_side_obj_char,hit_side_obj_char)
+        table.insert(obj_stage_game_scene_main["wallbreak_active_application_table"],
+            function()
+                common_game_scene_apply_wallbreak_start_init(hurt_side_obj_char,hit_side_obj_char)
+            end
+        )
         return true
     end
     return false
@@ -59,6 +63,7 @@ function common_game_scene_apply_wallbreak_start_init(hurt_side_obj_char,hit_sid
     load_game_scene_wallbreak_start_init_LP()
     load_game_scene_wallbreak_start_init_RP()
     -- stage_init
+    obj_stage_game_scene_main["f"] = 0
     obj_stage_game_scene_main["state"] = "wallbreak"
     obj_stage_game_scene_main["wallbreak_hit_side_obj_char"] = hit_side_obj_char
     obj_stage_game_scene_main["wallbreak_hurt_side_obj_char"] = hurt_side_obj_char
@@ -88,13 +93,18 @@ function common_game_scene_apply_wallbreak_start_init(hurt_side_obj_char,hit_sid
     init_point_linear_anim_with(hit_side_obj_char,anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y)
     init_frame_anim_with(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_frame)
     init_frame_anim_with(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state)
+    init_frame_anim_with(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos)
     init_point_linear_anim_with(obj_stage_game_scene_wallbreak_after_debris,anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity)
-    init_frame_anim_with(obj_stage_game_scene_wallbreak_after_debris,anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity)
+    init_frame_anim_with(obj_stage_game_scene_wallbreak_after_debris,anim_stage_frame_game_scene_wallbreak_after_debris_frame)
     init_frame_anim_with(obj_stage_game_scene_wallbreak_dynamic,anim_stage_frame_game_scene_wallbreak_dynamic_opacity)
     init_frame_anim_with(obj_stage_game_scene_wallbreak_dynamic,anim_stage_frame_game_scene_wallbreak_dynamic_frame)
     init_point_linear_anim_with(obj_stage_game_scene_wallbreak_smoke,anim_stage_point_linear_game_scene_wallbreak_smoke_opacity)
     init_frame_anim_with(obj_stage_game_scene_wallbreak_smoke,anim_stage_frame_game_scene_wallbreak_smoke_frame)
     init_point_linear_anim_with(obj_stage_game_scene_wallbreak_glow,anim_stage_point_linear_game_scene_wallbreak_glow_opacity)
+end
+function common_game_scene_apply_wallbreak_end_init(hurt_side_obj_char,hit_side_obj_char)
+    local adv = hurt_side_obj_char["wallbreak_adv"]
+    local wallstick_on_side = hurt_side_obj_char["wallstick_on_side"]
 end
 
 function common_game_scene_get_SFX_table(side)

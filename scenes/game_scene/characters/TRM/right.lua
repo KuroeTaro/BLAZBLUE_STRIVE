@@ -25,6 +25,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["state_cache"] = "none"
     obj_char_game_scene_char_RP["sprite_sheet_state"] = "5_stand_idle"
     obj_char_game_scene_char_RP["height_state"] = "stand" -- stand crouch air OTG
+    obj_char_game_scene_char_RP["air_gatling_state"] = false
     obj_char_game_scene_char_RP["hit_type_state"] = "none" -- none strike throw burst projectile
     obj_char_game_scene_char_RP["hit_guard_type_state"] = "none" -- none all low high
     obj_char_game_scene_char_RP["hurt_state"] = "idle" -- idle unblock punish counter GP parry
@@ -148,9 +149,12 @@ function load_game_scene_obj_char_RP()
         ["hurtstop"] = true,
         ["blockstop"] = true,
         ["wallstick"] = true,
-        ["wallbreak_transporting"] = true,
-        ["5Launcher_hold_transport_entering"] = true,
-        ["5Launcher_hold_transport_exiting"] = true,
+        ["wallbreak_hit"] = true,
+        ["wallbreak_hurt"] = true,
+        ["5Launcher_hold_hit_entering"] = true,
+        ["5Launcher_hold_hit_exiting"] = true,
+        ["5Launcher_hold_hurt_entering"] = true,
+        ["5Launcher_hold_hurt_exiting"] = true,
         ["before_ease_in"] = true
     }
 
@@ -4487,7 +4491,7 @@ function state_gate_game_scene_char_RP_from_jP(input,obj_char)
             return true
         end
     end
-    if obj_char["hit_cancel"] and obj_char["wallbreak_transport_air"] then
+    if obj_char["hit_cancel"] and obj_char["air_gatling_state"] then
         -- _j2K
         if obj_char["y"] < 125 and common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["K"]) then
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(obj_char)
@@ -4549,7 +4553,7 @@ function state_gate_game_scene_char_RP_from_jK(input,obj_char)
             return true
         end
     end
-    if obj_char["hit_cancel"] and obj_char["wallbreak_transport_air"] then
+    if obj_char["hit_cancel"] and obj_char["air_gatling_state"] then
         -- _jP
         if obj_char["y"] < 125 and test_input_sys_press(input["P"]) then
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_jP(obj_char)

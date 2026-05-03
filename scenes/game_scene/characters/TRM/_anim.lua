@@ -1,7 +1,8 @@
 -- frame_and_point_linear_animation
 function load_game_scene_anim_point_linear_TRM_hit_side_wallbreak(hit_side_obj_char,wallstick_on_side)
     -- 105f-150f
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[0] = {hit_side_obj_char["x"],105}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[0] = {hit_side_obj_char["x"],104}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[104] = {hit_side_obj_char["x"],105}
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[105] = {-wallstick_on_side*1500,125}
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[125] = {-wallstick_on_side*630,126}
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[126] = {-wallstick_on_side*586.8,128}
@@ -12,9 +13,10 @@ function load_game_scene_anim_point_linear_TRM_hit_side_wallbreak(hit_side_obj_c
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[145] = {-wallstick_on_side*320,150}
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[150] = {-wallstick_on_side*320,150}
 
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[0] = {hit_side_obj_char["y"],105}
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[105] = {365,45}
-    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[150] = {365,45}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[0] = {hit_side_obj_char["y"],104}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[104] = {hit_side_obj_char["y"],105}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[105] = {365,150}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[150] = {365,150}
 
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[0] = hit_side_obj_char[8]
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[105] = 0
@@ -29,7 +31,11 @@ function load_game_scene_anim_point_linear_TRM_hit_side_wallbreak(hit_side_obj_c
 
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state[0] = hit_side_obj_char["sprite_sheet_state"]
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state[105] = "0_wallbreak_hit"
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[150] = 7
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state[150] = "0_wallbreak_hit"
+
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos[0] = hit_side_obj_char["anchor_pos"]
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos[105] = {280,510}
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos[150] = {280,510}
 end
 function load_game_scene_anim_point_linear_TRM_hurt_side_wallbreak(hurt_side_obj_char,wallstick_on_side,adv)
     -- 0f-150f
