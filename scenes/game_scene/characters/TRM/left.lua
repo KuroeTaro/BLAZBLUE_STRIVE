@@ -358,6 +358,9 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "0_stand_hurt_high",
                 "0_stand_hurt_low",
                 "0_stand_hurt_mid",
+                "0_wallbreak_hit",
+                "0_wallbreak_hurt_adv",
+                "0_wallbreak_hurt_non_adv",
                 "1_2_3_crouch",
                 "1_2_3_crouch_to_stand_idle",
                 "1_2_3_crouch_turn",
@@ -642,6 +645,24 @@ function load_game_scene_box_anchor_data_LP()
     obj_hurtboxs_data_game_scene_char_LP["0_stand_hurt_mid"][4] = {{0,-190,260,380}}
     obj_anchor_data_game_scene_char_LP["0_stand_hurt_mid"] = {205,475}
     obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["smoke_spawn_anchor_pos"]["0_stand_hurt_mid"] = {600,-195}
+
+    obj_pushboxs_data_game_scene_char_LP["0_wallbreak_hit"] = {}
+    obj_pushboxs_data_game_scene_char_LP["0_wallbreak_hit"][0] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_LP["0_wallbreak_hit"] = {}
+    obj_hurtboxs_data_game_scene_char_LP["0_wallbreak_hit"][0] = {}
+    obj_anchor_data_game_scene_char_LP["0_wallbreak_hit"] = {280,510}
+
+    obj_pushboxs_data_game_scene_char_LP["0_wallbreak_hurt_adv"] = {}
+    obj_pushboxs_data_game_scene_char_LP["0_wallbreak_hurt_adv"][0] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_LP["0_wallbreak_hurt_adv"] = {}
+    obj_hurtboxs_data_game_scene_char_LP["0_wallbreak_hurt_adv"][0] = {}
+    obj_anchor_data_game_scene_char_LP["0_wallbreak_hurt_adv"] = {280,275}
+
+    obj_pushboxs_data_game_scene_char_LP["0_wallbreak_hurt_non_adv"] = {}
+    obj_pushboxs_data_game_scene_char_LP["0_wallbreak_hurt_non_adv"][0] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_LP["0_wallbreak_hurt_non_adv"] = {}
+    obj_hurtboxs_data_game_scene_char_LP["0_wallbreak_hurt_non_adv"][0] = {}
+    obj_anchor_data_game_scene_char_LP["0_wallbreak_hurt_non_adv"] = {270,575}
 
     obj_pushboxs_data_game_scene_char_LP["4_stand_block_guard_crash"] = {}
     obj_pushboxs_data_game_scene_char_LP["4_stand_block_guard_crash"][0] = stand_pushbox

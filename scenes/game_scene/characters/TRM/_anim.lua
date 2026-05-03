@@ -92,12 +92,13 @@ function load_game_scene_anim_point_linear_TRM_hurt_side_wallbreak(hurt_side_obj
         anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[115] = 5
         anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[120] = 6
         anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[125] = 7
-        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[126] = 8
-        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[128] = 9
-        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[130] = 10
-        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[136] = 11
-        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[143] = 12
-        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[148] = 13
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[128] = 8
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[130] = 9
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[133] = 10
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[135] = 11
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[138] = 12
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[140] = 13
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[143] = 14
         anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[150] = 14
     else
         anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[105] = {-wallstick_on_side*1220.0,125}
@@ -126,18 +127,21 @@ function load_game_scene_anim_point_linear_TRM_hurt_side_wallbreak(hurt_side_obj
         anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[115] = 5
         anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[120] = 6
         anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[125] = 7
-        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[128] = 8
-        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[130] = 9
-        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[133] = 10
-        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[135] = 11
-        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[138] = 12
-        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[140] = 13
-        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[143] = 14
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[126] = 8
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[128] = 9
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[130] = 10
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[136] = 11
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[143] = 12
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[148] = 13
         anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[150] = 14
     end
-
-    anim_stage_frame_game_scene_char_hurt_side_wallbreak_sprite_sheet[0] = "wallbreak_hurt"
-    anim_stage_frame_game_scene_char_hurt_side_wallbreak_sprite_sheet[150] = "wallbreak_hurt"
+    if adv then
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_sprite_sheet[0] = "wallbreak_hurt_adv"
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_sprite_sheet[150] = "wallbreak_hurt_adv"
+    else
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_sprite_sheet[0] = "wallbreak_hurt"
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_sprite_sheet[150] = "wallbreak_hurt"
+    end
 end
 
 -- character_animation
