@@ -945,6 +945,71 @@ end
 function load_game_scene_shader_char_RP()
     -- no shader for now
 end
+function load_game_scene_wallbreak_start_init_RP()
+    -- init_char
+    obj_char_game_scene_char_RP["strike_inv"] = false
+    obj_char_game_scene_char_RP["strike_inv_countdown"] = 0
+    obj_char_game_scene_char_RP["throw_inv"] = false
+    obj_char_game_scene_char_RP["throw_inv_countdown"] = 0
+    obj_char_game_scene_char_RP["projectile_inv"] = false
+    obj_char_game_scene_char_RP["projectile_inv_countdown"] = 0
+    obj_char_game_scene_char_RP["burst_inv"] = false
+    obj_char_game_scene_char_RP["burst_inv_countdown"] = 0
+
+    obj_char_game_scene_char_RP["velocity"] = {0,0}
+    obj_char_game_scene_char_RP["velocity_debug"] = {0,0}
+    obj_char_game_scene_char_RP["velocity_cache"] = {0,0}
+    obj_char_game_scene_char_RP["gravity"] = 2.5
+    obj_char_game_scene_char_RP["friction"] = 1
+    obj_char_game_scene_char_RP["physics_lock"] = true
+
+    obj_char_game_scene_char_RP["game_speed"] = 1
+    obj_char_game_scene_char_RP["game_speed_subframe"] = 1
+    obj_char_game_scene_char_RP["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
+    obj_char_game_scene_char_RP["hit_hurt_blockstop_countdown"] = 0
+    obj_char_game_scene_char_RP["hit_hurt_block_slowdown_countdown"] = 0
+
+    obj_char_game_scene_char_RP["pushbox"] = obj_pushboxs_data_game_scene_char_RP[obj_char_game_scene_char_RP["sprite_sheet_state"]][0]
+    obj_char_game_scene_char_RP["hurtbox"] = obj_hurtboxs_data_game_scene_char_RP[obj_char_game_scene_char_RP["sprite_sheet_state"]][0]
+
+    obj_char_game_scene_char_RP["projectile_table"] = {}
+    obj_char_game_scene_char_RP["VFX_front_table"] = {}
+    obj_char_game_scene_char_RP["VFX_back_table"] = {}
+    obj_char_game_scene_char_RP["VFX_hit_front_table"] = {}
+    obj_char_game_scene_char_RP["VFX_hit_back_table"] = {}
+
+    obj_char_game_scene_char_RP["shot_sys_state"] = "off"
+    obj_char_game_scene_char_RP["shot_sys_f"] = 0
+
+    obj_char_game_scene_char_RP["shot_sys_oroboros_state"] = "off"
+    obj_char_game_scene_char_RP["shot_sys_oroboros_f"] = 0
+    obj_char_game_scene_char_RP["shot_sys_oroboros_aim_r"] = 0.42
+    obj_char_game_scene_char_RP["shot_sys_oroboros_animation_table"] = {}
+
+    obj_char_game_scene_char_RP["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
+    obj_char_game_scene_char_RP["shot_sys_oroboros_front"]["f_8"] = 0
+    obj_char_game_scene_char_RP["shot_sys_oroboros_front"]["f_4"] = 0
+    obj_char_game_scene_char_RP["shot_sys_oroboros_front"]["sprite_sheet_state"] = "5H_oroboros_loop_front"
+    obj_char_game_scene_char_RP["shot_sys_oroboros_mid"] = {0,0,0,0,1,1,0,0}
+    obj_char_game_scene_char_RP["shot_sys_oroboros_mid"]["f_8"] = 0
+    obj_char_game_scene_char_RP["shot_sys_oroboros_mid"]["sprite_sheet_state"] = "5H_oroboros_loop_mid"
+    obj_char_game_scene_char_RP["shot_sys_oroboros_back"] = {0,0,0,0,1,1,0,0}
+    obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["f_8"] = 0
+    obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["f_4"] = 0
+    obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["sprite_sheet_state"] = "5H_oroboros_loop_back"
+
+    obj_char_game_scene_char_RP["shot_sys_reticle_state"] = "off"
+    obj_char_game_scene_char_RP["shot_sys_reticle"] = {0,0,0,0,1,1,0,0}
+    obj_char_game_scene_char_RP["shot_sys_reticle_f"] = 0
+    obj_char_game_scene_char_RP["shot_sys_reticle_f_4"] = 0
+    obj_char_game_scene_char_RP["shot_sys_reticle_f_8"] = 0
+    obj_char_game_scene_char_RP["shot_sys_reticle_animation_table"] = {}
+    obj_char_game_scene_char_RP["shot_sys_reticle_stage_pos_current"] = {0,0}
+    obj_char_game_scene_char_RP["shot_sys_reticle_stage_pos_target"] = {0,0}
+    obj_char_game_scene_char_RP["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_unlocked"
+
+    obj_char_game_scene_char_RP["anchor_pos"] = obj_anchor_data_game_scene_char_RP[obj_char_game_scene_char_RP["sprite_sheet_state"]]
+end
 
 -- 更新和状态机
 function update_game_scene_char_RP()

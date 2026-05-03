@@ -659,7 +659,7 @@ function update_game_scene_wallstick_stage_obj_application_table()
         return
     end
     if #obj_stage_main["wallstick_stage_obj_active_application_table"] == 1 then
-        if obj_stage_main["state"] == "wallbreak_transport" then
+        if obj_stage_main["state"] == "wallbreak" then
             print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000002")
             return
         end
@@ -680,7 +680,7 @@ function update_game_scene_wallstick_char_obj_application_table()
         return
     end
     if #obj_stage_main["wallstick_char_obj_active_application_table"] == 1 then
-        if obj_stage_main["state"] == "wallbreak_transport" then
+        if obj_stage_main["state"] == "wallbreak" then
             print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000004")
             return
         end
