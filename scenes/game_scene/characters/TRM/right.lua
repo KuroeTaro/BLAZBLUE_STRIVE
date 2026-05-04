@@ -67,7 +67,8 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["wallstickable"] = false
     obj_char_game_scene_char_RP["wallbreakable_with_wallstick"] = false
     obj_char_game_scene_char_RP["wallbreakable_without_wallstick"] = false
-    obj_char_game_scene_char_RP["wallbreak_adv"] = false
+    obj_char_game_scene_char_RP["wallbreak_hurt_adv"] = false
+    obj_char_game_scene_char_RP["wallbreak_hit_adv"] = false
     
     obj_char_game_scene_char_RP["stand_hurt_animation"] = nil
     obj_char_game_scene_char_RP["stand_block_animation"] = nil
@@ -297,6 +298,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["brightness"] = 0
     obj_char_game_scene_char_RP["brightness_const"] = 0
     obj_char_game_scene_char_RP["brightness_overdrive_const"] = 0
+    obj_char_game_scene_char_RP["shadow_opacity"] = 0.5
     obj_char_game_scene_char_RP["hurtstop_wiggle_x"] = 0
     obj_char_game_scene_char_RP["hurtstop_wiggle_y"] = 0
     obj_char_game_scene_char_RP["hurtstop_wiggle_current_x"] = 0
@@ -982,9 +984,9 @@ function load_game_scene_wallbreak_start_init_RP()
     obj_char_game_scene_char_RP["hitbox_table"] = {}
     obj_char_game_scene_char_RP["hurtbox_table"] = {}
 
-    obj_char_game_scene_char_RP["projectile_table"] = {}
-    obj_char_game_scene_char_RP["VFX_front_table"] = {}
-    obj_char_game_scene_char_RP["VFX_back_table"] = {}
+    -- obj_char_game_scene_char_RP["projectile_table"] = {}
+    -- obj_char_game_scene_char_RP["VFX_front_table"] = {}
+    -- obj_char_game_scene_char_RP["VFX_back_table"] = {}
     obj_char_game_scene_char_RP["VFX_hit_front_table"] = {}
     obj_char_game_scene_char_RP["VFX_hit_back_table"] = {}
 
@@ -4906,7 +4908,7 @@ function draw_game_scene_char_RP()
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
 end
 function draw_game_scene_char_RP_shadow()
-    local obj = obj_char_game_scene_char_RP
+    local obj_char = obj_char_game_scene_char_RP
     local obj_camera = obj_stage_game_scene_camera
     local light_obj = obj_stage_game_scene_glow_with_linear_fade_alpha
 
@@ -4950,7 +4952,7 @@ function draw_game_scene_char_RP_shadow()
     love.graphics.setCanvas()
 
     -- local opacity = math.max(0,(obj["y"] - 345)/20)*0.5
-    love.graphics.setColor(0,0,0,0.5)
+    love.graphics.setColor(0,0,0,obj_char["shadow_opacity"])
     love.graphics.draw(DRAW_SHADOW_CANVAS)
     love.graphics.setColor(1,1,1,1)
 end

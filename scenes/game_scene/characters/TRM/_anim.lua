@@ -63,8 +63,8 @@ function load_game_scene_anim_point_linear_TRM_hurt_side_wallbreak(hurt_side_obj
     anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[39] = 1
     anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[43] = 3
     anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[47] = 4
-    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[52] = 5
-    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[104] = 5
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[52] = 6
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[104] = 6
     if adv then
         anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[105] = {-wallstick_on_side*1200.0,125}
         anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[125] = {wallstick_on_side*320.0,126}
@@ -2317,6 +2317,9 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
+
+        obj_char["wallbreak_hit_adv"] = false
+
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv0(
             obj_char,
             "0_stand_hurt_low",
@@ -2567,6 +2570,9 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
+
+        obj_char["wallbreak_hit_adv"] = false
+
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
             obj_char,
             "0_stand_hurt_mid",
@@ -2839,6 +2845,9 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
+
+        obj_char["wallbreak_hit_adv"] = false
+
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv0(
             obj_char,
             "0_stand_hurt_high",
@@ -3088,6 +3097,9 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
+
+        obj_char["wallbreak_hit_adv"] = false
+
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv1(
             obj_char,
             "0_stand_hurt_high",
@@ -3373,6 +3385,9 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
+
+        obj_char["wallbreak_hit_adv"] = false
+
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
             obj_char,
             "0_stand_hurt_low",
@@ -3673,6 +3688,9 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
+
+        obj_char["wallbreak_hit_adv"] = false
+
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv1(
             obj_char,
             "0_stand_hurt_high",
@@ -3960,6 +3978,9 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
+
+        obj_char["wallbreak_hit_adv"] = false
+        
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
             obj_char,
             "0_stand_hurt_high",
@@ -4262,6 +4283,9 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
+
+        obj_char["wallbreak_hit_adv"] = false
+
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_launched_high(
             obj_char,
             "0_general_hurt_launched_high",
@@ -4603,6 +4627,9 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
+
+        obj_char["wallbreak_hit_adv"] = false
+
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv3(
             obj_char,
             "0_stand_hurt_high",
@@ -4862,6 +4889,9 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
+
+        obj_char["wallbreak_hit_adv"] = false
+
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
             obj_char,
             "0_stand_hurt_high",
@@ -5865,6 +5895,9 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
+
+        obj_char["wallbreak_hit_adv"] = false
+
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_launched_low(
             obj_char,
             "0_general_hurt_launched_low",
@@ -6196,6 +6229,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
+
+        obj_char["wallbreak_hit_adv"] = false
 
         obj_char["throw_success_animation"] = load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         obj_char["throw_hurt_success_animation"] = load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
@@ -6583,6 +6618,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
 
+        obj_char["wallbreak_hit_adv"] = false
+        
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
 
@@ -6898,6 +6935,9 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
+
+        obj_char["wallbreak_hit_adv"] = false
+
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
             obj_char,
             "0_general_hurt_semi_launched_mid",
@@ -7198,6 +7238,9 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
+
+        obj_char["wallbreak_hit_adv"] = false
+
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
             obj_char,
             "0_general_hurt_semi_launched_mid",
@@ -7491,6 +7534,9 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
+
+        obj_char["wallbreak_hit_adv"] = false
+
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv0(
             obj_char,
             "0_stand_hurt_high",
@@ -7746,6 +7792,9 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
+        
+        obj_char["wallbreak_hit_adv"] = false
+
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv1(
             obj_char,
             "0_stand_hurt_high",
@@ -7993,6 +8042,9 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
+        
+        obj_char["wallbreak_hit_adv"] = false
+
         -- obj_char["stand_hurt_animation"] = load_game_scene_anim_char_TRM_j2K_hurt(obj_char)
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
             obj_char,
@@ -8261,6 +8313,9 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
+
+        obj_char["wallbreak_hit_adv"] = false
+
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
             obj_char,
             "0_stand_hurt_high",
@@ -8521,6 +8576,9 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
+
+        obj_char["wallbreak_hit_adv"] = false
+
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
             obj_char,
             "0_stand_hurt_high",
@@ -8775,6 +8833,8 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
 
+        obj_char["wallbreak_hit_adv"] = false
+
         obj_char["throw_success_animation"] = load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         obj_char["throw_hurt_success_animation"] = load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
         obj_char["throw_hurt_PRC_animation"] = load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
@@ -8960,7 +9020,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["wallstickable"] = false
         obj_char_other_side["wallbreakable_with_wallstick"] = false
         obj_char_other_side["wallbreakable_without_wallstick"] = false
-        obj_char_other_side["wallbreak_adv"] = false
+        obj_char_other_side["wallbreak_hurt_adv"] = false
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -9143,6 +9203,8 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         obj_char["block_heat_gain"] = 2.0
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
+
+        obj_char["wallbreak_hit_adv"] = false
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false

@@ -27,84 +27,26 @@ function common_game_scene_toggle_ease_in(toggle_value)
     obj_annoucer_game_scene_lets_dance[4] = toggle_value
 end
 
-function common_game_scene_test_and_apply_wallbreak(hurt_side_obj_char,hit_side_obj_char)
+function common_game_scene_test_and_apply_wallbreak(hurt_side_obj_char,hit_side_obj_char,projectile)
     local stage_collision = false
     
     stage_collision = hurt_side_obj_char["collision_move_available"][1] == 0 or hurt_side_obj_char["collision_move_available"][2] == 0
     if (hurt_side_obj_char["wallstick_on_side"] ~= 0 and hurt_side_obj_char["wallbreakable_with_wallstick"]) or
     (stage_collision and hurt_side_obj_char["wallbreakable_without_wallstick"]) 
     then
+        if projectile ~= nil then
+            hurt_side_obj_char["wallbreak_hurt_adv"] = projectile["wallbreak_hit_adv"]
+        else
+            hurt_side_obj_char["wallbreak_hurt_adv"] = hit_side_obj_char["wallbreak_hit_adv"]
+        end
         table.insert(obj_stage_game_scene_main["wallbreak_active_application_table"],
             function()
-                common_game_scene_apply_wallbreak_start_init(hurt_side_obj_char,hit_side_obj_char)
+                load_game_scene_apply_wallbreak_start_init(hurt_side_obj_char,hit_side_obj_char)
             end
         )
         return true
     end
     return false
-end
-function common_game_scene_apply_wallbreak_start_init(hurt_side_obj_char,hit_side_obj_char)
-    local adv = hurt_side_obj_char["wallbreak_adv"]
-    local wallstick_on_side = hurt_side_obj_char["wallstick_on_side"]
-    local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side_obj_char["player_side"])
-    
-    -- character_init
-    hurt_side_obj_char["state"] = "wallbreak_hurt"
-    hit_side_obj_char["state"] = "wallbreak_hit"
-    if adv then
-        hurt_side_obj_char["sprite_sheet_state"] = "0_wallbreak_hurt_adv"
-        hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[hurt_side_obj_char["sprite_sheet_state"]]
-    else
-        hurt_side_obj_char["sprite_sheet_state"] = "0_wallbreak_hurt_non_adv"
-        hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[hurt_side_obj_char["sprite_sheet_state"]]
-    end
-    hurt_side_obj_char["y"] = math.min(165,hurt_side_obj_char["y"])
-    hurt_side_obj_char["pushbox"] = {0,-100,120,200}
-    load_game_scene_wallbreak_start_init_LP()
-    load_game_scene_wallbreak_start_init_RP()
-    -- stage_init
-    obj_stage_game_scene_main["f"] = 0
-    obj_stage_game_scene_main["state"] = "wallbreak"
-    obj_stage_game_scene_main["wallbreak_hit_side_obj_char"] = hit_side_obj_char
-    obj_stage_game_scene_main["wallbreak_hurt_side_obj_char"] = hurt_side_obj_char
-    obj_stage_game_scene_camera["state"] = "wallbreak"
-    obj_stage_game_scene_wallstick[4] = 0
-    obj_stage_game_scene_wallstick["state"] = "off"
-    obj_stage_game_scene_wallbreak_after_debris[1] = -1590*wallstick_on_side
-    obj_stage_game_scene_wallbreak_after_debris[5] = wallstick_on_side
-    obj_stage_game_scene_wallbreak_dynamic[1] = 1850*wallstick_on_side
-    obj_stage_game_scene_wallbreak_dynamic[5] = wallstick_on_side
-    obj_stage_game_scene_wallbreak_smoke[1] = 800-1*wallstick_on_side
-    obj_stage_game_scene_wallbreak_smoke[5] = wallstick_on_side
-    obj_stage_game_scene_wallbreak_glow[1] = 1860*wallstick_on_side
-    obj_stage_game_scene_wallbreak_glow[5] = wallstick_on_side
-    -- update_animation
-    load_game_scene_anim_stage_camera_wallbreak(obj_stage_game_scene_camera,hurt_side_obj_char,adv)
-    hurt_side_obj_char["wallbreak_hurt_side_animation_load_function"](hurt_side_obj_char,wallstick_on_side,adv)
-    hit_side_obj_char["wallbreak_hit_side_animation_load_function"](hit_side_obj_char,wallstick_on_side)
-    -- init_animation
-    init_point_linear_anim_with(obj_stage_game_scene_camera,anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x)
-    init_point_linear_anim_with(obj_stage_game_scene_camera,anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y)
-    init_point_linear_anim_with(obj_stage_game_scene_camera,anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z)
-    init_point_linear_anim_with(hurt_side_obj_char,anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x)
-    init_point_linear_anim_with(hurt_side_obj_char,anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y)
-    init_frame_anim_with(hurt_side_obj_char,anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame)
-    init_point_linear_anim_with(hit_side_obj_char,anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x)
-    init_point_linear_anim_with(hit_side_obj_char,anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y)
-    init_frame_anim_with(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_frame)
-    init_frame_anim_with(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state)
-    init_frame_anim_with(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos)
-    init_point_linear_anim_with(obj_stage_game_scene_wallbreak_after_debris,anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity)
-    init_frame_anim_with(obj_stage_game_scene_wallbreak_after_debris,anim_stage_frame_game_scene_wallbreak_after_debris_frame)
-    init_frame_anim_with(obj_stage_game_scene_wallbreak_dynamic,anim_stage_frame_game_scene_wallbreak_dynamic_opacity)
-    init_frame_anim_with(obj_stage_game_scene_wallbreak_dynamic,anim_stage_frame_game_scene_wallbreak_dynamic_frame)
-    init_point_linear_anim_with(obj_stage_game_scene_wallbreak_smoke,anim_stage_point_linear_game_scene_wallbreak_smoke_opacity)
-    init_frame_anim_with(obj_stage_game_scene_wallbreak_smoke,anim_stage_frame_game_scene_wallbreak_smoke_frame)
-    init_point_linear_anim_with(obj_stage_game_scene_wallbreak_glow,anim_stage_point_linear_game_scene_wallbreak_glow_opacity)
-end
-function common_game_scene_apply_wallbreak_end_init(hurt_side_obj_char,hit_side_obj_char)
-    local adv = hurt_side_obj_char["wallbreak_adv"]
-    local wallstick_on_side = hurt_side_obj_char["wallstick_on_side"]
 end
 
 function common_game_scene_get_SFX_table(side)
@@ -378,7 +320,7 @@ function common_game_scene_strike_hurt_function(obj_char)
         obj_char[5] = -obj_char[5]
     end
     -- wallbreak_test_and_apply
-    if common_game_scene_test_and_apply_wallbreak(obj_char,hit_side_obj_char) then
+    if common_game_scene_test_and_apply_wallbreak(obj_char,hit_side_obj_char,nil) then
         return
     end
     -- block_test
@@ -878,7 +820,7 @@ function common_game_scene_hit_load_camera_shake_anim(obj_char,multiplyer)
     anim["fix_type"] = false
     obj_char["camera_y_shake_anim"] = anim
 end
-function common_game_scene_wallbreak_load_camera_shake_anim(multiplyer)
+function common_game_scene_wallstick_load_camera_shake_anim(multiplyer)
     local anim_x = {}
     local anim_y = {}
 
@@ -927,6 +869,68 @@ function common_game_scene_wallbreak_load_camera_shake_anim(multiplyer)
     anim_y["fix_type"] = false
 
     return anim_x,anim_y
+end
+function common_game_scene_wallbreak_init_all_camera_shake_enclose_anim(multiplyer)
+    local obj_camera = obj_stage_game_scene_camera
+    local anim_enclose = {}
+    local anim_x = {}
+    local anim_y = {}
+
+    anim_enclose[0] = {obj_camera["enclose_percentage"],5}
+    anim_enclose[5] = {obj_camera["enclose_percentage"]*0.25,10}
+    anim_enclose[10] = {obj_camera["enclose_percentage"]*0.125,15}
+    anim_enclose[15] = {0.00,15}
+    anim_enclose["prop"] = "enclose_percentage"
+    anim_enclose["length"] = 15
+    anim_enclose["loop"] = false
+    anim_enclose["fix_type"] = true
+    anim_enclose["nil_mark"] = true
+
+    anim_x[0] = {13.25*multiplyer,1}
+    anim_x[1] = {-10.34*multiplyer,2}
+    anim_x[2] = {-9.93*multiplyer,3}
+    anim_x[3] = {9.02*multiplyer,4}
+    anim_x[4] = {-8.10*multiplyer,5}
+    anim_x[5] = {8.69*multiplyer,6}
+    anim_x[6] = {-6.72*multiplyer,7}
+    anim_x[7] = {6.47*multiplyer,8}
+    anim_x[8] = {-5.78*multiplyer,9}
+    anim_x[9] = {5.46*multiplyer,10}
+    anim_x[10] = {4.31*multiplyer,11}
+    anim_x[11] = {-4.65*multiplyer,12}
+    anim_x[12] = {2.00*multiplyer,13}
+    anim_x[13] = {-2.81*multiplyer,14}
+    anim_x[14] = {1.63*multiplyer,15}
+    anim_x[15] = {0*multiplyer,15}
+    anim_x["prop"] = "3d_pos_x"
+    anim_x["length"] = 15
+    anim_x["loop"] = false
+    anim_x["fix_type"] = false
+
+    local multiplyer_fix = multiplyer*0.2
+    anim_y = {}
+    anim_y[0] = {10.92*multiplyer_fix,1}
+    anim_y[1] = {2.67*multiplyer_fix,2}
+    anim_y[2] = {-4.00*multiplyer_fix,3}
+    anim_y[3] = {-8.26*multiplyer_fix,4}
+    anim_y[4] = {3.60*multiplyer_fix,5}
+    anim_y[5] = {8.15*multiplyer_fix,6}
+    anim_y[6] = {-2.35*multiplyer_fix,7}
+    anim_y[7] = {-6.04*multiplyer_fix,8}
+    anim_y[8] = {1.75*multiplyer_fix,9}
+    anim_y[9] = {5.44*multiplyer_fix,10}
+    anim_y[10] = {-1.69*multiplyer_fix,11}
+    anim_y[11] = {1.00*multiplyer_fix,12}
+    anim_y[12] = {3.67*multiplyer_fix,13}
+    anim_y[13] = {-1.13*multiplyer_fix,14}
+    anim_y[14] = {2.11*multiplyer_fix,15}
+    anim_y[15] = {0*multiplyer_fix,15}
+    anim_y["prop"] = "3d_pos_y"
+    anim_y["length"] = 15
+    anim_y["loop"] = false
+    anim_y["fix_type"] = false
+
+    return anim_enclose,anim_x,anim_y
 end
 
 function common_update_game_scene_char_hitstop_countdown(obj_char)

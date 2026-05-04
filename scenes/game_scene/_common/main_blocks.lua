@@ -462,29 +462,8 @@ function update_game_scene_training_main()
 end
 function update_game_scene_training_wallbreak()
     local obj_stage_main = obj_stage_game_scene_main
-    local hurt_side_obj_char = obj_stage_main["wallbreak_hurt_side_obj_char"]
-    local hit_side_obj_char = obj_stage_main["wallbreak_hit_side_obj_char"]
-    -- animator
-    point_linear_animator(obj_stage_game_scene_camera,anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x)
-    point_linear_animator(obj_stage_game_scene_camera,anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y)
-    point_linear_animator(obj_stage_game_scene_camera,anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z)
-    point_linear_animator(hurt_side_obj_char,anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x)
-    point_linear_animator(hurt_side_obj_char,anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y)
-    frame_animator(hurt_side_obj_char,anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame)
-    point_linear_animator(hit_side_obj_char,anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x)
-    point_linear_animator(hit_side_obj_char,anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y)
-    frame_animator(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_frame)
-    frame_animator(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state)
-    frame_animator(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos)
-    point_linear_animator(obj_stage_game_scene_wallbreak_after_debris,anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity)
-    frame_animator(obj_stage_game_scene_wallbreak_after_debris,anim_stage_frame_game_scene_wallbreak_after_debris_frame)
-    frame_animator(obj_stage_game_scene_wallbreak_dynamic,anim_stage_frame_game_scene_wallbreak_dynamic_opacity)
-    frame_animator(obj_stage_game_scene_wallbreak_dynamic,anim_stage_frame_game_scene_wallbreak_dynamic_frame)
-    point_linear_animator(obj_stage_game_scene_wallbreak_smoke,anim_stage_point_linear_game_scene_wallbreak_smoke_opacity)
-    frame_animator(obj_stage_game_scene_wallbreak_smoke,anim_stage_frame_game_scene_wallbreak_smoke_frame)
-    point_linear_animator(obj_stage_game_scene_wallbreak_glow,anim_stage_point_linear_game_scene_wallbreak_glow_opacity)
-    -- state_machine
-    state_machine_stage_game_scene_camera()
+    state_machine_UI_game_scene_movie_cover_loop(obj_UI_game_scene_movie_cover)
+    update_game_scene_stage_wallbreak()
     -- obj_stage_game_scene_f_update
     obj_stage_main["f"] = obj_stage_main["f"] + 1
     if obj_stage_main["f"] >= 150 then
@@ -781,7 +760,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
                 function()
                     anim_stage_point_linear_game_scene_camera_shake_x,
                     anim_stage_point_linear_game_scene_camera_shake_y 
-                    = common_game_scene_wallbreak_load_camera_shake_anim(1.5)
+                    = common_game_scene_wallstick_load_camera_shake_anim(1.5)
                     init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
                     init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
                     obj_camera["state"] = "active"

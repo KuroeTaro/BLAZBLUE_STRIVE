@@ -10,6 +10,9 @@ function draw_game_scene_main()
     draw_game_scene_char_LP_black_overlay()
     draw_game_scene_char_RP_black_overlay()
 
+    -- 绘制wallbreak_背景
+    draw_game_scene_stage_wallbreak_at_character_back()
+
     -- 绘制背侧VFX
     draw_game_scene_char_LP_VFX_back()
     draw_game_scene_char_RP_VFX_back()
@@ -215,6 +218,9 @@ function draw_game_scene_main()
     -- 绘制飞行道具
     draw_game_scene_char_LP_projectile()
     draw_game_scene_char_RP_projectile()
+
+    -- 绘制wallbreak_前景
+    draw_game_scene_stage_wallbreak_at_character_front()
 
     -- 绘制ease_in annoucer 和 HUD ease in
     obj = obj_annoucer_game_scene_act_common
