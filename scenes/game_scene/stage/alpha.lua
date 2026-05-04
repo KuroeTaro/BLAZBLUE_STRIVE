@@ -60,7 +60,7 @@ function load_game_scene_obj_stage()
     obj_stage_game_scene_wallbreak_dynamic["LCT"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallbreak_dynamic["LCD"] = {0,0,0,0,0,0,0,0}
 
-    obj_stage_game_scene_wallbreak_smoke = {0,0,0,0,0,1.3,0,0}
+    obj_stage_game_scene_wallbreak_smoke = {0,-40,0,0,0,1.3,0,0}
     obj_stage_game_scene_wallbreak_smoke["FCT"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallbreak_smoke["LCT"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallbreak_smoke["LCD"] = {0,0,0,0,0,0,0,0}
@@ -99,6 +99,28 @@ function load_game_scene_obj_stage()
 end
 function load_game_scene_anim_stage()
     -- common
+    -- stage
+    anim_stage_game_scene_wallbreak_main = {}
+    anim_stage_game_scene_wallbreak_main[0] = function()
+    end
+    anim_stage_game_scene_wallbreak_main[105] = function()
+        obj_char_game_scene_char_LP["projectile_table"] = {}
+        obj_char_game_scene_char_LP["VFX_front_table"] = {}
+        obj_char_game_scene_char_LP["VFX_back_table"] = {}
+        obj_char_game_scene_char_LP["VFX_hit_front_table"] = {}
+        obj_char_game_scene_char_LP["VFX_hit_back_table"] = {}
+
+        obj_char_game_scene_char_RP["projectile_table"] = {}
+        obj_char_game_scene_char_RP["VFX_front_table"] = {}
+        obj_char_game_scene_char_RP["VFX_back_table"] = {}
+        obj_char_game_scene_char_RP["VFX_hit_front_table"] = {}
+        obj_char_game_scene_char_RP["VFX_hit_back_table"] = {}
+    end
+    anim_stage_game_scene_wallbreak_main[150] = function()
+    end
+    anim_stage_game_scene_wallbreak_main["prop_f"] = "f"
+    anim_stage_game_scene_wallbreak_main["anim_length"] = 150
+
     -- camera_animation
     anim_stage_point_linear_game_scene_camera_enclosing = {}
     anim_stage_point_linear_game_scene_camera_enclosing[0] = {0.00,0}
@@ -147,8 +169,8 @@ function load_game_scene_anim_stage()
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y["fix_type"] = true
 
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z = {}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[60] = {-800+300.0,104}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[104] = {-800+300.0,105}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[0] = {-650,104}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[104] = {-650,105}
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[105] = {-800+200.0,106}
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[106] = {-800+165.4,108}
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[108] = {-800+126.9,111}
@@ -166,26 +188,16 @@ function load_game_scene_anim_stage()
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z["loop"] = false
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z["fix_type"] = true
 
-    -- wallbreak_hurt_side_character
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x = {}
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["prop"] = "x"
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["length"] = 150
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["loop"] = false
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["fix_type"] = true
-
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y = {}
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y["prop"] = "y"
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y["length"] = 150
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y["loop"] = false
-    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y["fix_type"] = true
-
-    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame = {}
-    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["prop"] = 8
-    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["length"] = 150
-    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["loop"] = false
-    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["fix_type"] = true
-
     -- wallbreak_hit_side_character
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity = {}
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity[0] = 0
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity[105] = 0.5
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity[150] = 0.5
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity["prop"] = "shadow_opacity"
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity["length"] = 150
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity["loop"] = false
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity["fix_type"] = true
+
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x = {}
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x["prop"] = "x"
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x["length"] = 150
@@ -215,6 +227,36 @@ function load_game_scene_anim_stage()
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["length"] = 150
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["loop"] = false
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["fix_type"] = true
+
+    -- wallbreak_hurt_side_character
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x = {}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["prop"] = "x"
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["length"] = 150
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["loop"] = false
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["fix_type"] = true
+
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y = {}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y["prop"] = "y"
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y["length"] = 150
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y["loop"] = false
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y["fix_type"] = true
+
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame = {}
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["prop"] = 8
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["length"] = 150
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["loop"] = false
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["fix_type"] = true
+
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity = {}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity[0] = {0.5,10}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity[10] = {0,104}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity[104] = {0,105}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity[105] = {0.5,150}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity[150] = {0.5,150}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity["prop"] = "shadow_opacity"
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity["length"] = 150
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity["loop"] = false
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity["fix_type"] = true
 
     -- wallbreak_after_debris_opacity_anim after_debris 105f-150f
     anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity = {}
@@ -288,13 +330,13 @@ function load_game_scene_anim_stage()
     -- wallbreak_glow_opacity
     anim_stage_point_linear_game_scene_wallbreak_glow_opacity = {}
     anim_stage_point_linear_game_scene_wallbreak_glow_opacity[0] = {0,5}
-    anim_stage_point_linear_game_scene_wallbreak_glow_opacity[5] = {0.07,10}
-    anim_stage_point_linear_game_scene_wallbreak_glow_opacity[10] = {0.26,15}
-    anim_stage_point_linear_game_scene_wallbreak_glow_opacity[15] = {0.5,20}
-    anim_stage_point_linear_game_scene_wallbreak_glow_opacity[20] = {0.74,25}
-    anim_stage_point_linear_game_scene_wallbreak_glow_opacity[25] = {0.93,30}
-    anim_stage_point_linear_game_scene_wallbreak_glow_opacity[30] = {1,59}
-    anim_stage_point_linear_game_scene_wallbreak_glow_opacity[59] = {1,60}
+    anim_stage_point_linear_game_scene_wallbreak_glow_opacity[5] = {0.035,10}
+    anim_stage_point_linear_game_scene_wallbreak_glow_opacity[10] = {0.13,15}
+    anim_stage_point_linear_game_scene_wallbreak_glow_opacity[15] = {0.25,20}
+    anim_stage_point_linear_game_scene_wallbreak_glow_opacity[20] = {0.37,25}
+    anim_stage_point_linear_game_scene_wallbreak_glow_opacity[25] = {0.46,30}
+    anim_stage_point_linear_game_scene_wallbreak_glow_opacity[30] = {0.5,59}
+    anim_stage_point_linear_game_scene_wallbreak_glow_opacity[59] = {0.5,60}
     anim_stage_point_linear_game_scene_wallbreak_glow_opacity[60] = {0,150}
     anim_stage_point_linear_game_scene_wallbreak_glow_opacity[150] = {0,150}
     anim_stage_point_linear_game_scene_wallbreak_glow_opacity["prop"] = 4
@@ -379,7 +421,6 @@ function load_game_scene_apply_wallbreak_start_init(hurt_side_obj_char,hit_side_
         hurt_side_obj_char["sprite_sheet_state"] = "0_wallbreak_hurt_non_adv"
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[hurt_side_obj_char["sprite_sheet_state"]]
     end
-    hurt_side_obj_char["y"] = math.min(165,hurt_side_obj_char["y"])
     hurt_side_obj_char["pushbox"] = {0,-100,120,200}
     load_game_scene_wallbreak_start_init_LP()
     load_game_scene_wallbreak_start_init_RP()
@@ -388,33 +429,43 @@ function load_game_scene_apply_wallbreak_start_init(hurt_side_obj_char,hit_side_
     obj_stage_game_scene_main["state"] = "wallbreak"
     obj_stage_game_scene_main["wallbreak_hit_side_obj_char"] = hit_side_obj_char
     obj_stage_game_scene_main["wallbreak_hurt_side_obj_char"] = hurt_side_obj_char
+    -- hurt_side_char y = -85
+    -- camera_y = -135 = hurt_side_char-50
+    -- obj_stage_game_scene_wallbreak_dynamic_y = -610 = hurt_side_char-525
+    -- obj_stage_game_scene_wallbreak_glow_y = -630 = hurt_side_char-545
+    obj_stage_game_scene_camera["y"] = hurt_side_obj_char["y"] - 50
     obj_stage_game_scene_camera["state"] = "wallbreak"
     obj_stage_game_scene_wallstick[4] = 0
     obj_stage_game_scene_wallstick["state"] = "off"
     obj_stage_game_scene_wallbreak_after_debris[1] = -1590*wallstick_on_side
     obj_stage_game_scene_wallbreak_after_debris[5] = wallstick_on_side
     obj_stage_game_scene_wallbreak_dynamic[1] = 1850*wallstick_on_side
-    obj_stage_game_scene_wallbreak_dynamic[2] = obj_stage_game_scene_camera[2]-460
+    obj_stage_game_scene_wallbreak_dynamic[2] = hurt_side_obj_char["y"] - 525
     obj_stage_game_scene_wallbreak_dynamic[5] = wallstick_on_side
-    obj_stage_game_scene_wallbreak_smoke[1] = 800-950*wallstick_on_side
-    obj_stage_game_scene_wallbreak_smoke[2] = -15
-    obj_stage_game_scene_wallbreak_smoke[5] = 1.3*wallstick_on_side
+    obj_stage_game_scene_wallbreak_smoke[1] = -1150*wallstick_on_side+800
+    obj_stage_game_scene_wallbreak_smoke[5] = 1.35*wallstick_on_side
     obj_stage_game_scene_wallbreak_glow[1] = 1860*wallstick_on_side
-    obj_stage_game_scene_wallbreak_glow[2] = obj_stage_game_scene_camera[2]-500
+    obj_stage_game_scene_wallbreak_glow[2] = hurt_side_obj_char["y"] - 545
     obj_stage_game_scene_wallbreak_glow[5] = 2*wallstick_on_side
     -- update_animation
     load_game_scene_anim_stage_camera_wallbreak(obj_stage_game_scene_camera,hurt_side_obj_char,adv)
-    hurt_side_obj_char["wallbreak_hurt_side_animation_load_function"](hurt_side_obj_char,wallstick_on_side,adv)
-    hit_side_obj_char["wallbreak_hit_side_animation_load_function"](hit_side_obj_char,wallstick_on_side)
+    load_game_scene_anim_point_linear_character_hit_side_wallbreak(hit_side_obj_char,wallstick_on_side)
+    load_game_scene_anim_point_linear_character_hurt_side_wallbreak(hurt_side_obj_char,wallstick_on_side,adv)
     -- init_animation
+    -- stage
+    init_stage_anim_with(obj_stage_game_scene_main,anim_stage_game_scene_wallbreak_main)
     -- camera
     init_point_linear_anim_with(obj_stage_game_scene_camera,anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x)
     init_point_linear_anim_with(obj_stage_game_scene_camera,anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y)
     init_point_linear_anim_with(obj_stage_game_scene_camera,anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z)
     -- character
+    -- hurt_side
+    init_point_linear_anim_with(hurt_side_obj_char,anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity)
     init_point_linear_anim_with(hurt_side_obj_char,anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x)
     init_point_linear_anim_with(hurt_side_obj_char,anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y)
     init_frame_anim_with(hurt_side_obj_char,anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame)
+    -- hit_side
+    init_frame_anim_with(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity)
     init_point_linear_anim_with(hit_side_obj_char,anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x)
     init_point_linear_anim_with(hit_side_obj_char,anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y)
     init_frame_anim_with(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_frame)
@@ -481,14 +532,20 @@ function update_game_scene_stage_wallbreak()
     local obj_stage_main = obj_stage_game_scene_main
     local hurt_side_obj_char = obj_stage_main["wallbreak_hurt_side_obj_char"]
     local hit_side_obj_char = obj_stage_main["wallbreak_hit_side_obj_char"]
-    -- animator
+    -- stage
+    stage_animator(obj_stage_game_scene_main,anim_stage_game_scene_wallbreak_main)
+    -- camera
     point_linear_animator(obj_stage_game_scene_camera,anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x)
     point_linear_animator(obj_stage_game_scene_camera,anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y)
     point_linear_animator(obj_stage_game_scene_camera,anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z)
     -- character
+    -- hurt_side
+    point_linear_animator(hurt_side_obj_char,anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity)
     point_linear_animator(hurt_side_obj_char,anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x)
     point_linear_animator(hurt_side_obj_char,anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y)
     frame_animator(hurt_side_obj_char,anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame)
+    -- hit_side
+    frame_animator(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity)
     point_linear_animator(hit_side_obj_char,anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x)
     point_linear_animator(hit_side_obj_char,anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y)
     frame_animator(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_frame)
@@ -504,9 +561,6 @@ function update_game_scene_stage_wallbreak()
     point_linear_animator(obj_stage_game_scene_wallbreak_glow,anim_stage_point_linear_game_scene_wallbreak_glow_opacity)
     -- state_machine
     state_machine_stage_game_scene_camera()
-    -- pos_update
-    obj_stage_game_scene_wallbreak_dynamic[2] = obj_stage_game_scene_camera[2]-460
-    obj_stage_game_scene_wallbreak_glow[2] = obj_stage_game_scene_camera[2]-500
 end
 
 -- state_machine
@@ -700,25 +754,28 @@ function load_game_scene_anim_stage_camera_wallbreak(obj_camera,hurt_side_obj_ch
     local function x_persentage_to_value(x_percentage)
         return obj_camera_start_x*(1-x_percentage)+wallstick_on_side*x_dst*x_percentage
     end
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[0] = {x_persentage_to_value(0.0/940),1}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[1] = {x_persentage_to_value(99.0/940),3}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[3] = {x_persentage_to_value(197.5/940),6}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[6] = {x_persentage_to_value(277.7/940),10}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[10] = {x_persentage_to_value(338.9/940),15}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[15] = {x_persentage_to_value(380.0/940),30}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[30] = {x_persentage_to_value(477.3/940),40}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[40] = {x_persentage_to_value(563.7/940),50}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[50] = {x_persentage_to_value(638.2/940),54}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[54] = {x_persentage_to_value(750.1/940),57}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[57] = {x_persentage_to_value(817.1/940),59}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[59] = {x_persentage_to_value(883.1/940),60}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[60] = {x_persentage_to_value(940.0/940),80}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[61] = {x_persentage_to_value(1010.0/940),65}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[65] = {x_persentage_to_value(1110.0/940),70}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[70] = {x_persentage_to_value(1230.0/940),75}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[75] = {x_persentage_to_value(1370.0/940),80}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[80] = {x_persentage_to_value(1530.0/940),104}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[104] = {x_persentage_to_value(1590.0/940),104}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[0] = {wallstick_on_side*1910.0,1}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[1] = {wallstick_on_side*(1910.1+5.0),2}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[2] = {wallstick_on_side*(1910.4+4.6),3}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[3] = {wallstick_on_side*(1911.0-5.0),4}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[4] = {wallstick_on_side*(1911.7-4.6),5}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[5] = {wallstick_on_side*(1912.7+5.0),6}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[6] = {wallstick_on_side*(1914.0+4.5),7}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[7] = {wallstick_on_side*(1915.6-5.0),8}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[8] = {wallstick_on_side*(1917.6-4.4),9}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[9] = {wallstick_on_side*(1919.8+5.0),10}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[10] = {wallstick_on_side*(1922.4+4.2),11}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[11] = {wallstick_on_side*(1925.2-5.0),12}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[12] = {wallstick_on_side*(1928.3-3.7),13}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[13] = {wallstick_on_side*(1931.6+5.0),14}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[14] = {wallstick_on_side*(1935.1+2.5),15}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[15] = {wallstick_on_side*1938.8,30}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[30] = {wallstick_on_side*2011.9,45}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[45] = {wallstick_on_side*2106.9,60}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[60] = {wallstick_on_side*2215.7,70}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[70] = {wallstick_on_side*2293.9,80}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[80] = {wallstick_on_side*2375.0,104}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[104] = {wallstick_on_side*2375.0,105}
     if adv then
         anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[105] = {-wallstick_on_side*(950.0),106}
         anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[106] = {-wallstick_on_side*(754.3),108}
@@ -747,39 +804,168 @@ function load_game_scene_anim_stage_camera_wallbreak(obj_camera,hurt_side_obj_ch
         anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[150] = {-wallstick_on_side*(0),150}
     end
 
-    -- 3d_pos_y
-    local y_dst = math.min(hurt_side_obj_char["y"],0)
-    local obj_camera_start_y = obj_camera["3d_pos_y"]
-    local function y_persentage_to_value(y_percentage)
-        return obj_camera_start_y*(1-y_percentage)+y_dst*y_percentage
-    end
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[0] = {y_persentage_to_value(0.0/100),1}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[1] = {y_persentage_to_value(31.9/100),3}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[3] = {y_persentage_to_value(61.2/100),6}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[6] = {y_persentage_to_value(82.5/100),10}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[10] = {y_persentage_to_value(95.6/100),15}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[15] = {y_persentage_to_value(100.0/100),104}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[104] = {y_persentage_to_value(100.0/100),105}
-
-    local z_dst = -500
-    local obj_camera_start_z = obj_camera["3d_pos_z"]
-    local function z_persentage_to_value(z_percentage)
-        return obj_camera_start_z*(1-z_percentage)+z_dst*z_percentage
-    end
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[0] = {z_persentage_to_value(0.0/300),1}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[1] = {z_persentage_to_value(24.5/300),3}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[3] = {z_persentage_to_value(50.9/300),6}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[6] = {z_persentage_to_value(72.7/300),10}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[10] = {z_persentage_to_value(91.3/300),15}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[15] = {z_persentage_to_value(100.0/300),30}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[30] = {z_persentage_to_value(127.4/300),40}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[40] = {z_persentage_to_value(155.2/300),50}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[50] = {z_persentage_to_value(197.6/300),54}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[54] = {z_persentage_to_value(223.0/300),57}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[57] = {z_persentage_to_value(249.6/300),59}
-    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[59] = {z_persentage_to_value(277.0/300),60}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[0] = {hurt_side_obj_char["y"]-50,1}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[1] = {hurt_side_obj_char["y"]-50,2}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[2] = {hurt_side_obj_char["y"]-50-5.0,3}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[3] = {hurt_side_obj_char["y"]-50-4.6,4}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[4] = {hurt_side_obj_char["y"]-50+5.0,5}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[5] = {hurt_side_obj_char["y"]-50+4.5,6}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[6] = {hurt_side_obj_char["y"]-50-5.0,7}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[7] = {hurt_side_obj_char["y"]-50-4.4,8}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[8] = {hurt_side_obj_char["y"]-50+5.0,9}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[9] = {hurt_side_obj_char["y"]-50+4.3,10}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[10] = {hurt_side_obj_char["y"]-50-5.0,11}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[11] = {hurt_side_obj_char["y"]-50-4.0,12}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[12] = {hurt_side_obj_char["y"]-50+5.0,13}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[13] = {hurt_side_obj_char["y"]-50+3.3,14}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[14] = {hurt_side_obj_char["y"]-50+1.7,15}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[15] = {hurt_side_obj_char["y"]-50,104}
+    anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[104] = {hurt_side_obj_char["y"]-50,105}
 end
+-- frame_and_point_linear_animation
+function load_game_scene_anim_point_linear_character_hit_side_wallbreak(hit_side_obj_char,wallstick_on_side)
+    -- 105f-150f
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[0] = {hit_side_obj_char["x"],104}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[104] = {hit_side_obj_char["x"],105}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[105] = {-wallstick_on_side*1500,125}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[125] = {-wallstick_on_side*630,126}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[126] = {-wallstick_on_side*586.8,128}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[128] = {-wallstick_on_side*481.1,131}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[131] = {-wallstick_on_side*406.0,135}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[135] = {-wallstick_on_side*355.7,140}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[140] = {-wallstick_on_side*327.4,145}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[145] = {-wallstick_on_side*320,150}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[150] = {-wallstick_on_side*320,150}
 
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[0] = {hit_side_obj_char["y"],104}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[104] = {hit_side_obj_char["y"],105}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[105] = {365,150}
+    anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[150] = {365,150}
+
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[0] = hit_side_obj_char[8]
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[105] = 0
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[113] = 1
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[121] = 2
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[125] = 3
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[130] = 4
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[136] = 5
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[144] = 6
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[148] = 7
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[150] = 7
+
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state[0] = hit_side_obj_char["sprite_sheet_state"]
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state[105] = "0_wallbreak_hit"
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state[150] = "0_wallbreak_hit"
+
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos[0] = hit_side_obj_char["anchor_pos"]
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos[105] = {280,510}
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos[150] = {280,510}
+end
+function load_game_scene_anim_point_linear_character_hurt_side_wallbreak(hurt_side_obj_char,wallstick_on_side,adv)
+    -- 0f-150f
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[0] = {wallstick_on_side*2100.0,30}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[30] = {wallstick_on_side*2270.0,35}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[35] = {wallstick_on_side*2307.8,40}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[40] = {wallstick_on_side*2361.6,45}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[45] = {wallstick_on_side*2439.8,49}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[49] = {wallstick_on_side*2533.1,52}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[52] = {wallstick_on_side*2641.0,54}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[54] = {wallstick_on_side*2764.4,55}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[55] = {wallstick_on_side*2850.0,104}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[104] = {wallstick_on_side*2850.0,105}
+
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[0] = {hurt_side_obj_char["y"],104}
+    anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[104] = {hurt_side_obj_char["y"],105}
+
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[0] = 0
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[4] = 1
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[9] = 2
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[15] = 1
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[21] = 2
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[27] = 1
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[33] = 2
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[39] = 1
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[43] = 3
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[47] = 4
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[52] = 6
+    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[104] = 6
+    if adv then
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[105] = {-wallstick_on_side*1200.0,125}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[125] = {wallstick_on_side*320.0,126}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[126] = {wallstick_on_side*362.2,128}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[128] = {wallstick_on_side*445.9,131}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[131] = {wallstick_on_side*547.4,135}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[135] = {wallstick_on_side*638.4,140}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[140] = {wallstick_on_side*680.0,150}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[150] = {wallstick_on_side*680.0,150}
+
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[105] = {-90.0,110}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[110] = {-79.2,116}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[116] = {-26.0,119}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[119] = {29.3,121}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[121] = {86.3,123}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[123] = {175.4,124}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[124] = {247.7,125}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[125] = {365.0,126}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[126] = {358.5,129}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[129] = {309.4,130}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[130] = {303.0,131}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[131] = {309.4,134}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[134] = {358.5,135}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[135] = {365.0,138}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[138] = {345.0,140}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[140] = {365.0,150}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[150] = {365.0,150}
+
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[105] = 5
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[110] = 6
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[115] = 5
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[120] = 6
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[125] = 7
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[128] = 8
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[130] = 9
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[133] = 10
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[135] = 11
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[138] = 12
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[140] = 13
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[143] = 14
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[150] = 14
+    else
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[105] = {-wallstick_on_side*1220.0,125}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[125] = {-wallstick_on_side*0.0,130}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[130] = {wallstick_on_side*205.0,130}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[131] = {wallstick_on_side*228.9,133}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[133] = {wallstick_on_side*258.7,135}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[135] = {wallstick_on_side*278.5,140}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[140] = {wallstick_on_side*307.5,145}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[145] = {wallstick_on_side*320.0,150}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[150] = {wallstick_on_side*320.0,150}
+
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[105] = {-90.0,110}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[110] = {-81.8258,115}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[115] = {-51.4536,117}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[117] = {29.3,119}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[119] = {86.3,121}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[121] = {175.4,123}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[123] = {247.7,124}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[124] = {247.7,125}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[125] = {365.0,150}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[150] = {365.0,150}
+
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[105] = 5
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[110] = 6
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[115] = 5
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[120] = 6
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[125] = 7
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[126] = 8
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[128] = 9
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[130] = 10
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[136] = 11
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[143] = 12
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[148] = 13
+        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[150] = 14
+    end
+end
 -- camera 150f
 -- char_hurt_side 150f
 -- char_hit_side 105f-150f

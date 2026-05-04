@@ -42,7 +42,7 @@ function insert_VFX_game_scene_char_TRM_2P_whiff(obj_char)
         if obj_char["state"] == "2P" then
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
-        elseif obj_char["state"] == "hitstop" then
+        elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
         else
             obj["life"] = 0
@@ -103,7 +103,7 @@ function insert_VFX_game_scene_char_TRM_6P_whiff(obj_char)
         if obj_char["state"] == "6P" then
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
-        elseif obj_char["state"] == "hitstop" then
+        elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
         else
             obj["life"] = 0
@@ -164,7 +164,7 @@ function insert_VFX_game_scene_char_TRM_5P_whiff(obj_char)
         if obj_char["state"] == "5P" then
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
-        elseif obj_char["state"] == "hitstop" then
+        elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
         else
             obj["life"] = 0
@@ -221,7 +221,7 @@ function insert_VFX_game_scene_char_TRM_2S_whiff(obj_char)
         if obj_char["state"] == "2S" then
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
-        elseif obj_char["state"] == "hitstop" then
+        elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
         else
             obj["life"] = 0
@@ -282,7 +282,7 @@ function insert_VFX_game_scene_char_TRM_6S_whiff(obj_char)
         if obj_char["state"] == "6S" then
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
-        elseif obj_char["state"] == "hitstop" then
+        elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
         else
             obj["life"] = 0
@@ -346,7 +346,7 @@ function insert_VFX_game_scene_char_TRM_cS_whiff(obj_char)
         if obj_char["state"] == "cS" then
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
-        elseif obj_char["state"] == "hitstop" then
+        elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
         else
             obj["life"] = 0
@@ -461,7 +461,7 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot_oroboros_blas
     obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
-        if obj_char["shot_sys_state"] == "at_the_ready_shot" then
+        if obj_char["shot_sys_state"] == "at_the_ready_shot" or obj_char["state"] == "wallbreak_hit" then
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
         else
@@ -519,7 +519,7 @@ function insert_VFX_game_scene_char_TRM_5Launcher_whiff_slash(obj_char)
         if obj_char["state"] == "5Launcher" then
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
-        elseif obj_char["state"] == "hitstop" then
+        elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
         else
             obj["life"] = 0
@@ -577,7 +577,7 @@ function insert_VFX_game_scene_char_TRM_5Launcher_whiff_glow(obj_char)
         if obj_char["state"] == "5Launcher" then
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
-        elseif obj_char["state"] == "hitstop" then
+        elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
         else
             obj["life"] = 0
@@ -645,7 +645,7 @@ function insert_VFX_game_scene_char_TRM_jS_whiff(obj_char)
             obj[6] = obj_char[6]
             obj[7] = obj_char[7]
         end
-        if obj_char["state"] == "hitstop" then
+        if obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
         else
             frame_animator(obj,obj["animation"])

@@ -462,11 +462,19 @@ function update_game_scene_training_main()
 end
 function update_game_scene_training_wallbreak()
     local obj_stage_main = obj_stage_game_scene_main
+    -- movie_cover_loop
     state_machine_UI_game_scene_movie_cover_loop(obj_UI_game_scene_movie_cover)
+
+    -- character
+    update_game_scene_char_LP_projectile()
+    update_game_scene_char_LP_VFX()
+    update_game_scene_char_RP_projectile()
+    update_game_scene_char_RP_VFX()
+    -- stage
     update_game_scene_stage_wallbreak()
-    -- obj_stage_game_scene_f_update
-    obj_stage_main["f"] = obj_stage_main["f"] + 1
-    if obj_stage_main["f"] >= 150 then
+
+    -- 场景出口
+    if get_stage_anim_end_state(obj_stage_main,anim_stage_game_scene_wallbreak_main) then
 
     end
 end

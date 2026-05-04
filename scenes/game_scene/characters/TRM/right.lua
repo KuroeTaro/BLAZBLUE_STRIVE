@@ -312,9 +312,6 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["camera_y_shake_anim"] = nil
     obj_char_game_scene_char_RP["camera_enclosing_anim"] = nil
     obj_char_game_scene_char_RP["enclose_position_offset"] = {0,0,0}
-    -- wallbreak_animation
-    obj_char_game_scene_char_RP["wallbreak_hit_side_animation_load_function"] = load_game_scene_anim_point_linear_TRM_hit_side_wallbreak
-    obj_char_game_scene_char_RP["wallbreak_hurt_side_animation_load_function"] = load_game_scene_anim_point_linear_TRM_hurt_side_wallbreak
 end
 function order_load_game_scene_char_RP_frames(load_order)
     local PLAYER_ASSET_DATA = ASSET_DATA[3]
@@ -987,8 +984,8 @@ function load_game_scene_wallbreak_start_init_RP()
     -- obj_char_game_scene_char_RP["projectile_table"] = {}
     -- obj_char_game_scene_char_RP["VFX_front_table"] = {}
     -- obj_char_game_scene_char_RP["VFX_back_table"] = {}
-    obj_char_game_scene_char_RP["VFX_hit_front_table"] = {}
-    obj_char_game_scene_char_RP["VFX_hit_back_table"] = {}
+    -- obj_char_game_scene_char_RP["VFX_hit_front_table"] = {}
+    -- obj_char_game_scene_char_RP["VFX_hit_back_table"] = {}
 
     obj_char_game_scene_char_RP["shot_sys_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_f"] = 0
