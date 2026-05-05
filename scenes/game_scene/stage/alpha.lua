@@ -60,7 +60,7 @@ function load_game_scene_obj_stage()
     obj_stage_game_scene_wallbreak_dynamic["LCT"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallbreak_dynamic["LCD"] = {0,0,0,0,0,0,0,0}
 
-    obj_stage_game_scene_wallbreak_smoke = {0,-40,0,0,0,1.3,0,0}
+    obj_stage_game_scene_wallbreak_smoke = {0,-25,0,0,0,1.3,0,0}
     obj_stage_game_scene_wallbreak_smoke["FCT"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallbreak_smoke["LCT"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallbreak_smoke["LCD"] = {0,0,0,0,0,0,0,0}

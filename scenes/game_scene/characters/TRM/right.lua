@@ -738,7 +738,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_soft_knockdown_wallstick_air"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_soft_knockdown_wallstick_air"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_soft_knockdown_wallstick_air"] = {}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_soft_knockdown_wallstick_air"][0] = {{0,-120,240,350}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_soft_knockdown_wallstick_air"][0] = {{0,-120,240,400}}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_soft_knockdown_wallstick_air"] = {210,345}
 
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_down"] = {}
@@ -776,7 +776,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_wallstick_ground"][3] = crouch_pushbox
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_wallstick_ground"][4] = OTG_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_wallstick_ground"] = {}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_wallstick_ground"][0] = {{0,-120,240,350}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_wallstick_ground"][0] = {{0,-120,240,400}}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_wallstick_ground"][3] = {{0,-150,170,300}}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_wallstick_ground"][4] = {{0,-112.5,220,225}}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_hard_knockdown_wallstick_ground"] = {315,355}
