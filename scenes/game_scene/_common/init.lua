@@ -206,9 +206,13 @@ function unload_game_scene_all()
     unrequire_prefix("scenes.game_scene.")
 end
 function preset_game_scene_training()
+    local char_LP = obj_char_game_scene_char_LP
+    local char_RP = obj_char_game_scene_char_RP
     obj_UI_game_scene_black_solid[4] = 1
-    init_character_anim_with(obj_char_game_scene_char_LP,load_game_scene_anim_char_TRM_5_stand_idle(obj_char_game_scene_char_LP))
-    init_character_anim_with(obj_char_game_scene_char_RP,load_game_scene_anim_char_TRM_5_stand_idle(obj_char_game_scene_char_RP))
+    char_LP["character_animation"] = char_LP["init_animation_load_function"](char_LP)
+    char_RP["character_animation"] = char_RP["init_animation_load_function"](char_RP)
+    init_character_anim_with(char_LP,char_LP["character_animation"])
+    init_character_anim_with(char_RP,char_RP["character_animation"])
 end
 function preset_game_scene_match()
 end

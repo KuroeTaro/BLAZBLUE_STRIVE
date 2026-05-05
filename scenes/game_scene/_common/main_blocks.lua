@@ -465,6 +465,15 @@ function update_game_scene_training_wallbreak()
     -- movie_cover_loop
     state_machine_UI_game_scene_movie_cover_loop(obj_UI_game_scene_movie_cover)
 
+    SCENE_TIMER = SCENE_TIMER + 1
+
+    if DEBUG_TRAINNING_SPAWN_STATE == "Pressing" and DEBUG_TRAINNING_TOGGLE then
+        SCENE_TIMER = 5
+        common_game_scene_init_chars_trainning()
+        current_update_block = update_game_scene_training_before_ease_in
+        return
+    end
+
     -- character
     update_game_scene_char_LP_projectile()
     update_game_scene_char_LP_VFX()
@@ -475,7 +484,11 @@ function update_game_scene_training_wallbreak()
 
     -- 场景出口
     if get_stage_anim_end_state(obj_stage_main,anim_stage_game_scene_wallbreak_main) then
-
+        load_game_scene_stage_apply_wallbreak_end_init(
+            obj_stage_main["wallbreak_hurt_side_obj_char"],
+            obj_stage_main["wallbreak_hit_side_obj_char"]
+        )
+        current_update_block = update_game_scene_training_main
     end
 end
 function update_game_scene_training_5Launcher_hold()

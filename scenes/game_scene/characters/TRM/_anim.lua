@@ -6289,13 +6289,13 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = true
-        obj_char_other_side["strike_inv_countdown"] = 26
+        obj_char_other_side["strike_inv_countdown"] = 59
         obj_char_other_side["throw_inv"] = true
         obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = true
-        obj_char_other_side["projectile_inv_countdown"] = 26
+        obj_char_other_side["projectile_inv_countdown"] = 59
         obj_char_other_side["burst_inv"] = true
-        obj_char_other_side["burst_inv_countdown"] = 26
+        obj_char_other_side["burst_inv_countdown"] = 59
         -- state_number
         obj_char_other_side["velocity"] = {0,0}
         obj_char_other_side["gravity"] = 0
@@ -6303,7 +6303,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["pushbox"] = pushbox_data_other_side["0_stand_hurt_high"][0]
         obj_char_other_side["pushbox_other_side_char_active"] = false
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["0_stand_hurt_high"][0]
+        obj_char_other_side["hurtbox_table"] = {}
         obj_char_other_side["collision_test_ground_height_offset"] = 0
         -- draw_correction
         obj_char_other_side[8] = 0
@@ -6323,7 +6323,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["height_state"] = "air"
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side["0_general_hurt_launched_high"][0]
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["0_general_hurt_launched_high"][0]
         -- draw_correction
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side["0_general_hurt_launched_high"]
@@ -6362,8 +6361,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         )
         obj_char_other_side["physics_lock"] = false
         obj_char_other_side["pushbox_other_side_char_active"] = true
-        -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["0_general_hurt_launched_high"][1]
         -- draw_correction
         obj_char_other_side[8] = 1
         obj_char_other_side["hurtstop_wiggle_x"] = 0
@@ -6374,8 +6371,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         update_y_37f_43f(37)
     end
     res[40] = function()
-        -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["0_general_hurt_launched_high"][3]
         -- draw_correction
         obj_char_other_side[8] = 3
         -- update
@@ -6387,7 +6382,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["sprite_sheet_state"] = "0_general_hurt_hard_knockdown_up"
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side["0_general_hurt_hard_knockdown_up"][0]
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["0_general_hurt_hard_knockdown_up"][0]
         -- draw_correction
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side["0_general_hurt_hard_knockdown_up"]
@@ -6399,7 +6393,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
     res[49] = function()
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side["0_general_hurt_hard_knockdown_up"][2]
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["0_general_hurt_hard_knockdown_up"][2]
         -- draw_correction
         obj_char_other_side[8] = 2
         -- update
@@ -8894,13 +8887,13 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = true
-        obj_char_other_side["strike_inv_countdown"] = 11
+        obj_char_other_side["strike_inv_countdown"] = 28
         obj_char_other_side["throw_inv"] = true
         obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = true
-        obj_char_other_side["projectile_inv_countdown"] = 11
+        obj_char_other_side["projectile_inv_countdown"] = 28
         obj_char_other_side["burst_inv"] = true
-        obj_char_other_side["burst_inv_countdown"] = 11
+        obj_char_other_side["burst_inv_countdown"] = 28
         -- state_number
         obj_char_other_side["velocity"] = {0,0}
         obj_char_other_side["gravity"] = gravity
@@ -8909,7 +8902,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["pushbox"] = pushbox_data_other_side["0_general_hurt_launched_high"][0]
         obj_char_other_side["pushbox_other_side_char_active"] = false
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["0_general_hurt_launched_high"][0]
+        obj_char_other_side["hurtbox_table"] = {}
         obj_char_other_side["collision_test_ground_height_offset"] = 0
         -- draw_correction
         obj_char_other_side[8] = 0
@@ -8925,7 +8918,6 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side["0_general_hurt_launched_low"][0]
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["0_general_hurt_launched_low"][2]
         -- draw_correction
         obj_char_other_side[8] = 2
         obj_char_other_side["anchor_pos"] = anchor_data_other_side["0_general_hurt_launched_low"]

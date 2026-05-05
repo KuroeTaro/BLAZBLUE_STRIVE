@@ -41,7 +41,7 @@ function common_game_scene_test_and_apply_wallbreak(hurt_side_obj_char,hit_side_
         end
         table.insert(obj_stage_game_scene_main["wallbreak_active_application_table"],
             function()
-                load_game_scene_apply_wallbreak_start_init(hurt_side_obj_char,hit_side_obj_char)
+                load_game_scene_stage_apply_wallbreak_start_init(hurt_side_obj_char,hit_side_obj_char)
             end
         )
         return true

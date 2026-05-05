@@ -2446,6 +2446,76 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
     end
     return res
 end
+function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallbreak(obj_char)
+    local res = {}
+    local side = obj_char["player_side"]
+    local sprite_sheet_state = "0_general_hurt_hard_knockdown_up"
+    local obj_char_other_side = common_game_scene_change_character(side)
+    local pushbox_data_other_side = common_game_scene_change_character_pushbox(side)
+    local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
+    local anchor_data_other_side = common_game_scene_change_character_anchor(side)
+    local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    res["prop_f"] = "f"
+    res["anim_length"] = 7
+
+    res[0] = function()
+        -- state
+        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
+        obj_char_other_side["height_state"] = "OTG" -- stand crouch air OTG
+        obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
+        obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
+
+        obj_char_other_side["wallstick_on_side"] = 0
+        obj_char_other_side["wallstickable"] = false
+        obj_char_other_side["wallbreakable_with_wallstick"] = false
+        obj_char_other_side["wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallbreak_hurt_adv"] = false
+
+        obj_char_other_side["startup_frame"] = 0
+        obj_char_other_side["active_frame"] = 0
+        obj_char_other_side["recovery_frame"] = 0
+
+        obj_char_other_side["self_knockdown_animation"] = nil
+        obj_char_other_side["self_knockdown_recovery_animation"] = 
+        load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
+            obj_char,
+            "0_general_hurt_hard_recovery_up",
+            "OTG",
+            "5_stand_idle",
+            nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
+        )
+
+        obj_char_other_side["idle_cancel"] = false
+
+        obj_char_other_side["strike_inv"] = false
+        obj_char_other_side["strike_inv_countdown"] = 0
+        obj_char_other_side["throw_inv"] = true
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["projectile_inv"] = false
+        obj_char_other_side["projectile_inv_countdown"] = 0
+        obj_char_other_side["burst_inv"] = false
+        obj_char_other_side["burst_inv_countdown"] = 0
+    
+        -- collide
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][2]
+        obj_char_other_side["pushbox_other_side_char_active"] = true
+        obj_char_other_side["hitbox_table"] = {}
+        obj_char_other_side["hurtbox_table"] = {}
+        obj_char_other_side["collision_test_ground_height_offset"] = 0
+        -- draw_correction
+        obj_char_other_side[8] = 7
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+    end
+    res[1] = function()
+        -- state
+        obj_char_other_side["state_cache"] = "knockdown_recovery"
+    end
+    res[7] = function()
+        -- animation_end
+    end
+
+    return res
+end
 
 -- recovery
     -- 需要修改的角色属性
