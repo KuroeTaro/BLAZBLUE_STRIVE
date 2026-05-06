@@ -723,8 +723,8 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["1_4_7_air_block"][8] = {{0,-200,200,400}}
     obj_anchor_data_game_scene_char_RP["1_4_7_air_block"] = {340,410}
     obj_VFX_spawn_anchor_pos_data_game_scene_char_RP["stage_VFX_spawn_anchor_pos"]["1_4_7_air_block"] = {-355,-160}
-    obj_VFX_spawn_anchor_pos_data_game_scene_char_RP["block_ver0_spawn_anchor_pos"]["1_4_7_air_block"] = {-380,-465}
-    obj_VFX_spawn_anchor_pos_data_game_scene_char_RP["block_ver1_spawn_anchor_pos"]["1_4_7_air_block"] = {-380,-465}
+    obj_VFX_spawn_anchor_pos_data_game_scene_char_RP["block_ver0_spawn_anchor_pos"]["1_4_7_air_block"] = {-420,-465}
+    obj_VFX_spawn_anchor_pos_data_game_scene_char_RP["block_ver1_spawn_anchor_pos"]["1_4_7_air_block"] = {-420,-465}
 
     obj_pushboxs_data_game_scene_char_RP["1_4_7_air_block_guard_crash"] = {}
     obj_pushboxs_data_game_scene_char_RP["1_4_7_air_block_guard_crash"][0] = air_pushbox
@@ -732,8 +732,8 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["1_4_7_air_block_guard_crash"][0] = air_hurtbox
     obj_anchor_data_game_scene_char_RP["1_4_7_air_block_guard_crash"] = {370,310}
     obj_VFX_spawn_anchor_pos_data_game_scene_char_RP["stage_VFX_spawn_anchor_pos"]["1_4_7_air_block_guard_crash"] = {600,-195}
-    obj_VFX_spawn_anchor_pos_data_game_scene_char_RP["block_ver0_spawn_anchor_pos"]["1_4_7_air_block_guard_crash"] = {-380,-490}
-    obj_VFX_spawn_anchor_pos_data_game_scene_char_RP["block_ver1_spawn_anchor_pos"]["1_4_7_air_block_guard_crash"] = {-380,-490}
+    obj_VFX_spawn_anchor_pos_data_game_scene_char_RP["block_ver0_spawn_anchor_pos"]["1_4_7_air_block_guard_crash"] = {-420,-490}
+    obj_VFX_spawn_anchor_pos_data_game_scene_char_RP["block_ver1_spawn_anchor_pos"]["1_4_7_air_block_guard_crash"] = {-420,-490}
 
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_soft_knockdown_wallstick_air"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_soft_knockdown_wallstick_air"][0] = air_pushbox

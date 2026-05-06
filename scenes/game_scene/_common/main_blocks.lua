@@ -227,6 +227,10 @@ function update_game_scene_training_main()
     local char_LP_velocity = char_LP["velocity"]
     local char_RP_velocity = char_RP["velocity"]
 
+    -- 更新hurt_block_at_current_frame
+    char_LP["hurt_block_at_current_frame"] = false
+    char_RP["hurt_block_at_current_frame"] = false
+
     -- 进行push box hit box hurt box的检测
     for i = 1,16 do
         -- 更新角色和飞行道具位置
@@ -423,10 +427,6 @@ function update_game_scene_training_main()
             object["push_box_interact_update"]()
         end
     end
-
-    -- 更新hurt_block_at_current_frame
-    char_LP["hurt_block_at_current_frame"] = false
-    char_RP["hurt_block_at_current_frame"] = false
 
     -- 更新阻力
     update_game_scene_friction()

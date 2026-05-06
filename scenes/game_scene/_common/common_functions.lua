@@ -239,6 +239,7 @@ end
 function common_game_scene_strike_hit_function(obj_char)
     -- 只需要设置hitstop
     local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
+    local hit_VFX_insert_function_argument = hit_side_obj_char["hit_VFX_insert_function_argument"]
     hit_side_obj_char["state_cache"] = hit_side_obj_char["state"]
     hit_side_obj_char["state"] = "hitstop"
     hit_side_obj_char["last_hitstop_frame"] = 0
@@ -286,13 +287,24 @@ function common_game_scene_strike_hit_function(obj_char)
             hit_counter_VFX_insert_function_argument[8],
             hit_counter_VFX_insert_function_argument[9]
         )
-    elseif obj_char["hurt_state"] ~= "idle" or (not block_bool) then
-        local hit_VFX_insert_function_argument = hit_side_obj_char["hit_VFX_insert_function_argument"]
+    elseif not block_bool then
         hit_side_obj_char["hit_VFX_insert_function"](
             hit_VFX_insert_function_argument[1],
             hit_VFX_insert_function_argument[2],
             hit_VFX_insert_function_argument[3],
             hit_VFX_insert_function_argument[4],
+            hit_VFX_insert_function_argument[5],
+            hit_VFX_insert_function_argument[6],
+            hit_VFX_insert_function_argument[7],
+            hit_VFX_insert_function_argument[8],
+            hit_VFX_insert_function_argument[9]
+        )
+    else
+        hit_side_obj_char["hit_VFX_insert_function"](
+            hit_VFX_insert_function_argument[1],
+            hit_VFX_insert_function_argument[2],
+            hit_VFX_insert_function_argument[3],
+            hit_VFX_insert_function_argument[4]*0.25,
             hit_VFX_insert_function_argument[5],
             hit_VFX_insert_function_argument[6],
             hit_VFX_insert_function_argument[7],
@@ -312,6 +324,9 @@ function common_game_scene_strike_hurt_function(obj_char)
     -- physics_lock
     obj_char["physics_lock"] = true
     -- hurt_block_at_current_frame
+    if obj_char["hurt_block_at_current_frame"] then
+        return
+    end
     obj_char["hurt_block_at_current_frame"] = true
     -- change_draw_front
     CHARACTER_VISUAL_FRONT = hit_side_obj_char["player_side"]

@@ -11,5 +11,4 @@ config选项中自定义要不要79空投
 
 
 -- 碎墙
-将stage_VFX迁移到stage部分
 开始制作红RC
