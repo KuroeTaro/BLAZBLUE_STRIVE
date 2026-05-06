@@ -506,8 +506,8 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -588,8 +588,8 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
             -- VFX
             insert_VFX_game_scene_stage_smoke_land_blow(
                 obj_char_other_side,
-                VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-                VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
+                VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
+                VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
                 0.5,1,1,0
             )
         end
@@ -807,8 +807,8 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,-1,1,0
         )
         -- input_sys_cache

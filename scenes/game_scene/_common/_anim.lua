@@ -146,8 +146,8 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
         -- VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,1,1,0
         )
         -- draw_correction
@@ -300,8 +300,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -418,8 +418,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -542,8 +542,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -672,8 +672,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -802,8 +802,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -972,8 +972,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -1089,8 +1089,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -1208,8 +1208,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -1329,8 +1329,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -1454,8 +1454,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -1542,8 +1542,8 @@ function load_game_scene_anim_char_common_0_air_block(
             -- VFX
             insert_VFX_game_scene_stage_smoke_land_blow(
                 obj_char_other_side,
-                VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-                VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
+                VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
+                VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
                 0.5,1,1,0
             )
         end
@@ -1777,8 +1777,8 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         if obj_char["height_state"] ~= "air" then
             insert_VFX_game_scene_stage_smoke_horizontal_shot(
                 obj_char,
-                VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-                VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
+                VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
+                VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
                 0.5,1,1,0
             )
         end
@@ -2031,8 +2031,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
         -- VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,1,1,0
         )
         -- special_update
@@ -2157,8 +2157,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
         -- VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,1,1,0
         )
         -- special_update
@@ -2285,8 +2285,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
         -- VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,1,1,0
         )
         -- special_update
@@ -2424,8 +2424,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet_state][3]
         insert_VFX_game_scene_stage_smoke_land_blow(
             obj_char,
-            VFX_spawn_anchor_pos_data["smoke_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data["smoke_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
+            VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
             0.5,1,1,0
         )
     end
@@ -2951,8 +2951,8 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][0][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][0][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][0][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][0][2],
             0.5,-1,1,0
         )
         -- special_update
@@ -2993,8 +2993,8 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1][1],
-            VFX_spawn_anchor_pos_data_other_side["smoke_spawn_anchor_pos"][sprite_sheet_state][1][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1][2],
             0.5,1,1,0
         )
     end
