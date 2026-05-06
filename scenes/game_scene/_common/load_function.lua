@@ -285,42 +285,6 @@ function order_load_game_scene_VFX(load_order)
             )
         end,
         [31] = function()
-            -- stage_VFX
-                -- shockwave
-            image_sprite_sheet_VFX_game_scene_air_dash_shockwave =
-            sprite_sheet_load(
-                "asset/game_scene/VFX/stage_VFX/air_dash_shockwave.json",
-                love.graphics.newImage(ASSET_DATA[8]["air_dash_shockwave"])
-            )
-                -- smoke
-            image_sprite_sheet_VFX_game_scene_smoke_dash_burst = 
-            sprite_sheet_load(
-                "asset/game_scene/VFX/stage_VFX/_smoke/dash_burst.json",
-                love.graphics.newImage(ASSET_DATA[8]["smoke_dash_burst"])
-            )
-            image_sprite_sheet_VFX_game_scene_smoke_horizontal_shot = 
-            sprite_sheet_load(
-                "asset/game_scene/VFX/stage_VFX/_smoke/horizontal_shot.json",
-                love.graphics.newImage(ASSET_DATA[8]["smoke_horizontal_shot"])
-            )
-            image_sprite_sheet_VFX_game_scene_smoke_land_blow = 
-            sprite_sheet_load(
-                "asset/game_scene/VFX/stage_VFX/_smoke/land_blow.json",
-                love.graphics.newImage(ASSET_DATA[8]["smoke_land_blow"])
-            )
-            image_sprite_sheet_VFX_game_scene_smoke_vertical_shot = 
-            sprite_sheet_load(
-                "asset/game_scene/VFX/stage_VFX/_smoke/vertical_shot.json",
-                love.graphics.newImage(ASSET_DATA[8]["smoke_vertical_shot"])
-            )
-                -- spark
-            image_sprite_sheet_VFX_game_scene_spark_dcc_burst = 
-            sprite_sheet_load(
-                "asset/game_scene/VFX/stage_VFX/_spark/dcc_burst.json",
-                love.graphics.newImage(ASSET_DATA[8]["spark_dcc_burst"])
-            )
-        end,
-        [32] = function()
             -- overdrive
             image_sprite_sheet_VFX_game_scene_overdrive_airflow = 
             sprite_sheet_load(
@@ -350,7 +314,8 @@ function order_load_game_scene_VFX(load_order)
                 love.graphics.newImage(ASSET_DATA[8]["burst_front_sprite_batch"])
             )
             image_VFX_game_scene_burst_ring = love.graphics.newImage(ASSET_DATA[8]["burst_ring"])
-
+        end,
+        [32] = function()
             -- HUD_VFX
             image_VFX_game_scene_HUD_punish = love.graphics.newImage(ASSET_DATA[8]["HUD_punish"])
                 -- counter

@@ -949,7 +949,7 @@ function insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,x,y,opacity,sx,sy
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
-        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_smoke_dash_burst
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_dash_burst
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -979,7 +979,7 @@ function insert_VFX_game_scene_stage_smoke_horizontal_shot(obj_char,x,y,opacity,
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
-        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_smoke_horizontal_shot
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_horizontal_shot
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1009,7 +1009,7 @@ function insert_VFX_game_scene_stage_smoke_land_blow(obj_char,x,y,opacity,sx,sy,
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
-        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_smoke_land_blow
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_land_blow
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1039,7 +1039,7 @@ function insert_VFX_game_scene_stage_smoke_vertical_shot(obj_char,x,y,opacity,sx
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
-        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_smoke_vertical_shot
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_vertical_shot
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1144,7 +1144,7 @@ function insert_VFX_game_scne_stage_dash_cancel_burst(obj_char,x,y,opacity,sx,sy
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
-        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_spark_dcc_burst
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_dcc_burst
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])

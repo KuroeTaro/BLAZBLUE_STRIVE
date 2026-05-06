@@ -353,6 +353,41 @@ function order_load_game_scene_stage(load_order)
                 love.graphics.newImage(ASSET_DATA[4][6])
             )
 
+            -- stage_VFX
+                -- shockwave
+            image_sprite_sheet_VFX_game_scene_air_dash_shockwave =
+            sprite_sheet_load(
+                "asset/game_scene/VFX/stage_VFX/alpha/air_dash_shockwave.json",
+                love.graphics.newImage(ASSET_DATA[4]["air_dash_shockwave"])
+            )
+                -- smoke
+            image_sprite_sheet_VFX_game_scene_dash_burst = 
+            sprite_sheet_load(
+                "asset/game_scene/VFX/stage_VFX/alpha/dash_burst.json",
+                love.graphics.newImage(ASSET_DATA[4]["dash_burst"])
+            )
+            image_sprite_sheet_VFX_game_scene_horizontal_shot = 
+            sprite_sheet_load(
+                "asset/game_scene/VFX/stage_VFX/alpha/horizontal_shot.json",
+                love.graphics.newImage(ASSET_DATA[4]["horizontal_shot"])
+            )
+            image_sprite_sheet_VFX_game_scene_land_blow = 
+            sprite_sheet_load(
+                "asset/game_scene/VFX/stage_VFX/alpha/land_blow.json",
+                love.graphics.newImage(ASSET_DATA[4]["land_blow"])
+            )
+            image_sprite_sheet_VFX_game_scene_vertical_shot = 
+            sprite_sheet_load(
+                "asset/game_scene/VFX/stage_VFX/alpha/vertical_shot.json",
+                love.graphics.newImage(ASSET_DATA[4]["vertical_shot"])
+            )
+                -- spark
+            image_sprite_sheet_VFX_game_scene_dcc_burst = 
+            sprite_sheet_load(
+                "asset/game_scene/VFX/stage_VFX/alpha/dcc_burst.json",
+                love.graphics.newImage(ASSET_DATA[4]["dcc_burst"])
+            )
+
             image_stage_game_scene_ground = love.graphics.newImage(ASSET_DATA[4][7])
             image_stage_game_scene_stage_liner_fade_alpha = love.graphics.newImage(ASSET_DATA[4][8])
             image_stage_game_scene_stair = love.graphics.newImage(ASSET_DATA[4][9])

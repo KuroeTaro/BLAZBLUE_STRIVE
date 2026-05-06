@@ -48,15 +48,4 @@ thread_data["HUD_counter_ver3"] = compress_module("asset/game_scene/VFX/HUD_VFX/
 thread_data["HUD_positive_bouns_LP"] = compress_module("asset/game_scene/VFX/HUD_VFX/_positive_bonus_VFX/HUD_positive_bouns_LP.dds")
 thread_data["HUD_positive_bouns_RP"] = compress_module("asset/game_scene/VFX/HUD_VFX/_positive_bonus_VFX/HUD_positive_bouns_RP.dds")
 
--- stage_VFX
-    -- shockwave
-thread_data["air_dash_shockwave"] = compress_module("asset/game_scene/VFX/stage_VFX/air_dash_shockwave.dds")
-    -- smoke
-thread_data["smoke_dash_burst"] = compress_module("asset/game_scene/VFX/stage_VFX/_smoke/dash_burst.dds")
-thread_data["smoke_horizontal_shot"] = compress_module("asset/game_scene/VFX/stage_VFX/_smoke/horizontal_shot.dds")
-thread_data["smoke_land_blow"] = compress_module("asset/game_scene/VFX/stage_VFX/_smoke/land_blow.dds")
-thread_data["smoke_vertical_shot"] = compress_module("asset/game_scene/VFX/stage_VFX/_smoke/vertical_shot.dds")
-    -- spark
-thread_data["spark_dcc_burst"] = compress_module("asset/game_scene/VFX/stage_VFX/_spark/dcc_burst.dds")
-
 love.thread.getChannel( 'thread_data_8' ):push( thread_data )
