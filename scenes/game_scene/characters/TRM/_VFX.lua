@@ -313,7 +313,7 @@ function insert_VFX_game_scene_char_TRM_cS_whiff(obj_char)
     obj[1] = obj_char["x"] + obj_char[5]*(140)
     obj[2] = obj_char["y"] + obj_char[6]*(-440)
     obj[3] = obj_char[3]
-    obj[4] = 0.65
+    obj[4] = 0.25
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = obj_char[7]
@@ -339,7 +339,7 @@ function insert_VFX_game_scene_char_TRM_cS_whiff(obj_char)
         obj[1] = obj_char["x"] + obj_char[5]*(140)
         obj[2] = obj_char["y"] + obj_char[6]*(-440)
         obj[3] = obj_char[3]
-        obj[4] = 1
+        obj[4] = 0.25
         obj[5] = obj_char[5]
         obj[6] = obj_char[6]
         obj[7] = obj_char[7]

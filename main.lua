@@ -4,14 +4,6 @@ require_all_in_folder("update_general_use_functions")
 require_all_in_folder("scenes/load_scene")
 require_all_init_load_function()
 
-DEBUG_DATA_TABLE = {
-	4,5,1.05,
-	-10,2.5,1.05,
-}
-
--- DEBUG_DATA_TABLE[1],DEBUG_DATA_TABLE[2],DEBUG_DATA_TABLE[3],
--- DEBUG_DATA_TABLE[4],DEBUG_DATA_TABLE[5],DEBUG_DATA_TABLE[6],
-
 function love.run()
 	if love.load then love.load(love.arg.parseGameArguments(arg),arg) end
 
@@ -272,8 +264,10 @@ end
 function love.update()
 	-- http://127.0.0.1:8000
 	require("lovebird").update()
-	-- globalCount = countGlobals()
+	-- gc
 	set_nuGC(0.001, 10, true)
+	-- trainning_mode_debug_low_ver
+	-- change_later
 	set_pause()
 	set_jump_breakpoint()
 	set_show_hitbox()
@@ -285,6 +279,7 @@ function love.update()
 	set_recovery()
 	set_throw_clash()
 	set_spawn_pos()
+	-- input
 	update_input()
 	if not DEBUG_PAUSE then
 		update_record_game_duration()
@@ -292,7 +287,6 @@ function love.update()
 	end
 	FPS = love.timer.getFPS()
 	FRAMES_DRAWN = FRAMES_DRAWN + 1
-
 end
 function love.draw()
 	love.graphics.clear(7/255,19/255,31/255,1)
