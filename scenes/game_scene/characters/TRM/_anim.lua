@@ -2072,6 +2072,16 @@ function load_game_scene_anim_char_TRM_burst_overdrive(obj_char,other_side_count
     return res
 end
 
+-- burst_red_roman_cancel
+function load_game_scene_anim_char_TRM_red_cancel(obj_char,other_side_countdown)
+end
+function load_game_scene_anim_char_TRM_blue_cancel(obj_char,other_side_countdown)
+end
+function load_game_scene_anim_char_TRM_purple_cancel(obj_char,other_side_countdown)
+end
+function load_game_scene_anim_char_TRM_yellow_cancel(obj_char,other_side_countdown)
+end
+
 -- _2P
     -- 需要修改的角色属性
         -- 我方
