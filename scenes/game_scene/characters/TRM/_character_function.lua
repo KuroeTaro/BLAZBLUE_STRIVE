@@ -253,7 +253,9 @@ function character_function_game_scene_TRM_shot_sys_off_update(obj_char)
 end
 function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(obj_char)
     -- hurt_state
-    obj_char["hurt_state"] = "unblock"
+    if obj_char["hurt_state"] == "idle" then
+        obj_char["hurt_state"] = "unblock"
+    end
     -- shot_sys
     obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_in(obj_char)
     init_character_anim_with(obj_char,obj_char["shot_sys_animation"])
@@ -283,7 +285,9 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(ob
 end
 function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_update(obj_char)
     -- hurt_state
-    obj_char["hurt_state"] = "unblock"
+    if obj_char["hurt_state"] == "idle" then
+        obj_char["hurt_state"] = "unblock"
+    end
     -- shot_sys
     character_animator(obj_char,obj_char["shot_sys_animation"])
     character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
@@ -320,9 +324,11 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_update
     character_animator(obj_char,obj_char["shot_sys_animation"])
     return
 end
-function character_function_game_scene_TRM_shot_sys_at_the_read_init(obj_char)
+function character_function_game_scene_TRM_shot_sys_at_the_ready_init(obj_char)
     -- hurt_state
-    obj_char["hurt_state"] = "unblock"
+    if obj_char["hurt_state"] == "idle" then
+        obj_char["hurt_state"] = "unblock"
+    end
     -- shot_sys
     -- 已经在ease_in阶段完成了当前帧数的aim_process
     -- reticle
@@ -331,7 +337,9 @@ function character_function_game_scene_TRM_shot_sys_at_the_read_init(obj_char)
 end
 function character_function_game_scene_TRM_shot_sys_at_the_ready_update(obj_char)
     -- hurt_state
-    obj_char["hurt_state"] = "unblock"
+    if obj_char["hurt_state"] == "idle" then
+        obj_char["hurt_state"] = "unblock"
+    end
     -- shot_sys
     character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
     return
@@ -350,7 +358,9 @@ function character_function_game_scene_TRM_shot_sys_steady_aim_update(obj_char)
 end
 function character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
     -- hurt_state
-    obj_char["hurt_state"] = "unblock"
+    if obj_char["hurt_state"] == "idle" then
+        obj_char["hurt_state"] = "unblock"
+    end
     -- shot_sys
     obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(obj_char)
     init_character_anim_with(obj_char,obj_char["shot_sys_animation"])
@@ -368,7 +378,9 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_c
 end
 function character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(obj_char)
     -- hurt_state
-    obj_char["hurt_state"] = "unblock"
+    if obj_char["hurt_state"] == "idle" then
+        obj_char["hurt_state"] = "unblock"
+    end
     -- shot_sys
     character_animator(obj_char,obj_char["shot_sys_animation"])
     return

@@ -1631,7 +1631,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 return
             end
             if get_character_anim_end_state(obj_char,obj_char["shot_sys_animation"])  then
-                character_function_game_scene_TRM_shot_sys_at_the_read_init(obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready"
                 return
             end
@@ -1681,7 +1681,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 return
             end
             if get_character_anim_end_state(obj_char,obj_char["shot_sys_animation"]) then
-                character_function_game_scene_TRM_shot_sys_at_the_read_init(obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready"
                 return
             end
@@ -1715,7 +1715,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 return
             end
             if get_character_anim_end_state(obj_char,obj_char["shot_sys_animation"]) then
-                character_function_game_scene_TRM_shot_sys_at_the_read_init(obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready"
                 return
             end
