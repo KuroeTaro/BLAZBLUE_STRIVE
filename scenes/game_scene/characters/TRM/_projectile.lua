@@ -79,7 +79,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
         "1_4_7_air_block",
         "air","5_stand_idle",
         10,5,1.00,
-        -5,2.5,1.00,
+        10,2.5,1.00,
         nil,nil,nil,nil,
         function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
     )
@@ -188,17 +188,12 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                 return
             end
             -- block_test
-            local block_bool = false
-            local block_direction = obj_char_other_side["direction_input"]
-            if obj_char_other_side["hurt_state"] == "idle" and common_game_scene_check_block_direction(obj_char_other_side) then
-                if obj_char_other_side["height_state"] == "air" then
-                    block_bool = true
-                elseif block_direction == 1 and obj["hit_guard_type_state"] == "low" then
-                    block_bool = true
-                elseif ( block_direction == 4 or block_direction == 7 ) and obj["hit_guard_type_state"] == "high" then
-                    block_bool = true
-                elseif obj["hit_guard_type_state"] == "all" then
-                    block_bool = true
+            local block_bool = common_game_scene_block_test(obj_char_other_side,obj)
+            if obj_char_other_side["height_state"] ~= "air" and block_bool then
+                if common_game_scene_check_crouch_direction(obj_char_other_side) then
+                    obj_char_other_side["height_state"] = "crouch"
+                else
+                    obj_char_other_side["height_state"] = "stand"
                 end
             end
             -- if block

@@ -236,6 +236,35 @@ function common_game_scene_check_crouch_direction(obj_char)
     ) 
 end
 
+function common_game_scene_block_test(obj_char,obj)
+    -- block_test
+    local block_bool = false
+    local block_direction = obj_char["direction_input"]
+    if obj_char["hurt_state"] == "idle" and common_game_scene_check_block_direction(obj_char) then
+        if obj_char["height_state"] == "air" then
+            block_bool = true
+        elseif block_direction == 1 and obj["hit_guard_type_state"] == "low" then
+            block_bool = true
+        elseif ( block_direction == 4 or block_direction == 7 ) and obj["hit_guard_type_state"] == "high" then
+            block_bool = true
+        elseif obj["hit_guard_type_state"] == "all" then
+            block_bool = true
+        end
+    end
+    if obj_char["hurt_state"] == "idle" and (obj_char["state"] == "block" or obj_char["state"] == "blockstop")then
+        if obj_char["height_state"] == "air" then
+            block_bool = true
+        elseif common_game_scene_check_crouch_direction(obj_char) and obj["hit_guard_type_state"] == "low" then
+            block_bool = true
+        elseif ( not common_game_scene_check_crouch_direction(obj_char)) and obj["hit_guard_type_state"] == "high" then
+            block_bool = true
+        elseif obj["hit_guard_type_state"] == "all" then
+            block_bool = true
+        end
+    end
+    return block_bool
+end
+
 function common_game_scene_strike_hit_function(obj_char)
     -- 只需要设置hitstop
     local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
@@ -254,25 +283,15 @@ function common_game_scene_strike_hit_function(obj_char)
     -- physics_lock
     hit_side_obj_char["physics_lock"] = true
     -- block_test
-    local block_bool = false
-    local block_direction = obj_char["direction_input"]
-    if obj_char["hurt_state"] == "idle" and common_game_scene_check_block_direction(obj_char) then
-        if hit_side_obj_char["hit_guard_type_state"] == "all" then
-            block_bool = true
-        elseif obj_char["height_state"] == "air" and common_game_scene_check_block_direction(obj_char) then
-            block_bool = true
-        elseif block_direction == 4 and hit_side_obj_char["hit_guard_type_state"] == "high" then
-            block_bool = true
-        elseif block_direction == 1 and hit_side_obj_char["hit_guard_type_state"] == "low" then
-            block_bool = true
-        end
-    end
+    local block_bool = common_game_scene_block_test(obj_char,hit_side_obj_char)
+    -- risk_gauge
     if obj_char["risk_gauge"][1] >= obj_char["risk_gauge"][2] and not block_bool then
         obj_char["hurt_state"] = "counter"
         hit_side_obj_char["hit_function"] = common_game_scene_strike_hit_function
         hit_side_obj_char["hurt_function"] = common_game_scene_strike_hurt_function
         hit_side_obj_char["hit_counter_ver_function"] = common_game_scene_counter_ver3
     end
+    -- counter
     if obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
         hit_side_obj_char["hit_damage"] = hit_side_obj_char["hit_damage"]*1.1
         local hit_counter_VFX_insert_function_argument = hit_side_obj_char["hit_counter_VFX_insert_function_argument"]
@@ -339,17 +358,12 @@ function common_game_scene_strike_hurt_function(obj_char)
         return
     end
     -- block_test
-    local block_bool = false
-    local block_direction = obj_char["direction_input"]
-    if obj_char["hurt_state"] == "idle" and common_game_scene_check_block_direction(obj_char) then
-        if obj_char["height_state"] == "air" then
-            block_bool = true
-        elseif block_direction == 1 and hit_side_obj_char["hit_guard_type_state"] == "low" then
-            block_bool = true
-        elseif ( block_direction == 4 or block_direction == 7 ) and hit_side_obj_char["hit_guard_type_state"] == "high" then
-            block_bool = true
-        elseif hit_side_obj_char["hit_guard_type_state"] == "all" then
-            block_bool = true
+    local block_bool = common_game_scene_block_test(obj_char,hit_side_obj_char)
+    if obj_char["height_state"] ~= "air" and block_bool then
+        if common_game_scene_check_crouch_direction(obj_char) then
+            obj_char["height_state"] = "crouch"
+        else
+            obj_char["height_state"] = "stand"
         end
     end
     -- idle block
