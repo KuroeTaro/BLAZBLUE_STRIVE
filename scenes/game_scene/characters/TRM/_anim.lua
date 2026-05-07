@@ -2072,14 +2072,14 @@ function load_game_scene_anim_char_TRM_burst_overdrive(obj_char,other_side_count
     return res
 end
 
--- burst_red_roman_cancel
-function load_game_scene_anim_char_TRM_red_cancel(obj_char,other_side_countdown)
+-- burst_red_
+function load_game_scene_anim_char_TRM_RC_red_rc(obj_char,other_side_countdown)
 end
-function load_game_scene_anim_char_TRM_blue_cancel(obj_char,other_side_countdown)
+function load_game_scene_anim_char_TRM_RC_blue_rc(obj_char,other_side_countdown)
 end
-function load_game_scene_anim_char_TRM_purple_cancel(obj_char,other_side_countdown)
+function load_game_scene_anim_char_TRM_RC_purple_rc(obj_char,other_side_countdown)
 end
-function load_game_scene_anim_char_TRM_yellow_cancel(obj_char,other_side_countdown)
+function load_game_scene_anim_char_TRM_RC_yellow_rc(obj_char,other_side_countdown)
 end
 
 -- _2P
