@@ -8338,7 +8338,6 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- collide
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = {{0,-140,260,300},{160,0,260,120},{180,-105,180,90},{180,-180,140,60}}
         obj_char["hurtbox_table"] = {{0,-140,260,300},{115,-80,360,240}}
         -- draw_correction
         obj_char[8] = 4
