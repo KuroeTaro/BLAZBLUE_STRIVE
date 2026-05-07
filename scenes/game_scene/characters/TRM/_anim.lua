@@ -7554,10 +7554,6 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
         obj_char[8] = 4
     end
     res[8] = function()
-        -- draw_correction
-        obj_char[8] = 5
-    end
-    res[12] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
         obj_char["hit_guard_type_state"] = "none" -- none all low high
@@ -7570,6 +7566,10 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
         -- collide
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-135,260,290}}
+        -- draw_correction
+        obj_char[8] = 5
+    end
+    res[12] = function()
         -- draw_correction
         obj_char[8] = 6
     end
@@ -7809,13 +7809,13 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- collide
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = {{0,-150,235,320},{-18,-335,180,50},{160,-215,200,120},{90,-155,120,60}}
+        obj_char["hurtbox_table"] = {{0,-150,235,320},{-18,-335,180,50},{187.5,-215,140,120},{132.5,-140,30,30}}
         -- draw_correction
         obj_char[8] = 3
     end
     res[12] = function()
         -- collide
-        obj_char["hurtbox_table"] = {{0,-150,235,320},{-18,-335,180,50},{140,-210,120,90}}
+        obj_char["hurtbox_table"] = {{0,-150,235,320},{-18,-335,180,50},{157.5,-210,80,90}}
         -- draw_correction
         obj_char[8] = 4
     end
@@ -8321,8 +8321,8 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true
         -- collide
-        obj_char["hitbox_table"] = {{210,40,400,190},{230,-125,255,140},{230,-225,180,60}}
-        obj_char["hurtbox_table"] = {{0,-140,280,300},{210,40,450,240},{230,-125,305,190},{230,-225,230,110}}
+        obj_char["hitbox_table"] = {{200,10,400,190},{275,-145,250,120},{200,-255,220,100}}
+        obj_char["hurtbox_table"] = {{0,-140,280,300},{140,-80,440,300},{200,-255,270,150}}
         -- draw_correction
         obj_char[8] = 3
     end
