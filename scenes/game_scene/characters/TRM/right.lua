@@ -179,7 +179,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["pushbox"] = {0,-185,120,370}
     obj_char_game_scene_char_RP["pushbox_other_side_char_active"] = true
     obj_char_game_scene_char_RP["hitbox_table"] = {}
-    obj_char_game_scene_char_RP["hurtbox_table"] = {{0,-215,170,430},{0,-440,100,20}}
+    obj_char_game_scene_char_RP["hurtbox_table"] = {{0,-215,170,430},{0,-455,100,50}}
     obj_char_game_scene_char_RP["collision_move_available"] = {1,1}
     obj_char_game_scene_char_RP["collision_move_available_cache"] = {1,1}
     obj_char_game_scene_char_RP["collision_test_ground_height_offset"] = 0 -- 用于检测和地面碰撞的
@@ -907,7 +907,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"][3] = {{0,-187.5,290,375}}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"][4] = {{0,-190,210,380}}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"][5] = {{0,-207.5,190,415}}
-    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"][6] = {{0,-215,170,430},{0,-440,100,20}}
+    obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"][6] = {{0,-215,170,430},{0,-455,100,50}}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"] = {265,510}
 
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_rotate"] = {}
