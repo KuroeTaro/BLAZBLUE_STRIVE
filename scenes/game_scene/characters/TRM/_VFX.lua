@@ -369,10 +369,10 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_switch(obj_char)
     local side = obj_char["player_side"]
     local y = 0
     local height_state_y_offset = {
-        ["stand"] = -680,
-        ["crouch"] = -480,
-        ["air"] = -390,
-        ["OTG"] = -180
+        ["stand"] = -730,
+        ["crouch"] = -530,
+        ["air"] = -440,
+        ["OTG"] = -230
     }
     y = height_state_y_offset[obj_char["height_state"]]
     if side == "L" then
@@ -382,7 +382,7 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_switch(obj_char)
     end 
 
     obj["life"] = 30
-    obj[1] = obj_char["x"] + obj_char[5]*(-320)
+    obj[1] = obj_char["x"] + obj_char[5]*(-370)
     obj[2] = obj_char["y"] + obj_char[6]*(y)
     obj[3] = obj_char[3]
     obj[4] = 1
@@ -403,12 +403,6 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_switch(obj_char)
     obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
-        obj[1] = obj_char["x"] + obj_char[5]*(-320)
-        obj[2] = obj_char["y"] + obj_char[6]*(y)
-        obj[3] = obj_char[3]
-        obj[5] = obj_char[5]
-        obj[6] = obj_char[6]
-        obj[7] = obj_char[7]
         frame_animator(obj,obj["animation"])
         obj["life"] = obj["life"] - 1
     end
@@ -416,7 +410,7 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_switch(obj_char)
         local obj_camera = obj_stage_game_scene_camera
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
-        love.graphics.setColor(5/255,5/255,5/255,0.75)
+        love.graphics.setColor(5/255,5/255,5/255,0.5)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
     end
