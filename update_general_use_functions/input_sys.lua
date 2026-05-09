@@ -54,7 +54,8 @@ function init_input()
         "w","s","a","d",
         "j","i","l","k",
         "lshift","o","escape","return",
-        "u","h",'r','space'
+        "u","h","r","space",
+        "t","g","b","n"
     }
     
     for i=1,20 do
@@ -222,7 +223,7 @@ end
 --获得所有指令的现在布尔值和上一帧布尔值（键盘）
 function get_input_sys_current_command(INPUT_SYS_CURRENT_COMMAND,INPUT_SYS_CURRENT_CONTROLLER)
     if INPUT_SYS_CURRENT_CONTROLLER[1] == "keyboard" then
-        for i = 1,16 do
+        for i = 1,20 do
             if love.keyboard.isDown(INPUT_SYS_KEY_TABLE[i]) then
                 INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i]] = 1
             else INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i]] = 0
@@ -360,7 +361,7 @@ end
 
 -- 获得input
 function get_input_sys_anykey_keyboard()
-    for i = 1,16 do
+    for i = 1,20 do
         if love.keyboard.isDown(INPUT_SYS_KEY_TABLE[i]) then
             return true
         end

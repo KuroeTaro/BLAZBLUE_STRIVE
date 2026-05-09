@@ -263,7 +263,7 @@ function love.load()
 end    
 function love.update()
 	-- http://127.0.0.1:8000
-	-- require("lovebird").update()
+	require("lovebird").update()
 	-- gc
 	set_nuGC(0.001, 10, true)
 	-- trainning_mode_debug_low_ver
