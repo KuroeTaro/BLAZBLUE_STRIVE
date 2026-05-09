@@ -83,10 +83,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "TRM_burst_overdrive_rc",
+	"image": "TRM_burst_overdrive_rc_ground",
 	"format": "RGBA8888",
 	"size": {"w":4600,"h":640},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:cfb81b086518d7f32d9ff9e8774a239c:949dd7b658a7228aba95cacc173a7a81:aa29f45498915dc6f4796f0ec27a7e72$"
+	"smartupdate": "$TexturePacker:SmartUpdate:6fa16fd95a7e1668d1e6a51a53a3e050:08825dd85353b9dddc7ff7ee4db7fed8:2fca72cc276878ab8fe334d9c50e43ed$"
 }
 }

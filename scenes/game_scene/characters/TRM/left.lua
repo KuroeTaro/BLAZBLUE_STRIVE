@@ -415,6 +415,7 @@ function order_load_game_scene_char_LP_frames(load_order)
         [18] = function()
             -- ATTACK 4 5 6
             local load_name_table = {
+                "burst_overdrive_rc_air",
                 "burst_overdrive_rc_ground",
                 "2P",
                 "6P",

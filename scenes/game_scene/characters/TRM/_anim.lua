@@ -1908,7 +1908,7 @@ function load_game_scene_anim_char_TRM_burst_overdrive(obj_char,other_side_count
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = {296,615}
+        obj_char["anchor_pos"] = {300,615}
         -- camera_animation_load
         common_game_scene_overdrive_load_camera_shake_anim(obj_char)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
