@@ -415,8 +415,9 @@ function order_load_game_scene_char_RP_frames(load_order)
         [18] = function()
             -- ATTACK 4 5 6
             local load_name_table = {
+                "burst_overdrive_ground",
                 "burst_overdrive_rc_air",
-                "burst_overdrive_rc_ground",
+                "burst_rc_ground",
                 "2P",
                 "6P",
                 "5P",
@@ -2618,25 +2619,25 @@ end
 
 function state_gate_game_scene_char_RP_common_RC_move(input,obj_char,color)
     -- _RC_blue_rc
-    if test_input_sys_press(input["RC"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-            common_update_game_scene_input_direction(obj_char)
-        end
-        if test_input_sys_press(input["dash"]) then
-            obj_char["velocity"] = {5.0*obj_char[5],0}
-        elseif test_input_sys_press(input["up"]) then
-            obj_char["velocity"] = {0,-5.0}
-        elseif test_input_sys_press(input["left"]) then
-            obj_char["velocity"] = {-5.0,0}
-        elseif test_input_sys_press(input["right"]) then
-            obj_char["velocity"] = {5.0,0}
-        end
-        obj_char["character_animation"] = load_game_scene_anim_char_common_RC_blue_rc(obj_char)
-        obj_char["state"] = "RC_blue_rc"
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        return true
-    end
+    -- if test_input_sys_press(input["RC"]) then
+    --     if not common_game_scene_get_character_facing_currect(obj_char) then
+    --         obj_char[5] = -obj_char[5]
+    --         common_update_game_scene_input_direction(obj_char)
+    --     end
+    --     if test_input_sys_press(input["dash"]) then
+    --         obj_char["velocity"] = {5.0*obj_char[5],0}
+    --     elseif test_input_sys_press(input["up"]) then
+    --         obj_char["velocity"] = {0,-5.0}
+    --     elseif test_input_sys_press(input["left"]) then
+    --         obj_char["velocity"] = {-5.0,0}
+    --     elseif test_input_sys_press(input["right"]) then
+    --         obj_char["velocity"] = {5.0,0}
+    --     end
+    --     obj_char["character_animation"] = load_game_scene_anim_char_common_RC_blue_rc(obj_char)
+    --     obj_char["state"] = "RC_blue_rc"
+    --     init_character_anim_with(obj_char,obj_char["character_animation"])
+    --     return true
+    -- end
 end
 function state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,type)
     -- _overdrive

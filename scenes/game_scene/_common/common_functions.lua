@@ -1098,7 +1098,7 @@ function common_game_scene_char_apply_hurt_velocity(
         if obj_char_other_side["collision_move_available"][2] == 1 or final_hurt_horizontal_velocity <= 0 then
             obj_char_other_side["friction"] = hurt_horizontal_friction
             obj_char_other_side["velocity"] = {
-                final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"],
+                final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]+obj_char_other_side["velocity"][1]*0.15,
                 hurt_vertical_velocity
             }
         elseif obj_char_other_side["collision_move_available"][2] == 0 then
@@ -1113,7 +1113,7 @@ function common_game_scene_char_apply_hurt_velocity(
         if obj_char_other_side["collision_move_available"][1] == 1 or final_hurt_horizontal_velocity >= 0 then
             obj_char_other_side["friction"] = hurt_horizontal_friction
             obj_char_other_side["velocity"] = {
-                final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"],
+                final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]+obj_char_other_side["velocity"][1]*0.15,
                 hurt_vertical_velocity
             }
         elseif obj_char_other_side["collision_move_available"][1] == 0 then
@@ -1253,12 +1253,12 @@ function common_game_scene_projectile_apply_hurt_velocity(
     obj_char_other_side["friction"] = hurt_horizontal_friction
     if obj_char["x"] < obj_char_other_side["x"] then
         obj_char_other_side["velocity"] = {
-            final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"],
+            final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]+obj_char_other_side["velocity"][1]*0.15,
             hurt_vertical_velocity
         }
     elseif obj_char["x"] > obj_char_other_side["x"] then
         obj_char_other_side["velocity"] = {
-            -final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"],
+            -final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]+obj_char_other_side["velocity"][1]*0.15,
             hurt_vertical_velocity
         }
     else

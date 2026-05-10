@@ -1861,7 +1861,7 @@ function load_game_scene_anim_char_TRM_burst_overdrive(obj_char,other_side_count
     end
     res[0] = function()
         -- state
-        obj_char["sprite_sheet_state"] = "burst_overdrive_rc_ground"
+        obj_char["sprite_sheet_state"] = "burst_overdrive_ground"
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
