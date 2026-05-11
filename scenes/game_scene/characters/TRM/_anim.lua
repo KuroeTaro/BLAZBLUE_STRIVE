@@ -6593,6 +6593,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         obj_char[8] = 4
     end
     res[27] = function()
+        -- state
+        obj_char["hit_cancel"] = true
         -- VFX
         local hit_VFX_insert_function_argument = obj_char["hit_VFX_insert_function_argument"]
         obj_char["hit_VFX_insert_function"](
@@ -9147,6 +9149,8 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         obj_char[8] = 3
     end
     res[12] = function()
+        -- state
+        obj_char["hit_cancel"] = true
         -- VFX
         local hit_VFX_insert_function_argument = obj_char["hit_VFX_insert_function_argument"]
         obj_char["hit_VFX_insert_function"](
