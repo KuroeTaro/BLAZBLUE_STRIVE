@@ -1,15 +1,21 @@
 function insert_VFX_game_scene_char_overdrive_badge(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
     local image_sprite_sheet = nil
+    local y_offset = 0
     if obj_char["player_side"] == "L" then
         image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP_overdrive_badge
     elseif obj_char["player_side"] == "R" then
         image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP_overdrive_badge
-    end 
+    end
+    if obj_char["height_state"] == "air" then
+        y_offset = 715
+    else
+        y_offset = 865
+    end
     
     obj["life"] = 70
     obj[1] = obj_char["x"] - obj_char[5]*(500)
-    obj[2] = obj_char["y"] - obj_char[6]*(865)
+    obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
     obj[3] = obj_char[3]
     obj[4] = 1
     obj[5] = obj_char[5]*2
@@ -18,7 +24,7 @@ function insert_VFX_game_scene_char_overdrive_badge(obj_char)
     obj[8] = 0
     obj["update"] = function()
         obj[1] = obj_char["x"] - obj_char[5]*(500)
-        obj[2] = obj_char["y"] - obj_char[6]*(865)
+        obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
         obj[3] = obj_char[3]
         obj[4] = 1
         obj[5] = obj_char[5]*2
@@ -43,9 +49,15 @@ function insert_VFX_game_scene_char_overdrive_badge(obj_char)
 end
 function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
+    local y_offset = 0
+    if obj_char["height_state"] == "air" then
+        y_offset = 645
+    else
+        y_offset = 845
+    end
     obj["life"] = 35
     obj[1] = obj_char["x"] - obj_char[5]*(860)
-    obj[2] = obj_char["y"] - obj_char[6]*(845)
+    obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
     obj[3] = obj_char[3]
     obj[4] = 1
     obj[5] = obj_char[5]*2
@@ -56,7 +68,7 @@ function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
         -- obj[1] = obj_char["x"] + obj_char[5]*(-860)/2
         -- obj[2] = obj_char["y"] + obj_char[6]*(840)
         obj[1] = obj_char["x"] - obj_char[5]*(860)
-        obj[2] = obj_char["y"] - obj_char[6]*(845)
+        obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
         obj[3] = obj_char[3]
         obj[4] = 1
         obj[5] = obj_char[5]*2

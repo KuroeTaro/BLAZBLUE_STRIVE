@@ -449,7 +449,7 @@ function load_game_scene_stage_apply_wallbreak_start_init(hurt_side_obj_char,hit
     obj_stage_game_scene_wallbreak_dynamic[5] = wallstick_on_side
     obj_stage_game_scene_wallbreak_smoke[1] = -1150*wallstick_on_side+800
     obj_stage_game_scene_wallbreak_smoke[5] = 1.35*wallstick_on_side
-    obj_stage_game_scene_wallbreak_glow[1] = 1860*wallstick_on_side
+    obj_stage_game_scene_wallbreak_glow[1] = 1960*wallstick_on_side
     obj_stage_game_scene_wallbreak_glow[2] = hurt_side_obj_char["y"] - 545
     obj_stage_game_scene_wallbreak_glow[5] = 2*wallstick_on_side
     -- update_animation

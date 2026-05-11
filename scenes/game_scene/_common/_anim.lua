@@ -1750,8 +1750,6 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         obj_char["burst_inv"] = true
         obj_char["burst_inv_countdown"] = 30
 
-        obj_char["physics_lock"] = false
-
         update_1f_15f_air(0)
         -- state_number
         obj_char["velocity"] = velocity
@@ -1895,7 +1893,6 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
         obj_char["velocity_cache"] = {0,0}
         obj_char["gravity"] = 0
         obj_char["friction"] = 1
-        obj_char["physics_lock"] = false
         -- collide
         obj_char["pushbox"] = pushbox_data[sprite_sheet_state][0]
         obj_char["pushbox_other_side_char_active"] = true
@@ -2389,7 +2386,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         obj_char["velocity_cache"] = {0,0}
         obj_char["gravity"] = 0
         obj_char["friction"] = 1
-        obj_char["physics_lock"] = false
         -- collide
         obj_char["pushbox"] = pushbox_data[sprite_sheet_state][0]
         obj_char["pushbox_other_side_char_active"] = true

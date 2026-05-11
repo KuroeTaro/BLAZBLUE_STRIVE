@@ -971,7 +971,7 @@ function load_game_scene_wallbreak_start_init_RP()
     obj_char_game_scene_char_RP["velocity_cache"] = {0,0}
     obj_char_game_scene_char_RP["gravity"] = 2.5
     obj_char_game_scene_char_RP["friction"] = 1
-    obj_char_game_scene_char_RP["physics_lock"] = false
+    obj_char_game_scene_char_RP["physics_lock"] = true
 
     obj_char_game_scene_char_RP["game_speed"] = 1
     obj_char_game_scene_char_RP["game_speed_subframe"] = 1
@@ -2845,6 +2845,7 @@ function state_gate_game_scene_char_RP_from_throw_testing(input,obj_char)
     obj_char["f"] = obj_char["f"] + 1
     if obj_char["f"] <= 9 and common_game_scene_change_input_state("R")["Launcher"] == "Pressing" then
         obj_char["state"] = "throw_teched"
+        obj_char["physics_lock"] = false
         obj_char["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
             obj_char,"teched"
         )
@@ -2864,6 +2865,7 @@ function state_gate_game_scene_char_RP_from_throw_tested(input,obj_char)
     obj_char["f"] = obj_char["f"] + 1
     if obj_char["f"] <= 9 and input["Launcher"] == "Pressing" then
         obj_char["state"] = "throw_teching"
+        obj_char["physics_lock"] = false
         obj_char["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
             obj_char,"teching"
         )
@@ -3980,23 +3982,42 @@ function state_gate_game_scene_char_RP_from_burst_overdrive(input,obj_char)
     -- _PRC
     if state_gate_game_scene_char_RP_common_RC_move(input,obj_char,"PRC") then
         obj_char["f"] = 28
+        obj_char["physics_lock"] = false
         character_animator(obj_char,obj_char["character_animation"])
         return true
     end
     if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         -- to stand_idle
         obj_char["idle_cancel"] = true
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)  
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["f"] = 28
-        character_animator(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
-        -- _common_ground_idle_to_move
-        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+        obj_char["physics_lock"] = false
+        if obj_char["height_state"] == "air" then
+            obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
+            init_character_anim_with(obj_char,obj_char["character_animation"])
+            obj_char["state"] = "7_8_9_jump_air"
+            obj_char["idle_cancel"] = true
+            obj_char["f"] = 20
+            character_animator(obj_char,obj_char["character_animation"])
+            -- _common_air_idle_to_move
+            if state_gate_game_scene_char_RP_common_air_to_dash_move_hold_ver_all(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char) then
+                return true
+            end
             return true
-        end
-        if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
-            return true
+        else
+            obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)  
+            init_character_anim_with(obj_char,obj_char["character_animation"])
+            obj_char["f"] = 28
+            character_animator(obj_char,obj_char["character_animation"])
+            obj_char["state"] = "5_stand_idle"
+            -- _common_ground_idle_to_move
+            if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
+                return true
+            end
         end
         return true
     end
