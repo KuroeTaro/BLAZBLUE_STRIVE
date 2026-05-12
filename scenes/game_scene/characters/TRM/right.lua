@@ -102,8 +102,6 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["throw_inv_countdown"] = 0
     obj_char_game_scene_char_RP["projectile_inv"] = false
     obj_char_game_scene_char_RP["projectile_inv_countdown"] = 0
-    obj_char_game_scene_char_RP["burst_inv"] = false
-    obj_char_game_scene_char_RP["burst_inv_countdown"] = 0
 
     obj_char_game_scene_char_RP["hit_function"] = function() end
     obj_char_game_scene_char_RP["hurt_function"] = function() end
@@ -129,7 +127,6 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["ability_gauge"] = {600.0,600.0} -- 0.0 - 600.0
     obj_char_game_scene_char_RP["overdrive_gauge"] = {600.0,600.0,"off"} -- 0.0 - 600.0
     obj_char_game_scene_char_RP["overdrive_timer"] = {0,0,0,0} -- 0f 00:00 
-    obj_char_game_scene_char_RP["overdrive_drain_speed"] = 24
     obj_char_game_scene_char_RP["risk_gauge"] = {0.0,300.0}-- 0.0 - 300.0
     obj_char_game_scene_char_RP["wallbreak_gauge"] = {0.0,300.0}-- 0.0 - 300.0
 
@@ -963,8 +960,6 @@ function load_game_scene_wallbreak_start_init_RP()
     obj_char_game_scene_char_RP["throw_inv_countdown"] = 0
     obj_char_game_scene_char_RP["projectile_inv"] = false
     obj_char_game_scene_char_RP["projectile_inv_countdown"] = 0
-    obj_char_game_scene_char_RP["burst_inv"] = false
-    obj_char_game_scene_char_RP["burst_inv_countdown"] = 0
 
     obj_char_game_scene_char_RP["velocity"] = {0,0}
     obj_char_game_scene_char_RP["velocity_debug"] = {0,0}
@@ -1072,8 +1067,6 @@ function load_game_scene_wallbreak_end_init_RP()
     obj_char_game_scene_char_RP["throw_inv_countdown"] = 0
     obj_char_game_scene_char_RP["projectile_inv"] = false
     obj_char_game_scene_char_RP["projectile_inv_countdown"] = 0
-    obj_char_game_scene_char_RP["burst_inv"] = false
-    obj_char_game_scene_char_RP["burst_inv_countdown"] = 0
 
     -- state_number
     obj_char_game_scene_char_RP["velocity"] = {0,0}
@@ -1360,6 +1353,10 @@ function state_machine_char_game_scene_char_RP()
             state_gate_game_scene_char_RP_from_6dash_dash_cancel(input,obj_char)
         end,
         
+        ["RC_red_rc"] = function()
+            character_animator(obj_char,obj_char["character_animation"])
+            state_gate_game_scene_char_RP_from_RC_red_rc(input,obj_char)
+        end,
         ["RC_blue_rc"] = function()
             character_animator(obj_char,obj_char["character_animation"])
             state_gate_game_scene_char_RP_from_RC_blue_rc(input,obj_char)
@@ -1367,10 +1364,6 @@ function state_machine_char_game_scene_char_RP()
         ["RC_purple_rc"] = function()
             character_animator(obj_char,obj_char["character_animation"])
             state_gate_game_scene_char_RP_from_RC_purple_rc(input,obj_char)
-        end,
-        ["RC_red_rc"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
-            state_gate_game_scene_char_RP_from_RC_red_rc(input,obj_char)
         end,
         ["RC_yellow_rc"] = function()
             character_animator(obj_char,obj_char["character_animation"])
@@ -2643,13 +2636,37 @@ function state_gate_game_scene_char_RP_common_burst_overdrive(input,obj_char,typ
     -- _overdrive
     if type == "overdrive" and test_input_sys_press(input["burst"]) and obj_char["overdrive_gauge"][1] == obj_char["overdrive_gauge"][2] then
         local obj_camera = obj_stage_game_scene_camera
+        local height_state = obj_char["height_state"]
+        local sprite_sheet_state = nil
+        local anchor_pos = nil
+        local push_box = nil
+        local shot_sys_oroboros_anchor_pos = nil
+        if height_state == "air" then
+            sprite_sheet_state = "burst_overdrive_rc_air"
+            anchor_pos = {330,485}
+            push_box = {0,-100,120,200}
+            shot_sys_oroboros_anchor_pos = {-130,-320}
+        else
+            sprite_sheet_state = "burst_overdrive_ground"
+            anchor_pos = {300,615}
+            push_box = {0,-185,120,370}
+            shot_sys_oroboros_anchor_pos = {-110,-455}
+        end
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
         if obj_char["state"] == "hitstop" then
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_burst_overdrive(obj_char,70-3)
+            obj_char["character_animation"] = load_game_scene_anim_char_common_burst_overdrive(
+                obj_char,70-3,sprite_sheet_state,
+                anchor_pos,push_box,
+                function() obj_char["shot_sys_oroboros_anchor_pos"] = shot_sys_oroboros_anchor_pos end
+            )
         else
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_burst_overdrive(obj_char,70-13)
+            obj_char["character_animation"] = load_game_scene_anim_char_common_burst_overdrive(
+                obj_char,70-13,sprite_sheet_state,
+                anchor_pos,push_box,
+                function() obj_char["shot_sys_oroboros_anchor_pos"] = shot_sys_oroboros_anchor_pos end
+            )
         end
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "burst_overdrive"
@@ -3969,11 +3986,11 @@ function state_gate_game_scene_char_RP_from_6dash_dash_cancel(input,obj_char)
     end
 end
 
+function state_gate_game_scene_char_RP_from_RC_red_rc(input,obj_char)
+end
 function state_gate_game_scene_char_RP_from_RC_blue_rc(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_RC_purple_rc(input,obj_char)
-end
-function state_gate_game_scene_char_RP_from_RC_red_rc(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_RC_yellow_rc(input,obj_char)
 end
@@ -5403,12 +5420,6 @@ function update_game_scene_char_RP_inv_state_countdown()
     else
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-    end
-    if obj_char["burst_inv_countdown"] > 0 then
-        obj_char["burst_inv_countdown"] = obj_char["burst_inv_countdown"] - 1
-    else
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
     end
 end
 function update_game_scene_char_RP_heat_penalty_countdown()

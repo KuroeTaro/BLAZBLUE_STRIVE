@@ -13,8 +13,6 @@
             -- throw_inv_countdown
             -- projectile_inv
             -- projectile_inv_countdown
-            -- burst_inv
-            -- burst_inv_countdown
             -- gravity
             -- friction
             -- horizontal_velocity_correction
@@ -336,8 +334,6 @@ end
             -- throw_inv_countdown
             -- projectile_inv
             -- projectile_inv_countdown
-            -- burst_inv
-            -- burst_inv_countdown
             -- velocity
             -- gravity
             -- friction
@@ -691,8 +687,6 @@ end
             -- throw_inv_countdown
             -- projectile_inv
             -- projectile_inv_countdown
-            -- burst_inv
-            -- burst_inv_countdown
             -- velocity
             -- velocity_cache
             -- gravity
@@ -786,8 +780,6 @@ end
             -- throw_inv_countdown
             -- projectile_inv
             -- projectile_inv_countdown
-            -- burst_inv
-            -- burst_inv_countdown
             -- velocity
             -- gravity
             -- friction
@@ -973,8 +965,6 @@ end
             -- throw_inv_countdown
             -- projectile_inv
             -- projectile_inv_countdown
-            -- burst_inv
-            -- burst_inv_countdown
             -- velocity
             -- gravity
             -- friction
@@ -1080,9 +1070,7 @@ end
             -- throw_inv
             -- throw_inv_countdown
             -- projectile_inv
-            -- projectile_inv_countdown
-            -- burst_inv
-            -- burst_inv_countdown
+            -- projectile_inv_countdow
             -- velocity
             -- gravity
             -- friction
@@ -1122,13 +1110,11 @@ function load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
         obj_char["idle_cancel"] = false
 
         obj_char["strike_inv"] = true
-        obj_char["strike_inv_countdown"] = 7
+        obj_char["strike_inv_countdown"] = 6
         obj_char["throw_inv"] = true
-        obj_char["throw_inv_countdown"] = 15
+        obj_char["throw_inv_countdown"] = 14
         obj_char["projectile_inv"] = true
-        obj_char["projectile_inv_countdown"] = 4
-        obj_char["burst_inv"] = true
-        obj_char["burst_inv_countdown"] = 7
+        obj_char["projectile_inv_countdown"] = 6
         -- state_number
         obj_char["velocity"] = {-32.0*obj_char[5],-9.0}
         obj_char["gravity"] = 1.2
@@ -1246,8 +1232,6 @@ end
             -- throw_inv_countdown
             -- projectile_inv
             -- projectile_inv_countdown
-            -- burst_inv
-            -- burst_inv_countdown
             -- velocity
             -- gravity
             -- friction
@@ -1372,8 +1356,6 @@ end
             -- throw_inv_countdown
             -- projectile_inv
             -- projectile_inv_countdown
-            -- burst_inv
-            -- burst_inv_countdown
             -- velocity
             -- gravity
             -- friction
@@ -1534,8 +1516,6 @@ end
             -- throw_inv_countdown
             -- projectile_inv
             -- projectile_inv_countdown
-            -- burst_inv
-            -- burst_inv_countdown
             -- velocity
             -- gravity
             -- friction
@@ -1790,315 +1770,6 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
     return res
 end
 
--- burst_overdrive_ground
-    -- 需要修改的角色属性
-        -- 我方
-            -- sprite_sheet_state
-            -- height_state
-            -- hurt_state_target
-            -- move_state
-            -- startup_frame
-            -- active_frame
-            -- recovery_frame
-            -- frame_adv
-            -- current_animation_length
-            -- strike_inv
-            -- strike_inv_countdown
-            -- throw_inv
-            -- throw_inv_countdown
-            -- projectile_inv
-            -- projectile_inv_countdown
-            -- burst_inv
-            -- burst_inv_countdown
-            -- velocity
-            -- velocity_cache
-            -- gravity
-            -- friction
-            -- horizontal_velocity_correction
-            -- gravity_correction
-            -- damage_correction
-            -- overdrive_gauge
-            -- game_speed
-            -- game_speed_subframe
-            -- game_speed_abnormal_realtime_countdown
-            -- hit_hurt_blockstop_countdown
-            -- pushbox
-            -- hitbox_table
-            -- hurtbox_table
-            -- collision_test_ground_height_offset
-            -- 8
-            -- anchor_pos
-        -- 对方
-            -- game_speed
-            -- game_speed_subframe
-            -- game_speed_abnormal_realtime_countdown
-function load_game_scene_anim_char_TRM_burst_overdrive(obj_char,other_side_countdown)
-    local res = {}
-    local height_state = obj_char["height_state"]
-    local sprite_sheet_state = nil
-    local anchor_pos = nil
-    local push_box = {}
-    local shot_sys_oroboros_anchor_pos = {}
-    local obj_stage_main = obj_stage_game_scene_main
-    local obj_camera = obj_stage_game_scene_camera
-    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
-    -- 更新hitbox table 有一个全屏的红框
-    -- 更新逻辑为没有伤害 没有硬直 只是速度调为0
-    local function update_move_overdrive_state()
-        if obj_char["overdrive_gauge"][1] > 0 then
-            obj_char["overdrive_gauge"][1] = 
-            obj_char["overdrive_gauge"][1] - obj_char["overdrive_drain_speed"]
-        elseif obj_char["overdrive_gauge"][1] < 0 then
-            obj_char["overdrive_gauge"][1] = 0
-        end
-        if obj_char_other_side["game_speed_abnormal_realtime_countdown"] == 0 and obj_char["f"] >= 4 then
-            obj_char["move_state"] = "recovery"
-        end
-    end
-    if height_state == "air" then
-        sprite_sheet_state = "burst_overdrive_rc_air"
-        anchor_pos = {330,485}
-        push_box = {0,-100,120,200}
-        shot_sys_oroboros_anchor_pos = {-130,-320}
-    else
-        sprite_sheet_state = "burst_overdrive_ground"
-        anchor_pos = {300,615}
-        push_box = {0,-185,120,370}
-        shot_sys_oroboros_anchor_pos = {-110,-455}
-    end
-    res["prop_f"] = "f"
-    res["anim_length"] = 70
-
-    for i = 0,69 do
-        res[i] = function()
-            -- state
-            update_move_overdrive_state()
-        end
-    end
-    res[0] = function()
-        -- state
-        obj_char["sprite_sheet_state"] = sprite_sheet_state
-        obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
-        obj_char["move_state"] = "startup" -- none startup active recovery
-        obj_char["startup_frame"] = 0
-        obj_char["active_frame"] = 0
-        obj_char["recovery_frame"] = 0
-
-        obj_char["strike_inv"] = true
-        obj_char["strike_inv_countdown"] = 70
-        obj_char["throw_inv"] = true
-        obj_char["throw_inv_countdown"] = 70
-        obj_char["projectile_inv"] = true
-        obj_char["projectile_inv_countdown"] = 70
-        obj_char["burst_inv"] = true
-        obj_char["burst_inv_countdown"] = 70
-        -- state_number
-        obj_char["velocity"] = {0,0}
-        obj_char["velocity_cache"] = {0,0}
-        obj_char["gravity"] = 2.5
-        obj_char["friction"] = 1
-        obj_char["physics_lock"] = true
-        obj_char["horizontal_velocity_correction"] = 1
-        obj_char["gravity_correction"] = 1
-        obj_char["damage_correction"] = 1
-
-        update_move_overdrive_state()
-        obj_char["overdrive_gauge"][3] = "on"
-
-        play_obj_audio(audio_SFX_game_scene_overdrive)
-        -- air_move
-        obj_char["air_move"] = {}
-        obj_char["air_move"]["jump"] = {1,1}
-        obj_char["air_move"]["air_dash"] = {1,1}
-        -- game_speed
-        obj_char["game_speed"] = 1
-        obj_char["game_speed_subframe"] = 1
-        obj_char["game_speed_abnormal_realtime_countdown"] = 0
-        obj_char["hit_hurt_blockstop_countdown"] = 0
-        -- collide
-        obj_char["pushbox"] = push_box
-        obj_char["pushbox_other_side_char_active"] = true
-        obj_char["hitbox_table"] = {} --{ 攻击类型 是投还是打， function值 内部为命中后的逻辑,具体的box形状}
-        obj_char["hurtbox_table"] = {}
-        obj_char["collision_test_ground_height_offset"] = 0
-        -- oroboros
-        obj_char["shot_sys_oroboros_anchor_pos"] = shot_sys_oroboros_anchor_pos
-        -- draw_correction
-        obj_char[8] = 0
-        obj_char["anchor_pos"] = anchor_pos
-        -- camera_animation_load
-        common_game_scene_overdrive_load_camera_shake_anim(obj_char)
-        common_game_scene_nil_load_camera_enclose_anim(obj_char)
-        -- camera_animation_application
-        table.insert(obj_stage_main["camera_active_application_table"],
-            function()
-                anim_stage_point_linear_game_scene_camera_enclosing = obj_char["camera_enclosing_anim"]
-                anim_stage_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
-                anim_stage_point_linear_game_scene_camera_shake_y = obj_char["camera_y_shake_anim"]
-                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_enclosing)
-                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
-                obj_camera["enclose_position_offset"] = obj_char["enclose_position_offset"]
-                obj_camera["state"] = "active"
-            end
-        )
-        -- VFX
-        insert_VFX_game_scene_char_overdrive_badge(obj_char)
-        insert_VFX_game_scene_char_overdrive_partical(obj_char)
-        insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
-    end
-    res[3] = function()
-        -- state & state_number
-        update_move_overdrive_state()
-            -- idle状态下OD 恢复为3+13
-            -- 攻击状态下OD 恢复为3+3
-            -- block_stun状态下OD 恢复为3+23
-        obj_char_other_side["game_speed"] = 0
-        obj_char_other_side["game_speed_subframe"] = 0
-        obj_char_other_side["game_speed_abnormal_realtime_countdown"] = other_side_countdown
-    end
-    res[4] = function()
-        -- state & state_number
-        update_move_overdrive_state()
-        -- draw_correction
-        obj_char[8] = 1
-    end
-    res[8] = function()
-        -- state & state_number
-        update_move_overdrive_state()
-        -- draw_correction
-        obj_char[8] = 2
-    end
-    res[12] = function()
-        -- state & state_number
-        update_move_overdrive_state()
-        -- draw_correction
-        obj_char[8] = 3
-    end
-    res[28] = function()
-        -- state & state_number
-        update_move_overdrive_state()
-        -- draw_correction
-        obj_char[8] = 4
-    end
-    res[30] = function()
-        -- state & state_number
-        update_move_overdrive_state()
-        -- VFX
-        insert_VFX_game_scene_char_overdrive_airflow(obj_char)
-    end
-    res[32] = function()
-        -- state & state_number
-        update_move_overdrive_state()
-        -- draw_correction
-        obj_char[8] = 5
-    end
-    res[35] = function()
-        -- state & state_number
-        update_move_overdrive_state()
-        -- draw_correction
-        obj_char[8] = 6
-    end
-    res[38] = function()
-        -- state & state_number
-        update_move_overdrive_state()
-        local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
-        if obj_char_other_side["state"] == "block" or obj_char_other_side["state"] == "hurt" then
-            if obj_char["health_gauge"][1]/obj_char["health_gauge"][3] > 0.85 then
-                obj_char["overdrive_timer"] = {0,2,0,0}
-            elseif obj_char["health_gauge"][1]/obj_char["health_gauge"][3] > 0.60 then
-                obj_char["overdrive_timer"] = {0,3,0,0}
-            elseif obj_char["health_gauge"][1]/obj_char["health_gauge"][3] > 0.45 then
-                obj_char["overdrive_timer"] = {0,4,0,0}
-            elseif obj_char["health_gauge"][1]/obj_char["health_gauge"][3] > 0.35 then
-                obj_char["overdrive_timer"] = {0,5,0,0}
-            else
-                obj_char["overdrive_timer"] = {0,6,0,0}
-            end
-        else
-            if obj_char["health_gauge"][1]/obj_char["health_gauge"][3] > 0.85 then
-                obj_char["overdrive_timer"] = {0,4,0,0}
-            elseif obj_char["health_gauge"][1]/obj_char["health_gauge"][3] > 0.60 then
-                obj_char["overdrive_timer"] = {0,6,0,0}
-            elseif obj_char["health_gauge"][1]/obj_char["health_gauge"][3] > 0.45 then
-                obj_char["overdrive_timer"] = {0,8,0,0}
-            elseif obj_char["health_gauge"][1]/obj_char["health_gauge"][3] > 0.35 then
-                obj_char["overdrive_timer"] = {1,0,0,0}
-            else
-                obj_char["overdrive_timer"] = {1,2,0,0}
-            end
-        end
-        obj_char["overdrive_gauge"][3] = "on"
-        -- draw_correction
-        obj_char[8] = 7
-    end
-    res[41] = function()
-        -- state & state_number
-        update_move_overdrive_state()
-        -- draw_correction
-        obj_char[8] = 5
-    end
-    res[44] = function()
-        -- state & state_number
-        update_move_overdrive_state()
-        -- draw_correction
-        obj_char[8] = 6
-    end
-    res[47] = function()
-        -- state & state_number
-        update_move_overdrive_state()
-        -- draw_correction
-        obj_char[8] = 7
-    end
-    res[50] = function()
-        -- state & state_number
-        update_move_overdrive_state()
-        -- draw_correction
-        obj_char[8] = 5
-    end
-    res[53] = function()
-        -- state & state_number
-        update_move_overdrive_state()
-        -- draw_correction
-        obj_char[8] = 6
-    end
-    res[56] = function()
-        -- state & state_number
-        update_move_overdrive_state()
-        -- draw_correction
-        obj_char[8] = 7
-    end
-    res[60] = function()
-        -- state & state_number
-        update_move_overdrive_state()
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
-        -- draw_correction
-        obj_char[8] = 8
-    end
-    res[65] = function()
-        -- state & state_number
-        update_move_overdrive_state()
-        -- draw_correction
-        obj_char[8] = 9
-    end
-    res[70] = function()
-        -- animation end
-    end
-    return res
-end
-
--- burst_red_
-function load_game_scene_anim_char_TRM_RC_red_rc(obj_char,other_side_countdown)
-end
-function load_game_scene_anim_char_TRM_RC_blue_rc(obj_char,other_side_countdown)
-end
-function load_game_scene_anim_char_TRM_RC_purple_rc(obj_char,other_side_countdown)
-end
-function load_game_scene_anim_char_TRM_RC_yellow_rc(obj_char,other_side_countdown)
-end
-
 -- _2P
     -- 需要修改的角色属性
         -- 我方
@@ -2137,8 +1808,6 @@ end
             -- throw_inv_countdown
             -- projectile_inv
             -- projectile_inv_countdown
-            -- burst_inv
-            -- burst_inv_countdown
             -- hit_function
             -- hurt_function
             -- hit_counter_ver_function
@@ -2293,8 +1962,6 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         obj_char["throw_inv_countdown"] = 0
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
 
         obj_char["hit_function"] = common_game_scene_strike_hit_function
         obj_char["hurt_function"] = common_game_scene_strike_hurt_function
@@ -2546,8 +2213,6 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         obj_char["throw_inv_countdown"] = 0
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
 
         obj_char["hit_function"] = common_game_scene_strike_hit_function
         obj_char["hurt_function"] = common_game_scene_strike_hurt_function
@@ -2821,8 +2486,6 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char["throw_inv_countdown"] = 0
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
 
         obj_char["hit_function"] = common_game_scene_strike_hit_function
         obj_char["hurt_function"] = common_game_scene_strike_hurt_function
@@ -3073,8 +2736,6 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
         obj_char["throw_inv_countdown"] = 0
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
 
         obj_char["hit_function"] = common_game_scene_strike_hit_function
         obj_char["hurt_function"] = common_game_scene_strike_hurt_function
@@ -3361,8 +3022,6 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         obj_char["throw_inv_countdown"] = 0
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
 
         obj_char["hit_function"] = common_game_scene_strike_hit_function
         obj_char["hurt_function"] = common_game_scene_strike_hurt_function
@@ -3664,8 +3323,6 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         obj_char["throw_inv_countdown"] = 0
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
 
         obj_char["hit_function"] = common_game_scene_strike_hit_function
         obj_char["hurt_function"] = common_game_scene_strike_hurt_function
@@ -3954,8 +3611,6 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
         obj_char["throw_inv_countdown"] = 0
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
 
         obj_char["hit_function"] = common_game_scene_strike_hit_function
         obj_char["hurt_function"] = common_game_scene_strike_hurt_function
@@ -4275,8 +3930,6 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
         obj_char["throw_inv_countdown"] = 0
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
 
         obj_char["hit_function"] = common_game_scene_strike_hit_function
         obj_char["hurt_function"] = common_game_scene_strike_hurt_function
@@ -4603,8 +4256,6 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         obj_char["throw_inv_countdown"] = 0
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
 
         obj_char["hit_function"] = common_game_scene_strike_hit_function
         obj_char["hurt_function"] = common_game_scene_strike_hurt_function
@@ -4865,8 +4516,6 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
         obj_char["throw_inv_countdown"] = 0
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
 
         obj_char["hit_function"] = common_game_scene_strike_hit_function
         obj_char["hurt_function"] = common_game_scene_strike_hurt_function
@@ -5911,8 +5560,6 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         obj_char["throw_inv_countdown"] = 0
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
 
         obj_char["hit_function"] = common_game_scene_strike_hit_function
         obj_char["hurt_function"] = common_game_scene_strike_hurt_function
@@ -6129,8 +5776,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
         obj_char["throw_inv_countdown"] = 0
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
 
         obj_char["hit_function"] = common_game_scene_throw_hit_function
         obj_char["hurt_function"] = common_game_scene_throw_hurt_function
@@ -6321,8 +5966,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = true
         obj_char_other_side["projectile_inv_countdown"] = 36
-        obj_char_other_side["burst_inv"] = true
-        obj_char_other_side["burst_inv_countdown"] = 36
         -- state_number
         obj_char_other_side["velocity"] = {0,0}
         obj_char_other_side["gravity"] = 0
@@ -6512,8 +6155,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         obj_char["throw_inv_countdown"] = res["anim_length"]-1
         obj_char["projectile_inv"] = true
         obj_char["projectile_inv_countdown"] = res["anim_length"]-1
-        obj_char["burst_inv"] = true
-        obj_char["burst_inv_countdown"] = res["anim_length"]-1
 
         obj_char["hit_function"] = common_game_scene_throw_hit_function
         obj_char["hurt_function"] = common_game_scene_throw_hurt_function
@@ -6914,8 +6555,6 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char["throw_inv_countdown"] = 0
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
 
         obj_char["hit_function"] = common_game_scene_strike_hit_function
         obj_char["hurt_function"] = common_game_scene_strike_hurt_function
@@ -7217,8 +6856,6 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
         obj_char["throw_inv_countdown"] = 0
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
 
         obj_char["hit_function"] = common_game_scene_strike_hit_function
         obj_char["hurt_function"] = common_game_scene_strike_hurt_function
@@ -7511,8 +7148,6 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
         obj_char["throw_inv_countdown"] = 0
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
 
         obj_char["hit_function"] = common_game_scene_strike_hit_function
         obj_char["hurt_function"] = common_game_scene_strike_hurt_function
@@ -7765,8 +7400,6 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
         obj_char["throw_inv_countdown"] = 0
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
 
         obj_char["hit_function"] = common_game_scene_strike_hit_function
         obj_char["hurt_function"] = common_game_scene_strike_hurt_function
@@ -8020,8 +7653,6 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
         obj_char["throw_inv_countdown"] = 0
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
 
         obj_char["hit_function"] = character_function_game_scene_TRM_j2K_strike_hit_function
         obj_char["hurt_function"] = character_function_game_scene_TRM_j2K_strike_hurt_function
@@ -8286,8 +7917,6 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
         obj_char["throw_inv_countdown"] = 0
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
 
         obj_char["hit_function"] = common_game_scene_strike_hit_function
         obj_char["hurt_function"] = common_game_scene_strike_hurt_function
@@ -8549,8 +8178,6 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
         obj_char["throw_inv_countdown"] = 0
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
 
         obj_char["hit_function"] = common_game_scene_strike_hit_function
         obj_char["hurt_function"] = common_game_scene_strike_hurt_function
@@ -8729,8 +8356,6 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
         obj_char["throw_inv_countdown"] = 0
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
 
         obj_char["hit_function"] = common_game_scene_throw_hit_function
         obj_char["hurt_function"] = common_game_scene_throw_hurt_function
@@ -8923,8 +8548,6 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = true
         obj_char_other_side["projectile_inv_countdown"] = 18
-        obj_char_other_side["burst_inv"] = true
-        obj_char_other_side["burst_inv_countdown"] = 18
         -- state_number
         obj_char_other_side["velocity"] = {0,0}
         obj_char_other_side["gravity"] = gravity
@@ -8977,7 +8600,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
         -- state_number
         obj_char_other_side["velocity"] = {obj_char[5]*7.5,0}
         -- collide
-        obj_char_other_side["hitbox_table"] = hurtbox_data_other_side["0_general_hurt_launched_low"][1]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["0_general_hurt_launched_low"][1]
         -- draw_correction
         obj_char_other_side[8] = 1
         obj_char_other_side["hurtstop_wiggle_x"] = 0
@@ -9096,8 +8719,6 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         obj_char["throw_inv_countdown"] = res["anim_length"]-1
         obj_char["projectile_inv"] = true
         obj_char["projectile_inv_countdown"] = res["anim_length"]-1
-        obj_char["burst_inv"] = true
-        obj_char["burst_inv_countdown"] = res["anim_length"]-1
 
         obj_char["hit_function"] = common_game_scene_throw_hit_function
         obj_char["hurt_function"] = common_game_scene_throw_hurt_function

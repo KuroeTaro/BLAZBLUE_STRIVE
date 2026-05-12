@@ -1,0 +1,12 @@
+function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
+
+end
+function insert_projectile_game_scene_char_common_RC_shockwave_blue(obj_char)
+
+end
+function insert_projectile_game_scene_char_common_RC_shockwave_purple(obj_char)
+
+end
+function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
+
+end

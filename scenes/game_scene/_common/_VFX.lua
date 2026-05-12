@@ -252,6 +252,13 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
     table.insert(obj_char["black_overlay_table"],obj)
 end
 
+function insert_VFX_game_scene_char_RC_badge(obj_char,sprite_sheet)
+end
+function insert_VFX_game_scene_char_RC_partical(obj_char,color)
+end
+function insert_VFX_game_scene_char_RC_black_overlay(obj_char)
+end
+
 -- blast slash directional ray_impact
 function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r,fix_pos,negative_side)
     -- x y z opacity sx sy r f

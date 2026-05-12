@@ -630,8 +630,6 @@ function common_game_scene_throw_hurt_function(obj_char)
     obj_char["throw_inv_countdown"] = 0
     obj_char["projectile_inv"] = false
     obj_char["projectile_inv_countdown"] = 0
-    obj_char["burst_inv"] = false
-    obj_char["burst_inv_countdown"] = 0
 
     obj_char["velocity"] = {0,0}
 

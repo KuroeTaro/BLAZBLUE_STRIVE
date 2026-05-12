@@ -298,10 +298,15 @@ function order_load_game_scene_VFX(load_order)
             )
 
             -- RC
-            image_sprite_sheet_VFX_game_scene_RC_partical_shockwave = 
+            image_sprite_sheet_VFX_game_scene_RC_partical = 
             sprite_sheet_load(
-                "asset/game_scene/VFX/RC_partical_shockwave.json",
-                love.graphics.newImage(ASSET_DATA[8]["RC_partical_shockwave_sprite_batch"])
+                "asset/game_scene/VFX/RC_partical.json",
+                love.graphics.newImage(ASSET_DATA[8]["RC_partical_sprite_batch"])
+            )
+            image_sprite_sheet_VFX_game_scene_RC_shockwave = 
+            sprite_sheet_load(
+                "asset/game_scene/VFX/RC_partical.json",
+                love.graphics.newImage(ASSET_DATA[8]["RC_shockwave_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_RC_blue_badge = 
             sprite_sheet_load(

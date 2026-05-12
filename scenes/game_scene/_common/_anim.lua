@@ -30,8 +30,6 @@
             -- throw_inv_countdown
             -- projectile_inv
             -- projectile_inv_countdown
-            -- burst_inv
-            -- burst_inv_countdown
             -- velocity
             -- gravity
             -- friction
@@ -97,8 +95,6 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
         obj_char_other_side["throw_inv_countdown"] = 1000
         obj_char_other_side["projectile_inv"] = true
         obj_char_other_side["projectile_inv_countdown"] = 1000
-        obj_char_other_side["burst_inv"] = true
-        obj_char_other_side["burst_inv_countdown"] = 1000
         -- state_number
         obj_char_other_side["velocity"] = {0,0}
         obj_char_other_side["gravity"] = 2.5
@@ -206,8 +202,6 @@ end
             -- throw_inv_countdown
             -- projectile_inv
             -- projectile_inv_countdown
-            -- burst_inv
-            -- burst_inv_countdown
             -- velocity
             -- gravity
             -- friction
@@ -272,8 +266,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
@@ -390,8 +382,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
@@ -514,8 +504,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
@@ -644,8 +632,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
@@ -774,8 +760,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
@@ -873,8 +857,6 @@ end
             -- throw_inv_countdown
             -- projectile_inv
             -- projectile_inv_countdown
-            -- burst_inv
-            -- burst_inv_countdown
             -- velocity
             -- gravity
             -- friction
@@ -939,8 +921,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
@@ -1056,8 +1036,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
@@ -1175,8 +1153,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
@@ -1296,8 +1272,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
@@ -1421,8 +1395,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
@@ -1576,8 +1548,6 @@ function load_game_scene_anim_char_common_0_air_block(
         obj_char_other_side["throw_inv_countdown"] = 1
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
@@ -1747,8 +1717,6 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         obj_char["throw_inv_countdown"] = 30
         obj_char["projectile_inv"] = true
         obj_char["projectile_inv_countdown"] = 30
-        obj_char["burst_inv"] = true
-        obj_char["burst_inv_countdown"] = 30
 
         update_1f_15f_air(0)
         -- state_number
@@ -1833,8 +1801,6 @@ end
             -- throw_inv_countdown
             -- projectile_inv
             -- projectile_inv_countdown
-            -- burst_inv
-            -- burst_inv_countdown
             -- velocity
             -- gravity
             -- friction
@@ -1885,8 +1851,6 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
         obj_char["throw_inv_countdown"] = res["anim_length"]+4
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
         -- state_number
         obj_char["velocity"] = {0,0}
         obj_char["velocity_debug"] = {0,0}
@@ -1938,8 +1902,6 @@ end
             -- throw_inv_countdown
             -- projectile_inv
             -- projectile_inv_countdown
-            -- burst_inv
-            -- burst_inv_countdown
             -- velocity
             -- gravity
             -- friction
@@ -2004,8 +1966,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
         obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         common_game_scene_char_apply_knockdown_velocity(
             obj_char,obj_char_other_side,
@@ -2258,8 +2218,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
         obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         common_game_scene_char_apply_knockdown_velocity(
             obj_char,obj_char_other_side,
@@ -2378,8 +2336,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         obj_char["throw_inv_countdown"] = res["anim_length"]+4
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
 
         obj_char["velocity"] = {0,0}
         obj_char["velocity_debug"] = {0,0}
@@ -2489,8 +2445,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallbrea
         obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
     
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][2]
@@ -2529,8 +2483,6 @@ end
             -- throw_inv_countdown
             -- projectile_inv
             -- projectile_inv_countdown
-            -- burst_inv
-            -- burst_inv_countdown
             -- velocity
             -- gravity
             -- friction
@@ -2593,8 +2545,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
         obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         obj_char_other_side["velocity"] = {0,0}
         obj_char_other_side["gravity"] = 2.5
@@ -2711,8 +2661,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
         obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         obj_char_other_side["velocity"] = {0,0}
         obj_char_other_side["gravity"] = 2.5
@@ -2814,8 +2762,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
         obj_char["throw_inv_countdown"] = res["anim_length"]+4
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
         -- state_number
         obj_char["velocity"] = {0,0}
         obj_char["gravity"] = 2.5
@@ -2923,8 +2869,6 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         obj_char_other_side["velocity"] = {-20.0*obj_char_other_side[5],0}
         obj_char_other_side["gravity"] = 2.5
@@ -3044,8 +2988,6 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
         obj_char["throw_inv_countdown"] = res["anim_length"]+4
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-        obj_char["burst_inv"] = false
-        obj_char["burst_inv_countdown"] = 0
         -- state_number
         obj_char["velocity"] = {0,-25}
         if obj_char["direction_input"] == 9 then
@@ -3121,8 +3063,6 @@ end
             -- throw_inv_countdown
             -- projectile_inv
             -- projectile_inv_countdown
-            -- burst_inv
-            -- burst_inv_countdown
             -- velocity
             -- gravity
             -- friction
@@ -3301,8 +3241,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
         obj_char_other_side["throw_inv_countdown"] = 1
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
@@ -3537,8 +3475,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         obj_char_other_side["throw_inv_countdown"] = 1
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
@@ -3737,8 +3673,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         obj_char_other_side["throw_inv_countdown"] = 1
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
@@ -3877,8 +3811,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
         obj_char_other_side["throw_inv_countdown"] = 1
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
@@ -4024,8 +3956,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
         obj_char_other_side["throw_inv_countdown"] = 1
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
@@ -4197,8 +4127,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
         obj_char_other_side["throw_inv_countdown"] = 1
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
@@ -4356,8 +4284,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         obj_char_other_side["throw_inv_countdown"] = 1
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
@@ -4497,8 +4423,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         obj_char_other_side["throw_inv_countdown"] = 1
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
@@ -4645,8 +4569,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
         obj_char_other_side["throw_inv_countdown"] = 1
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         obj_char_other_side["friction"] = hurt_horizontal_friction
         obj_char_other_side["gravity"] = hurt_vertical_gravity*hurt_vertical_gravity_correction
@@ -4780,8 +4702,6 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
         obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
-        obj_char_other_side["burst_inv"] = false
-        obj_char_other_side["burst_inv_countdown"] = 0
         -- state_number
         common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"hurt",false
@@ -4863,3 +4783,496 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
     end
     return res
 end
+
+-- active_common_move
+-- burst_overdrive
+    -- 需要修改的角色属性
+        -- 我方
+            -- sprite_sheet_state
+            -- height_state
+            -- hurt_state_target
+            -- move_state
+            -- startup_frame
+            -- active_frame
+            -- recovery_frame
+            -- frame_adv
+            -- current_animation_length
+            -- strike_inv
+            -- strike_inv_countdown
+            -- throw_inv
+            -- throw_inv_countdown
+            -- projectile_inv
+            -- projectile_inv_countdown
+            -- velocity
+            -- velocity_cache
+            -- gravity
+            -- friction
+            -- horizontal_velocity_correction
+            -- gravity_correction
+            -- damage_correction
+            -- overdrive_gauge
+            -- game_speed
+            -- game_speed_subframe
+            -- game_speed_abnormal_realtime_countdown
+            -- hit_hurt_blockstop_countdown
+            -- pushbox
+            -- hitbox_table
+            -- hurtbox_table
+            -- collision_test_ground_height_offset
+            -- 8
+            -- anchor_pos
+        -- 对方
+            -- game_speed
+            -- game_speed_subframe
+            -- game_speed_abnormal_realtime_countdown
+function load_game_scene_anim_char_common_burst_overdrive(
+    obj_char,other_side_countdown,
+    sprite_sheet_state,
+    anchor_pos,push_box,
+    frame_0_special_update_function
+)
+    local res = {}
+    local height_state = obj_char["height_state"]
+    local obj_stage_main = obj_stage_game_scene_main
+    local obj_camera = obj_stage_game_scene_camera
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local function update_move_overdrive_state()
+        if obj_char_other_side["game_speed_abnormal_realtime_countdown"] == 0 and obj_char["f"] >= 4 then
+            obj_char["move_state"] = "recovery"
+        end
+        if obj_char["overdrive_gauge"][1] > 0 then
+            obj_char["overdrive_gauge"][1] = 
+            obj_char["overdrive_gauge"][1] - 24
+        elseif obj_char["overdrive_gauge"][1] < 0 then
+            obj_char["overdrive_gauge"][1] = 0
+        end
+    end
+    res["prop_f"] = "f"
+    res["anim_length"] = 70
+
+    for i = 0,69 do
+        res[i] = function()
+            -- state
+            update_move_overdrive_state()
+        end
+    end
+    res[0] = function()
+        -- state
+        obj_char["sprite_sheet_state"] = sprite_sheet_state
+        obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
+        obj_char["move_state"] = "startup" -- none startup active recovery
+        obj_char["startup_frame"] = 0
+        obj_char["active_frame"] = 0
+        obj_char["recovery_frame"] = 0
+
+        obj_char["strike_inv"] = true
+        obj_char["strike_inv_countdown"] = 69
+        obj_char["throw_inv"] = true
+        obj_char["throw_inv_countdown"] = 69
+        obj_char["projectile_inv"] = true
+        obj_char["projectile_inv_countdown"] = 69
+        -- state_number
+        obj_char["velocity"] = {0,0}
+        obj_char["velocity_cache"] = {0,0}
+        obj_char["gravity"] = 2.5
+        obj_char["friction"] = 1
+        obj_char["physics_lock"] = true
+        obj_char["horizontal_velocity_correction"] = 1
+        obj_char["gravity_correction"] = 1
+        obj_char["damage_correction"] = 1
+
+        obj_char["overdrive_gauge"][3] = "on"
+        update_move_overdrive_state()
+
+        play_obj_audio(audio_SFX_game_scene_overdrive)
+        -- air_move
+        obj_char["air_move"] = {}
+        obj_char["air_move"]["jump"] = {1,1}
+        obj_char["air_move"]["air_dash"] = {1,1}
+        -- game_speed
+        obj_char["game_speed"] = 1
+        obj_char["game_speed_subframe"] = 1
+        obj_char["game_speed_abnormal_realtime_countdown"] = 0
+        obj_char["hit_hurt_blockstop_countdown"] = 0
+        -- collide
+        obj_char["pushbox"] = push_box
+        obj_char["pushbox_other_side_char_active"] = true
+        obj_char["hitbox_table"] = {} --{ 攻击类型 是投还是打， function值 内部为命中后的逻辑,具体的box形状}
+        obj_char["hurtbox_table"] = {}
+        obj_char["collision_test_ground_height_offset"] = 0
+        -- draw_correction
+        obj_char[8] = 0
+        obj_char["anchor_pos"] = anchor_pos
+        -- camera_animation_load
+        common_game_scene_overdrive_load_camera_shake_anim(obj_char)
+        common_game_scene_nil_load_camera_enclose_anim(obj_char)
+        -- camera_animation_application
+        table.insert(obj_stage_main["camera_active_application_table"],
+            function()
+                anim_stage_point_linear_game_scene_camera_enclosing = obj_char["camera_enclosing_anim"]
+                anim_stage_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
+                anim_stage_point_linear_game_scene_camera_shake_y = obj_char["camera_y_shake_anim"]
+                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_enclosing)
+                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
+                obj_camera["enclose_position_offset"] = obj_char["enclose_position_offset"]
+                obj_camera["state"] = "active"
+            end
+        )
+        -- VFX
+        insert_VFX_game_scene_char_overdrive_badge(obj_char)
+        insert_VFX_game_scene_char_overdrive_partical(obj_char)
+        insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
+        -- special_update
+        frame_0_special_update_function()
+    end
+    res[3] = function()
+        -- state & state_number
+        update_move_overdrive_state()
+            -- idle状态下OD 恢复为3+13
+            -- 攻击状态下OD 恢复为3+3
+            -- block_stun状态下OD 恢复为3+23
+        obj_char_other_side["game_speed"] = 0
+        obj_char_other_side["game_speed_subframe"] = 0
+        obj_char_other_side["game_speed_abnormal_realtime_countdown"] = other_side_countdown
+    end
+    res[4] = function()
+        -- state & state_number
+        update_move_overdrive_state()
+        -- draw_correction
+        obj_char[8] = 1
+    end
+    res[8] = function()
+        -- state & state_number
+        update_move_overdrive_state()
+        -- draw_correction
+        obj_char[8] = 2
+    end
+    res[12] = function()
+        -- state & state_number
+        update_move_overdrive_state()
+        -- draw_correction
+        obj_char[8] = 3
+    end
+    res[28] = function()
+        -- state & state_number
+        update_move_overdrive_state()
+        -- draw_correction
+        obj_char[8] = 4
+    end
+    res[30] = function()
+        -- state & state_number
+        update_move_overdrive_state()
+        -- VFX
+        insert_VFX_game_scene_char_overdrive_airflow(obj_char)
+    end
+    res[32] = function()
+        -- state & state_number
+        update_move_overdrive_state()
+        -- draw_correction
+        obj_char[8] = 5
+    end
+    res[35] = function()
+        -- state & state_number
+        update_move_overdrive_state()
+        -- draw_correction
+        obj_char[8] = 6
+    end
+    res[38] = function()
+        -- state & state_number
+        update_move_overdrive_state()
+        local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+        if obj_char_other_side["state"] == "block" or obj_char_other_side["state"] == "hurt" then
+            if obj_char["health_gauge"][1]/obj_char["health_gauge"][3] > 0.85 then
+                obj_char["overdrive_timer"] = {0,2,0,0}
+            elseif obj_char["health_gauge"][1]/obj_char["health_gauge"][3] > 0.60 then
+                obj_char["overdrive_timer"] = {0,3,0,0}
+            elseif obj_char["health_gauge"][1]/obj_char["health_gauge"][3] > 0.45 then
+                obj_char["overdrive_timer"] = {0,4,0,0}
+            elseif obj_char["health_gauge"][1]/obj_char["health_gauge"][3] > 0.35 then
+                obj_char["overdrive_timer"] = {0,5,0,0}
+            else
+                obj_char["overdrive_timer"] = {0,6,0,0}
+            end
+        else
+            if obj_char["health_gauge"][1]/obj_char["health_gauge"][3] > 0.85 then
+                obj_char["overdrive_timer"] = {0,4,0,0}
+            elseif obj_char["health_gauge"][1]/obj_char["health_gauge"][3] > 0.60 then
+                obj_char["overdrive_timer"] = {0,6,0,0}
+            elseif obj_char["health_gauge"][1]/obj_char["health_gauge"][3] > 0.45 then
+                obj_char["overdrive_timer"] = {0,8,0,0}
+            elseif obj_char["health_gauge"][1]/obj_char["health_gauge"][3] > 0.35 then
+                obj_char["overdrive_timer"] = {1,0,0,0}
+            else
+                obj_char["overdrive_timer"] = {1,2,0,0}
+            end
+        end
+        obj_char["overdrive_gauge"][3] = "on"
+        -- draw_correction
+        obj_char[8] = 7
+    end
+    res[41] = function()
+        -- state & state_number
+        update_move_overdrive_state()
+        -- draw_correction
+        obj_char[8] = 5
+    end
+    res[44] = function()
+        -- state & state_number
+        update_move_overdrive_state()
+        -- draw_correction
+        obj_char[8] = 6
+    end
+    res[47] = function()
+        -- state & state_number
+        update_move_overdrive_state()
+        -- draw_correction
+        obj_char[8] = 7
+    end
+    res[50] = function()
+        -- state & state_number
+        update_move_overdrive_state()
+        -- draw_correction
+        obj_char[8] = 5
+    end
+    res[53] = function()
+        -- state & state_number
+        update_move_overdrive_state()
+        -- draw_correction
+        obj_char[8] = 6
+    end
+    res[56] = function()
+        -- state & state_number
+        update_move_overdrive_state()
+        -- draw_correction
+        obj_char[8] = 7
+    end
+    res[60] = function()
+        -- state & state_number
+        update_move_overdrive_state()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
+        -- draw_correction
+        obj_char[8] = 8
+    end
+    res[65] = function()
+        -- state & state_number
+        update_move_overdrive_state()
+        -- draw_correction
+        obj_char[8] = 9
+    end
+    res[70] = function()
+        -- animation end
+    end
+    return res
+end
+-- RC
+-- logic attack by projectile
+-- 需要修改的角色属性
+    -- 我方
+        -- sprite_sheet_state
+        -- height_state
+        -- hurt_state_target
+        -- move_state
+        -- startup_frame
+        -- active_frame
+        -- recovery_frame
+        -- frame_adv
+        -- current_animation_length
+        -- strike_inv
+        -- strike_inv_countdown
+        -- throw_inv
+        -- throw_inv_countdown
+        -- projectile_inv
+        -- projectile_inv_countdown
+        -- velocity
+        -- velocity_cache
+        -- gravity
+        -- friction
+        -- horizontal_velocity_correction
+        -- gravity_correction
+        -- damage_correction
+        -- overdrive_gauge
+        -- game_speed
+        -- game_speed_subframe
+        -- game_speed_abnormal_realtime_countdown
+        -- hit_hurt_blockstop_countdown
+        -- pushbox
+        -- hitbox_table
+        -- hurtbox_table
+        -- collision_test_ground_height_offset
+        -- 8
+        -- anchor_pos
+    -- 对方
+        -- game_speed
+        -- game_speed_subframe
+        -- game_speed_abnormal_realtime_countdown
+function load_game_scene_anim_char_common_RC_red(
+    obj_char,sprite_sheet_state,velocity,
+    anchor_pos,push_box,
+    frame_0_special_update_function
+)
+    local res = {}
+    local height_state = obj_char["height_state"]
+    local obj_stage_main = obj_stage_game_scene_main
+    local obj_camera = obj_stage_game_scene_camera
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local goal_heat_gauge_remain = math.max(0,obj_char["heat_gauge"][1]-100)
+    local function update_move_state()
+        if obj_char_other_side["game_speed_abnormal_realtime_countdown"] == 0 and obj_char["f"] >= 26 then
+            obj_char["move_state"] = "recovery"
+        end
+    end
+    local function update_heat_gauge_state()
+        if obj_char["heat_gauge"][1] > goal_heat_gauge_remain then
+            obj_char["heat_gauge"][1] = obj_char["heat_gauge"][1] - 5
+        end
+    end
+    
+    res["prop_f"] = "f"
+    res["anim_length"] = 45
+    for i = 0,25 do
+        res[i] = function()
+            -- state
+            update_move_state()
+            update_heat_gauge_state()
+        end
+    end
+    for i = 0,44 do
+        res[i] = function()
+            -- state
+            update_move_state()
+        end
+    end
+    res[0] = function()
+        -- state
+        obj_char["sprite_sheet_state"] = sprite_sheet_state
+        obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
+        obj_char["move_state"] = "startup" -- none startup active recovery
+        obj_char["startup_frame"] = 0
+        obj_char["active_frame"] = 0
+        obj_char["recovery_frame"] = 0
+        update_move_state()
+
+        obj_char["strike_inv"] = true
+        obj_char["strike_inv_countdown"] = 44
+        obj_char["throw_inv"] = true
+        obj_char["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char["projectile_inv"] = true
+        obj_char["projectile_inv_countdown"] = 44
+        -- state_number
+        obj_char["velocity"] = velocity
+        obj_char["velocity_cache"] = {0,0}
+        obj_char["gravity"] = 0
+        obj_char["friction"] = 0
+        obj_char["physics_lock"] = false
+        obj_char["horizontal_velocity_correction"] = 1
+        obj_char["gravity_correction"] = 1
+        obj_char["damage_correction"] = 1
+        update_heat_gauge_state()
+        -- air_move
+        obj_char["air_move"] = {}
+        obj_char["air_move"]["jump"] = {1,1}
+        obj_char["air_move"]["air_dash"] = {1,1}
+        -- collide
+        obj_char["pushbox"] = push_box
+        obj_char["pushbox_other_side_char_active"] = true
+        obj_char["hitbox_table"] = {} --{ 攻击类型 是投还是打， function值 内部为命中后的逻辑,具体的box形状}
+        obj_char["hurtbox_table"] = {}
+        obj_char["collision_test_ground_height_offset"] = 0
+        -- draw_correction
+        obj_char[8] = 0
+        obj_char["anchor_pos"] = anchor_pos
+        -- VFX
+        insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet_VFX_game_scene_RC_red_badge)
+        insert_VFX_game_scene_char_RC_partical(obj_char)
+        insert_VFX_game_scene_char_RC_black_overlay(obj_char)
+        -- special_update
+        frame_0_special_update_function()
+    end
+    res[1] = function()
+        -- state&state_number
+        update_move_state()
+        update_heat_gauge_state()
+        -- game_speed
+        obj_char_other_side["game_speed"] = 0
+        obj_char_other_side["game_speed_subframe"] = 0
+        obj_char_other_side["game_speed_abnormal_realtime_countdown"] = 44
+    end
+    res[3] = function()
+        -- state&state_number
+        update_move_state()
+        update_heat_gauge_state()
+        -- draw_correction
+        obj_char[8] = 1
+    end
+    res[7] = function()
+        -- state&state_number
+        update_move_state()
+        update_heat_gauge_state()
+        -- draw_correction
+        obj_char[8] = 2
+    end
+    res[14] = function()
+        -- state&state_number
+        update_move_state()
+        update_heat_gauge_state()
+        -- draw_correction
+        obj_char[8] = 3
+    end
+    res[26] = function()
+        -- state
+        update_move_state()
+        -- draw_correction
+        obj_char[8] = 4
+        -- projectile
+        insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
+    end
+    res[27] = function()
+        -- state
+        update_move_state()
+        -- draw_correction
+        obj_char[8] = 5
+    end
+    res[27] = function()
+        -- state
+        update_move_state()
+        -- draw_correction
+        obj_char[8] = 5
+    end
+    res[31] = function()
+        -- state
+        update_move_state()
+        -- draw_correction
+        obj_char[8] = 6
+    end
+    res[35] = function()
+        -- state
+        update_move_state()
+        -- draw_correction
+        obj_char[8] = 7
+    end
+    res[39] = function()
+        -- state
+        update_move_state()
+        -- draw_correction
+        obj_char[8] = 8
+    end
+    res[42] = function()
+        -- state
+        update_move_state()
+        -- draw_correction
+        obj_char[8] = 9
+    end
+    res[45] = function()
+        -- aniamtion_end
+    end
+end
+function load_game_scene_anim_char_common_RC_blue(obj_char)
+end
+function load_game_scene_anim_char_common_RC_purple(obj_char)
+end
+function load_game_scene_anim_char_common_RC_yellow(obj_char)
+end
+
