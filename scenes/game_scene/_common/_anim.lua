@@ -4825,12 +4825,7 @@ end
             -- game_speed
             -- game_speed_subframe
             -- game_speed_abnormal_realtime_countdown
-function load_game_scene_anim_char_common_burst_overdrive(
-    obj_char,other_side_countdown,
-    sprite_sheet_state,
-    anchor_pos,push_box,
-    frame_0_special_update_function
-)
+function load_game_scene_anim_char_common_burst_overdrive(obj_char,other_side_countdown)
     local res = {}
     local height_state = obj_char["height_state"]
     local obj_stage_main = obj_stage_game_scene_main
@@ -4858,7 +4853,6 @@ function load_game_scene_anim_char_common_burst_overdrive(
     end
     res[0] = function()
         -- state
-        obj_char["sprite_sheet_state"] = sprite_sheet_state
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -4895,14 +4889,12 @@ function load_game_scene_anim_char_common_burst_overdrive(
         obj_char["game_speed_abnormal_realtime_countdown"] = 0
         obj_char["hit_hurt_blockstop_countdown"] = 0
         -- collide
-        obj_char["pushbox"] = push_box
         obj_char["pushbox_other_side_char_active"] = true
         obj_char["hitbox_table"] = {} --{ 攻击类型 是投还是打， function值 内部为命中后的逻辑,具体的box形状}
         obj_char["hurtbox_table"] = {}
         obj_char["collision_test_ground_height_offset"] = 0
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = anchor_pos
         -- camera_animation_load
         common_game_scene_overdrive_load_camera_shake_anim(obj_char)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
@@ -4923,15 +4915,12 @@ function load_game_scene_anim_char_common_burst_overdrive(
         insert_VFX_game_scene_char_overdrive_badge(obj_char)
         insert_VFX_game_scene_char_overdrive_partical(obj_char)
         insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
-        -- special_update
-        frame_0_special_update_function()
     end
     res[3] = function()
         -- state & state_number
         update_move_overdrive_state()
             -- idle状态下OD 恢复为3+13
             -- 攻击状态下OD 恢复为3+3
-            -- block_stun状态下OD 恢复为3+23
         obj_char_other_side["game_speed"] = 0
         obj_char_other_side["game_speed_subframe"] = 0
         obj_char_other_side["game_speed_abnormal_realtime_countdown"] = other_side_countdown
@@ -5108,11 +5097,7 @@ end
         -- game_speed
         -- game_speed_subframe
         -- game_speed_abnormal_realtime_countdown
-function load_game_scene_anim_char_common_RC_red(
-    obj_char,sprite_sheet_state,velocity,
-    anchor_pos,push_box,
-    frame_0_special_update_function
-)
+function load_game_scene_anim_char_common_burst_RC_red(obj_char)
     local res = {}
     local height_state = obj_char["height_state"]
     local obj_stage_main = obj_stage_game_scene_main
@@ -5147,7 +5132,6 @@ function load_game_scene_anim_char_common_RC_red(
     end
     res[0] = function()
         -- state
-        obj_char["sprite_sheet_state"] = sprite_sheet_state
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -5162,7 +5146,6 @@ function load_game_scene_anim_char_common_RC_red(
         obj_char["projectile_inv"] = true
         obj_char["projectile_inv_countdown"] = 44
         -- state_number
-        obj_char["velocity"] = velocity
         obj_char["velocity_cache"] = {0,0}
         obj_char["gravity"] = 0
         obj_char["friction"] = 0
@@ -5176,20 +5159,16 @@ function load_game_scene_anim_char_common_RC_red(
         obj_char["air_move"]["jump"] = {1,1}
         obj_char["air_move"]["air_dash"] = {1,1}
         -- collide
-        obj_char["pushbox"] = push_box
         obj_char["pushbox_other_side_char_active"] = true
         obj_char["hitbox_table"] = {} --{ 攻击类型 是投还是打， function值 内部为命中后的逻辑,具体的box形状}
         obj_char["hurtbox_table"] = {}
         obj_char["collision_test_ground_height_offset"] = 0
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = anchor_pos
         -- VFX
-        insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet_VFX_game_scene_RC_red_badge)
+        insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet_VFX_game_scene_burst_RC_red_badge)
         insert_VFX_game_scene_char_RC_partical(obj_char)
         insert_VFX_game_scene_char_RC_black_overlay(obj_char)
-        -- special_update
-        frame_0_special_update_function()
     end
     res[1] = function()
         -- state&state_number
@@ -5198,7 +5177,7 @@ function load_game_scene_anim_char_common_RC_red(
         -- game_speed
         obj_char_other_side["game_speed"] = 0
         obj_char_other_side["game_speed_subframe"] = 0
-        obj_char_other_side["game_speed_abnormal_realtime_countdown"] = 44
+        obj_char_other_side["game_speed_abnormal_realtime_countdown"] = 43
     end
     res[3] = function()
         -- state&state_number
@@ -5268,10 +5247,11 @@ function load_game_scene_anim_char_common_RC_red(
     res[45] = function()
         -- aniamtion_end
     end
+    return res
 end
-function load_game_scene_anim_char_common_RC_blue(obj_char)
+function load_game_scene_anim_char_common_burst_RC_blue(obj_char)
 end
-function load_game_scene_anim_char_common_RC_purple(obj_char)
+function load_game_scene_anim_char_common_burst_RC_purple(obj_char)
 end
 function load_game_scene_anim_char_common_RC_yellow(obj_char)
 end

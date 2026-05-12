@@ -308,22 +308,22 @@ function order_load_game_scene_VFX(load_order)
                 "asset/game_scene/VFX/RC_partical.json",
                 love.graphics.newImage(ASSET_DATA[8]["RC_shockwave_sprite_batch"])
             )
-            image_sprite_sheet_VFX_game_scene_RC_blue_badge = 
+            image_sprite_sheet_VFX_game_scene_burst_RC_blue_badge = 
             sprite_sheet_load(
                 "asset/game_scene/VFX/RC_blue_badge.json",
                 love.graphics.newImage(ASSET_DATA[8]["RC_blue_badge_sprite_batch"])
             )
-            image_sprite_sheet_VFX_game_scene_RC_purple_badge = 
+            image_sprite_sheet_VFX_game_scene_burst_RC_purple_badge = 
             sprite_sheet_load(
                 "asset/game_scene/VFX/RC_purple_badge.json",
                 love.graphics.newImage(ASSET_DATA[8]["RC_purple_badge_sprite_batch"])
             )
-            image_sprite_sheet_VFX_game_scene_RC_red_badge = 
+            image_sprite_sheet_VFX_game_scene_burst_RC_red_badge = 
             sprite_sheet_load(
                 "asset/game_scene/VFX/RC_red_badge.json",
                 love.graphics.newImage(ASSET_DATA[8]["RC_red_badge_sprite_batch"])
             )
-            image_sprite_sheet_VFX_game_scene_RC_yellow_badge = 
+            image_sprite_sheet_VFX_game_scene_burst_RC_yellow_badge = 
             sprite_sheet_load(
                 "asset/game_scene/VFX/RC_yellow_badge.json",
                 love.graphics.newImage(ASSET_DATA[8]["RC_yellow_badge_sprite_batch"])

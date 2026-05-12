@@ -1,7 +1,7 @@
 -- commmon
 _common_ground_idle_to_move
     _burst_overdrive
-    _RC_blue_rc
+    _burst_RC_blue
     _active_FD_block
     _4UA
     _6UA
@@ -41,7 +41,7 @@ _common_ground_to_special_move
     _5UA
 _common_air_idle_to_move
     _burst_overdrive
-    _RC_blue_rc
+    _burst_RC_blue
     _active_FD_block
     _jsp_S
     _jsp_H
@@ -83,12 +83,12 @@ _hurt
 
 
 _hitstop
-    _RC_red_rc
+    _burst_RC_red
     _burst_overdrive
     _[any_sp_hit_state_saved_in_state_cache]
 _blockstop
     _burst_overdrive
-    _RC_yellow_rc
+    _burst_RC_yellow
     _block
 _hurtstop
     _burst_burst
@@ -187,7 +187,7 @@ _6_walk_to_stand_idle   -- done
 
 
 _7_8_9_jump_air_to_stand_idle   -- done
-    _RC_blue_rc
+    _burst_RC_blue
     _5_stand_turn
     _common_ground_idle_to_move(idle_cancel)
     _7_8_9_pre_jump
@@ -197,21 +197,21 @@ _7_8_9_jump_air_to_stand_idle   -- done
     _5_stand_idle
 _7_8_9_jump_air     -- done
     _7_8_9_jump_air_to_stand_idle
-    _RC_blue_rc
+    _burst_RC_blue
     _common_air_idle_to_move(idle_cancel)
     _7_8_9_jump_air(second_air_jump)
 _7_8_9_pre_jump     -- done
-    _RC_blue_rc
+    _burst_RC_blue
     _7_8_9_jump_air
 
 
 _4dash_backdash
-    _RC_blue_rc
+    _burst_RC_blue
     _common_ground_idle_to_move(idle_cancel)
     _5_stand_idle
 _4dash_air_backdash
     _7_8_9_jump_air_to_stand_idle
-    _RC_blue_rc
+    _burst_RC_blue
     _common_air_idle_to_move(idle_cancel)
     _7_8_9_jump_air
 _6dash_dash
@@ -220,7 +220,7 @@ _6dash_dash
     _5_stand_dash_skid
 _6dash_air_dash
     _7_8_9_jump_air_to_stand_idle
-    _RC_blue_rc
+    _burst_RC_blue
     _common_air_idle_to_move(idle_cancel)
     _7_8_9_jump_air
 _6dash_dash_cancel
@@ -228,25 +228,25 @@ _6dash_dash_cancel
     _5_stand_dash_skid
 
 
-_RC_blue_rc
+_burst_RC_blue
     _common_ground_idle_to_move
     _5_stand_idle
     _7_8_9_jump_air
-_RC_purple_rc
+_burst_RC_purple
     _common_ground_idle_to_move
     _5_stand_idle
     _7_8_9_jump_air
-_RC_red_rc
+_burst_RC_red
     _common_ground_idle_to_move
     _5_stand_idle
     _7_8_9_jump_air
-_RC_yellow_rc
+_burst_RC_yellow
     _5_stand_idle
     _7_8_9_jump_air
 
 
 _burst_overdrive
-    _RC_purple_rc
+    _burst_RC_purple
     _5_stand_idle
     _7_8_9_jump_air
 _burst_burst
@@ -256,7 +256,7 @@ _burst_burst
 
 _2P
     _common_ground_to_special_move
-    _RC_purple_rc
+    _burst_RC_purple
     _2P
     _6P
     _5P
@@ -265,11 +265,11 @@ _2P
     _1_2_3_crouch
 _6P
     _common_ground_to_special_move
-    _RC_purple_rc
+    _burst_RC_purple
     _5_stand_idle
 _5P
     _common_ground_to_special_move
-    _RC_purple_rc
+    _burst_RC_purple
     _2P
     _6P
     _5P
@@ -278,7 +278,7 @@ _5P
     _5_stand_idle
 _2K
     _common_ground_to_special_move
-    _RC_purple_rc
+    _burst_RC_purple
     _6P
     _6K
     _6S
@@ -287,12 +287,12 @@ _2K
     _1_2_3_crouch
 _6k
     _common_ground_to_special_move
-    _RC_purple_rc
+    _burst_RC_purple
     _5_stand_idle
 _5K
     _7_8_9_pre_jump
     _common_ground_to_special_move
-    _RC_purple_rc
+    _burst_RC_purple
     _6P
     _6K
     _6S
@@ -302,16 +302,16 @@ _5K
     _5_stand_idle
 _2S
     _common_ground_to_special_move
-    _RC_purple_rc
+    _burst_RC_purple
     _1_2_3_crouch
 _6S
     _common_ground_to_special_move
-    _RC_purple_rc
+    _burst_RC_purple
     _5_stand_idle
 _cS
     _7_8_9_pre_jump
     _common_ground_to_special_move
-    _RC_purple_rc
+    _burst_RC_purple
     _6P
     _6K
     _2S
@@ -323,28 +323,28 @@ _cS
     _5_stand_idle
 _fS
     _common_ground_to_special_move
-    _RC_purple_rc
+    _burst_RC_purple
     _5_stand_idle
 _2Launcher
     _common_ground_to_special_move
-    _RC_purple_rc
+    _burst_RC_purple
     _1_2_3_crouch
 _4_6Launcher
-    _RC_red_rc
-    _RC_purple_rc
+    _burst_RC_red
+    _burst_RC_purple
     _5_stand_idle
 _5Launcher
-    _RC_purple_rc
+    _burst_RC_purple
     _5_stand_idle
 _5Launcher_hold
-    _RC_purple_rc
+    _burst_RC_purple
     _5_stand_idle
 
 
 _jP
     _7_8_9_jump_air_to_stand_idle(landing)
     _common_air_to_special_move
-    _RC_purple_rc
+    _burst_RC_purple
     _jP
     _j2K
     _j2S
@@ -352,7 +352,7 @@ _jP
 _jK
     _7_8_9_jump_air_to_stand_idle(landing)
     _common_air_to_special_move
-    _RC_purple_rc
+    _burst_RC_purple
     _j5Launcher
     _j2K
     _j2S
@@ -360,48 +360,48 @@ _jK
 _j2K
     _7_8_9_jump_air_to_stand_idle(landing)
     _common_air_to_special_move
-    _RC_purple_rc
+    _burst_RC_purple
     _7_8_9_jump_air(air_move+hit_cancel)(animation_end)
 _jS
     _7_8_9_jump_air_to_stand_idle(landing)
     _common_air_to_special_move
-    _RC_purple_rc
+    _burst_RC_purple
     _jS(2_5+hit_cancel)
     _j5Launcher
     _7_8_9_jump_air(air_move+hit_cancel)(animation_end)
 _j2S
     _7_8_9_jump_air_to_stand_idle(landing)
     _common_air_to_special_move
-    _RC_purple_rc
+    _burst_RC_purple
     _7_8_9_jump_air(air_move+hit_cancel)(animation_end)
 _j4_6Launcher
     _7_8_9_jump_air_to_stand_idle(landing)
-    _RC_red_rc
-    _RC_purple_rc
+    _burst_RC_red
+    _burst_RC_purple
     _7_8_9_jump_air(air_move+hit_cancel)(animation_end)
 _j5Launcher
     _7_8_9_jump_air_to_stand_idle(landing)
     _common_air_to_special_move
-    _RC_purple_rc
+    _burst_RC_purple
     _7_8_9_jump_air(air_move+hit_cancel)(animation_end)
 
 
 !all sp move has a overdrive version
 _4sp_P
-    _RC_purple_rc
+    _burst_RC_purple
     _7_8_9_pre_jump
     _5_stand_idle
 _6sp_P
-    _RC_purple_rc
+    _burst_RC_purple
     _5_stand_idle
 _4sp_K
-    _RC_purple_rc
+    _burst_RC_purple
     _5_stand_idle
 _6sp_K
-    _RC_purple_rc
+    _burst_RC_purple
     _5_stand_idle
 _4sp_S
-    _RC_purple_rc
+    _burst_RC_purple
     _2UA
     _4sp_S_4UA
     _6UA
@@ -420,7 +420,7 @@ _4sp_S
     _4sp_S_sp_H||_4sp_S_H
     _5_stand_idle
 _4sp_S_4dash
-    _RC_purple_rc
+    _burst_RC_purple
     _4sp_S_5UA
     _4sp_P
     _6sp_P
@@ -429,7 +429,7 @@ _4sp_S_4dash
     _6sp_S
     _5_stand_idle
 _4sp_S_6dash
-    _RC_purple_rc
+    _burst_RC_purple
     _4sp_S_5UA
     _4sp_P
     _6sp_P
@@ -438,25 +438,25 @@ _4sp_S_6dash
     _6sp_S
     _5_stand_idle
 _4sp_S_S
-    _RC_purple_rc
+    _burst_RC_purple
     _5_stand_idle
 _4sp_S_H||_4sp_S_sp_H
-    _RC_purple_rc
+    _burst_RC_purple
     _5_stand_idle
 _4sp_S_2Launcher
-    _RC_purple_rc
+    _burst_RC_purple
     _5_stand_idle
 _4sp_S_6Launcher
-    _RC_purple_rc
+    _burst_RC_purple
     _5_stand_idle
 _4sp_S_5Launcher
-    _RC_purple_rc
+    _burst_RC_purple
     _5_stand_idle
 _6sp_S
-    _RC_purple_rc
+    _burst_RC_purple
     _5_stand_idle
 _sp_H
-    _RC_purple_rc
+    _burst_RC_purple
     _sp_H_P
     _sp_H_K
     _sp_H_S
@@ -479,10 +479,10 @@ _sp_H_H
 
 
 _jsp_S
-    _RC_purple_rc
+    _burst_RC_purple
     _7_8_9_jump_air
 _jsp_H
-    _RC_purple_rc
+    _burst_RC_purple
     _jsp_H_P
     _jsp_H_K
     _jsp_H_S
@@ -500,16 +500,16 @@ _jsp_H_H
 
 
 _4UA
-    _RC_purple_rc
+    _burst_RC_purple
     _5_stand_idle
 _6UA
-    _RC_purple_rc
+    _burst_RC_purple
     _5_stand_idle
 _5UA
-    _RC_purple_rc
+    _burst_RC_purple
     _5_stand_idle
 _4sp_S_5UA
-    _RC_purple_rc
+    _burst_RC_purple
     _5_stand_idle
 
 

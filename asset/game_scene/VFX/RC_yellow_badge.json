@@ -123,7 +123,7 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "RC_yellow_badge.png",
+	"image": "burst_RC_yellow_badge.png",
 	"format": "RGBA8888",
 	"size": {"w":6000,"h":3600},
 	"scale": "1",
