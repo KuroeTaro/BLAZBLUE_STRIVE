@@ -710,9 +710,6 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
 
     res[0] = function()
         -- state
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         obj_char["y"] = 365
         obj_char["sprite_sheet_state"] = "7_8_9_jump_air_to_stand_idle"
         obj_char["height_state"] = "stand" -- stand crouch air OTG
@@ -7032,9 +7029,6 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
 
     res[0] = function()
         -- state
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         obj_char["sprite_sheet_state"] = "jP"
         obj_char["height_state"] = "air" -- stand crouch air OTG
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
@@ -7284,9 +7278,6 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
 
     res[0] = function()
         -- state
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         obj_char["sprite_sheet_state"] = "jK"
         obj_char["height_state"] = "air" -- stand crouch air OTG
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
@@ -7532,9 +7523,6 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
 
     res[0] = function()
         -- state
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         obj_char["sprite_sheet_state"] = "j2K"
         obj_char["height_state"] = "air" -- stand crouch air OTG
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
@@ -7801,9 +7789,6 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
 
     res[0] = function()
         -- state
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         obj_char["sprite_sheet_state"] = "jS"
         obj_char["height_state"] = "air" -- stand crouch air OTG
         obj_char["hit_type_state"] = "strike" -- none strike throw burst

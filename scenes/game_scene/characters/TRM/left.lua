@@ -2494,6 +2494,9 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move(input,obj_char)
     -- _jsp_H
     -- _jP
     if obj_char["y"] < 125 and test_input_sys_press(input["P"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_jP(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "jP"
@@ -2501,6 +2504,9 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move(input,obj_char)
     end
     -- _j2K
     if obj_char["y"] < 125 and common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["K"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "j2K"
@@ -2508,6 +2514,9 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move(input,obj_char)
     end
     -- _jK
     if obj_char["y"] < 125 and test_input_sys_press(input["K"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_jK(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "jK"
@@ -2515,6 +2524,9 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move(input,obj_char)
     end
     -- _jS
     if obj_char["y"] < 125 and test_input_sys_press(input["S"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "jS"
@@ -2554,6 +2566,9 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,
     -- _jsp_H
     -- _jP
     if obj_char["y"] < 125 and test_input_sys_press_or_hold(input["P"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_jP(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "jP"
@@ -2561,6 +2576,9 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,
     end
     -- _j2K
     if obj_char["y"] < 125 and common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press_or_hold(input["K"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "j2K"
@@ -2568,6 +2586,9 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,
     end
     -- _jK
     if obj_char["y"] < 125 and test_input_sys_press_or_hold(input["K"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_jK(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "jK"
@@ -2575,6 +2596,9 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,
     end
     -- _jS
     if obj_char["y"] < 125 and test_input_sys_press_or_hold(input["S"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "jS"
@@ -3731,6 +3755,9 @@ function state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char)
     end
     -- _7_8_9_jump_air_to_stand_idle
     if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
@@ -3851,6 +3878,9 @@ function state_gate_game_scene_char_LP_from_4dash_air_backdash(input,obj_char)
     end
     -- _7_8_9_jump_air_to_stand_idle
     if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
@@ -3936,6 +3966,9 @@ function state_gate_game_scene_char_LP_from_6dash_air_dash(input,obj_char)
     end
     -- _7_8_9_jump_air_to_stand_idle
     if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
@@ -4667,6 +4700,9 @@ function state_gate_game_scene_char_LP_from_jP(input,obj_char)
     end
     -- _7_8_9_jump_air_to_stand_idle
     if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
@@ -4679,6 +4715,9 @@ function state_gate_game_scene_char_LP_from_jP(input,obj_char)
     if obj_char["hit_cancel"] then
         -- _jP
         if obj_char["y"] < 125 and test_input_sys_press(input["P"]) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_jP(obj_char)
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "jP"
@@ -4688,6 +4727,9 @@ function state_gate_game_scene_char_LP_from_jP(input,obj_char)
     if obj_char["hit_cancel"] and obj_char["air_gatling_state"] then
         -- _j2K
         if obj_char["y"] < 125 and common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["K"]) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(obj_char)
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "j2K"
@@ -4695,6 +4737,9 @@ function state_gate_game_scene_char_LP_from_jP(input,obj_char)
         end
         -- _jK
         if obj_char["y"] < 125 and test_input_sys_press(input["K"]) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_jK(obj_char)
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "jK"
@@ -4702,6 +4747,9 @@ function state_gate_game_scene_char_LP_from_jP(input,obj_char)
         end
         -- _jS
         if obj_char["y"] < 125 and test_input_sys_press(input["S"]) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(obj_char)
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "jS"
@@ -4729,6 +4777,9 @@ function state_gate_game_scene_char_LP_from_jK(input,obj_char)
     end
     -- _7_8_9_jump_air_to_stand_idle
     if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
@@ -4741,6 +4792,9 @@ function state_gate_game_scene_char_LP_from_jK(input,obj_char)
     if obj_char["hit_cancel"] then
         -- _jS
         if obj_char["y"] < 125 and test_input_sys_press(input["S"]) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(obj_char)
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "jS"
@@ -4750,6 +4804,9 @@ function state_gate_game_scene_char_LP_from_jK(input,obj_char)
     if obj_char["hit_cancel"] and obj_char["air_gatling_state"] then
         -- _jP
         if obj_char["y"] < 125 and test_input_sys_press(input["P"]) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_jP(obj_char)
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "jP"
@@ -4757,6 +4814,9 @@ function state_gate_game_scene_char_LP_from_jK(input,obj_char)
         end
         -- _j2K
         if obj_char["y"] < 125 and common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["K"]) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(obj_char)
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "j2K"
@@ -4764,6 +4824,9 @@ function state_gate_game_scene_char_LP_from_jK(input,obj_char)
         end
         -- _jS
         if obj_char["y"] < 125 and test_input_sys_press(input["S"]) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(obj_char)
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "jS"
@@ -4791,6 +4854,9 @@ function state_gate_game_scene_char_LP_from_j2K(input,obj_char)
     end
     -- _7_8_9_jump_air_to_stand_idle
     if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
@@ -4802,6 +4868,9 @@ function state_gate_game_scene_char_LP_from_j2K(input,obj_char)
     -- hit_cancel
     if obj_char["hit_cancel"] and obj_char["f"] >= 15 then
         if test_input_sys_press(input["S"]) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(obj_char)
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "jS"
@@ -4835,6 +4904,9 @@ function state_gate_game_scene_char_LP_from_jS(input,obj_char)
     end
     -- _7_8_9_jump_air_to_stand_idle
     if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
@@ -4877,6 +4949,9 @@ function state_gate_game_scene_char_LP_from_j4_6Launcher(input,obj_char)
     end
     -- _7_8_9_jump_air_to_stand_idle
     if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
@@ -4906,6 +4981,9 @@ function state_gate_game_scene_char_LP_from_j5Launcher(input,obj_char)
     end
     -- _7_8_9_jump_air_to_stand_idle
     if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
