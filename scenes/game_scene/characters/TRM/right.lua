@@ -179,7 +179,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["hurtbox_table"] = {{0,-215,170,430},{0,-455,100,50}}
     obj_char_game_scene_char_RP["collision_move_available"] = {1,1}
     obj_char_game_scene_char_RP["collision_move_available_cache"] = {1,1}
-    obj_char_game_scene_char_RP["collision_test_ground_height_offset"] = 0 -- 用于检测和地面碰撞的
+    obj_char_game_scene_char_RP["collision_ground_height_offset"] = 0 -- 用于检测和地面碰撞的
 
     -- sub_obj_table
     obj_char_game_scene_char_RP["projectile_table"] = {}
@@ -1103,7 +1103,7 @@ function load_game_scene_wallbreak_end_init_RP()
     -- collide
     obj_char_game_scene_char_RP["collision_move_available"] = {1,1}
     obj_char_game_scene_char_RP["collision_move_available_cache"] = {1,1}
-    obj_char_game_scene_char_RP["collision_test_ground_height_offset"] = 0 -- 用于检测和地面碰撞的
+    obj_char_game_scene_char_RP["collision_ground_height_offset"] = 0 -- 用于检测和地面碰撞的
 
     -- sub_obj_table
     obj_char_game_scene_char_RP["projectile_table"] = {}
@@ -2644,24 +2644,32 @@ function state_gate_game_scene_char_RP_common_burst_RC_red(input,obj_char)
             common_update_game_scene_input_direction(obj_char)
         end
         if test_input_sys_press(input["dash"]) then
-            obj_char["velocity"] = {5.0*obj_char[5],0}
-        elseif test_input_sys_press(input["up"]) then
-            obj_char["velocity"] = {0,-5.0}
-        elseif test_input_sys_press(input["left"]) then
-            obj_char["velocity"] = {-5.0,0}
-        elseif test_input_sys_press(input["right"]) then
-            obj_char["velocity"] = {5.0,0}
+            if test_input_sys_press_or_hold(input["up"]) then
+                obj_char["velocity"] = {0,-5.0}
+            elseif test_input_sys_press_or_hold(input["down"]) then
+                obj_char["velocity"] = {0,5.0}
+            elseif test_input_sys_press_or_hold(input["left"]) then
+                obj_char["velocity"] = {-5.0,0}
+            elseif test_input_sys_press_or_hold(input["right"]) then
+                obj_char["velocity"] = {5.0,0}
+            else
+                obj_char["velocity"] = {5.0*obj_char[5],0}
+            end
+        else
+            obj_char["velocity"] = {0,0}
         end
         if obj_char["height_state"] == "air" then
             obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
             obj_char["anchor_pos"] = {330,485}
             obj_char["push_box"] = {0,-100,120,200}
+            obj_char["collision_ground_height_offset"] = 130
             obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         else
             obj_char["height_state"] = "stand"
-            obj_char["sprite_sheet_state"] = "burst_overdrive_ground"
+            obj_char["sprite_sheet_state"] = "burst_rc_ground"
             obj_char["anchor_pos"] = {300,615}
             obj_char["push_box"]  = {0,-185,120,370}
+            obj_char["collision_ground_height_offset"] = 0
             obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
         obj_char["character_animation"] = 
@@ -2888,8 +2896,9 @@ function state_gate_game_scene_char_RP_from_throw_hurt_success(input,obj_char)
     end
 end
 function state_gate_game_scene_char_RP_from_throw_testing(input,obj_char)
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     obj_char["f"] = obj_char["f"] + 1
-    if obj_char["f"] <= 9 and common_game_scene_change_input_state("R")["Launcher"] == "Pressing" then
+    if obj_char_other_side["hurt_state"] == "idle" and obj_char["f"] <= 9 and common_game_scene_change_input_state("R")["Launcher"] == "Pressing" then
         obj_char["state"] = "throw_teched"
         obj_char["physics_lock"] = false
         obj_char["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
@@ -2909,7 +2918,7 @@ end
 function state_gate_game_scene_char_RP_from_throw_tested(input,obj_char)
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     obj_char["f"] = obj_char["f"] + 1
-    if obj_char["f"] <= 9 and input["Launcher"] == "Pressing" then
+    if obj_char["hurt_state"] == "idle" and obj_char["f"] <= 9 and input["Launcher"] == "Pressing" then
         obj_char["state"] = "throw_teching"
         obj_char["physics_lock"] = false
         obj_char["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(

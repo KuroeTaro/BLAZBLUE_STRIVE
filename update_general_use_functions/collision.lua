@@ -40,7 +40,7 @@ function collision_test_char_on_ground(obj)
     local box = collision_box_to_real_world_box(obj,"pushbox")
     local stage_B_collision = 365
     local box_B_collision = 0
-    box_B_collision = box[2]+box[4]/2+obj["collision_test_ground_height_offset"]
+    box_B_collision = box[2]+box[4]/2+obj["collision_ground_height_offset"]
     return box_B_collision >= stage_B_collision
 end
 function collision_test_cS_distance_check(obj_char,max_distance)
@@ -72,8 +72,8 @@ function collision_pushbox_relocate_y(obj)
     local box = collision_box_to_real_world_box(obj,"pushbox")
     local stage_B_collision = 365
     local box_B_collision = 0
-    box_B_collision = box[2]+box[4]/2
-    obj["y"] = math.min(box_B_collision,stage_B_collision)
+    box_B_collision = box[2]+box[4]/2+obj["collision_ground_height_offset"]
+    obj["y"] = math.min(box_B_collision,stage_B_collision)-obj["collision_ground_height_offset"]
 end
 function collision_pushbox_stage_relocate_x(obj)
     local box = collision_box_to_real_world_box(obj,"pushbox")

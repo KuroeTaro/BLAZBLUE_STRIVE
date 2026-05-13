@@ -583,7 +583,7 @@ function common_game_scene_throw_hurt_function(obj_char)
     local pushbox_data = common_game_scene_get_pushbox(side)
     local anchor_data = common_game_scene_get_anchor(side)
     local sprite_sheet_state = nil
-    local collision_test_ground_height_offset = nil
+    local collision_ground_height_offset = nil
     -- physics_lock
     obj_char["physics_lock"] = true
     -- change_character_face
@@ -595,12 +595,12 @@ function common_game_scene_throw_hurt_function(obj_char)
     if obj_char["height_state"] == "air" then
         obj_char["sprite_sheet_state"] = "1_4_7_air_block"
         obj_char["anchor_pos"] = anchor_data["air_thrown_tested"]
-        collision_test_ground_height_offset = 180
+        collision_ground_height_offset = 130
     else
         obj_char["height_state"] = "stand"
         obj_char["sprite_sheet_state"] = "4_stand_block_high"
         obj_char["anchor_pos"] = anchor_data["ground_thrown_tested"]
-        collision_test_ground_height_offset = 0
+        collision_ground_height_offset = 0
     end
 
     sprite_sheet_state = obj_char["sprite_sheet_state"]
@@ -609,7 +609,7 @@ function common_game_scene_throw_hurt_function(obj_char)
     obj_char["pushbox_other_side_char_active"] = false
     obj_char["hitbox_table"] = {}
     obj_char["hurtbox_table"] = {}
-    obj_char["collision_test_ground_height_offset"] = collision_test_ground_height_offset    
+    obj_char["collision_ground_height_offset"] = collision_ground_height_offset    
 
     hit_side_obj_char["x"] = obj_char["x"] + obj_char[5]*160
     collision_pushbox_stage_relocate_x(hit_side_obj_char)

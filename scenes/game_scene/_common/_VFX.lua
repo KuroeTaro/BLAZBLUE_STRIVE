@@ -2,6 +2,7 @@ function insert_VFX_game_scene_char_overdrive_badge(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
     local image_sprite_sheet = nil
     local y_offset = 0
+
     if obj_char["player_side"] == "L" then
         image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP_overdrive_badge
     elseif obj_char["player_side"] == "R" then
@@ -12,7 +13,6 @@ function insert_VFX_game_scene_char_overdrive_badge(obj_char)
     else
         y_offset = 865
     end
-    
     obj["life"] = 70
     obj[1] = obj_char["x"] - obj_char[5]*(500)
     obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
@@ -21,7 +21,7 @@ function insert_VFX_game_scene_char_overdrive_badge(obj_char)
     obj[5] = obj_char[5]*2
     obj[6] = obj_char[6]*2
     obj[7] = obj_char[7]
-    obj[8] = 0
+    obj[8] = -1
     obj["update"] = function()
         obj[1] = obj_char["x"] - obj_char[5]*(500)
         obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
@@ -50,6 +50,7 @@ end
 function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
     local y_offset = 0
+
     if obj_char["height_state"] == "air" then
         y_offset = 645
     else
@@ -63,7 +64,7 @@ function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
     obj[5] = obj_char[5]*2
     obj[6] = obj_char[6]*2
     obj[7] = obj_char[7]
-    obj[8] = 0
+    obj[8] = -1
     obj["update"] = function()
         -- obj[1] = obj_char["x"] + obj_char[5]*(-860)/2
         -- obj[2] = obj_char["y"] + obj_char[6]*(840)
@@ -95,6 +96,7 @@ end
 function insert_VFX_game_scene_char_overdrive_partical(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
+
     if obj_char["player_side"] == "L" then
         obj["life"] = 80
         obj[1] = obj_camera[1] - 800
@@ -105,7 +107,7 @@ function insert_VFX_game_scene_char_overdrive_partical(obj_char)
         obj[6] = 1
         obj[7] = 0
         obj[8] = 0
-        obj["f"] = 0
+        obj["f"] = -1
     elseif obj_char["player_side"] == "R" then
         obj["life"] = 80
         obj[1] = obj_camera[1] + 800
@@ -144,6 +146,7 @@ end
 function insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
     local obj = {0,0,0,1,0,0,0,0}
     local obj_camera = obj_stage_game_scene_camera
+
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
@@ -200,6 +203,9 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
 
     obj["draw_canvas"] = love.graphics.newCanvas(love.graphics.getWidth(),love.graphics.getHeight())
 
+    init_point_linear_anim_without(obj,obj["size_anim"])
+    init_point_linear_anim_without(obj,obj["opacity_ease_in_anim"])
+
     obj["update"] = function()
         obj[1] = obj_char["x"]
         obj[2] = obj_char["y"] - obj_char[6]*(300)
@@ -247,16 +253,115 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
         love.graphics.setShader(obj["blur_shader"])
         love.graphics.draw(obj["draw_canvas"]) -- 画到屏幕上
         love.graphics.setShader()
-
     end
     table.insert(obj_char["black_overlay_table"],obj)
 end
 
-function insert_VFX_game_scene_char_RC_badge(obj_char,sprite_sheet)
+function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
+    local obj = {0,0,0,1,1,1,0,0}
+    local y_offset = 0
+    if obj_char["height_state"] == "air" then
+        y_offset = 750
+    else
+        y_offset = 830
+    end
+    
+    obj["life"] = 15
+    obj[1] = obj_char["x"] - obj_char[5]*(600)
+    obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
+    obj[3] = obj_char[3]
+    obj[4] = 1
+    obj[5] = obj_char[5]
+    obj[6] = obj_char[6]
+    obj[7] = obj_char[7]
+    obj[8] = -1
+    obj["update"] = function()
+        obj[1] = obj_char["x"] - obj_char[5]*(600)
+        obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
+        obj[3] = obj_char[3]
+        obj[4] = 1
+        obj[5] = obj_char[5]
+        obj[6] = obj_char[6]
+        obj[7] = obj_char[7]
+        obj[8] = obj[8] + 1
+        obj["life"] = obj["life"] - 1
+    end
+    obj["draw"] = function()
+        local obj_camera = obj_stage_game_scene_camera
+        local f = obj[8]
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..f.."")
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+    end
+    table.insert(obj_char["VFX_back_table"],obj)
 end
 function insert_VFX_game_scene_char_RC_partical(obj_char,color)
+    local obj = {0,0,0,1,1,1,0,0}
+    local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_partical
+    local y_offset = 0
+    if obj_char["height_state"] == "air" then
+        y_offset = 750
+    else
+        y_offset = 830
+    end
+    
+    obj["life"] = 40
+    obj[1] = obj_char["x"] - obj_char[5]*(600)
+    obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
+    obj[3] = obj_char[3]
+    obj[4] = 1
+    obj[5] = obj_char[5]
+    obj[6] = obj_char[6]
+    obj[7] = obj_char[7]
+    obj[8] = -1
+    obj["update"] = function()
+        obj[1] = obj_char["x"] - obj_char[5]*(600)
+        obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
+        obj[3] = obj_char[3]
+        obj[4] = 1
+        obj[5] = obj_char[5]
+        obj[6] = obj_char[6]
+        obj[7] = obj_char[7]
+        obj[8] = obj[8] + 1
+        obj["life"] = obj["life"] - 1
+    end
+    obj["draw"] = function()
+        local obj_camera = obj_stage_game_scene_camera
+        local f = obj[8]
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..f.."")
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+    end
+    table.insert(obj_char["VFX_back_table"],obj)
 end
 function insert_VFX_game_scene_char_RC_black_overlay(obj_char)
+    local obj = {0,0,0,0,0,0,0,0}
+
+    obj["FCT"] = {0,0,0,0,0,0,0,0}
+    obj["LCT"] = {0,0,0,0,0,0,0,0}
+    obj["LCD"] = {0,0,0,0,0,0,0,0}
+    obj["life"] = 95
+    
+    obj["opacity_anim"] = {}
+    obj["opacity_anim"][0] = {0.00,20}
+    obj["opacity_anim"][20] = {0.50,85}
+    obj["opacity_anim"][85] = {0.50,95}
+    obj["opacity_anim"][95] = {0,95}
+    obj["opacity_anim"]["prop"] = 4
+    obj["opacity_anim"]["length"] = 95
+    obj["opacity_anim"]["loop"] = false
+    obj["opacity_anim"]["fix_type"] = true
+    init_point_linear_anim_without(obj,obj["opacity_anim"])
+    obj["update"] = function()
+        point_linear_animator(obj,obj["opacity_anim"])
+        obj["life"] = obj["life"] - 1
+    end
+    obj["draw"] = function()
+        love.graphics.setColor(0,0,0,obj[4])
+        love.graphics.rectangle("fill",0,0,love.graphics.getWidth(),love.graphics.getHeight())
+        love.graphics.setColor(1,1,1,1)
+    end
+    table.insert(obj_char["black_overlay_table"],obj)
 end
 
 -- blast slash directional ray_impact
