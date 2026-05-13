@@ -1265,6 +1265,12 @@ function common_game_scene_projectile_apply_hurt_velocity(
     end
 end
 
+function common_game_scene_reset_velocity_by_ground_friction(obj_char)
+    if obj_char["friction"] == 1 then
+        obj_char["velocity"][1] = 0
+    end
+end
+
 function common_game_scene_init_chars_trainning()
     load_game_scene_common_obj()
     load_game_scene_common_anim()

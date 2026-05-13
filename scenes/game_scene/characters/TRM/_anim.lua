@@ -1845,6 +1845,8 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
     res["anim_length"] = 27
 
     res[0] = function()
+        -- pre_set
+        common_game_scene_reset_velocity_by_ground_friction(obj_char)
         -- state
         obj_char["sprite_sheet_state"] = "2P"
         obj_char["height_state"] = "crouch" -- stand crouch air OTG
@@ -2096,6 +2098,8 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
     res["anim_length"] = 42
 
     res[0] = function()
+        -- pre_set
+        common_game_scene_reset_velocity_by_ground_friction(obj_char)
         -- state
         obj_char["sprite_sheet_state"] = "6P"
         obj_char["height_state"] = "stand" -- stand crouch air OTG
@@ -2369,6 +2373,8 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
     res["anim_length"] = 27
 
     res[0] = function()
+        -- pre_set
+        common_game_scene_reset_velocity_by_ground_friction(obj_char)
         -- state
         obj_char["sprite_sheet_state"] = "5P"
         obj_char["height_state"] = "stand" -- stand crouch air OTG
@@ -2619,6 +2625,8 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
     res["anim_length"] = 39
 
     res[0] = function()
+        -- pre_set
+        common_game_scene_reset_velocity_by_ground_friction(obj_char)
         -- state
         obj_char["sprite_sheet_state"] = "2K"
         obj_char["height_state"] = "crouch" -- stand crouch air OTG
@@ -2905,6 +2913,8 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
     res["anim_length"] = 44
     
     res[0] = function()
+        -- pre_set
+        common_game_scene_reset_velocity_by_ground_friction(obj_char)
         -- state
         obj_char["sprite_sheet_state"] = "6K"
         obj_char["height_state"] = "stand" -- stand crouch air OTG
@@ -3125,14 +3135,14 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         -- draw_correction
         obj_char[8] = 6
     end
-    res[28] = function()
-        -- draw_correction
-        obj_char[8] = 7
-    end
-    res[31] = function()
+    res[26] = function()
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
+    end
+    res[28] = function()
+        -- draw_correction
+        obj_char[8] = 7
     end
     res[32] = function()
         -- collide
@@ -3203,6 +3213,8 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
     end
 
     res[0] = function()
+        -- pre_set
+        common_game_scene_reset_velocity_by_ground_friction(obj_char)
         -- state
         obj_char["sprite_sheet_state"] = "5K"
         obj_char["height_state"] = "stand" -- stand crouch air OTG
@@ -3494,6 +3506,8 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
     res["anim_length"] = 56
 
     res[0] = function()
+        -- pre_set
+        common_game_scene_reset_velocity_by_ground_friction(obj_char)
         -- state
         obj_char["sprite_sheet_state"] = "2S"
         obj_char["height_state"] = "crouch" -- stand crouch air OTG
@@ -3797,6 +3811,8 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
     res["anim_length"] = 59
 
     res[0] = function()
+        -- pre_set
+        common_game_scene_reset_velocity_by_ground_friction(obj_char)
         -- state
         obj_char["sprite_sheet_state"] = "6S"
         obj_char["height_state"] = "stand" -- stand crouch air OTG
@@ -4136,6 +4152,8 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
     end
 
     res[0] = function()
+        -- pre_set
+        common_game_scene_reset_velocity_by_ground_friction(obj_char)
         -- state
         obj_char["sprite_sheet_state"] = "cS"
         obj_char["height_state"] = "stand" -- stand crouch air OTG
@@ -4399,6 +4417,8 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
     res["anim_length"] = 40
 
     res[0] = function()
+        -- pre_set
+        common_game_scene_reset_velocity_by_ground_friction(obj_char)
         -- state
         obj_char["sprite_sheet_state"] = "fS"
         obj_char["height_state"] = "stand" -- stand crouch air OTG
@@ -5403,6 +5423,8 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
     res["anim_length"] = 50
 
     res[0] = function()
+        -- pre_set
+        common_game_scene_reset_velocity_by_ground_friction(obj_char)
         -- state
         obj_char["sprite_sheet_state"] = "2Launcher"
         obj_char["height_state"] = "crouch" -- stand crouch air OTG
@@ -5733,6 +5755,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
     res["anim_length"] = 42
 
     res[0] = function()
+        -- pre_set
+        common_game_scene_reset_velocity_by_ground_friction(obj_char)
         -- state
         obj_char["default_throw_distance"] = 0
         
@@ -6436,6 +6460,8 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
     res["anim_length"] = 65
 
     res[0] = function()
+        -- pre_set
+        common_game_scene_reset_velocity_by_ground_friction(obj_char)
         -- state
         obj_char["sprite_sheet_state"] = "5Launcher"
         obj_char["height_state"] = "stand" -- stand crouch air OTG
@@ -6737,6 +6763,8 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
     res["anim_length"] = 65
 
     res[0] = function()
+        -- pre_set
+        common_game_scene_reset_velocity_by_ground_friction(obj_char)
         -- state
         obj_char["sprite_sheet_state"] = "5Launcher"
         obj_char["height_state"] = "stand" -- stand crouch air OTG
