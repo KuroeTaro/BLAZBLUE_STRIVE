@@ -4884,9 +4884,11 @@ function load_game_scene_anim_char_common_burst_overdrive(obj_char,other_side_co
         obj_char["air_move"]["jump"] = {1,1}
         obj_char["air_move"]["air_dash"] = {1,1}
         -- game_speed
-        obj_char["game_speed"] = 1
-        obj_char["game_speed_subframe"] = 1
-        obj_char["game_speed_abnormal_realtime_countdown"] = 0
+        obj_char["game_speed_cache_after_apply"][1] = true
+        obj_char["game_speed_cache_after_apply"][2] = 1
+        obj_char["game_speed_cache_after_apply"][3] = 1
+        obj_char["game_speed_cache_after_apply"][4] = 0
+
         obj_char["hit_hurt_blockstop_countdown"] = 0
         -- collide
         obj_char["pushbox_other_side_char_active"] = true
@@ -4921,9 +4923,10 @@ function load_game_scene_anim_char_common_burst_overdrive(obj_char,other_side_co
         update_move_overdrive_state()
             -- idle状态下OD 恢复为3+13
             -- 攻击状态下OD 恢复为3+3
-        obj_char_other_side["game_speed"] = 0
-        obj_char_other_side["game_speed_subframe"] = 0
-        obj_char_other_side["game_speed_abnormal_realtime_countdown"] = other_side_countdown
+        obj_char_other_side["game_speed_cache_after_apply"][1] = true
+        obj_char_other_side["game_speed_cache_after_apply"][2] = 0
+        obj_char_other_side["game_speed_cache_after_apply"][3] = 0
+        obj_char_other_side["game_speed_cache_after_apply"][4] = other_side_countdown
     end
     res[4] = function()
         -- state & state_number
@@ -5158,6 +5161,15 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
         obj_char["air_move"] = {}
         obj_char["air_move"]["jump"] = {1,1}
         obj_char["air_move"]["air_dash"] = {1,1}
+        -- game_speed
+        obj_char["game_speed_common_cache"][1] = obj_char["game_speed"]
+        obj_char["game_speed_common_cache"][2] = obj_char["game_speed_subframe"]
+        obj_char["game_speed_common_cache"][3] = obj_char["game_speed_abnormal_realtime_countdown"]
+
+        obj_char["game_speed_cache_after_apply"][1] = true
+        obj_char["game_speed_cache_after_apply"][2] = 1
+        obj_char["game_speed_cache_after_apply"][3] = 1
+        obj_char["game_speed_cache_after_apply"][4] = 0
         -- collide
         obj_char["pushbox_other_side_char_active"] = true
         obj_char["hitbox_table"] = {} --{ 攻击类型 是投还是打， function值 内部为命中后的逻辑,具体的box形状}
@@ -5174,9 +5186,10 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
         update_move_state()
         update_heat_gauge_state()
         -- game_speed
-        obj_char_other_side["game_speed"] = 0
-        obj_char_other_side["game_speed_subframe"] = 0
-        obj_char_other_side["game_speed_abnormal_realtime_countdown"] = 43
+        obj_char_other_side["game_speed_cache_after_apply"][1] = true
+        obj_char_other_side["game_speed_cache_after_apply"][2] = 0
+        obj_char_other_side["game_speed_cache_after_apply"][3] = 0
+        obj_char_other_side["game_speed_cache_after_apply"][4] = 43
     end
     res[3] = function()
         -- state&state_number
@@ -5251,6 +5264,11 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
         obj_char[8] = 9
     end
     res[45] = function()
+        -- game_speed
+        obj_char["game_speed_cache_after_apply"][1] = true
+        obj_char["game_speed_cache_after_apply"][2] = obj_char["game_speed_common_cache"][1]
+        obj_char["game_speed_cache_after_apply"][3] = obj_char["game_speed_common_cache"][2]
+        obj_char["game_speed_cache_after_apply"][4] = obj_char["game_speed_common_cache"][3]
         -- input_sys_cache
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
