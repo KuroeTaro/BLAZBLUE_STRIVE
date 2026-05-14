@@ -239,13 +239,6 @@ function update_game_scene_training_main()
             char_LP["x"] = char_LP["x"] + char_LP_velocity[1]/(16* char_LP["game_speed"])
             char_LP["y"] = char_LP["y"] + char_LP_velocity[2]/(16* char_LP["game_speed"])
 
-            -- RC更新位置 1/10
-            for i = 1,#char_LP["projectile_rc_table"] do
-                local current_projectile = char_LP["projectile_rc_table"][i]
-                current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(16* char_LP["game_speed"])
-                current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(16* char_LP["game_speed"])
-            end
-
             -- 飞行道具更新位置 1/10
             for i = 1,#char_LP["projectile_table"] do
                 local current_projectile = char_LP["projectile_table"][i]
@@ -257,13 +250,6 @@ function update_game_scene_training_main()
             -- 角色更新位置 1/10
             char_RP["x"] = char_RP["x"] + char_RP_velocity[1]/(16* char_RP["game_speed"])
             char_RP["y"] = char_RP["y"] + char_RP_velocity[2]/(16* char_RP["game_speed"])
-
-            -- RC更新位置 1/10
-            for i = 1,#char_RP["projectile_rc_table"] do
-                local current_projectile = char_RP["projectile_rc_table"][i]
-                current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(16* char_RP["game_speed"])
-                current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(16* char_RP["game_speed"])
-            end
 
             -- 飞行道具更新位置 1/10
             for i = 1,#char_RP["projectile_table"] do
@@ -353,18 +339,6 @@ function update_game_scene_training_main()
             -- interaction_with_friendly
 
         -- 检测飞行道具人物交互
-        for i = 1,#char_LP["projectile_rc_table"] do
-            local current_projectile = char_LP["projectile_rc_table"][i]
-            if current_projectile["enemy_interact_function"] then
-                current_projectile["enemy_interact_function"]()
-            end
-        end
-        for i = 1,#char_RP["projectile_rc_table"] do
-            local current_projectile = char_RP["projectile_rc_table"][i]
-            if current_projectile["projectile_rc_table"] then
-                current_projectile["projectile_rc_table"]()
-            end
-        end
         for i = 1,#char_LP["projectile_table"] do
             local current_projectile = char_LP["projectile_table"][i]
             if current_projectile["enemy_interact_function"] then
@@ -415,17 +389,8 @@ function update_game_scene_training_main()
             char_RP["hit_hurt_blockstop_countdown"] = 0
             char_LP["hit_hurt_block_slowdown_countdown"] = 0
             char_RP["hit_hurt_block_slowdown_countdown"] = 0
-
-            char_LP["game_speed_cache_after_apply"][1] = true
-            char_LP["game_speed_cache_after_apply"][2] = 1
-            char_LP["game_speed_cache_after_apply"][3] = 1
-            char_LP["game_speed_cache_after_apply"][4] = 0
-            
-            char_RP["game_speed_cache_after_apply"][1] = true
-            char_RP["game_speed_cache_after_apply"][2] = 1
-            char_RP["game_speed_cache_after_apply"][3] = 1
-            char_RP["game_speed_cache_after_apply"][4] = 0
-
+            char_LP["game_speed"] = 1
+            char_RP["game_speed"] = 1
             obj_camera["state"] = "main"
             obj_camera["enclose_percentage"] = 0.0
             obj_camera["enclose_position_offset"] = {0,0,0}
@@ -468,20 +433,6 @@ function update_game_scene_training_main()
 
     -- 更新角色重力方向速度
     update_game_scene_gravity()
-
-    -- 更新当前帧影响的游戏速度的项
-    if char_LP["game_speed_cache_after_apply"][1] then
-        char_LP["game_speed_cache_after_apply"][1] = false
-        char_LP["game_speed"] = char_LP["game_speed_cache_after_apply"][2]
-        char_LP["game_speed_subframe"] = char_LP["game_speed_cache_after_apply"][3]
-        char_LP["game_speed_abnormal_realtime_countdown"] = char_LP["game_speed_cache_after_apply"][4]
-    end
-    if char_RP["game_speed_cache_after_apply"][1] then
-        char_RP["game_speed_cache_after_apply"][1] = false
-        char_RP["game_speed"] = char_RP["game_speed_cache_after_apply"][2]
-        char_RP["game_speed_subframe"] = char_RP["game_speed_cache_after_apply"][3]
-        char_RP["game_speed_abnormal_realtime_countdown"] = char_RP["game_speed_cache_after_apply"][4]
-    end
 
     -- 更新sub_frame
     update_game_scene_game_speed_sub_frame()
@@ -564,14 +515,18 @@ function update_game_scene_char()
     local game_speed_subframe_cache_LP = char_LP["game_speed_subframe"]
     local game_speed_cache_RP = char_RP["game_speed"]
     local game_speed_subframe_cache_RP = char_RP["game_speed_subframe"]
-    if game_speed_cache_LP ~= 0 then
+    if game_speed_cache_LP ~= 0 
+    and game_speed_subframe_cache_LP > game_speed_cache_LP
+    then
         update_game_scene_char_LP()
         update_game_scene_char_LP_projectile()
         update_game_scene_char_LP_VFX()
         update_game_scene_char_LP_black_overlay()
     end
 
-    if game_speed_cache_RP ~= 0 then
+    if game_speed_cache_RP ~= 0 
+    and game_speed_subframe_cache_RP > game_speed_cache_RP
+    then
         update_game_scene_char_RP()
         update_game_scene_char_RP_projectile()
         update_game_scene_char_RP_VFX()
@@ -579,11 +534,15 @@ function update_game_scene_char()
     end
 
     -- attachment 用于某些需要根据角色本身本帧数据来更新的部分
-    if game_speed_cache_LP ~= 0 then
+    if game_speed_cache_LP ~= 0 
+    and game_speed_subframe_cache_LP > game_speed_cache_LP
+    then
         update_game_scene_char_LP_attachment()
     end
 
-    if game_speed_cache_RP ~= 0 then
+    if game_speed_cache_RP ~= 0 
+    and game_speed_subframe_cache_RP > game_speed_cache_RP
+    then
         update_game_scene_char_RP_attachment()
     end
 

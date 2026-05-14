@@ -548,12 +548,6 @@ function common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_ob
     obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
     obj_char["last_hitstop_frame"] = 0
     init_character_anim_with(obj_char,obj_char["character_animation"])
-
-    -- hit_side_game_speed
-    hit_side_obj_char["game_speed_cache_after_apply"][1] = true
-    hit_side_obj_char["game_speed_cache_after_apply"][2] = 1
-    hit_side_obj_char["game_speed_cache_after_apply"][3] = 1
-    hit_side_obj_char["game_speed_cache_after_apply"][4] = 0
 end
 function common_game_scene_throw_hit_function(obj_char)
     local side = obj_char["player_side"]
@@ -571,16 +565,16 @@ function common_game_scene_throw_hit_function(obj_char)
         hit_side_obj_char["y"] = math.min(hit_side_obj_char["y"],125)
     end
     obj_char["y"] = hit_side_obj_char["y"]
-    -- hit_side_state
+
     hit_side_obj_char["f"] = 0
     hit_side_obj_char["state"] = "throw_testing"
+
     hit_side_obj_char["throw_active"] = false
+
     hit_side_obj_char["velocity"] = {0,0}
-    -- game_speed
-    hit_side_obj_char["game_speed_cache_after_apply"][1] = true
-    hit_side_obj_char["game_speed_cache_after_apply"][2] = 1
-    hit_side_obj_char["game_speed_cache_after_apply"][3] = 1
-    hit_side_obj_char["game_speed_cache_after_apply"][4] = 0
+    hit_side_obj_char["game_speed"] = 1
+    hit_side_obj_char["game_speed_subframe"] = 1
+    hit_side_obj_char["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数  
 end
 function common_game_scene_throw_hurt_function(obj_char)
     local side = obj_char["player_side"]
@@ -639,10 +633,9 @@ function common_game_scene_throw_hurt_function(obj_char)
 
     obj_char["velocity"] = {0,0}
 
-    obj_char["game_speed_cache_after_apply"][1] = true
-    obj_char["game_speed_cache_after_apply"][2] = 1
-    obj_char["game_speed_cache_after_apply"][3] = 1
-    obj_char["game_speed_cache_after_apply"][4] = 0
+    obj_char["game_speed"] = 1
+    obj_char["game_speed_subframe"] = 1
+    obj_char["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
 end
 
 function common_game_scene_create_wiggle_animation(length,prop,wiggle_amount)
@@ -974,10 +967,7 @@ function common_update_game_scene_char_hitstop_countdown(obj_char)
         obj_char["game_speed_abnormal_realtime_countdown"] = 0
         obj_char["hit_hurt_blockstop_countdown"] = 0 
         obj_char["hit_hurt_block_slowdown_countdown"] = 0
-        obj_char["game_speed_cache_after_apply"][1] = true
-        obj_char["game_speed_cache_after_apply"][2] = 1
-        obj_char["game_speed_cache_after_apply"][3] = 1
-        obj_char["game_speed_cache_after_apply"][4] = 0
+        obj_char["game_speed"] = 1
     end
 end
 function common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
@@ -988,21 +978,10 @@ function common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
         obj_char["hurtstop_wiggle_current_x"] = (obj_char["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
         obj_char["hurtstop_wiggle_current_y"] = (obj_char["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
     else
-        if obj_char["hit_hurt_block_slowdown_countdown"] <= 0 then
-            obj_char["game_speed_cache_after_apply"][1] = true
-            obj_char["game_speed_cache_after_apply"][2] = 1
-            obj_char["game_speed_cache_after_apply"][3] = 1
-            obj_char["game_speed_cache_after_apply"][4] = 0
-        else
-            obj_char["game_speed_cache_after_apply"][1] = true
-            obj_char["game_speed_cache_after_apply"][2] = 2
-            obj_char["game_speed_cache_after_apply"][3] = 1
-            obj_char["game_speed_cache_after_apply"][4] = obj_char["hit_hurt_block_slowdown_countdown"]
-        end
-    
+        obj_char["game_speed_abnormal_realtime_countdown"] = obj_char["hit_hurt_block_slowdown_countdown"]
         obj_char["hit_hurt_blockstop_countdown"] = 0 
         obj_char["hit_hurt_block_slowdown_countdown"] = 0
-
+        obj_char["game_speed"] = 2
         obj_char["hurtstop_wiggle_x"] = 0
         obj_char["hurtstop_wiggle_y"] = 0
         obj_char["hurtstop_wiggle_current_x"] = 0
@@ -1017,9 +996,8 @@ function common_update_game_scene_char_game_speed_abnormal_realtime_countdown(ob
         if obj_char["game_speed_abnormal_realtime_countdown"] > 0 then
             obj_char["game_speed_abnormal_realtime_countdown"] = obj_char["game_speed_abnormal_realtime_countdown"] - 1
         else
-            obj_char["game_speed"] = 1
-            obj_char["game_speed_subframe"] = 1
             obj_char["game_speed_abnormal_realtime_countdown"] = 0
+            obj_char["game_speed"] = 1
         end
     end
 end
