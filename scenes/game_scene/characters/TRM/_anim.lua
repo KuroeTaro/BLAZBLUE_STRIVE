@@ -1911,7 +1911,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             5,5,1.02,
-            -12,1.5,1.02,
+            -15,1.5,1.02,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -2164,7 +2164,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             15,5,1.02,
-            -20,1.5,1.02,
+            -22.5,1.5,1.02,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -2439,7 +2439,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             10,5,1.02,
-            -12,1.5,1.03,
+            -15,1.5,1.03,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -2691,7 +2691,7 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             10,5,1.02,
-            -12,1.5,1.02,
+            -15,1.5,1.02,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -2979,7 +2979,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             8,5,1.02,
-            -25,2.5,1.02,
+            -27.5,2.5,1.02,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -3282,7 +3282,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             25,5,1.02,
-            -20,2.5,1.02,
+            -22.5,2.5,1.02,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -3572,7 +3572,7 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             15,5,1.02,
-            -12,2.5,1.02,
+            -15,2.5,1.02,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -3841,7 +3841,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             32,5,1.00,
-            -25,2.5,1.00,
+            -27.5,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -3867,7 +3867,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             32,5,1.00,
-            -25,2.5,1.00,
+            -27.5,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -3893,7 +3893,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             32,5,1.02,
-            -17.5,2.0,1.02,
+            -20,2.0,1.02,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -4221,7 +4221,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             20,5,1.02,
-            -12,1.5,1.02,
+            -15,1.5,1.02,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -4483,7 +4483,7 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             36,5,1.02,
-            -12,2.5,1.02,
+            -15,2.5,1.02,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -5453,7 +5453,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             "0_general_hurt_launched_low",
             "air","knockdown",
             8,5,1.00,
-            -15,1.6,1.00,
+            -17.5,1.6,1.00,
             load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
                 obj_char,
                 "0_general_hurt_hard_knockdown_down",
@@ -5490,7 +5490,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             "0_general_hurt_launched_low",
             "air","knockdown",
             8,5,1.00,
-            -15,1.6,1.00,
+            -17.5,1.6,1.00,
             load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
                 obj_char,
                 "0_general_hurt_hard_knockdown_down",
@@ -5527,7 +5527,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             "0_general_hurt_launched_low",
             "air","knockdown_recovery",
             8,5,1.02,
-            -15,1.6,1.02,
+            -17.5,1.6,1.02,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -6528,7 +6528,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             5,7,1.02,
-            -30,2.5,1.02,
+            -35,2.5,1.02,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -6831,7 +6831,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             5,7,1.02,
-            -30,2.5,1.02,
+            -35,2.5,1.02,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -7120,7 +7120,7 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             10,5,1.02,
-            -12,2.5,1.02,
+            -15,2.5,1.02,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -7369,7 +7369,7 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             10,5,1.02,
-            -12,2.5,1.02,
+            -15,2.5,1.02,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -7615,7 +7615,7 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             5,5,1.02,
-            10,2.5,1.02,
+            7,2.5,1.02,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -7632,7 +7632,7 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
             "1_4_7_air_block",
             "air","5_stand_idle",
             10,5,1.00,
-            10,2.5,1.00,
+            7,2.5,1.00,
             nil,nil,nil,nil,
             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
         )
@@ -7880,7 +7880,7 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             10,5,1.02,
-            -15,2.5,1.02,
+            -12,2.5,1.02,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -8141,7 +8141,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             2,5,1.02,
-            -25,2.5,1.02,
+            -27.5,2.5,1.02,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
