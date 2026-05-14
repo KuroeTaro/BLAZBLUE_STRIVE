@@ -167,6 +167,8 @@ function load_game_scene_obj_char_LP()
 
     -- game_speed
     obj_char_game_scene_char_LP["game_speed"] = 1
+    obj_char_game_scene_char_LP["game_speed_common_cache"] = {1,0,0}
+    obj_char_game_scene_char_LP["game_speed_cache_after_apply"] = {false,1,1,0}
     obj_char_game_scene_char_LP["game_speed_subframe"] = 1
     obj_char_game_scene_char_LP["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
     obj_char_game_scene_char_LP["hit_hurt_blockstop_countdown"] = 0
@@ -183,6 +185,7 @@ function load_game_scene_obj_char_LP()
 
     -- sub_obj_table
     obj_char_game_scene_char_LP["projectile_table"] = {}
+    obj_char_game_scene_char_LP["projectile_rc_table"] = {}
     obj_char_game_scene_char_LP["VFX_HUD_table"] = {}
     obj_char_game_scene_char_LP["VFX_front_table"] = {}
     obj_char_game_scene_char_LP["VFX_back_table"] = {}
@@ -1196,33 +1199,49 @@ function state_machine_char_game_scene_char_LP()
     local input = INPUT_SYS_CURRENT_COMMAND_STATE["L"]
     local obj_char = obj_char_game_scene_char_LP
     local obj_char_other_side = common_game_scene_change_character("L")
+    local game_speed_cache = obj_char["game_speed"]
+    local game_speed_subframe_cache = obj_char["game_speed_subframe"]
     local switch = {
         ["before_ease_in"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
         end,
 
         ["active_FD_block"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_active_FD_block(input,obj_char)
         end,
         ["active_FD_block_to_idle"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_active_FD_block_to_idle(input,obj_char)
         end,
         ["block"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_block(input,obj_char)
         end,
         ["hurt"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_hurt(input,obj_char)
         end,
         ["throw_success"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_throw_success(input,obj_char)
         end,
         ["throw_hurt_success"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_throw_hurt_success(input,obj_char)
         end,
         ["throw_testing"] = function()
@@ -1232,29 +1251,41 @@ function state_machine_char_game_scene_char_LP()
             state_gate_game_scene_char_LP_from_throw_tested(input,obj_char)
         end,
         ["throw_teching"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_throw_tech(input,obj_char)
         end,
         ["throw_teched"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_throw_tech(input,obj_char)
         end,
 
         ["hitstop"] = function()
-            common_update_game_scene_char_hitstop_countdown(obj_char)
+            if game_speed_subframe_cache > game_speed_cache then
+                common_update_game_scene_char_hitstop_countdown(obj_char)
+            end
             state_gate_game_scene_char_LP_from_hitstop(input,obj_char)
         end,
         ["hurtstop"] = function()
-            common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
+            if game_speed_subframe_cache > game_speed_cache then
+                common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
+            end
             state_gate_game_scene_char_LP_from_hurtstop(input,obj_char)
         end,
         ["blockstop"] = function()
-            common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
+            if game_speed_subframe_cache > game_speed_cache then
+                common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
+            end
             state_gate_game_scene_char_LP_from_blockstop(input,obj_char)
         end,
 
         ["wallstick"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_wallstick(input,obj_char)
         end,
         ["wallbreak_hurt"] = function()
@@ -1263,320 +1294,474 @@ function state_machine_char_game_scene_char_LP()
         end,
 
         ["knockdown"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_knockdown(input,obj_char)
         end,
         ["knockdown_recovery"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_knockdown_recovery(input,obj_char)
         end,
         ["knockdown_recovery_wallstick"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_knockdown_recovery_wallstick(input,obj_char)
         end,
         ["knockout"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
         end,
 
         ["1_2_3_crouch"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_1_2_3_crouch(input,obj_char)
         end,
         ["1_2_3_crouch_turn"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_1_2_3_crouch_turn(input,obj_char)
         end,
         ["1_2_3_crouch_to_stand_idle"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_1_2_3_crouch_to_stand_idle(input,obj_char)
         end,
         ["5_stand_idle"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char)
         end,
         ["5_stand_turn"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_5_stand_turn(input,obj_char)
         end,
         ["5_stand_dash_skid"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_5_stand_dash_skid(input,obj_char)
         end,
         ["4_walk"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_4_walk(input,obj_char)
         end,
         ["4_walk_to_stand_idle"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_4_walk_to_stand_idle(input,obj_char)
         end,
         ["6_walk"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_6_walk(input,obj_char)
         end,
         ["6_walk_to_stand_idle"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_6_walk_to_stand_idle(input,obj_char)
         end,
 
         ["7_8_9_jump_air_to_stand_idle"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,obj_char)
         end,
         ["7_8_9_jump_air"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char)
         end,
         ["7_8_9_pre_jump"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_7_8_9_pre_jump(input,obj_char)
         end,
         
         ["4dash_backdash"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_4dash_backdash(input,obj_char)
         end,
         ["4dash_air_backdash"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_4dash_air_backdash(input,obj_char)
         end,
         ["6dash_dash"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_6dash_dash(input,obj_char)
         end,
         ["6dash_air_dash"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_6dash_air_dash(input,obj_char)
         end,
         ["6dash_dash_cancel"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_6dash_dash_cancel(input,obj_char)
         end,
         
         ["burst_RC_red"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_burst_RC_red(input,obj_char)
         end,
         ["burst_RC_blue"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_burst_RC_blue(input,obj_char)
         end,
         ["burst_RC_purple"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_burst_RC_purple(input,obj_char)
         end,
         ["burst_RC_yellow"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_burst_RC_yellow(input,obj_char)
         end,
 
         ["burst_overdrive"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_burst_overdrive(input,obj_char)
         end,
         ["burst_burst"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_burst_burst(input,obj_char)
         end,
 
         ["2P"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_2P(input,obj_char)
         end,
         ["6P"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_6P(input,obj_char)
         end,
         ["5P"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_5P(input,obj_char)
         end,
         ["2K"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_2K(input,obj_char)
         end,
         ["6K"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_6K(input,obj_char)
         end,
         ["5K"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_5K(input,obj_char)
         end,
         ["2S"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_2S(input,obj_char)
         end,
         ["6S"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_6S(input,obj_char)
         end,
         ["cS"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_cS(input,obj_char)
         end,
         ["fS"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_fS(input,obj_char)
         end,
         ["2Launcher"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_2Launcher(input,obj_char)
         end,
         ["4_6Launcher"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_4_6Launcher(input,obj_char)
         end,
         ["5Launcher"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_5Launcher(input,obj_char)
         end,
         ["5Launcher_hold"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_5Launcher_hold(input,obj_char)
         end,
 
         ["jP"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_jP(input,obj_char)
         end,
         ["jK"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_jK(input,obj_char)
         end,
         ["j2K"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_j2K(input,obj_char)
         end,
         ["jS"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_jS(input,obj_char)
         end,
         ["j2S"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_j2S(input,obj_char)
         end,
         ["j4_6Launcher"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_j4_6Launcher(input,obj_char)
         end,
         ["j5Launcher"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_j5Launcher(input,obj_char)
         end,
 
         ["4sp_P"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_4sp_P(input,obj_char)
         end,
         ["6sp_P"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_6sp_P(input,obj_char)
         end,
         ["4sp_K"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_4sp_K(input,obj_char)
         end,
         ["6sp_K"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_6sp_K(input,obj_char)
         end,
         ["4sp_S"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_4sp_S(input,obj_char)
         end,
         ["4sp_S_4dash"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_4sp_S_4dash(input,obj_char)
         end,
         ["4sp_S_6dash"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_4sp_S_6dash(input,obj_char)
         end,
         ["4sp_S_S"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_4sp_S_S(input,obj_char)
         end,
         ["4sp_S_H"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_4sp_S_H(input,obj_char)
         end,
         ["4sp_S_2Launcher"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_4sp_S_2Launcher(input,obj_char)
         end,
         ["4sp_S_6Launcher"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_4sp_S_6Launcher(input,obj_char)
         end,
         ["4sp_S_5Launcher"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_4sp_S_5Launcher(input,obj_char)
         end,
         ["6sp_S"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_6sp_S(input,obj_char)
         end,
         ["sp_H"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_sp_H(input,obj_char)
         end,
         ["sp_H_P"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_sp_H_P(input,obj_char)
         end,
         ["sp_H_K"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_sp_H_K(input,obj_char)
         end,
         ["sp_H_S"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_sp_H_S(input,obj_char)
         end,
         ["sp_H_H"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_sp_H_H(input,obj_char)
         end,
 
         ["jsp_S"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_jsp_S(input,obj_char)
         end,
         ["jsp_H"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_jsp_H(input,obj_char)
         end,
         ["jsp_H_P"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_jsp_H_P(input,obj_char)
         end,
         ["jsp_H_K"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_jsp_H_K(input,obj_char)
         end,
         ["jsp_H_S"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_jsp_H_S(input,obj_char)
         end,
         ["jsp_H_H"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_jsp_H_H(input,obj_char)
         end,
 
         ["4UA"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_4UA(input,obj_char)
         end,
         ["6UA"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_6UA(input,obj_char)
         end,
         ["5UA"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_5UA(input,obj_char)
         end,
         ["4sp_S_5UA"] = function()
-            character_animator(obj_char,obj_char["character_animation"])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
             state_gate_game_scene_char_LP_from_4sp_S_5UA(input,obj_char)
         end,
     }
@@ -1587,6 +1772,8 @@ end
 function state_machine_char_game_scene_char_LP_shot_sys()
     local input = INPUT_SYS_CURRENT_COMMAND_STATE["L"]
     local obj_char = obj_char_game_scene_char_LP
+    local game_speed_cache = obj_char["game_speed"]
+    local game_speed_subframe_cache = obj_char["game_speed_subframe"]
     local test_input_idle_to_ease_out = 
     (test_input_sys_press(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
     (test_input_sys_press_or_hold(input["HS"]) and test_input_sys_press(input["SP"]))
@@ -1598,7 +1785,9 @@ function state_machine_char_game_scene_char_LP_shot_sys()
     -- state_machine
     local switch = {
         ["off"] = function()
-            character_function_game_scene_TRM_shot_sys_off_update(obj_char)
+            if game_speed_subframe_cache > game_speed_cache then
+                character_function_game_scene_TRM_shot_sys_off_update(obj_char)
+            end
             -- ease_in
             if test_input_sys_press(input["HS"]) and (not test_shot_sys_ban_state) then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(obj_char)
@@ -1607,7 +1796,9 @@ function state_machine_char_game_scene_char_LP_shot_sys()
             end
         end,
         ["at_the_ready_ease_in"] = function()
-            character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_update(obj_char)
+            if game_speed_subframe_cache > game_speed_cache then
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_update(obj_char)
+            end
             if (obj_char["shot_sys_idle_cancel"] and test_input_idle_to_ease_out) or test_shot_sys_ban_state then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready_ease_out"
@@ -1632,7 +1823,9 @@ function state_machine_char_game_scene_char_LP_shot_sys()
             end
         end,
         ["at_the_ready_ease_out"] = function()
-            character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_update(obj_char)
+            if game_speed_subframe_cache > game_speed_cache then
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_update(obj_char)
+            end
             if test_input_sys_press(input["HS"]) and (not test_shot_sys_ban_state) then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready_ease_in"
@@ -1645,7 +1838,9 @@ function state_machine_char_game_scene_char_LP_shot_sys()
             end
         end,
         ["at_the_ready"] = function()
-            character_function_game_scene_TRM_shot_sys_at_the_ready_update(obj_char)
+            if game_speed_subframe_cache > game_speed_cache then
+                character_function_game_scene_TRM_shot_sys_at_the_ready_update(obj_char)
+            end
             if test_input_idle_to_ease_out or test_shot_sys_ban_state then
                 obj_char["input_sys_cache_negative_edge"]["HS"] = false
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(obj_char)
@@ -1663,7 +1858,9 @@ function state_machine_char_game_scene_char_LP_shot_sys()
             end
         end,
         ["at_the_ready_shot"] = function()
-            character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(obj_char)
+            if game_speed_subframe_cache > game_speed_cache then
+                character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(obj_char)
+            end
             if (obj_char["shot_sys_idle_cancel"] and test_input_shot_to_ease_out) or test_shot_sys_ban_state then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready_ease_out"
@@ -1721,16 +1918,20 @@ function state_machine_char_game_scene_char_LP_shot_sys()
 end
 function state_machine_char_game_scene_char_LP_shot_sys_oroboros()
     local obj_char = obj_char_game_scene_char_LP
+    local game_speed_cache = obj_char["game_speed"]
+    local game_speed_subframe_cache = obj_char["game_speed_subframe"]
     local switch = {
         ["off"] = function()
         end,
         ["ease_in"] = function()
-            character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
-            character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
-            character_animator(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
-            character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
-            character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
-            character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
+                character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
+                character_animator(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
+                character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
+                character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
+                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
+            end
             if get_character_anim_end_state(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3]) then
                 obj_char["shot_sys_oroboros_front"][4] = 1
                 obj_char["shot_sys_oroboros_back"][4] = 1
@@ -1742,18 +1943,22 @@ function state_machine_char_game_scene_char_LP_shot_sys_oroboros()
             end
         end,
         ["at_the_ready_or_steady_aim"] = function()
-            character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
-            character_animator(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
-            character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
-            character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
+                character_animator(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
+                character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
+                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
+            end
         end,
         ["ease_out"] = function()
-            character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
-            character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
-            character_animator(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
-            character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
-            character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
-            character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
+                character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
+                character_animator(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
+                character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
+                character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
+                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
+            end
             if get_character_anim_end_state(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3]) then
                 obj_char["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
                 obj_char["shot_sys_oroboros_front"]["f_8"] = 0
@@ -1771,13 +1976,14 @@ function state_machine_char_game_scene_char_LP_shot_sys_oroboros()
             end
         end,
         ["shot"] = function()
-            -- oroboros
-            character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
-            character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
-            character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
-            character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
-            character_animator(obj_char,obj_char["shot_sys_oroboros_animation_table"][6])
-            character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
+                character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
+                character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
+                character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
+                character_animator(obj_char,obj_char["shot_sys_oroboros_animation_table"][6])
+                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
+            end
             if get_character_anim_end_state(obj_char,obj_char["shot_sys_oroboros_animation_table"][6]) then
                 obj_char["shot_sys_oroboros_aim_r"] = 0.42
                 obj_char["shot_sys_oroboros_offset_amount"] = 0
@@ -1801,12 +2007,16 @@ function state_machine_char_game_scene_char_LP_shot_sys_reticle()
     -- ease_out
     -- shot
     local obj_char = obj_char_game_scene_char_LP
+    local game_speed_cache = obj_char["game_speed"]
+    local game_speed_subframe_cache = obj_char["game_speed_subframe"]
     local switch = {
         ["off"] = function()
         end,
         ["at_the_ready_ease_in"] = function()
-            character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
-            character_function_game_scene_TRM_shot_sys_reticle_pos_update_ease_in(obj_char)
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
+                character_function_game_scene_TRM_shot_sys_reticle_pos_update_ease_in(obj_char)
+            end
             if obj_char["shot_sys_aim_process"][1] >= obj_char["shot_sys_aim_process"][3] then
                 obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(obj_char,"5H_reticle_locking")
                 init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
@@ -1817,12 +2027,15 @@ function state_machine_char_game_scene_char_LP_shot_sys_reticle()
                 obj_char["shot_sys_reticle"][8] = 0
                 obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_unlocked"
                 obj_char["shot_sys_reticle_state"] = "at_the_ready_unlocked"
+                return
             end
         end,
         ["at_the_ready_locking"] = function()
-            character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
-            character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
-            character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(obj_char)
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
+                character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(obj_char)
+            end
             if obj_char["shot_sys_aim_process"][1] < obj_char["shot_sys_aim_process"][3] then
                 obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(obj_char,"5H_reticle_unlocking")
                 init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
@@ -1837,9 +2050,11 @@ function state_machine_char_game_scene_char_LP_shot_sys_reticle()
             end
         end,
         ["at_the_ready_locked"] = function()
-            character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
-            character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
-            character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(obj_char)
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
+                character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(obj_char)
+            end
             if obj_char["shot_sys_aim_process"][1] < obj_char["shot_sys_aim_process"][3] then
                 obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(obj_char,"5H_reticle_unlocking")
                 init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
@@ -1848,9 +2063,11 @@ function state_machine_char_game_scene_char_LP_shot_sys_reticle()
             end
         end,
         ["at_the_ready_unlocking"] = function()
-            character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
-            character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
-            character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(obj_char)
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
+                character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(obj_char)
+            end
             if obj_char["shot_sys_aim_process"][1] >= obj_char["shot_sys_aim_process"][3] then
                 obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(obj_char,"5H_reticle_locking")
                 init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
@@ -1865,7 +2082,9 @@ function state_machine_char_game_scene_char_LP_shot_sys_reticle()
             end
         end,
         ["at_the_ready_unlocked"] = function()
-            character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(obj_char)
+            if game_speed_subframe_cache > game_speed_cache then
+                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(obj_char)
+            end
             if obj_char["shot_sys_aim_process"][1] >= obj_char["shot_sys_aim_process"][3] then
                 obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(obj_char,"5H_reticle_locking")
                 init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
@@ -1874,7 +2093,9 @@ function state_machine_char_game_scene_char_LP_shot_sys_reticle()
             end
         end,
         ["at_the_ready_ease_out"] = function()
-            character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+            if game_speed_subframe_cache > game_speed_cache then
+                character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+            end
             if get_character_anim_end_state(obj_char,obj_char["shot_sys_reticle_animation_table"][2]) then
                 obj_char["shot_sys_reticle"] = {0,0,0,0,1,1,0,0}
                 obj_char["shot_sys_reticle_f"] = 0
@@ -1889,7 +2110,9 @@ function state_machine_char_game_scene_char_LP_shot_sys_reticle()
             end
         end,
         ["at_the_ready_shot"] = function()
-            character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+            if game_speed_subframe_cache > game_speed_cache then
+                            character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+            end
             if get_character_anim_end_state(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
             and obj_char["shot_sys_aim_process"][1] >= obj_char["shot_sys_aim_process"][3] 
             then
