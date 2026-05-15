@@ -801,7 +801,6 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
     if obj_char["wallhurt_wallstick_on_side"] ~= 0 then
         return
     end
-
     if obj_char["collision_move_available"][1] == 0 then
         collision_side = -1
     elseif obj_char["collision_move_available"][2] == 0 then

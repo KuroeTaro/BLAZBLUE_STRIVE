@@ -36,7 +36,7 @@ function common_game_scene_test_and_apply_wallbreak(hurt_side_obj_char,hit_side_
     end
 
     if not collision_side then
-        return false
+        return
     end
 
     if (wallhurt_wallstick_on_side_cache ~= 0 and hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"]) or
@@ -48,9 +48,7 @@ function common_game_scene_test_and_apply_wallbreak(hurt_side_obj_char,hit_side_
                 load_game_scene_stage_apply_wallbreak_start_init(hurt_side_obj_char,hit_side_obj_char)
             end
         )
-        return true
     end
-    return false
 end
 
 function common_game_scene_get_SFX_table(side)
@@ -386,9 +384,7 @@ function common_game_scene_strike_hurt_function(obj_char)
         common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_obj_char,obj_stage_main,obj_camera)
     end
     -- wallbreak_test_and_apply
-    if common_game_scene_test_and_apply_wallbreak(obj_char,hit_side_obj_char,nil,wallhurt_wallstick_on_side_cache) then
-        return
-    end
+    common_game_scene_test_and_apply_wallbreak(obj_char,hit_side_obj_char,nil,wallhurt_wallstick_on_side_cache)
 end
 function common_game_scene_strike_hurt_function_common_block(obj_char,hit_side_obj_char,obj_stage_main,obj_camera)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]

@@ -351,9 +351,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                 obj_char["game_speed_cache_after_apply"][4] = 0
             end
             -- wallbreak_test_and_apply
-            if common_game_scene_test_and_apply_wallbreak(obj_char_other_side,obj_char,obj,wallhurt_wallstick_on_side_cache) then
-                return
-            end
+            common_game_scene_test_and_apply_wallbreak(obj_char_other_side,obj_char,obj,wallhurt_wallstick_on_side_cache)
         end
     end
     -- obj["friendly_interact_function"] = function()
