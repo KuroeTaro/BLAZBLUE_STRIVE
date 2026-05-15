@@ -2862,21 +2862,17 @@ function state_gate_game_scene_char_LP_common_RC_move(input,obj_char,color)
 end
 function state_gate_game_scene_char_LP_common_burst_RC_red(input,obj_char)
     if test_input_sys_press(input["RC"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-            common_update_game_scene_input_direction(obj_char)
-        end
         if test_input_sys_press(input["dash"]) then
             if test_input_sys_press_or_hold(input["up"]) then
-                obj_char["velocity"] = {0,-5.0}
+                obj_char["velocity"] = {0,-7.5}
             elseif test_input_sys_press_or_hold(input["down"]) then
-                obj_char["velocity"] = {0,5.0}
+                obj_char["velocity"] = {0,7.5}
             elseif test_input_sys_press_or_hold(input["left"]) then
-                obj_char["velocity"] = {-5.0,0}
+                obj_char["velocity"] = {-7.5,0}
             elseif test_input_sys_press_or_hold(input["right"]) then
-                obj_char["velocity"] = {5.0,0}
+                obj_char["velocity"] = {7.5,0}
             else
-                obj_char["velocity"] = {5.0*obj_char[5],0}
+                obj_char["velocity"] = {7.5*obj_char[5],0}
             end
         else
             obj_char["velocity"] = {0,0}

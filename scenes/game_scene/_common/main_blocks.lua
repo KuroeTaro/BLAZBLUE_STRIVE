@@ -564,8 +564,12 @@ function update_game_scene_char()
     local game_speed_subframe_cache_LP = char_LP["game_speed_subframe"]
     local game_speed_cache_RP = char_RP["game_speed"]
     local game_speed_subframe_cache_RP = char_RP["game_speed_subframe"]
+
     if game_speed_cache_LP ~= 0 then
         update_game_scene_char_LP()
+    end
+
+    if game_speed_cache_LP ~= 0 and game_speed_subframe_cache_LP > game_speed_cache_LP then
         update_game_scene_char_LP_projectile()
         update_game_scene_char_LP_VFX()
         update_game_scene_char_LP_black_overlay()
@@ -573,6 +577,9 @@ function update_game_scene_char()
 
     if game_speed_cache_RP ~= 0 then
         update_game_scene_char_RP()
+    end
+
+    if game_speed_cache_RP ~= 0 and game_speed_subframe_cache_RP > game_speed_cache_RP then
         update_game_scene_char_RP_projectile()
         update_game_scene_char_RP_VFX()
         update_game_scene_char_RP_black_overlay()

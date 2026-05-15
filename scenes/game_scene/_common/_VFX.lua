@@ -276,13 +276,6 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
     obj[7] = obj_char[7]
     obj[8] = -1
     obj["update"] = function()
-        obj[1] = obj_char["x"] - obj_char[5]*(600)
-        obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
-        obj[3] = obj_char[3]
-        obj[4] = 1
-        obj[5] = obj_char[5]
-        obj[6] = obj_char[6]
-        obj[7] = obj_char[7]
         obj[8] = obj[8] + 1
         obj["life"] = obj["life"] - 1
     end
@@ -315,13 +308,6 @@ function insert_VFX_game_scene_char_RC_partical(obj_char,color)
     obj[7] = obj_char[7]
     obj[8] = -1
     obj["update"] = function()
-        obj[1] = obj_char["x"] - obj_char[5]*(600)
-        obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
-        obj[3] = obj_char[3]
-        obj[4] = 1
-        obj[5] = obj_char[5]
-        obj[6] = obj_char[6]
-        obj[7] = obj_char[7]
         obj[8] = obj[8] + 1
         obj["life"] = obj["life"] - 1
     end

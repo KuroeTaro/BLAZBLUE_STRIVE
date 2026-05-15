@@ -56,33 +56,6 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     obj["camera_y_shake_anim"] = nil
     common_game_scene_hit_load_camera_shake_anim(obj,0.5)
 
-    obj["stand_block_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
-        obj_char,obj,true,nil,
-        "4_stand_block_high",
-        "stand","5_stand_idle",
-        8,5,1.00,
-        0,2.5,1.00,
-        nil,nil,nil,nil,
-        function() end
-    )
-    obj["crouch_block_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
-        obj_char,obj,true,nil,
-        "1_crouch_block",
-        "crouch","1_2_3_crouch",
-        8,5,1.00,
-        0,2.5,1.00,
-        nil,nil,nil,nil,
-        function() end
-    )
-    obj["air_block_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
-        obj_char,obj,true,nil,
-        "1_4_7_air_block",
-        "air","5_stand_idle",
-        10,5,1.00,
-        10,2.5,1.00,
-        nil,nil,nil,nil,
-        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
-    )
     obj["stand_hurt_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         obj_char,obj,true,nil,
         "0_stand_hurt_high",
@@ -92,9 +65,27 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
         nil,nil,nil,nil,
         function() end
     )
+    obj["stand_block_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
+        obj_char,obj,true,nil,
+        "4_stand_block_high",
+        "stand","5_stand_idle",
+        8,5,1.00,
+        0,2.5,1.00,
+        nil,nil,nil,nil,
+        function() end
+    )
     obj["crouch_hurt_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         obj_char,obj,true,nil,
         "0_crouch_hurt",
+        "crouch","1_2_3_crouch",
+        8,5,1.00,
+        0,2.5,1.00,
+        nil,nil,nil,nil,
+        function() end
+    )
+    obj["crouch_block_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
+        obj_char,obj,true,nil,
+        "1_crouch_block",
         "crouch","1_2_3_crouch",
         8,5,1.00,
         0,2.5,1.00,
@@ -116,6 +107,15 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         ),
         nil,nil,
+        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
+    )
+    obj["air_block_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
+        obj_char,obj,true,nil,
+        "1_4_7_air_block",
+        "air","5_stand_idle",
+        10,5,1.00,
+        10,2.5,1.00,
+        nil,nil,nil,nil,
         function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
     )
     obj["OTG_hurt_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hurt(

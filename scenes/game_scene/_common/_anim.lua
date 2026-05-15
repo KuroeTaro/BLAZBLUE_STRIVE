@@ -5107,9 +5107,30 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
     local obj_camera = obj_stage_game_scene_camera
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local goal_heat_gauge_remain = math.max(0,obj_char["heat_gauge"][1]-100)
-    local function update_move_state()
+    local function update_state()
+        -- move_state
         if obj_char_other_side["game_speed_abnormal_realtime_countdown"] == 0 and obj_char["f"] >= 26 then
             obj_char["move_state"] = "recovery"
+        end
+        if height_state ~= obj_char["height_state"] then
+            return
+        end
+        -- height_state
+        if height_state == "air" and collision_test_char_on_ground(obj_char) then
+            obj_char["y"] = 365
+            obj_char["height_state"] = "stand"
+            obj_char["sprite_sheet_state"] = "burst_rc_ground"
+            obj_char["anchor_pos"] = {300,615}
+            obj_char["push_box"]  = {0,-185,120,370}
+            obj_char["collision_ground_height_offset"] = 0
+            obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        elseif height_state ~= "air" and not collision_test_char_on_ground(obj_char) then
+            obj_char["height_state"] = "air"
+            obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
+            obj_char["anchor_pos"] = {330,485}
+            obj_char["push_box"] = {0,-100,120,200}
+            obj_char["collision_ground_height_offset"] = 130
+            obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         end
     end
     local function update_heat_gauge_state()
@@ -5123,14 +5144,14 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
     for i = 0,25 do
         res[i] = function()
             -- state
-            update_move_state()
+            update_state()
             update_heat_gauge_state()
         end
     end
     for i = 0,44 do
         res[i] = function()
             -- state
-            update_move_state()
+            update_state()
         end
     end
     res[0] = function()
@@ -5140,7 +5161,7 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
         obj_char["startup_frame"] = 0
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
-        update_move_state()
+        update_state()
 
         obj_char["strike_inv"] = true
         obj_char["strike_inv_countdown"] = 44
@@ -5183,7 +5204,7 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
     end
     res[1] = function()
         -- state&state_number
-        update_move_state()
+        update_state()
         update_heat_gauge_state()
         -- game_speed
         obj_char_other_side["game_speed_cache_after_apply"][1] = true
@@ -5193,28 +5214,28 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
     end
     res[3] = function()
         -- state&state_number
-        update_move_state()
+        update_state()
         update_heat_gauge_state()
         -- draw_correction
         obj_char[8] = 1
     end
     res[7] = function()
         -- state&state_number
-        update_move_state()
+        update_state()
         update_heat_gauge_state()
         -- draw_correction
         obj_char[8] = 2
     end
     res[14] = function()
         -- state&state_number
-        update_move_state()
+        update_state()
         update_heat_gauge_state()
         -- draw_correction
         obj_char[8] = 3
     end
     res[26] = function()
         -- state
-        update_move_state()
+        update_state()
         -- draw_correction
         obj_char[8] = 4
         -- projectile
@@ -5222,44 +5243,38 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
     end
     res[27] = function()
         -- state
-        update_move_state()
-        -- draw_correction
-        obj_char[8] = 5
-    end
-    res[27] = function()
-        -- state
-        update_move_state()
+        update_state()
         -- draw_correction
         obj_char[8] = 5
     end
     res[31] = function()
         -- state
-        update_move_state()
+        update_state()
         -- draw_correction
         obj_char[8] = 6
     end
     res[35] = function()
         -- state
-        update_move_state()
+        update_state()
         -- draw_correction
         obj_char[8] = 7
     end
     res[39] = function()
         -- state
-        update_move_state()
+        update_state()
         -- draw_correction
         obj_char[8] = 8
     end
     res[40] = function()
         -- state
-        update_move_state()
+        update_state()
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
     end
     res[42] = function()
         -- state
-        update_move_state()
+        update_state()
         -- draw_correction
         obj_char[8] = 9
     end
