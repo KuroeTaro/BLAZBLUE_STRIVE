@@ -686,10 +686,10 @@ end
 function update_game_scene_application_table()
     -- application_table
     update_game_scene_application_table_validation()
-    update_game_scene_wallbreak_application_table()
+    update_game_scene_camera_application_table()
     update_game_scene_wallstick_stage_obj_application_table()
     update_game_scene_wallstick_char_obj_application_table()
-    update_game_scene_camera_application_table()
+    update_game_scene_wallbreak_application_table()
 end
 function update_game_scene_application_table_validation()
     local obj_stage_main = obj_stage_game_scene_main
@@ -697,7 +697,7 @@ function update_game_scene_application_table_validation()
     local char_RP = obj_char_game_scene_char_RP
     if #obj_stage_main["wallstick_stage_obj_active_application_table"] > 1
     or #obj_stage_main["wallstick_char_obj_active_application_table"] > 1
-    or (#obj_stage_main["wallstick_stage_obj_active_application_table"] > 0 and (char_LP["wallstick_on_side"] ~= 0 or char_RP["wallstick_on_side"] ~= 0))
+    or (#obj_stage_main["wallstick_stage_obj_active_application_table"] > 0 and (char_LP["wallhurt_wallstick_on_side"] ~= 0 or char_RP["wallhurt_wallstick_on_side"] ~= 0))
     or (#obj_stage_main["wallstick_char_obj_active_application_table"] > 0 and (char_LP["state"] == "wallbreak_hurt" or char_RP["state"] == "wallbreak_hurt"))
     then
         print("Did you code a guarantee projectile that active after the owner was hurt?")
@@ -798,7 +798,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
     if obj_char["state"] ~= "hurt" and obj_char["state"] ~= "hurtstop" then
         return
     end
-    if obj_char["state"] == "hurtstop" and obj_char["state_cache"] == "wallstick" then
+    if obj_char["wallhurt_wallstick_on_side"] ~= 0 then
         return
     end
 
@@ -857,7 +857,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
         end
     end
     -- wallstick_state_change
-    if obj_char["wallstickable"] and collision_side ~= 0 
+    if obj_char["wallhurt_wallstickable"] and collision_side ~= 0 
     and obj_char["wallbreak_gauge"][1] >= obj_char["wallbreak_gauge"][2]
     then
         table.insert(obj_stage_main["wallstick_char_obj_active_application_table"],
@@ -872,7 +872,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
                 obj_char[5] = -collision_side
                 obj_char["state_cache"] = "wallstick"
                 obj_char["state"] = "hurtstop"
-                obj_char["wallstick_on_side"] = collision_side
+                obj_char["wallhurt_wallstick_on_side"] = collision_side
                 obj_char["physics_lock"] = true
                 if obj_char_other_side["state"] ~= "hitstop" then
                     obj_char_other_side["state_cache"] = obj_char_other_side["state"]

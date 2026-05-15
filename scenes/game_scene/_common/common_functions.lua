@@ -27,18 +27,22 @@ function common_game_scene_toggle_ease_in(toggle_value)
     obj_annoucer_game_scene_lets_dance[4] = toggle_value
 end
 
-function common_game_scene_test_and_apply_wallbreak(hurt_side_obj_char,hit_side_obj_char,projectile)
-    local stage_collision = false
-    
-    stage_collision = hurt_side_obj_char["collision_move_available"][1] == 0 or hurt_side_obj_char["collision_move_available"][2] == 0
-    if (hurt_side_obj_char["wallstick_on_side"] ~= 0 and hurt_side_obj_char["wallbreakable_with_wallstick"]) or
-    (stage_collision and hurt_side_obj_char["wallbreakable_without_wallstick"]) 
+function common_game_scene_test_and_apply_wallbreak(hurt_side_obj_char,hit_side_obj_char,projectile,wallhurt_wallstick_on_side_cache)
+    local collision_side = false
+    if hurt_side_obj_char["collision_move_available"][1] == 0 then
+        collision_side = -1
+    elseif hurt_side_obj_char["collision_move_available"][2] == 0 then
+        collision_side = 1
+    end
+
+    if not collision_side then
+        return false
+    end
+
+    if (wallhurt_wallstick_on_side_cache ~= 0 and hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"]) or
+    (collision_side and hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"]) 
     then
-        if projectile ~= nil then
-            hurt_side_obj_char["wallbreak_hurt_adv"] = projectile["wallbreak_hit_adv"]
-        else
-            hurt_side_obj_char["wallbreak_hurt_adv"] = hit_side_obj_char["wallbreak_hit_adv"]
-        end
+        hurt_side_obj_char["wallhurt_wallstick_on_side"] = collision_side
         table.insert(obj_stage_game_scene_main["wallbreak_active_application_table"],
             function()
                 load_game_scene_stage_apply_wallbreak_start_init(hurt_side_obj_char,hit_side_obj_char)
@@ -337,9 +341,10 @@ end
 function common_game_scene_strike_hurt_function(obj_char)
     -- idle unblock punish counter GP parry
     -- stand crouch air OTG
-    local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
     local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
+    local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
+    local wallhurt_wallstick_on_side_cache = obj_char["wallhurt_wallstick_on_side"]
     -- physics_lock
     obj_char["physics_lock"] = true
     -- hurt_block_at_current_frame
@@ -352,10 +357,6 @@ function common_game_scene_strike_hurt_function(obj_char)
     -- change_character_face
     if not common_game_scene_get_character_facing_currect(obj_char) then
         obj_char[5] = -obj_char[5]
-    end
-    -- wallbreak_test_and_apply
-    if common_game_scene_test_and_apply_wallbreak(obj_char,hit_side_obj_char,nil) then
-        return
     end
     -- block_test
     local block_bool = common_game_scene_block_test(obj_char,hit_side_obj_char)
@@ -383,6 +384,10 @@ function common_game_scene_strike_hurt_function(obj_char)
             insert_VFX_HUD_game_scene_punish(hit_side_obj_char)
         end
         common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_obj_char,obj_stage_main,obj_camera)
+    end
+    -- wallbreak_test_and_apply
+    if common_game_scene_test_and_apply_wallbreak(obj_char,hit_side_obj_char,nil,wallhurt_wallstick_on_side_cache) then
+        return
     end
 end
 function common_game_scene_strike_hurt_function_common_block(obj_char,hit_side_obj_char,obj_stage_main,obj_camera)

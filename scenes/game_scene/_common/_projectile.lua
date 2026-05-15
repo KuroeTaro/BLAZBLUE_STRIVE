@@ -27,8 +27,6 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
     obj["block_risk_gauge_gain"] = 0
     obj["FD_block_heat_drain"] = 0
 
-    obj["wallbreak_hit_adv"] = false
-
     obj["pushbox"] = nil
     obj["hitbox_table"] = {{0,-150,1000,800},{0,-150,800,1000}}
     obj["hurtbox_table"] = {}
@@ -164,11 +162,11 @@ function load_game_scene_anim_char_red_rc_projectile_ground_block(
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on_side"] = 0
-        obj_char_other_side["wallstickable"] = false
-        obj_char_other_side["wallbreakable_with_wallstick"] = false
-        obj_char_other_side["wallbreakable_without_wallstick"] = false
-        obj_char_other_side["wallbreak_hurt_adv"] = false
+        obj_char_other_side["wallhurt_wallstick_on_side"] = 0
+        obj_char_other_side["wallhurt_wallstickable"] = false
+        obj_char_other_side["wallhurt_wallbreakable_with_wallstick"] = false
+        obj_char_other_side["wallhurt_wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallhurt_wallbreak_adv"] = false
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -312,11 +310,11 @@ function load_game_scene_anim_char_red_rc_projectile_air_block(
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on_side"] = 0
-        obj_char_other_side["wallstickable"] = false
-        obj_char_other_side["wallbreakable_with_wallstick"] = false
-        obj_char_other_side["wallbreakable_without_wallstick"] = false
-        obj_char_other_side["wallbreak_hurt_adv"] = false
+        obj_char_other_side["wallhurt_wallstick_on_side"] = 0
+        obj_char_other_side["wallhurt_wallstickable"] = false
+        obj_char_other_side["wallhurt_wallbreakable_with_wallstick"] = false
+        obj_char_other_side["wallhurt_wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallhurt_wallbreak_adv"] = false
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -468,11 +466,11 @@ function load_game_scene_anim_char_red_rc_projectile_ground_air_and_OTG_hurt(
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
-        obj_char_other_side["wallstick_on_side"] = 0
-        obj_char_other_side["wallstickable"] = false
-        obj_char_other_side["wallbreakable_with_wallstick"] = false
-        obj_char_other_side["wallbreakable_without_wallstick"] = false
-        obj_char_other_side["wallbreak_hurt_adv"] = false
+        obj_char_other_side["wallhurt_wallstick_on_side"] = 0
+        obj_char_other_side["wallhurt_wallstickable"] = false
+        obj_char_other_side["wallhurt_wallbreakable_with_wallstick"] = false
+        obj_char_other_side["wallhurt_wallbreakable_without_wallstick"] = false
+        obj_char_other_side["wallhurt_wallbreak_adv"] = false
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0

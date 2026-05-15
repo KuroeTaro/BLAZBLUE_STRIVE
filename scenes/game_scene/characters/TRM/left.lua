@@ -62,12 +62,11 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["block_risk_gauge_gain"] = 0
     obj_char_game_scene_char_LP["FD_block_heat_drain"] = 0
 
-    obj_char_game_scene_char_LP["wallstick_on_side"] = 0
-    obj_char_game_scene_char_LP["wallstickable"] = false
-    obj_char_game_scene_char_LP["wallbreakable_with_wallstick"] = false
-    obj_char_game_scene_char_LP["wallbreakable_without_wallstick"] = false
-    obj_char_game_scene_char_LP["wallbreak_hurt_adv"] = false
-    obj_char_game_scene_char_LP["wallbreak_hit_adv"] = false
+    obj_char_game_scene_char_LP["wallhurt_wallstick_on_side"] = 0
+    obj_char_game_scene_char_LP["wallhurt_wallstickable"] = false
+    obj_char_game_scene_char_LP["wallhurt_wallbreakable_with_wallstick"] = false
+    obj_char_game_scene_char_LP["wallhurt_wallbreakable_without_wallstick"] = false
+    obj_char_game_scene_char_LP["wallhurt_wallbreak_adv"] = false
     
     obj_char_game_scene_char_LP["init_animation_load_function"] = load_game_scene_anim_char_TRM_5_stand_idle
 
@@ -980,42 +979,43 @@ function load_game_scene_wallbreak_start_init_LP()
     obj_char_game_scene_char_LP["pushbox_other_side_char_active"] = false
     obj_char_game_scene_char_LP["hitbox_table"] = {}
     obj_char_game_scene_char_LP["hurtbox_table"] = {}
+end
+function load_game_scene_wallbreak_mid_init_LP()
+    obj_char_game_scene_char_LP["projectile_table"] = {}
+    obj_char_game_scene_char_LP["VFX_front_table"] = {}
+    obj_char_game_scene_char_LP["VFX_back_table"] = {}
+    obj_char_game_scene_char_LP["VFX_hit_front_table"] = {}
+    obj_char_game_scene_char_LP["VFX_hit_back_table"] = {}
 
-    -- obj_char_game_scene_char_LP["projectile_table"] = {}
-    -- obj_char_game_scene_char_LP["VFX_front_table"] = {}
-    -- obj_char_game_scene_char_LP["VFX_back_table"] = {}
-    -- obj_char_game_scene_char_LP["VFX_hit_front_table"] = {}
-    -- obj_char_game_scene_char_LP["VFX_hit_back_table"] = {}
+    obj_char_game_scene_char_LP["shot_sys_state"] = "off"
+    obj_char_game_scene_char_LP["shot_sys_f"] = 0
 
-    -- obj_char_game_scene_char_LP["shot_sys_state"] = "off"
-    -- obj_char_game_scene_char_LP["shot_sys_f"] = 0
+    obj_char_game_scene_char_LP["shot_sys_oroboros_state"] = "off"
+    obj_char_game_scene_char_LP["shot_sys_oroboros_f"] = 0
+    obj_char_game_scene_char_LP["shot_sys_oroboros_aim_r"] = 0.42
+    obj_char_game_scene_char_LP["shot_sys_oroboros_animation_table"] = {}
 
-    -- obj_char_game_scene_char_LP["shot_sys_oroboros_state"] = "off"
-    -- obj_char_game_scene_char_LP["shot_sys_oroboros_f"] = 0
-    -- obj_char_game_scene_char_LP["shot_sys_oroboros_aim_r"] = 0.42
-    -- obj_char_game_scene_char_LP["shot_sys_oroboros_animation_table"] = {}
+    obj_char_game_scene_char_LP["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
+    obj_char_game_scene_char_LP["shot_sys_oroboros_front"]["f_8"] = 0
+    obj_char_game_scene_char_LP["shot_sys_oroboros_front"]["f_4"] = 0
+    obj_char_game_scene_char_LP["shot_sys_oroboros_front"]["sprite_sheet_state"] = "5H_oroboros_loop_front"
+    obj_char_game_scene_char_LP["shot_sys_oroboros_mid"] = {0,0,0,0,1,1,0,0}
+    obj_char_game_scene_char_LP["shot_sys_oroboros_mid"]["f_8"] = 0
+    obj_char_game_scene_char_LP["shot_sys_oroboros_mid"]["sprite_sheet_state"] = "5H_oroboros_loop_mid"
+    obj_char_game_scene_char_LP["shot_sys_oroboros_back"] = {0,0,0,0,1,1,0,0}
+    obj_char_game_scene_char_LP["shot_sys_oroboros_back"]["f_8"] = 0
+    obj_char_game_scene_char_LP["shot_sys_oroboros_back"]["f_4"] = 0
+    obj_char_game_scene_char_LP["shot_sys_oroboros_back"]["sprite_sheet_state"] = "5H_oroboros_loop_back"
 
-    -- obj_char_game_scene_char_LP["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
-    -- obj_char_game_scene_char_LP["shot_sys_oroboros_front"]["f_8"] = 0
-    -- obj_char_game_scene_char_LP["shot_sys_oroboros_front"]["f_4"] = 0
-    -- obj_char_game_scene_char_LP["shot_sys_oroboros_front"]["sprite_sheet_state"] = "5H_oroboros_loop_front"
-    -- obj_char_game_scene_char_LP["shot_sys_oroboros_mid"] = {0,0,0,0,1,1,0,0}
-    -- obj_char_game_scene_char_LP["shot_sys_oroboros_mid"]["f_8"] = 0
-    -- obj_char_game_scene_char_LP["shot_sys_oroboros_mid"]["sprite_sheet_state"] = "5H_oroboros_loop_mid"
-    -- obj_char_game_scene_char_LP["shot_sys_oroboros_back"] = {0,0,0,0,1,1,0,0}
-    -- obj_char_game_scene_char_LP["shot_sys_oroboros_back"]["f_8"] = 0
-    -- obj_char_game_scene_char_LP["shot_sys_oroboros_back"]["f_4"] = 0
-    -- obj_char_game_scene_char_LP["shot_sys_oroboros_back"]["sprite_sheet_state"] = "5H_oroboros_loop_back"
-
-    -- obj_char_game_scene_char_LP["shot_sys_reticle_state"] = "off"
-    -- obj_char_game_scene_char_LP["shot_sys_reticle"] = {0,0,0,0,1,1,0,0}
-    -- obj_char_game_scene_char_LP["shot_sys_reticle_f"] = 0
-    -- obj_char_game_scene_char_LP["shot_sys_reticle_f_4"] = 0
-    -- obj_char_game_scene_char_LP["shot_sys_reticle_f_8"] = 0
-    -- obj_char_game_scene_char_LP["shot_sys_reticle_animation_table"] = {}
-    -- obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_current"] = {0,0}
-    -- obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_target"] = {0,0}
-    -- obj_char_game_scene_char_LP["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_unlocked"
+    obj_char_game_scene_char_LP["shot_sys_reticle_state"] = "off"
+    obj_char_game_scene_char_LP["shot_sys_reticle"] = {0,0,0,0,1,1,0,0}
+    obj_char_game_scene_char_LP["shot_sys_reticle_f"] = 0
+    obj_char_game_scene_char_LP["shot_sys_reticle_f_4"] = 0
+    obj_char_game_scene_char_LP["shot_sys_reticle_f_8"] = 0
+    obj_char_game_scene_char_LP["shot_sys_reticle_animation_table"] = {}
+    obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_current"] = {0,0}
+    obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_target"] = {0,0}
+    obj_char_game_scene_char_LP["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_unlocked"
 end
 function load_game_scene_wallbreak_end_init_LP()
     -- x y z opacity sx sy r f
@@ -1051,12 +1051,11 @@ function load_game_scene_wallbreak_end_init_LP()
     obj_char_game_scene_char_LP["block_risk_gauge_gain"] = 0
     obj_char_game_scene_char_LP["FD_block_heat_drain"] = 0
 
-    obj_char_game_scene_char_LP["wallstick_on_side"] = 0
-    obj_char_game_scene_char_LP["wallstickable"] = false
-    obj_char_game_scene_char_LP["wallbreakable_with_wallstick"] = false
-    obj_char_game_scene_char_LP["wallbreakable_without_wallstick"] = false
-    obj_char_game_scene_char_LP["wallbreak_hurt_adv"] = false
-    obj_char_game_scene_char_LP["wallbreak_hit_adv"] = false
+    obj_char_game_scene_char_LP["wallhurt_wallstick_on_side"] = 0
+    obj_char_game_scene_char_LP["wallhurt_wallstickable"] = false
+    obj_char_game_scene_char_LP["wallhurt_wallbreakable_with_wallstick"] = false
+    obj_char_game_scene_char_LP["wallhurt_wallbreakable_without_wallstick"] = false
+    obj_char_game_scene_char_LP["wallhurt_wallbreak_adv"] = false
 
     obj_char_game_scene_char_LP["hit_cancel"] = false
     obj_char_game_scene_char_LP["idle_cancel"] = false

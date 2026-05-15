@@ -50,7 +50,7 @@ function load_game_scene_obj_stage()
     obj_stage_game_scene_wallstick["sprite_sheet"] = 0
 
     -- wallbreak
-    obj_stage_game_scene_wallbreak_after_debris = {0,-450,0,0,0,1,0,0}
+    obj_stage_game_scene_wallbreak_after_debris = {0,-525,0,0,0,1,0,0}
     obj_stage_game_scene_wallbreak_after_debris["FCT"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallbreak_after_debris["LCT"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallbreak_after_debris["LCD"] = {0,0,0,0,0,0,0,0}
@@ -104,17 +104,8 @@ function load_game_scene_anim_stage()
     anim_stage_game_scene_wallbreak_main[0] = function()
     end
     anim_stage_game_scene_wallbreak_main[105] = function()
-        obj_char_game_scene_char_LP["projectile_table"] = {}
-        obj_char_game_scene_char_LP["VFX_front_table"] = {}
-        obj_char_game_scene_char_LP["VFX_back_table"] = {}
-        obj_char_game_scene_char_LP["VFX_hit_front_table"] = {}
-        obj_char_game_scene_char_LP["VFX_hit_back_table"] = {}
-
-        obj_char_game_scene_char_RP["projectile_table"] = {}
-        obj_char_game_scene_char_RP["VFX_front_table"] = {}
-        obj_char_game_scene_char_RP["VFX_back_table"] = {}
-        obj_char_game_scene_char_RP["VFX_hit_front_table"] = {}
-        obj_char_game_scene_char_RP["VFX_hit_back_table"] = {}
+        load_game_scene_wallbreak_mid_init_LP()
+        load_game_scene_wallbreak_mid_init_RP()
     end
     anim_stage_game_scene_wallbreak_main[150] = function()
     end
@@ -415,8 +406,8 @@ function order_load_game_scene_stage(load_order)
     if this_function then this_function() end
 end
 function load_game_scene_stage_apply_wallbreak_start_init(hurt_side_obj_char,hit_side_obj_char)
-    local adv = hurt_side_obj_char["wallbreak_hurt_adv"]
-    local wallstick_on_side = hurt_side_obj_char["wallstick_on_side"]
+    local adv = hurt_side_obj_char["wallhurt_wallbreak_adv"]
+    local wallstick_on_side = hurt_side_obj_char["wallhurt_wallstick_on_side"]
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side_obj_char["player_side"])
     
     -- character_init
@@ -486,7 +477,7 @@ function load_game_scene_stage_apply_wallbreak_start_init(hurt_side_obj_char,hit
     init_point_linear_anim_with(obj_stage_game_scene_wallbreak_glow,anim_stage_point_linear_game_scene_wallbreak_glow_opacity)
 end
 function load_game_scene_stage_apply_wallbreak_end_init(hurt_side_obj_char,hit_side_obj_char)
-    local adv = hurt_side_obj_char["wallbreak_hurt_adv"]
+    local adv = hurt_side_obj_char["wallhurt_wallbreak_adv"]
 
     -- character
     hit_side_obj_char["state"] = "5_stand_idle"
@@ -785,7 +776,7 @@ end
 function load_game_scene_anim_stage_camera_wallbreak(obj_camera,hurt_side_obj_char,adv)
     local x_dst = 2290
     local obj_camera_start_x = obj_camera["3d_pos_x"]
-    local wallstick_on_side = hurt_side_obj_char["wallstick_on_side"]
+    local wallstick_on_side = hurt_side_obj_char["wallhurt_wallstick_on_side"]
     local function x_persentage_to_value(x_percentage)
         return obj_camera_start_x*(1-x_percentage)+wallstick_on_side*x_dst*x_percentage
     end
