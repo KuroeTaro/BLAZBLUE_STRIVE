@@ -757,7 +757,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         obj_char_other_side["wallhurt_wallstickable"] = true
         obj_char_other_side["wallhurt_wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallhurt_wallbreakable_without_wallstick"] = false
-        obj_char_other_side["wallhurt_wallbreak_adv"] = true
+        obj_char_other_side["wallhurt_wallbreak_adv"] = false
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
@@ -877,7 +877,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         obj_char_other_side["wallhurt_wallstickable"] = true
         obj_char_other_side["wallhurt_wallbreakable_with_wallstick"] = true
         obj_char_other_side["wallhurt_wallbreakable_without_wallstick"] = false
-        obj_char_other_side["wallhurt_wallbreak_adv"] = true
+        obj_char_other_side["wallhurt_wallbreak_adv"] = false
 
         obj_char_other_side["startup_frame"] = 0
         obj_char_other_side["active_frame"] = 0
