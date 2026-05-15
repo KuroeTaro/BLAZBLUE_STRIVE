@@ -133,6 +133,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
         nil,nil,
         function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
     )
+    obj["wallstick_hurt_animation"] = nil
     obj["hit_hurt_blockstop_countdown"] = 12
 
     obj["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
@@ -338,6 +339,8 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                     obj_char_other_side["character_animation"] = obj["air_hurt_animation"]
                 elseif obj_char_other_side["height_state"] == "OTG" then
                     obj_char_other_side["character_animation"] = obj["OTG_hurt_animation"]
+                elseif obj_char_other_side["height_state"] == "wallstick" then
+                    obj_char_other_side["character_animation"] = obj["wallstick_hurt_animation"]
                 end
                 -- hit_hurt_blockstop_countdown
                 obj_char_other_side["hit_hurt_blockstop_countdown"] = obj["hit_hurt_blockstop_countdown"]

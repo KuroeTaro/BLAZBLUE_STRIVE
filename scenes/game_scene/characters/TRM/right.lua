@@ -77,6 +77,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["air_hurt_animation"] = nil
     obj_char_game_scene_char_RP["air_block_animation"] = nil
     obj_char_game_scene_char_RP["OTG_hurt_animation"] = nil
+    obj_char_game_scene_char_RP["wallstick_hurt_animation"] = nil
     obj_char_game_scene_char_RP["throw_success_animation"] = nil
     obj_char_game_scene_char_RP["throw_hurt_success_animation"] = nil
     obj_char_game_scene_char_RP["throw_hurt_PRC_animation"] = nil

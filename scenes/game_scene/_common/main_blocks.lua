@@ -821,7 +821,9 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
         -- wallstick_stage_obj
         obj_wallstick[2] = obj_char["y"] - wallbreak_spwan_anchor_pos[obj_char["height_state"]]
         -- wallstick
-        if obj_char["wallbreak_gauge"][1] >= obj_char["wallbreak_gauge"][2] then
+        if obj_char["wallhurt_wallstickable"] and collision_side ~= 0 
+        and obj_char["wallbreak_gauge"][1] >= obj_char["wallbreak_gauge"][2] 
+        then
             -- camera_shake
             obj_stage_main["camera_active_application_table"] = {}
             table.insert(obj_stage_main["camera_active_application_table"],

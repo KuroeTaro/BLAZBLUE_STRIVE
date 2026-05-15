@@ -544,6 +544,8 @@ function common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_ob
         obj_char["character_animation"] = hit_side_obj_char["air_hurt_animation"]
     elseif obj_char["height_state"] == "OTG" then
         obj_char["character_animation"] = hit_side_obj_char["OTG_hurt_animation"]
+    elseif obj_char["height_state"] == "wallstick" then
+        obj_char["character_animation"] = hit_side_obj_char["wallstick_hurt_animation"]
     end
     -- hit_hurt_blockstop_countdown
     obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
