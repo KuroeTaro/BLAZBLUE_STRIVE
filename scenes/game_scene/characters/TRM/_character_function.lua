@@ -87,9 +87,6 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_upd
     -- 6.特定的己方模组（哈皮的翻滚）
     local obj_char_shot_sys_aim_process = obj_char["shot_sys_aim_process"]
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
-    local obj_char_other_side_abs_velocity = math.sqrt(obj_char_other_side["velocity"][1]^2+obj_char_other_side["velocity"][2]^2)
-    local obj_char_relative_velocity_x = math.abs(obj_char["velocity"][1] - obj_char_other_side["velocity"][1])
-    local dot = (obj_char["velocity"][1]-obj_char_other_side["velocity"][1])*(obj_char["x"]-obj_char_other_side["x"] )
     local instant_aim_state = {
         ["block"] = true,
         ["hurt"] = true,

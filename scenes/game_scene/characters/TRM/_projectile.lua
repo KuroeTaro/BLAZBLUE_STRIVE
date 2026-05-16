@@ -145,9 +145,6 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     obj["hit_counter_ver_function"] = common_game_scene_counter_ver0
 
     obj["update"] = function()
-        if obj_char["state"] == "hitstop" or obj_char["state"] == "hurtstop" then
-            return
-        end
         obj["x"] = obj_char_other_side["x"]
         obj["y"] = obj_char_other_side["y"]-obj_char_other_side["pushbox"][4]/2
         character_animator(obj,obj["animation"])
