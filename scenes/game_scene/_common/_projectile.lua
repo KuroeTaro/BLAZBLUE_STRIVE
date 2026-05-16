@@ -8,14 +8,15 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
     local side = obj_char["player_side"]
 
-    obj[1] = obj_char["shot_sys_reticle"][1]
-    obj[2] = obj_char["shot_sys_reticle"][2]
-    obj["x"] = obj_char_other_side["x"]
-    obj["y"] = obj_char_other_side["y"]-100
+    obj[1] = obj_char["x"] - obj_char[5]*600
+    obj[2] = obj_char["y"] - 750
+    obj[5] = obj_char[5]
+    obj["x"] = obj_char["x"]
+    obj["y"] = obj_char["y"] - 150
     obj["f"] = 0
     obj["type"] = "projectile"
     obj["hit_type_state"] = "strike"
-    obj["life"] = 20
+    obj["life"] = 30
 
     obj["hit_damage"] = 0
     obj["hit_damage_correction_factor"] = 1
@@ -27,13 +28,17 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
     obj["block_risk_gauge_gain"] = 0
     obj["FD_block_heat_drain"] = 0
 
-    obj["hitbox_table"] = {{0,-150,1000,800},{0,-150,800,1000}}
+    obj["velocity"] = {obj_char["velocity"][1],obj_char["velocity"][2]}
+
+    obj["pushbox"] = nil
+    obj["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
+    obj["hurtbox_table"] = {}
 
     obj["strike_active"] = true
 
     obj["hit_guard_type_state"] = "all"
 
-    obj["animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main_anim(obj,obj_char,obj_char_other_side)
+    obj["animation"] = load_game_scene_anim_char_red_rc_main(obj,obj_char,obj_char_other_side)
     init_character_anim_with(obj,obj["animation"] )
 
     obj["camera_x_shake_anim"] = nil
@@ -146,13 +151,19 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
     obj["hit_counter_ver_function"] = common_game_scene_counter_ver0
 
     obj["update"] = function()
+        obj[1] = obj_char["x"] - obj_char[5]*600
+        obj[2] = obj_char["y"] - 750
+        obj["x"] = obj_char["x"]
+        obj["y"] = obj_char["y"] - 150
         character_animator(obj,obj["animation"])
         obj["life"] = obj["life"] - 1
     end
     obj["draw"] = function()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
+        love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setBlendMode("alpha")
     end
     obj["enemy_interact_function"] = function()
         -- strike_clash
@@ -236,6 +247,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
                 obj_char_other_side["state_cache"] = obj_char_other_side["state"]
                 obj_char_other_side["state"] = "hurtstop"
                 -- set_insert_camera_anim
+                common_game_scene_hit_load_camera_shake_anim(obj,0.3)
                 table.insert(obj_stage_main["camera_active_application_table"],
                     function()
                         anim_stage_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
@@ -269,6 +281,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
                     obj["hit_counter_ver_function"](obj_char,obj_char_other_side)
                 end
                 -- set_insert_camera_anim
+                common_game_scene_hit_load_camera_shake_anim(obj,0.5)
                 table.insert(obj_stage_main["camera_active_application_table"],
                     function()
                         anim_stage_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
@@ -308,17 +321,21 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
     -- obj["friendly_interact_function"] = function()
 
     -- end
-    table.insert(obj_char["projectile_table"],obj)
+    table.insert(obj_char["projectile_rc_table"],obj)
 end
 function load_game_scene_anim_char_red_rc_main(obj,obj_char,obj_char_other_side)
     local res = {}
     res["prop_f"] = "f"
     res["anim_length"] = 15
 
-    res[0] = function()
-
+    for i = 0,14 do
+        res[i*2] = function()
+            obj[8] = i
+        end
     end
     res[6] = function()
+        obj[8] = 3
+        obj["hitbox_table"] = {}
     end
     res[15] = function()
         -- animation_end

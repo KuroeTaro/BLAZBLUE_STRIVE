@@ -2862,7 +2862,7 @@ function state_gate_game_scene_char_RP_common_RC_move(input,obj_char,color)
 end
 function state_gate_game_scene_char_RP_common_burst_RC_red(input,obj_char)
     if test_input_sys_press(input["RC"]) then
-        if test_input_sys_press(input["dash"]) then
+        if test_input_sys_press_or_hold(input["dash"]) then
             if test_input_sys_press_or_hold(input["up"]) then
                 obj_char["velocity"] = {0,-7.5}
             elseif test_input_sys_press_or_hold(input["down"]) then
@@ -2877,6 +2877,7 @@ function state_gate_game_scene_char_RP_common_burst_RC_red(input,obj_char)
         else
             obj_char["velocity"] = {0,0}
         end
+        obj_char["physics_lock"] = false
         if obj_char["height_state"] == "air" then
             obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
             obj_char["anchor_pos"] = {330,485}
@@ -5612,10 +5613,33 @@ function draw_game_scene_char_RP_hitbox()
             end
         end
     end
+    for i=1,#obj_char["projectile_rc_table"] do
+        local current_projectile = obj_char["projectile_rc_table"][i]
+        for j=1,#current_projectile["hitbox_table"] do
+            local current_hitbox = current_projectile["hitbox_table"][j]
+            if current_hitbox then
+                local draw_box = {
+                    current_projectile["x"] + (current_hitbox[1] - current_hitbox[3]/2)*current_projectile[5],
+                    current_projectile["y"] + current_hitbox[2] - current_hitbox[4]/2,
+                    current_projectile[3],current_projectile[5],1
+                }
+                draw_box["w"] = current_hitbox[3]
+                draw_box["h"] = current_hitbox[4]
+                draw_3d_color_box(obj_camera,draw_box,color)
+            end
+        end
+    end
 end
 
 -- projectile
 function update_game_scene_char_RP_projectile()
+    for i = #obj_char_game_scene_char_RP["projectile_rc_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_RP["projectile_rc_table"][i]
+        object["update"](object)
+        if object["life"] <= 0 then
+            table.remove(obj_char_game_scene_char_RP["projectile_rc_table"],i) -- 寿命耗尽，从列表中移除
+        end
+    end
     for i = #obj_char_game_scene_char_RP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
         local object = obj_char_game_scene_char_RP["projectile_table"][i]
         object["update"](object)
@@ -5625,6 +5649,10 @@ function update_game_scene_char_RP_projectile()
     end
 end
 function draw_game_scene_char_RP_projectile()
+    for i = #obj_char_game_scene_char_RP["projectile_rc_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_RP["projectile_rc_table"][i]
+        object["draw"]()
+    end
     for i = #obj_char_game_scene_char_RP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
         local object = obj_char_game_scene_char_RP["projectile_table"][i]
         object["draw"]()

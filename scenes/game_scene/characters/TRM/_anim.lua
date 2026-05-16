@@ -5903,7 +5903,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
     end
     res[37] = function()
         -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
+        obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
     end
     res[40] = function()
@@ -5913,6 +5913,9 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
         obj_char[8] = 7
     end
     res[42] = function()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- animation_end
     end
     return res

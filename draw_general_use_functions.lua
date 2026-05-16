@@ -162,7 +162,6 @@ function draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,quad_name)
     local sx = obj[5]
     local sy = obj[6]
     local r = obj[7]
-    local f = obj[8]
     local opacity = obj[4]
     local camera_z = obj_camera[3]
     local scale = draw_resolution_correction(800)/(z-camera_z)

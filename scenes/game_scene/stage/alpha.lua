@@ -413,7 +413,7 @@ function load_game_scene_stage_apply_wallbreak_start_init(hurt_side_obj_char,hit
     -- character_init
     hit_side_obj_char["state"] = "wallbreak_hit"
     hurt_side_obj_char["state"] = "wallbreak_hurt"
-    hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],150)
+    hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],100)
     if adv then
         hurt_side_obj_char["sprite_sheet_state"] = "0_wallbreak_hurt_adv"
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[hurt_side_obj_char["sprite_sheet_state"]]
@@ -777,9 +777,6 @@ function load_game_scene_anim_stage_camera_wallbreak(obj_camera,hurt_side_obj_ch
     local x_dst = 2290
     local obj_camera_start_x = obj_camera["3d_pos_x"]
     local wallstick_on_side = hurt_side_obj_char["wallhurt_wallstick_on_side"]
-    local function x_persentage_to_value(x_percentage)
-        return obj_camera_start_x*(1-x_percentage)+wallstick_on_side*x_dst*x_percentage
-    end
 
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x = {}
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[0] = {wallstick_on_side*1910.0,1}

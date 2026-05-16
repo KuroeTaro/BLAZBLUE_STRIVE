@@ -305,7 +305,7 @@ function order_load_game_scene_VFX(load_order)
             )
             image_sprite_sheet_VFX_game_scene_RC_shockwave = 
             sprite_sheet_load(
-                "asset/game_scene/VFX/RC_partical.json",
+                "asset/game_scene/VFX/RC_shockwave.json",
                 love.graphics.newImage(ASSET_DATA[8]["RC_shockwave_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_RC_red_badge = 
