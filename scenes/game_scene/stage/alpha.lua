@@ -413,7 +413,7 @@ function load_game_scene_stage_apply_wallbreak_start_init(hurt_side_obj_char,hit
     -- character_init
     hit_side_obj_char["state"] = "wallbreak_hit"
     hurt_side_obj_char["state"] = "wallbreak_hurt"
-    hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],50)
+    hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],150)
     if adv then
         hurt_side_obj_char["sprite_sheet_state"] = "0_wallbreak_hurt_adv"
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[hurt_side_obj_char["sprite_sheet_state"]]

@@ -51,6 +51,13 @@ function common_game_scene_test_and_apply_wallbreak(hurt_side_obj_char,hit_side_
     end
 end
 
+function common_game_scene_anim_0_update_function_unwallstick(obj_char)
+    obj_char["wallhurt_wallstickable"] = false
+    obj_char["wallhurt_wallbreakable_with_wallstick"] = false
+    obj_char["wallhurt_wallbreakable_without_wallstick"] = false
+    obj_char["wallhurt_wallbreak_adv"] = false
+end
+
 function common_game_scene_get_SFX_table(side)
     if side == "L" then
         return audio_SFX_game_scene_LP
@@ -338,7 +345,7 @@ function common_game_scene_strike_hit_function(obj_char)
 end
 function common_game_scene_strike_hurt_function(obj_char)
     -- idle unblock punish counter GP parry
-    -- stand crouch air OTG
+    -- stand crouch air OTG wallstick
     local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
@@ -1059,9 +1066,9 @@ function common_game_scene_char_apply_damage_heat(
                 )
             end
             -- apply wallbreak damage
-            hurt_side_obj_char["wallbreak_gauge"][1] = math.min(
-                hurt_side_obj_char["wallbreak_gauge"][1] + hit_side_obj_char["hit_wallbreak_damage"], -- hit_wallbreak_damage
-                hurt_side_obj_char["wallbreak_gauge"][2]
+            hurt_side_obj_char["wallstick_gauge"][1] = math.min(
+                hurt_side_obj_char["wallstick_gauge"][1] + hit_side_obj_char["hit_wallbreak_damage"], -- hit_wallbreak_damage
+                hurt_side_obj_char["wallstick_gauge"][2]
             )
     elseif not FD_block then
         -- hit_side
@@ -1212,9 +1219,9 @@ function common_game_scene_projectile_apply_damage_heat(
                 )
             end
             -- apply wallbreak damage
-            hurt_side_obj_char["wallbreak_gauge"][1] = math.min(
-                hurt_side_obj_char["wallbreak_gauge"][1] + projectile["hit_wallbreak_damage"],
-                hurt_side_obj_char["wallbreak_gauge"][2]
+            hurt_side_obj_char["wallstick_gauge"][1] = math.min(
+                hurt_side_obj_char["wallstick_gauge"][1] + projectile["hit_wallbreak_damage"],
+                hurt_side_obj_char["wallstick_gauge"][2]
             )
     elseif not FD_block then
         -- hit_side

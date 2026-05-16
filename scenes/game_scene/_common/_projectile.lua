@@ -121,6 +121,23 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
         nil,nil,
         function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
     )
+    obj["wallstick_hurt_animation"] = load_game_scene_anim_char_red_rc_projectile_ground_air_and_OTG_hurt(
+        obj_char,obj,true,nil,
+        "0_general_hurt_launched_high",
+        "air","knockdown_recovery",
+        27,5,1.00,
+        -5,2.5,1.00,
+        nil,
+        load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
+            obj_char,
+            "0_general_hurt_soft_recovery_ground",
+            "OTG",
+            "5_stand_idle",
+            nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
+        ),
+        nil,nil,
+        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
+    )
     obj["hit_hurt_blockstop_countdown"] = 0
 
     obj["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
@@ -158,7 +175,7 @@ function load_game_scene_anim_char_red_rc_projectile_ground_block(
     res[0] = function()
         -- state
         obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG
+        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -306,7 +323,7 @@ function load_game_scene_anim_char_red_rc_projectile_air_block(
     res[0] = function()
         -- state
         obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG
+        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -462,7 +479,7 @@ function load_game_scene_anim_char_red_rc_projectile_ground_air_and_OTG_hurt(
     res[0] = function()
         -- state
         obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG
+        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 

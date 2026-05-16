@@ -23,7 +23,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["state"] = "before_ease_in"
     obj_char_game_scene_char_RP["state_cache"] = "none"
     obj_char_game_scene_char_RP["sprite_sheet_state"] = "5_stand_idle"
-    obj_char_game_scene_char_RP["height_state"] = "stand" -- stand crouch air OTG
+    obj_char_game_scene_char_RP["height_state"] = "stand" -- stand crouch air OTG wallstick
     obj_char_game_scene_char_RP["air_gatling_state"] = false
     obj_char_game_scene_char_RP["hit_type_state"] = "none" -- none strike throw burst projectile
     obj_char_game_scene_char_RP["hit_guard_type_state"] = "none" -- none all low high
@@ -112,7 +112,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["overdrive_gauge_update_function"] = function() end
     obj_char_game_scene_char_RP["ability_gauge_update_function"] = function() end
     obj_char_game_scene_char_RP["risk_gauge_update_function"] = function() end
-    obj_char_game_scene_char_RP["wallbreak_gauge_update_function"] = function() end
+    obj_char_game_scene_char_RP["wallstick_gauge_update_function"] = function() end
 
     -- state_number
     obj_char_game_scene_char_RP["velocity"] = {0,0}
@@ -128,7 +128,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["overdrive_gauge"] = {600.0,600.0,"off"} -- 0.0 - 600.0
     obj_char_game_scene_char_RP["overdrive_timer"] = {0,0,0,0} -- 0f 00:00 
     obj_char_game_scene_char_RP["risk_gauge"] = {0.0,300.0}-- 0.0 - 300.0
-    obj_char_game_scene_char_RP["wallbreak_gauge"] = {0.0,300.0}-- 0.0 - 300.0
+    obj_char_game_scene_char_RP["wallstick_gauge"] = {0.0,300.0}-- 0.0 - 300.0
 
     obj_char_game_scene_char_RP["heat_penalty"] = false
     obj_char_game_scene_char_RP["heat_penalty_countdown"] = 0
@@ -1079,7 +1079,7 @@ function load_game_scene_wallbreak_end_init_RP()
     obj_char_game_scene_char_RP["friction"] = 1
     obj_char_game_scene_char_RP["physics_lock"] = false
 
-    obj_char_game_scene_char_RP["wallbreak_gauge"] = {0.0,300.0}-- 0.0 - 300.0
+    obj_char_game_scene_char_RP["wallstick_gauge"] = {0.0,300.0}-- 0.0 - 300.0
 
     obj_char_game_scene_char_RP["heat_penalty"] = false
     obj_char_game_scene_char_RP["heat_penalty_countdown"] = 0

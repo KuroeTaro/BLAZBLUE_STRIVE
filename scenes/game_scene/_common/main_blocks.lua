@@ -674,13 +674,13 @@ function update_game_scene_gauge()
     char_LP["overdrive_gauge_update_function"]()
     char_LP["ability_gauge_update_function"]()
     char_LP["risk_gauge_update_function"]()
-    char_LP["wallbreak_gauge_update_function"]()
+    char_LP["wallstick_gauge_update_function"]()
     
     char_RP["health_gauge_update_function"]()
     char_RP["overdrive_gauge_update_function"]()
     char_RP["ability_gauge_update_function"]()
     char_RP["risk_gauge_update_function"]()
-    char_RP["wallbreak_gauge_update_function"]()
+    char_RP["wallstick_gauge_update_function"]()
 end
 
 function update_game_scene_application_table()
@@ -790,7 +790,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
     local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local obj_wallstick = obj_stage_game_scene_wallstick
-    local wallbreak_spwan_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["wallstick_spawn_anchor_pos"]
+    local wallstick_spwan_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["wallstick_spawn_anchor_pos"]
     local stage_collision = false
     local collision_side = 0
     local collision_side_cache = 0
@@ -819,10 +819,10 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
     -- wallstick_visual_effect
     if collision_side ~= 0 and collision_side ~= collision_side_cache then
         -- wallstick_stage_obj
-        obj_wallstick[2] = obj_char["y"] - wallbreak_spwan_anchor_pos[obj_char["height_state"]]
+        obj_wallstick[2] = obj_char["y"] - wallstick_spwan_anchor_pos[obj_char["height_state"]]
         -- wallstick
         if obj_char["wallhurt_wallstickable"] and collision_side ~= 0 
-        and obj_char["wallbreak_gauge"][1] >= obj_char["wallbreak_gauge"][2] 
+        and obj_char["wallstick_gauge"][1] >= obj_char["wallstick_gauge"][2] 
         then
             -- camera_shake
             obj_stage_main["camera_active_application_table"] = {}
@@ -859,7 +859,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
     end
     -- wallstick_state_change
     if obj_char["wallhurt_wallstickable"] and collision_side ~= 0 
-    and obj_char["wallbreak_gauge"][1] >= obj_char["wallbreak_gauge"][2]
+    and obj_char["wallstick_gauge"][1] >= obj_char["wallstick_gauge"][2]
     then
         table.insert(obj_stage_main["wallstick_char_obj_active_application_table"],
             function()
