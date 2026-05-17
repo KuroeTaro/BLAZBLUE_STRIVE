@@ -25,16 +25,15 @@ function insert_VFX_game_scene_char_overdrive_badge(obj_char)
     obj["update"] = function()
         obj[1] = obj_char["x"] - obj_char[5]*(500)
         obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
-        obj[3] = obj_char[3]
-        obj[4] = 1
-        obj[5] = obj_char[5]*2
-        obj[6] = obj_char[6]*2
-        obj[7] = obj_char[7]
         obj[8] = obj[8] + 1
         obj["life"] = obj["life"] - 1
         if obj_char["state"] ~= "burst_overdrive" then
             obj["life"] = 0
         end
+    end
+    obj["update_in_time_stop"] = function()
+        obj[1] = obj_char["x"] - obj_char[5]*(500)
+        obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -70,16 +69,15 @@ function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
         -- obj[2] = obj_char["y"] + obj_char[6]*(840)
         obj[1] = obj_char["x"] - obj_char[5]*(860)
         obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
-        obj[3] = obj_char[3]
-        obj[4] = 1
-        obj[5] = obj_char[5]*2
-        obj[6] = obj_char[6]*2
-        obj[7] = obj_char[7]
         obj[8] = obj[8] + 1
         obj["life"] = obj["life"] - 1
         if obj_char["state"] ~= "burst_overdrive" then
             obj["life"] = 0
         end
+    end
+    obj["update_in_time_stop"] = function()
+        obj[1] = obj_char["x"] - obj_char[5]*(860)
+        obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -130,6 +128,8 @@ function insert_VFX_game_scene_char_overdrive_partical(obj_char)
         if obj_char["state"] ~= "burst_overdrive" then
             obj["life"] = 0
         end
+    end
+    obj["update_in_time_stop"] = function()
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -237,7 +237,8 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
 
         obj["life"] = obj["life"] - 1
     end
-
+    obj["update_in_time_stop"] = function()
+    end
     obj["draw"] = function()
         love.graphics.setCanvas(obj["draw_canvas"])
         love.graphics.clear(0,0,0,0)
@@ -279,6 +280,8 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
         obj[8] = obj[8] + 1
         obj["life"] = obj["life"] - 1
     end
+    obj["update_in_time_stop"] = function()
+    end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local f = obj[8]
@@ -311,6 +314,8 @@ function insert_VFX_game_scene_char_RC_partical(obj_char,color)
         obj[8] = obj[8] + 1
         obj["life"] = obj["life"] - 1
     end
+    obj["update_in_time_stop"] = function()
+    end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local f = obj[8]
@@ -341,6 +346,8 @@ function insert_VFX_game_scene_char_RC_black_overlay(obj_char)
     obj["update"] = function()
         point_linear_animator(obj,obj["opacity_anim"])
         obj["life"] = obj["life"] - 1
+    end
+    obj["update_in_time_stop"] = function()
     end
     obj["draw"] = function()
         love.graphics.setColor(0,0,0,obj[4])
@@ -393,16 +400,14 @@ function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r,fix_
     obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
-        obj[4] = opacity
-        obj[5] = obj_char[5]*sx
-        obj[6] = obj_char[6]*sy
-        obj[7] = r
         if obj_char["state"] == "hitstop" then
             -- do nothing
         else
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
         end
+    end
+    obj["update_in_time_stop"] = function()
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -467,6 +472,8 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_
             obj["life"] = obj["life"] - 1
         end
     end
+    obj["update_in_time_stop"] = function()
+    end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_blast_ver1
@@ -521,6 +528,8 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
         end
+    end
+    obj["update_in_time_stop"] = function()
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -591,6 +600,8 @@ function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,s
             obj["life"] = obj["life"] - 1
         end
     end
+    obj["update_in_time_stop"] = function()
+    end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_blast_ver0_counter
@@ -654,6 +665,8 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
             obj["life"] = obj["life"] - 1
         end
     end
+    obj["update_in_time_stop"] = function()
+    end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_blast_ver1
@@ -709,6 +722,8 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
             obj["life"] = obj["life"] - 1
         end
     end
+    obj["update_in_time_stop"] = function()
+    end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_air_blow
@@ -754,6 +769,8 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
             obj["life"] = obj["life"] - 1
         end
     end
+    obj["update_in_time_stop"] = function()
+    end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image = image_VFX_game_scene_counter_glow
@@ -794,6 +811,8 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
         end
+    end
+    obj["update_in_time_stop"] = function()
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -838,8 +857,9 @@ function insert_VFX_game_scene_char_block_ver0(obj_char)
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
-    obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
     obj["update"] = function()
+        obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
+        obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
         if obj_char["state"] == "blockstop" then
             -- do nothing
         else
@@ -850,6 +870,10 @@ function insert_VFX_game_scene_char_block_ver0(obj_char)
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
         end
+    end
+    obj["update_in_time_stop"] = function()
+        obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
+        obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -895,6 +919,8 @@ function insert_VFX_game_scene_char_block_ver1(obj_char)
     init_frame_anim_without(obj,obj["animation"])
     obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
     obj["update"] = function()
+        obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
+        obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
         if obj_char["state"] == "blockstop" then
             -- do nothing
         else
@@ -905,6 +931,10 @@ function insert_VFX_game_scene_char_block_ver1(obj_char)
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
         end
+    end
+    obj["update_in_time_stop"] = function()
+        obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
+        obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -962,6 +992,8 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
     init_point_linear_anim_without(obj,obj["opacity_point_linear_animation"])
     obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
     obj["update"] = function()
+        obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
+        obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
         if obj_char["state"] == "blockstop" then
             -- do nothing
         else
@@ -973,6 +1005,10 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
             point_linear_animator(obj,obj["opacity_point_linear_animation"])
             obj["life"] = obj["life"] - 1
         end
+    end
+    obj["update_in_time_stop"] = function()
+        obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
+        obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -1010,6 +1046,8 @@ function insert_VFX_game_scene_char_throw_tech(obj_char,x,y,opacity,sx,sy,r)
             obj["f"] = 0
         end
         obj["life"] = obj["life"] - 1
+    end
+    obj["update_in_time_stop"] = function()
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -1057,6 +1095,8 @@ function insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,x,y,opacity,sx,sy
         obj["8_change_countdown"] = obj["8_change_countdown"] - 1
         obj["life"] = obj["life"] - 1
     end
+    obj["update_in_time_stop"] = function()
+    end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_dash_burst
@@ -1086,6 +1126,8 @@ function insert_VFX_game_scene_stage_smoke_horizontal_shot(obj_char,x,y,opacity,
             obj["f"] = 0
         end
         obj["life"] = obj["life"] - 1
+    end
+    obj["update_in_time_stop"] = function()
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -1117,6 +1159,8 @@ function insert_VFX_game_scene_stage_smoke_land_blow(obj_char,x,y,opacity,sx,sy,
         end
         obj["life"] = obj["life"] - 1
     end
+    obj["update_in_time_stop"] = function()
+    end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_land_blow
@@ -1146,6 +1190,8 @@ function insert_VFX_game_scene_stage_smoke_vertical_shot(obj_char,x,y,opacity,sx
             obj["f"] = 0
         end
         obj["life"] = obj["life"] - 1
+    end
+    obj["update_in_time_stop"] = function()
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -1179,6 +1225,8 @@ function insert_VFX_game_scene_stage_4dash_air_backdash_shockwave(obj_char,x,y,o
         end
         -- obj[1] = obj[1] + obj[5]*10
         obj["life"] = obj["life"] - 1
+    end
+    obj["update_in_time_stop"] = function()
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -1216,6 +1264,8 @@ function insert_VFX_game_scene_stage_6dash_air_dash_shockwave(obj_char,x,y,opaci
         obj[1] = obj[1] - 0.2*obj[5]
         obj["life"] = obj["life"] - 1
     end
+    obj["update_in_time_stop"] = function()
+    end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_air_dash_shockwave
@@ -1224,10 +1274,6 @@ function insert_VFX_game_scene_stage_6dash_air_dash_shockwave(obj_char,x,y,opaci
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
     table.insert(obj_char["VFX_back_table"],obj)
-end
-
--- wallbreak
-function insert_VFX_game_scene_stage_wallbreaks(side)
 end
 
 -- burst
@@ -1252,6 +1298,8 @@ function insert_VFX_game_scne_stage_dash_cancel_burst(obj_char,x,y,opacity,sx,sy
         end
         obj["life"] = obj["life"] - 1
     end
+    obj["update_in_time_stop"] = function()
+    end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_dcc_burst
@@ -1271,6 +1319,8 @@ function insert_VFX_game_scene_char_GP(obj_char)
         if obj_char["state"] ~= "hurtstop" then
             obj["life"] = 0
         end
+    end
+    obj["update_in_time_stop"] = function()
     end
     obj["draw"] = function()
         local opacity_cache = obj_char[4]
@@ -1350,6 +1400,8 @@ function insert_VFX_HUD_game_scene_counter_ver0_2(obj_char)
         point_linear_animator(obj,obj["y_anim"])
         point_linear_animator(obj,obj["opacity_anim"])
         obj["life"] = obj["life"] - 1
+    end
+    obj["update_in_time_stop"] = function()
     end
     obj["draw"] = function()
         draw_2d_image(obj,obj["image"])
@@ -1460,6 +1512,8 @@ function insert_VFX_HUD_game_scene_counter_ver3(obj_char)
         obj[2] = obj["y"] - obj[6]*(200)
         obj["life"] = obj["life"] - 1
     end
+    obj["update_in_time_stop"] = function()
+    end
     obj["draw"] = function()
         love.graphics.setBlendMode("add")
         draw_2d_image(obj,obj["image"])
@@ -1488,7 +1542,8 @@ function insert_VFX_HUD_game_scene_counter_ver3(obj_char)
         point_linear_animator(obj,obj["opacity_anim"])
         obj["life"] = obj["life"] - 1
     end
-
+    obj["update_in_time_stop"] = function()
+    end
     obj["draw"] = function()
         love.graphics.setColor(0,0,0,obj[4])
         love.graphics.rectangle("fill",0,0,width,height)
@@ -1550,6 +1605,8 @@ function insert_VFX_HUD_game_scene_punish(obj_char)
         point_linear_animator(obj,obj["y_anim"])
         point_linear_animator(obj,obj["opacity_anim"])
         obj["life"] = obj["life"] - 1
+    end
+    obj["update_in_time_stop"] = function()
     end
     obj["draw"] = function()
         draw_2d_image(obj,obj["image"])

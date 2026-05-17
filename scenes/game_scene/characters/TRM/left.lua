@@ -1264,21 +1264,15 @@ function state_machine_char_game_scene_char_LP()
         end,
 
         ["hitstop"] = function()
-            if game_speed_subframe_cache > game_speed_cache then
-                common_update_game_scene_char_hitstop_countdown(obj_char)
-            end
+            common_update_game_scene_char_hitstop_countdown(obj_char)
             state_gate_game_scene_char_LP_from_hitstop(input,obj_char)
         end,
         ["hurtstop"] = function()
-            if game_speed_subframe_cache > game_speed_cache then
-                common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
-            end
+            common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
             state_gate_game_scene_char_LP_from_hurtstop(input,obj_char)
         end,
         ["blockstop"] = function()
-            if game_speed_subframe_cache > game_speed_cache then
-                common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
-            end
+            common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
             state_gate_game_scene_char_LP_from_blockstop(input,obj_char)
         end,
 
@@ -5649,12 +5643,14 @@ function update_game_scene_char_LP_projectile()
     end
 end
 function draw_game_scene_char_LP_projectile()
-    for i = #obj_char_game_scene_char_LP["projectile_rc_table"],1,-1 do -- 反向遍历，便于删除元素
-        local object = obj_char_game_scene_char_LP["projectile_rc_table"][i]
-        object["draw"]()
-    end
     for i = #obj_char_game_scene_char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
         local object = obj_char_game_scene_char_LP["projectile_table"][i]
+        object["draw"]()
+    end
+end
+function draw_game_scene_char_LP_projectile_rc()
+    for i = #obj_char_game_scene_char_LP["projectile_rc_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["projectile_rc_table"][i]
         object["draw"]()
     end
 end
@@ -5695,6 +5691,28 @@ function update_game_scene_char_LP_VFX()
         if object["life"] <= 0 then
             table.remove(obj_char_game_scene_char_LP["VFX_back_table"],i) -- 寿命耗尽，从列表中移除
         end
+    end
+end
+function update_game_scene_char_LP_VFX_at_game_speed_0()
+    for i = #obj_char_game_scene_char_LP["VFX_HUD_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["VFX_HUD_table"][i]
+        object["update_in_time_stop"](object)
+    end
+    for i = #obj_char_game_scene_char_LP["VFX_hit_front_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["VFX_hit_front_table"][i]
+        object["update_in_time_stop"](object)
+    end
+    for i = #obj_char_game_scene_char_LP["VFX_front_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["VFX_front_table"][i]
+        object["update_in_time_stop"](object)
+    end
+    for i = #obj_char_game_scene_char_LP["VFX_hit_back_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["VFX_hit_back_table"][i]
+        object["update_in_time_stop"](object)
+    end
+    for i = #obj_char_game_scene_char_LP["VFX_back_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["VFX_back_table"][i]
+        object["update_in_time_stop"](object)
     end
 end
 function draw_game_scene_char_LP_VFX_HUD()

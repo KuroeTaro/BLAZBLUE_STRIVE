@@ -400,7 +400,7 @@ function common_game_scene_strike_hurt_function_common_block(obj_char,hit_side_o
     obj_char["state_cache"] = "block"
     obj_char["state"] = "blockstop"
     -- camera_shake_enclose
-    common_game_scene_hit_load_camera_shake_anim(hit_side_obj_char,0.5)
+    common_game_scene_hit_load_camera_shake_anim(hit_side_obj_char,0.5,15)
     table.insert(obj_stage_main["camera_active_application_table"],
         function()
             anim_stage_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
@@ -455,7 +455,7 @@ function common_game_scene_strike_hurt_function_GP_hurt(obj_char,hit_side_obj_ch
     obj_char["state_cache"] = obj_char["state"]
     obj_char["state"] = "hurtstop"
     -- camera_shake_enclose
-    common_game_scene_hit_load_camera_shake_anim(hit_side_obj_char,0.5)
+    common_game_scene_hit_load_camera_shake_anim(hit_side_obj_char,0.5,15)
     table.insert(obj_stage_main["camera_active_application_table"],
         function()
             anim_stage_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
@@ -673,16 +673,16 @@ function common_game_scene_counter_ver0(hit_side_obj_char,hurt_side_obj_char)
 end
 function common_game_scene_counter_ver1(hit_side_obj_char,hurt_side_obj_char)
     insert_VFX_HUD_game_scene_counter_ver0_2(hit_side_obj_char)
-    hurt_side_obj_char["hit_hurt_block_slowdown_countdown"] = 12
-    hurt_side_obj_char["game_speed_subframe"] = 0
+    hurt_side_obj_char["hit_hurt_block_slowdown_countdown"] = 11
+    hurt_side_obj_char["game_speed_subframe"] = 1
 end
 function common_game_scene_counter_ver2(hit_side_obj_char,hurt_side_obj_char)
     insert_VFX_HUD_game_scene_counter_ver0_2(hit_side_obj_char)
-    hit_side_obj_char["hit_hurt_blockstop_countdown"] = 22
+    hit_side_obj_char["hit_hurt_blockstop_countdown"] = 21
     hit_side_obj_char["hit_hurt_block_slowdown_countdown"] = 0
-    hurt_side_obj_char["hit_hurt_block_slowdown_countdown"] = 26
-    hurt_side_obj_char["hit_hurt_blockstop_countdown"] = 22
-    hurt_side_obj_char["game_speed_subframe"] = 0
+    hurt_side_obj_char["hit_hurt_blockstop_countdown"] = 21
+    hurt_side_obj_char["hit_hurt_block_slowdown_countdown"] = 25
+    hurt_side_obj_char["game_speed_subframe"] = 1
 end
 function common_game_scene_counter_ver3(hit_side_obj_char,hurt_side_obj_char)
     local obj_camera = obj_stage_game_scene_camera
@@ -693,10 +693,11 @@ function common_game_scene_counter_ver3(hit_side_obj_char,hurt_side_obj_char)
         (hit_side_obj_char["y"]+hurt_side_obj_char["y"])/8 - obj_camera["3d_pos_y"],
         100
     }
-    hit_side_obj_char["hit_hurt_blockstop_countdown"] = 32
+    hit_side_obj_char["hit_hurt_blockstop_countdown"] = 31
     hit_side_obj_char["hit_hurt_block_slowdown_countdown"] = 0
-    hurt_side_obj_char["hit_hurt_block_slowdown_countdown"] = 36
-    hurt_side_obj_char["hit_hurt_blockstop_countdown"] = 32
+    hurt_side_obj_char["hit_hurt_blockstop_countdown"] = 31
+    hurt_side_obj_char["hit_hurt_block_slowdown_countdown"] = 35
+    hurt_side_obj_char["game_speed_subframe"] = 1
 end
 
 function common_game_scene_nil_load_camera_enclose_anim(obj_char)
@@ -815,51 +816,34 @@ function common_game_scene_overdrive_load_camera_shake_anim(obj_char)
     anim["fix_type"] = false
     obj_char["camera_y_shake_anim"] = anim
 end
-function common_game_scene_hit_load_camera_shake_anim(obj_char,multiplyer)
+function common_game_scene_hit_load_camera_shake_anim(obj_char,multiplyer,animation_length)
+    local x = 0
+    local function linear_return(i)
+        return (animation_length-i)/animation_length
+    end
+    local function random_function()
+        x = (x + 0.61803398875) % 1
+        return x
+    end
     local anim = {}
-    anim = {}
-    anim[0] = {13.25*multiplyer,1}
-    anim[1] = {-10.34*multiplyer,2}
-    anim[2] = {-9.93*multiplyer,3}
-    anim[3] = {9.02*multiplyer,4}
-    anim[4] = {-8.10*multiplyer,5}
-    anim[5] = {8.69*multiplyer,6}
-    anim[6] = {-6.72*multiplyer,7}
-    anim[7] = {6.47*multiplyer,8}
-    anim[8] = {-5.78*multiplyer,9}
-    anim[9] = {5.46*multiplyer,10}
-    anim[10] = {4.31*multiplyer,11}
-    anim[11] = {-4.65*multiplyer,12}
-    anim[12] = {2.00*multiplyer,13}
-    anim[13] = {-2.81*multiplyer,14}
-    anim[14] = {1.63*multiplyer,15}
-    anim[15] = {0*multiplyer,15}
+
+    for i = 0,animation_length-1 do
+        anim[i] = {(random_function()-0.5)*3*linear_return(i)*13*multiplyer,i+1}
+    end
+    anim[animation_length] = {0*multiplyer,animation_length}
     anim["prop"] = "3d_pos_x"
-    anim["length"] = 15
+    anim["length"] = animation_length
     anim["loop"] = false
     anim["fix_type"] = false
     obj_char["camera_x_shake_anim"] = anim
 
-    local multiplyer_fix = multiplyer*0.2
     anim = {}
-    anim[0] = {10.92*multiplyer_fix,1}
-    anim[1] = {2.67*multiplyer_fix,2}
-    anim[2] = {-4.00*multiplyer_fix,3}
-    anim[3] = {-8.26*multiplyer_fix,4}
-    anim[4] = {3.60*multiplyer_fix,5}
-    anim[5] = {8.15*multiplyer_fix,6}
-    anim[6] = {-2.35*multiplyer_fix,7}
-    anim[7] = {-6.04*multiplyer_fix,8}
-    anim[8] = {1.75*multiplyer_fix,9}
-    anim[9] = {5.44*multiplyer_fix,10}
-    anim[10] = {-1.69*multiplyer_fix,11}
-    anim[11] = {1.00*multiplyer_fix,12}
-    anim[12] = {3.67*multiplyer_fix,13}
-    anim[13] = {-1.13*multiplyer_fix,14}
-    anim[14] = {2.11*multiplyer_fix,15}
-    anim[15] = {0*multiplyer_fix,15}
+    for i = 0,animation_length-1 do
+        anim[i] = {(random_function()-0.5)*3*linear_return(i)*3*multiplyer,i+1}
+    end
+    anim[animation_length] = {0*multiplyer,animation_length}
     anim["prop"] = "3d_pos_y"
-    anim["length"] = 15
+    anim["length"] = animation_length
     anim["loop"] = false
     anim["fix_type"] = false
     obj_char["camera_y_shake_anim"] = anim
@@ -981,13 +965,8 @@ function common_update_game_scene_char_hitstop_countdown(obj_char)
     if obj_char["hit_hurt_blockstop_countdown"] > 1 then
         obj_char["hit_hurt_blockstop_countdown"] = obj_char["hit_hurt_blockstop_countdown"] - 1
     else
-        obj_char["game_speed_abnormal_realtime_countdown"] = 0
         obj_char["hit_hurt_blockstop_countdown"] = 0 
         obj_char["hit_hurt_block_slowdown_countdown"] = 0
-        obj_char["game_speed_cache_after_apply"][1] = true
-        obj_char["game_speed_cache_after_apply"][2] = 1
-        obj_char["game_speed_cache_after_apply"][3] = 1
-        obj_char["game_speed_cache_after_apply"][4] = 0
     end
 end
 function common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
@@ -1024,7 +1003,7 @@ function common_update_game_scene_char_game_speed_abnormal_realtime_countdown(ob
         obj_char["game_speed_subframe"] = obj_char["game_speed_subframe"] + 1
     end
     if obj_char["game_speed"] ~= 1 then 
-        if obj_char["game_speed_abnormal_realtime_countdown"] > 0 then
+        if obj_char["game_speed_abnormal_realtime_countdown"] > 1 then
             obj_char["game_speed_abnormal_realtime_countdown"] = obj_char["game_speed_abnormal_realtime_countdown"] - 1
         else
             obj_char["game_speed"] = 1

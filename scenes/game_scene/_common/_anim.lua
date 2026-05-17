@@ -4942,7 +4942,7 @@ function load_game_scene_anim_char_common_burst_overdrive(obj_char,other_side_co
             -- 攻击状态下OD 恢复为3+3
         obj_char_other_side["game_speed_cache_after_apply"][1] = true
         obj_char_other_side["game_speed_cache_after_apply"][2] = 0
-        obj_char_other_side["game_speed_cache_after_apply"][3] = 0
+        obj_char_other_side["game_speed_cache_after_apply"][3] = 1
         obj_char_other_side["game_speed_cache_after_apply"][4] = other_side_countdown
     end
     res[4] = function()
@@ -5226,7 +5226,7 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
         -- game_speed
         obj_char_other_side["game_speed_cache_after_apply"][1] = true
         obj_char_other_side["game_speed_cache_after_apply"][2] = 0
-        obj_char_other_side["game_speed_cache_after_apply"][3] = 0
+        obj_char_other_side["game_speed_cache_after_apply"][3] = 1
         obj_char_other_side["game_speed_cache_after_apply"][4] = 43
     end
     res[3] = function()

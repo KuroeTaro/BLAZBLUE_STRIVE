@@ -52,7 +52,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
 
     obj["camera_x_shake_anim"] = nil
     obj["camera_y_shake_anim"] = nil
-    common_game_scene_hit_load_camera_shake_anim(obj,0.5)
+    common_game_scene_hit_load_camera_shake_anim(obj,0.5,15)
 
     obj["stand_hurt_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         obj_char,obj,true,nil,
@@ -1078,6 +1078,8 @@ function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(obj
     obj["update"] = function()
         frame_animator(obj,obj["animation"])
         obj["life"] = obj["life"] - 1
+    end
+    obj["update_in_time_stop"] = function()
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera

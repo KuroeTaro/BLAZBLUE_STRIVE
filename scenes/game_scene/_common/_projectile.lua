@@ -9,7 +9,11 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
     local side = obj_char["player_side"]
 
     obj[1] = obj_char["x"] - obj_char[5]*600
-    obj[2] = obj_char["y"] - 750
+    if obj_char["height_state"] == "stand" then
+        obj[2] = obj_char["y"] - 850
+    elseif obj_char["height_state"] == "air" then
+        obj[2] = obj_char["y"] - 750
+    end
     obj[5] = obj_char[5]
     obj["x"] = obj_char["x"]
     obj["y"] = obj_char["y"] - 150
@@ -43,16 +47,25 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
 
     obj["camera_x_shake_anim"] = nil
     obj["camera_y_shake_anim"] = nil
+    obj["camera_enclosing_anim"] = nil
+    obj["enclose_position_offset"] = {0,0,0}
 
-
-    obj["stand_hurt_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
+    obj["stand_hurt_animation"] = load_game_scene_anim_char_red_rc_projectile_ground_air_and_OTG_hurt(
         obj_char,obj,true,nil,
-        "0_stand_hurt_high",
-        "stand","5_stand_idle",
-        8,5,1.00,
-        0,2.5,1.00,
-        nil,nil,nil,nil,
-        function() end
+        "0_general_hurt_launched_high",
+        "air","knockdown_recovery",
+        15,5,1.05,
+        -25,2.5,1.05,
+        nil,
+        load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
+            obj_char,
+            "0_general_hurt_soft_recovery_ground",
+            "OTG",
+            "5_stand_idle",
+            nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
+        ),
+        nil,nil,
+        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
     )
     obj["stand_block_animation"] = load_game_scene_anim_char_red_rc_projectile_ground_block(
         obj_char,obj,true,nil,
@@ -65,12 +78,20 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
     )
     obj["crouch_hurt_animation"] = load_game_scene_anim_char_red_rc_projectile_ground_air_and_OTG_hurt(
         obj_char,obj,true,nil,
-        "0_crouch_hurt",
-        "crouch","1_2_3_crouch",
-        8,5,1.00,
-        0,2.5,1.00,
-        nil,nil,nil,nil,
-        function() end
+        "0_general_hurt_launched_high",
+        "air","knockdown_recovery",
+        15,5,1.05,
+        -25,2.5,1.05,
+        nil,
+        load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
+            obj_char,
+            "0_general_hurt_soft_recovery_ground",
+            "OTG",
+            "5_stand_idle",
+            nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
+        ),
+        nil,nil,
+        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
     )
     obj["crouch_block_animation"] = load_game_scene_anim_char_red_rc_projectile_ground_block(
         obj_char,obj,true,nil,
@@ -152,7 +173,11 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
 
     obj["update"] = function()
         obj[1] = obj_char["x"] - obj_char[5]*600
-        obj[2] = obj_char["y"] - 750
+        if obj_char["height_state"] == "stand" then
+            obj[2] = obj_char["y"] - 850
+        elseif obj_char["height_state"] == "air" then
+            obj[2] = obj_char["y"] - 750
+        end
         obj["x"] = obj_char["x"]
         obj["y"] = obj_char["y"] - 150
         character_animator(obj,obj["animation"])
@@ -162,7 +187,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
         love.graphics.setBlendMode("add")
+        love.graphics.setColor(1,1,1,1)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("alpha")
     end
     obj["enemy_interact_function"] = function()
@@ -176,7 +203,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
             -- if hit
         if collision_strike_hurtbox_test(obj,obj_char_other_side) and obj["strike_active"] and (not obj_char_other_side["strike_inv"]) then
             -- insert_hit_VFX
-            insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(obj_char,obj_char_other_side)
+            
             -- set_projectile_strike_active
             obj["strike_active"] = false
             -- set_physics_lock
@@ -207,7 +234,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
                 obj_char_other_side["state_cache"] = "block"
                 obj_char_other_side["state"] = "blockstop"
                 -- set_insert_camera_anim
-                common_game_scene_hit_load_camera_shake_anim(obj,0.3)
+                common_game_scene_hit_load_camera_shake_anim(obj,0.7,60)
                 table.insert(obj_stage_main["camera_active_application_table"],
                     function()
                         anim_stage_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
@@ -247,7 +274,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
                 obj_char_other_side["state_cache"] = obj_char_other_side["state"]
                 obj_char_other_side["state"] = "hurtstop"
                 -- set_insert_camera_anim
-                common_game_scene_hit_load_camera_shake_anim(obj,0.3)
+                common_game_scene_hit_load_camera_shake_anim(obj,1.2,60)
                 table.insert(obj_stage_main["camera_active_application_table"],
                     function()
                         anim_stage_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
@@ -281,7 +308,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
                     obj["hit_counter_ver_function"](obj_char,obj_char_other_side)
                 end
                 -- set_insert_camera_anim
-                common_game_scene_hit_load_camera_shake_anim(obj,0.5)
+                common_game_scene_hit_load_camera_shake_anim(obj,1.2,30)
                 table.insert(obj_stage_main["camera_active_application_table"],
                     function()
                         anim_stage_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
@@ -433,8 +460,20 @@ function load_game_scene_anim_char_red_rc_projectile_ground_block(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
+        -- game_speed
+        obj_char_other_side["game_speed_cache_after_apply"][1] = true
+        obj_char_other_side["game_speed_cache_after_apply"][2] = 0
+        obj_char_other_side["game_speed_cache_after_apply"][3] = 1
+        obj_char_other_side["game_speed_cache_after_apply"][4] = 19
         -- special_update
         frame_0_special_update_function()
+    end
+    res[1] = function()
+        -- game_speed
+        obj_char_other_side["game_speed_cache_after_apply"][1] = true
+        obj_char_other_side["game_speed_cache_after_apply"][2] = 2
+        obj_char_other_side["game_speed_cache_after_apply"][3] = 1
+        obj_char_other_side["game_speed_cache_after_apply"][4] = 39
     end
     res[3] = function()
         -- draw_correction
@@ -738,6 +777,11 @@ function load_game_scene_anim_char_red_rc_projectile_ground_air_and_OTG_hurt(
     res[1] = function()
         -- state
         obj_char_other_side["state_cache"] = state_cache
+        -- game_speed
+        obj_char_other_side["game_speed_cache_after_apply"][1] = true
+        obj_char_other_side["game_speed_cache_after_apply"][2] = 2
+        obj_char_other_side["game_speed_cache_after_apply"][3] = 1
+        obj_char_other_side["game_speed_cache_after_apply"][4] = 39
         -- update
         update_before_land()
     end
@@ -835,6 +879,58 @@ function load_game_scene_anim_char_red_rc_projectile_ground_air_and_OTG_hurt(
         -- animation_end
     end
     return res
+end
+function load_game_scene_red_RC_hit_load_camera_shake_anim(obj,multiplyer)
+    local function linear_return(persentage)
+        return result * multiplyer
+    end
+    local anim = {}
+    anim = {}
+    anim[0] = {13.25*multiplyer,2}
+    anim[1] = {-10.34*multiplyer,4}
+    anim[2] = {-9.93*multiplyer,6}
+    anim[3] = {9.02*multiplyer,8}
+    anim[4] = {-8.10*multiplyer,10}
+    anim[5] = {8.69*multiplyer,12}
+    anim[6] = {-6.72*multiplyer,14}
+    anim[7] = {6.47*multiplyer,16}
+    anim[8] = {-5.78*multiplyer,18}
+    anim[9] = {5.46*multiplyer,20}
+    anim[10] = {4.31*multiplyer,22}
+    anim[11] = {-4.65*multiplyer,24}
+    anim[12] = {2.00*multiplyer,26}
+    anim[13] = {-2.81*multiplyer,28}
+    anim[14] = {1.63*multiplyer,30}
+    anim[15] = {0*multiplyer,30}
+    anim["prop"] = "3d_pos_x"
+    anim["length"] = 15
+    anim["loop"] = false
+    anim["fix_type"] = false
+    obj_char["camera_x_shake_anim"] = anim
+
+    local multiplyer_fix = multiplyer*0.2
+    anim = {}
+    anim[0] = {10.92*multiplyer_fix,1}
+    anim[1] = {2.67*multiplyer_fix,2}
+    anim[2] = {-4.00*multiplyer_fix,3}
+    anim[3] = {-8.26*multiplyer_fix,4}
+    anim[4] = {3.60*multiplyer_fix,5}
+    anim[5] = {8.15*multiplyer_fix,6}
+    anim[6] = {-2.35*multiplyer_fix,7}
+    anim[7] = {-6.04*multiplyer_fix,8}
+    anim[8] = {1.75*multiplyer_fix,9}
+    anim[9] = {5.44*multiplyer_fix,10}
+    anim[10] = {-1.69*multiplyer_fix,11}
+    anim[11] = {1.00*multiplyer_fix,12}
+    anim[12] = {3.67*multiplyer_fix,13}
+    anim[13] = {-1.13*multiplyer_fix,14}
+    anim[14] = {2.11*multiplyer_fix,15}
+    anim[15] = {0*multiplyer_fix,15}
+    anim["prop"] = "3d_pos_y"
+    anim["length"] = 15
+    anim["loop"] = false
+    anim["fix_type"] = false
+    obj_char["camera_y_shake_anim"] = anim
 end
 
 function insert_projectile_game_scene_char_common_RC_shockwave_blue(obj_char)

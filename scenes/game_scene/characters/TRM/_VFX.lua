@@ -48,6 +48,10 @@ function insert_VFX_game_scene_char_TRM_2P_whiff(obj_char)
             obj["life"] = 0
         end
     end
+    obj["update_in_time_stop"] = function()
+        obj[1] = obj_char["x"] + obj_char[5]*(35)
+        obj[2] = obj_char["y"] + obj_char[6]*(-230)
+    end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         image_sprite_sheet["sprite_batch"]:clear()
@@ -108,6 +112,10 @@ function insert_VFX_game_scene_char_TRM_6P_whiff(obj_char)
         else
             obj["life"] = 0
         end
+    end
+    obj["update_in_time_stop"] = function()
+        obj[1] = obj_char["x"] + obj_char[5]*(-294)
+        obj[2] = obj_char["y"] + obj_char[6]*(-543)
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -170,6 +178,10 @@ function insert_VFX_game_scene_char_TRM_5P_whiff(obj_char)
             obj["life"] = 0
         end
     end
+    obj["update_in_time_stop"] = function()
+        obj[1] = obj_char["x"] + obj_char[5]*(56)
+        obj[2] = obj_char["y"] + obj_char[6]*(-468)
+    end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         image_sprite_sheet["sprite_batch"]:clear()
@@ -226,6 +238,10 @@ function insert_VFX_game_scene_char_TRM_2S_whiff(obj_char)
         else
             obj["life"] = 0
         end
+    end
+    obj["update_in_time_stop"] = function()
+        obj[1] = obj_char["x"] + obj_char[5]*(166)
+        obj[2] = obj_char["y"] + obj_char[6]*(-247)
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -287,6 +303,10 @@ function insert_VFX_game_scene_char_TRM_6S_whiff(obj_char)
         else
             obj["life"] = 0
         end
+    end
+    obj["update_in_time_stop"] = function()
+        obj[1] = obj_char["x"] + obj_char[5]*(-430)
+        obj[2] = obj_char["y"] + obj_char[6]*(-520)
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -352,6 +372,10 @@ function insert_VFX_game_scene_char_TRM_cS_whiff(obj_char)
             obj["life"] = 0
         end
     end
+    obj["update_in_time_stop"] = function()
+        obj[1] = obj_char["x"] + obj_char[5]*(140)
+        obj[2] = obj_char["y"] + obj_char[6]*(-440)
+    end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         image_sprite_sheet["sprite_batch"]:clear()
@@ -405,6 +429,8 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_switch(obj_char)
     obj["update"] = function()
         frame_animator(obj,obj["animation"])
         obj["life"] = obj["life"] - 1
+    end
+    obj["update_in_time_stop"] = function()
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -463,6 +489,8 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot_oroboros_blas
             obj["life"] = 0
         end
     end
+    obj["update_in_time_stop"] = function()
+    end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         image_sprite_sheet["sprite_batch"]:clear()
@@ -519,6 +547,10 @@ function insert_VFX_game_scene_char_TRM_5Launcher_whiff_slash(obj_char)
         else
             obj["life"] = 0
         end
+    end
+    obj["update_in_time_stop"] = function()
+        obj[1] = obj_char["x"] + obj_char[5]*(-285)
+        obj[2] = obj_char["y"] + obj_char[6]*(-535)
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -577,6 +609,10 @@ function insert_VFX_game_scene_char_TRM_5Launcher_whiff_glow(obj_char)
         else
             obj["life"] = 0
         end
+    end
+    obj["update_in_time_stop"] = function()
+        obj[1] = obj_char["x"] + obj_char[5]*(-380)
+        obj[2] = obj_char["y"] + obj_char[6]*(-636)
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -645,6 +681,25 @@ function insert_VFX_game_scene_char_TRM_jS_whiff(obj_char)
         else
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
+        end
+    end
+    obj["update_in_time_stop"] = function()
+        if obj["FCT"][8] < 7 and obj_char["state"] == "jS" then
+            obj[1] = obj_char["x"] + obj_char["velocity"][1] + obj_char[5]*(-120)
+            obj[2] = obj_char["y"] + obj_char["velocity"][2] +obj_char[6]*(-370)
+            obj[3] = obj_char[3]
+            obj[4] = 1
+            obj[5] = obj_char[5]
+            obj[6] = obj_char[6]
+            obj[7] = obj_char[7]
+        elseif obj_char["state"] == "jS" then
+            obj[1] = obj_char["x"] + obj_char["velocity"][1] + obj_char[5]*(-120)
+            obj[2] = obj_char["y"] + obj_char["velocity"][2] + obj_char[6]*(-370)
+            obj[3] = obj_char[3]
+            obj[4] = 0.75
+            obj[5] = obj_char[5]
+            obj[6] = obj_char[6]
+            obj[7] = obj_char[7]
         end
     end
     obj["draw"] = function()

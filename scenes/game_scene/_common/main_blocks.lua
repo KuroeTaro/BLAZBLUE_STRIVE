@@ -575,6 +575,10 @@ function update_game_scene_char()
         update_game_scene_char_LP_black_overlay()
     end
 
+    if game_speed_cache_LP == 0 or (game_speed_cache_LP ~= 0 and game_speed_subframe_cache_LP <= game_speed_cache_LP) then
+        update_game_scene_char_LP_VFX_at_game_speed_0()
+    end
+
     if game_speed_cache_RP ~= 0 then
         update_game_scene_char_RP()
     end
@@ -583,6 +587,10 @@ function update_game_scene_char()
         update_game_scene_char_RP_projectile()
         update_game_scene_char_RP_VFX()
         update_game_scene_char_RP_black_overlay()
+    end
+
+    if game_speed_cache_RP == 0 or (game_speed_cache_RP ~= 0 and game_speed_subframe_cache_LP <= game_speed_cache_RP) then
+        update_game_scene_char_RP_VFX_at_game_speed_0()
     end
 
     -- attachment 用于某些需要根据角色本身本帧数据来更新的部分
@@ -595,7 +603,7 @@ function update_game_scene_char()
     end
 
     local game_speed_abnormal_realtime_countdown_LP = char_LP["game_speed_abnormal_realtime_countdown"]
-    local game_speed_abnormal_realtime_countdown_RP = char_LP["game_speed_abnormal_realtime_countdown"]
+    local game_speed_abnormal_realtime_countdown_RP = char_RP["game_speed_abnormal_realtime_countdown"]
     if char_LP["game_speed"] == 0 and char_RP["game_speed"] == 0 then
         if game_speed_abnormal_realtime_countdown_LP > game_speed_abnormal_realtime_countdown_RP then
             char_LP["game_speed_abnormal_realtime_countdown"] = 
@@ -652,7 +660,7 @@ function update_game_scene_gravity()
         char_LP["y"] = 365
         char_LP["velocity"][2] = 0
         char_LP["gravity_correction"] = 1
-    elseif char_LP["game_speed_subframe"] > char_LP["game_speed"] and not char_LP["physics_lock"] then
+    elseif char_LP["game_speed_subframe"] > char_LP["game_speed"] and not char_LP["physics_lock"] and char_LP["game_speed"] ~= 0 then
         char_LP["velocity"][2] = char_LP["velocity"][2] + char_LP["gravity"]*char_LP["gravity_correction"]
     end
 
@@ -662,7 +670,7 @@ function update_game_scene_gravity()
         char_RP["y"] = 365
         char_RP["velocity"][2] = 0
         char_LP["gravity_correction"] = 1
-    elseif char_RP["game_speed_subframe"] > char_RP["game_speed"] and not char_RP["physics_lock"] then
+    elseif char_RP["game_speed_subframe"] > char_RP["game_speed"] and not char_RP["physics_lock"] and char_RP["game_speed"] ~= 0 then
         char_RP["velocity"][2] = char_RP["velocity"][2] + char_RP["gravity"]*char_RP["gravity_correction"]
     end
 end

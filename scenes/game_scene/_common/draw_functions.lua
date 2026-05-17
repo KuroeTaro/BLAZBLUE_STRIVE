@@ -17,6 +17,9 @@ function draw_game_scene_main()
     draw_game_scene_char_LP_VFX_back()
     draw_game_scene_char_RP_VFX_back()
 
+    draw_game_scene_char_LP_projectile_rc()
+    draw_game_scene_char_RP_projectile_rc()
+
     -- 绘制背侧挂件
     draw_game_scene_char_LP_attachment_back()
     draw_game_scene_char_RP_attachment_back()
