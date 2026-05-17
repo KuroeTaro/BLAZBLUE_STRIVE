@@ -46,8 +46,7 @@ function frame_animator(obj,anim)
     local current_value = obj[anim_change_prop]
     local current_time = obj["FCT"][anim_change_prop]
 
-    if current_time <= anim_length and current_delta then
-        current_value = current_value + current_delta
+    if current_time <= anim_length then
         current_time = current_time + 1
     end
     if anim_loop and current_time > anim_length  then
@@ -113,9 +112,14 @@ function point_linear_animator(obj,anim)
     local current_time = obj["LCT"][anim_change_prop]
     local current_delta = obj["LCD"][anim_change_prop]
 
-    if current_time <= anim_length and current_delta then
-        current_value = current_value + current_delta
-        current_time = current_time + 1
+    if obj["LCD"][anim_change_prop] == nil then
+        obj["LCD"][anim_change_prop] = 0
+    end
+    current_delta = obj["LCD"][anim_change_prop]
+
+    if current_time <= anim_length then
+        current_value =  current_value + current_delta
+		current_time = current_time + 1
     end
 
     if current_time > anim_length and anim_loop then
