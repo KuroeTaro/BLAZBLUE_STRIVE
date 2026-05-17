@@ -487,8 +487,8 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
             hurt_vertical_velocity,
             hurt_vertical_gravity,
             hurt_vertical_gravity_correction,
-            true,
-            "projectile"
+            false,
+            "character"
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -635,8 +635,8 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
             hurt_vertical_velocity,
             hurt_vertical_gravity,
             hurt_vertical_gravity_correction,
-            true,
-            "projectile"
+            false,
+            "character"
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -784,8 +784,8 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
             hurt_vertical_velocity,
             hurt_vertical_gravity,
             hurt_vertical_gravity_correction,
-            true,
-            "projectile"
+            false,
+            "character"
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -909,8 +909,8 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
             hurt_vertical_velocity,
             hurt_vertical_gravity,
             hurt_vertical_gravity_correction,
-            true,
-            "projectile"
+            false,
+            "character"
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]

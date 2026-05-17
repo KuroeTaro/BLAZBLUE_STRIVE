@@ -4120,7 +4120,9 @@ function state_gate_game_scene_char_RP_from_4dash_air_backdash(input,obj_char)
     -- _common_air_idle_to_move
     if obj_char["idle_cancel"] then
         if state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char) then
-            obj_char["velocity"][1] = obj_char["velocity"][1]/math.abs(obj_char["velocity"][1])*math.min(15,math.abs(obj_char["velocity"][1]))
+            if obj_char["velocity"][1] ~= 0 then
+                obj_char["velocity"][1] = obj_char["velocity"][1]/math.abs(obj_char["velocity"][1])*math.min(15,math.abs(obj_char["velocity"][1]))
+            end
             obj_char["gravity"] = 2.0
             return true
         end
@@ -4206,7 +4208,9 @@ function state_gate_game_scene_char_RP_from_6dash_air_dash(input,obj_char)
     -- _common_air_idle_to_move
     if obj_char["idle_cancel"] then
         if state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char) then
-            obj_char["velocity"][1] = obj_char["velocity"][1]/math.abs(obj_char["velocity"][1])*math.min(25,math.abs(obj_char["velocity"][1]))
+            if obj_char["velocity"][1] ~= 0 then
+                obj_char["velocity"][1] = obj_char["velocity"][1]/math.abs(obj_char["velocity"][1])*math.min(25,math.abs(obj_char["velocity"][1]))
+            end
             return true
         end
     end

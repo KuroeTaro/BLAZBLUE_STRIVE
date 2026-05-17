@@ -54,8 +54,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
         obj_char,obj,true,nil,
         "0_general_hurt_launched_high",
         "air","knockdown_recovery",
-        15,5,1.05,
-        -25,2.5,1.05,
+        5,5,1.00,
+        -20,1.0,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             obj_char,
@@ -80,8 +80,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
         obj_char,obj,true,nil,
         "0_general_hurt_launched_high",
         "air","knockdown_recovery",
-        15,5,1.05,
-        -25,2.5,1.05,
+        5,5,1.00,
+        -20,1.0,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             obj_char,
@@ -106,8 +106,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
         obj_char,obj,true,nil,
         "0_general_hurt_launched_high",
         "air","knockdown_recovery",
-        15,5,1.05,
-        -25,2.5,1.05,
+        5,5,1.00,
+        -20,1.0,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             obj_char,
@@ -438,8 +438,8 @@ function load_game_scene_anim_char_red_rc_projectile_ground_block(
             hurt_vertical_velocity,
             hurt_vertical_gravity,
             hurt_vertical_gravity_correction,
-            true,
-            "projectile"
+            false,
+            "character"
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -598,8 +598,8 @@ function load_game_scene_anim_char_red_rc_projectile_air_block(
             hurt_vertical_velocity,
             hurt_vertical_gravity,
             hurt_vertical_gravity_correction,
-            true,
-            "projectile"
+            false,
+            "character"
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -754,8 +754,8 @@ function load_game_scene_anim_char_red_rc_projectile_ground_air_and_OTG_hurt(
             hurt_vertical_velocity,
             hurt_vertical_gravity,
             hurt_vertical_gravity_correction,
-            true,
-            "projectile"
+            false,
+            "character"
         )
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
@@ -879,58 +879,6 @@ function load_game_scene_anim_char_red_rc_projectile_ground_air_and_OTG_hurt(
         -- animation_end
     end
     return res
-end
-function load_game_scene_red_RC_hit_load_camera_shake_anim(obj,multiplyer)
-    local function linear_return(persentage)
-        return result * multiplyer
-    end
-    local anim = {}
-    anim = {}
-    anim[0] = {13.25*multiplyer,2}
-    anim[1] = {-10.34*multiplyer,4}
-    anim[2] = {-9.93*multiplyer,6}
-    anim[3] = {9.02*multiplyer,8}
-    anim[4] = {-8.10*multiplyer,10}
-    anim[5] = {8.69*multiplyer,12}
-    anim[6] = {-6.72*multiplyer,14}
-    anim[7] = {6.47*multiplyer,16}
-    anim[8] = {-5.78*multiplyer,18}
-    anim[9] = {5.46*multiplyer,20}
-    anim[10] = {4.31*multiplyer,22}
-    anim[11] = {-4.65*multiplyer,24}
-    anim[12] = {2.00*multiplyer,26}
-    anim[13] = {-2.81*multiplyer,28}
-    anim[14] = {1.63*multiplyer,30}
-    anim[15] = {0*multiplyer,30}
-    anim["prop"] = "3d_pos_x"
-    anim["length"] = 15
-    anim["loop"] = false
-    anim["fix_type"] = false
-    obj_char["camera_x_shake_anim"] = anim
-
-    local multiplyer_fix = multiplyer*0.2
-    anim = {}
-    anim[0] = {10.92*multiplyer_fix,1}
-    anim[1] = {2.67*multiplyer_fix,2}
-    anim[2] = {-4.00*multiplyer_fix,3}
-    anim[3] = {-8.26*multiplyer_fix,4}
-    anim[4] = {3.60*multiplyer_fix,5}
-    anim[5] = {8.15*multiplyer_fix,6}
-    anim[6] = {-2.35*multiplyer_fix,7}
-    anim[7] = {-6.04*multiplyer_fix,8}
-    anim[8] = {1.75*multiplyer_fix,9}
-    anim[9] = {5.44*multiplyer_fix,10}
-    anim[10] = {-1.69*multiplyer_fix,11}
-    anim[11] = {1.00*multiplyer_fix,12}
-    anim[12] = {3.67*multiplyer_fix,13}
-    anim[13] = {-1.13*multiplyer_fix,14}
-    anim[14] = {2.11*multiplyer_fix,15}
-    anim[15] = {0*multiplyer_fix,15}
-    anim["prop"] = "3d_pos_y"
-    anim["length"] = 15
-    anim["loop"] = false
-    anim["fix_type"] = false
-    obj_char["camera_y_shake_anim"] = anim
 end
 
 function insert_projectile_game_scene_char_common_RC_shockwave_blue(obj_char)

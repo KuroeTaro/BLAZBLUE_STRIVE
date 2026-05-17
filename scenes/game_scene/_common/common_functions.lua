@@ -156,7 +156,9 @@ function common_game_scene_get_character_facing_currect(obj_char)
     return true
 end
 function common_game_scene_get_character_hurt_direction(obj_char,obj_char_other_side,hurt_horizontal_velocity)
-    return hurt_horizontal_velocity*((obj_char_other_side["x"] - obj_char["x"])/math.abs(obj_char_other_side["x"] - obj_char["x"]))
+    local dx = obj_char_other_side["x"] - obj_char["x"]
+    if dx == 0 then return 0 end
+    return hurt_horizontal_velocity*(dx)/math.abs(dx)
 end
 function common_game_scene_char_enclose_heat_gain(obj_char)
 end
@@ -1260,20 +1262,10 @@ function common_game_scene_projectile_apply_hurt_velocity(
     obj_char_other_side["horizontal_velocity_correction"] 
     = obj_char_other_side["horizontal_velocity_correction"]*hurt_horizontal_velocity_correction
     obj_char_other_side["friction"] = hurt_horizontal_friction
-    if obj_char["x"] < obj_char_other_side["x"] then
-        obj_char_other_side["velocity"] = {
-            final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]+obj_char_other_side["velocity"][1]*0.15,
-            hurt_vertical_velocity
-        }
-    elseif obj_char["x"] > obj_char_other_side["x"] then
-        obj_char_other_side["velocity"] = {
-            -final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]+obj_char_other_side["velocity"][1]*0.15,
-            hurt_vertical_velocity
-        }
-    else
-        obj_char_other_side["friction"] = hurt_horizontal_friction
-        obj_char_other_side["velocity"] = {0,hurt_vertical_velocity}
-    end
+    obj_char_other_side["velocity"] = {
+        final_hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]+obj_char_other_side["velocity"][1]*0.15,
+        hurt_vertical_velocity
+    }
 end
 
 function common_game_scene_reset_velocity_by_ground_friction(obj_char)
