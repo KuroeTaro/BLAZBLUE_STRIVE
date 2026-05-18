@@ -416,12 +416,12 @@ function update_game_scene_training_main()
             char_LP["hit_hurt_block_slowdown_countdown"] = 0
             char_RP["hit_hurt_block_slowdown_countdown"] = 0
 
-            char_LP["game_speed_cache_after_apply"][1] = true
+            char_LP["game_speed_cache_after_apply"][1] = 1
             char_LP["game_speed_cache_after_apply"][2] = 1
             char_LP["game_speed_cache_after_apply"][3] = 1
             char_LP["game_speed_cache_after_apply"][4] = 0
             
-            char_RP["game_speed_cache_after_apply"][1] = true
+            char_RP["game_speed_cache_after_apply"][1] = 1
             char_RP["game_speed_cache_after_apply"][2] = 1
             char_RP["game_speed_cache_after_apply"][3] = 1
             char_RP["game_speed_cache_after_apply"][4] = 0
@@ -470,19 +470,24 @@ function update_game_scene_training_main()
     update_game_scene_gravity()
 
     -- 更新当前帧影响的游戏速度的项
-    if char_LP["game_speed_cache_after_apply"][1] then
-        char_LP["game_speed_cache_after_apply"][1] = false
+    if char_LP["game_speed_cache_after_apply"][1] == 1 then
+        char_LP["game_speed_cache_after_apply"][1] = 0
         char_LP["game_speed"] = char_LP["game_speed_cache_after_apply"][2]
         char_LP["game_speed_subframe"] = char_LP["game_speed_cache_after_apply"][3]
         char_LP["game_speed_abnormal_realtime_countdown"] = char_LP["game_speed_cache_after_apply"][4]
+    elseif char_LP["game_speed_cache_after_apply"][1] == 2 then
+        char_LP["game_speed_cache_after_apply"][1] = 0
+        char_LP["game_speed_pause_countdown"] = char_LP["game_speed_cache_after_apply"][5]
     end
-    if char_RP["game_speed_cache_after_apply"][1] then
-        char_RP["game_speed_cache_after_apply"][1] = false
+    if char_RP["game_speed_cache_after_apply"][1] == 1 then
+        char_RP["game_speed_cache_after_apply"][1] = 0
         char_RP["game_speed"] = char_RP["game_speed_cache_after_apply"][2]
         char_RP["game_speed_subframe"] = char_RP["game_speed_cache_after_apply"][3]
         char_RP["game_speed_abnormal_realtime_countdown"] = char_RP["game_speed_cache_after_apply"][4]
+    elseif char_RP["game_speed_cache_after_apply"][1] == 2 then
+        char_RP["game_speed_cache_after_apply"][1] = 0
+        char_RP["game_speed_pause_countdown"] = char_RP["game_speed_cache_after_apply"][5]
     end
-
     -- 更新sub_frame
     update_game_scene_game_speed_sub_frame()
 
@@ -602,20 +607,20 @@ function update_game_scene_char()
         update_game_scene_char_RP_attachment()
     end
 
-    local game_speed_abnormal_realtime_countdown_LP = char_LP["game_speed_abnormal_realtime_countdown"]
-    local game_speed_abnormal_realtime_countdown_RP = char_RP["game_speed_abnormal_realtime_countdown"]
-    if char_LP["game_speed"] == 0 and char_RP["game_speed"] == 0 then
-        if game_speed_abnormal_realtime_countdown_LP > game_speed_abnormal_realtime_countdown_RP then
-            char_LP["game_speed_abnormal_realtime_countdown"] = 
-            game_speed_abnormal_realtime_countdown_LP - game_speed_abnormal_realtime_countdown_RP
-            char_RP["game_speed_abnormal_realtime_countdown"] = 0
-        elseif game_speed_abnormal_realtime_countdown_RP > game_speed_abnormal_realtime_countdown_LP then
-            char_RP["game_speed_abnormal_realtime_countdown"] = 
-            game_speed_abnormal_realtime_countdown_RP - game_speed_abnormal_realtime_countdown_LP
-            char_LP["game_speed_abnormal_realtime_countdown"] = 0
+    local game_speed_pause_countdown_LP = char_LP["game_speed_pause_countdown"]
+    local game_speed_pause_countdown_RP = char_RP["game_speed_pause_countdown"]
+    if char_LP["game_speed_pause_countdown"] > 0 and char_RP["game_speed_pause_countdown"] > 0 then
+        if game_speed_pause_countdown_LP > game_speed_pause_countdown_RP then
+            char_LP["game_speed_pause_countdown"] = 
+            game_speed_pause_countdown_LP - game_speed_pause_countdown_RP
+            char_RP["game_speed_pause_countdown"] = 0
+        elseif game_speed_pause_countdown_RP > game_speed_pause_countdown_LP then
+            char_RP["game_speed_pause_countdown"] = 
+            game_speed_pause_countdown_RP - game_speed_pause_countdown_LP
+            char_LP["game_speed_pause_countdown"] = 0
         else
-            char_LP["game_speed_abnormal_realtime_countdown"] = 0
-            char_RP["game_speed_abnormal_realtime_countdown"] = 0
+            char_LP["game_speed_pause_countdown"] = 0
+            char_RP["game_speed_pause_countdown"] = 0
         end
     end
 end

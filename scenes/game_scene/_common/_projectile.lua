@@ -393,7 +393,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
                 init_character_anim_with(obj_char_other_side,obj_char_other_side["character_animation"])
 
                 -- hit_side_game_speed
-                obj_char["game_speed_cache_after_apply"][1] = true
+                obj_char["game_speed_cache_after_apply"][1] = 1
                 obj_char["game_speed_cache_after_apply"][2] = 1
                 obj_char["game_speed_cache_after_apply"][3] = 1
                 obj_char["game_speed_cache_after_apply"][4] = 0
@@ -518,7 +518,7 @@ function load_game_scene_anim_char_red_rc_projectile_ground_block(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- game_speed
-        obj_char_other_side["game_speed_cache_after_apply"][1] = true
+        obj_char_other_side["game_speed_cache_after_apply"][1] = 1
         obj_char_other_side["game_speed_cache_after_apply"][2] = 0
         obj_char_other_side["game_speed_cache_after_apply"][3] = 1
         obj_char_other_side["game_speed_cache_after_apply"][4] = 19
@@ -527,7 +527,7 @@ function load_game_scene_anim_char_red_rc_projectile_ground_block(
     end
     res[1] = function()
         -- game_speed
-        obj_char_other_side["game_speed_cache_after_apply"][1] = true
+        obj_char_other_side["game_speed_cache_after_apply"][1] = 1
         obj_char_other_side["game_speed_cache_after_apply"][2] = 2
         obj_char_other_side["game_speed_cache_after_apply"][3] = 1
         obj_char_other_side["game_speed_cache_after_apply"][4] = 39
@@ -835,7 +835,7 @@ function load_game_scene_anim_char_red_rc_projectile_ground_air_and_OTG_hurt(
         -- state
         obj_char_other_side["state_cache"] = state_cache
         -- game_speed
-        obj_char_other_side["game_speed_cache_after_apply"][1] = true
+        obj_char_other_side["game_speed_cache_after_apply"][1] = 1
         obj_char_other_side["game_speed_cache_after_apply"][2] = 2
         obj_char_other_side["game_speed_cache_after_apply"][3] = 1
         obj_char_other_side["game_speed_cache_after_apply"][4] = 39

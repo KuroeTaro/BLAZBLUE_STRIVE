@@ -4849,7 +4849,7 @@ function load_game_scene_anim_char_common_burst_overdrive(obj_char,other_side_co
     local obj_camera = obj_stage_game_scene_camera
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local function update_move_overdrive_state()
-        if obj_char_other_side["game_speed_abnormal_realtime_countdown"] == 0 and obj_char["f"] >= 4 then
+        if obj_char_other_side["game_speed_pause_countdown"] == 0 and obj_char["f"] >= 4 then
             obj_char["move_state"] = "recovery"
         end
         if obj_char["overdrive_gauge"][1] > 0 then
@@ -4901,7 +4901,7 @@ function load_game_scene_anim_char_common_burst_overdrive(obj_char,other_side_co
         obj_char["air_move"]["jump"] = {1,1}
         obj_char["air_move"]["air_dash"] = {1,1}
         -- game_speed
-        obj_char["game_speed_cache_after_apply"][1] = true
+        obj_char["game_speed_cache_after_apply"][1] = 1
         obj_char["game_speed_cache_after_apply"][2] = 1
         obj_char["game_speed_cache_after_apply"][3] = 1
         obj_char["game_speed_cache_after_apply"][4] = 0
@@ -4940,7 +4940,7 @@ function load_game_scene_anim_char_common_burst_overdrive(obj_char,other_side_co
         update_move_overdrive_state()
             -- idle状态下OD 恢复为3+13
             -- 攻击状态下OD 恢复为3+3
-        obj_char_other_side["game_speed_cache_after_apply"][1] = true
+        obj_char_other_side["game_speed_cache_after_apply"][1] = 1
         obj_char_other_side["game_speed_cache_after_apply"][2] = 0
         obj_char_other_side["game_speed_cache_after_apply"][3] = 1
         obj_char_other_side["game_speed_cache_after_apply"][4] = other_side_countdown
@@ -5126,7 +5126,7 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
     local goal_heat_gauge_remain = math.max(0,obj_char["heat_gauge"][1]-100)
     local function update_state()
         -- move_state
-        if obj_char_other_side["game_speed_abnormal_realtime_countdown"] == 0 and obj_char["f"] >= 26 then
+        if obj_char_other_side["game_speed_pause_countdown"] == 0 and obj_char["f"] >= 26 then
             obj_char["move_state"] = "recovery"
         end
         if height_state ~= obj_char["height_state"] then
@@ -5200,7 +5200,7 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
         obj_char["air_move"]["jump"] = {1,1}
         obj_char["air_move"]["air_dash"] = {1,1}
         -- game_speed
-        obj_char["game_speed_cache_after_apply"][1] = true
+        obj_char["game_speed_cache_after_apply"][1] = 1
         obj_char["game_speed_cache_after_apply"][2] = 1
         obj_char["game_speed_cache_after_apply"][3] = 1
         obj_char["game_speed_cache_after_apply"][4] = 0
@@ -5220,7 +5220,7 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
         update_state()
         update_heat_gauge_state()
         -- game_speed
-        obj_char_other_side["game_speed_cache_after_apply"][1] = true
+        obj_char_other_side["game_speed_cache_after_apply"][1] = 1
         obj_char_other_side["game_speed_cache_after_apply"][2] = 0
         obj_char_other_side["game_speed_cache_after_apply"][3] = 1
         obj_char_other_side["game_speed_cache_after_apply"][4] = 43

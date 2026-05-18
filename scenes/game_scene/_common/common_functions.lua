@@ -562,7 +562,7 @@ function common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_ob
     init_character_anim_with(obj_char,obj_char["character_animation"])
 
     -- hit_side_game_speed
-    hit_side_obj_char["game_speed_cache_after_apply"][1] = true
+    hit_side_obj_char["game_speed_cache_after_apply"][1] = 1
     hit_side_obj_char["game_speed_cache_after_apply"][2] = 1
     hit_side_obj_char["game_speed_cache_after_apply"][3] = 1
     hit_side_obj_char["game_speed_cache_after_apply"][4] = 0
@@ -589,7 +589,7 @@ function common_game_scene_throw_hit_function(obj_char)
     hit_side_obj_char["throw_active"] = false
     hit_side_obj_char["velocity"] = {0,0}
     -- game_speed
-    hit_side_obj_char["game_speed_cache_after_apply"][1] = true
+    hit_side_obj_char["game_speed_cache_after_apply"][1] = 1
     hit_side_obj_char["game_speed_cache_after_apply"][2] = 1
     hit_side_obj_char["game_speed_cache_after_apply"][3] = 1
     hit_side_obj_char["game_speed_cache_after_apply"][4] = 0
@@ -651,7 +651,7 @@ function common_game_scene_throw_hurt_function(obj_char)
 
     obj_char["velocity"] = {0,0}
 
-    obj_char["game_speed_cache_after_apply"][1] = true
+    obj_char["game_speed_cache_after_apply"][1] = 1
     obj_char["game_speed_cache_after_apply"][2] = 1
     obj_char["game_speed_cache_after_apply"][3] = 1
     obj_char["game_speed_cache_after_apply"][4] = 0
@@ -999,12 +999,12 @@ function common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
         obj_char["hurtstop_wiggle_current_y"] = (obj_char["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
     else
         if obj_char["hit_hurt_block_slowdown_countdown"] <= 0 then
-            obj_char["game_speed_cache_after_apply"][1] = true
+            obj_char["game_speed_cache_after_apply"][1] = 1
             obj_char["game_speed_cache_after_apply"][2] = 1
             obj_char["game_speed_cache_after_apply"][3] = 1
             obj_char["game_speed_cache_after_apply"][4] = 0
         else
-            obj_char["game_speed_cache_after_apply"][1] = true
+            obj_char["game_speed_cache_after_apply"][1] = 1
             obj_char["game_speed_cache_after_apply"][2] = 2
             obj_char["game_speed_cache_after_apply"][3] = 1
             obj_char["game_speed_cache_after_apply"][4] = obj_char["hit_hurt_block_slowdown_countdown"]
@@ -1020,6 +1020,10 @@ function common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
     end
 end
 function common_update_game_scene_char_game_speed_abnormal_realtime_countdown(obj_char)
+    if obj_char["game_speed_pause_countdown"] >= 1 then
+        obj_char["game_speed_pause_countdown"] = obj_char["game_speed_pause_countdown"] - 1
+        return
+    end
     if obj_char["game_speed"] >= 1 then
         obj_char["game_speed_subframe"] = obj_char["game_speed_subframe"] + 1
     end

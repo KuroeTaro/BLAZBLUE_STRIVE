@@ -348,7 +348,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                 init_character_anim_with(obj_char_other_side,obj_char_other_side["character_animation"])
 
                 -- hit_side_game_speed
-                obj_char["game_speed_cache_after_apply"][1] = true
+                obj_char["game_speed_cache_after_apply"][1] = 1
                 obj_char["game_speed_cache_after_apply"][2] = 1
                 obj_char["game_speed_cache_after_apply"][3] = 1
                 obj_char["game_speed_cache_after_apply"][4] = 0

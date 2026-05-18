@@ -12,6 +12,8 @@ config选项中自定义要不要79空投
 
 -- 碎墙
 开始制作红RC
+修改game_speed机制 pause和减速分开
+
 
 -- odbrc
     设计用来无敌附加

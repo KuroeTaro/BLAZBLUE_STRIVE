@@ -168,9 +168,10 @@ function load_game_scene_obj_char_RP()
     -- game_speed
     obj_char_game_scene_char_RP["game_speed"] = 1
     obj_char_game_scene_char_RP["game_speed_common_cache"] = {1,0,0}
-    obj_char_game_scene_char_RP["game_speed_cache_after_apply"] = {false,1,1,0}
+    obj_char_game_scene_char_RP["game_speed_cache_after_apply"] = {0,1,1,0,0}
     obj_char_game_scene_char_RP["game_speed_subframe"] = 1
     obj_char_game_scene_char_RP["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
+    obj_char_game_scene_char_RP["game_speed_pause_countdown"] = 0 -- 只能是game_speed的倍数
     obj_char_game_scene_char_RP["hit_hurt_blockstop_countdown"] = 0
     obj_char_game_scene_char_RP["hit_hurt_block_slowdown_countdown"] = 0
 
@@ -972,8 +973,11 @@ function load_game_scene_wallbreak_start_init_RP()
     obj_char_game_scene_char_RP["physics_lock"] = true
 
     obj_char_game_scene_char_RP["game_speed"] = 1
+    obj_char_game_scene_char_RP["game_speed_common_cache"] = {1,0,0}
+    obj_char_game_scene_char_RP["game_speed_cache_after_apply"] = {0,1,1,0,0}
     obj_char_game_scene_char_RP["game_speed_subframe"] = 1
     obj_char_game_scene_char_RP["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
+    obj_char_game_scene_char_RP["game_speed_pause_countdown"] = 0 -- 只能是game_speed的倍数
     obj_char_game_scene_char_RP["hit_hurt_blockstop_countdown"] = 0
     obj_char_game_scene_char_RP["hit_hurt_block_slowdown_countdown"] = 0
 
@@ -1098,8 +1102,11 @@ function load_game_scene_wallbreak_end_init_RP()
 
     -- game_speed
     obj_char_game_scene_char_RP["game_speed"] = 1
+    obj_char_game_scene_char_RP["game_speed_common_cache"] = {1,0,0}
+    obj_char_game_scene_char_RP["game_speed_cache_after_apply"] = {0,1,1,0,0}
     obj_char_game_scene_char_RP["game_speed_subframe"] = 1
     obj_char_game_scene_char_RP["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
+    obj_char_game_scene_char_RP["game_speed_pause_countdown"] = 0 -- 只能是game_speed的倍数
     obj_char_game_scene_char_RP["hit_hurt_blockstop_countdown"] = 0
     obj_char_game_scene_char_RP["hit_hurt_block_slowdown_countdown"] = 0
 
