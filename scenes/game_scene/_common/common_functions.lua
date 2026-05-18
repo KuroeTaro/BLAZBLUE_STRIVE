@@ -740,6 +740,25 @@ function common_game_scene_counter_ver3_load_camera_enclose_anim(obj_char)
 
     obj_char["camera_enclosing_anim"] = anim
 end
+function common_game_scene_red_rc_hit_load_camera_enclose_anim(obj_char)
+    local anim = {}
+    local obj_camera = obj_stage_game_scene_camera
+    anim[0] = {obj_camera["enclose_percentage"],2}
+    anim[2] = {obj_camera["enclose_percentage"]*0.2+0.8,5}
+    anim[5] = {obj_camera["enclose_percentage"]*0.05+0.95,10}
+    anim[10] = {obj_camera["enclose_percentage"]*0.0125+0.9875,15}
+    anim[15] = {1.00,20}
+    anim[20] = {0.43,25}
+    anim[25] = {0.17,30}
+    anim[30] = {0.00,30}
+    anim["prop"] = "enclose_percentage"
+    anim["length"] = 30
+    anim["loop"] = false
+    anim["fix_type"] = true
+    anim["nil_mark"] = false
+
+    obj_char["camera_enclosing_anim"] = anim
+end
 function common_game_scene_overdrive_load_camera_shake_anim(obj_char)
     local anim = {}
     anim = {}
@@ -1149,7 +1168,8 @@ function common_game_scene_char_apply_knockdown_velocity(
     hurt_vertical_gravity,
     hurt_vertical_gravity_correction
 )
-    local final_hurt_horizontal_velocity = obj_char[5]*hurt_horizontal_velocity
+    
+    local final_hurt_horizontal_velocity = obj_char_other_side[5]*hurt_horizontal_velocity
     obj_char_other_side["gravity_correction"] 
     = obj_char_other_side["gravity_correction"]*hurt_vertical_gravity_correction
     obj_char_other_side["gravity"] = hurt_vertical_gravity*obj_char_other_side["gravity_correction"] 

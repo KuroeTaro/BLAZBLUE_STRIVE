@@ -21,11 +21,16 @@ function insert_VFX_game_scene_char_overdrive_badge(obj_char)
     obj[5] = obj_char[5]*2
     obj[6] = obj_char[6]*2
     obj[7] = obj_char[7]
-    obj[8] = -1
+    obj[8] = 0
+    obj["f"] = -1
     obj["update"] = function()
         obj[1] = obj_char["x"] - obj_char[5]*(500)
         obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
-        obj[8] = obj[8] + 1
+        obj["f"] = obj["f"] + 1
+        if obj["f"] >= 1 then
+            obj["f"] = 0
+            obj[8] = obj[8] + 1
+        end
         obj["life"] = obj["life"] - 1
         if obj_char["state"] ~= "burst_overdrive" then
             obj["life"] = 0
@@ -63,13 +68,18 @@ function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
     obj[5] = obj_char[5]*2
     obj[6] = obj_char[6]*2
     obj[7] = obj_char[7]
-    obj[8] = -1
+    obj[8] = 0
+    obj["f"] = -1
     obj["update"] = function()
         -- obj[1] = obj_char["x"] + obj_char[5]*(-860)/2
         -- obj[2] = obj_char["y"] + obj_char[6]*(840)
         obj[1] = obj_char["x"] - obj_char[5]*(860)
         obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
-        obj[8] = obj[8] + 1
+        obj["f"] = obj["f"] + 1
+        if obj["f"] >= 1 then
+            obj["f"] = 0
+            obj[8] = obj[8] + 1
+        end
         obj["life"] = obj["life"] - 1
         if obj_char["state"] ~= "burst_overdrive" then
             obj["life"] = 0
@@ -275,9 +285,14 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = obj_char[7]
-    obj[8] = -1
+    obj[8] = 0
+    obj["f"] = -1
     obj["update"] = function()
-        obj[8] = obj[8] + 1
+        obj["f"] = obj["f"] + 1
+        if obj["f"] >= 1 then
+            obj[8] = obj[8] + 1
+            obj["f"] = 0
+        end
         obj["life"] = obj["life"] - 1
     end
     obj["update_in_time_stop"] = function()
@@ -309,9 +324,14 @@ function insert_VFX_game_scene_char_RC_partical(obj_char,color)
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = obj_char[7]
-    obj[8] = -1
+    obj[8] = 0
+    obj["f"] = -1
     obj["update"] = function()
-        obj[8] = obj[8] + 1
+        obj["f"] = obj["f"] + 1
+        if obj["f"] >= 1 then
+            obj[8] = obj[8] + 1
+            obj["f"] = 0
+        end
         obj["life"] = obj["life"] - 1
     end
     obj["update_in_time_stop"] = function()

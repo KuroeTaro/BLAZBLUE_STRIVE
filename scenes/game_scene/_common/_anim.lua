@@ -2860,7 +2860,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         -- state_number
         obj_char_other_side["velocity"] = {-20.0*obj_char_other_side[5],0}
         obj_char_other_side["gravity"] = 2.5
-        obj_char_other_side["friction"] = 0
+        obj_char_other_side["friction"] = 100
         obj_char_other_side["horizontal_velocity_correction"] = 1
         obj_char_other_side["gravity_correction"] = 1
         obj_char_other_side["damage_correction"] = 1
@@ -5200,10 +5200,6 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
         obj_char["air_move"]["jump"] = {1,1}
         obj_char["air_move"]["air_dash"] = {1,1}
         -- game_speed
-        obj_char["game_speed_common_cache"][1] = obj_char["game_speed"]
-        obj_char["game_speed_common_cache"][2] = obj_char["game_speed_subframe"]
-        obj_char["game_speed_common_cache"][3] = obj_char["game_speed_abnormal_realtime_countdown"]
-
         obj_char["game_speed_cache_after_apply"][1] = true
         obj_char["game_speed_cache_after_apply"][2] = 1
         obj_char["game_speed_cache_after_apply"][3] = 1
@@ -5296,11 +5292,6 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
         obj_char[8] = 9
     end
     res[45] = function()
-        -- game_speed
-        obj_char["game_speed_cache_after_apply"][1] = true
-        obj_char["game_speed_cache_after_apply"][2] = obj_char["game_speed_common_cache"][1]
-        obj_char["game_speed_cache_after_apply"][3] = obj_char["game_speed_common_cache"][2]
-        obj_char["game_speed_cache_after_apply"][4] = obj_char["game_speed_common_cache"][3]
         -- input_sys_cache
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()

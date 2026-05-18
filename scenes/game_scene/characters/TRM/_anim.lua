@@ -5467,7 +5467,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
                 "0_general_hurt_hard_knockdown_down",
                 "air",
                 "knockdown_recovery",
-                5,5,1.00,
+                -5,5,1.00,
                 -10,2.5,1.00,
                 nil,nil,nil,nil,function() end
             ),
@@ -5504,7 +5504,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
                 "0_general_hurt_hard_knockdown_down",
                 "air",
                 "knockdown_recovery",
-                5,5,1.00,
+                -5,5,1.00,
                 -10,2.5,1.00,
                 nil,nil,nil,nil,function() end
             ),
