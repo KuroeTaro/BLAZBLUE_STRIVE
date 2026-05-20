@@ -562,10 +562,7 @@ function common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_ob
     init_character_anim_with(obj_char,obj_char["character_animation"])
 
     -- hit_side_game_speed
-    hit_side_obj_char["game_speed_cache_after_apply"][1] = 1
-    hit_side_obj_char["game_speed_cache_after_apply"][2] = 1
-    hit_side_obj_char["game_speed_cache_after_apply"][3] = 1
-    hit_side_obj_char["game_speed_cache_after_apply"][4] = 0
+    common_game_scene_game_speed_load_application(hit_side_obj_char,{1,1,1,0,0,0})
 end
 function common_game_scene_throw_hit_function(obj_char)
     local side = obj_char["player_side"]
@@ -589,10 +586,7 @@ function common_game_scene_throw_hit_function(obj_char)
     hit_side_obj_char["throw_active"] = false
     hit_side_obj_char["velocity"] = {0,0}
     -- game_speed
-    hit_side_obj_char["game_speed_cache_after_apply"][1] = 1
-    hit_side_obj_char["game_speed_cache_after_apply"][2] = 1
-    hit_side_obj_char["game_speed_cache_after_apply"][3] = 1
-    hit_side_obj_char["game_speed_cache_after_apply"][4] = 0
+    common_game_scene_game_speed_load_application(hit_side_obj_char,{1,1,1,0,0,0})
 end
 function common_game_scene_throw_hurt_function(obj_char)
     local side = obj_char["player_side"]
@@ -609,6 +603,7 @@ function common_game_scene_throw_hurt_function(obj_char)
         obj_char[5] = -obj_char[5]
     end
 
+    -- state
     obj_char[8] = 4
     if obj_char["height_state"] == "air" then
         obj_char["sprite_sheet_state"] = "1_4_7_air_block"
@@ -648,15 +643,21 @@ function common_game_scene_throw_hurt_function(obj_char)
     obj_char["throw_inv_countdown"] = 0
     obj_char["projectile_inv"] = false
     obj_char["projectile_inv_countdown"] = 0
-
+    -- state_number
     obj_char["velocity"] = {0,0}
-
-    obj_char["game_speed_cache_after_apply"][1] = 1
-    obj_char["game_speed_cache_after_apply"][2] = 1
-    obj_char["game_speed_cache_after_apply"][3] = 1
-    obj_char["game_speed_cache_after_apply"][4] = 0
+    -- game_speed
+    common_game_scene_game_speed_load_application(obj_char,{1,1,1,0,0,0})
 end
 
+function common_game_scene_game_speed_load_application(
+    obj_char,application_table
+)    
+    for i = 1,6 do
+        if application_table[i] ~= nil then
+            obj_char["game_speed_application"][i] = application_table[i]
+        end
+    end
+end
 function common_game_scene_create_wiggle_animation(length,prop,wiggle_amount)
     local mid_length = (length-length%2)/2
     local res_anim = {}
@@ -675,16 +676,14 @@ function common_game_scene_counter_ver0(hit_side_obj_char,hurt_side_obj_char)
 end
 function common_game_scene_counter_ver1(hit_side_obj_char,hurt_side_obj_char)
     insert_VFX_HUD_game_scene_counter_ver0_2(hit_side_obj_char)
-    hurt_side_obj_char["hit_hurt_block_slowdown_countdown"] = 11
-    hurt_side_obj_char["game_speed_subframe"] = 1
+    hurt_side_obj_char["hit_hurt_block_slowdown_countdown"] = 12
 end
 function common_game_scene_counter_ver2(hit_side_obj_char,hurt_side_obj_char)
     insert_VFX_HUD_game_scene_counter_ver0_2(hit_side_obj_char)
     hit_side_obj_char["hit_hurt_blockstop_countdown"] = 21
     hit_side_obj_char["hit_hurt_block_slowdown_countdown"] = 0
     hurt_side_obj_char["hit_hurt_blockstop_countdown"] = 21
-    hurt_side_obj_char["hit_hurt_block_slowdown_countdown"] = 25
-    hurt_side_obj_char["game_speed_subframe"] = 1
+    hurt_side_obj_char["hit_hurt_block_slowdown_countdown"] = 26
 end
 function common_game_scene_counter_ver3(hit_side_obj_char,hurt_side_obj_char)
     local obj_camera = obj_stage_game_scene_camera
@@ -698,8 +697,7 @@ function common_game_scene_counter_ver3(hit_side_obj_char,hurt_side_obj_char)
     hit_side_obj_char["hit_hurt_blockstop_countdown"] = 31
     hit_side_obj_char["hit_hurt_block_slowdown_countdown"] = 0
     hurt_side_obj_char["hit_hurt_blockstop_countdown"] = 31
-    hurt_side_obj_char["hit_hurt_block_slowdown_countdown"] = 35
-    hurt_side_obj_char["game_speed_subframe"] = 1
+    hurt_side_obj_char["hit_hurt_block_slowdown_countdown"] = 36
 end
 
 function common_game_scene_nil_load_camera_enclose_anim(obj_char)
@@ -999,15 +997,9 @@ function common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
         obj_char["hurtstop_wiggle_current_y"] = (obj_char["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
     else
         if obj_char["hit_hurt_block_slowdown_countdown"] <= 0 then
-            obj_char["game_speed_cache_after_apply"][1] = 1
-            obj_char["game_speed_cache_after_apply"][2] = 1
-            obj_char["game_speed_cache_after_apply"][3] = 1
-            obj_char["game_speed_cache_after_apply"][4] = 0
+            common_game_scene_game_speed_load_application(obj_char,{1,1,1,0,nil,nil})
         else
-            obj_char["game_speed_cache_after_apply"][1] = 1
-            obj_char["game_speed_cache_after_apply"][2] = 2
-            obj_char["game_speed_cache_after_apply"][3] = 1
-            obj_char["game_speed_cache_after_apply"][4] = obj_char["hit_hurt_block_slowdown_countdown"]
+            common_game_scene_game_speed_load_application(obj_char,{1,2,1,obj_char["hit_hurt_block_slowdown_countdown"],nil,nil})
         end
     
         obj_char["hit_hurt_blockstop_countdown"] = 0 
@@ -1020,14 +1012,16 @@ function common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
     end
 end
 function common_update_game_scene_char_game_speed_abnormal_realtime_countdown(obj_char)
-    if obj_char["game_speed_pause_countdown"] >= 1 then
-        obj_char["game_speed_pause_countdown"] = obj_char["game_speed_pause_countdown"] - 1
+    if obj_char["game_speed_force_0_countdown"] >= 1 then
+        obj_char["game_speed_force_0_countdown"] = obj_char["game_speed_force_0_countdown"] - 1
         return
     end
-    if obj_char["game_speed"] >= 1 then
-        obj_char["game_speed_subframe"] = obj_char["game_speed_subframe"] + 1
+    if obj_char["game_speed_force_1_countdown"] >= 1 then
+        obj_char["game_speed_force_1_countdown"] = obj_char["game_speed_force_1_countdown"] - 1
+        return
     end
     if obj_char["game_speed"] ~= 1 then 
+        obj_char["game_speed_subframe"] = obj_char["game_speed_subframe"] + 1
         if obj_char["game_speed_abnormal_realtime_countdown"] > 1 then
             obj_char["game_speed_abnormal_realtime_countdown"] = obj_char["game_speed_abnormal_realtime_countdown"] - 1
         else

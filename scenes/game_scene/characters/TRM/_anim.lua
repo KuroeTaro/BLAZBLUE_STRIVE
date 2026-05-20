@@ -1976,7 +1976,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- game_speed
-        obj_char["hit_hurt_blockstop_countdown"] = 12
+        obj_char["hit_hurt_blockstop_countdown"] = 13
         -- collide
         obj_char["pushbox"] = {0,-142.5,120,285}
         obj_char["pushbox_other_side_char_active"] = true
@@ -2230,7 +2230,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- game_speed
-        obj_char["hit_hurt_blockstop_countdown"] = 14
+        obj_char["hit_hurt_blockstop_countdown"] = 15
         -- collide
         obj_char["pushbox"] = {0,-185,120,370}
         obj_char["pushbox_other_side_char_active"] = true
@@ -2506,7 +2506,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- game_speed
-        obj_char["hit_hurt_blockstop_countdown"] = 12
+        obj_char["hit_hurt_blockstop_countdown"] = 13
         -- collide
         obj_char["pushbox"] = {0,-185,120,370}
         obj_char["pushbox_other_side_char_active"] = true
@@ -2759,7 +2759,7 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- game_speed
-        obj_char["hit_hurt_blockstop_countdown"] = 12
+        obj_char["hit_hurt_blockstop_countdown"] = 13
         -- collide
         obj_char["pushbox"] = {0,-142.5,120,285}
         obj_char["pushbox_other_side_char_active"] = true
@@ -3049,7 +3049,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- game_speed
-        obj_char["hit_hurt_blockstop_countdown"] = 14
+        obj_char["hit_hurt_blockstop_countdown"] = 15
         -- collide
         obj_char["pushbox"] = {0,-185,120,370}
         obj_char["pushbox_other_side_char_active"] = true
@@ -3352,7 +3352,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- game_speed
-        obj_char["hit_hurt_blockstop_countdown"] = 13
+        obj_char["hit_hurt_blockstop_countdown"] = 14
         -- collide
         obj_char["pushbox"] = {0,-185,120,370}
         obj_char["pushbox_other_side_char_active"] = true
@@ -3643,7 +3643,7 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- game_speed
-        obj_char["hit_hurt_blockstop_countdown"] = 15
+        obj_char["hit_hurt_blockstop_countdown"] = 16
         -- collide
         obj_char["pushbox"] = {0,-142.5,120,285}
         obj_char["pushbox_other_side_char_active"] = true
@@ -3969,7 +3969,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- game_speed
-        obj_char["hit_hurt_blockstop_countdown"] = 16
+        obj_char["hit_hurt_blockstop_countdown"] = 17
         -- collide
         obj_char["pushbox"] = {0,-185,120,370}
         obj_char["pushbox_other_side_char_active"] = true
@@ -4294,7 +4294,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- game_speed
-        obj_char["hit_hurt_blockstop_countdown"] = 15
+        obj_char["hit_hurt_blockstop_countdown"] = 16
         -- collide
         obj_char["pushbox"] = {0,-185,120,370}
         obj_char["pushbox_other_side_char_active"] = true
@@ -4561,7 +4561,7 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- game_speed
-        obj_char["hit_hurt_blockstop_countdown"] = 15
+        obj_char["hit_hurt_blockstop_countdown"] = 16
         -- collide
         obj_char["pushbox"] = {0,-185,120,370}
         obj_char["pushbox_other_side_char_active"] = true
@@ -5604,7 +5604,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- game_speed
-        obj_char["hit_hurt_blockstop_countdown"] = 14
+        obj_char["hit_hurt_blockstop_countdown"] = 15
         -- collide
         obj_char["pushbox"] = {0,-142.5,120,285}
         obj_char["pushbox_other_side_char_active"] = true
@@ -6605,7 +6605,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- game_speed
-        obj_char["hit_hurt_blockstop_countdown"] = 14
+        obj_char["hit_hurt_blockstop_countdown"] = 15
         -- collide
         obj_char["pushbox"] = {0,-185,120,370}
         obj_char["pushbox_other_side_char_active"] = true
@@ -6909,7 +6909,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- game_speed
-        obj_char["hit_hurt_blockstop_countdown"] = 14
+        obj_char["hit_hurt_blockstop_countdown"] = 15
         -- collide
         obj_char["pushbox"] = {0,-185,120,370}
         obj_char["pushbox_other_side_char_active"] = true
@@ -7199,7 +7199,7 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- game_speed
-        obj_char["hit_hurt_blockstop_countdown"] = 12
+        obj_char["hit_hurt_blockstop_countdown"] = 13
         -- collide
         obj_char["pushbox"] = {0,-100,120,200}
         obj_char["pushbox_other_side_char_active"] = true
@@ -7449,7 +7449,7 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- game_speed
-        obj_char["hit_hurt_blockstop_countdown"] = 13
+        obj_char["hit_hurt_blockstop_countdown"] = 14
         -- collide
         obj_char["pushbox"] = {0,-100,120,200}
         obj_char["pushbox_other_side_char_active"] = true
@@ -7700,7 +7700,7 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- game_speed
-        obj_char["hit_hurt_blockstop_countdown"] = 14
+        obj_char["hit_hurt_blockstop_countdown"] = 15
         -- collide
         obj_char["pushbox"] = {0,-100,120,200}
         obj_char["pushbox_other_side_char_active"] = true
@@ -7962,7 +7962,7 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- game_speed
-        obj_char["hit_hurt_blockstop_countdown"] = 17
+        obj_char["hit_hurt_blockstop_countdown"] = 18
         -- collide
         obj_char["pushbox"] = {0,-100,120,200}
         obj_char["pushbox_other_side_char_active"] = true
@@ -8224,7 +8224,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- game_speed
-        obj_char["hit_hurt_blockstop_countdown"] = 17
+        obj_char["hit_hurt_blockstop_countdown"] = 18
         -- collide
         obj_char["pushbox"] = {0,-100,120,200}
         obj_char["pushbox_other_side_char_active"] = true

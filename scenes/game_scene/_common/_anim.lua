@@ -4849,7 +4849,7 @@ function load_game_scene_anim_char_common_burst_overdrive(obj_char,other_side_co
     local obj_camera = obj_stage_game_scene_camera
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local function update_move_overdrive_state()
-        if obj_char_other_side["game_speed_pause_countdown"] == 0 and obj_char["f"] >= 4 then
+        if obj_char_other_side["game_speed_force_0_countdown"] == 0 and obj_char["f"] >= 4 then
             obj_char["move_state"] = "recovery"
         end
         if obj_char["overdrive_gauge"][1] > 0 then
@@ -4901,10 +4901,8 @@ function load_game_scene_anim_char_common_burst_overdrive(obj_char,other_side_co
         obj_char["air_move"]["jump"] = {1,1}
         obj_char["air_move"]["air_dash"] = {1,1}
         -- game_speed
-        obj_char["game_speed_cache_after_apply"][1] = 1
-        obj_char["game_speed_cache_after_apply"][2] = 1
-        obj_char["game_speed_cache_after_apply"][3] = 1
-        obj_char["game_speed_cache_after_apply"][4] = 0
+        -- 设置为强制速度为1到动画结束
+        common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,nil,70})
 
         obj_char["hit_hurt_blockstop_countdown"] = 0
         -- collide
@@ -4935,15 +4933,14 @@ function load_game_scene_anim_char_common_burst_overdrive(obj_char,other_side_co
         insert_VFX_game_scene_char_overdrive_partical(obj_char)
         insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
     end
-    res[3] = function()
+    res[2] = function()
         -- state & state_number
         update_move_overdrive_state()
             -- idle状态下OD 恢复为3+13
             -- 攻击状态下OD 恢复为3+3
-        obj_char_other_side["game_speed_cache_after_apply"][1] = 1
-        obj_char_other_side["game_speed_cache_after_apply"][2] = 0
-        obj_char_other_side["game_speed_cache_after_apply"][3] = 1
-        obj_char_other_side["game_speed_cache_after_apply"][4] = other_side_countdown
+        -- game_speed
+        -- 设置为强制速度为0到动画结束
+        common_game_scene_game_speed_load_application(obj_char_other_side,{1,nil,nil,nil,other_side_countdown-2,nil})
     end
     res[4] = function()
         -- state & state_number
@@ -5126,7 +5123,7 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
     local goal_heat_gauge_remain = math.max(0,obj_char["heat_gauge"][1]-100)
     local function update_state()
         -- move_state
-        if obj_char_other_side["game_speed_pause_countdown"] == 0 and obj_char["f"] >= 26 then
+        if obj_char_other_side["game_speed_force_0_countdown"] == 0 and obj_char["f"] >= 26 then
             obj_char["move_state"] = "recovery"
         end
         if height_state ~= obj_char["height_state"] then
@@ -5158,17 +5155,17 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
     
     res["prop_f"] = "f"
     res["anim_length"] = 45
-    for i = 0,25 do
-        res[i] = function()
-            -- state
-            update_state()
-            update_heat_gauge_state()
-        end
-    end
     for i = 0,44 do
         res[i] = function()
             -- state
             update_state()
+        end
+    end
+    for i = 0,24 do
+        res[i] = function()
+            -- state
+            update_state()
+            update_heat_gauge_state()
         end
     end
     res[0] = function()
@@ -5200,10 +5197,9 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
         obj_char["air_move"]["jump"] = {1,1}
         obj_char["air_move"]["air_dash"] = {1,1}
         -- game_speed
-        obj_char["game_speed_cache_after_apply"][1] = 1
-        obj_char["game_speed_cache_after_apply"][2] = 1
-        obj_char["game_speed_cache_after_apply"][3] = 1
-        obj_char["game_speed_cache_after_apply"][4] = 0
+        -- 设置为强制速度到动画结束
+        common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,nil,45})
+        common_game_scene_game_speed_load_application(obj_char_other_side,{1,nil,nil,nil,45,nil})
         -- collide
         obj_char["pushbox_other_side_char_active"] = true
         obj_char["hitbox_table"] = {} --{ 攻击类型 是投还是打， function值 内部为命中后的逻辑,具体的box形状}
@@ -5219,11 +5215,6 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
         -- state&state_number
         update_state()
         update_heat_gauge_state()
-        -- game_speed
-        obj_char_other_side["game_speed_cache_after_apply"][1] = 1
-        obj_char_other_side["game_speed_cache_after_apply"][2] = 0
-        obj_char_other_side["game_speed_cache_after_apply"][3] = 1
-        obj_char_other_side["game_speed_cache_after_apply"][4] = 43
     end
     res[3] = function()
         -- state&state_number

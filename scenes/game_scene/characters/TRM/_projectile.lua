@@ -137,7 +137,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
         obj_char,obj,true
     )
     
-    obj["hit_hurt_blockstop_countdown"] = 12
+    obj["hit_hurt_blockstop_countdown"] = 13
 
     obj["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
     obj["block_SFX"] = nil
@@ -348,10 +348,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                 init_character_anim_with(obj_char_other_side,obj_char_other_side["character_animation"])
 
                 -- hit_side_game_speed
-                obj_char["game_speed_cache_after_apply"][1] = 1
-                obj_char["game_speed_cache_after_apply"][2] = 1
-                obj_char["game_speed_cache_after_apply"][3] = 1
-                obj_char["game_speed_cache_after_apply"][4] = 0
+                common_game_scene_game_speed_load_application(obj_char,{1,1,1,0,0,0})
             end
             -- wallbreak_test_and_apply
             common_game_scene_test_and_apply_wallbreak(obj_char_other_side,obj_char,obj,wallhurt_wallstick_on_side_cache)
@@ -379,7 +376,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main_anim(obj,
         -- state
         obj[1] = obj_char["shot_sys_reticle"][1]
         obj[2] = obj_char["shot_sys_reticle"][2]
-        if test_shot_sys_ban_state or obj_char_other_side["state"] == "wallbreak" then
+        if test_shot_sys_ban_state then
             obj["strike_active"] = false
         end
         -- state_number
@@ -396,7 +393,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main_anim(obj,
         obj[8] = 0
     end
     res[1] = function()
-        if test_shot_sys_ban_state or obj_char_other_side["state"] == "wallbreak" then
+        if test_shot_sys_ban_state then
             obj["strike_active"] = false
         end
     end
