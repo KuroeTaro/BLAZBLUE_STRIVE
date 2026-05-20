@@ -11,7 +11,7 @@ function insert_VFX_game_scene_char_overdrive_badge(obj_char)
     if obj_char["height_state"] == "air" then
         y_offset = 715
     else
-        y_offset = 865
+        y_offset = 845
     end
     obj["life"] = 70
     obj[1] = obj_char["x"] - obj_char[5]*(500)
@@ -58,7 +58,7 @@ function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
     if obj_char["height_state"] == "air" then
         y_offset = 645
     else
-        y_offset = 845
+        y_offset = 875
     end
     obj["life"] = 35
     obj[1] = obj_char["x"] - obj_char[5]*(860)
@@ -156,20 +156,26 @@ end
 function insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
     local obj = {0,0,0,1,0,0,0,0}
     local obj_camera = obj_stage_game_scene_camera
+    local y_offset = 0
+    if obj_char["height_state"] == "air" then
+        y_offset = 215
+    else
+        y_offset = 345
+    end
 
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
     obj["life"] = 42
     obj[1] = obj_char["x"]
-    obj[2] = obj_char["y"] - obj_char[6]*(360)
+    obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
     obj[3] = obj_char[3]
     obj[4] = 1
     obj[5] = 0
     obj[6] = 0
     obj[7] = 0
     obj[8] = 0
-    obj["cood_res"] = draw_3d_point_to_2D(obj_camera,obj_char)
+    obj["cood_res"] = draw_3d_point_to_2D(obj_camera,obj)
     obj["state"] = "ease_in"
     obj["blur_shader"] = shader_game_scene_gaussian_blur
     obj["blur_shader"]:send("Directions",16)
@@ -217,11 +223,6 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
     init_point_linear_anim_without(obj,obj["opacity_ease_in_anim"])
 
     obj["update"] = function()
-        obj[1] = obj_char["x"]
-        obj[2] = obj_char["y"] - obj_char[6]*(300)
-        obj[3] = obj_char[3]
-        obj["cood_res"] = draw_3d_point_to_2D(obj_camera,obj)
-
         local switch = {
             -- ease_in 之前的状态 如果达到第10帧则为下一个动画的第0帧 
             ["ease_in"] = function()
@@ -274,9 +275,9 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
     if obj_char["height_state"] == "air" then
         y_offset = 750
     else
-        y_offset = 830
+        y_offset = 880
     end
-    
+
     obj["life"] = 15
     obj[1] = obj_char["x"] - obj_char[5]*(600)
     obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
@@ -288,6 +289,13 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
     obj[8] = 0
     obj["f"] = -1
     obj["update"] = function()
+        if obj_char["height_state"] == "air" then
+            y_offset = 750
+        else
+            y_offset = 880
+        end
+        obj[1] = obj_char["x"] - obj_char[5]*(600)
+        obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
         obj["f"] = obj["f"] + 1
         if obj["f"] >= 1 then
             obj[8] = obj[8] + 1
@@ -313,7 +321,7 @@ function insert_VFX_game_scene_char_RC_partical(obj_char,color)
     if obj_char["height_state"] == "air" then
         y_offset = 750
     else
-        y_offset = 830
+        y_offset = 850
     end
     
     obj["life"] = 40

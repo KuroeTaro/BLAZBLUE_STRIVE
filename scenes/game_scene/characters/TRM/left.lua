@@ -1130,8 +1130,6 @@ function load_game_scene_wallbreak_end_init_LP()
     -- 5H_shot_sys
     obj_char_game_scene_char_LP["shot_sys_state"] = "off"
     obj_char_game_scene_char_LP["shot_sys_f"] = 0
-    obj_char_game_scene_char_LP["shot_sys_curse"] = false
-    obj_char_game_scene_char_LP["shot_sys_curse_countdown"] = 0
     obj_char_game_scene_char_LP["shot_sys_fire_cancel"] = false
     obj_char_game_scene_char_LP["shot_sys_idle_cancel"] = false
     obj_char_game_scene_char_LP["shot_sys_aim_process"] = {0,0,420,450,false} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值 上一帧是否高于瞄准命中最低数值
@@ -1780,7 +1778,9 @@ function state_machine_char_game_scene_char_LP()
             state_gate_game_scene_char_LP_from_4sp_S_5UA(input,obj_char)
         end,
     }
-    update_game_scene_char_LP_uncommon()
+    if run_at_current_frame then
+        update_game_scene_char_LP_uncommon()
+    end
     local this_function = switch[obj_char["state"]]
     if this_function then this_function() end
 end
@@ -2899,14 +2899,14 @@ function state_gate_game_scene_char_LP_common_burst_RC_red(input,obj_char)
         if obj_char["height_state"] == "air" then
             obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
             obj_char["anchor_pos"] = {330,485}
-            obj_char["push_box"] = {0,-100,120,200}
+            obj_char["pushbox"] = {0,-100,120,200}
             obj_char["collision_ground_height_offset"] = 130
             obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         else
             obj_char["height_state"] = "stand"
             obj_char["sprite_sheet_state"] = "burst_rc_ground"
             obj_char["anchor_pos"] = {300,615}
-            obj_char["push_box"]  = {0,-185,120,370}
+            obj_char["pushbox"]  = {0,-185,120,370}
             obj_char["collision_ground_height_offset"] = 0
             obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
@@ -2926,13 +2926,13 @@ function state_gate_game_scene_char_LP_common_burst_overdrive(input,obj_char,typ
         if height_state == "air" then
             obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
             obj_char["anchor_pos"] = {330,485}
-            obj_char["push_box"] = {0,-100,120,200}
+            obj_char["pushbox"] = {0,-100,120,200}
             obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         else
             obj_char["height_state"] = "stand"
             obj_char["sprite_sheet_state"] = "burst_overdrive_ground"
             obj_char["anchor_pos"] = {300,615}
-            obj_char["push_box"]  = {0,-185,120,370}
+            obj_char["pushbox"]  = {0,-185,120,370}
             obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
         if not common_game_scene_get_character_facing_currect(obj_char) then
@@ -5793,7 +5793,7 @@ function update_game_scene_char_LP_overdrive_countdown()
     end
     if obj_char["state"] ~= "burst_overdrive" and 
     obj_char["overdrive_timer"][1] + obj_char["overdrive_timer"][2] +
-    obj_char["overdrive_timer"][3] + obj_char["overdrive_timer"][4] >= 1
+    obj_char["overdrive_timer"][3] + obj_char["overdrive_timer"][4] > 1
     then
         if obj_char["overdrive_timer"][4] == 0 and obj_char["overdrive_timer"][3] ~= 0 then 
             obj_char["overdrive_timer"][3] = obj_char["overdrive_timer"][3] - 1
@@ -5811,8 +5811,9 @@ function update_game_scene_char_LP_overdrive_countdown()
         end
     elseif obj_char["state"] ~= "burst_overdrive" and 
     obj_char["overdrive_timer"][1] + obj_char["overdrive_timer"][2] +
-    obj_char["overdrive_timer"][3] + obj_char["overdrive_timer"][4] < 1
+    obj_char["overdrive_timer"][3] + obj_char["overdrive_timer"][4] <= 1
     then
+        obj_char["overdrive_timer"] = {0,0,0,0}
         obj_char["overdrive_gauge"][3] = "off"
     end
 end
@@ -5821,19 +5822,19 @@ function update_game_scene_char_LP_inv_state_countdown()
     if obj_char["state"] == "hitstop" or obj_char["state"] == "hurtstop" or obj_char["state"] == "blockstop" then
         return
     end
-    if obj_char["strike_inv_countdown"] > 0 then
+    if obj_char["strike_inv_countdown"] > 1 then
         obj_char["strike_inv_countdown"] = obj_char["strike_inv_countdown"] - 1
     else
         obj_char["strike_inv"] = false
         obj_char["strike_inv_countdown"] = 0
     end
-    if obj_char["throw_inv_countdown"] > 0 then
+    if obj_char["throw_inv_countdown"] > 1 then
         obj_char["throw_inv_countdown"] = obj_char["throw_inv_countdown"] - 1
     else
         obj_char["throw_inv"] = false
         obj_char["throw_inv_countdown"] = 0
     end
-    if obj_char["projectile_inv_countdown"] > 0 then
+    if obj_char["projectile_inv_countdown"] > 1 then
         obj_char["projectile_inv_countdown"] = obj_char["projectile_inv_countdown"] - 1
     else
         obj_char["projectile_inv"] = false

@@ -200,7 +200,14 @@ function update_game_scene_training_main()
         end
     end
 
+    -- game_speed_countdown
+    -- -> game_speed_application(last_frame) -> countdown -> actual_use(apply_on_character_update_and_objects_intercation)
+    common_game_scene_game_speed_apply_application()
+    common_update_game_scene_char_game_speed_abnormal_realtime_countdown(char_LP)
+    common_update_game_scene_char_game_speed_abnormal_realtime_countdown(char_RP)
+
     -- 更新角色
+    -- -> uncommon_state_application(current_frame_by_character_update) -> uncommon_countdown -> actual_use(apply_on_objects_intercation)
     update_game_scene_char()
 
     -- debug_delete_after
@@ -477,29 +484,6 @@ function update_game_scene_training_main()
     -- 更新角色重力方向速度
     update_game_scene_gravity()
 
-    -- 更新当前帧影响的游戏速度的项
-    if char_LP["game_speed_application"][1] == 1 then
-        local apply_table = {
-            "0","game_speed","game_speed_subframe","game_speed_abnormal_realtime_countdown","game_speed_force_0_countdown","game_speed_force_1_countdown"
-        }
-        for i = 2,6 do
-            if char_LP["game_speed_application"][i] ~= nil then
-                char_LP[apply_table[i]] = char_LP["game_speed_application"][i]
-            end
-        end
-        char_LP["game_speed_application"] = {0,nil,nil,nil,nil,nil}
-    end
-    if char_RP["game_speed_application"][1] == 1 then
-        local apply_table = {
-            "0","game_speed","game_speed_subframe","game_speed_abnormal_realtime_countdown","game_speed_force_0_countdown","game_speed_force_1_countdown"
-        }
-        for i = 2,6 do
-            if char_RP["game_speed_application"][i] ~= nil then
-                char_RP[apply_table[i]] = char_RP["game_speed_application"][i]
-            end
-        end
-        char_RP["game_speed_application"] = {0,nil,nil,nil,nil,nil}
-    end
     -- 更新sub_frame
     update_game_scene_game_speed_sub_frame()
 
@@ -572,9 +556,6 @@ end
 function update_game_scene_char()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
-    
-    common_update_game_scene_char_game_speed_abnormal_realtime_countdown(char_LP)
-    common_update_game_scene_char_game_speed_abnormal_realtime_countdown(char_RP)
 
     -- 计算摩擦力时再将game_speed_subframe初始化
     local game_speed_cache_LP = char_LP["game_speed"]

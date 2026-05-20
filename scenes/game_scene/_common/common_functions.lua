@@ -584,6 +584,14 @@ function common_game_scene_throw_hit_function(obj_char)
     hit_side_obj_char["f"] = 0
     hit_side_obj_char["state"] = "throw_testing"
     hit_side_obj_char["throw_active"] = false
+
+    hit_side_obj_char["strike_inv"] = true
+    hit_side_obj_char["strike_inv_countdown"] = 10
+    hit_side_obj_char["throw_inv"] = true
+    hit_side_obj_char["throw_inv_countdown"] = 10
+    hit_side_obj_char["projectile_inv"] = true
+    hit_side_obj_char["projectile_inv_countdown"] = 10
+
     hit_side_obj_char["velocity"] = {0,0}
     -- game_speed
     common_game_scene_game_speed_load_application(hit_side_obj_char,{1,1,1,0,0,0})
@@ -637,12 +645,12 @@ function common_game_scene_throw_hurt_function(obj_char)
 
     obj_char["idle_cancel"] = false
 
-    obj_char["strike_inv"] = false
-    obj_char["strike_inv_countdown"] = 0
-    obj_char["throw_inv"] = false
-    obj_char["throw_inv_countdown"] = 0
-    obj_char["projectile_inv"] = false
-    obj_char["projectile_inv_countdown"] = 0
+    obj_char["strike_inv"] = true
+    obj_char["strike_inv_countdown"] = 10
+    obj_char["throw_inv"] = true
+    obj_char["throw_inv_countdown"] = 10
+    obj_char["projectile_inv"] = true
+    obj_char["projectile_inv_countdown"] = 10
     -- state_number
     obj_char["velocity"] = {0,0}
     -- game_speed
@@ -658,6 +666,33 @@ function common_game_scene_game_speed_load_application(
         end
     end
 end
+function common_game_scene_game_speed_apply_application()
+    local char_LP = obj_char_game_scene_char_LP
+    local char_RP = obj_char_game_scene_char_RP
+    if char_LP["game_speed_application"][1] == 1 then
+        local apply_table = {
+            "0","game_speed","game_speed_subframe","game_speed_abnormal_realtime_countdown","game_speed_force_0_countdown","game_speed_force_1_countdown"
+        }
+        for i = 2,6 do
+            if char_LP["game_speed_application"][i] ~= nil then
+                char_LP[apply_table[i]] = char_LP["game_speed_application"][i]
+            end
+        end
+        char_LP["game_speed_application"] = {0,nil,nil,nil,nil,nil}
+    end
+    if char_RP["game_speed_application"][1] == 1 then
+        local apply_table = {
+            "0","game_speed","game_speed_subframe","game_speed_abnormal_realtime_countdown","game_speed_force_0_countdown","game_speed_force_1_countdown"
+        }
+        for i = 2,6 do
+            if char_RP["game_speed_application"][i] ~= nil then
+                char_RP[apply_table[i]] = char_RP["game_speed_application"][i]
+            end
+        end
+        char_RP["game_speed_application"] = {0,nil,nil,nil,nil,nil}
+    end
+end
+
 function common_game_scene_create_wiggle_animation(length,prop,wiggle_amount)
     local mid_length = (length-length%2)/2
     local res_anim = {}

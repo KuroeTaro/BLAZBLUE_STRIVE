@@ -464,7 +464,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
@@ -566,7 +566,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
             obj_char_other_side["f"] = 13
             obj_char_other_side["height_state"]  = "stand"
             obj_char_other_side["throw_inv"] = true
-            obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4-13
+            obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5-13
             obj_char_other_side["gravity"] = 2.5
             obj_char_other_side["friction"] = 7
 
@@ -766,7 +766,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number

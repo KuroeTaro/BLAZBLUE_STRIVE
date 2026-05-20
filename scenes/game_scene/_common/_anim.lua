@@ -263,7 +263,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
@@ -379,7 +379,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
@@ -501,7 +501,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
@@ -629,7 +629,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
@@ -757,7 +757,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
@@ -918,7 +918,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
@@ -1033,7 +1033,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
@@ -1150,7 +1150,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
@@ -1269,7 +1269,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
@@ -1392,7 +1392,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
@@ -1499,7 +1499,7 @@ function load_game_scene_anim_char_common_0_air_block(
             obj_char_other_side["f"] = 13
             obj_char_other_side["height_state"]  = "stand"
             obj_char_other_side["throw_inv"] = true
-            obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4-13
+            obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5-13
             obj_char_other_side["gravity"] = 2.5
             obj_char_other_side["friction"] = 7
 
@@ -1843,7 +1843,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
         obj_char["strike_inv"] = false
         obj_char["strike_inv_countdown"] = 0
         obj_char["throw_inv"] = true
-        obj_char["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char["throw_inv_countdown"] = res["anim_length"]+5
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
         -- state_number
@@ -1958,7 +1958,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
@@ -2084,7 +2084,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
@@ -2210,7 +2210,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
@@ -2323,7 +2323,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         obj_char["strike_inv"] = false
         obj_char["strike_inv_countdown"] = 0
         obj_char["throw_inv"] = true
-        obj_char["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char["throw_inv_countdown"] = res["anim_length"]+5
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
 
@@ -2430,7 +2430,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallbrea
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
     
@@ -2530,7 +2530,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
@@ -2646,7 +2646,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
@@ -2747,7 +2747,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
         obj_char["strike_inv"] = false
         obj_char["strike_inv_countdown"] = 0
         obj_char["throw_inv"] = true
-        obj_char["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char["throw_inv_countdown"] = res["anim_length"]+5
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
         -- state_number
@@ -2854,7 +2854,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
@@ -2973,7 +2973,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
         obj_char["strike_inv"] = false
         obj_char["strike_inv_countdown"] = 0
         obj_char["throw_inv"] = true
-        obj_char["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char["throw_inv_countdown"] = res["anim_length"]+5
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
         -- state_number
@@ -4687,7 +4687,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
@@ -4877,11 +4877,11 @@ function load_game_scene_anim_char_common_burst_overdrive(obj_char,other_side_co
         obj_char["recovery_frame"] = 0
 
         obj_char["strike_inv"] = true
-        obj_char["strike_inv_countdown"] = 69
+        obj_char["strike_inv_countdown"] = 70
         obj_char["throw_inv"] = true
-        obj_char["throw_inv_countdown"] = 69
+        obj_char["throw_inv_countdown"] = 70
         obj_char["projectile_inv"] = true
-        obj_char["projectile_inv_countdown"] = 69
+        obj_char["projectile_inv_countdown"] = 70
         -- state_number
         obj_char["velocity"] = {0,0}
         obj_char["velocity_cache"] = {0,0}
@@ -5135,14 +5135,14 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
             obj_char["height_state"] = "stand"
             obj_char["sprite_sheet_state"] = "burst_rc_ground"
             obj_char["anchor_pos"] = {300,615}
-            obj_char["push_box"]  = {0,-185,120,370}
+            obj_char["pushbox"]  = {0,-185,120,370}
             obj_char["collision_ground_height_offset"] = 0
             obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         elseif height_state ~= "air" and not collision_test_char_on_ground(obj_char) then
             obj_char["height_state"] = "air"
             obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
             obj_char["anchor_pos"] = {330,485}
-            obj_char["push_box"] = {0,-100,120,200}
+            obj_char["pushbox"] = {0,-100,120,200}
             obj_char["collision_ground_height_offset"] = 130
             obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         end
@@ -5178,11 +5178,11 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
         update_state()
 
         obj_char["strike_inv"] = true
-        obj_char["strike_inv_countdown"] = 44
+        obj_char["strike_inv_countdown"] = 45
         obj_char["throw_inv"] = true
-        obj_char["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char["throw_inv_countdown"] = res["anim_length"]+5
         obj_char["projectile_inv"] = true
-        obj_char["projectile_inv_countdown"] = 44
+        obj_char["projectile_inv_countdown"] = 45
         -- state_number
         obj_char["velocity_cache"] = {0,0}
         obj_char["gravity"] = 0

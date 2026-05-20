@@ -1107,9 +1107,9 @@ function load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
         obj_char["idle_cancel"] = false
 
         obj_char["strike_inv"] = true
-        obj_char["strike_inv_countdown"] = 6
+        obj_char["strike_inv_countdown"] = 7
         obj_char["throw_inv"] = true
-        obj_char["throw_inv_countdown"] = 14
+        obj_char["throw_inv_countdown"] = 15
         obj_char["projectile_inv"] = true
         obj_char["projectile_inv_countdown"] = 6
         -- state_number
@@ -5995,11 +5995,11 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = true
-        obj_char_other_side["strike_inv_countdown"] = 26
+        obj_char_other_side["strike_inv_countdown"] = 27
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = true
-        obj_char_other_side["projectile_inv_countdown"] = 26
+        obj_char_other_side["projectile_inv_countdown"] = 27
         -- state_number
         obj_char_other_side["velocity"] = {0,0}
         obj_char_other_side["gravity"] = 0
@@ -6183,11 +6183,11 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         obj_char["throw_active"] = false -- 防止在同一动作的active多次触发
 
         obj_char["strike_inv"] = true
-        obj_char["strike_inv_countdown"] = res["anim_length"]-1
+        obj_char["strike_inv_countdown"] = res["anim_length"]
         obj_char["throw_inv"] = true
-        obj_char["throw_inv_countdown"] = res["anim_length"]-1
+        obj_char["throw_inv_countdown"] = res["anim_length"]
         obj_char["projectile_inv"] = true
-        obj_char["projectile_inv_countdown"] = res["anim_length"]-1
+        obj_char["projectile_inv_countdown"] = res["anim_length"]
 
         obj_char["hit_function"] = common_game_scene_throw_hit_function
         obj_char["hurt_function"] = common_game_scene_throw_hurt_function
@@ -8573,11 +8573,11 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["idle_cancel"] = false
 
         obj_char_other_side["strike_inv"] = true
-        obj_char_other_side["strike_inv_countdown"] = 11
+        obj_char_other_side["strike_inv_countdown"] = 12
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = true
-        obj_char_other_side["projectile_inv_countdown"] = 11
+        obj_char_other_side["projectile_inv_countdown"] = 12
         -- state_number
         obj_char_other_side["velocity"] = {0,0}
         obj_char_other_side["gravity"] = gravity
@@ -8742,11 +8742,11 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         obj_char["throw_active"] = false -- 防止在同一动作的active多次触发
 
         obj_char["strike_inv"] = true
-        obj_char["strike_inv_countdown"] = res["anim_length"]-1
+        obj_char["strike_inv_countdown"] = res["anim_length"]
         obj_char["throw_inv"] = true
-        obj_char["throw_inv_countdown"] = res["anim_length"]-1
+        obj_char["throw_inv_countdown"] = res["anim_length"]
         obj_char["projectile_inv"] = true
-        obj_char["projectile_inv_countdown"] = res["anim_length"]-1
+        obj_char["projectile_inv_countdown"] = res["anim_length"]
 
         obj_char["hit_function"] = common_game_scene_throw_hit_function
         obj_char["hurt_function"] = common_game_scene_throw_hurt_function

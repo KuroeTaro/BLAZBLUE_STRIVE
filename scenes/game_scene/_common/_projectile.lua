@@ -7,17 +7,19 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
     local side = obj_char["player_side"]
+    local y_offset = 0
 
-    obj[1] = obj_char["x"] - obj_char[5]*600
-    if obj_char["height_state"] == "stand" then
-        obj[2] = obj_char["y"] - 850
-    elseif obj_char["height_state"] == "air" then
-        obj[2] = obj_char["y"] - 750
+    if obj_char["height_state"] == "air" then
+        y_offset = 150
+    else
+        y_offset = 280
     end
-    obj[5] = obj_char[5]
     obj["x"] = obj_char["x"]
-    obj["y"] = obj_char["y"] - 150
+    obj["y"] = obj_char["y"] - y_offset
     obj["f"] = 0
+    obj[1] = obj["x"] - obj_char[5]*600
+    obj[2] = obj["y"] - 600
+    obj[5] = obj_char[5]
     obj["type"] = "projectile"
     obj["hit_type_state"] = "strike"
     obj["life"] = 30
@@ -212,15 +214,16 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
     obj["hit_counter_ver_function"] = common_game_scene_counter_ver0
 
     obj["update"] = function()
-        obj[1] = obj_char["x"] - obj_char[5]*600
-        if obj_char["height_state"] == "stand" then
-            obj[2] = obj_char["y"] - 850
-        elseif obj_char["height_state"] == "air" then
-            obj[2] = obj_char["y"] - 750
+        if obj_char["height_state"] == "air" then
+            y_offset = 150
+        else
+            y_offset = 280
         end
-        obj[5] = obj_char[5]
         obj["x"] = obj_char["x"]
-        obj["y"] = obj_char["y"] - 150
+        obj["y"] = obj_char["y"] - y_offset
+        obj[1] = obj["x"] - obj_char[5]*600
+        obj[2] = obj["y"] - 600
+        obj[5] = obj_char[5]
         character_animator(obj,obj["animation"])
         obj["life"] = obj["life"] - 1
     end
@@ -469,7 +472,7 @@ function load_game_scene_anim_char_red_rc_projectile_ground_block(
         obj_char_other_side["strike_inv"] = false
         obj_char_other_side["strike_inv_countdown"] = 0
         obj_char_other_side["throw_inv"] = true
-        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4
+        obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
@@ -573,7 +576,7 @@ function load_game_scene_anim_char_red_rc_projectile_air_block(
             obj_char_other_side["f"] = 13
             obj_char_other_side["height_state"]  = "stand"
             obj_char_other_side["throw_inv"] = true
-            obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+4-13
+            obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5-13
             obj_char_other_side["gravity"] = 2.5
             obj_char_other_side["friction"] = 7
 
