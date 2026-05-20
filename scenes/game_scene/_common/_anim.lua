@@ -5175,6 +5175,8 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
         obj_char["startup_frame"] = 0
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
+
+        obj_char["idle_cancel"] = false
         update_state()
 
         obj_char["strike_inv"] = true
@@ -5183,6 +5185,9 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
         obj_char["throw_inv_countdown"] = res["anim_length"]+5
         obj_char["projectile_inv"] = true
         obj_char["projectile_inv_countdown"] = 45
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
         -- state_number
         obj_char["velocity_cache"] = {0,0}
         obj_char["gravity"] = 0
@@ -5236,6 +5241,21 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
         update_heat_gauge_state()
         -- draw_correction
         obj_char[8] = 3
+    end
+    res[16] = function()
+        -- state&state_number
+        obj_char["idle_cancel"] = true
+        update_state()
+        update_heat_gauge_state()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
+    end
+    res[17] = function()
+        -- state&state_number
+        obj_char["idle_cancel"] = false
+        update_state()
+        update_heat_gauge_state()
     end
     res[26] = function()
         -- state

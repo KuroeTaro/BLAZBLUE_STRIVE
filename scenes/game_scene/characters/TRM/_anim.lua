@@ -6027,6 +6027,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["height_state"] = "air"
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side["0_general_hurt_launched_high"][0]
+        obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["0_general_hurt_launched_high"][0]
         -- draw_correction
         obj_char_other_side[8] = 0
@@ -8601,6 +8602,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["sprite_sheet_state"] = "0_general_hurt_launched_low"
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side["0_general_hurt_launched_low"][0]
+        obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["0_general_hurt_launched_low"][0]
         -- draw_correction
         obj_char_other_side[8] = 2
