@@ -571,6 +571,21 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
 end
+function insert_VFX_game_scene_char_blast_special(obj_char,x,y,opacity,sx,sy)
+    -- x y z opacity sx sy r f
+    local obj = {0,0,0,1,1,1,0,0}
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    obj_char["VFX_hit_front_table"] = {}
+    obj_char["VFX_hit_back_table"] = {}
+    obj_char_other_side["VFX_hit_front_table"] = {}
+    obj_char_other_side["VFX_hit_back_table"] = {}
+    
+    obj["r4"] = {}
+    obj["r4"][0] = math.random()*0.785
+    obj["r4"][1] = obj["r4"][0] + 0.785 + (math.random()-0.5)*0.174
+    obj["r4"][2] = obj["r4"][0] + 1.570 + (math.random()-0.5)*0.174
+    obj["r4"][3] = obj["r4"][0] + 2.356 + (math.random()-0.5)*0.174
+end
 function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,sy,r,fix_pos,negative_side)
     -- x y z opacity sx sy r f
     local obj = {0,0,0,1,1,1,0,0}

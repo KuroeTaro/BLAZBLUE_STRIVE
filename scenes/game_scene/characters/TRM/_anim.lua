@@ -2653,7 +2653,7 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
 
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv1(
             obj_char,
-            "0_stand_hurt_high",
+            "0_stand_hurt_low",
             "stand","5_stand_idle",
             21,5,1.02,
             0,2.5,1.02,
@@ -2662,7 +2662,7 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
         )
         obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv1(
             obj_char,
-            "4_stand_block_high",
+            "4_stand_block_mid",
             "stand","5_stand_idle",
             21,5,1.00,
             0,2.5,1.00,
@@ -2951,7 +2951,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         )
         obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
             obj_char,
-            "4_stand_block_high",
+            "4_stand_block_mid",
             "stand","5_stand_idle",
             27,5,1.00,
             0,2.5,1.00,
@@ -3537,7 +3537,7 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
         
         obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
             obj_char,
-            "0_stand_hurt_high",
+            "0_stand_hurt_low",
             "stand","5_stand_idle",
             32,5,1.00,
             0,2.5,1.00,
@@ -8121,7 +8121,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
             obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
-            2,5,1.00,
+            12,5,1.00,
             0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
@@ -8130,7 +8130,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
             obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
-            2,5,1.00,
+            12,5,1.00,
             0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
@@ -8139,7 +8139,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
             obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
-            2,5,1.00,
+            12,5,1.00,
             0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
@@ -8148,7 +8148,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            2,5,1.00,
+            12,5,1.00,
             0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
@@ -8183,7 +8183,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            2,5,1.00,
+            12,5,1.00,
             -5,2.5,1.00,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(

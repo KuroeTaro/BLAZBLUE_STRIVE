@@ -808,7 +808,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
     end
     res[7] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][3]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
         -- draw_correction
         obj_char_other_side[8] = 1
     end

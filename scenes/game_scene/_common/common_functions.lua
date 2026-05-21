@@ -402,7 +402,6 @@ function common_game_scene_strike_hurt_function_common_block(obj_char,hit_side_o
     obj_char["state_cache"] = "block"
     obj_char["state"] = "blockstop"
     -- camera_shake_enclose
-    common_game_scene_hit_load_camera_shake_anim(hit_side_obj_char,0.5,15)
     table.insert(obj_stage_main["camera_active_application_table"],
         function()
             anim_stage_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
@@ -456,8 +455,7 @@ function common_game_scene_strike_hurt_function_GP_hurt(obj_char,hit_side_obj_ch
     -- state
     obj_char["state_cache"] = obj_char["state"]
     obj_char["state"] = "hurtstop"
-    -- camera_shake_enclose
-    common_game_scene_hit_load_camera_shake_anim(hit_side_obj_char,0.5,15)
+    -- camera_shake
     table.insert(obj_stage_main["camera_active_application_table"],
         function()
             anim_stage_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]

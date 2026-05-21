@@ -302,7 +302,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         -- special_update
         frame_0_special_update_function()
     end
-    res[2] = function()
+    res[1] = function()
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][2]
         -- draw_correction
@@ -418,13 +418,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         -- special_update
         frame_0_special_update_function()
     end
-    res[2] = function()
-        -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][3]
-        -- draw_correction
-        obj_char_other_side[8] = 3
-    end
-    res[9] = function()
+    res[1] = function()
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][2]
         -- draw_correction
@@ -540,19 +534,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         -- special_update
         frame_0_special_update_function()
     end
-    res[2] = function()
-        -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][4]
-        -- draw_correction
-        obj_char_other_side[8] = 4
-    end
-    res[9] = function()
-        -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][3]
-        -- draw_correction
-        obj_char_other_side[8] = 3
-    end
-    res[11] = function()
+    res[1] = function()
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][2]
         -- draw_correction
@@ -668,19 +650,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         -- special_update
         frame_0_special_update_function()
     end
-    res[2] = function()
-        -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][4]
-        -- draw_correction
-        obj_char_other_side[8] = 4
-    end
-    res[12] = function()
-        -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][3]
-        -- draw_correction
-        obj_char_other_side[8] = 3
-    end
-    res[14] = function()
+    res[1] = function()
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][2]
         -- draw_correction
@@ -796,19 +766,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         -- special_update
         frame_0_special_update_function()
     end
-    res[2] = function()
-        -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][4]
-        -- draw_correction
-        obj_char_other_side[8] = 4
-    end
-    res[12] = function()
-        -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][3]
-        -- draw_correction
-        obj_char_other_side[8] = 3
-    end
-    res[16] = function()
+    res[1] = function()
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][2]
         -- draw_correction
@@ -962,7 +920,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         -- special_update
         frame_0_special_update_function()
     end
-    res[3] = function()
+    res[1] = function()
         -- draw_correction
         obj_char_other_side[8] = 2
     end
@@ -1077,7 +1035,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         -- special_update
         frame_0_special_update_function()
     end
-    res[3] = function()
+    res[1] = function()
         -- draw_correction
         obj_char_other_side[8] = 3
     end
@@ -1194,7 +1152,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         -- special_update
         frame_0_special_update_function()
     end
-    res[3] = function()
+    res[1] = function()
         -- draw_correction
         obj_char_other_side[8] = 3
     end
@@ -1313,7 +1271,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         -- special_update
         frame_0_special_update_function()
     end
-    res[3] = function()
+    res[1] = function()
         -- draw_correction
         obj_char_other_side[8] = 4
     end
@@ -1436,7 +1394,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         -- special_update
         frame_0_special_update_function()
     end
-    res[3] = function()
+    res[1] = function()
         -- draw_correction
         obj_char_other_side[8] = 4
     end
@@ -1583,7 +1541,7 @@ function load_game_scene_anim_char_common_0_air_block(
         frame_0_special_update_function()
         if obj_char_other_side["y"] > 125 then obj_char_other_side["y"] = 125 end
     end
-    res[3] = function()
+    res[1] = function()
         -- draw_correction
         obj_char_other_side[8] = 4
         -- update
@@ -5251,7 +5209,7 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
     end
-    res[17] = function()
+    res[24] = function()
         -- state&state_number
         obj_char["idle_cancel"] = false
         update_state()
