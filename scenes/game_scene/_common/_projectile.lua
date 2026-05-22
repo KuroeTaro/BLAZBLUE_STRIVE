@@ -246,10 +246,10 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
         local wallhurt_wallstick_on_side_cache = obj_char_other_side["wallhurt_wallstick_on_side"]
             -- if hit
         if collision_strike_hurtbox_test(obj,obj_char_other_side) and obj["strike_active"] and (not obj_char_other_side["strike_inv"]) then
-            -- insert_hit_VFX
-            insert_VFX_game_scene_char_blast_special(obj_char,0,0,1,1,1)
             -- set_projectile_strike_active
             obj["strike_active"] = false
+            -- set_physics_lock
+            obj_char_other_side["physics_lock"] = true
             -- hurt_block_at_current_frame
             if obj_char_other_side["hurt_block_at_current_frame"] then
                 return
@@ -275,6 +275,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
                 -- set_state_and_state_cache
                 obj_char_other_side["state_cache"] = "block"
                 obj_char_other_side["state"] = "block"
+                -- physics_lock
+                obj_char_other_side["physics_lock"] = false
                 -- set_insert_camera_anim
                 common_game_scene_hit_load_camera_shake_anim(obj,0.5,30)
                 table.insert(obj_stage_main["camera_active_application_table"],
@@ -315,6 +317,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
                 -- set_state_and_state_cache
                 obj_char_other_side["state_cache"] = obj_char_other_side["state"]
                 obj_char_other_side["state"] = obj_char_other_side["state"]
+                -- physics_lock
+                obj_char_other_side["physics_lock"] = false
                 -- set_insert_camera_anim
                 common_game_scene_hit_load_camera_shake_anim(obj,1.5,30)
                 table.insert(obj_stage_main["camera_active_application_table"],
@@ -345,6 +349,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
                 obj_char_other_side["state_cache"] = "hurt"
                 obj_char_other_side["state"] = "hurt"
                 obj_char_other_side["collision_move_available_cache"] = {1,1}
+                -- physics_lock
+                obj_char_other_side["physics_lock"] = false
                 -- hit_counter_ver_function
                 if obj_char_other_side["hurt_state"] == "counter" then 
                     obj["hit_counter_ver_function"](obj_char,obj_char_other_side)
@@ -385,6 +391,11 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
                 obj_char_other_side["hit_hurt_blockstop_countdown"] = obj["hit_hurt_blockstop_countdown"]
                 obj_char_other_side["last_hitstop_frame"] = 0
                 init_character_anim_with(obj_char_other_side,obj_char_other_side["character_animation"])
+
+                -- insert_hit_VFX
+                local dx = (obj_char["x"] - obj_char_other_side["x"])*obj_char[5]
+                local dy = ((obj_char["y"] - obj_char_other_side["y"])+100)*obj_char[6]
+                insert_VFX_game_scene_char_blast_special(obj_char,-dx,-dy,1,1,1)
             end
             -- wallbreak_test_and_apply
             common_game_scene_test_and_apply_wallbreak(obj_char_other_side,obj_char,obj,wallhurt_wallstick_on_side_cache)

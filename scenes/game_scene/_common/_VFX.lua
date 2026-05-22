@@ -266,7 +266,7 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
         love.graphics.draw(obj["draw_canvas"]) -- 画到屏幕上
         love.graphics.setShader()
     end
-    table.insert(obj_char["black_overlay_table"],obj)
+    table.insert(obj_char["VFX_black_overlay_table"],obj)
 end
 
 function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
@@ -382,7 +382,7 @@ function insert_VFX_game_scene_char_RC_black_overlay(obj_char)
         love.graphics.rectangle("fill",0,0,love.graphics.getWidth(),love.graphics.getHeight())
         love.graphics.setColor(1,1,1,1)
     end
-    table.insert(obj_char["black_overlay_table"],obj)
+    table.insert(obj_char["VFX_black_overlay_table"],obj)
 end
 
 -- blast slash directional ray_impact
@@ -579,12 +579,12 @@ function insert_VFX_game_scene_char_blast_special(obj_char,x,y,opacity,sx,sy)
     local dy = -200*sy
     local center_black_offset = {}
     local center_white_offset = {}
-    local r0 = (math.random()*0.785)*obj_char[5]
+    local r0 = (0.523+(math.random()*0.087))*obj_char[5]
     local r_table_cache = {
         r0,
-        (r0 + 0.785 + (math.random()-0.5)*0.174)*obj_char[5],
-        (r0 + 1.570 + (math.random()-0.5)*0.174)*obj_char[5],
-        (r0 + 2.356 + (math.random()-0.5)*0.174)*obj_char[5],
+        r0 + (1.570 + (math.random()-0.5)*0.174)*obj_char[5],
+        r0 + (3.141 + (math.random()-0.5)*0.174)*obj_char[5],
+        r0 + (4.712 + (math.random()-0.5)*0.174)*obj_char[5],
     }
     local rot_x_table_cache = {
         dx * obj_char[5] * math.cos(r_table_cache[1]) - dy * obj_char[6] * math.sin(r_table_cache[1]),
@@ -620,7 +620,7 @@ function insert_VFX_game_scene_char_blast_special(obj_char,x,y,opacity,sx,sy)
     obj_char_other_side["VFX_hit_front_table"] = {}
     obj_char_other_side["VFX_hit_back_table"] = {}
 
-    obj["life"] = 18
+    obj["life"] = 27
     obj["r_cache"] = r_table_cache
     obj["x_table"] = obj_x_table
     obj["y_table"] = obj_y_table
@@ -640,14 +640,14 @@ function insert_VFX_game_scene_char_blast_special(obj_char,x,y,opacity,sx,sy)
     obj["LCD"] = {0,0,0,0,0,0,0,0}
     obj["animation"] = {}
     obj["animation"][0] = 0
-    obj["animation"][2] = 1
-    obj["animation"][5] = 2
-    obj["animation"][7] = 3
-    obj["animation"][10] = 4
-    obj["animation"][12] = 5
-    obj["animation"][15] = 6
+    obj["animation"][7] = 1
+    obj["animation"][10] = 2
+    obj["animation"][14] = 3
+    obj["animation"][17] = 4
+    obj["animation"][20] = 5
+    obj["animation"][23] = 6
     obj["animation"]["prop"] = 8
-    obj["animation"]["length"] = 18
+    obj["animation"]["length"] = 27
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
     obj["update"] = function()
@@ -662,13 +662,13 @@ function insert_VFX_game_scene_char_blast_special(obj_char,x,y,opacity,sx,sy)
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
-        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_lighting_0
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_special_lighting_0
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj["sub_obj"][1],image_sprite_sheet,""..obj[8].."")
         draw_3d_image_sprite_batch(obj_camera,obj["sub_obj"][3],image_sprite_sheet,""..obj[8].."")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
 
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_lighting_1
+        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_special_lighting_1
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj["sub_obj"][2],image_sprite_sheet,""..obj[8].."")
         draw_3d_image_sprite_batch(obj_camera,obj["sub_obj"][4],image_sprite_sheet,""..obj[8].."")
@@ -679,6 +679,7 @@ function insert_VFX_game_scene_char_blast_special(obj_char,x,y,opacity,sx,sy)
         draw_3d_image_sprite_batch(obj_camera,obj["sub_obj"][5],image_sprite_sheet,""..obj[8].."")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
+    table.insert(obj_char["VFX_hit_front_table"],obj)
 end
 function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,sy,r,fix_pos,negative_side)
     -- x y z opacity sx sy r f
@@ -1686,7 +1687,7 @@ function insert_VFX_HUD_game_scene_counter_ver3(obj_char)
         love.graphics.rectangle("fill",0,0,width,height)
         love.graphics.setColor(1,1,1,1)
     end
-    table.insert(obj_char["black_overlay_table"],obj)
+    table.insert(obj_char["VFX_black_overlay_table"],obj)
 end
 function insert_VFX_HUD_game_scene_punish(obj_char)
     local side = obj_char["player_side"]

@@ -193,7 +193,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["VFX_back_table"] = {}
     obj_char_game_scene_char_RP["VFX_hit_front_table"] = {}
     obj_char_game_scene_char_RP["VFX_hit_back_table"] = {}
-    obj_char_game_scene_char_RP["black_overlay_table"] = {}
+    obj_char_game_scene_char_RP["VFX_black_overlay_table"] = {}
     -- sub_hit_hurt_function
     obj_char_game_scene_char_RP["hit_VFX_insert_function"] = nil
     obj_char_game_scene_char_RP["hit_VFX_insert_function_argument"] = nil
@@ -4282,14 +4282,14 @@ function state_gate_game_scene_char_RP_from_burst_RC_red(input,obj_char)
     if obj_char["idle_cancel"] then
         if obj_char["height_state"] == "air" then
             -- _common_air_idle_to_move
-            if state_gate_game_scene_char_RP_common_air_to_special_move(input,obj_char) then
+            if state_gate_game_scene_char_RP_common_air_to_special_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,20,0,nil})
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1
                 obj_char["velocity"][2] = obj_char["velocity"][2]*5
                 return true
             end
-            if state_gate_game_scene_char_RP_common_air_to_attack_move(input,obj_char) then
+            if state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,20,0,nil})
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1
@@ -4298,14 +4298,14 @@ function state_gate_game_scene_char_RP_from_burst_RC_red(input,obj_char)
             end
         else
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_RP_common_ground_to_special_move(input,obj_char) then
+            if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,20,0,nil})
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1
                 obj_char["velocity"][2] = obj_char["velocity"][2]*5
                 return true
             end
-            if state_gate_game_scene_char_RP_common_ground_to_attack_move(input,obj_char) then
+            if state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,20,0,nil})
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1
@@ -5808,17 +5808,17 @@ function draw_game_scene_char_RP_VFX_back()
     end
 end
 function update_game_scene_char_RP_black_overlay()
-    for i = #obj_char_game_scene_char_RP["black_overlay_table"],1,-1 do -- 反向遍历，便于删除元素
-        local object = obj_char_game_scene_char_RP["black_overlay_table"][i]
+    for i = #obj_char_game_scene_char_RP["VFX_black_overlay_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_RP["VFX_black_overlay_table"][i]
         object["update"](object)
         if object["life"] <= 0 then
-            table.remove(obj_char_game_scene_char_RP["black_overlay_table"],i) -- 寿命耗尽，从列表中移除
+            table.remove(obj_char_game_scene_char_RP["VFX_black_overlay_table"],i) -- 寿命耗尽，从列表中移除
         end
     end
 end
 function draw_game_scene_char_RP_black_overlay()
-    for i = 1,#obj_char_game_scene_char_RP["black_overlay_table"],1 do -- 反向遍历，便于删除元素
-        local object = obj_char_game_scene_char_RP["black_overlay_table"][i]
+    for i = 1,#obj_char_game_scene_char_RP["VFX_black_overlay_table"],1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_RP["VFX_black_overlay_table"][i]
         object["draw"]()
     end
 end
