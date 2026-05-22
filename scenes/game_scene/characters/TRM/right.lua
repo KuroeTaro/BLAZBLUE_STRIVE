@@ -2729,13 +2729,14 @@ function state_gate_game_scene_char_RP_common_air_to_dash_move_hold_ver_4dash_on
 end
 function state_gate_game_scene_char_RP_common_air_to_attack_move(input,obj_char)
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local direction_input_true_table = { [4] = true, [6] = true, [7] = true, [9] = true }
     -- _burst_overdrive
     -- _burst_RC_blue
     -- _active_FD_block
     -- _jsp_S
     -- _jsp_H
     -- _jP
-    if obj_char["y"] < 125 and test_input_sys_press(input["P"]) then
+    if test_input_sys_press(input["P"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -2745,7 +2746,7 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move(input,obj_char)
         return true
     end
     -- _j2K
-    if obj_char["y"] < 125 and common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["K"]) then
+    if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["K"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -2755,7 +2756,7 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move(input,obj_char)
         return true
     end
     -- _jK
-    if obj_char["y"] < 125 and test_input_sys_press(input["K"]) then
+    if test_input_sys_press(input["K"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -2765,7 +2766,7 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move(input,obj_char)
         return true
     end
     -- _jS
-    if obj_char["y"] < 125 and test_input_sys_press(input["S"]) then
+    if test_input_sys_press(input["S"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -2775,13 +2776,7 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move(input,obj_char)
         return true
     end
     -- _j4_6Launcher
-    if obj_char["y"] < 125 and (
-        obj_char["direction_input"] == 4 or 
-        obj_char["direction_input"] == 6 or
-        obj_char["direction_input"] == 7 or
-        obj_char["direction_input"] == 9    
-    )
-    and test_input_sys_press(input["Launcher"]) then
+    if test_input_sys_press(input["Launcher"]) and direction_input_true_table[obj_char["direction_input"]] then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -2791,7 +2786,7 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move(input,obj_char)
         return true
     end
     -- _j5Launcher
-    if obj_char["y"] < 125 and test_input_sys_press(input["Launcher"]) then
+    if test_input_sys_press(input["Launcher"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_j5Launcher(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "j5Launcher"
@@ -2801,13 +2796,14 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move(input,obj_char)
 end
 function state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,obj_char)
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local direction_input_true_table = { [4] = true, [6] = true, [7] = true, [9] = true }
     -- _burst_overdrive
     -- _burst_RC_blue
     -- _active_FD_block
     -- _jsp_S
     -- _jsp_H
     -- _jP
-    if obj_char["y"] < 125 and test_input_sys_press_or_hold(input["P"]) then
+    if test_input_sys_press_or_hold(input["P"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -2817,7 +2813,7 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,
         return true
     end
     -- _j2K
-    if obj_char["y"] < 125 and common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press_or_hold(input["K"]) then
+    if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press_or_hold(input["K"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -2827,7 +2823,7 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,
         return true
     end
     -- _jK
-    if obj_char["y"] < 125 and test_input_sys_press_or_hold(input["K"]) then
+    if test_input_sys_press_or_hold(input["K"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -2837,7 +2833,7 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,
         return true
     end
     -- _jS
-    if obj_char["y"] < 125 and test_input_sys_press_or_hold(input["S"]) then
+    if test_input_sys_press_or_hold(input["S"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -2847,13 +2843,7 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,
         return true
     end
     -- _j4_6Launcher
-    if obj_char["y"] < 125 and (
-        obj_char["direction_input"] == 4 or 
-        obj_char["direction_input"] == 6 or
-        obj_char["direction_input"] == 7 or
-        obj_char["direction_input"] == 9    
-    )
-    and test_input_sys_press_or_hold(input["Launcher"]) then
+    if test_input_sys_press_or_hold(input["Launcher"]) and direction_input_true_table[obj_char["direction_input"]] then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -2863,7 +2853,7 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,
         return true
     end
     -- _j5Launcher
-    if obj_char["y"] < 125 and test_input_sys_press_or_hold(input["Launcher"]) then
+    if test_input_sys_press_or_hold(input["Launcher"]) then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_j5Launcher(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "j5Launcher"
@@ -4286,14 +4276,14 @@ function state_gate_game_scene_char_RP_from_burst_RC_red(input,obj_char)
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,20,0,nil})
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1
-                obj_char["velocity"][2] = obj_char["velocity"][2]*5
+                obj_char["velocity"][2] = obj_char["velocity"][2]*6
                 return true
             end
             if state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,20,0,nil})
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1
-                obj_char["velocity"][2] = obj_char["velocity"][2]*5
+                obj_char["velocity"][2] = obj_char["velocity"][2]*6
                 return true
             end
         else
@@ -4302,14 +4292,14 @@ function state_gate_game_scene_char_RP_from_burst_RC_red(input,obj_char)
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,20,0,nil})
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1
-                obj_char["velocity"][2] = obj_char["velocity"][2]*5
+                obj_char["velocity"][2] = obj_char["velocity"][2]*6
                 return true
             end
             if state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,20,0,nil})
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1
-                obj_char["velocity"][2] = obj_char["velocity"][2]*5
+                obj_char["velocity"][2] = obj_char["velocity"][2]*6
                 return true
             end
         end

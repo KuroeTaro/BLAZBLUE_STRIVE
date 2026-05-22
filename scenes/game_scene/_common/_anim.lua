@@ -5192,12 +5192,13 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
     end
     res[7] = function()
         -- state&state_number
+        obj_char["idle_cancel"] = true
         update_state()
         update_heat_gauge_state()
         -- draw_correction
         obj_char[8] = 2
     end
-    res[14] = function()
+    res[13] = function()
         -- state&state_number
         update_state()
         update_heat_gauge_state()
@@ -5206,7 +5207,6 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
     end
     res[16] = function()
         -- state&state_number
-        obj_char["idle_cancel"] = true
         update_state()
         update_heat_gauge_state()
     end
@@ -5270,9 +5270,612 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
     return res
 end
 function load_game_scene_anim_char_common_burst_RC_blue(obj_char)
+    local res = {}
+    local height_state = obj_char["height_state"]
+    local obj_stage_main = obj_stage_game_scene_main
+    local obj_camera = obj_stage_game_scene_camera
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local goal_heat_gauge_remain = math.max(0,obj_char["heat_gauge"][1]-100)
+    local function update_state()
+        -- move_state
+        if obj_char_other_side["game_speed_force_0_countdown"] == 0 and obj_char["f"] >= 26 then
+            obj_char["move_state"] = "recovery"
+        end
+        if height_state ~= obj_char["height_state"] then
+            return
+        end
+        -- height_state
+        if height_state == "air" and collision_test_char_on_ground(obj_char) then
+            obj_char["y"] = 365
+            obj_char["height_state"] = "stand"
+            obj_char["sprite_sheet_state"] = "burst_rc_ground"
+            obj_char["anchor_pos"] = {300,615}
+            obj_char["pushbox"]  = {0,-185,120,370}
+            obj_char["collision_ground_height_offset"] = 0
+            obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        elseif height_state ~= "air" and not collision_test_char_on_ground(obj_char) then
+            obj_char["height_state"] = "air"
+            obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
+            obj_char["anchor_pos"] = {330,485}
+            obj_char["pushbox"] = {0,-100,120,200}
+            obj_char["collision_ground_height_offset"] = 130
+            obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
+        end
+    end
+    local function update_heat_gauge_state()
+        if obj_char["heat_gauge"][1] > goal_heat_gauge_remain then
+            obj_char["heat_gauge"][1] = obj_char["heat_gauge"][1] - 5
+        end
+    end
+    
+    res["prop_f"] = "f"
+    res["anim_length"] = 45
+    for i = 0,44 do
+        res[i] = function()
+            -- state
+            update_state()
+        end
+    end
+    for i = 0,24 do
+        res[i] = function()
+            -- state
+            update_state()
+            update_heat_gauge_state()
+        end
+    end
+    res[0] = function()
+        -- state
+        obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
+        obj_char["move_state"] = "startup" -- none startup active recovery
+        obj_char["startup_frame"] = 0
+        obj_char["active_frame"] = 0
+        obj_char["recovery_frame"] = 0
+
+        obj_char["idle_cancel"] = false
+        update_state()
+
+        obj_char["strike_inv"] = true
+        obj_char["strike_inv_countdown"] = 45
+        obj_char["throw_inv"] = true
+        obj_char["throw_inv_countdown"] = res["anim_length"]+5
+        obj_char["projectile_inv"] = true
+        obj_char["projectile_inv_countdown"] = 45
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "none" -- none save load
+        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
+        -- state_number
+        obj_char["velocity_cache"] = {0,0}
+        obj_char["gravity"] = 0
+        obj_char["friction"] = 0
+        obj_char["physics_lock"] = false
+        obj_char["horizontal_velocity_correction"] = 1
+        obj_char["gravity_correction"] = 1
+        obj_char["damage_correction"] = 1
+        update_heat_gauge_state()
+        -- air_move
+        obj_char["air_move"] = {}
+        obj_char["air_move"]["jump"] = {1,1}
+        obj_char["air_move"]["air_dash"] = {1,1}
+        -- collide
+        obj_char["pushbox_other_side_char_active"] = true
+        obj_char["hitbox_table"] = {} --{ 攻击类型 是投还是打， function值 内部为命中后的逻辑,具体的box形状}
+        obj_char["hurtbox_table"] = {}
+        -- draw_correction
+        obj_char[8] = 0
+        -- VFX
+        obj_char["VFX_hit_front_table"] = {}
+        obj_char["VFX_hit_back_table"] = {}
+        obj_char_other_side["VFX_hit_front_table"] = {}
+        obj_char_other_side["VFX_hit_back_table"] = {}
+        insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet_VFX_game_scene_RC_red_badge)
+        insert_VFX_game_scene_char_RC_partical(obj_char)
+        insert_VFX_game_scene_char_RC_black_overlay(obj_char)
+    end
+    res[1] = function()
+        -- state&state_number
+        update_state()
+        update_heat_gauge_state()
+    end
+    res[3] = function()
+        -- state&state_number
+        update_state()
+        update_heat_gauge_state()
+        -- draw_correction
+        obj_char[8] = 1
+    end
+    res[5] = function()
+        -- state&state_number
+        update_state()
+        update_heat_gauge_state()
+        -- game_speed
+        -- 设置为强制速度到动画结束
+        common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,nil,40})
+        common_game_scene_game_speed_load_application(obj_char_other_side,{1,nil,nil,nil,40,nil})
+    end
+    res[7] = function()
+        update_state()
+        update_heat_gauge_state()
+        -- draw_correction
+        obj_char[8] = 2
+    end
+    res[10] = function()
+        -- state&state_number
+        obj_char["idle_cancel"] = true
+        update_state()
+        update_heat_gauge_state()
+    end
+    res[13] = function()
+        -- state&state_number
+        update_state()
+        update_heat_gauge_state()
+        -- draw_correction
+        obj_char[8] = 3
+    end
+    res[16] = function()
+        -- state&state_number
+        update_state()
+        update_heat_gauge_state()
+    end
+    res[24] = function()
+        -- state&state_number
+        obj_char["idle_cancel"] = false
+        update_state()
+        update_heat_gauge_state()
+    end
+    res[26] = function()
+        -- state
+        update_state()
+        -- draw_correction
+        obj_char[8] = 4
+        -- projectile
+        insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
+    end
+    res[27] = function()
+        -- state
+        update_state()
+        -- draw_correction
+        obj_char[8] = 5
+    end
+    res[31] = function()
+        -- state
+        update_state()
+        -- draw_correction
+        obj_char[8] = 6
+    end
+    res[35] = function()
+        -- state
+        update_state()
+        -- draw_correction
+        obj_char[8] = 7
+    end
+    res[39] = function()
+        -- state
+        update_state()
+        -- draw_correction
+        obj_char[8] = 8
+    end
+    res[40] = function()
+        -- state
+        update_state()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
+    end
+    res[42] = function()
+        -- state
+        update_state()
+        -- draw_correction
+        obj_char[8] = 9
+    end
+    res[45] = function()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
+        -- aniamtion_end
+    end
+    return res
 end
 function load_game_scene_anim_char_common_burst_RC_purple(obj_char)
+    local res = {}
+    local height_state = obj_char["height_state"]
+    local obj_stage_main = obj_stage_game_scene_main
+    local obj_camera = obj_stage_game_scene_camera
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local goal_heat_gauge_remain = math.max(0,obj_char["heat_gauge"][1]-100)
+    local function update_state()
+        -- move_state
+        if obj_char_other_side["game_speed_force_0_countdown"] == 0 and obj_char["f"] >= 26 then
+            obj_char["move_state"] = "recovery"
+        end
+        if height_state ~= obj_char["height_state"] then
+            return
+        end
+        -- height_state
+        if height_state == "air" and collision_test_char_on_ground(obj_char) then
+            obj_char["y"] = 365
+            obj_char["height_state"] = "stand"
+            obj_char["sprite_sheet_state"] = "burst_rc_ground"
+            obj_char["anchor_pos"] = {300,615}
+            obj_char["pushbox"]  = {0,-185,120,370}
+            obj_char["collision_ground_height_offset"] = 0
+            obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        elseif height_state ~= "air" and not collision_test_char_on_ground(obj_char) then
+            obj_char["height_state"] = "air"
+            obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
+            obj_char["anchor_pos"] = {330,485}
+            obj_char["pushbox"] = {0,-100,120,200}
+            obj_char["collision_ground_height_offset"] = 130
+            obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
+        end
+    end
+    local function update_heat_gauge_state()
+        if obj_char["heat_gauge"][1] > goal_heat_gauge_remain then
+            obj_char["heat_gauge"][1] = obj_char["heat_gauge"][1] - 5
+        end
+    end
+    
+    res["prop_f"] = "f"
+    res["anim_length"] = 45
+    for i = 0,44 do
+        res[i] = function()
+            -- state
+            update_state()
+        end
+    end
+    for i = 0,24 do
+        res[i] = function()
+            -- state
+            update_state()
+            update_heat_gauge_state()
+        end
+    end
+    res[0] = function()
+        -- state
+        obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
+        obj_char["move_state"] = "startup" -- none startup active recovery
+        obj_char["startup_frame"] = 0
+        obj_char["active_frame"] = 0
+        obj_char["recovery_frame"] = 0
+
+        obj_char["idle_cancel"] = false
+        update_state()
+
+        obj_char["strike_inv"] = true
+        obj_char["strike_inv_countdown"] = 45
+        obj_char["throw_inv"] = true
+        obj_char["throw_inv_countdown"] = res["anim_length"]+5
+        obj_char["projectile_inv"] = true
+        obj_char["projectile_inv_countdown"] = 45
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "none" -- none save load
+        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
+        -- state_number
+        obj_char["velocity_cache"] = {0,0}
+        obj_char["gravity"] = 0
+        obj_char["friction"] = 0
+        obj_char["physics_lock"] = false
+        obj_char["horizontal_velocity_correction"] = 1
+        obj_char["gravity_correction"] = 1
+        obj_char["damage_correction"] = 1
+        update_heat_gauge_state()
+        -- air_move
+        obj_char["air_move"] = {}
+        obj_char["air_move"]["jump"] = {1,1}
+        obj_char["air_move"]["air_dash"] = {1,1}
+        -- collide
+        obj_char["pushbox_other_side_char_active"] = true
+        obj_char["hitbox_table"] = {} --{ 攻击类型 是投还是打， function值 内部为命中后的逻辑,具体的box形状}
+        obj_char["hurtbox_table"] = {}
+        -- draw_correction
+        obj_char[8] = 0
+        -- VFX
+        obj_char["VFX_hit_front_table"] = {}
+        obj_char["VFX_hit_back_table"] = {}
+        obj_char_other_side["VFX_hit_front_table"] = {}
+        obj_char_other_side["VFX_hit_back_table"] = {}
+        insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet_VFX_game_scene_RC_red_badge)
+        insert_VFX_game_scene_char_RC_partical(obj_char)
+        insert_VFX_game_scene_char_RC_black_overlay(obj_char)
+    end
+    res[1] = function()
+        -- state&state_number
+        update_state()
+        update_heat_gauge_state()
+    end
+    res[3] = function()
+        -- state&state_number
+        update_state()
+        update_heat_gauge_state()
+        -- draw_correction
+        obj_char[8] = 1
+    end
+    res[5] = function()
+        -- state&state_number
+        update_state()
+        update_heat_gauge_state()
+        -- game_speed
+        -- 设置为强制速度到动画结束
+        common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,nil,40})
+        common_game_scene_game_speed_load_application(obj_char_other_side,{1,nil,nil,nil,40,nil})
+    end
+    res[7] = function()
+        update_state()
+        update_heat_gauge_state()
+        -- draw_correction
+        obj_char[8] = 2
+    end
+    res[10] = function()
+        -- state&state_number
+        obj_char["idle_cancel"] = true
+        update_state()
+        update_heat_gauge_state()
+    end
+    res[13] = function()
+        -- state&state_number
+        update_state()
+        update_heat_gauge_state()
+        -- draw_correction
+        obj_char[8] = 3
+    end
+    res[16] = function()
+        -- state&state_number
+        update_state()
+        update_heat_gauge_state()
+    end
+    res[24] = function()
+        -- state&state_number
+        obj_char["idle_cancel"] = false
+        update_state()
+        update_heat_gauge_state()
+    end
+    res[26] = function()
+        -- state
+        update_state()
+        -- draw_correction
+        obj_char[8] = 4
+        -- projectile
+        insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
+    end
+    res[27] = function()
+        -- state
+        update_state()
+        -- draw_correction
+        obj_char[8] = 5
+    end
+    res[31] = function()
+        -- state
+        update_state()
+        -- draw_correction
+        obj_char[8] = 6
+    end
+    res[35] = function()
+        -- state
+        update_state()
+        -- draw_correction
+        obj_char[8] = 7
+    end
+    res[39] = function()
+        -- state
+        update_state()
+        -- draw_correction
+        obj_char[8] = 8
+    end
+    res[40] = function()
+        -- state
+        update_state()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
+    end
+    res[42] = function()
+        -- state
+        update_state()
+        -- draw_correction
+        obj_char[8] = 9
+    end
+    res[45] = function()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
+        -- aniamtion_end
+    end
+    return res
 end
 function load_game_scene_anim_char_common_RC_yellow(obj_char)
+    local res = {}
+    local height_state = obj_char["height_state"]
+    local obj_stage_main = obj_stage_game_scene_main
+    local obj_camera = obj_stage_game_scene_camera
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local goal_heat_gauge_remain = math.max(0,obj_char["heat_gauge"][1]-100)
+    local function update_state()
+        -- move_state
+        if obj_char_other_side["game_speed_force_0_countdown"] == 0 and obj_char["f"] >= 26 then
+            obj_char["move_state"] = "recovery"
+        end
+        if height_state ~= obj_char["height_state"] then
+            return
+        end
+        -- height_state
+        if height_state == "air" and collision_test_char_on_ground(obj_char) then
+            obj_char["y"] = 365
+            obj_char["height_state"] = "stand"
+            obj_char["sprite_sheet_state"] = "burst_rc_ground"
+            obj_char["anchor_pos"] = {300,615}
+            obj_char["pushbox"]  = {0,-185,120,370}
+            obj_char["collision_ground_height_offset"] = 0
+            obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        elseif height_state ~= "air" and not collision_test_char_on_ground(obj_char) then
+            obj_char["height_state"] = "air"
+            obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
+            obj_char["anchor_pos"] = {330,485}
+            obj_char["pushbox"] = {0,-100,120,200}
+            obj_char["collision_ground_height_offset"] = 130
+            obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
+        end
+    end
+    local function update_heat_gauge_state()
+        if obj_char["heat_gauge"][1] > goal_heat_gauge_remain then
+            obj_char["heat_gauge"][1] = obj_char["heat_gauge"][1] - 5
+        end
+    end
+    
+    res["prop_f"] = "f"
+    res["anim_length"] = 45
+    for i = 0,44 do
+        res[i] = function()
+            -- state
+            update_state()
+        end
+    end
+    for i = 0,24 do
+        res[i] = function()
+            -- state
+            update_state()
+            update_heat_gauge_state()
+        end
+    end
+    res[0] = function()
+        -- state
+        obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
+        obj_char["move_state"] = "startup" -- none startup active recovery
+        obj_char["startup_frame"] = 0
+        obj_char["active_frame"] = 0
+        obj_char["recovery_frame"] = 0
+
+        obj_char["idle_cancel"] = false
+        update_state()
+
+        obj_char["strike_inv"] = true
+        obj_char["strike_inv_countdown"] = 45
+        obj_char["throw_inv"] = true
+        obj_char["throw_inv_countdown"] = res["anim_length"]+5
+        obj_char["projectile_inv"] = true
+        obj_char["projectile_inv_countdown"] = 45
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "none" -- none save load
+        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
+        -- state_number
+        obj_char["velocity_cache"] = {0,0}
+        obj_char["gravity"] = 0
+        obj_char["friction"] = 0
+        obj_char["physics_lock"] = false
+        obj_char["horizontal_velocity_correction"] = 1
+        obj_char["gravity_correction"] = 1
+        obj_char["damage_correction"] = 1
+        update_heat_gauge_state()
+        -- air_move
+        obj_char["air_move"] = {}
+        obj_char["air_move"]["jump"] = {1,1}
+        obj_char["air_move"]["air_dash"] = {1,1}
+        -- collide
+        obj_char["pushbox_other_side_char_active"] = true
+        obj_char["hitbox_table"] = {} --{ 攻击类型 是投还是打， function值 内部为命中后的逻辑,具体的box形状}
+        obj_char["hurtbox_table"] = {}
+        -- draw_correction
+        obj_char[8] = 0
+        -- VFX
+        obj_char["VFX_hit_front_table"] = {}
+        obj_char["VFX_hit_back_table"] = {}
+        obj_char_other_side["VFX_hit_front_table"] = {}
+        obj_char_other_side["VFX_hit_back_table"] = {}
+        insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet_VFX_game_scene_RC_red_badge)
+        insert_VFX_game_scene_char_RC_partical(obj_char)
+        insert_VFX_game_scene_char_RC_black_overlay(obj_char)
+    end
+    res[1] = function()
+        -- state&state_number
+        update_state()
+        update_heat_gauge_state()
+    end
+    res[3] = function()
+        -- state&state_number
+        update_state()
+        update_heat_gauge_state()
+        -- draw_correction
+        obj_char[8] = 1
+    end
+    res[7] = function()
+        -- state&state_number
+        obj_char["idle_cancel"] = true
+        update_state()
+        update_heat_gauge_state()
+        -- draw_correction
+        obj_char[8] = 2
+    end
+    res[13] = function()
+        -- game_speed
+        -- 设置为强制速度到动画结束
+        common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,nil,32})
+        common_game_scene_game_speed_load_application(obj_char_other_side,{1,nil,nil,nil,32,nil})
+        -- state&state_number
+        update_state()
+        update_heat_gauge_state()
+        -- draw_correction
+        obj_char[8] = 3
+    end
+    res[16] = function()
+        -- state&state_number
+        update_state()
+        update_heat_gauge_state()
+    end
+    res[24] = function()
+        -- state&state_number
+        obj_char["idle_cancel"] = false
+        update_state()
+        update_heat_gauge_state()
+    end
+    res[26] = function()
+        -- state
+        update_state()
+        -- draw_correction
+        obj_char[8] = 4
+        -- projectile
+        insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
+    end
+    res[27] = function()
+        -- state
+        update_state()
+        -- draw_correction
+        obj_char[8] = 5
+    end
+    res[31] = function()
+        -- state
+        update_state()
+        -- draw_correction
+        obj_char[8] = 6
+    end
+    res[35] = function()
+        -- state
+        update_state()
+        -- draw_correction
+        obj_char[8] = 7
+    end
+    res[39] = function()
+        -- state
+        update_state()
+        -- draw_correction
+        obj_char[8] = 8
+    end
+    res[40] = function()
+        -- state
+        update_state()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
+    end
+    res[42] = function()
+        -- state
+        update_state()
+        -- draw_correction
+        obj_char[8] = 9
+    end
+    res[45] = function()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
+        -- aniamtion_end
+    end
+    return res
 end
 
