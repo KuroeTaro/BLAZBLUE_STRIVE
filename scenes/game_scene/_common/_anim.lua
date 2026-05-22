@@ -5170,6 +5170,10 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
         -- draw_correction
         obj_char[8] = 0
         -- VFX
+        obj_char["VFX_hit_front_table"] = {}
+        obj_char["VFX_hit_back_table"] = {}
+        obj_char_other_side["VFX_hit_front_table"] = {}
+        obj_char_other_side["VFX_hit_back_table"] = {}
         insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet_VFX_game_scene_RC_red_badge)
         insert_VFX_game_scene_char_RC_partical(obj_char)
         insert_VFX_game_scene_char_RC_black_overlay(obj_char)

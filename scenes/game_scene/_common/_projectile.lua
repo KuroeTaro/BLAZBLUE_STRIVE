@@ -207,10 +207,6 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
         end
     )
     obj["hit_hurt_blockstop_countdown"] = 0
-
-    obj["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-    obj["block_SFX"] = nil
-
     obj["hit_counter_ver_function"] = common_game_scene_counter_ver0
 
     obj["update"] = function()
@@ -305,12 +301,6 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
                 -- set_hit_hurt_blockstop_countdown
                 obj_char_other_side["hit_hurt_blockstop_countdown"] = obj["hit_hurt_blockstop_countdown"]
                 obj_char_other_side["last_hitstop_frame"] = 0
-                -- insert_block_VFX
-                obj["block_VFX_insert_function"](obj_char_other_side)
-                -- insert_FD_block_VFX
-                if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
-                    insert_VFX_game_scene_char_FD_block(obj_char_other_side)
-                end
                 -- return
             -- GP
             elseif obj_char_other_side["hurt_state"] == "GP" then -- idle unblock punish counter GP parry
