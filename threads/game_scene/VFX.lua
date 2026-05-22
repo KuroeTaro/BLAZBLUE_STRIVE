@@ -40,12 +40,9 @@ thread_data["slash_ver0_counter_sprite_batch"] = compress_module("asset/game_sce
 thread_data["slash_ver1_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/slash_ver1.dds")
 thread_data["throw_tech_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/throw_tech.dds")
     -- special
-thread_data["lighting_black_0_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/_special/lighting_black_0.dds")
-thread_data["lighting_black_1_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/_special/lighting_black_1.dds")
-thread_data["lighting_white_0_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/_special/lighting_white_0.dds")
-thread_data["lighting_white_1_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/_special/lighting_white_1.dds")
-thread_data["radial_black_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/_special/radial_black.dds")
-thread_data["radial_white_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/_special/radial_white.dds")
+thread_data["special_lighting_0_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/_special/lighting_0.dds")
+thread_data["special_lighting_1_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/_special/lighting_1.dds")
+thread_data["special_radial_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/_special/radial.dds")
 
 -- HUD_VFX
 thread_data["HUD_punish"] = non_compress_module("asset/game_scene/VFX/HUD_VFX/PUINISH_HUD_VFX.png")

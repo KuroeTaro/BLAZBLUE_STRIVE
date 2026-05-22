@@ -253,35 +253,20 @@ function order_load_game_scene_VFX(load_order)
         end,
         [30] = function()
             -- hit special
-            image_sprite_sheet_VFX_game_scene_lighting_black_0 = 
+            image_sprite_sheet_VFX_game_scene_special_lighting_0 = 
             sprite_sheet_load(
-                "asset/game_scene/VFX/hit_VFX/_special/lighting_black_0.json",
-                love.graphics.newImage(ASSET_DATA[8]["lighting_black_0_sprite_batch"])
+                "asset/game_scene/VFX/hit_VFX/_special/lighting_0.json",
+                love.graphics.newImage(ASSET_DATA[8]["special_lighting_0_sprite_batch"])
             )
-            image_sprite_sheet_VFX_game_scene_lighting_black_1 = 
+            image_sprite_sheet_VFX_game_scene_special_lighting_1 = 
             sprite_sheet_load(
-                "asset/game_scene/VFX/hit_VFX/_special/lighting_black_1.json",
-                love.graphics.newImage(ASSET_DATA[8]["lighting_black_1_sprite_batch"])
+                "asset/game_scene/VFX/hit_VFX/_special/lighting_1.json",
+                love.graphics.newImage(ASSET_DATA[8]["special_lighting_1_sprite_batch"])
             )
-            image_sprite_sheet_VFX_game_scene_lighting_white_0 = 
+            image_sprite_sheet_VFX_game_scene_special_radial = 
             sprite_sheet_load(
-                "asset/game_scene/VFX/hit_VFX/_special/lighting_white_0.json",
-                love.graphics.newImage(ASSET_DATA[8]["lighting_white_0_sprite_batch"])
-            )
-            image_sprite_sheet_VFX_game_scene_lighting_white_1 = 
-            sprite_sheet_load(
-                "asset/game_scene/VFX/hit_VFX/_special/lighting_white_1.json",
-                love.graphics.newImage(ASSET_DATA[8]["lighting_white_1_sprite_batch"])
-            )
-            image_sprite_sheet_VFX_game_scene_radial_black = 
-            sprite_sheet_load(
-                "asset/game_scene/VFX/hit_VFX/_special/radial_black.json",
-                love.graphics.newImage(ASSET_DATA[8]["radial_black_sprite_batch"])
-            )
-            image_sprite_sheet_VFX_game_scene_radial_white = 
-            sprite_sheet_load(
-                "asset/game_scene/VFX/hit_VFX/_special/radial_white.json",
-                love.graphics.newImage(ASSET_DATA[8]["radial_white_sprite_batch"])
+                "asset/game_scene/VFX/hit_VFX/_special/radial.json",
+                love.graphics.newImage(ASSET_DATA[8]["special_radial_sprite_batch"])
             )
         end,
         [31] = function()

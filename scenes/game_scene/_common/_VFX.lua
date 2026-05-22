@@ -575,16 +575,110 @@ function insert_VFX_game_scene_char_blast_special(obj_char,x,y,opacity,sx,sy)
     -- x y z opacity sx sy r f
     local obj = {0,0,0,1,1,1,0,0}
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local dx = -1410*sx
+    local dy = -200*sy
+    local center_black_offset = {}
+    local center_white_offset = {}
+    local r0 = (math.random()*0.785)*obj_char[5]
+    local r_table_cache = {
+        r0,
+        (r0 + 0.785 + (math.random()-0.5)*0.174)*obj_char[5],
+        (r0 + 1.570 + (math.random()-0.5)*0.174)*obj_char[5],
+        (r0 + 2.356 + (math.random()-0.5)*0.174)*obj_char[5],
+    }
+    local rot_x_table_cache = {
+        dx * obj_char[5] * math.cos(r_table_cache[1]) - dy * obj_char[6] * math.sin(r_table_cache[1]),
+        dx * obj_char[5] * math.cos(r_table_cache[2]) - dy * obj_char[6] * math.sin(r_table_cache[2]),
+        dx * obj_char[5] * math.cos(r_table_cache[3]) - dy * obj_char[6] * math.sin(r_table_cache[3]),
+        dx * obj_char[5] * math.cos(r_table_cache[4]) - dy * obj_char[6] * math.sin(r_table_cache[4]),
+    }
+    local rot_y_table_cache = {
+        dx * obj_char[5] * math.sin(r_table_cache[1]) + dy * obj_char[6] * math.cos(r_table_cache[1]),
+        dx * obj_char[5] * math.sin(r_table_cache[2]) + dy * obj_char[6] * math.cos(r_table_cache[2]),
+        dx * obj_char[5] * math.sin(r_table_cache[3]) + dy * obj_char[6] * math.cos(r_table_cache[3]),
+        dx * obj_char[5] * math.sin(r_table_cache[4]) + dy * obj_char[6] * math.cos(r_table_cache[4]),
+    }
+    local obj_x_table = {
+        obj_char["x"] + obj_char[5]*(x) + rot_x_table_cache[1],
+        obj_char["x"] + obj_char[5]*(x) + rot_x_table_cache[2],
+        obj_char["x"] + obj_char[5]*(x) + rot_x_table_cache[3],
+        obj_char["x"] + obj_char[5]*(x) + rot_x_table_cache[4],
+    }
+    local obj_y_table = {
+        obj_char["y"] + obj_char[6]*(y) + rot_y_table_cache[1],
+        obj_char["y"] + obj_char[6]*(y) + rot_y_table_cache[2],
+        obj_char["y"] + obj_char[6]*(y) + rot_y_table_cache[3],
+        obj_char["y"] + obj_char[6]*(y) + rot_y_table_cache[4],
+    }
+    local obj_center = {
+        obj_char["x"] + obj_char[5]*(x-500)*sx,
+        obj_char["y"] + obj_char[6]*(y-500)*sy,
+    }
+
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
     obj_char_other_side["VFX_hit_front_table"] = {}
     obj_char_other_side["VFX_hit_back_table"] = {}
-    
-    obj["r4"] = {}
-    obj["r4"][0] = math.random()*0.785
-    obj["r4"][1] = obj["r4"][0] + 0.785 + (math.random()-0.5)*0.174
-    obj["r4"][2] = obj["r4"][0] + 1.570 + (math.random()-0.5)*0.174
-    obj["r4"][3] = obj["r4"][0] + 2.356 + (math.random()-0.5)*0.174
+
+    obj["life"] = 18
+    obj["r_cache"] = r_table_cache
+    obj["x_table"] = obj_x_table
+    obj["y_table"] = obj_y_table
+    obj["center_table"] = obj_center
+
+    -- x y z opacity sx sy r f
+    obj["sub_obj"] = {
+        [1] = {obj_x_table[1],obj_y_table[1],obj_char[3],opacity,obj_char[5]*sx,obj_char[6]*sy,r_table_cache[1],0},
+        [2] = {obj_x_table[2],obj_y_table[2],obj_char[3],opacity,obj_char[5]*sx,obj_char[6]*sy,r_table_cache[2],0},
+        [3] = {obj_x_table[3],obj_y_table[3],obj_char[3],opacity,obj_char[5]*sx,obj_char[6]*sy,r_table_cache[3],0},
+        [4] = {obj_x_table[4],obj_y_table[4],obj_char[3],opacity,obj_char[5]*sx,obj_char[6]*sy,r_table_cache[4],0},
+        [5] = {obj_center[1],obj_center[2],obj_char[3],opacity,obj_char[5]*sx,obj_char[6]*sy,0,0},
+    }
+
+    obj["FCT"] = {0,0,0,0,0,0,0,0}
+    obj["LCT"] = {0,0,0,0,0,0,0,0}
+    obj["LCD"] = {0,0,0,0,0,0,0,0}
+    obj["animation"] = {}
+    obj["animation"][0] = 0
+    obj["animation"][2] = 1
+    obj["animation"][5] = 2
+    obj["animation"][7] = 3
+    obj["animation"][10] = 4
+    obj["animation"][12] = 5
+    obj["animation"][15] = 6
+    obj["animation"]["prop"] = 8
+    obj["animation"]["length"] = 18
+    obj["animation"]["loop"] = false
+    obj["animation"]["fix_type"] = true
+    obj["update"] = function()
+        if obj_char["state"] == "hitstop" then
+            -- do nothing
+        else
+            frame_animator(obj,obj["animation"])
+            obj["life"] = obj["life"] - 1
+        end
+    end
+    obj["update_in_time_stop"] = function()
+    end
+    obj["draw"] = function()
+        local obj_camera = obj_stage_game_scene_camera
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_lighting_0
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,obj["sub_obj"][1],image_sprite_sheet,""..obj[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj["sub_obj"][3],image_sprite_sheet,""..obj[8].."")
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+
+        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_lighting_1
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,obj["sub_obj"][2],image_sprite_sheet,""..obj[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj["sub_obj"][4],image_sprite_sheet,""..obj[8].."")
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+
+        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_special_radial
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,obj["sub_obj"][5],image_sprite_sheet,""..obj[8].."")
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+    end
 end
 function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,sy,r,fix_pos,negative_side)
     -- x y z opacity sx sy r f
