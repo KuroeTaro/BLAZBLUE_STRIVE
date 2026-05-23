@@ -401,6 +401,9 @@ function common_game_scene_strike_hurt_function_common_block(obj_char,hit_side_o
     -- state
     obj_char["state_cache"] = "block"
     obj_char["state"] = "blockstop"
+    -- hit_hurt_blockstop_countdown
+    obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
+    obj_char["last_hitstop_frame"] = 0
     -- camera_shake_enclose
     table.insert(obj_stage_main["camera_active_application_table"],
         function()
@@ -442,9 +445,6 @@ function common_game_scene_strike_hurt_function_common_block(obj_char,hit_side_o
         obj_char["character_animation"] = hit_side_obj_char["air_block_animation"]
     end
     init_character_anim_with(obj_char,obj_char["character_animation"])
-    -- hit_hurt_blockstop_countdown
-    obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
-    obj_char["last_hitstop_frame"] = 0
     -- block_VFX
     hit_side_obj_char["block_VFX_insert_function"](obj_char)
     if FD_block then
@@ -455,6 +455,9 @@ function common_game_scene_strike_hurt_function_GP_hurt(obj_char,hit_side_obj_ch
     -- state
     obj_char["state_cache"] = obj_char["state"]
     obj_char["state"] = "hurtstop"
+    -- hit_hurt_blockstop_countdown
+    obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
+    obj_char["last_hitstop_frame"] = 0
     -- camera_shake
     table.insert(obj_stage_main["camera_active_application_table"],
         function()
@@ -482,9 +485,6 @@ function common_game_scene_strike_hurt_function_GP_hurt(obj_char,hit_side_obj_ch
     init_point_linear_anim_with(obj_char,obj_char["hurtstop_wiggle_y_animation"])
     obj_char["hurtstop_wiggle_current_x"] = (obj_char["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
     obj_char["hurtstop_wiggle_current_y"] = (obj_char["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
-    -- hit_hurt_blockstop_countdown
-    obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
-    obj_char["last_hitstop_frame"] = 0
     -- insert_GP_VFX
     insert_VFX_game_scene_char_GP(obj_char)
 end
@@ -493,6 +493,9 @@ function common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_ob
     obj_char["state_cache"] = "hurt"
     obj_char["state"] = "hurtstop"
     obj_char["collision_move_available_cache"] = {1,1}
+    -- hit_hurt_blockstop_countdown
+    obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
+    obj_char["last_hitstop_frame"] = 0
     -- hit_counter_ver_function
     if obj_char["hurt_state"] == "counter" then 
         hit_side_obj_char["hit_counter_ver_function"](hit_side_obj_char,obj_char)
@@ -554,9 +557,6 @@ function common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_ob
     elseif obj_char["height_state"] == "wallstick" then
         obj_char["character_animation"] = hit_side_obj_char["wallstick_hurt_animation"]
     end
-    -- hit_hurt_blockstop_countdown
-    obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
-    obj_char["last_hitstop_frame"] = 0
     init_character_anim_with(obj_char,obj_char["character_animation"])
 
     -- hit_side_game_speed
@@ -608,7 +608,6 @@ function common_game_scene_throw_hurt_function(obj_char)
     if not common_game_scene_get_character_facing_currect(obj_char) then
         obj_char[5] = -obj_char[5]
     end
-
     -- state
     obj_char[8] = 4
     if obj_char["height_state"] == "air" then
@@ -621,7 +620,6 @@ function common_game_scene_throw_hurt_function(obj_char)
         obj_char["anchor_pos"] = anchor_data["ground_thrown_tested"]
         collision_ground_height_offset = 0
     end
-
     sprite_sheet_state = obj_char["sprite_sheet_state"]
 
     obj_char["pushbox"] = pushbox_data[sprite_sheet_state][0]
@@ -653,6 +651,14 @@ function common_game_scene_throw_hurt_function(obj_char)
     obj_char["velocity"] = {0,0}
     -- game_speed
     common_game_scene_game_speed_load_application(obj_char,{1,1,1,0,0,0})
+end
+
+function common_game_scene_hurt_animation_oscillator_obj_8(obj_char,option_0,option_1)
+    if obj_char[8] == option_0 then
+        obj_char[8] = option_1
+    else
+        obj_char[8] = option_0
+    end
 end
 
 function common_game_scene_game_speed_load_application(
@@ -692,10 +698,10 @@ function common_game_scene_game_speed_apply_application()
 end
 
 function common_game_scene_create_wiggle_animation(length,prop,wiggle_amount)
-    local mid_length = (length-length%2)/2
+    local mid_length = (length-length%4)/4
     local res_anim = {}
     res_anim[0] = {0,mid_length}
-    res_anim[mid_length] = {wiggle_amount,length}
+    res_anim[mid_length] = {wiggle_amount/4,length}
     res_anim[length] = {0,length}
     res_anim["prop"] = prop
     res_anim["length"] = length
@@ -1029,9 +1035,7 @@ function common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
         obj_char["hurtstop_wiggle_current_x"] = (obj_char["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
         obj_char["hurtstop_wiggle_current_y"] = (obj_char["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
     else
-        if obj_char["hit_hurt_block_slowdown_countdown"] <= 0 then
-            common_game_scene_game_speed_load_application(obj_char,{1,1,1,0,nil,nil})
-        else
+        if obj_char["hit_hurt_block_slowdown_countdown"] > 0 then
             common_game_scene_game_speed_load_application(obj_char,{1,2,1,obj_char["hit_hurt_block_slowdown_countdown"],nil,nil})
         end
     

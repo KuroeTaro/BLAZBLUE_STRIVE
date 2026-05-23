@@ -1,3 +1,23 @@
+function load_game_scene_anim_projectile_rc_main(obj,obj_char,obj_char_other_side)
+    local res = {}
+    res["prop_f"] = "f"
+    res["anim_length"] = 15
+
+    for i = 0,14 do
+        res[i*2] = function()
+            obj[8] = i
+        end
+    end
+    res[6] = function()
+        obj[8] = 3
+        obj["hitbox_table"] = {}
+    end
+    res[15] = function()
+        -- animation_end
+    end
+    return res
+end
+
 function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
     -- clear_projectile_rc_table
     obj_char["projectile_rc_table"] = {}
@@ -44,8 +64,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
 
     obj["hit_guard_type_state"] = "all"
 
-    obj["animation"] = load_game_scene_anim_char_red_rc_main(obj,obj_char,obj_char_other_side)
-    init_character_anim_with(obj,obj["animation"] )
+    obj["animation"] = load_game_scene_anim_projectile_rc_main(obj,obj_char,obj_char_other_side)
+    init_character_anim_without(obj,obj["animation"] )
 
     obj["camera_x_shake_anim"] = nil
     obj["camera_y_shake_anim"] = nil
@@ -245,7 +265,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
             -- set_projectile_strike_active
             obj["strike_active"] = false
             -- set_physics_lock
-            obj_char_other_side["physics_lock"] = true
+            obj_char_other_side["physics_lock"] = false
             -- hurt_block_at_current_frame
             if obj_char_other_side["hurt_block_at_current_frame"] then
                 return
@@ -271,8 +291,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
                 -- set_state_and_state_cache
                 obj_char_other_side["state_cache"] = "block"
                 obj_char_other_side["state"] = "block"
-                -- physics_lock
-                obj_char_other_side["physics_lock"] = false
+                -- set_hit_hurt_blockstop_countdown
+                obj_char_other_side["hit_hurt_blockstop_countdown"] = obj["hit_hurt_blockstop_countdown"]
+                obj_char_other_side["last_hitstop_frame"] = 0
                 -- set_insert_camera_anim
                 common_game_scene_hit_load_camera_shake_anim(obj,0.5,30)
                 table.insert(obj_stage_main["camera_active_application_table"],
@@ -298,17 +319,15 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
                     obj_char_other_side["character_animation"] = obj["air_block_animation"]
                 end
                 init_character_anim_with(obj_char_other_side,obj_char_other_side["character_animation"])
-                -- set_hit_hurt_blockstop_countdown
-                obj_char_other_side["hit_hurt_blockstop_countdown"] = obj["hit_hurt_blockstop_countdown"]
-                obj_char_other_side["last_hitstop_frame"] = 0
                 -- return
             -- GP
             elseif obj_char_other_side["hurt_state"] == "GP" then -- idle unblock punish counter GP parry
                 -- set_state_and_state_cache
                 obj_char_other_side["state_cache"] = obj_char_other_side["state"]
                 obj_char_other_side["state"] = obj_char_other_side["state"]
-                -- physics_lock
-                obj_char_other_side["physics_lock"] = false
+                -- set_hit_hurt_blockstop_countdown
+                obj_char_other_side["hit_hurt_blockstop_countdown"] = obj["hit_hurt_blockstop_countdown"]
+                obj_char_other_side["last_hitstop_frame"] = 0
                 -- set_insert_camera_anim
                 common_game_scene_hit_load_camera_shake_anim(obj,1.5,30)
                 table.insert(obj_stage_main["camera_active_application_table"],
@@ -320,9 +339,6 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
                         obj_camera["state"] = "active"
                     end
                 )
-                -- set_hit_hurt_blockstop_countdown
-                obj_char_other_side["hit_hurt_blockstop_countdown"] = obj["hit_hurt_blockstop_countdown"]
-                obj_char_other_side["last_hitstop_frame"] = 0
                 -- insert_VFX_game_scene_char_GP
                 insert_VFX_game_scene_char_GP(obj_char_other_side)
             -- parry
@@ -339,8 +355,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
                 obj_char_other_side["state_cache"] = "hurt"
                 obj_char_other_side["state"] = "hurt"
                 obj_char_other_side["collision_move_available_cache"] = {1,1}
-                -- physics_lock
-                obj_char_other_side["physics_lock"] = false
+                -- hit_hurt_blockstop_countdown
+                obj_char_other_side["hit_hurt_blockstop_countdown"] = obj["hit_hurt_blockstop_countdown"]
+                obj_char_other_side["last_hitstop_frame"] = 0
                 -- hit_counter_ver_function
                 if obj_char_other_side["hurt_state"] == "counter" then 
                     obj["hit_counter_ver_function"](obj_char,obj_char_other_side)
@@ -377,9 +394,6 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
                 elseif obj_char_other_side["height_state"] == "wallstick" then
                     obj_char_other_side["character_animation"] = obj["wallstick_hurt_animation"]
                 end
-                -- hit_hurt_blockstop_countdown
-                obj_char_other_side["hit_hurt_blockstop_countdown"] = obj["hit_hurt_blockstop_countdown"]
-                obj_char_other_side["last_hitstop_frame"] = 0
                 init_character_anim_with(obj_char_other_side,obj_char_other_side["character_animation"])
 
                 -- insert_hit_VFX
@@ -395,25 +409,6 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
 
     -- end
     table.insert(obj_char["projectile_rc_table"],obj)
-end
-function load_game_scene_anim_char_red_rc_main(obj,obj_char,obj_char_other_side)
-    local res = {}
-    res["prop_f"] = "f"
-    res["anim_length"] = 15
-
-    for i = 0,14 do
-        res[i*2] = function()
-            obj[8] = i
-        end
-    end
-    res[6] = function()
-        obj[8] = 3
-        obj["hitbox_table"] = {}
-    end
-    res[15] = function()
-        -- animation_end
-    end
-    return res
 end
 function load_game_scene_anim_char_red_rc_projectile_ground_block(
     obj_char,projectile,fix_direction,velocity_center,
@@ -800,7 +795,7 @@ function load_game_scene_anim_char_red_rc_projectile_ground_air_and_OTG_hurt(
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
         obj_char_other_side["collision_ground_height_offset"] = 130
         -- draw_correction
-        obj_char_other_side[8] = 1
+        common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- update
         update_before_land()
@@ -913,10 +908,164 @@ function load_game_scene_anim_char_red_rc_projectile_ground_air_and_OTG_hurt(
 end
 
 function insert_projectile_game_scene_char_common_RC_shockwave_blue(obj_char)
+    -- clear_projectile_rc_table
+    obj_char["projectile_rc_table"] = {}
+    -- x y z opacity sx sy r f
+    local obj = {0,0,0,1,1,1,0,0}
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local obj_camera = obj_stage_game_scene_camera
+    local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
+    local side = obj_char["player_side"]
+    local y_offset = 0
 
+    if obj_char["height_state"] == "air" then
+        y_offset = 150
+    else
+        y_offset = 280
+    end
+    obj["x"] = obj_char["x"]
+    obj["y"] = obj_char["y"] - y_offset
+    obj["f"] = 0
+    obj[1] = obj["x"] - obj_char[5]*600
+    obj[2] = obj["y"] - 600
+    obj[5] = obj_char[5]
+    obj["life"] = 30
+
+    obj["velocity"] = {obj_char["velocity"][1],obj_char["velocity"][2]}
+
+    obj["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
+
+    obj["hit_active"] = true
+
+    obj["animation"] = load_game_scene_anim_projectile_rc_main(obj,obj_char,obj_char_other_side)
+    init_character_anim_without(obj,obj["animation"] )
+
+    obj["update"] = function()
+        if obj_char["height_state"] == "air" then
+            y_offset = 150
+        else
+            y_offset = 280
+        end
+        obj["x"] = obj_char["x"]
+        obj["y"] = obj_char["y"] - y_offset
+        obj[1] = obj["x"] - obj_char[5]*600
+        obj[2] = obj["y"] - 600
+        obj[5] = obj_char[5]
+        character_animator(obj,obj["animation"])
+        obj["life"] = obj["life"] - 1
+    end
+    obj["draw"] = function()
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
+        love.graphics.setBlendMode("add")
+        love.graphics.setColor(1,1,1,1)
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setColor(1,1,1,1)
+        love.graphics.setBlendMode("alpha")
+    end
+    obj["enemy_interact_function"] = function()
+        -- strike_clash
+        -- projectile_and_projectile_interaction
+        -- interaction_with_enemy
+        local obj_stage_main = obj_stage_game_scene_main
+        local obj_camera = obj_stage_game_scene_camera
+        local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
+        -- if hit
+        if collision_uncondicational_hurtbox_test(obj,obj_char_other_side) and obj["hit_active"] then
+            -- set_projectile_hit_active
+            obj["hit_active"] = false
+            -- set_physics_lock
+            obj_char_other_side["physics_lock"] = false
+            -- change_draw_front
+            CHARACTER_VISUAL_FRONT = obj_char["player_side"]
+            -- game_speed
+            common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,60,19,nil})
+        end
+    end
+    -- obj["friendly_interact_function"] = function()
+
+    -- end
+    table.insert(obj_char["projectile_rc_table"],obj)
 end
 function insert_projectile_game_scene_char_common_RC_shockwave_purple(obj_char)
+    -- clear_projectile_rc_table
+    obj_char["projectile_rc_table"] = {}
+    -- x y z opacity sx sy r f
+    local obj = {0,0,0,1,1,1,0,0}
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local obj_camera = obj_stage_game_scene_camera
+    local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
+    local side = obj_char["player_side"]
+    local y_offset = 0
 
+    if obj_char["height_state"] == "air" then
+        y_offset = 150
+    else
+        y_offset = 280
+    end
+    obj["x"] = obj_char["x"]
+    obj["y"] = obj_char["y"] - y_offset
+    obj["f"] = 0
+    obj[1] = obj["x"] - obj_char[5]*600
+    obj[2] = obj["y"] - 600
+    obj[5] = obj_char[5]
+    obj["life"] = 30
+
+    obj["velocity"] = {obj_char["velocity"][1],obj_char["velocity"][2]}
+
+    obj["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
+
+    obj["hit_active"] = true
+
+    obj["animation"] = load_game_scene_anim_projectile_rc_main(obj,obj_char,obj_char_other_side)
+    init_character_anim_without(obj,obj["animation"] )
+
+    obj["update"] = function()
+        if obj_char["height_state"] == "air" then
+            y_offset = 150
+        else
+            y_offset = 280
+        end
+        obj["x"] = obj_char["x"]
+        obj["y"] = obj_char["y"] - y_offset
+        obj[1] = obj["x"] - obj_char[5]*600
+        obj[2] = obj["y"] - 600
+        obj[5] = obj_char[5]
+        character_animator(obj,obj["animation"])
+        obj["life"] = obj["life"] - 1
+    end
+    obj["draw"] = function()
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
+        love.graphics.setBlendMode("add")
+        love.graphics.setColor(1,1,1,1)
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setColor(1,1,1,1)
+        love.graphics.setBlendMode("alpha")
+    end
+    obj["enemy_interact_function"] = function()
+        -- strike_clash
+        -- projectile_and_projectile_interaction
+        -- interaction_with_enemy
+        local obj_stage_main = obj_stage_game_scene_main
+        local obj_camera = obj_stage_game_scene_camera
+        local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
+        -- if hit
+        if collision_uncondicational_hurtbox_test(obj,obj_char_other_side) and obj["hit_active"] then
+            -- set_projectile_hit_active
+            obj["hit_active"] = false
+            -- set_physics_lock
+            obj_char_other_side["physics_lock"] = false
+            -- change_draw_front
+            CHARACTER_VISUAL_FRONT = obj_char["player_side"]
+            -- game_speed
+            common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,20,19,nil})
+        end
+    end
+    -- obj["friendly_interact_function"] = function()
+
+    -- end
+    table.insert(obj_char["projectile_rc_table"],obj)
 end
 function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
 

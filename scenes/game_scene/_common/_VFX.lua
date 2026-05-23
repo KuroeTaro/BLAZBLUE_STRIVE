@@ -286,8 +286,7 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = obj_char[7]
-    obj[8] = 0
-    obj["f"] = -1
+    obj[8] = -1
     obj["update"] = function()
         if obj_char["height_state"] == "air" then
             y_offset = 750
@@ -296,11 +295,7 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
         end
         obj[1] = obj_char["x"] - obj_char[5]*(600)
         obj[2] = obj_char["y"] - obj_char[6]*(y_offset)
-        obj["f"] = obj["f"] + 1
-        if obj["f"] >= 1 then
-            obj[8] = obj[8] + 1
-            obj["f"] = 0
-        end
+        obj[8] = obj[8] + 1
         obj["life"] = obj["life"] - 1
     end
     obj["update_in_time_stop"] = function()

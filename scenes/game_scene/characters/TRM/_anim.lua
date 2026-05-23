@@ -1872,7 +1872,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
             obj_char,
             "0_stand_hurt_low",
             "stand","5_stand_idle",
-            35,5,1.00,
+            21,5,1.00,
             0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
@@ -1881,7 +1881,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
             obj_char,
             "4_stand_block_mid",
             "stand","5_stand_idle",
-            35,5,1.00,
+            21,5,1.00,
             0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
@@ -1890,7 +1890,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
             obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
-            35,5,1.00,
+            21,5,1.00,
             0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
@@ -1899,7 +1899,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            35,5,1.00,
+            21,5,1.00,
             0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
@@ -2402,7 +2402,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
             obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
-            35,5,1.00,
+            21,5,1.00,
             0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
@@ -2411,7 +2411,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
             obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
-            35,5,1.00,
+            21,5,1.00,
             0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
@@ -2420,7 +2420,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
             obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
-            35,5,1.00,
+            21,5,1.00,
             0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
@@ -2429,7 +2429,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
-            35,5,1.00,
+            21,5,1.00,
             0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
@@ -3244,7 +3244,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         obj_char["block_risk_gauge_gain"] = 25.0
         obj_char["FD_block_heat_drain"] = 5.0
 
-        obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv1(
+        obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
             obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
@@ -3253,7 +3253,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
             nil,nil,nil,nil,
             function() end
         )
-        obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv1(
+        obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
             obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
@@ -3262,7 +3262,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
             nil,nil,nil,nil,
             function() end
         )
-        obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv1(
+        obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
             obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
@@ -3271,7 +3271,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
             nil,nil,nil,nil,
             function() end
         )
-        obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv1(
+        obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
             obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
@@ -8008,7 +8008,7 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
         obj_char["strike_active"] = true
         -- collide
         obj_char["hitbox_table"] = {{200,10,400,190},{275,-145,250,120},{200,-255,220,100}}
-        obj_char["hurtbox_table"] = {{0,-140,280,300},{140,-80,440,300},{200,-255,270,150}}
+        obj_char["hurtbox_table"] = {{0,-140,280,300},{160,-55,560,380},{200,-255,290,170}}
         -- draw_correction
         obj_char[8] = 3
     end

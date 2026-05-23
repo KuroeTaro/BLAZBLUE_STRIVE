@@ -287,7 +287,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
-        obj_char_other_side[8] = 0
+        common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
@@ -403,7 +403,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
-        obj_char_other_side[8] = 0
+        common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
@@ -519,7 +519,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
-        obj_char_other_side[8] = 0
+        common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
@@ -635,7 +635,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
-        obj_char_other_side[8] = 0
+        common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
@@ -751,7 +751,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
-        obj_char_other_side[8] = 0
+        common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
@@ -3208,7 +3208,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
         obj_char_other_side["collision_ground_height_offset"] = 130
         -- draw_correction
-        obj_char_other_side[8] = 0
+        common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- update
         update_before_land()
@@ -3442,7 +3442,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
         obj_char_other_side["collision_ground_height_offset"] = 130
         -- draw_correction
-        obj_char_other_side[8] = 0
+        common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- update
         update_before_land()
@@ -3640,7 +3640,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
         obj_char_other_side["collision_ground_height_offset"] = 130
         -- draw_correction
-        obj_char_other_side[8] = 0
+        common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- update
         update_before_land()
@@ -3778,7 +3778,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
         obj_char_other_side["collision_ground_height_offset"] = 130
         -- draw_correction
-        obj_char_other_side[8] = 0
+        common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
@@ -3923,7 +3923,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
         obj_char_other_side["collision_ground_height_offset"] = 130
         -- draw_correction
-        obj_char_other_side[8] = 0
+        common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
@@ -4094,7 +4094,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
         obj_char_other_side["collision_ground_height_offset"] = 130
         -- draw_correction
-        obj_char_other_side[8] = 0
+        common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- update
         update_before_land()
@@ -4251,7 +4251,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
         obj_char_other_side["collision_ground_height_offset"] = 130
         -- draw_correction
-        obj_char_other_side[8] = 0
+        common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- update
         update_before_land()
@@ -4376,7 +4376,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
         obj_char_other_side["collision_ground_height_offset"] = 130
         -- draw_correction
-        obj_char_other_side[8] = 0
+        common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- update
         update_before_land()
@@ -4528,7 +4528,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
         obj_char_other_side["collision_ground_height_offset"] = 130
         -- draw_correction
-        obj_char_other_side[8] = 0
+        common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- update
         update_before_land()
@@ -4669,7 +4669,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
-        obj_char_other_side[8] = 0
+        common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
@@ -5147,7 +5147,6 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
         obj_char["input_sys_state"] = "none" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
         -- state_number
-        obj_char["velocity_cache"] = {0,0}
         obj_char["gravity"] = 0
         obj_char["friction"] = 0
         obj_char["physics_lock"] = false
@@ -5344,7 +5343,6 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char)
         obj_char["input_sys_state"] = "none" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
         -- state_number
-        obj_char["velocity_cache"] = {0,0}
         obj_char["gravity"] = 0
         obj_char["friction"] = 0
         obj_char["physics_lock"] = false
@@ -5367,7 +5365,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char)
         obj_char["VFX_hit_back_table"] = {}
         obj_char_other_side["VFX_hit_front_table"] = {}
         obj_char_other_side["VFX_hit_back_table"] = {}
-        insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet_VFX_game_scene_RC_red_badge)
+        insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet_VFX_game_scene_RC_blue_badge)
         insert_VFX_game_scene_char_RC_partical(obj_char)
         insert_VFX_game_scene_char_RC_black_overlay(obj_char)
     end
@@ -5428,7 +5426,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char)
         -- draw_correction
         obj_char[8] = 4
         -- projectile
-        insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
+        insert_projectile_game_scene_char_common_RC_shockwave_blue(obj_char)
     end
     res[27] = function()
         -- state
@@ -5550,7 +5548,6 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char)
         obj_char["input_sys_state"] = "none" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
         -- state_number
-        obj_char["velocity_cache"] = {0,0}
         obj_char["gravity"] = 0
         obj_char["friction"] = 0
         obj_char["physics_lock"] = false
@@ -5573,7 +5570,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char)
         obj_char["VFX_hit_back_table"] = {}
         obj_char_other_side["VFX_hit_front_table"] = {}
         obj_char_other_side["VFX_hit_back_table"] = {}
-        insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet_VFX_game_scene_RC_red_badge)
+        insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet_VFX_game_scene_RC_blue_badge)
         insert_VFX_game_scene_char_RC_partical(obj_char)
         insert_VFX_game_scene_char_RC_black_overlay(obj_char)
     end
@@ -5634,7 +5631,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char)
         -- draw_correction
         obj_char[8] = 4
         -- projectile
-        insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
+        insert_projectile_game_scene_char_common_RC_shockwave_purple(obj_char)
     end
     res[27] = function()
         -- state
@@ -5756,7 +5753,6 @@ function load_game_scene_anim_char_common_RC_yellow(obj_char)
         obj_char["input_sys_state"] = "none" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
         -- state_number
-        obj_char["velocity_cache"] = {0,0}
         obj_char["gravity"] = 0
         obj_char["friction"] = 0
         obj_char["physics_lock"] = false
@@ -5779,7 +5775,7 @@ function load_game_scene_anim_char_common_RC_yellow(obj_char)
         obj_char["VFX_hit_back_table"] = {}
         obj_char_other_side["VFX_hit_front_table"] = {}
         obj_char_other_side["VFX_hit_back_table"] = {}
-        insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet_VFX_game_scene_RC_red_badge)
+        insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet_VFX_game_scene_RC_yellow_badge)
         insert_VFX_game_scene_char_RC_partical(obj_char)
         insert_VFX_game_scene_char_RC_black_overlay(obj_char)
     end

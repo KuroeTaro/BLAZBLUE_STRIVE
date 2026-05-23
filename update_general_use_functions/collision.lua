@@ -171,6 +171,16 @@ function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_R
     end
 end
 
+function collision_uncondicational_hurtbox_test(hit_obj,hurt_obj)
+    for i=1,#hit_obj["hitbox_table"] do
+        local current_hitbox = collision_box_to_real_world_box(hit_obj,"hitbox",hit_obj["hitbox_table"][i])
+        local current_hurtbox = collision_box_to_real_world_box(hurt_obj,"pushbox",nil)
+        if collision_box_aabb_detection(current_hitbox,current_hurtbox) then
+            return true
+        end
+    end
+    return false
+end
 function collision_strike_hurtbox_test(hit_obj,hurt_obj)
     if hit_obj["hit_type_state"] ~= "strike" or hurt_obj["strike_inv"] == true or hit_obj["strike_active"] == false then
         return false

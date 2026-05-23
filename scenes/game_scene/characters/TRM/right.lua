@@ -1283,15 +1283,21 @@ function state_machine_char_game_scene_char_RP()
         end,
 
         ["hitstop"] = function()
-            common_update_game_scene_char_hitstop_countdown(obj_char)
+            if run_at_current_frame then
+                common_update_game_scene_char_hitstop_countdown(obj_char)
+            end
             state_gate_game_scene_char_RP_from_hitstop(input,obj_char)
         end,
         ["hurtstop"] = function()
-            common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
+            if run_at_current_frame then
+                common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
+            end
             state_gate_game_scene_char_RP_from_hurtstop(input,obj_char)
         end,
         ["blockstop"] = function()
-            common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
+            if run_at_current_frame then
+                common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
+            end
             state_gate_game_scene_char_RP_from_blockstop(input,obj_char)
         end,
 
@@ -2870,6 +2876,7 @@ function state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,color)
 end
 function state_gate_game_scene_char_RP_common_to_burst_RC_red(input,obj_char)
     if test_input_sys_press(input["RC"]) then
+        obj_char["velocity_cache"] = obj_char["velocity"]
         if test_input_sys_press_or_hold(input["dash"]) then
             if test_input_sys_press_or_hold(input["up"]) then
                 obj_char["velocity"] = {0,-7.5}
@@ -2903,6 +2910,86 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_red(input,obj_char)
         obj_char["character_animation"] = 
         load_game_scene_anim_char_common_burst_RC_red(obj_char)
         obj_char["state"] = "burst_RC_red"
+        init_character_anim_with(obj_char,obj_char["character_animation"])
+        return true
+    end
+end
+function state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char)
+    if test_input_sys_press(input["RC"]) then
+        obj_char["velocity_cache"] = obj_char["velocity"]
+        if test_input_sys_press_or_hold(input["dash"]) then
+            if test_input_sys_press_or_hold(input["up"]) then
+                obj_char["velocity"] = {0,-7.5}
+            elseif test_input_sys_press_or_hold(input["down"]) then
+                obj_char["velocity"] = {0,7.5}
+            elseif test_input_sys_press_or_hold(input["left"]) then
+                obj_char["velocity"] = {-7.5,0}
+            elseif test_input_sys_press_or_hold(input["right"]) then
+                obj_char["velocity"] = {7.5,0}
+            else
+                obj_char["velocity"] = {7.5*obj_char[5],0}
+            end
+        else
+            obj_char["velocity"] = {0,0}
+        end
+        obj_char["physics_lock"] = false
+        if obj_char["height_state"] == "air" then
+            obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
+            obj_char["anchor_pos"] = {330,485}
+            obj_char["pushbox"] = {0,-100,120,200}
+            obj_char["collision_ground_height_offset"] = 130
+            obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
+        else
+            obj_char["height_state"] = "stand"
+            obj_char["sprite_sheet_state"] = "burst_rc_ground"
+            obj_char["anchor_pos"] = {300,615}
+            obj_char["pushbox"]  = {0,-185,120,370}
+            obj_char["collision_ground_height_offset"] = 0
+            obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        end
+        obj_char["character_animation"] = 
+        load_game_scene_anim_char_common_burst_RC_blue(obj_char)
+        obj_char["state"] = "burst_RC_blue"
+        init_character_anim_with(obj_char,obj_char["character_animation"])
+        return true
+    end
+end
+function state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char)
+    if test_input_sys_press(input["RC"]) then
+        obj_char["velocity_cache"] = obj_char["velocity"]
+        if test_input_sys_press_or_hold(input["dash"]) then
+            if test_input_sys_press_or_hold(input["up"]) then
+                obj_char["velocity"] = {0,-7.5}
+            elseif test_input_sys_press_or_hold(input["down"]) then
+                obj_char["velocity"] = {0,7.5}
+            elseif test_input_sys_press_or_hold(input["left"]) then
+                obj_char["velocity"] = {-7.5,0}
+            elseif test_input_sys_press_or_hold(input["right"]) then
+                obj_char["velocity"] = {7.5,0}
+            else
+                obj_char["velocity"] = {7.5*obj_char[5],0}
+            end
+        else
+            obj_char["velocity"] = {0,0}
+        end
+        obj_char["physics_lock"] = false
+        if obj_char["height_state"] == "air" then
+            obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
+            obj_char["anchor_pos"] = {330,485}
+            obj_char["pushbox"] = {0,-100,120,200}
+            obj_char["collision_ground_height_offset"] = 130
+            obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
+        else
+            obj_char["height_state"] = "stand"
+            obj_char["sprite_sheet_state"] = "burst_rc_ground"
+            obj_char["anchor_pos"] = {300,615}
+            obj_char["pushbox"]  = {0,-185,120,370}
+            obj_char["collision_ground_height_offset"] = 0
+            obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        end
+        obj_char["character_animation"] = 
+        load_game_scene_anim_char_common_burst_RC_purple(obj_char)
+        obj_char["state"] = "burst_RC_blue"
         init_character_anim_with(obj_char,obj_char["character_animation"])
         return true
     end
@@ -3067,7 +3154,7 @@ function state_gate_game_scene_char_RP_from_throw_success(input,obj_char)
         return true
     end
     -- _PRC
-    if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"PRC") then
+    if not obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
         return true
     end
     -- animation_end
@@ -3361,7 +3448,7 @@ function state_gate_game_scene_char_RP_from_1_2_3_crouch(input,obj_char)
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"BRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
@@ -3417,7 +3504,7 @@ function state_gate_game_scene_char_RP_from_1_2_3_crouch_turn(input,obj_char)
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"BRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
@@ -3485,7 +3572,7 @@ function state_gate_game_scene_char_RP_from_1_2_3_crouch_to_stand_idle(input,obj
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"BRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
@@ -3551,7 +3638,7 @@ function state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char)
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"BRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
@@ -3607,7 +3694,7 @@ function state_gate_game_scene_char_RP_from_5_stand_turn(input,obj_char)
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"BRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
@@ -3663,7 +3750,7 @@ function state_gate_game_scene_char_RP_from_5_stand_dash_skid(input,obj_char)
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"BRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
@@ -3711,7 +3798,7 @@ function state_gate_game_scene_char_RP_from_4_walk(input,obj_char)
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"BRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
@@ -3773,7 +3860,7 @@ function state_gate_game_scene_char_RP_from_4_walk_to_stand_idle(input,obj_char)
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"BRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
@@ -3841,7 +3928,7 @@ function state_gate_game_scene_char_RP_from_6_walk(input,obj_char)
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"BRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
@@ -3900,7 +3987,7 @@ function state_gate_game_scene_char_RP_from_6_walk_to_stand_idle(input,obj_char)
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"BRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
@@ -3957,7 +4044,7 @@ function state_gate_game_scene_char_RP_from_7_8_9_jump_air_to_stand_idle(input,o
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"BRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char) then
         return true
     end
     -- _common_ground_idle_to_move
@@ -3994,7 +4081,7 @@ function state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char)
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"BRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
@@ -4052,7 +4139,7 @@ function state_gate_game_scene_char_RP_from_7_8_9_pre_jump(input,obj_char)
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"BRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char) then
         return true
     end
     -- _7_8_9_jump_air
@@ -4091,7 +4178,7 @@ function state_gate_game_scene_char_RP_from_4dash_backdash(input,obj_char)
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"BRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char) then
         return true
     end
     -- _common_ground_idle_to_move
@@ -4117,7 +4204,7 @@ function state_gate_game_scene_char_RP_from_4dash_air_backdash(input,obj_char)
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"BRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
@@ -4163,7 +4250,7 @@ function state_gate_game_scene_char_RP_from_6dash_dash(input,obj_char)
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"BRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
@@ -4207,7 +4294,7 @@ function state_gate_game_scene_char_RP_from_6dash_air_dash(input,obj_char)
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"BRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
@@ -4248,7 +4335,7 @@ function state_gate_game_scene_char_RP_from_6dash_dash_cancel(input,obj_char)
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"BRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char) then
         return true
     end
     -- common_ground_to_special_move
@@ -4339,6 +4426,75 @@ function state_gate_game_scene_char_RP_from_burst_RC_red(input,obj_char)
     end
 end
 function state_gate_game_scene_char_RP_from_burst_RC_blue(input,obj_char)
+    local obj_char_other_side = common_game_scene_change_character("R")
+    if obj_char["idle_cancel"] then
+        if obj_char["height_state"] == "air" then
+            -- _common_air_idle_to_move
+            if state_gate_game_scene_char_RP_common_air_to_special_move_hold_ver(input,obj_char) then
+                common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
+                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,30,0,nil})
+                obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
+                obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,obj_char) then
+                common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
+                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,30,0,nil})
+                obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
+                obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
+                return true
+            end
+        else
+            -- _common_ground_idle_to_move
+            if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(input,obj_char) then
+                common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
+                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,30,0,nil})
+                obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
+                obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(input,obj_char) then
+                common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
+                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,30,0,nil})
+                obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
+                obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
+                return true
+            end
+        end
+    end
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
+        -- to stand_idle
+        obj_char["idle_cancel"] = true
+        obj_char["physics_lock"] = false
+        if obj_char["height_state"] == "air" then
+            obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
+            init_character_anim_with(obj_char,obj_char["character_animation"])
+            obj_char["state"] = "7_8_9_jump_air"
+            obj_char["idle_cancel"] = true
+            obj_char["f"] = 20
+            character_animator(obj_char,obj_char["character_animation"])
+            -- _common_air_idle_to_move
+            if state_gate_game_scene_char_RP_common_air_to_dash_move_hold_ver_all(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,obj_char) then
+                return true
+            end
+            return true
+        else
+            obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)  
+            init_character_anim_with(obj_char,obj_char["character_animation"])
+            obj_char["state"] = "5_stand_idle"
+            -- _common_ground_idle_to_move
+            if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
+                return true
+            end
+        end
+        return true
+    end
 end
 function state_gate_game_scene_char_RP_from_burst_RC_purple(input,obj_char)
 end
@@ -4347,7 +4503,7 @@ end
 
 function state_gate_game_scene_char_RP_from_burst_overdrive(input,obj_char)
     -- _PRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
         obj_char["f"] = 28
         obj_char["physics_lock"] = false
         character_animator(obj_char,obj_char["character_animation"])
@@ -4394,7 +4550,7 @@ end
 
 function state_gate_game_scene_char_RP_from_2P(input,obj_char)
     -- _PRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
         return true
     end
     -- hit_cancel
@@ -4471,7 +4627,7 @@ function state_gate_game_scene_char_RP_from_2P(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_6P(input,obj_char)
     -- _PRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
         return true
     end
     -- hit_cancel
@@ -4497,7 +4653,7 @@ function state_gate_game_scene_char_RP_from_6P(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_5P(input,obj_char)
     -- _PRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
         return true
     end
     -- hit_cancel
@@ -4572,7 +4728,7 @@ function state_gate_game_scene_char_RP_from_5P(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_2K(input,obj_char)
     -- _PRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
         return true
     end
     -- hit_cancel
@@ -4639,7 +4795,7 @@ function state_gate_game_scene_char_RP_from_2K(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_6K(input,obj_char)
     -- _PRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
         return true
     end
     -- hit_cancel
@@ -4665,7 +4821,7 @@ function state_gate_game_scene_char_RP_from_6K(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_5K(input,obj_char)
     -- _PRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
         return true
     end
     -- hit_cancel
@@ -4755,7 +4911,7 @@ function state_gate_game_scene_char_RP_from_5K(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_2S(input,obj_char)
     -- _PRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
         return true
     end
     -- hit_cancel
@@ -4783,7 +4939,7 @@ function state_gate_game_scene_char_RP_from_2S(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_6S(input,obj_char)
     -- _PRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
         return true
     end
     -- hit_cancel
@@ -4809,7 +4965,7 @@ function state_gate_game_scene_char_RP_from_6S(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_cS(input,obj_char)
     -- _PRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
         return true
     end
     -- hit_cancel
@@ -4909,7 +5065,7 @@ function state_gate_game_scene_char_RP_from_cS(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_fS(input,obj_char)
     -- _PRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
         return true
     end
     -- hit_cancel
@@ -4935,7 +5091,7 @@ function state_gate_game_scene_char_RP_from_fS(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_2Launcher(input,obj_char)
     -- _PRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
         return true
     end
     -- hit_cancel
@@ -4962,7 +5118,7 @@ function state_gate_game_scene_char_RP_from_2Launcher(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_4_6Launcher(input,obj_char)
     -- _PRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
         return true
     end
     -- idle_cancel
@@ -4984,7 +5140,7 @@ function state_gate_game_scene_char_RP_from_4_6Launcher(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_5Launcher(input,obj_char)
     -- _PRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
         return true
     end
     -- hit_cancel
@@ -5012,7 +5168,7 @@ end
 
 function state_gate_game_scene_char_RP_from_jP(input,obj_char)
     -- _PRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
@@ -5089,7 +5245,7 @@ function state_gate_game_scene_char_RP_from_jP(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_jK(input,obj_char)
     -- _PRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
@@ -5166,7 +5322,7 @@ function state_gate_game_scene_char_RP_from_jK(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_j2K(input,obj_char)
     -- _PRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
@@ -5216,7 +5372,7 @@ function state_gate_game_scene_char_RP_from_j2K(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_jS(input,obj_char)
     -- _PRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
@@ -5261,7 +5417,7 @@ function state_gate_game_scene_char_RP_from_jS(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_j4_6Launcher(input,obj_char)
     -- _PRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
@@ -5293,7 +5449,7 @@ function state_gate_game_scene_char_RP_from_j4_6Launcher(input,obj_char)
 end
 function state_gate_game_scene_char_RP_from_j5Launcher(input,obj_char)
     -- _PRC
-    if state_gate_game_scene_char_RP_common_to_RC_move(input,obj_char,"PRC") then
+    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
