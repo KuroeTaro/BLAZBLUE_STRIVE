@@ -584,10 +584,6 @@ function update_game_scene_char()
         update_game_scene_char_LP_VFX()
         update_game_scene_char_LP_black_overlay()
     end
-    if game_speed_cache_LP == 0 or (game_speed_cache_LP ~= 0 and game_speed_subframe_cache_LP <= game_speed_cache_LP) then
-        update_game_scene_char_LP_VFX_at_game_speed_0()
-    end
-
     if game_speed_cache_RP ~= 0 then
         update_game_scene_char_RP()
     end
@@ -595,9 +591,6 @@ function update_game_scene_char()
         update_game_scene_char_RP_projectile()
         update_game_scene_char_RP_VFX()
         update_game_scene_char_RP_black_overlay()
-    end
-    if game_speed_cache_RP == 0 or (game_speed_cache_RP ~= 0 and game_speed_subframe_cache_RP <= game_speed_cache_RP) then
-        update_game_scene_char_RP_VFX_at_game_speed_0()
     end
 
     -- attachment 用于某些需要根据角色本身本帧数据来更新的部分

@@ -27,16 +27,16 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
     local side = obj_char["player_side"]
-    local y_offset = 0
+    obj["y_offset"] = 0
 
     if obj_char["height_state"] == "air" then
-        y_offset = 150
+        obj["y_offset"] = 150
     else
-        y_offset = 280
+        obj["y_offset"] = 280
     end
     obj["x"] = obj_char["x"]
-    obj["y"] = obj_char["y"] - y_offset
-    obj["f"] = 0
+    obj["y"] = obj_char["y"] - obj["y_offset"]
+    obj["f"] = -1
     obj[1] = obj["x"] - obj_char[5]*600
     obj[2] = obj["y"] - 600
     obj[5] = obj_char[5]
@@ -231,19 +231,19 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
 
     obj["update"] = function()
         if obj_char["height_state"] == "air" then
-            y_offset = 150
+            obj["y_offset"] = 150
         else
-            y_offset = 280
+            obj["y_offset"] = 280
         end
         obj["x"] = obj_char["x"]
-        obj["y"] = obj_char["y"] - y_offset
-        obj[1] = obj["x"] - obj_char[5]*600
-        obj[2] = obj["y"] - 600
-        obj[5] = obj_char[5]
+        obj["y"] = obj_char["y"] - obj["y_offset"]
         character_animator(obj,obj["animation"])
         obj["life"] = obj["life"] - 1
     end
     obj["draw"] = function()
+        obj[1] = obj["x"] - obj_char[5]*600
+        obj[2] = obj["y"] - 600
+        obj[5] = obj_char[5]
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
         love.graphics.setBlendMode("add")
@@ -329,7 +329,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
                 obj_char_other_side["hit_hurt_blockstop_countdown"] = obj["hit_hurt_blockstop_countdown"]
                 obj_char_other_side["last_hitstop_frame"] = 0
                 -- set_insert_camera_anim
-                common_game_scene_hit_load_camera_shake_anim(obj,1.5,30)
+                common_game_scene_hit_load_camera_shake_anim(obj,1.0,30)
                 table.insert(obj_stage_main["camera_active_application_table"],
                     function()
                         anim_stage_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
@@ -363,7 +363,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
                     obj["hit_counter_ver_function"](obj_char,obj_char_other_side)
                 end
                 -- set_insert_camera_anim
-                common_game_scene_hit_load_camera_shake_anim(obj,1.5,30)
+                common_game_scene_hit_load_camera_shake_anim(obj,1.0,30)
                 common_game_scene_red_rc_hit_load_camera_enclose_anim(obj)
                 obj["enclose_position_offset"] = {
                     0,
@@ -916,16 +916,16 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(obj_char)
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
     local side = obj_char["player_side"]
-    local y_offset = 0
+    obj["y_offset"] = 0
 
     if obj_char["height_state"] == "air" then
-        y_offset = 150
+        obj["y_offset"] = 150
     else
-        y_offset = 280
+        obj["y_offset"] = 280
     end
     obj["x"] = obj_char["x"]
-    obj["y"] = obj_char["y"] - y_offset
-    obj["f"] = 0
+    obj["y"] = obj_char["y"] - obj["y_offset"]
+    obj["f"] = -1
     obj[1] = obj["x"] - obj_char[5]*600
     obj[2] = obj["y"] - 600
     obj[5] = obj_char[5]
@@ -942,19 +942,19 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(obj_char)
 
     obj["update"] = function()
         if obj_char["height_state"] == "air" then
-            y_offset = 150
+            obj["y_offset"] = 150
         else
-            y_offset = 280
+            obj["y_offset"] = 280
         end
         obj["x"] = obj_char["x"]
-        obj["y"] = obj_char["y"] - y_offset
-        obj[1] = obj["x"] - obj_char[5]*600
-        obj[2] = obj["y"] - 600
-        obj[5] = obj_char[5]
+        obj["y"] = obj_char["y"] - obj["y_offset"]
         character_animator(obj,obj["animation"])
         obj["life"] = obj["life"] - 1
     end
     obj["draw"] = function()
+        obj[1] = obj["x"] - obj_char[5]*600
+        obj[2] = obj["y"] - 600
+        obj[5] = obj_char[5]
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
         love.graphics.setBlendMode("add")
@@ -996,16 +996,16 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(obj_char)
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
     local side = obj_char["player_side"]
-    local y_offset = 0
+    obj["y_offset"] = 0
 
     if obj_char["height_state"] == "air" then
-        y_offset = 150
+        obj["y_offset"] = 150
     else
-        y_offset = 280
+        obj["y_offset"] = 280
     end
     obj["x"] = obj_char["x"]
-    obj["y"] = obj_char["y"] - y_offset
-    obj["f"] = 0
+    obj["y"] = obj_char["y"] - obj["y_offset"]
+    obj["f"] = -1
     obj[1] = obj["x"] - obj_char[5]*600
     obj[2] = obj["y"] - 600
     obj[5] = obj_char[5]
@@ -1022,19 +1022,19 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(obj_char)
 
     obj["update"] = function()
         if obj_char["height_state"] == "air" then
-            y_offset = 150
+            obj["y_offset"] = 150
         else
-            y_offset = 280
+            obj["y_offset"] = 280
         end
         obj["x"] = obj_char["x"]
-        obj["y"] = obj_char["y"] - y_offset
-        obj[1] = obj["x"] - obj_char[5]*600
-        obj[2] = obj["y"] - 600
-        obj[5] = obj_char[5]
+        obj["y"] = obj_char["y"] - obj["y_offset"]
         character_animator(obj,obj["animation"])
         obj["life"] = obj["life"] - 1
     end
     obj["draw"] = function()
+        obj[1] = obj["x"] - obj_char[5]*600
+        obj[2] = obj["y"] - 600
+        obj[5] = obj_char[5]
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
         love.graphics.setBlendMode("add")

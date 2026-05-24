@@ -30,15 +30,6 @@ function insert_VFX_game_scene_char_TRM_2P_whiff(obj_char)
     obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
-        -- obj[1] = obj_char["x"] + obj_char[5]*(-860)/2
-        -- obj[2] = obj_char["y"] + obj_char[6]*(840)
-        obj[1] = obj_char["x"] + obj_char[5]*(35)
-        obj[2] = obj_char["y"] + obj_char[6]*(-230)
-        obj[3] = obj_char[3]
-        obj[4] = 1
-        obj[5] = obj_char[5]
-        obj[6] = obj_char[6]
-        obj[7] = obj_char[7]
         if obj_char["state"] == "2P" then
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
@@ -48,12 +39,18 @@ function insert_VFX_game_scene_char_TRM_2P_whiff(obj_char)
             obj["life"] = 0
         end
     end
-    obj["update_in_time_stop"] = function()
+    obj["draw_sync"] = function()
         obj[1] = obj_char["x"] + obj_char[5]*(35)
         obj[2] = obj_char["y"] + obj_char[6]*(-230)
+        obj[3] = obj_char[3]
+        obj[5] = obj_char[5]
+        obj[6] = obj_char[6]
+        obj[7] = obj_char[7]
+        -- obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
+        obj["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -95,15 +92,6 @@ function insert_VFX_game_scene_char_TRM_6P_whiff(obj_char)
     obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
-        -- obj[1] = obj_char["x"] + obj_char[5]*(-860)/2
-        -- obj[2] = obj_char["y"] + obj_char[6]*(840)
-        obj[1] = obj_char["x"] + obj_char[5]*(-294)
-        obj[2] = obj_char["y"] + obj_char[6]*(-543)
-        obj[3] = obj_char[3]
-        obj[4] = 1
-        obj[5] = obj_char[5]
-        obj[6] = obj_char[6]
-        obj[7] = obj_char[7]
         if obj_char["state"] == "6P" then
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
@@ -113,15 +101,20 @@ function insert_VFX_game_scene_char_TRM_6P_whiff(obj_char)
             obj["life"] = 0
         end
     end
-    obj["update_in_time_stop"] = function()
+    obj["draw_sync"] = function()
         obj[1] = obj_char["x"] + obj_char[5]*(-294)
         obj[2] = obj_char["y"] + obj_char[6]*(-543)
+        obj[3] = obj_char[3]
+        obj[5] = obj_char[5]
+        obj[6] = obj_char[6]
+        obj[7] = obj_char[7]
+        -- obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
+        obj["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
-
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
@@ -160,15 +153,6 @@ function insert_VFX_game_scene_char_TRM_5P_whiff(obj_char)
     obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
-        -- obj[1] = obj_char["x"] + obj_char[5]*(-860)/2
-        -- obj[2] = obj_char["y"] + obj_char[6]*(840)
-        obj[1] = obj_char["x"] + obj_char[5]*(56)
-        obj[2] = obj_char["y"] + obj_char[6]*(-468)
-        obj[3] = obj_char[3]
-        obj[4] = 1
-        obj[5] = obj_char[5]
-        obj[6] = obj_char[6]
-        obj[7] = obj_char[7]
         if obj_char["state"] == "5P" then
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
@@ -178,12 +162,18 @@ function insert_VFX_game_scene_char_TRM_5P_whiff(obj_char)
             obj["life"] = 0
         end
     end
-    obj["update_in_time_stop"] = function()
+    obj["draw_sync"] = function()
         obj[1] = obj_char["x"] + obj_char[5]*(56)
         obj[2] = obj_char["y"] + obj_char[6]*(-468)
+        obj[3] = obj_char[3]
+        obj[5] = obj_char[5]
+        obj[6] = obj_char[6]
+        obj[7] = obj_char[7]
+        -- obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
+        obj["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -221,15 +211,6 @@ function insert_VFX_game_scene_char_TRM_2S_whiff(obj_char)
     obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
-        -- obj[1] = obj_char["x"] + obj_char[5]*(-860)/2
-        -- obj[2] = obj_char["y"] + obj_char[6]*(840)
-        obj[1] = obj_char["x"] + obj_char[5]*(166)
-        obj[2] = obj_char["y"] + obj_char[6]*(-247)
-        obj[3] = obj_char[3]
-        obj[4] = 1
-        obj[5] = obj_char[5]
-        obj[6] = obj_char[6]
-        obj[7] = obj_char[7]
         if obj_char["state"] == "2S" then
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
@@ -239,12 +220,18 @@ function insert_VFX_game_scene_char_TRM_2S_whiff(obj_char)
             obj["life"] = 0
         end
     end
-    obj["update_in_time_stop"] = function()
+    obj["draw_sync"] = function()
         obj[1] = obj_char["x"] + obj_char[5]*(166)
         obj[2] = obj_char["y"] + obj_char[6]*(-247)
+        obj[3] = obj_char[3]
+        obj[5] = obj_char[5]
+        obj[6] = obj_char[6]
+        obj[7] = obj_char[7]
+        -- obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
+        obj["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -288,13 +275,6 @@ function insert_VFX_game_scene_char_TRM_6S_whiff(obj_char)
     obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
-        obj[1] = obj_char["x"] + obj_char[5]*(-430)
-        obj[2] = obj_char["y"] + obj_char[6]*(-520)
-        obj[3] = obj_char[3]
-        obj[4] = 1
-        obj[5] = obj_char[5]
-        obj[6] = obj_char[6]
-        obj[7] = obj_char[7]
         if obj_char["state"] == "6S" then
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
@@ -304,15 +284,20 @@ function insert_VFX_game_scene_char_TRM_6S_whiff(obj_char)
             obj["life"] = 0
         end
     end
-    obj["update_in_time_stop"] = function()
+    obj["draw_sync"] = function()
         obj[1] = obj_char["x"] + obj_char[5]*(-430)
         obj[2] = obj_char["y"] + obj_char[6]*(-520)
+        obj[3] = obj_char[3]
+        obj[5] = obj_char[5]
+        obj[6] = obj_char[6]
+        obj[7] = obj_char[7]
+        -- obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
+        obj["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
-
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
@@ -354,15 +339,6 @@ function insert_VFX_game_scene_char_TRM_cS_whiff(obj_char)
     obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
-        -- obj[1] = obj_char["x"] + obj_char[5]*(-860)/2
-        -- obj[2] = obj_char["y"] + obj_char[6]*(840)
-        obj[1] = obj_char["x"] + obj_char[5]*(140)
-        obj[2] = obj_char["y"] + obj_char[6]*(-440)
-        obj[3] = obj_char[3]
-        obj[4] = 0.25
-        obj[5] = obj_char[5]
-        obj[6] = obj_char[6]
-        obj[7] = obj_char[7]
         if obj_char["state"] == "cS" then
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
@@ -372,15 +348,20 @@ function insert_VFX_game_scene_char_TRM_cS_whiff(obj_char)
             obj["life"] = 0
         end
     end
-    obj["update_in_time_stop"] = function()
+    obj["draw_sync"] = function()
         obj[1] = obj_char["x"] + obj_char[5]*(140)
         obj[2] = obj_char["y"] + obj_char[6]*(-440)
+        obj[3] = obj_char[3]
+        obj[5] = obj_char[5]
+        obj[6] = obj_char[6]
+        obj[7] = obj_char[7]
+        -- obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
+        obj["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
-
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
@@ -391,14 +372,13 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_switch(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
     local image_sprite_sheet = nil
     local side = obj_char["player_side"]
-    local y = 0
     local height_state_y_offset = {
         ["stand"] = -730,
         ["crouch"] = -530,
         ["air"] = -440,
         ["OTG"] = -230
     }
-    y = height_state_y_offset[obj_char["height_state"]]
+    obj["y_offset"] = height_state_y_offset[obj_char["height_state"]]
     if side == "L" then
         image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["5H_switch_whiff_VFX"]
     elseif side == "R" then
@@ -407,7 +387,7 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_switch(obj_char)
 
     obj["life"] = 30
     obj[1] = obj_char["x"] + obj_char[5]*(-370)
-    obj[2] = obj_char["y"] + obj_char[6]*(y)
+    obj[2] = obj_char["y"] + obj_char[6]*obj["y_offset"]
     obj[3] = obj_char[3]
     obj[4] = 1
     obj[5] = obj_char[5]
@@ -430,10 +410,25 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_switch(obj_char)
         frame_animator(obj,obj["animation"])
         obj["life"] = obj["life"] - 1
     end
-    obj["update_in_time_stop"] = function()
+    obj["draw_sync"] = function()
+        local height_state_y_offset = {
+            ["stand"] = -730,
+            ["crouch"] = -530,
+            ["air"] = -440,
+            ["OTG"] = -230
+        }
+        obj["y_offset"] = height_state_y_offset[obj_char["height_state"]]
+        obj[1] = obj_char["x"] + obj_char[5]*(-370)
+        obj[2] = obj_char["y"] + obj_char[6]*obj["y_offset"]
+        obj[3] = obj_char[3]
+        obj[5] = obj_char[5]
+        obj[6] = obj_char[6]
+        obj[7] = obj_char[7]
+        obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
+        obj["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
         love.graphics.setColor(5/255,5/255,5/255,0.5)
@@ -447,11 +442,11 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot_oroboros_blas
     local obj = {0,0,0,1,1,1,0,0}
     local image_sprite_sheet = nil
     local side = obj_char["player_side"]
-    local dx = 35
-    local dy = -210
-    local r = obj_char["shot_sys_oroboros_aim_r"]*obj_char[5]
-    local rot_dx = dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.cos(r) - dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.sin(r)
-    local rot_dy = dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.sin(r) + dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.cos(r)
+    local center_dx = 35
+    local center_dy = -210
+    local center_r = obj_char["shot_sys_oroboros_aim_r"]*obj_char[5]
+    local rot_dx = center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.cos(center_r) - center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.sin(center_r)
+    local rot_dy = center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.sin(center_r) + center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.cos(center_r)
     if side == "L" then
         image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["5H_shot_oroboros_blast_whiff_VFX"]
     elseif side == "R" then
@@ -465,7 +460,7 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot_oroboros_blas
     obj[4] = 0.65
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
-    obj[7] = r
+    obj[7] = center_r
     obj[8] = 0
     obj["FCT"] = {0,0,0,0,0,0,0,0}
     obj["LCT"] = {0,0,0,0,0,0,0,0}
@@ -489,10 +484,23 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot_oroboros_blas
             obj["life"] = 0
         end
     end
-    obj["update_in_time_stop"] = function()
+    obj["draw_sync"] = function()
+        local center_dx = 35
+        local center_dy = -210
+        local center_r = obj_char["shot_sys_oroboros_aim_r"]*obj_char[5]
+        local rot_dx = center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.cos(center_r) - center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.sin(center_r)
+        local rot_dy = center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.sin(center_r) + center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.cos(center_r)
+        obj[1] = obj_char["shot_sys_oroboros_ease_current"][1] + rot_dx
+        obj[2] = obj_char["shot_sys_oroboros_ease_current"][2] + rot_dy
+        obj[3] = obj_char[3]
+        obj[5] = obj_char[5]
+        obj[6] = obj_char[6]
+        obj[7] = center_r
+        obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
+        obj["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -530,15 +538,6 @@ function insert_VFX_game_scene_char_TRM_5Launcher_whiff_slash(obj_char)
     obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
-        -- obj[1] = obj_char["x"] + obj_char[5]*(-860)/2
-        -- obj[2] = obj_char["y"] + obj_char[6]*(840)
-        obj[1] = obj_char["x"] + obj_char[5]*(-285)
-        obj[2] = obj_char["y"] + obj_char[6]*(-535)
-        obj[3] = obj_char[3]
-        obj[4] = 1
-        obj[5] = obj_char[5]
-        obj[6] = obj_char[6]
-        obj[7] = obj_char[7]
         if obj_char["state"] == "5Launcher" then
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
@@ -548,12 +547,18 @@ function insert_VFX_game_scene_char_TRM_5Launcher_whiff_slash(obj_char)
             obj["life"] = 0
         end
     end
-    obj["update_in_time_stop"] = function()
+    obj["draw_sync"] = function()
         obj[1] = obj_char["x"] + obj_char[5]*(-285)
         obj[2] = obj_char["y"] + obj_char[6]*(-535)
+        obj[3] = obj_char[3]
+        obj[5] = obj_char[5]
+        obj[6] = obj_char[6]
+        obj[7] = obj_char[7]
+        -- obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
+        obj["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -610,15 +615,20 @@ function insert_VFX_game_scene_char_TRM_5Launcher_whiff_glow(obj_char)
             obj["life"] = 0
         end
     end
-    obj["update_in_time_stop"] = function()
+    obj["draw_sync"] = function()
         obj[1] = obj_char["x"] + obj_char[5]*(-380)
         obj[2] = obj_char["y"] + obj_char[6]*(-636)
+        obj[3] = obj_char[3]
+        obj[5] = obj_char[5]
+        obj[6] = obj_char[6]
+        obj[7] = obj_char[7]
+        -- obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
+        obj["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
-
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
@@ -683,7 +693,7 @@ function insert_VFX_game_scene_char_TRM_jS_whiff(obj_char)
             obj["life"] = obj["life"] - 1
         end
     end
-    obj["update_in_time_stop"] = function()
+    obj["draw_sync"] = function()
         if obj["FCT"][8] < 7 and obj_char["state"] == "jS" then
             obj[1] = obj_char["x"] + obj_char["velocity"][1] + obj_char[5]*(-120)
             obj[2] = obj_char["y"] + obj_char["velocity"][2] +obj_char[6]*(-370)
@@ -701,12 +711,13 @@ function insert_VFX_game_scene_char_TRM_jS_whiff(obj_char)
             obj[6] = obj_char[6]
             obj[7] = obj_char[7]
         end
+        -- obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
+        obj["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
-
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")

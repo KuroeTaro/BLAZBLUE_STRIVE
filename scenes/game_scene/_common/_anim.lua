@@ -5238,6 +5238,9 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
     res[35] = function()
         -- state
         update_state()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
         -- draw_correction
         obj_char[8] = 7
     end
@@ -5246,13 +5249,6 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
         update_state()
         -- draw_correction
         obj_char[8] = 8
-    end
-    res[40] = function()
-        -- state
-        update_state()
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
     end
     res[42] = function()
         -- state
@@ -5443,6 +5439,9 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char)
     res[35] = function()
         -- state
         update_state()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
         -- draw_correction
         obj_char[8] = 7
     end
@@ -5451,13 +5450,6 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char)
         update_state()
         -- draw_correction
         obj_char[8] = 8
-    end
-    res[40] = function()
-        -- state
-        update_state()
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
     end
     res[42] = function()
         -- state
@@ -5648,6 +5640,9 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char)
     res[35] = function()
         -- state
         update_state()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
         -- draw_correction
         obj_char[8] = 7
     end
@@ -5656,13 +5651,6 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char)
         update_state()
         -- draw_correction
         obj_char[8] = 8
-    end
-    res[40] = function()
-        -- state
-        update_state()
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
     end
     res[42] = function()
         -- state
@@ -5844,6 +5832,9 @@ function load_game_scene_anim_char_common_RC_yellow(obj_char)
     res[35] = function()
         -- state
         update_state()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
         -- draw_correction
         obj_char[8] = 7
     end
@@ -5852,13 +5843,6 @@ function load_game_scene_anim_char_common_RC_yellow(obj_char)
         update_state()
         -- draw_correction
         obj_char[8] = 8
-    end
-    res[40] = function()
-        -- state
-        update_state()
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
     end
     res[42] = function()
         -- state

@@ -14,8 +14,8 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     obj[1] = obj_char["shot_sys_reticle"][1]
     obj[2] = obj_char["shot_sys_reticle"][2]
     obj["x"] = obj_char_other_side["x"]
-    obj["y"] = obj_char_other_side["y"]-100
-    obj["f"] = 0
+    obj["y"] = obj_char_other_side["y"]-obj_char_other_side["pushbox"][4]/2
+    obj["f"] = -1
     obj["type"] = "projectile"
     obj["hit_type_state"] = "strike"
     obj["life"] = 42
@@ -54,7 +54,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
 
     obj["camera_x_shake_anim"] = nil
     obj["camera_y_shake_anim"] = nil
-    common_game_scene_hit_load_camera_shake_anim(obj,0.5,15)
+    common_game_scene_hit_load_camera_shake_anim(obj,0.25,15)
 
     obj["stand_hurt_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         obj_char,obj,true,nil,
@@ -154,6 +154,8 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     end
     obj["draw"] = function()
         local image_sprite_sheet = image_sprite_sheet_table[obj["sprite_sheet_state"]]
+        obj[1] = obj_char["shot_sys_reticle"][1]
+        obj[2] = obj_char["shot_sys_reticle"][2]
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1071,14 +1073,15 @@ function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(obj
         frame_animator(obj,obj["animation"])
         obj["life"] = obj["life"] - 1
     end
-    obj["update_in_time_stop"] = function()
+    obj["draw_sync"] = function()
+        -- obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_blast_ver0_counter
+        -- obj["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
-
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
