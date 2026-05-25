@@ -1431,7 +1431,7 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
     obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["opacity_point_linear_animation"] = {}
-    obj["opacity_point_linear_animation"][0] = {0.25,5}
+    obj["opacity_point_linear_animation"][0] = {0.25,15}
     obj["opacity_point_linear_animation"][15] = {1,25}
     obj["opacity_point_linear_animation"][25] = {1,35}
     obj["opacity_point_linear_animation"][35] = {0,35}

@@ -455,11 +455,11 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot_oroboros_blas
         image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["5H_shot_oroboros_blast_whiff_VFX"]
     end 
 
-    obj["life"] = 21
+    obj["life"] = 15
     obj[1] = obj_char["shot_sys_oroboros_ease_current"][1] + rot_dx
     obj[2] = obj_char["shot_sys_oroboros_ease_current"][2] + rot_dy
     obj[3] = obj_char[3]
-    obj[4] = 0.65
+    obj[4] = 1
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = center_r
@@ -469,12 +469,12 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot_oroboros_blas
     obj["LCD"] = {0,0,0,0,0,0,0,0}
     obj["animation"] = {}
     obj["animation"][0] = 0
-    obj["animation"][8] = 1
-    obj["animation"][13] = 2
-    obj["animation"][17] = 3
-    obj["animation"][19] = 4
+    obj["animation"][1] = 1
+    obj["animation"][3] = 2
+    obj["animation"][6] = 3
+    obj["animation"][10] = 4
     obj["animation"]["prop"] = 8
-    obj["animation"]["length"] = 21
+    obj["animation"]["length"] = 15
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
@@ -507,9 +507,67 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot_oroboros_blas
         obj["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
+        love.graphics.setColor(55/255,55/255,55/255,255/255)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setColor(1,1,1,1)
     end
     table.insert(obj_char["VFX_front_table"],obj)
+end
+function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(obj_char,obj_char_other_side)
+    -- x y z opacity sx sy r f
+    local obj = {0,0,0,1,1,1,0,0}
+
+    obj["life"] = 16
+    obj[1] = obj_char["shot_sys_reticle"][1] - 230 + 160
+    obj[2] = obj_char["shot_sys_reticle"][2] - 255 + 160
+    obj[3] = 0
+    obj[4] = 1
+    obj[5] = 1
+    obj[6] = 1
+    obj[7] = 0
+    obj[8] = 0
+    obj["FCT"] = {0,0,0,0,0,0,0,0}
+    obj["LCT"] = {0,0,0,0,0,0,0,0}
+    obj["LCD"] = {0,0,0,0,0,0,0,0}
+    obj["animation"] = {}
+    obj["animation"] = {}
+    obj["animation"][0] = 0
+    obj["animation"][3] = 1
+    obj["animation"][7] = 2
+    obj["animation"][10] = 3
+    obj["animation"][13] = 4
+    obj["animation"]["prop"] = 8
+    obj["animation"]["length"] = 16
+    obj["animation"]["loop"] = false
+    obj["animation"]["fix_type"] = true
+    init_frame_anim_without(obj,obj["animation"])
+    if obj_char["x"] > obj_char_other_side["x"] then
+        obj[1] = obj_char["shot_sys_reticle"][1] + 230 + 160
+        obj[5] = -1
+    elseif obj_char["x"] == obj_char_other_side["x"] then
+        if math.random(0, 1) == 0 then
+            obj[1] = obj_char["shot_sys_reticle"][1] + 230 + 160
+            obj[5] = -1
+        end
+    end
+    obj["update"] = function()
+        frame_animator(obj,obj["animation"])
+        obj["life"] = obj["life"] - 1
+    end
+    obj["draw_sync"] = function()
+        -- obj["draw_sync"] = function() end
+    end
+    obj["draw"] = function()
+        local obj_camera = obj_stage_game_scene_camera
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_blast_ver0
+        -- obj["draw_sync"]()
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
+        love.graphics.setColor(35/255,35/255,35/255,175/255)
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setColor(1,1,1,1)
+    end
+    table.insert(obj_char["VFX_hit_front_table"],obj)
 end
 function insert_VFX_game_scene_char_TRM_5Launcher_whiff_slash(obj_char)
     local obj = {0,0,0,1,1,1,0,0}

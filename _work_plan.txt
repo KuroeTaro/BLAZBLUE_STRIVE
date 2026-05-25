@@ -1,6 +1,5 @@
 config选项中自定义要不要79空投
 
--- 碎墙
 -- RC
 -- 哈皮部分*各个必杀
 -- 哈皮部分*超必杀
@@ -10,10 +9,10 @@ config选项中自定义要不要79空投
 -- 联机
 
 
--- 碎墙
-开始制作红RC
-修改game_speed机制 pause和减速分开
-
+-- 修改RC动画中update_state function的所属
+-- 从本地变量改为参数
+-- 添加RC的pushbox和hurtbox ↑就在这里添加
+-- 制作YRC
 
 -- odbrc
     设计用来无敌附加

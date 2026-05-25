@@ -1,6 +1,6 @@
 function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     -- x y z opacity sx sy r f
-    local obj = {0,0,0,0.5,1,1,0,0}
+    local obj = {0,0,0,0.75,1,1,0,0}
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local obj_char_velocity = {obj_char["velocity"][1],obj_char["velocity"][2]}
     local obj_camera = obj_stage_game_scene_camera
@@ -788,7 +788,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
-        common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,3,2)
+        common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
@@ -803,11 +803,11 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         -- special_update
         frame_0_special_update_function()
     end
-    res[7] = function()
+    res[1] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][2]
         -- draw_correction
-        obj_char_other_side[8] = 1
+        obj_char_other_side[8] = 2
     end
     res[10] = function()
         -- input_sys_cache
@@ -815,6 +815,12 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
     end
     res[11] = function()
+        -- collide
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
+        -- draw_correction
+        obj_char_other_side[8] = 1
+    end
+    res[13] = function()
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
         -- draw_correction
@@ -933,12 +939,6 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
         -- draw_correction
-        obj_char_other_side[8] = 1
-        -- update
-        update_before_land()
-    end
-    res[6] = function()
-        -- draw_correction
         obj_char_other_side[8] = 2
         -- update
         update_before_land()
@@ -1023,68 +1023,4 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         -- animation_end
     end
     return res
-end
-
-function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(obj_char,obj_char_other_side)
-    -- x y z opacity sx sy r f
-    local obj = {0,0,0,1,1,1,0,0}
-
-    obj["life"] = 27
-    obj[1] = obj_char["shot_sys_reticle"][1] - 30
-    obj[2] = obj_char["shot_sys_reticle"][2] - 310
-    obj[3] = 0
-    obj[4] = 1
-    obj[5] = 1
-    obj[6] = 1
-    obj[7] = 0
-    obj[8] = 0
-    obj["FCT"] = {0,0,0,0,0,0,0,0}
-    obj["LCT"] = {0,0,0,0,0,0,0,0}
-    obj["LCD"] = {0,0,0,0,0,0,0,0}
-    obj["animation"] = {}
-    obj["animation"][0] = 0
-    obj["animation"][2] = 1
-    obj["animation"][4] = 2
-    obj["animation"][6] = 3
-    obj["animation"][8] = 4
-    obj["animation"][10] = 5
-    obj["animation"][11] = 6
-    obj["animation"][12] = 7
-    obj["animation"][13] = 8
-    obj["animation"][14] = 9
-    obj["animation"][16] = 10
-    obj["animation"][18] = 11
-    obj["animation"][21] = 12
-    obj["animation"]["prop"] = 8
-    obj["animation"]["length"] = 27
-    obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
-    init_frame_anim_without(obj,obj["animation"])
-    if obj_char["x"] > obj_char_other_side["x"] then
-        obj[1] = obj_char["shot_sys_reticle"][1] + 350
-        obj[5] = -1
-    elseif obj_char["x"] == obj_char_other_side["x"] then
-        if math.random(0, 1) == 0 then
-            obj[1] = obj_char["shot_sys_reticle"][1] + 350
-            obj[5] = -1
-        end
-    end
-    obj["update"] = function()
-        frame_animator(obj,obj["animation"])
-        obj["life"] = obj["life"] - 1
-    end
-    obj["draw_sync"] = function()
-        -- obj["draw_sync"] = function() end
-    end
-    obj["draw"] = function()
-        local obj_camera = obj_stage_game_scene_camera
-        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_blast_ver0_counter
-        -- obj["draw_sync"]()
-        image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
-        love.graphics.setBlendMode("add")
-        love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setBlendMode("alpha")
-    end
-    table.insert(obj_char["VFX_hit_front_table"],obj)
 end

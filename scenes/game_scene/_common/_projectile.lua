@@ -410,6 +410,169 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
     -- end
     table.insert(obj_char["projectile_rc_table"],obj)
 end
+function insert_projectile_game_scene_char_common_RC_shockwave_blue(obj_char)
+    -- clear_projectile_rc_table
+    obj_char["projectile_rc_table"] = {}
+    -- x y z opacity sx sy r f
+    local obj = {0,0,0,1,1,1,0,0}
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local obj_camera = obj_stage_game_scene_camera
+    local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
+    local side = obj_char["player_side"]
+    obj["y_offset"] = 0
+
+    if obj_char["height_state"] == "air" then
+        obj["y_offset"] = 150
+    else
+        obj["y_offset"] = 280
+    end
+    obj["x"] = obj_char["x"]
+    obj["y"] = obj_char["y"] - obj["y_offset"]
+    obj["f"] = -1
+    obj[1] = obj["x"] - obj_char[5]*600
+    obj[2] = obj["y"] - 600
+    obj[5] = obj_char[5]
+    obj["life"] = 30
+
+    obj["velocity"] = {obj_char["velocity"][1],obj_char["velocity"][2]}
+
+    obj["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
+
+    obj["hit_active"] = true
+
+    obj["animation"] = load_game_scene_anim_projectile_rc_main(obj,obj_char,obj_char_other_side)
+    init_character_anim_without(obj,obj["animation"] )
+
+    obj["update"] = function()
+        if obj_char["height_state"] == "air" then
+            obj["y_offset"] = 150
+        else
+            obj["y_offset"] = 280
+        end
+        obj["x"] = obj_char["x"]
+        obj["y"] = obj_char["y"] - obj["y_offset"]
+        character_animator(obj,obj["animation"])
+        obj["life"] = obj["life"] - 1
+    end
+    obj["draw"] = function()
+        obj[1] = obj["x"] - obj_char[5]*600
+        obj[2] = obj["y"] - 600
+        obj[5] = obj_char[5]
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
+        love.graphics.setBlendMode("add")
+        love.graphics.setColor(1,1,1,1)
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setColor(1,1,1,1)
+        love.graphics.setBlendMode("alpha")
+    end
+    obj["enemy_interact_function"] = function()
+        -- strike_clash
+        -- projectile_and_projectile_interaction
+        -- interaction_with_enemy
+        local obj_stage_main = obj_stage_game_scene_main
+        local obj_camera = obj_stage_game_scene_camera
+        local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
+        -- if hit
+        if collision_uncondicational_hurtbox_test(obj,obj_char_other_side) and obj["hit_active"] then
+            -- set_projectile_hit_active
+            obj["hit_active"] = false
+            -- set_physics_lock
+            obj_char_other_side["physics_lock"] = false
+            -- change_draw_front
+            CHARACTER_VISUAL_FRONT = obj_char["player_side"]
+            -- game_speed
+            common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,60,19,nil})
+        end
+    end
+    -- obj["friendly_interact_function"] = function()
+
+    -- end
+    table.insert(obj_char["projectile_rc_table"],obj)
+end
+function insert_projectile_game_scene_char_common_RC_shockwave_purple(obj_char)
+    -- clear_projectile_rc_table
+    obj_char["projectile_rc_table"] = {}
+    -- x y z opacity sx sy r f
+    local obj = {0,0,0,1,1,1,0,0}
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local obj_camera = obj_stage_game_scene_camera
+    local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
+    local side = obj_char["player_side"]
+    obj["y_offset"] = 0
+
+    if obj_char["height_state"] == "air" then
+        obj["y_offset"] = 150
+    else
+        obj["y_offset"] = 280
+    end
+    obj["x"] = obj_char["x"]
+    obj["y"] = obj_char["y"] - obj["y_offset"]
+    obj["f"] = -1
+    obj[1] = obj["x"] - obj_char[5]*600
+    obj[2] = obj["y"] - 600
+    obj[5] = obj_char[5]
+    obj["life"] = 30
+
+    obj["velocity"] = {obj_char["velocity"][1],obj_char["velocity"][2]}
+
+    obj["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
+
+    obj["hit_active"] = true
+
+    obj["animation"] = load_game_scene_anim_projectile_rc_main(obj,obj_char,obj_char_other_side)
+    init_character_anim_without(obj,obj["animation"] )
+
+    obj["update"] = function()
+        if obj_char["height_state"] == "air" then
+            obj["y_offset"] = 150
+        else
+            obj["y_offset"] = 280
+        end
+        obj["x"] = obj_char["x"]
+        obj["y"] = obj_char["y"] - obj["y_offset"]
+        character_animator(obj,obj["animation"])
+        obj["life"] = obj["life"] - 1
+    end
+    obj["draw"] = function()
+        obj[1] = obj["x"] - obj_char[5]*600
+        obj[2] = obj["y"] - 600
+        obj[5] = obj_char[5]
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
+        love.graphics.setBlendMode("add")
+        love.graphics.setColor(1,1,1,1)
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setColor(1,1,1,1)
+        love.graphics.setBlendMode("alpha")
+    end
+    obj["enemy_interact_function"] = function()
+        -- strike_clash
+        -- projectile_and_projectile_interaction
+        -- interaction_with_enemy
+        local obj_stage_main = obj_stage_game_scene_main
+        local obj_camera = obj_stage_game_scene_camera
+        local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
+        -- if hit
+        if collision_uncondicational_hurtbox_test(obj,obj_char_other_side) and obj["hit_active"] then
+            -- set_projectile_hit_active
+            obj["hit_active"] = false
+            -- set_physics_lock
+            obj_char_other_side["physics_lock"] = false
+            -- change_draw_front
+            CHARACTER_VISUAL_FRONT = obj_char["player_side"]
+            -- game_speed
+            common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,20,19,nil})
+        end
+    end
+    -- obj["friendly_interact_function"] = function()
+
+    -- end
+    table.insert(obj_char["projectile_rc_table"],obj)
+end
+function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
+end
+
 function load_game_scene_anim_char_red_rc_projectile_ground_block(
     obj_char,projectile,fix_direction,velocity_center,
     sprite_sheet_state,
@@ -905,168 +1068,4 @@ function load_game_scene_anim_char_red_rc_projectile_ground_air_and_OTG_hurt(
         -- animation_end
     end
     return res
-end
-
-function insert_projectile_game_scene_char_common_RC_shockwave_blue(obj_char)
-    -- clear_projectile_rc_table
-    obj_char["projectile_rc_table"] = {}
-    -- x y z opacity sx sy r f
-    local obj = {0,0,0,1,1,1,0,0}
-    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
-    local obj_camera = obj_stage_game_scene_camera
-    local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
-    local side = obj_char["player_side"]
-    obj["y_offset"] = 0
-
-    if obj_char["height_state"] == "air" then
-        obj["y_offset"] = 150
-    else
-        obj["y_offset"] = 280
-    end
-    obj["x"] = obj_char["x"]
-    obj["y"] = obj_char["y"] - obj["y_offset"]
-    obj["f"] = -1
-    obj[1] = obj["x"] - obj_char[5]*600
-    obj[2] = obj["y"] - 600
-    obj[5] = obj_char[5]
-    obj["life"] = 30
-
-    obj["velocity"] = {obj_char["velocity"][1],obj_char["velocity"][2]}
-
-    obj["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
-
-    obj["hit_active"] = true
-
-    obj["animation"] = load_game_scene_anim_projectile_rc_main(obj,obj_char,obj_char_other_side)
-    init_character_anim_without(obj,obj["animation"] )
-
-    obj["update"] = function()
-        if obj_char["height_state"] == "air" then
-            obj["y_offset"] = 150
-        else
-            obj["y_offset"] = 280
-        end
-        obj["x"] = obj_char["x"]
-        obj["y"] = obj_char["y"] - obj["y_offset"]
-        character_animator(obj,obj["animation"])
-        obj["life"] = obj["life"] - 1
-    end
-    obj["draw"] = function()
-        obj[1] = obj["x"] - obj_char[5]*600
-        obj[2] = obj["y"] - 600
-        obj[5] = obj_char[5]
-        image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
-        love.graphics.setBlendMode("add")
-        love.graphics.setColor(1,1,1,1)
-        love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
-        love.graphics.setBlendMode("alpha")
-    end
-    obj["enemy_interact_function"] = function()
-        -- strike_clash
-        -- projectile_and_projectile_interaction
-        -- interaction_with_enemy
-        local obj_stage_main = obj_stage_game_scene_main
-        local obj_camera = obj_stage_game_scene_camera
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
-        -- if hit
-        if collision_uncondicational_hurtbox_test(obj,obj_char_other_side) and obj["hit_active"] then
-            -- set_projectile_hit_active
-            obj["hit_active"] = false
-            -- set_physics_lock
-            obj_char_other_side["physics_lock"] = false
-            -- change_draw_front
-            CHARACTER_VISUAL_FRONT = obj_char["player_side"]
-            -- game_speed
-            common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,60,19,nil})
-        end
-    end
-    -- obj["friendly_interact_function"] = function()
-
-    -- end
-    table.insert(obj_char["projectile_rc_table"],obj)
-end
-function insert_projectile_game_scene_char_common_RC_shockwave_purple(obj_char)
-    -- clear_projectile_rc_table
-    obj_char["projectile_rc_table"] = {}
-    -- x y z opacity sx sy r f
-    local obj = {0,0,0,1,1,1,0,0}
-    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
-    local obj_camera = obj_stage_game_scene_camera
-    local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
-    local side = obj_char["player_side"]
-    obj["y_offset"] = 0
-
-    if obj_char["height_state"] == "air" then
-        obj["y_offset"] = 150
-    else
-        obj["y_offset"] = 280
-    end
-    obj["x"] = obj_char["x"]
-    obj["y"] = obj_char["y"] - obj["y_offset"]
-    obj["f"] = -1
-    obj[1] = obj["x"] - obj_char[5]*600
-    obj[2] = obj["y"] - 600
-    obj[5] = obj_char[5]
-    obj["life"] = 30
-
-    obj["velocity"] = {obj_char["velocity"][1],obj_char["velocity"][2]}
-
-    obj["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
-
-    obj["hit_active"] = true
-
-    obj["animation"] = load_game_scene_anim_projectile_rc_main(obj,obj_char,obj_char_other_side)
-    init_character_anim_without(obj,obj["animation"] )
-
-    obj["update"] = function()
-        if obj_char["height_state"] == "air" then
-            obj["y_offset"] = 150
-        else
-            obj["y_offset"] = 280
-        end
-        obj["x"] = obj_char["x"]
-        obj["y"] = obj_char["y"] - obj["y_offset"]
-        character_animator(obj,obj["animation"])
-        obj["life"] = obj["life"] - 1
-    end
-    obj["draw"] = function()
-        obj[1] = obj["x"] - obj_char[5]*600
-        obj[2] = obj["y"] - 600
-        obj[5] = obj_char[5]
-        image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
-        love.graphics.setBlendMode("add")
-        love.graphics.setColor(1,1,1,1)
-        love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
-        love.graphics.setBlendMode("alpha")
-    end
-    obj["enemy_interact_function"] = function()
-        -- strike_clash
-        -- projectile_and_projectile_interaction
-        -- interaction_with_enemy
-        local obj_stage_main = obj_stage_game_scene_main
-        local obj_camera = obj_stage_game_scene_camera
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
-        -- if hit
-        if collision_uncondicational_hurtbox_test(obj,obj_char_other_side) and obj["hit_active"] then
-            -- set_projectile_hit_active
-            obj["hit_active"] = false
-            -- set_physics_lock
-            obj_char_other_side["physics_lock"] = false
-            -- change_draw_front
-            CHARACTER_VISUAL_FRONT = obj_char["player_side"]
-            -- game_speed
-            common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,20,19,nil})
-        end
-    end
-    -- obj["friendly_interact_function"] = function()
-
-    -- end
-    table.insert(obj_char["projectile_rc_table"],obj)
-end
-function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
-
 end

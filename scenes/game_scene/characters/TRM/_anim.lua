@@ -2616,6 +2616,9 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
     return res
 end
 -- _2K
+    -- Say hello to real low profile fucker.
+    -- this is nothing but a Sol 2D low profile hurtbox
+    -- enjoy
 function load_game_scene_anim_char_TRM_2K(obj_char)
     local res = {}
     local friction = 10
@@ -8006,7 +8009,7 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
         obj_char["strike_active"] = true
         -- collide
         obj_char["hitbox_table"] = {{200,10,400,190},{275,-145,250,120},{200,-255,220,100}}
-        obj_char["hurtbox_table"] = {{0,-140,280,300},{160,-55,560,380},{200,-255,290,170}}
+        obj_char["hurtbox_table"] = {{0,-140,280,300},{170,-50,530,380},{200,-255,290,170}}
         -- draw_correction
         obj_char[8] = 3
     end

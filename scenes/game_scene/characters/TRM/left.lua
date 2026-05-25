@@ -2868,8 +2868,6 @@ end
 function state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver(input,obj_char)
 end
 
-function state_gate_game_scene_char_LP_common_to_RC_move(input,obj_char,color)
-end
 function state_gate_game_scene_char_LP_common_to_burst_RC_red(input,obj_char)
     if test_input_sys_press(input["RC"]) then
         obj_char["velocity_cache"] = obj_char["velocity"]
@@ -2992,7 +2990,32 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char)
         end
         obj_char["character_animation"] = 
         load_game_scene_anim_char_common_burst_RC_purple(obj_char)
-        obj_char["state"] = "burst_RC_blue"
+        obj_char["state"] = "burst_RC_purple"
+        init_character_anim_with(obj_char,obj_char["character_animation"])
+        return true
+    end
+end
+function state_gate_game_scene_char_LP_common_to_burst_RC_yellow(input,obj_char)
+    if test_input_sys_press(input["RC"]) then
+        obj_char["velocity"] = {0,0}
+        obj_char["physics_lock"] = false
+        if obj_char["height_state"] == "air" then
+            obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
+            obj_char["anchor_pos"] = {330,485}
+            obj_char["pushbox"] = {0,-100,120,200}
+            obj_char["collision_ground_height_offset"] = 130
+            obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
+        else
+            obj_char["height_state"] = "stand"
+            obj_char["sprite_sheet_state"] = "burst_rc_ground"
+            obj_char["anchor_pos"] = {300,615}
+            obj_char["pushbox"]  = {0,-185,120,370}
+            obj_char["collision_ground_height_offset"] = 0
+            obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        end
+        obj_char["character_animation"] = 
+        load_game_scene_anim_char_common_burst_RC_yellow(obj_char)
+        obj_char["state"] = "burst_RC_yellow"
         init_character_anim_with(obj_char,obj_char["character_animation"])
         return true
     end
@@ -3039,7 +3062,7 @@ function state_gate_game_scene_char_LP_from_block(input,obj_char)
         return true
     end
     -- _YRC
-    if state_gate_game_scene_char_LP_common_to_RC_move(input,obj_char,"YRC") then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_yellow(input,obj_char) then
         return true
     end
     -- animation_end
@@ -4500,8 +4523,110 @@ function state_gate_game_scene_char_LP_from_burst_RC_blue(input,obj_char)
     end
 end
 function state_gate_game_scene_char_LP_from_burst_RC_purple(input,obj_char)
+    local obj_char_other_side = common_game_scene_change_character("L")
+    if obj_char["idle_cancel"] then
+        if obj_char["height_state"] == "air" then
+            -- _common_air_idle_to_move
+            if state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver(input,obj_char) then
+                common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
+                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,30,0,nil})
+                obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
+                obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
+                return true
+            end
+            if state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,obj_char) then
+                common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
+                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,30,0,nil})
+                obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
+                obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
+                return true
+            end
+        else
+            -- _common_ground_idle_to_move
+            if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,obj_char) then
+                common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
+                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,30,0,nil})
+                obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
+                obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
+                return true
+            end
+            if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,obj_char) then
+                common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
+                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,30,0,nil})
+                obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
+                obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
+                return true
+            end
+        end
+    end
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
+        -- to stand_idle
+        obj_char["idle_cancel"] = true
+        obj_char["physics_lock"] = false
+        if obj_char["height_state"] == "air" then
+            obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
+            init_character_anim_with(obj_char,obj_char["character_animation"])
+            obj_char["state"] = "7_8_9_jump_air"
+            obj_char["idle_cancel"] = true
+            obj_char["f"] = 20
+            character_animator(obj_char,obj_char["character_animation"])
+            -- _common_air_idle_to_move
+            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
+                return true
+            end
+            return true
+        else
+            obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)  
+            init_character_anim_with(obj_char,obj_char["character_animation"])
+            obj_char["state"] = "5_stand_idle"
+            -- _common_ground_idle_to_move
+            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+                return true
+            end
+        end
+        return true
+    end
 end
 function state_gate_game_scene_char_LP_from_burst_RC_yellow(input,obj_char)
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
+        -- to stand_idle
+        obj_char["idle_cancel"] = true
+        obj_char["physics_lock"] = false
+        if obj_char["height_state"] == "air" then
+            obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
+            init_character_anim_with(obj_char,obj_char["character_animation"])
+            obj_char["state"] = "7_8_9_jump_air"
+            obj_char["idle_cancel"] = true
+            obj_char["f"] = 20
+            character_animator(obj_char,obj_char["character_animation"])
+            -- _common_air_idle_to_move
+            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
+                return true
+            end
+            return true
+        else
+            obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)  
+            init_character_anim_with(obj_char,obj_char["character_animation"])
+            obj_char["state"] = "5_stand_idle"
+            -- _common_ground_idle_to_move
+            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+                return true
+            end
+        end
+        return true
+    end
 end
 
 function state_gate_game_scene_char_LP_from_burst_overdrive(input,obj_char)

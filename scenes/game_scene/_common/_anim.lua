@@ -3462,12 +3462,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         -- collide
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
         -- draw_correction
-        obj_char_other_side[8] = 1
-        -- update
-        update_before_land()
-    end
-    res[6] = function()
-        -- draw_correction
         obj_char_other_side[8] = 2
         -- update
         update_before_land()
@@ -5169,8 +5163,12 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char)
         -- draw_correction
         obj_char[8] = 0
         -- VFX
+        obj_char["VFX_front_table"] = {}
+        obj_char["VFX_back_table"] = {}
         obj_char["VFX_hit_front_table"] = {}
         obj_char["VFX_hit_back_table"] = {}
+        obj_char_other_side["VFX_front_table"] = {}
+        obj_char_other_side["VFX_back_table"] = {}
         obj_char_other_side["VFX_hit_front_table"] = {}
         obj_char_other_side["VFX_hit_back_table"] = {}
         insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet_VFX_game_scene_RC_red_badge)
@@ -5357,8 +5355,12 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char)
         -- draw_correction
         obj_char[8] = 0
         -- VFX
+        obj_char["VFX_front_table"] = {}
+        obj_char["VFX_back_table"] = {}
         obj_char["VFX_hit_front_table"] = {}
         obj_char["VFX_hit_back_table"] = {}
+        obj_char_other_side["VFX_front_table"] = {}
+        obj_char_other_side["VFX_back_table"] = {}
         obj_char_other_side["VFX_hit_front_table"] = {}
         obj_char_other_side["VFX_hit_back_table"] = {}
         insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet_VFX_game_scene_RC_blue_badge)
@@ -5558,11 +5560,15 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char)
         -- draw_correction
         obj_char[8] = 0
         -- VFX
+        obj_char["VFX_front_table"] = {}
+        obj_char["VFX_back_table"] = {}
         obj_char["VFX_hit_front_table"] = {}
         obj_char["VFX_hit_back_table"] = {}
+        obj_char_other_side["VFX_front_table"] = {}
+        obj_char_other_side["VFX_back_table"] = {}
         obj_char_other_side["VFX_hit_front_table"] = {}
         obj_char_other_side["VFX_hit_back_table"] = {}
-        insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet_VFX_game_scene_RC_blue_badge)
+        insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet_VFX_game_scene_RC_purple_badge)
         insert_VFX_game_scene_char_RC_partical(obj_char)
         insert_VFX_game_scene_char_RC_black_overlay(obj_char)
     end
@@ -5666,7 +5672,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char)
     end
     return res
 end
-function load_game_scene_anim_char_common_RC_yellow(obj_char)
+function load_game_scene_anim_char_common_burst_RC_yellow(obj_char)
     local res = {}
     local height_state = obj_char["height_state"]
     local obj_stage_main = obj_stage_game_scene_main
@@ -5759,8 +5765,12 @@ function load_game_scene_anim_char_common_RC_yellow(obj_char)
         -- draw_correction
         obj_char[8] = 0
         -- VFX
+        obj_char["VFX_front_table"] = {}
+        obj_char["VFX_back_table"] = {}
         obj_char["VFX_hit_front_table"] = {}
         obj_char["VFX_hit_back_table"] = {}
+        obj_char_other_side["VFX_front_table"] = {}
+        obj_char_other_side["VFX_back_table"] = {}
         obj_char_other_side["VFX_hit_front_table"] = {}
         obj_char_other_side["VFX_hit_back_table"] = {}
         insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet_VFX_game_scene_RC_yellow_badge)
@@ -5780,21 +5790,19 @@ function load_game_scene_anim_char_common_RC_yellow(obj_char)
         obj_char[8] = 1
     end
     res[7] = function()
-        -- state&state_number
-        obj_char["idle_cancel"] = true
         update_state()
         update_heat_gauge_state()
         -- draw_correction
         obj_char[8] = 2
     end
     res[13] = function()
-        -- game_speed
-        -- 设置为强制速度到动画结束
-        common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,nil,32})
-        common_game_scene_game_speed_load_application(obj_char_other_side,{1,nil,nil,nil,32,nil})
         -- state&state_number
         update_state()
         update_heat_gauge_state()
+        -- game_speed
+        -- 设置为强制速度到动画结束
+        common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,nil,45-13})
+        common_game_scene_game_speed_load_application(obj_char_other_side,{1,nil,nil,nil,45-13,nil})
         -- draw_correction
         obj_char[8] = 3
     end
@@ -5815,7 +5823,7 @@ function load_game_scene_anim_char_common_RC_yellow(obj_char)
         -- draw_correction
         obj_char[8] = 4
         -- projectile
-        insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
+        insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
     end
     res[27] = function()
         -- state

@@ -262,17 +262,20 @@ function common_game_scene_block_test(obj_char,obj)
             block_bool = true
         end
     end
-    if obj_char["hurt_state"] == "idle" and (obj_char["state"] == "block" or obj_char["state"] == "blockstop")then
-        if obj_char["height_state"] == "air" then
-            block_bool = true
-        elseif common_game_scene_check_crouch_direction(obj_char) and obj["hit_guard_type_state"] == "low" then
-            block_bool = true
-        elseif ( not common_game_scene_check_crouch_direction(obj_char)) and obj["hit_guard_type_state"] == "high" then
-            block_bool = true
-        elseif obj["hit_guard_type_state"] == "all" then
-            block_bool = true
-        end
-    end
+    -- You bunch of fools speak like not been protected by this while happy chaos doing cross_up.
+    -- Even complaining that this is what causing you to get stuck in an endless 528 loop?
+    -- Well then. I shall grant your idoit wish.
+    -- if obj_char["hurt_state"] == "idle" and (obj_char["state"] == "block" or obj_char["state"] == "blockstop")then
+    --     if obj_char["height_state"] == "air" then
+    --         block_bool = true
+    --     elseif common_game_scene_check_crouch_direction(obj_char) and obj["hit_guard_type_state"] == "low" then
+    --         block_bool = true
+    --     elseif ( not common_game_scene_check_crouch_direction(obj_char)) and obj["hit_guard_type_state"] == "high" then
+    --         block_bool = true
+    --     elseif obj["hit_guard_type_state"] == "all" then
+    --         block_bool = true
+    --     end
+    -- end
     return block_bool
 end
 
