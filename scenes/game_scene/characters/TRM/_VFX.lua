@@ -442,9 +442,11 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot_oroboros_blas
     local obj = {0,0,0,1,1,1,0,0}
     local image_sprite_sheet = nil
     local side = obj_char["player_side"]
+    local oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
+    local rectile_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1]+160,obj_char["shot_sys_reticle_stage_pos_current"][2]+160}
     local center_dx = 35
     local center_dy = -210
-    local center_r = obj_char["shot_sys_oroboros_aim_r"]*obj_char[5]
+    local center_r = character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,rectile_pos,true)
     local rot_dx = center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.cos(center_r) - center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.sin(center_r)
     local rot_dy = center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.sin(center_r) + center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.cos(center_r)
     if side == "L" then
@@ -485,9 +487,11 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot_oroboros_blas
         end
     end
     obj["draw_sync"] = function()
+        local oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
+        local rectile_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1]+160,obj_char["shot_sys_reticle_stage_pos_current"][2]+160}
         local center_dx = 35
         local center_dy = -210
-        local center_r = obj_char["shot_sys_oroboros_aim_r"]*obj_char[5]
+        local center_r = character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,rectile_pos,true)
         local rot_dx = center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.cos(center_r) - center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.sin(center_r)
         local rot_dy = center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.sin(center_r) + center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.cos(center_r)
         obj[1] = obj_char["shot_sys_oroboros_ease_current"][1] + rot_dx

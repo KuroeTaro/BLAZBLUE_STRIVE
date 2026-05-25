@@ -5346,20 +5346,20 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     local obj_char_other_side = common_game_scene_change_character(side)
     local oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
     local rectile_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1]+160,obj_char["shot_sys_reticle_stage_pos_current"][2]+160}
-    local r = math.atan2((rectile_pos[2]-oroboros_pos[2]),obj_char[5]*(rectile_pos[1]-oroboros_pos[1]))
+    local center_r = character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,rectile_pos,false)
     local function update_oroboros_r(obj_char,i)
         -- local_value
-        oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
-        rectile_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1]+160,obj_char["shot_sys_reticle_stage_pos_current"][2]+160}
-        r = math.atan2((rectile_pos[2]-oroboros_pos[2]),obj_char[5]*(rectile_pos[1]-oroboros_pos[1]))
-        obj_char["shot_sys_oroboros_aim_r"] = r*(27-i)/17 + 0.42*(1-(27-i)/17)
+        local oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
+        local rectile_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1]+160,obj_char["shot_sys_reticle_stage_pos_current"][2]+160}
+        local center_r = character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,rectile_pos,false)
+        obj_char["shot_sys_oroboros_aim_r"] = center_r*(27-i)/17 + 0.42*(1-(27-i)/17)
     end
     res["prop_f"] = "shot_sys_oroboros_f"
     res["anim_length"] = 28
 
     res[0] = function()
         -- oroboros
-        obj_char["shot_sys_oroboros_aim_r"] = r
+        obj_char["shot_sys_oroboros_aim_r"] = center_r
         obj_char["shot_sys_oroboros_offset_amount"] = 75
 
         obj_char["shot_sys_oroboros_mid"]["sprite_sheet_state"]  = "5H_oroboros_shot"

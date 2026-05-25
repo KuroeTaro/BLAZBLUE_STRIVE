@@ -131,6 +131,15 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_upd
         obj_char_shot_sys_aim_process[1] = math.max(obj_char_shot_sys_aim_process[1], obj_char_shot_sys_aim_process[3])
     end
 end
+-- r_visual_calculation
+function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,rectile_pos,follow_char_sx)
+    local center_r = math.atan2((rectile_pos[2]-oroboros_pos[2]),(rectile_pos[1]-oroboros_pos[1]))
+    if obj_char[5] == -1 and follow_char_sx then
+        center_r = center_r + 3.1416
+    end
+    if center_r > 3.1416 then center_r = center_r - 2*3.1416 end
+    return center_r
+end
 -- reticle_basic_prop_update
 function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(obj_char)
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
