@@ -2902,7 +2902,7 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_red(input,obj_char)
             obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
         obj_char["character_animation"] = 
-        load_game_scene_anim_char_common_burst_RC_red(obj_char)
+        load_game_scene_anim_char_common_burst_RC_red(obj_char,character_function_game_scene_TRM_RC_state_update_function)
         obj_char["state"] = "burst_RC_red"
         init_character_anim_with(obj_char,obj_char["character_animation"])
         return true
@@ -2949,7 +2949,7 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char)
             obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
         obj_char["character_animation"] = 
-        load_game_scene_anim_char_common_burst_RC_blue(obj_char)
+        load_game_scene_anim_char_common_burst_RC_blue(obj_char,character_function_game_scene_TRM_RC_state_update_function)
         obj_char["state"] = "burst_RC_blue"
         init_character_anim_with(obj_char,obj_char["character_animation"])
         return true
@@ -2989,7 +2989,7 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char)
             obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
         obj_char["character_animation"] = 
-        load_game_scene_anim_char_common_burst_RC_purple(obj_char)
+        load_game_scene_anim_char_common_burst_RC_purple(obj_char,character_function_game_scene_TRM_RC_state_update_function)
         obj_char["state"] = "burst_RC_purple"
         init_character_anim_with(obj_char,obj_char["character_animation"])
         return true
@@ -3014,7 +3014,7 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_yellow(input,obj_char)
             obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
         obj_char["character_animation"] = 
-        load_game_scene_anim_char_common_burst_RC_yellow(obj_char)
+        load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_function_game_scene_TRM_RC_state_update_function)
         obj_char["state"] = "burst_RC_yellow"
         init_character_anim_with(obj_char,obj_char["character_animation"])
         return true

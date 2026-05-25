@@ -18,6 +18,39 @@ end
 function character_function_game_scene_TRM_j2K_strike_hurt_function(obj_char)
     common_game_scene_strike_hurt_function(obj_char)
 end
+
+-- RC_state_update_function
+function character_function_game_scene_TRM_RC_state_update_function(obj_char,obj_char_other_side)
+    local height_state = obj_char["height_state"]
+
+    -- move_state
+    if obj_char_other_side["game_speed_force_0_countdown"] == 0 and obj_char["f"] >= 26 then
+        obj_char["move_state"] = "recovery"
+    end
+    if height_state ~= obj_char["height_state"] then
+        return
+    end
+    -- height_state
+    if height_state == "air" and collision_test_char_on_ground(obj_char) then
+        obj_char["y"] = 365
+        obj_char["height_state"] = "stand"
+        obj_char["sprite_sheet_state"] = "burst_rc_ground"
+        obj_char["anchor_pos"] = {300,615}
+        obj_char["pushbox"]  = {0,-185,120,370}
+        obj_char["hurtbox_table"] = {{0,-250,230,500}}
+        obj_char["collision_ground_height_offset"] = 0
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+    elseif height_state ~= "air" and not collision_test_char_on_ground(obj_char) then
+        obj_char["height_state"] = "air"
+        obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
+        obj_char["anchor_pos"] = {330,485}
+        obj_char["pushbox"] = {0,-100,120,200}
+        obj_char["hurtbox_table"] = {{0,-120,230,500}}
+        obj_char["collision_ground_height_offset"] = 130
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
+    end
+end
+
 -- cancel_function
 function character_function_game_scene_TRM_hitstop_air_jump_cancel(
     input,obj_char,

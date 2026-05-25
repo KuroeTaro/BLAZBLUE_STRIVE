@@ -1703,6 +1703,9 @@ function insert_VFX_game_scene_stage_4dash_air_backdash_shockwave(obj_char,x,y,o
             obj["f"] = 0
         end
         obj["life"] = obj["life"] - 1
+        if obj_char["state"] == "burst_RC_blue" then
+            obj["life"] = 0
+        end
     end
     obj["draw_sync"] = function()
         obj[1] = obj_char["x"] + obj_char[5]*(x)
@@ -1748,6 +1751,9 @@ function insert_VFX_game_scene_stage_6dash_air_dash_shockwave(obj_char,x,y,opaci
         end
         obj[1] = obj[1] - 0.2*obj[5]
         obj["life"] = obj["life"] - 1
+        if obj_char["state"] == "burst_RC_blue" then
+            obj["life"] = 0
+        end
     end
     obj["draw_sync"] = function()
         obj[1] = obj_char["x"] + obj_char[5]*(x)
