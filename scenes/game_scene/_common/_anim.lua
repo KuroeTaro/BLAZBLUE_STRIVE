@@ -5310,7 +5310,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char,character_uncom
     end
     res[0] = function()
         -- state
-        obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
+        obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
         obj_char["active_frame"] = 0
@@ -5359,6 +5359,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char,character_uncom
         -- state&state_number
         update_state()
         update_heat_gauge_state()
+        obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["strike_inv"] = true
         obj_char["strike_inv_countdown"] = 40
         obj_char["throw_inv"] = true
@@ -5503,7 +5504,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char,character_unc
     end
     res[0] = function()
         -- state
-        obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
+        obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
         obj_char["active_frame"] = 0
@@ -5552,6 +5553,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char,character_unc
         -- state&state_number
         update_state()
         update_heat_gauge_state()
+        obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["strike_inv"] = true
         obj_char["strike_inv_countdown"] = 40
         obj_char["throw_inv"] = true
