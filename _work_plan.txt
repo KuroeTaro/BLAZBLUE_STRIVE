@@ -1,5 +1,10 @@
 config选项中自定义要不要79空投
 
+6P 添加上段
+common_hit_function
+common_hurt_function
+hi
+
 -- RC
 -- 哈皮部分*各个必杀
 -- 哈皮部分*超必杀
@@ -8,7 +13,7 @@ config选项中自定义要不要79空投
 -- 开始界面重做
 -- 联机
 
-
+-- RC 自定义push_box hurt_box
 -- 制作YRC
 
 -- odbrc

@@ -434,7 +434,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    special_init
+    character_uncommon_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -510,8 +510,8 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        -- special_update
-        special_init()
+        -- character_uncommon_init
+        character_uncommon_init()
     end
     res[3] = function()
         -- draw_correction
@@ -552,7 +552,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    special_init
+    character_uncommon_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -651,8 +651,8 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        -- special_update
-        special_init()
+        -- character_uncommon_init
+        character_uncommon_init()
         if obj_char_other_side["y"] > 125 then obj_char_other_side["y"] = 125 end
     end
     res[3] = function()
@@ -729,7 +729,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    special_init
+    character_uncommon_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -800,8 +800,8 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        -- special_update
-        special_init()
+        -- character_uncommon_init
+        character_uncommon_init()
     end
     res[1] = function()
         -- collide
@@ -846,7 +846,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    special_init
+    character_uncommon_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -926,8 +926,8 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        -- special_update
-        special_init()
+        -- character_uncommon_init
+        character_uncommon_init()
     end
     res[1] = function()
         -- state

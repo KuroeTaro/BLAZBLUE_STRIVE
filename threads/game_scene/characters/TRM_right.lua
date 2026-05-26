@@ -153,7 +153,7 @@ for i,v in ipairs(load_projectile_name_table) do
     thread_data[v.."_projectile"] = compress_module("asset/game_scene/characters/TRM/_character/PROJECTILE/".."TRM_"..v..".dds")
 end
 
--- special
+-- uncommon
 thread_data["overdrive_badge"] = compress_module("asset/game_scene/VFX/overdrive_badge/TRM_overdrive_badge.dds")
 
 love.thread.getChannel( 'thread_data_3' ):push( thread_data )

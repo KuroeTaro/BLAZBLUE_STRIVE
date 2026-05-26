@@ -588,7 +588,7 @@ function load_game_scene_anim_char_red_rc_projectile_ground_block(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    character_uncommon_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -666,8 +666,8 @@ function load_game_scene_anim_char_red_rc_projectile_ground_block(
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- game_speed
         common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,39,45-27,nil})
-        -- special_update
-        frame_0_special_update_function()
+        -- character_uncommon_init
+        character_uncommon_init()
     end
     res[3] = function()
         -- draw_correction
@@ -708,7 +708,7 @@ function load_game_scene_anim_char_red_rc_projectile_air_block(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    character_uncommon_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -807,8 +807,8 @@ function load_game_scene_anim_char_red_rc_projectile_air_block(
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
-        -- special_update
-        frame_0_special_update_function()
+        -- character_uncommon_init
+        character_uncommon_init()
         if obj_char_other_side["y"] > 125 then obj_char_other_side["y"] = 125 end
     end
     res[3] = function()
@@ -885,7 +885,7 @@ function load_game_scene_anim_char_red_rc_projectile_ground_air_and_OTG_hurt(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    character_uncommon_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -967,8 +967,8 @@ function load_game_scene_anim_char_red_rc_projectile_ground_air_and_OTG_hurt(
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- game_speed
         common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,39,45-27,nil})
-        -- special_update
-        frame_0_special_update_function()
+        -- character_uncommon_init
+        character_uncommon_init()
     end
     res[1] = function()
         -- state

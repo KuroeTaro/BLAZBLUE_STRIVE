@@ -256,7 +256,7 @@ function common_game_scene_block_test(obj_char,obj)
             block_bool = true
         elseif block_direction == 1 and obj["hit_guard_type_state"] == "low" then
             block_bool = true
-        elseif ( block_direction == 4 or block_direction == 7 ) and obj["hit_guard_type_state"] == "high" then
+        elseif ( block_direction == 4 or block_direction == 7 ) and obj["hit_guard_type_state"] == "mid" then
             block_bool = true
         elseif obj["hit_guard_type_state"] == "all" then
             block_bool = true
@@ -270,7 +270,7 @@ function common_game_scene_block_test(obj_char,obj)
     --         block_bool = true
     --     elseif common_game_scene_check_crouch_direction(obj_char) and obj["hit_guard_type_state"] == "low" then
     --         block_bool = true
-    --     elseif ( not common_game_scene_check_crouch_direction(obj_char)) and obj["hit_guard_type_state"] == "high" then
+    --     elseif ( not common_game_scene_check_crouch_direction(obj_char)) and obj["hit_guard_type_state"] == "mid" then
     --         block_bool = true
     --     elseif obj["hit_guard_type_state"] == "all" then
     --         block_bool = true

@@ -26,7 +26,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["height_state"] = "stand" -- stand crouch air OTG wallstick
     obj_char_game_scene_char_LP["air_gatling_state"] = false
     obj_char_game_scene_char_LP["hit_type_state"] = "none" -- none strike throw burst projectile
-    obj_char_game_scene_char_LP["hit_guard_type_state"] = "none" -- none all low high
+    obj_char_game_scene_char_LP["hit_guard_type_state"] = "none" -- none all low mid high
     obj_char_game_scene_char_LP["hurt_state"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_LP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_LP["move_state"] = "none" -- none startup active recovery
@@ -935,6 +935,18 @@ function load_game_scene_box_anchor_data_LP()
     obj_anchor_data_game_scene_char_LP["air_thrown_tested"] = {340,430}
     obj_anchor_data_game_scene_char_LP["ground_thrown_tested"] = {150,530}
 
+    obj_pushboxs_data_game_scene_char_LP["RC"] = {}
+    obj_hurtboxs_data_game_scene_char_LP["RC"] = {}
+    obj_anchor_data_game_scene_char_LP["RC"] = {}
+    
+    obj_pushboxs_data_game_scene_char_LP["RC"]["stand"] = stand_pushbox
+    obj_hurtboxs_data_game_scene_char_LP["RC"]["stand"] = {{0,-250,230,500}}
+    obj_anchor_data_game_scene_char_LP["RC"]["stand"] = {300,615}
+
+    obj_pushboxs_data_game_scene_char_LP["RC"]["air"] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_LP["RC"]["air"] = {{0,-120,230,500}}
+    obj_anchor_data_game_scene_char_LP["RC"]["air"] = {330,485}
+
     obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["wallstick_spawn_anchor_pos"] = {
         ["stand"] = 865,
         ["crouch"] = 765,
@@ -1031,7 +1043,7 @@ function load_game_scene_wallbreak_end_init_LP()
     -- state
     obj_char_game_scene_char_LP["state_cache"] = "none"
     obj_char_game_scene_char_LP["hit_type_state"] = "none" -- none strike throw burst projectile
-    obj_char_game_scene_char_LP["hit_guard_type_state"] = "none" -- none all low high
+    obj_char_game_scene_char_LP["hit_guard_type_state"] = "none" -- none all low mid high
     obj_char_game_scene_char_LP["hurt_state"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_LP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_LP["move_state"] = "none" -- none startup active recovery
@@ -2902,7 +2914,7 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_red(input,obj_char)
             obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
         obj_char["character_animation"] = 
-        load_game_scene_anim_char_common_burst_RC_red(obj_char,character_function_game_scene_TRM_RC_state_update_function)
+        load_game_scene_anim_char_common_burst_RC_red(obj_char,character_function_game_scene_TRM_RC_state_character_uncommon_update)
         obj_char["state"] = "burst_RC_red"
         init_character_anim_with(obj_char,obj_char["character_animation"])
         return true
@@ -2949,7 +2961,7 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char)
             obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
         obj_char["character_animation"] = 
-        load_game_scene_anim_char_common_burst_RC_blue(obj_char,character_function_game_scene_TRM_RC_state_update_function)
+        load_game_scene_anim_char_common_burst_RC_blue(obj_char,character_function_game_scene_TRM_RC_state_character_uncommon_update)
         obj_char["state"] = "burst_RC_blue"
         init_character_anim_with(obj_char,obj_char["character_animation"])
         return true
@@ -2989,7 +3001,7 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char)
             obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
         obj_char["character_animation"] = 
-        load_game_scene_anim_char_common_burst_RC_purple(obj_char,character_function_game_scene_TRM_RC_state_update_function)
+        load_game_scene_anim_char_common_burst_RC_purple(obj_char,character_function_game_scene_TRM_RC_state_character_uncommon_update)
         obj_char["state"] = "burst_RC_purple"
         init_character_anim_with(obj_char,obj_char["character_animation"])
         return true
@@ -3014,7 +3026,7 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_yellow(input,obj_char)
             obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
         obj_char["character_animation"] = 
-        load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_function_game_scene_TRM_RC_state_update_function)
+        load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_function_game_scene_TRM_RC_state_character_uncommon_update)
         obj_char["state"] = "burst_RC_yellow"
         init_character_anim_with(obj_char,obj_char["character_animation"])
         return true
@@ -3042,16 +3054,15 @@ function state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,
             obj_char[5] = -obj_char[5]
         end
         if obj_char["hit_cancel"] then
-            obj_char["character_animation"] = load_game_scene_anim_char_common_burst_overdrive(obj_char,70-3,character_function_game_scene_TRM_overdrive_state_special_init)
+            obj_char["character_animation"] = load_game_scene_anim_char_common_burst_overdrive(obj_char,70-3,character_function_game_scene_TRM_overdrive_state_character_uncommon_init)
         else
-            obj_char["character_animation"] = load_game_scene_anim_char_common_burst_overdrive(obj_char,70-13,character_function_game_scene_TRM_overdrive_state_special_init)
+            obj_char["character_animation"] = load_game_scene_anim_char_common_burst_overdrive(obj_char,70-13,character_function_game_scene_TRM_overdrive_state_character_uncommon_init)
         end
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "burst_overdrive"
         return true
     end
 end
-
 
 -- from_gate
 function state_gate_game_scene_char_LP_from_active_FD_block(input,obj_char)

@@ -1113,8 +1113,8 @@ function load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
         obj_char["projectile_inv"] = true
         obj_char["projectile_inv_countdown"] = 6
         -- state_number
-        obj_char["velocity"] = {-32.0*obj_char[5],-9.0}
-        obj_char["gravity"] = 1.2
+        obj_char["velocity"] = {-32.0*obj_char[5],-7.0}
+        obj_char["gravity"] = 1.0
         obj_char["friction"] = 0
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
@@ -1851,7 +1851,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         obj_char["sprite_sheet_state"] = "2P"
         obj_char["height_state"] = "crouch" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "all" -- none all low high
+        obj_char["hit_guard_type_state"] = "all" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -2035,7 +2035,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
     res[6] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
@@ -2058,7 +2058,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
     res[16] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
         obj_char["hit_cancel"] = false
@@ -2105,7 +2105,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         obj_char["sprite_sheet_state"] = "6P"
         obj_char["height_state"] = "stand" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "all" -- none all low high
+        obj_char["hit_guard_type_state"] = "all" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -2297,7 +2297,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
     res[13] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
@@ -2344,7 +2344,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
     res[38] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
         obj_char["hit_cancel"] = false
@@ -2381,7 +2381,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char["sprite_sheet_state"] = "5P"
         obj_char["height_state"] = "stand" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "all" -- none all low high
+        obj_char["hit_guard_type_state"] = "all" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -2565,7 +2565,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
     res[8] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
@@ -2588,7 +2588,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
     res[15] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
         obj_char["hit_cancel"] = false
@@ -2637,7 +2637,7 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
         obj_char["sprite_sheet_state"] = "2K"
         obj_char["height_state"] = "crouch" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "low" -- none all low high
+        obj_char["hit_guard_type_state"] = "low" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -2830,7 +2830,7 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
     res[10] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
@@ -2865,7 +2865,7 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
     res[22] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
         obj_char["hit_cancel"] = false
@@ -2926,7 +2926,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         obj_char["sprite_sheet_state"] = "6K"
         obj_char["height_state"] = "stand" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "low" -- none all low high
+        obj_char["hit_guard_type_state"] = "low" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -3124,7 +3124,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
     res[20] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
@@ -3161,7 +3161,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
     res[36] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
         obj_char["hit_cancel"] = false
@@ -3227,7 +3227,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         obj_char["sprite_sheet_state"] = "5K"
         obj_char["height_state"] = "stand" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "all" -- none all low high
+        obj_char["hit_guard_type_state"] = "all" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -3420,7 +3420,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
     res[8] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
@@ -3461,7 +3461,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
     res[20] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
         obj_char["hit_cancel"] = false
@@ -3521,7 +3521,7 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
         obj_char["sprite_sheet_state"] = "2S"
         obj_char["height_state"] = "crouch" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "all" -- none all low high
+        obj_char["hit_guard_type_state"] = "all" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -3726,7 +3726,7 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
     res[13] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
@@ -3772,7 +3772,7 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
     res[31] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
         obj_char["hit_cancel"] = false
@@ -3827,7 +3827,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
         obj_char["sprite_sheet_state"] = "6S"
         obj_char["height_state"] = "stand" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "all" -- none all low high
+        obj_char["hit_guard_type_state"] = "all" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -4060,7 +4060,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
     res[19] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
@@ -4099,7 +4099,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
     res[42] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
         obj_char["hit_cancel"] = false
@@ -4169,7 +4169,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         obj_char["sprite_sheet_state"] = "cS"
         obj_char["height_state"] = "stand" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "all" -- none all low high
+        obj_char["hit_guard_type_state"] = "all" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -4360,7 +4360,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
     res[12] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
@@ -4387,7 +4387,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
     res[22] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
         obj_char["hit_cancel"] = false
@@ -4435,7 +4435,7 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
         obj_char["sprite_sheet_state"] = "fS"
         obj_char["height_state"] = "stand" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "all" -- none all low high
+        obj_char["hit_guard_type_state"] = "all" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -4646,7 +4646,7 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
     res[16] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
@@ -4703,7 +4703,7 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
     res[37] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
         obj_char["hit_cancel"] = false
@@ -5440,7 +5440,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         obj_char["sprite_sheet_state"] = "2Launcher"
         obj_char["height_state"] = "crouch" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "low" -- none all low high
+        obj_char["hit_guard_type_state"] = "low" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -5665,7 +5665,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
     res[12] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
@@ -5714,7 +5714,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
     res[31] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
         obj_char["hit_cancel"] = false
@@ -5775,7 +5775,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
         obj_char["sprite_sheet_state"] = "4_6Launcher"
         obj_char["height_state"] = "stand" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "throw" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "all" -- none all low high
+        obj_char["hit_guard_type_state"] = "all" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -5871,7 +5871,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
         -- state
         obj_char["default_throw_distance"] = 0
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["throw_active"] = false
         -- collide
@@ -6162,7 +6162,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         obj_char["sprite_sheet_state"] = "4_6Launcher_success"
         obj_char["height_state"] = "stand" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "throw" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "all" -- none all low high
+        obj_char["hit_guard_type_state"] = "all" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -6345,7 +6345,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
     res[77] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
         obj_char["hit_cancel"] = false
@@ -6480,7 +6480,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char["sprite_sheet_state"] = "5Launcher"
         obj_char["height_state"] = "stand" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "high" -- none all low high
+        obj_char["hit_guard_type_state"] = "mid" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -6689,7 +6689,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
     res[22] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
@@ -6727,7 +6727,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
     res[48] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
 
@@ -6784,7 +6784,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
         obj_char["sprite_sheet_state"] = "5Launcher"
         obj_char["height_state"] = "stand" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "high" -- none all low high
+        obj_char["hit_guard_type_state"] = "mid" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -6983,7 +6983,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
     res[22] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
@@ -7021,7 +7021,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
     res[48] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
 
@@ -7076,7 +7076,7 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
         obj_char["sprite_sheet_state"] = "jP"
         obj_char["height_state"] = "air" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "high" -- none all low high
+        obj_char["hit_guard_type_state"] = "mid" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -7255,7 +7255,7 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
     res[8] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
@@ -7292,7 +7292,7 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
     res[24] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
 
@@ -7326,7 +7326,7 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
         obj_char["sprite_sheet_state"] = "jK"
         obj_char["height_state"] = "air" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "high" -- none all low high
+        obj_char["hit_guard_type_state"] = "mid" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -7495,7 +7495,7 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
     res[9] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
@@ -7538,7 +7538,7 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
     res[27] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
 
@@ -7572,7 +7572,7 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
         obj_char["sprite_sheet_state"] = "j2K"
         obj_char["height_state"] = "air" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "high" -- none all low high
+        obj_char["hit_guard_type_state"] = "mid" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -7755,7 +7755,7 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
     res[15] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
@@ -7779,7 +7779,7 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
         if obj_char["hit_cancel"] then
             -- state
             obj_char["hit_type_state"] = "none" -- none strike throw burst
-            obj_char["hit_guard_type_state"] = "none" -- none all low high
+            obj_char["hit_guard_type_state"] = "none" -- none all low mid high
             obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
             obj_char["move_state"] = "none" -- none startup active recovery
             obj_char["hit_cancel"] = false
@@ -7806,7 +7806,7 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
     res[30] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
         obj_char["hit_cancel"] = false
@@ -7839,7 +7839,7 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
         obj_char["sprite_sheet_state"] = "jS"
         obj_char["height_state"] = "air" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "high" -- none all low high
+        obj_char["hit_guard_type_state"] = "mid" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -8016,7 +8016,7 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
     res[13] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
@@ -8057,7 +8057,7 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
     res[36] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
 
@@ -8101,7 +8101,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
         obj_char["sprite_sheet_state"] = "j5Launcher"
         obj_char["height_state"] = "air" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "high" -- none all low high
+        obj_char["hit_guard_type_state"] = "mid" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -8276,7 +8276,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
     res[14] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
@@ -8315,7 +8315,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
     res[35] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
 
@@ -8356,7 +8356,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
         obj_char["sprite_sheet_state"] = "j4_6Launcher"
         obj_char["height_state"] = "air" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "throw" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "all" -- none all low high
+        obj_char["hit_guard_type_state"] = "all" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -8452,7 +8452,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
         -- state
         obj_char["default_throw_distance"] = 0
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["throw_active"] = false
         -- collide
@@ -8483,7 +8483,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
     res[38] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
         obj_char["hit_cancel"] = false
@@ -8722,7 +8722,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         obj_char["sprite_sheet_state"] = "j4_6Launcher_success"
         obj_char["height_state"] = "air" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "throw" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "all" -- none all low high
+        obj_char["hit_guard_type_state"] = "all" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -8895,7 +8895,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
     res[48] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "none" -- none all low high
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
         obj_char["hit_cancel"] = false
@@ -8973,7 +8973,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_camera_shake_anim(obj_char,m
     obj_char["camera_y_shake_anim"] = anim
 end
 
--- special_hurt_animations
+-- uncommon_hurt_animations
 -- groundbounce
 -- j2K
 -- function load_game_scene_anim_char_TRM_j2K_hurt(obj_char)
