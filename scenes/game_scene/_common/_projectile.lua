@@ -665,7 +665,7 @@ function load_game_scene_anim_char_red_rc_projectile_ground_block(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- game_speed
-        common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,39,45-27,nil})
+        common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,39,45-27,0})
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -966,7 +966,7 @@ function load_game_scene_anim_char_red_rc_projectile_ground_air_and_OTG_hurt(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- game_speed
-        common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,39,45-27,nil})
+        common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,39,45-27,0})
         -- character_uncommon_init
         character_uncommon_init()
     end
