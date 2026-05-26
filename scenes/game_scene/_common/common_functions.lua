@@ -718,14 +718,14 @@ function common_game_scene_counter_ver0(hit_side_obj_char,hurt_side_obj_char)
 end
 function common_game_scene_counter_ver1(hit_side_obj_char,hurt_side_obj_char)
     insert_VFX_HUD_game_scene_counter_ver0_2(hit_side_obj_char)
-    hurt_side_obj_char["hit_hurt_block_slowdown_countdown"] = 12
+    hurt_side_obj_char["hit_hurt_block_slowdown_countdown"] = 11
 end
 function common_game_scene_counter_ver2(hit_side_obj_char,hurt_side_obj_char)
     insert_VFX_HUD_game_scene_counter_ver0_2(hit_side_obj_char)
     hit_side_obj_char["hit_hurt_blockstop_countdown"] = 21
     hit_side_obj_char["hit_hurt_block_slowdown_countdown"] = 0
     hurt_side_obj_char["hit_hurt_blockstop_countdown"] = 21
-    hurt_side_obj_char["hit_hurt_block_slowdown_countdown"] = 26
+    hurt_side_obj_char["hit_hurt_block_slowdown_countdown"] = 25
 end
 function common_game_scene_counter_ver3(hit_side_obj_char,hurt_side_obj_char)
     local obj_camera = obj_stage_game_scene_camera
@@ -739,7 +739,7 @@ function common_game_scene_counter_ver3(hit_side_obj_char,hurt_side_obj_char)
     hit_side_obj_char["hit_hurt_blockstop_countdown"] = 31
     hit_side_obj_char["hit_hurt_block_slowdown_countdown"] = 0
     hurt_side_obj_char["hit_hurt_blockstop_countdown"] = 31
-    hurt_side_obj_char["hit_hurt_block_slowdown_countdown"] = 36
+    hurt_side_obj_char["hit_hurt_block_slowdown_countdown"] = 35
 end
 
 function common_game_scene_nil_load_camera_enclose_anim(obj_char)

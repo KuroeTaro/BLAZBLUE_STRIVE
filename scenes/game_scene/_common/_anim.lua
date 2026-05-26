@@ -58,7 +58,7 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -115,7 +115,7 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[11] = function()
         -- state
@@ -229,7 +229,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -300,7 +300,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- collide
@@ -345,7 +345,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -416,7 +416,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- collide
@@ -461,7 +461,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -532,7 +532,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- collide
@@ -577,7 +577,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -648,7 +648,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- collide
@@ -693,7 +693,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -764,7 +764,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- collide
@@ -842,7 +842,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -918,7 +918,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- draw_correction
@@ -957,7 +957,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -1033,7 +1033,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- draw_correction
@@ -1074,7 +1074,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -1150,7 +1150,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- draw_correction
@@ -1193,7 +1193,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -1269,7 +1269,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- draw_correction
@@ -1316,7 +1316,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -1392,7 +1392,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- draw_correction
@@ -1439,7 +1439,7 @@ function load_game_scene_anim_char_common_0_air_block(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -1538,7 +1538,7 @@ function load_game_scene_anim_char_common_0_air_block(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
-        frame_0_special_update_function()
+        special_init()
         if obj_char_other_side["y"] > 125 then obj_char_other_side["y"] = 125 end
     end
     res[1] = function()
@@ -1882,7 +1882,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -1946,7 +1946,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
             0.5,1,1,0
         )
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- state
@@ -2008,7 +2008,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -2072,7 +2072,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
             0.5,1,1,0
         )
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- state
@@ -2134,7 +2134,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -2198,7 +2198,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
             0.5,1,1,0
         )
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- state
@@ -2458,7 +2458,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -2511,7 +2511,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- state
@@ -2574,7 +2574,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -2627,7 +2627,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
         obj_char_other_side[8] = 0
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- state
@@ -2781,7 +2781,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -2842,7 +2842,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             0.5,-1,1,0
         )
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- state
@@ -3036,7 +3036,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -3216,7 +3216,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- state
@@ -3370,7 +3370,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -3450,7 +3450,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- state
@@ -3562,7 +3562,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -3642,7 +3642,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- state
@@ -3700,7 +3700,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -3778,7 +3778,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- state
@@ -3828,7 +3828,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -3925,7 +3925,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
         -- update
         update_before_falling()
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- state
@@ -4016,7 +4016,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -4096,7 +4096,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- state
@@ -4173,7 +4173,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -4253,7 +4253,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- state
@@ -4312,7 +4312,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -4378,7 +4378,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- state
@@ -4444,7 +4444,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -4530,7 +4530,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[1] = function()
         -- state
@@ -4604,7 +4604,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
     self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,
     self_groundbounce_hurt_animation,
-    frame_0_special_update_function
+    special_init
 )
     local res = {}
     local side = obj_char["player_side"]
@@ -4669,7 +4669,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- special_update
-        frame_0_special_update_function()
+        special_init()
     end
     res[4] = function()
         -- collide
@@ -4794,7 +4794,7 @@ end
             -- game_speed
             -- game_speed_subframe
             -- game_speed_abnormal_realtime_countdown
-function load_game_scene_anim_char_common_burst_overdrive(obj_char,other_side_countdown)
+function load_game_scene_anim_char_common_burst_overdrive(obj_char,other_side_countdown,special_init)
     local res = {}
     local height_state = obj_char["height_state"]
     local obj_stage_main = obj_stage_game_scene_main
@@ -4854,7 +4854,7 @@ function load_game_scene_anim_char_common_burst_overdrive(obj_char,other_side_co
         obj_char["air_move"]["air_dash"] = {1,1}
         -- game_speed
         -- 设置为强制速度为1到动画结束
-        common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,nil,70})
+        common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,nil,69})
 
         obj_char["hit_hurt_blockstop_countdown"] = 0
         -- collide
@@ -4884,6 +4884,8 @@ function load_game_scene_anim_char_common_burst_overdrive(obj_char,other_side_co
         insert_VFX_game_scene_char_overdrive_badge(obj_char)
         insert_VFX_game_scene_char_overdrive_partical(obj_char)
         insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
+        -- special_init
+        special_init()
     end
     res[2] = function()
         -- state & state_number
@@ -5126,8 +5128,8 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char,update_state)
         obj_char["air_move"]["air_dash"] = {1,1}
         -- game_speed
         -- 设置为强制速度到动画结束
-        common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,nil,45})
-        common_game_scene_game_speed_load_application(obj_char_other_side,{1,nil,nil,nil,45,nil})
+        common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,nil,44})
+        common_game_scene_game_speed_load_application(obj_char_other_side,{1,nil,nil,nil,44,nil})
         -- collide
         obj_char["pushbox_other_side_char_active"] = true
         obj_char["hitbox_table"] = {} --{ 攻击类型 是投还是打， function值 内部为命中后的逻辑,具体的box形状}
@@ -5321,8 +5323,8 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char,update_state)
         update_heat_gauge_state()
         -- game_speed
         -- 设置为强制速度到动画结束
-        common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,nil,40})
-        common_game_scene_game_speed_load_application(obj_char_other_side,{1,nil,nil,nil,40,nil})
+        common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,nil,39})
+        common_game_scene_game_speed_load_application(obj_char_other_side,{1,nil,nil,nil,39,nil})
     end
     res[7] = function()
         update_state(obj_char,obj_char_other_side)
@@ -5494,8 +5496,8 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char,update_state)
         update_heat_gauge_state()
         -- game_speed
         -- 设置为强制速度到动画结束
-        common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,nil,40})
-        common_game_scene_game_speed_load_application(obj_char_other_side,{1,nil,nil,nil,40,nil})
+        common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,nil,39})
+        common_game_scene_game_speed_load_application(obj_char_other_side,{1,nil,nil,nil,39,nil})
     end
     res[7] = function()
         update_state(obj_char,obj_char_other_side)
@@ -5673,8 +5675,8 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,update_state)
         update_heat_gauge_state()
         -- game_speed
         -- 设置为强制速度到动画结束
-        common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,nil,45-13})
-        common_game_scene_game_speed_load_application(obj_char_other_side,{1,nil,nil,nil,45-13,nil})
+        common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,nil,45-14})
+        common_game_scene_game_speed_load_application(obj_char_other_side,{1,nil,nil,nil,45-14,nil})
         -- draw_correction
         obj_char[8] = 3
     end

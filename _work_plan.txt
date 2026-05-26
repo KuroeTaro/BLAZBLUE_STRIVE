@@ -9,9 +9,6 @@ config选项中自定义要不要79空投
 -- 联机
 
 
--- 修改RC动画中update_state function的所属
--- 从本地变量改为参数
--- 添加RC的pushbox和hurtbox ↑就在这里添加
 -- 制作YRC
 
 -- odbrc

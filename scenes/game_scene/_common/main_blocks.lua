@@ -201,13 +201,13 @@ function update_game_scene_training_main()
     end
 
     -- game_speed_countdown
-    -- -> game_speed_application(last_frame) -> countdown -> actual_use(apply_on_character_update_and_objects_intercation)
-    common_game_scene_game_speed_apply_application()
+    -- countdown -> game_speed_application(last_frame) -> actual_use(apply_on_character_update_and_objects_intercation)
     common_update_game_scene_char_game_speed_abnormal_realtime_countdown(char_LP)
     common_update_game_scene_char_game_speed_abnormal_realtime_countdown(char_RP)
+    common_game_scene_game_speed_apply_application()
 
     -- 更新角色
-    -- -> uncommon_state_application(current_frame_by_character_update) -> uncommon_countdown -> actual_use(apply_on_objects_intercation)
+    -- -> uncommon_countdown -> uncommon_state_application(current_frame_by_character_update) -> actual_use(apply_on_objects_intercation)
     update_game_scene_char()
 
     -- debug_delete_after

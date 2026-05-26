@@ -3042,9 +3042,9 @@ function state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,
             obj_char[5] = -obj_char[5]
         end
         if obj_char["hit_cancel"] then
-            obj_char["character_animation"] = load_game_scene_anim_char_common_burst_overdrive(obj_char,70-3)
+            obj_char["character_animation"] = load_game_scene_anim_char_common_burst_overdrive(obj_char,70-3,character_function_game_scene_TRM_overdrive_state_special_init)
         else
-            obj_char["character_animation"] = load_game_scene_anim_char_common_burst_overdrive(obj_char,70-13)
+            obj_char["character_animation"] = load_game_scene_anim_char_common_burst_overdrive(obj_char,70-13,character_function_game_scene_TRM_overdrive_state_special_init)
         end
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "burst_overdrive"
@@ -4387,14 +4387,14 @@ function state_gate_game_scene_char_LP_from_burst_RC_red(input,obj_char)
             -- _common_air_idle_to_move
             if state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
-                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,20,0,nil})
+                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,19,0,nil})
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1
                 obj_char["velocity"][2] = obj_char["velocity"][2]*6
                 return true
             end
             if state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
-                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,20,0,nil})
+                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,19,0,nil})
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1
                 obj_char["velocity"][2] = obj_char["velocity"][2]*6
                 return true
@@ -4403,14 +4403,14 @@ function state_gate_game_scene_char_LP_from_burst_RC_red(input,obj_char)
             -- _common_ground_idle_to_move
             if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
-                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,20,0,nil})
+                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,19,0,nil})
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1
                 obj_char["velocity"][2] = obj_char["velocity"][2]*6
                 return true
             end
             if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
-                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,20,0,nil})
+                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,19,0,nil})
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1
                 obj_char["velocity"][2] = obj_char["velocity"][2]*6
                 return true
@@ -4458,14 +4458,14 @@ function state_gate_game_scene_char_LP_from_burst_RC_blue(input,obj_char)
             -- _common_air_idle_to_move
             if state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
-                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,30,0,nil})
+                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
                 obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
                 return true
             end
             if state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
-                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,30,0,nil})
+                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
                 obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
                 return true
@@ -4474,14 +4474,14 @@ function state_gate_game_scene_char_LP_from_burst_RC_blue(input,obj_char)
             -- _common_ground_idle_to_move
             if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
-                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,30,0,nil})
+                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
                 obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
                 return true
             end
             if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
-                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,30,0,nil})
+                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
                 obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
                 return true
@@ -4529,14 +4529,14 @@ function state_gate_game_scene_char_LP_from_burst_RC_purple(input,obj_char)
             -- _common_air_idle_to_move
             if state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
-                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,30,0,nil})
+                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
                 obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
                 return true
             end
             if state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
-                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,30,0,nil})
+                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
                 obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
                 return true
@@ -4545,14 +4545,14 @@ function state_gate_game_scene_char_LP_from_burst_RC_purple(input,obj_char)
             -- _common_ground_idle_to_move
             if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
-                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,30,0,nil})
+                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
                 obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
                 return true
             end
             if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
-                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,30,0,nil})
+                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
                 obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
                 return true

@@ -332,7 +332,7 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
         end
         obj[1] = obj_char["x"] - obj_char[5]*(600)
         obj[2] = obj_char["y"] - obj_char[6]*(obj["y_offset"])
-        obj["draw_sync"]  = function() end
+        -- obj["draw_sync"]  = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera

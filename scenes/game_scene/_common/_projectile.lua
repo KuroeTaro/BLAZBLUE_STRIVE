@@ -482,7 +482,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(obj_char)
             -- change_draw_front
             CHARACTER_VISUAL_FRONT = obj_char["player_side"]
             -- game_speed
-            common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,60,19,nil})
+            common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,59,45-27,nil})
         end
     end
     -- obj["friendly_interact_function"] = function()
@@ -521,7 +521,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(obj_char)
     obj["hit_active"] = true
 
     obj["animation"] = load_game_scene_anim_projectile_rc_main(obj,obj_char,obj_char_other_side)
-    init_character_anim_without(obj,obj["animation"] )
+    init_character_anim_without(obj,obj["animation"])
 
     obj["update"] = function()
         if obj_char["height_state"] == "air" then
@@ -562,7 +562,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(obj_char)
             -- change_draw_front
             CHARACTER_VISUAL_FRONT = obj_char["player_side"]
             -- game_speed
-            common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,20,19,nil})
+            common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,19,45-27,nil})
         end
     end
     -- obj["friendly_interact_function"] = function()
@@ -665,7 +665,7 @@ function load_game_scene_anim_char_red_rc_projectile_ground_block(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- game_speed
-        common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,40,19,nil})
+        common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,39,45-27,nil})
         -- special_update
         frame_0_special_update_function()
     end
@@ -966,7 +966,7 @@ function load_game_scene_anim_char_red_rc_projectile_ground_air_and_OTG_hurt(
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])(obj_char_other_side)
         -- game_speed
-        common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,40,19,nil})
+        common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,39,45-27,nil})
         -- special_update
         frame_0_special_update_function()
     end
