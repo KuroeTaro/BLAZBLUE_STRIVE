@@ -2105,7 +2105,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         obj_char["sprite_sheet_state"] = "6P"
         obj_char["height_state"] = "stand" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
-        obj_char["hit_guard_type_state"] = "all" -- none all low mid high
+        obj_char["hit_guard_type_state"] = "high" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["startup_frame"] = 0
@@ -2162,8 +2162,8 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            15,5,1.02,
-            -22.5,1.5,1.02,
+            12,5,1.02,
+            -18,1.5,1.02,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,

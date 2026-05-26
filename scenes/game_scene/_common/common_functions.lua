@@ -251,8 +251,13 @@ function common_game_scene_block_test(obj_char,obj)
     -- block_test
     local block_bool = false
     local block_direction = obj_char["direction_input"]
+    local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
+    local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
+
     if obj_char["hurt_state"] == "idle" and common_game_scene_check_block_direction(obj_char) then
-        if obj_char["height_state"] == "air" then
+        if obj_char["height_state"] == "air" and FD_block then
+            block_bool = true
+        elseif obj_char["height_state"] == "air" and obj["hit_guard_type_state"] ~= "high" then
             block_bool = true
         elseif block_direction == 1 and obj["hit_guard_type_state"] == "low" then
             block_bool = true
