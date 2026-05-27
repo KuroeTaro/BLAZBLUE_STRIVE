@@ -740,6 +740,11 @@ function load_game_scene_box_anchor_data_LP()
     obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["block_ver0_spawn_anchor_pos"]["1_4_7_air_block_guard_crash"] = {-420,-490}
     obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["block_ver1_spawn_anchor_pos"]["1_4_7_air_block_guard_crash"] = {-420,-490}
 
+    obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["FD_block_spawn_anchor_pos"] = {}
+    obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["FD_block_spawn_anchor_pos"]["stand"] = {-300,-540}
+    obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["FD_block_spawn_anchor_pos"]["crouch"] = {-300,-420}
+    obj_VFX_spawn_anchor_pos_data_game_scene_char_LP["FD_block_spawn_anchor_pos"]["air"] = {-300,-440}
+
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_soft_knockdown_wallstick_air"] = {}
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_soft_knockdown_wallstick_air"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_soft_knockdown_wallstick_air"] = {}

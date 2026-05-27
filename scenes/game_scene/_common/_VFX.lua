@@ -1395,18 +1395,15 @@ function insert_VFX_game_scene_char_block_ver1(obj_char)
 end
 function insert_VFX_game_scene_char_FD_block(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
-    local VFX_spawn_anchor_pos = {-300,-420}
-    if obj_char["height_state"] == "air" then
-        VFX_spawn_anchor_pos = {-300,-440}
-    elseif obj_char["height_state"] == "stand" then
-        VFX_spawn_anchor_pos = {-300,-540}
-    end
+    local FD_VFX_spawn_anchor_pos_table = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["FD_block_spawn_anchor_pos"]
+    local FD_VFX_spawn_anchor_pos = FD_VFX_spawn_anchor_pos_table[obj_char["height_state"]]
+
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
 
     obj["life"] = 35
-    obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
-    obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
+    obj[1] = obj_char["x"] + obj_char[5]*(FD_VFX_spawn_anchor_pos[1])
+    obj[2] = obj_char["y"] + obj_char[6]*(FD_VFX_spawn_anchor_pos[2])
     obj[3] = obj_char[3]
     obj[4] = 0.75
     obj[5] = obj_char[5]
@@ -1439,15 +1436,15 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
     obj["opacity_point_linear_animation"]["length"] = 35
     obj["opacity_point_linear_animation"]["loop"] = false
     init_point_linear_anim_without(obj,obj["opacity_point_linear_animation"])
-    obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
     obj["update"] = function()
         frame_animator(obj,obj["animation"])
         point_linear_animator(obj,obj["opacity_point_linear_animation"])
         obj["life"] = obj["life"] - 1
     end
     obj["draw_sync"] = function()
-        obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
-        obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
+        FD_VFX_spawn_anchor_pos = FD_VFX_spawn_anchor_pos_table[obj_char["height_state"]]
+        obj[1] = obj_char["x"] + obj_char[5]*(FD_VFX_spawn_anchor_pos[1])
+        obj[2] = obj_char["y"] + obj_char[6]*(FD_VFX_spawn_anchor_pos[2])
         obj[5] = obj_char[5]
         obj[6] = obj_char[6]
         -- obj["draw_sync"] = function() end
