@@ -2887,7 +2887,7 @@ end
 
 function state_gate_game_scene_char_RP_common_to_burst_RC_red(input,obj_char)
     if test_input_sys_press(input["RC"]) then
-        obj_char["velocity_cache"] = obj_char["velocity"]
+        obj_char["velocity_cache"] = {0,0}
         if test_input_sys_press_or_hold(input["dash"]) then
             if test_input_sys_press_or_hold(input["up"]) then
                 obj_char["velocity"] = {0,-7.5}
@@ -2926,12 +2926,12 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_red(input,obj_char)
     end
 end
 function state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char)
-    local forward_dash_state = {
-        ["6dash_dash"] = true,
-        ["6dash_dash_cancel"] = true,
-        ["6dash_air_dash"] = true
-    }
     if test_input_sys_press(input["RC"]) then
+        local forward_dash_state = {
+            ["6dash_dash"] = true,
+            ["6dash_dash_cancel"] = true,
+            ["6dash_air_dash"] = true
+        }
         obj_char["velocity_cache"] = obj_char["velocity"]
         if test_input_sys_press_or_hold(input["dash"]) then
             if test_input_sys_press_or_hold(input["up"]) then
@@ -2974,7 +2974,7 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char)
 end
 function state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char)
     if test_input_sys_press(input["RC"]) then
-        obj_char["velocity_cache"] = obj_char["velocity"]
+        obj_char["velocity_cache"] = {0,0}
         if test_input_sys_press_or_hold(input["dash"]) then
             if test_input_sys_press_or_hold(input["up"]) then
                 obj_char["velocity"] = {0,-7.5}
@@ -3015,6 +3015,7 @@ end
 function state_gate_game_scene_char_RP_common_to_burst_RC_yellow(input,obj_char)
     if test_input_sys_press(input["RC"]) then
         obj_char["velocity"] = {0,0}
+        obj_char["velocity_cache"] = {0,0}
         obj_char["physics_lock"] = false
         if obj_char["height_state"] == "air" then
             obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
@@ -4502,14 +4503,14 @@ function state_gate_game_scene_char_RP_from_burst_RC_blue(input,obj_char)
             if state_gate_game_scene_char_RP_common_air_to_special_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
-                obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
+                obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.625
                 obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
                 return true
             end
             if state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
-                obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
+                obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.625
                 obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
                 return true
             end
@@ -4518,14 +4519,14 @@ function state_gate_game_scene_char_RP_from_burst_RC_blue(input,obj_char)
             if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
-                obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
+                obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.625
                 obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
                 return true
             end
             if state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
-                obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
+                obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.625
                 obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
                 return true
             end
@@ -4573,15 +4574,15 @@ function state_gate_game_scene_char_RP_from_burst_RC_purple(input,obj_char)
             if state_gate_game_scene_char_RP_common_air_to_special_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
-                obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
-                obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
+                obj_char["velocity"][1] = obj_char["velocity"][1]*1
+                obj_char["velocity"][2] = obj_char["velocity"][2]*4
                 return true
             end
             if state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
-                obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
-                obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
+                obj_char["velocity"][1] = obj_char["velocity"][1]*1
+                obj_char["velocity"][2] = obj_char["velocity"][2]*4
                 return true
             end
         else
@@ -4589,15 +4590,15 @@ function state_gate_game_scene_char_RP_from_burst_RC_purple(input,obj_char)
             if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
-                obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
-                obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
+                obj_char["velocity"][1] = obj_char["velocity"][1]*1
+                obj_char["velocity"][2] = obj_char["velocity"][2]*4
                 return true
             end
             if state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
-                obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.5
-                obj_char["velocity"][2] = obj_char["velocity"][2]*4 + obj_char["velocity_cache"][2]
+                obj_char["velocity"][1] = obj_char["velocity"][1]*1
+                obj_char["velocity"][2] = obj_char["velocity"][2]*4
                 return true
             end
         end

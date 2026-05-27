@@ -599,9 +599,6 @@ function common_game_scene_throw_hit_function(obj_char)
     hit_side_obj_char["projectile_inv_countdown"] = 10
 
     hit_side_obj_char["velocity"] = {0,0}
-    -- input_sys_cache
-    hit_side_obj_char["input_sys_state"] = "save" -- none save load
-    common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
     -- game_speed
     common_game_scene_game_speed_load_application(hit_side_obj_char,{1,1,1,0,0,0})
 end

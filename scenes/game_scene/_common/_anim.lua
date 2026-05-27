@@ -5502,6 +5502,15 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char,character_uncom
             update_heat_gauge_state()
         end
     end
+    for i = 0,4 do
+        res[i] = function()
+            -- state
+            update_state()
+            update_heat_gauge_state()
+            -- collide
+            obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        end
+    end
     res[0] = function()
         -- state
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
@@ -5546,6 +5555,8 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char,character_uncom
         -- state&state_number
         update_state()
         update_heat_gauge_state()
+        -- collide
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
         -- draw_correction
         obj_char[8] = 1
     end
@@ -5696,6 +5707,15 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char,character_unc
             update_heat_gauge_state()
         end
     end
+    for i = 0,4 do
+        res[i] = function()
+            -- state
+            update_state()
+            update_heat_gauge_state()
+            -- collide
+            obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        end
+    end
     res[0] = function()
         -- state
         obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
@@ -5740,6 +5760,8 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char,character_unc
         -- state&state_number
         update_state()
         update_heat_gauge_state()
+        -- collide
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
         -- draw_correction
         obj_char[8] = 1
     end
@@ -5881,8 +5903,8 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
     end
     
     res["prop_f"] = "f"
-    res["anim_length"] = 45
-    for i = 0,44 do
+    res["anim_length"] = 75
+    for i = 0,75 do
         res[i] = function()
             -- state
             update_state()
@@ -5893,6 +5915,15 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
             -- state
             update_state()
             update_heat_gauge_state()
+        end
+    end
+    for i = 42,75 do
+        res[i] = function()
+            -- state
+            update_state()
+            update_heat_gauge_state()
+            -- collide
+            obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
         end
     end
     res[0] = function()
@@ -5907,11 +5938,11 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
         update_state()
 
         obj_char["strike_inv"] = true
-        obj_char["strike_inv_countdown"] = res["anim_length"]
+        obj_char["strike_inv_countdown"] = 42
         obj_char["throw_inv"] = true
-        obj_char["throw_inv_countdown"] = res["anim_length"]+5
+        obj_char["throw_inv_countdown"] = 42+5
         obj_char["projectile_inv"] = true
-        obj_char["projectile_inv_countdown"] = res["anim_length"]
+        obj_char["projectile_inv_countdown"] = 42
         -- input_sys_cache
         obj_char["input_sys_state"] = "none" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
@@ -5927,10 +5958,6 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
         obj_char["air_move"] = {}
         obj_char["air_move"]["jump"] = {1,1}
         obj_char["air_move"]["air_dash"] = {1,1}
-        -- game_speed
-        -- 设置为强制速度到动画结束
-        common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,nil,44})
-        common_game_scene_game_speed_load_application(obj_char_other_side,{1,nil,nil,nil,44,nil})
         -- collide
         obj_char["pushbox_other_side_char_active"] = true
         obj_char["hitbox_table"] = {} --{ 攻击类型 是投还是打， function值 内部为命中后的逻辑,具体的box形状}
@@ -5942,7 +5969,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
         obj_char["VFX_hit_back_table"] = {}
         obj_char_other_side["VFX_hit_front_table"] = {}
         obj_char_other_side["VFX_hit_back_table"] = {}
-        insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet_VFX_game_scene_RC_red_badge)
+        insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet_VFX_game_scene_RC_yellow_badge)
         insert_VFX_game_scene_char_RC_partical(obj_char)
         insert_VFX_game_scene_char_RC_black_overlay(obj_char)
     end
@@ -5954,8 +5981,6 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
         obj_char[8] = 1
     end
     res[7] = function()
-        -- state&state_number
-        obj_char["idle_cancel"] = true
         update_state()
         update_heat_gauge_state()
         -- draw_correction
@@ -5965,14 +5990,12 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
         -- state&state_number
         update_state()
         update_heat_gauge_state()
+        -- game_speed
+        -- 设置为强制速度到动画结束
+        common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,nil,28})
+        common_game_scene_game_speed_load_application(obj_char_other_side,{1,nil,nil,nil,28,nil})
         -- draw_correction
         obj_char[8] = 3
-    end
-    res[24] = function()
-        -- state&state_number
-        obj_char["idle_cancel"] = false
-        update_state()
-        update_heat_gauge_state()
     end
     res[26] = function()
         -- state
@@ -5980,7 +6003,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
         -- draw_correction
         obj_char[8] = 4
         -- projectile
-        insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
+        insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
     end
     res[27] = function()
         -- state
@@ -5997,9 +6020,6 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
     res[35] = function()
         -- state
         update_state()
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
         -- draw_correction
         obj_char[8] = 7
     end
@@ -6007,18 +6027,90 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
         -- state
         update_state()
         -- draw_correction
-        obj_char[8] = 8
+        obj_char[8] = 5
     end
     res[42] = function()
+        -- time_continue_frame_0
+        -- state
+        obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
+        obj_char["move_state"] = "recovery" -- none startup active recovery
+        update_state()
+        -- collide
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+    end
+    res[43] = function()
         -- state
         update_state()
+        -- collide
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        -- draw_correction
+        obj_char[8] = 6
+    end
+    res[47] = function()
+        -- state
+        update_state()
+        -- collide
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        -- draw_correction
+        obj_char[8] = 7
+    end
+    res[51] = function()
+        -- state
+        update_state()
+        -- collide
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        -- draw_correction
+        obj_char[8] = 5
+    end
+    res[55] = function()
+        -- state
+        update_state()
+        -- collide
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        -- draw_correction
+        obj_char[8] = 6
+    end
+    res[59] = function()
+        -- state
+        update_state()
+        -- collide
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        -- draw_correction
+        obj_char[8] = 7
+    end
+    res[63] = function()
+        -- state
+        update_state()
+        -- collide
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        -- draw_correction
+        obj_char[8] = 5
+    end
+    res[67] = function()
+        -- state
+        update_state()
+        -- collide
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        -- draw_correction
+        obj_char[8] = 6
+    end
+    res[69] = function()
+        -- state
+        update_state()
+        -- collide
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        -- draw_correction
+        obj_char[8] = 8
+    end
+    res[72] = function()
+        -- state
+        update_state()
+        -- collide
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
         -- draw_correction
         obj_char[8] = 9
     end
-    res[45] = function()
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
-        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
+    res[75] = function()
         -- aniamtion_end
     end
     return res
