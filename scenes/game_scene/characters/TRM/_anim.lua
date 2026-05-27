@@ -5794,7 +5794,23 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
 
         obj_char["throw_success_animation"] = load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         obj_char["throw_hurt_success_animation"] = load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
-        obj_char["throw_hurt_PRC_animation"] = load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
+        obj_char["throw_hurt_PRC_animation"] = load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_PRC(
+            obj_char,
+            "0_general_hurt_launched_high",
+            "air","knockdown_recovery",
+            12,5,1.00,
+            -18,1.5,1.00,
+            nil,
+            load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
+                obj_char,
+                "0_general_hurt_soft_recovery_ground",
+                "OTG",
+                "5_stand_idle",
+                nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
+            ),
+            nil,nil,
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
+        )
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -8375,7 +8391,23 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
 
         obj_char["throw_success_animation"] = load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         obj_char["throw_hurt_success_animation"] = load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
-        obj_char["throw_hurt_PRC_animation"] = load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
+        obj_char["throw_hurt_PRC_animation"] = load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_PRC(
+            obj_char,
+            "0_general_hurt_launched_high",
+            "air","knockdown_recovery",
+            12,5,1.00,
+            -18,1.5,1.00,
+            nil,
+            load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
+                obj_char,
+                "0_general_hurt_soft_recovery_ground",
+                "OTG",
+                "5_stand_idle",
+                nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
+            ),
+            nil,nil,
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
+        )
 
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false

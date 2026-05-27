@@ -344,22 +344,26 @@ function update_game_scene_training_main()
         if (DEBUG_TRAINNING_THROW_CLASH and DEBUG_TRAINNING_TOGGLE) then
             if (char_LP["state"] == "throw_testing" and char_RP["state"] == "throw_tested") then
                 char_LP["state"] = "throw_teched"
+                char_LP["physics_lock"] = false
                 char_LP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
                     char_LP,"teched"
                 )
                 init_character_anim_with(char_LP,char_LP["character_animation"])
                 char_RP["state"] = "throw_teching"
+                char_RP["physics_lock"] = false
                 char_RP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
                     char_RP,"teching"
                 )
                 init_character_anim_with(char_RP,char_RP["character_animation"])
             elseif (char_RP["state"] == "throw_testing" and char_LP["state"] == "throw_tested") then
                 char_RP["state"] = "throw_teched"
+                char_RP["physics_lock"] = false
                 char_RP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
                     char_RP,"teched"
                 )
                 init_character_anim_with(char_RP,char_RP["character_animation"])
                 char_LP["state"] = "throw_teching"
+                char_LP["physics_lock"] = false
                 char_LP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
                     char_LP,"teching"
                 )

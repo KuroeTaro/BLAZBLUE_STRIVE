@@ -3182,6 +3182,9 @@ function state_gate_game_scene_char_LP_from_hurt(input,obj_char)
 end
 
 function state_gate_game_scene_char_LP_from_throw_success(input,obj_char)
+    local obj_stage_main = obj_stage_game_scene_main
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local obj_camera = obj_stage_game_scene_camera
     -- _overdrive
     if obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
         return true
@@ -3192,6 +3195,28 @@ function state_gate_game_scene_char_LP_from_throw_success(input,obj_char)
     end
     -- _PRC
     if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+        obj_char["pushbox_other_side_char_active"] = true
+        obj_char["physics_lock"] = false
+        common_game_scene_nil_load_camear_shake_anim(obj_char)
+        common_game_scene_nil_load_camera_enclose_anim(obj_char)
+        table.insert(obj_stage_main["camera_active_application_table"],
+            function()
+                anim_stage_point_linear_game_scene_camera_enclosing = obj_char["camera_enclosing_anim"]
+                anim_stage_point_linear_game_scene_camera_shake_x = obj_char["camera_x_shake_anim"]
+                anim_stage_point_linear_game_scene_camera_shake_y = obj_char["camera_y_shake_anim"]
+                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_enclosing)
+                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
+                obj_camera["enclose_position_offset"] = obj_char["enclose_position_offset"]
+                obj_camera["state"] = "active"
+            end
+        )
+
+        obj_char_other_side["state"] = "hurt"
+        obj_char_other_side["pushbox_other_side_char_active"] = true
+        obj_char_other_side["physics_lock"] = false
+        obj_char_other_side["character_animation"] = obj_char["throw_hurt_PRC_animation"]
+        init_character_anim_with(obj_char_other_side,obj_char_other_side["character_animation"])
         return true
     end
     -- animation_end
@@ -3260,13 +3285,16 @@ function state_gate_game_scene_char_LP_from_throw_testing(input,obj_char)
         )
         init_character_anim_with(obj_char,obj_char["character_animation"])
     elseif obj_char["f"] > 9 then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
         obj_char["state"] = "throw_success"
         obj_char["character_animation"] = obj_char["throw_success_animation"]
         init_character_anim_with(obj_char,obj_char["character_animation"])
-            
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end       
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
+        state_gate_game_scene_char_LP_from_throw_success(input,obj_char)
     end
 end
 function state_gate_game_scene_char_LP_from_throw_tested(input,obj_char)
@@ -3281,12 +3309,11 @@ function state_gate_game_scene_char_LP_from_throw_tested(input,obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
     elseif obj_char["f"] > 9 then
         obj_char["state"] = "throw_hurt_success"
-        obj_char["character_animation"] = obj_char_other_side["throw_hurt_success_animation"]
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end 
+        obj_char["character_animation"] = obj_char_other_side["throw_hurt_success_animation"]
+        init_character_anim_with(obj_char,obj_char["character_animation"])
     end
 end
 function state_gate_game_scene_char_LP_from_throw_tech(input,obj_char)
