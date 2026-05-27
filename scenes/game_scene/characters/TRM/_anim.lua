@@ -7476,10 +7476,10 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
         obj_char["collision_ground_height_offset"] = 130
         -- sub_obj
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver0
-        obj_char["hit_VFX_insert_function_argument"] = {obj_char,135,-460,0.8,1,1,0,false,false}
+        obj_char["hit_VFX_insert_function_argument"] = {obj_char,135,-440,0.8,1,1,0,false,false}
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver0
-        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,80,-915,0.85,1.5,1.5,0,false,false}
+        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,80,-895,0.85,1.5,1.5,0,false,false}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["block_SFX"] = nil

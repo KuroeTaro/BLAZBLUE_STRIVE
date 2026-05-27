@@ -212,8 +212,7 @@ function update_game_scene_training_main()
 
     -- debug_delete_after
     if DEBUG_TRAINNING_TOGGLE then
-        if DEBUG_TRAINNING_BLOCK ~= 0 and obj_char_game_scene_char_RP["hurt_state_target"] ~= "unblock" then
-            obj_char_game_scene_char_RP["hurt_state_target"] = "idle"
+        if DEBUG_TRAINNING_BLOCK ~= 0 and obj_char_game_scene_char_RP["hurt_state_target"] == "idle" then
             if DEBUG_TRAINNING_HEIGHT == 2 then
                 obj_char_game_scene_char_RP["direction_input"] = 1
             elseif DEBUG_TRAINNING_HEIGHT == 5 then

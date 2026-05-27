@@ -297,7 +297,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
             else
                 -- insert_VFX
                 if obj_char_other_side["hurt_state"] == "punish" then
-                    insert_VFX_HUD_game_scene_punish(obj)
+                    insert_VFX_HUD_game_scene_punish(obj_char)
                 end
                 -- set_state_and_state_cache
                 obj_char_other_side["state_cache"] = "hurt"
