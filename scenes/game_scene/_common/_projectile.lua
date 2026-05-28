@@ -681,7 +681,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
         "0_general_hurt_launched_high",
         "air","knockdown_recovery",
         30,5,1.00,
-        -15,0.55,1.00,
+        0,0.55,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             obj_char,
@@ -697,8 +697,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
         obj_char,obj,true,nil,
         "1_4_7_air_block",
         "air","5_stand_idle",
-        10,5,1.00,
-        20,5,1.00,
+        21,5,1.00,
+        -10,2.5,1.00,
         nil,nil,nil,nil,
         function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
     )

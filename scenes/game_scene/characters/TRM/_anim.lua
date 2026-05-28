@@ -1769,6 +1769,14 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
     return res
 end
 
+
+-- 统一所有地面的速度阻力
+-- 空中阻力和地面相同
+-- 水平速度为地面的一半
+-- 空防垂直速度7.5 重力2.5
+-- 防御修正1.00
+-- 打击修正1.02
+
 -- _2P
     -- 需要修改的角色属性
         -- 我方
@@ -3289,7 +3297,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            25,5,1.02,
+            9,5,1.02,
             -22.5,2.5,1.02,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(

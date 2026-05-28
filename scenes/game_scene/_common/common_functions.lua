@@ -294,10 +294,10 @@ function common_game_scene_strike_hit_function(obj_char)
     hit_side_obj_char["strike_active"] = false
     hit_side_obj_char["hit_cancel"] = true
     -- stage_collide
-    if obj_char["x"] <= -1985 and hit_side_obj_char["x"] < -1930 and hit_side_obj_char[5] == -1 then
-        hit_side_obj_char["x"] = -1930
-    elseif obj_char["x"] >= 1985 and hit_side_obj_char["x"] > 1930 and hit_side_obj_char[5] == 1 then
-        hit_side_obj_char["x"] = 1930
+    if obj_char["x"] <= -1985 and hit_side_obj_char["x"] < -1950 and hit_side_obj_char[5] == -1 then
+        hit_side_obj_char["x"] = -1950
+    elseif obj_char["x"] >= 1985 and hit_side_obj_char["x"] > 1950 and hit_side_obj_char[5] == 1 then
+        hit_side_obj_char["x"] = 1950
     end
     -- physics_lock
     hit_side_obj_char["physics_lock"] = true
