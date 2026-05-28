@@ -160,6 +160,9 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
         obj_char_other_side[8] = 7
     end
     res[84] = function()
+        -- input_sys_cache
+        obj_char_other_side["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])
         -- draw_correction
         obj_char_other_side[8] = 8
     end
@@ -924,7 +927,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         -- draw_correction
         obj_char_other_side[8] = 2
     end
-    res[4] = function()
+    res[5] = function()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])
@@ -1040,11 +1043,13 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         obj_char_other_side[8] = 3
     end
     res[6] = function()
+        -- draw_correction
+        obj_char_other_side[8] = 2
+    end
+    res[7] = function()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])
-        -- draw_correction
-        obj_char_other_side[8] = 2
     end
     res[9] = function()
         -- draw_correction
@@ -1160,12 +1165,10 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         -- draw_correction
         obj_char_other_side[8] = 2
     end
-    res[8] = function()
+    res[9] = function()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])
-    end
-    res[9] = function()
         -- draw_correction
         obj_char_other_side[8] = 1
     end
@@ -1283,12 +1286,10 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         -- draw_correction
         obj_char_other_side[8] = 2
     end
-    res[11] = function()
+    res[12] = function()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])
-    end
-    res[12] = function()
         -- draw_correction
         obj_char_other_side[8] = 1
     end
@@ -1410,7 +1411,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         -- draw_correction
         obj_char_other_side[8] = 1
     end
-    res[13] = function()
+    res[14] = function()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])
@@ -1584,7 +1585,7 @@ function load_game_scene_anim_char_common_0_air_block(
         -- draw_correction
         obj_char_other_side[8] = 7
     end
-    res[26] = function()
+    res[27] = function()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])
@@ -5337,7 +5338,7 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char,character_uncomm
         obj_char["projectile_inv"] = true
         obj_char["projectile_inv_countdown"] = res["anim_length"]
         -- input_sys_cache
-        obj_char["input_sys_state"] = "none" -- none save load
+        obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char["player_side"])
         -- state_number
         obj_char["gravity"] = 0
@@ -5382,6 +5383,9 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char,character_uncomm
         obj_char["idle_cancel"] = true
         update_state()
         update_heat_gauge_state()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- draw_correction
         obj_char[8] = 2
     end
@@ -5440,9 +5444,6 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char,character_uncomm
         obj_char[8] = 9
     end
     res[45] = function()
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
-        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- aniamtion_end
     end
     return res
@@ -5522,7 +5523,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char,character_uncom
         obj_char["idle_cancel"] = false
         update_state()
         -- input_sys_cache
-        obj_char["input_sys_state"] = "none" -- none save load
+        obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char["player_side"])
         -- state_number
         obj_char["gravity"] = 0
@@ -5573,6 +5574,9 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char,character_uncom
         obj_char["projectile_inv_countdown"] = 40
         -- collide
         obj_char["hurtbox_table"] = {}
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- game_speed
         -- 设置为强制速度到动画结束
         common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,nil,39})
@@ -5645,9 +5649,6 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char,character_uncom
         obj_char[8] = 9
     end
     res[45] = function()
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
-        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- aniamtion_end
     end
     return res
@@ -5727,7 +5728,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char,character_unc
         obj_char["idle_cancel"] = false
         update_state()
         -- input_sys_cache
-        obj_char["input_sys_state"] = "none" -- none save load
+        obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char["player_side"])
         -- state_number
         obj_char["gravity"] = 0
@@ -5778,6 +5779,9 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char,character_unc
         obj_char["projectile_inv_countdown"] = 40
         -- collide
         obj_char["hurtbox_table"] = {}
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- game_speed
         -- 设置为强制速度到动画结束
         common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,nil,39})
@@ -5855,9 +5859,6 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char,character_unc
         obj_char[8] = 9
     end
     res[45] = function()
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
-        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- aniamtion_end
     end
     return res
@@ -6020,6 +6021,9 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
     res[35] = function()
         -- state
         update_state()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])
         -- draw_correction
         obj_char[8] = 7
     end

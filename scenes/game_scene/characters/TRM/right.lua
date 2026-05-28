@@ -3043,7 +3043,22 @@ end
 
 function state_gate_game_scene_char_RP_common_to_burst_overdrive(input,obj_char,type)
     -- _overdrive
-    if type == "overdrive" and test_input_sys_press(input["burst"]) and obj_char["overdrive_gauge"][1] == obj_char["overdrive_gauge"][2] then
+    if test_input_sys_press(input["burst"]) and type == "overdrive" and obj_char["overdrive_gauge"][1] == obj_char["overdrive_gauge"][2] then
+        local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+        local hit_cancel_RC_state_table = {
+            ["block"] = true,
+            ["hurt"] = true,
+            ["knockdown"] = true,
+            ["knockdown_recovery"] = true,
+            ["knockdown_recovery_wallstick"] = true,
+            ["knockout"] = true,
+            ["throw_tested"] = true,
+            ["throw_hurt_success"] = true,
+            ["blockstop"] = true,
+            ["hurtstop"] = true,
+            ["wallstick"] = true,
+            ["wallbreak_hurt"] = true,
+        }
         local obj_camera = obj_stage_game_scene_camera
         local height_state = obj_char["height_state"]
         if height_state == "air" then
@@ -3061,7 +3076,7 @@ function state_gate_game_scene_char_RP_common_to_burst_overdrive(input,obj_char,
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
-        if obj_char["hit_cancel"] then
+        if hit_cancel_RC_state_table[obj_char_other_side["state"]] then
             obj_char["character_animation"] = load_game_scene_anim_char_common_burst_overdrive(obj_char,70-3,true,character_function_game_scene_TRM_overdrive_state_character_uncommon_init)
         elseif obj_char["state"] == "block" then
             obj_char["character_animation"] = load_game_scene_anim_char_common_burst_overdrive(obj_char,70-23,true,character_function_game_scene_TRM_overdrive_state_character_uncommon_init)
@@ -4694,17 +4709,13 @@ function state_gate_game_scene_char_RP_from_burst_RC_yellow(input,obj_char)
 end
 
 function state_gate_game_scene_char_RP_from_burst_overdrive(input,obj_char)
-    -- _PRC
-    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
-        obj_char["f"] = 28
-        obj_char["physics_lock"] = false
-        character_animator(obj_char,obj_char["character_animation"])
-        return true
-    end
     if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
         -- to stand_idle
         obj_char["idle_cancel"] = true
         obj_char["physics_lock"] = false
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         if obj_char["height_state"] == "air" then
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
             init_character_anim_with(obj_char,obj_char["character_animation"])
