@@ -1910,6 +1910,7 @@ function insert_VFX_HUD_game_scene_counter_ver0_2(obj_char)
         -- obj["draw_sync"]()
         draw_2d_image(obj,obj["image"])
     end
+    obj_char["VFX_HUD_table"] = {}
     table.insert(obj_char["VFX_HUD_table"],obj)
 end
 function insert_VFX_HUD_game_scene_counter_ver3(obj_char)
@@ -2123,5 +2124,6 @@ function insert_VFX_HUD_game_scene_punish(obj_char)
         -- obj["draw_sync"]()
         draw_2d_image(obj,obj["image"])
     end
+    obj_char["VFX_HUD_table"] = {}
     table.insert(obj_char["VFX_HUD_table"],obj)
 end

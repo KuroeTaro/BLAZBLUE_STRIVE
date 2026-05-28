@@ -5334,7 +5334,7 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char,character_uncomm
         obj_char["strike_inv"] = true
         obj_char["strike_inv_countdown"] = res["anim_length"]
         obj_char["throw_inv"] = true
-        obj_char["throw_inv_countdown"] = res["anim_length"]+5
+        obj_char["throw_inv_countdown"] = res["anim_length"]
         obj_char["projectile_inv"] = true
         obj_char["projectile_inv_countdown"] = res["anim_length"]
         -- input_sys_cache
@@ -5522,6 +5522,13 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char,character_uncom
 
         obj_char["idle_cancel"] = false
         update_state()
+
+        obj_char["strike_inv"] = false
+        obj_char["strike_inv_countdown"] = 0
+        obj_char["throw_inv"] = true
+        obj_char["throw_inv_countdown"] = 5
+        obj_char["projectile_inv"] = false
+        obj_char["projectile_inv_countdown"] = 0
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char["player_side"])
@@ -5569,7 +5576,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char,character_uncom
         obj_char["strike_inv"] = true
         obj_char["strike_inv_countdown"] = 40
         obj_char["throw_inv"] = true
-        obj_char["throw_inv_countdown"] = res["anim_length"]
+        obj_char["throw_inv_countdown"] = 40
         obj_char["projectile_inv"] = true
         obj_char["projectile_inv_countdown"] = 40
         -- collide
@@ -5727,6 +5734,13 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char,character_unc
 
         obj_char["idle_cancel"] = false
         update_state()
+
+        obj_char["strike_inv"] = false
+        obj_char["strike_inv_countdown"] = 0
+        obj_char["throw_inv"] = true
+        obj_char["throw_inv_countdown"] = 5
+        obj_char["projectile_inv"] = false
+        obj_char["projectile_inv_countdown"] = 0
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(obj_char["player_side"])
@@ -5774,7 +5788,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char,character_unc
         obj_char["strike_inv"] = true
         obj_char["strike_inv_countdown"] = 40
         obj_char["throw_inv"] = true
-        obj_char["throw_inv_countdown"] = res["anim_length"]
+        obj_char["throw_inv_countdown"] = 40
         obj_char["projectile_inv"] = true
         obj_char["projectile_inv_countdown"] = 40
         -- collide
@@ -5941,7 +5955,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
         obj_char["strike_inv"] = true
         obj_char["strike_inv_countdown"] = 42
         obj_char["throw_inv"] = true
-        obj_char["throw_inv_countdown"] = 42+5
+        obj_char["throw_inv_countdown"] = 42
         obj_char["projectile_inv"] = true
         obj_char["projectile_inv_countdown"] = 42
         -- input_sys_cache

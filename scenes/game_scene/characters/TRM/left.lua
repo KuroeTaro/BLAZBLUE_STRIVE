@@ -3320,6 +3320,10 @@ function state_gate_game_scene_char_LP_from_throw_testing(input,obj_char)
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         state_gate_game_scene_char_LP_from_throw_success(input,obj_char)
+        -- insert_VFX
+        if obj_char_other_side["hurt_state"] ~= "idle" then
+            insert_VFX_HUD_game_scene_punish(obj_char)
+        end
     end
 end
 function state_gate_game_scene_char_LP_from_throw_tested(input,obj_char)
