@@ -4989,7 +4989,7 @@ end
             -- game_speed
             -- game_speed_subframe
             -- game_speed_abnormal_realtime_countdown
-function load_game_scene_anim_char_common_burst_overdrive(obj_char,other_side_countdown,character_uncommon_init)
+function load_game_scene_anim_char_common_burst_overdrive(obj_char,other_side_countdown,overdrive_halved,character_uncommon_init)
     local res = {}
     local height_state = obj_char["height_state"]
     local obj_stage_main = obj_stage_game_scene_main
@@ -5137,7 +5137,7 @@ function load_game_scene_anim_char_common_burst_overdrive(obj_char,other_side_co
         -- state & state_number
         update_move_overdrive_state()
         local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
-        if obj_char_other_side["state"] == "block" or obj_char_other_side["state"] == "hurt" then
+        if overdrive_halved then
             if obj_char["health_gauge"][1]/obj_char["health_gauge"][3] > 0.85 then
                 obj_char["overdrive_timer"] = {0,2,0,0}
             elseif obj_char["health_gauge"][1]/obj_char["health_gauge"][3] > 0.60 then
@@ -6032,7 +6032,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
     res[42] = function()
         -- time_continue_frame_0
         -- state
-        obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
+        obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         update_state()
         -- collide

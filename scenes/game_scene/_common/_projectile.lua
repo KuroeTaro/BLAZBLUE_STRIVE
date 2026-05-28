@@ -23,10 +23,10 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
     obj_char["projectile_rc_table"] = {}
     -- x y z opacity sx sy r f
     local obj = {0,0,0,1,1,1,0,0}
-    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local obj_camera = obj_stage_game_scene_camera
-    local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local side = obj_char["player_side"]
+    local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
     obj["y_offset"] = 0
 
     if obj_char["height_state"] == "air" then
@@ -415,10 +415,10 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(obj_char)
     obj_char["projectile_rc_table"] = {}
     -- x y z opacity sx sy r f
     local obj = {0,0,0,1,1,1,0,0}
-    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local obj_camera = obj_stage_game_scene_camera
-    local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local side = obj_char["player_side"]
+    local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
     obj["y_offset"] = 0
 
     if obj_char["height_state"] == "air" then
@@ -495,10 +495,10 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(obj_char)
     obj_char["projectile_rc_table"] = {}
     -- x y z opacity sx sy r f
     local obj = {0,0,0,1,1,1,0,0}
-    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local obj_camera = obj_stage_game_scene_camera
-    local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local side = obj_char["player_side"]
+    local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
     obj["y_offset"] = 0
 
     if obj_char["height_state"] == "air" then
@@ -575,10 +575,11 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
     obj_char["projectile_rc_table"] = {}
     -- x y z opacity sx sy r f
     local obj = {0,0,0,1,1,1,0,0}
-    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local obj_camera = obj_stage_game_scene_camera
-    local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local side = obj_char["player_side"]
+    local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
+    local hurt_vertical_gravity = 0
     obj["y_offset"] = 0
 
     if obj_char["height_state"] == "air" then
@@ -629,7 +630,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
         "0_general_hurt_launched_high",
         "air","knockdown_recovery",
         30,5,1.00,
-        -4,1.0,1.00,
+        0,0.55,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             obj_char,
@@ -655,7 +656,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
         "0_general_hurt_launched_high",
         "air","knockdown_recovery",
         30,5,1.00,
-        -4,1.0,1.00,
+        0,0.55,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             obj_char,
@@ -681,7 +682,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
         "0_general_hurt_launched_high",
         "air","knockdown_recovery",
         30,5,1.00,
-        -4,1.0,1.00,
+        0,0.55,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             obj_char,
@@ -707,7 +708,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
         "0_general_hurt_launched_high",
         "air","knockdown_recovery",
         30,5,1.00,
-        -4,1.0,1.00,
+        0,0.55,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             obj_char,
@@ -724,7 +725,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
         "0_general_hurt_launched_high",
         "air","knockdown_recovery",
         30,5,1.00,
-        -4,1.0,1.00,
+        0,0.55,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             obj_char,

@@ -1,10 +1,5 @@
 config选项中自定义要不要79空投
 
-6P 添加上段
-common_hit_function
-common_hurt_function
-hi
-
 -- RC
 -- 哈皮部分*各个必杀
 -- 哈皮部分*超必杀
@@ -14,6 +9,7 @@ hi
 -- 联机
 
 -- 制作YRC
+-- 空中YRC双方落地同帧
 
 -- odbrc
     设计用来无敌附加

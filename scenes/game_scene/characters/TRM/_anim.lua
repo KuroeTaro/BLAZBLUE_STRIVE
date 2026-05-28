@@ -745,13 +745,15 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         -- VFX
         insert_VFX_game_scene_stage_smoke_land_blow(obj_char,-355,-160,1,1,1,0)
     end
-    res[5] = function()
+    res[3] = function()
         -- state
         obj_char["move_state"] = "none" -- none startup active recovery
         obj_char["idle_cancel"] = true
         -- input_sys_cache
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
+    end
+    res[5] = function()
         -- collide
         obj_char["hurtbox_table"] = {{0,-215,170,430},{15,-455,100,50}}
         -- draw_correction

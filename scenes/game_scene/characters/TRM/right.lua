@@ -3013,7 +3013,9 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char)
     end
 end
 function state_gate_game_scene_char_RP_common_to_burst_RC_yellow(input,obj_char)
-    if test_input_sys_press(input["RC"]) then
+    if test_input_sys_press(input["RC"]) 
+    -- and obj_char["height_state"] ~= "air" 
+    then
         obj_char["velocity"] = {0,0}
         obj_char["velocity_cache"] = {0,0}
         obj_char["physics_lock"] = false
@@ -3060,9 +3062,11 @@ function state_gate_game_scene_char_RP_common_to_burst_overdrive(input,obj_char,
             obj_char[5] = -obj_char[5]
         end
         if obj_char["hit_cancel"] then
-            obj_char["character_animation"] = load_game_scene_anim_char_common_burst_overdrive(obj_char,70-3,character_function_game_scene_TRM_overdrive_state_character_uncommon_init)
+            obj_char["character_animation"] = load_game_scene_anim_char_common_burst_overdrive(obj_char,70-3,true,character_function_game_scene_TRM_overdrive_state_character_uncommon_init)
+        elseif obj_char["state"] == "block" then
+            obj_char["current_animation"] = load_game_scene_anim_char_common_burst_overdrive(obj_char,70-23,true,character_function_game_scene_TRM_overdrive_state_character_uncommon_init)
         else
-            obj_char["character_animation"] = load_game_scene_anim_char_common_burst_overdrive(obj_char,70-13,character_function_game_scene_TRM_overdrive_state_character_uncommon_init)
+            obj_char["character_animation"] = load_game_scene_anim_char_common_burst_overdrive(obj_char,70-13,false,character_function_game_scene_TRM_overdrive_state_character_uncommon_init)
         end
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "burst_overdrive"
