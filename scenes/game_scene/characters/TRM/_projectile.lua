@@ -509,7 +509,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         )
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])
+        common_game_scene_set_input_sys_cache_init(obj_char_other_side)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -520,7 +520,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
     res[6] = function()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])
+        common_game_scene_set_input_sys_cache_init(obj_char_other_side)
         -- draw_correction
         obj_char_other_side[8] = 2
     end
@@ -650,7 +650,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])
+        common_game_scene_set_input_sys_cache_init(obj_char_other_side)
         -- character_uncommon_init
         character_uncommon_init()
         if obj_char_other_side["y"] > 125 then obj_char_other_side["y"] = 125 end
@@ -701,7 +701,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
     res[26] = function()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])
+        common_game_scene_set_input_sys_cache_init(obj_char_other_side)
     end
     res[28] = function()
         -- collide
@@ -799,7 +799,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         )
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])
+        common_game_scene_set_input_sys_cache_init(obj_char_other_side)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -812,7 +812,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
     res[10] = function()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])
+        common_game_scene_set_input_sys_cache_init(obj_char_other_side)
     end
     res[11] = function()
         -- collide
@@ -925,7 +925,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         update_before_land()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char_other_side["player_side"])
+        common_game_scene_set_input_sys_cache_init(obj_char_other_side)
         -- character_uncommon_init
         character_uncommon_init()
     end

@@ -34,69 +34,11 @@ function set_pause()
     local this_function = switch[DEBUG_PAUSE_STATE]
     if this_function then this_function() end
 end
-function set_jump_breakpoint()
-    local switch = 
-    {
-        ["Jumping"] = function()
-            DEBUG_PAUSE = true
-            DEBUG_JUMPING_BREAKPOINT_STATE = "Holding"
-        end,
-        ["Stop"] = function()
-            if love.keyboard.isDown("f12") and DEBUG_PAUSE then
-                DEBUG_PAUSE = false
-                DEBUG_JUMPING_BREAKPOINT_STATE = "Jumping"
-            end
-        end,
-        ["Holding"] = function()
-            if (not love.keyboard.isDown("f12")) then
-                DEBUG_JUMPING_BREAKPOINT_STATE = "Stop"
-            end
-        end
-    }
-    local this_function = switch[DEBUG_JUMPING_BREAKPOINT_STATE]
-    if this_function then this_function() end
-end
-function set_show_hitbox()
-    local switch = 
-    {
-        ["Released"] = function()
-            if love.keyboard.isDown("f2") then 
-                DEBUG_HITBOX_SHOWS_STATE = "Pressing"
-                if DEBUG_HITBOX_SHOWS == false then 
-                    DEBUG_HITBOX_SHOWS = true
-                elseif DEBUG_HITBOX_SHOWS == true then 
-                    DEBUG_HITBOX_SHOWS = false
-                end
-            end
-        end,
-        ["Releasing"] = function()
-            if love.keyboard.isDown("f2") then 
-                DEBUG_HITBOX_SHOWS_STATE = "Pressing"
-            else
-                DEBUG_HITBOX_SHOWS_STATE = "Released"
-            end
-        end,
-        ["Pressing"] = function()
-            if love.keyboard.isDown("f2") then 
-                DEBUG_HITBOX_SHOWS_STATE = "Holding"
-            else
-                DEBUG_HITBOX_SHOWS_STATE = "Releasing"
-            end
-        end,
-        ["Holding"] = function()
-            if not love.keyboard.isDown("f2") then 
-                DEBUG_HITBOX_SHOWS_STATE = "Releasing"
-            end
-        end
-    }
-    local this_function = switch[DEBUG_HITBOX_SHOWS_STATE]
-    if this_function then this_function() end
-end
 function set_show_info()
     local switch = 
     {
         ["Released"] = function()
-            if love.keyboard.isDown("f3") then
+            if love.keyboard.isDown("f2") then
                 DEBUG_INFO_SHOWS_STATE = "Pressing"
                 if DEBUG_INFO_SHOWS == false then
                     DEBUG_INFO_SHOWS = true
@@ -106,21 +48,21 @@ function set_show_info()
             end
         end,
         ["Releasing"] = function()
-            if love.keyboard.isDown("f3") then
+            if love.keyboard.isDown("f2") then
                 DEBUG_INFO_SHOWS_STATE = "Pressing"
             else
                 DEBUG_INFO_SHOWS_STATE = "Released"
             end
         end,
         ["Pressing"] = function()
-            if love.keyboard.isDown("f3") then
+            if love.keyboard.isDown("f2") then
                 DEBUG_INFO_SHOWS_STATE = "Holding"
             else
                 DEBUG_INFO_SHOWS_STATE = "Releasing"
             end
         end,
         ["Holding"] = function()
-            if not love.keyboard.isDown("f3") then
+            if not love.keyboard.isDown("f2") then
                 DEBUG_INFO_SHOWS_STATE = "Releasing"
             end
         end
@@ -128,6 +70,70 @@ function set_show_info()
     local this_function = switch[DEBUG_INFO_SHOWS_STATE]
     if this_function then this_function() end
 end
+function set_show_hitbox()
+    local switch = 
+    {
+        ["Released"] = function()
+            if love.keyboard.isDown("f3") then 
+                DEBUG_HITBOX_SHOWS_STATE = "Pressing"
+                if DEBUG_HITBOX_SHOWS == false then 
+                    DEBUG_HITBOX_SHOWS = true
+                elseif DEBUG_HITBOX_SHOWS == true then 
+                    DEBUG_HITBOX_SHOWS = false
+                end
+            end
+        end,
+        ["Releasing"] = function()
+            if love.keyboard.isDown("f3") then 
+                DEBUG_HITBOX_SHOWS_STATE = "Pressing"
+            else
+                DEBUG_HITBOX_SHOWS_STATE = "Released"
+            end
+        end,
+        ["Pressing"] = function()
+            if love.keyboard.isDown("f3") then 
+                DEBUG_HITBOX_SHOWS_STATE = "Holding"
+            else
+                DEBUG_HITBOX_SHOWS_STATE = "Releasing"
+            end
+        end,
+        ["Holding"] = function()
+            if not love.keyboard.isDown("f3") then 
+                DEBUG_HITBOX_SHOWS_STATE = "Releasing"
+            end
+        end
+    }
+    local this_function = switch[DEBUG_HITBOX_SHOWS_STATE]
+    if this_function then this_function() end
+end
+function set_hot_update()
+    if love.keyboard.isDown("f4") then
+		require("lurker").update()
+    end
+end
+function set_jump_breakpoint()
+    local switch = 
+    {
+        ["Jumping"] = function()
+            DEBUG_PAUSE = true
+            DEBUG_JUMPING_BREAKPOINT_STATE = "Holding"
+        end,
+        ["Stop"] = function()
+            if love.keyboard.isDown("f5") and DEBUG_PAUSE then
+                DEBUG_PAUSE = false
+                DEBUG_JUMPING_BREAKPOINT_STATE = "Jumping"
+            end
+        end,
+        ["Holding"] = function()
+            if (not love.keyboard.isDown("f5")) then
+                DEBUG_JUMPING_BREAKPOINT_STATE = "Stop"
+            end
+        end
+    }
+    local this_function = switch[DEBUG_JUMPING_BREAKPOINT_STATE]
+    if this_function then this_function() end
+end
+
 function set_toggle()
     local switch = 
     {

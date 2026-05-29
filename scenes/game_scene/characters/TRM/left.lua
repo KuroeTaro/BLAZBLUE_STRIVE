@@ -5886,7 +5886,7 @@ function draw_game_scene_char_LP_shadow()
     draw_game_scene_char_LP()
 
     local center_blur_start = 0.5
-    local side_blur_start = 0.85
+    local side_blur_start = 0.75
     local blur_start = side_blur_start - ((width-dx_light_char_2d)/width*(side_blur_start-center_blur_start))
     local blur_width = (1.0 - blur_start)*0.85
 
