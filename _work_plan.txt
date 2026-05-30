@@ -10,13 +10,33 @@ config选项中自定义要不要79空投
 
 -- 每个攻击动画检查工作
 -- 确保对应所有受击动画
-    -- 统一所有地面的速度阻力
-    -- 空中阻力和地面相同
-    -- 水平速度为地面的一半
-    -- 空防垂直速度7.5 重力2.5
+    -- 统一所有地面的速度阻力 ok
+    -- 空中阻力和地面相同 ok
+    -- 水平速度为地面的四分之一
+    -- 地面受击防御垂直速度0 重力2.5
+    -- 空防 垂直速度12.5 重力2.5
+    -- 空伤 垂直速度-15 重力1.5
+    -- OTG 垂直速度0 重力2.5
+    -- 空伤OTG obj_char_other_side["y"] = math.min(obj_char_other_side["y"],175) √
     -- 防御修正1.00
     -- 打击修正1.02
+1. stand_hurt_animation/stand_block_animation/crouch_hurt_animation/crouch_block_animation 
+    前五项数据保持一致 
+    第六项hurt为1.02
+2. air_hurt_animation/air_block_animation/OTG_hurt_animation 
+    前三项保持一致(2k 2s 2Launcher这种特殊例子除外) 
+    后三项重力保持一致
+    水平和垂直修正 hurt为1.02 block为1.00
+3. 所有animation 有同样的阻力
+4. 根据switch版本的模组进行调整
+
+common_game_scene_char_apply_hurt_velocity
+FD是往hit_side_obj_char_添加0.5倍的速度 需要修改
+
 
 -- 5H状态和动画添加
 
 -- 开始做拔枪
+
+20260530
+2S

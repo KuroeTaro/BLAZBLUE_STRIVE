@@ -274,7 +274,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
+            obj_char,obj_char_other_side,false,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -390,7 +390,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
+            obj_char,obj_char_other_side,false,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -506,7 +506,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
+            obj_char,obj_char_other_side,false,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -622,7 +622,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
+            obj_char,obj_char_other_side,false,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -738,7 +738,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
+            obj_char,obj_char_other_side,false,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -885,14 +885,11 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
-        if FD_block then
-            hurt_horizontal_velocity = hurt_horizontal_velocity * 2
-        end
         common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"block",FD_block
         )
         common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
+            obj_char,obj_char_other_side,FD_block,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -1000,14 +997,11 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
-        if FD_block then
-            hurt_horizontal_velocity = hurt_horizontal_velocity * 2
-        end
         common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"block",FD_block
         )
         common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
+            obj_char,obj_char_other_side,FD_block,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -1119,14 +1113,11 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
-        if FD_block then
-            hurt_horizontal_velocity = hurt_horizontal_velocity * 2
-        end
         common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"block",FD_block
         )
         common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
+            obj_char,obj_char_other_side,FD_block,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -1236,14 +1227,11 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
-        if FD_block then
-            hurt_horizontal_velocity = hurt_horizontal_velocity * 2
-        end
         common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"block",FD_block
         )
         common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
+            obj_char,obj_char_other_side,FD_block,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -1357,14 +1345,11 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
-        if FD_block then
-            hurt_horizontal_velocity = hurt_horizontal_velocity * 2
-        end
         common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"block",FD_block
         )
         common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
+            obj_char,obj_char_other_side,FD_block,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -1459,8 +1444,8 @@ function load_game_scene_anim_char_common_0_air_block(
             obj_char_other_side["height_state"]  = "stand"
             obj_char_other_side["throw_inv"] = true
             obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5-13
+            obj_char_other_side["velocity"][2] = 0
             obj_char_other_side["gravity"] = 2.5
-            obj_char_other_side["friction"] = 7
 
             -- collide
             obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][6]
@@ -1477,6 +1462,11 @@ function load_game_scene_anim_char_common_0_air_block(
                 VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
                 0.5,1,1,0
             )
+        end
+    end
+    for i = 0,12 do
+        res[i] = function()
+            update_before_land()
         end
     end
     res["prop_f"] = "f"
@@ -1510,14 +1500,11 @@ function load_game_scene_anim_char_common_0_air_block(
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
-        if FD_block then
-            hurt_horizontal_velocity = hurt_horizontal_velocity * 2
-        end
         common_game_scene_char_apply_damage_heat(
             obj_char,obj_char_other_side,"block",FD_block
         )
         common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
+            obj_char,obj_char_other_side,FD_block,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -1531,7 +1518,7 @@ function load_game_scene_anim_char_common_0_air_block(
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
-        obj_char_other_side["collision_ground_height_offset"] = 130
+        obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         obj_char_other_side[8] = 5
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
@@ -1540,7 +1527,6 @@ function load_game_scene_anim_char_common_0_air_block(
         common_game_scene_set_input_sys_cache_init(obj_char_other_side)
         -- character_uncommon_init
         character_uncommon_init()
-        if obj_char_other_side["y"] > 125 then obj_char_other_side["y"] = 125 end
     end
     res[1] = function()
         -- draw_correction
@@ -1634,7 +1620,7 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         end
         velocity = {-obj_char[5]*32,-37.5}
         pushbox = pushbox_data_other_side["1_4_7_air_block"][0]
-        collision_ground_height_offset = 130
+        collision_ground_height_offset = 185
     else
         obj_char["y"] = 365
         if teching_or_teched == "teching" then
@@ -1816,7 +1802,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
         obj_char["pushbox_other_side_char_active"] = true
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet_state][0]
-        obj_char["collision_ground_height_offset"] = 130
+        obj_char["collision_ground_height_offset"] = 185
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = anchor_data[sprite_sheet_state]
@@ -2958,7 +2944,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
         obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet_state][0]
-        obj_char["collision_ground_height_offset"] = 130
+        obj_char["collision_ground_height_offset"] = 185
         -- draw_correction
         obj_char[8] = 2
         obj_char["anchor_pos"] = anchor_data[sprite_sheet_state]
@@ -3193,7 +3179,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
+            obj_char,obj_char_other_side,false,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -3207,7 +3193,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
-        obj_char_other_side["collision_ground_height_offset"] = 130
+        obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
@@ -3427,7 +3413,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
+            obj_char,obj_char_other_side,false,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -3441,7 +3427,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
-        obj_char_other_side["collision_ground_height_offset"] = 130
+        obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
@@ -3619,7 +3605,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
+            obj_char,obj_char_other_side,false,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -3633,7 +3619,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
-        obj_char_other_side["collision_ground_height_offset"] = 130
+        obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
@@ -3757,7 +3743,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
+            obj_char,obj_char_other_side,false,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -3771,7 +3757,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
-        obj_char_other_side["collision_ground_height_offset"] = 130
+        obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
@@ -3902,7 +3888,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
+            obj_char,obj_char_other_side,false,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -3916,7 +3902,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
-        obj_char_other_side["collision_ground_height_offset"] = 130
+        obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
@@ -4073,7 +4059,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
+            obj_char,obj_char_other_side,false,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -4087,7 +4073,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
-        obj_char_other_side["collision_ground_height_offset"] = 130
+        obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
@@ -4230,7 +4216,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
+            obj_char,obj_char_other_side,false,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -4244,7 +4230,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
-        obj_char_other_side["collision_ground_height_offset"] = 130
+        obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
@@ -4369,7 +4355,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
-        obj_char_other_side["collision_ground_height_offset"] = 130
+        obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
@@ -4521,7 +4507,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
-        obj_char_other_side["collision_ground_height_offset"] = 130
+        obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
@@ -4675,7 +4661,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
-        obj_char_other_side["collision_ground_height_offset"] = 130
+        obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
@@ -4842,7 +4828,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
             obj_char,obj_char_other_side,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(
-            obj_char,obj_char_other_side,
+            obj_char,obj_char_other_side,false,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -5300,7 +5286,7 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char,character_uncomm
             obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
             obj_char["pushbox"]  = pushbox_data["RC"]["air"]
             obj_char["anchor_pos"] = anchor_data["RC"]["air"]
-            obj_char["collision_ground_height_offset"] = 130
+            obj_char["collision_ground_height_offset"] = 185
         end
         character_uncommon_update(obj_char)
     end
@@ -5483,7 +5469,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char,character_uncom
             obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
             obj_char["pushbox"]  = pushbox_data["RC"]["air"]
             obj_char["anchor_pos"] = anchor_data["RC"]["air"]
-            obj_char["collision_ground_height_offset"] = 130
+            obj_char["collision_ground_height_offset"] = 185
         end
         character_uncommon_update(obj_char)
     end
@@ -5695,7 +5681,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char,character_unc
             obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
             obj_char["pushbox"]  = pushbox_data["RC"]["air"]
             obj_char["anchor_pos"] = anchor_data["RC"]["air"]
-            obj_char["collision_ground_height_offset"] = 130
+            obj_char["collision_ground_height_offset"] = 185
         end
         character_uncommon_update(obj_char)
     end
@@ -5912,7 +5898,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
             obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
             obj_char["pushbox"]  = pushbox_data["RC"]["air"]
             obj_char["anchor_pos"] = anchor_data["RC"]["air"]
-            obj_char["collision_ground_height_offset"] = 130
+            obj_char["collision_ground_height_offset"] = 185
         end
         character_uncommon_update(obj_char)
     end

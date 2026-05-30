@@ -636,8 +636,8 @@ function load_game_scene_box_anchor_data_LP()
     obj_pushboxs_data_game_scene_char_LP["0_stand_hurt_low"] = {}
     obj_pushboxs_data_game_scene_char_LP["0_stand_hurt_low"][0] = stand_pushbox
     obj_hurtboxs_data_game_scene_char_LP["0_stand_hurt_low"] = {}
-    obj_hurtboxs_data_game_scene_char_LP["0_stand_hurt_low"][0] = {stand_hurtbox[1],{27,-465,120,50}}
-    obj_hurtboxs_data_game_scene_char_LP["0_stand_hurt_low"][1] = {{0,-215,220,430},{44,-450,120,40}}
+    obj_hurtboxs_data_game_scene_char_LP["0_stand_hurt_low"][0] = {stand_hurtbox[1]}
+    obj_hurtboxs_data_game_scene_char_LP["0_stand_hurt_low"][1] = {{0,-215,220,430}}
     obj_hurtboxs_data_game_scene_char_LP["0_stand_hurt_low"][2] = {{0,-210,240,420}}
     obj_hurtboxs_data_game_scene_char_LP["0_stand_hurt_low"][3] = {{0,-200,250,400}}
     obj_hurtboxs_data_game_scene_char_LP["0_stand_hurt_low"][4] = {{0,-190,260,380}}
@@ -647,8 +647,8 @@ function load_game_scene_box_anchor_data_LP()
     obj_pushboxs_data_game_scene_char_LP["0_stand_hurt_mid"] = {}
     obj_pushboxs_data_game_scene_char_LP["0_stand_hurt_mid"][0] = stand_pushbox
     obj_hurtboxs_data_game_scene_char_LP["0_stand_hurt_mid"] = {}
-    obj_hurtboxs_data_game_scene_char_LP["0_stand_hurt_mid"][0] = {stand_hurtbox[1],{27,-465,120,50}}
-    obj_hurtboxs_data_game_scene_char_LP["0_stand_hurt_mid"][1] = {{0,-215,220,430},{44,-440,120,20}}
+    obj_hurtboxs_data_game_scene_char_LP["0_stand_hurt_mid"][0] = {stand_hurtbox[1]}
+    obj_hurtboxs_data_game_scene_char_LP["0_stand_hurt_mid"][1] = {{0,-215,220,430}}
     obj_hurtboxs_data_game_scene_char_LP["0_stand_hurt_mid"][2] = {{0,-210,240,420}}
     obj_hurtboxs_data_game_scene_char_LP["0_stand_hurt_mid"][3] = {{0,-200,250,400}}
     obj_hurtboxs_data_game_scene_char_LP["0_stand_hurt_mid"][4] = {{0,-190,260,380}}
@@ -2908,7 +2908,7 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_red(input,obj_char)
             obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
             obj_char["anchor_pos"] = {330,485}
             obj_char["pushbox"] = {0,-100,120,200}
-            obj_char["collision_ground_height_offset"] = 130
+            obj_char["collision_ground_height_offset"] = 185
             obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         else
             obj_char["height_state"] = "stand"
@@ -2955,7 +2955,7 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char)
             obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
             obj_char["anchor_pos"] = {330,485}
             obj_char["pushbox"] = {0,-100,120,200}
-            obj_char["collision_ground_height_offset"] = 130
+            obj_char["collision_ground_height_offset"] = 185
             obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         else
             obj_char["height_state"] = "stand"
@@ -2995,7 +2995,7 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char)
             obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
             obj_char["anchor_pos"] = {330,485}
             obj_char["pushbox"] = {0,-100,120,200}
-            obj_char["collision_ground_height_offset"] = 130
+            obj_char["collision_ground_height_offset"] = 185
             obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         else
             obj_char["height_state"] = "stand"
@@ -3023,7 +3023,7 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_yellow(input,obj_char)
             obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
             obj_char["anchor_pos"] = {330,485}
             obj_char["pushbox"] = {0,-100,120,200}
-            obj_char["collision_ground_height_offset"] = 130
+            obj_char["collision_ground_height_offset"] = 185
             obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         else
             obj_char["height_state"] = "stand"

@@ -61,7 +61,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
         "0_stand_hurt_high",
         "stand","5_stand_idle",
         8,5,1.00,
-        0,2.5,1.00,
+        0,2.5,1.02,
         nil,nil,nil,nil,
         function() end
     )
@@ -79,7 +79,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
         "0_crouch_hurt",
         "crouch","1_2_3_crouch",
         8,5,1.00,
-        0,2.5,1.00,
+        0,2.5,1.02,
         nil,nil,nil,nil,
         function() end
     )
@@ -96,8 +96,8 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
         obj_char,obj,true,nil,
         "0_general_hurt_launched_high",
         "air","knockdown_recovery",
-        15,5,1.05,
-        -25,2.5,1.05,
+        18,5,1.02,
+        -25,2.5,1.02,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             obj_char,
@@ -107,23 +107,23 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         ),
         nil,nil,
-        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
+        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
     )
     obj["air_block_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
         obj_char,obj,true,nil,
         "1_4_7_air_block",
         "air","5_stand_idle",
-        10,5,1.00,
-        10,2.5,1.00,
+        12.5,5,1.00,
+        -7.5,7.5,1.00,
         nil,nil,nil,nil,
-        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
+        function() end
     )
     obj["OTG_hurt_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hurt(
         obj_char,obj,true,nil,
         "0_general_hurt_launched_high",
         "air","knockdown_recovery",
-        27,5,1.00,
-        -5,2.5,1.00,
+        18,5,1.02,
+        0,2.5,1.02,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             obj_char,
@@ -133,7 +133,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         ),
         nil,nil,
-        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],155) end
+        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
     )
     obj["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
         obj_char,obj,true
@@ -474,9 +474,6 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
-        if FD_block then
-            hurt_horizontal_velocity = hurt_horizontal_velocity * 2
-        end
         common_game_scene_projectile_apply_damage_heat(
             obj_char,obj_char_other_side,"block",FD_block,projectile
         )
@@ -622,9 +619,6 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
         -- state_number
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char_other_side["player_side"]]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
-        if FD_block then
-            hurt_horizontal_velocity = hurt_horizontal_velocity * 2
-        end
         common_game_scene_projectile_apply_damage_heat(
             obj_char,obj_char_other_side,"block",FD_block,projectile
         )
@@ -644,7 +638,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
-        obj_char_other_side["collision_ground_height_offset"] = 130
+        obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         obj_char_other_side[8] = 5
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
@@ -653,7 +647,6 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
         common_game_scene_set_input_sys_cache_init(obj_char_other_side)
         -- character_uncommon_init
         character_uncommon_init()
-        if obj_char_other_side["y"] > 125 then obj_char_other_side["y"] = 125 end
     end
     res[3] = function()
         -- draw_correction
@@ -917,7 +910,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
-        obj_char_other_side["collision_ground_height_offset"] = 130
+        obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]

@@ -700,7 +700,7 @@ function update_game_scene_gravity()
         char_LP["velocity"][2] = 0
         char_LP["gravity_correction"] = 1
     elseif LP_RUN_AT_THIS_FRAME and not char_LP["physics_lock"] then
-        char_LP["velocity"][2] = char_LP["velocity"][2] + char_LP["gravity"]*char_LP["gravity_correction"]
+        char_LP["velocity"][2] = char_LP["velocity"][2] + char_LP["gravity"]
     end
     
     if char_RP["y"] == 365 then
@@ -710,7 +710,7 @@ function update_game_scene_gravity()
         char_RP["velocity"][2] = 0
         char_LP["gravity_correction"] = 1
     elseif RP_RUN_AT_THIS_FRAME and not char_RP["physics_lock"] then
-        char_RP["velocity"][2] = char_RP["velocity"][2] + char_RP["gravity"]*char_RP["gravity_correction"]
+        char_RP["velocity"][2] = char_RP["velocity"][2] + char_RP["gravity"]
     end
 end
 function update_game_scene_gauge()
