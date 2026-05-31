@@ -568,17 +568,14 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
             obj_char_other_side["height_state"]  = "stand"
             obj_char_other_side["throw_inv"] = true
             obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5-13
-            obj_char_other_side["gravity"] = 2.5
             obj_char_other_side["friction"] = 7
-
+            obj_char_other_side["gravity"] = 2.5
             -- collide
             obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][6]
             obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][6]
             obj_char_other_side["collision_ground_height_offset"] = 0
-
             -- draw_correction
             obj_char_other_side[8] = 6
-
             -- VFX
             insert_VFX_game_scene_stage_smoke_land_blow(
                 obj_char_other_side,

@@ -97,8 +97,8 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
         obj_char_other_side["projectile_inv_countdown"] = 1000
         -- state_number
         obj_char_other_side["velocity"] = {0,0}
-        obj_char_other_side["gravity"] = 2.5
         obj_char_other_side["friction"] = 10
+        obj_char_other_side["gravity"] = 2.5
         obj_char_other_side["horizontal_velocity_correction"] = 1
         obj_char_other_side["gravity_correction"] = 1
         obj_char_other_side["damage_correction"] = 1
@@ -1446,15 +1446,12 @@ function load_game_scene_anim_char_common_0_air_block(
             obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5-13
             obj_char_other_side["velocity"][2] = 0
             obj_char_other_side["gravity"] = 2.5
-
             -- collide
             obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][6]
             obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][6]
             obj_char_other_side["collision_ground_height_offset"] = 0
-
             -- draw_correction
             obj_char_other_side[8] = 6
-
             -- VFX
             insert_VFX_game_scene_stage_smoke_land_blow(
                 obj_char_other_side,
@@ -1667,8 +1664,8 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         -- state_number
         obj_char["velocity"] = velocity
         obj_char["velocity_cache"] = {0,0}
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 5 -- 包括地面移动和空中dash的水平阻力
+        obj_char["gravity"] = 2.5
         -- collide
         obj_char["pushbox"] = pushbox
         obj_char["pushbox_other_side_char_active"] = false
@@ -1795,8 +1792,8 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
         obj_char["velocity"] = {0,0}
         obj_char["velocity_debug"] = {0,0}
         obj_char["velocity_cache"] = {0,0}
-        obj_char["gravity"] = 0
         obj_char["friction"] = 1
+        obj_char["gravity"] = 0
         -- collide
         obj_char["pushbox"] = pushbox_data[sprite_sheet_state][0]
         obj_char["pushbox_other_side_char_active"] = true
@@ -2275,8 +2272,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         obj_char["velocity"] = {0,0}
         obj_char["velocity_debug"] = {0,0}
         obj_char["velocity_cache"] = {0,0}
-        obj_char["gravity"] = 0
         obj_char["friction"] = 1
+        obj_char["gravity"] = 0
         -- collide
         obj_char["pushbox"] = pushbox_data[sprite_sheet_state][0]
         obj_char["pushbox_other_side_char_active"] = true
@@ -2480,8 +2477,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
         obj_char_other_side["velocity"] = {0,0}
-        obj_char_other_side["gravity"] = 2.5
         obj_char_other_side["friction"] = 1
+        obj_char_other_side["gravity"] = 2.5
         obj_char_other_side["horizontal_velocity_correction"] = 1
         obj_char_other_side["gravity_correction"] = 1
         obj_char_other_side["damage_correction"] = 1
@@ -2596,8 +2593,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
         obj_char_other_side["velocity"] = {0,0}
-        obj_char_other_side["gravity"] = 2.5
         obj_char_other_side["friction"] = 1
+        obj_char_other_side["gravity"] = 2.5
         obj_char_other_side["horizontal_velocity_correction"] = 1
         obj_char_other_side["gravity_correction"] = 1
         obj_char_other_side["damage_correction"] = 1
@@ -2697,8 +2694,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
         obj_char["projectile_inv_countdown"] = 0
         -- state_number
         obj_char["velocity"] = {0,0}
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 1
+        obj_char["gravity"] = 2.5
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -2804,8 +2801,8 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- state_number
         obj_char_other_side["velocity"] = {-20.0*obj_char_other_side[5],0}
-        obj_char_other_side["gravity"] = 2.5
         obj_char_other_side["friction"] = 100
+        obj_char_other_side["gravity"] = 2.5
         obj_char_other_side["horizontal_velocity_correction"] = 1
         obj_char_other_side["gravity_correction"] = 1
         obj_char_other_side["damage_correction"] = 1
@@ -2931,8 +2928,8 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
         elseif common_game_scene_check_jump_direction(obj_char) then
             obj_char["velocity"][2] = -62.5
         end
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 4
+        obj_char["gravity"] = 2.5
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -5019,8 +5016,8 @@ function load_game_scene_anim_char_common_burst_overdrive(obj_char,other_side_co
         -- state_number
         obj_char["velocity"] = {0,0}
         obj_char["velocity_cache"] = {0,0}
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 1
+        obj_char["gravity"] = 2.5
         obj_char["physics_lock"] = true
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
@@ -5327,8 +5324,8 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char,character_uncomm
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
-        obj_char["gravity"] = 0
         obj_char["friction"] = 0
+        obj_char["gravity"] = 0
         obj_char["physics_lock"] = false
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
@@ -5519,8 +5516,8 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char,character_uncom
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
-        obj_char["gravity"] = 0
         obj_char["friction"] = 0
+        obj_char["gravity"] = 0
         obj_char["physics_lock"] = false
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
@@ -5731,8 +5728,8 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char,character_unc
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
-        obj_char["gravity"] = 0
         obj_char["friction"] = 0
+        obj_char["gravity"] = 0
         obj_char["physics_lock"] = false
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
@@ -5948,8 +5945,8 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
         obj_char["input_sys_state"] = "none" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
-        obj_char["gravity"] = 0
         obj_char["friction"] = 0
+        obj_char["gravity"] = 0
         obj_char["physics_lock"] = false
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1

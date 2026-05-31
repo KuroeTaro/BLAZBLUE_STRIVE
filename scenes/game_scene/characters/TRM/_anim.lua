@@ -47,8 +47,8 @@ function load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
         -- state_number
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 1
+        obj_char["gravity"] = 2.5
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -100,8 +100,8 @@ function load_game_scene_anim_char_TRM_1_2_3_crouch_turn(obj_char)
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
         -- state_number
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 1
+        obj_char["gravity"] = 2.5
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -143,8 +143,8 @@ function load_game_scene_anim_char_TRM_1_2_3_crouch_to_stand_idle(obj_char)
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
         -- state_number
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 1
+        obj_char["gravity"] = 2.5
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -190,8 +190,8 @@ function load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
         -- state_number
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 1
+        obj_char["gravity"] = 2.5
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -231,8 +231,8 @@ function load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
         -- state_number
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 1
+        obj_char["gravity"] = 2.5
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -276,8 +276,8 @@ function load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
 
         obj_char["idle_cancel"] = false
         -- state_number
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 10
+        obj_char["gravity"] = 2.5
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -370,8 +370,8 @@ function load_game_scene_anim_char_TRM_4_walk(obj_char)
         obj_char["move_state"] = "none" -- none startup active recovery
         -- state_number
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 1
+        obj_char["gravity"] = 2.5
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -482,8 +482,8 @@ function load_game_scene_anim_char_TRM_4_walk_to_stand_idle(obj_char)
         obj_char["move_state"] = "none" -- none startup active recovery
         -- state_number
         obj_char["velocity"] = {0,0}
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 1
+        obj_char["gravity"] = 2.5
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -529,8 +529,8 @@ function load_game_scene_anim_char_TRM_6_walk(obj_char)
         obj_char["move_state"] = "none" -- none startup active recovery
         -- state_number
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 1
+        obj_char["gravity"] = 2.5
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -641,8 +641,8 @@ function load_game_scene_anim_char_TRM_6_walk_to_stand_idle(obj_char)
         obj_char["move_state"] = "none" -- none startup active recovery
         -- state_number
         obj_char["velocity"] = {0,0}
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 1
+        obj_char["gravity"] = 2.5
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -723,8 +723,8 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         -- state_number
         obj_char["velocity"] = {0,0}
         obj_char["velocity_cache"] = {0,0}
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 1
+        obj_char["gravity"] = 2.5
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -838,8 +838,8 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet_stat
         if vertical_velocity ~= nil then
             obj_char["velocity"][2] = vertical_velocity
         end
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 0
+        obj_char["gravity"] = 2.5
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -1015,8 +1015,8 @@ function load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
         end
         obj_char["velocity_cache"] = {obj_char["velocity"][1],0}
         obj_char["velocity"] = {0,0}
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 7
+        obj_char["gravity"] = 2.5
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -1116,8 +1116,8 @@ function load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
         obj_char["projectile_inv_countdown"] = 6
         -- state_number
         obj_char["velocity"] = {-32.0*obj_char[5],-7.0}
-        obj_char["gravity"] = 1.0
         obj_char["friction"] = 0
+        obj_char["gravity"] = 1.0
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -1168,8 +1168,8 @@ function load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
         obj_char["height_state"] = "stand" -- stand crouch air OTG wallstick
         -- state_number
         obj_char["velocity"][2] = 0
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 10
+        obj_char["gravity"] = 2.5
         -- collide
         obj_char["pushbox"] = {0,-185,120,370}
         obj_char["hurtbox_table"] = {{0,-225,180,450}}
@@ -1276,8 +1276,8 @@ function load_game_scene_anim_char_TRM_4dash_air_backdash(obj_char)
         -- state_number
         obj_char["velocity"][1] = -25*obj_char[5]
         obj_char["velocity"][2] = obj_char["velocity"][2]*0.6
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 0
+        obj_char["gravity"] = 2.5
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -1397,8 +1397,8 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         obj_char["recovery_frame"] = 0
         -- state_number
         obj_char["velocity"] = {obj_char[5]*20.0,0}
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 100
+        obj_char["gravity"] = 2.5
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -1567,15 +1567,16 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
         -- state_number
         obj_char["velocity"][1] = 4*obj_char[5]
         obj_char["velocity"][2] = obj_char["velocity"][2]*0.6
+        obj_char["friction"] = 0
         obj_char["gravity"] = 2.5
+        obj_char["horizontal_velocity_correction"] = 1
+        obj_char["gravity_correction"] = 1
+        obj_char["damage_correction"] = 1
+
         if obj_char["velocity"][2] > 0 then
             obj_char["velocity"][2] = 0
             obj_char["gravity"] = 0
         end
-        obj_char["friction"] = 0
-        obj_char["horizontal_velocity_correction"] = 1
-        obj_char["gravity_correction"] = 1
-        obj_char["damage_correction"] = 1
         -- collide
         obj_char["pushbox"] = {0,-100,120,200}
         obj_char["pushbox_other_side_char_active"] = true
@@ -1687,8 +1688,8 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
         obj_char["idle_cancel"] = true
         -- state_number
         obj_char["velocity"] = {obj_char[5]*20.0,0}
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 100
+        obj_char["gravity"] = 2.5
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -1980,8 +1981,8 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -2234,8 +2235,8 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -2510,8 +2511,8 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -2766,8 +2767,8 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -3056,8 +3057,8 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
         obj_char["velocity"] = {obj_char[5]*(60+velocity_cache),0}
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -3092,6 +3093,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
     res[3] = function()
         -- state_number
         obj_char["velocity"] = {obj_char[5]*(120+velocity_cache),0}
+        obj_char["friction"] = friction
         -- collide
         obj_char["hurtbox_table"] = {{0,-200,190,400}}
         -- draw_correction
@@ -3100,12 +3102,14 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
     res[8] = function()
         -- state_number
         obj_char["velocity"] = {obj_char[5]*(80+velocity_cache),0}
+        obj_char["friction"] = friction
         -- draw_correction
         obj_char[8] = 2
     end
     res[12] = function()
         -- state & state_number
         obj_char["velocity"] = {obj_char[5]*(40+velocity_cache),0}
+        obj_char["friction"] = friction
         -- draw_correction
         obj_char[8] = 3
         -- VFX
@@ -3121,6 +3125,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true 
         obj_char["velocity"] = {obj_char[5]*(20+velocity_cache),0}
+        obj_char["friction"] = friction
         -- collide
         obj_char["hitbox_table"] = {{90,-180,140,250},{180,-160,40,210}}
         obj_char["hurtbox_table"] = {{-15,-215,200,430},{110,-375,50,110},{90,-180,170,280},{180,-160,70,240}}
@@ -3180,8 +3185,8 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- state_number
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -3193,6 +3198,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
     res[40] = function()
         -- state_number
         obj_char["velocity"] = {obj_char[5]*(5),0}
+        obj_char["friction"] = friction
         -- collide
         obj_char["hurtbox_table"] = {{-5,-215,170,430},{-15,-455,100,50}}
         -- oroboros
@@ -3203,6 +3209,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
     res[44] = function()
         -- state_number
         obj_char["velocity"] = {obj_char[5]*(25),0}
+        obj_char["friction"] = friction
         -- animation end
     end
     return res
@@ -3359,8 +3366,8 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -3650,8 +3657,8 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -3976,8 +3983,8 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
             obj_char["velocity"][1] = 9.0*obj_char[5]
         end
         obj_char["velocity"][1] = obj_char["velocity"][1]+25*obj_char[5]*0.5
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -4301,8 +4308,8 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -4568,8 +4575,8 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
             obj_char["velocity"][1] = 9.0*obj_char[5]
         end
         obj_char["velocity"][1] = obj_char["velocity"][1]+46.0*obj_char[5]
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -4745,8 +4752,8 @@ function load_game_scene_anim_char_TRM_5H(obj_char)
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
         -- state_number
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 1
+        obj_char["gravity"] = 2.5
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -5603,8 +5610,8 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -5840,8 +5847,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
             obj_char["input_sys_cache"]["right"] = true
         end
         -- state_number
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -6218,8 +6225,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- state_number
         obj_char["velocity"] = {0,0}
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -6621,8 +6628,8 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -6925,8 +6932,8 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -7215,8 +7222,8 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -7465,8 +7472,8 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -7716,8 +7723,8 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -7978,8 +7985,8 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -8240,8 +8247,8 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -8437,8 +8444,8 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
             obj_char["input_sys_cache"]["right"] = true
         end
         -- state_number
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -8618,8 +8625,8 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["projectile_inv_countdown"] = 12
         -- state_number
         obj_char_other_side["velocity"] = {0,0}
-        obj_char_other_side["gravity"] = gravity
         obj_char_other_side["friction"] = friction
+        obj_char_other_side["gravity"] = gravity
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side["0_general_hurt_launched_high"][0]
         obj_char_other_side["pushbox_other_side_char_active"] = false
@@ -8794,8 +8801,8 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- state_number
         obj_char["velocity"] = {0,0}
-        obj_char["gravity"] = gravity
         obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -8910,8 +8917,8 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         obj_char["y"] = 365
         obj_char["sprite_sheet_state"] = "7_8_9_jump_air_to_stand_idle"
         -- state_number
-        obj_char["gravity"] = 2.5
         obj_char["friction"] = 1
+        obj_char["gravity"] = 2.5
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1

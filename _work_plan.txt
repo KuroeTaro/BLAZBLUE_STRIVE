@@ -39,4 +39,18 @@ FD是往hit_side_obj_char_添加0.5倍的速度 需要修改
 -- 开始做拔枪
 
 20260530
-2S
+
+
+
+char_wall_collision_state
+hurt_vec_state
+FD_state
+
+hit_char_wall_collision*3
+hurt_char_wall_collision*3
+hurt_vec_state*3
+FD*2
+
+hit_side_vec_func
+    if obj_5*hurt_vec_state <=0 or hurt_char_wall_collision
+hurt_side_vec_func

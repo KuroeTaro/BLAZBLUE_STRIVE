@@ -118,8 +118,8 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["velocity"] = {0,0}
     obj_char_game_scene_char_LP["velocity_debug"] = {0,0}
     obj_char_game_scene_char_LP["velocity_cache"] = {0,0}
-    obj_char_game_scene_char_LP["gravity"] = 2.5
     obj_char_game_scene_char_LP["friction"] = 1
+    obj_char_game_scene_char_LP["gravity"] = 2.5
     obj_char_game_scene_char_LP["physics_lock"] = false
     
     obj_char_game_scene_char_LP["health_gauge"] = {12000,12000,12000,"fade_off"}
@@ -987,8 +987,8 @@ function load_game_scene_wallbreak_start_init_LP()
     obj_char_game_scene_char_LP["velocity"] = {0,0}
     obj_char_game_scene_char_LP["velocity_debug"] = {0,0}
     obj_char_game_scene_char_LP["velocity_cache"] = {0,0}
-    obj_char_game_scene_char_LP["gravity"] = 2.5
     obj_char_game_scene_char_LP["friction"] = 1
+    obj_char_game_scene_char_LP["gravity"] = 2.5
     obj_char_game_scene_char_LP["physics_lock"] = true
 
     obj_char_game_scene_char_LP["game_speed"] = 1
@@ -1099,8 +1099,8 @@ function load_game_scene_wallbreak_end_init_LP()
     obj_char_game_scene_char_LP["velocity"] = {0,0}
     obj_char_game_scene_char_LP["velocity_debug"] = {0,0}
     obj_char_game_scene_char_LP["velocity_cache"] = {0,0}
-    obj_char_game_scene_char_LP["gravity"] = 2.5
     obj_char_game_scene_char_LP["friction"] = 1
+    obj_char_game_scene_char_LP["gravity"] = 2.5
     obj_char_game_scene_char_LP["physics_lock"] = false
 
     obj_char_game_scene_char_LP["wallstick_gauge"] = {0.0,300.0}-- 0.0 - 300.0
