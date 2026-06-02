@@ -332,7 +332,7 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
         end
         obj[1] = obj_char["x"] - obj_char[5]*(600)
         obj[2] = obj_char["y"] - obj_char[6]*(obj["y_offset"])
-        -- obj["draw_sync"]  = function() end
+        obj["draw_sync"]  = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -484,27 +484,27 @@ function insert_VFX_game_scene_char_blast_ver0(obj_char,x,y,opacity,sx,sy,r,fix_
         end
     end
     obj["draw_sync"] = function()
-        -- local center_x = x
-        -- local center_y = y
-        -- local center_r = obj_char[5]*r
-        -- local center_dx = math.abs(obj_char_other_side["x"]-obj_char["x"])-220*sx
-        -- local center_dy = 0
-        -- if not fix_pos then
-        --     if negative_side then
-        --         center_x = math.max(-center_dx,x)
-        --     else
-        --         center_x = math.min(center_dx,x)
-        --     end
-        -- end
-        -- center_y = center_y + center_dy
+        local center_x = x
+        local center_y = y
+        local center_r = obj_char[5]*r
+        local center_dx = math.abs(obj_char_other_side["x"]-obj_char["x"])-220*sx
+        local center_dy = 0
+        if not fix_pos then
+            if negative_side then
+                center_x = math.max(-center_dx,x)
+            else
+                center_x = math.min(center_dx,x)
+            end
+        end
+        center_y = center_y + center_dy
 
-        -- obj[1] = obj_char["x"] + obj_char[5]*(center_x)
-        -- obj[2] = obj_char["y"] + obj_char[6]*(center_y)
-        -- obj[3] = obj_char[3]
-        -- obj[5] = obj_char[5]*sx
-        -- obj[6] = obj_char[6]*sy
-        -- obj[7] = center_r
-        -- obj["draw_sync"] = function() end
+        obj[1] = obj_char["x"] + obj_char[5]*(center_x)
+        obj[2] = obj_char["y"] + obj_char[6]*(center_y)
+        obj[3] = obj_char[3]
+        obj[5] = obj_char[5]*sx
+        obj[6] = obj_char[6]*sy
+        obj[7] = center_r
+        obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -575,27 +575,27 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_
         end
     end
     obj["draw_sync"] = function()
-        -- local center_x = x
-        -- local center_y = y
-        -- local center_r = obj_char[5]*r
-        -- local center_dx = math.abs(obj_char_other_side["x"]-obj_char["x"])-310*sx
-        -- local center_dy = 0
-        -- if not fix_pos then
-        --     if negative_side then
-        --         center_x = math.max(-center_dx,x)
-        --     else
-        --         center_x = math.min(center_dx,x)
-        --     end
-        -- end
-        -- center_y = center_y + center_dy
+        local center_x = x
+        local center_y = y
+        local center_r = obj_char[5]*r
+        local center_dx = math.abs(obj_char_other_side["x"]-obj_char["x"])-310*sx
+        local center_dy = 0
+        if not fix_pos then
+            if negative_side then
+                center_x = math.max(-center_dx,x)
+            else
+                center_x = math.min(center_dx,x)
+            end
+        end
+        center_y = center_y + center_dy
 
-        -- obj[1] = obj_char["x"] + obj_char[5]*(center_x)
-        -- obj[2] = obj_char["y"] + obj_char[6]*(center_y)
-        -- obj[3] = obj_char[3]
-        -- obj[5] = obj_char[5]*sx
-        -- obj[6] = obj_char[6]*sy
-        -- obj[7] = center_r
-        -- obj["draw_sync"] = function() end
+        obj[1] = obj_char["x"] + obj_char[5]*(center_x)
+        obj[2] = obj_char["y"] + obj_char[6]*(center_y)
+        obj[3] = obj_char[3]
+        obj[5] = obj_char[5]*sx
+        obj[6] = obj_char[6]*sy
+        obj[7] = center_r
+        obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -667,31 +667,31 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_
         end
     end
     obj["draw_sync"] = function()
-        -- local center_x = x
-        -- local center_y = y
-        -- local center_r = obj_char[5]*r
-        -- local center_dx = math.abs(obj_char_other_side["x"]-obj_char["x"])-310*sx
-        -- local center_dy = 0
-        -- local sub_dx = -50*sx
-        -- local sub_dy = -200*sy
-        -- local rot_dx = sub_dx * obj_char[5] * math.cos(center_r) - sub_dy * obj_char[6] * math.sin(center_r)
-        -- local rot_dy = sub_dx * obj_char[5] * math.sin(center_r) + sub_dy * obj_char[6] * math.cos(center_r)
-        -- if not fix_pos then
-        --     if negative_side then
-        --         center_x = math.max(-center_dx,x)
-        --     else
-        --         center_x = math.min(center_dx,x)
-        --     end
-        -- end
-        -- center_y = center_y + center_dy
+        local center_x = x
+        local center_y = y
+        local center_r = obj_char[5]*r
+        local center_dx = math.abs(obj_char_other_side["x"]-obj_char["x"])-310*sx
+        local center_dy = 0
+        local sub_dx = -50*sx
+        local sub_dy = -200*sy
+        local rot_dx = sub_dx * obj_char[5] * math.cos(center_r) - sub_dy * obj_char[6] * math.sin(center_r)
+        local rot_dy = sub_dx * obj_char[5] * math.sin(center_r) + sub_dy * obj_char[6] * math.cos(center_r)
+        if not fix_pos then
+            if negative_side then
+                center_x = math.max(-center_dx,x)
+            else
+                center_x = math.min(center_dx,x)
+            end
+        end
+        center_y = center_y + center_dy
         
-        -- obj[1] = obj_char["x"] + obj_char[5]*(center_x) + rot_dx
-        -- obj[2] = obj_char["y"] + obj_char[6]*(center_y) + rot_dy
-        -- obj[3] = obj_char[3]
-        -- obj[5] = obj_char[5]*sx
-        -- obj[6] = obj_char[6]*sy
-        -- obj[7] = center_r
-        -- obj["draw_sync"] = function() end
+        obj[1] = obj_char["x"] + obj_char[5]*(center_x) + rot_dx
+        obj[2] = obj_char["y"] + obj_char[6]*(center_y) + rot_dy
+        obj[3] = obj_char[3]
+        obj[5] = obj_char[5]*sx
+        obj[6] = obj_char[6]*sy
+        obj[7] = center_r
+        obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -705,10 +705,12 @@ function insert_VFX_game_scene_char_blast_ver1(obj_char,x,y,opacity,sx,sy,r,fix_
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
 end
-function insert_VFX_game_scene_char_blast_special(obj_char,x,y,opacity,sx,sy)
+function insert_VFX_game_scene_char_blast_special(obj_char,opacity,sx,sy)
     -- x y z opacity sx sy r f
     local obj = {0,0,0,1,1,1,0,0}
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    local x = -(obj_char["x"] - obj_char_other_side["x"])*obj_char[5]
+    local y = -((obj_char["y"] - obj_char_other_side["y"])+100)*obj_char[6]
     local dx = -1410*sx
     local dy = -200*sy
     local center_black_offset = {}
@@ -793,59 +795,61 @@ function insert_VFX_game_scene_char_blast_special(obj_char,x,y,opacity,sx,sy)
         end
     end
     obj["draw_sync"] = function()
-        -- local dx = -1410*sx
-        -- local dy = -200*sy
-        -- local center_black_offset = {}
-        -- local center_white_offset = {}
-        -- local r0 = (0.523+(math.random()*0.087))*obj_char[5]
-        -- local r_table_cache = {
-        --     r0,
-        --     r0 + (1.570 + (math.random()-0.5)*0.174)*obj_char[5],
-        --     r0 + (3.141 + (math.random()-0.5)*0.174)*obj_char[5],
-        --     r0 + (4.712 + (math.random()-0.5)*0.174)*obj_char[5],
-        -- }
-        -- local rot_x_table_cache = {
-        --     dx * obj_char[5] * math.cos(r_table_cache[1]) - dy * obj_char[6] * math.sin(r_table_cache[1]),
-        --     dx * obj_char[5] * math.cos(r_table_cache[2]) - dy * obj_char[6] * math.sin(r_table_cache[2]),
-        --     dx * obj_char[5] * math.cos(r_table_cache[3]) - dy * obj_char[6] * math.sin(r_table_cache[3]),
-        --     dx * obj_char[5] * math.cos(r_table_cache[4]) - dy * obj_char[6] * math.sin(r_table_cache[4]),
-        -- }
-        -- local rot_y_table_cache = {
-        --     dx * obj_char[5] * math.sin(r_table_cache[1]) + dy * obj_char[6] * math.cos(r_table_cache[1]),
-        --     dx * obj_char[5] * math.sin(r_table_cache[2]) + dy * obj_char[6] * math.cos(r_table_cache[2]),
-        --     dx * obj_char[5] * math.sin(r_table_cache[3]) + dy * obj_char[6] * math.cos(r_table_cache[3]),
-        --     dx * obj_char[5] * math.sin(r_table_cache[4]) + dy * obj_char[6] * math.cos(r_table_cache[4]),
-        -- }
-        -- local obj_x_table = {
-        --     obj_char["x"] + obj_char[5]*(x) + rot_x_table_cache[1],
-        --     obj_char["x"] + obj_char[5]*(x) + rot_x_table_cache[2],
-        --     obj_char["x"] + obj_char[5]*(x) + rot_x_table_cache[3],
-        --     obj_char["x"] + obj_char[5]*(x) + rot_x_table_cache[4],
-        -- }
-        -- local obj_y_table = {
-        --     obj_char["y"] + obj_char[6]*(y) + rot_y_table_cache[1],
-        --     obj_char["y"] + obj_char[6]*(y) + rot_y_table_cache[2],
-        --     obj_char["y"] + obj_char[6]*(y) + rot_y_table_cache[3],
-        --     obj_char["y"] + obj_char[6]*(y) + rot_y_table_cache[4],
-        -- }
-        -- local obj_center = {
-        --     obj_char["x"] + obj_char[5]*(x-500)*sx,
-        --     obj_char["y"] + obj_char[6]*(y-500)*sy,
-        -- }
+        local x = -(obj_char["x"] - obj_char_other_side["x"])*obj_char[5]
+        local y = -((obj_char["y"] - obj_char_other_side["y"])+100)*obj_char[6]
+        local dx = -1410*sx
+        local dy = -200*sy
+        local center_black_offset = {}
+        local center_white_offset = {}
+        local r0 = (0.523+(math.random()*0.087))*obj_char[5]
+        local r_table_cache = {
+            r0,
+            r0 + (1.570 + (math.random()-0.5)*0.174)*obj_char[5],
+            r0 + (3.141 + (math.random()-0.5)*0.174)*obj_char[5],
+            r0 + (4.712 + (math.random()-0.5)*0.174)*obj_char[5],
+        }
+        local rot_x_table_cache = {
+            dx * obj_char[5] * math.cos(r_table_cache[1]) - dy * obj_char[6] * math.sin(r_table_cache[1]),
+            dx * obj_char[5] * math.cos(r_table_cache[2]) - dy * obj_char[6] * math.sin(r_table_cache[2]),
+            dx * obj_char[5] * math.cos(r_table_cache[3]) - dy * obj_char[6] * math.sin(r_table_cache[3]),
+            dx * obj_char[5] * math.cos(r_table_cache[4]) - dy * obj_char[6] * math.sin(r_table_cache[4]),
+        }
+        local rot_y_table_cache = {
+            dx * obj_char[5] * math.sin(r_table_cache[1]) + dy * obj_char[6] * math.cos(r_table_cache[1]),
+            dx * obj_char[5] * math.sin(r_table_cache[2]) + dy * obj_char[6] * math.cos(r_table_cache[2]),
+            dx * obj_char[5] * math.sin(r_table_cache[3]) + dy * obj_char[6] * math.cos(r_table_cache[3]),
+            dx * obj_char[5] * math.sin(r_table_cache[4]) + dy * obj_char[6] * math.cos(r_table_cache[4]),
+        }
+        local obj_x_table = {
+            obj_char["x"] + obj_char[5]*(x) + rot_x_table_cache[1],
+            obj_char["x"] + obj_char[5]*(x) + rot_x_table_cache[2],
+            obj_char["x"] + obj_char[5]*(x) + rot_x_table_cache[3],
+            obj_char["x"] + obj_char[5]*(x) + rot_x_table_cache[4],
+        }
+        local obj_y_table = {
+            obj_char["y"] + obj_char[6]*(y) + rot_y_table_cache[1],
+            obj_char["y"] + obj_char[6]*(y) + rot_y_table_cache[2],
+            obj_char["y"] + obj_char[6]*(y) + rot_y_table_cache[3],
+            obj_char["y"] + obj_char[6]*(y) + rot_y_table_cache[4],
+        }
+        local obj_center = {
+            obj_char["x"] + obj_char[5]*(x-500)*sx,
+            obj_char["y"] + obj_char[6]*(y-500)*sy,
+        }
 
-        -- obj["r_cache"] = r_table_cache
-        -- obj["x_table"] = obj_x_table
-        -- obj["y_table"] = obj_y_table
-        -- obj["center_table"] = obj_center
+        obj["r_cache"] = r_table_cache
+        obj["x_table"] = obj_x_table
+        obj["y_table"] = obj_y_table
+        obj["center_table"] = obj_center
 
-        -- obj["sub_obj"] = {
-        --     [1] = {obj_x_table[1],obj_y_table[1],obj_char[3],opacity,obj_char[5]*sx,obj_char[6]*sy,r_table_cache[1],0},
-        --     [2] = {obj_x_table[2],obj_y_table[2],obj_char[3],opacity,obj_char[5]*sx,obj_char[6]*sy,r_table_cache[2],0},
-        --     [3] = {obj_x_table[3],obj_y_table[3],obj_char[3],opacity,obj_char[5]*sx,obj_char[6]*sy,r_table_cache[3],0},
-        --     [4] = {obj_x_table[4],obj_y_table[4],obj_char[3],opacity,obj_char[5]*sx,obj_char[6]*sy,r_table_cache[4],0},
-        --     [5] = {obj_center[1],obj_center[2],obj_char[3],opacity,obj_char[5]*sx,obj_char[6]*sy,0,0},
-        -- }
-        -- obj["draw_sync"] = function() end
+        obj["sub_obj"] = {
+            [1] = {obj_x_table[1],obj_y_table[1],obj_char[3],opacity,obj_char[5]*sx,obj_char[6]*sy,r_table_cache[1],0},
+            [2] = {obj_x_table[2],obj_y_table[2],obj_char[3],opacity,obj_char[5]*sx,obj_char[6]*sy,r_table_cache[2],0},
+            [3] = {obj_x_table[3],obj_y_table[3],obj_char[3],opacity,obj_char[5]*sx,obj_char[6]*sy,r_table_cache[3],0},
+            [4] = {obj_x_table[4],obj_y_table[4],obj_char[3],opacity,obj_char[5]*sx,obj_char[6]*sy,r_table_cache[4],0},
+            [5] = {obj_center[1],obj_center[2],obj_char[3],opacity,obj_char[5]*sx,obj_char[6]*sy,0,0},
+        }
+        obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -930,27 +934,27 @@ function insert_VFX_game_scene_char_counter_blast_ver0(obj_char,x,y,opacity,sx,s
         end
     end
     obj["draw_sync"] = function()
-        -- local center_x = x
-        -- local center_y = y
-        -- local center_r = obj_char[5]*r
-        -- local center_dx = math.abs(obj_char_other_side["x"]-obj_char["x"])-185*sx
-        -- local center_dy = 0
-        -- if not fix_pos then
-        --     if negative_side then
-        --         center_x = math.max(-center_dx,x)
-        --     else
-        --         center_x = math.min(center_dx,x)
-        --     end
-        -- end
-        -- center_y = center_y + center_dy
+        local center_x = x
+        local center_y = y
+        local center_r = obj_char[5]*r
+        local center_dx = math.abs(obj_char_other_side["x"]-obj_char["x"])-185*sx
+        local center_dy = 0
+        if not fix_pos then
+            if negative_side then
+                center_x = math.max(-center_dx,x)
+            else
+                center_x = math.min(center_dx,x)
+            end
+        end
+        center_y = center_y + center_dy
 
-        -- obj[1] = obj_char["x"] + obj_char[5]*(center_x)
-        -- obj[2] = obj_char["y"] + obj_char[6]*(center_y)
-        -- obj[3] = obj_char[3]
-        -- obj[5] = obj_char[5]*sx
-        -- obj[6] = obj_char[6]*sy
-        -- obj[7] = center_r
-        -- obj["draw_sync"] = function() end
+        obj[1] = obj_char["x"] + obj_char[5]*(center_x)
+        obj[2] = obj_char["y"] + obj_char[6]*(center_y)
+        obj[3] = obj_char[3]
+        obj[5] = obj_char[5]*sx
+        obj[6] = obj_char[6]*sy
+        obj[7] = center_r
+        obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -1021,27 +1025,27 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
         end
     end
     obj["draw_sync"] = function()
-        -- local center_x = x
-        -- local center_y = y
-        -- local center_r = obj_char[5]*r
-        -- local center_dx = math.abs(obj_char_other_side["x"]-obj_char["x"])-220*sx
-        -- local center_dy = 0
-        -- if not fix_pos then
-        --     if negative_side then
-        --         center_x = math.max(-center_dx,x)
-        --     else
-        --         center_x = math.min(center_dx,x)
-        --     end
-        -- end
-        -- center_y = center_y + center_dy
+        local center_x = x
+        local center_y = y
+        local center_r = obj_char[5]*r
+        local center_dx = math.abs(obj_char_other_side["x"]-obj_char["x"])-220*sx
+        local center_dy = 0
+        if not fix_pos then
+            if negative_side then
+                center_x = math.max(-center_dx,x)
+            else
+                center_x = math.min(center_dx,x)
+            end
+        end
+        center_y = center_y + center_dy
 
-        -- obj[1] = obj_char["x"] + obj_char[5]*(center_x)
-        -- obj[2] = obj_char["y"] + obj_char[6]*(center_y)
-        -- obj[3] = obj_char[3]
-        -- obj[5] = obj_char[5]*sx
-        -- obj[6] = obj_char[6]*sy
-        -- obj[7] = center_r
-        -- obj["draw_sync"] = function() end
+        obj[1] = obj_char["x"] + obj_char[5]*(center_x)
+        obj[2] = obj_char["y"] + obj_char[6]*(center_y)
+        obj[3] = obj_char[3]
+        obj[5] = obj_char[5]*sx
+        obj[6] = obj_char[6]*sy
+        obj[7] = center_r
+        obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -1113,31 +1117,31 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
         end
     end
     obj["draw_sync"] = function()
-        -- local center_x = x
-        -- local center_y = y
-        -- local center_r = obj_char[5]*r
-        -- local center_dx = math.abs(obj_char_other_side["x"]-obj_char["x"])-310*sx
-        -- local center_dy = 0
-        -- local sub_dx = -50*sx
-        -- local sub_dy = -200*sy
-        -- local rot_dx = sub_dx * obj_char[5] * math.cos(center_r) - sub_dy * obj_char[6] * math.sin(center_r)
-        -- local rot_dy = sub_dx * obj_char[5] * math.sin(center_r) + sub_dy * obj_char[6] * math.cos(center_r)
-        -- if not fix_pos then
-        --     if negative_side then
-        --         center_x = math.max(-center_dx,x)
-        --     else
-        --         center_x = math.min(center_dx,x)
-        --     end
-        -- end
-        -- center_y = center_y + center_dy
+        local center_x = x
+        local center_y = y
+        local center_r = obj_char[5]*r
+        local center_dx = math.abs(obj_char_other_side["x"]-obj_char["x"])-310*sx
+        local center_dy = 0
+        local sub_dx = -50*sx
+        local sub_dy = -200*sy
+        local rot_dx = sub_dx * obj_char[5] * math.cos(center_r) - sub_dy * obj_char[6] * math.sin(center_r)
+        local rot_dy = sub_dx * obj_char[5] * math.sin(center_r) + sub_dy * obj_char[6] * math.cos(center_r)
+        if not fix_pos then
+            if negative_side then
+                center_x = math.max(-center_dx,x)
+            else
+                center_x = math.min(center_dx,x)
+            end
+        end
+        center_y = center_y + center_dy
         
-        -- obj[1] = obj_char["x"] + obj_char[5]*(center_x) + rot_dx
-        -- obj[2] = obj_char["y"] + obj_char[6]*(center_y) + rot_dy
-        -- obj[3] = obj_char[3]
-        -- obj[5] = obj_char[5]*sx
-        -- obj[6] = obj_char[6]*sy
-        -- obj[7] = center_r
-        -- obj["draw_sync"] = function() end
+        obj[1] = obj_char["x"] + obj_char[5]*(center_x) + rot_dx
+        obj[2] = obj_char["y"] + obj_char[6]*(center_y) + rot_dy
+        obj[3] = obj_char[3]
+        obj[5] = obj_char[5]*sx
+        obj[6] = obj_char[6]*sy
+        obj[7] = center_r
+        obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -1199,31 +1203,31 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
         end
     end
     obj["draw_sync"] = function()
-        -- local center_x = x
-        -- local center_y = y
-        -- local center_r = obj_char[5]*r
-        -- local center_dx = math.abs(obj_char_other_side["x"]-obj_char["x"])-310*sx
-        -- local center_dy = 0
-        -- local sub_dx = 45*sx
-        -- local sub_dy = 30*sy
-        -- local rot_dx = sub_dx * obj_char[5] * math.cos(center_r) - sub_dy * obj_char[6] * math.sin(center_r)
-        -- local rot_dy = sub_dx * obj_char[5] * math.sin(center_r) + sub_dy * obj_char[6] * math.cos(center_r)
-        -- if not fix_pos then
-        --     if negative_side then
-        --         center_x = math.max(-center_dx,x)
-        --     else
-        --         center_x = math.min(center_dx,x)
-        --     end
-        -- end
-        -- center_y = center_y + center_dy
+        local center_x = x
+        local center_y = y
+        local center_r = obj_char[5]*r
+        local center_dx = math.abs(obj_char_other_side["x"]-obj_char["x"])-310*sx
+        local center_dy = 0
+        local sub_dx = 45*sx
+        local sub_dy = 30*sy
+        local rot_dx = sub_dx * obj_char[5] * math.cos(center_r) - sub_dy * obj_char[6] * math.sin(center_r)
+        local rot_dy = sub_dx * obj_char[5] * math.sin(center_r) + sub_dy * obj_char[6] * math.cos(center_r)
+        if not fix_pos then
+            if negative_side then
+                center_x = math.max(-center_dx,x)
+            else
+                center_x = math.min(center_dx,x)
+            end
+        end
+        center_y = center_y + center_dy
         
-        -- obj[1] = obj_char["x"] + obj_char[5]*(center_x) + rot_dx
-        -- obj[2] = obj_char["y"] + obj_char[6]*(center_y) + rot_dy
-        -- obj[3] = obj_char[3]
-        -- obj[5] = obj_char[5]*sx
-        -- obj[6] = obj_char[6]*sy
-        -- obj[7] = center_r
-        -- obj["draw_sync"] = function() end
+        obj[1] = obj_char["x"] + obj_char[5]*(center_x) + rot_dx
+        obj[2] = obj_char["y"] + obj_char[6]*(center_y) + rot_dy
+        obj[3] = obj_char[3]
+        obj[5] = obj_char[5]*sx
+        obj[6] = obj_char[6]*sy
+        obj[7] = center_r
+        obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -1268,9 +1272,9 @@ function insert_VFX_game_scene_char_counter_blast_ver1(obj_char,x,y,opacity,sx,s
         end
     end
     obj["draw_sync"] = function()
-        -- obj[1] = obj_camera["3d_pos_x"] - 900
-        -- obj[2] = obj_camera["3d_pos_y"] - 550
-        -- obj["draw_sync"] = function() end
+        obj[1] = obj_camera["3d_pos_x"] - 900
+        obj[2] = obj_camera["3d_pos_y"] - 550
+        obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
@@ -1734,11 +1738,6 @@ function insert_VFX_game_scene_stage_6dash_air_dash_shockwave(obj_char,x,y,opaci
     obj[6] = obj_char[6]*sy
     obj[7] = r
     obj[8] = 0
-    if obj_char[5] == 1 then
-        obj[1] = math.min(obj[1],1000)
-    elseif obj_char[5] == -1 then
-        obj[1] = math.max(obj[1],-1000)
-    end
     obj["f"] = -1
     obj["update"] = function()
         obj["f"] = obj["f"] + 1
@@ -1753,11 +1752,6 @@ function insert_VFX_game_scene_stage_6dash_air_dash_shockwave(obj_char,x,y,opaci
         end
     end
     obj["draw_sync"] = function()
-        -- obj[1] = obj_char["x"] + obj_char[5]*(x)
-        -- obj[2] = obj_char["y"] + obj_char[6]*(y)
-        -- obj[3] = obj_char[3]
-        -- obj[5] = obj_char[5]*sx
-        -- obj[6] = obj_char[6]*sy
         -- obj["draw_sync"] = function() end
     end
     obj["draw"] = function()

@@ -30,7 +30,7 @@ obj_char["damage_correction"] = 1
 
 obj_char["pushbox"] = {0,-185,130,370}
 obj_char["hitbox_table"] = {}
-obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-455,100,50}}
+obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
 obj_char["collision_move_available"] = {1,1}
 obj_char["collision_ground_height_offset"] = 0 -- 用于检测和地面碰撞的
 
@@ -149,7 +149,7 @@ obj_char["hit_hurt_block_slowdown_countdown"] = 0
 
 obj_char["pushbox"] = {0,-185,130,370}
 obj_char["hitbox_table"] = {}
-obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-455,100,50}}
+obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
 obj_char["collision_move_available"] = {1,1}
 obj_char["collision_ground_height_offset"] = 0 -- 用于检测和地面碰撞的
 

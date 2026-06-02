@@ -61,7 +61,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
         "0_stand_hurt_high",
         "stand","5_stand_idle",
         8,5,1.00,
-        0,2.5,1.02,
+        0,2.5,1.00,
         nil,nil,nil,nil,
         function() end
     )
@@ -79,7 +79,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
         "0_crouch_hurt",
         "crouch","1_2_3_crouch",
         8,5,1.00,
-        0,2.5,1.02,
+        0,2.5,1.00,
         nil,nil,nil,nil,
         function() end
     )
@@ -96,8 +96,8 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
         obj_char,obj,true,nil,
         "0_general_hurt_launched_high",
         "air","knockdown_recovery",
-        18,5,1.02,
-        -25,2.5,1.02,
+        18,5,1.035,
+        -25,2.5,1.035,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             obj_char,
@@ -114,7 +114,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
         "1_4_7_air_block",
         "air","5_stand_idle",
         12.5,5,1.00,
-        -7.5,7.5,1.00,
+        -7.5,12.5,1.00,
         nil,nil,nil,nil,
         function() end
     )
@@ -122,8 +122,8 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
         obj_char,obj,true,nil,
         "0_general_hurt_launched_high",
         "air","knockdown_recovery",
-        18,5,1.02,
-        0,2.5,1.02,
+        20,5,1.035,
+        -6.25,2.5,1.035,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             obj_char,
