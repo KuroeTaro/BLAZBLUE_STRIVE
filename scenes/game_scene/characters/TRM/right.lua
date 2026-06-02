@@ -1372,6 +1372,7 @@ function state_machine_char_game_scene_char_RP()
                 character_animator(obj_char,obj_char["character_animation"])
             end
             state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char)
+            state_gate_game_scene_char_RP_to_5H(input,obj_char)
         end,
         ["5_stand_turn"] = function()
             if run_at_current_frame then
@@ -3112,6 +3113,17 @@ function state_gate_game_scene_char_RP_common_to_burst_overdrive(input,obj_char,
         end
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "burst_overdrive"
+        return true
+    end
+end
+
+-- uncommon_to_gate
+function state_gate_game_scene_char_RP_to_5H(input,obj_char)
+    -- _5H
+    if test_input_sys_press(input["HS"]) and obj_char["shot_sys_state"] == "off" then
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5H(obj_char)
+        init_character_anim_with(obj_char,obj_char["character_animation"])
+        obj_char["state"] = "5H"
         return true
     end
 end
@@ -5314,6 +5326,18 @@ function state_gate_game_scene_char_RP_from_fS(input,obj_char)
         if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
             return true
         end
+    end
+    -- _5_stand_idle
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
+        init_character_anim_with(obj_char,obj_char["character_animation"])
+        obj_char["state"] = "5_stand_idle"
+        return true
+    end
+end
+function state_gate_game_scene_char_RP_from_5H(input,obj_char)
+    if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
+        return true
     end
     -- _5_stand_idle
     if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
