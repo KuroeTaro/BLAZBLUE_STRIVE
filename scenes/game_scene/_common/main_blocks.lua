@@ -416,8 +416,8 @@ function update_game_scene_training_main()
         end
 
         -- 保留双康后的LP_hurt_strike_accur RP_hurt_strike_accur
-        local LP_hurt_strike_accur = collision_strike_hurtbox_test(char_RP,char_LP) -- (obj_hit,obj_hurt)
-        local RP_hurt_strike_accur = collision_strike_hurtbox_test(char_LP,char_RP)
+        local LP_hurt_strike_accur = collision_strike_hurtbox_test_with_assign_hit_VFX_dynamic_spawn_pos(char_RP,char_LP) -- (obj_hit,obj_hurt)
+        local RP_hurt_strike_accur = collision_strike_hurtbox_test_with_assign_hit_VFX_dynamic_spawn_pos(char_LP,char_RP)
 
         -- 检测打击受击盒交互
         if LP_hurt_strike_accur then

@@ -1009,6 +1009,9 @@ function load_game_scene_wallbreak_start_init_RP()
     obj_char_game_scene_char_RP["hurtbox_table"] = {}
 end
 function load_game_scene_wallbreak_mid_init_RP()
+    if not common_game_scene_get_character_facing_currect(obj_char_game_scene_char_RP) then
+        obj_char_game_scene_char_RP[5] = -obj_char_game_scene_char_RP[5]
+    end
     obj_char_game_scene_char_RP["projectile_table"] = {}
     obj_char_game_scene_char_RP["VFX_front_table"] = {}
     obj_char_game_scene_char_RP["VFX_back_table"] = {}

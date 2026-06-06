@@ -1996,7 +1996,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver0
-        obj_char["hit_VFX_insert_function_argument"] = {95,-400,0.8,0.75,0.75,0,false,false}
+        obj_char["hit_VFX_insert_function_argument"] = {95,-380,0.8,0.75,0.75,0,false,false}
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver0
         obj_char["hit_counter_VFX_insert_function_argument"] = {70,-700,1,1.1,1.1,0,false,false}
@@ -2249,7 +2249,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         obj_char["hurtbox_table"] = {{-10,-105,230,210}}
         obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
-        obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver1
+        obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_dynamic_ver1
         obj_char["hit_VFX_insert_function_argument"] = {-150,-510,0.9,0.8,0.8,0,false,false}
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
