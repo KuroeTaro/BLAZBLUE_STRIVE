@@ -466,6 +466,7 @@ function order_load_game_scene_char_RP_frames(load_order)
         end,
         [19] = function()
             local load_name_table = {
+                "6SP_S"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] = 
@@ -509,7 +510,8 @@ function order_load_game_scene_char_RP_frames(load_order)
                 "5Launcher_glow",
                 -- "jP",
                 -- "jK",
-                "jS"
+                "jS",
+                "6SP_S"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_VFX_game_scene_RP[v.."_whiff_VFX"] = 
@@ -932,8 +934,8 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_rotate"][12] = {{0,-150,380,300}}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_semi_launched_rotate"] = {255,525}
 
-    obj_anchor_data_game_scene_char_RP["0_ground_Launcher_teching"] = {205,395}
-    obj_VFX_spawn_anchor_pos_data_game_scene_char_RP["stage_VFX_spawn_anchor_pos"]["0_ground_Launcher_teching"] = {-750,-195}
+    obj_anchor_data_game_scene_char_RP["0_ground_Launcher_teching"] = {205,400}
+    obj_VFX_spawn_anchor_pos_data_game_scene_char_RP["stage_VFX_spawn_anchor_pos"]["0_ground_Launcher_teching"] = {-750,-190}
     obj_anchor_data_game_scene_char_RP["0_ground_Launcher_teched"] = {223,510}
     obj_VFX_spawn_anchor_pos_data_game_scene_char_RP["stage_VFX_spawn_anchor_pos"]["0_ground_Launcher_teched"] = {-850,-195}
 

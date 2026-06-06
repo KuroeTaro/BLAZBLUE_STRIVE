@@ -786,3 +786,7 @@ function insert_VFX_game_scene_char_TRM_jS_whiff(obj_char)
     end
     table.insert(obj_char["VFX_front_table"],obj)
 end
+
+function insert_VFX_game_scene_char_TRM_6SP_S_whiff(obj_char)
+
+end

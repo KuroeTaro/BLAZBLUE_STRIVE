@@ -34,7 +34,7 @@
 },
 "4":
 {
-	"frame": {"x":2000,"y":0,"w":500,"h":540},
+	"frame": {"x":0,"y":540,"w":500,"h":540},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":540},
@@ -42,7 +42,7 @@
 },
 "5":
 {
-	"frame": {"x":2500,"y":0,"w":500,"h":540},
+	"frame": {"x":500,"y":540,"w":500,"h":540},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":540},
@@ -50,7 +50,7 @@
 },
 "6":
 {
-	"frame": {"x":3000,"y":0,"w":500,"h":540},
+	"frame": {"x":1000,"y":540,"w":500,"h":540},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":540},
@@ -58,7 +58,7 @@
 },
 "7":
 {
-	"frame": {"x":3500,"y":0,"w":500,"h":540},
+	"frame": {"x":1500,"y":540,"w":500,"h":540},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":540},
@@ -69,8 +69,8 @@
 	"version": "1.0",
 	"image": "TRM_5P",
 	"format": "RGBA8888",
-	"size": {"w":4000,"h":540},
+	"size": {"w":2000,"h":1080},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:9fce289d0a64e6a4ac1b4ee5d1d8e837:a6403eae3e7166f6836d87e8b86567b5:31b85e7d8fc2f88d193cb0579f780ecf$"
+	"smartupdate": "$TexturePacker:SmartUpdate:267abe95a1e30b780f07ebbe99500a48:5194bdc0e1485e8163e2a0c60da5a14a:31b85e7d8fc2f88d193cb0579f780ecf$"
 }
 }
