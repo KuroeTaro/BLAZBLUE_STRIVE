@@ -394,7 +394,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
                 init_character_anim_with(obj_char_other_side,obj_char_other_side["character_animation"])
 
                 -- insert_hit_VFX
-                insert_VFX_game_scene_char_blast_special(obj_char,1,1,1)
+                insert_VFX_game_scene_char_blast_special(obj_char)
             end
             -- wallbreak_test_and_apply
             common_game_scene_test_and_apply_wallbreak(obj_char_other_side,obj_char,obj,wallhurt_wallstick_on_side_cache)

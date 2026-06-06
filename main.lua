@@ -251,6 +251,23 @@ function love.load()
 		{1327,121},
 	}
 
+	-- game_scene
+    COLLSION_CONER_OUT_STATE = {
+        ["block"] = true,
+        ["hurt"] = true,
+        ["throw_hurt_success"] = true,
+        ["throw_tested"] = true,
+        ["throw_teching"] = true,
+        ["hurtstop"] = true,
+        ["blockstop"] = true,
+        ["wallstick"] = true,
+        ["wallbreak_hurt"] = true,
+        ["knockdown"] = true,
+        ["knockdown_recovery"] = true,
+        ["knockdown_recovery_wallstick"] = true,
+        ["knockout"] = true,
+    }
+
 	--	general_scene_global_variable
 	FRAMES_DRAWN = 0
 	SCENE_TIMER = 0

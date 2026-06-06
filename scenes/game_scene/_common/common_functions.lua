@@ -39,8 +39,8 @@ function common_game_scene_test_and_apply_wallbreak(hurt_side_obj_char,hit_side_
         return
     end
 
-    if (wallhurt_wallstick_on_side_cache ~= 0 and hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"]) or
-    (collision_side and hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"]) 
+    if (wallhurt_wallstick_on_side_cache ~= 0 and hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"]) 
+    or (hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"]) 
     then
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = collision_side
         table.insert(obj_stage_game_scene_main["wallbreak_active_application_table"],
@@ -355,42 +355,9 @@ function common_game_scene_strike_hit_function(obj_char)
     -- counter
     if obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
         hit_side_obj_char["hit_damage"] = hit_side_obj_char["hit_damage"]*1.1
-        local hit_counter_VFX_insert_function_argument = hit_side_obj_char["hit_counter_VFX_insert_function_argument"]
-        hit_side_obj_char["hit_counter_VFX_insert_function"](
-            hit_counter_VFX_insert_function_argument[1],
-            hit_counter_VFX_insert_function_argument[2],
-            hit_counter_VFX_insert_function_argument[3],
-            hit_counter_VFX_insert_function_argument[4],
-            hit_counter_VFX_insert_function_argument[5],
-            hit_counter_VFX_insert_function_argument[6],
-            hit_counter_VFX_insert_function_argument[7],
-            hit_counter_VFX_insert_function_argument[8],
-            hit_counter_VFX_insert_function_argument[9]
-        )
+        hit_side_obj_char["hit_counter_VFX_insert_function"](hit_side_obj_char)
     elseif not block_bool then
-        hit_side_obj_char["hit_VFX_insert_function"](
-            hit_VFX_insert_function_argument[1],
-            hit_VFX_insert_function_argument[2],
-            hit_VFX_insert_function_argument[3],
-            hit_VFX_insert_function_argument[4],
-            hit_VFX_insert_function_argument[5],
-            hit_VFX_insert_function_argument[6],
-            hit_VFX_insert_function_argument[7],
-            hit_VFX_insert_function_argument[8],
-            hit_VFX_insert_function_argument[9]
-        )
-    else
-        hit_side_obj_char["hit_VFX_insert_function"](
-            hit_VFX_insert_function_argument[1],
-            hit_VFX_insert_function_argument[2],
-            hit_VFX_insert_function_argument[3],
-            hit_VFX_insert_function_argument[4]*0.25,
-            hit_VFX_insert_function_argument[5],
-            hit_VFX_insert_function_argument[6],
-            hit_VFX_insert_function_argument[7],
-            hit_VFX_insert_function_argument[8],
-            hit_VFX_insert_function_argument[9]
-        )
+        hit_side_obj_char["hit_VFX_insert_function"](hit_side_obj_char)
     end
     -- debug
     hit_side_obj_char["active_frame"] = hit_side_obj_char["active_frame"] + 1
