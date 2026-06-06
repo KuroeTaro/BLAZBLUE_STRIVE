@@ -195,6 +195,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["VFX_hit_back_table"] = {}
     obj_char_game_scene_char_LP["VFX_black_overlay_table"] = {}
     -- sub_hit_hurt_function
+    obj_char_game_scene_char_LP["hit_VFX_dynamic_spawn_pos"] = {}
     obj_char_game_scene_char_LP["hit_VFX_insert_function"] = nil
     obj_char_game_scene_char_LP["hit_VFX_insert_function_argument"] = nil
     obj_char_game_scene_char_LP["hit_SFX"] = nil

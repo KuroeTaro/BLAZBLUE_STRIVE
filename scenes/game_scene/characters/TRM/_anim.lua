@@ -9223,9 +9223,6 @@ function load_game_scene_anim_char_TRM_6SP_S(obj_char)
         obj_char["hit_function"] = common_game_scene_strike_hit_function
         obj_char["hurt_function"] = common_game_scene_strike_hurt_function
         obj_char["hit_counter_ver_function"] = common_game_scene_counter_ver3
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
         obj_char["friction"] = friction
         obj_char["gravity"] = gravity
@@ -9238,7 +9235,7 @@ function load_game_scene_anim_char_TRM_6SP_S(obj_char)
         obj_char["pushbox"] = {0,-185,120,370}
         obj_char["pushbox_other_side_char_active"] = true
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = {{0,-210,180,420}}
+        obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
         if shot_sys_force_ease_out_state[obj_char["shot_sys_state"]] then
@@ -9267,86 +9264,58 @@ function load_game_scene_anim_char_TRM_6SP_S(obj_char)
         -- visual_front
         CHARACTER_VISUAL_FRONT = obj_char["player_side"]
     end
-    res[2] = function()
-        -- collide
-        obj_char["hurtbox_table"] = {{0,-200,190,400}}
+    res[3] = function()
         -- draw_correction
         obj_char[8] = 1
     end
     res[5] = function()
-        -- collide
-        obj_char["hurtbox_table"] = {{0,-215,190,430},{125,-215,60,280}}
         -- draw_correction
         obj_char[8] = 2
     end
-    res[11] = function()
+    res[8] = function()
         -- state & state_number
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
         obj_char["move_state"] = "active" -- none startup active recovery
-        obj_char["strike_active"] = true 
+        obj_char["strike_active"] = true
         -- collide
-        obj_char["hitbox_table"] = {{200,-410,320,150}}
-        obj_char["hurtbox_table"] = {{0,-190,270,380},{-65,-400,60,40},{200,-260,130,240},{150,-385,370,160}}
+        obj_char["hitbox_table"] = {{120,-425,160,320},{220,-425,40,290}}
+        obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30},{120,-425,220,370},{220,-425,90,340}}
         -- draw_correction
         obj_char[8] = 3
-        -- SFX
-        -- play_obj_audio(SFX_table["5P"])
     end
-    res[15] = function()
-        -- state_number
-        obj_char["friction"] = 5
-        -- collide
-        obj_char["hitbox_table"] = {{300,-350,330,150}}
-        obj_char["hurtbox_table"] = {{0,-190,270,380},{80,-395,60,30},{210,-135,150,270},{300,-350,380,190}}
-        -- sub_obj
-        obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_ver1
-        obj_char["hit_VFX_insert_function_argument"] = {obj_char,175,-615,0.9,0.75,0.75,0,false,false}
-        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_ver1
-        obj_char["hit_counter_VFX_insert_function_argument"] = {obj_char,175,-615,1,0.75,0.75,0,false,false}
-        -- oroboros
-        obj_char["shot_sys_oroboros_anchor_pos"] = {-100,-355}
-        -- draw_correction
-        obj_char[8] = 4
-    end
-    res[19] = function()
+    res[11] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
         obj_char["hit_guard_type_state"] = "none" -- none all low mid high
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
-        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- collide
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = {{0,-190,270,380},{200,-135,130,270},{245,-325,320,200}}
+        obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30},{120,-425,150,280}}
+        -- draw_correction
+        obj_char[8] = 4
+    end
+    res[15] = function()
+        -- collide
+        obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30},{120,-380,140,240}}
         -- draw_correction
         obj_char[8] = 5
     end
-    res[24] = function()
-        -- collide
-        obj_char["hurtbox_table"] = {{0,-190,270,380},{190,-140,110,280},{210,-330,220,160}}
-        -- draw_correction
-        obj_char[8] = 6
-    end
-    res[29] = function()
-        -- collide
-        obj_char["hurtbox_table"] = {{0,-190,270,380},{170,-160,70,320}}
-        -- draw_correction
-        obj_char[8] = 7
-    end
-    res[36] = function()
-        -- collide
-        obj_char["hurtbox_table"] = {{0,-190,240,380},{140,-170,40,340}}
-        -- draw_correction
-        obj_char[8] = 8
-    end
-    res[37] = function()
+    res[17] = function()
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char)
     end
-    res[42] = function()
+    res[20] = function()
+        -- collide
+        obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
+        -- draw_correction
+        obj_char[8] = 6
+    end
+    res[23] = function()
         -- state
         obj_char["hit_type_state"] = "none" -- none strike throw burst
         obj_char["hit_guard_type_state"] = "none" -- none all low mid high
@@ -9363,29 +9332,22 @@ function load_game_scene_anim_char_TRM_6SP_S(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- collide
-        obj_char["hurtbox_table"] = {{0,-200,190,400}}
+        obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
+        obj_char["collision_ground_height_offset"] = 0
+    end
+    res[25] = function()
+        -- draw_correction
+        obj_char[8] = 7
+    end
+    res[32] = function()
+        -- draw_correction
+        obj_char[8] = 8
+    end
+    res[39] = function()
         -- draw_correction
         obj_char[8] = 9
     end
-    res[47] = function()
-        -- collide
-        obj_char["hurtbox_table"] = {{0,-215,170,430}}
-        -- oroboros
-        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
-        -- draw_correction
-        obj_char[8] = 10
-    end
-    res[51] = function()
-        -- collide
-        obj_char["hurtbox_table"] = {{0,-215,170,430},{35,-455,100,50}}
-        -- draw_correction
-        obj_char[8] = 11
-    end
-    res[54] = function()
-        -- draw_correction
-        obj_char[8] = 12
-    end
-    res[59] = function()
+    res[49] = function()
         -- animation_end
     end
     return res
