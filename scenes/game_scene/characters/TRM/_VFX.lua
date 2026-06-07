@@ -787,6 +787,68 @@ function insert_VFX_game_scene_char_TRM_jS_whiff(obj_char)
     table.insert(obj_char["VFX_front_table"],obj)
 end
 
-function insert_VFX_game_scene_char_TRM_6SP_S_whiff(obj_char)
+function insert_VFX_game_scene_char_TRM_6sp_S_whiff(obj_char)
+    local obj = {0,0,0,1,1,1,0,0}
+    local image_sprite_sheet = nil
+    local side = obj_char["player_side"]
+    if side == "L" then
+        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["6sp_S_whiff_VFX"]
+    elseif side == "R" then
+        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["6sp_S_whiff_VFX"]
+    end 
 
+    obj["life"] = 21
+    obj[1] = obj_char["x"] + obj_char[5]*(-63)
+    obj[2] = obj_char["y"] + obj_char[6]*(-727)
+    obj[3] = obj_char[3]
+    obj[4] = 1
+    obj[5] = obj_char[5]
+    obj[6] = obj_char[6]
+    obj[7] = obj_char[7]
+    obj[8] = 0
+    obj["FCT"] = {0,0,0,0,0,0,0,0}
+    obj["LCT"] = {0,0,0,0,0,0,0,0}
+    obj["LCD"] = {0,0,0,0,0,0,0,0}
+    obj["animation"] = {}
+    obj["animation"][0] = 0
+    obj["animation"][2] = 1
+    obj["animation"][4] = 2
+    obj["animation"][7] = 3
+    obj["animation"][10] = 4
+    obj["animation"][13] = 5
+    obj["animation"][17] = 6
+    obj["animation"]["prop"] = 8
+    obj["animation"]["length"] = 21
+    obj["animation"]["loop"] = false
+    obj["animation"]["fix_type"] = true
+    init_frame_anim_without(obj,obj["animation"])
+    obj["update"] = function()
+        if obj_char["state"] == "6sp_S" then
+            frame_animator(obj,obj["animation"])
+            obj["life"] = obj["life"] - 1
+        elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
+            -- do nothing
+        else
+            obj["life"] = 0
+        end
+    end
+    obj["draw_sync"] = function()
+        obj[1] = obj_char["x"] + obj_char[5]*(-63)
+        obj[2] = obj_char["y"] + obj_char[6]*(-727)
+        obj[3] = obj_char[3]
+        obj[5] = obj_char[5]
+        obj[6] = obj_char[6]
+        obj[7] = obj_char[7]
+        -- obj["draw_sync"] = function() end
+    end
+    obj["draw"] = function()
+        local obj_camera = obj_stage_game_scene_camera
+        obj["draw_sync"]()
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
+        love.graphics.setBlendMode("add")
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setBlendMode("alpha")
+    end
+    table.insert(obj_char["VFX_front_table"],obj)
 end

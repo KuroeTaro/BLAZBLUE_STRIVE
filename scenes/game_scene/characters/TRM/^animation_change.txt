@@ -173,3 +173,57 @@ obj_char["hurtstop_wiggle_y_animation"] = nil
 obj_char["camera_x_shake_anim"] = nil
 obj_char["camera_y_shake_anim"] = nil
 obj_char["camera_enclosing_anim"] = nil
+
+4sp_P
+6sp_P
+4sp_K
+6sp_K
+4sp_S
+4sp_S_4dash
+4sp_S_6dash
+4sp_S_S
+4sp_S_H
+4sp_S_2Launcher
+4sp_S_6Launcher
+4sp_S_5Launcher
+6sp_S
+sp_H
+sp_H_P
+sp_H_K
+sp_H_S
+sp_H_H
+jsp_S
+jsp_H
+jsp_H_P
+jsp_H_K
+jsp_H_S
+jsp_H_H
+4UA
+6UA
+5UA
+4sp_S_5UA
+
+        ["4UA"] = function()
+            if run_at_current_frame then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
+            state_gate_game_scene_char_LP_from_4UA(input,obj_char)
+        end,
+        ["6UA"] = function()
+            if run_at_current_frame then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
+            state_gate_game_scene_char_LP_from_6UA(input,obj_char)
+        end,
+        ["5UA"] = function()
+            if run_at_current_frame then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
+            state_gate_game_scene_char_LP_from_5UA(input,obj_char)
+        end,
+        ["4sp_S_5UA"] = function()
+            if run_at_current_frame then
+                character_animator(obj_char,obj_char["character_animation"])
+            end
+            state_gate_game_scene_char_LP_from_4sp_S_5UA(input,obj_char)
+        end,

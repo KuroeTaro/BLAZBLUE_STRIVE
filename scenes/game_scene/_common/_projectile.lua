@@ -76,7 +76,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
         "0_general_hurt_launched_high",
         "air","knockdown",
         7.5,5,1.00,
-        -15,1.0,1.00,
+        -7.5,1.0,1.00,
         load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
             obj_char,
             "0_general_hurt_hard_knockdown_up",
@@ -94,7 +94,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         ),
         nil,nil,
-        function() end
+        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],75) end
     )
     obj["stand_block_animation"] = load_game_scene_anim_char_RC_red_projectile_ground_block(
         obj_char,obj,true,nil,
@@ -110,7 +110,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
         "0_general_hurt_launched_high",
         "air","knockdown",
         7.5,5,1.00,
-        -15,1.0,1.00,
+        -7.5,1.0,1.00,
         load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
             obj_char,
             "0_general_hurt_hard_knockdown_up",
@@ -128,7 +128,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         ),
         nil,nil,
-        function() end
+        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],75) end
     )
     obj["crouch_block_animation"] = load_game_scene_anim_char_RC_red_projectile_ground_block(
         obj_char,obj,true,nil,
@@ -144,7 +144,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
         "0_general_hurt_launched_high",
         "air","knockdown",
         7.5,5,1.00,
-        -15,1.0,1.00,
+        -7.5,1.0,1.00,
         load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
             obj_char,
             "0_general_hurt_hard_knockdown_up",
@@ -162,7 +162,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         ),
         nil,nil,
-        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],75) end
     )
     obj["air_block_animation"] = load_game_scene_anim_char_RC_red_projectile_air_block(
         obj_char,obj,true,nil,
