@@ -9401,7 +9401,7 @@ function load_game_scene_anim_char_TRM_6sp_S(obj_char)
     end
     res[39] = function()
         -- draw_correction
-        obj_char[8] = 9
+        obj_char[8] = 0
     end
     res[49] = function()
         -- animation_end
