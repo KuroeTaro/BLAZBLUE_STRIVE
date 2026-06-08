@@ -3010,7 +3010,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             5,5,1.035,
-            -37.5,2.5,1.035,
+            -42.5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -9124,7 +9124,7 @@ end
 -- _6sp_S
 function load_game_scene_anim_char_TRM_6sp_S(obj_char)
     local res = {}
-    local friction = 7
+    local friction = 5
     local gravity = 2.5
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
@@ -9169,7 +9169,7 @@ function load_game_scene_anim_char_TRM_6sp_S(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             7.5,5,1.10,
-            -32.5,2.5,1.10,
+            -37.5,2.5,1.10,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -9195,7 +9195,7 @@ function load_game_scene_anim_char_TRM_6sp_S(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             7.5,5,1.10,
-            -32.5,2.5,1.10,
+            -37.5,2.5,1.10,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -9221,7 +9221,7 @@ function load_game_scene_anim_char_TRM_6sp_S(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             7.5,5,1.10,
-            -32.5,2.5,1.10,
+            -37.5,2.5,1.10,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -9323,6 +9323,11 @@ function load_game_scene_anim_char_TRM_6sp_S(obj_char)
         -- draw_correction
         obj_char[8] = 2
     end
+    res[7] = function()
+        -- input_sys
+        obj_char["input_sys_state_negative_edge"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_negative_edge_init(obj_char["player_side"])(obj_char)
+    end
     res[8] = function()
         -- state & state_number
         if not common_game_scene_get_character_facing_currect(obj_char) then
@@ -9348,11 +9353,13 @@ function load_game_scene_anim_char_TRM_6sp_S(obj_char)
         -- collide
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30},{120,-425,150,280}}
+        -- draw_correction
+        obj_char[8] = 4
+    end
+    res[14] = function()
         -- sub_obj
         character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(obj_char)
         obj_char["shot_sys_state"] = "at_the_ready_ease_in"
-        -- draw_correction
-        obj_char[8] = 4
     end
     res[15] = function()
         -- collide

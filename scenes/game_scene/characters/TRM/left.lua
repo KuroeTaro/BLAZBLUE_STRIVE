@@ -1866,7 +1866,8 @@ function state_machine_char_game_scene_char_LP_shot_sys()
                 common_game_scene_get_input_sys_cache_negative_edge_init(obj_char["player_side"])(obj_char)
                 obj_char["input_sys_cache_negative_edge"]["HS"] = true
             end
-            if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) and obj_char["state"] ~= "hitstop" then
+            if obj_char["shot_sys_fire_cancel"] and obj_char["state"] ~= "hitstop" 
+            and (test_input_sys_release(input["HS"]) or obj_char["input_sys_cache_negative_edge"]["HS"]) then
                 obj_char["input_sys_cache_negative_edge"]["HS"] = false
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready_shot"
@@ -2244,6 +2245,9 @@ function state_machine_char_game_scene_char_LP_input_sys_cache()
                 obj_char["input_sys_cache"]["S"] = false
                 obj_char["input_sys_cache"]["K"] = false
                 obj_char["input_sys_cache"]["Launcher"] = true
+            end
+            if test_input_sys_press(input["SP"]) then
+                obj_char["input_sys_cache"]["SP"] = true
             end
             if test_input_sys_press(input["RC"]) then
                 obj_char["input_sys_cache"]["RC"] = true
