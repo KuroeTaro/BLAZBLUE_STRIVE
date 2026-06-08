@@ -1423,7 +1423,7 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         -- draw_correction
         obj_char[8] = 1
         -- VFX
-        insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,-1800,-600,0.5,1,1,0)
+        insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
     end
     res[8] = function()
         -- state_number
@@ -1431,7 +1431,7 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         -- draw_correction
         obj_char[8] = 2
         -- VFX
-        insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,-1800,-600,0.5,1,1,0)
+        insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
     end
     res[12] = function()
         -- state_number
@@ -1439,7 +1439,7 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         -- draw_correction
         obj_char[8] = 3
         -- VFX
-        insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,-1800,-600,0.5,1,1,0)
+        insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
     end
     res[16] = function()
         -- state_number
@@ -1447,7 +1447,7 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         -- draw_correction
         obj_char[8] = 4
         -- VFX
-        insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,-1800,-600,0.5,1,1,0)
+        insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
     end
     res[20] = function()
         -- state_number
@@ -1455,7 +1455,7 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         -- draw_correction
         obj_char[8] = 5
         -- VFX
-        insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,-1800,-600,0.5,1,1,0)
+        insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
     end
     res[24] = function()
         -- state_number
@@ -1463,7 +1463,7 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         -- draw_correction
         obj_char[8] = 6
         -- VFX
-        insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,-1800,-600,0.5,1,1,0)
+        insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
     end
     res[28] = function()
         -- state_number
@@ -1471,7 +1471,7 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         -- draw_correction
         obj_char[8] = 7
         -- VFX
-        insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,-1800,-600,0.5,1,1,0)
+        insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
     end
     res[32] = function()
         -- state_number
@@ -1479,7 +1479,7 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         -- draw_correction
         obj_char[8] = 8
         -- VFX
-        insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,-1800,-600,0.5,1,1,0)
+        insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
     end
     res[36] = function()
         -- state
@@ -1489,7 +1489,7 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         -- draw_correction
         obj_char[8] = 1
         -- VFX
-        insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,-1800,-600,0.5,1,1,0)
+        insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
     end
     res[37] = function()
         -- animation_end
@@ -1705,7 +1705,8 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
         obj_char[8] = 0
         obj_char["anchor_pos"] = {288,510}
         -- insert_VFX
-        insert_VFX_game_scne_stage_dash_cancel_burst(obj_char,-850,-175,1,1,1,0)
+        insert_VFX_game_scne_stage_dash_cancel_blow(obj_char,-870,-175,1,1,1,0)
+        insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
     end
     res[4] = function()
         -- state_number
@@ -1716,7 +1717,7 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
         -- draw_correction
         obj_char[8] = 1
         -- VFX
-        insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,-1800,-600,0.5,1,1,0)
+        insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
     end
     res[8] = function()
         -- state_number
@@ -1724,15 +1725,17 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
         -- draw_correction
         obj_char[8] = 2
         -- VFX
-        insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,-1800,-600,0.5,1,1,0)
+        insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
     end
     res[12] = function()
+        -- state
+        obj_char["idle_cancel"] = false
         -- state_number
         update_horizontal_velocity()
         -- draw_correction
         obj_char[8] = 3
         -- VFX
-        insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,-1800,-600,0.5,1,1,0)
+        insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
     end
     res[16] = function()
         -- state_number
@@ -1740,7 +1743,7 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
         -- draw_correction
         obj_char[8] = 4
         -- VFX
-        insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,-1800,-600,0.5,1,1,0)
+        insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
     end
     res[20] = function()
         -- state_number
@@ -1751,7 +1754,7 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
         -- draw_correction
         obj_char[8] = 5
         -- VFX
-        insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,-1800,-600,0.5,1,1,0)
+        insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
     end
     res[24] = function()
         -- state_number
@@ -1759,7 +1762,7 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
         -- draw_correction
         obj_char[8] = 6
         -- VFX
-        insert_VFX_game_scene_stage_smoke_dash_burst(obj_char,-1800,-600,0.5,1,1,0)
+        insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
     end
     res[26] = function()
         -- input_sys_cache
@@ -2000,9 +2003,12 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver0
         obj_char["hit_counter_VFX_insert_function_argument"] = {70,-700,1,1.1,1.1,0,false,false}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver0
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver0
+        obj_char["hit_block_VFX_insert_function_argument"] = {95,-380,0.4,0.75,0.75,0,false,false}
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver0
+        obj_char["hurt_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
@@ -2254,9 +2260,12 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         obj_char["hit_counter_VFX_insert_function_argument"] = {-150,-510,1,0.8,0.8,0,false,false}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_dynamic_ver1
+        obj_char["hit_block_VFX_insert_function_argument"] = {-150,-510,0.45,0.8,0.8,0,false,false}
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        obj_char["hurt_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-170,-435}
         -- draw_correction
@@ -2530,9 +2539,12 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver0
         obj_char["hit_counter_VFX_insert_function_argument"] = {75,-915,1,1.1,1.1,0,false,false}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver0
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver0
+        obj_char["hit_block_VFX_insert_function_argument"] = {99,-600,0.4,0.75,0.75,0,false,false}
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver0
+        obj_char["hurt_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
@@ -2786,9 +2798,12 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver0
         obj_char["hit_counter_VFX_insert_function_argument"] = {100,-614,0.9,1.2,1.2,0,false,false}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver0
+        obj_char["hit_block_VFX_insert_function_argument"] = {115,-306,0.4,1,1,0,false,false}
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        obj_char["hurt_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-355}
         -- draw_correction
@@ -3071,14 +3086,17 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
         obj_char["hurtbox_table"] = {{0,-215,170,430}}
         obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
-        obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver1
-        obj_char["hit_VFX_insert_function_argument"] = {0,-350,0.6,0.6,0.6,0,false,false}
+        obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_dynamic_ver1
+        obj_char["hit_VFX_insert_function_argument"] = {0,0,0.6,0.8,0.8,0,false,false}
         obj_char["hit_SFX"] = nil
-        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
-        obj_char["hit_counter_VFX_insert_function_argument"] = {-60,-420,0.8,0.8,0.8,0,false,false}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_dynamic_ver1
+        obj_char["hit_counter_VFX_insert_function_argument"] = {0,0,0.8,1.0,1.0,0,false,false}
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_dynamic_ver1
+        obj_char["hit_block_VFX_insert_function_argument"] = {0,0,0.3,0.8,0.8,0,false,false}
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        obj_char["hurt_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
@@ -3304,7 +3322,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            17.5,5,1.035,
+            18.25,5,1.035,
             -22.5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
@@ -3330,7 +3348,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            17.5,5,1.035,
+            18.25,5,1.035,
             -5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
@@ -3385,9 +3403,12 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver0
         obj_char["hit_counter_VFX_insert_function_argument"] = {150,-860,0.9,1.2,1.2,0,false,false}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver0
+        obj_char["hit_block_VFX_insert_function_argument"] = {145,-555,0.4,1,1,0,false,false}
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        obj_char["hurt_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-145,-440}
         -- draw_correction
@@ -3676,9 +3697,12 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         obj_char["hit_counter_VFX_insert_function_argument"] = {305,-325,1,0.75,0.75,0,false,false}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
+        obj_char["hit_block_VFX_insert_function_argument"] = {305,-325,0.45,0.75,0.75,0,false,false}
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        obj_char["hurt_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-50,-345}
         -- draw_correction
@@ -4002,9 +4026,12 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         obj_char["hit_counter_VFX_insert_function_argument"] = {130,-640,1,0.75,0.75,0,false,false}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
+        obj_char["hit_block_VFX_insert_function_argument"] = {130,-640,0.45,0.75,0.75,0,false,false}
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        obj_char["hurt_block_SFX"] = nil
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char,
@@ -4059,9 +4086,12 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
         obj_char["hurtbox_table"] = {{0,-190,270,380},{80,-395,60,30},{210,-135,150,270},{300,-350,380,190}}
         -- sub_obj
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver1
-        obj_char["hit_VFX_insert_function_argument"] = {175,-615,0.9,0.75,0.75,0,false,false}
+        obj_char["hit_VFX_insert_function_argument"] = {175,-500,0.9,0.75,0.75,0,false,false}
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
-        obj_char["hit_counter_VFX_insert_function_argument"] = {175,-615,1,0.75,0.75,0,false,false}
+        obj_char["hit_counter_VFX_insert_function_argument"] = {175,-500,1,0.75,0.75,0,false,false}
+        obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
+        obj_char["hit_block_VFX_insert_function_argument"] = {175,-500,0.45,0.75,0.75,0,false,false}
+        obj_char["hit_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-100,-355}
         -- draw_correction
@@ -4246,7 +4276,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            17.5,5,1.035,
+            18.25,5,1.035,
             -22.5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
@@ -4272,7 +4302,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            17.5,5,1.035,
+            18.25,5,1.035,
             -6.25,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
@@ -4327,9 +4357,12 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         obj_char["hit_counter_VFX_insert_function_argument"] = {10,-580,0.75,0.75,0.75,0,false,false}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
+        obj_char["hit_block_VFX_insert_function_argument"] = {10,-580,0.3,0.75,0.75,0,false,false}
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        obj_char["hurt_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
@@ -4594,9 +4627,12 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         obj_char["hit_counter_VFX_insert_function_argument"] = {-40,-600,0.75,0.75,0.75,0,false,false}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
+        obj_char["hit_block_VFX_insert_function_argument"] = {-40,-600,0.3,0.75,0.75,0,false,false}
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        obj_char["hurt_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-20,-375}
         -- draw_correction
@@ -4654,9 +4690,12 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         obj_char["hit_counter_VFX_insert_function_argument"] = {35,-600,0.75,0.75,0.75,0,false,false}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
+        obj_char["hit_block_VFX_insert_function_argument"] = {35,-600,0.3,0.75,0.75,0,false,false}
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        obj_char["hurt_block_SFX"] = nil
         -- draw_correction
         obj_char[8] = 4
     end
@@ -5629,9 +5668,12 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         obj_char["hit_counter_VFX_insert_function_argument"] = {100,-350,0.75,0.75,0.75,0,false,false}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
+        obj_char["hit_block_VFX_insert_function_argument"] = {100,-350,0.3,0.75,0.75,0,false,false}
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        obj_char["hurt_block_SFX"] = nil
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char,
@@ -5866,9 +5908,12 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = nil
         obj_char["hit_counter_VFX_insert_function_argument"] = nil
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = nil
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = nil
+        obj_char["hit_block_VFX_insert_function_argument"] = nil
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = nil
+        obj_char["hurt_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-150,-455}
         -- draw_correction
@@ -6244,9 +6289,12 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = nil
         obj_char["hit_counter_VFX_insert_function_argument"] = {}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = nil
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = nil
+        obj_char["hit_block_VFX_insert_function_argument"] = nil
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = nil
+        obj_char["hurt_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
@@ -6637,9 +6685,12 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         obj_char["hit_counter_VFX_insert_function_argument"] = {-20,-690,0.75,0.75,0.75,0,false,false}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
+        obj_char["hit_block_VFX_insert_function_argument"] = {-20,-690,0.3,0.75,0.75,0,false,false}
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        obj_char["hurt_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-170,-425}
         -- draw_correction
@@ -6941,9 +6992,12 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         obj_char["hit_counter_VFX_insert_function_argument"] = {-20,-690,0.75,0.75,0.75,0,false,false}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
+        obj_char["hit_block_VFX_insert_function_argument"] = {-20,-690,0.3,0.75,0.75,0,false,false}
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        obj_char["hurt_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-170,-425}
         -- draw_correction
@@ -7243,9 +7297,12 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver0
         obj_char["hit_counter_VFX_insert_function_argument"] = {-100,-710,1,1.35,1.35,0,true,false}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver0
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver0
+        obj_char["hit_block_VFX_insert_function_argument"] = {-70,-325,0.4,1,1,0,true,false}
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver0
+        obj_char["hurt_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
@@ -7493,9 +7550,12 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver0
         obj_char["hit_counter_VFX_insert_function_argument"] = {80,-895,0.85,1.5,1.5,0,false,false}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver0
+        obj_char["hit_block_VFX_insert_function_argument"] = {135,-440,0.4,1,1,0,false,false}
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        obj_char["hurt_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
@@ -7738,13 +7798,16 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
         obj_char["collision_ground_height_offset"] = 185
         -- sub_obj
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver1
-        obj_char["hit_VFX_insert_function_argument"] = {245,-120,0.8,0.75,0.75,1.571,true,false}
+        obj_char["hit_VFX_insert_function_argument"] = {245,-120,0.6,0.75,0.75,1.571,true,false}
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         obj_char["hit_counter_VFX_insert_function_argument"] = {245,-120,0.9,0.75,0.75,1.571,true,false}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
+        obj_char["hit_block_VFX_insert_function_argument"] = {245,-120,0.4,0.75,0.75,1.571,true,false}
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        obj_char["hurt_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
@@ -8004,9 +8067,12 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         obj_char["hit_counter_VFX_insert_function_argument"] = {10,-315,0.75,1,1,0,false,false}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
+        obj_char["hit_block_VFX_insert_function_argument"] = {10,-315,0.3,1,1,0,false,false}
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        obj_char["hurt_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
@@ -8266,9 +8332,12 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         obj_char["hit_counter_VFX_insert_function_argument"] = {-10,200,0.75,0.8,0.8,3.14,false,true}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
+        obj_char["hit_block_VFX_insert_function_argument"] = {-10,200,0.3,0.8,0.8,3.14,false,true}
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        obj_char["hurt_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
@@ -8463,9 +8532,12 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = nil
         obj_char["hit_counter_VFX_insert_function_argument"] = nil
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = nil
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = nil
+        obj_char["hit_block_VFX_insert_function_argument"] = nil
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = nil
+        obj_char["hurt_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
@@ -8820,9 +8892,12 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = nil
         obj_char["hit_counter_VFX_insert_function_argument"] = {}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = nil
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = nil
+        obj_char["hit_block_VFX_insert_function_argument"] = nil
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = nil
+        obj_char["hurt_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
@@ -9218,19 +9293,17 @@ function load_game_scene_anim_char_TRM_6sp_S(obj_char)
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
-        if shot_sys_force_ease_out_state[obj_char["shot_sys_state"]] then
-            obj_char["input_sys_cache_negative_edge"]["HS"] = false
-            character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(obj_char)
-            obj_char["shot_sys_state"] = "at_the_ready_ease_out"
-        end
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_special
-        obj_char["hit_VFX_insert_function_argument"] = {}
+        obj_char["hit_VFX_insert_function_argument"] = {0,0,1,0,0,0,true,false}
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_special
-        obj_char["hit_counter_VFX_insert_function_argument"] = {}
-        obj_char["counter_SFX"] = nil
-        obj_char["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-        obj_char["block_SFX"] = nil
+        obj_char["hit_counter_VFX_insert_function_argument"] = {0,0,1,0,0,0,true,false}
+        obj_char["hit_counter_SFX"] = nil
+        obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_dynamic_ver1
+        obj_char["hit_block_VFX_insert_function_argument"] = {0,0,0.3,0.8,0.8,0,true,false}
+        obj_char["hit_block_SFX"] = nil
+        obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        obj_char["hurt_block_SFX"] = nil
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-430}
         -- draw_correction

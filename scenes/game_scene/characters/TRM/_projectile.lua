@@ -141,8 +141,8 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     
     obj["hit_hurt_blockstop_countdown"] = 13
 
-    obj["block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-    obj["block_SFX"] = nil
+    obj["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+    obj["hurt_block_SFX"] = nil
 
     obj["hit_counter_ver_function"] = common_game_scene_counter_ver0
 
@@ -246,7 +246,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
                 end
                 init_character_anim_with(obj_char_other_side,obj_char_other_side["character_animation"])
                 -- insert_block_VFX
-                obj["block_VFX_insert_function"](obj_char_other_side)
+                obj["hurt_block_VFX_insert_function"](obj_char_other_side)
                 -- insert_FD_block_VFX
                 if test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"]) then
                     insert_VFX_game_scene_char_FD_block(obj_char_other_side)
@@ -366,7 +366,7 @@ end
 
 function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main_anim(obj,obj_char,obj_char_other_side)
     local res = {}
-    local test_shot_sys_ban_state = obj_char["shot_sys_ban_state"][obj_char["state"]]
+    local test_shot_sys_ban_state = obj_char["shot_sys_at_the_ready_force_off_state"][obj_char["state"]]
     res["prop_f"] = "f"
     res["anim_length"] = 40
 

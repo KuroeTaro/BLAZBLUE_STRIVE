@@ -83,10 +83,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "dcc_burst",
+	"image": "dcc_blow",
 	"format": "RGBA8888",
 	"size": {"w":1440,"h":1200},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:6e2d9569976a4109de4d7f27032779f0:470e1cac7733ace7bc6b9187a3af3d06:c768b44114bd64881ac14ff5668a3ab4$"
+	"smartupdate": "$TexturePacker:SmartUpdate:157b6ace6a71d94909de453383b1f213:69e5009d39ab607a0a6d1bd589481100:822d57e84c3e5fa025e4c6eabbea4e06$"
 }
 }

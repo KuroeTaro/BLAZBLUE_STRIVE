@@ -23,11 +23,11 @@ thread_data[10] = compress_module("asset/game_scene/stage/alpha/tile_map.dds")
     -- shockwave
 thread_data["air_dash_shockwave"] = compress_module("asset/game_scene/VFX/stage_VFX/alpha/air_dash_shockwave.dds")
     -- smoke
-thread_data["dash_burst"] = compress_module("asset/game_scene/VFX/stage_VFX/alpha/dash_burst.dds")
+thread_data["dash_shot"] = compress_module("asset/game_scene/VFX/stage_VFX/alpha/dash_shot.dds")
 thread_data["horizontal_shot"] = compress_module("asset/game_scene/VFX/stage_VFX/alpha/horizontal_shot.dds")
 thread_data["land_blow"] = compress_module("asset/game_scene/VFX/stage_VFX/alpha/land_blow.dds")
 thread_data["vertical_shot"] = compress_module("asset/game_scene/VFX/stage_VFX/alpha/vertical_shot.dds")
     -- spark
-thread_data["dcc_burst"] = compress_module("asset/game_scene/VFX/stage_VFX/alpha/dcc_burst.dds")
+thread_data["dcc_blow"] = compress_module("asset/game_scene/VFX/stage_VFX/alpha/dcc_blow.dds")
 
 love.thread.getChannel( 'thread_data_4' ):push( thread_data )

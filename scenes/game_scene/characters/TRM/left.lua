@@ -201,9 +201,12 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["hit_SFX"] = nil
     obj_char_game_scene_char_LP["hit_counter_VFX_insert_function"] = nil
     obj_char_game_scene_char_LP["hit_counter_VFX_insert_function_argument"] = nil
-    obj_char_game_scene_char_LP["counter_SFX"] = nil
-    obj_char_game_scene_char_LP["block_VFX_insert_function"] = nil
-    obj_char_game_scene_char_LP["block_SFX"] = nil
+    obj_char_game_scene_char_LP["hit_counter_SFX"] = nil
+    obj_char_game_scene_char_LP["hit_block_VFX_insert_function"] = nil
+    obj_char_game_scene_char_LP["hit_block_VFX_insert_function_argument"] = nil
+    obj_char_game_scene_char_LP["hit_block_SFX"] = nil
+    obj_char_game_scene_char_LP["hurt_block_VFX_insert_function"] = nil
+    obj_char_game_scene_char_LP["hurt_block_SFX"] = nil
     
     -- 5H_shot_sys
     obj_char_game_scene_char_LP["shot_sys_state"] = "off"
@@ -215,7 +218,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["shot_sys_aim_process"] = {0,0,420,450,false} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值 上一帧是否高于瞄准命中最低数值
     obj_char_game_scene_char_LP["shot_sys_animation"] = nil
     obj_char_game_scene_char_LP["shot_sys_camera_shake_table"] = {}
-    obj_char_game_scene_char_LP["shot_sys_ban_state"] = {
+    obj_char_game_scene_char_LP["shot_sys_at_the_ready_force_off_state"] = {
         ["before_ease_in"] = true,
         ["active_FD_block"] = true,
         ["block"] = true,
@@ -253,6 +256,11 @@ function load_game_scene_obj_char_LP()
         ["6UA"] = true,
         ["5UA"] = true,
         ["4sp_S_5UA"] = true
+    }
+    obj_char_game_scene_char_LP["6SP_S_shot_sys_pass_state"] = {
+        ["at_the_ready_ease_out"] = true,
+        ["steady_aim_ease_out"] = true,
+        ["off"] = true
     }
     -- 5H_shot_sys_oroboros
     obj_char_game_scene_char_LP["shot_sys_oroboros_state"] = "off"
@@ -1828,7 +1836,7 @@ function state_machine_char_game_scene_char_LP_shot_sys()
     (test_input_sys_press(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
     (test_input_sys_release(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
     (test_input_sys_press_or_hold(input["HS"]) and test_input_sys_press(input["SP"]))
-    local test_shot_sys_ban_state = obj_char["shot_sys_ban_state"][obj_char["state"]]
+    local test_shot_sys_ban_state = obj_char["shot_sys_at_the_ready_force_off_state"][obj_char["state"]]
     local run_at_current_frame = (game_speed_subframe_cache > game_speed_cache and game_speed_cache ~= 0) or (game_speed_cache == 1)
     -- state_machine
     local switch = {
@@ -2402,16 +2410,43 @@ end
 function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char)
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     -- _active_FD_block
-    -- _4UA
-    -- _6UA
-    -- _5UA
-    -- _4sp_P
-    -- _6sp_P
-    -- _4sp_K
-    -- _6sp_K
-    -- _4sp_S
-    -- _6sp_S
-    -- _sp_H
+
+    -- 4UA
+    -- 6UA
+    -- 5UA
+    -- 4sp_S_5UA
+
+    -- 4sp_P
+    -- 6sp_P
+    -- 4sp_K
+    -- 6sp_K
+    -- 4sp_S
+    -- 4sp_S_4dash
+    -- 4sp_S_6dash
+    -- 4sp_S_S
+    -- 4sp_S_H
+    -- 4sp_S_2Launcher
+    -- 4sp_S_6Launcher
+    -- 4sp_S_5Launcher
+    -- 6sp_S
+    if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3)
+    and obj_char["6SP_S_shot_sys_pass_state"][obj_char["shot_sys_state"]]
+    and test_input_sys_press_or_hold(input["SP"])
+    and test_input_sys_press(input["S"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6sp_S(obj_char)
+        init_character_anim_with(obj_char,obj_char["character_animation"])
+        obj_char["state"] = "6sp_S"
+        return true
+    end
+    -- sp_H
+    -- sp_H_P
+    -- sp_H_K
+    -- sp_H_S
+    -- sp_H_H
+
     -- _2P
     if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["P"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
@@ -2548,16 +2583,43 @@ end
 function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,obj_char)
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     -- _active_FD_block
-    -- _4UA
-    -- _6UA
-    -- _5UA
-    -- _4sp_P
-    -- _6sp_P
-    -- _4sp_K
-    -- _6sp_K
-    -- _4sp_S
-    -- _6sp_S
-    -- _sp_H
+
+    -- 4UA
+    -- 6UA
+    -- 5UA
+    -- 4sp_S_5UA
+
+    -- 4sp_P
+    -- 6sp_P
+    -- 4sp_K
+    -- 6sp_K
+    -- 4sp_S
+    -- 4sp_S_4dash
+    -- 4sp_S_6dash
+    -- 4sp_S_S
+    -- 4sp_S_H
+    -- 4sp_S_2Launcher
+    -- 4sp_S_6Launcher
+    -- 4sp_S_5Launcher
+    -- 6sp_S
+    if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3)
+    and obj_char["6SP_S_shot_sys_pass_state"][obj_char["shot_sys_state"]]
+    and test_input_sys_press_or_hold(input["SP"])
+    and test_input_sys_press_or_hold(input["S"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6sp_S(obj_char)
+        init_character_anim_with(obj_char,obj_char["character_animation"])
+        obj_char["state"] = "6sp_S"
+        return true
+    end
+    -- sp_H
+    -- sp_H_P
+    -- sp_H_K
+    -- sp_H_S
+    -- sp_H_H
+
     -- _2P
     if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press_or_hold(input["P"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
@@ -2710,7 +2772,10 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_c
     -- 4sp_S_6Launcher
     -- 4sp_S_5Launcher
     -- 6sp_S
-    if obj_char["direction_input"] == 6 and test_input_sys_press_or_hold(input["SP"]) and test_input_sys_press(input["S"]) then
+    if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3)
+    and obj_char["6SP_S_shot_sys_pass_state"][obj_char["shot_sys_state"]]
+    and test_input_sys_press_or_hold(input["SP"])
+    and test_input_sys_press(input["S"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -2744,7 +2809,10 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(in
     -- 4sp_S_6Launcher
     -- 4sp_S_5Launcher
     -- 6sp_S
-    if obj_char["direction_input"] == 6 and test_input_sys_press_or_hold(input["SP"]) and test_input_sys_press_or_hold(input["S"]) then
+    if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3)
+    and obj_char["6SP_S_shot_sys_pass_state"][obj_char["shot_sys_state"]]
+    and test_input_sys_press_or_hold(input["SP"]) 
+    and test_input_sys_press_or_hold(input["S"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
@@ -3665,9 +3733,6 @@ function state_gate_game_scene_char_LP_from_1_2_3_crouch(input,obj_char)
     if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
         return true
     end
-    if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
-        return true
-    end
     if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
         return true
     end
@@ -3719,9 +3784,6 @@ function state_gate_game_scene_char_LP_from_1_2_3_crouch_turn(input,obj_char)
     end
     -- _common_ground_idle_to_move
     if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
-        return true
-    end
-    if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
         return true
     end
     if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
@@ -3789,9 +3851,6 @@ function state_gate_game_scene_char_LP_from_1_2_3_crouch_to_stand_idle(input,obj
     if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
         return true
     end
-    if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
-        return true
-    end
     if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
         return true
     end
@@ -3855,9 +3914,6 @@ function state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char)
     if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
         return true
     end
-    if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
-        return true
-    end
     if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
         return true
     end
@@ -3909,9 +3965,6 @@ function state_gate_game_scene_char_LP_from_5_stand_turn(input,obj_char)
     end
     -- _common_ground_idle_to_move
     if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
-        return true
-    end
-    if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
         return true
     end
     if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
@@ -3967,9 +4020,6 @@ function state_gate_game_scene_char_LP_from_5_stand_dash_skid(input,obj_char)
     if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
         return true
     end
-    if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
-        return true
-    end
     if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
         return true
     end
@@ -4013,9 +4063,6 @@ function state_gate_game_scene_char_LP_from_4_walk(input,obj_char)
     end
     -- _common_ground_idle_to_move
     if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
-        return true
-    end
-    if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
         return true
     end
     if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
@@ -4075,9 +4122,6 @@ function state_gate_game_scene_char_LP_from_4_walk_to_stand_idle(input,obj_char)
     end
     -- _common_ground_idle_to_move
     if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
-        return true
-    end
-    if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
         return true
     end
     if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
@@ -4145,9 +4189,6 @@ function state_gate_game_scene_char_LP_from_6_walk(input,obj_char)
     if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
         return true
     end
-    if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
-        return true
-    end
     if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
         return true
     end
@@ -4202,9 +4243,6 @@ function state_gate_game_scene_char_LP_from_6_walk_to_stand_idle(input,obj_char)
     end
     -- _common_ground_idle_to_move
     if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
-        return true
-    end
-    if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
         return true
     end
     if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
@@ -4473,9 +4511,6 @@ function state_gate_game_scene_char_LP_from_6dash_dash(input,obj_char)
         obj_char["state"] = "4dash_backdash"
         return true
     end
-    if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,obj_char) then
-        return true
-    end
     if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,obj_char) then
         return true
     end
@@ -4577,13 +4612,6 @@ function state_gate_game_scene_char_LP_from_burst_RC_red(input,obj_char)
             end
         else
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,obj_char) then
-                common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
-                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,19,0,nil})
-                obj_char["velocity"][1] = obj_char["velocity"][1]*1
-                obj_char["velocity"][2] = 0
-                return true
-            end
             if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,19,0,nil})
@@ -4652,13 +4680,6 @@ function state_gate_game_scene_char_LP_from_burst_RC_blue(input,obj_char)
             end
         else
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,obj_char) then
-                common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
-                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
-                obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.625
-                obj_char["velocity"][2] = 0
-                return true
-            end
             if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
@@ -4727,13 +4748,6 @@ function state_gate_game_scene_char_LP_from_burst_RC_purple(input,obj_char)
             end
         else
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,obj_char) then
-                common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
-                common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
-                obj_char["velocity"][1] = obj_char["velocity"][1]*1
-                obj_char["velocity"][2] = 0
-                return true
-            end
             if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})

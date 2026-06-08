@@ -158,9 +158,9 @@ obj_char["hit_VFX_insert_function_argument"] = nil
 obj_char["hit_SFX"] = nil
 obj_char["hit_counter_VFX_insert_function"] = nil
 obj_char["hit_counter_VFX_insert_function_argument"] = nil
-obj_char["counter_SFX"] = nil
-obj_char["block_VFX_insert_function"] = nil
-obj_char["block_SFX"] = nil
+obj_char["hit_counter_SFX"] = nil
+obj_char["hurt_block_VFX_insert_function"] = nil
+obj_char["hurt_block_SFX"] = nil
 
 obj_char["oroboros_bite_pos"] = {0,0}
 obj_char["oroboros_aim_pos"] = {0,0}

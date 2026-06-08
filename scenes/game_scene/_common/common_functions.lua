@@ -358,6 +358,8 @@ function common_game_scene_strike_hit_function(obj_char)
         hit_side_obj_char["hit_counter_VFX_insert_function"](hit_side_obj_char)
     elseif not block_bool then
         hit_side_obj_char["hit_VFX_insert_function"](hit_side_obj_char)
+    elseif block_bool then
+        hit_side_obj_char["hit_block_VFX_insert_function"](hit_side_obj_char)
     end
     -- debug
     hit_side_obj_char["active_frame"] = hit_side_obj_char["active_frame"] + 1
@@ -463,7 +465,7 @@ function common_game_scene_strike_hurt_function_common_block(obj_char,hit_side_o
     end
     init_character_anim_with(obj_char,obj_char["character_animation"])
     -- block_VFX
-    hit_side_obj_char["block_VFX_insert_function"](obj_char)
+    hit_side_obj_char["hurt_block_VFX_insert_function"](obj_char)
     if FD_block then
         insert_VFX_game_scene_char_FD_block(obj_char)
     end

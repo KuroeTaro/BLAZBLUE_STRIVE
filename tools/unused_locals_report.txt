@@ -323,7 +323,7 @@ dkjson.lua:31	n
  scenes/game_scene/characters/TRM/_projectile.lua:124	obj_camera
  scenes/game_scene/characters/TRM/_projectile.lua:126	input
  scenes/game_scene/characters/TRM/_projectile.lua:128	wallhurt_wallstick_on_side_cache
- scenes/game_scene/characters/TRM/_projectile.lua:281	test_shot_sys_ban_state
+ scenes/game_scene/characters/TRM/_projectile.lua:281	test_shot_sys_at_the_ready_force_off_state
  scenes/game_scene/characters/TRM/_projectile.lua:388	anchor_data_other_side
  scenes/game_scene/characters/TRM/_projectile.lua:393	function
  scenes/game_scene/characters/TRM/_projectile.lua:393	update_before_land
