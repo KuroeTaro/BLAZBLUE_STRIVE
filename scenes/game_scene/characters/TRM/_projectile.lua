@@ -139,7 +139,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
         obj_char,obj,true
     )
     
-    obj["hit_hurt_blockstop_countdown"] = 13
+    obj["hit_hurt_blockstop_countdown"] = 12
 
     obj["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
     obj["hurt_block_SFX"] = nil
