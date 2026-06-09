@@ -190,8 +190,8 @@ function insert_VFX_game_scene_char_TRM_2S_whiff(obj_char)
         image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["2S_whiff_VFX"]
     end 
 
-    obj["life"] = 3
-    obj[1] = obj_char["x"] + obj_char[5]*(166)
+    obj["life"] = 6
+    obj[1] = obj_char["x"] + obj_char[5]*(115)
     obj[2] = obj_char["y"] + obj_char[6]*(-247)
     obj[3] = obj_char[3]
     obj[4] = 1
@@ -204,9 +204,10 @@ function insert_VFX_game_scene_char_TRM_2S_whiff(obj_char)
     obj["LCD"] = {0,0,0,0,0,0,0,0}
     obj["animation"] = {}
     obj["animation"][0] = 0
-    obj["animation"][1] = 1
+    obj["animation"][2] = 1
+    obj["animation"][4] = 2
     obj["animation"]["prop"] = 8
-    obj["animation"]["length"] = 3
+    obj["animation"]["length"] = 6
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
@@ -221,7 +222,7 @@ function insert_VFX_game_scene_char_TRM_2S_whiff(obj_char)
         end
     end
     obj["draw_sync"] = function()
-        obj[1] = obj_char["x"] + obj_char[5]*(166)
+        obj[1] = obj_char["x"] + obj_char[5]*(115)
         obj[2] = obj_char["y"] + obj_char[6]*(-247)
         obj[3] = obj_char[3]
         obj[5] = obj_char[5]

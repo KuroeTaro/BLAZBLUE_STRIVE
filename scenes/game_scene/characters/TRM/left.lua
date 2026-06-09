@@ -5370,7 +5370,7 @@ function state_gate_game_scene_char_LP_from_cS(input,obj_char)
             return true
         end
         -- _2S
-        if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["S"]) then
+        if (obj_char["direction_input"] == 2 or obj_char["direction_input"] == 1) and test_input_sys_press(input["S"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end

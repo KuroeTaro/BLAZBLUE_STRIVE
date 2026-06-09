@@ -111,35 +111,40 @@ function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
     table.insert(obj_char["VFX_back_table"],obj)
 end
 function insert_VFX_game_scene_char_overdrive_partical(obj_char)
-    local obj = {0,0,0,1,1,1,0,0}
+    local obj = {0,0,0,1,2,2,0,0}
     local obj_camera = obj_stage_game_scene_camera
+    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+
+    obj_char["VFX_hit_front_table"] = {}
+    obj_char["VFX_hit_back_table"] = {}
+    obj_char_other_side["VFX_hit_front_table"] = {}
+    obj_char_other_side["VFX_hit_back_table"] = {}
+    
+    obj["life"] = 70
+    obj["f"] = -1
 
     if obj_char["player_side"] == "L" then
-        obj["life"] = 80
-        obj[1] = obj_camera[1] - 800
-        obj[2] = obj_camera[2] - 450
-        obj[3] = obj_camera[3] + 800
+        obj[1] = obj_camera["3d_pos_x"] - 960
+        obj[2] = obj_camera["3d_pos_y"] - 540
+        obj[3] = obj_camera["3d_pos_z"] + obj_camera["3d_pos_y"]*0.25 + 800
         obj[4] = 1
-        obj[5] = 1
-        obj[6] = 1
+        obj[5] = 2
+        obj[6] = 2
         obj[7] = 0
         obj[8] = 0
-        obj["f"] = -1
     elseif obj_char["player_side"] == "R" then
-        obj["life"] = 80
-        obj[1] = obj_camera[1] + 800
-        obj[2] = obj_camera[2] - 450
-        obj[3] = obj_camera[3] + 800
-        obj[4] = 1
-        obj[5] = -1
-        obj[6] = 1
+        obj[1] = obj_camera["3d_pos_x"] + 960
+        obj[2] = obj_camera["3d_pos_y"] - 540
+        obj[3] = obj_camera["3d_pos_z"] + obj_camera["3d_pos_y"]*0.25 + 800
+        obj[4] = 2
+        obj[5] = -2
+        obj[6] = 2
         obj[7] = 0
         obj[8] = 0
-        obj["f"] = -1
     end
     obj["update"] = function()
         obj["f"] = obj["f"] + 1
-        if obj["f"] >= 2 then
+        if obj["f"] >= 1 then
             obj[8] = obj[8] + 1
             obj["f"] = 0
         end
@@ -150,13 +155,13 @@ function insert_VFX_game_scene_char_overdrive_partical(obj_char)
     end
     obj["draw_sync"] = function()
         if obj_char["player_side"] == "L" then
-            obj[1] = obj_camera[1] - 800
-            obj[2] = obj_camera[2] - 450
-            obj[3] = obj_camera[3] + 800
+            obj[1] = obj_camera["3d_pos_x"] - 960
+            obj[2] = obj_camera["3d_pos_y"] - 540
+            obj[3] = obj_camera["3d_pos_z"] + obj_camera["3d_pos_y"]*0.25 + 800
         elseif obj_char["player_side"] == "R" then
-            obj[1] = obj_camera[1] + 800
-            obj[2] = obj_camera[2] - 450
-            obj[3] = obj_camera[3] + 800
+            obj[1] = obj_camera["3d_pos_x"] + 960
+            obj[2] = obj_camera["3d_pos_y"] - 540
+            obj[3] = obj_camera["3d_pos_z"] + obj_camera["3d_pos_y"]*0.25 + 800
         end
         obj["draw_sync"] = function() end
     end
@@ -1121,8 +1126,8 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     obj["life"] = 30
-    obj[1] = obj_camera["3d_pos_x"] - 900
-    obj[2] = obj_camera["3d_pos_y"] - 550
+    obj[1] = obj_camera["3d_pos_x"] + obj_camera["enclose_position_offset"][1] - 900
+    obj[2] = obj_camera["3d_pos_y"] + obj_camera["enclose_position_offset"][2] - 550
     obj[3] = 0
     obj[4] = 1
     obj[5] = 1
@@ -1150,8 +1155,8 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(obj_char)
         end
     end
     obj["draw_sync"] = function()
-        obj[1] = obj_camera["3d_pos_x"] - 900
-        obj[2] = obj_camera["3d_pos_y"] - 550
+        obj[1] = obj_camera["3d_pos_x"] + obj_camera["enclose_position_offset"][1] - 900
+        obj[2] = obj_camera["3d_pos_y"] + obj_camera["enclose_position_offset"][2] - 550
         obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
@@ -1932,8 +1937,8 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     obj["life"] = 30
-    obj[1] = obj_camera["3d_pos_x"] - 900
-    obj[2] = obj_camera["3d_pos_y"] - 550
+    obj[1] = obj_camera["3d_pos_x"] + obj_camera["enclose_position_offset"][1] - 900
+    obj[2] = obj_camera["3d_pos_y"] + obj_camera["enclose_position_offset"][2] - 550
     obj[3] = 0
     obj[4] = 1
     obj[5] = 1
@@ -1961,8 +1966,8 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(obj_char)
         end
     end
     obj["draw_sync"] = function()
-        obj[1] = obj_camera["3d_pos_x"] - 900
-        obj[2] = obj_camera["3d_pos_y"] - 550
+        obj[1] = obj_camera["3d_pos_x"] + obj_camera["enclose_position_offset"][1] - 900
+        obj[2] = obj_camera["3d_pos_y"] + obj_camera["enclose_position_offset"][2] - 550
         obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
@@ -2521,8 +2526,8 @@ function insert_VFX_game_scene_char_counter_blast_special(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     obj["life"] = 30
-    obj[1] = obj_camera["3d_pos_x"] - 900
-    obj[2] = obj_camera["3d_pos_y"] - 550
+    obj[1] = obj_camera["3d_pos_x"] + obj_camera["enclose_position_offset"][1] - 900
+    obj[2] = obj_camera["3d_pos_y"] + obj_camera["enclose_position_offset"][2] - 550
     obj[3] = 0
     obj[4] = 1
     obj[5] = 1
@@ -2550,8 +2555,8 @@ function insert_VFX_game_scene_char_counter_blast_special(obj_char)
         end
     end
     obj["draw_sync"] = function()
-        obj[1] = obj_camera["3d_pos_x"] - 900
-        obj[2] = obj_camera["3d_pos_y"] - 550
+        obj[1] = obj_camera["3d_pos_x"] + obj_camera["enclose_position_offset"][1] - 900
+        obj[2] = obj_camera["3d_pos_y"] + obj_camera["enclose_position_offset"][2] - 550
         obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
