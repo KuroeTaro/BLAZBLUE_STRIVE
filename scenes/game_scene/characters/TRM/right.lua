@@ -5179,7 +5179,7 @@ function state_gate_game_scene_char_RP_from_5K(input,obj_char)
     end
     -- kara
     -- 2K
-    if common_game_scene_check_crouch_direction(obj_char) and obj_char["f"] < 3 then
+    if common_game_scene_check_crouch_direction(obj_char) and obj_char["f"] <= 4 then
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
