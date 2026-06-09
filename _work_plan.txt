@@ -8,15 +8,4 @@ config选项中自定义要不要79空投
 -- 开始界面重做
 -- 联机
 
-common_game_scene_char_apply_hurt_velocity
-FD是往hit_side_obj_char_添加0.5倍的速度 需要修改
-
-
--- 5H状态和动画添加
-
--- 开始做拔枪
-26s开枪动画
-状态
-状态门
-
 全屏粒子特效位置算法修正

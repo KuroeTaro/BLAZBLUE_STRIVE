@@ -17,6 +17,7 @@ function load_game_scene_obj_char_LP()
 
     -- state
     obj_char_game_scene_char_LP["player_side"] = "L"
+    obj_char_game_scene_char_LP["character_mode"] = "Dr.Due.Dasher" -- "Dr.Due.Dasher" "Roman.Raid.Radio"
     obj_char_game_scene_char_LP["type"] = "character"
     obj_char_game_scene_char_LP["default_throw_distance"] = 0
 
@@ -5034,7 +5035,7 @@ function state_gate_game_scene_char_LP_from_5P(input,obj_char)
             return true
         end
         -- _6K
-        if obj_char["direction_input"] == 6 and test_input_sys_press(input["K"]) then
+        if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["K"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end
@@ -5044,7 +5045,7 @@ function state_gate_game_scene_char_LP_from_5P(input,obj_char)
             return true
         end
         -- _6S
-        if obj_char["direction_input"] == 6 and test_input_sys_press(input["S"]) then
+        if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["S"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end
@@ -5083,7 +5084,7 @@ function state_gate_game_scene_char_LP_from_2K(input,obj_char)
             return true
         end
         -- _6K
-        if obj_char["direction_input"] == 6 and test_input_sys_press(input["K"]) then
+        if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["K"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end
@@ -5093,7 +5094,7 @@ function state_gate_game_scene_char_LP_from_2K(input,obj_char)
             return true
         end
         -- _6S
-        if obj_char["direction_input"] == 6 and test_input_sys_press(input["S"]) then
+        if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["S"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end
@@ -5176,6 +5177,18 @@ function state_gate_game_scene_char_LP_from_5K(input,obj_char)
     if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
         return true
     end
+    -- kara
+    -- 2K
+    if common_game_scene_check_crouch_direction(obj_char) and obj_char["f"] < 3 then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
+        obj_char["velocity"] = obj_char["velocity_cache"]
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_2K(obj_char)
+        init_character_anim_with(obj_char,obj_char["character_animation"])
+        obj_char["state"] = "2K"
+        return true
+    end
     -- hit_cancel
     if obj_char["hit_cancel"] then
         -- special
@@ -5183,7 +5196,7 @@ function state_gate_game_scene_char_LP_from_5K(input,obj_char)
             return true
         end
         -- _6P
-        if obj_char["direction_input"] == 6 and test_input_sys_press(input["P"]) then
+        if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["P"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end
@@ -5193,7 +5206,7 @@ function state_gate_game_scene_char_LP_from_5K(input,obj_char)
             return true
         end
         -- _6K
-        if obj_char["direction_input"] == 6 and test_input_sys_press(input["K"]) then
+        if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["K"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end
@@ -5203,7 +5216,7 @@ function state_gate_game_scene_char_LP_from_5K(input,obj_char)
             return true
         end
         -- _6S
-        if obj_char["direction_input"] == 6 and test_input_sys_press(input["S"]) then
+        if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["S"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end
@@ -5337,7 +5350,7 @@ function state_gate_game_scene_char_LP_from_cS(input,obj_char)
             return true
         end
         -- _6P
-        if obj_char["direction_input"] == 6 and test_input_sys_press(input["P"]) then
+        if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["P"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end
@@ -5347,7 +5360,7 @@ function state_gate_game_scene_char_LP_from_cS(input,obj_char)
             return true
         end
         -- _6K
-        if obj_char["direction_input"] == 6 and test_input_sys_press(input["K"]) then
+        if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["K"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end
@@ -5356,8 +5369,18 @@ function state_gate_game_scene_char_LP_from_cS(input,obj_char)
             obj_char["state"] = "6K"
             return true
         end
+        -- _2S
+        if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["S"]) then
+            if not common_game_scene_get_character_facing_currect(obj_char) then
+                obj_char[5] = -obj_char[5]
+            end
+            obj_char["character_animation"] = load_game_scene_anim_char_TRM_2S(obj_char)
+            init_character_anim_with(obj_char,obj_char["character_animation"])
+            obj_char["state"] = "2S"
+            return true
+        end
         -- _6S
-        if obj_char["direction_input"] == 6 and test_input_sys_press(input["S"]) then
+        if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["S"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end
