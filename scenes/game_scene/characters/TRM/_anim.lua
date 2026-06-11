@@ -9308,7 +9308,7 @@ function load_game_scene_anim_char_TRM_6sp_S(obj_char)
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-430}
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = {180,570}
+        obj_char["anchor_pos"] = {200,570}
         -- camera_animation_load
         common_game_scene_hit_load_camera_shake_anim(obj_char,0.87,10)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)

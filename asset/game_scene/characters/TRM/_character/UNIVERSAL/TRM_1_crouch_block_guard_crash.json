@@ -10,7 +10,7 @@
 },
 "1":
 {
-	"frame": {"x":500,"y":0,"w":500,"h":320},
+	"frame": {"x":0,"y":320,"w":500,"h":320},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":320},
@@ -18,7 +18,7 @@
 },
 "2":
 {
-	"frame": {"x":1000,"y":0,"w":500,"h":320},
+	"frame": {"x":0,"y":640,"w":500,"h":320},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":320},
@@ -26,7 +26,7 @@
 },
 "3":
 {
-	"frame": {"x":1500,"y":0,"w":500,"h":320},
+	"frame": {"x":0,"y":960,"w":500,"h":320},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":320},
@@ -34,7 +34,7 @@
 },
 "4":
 {
-	"frame": {"x":2000,"y":0,"w":500,"h":320},
+	"frame": {"x":0,"y":1280,"w":500,"h":320},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":320},
@@ -45,8 +45,8 @@
 	"version": "1.0",
 	"image": "TRM_1_crouch_block_guard_crash",
 	"format": "RGBA8888",
-	"size": {"w":2500,"h":320},
+	"size": {"w":500,"h":1600},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:5061048726587b4df60f2503131000cc:1dfb71067ed6899d27ab37a22c310bbd:133367282dd84a122018a9fc43c8166f$"
+	"smartupdate": "$TexturePacker:SmartUpdate:dd0031ba6c6a7b69a680945a7013cffe:daf29a2c35d4c234c4fc1ac0c952e8fa:133367282dd84a122018a9fc43c8166f$"
 }
 }

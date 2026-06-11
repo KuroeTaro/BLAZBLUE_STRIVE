@@ -10,7 +10,7 @@
 },
 "1":
 {
-	"frame": {"x":480,"y":0,"w":480,"h":300},
+	"frame": {"x":0,"y":300,"w":480,"h":300},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":300},
@@ -18,7 +18,7 @@
 },
 "2":
 {
-	"frame": {"x":960,"y":0,"w":480,"h":300},
+	"frame": {"x":0,"y":600,"w":480,"h":300},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":300},
@@ -26,7 +26,7 @@
 },
 "3":
 {
-	"frame": {"x":1440,"y":0,"w":480,"h":300},
+	"frame": {"x":0,"y":900,"w":480,"h":300},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":300},
@@ -34,7 +34,7 @@
 },
 "4":
 {
-	"frame": {"x":1920,"y":0,"w":480,"h":300},
+	"frame": {"x":0,"y":1200,"w":480,"h":300},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":300},
@@ -42,7 +42,7 @@
 },
 "5":
 {
-	"frame": {"x":2400,"y":0,"w":480,"h":300},
+	"frame": {"x":0,"y":1500,"w":480,"h":300},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":300},
@@ -53,8 +53,8 @@
 	"version": "1.0",
 	"image": "TRM_1_crouch_block",
 	"format": "RGBA8888",
-	"size": {"w":2880,"h":300},
+	"size": {"w":480,"h":1800},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:a940f2b76fc47dc6a78bb76356871cff:bc9e248d21965ce49a79931b14a3a506:881204c03d5ae5308d80a580d6590e50$"
+	"smartupdate": "$TexturePacker:SmartUpdate:d1761f5db8af446b5f87c646c89bbe4b:2788c44d1d2d5600d74dd92a74212889:881244c03d5ae5308d80a580d6590e50$"
 }
 }

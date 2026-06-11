@@ -10,7 +10,7 @@
 },
 "1":
 {
-	"frame": {"x":520,"y":0,"w":520,"h":360},
+	"frame": {"x":0,"y":360,"w":520,"h":360},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":360},
@@ -18,7 +18,7 @@
 },
 "2":
 {
-	"frame": {"x":1040,"y":0,"w":520,"h":360},
+	"frame": {"x":0,"y":720,"w":520,"h":360},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":360},
@@ -26,7 +26,7 @@
 },
 "3":
 {
-	"frame": {"x":1560,"y":0,"w":520,"h":360},
+	"frame": {"x":0,"y":1080,"w":520,"h":360},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":360},
@@ -34,7 +34,7 @@
 },
 "4":
 {
-	"frame": {"x":2080,"y":0,"w":520,"h":360},
+	"frame": {"x":0,"y":1440,"w":520,"h":360},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":360},
@@ -45,8 +45,8 @@
 	"version": "1.0",
 	"image": "TRM_1_4_7_air_block_guard_crash",
 	"format": "RGBA8888",
-	"size": {"w":2600,"h":360},
+	"size": {"w":520,"h":1800},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:5218764ecac7509f00b33c8ef1abeca9:8d87041f91b6e34567379b8e4f56a068:17caa999e1e4c3b0e2040df2f7000a17$"
+	"smartupdate": "$TexturePacker:SmartUpdate:bff3957e84423a9b73557325a071d686:f5e2fc0bacd00295bee922908659dfa1:17caa999e1e4c3b0e2040df2f7000a17$"
 }
 }

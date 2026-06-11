@@ -35,10 +35,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "TRM_5_stand_idle_dash_skid",
+	"image": "TRM_5_stand_dash_skid",
 	"format": "RGBA8888",
 	"size": {"w":1080,"h":1080},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:b5be389c8e5a7c70935db8637d828445:fda37c1beb18d9ff23959c0c63583d91:27ee68f069cecf66b966e366b7200458$"
+	"smartupdate": "$TexturePacker:SmartUpdate:d7b32950895389a0d8af781309b8bc14:ed33ee69b0433c5839936add764dd695:688fbef5c8d040fe3dca8ca3992fb187$"
 }
 }

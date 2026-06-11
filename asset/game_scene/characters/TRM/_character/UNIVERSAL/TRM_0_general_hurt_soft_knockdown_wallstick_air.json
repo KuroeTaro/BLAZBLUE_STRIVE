@@ -11,10 +11,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "TRM_0_general_hurt_soft_knockdown_wallstick_air.png",
+	"image": "TRM_0_general_hurt_soft_knockdown_wallstick_air",
 	"format": "RGBA8888",
 	"size": {"w":320,"h":500},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:74f197e67848b53f0b1c26bc13d712b4:f9d33e11c174aa9cee280049815cc371:ac6194f8fc01a1caf2d38a8955342bbe$"
+	"smartupdate": "$TexturePacker:SmartUpdate:9fefbf3d535b403b707b1d7ab1793b84:9a25de2e7bccf834fc2cc1f1632c377d:ac6194f8fc01a1caf2d38a8955342bbe$"
 }
 }

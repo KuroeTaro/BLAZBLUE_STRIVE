@@ -837,7 +837,7 @@ function load_game_scene_box_anchor_data_LP()
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_soft_recovery_wallstick_air"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_soft_recovery_wallstick_air"] = {}
     obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_soft_recovery_wallstick_air"][0] = {}
-    obj_anchor_data_game_scene_char_LP["0_general_hurt_soft_recovery_wallstick_air"] = {340,410}
+    obj_anchor_data_game_scene_char_LP["0_general_hurt_soft_recovery_wallstick_air"] = {320,430}
 
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_launched_float"] = {}
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_launched_float"][0] = air_pushbox

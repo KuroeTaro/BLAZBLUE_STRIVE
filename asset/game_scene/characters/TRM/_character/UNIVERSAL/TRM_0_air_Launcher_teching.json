@@ -10,7 +10,7 @@
 },
 "1":
 {
-	"frame": {"x":0,"y":520,"w":520,"h":520},
+	"frame": {"x":520,"y":0,"w":520,"h":520},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":520},
@@ -18,7 +18,7 @@
 },
 "2":
 {
-	"frame": {"x":0,"y":1040,"w":520,"h":520},
+	"frame": {"x":1040,"y":0,"w":520,"h":520},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":520},
@@ -26,7 +26,7 @@
 },
 "3":
 {
-	"frame": {"x":0,"y":1560,"w":520,"h":520},
+	"frame": {"x":1560,"y":0,"w":520,"h":520},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":520},
@@ -34,7 +34,7 @@
 },
 "4":
 {
-	"frame": {"x":0,"y":2080,"w":520,"h":520},
+	"frame": {"x":2080,"y":0,"w":520,"h":520},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":520},
@@ -45,8 +45,8 @@
 	"version": "1.0",
 	"image": "TRM_0_air_Launcher_teching",
 	"format": "RGBA8888",
-	"size": {"w":520,"h":2600},
+	"size": {"w":2600,"h":520},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:6cb85ed28b9bf8a28e9d653e3dff2320:21acc98444432000dd98f8f3b72a333d:3ba52a530414ead99958714438fd7c3d$"
+	"smartupdate": "$TexturePacker:SmartUpdate:17cb3721a1d957c7fffaf398e85dc7a3:e2c0e7b44a64e2bea51c904d8ea7bbf7:3ba52a530414ead99958714438fd7c3d$"
 }
 }

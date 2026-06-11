@@ -10,7 +10,7 @@
 },
 "1":
 {
-	"frame": {"x":580,"y":0,"w":580,"h":460},
+	"frame": {"x":0,"y":460,"w":580,"h":460},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":580,"h":460},
@@ -18,7 +18,7 @@
 },
 "2":
 {
-	"frame": {"x":1160,"y":0,"w":580,"h":460},
+	"frame": {"x":0,"y":920,"w":580,"h":460},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":580,"h":460},
@@ -26,7 +26,7 @@
 },
 "3":
 {
-	"frame": {"x":1740,"y":0,"w":580,"h":460},
+	"frame": {"x":0,"y":1380,"w":580,"h":460},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":580,"h":460},
@@ -37,8 +37,8 @@
 	"version": "1.0",
 	"image": "TRM_0_general_hurt_launched_low",
 	"format": "RGBA8888",
-	"size": {"w":2320,"h":460},
+	"size": {"w":580,"h":1840},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:142883275e20c2e46df0eeceb68f036f:b5e704b9ad75f557eacf8884e636fa28:ca3acd82a930b0ba47d416758ae1fa7b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:31a6601d1b1a40bfe72eaec903d91ba1:ef0a2a60fed8b4925bb344d3fbb3fcc7:c3a82da04cb2b8bde4756d55df3b472d$"
 }
 }
