@@ -788,14 +788,14 @@ function insert_VFX_game_scene_char_TRM_jS_whiff(obj_char)
     table.insert(obj_char["VFX_front_table"],obj)
 end
 
-function insert_VFX_game_scene_char_TRM_6sp_S_whiff(obj_char)
+function insert_VFX_game_scene_char_TRM_6SP_S_whiff(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
     local image_sprite_sheet = nil
     local side = obj_char["player_side"]
     if side == "L" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["6sp_S_whiff_VFX"]
+        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["6SP_S_whiff_VFX"]
     elseif side == "R" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["6sp_S_whiff_VFX"]
+        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["6SP_S_whiff_VFX"]
     end 
 
     obj["life"] = 21
@@ -824,7 +824,7 @@ function insert_VFX_game_scene_char_TRM_6sp_S_whiff(obj_char)
     obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
-        if obj_char["state"] == "6sp_S" then
+        if obj_char["state"] == "6SP_S" then
             frame_animator(obj,obj["animation"])
             obj["life"] = obj["life"] - 1
         elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then

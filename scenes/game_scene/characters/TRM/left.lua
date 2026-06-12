@@ -243,20 +243,20 @@ function load_game_scene_obj_char_LP()
         ["burst_burst"] = true,
         ["4_6Launcher"] = true,
         ["j4_6Launcher"] = true,
-        ["4sp_S"] = true,
-        ["4sp_S_4dash"] = true,
-        ["4sp_S_6dash"] = true,
-        ["4sp_S_S"] = true,
-        ["4sp_S_H"] = true,
-        ["4sp_S_2Launcher"] = true,
-        ["4sp_S_6Launcher"] = true,
-        ["4sp_S_5Launcher"] = true,
-        ["sp_H"] = true,
-        ["jsp_H"] = true,
+        ["4SP_S"] = true,
+        ["4SP_S_4dash"] = true,
+        ["4SP_S_6dash"] = true,
+        ["4SP_S_S"] = true,
+        ["4SP_S_H"] = true,
+        ["4SP_S_2Launcher"] = true,
+        ["4SP_S_6Launcher"] = true,
+        ["4SP_S_5Launcher"] = true,
+        ["SP_H"] = true,
+        ["jSP_H"] = true,
         ["4UA"] = true,
         ["6UA"] = true,
         ["5UA"] = true,
-        ["4sp_S_5UA"] = true
+        ["4SP_S_5UA"] = true
     }
     obj_char_game_scene_char_LP["6SP_S_shot_sys_pass_state"] = {
         ["at_the_ready_ease_out"] = true,
@@ -476,7 +476,8 @@ function order_load_game_scene_char_LP_frames(load_order)
         end,
         [19] = function()
             local load_name_table = {
-                "6sp_S"
+                "4SP_P",
+                "6SP_S"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_LP[v] = 
@@ -521,7 +522,7 @@ function order_load_game_scene_char_LP_frames(load_order)
                 -- "jP",
                 -- "jK",
                 "jS",
-                "6sp_S"
+                "6SP_S"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_VFX_game_scene_LP[v.."_whiff_VFX"] = 
@@ -1648,150 +1649,150 @@ function state_machine_char_game_scene_char_LP()
             state_gate_game_scene_char_LP_from_j5Launcher(input,obj_char)
         end,
 
-        ["4sp_P"] = function()
+        ["4SP_P"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4sp_P(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_P(input,obj_char)
         end,
-        ["6sp_P"] = function()
+        ["6SP_P"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_6sp_P(input,obj_char)
+            state_gate_game_scene_char_LP_from_6SP_P(input,obj_char)
         end,
-        ["4sp_K"] = function()
+        ["4SP_K"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4sp_K(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_K(input,obj_char)
         end,
-        ["6sp_K"] = function()
+        ["6SP_K"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_6sp_K(input,obj_char)
+            state_gate_game_scene_char_LP_from_6SP_K(input,obj_char)
         end,
-        ["4sp_S"] = function()
+        ["4SP_S"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4sp_S(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_S(input,obj_char)
         end,
-        ["4sp_S_4dash"] = function()
+        ["4SP_S_4dash"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4sp_S_4dash(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_S_4dash(input,obj_char)
         end,
-        ["4sp_S_6dash"] = function()
+        ["4SP_S_6dash"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4sp_S_6dash(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_S_6dash(input,obj_char)
         end,
-        ["4sp_S_S"] = function()
+        ["4SP_S_S"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4sp_S_S(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_S_S(input,obj_char)
         end,
-        ["4sp_S_H"] = function()
+        ["4SP_S_H"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4sp_S_H(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_S_H(input,obj_char)
         end,
-        ["4sp_S_2Launcher"] = function()
+        ["4SP_S_2Launcher"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4sp_S_2Launcher(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_S_2Launcher(input,obj_char)
         end,
-        ["4sp_S_6Launcher"] = function()
+        ["4SP_S_6Launcher"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4sp_S_6Launcher(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_S_6Launcher(input,obj_char)
         end,
-        ["4sp_S_5Launcher"] = function()
+        ["4SP_S_5Launcher"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4sp_S_5Launcher(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_S_5Launcher(input,obj_char)
         end,
-        ["6sp_S"] = function()
+        ["6SP_S"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_6sp_S(input,obj_char)
+            state_gate_game_scene_char_LP_from_6SP_S(input,obj_char)
         end,
-        ["sp_H"] = function()
+        ["SP_H"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_sp_H(input,obj_char)
+            state_gate_game_scene_char_LP_from_SP_H(input,obj_char)
         end,
-        ["sp_H_P"] = function()
+        ["SP_H_P"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_sp_H_P(input,obj_char)
+            state_gate_game_scene_char_LP_from_SP_H_P(input,obj_char)
         end,
-        ["sp_H_K"] = function()
+        ["SP_H_K"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_sp_H_K(input,obj_char)
+            state_gate_game_scene_char_LP_from_SP_H_K(input,obj_char)
         end,
-        ["sp_H_S"] = function()
+        ["SP_H_S"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_sp_H_S(input,obj_char)
+            state_gate_game_scene_char_LP_from_SP_H_S(input,obj_char)
         end,
-        ["sp_H_H"] = function()
+        ["SP_H_H"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_sp_H_H(input,obj_char)
+            state_gate_game_scene_char_LP_from_SP_H_H(input,obj_char)
         end,
 
-        ["jsp_S"] = function()
+        ["jSP_S"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_jsp_S(input,obj_char)
+            state_gate_game_scene_char_LP_from_jSP_S(input,obj_char)
         end,
-        ["jsp_H"] = function()
+        ["jSP_H"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_jsp_H(input,obj_char)
+            state_gate_game_scene_char_LP_from_jSP_H(input,obj_char)
         end,
-        ["jsp_H_P"] = function()
+        ["jSP_H_P"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_jsp_H_P(input,obj_char)
+            state_gate_game_scene_char_LP_from_jSP_H_P(input,obj_char)
         end,
-        ["jsp_H_K"] = function()
+        ["jSP_H_K"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_jsp_H_K(input,obj_char)
+            state_gate_game_scene_char_LP_from_jSP_H_K(input,obj_char)
         end,
-        ["jsp_H_S"] = function()
+        ["jSP_H_S"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_jsp_H_S(input,obj_char)
+            state_gate_game_scene_char_LP_from_jSP_H_S(input,obj_char)
         end,
-        ["jsp_H_H"] = function()
+        ["jSP_H_H"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_jsp_H_H(input,obj_char)
+            state_gate_game_scene_char_LP_from_jSP_H_H(input,obj_char)
         end,
 
         ["4UA"] = function()
@@ -1812,11 +1813,11 @@ function state_machine_char_game_scene_char_LP()
             end
             state_gate_game_scene_char_LP_from_5UA(input,obj_char)
         end,
-        ["4sp_S_5UA"] = function()
+        ["4SP_S_5UA"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4sp_S_5UA(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_S_5UA(input,obj_char)
         end,
     }
     if run_at_current_frame then
@@ -2419,21 +2420,21 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_ch
     -- 4UA
     -- 6UA
     -- 5UA
-    -- 4sp_S_5UA
+    -- 4SP_S_5UA
 
-    -- 4sp_P
-    -- 6sp_P
-    -- 4sp_K
-    -- 6sp_K
-    -- 4sp_S
-    -- 4sp_S_4dash
-    -- 4sp_S_6dash
-    -- 4sp_S_S
-    -- 4sp_S_H
-    -- 4sp_S_2Launcher
-    -- 4sp_S_6Launcher
-    -- 4sp_S_5Launcher
-    -- 6sp_S
+    -- 4SP_P
+    -- 6SP_P
+    -- 4SP_K
+    -- 6SP_K
+    -- 4SP_S
+    -- 4SP_S_4dash
+    -- 4SP_S_6dash
+    -- 4SP_S_S
+    -- 4SP_S_H
+    -- 4SP_S_2Launcher
+    -- 4SP_S_6Launcher
+    -- 4SP_S_5Launcher
+    -- 6SP_S
     if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3)
     and obj_char["6SP_S_shot_sys_pass_state"][obj_char["shot_sys_state"]]
     and test_input_sys_press_or_hold(input["SP"])
@@ -2441,16 +2442,16 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_ch
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6sp_S(obj_char)
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_S(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6sp_S"
+        obj_char["state"] = "6SP_S"
         return true
     end
-    -- sp_H
-    -- sp_H_P
-    -- sp_H_K
-    -- sp_H_S
-    -- sp_H_H
+    -- SP_H
+    -- SP_H_P
+    -- SP_H_K
+    -- SP_H_S
+    -- SP_H_H
 
     -- _2P
     if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["P"]) then
@@ -2592,21 +2593,21 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(inp
     -- 4UA
     -- 6UA
     -- 5UA
-    -- 4sp_S_5UA
+    -- 4SP_S_5UA
 
-    -- 4sp_P
-    -- 6sp_P
-    -- 4sp_K
-    -- 6sp_K
-    -- 4sp_S
-    -- 4sp_S_4dash
-    -- 4sp_S_6dash
-    -- 4sp_S_S
-    -- 4sp_S_H
-    -- 4sp_S_2Launcher
-    -- 4sp_S_6Launcher
-    -- 4sp_S_5Launcher
-    -- 6sp_S
+    -- 4SP_P
+    -- 6SP_P
+    -- 4SP_K
+    -- 6SP_K
+    -- 4SP_S
+    -- 4SP_S_4dash
+    -- 4SP_S_6dash
+    -- 4SP_S_S
+    -- 4SP_S_H
+    -- 4SP_S_2Launcher
+    -- 4SP_S_6Launcher
+    -- 4SP_S_5Launcher
+    -- 6SP_S
     if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3)
     and obj_char["6SP_S_shot_sys_pass_state"][obj_char["shot_sys_state"]]
     and test_input_sys_press_or_hold(input["SP"])
@@ -2614,16 +2615,16 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(inp
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6sp_S(obj_char)
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_S(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6sp_S"
+        obj_char["state"] = "6SP_S"
         return true
     end
-    -- sp_H
-    -- sp_H_P
-    -- sp_H_K
-    -- sp_H_S
-    -- sp_H_H
+    -- SP_H
+    -- SP_H_P
+    -- SP_H_K
+    -- SP_H_S
+    -- SP_H_H
 
     -- _2P
     if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press_or_hold(input["P"]) then
@@ -2762,21 +2763,21 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_c
     -- 4UA
     -- 6UA
     -- 5UA
-    -- 4sp_S_5UA
+    -- 4SP_S_5UA
 
-    -- 4sp_P
-    -- 6sp_P
-    -- 4sp_K
-    -- 6sp_K
-    -- 4sp_S
-    -- 4sp_S_4dash
-    -- 4sp_S_6dash
-    -- 4sp_S_S
-    -- 4sp_S_H
-    -- 4sp_S_2Launcher
-    -- 4sp_S_6Launcher
-    -- 4sp_S_5Launcher
-    -- 6sp_S
+    -- 4SP_P
+    -- 6SP_P
+    -- 4SP_K
+    -- 6SP_K
+    -- 4SP_S
+    -- 4SP_S_4dash
+    -- 4SP_S_6dash
+    -- 4SP_S_S
+    -- 4SP_S_H
+    -- 4SP_S_2Launcher
+    -- 4SP_S_6Launcher
+    -- 4SP_S_5Launcher
+    -- 6SP_S
     if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3)
     and obj_char["6SP_S_shot_sys_pass_state"][obj_char["shot_sys_state"]]
     and test_input_sys_press_or_hold(input["SP"])
@@ -2784,36 +2785,36 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_c
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6sp_S(obj_char)
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_S(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6sp_S"
+        obj_char["state"] = "6SP_S"
         return true
     end
-    -- sp_H
-    -- sp_H_P
-    -- sp_H_K
-    -- sp_H_S
-    -- sp_H_H
+    -- SP_H
+    -- SP_H_P
+    -- SP_H_K
+    -- SP_H_S
+    -- SP_H_H
 end
 function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,obj_char)
     -- 4UA
     -- 6UA
     -- 5UA
-    -- 4sp_S_5UA
+    -- 4SP_S_5UA
 
-    -- 4sp_P
-    -- 6sp_P
-    -- 4sp_K
-    -- 6sp_K
-    -- 4sp_S
-    -- 4sp_S_4dash
-    -- 4sp_S_6dash
-    -- 4sp_S_S
-    -- 4sp_S_H
-    -- 4sp_S_2Launcher
-    -- 4sp_S_6Launcher
-    -- 4sp_S_5Launcher
-    -- 6sp_S
+    -- 4SP_P
+    -- 6SP_P
+    -- 4SP_K
+    -- 6SP_K
+    -- 4SP_S
+    -- 4SP_S_4dash
+    -- 4SP_S_6dash
+    -- 4SP_S_S
+    -- 4SP_S_H
+    -- 4SP_S_2Launcher
+    -- 4SP_S_6Launcher
+    -- 4SP_S_5Launcher
+    -- 6SP_S
     if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3)
     and obj_char["6SP_S_shot_sys_pass_state"][obj_char["shot_sys_state"]]
     and test_input_sys_press_or_hold(input["SP"]) 
@@ -2821,16 +2822,16 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(in
         if not common_game_scene_get_character_facing_currect(obj_char) then
             obj_char[5] = -obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6sp_S(obj_char)
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_S(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6sp_S"
+        obj_char["state"] = "6SP_S"
         return true
     end
-    -- sp_H
-    -- sp_H_P
-    -- sp_H_K
-    -- sp_H_S
-    -- sp_H_H
+    -- SP_H
+    -- SP_H_P
+    -- SP_H_K
+    -- SP_H_S
+    -- SP_H_H
 end
 
 function state_gate_game_scene_char_LP_common_air_to_dash_move(input,obj_char)
@@ -2902,8 +2903,8 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move(input,obj_char)
     -- _burst_overdrive
     -- _burst_RC_blue
     -- _active_FD_block
-    -- _jsp_S
-    -- _jsp_H
+    -- _jSP_S
+    -- _jSP_H
     -- _jP
     if test_input_sys_press(input["P"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
@@ -2969,8 +2970,8 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,
     -- _burst_overdrive
     -- _burst_RC_blue
     -- _active_FD_block
-    -- _jsp_S
-    -- _jsp_H
+    -- _jSP_S
+    -- _jSP_H
     -- _jP
     if test_input_sys_press_or_hold(input["P"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
@@ -3565,7 +3566,7 @@ function state_gate_game_scene_char_LP_from_throw_tech(input,obj_char)
 end
 
 function state_gate_game_scene_char_LP_from_hitstop(input,obj_char)
-    -- _[any_sp_hit_state_saved_in_state_cache]
+    -- _[any_SP_hit_state_saved_in_state_cache]
     if obj_char["hit_hurt_blockstop_countdown"] <= 10 then
         if test_input_sys_press_or_hold(input["down"]) then
             obj_char["input_sys_cache"]["down"] = true
@@ -5905,31 +5906,31 @@ function state_gate_game_scene_char_LP_from_j5Launcher(input,obj_char)
     end
 end
 
-function state_gate_game_scene_char_LP_from_4sp_P(input,obj_char)
+function state_gate_game_scene_char_LP_from_4SP_P(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_6sp_P(input,obj_char)
+function state_gate_game_scene_char_LP_from_6SP_P(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_4sp_K(input,obj_char)
+function state_gate_game_scene_char_LP_from_4SP_K(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_6sp_K(input,obj_char)
+function state_gate_game_scene_char_LP_from_6SP_K(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_4sp_S(input,obj_char)
+function state_gate_game_scene_char_LP_from_4SP_S(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_4sp_S_4dash(input,obj_char)
+function state_gate_game_scene_char_LP_from_4SP_S_4dash(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_4sp_S_6dash(input,obj_char)
+function state_gate_game_scene_char_LP_from_4SP_S_6dash(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_4sp_S_S(input,obj_char)
+function state_gate_game_scene_char_LP_from_4SP_S_S(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_4sp_S_H(input,obj_char)
+function state_gate_game_scene_char_LP_from_4SP_S_H(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_4sp_S_2Launcher(input,obj_char)
+function state_gate_game_scene_char_LP_from_4SP_S_2Launcher(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_4sp_S_6Launcher(input,obj_char)
+function state_gate_game_scene_char_LP_from_4SP_S_6Launcher(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_4sp_S_5Launcher(input,obj_char)
+function state_gate_game_scene_char_LP_from_4SP_S_5Launcher(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_6sp_S(input,obj_char)
+function state_gate_game_scene_char_LP_from_6SP_S(input,obj_char)
     -- _PRC
     if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
         return true
@@ -5951,28 +5952,28 @@ function state_gate_game_scene_char_LP_from_6sp_S(input,obj_char)
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_sp_H(input,obj_char)
+function state_gate_game_scene_char_LP_from_SP_H(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_sp_H_P(input,obj_char)
+function state_gate_game_scene_char_LP_from_SP_H_P(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_sp_H_K(input,obj_char)
+function state_gate_game_scene_char_LP_from_SP_H_K(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_sp_H_S(input,obj_char)
+function state_gate_game_scene_char_LP_from_SP_H_S(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_sp_H_H(input,obj_char)
+function state_gate_game_scene_char_LP_from_SP_H_H(input,obj_char)
 end
 
-function state_gate_game_scene_char_LP_from_jsp_S(input,obj_char)
+function state_gate_game_scene_char_LP_from_jSP_S(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_jsp_H(input,obj_char)
+function state_gate_game_scene_char_LP_from_jSP_H(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_jsp_H_P(input,obj_char)
+function state_gate_game_scene_char_LP_from_jSP_H_P(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_jsp_H_K(input,obj_char)
+function state_gate_game_scene_char_LP_from_jSP_H_K(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_jsp_H_S(input,obj_char)
+function state_gate_game_scene_char_LP_from_jSP_H_S(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_jsp_H_H(input,obj_char)
+function state_gate_game_scene_char_LP_from_jSP_H_H(input,obj_char)
 end
 
 function state_gate_game_scene_char_LP_from_4UA(input,obj_char)
@@ -5981,7 +5982,7 @@ function state_gate_game_scene_char_LP_from_6UA(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_5UA(input,obj_char)
 end
-function state_gate_game_scene_char_LP_from_4sp_S_5UA(input,obj_char)
+function state_gate_game_scene_char_LP_from_4SP_S_5UA(input,obj_char)
 end
 
 -- draw

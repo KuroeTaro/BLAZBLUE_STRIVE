@@ -9121,8 +9121,9 @@ end
 
 
 -- special
--- _6sp_S
-function load_game_scene_anim_char_TRM_6sp_S(obj_char)
+-- _4SP_P
+-- _6SP_S
+function load_game_scene_anim_char_TRM_6SP_S(obj_char)
     local res = {}
     local friction = 5
     local gravity = 2.5
@@ -9144,7 +9145,7 @@ function load_game_scene_anim_char_TRM_6sp_S(obj_char)
         -- pre_set
         common_game_scene_reset_velocity_by_ground_friction(obj_char)
         -- state
-        obj_char["sprite_sheet_state"] = "6sp_S"
+        obj_char["sprite_sheet_state"] = "6SP_S"
         obj_char["height_state"] = "stand" -- stand crouch air OTG wallstick
         obj_char["hit_type_state"] = "strike" -- none strike throw burst
         obj_char["hit_guard_type_state"] = "all" -- none all low mid high
@@ -9341,7 +9342,7 @@ function load_game_scene_anim_char_TRM_6sp_S(obj_char)
         -- draw_correction
         obj_char[8] = 3
         -- VFX
-        insert_VFX_game_scene_char_TRM_6sp_S_whiff(obj_char)
+        insert_VFX_game_scene_char_TRM_6SP_S_whiff(obj_char)
     end
     res[11] = function()
         -- state

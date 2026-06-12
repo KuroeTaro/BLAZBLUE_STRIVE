@@ -5,13 +5,13 @@ _common_ground_idle_to_move
     _active_FD_block
     _4UA
     _6UA
-    _4sp_P
-    _6sp_P
-    _4sp_K
-    _6sp_K
-    _4sp_S
-    _6sp_S
-    _sp_H
+    _4SP_P
+    _6SP_P
+    _4SP_K
+    _6SP_K
+    _4SP_S
+    _6SP_S
+    _SP_H
     _2P
     _6P
     _5P
@@ -28,13 +28,13 @@ _common_ground_idle_to_move
     _4dash_backdash
     _6dash_dash
 _common_ground_to_special_move
-    _4sp_P
-    _6sp_P
-    _4sp_K
-    _6sp_K
-    _4sp_S
-    _6sp_S
-    _sp_H
+    _4SP_P
+    _6SP_P
+    _4SP_K
+    _6SP_K
+    _4SP_S
+    _6SP_S
+    _SP_H
     _2UA
     _4UA
     _6UA
@@ -43,8 +43,8 @@ _common_air_idle_to_move
     _burst_overdrive
     _burst_RC_blue
     _active_FD_block
-    _jsp_S
-    _jsp_H
+    _jSP_S
+    _jSP_H
     _jP
     _jK
     _j2K
@@ -55,8 +55,8 @@ _common_air_idle_to_move
     _4dash_air_backdash
     _6dash_air_dash
 _common_air_to_special_move
-    _jsp_S
-    _jsp_H
+    _jSP_S
+    _jSP_H
     _j6UA
 
 
@@ -85,7 +85,7 @@ _hurt
 _hitstop
     _burst_RC_red
     _burst_overdrive
-    _[any_sp_hit_state_saved_in_state_cache]
+    _[any_SP_hit_state_saved_in_state_cache]
 _blockstop
     _burst_overdrive
     _burst_RC_yellow
@@ -387,115 +387,115 @@ _j5Launcher
 
 
 !all sp move has a overdrive version
-_4sp_P
+_4SP_P
     _burst_RC_purple
     _7_8_9_pre_jump
     _5_stand_idle
-_6sp_P
+_6SP_P
     _burst_RC_purple
     _5_stand_idle
-_4sp_K
+_4SP_K
     _burst_RC_purple
     _5_stand_idle
-_6sp_K
+_6SP_K
     _burst_RC_purple
     _5_stand_idle
-_4sp_S
+_4SP_S
     _burst_RC_purple
     _2UA
-    _4sp_S_4UA
+    _4SP_S_4UA
     _6UA
     _5UA
-    _4sp_S_4dash
-    _4sp_S_6dash
-    _4sp_P||_4sp_S_4P
-    _6sp_P||_4sp_S_6P
-    _4sp_K||_4sp_S_4K
-    _6sp_K||_4sp_S_6K
-    _4sp_S_4sp_S||_4sp_S_4S
-    _4sp_S_2Launcher
-    _4sp_S_6Launcher
-    _4sp_S_5Launcher
-    _6sp_S||_4sp_S_6S
-    _4sp_S_sp_H||_4sp_S_H
+    _4SP_S_4dash
+    _4SP_S_6dash
+    _4SP_P||_4SP_S_4P
+    _6SP_P||_4SP_S_6P
+    _4SP_K||_4SP_S_4K
+    _6SP_K||_4SP_S_6K
+    _4SP_S_4SP_S||_4SP_S_4S
+    _4SP_S_2Launcher
+    _4SP_S_6Launcher
+    _4SP_S_5Launcher
+    _6SP_S||_4SP_S_6S
+    _4SP_S_SP_H||_4SP_S_H
     _5_stand_idle
-_4sp_S_4dash
+_4SP_S_4dash
     _burst_RC_purple
-    _4sp_S_5UA
-    _4sp_P
-    _6sp_P
-    _4sp_K
-    _6sp_K
-    _6sp_S
+    _4SP_S_5UA
+    _4SP_P
+    _6SP_P
+    _4SP_K
+    _6SP_K
+    _6SP_S
     _5_stand_idle
-_4sp_S_6dash
+_4SP_S_6dash
     _burst_RC_purple
-    _4sp_S_5UA
-    _4sp_P
-    _6sp_P
-    _4sp_K
-    _6sp_K
-    _6sp_S
+    _4SP_S_5UA
+    _4SP_P
+    _6SP_P
+    _4SP_K
+    _6SP_K
+    _6SP_S
     _5_stand_idle
-_4sp_S_S
-    _burst_RC_purple
-    _5_stand_idle
-_4sp_S_H||_4sp_S_sp_H
+_4SP_S_S
     _burst_RC_purple
     _5_stand_idle
-_4sp_S_2Launcher
+_4SP_S_H||_4SP_S_SP_H
     _burst_RC_purple
     _5_stand_idle
-_4sp_S_6Launcher
+_4SP_S_2Launcher
     _burst_RC_purple
     _5_stand_idle
-_4sp_S_5Launcher
+_4SP_S_6Launcher
     _burst_RC_purple
     _5_stand_idle
-_6sp_S
+_4SP_S_5Launcher
     _burst_RC_purple
     _5_stand_idle
-_sp_H
+_6SP_S
     _burst_RC_purple
-    _sp_H_P
-    _sp_H_K
-    _sp_H_S
-    _sp_H_H
-    _4sp_P
-    _6sp_P
-    _4sp_K
-    _6sp_K
-    _4sp_S
-    _6sp_S
     _5_stand_idle
-_sp_H_P
+_SP_H
+    _burst_RC_purple
+    _SP_H_P
+    _SP_H_K
+    _SP_H_S
+    _SP_H_H
+    _4SP_P
+    _6SP_P
+    _4SP_K
+    _6SP_K
+    _4SP_S
+    _6SP_S
     _5_stand_idle
-_sp_H_K
+_SP_H_P
+    _5_stand_idle
+_SP_H_K
     _7_8_9_jump_air
-_sp_H_S
+_SP_H_S
     _7_8_9_jump_air
-_sp_H_H
+_SP_H_H
     _7_8_9_jump_air
 
 
-_jsp_S
+_jSP_S
     _burst_RC_purple
     _7_8_9_jump_air
-_jsp_H
+_jSP_H
     _burst_RC_purple
-    _jsp_H_P
-    _jsp_H_K
-    _jsp_H_S
-    _jsp_H_H
-    _jsp_S
+    _jSP_H_P
+    _jSP_H_K
+    _jSP_H_S
+    _jSP_H_H
+    _jSP_S
     _7_8_9_jump_air
-_jsp_H_P
+_jSP_H_P
     _7_8_9_jump_air
-_jsp_H_K
+_jSP_H_K
     _7_8_9_jump_air
-_jsp_H_S
+_jSP_H_S
     _7_8_9_jump_air
-_jsp_H_H
+_jSP_H_H
     _7_8_9_jump_air 
 
 
@@ -508,7 +508,7 @@ _6UA
 _5UA
     _burst_RC_purple
     _5_stand_idle
-_4sp_S_5UA
+_4SP_S_5UA
     _burst_RC_purple
     _5_stand_idle
 
