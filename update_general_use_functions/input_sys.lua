@@ -26,14 +26,14 @@ function init_input()
     -- SP + 2/5/8 + K = SPM4
     -- SP + 3/6/9 + S = SPM5
     -- SP + 2/5/8 + S = SPM6
-    -- SP + 3/6/9 + HS = SPM7
-    -- SP + 2/5/8 + HS = SPM8
+    -- SP + 3/6/9 + H = SPM7
+    -- SP + 2/5/8 + H = SPM8
     -- SP + 3/6/9 + Launcher = 26D
     -- SP + 2/5/8 + Launcher = 24D
 
     INPUT_SYS_COMMAND_TABLE = {
         "up","down","left","right",
-        "P","S","HS","K",
+        "P","S","H","K",
         "SP","Launcher","back","start",
         "RC","dash","burst","UA",
         "correction_up","correction_down",

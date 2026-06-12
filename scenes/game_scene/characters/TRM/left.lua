@@ -1229,7 +1229,7 @@ function state_machine_char_game_scene_char_LP()
     -- SP + 拉后 = 拉盾
     -- INPUT_SYS_COMMAND_TABLE = {
     --     "up","down","left","right",
-    --     "P","S","HS","K",
+    --     "P","S","H","K",
     --     "SP","Launcher","back","start",
     --     "RC","dash","burst","UA"
     -- }
@@ -1830,12 +1830,12 @@ function state_machine_char_game_scene_char_LP_shot_sys()
     local game_speed_cache = obj_char["game_speed"]
     local game_speed_subframe_cache = obj_char["game_speed_subframe"]
     local test_input_idle_to_ease_out = 
-    (test_input_sys_press(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
-    (test_input_sys_press_or_hold(input["HS"]) and test_input_sys_press(input["SP"]))
+    (test_input_sys_press(input["H"]) and common_game_scene_check_crouch_direction(obj_char)) or
+    (test_input_sys_press_or_hold(input["H"]) and test_input_sys_press(input["SP"]))
     local test_input_shot_to_ease_out = 
-    (test_input_sys_press(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
-    (test_input_sys_release(input["HS"]) and common_game_scene_check_crouch_direction(obj_char)) or
-    (test_input_sys_press_or_hold(input["HS"]) and test_input_sys_press(input["SP"]))
+    (test_input_sys_press(input["H"]) and common_game_scene_check_crouch_direction(obj_char)) or
+    (test_input_sys_release(input["H"]) and common_game_scene_check_crouch_direction(obj_char)) or
+    (test_input_sys_press_or_hold(input["H"]) and test_input_sys_press(input["SP"]))
     local test_shot_sys_ban_state = obj_char["shot_sys_at_the_ready_force_off_state"][obj_char["state"]]
     local run_at_current_frame = (game_speed_subframe_cache > game_speed_cache and game_speed_cache ~= 0) or (game_speed_cache == 1)
     -- state_machine
@@ -1845,7 +1845,7 @@ function state_machine_char_game_scene_char_LP_shot_sys()
                 character_function_game_scene_TRM_shot_sys_off_update(obj_char)
             end
             -- ease_in
-            if test_input_sys_press(input["HS"]) and (not test_shot_sys_ban_state) then
+            if test_input_sys_press(input["H"]) and (not test_shot_sys_ban_state) then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready_ease_in"
                 return
@@ -1860,15 +1860,15 @@ function state_machine_char_game_scene_char_LP_shot_sys()
                 obj_char["shot_sys_state"] = "at_the_ready_ease_out"
                 return
             end
-            if test_input_sys_release(input["HS"]) and obj_char["state"] == "hitstop" then
+            if test_input_sys_release(input["H"]) and obj_char["state"] == "hitstop" then
                 -- input_sys_cache
                 obj_char["input_sys_state_negative_edge"] = "save" -- none save load
                 common_game_scene_get_input_sys_cache_negative_edge_init(obj_char["player_side"])(obj_char)
-                obj_char["input_sys_cache_negative_edge"]["HS"] = true
+                obj_char["input_sys_cache_negative_edge"]["H"] = true
             end
             if obj_char["shot_sys_fire_cancel"] and obj_char["state"] ~= "hitstop" 
-            and (test_input_sys_release(input["HS"]) or obj_char["input_sys_cache_negative_edge"]["HS"]) then
-                obj_char["input_sys_cache_negative_edge"]["HS"] = false
+            and (test_input_sys_release(input["H"]) or obj_char["input_sys_cache_negative_edge"]["H"]) then
+                obj_char["input_sys_cache_negative_edge"]["H"] = false
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return
@@ -1883,7 +1883,7 @@ function state_machine_char_game_scene_char_LP_shot_sys()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_update(obj_char)
             end
-            if test_input_sys_press(input["HS"]) and (not test_shot_sys_ban_state) then
+            if test_input_sys_press(input["H"]) and (not test_shot_sys_ban_state) then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready_ease_in"
                 return
@@ -1899,16 +1899,16 @@ function state_machine_char_game_scene_char_LP_shot_sys()
                 character_function_game_scene_TRM_shot_sys_at_the_ready_update(obj_char)
             end
             if test_input_idle_to_ease_out or test_shot_sys_ban_state then
-                obj_char["input_sys_cache_negative_edge"]["HS"] = false
+                obj_char["input_sys_cache_negative_edge"]["H"] = false
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready_ease_out"
                 return
             end
-            if test_input_sys_release(input["HS"]) and obj_char["state"] == "hitstop" then
-                obj_char["input_sys_cache_negative_edge"]["HS"] = true
+            if test_input_sys_release(input["H"]) and obj_char["state"] == "hitstop" then
+                obj_char["input_sys_cache_negative_edge"]["H"] = true
             end
-            if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) and obj_char["state"] ~= "hitstop" then
-                obj_char["input_sys_cache_negative_edge"]["HS"] = false
+            if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["H"]) and obj_char["state"] ~= "hitstop" then
+                obj_char["input_sys_cache_negative_edge"]["H"] = false
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return
@@ -1923,8 +1923,8 @@ function state_machine_char_game_scene_char_LP_shot_sys()
                 obj_char["shot_sys_state"] = "at_the_ready_ease_out"
                 return
             end
-            if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) and obj_char["state"] ~= "hitstop" then
-                obj_char["input_sys_cache_negative_edge"]["HS"] = false
+            if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["H"]) and obj_char["state"] ~= "hitstop" then
+                obj_char["input_sys_cache_negative_edge"]["H"] = false
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return
@@ -1954,11 +1954,11 @@ function state_machine_char_game_scene_char_LP_shot_sys()
                 obj_char["shot_sys_state"] = "at_the_ready_ease_out"
                 return
             end
-            if test_input_sys_release(input["HS"]) and obj_char["state"] == "hitstop" then
-                obj_char["input_sys_cache_negative_edge"]["HS"] = true
+            if test_input_sys_release(input["H"]) and obj_char["state"] == "hitstop" then
+                obj_char["input_sys_cache_negative_edge"]["H"] = true
             end
-            if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["HS"]) and obj_char["state"] ~= "hitstop" then
-                obj_char["input_sys_cache_negative_edge"]["HS"] = false
+            if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["H"]) and obj_char["state"] ~= "hitstop" then
+                obj_char["input_sys_cache_negative_edge"]["H"] = false
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
                 obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return
@@ -2297,13 +2297,13 @@ function state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
         ["none"] = function()
         end,
         ["save"] = function()
-            if test_input_sys_release(input["HS"]) then
-                obj_char["input_sys_cache_negative_edge"]["HS"] = true
+            if test_input_sys_release(input["H"]) then
+                obj_char["input_sys_cache_negative_edge"]["H"] = true
             end
         end,
         ["load"] = function()
-            if obj_char["input_sys_cache_negative_edge"]["HS"] then
-                input["HS"] = "Releasing"
+            if obj_char["input_sys_cache_negative_edge"]["H"] then
+                input["H"] = "Releasing"
             end
             obj_char["input_sys_state_negative_edge"] = "none"
             init_input_sys_cache_negative_edge_LP(obj_char)
@@ -3262,7 +3262,7 @@ end
 -- uncommon_to_gate
 function state_gate_game_scene_char_LP_to_5H(input,obj_char)
     -- _5H
-    if test_input_sys_press(input["HS"]) and obj_char["shot_sys_state"] == "off" then
+    if test_input_sys_press(input["H"]) and obj_char["shot_sys_state"] == "off" then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5H(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "5H"

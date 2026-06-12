@@ -109,7 +109,7 @@ function state_machine_UI_char_select_scene_char_select(input_id)
             and get_point_linear_anim_end_state(obj_control_method,anim_UI_point_linear_char_select_scene_control_method_bar_mark_selecting_ease_in_opacity_0_1)
             then
                 obj["select_state"] = "selected"
-            elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["HS"] == "Pressing" then
+            elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["H"] == "Pressing" then
                 play_obj_audio(audio_SFX_char_select_scene_exit_2)
                 obj["select_state"] = "unselecting"
 
@@ -151,7 +151,7 @@ function state_machine_UI_char_select_scene_char_select(input_id)
             end
         end,
         ["selected"] = function()
-            if INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["HS"] == "Pressing" then
+            if INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["H"] == "Pressing" then
                 play_obj_audio(audio_SFX_char_select_scene_exit_2)
                 obj["select_state"] = "unselecting"
 
@@ -585,7 +585,7 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
             then
                 obj["select_state"] = "selected"
 
-            elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["HS"] == "Pressing" then
+            elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["H"] == "Pressing" then
                 play_obj_audio(audio_SFX_char_select_scene_exit_2)
                 obj["select_state"] = "unselecting"
 
@@ -629,7 +629,7 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
             end
         end,
         ["selected"] = function()
-            if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["HS"] == "Pressing" then
+            if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["H"] == "Pressing" then
                 play_obj_audio(audio_SFX_char_select_scene_exit_2)
                 obj["select_state"] = "unselecting"
 

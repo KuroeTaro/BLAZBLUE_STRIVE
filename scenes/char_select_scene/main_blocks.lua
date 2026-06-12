@@ -625,7 +625,7 @@ function update_char_select_scene_train_dummy_select()
         or obj_UI_char_select_scene_char_select_left["select_state"] == "locking"
     )
     and obj_UI_char_select_scene_char_select_right["select_state"] == "idle"
-    and INPUT_SYS_CURRENT_COMMAND_STATE["L"]["HS"] == "Pressing"
+    and INPUT_SYS_CURRENT_COMMAND_STATE["L"]["H"] == "Pressing"
     then 
         obj_UI_char_select_scene_char_select_right["select_state"] = "idle"
         obj_UI_char_select_scene_char_select_right["ease_state"] = "ease_in"

@@ -9122,6 +9122,19 @@ end
 
 -- special
 -- _4SP_P
+function load_game_scene_anim_char_TRM_4SP_P(obj_char)
+end
+-- _6SP_P
+-- _4SP_K
+-- _6SP_K
+-- _4SP_S
+-- _4SP_S_4dash
+-- _4SP_S_6dash
+-- _4SP_S_S
+-- _4SP_S_H
+-- _4SP_S_2Launcher
+-- _4SP_S_6Launcher
+-- _4SP_S_5Launcher
 -- _6SP_S
 function load_game_scene_anim_char_TRM_6SP_S(obj_char)
     local res = {}
@@ -9416,3 +9429,19 @@ function load_game_scene_anim_char_TRM_6SP_S(obj_char)
     end
     return res
 end
+-- _SP_H
+-- _SP_H_P
+-- _SP_H_K
+-- _SP_H_S
+-- _SP_H_H
+-- _jSP_S
+-- _jSP_H
+-- _jSP_H_P
+-- _jSP_H_K
+-- _jSP_H_S
+-- _jSP_H_H
+
+-- _4UA
+-- _6UA
+-- _5UA
+-- _4SP_S_UA

@@ -866,7 +866,7 @@ function update_start_scene_config_main()
             thisFunction() 
         end
 
-    elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["HS"] == "Pressing" then
+    elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["H"] == "Pressing" then
         SCENE_TIMER = 0
         -- 播放scene out to sub
         play_obj_audio(audio_SFX_start_scene_exit_1)
@@ -1254,7 +1254,7 @@ function update_start_scene_config_audio_main()
             
         end
 
-    elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["HS"] == "Pressing" or INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
+    elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["H"] == "Pressing" or INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
         SCENE_TIMER = 0
         play_obj_audio(audio_SFX_start_scene_exit_1)
 
@@ -1673,7 +1673,7 @@ function update_start_scene_config_controller_main()
     state_machine_UI_start_scene_config_controller(obj_UI_start_scene_config_controller_bar_mark_RP,"R")
 
     -- 场景出口
-    if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["HS"] == "Pressing" or INPUT_SYS_CURRENT_COMMAND_STATE["R"]["HS"] == "Pressing" then
+    if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["H"] == "Pressing" or INPUT_SYS_CURRENT_COMMAND_STATE["R"]["H"] == "Pressing" then
         SCENE_TIMER = 0
 
         play_obj_audio(audio_SFX_start_scene_exit_1)
@@ -1857,7 +1857,7 @@ function update_start_scene_config_resolution_main()
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
         set_current_resolution()
 
-    elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["HS"] == "Pressing" then
+    elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["H"] == "Pressing" then
         SCENE_TIMER = 0
 
         play_obj_audio(audio_SFX_start_scene_exit_1)
@@ -2126,7 +2126,7 @@ function update_start_scene_record_main()
         -- 更新 current_update_block
         current_update_block = update_start_scene_record_twitch_down
 
-    elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" or INPUT_SYS_CURRENT_COMMAND_STATE["L"]["HS"] == "Pressing" then
+    elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" or INPUT_SYS_CURRENT_COMMAND_STATE["L"]["H"] == "Pressing" then
         SCENE_TIMER = 0
 
         play_obj_audio(audio_SFX_start_scene_exit_1)
