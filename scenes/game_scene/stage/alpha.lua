@@ -316,17 +316,17 @@ function order_load_game_scene_stage(load_order)
     {
         [21] = function()
             image_sprite_sheet_stage_game_scene_wallbreak_after_debris = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/wallbreak_after_debris.json",
                 love.graphics.newImage(ASSET_DATA[4][1])
             )
             image_sprite_sheet_stage_game_scene_wallbreak_dynamic  = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/wallbreak_dynamic.json",
                 love.graphics.newImage(ASSET_DATA[4][2])
             )
             image_sprite_sheet_stage_game_scene_wallbreak_smoke = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/wallbreak_smoke.json",
                 love.graphics.newImage(ASSET_DATA[4][3])
             )
@@ -334,12 +334,12 @@ function order_load_game_scene_stage(load_order)
 
             image_sprite_sheet_stage_game_scene_wallstick = {}
             image_sprite_sheet_stage_game_scene_wallstick[0] = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/wallstick_ver0.json",
                 love.graphics.newImage(ASSET_DATA[4][5])
             )
             image_sprite_sheet_stage_game_scene_wallstick[1] = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/wallstick_ver1.json",
                 love.graphics.newImage(ASSET_DATA[4][6])
             )
@@ -347,34 +347,34 @@ function order_load_game_scene_stage(load_order)
             -- stage_VFX
                 -- shockwave
             image_sprite_sheet_VFX_game_scene_air_dash_shockwave =
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/stage_VFX/alpha/air_dash_shockwave.json",
                 love.graphics.newImage(ASSET_DATA[4]["air_dash_shockwave"])
             )
                 -- smoke
             image_sprite_sheet_VFX_game_scene_dash_shot = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/stage_VFX/alpha/dash_shot.json",
                 love.graphics.newImage(ASSET_DATA[4]["dash_shot"])
             )
             image_sprite_sheet_VFX_game_scene_horizontal_shot = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/stage_VFX/alpha/horizontal_shot.json",
                 love.graphics.newImage(ASSET_DATA[4]["horizontal_shot"])
             )
             image_sprite_sheet_VFX_game_scene_land_blow = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/stage_VFX/alpha/land_blow.json",
                 love.graphics.newImage(ASSET_DATA[4]["land_blow"])
             )
             image_sprite_sheet_VFX_game_scene_vertical_shot = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/stage_VFX/alpha/vertical_shot.json",
                 love.graphics.newImage(ASSET_DATA[4]["vertical_shot"])
             )
                 -- spark
             image_sprite_sheet_VFX_game_scene_dcc_blow = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/stage_VFX/alpha/dcc_blow.json",
                 love.graphics.newImage(ASSET_DATA[4]["dcc_blow"])
             )

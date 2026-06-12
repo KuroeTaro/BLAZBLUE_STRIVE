@@ -106,7 +106,7 @@ function order_load_game_scene_common(load_order)
         end,
         [14] = function()
             image_sprite_sheet_UI_game_scene_movie_cover = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/common/movie_cover.json",
                 love.graphics.newImage(ASSET_DATA[1]["movie_cover_sprite_batch"])
             )
@@ -120,24 +120,24 @@ function order_load_game_scene_act(load_order)
     {   
         [24] = function()
             image_sprite_sheet_announcer_game_scene_act_common = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/common/act_common.json",
                 love.graphics.newImage(ASSET_DATA[5]["act_common_sprite_batch"])
             )
 
             image_sprite_sheet_table_announcer_game_scene_act_number = {}
             image_sprite_sheet_table_announcer_game_scene_act_number[1] = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/common/act_1.json",
                 love.graphics.newImage(ASSET_DATA[5]["act_1_sprite_batch"])
             )
             image_sprite_sheet_table_announcer_game_scene_act_number[2] = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/common/act_2.json",
                 love.graphics.newImage(ASSET_DATA[5]["act_2_sprite_batch"])
             )
             image_sprite_sheet_table_announcer_game_scene_act_number[3] = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/common/act_3.json",
                 love.graphics.newImage(ASSET_DATA[5]["act_3_sprite_batch"])
             )
@@ -153,13 +153,13 @@ function order_load_game_scene_HUD(load_order)
             image_HUD_game_scene_background_gauge = love.graphics.newImage(ASSET_DATA[6]["HUD_background_gauge"])
             
             image_sprite_sheet_HUD_game_scene_common = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/common/HUD/HUD_common.json",
                 love.graphics.newImage(ASSET_DATA[6]["HUD_common_sprite_batch"])
             )
 
             image_sprite_sheet_announcer_game_scene_HUD_ease_in = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/common/HUD/HUD_ease_in.json",
                 love.graphics.newImage(ASSET_DATA[6]["HUD_ease_in_sprite_batch"])
             )
@@ -173,7 +173,7 @@ function order_load_game_scene_lets_dance(load_order)
     {
         [28] = function()
             image_sprite_sheet_announcer_game_scene_lets_dance = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/common/lets_dance.json",
                 love.graphics.newImage(ASSET_DATA[7]["lets_dance_sprite_batch"])
             )
@@ -189,64 +189,64 @@ function order_load_game_scene_VFX(load_order)
         [29] = function()
             -- hit normal
             image_sprite_sheet_VFX_game_scene_air_blow = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/hit_VFX/air_blow.json",
                 love.graphics.newImage(ASSET_DATA[8]["air_blow_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_blast_ver0 = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/hit_VFX/blast_ver0.json",
                 love.graphics.newImage(ASSET_DATA[8]["blast_ver0_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_blast_ver0_counter = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/hit_VFX/blast_ver0_counter.json",
                 love.graphics.newImage(ASSET_DATA[8]["blast_ver0_counter_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_blast_ver1 = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/hit_VFX/blast_ver1.json",
                 love.graphics.newImage(ASSET_DATA[8]["blast_ver1_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_block_FD = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/hit_VFX/block_FD.json",
                 love.graphics.newImage(ASSET_DATA[8]["block_FD_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_block_ver0 = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/hit_VFX/block_ver0.json",
                 love.graphics.newImage(ASSET_DATA[8]["block_ver0_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_block_ver1 = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/hit_VFX/block_ver1.json",
                 love.graphics.newImage(ASSET_DATA[8]["block_ver1_sprite_batch"])
             )
             image_VFX_game_scene_counter_glow = love.graphics.newImage(ASSET_DATA[8]["counter_glow"])
             image_VFX_game_scene_FD_bubble = love.graphics.newImage(ASSET_DATA[8]["FD_bubble"])
             image_sprite_sheet_VFX_game_scene_partical_ver1_counter = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/hit_VFX/partical_ver1_counter.json",
                 love.graphics.newImage(ASSET_DATA[8]["partical_ver1_counter_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_slash_ver0 = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/hit_VFX/slash_ver0.json",
                 love.graphics.newImage(ASSET_DATA[8]["slash_ver0_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_slash_ver0_counter = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/hit_VFX/slash_ver0_counter.json",
                 love.graphics.newImage(ASSET_DATA[8]["slash_ver0_counter_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_slash_ver1 = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/hit_VFX/slash_ver1.json",
                 love.graphics.newImage(ASSET_DATA[8]["slash_ver1_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_throw_tech = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/hit_VFX/throw_tech.json",
                 love.graphics.newImage(ASSET_DATA[8]["throw_tech_sprite_batch"])
             )
@@ -254,17 +254,17 @@ function order_load_game_scene_VFX(load_order)
         [30] = function()
             -- hit special
             image_sprite_sheet_VFX_game_scene_special_lighting_0 = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/hit_VFX/_special/lighting_0.json",
                 love.graphics.newImage(ASSET_DATA[8]["special_lighting_0_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_special_lighting_1 = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/hit_VFX/_special/lighting_1.json",
                 love.graphics.newImage(ASSET_DATA[8]["special_lighting_1_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_special_radial = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/hit_VFX/_special/radial.json",
                 love.graphics.newImage(ASSET_DATA[8]["special_radial_sprite_batch"])
             )
@@ -272,63 +272,63 @@ function order_load_game_scene_VFX(load_order)
         [31] = function()
             -- overdrive
             image_sprite_sheet_VFX_game_scene_overdrive_airflow = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/overdrive_airflow.json",
                 love.graphics.newImage(ASSET_DATA[8]["overdrive_airflow_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_overdrive_partical = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/overdrive_partical.json",
                 love.graphics.newImage(ASSET_DATA[8]["overdrive_partical_sprite_batch"])
             )
 
             -- RC
             image_sprite_sheet_VFX_game_scene_RC_partical = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/RC_partical.json",
                 love.graphics.newImage(ASSET_DATA[8]["RC_partical_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_RC_shockwave = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/RC_shockwave.json",
                 love.graphics.newImage(ASSET_DATA[8]["RC_shockwave_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_RC_red_badge = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/RC_red_badge.json",
                 love.graphics.newImage(ASSET_DATA[8]["RC_red_badge_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_RC_blue_badge = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/RC_blue_badge.json",
                 love.graphics.newImage(ASSET_DATA[8]["RC_blue_badge_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_RC_purple_badge = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/RC_purple_badge.json",
                 love.graphics.newImage(ASSET_DATA[8]["RC_purple_badge_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_RC_yellow_badge = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/RC_yellow_badge.json",
                 love.graphics.newImage(ASSET_DATA[8]["RC_yellow_badge_sprite_batch"])
             )
 
             -- UA
             image_sprite_sheet_VFX_game_scene_UA_common = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/UA_common.json",
                 love.graphics.newImage(ASSET_DATA[8]["UA_common_sprite_batch"])
             )
 
             -- burst
             image_sprite_sheet_VFX_game_scene_burst_back = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/burst_VFX/burst_back.json",
                 love.graphics.newImage(ASSET_DATA[8]["burst_back_sprite_batch"])
             )
             image_sprite_sheet_VFX_game_scene_burst_front = 
-            sprite_sheet_load(
+            common_sprite_sheet_load(
                 "asset/game_scene/VFX/burst_VFX/burst_front.json",
                 love.graphics.newImage(ASSET_DATA[8]["burst_front_sprite_batch"])
             )

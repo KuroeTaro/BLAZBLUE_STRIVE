@@ -3243,7 +3243,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
     local obj_char_other_side = common_game_scene_change_character(side)
     local function direction_input_mapping()
         if obj_char["direction_input"] >= 7 then
-            obj_char["direction_input_cache"] = obj_char["direction_input"]
+            obj_char["direction_input_cache_hit_jump_cancel"] = obj_char["direction_input"]
             return
         end
     end
@@ -3269,7 +3269,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
         
-        obj_char["direction_input_cache"] = 9
+        obj_char["direction_input_cache_hit_jump_cancel"] = 9
         direction_input_mapping()
 
         obj_char["hit_damage"] = 300.0
@@ -4197,7 +4197,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
     local obj_char_other_side = common_game_scene_change_character(side)
     local function direction_input_mapping()
         if obj_char["direction_input"] >= 7 then
-            obj_char["direction_input_cache"] = obj_char["direction_input"]
+            obj_char["direction_input_cache_hit_jump_cancel"] = obj_char["direction_input"]
             return
         end
     end
@@ -4223,7 +4223,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
 
-        obj_char["direction_input_cache"] = 9
+        obj_char["direction_input_cache_hit_jump_cancel"] = 9
         direction_input_mapping()
 
         obj_char["hit_damage"] = 300.0
