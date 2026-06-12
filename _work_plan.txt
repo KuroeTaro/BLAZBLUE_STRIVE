@@ -7,5 +7,3 @@ config选项中自定义要不要79空投
 
 -- 开始界面重做
 -- 联机
-
-重写direction_cache
