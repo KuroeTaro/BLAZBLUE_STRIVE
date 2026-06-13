@@ -5513,14 +5513,14 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             obj_char,
             "0_general_hurt_launched_low",
             "air","knockdown",
-            8,5,1.00,
-            -18.5,1.5,1.035,
+            12,5,1.00,
+            -22.5,2.5,1.035,
             load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
                 obj_char,
                 "0_general_hurt_hard_knockdown_down",
                 "air",
                 "knockdown_recovery",
-                -5,5,1.00,
+                -12,5,1.00,
                 -10,2.5,1.00,
                 nil,nil,nil,nil,function() end
             ),
@@ -5549,14 +5549,14 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             obj_char,
             "0_general_hurt_launched_low",
             "air","knockdown",
-            8,5,1.00,
-            -18.25,1.5,1.035,
+            12,5,1.00,
+            -22.5,2.5,1.035,
             load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
                 obj_char,
                 "0_general_hurt_hard_knockdown_down",
                 "air",
                 "knockdown_recovery",
-                -5,5,1.00,
+                -12,5,1.00,
                 -10,2.5,1.00,
                 nil,nil,nil,nil,function() end
             ),
@@ -8234,7 +8234,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
             12.5,5,1.00,
-            0,2.5,1.035,
+            0,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -9123,6 +9123,192 @@ end
 -- special
 -- _4SP_P
 function load_game_scene_anim_char_TRM_4SP_P(obj_char)
+    local res = {}
+    res["prop_f"] = "f"
+    res["anim_length"] = 85
+
+    local res = {}
+    local friction = 5
+    local gravity = 2.5
+    local side = obj_char["player_side"]
+    local SFX_table = common_game_scene_get_SFX_table(side)
+    local obj_char_other_side = common_game_scene_change_character(side)
+    local function test_full_ability_gauge_anim_jump()
+        if obj_char["ability_gauge"][1] == obj_char["ability_gauge"][2] then
+            -- state
+            obj_char["f"] = 57
+            -- draw_correction
+            obj_char[8] = 12
+        end
+    end
+    res["prop_f"] = "f"
+    res["anim_length"] = 85
+
+    for i = 30,57 do
+        res[i] = function()
+            test_full_ability_gauge_anim_jump()
+        end
+    end
+
+    res[0] = function()
+        -- pre_set
+        common_game_scene_reset_velocity_by_ground_friction(obj_char)
+        -- state
+        obj_char["sprite_sheet_state"] = "4SP_P"
+        obj_char["height_state"] = "stand" -- stand crouch air OTG wallstick
+        obj_char["hit_type_state"] = "none" -- none strike throw burst
+        obj_char["hit_guard_type_state"] = "all" -- none all low mid high
+        obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
+        obj_char["move_state"] = "startup" -- none startup active recovery
+        obj_char["startup_frame"] = 0
+        obj_char["active_frame"] = 0
+        obj_char["recovery_frame"] = 0
+
+        obj_char["hit_cancel"] = false
+        obj_char["idle_cancel"] = false
+
+        obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
+
+        obj_char["strike_inv"] = false
+        obj_char["strike_inv_countdown"] = 0
+        obj_char["throw_inv"] = false
+        obj_char["throw_inv_countdown"] = 0
+        obj_char["projectile_inv"] = false
+        obj_char["projectile_inv_countdown"] = 0
+
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "none" -- none save load
+        common_game_scene_set_input_sys_cache_init(obj_char)
+        -- state_number
+        obj_char["friction"] = friction
+        obj_char["gravity"] = gravity
+        obj_char["horizontal_velocity_correction"] = 1
+        obj_char["gravity_correction"] = 1
+        obj_char["damage_correction"] = 1
+        -- collide
+        obj_char["pushbox"] = {0,-185,120,370}
+        obj_char["pushbox_other_side_char_active"] = true
+        obj_char["hitbox_table"] = {}
+        obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
+        obj_char["collision_ground_height_offset"] = 0
+        -- oroboros
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        -- draw_correction
+        obj_char[8] = 0
+        obj_char["anchor_pos"] = {190,515}
+        -- visual_front
+        CHARACTER_VISUAL_FRONT = obj_char["player_side"]
+    end
+    res[5] = function()
+        -- draw_correction
+        obj_char[8] = 1
+    end
+    res[10] = function()
+        -- draw_correction
+        obj_char[8] = 2
+    end
+    res[13] = function()
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_set_input_sys_cache_init(obj_char)
+    end
+    res[14] = function()
+        -- draw_correction
+        obj_char[8] = 3
+    end
+    res[19] = function()
+        -- draw_correction
+        obj_char[8] = 4
+    end
+    res[23] = function()
+        -- sub_obj
+        obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
+        -- draw_correction
+        obj_char[8] = 5
+    end
+    res[29] = function()
+        -- state
+        obj_char["hit_type_state"] = "none" -- none strike throw burst
+        obj_char["hit_guard_type_state"] = "none" -- none all low mid high
+        obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
+        obj_char["move_state"] = "none" -- none startup active recovery
+        obj_char["hit_cancel"] = false
+        obj_char["idle_cancel"] = true
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
+        -- state_number
+        obj_char["gravity"] = 2.5
+        obj_char["horizontal_velocity_correction"] = 1
+        obj_char["gravity_correction"] = 1
+        obj_char["damage_correction"] = 1
+    end
+    res[30] = function()
+        -- sub_obj
+        obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
+        -- draw_correction
+        obj_char[8] = 6
+        -- uncommon_update
+        test_full_ability_gauge_anim_jump()
+    end
+    res[35] = function()
+        -- draw_correction
+        obj_char[8] = 7
+        -- uncommon_update
+        test_full_ability_gauge_anim_jump()
+    end
+    res[39] = function()
+        -- sub_obj
+        obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
+        -- draw_correction
+        obj_char[8] = 8
+        -- uncommon_update
+        test_full_ability_gauge_anim_jump()
+    end
+    res[44] = function()
+        -- draw_correction
+        obj_char[8] = 9
+        -- uncommon_update
+        test_full_ability_gauge_anim_jump()
+    end
+    res[48] = function()
+        -- sub_obj
+        obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
+        -- draw_correction
+        obj_char[8] = 10
+        -- uncommon_update
+        test_full_ability_gauge_anim_jump()
+    end
+    res[52] = function()
+        -- draw_correction
+        obj_char[8] = 11
+        -- uncommon_update
+        test_full_ability_gauge_anim_jump()
+    end
+    res[57] = function()
+        -- sub_obj
+        obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
+        -- draw_correction
+        obj_char[8] = 12
+    end
+    res[61] = function()
+        -- draw_correction
+        obj_char[8] = 13
+    end
+    res[66] = function()
+        -- sub_obj
+        obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
+        -- draw_correction
+        obj_char[8] = 14
+    end
+    res[75] = function()
+        -- draw_correction
+        obj_char[8] = 15
+    end
+    res[85] = function()
+        -- animation_end
+    end
+    return res
 end
 -- _6SP_P
 -- _4SP_K
@@ -9319,7 +9505,7 @@ function load_game_scene_anim_char_TRM_6SP_S(obj_char)
         obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["hurt_block_SFX"] = nil
         -- oroboros
-        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-430}
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {200,570}

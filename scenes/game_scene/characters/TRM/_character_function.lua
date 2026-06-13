@@ -96,6 +96,15 @@ function character_function_game_scene_TRM_hitstop_force_delay_gatling_cancel_in
 end
 
 -- shot_sys_function
+-- ability_use_calculation
+function character_function_game_scene_TRM_shot_sys_ability_gauge_use(obj_char)
+    current_ability_gauge = obj_char["ability_gauge"][1]
+    if current_ability_gauge >= 100 and current_ability_gauge % 100 == 0 then
+        obj_char["ability_gauge"][1] = current_ability_gauge - 100
+    else
+        obj_char["ability_gauge"][1] = math.floor(current_ability_gauge/100) * 100
+    end
+end
 -- aim_process_update
 function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
     -- 0.敌我之间距离
@@ -367,6 +376,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_update(obj_char
         obj_char["hurt_state"] = "unblock"
     end
     -- shot_sys
+    obj_char["ability_gauge"][1] = math.max(0,obj_char["ability_gauge"][1]-1)
     character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
     return
 end
