@@ -2030,9 +2030,6 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
     end
     res[4] = function()
         -- state & state_number
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true
         -- collide
@@ -2566,9 +2563,6 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
     end
     res[4] = function()
         -- state & state_number
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true 
         -- collide
@@ -2840,9 +2834,6 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
     end
     res[6] = function()
         -- state & state_number
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true 
         -- collide
@@ -3440,9 +3431,6 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
     end
     res[5] = function()
         -- state & state_number
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true 
         
@@ -3745,9 +3733,6 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
     end
     res[10] = function()
         -- state & state_number
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true 
         -- collide
@@ -4384,9 +4369,6 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
     end
     res[6] = function()
         -- state & state_number
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true
 
@@ -4667,9 +4649,6 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
     end
     res[9] = function()
         -- state & state_number
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true 
         -- collide
@@ -5702,9 +5681,6 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
     end
     res[9] = function()
         -- state & state_number
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true
         -- collide
@@ -5928,9 +5904,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
     res[1] = function()
         -- state & state_number
         obj_char["default_throw_distance"] = 240
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["throw_active"] = true 
         -- collide
@@ -6733,9 +6706,6 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
     end
     res[19] = function()
         -- state & state_number
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true
         -- collide
@@ -7040,9 +7010,6 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
     end
     res[19] = function()
         -- state & state_number
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true
         -- collide
@@ -8552,9 +8519,6 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
     res[1] = function()
         -- state & state_number
         obj_char["default_throw_distance"] = 360
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["throw_active"] = true 
         -- collide
@@ -9530,9 +9494,6 @@ function load_game_scene_anim_char_TRM_6SP_S(obj_char)
     end
     res[8] = function()
         -- state & state_number
-        if not common_game_scene_get_character_facing_currect(obj_char) then
-            obj_char[5] = -obj_char[5]
-        end
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true
         -- collide
