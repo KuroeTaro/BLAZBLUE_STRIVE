@@ -30,7 +30,7 @@ Curse							44								6SP_P
 Scapegoat						44								6SP_K
 Roll							tm110_00						4SP_K
 DeusExMachina					tm450_00		                5UA
-SuperFocus						tm611_11 tm401_21*				4UA XXXXX
+SuperFocus						tm611_11 tm401_21*				4UA
 
 
 Hazama							Terumi
@@ -48,7 +48,7 @@ EA_4_types_UA_enhence_ver
 Terumi
 2D+22CCCCC					    2D								2SP_Launcher XXXXX
 4D								4D								4SP_P
-2626A                           tm030_00ex tm400_00 tm430_06    4UA
+2626A                           tm030_00ex tm400_00 tm430_06    4UA XXXXX
 
 -- 无资源
 防御 最速沁 最速跳 最速44 延迟拆投 延迟跳 升龙 当身
