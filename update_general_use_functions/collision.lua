@@ -1,23 +1,13 @@
 -- 所有pushbox hitbox hurtbox的长宽都必须是双数 要能被2整除 使得box的每个判定均匀的分布在最小单位
 -- 所有pushbox 必须在对象的左右中央 下方锚点在0上
-function collision_box_to_real_world_box(obj,box_name,box)
-    if box_name == "pushbox" then
-        local res = {
-            obj[box_name][1]*obj[5] + obj["x"],
-            obj[box_name][2]*obj[6] + obj["y"],
-            obj[box_name][3],
-            obj[box_name][4]
-        }
-        return res
-    else
-        local res = {
-            box[1]*obj[5] + obj["x"],
-            box[2]*obj[6] + obj["y"],
-            box[3],
-            box[4]
-        }
-        return res
-    end
+function collision_box_to_real_world_box(obj,box)
+    local res = {
+        box[1]*obj[5] + obj["x"],
+        box[2]*obj[6] + obj["y"],
+        box[3],
+        box[4]
+    }
+    return res
 end
 function collision_box_aabb_detection(box_a,box_b)
     local box_a_L = box_a[1]-box_a[3]/2 -- 300 - 65 = 235
@@ -37,7 +27,7 @@ function collision_box_aabb_detection(box_a,box_b)
 end
 
 function collision_test_char_on_ground(obj)
-    local box = collision_box_to_real_world_box(obj,"pushbox")
+    local box = collision_box_to_real_world_box(obj,obj["pushbox"])
     local stage_B_collision = 365
     local box_B_collision = 0
     box_B_collision = box[2]+box[4]/2+obj["collision_ground_height_offset"]
@@ -69,14 +59,14 @@ function collision_test_cS_distance_check(obj_char,max_distance)
     return false
 end
 function collision_pushbox_relocate_y(obj)
-    local box = collision_box_to_real_world_box(obj,"pushbox")
+    local box = collision_box_to_real_world_box(obj,obj["pushbox"])
     local stage_B_collision = 365
     local box_B_collision = 0
     box_B_collision = box[2]+box[4]/2+obj["collision_ground_height_offset"]
     obj["y"] = math.min(box_B_collision,stage_B_collision)-obj["collision_ground_height_offset"]
 end
 function collision_pushbox_stage_relocate_x(obj)
-    local box = collision_box_to_real_world_box(obj,"pushbox")
+    local box = collision_box_to_real_world_box(obj,obj["pushbox"])
     local left_stage_collision = -2100.0
     local right_stage_collision = 2100.0
     if box[1] - box[3]/2 <= left_stage_collision then
@@ -90,8 +80,8 @@ function collision_pushbox_stage_relocate_x(obj)
     end
 end
 function collision_pushbox_state_relocate_in_character_x(obj_char_LP,obj_char_RP,mid_anchor)
-    local box_L = collision_box_to_real_world_box(obj_char_LP,"pushbox")
-    local box_R = collision_box_to_real_world_box(obj_char_RP,"pushbox")
+    local box_L = collision_box_to_real_world_box(obj_char_LP,obj_char_LP["pushbox"])
+    local box_R = collision_box_to_real_world_box(obj_char_RP,obj_char_RP["pushbox"])
     local obj_camera = obj_stage_game_scene_camera
     if obj_char_LP["x"] < obj_char_RP["x"] then
         if (box_R[1] + box_R[3]/2)-(box_L[1] - box_L[3]/2) > 1840 then
@@ -106,8 +96,8 @@ function collision_pushbox_state_relocate_in_character_x(obj_char_LP,obj_char_RP
     end
 end
 function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_RP)
-    local box_L = collision_box_to_real_world_box(obj_char_LP,"pushbox")
-    local box_R = collision_box_to_real_world_box(obj_char_RP,"pushbox")
+    local box_L = collision_box_to_real_world_box(obj_char_LP,obj_char_LP["pushbox"])
+    local box_R = collision_box_to_real_world_box(obj_char_RP,obj_char_RP["pushbox"])
     if (not obj_char_LP["pushbox_other_side_char_active"])
     or (not obj_char_RP["pushbox_other_side_char_active"]) then
         return
@@ -221,8 +211,8 @@ end
 
 function collision_uncondicational_hurtbox_test(hit_obj,hurt_obj)
     for i=1,#hit_obj["hitbox_table"] do
-        local current_hitbox = collision_box_to_real_world_box(hit_obj,"hitbox",hit_obj["hitbox_table"][i])
-        local current_hurtbox = collision_box_to_real_world_box(hurt_obj,"pushbox",nil)
+        local current_hitbox = collision_box_to_real_world_box(hit_obj,hit_obj["hitbox_table"][i])
+        local current_hurtbox = collision_box_to_real_world_box(hurt_obj,hurt_obj["pushbox"])
         if collision_box_aabb_detection(current_hitbox,current_hurtbox) then
             return true
         end
@@ -234,9 +224,9 @@ function collision_strike_hurtbox_test(hit_obj,hurt_obj)
         return false
     end
     for i=1,#hit_obj["hitbox_table"] do
-        local current_hitbox = collision_box_to_real_world_box(hit_obj,"hitbox",hit_obj["hitbox_table"][i])
+        local current_hitbox = collision_box_to_real_world_box(hit_obj,hit_obj["hitbox_table"][i])
         for j=1,#hurt_obj["hurtbox_table"] do
-            local current_hurtbox = collision_box_to_real_world_box(hurt_obj,"hurtbox",hurt_obj["hurtbox_table"][j])
+            local current_hurtbox = collision_box_to_real_world_box(hurt_obj,hurt_obj["hurtbox_table"][j])
             if collision_box_aabb_detection(current_hitbox,current_hurtbox) then
                 return true
             end
@@ -249,9 +239,9 @@ function collision_strike_hurtbox_test_with_assign_hit_VFX_dynamic_spawn_pos(hit
         return false
     end
     for i=1,#hit_obj["hitbox_table"] do
-        local current_hitbox = collision_box_to_real_world_box(hit_obj,"hitbox",hit_obj["hitbox_table"][i])
+        local current_hitbox = collision_box_to_real_world_box(hit_obj,hit_obj["hitbox_table"][i])
         for j=1,#hurt_obj["hurtbox_table"] do
-            local current_hurtbox = collision_box_to_real_world_box(hurt_obj,"hurtbox",hurt_obj["hurtbox_table"][j])
+            local current_hurtbox = collision_box_to_real_world_box(hurt_obj,hurt_obj["hurtbox_table"][j])
             if collision_box_aabb_detection(current_hitbox,current_hurtbox) then
                 hit_obj["hit_VFX_dynamic_spawn_pos"] = {
                     (current_hitbox[1]+current_hurtbox[1])/2,
@@ -272,9 +262,9 @@ function collision_throw_hurtbox_test(hit_obj,hurt_obj)
         return false
     end
     for i=1,#hit_obj["hitbox_table"] do
-        local current_hitbox = collision_box_to_real_world_box(hit_obj,"hitbox",hit_obj["hitbox_table"][i])
+        local current_hitbox = collision_box_to_real_world_box(hit_obj,hit_obj["hitbox_table"][i])
         for j=1,#hurt_obj["hurtbox_table"] do
-            local current_hurtbox = collision_box_to_real_world_box(hurt_obj,"hurtbox",hurt_obj["hurtbox_table"][j])
+            local current_hurtbox = collision_box_to_real_world_box(hurt_obj,hurt_obj["hurtbox_table"][j])
             if collision_box_aabb_detection(current_hitbox,current_hurtbox) then
                 return true
             end
@@ -306,9 +296,9 @@ function collision_projectile_hurtbox_test(hit_obj,hurt_obj)
         return false
     end
     for i=1,#hit_obj["hitbox_table"] do
-        local current_hitbox = collision_box_to_real_world_box(hit_obj,"hitbox",hit_obj["hitbox_table"][i])
+        local current_hitbox = collision_box_to_real_world_box(hit_obj,hit_obj["hitbox_table"][i])
         for j=1,#hurt_obj["hurtbox_table"] do
-            local current_hurtbox = collision_box_to_real_world_box(hurt_obj,"hurtbox",hurt_obj["hurtbox_table"][j])
+            local current_hurtbox = collision_box_to_real_world_box(hurt_obj,hurt_obj["hurtbox_table"][j])
             if collision_box_aabb_detection(current_hitbox,current_hurtbox) then
                 return true
             end
