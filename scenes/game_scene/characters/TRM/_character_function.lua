@@ -376,7 +376,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_update(obj_char
         obj_char["hurt_state"] = "unblock"
     end
     -- shot_sys
-    obj_char["ability_gauge"][1] = math.max(0,obj_char["ability_gauge"][1]-1)
+    obj_char["ability_gauge"][1] = math.max(0,obj_char["ability_gauge"][1]-0.5)
     character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
     return
 end

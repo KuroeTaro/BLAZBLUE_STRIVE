@@ -129,8 +129,8 @@ obj_char["ability_gauge"] = {600.0,600.0} -- 0.0 - 600.0
 obj_char["overdrive_gauge"] = {600.0,600.0,"off"} -- 0.0 - 600.0
 obj_char["overdrive_timer"] = {0,0,0,0} -- 0f 00:00 
 obj_char["overdrive_drain_speed"] = 24
-obj_char["risk_gauge"] = {0.0,300.0}-- 0.0 - 300.0
-obj_char["wallstick_gauge"] = {0.0,200.0,false}-- 0.0 - 200.0
+obj_char["risk_gauge"] = {0.0,300.0} -- 0.0 - 300.0
+obj_char["wallstick_gauge"] = {0.0,255.0} -- 0.0 - 255.0
 
 obj_char["heat_penalty"] = false
 obj_char["heat_penalty_countdown"] = 0
