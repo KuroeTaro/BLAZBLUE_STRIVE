@@ -128,7 +128,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["overdrive_gauge"] = {600.0,600.0,"off"} -- 0.0 - 600.0
     obj_char_game_scene_char_LP["overdrive_timer"] = {0,0,0,0} -- 0f 00:00 
     obj_char_game_scene_char_LP["risk_gauge"] = {0.0,300.0} -- 0.0 - 300.0
-    obj_char_game_scene_char_LP["wallstick_gauge"] = {0.0,255.0} -- 0.0 - 255.0
+    obj_char_game_scene_char_LP["wallstick_gauge"] = {0.0,235.0} -- 0.0 - 235.0
 
     obj_char_game_scene_char_LP["heat_penalty"] = false
     obj_char_game_scene_char_LP["heat_penalty_countdown"] = 0
@@ -1118,7 +1118,7 @@ function load_game_scene_wallbreak_end_init_LP()
     obj_char_game_scene_char_LP["gravity"] = 2.5
     obj_char_game_scene_char_LP["physics_lock"] = false
 
-    obj_char_game_scene_char_LP["wallstick_gauge"] = {0.0,255.0} -- 0.0 - 255.0
+    obj_char_game_scene_char_LP["wallstick_gauge"] = {0.0,235.0} -- 0.0 - 235.0
 
 
     obj_char_game_scene_char_LP["heat_penalty"] = false

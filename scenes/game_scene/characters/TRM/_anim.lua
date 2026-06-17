@@ -1727,9 +1727,11 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
         -- VFX
         insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
     end
-    res[12] = function()
+    res[10] = function()
         -- state
         obj_char["idle_cancel"] = false
+    end
+    res[12] = function()
         -- state_number
         update_horizontal_velocity()
         -- draw_correction
