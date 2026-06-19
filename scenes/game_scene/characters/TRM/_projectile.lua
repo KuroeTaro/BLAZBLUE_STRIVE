@@ -107,7 +107,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         ),
         nil,nil,
-        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
     )
     obj["air_block_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
         obj_char,obj,true,nil,
@@ -133,7 +133,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         ),
         nil,nil,
-        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
     )
     obj["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
         obj_char,obj,true
@@ -563,7 +563,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
         obj_char_other_side["throw_inv_countdown"] = 1
         if collision_test_char_on_ground(obj_char_other_side) then
             -- state
-            obj_char_other_side["y"] = 365
+            obj_char_other_side["y"] = 0
             obj_char_other_side["f"] = 13
             obj_char_other_side["height_state"]  = "stand"
             obj_char_other_side["throw_inv"] = true

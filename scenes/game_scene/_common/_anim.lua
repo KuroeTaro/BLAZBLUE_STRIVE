@@ -1439,7 +1439,7 @@ function load_game_scene_anim_char_common_0_air_block(
         obj_char_other_side["throw_inv_countdown"] = 1
         if collision_test_char_on_ground(obj_char_other_side) then
             -- state
-            obj_char_other_side["y"] = 365
+            obj_char_other_side["y"] = 0
             obj_char_other_side["f"] = 13
             obj_char_other_side["height_state"]  = "stand"
             obj_char_other_side["throw_inv"] = true
@@ -1609,7 +1609,7 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
     res["anim_length"] = 30
     
     if obj_char["height_state"] == "air" then
-        obj_char["y"] = math.min(obj_char["y"],125)
+        obj_char["y"] = math.min(obj_char["y"],-240)
         if teching_or_teched == "teching" then
             sprite_sheet_state = "0_air_Launcher_teching"
         elseif teching_or_teched == "teched" then
@@ -1619,7 +1619,7 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         pushbox = pushbox_data_other_side["1_4_7_air_block"][0]
         collision_ground_height_offset = 185
     else
-        obj_char["y"] = 365
+        obj_char["y"] = 0
         if teching_or_teched == "teching" then
             sprite_sheet_state = "0_ground_Launcher_teching"
         elseif teching_or_teched == "teched" then
@@ -2241,13 +2241,13 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
     res["anim_length"] = 85
     for i = 60,69 do
         res[i] = function()
-            obj_char["y"] = 155 + (i-59)*10
+            obj_char["y"] = -210 + (i-59)*10
         end
     end
 
     res[0] = function()
         -- state
-        obj_char["y"] = 165
+        obj_char["y"] = -200
         obj_char["sprite_sheet_state"] = sprite_sheet_state
         obj_char["height_state"] = "wallstick" -- stand crouch air OTG wallstick
         obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
@@ -2290,17 +2290,17 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
     end
     res[60] = function()
         -- state
-        obj_char["y"] = 165
+        obj_char["y"] = -200
         obj_char[8] = 1
     end
     res[65] = function()
         -- state
-        obj_char["y"] = 215
+        obj_char["y"] = -150
         obj_char[8] = 2
     end
     res[70] = function()
         -- state
-        obj_char["y"] = 365
+        obj_char["y"] = 0
         obj_char[8] = 3
         -- collide
         obj_char["pushbox"] = pushbox_data[sprite_sheet_state][3]
@@ -2672,7 +2672,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
 
     res[0] = function()
         -- state
-        obj_char["y"] = 365
+        obj_char["y"] = 0
         obj_char["sprite_sheet_state"] = sprite_sheet_state
         obj_char["height_state"] = "OTG" -- stand crouch air OTG wallstick
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
@@ -2779,7 +2779,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
 
     res[0] = function()
         -- state
-        obj_char_other_side["y"] = 365
+        obj_char_other_side["y"] = 0
         obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
         obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
@@ -4796,7 +4796,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
 
     res[0] = function()
         -- state
-        obj_char_other_side["y"] = 100
+        obj_char_other_side["y"] = -265
         obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
         obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
@@ -4861,7 +4861,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
     end
     res[11] = function()
         -- state
-        obj_char_other_side["y"] = 365
+        obj_char_other_side["y"] = 0
         obj_char_other_side["height_state"] = "stand"
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][3]
@@ -5272,7 +5272,7 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char,character_uncomm
         end
         -- height_state
         if height_state == "air" and collision_test_char_on_ground(obj_char) then
-            obj_char["y"] = 365
+            obj_char["y"] = 0
             obj_char["height_state"] = "stand"
             obj_char["sprite_sheet_state"] = "burst_rc_ground"
             obj_char["pushbox"]  = pushbox_data["RC"]["stand"]
@@ -5455,7 +5455,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char,character_uncom
         end
         -- height_state
         if height_state == "air" and collision_test_char_on_ground(obj_char) then
-            obj_char["y"] = 365
+            obj_char["y"] = 0
             obj_char["height_state"] = "stand"
             obj_char["sprite_sheet_state"] = "burst_rc_ground"
             obj_char["pushbox"]  = pushbox_data["RC"]["stand"]
@@ -5667,7 +5667,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char,character_unc
         end
         -- height_state
         if height_state == "air" and collision_test_char_on_ground(obj_char) then
-            obj_char["y"] = 365
+            obj_char["y"] = 0
             obj_char["height_state"] = "stand"
             obj_char["sprite_sheet_state"] = "burst_rc_ground"
             obj_char["pushbox"]  = pushbox_data["RC"]["stand"]
@@ -5884,7 +5884,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
         end
         -- height_state
         if height_state == "air" and collision_test_char_on_ground(obj_char) then
-            obj_char["y"] = 365
+            obj_char["y"] = 0
             obj_char["height_state"] = "stand"
             obj_char["sprite_sheet_state"] = "burst_rc_ground"
             obj_char["pushbox"]  = pushbox_data["RC"]["stand"]

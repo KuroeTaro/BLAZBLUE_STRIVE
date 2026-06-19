@@ -94,7 +94,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         ),
         nil,nil,
-        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],75) end
+        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-290) end
     )
     obj["stand_block_animation"] = load_game_scene_anim_char_RC_red_projectile_ground_block(
         obj_char,obj,true,nil,
@@ -128,7 +128,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         ),
         nil,nil,
-        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],75) end
+        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-290) end
     )
     obj["crouch_block_animation"] = load_game_scene_anim_char_RC_red_projectile_ground_block(
         obj_char,obj,true,nil,
@@ -162,7 +162,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         ),
         nil,nil,
-        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],75) end
+        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-290) end
     )
     obj["air_block_animation"] = load_game_scene_anim_char_RC_red_projectile_air_block(
         obj_char,obj,true,nil,
@@ -196,7 +196,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         ),
         nil,nil,
-        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
     )
     obj["wallstick_hurt_animation"] = load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
         obj_char,obj,true,nil,
@@ -221,7 +221,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         ),
         nil,nil,
-        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
     )
     obj["hit_hurt_blockstop_countdown"] = 0
     obj["hit_counter_ver_function"] = common_game_scene_counter_ver0
@@ -635,7 +635,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         ),
         nil,nil,
-        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
     )
     obj["stand_block_animation"] = load_game_scene_anim_char_RC_yellow_projectile_ground_block(
         obj_char,obj,true,nil,
@@ -661,7 +661,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         ),
         nil,nil,
-        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
     )
     obj["crouch_block_animation"] = load_game_scene_anim_char_RC_yellow_projectile_ground_block(
         obj_char,obj,true,nil,
@@ -687,7 +687,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         ),
         nil,nil,
-        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
     )
     obj["air_block_animation"] = load_game_scene_anim_char_RC_yellow_projectile_air_block(
         obj_char,obj,true,nil,
@@ -713,7 +713,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         ),
         nil,nil,
-        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
     )
     obj["wallstick_hurt_animation"] = load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
         obj_char,obj,true,nil,
@@ -730,7 +730,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         ),
         nil,nil,
-        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+        function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
     )
     obj["hit_hurt_blockstop_countdown"] = 0
 
@@ -1055,7 +1055,7 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
         obj_char_other_side["throw_inv_countdown"] = 1
         if collision_test_char_on_ground(obj_char_other_side) then
             -- state
-            obj_char_other_side["y"] = 365
+            obj_char_other_side["y"] = 0
             obj_char_other_side["f"] = 13
             obj_char_other_side["height_state"]  = "stand"
             obj_char_other_side["throw_inv"] = true
@@ -1550,7 +1550,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
         obj_char_other_side["throw_inv_countdown"] = 1
         if collision_test_char_on_ground(obj_char_other_side) then
             -- state
-            obj_char_other_side["y"] = 365
+            obj_char_other_side["y"] = 0
             obj_char_other_side["f"] = 13
             obj_char_other_side["height_state"]  = "stand"
             obj_char_other_side["throw_inv"] = true

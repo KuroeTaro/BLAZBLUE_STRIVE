@@ -710,7 +710,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
 
     res[0] = function()
         -- state
-        obj_char["y"] = 365
+        obj_char["y"] = 0
         obj_char["sprite_sheet_state"] = "7_8_9_jump_air_to_stand_idle"
         obj_char["height_state"] = "stand" -- stand crouch air OTG wallstick
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
@@ -1097,7 +1097,7 @@ function load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
     end
     res[0] = function()
         -- state
-        obj_char["y"] = 185
+        obj_char["y"] = -180
         obj_char["sprite_sheet_state"] = "4dash_backdash"
         obj_char["height_state"] = "air" -- stand crouch air OTG wallstick
         obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
@@ -1164,7 +1164,7 @@ function load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
     end
     res[15] = function()
         -- state
-        obj_char["y"] = 365
+        obj_char["y"] = 0
         obj_char["height_state"] = "stand" -- stand crouch air OTG wallstick
         -- state_number
         obj_char["velocity"][2] = 0
@@ -1935,7 +1935,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv0(
             obj_char,
@@ -1961,7 +1961,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             obj_char,nil,false
@@ -2189,7 +2189,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
             obj_char,
@@ -2215,7 +2215,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             obj_char,nil,false
@@ -2468,7 +2468,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
             obj_char,
@@ -2494,7 +2494,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             obj_char,nil,false
@@ -2724,7 +2724,7 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv1(
             obj_char,
@@ -2750,7 +2750,7 @@ function load_game_scene_anim_char_TRM_2K(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             obj_char,nil,false
@@ -3013,7 +3013,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
             obj_char,
@@ -3039,7 +3039,7 @@ function load_game_scene_anim_char_TRM_6K(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             obj_char,nil,false
@@ -3326,7 +3326,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
             obj_char,
@@ -3352,7 +3352,7 @@ function load_game_scene_anim_char_TRM_5K(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             obj_char,nil,false
@@ -3617,7 +3617,7 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
             obj_char,
@@ -3626,7 +3626,7 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
             72.5,5,1.00,
             0,2.5,1.00,
             nil,nil,nil,nil,
-            function() obj_char_other_side["y"] = 365 end
+            function() obj_char_other_side["y"] = 0 end
         )
         obj_char["OTG_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_launched_high(
             obj_char,
@@ -3643,7 +3643,7 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             obj_char,nil,false
@@ -3887,7 +3887,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv3(
             obj_char,
@@ -3913,7 +3913,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv3(
             obj_char,
@@ -3929,7 +3929,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             32.5,5,1.035,
-            -27.5,2.5,1.035,
+            -22.5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -3939,14 +3939,14 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
             obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
             37.5,5,1.00,
-            -22.5,12.5,1.00,
+            -17.5,12.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -3965,7 +3965,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             obj_char,nil,false
@@ -4274,7 +4274,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
             obj_char,
@@ -4300,7 +4300,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             obj_char,nil,false
@@ -4537,7 +4537,7 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
             obj_char,
@@ -4563,7 +4563,7 @@ function load_game_scene_anim_char_TRM_fS(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             obj_char,nil,false
@@ -5514,7 +5514,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             ),
             nil,nil,
             function() 
-                obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165)
+                obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200)
             end
         )
         obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
@@ -5550,7 +5550,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             ),
             nil,nil,
             function() 
-                obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165)
+                obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200)
             end
         )
         obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
@@ -5578,7 +5578,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             ),
             nil,nil,
             function() 
-                obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165)
+                obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200)
             end
         )
         obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
@@ -5588,7 +5588,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
             32.5,5,1.00,
             0,2.5,1.00,
             nil,nil,nil,nil,
-            function() obj_char_other_side["y"] = 365 end
+            function() obj_char_other_side["y"] = 0 end
         )
         obj_char["OTG_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_launched_high(
             obj_char,
@@ -5605,7 +5605,7 @@ function load_game_scene_anim_char_TRM_2Launcher(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             obj_char,nil,false
@@ -5840,7 +5840,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
 
         obj_char["hit_cancel"] = false
@@ -5978,13 +5978,13 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local function update_y_37f_43f(i)
-        obj_char_other_side["y"] = 2.5*(i-39)^2+185
+        obj_char_other_side["y"] = 2.5*(i-39)^2-180
     end
     local function update_y_44f_55f(i)
-        obj_char_other_side["y"] = 1.5*(i-49)^2+311
+        obj_char_other_side["y"] = 1.5*(i-49)^2-34
     end
     local function update_y_56f_60f(i)
-        obj_char_other_side["y"] = 3*(i-57)^2+338
+        obj_char_other_side["y"] = 3*(i-57)^2-27
     end
     res["prop_f"] = "f"
     res["anim_length"] = 90
@@ -6014,7 +6014,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
     end
     res[0] = function()
         -- state
-        obj_char_other_side["y"] = 365
+        obj_char_other_side["y"] = 0
         obj_char_other_side["sprite_sheet_state"] = "0_stand_hurt_high"
         obj_char_other_side["height_state"] = "stand" -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
@@ -6070,7 +6070,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
         obj_char_other_side["x"] = obj_char["x"] + obj_char[5]*315
         collision_pushbox_stage_relocate_x(obj_char_other_side)
         obj_char["x"] = obj_char_other_side["x"] + obj_char_other_side[5]*315
-        obj_char_other_side["y"] = 205
+        obj_char_other_side["y"] = -160
         obj_char_other_side["sprite_sheet_state"] = "0_general_hurt_launched_high"
         obj_char_other_side["height_state"] = "air"
         -- collide
@@ -6136,7 +6136,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(obj_char)
     end
     res[44] = function()
         -- state
-        obj_char_other_side["y"] = 365
+        obj_char_other_side["y"] = 0
         obj_char_other_side["sprite_sheet_state"] = "0_general_hurt_hard_knockdown_up"
         -- collide
         obj_char_other_side["pushbox"] = pushbox_data_other_side["0_general_hurt_hard_knockdown_up"][0]
@@ -6299,15 +6299,13 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(obj_char)
         obj_camera["3d_pos_x_target"] = math.min(obj_camera["3d_pos_x_target"],1350+(obj_camera["3d_pos_z_target"]+800)*1)
 
         obj_camera["3d_pos_y_target"] = math.min(obj_char["y"],obj_char_other_side["y"])+75
-        obj_camera["3d_pos_y_target"] = math.min(obj_camera["3d_pos_y_target"],0)
+        obj_camera["3d_pos_y_target"] = math.min(obj_camera["3d_pos_y_target"],-365)
         obj_camera["3d_pos_y_target"] = obj_camera["3d_pos_y_target"]+(800+obj_camera["3d_pos_z_target"])*0.5
-        obj_camera["3d_pos_y_target"] = math.max(obj_camera["3d_pos_y_target"],-1000)
-
-        obj_camera["3d_pos_z_target"] = obj_camera["3d_pos_z_target"]-obj_camera["3d_pos_y_target"]*0.25
+        obj_camera["3d_pos_y_target"] = math.max(obj_camera["3d_pos_y_target"],-900)
         local x = math.max(math.min((obj_char["x"]+obj_char_other_side["x"])/2,1550),-1550)
         obj_char["enclose_position_offset"] = {
             x - obj_camera["3d_pos_x_target"],
-            (obj_char["y"]+obj_char_other_side["y"])/8 - obj_camera["3d_pos_y_target"],
+            -295 - obj_camera["3d_pos_y_target"],
             120
         }
         table.insert(obj_stage_main["camera_active_application_table"],
@@ -6590,7 +6588,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
             obj_char,
@@ -6616,7 +6614,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             obj_char,nil,false
@@ -6894,7 +6892,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
             obj_char,
@@ -6920,7 +6918,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             obj_char,nil,false
@@ -7196,7 +7194,7 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
             obj_char,
@@ -7222,7 +7220,7 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             obj_char,nil,false
@@ -7449,7 +7447,7 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
             obj_char,
@@ -7475,7 +7473,7 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             obj_char,nil,false
@@ -7699,7 +7697,7 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
             obj_char,
@@ -7726,7 +7724,7 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
             ),
             nil,nil,
             function()
-                obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165)
+                obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200)
             end
         )
         obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
@@ -7966,7 +7964,7 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
             obj_char,
@@ -7992,7 +7990,7 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             obj_char,nil,false
@@ -8231,7 +8229,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
             obj_char,
@@ -8257,7 +8255,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
         obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             obj_char,nil,false
@@ -8455,7 +8453,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
         )
 
         obj_char["hit_cancel"] = false
@@ -8600,10 +8598,10 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local function update_y_29f_45f(i)
-        obj_char_other_side["y"] = 1*(i-37)^2+301
+        obj_char_other_side["y"] = 1*(i-37)^2-64
     end
     local function update_y_46f_53f(i)
-        obj_char_other_side["y"] = 2*(i-49)^2+333
+        obj_char_other_side["y"] = 2*(i-49)^2-32
     end
     res["prop_f"] = "f"
     res["anim_length"] = 84
@@ -8728,7 +8726,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(obj_char)
     end
     res[29] = function()
         -- state
-        obj_char_other_side["y"] = 365
+        obj_char_other_side["y"] = 0
         obj_char_other_side["sprite_sheet_state"] = "0_general_hurt_hard_knockdown_up"
         -- state_number
         obj_char_other_side["gravity"] = 0
@@ -8786,7 +8784,7 @@ end
 function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
     local res = {}
     local friction = 1
-    local gravity = math.max(math.abs(obj_char["y"]-185)/200,1)
+    local gravity = math.max(math.abs(obj_char["y"]+180)/200,1)
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
     local obj_stage_main = obj_stage_game_scene_main
@@ -8945,7 +8943,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(obj_char)
     end
     res[40] = function()
         -- state
-        obj_char["y"] = 365
+        obj_char["y"] = 0
         obj_char["sprite_sheet_state"] = "7_8_9_jump_air_to_stand_idle"
         -- state_number
         obj_char["friction"] = 1
@@ -9074,7 +9072,7 @@ end
 --                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
 --             ),
 --             nil,nil,
---             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+--             function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-200) end
 --         ),
 --         function()
 --             obj_char_other_side["y"] = math.min(obj_char_other_side["y"],335)
@@ -9345,7 +9343,7 @@ function load_game_scene_anim_char_TRM_6SP_S(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],75) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-290) end
         )
         obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv3(
             obj_char,
@@ -9371,7 +9369,7 @@ function load_game_scene_anim_char_TRM_6SP_S(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],75) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-290) end
         )
         obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv3(
             obj_char,
@@ -9397,7 +9395,7 @@ function load_game_scene_anim_char_TRM_6SP_S(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],75) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-290) end
         )
         obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
             obj_char,
@@ -9423,7 +9421,7 @@ function load_game_scene_anim_char_TRM_6SP_S(obj_char)
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
             nil,nil,
-            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],165) end
+            function() obj_char_other_side["y"] = math.min(obj_char_other_side["y"],-565) end
         )
         obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             obj_char,nil,false

@@ -9,7 +9,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP = {0,0,0,1,1,1,0,0} -- obj[1-8]都为图形上的数据 obj[8]为图形上的帧数
     obj_char_game_scene_char_LP["basic_prop_cache"] = {0,0,0,1,1,1,0,0}
     obj_char_game_scene_char_LP["x"] = -320
-    obj_char_game_scene_char_LP["y"] = 365
+    obj_char_game_scene_char_LP["y"] = 0
     obj_char_game_scene_char_LP["f"] = -1 -- obj["f"] 逻辑上的帧数
     obj_char_game_scene_char_LP["FCT"] = {0,0,0,0,0,0,0,0}
     obj_char_game_scene_char_LP["LCT"] = {0,0,0,0,0,0,0,0}
@@ -2802,7 +2802,7 @@ end
 
 function state_gate_game_scene_char_LP_common_air_to_dash_move(input,obj_char)
     -- _4dash_air_backdash
-    if obj_char["y"] < 45 and (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 1)
+    if obj_char["y"] < -320 and (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 1)
     and test_input_sys_press(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
         obj_char["air_move"]["jump"][1] = 0
         obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
@@ -2812,7 +2812,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move(input,obj_char)
         return true
     end
     -- _6dash_air_dash
-    if obj_char["y"] < 45 and test_input_sys_press(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
+    if obj_char["y"] < -320 and test_input_sys_press(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
         obj_char["air_move"]["jump"][1] = 0
         obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
@@ -2823,7 +2823,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move(input,obj_char)
 end
 function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(input,obj_char)
     -- _4dash_air_backdash
-    if obj_char["y"] < 45 and (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 1)
+    if obj_char["y"] < -320 and (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 1)
     and test_input_sys_press_or_hold(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
         obj_char["air_move"]["jump"][1] = 0
         obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
@@ -2833,7 +2833,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(inpu
         return true
     end
     -- _6dash_air_dash
-    if obj_char["y"] < 45 and test_input_sys_press_or_hold(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
+    if obj_char["y"] < -320 and test_input_sys_press_or_hold(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
         obj_char["air_move"]["jump"][1] = 0
         obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
@@ -2844,7 +2844,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(inpu
 end
 function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_4dash_only(input,obj_char)
     -- _4dash_air_backdash
-    if obj_char["y"] < 45 and (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 1)
+    if obj_char["y"] < -320 and (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 1)
     and test_input_sys_press_or_hold(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
         obj_char["air_move"]["jump"][1] = 0
         obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
@@ -2854,7 +2854,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_4dash_on
         return true
     end
     -- _6dash_air_dash
-    if obj_char["y"] < 45 and test_input_sys_press(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
+    if obj_char["y"] < -320 and test_input_sys_press(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
         obj_char["air_move"]["jump"][1] = 0
         obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
@@ -3302,7 +3302,7 @@ function state_gate_game_scene_char_LP_from_hurt(input,obj_char)
             obj_char["character_animation"] = obj_char["self_groundbounce_hurt_animation"]
             init_character_anim_with(obj_char,obj_char["character_animation"])
         elseif collision_test_char_on_ground(obj_char) then
-            obj_char["y"] = 365
+            obj_char["y"] = 0
             obj_char["state"] = obj_char["state_cache"]
             if obj_char["state"] == "knockdown" then
                 obj_char["character_animation"] = obj_char["self_knockdown_animation"] 
@@ -3436,7 +3436,7 @@ end
 function state_gate_game_scene_char_LP_from_throw_hurt_success(input,obj_char)
     -- knockdown knockdown_recovery
     if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["y"] = 365
+        obj_char["y"] = 0
         obj_char["state"] = obj_char["state_cache"]
         if obj_char["state"] == "knockdown" then
             obj_char["character_animation"] = obj_char["self_knockdown_animation"] 
@@ -4374,7 +4374,7 @@ function state_gate_game_scene_char_LP_from_7_8_9_pre_jump(input,obj_char)
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{320,430},(obj_char["velocity_cache"][1]*0.6 + obj_char[5]*2.75)*multiplyer,-55.0*multiplyer)
         end
         init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["y"] = 225
+        obj_char["y"] = -140
         obj_char["state"] = "7_8_9_jump_air"
         obj_char["velocity"][1] = obj_char["velocity_cache"][1]
         if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
@@ -5566,7 +5566,7 @@ function state_gate_game_scene_char_LP_from_jP(input,obj_char)
     -- hit_cancel
     if obj_char["hit_cancel"] then
         -- _jP
-        if obj_char["y"] < 125 and test_input_sys_press(input["P"]) then
+        if obj_char["y"] < -240 and test_input_sys_press(input["P"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end
@@ -5578,7 +5578,7 @@ function state_gate_game_scene_char_LP_from_jP(input,obj_char)
     end
     if obj_char["hit_cancel"] and obj_char["air_gatling_state"] then
         -- _j2K
-        if obj_char["y"] < 125 and common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["K"]) then
+        if obj_char["y"] < -240 and common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["K"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end
@@ -5588,7 +5588,7 @@ function state_gate_game_scene_char_LP_from_jP(input,obj_char)
             return true
         end
         -- _jK
-        if obj_char["y"] < 125 and test_input_sys_press(input["K"]) then
+        if obj_char["y"] < -240 and test_input_sys_press(input["K"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end
@@ -5598,7 +5598,7 @@ function state_gate_game_scene_char_LP_from_jP(input,obj_char)
             return true
         end
         -- _jS
-        if obj_char["y"] < 125 and test_input_sys_press(input["S"]) then
+        if obj_char["y"] < -240 and test_input_sys_press(input["S"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end
@@ -5643,7 +5643,7 @@ function state_gate_game_scene_char_LP_from_jK(input,obj_char)
     -- hit_cancel
     if obj_char["hit_cancel"] then
         -- _jS
-        if obj_char["y"] < 125 and test_input_sys_press(input["S"]) then
+        if obj_char["y"] < -240 and test_input_sys_press(input["S"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end
@@ -5655,7 +5655,7 @@ function state_gate_game_scene_char_LP_from_jK(input,obj_char)
     end
     if obj_char["hit_cancel"] and obj_char["air_gatling_state"] then
         -- _jP
-        if obj_char["y"] < 125 and test_input_sys_press(input["P"]) then
+        if obj_char["y"] < -240 and test_input_sys_press(input["P"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end
@@ -5665,7 +5665,7 @@ function state_gate_game_scene_char_LP_from_jK(input,obj_char)
             return true
         end
         -- _j2K
-        if obj_char["y"] < 125 and common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["K"]) then
+        if obj_char["y"] < -240 and common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["K"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end
@@ -5675,7 +5675,7 @@ function state_gate_game_scene_char_LP_from_jK(input,obj_char)
             return true
         end
         -- _jS
-        if obj_char["y"] < 125 and test_input_sys_press(input["S"]) then
+        if obj_char["y"] < -240 and test_input_sys_press(input["S"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end

@@ -594,7 +594,7 @@ function common_game_scene_throw_hit_function(obj_char)
     end
     -- set min hight of air throw
     if obj_char["height_state"] == "air" then
-        hit_side_obj_char["y"] = math.min(hit_side_obj_char["y"],125)
+        hit_side_obj_char["y"] = math.min(hit_side_obj_char["y"],-240)
     end
     obj_char["y"] = hit_side_obj_char["y"]
     -- hit_side_state

@@ -693,20 +693,20 @@ function update_game_scene_gravity()
     local LP_RUN_AT_THIS_FRAME = (LP_game_speed ~= 0 and char_LP["game_speed_subframe"] > LP_game_speed) or LP_game_speed == 1
     local RP_RUN_AT_THIS_FRAME = (RP_game_speed ~= 0 and char_RP["game_speed_subframe"] > RP_game_speed) or RP_game_speed == 1
 
-    if char_LP["y"] == 365 then
+    if char_LP["y"] == 0 then
         char_LP["velocity"][2] = math.min(char_LP["velocity"][2],0)
-    elseif char_LP["y"] > 365 then
-        char_LP["y"] = 365
+    elseif char_LP["y"] > 0 then
+        char_LP["y"] = 0
         char_LP["velocity"][2] = 0
         char_LP["gravity_correction"] = 1
     elseif LP_RUN_AT_THIS_FRAME and not char_LP["physics_lock"] then
         char_LP["velocity"][2] = char_LP["velocity"][2] + char_LP["gravity"]
     end
     
-    if char_RP["y"] == 365 then
+    if char_RP["y"] == 0 then
         char_RP["velocity"][2] = math.min(char_RP["velocity"][2],0)
-    elseif char_RP["y"] > 365 then
-        char_RP["y"] = 365
+    elseif char_RP["y"] > 0 then
+        char_RP["y"] = 0
         char_RP["velocity"][2] = 0
         char_LP["gravity_correction"] = 1
     elseif RP_RUN_AT_THIS_FRAME and not char_RP["physics_lock"] then
