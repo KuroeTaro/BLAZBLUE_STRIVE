@@ -3929,7 +3929,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             32.5,5,1.035,
-            -22.5,2.5,1.035,
+            -17.5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
