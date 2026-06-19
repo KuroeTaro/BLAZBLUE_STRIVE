@@ -7,3 +7,10 @@ config选项中自定义要不要79空投
 
 -- 开始界面重做
 -- 联机
+
+-- 图片加载卡顿
+-- fuck this world coordinate axis
+    -- just consider we are in a halo ring
+    -- the ground of the ring at y = 0
+    -- and so call up is toward the inside of the ring Y is negative
+    -- the other side is Y positive

@@ -7183,8 +7183,8 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            5,5,1.00,
-            -15,2.5,1.00,
+            5,5,1.035,
+            -15,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -7436,8 +7436,8 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            7.5,5,1.00,
-            -15,2.5,1.00,
+            7.5,5,1.035,
+            -7.5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -7686,8 +7686,8 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            0,5,1.00,
-            7.5,2.5,1.00,
+            0,5,1.035,
+            7.5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -7712,8 +7712,8 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            27.5,5,1.00,
-            -5,2.5,1.00,
+            27.5,5,1.035,
+            -5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -7953,8 +7953,8 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            10,5,1.00,
-            -12.5,2.5,1.00,
+            10,5,1.035,
+            -7.5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -7979,8 +7979,8 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            25,5,1.00,
-            -12.5,2.5,1.00,
+            25,5,1.035,
+            -12.5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -8218,8 +8218,8 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
             obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            10,5,1.00,
-            -27.5,2.5,1.00,
+            10,5,1.035,
+            -27.5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -9411,7 +9411,7 @@ function load_game_scene_anim_char_TRM_6SP_S(obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             7.5,5,1.10,
-            -5,2.5,1.07,
+            -5,2.5,1.10,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 obj_char,
@@ -9448,6 +9448,8 @@ function load_game_scene_anim_char_TRM_6SP_S(obj_char)
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
+
+        obj_char["ability_gauge"][1] = math.max(0,obj_char["ability_gauge"][1]-30)
         -- game_speed
         obj_char["hit_hurt_blockstop_countdown"] = 17
         -- collide
