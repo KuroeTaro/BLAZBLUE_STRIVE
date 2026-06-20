@@ -9449,7 +9449,7 @@ function load_game_scene_anim_char_TRM_6SP_S(obj_char)
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
 
-        obj_char["ability_gauge"][1] = math.max(0,obj_char["ability_gauge"][1]-30)
+        obj_char["ability_gauge"][1] = math.max(0,obj_char["ability_gauge"][1]-50)
         -- game_speed
         obj_char["hit_hurt_blockstop_countdown"] = 17
         -- collide
