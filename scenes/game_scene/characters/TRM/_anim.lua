@@ -3840,7 +3840,7 @@ end
 -- _6S
 function load_game_scene_anim_char_TRM_6S(obj_char)
     local res = {}
-    local friction = 20
+    local friction = 50
     local gravity = 2.5
     local side = obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
@@ -4009,13 +4009,13 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
         obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver1
-        obj_char["hit_VFX_insert_function_argument"] = {130,-640,0.9,0.75,0.75,0,false,false}
+        obj_char["hit_VFX_insert_function_argument"] = {130,-690,0.9,0.75,0.75,0,false,false}
         obj_char["hit_SFX"] = nil
         obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
-        obj_char["hit_counter_VFX_insert_function_argument"] = {130,-640,1,0.75,0.75,0,false,false}
+        obj_char["hit_counter_VFX_insert_function_argument"] = {130,-690,1,0.75,0.75,0,false,false}
         obj_char["hit_counter_SFX"] = nil
         obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
-        obj_char["hit_block_VFX_insert_function_argument"] = {130,-640,0.45,0.75,0.75,0,false,false}
+        obj_char["hit_block_VFX_insert_function_argument"] = {130,-690,0.45,0.75,0.75,0,false,false}
         obj_char["hit_block_SFX"] = nil
         obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         obj_char["hurt_block_SFX"] = nil
@@ -4058,7 +4058,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
         obj_char["move_state"] = "active" -- none startup active recovery
         obj_char["strike_active"] = true 
         -- collide
-        obj_char["hitbox_table"] = {{200,-410,320,150}}
+        obj_char["hitbox_table"] = {{200,-450,320,150}}
         obj_char["hurtbox_table"] = {{0,-190,270,380},{-65,-400,60,40},{200,-260,130,240},{150,-385,370,160}}
         -- draw_correction
         obj_char[8] = 3
