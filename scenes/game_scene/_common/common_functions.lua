@@ -749,7 +749,7 @@ function common_game_scene_counter_ver3(hit_side_obj_char,hurt_side_obj_char)
     common_game_scene_counter_ver3_load_camera_enclose_anim(hit_side_obj_char)
     hit_side_obj_char["enclose_position_offset"] = {
         (hit_side_obj_char["x"]+hurt_side_obj_char["x"])/2 - obj_camera["3d_pos_x"],
-        (hit_side_obj_char["y"]+hurt_side_obj_char["y"])/8 - obj_camera["3d_pos_y"],
+        80,
         100
     }
     hit_side_obj_char["hit_hurt_blockstop_countdown"] = 31

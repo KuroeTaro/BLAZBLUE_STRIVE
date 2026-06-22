@@ -364,7 +364,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
                 common_game_scene_red_rc_hit_load_camera_enclose_anim(obj)
                 obj["enclose_position_offset"] = {
                     0,
-                    (obj_char["y"]+obj_char_other_side["y"])/16,
+                    37.5,
                     75
                 }
                 table.insert(obj_stage_main["camera_active_application_table"],
@@ -868,7 +868,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
                 common_game_scene_red_rc_hit_load_camera_enclose_anim(obj)
                 obj["enclose_position_offset"] = {
                     0,
-                    (obj_char["y"]+obj_char_other_side["y"])/16,
+                    37.5,
                     75
                 }
                 table.insert(obj_stage_main["camera_active_application_table"],
