@@ -42,3 +42,29 @@ function common_queue_pop(queue)
     table.remove(queue["content"], 1)
     return res
 end
+
+function common_ringbuffer_new(length)
+    local res = {}
+    res["length"] = length
+    res["content"] = {}
+    res["head"] = 1
+    res["count"] = 0
+    return res
+end
+
+function common_ringbuffer_push(rb, v)
+    rb["content"][rb["head"]] = v
+    rb["head"] = (rb["head"] % rb["length"]) + 1
+    if rb["count"] < rb["length"] then
+        rb["count"] = rb["count"] + 1
+    end
+end
+
+function common_ringbuffer_get(rb, index)
+    if index < 1 or index > rb["count"] then
+        return nil
+    end
+    local latest = ((rb["head"] - 2) % rb["length"]) + 1
+    local pos = ((latest - index) % rb["length"]) + 1
+    return rb["content"][pos]
+end
