@@ -132,9 +132,12 @@ function load_game_scene_obj_char_LP()
 
     obj_char_game_scene_char_LP["heat_penalty"] = 1
     obj_char_game_scene_char_LP["heat_penalty_countdown"] = 0
-    obj_char_game_scene_char_LP["ability_recover_pause"] = false
-    obj_char_game_scene_char_LP["ability_recover_pause_countdown"] = 0
+    obj_char_game_scene_char_LP["ability_penalty"] = 1
+    obj_char_game_scene_char_LP["ability_penalty_countdown"] = 0
     obj_char_game_scene_char_LP["positive_bonus"] = false
+    obj_char_game_scene_char_LP["positive_bonus_heat_gain_buff"] = 1
+    obj_char_game_scene_char_LP["positive_bonus_hit_damage_buff"] = 1
+    obj_char_game_scene_char_LP["positive_bonus_hurt_damage_buff"] = 1
     obj_char_game_scene_char_LP["positive_bonus_countdown"] = 0
 
     obj_char_game_scene_char_LP["gauge_update_ban_states"] = {
@@ -1123,9 +1126,12 @@ function load_game_scene_wallbreak_end_init_LP()
 
     obj_char_game_scene_char_LP["heat_penalty"] = 1
     obj_char_game_scene_char_LP["heat_penalty_countdown"] = 0
-    obj_char_game_scene_char_LP["ability_recover_pause"] = false
-    obj_char_game_scene_char_LP["ability_recover_pause_countdown"] = 0
+    obj_char_game_scene_char_LP["ability_penalty"] = 1
+    obj_char_game_scene_char_LP["ability_penalty_countdown"] = 0
     obj_char_game_scene_char_LP["positive_bonus"] = false
+    obj_char_game_scene_char_LP["positive_bonus_heat_gain_buff"] = 1
+    obj_char_game_scene_char_LP["positive_bonus_hit_damage_buff"] = 1
+    obj_char_game_scene_char_LP["positive_bonus_hurt_damage_buff"] = 1
     obj_char_game_scene_char_LP["positive_bonus_countdown"] = 0
 
     obj_char_game_scene_char_LP["horizontal_velocity_correction"] = 1
@@ -6489,16 +6495,27 @@ function update_game_scene_char_LP_heat_penalty_countdown()
         obj_char["heat_penalty_countdown"] = 0
     end
 end
-function update_game_scene_char_LP_ability_recover_pause_countdown()
+function update_game_scene_char_LP_ability_penalty_countdown()
+    local obj_char = obj_char_game_scene_char_LP
+    if obj_char["state"] == "hitstop" or obj_char["state"] == "hurtstop" or obj_char["state"] == "blockstop" then
+        return
+    end
+    if obj_char["ability_penalty_countdown"] > 1 then
+        obj_char["ability_penalty_countdown"] = obj_char["ability_penalty_countdown"] - 1
+    else
+        obj_char["ability_penalty"] = 1
+        obj_char["ability_penalty_countdown"] = 0
+    end
 end
 function update_game_scene_char_LP_positive_bonus_countdown()
+    
 end
 function update_game_scene_char_LP_uncommon()
     -- countdown
     update_game_scene_char_LP_overdrive_countdown()
     update_game_scene_char_LP_inv_state_countdown()
     update_game_scene_char_LP_heat_penalty_countdown()
-    update_game_scene_char_LP_ability_recover_pause_countdown()
+    update_game_scene_char_LP_ability_penalty_countdown()
     update_game_scene_char_LP_positive_bonus_countdown()
     -- basic_prop_cache
     for i = 1,8 do

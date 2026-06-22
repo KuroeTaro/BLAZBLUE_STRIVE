@@ -134,8 +134,8 @@ obj_char["wallstick_gauge"] = {0.0,200.0} -- 0.0 - 200.0
 
 obj_char["heat_penalty"] = 0.1
 obj_char["heat_penalty_countdown"] = 0
-obj_char["ability_recover_pause"] = false
-obj_char["ability_recover_pause_countdown"] = 0
+obj_char["ability_penalty"] = false
+obj_char["ability_penalty_countdown"] = 0
 
 obj_char["horizontal_velocity_correction"] = 1
 obj_char["gravity_correction"] = 1
