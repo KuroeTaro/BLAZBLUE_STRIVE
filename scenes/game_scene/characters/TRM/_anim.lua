@@ -9442,6 +9442,9 @@ function load_game_scene_anim_char_TRM_6SP_S(obj_char)
         obj_char["hit_function"] = common_game_scene_strike_hit_function
         obj_char["hurt_function"] = common_game_scene_strike_hurt_function
         obj_char["hit_counter_ver_function"] = common_game_scene_counter_ver3
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_set_input_sys_cache_init(obj_char)
         -- state_number
         obj_char["friction"] = friction
         obj_char["gravity"] = gravity
@@ -9513,6 +9516,9 @@ function load_game_scene_anim_char_TRM_6SP_S(obj_char)
         obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["strike_active"] = false
+        -- input_sys_cache
+        obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- collide
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30},{120,-425,150,280}}

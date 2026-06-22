@@ -130,7 +130,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["risk_gauge"] = {0.0,300.0} -- 0.0 - 300.0
     obj_char_game_scene_char_LP["wallstick_gauge"] = {0.0,200.0} -- 0.0 - 200.0
 
-    obj_char_game_scene_char_LP["heat_penalty"] = false
+    obj_char_game_scene_char_LP["heat_penalty"] = 1
     obj_char_game_scene_char_LP["heat_penalty_countdown"] = 0
     obj_char_game_scene_char_LP["ability_recover_pause"] = false
     obj_char_game_scene_char_LP["ability_recover_pause_countdown"] = 0
@@ -1121,7 +1121,7 @@ function load_game_scene_wallbreak_end_init_LP()
     obj_char_game_scene_char_LP["wallstick_gauge"] = {0.0,200.0} -- 0.0 - 200.0
 
 
-    obj_char_game_scene_char_LP["heat_penalty"] = false
+    obj_char_game_scene_char_LP["heat_penalty"] = 1
     obj_char_game_scene_char_LP["heat_penalty_countdown"] = 0
     obj_char_game_scene_char_LP["ability_recover_pause"] = false
     obj_char_game_scene_char_LP["ability_recover_pause_countdown"] = 0
@@ -3003,6 +3003,9 @@ function state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver(input
 end
 
 function state_gate_game_scene_char_LP_common_to_burst_RC_red(input,obj_char)
+    if obj_char["heat_gauge"][1] < 100.0 then
+        return
+    end
     if test_input_sys_press(input["RC"]) then
         obj_char["velocity_cache"] = {0,0}
         if test_input_sys_press_or_hold(input["dash"]) then
@@ -3043,6 +3046,9 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_red(input,obj_char)
     end
 end
 function state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char)
+    if obj_char["heat_gauge"][1] < 100.0 then
+        return
+    end
     if test_input_sys_press(input["RC"]) then
         local forward_dash_state = {
             ["6dash_dash"] = true,
@@ -3111,6 +3117,9 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char)
     end
 end
 function state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char)
+    if obj_char["heat_gauge"][1] < 100.0 then
+        return
+    end
     if test_input_sys_press(input["RC"]) then
         obj_char["velocity_cache"] = {0,0}
         if test_input_sys_press_or_hold(input["dash"]) then
@@ -3151,6 +3160,9 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char)
     end
 end
 function state_gate_game_scene_char_LP_common_to_burst_RC_yellow(input,obj_char)
+    if obj_char["heat_gauge"][1] < 100.0 then
+        return
+    end
     if test_input_sys_press(input["RC"]) 
     -- and obj_char["height_state"] ~= "air" 
     then
@@ -4571,6 +4583,8 @@ function state_gate_game_scene_char_LP_from_burst_RC_red(input,obj_char)
             if state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,19,0,nil})
+                obj_char["heat_penalty"] = 0.1
+                obj_char["heat_penalty_countdown"] = 120
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1
                 obj_char["velocity"][2] = obj_char["velocity"][2]*5
                 return true
@@ -4578,6 +4592,8 @@ function state_gate_game_scene_char_LP_from_burst_RC_red(input,obj_char)
             if state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,19,0,nil})
+                obj_char["heat_penalty"] = 0.1
+                obj_char["heat_penalty_countdown"] = 120
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1
                 obj_char["velocity"][2] = obj_char["velocity"][2]*5
                 return true
@@ -4587,6 +4603,8 @@ function state_gate_game_scene_char_LP_from_burst_RC_red(input,obj_char)
             if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,19,0,nil})
+                obj_char["heat_penalty"] = 0.1
+                obj_char["heat_penalty_countdown"] = 120
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1
                 obj_char["velocity"][2] = 0
                 return true
@@ -4597,6 +4615,9 @@ function state_gate_game_scene_char_LP_from_burst_RC_red(input,obj_char)
         -- state
         obj_char["idle_cancel"] = true
         obj_char["physics_lock"] = false
+        -- state_number
+        obj_char["heat_penalty"] = 0.1
+        obj_char["heat_penalty_countdown"] = 240
         -- input_sys_cache
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
@@ -4639,6 +4660,8 @@ function state_gate_game_scene_char_LP_from_burst_RC_blue(input,obj_char)
             if state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
+                obj_char["heat_penalty"] = 0.1
+                obj_char["heat_penalty_countdown"] = 60
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.625
                 obj_char["velocity"][2] = obj_char["velocity"][2]*1 + obj_char["velocity_cache"][2]*1.25
                 return true
@@ -4646,6 +4669,8 @@ function state_gate_game_scene_char_LP_from_burst_RC_blue(input,obj_char)
             if state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
+                obj_char["heat_penalty"] = 0.1
+                obj_char["heat_penalty_countdown"] = 60
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.625
                 obj_char["velocity"][2] = obj_char["velocity"][2]*1 + obj_char["velocity_cache"][2]*1.25
                 return true
@@ -4655,6 +4680,8 @@ function state_gate_game_scene_char_LP_from_burst_RC_blue(input,obj_char)
             if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
+                obj_char["heat_penalty"] = 0.1
+                obj_char["heat_penalty_countdown"] = 60
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1 + obj_char["velocity_cache"][1]*0.625
                 obj_char["velocity"][2] = 0
                 return true
@@ -4665,6 +4692,9 @@ function state_gate_game_scene_char_LP_from_burst_RC_blue(input,obj_char)
         -- state
         obj_char["idle_cancel"] = true
         obj_char["physics_lock"] = false
+        -- state_number
+        obj_char["heat_penalty"] = 0.1
+        obj_char["heat_penalty_countdown"] = 120
         -- input_sys_cache
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
@@ -4707,6 +4737,8 @@ function state_gate_game_scene_char_LP_from_burst_RC_purple(input,obj_char)
             if state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
+                obj_char["heat_penalty"] = 0.1
+                obj_char["heat_penalty_countdown"] = 120
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1
                 obj_char["velocity"][2] = obj_char["velocity"][2]*5
                 return true
@@ -4714,6 +4746,8 @@ function state_gate_game_scene_char_LP_from_burst_RC_purple(input,obj_char)
             if state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
+                obj_char["heat_penalty"] = 0.1
+                obj_char["heat_penalty_countdown"] = 120
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1
                 obj_char["velocity"][2] = obj_char["velocity"][2]*5
                 return true
@@ -4723,6 +4757,8 @@ function state_gate_game_scene_char_LP_from_burst_RC_purple(input,obj_char)
             if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(obj_char_other_side,{1,2,1,29,0,nil})
+                obj_char["heat_penalty"] = 0.1
+                obj_char["heat_penalty_countdown"] = 120
                 obj_char["velocity"][1] = obj_char["velocity"][1]*1
                 obj_char["velocity"][2] = 0
                 return true
@@ -4733,6 +4769,9 @@ function state_gate_game_scene_char_LP_from_burst_RC_purple(input,obj_char)
         -- state
         obj_char["idle_cancel"] = true
         obj_char["physics_lock"] = false
+        -- state_number
+        obj_char["heat_penalty"] = 0.1
+        obj_char["heat_penalty_countdown"] = 60
         -- input_sys_cache
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
@@ -4772,6 +4811,9 @@ function state_gate_game_scene_char_LP_from_burst_RC_yellow(input,obj_char)
         -- state
         obj_char["idle_cancel"] = true
         obj_char["physics_lock"] = false
+        -- state_number
+        obj_char["heat_penalty"] = 0.1
+        obj_char["heat_penalty_countdown"] = 480
         -- input_sys_cache
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
@@ -6436,6 +6478,16 @@ function update_game_scene_char_LP_inv_state_countdown()
     end
 end
 function update_game_scene_char_LP_heat_penalty_countdown()
+    local obj_char = obj_char_game_scene_char_LP
+    if obj_char["state"] == "hitstop" or obj_char["state"] == "hurtstop" or obj_char["state"] == "blockstop" then
+        return
+    end
+    if obj_char["heat_penalty_countdown"] > 1 then
+        obj_char["heat_penalty_countdown"] = obj_char["heat_penalty_countdown"] - 1
+    else
+        obj_char["heat_penalty"] = 1
+        obj_char["heat_penalty_countdown"] = 0
+    end
 end
 function update_game_scene_char_LP_ability_recover_pause_countdown()
 end

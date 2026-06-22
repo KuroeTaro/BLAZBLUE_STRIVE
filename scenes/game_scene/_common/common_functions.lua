@@ -1107,7 +1107,7 @@ function common_game_scene_char_apply_damage_heat(
         -- hit_side
             -- apply heat gain
             hit_side_obj_char["heat_gauge"][1] = math.min(
-                hit_side_obj_char["heat_gauge"][1] + hit_side_obj_char["hit_heat_gain"], -- hit_heat_gain
+                hit_side_obj_char["heat_gauge"][1] + hit_side_obj_char["hit_heat_gain"]*hit_side_obj_char["heat_penalty"], -- hit_heat_gain
                 hit_side_obj_char["heat_gauge"][2]
             )
         -- hurt_side
@@ -1118,7 +1118,7 @@ function common_game_scene_char_apply_damage_heat(
             )
             -- apply heat gain
             hurt_side_obj_char["heat_gauge"][1] = math.min(
-                hurt_side_obj_char["heat_gauge"][1] + hit_side_obj_char["hurt_heat_gain"], -- hurt_heat_gain
+                hurt_side_obj_char["heat_gauge"][1] + hit_side_obj_char["hurt_heat_gain"]*hurt_side_obj_char["heat_penalty"], -- hurt_heat_gain
                 hurt_side_obj_char["heat_gauge"][2]
             ) 
             -- apply risk gauge and damage_correction
@@ -1139,13 +1139,13 @@ function common_game_scene_char_apply_damage_heat(
         -- hit_side
             -- apply heat gain
             hit_side_obj_char["heat_gauge"][1] = math.min(
-                hit_side_obj_char["heat_gauge"][1] + hit_side_obj_char["blocked_heat_gain"], -- blocked_heat_gain
+                hit_side_obj_char["heat_gauge"][1] + hit_side_obj_char["blocked_heat_gain"]*hit_side_obj_char["heat_penalty"], -- blocked_heat_gain
                 hit_side_obj_char["heat_gauge"][2]
             )
         -- hurt_side
             -- apply heat gain
             hurt_side_obj_char["heat_gauge"][1] = math.min(
-                hurt_side_obj_char["heat_gauge"][1] + hit_side_obj_char["block_heat_gain"], -- block_heat_gain
+                hurt_side_obj_char["heat_gauge"][1] + hit_side_obj_char["block_heat_gain"]*hurt_side_obj_char["heat_penalty"], -- block_heat_gain
                 hurt_side_obj_char["heat_gauge"][2]
             ) 
             -- apply risk gauge
@@ -1157,13 +1157,13 @@ function common_game_scene_char_apply_damage_heat(
         -- hit_side
             -- apply heat gain
             hit_side_obj_char["heat_gauge"][1] = math.min(
-                hit_side_obj_char["heat_gauge"][1] + hit_side_obj_char["blocked_heat_gain"],
+                hit_side_obj_char["heat_gauge"][1] + hit_side_obj_char["blocked_heat_gain"]*hit_side_obj_char["heat_penalty"],
                 hit_side_obj_char["heat_gauge"][2]
             )
         -- hurt_side
             -- apply heat drain
             hurt_side_obj_char["heat_gauge"][1] = math.max(
-                hurt_side_obj_char["heat_gauge"][1] - hit_side_obj_char["FD_block_heat_drain"], -- FD_block_heat_drain
+                hurt_side_obj_char["heat_gauge"][1] - hit_side_obj_char["FD_block_heat_drain"]*hurt_side_obj_char["heat_penalty"], -- FD_block_heat_drain
                 0
             )
     end
@@ -1176,7 +1176,7 @@ function common_game_scene_projectile_apply_damage_heat(
         -- hit_side
             -- apply heat gain
             hit_side_obj_char["heat_gauge"][1] = math.min(
-                hit_side_obj_char["heat_gauge"][1] + projectile["hit_heat_gain"],
+                hit_side_obj_char["heat_gauge"][1] + projectile["hit_heat_gain"]*hit_side_obj_char["heat_penalty"],
                 hit_side_obj_char["heat_gauge"][2]
             )
         -- hurt_side
@@ -1187,7 +1187,7 @@ function common_game_scene_projectile_apply_damage_heat(
             )
             -- apply heat gain
             hurt_side_obj_char["heat_gauge"][1] = math.min(
-                hurt_side_obj_char["heat_gauge"][1] + projectile["hurt_heat_gain"],
+                hurt_side_obj_char["heat_gauge"][1] + projectile["hurt_heat_gain"]*hurt_side_obj_char["heat_penalty"],
                 hurt_side_obj_char["heat_gauge"][2]
             ) 
             -- apply risk gauge and damage_correction
@@ -1208,13 +1208,13 @@ function common_game_scene_projectile_apply_damage_heat(
         -- hit_side
             -- apply heat gain
             hit_side_obj_char["heat_gauge"][1] = math.min(
-                hit_side_obj_char["heat_gauge"][1] + projectile["blocked_heat_gain"],
+                hit_side_obj_char["heat_gauge"][1] + projectile["blocked_heat_gain"]*hit_side_obj_char["heat_penalty"],
                 hit_side_obj_char["heat_gauge"][2]
             )
         -- hurt_side
             -- apply heat gain
             hurt_side_obj_char["heat_gauge"][1] = math.min(
-                hurt_side_obj_char["heat_gauge"][1] + hit_side_obj_char["block_heat_gain"],
+                hurt_side_obj_char["heat_gauge"][1] + hit_side_obj_char["block_heat_gain"]*hurt_side_obj_char["heat_penalty"],
                 hurt_side_obj_char["heat_gauge"][2]
             ) 
             -- apply risk gauge
@@ -1226,13 +1226,13 @@ function common_game_scene_projectile_apply_damage_heat(
         -- hit_side
             -- apply heat gain
             hit_side_obj_char["heat_gauge"][1] = math.min(
-                hit_side_obj_char["heat_gauge"][1] + projectile["blocked_heat_gain"],
+                hit_side_obj_char["heat_gauge"][1] + projectile["blocked_heat_gain"]*hit_side_obj_char["heat_penalty"],
                 hit_side_obj_char["heat_gauge"][2]
             )
         -- hurt_side
             -- apply heat drain
             hurt_side_obj_char["heat_gauge"][1] = math.max(
-                hurt_side_obj_char["heat_gauge"][1] - projectile["FD_block_heat_drain"],
+                hurt_side_obj_char["heat_gauge"][1] - projectile["FD_block_heat_drain"]*hurt_side_obj_char["heat_penalty"],
                 0
             )
     end
