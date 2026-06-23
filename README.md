@@ -1,6 +1,6 @@
 Lead Developer: Kuroe_Taro
 
-Developers: wate/zzp6
+Developers: NL_boom
 
 Honorary member: 天乱 燃原藏王
 
