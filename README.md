@@ -1,5 +1,7 @@
 Lead Developer: Kuroe_Taro
+
 Developers: wate/zzp6
+
 Honorary member: 天乱 燃原藏王
 
 > [!IMPORTANT]
