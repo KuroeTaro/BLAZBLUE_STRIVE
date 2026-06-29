@@ -1652,7 +1652,9 @@ function update_start_scene_config_controller_ease_in()
 
         INPUT_SYS_CURRENT_CONTROLLER["L"] = {nil,nil} 
         INPUT_SYS_CURRENT_CONTROLLER["R"] = {nil,nil}
-
+        INPUT_SYS_LAST_JOYSTICK_ID["L"] = nil
+        INPUT_SYS_LAST_JOYSTICK_ID["R"] = nil
+        
         -- 更新 current_update_block
         current_update_block = update_start_scene_config_controller_main
     end
