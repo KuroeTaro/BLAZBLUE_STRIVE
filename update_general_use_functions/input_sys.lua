@@ -117,39 +117,41 @@ function get_joystick_id(js)
     end
     return nil
 end
-function try_joystick_reconnect_offline()
-    local current_contoller_LP = INPUT_SYS_CURRENT_CONTROLLER["L"]
-    local current_contoller_RP = INPUT_SYS_CURRENT_CONTROLLER["R"]
-    local last_controller_ID_LP = INPUT_SYS_LAST_JOYSTICK_ID["L"]
-    local last_controller_ID_RP = INPUT_SYS_LAST_JOYSTICK_ID["R"]
-    if last_controller_ID_LP and current_contoller_LP[1] == nil then
-        for i=1,#INPUT_SYS_CURRENT_JOYSTICK_TABLE do
-            if get_joystick_id(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]) == last_controller_ID_LP then
-                INPUT_SYS_CURRENT_CONTROLLER["L"] = {"joystick", INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]}
-                break
-            end
-        end
-    end
-    if last_controller_ID_RP and current_contoller_RP[1] == nil then
-        for i=1,#INPUT_SYS_CURRENT_JOYSTICK_TABLE do
-            if get_joystick_id(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]) == last_controller_ID_RP then
-                INPUT_SYS_CURRENT_CONTROLLER["R"] = {"joystick", INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]}
-                break
-            end
+
+function update_try_joystick_assign_js_iterate()
+end
+function update_try_joystick_reassign_js_iterate(side,other_side_controller_id)
+    -- 检测手柄的按钮 如果有手柄按键按下则设定手柄为本侧控制器
+    for i=1,#INPUT_SYS_CURRENT_JOYSTICK_TABLE,1 do
+        local current_controller_id = get_joystick_id(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i])
+        if get_input_sys_anykey_joystick(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]) and id ~= other_side_controller_id then
+            INPUT_SYS_CURRENT_CONTROLLER[side] = {"joystick",INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]}
+            INPUT_SYS_LAST_JOYSTICK_ID[side] = current_controller_id
+            return
         end
     end
 end
-function try_joystick_reconnect_online()
-    local current_contoller_MATCH_SIDE = INPUT_SYS_CURRENT_CONTROLLER[NETWORK_MATCH_SIDE]
-    local last_controller_ID_MATCH_SIDE = INPUT_SYS_LAST_JOYSTICK_ID[NETWORK_MATCH_SIDE]
-    if last_controller_ID_MATCH_SIDE and current_contoller_MATCH_SIDE[1] ~= "joystick" then
-        for i=1,#INPUT_SYS_CURRENT_JOYSTICK_TABLE do
-            if get_joystick_id(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]) == last_controller_ID_MATCH_SIDE then
-                INPUT_SYS_CURRENT_CONTROLLER[NETWORK_MATCH_SIDE] = {"joystick", INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]}
-                break
-            end
+function update_try_joystick_reconnect_js_iterate(side)
+    local current_contoller = INPUT_SYS_CURRENT_CONTROLLER[side]
+    local last_controller_ID = INPUT_SYS_LAST_JOYSTICK_ID[side]
+    if (last_controller_ID and current_contoller[1] ~= "joystick") == false then
+        return
+    end
+    for i=1,#INPUT_SYS_CURRENT_JOYSTICK_TABLE,1 do
+        if get_joystick_id(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]) == last_controller_ID then
+            INPUT_SYS_CURRENT_CONTROLLER[side] = {
+                "joystick", INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]
+            }
+            return
         end
     end
+end
+function update_try_joystick_reconnect_offline()
+    update_try_joystick_reconnect_js_iterate("L")
+    update_try_joystick_reconnect_js_iterate("R")
+end
+function update_try_joystick_reconnect_online()
+    update_try_joystick_reconnect_js_iterate(NETWORK_MATCH_SIDE)
 end
 
 --加载手柄
@@ -157,7 +159,7 @@ function update_controller()
     INPUT_SYS_CURRENT_JOYSTICK_TABLE = love.joystick.getJoysticks()
     if GAME_MODE == 2 then
         -- 如果掉线 尝试控制器重连
-        try_joystick_reconnect_online()
+        update_try_joystick_reconnect_online()
 
         INPUT_SYS_CURRENT_CONTROLLER[NETWORK_OTHER_SIDE] = {"network",ROLLBACK_INPUT_TABLE}
         -- 检测键盘的按键 如果有键盘按键按下则设定键盘为本侧控制器
@@ -175,11 +177,11 @@ function update_controller()
         end
     else
         -- 如果掉线 尝试控制器重连
-        try_joystick_reconnect_offline()
+        update_try_joystick_reconnect_offline()
 
         local L_controller = INPUT_SYS_CURRENT_CONTROLLER["L"]
         local R_controller = INPUT_SYS_CURRENT_CONTROLLER["R"]
-        local R_id = get_joystick_id(R_controller[2])
+        local other_side_controller_id = get_joystick_id(R_controller[2])
 
         if L_controller[1] == nil then
             -- 检测键盘的按键 如果有键盘按键按下则设定键盘为本侧控制器
@@ -190,15 +192,7 @@ function update_controller()
             end
 
             -- 检测手柄的按钮 如果有手柄按键按下则设定手柄为本侧控制器
-            for i=1,#INPUT_SYS_CURRENT_JOYSTICK_TABLE,1 do
-                local id = get_joystick_id(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i])
-                if get_input_sys_anykey_joystick(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]) and id ~= R_id then
-                    INPUT_SYS_CURRENT_CONTROLLER["L"] = {"joystick",INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]}
-                    INPUT_SYS_LAST_JOYSTICK_ID["L"] = id
-                    break
-                end
-            end
-
+            update_try_joystick_reassign_js_iterate("L",other_side_controller_id)
         elseif L_controller[1] == "joystick" and L_controller[2]:isConnected() == false then
             L_controller[1] = nil
             L_controller[2] = nil
@@ -210,19 +204,12 @@ function update_controller()
             end
 
             -- 检测手柄的按钮 如果有手柄按键按下则设定手柄为本侧控制器
-            for i=1,#INPUT_SYS_CURRENT_JOYSTICK_TABLE,1 do
-                local id = get_joystick_id(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i])
-                if get_input_sys_anykey_joystick(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]) and id ~= R_id then
-                    INPUT_SYS_CURRENT_CONTROLLER["L"] = {"joystick",INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]}
-                    INPUT_SYS_LAST_JOYSTICK_ID["L"] = id
-                    break
-                end
-            end
+            update_try_joystick_reassign_js_iterate("L",other_side_controller_id)
         end
 
         L_controller = INPUT_SYS_CURRENT_CONTROLLER["L"]
         R_controller = INPUT_SYS_CURRENT_CONTROLLER["R"]
-        local L_id = get_joystick_id(L_controller[2])
+        local other_side_controller_id = get_joystick_id(L_controller[2])
 
         if R_controller[1] == nil then
             if (get_input_sys_anykey_keyboard() or INPUT_SYS_CURRENT_JOYSTICK_TABLE[1] == nil)
@@ -232,14 +219,7 @@ function update_controller()
             end
 
             -- 检测手柄的按钮 如果有手柄按键按下则设定手柄为本侧控制器
-            for i=1,#INPUT_SYS_CURRENT_JOYSTICK_TABLE,1 do
-                local id = get_joystick_id(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i])
-                if get_input_sys_anykey_joystick(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]) and id ~= L_id then
-                    INPUT_SYS_CURRENT_CONTROLLER["R"] = {"joystick",INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]}
-                    INPUT_SYS_LAST_JOYSTICK_ID["R"] = id
-                    break
-                end
-            end
+            update_try_joystick_reassign_js_iterate("R",other_side_controller_id)
         elseif R_controller[1] == "joystick" and R_controller[2]:isConnected() == false then
             R_controller[1] = nil
             R_controller[2] = nil
@@ -251,14 +231,7 @@ function update_controller()
             end
 
             -- 检测手柄的按钮 如果有手柄按键按下则设定手柄为本侧控制器
-            for i=1,#INPUT_SYS_CURRENT_JOYSTICK_TABLE,1 do
-                local id = get_joystick_id(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i])
-                if get_input_sys_anykey_joystick(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]) and id ~= L_id then
-                    INPUT_SYS_CURRENT_CONTROLLER["R"] = {"joystick",INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]}
-                    INPUT_SYS_LAST_JOYSTICK_ID["R"] = id
-                    break
-                end
-            end
+            update_try_joystick_reassign_js_iterate("R",other_side_controller_id)
         end
     end
 
