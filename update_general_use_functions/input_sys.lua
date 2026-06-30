@@ -118,9 +118,30 @@ function get_joystick_id(js)
     return nil
 end
 
-function update_try_joystick_assign_js_iterate()
+function update_try_keyboard_assign(side)
+    if (get_input_sys_anykey_keyboard() or INPUT_SYS_CURRENT_JOYSTICK_TABLE[1] == nil)then
+        INPUT_SYS_CURRENT_CONTROLLER[side] = {"keyboard",nil}
+    end
 end
-function update_try_joystick_reassign_js_iterate(side,other_side_controller_id)
+function update_try_keyboard_reassign(side,other_side_controller)
+    if (get_input_sys_anykey_keyboard() or INPUT_SYS_CURRENT_JOYSTICK_TABLE[1] == nil)
+    and other_side_controller[1] ~= "keyboard"
+    then
+        INPUT_SYS_CURRENT_CONTROLLER[side] = {"keyboard",nil}
+    end
+end
+
+function update_try_joystick_assign_iterate(side)
+    -- 检测手柄的按钮 如果有手柄按键按下则设定手柄为本侧控制器
+    for i=1,#INPUT_SYS_CURRENT_JOYSTICK_TABLE,1 do
+        if get_input_sys_anykey_joystick(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]) then
+            INPUT_SYS_CURRENT_CONTROLLER[side] = {"joystick",INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]}
+            INPUT_SYS_LAST_JOYSTICK_ID[side] = get_joystick_id(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i])
+            break
+        end
+    end
+end
+function update_try_joystick_reassign_iterate(side,other_side_controller_id)
     -- 检测手柄的按钮 如果有手柄按键按下则设定手柄为本侧控制器
     for i=1,#INPUT_SYS_CURRENT_JOYSTICK_TABLE,1 do
         local current_controller_id = get_joystick_id(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i])
@@ -131,7 +152,7 @@ function update_try_joystick_reassign_js_iterate(side,other_side_controller_id)
         end
     end
 end
-function update_try_joystick_reconnect_js_iterate(side)
+function update_try_joystick_reconnect_iterate(side)
     local current_contoller = INPUT_SYS_CURRENT_CONTROLLER[side]
     local last_controller_ID = INPUT_SYS_LAST_JOYSTICK_ID[side]
     if (last_controller_ID and current_contoller[1] ~= "joystick") == false then
@@ -147,11 +168,11 @@ function update_try_joystick_reconnect_js_iterate(side)
     end
 end
 function update_try_joystick_reconnect_offline()
-    update_try_joystick_reconnect_js_iterate("L")
-    update_try_joystick_reconnect_js_iterate("R")
+    update_try_joystick_reconnect_iterate("L")
+    update_try_joystick_reconnect_iterate("R")
 end
 function update_try_joystick_reconnect_online()
-    update_try_joystick_reconnect_js_iterate(NETWORK_MATCH_SIDE)
+    update_try_joystick_reconnect_iterate(NETWORK_MATCH_SIDE)
 end
 
 --加载手柄
@@ -163,18 +184,9 @@ function update_controller()
 
         INPUT_SYS_CURRENT_CONTROLLER[NETWORK_OTHER_SIDE] = {"network",ROLLBACK_INPUT_TABLE}
         -- 检测键盘的按键 如果有键盘按键按下则设定键盘为本侧控制器
-        if get_input_sys_anykey_keyboard() or INPUT_SYS_CURRENT_JOYSTICK_TABLE[1] == nil then
-            INPUT_SYS_CURRENT_CONTROLLER[NETWORK_MATCH_SIDE] = {"keyboard",nil}
-        end
-
-        -- 检测手柄的按钮 如果有手柄按键按下则设定手柄为本侧控制器
-        for i=1,#INPUT_SYS_CURRENT_JOYSTICK_TABLE,1 do
-            if get_input_sys_anykey_joystick(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]) then
-                INPUT_SYS_CURRENT_CONTROLLER[NETWORK_MATCH_SIDE] = {"joystick",INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]}
-                INPUT_SYS_LAST_JOYSTICK_ID[NETWORK_MATCH_SIDE] = get_joystick_id(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i])
-                break
-            end
-        end
+        update_try_keyboard_assign(NETWORK_MATCH_SIDE)
+        -- 检查手柄的按键 如果有手柄按键按下则设定手柄为本侧控制器
+        update_try_joystick_assign_iterate(NETWORK_MATCH_SIDE)
     else
         -- 如果掉线 尝试控制器重连
         update_try_joystick_reconnect_offline()
@@ -185,26 +197,16 @@ function update_controller()
 
         if L_controller[1] == nil then
             -- 检测键盘的按键 如果有键盘按键按下则设定键盘为本侧控制器
-            if (get_input_sys_anykey_keyboard() or INPUT_SYS_CURRENT_JOYSTICK_TABLE[1] == nil)
-            and R_controller[1] ~= "keyboard"
-            then
-                INPUT_SYS_CURRENT_CONTROLLER["L"] = {"keyboard",nil}
-            end
-
+            update_try_keyboard_reassign("L",R_controller)
             -- 检测手柄的按钮 如果有手柄按键按下则设定手柄为本侧控制器
-            update_try_joystick_reassign_js_iterate("L",other_side_controller_id)
+            update_try_joystick_reassign_iterate("L",other_side_controller_id)
         elseif L_controller[1] == "joystick" and L_controller[2]:isConnected() == false then
             L_controller[1] = nil
             L_controller[2] = nil
             -- 检测键盘的按键 如果有键盘按键按下则设定键盘为本侧控制器
-            if (get_input_sys_anykey_keyboard() or INPUT_SYS_CURRENT_JOYSTICK_TABLE[1] == nil)
-            and R_controller[1] ~= "keyboard"
-            then
-                INPUT_SYS_CURRENT_CONTROLLER["L"] = {"keyboard",nil}
-            end
-
+            update_try_keyboard_reassign("L",R_controller)
             -- 检测手柄的按钮 如果有手柄按键按下则设定手柄为本侧控制器
-            update_try_joystick_reassign_js_iterate("L",other_side_controller_id)
+            update_try_joystick_reassign_iterate("L",other_side_controller_id)
         end
 
         L_controller = INPUT_SYS_CURRENT_CONTROLLER["L"]
@@ -212,26 +214,16 @@ function update_controller()
         local other_side_controller_id = get_joystick_id(L_controller[2])
 
         if R_controller[1] == nil then
-            if (get_input_sys_anykey_keyboard() or INPUT_SYS_CURRENT_JOYSTICK_TABLE[1] == nil)
-            and L_controller[1] ~= "keyboard"
-            then
-                INPUT_SYS_CURRENT_CONTROLLER["R"] = {"keyboard",nil}
-            end
-
+            update_try_keyboard_reassign("R",L_controller)
             -- 检测手柄的按钮 如果有手柄按键按下则设定手柄为本侧控制器
-            update_try_joystick_reassign_js_iterate("R",other_side_controller_id)
+            update_try_joystick_reassign_iterate("R",other_side_controller_id)
         elseif R_controller[1] == "joystick" and R_controller[2]:isConnected() == false then
             R_controller[1] = nil
             R_controller[2] = nil
             -- 检测键盘的按键 如果有键盘按键按下则设定键盘为本侧控制器
-            if (get_input_sys_anykey_keyboard() or INPUT_SYS_CURRENT_JOYSTICK_TABLE[1] == nil)
-            and L_controller[1] ~= "keyboard"
-            then
-                INPUT_SYS_CURRENT_CONTROLLER["R"] = {"keyboard",nil}
-            end
-
+            update_try_keyboard_reassign("R",L_controller)
             -- 检测手柄的按钮 如果有手柄按键按下则设定手柄为本侧控制器
-            update_try_joystick_reassign_js_iterate("R",other_side_controller_id)
+            update_try_joystick_reassign_iterate("R",other_side_controller_id)
         end
     end
 
