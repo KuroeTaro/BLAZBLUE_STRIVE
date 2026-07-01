@@ -25,6 +25,30 @@ function collision_box_aabb_detection(box_a,box_b)
 
     return (x_overlap and y_overlap)   
 end
+function collision_capsule_detection(capsule_a,capsule_b)
+    -- x,y,height,r
+    local dx = capsule_a[1] - capsule_b[1]
+    local r = capsule_a[4] + capsule_b[4]
+    if dx > r then
+        return false
+    end
+
+    local capsule_a_top = capsule_a[2]-capsule_a[4]/2
+    local capsule_a_bottom = capsule_a[2]+capsule_a[4]/2
+    local capsule_b_top = capsule_b[2]-capsule_b[4]/2
+    local capsule_b_bottom = capsule_b[2]+capsule_b[4]/2
+
+    local gap = 0
+
+    if capsule_a_bottom < capsule_b_top then
+        gap = capsule_b_top-capsule_a_bottom
+
+    elseif capsule_b_bottom < capsule_a_top then
+        gap = capsule_a_top-capsule_b_bottom
+    end
+
+    return dx*dx+gap*gap<=r*r
+end
 
 function collision_test_char_on_ground(obj)
     local box = collision_box_to_real_world_box(obj,obj["pushbox"])
