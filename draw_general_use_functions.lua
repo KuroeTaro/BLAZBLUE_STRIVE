@@ -201,24 +201,36 @@ function draw_3d_color_box(obj_camera,obj_box,color)
     love.graphics.rectangle("fill",cood_res[1],cood_res[2],obj_box["w"]*scale*sx,obj_box["h"]*scale*sy)
     love.graphics.setColor(1,1,1,1)
 end
-function draw_3d_capsule(obj_camera,obj_box,color)
-    local cood_res = draw_3d_point_to_2D(obj_camera,obj_box)
-    local x = draw_resolution_correction(cood_res[1])
-    local y = draw_resolution_correction(cood_res[2])
-    local z = obj_box[3]
-    local camera_z = obj_camera[3]
-    local scale = draw_resolution_correction(800)/(z-camera_z)
 
-    local h = obj_box["h"]*scale
-    local r = obj_box["r"]*scale
+-- draw_capsule_collider
+---------------------------------------------------------------------------------------------------
+    -- function draw_3d_capsule(obj_camera,obj_box,color)
+    --     local cood_res = draw_3d_point_to_2D(obj_camera,obj_box)
+    --     local x = draw_resolution_correction(cood_res[1])
+    --     local y = draw_resolution_correction(cood_res[2])
+    --     local z = obj_box[3]
+    --     local camera_z = obj_camera[3]
+    --     local scale = draw_resolution_correction(800)/(z-camera_z)
 
-    local top = y - h/2 + r
-    local bottom = y + h/2 - r
-    local midH = h - 2*r
+    --     local h = obj_box["h"]*scale
+    --     local r = obj_box["r"]*scale
 
-    love.graphics.setColor(color[1],color[2],color[3],color[4])
-    love.graphics.rectangle("fill", x - r, top, r*2, midH)
-    love.graphics.arc("fill", x, top, r, -math.pi, 0)
-    love.graphics.arc("fill", x, bottom, r, 0, math.pi)
-    love.graphics.setColor(1,1,1,1)
-end
+    --     local top = y - h/2 + r
+    --     local bottom = y + h/2 - r
+    --     local midH = h - 2*r
+
+    --     love.graphics.setColor(color[1],color[2],color[3],color[4])
+    --     love.graphics.rectangle("fill", x - r, top, r*2, midH)
+    --     love.graphics.arc("fill", x, top, r, -math.pi, 0)
+    --     love.graphics.arc("fill", x, bottom, r, 0, math.pi)
+    --     love.graphics.setColor(1,1,1,1)
+    -- end
+
+    -- local draw_capsule = {
+    --     obj_char["x"] + obj_char["pushbox"][1]*obj_char[5],
+    --     obj_char["y"] + obj_char["pushbox"][2],
+    --     obj_char[3],obj_char[5],1
+    -- }
+    -- draw_capsule["r"] = obj_char["pushbox"][3]/2
+    -- draw_capsule["h"] = obj_char["pushbox"][4]
+    -- draw_3d_capsule(obj_camera,draw_capsule,color)

@@ -26,54 +26,6 @@ function collision_box_aabb_detection(box_a,box_b)
     return (x_overlap and y_overlap)   
 end
 
-function collision_box_to_capsule(box)
-    local res = {
-        box[1],     -- x
-        box[2],     -- y
-        box[4],     -- height
-        box[3]/2    -- r
-    }
-    return res
-end
-function collision_capsule_detection(capsule_a,capsule_b)
-    -- x,y,height,r
-    local dx = capsule_a[1] - capsule_b[1]
-    local r = capsule_a[4] + capsule_b[4]
-    if dx > r then
-        return false
-    end
-
-    local capsule_a_top = capsule_a[2]-capsule_a[3]/2+capsule_a[4] 
-    local capsule_a_bottom = capsule_a[2]+capsule_a[3]/2-capsule_a[4] 
-    local capsule_b_top = capsule_b[2]-capsule_b[3]/2+capsule_b[4] 
-    local capsule_b_bottom = capsule_b[2]+capsule_b[3]/2-capsule_b[4]
-
-    local gap = 0
-    if capsule_a_bottom < capsule_b_top then
-        gap = capsule_b_top-capsule_a_bottom
-    elseif capsule_b_bottom < capsule_a_top then
-        gap = capsule_a_top-capsule_b_bottom
-    end
-
-    return dx*dx+gap*gap<=r*r
-end
-function collision_capsule_x_relocate_distance(capsule_a,capsule_b)
-    local r = capsule_a[4] + capsule_b[4]
-    local capsule_a_top = capsule_a[2]-capsule_a[3]/2+capsule_a[4] 
-    local capsule_a_bottom = capsule_a[2]+capsule_a[3]/2-capsule_a[4] 
-    local capsule_b_top = capsule_b[2]-capsule_b[3]/2+capsule_b[4] 
-    local capsule_b_bottom = capsule_b[2]+capsule_b[3]/2-capsule_b[4]
-
-    local gap = 0
-    if capsule_a_bottom < capsule_b_top then
-        gap = capsule_b_top-capsule_a_bottom
-    elseif capsule_b_bottom < capsule_a_top then
-        gap = capsule_a_top-capsule_b_bottom
-    end
-
-    return math.sqrt(r*r-gap*gap)
-end
-
 function collision_test_char_on_ground(obj)
     local box = collision_box_to_real_world_box(obj,obj["pushbox"])
     local stage_B_collision = 0
@@ -146,14 +98,12 @@ end
 function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_RP)
     local box_L = collision_box_to_real_world_box(obj_char_LP,obj_char_LP["pushbox"])
     local box_R = collision_box_to_real_world_box(obj_char_RP,obj_char_RP["pushbox"])
-    local capsule_L = collision_box_to_capsule(box_L)
-    local capsule_R = collision_box_to_capsule(box_R)
-    local distance = collision_capsule_x_relocate_distance(capsule_L,capsule_R)
+
     if (not obj_char_LP["pushbox_other_side_char_active"])
     or (not obj_char_RP["pushbox_other_side_char_active"]) then
         return
     end
-    if collision_capsule_detection(capsule_L,capsule_R) then
+    if collision_box_aabb_detection(box_L,box_R) then
         local collision_state = table.concat({
             obj_char_LP["collision_move_available"][1],
             obj_char_LP["collision_move_available"][2],
@@ -163,94 +113,94 @@ function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_R
         local switch = {
             ["1111"] = function()
                 local branch_flag = -1
-                if capsule_L[1] == capsule_R[1] then
+                if box_L[1] == box_R[1] then
                     if math.random() < 0.5 then
                         branch_flag = 1
                     else
                         branch_flag = 0
                     end
                 end
-                if capsule_L[1] < capsule_R[1] or branch_flag == 1 then
+                if box_L[1] < box_R[1] or branch_flag == 1 then
                     local mid = (box_L[1]+box_L[3]/2+box_R[1]-box_R[3]/2)/2
-                    obj_char_LP["x"] = mid-distance/2
-                    obj_char_RP["x"] = mid+distance/2
-                elseif capsule_L[1] > capsule_R[1] or branch_flag == 0 then
+                    obj_char_LP["x"] = mid-box_L[3]/2
+                    obj_char_RP["x"] = mid+box_R[3]/2
+                elseif box_L[1] > box_R[1] or branch_flag == 0 then
                     local mid = (box_R[1]+box_R[3]/2+box_L[1]-box_L[3]/2)/2
-                    obj_char_LP["x"] = mid+distance/2
-                    obj_char_RP["x"] = mid-distance/2
+                    obj_char_LP["x"] = mid+box_L[3]/2
+                    obj_char_RP["x"] = mid-box_R[3]/2
                 end
             end,
             ["0111"] = function()
-                obj_char_RP["x"] = box_L[1]+distance
+                obj_char_RP["x"] = box_L[1]+box_L[3]/2+box_R[3]/2
             end,
             ["1101"] = function()
-                obj_char_LP["x"] = box_R[1]+distance
+                obj_char_LP["x"] = box_R[1]+box_R[3]/2+box_L[3]/2
             end,
             ["0101"] = function()
                 if obj_char_LP["wallhurt_wallstick_on_side"] ~= 0 then
-                    obj_char_RP["x"] = box_L[1]+distance
+                    obj_char_RP["x"] = box_L[1]+box_L[3]/2+box_R[3]/2
                     return
                 end
                 if obj_char_RP["wallhurt_wallstick_on_side"] ~= 0 then
-                    obj_char_LP["x"] = box_R[1]+distance
+                    obj_char_LP["x"] = box_R[1]+box_R[3]/2+box_L[3]/2
                     return
                 end
 
                 if COLLSION_CONER_OUT_STATE[obj_char_LP["state"]] then
-                    obj_char_RP["x"] = box_L[1]+distance
+                    obj_char_RP["x"] = box_L[1]+box_L[3]/2+box_R[3]/2
                     return
                 end
                 if COLLSION_CONER_OUT_STATE[obj_char_RP["state"]] then
-                    obj_char_LP["x"] = box_R[1]+distance
+                    obj_char_LP["x"] = box_R[1]+box_R[3]/2+box_L[3]/2
                     return
                 end
 
                 if obj_char_LP["y"] < obj_char_RP["y"] then
-                    obj_char_LP["x"] = box_R[1]+distance
+                    obj_char_LP["x"] = box_R[1]+box_R[3]/2+box_L[3]/2
                     return
                 else
-                    obj_char_RP["x"] = box_L[1]+distance
+                    obj_char_RP["x"] = box_L[1]+box_L[3]/2+box_R[3]/2
                     return
                 end
             end,
             ["1011"] = function()
-                obj_char_RP["x"] = box_L[1]-distance
+                obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
             end,
             ["1110"] = function()
-                obj_char_LP["x"] = box_R[1]-distance
+                obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
             end,
             ["1010"] = function()
                 if obj_char_LP["wallhurt_wallstick_on_side"] ~= 0 then
-                    obj_char_RP["x"] = box_L[1]-distance
+                    obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
                     return
                 end
                 if obj_char_RP["wallhurt_wallstick_on_side"] ~= 0 then
-                    obj_char_LP["x"] = box_R[1]-distance
+                    obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
                     return
                 end
 
                 if COLLSION_CONER_OUT_STATE[obj_char_LP["state"]] then
-                    obj_char_RP["x"] = box_L[1]-distance
+                    obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
                     return
                 end
                 if COLLSION_CONER_OUT_STATE[obj_char_RP["state"]] then
-                    obj_char_LP["x"] = box_R[1]-distance
+                    obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
                     return
                 end
 
                 if obj_char_LP["y"] < obj_char_RP["y"] then
-                    obj_char_LP["x"] = box_R[1]-distance
+                    obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
                     return
                 else
-                    obj_char_RP["x"] = box_L[1]-distance
+                    obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
                     return
                 end
 
                 if obj_char_LP["y"] < obj_char_RP["y"] then
-                    obj_char_LP["x"] = box_R[1]-distance
+                    obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
                     return
                 else
-                    obj_char_RP["x"] = box_L[1]-distance
+                    obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
                     return
                 end
             end
@@ -270,21 +220,6 @@ function collision_uncondicational_hurtbox_test(hit_obj,hurt_obj)
     end
     return false
 end
--- function collision_strike_hurtbox_test(hit_obj,hurt_obj)
---     if hit_obj["hit_type_state"] ~= "strike" or hurt_obj["strike_inv"] == true or hit_obj["strike_active"] == false then
---         return false
---     end
---     for i=1,#hit_obj["hitbox_table"] do
---         local current_hitbox = collision_box_to_real_world_box(hit_obj,hit_obj["hitbox_table"][i])
---         for j=1,#hurt_obj["hurtbox_table"] do
---             local current_hurtbox = collision_box_to_real_world_box(hurt_obj,hurt_obj["hurtbox_table"][j])
---             if collision_box_aabb_detection(current_hitbox,current_hurtbox) then
---                 return true
---             end
---         end
---     end
---     return false
--- end
 function collision_strike_hurtbox_test(hit_obj,hurt_obj)
     if hit_obj["hit_type_state"] ~= "strike" or hurt_obj["strike_inv"] == true or hit_obj["strike_active"] == false then
         return false
@@ -457,4 +392,170 @@ end
     --     obj_A["velocity"][1] = res_velocity
     --     obj_B["velocity"][1] = res_velocity
 
+    -- end
+
+-- capsule collision detection and relocation
+-- -------------------------------------------------------------------------------------------------
+    -- function collision_box_to_capsule(box)
+    --     local res = {
+    --         box[1],     -- x
+    --         box[2],     -- y
+    --         box[4],     -- height
+    --         box[3]/2    -- r
+    --     }
+    --     return res
+    -- end
+    -- function collision_capsule_detection(capsule_a,capsule_b)
+    --     -- x,y,height,r
+    --     local dx = capsule_a[1] - capsule_b[1]
+    --     local r = capsule_a[4] + capsule_b[4]
+    --     if dx > r then
+    --         return false
+    --     end
+
+    --     local capsule_a_top = capsule_a[2]-capsule_a[3]/2+capsule_a[4] 
+    --     local capsule_a_bottom = capsule_a[2]+capsule_a[3]/2-capsule_a[4] 
+    --     local capsule_b_top = capsule_b[2]-capsule_b[3]/2+capsule_b[4] 
+    --     local capsule_b_bottom = capsule_b[2]+capsule_b[3]/2-capsule_b[4]
+
+    --     local gap = 0
+    --     if capsule_a_bottom < capsule_b_top then
+    --         gap = capsule_b_top-capsule_a_bottom
+    --     elseif capsule_b_bottom < capsule_a_top then
+    --         gap = capsule_a_top-capsule_b_bottom
+    --     end
+
+    --     return dx*dx+gap*gap<=r*r
+    -- end
+    -- function collision_capsule_x_relocate_distance(capsule_a,capsule_b)
+    --     local r = capsule_a[4] + capsule_b[4]
+    --     local capsule_a_top = capsule_a[2]-capsule_a[3]/2+capsule_a[4] 
+    --     local capsule_a_bottom = capsule_a[2]+capsule_a[3]/2-capsule_a[4] 
+    --     local capsule_b_top = capsule_b[2]-capsule_b[3]/2+capsule_b[4] 
+    --     local capsule_b_bottom = capsule_b[2]+capsule_b[3]/2-capsule_b[4]
+
+    --     local gap = 0
+    --     if capsule_a_bottom < capsule_b_top then
+    --         gap = capsule_b_top-capsule_a_bottom
+    --     elseif capsule_b_bottom < capsule_a_top then
+    --         gap = capsule_a_top-capsule_b_bottom
+    --     end
+
+    --     return math.sqrt(r*r-gap*gap)
+    -- end
+    -- function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_RP)
+    --     local box_L = collision_box_to_real_world_box(obj_char_LP,obj_char_LP["pushbox"])
+    --     local box_R = collision_box_to_real_world_box(obj_char_RP,obj_char_RP["pushbox"])
+    --     local capsule_L = collision_box_to_capsule(box_L)
+    --     local capsule_R = collision_box_to_capsule(box_R)
+    --     local distance = collision_capsule_x_relocate_distance(capsule_L,capsule_R)
+    --     if (not obj_char_LP["pushbox_other_side_char_active"])
+    --     or (not obj_char_RP["pushbox_other_side_char_active"]) then
+    --         return
+    --     end
+    --     if collision_capsule_detection(capsule_L,capsule_R) then
+    --         local collision_state = table.concat({
+    --             obj_char_LP["collision_move_available"][1],
+    --             obj_char_LP["collision_move_available"][2],
+    --             obj_char_RP["collision_move_available"][1],
+    --             obj_char_RP["collision_move_available"][2]
+    --         })
+    --         local switch = {
+    --             ["1111"] = function()
+    --                 local branch_flag = -1
+    --                 if capsule_L[1] == capsule_R[1] then
+    --                     if math.random() < 0.5 then
+    --                         branch_flag = 1
+    --                     else
+    --                         branch_flag = 0
+    --                     end
+    --                 end
+    --                 if capsule_L[1] < capsule_R[1] or branch_flag == 1 then
+    --                     local mid = (box_L[1]+box_L[3]/2+box_R[1]-box_R[3]/2)/2
+    --                     obj_char_LP["x"] = mid-distance/2
+    --                     obj_char_RP["x"] = mid+distance/2
+    --                 elseif capsule_L[1] > capsule_R[1] or branch_flag == 0 then
+    --                     local mid = (box_R[1]+box_R[3]/2+box_L[1]-box_L[3]/2)/2
+    --                     obj_char_LP["x"] = mid+distance/2
+    --                     obj_char_RP["x"] = mid-distance/2
+    --                 end
+    --             end,
+    --             ["0111"] = function()
+    --                 obj_char_RP["x"] = box_L[1]+distance
+    --             end,
+    --             ["1101"] = function()
+    --                 obj_char_LP["x"] = box_R[1]+distance
+    --             end,
+    --             ["0101"] = function()
+    --                 if obj_char_LP["wallhurt_wallstick_on_side"] ~= 0 then
+    --                     obj_char_RP["x"] = box_L[1]+distance
+    --                     return
+    --                 end
+    --                 if obj_char_RP["wallhurt_wallstick_on_side"] ~= 0 then
+    --                     obj_char_LP["x"] = box_R[1]+distance
+    --                     return
+    --                 end
+
+    --                 if COLLSION_CONER_OUT_STATE[obj_char_LP["state"]] then
+    --                     obj_char_RP["x"] = box_L[1]+distance
+    --                     return
+    --                 end
+    --                 if COLLSION_CONER_OUT_STATE[obj_char_RP["state"]] then
+    --                     obj_char_LP["x"] = box_R[1]+distance
+    --                     return
+    --                 end
+
+    --                 if obj_char_LP["y"] < obj_char_RP["y"] then
+    --                     obj_char_LP["x"] = box_R[1]+distance
+    --                     return
+    --                 else
+    --                     obj_char_RP["x"] = box_L[1]+distance
+    --                     return
+    --                 end
+    --             end,
+    --             ["1011"] = function()
+    --                 obj_char_RP["x"] = box_L[1]-distance
+    --             end,
+    --             ["1110"] = function()
+    --                 obj_char_LP["x"] = box_R[1]-distance
+    --             end,
+    --             ["1010"] = function()
+    --                 if obj_char_LP["wallhurt_wallstick_on_side"] ~= 0 then
+    --                     obj_char_RP["x"] = box_L[1]-distance
+    --                     return
+    --                 end
+    --                 if obj_char_RP["wallhurt_wallstick_on_side"] ~= 0 then
+    --                     obj_char_LP["x"] = box_R[1]-distance
+    --                     return
+    --                 end
+
+    --                 if COLLSION_CONER_OUT_STATE[obj_char_LP["state"]] then
+    --                     obj_char_RP["x"] = box_L[1]-distance
+    --                     return
+    --                 end
+    --                 if COLLSION_CONER_OUT_STATE[obj_char_RP["state"]] then
+    --                     obj_char_LP["x"] = box_R[1]-distance
+    --                     return
+    --                 end
+
+    --                 if obj_char_LP["y"] < obj_char_RP["y"] then
+    --                     obj_char_LP["x"] = box_R[1]-distance
+    --                     return
+    --                 else
+    --                     obj_char_RP["x"] = box_L[1]-distance
+    --                     return
+    --                 end
+
+    --                 if obj_char_LP["y"] < obj_char_RP["y"] then
+    --                     obj_char_LP["x"] = box_R[1]-distance
+    --                     return
+    --                 else
+    --                     obj_char_RP["x"] = box_L[1]-distance
+    --                     return
+    --                 end
+    --             end
+    --         }
+    --         local this_function = switch[collision_state]
+    --         if this_function then this_function() end
+    --     end
     -- end
