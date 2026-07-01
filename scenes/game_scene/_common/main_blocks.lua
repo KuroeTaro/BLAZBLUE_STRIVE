@@ -251,14 +251,14 @@ function update_game_scene_training_main()
             char_LP["x"] = char_LP["x"] + char_LP_velocity[1]/(16* char_LP_final_game_speed)
             char_LP["y"] = char_LP["y"] + char_LP_velocity[2]/(16* char_LP_final_game_speed)
 
-            -- RC更新位置 1/10
+            -- RC更新位置 1/16
             for i = 1,#char_LP["projectile_rc_table"] do
                 local current_projectile = char_LP["projectile_rc_table"][i]
                 current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(16* char_LP_final_game_speed)
                 current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(16* char_LP_final_game_speed)
             end
 
-            -- 飞行道具更新位置 1/10
+            -- 飞行道具更新位置 1/16
             for i = 1,#char_LP["projectile_table"] do
                 local current_projectile = char_LP["projectile_table"][i]
                 current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(16* char_LP_final_game_speed)
@@ -266,18 +266,18 @@ function update_game_scene_training_main()
             end
         end
         if char_RP["game_speed_force_0_countdown"] == 0 and not char_RP["physics_lock"] then
-            -- 角色更新位置 1/10
+            -- 角色更新位置 1/16
             char_RP["x"] = char_RP["x"] + char_RP_velocity[1]/(16* char_RP_final_game_speed)
             char_RP["y"] = char_RP["y"] + char_RP_velocity[2]/(16* char_RP_final_game_speed)
 
-            -- RC更新位置 1/10
+            -- RC更新位置 1/16
             for i = 1,#char_RP["projectile_rc_table"] do
                 local current_projectile = char_RP["projectile_rc_table"][i]
                 current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(16* char_RP_final_game_speed)
                 current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(16* char_RP_final_game_speed)
             end
 
-            -- 飞行道具更新位置 1/10
+            -- 飞行道具更新位置 1/16
             for i = 1,#char_RP["projectile_table"] do
                 local current_projectile = char_RP["projectile_table"][i]
                 current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(16* char_RP_final_game_speed)
@@ -317,17 +317,29 @@ function update_game_scene_training_main()
         local RP_hurt_throw_accur = collision_throw_hurtbox_test(char_LP,char_RP)
 
         -- 检测打击受击盒交互
-        if LP_hurt_throw_accur then
+        if LP_hurt_throw_accur and not RP_hurt_throw_accur then
             char_RP["hit_function"](char_LP) -- RP更新主动攻击状态
-        end
-        if RP_hurt_throw_accur then
-            char_LP["hit_function"](char_RP) -- LP更新主动攻击状态
-        end
-        if LP_hurt_throw_accur then
             char_RP["hurt_function"](char_LP) -- RP更新被攻击状态
         end
-        if RP_hurt_throw_accur then
+        if RP_hurt_throw_accur and not LP_hurt_throw_accur then
+            char_LP["hit_function"](char_RP) -- LP更新主动攻击状态
             char_LP["hurt_function"](char_RP) -- LP更新被攻击状态
+        end
+        if LP_hurt_throw_accur and RP_hurt_throw_accur then
+            -- teched_LP
+            char_LP["state"] = "throw_teched"
+            char_LP["physics_lock"] = false
+            char_LP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
+                char_LP,"teched"
+            )
+            init_character_anim_with(char_LP,char_LP["character_animation"])
+            -- teched_RP
+            char_RP["state"] = "throw_teched"
+            char_RP["physics_lock"] = false
+            char_RP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
+                char_RP,"teched"
+            )
+            init_character_anim_with(char_RP,char_RP["character_animation"])
         end
 
         -- debug_delete_after
@@ -371,15 +383,11 @@ function update_game_scene_training_main()
         -- 检测飞行道具人物交互
         for i = 1,#char_LP["projectile_rc_table"] do
             local current_projectile = char_LP["projectile_rc_table"][i]
-            if current_projectile["enemy_interact_function"] then
-                current_projectile["enemy_interact_function"]()
-            end
+            current_projectile["enemy_interact_function"]()
         end
         for i = 1,#char_RP["projectile_rc_table"] do
             local current_projectile = char_RP["projectile_rc_table"][i]
-            if current_projectile["projectile_rc_table"] then
-                current_projectile["projectile_rc_table"]()
-            end
+            current_projectile["enemy_interact_function"]()
         end
         for i = 1,#char_LP["projectile_table"] do
             local current_projectile = char_LP["projectile_table"][i]
@@ -407,8 +415,8 @@ function update_game_scene_training_main()
         end
 
         -- 保留双康后的LP_hurt_strike_accur RP_hurt_strike_accur
-        local LP_hurt_strike_accur = collision_strike_hurtbox_test_with_assign_hit_VFX_dynamic_spawn_pos(char_RP,char_LP) -- (obj_hit,obj_hurt)
-        local RP_hurt_strike_accur = collision_strike_hurtbox_test_with_assign_hit_VFX_dynamic_spawn_pos(char_LP,char_RP)
+        local LP_hurt_strike_accur = collision_strike_hurtbox_test(char_RP,char_LP) -- (obj_hit,obj_hurt)
+        local RP_hurt_strike_accur = collision_strike_hurtbox_test(char_LP,char_RP)
 
         -- 检测打击受击盒交互
         if LP_hurt_strike_accur then

@@ -219,6 +219,21 @@ function collision_uncondicational_hurtbox_test(hit_obj,hurt_obj)
     end
     return false
 end
+-- function collision_strike_hurtbox_test(hit_obj,hurt_obj)
+--     if hit_obj["hit_type_state"] ~= "strike" or hurt_obj["strike_inv"] == true or hit_obj["strike_active"] == false then
+--         return false
+--     end
+--     for i=1,#hit_obj["hitbox_table"] do
+--         local current_hitbox = collision_box_to_real_world_box(hit_obj,hit_obj["hitbox_table"][i])
+--         for j=1,#hurt_obj["hurtbox_table"] do
+--             local current_hurtbox = collision_box_to_real_world_box(hurt_obj,hurt_obj["hurtbox_table"][j])
+--             if collision_box_aabb_detection(current_hitbox,current_hurtbox) then
+--                 return true
+--             end
+--         end
+--     end
+--     return false
+-- end
 function collision_strike_hurtbox_test(hit_obj,hurt_obj)
     if hit_obj["hit_type_state"] ~= "strike" or hurt_obj["strike_inv"] == true or hit_obj["strike_active"] == false then
         return false
@@ -228,30 +243,18 @@ function collision_strike_hurtbox_test(hit_obj,hurt_obj)
         for j=1,#hurt_obj["hurtbox_table"] do
             local current_hurtbox = collision_box_to_real_world_box(hurt_obj,hurt_obj["hurtbox_table"][j])
             if collision_box_aabb_detection(current_hitbox,current_hurtbox) then
+                collision_strike_assign_hit_VFX_dynamic_spawn_pos(hit_obj,current_hitbox,current_hurtbox)
                 return true
             end
         end
     end
     return false
 end
-function collision_strike_hurtbox_test_with_assign_hit_VFX_dynamic_spawn_pos(hit_obj,hurt_obj)
-    if hit_obj["hit_type_state"] ~= "strike" or hurt_obj["strike_inv"] == true or hit_obj["strike_active"] == false then
-        return false
-    end
-    for i=1,#hit_obj["hitbox_table"] do
-        local current_hitbox = collision_box_to_real_world_box(hit_obj,hit_obj["hitbox_table"][i])
-        for j=1,#hurt_obj["hurtbox_table"] do
-            local current_hurtbox = collision_box_to_real_world_box(hurt_obj,hurt_obj["hurtbox_table"][j])
-            if collision_box_aabb_detection(current_hitbox,current_hurtbox) then
-                hit_obj["hit_VFX_dynamic_spawn_pos"] = {
-                    (current_hitbox[1]+current_hurtbox[1])/2,
-                    (current_hitbox[2]+current_hurtbox[2])/2
-                }
-                return true
-            end
-        end
-    end
-    return false
+function collision_strike_assign_hit_VFX_dynamic_spawn_pos(hit_obj,current_hitbox,current_hurtbox)
+    hit_obj["hit_VFX_dynamic_spawn_pos"] = {
+        (current_hitbox[1]+current_hurtbox[1])/2,
+        (current_hitbox[2]+current_hurtbox[2])/2
+    }
 end
 function collision_throw_hurtbox_test(hit_obj,hurt_obj)
     if hit_obj["hit_type_state"] ~= "throw" 
