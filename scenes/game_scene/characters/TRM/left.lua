@@ -6209,6 +6209,16 @@ function draw_game_scene_char_LP_pushbox()
     draw_box["w"] = obj_char["pushbox"][3]
     draw_box["h"] = obj_char["pushbox"][4]
     draw_3d_color_box(obj_camera,draw_box,color)
+
+    local draw_capsule = {
+        obj_char["x"] + obj_char["pushbox"][1]*obj_char[5],
+        obj_char["y"] + obj_char["pushbox"][2],
+        obj_char[3],obj_char[5],1
+    }
+    draw_capsule["r"] = obj_char["pushbox"][3]/2
+    draw_capsule["h"] = obj_char["pushbox"][4]
+    draw_3d_capsule(obj_camera,draw_capsule,color)
+
     for i=1,#obj_char["projectile_table"] do
         local current_projectile = obj_char["projectile_table"][i]
         local current_pushbox = current_projectile["pushbox"]

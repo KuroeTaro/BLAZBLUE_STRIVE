@@ -96,7 +96,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
         obj_char,obj,true,nil,
         "0_general_hurt_launched_high",
         "air","knockdown_recovery",
-        18,5,1.035,
+        17.5,5,1.035,
         -25,2.5,1.035,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
