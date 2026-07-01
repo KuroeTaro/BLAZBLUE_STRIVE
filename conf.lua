@@ -20,6 +20,6 @@ function love.conf(t)
     t.modules.math = false
     t.modules.mouse = false
     if t.version == "12.0" then
-        t.graphics.renderers = {"vulkan"} 
+        t.graphics.renderers = {"vulkan","opengl"} 
     end
 end 
