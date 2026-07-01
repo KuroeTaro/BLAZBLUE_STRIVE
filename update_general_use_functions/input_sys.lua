@@ -145,7 +145,7 @@ function update_try_joystick_reassign_iterate(side,other_side_controller_id)
     -- 检测手柄的按钮 如果有手柄按键按下则设定手柄为本侧控制器
     for i=1,#INPUT_SYS_CURRENT_JOYSTICK_TABLE,1 do
         local current_controller_id = get_joystick_id(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i])
-        if get_input_sys_anykey_joystick(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]) and id ~= other_side_controller_id then
+        if get_input_sys_anykey_joystick(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]) and current_controller_id ~= other_side_controller_id then
             INPUT_SYS_CURRENT_CONTROLLER[side] = {"joystick",INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]}
             INPUT_SYS_LAST_JOYSTICK_ID[side] = current_controller_id
             return
