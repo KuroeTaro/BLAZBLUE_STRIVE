@@ -86,9 +86,13 @@ function init_load_scene_anim()
     anim_UI_frame_load_scene_dabo_trig_ease_out_opacity["loop"] = false
 end
 function init_load_scene_image()
-    image_UI_load_scene_dabo_trig = love.graphics.newImage("asset/load_scene/dabo_trig.dds")
-    image_UI_load_scene_loading_text = love.graphics.newImage("asset/load_scene/loading_text.dds")
-    image_UI_load_scene_type_in_mark = love.graphics.newImage("asset/load_scene/type_in_mark.dds")
+    local image_UI_load_scene_dabo_trig_compressed_image_data = love.image.newCompressedData("asset/load_scene/dabo_trig.dds")
+    local image_UI_load_scene_loading_text_compressed_image_data = love.image.newCompressedData("asset/load_scene/loading_text.dds")
+    local image_UI_load_scene_type_in_mark_compressed_image_data = love.image.newCompressedData("asset/load_scene/type_in_mark.dds")
+
+    image_UI_load_scene_dabo_trig = love.graphics.newImage(image_UI_load_scene_dabo_trig_compressed_image_data)
+    image_UI_load_scene_loading_text = love.graphics.newImage(image_UI_load_scene_loading_text_compressed_image_data)
+    image_UI_load_scene_type_in_mark = love.graphics.newImage(image_UI_load_scene_type_in_mark_compressed_image_data)
 end
 function init_load_scene_audio()
     audio_UI_SFX_load_scene_general_end_load = {1}
