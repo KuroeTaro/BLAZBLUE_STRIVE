@@ -302,8 +302,6 @@ function load_start_scene_anim()
     anim_UI_point_linear_start_scene_general_ease_out_0p5_0_opacity["length"] = 5
     anim_UI_point_linear_start_scene_general_ease_out_0p5_0_opacity["loop"] = false
     anim_UI_point_linear_start_scene_general_ease_out_0p5_0_opacity["fix_type"] = true
-
-
     
     -- solid color 闪入 闪出动画
     anim_UI_point_linear_start_scene_solid_ease_in_opacity = {}
@@ -317,7 +315,6 @@ function load_start_scene_anim()
     anim_UI_point_linear_start_scene_solid_ease_in_opacity["loop"] = false
     anim_UI_point_linear_start_scene_solid_ease_in_opacity["fix_type"] = true
 
-    
     -- option
     -- option两边的呼吸灯的呼吸透明度变化
     anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity = {}
@@ -352,7 +349,6 @@ function load_start_scene_anim()
     anim_UI_point_linear_start_scene_option_text_twitch_x["loop"] = false
     anim_UI_point_linear_start_scene_option_text_twitch_x["fix_type"] = false
 
-
     -- console
     -- console dabo trig twitch x
     anim_UI_frame_start_scene_console_dabo_trig_twtich_x = {}
@@ -362,7 +358,6 @@ function load_start_scene_anim()
     anim_UI_frame_start_scene_console_dabo_trig_twtich_x["prop"] = 1
     anim_UI_frame_start_scene_console_dabo_trig_twtich_x["length"] = 4
     anim_UI_frame_start_scene_console_dabo_trig_twtich_x["loop"] = false
-    anim_UI_frame_start_scene_console_dabo_trig_twtich_x["fix_type"] = true
 
     -- console type in mark 闪烁动画
     anim_UI_frame_start_scene_console_type_in_mark_blink_opacity = {}
@@ -372,8 +367,6 @@ function load_start_scene_anim()
     anim_UI_frame_start_scene_console_type_in_mark_blink_opacity["prop"] = 4
     anim_UI_frame_start_scene_console_type_in_mark_blink_opacity["length"] = 40
     anim_UI_frame_start_scene_console_type_in_mark_blink_opacity["loop"] = true
-    anim_UI_frame_start_scene_console_type_in_mark_blink_opacity["fix_type"] = true
-
 
     -- config
     -- config menu dabo trig
@@ -455,7 +448,6 @@ function load_start_scene_anim()
     anim_UI_point_linear_start_scene_config_audio_bar_mark_down_y["loop"] = false
     anim_UI_point_linear_start_scene_config_audio_bar_mark_down_y["fix_type"] = false
 
-
     -- config res select
     anim_UI_point_linear_start_scene_config_resolution_bar_mark_left_x = {}
     anim_UI_point_linear_start_scene_config_resolution_bar_mark_left_x[0] = {1000,1}
@@ -474,7 +466,6 @@ function load_start_scene_anim()
     anim_UI_point_linear_start_scene_config_resolution_bar_mark_right_x["length"] = 4
     anim_UI_point_linear_start_scene_config_resolution_bar_mark_right_x["loop"] = false
     anim_UI_point_linear_start_scene_config_resolution_bar_mark_right_x["fix_type"] = true
-
 
     -- reocrd
     anim_UI_point_linear_start_scene_record_dabo_trig_up_y = {}

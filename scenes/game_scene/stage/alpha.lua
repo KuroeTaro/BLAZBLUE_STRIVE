@@ -131,7 +131,6 @@ function load_game_scene_anim_stage()
     anim_state_frame_game_scene_wallstick_frame["prop"] = 8
     anim_state_frame_game_scene_wallstick_frame["length"] = 19
     anim_state_frame_game_scene_wallstick_frame["loop"] = false
-    anim_state_frame_game_scene_wallstick_frame["fix_type"] = true
 
     -- wallbreak
     -- camera_animation
@@ -161,7 +160,6 @@ function load_game_scene_anim_stage()
     anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity["prop"] = "shadow_opacity"
     anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity["length"] = 150
     anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity["loop"] = false
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity["fix_type"] = true
 
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x = {}
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x["prop"] = "x"
@@ -179,19 +177,16 @@ function load_game_scene_anim_stage()
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["prop"] = 8
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["length"] = 150
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["loop"] = false
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["fix_type"] = true
 
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state = {}
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state["prop"] = "sprite_sheet_state"
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state["length"] = 150
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state["loop"] = false
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state["fix_type"] = true
 
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos = {}
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["prop"] = "anchor_pos"
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["length"] = 150
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["loop"] = false
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["fix_type"] = true
 
     -- wallbreak_hurt_side_character
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x = {}
@@ -210,7 +205,6 @@ function load_game_scene_anim_stage()
     anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["prop"] = 8
     anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["length"] = 150
     anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["loop"] = false
-    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["fix_type"] = true
 
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity = {}
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity[0] = {0.5,10}
@@ -244,7 +238,6 @@ function load_game_scene_anim_stage()
     anim_stage_frame_game_scene_wallbreak_after_debris_frame["prop"] = 8
     anim_stage_frame_game_scene_wallbreak_after_debris_frame["length"] = 150
     anim_stage_frame_game_scene_wallbreak_after_debris_frame["loop"] = false
-    anim_stage_frame_game_scene_wallbreak_after_debris_frame["fix_type"] = true
 
     -- wallbreak_dynamic_frame_anim_opacity
     anim_stage_frame_game_scene_wallbreak_dynamic_opacity = {}
@@ -254,7 +247,6 @@ function load_game_scene_anim_stage()
     anim_stage_frame_game_scene_wallbreak_dynamic_opacity["prop"] = 4
     anim_stage_frame_game_scene_wallbreak_dynamic_opacity["length"] = 150
     anim_stage_frame_game_scene_wallbreak_dynamic_opacity["loop"] = false
-    anim_stage_frame_game_scene_wallbreak_dynamic_opacity["fix_type"] = true
     -- wallbreak_dynamic_frame_anim_frame
     anim_stage_frame_game_scene_wallbreak_dynamic_frame = {}
     for i = 0,29 do
@@ -265,7 +257,6 @@ function load_game_scene_anim_stage()
     anim_stage_frame_game_scene_wallbreak_dynamic_frame["prop"] = 8
     anim_stage_frame_game_scene_wallbreak_dynamic_frame["length"] = 150
     anim_stage_frame_game_scene_wallbreak_dynamic_frame["loop"] = false
-    anim_stage_frame_game_scene_wallbreak_dynamic_frame["fix_type"] = true
 
     -- wallbreak_smoke_opacity_anim
     anim_stage_point_linear_game_scene_wallbreak_smoke_opacity = {}
@@ -290,7 +281,6 @@ function load_game_scene_anim_stage()
     anim_stage_frame_game_scene_wallbreak_smoke_frame["prop"] = 8
     anim_stage_frame_game_scene_wallbreak_smoke_frame["length"] = 150
     anim_stage_frame_game_scene_wallbreak_smoke_frame["loop"] = false
-    anim_stage_frame_game_scene_wallbreak_smoke_frame["fix_type"] = true
 
     -- wallbreak_glow_opacity
     anim_stage_point_linear_game_scene_wallbreak_glow_opacity = {}
@@ -961,7 +951,6 @@ function load_game_scene_anim_point_linear_character_hit_side_wallbreak(hit_side
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["prop"] = 8
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["length"] = 150
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["loop"] = false
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["fix_type"] = true
 
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state = {}
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state[0] = hit_side_obj_char["sprite_sheet_state"]
@@ -970,7 +959,6 @@ function load_game_scene_anim_point_linear_character_hit_side_wallbreak(hit_side
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state["prop"] = "sprite_sheet_state"
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state["length"] = 150
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state["loop"] = false
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state["fix_type"] = true
 
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos = {}
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos[0] = hit_side_obj_char["anchor_pos"]
@@ -979,7 +967,6 @@ function load_game_scene_anim_point_linear_character_hit_side_wallbreak(hit_side
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["prop"] = "anchor_pos"
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["length"] = 150
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["loop"] = false
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["fix_type"] = true
 end
 function load_game_scene_anim_point_linear_character_hurt_side_wallbreak(hurt_side_obj_char,wallstick_on_side,adv)
     -- wallbreak_x
@@ -1103,7 +1090,6 @@ function load_game_scene_anim_point_linear_character_hurt_side_wallbreak(hurt_si
     anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["prop"] = 8
     anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["length"] = 150
     anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["loop"] = false
-    anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["fix_type"] = true
 end
 -- camera 150f
 -- char_hurt_side 150f

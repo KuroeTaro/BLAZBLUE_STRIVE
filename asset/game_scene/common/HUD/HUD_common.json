@@ -205,7 +205,7 @@
 	"version": "1.0",
 	"image": "-",
 	"format": "RGBA8888",
-	"size": {"w":510,"h":180},
+	"size": {"w":520,"h":180},
 	"scale": "1",
 	"smartupdate": "$TexturePacker:SmartUpdate:5232ab7ced40847286fff805663fcd6a:2d955721981cad663b693e1d747b0832:fa6357ca9b94727214381b07ee3f9bc1$"
 }

@@ -489,7 +489,6 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver0(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 11
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
@@ -591,7 +590,6 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver1(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 21
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
@@ -683,7 +681,6 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver1(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 16
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
@@ -795,7 +792,6 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver0(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 27
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
@@ -897,7 +893,6 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 21
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
@@ -989,7 +984,6 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 16
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
@@ -1144,7 +1138,6 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 30
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
@@ -1226,7 +1219,6 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver0(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 11
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
@@ -1328,7 +1320,6 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 21
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
@@ -1420,7 +1411,6 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 16
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
@@ -1517,7 +1507,6 @@ function insert_VFX_game_scene_char_blast_dynamic_ver0(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 11
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
@@ -1590,7 +1579,6 @@ function insert_VFX_game_scene_char_blast_dynamic_ver1(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 21
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
@@ -1653,7 +1641,6 @@ function insert_VFX_game_scene_char_blast_dynamic_ver1(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 16
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
@@ -1732,7 +1719,6 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver0(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 27
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
@@ -1805,7 +1791,6 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 21
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
@@ -1863,7 +1848,6 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 16
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
@@ -1955,7 +1939,6 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 30
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
@@ -2029,7 +2012,6 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver0(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 11
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
@@ -2102,7 +2084,6 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver1(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 21
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
@@ -2165,7 +2146,6 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver1(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 16
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
@@ -2270,7 +2250,6 @@ function insert_VFX_game_scene_char_blast_special(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 27
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
             -- do nothing
@@ -2436,7 +2415,6 @@ function insert_VFX_game_scene_char_counter_blast_special(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 27
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
             -- do nothing
@@ -2544,7 +2522,6 @@ function insert_VFX_game_scene_char_counter_blast_special(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 30
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "hitstop" then
@@ -2602,7 +2579,6 @@ function insert_VFX_game_scene_char_block_ver0(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 21
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         frame_animator(obj,obj["animation"])
@@ -2655,7 +2631,6 @@ function insert_VFX_game_scene_char_block_ver1(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 31
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj[1] = obj_char["x"] + obj_char[5]*(VFX_spawn_anchor_pos[1])
     obj["update"] = function()
@@ -2713,7 +2688,6 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 35
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["opacity_point_linear_animation"] = {}
     obj["opacity_point_linear_animation"][0] = {0.25,15}

@@ -27,7 +27,6 @@ function insert_VFX_game_scene_char_TRM_2P_whiff(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 8
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "2P" then
@@ -89,7 +88,6 @@ function insert_VFX_game_scene_char_TRM_6P_whiff(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 15
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "6P" then
@@ -150,7 +148,6 @@ function insert_VFX_game_scene_char_TRM_5P_whiff(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 8
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "5P" then
@@ -209,7 +206,6 @@ function insert_VFX_game_scene_char_TRM_2S_whiff(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 6
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "2S" then
@@ -273,7 +269,6 @@ function insert_VFX_game_scene_char_TRM_6S_whiff(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 36
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "6S" then
@@ -337,7 +332,6 @@ function insert_VFX_game_scene_char_TRM_cS_whiff(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 19
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "cS" then
@@ -405,7 +399,6 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_switch(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 30
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         frame_animator(obj,obj["animation"])
@@ -477,7 +470,6 @@ function insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot_oroboros_blas
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 15
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["shot_sys_state"] == "at_the_ready_shot" or obj_char["state"] == "wallbreak_hit" then
@@ -540,7 +532,6 @@ function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(obj
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 16
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     if obj_char["x"] > obj_char_other_side["x"] then
         obj[1] = obj_char["shot_sys_reticle"][1] + 230 + 160
@@ -598,7 +589,6 @@ function insert_VFX_game_scene_char_TRM_5Launcher_whiff_slash(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 3
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "5Launcher" then
@@ -657,7 +647,6 @@ function insert_VFX_game_scene_char_TRM_5Launcher_whiff_glow(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 18
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         -- obj[1] = obj_char["x"] + obj_char[5]*(-860)/2
@@ -729,7 +718,6 @@ function insert_VFX_game_scene_char_TRM_jS_whiff(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 13
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj["FCT"][8] < 7 and obj_char["state"] == "jS" then
@@ -821,7 +809,6 @@ function insert_VFX_game_scene_char_TRM_6SP_S_whiff(obj_char)
     obj["animation"]["prop"] = 8
     obj["animation"]["length"] = 21
     obj["animation"]["loop"] = false
-    obj["animation"]["fix_type"] = true
     init_frame_anim_without(obj,obj["animation"])
     obj["update"] = function()
         if obj_char["state"] == "6SP_S" then

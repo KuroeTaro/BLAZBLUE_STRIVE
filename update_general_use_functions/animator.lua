@@ -50,7 +50,7 @@ function frame_animator(obj,anim)
         current_time = current_time + 1
     end
     if anim_loop and current_time > anim_length  then
-        current_time = -1
+        current_time = 0
     end
 
     local key_frame_bool = anim[current_time]
@@ -61,14 +61,13 @@ function frame_animator(obj,anim)
 
     obj[anim_change_prop] = current_value
     obj["FCT"][anim_change_prop] = current_time
-
 end
 function init_frame_anim_with(obj,anim)
-    obj["FCT"][anim["prop"]] = -1 
+    obj["FCT"][anim["prop"]] = -1
     frame_animator(obj,anim)
 end
 function init_frame_anim_without(obj,anim)
-    obj["FCT"][anim["prop"]] = -1 
+    obj["FCT"][anim["prop"]] = -1
 end
 function get_frame_anim_end_state(obj,anim)
     if obj["FCT"][anim["prop"]] >= anim["length"] then
@@ -123,7 +122,7 @@ function point_linear_animator(obj,anim)
     end
 
     if current_time > anim_length and anim_loop then
-        current_time = -1
+        current_time = 0
     end
 
     local key_frame_bool = anim[current_time]

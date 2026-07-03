@@ -31,7 +31,6 @@ function init_load_scene_anim()
     anim_UI_frame_load_scene_loading_text_ease_in_opacity["prop"] = 4
     anim_UI_frame_load_scene_loading_text_ease_in_opacity["length"] = 4
     anim_UI_frame_load_scene_loading_text_ease_in_opacity["loop"] = false
-    anim_UI_frame_load_scene_loading_text_ease_in_opacity["fix_type"] = true
 
     anim_UI_frame_load_scene_loading_text_ease_out_x = {}
     anim_UI_frame_load_scene_loading_text_ease_out_x[0] = 1350
@@ -40,7 +39,6 @@ function init_load_scene_anim()
     anim_UI_frame_load_scene_loading_text_ease_out_x["prop"] = 1
     anim_UI_frame_load_scene_loading_text_ease_out_x["length"] = 3
     anim_UI_frame_load_scene_loading_text_ease_out_x["loop"] = false
-    anim_UI_frame_load_scene_loading_text_ease_out_x["fix_type"] = true
 
     anim_UI_frame_load_scene_loading_text_ease_out_opacity = {}
     anim_UI_frame_load_scene_loading_text_ease_out_opacity[0] = 1
@@ -48,7 +46,6 @@ function init_load_scene_anim()
     anim_UI_frame_load_scene_loading_text_ease_out_opacity["prop"] = 4
     anim_UI_frame_load_scene_loading_text_ease_out_opacity["length"] = 5
     anim_UI_frame_load_scene_loading_text_ease_out_opacity["loop"] = false
-    anim_UI_frame_load_scene_loading_text_ease_out_opacity["fix_type"] = true
 
     anim_UI_frame_load_scene_type_in_mark_ease_in_opacity = {}
     anim_UI_frame_load_scene_type_in_mark_ease_in_opacity[0] = 0
@@ -56,7 +53,6 @@ function init_load_scene_anim()
     anim_UI_frame_load_scene_type_in_mark_ease_in_opacity["prop"] = 4
     anim_UI_frame_load_scene_type_in_mark_ease_in_opacity["length"] = 4
     anim_UI_frame_load_scene_type_in_mark_ease_in_opacity["loop"] = false
-    anim_UI_frame_load_scene_type_in_mark_ease_in_opacity["fix_type"] = true
 
     anim_UI_frame_load_scene_type_in_mark_blink_opacity = {}
     anim_UI_frame_load_scene_type_in_mark_blink_opacity[0] = 1
@@ -65,7 +61,6 @@ function init_load_scene_anim()
     anim_UI_frame_load_scene_type_in_mark_blink_opacity["prop"] = 4
     anim_UI_frame_load_scene_type_in_mark_blink_opacity["length"] = 20
     anim_UI_frame_load_scene_type_in_mark_blink_opacity["loop"] = true
-    anim_UI_frame_load_scene_type_in_mark_blink_opacity["fix_type"] = true
 
     anim_UI_frame_load_scene_dabo_trig_ease_in_x = {}
     anim_UI_frame_load_scene_dabo_trig_ease_in_x[0] = 1280
@@ -74,7 +69,6 @@ function init_load_scene_anim()
     anim_UI_frame_load_scene_dabo_trig_ease_in_x["prop"] = 1
     anim_UI_frame_load_scene_dabo_trig_ease_in_x["length"] = 4
     anim_UI_frame_load_scene_dabo_trig_ease_in_x["loop"] = false
-    anim_UI_frame_load_scene_dabo_trig_ease_in_x["fix_type"] = true
 
     anim_UI_frame_load_scene_dabo_trig_ease_out_x = {}
     anim_UI_frame_load_scene_dabo_trig_ease_out_x[0] = 1300
@@ -83,7 +77,6 @@ function init_load_scene_anim()
     anim_UI_frame_load_scene_dabo_trig_ease_out_x["prop"] = 1
     anim_UI_frame_load_scene_dabo_trig_ease_out_x["length"] = 3
     anim_UI_frame_load_scene_dabo_trig_ease_out_x["loop"] = false
-    anim_UI_frame_load_scene_dabo_trig_ease_out_x["fix_type"] = true
 
     anim_UI_frame_load_scene_dabo_trig_ease_out_opacity = {}
     anim_UI_frame_load_scene_dabo_trig_ease_out_opacity[0] = 1
@@ -91,7 +84,6 @@ function init_load_scene_anim()
     anim_UI_frame_load_scene_dabo_trig_ease_out_opacity["prop"] = 4
     anim_UI_frame_load_scene_dabo_trig_ease_out_opacity["length"] = 5
     anim_UI_frame_load_scene_dabo_trig_ease_out_opacity["loop"] = false
-    anim_UI_frame_load_scene_dabo_trig_ease_out_opacity["fix_type"] = true
 end
 function init_load_scene_image()
     image_UI_load_scene_dabo_trig = love.graphics.newImage("asset/load_scene/dabo_trig.dds")
