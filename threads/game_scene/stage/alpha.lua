@@ -8,8 +8,8 @@ local thread_data = {}
 
 thread_data[1] = compress_module("asset/game_scene/stage/alpha/wallbreak_after_debris.dds")
 thread_data[2] = compress_module("asset/game_scene/stage/alpha/wallbreak_dynamic.dds")
-thread_data[3] = compress_module("asset/game_scene/stage/alpha/wallbreak_smoke.dds")
-thread_data[4] = compress_module("asset/game_scene/stage/alpha/wallbreak_glow.dds")
+thread_data[3] = compress_module("asset/game_scene/stage/alpha/wallbreak_glow.dds")
+thread_data[4] = compress_module("asset/game_scene/stage/alpha/wallbreak_smoke.dds")
 
 thread_data[5] = compress_module("asset/game_scene/stage/alpha/wallstick_ver0.dds")
 thread_data[6] = compress_module("asset/game_scene/stage/alpha/wallstick_ver1.dds")

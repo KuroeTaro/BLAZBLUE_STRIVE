@@ -114,6 +114,8 @@ local load_attack_name_table = {
     "j4_6Launcher_success",
         -- special
     "4SP_P",
+    "6SP_P",
+    "6SP_P_curse_ball_spawner",
     "6SP_S"
 }
 for i,v in ipairs(load_attack_name_table) do
@@ -144,6 +146,7 @@ local load_whiff_VFX_name_table = {
     "jS",
         -- special
     -- "4SP_P",
+    -- "6SP_P",
     "6SP_S"
 }
 for i,v in ipairs(load_whiff_VFX_name_table) do
@@ -153,7 +156,13 @@ end
 -- projectile
 local load_projectile_name_table = {
     "5H_hit",
-    "5H_miss"
+    "5H_miss",
+    "6SP_P_arua_end",
+    "6SP_P_arua_loop",
+    "6SP_P_arua_start",
+    "6SP_P_curse_ball_blast",
+    "6SP_P_curse_ball_loop",
+    "6SP_P_curse_ball_spawn_halo"
 }
 for i,v in ipairs(load_projectile_name_table) do
     thread_data[v.."_projectile"] = compress_module("asset/game_scene/characters/TRM/_character/PROJECTILE/".."TRM_"..v..".dds")

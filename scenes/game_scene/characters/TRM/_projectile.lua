@@ -10,15 +10,20 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
         image_sprite_sheet_table = image_sprite_sheet_projectile_game_scene_LP
     elseif side == "R" then
         image_sprite_sheet_table = image_sprite_sheet_projectile_game_scene_RP
-    end 
+    end
+    -- common
+    obj["type"] = "projectile"
+    obj["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
+    -- obj["projectile_clash_box"] = {}
+    -- obj["projectile_clashed_function"] = function end
+    obj["hit_type_state"] = "strike"
+    obj["life"] = 42
+
     obj[1] = obj_char["shot_sys_reticle"][1]
     obj[2] = obj_char["shot_sys_reticle"][2]
     obj["x"] = obj_char_other_side["x"]
     obj["y"] = obj_char_other_side["y"]-obj_char_other_side["pushbox"][4]/2
     obj["f"] = -1
-    obj["type"] = "projectile"
-    obj["hit_type_state"] = "strike"
-    obj["life"] = 42
     obj["sprite_sheet_state"] = "5H_miss_projectile"
 
     obj["hit_damage"] = 0
@@ -158,7 +163,9 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
         obj[2] = obj_char["shot_sys_reticle"][2]
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
+        love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setBlendMode("alpha")
     end
     obj["enemy_interact_function"] = function()
         -- strike_clash

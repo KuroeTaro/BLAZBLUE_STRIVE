@@ -26,22 +26,25 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local side = obj_char["player_side"]
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
-    obj["y_offset"] = 0
-
     if obj_char["height_state"] == "air" then
         obj["y_offset"] = 150
     else
         obj["y_offset"] = 280
     end
+    -- common
+    obj["type"] = "projectile"
+    obj["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
+    -- obj["projectile_clash_box"] = {}
+    -- obj["projectile_clashed_function"] = function end
+    obj["hit_type_state"] = "strike"
+    obj["life"] = 30
+
     obj["x"] = obj_char["x"]
     obj["y"] = obj_char["y"] - obj["y_offset"]
     obj["f"] = -1
     obj[1] = obj["x"] - obj_char[5]*600
     obj[2] = obj["y"] - 600
     obj[5] = obj_char[5]
-    obj["type"] = "projectile"
-    obj["hit_type_state"] = "strike"
-    obj["life"] = 30
 
     obj["hit_damage"] = 0
     obj["hit_damage_correction_factor"] = 1
@@ -244,9 +247,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
         love.graphics.setBlendMode("add")
-        love.graphics.setColor(1,1,1,1)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("alpha")
     end
     obj["enemy_interact_function"] = function()
@@ -414,20 +415,25 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(obj_char)
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local side = obj_char["player_side"]
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
-    obj["y_offset"] = 0
-
     if obj_char["height_state"] == "air" then
         obj["y_offset"] = 150
     else
         obj["y_offset"] = 280
     end
+    -- common
+    obj["type"] = "projectile"
+    obj["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
+    -- obj["projectile_clash_box"] = {}
+    -- obj["projectile_clashed_function"] = function end
+    obj["hit_type_state"] = "none"
+    obj["life"] = 30
+
     obj["x"] = obj_char["x"]
     obj["y"] = obj_char["y"] - obj["y_offset"]
     obj["f"] = -1
     obj[1] = obj["x"] - obj_char[5]*600
     obj[2] = obj["y"] - 600
     obj[5] = obj_char[5]
-    obj["life"] = 30
 
     obj["velocity"] = {obj_char["velocity"][1],obj_char["velocity"][2]}
 
@@ -494,20 +500,25 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(obj_char)
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local side = obj_char["player_side"]
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
-    obj["y_offset"] = 0
-
     if obj_char["height_state"] == "air" then
         obj["y_offset"] = 150
     else
         obj["y_offset"] = 280
     end
+    -- common
+    obj["type"] = "projectile"
+    obj["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
+    -- obj["projectile_clash_box"] = {}
+    -- obj["projectile_clashed_function"] = function end
+    obj["hit_type_state"] = "strike"
+    obj["life"] = 30
+
     obj["x"] = obj_char["x"]
     obj["y"] = obj_char["y"] - obj["y_offset"]
     obj["f"] = -1
     obj[1] = obj["x"] - obj_char[5]*600
     obj[2] = obj["y"] - 600
     obj[5] = obj_char[5]
-    obj["life"] = 30
 
     obj["velocity"] = {obj_char["velocity"][1],obj_char["velocity"][2]}
 
@@ -575,22 +586,25 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
     local side = obj_char["player_side"]
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
     local hurt_vertical_gravity = 0
-    obj["y_offset"] = 0
-
     if obj_char["height_state"] == "air" then
         obj["y_offset"] = 150
     else
         obj["y_offset"] = 280
     end
+    -- common
+    obj["type"] = "projectile"
+    obj["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
+    -- obj["projectile_clash_box"] = {}
+    -- obj["projectile_clashed_function"] = function end
+    obj["hit_type_state"] = "strike"
+    obj["life"] = 30
+
     obj["x"] = obj_char["x"]
     obj["y"] = obj_char["y"] - obj["y_offset"]
     obj["f"] = -1
     obj[1] = obj["x"] - obj_char[5]*600
     obj[2] = obj["y"] - 600
     obj[5] = obj_char[5]
-    obj["type"] = "projectile"
-    obj["hit_type_state"] = "strike"
-    obj["life"] = 30
 
     obj["hit_damage"] = 0
     obj["hit_damage_correction_factor"] = 1

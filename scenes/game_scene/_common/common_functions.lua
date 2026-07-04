@@ -1100,6 +1100,42 @@ function common_update_game_scene_char_game_speed_abnormal_realtime_countdown(ob
     end
 end
 
+function common_update_game_scene_char_strike_clash()
+end
+function common_update_game_scene_char_throw_clash()
+    local char_LP = obj_char_game_scene_char_LP
+    local char_RP = obj_char_game_scene_char_RP
+    -- teched_LP
+    char_LP["state"] = "throw_teched"
+    char_LP["physics_lock"] = false
+    char_LP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
+        char_LP,"teched"
+    )
+    init_character_anim_with(char_LP,char_LP["character_animation"])
+    -- teched_RP
+    char_RP["state"] = "throw_teched"
+    char_RP["physics_lock"] = false
+    char_RP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
+        char_RP,"teched"
+    )
+    init_character_anim_with(char_RP,char_RP["character_animation"])
+end
+function common_update_game_scene_projetile_clash(projectile_LP,projectile_RP)
+    if projectile_LP["projectile_clash_type"] == -1 or projectile_RP["projectile_clash_type"] == -1 then
+        return
+    end
+    local projectile_clash_box_LP = collision_box_to_real_world_box(projectile_LP,projectile_LP["projectile_clash_box"])
+    local projectile_clash_box_RP = collision_box_to_real_world_box(projectile_RP,projectile_RP["projectile_clash_box"])
+    if collision_box_aabb_detection(projectile_clash_box_LP,projectile_clash_box_RP) then
+        if projectile_LP["projectile_clash_type"] >= projectile_RP["projectile_clash_type"] then
+            projectile_RP["projectile_clashed_function"]()
+        end
+        if projectile_RP["projectile_clash_type"] >= projectile_LP["projectile_clash_type"] then
+            projectile_LP["projectile_clashed_function"]()
+        end
+    end
+end
+
 function common_game_scene_char_apply_damage_heat(
     hit_side_obj_char,hurt_side_obj_char,block_or_hurt,FD_block
 )

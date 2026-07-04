@@ -311,6 +311,56 @@ function update_game_scene_training_main()
             end
         end
 
+        -- enemy_interact_function
+            -- strike_clash
+            -- projectile_and_projectile_interaction
+            -- interaction_with_enemy
+        -- friendly_interact_function
+            -- interaction_with_friendly
+
+        -- 检测飞行道具人物交互
+        for i = 1,#char_LP["projectile_rc_table"] do
+            local current_projectile = char_LP["projectile_rc_table"][i]
+            current_projectile["enemy_interact_function"]()
+        end
+        for i = 1,#char_RP["projectile_rc_table"] do
+            local current_projectile = char_RP["projectile_rc_table"][i]
+            current_projectile["enemy_interact_function"]()
+        end
+        -- projectile_interaction
+        for i = #char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
+            local projectile_LP = char_LP["projectile_table"][i]
+            for i = #char_RP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
+                local projectile_RP = char_RP["projectile_table"][i]
+                common_update_game_scene_projetile_clash(projectile_LP,projectile_RP)
+            end
+        end
+
+        for i = 1,#char_LP["projectile_table"] do
+            local current_projectile = char_LP["projectile_table"][i]
+            if current_projectile["enemy_interact_function"] then
+                current_projectile["enemy_interact_function"]()
+            end
+        end
+        for i = 1,#char_RP["projectile_table"] do
+            local current_projectile = char_RP["projectile_table"][i]
+            if current_projectile["enemy_interact_function"] then
+                current_projectile["enemy_interact_function"]()
+            end
+        end
+        for i = 1,#char_LP["projectile_table"] do
+            local current_projectile = char_LP["projectile_table"][i]
+            if current_projectile["friendly_interact_function"] then
+                current_projectile["friendly_interact_function"]()
+            end
+        end
+        for i = 1,#char_RP["projectile_table"] do
+            local current_projectile = char_RP["projectile_table"][i]
+            if current_projectile["friendly_interact_function"] then
+                current_projectile["friendly_interact_function"]()
+            end
+        end
+
         -- 打击受击检测
         -- 检测投受击盒交互
         local LP_hurt_throw_accur = collision_throw_hurtbox_test(char_RP,char_LP) -- (obj_hit,obj_hurt)
@@ -326,20 +376,7 @@ function update_game_scene_training_main()
             char_LP["hurt_function"](char_RP) -- LP更新被攻击状态
         end
         if LP_hurt_throw_accur and RP_hurt_throw_accur then
-            -- teched_LP
-            char_LP["state"] = "throw_teched"
-            char_LP["physics_lock"] = false
-            char_LP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
-                char_LP,"teched"
-            )
-            init_character_anim_with(char_LP,char_LP["character_animation"])
-            -- teched_RP
-            char_RP["state"] = "throw_teched"
-            char_RP["physics_lock"] = false
-            char_RP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
-                char_RP,"teched"
-            )
-            init_character_anim_with(char_RP,char_RP["character_animation"])
+            common_update_game_scene_char_throw_clash()
         end
 
         -- debug_delete_after
@@ -370,47 +407,6 @@ function update_game_scene_training_main()
                     char_LP,"teching"
                 )
                 init_character_anim_with(char_LP,char_LP["character_animation"])
-            end
-        end
-
-        -- enemy_interact_function
-            -- strike_clash
-            -- projectile_and_projectile_interaction
-            -- interaction_with_enemy
-        -- friendly_interact_function
-            -- interaction_with_friendly
-
-        -- 检测飞行道具人物交互
-        for i = 1,#char_LP["projectile_rc_table"] do
-            local current_projectile = char_LP["projectile_rc_table"][i]
-            current_projectile["enemy_interact_function"]()
-        end
-        for i = 1,#char_RP["projectile_rc_table"] do
-            local current_projectile = char_RP["projectile_rc_table"][i]
-            current_projectile["enemy_interact_function"]()
-        end
-        for i = 1,#char_LP["projectile_table"] do
-            local current_projectile = char_LP["projectile_table"][i]
-            if current_projectile["enemy_interact_function"] then
-                current_projectile["enemy_interact_function"]()
-            end
-        end
-        for i = 1,#char_RP["projectile_table"] do
-            local current_projectile = char_RP["projectile_table"][i]
-            if current_projectile["enemy_interact_function"] then
-                current_projectile["enemy_interact_function"]()
-            end
-        end
-        for i = 1,#char_LP["projectile_table"] do
-            local current_projectile = char_LP["projectile_table"][i]
-            if current_projectile["friendly_interact_function"] then
-                current_projectile["friendly_interact_function"]()
-            end
-        end
-        for i = 1,#char_RP["projectile_table"] do
-            local current_projectile = char_RP["projectile_table"][i]
-            if current_projectile["friendly_interact_function"] then
-                current_projectile["friendly_interact_function"]()
             end
         end
 
@@ -450,7 +446,33 @@ function update_game_scene_training_main()
 
         -- 检测相杀
         if collision_strike_hitbox_clash_test() then
+            common_update_game_scene_char_strike_clash()
+        end
 
+        -- 检测pushbox 更新Y位置
+        collision_pushbox_relocate_y(char_LP)
+        collision_pushbox_relocate_y(char_RP)
+
+        -- 检测pushbox 更新X位置 static_relocate_x
+        collision_pushbox_stage_relocate_x(char_LP)
+        collision_pushbox_stage_relocate_x(char_RP)
+        collision_pushbox_state_relocate_in_character_x(char_LP,char_RP,obj_stage_game_scene_mid_collision_anchor)
+
+        -- 检测pushbox 更新X位置 dynamic_relocate_x
+        collision_pushbox_dynamic_normal_aabb_relocate_x(char_LP,char_RP)
+
+        -- 更新飞行道具 与角色碰撞交互
+        for i = #char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
+            local object = char_LP["projectile_table"][i]
+            if object["push_box_interact_update"] then
+                object["push_box_interact_update"]()
+            end
+        end
+        for i = #char_RP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
+            local object = char_RP["projectile_table"][i]
+            if object["push_box_interact_update"] then
+                object["push_box_interact_update"]()
+            end
         end
     end
 

@@ -315,7 +315,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["brightness"] = 0
     obj_char_game_scene_char_LP["brightness_const"] = 0
     obj_char_game_scene_char_LP["brightness_overdrive_const"] = 0
-    obj_char_game_scene_char_LP["shadow_opacity"] = 0.5
+    obj_char_game_scene_char_LP["shadow_opacity"] = 0.75
     obj_char_game_scene_char_LP["hurtstop_wiggle_x"] = 0
     obj_char_game_scene_char_LP["hurtstop_wiggle_y"] = 0
     obj_char_game_scene_char_LP["hurtstop_wiggle_current_x"] = 0
@@ -480,6 +480,8 @@ function order_load_game_scene_char_LP_frames(load_order)
         [19] = function()
             local load_name_table = {
                 "4SP_P",
+                "6SP_P",
+                "6SP_P_curse_ball_spawner",
                 "6SP_S"
             }
             for i,v in ipairs(load_name_table) do
@@ -552,6 +554,12 @@ function order_load_game_scene_char_LP_frames(load_order)
             local load_name_table = {
                 "5H_hit",
                 "5H_miss",
+                "6SP_P_arua_end",
+                "6SP_P_arua_loop",
+                "6SP_P_arua_start",
+                "6SP_P_curse_ball_blast",
+                "6SP_P_curse_ball_loop",
+                "6SP_P_curse_ball_spawn_halo"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_projectile_game_scene_LP[v.."_projectile"] = 

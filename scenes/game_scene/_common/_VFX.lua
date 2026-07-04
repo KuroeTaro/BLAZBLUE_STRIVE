@@ -18,8 +18,8 @@ function insert_VFX_game_scene_char_overdrive_badge(obj_char)
     obj[2] = obj_char["y"] - obj_char[6]*(obj["y_offset"])
     obj[3] = obj_char[3]
     obj[4] = 1
-    obj[5] = obj_char[5]*2
-    obj[6] = obj_char[6]*2
+    obj[5] = obj_char[5]
+    obj[6] = obj_char[6]
     obj[7] = obj_char[7]
     obj[8] = 0
     obj["f"] = -1
@@ -38,8 +38,8 @@ function insert_VFX_game_scene_char_overdrive_badge(obj_char)
         obj[1] = obj_char["x"] - obj_char[5]*(500)
         obj[2] = obj_char["y"] - obj_char[6]*(obj["y_offset"])
         obj[3] = obj_char[3]
-        obj[5] = obj_char[5]*2
-        obj[6] = obj_char[6]*2
+        obj[5] = obj_char[5]
+        obj[6] = obj_char[6]
         obj[7] = obj_char[7]
         obj["draw_sync"] = function() end
     end
@@ -111,7 +111,7 @@ function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
     table.insert(obj_char["VFX_back_table"],obj)
 end
 function insert_VFX_game_scene_char_overdrive_partical(obj_char)
-    local obj = {0,0,0,1,2,2,0,0}
+    local obj = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
 
@@ -124,21 +124,21 @@ function insert_VFX_game_scene_char_overdrive_partical(obj_char)
     obj["f"] = -1
 
     if obj_char["player_side"] == "L" then
-        obj[1] = obj_camera["3d_pos_x"] - 960
-        obj[2] = obj_camera["3d_pos_y"] - 540
-        obj[3] = obj_camera["3d_pos_z"] + obj_camera["3d_pos_y"]*0.25 + 800
+        obj[1] = 0
+        obj[2] = 0
+        obj[3] = 1
         obj[4] = 1
-        obj[5] = 2
-        obj[6] = 2
+        obj[5] = 1
+        obj[6] = 1
         obj[7] = 0
         obj[8] = 0
     elseif obj_char["player_side"] == "R" then
-        obj[1] = obj_camera["3d_pos_x"] + 960
-        obj[2] = obj_camera["3d_pos_y"] - 540
-        obj[3] = obj_camera["3d_pos_z"] + obj_camera["3d_pos_y"]*0.25 + 800
-        obj[4] = 2
-        obj[5] = -2
-        obj[6] = 2
+        obj[1] = 1600
+        obj[2] = 0
+        obj[3] = 1
+        obj[4] = 1
+        obj[5] = -1
+        obj[6] = 1
         obj[7] = 0
         obj[8] = 0
     end
@@ -154,23 +154,13 @@ function insert_VFX_game_scene_char_overdrive_partical(obj_char)
         end
     end
     obj["draw_sync"] = function()
-        if obj_char["player_side"] == "L" then
-            obj[1] = obj_camera["3d_pos_x"] - 960
-            obj[2] = obj_camera["3d_pos_y"] - 540
-            obj[3] = obj_camera["3d_pos_z"] + obj_camera["3d_pos_y"]*0.25 + 800
-        elseif obj_char["player_side"] == "R" then
-            obj[1] = obj_camera["3d_pos_x"] + 960
-            obj[2] = obj_camera["3d_pos_y"] - 540
-            obj[3] = obj_camera["3d_pos_z"] + obj_camera["3d_pos_y"]*0.25 + 800
-        end
-        obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_overdrive_partical
         obj["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
+        draw_2d_image_sprite_batch(obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
@@ -344,7 +334,9 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
         obj["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
+        love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_back_table"],obj)
 end
@@ -395,7 +387,9 @@ function insert_VFX_game_scene_char_RC_partical(obj_char,color)
         obj["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
+        love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_back_table"],obj)
 end
@@ -1110,9 +1104,11 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(obj_char)
         local obj_camera = obj_stage_game_scene_camera
         local image = image_VFX_game_scene_counter_glow
         obj["draw_sync"]()
+        love.graphics.setBlendMode("add")
         love.graphics.setColor(1,1,1,obj[4])
         draw_3d_image(obj_camera,obj,image)
         love.graphics.setColor(1,1,1,1)
+        love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_hit_back_table"],obj)
 
@@ -1911,9 +1907,11 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(obj_char)
         local obj_camera = obj_stage_game_scene_camera
         local image = image_VFX_game_scene_counter_glow
         obj["draw_sync"]()
+        love.graphics.setBlendMode("add")
         love.graphics.setColor(1,1,1,obj[4])
         draw_3d_image(obj_camera,obj,image)
         love.graphics.setColor(1,1,1,1)
+        love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_hit_back_table"],obj)
 
@@ -2597,7 +2595,9 @@ function insert_VFX_game_scene_char_block_ver0(obj_char)
         obj["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
+        love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
 end
@@ -2652,7 +2652,9 @@ function insert_VFX_game_scene_char_block_ver1(obj_char)
         obj[2] = obj_char["y"] + obj_char[6]*(VFX_spawn_anchor_pos[2])
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
+        love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
 end
@@ -2718,7 +2720,9 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setBlendMode("add")
         draw_3d_image(obj_camera,obj,image_VFX_game_scene_FD_bubble)
+        love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
 end
@@ -2763,7 +2767,9 @@ function insert_VFX_game_scene_char_throw_tech(obj_char,x,y,opacity,sx,sy,r)
         obj["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
+        love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_hit_back_table"],obj)
 end

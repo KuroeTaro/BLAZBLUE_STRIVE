@@ -315,12 +315,12 @@ function order_load_game_scene_stage(load_order)
                 "asset/game_scene/stage/alpha/wallbreak_dynamic.json",
                 love.graphics.newImage(ASSET_DATA[4][2])
             )
+            image_stage_game_scene_wallbreak_glow = love.graphics.newImage(ASSET_DATA[4][3])
             image_sprite_sheet_stage_game_scene_wallbreak_smoke = 
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/wallbreak_smoke.json",
-                love.graphics.newImage(ASSET_DATA[4][3])
+                love.graphics.newImage(ASSET_DATA[4][4])
             )
-            image_stage_game_scene_wallbreak_glow = love.graphics.newImage(ASSET_DATA[4][4])
 
             image_sprite_sheet_stage_game_scene_wallstick = {}
             image_sprite_sheet_stage_game_scene_wallstick[0] = 
@@ -713,7 +713,7 @@ function draw_game_scene_stage_glow()
     love.graphics.setCanvas()
 
     love.graphics.setBlendMode("add")
-    love.graphics.setColor(1,1,1,0.8)
+    love.graphics.setColor(1,1,1,0.675)
     love.graphics.draw(DRAW_STAGE_ALPHA_COMP_CANVAS)
     love.graphics.setColor(1,1,1,1)
     love.graphics.setBlendMode("alpha")
