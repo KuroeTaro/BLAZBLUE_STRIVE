@@ -152,7 +152,7 @@ end
 
 -- projectile
 local load_projectile_name_table = {
-    "5H",
+    "5H_hit",
     "5H_miss"
 }
 for i,v in ipairs(load_projectile_name_table) do

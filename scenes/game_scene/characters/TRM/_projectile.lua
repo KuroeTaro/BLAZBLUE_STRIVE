@@ -44,7 +44,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     -- collide
     if (obj_char["shot_sys_aim_process"][1] >= obj_char["shot_sys_aim_process"][3]) then
         obj["hitbox_table"] = {{0,0,200,200}}
-        obj["sprite_sheet_state"] = "5H_projectile"
+        obj["sprite_sheet_state"] = "5H_hit_projectile"
     end
 
     -- init_animation

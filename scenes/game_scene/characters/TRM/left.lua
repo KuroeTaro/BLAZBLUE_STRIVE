@@ -550,7 +550,7 @@ function order_load_game_scene_char_LP_frames(load_order)
             -- projectile 9
             image_sprite_sheet_projectile_game_scene_LP = {}
             local load_name_table = {
-                "5H",
+                "5H_hit",
                 "5H_miss",
             }
             for i,v in ipairs(load_name_table) do
