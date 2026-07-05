@@ -2736,6 +2736,17 @@ function state_gate_game_scene_char_RP_common_ground_to_special_move(input,obj_c
         return true
     end
     -- 6SP_P
+    if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3)
+    and test_input_sys_press_or_hold(input["SP"])
+    and test_input_sys_press(input["P"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_P(obj_char)
+        init_character_anim_with(obj_char,obj_char["character_animation"])
+        obj_char["state"] = "6SP_P"
+        return true
+    end
     -- 4SP_K
     -- 6SP_K
     -- 4SP_S
@@ -2784,6 +2795,17 @@ function state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(in
         return true
     end
     -- 6SP_P
+    if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3)
+    and test_input_sys_press_or_hold(input["SP"]) 
+    and test_input_sys_press_or_hold(input["P"]) then
+        if not common_game_scene_get_character_facing_currect(obj_char) then
+            obj_char[5] = -obj_char[5]
+        end
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_P(obj_char)
+        init_character_anim_with(obj_char,obj_char["character_animation"])
+        obj_char["state"] = "6SP_P"
+        return true
+    end
     -- 4SP_K
     -- 6SP_K
     -- 4SP_S
@@ -5964,6 +5986,26 @@ function state_gate_game_scene_char_RP_from_4SP_P(input,obj_char)
     end
 end
 function state_gate_game_scene_char_RP_from_6SP_P(input,obj_char)
+    -- _PRC
+    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char) then
+        return true
+    end
+    -- _common_ground_idle_to_move
+    if obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
+            return true
+        end
+    end
+    -- _5_stand_idle
+    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
+        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
+        init_character_anim_with(obj_char,obj_char["character_animation"])
+        obj_char["state"] = "5_stand_idle"
+        if state_gate_game_scene_char_RP_from_5_stand_idle(input,obj_char) then
+            return true
+        end
+        return true
+    end
 end
 function state_gate_game_scene_char_RP_from_4SP_K(input,obj_char)
 end

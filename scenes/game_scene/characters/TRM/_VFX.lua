@@ -776,6 +776,11 @@ function insert_VFX_game_scene_char_TRM_jS_whiff(obj_char)
     table.insert(obj_char["VFX_front_table"],obj)
 end
 
+function insert_VFX_game_scene_char_TRM_6SP_P_spawner(obj_char)
+end
+function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
+end
+
 function insert_VFX_game_scene_char_TRM_6SP_S_whiff(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
     local image_sprite_sheet = nil

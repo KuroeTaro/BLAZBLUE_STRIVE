@@ -1021,3 +1021,10 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
     end
     return res
 end
+
+
+function insert_projectile_game_scene_char_TRM_6SP_P(obj_char)
+end
+
+function load_game_scene_anim_char_TRM_6SP_P_projectile_main_anim(obj,obj_char,obj_char_other_side)
+end
