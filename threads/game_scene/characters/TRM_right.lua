@@ -115,15 +115,14 @@ local load_attack_name_table = {
         -- special
     "4SP_P",
     "6SP_P",
-    "6SP_P_curse_ball_spawner",
     "6SP_S"
 }
 for i,v in ipairs(load_attack_name_table) do
     thread_data[v] = compress_module("asset/game_scene/characters/TRM/_character/ATTACK/TRM_"..v..".dds")
 end
 
--- 角色whiff_VFX类
-local load_whiff_VFX_name_table = {
+-- 角色move_VFX类
+local load_move_VFX_name_table = {
     "2P",
     "6P",
     "5P",
@@ -147,22 +146,23 @@ local load_whiff_VFX_name_table = {
         -- special
     -- "4SP_P",
     -- "6SP_P",
+    "6SP_P_arua_end",
+    "6SP_P_arua_loop",
+    "6SP_P_arua_start",
+    "6SP_P_curse_ball_spawn_halo",
+    "6SP_P_curse_ball_spawner",
     "6SP_S"
 }
-for i,v in ipairs(load_whiff_VFX_name_table) do
-    thread_data[v.."_whiff_VFX"] = compress_module("asset/game_scene/VFX/whiff_VFX/TRM/".."TRM_"..v..".dds")
+for i,v in ipairs(load_move_VFX_name_table) do
+    thread_data[v.."_move_VFX"] = compress_module("asset/game_scene/VFX/move_VFX/TRM/".."TRM_"..v..".dds")
 end
 
 -- projectile
 local load_projectile_name_table = {
     "5H_hit",
     "5H_miss",
-    "6SP_P_arua_end",
-    "6SP_P_arua_loop",
-    "6SP_P_arua_start",
     "6SP_P_curse_ball_blast",
-    "6SP_P_curse_ball_loop",
-    "6SP_P_curse_ball_spawn_halo"
+    "6SP_P_curse_ball_loop"
 }
 for i,v in ipairs(load_projectile_name_table) do
     thread_data[v.."_projectile"] = compress_module("asset/game_scene/characters/TRM/_character/PROJECTILE/".."TRM_"..v..".dds")

@@ -2036,7 +2036,7 @@ function load_game_scene_anim_char_TRM_2P(obj_char)
         -- SFX
         -- play_obj_audio(SFX_table["5P"])
         -- VFX
-        insert_VFX_game_scene_char_TRM_2P_whiff(obj_char)
+        insert_VFX_game_scene_char_TRM_2P_move(obj_char)
         -- draw_correction
         obj_char[8] = 3
     end
@@ -2278,7 +2278,7 @@ function load_game_scene_anim_char_TRM_6P(obj_char)
         -- SFX
         -- play_obj_audio(SFX_table["5P"])
         -- VFX
-        insert_VFX_game_scene_char_TRM_6P_whiff(obj_char)
+        insert_VFX_game_scene_char_TRM_6P_move(obj_char)
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-225,-455}
         -- draw_correction
@@ -2569,7 +2569,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         -- SFX
         -- play_obj_audio(SFX_table["5P"])
         -- VFX
-        insert_VFX_game_scene_char_TRM_5P_whiff(obj_char)
+        insert_VFX_game_scene_char_TRM_5P_move(obj_char)
         -- draw_correction
         obj_char[8] = 3
     end
@@ -3741,7 +3741,7 @@ function load_game_scene_anim_char_TRM_2S(obj_char)
         -- SFX
         -- play_obj_audio(SFX_table["5P"])
         -- VFX
-        insert_VFX_game_scene_char_TRM_2S_whiff(obj_char)
+        insert_VFX_game_scene_char_TRM_2S_move(obj_char)
     end
     res[12] = function()
         -- draw_correction
@@ -4028,7 +4028,7 @@ function load_game_scene_anim_char_TRM_6S(obj_char)
         obj_char[8] = 0
         obj_char["anchor_pos"] = {375,510}
         -- VFX
-        insert_VFX_game_scene_char_TRM_6S_whiff(obj_char)
+        insert_VFX_game_scene_char_TRM_6S_move(obj_char)
         -- camera_animation_load
         common_game_scene_hit_load_camera_shake_anim(obj_char,0.42,15)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
@@ -4379,7 +4379,7 @@ function load_game_scene_anim_char_TRM_cS(obj_char)
         -- SFX
         -- play_obj_audio(SFX_table["5P"])
         -- VFX
-        insert_VFX_game_scene_char_TRM_cS_whiff(obj_char)
+        insert_VFX_game_scene_char_TRM_cS_move(obj_char)
     end
     res[10] = function()
         -- state
@@ -4837,7 +4837,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_in(obj_char
         obj_char["shot_sys_fire_cancel"] = false
         obj_char["shot_sys_idle_cancel"] = true
         --VFX
-        insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_switch(obj_char)
+        insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_switch(obj_char)
     end
     -- res[10] = function()
     --     -- input_sys_cache
@@ -4924,7 +4924,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_out(obj_cha
 
     res[0] = function()
         -- insert_VFX
-        insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_switch(obj_char)
+        insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_switch(obj_char)
     end
     res[1] = function()
         -- animation_end
@@ -5402,7 +5402,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
         update_oroboros_r(obj_char,10)
         obj_char["shot_sys_oroboros_mid"][8] = 1
         -- VFX
-        insert_VFX_game_scene_char_TRM_5H_whiff_at_the_ready_shot_oroboros_blast(obj_char)
+        insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_shot_oroboros_blast(obj_char)
     end
     res[3] = function()
         -- oroboros
@@ -6677,7 +6677,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
     end
     res[3] = function()
         -- VFX
-        insert_VFX_game_scene_char_TRM_5Launcher_whiff_glow(obj_char)
+        insert_VFX_game_scene_char_TRM_5Launcher_move_glow(obj_char)
     end
     res[5] = function()
         -- collide
@@ -6714,7 +6714,7 @@ function load_game_scene_anim_char_TRM_5Launcher(obj_char)
         -- SFX
         -- play_obj_audio(SFX_table["5P"])
         -- VFX
-        insert_VFX_game_scene_char_TRM_5Launcher_whiff_slash(obj_char)
+        insert_VFX_game_scene_char_TRM_5Launcher_move_slash(obj_char)
     end
     res[20] = function()
         -- draw_correction
@@ -6981,7 +6981,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
     end
     res[3] = function()
         -- VFX
-        insert_VFX_game_scene_char_TRM_5Launcher_whiff_glow(obj_char)
+        insert_VFX_game_scene_char_TRM_5Launcher_move_glow(obj_char)
     end
     res[5] = function()
         -- collide
@@ -7018,7 +7018,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(obj_char)
         -- SFX
         -- play_obj_audio(SFX_table["5P"])
         -- VFX
-        insert_VFX_game_scene_char_TRM_5Launcher_whiff_slash(obj_char)
+        insert_VFX_game_scene_char_TRM_5Launcher_move_slash(obj_char)
     end
     res[20] = function()
         -- draw_correction
@@ -8057,7 +8057,7 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
     end
     res[6] = function()
         -- VFX
-        insert_VFX_game_scene_char_TRM_jS_whiff(obj_char)
+        insert_VFX_game_scene_char_TRM_jS_move(obj_char)
     end
     res[9] = function()
         -- state & state_number
@@ -9657,7 +9657,7 @@ function load_game_scene_anim_char_TRM_6SP_S(obj_char)
         -- draw_correction
         obj_char[8] = 3
         -- VFX
-        insert_VFX_game_scene_char_TRM_6SP_S_whiff(obj_char)
+        insert_VFX_game_scene_char_TRM_6SP_S_move(obj_char)
     end
     res[11] = function()
         -- state

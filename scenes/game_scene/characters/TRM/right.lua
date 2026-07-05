@@ -481,7 +481,6 @@ function order_load_game_scene_char_RP_frames(load_order)
             local load_name_table = {
                 "4SP_P",
                 "6SP_P",
-                "6SP_P_curse_ball_spawner",
                 "6SP_S"
             }
             for i,v in ipairs(load_name_table) do
@@ -504,7 +503,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             end 
         end,
         [21] = function()
-            -- whiff_VFX 7 8
+            -- move_VFX 7 8
             image_sprite_sheet_VFX_game_scene_RP = {}
             local load_name_table = {
                 "2P",
@@ -527,13 +526,18 @@ function order_load_game_scene_char_RP_frames(load_order)
                 -- "jP",
                 -- "jK",
                 "jS",
+                "6SP_P_arua_end",
+                "6SP_P_arua_loop",
+                "6SP_P_arua_start",
+                "6SP_P_curse_ball_spawn_halo",
+                "6SP_P_curse_ball_spawner",
                 "6SP_S"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_VFX_game_scene_RP[v.."_whiff_VFX"] = 
+                image_sprite_sheet_VFX_game_scene_RP[v.."_move_VFX"] = 
                 common_sprite_sheet_load(
-                    "asset/game_scene/VFX/whiff_VFX/TRM/".."TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_whiff_VFX"])
+                    "asset/game_scene/VFX/move_VFX/TRM/".."TRM_"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
                 )
             end 
         end,
@@ -541,10 +545,10 @@ function order_load_game_scene_char_RP_frames(load_order)
             local load_name_table = {
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_VFX_game_scene_RP[v.."_whiff_VFX"] = 
+                image_sprite_sheet_VFX_game_scene_RP[v.."_move_VFX"] = 
                 common_sprite_sheet_load(
-                    "asset/game_scene/VFX/whiff_VFX/TRM/"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_whiff_VFX"])
+                    "asset/game_scene/VFX/move_VFX/TRM/"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
                 )
             end 
         end,
@@ -554,12 +558,8 @@ function order_load_game_scene_char_RP_frames(load_order)
             local load_name_table = {
                 "5H_hit",
                 "5H_miss",
-                "6SP_P_arua_end",
-                "6SP_P_arua_loop",
-                "6SP_P_arua_start",
                 "6SP_P_curse_ball_blast",
-                "6SP_P_curse_ball_loop",
-                "6SP_P_curse_ball_spawn_halo"
+                "6SP_P_curse_ball_loop"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_projectile_game_scene_RP[v.."_projectile"] = 
