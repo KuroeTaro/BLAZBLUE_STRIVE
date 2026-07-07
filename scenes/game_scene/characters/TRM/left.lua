@@ -263,6 +263,19 @@ function load_game_scene_obj_char_LP()
         ["5UA"] = true,
         ["4SP_S_5UA"] = true
     }
+    obj_char_game_scene_char_LP["shot_sys_curse_force_off_state"] = {
+        ["throw_hurt_success"] = true,
+        ["throw_tested"] = true,
+        ["hurtstop"] = true,
+        ["blockstop"] = true,
+        ["wallstick"] = true,
+        ["wallbreak_hurt"] = true,
+        ["5Launcher_hold_hit_entering"] = true,
+        ["5Launcher_hold_hit_exiting"] = true,
+        ["5Launcher_hold_hurt_entering"] = true,
+        ["5Launcher_hold_hurt_exiting"] = true,
+        ["before_ease_in"] = true
+    }
     obj_char_game_scene_char_LP["6SP_S_shot_sys_pass_state"] = {
         ["at_the_ready_ease_out"] = true,
         ["steady_aim_ease_out"] = true,

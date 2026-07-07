@@ -929,6 +929,109 @@ function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
     table.insert(obj_char["VFX_common_front_table"],obj)
 end
 function insert_VFX_game_scene_char_TRM_6SP_P_arua(obj_char)
+    local obj = {0,0,0,1,0,0,0,0}
+    local side = obj_char["player_side"]
+    local obj_camera = obj_stage_game_scene_camera
+    local obj_char_other_side = common_game_scene_change_character(side)
+    local shot_sys_curse_force_off_state = obj_char["shot_sys_curse_force_off_state"]
+    local image_sprite_sheet_table = nil
+    if side == "L" then
+        image_sprite_sheet_table = image_sprite_sheet_VFX_game_scene_LP
+    elseif side == "R" then
+        image_sprite_sheet_table = image_sprite_sheet_VFX_game_scene_RP
+    end
+    local image_sprite_sheet = image_sprite_sheet_table["6SP_P_arua_start_move_VFX"]
+
+    obj["FCT"] = {0,0,0,0,0,0,0,0}
+    obj["LCT"] = {0,0,0,0,0,0,0,0}
+    obj["LCD"] = {0,0,0,0,0,0,0,0}
+    obj["life"] = 42
+    obj[1] = obj_char_other_side["x"]
+    obj[2] = obj_char_other_side["y"] - obj_char_other_side[6]*520
+    obj[3] = obj_char_other_side[3]
+    obj[4] = 1
+    obj[5] = 0
+    obj[6] = 0
+    obj[7] = 0
+    obj[8] = 0
+    obj["state"] = "start"
+    
+    obj["start_frame_animation"] = {}
+    for i = 0,59 do
+        obj["start_frame_animation"][i*2] = i
+    end
+    obj["start_frame_animation"]["prop"] = 8
+    obj["start_frame_animation"]["length"] = 120
+    obj["start_frame_animation"]["loop"] = false
+
+    obj["loop_frame_animation"] = {}
+    for i = 0,89 do
+        obj["loop_frame_animation"][i*2] = i
+    end
+    obj["loop_frame_animation"]["prop"] = 8
+    obj["loop_frame_animation"]["length"] = 180
+    obj["loop_frame_animation"]["loop"] = true
+
+    obj["end_frame_animation"] = {}
+    for i = 0,29 do
+        obj["end_frame_animation"][i*2] = i
+    end
+    obj["end_frame_animation"]["prop"] = 8
+    obj["end_frame_animation"]["length"] = 60
+    obj["end_frame_animation"]["loop"] = false
+    init_frame_anim_without(obj,obj["start_frame_animation"])
+
+    obj["update"] = function()
+        local switch = {
+            -- ease_in 之前的状态 如果达到第10帧则为下一个动画的第0帧 
+            ["start"] = function()
+                obj["life"] = 42
+                frame_animator(obj,obj["start_frame_animation"])
+                if shot_sys_curse_force_off_state[obj_char["state"]] or (not obj_char["shot_sys_curse"]) then
+                    obj["state"] = "end"
+                    image_sprite_sheet = image_sprite_sheet_table["6SP_P_arua_end_move_VFX"]
+                    init_frame_anim_with(obj,obj["end_frame_animation"])
+                end
+                if get_frame_anim_end_state(obj,obj["start_frame_animation"]) then
+                    obj["state"] = "loop"
+                    image_sprite_sheet = image_sprite_sheet_table["6SP_P_arua_loop_move_VFX"]
+                    init_frame_anim_with(obj,obj["loop_frame_animation"])
+                end
+            end,
+            ["loop"] = function()
+                obj["life"] = 42
+                frame_animator(obj,obj["loop_frame_animation"])
+                if shot_sys_curse_force_off_state[obj_char["state"]] or (not obj_char["shot_sys_curse"]) then
+                    obj["state"] = "end"
+                    image_sprite_sheet = image_sprite_sheet_table["6SP_P_arua_end_move_VFX"]
+                    init_frame_anim_with(obj,obj["end_frame_animation"])
+                end
+            end,
+            ["end"] = function()
+                obj["life"] = 42
+                if get_frame_anim_end_state(obj,obj["end_frame_animation"]) then
+                    obj["life"] = 0
+                end
+            end,
+        }
+        local this_function = switch[obj["state"]]
+        if this_function then this_function() end
+
+        obj["life"] = obj["life"] - 1
+    end
+    obj["draw_sync"] = function()
+        obj[1] = obj_char_other_side["x"]
+        obj[2] = obj_char_other_side["y"] - obj_char_other_side[6]*520
+        obj[3] = obj_char_other_side[3]
+        obj["draw_sync"] = function() end
+    end
+    obj["draw"] = function()
+        obj["draw_sync"]()
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+    end
+    table.insert(obj_char_other_side["VFX_status_back_table"],obj)
 end
 
 function insert_VFX_game_scene_char_TRM_6SP_S_move(obj_char)

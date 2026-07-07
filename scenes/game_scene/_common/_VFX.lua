@@ -274,7 +274,7 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
         obj["draw_sync"] = function() end
     end
     obj["draw"] = function()
-         obj["draw_sync"]()
+        obj["draw_sync"]()
         love.graphics.setCanvas(obj["draw_canvas"])
         love.graphics.clear(0,0,0,0)
         love.graphics.setColor(0,0,0,obj[4])
