@@ -6507,7 +6507,10 @@ end
 -- countdown
 function update_game_scene_char_LP_overdrive_countdown()
     local obj_char = obj_char_game_scene_char_LP
-    if obj_char["state"] == "hitstop" or obj_char["state"] == "hurtstop" or obj_char["state"] == "blockstop" then
+    if obj_char["state"] == "hitstop"
+    or obj_char["state"] == "hurtstop"
+    or obj_char["state"] == "blockstop"
+    or obj_char["game_speed_force_1_countdown"] > 0 then
         return
     end
     if obj_char["state"] ~= "burst_overdrive" and 
@@ -6538,7 +6541,10 @@ function update_game_scene_char_LP_overdrive_countdown()
 end
 function update_game_scene_char_LP_inv_state_countdown()
     local obj_char = obj_char_game_scene_char_LP
-    if obj_char["state"] == "hitstop" or obj_char["state"] == "hurtstop" or obj_char["state"] == "blockstop" then
+    if obj_char["state"] == "hitstop"
+    or obj_char["state"] == "hurtstop"
+    or obj_char["state"] == "blockstop"
+    or obj_char["game_speed_force_1_countdown"] > 0 then
         return
     end
     if obj_char["strike_inv_countdown"] > 1 then
@@ -6562,7 +6568,10 @@ function update_game_scene_char_LP_inv_state_countdown()
 end
 function update_game_scene_char_LP_heat_penalty_countdown()
     local obj_char = obj_char_game_scene_char_LP
-    if obj_char["state"] == "hitstop" or obj_char["state"] == "hurtstop" or obj_char["state"] == "blockstop" then
+    if obj_char["state"] == "hitstop"
+    or obj_char["state"] == "hurtstop"
+    or obj_char["state"] == "blockstop"
+    or obj_char["game_speed_force_1_countdown"] > 0 then
         return
     end
     if obj_char["heat_penalty_countdown"] > 1 then
@@ -6574,7 +6583,10 @@ function update_game_scene_char_LP_heat_penalty_countdown()
 end
 function update_game_scene_char_LP_ability_penalty_countdown()
     local obj_char = obj_char_game_scene_char_LP
-    if obj_char["state"] == "hitstop" or obj_char["state"] == "hurtstop" or obj_char["state"] == "blockstop" then
+    if obj_char["state"] == "hitstop"
+    or obj_char["state"] == "hurtstop"
+    or obj_char["state"] == "blockstop"
+    or obj_char["game_speed_force_1_countdown"] > 0 then
         return
     end
     if obj_char["ability_penalty_countdown"] > 1 then
@@ -6585,7 +6597,37 @@ function update_game_scene_char_LP_ability_penalty_countdown()
     end
 end
 function update_game_scene_char_LP_positive_bonus_countdown()
-    
+    local obj_char = obj_char_game_scene_char_LP
+    if obj_char["state"] == "hitstop"
+    or obj_char["state"] == "hurtstop"
+    or obj_char["state"] == "blockstop"
+    or obj_char["game_speed_force_1_countdown"] > 0 then
+        return
+    end
+    if obj_char["positive_bonus_countdown"] > 1 then
+        obj_char["positive_bonus_countdown"] = obj_char["positive_bonus_countdown"] - 1
+    else
+        obj_char["positive_bonus"] = false
+        obj_char["positive_bonus_heat_gain_buff"] = 1
+        obj_char["positive_bonus_hit_damage_buff"] = 1
+        obj_char["positive_bonus_hurt_damage_buff"] = 1
+        obj_char["positive_bonus_countdown"] = 0
+    end
+end
+function update_game_scene_char_LP_shot_sys_curse_countdown()
+    local obj_char = obj_char_game_scene_char_LP
+    if obj_char["state"] == "hitstop"
+    or obj_char["state"] == "hurtstop"
+    or obj_char["state"] == "blockstop"
+    or obj_char["game_speed_force_1_countdown"] > 0 then
+        return
+    end
+    if obj_char["shot_sys_curse_countdown"] > 1 then
+        obj_char["shot_sys_curse_countdown"] = obj_char["shot_sys_curse_countdown"] - 1
+    else
+        obj_char["shot_sys_curse"] = false
+        obj_char["shot_sys_curse_countdown"] = 0
+    end
 end
 function update_game_scene_char_LP_uncommon()
     -- countdown
@@ -6594,6 +6636,7 @@ function update_game_scene_char_LP_uncommon()
     update_game_scene_char_LP_heat_penalty_countdown()
     update_game_scene_char_LP_ability_penalty_countdown()
     update_game_scene_char_LP_positive_bonus_countdown()
+    update_game_scene_char_LP_shot_sys_curse_countdown()
     -- basic_prop_cache
     for i = 1,8 do
         obj_char_game_scene_char_LP["basic_prop_cache"][i] = obj_char_game_scene_char_LP[i]

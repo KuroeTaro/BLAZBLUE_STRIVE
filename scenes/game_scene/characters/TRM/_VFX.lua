@@ -928,6 +928,8 @@ function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
     end
     table.insert(obj_char["VFX_common_front_table"],obj)
 end
+function insert_VFX_game_scene_char_TRM_6SP_P_arua(obj_char)
+end
 
 function insert_VFX_game_scene_char_TRM_6SP_S_move(obj_char)
     local obj = {0,0,0,1,1,1,0,0}

@@ -5173,7 +5173,7 @@ end
 function load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj,sprite_sheet_state)
     local res = {}
     res["prop_f"] = "f_8"
-    res["anim_length"] = 111
+    res["anim_length"] = 91
 
     res[0] = function()
         -- oroboros
@@ -5181,89 +5181,16 @@ function load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj,sprite_sheet_s
         obj[4] = 1
         obj[8] = 0
     end
-    res[3] = function()
-        -- oroboros
-        obj[8] = 1
+    for i = 1,14 do
+        res[i*6] = function()
+            -- oroboros
+            obj[8] = i
+        end
     end
-    res[7] = function()
+    res[90] = function()
         -- oroboros
-        obj[8] = 2
-    end
-    res[11] = function()
-        -- oroboros
-        obj[8] = 3
-    end
-    res[15] = function()
-        -- oroboros
-        obj[8] = 4
-    end
-    res[20] = function()
-        -- oroboros
-        obj[8] = 5
-    end
-    res[26] = function()
-        -- oroboros
-        obj[8] = 6
-    end
-    res[32] = function()
-        -- oroboros
-        obj[8] = 7
-    end
-    res[38] = function()
-        -- oroboros
-        obj[8] = 8
-    end
-    res[44] = function()
-        -- oroboros
-        obj[8] = 9
-    end
-    res[50] = function()
-        -- oroboros
-        obj[8] = 10
-    end
-    res[56] = function()
-        -- oroboros
-        obj[8] = 11
-    end
-    res[62] = function()
-        -- oroboros
-        obj[8] = 12
-    end
-    res[68] = function()
-        -- oroboros
-        obj[8] = 13
-    end
-    res[74] = function()
-        -- oroboros
-        obj[8] = 14
-    end
-    res[80] = function()
-        -- oroboros
-        obj[8] = 15
-    end
-    res[86] = function()
-        -- oroboros
-        obj[8] = 16
-    end
-    res[92] = function()
-        -- oroboros
-        obj[8] = 17
-    end
-    res[98] = function()
-        -- oroboros
-        obj[8] = 18
-    end
-    res[104] = function()
-        -- oroboros
-        obj[8] = 19
-    end
-    res[110] = function()
-        -- oroboros
-        obj["f_8"] = 20
-        obj[8] = 5
-    end
-    res[111] = function()
-        -- animation_end
+        obj["f_8"] = 0
+        obj[8] = 0
     end
     return res
 end
