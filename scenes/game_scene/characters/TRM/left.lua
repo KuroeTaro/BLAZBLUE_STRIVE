@@ -192,8 +192,10 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["projectile_table"] = {}
     obj_char_game_scene_char_LP["projectile_rc_table"] = {}
     obj_char_game_scene_char_LP["VFX_HUD_table"] = {}
-    obj_char_game_scene_char_LP["VFX_front_table"] = {}
-    obj_char_game_scene_char_LP["VFX_back_table"] = {}
+    obj_char_game_scene_char_LP["VFX_status_front_table"] = {}
+    obj_char_game_scene_char_LP["VFX_status_back_table"] = {}
+    obj_char_game_scene_char_LP["VFX_common_front_table"] = {}
+    obj_char_game_scene_char_LP["VFX_common_back_table"] = {}
     obj_char_game_scene_char_LP["VFX_hit_front_table"] = {}
     obj_char_game_scene_char_LP["VFX_hit_back_table"] = {}
     obj_char_game_scene_char_LP["VFX_black_overlay_table"] = {}
@@ -315,7 +317,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["brightness"] = 0
     obj_char_game_scene_char_LP["brightness_const"] = 0
     obj_char_game_scene_char_LP["brightness_overdrive_const"] = 0
-    obj_char_game_scene_char_LP["shadow_opacity"] = 0.75
+    obj_char_game_scene_char_LP["shadow_opacity"] = 0.5
     obj_char_game_scene_char_LP["hurtstop_wiggle_x"] = 0
     obj_char_game_scene_char_LP["hurtstop_wiggle_y"] = 0
     obj_char_game_scene_char_LP["hurtstop_wiggle_current_x"] = 0
@@ -1034,8 +1036,8 @@ function load_game_scene_wallbreak_mid_init_LP()
         obj_char_game_scene_char_LP[5] = -obj_char_game_scene_char_LP[5]
     end
     obj_char_game_scene_char_LP["projectile_table"] = {}
-    obj_char_game_scene_char_LP["VFX_front_table"] = {}
-    obj_char_game_scene_char_LP["VFX_back_table"] = {}
+    obj_char_game_scene_char_LP["VFX_common_front_table"] = {}
+    obj_char_game_scene_char_LP["VFX_common_back_table"] = {}
     obj_char_game_scene_char_LP["VFX_hit_front_table"] = {}
     obj_char_game_scene_char_LP["VFX_hit_back_table"] = {}
 
@@ -1169,8 +1171,8 @@ function load_game_scene_wallbreak_end_init_LP()
     -- sub_obj_table
     obj_char_game_scene_char_LP["projectile_table"] = {}
     obj_char_game_scene_char_LP["VFX_HUD_table"] = {}
-    obj_char_game_scene_char_LP["VFX_front_table"] = {}
-    obj_char_game_scene_char_LP["VFX_back_table"] = {}
+    obj_char_game_scene_char_LP["VFX_common_front_table"] = {}
+    obj_char_game_scene_char_LP["VFX_common_back_table"] = {}
     obj_char_game_scene_char_LP["VFX_hit_front_table"] = {}
     obj_char_game_scene_char_LP["VFX_hit_back_table"] = {}
     
@@ -6407,6 +6409,7 @@ function update_game_scene_char_LP_VFX()
             table.remove(obj_char_game_scene_char_LP["VFX_HUD_table"],i) -- 寿命耗尽，从列表中移除
         end
     end
+    
     for i = #obj_char_game_scene_char_LP["VFX_hit_front_table"],1,-1 do -- 反向遍历，便于删除元素
         local object = obj_char_game_scene_char_LP["VFX_hit_front_table"][i]
         object["update"](object)
@@ -6414,13 +6417,21 @@ function update_game_scene_char_LP_VFX()
             table.remove(obj_char_game_scene_char_LP["VFX_hit_front_table"],i) -- 寿命耗尽，从列表中移除
         end
     end
-    for i = #obj_char_game_scene_char_LP["VFX_front_table"],1,-1 do -- 反向遍历，便于删除元素
-        local object = obj_char_game_scene_char_LP["VFX_front_table"][i]
+    for i = #obj_char_game_scene_char_LP["VFX_status_front_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["VFX_status_front_table"][i]
         object["update"](object)
         if object["life"] <= 0 then
-            table.remove(obj_char_game_scene_char_LP["VFX_front_table"],i) -- 寿命耗尽，从列表中移除
+            table.remove(obj_char_game_scene_char_LP["VFX_status_front_table"],i) -- 寿命耗尽，从列表中移除
         end
     end
+    for i = #obj_char_game_scene_char_LP["VFX_common_front_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["VFX_common_front_table"][i]
+        object["update"](object)
+        if object["life"] <= 0 then
+            table.remove(obj_char_game_scene_char_LP["VFX_common_front_table"],i) -- 寿命耗尽，从列表中移除
+        end
+    end
+
     for i = #obj_char_game_scene_char_LP["VFX_hit_back_table"],1,-1 do -- 反向遍历，便于删除元素
         local object = obj_char_game_scene_char_LP["VFX_hit_back_table"][i]
         object["update"](object)
@@ -6428,11 +6439,18 @@ function update_game_scene_char_LP_VFX()
             table.remove(obj_char_game_scene_char_LP["VFX_hit_back_table"],i) -- 寿命耗尽，从列表中移除
         end
     end
-    for i = #obj_char_game_scene_char_LP["VFX_back_table"],1,-1 do -- 反向遍历，便于删除元素
-        local object = obj_char_game_scene_char_LP["VFX_back_table"][i]
+    for i = #obj_char_game_scene_char_LP["VFX_status_back_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["VFX_status_back_table"][i]
         object["update"](object)
         if object["life"] <= 0 then
-            table.remove(obj_char_game_scene_char_LP["VFX_back_table"],i) -- 寿命耗尽，从列表中移除
+            table.remove(obj_char_game_scene_char_LP["VFX_status_back_table"],i) -- 寿命耗尽，从列表中移除
+        end
+    end
+    for i = #obj_char_game_scene_char_LP["VFX_common_back_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["VFX_common_back_table"][i]
+        object["update"](object)
+        if object["life"] <= 0 then
+            table.remove(obj_char_game_scene_char_LP["VFX_common_back_table"],i) -- 寿命耗尽，从列表中移除
         end
     end
 end
@@ -6443,8 +6461,12 @@ function draw_game_scene_char_LP_VFX_HUD()
     end
 end
 function draw_game_scene_char_LP_VFX_front()
-    for i = 1,#obj_char_game_scene_char_LP["VFX_front_table"],1 do -- 反向遍历，便于删除元素
-        local object = obj_char_game_scene_char_LP["VFX_front_table"][i]
+    for i = 1,#obj_char_game_scene_char_LP["VFX_common_front_table"],1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["VFX_common_front_table"][i]
+        object["draw"]()
+    end
+    for i = 1,#obj_char_game_scene_char_LP["VFX_status_front_table"],1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["VFX_status_front_table"][i]
         object["draw"]()
     end
     for i = 1,#obj_char_game_scene_char_LP["VFX_hit_front_table"],1 do -- 反向遍历，便于删除元素
@@ -6453,8 +6475,12 @@ function draw_game_scene_char_LP_VFX_front()
     end
 end
 function draw_game_scene_char_LP_VFX_back()
-    for i = 1,#obj_char_game_scene_char_LP["VFX_back_table"],1 do -- 反向遍历，便于删除元素
-        local object = obj_char_game_scene_char_LP["VFX_back_table"][i]
+    for i = 1,#obj_char_game_scene_char_LP["VFX_common_back_table"],1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["VFX_common_back_table"][i]
+        object["draw"]()
+    end
+    for i = 1,#obj_char_game_scene_char_LP["VFX_status_back_table"],1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["VFX_status_back_table"][i]
         object["draw"]()
     end
     for i = 1,#obj_char_game_scene_char_LP["VFX_hit_back_table"],1 do -- 反向遍历，便于删除元素

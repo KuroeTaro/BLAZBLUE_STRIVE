@@ -52,7 +52,7 @@ function insert_VFX_game_scene_char_overdrive_badge(obj_char)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
     end
-    table.insert(obj_char["VFX_back_table"],obj)
+    table.insert(obj_char["VFX_common_back_table"],obj)
 end
 function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
@@ -108,7 +108,7 @@ function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
     end
-    table.insert(obj_char["VFX_back_table"],obj)
+    table.insert(obj_char["VFX_common_back_table"],obj)
 end
 function insert_VFX_game_scene_char_overdrive_partical(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
@@ -165,7 +165,7 @@ function insert_VFX_game_scene_char_overdrive_partical(obj_char)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
     end
-    table.insert(obj_char["VFX_back_table"],obj)
+    table.insert(obj_char["VFX_common_back_table"],obj)
 end
 function insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
     local obj = {0,0,0,1,0,0,0,0}
@@ -338,7 +338,7 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
     end
-    table.insert(obj_char["VFX_back_table"],obj)
+    table.insert(obj_char["VFX_common_back_table"],obj)
 end
 function insert_VFX_game_scene_char_RC_partical(obj_char,color)
     local obj = {0,0,0,1,1,1,0,0}
@@ -391,7 +391,7 @@ function insert_VFX_game_scene_char_RC_partical(obj_char,color)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
     end
-    table.insert(obj_char["VFX_back_table"],obj)
+    table.insert(obj_char["VFX_common_back_table"],obj)
 end
 function insert_VFX_game_scene_char_RC_black_overlay(obj_char)
     local obj = {0,0,0,0,0,0,0,0}
@@ -2827,7 +2827,7 @@ function insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,x,y,opacity,sx,sy,
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
-    table.insert(obj_char["VFX_front_table"],obj)
+    table.insert(obj_char["VFX_common_front_table"],obj)
 end
 function insert_VFX_game_scene_stage_smoke_horizontal_shot(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
@@ -2866,7 +2866,7 @@ function insert_VFX_game_scene_stage_smoke_horizontal_shot(obj_char,x,y,opacity,
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
-    table.insert(obj_char["VFX_back_table"],obj)
+    table.insert(obj_char["VFX_common_back_table"],obj)
 end
 function insert_VFX_game_scene_stage_smoke_land_blow(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
@@ -2905,7 +2905,7 @@ function insert_VFX_game_scene_stage_smoke_land_blow(obj_char,x,y,opacity,sx,sy,
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
-    table.insert(obj_char["VFX_back_table"],obj)
+    table.insert(obj_char["VFX_common_back_table"],obj)
 end
 function insert_VFX_game_scene_stage_smoke_vertical_shot(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
@@ -2944,7 +2944,7 @@ function insert_VFX_game_scene_stage_smoke_vertical_shot(obj_char,x,y,opacity,sx
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
-    table.insert(obj_char["VFX_back_table"],obj)
+    table.insert(obj_char["VFX_common_back_table"],obj)
 end
 
 -- shockwave
@@ -2988,7 +2988,7 @@ function insert_VFX_game_scene_stage_4dash_air_backdash_shockwave(obj_char,x,y,o
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
-    table.insert(obj_char["VFX_back_table"],obj)
+    table.insert(obj_char["VFX_common_back_table"],obj)
 end
 function insert_VFX_game_scene_stage_6dash_air_dash_shockwave(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
@@ -3026,7 +3026,7 @@ function insert_VFX_game_scene_stage_6dash_air_dash_shockwave(obj_char,x,y,opaci
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
-    table.insert(obj_char["VFX_back_table"],obj)
+    table.insert(obj_char["VFX_common_back_table"],obj)
 end
 
 -- burst
@@ -3067,7 +3067,7 @@ function insert_VFX_game_scne_stage_dash_cancel_blow(obj_char,x,y,opacity,sx,sy,
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
-    table.insert(obj_char["VFX_back_table"],obj)
+    table.insert(obj_char["VFX_common_back_table"],obj)
 end
 -- GP
 function insert_VFX_game_scene_char_GP(obj_char)
@@ -3102,7 +3102,7 @@ function insert_VFX_game_scene_char_GP(obj_char)
         obj_char["contrast"] = contrast_cache
         obj_char["brightness"] = brightness_cache
     end
-    table.insert(obj_char["VFX_back_table"],obj)
+    table.insert(obj_char["VFX_common_back_table"],obj)
 end
 
 -- HUD

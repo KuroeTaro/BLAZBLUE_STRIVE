@@ -7197,7 +7197,7 @@ function load_game_scene_anim_char_TRM_jP(obj_char)
             "1_4_7_air_block",
             "air","5_stand_idle",
             10,5,1.00,
-            17.5,2.5,1.00,
+            5,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -7450,7 +7450,7 @@ function load_game_scene_anim_char_TRM_jK(obj_char)
             "1_4_7_air_block",
             "air","5_stand_idle",
             12.5,5,1.00,
-            17.5,2.5,1.00,
+            5,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -7700,7 +7700,7 @@ function load_game_scene_anim_char_TRM_j2K(obj_char)
             "1_4_7_air_block",
             "air","5_stand_idle",
             5,5,1.00,
-            17.5,2.5,1.00,
+            5,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -7967,7 +7967,7 @@ function load_game_scene_anim_char_TRM_jS(obj_char)
             "1_4_7_air_block",
             "air","5_stand_idle",
             10,5,1.00,
-            17.5,2.5,1.00,
+            5,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -8232,7 +8232,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(obj_char)
             "1_4_7_air_block",
             "air","5_stand_idle",
             10,5,1.00,
-            17.5,2.5,1.00,
+            5,2.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -9346,6 +9346,8 @@ function load_game_scene_anim_char_TRM_6SP_P(obj_char)
         obj_char["shot_sys_oroboros_anchor_pos"] = {-175,-200}
         -- draw_correction
         obj_char[8] = 0
+        -- VFX
+        insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
     end
     res[8] = function()
         -- state_number
@@ -9353,8 +9355,7 @@ function load_game_scene_anim_char_TRM_6SP_P(obj_char)
         -- draw_correction
         obj_char[8] = 1
         -- VFX
-        insert_VFX_game_scene_char_TRM_6SP_P_spawner(obj_char)
-        insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
+        insert_VFX_game_scene_char_TRM_6SP_P_curse_ball_spawner(obj_char)
         -- insert_projectile
         insert_projectile_game_scene_char_TRM_6SP_P(obj_char)
     end

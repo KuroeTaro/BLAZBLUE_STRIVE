@@ -684,7 +684,7 @@ function draw_game_scene_stage_glow()
     love.graphics.rectangle("fill",0,0,width,height/2)
     love.graphics.draw(
         image_stage_game_scene_stage_liner_fade_alpha,
-        0,-camera_y*0.5,0,
+        0,-camera_y*0.375,0,
         draw_resolution_correction(1),
         draw_resolution_correction(1)
     )
