@@ -541,9 +541,7 @@ function order_load_game_scene_char_LP_frames(load_order)
                 -- "jP",
                 -- "jK",
                 "jS",
-                "6SP_P_arua_end",
-                "6SP_P_arua_loop",
-                "6SP_P_arua_start",
+                "6SP_P_arua",
                 "6SP_P_curse_ball_spawn_halo",
                 "6SP_P_curse_ball_spawner",
                 "6SP_S"
@@ -2775,6 +2773,7 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_c
     -- 6SP_S
     if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3)
     and obj_char["6SP_S_shot_sys_pass_state"][obj_char["shot_sys_state"]]
+    and obj_char["ability_gauge"][1] > 0
     and test_input_sys_press_or_hold(input["SP"])
     and test_input_sys_press(input["S"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then
@@ -2834,6 +2833,7 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(in
     -- 6SP_S
     if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3)
     and obj_char["6SP_S_shot_sys_pass_state"][obj_char["shot_sys_state"]]
+    and obj_char["ability_gauge"][1] > 0
     and test_input_sys_press_or_hold(input["SP"]) 
     and test_input_sys_press_or_hold(input["S"]) then
         if not common_game_scene_get_character_facing_currect(obj_char) then

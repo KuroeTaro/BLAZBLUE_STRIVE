@@ -146,9 +146,7 @@ local load_move_VFX_name_table = {
         -- special
     -- "4SP_P",
     -- "6SP_P",
-    "6SP_P_arua_end",
-    "6SP_P_arua_loop",
-    "6SP_P_arua_start",
+    "6SP_P_arua",
     "6SP_P_curse_ball_spawn_halo",
     "6SP_P_curse_ball_spawner",
     "6SP_S"
