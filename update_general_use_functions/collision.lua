@@ -221,7 +221,7 @@ function collision_uncondicational_hurtbox_test(hit_obj,hurt_obj)
     return false
 end
 function collision_strike_hurtbox_test(hit_obj,hurt_obj)
-    if hit_obj["hit_type_state"] ~= "strike" or hurt_obj["strike_inv"] == true or hit_obj["strike_active"] == false then
+    if hit_obj["hit_type"] ~= "strike" or hurt_obj["strike_inv"] == true or hit_obj["strike_active"] == false then
         return false
     end
     for i=1,#hit_obj["hitbox_table"] do
@@ -243,7 +243,7 @@ function collision_strike_assign_hit_VFX_dynamic_spawn_pos(hit_obj,current_hitbo
     }
 end
 function collision_throw_hurtbox_test(hit_obj,hurt_obj)
-    if hit_obj["hit_type_state"] ~= "throw" 
+    if hit_obj["hit_type"] ~= "throw" 
     or hurt_obj["throw_inv"] == true 
     or hit_obj["throw_active"] == false 
     or collision_throw_air_or_not_test(hit_obj,hurt_obj)
@@ -272,16 +272,16 @@ function collision_throw_air_or_not_test(hit_obj,hurt_obj)
 end
 function collision_projectile_hurtbox_test(hit_obj,hurt_obj)
     -- none strike throw burst projectile
-    if hit_obj["hit_type_state"] == "none" then
+    if hit_obj["hit_type"] == "none" then
         return false
     end
-    if hit_obj["hit_type_state"] == "strike" and (hurt_obj["strike_inv"] == true or hit_obj["strike_active"] == false) then
+    if hit_obj["hit_type"] == "strike" and (hurt_obj["strike_inv"] == true or hit_obj["strike_active"] == false) then
         return false
     end
-    if hit_obj["hit_type_state"] == "throw" and (hurt_obj["throw_inv"] == true or hit_obj["throw_active"] == false) then
+    if hit_obj["hit_type"] == "throw" and (hurt_obj["throw_inv"] == true or hit_obj["throw_active"] == false) then
         return false
     end
-    if hit_obj["hit_type_state"] == "projectile" and (hurt_obj["projectile_inv"] == true or hit_obj["projectile_active"] == false) then
+    if hit_obj["hit_type"] == "projectile" and (hurt_obj["projectile_inv"] == true or hit_obj["projectile_active"] == false) then
         return false
     end
     for i=1,#hit_obj["hitbox_table"] do

@@ -38,7 +38,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
     obj["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
     -- obj["projectile_clash_box"] = {}
     -- obj["projectile_clashed_function"] = function end
-    obj["hit_type_state"] = "strike"
+    obj["hit_type"] = "strike"
     obj["life"] = 30
 
     obj["x"] = obj_char["x"]
@@ -427,7 +427,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(obj_char)
     obj["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
     -- obj["projectile_clash_box"] = {}
     -- obj["projectile_clashed_function"] = function end
-    obj["hit_type_state"] = "none"
+    obj["hit_type"] = "none"
     obj["life"] = 30
 
     obj["x"] = obj_char["x"]
@@ -512,7 +512,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(obj_char)
     obj["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
     -- obj["projectile_clash_box"] = {}
     -- obj["projectile_clashed_function"] = function end
-    obj["hit_type_state"] = "strike"
+    obj["hit_type"] = "strike"
     obj["life"] = 30
 
     obj["x"] = obj_char["x"]
@@ -598,7 +598,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
     obj["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
     -- obj["projectile_clash_box"] = {}
     -- obj["projectile_clashed_function"] = function end
-    obj["hit_type_state"] = "strike"
+    obj["hit_type"] = "strike"
     obj["life"] = 30
 
     obj["x"] = obj_char["x"]

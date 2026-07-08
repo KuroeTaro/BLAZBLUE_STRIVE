@@ -26,7 +26,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     obj["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
     -- obj["projectile_clash_box"] = {}
     -- obj["projectile_clashed_function"] = function end
-    obj["hit_type_state"] = "strike"
+    obj["hit_type"] = "strike"
     obj["life"] = 42
 
     obj[1] = obj_char["shot_sys_reticle"][1]
@@ -1050,7 +1050,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(obj_char)
     obj["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
     -- obj["projectile_clash_box"] = {}
     -- obj["projectile_clashed_function"] = function end
-    obj["hit_type_state"] = "strike"
+    obj["hit_type"] = "strike"
     obj["life"] = 90
 
     obj[1] = obj_char["x"]

@@ -26,7 +26,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["sprite_sheet_state"] = "5_stand_idle"
     obj_char_game_scene_char_RP["height_state"] = "stand" -- stand crouch air OTG wallstick
     obj_char_game_scene_char_RP["air_gatling_state"] = false
-    obj_char_game_scene_char_RP["hit_type_state"] = "none" -- none strike throw burst projectile
+    obj_char_game_scene_char_RP["hit_type"] = "none" -- none strike throw burst projectile
     obj_char_game_scene_char_RP["hit_guard_type_state"] = "none" -- none all low mid high
     obj_char_game_scene_char_RP["hurt_state"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_RP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
@@ -1087,7 +1087,7 @@ function load_game_scene_wallbreak_end_init_RP()
     obj_char_game_scene_char_RP["basic_prop_cache"] = {0,0,0,1,1,1,0,0}
     -- state
     obj_char_game_scene_char_RP["state_cache"] = "none"
-    obj_char_game_scene_char_RP["hit_type_state"] = "none" -- none strike throw burst projectile
+    obj_char_game_scene_char_RP["hit_type"] = "none" -- none strike throw burst projectile
     obj_char_game_scene_char_RP["hit_guard_type_state"] = "none" -- none all low mid high
     obj_char_game_scene_char_RP["hurt_state"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_RP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
