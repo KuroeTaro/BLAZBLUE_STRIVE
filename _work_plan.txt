@@ -20,4 +20,4 @@ config选项中自定义要不要79空投
 -- 1. 碰撞系统的dx == 0的情况
 2. 飞行道具的格式统一 hit类飞行道具的hurt_function统一 在main循环中添加飞行道具的friction gravity update
 3. side == L 和 side == R 都统一到 common_function
-4. 变量名修改
+-- 4. 变量名修改
