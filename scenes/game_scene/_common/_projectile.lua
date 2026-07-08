@@ -1,3 +1,5 @@
+-- x y velocity enemy_interact_function hitbox
+
 function load_game_scene_anim_projectile_rc_main(obj,obj_char,obj_char_other_side)
     local res = {}
     res["prop_f"] = "f"

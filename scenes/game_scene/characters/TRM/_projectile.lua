@@ -1,3 +1,13 @@
+-- type life x y velocity projectile_clash_type
+-- 1-8 f sprite_sheet
+
+-- push_box_interact_function	push_box
+-- projectile_clashed_function	projectile_clash_box
+-- enemy_interact_function		hitbox hurtbox hit_type	hit_damage hit_damage_correction_factor 
+-- friendly_interact_function
+-- friction_update_function	friction
+-- gravity_update_function		gravity
+
 function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     -- x y z opacity sx sy r f
     local obj = {0,0,0,0.75,1,1,0,0}
