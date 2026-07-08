@@ -21,17 +21,17 @@ end
 
 -- RC_state_update_function
 function character_function_game_scene_TRM_RC_state_character_uncommon_update(obj_char)
-    -- height_state
-    if obj_char["height_state"] == "stand" then
+    -- height
+    if obj_char["height"] == "stand" then
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
-    elseif obj_char["height_state"] == "air" then
+    elseif obj_char["height"] == "air" then
         obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
     end
 end
 -- Overdrive_state_update_function
 function character_function_game_scene_TRM_overdrive_state_character_uncommon_init(obj_char)
     -- shot_sys
-    if obj_char["height_state"] == "air" then
+    if obj_char["height"] == "air" then
         obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
     else
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}

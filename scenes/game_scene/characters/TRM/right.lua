@@ -23,11 +23,11 @@ function load_game_scene_obj_char_RP()
 
     obj_char_game_scene_char_RP["state"] = "before_ease_in"
     obj_char_game_scene_char_RP["state_cache"] = "none"
-    obj_char_game_scene_char_RP["sprite_sheet_state"] = "5_stand_idle"
-    obj_char_game_scene_char_RP["height_state"] = "stand" -- stand crouch air OTG wallstick
+    obj_char_game_scene_char_RP["sprite_sheet"] = "5_stand_idle"
+    obj_char_game_scene_char_RP["height"] = "stand" -- stand crouch air OTG wallstick
     obj_char_game_scene_char_RP["air_gatling_state"] = false
     obj_char_game_scene_char_RP["hit_type"] = "none" -- none strike throw burst projectile
-    obj_char_game_scene_char_RP["hit_guard_type_state"] = "none" -- none all low mid high
+    obj_char_game_scene_char_RP["hit_guard_type"] = "none" -- none all low mid high
     obj_char_game_scene_char_RP["hurt_state"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_RP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_RP["move_state"] = "none" -- none startup active recovery
@@ -290,14 +290,14 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
     obj_char_game_scene_char_RP["shot_sys_oroboros_front"]["f_8"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_front"]["f_4"] = 0
-    obj_char_game_scene_char_RP["shot_sys_oroboros_front"]["sprite_sheet_state"] = "5H_oroboros_loop_front"
+    obj_char_game_scene_char_RP["shot_sys_oroboros_front"]["sprite_sheet"] = "5H_oroboros_loop_front"
     obj_char_game_scene_char_RP["shot_sys_oroboros_mid"] = {0,0,0,0,1,1,0,0}
     obj_char_game_scene_char_RP["shot_sys_oroboros_mid"]["f_8"] = 0
-    obj_char_game_scene_char_RP["shot_sys_oroboros_mid"]["sprite_sheet_state"] = "5H_oroboros_loop_mid"
+    obj_char_game_scene_char_RP["shot_sys_oroboros_mid"]["sprite_sheet"] = "5H_oroboros_loop_mid"
     obj_char_game_scene_char_RP["shot_sys_oroboros_back"] = {0,0,0,0,1,1,0,0}
     obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["f_8"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["f_4"] = 0
-    obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["sprite_sheet_state"] = "5H_oroboros_loop_back"
+    obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["sprite_sheet"] = "5H_oroboros_loop_back"
     -- 5H_shot_sys_oroboros_sub_obj_update_value
     obj_char_game_scene_char_RP["shot_sys_oroboros_offset_amount"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_anchor_pos"] = {-110,-455}
@@ -322,7 +322,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["shot_sys_reticle_animation_table"] = {}
     obj_char_game_scene_char_RP["shot_sys_reticle_stage_pos_current"] = {0,0}
     obj_char_game_scene_char_RP["shot_sys_reticle_stage_pos_target"] = {0,0}
-    obj_char_game_scene_char_RP["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_unlocked"
+    obj_char_game_scene_char_RP["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
     
     -- draw_correction
     obj_char_game_scene_char_RP["anchor_pos"] = {215,510}
@@ -1063,14 +1063,14 @@ function load_game_scene_wallbreak_mid_init_RP()
     obj_char_game_scene_char_RP["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
     obj_char_game_scene_char_RP["shot_sys_oroboros_front"]["f_8"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_front"]["f_4"] = 0
-    obj_char_game_scene_char_RP["shot_sys_oroboros_front"]["sprite_sheet_state"] = "5H_oroboros_loop_front"
+    obj_char_game_scene_char_RP["shot_sys_oroboros_front"]["sprite_sheet"] = "5H_oroboros_loop_front"
     obj_char_game_scene_char_RP["shot_sys_oroboros_mid"] = {0,0,0,0,1,1,0,0}
     obj_char_game_scene_char_RP["shot_sys_oroboros_mid"]["f_8"] = 0
-    obj_char_game_scene_char_RP["shot_sys_oroboros_mid"]["sprite_sheet_state"] = "5H_oroboros_loop_mid"
+    obj_char_game_scene_char_RP["shot_sys_oroboros_mid"]["sprite_sheet"] = "5H_oroboros_loop_mid"
     obj_char_game_scene_char_RP["shot_sys_oroboros_back"] = {0,0,0,0,1,1,0,0}
     obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["f_8"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["f_4"] = 0
-    obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["sprite_sheet_state"] = "5H_oroboros_loop_back"
+    obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["sprite_sheet"] = "5H_oroboros_loop_back"
 
     obj_char_game_scene_char_RP["shot_sys_reticle_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_reticle"] = {0,0,0,0,1,1,0,0}
@@ -1080,7 +1080,7 @@ function load_game_scene_wallbreak_mid_init_RP()
     obj_char_game_scene_char_RP["shot_sys_reticle_animation_table"] = {}
     obj_char_game_scene_char_RP["shot_sys_reticle_stage_pos_current"] = {0,0}
     obj_char_game_scene_char_RP["shot_sys_reticle_stage_pos_target"] = {0,0}
-    obj_char_game_scene_char_RP["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_unlocked"
+    obj_char_game_scene_char_RP["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
 end
 function load_game_scene_wallbreak_end_init_RP()
     -- x y z opacity sx sy r f
@@ -1088,7 +1088,7 @@ function load_game_scene_wallbreak_end_init_RP()
     -- state
     obj_char_game_scene_char_RP["state_cache"] = "none"
     obj_char_game_scene_char_RP["hit_type"] = "none" -- none strike throw burst projectile
-    obj_char_game_scene_char_RP["hit_guard_type_state"] = "none" -- none all low mid high
+    obj_char_game_scene_char_RP["hit_guard_type"] = "none" -- none all low mid high
     obj_char_game_scene_char_RP["hurt_state"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_RP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_RP["move_state"] = "none" -- none startup active recovery
@@ -1205,14 +1205,14 @@ function load_game_scene_wallbreak_end_init_RP()
     obj_char_game_scene_char_RP["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
     obj_char_game_scene_char_RP["shot_sys_oroboros_front"]["f_8"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_front"]["f_4"] = 0
-    obj_char_game_scene_char_RP["shot_sys_oroboros_front"]["sprite_sheet_state"] = "5H_oroboros_loop_front"
+    obj_char_game_scene_char_RP["shot_sys_oroboros_front"]["sprite_sheet"] = "5H_oroboros_loop_front"
     obj_char_game_scene_char_RP["shot_sys_oroboros_mid"] = {0,0,0,0,1,1,0,0}
     obj_char_game_scene_char_RP["shot_sys_oroboros_mid"]["f_8"] = 0
-    obj_char_game_scene_char_RP["shot_sys_oroboros_mid"]["sprite_sheet_state"] = "5H_oroboros_loop_mid"
+    obj_char_game_scene_char_RP["shot_sys_oroboros_mid"]["sprite_sheet"] = "5H_oroboros_loop_mid"
     obj_char_game_scene_char_RP["shot_sys_oroboros_back"] = {0,0,0,0,1,1,0,0}
     obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["f_8"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["f_4"] = 0
-    obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["sprite_sheet_state"] = "5H_oroboros_loop_back"
+    obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["sprite_sheet"] = "5H_oroboros_loop_back"
     -- 5H_shot_sys_oroboros_sub_obj_update_value
     obj_char_game_scene_char_RP["shot_sys_oroboros_offset_amount"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_anchor_pos"] = {-110,-455}
@@ -1237,7 +1237,7 @@ function load_game_scene_wallbreak_end_init_RP()
     obj_char_game_scene_char_RP["shot_sys_reticle_animation_table"] = {}
     obj_char_game_scene_char_RP["shot_sys_reticle_stage_pos_current"] = {0,0}
     obj_char_game_scene_char_RP["shot_sys_reticle_stage_pos_target"] = {0,0}
-    obj_char_game_scene_char_RP["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_unlocked"
+    obj_char_game_scene_char_RP["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
 end
 
 -- 更新和状态机
@@ -2053,14 +2053,14 @@ function state_machine_char_game_scene_char_RP_shot_sys_oroboros()
                 obj_char["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
                 obj_char["shot_sys_oroboros_front"]["f_8"] = 0
                 obj_char["shot_sys_oroboros_front"]["f_4"] = 0
-                obj_char["shot_sys_oroboros_front"]["sprite_sheet_state"] = "5H_oroboros_loop_front"
+                obj_char["shot_sys_oroboros_front"]["sprite_sheet"] = "5H_oroboros_loop_front"
                 obj_char["shot_sys_oroboros_mid"] = {0,0,0,0,1,1,0,0}
                 obj_char["shot_sys_oroboros_mid"]["f_8"] = 0
-                obj_char["shot_sys_oroboros_mid"]["sprite_sheet_state"] = "5H_oroboros_loop_mid"
+                obj_char["shot_sys_oroboros_mid"]["sprite_sheet"] = "5H_oroboros_loop_mid"
                 obj_char["shot_sys_oroboros_back"] = {0,0,0,0,1,1,0,0}
                 obj_char["shot_sys_oroboros_back"]["f_8"] = 0
                 obj_char["shot_sys_oroboros_back"]["f_4"] = 0
-                obj_char["shot_sys_oroboros_back"]["sprite_sheet_state"] = "5H_oroboros_loop_back"
+                obj_char["shot_sys_oroboros_back"]["sprite_sheet"] = "5H_oroboros_loop_back"
                 obj_char["shot_sys_oroboros_state"] = "off"
                 return
             end
@@ -2116,7 +2116,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_reticle()
             end
             if get_character_anim_end_state(obj_char,obj_char["shot_sys_reticle_animation_table"][1]) then
                 obj_char["shot_sys_reticle"][8] = 0
-                obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_unlocked"
+                obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
                 obj_char["shot_sys_reticle_state"] = "at_the_ready_unlocked"
                 return
             end
@@ -2167,7 +2167,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_reticle()
             end
             if get_character_anim_end_state(obj_char,obj_char["shot_sys_reticle_animation_table"][2]) then
                 obj_char["shot_sys_reticle"][8] = 0
-                obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_unlocked"
+                obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
                 obj_char["shot_sys_reticle_state"] = "at_the_ready_unlocked"
                 return
             end
@@ -2195,7 +2195,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_reticle()
                 obj_char["shot_sys_reticle_animation_table"] = {}
                 obj_char["shot_sys_reticle_stage_pos_current"] = {0,0}
                 obj_char["shot_sys_reticle_stage_pos_target"] = {0,0}
-                obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_unlocked"
+                obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
                 obj_char["shot_sys_reticle_state"] = "off"
                 return
             end
@@ -2215,7 +2215,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_reticle()
             end
             if get_character_anim_end_state(obj_char,obj_char["shot_sys_reticle_animation_table"][2]) then
                 obj_char["shot_sys_reticle"][8] = 0
-                obj_char["shot_sys_reticle_sprite_sheet_state"] = "5H_reticle_unlocked"
+                obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
                 obj_char["shot_sys_reticle_animation_table"][1] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(obj_char)
                 init_character_anim_without(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
                 obj_char["shot_sys_reticle_state"] = "at_the_ready_ease_in"
@@ -3075,15 +3075,15 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_red(input,obj_char)
             obj_char["velocity"] = {0,0}
         end
         obj_char["physics_lock"] = false
-        if obj_char["height_state"] == "air" then
-            obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
+        if obj_char["height"] == "air" then
+            obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
             obj_char["anchor_pos"] = {330,485}
             obj_char["pushbox"] = {0,-100,120,200}
             obj_char["collision_ground_height_offset"] = 185
             obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         else
-            obj_char["height_state"] = "stand"
-            obj_char["sprite_sheet_state"] = "burst_rc_ground"
+            obj_char["height"] = "stand"
+            obj_char["sprite_sheet"] = "burst_rc_ground"
             obj_char["anchor_pos"] = {300,615}
             obj_char["pushbox"]  = {0,-185,120,370}
             obj_char["collision_ground_height_offset"] = 0
@@ -3146,15 +3146,15 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char)
         obj_char["velocity_cache"][2] = math.min(obj_char["velocity_cache"][2],12.5)
 
         obj_char["physics_lock"] = false
-        if obj_char["height_state"] == "air" then
-            obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
+        if obj_char["height"] == "air" then
+            obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
             obj_char["anchor_pos"] = {330,485}
             obj_char["pushbox"] = {0,-100,120,200}
             obj_char["collision_ground_height_offset"] = 185
             obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         else
-            obj_char["height_state"] = "stand"
-            obj_char["sprite_sheet_state"] = "burst_rc_ground"
+            obj_char["height"] = "stand"
+            obj_char["sprite_sheet"] = "burst_rc_ground"
             obj_char["anchor_pos"] = {300,615}
             obj_char["pushbox"]  = {0,-185,120,370}
             obj_char["collision_ground_height_offset"] = 0
@@ -3189,15 +3189,15 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char)
             obj_char["velocity"] = {0,0}
         end
         obj_char["physics_lock"] = false
-        if obj_char["height_state"] == "air" then
-            obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
+        if obj_char["height"] == "air" then
+            obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
             obj_char["anchor_pos"] = {330,485}
             obj_char["pushbox"] = {0,-100,120,200}
             obj_char["collision_ground_height_offset"] = 185
             obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         else
-            obj_char["height_state"] = "stand"
-            obj_char["sprite_sheet_state"] = "burst_rc_ground"
+            obj_char["height"] = "stand"
+            obj_char["sprite_sheet"] = "burst_rc_ground"
             obj_char["anchor_pos"] = {300,615}
             obj_char["pushbox"]  = {0,-185,120,370}
             obj_char["collision_ground_height_offset"] = 0
@@ -3215,20 +3215,20 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_yellow(input,obj_char)
         return
     end
     if test_input_sys_press(input["RC"]) 
-    -- and obj_char["height_state"] ~= "air" 
+    -- and obj_char["height"] ~= "air" 
     then
         obj_char["velocity"] = {0,0}
         obj_char["velocity_cache"] = {0,0}
         obj_char["physics_lock"] = false
-        if obj_char["height_state"] == "air" then
-            obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
+        if obj_char["height"] == "air" then
+            obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
             obj_char["anchor_pos"] = {330,485}
             obj_char["pushbox"] = {0,-100,120,200}
             obj_char["collision_ground_height_offset"] = 185
             obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         else
-            obj_char["height_state"] = "stand"
-            obj_char["sprite_sheet_state"] = "burst_rc_ground"
+            obj_char["height"] = "stand"
+            obj_char["sprite_sheet"] = "burst_rc_ground"
             obj_char["anchor_pos"] = {300,615}
             obj_char["pushbox"]  = {0,-185,120,370}
             obj_char["collision_ground_height_offset"] = 0
@@ -3261,15 +3261,15 @@ function state_gate_game_scene_char_RP_common_to_burst_overdrive(input,obj_char,
             ["wallbreak_hurt"] = true,
         }
         local obj_camera = obj_stage_game_scene_camera
-        local height_state = obj_char["height_state"]
-        if height_state == "air" then
-            obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
+        local height = obj_char["height"]
+        if height == "air" then
+            obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
             obj_char["anchor_pos"] = {330,485}
             obj_char["pushbox"] = {0,-100,120,200}
             obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         else
-            obj_char["height_state"] = "stand"
-            obj_char["sprite_sheet_state"] = "burst_overdrive_ground"
+            obj_char["height"] = "stand"
+            obj_char["sprite_sheet"] = "burst_overdrive_ground"
             obj_char["anchor_pos"] = {300,615}
             obj_char["pushbox"]  = {0,-185,120,370}
             obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
@@ -3320,7 +3320,7 @@ function state_gate_game_scene_char_RP_from_block(input,obj_char)
     obj_char["input_sys_state"] = "load" -- none save load
     state_machine_char_game_scene_char_RP_input_sys_cache()
     -- _5_stand_idle
-    if obj_char["height_state"] == "stand" then
+    if obj_char["height"] == "stand" then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)  
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "5_stand_idle"
@@ -3334,7 +3334,7 @@ function state_gate_game_scene_char_RP_from_block(input,obj_char)
         end
     end
     -- _1_2_3_crouch
-    if obj_char["height_state"] == "crouch" then
+    if obj_char["height"] == "crouch" then
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "1_2_3_crouch"
@@ -3356,7 +3356,7 @@ function state_gate_game_scene_char_RP_from_hurt(input,obj_char)
         return true
     end
     -- until land
-    if obj_char["height_state"] == "air" then
+    if obj_char["height"] == "air" then
         if (obj_char["collision_move_available"][1] == 0 or obj_char["collision_move_available"][2] == 0) 
         and obj_char["self_wallbounce_hurt_animation"] ~= nil then
             obj_char["character_animation"] = obj_char["self_wallbounce_hurt_animation"]
@@ -3384,7 +3384,7 @@ function state_gate_game_scene_char_RP_from_hurt(input,obj_char)
         -- print("hurt animation end")
         state_machine_char_game_scene_char_RP_input_sys_cache()
         -- 5_stand_idle
-        if obj_char["height_state"] == "stand" then
+        if obj_char["height"] == "stand" then
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)  
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "5_stand_idle"
@@ -3397,7 +3397,7 @@ function state_gate_game_scene_char_RP_from_hurt(input,obj_char)
                 return true
             end
         -- 1_2_3_crouch
-        elseif obj_char["height_state"] == "crouch" then
+        elseif obj_char["height"] == "crouch" then
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "1_2_3_crouch"
@@ -3411,7 +3411,7 @@ function state_gate_game_scene_char_RP_from_hurt(input,obj_char)
             if state_gate_game_scene_char_RP_from_1_2_3_crouch(input,obj_char) then
                 return true
             end
-        elseif obj_char["height_state"] == "OTG" then
+        elseif obj_char["height"] == "OTG" then
             assert("此受伤动画为OTG状态中结束了")
         end
         return
@@ -3474,7 +3474,7 @@ function state_gate_game_scene_char_RP_from_throw_success(input,obj_char)
     -- idle_cancel
     if obj_char["idle_cancel"] then
         -- air
-        if obj_char["height_state"] == "air" then
+        if obj_char["height"] == "air" then
             -- _common_air_to_move
             if state_gate_game_scene_char_RP_common_air_to_dash_move_hold_ver_all(input,obj_char) then
                 return true
@@ -3484,7 +3484,7 @@ function state_gate_game_scene_char_RP_from_throw_success(input,obj_char)
                 return true
             end
         -- stand_idle
-        elseif obj_char["height_state"] == "stand" then
+        elseif obj_char["height"] == "stand" then
             -- _common_ground_idle_to_move
             if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
                 return true
@@ -3564,7 +3564,7 @@ function state_gate_game_scene_char_RP_from_throw_tech(input,obj_char)
         obj_char["input_sys_state"] = "load" -- none save load
         state_machine_char_game_scene_char_RP_input_sys_cache()
         -- air
-        if obj_char["height_state"] == "air" then
+        if obj_char["height"] == "air" then
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "7_8_9_jump_air"
@@ -3577,7 +3577,7 @@ function state_gate_game_scene_char_RP_from_throw_tech(input,obj_char)
                 return true
             end
         -- stand_idle
-        elseif obj_char["height_state"] == "stand" then
+        elseif obj_char["height"] == "stand" then
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "5_stand_idle"
@@ -4629,7 +4629,7 @@ end
 function state_gate_game_scene_char_RP_from_burst_RC_red(input,obj_char)
     local obj_char_other_side = common_game_scene_change_character("R")
     if obj_char["idle_cancel"] then
-        if obj_char["height_state"] == "air" then
+        if obj_char["height"] == "air" then
             -- _common_air_idle_to_move
             if state_gate_game_scene_char_RP_common_air_to_special_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
@@ -4673,7 +4673,7 @@ function state_gate_game_scene_char_RP_from_burst_RC_red(input,obj_char)
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- init_character_anim
-        if obj_char["height_state"] == "air" then
+        if obj_char["height"] == "air" then
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "7_8_9_jump_air"
@@ -4706,7 +4706,7 @@ end
 function state_gate_game_scene_char_RP_from_burst_RC_blue(input,obj_char)
     local obj_char_other_side = common_game_scene_change_character("R")
     if obj_char["idle_cancel"] then
-        if obj_char["height_state"] == "air" then
+        if obj_char["height"] == "air" then
             -- _common_air_idle_to_move
             if state_gate_game_scene_char_RP_common_air_to_special_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
@@ -4750,7 +4750,7 @@ function state_gate_game_scene_char_RP_from_burst_RC_blue(input,obj_char)
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- init_character_anim
-        if obj_char["height_state"] == "air" then
+        if obj_char["height"] == "air" then
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "7_8_9_jump_air"
@@ -4783,7 +4783,7 @@ end
 function state_gate_game_scene_char_RP_from_burst_RC_purple(input,obj_char)
     local obj_char_other_side = common_game_scene_change_character("R")
     if obj_char["idle_cancel"] then
-        if obj_char["height_state"] == "air" then
+        if obj_char["height"] == "air" then
             -- _common_air_idle_to_move
             if state_gate_game_scene_char_RP_common_air_to_special_move_hold_ver(input,obj_char) then
                 common_game_scene_game_speed_load_application(obj_char,{1,nil,nil,nil,0,nil})
@@ -4827,7 +4827,7 @@ function state_gate_game_scene_char_RP_from_burst_RC_purple(input,obj_char)
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- init_character_anim
-        if obj_char["height_state"] == "air" then
+        if obj_char["height"] == "air" then
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "7_8_9_jump_air"
@@ -4869,7 +4869,7 @@ function state_gate_game_scene_char_RP_from_burst_RC_yellow(input,obj_char)
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- init_character_anim
-        if obj_char["height_state"] == "air" then
+        if obj_char["height"] == "air" then
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "7_8_9_jump_air"
@@ -4908,7 +4908,7 @@ function state_gate_game_scene_char_RP_from_burst_overdrive(input,obj_char)
         -- input_sys_cache
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
-        if obj_char["height_state"] == "air" then
+        if obj_char["height"] == "air" then
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "7_8_9_jump_air"
@@ -6168,13 +6168,13 @@ function draw_game_scene_char_RP()
     -- draw_back
     -- x y z opacity sx sy r f
     obj = obj_char["shot_sys_oroboros_back"]
-    image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj["sprite_sheet_state"]]
+    image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     
     -- draw_3d_image_table(obj_camera,obj,character_image_table)
-    image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj_char["sprite_sheet_state"]]
+    image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj_char["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(obj_camera,obj_char,image_sprite_sheet,tostring(obj_char[8]))
     love.graphics.setShader(shader)
@@ -6183,14 +6183,14 @@ function draw_game_scene_char_RP()
 
     -- draw_mid
     obj = obj_char["shot_sys_oroboros_mid"]
-    image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj["sprite_sheet_state"]]
+    image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
 
     -- darw_front
     obj = obj_char["shot_sys_oroboros_front"]
-    image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj["sprite_sheet_state"]]
+    image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -6248,7 +6248,7 @@ function draw_game_scene_char_RP_attachment_front()
     -- retcile
     local obj_char = obj_char_game_scene_char_RP
     local obj_camera = obj_stage_game_scene_camera
-    local image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj_char["shot_sys_reticle_sprite_sheet_state"]]
+    local image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj_char["shot_sys_reticle_sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(obj_camera,obj_char["shot_sys_reticle"],image_sprite_sheet,tostring(obj_char["shot_sys_reticle"][8]))
     love.graphics.draw(image_sprite_sheet["sprite_batch"])

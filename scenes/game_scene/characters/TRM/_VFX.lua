@@ -367,13 +367,13 @@ function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_switch(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
     local image_sprite_sheet = nil
     local side = obj_char["player_side"]
-    local height_state_y_offset = {
+    local height_y_offset = {
         ["stand"] = -730,
         ["crouch"] = -530,
         ["air"] = -440,
         ["OTG"] = -230
     }
-    obj["y_offset"] = height_state_y_offset[obj_char["height_state"]]
+    obj["y_offset"] = height_y_offset[obj_char["height"]]
     if side == "L" then
         image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["5H_switch_move_VFX"]
     elseif side == "R" then
@@ -405,13 +405,13 @@ function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_switch(obj_char)
         obj["life"] = obj["life"] - 1
     end
     obj["draw_sync"] = function()
-        local height_state_y_offset = {
+        local height_y_offset = {
             ["stand"] = -730,
             ["crouch"] = -530,
             ["air"] = -440,
             ["OTG"] = -230
         }
-        obj["y_offset"] = height_state_y_offset[obj_char["height_state"]]
+        obj["y_offset"] = height_y_offset[obj_char["height"]]
         obj[1] = obj_char["x"] + obj_char[5]*(-370)
         obj[2] = obj_char["y"] + obj_char[6]*obj["y_offset"]
         obj[3] = obj_char[3]
@@ -941,9 +941,9 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(obj_char)
         image_sprite_sheet_table = image_sprite_sheet_VFX_game_scene_RP
     end
     local image_sprite_sheet = image_sprite_sheet_table["6SP_P_arua_move_VFX"]
-    if obj_char_other_side["height_state"] == "air" then
+    if obj_char_other_side["height"] == "air" then
         obj["y_offset"] = 375 + obj_char_other_side["pushbox"][4]/4*3
-    elseif obj_char_other_side["height_state"] == "wallstick" then
+    elseif obj_char_other_side["height"] == "wallstick" then
         obj["y_offset"] = 350 + obj_char_other_side["pushbox"][4]/4*3
     else
         obj["y_offset"] = 400 + obj_char_other_side["pushbox"][4]/4*3
@@ -1027,9 +1027,9 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(obj_char)
         obj["life"] = obj["life"] - 1
     end
     obj["draw_sync"] = function()
-        if obj_char_other_side["height_state"] == "air" then
+        if obj_char_other_side["height"] == "air" then
             obj["y_offset"] = 375 + obj_char_other_side["pushbox"][4]/4*3
-        elseif obj_char_other_side["height_state"] == "wallstick" then
+        elseif obj_char_other_side["height"] == "wallstick" then
             obj["y_offset"] = 350 + obj_char_other_side["pushbox"][4]/4*3
         else
             obj["y_offset"] = 400 + obj_char_other_side["pushbox"][4]/4*3

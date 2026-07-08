@@ -289,23 +289,23 @@ function common_game_scene_block_test(obj_char,obj)
 
     if obj_char["hurt_state"] == "idle" and common_game_scene_check_block_direction(obj_char) then
         if FD_block then
-            if obj_char["height_state"] == "air" then
+            if obj_char["height"] == "air" then
                 block_bool = true
-            elseif obj["hit_guard_type_state"] == "high" or obj["hit_guard_type_state"] == "all" then
+            elseif obj["hit_guard_type"] == "high" or obj["hit_guard_type"] == "all" then
                 block_bool = true
             end
         else
-            if obj_char["height_state"] == "air" and obj["hit_guard_type_state"] ~= "high" then
+            if obj_char["height"] == "air" and obj["hit_guard_type"] ~= "high" then
                 block_bool = true
-            elseif obj["hit_guard_type_state"] == "all" then
+            elseif obj["hit_guard_type"] == "all" then
                 block_bool = true
             end
         end
-        if block_direction == 1 and obj["hit_guard_type_state"] == "low" then
+        if block_direction == 1 and obj["hit_guard_type"] == "low" then
             block_bool = true
-        elseif (block_direction == 4 or block_direction == 7) and obj["hit_guard_type_state"] == "mid" then
+        elseif (block_direction == 4 or block_direction == 7) and obj["hit_guard_type"] == "mid" then
             block_bool = true
-        elseif obj_char["height_state"] ~= "air" and obj["hit_guard_type_state"] == "high" then
+        elseif obj_char["height"] ~= "air" and obj["hit_guard_type"] == "high" then
             block_bool = true
         end
     end
@@ -313,13 +313,13 @@ function common_game_scene_block_test(obj_char,obj)
     -- Even complaining that this is what causing you to get stuck in an endless 528 loop?
     -- Well then. I shall grant your idoit wish.
     -- if obj_char["hurt_state"] == "idle" and (obj_char["state"] == "block" or obj_char["state"] == "blockstop")then
-    --     if obj_char["height_state"] == "air" then
+    --     if obj_char["height"] == "air" then
     --         block_bool = true
-    --     elseif common_game_scene_check_crouch_direction(obj_char) and obj["hit_guard_type_state"] == "low" then
+    --     elseif common_game_scene_check_crouch_direction(obj_char) and obj["hit_guard_type"] == "low" then
     --         block_bool = true
-    --     elseif ( not common_game_scene_check_crouch_direction(obj_char)) and obj["hit_guard_type_state"] == "mid" then
+    --     elseif ( not common_game_scene_check_crouch_direction(obj_char)) and obj["hit_guard_type"] == "mid" then
     --         block_bool = true
-    --     elseif obj["hit_guard_type_state"] == "all" then
+    --     elseif obj["hit_guard_type"] == "all" then
     --         block_bool = true
     --     end
     -- end
@@ -386,11 +386,11 @@ function common_game_scene_strike_hurt_function(obj_char)
     end
     -- block_test
     local block_bool = common_game_scene_block_test(obj_char,hit_side_obj_char)
-    if obj_char["height_state"] ~= "air" and block_bool then
+    if obj_char["height"] ~= "air" and block_bool then
         if common_game_scene_check_crouch_direction(obj_char) then
-            obj_char["height_state"] = "crouch"
+            obj_char["height"] = "crouch"
         else
-            obj_char["height_state"] = "stand"
+            obj_char["height"] = "stand"
         end
     end
     -- idle block
@@ -451,16 +451,16 @@ function common_game_scene_strike_hurt_function_common_block(obj_char,hit_side_o
     obj_char["hurtstop_wiggle_current_x"] = (obj_char["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
     obj_char["hurtstop_wiggle_current_y"] = (obj_char["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
     -- block_animation
-    if common_game_scene_check_crouch_direction(obj_char) and obj_char["height_state"] == "stand" then
-        obj_char["height_state"] = "crouch"
-    elseif common_game_scene_check_stand_direction(obj_char) and obj_char["height_state"] == "crouch" then
-        obj_char["height_state"] = "stand"
+    if common_game_scene_check_crouch_direction(obj_char) and obj_char["height"] == "stand" then
+        obj_char["height"] = "crouch"
+    elseif common_game_scene_check_stand_direction(obj_char) and obj_char["height"] == "crouch" then
+        obj_char["height"] = "stand"
     end
-    if obj_char["height_state"] == "stand" then
+    if obj_char["height"] == "stand" then
         obj_char["character_animation"] = hit_side_obj_char["stand_block_animation"]
-    elseif obj_char["height_state"] == "crouch" then
+    elseif obj_char["height"] == "crouch" then
         obj_char["character_animation"] = hit_side_obj_char["crouch_block_animation"]
-    elseif obj_char["height_state"] == "air" then
+    elseif obj_char["height"] == "air" then
         obj_char["character_animation"] = hit_side_obj_char["air_block_animation"]
     end
     init_character_anim_with(obj_char,obj_char["character_animation"])
@@ -565,15 +565,15 @@ function common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_ob
     obj_char["hurtstop_wiggle_current_x"] = (obj_char["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
     obj_char["hurtstop_wiggle_current_y"] = (obj_char["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
     -- hurt_animation
-    if obj_char["height_state"] == "stand" then
+    if obj_char["height"] == "stand" then
         obj_char["character_animation"] = hit_side_obj_char["stand_hurt_animation"]
-    elseif obj_char["height_state"] == "crouch" then
+    elseif obj_char["height"] == "crouch" then
         obj_char["character_animation"] = hit_side_obj_char["crouch_hurt_animation"]
-    elseif obj_char["height_state"] == "air" then
+    elseif obj_char["height"] == "air" then
         obj_char["character_animation"] = hit_side_obj_char["air_hurt_animation"]
-    elseif obj_char["height_state"] == "OTG" then
+    elseif obj_char["height"] == "OTG" then
         obj_char["character_animation"] = hit_side_obj_char["OTG_hurt_animation"]
-    elseif obj_char["height_state"] == "wallstick" then
+    elseif obj_char["height"] == "wallstick" then
         obj_char["character_animation"] = hit_side_obj_char["wallstick_hurt_animation"]
     end
     init_character_anim_with(obj_char,obj_char["character_animation"])
@@ -594,7 +594,7 @@ function common_game_scene_throw_hit_function(obj_char)
         hit_side_obj_char[5] = -hit_side_obj_char[5]
     end
     -- set min hight of air throw
-    if obj_char["height_state"] == "air" then
+    if obj_char["height"] == "air" then
         hit_side_obj_char["y"] = math.min(hit_side_obj_char["y"],-240)
     end
     obj_char["y"] = hit_side_obj_char["y"]
@@ -620,7 +620,7 @@ function common_game_scene_throw_hurt_function(obj_char)
     local obj_camera = obj_stage_game_scene_camera
     local pushbox_data = common_game_scene_get_pushbox(side)
     local anchor_data = common_game_scene_get_anchor(side)
-    local sprite_sheet_state = nil
+    local sprite_sheet = nil
     local collision_ground_height_offset = nil
     -- physics_lock
     obj_char["physics_lock"] = true
@@ -630,19 +630,19 @@ function common_game_scene_throw_hurt_function(obj_char)
     end
     -- state
     obj_char[8] = 4
-    if obj_char["height_state"] == "air" then
-        obj_char["sprite_sheet_state"] = "1_4_7_air_block"
+    if obj_char["height"] == "air" then
+        obj_char["sprite_sheet"] = "1_4_7_air_block"
         obj_char["anchor_pos"] = anchor_data["air_thrown_tested"]
         collision_ground_height_offset = 185
     else
-        obj_char["height_state"] = "stand"
-        obj_char["sprite_sheet_state"] = "4_stand_block_high"
+        obj_char["height"] = "stand"
+        obj_char["sprite_sheet"] = "4_stand_block_high"
         obj_char["anchor_pos"] = anchor_data["ground_thrown_tested"]
         collision_ground_height_offset = 0
     end
-    sprite_sheet_state = obj_char["sprite_sheet_state"]
+    sprite_sheet = obj_char["sprite_sheet"]
 
-    obj_char["pushbox"] = pushbox_data[sprite_sheet_state][0]
+    obj_char["pushbox"] = pushbox_data[sprite_sheet][0]
     obj_char["pushbox_other_side_char_active"] = false
     obj_char["hitbox_table"] = {}
     obj_char["hurtbox_table"] = {}

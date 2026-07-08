@@ -671,7 +671,7 @@ function update_game_scene_friction()
     char_LP["velocity_debug"][2] = char_LP["velocity"][2]
     char_RP["velocity_debug"][1] = char_RP["velocity"][1]
     char_RP["velocity_debug"][2] = char_RP["velocity"][2]
-    if char_LP["height_state"] ~= "air" and LP_RUN_AT_THIS_FRAME and not char_LP["physics_lock"] then
+    if char_LP["height"] ~= "air" and LP_RUN_AT_THIS_FRAME and not char_LP["physics_lock"] then
         if char_LP["friction"] == 0 then
             char_LP["velocity"][1] = char_LP["velocity"][1]
         else
@@ -681,7 +681,7 @@ function update_game_scene_friction()
             char_LP["velocity"][1] = 0
         end
     end
-    if char_RP["height_state"] ~= "air" and RP_RUN_AT_THIS_FRAME and not char_RP["physics_lock"] then
+    if char_RP["height"] ~= "air" and RP_RUN_AT_THIS_FRAME and not char_RP["physics_lock"] then
         if char_RP["friction"] == 0 then
             char_RP["velocity"][1] = char_RP["velocity"][1]
         else
@@ -887,7 +887,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
     -- wallstick_visual_effect
     if collision_side ~= 0 and collision_side ~= collision_side_cache then
         -- wallstick_stage_obj
-        obj_wallstick[2] = obj_char["y"] - wallstick_spwan_anchor_pos[obj_char["height_state"]]
+        obj_wallstick[2] = obj_char["y"] - wallstick_spwan_anchor_pos[obj_char["height"]]
         -- wallstick
         if obj_char["wallhurt_wallstickable"] and collision_side ~= 0 
         and obj_char["wallstick_gauge"][1] >= obj_char["wallstick_gauge"][2] 
@@ -931,7 +931,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
     then
         table.insert(obj_stage_main["wallstick_char_obj_active_application_table"],
             function()
-                if obj_char["height_state"] == "air" then
+                if obj_char["height"] == "air" then
                     obj_char["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(obj_char)
                     init_character_anim_with(obj_char,obj_char["character_animation"])
                 else

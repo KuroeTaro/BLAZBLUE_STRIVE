@@ -262,9 +262,9 @@ function collision_throw_hurtbox_test(hit_obj,hurt_obj)
     return false
 end
 function collision_throw_air_or_not_test(hit_obj,hurt_obj)
-    if hit_obj["height_state"] == "air" and hurt_obj["height_state"] ~= "air" then
+    if hit_obj["height"] == "air" and hurt_obj["height"] ~= "air" then
         return true
-    elseif hurt_obj["height_state"] == "air" and hit_obj["height_state"] ~= "air" then
+    elseif hurt_obj["height"] == "air" and hit_obj["height"] ~= "air" then
         return true
     else
         return false

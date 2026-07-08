@@ -8,7 +8,7 @@ function insert_VFX_game_scene_char_overdrive_badge(obj_char)
     elseif obj_char["player_side"] == "R" then
         image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP_overdrive_badge
     end
-    if obj_char["height_state"] == "air" then
+    if obj_char["height"] == "air" then
         obj["y_offset"] = 715
     else
         obj["y_offset"] = 845
@@ -58,7 +58,7 @@ function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
     obj["y_offset"] = 0
 
-    if obj_char["height_state"] == "air" then
+    if obj_char["height"] == "air" then
         obj["y_offset"] = 745
     else
         obj["y_offset"] = 875
@@ -85,7 +85,7 @@ function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
         end
     end
     obj["draw_sync"] = function()
-        if obj_char["height_state"] == "air" then
+        if obj_char["height"] == "air" then
             obj["y_offset"] = 745
         else
             obj["y_offset"] = 875
@@ -171,7 +171,7 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
     local obj = {0,0,0,1,0,0,0,0}
     local obj_camera = obj_stage_game_scene_camera
     obj["y_offset"] = 0
-    if obj_char["height_state"] == "air" then
+    if obj_char["height"] == "air" then
         obj["y_offset"] = 245
     else
         obj["y_offset"] = 345
@@ -263,7 +263,7 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
         obj["life"] = obj["life"] - 1
     end
     obj["draw_sync"] = function()
-        if obj_char["height_state"] == "air" then
+        if obj_char["height"] == "air" then
             obj["y_offset"] = 245
         else
             obj["y_offset"] = 345
@@ -295,7 +295,7 @@ end
 function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
     local obj = {0,0,0,1,1,1,0,0}
     obj["y_offset"] = 0
-    if obj_char["height_state"] == "air" then
+    if obj_char["height"] == "air" then
         obj["y_offset"] = 750
     else
         obj["y_offset"] = 880
@@ -311,7 +311,7 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
     obj[7] = obj_char[7]
     obj[8] = -1
     obj["update"] = function()
-        if obj_char["height_state"] == "air" then
+        if obj_char["height"] == "air" then
             obj["y_offset"] = 750
         else
             obj["y_offset"] = 880
@@ -320,7 +320,7 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
         obj["life"] = obj["life"] - 1
     end
     obj["draw_sync"] = function()
-        if obj_char["height_state"] == "air" then
+        if obj_char["height"] == "air" then
             obj["y_offset"] = 750
         else
             obj["y_offset"] = 880
@@ -344,7 +344,7 @@ function insert_VFX_game_scene_char_RC_partical(obj_char,color)
     local obj = {0,0,0,1,1,1,0,0}
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_partical
     obj["y_offset"] = 0
-    if obj_char["height_state"] == "air" then
+    if obj_char["height"] == "air" then
         obj["y_offset"] = 750
     else
         obj["y_offset"] = 850
@@ -369,7 +369,7 @@ function insert_VFX_game_scene_char_RC_partical(obj_char,color)
         obj["life"] = obj["life"] - 1
     end
     obj["draw_sync"] = function()
-        if obj_char["height_state"] == "air" then
+        if obj_char["height"] == "air" then
             obj["y_offset"] = 750
         else
             obj["y_offset"] = 850
@@ -2550,7 +2550,7 @@ end
 function insert_VFX_game_scene_char_block_ver0(obj_char)
     -- x y z opacity sx sy r f
     local obj = {0,0,0,1,1,1,0,0}
-    local VFX_spawn_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["block_ver0_spawn_anchor_pos"][obj_char["sprite_sheet_state"]]
+    local VFX_spawn_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["block_ver0_spawn_anchor_pos"][obj_char["sprite_sheet"]]
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
 
@@ -2604,7 +2604,7 @@ end
 function insert_VFX_game_scene_char_block_ver1(obj_char)
     -- x y z opacity sx sy r f
     local obj = {0,0,0,1,1,1,0,0}
-    local VFX_spawn_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["block_ver1_spawn_anchor_pos"][obj_char["sprite_sheet_state"]]
+    local VFX_spawn_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["block_ver1_spawn_anchor_pos"][obj_char["sprite_sheet"]]
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
 
@@ -2661,7 +2661,7 @@ end
 function insert_VFX_game_scene_char_FD_block(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
     local FD_VFX_spawn_anchor_pos_table = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["FD_block_spawn_anchor_pos"]
-    local FD_VFX_spawn_anchor_pos = FD_VFX_spawn_anchor_pos_table[obj_char["height_state"]]
+    local FD_VFX_spawn_anchor_pos = FD_VFX_spawn_anchor_pos_table[obj_char["height"]]
 
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
@@ -2706,7 +2706,7 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
         obj["life"] = obj["life"] - 1
     end
     obj["draw_sync"] = function()
-        FD_VFX_spawn_anchor_pos = FD_VFX_spawn_anchor_pos_table[obj_char["height_state"]]
+        FD_VFX_spawn_anchor_pos = FD_VFX_spawn_anchor_pos_table[obj_char["height"]]
         obj[1] = obj_char["x"] + obj_char[5]*(FD_VFX_spawn_anchor_pos[1])
         obj[2] = obj_char["y"] + obj_char[6]*(FD_VFX_spawn_anchor_pos[2])
         obj[5] = obj_char[5]

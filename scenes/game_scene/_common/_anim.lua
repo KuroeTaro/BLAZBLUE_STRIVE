@@ -1,6 +1,6 @@
     -- obj_char,
-    -- sprite_sheet_state,
-    -- height_state,
+    -- sprite_sheet,
+    -- height,
     -- hurt_horizontal_velocity,
     -- hurt_horizontal_friction,
     -- hurt_horizontal_velocity_correction
@@ -15,8 +15,8 @@
         -- 打击方
             -- velocity
         -- 受击方
-            -- sprite_sheet_state
-            -- height_state
+            -- sprite_sheet
+            -- height
             -- hurt_state_target
             -- move_state
             -- startup_frame
@@ -45,8 +45,8 @@
             ------
 function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -72,8 +72,8 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
 
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -103,14 +103,14 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
         obj_char_other_side["gravity_correction"] = 1
         obj_char_other_side["damage_correction"] = 1
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
         obj_char_other_side[8] = 0
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char_other_side)
@@ -119,10 +119,10 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
     end
     res[11] = function()
         -- state
-        obj_char_other_side["height_state"] = "crouch" -- stand crouch air OTG wallstick
+        obj_char_other_side["height"] = "crouch" -- stand crouch air OTG wallstick
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][1]
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][1]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][1]
         -- draw_correction
         obj_char_other_side[8] = 1
     end
@@ -142,8 +142,8 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
         -- VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
             0.5,1,1,0
         )
         -- draw_correction
@@ -172,10 +172,10 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
     end
     res[93] = function()
         -- state
-        obj_char_other_side["height_state"] = "OTG" -- stand crouch air OTG wallstick
+        obj_char_other_side["height"] = "OTG" -- stand crouch air OTG wallstick
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][10]
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][10]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][10]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][10]
         -- draw_correction
         obj_char_other_side[8] = 10
     end
@@ -190,8 +190,8 @@ end
         -- 打击方
             -- velocity
         -- 受击方
-            -- sprite_sheet_state
-            -- height_state
+            -- sprite_sheet
+            -- height
             -- hurt_state_target
             -- move_state
             -- startup_frame
@@ -219,8 +219,8 @@ end
             ------
 function load_game_scene_anim_char_common_0_ground_hurt_lv0(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -246,8 +246,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
 
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -284,19 +284,19 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
             false
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -307,7 +307,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
     end
     res[1] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][2]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][2]
         -- draw_correction
         obj_char_other_side[8] = 2
     end
@@ -318,13 +318,13 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
     end
     res[9] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][1]
         -- draw_correction
         obj_char_other_side[8] = 1
     end
     res[11] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         -- draw_correction
         obj_char_other_side[8] = 0
     end
@@ -335,8 +335,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
 end
 function load_game_scene_anim_char_common_0_ground_hurt_lv1(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -362,8 +362,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
 
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -400,19 +400,19 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
             false
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -423,7 +423,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
     end
     res[1] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][2]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][2]
         -- draw_correction
         obj_char_other_side[8] = 2
     end
@@ -434,13 +434,13 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
     end
     res[11] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][1]
         -- draw_correction
         obj_char_other_side[8] = 1
     end
     res[13] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         -- draw_correction
         obj_char_other_side[8] = 0
     end
@@ -451,8 +451,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
 end
 function load_game_scene_anim_char_common_0_ground_hurt_lv2(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -478,8 +478,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
 
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -516,19 +516,19 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
             false
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -539,7 +539,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
     end
     res[1] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][2]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][2]
         -- draw_correction
         obj_char_other_side[8] = 2
     end
@@ -550,13 +550,13 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
     end
     res[13] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][1]
         -- draw_correction
         obj_char_other_side[8] = 1
     end
     res[15] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         -- draw_correction
         obj_char_other_side[8] = 0
     end
@@ -567,8 +567,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
 end
 function load_game_scene_anim_char_common_0_ground_hurt_lv3(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -594,8 +594,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
 
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -632,19 +632,19 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
             false
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -655,7 +655,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
     end
     res[1] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][2]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][2]
         -- draw_correction
         obj_char_other_side[8] = 2
     end
@@ -666,13 +666,13 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
     end
     res[16] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][1]
         -- draw_correction
         obj_char_other_side[8] = 1
     end
     res[18] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         -- draw_correction
         obj_char_other_side[8] = 0
     end
@@ -683,8 +683,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
 end
 function load_game_scene_anim_char_common_0_ground_hurt_lv4(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -710,8 +710,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
 
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -748,19 +748,19 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
             false
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -771,7 +771,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
     end
     res[1] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][2]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][2]
         -- draw_correction
         obj_char_other_side[8] = 2
     end
@@ -782,13 +782,13 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
     end
     res[18] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][1]
         -- draw_correction
         obj_char_other_side[8] = 1
     end
     res[20] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         -- draw_correction
         obj_char_other_side[8] = 0
     end
@@ -803,8 +803,8 @@ end
         -- 打击方
             -- velocity
         -- 受击方
-            -- sprite_sheet_state
-            -- height_state
+            -- sprite_sheet
+            -- height
             -- hurt_state_target
             -- move_state
             -- startup_frame
@@ -832,8 +832,8 @@ end
             ------
 function load_game_scene_anim_char_common_0_ground_block_lv0(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -859,8 +859,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
 
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -899,19 +899,19 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
             false
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
         obj_char_other_side[8] = 5
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -944,8 +944,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
 end
 function load_game_scene_anim_char_common_0_ground_block_lv1(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -971,8 +971,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
 
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -1011,19 +1011,19 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
             false
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
         obj_char_other_side[8] = 5
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -1060,8 +1060,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
 end
 function load_game_scene_anim_char_common_0_ground_block_lv2(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -1087,8 +1087,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
 
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -1127,19 +1127,19 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
             false
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
         obj_char_other_side[8] = 5
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -1174,8 +1174,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
 end
 function load_game_scene_anim_char_common_0_ground_block_lv3(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -1201,8 +1201,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
 
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -1241,19 +1241,19 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
             false
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
         obj_char_other_side[8] = 5
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -1292,8 +1292,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
 end
 function load_game_scene_anim_char_common_0_ground_block_lv4(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -1319,8 +1319,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
 
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -1359,19 +1359,19 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
             false
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
         obj_char_other_side[8] = 5
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -1412,8 +1412,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
 end
 function load_game_scene_anim_char_common_0_air_block(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -1441,22 +1441,22 @@ function load_game_scene_anim_char_common_0_air_block(
             -- state
             obj_char_other_side["y"] = 0
             obj_char_other_side["f"] = 13
-            obj_char_other_side["height_state"]  = "stand"
+            obj_char_other_side["height"]  = "stand"
             obj_char_other_side["throw_inv"] = true
             obj_char_other_side["throw_inv_countdown"] = res["anim_length"]+5-13
             obj_char_other_side["velocity"][2] = 0
             obj_char_other_side["gravity"] = 2.5
             -- collide
-            obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][6]
-            obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][6]
+            obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][6]
+            obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][6]
             obj_char_other_side["collision_ground_height_offset"] = 0
             -- draw_correction
             obj_char_other_side[8] = 6
             -- VFX
             insert_VFX_game_scene_stage_smoke_land_blow(
                 obj_char_other_side,
-                VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
-                VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
+                VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
+                VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
                 0.5,1,1,0
             )
         end
@@ -1471,8 +1471,8 @@ function load_game_scene_anim_char_common_0_air_block(
 
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -1511,14 +1511,14 @@ function load_game_scene_anim_char_common_0_air_block(
             false
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         obj_char_other_side[8] = 5
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char_other_side)
@@ -1557,14 +1557,14 @@ function load_game_scene_anim_char_common_0_air_block(
     res[16] = function()
         -- collide
         obj_char_other_side["collision_ground_height_offset"] = 0
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][6]
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][6]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][6]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][6]
         -- draw_correction
         obj_char_other_side[8] = 6
     end
     res[22] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][7]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][7]
         -- draw_correction
         obj_char_other_side[8] = 7
     end
@@ -1575,7 +1575,7 @@ function load_game_scene_anim_char_common_0_air_block(
     end
     res[28] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][8]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][8]
         -- draw_correction
         obj_char_other_side[8] = 8
     end
@@ -1595,25 +1595,25 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
     local pushbox_data_other_side = common_game_scene_change_character_pushbox(side)
     local anchor_data_other_side = common_game_scene_change_character_anchor(side)
     local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
-    local sprite_sheet_state = nil
+    local sprite_sheet = nil
     local pushbox = nil
     local collision_ground_height_offset = nil
     local velocity = nil
     local function update_1f_15f_air(i)
         -- state_number
-        if obj_char["height_state"] == "air" then
+        if obj_char["height"] == "air" then
             obj_char["velocity"][1] = -obj_char[5]*(32-2*i)
         end
     end
     res["prop_f"] = "f"
     res["anim_length"] = 30
     
-    if obj_char["height_state"] == "air" then
+    if obj_char["height"] == "air" then
         obj_char["y"] = math.min(obj_char["y"],-240)
         if teching_or_teched == "teching" then
-            sprite_sheet_state = "0_air_Launcher_teching"
+            sprite_sheet = "0_air_Launcher_teching"
         elseif teching_or_teched == "teched" then
-            sprite_sheet_state = "0_air_Launcher_teched"
+            sprite_sheet = "0_air_Launcher_teched"
         end
         velocity = {-obj_char[5]*32,-37.5}
         pushbox = pushbox_data_other_side["1_4_7_air_block"][0]
@@ -1621,9 +1621,9 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
     else
         obj_char["y"] = 0
         if teching_or_teched == "teching" then
-            sprite_sheet_state = "0_ground_Launcher_teching"
+            sprite_sheet = "0_ground_Launcher_teching"
         elseif teching_or_teched == "teched" then
-            sprite_sheet_state = "0_ground_Launcher_teched"
+            sprite_sheet = "0_ground_Launcher_teched"
         end
         velocity = {-obj_char[5]*60,0}
         pushbox = pushbox_data_other_side["4_stand_block_high"][0]
@@ -1637,7 +1637,7 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
 
     res[0] = function()
         -- state
-        obj_char["sprite_sheet_state"] = sprite_sheet_state
+        obj_char["sprite_sheet"] = sprite_sheet
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
 
@@ -1674,7 +1674,7 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         obj_char["collision_ground_height_offset"] = collision_ground_height_offset
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char)
@@ -1682,11 +1682,11 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         if teching_or_teched == "teching" then
             insert_VFX_game_scene_char_throw_tech(obj_char,-450,-900,1,1.2,1.2,0)
         end
-        if obj_char["height_state"] ~= "air" then
+        if obj_char["height"] ~= "air" then
             insert_VFX_game_scene_stage_smoke_horizontal_shot(
                 obj_char,
-                VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
-                VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
+                VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
+                VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
                 0.5,1,1,0
             )
         end
@@ -1727,8 +1727,8 @@ end
         -- 打击方
             -- velocity
         -- 受击方
-            -- sprite_sheet_state
-            -- height_state
+            -- sprite_sheet
+            -- height
             -- hurt_state_target
             -- move_state
             -- startup_frame
@@ -1757,7 +1757,7 @@ end
             ------
 function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(obj_char)
     local res = {}
-    local sprite_sheet_state = "0_general_hurt_soft_knockdown_wallstick_air"
+    local sprite_sheet = "0_general_hurt_soft_knockdown_wallstick_air"
     local side = obj_char["player_side"]
     local pushbox_data = common_game_scene_get_pushbox(side)
     local hurtbox_data = common_game_scene_get_hurtbox(side)
@@ -1768,8 +1768,8 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
 
     res[0] = function()
         -- state
-        obj_char["sprite_sheet_state"] = sprite_sheet_state
-        obj_char["height_state"] = "wallstick" -- stand crouch air OTG wallstick
+        obj_char["sprite_sheet"] = sprite_sheet
+        obj_char["height"] = "wallstick" -- stand crouch air OTG wallstick
         obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
 
@@ -1795,14 +1795,14 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
         obj_char["friction"] = 1
         obj_char["gravity"] = 0
         -- collide
-        obj_char["pushbox"] = pushbox_data[sprite_sheet_state][0]
+        obj_char["pushbox"] = pushbox_data[sprite_sheet][0]
         obj_char["pushbox_other_side_char_active"] = true
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet_state][0]
+        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][0]
         obj_char["collision_ground_height_offset"] = 185
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = anchor_data[sprite_sheet_state]
+        obj_char["anchor_pos"] = anchor_data[sprite_sheet]
     end
     res[1] = function()
         -- state
@@ -1824,8 +1824,8 @@ end
         -- 打击方
             -- velocity
         -- 受击方
-            -- sprite_sheet_state
-            -- height_state
+            -- sprite_sheet
+            -- height
             -- hurt_state_target
             -- move_state
             -- startup_frame
@@ -1853,8 +1853,8 @@ end
             ------
 function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -1880,8 +1880,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
 
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -1914,19 +1914,19 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
             hurt_vertical_gravity_correction
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
         obj_char_other_side[8] = 0
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
             0.5,1,1,0
         )
         -- character_uncommon_init
@@ -1943,10 +1943,10 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
     res[6] = function()
         -- state
         obj_char_other_side["velocity"][2] = -5.0
-        obj_char_other_side["height_state"] = "OTG" -- stand crouch air OTG wallstick
+        obj_char_other_side["height"] = "OTG" -- stand crouch air OTG wallstick
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][2]
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][2]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][2]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][2]
         -- draw_correction
         obj_char_other_side[8] = 2
     end
@@ -1964,7 +1964,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
     end
     res[18] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][6]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][6]
         -- draw_correction
         obj_char_other_side[8] = 6
     end
@@ -1979,8 +1979,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
 end
 function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_down(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -2006,8 +2006,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
 
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -2040,19 +2040,19 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
             hurt_vertical_gravity_correction
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
         obj_char_other_side[8] = 0
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
             0.5,1,1,0
         )
         -- character_uncommon_init
@@ -2069,10 +2069,10 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
     res[6] = function()
         -- state
         obj_char_other_side["velocity"][2] = -5.0
-        obj_char_other_side["height_state"] = "OTG" -- stand crouch air OTG wallstick
+        obj_char_other_side["height"] = "OTG" -- stand crouch air OTG wallstick
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][2]
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][2]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][2]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][2]
         -- draw_correction
         obj_char_other_side[8] = 2
     end
@@ -2090,7 +2090,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
     end
     res[18] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][6]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][6]
         -- draw_correction
         obj_char_other_side[8] = 6
     end
@@ -2105,8 +2105,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
 end
 function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -2132,8 +2132,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
 
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -2166,19 +2166,19 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
             hurt_vertical_gravity_correction
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
         obj_char_other_side[8] = 0
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
             0.5,1,1,0
         )
         -- character_uncommon_init
@@ -2195,10 +2195,10 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
     res[6] = function()
         -- state
         obj_char_other_side["velocity"][2] = -5.0
-        obj_char_other_side["height_state"] = "OTG" -- stand crouch air OTG wallstick
+        obj_char_other_side["height"] = "OTG" -- stand crouch air OTG wallstick
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][2]
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][2]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][2]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][2]
         -- draw_correction
         obj_char_other_side[8] = 2
     end
@@ -2216,7 +2216,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
     end
     res[18] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][6]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][6]
         -- draw_correction
         obj_char_other_side[8] = 6
     end
@@ -2231,7 +2231,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
 end
 function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstick_ground(obj_char)
     local res = {}
-    local sprite_sheet_state = "0_general_hurt_hard_knockdown_wallstick_ground"
+    local sprite_sheet = "0_general_hurt_hard_knockdown_wallstick_ground"
     local side = obj_char["player_side"]
     local pushbox_data = common_game_scene_get_pushbox(side)
     local hurtbox_data = common_game_scene_get_hurtbox(side)
@@ -2248,8 +2248,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
     res[0] = function()
         -- state
         obj_char["y"] = -200
-        obj_char["sprite_sheet_state"] = sprite_sheet_state
-        obj_char["height_state"] = "wallstick" -- stand crouch air OTG wallstick
+        obj_char["sprite_sheet"] = sprite_sheet
+        obj_char["height"] = "wallstick" -- stand crouch air OTG wallstick
         obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
 
@@ -2275,14 +2275,14 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         obj_char["friction"] = 1
         obj_char["gravity"] = 0
         -- collide
-        obj_char["pushbox"] = pushbox_data[sprite_sheet_state][0]
+        obj_char["pushbox"] = pushbox_data[sprite_sheet][0]
         obj_char["pushbox_other_side_char_active"] = true
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet_state][0]
+        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][0]
         obj_char["collision_ground_height_offset"] = 0
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = anchor_data[sprite_sheet_state]
+        obj_char["anchor_pos"] = anchor_data[sprite_sheet]
     end
     res[1] = function()
         -- state
@@ -2303,12 +2303,12 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         obj_char["y"] = 0
         obj_char[8] = 3
         -- collide
-        obj_char["pushbox"] = pushbox_data[sprite_sheet_state][3]
-        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet_state][3]
+        obj_char["pushbox"] = pushbox_data[sprite_sheet][3]
+        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][3]
         insert_VFX_game_scene_stage_smoke_land_blow(
             obj_char,
-            VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1],
-            VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][2],
+            VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
+            VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
             0.5,1,1,0
         )
     end
@@ -2316,8 +2316,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         -- state
         obj_char[8] = 4
         -- collide
-        obj_char["pushbox"] = pushbox_data[sprite_sheet_state][4]
-        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet_state][4]
+        obj_char["pushbox"] = pushbox_data[sprite_sheet][4]
+        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][4]
     end
     res[75] = function()
         -- state
@@ -2331,7 +2331,7 @@ end
 function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallbreak(obj_char)
     local res = {}
     local side = obj_char["player_side"]
-    local sprite_sheet_state = "0_general_hurt_hard_knockdown_up"
+    local sprite_sheet = "0_general_hurt_hard_knockdown_up"
     local obj_char_other_side = common_game_scene_change_character(side)
     local pushbox_data_other_side = common_game_scene_change_character_pushbox(side)
     local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
@@ -2342,8 +2342,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallbrea
 
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = "OTG" -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = "OTG" -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -2377,14 +2377,14 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallbrea
         obj_char_other_side["projectile_inv_countdown"] = 0
     
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][2]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][2]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
         obj_char_other_side["hurtbox_table"] = {}
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
         obj_char_other_side[8] = 7
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
     end
     res[1] = function()
         -- state
@@ -2402,8 +2402,8 @@ end
         -- 打击方
             ------
         -- 受击方
-            -- sprite_sheet_state
-            -- height_state
+            -- sprite_sheet
+            -- height
             -- hurt_state_target
             -- move_state
             -- current_animation_length
@@ -2429,8 +2429,8 @@ end
             ------
 function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -2456,8 +2456,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
 
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -2486,14 +2486,14 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
         obj_char_other_side["air_move"]["jump"][1] = obj_char_other_side["air_move"]["jump"][2]
         obj_char_other_side["air_move"]["air_dash"][1] = obj_char_other_side["air_move"]["air_dash"][2]
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
         obj_char_other_side[8] = 0
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -2545,8 +2545,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
 end
 function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -2572,8 +2572,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
 
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -2602,14 +2602,14 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
         obj_char_other_side["air_move"]["jump"][1] = obj_char_other_side["air_move"]["jump"][2]
         obj_char_other_side["air_move"]["air_dash"][1] = obj_char_other_side["air_move"]["air_dash"][2]
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
         obj_char_other_side[8] = 0
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -2661,7 +2661,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
 end
 function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick_ground(obj_char)
     local res = {}
-    local sprite_sheet_state = "0_general_hurt_hard_recovery_wallstick_ground"
+    local sprite_sheet = "0_general_hurt_hard_recovery_wallstick_ground"
     local side = obj_char["player_side"]
     local pushbox_data = common_game_scene_get_pushbox(side)
     local hurtbox_data = common_game_scene_get_hurtbox(side)
@@ -2673,8 +2673,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
     res[0] = function()
         -- state
         obj_char["y"] = 0
-        obj_char["sprite_sheet_state"] = sprite_sheet_state
-        obj_char["height_state"] = "OTG" -- stand crouch air OTG wallstick
+        obj_char["sprite_sheet"] = sprite_sheet
+        obj_char["height"] = "OTG" -- stand crouch air OTG wallstick
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
 
@@ -2703,14 +2703,14 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
         obj_char["air_move"]["jump"][1] = obj_char["air_move"]["jump"][2]
         obj_char["air_move"]["air_dash"][1] = obj_char["air_move"]["air_dash"][2]
         -- collide
-        obj_char["pushbox"] = pushbox_data[sprite_sheet_state][0]
+        obj_char["pushbox"] = pushbox_data[sprite_sheet][0]
         obj_char["pushbox_other_side_char_active"] = true
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet_state][0]
+        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][0]
         obj_char["collision_ground_height_offset"] = 0
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = anchor_data[sprite_sheet_state]
+        obj_char["anchor_pos"] = anchor_data[sprite_sheet]
     end
     res[1] = function()
         -- state
@@ -2752,8 +2752,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
 end
 function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -2780,8 +2780,8 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
     res[0] = function()
         -- state
         obj_char_other_side["y"] = 0
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -2810,19 +2810,19 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         obj_char_other_side["air_move"]["jump"][1] = obj_char_other_side["air_move"]["jump"][2]
         obj_char_other_side["air_move"]["air_dash"][1] = obj_char_other_side["air_move"]["air_dash"][2]
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
         obj_char_other_side[8] = 0
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][0][1],
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][0][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][0][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][0][2],
             0.5,-1,1,0
         )
         -- character_uncommon_init
@@ -2846,25 +2846,25 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
     end
     res[13] = function()
         -- state
-        obj_char_other_side["height_state"] = "crouch" -- stand crouch air OTG wallstick
+        obj_char_other_side["height"] = "crouch" -- stand crouch air OTG wallstick
         obj_char_other_side["friction"] = 7
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][4]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][4]
         -- draw_correction
         obj_char_other_side[8] = 4
     end
     res[18] = function()
         -- state
-        obj_char_other_side["height_state"] = "OTG" -- stand crouch air OTG wallstick
+        obj_char_other_side["height"] = "OTG" -- stand crouch air OTG wallstick
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][5]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][5]
         -- draw_correction
         obj_char_other_side[8] = 5
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
             obj_char_other_side,
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1][1],
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet_state][1][2],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1][1],
+            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1][2],
             0.5,1,1,0
         )
     end
@@ -2888,7 +2888,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
 end
 function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick_air(obj_char)
     local res = {}
-    local sprite_sheet_state = "0_general_hurt_soft_recovery_wallstick_air"
+    local sprite_sheet = "0_general_hurt_soft_recovery_wallstick_air"
     local side = obj_char["player_side"]
     local pushbox_data = common_game_scene_get_pushbox(side)
     local hurtbox_data = common_game_scene_get_hurtbox(side)
@@ -2899,8 +2899,8 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
     
     res[0] = function()
         -- state
-        obj_char["sprite_sheet_state"] = sprite_sheet_state
-        obj_char["height_state"] = "air" -- stand crouch air OTG wallstick
+        obj_char["sprite_sheet"] = sprite_sheet
+        obj_char["height"] = "air" -- stand crouch air OTG wallstick
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
 
@@ -2937,14 +2937,14 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
         obj_char["air_move"]["jump"][1] = obj_char["air_move"]["jump"][2]
         obj_char["air_move"]["air_dash"][1] = obj_char["air_move"]["air_dash"][2]
         -- collide
-        obj_char["pushbox"] = pushbox_data[sprite_sheet_state][0]
+        obj_char["pushbox"] = pushbox_data[sprite_sheet][0]
         obj_char["pushbox_other_side_char_active"] = false
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet_state][0]
+        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][0]
         obj_char["collision_ground_height_offset"] = 185
         -- draw_correction
         obj_char[8] = 2
-        obj_char["anchor_pos"] = anchor_data[sprite_sheet_state]
+        obj_char["anchor_pos"] = anchor_data[sprite_sheet]
     end
     res[1] = function()
         -- state
@@ -2974,8 +2974,8 @@ end
         -- 打击方
             -- velocity
         -- 受击方
-            -- sprite_sheet_state
-            -- height_state
+            -- sprite_sheet
+            -- height
             -- hurt_state_target
             -- move_state
             -- startup_frame
@@ -3007,8 +3007,8 @@ end
             ------
 function load_game_scene_anim_char_common_0_general_hurt_launched_float(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -3033,8 +3033,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
         -- state
         obj_char_other_side["f"] = i
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][i]
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][i]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][i]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][i]
         -- draw_correction
         obj_char_other_side[8] = i
     end
@@ -3046,7 +3046,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
                 -- state
                 obj_char_other_side["f"] = 1
                 -- collide
-                obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
+                obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][1]
                 -- draw_correction
                 obj_char_other_side[8] = 1
             end
@@ -3058,7 +3058,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
                 -- state
                 obj_char_other_side["f"] = 8
                 -- collide
-                obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][3]
+                obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][3]
                 -- draw_correction
                 obj_char_other_side[8] = 3
             end
@@ -3070,7 +3070,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
                 -- state
                 obj_char_other_side["f"] = 15
                 -- collide
-                obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][5]
+                obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][5]
                 -- draw_correction
                 obj_char_other_side[8] = 5
             end
@@ -3082,7 +3082,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
                 -- state
                 obj_char_other_side["f"] = 22
                 -- collide
-                obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][7]
+                obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][7]
                 -- draw_correction
                 obj_char_other_side[8] = 7
             end 
@@ -3094,7 +3094,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
                 -- state
                 obj_char_other_side["f"] = 29
                 -- collide
-                obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][9]
+                obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][9]
                 -- draw_correction
                 obj_char_other_side[8] = 9
             end 
@@ -3106,7 +3106,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
                 -- state
                 obj_char_other_side["f"] = 36
                 -- collide
-                obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][11]
+                obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][11]
                 -- draw_correction
                 obj_char_other_side[8] = 11
             end 
@@ -3119,7 +3119,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
                 obj_char_other_side["f"] = 36
 
                 -- collide
-                obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][11]
+                obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][11]
                 
                 -- draw_correction
                 obj_char_other_side[8] = 11
@@ -3143,8 +3143,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
     end
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -3186,14 +3186,14 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
             false
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- update
         update_before_land()
         -- input_sys_cache
@@ -3210,7 +3210,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
     end
     res[3] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][1]
         -- draw_correction
         obj_char_other_side[8] = 1
         -- update
@@ -3232,7 +3232,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
     end
     res[10] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][3]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][3]
         -- draw_correction
         obj_char_other_side[8] = 3
         -- update
@@ -3254,7 +3254,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
     end
     res[17] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][5]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][5]
         -- draw_correction
         obj_char_other_side[8] = 5
         -- update
@@ -3276,7 +3276,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
     end
     res[24] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][7]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][7]
         -- draw_correction
         obj_char_other_side[8] = 7
         -- update
@@ -3298,7 +3298,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
     end
     res[31] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][9]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][9]
         -- draw_correction
         obj_char_other_side[8] = 9
         -- update
@@ -3320,7 +3320,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
     end
     res[38] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][11]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][11]
         -- draw_correction
         obj_char_other_side[8] = 11
     end
@@ -3341,8 +3341,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_high(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -3377,8 +3377,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
     end
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -3420,14 +3420,14 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
             false
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- update
         update_before_land()
         -- input_sys_cache
@@ -3444,7 +3444,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
     end
     res[3] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][1]
         -- draw_correction
         obj_char_other_side[8] = 2
         -- update
@@ -3452,7 +3452,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
     end
     res[9] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][3]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][3]
         -- draw_correction
         obj_char_other_side[8] = 3
         -- update
@@ -3466,7 +3466,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
     end
     res[15] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][5]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][5]
         -- draw_correction
         obj_char_other_side[8] = 5
         -- update
@@ -3482,7 +3482,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         -- state
         if obj_char_other_side["velocity"][2] <= math.abs(obj_char_other_side["velocity"][1])*2 then
             -- collide
-            obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][7]
+            obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][7]
             -- draw_correction
             obj_char_other_side[8] = 7
         else
@@ -3496,7 +3496,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
     end
     res[24] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][8]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][8]
         -- draw_correction
         obj_char_other_side[8] = 8
         -- update
@@ -3504,7 +3504,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
     end
     res[27] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][9]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][9]
         -- draw_correction
         obj_char_other_side[8] = 9
         -- update
@@ -3520,7 +3520,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         -- state
         obj_char_other_side["f"] = 27
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][9]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][9]
         -- draw_correction
         obj_char_other_side[8] = 9
         -- update
@@ -3533,8 +3533,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_low(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -3569,8 +3569,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
     end
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -3612,14 +3612,14 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
             false
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- update
         update_before_land()
         -- input_sys_cache
@@ -3636,7 +3636,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
     end
     res[3] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][1]
         -- draw_correction
         obj_char_other_side[8] = 1
         -- update
@@ -3644,7 +3644,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
     end
     res[6] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][2]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][2]
         -- draw_correction
         obj_char_other_side[8] = 2
         -- update
@@ -3671,8 +3671,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -3707,8 +3707,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
     end
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -3750,14 +3750,14 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
             false
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char_other_side)
@@ -3772,7 +3772,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
     end
     res[3] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][1]
         -- draw_correction
         obj_char_other_side[8] = 1
         -- update
@@ -3799,8 +3799,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -3828,7 +3828,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
             -- state
             obj_char_other_side["f"] = 9
             -- collide
-            obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][3]
+            obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][3]
             -- draw_correction
             obj_char_other_side[8] = 3
         end
@@ -3852,8 +3852,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
     end
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -3895,14 +3895,14 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
             false
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char_other_side)
@@ -3919,7 +3919,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
     end
     res[3] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][1]
         -- draw_correction
         obj_char_other_side[8] = 1
         -- update
@@ -3941,7 +3941,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
     end
     res[12] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][4]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][4]
         -- draw_correction
         obj_char_other_side[8] = 4
         -- update
@@ -3949,7 +3949,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
     end
     res[15] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][5]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][5]
         -- draw_correction
         obj_char_other_side[8] = 5
         -- update
@@ -3957,7 +3957,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
     end
     res[18] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][6]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][6]
         -- draw_correction
         obj_char_other_side[8] = 6
         -- update
@@ -3965,7 +3965,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
     end
     res[21] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][7]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][7]
         -- draw_correction
         obj_char_other_side[8] = 7
         -- update
@@ -3974,7 +3974,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
     res[24] = function()
         obj_char_other_side["f"] = 18
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][6]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][6]
         -- draw_correction
         obj_char_other_side[8] = 6
         -- update
@@ -3987,8 +3987,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -4023,8 +4023,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
     end
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -4066,14 +4066,14 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
             false
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- update
         update_before_land()
         -- input_sys_cache
@@ -4144,8 +4144,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -4180,8 +4180,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
     end
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -4223,14 +4223,14 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
             false
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- update
         update_before_land()
         -- input_sys_cache
@@ -4283,8 +4283,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -4319,8 +4319,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
     end
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -4348,14 +4348,14 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         obj_char_other_side["projectile_inv"] = false
         obj_char_other_side["projectile_inv_countdown"] = 0
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- update
         update_before_land()
         -- input_sys_cache
@@ -4372,7 +4372,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
     end
     res[3] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][1]
         -- draw_correction
         obj_char_other_side[8] = 1
         -- update
@@ -4380,7 +4380,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
     end
     res[6] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][2]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][2]
         -- draw_correction
         obj_char_other_side[8] = 2
         -- update
@@ -4388,7 +4388,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
     end
     res[9] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][3]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][3]
         -- draw_correction
         obj_char_other_side[8] = 3
         -- update
@@ -4415,8 +4415,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -4445,7 +4445,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
         update_before_land()
         if obj_char_other_side["velocity"][2] >= 0 then
             -- collide
-            obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][2]
+            obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][2]
             -- draw_correction
             obj_char_other_side[8] = 2
         end
@@ -4465,8 +4465,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
     end
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -4500,14 +4500,14 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
         obj_char_other_side["velocity"][2] = hurt_vertical_velocity
 
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- update
         update_before_land()
         -- input_sys_cache
@@ -4538,7 +4538,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
     end
     res[9] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][2]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][2]
         -- draw_correction
         obj_char_other_side[8] = 2
         -- update
@@ -4546,13 +4546,13 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
     end
     res[12] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][3]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][3]
         -- draw_correction
         obj_char_other_side[8] = 3
     end
     res[15] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][4]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][4]
         -- draw_correction
         obj_char_other_side[8] = 4
     end
@@ -4574,8 +4574,8 @@ end
 
 function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_PRC(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -4610,8 +4610,8 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_
     end
     res[0] = function()
         -- state
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -4654,14 +4654,14 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_
             "character"
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- update
         update_before_land()
         -- input_sys_cache
@@ -4678,7 +4678,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_
     end
     res[3] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][1]
         -- draw_correction
         obj_char_other_side[8] = 2
         -- update
@@ -4686,7 +4686,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_
     end
     res[9] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][3]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][3]
         -- draw_correction
         obj_char_other_side[8] = 3
         -- update
@@ -4700,7 +4700,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_
     end
     res[15] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][5]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][5]
         -- draw_correction
         obj_char_other_side[8] = 5
         -- update
@@ -4716,7 +4716,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_
         -- state
         if obj_char_other_side["velocity"][2] <= math.abs(obj_char_other_side["velocity"][1])*2 then
             -- collide
-            obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][7]
+            obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][7]
             -- draw_correction
             obj_char_other_side[8] = 7
         else
@@ -4730,7 +4730,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_
     end
     res[24] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][8]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][8]
         -- draw_correction
         obj_char_other_side[8] = 8
         -- update
@@ -4738,7 +4738,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_
     end
     res[27] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][9]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][9]
         -- draw_correction
         obj_char_other_side[8] = 9
         -- update
@@ -4754,7 +4754,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_
         -- state
         obj_char_other_side["f"] = 27
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][9]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][9]
         -- draw_correction
         obj_char_other_side[8] = 9
         -- update
@@ -4769,8 +4769,8 @@ end
 -- semi_launched
 function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
     obj_char,
-    sprite_sheet_state,
-    height_state,
+    sprite_sheet,
+    height,
     state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
@@ -4797,8 +4797,8 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
     res[0] = function()
         -- state
         obj_char_other_side["y"] = -265
-        obj_char_other_side["sprite_sheet_state"] = sprite_sheet_state
-        obj_char_other_side["height_state"] = height_state -- stand crouch air OTG wallstick
+        obj_char_other_side["sprite_sheet"] = sprite_sheet
+        obj_char_other_side["height"] = height -- stand crouch air OTG wallstick
         obj_char_other_side["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
 
@@ -4835,14 +4835,14 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
             false
         )
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["pushbox_other_side_char_active"] = true
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
         obj_char_other_side["collision_ground_height_offset"] = 0
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(obj_char_other_side,0,1)
-        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet_state]
+        obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(obj_char_other_side)
@@ -4851,7 +4851,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
     end
     res[4] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][1]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][1]
         -- draw_correction
         obj_char_other_side[8] = 1
     end
@@ -4862,22 +4862,22 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
     res[11] = function()
         -- state
         obj_char_other_side["y"] = 0
-        obj_char_other_side["height_state"] = "stand"
+        obj_char_other_side["height"] = "stand"
         -- collide
-        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet_state][3]
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][3]
+        obj_char_other_side["pushbox"] = pushbox_data_other_side[sprite_sheet][3]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][3]
         -- draw_correction
         obj_char_other_side[8] = 3
     end
     res[14] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][4]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][4]
         -- draw_correction
         obj_char_other_side[8] = 4
     end
     res[18] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][5]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][5]
         -- draw_correction
         obj_char_other_side[8] = 5
     end
@@ -4887,7 +4887,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
     end
     res[21] = function()
         -- collide
-        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet_state][6]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][6]
         -- draw_correction
         obj_char_other_side[8] = 6
     end
@@ -4936,8 +4936,8 @@ end
 -- burst_overdrive
     -- 需要修改的角色属性
         -- 我方
-            -- sprite_sheet_state
-            -- height_state
+            -- sprite_sheet
+            -- height
             -- hurt_state_target
             -- move_state
             -- startup_frame
@@ -4975,7 +4975,7 @@ end
             -- game_speed_abnormal_realtime_countdown
 function load_game_scene_anim_char_common_burst_overdrive(obj_char,other_side_countdown,overdrive_halved,character_uncommon_init)
     local res = {}
-    local height_state = obj_char["height_state"]
+    local height = obj_char["height"]
     local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
@@ -5211,8 +5211,8 @@ end
 -- logic attack by projectile
 -- 需要修改的角色属性
     -- 我方
-        -- sprite_sheet_state
-        -- height_state
+        -- sprite_sheet
+        -- height
         -- hurt_state_target
         -- move_state
         -- startup_frame
@@ -5251,7 +5251,7 @@ end
 function load_game_scene_anim_char_common_burst_RC_red(obj_char,character_uncommon_update)
     local res = {}
     local side = obj_char["player_side"]
-    local height_state = obj_char["height_state"]
+    local height = obj_char["height"]
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local pushbox_data = common_game_scene_get_pushbox(side)
     local hurtbox_data = common_game_scene_get_hurtbox(side)
@@ -5267,20 +5267,20 @@ function load_game_scene_anim_char_common_burst_RC_red(obj_char,character_uncomm
         if obj_char_other_side["game_speed_force_0_countdown"] == 0 and obj_char["f"] >= 26 then
             obj_char["move_state"] = "recovery"
         end
-        if height_state ~= obj_char["height_state"] then
+        if height ~= obj_char["height"] then
             return
         end
-        -- height_state
-        if height_state == "air" and collision_test_char_on_ground(obj_char) then
+        -- height
+        if height == "air" and collision_test_char_on_ground(obj_char) then
             obj_char["y"] = 0
-            obj_char["height_state"] = "stand"
-            obj_char["sprite_sheet_state"] = "burst_rc_ground"
+            obj_char["height"] = "stand"
+            obj_char["sprite_sheet"] = "burst_rc_ground"
             obj_char["pushbox"]  = pushbox_data["RC"]["stand"]
             obj_char["anchor_pos"] = anchor_data["RC"]["stand"]
             obj_char["collision_ground_height_offset"] = 0
-        elseif height_state ~= "air" and not collision_test_char_on_ground(obj_char) then
-            obj_char["height_state"] = "air"
-            obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
+        elseif height ~= "air" and not collision_test_char_on_ground(obj_char) then
+            obj_char["height"] = "air"
+            obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
             obj_char["pushbox"]  = pushbox_data["RC"]["air"]
             obj_char["anchor_pos"] = anchor_data["RC"]["air"]
             obj_char["collision_ground_height_offset"] = 185
@@ -5434,7 +5434,7 @@ end
 function load_game_scene_anim_char_common_burst_RC_blue(obj_char,character_uncommon_update)
     local res = {}
     local side = obj_char["player_side"]
-    local height_state = obj_char["height_state"]
+    local height = obj_char["height"]
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local pushbox_data = common_game_scene_get_pushbox(side)
     local hurtbox_data = common_game_scene_get_hurtbox(side)
@@ -5450,20 +5450,20 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char,character_uncom
         if obj_char_other_side["game_speed_force_0_countdown"] == 0 and obj_char["f"] >= 26 then
             obj_char["move_state"] = "recovery"
         end
-        if height_state ~= obj_char["height_state"] then
+        if height ~= obj_char["height"] then
             return
         end
-        -- height_state
-        if height_state == "air" and collision_test_char_on_ground(obj_char) then
+        -- height
+        if height == "air" and collision_test_char_on_ground(obj_char) then
             obj_char["y"] = 0
-            obj_char["height_state"] = "stand"
-            obj_char["sprite_sheet_state"] = "burst_rc_ground"
+            obj_char["height"] = "stand"
+            obj_char["sprite_sheet"] = "burst_rc_ground"
             obj_char["pushbox"]  = pushbox_data["RC"]["stand"]
             obj_char["anchor_pos"] = anchor_data["RC"]["stand"]
             obj_char["collision_ground_height_offset"] = 0
-        elseif height_state ~= "air" and not collision_test_char_on_ground(obj_char) then
-            obj_char["height_state"] = "air"
-            obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
+        elseif height ~= "air" and not collision_test_char_on_ground(obj_char) then
+            obj_char["height"] = "air"
+            obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
             obj_char["pushbox"]  = pushbox_data["RC"]["air"]
             obj_char["anchor_pos"] = anchor_data["RC"]["air"]
             obj_char["collision_ground_height_offset"] = 185
@@ -5492,7 +5492,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char,character_uncom
             update_state()
             update_heat_gauge_state()
             -- collide
-            obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+            obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height"]]
         end
     end
     res[0] = function()
@@ -5530,7 +5530,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char,character_uncom
         -- collide
         obj_char["pushbox_other_side_char_active"] = true
         obj_char["hitbox_table"] = {} --{ 攻击类型 是投还是打， function值 内部为命中后的逻辑,具体的box形状}
-        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height"]]
         -- draw_correction
         obj_char[8] = 0
         -- VFX
@@ -5547,7 +5547,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(obj_char,character_uncom
         update_state()
         update_heat_gauge_state()
         -- collide
-        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height"]]
         -- draw_correction
         obj_char[8] = 1
     end
@@ -5646,7 +5646,7 @@ end
 function load_game_scene_anim_char_common_burst_RC_purple(obj_char,character_uncommon_update)
     local res = {}
     local side = obj_char["player_side"]
-    local height_state = obj_char["height_state"]
+    local height = obj_char["height"]
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local pushbox_data = common_game_scene_get_pushbox(side)
     local hurtbox_data = common_game_scene_get_hurtbox(side)
@@ -5662,20 +5662,20 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char,character_unc
         if obj_char_other_side["game_speed_force_0_countdown"] == 0 and obj_char["f"] >= 26 then
             obj_char["move_state"] = "recovery"
         end
-        if height_state ~= obj_char["height_state"] then
+        if height ~= obj_char["height"] then
             return
         end
-        -- height_state
-        if height_state == "air" and collision_test_char_on_ground(obj_char) then
+        -- height
+        if height == "air" and collision_test_char_on_ground(obj_char) then
             obj_char["y"] = 0
-            obj_char["height_state"] = "stand"
-            obj_char["sprite_sheet_state"] = "burst_rc_ground"
+            obj_char["height"] = "stand"
+            obj_char["sprite_sheet"] = "burst_rc_ground"
             obj_char["pushbox"]  = pushbox_data["RC"]["stand"]
             obj_char["anchor_pos"] = anchor_data["RC"]["stand"]
             obj_char["collision_ground_height_offset"] = 0
-        elseif height_state ~= "air" and not collision_test_char_on_ground(obj_char) then
-            obj_char["height_state"] = "air"
-            obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
+        elseif height ~= "air" and not collision_test_char_on_ground(obj_char) then
+            obj_char["height"] = "air"
+            obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
             obj_char["pushbox"]  = pushbox_data["RC"]["air"]
             obj_char["anchor_pos"] = anchor_data["RC"]["air"]
             obj_char["collision_ground_height_offset"] = 185
@@ -5704,7 +5704,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char,character_unc
             update_state()
             update_heat_gauge_state()
             -- collide
-            obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+            obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height"]]
         end
     end
     res[0] = function()
@@ -5759,7 +5759,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(obj_char,character_unc
         update_state()
         update_heat_gauge_state()
         -- collide
-        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height"]]
         -- draw_correction
         obj_char[8] = 1
     end
@@ -5863,7 +5863,7 @@ end
 function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_uncommon_update)
     local res = {}
     local side = obj_char["player_side"]
-    local height_state = obj_char["height_state"]
+    local height = obj_char["height"]
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local pushbox_data = common_game_scene_get_pushbox(side)
     local hurtbox_data = common_game_scene_get_hurtbox(side)
@@ -5879,20 +5879,20 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
         if obj_char_other_side["game_speed_force_0_countdown"] == 0 and obj_char["f"] >= 26 then
             obj_char["move_state"] = "recovery"
         end
-        if height_state ~= obj_char["height_state"] then
+        if height ~= obj_char["height"] then
             return
         end
-        -- height_state
-        if height_state == "air" and collision_test_char_on_ground(obj_char) then
+        -- height
+        if height == "air" and collision_test_char_on_ground(obj_char) then
             obj_char["y"] = 0
-            obj_char["height_state"] = "stand"
-            obj_char["sprite_sheet_state"] = "burst_rc_ground"
+            obj_char["height"] = "stand"
+            obj_char["sprite_sheet"] = "burst_rc_ground"
             obj_char["pushbox"]  = pushbox_data["RC"]["stand"]
             obj_char["anchor_pos"] = anchor_data["RC"]["stand"]
             obj_char["collision_ground_height_offset"] = 0
-        elseif height_state ~= "air" and not collision_test_char_on_ground(obj_char) then
-            obj_char["height_state"] = "air"
-            obj_char["sprite_sheet_state"] = "burst_overdrive_rc_air"
+        elseif height ~= "air" and not collision_test_char_on_ground(obj_char) then
+            obj_char["height"] = "air"
+            obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
             obj_char["pushbox"]  = pushbox_data["RC"]["air"]
             obj_char["anchor_pos"] = anchor_data["RC"]["air"]
             obj_char["collision_ground_height_offset"] = 185
@@ -5921,7 +5921,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
             update_state()
             update_heat_gauge_state()
             -- collide
-            obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+            obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height"]]
         end
     end
     res[0] = function()
@@ -6037,13 +6037,13 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
         obj_char["move_state"] = "recovery" -- none startup active recovery
         update_state()
         -- collide
-        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height"]]
     end
     res[43] = function()
         -- state
         update_state()
         -- collide
-        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height"]]
         -- draw_correction
         obj_char[8] = 6
     end
@@ -6051,7 +6051,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
         -- state
         update_state()
         -- collide
-        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height"]]
         -- draw_correction
         obj_char[8] = 7
     end
@@ -6059,7 +6059,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
         -- state
         update_state()
         -- collide
-        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height"]]
         -- draw_correction
         obj_char[8] = 5
     end
@@ -6067,7 +6067,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
         -- state
         update_state()
         -- collide
-        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height"]]
         -- draw_correction
         obj_char[8] = 6
     end
@@ -6075,7 +6075,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
         -- state
         update_state()
         -- collide
-        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height"]]
         -- draw_correction
         obj_char[8] = 7
     end
@@ -6083,7 +6083,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
         -- state
         update_state()
         -- collide
-        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height"]]
         -- draw_correction
         obj_char[8] = 5
     end
@@ -6091,7 +6091,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
         -- state
         update_state()
         -- collide
-        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height"]]
         -- draw_correction
         obj_char[8] = 6
     end
@@ -6099,7 +6099,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
         -- state
         update_state()
         -- collide
-        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height"]]
         -- draw_correction
         obj_char[8] = 8
     end
@@ -6107,7 +6107,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_unc
         -- state
         update_state()
         -- collide
-        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height_state"]]
+        obj_char["hurtbox_table"] = hurtbox_data["RC"][obj_char["height"]]
         -- draw_correction
         obj_char[8] = 9
     end

@@ -88,14 +88,14 @@ dkjson.lua:31	n
  scenes/game_scene/_common/_anim.lua:1260	pushbox_data_other_side
  scenes/game_scene/_common/_anim.lua:1263	anchor_data_other_side
  scenes/game_scene/_common/_anim.lua:1264	VFX_spawn_anchor_pos_data_other_side
- scenes/game_scene/_common/_anim.lua:1267	sprite_sheet_state
+ scenes/game_scene/_common/_anim.lua:1267	sprite_sheet
  scenes/game_scene/_common/_anim.lua:1269	pushbox
  scenes/game_scene/_common/_anim.lua:1270	collision_ground_height_offset
  scenes/game_scene/_common/_anim.lua:1270	velocity
  scenes/game_scene/_common/_anim.lua:1271	function
  scenes/game_scene/_common/_anim.lua:1271	update_1f_15f_air
  scenes/game_scene/_common/_anim.lua:1367	VFX_spawn_anchor_pos_data
- scenes/game_scene/_common/_anim.lua:1698	sprite_sheet_state
+ scenes/game_scene/_common/_anim.lua:1698	sprite_sheet
  scenes/game_scene/_common/_anim.lua:1699	hurtbox_data
  scenes/game_scene/_common/_anim.lua:1699	pushbox_data
  scenes/game_scene/_common/_anim.lua:1700	anchor_data
@@ -147,7 +147,7 @@ dkjson.lua:31	n
  scenes/game_scene/_common/_anim.lua:3374	VFX_spawn_anchor_pos_data_other_side
  scenes/game_scene/_common/_anim.lua:3381	function
  scenes/game_scene/_common/_anim.lua:3493	VFX_spawn_anchor_pos_data_other_side
- scenes/game_scene/_common/_anim.lua:3639	height_state
+ scenes/game_scene/_common/_anim.lua:3639	height
  scenes/game_scene/_common/_anim.lua:3639	obj_stage_main
  scenes/game_scene/_common/_anim.lua:3639	res
  scenes/game_scene/_common/_anim.lua:3641	obj_camera
@@ -184,7 +184,7 @@ dkjson.lua:31	n
  scenes/game_scene/_common/common_functions.lua:486	pushbox_data
  scenes/game_scene/_common/common_functions.lua:487	anchor_data
  scenes/game_scene/_common/common_functions.lua:489	collision_ground_height_offset
- scenes/game_scene/_common/common_functions.lua:489	sprite_sheet_state
+ scenes/game_scene/_common/common_functions.lua:489	sprite_sheet
  scenes/game_scene/_common/common_functions.lua:799	hurt_side_input
  scenes/game_scene/_common/common_functions.lua:968	hurt_side_input
  scenes/game_scene/_common/common_functions.lua:1056	obj_camera

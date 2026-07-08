@@ -178,10 +178,10 @@ function load_game_scene_anim_stage()
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["length"] = 150
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["loop"] = false
 
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state = {}
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state["prop"] = "sprite_sheet_state"
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state["length"] = 150
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state["loop"] = false
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet = {}
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet["prop"] = "sprite_sheet"
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet["length"] = 150
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet["loop"] = false
 
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos = {}
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["prop"] = "anchor_pos"
@@ -405,11 +405,11 @@ function load_game_scene_stage_apply_wallbreak_start_init(hurt_side_obj_char,hit
     hurt_side_obj_char["state"] = "wallbreak_hurt"
     hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-265)
     if adv then
-        hurt_side_obj_char["sprite_sheet_state"] = "0_wallbreak_hurt_adv"
-        hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[hurt_side_obj_char["sprite_sheet_state"]]
+        hurt_side_obj_char["sprite_sheet"] = "0_wallbreak_hurt_adv"
+        hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[hurt_side_obj_char["sprite_sheet"]]
     else
-        hurt_side_obj_char["sprite_sheet_state"] = "0_wallbreak_hurt_non_adv"
-        hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[hurt_side_obj_char["sprite_sheet_state"]]
+        hurt_side_obj_char["sprite_sheet"] = "0_wallbreak_hurt_non_adv"
+        hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[hurt_side_obj_char["sprite_sheet"]]
     end
     hurt_side_obj_char["pushbox"] = {0,-100,120,200}
     load_game_scene_wallbreak_start_init_LP()
@@ -450,7 +450,7 @@ function load_game_scene_stage_apply_wallbreak_start_init(hurt_side_obj_char,hit
     init_point_linear_anim_with(hit_side_obj_char,anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x)
     init_point_linear_anim_with(hit_side_obj_char,anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y)
     init_frame_anim_with(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_frame)
-    init_frame_anim_with(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state)
+    init_frame_anim_with(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet)
     init_frame_anim_with(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos)
     -- hurt_side
     init_point_linear_anim_with(hurt_side_obj_char,anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity)
@@ -563,7 +563,7 @@ function update_game_scene_stage_wallbreak()
     point_linear_animator(hit_side_obj_char,anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x)
     point_linear_animator(hit_side_obj_char,anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y)
     frame_animator(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_frame)
-    frame_animator(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state)
+    frame_animator(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet)
     frame_animator(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos)
     -- wallbreak_objects
     point_linear_animator(obj_stage_game_scene_wallbreak_after_debris,anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity)
@@ -952,13 +952,13 @@ function load_game_scene_anim_point_linear_character_hit_side_wallbreak(hit_side
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["length"] = 150
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["loop"] = false
 
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state = {}
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state[0] = hit_side_obj_char["sprite_sheet_state"]
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state[105] = "0_wallbreak_hit"
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state[150] = "0_wallbreak_hit"
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state["prop"] = "sprite_sheet_state"
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state["length"] = 150
-    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet_state["loop"] = false
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet = {}
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet[0] = hit_side_obj_char["sprite_sheet"]
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet[105] = "0_wallbreak_hit"
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet[150] = "0_wallbreak_hit"
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet["prop"] = "sprite_sheet"
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet["length"] = 150
+    anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet["loop"] = false
 
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos = {}
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos[0] = hit_side_obj_char["anchor_pos"]
