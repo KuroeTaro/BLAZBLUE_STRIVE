@@ -56,36 +56,36 @@ function draw_char_select_scene_ease_in_40f_130f()
     draw_2d_image_sprite_batch(obj,image_sprite_sheet,tostring(obj[8]))
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     draw_2d_image(
-        obj_UI_char_select_scene_icon_select_L,
-        image_table_UI_char_select_scene_char_icon_alpha[obj_UI_char_select_scene_icon_select_L[8]]
+        obj_UI_char_select_scene_icon_select_left,
+        image_table_UI_char_select_scene_char_icon_alpha[obj_UI_char_select_scene_icon_select_left[8]]
     )
 
     if GAME_MODE ~= 0 then
         draw_2d_image(
-            obj_UI_char_select_scene_icon_select_R,
-            image_table_UI_char_select_scene_char_icon_alpha[obj_UI_char_select_scene_icon_select_R[8]]
+            obj_UI_char_select_scene_icon_select_right,
+            image_table_UI_char_select_scene_char_icon_alpha[obj_UI_char_select_scene_icon_select_right[8]]
         )
     end
     draw_char_select_scene_char_select_LR(1)
     draw_char_select_scene_char_select_LR(2)
 
     draw_2d_image(
-        obj_UI_char_select_scene_bar_mark_L,
+        obj_UI_char_select_scene_bar_mark_left,
         image_UI_char_select_scene_bar_mark
     )
 
     draw_2d_image(
-        obj_UI_char_select_scene_bar_mark_R,
+        obj_UI_char_select_scene_bar_mark_right,
         image_UI_char_select_scene_bar_mark
     )
 
     draw_2d_image(
-        obj_UI_char_select_scene_control_method_L,
+        obj_UI_char_select_scene_control_method_left,
         image_UI_char_select_scene_control_method_L
     )
 
     draw_2d_image(
-        obj_UI_char_select_scene_control_method_R,
+        obj_UI_char_select_scene_control_method_right,
         image_UI_char_select_scene_control_method_R
     )
 
@@ -125,14 +125,14 @@ function draw_char_select_scene_main()
     draw_2d_image_sprite_batch(obj,image_sprite_sheet,tostring(obj[8]))
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     draw_2d_image(
-        obj_UI_char_select_scene_icon_select_L,
-        image_table_UI_char_select_scene_char_icon_alpha[obj_UI_char_select_scene_icon_select_L[8]]
+        obj_UI_char_select_scene_icon_select_left,
+        image_table_UI_char_select_scene_char_icon_alpha[obj_UI_char_select_scene_icon_select_left[8]]
     )
 
     if GAME_MODE ~= 0 then
         draw_2d_image(
-            obj_UI_char_select_scene_icon_select_R,
-            image_table_UI_char_select_scene_char_icon_alpha[obj_UI_char_select_scene_icon_select_R[8]]
+            obj_UI_char_select_scene_icon_select_right,
+            image_table_UI_char_select_scene_char_icon_alpha[obj_UI_char_select_scene_icon_select_right[8]]
         )
     end
 
@@ -140,22 +140,22 @@ function draw_char_select_scene_main()
     draw_char_select_scene_char_select_LR(2)
 
     draw_2d_image(
-        obj_UI_char_select_scene_bar_mark_L,
+        obj_UI_char_select_scene_bar_mark_left,
         image_UI_char_select_scene_bar_mark
     )
 
     draw_2d_image(
-        obj_UI_char_select_scene_bar_mark_R,
+        obj_UI_char_select_scene_bar_mark_right,
         image_UI_char_select_scene_bar_mark
     )
 
     draw_2d_image(
-        obj_UI_char_select_scene_control_method_L,
+        obj_UI_char_select_scene_control_method_left,
         image_UI_char_select_scene_control_method_L
     )
 
     draw_2d_image(
-        obj_UI_char_select_scene_control_method_R,
+        obj_UI_char_select_scene_control_method_right,
         image_UI_char_select_scene_control_method_R
     )
 
@@ -257,13 +257,13 @@ function draw_char_select_scene_char_select_LR(id)
     local image_UI_char_select_scene_char_select_alpha = nil
     if id == 1 then
         obj_UI_char_select_scene_char_select = obj_UI_char_select_scene_char_select_left
-        obj_UI_char_select_scene_char_select_text = obj_UI_char_select_scene_char_select_left_text
-        obj_UI_char_select_scene_char_select_char = obj_UI_char_select_scene_char_select_left_char
+        obj_UI_char_select_scene_char_select_text = obj_UI_char_select_scene_char_select_text_left
+        obj_UI_char_select_scene_char_select_char = obj_UI_char_select_scene_char_select_char_left
         image_UI_char_select_scene_char_select_alpha = image_UI_char_select_scene_char_select_left_alpha
     else
         obj_UI_char_select_scene_char_select = obj_UI_char_select_scene_char_select_right
-        obj_UI_char_select_scene_char_select_text = obj_UI_char_select_scene_char_select_right_text
-        obj_UI_char_select_scene_char_select_char = obj_UI_char_select_scene_char_select_right_char
+        obj_UI_char_select_scene_char_select_text = obj_UI_char_select_scene_char_select_text_right
+        obj_UI_char_select_scene_char_select_char = obj_UI_char_select_scene_char_select_char_right
         image_UI_char_select_scene_char_select_alpha = image_UI_char_select_scene_char_select_right_alpha
     end
     

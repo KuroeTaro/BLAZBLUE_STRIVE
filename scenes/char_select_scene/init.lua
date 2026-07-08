@@ -46,29 +46,29 @@ function load_char_select_scene_obj()
     obj_UI_char_select_scene_glow["alpha_points"]["LCT"] = {0,0,0,0,0,0,0,0,0,0,0,0}
     obj_UI_char_select_scene_glow["alpha_points"]["LCD"] = {0,0,0,0,0,0,0,0,0,0,0,0}
     
-    obj_UI_char_select_scene_bar_mark_L = {55,509,nil,0,1,1,0,0}
-    obj_UI_char_select_scene_bar_mark_L["FCT"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_bar_mark_L["LCT"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_bar_mark_L["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_bar_mark_L["state"] = "idle"
+    obj_UI_char_select_scene_bar_mark_left = {55,509,nil,0,1,1,0,0}
+    obj_UI_char_select_scene_bar_mark_left["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_bar_mark_left["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_bar_mark_left["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_bar_mark_left["state"] = "idle"
     
-    obj_UI_char_select_scene_bar_mark_R = {1545,739,nil,0,1,1,0,0}
-    obj_UI_char_select_scene_bar_mark_R["FCT"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_bar_mark_R["LCT"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_bar_mark_R["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_bar_mark_R["state"] = "idle"
+    obj_UI_char_select_scene_bar_mark_right = {1545,739,nil,0,1,1,0,0}
+    obj_UI_char_select_scene_bar_mark_right["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_bar_mark_right["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_bar_mark_right["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_bar_mark_right["state"] = "idle"
     
-    obj_UI_char_select_scene_control_method_L = {90,470,nil,0,1,1,0,0}
-    obj_UI_char_select_scene_control_method_L["FCT"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_control_method_L["LCT"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_control_method_L["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_control_method_L["state"] = "default"
+    obj_UI_char_select_scene_control_method_left = {90,470,nil,0,1,1,0,0}
+    obj_UI_char_select_scene_control_method_left["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_control_method_left["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_control_method_left["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_control_method_left["state"] = "default"
     
-    obj_UI_char_select_scene_control_method_R = {1236,700,nil,0,1,1,0,0}
-    obj_UI_char_select_scene_control_method_R["FCT"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_control_method_R["LCT"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_control_method_R["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_control_method_R["state"] = "default"
+    obj_UI_char_select_scene_control_method_right = {1236,700,nil,0,1,1,0,0}
+    obj_UI_char_select_scene_control_method_right["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_control_method_right["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_control_method_right["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_control_method_right["state"] = "default"
 
     obj_UI_char_select_scene_timer = {1321,815,nil,0,1,1,0,0}
     obj_UI_char_select_scene_timer["FCT"] = {0,0,0,0,0,0,0,0}
@@ -84,17 +84,17 @@ function load_char_select_scene_obj()
     obj_UI_char_select_scene_char_select_left["select_state"] = "idle"
     obj_UI_char_select_scene_char_select_left["ease_state"] = "ease_in"
     
-    obj_UI_char_select_scene_char_select_left_char = {-200,-52,nil,1,1,1,0,0}
-    obj_UI_char_select_scene_char_select_left_char["FCT"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_char_select_left_char["LCT"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_char_select_left_char["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_char_select_left_char["state"] = "default"
+    obj_UI_char_select_scene_char_select_char_left = {-200,-52,nil,1,1,1,0,0}
+    obj_UI_char_select_scene_char_select_char_left["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_char_select_char_left["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_char_select_char_left["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_char_select_char_left["state"] = "default"
     
-    obj_UI_char_select_scene_char_select_left_text = {375,-179,nil,1,1,1,0.192,0}
-    obj_UI_char_select_scene_char_select_left_text["FCT"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_char_select_left_text["LCT"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_char_select_left_text["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_char_select_left_text["state"] = "default"
+    obj_UI_char_select_scene_char_select_text_left = {375,-179,nil,1,1,1,0.192,0}
+    obj_UI_char_select_scene_char_select_text_left["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_char_select_text_left["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_char_select_text_left["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_char_select_text_left["state"] = "default"
     
     obj_UI_char_select_scene_char_select_right = {-25,335,nil,0,1,1,0,5}
     obj_UI_char_select_scene_char_select_right["FCT"] = {0,0,0,0,0,0,0,0}
@@ -103,29 +103,29 @@ function load_char_select_scene_obj()
     obj_UI_char_select_scene_char_select_right["select_state"] = "idle"
     obj_UI_char_select_scene_char_select_right["ease_state"] = "ease_in"
     
-    obj_UI_char_select_scene_char_select_right_char = {610,-12,nil,1,1,1,0,0}
-    obj_UI_char_select_scene_char_select_right_char["FCT"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_char_select_right_char["LCT"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_char_select_right_char["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_char_select_right_char["state"] = "default"
+    obj_UI_char_select_scene_char_select_char_right = {610,-12,nil,1,1,1,0,0}
+    obj_UI_char_select_scene_char_select_char_right["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_char_select_char_right["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_char_select_char_right["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_char_select_char_right["state"] = "default"
     
-    obj_UI_char_select_scene_char_select_right_text = {1291,-36,nil,1,1,1,0.436,0}
-    obj_UI_char_select_scene_char_select_right_text["FCT"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_char_select_right_text["LCT"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_char_select_right_text["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_char_select_right_text["state"] = "default"
+    obj_UI_char_select_scene_char_select_text_right = {1291,-36,nil,1,1,1,0.436,0}
+    obj_UI_char_select_scene_char_select_text_right["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_char_select_text_right["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_char_select_text_right["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_char_select_text_right["state"] = "default"
     
-    obj_UI_char_select_scene_icon_select_L = {603,349,nil,0,1,1,0,4}
-    obj_UI_char_select_scene_icon_select_L["FCT"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_icon_select_L["LCT"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_icon_select_L["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_icon_select_L["state"] = "default"
+    obj_UI_char_select_scene_icon_select_left = {603,349,nil,0,1,1,0,4}
+    obj_UI_char_select_scene_icon_select_left["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_icon_select_left["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_icon_select_left["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_icon_select_left["state"] = "default"
     
-    obj_UI_char_select_scene_icon_select_R = {760,166,nil,0,1,1,0,5}
-    obj_UI_char_select_scene_icon_select_R["FCT"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_icon_select_R["LCT"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_icon_select_R["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_UI_char_select_scene_icon_select_R["state"] = "default"
+    obj_UI_char_select_scene_icon_select_right = {760,166,nil,0,1,1,0,5}
+    obj_UI_char_select_scene_icon_select_right["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_icon_select_right["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_icon_select_right["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_UI_char_select_scene_icon_select_right["state"] = "default"
 end
 function load_char_select_scene_anim()
     -- black solid 闪出

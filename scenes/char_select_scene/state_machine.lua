@@ -50,22 +50,31 @@ function state_machine_UI_char_select_scene_char_select(input_id)
     local obj_icon_cover = nil
     local obj_bar_mark = nil
     local obj_control_method = nil
+    local ui_mapping = {
+        ["L"] = {
+            ["obj"]            = obj_UI_char_select_scene_char_select_left,
+            ["char"]           = obj_UI_char_select_scene_char_select_char_left,
+            ["text"]           = obj_UI_char_select_scene_char_select_text_left,
+            ["icon_cover"]     = obj_UI_char_select_scene_icon_select_left,
+            ["bar_mark"]       = obj_UI_char_select_scene_bar_mark_left,
+            ["control_method"] = obj_UI_char_select_scene_control_method_left
+        },
+        ["R"] = { -- 假设非 L 即为 R
+            ["obj"]            = obj_UI_char_select_scene_char_select_right,
+            ["char"]           = obj_UI_char_select_scene_char_select_char_right,
+            ["text"]           = obj_UI_char_select_scene_char_select_text_right,
+            ["icon_cover"]     = obj_UI_char_select_scene_icon_select_right,
+            ["bar_mark"]       = obj_UI_char_select_scene_bar_mark_right,
+            ["control_method"] = obj_UI_char_select_scene_control_method_right
+        }
+    }
 
-    if input_id == "L" then
-        obj = obj_UI_char_select_scene_char_select_left
-        obj_char = obj_UI_char_select_scene_char_select_left_char
-        obj_text = obj_UI_char_select_scene_char_select_left_text
-        obj_icon_cover = obj_UI_char_select_scene_icon_select_L
-        obj_bar_mark = obj_UI_char_select_scene_bar_mark_L
-        obj_control_method = obj_UI_char_select_scene_control_method_L
-    else
-        obj = obj_UI_char_select_scene_char_select_right
-        obj_char = obj_UI_char_select_scene_char_select_right_char
-        obj_text = obj_UI_char_select_scene_char_select_right_text
-        obj_icon_cover = obj_UI_char_select_scene_icon_select_R
-        obj_bar_mark = obj_UI_char_select_scene_bar_mark_R
-        obj_control_method = obj_UI_char_select_scene_control_method_R
-    end
+    obj = ui_mapping[input_id]["obj"]
+    obj_char = ui_mapping[input_id]["char"]
+    obj_text = ui_mapping[input_id]["text"]
+    obj_icon_cover = ui_mapping[input_id]["icon_cover"]
+    obj_bar_mark = ui_mapping[input_id]["bar_mark"]
+    obj_control_method = ui_mapping[input_id]["control_method"]
 
     local switch = {
         ["idle"] = function()
@@ -432,11 +441,8 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_
                 play_obj_audio(audio_SFX_char_select_scene_up_2)
                 obj_bar_mark["state"] = "up_twitch"
                 if CONTROL_METHOD[input_id] == 1 then
-                    if input_id == "L" then
-                        obj_bar_mark[2] = 469
-                    else
-                        obj_bar_mark[2] = 699
-                    end
+                    local y_offset_table = {["L"] = 469, ["R"] = 699}
+                    obj_bar_mark[2] = y_offset_table[input_id]
                     CONTROL_METHOD[input_id] = 0
                 end
                 init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)
@@ -447,11 +453,8 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_
                 play_obj_audio(audio_SFX_char_select_scene_down_2)
                 obj_bar_mark["state"] = "down_twitch"
                 if CONTROL_METHOD[input_id] == 0 then
-                    if input_id == "L" then
-                        obj_bar_mark[2] = 509
-                    else
-                        obj_bar_mark[2] = 739
-                    end
+                    local y_offset_table = {["L"] = 509, ["R"] = 739}
+                    obj_bar_mark[2] = y_offset_table[input_id]
                     CONTROL_METHOD[input_id] = 1
                 end
                 init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
@@ -467,11 +470,8 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_
                 play_obj_audio(audio_SFX_char_select_scene_up_2)
                 obj_bar_mark["state"] = "up_twitch"
                 if CONTROL_METHOD[input_id] == 1 then
-                    if input_id == "L" then
-                        obj_bar_mark[2] = 469
-                    else
-                        obj_bar_mark[2] = 699
-                    end
+                    local y_offset_table = {["L"] = 469, ["R"] = 699}
+                    obj_bar_mark[2] = y_offset_table[input_id]
                     CONTROL_METHOD[input_id] = 0
                 end
                 init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)
@@ -482,11 +482,8 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_
                 play_obj_audio(audio_SFX_char_select_scene_down_2)
                 obj_bar_mark["state"] = "down_twitch"
                 if CONTROL_METHOD[input_id] == 0 then
-                    if input_id == "L" then
-                        obj_bar_mark[2] = 509
-                    else
-                        obj_bar_mark[2] = 739
-                    end
+                    local y_offset_table = {["L"] = 509, ["R"] = 739}
+                    obj_bar_mark[2] = y_offset_table[input_id]
                     CONTROL_METHOD[input_id] = 1
                 end
                 init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
@@ -502,11 +499,8 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_
                 play_obj_audio(audio_SFX_char_select_scene_up_2)
                 obj_bar_mark["state"] = "up_twitch"
                 if CONTROL_METHOD[input_id] == 1 then
-                    if input_id == "L" then
-                        obj_bar_mark[2] = 469
-                    else
-                        obj_bar_mark[2] = 699
-                    end
+                    local y_offset_table = {["L"] = 469, ["R"] = 699}
+                    obj_bar_mark[2] = y_offset_table[input_id]
                     CONTROL_METHOD[input_id] = 0
                 end
                 init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)
@@ -517,11 +511,8 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_
                 play_obj_audio(audio_SFX_char_select_scene_down_2)
                 obj_bar_mark["state"] = "down_twitch"
                 if CONTROL_METHOD[input_id] == 0 then
-                    if input_id == "L" then
-                        obj_bar_mark[2] = 509
-                    else
-                        obj_bar_mark[2] = 739
-                    end
+                    local y_offset_table = {["L"] = 509, ["R"] = 739}
+                    obj_bar_mark[2] = y_offset_table[input_id]
                     CONTROL_METHOD[input_id] = 1
                 end
                 init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
@@ -535,11 +526,11 @@ end
 -- train
 function state_machine_UI_char_select_scene_char_select_train_dummy()
     local obj = obj_UI_char_select_scene_char_select_right
-    local obj_char = obj_UI_char_select_scene_char_select_right_char
-    local obj_text = obj_UI_char_select_scene_char_select_right_text
-    local obj_icon_cover = obj_UI_char_select_scene_icon_select_L
-    local obj_bar_mark = obj_UI_char_select_scene_bar_mark_R
-    local obj_control_method = obj_UI_char_select_scene_control_method_R
+    local obj_char = obj_UI_char_select_scene_char_select_char_right
+    local obj_text = obj_UI_char_select_scene_char_select_text_right
+    local obj_icon_cover = obj_UI_char_select_scene_icon_select_left
+    local obj_bar_mark = obj_UI_char_select_scene_bar_mark_right
+    local obj_control_method = obj_UI_char_select_scene_control_method_right
 
     local switch = {
         ["idle"] = function()

@@ -683,7 +683,7 @@ end
 
 function common_game_scene_game_speed_load_application(
     obj_char,application_table
-)    
+)
     for i = 1,6 do
         if application_table[i] ~= nil then
             obj_char["game_speed_application"][i] = application_table[i]
