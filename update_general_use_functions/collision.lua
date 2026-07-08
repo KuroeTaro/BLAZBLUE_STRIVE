@@ -112,22 +112,38 @@ function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_R
         })
         local switch = {
             ["1111"] = function()
-                local branch_flag = -1
-                if box_L[1] == box_R[1] then
-                    if math.random() < 0.5 then
-                        branch_flag = 1
-                    else
-                        branch_flag = 0
-                    end
-                end
-                if box_L[1] < box_R[1] or branch_flag == 1 then
+                if box_L[1] < box_R[1] then
                     local mid = (box_L[1]+box_L[3]/2+box_R[1]-box_R[3]/2)/2
                     obj_char_LP["x"] = mid-box_L[3]/2
                     obj_char_RP["x"] = mid+box_R[3]/2
-                elseif box_L[1] > box_R[1] or branch_flag == 0 then
+                    return
+                elseif box_L[1] > box_R[1] then
                     local mid = (box_R[1]+box_R[3]/2+box_L[1]-box_L[3]/2)/2
                     obj_char_LP["x"] = mid+box_L[3]/2
                     obj_char_RP["x"] = mid-box_R[3]/2
+                    return
+                end
+                if obj_char_LP[5] > 0 and obj_char_RP[5] < 0 then
+                    local mid = (box_L[1]+box_L[3]/2+box_R[1]-box_R[3]/2)/2
+                    obj_char_LP["x"] = mid-box_L[3]/2
+                    obj_char_RP["x"] = mid+box_R[3]/2
+                    return
+                elseif obj_char_RP[5] > 0 and obj_char_LP[5] < 0 then
+                    local mid = (box_R[1]+box_R[3]/2+box_L[1]-box_L[3]/2)/2
+                    obj_char_LP["x"] = mid+box_L[3]/2
+                    obj_char_RP["x"] = mid-box_R[3]/2
+                    return
+                end
+                if obj_char_LP[5] > 0 and obj_char_RP[5] > 0 then
+                    local mid = (box_L[1]+box_L[3]/2+box_R[1]-box_R[3]/2)/2
+                    obj_char_LP["x"] = mid-box_L[3]/2
+                    obj_char_RP["x"] = mid+box_R[3]/2
+                    return
+                elseif obj_char_RP[5] < 0 and obj_char_LP[5] < 0 then
+                    local mid = (box_R[1]+box_R[3]/2+box_L[1]-box_L[3]/2)/2
+                    obj_char_LP["x"] = mid+box_L[3]/2
+                    obj_char_RP["x"] = mid-box_R[3]/2
+                    return
                 end
             end,
             ["0111"] = function()
@@ -462,19 +478,11 @@ end
     --         })
     --         local switch = {
     --             ["1111"] = function()
-    --                 local branch_flag = -1
-    --                 if capsule_L[1] == capsule_R[1] then
-    --                     if math.random() < 0.5 then
-    --                         branch_flag = 1
-    --                     else
-    --                         branch_flag = 0
-    --                     end
-    --                 end
-    --                 if capsule_L[1] < capsule_R[1] or branch_flag == 1 then
+    --                 if capsule_L[1] < capsule_R[1] then
     --                     local mid = (box_L[1]+box_L[3]/2+box_R[1]-box_R[3]/2)/2
     --                     obj_char_LP["x"] = mid-distance/2
     --                     obj_char_RP["x"] = mid+distance/2
-    --                 elseif capsule_L[1] > capsule_R[1] or branch_flag == 0 then
+    --                 else
     --                     local mid = (box_R[1]+box_R[3]/2+box_L[1]-box_L[3]/2)/2
     --                     obj_char_LP["x"] = mid+distance/2
     --                     obj_char_RP["x"] = mid-distance/2
