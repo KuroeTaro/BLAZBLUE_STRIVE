@@ -641,7 +641,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
         "0_general_hurt_launched_high",
         "air","knockdown_recovery",
         30,5,1.00,
-        0,0.55,1.00,
+        -2.5,0.5,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             obj_char,
@@ -667,7 +667,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
         "0_general_hurt_launched_high",
         "air","knockdown_recovery",
         30,5,1.00,
-        0,0.55,1.00,
+        -2.5,0.5,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             obj_char,
@@ -693,7 +693,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
         "0_general_hurt_launched_high",
         "air","knockdown_recovery",
         30,5,1.00,
-        0,0.55,1.00,
+        -2.5,1.0,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             obj_char,
@@ -719,7 +719,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
         "0_general_hurt_launched_high",
         "air","knockdown_recovery",
         30,5,1.00,
-        0,0.55,1.00,
+        -2.5,1.0,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             obj_char,
@@ -736,7 +736,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
         "0_general_hurt_launched_high",
         "air","knockdown_recovery",
         30,5,1.00,
-        0,0.55,1.00,
+        -2.5,1.0,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             obj_char,
