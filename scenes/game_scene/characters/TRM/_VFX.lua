@@ -1,12 +1,8 @@
 function insert_VFX_game_scene_char_TRM_2P_move(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
-    local image_sprite_sheet = nil
     local side = obj_char["player_side"]
-    if side == "L" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["2P_move_VFX"]
-    elseif side == "R" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["2P_move_VFX"]
-    end 
+    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
+    local image_sprite_sheet = image_sprite_sheet_table["2P_move_VFX"]
 
     obj["life"] = 8
     obj[1] = obj_char["x"] + obj_char[5]*(35)
@@ -58,13 +54,9 @@ function insert_VFX_game_scene_char_TRM_2P_move(obj_char)
 end
 function insert_VFX_game_scene_char_TRM_6P_move(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
-    local image_sprite_sheet = nil
     local side = obj_char["player_side"]
-    if side == "L" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["6P_move_VFX"]
-    elseif side == "R" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["6P_move_VFX"]
-    end 
+    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
+    local image_sprite_sheet = image_sprite_sheet_table["6P_move_VFX"]
 
     obj["life"] = 15
     obj[1] = obj_char["x"] + obj_char[5]*(-294)
@@ -121,13 +113,9 @@ function insert_VFX_game_scene_char_TRM_6P_move(obj_char)
 end
 function insert_VFX_game_scene_char_TRM_5P_move(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
-    local image_sprite_sheet = nil
     local side = obj_char["player_side"]
-    if side == "L" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["5P_move_VFX"]
-    elseif side == "R" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["5P_move_VFX"]
-    end 
+    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
+    local image_sprite_sheet = image_sprite_sheet_table["5P_move_VFX"]
 
     obj["life"] = 8
     obj[1] = obj_char["x"] + obj_char[5]*(56)
@@ -179,13 +167,9 @@ function insert_VFX_game_scene_char_TRM_5P_move(obj_char)
 end
 function insert_VFX_game_scene_char_TRM_2S_move(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
-    local image_sprite_sheet = nil
     local side = obj_char["player_side"]
-    if side == "L" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["2S_move_VFX"]
-    elseif side == "R" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["2S_move_VFX"]
-    end 
+    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
+    local image_sprite_sheet = image_sprite_sheet_table["2S_move_VFX"]
 
     obj["life"] = 6
     obj[1] = obj_char["x"] + obj_char[5]*(115)
@@ -237,13 +221,9 @@ function insert_VFX_game_scene_char_TRM_2S_move(obj_char)
 end
 function insert_VFX_game_scene_char_TRM_6S_move(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
-    local image_sprite_sheet = nil
     local side = obj_char["player_side"]
-    if side == "L" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["6S_move_VFX"]
-    elseif side == "R" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["6S_move_VFX"]
-    end 
+    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
+    local image_sprite_sheet = image_sprite_sheet_table["6S_move_VFX"]
 
     obj["life"] = 36
     obj[1] = obj_char["x"] + obj_char[5]*(-430)
@@ -302,13 +282,9 @@ function insert_VFX_game_scene_char_TRM_6S_move(obj_char)
 end
 function insert_VFX_game_scene_char_TRM_cS_move(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
-    local image_sprite_sheet = nil
     local side = obj_char["player_side"]
-    if side == "L" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["cS_move_VFX"]
-    elseif side == "R" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["cS_move_VFX"]
-    end 
+    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
+    local image_sprite_sheet = image_sprite_sheet_table["cS_move_VFX"]
 
     obj["life"] = 19
     obj[1] = obj_char["x"] + obj_char[5]*(140)
@@ -365,8 +341,9 @@ function insert_VFX_game_scene_char_TRM_cS_move(obj_char)
 end
 function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_switch(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
-    local image_sprite_sheet = nil
     local side = obj_char["player_side"]
+    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
+    local image_sprite_sheet = image_sprite_sheet_table["5H_switch_move_VFX"]
     local height_y_offset = {
         ["stand"] = -730,
         ["crouch"] = -530,
@@ -374,11 +351,6 @@ function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_switch(obj_char)
         ["OTG"] = -230
     }
     obj["y_offset"] = height_y_offset[obj_char["height"]]
-    if side == "L" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["5H_switch_move_VFX"]
-    elseif side == "R" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["5H_switch_move_VFX"]
-    end 
 
     obj["life"] = 30
     obj[1] = obj_char["x"] + obj_char[5]*(-370)
@@ -434,8 +406,9 @@ end
 function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_shot_oroboros_blast(obj_char)
     -- x y z opacity sx sy r f
     local obj = {0,0,0,1,1,1,0,0}
-    local image_sprite_sheet = nil
     local side = obj_char["player_side"]
+    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
+    local image_sprite_sheet = image_sprite_sheet_table["5H_shot_oroboros_blast_move_VFX"]
     local oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
     local rectile_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1]+160,obj_char["shot_sys_reticle_stage_pos_current"][2]+160}
     local center_dx = 35
@@ -443,11 +416,6 @@ function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_shot_oroboros_blast
     local center_r = character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,rectile_pos)
     local rot_dx = center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.cos(center_r) - center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.sin(center_r)
     local rot_dy = center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.sin(center_r) + center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.cos(center_r)
-    if side == "L" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["5H_shot_oroboros_blast_move_VFX"]
-    elseif side == "R" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["5H_shot_oroboros_blast_move_VFX"]
-    end 
 
     obj["life"] = 15
     obj[1] = obj_char["shot_sys_oroboros_ease_current"][1] + rot_dx
@@ -572,13 +540,9 @@ function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(obj
 end
 function insert_VFX_game_scene_char_TRM_5Launcher_move_slash(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
-    local image_sprite_sheet = nil
     local side = obj_char["player_side"]
-    if side == "L" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["5Launcher_move_VFX"]
-    elseif side == "R" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["5Launcher_move_VFX"]
-    end 
+    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
+    local image_sprite_sheet = image_sprite_sheet_table["5Launcher_move_VFX"]
 
     obj["life"] = 3
     obj[1] = obj_char["x"] + obj_char[5]*(-285)
@@ -629,13 +593,9 @@ function insert_VFX_game_scene_char_TRM_5Launcher_move_slash(obj_char)
 end
 function insert_VFX_game_scene_char_TRM_5Launcher_move_glow(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
-    local image_sprite_sheet = nil
     local side = obj_char["player_side"]
-    if side == "L" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["5Launcher_glow_move_VFX"]
-    elseif side == "R" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["5Launcher_glow_move_VFX"]
-    end 
+    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
+    local image_sprite_sheet = image_sprite_sheet_table["5Launcher_glow_move_VFX"]
 
     obj["life"] = 18
     obj[1] = obj_char["x"] + obj_char[5]*(-380)
@@ -690,13 +650,9 @@ end
 
 function insert_VFX_game_scene_char_TRM_jS_move(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
-    local image_sprite_sheet = nil
     local side = obj_char["player_side"]
-    if side == "L" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["jS_move_VFX"]
-    elseif side == "R" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["jS_move_VFX"]
-    end 
+    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
+    local image_sprite_sheet = image_sprite_sheet_table["jS_move_VFX"]
 
     obj["life"] = 13
     obj[1] = obj_char["x"] + obj_char[5]*(-160)
@@ -761,13 +717,9 @@ end
 
 function insert_VFX_game_scene_char_TRM_6SP_P_curse_ball_spawner(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
-    local image_sprite_sheet = nil
     local side = obj_char["player_side"]
-    if side == "L" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["6SP_P_curse_ball_spawner_move_VFX"]
-    elseif side == "R" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["6SP_P_curse_ball_spawner_move_VFX"]
-    end 
+    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
+    local image_sprite_sheet = image_sprite_sheet_table["6SP_P_curse_ball_spawner_move_VFX"]
 
     obj["life"] = 9
     obj[1] = obj_char["x"] + obj_char[5]*(180)
@@ -850,13 +802,9 @@ function insert_VFX_game_scene_char_TRM_6SP_P_curse_ball_spawner(obj_char)
 end
 function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
-    local image_sprite_sheet = nil
     local side = obj_char["player_side"]
-    if side == "L" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["6SP_P_curse_ball_spawn_halo_move_VFX"]
-    elseif side == "R" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["6SP_P_curse_ball_spawn_halo_move_VFX"]
-    end 
+    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
+    local image_sprite_sheet = image_sprite_sheet_table["6SP_P_curse_ball_spawn_halo_move_VFX"]
 
     obj["life"] = 5
     obj[1] = obj_char["x"] + obj_char[5]*(-72.5)
@@ -931,16 +879,12 @@ end
 function insert_VFX_game_scene_char_TRM_6SP_P_arua(obj_char)
     local obj = {0,0,0,0.75,0,0,0,0}
     local side = obj_char["player_side"]
+    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
+    local image_sprite_sheet = image_sprite_sheet_table["6SP_P_arua_move_VFX"]
     local obj_camera = obj_stage_game_scene_camera
     local obj_char_other_side = common_game_scene_change_character(side)
     local shot_sys_curse_force_off_state = obj_char["shot_sys_curse_force_off_state"]
-    local image_sprite_sheet_table = nil
-    if side == "L" then
-        image_sprite_sheet_table = image_sprite_sheet_VFX_game_scene_LP
-    elseif side == "R" then
-        image_sprite_sheet_table = image_sprite_sheet_VFX_game_scene_RP
-    end
-    local image_sprite_sheet = image_sprite_sheet_table["6SP_P_arua_move_VFX"]
+
     if obj_char_other_side["height"] == "air" then
         obj["y_offset"] = 375 + obj_char_other_side["pushbox"][4]/4*3
     elseif obj_char_other_side["height"] == "wallstick" then
@@ -1054,13 +998,9 @@ end
 
 function insert_VFX_game_scene_char_TRM_6SP_S_move(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
-    local image_sprite_sheet = nil
     local side = obj_char["player_side"]
-    if side == "L" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP["6SP_S_move_VFX"]
-    elseif side == "R" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP["6SP_S_move_VFX"]
-    end 
+    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
+    local image_sprite_sheet = image_sprite_sheet_table["6SP_S_move_VFX"]
 
     obj["life"] = 21
     obj[1] = obj_char["x"] + obj_char[5]*(-63)

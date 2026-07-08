@@ -59,84 +59,97 @@ function common_game_scene_anim_0_update_function_unwallstick(obj_char)
 end
 
 function common_game_scene_get_SFX_table(side)
-    if side == "L" then
-        return audio_SFX_game_scene_LP
-    elseif side == "R" then
-        return audio_SFX_game_scene_RP
-    end
+    local side_table = {
+        ["L"] = audio_SFX_game_scene_LP,
+        ["R"] = audio_SFX_game_scene_RP
+    }
+    return side_table[side]
 end
 function common_game_scene_get_pushbox(side)
-    if side == "L" then
-        return obj_pushboxs_data_game_scene_char_LP
-    elseif side == "R" then
-        return obj_pushboxs_data_game_scene_char_RP
-    end
+    local side_table = {
+        ["L"] = obj_pushboxs_data_game_scene_char_LP,
+        ["R"] = obj_pushboxs_data_game_scene_char_RP
+    }
+    return side_table[side]
 end
 function common_game_scene_get_hurtbox(side)
-    if side == "L" then
-        return obj_hurtboxs_data_game_scene_char_LP
-    elseif side == "R" then
-        return obj_hurtboxs_data_game_scene_char_RP
-    end
+    local side_table = {
+        ["L"] = obj_hurtboxs_data_game_scene_char_LP,
+        ["R"] = obj_hurtboxs_data_game_scene_char_RP
+    }
+    return side_table[side]
 end
 function common_game_scene_get_anchor(side)
-    if side == "L" then
-        return obj_anchor_data_game_scene_char_LP
-    elseif side == "R" then
-        return obj_anchor_data_game_scene_char_RP
-    end
+    local side_table = {
+        ["L"] = obj_anchor_data_game_scene_char_LP,
+        ["R"] = obj_anchor_data_game_scene_char_RP
+    }
+    return side_table[side]
 end
 function common_game_scene_get_VFX_spawn_anchor_pos(side)
-    if side == "L" then
-        return obj_VFX_spawn_anchor_pos_data_game_scene_char_LP
-    elseif side == "R" then
-        return obj_VFX_spawn_anchor_pos_data_game_scene_char_RP
-    end
+    local side_table = {
+        ["L"] = obj_VFX_spawn_anchor_pos_data_game_scene_char_LP,
+        ["R"] = obj_VFX_spawn_anchor_pos_data_game_scene_char_RP
+    }
+    return side_table[side]
 end
-function common_game_scene_get_image_sprite_sheet_table(side)
-    if side == "L" then
-        return image_sprite_sheet_table_char_game_scene_LP
-    elseif side == "R" then
-        return image_sprite_sheet_table_char_game_scene_RP
-    end
+function common_game_scene_get_overdrive_badge_image_sprite_sheet_table(side)
+    local side_table = {
+        ["L"] = image_sprite_sheet_VFX_game_scene_LP_overdrive_badge,
+        ["R"] = image_sprite_sheet_VFX_game_scene_RP_overdrive_badge
+    }
+    return side_table[side]
+end
+function common_game_scene_get_projectile_sprite_sheet_table(side)
+    local side_table = {
+        ["L"] = image_sprite_sheet_table_projectile_game_scene_LP,
+        ["R"] = image_sprite_sheet_table_projectile_game_scene_RP
+    }
+    return side_table[side]
+end
+function common_game_scene_get_VFX_sprite_sheet_table(side)
+    local side_table = {
+        ["L"] = image_sprite_sheet_table_VFX_game_scene_LP,
+        ["R"] = image_sprite_sheet_table_VFX_game_scene_RP
+    }
+    return side_table[side]
 end
 function common_game_scene_get_input_sys_cache_state_machine(side)
-    if side == "L" then
-        return state_machine_char_game_scene_char_LP_input_sys_cache
-    elseif side == "R" then
-        return state_machine_char_game_scene_char_RP_input_sys_cache
-    end
+    local side_table = {
+        ["L"] = state_machine_char_game_scene_char_LP_input_sys_cache,
+        ["R"] = state_machine_char_game_scene_char_RP_input_sys_cache
+    }
+    return side_table[side]
 end
 function common_game_scene_get_input_sys_cache_init(side)
-    if side == "L" then
-        return init_input_sys_cache_LP
-    elseif side == "R" then
-        return init_input_sys_cache_RP
-    end
+    local side_table = {
+        ["L"] = init_input_sys_cache_LP,
+        ["R"] = init_input_sys_cache_RP
+    }
+    return side_table[side]
 end
 
-function common_game_scene_set_input_sys_cache_init(obj_char)
-    local side = obj_char["player_side"]
-    if side == "L" then
-        init_input_sys_cache_LP(obj_char)
-    elseif side == "R" then
-        init_input_sys_cache_RP(obj_char)
-    end
+function common_game_scene_set_input_sys_cache_init(side)
+    local side_table = {
+        ["L"] = init_input_sys_cache_LP,
+        ["R"] = init_input_sys_cache_RP
+    }
+    return side_table[side]
 end
 
 function common_game_scene_get_input_sys_cache_negative_edge_state_machine(side)
-    if side == "L" then
-        return state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge
-    elseif side == "R" then
-        return state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge
-    end
+    local side_table = {
+        ["L"] = state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge,
+        ["R"] = state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge
+    }
+    return side_table[side]
 end
 function common_game_scene_get_input_sys_cache_negative_edge_init(side)
-    if side == "L" then
-        return init_input_sys_cache_negative_edge_LP
-    elseif side == "R" then
-        return init_input_sys_cache_negative_edge_RP
-    end
+    local side_table = {
+        ["L"] = init_input_sys_cache_negative_edge_LP,
+        ["R"] = init_input_sys_cache_negative_edge_RP
+    }
+    return side_table[side]
 end
 function common_update_game_scene_input_direction(obj_char)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
@@ -174,46 +187,46 @@ function common_game_scene_char_enclose_heat_gain(obj_char)
 end
 
 function common_game_scene_change_character(side)
-    if side == "L" then
-        return obj_char_game_scene_char_RP
-    elseif side == "R" then
-        return obj_char_game_scene_char_LP
-    end
+    local side_table = {
+        ["L"] = obj_char_game_scene_char_RP,
+        ["R"] = obj_char_game_scene_char_LP
+    }
+    return side_table[side]
 end
 function common_game_scene_change_character_pushbox(side)
-    if side == "L" then
-        return obj_pushboxs_data_game_scene_char_RP
-    elseif side == "R" then
-        return obj_pushboxs_data_game_scene_char_LP
-    end
+    local side_table = {
+        ["L"] = obj_pushboxs_data_game_scene_char_RP,
+        ["R"] = obj_pushboxs_data_game_scene_char_LP
+    }
+    return side_table[side]
 end
 function common_game_scene_change_character_hurtbox(side)
-    if side == "L" then
-        return obj_hurtboxs_data_game_scene_char_RP
-    elseif side == "R" then
-        return obj_hurtboxs_data_game_scene_char_LP
-    end
+    local side_table = {
+        ["L"] = obj_hurtboxs_data_game_scene_char_RP,
+        ["R"] = obj_hurtboxs_data_game_scene_char_LP
+    }
+    return side_table[side]
 end
 function common_game_scene_change_character_anchor(side)
-    if side == "L" then
-        return obj_anchor_data_game_scene_char_RP
-    elseif side == "R" then
-        return obj_anchor_data_game_scene_char_LP
-    end
+    local side_table = {
+        ["L"] = obj_anchor_data_game_scene_char_RP,
+        ["R"] = obj_anchor_data_game_scene_char_LP
+    }
+    return side_table[side]
 end
 function common_game_scene_change_character_VFX_spawn_anchor_pos(side)
-    if side == "L" then
-        return obj_VFX_spawn_anchor_pos_data_game_scene_char_RP
-    elseif side == "R" then
-        return obj_VFX_spawn_anchor_pos_data_game_scene_char_LP
-    end
+    local side_table = {
+        ["L"] = obj_VFX_spawn_anchor_pos_data_game_scene_char_RP,
+        ["R"] = obj_VFX_spawn_anchor_pos_data_game_scene_char_LP
+    }
+    return side_table[side]
 end
 function common_game_scene_change_input_state(side)
-    if side == "L" then
-        return INPUT_SYS_CURRENT_COMMAND_STATE["R"]
-    elseif side == "R" then
-        return INPUT_SYS_CURRENT_COMMAND_STATE["L"]
-    end
+    local side_table = {
+        ["L"] = "R",
+        ["R"] = "L"
+    }
+    return INPUT_SYS_CURRENT_COMMAND_STATE[side_table[side]]
 end
 
 function common_game_scene_check_block_direction(obj_char)

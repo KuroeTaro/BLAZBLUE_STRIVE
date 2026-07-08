@@ -31,13 +31,17 @@ function draw_game_scene_main()
     -- 绘制角色
     love.graphics.setCanvas(DRAW_MAIN_CHARACTER_CANVAS)
     love.graphics.clear()
-    if CHARACTER_VISUAL_FRONT == "L" then
-        draw_game_scene_char_RP() -- IZAYA 2 draw calls 3
-        draw_game_scene_char_LP()
-    elseif CHARACTER_VISUAL_FRONT == "R" then
-        draw_game_scene_char_LP()
-        draw_game_scene_char_RP() -- IZAYA 2 draw calls 4
-    end
+    local side_table = {
+        ["L"] = function()
+            draw_game_scene_char_RP()
+            draw_game_scene_char_LP()
+        end,
+        ["R"] = function()
+            draw_game_scene_char_LP()
+            draw_game_scene_char_RP()
+        end
+    }
+    side_table[CHARACTER_VISUAL_FRONT]()
     love.graphics.setCanvas()
     love.graphics.draw(DRAW_MAIN_CHARACTER_CANVAS)
 

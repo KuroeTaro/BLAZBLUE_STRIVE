@@ -519,7 +519,7 @@ function order_load_game_scene_char_RP_frames(load_order)
         end,
         [21] = function()
             -- move_VFX 7 8
-            image_sprite_sheet_VFX_game_scene_RP = {}
+            image_sprite_sheet_table_VFX_game_scene_RP = {}
             local load_name_table = {
                 "2P",
                 "6P",
@@ -547,7 +547,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 "6SP_S"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_VFX_game_scene_RP[v.."_move_VFX"] = 
+                image_sprite_sheet_table_VFX_game_scene_RP[v.."_move_VFX"] = 
                 common_sprite_sheet_load(
                     "asset/game_scene/VFX/move_VFX/TRM/".."TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
@@ -558,7 +558,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             local load_name_table = {
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_VFX_game_scene_RP[v.."_move_VFX"] = 
+                image_sprite_sheet_table_VFX_game_scene_RP[v.."_move_VFX"] = 
                 common_sprite_sheet_load(
                     "asset/game_scene/VFX/move_VFX/TRM/"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
@@ -567,7 +567,7 @@ function order_load_game_scene_char_RP_frames(load_order)
         end,
         [23] = function()
             -- projectile 9
-            image_sprite_sheet_projectile_game_scene_RP = {}
+            image_sprite_sheet_table_projectile_game_scene_RP = {}
             local load_name_table = {
                 "5H_hit",
                 "5H_miss",
@@ -575,7 +575,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 "6SP_P_curse_ball_loop"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_projectile_game_scene_RP[v.."_projectile"] = 
+                image_sprite_sheet_table_projectile_game_scene_RP[v.."_projectile"] = 
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/_character/PROJECTILE/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v.."_projectile"])

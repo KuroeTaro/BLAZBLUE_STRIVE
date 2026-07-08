@@ -14,13 +14,9 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     local obj_char_velocity = {obj_char["velocity"][1],obj_char["velocity"][2]}
     local obj_camera = obj_stage_game_scene_camera
-    local image_sprite_sheet_table = nil
     local side = obj_char["player_side"]
-    if side == "L" then
-        image_sprite_sheet_table = image_sprite_sheet_projectile_game_scene_LP
-    elseif side == "R" then
-        image_sprite_sheet_table = image_sprite_sheet_projectile_game_scene_RP
-    end
+    local image_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(side)
+    
     -- common
     obj["type"] = "projectile"
     obj["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
@@ -523,7 +519,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         )
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(obj_char_other_side)
+        common_game_scene_set_input_sys_cache_init(obj_char_other_side["player_side"])
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -534,7 +530,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
     res[6] = function()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(obj_char_other_side)
+        common_game_scene_set_input_sys_cache_init(obj_char_other_side["player_side"])
         -- draw_correction
         obj_char_other_side[8] = 2
     end
@@ -658,7 +654,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
         obj_char_other_side["anchor_pos"] = anchor_data_other_side[sprite_sheet]
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(obj_char_other_side)
+        common_game_scene_set_input_sys_cache_init(obj_char_other_side["player_side"])
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -708,7 +704,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
     res[26] = function()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(obj_char_other_side)
+        common_game_scene_set_input_sys_cache_init(obj_char_other_side["player_side"])
     end
     res[28] = function()
         -- collide
@@ -806,7 +802,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         )
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(obj_char_other_side)
+        common_game_scene_set_input_sys_cache_init(obj_char_other_side["player_side"])
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -819,7 +815,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
     res[10] = function()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(obj_char_other_side)
+        common_game_scene_set_input_sys_cache_init(obj_char_other_side["player_side"])
     end
     res[11] = function()
         -- collide
@@ -932,7 +928,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         update_before_land()
         -- input_sys_cache
         obj_char_other_side["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(obj_char_other_side)
+        common_game_scene_set_input_sys_cache_init(obj_char_other_side["player_side"])
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -1036,15 +1032,9 @@ function insert_projectile_game_scene_char_TRM_6SP_P(obj_char)
     -- x y z opacity sx sy r f
     local obj = {0,0,0,0.75,1,1,0,0}
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
-    local image_sprite_sheet_table = nil
-    local image_sprite_sheet_table = nil
     local side = obj_char["player_side"]
-    if side == "L" then
-        image_sprite_sheet_table = image_sprite_sheet_projectile_game_scene_LP
-    elseif side == "R" then
-        image_sprite_sheet_table = image_sprite_sheet_projectile_game_scene_RP
-    end
-
+    local image_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(side)
+    
     -- common
     obj["type"] = "projectile"
     obj["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级

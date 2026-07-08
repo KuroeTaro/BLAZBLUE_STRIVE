@@ -1,13 +1,6 @@
 function insert_VFX_game_scene_char_overdrive_badge(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
-    local image_sprite_sheet = nil
-    obj["y_offset"] = 0
-
-    if obj_char["player_side"] == "L" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_LP_overdrive_badge
-    elseif obj_char["player_side"] == "R" then
-        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RP_overdrive_badge
-    end
+    local image_sprite_sheet = common_game_scene_get_overdrive_badge_image_sprite_sheet_table(obj_char["player_side"])
     if obj_char["height"] == "air" then
         obj["y_offset"] = 715
     else
@@ -111,7 +104,11 @@ function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
     table.insert(obj_char["VFX_common_back_table"],obj)
 end
 function insert_VFX_game_scene_char_overdrive_partical(obj_char)
-    local obj = {0,0,0,1,1,1,0,0}
+    local side_table = {
+        ["L"] = {0,0,1,1,1,1,0,0},
+        ["R"] = {1600,0,1,1,1,1,0,0}
+    }
+    local obj = side_table[obj_char["player_side"]]
     local obj_camera = obj_stage_game_scene_camera
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
 
@@ -123,25 +120,6 @@ function insert_VFX_game_scene_char_overdrive_partical(obj_char)
     obj["life"] = 70
     obj["f"] = -1
 
-    if obj_char["player_side"] == "L" then
-        obj[1] = 0
-        obj[2] = 0
-        obj[3] = 1
-        obj[4] = 1
-        obj[5] = 1
-        obj[6] = 1
-        obj[7] = 0
-        obj[8] = 0
-    elseif obj_char["player_side"] == "R" then
-        obj[1] = 1600
-        obj[2] = 0
-        obj[3] = 1
-        obj[4] = 1
-        obj[5] = -1
-        obj[6] = 1
-        obj[7] = 0
-        obj[8] = 0
-    end
     obj["update"] = function()
         obj["f"] = obj["f"] + 1
         if obj["f"] >= 1 then
@@ -3087,16 +3065,16 @@ function insert_VFX_game_scene_char_GP(obj_char)
         local opacity_cache = obj_char[4]
         local contrast_cache = obj_char["contrast"]
         local brightness_cache = obj_char["brightness"]
+        local side_table = {
+            ["L"] = draw_game_scene_char_LP,
+            ["R"] = draw_game_scene_char_RP
+        }
         -- obj["draw_sync"]()
         obj_char[4] = 0.2
         obj_char["contrast"] = 1
         obj_char["brightness"] = 1
         love.graphics.setBlendMode("add")
-        if obj_char["player_side"] == "L" then
-            draw_game_scene_char_LP()
-        elseif obj_char["player_side"] == "R" then
-            draw_game_scene_char_RP()
-        end
+        side_table[obj_char["player_side"]]()
         love.graphics.setBlendMode("alpha")
         obj_char[4] = opacity_cache
         obj_char["contrast"] = contrast_cache
@@ -3107,17 +3085,18 @@ end
 
 -- HUD
 function insert_VFX_HUD_game_scene_counter_ver0_2(obj_char)
-    local side = obj_char["player_side"]
     local obj = {0,0,0,0,0.75,0.65,0,0}
+    local side = obj_char["player_side"]
+    local side_table = {
+        ["L"] = 165,
+        ["R"] = 1314
+    }
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
     obj["image"] = image_VFX_game_scene_HUD_counter_ver0_2
     obj["life"] = 70
-    if side == "L" then
-        obj[1] = 165
-    elseif side == "R" then
-        obj[1] = 1314
-    end
+
+    obj[1] = side_table[side]
     obj[2] = 35
 
 -- y_anim
@@ -3321,17 +3300,18 @@ function insert_VFX_HUD_game_scene_counter_ver3(obj_char)
     table.insert(obj_char["VFX_black_overlay_table"],obj)
 end
 function insert_VFX_HUD_game_scene_punish(obj_char)
-    local side = obj_char["player_side"]
     local obj = {0,0,0,0,0.75,0.65,0,0}
+    local side = obj_char["player_side"]
+    local side_table = {
+        ["L"] = 165,
+        ["R"] = 1314
+    }
     obj["LCT"] = {0,0,0,0,0,0,0,0}
     obj["LCD"] = {0,0,0,0,0,0,0,0}
     obj["image"] = image_VFX_game_scene_HUD_punish
     obj["life"] = 70
-    if side == "L" then
-        obj[1] = 165
-    elseif side == "R" then
-        obj[1] = 1314
-    end
+
+    obj[1] = side_table[side]
     obj[2] = 35
 
 -- y_anim
