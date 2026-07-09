@@ -366,6 +366,16 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
             common_game_scene_test_and_apply_wallbreak(obj_char_other_side,obj_char,obj,wallhurt_wallstick_on_side_cache)
         end
     end
+    obj["enemy_interact_function"] = function()
+        if collision_strike_hurtbox_test(obj,obj_char_other_side) and obj["strike_active"] and (not obj_char_other_side["strike_inv"]) then
+            -- insert_hit_VFX
+            insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(obj_char,obj_char_other_side)
+            -- set_projectile_strike_active
+            obj["strike_active"] = false
+            -- common_hurt_function
+            common_game_scene_projectile_hurt_function(obj_char_other_side,obj)
+        end
+    end
     -- obj["friendly_interact_function"] = function()
 
     -- end

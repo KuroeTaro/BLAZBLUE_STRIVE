@@ -1021,11 +1021,11 @@ function load_game_scene_anim_point_linear_character_hurt_side_wallbreak(hurt_si
         anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[125] = {0.0,126}
         anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[126] = {-6.5,129}
         anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[129] = {-55.6,130}
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[130] = {62.0,131}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[130] = {-62.0,131}
         anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[131] = {-55.6,134}
         anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[134] = {-6.5,135}
         anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[135] = {0.0,138}
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[138] = {-20.0,140}
+        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[138] = {-2.0,140}
         anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[140] = {0.0,150}
         anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[150] = {0.0,150}
     else
