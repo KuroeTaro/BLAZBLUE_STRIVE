@@ -585,9 +585,6 @@ function common_game_scene_strike_hurt_function_common_hurt(obj_char,hit_side_ob
         obj_char["character_animation"] = hit_side_obj_char["wallstick_hurt_animation"]
     end
     init_character_anim_with(obj_char,obj_char["character_animation"])
-
-    -- hit_side_game_speed
-    common_game_scene_game_speed_load_application(hit_side_obj_char,{1,1,1,0,0,0})
 end
 
 function common_game_scene_throw_hit_function(obj_char)
