@@ -189,11 +189,6 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
             obj["strike_active"] = false
             -- set_physics_lock
             obj_char_other_side["physics_lock"] = true
-            -- hurt_block_at_current_frame
-            if obj_char_other_side["hurt_block_at_current_frame"] then
-                return
-            end
-            obj_char_other_side["hurt_block_at_current_frame"] = true
             -- change_draw_front
             CHARACTER_VISUAL_FRONT = obj_char["player_side"]
             -- change_character_face

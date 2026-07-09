@@ -32,7 +32,6 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_LP["move_state"] = "none" -- none startup active recovery
     obj_char_game_scene_char_LP["last_move_state"] = "none" -- none startup active recovery
-    obj_char_game_scene_char_LP["hurt_block_at_current_frame"] = false
 
     -- input
     obj_char_game_scene_char_LP["direction_input"] = 5
@@ -1093,7 +1092,6 @@ function load_game_scene_wallbreak_end_init_LP()
     obj_char_game_scene_char_LP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_LP["move_state"] = "none" -- none startup active recovery
     obj_char_game_scene_char_LP["last_move_state"] = "none" -- none startup active recovery
-    obj_char_game_scene_char_LP["hurt_block_at_current_frame"] = false
 
     -- input
     obj_char_game_scene_char_LP["direction_input"] = 5

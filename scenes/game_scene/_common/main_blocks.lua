@@ -239,10 +239,6 @@ function update_game_scene_training_main()
         char_RP_final_game_speed = 0
     end
 
-    -- 更新hurt_block_at_current_frame
-    char_LP["hurt_block_at_current_frame"] = false
-    char_RP["hurt_block_at_current_frame"] = false
-
     -- 进行push box hit box hurt box的检测
     for i = 1,16 do
         -- 更新角色和飞行道具位置

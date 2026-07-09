@@ -386,11 +386,6 @@ function common_game_scene_strike_hurt_function(obj_char)
     local wallhurt_wallstick_on_side_cache = obj_char["wallhurt_wallstick_on_side"]
     -- physics_lock
     obj_char["physics_lock"] = true
-    -- hurt_block_at_current_frame
-    if obj_char["hurt_block_at_current_frame"] then
-        return
-    end
-    obj_char["hurt_block_at_current_frame"] = true
     -- change_draw_front
     CHARACTER_VISUAL_FRONT = hit_side_obj_char["player_side"]
     -- change_character_face
