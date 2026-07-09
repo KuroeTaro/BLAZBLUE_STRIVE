@@ -1,6 +1,6 @@
 -- x y velocity enemy_interact_function hitbox
 
-function load_game_scene_anim_projectile_rc_main(obj,obj_char,obj_char_other_side)
+function load_game_scene_anim_projectile_rc_main(obj)
     local res = {}
     res["prop_f"] = "f"
     res["anim_length"] = 15
@@ -68,7 +68,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
 
     obj["hit_guard_type"] = "all"
 
-    obj["animation"] = load_game_scene_anim_projectile_rc_main(obj,obj_char,obj_char_other_side)
+    obj["animation"] = load_game_scene_anim_projectile_rc_main(obj)
     init_character_anim_without(obj,obj["animation"] )
 
     obj["camera_x_shake_anim"] = nil
@@ -391,7 +391,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(obj_char)
                 end
                 init_character_anim_with(obj_char_other_side,obj_char_other_side["character_animation"])
 
-                -- insert_hit_VFX
+                -- insert_hurt_VFX
                 insert_VFX_game_scene_char_blast_special(obj_char)
             end
             -- wallbreak_test_and_apply
@@ -438,7 +438,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(obj_char)
 
     obj["hit_active"] = true
 
-    obj["animation"] = load_game_scene_anim_projectile_rc_main(obj,obj_char,obj_char_other_side)
+    obj["animation"] = load_game_scene_anim_projectile_rc_main(obj)
     init_character_anim_without(obj,obj["animation"] )
 
     obj["update"] = function()
@@ -523,7 +523,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(obj_char)
 
     obj["hit_active"] = true
 
-    obj["animation"] = load_game_scene_anim_projectile_rc_main(obj,obj_char,obj_char_other_side)
+    obj["animation"] = load_game_scene_anim_projectile_rc_main(obj)
     init_character_anim_without(obj,obj["animation"])
 
     obj["update"] = function()
@@ -623,7 +623,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(obj_char)
 
     obj["hit_guard_type"] = "all"
 
-    obj["animation"] = load_game_scene_anim_projectile_rc_main(obj,obj_char,obj_char_other_side)
+    obj["animation"] = load_game_scene_anim_projectile_rc_main(obj)
     init_character_anim_without(obj,obj["animation"] )
 
     obj["camera_x_shake_anim"] = nil

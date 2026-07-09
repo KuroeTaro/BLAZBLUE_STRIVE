@@ -793,6 +793,7 @@ function common_game_scene_projectile_hurt_function_common_hurt(obj_char,hit_sid
         obj_char["character_animation"] = projectile["wallstick_hurt_animation"]
     end
     init_character_anim_with(obj_char,obj_char["character_animation"])
+    projectile["hurt_VFX_insert_function"]()
 end
 
 function common_game_scene_throw_hit_function(obj_char)
