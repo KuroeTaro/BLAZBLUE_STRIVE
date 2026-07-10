@@ -810,6 +810,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anch
             obj_char[8] = 2
         end
     end
+    local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
     res["prop_f"] = "f"
     res["anim_length"] = 35
     width_table[0] = 200
@@ -861,7 +862,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anch
         -- state
         obj_char["idle_cancel"] = true
         -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
+        obj_char["input_sys_state"] = "load_without_direction" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- draw_correction
         obj_char[8] = 1

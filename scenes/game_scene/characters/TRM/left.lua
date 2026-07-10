@@ -2313,6 +2313,16 @@ function state_machine_char_game_scene_char_LP_input_sys_cache()
             obj_char["input_sys_state"] = "none"
             init_input_sys_cache_LP(obj_char)
         end,
+        ["load_without_direction"] = function()
+            for i=5,20 do
+                if obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] then
+                    input[INPUT_SYS_COMMAND_TABLE[i]] = "Pressing"
+                end
+            end
+            common_update_game_scene_input_direction(obj_char)
+            obj_char["input_sys_state"] = "none"
+            init_input_sys_cache_LP(obj_char)
+        end,
     }
     local this_function = switch[obj_char["input_sys_state"]]
     if this_function then this_function() end
