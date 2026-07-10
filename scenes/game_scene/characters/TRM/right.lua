@@ -2343,7 +2343,6 @@ function init_input_sys_cache_RP(obj_char)
     for i=1,20 do
         obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] = false
     end
-    obj_char["input_sys_cache"]["jump"] = false
 end
 function init_input_sys_cache_negative_edge_RP(obj_char)
     for i=1,20 do
