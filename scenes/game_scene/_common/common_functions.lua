@@ -153,7 +153,7 @@ function common_game_scene_reset_input_state_for_wallbreak(obj_char)
     end
 
     obj_char["direction_input"] = 5
-    obj_char["direction_input_cache_hit_jump_cancel"] = 5
+    obj_char["direction_input_cache"] = 5
     obj_char["input_sys_state"] = "none"
     obj_char["input_sys_state_negative_edge"] = "none"
 

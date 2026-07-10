@@ -69,13 +69,13 @@ function character_function_game_scene_TRM_hitstop_air_jump_cancel(
     obj_char["input_sys_state"] = "save" -- none save load
 end
 function character_function_game_scene_TRM_histop_ground_jump_cancel(input,obj_char)
-    obj_char["direction_input_cache_hit_jump_cancel"],obj_char["direction_input"] = obj_char["direction_input"],obj_char["direction_input_cache_hit_jump_cancel"]
+    obj_char["direction_input_cache"],obj_char["direction_input"] = obj_char["direction_input"],obj_char["direction_input_cache"]
     if not common_game_scene_get_character_facing_currect(obj_char) then
         obj_char[5] = -obj_char[5]
     end
     obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
     init_character_anim_with(obj_char,obj_char["character_animation"])
-    obj_char["direction_input_cache_hit_jump_cancel"],obj_char["direction_input"] = obj_char["direction_input"],obj_char["direction_input_cache_hit_jump_cancel"]
+    obj_char["direction_input_cache"],obj_char["direction_input"] = obj_char["direction_input"],obj_char["direction_input_cache"]
     obj_char["state"] = "7_8_9_pre_jump"
 end
 function character_function_game_scene_TRM_hitstop_dash_cancel(

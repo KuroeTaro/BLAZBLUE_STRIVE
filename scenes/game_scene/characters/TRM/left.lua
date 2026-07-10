@@ -35,7 +35,7 @@ function load_game_scene_obj_char_LP()
 
     -- input
     obj_char_game_scene_char_LP["direction_input"] = 5
-    obj_char_game_scene_char_LP["direction_input_cache_hit_jump_cancel"] = 5
+    obj_char_game_scene_char_LP["direction_input_cache"] = 5
     obj_char_game_scene_char_LP["startup_frame"] = 0
     obj_char_game_scene_char_LP["active_frame"] = 0
     obj_char_game_scene_char_LP["recovery_frame"] = 0
@@ -3753,7 +3753,7 @@ function state_gate_game_scene_char_LP_from_1_2_3_crouch(input,obj_char)
     end
     -- _7_8_9_pre_jump
     if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache_hit_jump_cancel"] = obj_char["direction_input"]
+        obj_char["direction_input_cache"] = obj_char["direction_input"]
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_pre_jump"
@@ -3806,7 +3806,7 @@ function state_gate_game_scene_char_LP_from_1_2_3_crouch_turn(input,obj_char)
     end
     -- _7_8_9_pre_jump
     if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache_hit_jump_cancel"] = obj_char["direction_input"]
+        obj_char["direction_input_cache"] = obj_char["direction_input"]
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_pre_jump"
@@ -3871,7 +3871,7 @@ function state_gate_game_scene_char_LP_from_1_2_3_crouch_to_stand_idle(input,obj
     end
     -- _7_8_9_pre_jump
     if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache_hit_jump_cancel"] = obj_char["direction_input"]
+        obj_char["direction_input_cache"] = obj_char["direction_input"]
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_pre_jump"
@@ -3934,7 +3934,7 @@ function state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char)
     end
     -- _7_8_9_pre_jump
     if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache_hit_jump_cancel"] = obj_char["direction_input"]
+        obj_char["direction_input_cache"] = obj_char["direction_input"]
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_pre_jump"
@@ -3987,7 +3987,7 @@ function state_gate_game_scene_char_LP_from_5_stand_turn(input,obj_char)
     end
     -- _7_8_9_pre_jump
     if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache_hit_jump_cancel"] = obj_char["direction_input"]
+        obj_char["direction_input_cache"] = obj_char["direction_input"]
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_pre_jump"
@@ -4040,7 +4040,7 @@ function state_gate_game_scene_char_LP_from_5_stand_dash_skid(input,obj_char)
     end
     -- _7_8_9_pre_jump
     if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache_hit_jump_cancel"] = obj_char["direction_input"]
+        obj_char["direction_input_cache"] = obj_char["direction_input"]
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_pre_jump"
@@ -4085,7 +4085,7 @@ function state_gate_game_scene_char_LP_from_4_walk(input,obj_char)
     end
     -- _7_8_9_pre_jump
     if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache_hit_jump_cancel"] = obj_char["direction_input"]
+        obj_char["direction_input_cache"] = obj_char["direction_input"]
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_pre_jump"
@@ -4144,7 +4144,7 @@ function state_gate_game_scene_char_LP_from_4_walk_to_stand_idle(input,obj_char)
     end
     -- _7_8_9_pre_jump
     if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache_hit_jump_cancel"] = obj_char["direction_input"]
+        obj_char["direction_input_cache"] = obj_char["direction_input"]
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_pre_jump"
@@ -4209,7 +4209,7 @@ function state_gate_game_scene_char_LP_from_6_walk(input,obj_char)
     end
     -- _7_8_9_pre_jump
     if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache_hit_jump_cancel"] = obj_char["direction_input"]
+        obj_char["direction_input_cache"] = obj_char["direction_input"]
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_pre_jump"
@@ -4265,7 +4265,7 @@ function state_gate_game_scene_char_LP_from_6_walk_to_stand_idle(input,obj_char)
     end
     -- _7_8_9_pre_jump
     if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache_hit_jump_cancel"] = obj_char["direction_input"]
+        obj_char["direction_input_cache"] = obj_char["direction_input"]
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_pre_jump"
@@ -4420,15 +4420,15 @@ function state_gate_game_scene_char_LP_from_7_8_9_pre_jump(input,obj_char)
             multiplyer = 1.08
             obj_char["air_move"]["jump"][1] = math.max(math.min(obj_char["air_move"]["jump"][1]-1,obj_char["air_move"]["jump"][2]),0)
         end
-        if obj_char["direction_input_cache_hit_jump_cancel"] == 7 then
+        if obj_char["direction_input_cache"] == 7 then
             if (obj_char[5]*obj_char["velocity_cache"][1] <= 0) then
                 obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,470},(obj_char["velocity_cache"][1]*0.6 - obj_char[5]*2.75)*multiplyer,-55.0*multiplyer)
             else
                 obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},(obj_char["velocity_cache"][1]*0.6 - obj_char[5]*2.75)*multiplyer,-55.0*multiplyer)
             end
-        elseif obj_char["direction_input_cache_hit_jump_cancel"] == 8 then
+        elseif obj_char["direction_input_cache"] == 8 then
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},(obj_char["velocity_cache"][1]*0.25)*multiplyer,-55.0*multiplyer)
-        elseif obj_char["direction_input_cache_hit_jump_cancel"] == 9 then
+        elseif obj_char["direction_input_cache"] == 9 then
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{320,430},(obj_char["velocity_cache"][1]*0.6 + obj_char[5]*2.75)*multiplyer,-55.0*multiplyer)
         end
         init_character_anim_with(obj_char,obj_char["character_animation"])
@@ -4525,7 +4525,7 @@ function state_gate_game_scene_char_LP_from_6dash_dash(input,obj_char)
     end
     -- _7_8_9_pre_jump
     if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache_hit_jump_cancel"] = obj_char["direction_input"]
+        obj_char["direction_input_cache"] = obj_char["direction_input"]
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
         obj_char["state"] = "7_8_9_pre_jump"
@@ -5973,7 +5973,7 @@ function state_gate_game_scene_char_LP_from_4SP_P(input,obj_char)
         end
         -- _7_8_9_pre_jump
         if common_game_scene_check_jump_direction(obj_char) then
-            obj_char["direction_input_cache_hit_jump_cancel"] = obj_char["direction_input"]
+            obj_char["direction_input_cache"] = obj_char["direction_input"]
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
             init_character_anim_with(obj_char,obj_char["character_animation"])
             obj_char["state"] = "7_8_9_pre_jump"
