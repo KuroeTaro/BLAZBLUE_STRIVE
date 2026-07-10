@@ -935,10 +935,10 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
     local res = {}
     local side = hit_side_obj_char["player_side"]
     local hurt_side_obj_char = common_game_scene_change_character(side)
-    local pushbox_data_other_side = common_game_scene_change_character_pushbox(side)
-    local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
-    local anchor_data_other_side = common_game_scene_change_character_anchor(side)
-    local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
+    local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
+    local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
+    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
     res["anim_length"] = 12
 
@@ -985,19 +985,19 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
             "character"
         )
         -- collide
-        hurt_side_obj_char["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
+        hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][0]
         hurt_side_obj_char["pushbox_opponent_collision_active"] = true
         hurt_side_obj_char["hitbox_table"] = {}
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][0]
         hurt_side_obj_char["collision_ground_height_offset"] = 0
         -- draw_correction
         hurt_side_obj_char[8] = 5
-        hurt_side_obj_char["anchor_pos"] = anchor_data_other_side[sprite_sheet]
+        hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
+            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -1052,10 +1052,10 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
     local res = {}
     local side = hit_side_obj_char["player_side"]
     local hurt_side_obj_char = common_game_scene_change_character(side)
-    local pushbox_data_other_side = common_game_scene_change_character_pushbox(side)
-    local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
-    local anchor_data_other_side = common_game_scene_change_character_anchor(side)
-    local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
+    local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
+    local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
+    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -1069,16 +1069,16 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
             hurt_side_obj_char["friction"] = 7
             hurt_side_obj_char["gravity"] = 2.5
             -- collide
-            hurt_side_obj_char["pushbox"] = pushbox_data_other_side[sprite_sheet][6]
-            hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][6]
+            hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][6]
+            hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][6]
             hurt_side_obj_char["collision_ground_height_offset"] = 0
             -- draw_correction
             hurt_side_obj_char[8] = 6
             -- VFX
             insert_VFX_game_scene_stage_smoke_land_blow(
                 hurt_side_obj_char,
-                VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
-                VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
+                hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
+                hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
                 0.5,1,1,0
             )
         end
@@ -1129,14 +1129,14 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
             "character"
         )
         -- collide
-        hurt_side_obj_char["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
+        hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][0]
         hurt_side_obj_char["pushbox_opponent_collision_active"] = true
         hurt_side_obj_char["hitbox_table"] = {}
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][0]
         hurt_side_obj_char["collision_ground_height_offset"] = 185
         -- draw_correction
         hurt_side_obj_char[8] = 5
-        hurt_side_obj_char["anchor_pos"] = anchor_data_other_side[sprite_sheet]
+        hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(hurt_side_obj_char["player_side"])
@@ -1177,14 +1177,14 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
     res[16] = function()
         -- collide
         hurt_side_obj_char["collision_ground_height_offset"] = 0
-        hurt_side_obj_char["pushbox"] = pushbox_data_other_side[sprite_sheet][6]
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][6]
+        hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][6]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][6]
         -- draw_correction
         hurt_side_obj_char[8] = 6
     end
     res[22] = function()
         -- collide
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][7]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][7]
         -- draw_correction
         hurt_side_obj_char[8] = 7
     end
@@ -1195,7 +1195,7 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
     end
     res[28] = function()
         -- collide
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][8]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][8]
         -- draw_correction
         hurt_side_obj_char[8] = 8
     end
@@ -1224,10 +1224,10 @@ function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
     local res = {}
     local side = hit_side_obj_char["player_side"]
     local hurt_side_obj_char = common_game_scene_change_character(side)
-    local pushbox_data_other_side = common_game_scene_change_character_pushbox(side)
-    local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
-    local anchor_data_other_side = common_game_scene_change_character_anchor(side)
-    local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
+    local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
+    local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
+    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -1286,14 +1286,14 @@ function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
             "character"
         )
         -- collide
-        hurt_side_obj_char["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
+        hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][0]
         hurt_side_obj_char["pushbox_opponent_collision_active"] = true
         hurt_side_obj_char["hitbox_table"] = {}
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][1]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][1]
         hurt_side_obj_char["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(hurt_side_obj_char,0,1)
-        hurt_side_obj_char["anchor_pos"] = anchor_data_other_side[sprite_sheet]
+        hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- update
         update_before_land()
         -- input_sys_cache
@@ -1324,7 +1324,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
     end
     res[9] = function()
         -- collide
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][3]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][3]
         -- draw_correction
         hurt_side_obj_char[8] = 3
         -- update
@@ -1338,7 +1338,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
     end
     res[15] = function()
         -- collide
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][5]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][5]
         -- draw_correction
         hurt_side_obj_char[8] = 5
         -- update
@@ -1354,7 +1354,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
         -- state
         if hurt_side_obj_char["velocity"][2] <= math.abs(hurt_side_obj_char["velocity"][1])*2 then
             -- collide
-            hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][7]
+            hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][7]
             -- draw_correction
             hurt_side_obj_char[8] = 7
         else
@@ -1368,7 +1368,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
     end
     res[24] = function()
         -- collide
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][8]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][8]
         -- draw_correction
         hurt_side_obj_char[8] = 8
         -- update
@@ -1376,7 +1376,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
     end
     res[27] = function()
         -- collide
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][9]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][9]
         -- draw_correction
         hurt_side_obj_char[8] = 9
         -- update
@@ -1392,7 +1392,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
         -- state
         hurt_side_obj_char["f"] = 27
         -- collide
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][9]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][9]
         -- draw_correction
         hurt_side_obj_char[8] = 9
         -- update
@@ -1424,10 +1424,10 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
     local res = {}
     local side = hit_side_obj_char["player_side"]
     local hurt_side_obj_char = common_game_scene_change_character(side)
-    local pushbox_data_other_side = common_game_scene_change_character_pushbox(side)
-    local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
-    local anchor_data_other_side = common_game_scene_change_character_anchor(side)
-    local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
+    local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
+    local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
+    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     res["prop_f"] = "f"
     res["anim_length"] = 17
 
@@ -1474,19 +1474,19 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
             "character"
         )
         -- collide
-        hurt_side_obj_char["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
+        hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][0]
         hurt_side_obj_char["pushbox_opponent_collision_active"] = true
         hurt_side_obj_char["hitbox_table"] = {}
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][0]
         hurt_side_obj_char["collision_ground_height_offset"] = 0
         -- draw_correction
         hurt_side_obj_char[8] = 5
-        hurt_side_obj_char["anchor_pos"] = anchor_data_other_side[sprite_sheet]
+        hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
-            VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
+            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -1547,10 +1547,10 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
     local res = {}
     local side = hit_side_obj_char["player_side"]
     local hurt_side_obj_char = common_game_scene_change_character(side)
-    local pushbox_data_other_side = common_game_scene_change_character_pushbox(side)
-    local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
-    local anchor_data_other_side = common_game_scene_change_character_anchor(side)
-    local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
+    local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
+    local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
+    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -1564,16 +1564,16 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
             hurt_side_obj_char["friction"] = 7
             hurt_side_obj_char["gravity"] = 2.5
             -- collide
-            hurt_side_obj_char["pushbox"] = pushbox_data_other_side[sprite_sheet][6]
-            hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][6]
+            hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][6]
+            hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][6]
             hurt_side_obj_char["collision_ground_height_offset"] = 0
             -- draw_correction
             hurt_side_obj_char[8] = 6
             -- VFX
             insert_VFX_game_scene_stage_smoke_land_blow(
                 hurt_side_obj_char,
-                VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
-                VFX_spawn_anchor_pos_data_other_side["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
+                hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
+                hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
                 0.5,1,1,0
             )
         end
@@ -1624,14 +1624,14 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
             "character"
         )
         -- collide
-        hurt_side_obj_char["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
+        hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][0]
         hurt_side_obj_char["pushbox_opponent_collision_active"] = true
         hurt_side_obj_char["hitbox_table"] = {}
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][0]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][0]
         hurt_side_obj_char["collision_ground_height_offset"] = 185
         -- draw_correction
         hurt_side_obj_char[8] = 5
-        hurt_side_obj_char["anchor_pos"] = anchor_data_other_side[sprite_sheet]
+        hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_set_input_sys_cache_init(hurt_side_obj_char["player_side"])
@@ -1672,14 +1672,14 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
     res[16] = function()
         -- collide
         hurt_side_obj_char["collision_ground_height_offset"] = 0
-        hurt_side_obj_char["pushbox"] = pushbox_data_other_side[sprite_sheet][6]
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][6]
+        hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][6]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][6]
         -- draw_correction
         hurt_side_obj_char[8] = 6
     end
     res[22] = function()
         -- collide
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][7]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][7]
         -- draw_correction
         hurt_side_obj_char[8] = 7
     end
@@ -1690,7 +1690,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
     end
     res[28] = function()
         -- collide
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][8]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][8]
         -- draw_correction
         hurt_side_obj_char[8] = 8
     end
@@ -1719,10 +1719,10 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
     local res = {}
     local side = hit_side_obj_char["player_side"]
     local hurt_side_obj_char = common_game_scene_change_character(side)
-    local pushbox_data_other_side = common_game_scene_change_character_pushbox(side)
-    local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
-    local anchor_data_other_side = common_game_scene_change_character_anchor(side)
-    local VFX_spawn_anchor_pos_data_other_side = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
+    local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
+    local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
+    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -1781,14 +1781,14 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
             "character"
         )
         -- collide
-        hurt_side_obj_char["pushbox"] = pushbox_data_other_side[sprite_sheet][0]
+        hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][0]
         hurt_side_obj_char["pushbox_opponent_collision_active"] = true
         hurt_side_obj_char["hitbox_table"] = {}
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][1]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][1]
         hurt_side_obj_char["collision_ground_height_offset"] = 185
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(hurt_side_obj_char,0,1)
-        hurt_side_obj_char["anchor_pos"] = anchor_data_other_side[sprite_sheet]
+        hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- update
         update_before_land()
         -- input_sys_cache
@@ -1819,7 +1819,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
     end
     res[9] = function()
         -- collide
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][3]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][3]
         -- draw_correction
         hurt_side_obj_char[8] = 3
         -- update
@@ -1833,7 +1833,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
     end
     res[15] = function()
         -- collide
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][5]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][5]
         -- draw_correction
         hurt_side_obj_char[8] = 5
         -- update
@@ -1849,7 +1849,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
         -- state
         if hurt_side_obj_char["velocity"][2] <= math.abs(hurt_side_obj_char["velocity"][1])*2 then
             -- collide
-            hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][7]
+            hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][7]
             -- draw_correction
             hurt_side_obj_char[8] = 7
         else
@@ -1863,7 +1863,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
     end
     res[24] = function()
         -- collide
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][8]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][8]
         -- draw_correction
         hurt_side_obj_char[8] = 8
         -- update
@@ -1871,7 +1871,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
     end
     res[27] = function()
         -- collide
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][9]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][9]
         -- draw_correction
         hurt_side_obj_char[8] = 9
         -- update
@@ -1887,7 +1887,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
         -- state
         hurt_side_obj_char["f"] = 27
         -- collide
-        hurt_side_obj_char["hurtbox_table"] = hurtbox_data_other_side[sprite_sheet][9]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][9]
         -- draw_correction
         hurt_side_obj_char[8] = 9
         -- update
