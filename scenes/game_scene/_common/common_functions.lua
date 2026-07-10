@@ -636,7 +636,7 @@ function common_game_scene_projectile_hurt_function_common_block(obj_char,hit_si
     obj_char["state_cache"] = "block"
     obj_char["state"] = "blockstop"
     -- set_hit_hurt_blockstop_countdown
-    obj_char["hit_hurt_blockstop_countdown"] = obj["hit_hurt_blockstop_countdown"]
+    obj_char["hit_hurt_blockstop_countdown"] = projectile["hit_hurt_blockstop_countdown"]
     obj_char["last_hitstop_frame"] = 0
     -- set_insert_camera_anim
     table.insert(obj_stage_main["camera_active_application_table"],
@@ -672,15 +672,15 @@ function common_game_scene_projectile_hurt_function_common_block(obj_char,hit_si
         obj_char["height"] = "stand"
     end
     if obj_char["height"] == "stand" then
-        obj_char["character_animation"] = obj["stand_block_animation"]
+        obj_char["character_animation"] = projectile["stand_block_animation"]
     elseif obj_char["height"] == "crouch" then
-        obj_char["character_animation"] = obj["crouch_block_animation"]
+        obj_char["character_animation"] = projectile["crouch_block_animation"]
     elseif obj_char["height"] == "air" then
-        obj_char["character_animation"] = obj["air_block_animation"]
+        obj_char["character_animation"] = projectile["air_block_animation"]
     end
     init_character_anim_with(obj_char,obj_char["character_animation"])
     -- insert_block_VFX
-    obj["hurt_block_VFX_insert_function"](obj_char)
+    projectile["hurt_block_VFX_insert_function"](obj_char)
     -- insert_FD_block_VFX
     if FD_block then
         insert_VFX_game_scene_char_FD_block(obj_char)
@@ -691,13 +691,13 @@ function common_game_scene_projectile_hurt_function_common_GP_hurt(obj_char,hit_
     obj_char["state_cache"] = obj_char["state"]
     obj_char["state"] = "hurtstop"
     -- set_hit_hurt_blockstop_countdown
-    obj_char["hit_hurt_blockstop_countdown"] = obj["hit_hurt_blockstop_countdown"]
+    obj_char["hit_hurt_blockstop_countdown"] = projectile["hit_hurt_blockstop_countdown"]
     obj_char["last_hitstop_frame"] = 0
     -- set_insert_camera_anim
     table.insert(obj_stage_main["camera_active_application_table"],
         function()
-            anim_stage_point_linear_game_scene_camera_shake_x = obj["camera_x_shake_anim"]
-            anim_stage_point_linear_game_scene_camera_shake_y = obj["camera_y_shake_anim"]
+            anim_stage_point_linear_game_scene_camera_shake_x = projectile["camera_x_shake_anim"]
+            anim_stage_point_linear_game_scene_camera_shake_y = projectile["camera_y_shake_anim"]
             init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
             init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
             obj_camera["state"] = "active"
