@@ -167,6 +167,10 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(obj_char)
     end
     obj["draw"] = function()
         local image_sprite_sheet = image_sprite_sheet_table[obj["sprite_sheet"]]
+        if obj["sprite_sheet"] == "5H_hit_projectile" then
+            obj[1] = obj_char["shot_sys_reticle"][1]
+            obj[2] = obj_char["shot_sys_reticle"][2]
+        end
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
         love.graphics.setBlendMode("add")

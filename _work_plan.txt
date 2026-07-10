@@ -23,3 +23,5 @@ config选项中自定义要不要79空投
 -- 4. 变量名修改
 
 -- 修改TRM的air block
+-- 修改蓝RC badge
+-- 修改hit_side hurt_side 参数位置
