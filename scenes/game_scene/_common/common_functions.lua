@@ -151,9 +151,9 @@ function common_game_scene_get_input_sys_cache_negative_edge_init(side)
     }
     return side_table[side]
 end
-function common_update_game_scene_input_direction(obj_char)
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
-    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+function common_update_game_scene_input_direction(self_side_obj_char)
+    local input = INPUT_SYS_CURRENT_COMMAND_STATE[self_side_obj_char["player_side"]]
+    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
     local right = (test_input_sys_press_or_hold(input["right"]) and 1 or 0)
     local left  = (test_input_sys_press_or_hold(input["left"]) and 1 or 0)
     local up    = (test_input_sys_press_or_hold(input["up"]) and 1 or 0)
@@ -163,27 +163,27 @@ function common_update_game_scene_input_direction(obj_char)
     elseif test_input_sys_press_or_hold(input["correction_down"]) then
         down = 1 up = 0
     end
-    if obj_char[5] == -1 then
+    if self_side_obj_char[5] == -1 then
         left,right = right,left
     end
-    obj_char["direction_input"] = 5 + 3*up - 3*down + right*1 - left*1
+    self_side_obj_char["direction_input"] = 5 + 3*up - 3*down + right*1 - left*1
 end
-function common_game_scene_get_character_facing_currect(obj_char)
-    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
-    if obj_char[5] == -1 and obj_char["x"] < obj_char_other_side["x"] then
+function common_game_scene_get_character_facing_currect(self_side_obj_char)
+    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
+    if self_side_obj_char[5] == -1 and self_side_obj_char["x"] < opponent_side_obj_char["x"] then
         return false
     end
-    if obj_char[5] == 1 and obj_char["x"] > obj_char_other_side["x"] then
+    if self_side_obj_char[5] == 1 and self_side_obj_char["x"] > opponent_side_obj_char["x"] then
         return false
     end
     return true
 end
-function common_game_scene_get_character_hurt_direction(obj_char,obj_char_other_side,hurt_horizontal_velocity)
-    local dx = obj_char_other_side["x"] - obj_char["x"]
-    if dx == 0 then return obj_char[5]*hurt_horizontal_velocity end
+function common_game_scene_get_character_hurt_direction(self_side_obj_char,opponent_side_obj_char,hurt_horizontal_velocity)
+    local dx = opponent_side_obj_char["x"] - self_side_obj_char["x"]
+    if dx == 0 then return self_side_obj_char[5]*hurt_horizontal_velocity end
     return hurt_horizontal_velocity*(dx)/math.abs(dx)
 end
-function common_game_scene_char_enclose_heat_gain(obj_char)
+function common_game_scene_char_enclose_heat_gain(self_side_obj_char)
 end
 
 function common_game_scene_change_character(side)
@@ -270,11 +270,11 @@ function common_game_scene_check_crouch_direction(obj_char)
     ) 
 end
 
-function common_game_scene_block_test(obj_char,obj)
+function common_game_scene_block_test(hurt_side_obj_char,hit_obj)
     -- block_test
     local block_bool = false
-    local block_direction = obj_char["direction_input"]
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
+    local block_direction = hurt_side_obj_char["direction_input"]
+    local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
     local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
 
     -- low mid high all 
@@ -300,48 +300,48 @@ function common_game_scene_block_test(obj_char,obj)
         -- non_air high ok
         -- non_air all ok
 
-    if obj_char["hurt_state"] == "idle" and common_game_scene_check_block_direction(obj_char) then
+    if hurt_side_obj_char["hurt_state"] == "idle" and common_game_scene_check_block_direction(hurt_side_obj_char) then
         if FD_block then
-            if obj_char["height"] == "air" then
+            if hurt_side_obj_char["height"] == "air" then
                 block_bool = true
-            elseif obj["hit_guard_type"] == "high" or obj["hit_guard_type"] == "all" then
+            elseif hit_obj["hit_guard_type"] == "high" or hit_obj["hit_guard_type"] == "all" then
                 block_bool = true
             end
         else
-            if obj_char["height"] == "air" and obj["hit_guard_type"] ~= "high" then
+            if hurt_side_obj_char["height"] == "air" and hit_obj["hit_guard_type"] ~= "high" then
                 block_bool = true
-            elseif obj["hit_guard_type"] == "all" then
+            elseif hit_obj["hit_guard_type"] == "all" then
                 block_bool = true
             end
         end
-        if block_direction == 1 and obj["hit_guard_type"] == "low" then
+        if block_direction == 1 and hit_obj["hit_guard_type"] == "low" then
             block_bool = true
-        elseif (block_direction == 4 or block_direction == 7) and obj["hit_guard_type"] == "mid" then
+        elseif (block_direction == 4 or block_direction == 7) and hit_obj["hit_guard_type"] == "mid" then
             block_bool = true
-        elseif obj_char["height"] ~= "air" and obj["hit_guard_type"] == "high" then
+        elseif hurt_side_obj_char["height"] ~= "air" and hit_obj["hit_guard_type"] == "high" then
             block_bool = true
         end
     end
     -- You bunch of fools speak like not been protected by this while happy chaos doing cross_up.
     -- Even complaining that this is what causing you to get stuck in an endless 528 loop?
     -- Well then. I shall grant your idoit wish.
-    -- if obj_char["hurt_state"] == "idle" and (obj_char["state"] == "block" or obj_char["state"] == "blockstop")then
-    --     if obj_char["height"] == "air" then
+    -- if hurt_side_obj_char["hurt_state"] == "idle" and (hurt_side_obj_char["state"] == "block" or hurt_side_obj_char["state"] == "blockstop")then
+    --     if hurt_side_obj_char["height"] == "air" then
     --         block_bool = true
-    --     elseif common_game_scene_check_crouch_direction(obj_char) and obj["hit_guard_type"] == "low" then
+    --     elseif common_game_scene_check_crouch_direction(hurt_side_obj_char) and hit_obj["hit_guard_type"] == "low" then
     --         block_bool = true
-    --     elseif ( not common_game_scene_check_crouch_direction(obj_char)) and obj["hit_guard_type"] == "mid" then
+    --     elseif ( not common_game_scene_check_crouch_direction(hurt_side_obj_char)) and hit_obj["hit_guard_type"] == "mid" then
     --         block_bool = true
-    --     elseif obj["hit_guard_type"] == "all" then
+    --     elseif hit_obj["hit_guard_type"] == "all" then
     --         block_bool = true
     --     end
     -- end
     return block_bool
 end
 
-function common_game_scene_strike_hit_function(obj_char)
+function common_game_scene_strike_hit_function(hurt_side_obj_char)
     -- 只需要设置hitstop
-    local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
+    local hit_side_obj_char = common_game_scene_change_character(hurt_side_obj_char["player_side"])
     local hit_VFX_insert_function_argument = hit_side_obj_char["hit_VFX_insert_function_argument"]
     hit_side_obj_char["state_cache"] = hit_side_obj_char["state"]
     hit_side_obj_char["state"] = "hitstop"
@@ -357,16 +357,16 @@ function common_game_scene_strike_hit_function(obj_char)
     -- physics_lock
     hit_side_obj_char["physics_lock"] = true
     -- block_test
-    local block_bool = common_game_scene_block_test(obj_char,hit_side_obj_char)
+    local block_bool = common_game_scene_block_test(hurt_side_obj_char,hit_side_obj_char)
     -- risk_gauge
-    if obj_char["risk_gauge"][1] >= obj_char["risk_gauge"][2] and not block_bool then
-        obj_char["hurt_state"] = "counter"
+    if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and not block_bool then
+        hurt_side_obj_char["hurt_state"] = "counter"
         hit_side_obj_char["hit_function"] = common_game_scene_strike_hit_function
         hit_side_obj_char["hurt_function"] = common_game_scene_strike_hurt_function
         hit_side_obj_char["hit_counter_ver_function"] = common_game_scene_counter_ver3
     end
     -- counter
-    if obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
+    if hurt_side_obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
         hit_side_obj_char["hit_damage"] = hit_side_obj_char["hit_damage"]*1.1
         hit_side_obj_char["hit_counter_VFX_insert_function"](hit_side_obj_char)
     elseif not block_bool then
@@ -1490,7 +1490,7 @@ function common_game_scene_projectile_apply_damage_heat(
 end
 
 function common_game_scene_char_apply_hurt_velocity(
-    obj_char,obj_char_other_side,FD_block,
+    obj_char,opponent_side_obj_char,FD_block,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -1499,17 +1499,17 @@ function common_game_scene_char_apply_hurt_velocity(
     hurt_vertical_gravity_correction,
     fix_direction
 )
-    hurt_horizontal_velocity = fix_direction and obj_char[5]*hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"] or
-    common_game_scene_get_character_hurt_direction(obj_char,obj_char_other_side,hurt_horizontal_velocity)*obj_char_other_side["horizontal_velocity_correction"]
+    hurt_horizontal_velocity = fix_direction and obj_char[5]*hurt_horizontal_velocity*opponent_side_obj_char["horizontal_velocity_correction"] or
+    common_game_scene_get_character_hurt_direction(obj_char,opponent_side_obj_char,hurt_horizontal_velocity)*opponent_side_obj_char["horizontal_velocity_correction"]
 
     common_game_scene_char_apply_hurt_velocity_sub_hit_side(
-        obj_char,obj_char_other_side,
+        obj_char,opponent_side_obj_char,
         hurt_horizontal_friction,
         hurt_horizontal_velocity,
         FD_block
     )
     common_game_scene_char_apply_hurt_velocity_sub_hurt_side(
-        obj_char,obj_char_other_side,
+        obj_char,opponent_side_obj_char,
         hurt_horizontal_friction,
         hurt_vertical_gravity,
         hurt_horizontal_velocity,
@@ -1517,11 +1517,11 @@ function common_game_scene_char_apply_hurt_velocity(
         FD_block
     )
 
-    obj_char_other_side["horizontal_velocity_correction"] = obj_char_other_side["horizontal_velocity_correction"]*hurt_horizontal_velocity_correction
-    obj_char_other_side["gravity_correction"] = obj_char_other_side["gravity_correction"]*hurt_vertical_gravity_correction
+    opponent_side_obj_char["horizontal_velocity_correction"] = opponent_side_obj_char["horizontal_velocity_correction"]*hurt_horizontal_velocity_correction
+    opponent_side_obj_char["gravity_correction"] = opponent_side_obj_char["gravity_correction"]*hurt_vertical_gravity_correction
 end
 function common_game_scene_char_apply_knockdown_velocity(
-    obj_char,obj_char_other_side,
+    obj_char,opponent_side_obj_char,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -1529,16 +1529,16 @@ function common_game_scene_char_apply_knockdown_velocity(
     hurt_vertical_gravity,
     hurt_vertical_gravity_correction
 )
-    hurt_horizontal_velocity = obj_char_other_side[5]*hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]
-    obj_char_other_side["friction"] = hurt_horizontal_friction
-    obj_char_other_side["gravity"] = hurt_vertical_gravity*obj_char_other_side["gravity_correction"]
-    obj_char_other_side["velocity"] = {hurt_horizontal_velocity,hurt_vertical_velocity}
+    hurt_horizontal_velocity = opponent_side_obj_char[5]*hurt_horizontal_velocity*opponent_side_obj_char["horizontal_velocity_correction"]
+    opponent_side_obj_char["friction"] = hurt_horizontal_friction
+    opponent_side_obj_char["gravity"] = hurt_vertical_gravity*opponent_side_obj_char["gravity_correction"]
+    opponent_side_obj_char["velocity"] = {hurt_horizontal_velocity,hurt_vertical_velocity}
 
-    obj_char_other_side["gravity_correction"] = obj_char_other_side["gravity_correction"]*hurt_vertical_gravity_correction
-    obj_char_other_side["horizontal_velocity_correction"] = obj_char_other_side["horizontal_velocity_correction"]*hurt_horizontal_velocity_correction
+    opponent_side_obj_char["gravity_correction"] = opponent_side_obj_char["gravity_correction"]*hurt_vertical_gravity_correction
+    opponent_side_obj_char["horizontal_velocity_correction"] = opponent_side_obj_char["horizontal_velocity_correction"]*hurt_horizontal_velocity_correction
 end
 function common_game_scene_projectile_apply_hurt_velocity(
-    obj_char,obj_char_other_side,projectile,
+    obj_char,opponent_side_obj_char,projectile,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -1549,17 +1549,17 @@ function common_game_scene_projectile_apply_hurt_velocity(
     velocity_center
 )
     hurt_horizontal_velocity = fix_direction and (projectile[5] * hurt_horizontal_velocity)
-    or (velocity_center == "character" and common_game_scene_get_character_hurt_direction(obj_char, obj_char_other_side, hurt_horizontal_velocity))
-    or (velocity_center == "projectile" and common_game_scene_get_character_hurt_direction(projectile, obj_char_other_side, hurt_horizontal_velocity))
+    or (velocity_center == "character" and common_game_scene_get_character_hurt_direction(obj_char, opponent_side_obj_char, hurt_horizontal_velocity))
+    or (velocity_center == "projectile" and common_game_scene_get_character_hurt_direction(projectile, opponent_side_obj_char, hurt_horizontal_velocity))
     or 0
-    hurt_horizontal_velocity = hurt_horizontal_velocity*obj_char_other_side["horizontal_velocity_correction"]
+    hurt_horizontal_velocity = hurt_horizontal_velocity*opponent_side_obj_char["horizontal_velocity_correction"]
 
-    obj_char_other_side["friction"] = hurt_horizontal_friction
-    obj_char_other_side["gravity"] = hurt_vertical_gravity*obj_char_other_side["gravity_correction"]
-    obj_char_other_side["velocity"] = {hurt_horizontal_velocity+obj_char_other_side["velocity"][1]*0.15,hurt_vertical_velocity}
+    opponent_side_obj_char["friction"] = hurt_horizontal_friction
+    opponent_side_obj_char["gravity"] = hurt_vertical_gravity*opponent_side_obj_char["gravity_correction"]
+    opponent_side_obj_char["velocity"] = {hurt_horizontal_velocity+opponent_side_obj_char["velocity"][1]*0.15,hurt_vertical_velocity}
 
-    obj_char_other_side["gravity_correction"] = obj_char_other_side["gravity_correction"]*hurt_vertical_gravity_correction
-    obj_char_other_side["horizontal_velocity_correction"] = obj_char_other_side["horizontal_velocity_correction"]*hurt_horizontal_velocity_correction
+    opponent_side_obj_char["gravity_correction"] = opponent_side_obj_char["gravity_correction"]*hurt_vertical_gravity_correction
+    opponent_side_obj_char["horizontal_velocity_correction"] = opponent_side_obj_char["horizontal_velocity_correction"]*hurt_horizontal_velocity_correction
 end
 
 function common_game_scene_char_apply_hurt_velocity_sub_hit_side(
