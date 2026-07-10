@@ -399,7 +399,6 @@ function load_game_scene_stage_apply_wallbreak_start_init(hurt_side_obj_char,hit
     local adv = hurt_side_obj_char["wallhurt_wallbreak_adv"]
     local wallstick_on_side = hurt_side_obj_char["wallhurt_wallstick_on_side"]
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side_obj_char["player_side"])
-    
     -- character_init
     hit_side_obj_char["state"] = "wallbreak_hit"
     hurt_side_obj_char["state"] = "wallbreak_hurt"
@@ -483,6 +482,10 @@ function load_game_scene_stage_apply_wallbreak_end_init(hurt_side_obj_char,hit_s
     end
     load_game_scene_wallbreak_end_init_LP()
     load_game_scene_wallbreak_end_init_RP()
+
+    common_game_scene_reset_input_state_for_wallbreak(hurt_side_obj_char)
+    common_game_scene_reset_input_state_for_wallbreak(hit_side_obj_char)
+    
     init_character_anim_with(hit_side_obj_char,hit_side_obj_char["character_animation"])
     init_character_anim_with(hurt_side_obj_char,hurt_side_obj_char["character_animation"])
     -- stage

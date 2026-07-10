@@ -850,32 +850,32 @@ function update_game_scene_test_and_apply_wallstick()
     update_game_scene_test_and_apply_wallstick_sub(char_LP,char_RP)
     update_game_scene_test_and_apply_wallstick_sub(char_RP,char_LP)
 end
-function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_side)
+function update_game_scene_test_and_apply_wallstick_sub(obj_char_a,obj_char_b)
     local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local obj_wallstick = obj_stage_game_scene_wallstick
-    local wallstick_spwan_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char["player_side"])["wallstick_spawn_anchor_pos"]
+    local wallstick_spwan_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char_a["player_side"])["wallstick_spawn_anchor_pos"]
     local stage_collision = false
     local collision_side = 0
     local collision_side_cache = 0
 
-    if obj_char["state"] ~= "hurt" and obj_char["state"] ~= "hurtstop" then
+    if obj_char_a["state"] ~= "hurt" and obj_char_a["state"] ~= "hurtstop" then
         return
     end
-    if obj_char["wallhurt_wallstick_on_side"] ~= 0 then
+    if obj_char_a["wallhurt_wallstick_on_side"] ~= 0 then
         return
     end
-    if obj_char["collision_move_available"][1] == 0 then
+    if obj_char_a["collision_move_available"][1] == 0 then
         collision_side = -1
-    elseif obj_char["collision_move_available"][2] == 0 then
+    elseif obj_char_a["collision_move_available"][2] == 0 then
         collision_side = 1
     else
         return
     end
 
-    if obj_char["collision_move_available_cache"][1] == 0 then
+    if obj_char_a["collision_move_available_cache"][1] == 0 then
         collision_side_cache = -1
-    elseif obj_char["collision_move_available_cache"][2] == 0 then
+    elseif obj_char_a["collision_move_available_cache"][2] == 0 then
         collision_side_cache = 1
     end
     obj_wallstick[1] = math.abs(obj_wallstick[1])*collision_side
@@ -883,10 +883,10 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
     -- wallstick_visual_effect
     if collision_side ~= 0 and collision_side ~= collision_side_cache then
         -- wallstick_stage_obj
-        obj_wallstick[2] = obj_char["y"] - wallstick_spwan_anchor_pos[obj_char["height"]]
+        obj_wallstick[2] = obj_char_a["y"] - wallstick_spwan_anchor_pos[obj_char_a["height"]]
         -- wallstick
-        if obj_char["wallhurt_wallstickable"] and collision_side ~= 0 
-        and obj_char["wallstick_gauge"][1] >= obj_char["wallstick_gauge"][2] 
+        if obj_char_a["wallhurt_wallstickable"] and collision_side ~= 0 
+        and obj_char_a["wallstick_gauge"][1] >= obj_char_a["wallstick_gauge"][2] 
         then
             -- camera_shake
             obj_stage_main["camera_active_application_table"] = {}
@@ -922,33 +922,33 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char,obj_char_other_
         end
     end
     -- wallstick_state_change
-    if obj_char["wallhurt_wallstickable"] and collision_side ~= 0 
-    and obj_char["wallstick_gauge"][1] >= obj_char["wallstick_gauge"][2]
+    if obj_char_a["wallhurt_wallstickable"] and collision_side ~= 0 
+    and obj_char_a["wallstick_gauge"][1] >= obj_char_a["wallstick_gauge"][2]
     then
         table.insert(obj_stage_main["wallstick_char_obj_active_application_table"],
             function()
-                if obj_char["height"] == "air" then
-                    obj_char["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(obj_char)
-                    init_character_anim_with(obj_char,obj_char["character_animation"])
+                if obj_char_a["height"] == "air" then
+                    obj_char_a["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(obj_char_a)
+                    init_character_anim_with(obj_char_a,obj_char_a["character_animation"])
                 else
-                    obj_char["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstick_ground(obj_char)
-                    init_character_anim_with(obj_char,obj_char["character_animation"])
+                    obj_char_a["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstick_ground(obj_char_a)
+                    init_character_anim_with(obj_char_a,obj_char_a["character_animation"])
                 end
-                obj_char[5] = -collision_side
-                obj_char["state_cache"] = "wallstick"
-                obj_char["state"] = "hurtstop"
-                obj_char["wallhurt_wallstick_on_side"] = collision_side
-                obj_char["physics_lock"] = true
-                if obj_char_other_side["state"] ~= "hitstop" then
-                    obj_char_other_side["state_cache"] = obj_char_other_side["state"]
-                    obj_char_other_side["state"] = "hitstop"
-                    obj_char_other_side["physics_lock"] = true
+                obj_char_a[5] = -collision_side
+                obj_char_a["state_cache"] = "wallstick"
+                obj_char_a["state"] = "hurtstop"
+                obj_char_a["wallhurt_wallstick_on_side"] = collision_side
+                obj_char_a["physics_lock"] = true
+                if obj_char_b["state"] ~= "hitstop" then
+                    obj_char_b["state_cache"] = obj_char_b["state"]
+                    obj_char_b["state"] = "hitstop"
+                    obj_char_b["physics_lock"] = true
                 end
                 -- hit_hurt_blockstop_countdown
-                obj_char["hit_hurt_blockstop_countdown"] = 30
-                obj_char["last_hitstop_frame"] = 0
-                obj_char_other_side["hit_hurt_blockstop_countdown"] = 30
-                obj_char_other_side["last_hitstop_frame"] = 0
+                obj_char_a["hit_hurt_blockstop_countdown"] = 30
+                obj_char_a["last_hitstop_frame"] = 0
+                obj_char_b["hit_hurt_blockstop_countdown"] = 30
+                obj_char_b["last_hitstop_frame"] = 0
             end
         )
     end

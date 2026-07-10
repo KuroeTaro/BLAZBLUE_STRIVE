@@ -137,6 +137,34 @@ function common_game_scene_set_input_sys_cache_init(side)
     return side_table[side]
 end
 
+function common_game_scene_reset_input_state_for_wallbreak(obj_char)
+    if not obj_char then
+        return
+    end
+    local side = obj_char["player_side"]
+    local input_state = INPUT_SYS_CURRENT_COMMAND_STATE[side]
+    local init_cache = common_game_scene_get_input_sys_cache_init(side)
+    local init_negative_edge = common_game_scene_get_input_sys_cache_negative_edge_init(side)
+
+    if input_state then
+        for i=1,20 do
+            input_state[INPUT_SYS_COMMAND_TABLE[i]] = "Released"
+        end
+    end
+
+    obj_char["direction_input"] = 5
+    obj_char["direction_input_cache_hit_jump_cancel"] = 5
+    obj_char["input_sys_state"] = "none"
+    obj_char["input_sys_state_negative_edge"] = "none"
+
+    if init_cache then
+        init_cache(obj_char)
+    end
+    if init_negative_edge then
+        init_negative_edge(obj_char)
+    end
+end
+
 function common_game_scene_get_input_sys_cache_negative_edge_state_machine(side)
     local side_table = {
         ["L"] = state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge,

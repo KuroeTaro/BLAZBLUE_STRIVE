@@ -429,6 +429,13 @@ function test_input_sys_press(input)
         return false
     end
 end
+function test_input_sys_hold(input)
+    if input == "Holding" then
+        return true
+    else
+        return false
+    end
+end
 function test_input_sys_release(input)
     if input == "Releasing" then
         return true

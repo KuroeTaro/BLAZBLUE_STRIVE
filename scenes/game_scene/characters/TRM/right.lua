@@ -1094,8 +1094,6 @@ function load_game_scene_wallbreak_end_init_RP()
     obj_char_game_scene_char_RP["last_move_state"] = "none" -- none startup active recovery
 
     -- input
-    obj_char_game_scene_char_RP["direction_input"] = 5
-    obj_char_game_scene_char_RP["direction_input_cache_hit_jump_cancel"] = 5
     obj_char_game_scene_char_RP["startup_frame"] = 0
     obj_char_game_scene_char_RP["active_frame"] = 0
     obj_char_game_scene_char_RP["recovery_frame"] = 0
@@ -1141,7 +1139,6 @@ function load_game_scene_wallbreak_end_init_RP()
     obj_char_game_scene_char_RP["physics_lock"] = false
 
     obj_char_game_scene_char_RP["wallstick_gauge"] = {0.0,200.0} -- 0.0 - 200.0
-
 
     obj_char_game_scene_char_RP["heat_penalty"] = 1
     obj_char_game_scene_char_RP["heat_penalty_countdown"] = 0
