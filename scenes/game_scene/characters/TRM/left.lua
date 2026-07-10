@@ -5142,7 +5142,7 @@ function state_gate_game_scene_char_LP_from_2K(input,obj_char)
             return true
         end
         -- _6K
-        if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["K"]) then
+        if (obj_char["direction_input"] == 6) and test_input_sys_press(input["K"]) then
             if not common_game_scene_get_character_facing_currect(obj_char) then
                 obj_char[5] = -obj_char[5]
             end
