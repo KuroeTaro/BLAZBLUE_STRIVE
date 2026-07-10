@@ -857,7 +857,7 @@ function common_game_scene_throw_hurt_function(obj_char)
     sprite_sheet = obj_char["sprite_sheet"]
 
     obj_char["pushbox"] = pushbox_data[sprite_sheet][0]
-    obj_char["pushbox_other_side_char_active"] = false
+    obj_char["pushbox_opponent_collision_active"] = false
     obj_char["hitbox_table"] = {}
     obj_char["hurtbox_table"] = {}
     obj_char["collision_ground_height_offset"] = collision_ground_height_offset    

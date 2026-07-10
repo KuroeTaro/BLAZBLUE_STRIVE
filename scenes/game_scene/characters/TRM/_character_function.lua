@@ -105,6 +105,27 @@ function character_function_game_scene_TRM_shot_sys_ability_gauge_use(obj_char)
         obj_char["ability_gauge"][1] = math.floor(current_ability_gauge/100) * 100
     end
 end
+-- aim_process_init
+function character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char)
+    local hurt_side_obj_char = common_game_scene_change_character(hit_side_obj_char["player_side"])
+    local instant_aim_state = {
+        ["block"] = true,
+        ["hurt"] = true,
+        ["throw_hurt_success"] = true,
+        ["hurtstop"] = true,
+        ["blockstop"] = true,
+        ["wallstick"] = true,
+        ["wallbreak"] = true,
+        ["knockdown"] = true,
+        ["knockdown_recovery"] = true,
+        ["knockdown_recovery_wallstick"] = true
+    }
+    if instant_aim_state[hurt_side_obj_char["state"]] then
+        hit_side_obj_char["shot_sys_aim_process"][1] = hit_side_obj_char["shot_sys_aim_process"][3]
+    else
+        hit_side_obj_char["shot_sys_aim_process"][1] = 0
+    end
+end
 -- aim_process_update
 function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
     -- 0.敌我之间距离

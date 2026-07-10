@@ -180,7 +180,7 @@ function load_game_scene_obj_char_LP()
 
     -- collide
     obj_char_game_scene_char_LP["pushbox"] = {0,-185,120,370}
-    obj_char_game_scene_char_LP["pushbox_other_side_char_active"] = true
+    obj_char_game_scene_char_LP["pushbox_opponent_collision_active"] = true
     obj_char_game_scene_char_LP["hitbox_table"] = {}
     obj_char_game_scene_char_LP["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
     obj_char_game_scene_char_LP["collision_move_available"] = {1,1}
@@ -1037,7 +1037,7 @@ function load_game_scene_wallbreak_start_init_LP()
     obj_char_game_scene_char_LP["hit_hurt_blockstop_countdown"] = 0
     obj_char_game_scene_char_LP["hit_hurt_block_slowdown_countdown"] = 0
 
-    obj_char_game_scene_char_LP["pushbox_other_side_char_active"] = false
+    obj_char_game_scene_char_LP["pushbox_opponent_collision_active"] = false
     obj_char_game_scene_char_LP["hitbox_table"] = {}
     obj_char_game_scene_char_LP["hurtbox_table"] = {}
 end
@@ -3430,7 +3430,7 @@ function state_gate_game_scene_char_LP_from_throw_success(input,obj_char)
     end
     -- _PRC
     if not obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
-        obj_char["pushbox_other_side_char_active"] = true
+        obj_char["pushbox_opponent_collision_active"] = true
         obj_char["physics_lock"] = false
         common_game_scene_nil_load_camear_shake_anim(obj_char)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
@@ -3448,7 +3448,7 @@ function state_gate_game_scene_char_LP_from_throw_success(input,obj_char)
         )
 
         obj_char_other_side["state"] = "hurt"
-        obj_char_other_side["pushbox_other_side_char_active"] = true
+        obj_char_other_side["pushbox_opponent_collision_active"] = true
         obj_char_other_side["physics_lock"] = false
         obj_char_other_side["character_animation"] = obj_char["throw_hurt_PRC_animation"]
         init_character_anim_with(obj_char_other_side,obj_char_other_side["character_animation"])

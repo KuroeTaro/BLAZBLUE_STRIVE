@@ -99,8 +99,8 @@ function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_R
     local box_L = collision_box_to_real_world_box(obj_char_LP,obj_char_LP["pushbox"])
     local box_R = collision_box_to_real_world_box(obj_char_RP,obj_char_RP["pushbox"])
 
-    if (not obj_char_LP["pushbox_other_side_char_active"])
-    or (not obj_char_RP["pushbox_other_side_char_active"]) then
+    if (not obj_char_LP["pushbox_opponent_collision_active"])
+    or (not obj_char_RP["pushbox_opponent_collision_active"]) then
         return
     end
     if collision_box_aabb_detection(box_L,box_R) then
@@ -465,8 +465,8 @@ end
     --     local capsule_L = collision_box_to_capsule(box_L)
     --     local capsule_R = collision_box_to_capsule(box_R)
     --     local distance = collision_capsule_x_relocate_distance(capsule_L,capsule_R)
-    --     if (not obj_char_LP["pushbox_other_side_char_active"])
-    --     or (not obj_char_RP["pushbox_other_side_char_active"]) then
+    --     if (not obj_char_LP["pushbox_opponent_collision_active"])
+    --     or (not obj_char_RP["pushbox_opponent_collision_active"]) then
     --         return
     --     end
     --     if collision_capsule_detection(capsule_L,capsule_R) then

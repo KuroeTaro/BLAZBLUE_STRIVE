@@ -2648,7 +2648,7 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
     obj[1] = obj_char["x"] + obj_char[5]*(FD_VFX_spawn_anchor_pos[1])
     obj[2] = obj_char["y"] + obj_char[6]*(FD_VFX_spawn_anchor_pos[2])
     obj[3] = obj_char[3]
-    obj[4] = 0.75
+    obj[4] = 0
     obj[5] = obj_char[5]
     obj[6] = obj_char[6]
     obj[7] = 0
@@ -2670,13 +2670,14 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
     obj["animation"]["loop"] = false
     init_frame_anim_without(obj,obj["animation"])
     obj["opacity_point_linear_animation"] = {}
-    obj["opacity_point_linear_animation"][0] = {0.25,15}
-    obj["opacity_point_linear_animation"][15] = {1,25}
-    obj["opacity_point_linear_animation"][25] = {1,35}
+    obj["opacity_point_linear_animation"][0] = {0.75,15}
+    obj["opacity_point_linear_animation"][15] = {0.9,25}
+    obj["opacity_point_linear_animation"][25] = {0.9,35}
     obj["opacity_point_linear_animation"][35] = {0,35}
     obj["opacity_point_linear_animation"]["prop"] = 4
     obj["opacity_point_linear_animation"]["length"] = 35
     obj["opacity_point_linear_animation"]["loop"] = false
+    obj["opacity_point_linear_animation"]["fix_type"] = true
     init_point_linear_anim_without(obj,obj["opacity_point_linear_animation"])
     obj["update"] = function()
         frame_animator(obj,obj["animation"])
@@ -2695,12 +2696,14 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_block_FD
         obj["draw_sync"]()
+        love.graphics.setColor(1,1,1,obj[4])
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
-        love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("add")
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
         draw_3d_image(obj_camera,obj,image_VFX_game_scene_FD_bubble)
         love.graphics.setBlendMode("alpha")
+        love.graphics.setColor(1,1,1,1)
     end
     table.insert(obj_char["VFX_hit_front_table"],obj)
 end
