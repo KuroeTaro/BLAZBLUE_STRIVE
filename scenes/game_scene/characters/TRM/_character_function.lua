@@ -149,7 +149,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_upd
         ["knockdown_recovery"] = true,
         ["knockdown_recovery_wallstick"] = true
     }
-    function debuff(self_side_obj_char, opponent_side_obj_char)
+    local function debuff(self_side_obj_char, opponent_side_obj_char)
         local dx = opponent_side_obj_char["x"] - self_side_obj_char["x"]
         local vx = opponent_side_obj_char["velocity"][1]
         local v = math.sqrt(opponent_side_obj_char["velocity"][1]^2 + opponent_side_obj_char["velocity"][2]^2)

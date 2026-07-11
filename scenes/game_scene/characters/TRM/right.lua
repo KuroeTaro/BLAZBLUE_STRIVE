@@ -3519,7 +3519,7 @@ function state_gate_game_scene_char_RP_from_throw_testing(input,self_side_obj_ch
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
             self_side_obj_char,"teched"
         )
-        init_character_anim_with(obj_char,obj_char["character_animation"])
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
     elseif self_side_obj_char["f"] > 9 then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
