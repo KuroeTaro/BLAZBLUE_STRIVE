@@ -44,10 +44,7 @@
             -- anchor_pos
             ------
 function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -218,10 +215,7 @@ end
             -- anchor_pos
             ------
 function load_game_scene_anim_char_common_0_ground_hurt_lv0(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -334,10 +328,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
     return res
 end
 function load_game_scene_anim_char_common_0_ground_hurt_lv1(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -450,10 +441,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
     return res
 end
 function load_game_scene_anim_char_common_0_ground_hurt_lv2(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -566,10 +554,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
     return res
 end
 function load_game_scene_anim_char_common_0_ground_hurt_lv3(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -682,10 +667,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
     return res
 end
 function load_game_scene_anim_char_common_0_ground_hurt_lv4(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -831,10 +813,7 @@ end
             -- anchor_pos
             ------
 function load_game_scene_anim_char_common_0_ground_block_lv0(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -943,10 +922,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
     return res
 end
 function load_game_scene_anim_char_common_0_ground_block_lv1(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -1059,10 +1035,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
     return res
 end
 function load_game_scene_anim_char_common_0_ground_block_lv2(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -1173,10 +1146,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
     return res
 end
 function load_game_scene_anim_char_common_0_ground_block_lv3(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -1291,10 +1261,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
     return res
 end
 function load_game_scene_anim_char_common_0_ground_block_lv4(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -1411,10 +1378,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
     return res
 end
 function load_game_scene_anim_char_common_0_air_block(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -1852,10 +1816,7 @@ end
             -- anchor_pos
             ------
 function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -1978,10 +1939,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_down(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -2104,10 +2062,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -2428,10 +2383,7 @@ end
             -- anchor_pos
             ------
 function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -2544,10 +2496,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -2751,10 +2700,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -3006,10 +2952,7 @@ end
             -- anchor_pos
             ------
 function load_game_scene_anim_char_common_0_general_hurt_launched_float(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -3340,10 +3283,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_high(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -3532,10 +3472,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_low(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -3670,10 +3607,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -3798,10 +3732,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -3986,10 +3917,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -4143,10 +4071,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -4282,10 +4207,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -4414,10 +4336,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -4573,10 +4492,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
 end
 
 function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_PRC(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -4768,10 +4684,7 @@ end
 
 -- semi_launched
 function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
-    hit_side_obj_char,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
