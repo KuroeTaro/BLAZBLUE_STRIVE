@@ -179,8 +179,8 @@ function common_game_scene_get_input_sys_cache_negative_edge_init(side)
     }
     return side_table[side]
 end
-function common_update_game_scene_input_direction(self_side_obj_char)
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[self_side_obj_char["player_side"]]
+function common_update_game_scene_input_direction(obj_char)
+    local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
     local right = (test_input_sys_press_or_hold(input["right"]) and 1 or 0)
     local left  = (test_input_sys_press_or_hold(input["left"]) and 1 or 0)
     local up    = (test_input_sys_press_or_hold(input["up"]) and 1 or 0)
@@ -190,10 +190,10 @@ function common_update_game_scene_input_direction(self_side_obj_char)
     elseif test_input_sys_press_or_hold(input["correction_down"]) then
         down = 1 up = 0
     end
-    if self_side_obj_char[5] == -1 then
+    if obj_char[5] == -1 then
         left,right = right,left
     end
-    self_side_obj_char["direction_input"] = 5 + 3*up - 3*down + right*1 - left*1
+    obj_char["direction_input"] = 5 + 3*up - 3*down + right*1 - left*1
 end
 function common_game_scene_get_character_facing_currect(self_side_obj_char)
     local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
