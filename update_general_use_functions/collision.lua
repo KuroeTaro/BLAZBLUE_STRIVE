@@ -33,26 +33,20 @@ function collision_test_char_on_ground(obj)
     box_B_collision = box[2]+box[4]/2+obj["collision_ground_height_offset"]
     return box_B_collision >= stage_B_collision
 end
-function collision_test_cS_distance_check(obj_char,max_distance)
-    -- local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
-    -- if math.abs(obj_char_other_side["x"] - obj_char["x"]) < max_distance+200 then
-    --     return true
-    -- end
-    -- return false
-    
+function collision_test_cS_distance_check(self_side_obj_char,max_distance)    
     local hurtbox = {}
     local hurtbox_front_x = 0
     local hurtbox_edge_x = 0
-    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
-    local num_hurtbox_table = #obj_char_other_side["hurtbox_table"]
-    if #obj_char_other_side["hurtbox_table"] == 0 then return true end
+    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
+    local num_hurtbox_table = #opponent_side_obj_char["hurtbox_table"]
+    if #opponent_side_obj_char["hurtbox_table"] == 0 then return true end
     for i=1,num_hurtbox_table do
-        hurtbox = obj_char_other_side["hurtbox_table"][i]
-        hurtbox_front_x = hurtbox[1] * obj_char_other_side[5] + obj_char_other_side["x"]
+        hurtbox = opponent_side_obj_char["hurtbox_table"][i]
+        hurtbox_front_x = hurtbox[1] * opponent_side_obj_char[5] + opponent_side_obj_char["x"]
         -- hurtbox_front_x 是hurtbox中心，加减width/2得到前后边界
-        hurtbox_edge_x1 = hurtbox_front_x + (hurtbox[3]/2) * obj_char_other_side[5]
-        hurtbox_edge_x2 = hurtbox_front_x - (hurtbox[3]/2) * obj_char_other_side[5]
-        if math.abs(hurtbox_edge_x1 - obj_char["x"]) < max_distance or math.abs(hurtbox_edge_x2 - obj_char["x"]) < max_distance then
+        hurtbox_edge_x1 = hurtbox_front_x + (hurtbox[3]/2) * opponent_side_obj_char[5]
+        hurtbox_edge_x2 = hurtbox_front_x - (hurtbox[3]/2) * opponent_side_obj_char[5]
+        if math.abs(hurtbox_edge_x1 - self_side_obj_char["x"]) < max_distance or math.abs(hurtbox_edge_x2 - self_side_obj_char["x"]) < max_distance then
             return true
         end
     end

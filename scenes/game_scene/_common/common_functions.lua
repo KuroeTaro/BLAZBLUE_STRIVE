@@ -1576,8 +1576,8 @@ function common_game_scene_projectile_apply_hurt_velocity(
     velocity_center
 )
     hurt_horizontal_velocity = (fix_direction and (projectile[5] * hurt_horizontal_velocity))
-    or (velocity_center == "character" and common_game_scene_get_character_hurt_direction(hit_side_obj_char, hurt_side_obj_char, hurt_horizontal_velocity))
-    or (velocity_center == "projectile" and common_game_scene_get_character_hurt_direction(projectile, hurt_side_obj_char, hurt_horizontal_velocity))
+    or (velocity_center == "character" and common_game_scene_get_character_hurt_direction(hit_side_obj_char,hurt_side_obj_char,hurt_horizontal_velocity))
+    or (velocity_center == "projectile" and common_game_scene_get_character_hurt_direction(projectile,hurt_side_obj_char,hurt_horizontal_velocity))
     or 0
     hurt_horizontal_velocity = hurt_horizontal_velocity*hurt_side_obj_char["horizontal_velocity_correction"]
 

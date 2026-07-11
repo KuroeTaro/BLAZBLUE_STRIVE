@@ -388,43 +388,43 @@ function set_spawn_pos()
     if this_function then this_function() end
 end
 
-function update_character_frame_adv_info_init(obj_char)
+function update_character_frame_adv_info_init(self_side_obj_char)
     -- none startup active recovery
-    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
-    if obj_char["last_move_state"] == "none" and obj_char["move_state"] ~= "none" then
-        if obj_char_other_side["move_state"] == "none" then
-            obj_char_other_side["frame_adv"] = 0
+    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
+    if self_side_obj_char["last_move_state"] == "none" and self_side_obj_char["move_state"] ~= "none" then
+        if opponent_side_obj_char["move_state"] == "none" then
+            opponent_side_obj_char["frame_adv"] = 0
         end
-        obj_char["frame_adv"] = 0
+        self_side_obj_char["frame_adv"] = 0
     end
-    obj_char["last_move_state"] = obj_char["move_state"]
+    self_side_obj_char["last_move_state"] = self_side_obj_char["move_state"]
 end
-function update_character_frame_info(obj_char)
-    local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
-    if obj_char["move_state"] == "none" and obj_char_other_side["move_state"] ~= "none" then
-        obj_char["frame_adv"] = obj_char["frame_adv"] + 1
+function update_character_frame_info(self_side_obj_char)
+    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
+    if self_side_obj_char["move_state"] == "none" and opponent_side_obj_char["move_state"] ~= "none" then
+        self_side_obj_char["frame_adv"] = self_side_obj_char["frame_adv"] + 1
         return
     end
-    if obj_char["game_speed"] == 0 or obj_char_other_side["game_speed"] == 0 then
+    if self_side_obj_char["game_speed"] == 0 or opponent_side_obj_char["game_speed"] == 0 then
         return
     end
 
-    if obj_char["move_state"] == "startup" then
-        obj_char["startup_frame"] = obj_char["startup_frame"] + 1
+    if self_side_obj_char["move_state"] == "startup" then
+        self_side_obj_char["startup_frame"] = self_side_obj_char["startup_frame"] + 1
     end
-    if obj_char["move_state"] == "active" 
-    and obj_char["state"] ~= "hitstop" 
-    and obj_char["state"] ~= "hurtstop" 
-    and obj_char["state"] ~= "blockstop" 
+    if self_side_obj_char["move_state"] == "active" 
+    and self_side_obj_char["state"] ~= "hitstop" 
+    and self_side_obj_char["state"] ~= "hurtstop" 
+    and self_side_obj_char["state"] ~= "blockstop" 
     then
-        obj_char["active_frame"] = obj_char["active_frame"] + 1
+        self_side_obj_char["active_frame"] = self_side_obj_char["active_frame"] + 1
     end
-    if obj_char["move_state"] == "recovery" then
-        obj_char["recovery_frame"] = obj_char["recovery_frame"] + 1
+    if self_side_obj_char["move_state"] == "recovery" then
+        self_side_obj_char["recovery_frame"] = self_side_obj_char["recovery_frame"] + 1
     end
 
-    if obj_char["state"] == "hitstop" or obj_char["state"] == "hurtstop" or obj_char["state"] == "blockstop" then
-        obj_char["last_hitstop_frame"] = obj_char["last_hitstop_frame"] + 1
+    if self_side_obj_char["state"] == "hitstop" or self_side_obj_char["state"] == "hurtstop" or self_side_obj_char["state"] == "blockstop" then
+        self_side_obj_char["last_hitstop_frame"] = self_side_obj_char["last_hitstop_frame"] + 1
     end
 end
 

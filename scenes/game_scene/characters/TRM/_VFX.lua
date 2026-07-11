@@ -474,69 +474,69 @@ function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_shot_oroboros_blast
     end
     table.insert(obj_char["VFX_common_front_table"],obj)
 end
-function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(obj_char,obj_char_other_side)
+function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
     -- x y z opacity sx sy r f
-    local obj = {0,0,0,1,1,1,0,0}
+    local obj_projectile = {0,0,0,1,1,1,0,0}
 
-    obj["life"] = 16
-    obj[1] = obj_char["shot_sys_reticle"][1] - 230 + 160
-    obj[2] = obj_char["shot_sys_reticle"][2] - 255 + 160
-    obj[3] = 0
-    obj[4] = 1
-    obj[5] = 1
-    obj[6] = 1
-    obj[7] = 0
-    obj[8] = 0
-    obj["FCT"] = {0,0,0,0,0,0,0,0}
-    obj["LCT"] = {0,0,0,0,0,0,0,0}
-    obj["LCD"] = {0,0,0,0,0,0,0,0}
-    obj["animation"] = {}
-    obj["animation"] = {}
-    obj["animation"][0] = 0
-    obj["animation"][3] = 1
-    obj["animation"][7] = 2
-    obj["animation"][10] = 3
-    obj["animation"][13] = 4
-    obj["animation"]["prop"] = 8
-    obj["animation"]["length"] = 16
-    obj["animation"]["loop"] = false
-    init_frame_anim_without(obj,obj["animation"])
-    if obj_char["x"] > obj_char_other_side["x"] then
-        obj[1] = obj_char["shot_sys_reticle"][1] + 230 + 160
-        obj[5] = -1
-    elseif obj_char["x"] == obj_char_other_side["x"] then
+    obj_projectile["life"] = 16
+    obj_projectile[1] = hit_side_obj_char["shot_sys_reticle"][1] - 230 + 160
+    obj_projectile[2] = hit_side_obj_char["shot_sys_reticle"][2] - 255 + 160
+    obj_projectile[3] = 0
+    obj_projectile[4] = 1
+    obj_projectile[5] = 1
+    obj_projectile[6] = 1
+    obj_projectile[7] = 0
+    obj_projectile[8] = 0
+    obj_projectile["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_projectile["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_projectile["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_projectile["animation"] = {}
+    obj_projectile["animation"] = {}
+    obj_projectile["animation"][0] = 0
+    obj_projectile["animation"][3] = 1
+    obj_projectile["animation"][7] = 2
+    obj_projectile["animation"][10] = 3
+    obj_projectile["animation"][13] = 4
+    obj_projectile["animation"]["prop"] = 8
+    obj_projectile["animation"]["length"] = 16
+    obj_projectile["animation"]["loop"] = false
+    init_frame_anim_without(obj_projectile,obj_projectile["animation"])
+    if hit_side_obj_char["x"] > hurt_side_obj_char["x"] then
+        obj_projectile[1] = hit_side_obj_char["shot_sys_reticle"][1] + 230 + 160
+        obj_projectile[5] = -1
+    elseif hit_side_obj_char["x"] == hurt_side_obj_char["x"] then
         if math.random(0, 1) == 0 then
-            obj[1] = obj_char["shot_sys_reticle"][1] + 230 + 160
-            obj[5] = -1
+            obj_projectile[1] = hit_side_obj_char["shot_sys_reticle"][1] + 230 + 160
+            obj_projectile[5] = -1
         end
     end
-    obj["update"] = function()
-        frame_animator(obj,obj["animation"])
-        obj["life"] = obj["life"] - 1
+    obj_projectile["update"] = function()
+        frame_animator(obj_projectile,obj_projectile["animation"])
+        obj_projectile["life"] = obj_projectile["life"] - 1
     end
-    obj["draw_sync"] = function()
-        if obj_char["x"] > obj_char_other_side["x"] then
-            obj[1] = obj_char["shot_sys_reticle"][1] + 230 + 160
-            obj[5] = -1
-        elseif obj_char["x"] == obj_char_other_side["x"] then
+    obj_projectile["draw_sync"] = function()
+        if hit_side_obj_char["x"] > hurt_side_obj_char["x"] then
+            obj_projectile[1] = hit_side_obj_char["shot_sys_reticle"][1] + 230 + 160
+            obj_projectile[5] = -1
+        elseif hit_side_obj_char["x"] == hurt_side_obj_char["x"] then
             if math.random(0, 1) == 0 then
-                obj[1] = obj_char["shot_sys_reticle"][1] + 230 + 160
-                obj[5] = -1
+                obj_projectile[1] = hit_side_obj_char["shot_sys_reticle"][1] + 230 + 160
+                obj_projectile[5] = -1
             end
         end
-        obj["draw_sync"] = function() end
+        obj_projectile["draw_sync"] = function() end
     end
-    obj["draw"] = function()
+    obj_projectile["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_blast_ver0
-        -- obj["draw_sync"]()
+        -- obj_projectile["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
+        draw_3d_image_sprite_batch(obj_camera,obj_projectile,image_sprite_sheet,""..obj_projectile[8].."")
         love.graphics.setColor(35/255,35/255,35/255,175/255)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
     end
-    table.insert(obj_char["VFX_hit_front_table"],obj)
+    table.insert(hit_side_obj_char["VFX_hit_front_table"],obj_projectile)
 end
 function insert_VFX_game_scene_char_TRM_5Launcher_move_slash(obj_char)
     local obj = {0,0,0,1,1,1,0,0}
@@ -876,183 +876,183 @@ function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
     end
     table.insert(obj_char["VFX_common_front_table"],obj)
 end
-function insert_VFX_game_scene_char_TRM_6SP_P_arua(obj_char)
-    local obj = {0,0,0,0.75,0,0,0,0}
-    local side = obj_char["player_side"]
+function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char)
+    local obj_projectile = {0,0,0,0.75,0,0,0,0}
+    local side = hit_side_obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["6SP_P_arua_move_VFX"]
     local obj_camera = obj_stage_game_scene_camera
-    local obj_char_other_side = common_game_scene_change_character(side)
-    local shot_sys_curse_force_off_state = obj_char["shot_sys_curse_force_off_state"]
+    local hurt_side_obj_char = common_game_scene_change_character(side)
+    local shot_sys_curse_force_off_state = hit_side_obj_char["shot_sys_curse_force_off_state"]
 
-    if obj_char_other_side["height"] == "air" then
-        obj["y_offset"] = 375 + obj_char_other_side["pushbox"][4]/4*3
-    elseif obj_char_other_side["height"] == "wallstick" then
-        obj["y_offset"] = 350 + obj_char_other_side["pushbox"][4]/4*3
+    if hurt_side_obj_char["height"] == "air" then
+        obj_projectile["y_offset"] = 375 + hurt_side_obj_char["pushbox"][4]/4*3
+    elseif hurt_side_obj_char["height"] == "wallstick" then
+        obj_projectile["y_offset"] = 350 + hurt_side_obj_char["pushbox"][4]/4*3
     else
-        obj["y_offset"] = 400 + obj_char_other_side["pushbox"][4]/4*3
+        obj_projectile["y_offset"] = 400 + hurt_side_obj_char["pushbox"][4]/4*3
     end
 
-    obj["FCT"] = {0,0,0,0,0,0,0,0}
-    obj["LCT"] = {0,0,0,0,0,0,0,0}
-    obj["LCD"] = {0,0,0,0,0,0,0,0}
-    obj["life"] = 42
-    obj[1] = obj_char_other_side["x"] - 400
-    obj[2] = math.min(obj_char_other_side["y"] - obj_char_other_side[6]*obj["y_offset"],-677.5)
-    obj[3] = obj_char_other_side[3]
-    obj[4] = 0.75
-    obj[5] = 1
-    obj[6] = 1
-    obj[7] = 0
-    obj[8] = 0
-    obj["state"] = "loop"
+    obj_projectile["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_projectile["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_projectile["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_projectile["life"] = 42
+    obj_projectile[1] = hurt_side_obj_char["x"] - 400
+    obj_projectile[2] = math.min(hurt_side_obj_char["y"] - hurt_side_obj_char[6]*obj_projectile["y_offset"],-677.5)
+    obj_projectile[3] = hurt_side_obj_char[3]
+    obj_projectile[4] = 0.75
+    obj_projectile[5] = 1
+    obj_projectile[6] = 1
+    obj_projectile[7] = 0
+    obj_projectile[8] = 0
+    obj_projectile["state"] = "loop"
     
-    obj["frame_animation"] = {}
+    obj_projectile["frame_animation"] = {}
     for i = 0,149 do
-        obj["frame_animation"][i*2] = i
+        obj_projectile["frame_animation"][i*2] = i
     end
-    obj["frame_animation"]["prop"] = 8
-    obj["frame_animation"]["length"] = 300
-    obj["frame_animation"]["loop"] = false
-    init_frame_anim_without(obj,obj["frame_animation"])
+    obj_projectile["frame_animation"]["prop"] = 8
+    obj_projectile["frame_animation"]["length"] = 300
+    obj_projectile["frame_animation"]["loop"] = false
+    init_frame_anim_without(obj_projectile,obj_projectile["frame_animation"])
 
-    obj["opacity_point_linear_animation"] = {}
-    obj["opacity_point_linear_animation"][0] = {0.75,20}
-    obj["opacity_point_linear_animation"][20] = {0,20}
-    obj["opacity_point_linear_animation"]["prop"] = 4
-    obj["opacity_point_linear_animation"]["length"] = 20
-    obj["opacity_point_linear_animation"]["loop"] = false
-    -- init_point_linear_anim_without(obj,obj["opacity_point_linear_animation"])
+    obj_projectile["opacity_point_linear_animation"] = {}
+    obj_projectile["opacity_point_linear_animation"][0] = {0.75,20}
+    obj_projectile["opacity_point_linear_animation"][20] = {0,20}
+    obj_projectile["opacity_point_linear_animation"]["prop"] = 4
+    obj_projectile["opacity_point_linear_animation"]["length"] = 20
+    obj_projectile["opacity_point_linear_animation"]["loop"] = false
+    -- init_point_linear_anim_without(obj_projectile,obj_projectile["opacity_point_linear_animation"])
 
     local function update_frame_animation()
-        frame_animator(obj,obj["frame_animation"])
-        if get_frame_anim_end_state(obj,obj["frame_animation"]) then
-            obj["FCT"][8] = 120
-            frame_animator(obj,obj["frame_animation"])
+        frame_animator(obj_projectile,obj_projectile["frame_animation"])
+        if get_frame_anim_end_state(obj_projectile,obj_projectile["frame_animation"]) then
+            obj_projectile["FCT"][8] = 120
+            frame_animator(obj_projectile,obj_projectile["frame_animation"])
         end
     end
 
-    obj["update"] = function()
+    obj_projectile["update"] = function()
         local switch = {
             -- ease_in 之前的状态 如果达到第10帧则为下一个动画的第0帧 
             ["loop"] = function()
-                obj["life"] = 42
+                obj_projectile["life"] = 42
                 update_frame_animation()
-                if shot_sys_curse_force_off_state[obj_char["state"]] or (not obj_char["shot_sys_curse"]) then
-                    obj["state"] = "end"
-                    init_point_linear_anim_with(obj,obj["opacity_point_linear_animation"])
+                if shot_sys_curse_force_off_state[hit_side_obj_char["state"]] or (not hit_side_obj_char["shot_sys_curse"]) then
+                    obj_projectile["state"] = "end"
+                    init_point_linear_anim_with(obj_projectile,obj_projectile["opacity_point_linear_animation"])
                 end
-                if obj_char_other_side["state"] == "wallbreak_hurt" then
-                    obj[4] = 0
-                    obj["state"] = "wallbreak"
+                if hurt_side_obj_char["state"] == "wallbreak_hurt" then
+                    obj_projectile[4] = 0
+                    obj_projectile["state"] = "wallbreak"
                 end
             end,
             ["end"] = function()
-                obj["life"] = 42
+                obj_projectile["life"] = 42
                 update_frame_animation()
-                point_linear_animator(obj,obj["opacity_point_linear_animation"])
-                if get_point_linear_anim_end_state(obj,obj["opacity_point_linear_animation"])
-                or obj_char_other_side["state"] == "wallbreak_hurt" then
-                    obj["life"] = 0
+                point_linear_animator(obj_projectile,obj_projectile["opacity_point_linear_animation"])
+                if get_point_linear_anim_end_state(obj_projectile,obj_projectile["opacity_point_linear_animation"])
+                or hurt_side_obj_char["state"] == "wallbreak_hurt" then
+                    obj_projectile["life"] = 0
                 end
             end,
             ["wallbreak"] = function()
-                obj["life"] = 42
-                if obj_char_other_side["state"] ~= "wallbreak_hit" and obj_char_other_side["state"] ~= "wallbreak_hurt" then
-                    obj[4] = 1
-                    obj["state"] = "loop"
-                    init_frame_anim_with(obj,obj["frame_animation"])
+                obj_projectile["life"] = 42
+                if hurt_side_obj_char["state"] ~= "wallbreak_hit" and hurt_side_obj_char["state"] ~= "wallbreak_hurt" then
+                    obj_projectile[4] = 1
+                    obj_projectile["state"] = "loop"
+                    init_frame_anim_with(obj_projectile,obj_projectile["frame_animation"])
                 end
             end
         }
-        local this_function = switch[obj["state"]]
+        local this_function = switch[obj_projectile["state"]]
         if this_function then this_function() end
 
-        obj["life"] = obj["life"] - 1
+        obj_projectile["life"] = obj_projectile["life"] - 1
     end
-    obj["draw_sync"] = function()
-        if obj_char_other_side["height"] == "air" then
-            obj["y_offset"] = 375 + obj_char_other_side["pushbox"][4]/4*3
-        elseif obj_char_other_side["height"] == "wallstick" then
-            obj["y_offset"] = 350 + obj_char_other_side["pushbox"][4]/4*3
+    obj_projectile["draw_sync"] = function()
+        if hurt_side_obj_char["height"] == "air" then
+            obj_projectile["y_offset"] = 375 + hurt_side_obj_char["pushbox"][4]/4*3
+        elseif hurt_side_obj_char["height"] == "wallstick" then
+            obj_projectile["y_offset"] = 350 + hurt_side_obj_char["pushbox"][4]/4*3
         else
-            obj["y_offset"] = 400 + obj_char_other_side["pushbox"][4]/4*3
+            obj_projectile["y_offset"] = 400 + hurt_side_obj_char["pushbox"][4]/4*3
         end
-        obj[1] = obj_char_other_side["x"] - 400
-        obj[2] = math.min(obj_char_other_side["y"] - obj_char_other_side[6]*obj["y_offset"],-677.5)
-        obj[3] = obj_char_other_side[3]
-        -- obj["draw_sync"] = function() end
+        obj_projectile[1] = hurt_side_obj_char["x"] - 400
+        obj_projectile[2] = math.min(hurt_side_obj_char["y"] - hurt_side_obj_char[6]*obj_projectile["y_offset"],-677.5)
+        obj_projectile[3] = hurt_side_obj_char[3]
+        -- obj_projectile["draw_sync"] = function() end
     end
-    obj["draw"] = function()
-        obj["draw_sync"]()
+    obj_projectile["draw"] = function()
+        obj_projectile["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
-        love.graphics.setColor(1,1,1,obj[4])
+        draw_3d_image_sprite_batch(obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8]))
+        love.graphics.setColor(1,1,1,obj_projectile[4])
         love.graphics.setBlendMode("subtract")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
         love.graphics.setColor(1,1,1,1)
     end
-    table.insert(obj_char_other_side["VFX_status_back_table"],obj)
+    table.insert(hurt_side_obj_char["VFX_status_back_table"],obj_projectile)
 end
 
 function insert_VFX_game_scene_char_TRM_6SP_S_move(obj_char)
-    local obj = {0,0,0,1,1,1,0,0}
+    local obj_projectile = {0,0,0,1,1,1,0,0}
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["6SP_S_move_VFX"]
 
-    obj["life"] = 21
-    obj[1] = obj_char["x"] + obj_char[5]*(-63)
-    obj[2] = obj_char["y"] + obj_char[6]*(-727)
-    obj[3] = obj_char[3]
-    obj[4] = 1
-    obj[5] = obj_char[5]
-    obj[6] = obj_char[6]
-    obj[7] = obj_char[7]
-    obj[8] = 0
-    obj["FCT"] = {0,0,0,0,0,0,0,0}
-    obj["LCT"] = {0,0,0,0,0,0,0,0}
-    obj["LCD"] = {0,0,0,0,0,0,0,0}
-    obj["animation"] = {}
-    obj["animation"][0] = 0
-    obj["animation"][2] = 1
-    obj["animation"][4] = 2
-    obj["animation"][7] = 3
-    obj["animation"][10] = 4
-    obj["animation"][13] = 5
-    obj["animation"][17] = 6
-    obj["animation"]["prop"] = 8
-    obj["animation"]["length"] = 21
-    obj["animation"]["loop"] = false
-    init_frame_anim_without(obj,obj["animation"])
-    obj["update"] = function()
+    obj_projectile["life"] = 21
+    obj_projectile[1] = obj_char["x"] + obj_char[5]*(-63)
+    obj_projectile[2] = obj_char["y"] + obj_char[6]*(-727)
+    obj_projectile[3] = obj_char[3]
+    obj_projectile[4] = 1
+    obj_projectile[5] = obj_char[5]
+    obj_projectile[6] = obj_char[6]
+    obj_projectile[7] = obj_char[7]
+    obj_projectile[8] = 0
+    obj_projectile["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_projectile["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_projectile["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_projectile["animation"] = {}
+    obj_projectile["animation"][0] = 0
+    obj_projectile["animation"][2] = 1
+    obj_projectile["animation"][4] = 2
+    obj_projectile["animation"][7] = 3
+    obj_projectile["animation"][10] = 4
+    obj_projectile["animation"][13] = 5
+    obj_projectile["animation"][17] = 6
+    obj_projectile["animation"]["prop"] = 8
+    obj_projectile["animation"]["length"] = 21
+    obj_projectile["animation"]["loop"] = false
+    init_frame_anim_without(obj_projectile,obj_projectile["animation"])
+    obj_projectile["update"] = function()
         if obj_char["state"] == "6SP_S" then
-            frame_animator(obj,obj["animation"])
-            obj["life"] = obj["life"] - 1
+            frame_animator(obj_projectile,obj_projectile["animation"])
+            obj_projectile["life"] = obj_projectile["life"] - 1
         elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
         else
-            obj["life"] = 0
+            obj_projectile["life"] = 0
         end
     end
-    obj["draw_sync"] = function()
-        obj[1] = obj_char["x"] + obj_char[5]*(-63)
-        obj[2] = obj_char["y"] + obj_char[6]*(-727)
-        obj[3] = obj_char[3]
-        obj[5] = obj_char[5]
-        obj[6] = obj_char[6]
-        obj[7] = obj_char[7]
-        -- obj["draw_sync"] = function() end
+    obj_projectile["draw_sync"] = function()
+        obj_projectile[1] = obj_char["x"] + obj_char[5]*(-63)
+        obj_projectile[2] = obj_char["y"] + obj_char[6]*(-727)
+        obj_projectile[3] = obj_char[3]
+        obj_projectile[5] = obj_char[5]
+        obj_projectile[6] = obj_char[6]
+        obj_projectile[7] = obj_char[7]
+        -- obj_projectile["draw_sync"] = function() end
     end
-    obj["draw"] = function()
+    obj_projectile["draw"] = function()
         local obj_camera = obj_stage_game_scene_camera
-        obj["draw_sync"]()
+        obj_projectile["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
+        draw_3d_image_sprite_batch(obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8]))
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
     end
-    table.insert(obj_char["VFX_common_front_table"],obj)
+    table.insert(obj_char["VFX_common_front_table"],obj_projectile)
 end
