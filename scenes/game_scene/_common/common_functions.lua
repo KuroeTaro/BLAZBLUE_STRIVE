@@ -1350,14 +1350,14 @@ function common_update_game_scene_char_throw_clash()
     char_LP["state"] = "throw_teched"
     char_LP["physics_lock"] = false
     char_LP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
-        char_LP,"teched"
+        char_LP,char_RP,"teched"
     )
     init_character_anim_with(char_LP,char_LP["character_animation"])
     -- teched_RP
     char_RP["state"] = "throw_teched"
     char_RP["physics_lock"] = false
     char_RP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
-        char_RP,"teched"
+        char_RP,char_LP,"teched"
     )
     init_character_anim_with(char_RP,char_RP["character_animation"])
 end

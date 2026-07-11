@@ -1882,7 +1882,7 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char)
         hit_side_obj_char["FD_block_heat_drain"] = 5.0
 
         hit_side_obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv0(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_stand_hurt_low",
             "stand","5_stand_idle",
             37.5,5,1.00,
@@ -1891,7 +1891,7 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv0(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "4_stand_block_mid",
             "stand","5_stand_idle",
             37.5,5,1.00,
@@ -1900,7 +1900,7 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv0(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
             37.5,5,1.00,
@@ -1909,7 +1909,7 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv0(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
             37.5,5,1.00,
@@ -1935,7 +1935,7 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
         hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv0(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "4_stand_block_mid",
             "stand","5_stand_idle",
             37.5,5,1.00,
@@ -2120,7 +2120,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char)
         hit_side_obj_char["sprite_sheet"] = "6P"
         hit_side_obj_char["height"] = "stand" -- stand crouch air OTG wallstick
         hit_side_obj_char["hit_type"] = "strike" -- none strike throw burst
-        hit_side_obj_char["hit_guard_type"] = "all" -- none all low mid high
+        hit_side_obj_char["hit_guard_type"] = "high" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
         hit_side_obj_char["startup_frame"] = 0
@@ -2138,7 +2138,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char)
         hit_side_obj_char["FD_block_heat_drain"] = 5.0
 
         hit_side_obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_stand_hurt_mid",
             "stand","5_stand_idle",
             52.5,5,1.00,
@@ -2147,7 +2147,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
             52.5,5,1.00,
@@ -2156,7 +2156,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
             52.5,5,1.00,
@@ -2165,7 +2165,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
             52.5,5,1.00,
@@ -2191,7 +2191,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
         hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
             12.5,5,1.00,
@@ -2419,7 +2419,7 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char)
         hit_side_obj_char["FD_block_heat_drain"] = 5.0
 
         hit_side_obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv0(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
             37.5,5,1.00,
@@ -2428,7 +2428,7 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv0(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
             37.5,5,1.00,
@@ -2437,7 +2437,7 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv0(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
             37.5,5,1.00,
@@ -2446,7 +2446,7 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv0(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
             37.5,5,1.00,
@@ -2472,7 +2472,7 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
         hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
             17.5,5,1.00,
@@ -2677,7 +2677,7 @@ function load_game_scene_anim_char_TRM_2K(hit_side_obj_char)
         hit_side_obj_char["FD_block_heat_drain"] = 5.0
 
         hit_side_obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv1(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_stand_hurt_low",
             "stand","5_stand_idle",
             25,5,1.00,
@@ -2686,7 +2686,7 @@ function load_game_scene_anim_char_TRM_2K(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv1(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "4_stand_block_mid",
             "stand","5_stand_idle",
             25,5,1.00,
@@ -2695,7 +2695,7 @@ function load_game_scene_anim_char_TRM_2K(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv1(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
             25,5,1.00,
@@ -2704,7 +2704,7 @@ function load_game_scene_anim_char_TRM_2K(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv1(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
             25,5,1.00,
@@ -2730,7 +2730,7 @@ function load_game_scene_anim_char_TRM_2K(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
         hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv1(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
             25,5,1.00,
@@ -2968,7 +2968,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char)
         hit_side_obj_char["FD_block_heat_drain"] = 5.0
 
         hit_side_obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_stand_hurt_low",
             "stand","5_stand_idle",
             35,5,1.00,
@@ -2977,7 +2977,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "4_stand_block_mid",
             "stand","5_stand_idle",
             35,5,1.00,
@@ -2986,7 +2986,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
             35,5,1.00,
@@ -2995,7 +2995,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
             35,5,1.00,
@@ -3021,7 +3021,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
         hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
             22.5,5,1.00,
@@ -3283,7 +3283,7 @@ function load_game_scene_anim_char_TRM_5K(hit_side_obj_char)
         hit_side_obj_char["FD_block_heat_drain"] = 5.0
 
         hit_side_obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
             42.5,5,1.00,
@@ -3292,7 +3292,7 @@ function load_game_scene_anim_char_TRM_5K(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
             42.5,5,1.00,
@@ -3301,7 +3301,7 @@ function load_game_scene_anim_char_TRM_5K(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
             42.5,5,1.00,
@@ -3310,7 +3310,7 @@ function load_game_scene_anim_char_TRM_5K(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
             42.5,5,1.00,
@@ -3336,7 +3336,7 @@ function load_game_scene_anim_char_TRM_5K(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
         hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
             27.5,5,1.00,
@@ -3576,7 +3576,7 @@ function load_game_scene_anim_char_TRM_2S(hit_side_obj_char)
         hit_side_obj_char["FD_block_heat_drain"] = 5.0
         
         hit_side_obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_stand_hurt_low",
             "stand","5_stand_idle",
             72.5,5,1.00,
@@ -3585,7 +3585,7 @@ function load_game_scene_anim_char_TRM_2S(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "4_stand_block_mid",
             "stand","5_stand_idle",
             72.5,5,1.00,
@@ -3594,7 +3594,7 @@ function load_game_scene_anim_char_TRM_2S(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
             72.5,5,1.00,
@@ -3603,7 +3603,7 @@ function load_game_scene_anim_char_TRM_2S(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
             72.5,5,1.00,
@@ -3629,7 +3629,7 @@ function load_game_scene_anim_char_TRM_2S(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
         hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "4_stand_block_mid",
             "stand","5_stand_idle",
             72.5,5,1.00,
@@ -3901,7 +3901,7 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
         hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv3(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
             32.5,5,1.00,
@@ -3927,7 +3927,7 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
         hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv3(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
             32.5,5,1.00,
@@ -3953,7 +3953,7 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
         hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
             37.5,5,1.00,
@@ -4237,7 +4237,7 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char)
         hit_side_obj_char["FD_block_heat_drain"] = 5.0
 
         hit_side_obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv3(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
             42.5,5,1.00,
@@ -4246,7 +4246,7 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv3(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
             42.5,5,1.00,
@@ -4255,7 +4255,7 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv3(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
             42.5,5,1.00,
@@ -4264,7 +4264,7 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv3(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
             42.5,5,1.00,
@@ -4290,7 +4290,7 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
         hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
             22.5,5,1.00,
@@ -4502,7 +4502,7 @@ function load_game_scene_anim_char_TRM_fS(hit_side_obj_char)
         hit_side_obj_char["FD_block_heat_drain"] = 5.0
 
         hit_side_obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
             42.5,5,1.00,
@@ -4511,7 +4511,7 @@ function load_game_scene_anim_char_TRM_fS(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
             42.5,5,1.00,
@@ -4520,7 +4520,7 @@ function load_game_scene_anim_char_TRM_fS(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
             42.5,5,1.00,
@@ -4529,7 +4529,7 @@ function load_game_scene_anim_char_TRM_fS(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
             42.5,5,1.00,
@@ -4555,7 +4555,7 @@ function load_game_scene_anim_char_TRM_fS(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
         hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
             32.5,5,1.00,
@@ -5439,7 +5439,7 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char)
             12,5,1.00,
             -22.5,2.5,1.035,
             load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
-                hit_side_obj_char,
+                hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_hard_knockdown_down",
                 "air",
                 "knockdown_recovery",
@@ -5460,7 +5460,7 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char)
             end
         )
         hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "4_stand_block_mid",
             "stand","5_stand_idle",
             32.5,5,1.00,
@@ -5475,7 +5475,7 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char)
             12,5,1.00,
             -22.5,2.5,1.035,
             load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
-                hit_side_obj_char,
+                hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_hard_knockdown_down",
                 "air",
                 "knockdown_recovery",
@@ -5496,7 +5496,7 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char)
             end
         )
         hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
             32.5,5,1.00,
@@ -5524,7 +5524,7 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char)
             end
         )
         hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
             32.5,5,1.00,
@@ -6490,7 +6490,7 @@ function load_game_scene_anim_char_TRM_5Launcher(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
             5,7,1.00,
@@ -6509,7 +6509,7 @@ function load_game_scene_anim_char_TRM_5Launcher(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
             5,7,1.00,
@@ -6535,7 +6535,7 @@ function load_game_scene_anim_char_TRM_5Launcher(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
         hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
             10,5,1.00,
@@ -6796,7 +6796,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
             5,7,1.00,
@@ -6815,7 +6815,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
             5,7,1.00,
@@ -6841,7 +6841,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
         hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
             10,5,1.00,
@@ -7090,7 +7090,7 @@ function load_game_scene_anim_char_TRM_jP(hit_side_obj_char)
         hit_side_obj_char["FD_block_heat_drain"] = 5.0
 
         hit_side_obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv0(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
             7.5,5,1.00,
@@ -7099,7 +7099,7 @@ function load_game_scene_anim_char_TRM_jP(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv0(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
             7.5,5,1.00,
@@ -7108,7 +7108,7 @@ function load_game_scene_anim_char_TRM_jP(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv0(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
             7.5,5,1.00,
@@ -7117,7 +7117,7 @@ function load_game_scene_anim_char_TRM_jP(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv0(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
             7.5,5,1.00,
@@ -7143,7 +7143,7 @@ function load_game_scene_anim_char_TRM_jP(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
         hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
             10,5,1.00,
@@ -7345,7 +7345,7 @@ function load_game_scene_anim_char_TRM_jK(hit_side_obj_char)
         hit_side_obj_char["FD_block_heat_drain"] = 5.0
 
         hit_side_obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv1(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
             10,5,1.00,
@@ -7354,7 +7354,7 @@ function load_game_scene_anim_char_TRM_jK(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv1(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
             10,5,1.00,
@@ -7363,7 +7363,7 @@ function load_game_scene_anim_char_TRM_jK(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv1(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
             10,5,1.00,
@@ -7372,7 +7372,7 @@ function load_game_scene_anim_char_TRM_jK(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv1(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
             10,5,1.00,
@@ -7398,7 +7398,7 @@ function load_game_scene_anim_char_TRM_jK(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
         hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
             12.5,5,1.00,
@@ -7597,7 +7597,7 @@ function load_game_scene_anim_char_TRM_j2K(hit_side_obj_char)
 
         -- hit_side_obj_char["stand_hurt_animation"] = load_game_scene_anim_char_TRM_j2K_hurt(hit_side_obj_char)
         hit_side_obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
             15,5,1.00,
@@ -7606,7 +7606,7 @@ function load_game_scene_anim_char_TRM_j2K(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
             15,5,1.00,
@@ -7615,7 +7615,7 @@ function load_game_scene_anim_char_TRM_j2K(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
             15,5,1.00,
@@ -7624,7 +7624,7 @@ function load_game_scene_anim_char_TRM_j2K(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
             15,5,1.00,
@@ -7650,7 +7650,7 @@ function load_game_scene_anim_char_TRM_j2K(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
         hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
             5,5,1.00,
@@ -7866,7 +7866,7 @@ function load_game_scene_anim_char_TRM_jS(hit_side_obj_char)
         hit_side_obj_char["FD_block_heat_drain"] = 5.0
 
         hit_side_obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
             15,5,1.00,
@@ -7875,7 +7875,7 @@ function load_game_scene_anim_char_TRM_jS(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
             15,5,1.00,
@@ -7884,7 +7884,7 @@ function load_game_scene_anim_char_TRM_jS(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
             15,5,1.00,
@@ -7893,7 +7893,7 @@ function load_game_scene_anim_char_TRM_jS(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
             15,5,1.00,
@@ -7919,7 +7919,7 @@ function load_game_scene_anim_char_TRM_jS(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
         hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
             10,5,1.00,
@@ -8133,7 +8133,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(hit_side_obj_char)
         hit_side_obj_char["FD_block_heat_drain"] = 5.0
 
         hit_side_obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_stand_hurt_high",
             "stand","5_stand_idle",
             12.5,5,1.00,
@@ -8142,7 +8142,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
             12.5,5,1.00,
@@ -8151,7 +8151,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
             12.5,5,1.00,
@@ -8160,7 +8160,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(hit_side_obj_char)
             function() end
         )
         hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
             12.5,5,1.00,
@@ -8186,7 +8186,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
         hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
             10,5,1.00,
@@ -9456,7 +9456,7 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-290) end
         )
         hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv3(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "4_stand_block_high",
             "stand","5_stand_idle",
             62.5,5,1.00,
@@ -9482,7 +9482,7 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-290) end
         )
         hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv3(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_crouch_block",
             "crouch","1_2_3_crouch",
             62.5,5,1.00,
@@ -9508,7 +9508,7 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char)
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-290) end
         )
         hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
             37.5,5,1.00,

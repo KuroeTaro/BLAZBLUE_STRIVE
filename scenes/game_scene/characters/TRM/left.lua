@@ -3517,7 +3517,7 @@ function state_gate_game_scene_char_LP_from_throw_testing(input,self_side_obj_ch
         self_side_obj_char["state"] = "throw_teched"
         self_side_obj_char["physics_lock"] = false
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
-            self_side_obj_char,"teched"
+            self_side_obj_char,opponent_side_obj_char,"teched"
         )
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
     elseif self_side_obj_char["f"] > 9 then
@@ -3544,7 +3544,7 @@ function state_gate_game_scene_char_LP_from_throw_tested(input,self_side_obj_cha
         self_side_obj_char["state"] = "throw_teching"
         self_side_obj_char["physics_lock"] = false
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
-            self_side_obj_char,"teching"
+            self_side_obj_char,opponent_side_obj_char,"teching"
         )
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
     elseif self_side_obj_char["f"] > 9 then

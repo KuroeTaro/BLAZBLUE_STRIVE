@@ -186,7 +186,7 @@ function update_game_scene_training_main()
         end
         obj_char_game_scene_char_RP["direction_input"] = DEBUG_TRAINNING_HEIGHT
 
-        if obj_char_game_scene_char_RP["state"] == "knockdown" then
+        if obj_char_game_scene_char_RP["state"] == "wallstick" or obj_char_game_scene_char_RP["state"] == "knockdown" then
             obj_char_game_scene_char_RP["direction_input"] = DEBUG_TRAINNING_WALLSTICK_SOFT_RECOVER_POS
         end
     end
@@ -381,26 +381,26 @@ function update_game_scene_training_main()
                 char_LP["state"] = "throw_teched"
                 char_LP["physics_lock"] = false
                 char_LP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
-                    char_LP,"teched"
+                    char_LP,char_RP,"teched"
                 )
                 init_character_anim_with(char_LP,char_LP["character_animation"])
                 char_RP["state"] = "throw_teching"
                 char_RP["physics_lock"] = false
                 char_RP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
-                    char_RP,"teching"
+                    char_RP,char_LP,"teching"
                 )
                 init_character_anim_with(char_RP,char_RP["character_animation"])
             elseif (char_RP["state"] == "throw_testing" and char_LP["state"] == "throw_tested") then
                 char_RP["state"] = "throw_teched"
                 char_RP["physics_lock"] = false
                 char_RP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
-                    char_RP,"teched"
+                    char_RP,char_LP,"teched"
                 )
                 init_character_anim_with(char_RP,char_RP["character_animation"])
                 char_LP["state"] = "throw_teching"
                 char_LP["physics_lock"] = false
                 char_LP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
-                    char_LP,"teching"
+                    char_LP,char_RP,"teching"
                 )
                 init_character_anim_with(char_LP,char_LP["character_animation"])
             end

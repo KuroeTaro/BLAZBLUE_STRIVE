@@ -83,7 +83,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         7.5,5,1.00,
         -7.5,1.0,1.00,
         load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_hard_knockdown_up",
             "air",
             "knockdown_recovery",
@@ -117,7 +117,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         7.5,5,1.00,
         -7.5,1.0,1.00,
         load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_hard_knockdown_up",
             "air",
             "knockdown_recovery",
@@ -151,7 +151,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         7.5,5,1.00,
         -7.5,1.0,1.00,
         load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_hard_knockdown_up",
             "air",
             "knockdown_recovery",
@@ -185,7 +185,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         7.5,5,1.00,
         -5,2.5,1.00,
         load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_hard_knockdown_up",
             "air",
             "knockdown_recovery",
@@ -210,7 +210,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         7.5,5,1.00,
         -15,1.0,1.00,
         load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_hard_knockdown_up",
             "air",
             "knockdown_recovery",

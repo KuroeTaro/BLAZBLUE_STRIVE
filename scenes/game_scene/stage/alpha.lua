@@ -474,7 +474,7 @@ function load_game_scene_stage_apply_wallbreak_end_init(hurt_side_obj_char,hit_s
     if adv then
         hurt_side_obj_char["state"] = "knockdown"
         hurt_side_obj_char["character_animation"] = 
-        load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallbreak(hit_side_obj_char)
+        load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallbreak(hit_side_obj_char,hurt_side_obj_char)
     else
         hurt_side_obj_char["state"] = "5_stand_idle"
         hurt_side_obj_char["character_animation"] = 
