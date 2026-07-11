@@ -3516,8 +3516,8 @@ function state_gate_game_scene_char_RP_from_throw_testing(input,self_side_obj_ch
     if opponent_side_obj_char["hurt_state"] == "idle" and self_side_obj_char["f"] <= 9 and common_game_scene_change_input_state("R")["Launcher"] == "Pressing" then
         self_side_obj_char["state"] = "throw_teched"
         self_side_obj_char["physics_lock"] = false
-        obj_char["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
-            obj_char,"teched"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
+            self_side_obj_char,"teched"
         )
         init_character_anim_with(obj_char,obj_char["character_animation"])
     elseif self_side_obj_char["f"] > 9 then

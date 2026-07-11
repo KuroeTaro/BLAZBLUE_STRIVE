@@ -98,7 +98,7 @@ end
 -- shot_sys_function
 -- ability_use_calculation
 function character_function_game_scene_TRM_shot_sys_ability_gauge_use(obj_char)
-    current_ability_gauge = obj_char["ability_gauge"][1]
+    local current_ability_gauge = obj_char["ability_gauge"][1]
     if current_ability_gauge >= 100 and current_ability_gauge % 100 == 0 then
         obj_char["ability_gauge"][1] = current_ability_gauge - 100
     else
