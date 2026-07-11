@@ -854,7 +854,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char_a,obj_char_b)
     local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local obj_wallstick = obj_stage_game_scene_wallstick
-    local wallstick_spwan_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(obj_char_a["player_side"])["wallstick_spawn_anchor_pos"]
+    local wallstick_spwan_anchor_pos = common_game_scene_get_VFX_spawn_anchor(obj_char_a["player_side"])["wallstick_spawn_anchor_pos"]
     local stage_collision = false
     local collision_side = 0
     local collision_side_cache = 0

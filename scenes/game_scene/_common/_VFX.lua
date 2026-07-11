@@ -2528,13 +2528,13 @@ end
 function insert_VFX_game_scene_char_block_ver0(active_op_side_obj_char)
     -- x y z opacity sx sy r f
     local VFX_obj = {0,0,0,1,1,1,0,0}
-    local VFX_spawn_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(active_op_side_obj_char["player_side"])["block_ver0_spawn_anchor_pos"][active_op_side_obj_char["sprite_sheet"]]
+    local VFX_spawn_anchor = common_game_scene_get_VFX_spawn_anchor(active_op_side_obj_char["player_side"])["block_ver0_spawn_anchor_pos"][active_op_side_obj_char["sprite_sheet"]]
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
 
     VFX_obj["life"] = 21
-    VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor_pos[1])
-    VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(VFX_spawn_anchor_pos[2])
+    VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor[1])
+    VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(VFX_spawn_anchor[2])
     VFX_obj[3] = active_op_side_obj_char[3]
     VFX_obj[4] = 0.75
     VFX_obj[5] = active_op_side_obj_char[5]
@@ -2561,8 +2561,8 @@ function insert_VFX_game_scene_char_block_ver0(active_op_side_obj_char)
         VFX_obj["life"] = VFX_obj["life"] - 1
     end
     VFX_obj["draw_sync"] = function()
-        VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor_pos[1])
-        VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(VFX_spawn_anchor_pos[2])
+        VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor[1])
+        VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(VFX_spawn_anchor[2])
         VFX_obj[5] = active_op_side_obj_char[5]
         VFX_obj[6] = active_op_side_obj_char[6]
         -- VFX_obj["draw_sync"] = function() end
@@ -2582,13 +2582,13 @@ end
 function insert_VFX_game_scene_char_block_ver1(active_op_side_obj_char)
     -- x y z opacity sx sy r f
     local VFX_obj = {0,0,0,1,1,1,0,0}
-    local VFX_spawn_anchor_pos = common_game_scene_get_VFX_spawn_anchor_pos(active_op_side_obj_char["player_side"])["block_ver1_spawn_anchor_pos"][active_op_side_obj_char["sprite_sheet"]]
+    local VFX_spawn_anchor = common_game_scene_get_VFX_spawn_anchor(active_op_side_obj_char["player_side"])["block_ver1_spawn_anchor_pos"][active_op_side_obj_char["sprite_sheet"]]
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
 
     VFX_obj["life"] = 31
-    VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor_pos[1])
-    VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(VFX_spawn_anchor_pos[2])
+    VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor[1])
+    VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(VFX_spawn_anchor[2])
     VFX_obj[3] = active_op_side_obj_char[3]
     VFX_obj[4] = 0.75
     VFX_obj[5] = active_op_side_obj_char[5]
@@ -2610,14 +2610,14 @@ function insert_VFX_game_scene_char_block_ver1(active_op_side_obj_char)
     VFX_obj["animation"]["length"] = 31
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
-    VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor_pos[1])
+    VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor[1])
     VFX_obj["update"] = function()
         frame_animator(VFX_obj,VFX_obj["animation"])
         VFX_obj["life"] = VFX_obj["life"] - 1
     end
     VFX_obj["draw_sync"] = function()
-        VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor_pos[1])
-        VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(VFX_spawn_anchor_pos[2])
+        VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor[1])
+        VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(VFX_spawn_anchor[2])
         VFX_obj[5] = active_op_side_obj_char[5]
         VFX_obj[6] = active_op_side_obj_char[6]
         -- VFX_obj["draw_sync"] = function() end
@@ -2626,8 +2626,8 @@ function insert_VFX_game_scene_char_block_ver1(active_op_side_obj_char)
         local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_block_ver1
         VFX_obj["draw_sync"]()
-        VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor_pos[1])
-        VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(VFX_spawn_anchor_pos[2])
+        VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor[1])
+        VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(VFX_spawn_anchor[2])
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,VFX_obj,image_sprite_sheet,""..VFX_obj[8].."")
         love.graphics.setBlendMode("add")
@@ -2638,15 +2638,15 @@ function insert_VFX_game_scene_char_block_ver1(active_op_side_obj_char)
 end
 function insert_VFX_game_scene_char_FD_block(active_op_side_obj_char)
     local VFX_obj = {0,0,0,1,1,1,0,0}
-    local FD_VFX_spawn_anchor_pos_table = common_game_scene_get_VFX_spawn_anchor_pos(active_op_side_obj_char["player_side"])["FD_block_spawn_anchor_pos"]
-    local FD_VFX_spawn_anchor_pos = FD_VFX_spawn_anchor_pos_table[active_op_side_obj_char["height"]]
+    local FD_VFX_spawn_anchor_table = common_game_scene_get_VFX_spawn_anchor(active_op_side_obj_char["player_side"])["FD_block_spawn_anchor_pos"]
+    local FD_VFX_spawn_anchor = FD_VFX_spawn_anchor_table[active_op_side_obj_char["height"]]
 
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
 
     VFX_obj["life"] = 35
-    VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(FD_VFX_spawn_anchor_pos[1])
-    VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(FD_VFX_spawn_anchor_pos[2])
+    VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(FD_VFX_spawn_anchor[1])
+    VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(FD_VFX_spawn_anchor[2])
     VFX_obj[3] = active_op_side_obj_char[3]
     VFX_obj[4] = 0
     VFX_obj[5] = active_op_side_obj_char[5]
@@ -2685,9 +2685,9 @@ function insert_VFX_game_scene_char_FD_block(active_op_side_obj_char)
         VFX_obj["life"] = VFX_obj["life"] - 1
     end
     VFX_obj["draw_sync"] = function()
-        FD_VFX_spawn_anchor_pos = FD_VFX_spawn_anchor_pos_table[active_op_side_obj_char["height"]]
-        VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(FD_VFX_spawn_anchor_pos[1])
-        VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(FD_VFX_spawn_anchor_pos[2])
+        FD_VFX_spawn_anchor = FD_VFX_spawn_anchor_table[active_op_side_obj_char["height"]]
+        VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(FD_VFX_spawn_anchor[1])
+        VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(FD_VFX_spawn_anchor[2])
         VFX_obj[5] = active_op_side_obj_char[5]
         VFX_obj[6] = active_op_side_obj_char[6]
         -- VFX_obj["draw_sync"] = function() end

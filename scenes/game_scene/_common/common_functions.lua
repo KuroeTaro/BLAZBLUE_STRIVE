@@ -86,10 +86,10 @@ function common_game_scene_get_anchor(side)
     }
     return side_table[side]
 end
-function common_game_scene_get_VFX_spawn_anchor_pos(side)
+function common_game_scene_get_VFX_spawn_anchor(side)
     local side_table = {
-        ["L"] = obj_VFX_spawn_anchor_pos_data_game_scene_char_LP,
-        ["R"] = obj_VFX_spawn_anchor_pos_data_game_scene_char_RP
+        ["L"] = obj_VFX_spawn_anchor_data_game_scene_char_LP,
+        ["R"] = obj_VFX_spawn_anchor_data_game_scene_char_RP
     }
     return side_table[side]
 end
@@ -241,10 +241,10 @@ function common_game_scene_change_character_anchor(side)
     }
     return side_table[side]
 end
-function common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+function common_game_scene_change_character_VFX_spawn_anchor(side)
     local side_table = {
-        ["L"] = obj_VFX_spawn_anchor_pos_data_game_scene_char_RP,
-        ["R"] = obj_VFX_spawn_anchor_pos_data_game_scene_char_LP
+        ["L"] = obj_VFX_spawn_anchor_data_game_scene_char_RP,
+        ["R"] = obj_VFX_spawn_anchor_data_game_scene_char_LP
     }
     return side_table[side]
 end
@@ -1575,7 +1575,7 @@ function common_game_scene_projectile_apply_hurt_velocity(
     fix_direction,
     velocity_center
 )
-    hurt_horizontal_velocity = fix_direction and (projectile[5] * hurt_horizontal_velocity)
+    hurt_horizontal_velocity = (fix_direction and (projectile[5] * hurt_horizontal_velocity))
     or (velocity_center == "character" and common_game_scene_get_character_hurt_direction(hit_side_obj_char, hurt_side_obj_char, hurt_horizontal_velocity))
     or (velocity_center == "projectile" and common_game_scene_get_character_hurt_direction(projectile, hurt_side_obj_char, hurt_horizontal_velocity))
     or 0

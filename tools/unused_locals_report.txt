@@ -87,66 +87,66 @@ dkjson.lua:31	n
  scenes/game_scene/_common/_anim.lua:1259	res
  scenes/game_scene/_common/_anim.lua:1260	pushbox_data_other_side
  scenes/game_scene/_common/_anim.lua:1263	anchor_data_other_side
- scenes/game_scene/_common/_anim.lua:1264	VFX_spawn_anchor_pos_data_other_side
+ scenes/game_scene/_common/_anim.lua:1264	VFX_spawn_anchor_data_other_side
  scenes/game_scene/_common/_anim.lua:1267	sprite_sheet
  scenes/game_scene/_common/_anim.lua:1269	pushbox
  scenes/game_scene/_common/_anim.lua:1270	collision_ground_height_offset
  scenes/game_scene/_common/_anim.lua:1270	velocity
  scenes/game_scene/_common/_anim.lua:1271	function
  scenes/game_scene/_common/_anim.lua:1271	update_1f_15f_air
- scenes/game_scene/_common/_anim.lua:1367	VFX_spawn_anchor_pos_data
+ scenes/game_scene/_common/_anim.lua:1367	VFX_spawn_anchor_data
  scenes/game_scene/_common/_anim.lua:1698	sprite_sheet
  scenes/game_scene/_common/_anim.lua:1699	hurtbox_data
  scenes/game_scene/_common/_anim.lua:1699	pushbox_data
  scenes/game_scene/_common/_anim.lua:1700	anchor_data
- scenes/game_scene/_common/_anim.lua:1702	VFX_spawn_anchor_pos_data
+ scenes/game_scene/_common/_anim.lua:1702	VFX_spawn_anchor_data
  scenes/game_scene/_common/_anim.lua:1770	hurtbox_data_other_side
- scenes/game_scene/_common/_anim.lua:1775	VFX_spawn_anchor_pos_data_other_side
- scenes/game_scene/_common/_anim.lua:1858	VFX_spawn_anchor_pos_data_other_side
- scenes/game_scene/_common/_anim.lua:1952	VFX_spawn_anchor_pos_data_other_side
- scenes/game_scene/_common/_anim.lua:2025	VFX_spawn_anchor_pos_data
- scenes/game_scene/_common/_anim.lua:2193	VFX_spawn_anchor_pos_data
+ scenes/game_scene/_common/_anim.lua:1775	VFX_spawn_anchor_data_other_side
+ scenes/game_scene/_common/_anim.lua:1858	VFX_spawn_anchor_data_other_side
+ scenes/game_scene/_common/_anim.lua:1952	VFX_spawn_anchor_data_other_side
+ scenes/game_scene/_common/_anim.lua:2025	VFX_spawn_anchor_data
+ scenes/game_scene/_common/_anim.lua:2193	VFX_spawn_anchor_data
  scenes/game_scene/_common/_anim.lua:2255	res
  scenes/game_scene/_common/_anim.lua:2259	anchor_data_other_side
- scenes/game_scene/_common/_anim.lua:2261	VFX_spawn_anchor_pos_data_other_side
+ scenes/game_scene/_common/_anim.lua:2261	VFX_spawn_anchor_data_other_side
  scenes/game_scene/_common/_anim.lua:2267	common_land_function
  scenes/game_scene/_common/_anim.lua:2277	update_before_land_actions
  scenes/game_scene/_common/_anim.lua:2511	pushbox_data_other_side
  scenes/game_scene/_common/_anim.lua:2515	hurtbox_data_other_side
  scenes/game_scene/_common/_anim.lua:2517	anchor_data_other_side
- scenes/game_scene/_common/_anim.lua:2518	VFX_spawn_anchor_pos_data_other_side
+ scenes/game_scene/_common/_anim.lua:2518	VFX_spawn_anchor_data_other_side
  scenes/game_scene/_common/_anim.lua:2651	pushbox_data_other_side
  scenes/game_scene/_common/_anim.lua:2653	hurtbox_data_other_side
  scenes/game_scene/_common/_anim.lua:2655	anchor_data_other_side
- scenes/game_scene/_common/_anim.lua:2656	VFX_spawn_anchor_pos_data_other_side
+ scenes/game_scene/_common/_anim.lua:2656	VFX_spawn_anchor_data_other_side
  scenes/game_scene/_common/_anim.lua:2761	pushbox_data_other_side
  scenes/game_scene/_common/_anim.lua:2762	hurtbox_data_other_side
  scenes/game_scene/_common/_anim.lua:2764	anchor_data_other_side
- scenes/game_scene/_common/_anim.lua:2766	VFX_spawn_anchor_pos_data_other_side
+ scenes/game_scene/_common/_anim.lua:2766	VFX_spawn_anchor_data_other_side
  scenes/game_scene/_common/_anim.lua:2864	res
  scenes/game_scene/_common/_anim.lua:2866	pushbox_data_other_side
  scenes/game_scene/_common/_anim.lua:2869	anchor_data_other_side
- scenes/game_scene/_common/_anim.lua:2870	VFX_spawn_anchor_pos_data_other_side
+ scenes/game_scene/_common/_anim.lua:2870	VFX_spawn_anchor_data_other_side
  scenes/game_scene/_common/_anim.lua:2872	function
  scenes/game_scene/_common/_anim.lua:2872	update_before_falling
  scenes/game_scene/_common/_anim.lua:2999	pushbox_data_other_side
  scenes/game_scene/_common/_anim.lua:3001	hurtbox_data_other_side
  scenes/game_scene/_common/_anim.lua:3002	anchor_data_other_side
- scenes/game_scene/_common/_anim.lua:3005	VFX_spawn_anchor_pos_data_other_side
+ scenes/game_scene/_common/_anim.lua:3005	VFX_spawn_anchor_data_other_side
  scenes/game_scene/_common/_anim.lua:3131	pushbox_data_other_side
  scenes/game_scene/_common/_anim.lua:3133	hurtbox_data_other_side
  scenes/game_scene/_common/_anim.lua:3137	anchor_data_other_side
- scenes/game_scene/_common/_anim.lua:3141	VFX_spawn_anchor_pos_data_other_side
+ scenes/game_scene/_common/_anim.lua:3141	VFX_spawn_anchor_data_other_side
  scenes/game_scene/_common/_anim.lua:3237	pushbox_data_other_side
  scenes/game_scene/_common/_anim.lua:3239	hurtbox_data_other_side
  scenes/game_scene/_common/_anim.lua:3241	anchor_data_other_side
- scenes/game_scene/_common/_anim.lua:3243	VFX_spawn_anchor_pos_data_other_side
+ scenes/game_scene/_common/_anim.lua:3243	VFX_spawn_anchor_data_other_side
  scenes/game_scene/_common/_anim.lua:3359	res
  scenes/game_scene/_common/_anim.lua:3364	pushbox_data_other_side
  scenes/game_scene/_common/_anim.lua:3371	anchor_data_other_side
- scenes/game_scene/_common/_anim.lua:3374	VFX_spawn_anchor_pos_data_other_side
+ scenes/game_scene/_common/_anim.lua:3374	VFX_spawn_anchor_data_other_side
  scenes/game_scene/_common/_anim.lua:3381	function
- scenes/game_scene/_common/_anim.lua:3493	VFX_spawn_anchor_pos_data_other_side
+ scenes/game_scene/_common/_anim.lua:3493	VFX_spawn_anchor_data_other_side
  scenes/game_scene/_common/_anim.lua:3639	height
  scenes/game_scene/_common/_anim.lua:3639	obj_stage_main
  scenes/game_scene/_common/_anim.lua:3639	res
@@ -169,7 +169,7 @@ dkjson.lua:31	n
  scenes/game_scene/_common/_projectile.lua:471	pushbox_data_other_side
  scenes/game_scene/_common/_projectile.lua:473	hurtbox_data_other_side
  scenes/game_scene/_common/_projectile.lua:475	anchor_data_other_side
- scenes/game_scene/_common/_projectile.lua:477	VFX_spawn_anchor_pos_data_other_side
+ scenes/game_scene/_common/_projectile.lua:477	VFX_spawn_anchor_data_other_side
  scenes/game_scene/_common/common_functions.lua:121	obj_char_other_side
  scenes/game_scene/_common/common_functions.lua:124	right
  scenes/game_scene/_common/common_functions.lua:126	left
@@ -331,13 +331,13 @@ dkjson.lua:31	n
  scenes/game_scene/characters/TRM/_projectile.lua:521	pushbox_data_other_side
  scenes/game_scene/characters/TRM/_projectile.lua:522	hurtbox_data_other_side
  scenes/game_scene/characters/TRM/_projectile.lua:524	anchor_data_other_side
- scenes/game_scene/characters/TRM/_projectile.lua:528	VFX_spawn_anchor_pos_data_other_side
+ scenes/game_scene/characters/TRM/_projectile.lua:528	VFX_spawn_anchor_data_other_side
  scenes/game_scene/characters/TRM/_projectile.lua:532	function
  scenes/game_scene/characters/TRM/_projectile.lua:532	oscillator_obj_8
  scenes/game_scene/characters/TRM/_projectile.lua:617	pushbox_data_other_side
  scenes/game_scene/characters/TRM/_projectile.lua:618	hurtbox_data_other_side
  scenes/game_scene/characters/TRM/_projectile.lua:620	anchor_data_other_side
- scenes/game_scene/characters/TRM/_projectile.lua:622	VFX_spawn_anchor_pos_data_other_side
+ scenes/game_scene/characters/TRM/_projectile.lua:622	VFX_spawn_anchor_data_other_side
  scenes/game_scene/characters/TRM/left.lua:196	switch
  scenes/game_scene/characters/TRM/left.lua:706	stand_pushbox
  scenes/game_scene/characters/TRM/left.lua:707	air_pushbox

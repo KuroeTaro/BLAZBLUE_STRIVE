@@ -66,7 +66,7 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 95
 
@@ -142,8 +142,8 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
         -- VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
             hurt_side_obj_char,
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,1,1,0
         )
         -- draw_correction
@@ -240,7 +240,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 13
 
@@ -295,8 +295,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -356,7 +356,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 15
 
@@ -411,8 +411,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -472,7 +472,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 17
 
@@ -527,8 +527,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -588,7 +588,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 20
 
@@ -643,8 +643,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -704,7 +704,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 22
 
@@ -759,8 +759,8 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -853,7 +853,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 10
 
@@ -910,8 +910,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -965,7 +965,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 12
 
@@ -1022,8 +1022,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -1081,7 +1081,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 14
 
@@ -1138,8 +1138,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -1195,7 +1195,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 17
 
@@ -1252,8 +1252,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -1313,7 +1313,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 19
 
@@ -1370,8 +1370,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,-1,1,0
         )
         -- input_sys_cache
@@ -1433,7 +1433,7 @@ function load_game_scene_anim_char_common_0_air_block(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -1455,8 +1455,8 @@ function load_game_scene_anim_char_common_0_air_block(
             -- VFX
             insert_VFX_game_scene_stage_smoke_land_blow(
                 hurt_side_obj_char,
-                hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
-                hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
+                hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+                hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
                 0.5,1,1,0
             )
         end
@@ -1594,7 +1594,7 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
     local hurt_side_obj_char = common_game_scene_change_character(side)
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     local sprite_sheet = nil
     local pushbox = nil
     local collision_ground_height_offset = nil
@@ -1685,8 +1685,8 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         if hit_side_obj_char["height"] ~= "air" then
             insert_VFX_game_scene_stage_smoke_horizontal_shot(
                 hit_side_obj_char,
-                hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
-                hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
+                hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+                hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
                 0.5,1,1,0
             )
         end
@@ -1762,7 +1762,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
     local pushbox_data = common_game_scene_get_pushbox(side)
     local hurtbox_data = common_game_scene_get_hurtbox(side)
     local anchor_data = common_game_scene_get_anchor(side)
-    local VFX_spawn_anchor_pos_data = common_game_scene_get_VFX_spawn_anchor_pos(side)
+    local VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 60
 
@@ -1874,7 +1874,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 25
 
@@ -1925,8 +1925,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
         -- VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
             hurt_side_obj_char,
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,1,1,0
         )
         -- character_uncommon_init
@@ -2000,7 +2000,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 25
 
@@ -2051,8 +2051,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
         -- VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
             hurt_side_obj_char,
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,1,1,0
         )
         -- character_uncommon_init
@@ -2126,7 +2126,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 25
 
@@ -2177,8 +2177,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
         -- VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
             hurt_side_obj_char,
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,1,1,0
         )
         -- character_uncommon_init
@@ -2236,7 +2236,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
     local pushbox_data = common_game_scene_get_pushbox(side)
     local hurtbox_data = common_game_scene_get_hurtbox(side)
     local anchor_data = common_game_scene_get_anchor(side)
-    local VFX_spawn_anchor_pos_data = common_game_scene_get_VFX_spawn_anchor_pos(side)
+    local VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 85
     for i = 60,69 do
@@ -2307,8 +2307,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         hit_side_obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][3]
         insert_VFX_game_scene_stage_smoke_land_blow(
             hit_side_obj_char,
-            VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1],
-            VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][2],
+            VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,1,1,0
         )
     end
@@ -2336,7 +2336,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallbrea
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 7
 
@@ -2450,7 +2450,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 30
 
@@ -2566,7 +2566,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 30
 
@@ -2666,7 +2666,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
     local pushbox_data = common_game_scene_get_pushbox(side)
     local hurtbox_data = common_game_scene_get_hurtbox(side)
     local anchor_data = common_game_scene_get_anchor(side)
-    local VFX_spawn_anchor_pos_data = common_game_scene_get_VFX_spawn_anchor_pos(side)
+    local VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 25
 
@@ -2773,7 +2773,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 30
 
@@ -2821,8 +2821,8 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][0][1],
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][0][2],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][0][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][0][2],
             0.5,-1,1,0
         )
         -- character_uncommon_init
@@ -2863,8 +2863,8 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
             hurt_side_obj_char,
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1][1],
-            hurt_side_VFX_spawn_anchor_pos_data["stage_VFX_spawn_anchor_pos"][sprite_sheet][1][2],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1][2],
             0.5,1,1,0
         )
     end
@@ -2893,7 +2893,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
     local pushbox_data = common_game_scene_get_pushbox(side)
     local hurtbox_data = common_game_scene_get_hurtbox(side)
     local anchor_data = common_game_scene_get_anchor(side)
-    local VFX_spawn_anchor_pos_data = common_game_scene_get_VFX_spawn_anchor_pos(side)
+    local VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 10
     
@@ -3028,7 +3028,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     local common_land_function = function(i)
         -- state
         hurt_side_obj_char["f"] = i
@@ -3362,7 +3362,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -3554,7 +3554,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -3692,7 +3692,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -3820,7 +3820,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     local function update_before_falling()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -4008,7 +4008,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -4165,7 +4165,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -4304,7 +4304,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -4436,7 +4436,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -4595,7 +4595,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -4790,7 +4790,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
     local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
     local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
     local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_pos_data = common_game_scene_change_character_VFX_spawn_anchor_pos(side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 29
 
