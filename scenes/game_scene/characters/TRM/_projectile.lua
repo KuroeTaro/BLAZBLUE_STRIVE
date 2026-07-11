@@ -1,7 +1,7 @@
 -- type life x y velocity projectile_clash_type
 -- 1-8 f sprite_sheet
 
--- push_box_interact_function	push_box
+-- pushbox_interact_function	pushbox
 -- projectile_clashed_function	projectile_clash_box
 -- enemy_interact_function		hitbox hurtbox hit_type	hit_damage hit_damage_correction_factor 
 -- friendly_interact_function

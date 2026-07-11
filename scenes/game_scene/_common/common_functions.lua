@@ -181,7 +181,6 @@ function common_game_scene_get_input_sys_cache_negative_edge_init(side)
 end
 function common_update_game_scene_input_direction(self_side_obj_char)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[self_side_obj_char["player_side"]]
-    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
     local right = (test_input_sys_press_or_hold(input["right"]) and 1 or 0)
     local left  = (test_input_sys_press_or_hold(input["left"]) and 1 or 0)
     local up    = (test_input_sys_press_or_hold(input["up"]) and 1 or 0)

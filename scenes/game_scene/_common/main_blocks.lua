@@ -296,14 +296,14 @@ function update_game_scene_training_main()
         -- 更新飞行道具 与角色碰撞交互
         for i = #char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
             local object = char_LP["projectile_table"][i]
-            if object["push_box_interact_update"] then
-                object["push_box_interact_update"]()
+            if object["pushbox_interact_update"] then
+                object["pushbox_interact_update"]()
             end
         end
         for i = #char_RP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
             local object = char_RP["projectile_table"][i]
-            if object["push_box_interact_update"] then
-                object["push_box_interact_update"]()
+            if object["pushbox_interact_update"] then
+                object["pushbox_interact_update"]()
             end
         end
 
@@ -460,14 +460,14 @@ function update_game_scene_training_main()
         -- 更新飞行道具 与角色碰撞交互
         for i = #char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
             local object = char_LP["projectile_table"][i]
-            if object["push_box_interact_update"] then
-                object["push_box_interact_update"]()
+            if object["pushbox_interact_update"] then
+                object["pushbox_interact_update"]()
             end
         end
         for i = #char_RP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
             local object = char_RP["projectile_table"][i]
-            if object["push_box_interact_update"] then
-                object["push_box_interact_update"]()
+            if object["pushbox_interact_update"] then
+                object["pushbox_interact_update"]()
             end
         end
     end
@@ -487,14 +487,14 @@ function update_game_scene_training_main()
     -- 更新飞行道具 与角色碰撞交互
     for i = #char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
         local object = char_LP["projectile_table"][i]
-        if object["push_box_interact_update"] then
-            object["push_box_interact_update"]()
+        if object["pushbox_interact_update"] then
+            object["pushbox_interact_update"]()
         end
     end
     for i = #char_RP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
         local object = char_RP["projectile_table"][i]
-        if object["push_box_interact_update"] then
-            object["push_box_interact_update"]()
+        if object["pushbox_interact_update"] then
+            object["pushbox_interact_update"]()
         end
     end
 
