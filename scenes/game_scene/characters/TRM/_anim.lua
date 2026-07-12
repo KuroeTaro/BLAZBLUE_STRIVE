@@ -6288,7 +6288,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(hit_side_obj_char)
         hit_side_obj_char["hit_cancel"] = true
         -- VFX
         local hit_VFX_insert_function_argument = hit_side_obj_char["hit_VFX_insert_function_argument"]
-        hit_side_obj_char["hit_VFX_insert_function"](hit_side_obj_char)
+        hit_side_obj_char["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
         -- draw_correction
         hit_side_obj_char[8] = 5
     end
@@ -8867,7 +8867,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(hit_side_obj_char)
         hit_side_obj_char["hit_cancel"] = true
         -- VFX
         local hit_VFX_insert_function_argument = hit_side_obj_char["hit_VFX_insert_function_argument"]
-        hit_side_obj_char["hit_VFX_insert_function"](hit_side_obj_char)
+        hit_side_obj_char["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
         -- draw_correction
         hit_side_obj_char[8] = 4
     end

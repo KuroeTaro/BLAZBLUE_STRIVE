@@ -1644,7 +1644,10 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         common_game_scene_set_input_sys_cache_init(hit_side)
         -- insert VFX
         if teching_or_teched == "teching" then
-            insert_VFX_game_scene_char_throw_tech(hit_side_obj_char,-450,-900,1,1.2,1.2,0)
+            insert_VFX_game_scene_char_throw_tech(
+                hit_side_obj_char,hurt_side_obj_char,
+                -450,-900,1,1.2,1.2,0
+            )
         end
         if hit_side_obj_char["height"] ~= "air" then
             insert_VFX_game_scene_stage_smoke_horizontal_shot(
@@ -4997,7 +5000,7 @@ function load_game_scene_anim_char_common_burst_overdrive(
         )
         -- VFX
         insert_VFX_game_scene_char_overdrive_badge(self_side_obj_char)
-        insert_VFX_game_scene_char_overdrive_partical(self_side_obj_char)
+        insert_VFX_game_scene_char_overdrive_partical(self_side_obj_char,opponent_side_obj_char)
         insert_VFX_game_scene_char_overdrive_black_overlay(self_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init(self_side_obj_char)

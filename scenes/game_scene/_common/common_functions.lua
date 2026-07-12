@@ -395,11 +395,11 @@ function common_game_scene_strike_hit_function(hurt_side_obj_char)
     -- counter
     if hurt_side_obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
         hit_side_obj_char["hit_damage"] = hit_side_obj_char["hit_damage"]*1.1
-        hit_side_obj_char["hit_counter_VFX_insert_function"](hit_side_obj_char)
+        hit_side_obj_char["hit_counter_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
     elseif not block_bool then
-        hit_side_obj_char["hit_VFX_insert_function"](hit_side_obj_char)
+        hit_side_obj_char["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
     elseif block_bool then
-        hit_side_obj_char["hit_block_VFX_insert_function"](hit_side_obj_char)
+        hit_side_obj_char["hit_block_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
     end
     -- debug
     hit_side_obj_char["active_frame"] = hit_side_obj_char["active_frame"] + 1

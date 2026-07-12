@@ -254,9 +254,11 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         -- strike_clash
         -- projectile_and_projectile_interaction
         -- interaction_with_enemy
+        local hit_side = hit_side_obj_char["player_side"]
+        local hurt_side = hurt_side_obj_char["player_side"]
+        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local obj_stage_main = obj_stage_game_scene_main
         local obj_camera = obj_stage_game_scene_camera
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local wallhurt_wallstick_on_side_cache = hurt_side_obj_char["wallhurt_wallstick_on_side"]
             -- if hit
         if collision_strike_hurtbox_test(obj_projectile,hurt_side_obj_char) and obj_projectile["strike_active"] and (not hurt_side_obj_char["strike_inv"]) then
@@ -390,7 +392,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
                 init_character_anim_with(hurt_side_obj_char,hurt_side_obj_char["character_animation"])
 
                 -- insert_hurt_VFX
-                insert_VFX_game_scene_char_blast_special(hit_side_obj_char)
+                insert_VFX_game_scene_char_blast_special(hit_side_obj_char,hurt_side_obj_char)
             end
             -- wallbreak_test_and_apply
             common_game_scene_test_and_apply_wallbreak(hurt_side_obj_char,hit_side_obj_char,obj_projectile,wallhurt_wallstick_on_side_cache)
@@ -464,6 +466,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
         -- strike_clash
         -- projectile_and_projectile_interaction
         -- interaction_with_enemy
+        local hit_side = hit_side_obj_char["player_side"]
+        local hurt_side = hurt_side_obj_char["player_side"]
         local obj_stage_main = obj_stage_game_scene_main
         local obj_camera = obj_stage_game_scene_camera
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
@@ -547,6 +551,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
         -- strike_clash
         -- projectile_and_projectile_interaction
         -- interaction_with_enemy
+        local hit_side = hit_side_obj_char["player_side"]
+        local hurt_side = hurt_side_obj_char["player_side"]
         local obj_stage_main = obj_stage_game_scene_main
         local obj_camera = obj_stage_game_scene_camera
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
@@ -763,6 +769,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         -- strike_clash
         -- projectile_and_projectile_interaction
         -- interaction_with_enemy
+        local hit_side = hit_side_obj_char["player_side"]
+        local hurt_side = hurt_side_obj_char["player_side"]
         local obj_stage_main = obj_stage_game_scene_main
         local obj_camera = obj_stage_game_scene_camera
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
