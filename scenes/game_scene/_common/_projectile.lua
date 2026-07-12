@@ -19,14 +19,12 @@ function load_game_scene_anim_projectile_rc_main(obj_projectile)
     return res
 end
 
-function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_char)
+function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_char,hurt_side_obj_char)
     -- clear_projectile_rc_table
     hit_side_obj_char["projectile_rc_table"] = {}
     -- x y z opacity sx sy r f
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
-    local hurt_side_obj_char = common_game_scene_change_character(hit_side_obj_char["player_side"])
-    local side = hit_side_obj_char["player_side"]
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
     if hit_side_obj_char["height"] == "air" then
         obj_projectile["y_offset"] = 150
@@ -77,8 +75,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     obj_projectile["enclose_position_offset"] = {0,0,0}
 
     obj_projectile["stand_hurt_animation"] = load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
-        hit_side_obj_char,obj_projectile,true,nil,
-        "0_general_hurt_launched_high",
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+        true,nil,"0_general_hurt_launched_high",
         "air","knockdown",
         7.5,5,1.00,
         -7.5,1.0,1.00,
@@ -102,8 +100,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-290) end
     )
     obj_projectile["stand_block_animation"] = load_game_scene_anim_char_RC_red_projectile_ground_block(
-        hit_side_obj_char,obj_projectile,true,nil,
-        "4_stand_block_high",
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+        true,nil,"4_stand_block_high",
         "stand","5_stand_idle",
         8,5,1.00,
         0,2.5,1.00,
@@ -111,8 +109,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         function() end
     )
     obj_projectile["crouch_hurt_animation"] = load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
-        hit_side_obj_char,obj_projectile,true,nil,
-        "0_general_hurt_launched_high",
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+        true,nil,"0_general_hurt_launched_high",
         "air","knockdown",
         7.5,5,1.00,
         -7.5,1.0,1.00,
@@ -136,8 +134,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-290) end
     )
     obj_projectile["crouch_block_animation"] = load_game_scene_anim_char_RC_red_projectile_ground_block(
-        hit_side_obj_char,obj_projectile,true,nil,
-        "1_crouch_block",
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+        true,nil,"1_crouch_block",
         "crouch","1_2_3_crouch",
         8,5,1.00,
         0,2.5,1.00,
@@ -145,8 +143,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         function() end
     )
     obj_projectile["air_hurt_animation"] = load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
-        hit_side_obj_char,obj_projectile,true,nil,
-        "0_general_hurt_launched_high",
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+        true,nil,"0_general_hurt_launched_high",
         "air","knockdown",
         7.5,5,1.00,
         -7.5,1.0,1.00,
@@ -170,8 +168,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-290) end
     )
     obj_projectile["air_block_animation"] = load_game_scene_anim_char_RC_red_projectile_air_block(
-        hit_side_obj_char,obj_projectile,true,nil,
-        "1_4_7_air_block",
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+        true,nil,"1_4_7_air_block",
         "air","5_stand_idle",
         7.5,5,1.00,
         -7.5,7.5,1.00,
@@ -179,8 +177,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         function() end
     )
     obj_projectile["OTG_hurt_animation"] = load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
-        hit_side_obj_char,obj_projectile,true,nil,
-        "0_general_hurt_launched_high",
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+        true,nil,"0_general_hurt_launched_high",
         "air","knockdown",
         7.5,5,1.00,
         -5,2.5,1.00,
@@ -204,8 +202,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
     )
     obj_projectile["wallstick_hurt_animation"] = load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
-        hit_side_obj_char,obj_projectile,true,nil,
-        "0_general_hurt_launched_high",
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+        true,nil,"0_general_hurt_launched_high",
         "air","knockdown",
         7.5,5,1.00,
         -15,1.0,1.00,
@@ -403,14 +401,12 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     -- end
     table.insert(hit_side_obj_char["projectile_rc_table"],obj_projectile)
 end
-function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj_char)
+function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj_char,hurt_side_obj_char)
     -- clear_projectile_rc_table
     hit_side_obj_char["projectile_rc_table"] = {}
     -- x y z opacity sx sy r f
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
-    local hurt_side_obj_char = common_game_scene_change_character(hit_side_obj_char["player_side"])
-    local side = hit_side_obj_char["player_side"]
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
     if hit_side_obj_char["height"] == "air" then
         obj_projectile["y_offset"] = 150
@@ -488,14 +484,12 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
     -- end
     table.insert(hit_side_obj_char["projectile_rc_table"],obj_projectile)
 end
-function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_obj_char)
+function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_obj_char,hurt_side_obj_char)
     -- clear_projectile_rc_table
     hit_side_obj_char["projectile_rc_table"] = {}
     -- x y z opacity sx sy r f
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
-    local hurt_side_obj_char = common_game_scene_change_character(hit_side_obj_char["player_side"])
-    local side = hit_side_obj_char["player_side"]
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
     if hit_side_obj_char["height"] == "air" then
         obj_projectile["y_offset"] = 150
@@ -573,16 +567,13 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
     -- end
     table.insert(hit_side_obj_char["projectile_rc_table"],obj_projectile)
 end
-function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_obj_char)
+function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_obj_char,hurt_side_obj_char)
     -- clear_projectile_rc_table
     hit_side_obj_char["projectile_rc_table"] = {}
     -- x y z opacity sx sy r f
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
-    local hurt_side_obj_char = common_game_scene_change_character(hit_side_obj_char["player_side"])
-    local side = hit_side_obj_char["player_side"]
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
-    local hurt_vertical_gravity = 0
     if hit_side_obj_char["height"] == "air" then
         obj_projectile["y_offset"] = 150
     else
@@ -632,8 +623,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
     obj_projectile["enclose_position_offset"] = {0,0,0}
 
     obj_projectile["stand_hurt_animation"] = load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
-        hit_side_obj_char,obj_projectile,true,nil,
-        "0_general_hurt_launched_high",
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+        true,nil,"0_general_hurt_launched_high",
         "air","knockdown_recovery",
         30,5,1.00,
         -2.5,0.5,1.00,
@@ -649,8 +640,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
     )
     obj_projectile["stand_block_animation"] = load_game_scene_anim_char_RC_yellow_projectile_ground_block(
-        hit_side_obj_char,obj_projectile,true,nil,
-        "4_stand_block_high",
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+        true,nil,"4_stand_block_high",
         "stand","5_stand_idle",
         8,5,1.00,
         0,2.5,1.00,
@@ -658,8 +649,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         function() end
     )
     obj_projectile["crouch_hurt_animation"] = load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
-        hit_side_obj_char,obj_projectile,true,nil,
-        "0_general_hurt_launched_high",
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+        true,nil,"0_general_hurt_launched_high",
         "air","knockdown_recovery",
         30,5,1.00,
         -2.5,0.5,1.00,
@@ -675,8 +666,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
     )
     obj_projectile["crouch_block_animation"] = load_game_scene_anim_char_RC_yellow_projectile_ground_block(
-        hit_side_obj_char,obj_projectile,true,nil,
-        "1_crouch_block",
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+        true,nil,"1_crouch_block",
         "crouch","1_2_3_crouch",
         8,5,1.00,
         0,2.5,1.00,
@@ -684,8 +675,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         function() end
     )
     obj_projectile["air_hurt_animation"] = load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
-        hit_side_obj_char,obj_projectile,true,nil,
-        "0_general_hurt_launched_high",
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+        true,nil,"0_general_hurt_launched_high",
         "air","knockdown_recovery",
         30,5,1.00,
         -2.5,1.0,1.00,
@@ -701,8 +692,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
     )
     obj_projectile["air_block_animation"] = load_game_scene_anim_char_RC_yellow_projectile_air_block(
-        hit_side_obj_char,obj_projectile,true,nil,
-        "1_4_7_air_block",
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+        true,nil,"1_4_7_air_block",
         "air","5_stand_idle",
         7.5,5,1.00,
         -7.5,7.5,1.00,
@@ -710,8 +701,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         function() end
     )
     obj_projectile["OTG_hurt_animation"] = load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
-        hit_side_obj_char,obj_projectile,true,nil,
-        "0_general_hurt_launched_high",
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+        true,nil,"0_general_hurt_launched_high",
         "air","knockdown_recovery",
         30,5,1.00,
         -2.5,1.0,1.00,
@@ -727,8 +718,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
     )
     obj_projectile["wallstick_hurt_animation"] = load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
-        hit_side_obj_char,obj_projectile,true,nil,
-        "0_general_hurt_launched_high",
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+        true,nil,"0_general_hurt_launched_high",
         "air","knockdown_recovery",
         30,5,1.00,
         -2.5,1.0,1.00,
@@ -916,10 +907,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
 end
 
 function load_game_scene_anim_char_RC_red_projectile_ground_block(
-    hit_side_obj_char,projectile,fix_direction,velocity_center,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+    fix_direction,velocity_center,
+    sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -933,12 +923,12 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
     character_uncommon_init
 )
     local res = {}
-    local side = hit_side_obj_char["player_side"]
-    local hurt_side_obj_char = common_game_scene_change_character(side)
-    local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
-    local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
-    local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
+    local hit_side = hit_side_obj_char["player_side"]
+    local hurt_side = hurt_side_obj_char["player_side"]
+    local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
+    local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
+    local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 12
 
@@ -968,13 +958,13 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
         hurt_side_obj_char["projectile_inv"] = false
         hurt_side_obj_char["projectile_inv_countdown"] = 0
         -- state_number
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
+        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
         common_game_scene_projectile_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"block",FD_block,projectile
+            hit_side_obj_char,hurt_side_obj_char,"block",FD_block,obj_projectile
         )
         common_game_scene_projectile_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,projectile,
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -1002,7 +992,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
         )
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(hurt_side_obj_char["player_side"])
+        common_game_scene_set_input_sys_cache_init(hurt_side)
         -- game_speed
         common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,2,1,39,45-27,0})
         -- character_uncommon_init
@@ -1015,7 +1005,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
     res[6] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(hurt_side_obj_char["player_side"])
+        common_game_scene_set_input_sys_cache_init(hurt_side)
         -- draw_correction
         hurt_side_obj_char[8] = 2
     end
@@ -1033,10 +1023,9 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
     return res
 end
 function load_game_scene_anim_char_RC_red_projectile_air_block(
-    hit_side_obj_char,projectile,fix_direction,velocity_center,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+    fix_direction,velocity_center,
+    sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -1050,12 +1039,12 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
     character_uncommon_init
 )
     local res = {}
-    local side = hit_side_obj_char["player_side"]
-    local hurt_side_obj_char = common_game_scene_change_character(side)
-    local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
-    local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
-    local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
+    local hit_side = hit_side_obj_char["player_side"]
+    local hurt_side = hurt_side_obj_char["player_side"]
+    local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
+    local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
+    local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -1115,10 +1104,10 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
         common_game_scene_projectile_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"block",FD_block,projectile
+            hit_side_obj_char,hurt_side_obj_char,"block",FD_block,obj_projectile
         )
         common_game_scene_projectile_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,projectile,
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -1191,7 +1180,7 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
     res[26] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(hurt_side_obj_char["player_side"])
+        common_game_scene_set_input_sys_cache_init(hurt_side)
     end
     res[28] = function()
         -- collide
@@ -1205,10 +1194,9 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
     return res
 end
 function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
-    hit_side_obj_char,projectile,fix_direction,velocity_center,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+    fix_direction,velocity_center,
+    sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -1222,12 +1210,12 @@ function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
     character_uncommon_init
 )
     local res = {}
-    local side = hit_side_obj_char["player_side"]
-    local hurt_side_obj_char = common_game_scene_change_character(side)
-    local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
-    local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
-    local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
+    local hit_side = hit_side_obj_char["player_side"]
+    local hurt_side = hurt_side_obj_char["player_side"]
+    local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
+    local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
+    local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -1272,10 +1260,10 @@ function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
         hurt_side_obj_char["projectile_inv_countdown"] = 0
         -- state_number
         common_game_scene_projectile_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"hurt",false,projectile
+            hit_side_obj_char,hurt_side_obj_char,"hurt",false,obj_projectile
         )
         common_game_scene_projectile_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,projectile,
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -1405,10 +1393,9 @@ function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
 end
 
 function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
-    hit_side_obj_char,projectile,fix_direction,velocity_center,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+    fix_direction,velocity_center,
+    sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -1422,12 +1409,12 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
     character_uncommon_init
 )
     local res = {}
-    local side = hit_side_obj_char["player_side"]
-    local hurt_side_obj_char = common_game_scene_change_character(side)
-    local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
-    local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
-    local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
+    local hit_side = hit_side_obj_char["player_side"]
+    local hurt_side = hurt_side_obj_char["player_side"]
+    local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
+    local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
+    local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 17
 
@@ -1460,10 +1447,10 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
         common_game_scene_projectile_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"block",FD_block,projectile
+            hit_side_obj_char,hurt_side_obj_char,"block",FD_block,obj_projectile
         )
         common_game_scene_projectile_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,projectile,
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -1528,10 +1515,9 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
     return res
 end
 function load_game_scene_anim_char_RC_yellow_projectile_air_block(
-    hit_side_obj_char,projectile,fix_direction,velocity_center,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+    fix_direction,velocity_center,
+    sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -1545,12 +1531,12 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
     character_uncommon_init
 )
     local res = {}
-    local side = hit_side_obj_char["player_side"]
-    local hurt_side_obj_char = common_game_scene_change_character(side)
-    local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
-    local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
-    local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
+    local hit_side = hit_side_obj_char["player_side"]
+    local hurt_side = hurt_side_obj_char["player_side"]
+    local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
+    local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
+    local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -1610,10 +1596,10 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
         common_game_scene_projectile_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"block",FD_block,projectile
+            hit_side_obj_char,hurt_side_obj_char,"block",FD_block,obj_projectile
         )
         common_game_scene_projectile_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,projectile,
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -1700,10 +1686,9 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
     return res
 end
 function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
-    hit_side_obj_char,projectile,fix_direction,velocity_center,
-    sprite_sheet,
-    height,
-    state_cache,
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile,
+    fix_direction,velocity_center,
+    sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
     hurt_horizontal_friction,
     hurt_horizontal_velocity_correction,
@@ -1767,10 +1752,10 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
         hurt_side_obj_char["projectile_inv_countdown"] = 0
         -- state_number
         common_game_scene_projectile_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"hurt",false,projectile
+            hit_side_obj_char,hurt_side_obj_char,"hurt",false,obj_projectile
         )
         common_game_scene_projectile_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,projectile,
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,

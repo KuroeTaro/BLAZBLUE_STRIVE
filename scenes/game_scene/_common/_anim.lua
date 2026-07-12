@@ -5129,7 +5129,7 @@ function load_game_scene_anim_char_common_burst_overdrive(
         update_move_overdrive_state()
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(self_side_obj_char["player_side"])
+        common_game_scene_set_input_sys_cache_init(self_side)
         -- draw_correction
         self_side_obj_char[8] = 8
     end
@@ -5262,7 +5262,7 @@ function load_game_scene_anim_char_common_burst_RC_red(
         self_side_obj_char["projectile_inv_countdown"] = res["anim_length"]
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(self_side_obj_char["player_side"])
+        common_game_scene_set_input_sys_cache_init(self_side)
         -- state_number
         self_side_obj_char["friction"] = 0
         self_side_obj_char["gravity"] = 0
@@ -5308,7 +5308,7 @@ function load_game_scene_anim_char_common_burst_RC_red(
         update_heat_gauge_state()
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "load" -- none save load
-        common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
+        common_game_scene_get_input_sys_cache_state_machine(self_side)()
         -- draw_correction
         self_side_obj_char[8] = 2
     end
@@ -5331,7 +5331,7 @@ function load_game_scene_anim_char_common_burst_RC_red(
         -- draw_correction
         self_side_obj_char[8] = 4
         -- projectile
-        insert_projectile_game_scene_char_common_RC_shockwave_red(self_side_obj_char)
+        insert_projectile_game_scene_char_common_RC_shockwave_red(self_side_obj_char,opponent_side_obj_char)
     end
     res[27] = function()
         -- state
@@ -5350,7 +5350,7 @@ function load_game_scene_anim_char_common_burst_RC_red(
         update_state()
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(self_side_obj_char["player_side"])
+        common_game_scene_set_input_sys_cache_init(self_side)
         -- draw_correction
         self_side_obj_char[8] = 7
     end
@@ -5456,7 +5456,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         self_side_obj_char["projectile_inv_countdown"] = 0
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(self_side_obj_char["player_side"])
+        common_game_scene_set_input_sys_cache_init(self_side)
         -- state_number
         self_side_obj_char["friction"] = 0
         self_side_obj_char["gravity"] = 0
@@ -5508,7 +5508,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         self_side_obj_char["hurtbox_table"] = {}
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "load" -- none save load
-        common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
+        common_game_scene_get_input_sys_cache_state_machine(self_side)()
         -- game_speed
         -- 设置为强制速度到动画结束
         common_game_scene_game_speed_load_application(self_side_obj_char,{1,nil,nil,nil,nil,39})
@@ -5545,7 +5545,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         -- draw_correction
         self_side_obj_char[8] = 4
         -- projectile
-        insert_projectile_game_scene_char_common_RC_shockwave_blue(self_side_obj_char)
+        insert_projectile_game_scene_char_common_RC_shockwave_blue(self_side_obj_char,opponent_side_obj_char)
     end
     res[27] = function()
         -- state
@@ -5564,7 +5564,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         update_state()
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(self_side_obj_char["player_side"])
+        common_game_scene_set_input_sys_cache_init(self_side)
         -- draw_correction
         self_side_obj_char[8] = 7
     end
@@ -5670,7 +5670,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         self_side_obj_char["projectile_inv_countdown"] = 0
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(self_side_obj_char["player_side"])
+        common_game_scene_set_input_sys_cache_init(self_side)
         -- state_number
         self_side_obj_char["friction"] = 0
         self_side_obj_char["gravity"] = 0
@@ -5722,7 +5722,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         self_side_obj_char["hurtbox_table"] = {}
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "load" -- none save load
-        common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
+        common_game_scene_get_input_sys_cache_state_machine(self_side)()
         -- game_speed
         -- 设置为强制速度到动画结束
         common_game_scene_game_speed_load_application(self_side_obj_char,{1,nil,nil,nil,nil,39})
@@ -5764,7 +5764,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         -- draw_correction
         self_side_obj_char[8] = 4
         -- projectile
-        insert_projectile_game_scene_char_common_RC_shockwave_purple(self_side_obj_char)
+        insert_projectile_game_scene_char_common_RC_shockwave_purple(self_side_obj_char,opponent_side_obj_char)
     end
     res[27] = function()
         -- state
@@ -5783,7 +5783,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         update_state()
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(self_side_obj_char["player_side"])
+        common_game_scene_set_input_sys_cache_init(self_side)
         -- draw_correction
         self_side_obj_char[8] = 7
     end
@@ -5889,7 +5889,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         self_side_obj_char["projectile_inv_countdown"] = 42
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "none" -- none save load
-        common_game_scene_set_input_sys_cache_init(self_side_obj_char["player_side"])
+        common_game_scene_set_input_sys_cache_init(self_side)
         -- state_number
         self_side_obj_char["friction"] = 0
         self_side_obj_char["gravity"] = 0
@@ -5947,7 +5947,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         -- draw_correction
         self_side_obj_char[8] = 4
         -- projectile
-        insert_projectile_game_scene_char_common_RC_shockwave_yellow(self_side_obj_char)
+        insert_projectile_game_scene_char_common_RC_shockwave_yellow(self_side_obj_char,opponent_side_obj_char)
     end
     res[27] = function()
         -- state
@@ -5966,7 +5966,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         update_state()
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(self_side_obj_char["player_side"])
+        common_game_scene_set_input_sys_cache_init(self_side)
         -- draw_correction
         self_side_obj_char[8] = 7
     end
