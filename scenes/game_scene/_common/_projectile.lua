@@ -92,7 +92,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
             nil,nil,nil,nil,function() end
         ),
         load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_hard_recovery_up",
             "OTG",
             "5_stand_idle",
@@ -126,7 +126,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
             nil,nil,nil,nil,function() end
         ),
         load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_hard_recovery_up",
             "OTG",
             "5_stand_idle",
@@ -160,7 +160,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
             nil,nil,nil,nil,function() end
         ),
         load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_hard_recovery_up",
             "OTG",
             "5_stand_idle",
@@ -194,7 +194,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
             nil,nil,nil,nil,function() end
         ),
         load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_hard_recovery_up",
             "OTG",
             "5_stand_idle",
@@ -219,7 +219,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
             nil,nil,nil,nil,function() end
         ),
         load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_hard_recovery_up",
             "OTG",
             "5_stand_idle",
@@ -639,7 +639,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         -2.5,0.5,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_soft_recovery_ground",
             "OTG",
             "5_stand_idle",
@@ -665,7 +665,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         -2.5,0.5,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_soft_recovery_ground",
             "OTG",
             "5_stand_idle",
@@ -691,7 +691,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         -2.5,1.0,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_soft_recovery_ground",
             "OTG",
             "5_stand_idle",
@@ -717,7 +717,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         -2.5,1.0,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_soft_recovery_ground",
             "OTG",
             "5_stand_idle",
@@ -734,7 +734,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         -2.5,1.0,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
-            hit_side_obj_char,
+            hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_soft_recovery_ground",
             "OTG",
             "5_stand_idle",

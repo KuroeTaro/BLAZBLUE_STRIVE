@@ -3053,6 +3053,8 @@ function state_gate_game_scene_char_RP_common_air_to_special_move_hold_ver(input
 end
 
 function state_gate_game_scene_char_RP_common_to_burst_RC_red(input,obj_char)
+    local self_side_obj_char = obj_char
+    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
     if obj_char["heat_gauge"][1] < 100.0 then
         return
     end
@@ -3089,13 +3091,18 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_red(input,obj_char)
             obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
         obj_char["character_animation"] = 
-        load_game_scene_anim_char_common_burst_RC_red(obj_char,character_function_game_scene_TRM_RC_state_character_uncommon_update)
+        load_game_scene_anim_char_common_burst_RC_red(
+            obj_char,opponent_side_obj_char,
+            character_function_game_scene_TRM_RC_state_character_uncommon_update
+        )
         obj_char["state"] = "burst_RC_red"
         init_character_anim_with(obj_char,obj_char["character_animation"])
         return true
     end
 end
 function state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char)
+    local self_side_obj_char = obj_char
+    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
     if obj_char["heat_gauge"][1] < 100.0 then
         return
     end
@@ -3160,13 +3167,18 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,obj_char)
             obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
         obj_char["character_animation"] = 
-        load_game_scene_anim_char_common_burst_RC_blue(obj_char,character_function_game_scene_TRM_RC_state_character_uncommon_update)
+        load_game_scene_anim_char_common_burst_RC_blue(
+            self_side_obj_char,opponent_side_obj_char,
+            character_function_game_scene_TRM_RC_state_character_uncommon_update
+        )
         obj_char["state"] = "burst_RC_blue"
         init_character_anim_with(obj_char,obj_char["character_animation"])
         return true
     end
 end
 function state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char)
+    local self_side_obj_char = obj_char
+    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
     if obj_char["heat_gauge"][1] < 100.0 then
         return
     end
@@ -3203,13 +3215,18 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,obj_char)
             obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
         obj_char["character_animation"] = 
-        load_game_scene_anim_char_common_burst_RC_purple(obj_char,character_function_game_scene_TRM_RC_state_character_uncommon_update)
+        load_game_scene_anim_char_common_burst_RC_purple(
+            self_side_obj_char,opponent_side_obj_char,
+            character_function_game_scene_TRM_RC_state_character_uncommon_update
+        )
         obj_char["state"] = "burst_RC_purple"
         init_character_anim_with(obj_char,obj_char["character_animation"])
         return true
     end
 end
 function state_gate_game_scene_char_RP_common_to_burst_RC_yellow(input,obj_char)
+    local self_side_obj_char = obj_char
+    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
     if obj_char["heat_gauge"][1] < 100.0 then
         return
     end
@@ -3234,7 +3251,10 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_yellow(input,obj_char)
             obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
         obj_char["character_animation"] = 
-        load_game_scene_anim_char_common_burst_RC_yellow(obj_char,character_function_game_scene_TRM_RC_state_character_uncommon_update)
+        load_game_scene_anim_char_common_burst_RC_yellow(
+            self_side_obj_char,opponent_side_obj_char,
+            character_function_game_scene_TRM_RC_state_character_uncommon_update
+        )
         obj_char["state"] = "burst_RC_yellow"
         init_character_anim_with(obj_char,obj_char["character_animation"])
         return true
@@ -3277,11 +3297,23 @@ function state_gate_game_scene_char_RP_common_to_burst_overdrive(input,self_side
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
         if hit_cancel_RC_state_table[opponent_side_obj_char["state"]] then
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_common_burst_overdrive(self_side_obj_char,70-3,true,character_function_game_scene_TRM_overdrive_state_character_uncommon_init)
+            self_side_obj_char["character_animation"] = 
+            load_game_scene_anim_char_common_burst_overdrive(
+                self_side_obj_char,opponent_side_obj_char,70-3,true,
+                character_function_game_scene_TRM_overdrive_state_character_uncommon_init
+            )
         elseif self_side_obj_char["state"] == "block" then
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_common_burst_overdrive(self_side_obj_char,70-23,true,character_function_game_scene_TRM_overdrive_state_character_uncommon_init)
+            self_side_obj_char["character_animation"] = 
+            load_game_scene_anim_char_common_burst_overdrive(
+                self_side_obj_char,opponent_side_obj_char,70-23,true,
+                character_function_game_scene_TRM_overdrive_state_character_uncommon_init
+            )
         else
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_common_burst_overdrive(self_side_obj_char,70-13,false,character_function_game_scene_TRM_overdrive_state_character_uncommon_init)
+            self_side_obj_char["character_animation"] = 
+            load_game_scene_anim_char_common_burst_overdrive(
+                self_side_obj_char,opponent_side_obj_char,70-13,false,
+                character_function_game_scene_TRM_overdrive_state_character_uncommon_init
+            )
         end
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "burst_overdrive"
