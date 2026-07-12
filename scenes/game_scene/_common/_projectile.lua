@@ -256,7 +256,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         -- interaction_with_enemy
         local obj_stage_main = obj_stage_game_scene_main
         local obj_camera = obj_stage_game_scene_camera
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
+        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local wallhurt_wallstick_on_side_cache = hurt_side_obj_char["wallhurt_wallstick_on_side"]
             -- if hit
         if collision_strike_hurtbox_test(obj_projectile,hurt_side_obj_char) and obj_projectile["strike_active"] and (not hurt_side_obj_char["strike_inv"]) then
@@ -265,7 +265,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
             -- set_physics_lock
             hurt_side_obj_char["physics_lock"] = false
             -- change_draw_front
-            CHARACTER_VISUAL_FRONT = hit_side_obj_char["player_side"]
+            CHARACTER_VISUAL_FRONT = hit_side
             -- change_character_face
             if not common_game_scene_get_character_facing_currect(hurt_side_obj_char) then
                 hurt_side_obj_char[5] = -hurt_side_obj_char[5]
@@ -466,7 +466,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
         -- interaction_with_enemy
         local obj_stage_main = obj_stage_game_scene_main
         local obj_camera = obj_stage_game_scene_camera
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
+        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         -- if hit
         if collision_uncondicational_hurtbox_test(obj_projectile,hurt_side_obj_char) and obj_projectile["hit_active"] then
             -- set_projectile_hit_active
@@ -474,7 +474,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
             -- set_physics_lock
             hurt_side_obj_char["physics_lock"] = false
             -- change_draw_front
-            CHARACTER_VISUAL_FRONT = hit_side_obj_char["player_side"]
+            CHARACTER_VISUAL_FRONT = hit_side
             -- game_speed
             common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,2,1,59,45-27,nil})
         end
@@ -549,7 +549,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
         -- interaction_with_enemy
         local obj_stage_main = obj_stage_game_scene_main
         local obj_camera = obj_stage_game_scene_camera
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
+        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         -- if hit
         if collision_uncondicational_hurtbox_test(obj_projectile,hurt_side_obj_char) and obj_projectile["hit_active"] then
             -- set_projectile_hit_active
@@ -557,7 +557,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
             -- set_physics_lock
             hurt_side_obj_char["physics_lock"] = false
             -- change_draw_front
-            CHARACTER_VISUAL_FRONT = hit_side_obj_char["player_side"]
+            CHARACTER_VISUAL_FRONT = hit_side
             -- game_speed
             common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,2,1,19,45-27,nil})
         end
@@ -765,7 +765,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         -- interaction_with_enemy
         local obj_stage_main = obj_stage_game_scene_main
         local obj_camera = obj_stage_game_scene_camera
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
+        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local wallhurt_wallstick_on_side_cache = hurt_side_obj_char["wallhurt_wallstick_on_side"]
             -- if hit
         if collision_strike_hurtbox_test(obj_projectile,hurt_side_obj_char) and obj_projectile["strike_active"] and (not hurt_side_obj_char["strike_inv"]) then
@@ -774,7 +774,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
             -- set_physics_lock
             hurt_side_obj_char["physics_lock"] = false
             -- change_draw_front
-            CHARACTER_VISUAL_FRONT = hit_side_obj_char["player_side"]
+            CHARACTER_VISUAL_FRONT = hit_side
             -- change_character_face
             if not common_game_scene_get_character_facing_currect(hurt_side_obj_char) then
                 hurt_side_obj_char[5] = -hurt_side_obj_char[5]
@@ -1101,7 +1101,7 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
         hurt_side_obj_char["projectile_inv"] = false
         hurt_side_obj_char["projectile_inv_countdown"] = 0
         -- state_number
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
+        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
         common_game_scene_projectile_apply_damage_heat(
             hit_side_obj_char,hurt_side_obj_char,"block",FD_block,obj_projectile
@@ -1128,7 +1128,7 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(hurt_side_obj_char["player_side"])
+        common_game_scene_set_input_sys_cache_init(hurt_side)
         -- game_speed
         common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,2,1,39,45-27,0})
         -- character_uncommon_init
@@ -1286,7 +1286,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
         update_before_land()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(hurt_side_obj_char["player_side"])
+        common_game_scene_set_input_sys_cache_init(hurt_side)
         -- game_speed
         common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,2,1,39,45-27,0})
         -- character_uncommon_init
@@ -1444,7 +1444,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
         hurt_side_obj_char["projectile_inv"] = false
         hurt_side_obj_char["projectile_inv_countdown"] = 0
         -- state_number
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
+        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
         common_game_scene_projectile_apply_damage_heat(
             hit_side_obj_char,hurt_side_obj_char,"block",FD_block,obj_projectile
@@ -1478,7 +1478,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
         )
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(hurt_side_obj_char["player_side"])
+        common_game_scene_set_input_sys_cache_init(hurt_side)
         -- game_speed
         common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,1,1,0,0,0})
         -- character_uncommon_init
@@ -1499,7 +1499,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
     res[11] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(hurt_side_obj_char["player_side"])
+        common_game_scene_set_input_sys_cache_init(hurt_side)
     end
     res[12] = function()
         -- draw_correction
@@ -1593,7 +1593,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
         hurt_side_obj_char["projectile_inv"] = false
         hurt_side_obj_char["projectile_inv_countdown"] = 0
         -- state_number
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
+        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
         common_game_scene_projectile_apply_damage_heat(
             hit_side_obj_char,hurt_side_obj_char,"block",FD_block,obj_projectile
@@ -1620,7 +1620,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(hurt_side_obj_char["player_side"])
+        common_game_scene_set_input_sys_cache_init(hurt_side)
         -- game_speed
         common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,1,1,0,0,0})
         -- character_uncommon_init
@@ -1672,7 +1672,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
     res[26] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(hurt_side_obj_char["player_side"])
+        common_game_scene_set_input_sys_cache_init(hurt_side)
     end
     res[28] = function()
         -- collide
@@ -1778,7 +1778,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
         update_before_land()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(hurt_side_obj_char["player_side"])
+        common_game_scene_set_input_sys_cache_init(hurt_side)
         -- game_speed
         common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,1,1,0,0,0})
         -- character_uncommon_init
