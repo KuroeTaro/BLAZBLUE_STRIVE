@@ -395,7 +395,7 @@ function order_load_game_scene_stage(load_order)
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
-function load_game_scene_stage_apply_wallbreak_start_init(hurt_side_obj_char,hit_side_obj_char)
+function load_game_scene_stage_apply_wallbreak_start_init(hit_side_obj_char,hurt_side_obj_char)
     local adv = hurt_side_obj_char["wallhurt_wallbreak_adv"]
     local wallstick_on_side = hurt_side_obj_char["wallhurt_wallstick_on_side"]
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side_obj_char["player_side"])
@@ -465,7 +465,7 @@ function load_game_scene_stage_apply_wallbreak_start_init(hurt_side_obj_char,hit
     init_frame_anim_with(obj_stage_game_scene_wallbreak_smoke,anim_stage_frame_game_scene_wallbreak_smoke_frame)
     init_point_linear_anim_with(obj_stage_game_scene_wallbreak_glow,anim_stage_point_linear_game_scene_wallbreak_glow_opacity)
 end
-function load_game_scene_stage_apply_wallbreak_end_init(hurt_side_obj_char,hit_side_obj_char)
+function load_game_scene_stage_apply_wallbreak_end_init(hit_side_obj_char,hurt_side_obj_char)
     local adv = hurt_side_obj_char["wallhurt_wallbreak_adv"]
 
     -- character

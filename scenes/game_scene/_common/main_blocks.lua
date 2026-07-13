@@ -364,12 +364,12 @@ function update_game_scene_training_main()
 
         -- 检测打击受击盒交互
         if LP_hurt_throw_accur and not RP_hurt_throw_accur then
-            char_RP["hit_function"](char_LP,char_RP) -- RP更新主动攻击状态
-            char_RP["hurt_function"](char_LP,char_RP) -- RP更新被攻击状态
+            char_RP["hit_function"](char_RP,char_LP) -- RP更新主动攻击状态
+            char_RP["hurt_function"](char_RP,char_LP) -- RP更新被攻击状态
         end
         if RP_hurt_throw_accur and not LP_hurt_throw_accur then
-            char_LP["hit_function"](char_RP,char_LP) -- LP更新主动攻击状态
-            char_LP["hurt_function"](char_RP,char_LP) -- LP更新被攻击状态
+            char_LP["hit_function"](char_LP,char_RP) -- LP更新主动攻击状态
+            char_LP["hurt_function"](char_LP,char_RP) -- LP更新被攻击状态
         end
         if LP_hurt_throw_accur and RP_hurt_throw_accur then
             common_update_game_scene_char_throw_clash()
@@ -412,16 +412,16 @@ function update_game_scene_training_main()
 
         -- 检测打击受击盒交互
         if LP_hurt_strike_accur then
-            char_RP["hit_function"](char_LP,char_RP) -- RP更新主动攻击状态
+            char_RP["hit_function"](char_RP,char_LP) -- RP更新主动攻击状态
         end
         if RP_hurt_strike_accur then
-            char_LP["hit_function"](char_RP,char_LP) -- LP更新主动攻击状态
+            char_LP["hit_function"](char_LP,char_RP) -- LP更新主动攻击状态
         end
         if LP_hurt_strike_accur then
-            char_RP["hurt_function"](char_LP,char_RP) -- RP更新被攻击状态
+            char_RP["hurt_function"](char_RP,char_LP) -- RP更新被攻击状态
         end
         if RP_hurt_strike_accur then
-            char_LP["hurt_function"](char_RP,char_LP) -- LP更新被攻击状态
+            char_LP["hurt_function"](char_LP,char_RP) -- LP更新被攻击状态
         end
 
         -- 检测双康

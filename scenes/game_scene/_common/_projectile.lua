@@ -395,7 +395,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
                 insert_VFX_game_scene_char_blast_special(hit_side_obj_char,hurt_side_obj_char)
             end
             -- wallbreak_test_and_apply
-            common_game_scene_test_and_apply_wallbreak(hurt_side_obj_char,hit_side_obj_char,obj_projectile,wallhurt_wallstick_on_side_cache)
+            common_game_scene_test_and_apply_wallbreak(hit_side_obj_char,hurt_side_obj_char,obj_projectile,wallhurt_wallstick_on_side_cache)
         end
     end
     -- obj_projectile["friendly_interact_function"] = function()
@@ -905,7 +905,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
                 -- insert_hit_VFX
             end
             -- wallbreak_test_and_apply
-            common_game_scene_test_and_apply_wallbreak(hurt_side_obj_char,hit_side_obj_char,obj_projectile,wallhurt_wallstick_on_side_cache)
+            common_game_scene_test_and_apply_wallbreak(hit_side_obj_char,hurt_side_obj_char,obj_projectile,wallhurt_wallstick_on_side_cache)
         end
     end
     -- obj_projectile["friendly_interact_function"] = function()

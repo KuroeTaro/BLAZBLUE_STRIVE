@@ -1,6 +1,6 @@
 -- hit_function
-function character_function_game_scene_TRM_j2K_strike_hit_function(hurt_side_obj_char,hit_side_obj_char)
-    common_game_scene_strike_hit_function(hurt_side_obj_char,hit_side_obj_char)
+function character_function_game_scene_TRM_j2K_strike_hit_function(hit_side_obj_char,hurt_side_obj_char)
+    common_game_scene_strike_hit_function(hit_side_obj_char,hurt_side_obj_char)
     -- velocity
     hit_side_obj_char["velocity"][2] = -5
     if hit_side_obj_char["direction_input"] == 3 then
@@ -14,8 +14,8 @@ function character_function_game_scene_TRM_j2K_strike_hit_function(hurt_side_obj
     -- debug
     hit_side_obj_char["active_frame"] = hit_side_obj_char["active_frame"] + 1
 end
-function character_function_game_scene_TRM_j2K_strike_hurt_function(hurt_side_obj_char,hit_side_obj_char)
-    common_game_scene_strike_hurt_function(hurt_side_obj_char,hit_side_obj_char)
+function character_function_game_scene_TRM_j2K_strike_hurt_function(hit_side_obj_char,hurt_side_obj_char)
+    common_game_scene_strike_hurt_function(hit_side_obj_char,hurt_side_obj_char)
 end
 
 -- RC_state_update_function

@@ -182,7 +182,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
             -- set_projectile_strike_active
             obj_projectile["strike_active"] = false
             -- common_hurt_function
-            common_game_scene_projectile_hurt_function(hurt_side_obj_char,hit_side_obj_char,obj_projectile)
+            common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
         end
     end
     -- obj_projectile["friendly_interact_function"] = function()
