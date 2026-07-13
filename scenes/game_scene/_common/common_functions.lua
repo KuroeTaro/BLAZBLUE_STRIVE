@@ -365,9 +365,8 @@ function common_game_scene_block_test(hurt_side_obj_char,hit_obj)
     return block_bool
 end
 
-function common_game_scene_strike_hit_function(hurt_side_obj_char)
+function common_game_scene_strike_hit_function(hurt_side_obj_char,hit_side_obj_char)
     -- 只需要设置hitstop
-    local hit_side_obj_char = common_game_scene_change_character(hurt_side_obj_char["player_side"])
     local hit_VFX_insert_function_argument = hit_side_obj_char["hit_VFX_insert_function_argument"]
     hit_side_obj_char["state_cache"] = hit_side_obj_char["state"]
     hit_side_obj_char["state"] = "hitstop"
@@ -403,12 +402,11 @@ function common_game_scene_strike_hit_function(hurt_side_obj_char)
     -- debug
     hit_side_obj_char["active_frame"] = hit_side_obj_char["active_frame"] + 1
 end
-function common_game_scene_strike_hurt_function(hurt_side_obj_char)
+function common_game_scene_strike_hurt_function(hurt_side_obj_char,hit_side_obj_char)
     -- idle unblock punish counter GP parry
     -- stand crouch air OTG wallstick
     local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
-    local hit_side_obj_char = common_game_scene_change_character(hurt_side_obj_char["player_side"])
     local wallhurt_wallstick_on_side_cache = hurt_side_obj_char["wallhurt_wallstick_on_side"]
     -- physics_lock
     hurt_side_obj_char["physics_lock"] = true
