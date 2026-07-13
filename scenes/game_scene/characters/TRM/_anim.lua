@@ -6230,7 +6230,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(hit_side_obj_char)
         collision_pushbox_stage_relocate_x(hurt_side_obj_char)
         hit_side_obj_char["x"] = hurt_side_obj_char["x"] - dx
         -- facing_currect
-        if not common_game_scene_get_character_facing_currect(hit_side_obj_char) then
+        if not common_game_scene_get_character_facing_currect(hit_side_obj_char,hurt_side_obj_char) then
             hit_side_obj_char[5] = -hit_side_obj_char[5]
         end
         -- camera_animation_application
@@ -8834,7 +8834,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(hit_side_obj_char)
         collision_pushbox_stage_relocate_x(hurt_side_obj_char)
         hit_side_obj_char["x"] = hurt_side_obj_char["x"] - dx
         -- facing_currect
-        if not common_game_scene_get_character_facing_currect(hit_side_obj_char) then
+        if not common_game_scene_get_character_facing_currect(hit_side_obj_char,hurt_side_obj_char) then
             hit_side_obj_char[5] = -hit_side_obj_char[5]
         end
         -- camera_animation_application

@@ -45,7 +45,7 @@ function character_function_game_scene_TRM_hitstop_air_jump_cancel(
 )
     local down_cache = input["down"]
     input["down"] = false
-    if not common_game_scene_get_character_facing_currect(obj_char) then
+    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
         obj_char[5] = -obj_char[5]
     end
     common_update_game_scene_input_direction(obj_char)
@@ -70,7 +70,7 @@ function character_function_game_scene_TRM_hitstop_air_jump_cancel(
 end
 function character_function_game_scene_TRM_histop_ground_jump_cancel(input,obj_char)
     obj_char["direction_input_cache"],obj_char["direction_input"] = obj_char["direction_input"],obj_char["direction_input_cache"]
-    if not common_game_scene_get_character_facing_currect(obj_char) then
+    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
         obj_char[5] = -obj_char[5]
     end
     obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)

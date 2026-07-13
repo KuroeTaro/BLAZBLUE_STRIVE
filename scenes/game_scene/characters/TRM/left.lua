@@ -1042,7 +1042,7 @@ function load_game_scene_wallbreak_start_init_LP()
     obj_char_game_scene_char_LP["hurtbox_table"] = {}
 end
 function load_game_scene_wallbreak_mid_init_LP()
-    if not common_game_scene_get_character_facing_currect(obj_char_game_scene_char_LP) then
+    if not common_game_scene_get_character_facing_currect(obj_char_game_scene_char_LP,obj_char_game_scene_char_RP) then
         obj_char_game_scene_char_LP[5] = -obj_char_game_scene_char_LP[5]
     end
     obj_char_game_scene_char_LP["projectile_table"] = {}
@@ -2382,7 +2382,7 @@ function state_gate_game_scene_char_LP_common_ground_to_dash_move(input,obj_char
 end
 function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char)
     -- direction_input
-    if not common_game_scene_get_character_facing_currect(obj_char) and test_input_sys_press_or_hold(input["dash"]) then
+    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) and test_input_sys_press_or_hold(input["dash"]) then
         obj_char[5] = -obj_char[5]
         common_update_game_scene_input_direction(obj_char)
     end
@@ -2406,7 +2406,7 @@ function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(i
 end
 function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char)
     -- direction_input
-    if not common_game_scene_get_character_facing_currect(obj_char) and test_input_sys_press_or_hold(input["dash"]) then
+    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) and test_input_sys_press_or_hold(input["dash"]) then
         obj_char[5] = -obj_char[5]
         common_update_game_scene_input_direction(obj_char)
     end
@@ -2430,7 +2430,7 @@ function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash
 end
 function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_4dash_to_walk(input,obj_char)
     -- direction_input
-    if not common_game_scene_get_character_facing_currect(obj_char) and test_input_sys_press_or_hold(input["dash"]) then
+    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) and test_input_sys_press_or_hold(input["dash"]) then
         obj_char[5] = -obj_char[5]
         common_update_game_scene_input_direction(obj_char)
     end
@@ -2455,7 +2455,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_ch
     end
     -- _2P
     if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_2P(obj_char)
@@ -2465,7 +2465,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_ch
     end
     -- _6P
     if obj_char["direction_input"] == 6 and test_input_sys_press(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_6P(obj_char)
@@ -2475,7 +2475,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_ch
     end
     -- _5P
     if test_input_sys_press(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5P(obj_char)
@@ -2485,7 +2485,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_ch
     end
     -- _2K
     if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["K"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_2K(obj_char)
@@ -2495,7 +2495,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_ch
     end
     -- _6K
     if obj_char["direction_input"] == 6 and test_input_sys_press(input["K"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_6K(obj_char)
@@ -2505,7 +2505,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_ch
     end
     -- _5K
     if test_input_sys_press(input["K"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5K(obj_char)
@@ -2515,7 +2515,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_ch
     end
     -- _2S
     if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["S"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_2S(obj_char)
@@ -2525,7 +2525,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_ch
     end
     -- _6S
     if obj_char["direction_input"] == 6 and test_input_sys_press(input["S"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_6S(obj_char)
@@ -2535,7 +2535,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_ch
     end
     -- _cS
     if test_input_sys_press(input["S"]) and collision_test_cS_distance_check(obj_char,300) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_cS(obj_char)
@@ -2545,7 +2545,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_ch
     end
     -- _fS
     if test_input_sys_press(input["S"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_fS(obj_char)
@@ -2555,7 +2555,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_ch
     end
     -- _2Launcher
     if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["Launcher"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_2Launcher(obj_char)
@@ -2566,7 +2566,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_ch
     -- _4_6Launcher
     if (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 6) 
     and test_input_sys_press(input["Launcher"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
@@ -2576,7 +2576,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_ch
     end
     -- _5Launcher
     if test_input_sys_press(input["Launcher"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5Launcher(obj_char)
@@ -2600,7 +2600,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(inp
     end
     -- _2P
     if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press_or_hold(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_2P(obj_char)
@@ -2610,7 +2610,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(inp
     end
     -- _6P
     if obj_char["direction_input"] == 6 and test_input_sys_press_or_hold(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_6P(obj_char)
@@ -2620,7 +2620,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(inp
     end
     -- _5P
     if test_input_sys_press_or_hold(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5P(obj_char)
@@ -2630,7 +2630,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(inp
     end
     -- _2K
     if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press_or_hold(input["K"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_2K(obj_char)
@@ -2640,7 +2640,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(inp
     end
     -- _6K
     if obj_char["direction_input"] == 6 and test_input_sys_press_or_hold(input["K"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_6K(obj_char)
@@ -2650,7 +2650,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(inp
     end
     -- _5K
     if test_input_sys_press_or_hold(input["K"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5K(obj_char)
@@ -2660,7 +2660,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(inp
     end
     -- _2S
     if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press_or_hold(input["S"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_2S(obj_char)
@@ -2670,7 +2670,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(inp
     end
     -- _6S
     if obj_char["direction_input"] == 6 and test_input_sys_press_or_hold(input["S"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_6S(obj_char)
@@ -2680,7 +2680,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(inp
     end
     -- _cS
     if test_input_sys_press_or_hold(input["S"]) and collision_test_cS_distance_check(obj_char,300) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_cS(obj_char)
@@ -2690,7 +2690,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(inp
     end
     -- _fS
     if test_input_sys_press_or_hold(input["S"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_fS(obj_char)
@@ -2700,7 +2700,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(inp
     end
     -- _2Launcher
     if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press_or_hold(input["Launcher"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_2Launcher(obj_char)
@@ -2711,7 +2711,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(inp
     -- _4_6Launcher
     if (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 6) 
     and test_input_sys_press_or_hold(input["Launcher"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
@@ -2721,7 +2721,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(inp
     end
     -- _5Launcher
     if test_input_sys_press_or_hold(input["Launcher"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5Launcher(obj_char)
@@ -2741,7 +2741,7 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_c
     if (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 1)
     and test_input_sys_press_or_hold(input["SP"])
     and test_input_sys_press(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_P(obj_char)
@@ -2753,7 +2753,7 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_c
     if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3)
     and test_input_sys_press_or_hold(input["SP"])
     and test_input_sys_press(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_P(obj_char)
@@ -2777,7 +2777,7 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_c
     and obj_char["ability_gauge"][1] > 0
     and test_input_sys_press_or_hold(input["SP"])
     and test_input_sys_press(input["S"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_S(obj_char)
@@ -2801,7 +2801,7 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(in
     if (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 1)
     and test_input_sys_press_or_hold(input["SP"])
     and test_input_sys_press_or_hold(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_P(obj_char)
@@ -2813,7 +2813,7 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(in
     if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3)
     and test_input_sys_press_or_hold(input["SP"]) 
     and test_input_sys_press_or_hold(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_P(obj_char)
@@ -2837,7 +2837,7 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(in
     and obj_char["ability_gauge"][1] > 0
     and test_input_sys_press_or_hold(input["SP"]) 
     and test_input_sys_press_or_hold(input["S"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_S(obj_char)
@@ -2924,7 +2924,7 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move(input,obj_char)
     -- _jSP_H
     -- _jP
     if test_input_sys_press(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_jP(obj_char)
@@ -2934,7 +2934,7 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move(input,obj_char)
     end
     -- _j2K
     if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["K"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(obj_char)
@@ -2944,7 +2944,7 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move(input,obj_char)
     end
     -- _jK
     if test_input_sys_press(input["K"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_jK(obj_char)
@@ -2954,7 +2954,7 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move(input,obj_char)
     end
     -- _jS
     if test_input_sys_press(input["S"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(obj_char)
@@ -2964,7 +2964,7 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move(input,obj_char)
     end
     -- _j4_6Launcher
     if test_input_sys_press(input["Launcher"]) and direction_input_true_table[obj_char["direction_input"]] then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
@@ -2990,7 +2990,7 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,
     -- _jSP_H
     -- _jP
     if test_input_sys_press_or_hold(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_jP(obj_char)
@@ -3000,7 +3000,7 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,
     end
     -- _j2K
     if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press_or_hold(input["K"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(obj_char)
@@ -3010,7 +3010,7 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,
     end
     -- _jK
     if test_input_sys_press_or_hold(input["K"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_jK(obj_char)
@@ -3020,7 +3020,7 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,
     end
     -- _jS
     if test_input_sys_press_or_hold(input["S"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(obj_char)
@@ -3030,7 +3030,7 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,
     end
     -- _j4_6Launcher
     if test_input_sys_press_or_hold(input["Launcher"]) and direction_input_true_table[obj_char["direction_input"]] then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
@@ -3293,7 +3293,7 @@ function state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side
             self_side_obj_char["pushbox"]  = {0,-185,120,370}
             self_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
-        if not common_game_scene_get_character_facing_currect(self_side_obj_char) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
         if hit_cancel_RC_state_table[opponent_side_obj_char["state"]] then
@@ -3553,7 +3553,7 @@ function state_gate_game_scene_char_LP_from_throw_testing(input,self_side_obj_ch
         )
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
     elseif self_side_obj_char["f"] > 9 then
-        if not common_game_scene_get_character_facing_currect(self_side_obj_char) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
         self_side_obj_char["state"] = "throw_success"
@@ -3581,7 +3581,7 @@ function state_gate_game_scene_char_LP_from_throw_tested(input,self_side_obj_cha
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
     elseif self_side_obj_char["f"] > 9 then
         self_side_obj_char["state"] = "throw_hurt_success"
-        if not common_game_scene_get_character_facing_currect(self_side_obj_char) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
         end 
         self_side_obj_char["character_animation"] = opponent_side_obj_char["throw_hurt_success_animation"]
@@ -3770,7 +3770,7 @@ end
 
 function state_gate_game_scene_char_LP_from_1_2_3_crouch(input,obj_char)
     -- _1_2_3_crouch_turn
-    if not common_game_scene_get_character_facing_currect(obj_char) then
+    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
         obj_char[5] = -obj_char[5]
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch_turn(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
@@ -3826,7 +3826,7 @@ function state_gate_game_scene_char_LP_from_1_2_3_crouch(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_1_2_3_crouch_turn(input,obj_char)
     -- _init_if_changed_again
-    if not common_game_scene_get_character_facing_currect(obj_char) then
+    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
         obj_char[5] = -obj_char[5]
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch_turn(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
@@ -3888,7 +3888,7 @@ function state_gate_game_scene_char_LP_from_1_2_3_crouch_turn(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_1_2_3_crouch_to_stand_idle(input,obj_char)
     -- _5_stand_turn
-    if not common_game_scene_get_character_facing_currect(obj_char) then
+    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
         obj_char[5] = -obj_char[5]
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
@@ -3951,7 +3951,7 @@ function state_gate_game_scene_char_LP_from_1_2_3_crouch_to_stand_idle(input,obj
 end
 function state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char)
     -- _5_stand_turn
-    if not common_game_scene_get_character_facing_currect(obj_char) then
+    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
         obj_char[5] = -obj_char[5]
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
@@ -4007,7 +4007,7 @@ function state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_5_stand_turn(input,obj_char)
     -- _init_if_changed_again
-    if not common_game_scene_get_character_facing_currect(obj_char) then
+    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
         obj_char[5] = -obj_char[5]
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
@@ -4102,7 +4102,7 @@ function state_gate_game_scene_char_LP_from_5_stand_dash_skid(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_4_walk(input,obj_char)
     -- _5_stand_turn
-    if not common_game_scene_get_character_facing_currect(obj_char) then
+    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
         obj_char[5] = -obj_char[5]
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
@@ -4161,7 +4161,7 @@ function state_gate_game_scene_char_LP_from_4_walk(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_4_walk_to_stand_idle(input,obj_char)
     -- _5_stand_turn
-    if not common_game_scene_get_character_facing_currect(obj_char) then
+    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
         obj_char[5] = -obj_char[5]
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
@@ -4226,7 +4226,7 @@ function state_gate_game_scene_char_LP_from_4_walk_to_stand_idle(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_6_walk(input,obj_char)
     -- _5_stand_turn
-    if not common_game_scene_get_character_facing_currect(obj_char) then
+    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
         obj_char[5] = -obj_char[5]
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
@@ -4282,7 +4282,7 @@ function state_gate_game_scene_char_LP_from_6_walk(input,obj_char)
 end
 function state_gate_game_scene_char_LP_from_6_walk_to_stand_idle(input,obj_char)
     -- _5_stand_turn
-    if not common_game_scene_get_character_facing_currect(obj_char) then
+    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
         obj_char[5] = -obj_char[5]
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
         init_character_anim_with(obj_char,obj_char["character_animation"])
@@ -4392,7 +4392,7 @@ function state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char)
     end
     -- _7_8_9_jump_air_to_stand_idle
     if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
@@ -4419,7 +4419,7 @@ function state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char)
     end
     -- _7_8_9_jump_air(second_air_jump)
     if obj_char["air_move"]["jump"][1] > 0 and test_input_sys_press(input["up"]) and obj_char["idle_cancel"] then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         common_update_game_scene_input_direction(obj_char)
@@ -4515,7 +4515,7 @@ function state_gate_game_scene_char_LP_from_4dash_air_backdash(input,obj_char)
     end
     -- _7_8_9_jump_air_to_stand_idle
     if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
@@ -4602,7 +4602,7 @@ function state_gate_game_scene_char_LP_from_6dash_air_dash(input,obj_char)
     end
     -- _7_8_9_jump_air_to_stand_idle
     if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
@@ -4987,7 +4987,7 @@ function state_gate_game_scene_char_LP_from_2P(input,obj_char)
         end
         -- _2P
         if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_2P(obj_char)
@@ -4997,7 +4997,7 @@ function state_gate_game_scene_char_LP_from_2P(input,obj_char)
         end
         -- _6P
         if obj_char["direction_input"] == 6 and test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_6P(obj_char)
@@ -5007,7 +5007,7 @@ function state_gate_game_scene_char_LP_from_2P(input,obj_char)
         end
         -- _5P
         if test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_5P(obj_char)
@@ -5017,7 +5017,7 @@ function state_gate_game_scene_char_LP_from_2P(input,obj_char)
         end
         -- _6K
         if obj_char["direction_input"] == 6 and test_input_sys_press(input["K"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_6K(obj_char)
@@ -5027,7 +5027,7 @@ function state_gate_game_scene_char_LP_from_2P(input,obj_char)
         end
         -- _6S
         if obj_char["direction_input"] == 6 and test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_6S(obj_char)
@@ -5097,7 +5097,7 @@ function state_gate_game_scene_char_LP_from_5P(input,obj_char)
         end
         -- _2P
         if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_2P(obj_char)
@@ -5107,7 +5107,7 @@ function state_gate_game_scene_char_LP_from_5P(input,obj_char)
         end
         -- _6P
         if obj_char["direction_input"] == 6 and test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_6P(obj_char)
@@ -5117,7 +5117,7 @@ function state_gate_game_scene_char_LP_from_5P(input,obj_char)
         end
         -- _5P
         if test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_5P(obj_char)
@@ -5127,7 +5127,7 @@ function state_gate_game_scene_char_LP_from_5P(input,obj_char)
         end
         -- _6K
         if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["K"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_6K(obj_char)
@@ -5137,7 +5137,7 @@ function state_gate_game_scene_char_LP_from_5P(input,obj_char)
         end
         -- _6S
         if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_6S(obj_char)
@@ -5176,7 +5176,7 @@ function state_gate_game_scene_char_LP_from_2K(input,obj_char)
         end
         -- _6K
         if (obj_char["direction_input"] == 6) and test_input_sys_press(input["K"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_6K(obj_char)
@@ -5186,7 +5186,7 @@ function state_gate_game_scene_char_LP_from_2K(input,obj_char)
         end
         -- _6S
         if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_6S(obj_char)
@@ -5196,7 +5196,7 @@ function state_gate_game_scene_char_LP_from_2K(input,obj_char)
         end
         -- 2Launcher
         if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["Launcher"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_2Launcher(obj_char)
@@ -5206,7 +5206,7 @@ function state_gate_game_scene_char_LP_from_2K(input,obj_char)
         end
         -- _5Launcher
         if test_input_sys_press(input["Launcher"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_5Launcher(obj_char)
@@ -5271,7 +5271,7 @@ function state_gate_game_scene_char_LP_from_5K(input,obj_char)
     -- kara
     -- 2K
     if common_game_scene_check_crouch_direction(obj_char) and obj_char["f"] <= 4 then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["velocity"] = obj_char["velocity_cache"]
@@ -5288,7 +5288,7 @@ function state_gate_game_scene_char_LP_from_5K(input,obj_char)
         end
         -- _6P
         if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_6P(obj_char)
@@ -5298,7 +5298,7 @@ function state_gate_game_scene_char_LP_from_5K(input,obj_char)
         end
         -- _6K
         if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["K"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_6K(obj_char)
@@ -5308,7 +5308,7 @@ function state_gate_game_scene_char_LP_from_5K(input,obj_char)
         end
         -- _6S
         if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_6S(obj_char)
@@ -5318,7 +5318,7 @@ function state_gate_game_scene_char_LP_from_5K(input,obj_char)
         end
         -- _2Launcher
         if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["Launcher"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_2Launcher(obj_char)
@@ -5328,7 +5328,7 @@ function state_gate_game_scene_char_LP_from_5K(input,obj_char)
         end
         -- _5Launcher
         if test_input_sys_press(input["Launcher"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_5Launcher(obj_char)
@@ -5338,7 +5338,7 @@ function state_gate_game_scene_char_LP_from_5K(input,obj_char)
         end
         -- _6dash_dash_cancel
         if test_input_sys_press(input["dash"]) and obj_char["f"] < 13 then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
@@ -5442,7 +5442,7 @@ function state_gate_game_scene_char_LP_from_cS(input,obj_char)
         end
         -- _6P
         if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_6P(obj_char)
@@ -5452,7 +5452,7 @@ function state_gate_game_scene_char_LP_from_cS(input,obj_char)
         end
         -- _6K
         if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["K"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_6K(obj_char)
@@ -5462,7 +5462,7 @@ function state_gate_game_scene_char_LP_from_cS(input,obj_char)
         end
         -- _2S
         if (obj_char["direction_input"] == 2 or obj_char["direction_input"] == 1) and test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_2S(obj_char)
@@ -5472,7 +5472,7 @@ function state_gate_game_scene_char_LP_from_cS(input,obj_char)
         end
         -- _6S
         if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_6S(obj_char)
@@ -5482,7 +5482,7 @@ function state_gate_game_scene_char_LP_from_cS(input,obj_char)
         end
         -- _fS
         if test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_fS(obj_char)
@@ -5492,7 +5492,7 @@ function state_gate_game_scene_char_LP_from_cS(input,obj_char)
         end
         -- _2Launcher
         if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["Launcher"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_2Launcher(obj_char)
@@ -5502,7 +5502,7 @@ function state_gate_game_scene_char_LP_from_cS(input,obj_char)
         end
         -- _5Launcher
         if test_input_sys_press(input["Launcher"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_5Launcher(obj_char)
@@ -5512,7 +5512,7 @@ function state_gate_game_scene_char_LP_from_cS(input,obj_char)
         end
         -- _6dash_dash_cancel
         if test_input_sys_press(input["dash"]) and obj_char["f"] < 13 then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
@@ -5676,7 +5676,7 @@ function state_gate_game_scene_char_LP_from_jP(input,obj_char)
     end
     -- _7_8_9_jump_air_to_stand_idle
     if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
@@ -5691,7 +5691,7 @@ function state_gate_game_scene_char_LP_from_jP(input,obj_char)
     if obj_char["hit_cancel"] then
         -- _jP
         if obj_char["y"] < -240 and test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_jP(obj_char)
@@ -5703,7 +5703,7 @@ function state_gate_game_scene_char_LP_from_jP(input,obj_char)
     if obj_char["hit_cancel"] and obj_char["air_gatling_state"] then
         -- _j2K
         if obj_char["y"] < -240 and common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["K"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(obj_char)
@@ -5713,7 +5713,7 @@ function state_gate_game_scene_char_LP_from_jP(input,obj_char)
         end
         -- _jK
         if obj_char["y"] < -240 and test_input_sys_press(input["K"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_jK(obj_char)
@@ -5723,7 +5723,7 @@ function state_gate_game_scene_char_LP_from_jP(input,obj_char)
         end
         -- _jS
         if obj_char["y"] < -240 and test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(obj_char)
@@ -5753,7 +5753,7 @@ function state_gate_game_scene_char_LP_from_jK(input,obj_char)
     end
     -- _7_8_9_jump_air_to_stand_idle
     if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
@@ -5768,7 +5768,7 @@ function state_gate_game_scene_char_LP_from_jK(input,obj_char)
     if obj_char["hit_cancel"] then
         -- _jS
         if obj_char["y"] < -240 and test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(obj_char)
@@ -5780,7 +5780,7 @@ function state_gate_game_scene_char_LP_from_jK(input,obj_char)
     if obj_char["hit_cancel"] and obj_char["air_gatling_state"] then
         -- _jP
         if obj_char["y"] < -240 and test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_jP(obj_char)
@@ -5790,7 +5790,7 @@ function state_gate_game_scene_char_LP_from_jK(input,obj_char)
         end
         -- _j2K
         if obj_char["y"] < -240 and common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["K"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(obj_char)
@@ -5800,7 +5800,7 @@ function state_gate_game_scene_char_LP_from_jK(input,obj_char)
         end
         -- _jS
         if obj_char["y"] < -240 and test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(obj_char)
@@ -5830,7 +5830,7 @@ function state_gate_game_scene_char_LP_from_j2K(input,obj_char)
     end
     -- _7_8_9_jump_air_to_stand_idle
     if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
@@ -5844,7 +5844,7 @@ function state_gate_game_scene_char_LP_from_j2K(input,obj_char)
     -- hit_cancel
     if obj_char["hit_cancel"] and obj_char["f"] >= 15 then
         if test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char) then
+            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
                 obj_char[5] = -obj_char[5]
             end
             obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(obj_char)
@@ -5880,7 +5880,7 @@ function state_gate_game_scene_char_LP_from_jS(input,obj_char)
     end
     -- _7_8_9_jump_air_to_stand_idle
     if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
@@ -5925,7 +5925,7 @@ function state_gate_game_scene_char_LP_from_j4_6Launcher(input,obj_char)
     end
     -- _7_8_9_jump_air_to_stand_idle
     if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
@@ -5957,7 +5957,7 @@ function state_gate_game_scene_char_LP_from_j5Launcher(input,obj_char)
     end
     -- _7_8_9_jump_air_to_stand_idle
     if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
-        if not common_game_scene_get_character_facing_currect(obj_char) then
+        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
             obj_char[5] = -obj_char[5]
         end
         obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)

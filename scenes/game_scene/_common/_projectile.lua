@@ -269,7 +269,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
             -- change_draw_front
             CHARACTER_VISUAL_FRONT = hit_side
             -- change_character_face
-            if not common_game_scene_get_character_facing_currect(hurt_side_obj_char) then
+            if not common_game_scene_get_character_facing_currect(hurt_side_obj_char,hit_side_obj_char) then
                 hurt_side_obj_char[5] = -hurt_side_obj_char[5]
             end
             -- block_test
@@ -784,7 +784,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
             -- change_draw_front
             CHARACTER_VISUAL_FRONT = hit_side
             -- change_character_face
-            if not common_game_scene_get_character_facing_currect(hurt_side_obj_char) then
+            if not common_game_scene_get_character_facing_currect(hurt_side_obj_char,hit_side_obj_char) then
                 hurt_side_obj_char[5] = -hurt_side_obj_char[5]
             end
             -- block_test
@@ -1710,12 +1710,12 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
     character_uncommon_init
 )
     local res = {}
-    local side = hit_side_obj_char["player_side"]
-    local hurt_side_obj_char = common_game_scene_change_character(side)
-    local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
-    local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
-    local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
+    local hit_side = hit_side_obj_char["player_side"]
+    local hurt_side = common_game_scene_change_character(hit_side)
+    local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(hurt_side)
+    local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(hurt_side)
+    local hurt_side_anchor_data = common_game_scene_change_character_anchor(hurt_side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(hurt_side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1

@@ -195,8 +195,7 @@ function common_update_game_scene_input_direction(obj_char)
     end
     obj_char["direction_input"] = 5 + 3*up - 3*down + right*1 - left*1
 end
-function common_game_scene_get_character_facing_currect(self_side_obj_char)
-    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
+function common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char)
     if self_side_obj_char[5] == -1 and self_side_obj_char["x"] < opponent_side_obj_char["x"] then
         return false
     end
@@ -210,7 +209,7 @@ function common_game_scene_get_character_hurt_direction(self_side_obj_char,oppon
     if dx == 0 then return self_side_obj_char[5]*hurt_horizontal_velocity end
     return hurt_horizontal_velocity*(dx)/math.abs(dx)
 end
-function common_game_scene_char_enclose_heat_gain(self_side_obj_char)
+function common_game_scene_char_enclose_heat_gain(self_side_obj_char,opponent_side_obj_char)
 end
 
 function common_game_scene_change_character(side)
@@ -416,7 +415,7 @@ function common_game_scene_strike_hurt_function(hurt_side_obj_char)
     -- change_draw_front
     CHARACTER_VISUAL_FRONT = hit_side_obj_char["player_side"]
     -- change_character_face
-    if not common_game_scene_get_character_facing_currect(hurt_side_obj_char) then
+    if not common_game_scene_get_character_facing_currect(hurt_side_obj_char,hit_side_obj_char) then
         hurt_side_obj_char[5] = -hurt_side_obj_char[5]
     end
     -- block_test
@@ -625,7 +624,7 @@ function common_game_scene_projectile_hurt_function(hurt_side_obj_char,projectil
     -- change_draw_front
     CHARACTER_VISUAL_FRONT = hit_side_obj_char["player_side"]
     -- change_character_face
-    if not common_game_scene_get_character_facing_currect(hurt_side_obj_char) then
+    if not common_game_scene_get_character_facing_currect(hurt_side_obj_char,hit_side_obj_char) then
         hurt_side_obj_char[5] = -hurt_side_obj_char[5]
     end
     -- block_test
@@ -831,7 +830,7 @@ function common_game_scene_throw_hit_function(hurt_side_obj_char)
     -- change_draw_front
     CHARACTER_VISUAL_FRONT = side
     -- change_character_face
-    if not common_game_scene_get_character_facing_currect(hit_side_obj_char) then
+    if not common_game_scene_get_character_facing_currect(hit_side_obj_char,hurt_side_obj_char) then
         hit_side_obj_char[5] = -hit_side_obj_char[5]
     end
     -- set min hight of air throw
@@ -866,7 +865,7 @@ function common_game_scene_throw_hurt_function(hurt_side_obj_char)
     -- physics_lock
     hurt_side_obj_char["physics_lock"] = true
     -- change_character_face
-    if not common_game_scene_get_character_facing_currect(hurt_side_obj_char) then
+    if not common_game_scene_get_character_facing_currect(hurt_side_obj_char,hit_side_obj_char) then
         hurt_side_obj_char[5] = -hurt_side_obj_char[5]
     end
     -- state
