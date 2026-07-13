@@ -8,12 +8,11 @@
 -- friction_update_function	friction
 -- gravity_update_function		gravity
 
-function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj_char)
+function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj_char,hurt_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_projectile = {0,0,0,0.75,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local side = hit_side_obj_char["player_side"]
-    local hurt_side_obj_char = common_game_scene_change_character(side)
     local image_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(side)
     
     -- common
@@ -67,7 +66,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     common_game_scene_hit_load_camera_shake_anim(obj_projectile,0.25,15)
 
     obj_projectile["stand_hurt_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
-        hit_side_obj_char,obj_projectile,true,nil,
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,
         "0_stand_hurt_high",
         "stand","5_stand_idle",
         8,5,1.00,
@@ -76,7 +75,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
         function() end
     )
     obj_projectile["stand_block_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
-        hit_side_obj_char,obj_projectile,true,nil,
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,
         "4_stand_block_high",
         "stand","5_stand_idle",
         8,5,1.00,
@@ -85,7 +84,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
         function() end
     )
     obj_projectile["crouch_hurt_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
-        hit_side_obj_char,obj_projectile,true,nil,
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,
         "0_crouch_hurt",
         "crouch","1_2_3_crouch",
         8,5,1.00,
@@ -94,7 +93,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
         function() end
     )
     obj_projectile["crouch_block_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
-        hit_side_obj_char,obj_projectile,true,nil,
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,
         "1_crouch_block",
         "crouch","1_2_3_crouch",
         8,5,1.00,
@@ -103,7 +102,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
         function() end
     )
     obj_projectile["air_hurt_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hurt(
-        hit_side_obj_char,obj_projectile,true,nil,
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,
         "0_general_hurt_launched_high",
         "air","knockdown_recovery",
         17.5,5,1.035,
@@ -120,7 +119,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
         function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
     )
     obj_projectile["air_block_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
-        hit_side_obj_char,obj_projectile,true,nil,
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,
         "1_4_7_air_block",
         "air","5_stand_idle",
         12.5,5,1.00,
@@ -129,7 +128,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
         function() end
     )
     obj_projectile["OTG_hurt_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hurt(
-        hit_side_obj_char,obj_projectile,true,nil,
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,
         "0_general_hurt_launched_high",
         "air","knockdown_recovery",
         20,5,1.035,
@@ -183,7 +182,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
             -- set_projectile_strike_active
             obj_projectile["strike_active"] = false
             -- common_hurt_function
-            common_game_scene_projectile_hurt_function(hurt_side_obj_char,obj_projectile)
+            common_game_scene_projectile_hurt_function(hurt_side_obj_char,hit_side_obj_char,obj_projectile)
         end
     end
     -- obj_projectile["friendly_interact_function"] = function()
@@ -248,7 +247,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main_anim(obj_
 end
 
 function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
-    hit_side_obj_char,obj_projectile,fix_direction,velocity_center,
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile,fix_direction,velocity_center,
     sprite_sheet,
     height,
     state_cache,
@@ -265,12 +264,12 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
     character_uncommon_init
 )
     local res = {}
-    local side = hit_side_obj_char["player_side"]
-    local hurt_side_obj_char = common_game_scene_change_character(side)
-    local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
-    local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
-    local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
+    local hit_side = hit_side_obj_char["player_side"]
+    local hurt_side = hurt_side_obj_char["player_side"]
+    local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
+    local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
+    local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 12
 
@@ -363,7 +362,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
     return res
 end
 function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
-    hit_side_obj_char,obj_projectile,fix_direction,velocity_center,
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile,fix_direction,velocity_center,
     sprite_sheet,
     height,
     state_cache,
@@ -380,12 +379,12 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
     character_uncommon_init
 )
     local res = {}
-    local side = hit_side_obj_char["player_side"]
-    local hurt_side_obj_char = common_game_scene_change_character(side)
-    local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
-    local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
-    local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
+    local hit_side = hit_side_obj_char["player_side"]
+    local hurt_side = hurt_side_obj_char["player_side"]
+    local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
+    local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
+    local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -533,7 +532,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
     return res
 end
 function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
-    hit_side_obj_char,obj_projectile,fix_direction,velocity_center,
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile,fix_direction,velocity_center,
     sprite_sheet,
     height,
     state_cache,
@@ -550,12 +549,12 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
     character_uncommon_init
 )
     local res = {}
-    local side = hit_side_obj_char["player_side"]
-    local hurt_side_obj_char = common_game_scene_change_character(side)
-    local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
-    local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
-    local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
+    local hit_side = hit_side_obj_char["player_side"]
+    local hurt_side = hurt_side_obj_char["player_side"]
+    local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
+    local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
+    local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 15
 
@@ -650,7 +649,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
     return res
 end
 function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hurt(
-    hit_side_obj_char,obj_projectile,fix_direction,velocity_center,
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile,fix_direction,velocity_center,
     sprite_sheet,
     height,
     state_cache,
@@ -667,12 +666,12 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
     character_uncommon_init
 )
     local res = {}
-    local side = hit_side_obj_char["player_side"]
-    local hurt_side_obj_char = common_game_scene_change_character(side)
-    local hurt_side_pushbox_data = common_game_scene_change_character_pushbox(side)
-    local hurt_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
-    local hurt_side_anchor_data = common_game_scene_change_character_anchor(side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_change_character_VFX_spawn_anchor(side)
+    local hit_side = hit_side_obj_char["player_side"]
+    local hurt_side = hurt_side_obj_char["player_side"]
+    local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
+    local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
+    local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -843,11 +842,10 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
     return res
 end
 
-function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char)
+function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_projectile = {0,0,0,0.75,1,1,0,0}
-    local hurt_side_obj_char = common_game_scene_change_character(hit_side_obj_char["player_side"])
-    local image_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(side)
+    local image_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(hit_side_obj_char["player_side"])
     
     -- common
     obj_projectile["type"] = "projectile"

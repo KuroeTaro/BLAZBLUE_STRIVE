@@ -33,12 +33,11 @@ function collision_test_char_on_ground(obj)
     box_B_collision = box[2]+box[4]/2+obj["collision_ground_height_offset"]
     return box_B_collision >= stage_B_collision
 end
-function collision_test_cS_distance_check(self_side_obj_char,max_distance)    
+function collision_test_cS_distance_check(self_side_obj_char,opponent_side_obj_char,max_distance)    
     local hurtbox = {}
     local hurtbox_front_x = 0
     local hurtbox_edge_x1 = 0
     local hurtbox_edge_x2 = 0
-    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
     local num_hurtbox_table = #opponent_side_obj_char["hurtbox_table"]
     if #opponent_side_obj_char["hurtbox_table"] == 0 then return true end
     for i=1,num_hurtbox_table do

@@ -594,9 +594,9 @@ function order_load_game_scene_char_LP_frames(load_order)
     if this_function then this_function() end
 end
 function load_game_scene_anim_char_LP()
-    local obj_char = obj_char_game_scene_char_LP
-    obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-    init_character_anim_with(obj_char,obj_char["character_animation"])
+    local self_side_obj_char = obj_char_game_scene_char_LP
+    self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+    init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
 
     -- 加载角色会使用的线性动画和帧动画
 end
@@ -1261,15 +1261,16 @@ function state_machine_char_game_scene_char_LP()
     -- sp + Launcher 普通投
 
     local input = INPUT_SYS_CURRENT_COMMAND_STATE["L"]
-    local obj_char = obj_char_game_scene_char_LP
-    local game_speed_cache = obj_char["game_speed"]
-    local game_speed_subframe_cache = obj_char["game_speed_subframe"]
+    local self_side_obj_char = obj_char_game_scene_char_LP
+    local opponent_side_obj_char = obj_char_game_scene_char_RP
+    local game_speed_cache = self_side_obj_char["game_speed"]
+    local game_speed_subframe_cache = self_side_obj_char["game_speed_subframe"]
     local run_at_current_frame = false
 
-    if obj_char["game_speed_force_1_countdown"] > 0 then
+    if self_side_obj_char["game_speed_force_1_countdown"] > 0 then
         game_speed_cache = 1
     end
-    if obj_char["game_speed_force_0_countdown"] > 0 then
+    if self_side_obj_char["game_speed_force_0_countdown"] > 0 then
         game_speed_cache = 0
     end
     run_at_current_frame = (game_speed_subframe_cache > game_speed_cache and game_speed_cache ~= 0) or (game_speed_cache == 1)
@@ -1277,85 +1278,85 @@ function state_machine_char_game_scene_char_LP()
     local switch = {
         ["before_ease_in"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
         end,
 
         ["active_FD_block"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_active_FD_block(input,obj_char)
+            state_gate_game_scene_char_LP_from_active_FD_block(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["active_FD_block_to_idle"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_active_FD_block_to_idle(input,obj_char)
+            state_gate_game_scene_char_LP_from_active_FD_block_to_idle(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["block"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_block(input,obj_char)
+            state_gate_game_scene_char_LP_from_block(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["hurt"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_hurt(input,obj_char)
+            state_gate_game_scene_char_LP_from_hurt(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["throw_success"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_throw_success(input,obj_char)
+            state_gate_game_scene_char_LP_from_throw_success(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["throw_hurt_success"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_throw_hurt_success(input,obj_char)
+            state_gate_game_scene_char_LP_from_throw_hurt_success(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["throw_testing"] = function()
-            state_gate_game_scene_char_LP_from_throw_testing(input,obj_char)
+            state_gate_game_scene_char_LP_from_throw_testing(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["throw_tested"] = function()
-            state_gate_game_scene_char_LP_from_throw_tested(input,obj_char)
+            state_gate_game_scene_char_LP_from_throw_tested(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["throw_teching"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_throw_tech(input,obj_char)
+            state_gate_game_scene_char_LP_from_throw_tech(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["throw_teched"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_throw_tech(input,obj_char)
+            state_gate_game_scene_char_LP_from_throw_tech(input,self_side_obj_char,opponent_side_obj_char)
         end,
 
         ["hitstop"] = function()
-            common_update_game_scene_char_hitstop_countdown(obj_char)
-            state_gate_game_scene_char_LP_from_hitstop(input,obj_char)
+            common_update_game_scene_char_hitstop_countdown(self_side_obj_char)
+            state_gate_game_scene_char_LP_from_hitstop(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["hurtstop"] = function()
-            common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
-            state_gate_game_scene_char_LP_from_hurtstop(input,obj_char)
+            common_update_game_scene_char_blockstop_hurtstop_countdown(self_side_obj_char)
+            state_gate_game_scene_char_LP_from_hurtstop(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["blockstop"] = function()
             if run_at_current_frame then
-                common_update_game_scene_char_blockstop_hurtstop_countdown(obj_char)
+                common_update_game_scene_char_blockstop_hurtstop_countdown(self_side_obj_char)
             end
-            state_gate_game_scene_char_LP_from_blockstop(input,obj_char)
+            state_gate_game_scene_char_LP_from_blockstop(input,self_side_obj_char,opponent_side_obj_char)
         end,
 
         ["wallstick"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_wallstick(input,obj_char)
+            state_gate_game_scene_char_LP_from_wallstick(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["wallbreak_hurt"] = function()
         end,
@@ -1364,722 +1365,723 @@ function state_machine_char_game_scene_char_LP()
 
         ["knockdown"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_knockdown(input,obj_char)
+            state_gate_game_scene_char_LP_from_knockdown(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["knockdown_recovery"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_knockdown_recovery(input,obj_char)
+            state_gate_game_scene_char_LP_from_knockdown_recovery(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["knockdown_recovery_wallstick"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_knockdown_recovery_wallstick(input,obj_char)
+            state_gate_game_scene_char_LP_from_knockdown_recovery_wallstick(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["knockout"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
         end,
 
         ["1_2_3_crouch"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_1_2_3_crouch(input,obj_char)
+            state_gate_game_scene_char_LP_from_1_2_3_crouch(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["1_2_3_crouch_turn"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_1_2_3_crouch_turn(input,obj_char)
+            state_gate_game_scene_char_LP_from_1_2_3_crouch_turn(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["1_2_3_crouch_to_stand_idle"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_1_2_3_crouch_to_stand_idle(input,obj_char)
+            state_gate_game_scene_char_LP_from_1_2_3_crouch_to_stand_idle(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["5_stand_idle"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char)
-            state_gate_game_scene_char_LP_to_5H(input,obj_char)
+            state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char)
+            state_gate_game_scene_char_LP_to_5H(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["5_stand_turn"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_5_stand_turn(input,obj_char)
+            state_gate_game_scene_char_LP_from_5_stand_turn(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["5_stand_dash_skid"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_5_stand_dash_skid(input,obj_char)
+            state_gate_game_scene_char_LP_from_5_stand_dash_skid(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["4_walk"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4_walk(input,obj_char)
+            state_gate_game_scene_char_LP_from_4_walk(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["4_walk_to_stand_idle"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4_walk_to_stand_idle(input,obj_char)
+            state_gate_game_scene_char_LP_from_4_walk_to_stand_idle(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["6_walk"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_6_walk(input,obj_char)
+            state_gate_game_scene_char_LP_from_6_walk(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["6_walk_to_stand_idle"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_6_walk_to_stand_idle(input,obj_char)
+            state_gate_game_scene_char_LP_from_6_walk_to_stand_idle(input,self_side_obj_char,opponent_side_obj_char)
         end,
 
         ["7_8_9_jump_air_to_stand_idle"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,obj_char)
+            state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["7_8_9_jump_air"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char)
+            state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["7_8_9_pre_jump"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_7_8_9_pre_jump(input,obj_char)
+            state_gate_game_scene_char_LP_from_7_8_9_pre_jump(input,self_side_obj_char,opponent_side_obj_char)
         end,
         
         ["4dash_backdash"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4dash_backdash(input,obj_char)
+            state_gate_game_scene_char_LP_from_4dash_backdash(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["4dash_air_backdash"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4dash_air_backdash(input,obj_char)
+            state_gate_game_scene_char_LP_from_4dash_air_backdash(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["6dash_dash"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_6dash_dash(input,obj_char)
+            state_gate_game_scene_char_LP_from_6dash_dash(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["6dash_air_dash"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_6dash_air_dash(input,obj_char)
+            state_gate_game_scene_char_LP_from_6dash_air_dash(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["6dash_dash_cancel"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_6dash_dash_cancel(input,obj_char)
+            state_gate_game_scene_char_LP_from_6dash_dash_cancel(input,self_side_obj_char,opponent_side_obj_char)
         end,
         
         ["burst_RC_red"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_burst_RC_red(input,obj_char)
+            state_gate_game_scene_char_LP_from_burst_RC_red(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["burst_RC_blue"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_burst_RC_blue(input,obj_char)
+            state_gate_game_scene_char_LP_from_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["burst_RC_purple"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_burst_RC_purple(input,obj_char)
+            state_gate_game_scene_char_LP_from_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["burst_RC_yellow"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_burst_RC_yellow(input,obj_char)
+            state_gate_game_scene_char_LP_from_burst_RC_yellow(input,self_side_obj_char,opponent_side_obj_char)
         end,
 
         ["burst_overdrive"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_burst_overdrive(input,obj_char)
+            state_gate_game_scene_char_LP_from_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["burst_burst"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_burst_burst(input,obj_char)
+            state_gate_game_scene_char_LP_from_burst_burst(input,self_side_obj_char,opponent_side_obj_char)
         end,
 
         ["2P"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_2P(input,obj_char)
+            state_gate_game_scene_char_LP_from_2P(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["6P"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_6P(input,obj_char)
+            state_gate_game_scene_char_LP_from_6P(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["5P"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_5P(input,obj_char)
+            state_gate_game_scene_char_LP_from_5P(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["2K"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_2K(input,obj_char)
+            state_gate_game_scene_char_LP_from_2K(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["6K"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_6K(input,obj_char)
+            state_gate_game_scene_char_LP_from_6K(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["5K"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_5K(input,obj_char)
+            state_gate_game_scene_char_LP_from_5K(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["2S"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_2S(input,obj_char)
+            state_gate_game_scene_char_LP_from_2S(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["6S"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_6S(input,obj_char)
+            state_gate_game_scene_char_LP_from_6S(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["cS"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_cS(input,obj_char)
+            state_gate_game_scene_char_LP_from_cS(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["fS"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_fS(input,obj_char)
+            state_gate_game_scene_char_LP_from_fS(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["5H"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_5H(input,obj_char)
+            state_gate_game_scene_char_LP_from_5H(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["2Launcher"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_2Launcher(input,obj_char)
+            state_gate_game_scene_char_LP_from_2Launcher(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["4_6Launcher"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4_6Launcher(input,obj_char)
+            state_gate_game_scene_char_LP_from_4_6Launcher(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["5Launcher"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_5Launcher(input,obj_char)
+            state_gate_game_scene_char_LP_from_5Launcher(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["5Launcher_hold"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_5Launcher_hold(input,obj_char)
+            state_gate_game_scene_char_LP_from_5Launcher_hold(input,self_side_obj_char,opponent_side_obj_char)
         end,
 
         ["jP"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_jP(input,obj_char)
+            state_gate_game_scene_char_LP_from_jP(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["jK"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_jK(input,obj_char)
+            state_gate_game_scene_char_LP_from_jK(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["j2K"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_j2K(input,obj_char)
+            state_gate_game_scene_char_LP_from_j2K(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["jS"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_jS(input,obj_char)
+            state_gate_game_scene_char_LP_from_jS(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["j2S"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_j2S(input,obj_char)
+            state_gate_game_scene_char_LP_from_j2S(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["j4_6Launcher"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_j4_6Launcher(input,obj_char)
+            state_gate_game_scene_char_LP_from_j4_6Launcher(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["j5Launcher"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_j5Launcher(input,obj_char)
+            state_gate_game_scene_char_LP_from_j5Launcher(input,self_side_obj_char,opponent_side_obj_char)
         end,
 
         ["4SP_P"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4SP_P(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_P(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["6SP_P"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_6SP_P(input,obj_char)
+            state_gate_game_scene_char_LP_from_6SP_P(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["4SP_K"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4SP_K(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_K(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["6SP_K"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_6SP_K(input,obj_char)
+            state_gate_game_scene_char_LP_from_6SP_K(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["4SP_S"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4SP_S(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_S(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["4SP_S_4dash"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4SP_S_4dash(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_S_4dash(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["4SP_S_6dash"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4SP_S_6dash(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_S_6dash(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["4SP_S_S"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4SP_S_S(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_S_S(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["4SP_S_H"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4SP_S_H(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_S_H(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["4SP_S_2Launcher"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4SP_S_2Launcher(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_S_2Launcher(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["4SP_S_6Launcher"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4SP_S_6Launcher(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_S_6Launcher(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["4SP_S_5Launcher"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4SP_S_5Launcher(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_S_5Launcher(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["6SP_S"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_6SP_S(input,obj_char)
+            state_gate_game_scene_char_LP_from_6SP_S(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["SP_H"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_SP_H(input,obj_char)
+            state_gate_game_scene_char_LP_from_SP_H(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["SP_H_P"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_SP_H_P(input,obj_char)
+            state_gate_game_scene_char_LP_from_SP_H_P(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["SP_H_K"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_SP_H_K(input,obj_char)
+            state_gate_game_scene_char_LP_from_SP_H_K(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["SP_H_S"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_SP_H_S(input,obj_char)
+            state_gate_game_scene_char_LP_from_SP_H_S(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["SP_H_H"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_SP_H_H(input,obj_char)
+            state_gate_game_scene_char_LP_from_SP_H_H(input,self_side_obj_char,opponent_side_obj_char)
         end,
 
         ["jSP_S"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_jSP_S(input,obj_char)
+            state_gate_game_scene_char_LP_from_jSP_S(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["jSP_H"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_jSP_H(input,obj_char)
+            state_gate_game_scene_char_LP_from_jSP_H(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["jSP_H_P"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_jSP_H_P(input,obj_char)
+            state_gate_game_scene_char_LP_from_jSP_H_P(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["jSP_H_K"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_jSP_H_K(input,obj_char)
+            state_gate_game_scene_char_LP_from_jSP_H_K(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["jSP_H_S"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_jSP_H_S(input,obj_char)
+            state_gate_game_scene_char_LP_from_jSP_H_S(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["jSP_H_H"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_jSP_H_H(input,obj_char)
+            state_gate_game_scene_char_LP_from_jSP_H_H(input,self_side_obj_char,opponent_side_obj_char)
         end,
 
         ["4UA"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4UA(input,obj_char)
+            state_gate_game_scene_char_LP_from_4UA(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["6UA"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_6UA(input,obj_char)
+            state_gate_game_scene_char_LP_from_6UA(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["5UA"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_5UA(input,obj_char)
+            state_gate_game_scene_char_LP_from_5UA(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["4SP_S_5UA"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["character_animation"])
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4SP_S_5UA(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_S_5UA(input,self_side_obj_char,opponent_side_obj_char)
         end,
     }
     if run_at_current_frame then
         update_game_scene_char_LP_uncommon()
     end
-    local this_function = switch[obj_char["state"]]
+    local this_function = switch[self_side_obj_char["state"]]
     if this_function then this_function() end
 end
 function state_machine_char_game_scene_char_LP_shot_sys()
     local input = INPUT_SYS_CURRENT_COMMAND_STATE["L"]
-    local obj_char = obj_char_game_scene_char_LP
-    local game_speed_cache = obj_char["game_speed"]
-    local game_speed_subframe_cache = obj_char["game_speed_subframe"]
+    local self_side_obj_char = obj_char_game_scene_char_LP
+    local opponent_side_obj_char = obj_char_game_scene_char_RP
+    local game_speed_cache = self_side_obj_char["game_speed"]
+    local game_speed_subframe_cache = self_side_obj_char["game_speed_subframe"]
     local test_input_idle_to_ease_out = 
-    (test_input_sys_press(input["H"]) and common_game_scene_check_crouch_direction(obj_char)) or obj_char["ability_gauge"][1] <= 0 
+    (test_input_sys_press(input["H"]) and common_game_scene_check_crouch_direction(self_side_obj_char)) or self_side_obj_char["ability_gauge"][1] <= 0 
     local test_input_shot_to_ease_out = 
-    (test_input_sys_press(input["H"]) and common_game_scene_check_crouch_direction(obj_char)) or
-    (test_input_sys_release(input["H"]) and common_game_scene_check_crouch_direction(obj_char)) or obj_char["ability_gauge"][1] <= 0 
-    local test_shot_sys_ban_state = obj_char["shot_sys_at_the_ready_force_off_state"][obj_char["state"]]
+    (test_input_sys_press(input["H"]) and common_game_scene_check_crouch_direction(self_side_obj_char)) or
+    (test_input_sys_release(input["H"]) and common_game_scene_check_crouch_direction(self_side_obj_char)) or self_side_obj_char["ability_gauge"][1] <= 0 
+    local test_shot_sys_ban_state = self_side_obj_char["shot_sys_at_the_ready_force_off_state"][self_side_obj_char["state"]]
     local run_at_current_frame = (game_speed_subframe_cache > game_speed_cache and game_speed_cache ~= 0) or (game_speed_cache == 1)
     -- state_machine
     local switch = {
         ["off"] = function()
             if run_at_current_frame then
-                character_function_game_scene_TRM_shot_sys_off_update(obj_char)
+                character_function_game_scene_TRM_shot_sys_off_update(self_side_obj_char)
             end
             -- ease_in
-            if test_input_sys_press(input["H"]) and (not test_shot_sys_ban_state) and obj_char["ability_gauge"][1] > 0 then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(obj_char)
-                obj_char["shot_sys_state"] = "at_the_ready_ease_in"
+            if test_input_sys_press(input["H"]) and (not test_shot_sys_ban_state) and self_side_obj_char["ability_gauge"][1] > 0 then
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(self_side_obj_char,opponent_side_obj_char)
+                self_side_obj_char["shot_sys_state"] = "at_the_ready_ease_in"
                 return
             end
         end,
         ["at_the_ready_ease_in"] = function()
             if run_at_current_frame then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_update(obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_update(self_side_obj_char,opponent_side_obj_char)
             end
-            if (obj_char["shot_sys_idle_cancel"] and test_input_idle_to_ease_out) or test_shot_sys_ban_state then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(obj_char)
-                obj_char["shot_sys_state"] = "at_the_ready_ease_out"
+            if (self_side_obj_char["shot_sys_idle_cancel"] and test_input_idle_to_ease_out) or test_shot_sys_ban_state then
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(self_side_obj_char)
+                self_side_obj_char["shot_sys_state"] = "at_the_ready_ease_out"
                 return
             end
-            if test_input_sys_release(input["H"]) and obj_char["state"] == "hitstop" then
+            if test_input_sys_release(input["H"]) and self_side_obj_char["state"] == "hitstop" then
                 -- input_sys_cache
-                obj_char["input_sys_state_negative_edge"] = "save" -- none save load
-                common_game_scene_get_input_sys_cache_negative_edge_init(obj_char["player_side"])(obj_char)
-                obj_char["input_sys_cache_negative_edge"]["H"] = true
+                self_side_obj_char["input_sys_state_negative_edge"] = "save" -- none save load
+                common_game_scene_get_input_sys_cache_negative_edge_init(self_side_obj_char["player_side"])(self_side_obj_char)
+                self_side_obj_char["input_sys_cache_negative_edge"]["H"] = true
             end
-            if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["H"]) 
-            and obj_char["state"] ~= "hitstop" and obj_char["ability_gauge"][1] > 0 then
-                obj_char["input_sys_cache_negative_edge"]["H"] = false
-                character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
-                character_function_game_scene_TRM_shot_sys_ability_gauge_use(obj_char)
-                obj_char["shot_sys_state"] = "at_the_ready_shot"
+            if self_side_obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["H"]) 
+            and self_side_obj_char["state"] ~= "hitstop" and self_side_obj_char["ability_gauge"][1] > 0 then
+                self_side_obj_char["input_sys_cache_negative_edge"]["H"] = false
+                character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(self_side_obj_char,opponent_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_ability_gauge_use(self_side_obj_char)
+                self_side_obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return
             end
-            if get_character_anim_end_state(obj_char,obj_char["shot_sys_animation"])  then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_init(obj_char)
-                obj_char["shot_sys_state"] = "at_the_ready"
+            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"])  then
+                character_function_game_scene_TRM_shot_sys_at_the_ready_init(self_side_obj_char)
+                self_side_obj_char["shot_sys_state"] = "at_the_ready"
                 return
             end
         end,
         ["at_the_ready_ease_out"] = function()
             if run_at_current_frame then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_update(obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_update(self_side_obj_char)
             end
             if test_input_sys_press(input["H"]) and (not test_shot_sys_ban_state) then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(obj_char)
-                obj_char["shot_sys_state"] = "at_the_ready_ease_in"
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(self_side_obj_char,opponent_side_obj_char)
+                self_side_obj_char["shot_sys_state"] = "at_the_ready_ease_in"
                 return
             end
-            if get_character_anim_end_state(obj_char,obj_char["shot_sys_animation"]) then
-                character_function_game_scene_TRM_shot_sys_off_init(obj_char)
-                obj_char["shot_sys_state"] = "off"
+            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"]) then
+                character_function_game_scene_TRM_shot_sys_off_init(self_side_obj_char)
+                self_side_obj_char["shot_sys_state"] = "off"
                 return
             end
         end,
         ["at_the_ready"] = function()
             if run_at_current_frame then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_update(obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_update(self_side_obj_char,opponent_side_obj_char)
             end
             if test_input_idle_to_ease_out or test_shot_sys_ban_state then
-                obj_char["input_sys_cache_negative_edge"]["H"] = false
-                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(obj_char)
-                obj_char["shot_sys_state"] = "at_the_ready_ease_out"
+                self_side_obj_char["input_sys_cache_negative_edge"]["H"] = false
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(self_side_obj_char)
+                self_side_obj_char["shot_sys_state"] = "at_the_ready_ease_out"
                 return
             end
-            if test_input_sys_release(input["H"]) and obj_char["state"] == "hitstop" then
-                obj_char["input_sys_cache_negative_edge"]["H"] = true
+            if test_input_sys_release(input["H"]) and self_side_obj_char["state"] == "hitstop" then
+                self_side_obj_char["input_sys_cache_negative_edge"]["H"] = true
             end
-            if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["H"]) 
-            and obj_char["state"] ~= "hitstop" and obj_char["ability_gauge"][1] > 0 then
-                obj_char["input_sys_cache_negative_edge"]["H"] = false
-                character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
-                character_function_game_scene_TRM_shot_sys_ability_gauge_use(obj_char)
-                obj_char["shot_sys_state"] = "at_the_ready_shot"
+            if self_side_obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["H"]) 
+            and self_side_obj_char["state"] ~= "hitstop" and self_side_obj_char["ability_gauge"][1] > 0 then
+                self_side_obj_char["input_sys_cache_negative_edge"]["H"] = false
+                character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(self_side_obj_char,opponent_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_ability_gauge_use(self_side_obj_char)
+                self_side_obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return
             end
         end,
         ["at_the_ready_shot"] = function()
             if run_at_current_frame then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(self_side_obj_char)
             end
-            if (obj_char["shot_sys_idle_cancel"] and test_input_shot_to_ease_out) or test_shot_sys_ban_state then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(obj_char)
-                obj_char["shot_sys_state"] = "at_the_ready_ease_out"
+            if (self_side_obj_char["shot_sys_idle_cancel"] and test_input_shot_to_ease_out) or test_shot_sys_ban_state then
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(self_side_obj_char)
+                self_side_obj_char["shot_sys_state"] = "at_the_ready_ease_out"
                 return
             end
-            if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["H"]) 
-            and obj_char["state"] ~= "hitstop" and obj_char["ability_gauge"][1] > 0 then
-                obj_char["input_sys_cache_negative_edge"]["H"] = false
-                character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
-                character_function_game_scene_TRM_shot_sys_ability_gauge_use(obj_char)
-                obj_char["shot_sys_state"] = "at_the_ready_shot"
+            if self_side_obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["H"]) 
+            and self_side_obj_char["state"] ~= "hitstop" and self_side_obj_char["ability_gauge"][1] > 0 then
+                self_side_obj_char["input_sys_cache_negative_edge"]["H"] = false
+                character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(self_side_obj_char,opponent_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_ability_gauge_use(self_side_obj_char)
+                self_side_obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return
             end
-            if get_character_anim_end_state(obj_char,obj_char["shot_sys_animation"]) then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_init(obj_char)
-                obj_char["shot_sys_state"] = "at_the_ready"
+            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"]) then
+                character_function_game_scene_TRM_shot_sys_at_the_ready_init(self_side_obj_char)
+                self_side_obj_char["shot_sys_state"] = "at_the_ready"
                 return
             end
         end,
         ["steady_aim_ease_in"] = function()
-            obj_char["hurt_state"] = "counter"
-            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(obj_char)
+            self_side_obj_char["hurt_state"] = "counter"
+            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(self_side_obj_char)
         end,
         ["steady_aim_ease_out"] = function()
-            obj_char["hurt_state"] = "counter"
-            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(obj_char)
+            self_side_obj_char["hurt_state"] = "counter"
+            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(self_side_obj_char)
         end,
         ["steady_aim"] = function()
-            obj_char["hurt_state"] = "counter"
-            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(obj_char)
+            self_side_obj_char["hurt_state"] = "counter"
+            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(self_side_obj_char)
         end,
         ["steady_aim_shot"] = function()
-            character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(obj_char)
-            if (obj_char["shot_sys_idle_cancel"] and test_input_shot_to_ease_out) or test_shot_sys_ban_state then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(obj_char)
-                obj_char["shot_sys_state"] = "at_the_ready_ease_out"
+            character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(self_side_obj_char)
+            if (self_side_obj_char["shot_sys_idle_cancel"] and test_input_shot_to_ease_out) or test_shot_sys_ban_state then
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(self_side_obj_char)
+                self_side_obj_char["shot_sys_state"] = "at_the_ready_ease_out"
                 return
             end
-            if test_input_sys_release(input["H"]) and obj_char["state"] == "hitstop" then
-                obj_char["input_sys_cache_negative_edge"]["H"] = true
+            if test_input_sys_release(input["H"]) and self_side_obj_char["state"] == "hitstop" then
+                self_side_obj_char["input_sys_cache_negative_edge"]["H"] = true
             end
-            if obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["H"]) and obj_char["state"] ~= "hitstop" then
-                obj_char["input_sys_cache_negative_edge"]["H"] = false
-                character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
-                obj_char["shot_sys_state"] = "at_the_ready_shot"
+            if self_side_obj_char["shot_sys_fire_cancel"] and test_input_sys_release(input["H"]) and self_side_obj_char["state"] ~= "hitstop" then
+                self_side_obj_char["input_sys_cache_negative_edge"]["H"] = false
+                character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(self_side_obj_char,opponent_side_obj_char)
+                self_side_obj_char["shot_sys_state"] = "at_the_ready_shot"
                 return
             end
-            if get_character_anim_end_state(obj_char,obj_char["shot_sys_animation"]) then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_init(obj_char)
-                obj_char["shot_sys_state"] = "at_the_ready"
+            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"]) then
+                character_function_game_scene_TRM_shot_sys_at_the_ready_init(self_side_obj_char)
+                self_side_obj_char["shot_sys_state"] = "at_the_ready"
                 return
             end
         end,
     }
-    local this_function = switch[obj_char["shot_sys_state"]]
+    local this_function = switch[self_side_obj_char["shot_sys_state"]]
     if this_function then this_function() end
 end
 function state_machine_char_game_scene_char_LP_shot_sys_oroboros()
-    local obj_char = obj_char_game_scene_char_LP
-    local game_speed_cache = obj_char["game_speed"]
-    local game_speed_subframe_cache = obj_char["game_speed_subframe"]
+    local self_side_obj_char = obj_char_game_scene_char_LP
+    local game_speed_cache = self_side_obj_char["game_speed"]
+    local game_speed_subframe_cache = self_side_obj_char["game_speed_subframe"]
     local run_at_current_frame = (game_speed_subframe_cache > game_speed_cache and game_speed_cache ~= 0) or (game_speed_cache == 1)
     local switch = {
         ["off"] = function()
         end,
         ["ease_in"] = function()
             if run_at_current_frame then
-                character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
-                character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
-                character_animator(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
-                character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
-                character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
-                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
+                character_animator(self_side_obj_char["shot_sys_oroboros_front"],self_side_obj_char["shot_sys_oroboros_animation_table"][1])
+                character_animator(self_side_obj_char["shot_sys_oroboros_front"],self_side_obj_char["shot_sys_oroboros_animation_table"][2])
+                character_animator(self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3])
+                character_animator(self_side_obj_char["shot_sys_oroboros_back"],self_side_obj_char["shot_sys_oroboros_animation_table"][4])
+                character_animator(self_side_obj_char["shot_sys_oroboros_back"],self_side_obj_char["shot_sys_oroboros_animation_table"][5])
+                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(self_side_obj_char)
             end
-            if get_character_anim_end_state(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3]) then
-                obj_char["shot_sys_oroboros_front"][4] = 1
-                obj_char["shot_sys_oroboros_back"][4] = 1
-                obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["shot_sys_oroboros_mid"])
-                init_character_anim_with(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
-                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
-                obj_char["shot_sys_oroboros_state"] = "at_the_ready_or_steady_aim"
+            if get_character_anim_end_state(self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3]) then
+                self_side_obj_char["shot_sys_oroboros_front"][4] = 1
+                self_side_obj_char["shot_sys_oroboros_back"][4] = 1
+                self_side_obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(self_side_obj_char["shot_sys_oroboros_mid"])
+                init_character_anim_with(self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3])
+                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(self_side_obj_char)
+                self_side_obj_char["shot_sys_oroboros_state"] = "at_the_ready_or_steady_aim"
                 return
             end
         end,
         ["at_the_ready_or_steady_aim"] = function()
             if run_at_current_frame then
-                character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
-                character_animator(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
-                character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
-                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
+                character_animator(self_side_obj_char["shot_sys_oroboros_front"],self_side_obj_char["shot_sys_oroboros_animation_table"][2])
+                character_animator(self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3])
+                character_animator(self_side_obj_char["shot_sys_oroboros_back"],self_side_obj_char["shot_sys_oroboros_animation_table"][5])
+                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(self_side_obj_char)
             end
         end,
         ["ease_out"] = function()
             if run_at_current_frame then
-                character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
-                character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
-                character_animator(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
-                character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
-                character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
-                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
+                character_animator(self_side_obj_char["shot_sys_oroboros_front"],self_side_obj_char["shot_sys_oroboros_animation_table"][1])
+                character_animator(self_side_obj_char["shot_sys_oroboros_front"],self_side_obj_char["shot_sys_oroboros_animation_table"][2])
+                character_animator(self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3])
+                character_animator(self_side_obj_char["shot_sys_oroboros_back"],self_side_obj_char["shot_sys_oroboros_animation_table"][4])
+                character_animator(self_side_obj_char["shot_sys_oroboros_back"],self_side_obj_char["shot_sys_oroboros_animation_table"][5])
+                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(self_side_obj_char)
             end
-            if get_character_anim_end_state(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3]) then
-                obj_char["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
-                obj_char["shot_sys_oroboros_front"]["f_8"] = 0
-                obj_char["shot_sys_oroboros_front"]["f_4"] = 0
-                obj_char["shot_sys_oroboros_front"]["sprite_sheet"] = "5H_oroboros_loop_front"
-                obj_char["shot_sys_oroboros_mid"] = {0,0,0,0,1,1,0,0}
-                obj_char["shot_sys_oroboros_mid"]["f_8"] = 0
-                obj_char["shot_sys_oroboros_mid"]["sprite_sheet"] = "5H_oroboros_loop_mid"
-                obj_char["shot_sys_oroboros_back"] = {0,0,0,0,1,1,0,0}
-                obj_char["shot_sys_oroboros_back"]["f_8"] = 0
-                obj_char["shot_sys_oroboros_back"]["f_4"] = 0
-                obj_char["shot_sys_oroboros_back"]["sprite_sheet"] = "5H_oroboros_loop_back"
-                obj_char["shot_sys_oroboros_state"] = "off"
+            if get_character_anim_end_state(self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3]) then
+                self_side_obj_char["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
+                self_side_obj_char["shot_sys_oroboros_front"]["f_8"] = 0
+                self_side_obj_char["shot_sys_oroboros_front"]["f_4"] = 0
+                self_side_obj_char["shot_sys_oroboros_front"]["sprite_sheet"] = "5H_oroboros_loop_front"
+                self_side_obj_char["shot_sys_oroboros_mid"] = {0,0,0,0,1,1,0,0}
+                self_side_obj_char["shot_sys_oroboros_mid"]["f_8"] = 0
+                self_side_obj_char["shot_sys_oroboros_mid"]["sprite_sheet"] = "5H_oroboros_loop_mid"
+                self_side_obj_char["shot_sys_oroboros_back"] = {0,0,0,0,1,1,0,0}
+                self_side_obj_char["shot_sys_oroboros_back"]["f_8"] = 0
+                self_side_obj_char["shot_sys_oroboros_back"]["f_4"] = 0
+                self_side_obj_char["shot_sys_oroboros_back"]["sprite_sheet"] = "5H_oroboros_loop_back"
+                self_side_obj_char["shot_sys_oroboros_state"] = "off"
                 return
             end
         end,
         ["shot"] = function()
             if run_at_current_frame then
-                character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
-                character_animator(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
-                character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
-                character_animator(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
-                character_animator(obj_char,obj_char["shot_sys_oroboros_animation_table"][6])
-                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
+                character_animator(self_side_obj_char["shot_sys_oroboros_front"],self_side_obj_char["shot_sys_oroboros_animation_table"][1])
+                character_animator(self_side_obj_char["shot_sys_oroboros_front"],self_side_obj_char["shot_sys_oroboros_animation_table"][2])
+                character_animator(self_side_obj_char["shot_sys_oroboros_back"],self_side_obj_char["shot_sys_oroboros_animation_table"][4])
+                character_animator(self_side_obj_char["shot_sys_oroboros_back"],self_side_obj_char["shot_sys_oroboros_animation_table"][5])
+                character_animator(self_side_obj_char,self_side_obj_char["shot_sys_oroboros_animation_table"][6])
+                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(self_side_obj_char)
             end
-            if get_character_anim_end_state(obj_char,obj_char["shot_sys_oroboros_animation_table"][6]) then
-                obj_char["shot_sys_oroboros_aim_r"] = 0.42
-                obj_char["shot_sys_oroboros_offset_amount"] = 0
-                obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj_char["shot_sys_oroboros_mid"])
-                init_character_anim_with(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
-                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
-                obj_char["shot_sys_oroboros_state"] = "at_the_ready_or_steady_aim"
+            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_oroboros_animation_table"][6]) then
+                self_side_obj_char["shot_sys_oroboros_aim_r"] = 0.42
+                self_side_obj_char["shot_sys_oroboros_offset_amount"] = 0
+                self_side_obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(self_side_obj_char["shot_sys_oroboros_mid"])
+                init_character_anim_with(self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3])
+                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(self_side_obj_char)
+                self_side_obj_char["shot_sys_oroboros_state"] = "at_the_ready_or_steady_aim"
                 return
             end
         end,
     }
-    local this_function = switch[obj_char["shot_sys_oroboros_state"]]
+    local this_function = switch[self_side_obj_char["shot_sys_oroboros_state"]]
     if this_function then this_function() end
 end
 function state_machine_char_game_scene_char_LP_shot_sys_reticle()
@@ -2090,129 +2092,130 @@ function state_machine_char_game_scene_char_LP_shot_sys_reticle()
     -- staedy_aim
     -- ease_out
     -- shot
-    local obj_char = obj_char_game_scene_char_LP
-    local game_speed_cache = obj_char["game_speed"]
-    local game_speed_subframe_cache = obj_char["game_speed_subframe"]
+    local self_side_obj_char = obj_char_game_scene_char_LP
+    local opponent_side_obj_char = obj_char_game_scene_char_RP
+    local game_speed_cache = self_side_obj_char["game_speed"]
+    local game_speed_subframe_cache = self_side_obj_char["game_speed_subframe"]
     local run_at_current_frame = (game_speed_subframe_cache > game_speed_cache and game_speed_cache ~= 0) or (game_speed_cache == 1)
     local switch = {
         ["off"] = function()
         end,
         ["at_the_ready_ease_in"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
-                character_function_game_scene_TRM_shot_sys_reticle_pos_update_ease_in(obj_char)
+                character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
+                character_function_game_scene_TRM_shot_sys_reticle_pos_update_ease_in(self_side_obj_char,opponent_side_obj_char)
             end
-            if obj_char["shot_sys_aim_process"][1] >= obj_char["shot_sys_aim_process"][3] then
-                obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(obj_char,"5H_reticle_locking")
-                init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
-                obj_char["shot_sys_reticle_state"] = "at_the_ready_locking"
+            if self_side_obj_char["shot_sys_aim_process"][1] >= self_side_obj_char["shot_sys_aim_process"][3] then
+                self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_locking")
+                init_character_anim_with(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
+                self_side_obj_char["shot_sys_reticle_state"] = "at_the_ready_locking"
                 return
             end
-            if get_character_anim_end_state(obj_char,obj_char["shot_sys_reticle_animation_table"][1]) then
-                obj_char["shot_sys_reticle"][8] = 0
-                obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
-                obj_char["shot_sys_reticle_state"] = "at_the_ready_unlocked"
+            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1]) then
+                self_side_obj_char["shot_sys_reticle"][8] = 0
+                self_side_obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
+                self_side_obj_char["shot_sys_reticle_state"] = "at_the_ready_unlocked"
                 return
             end
         end,
         ["at_the_ready_locking"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
-                character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
-                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(obj_char)
+                character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
+                character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
+                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(self_side_obj_char,opponent_side_obj_char)
             end
-            if obj_char["shot_sys_aim_process"][1] < obj_char["shot_sys_aim_process"][3] then
-                obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(obj_char,"5H_reticle_unlocking")
-                init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
-                obj_char["shot_sys_reticle_state"] = "at_the_ready_unlocking"
+            if self_side_obj_char["shot_sys_aim_process"][1] < self_side_obj_char["shot_sys_aim_process"][3] then
+                self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_unlocking")
+                init_character_anim_with(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
+                self_side_obj_char["shot_sys_reticle_state"] = "at_the_ready_unlocking"
                 return
             end
-            if get_character_anim_end_state(obj_char,obj_char["shot_sys_reticle_animation_table"][2]) then
-                obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locked(obj_char)
-                init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
-                obj_char["shot_sys_reticle_state"] = "at_the_ready_locked"
+            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2]) then
+                self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locked(self_side_obj_char)
+                init_character_anim_with(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
+                self_side_obj_char["shot_sys_reticle_state"] = "at_the_ready_locked"
                 return
             end
         end,
         ["at_the_ready_locked"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
-                character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
-                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(obj_char)
+                character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
+                character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
+                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(self_side_obj_char,opponent_side_obj_char)
             end
-            if obj_char["shot_sys_aim_process"][1] < obj_char["shot_sys_aim_process"][3] then
-                obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(obj_char,"5H_reticle_unlocking")
-                init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
-                obj_char["shot_sys_reticle_state"] = "at_the_ready_unlocking"
+            if self_side_obj_char["shot_sys_aim_process"][1] < self_side_obj_char["shot_sys_aim_process"][3] then
+                self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_unlocking")
+                init_character_anim_with(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
+                self_side_obj_char["shot_sys_reticle_state"] = "at_the_ready_unlocking"
                 return
             end
         end,
         ["at_the_ready_unlocking"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
-                character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
-                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(obj_char)
+                character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
+                character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
+                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(self_side_obj_char,opponent_side_obj_char)
             end
-            if obj_char["shot_sys_aim_process"][1] >= obj_char["shot_sys_aim_process"][3] then
-                obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(obj_char,"5H_reticle_locking")
-                init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
-                obj_char["shot_sys_reticle_state"] = "at_the_ready_locking"
+            if self_side_obj_char["shot_sys_aim_process"][1] >= self_side_obj_char["shot_sys_aim_process"][3] then
+                self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_locking")
+                init_character_anim_with(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
+                self_side_obj_char["shot_sys_reticle_state"] = "at_the_ready_locking"
                 return
             end
-            if get_character_anim_end_state(obj_char,obj_char["shot_sys_reticle_animation_table"][2]) then
-                obj_char["shot_sys_reticle"][8] = 0
-                obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
-                obj_char["shot_sys_reticle_state"] = "at_the_ready_unlocked"
+            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2]) then
+                self_side_obj_char["shot_sys_reticle"][8] = 0
+                self_side_obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
+                self_side_obj_char["shot_sys_reticle_state"] = "at_the_ready_unlocked"
                 return
             end
         end,
         ["at_the_ready_unlocked"] = function()
             if run_at_current_frame then
-                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(obj_char)
+                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(self_side_obj_char,opponent_side_obj_char)
             end
-            if obj_char["shot_sys_aim_process"][1] >= obj_char["shot_sys_aim_process"][3] then
-                obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(obj_char,"5H_reticle_locking")
-                init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
-                obj_char["shot_sys_reticle_state"] = "at_the_ready_locking"
+            if self_side_obj_char["shot_sys_aim_process"][1] >= self_side_obj_char["shot_sys_aim_process"][3] then
+                self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_locking")
+                init_character_anim_with(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
+                self_side_obj_char["shot_sys_reticle_state"] = "at_the_ready_locking"
                 return
             end
         end,
         ["at_the_ready_ease_out"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+                character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
             end
-            if get_character_anim_end_state(obj_char,obj_char["shot_sys_reticle_animation_table"][2]) then
-                obj_char["shot_sys_reticle"] = {0,0,0,0,1,1,0,0}
-                obj_char["shot_sys_reticle_f"] = 0
-                obj_char["shot_sys_reticle_f_4"] = 0
-                obj_char["shot_sys_reticle_f_8"] = 0
-                obj_char["shot_sys_reticle_animation_table"] = {}
-                obj_char["shot_sys_reticle_stage_pos_current"] = {0,0}
-                obj_char["shot_sys_reticle_stage_pos_target"] = {0,0}
-                obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
-                obj_char["shot_sys_reticle_state"] = "off"
+            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2]) then
+                self_side_obj_char["shot_sys_reticle"] = {0,0,0,0,1,1,0,0}
+                self_side_obj_char["shot_sys_reticle_f"] = 0
+                self_side_obj_char["shot_sys_reticle_f_4"] = 0
+                self_side_obj_char["shot_sys_reticle_f_8"] = 0
+                self_side_obj_char["shot_sys_reticle_animation_table"] = {}
+                self_side_obj_char["shot_sys_reticle_stage_pos_current"] = {0,0}
+                self_side_obj_char["shot_sys_reticle_stage_pos_target"] = {0,0}
+                self_side_obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
+                self_side_obj_char["shot_sys_reticle_state"] = "off"
                 return
             end
         end,
         ["at_the_ready_shot"] = function()
             if run_at_current_frame then
-                character_animator(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
+                character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
             end
-            if get_character_anim_end_state(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
-            and obj_char["shot_sys_aim_process"][1] >= obj_char["shot_sys_aim_process"][3] 
+            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
+            and self_side_obj_char["shot_sys_aim_process"][1] >= self_side_obj_char["shot_sys_aim_process"][3] 
             then
-                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(obj_char)
-                obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(obj_char,"5H_reticle_locking")
-                init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
-                obj_char["shot_sys_reticle_state"] = "at_the_ready_locking"
+                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(self_side_obj_char,opponent_side_obj_char)
+                self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_locking")
+                init_character_anim_with(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
+                self_side_obj_char["shot_sys_reticle_state"] = "at_the_ready_locking"
                 return
             end
-            if get_character_anim_end_state(obj_char,obj_char["shot_sys_reticle_animation_table"][2]) then
-                obj_char["shot_sys_reticle"][8] = 0
-                obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
-                obj_char["shot_sys_reticle_animation_table"][1] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(obj_char)
-                init_character_anim_without(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
-                obj_char["shot_sys_reticle_state"] = "at_the_ready_ease_in"
+            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2]) then
+                self_side_obj_char["shot_sys_reticle"][8] = 0
+                self_side_obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
+                self_side_obj_char["shot_sys_reticle_animation_table"][1] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(self_side_obj_char)
+                init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
+                self_side_obj_char["shot_sys_reticle_state"] = "at_the_ready_ease_in"
                 return
             end
         end,
@@ -2229,364 +2232,364 @@ function state_machine_char_game_scene_char_LP_shot_sys_reticle()
         ["steady_aim_shot"] = function()
         end,
     }
-    local this_function = switch[obj_char["shot_sys_reticle_state"]]
+    local this_function = switch[self_side_obj_char["shot_sys_reticle_state"]]
     if this_function then this_function() end
 end
 
 -- input_sys
 function state_machine_char_game_scene_char_LP_input_sys_cache()
-    local obj_char = obj_char_game_scene_char_LP
+    local self_side_obj_char = obj_char_game_scene_char_LP
     local input = INPUT_SYS_CURRENT_COMMAND_STATE["L"]
     local switch = {
         ["none"] = function()
         end,
         ["save"] = function()
             if test_input_sys_press_or_hold(input["left"]) then
-                obj_char["input_sys_cache"]["left"] = true
-                obj_char["input_sys_cache"]["right"] = false
+                self_side_obj_char["input_sys_cache"]["left"] = true
+                self_side_obj_char["input_sys_cache"]["right"] = false
             elseif test_input_sys_press_or_hold(input["right"]) then
-                obj_char["input_sys_cache"]["left"] = false
-                obj_char["input_sys_cache"]["right"] = true
+                self_side_obj_char["input_sys_cache"]["left"] = false
+                self_side_obj_char["input_sys_cache"]["right"] = true
             end
             if test_input_sys_press(input["up"]) then
-                obj_char["input_sys_cache"]["up"] = true
+                self_side_obj_char["input_sys_cache"]["up"] = true
             end
             if test_input_sys_press(input["P"]) then
-                obj_char["input_sys_cache"]["P"] = true
-                obj_char["input_sys_cache"]["S"] = false
-                obj_char["input_sys_cache"]["K"] = false
-                obj_char["input_sys_cache"]["Launcher"] = false
+                self_side_obj_char["input_sys_cache"]["P"] = true
+                self_side_obj_char["input_sys_cache"]["S"] = false
+                self_side_obj_char["input_sys_cache"]["K"] = false
+                self_side_obj_char["input_sys_cache"]["Launcher"] = false
             elseif test_input_sys_press(input["S"]) then
-                obj_char["input_sys_cache"]["P"] = false
-                obj_char["input_sys_cache"]["S"] = true
-                obj_char["input_sys_cache"]["K"] = false
-                obj_char["input_sys_cache"]["Launcher"] = false
+                self_side_obj_char["input_sys_cache"]["P"] = false
+                self_side_obj_char["input_sys_cache"]["S"] = true
+                self_side_obj_char["input_sys_cache"]["K"] = false
+                self_side_obj_char["input_sys_cache"]["Launcher"] = false
             elseif test_input_sys_press(input["K"]) then
-                obj_char["input_sys_cache"]["P"] = false
-                obj_char["input_sys_cache"]["S"] = false
-                obj_char["input_sys_cache"]["K"] = true
-                obj_char["input_sys_cache"]["Launcher"] = false
+                self_side_obj_char["input_sys_cache"]["P"] = false
+                self_side_obj_char["input_sys_cache"]["S"] = false
+                self_side_obj_char["input_sys_cache"]["K"] = true
+                self_side_obj_char["input_sys_cache"]["Launcher"] = false
             elseif test_input_sys_press(input["Launcher"]) then
-                obj_char["input_sys_cache"]["P"] = false
-                obj_char["input_sys_cache"]["S"] = false
-                obj_char["input_sys_cache"]["K"] = false
-                obj_char["input_sys_cache"]["Launcher"] = true
+                self_side_obj_char["input_sys_cache"]["P"] = false
+                self_side_obj_char["input_sys_cache"]["S"] = false
+                self_side_obj_char["input_sys_cache"]["K"] = false
+                self_side_obj_char["input_sys_cache"]["Launcher"] = true
             end
             if test_input_sys_press_or_hold(input["SP"]) then
-                obj_char["input_sys_cache"]["SP"] = true
+                self_side_obj_char["input_sys_cache"]["SP"] = true
             end
             if test_input_sys_press(input["RC"]) then
-                obj_char["input_sys_cache"]["RC"] = true
+                self_side_obj_char["input_sys_cache"]["RC"] = true
             end
             if test_input_sys_press(input["burst"]) then
-                obj_char["input_sys_cache"]["burst"] = true
+                self_side_obj_char["input_sys_cache"]["burst"] = true
             end
             if test_input_sys_press(input["dash"]) then
-                obj_char["input_sys_cache"]["dash"] = true
+                self_side_obj_char["input_sys_cache"]["dash"] = true
             end
             if test_input_sys_press(input["UA"]) then
-                obj_char["input_sys_cache"]["UA"] = true
+                self_side_obj_char["input_sys_cache"]["UA"] = true
             end
             if test_input_sys_press(input["correction_up"]) then
-                obj_char["input_sys_cache"]["correction_up"] = true
-                obj_char["input_sys_cache"]["correction_down"] = false
+                self_side_obj_char["input_sys_cache"]["correction_up"] = true
+                self_side_obj_char["input_sys_cache"]["correction_down"] = false
             elseif test_input_sys_press(input["correction_down"]) then
-                obj_char["input_sys_cache"]["correction_up"] = false
-                obj_char["input_sys_cache"]["correction_down"] = true
+                self_side_obj_char["input_sys_cache"]["correction_up"] = false
+                self_side_obj_char["input_sys_cache"]["correction_down"] = true
             end
             if test_input_sys_press(input["correction_left"]) then
-                obj_char["input_sys_cache"]["correction_left"] = true
-                obj_char["input_sys_cache"]["correction_right"] = false
+                self_side_obj_char["input_sys_cache"]["correction_left"] = true
+                self_side_obj_char["input_sys_cache"]["correction_right"] = false
             elseif test_input_sys_press(input["correction_right"]) then
-                obj_char["input_sys_cache"]["correction_left"] = false
-                obj_char["input_sys_cache"]["correction_right"] = true
+                self_side_obj_char["input_sys_cache"]["correction_left"] = false
+                self_side_obj_char["input_sys_cache"]["correction_right"] = true
             end
         end,
         ["load"] = function()
             for i=1,20 do
-                if obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] then
+                if self_side_obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] then
                     input[INPUT_SYS_COMMAND_TABLE[i]] = "Pressing"
                 end
             end
-            common_update_game_scene_input_direction(obj_char)
-            obj_char["input_sys_state"] = "none"
-            init_input_sys_cache_LP(obj_char)
+            common_update_game_scene_input_direction(self_side_obj_char)
+            self_side_obj_char["input_sys_state"] = "none"
+            init_input_sys_cache_LP(self_side_obj_char)
         end,
         ["load_without_direction"] = function()
             for i=5,20 do
-                if obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] then
+                if self_side_obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] then
                     input[INPUT_SYS_COMMAND_TABLE[i]] = "Pressing"
                 end
             end
-            common_update_game_scene_input_direction(obj_char)
-            obj_char["input_sys_state"] = "none"
-            init_input_sys_cache_LP(obj_char)
+            common_update_game_scene_input_direction(self_side_obj_char)
+            self_side_obj_char["input_sys_state"] = "none"
+            init_input_sys_cache_LP(self_side_obj_char)
         end,
     }
-    local this_function = switch[obj_char["input_sys_state"]]
+    local this_function = switch[self_side_obj_char["input_sys_state"]]
     if this_function then this_function() end
 end
 function state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
-    local obj_char = obj_char_game_scene_char_LP
+    local self_side_obj_char = obj_char_game_scene_char_LP
     local input = INPUT_SYS_CURRENT_COMMAND_STATE["L"]
     local switch = {
         ["none"] = function()
         end,
         ["save"] = function()
             if test_input_sys_release(input["H"]) then
-                obj_char["input_sys_cache_negative_edge"]["H"] = true
+                self_side_obj_char["input_sys_cache_negative_edge"]["H"] = true
             end
         end,
         ["load"] = function()
-            if obj_char["input_sys_cache_negative_edge"]["H"] then
+            if self_side_obj_char["input_sys_cache_negative_edge"]["H"] then
                 input["H"] = "Releasing"
             end
-            obj_char["input_sys_state_negative_edge"] = "none"
-            init_input_sys_cache_negative_edge_LP(obj_char)
+            self_side_obj_char["input_sys_state_negative_edge"] = "none"
+            init_input_sys_cache_negative_edge_LP(self_side_obj_char)
         end,
     }
-    local this_function = switch[obj_char["input_sys_state_negative_edge"]]
+    local this_function = switch[self_side_obj_char["input_sys_state_negative_edge"]]
     if this_function then this_function() end
 end
-function init_input_sys_cache_LP(obj_char)
+function init_input_sys_cache_LP(self_side_obj_char)
     for i=1,20 do
-        obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] = false
+        self_side_obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] = false
     end
 end
-function init_input_sys_cache_negative_edge_LP(obj_char)
+function init_input_sys_cache_negative_edge_LP(self_side_obj_char)
     for i=1,20 do
-        obj_char["input_sys_cache_negative_edge"][INPUT_SYS_COMMAND_TABLE[i]] = false
+        self_side_obj_char["input_sys_cache_negative_edge"][INPUT_SYS_COMMAND_TABLE[i]] = false
     end
 end
 
 -- 状态机连接门
 -- to_gate
-function state_gate_game_scene_char_LP_common_ground_to_dash_move(input,obj_char)
+function state_gate_game_scene_char_LP_common_ground_to_dash_move(input,self_side_obj_char,opponent_side_obj_char)
     -- _4dash_backdash
-    if obj_char["direction_input"] == 4 and test_input_sys_press(input["dash"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "4dash_backdash"
+    if self_side_obj_char["direction_input"] == 4 and test_input_sys_press(input["dash"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4dash_backdash"
         return true
     end
     -- _6dash_dash
-    if (obj_char["direction_input"] == 5 or obj_char["direction_input"] == 6) 
+    if (self_side_obj_char["direction_input"] == 5 or self_side_obj_char["direction_input"] == 6) 
     and test_input_sys_press(input["dash"]) 
-    and obj_char["state"] ~= "6dash_dash" then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6dash_dash"
+    and self_side_obj_char["state"] ~= "6dash_dash" then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6dash_dash"
         return true
     end
     return false
 end
-function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char)
+function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char)
     -- direction_input
-    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) and test_input_sys_press_or_hold(input["dash"]) then
-        obj_char[5] = -obj_char[5]
-        common_update_game_scene_input_direction(obj_char)
+    if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) and test_input_sys_press_or_hold(input["dash"]) then
+        self_side_obj_char[5] = -self_side_obj_char[5]
+        common_update_game_scene_input_direction(self_side_obj_char)
     end
     -- _4dash_backdash
-    if obj_char["direction_input"] == 4 and test_input_sys_press_or_hold(input["dash"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "4dash_backdash"
+    if self_side_obj_char["direction_input"] == 4 and test_input_sys_press_or_hold(input["dash"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4dash_backdash"
         return true
     end
     -- _6dash_dash
-    if (obj_char["direction_input"] == 5 or obj_char["direction_input"] == 6) 
+    if (self_side_obj_char["direction_input"] == 5 or self_side_obj_char["direction_input"] == 6) 
     and test_input_sys_press_or_hold(input["dash"]) 
-    and obj_char["state"] ~= "6dash_dash" then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6dash_dash"
+    and self_side_obj_char["state"] ~= "6dash_dash" then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6dash_dash"
         return true
     end
     return false
 end
-function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char)
+function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,self_side_obj_char,opponent_side_obj_char)
     -- direction_input
-    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) and test_input_sys_press_or_hold(input["dash"]) then
-        obj_char[5] = -obj_char[5]
-        common_update_game_scene_input_direction(obj_char)
+    if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) and test_input_sys_press_or_hold(input["dash"]) then
+        self_side_obj_char[5] = -self_side_obj_char[5]
+        common_update_game_scene_input_direction(self_side_obj_char)
     end
     -- _4dash_backdash
-    if obj_char["direction_input"] == 4 and test_input_sys_press(input["dash"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "4dash_backdash"
+    if self_side_obj_char["direction_input"] == 4 and test_input_sys_press(input["dash"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4dash_backdash"
         return true
     end
     -- _6dash_dash
-    if (obj_char["direction_input"] == 5 or obj_char["direction_input"] == 6) 
+    if (self_side_obj_char["direction_input"] == 5 or self_side_obj_char["direction_input"] == 6) 
     and test_input_sys_press_or_hold(input["dash"]) 
-    and obj_char["state"] ~= "6dash_dash" then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6dash_dash"
+    and self_side_obj_char["state"] ~= "6dash_dash" then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6dash_dash"
         return true
     end
     return false
 end
-function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_4dash_to_walk(input,obj_char)
+function state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_4dash_to_walk(input,self_side_obj_char,opponent_side_obj_char)
     -- direction_input
-    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) and test_input_sys_press_or_hold(input["dash"]) then
-        obj_char[5] = -obj_char[5]
-        common_update_game_scene_input_direction(obj_char)
+    if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) and test_input_sys_press_or_hold(input["dash"]) then
+        self_side_obj_char[5] = -self_side_obj_char[5]
+        common_update_game_scene_input_direction(self_side_obj_char)
     end
     -- _6dash_dash
-    if (obj_char["direction_input"] == 5 or obj_char["direction_input"] == 6) 
+    if (self_side_obj_char["direction_input"] == 5 or self_side_obj_char["direction_input"] == 6) 
     and test_input_sys_press_or_hold(input["dash"]) 
-    and obj_char["state"] ~= "6dash_dash" then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6dash_dash"
+    and self_side_obj_char["state"] ~= "6dash_dash" then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6dash_dash"
         return true
     end
     return false
 end
 
-function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char)
+function state_gate_game_scene_char_LP_common_ground_to_attack_move(input,self_side_obj_char,opponent_side_obj_char)
     -- _active_FD_block
 
     -- special
-    if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_special_move(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _2P
-    if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press(input["P"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_2P(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "2P"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_2P(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "2P"
         return true
     end
     -- _6P
-    if obj_char["direction_input"] == 6 and test_input_sys_press(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if self_side_obj_char["direction_input"] == 6 and test_input_sys_press(input["P"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6P(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6P"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6P(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6P"
         return true
     end
     -- _5P
     if test_input_sys_press(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5P(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5P"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5P(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5P"
         return true
     end
     -- _2K
-    if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["K"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press(input["K"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_2K(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "2K"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_2K(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "2K"
         return true
     end
     -- _6K
-    if obj_char["direction_input"] == 6 and test_input_sys_press(input["K"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if self_side_obj_char["direction_input"] == 6 and test_input_sys_press(input["K"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6K(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6K"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6K(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6K"
         return true
     end
     -- _5K
     if test_input_sys_press(input["K"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5K(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5K"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5K(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5K"
         return true
     end
     -- _2S
-    if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["S"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press(input["S"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_2S(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "2S"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_2S(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "2S"
         return true
     end
     -- _6S
-    if obj_char["direction_input"] == 6 and test_input_sys_press(input["S"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if self_side_obj_char["direction_input"] == 6 and test_input_sys_press(input["S"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6S(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6S"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6S(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6S"
         return true
     end
     -- _cS
-    if test_input_sys_press(input["S"]) and collision_test_cS_distance_check(obj_char,300) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if test_input_sys_press(input["S"]) and collision_test_cS_distance_check(self_side_obj_char,opponent_side_obj_char,300) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_cS(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "cS"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_cS(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "cS"
         return true
     end
     -- _fS
     if test_input_sys_press(input["S"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_fS(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "fS"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_fS(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "fS"
         return true
     end
     -- _2Launcher
-    if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["Launcher"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press(input["Launcher"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_2Launcher(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "2Launcher"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_2Launcher(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "2Launcher"
         return true
     end
     -- _4_6Launcher
-    if (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 6) 
+    if (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 6) 
     and test_input_sys_press(input["Launcher"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "4_6Launcher"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_6Launcher(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4_6Launcher"
         return true
     end
     -- _5Launcher
     if test_input_sys_press(input["Launcher"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5Launcher(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5Launcher"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5Launcher(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5Launcher"
         return true
     end
     return false
 end
-function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,obj_char)
+function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,self_side_obj_char,opponent_side_obj_char)
     -- _active_FD_block
 
     -- 4UA
@@ -2595,170 +2598,170 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(inp
     -- 4SP_S_5UA
 
     -- special
-    if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _2P
-    if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press_or_hold(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press_or_hold(input["P"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_2P(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "2P"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_2P(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "2P"
         return true
     end
     -- _6P
-    if obj_char["direction_input"] == 6 and test_input_sys_press_or_hold(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if self_side_obj_char["direction_input"] == 6 and test_input_sys_press_or_hold(input["P"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6P(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6P"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6P(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6P"
         return true
     end
     -- _5P
     if test_input_sys_press_or_hold(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5P(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5P"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5P(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5P"
         return true
     end
     -- _2K
-    if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press_or_hold(input["K"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press_or_hold(input["K"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_2K(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "2K"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_2K(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "2K"
         return true
     end
     -- _6K
-    if obj_char["direction_input"] == 6 and test_input_sys_press_or_hold(input["K"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if self_side_obj_char["direction_input"] == 6 and test_input_sys_press_or_hold(input["K"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6K(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6K"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6K(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6K"
         return true
     end
     -- _5K
     if test_input_sys_press_or_hold(input["K"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5K(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5K"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5K(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5K"
         return true
     end
     -- _2S
-    if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press_or_hold(input["S"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press_or_hold(input["S"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_2S(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "2S"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_2S(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "2S"
         return true
     end
     -- _6S
-    if obj_char["direction_input"] == 6 and test_input_sys_press_or_hold(input["S"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if self_side_obj_char["direction_input"] == 6 and test_input_sys_press_or_hold(input["S"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6S(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6S"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6S(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6S"
         return true
     end
     -- _cS
-    if test_input_sys_press_or_hold(input["S"]) and collision_test_cS_distance_check(obj_char,300) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if test_input_sys_press_or_hold(input["S"]) and collision_test_cS_distance_check(self_side_obj_char,opponent_side_obj_char,300) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_cS(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "cS"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_cS(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "cS"
         return true
     end
     -- _fS
     if test_input_sys_press_or_hold(input["S"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_fS(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "fS"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_fS(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "fS"
         return true
     end
     -- _2Launcher
-    if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press_or_hold(input["Launcher"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press_or_hold(input["Launcher"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_2Launcher(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "2Launcher"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_2Launcher(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "2Launcher"
         return true
     end
     -- _4_6Launcher
-    if (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 6) 
+    if (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 6) 
     and test_input_sys_press_or_hold(input["Launcher"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_6Launcher(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "4_6Launcher"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_6Launcher(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4_6Launcher"
         return true
     end
     -- _5Launcher
     if test_input_sys_press_or_hold(input["Launcher"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5Launcher(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5Launcher"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5Launcher(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5Launcher"
         return true
     end
     return false
 end
-function state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char)
+function state_gate_game_scene_char_LP_common_ground_to_special_move(input,self_side_obj_char,opponent_side_obj_char)
     -- 4UA
     -- 6UA
     -- 5UA
     -- 4SP_S_5UA
 
     -- 4SP_P
-    if (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 1)
+    if (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 1)
     and test_input_sys_press_or_hold(input["SP"])
     and test_input_sys_press(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_P(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "4SP_P"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_P(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4SP_P"
         return true
     end
     -- 6SP_P
-    if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3)
+    if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3)
     and test_input_sys_press_or_hold(input["SP"])
     and test_input_sys_press(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_P(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6SP_P"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_P(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6SP_P"
         return true
     end
     -- 4SP_K
@@ -2772,17 +2775,17 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_c
     -- 4SP_S_6Launcher
     -- 4SP_S_5Launcher
     -- 6SP_S
-    if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3)
-    and obj_char["6SP_S_shot_sys_pass_state"][obj_char["shot_sys_state"]]
-    and obj_char["ability_gauge"][1] > 0
+    if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3)
+    and self_side_obj_char["6SP_S_shot_sys_pass_state"][self_side_obj_char["shot_sys_state"]]
+    and self_side_obj_char["ability_gauge"][1] > 0
     and test_input_sys_press_or_hold(input["SP"])
     and test_input_sys_press(input["S"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_S(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6SP_S"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_S(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6SP_S"
         return true
     end
     -- SP_H
@@ -2791,34 +2794,34 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_c
     -- SP_H_S
     -- SP_H_H
 end
-function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,obj_char)
+function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(input,self_side_obj_char,opponent_side_obj_char)
     -- 4UA
     -- 6UA
     -- 5UA
     -- 4SP_S_5UA
 
     -- 4SP_P
-    if (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 1)
+    if (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 1)
     and test_input_sys_press_or_hold(input["SP"])
     and test_input_sys_press_or_hold(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_P(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "4SP_P"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_P(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4SP_P"
         return true
     end
     -- 6SP_P
-    if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3)
+    if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3)
     and test_input_sys_press_or_hold(input["SP"]) 
     and test_input_sys_press_or_hold(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_P(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6SP_P"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_P(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6SP_P"
         return true
     end
     -- 4SP_K
@@ -2832,17 +2835,17 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(in
     -- 4SP_S_6Launcher
     -- 4SP_S_5Launcher
     -- 6SP_S
-    if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3)
-    and obj_char["6SP_S_shot_sys_pass_state"][obj_char["shot_sys_state"]]
-    and obj_char["ability_gauge"][1] > 0
+    if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3)
+    and self_side_obj_char["6SP_S_shot_sys_pass_state"][self_side_obj_char["shot_sys_state"]]
+    and self_side_obj_char["ability_gauge"][1] > 0
     and test_input_sys_press_or_hold(input["SP"]) 
     and test_input_sys_press_or_hold(input["S"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_S(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6SP_S"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_S(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6SP_S"
         return true
     end
     -- SP_H
@@ -2852,70 +2855,70 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(in
     -- SP_H_H
 end
 
-function state_gate_game_scene_char_LP_common_air_to_dash_move(input,obj_char)
+function state_gate_game_scene_char_LP_common_air_to_dash_move(input,self_side_obj_char,opponent_side_obj_char)
     -- _4dash_air_backdash
-    if obj_char["y"] < -320 and (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 1)
-    and test_input_sys_press(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
-        obj_char["air_move"]["jump"][1] = 0
-        obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_air_backdash(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "4dash_air_backdash"
+    if self_side_obj_char["y"] < -320 and (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 1)
+    and test_input_sys_press(input["dash"]) and self_side_obj_char["air_move"]["air_dash"][1] > 0 then
+        self_side_obj_char["air_move"]["jump"][1] = 0
+        self_side_obj_char["air_move"]["air_dash"][1] = math.max(math.min(self_side_obj_char["air_move"]["air_dash"][1]-1,self_side_obj_char["air_move"]["air_dash"][2]),0)
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_air_backdash(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4dash_air_backdash"
         return true
     end
     -- _6dash_air_dash
-    if obj_char["y"] < -320 and test_input_sys_press(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
-        obj_char["air_move"]["jump"][1] = 0
-        obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6dash_air_dash"
+    if self_side_obj_char["y"] < -320 and test_input_sys_press(input["dash"]) and self_side_obj_char["air_move"]["air_dash"][1] > 0 then
+        self_side_obj_char["air_move"]["jump"][1] = 0
+        self_side_obj_char["air_move"]["air_dash"][1] = math.max(math.min(self_side_obj_char["air_move"]["air_dash"][1]-1,self_side_obj_char["air_move"]["air_dash"][2]),0)
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_air_dash(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6dash_air_dash"
         return true
     end
 end
-function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(input,obj_char)
+function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char)
     -- _4dash_air_backdash
-    if obj_char["y"] < -320 and (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 1)
-    and test_input_sys_press_or_hold(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
-        obj_char["air_move"]["jump"][1] = 0
-        obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_air_backdash(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "4dash_air_backdash"
+    if self_side_obj_char["y"] < -320 and (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 1)
+    and test_input_sys_press_or_hold(input["dash"]) and self_side_obj_char["air_move"]["air_dash"][1] > 0 then
+        self_side_obj_char["air_move"]["jump"][1] = 0
+        self_side_obj_char["air_move"]["air_dash"][1] = math.max(math.min(self_side_obj_char["air_move"]["air_dash"][1]-1,self_side_obj_char["air_move"]["air_dash"][2]),0)
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_air_backdash(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4dash_air_backdash"
         return true
     end
     -- _6dash_air_dash
-    if obj_char["y"] < -320 and test_input_sys_press_or_hold(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
-        obj_char["air_move"]["jump"][1] = 0
-        obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6dash_air_dash"
+    if self_side_obj_char["y"] < -320 and test_input_sys_press_or_hold(input["dash"]) and self_side_obj_char["air_move"]["air_dash"][1] > 0 then
+        self_side_obj_char["air_move"]["jump"][1] = 0
+        self_side_obj_char["air_move"]["air_dash"][1] = math.max(math.min(self_side_obj_char["air_move"]["air_dash"][1]-1,self_side_obj_char["air_move"]["air_dash"][2]),0)
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_air_dash(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6dash_air_dash"
         return true
     end
 end
-function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_4dash_only(input,obj_char)
+function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_4dash_only(input,self_side_obj_char,opponent_side_obj_char)
     -- _4dash_air_backdash
-    if obj_char["y"] < -320 and (obj_char["direction_input"] == 4 or obj_char["direction_input"] == 1)
-    and test_input_sys_press_or_hold(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
-        obj_char["air_move"]["jump"][1] = 0
-        obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_air_backdash(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "4dash_air_backdash"
+    if self_side_obj_char["y"] < -320 and (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 1)
+    and test_input_sys_press_or_hold(input["dash"]) and self_side_obj_char["air_move"]["air_dash"][1] > 0 then
+        self_side_obj_char["air_move"]["jump"][1] = 0
+        self_side_obj_char["air_move"]["air_dash"][1] = math.max(math.min(self_side_obj_char["air_move"]["air_dash"][1]-1,self_side_obj_char["air_move"]["air_dash"][2]),0)
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_air_backdash(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4dash_air_backdash"
         return true
     end
     -- _6dash_air_dash
-    if obj_char["y"] < -320 and test_input_sys_press(input["dash"]) and obj_char["air_move"]["air_dash"][1] > 0 then
-        obj_char["air_move"]["jump"][1] = 0
-        obj_char["air_move"]["air_dash"][1] = math.max(math.min(obj_char["air_move"]["air_dash"][1]-1,obj_char["air_move"]["air_dash"][2]),0)
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6dash_air_dash"
+    if self_side_obj_char["y"] < -320 and test_input_sys_press(input["dash"]) and self_side_obj_char["air_move"]["air_dash"][1] > 0 then
+        self_side_obj_char["air_move"]["jump"][1] = 0
+        self_side_obj_char["air_move"]["air_dash"][1] = math.max(math.min(self_side_obj_char["air_move"]["air_dash"][1]-1,self_side_obj_char["air_move"]["air_dash"][2]),0)
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_air_dash(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6dash_air_dash"
         return true
     end
 end
-function state_gate_game_scene_char_LP_common_air_to_attack_move(input,obj_char)
+function state_gate_game_scene_char_LP_common_air_to_attack_move(input,self_side_obj_char,opponent_side_obj_char)
     local direction_input_true_table = { [4] = true, [6] = true, [7] = true, [9] = true }
     -- _burst_overdrive
     -- _burst_RC_blue
@@ -2924,64 +2927,64 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move(input,obj_char)
     -- _jSP_H
     -- _jP
     if test_input_sys_press(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_jP(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "jP"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jP(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "jP"
         return true
     end
     -- _j2K
-    if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["K"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press(input["K"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "j2K"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "j2K"
         return true
     end
     -- _jK
     if test_input_sys_press(input["K"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_jK(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "jK"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jK(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "jK"
         return true
     end
     -- _jS
     if test_input_sys_press(input["S"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "jS"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "jS"
         return true
     end
     -- _j4_6Launcher
-    if test_input_sys_press(input["Launcher"]) and direction_input_true_table[obj_char["direction_input"]] then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if test_input_sys_press(input["Launcher"]) and direction_input_true_table[self_side_obj_char["direction_input"]] then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "j4_6Launcher"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j4_6Launcher(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "j4_6Launcher"
         return true
     end
     -- _j5Launcher
     if test_input_sys_press(input["Launcher"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_j5Launcher(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "j5Launcher"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j5Launcher(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "j5Launcher"
         return true
     end
     return false
 end
-function state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,obj_char)
+function state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,self_side_obj_char,opponent_side_obj_char)
     local direction_input_true_table = { [4] = true, [6] = true, [7] = true, [9] = true }
     -- _burst_overdrive
     -- _burst_RC_blue
@@ -2990,120 +2993,116 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,
     -- _jSP_H
     -- _jP
     if test_input_sys_press_or_hold(input["P"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_jP(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "jP"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jP(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "jP"
         return true
     end
     -- _j2K
-    if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press_or_hold(input["K"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press_or_hold(input["K"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "j2K"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "j2K"
         return true
     end
     -- _jK
     if test_input_sys_press_or_hold(input["K"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_jK(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "jK"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jK(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "jK"
         return true
     end
     -- _jS
     if test_input_sys_press_or_hold(input["S"]) then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "jS"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "jS"
         return true
     end
     -- _j4_6Launcher
-    if test_input_sys_press_or_hold(input["Launcher"]) and direction_input_true_table[obj_char["direction_input"]] then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if test_input_sys_press_or_hold(input["Launcher"]) and direction_input_true_table[self_side_obj_char["direction_input"]] then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_j4_6Launcher(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "j4_6Launcher"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j4_6Launcher(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "j4_6Launcher"
         return true
     end
     -- _j5Launcher
     if test_input_sys_press_or_hold(input["Launcher"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_j5Launcher(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "j5Launcher"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j5Launcher(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "j5Launcher"
         return true
     end
     return false
 end
-function state_gate_game_scene_char_LP_common_air_to_special_move(input,obj_char)
+function state_gate_game_scene_char_LP_common_air_to_special_move(input,self_side_obj_char,opponent_side_obj_char)
 end
-function state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver(input,obj_char)
+function state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver(input,self_side_obj_char,opponent_side_obj_char)
 end
 
-function state_gate_game_scene_char_LP_common_to_burst_RC_red(input,obj_char)
-    local self_side_obj_char = obj_char
-    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
-    if obj_char["heat_gauge"][1] < 100.0 then
+function state_gate_game_scene_char_LP_common_to_burst_RC_red(input,self_side_obj_char,opponent_side_obj_char)
+    if self_side_obj_char["heat_gauge"][1] < 100.0 then
         return
     end
     if test_input_sys_press(input["RC"]) then
-        obj_char["velocity_cache"] = {0,0}
+        self_side_obj_char["velocity_cache"] = {0,0}
         if test_input_sys_press_or_hold(input["dash"]) then
             if test_input_sys_press_or_hold(input["up"]) then
-                obj_char["velocity"] = {0,-7.5}
+                self_side_obj_char["velocity"] = {0,-7.5}
             elseif test_input_sys_press_or_hold(input["down"]) then
-                obj_char["velocity"] = {0,7.5}
+                self_side_obj_char["velocity"] = {0,7.5}
             elseif test_input_sys_press_or_hold(input["left"]) then
-                obj_char["velocity"] = {-7.5,0}
+                self_side_obj_char["velocity"] = {-7.5,0}
             elseif test_input_sys_press_or_hold(input["right"]) then
-                obj_char["velocity"] = {7.5,0}
+                self_side_obj_char["velocity"] = {7.5,0}
             else
-                obj_char["velocity"] = {7.5*obj_char[5],0}
+                self_side_obj_char["velocity"] = {7.5*self_side_obj_char[5],0}
             end
         else
-            obj_char["velocity"] = {0,0}
+            self_side_obj_char["velocity"] = {0,0}
         end
-        obj_char["physics_lock"] = false
-        if obj_char["height"] == "air" then
-            obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
-            obj_char["anchor_pos"] = {330,485}
-            obj_char["pushbox"] = {0,-100,120,200}
-            obj_char["collision_ground_height_offset"] = 185
-            obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
+        self_side_obj_char["physics_lock"] = false
+        if self_side_obj_char["height"] == "air" then
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
+            self_side_obj_char["anchor_pos"] = {330,485}
+            self_side_obj_char["pushbox"] = {0,-100,120,200}
+            self_side_obj_char["collision_ground_height_offset"] = 185
+            self_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         else
-            obj_char["height"] = "stand"
-            obj_char["sprite_sheet"] = "burst_rc_ground"
-            obj_char["anchor_pos"] = {300,615}
-            obj_char["pushbox"]  = {0,-185,120,370}
-            obj_char["collision_ground_height_offset"] = 0
-            obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+            self_side_obj_char["height"] = "stand"
+            self_side_obj_char["sprite_sheet"] = "burst_rc_ground"
+            self_side_obj_char["anchor_pos"] = {300,615}
+            self_side_obj_char["pushbox"]  = {0,-185,120,370}
+            self_side_obj_char["collision_ground_height_offset"] = 0
+            self_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
-        obj_char["character_animation"] = 
+        self_side_obj_char["character_animation"] = 
         load_game_scene_anim_char_common_burst_RC_red(
-            obj_char,opponent_side_obj_char,
+            self_side_obj_char,opponent_side_obj_char,
             character_function_game_scene_TRM_RC_state_character_uncommon_update
         )
-        obj_char["state"] = "burst_RC_red"
-        init_character_anim_with(obj_char,obj_char["character_animation"])
+        self_side_obj_char["state"] = "burst_RC_red"
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         return true
     end
 end
-function state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char)
-    local self_side_obj_char = obj_char
-    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
-    if obj_char["heat_gauge"][1] < 100.0 then
+function state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char)
+    if self_side_obj_char["heat_gauge"][1] < 100.0 then
         return
     end
     if test_input_sys_press(input["RC"]) then
@@ -3118,153 +3117,148 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char)
         }
         local velocity_cache_uncommon_case = {
             ["7_8_9_pre_jump"] = {0,-25},
-            ["6dash_dash_cancel"] = {7.5*obj_char[5],0},
-            ["4dash_backdash"] = {-17.5*obj_char[5],-3.25}
+            ["6dash_dash_cancel"] = {7.5*self_side_obj_char[5],0},
+            ["4dash_backdash"] = {-17.5*self_side_obj_char[5],-3.25}
         }
-        obj_char["velocity_cache"] = obj_char["velocity"]
+        self_side_obj_char["velocity_cache"] = self_side_obj_char["velocity"]
         if test_input_sys_press_or_hold(input["dash"]) then
             if test_input_sys_press_or_hold(input["up"]) then
-                obj_char["velocity"] = {0,-7.5}
+                self_side_obj_char["velocity"] = {0,-7.5}
             elseif test_input_sys_press_or_hold(input["down"]) then
-                obj_char["velocity"] = {0,7.5}
+                self_side_obj_char["velocity"] = {0,7.5}
             elseif test_input_sys_press_or_hold(input["left"]) then
-                obj_char["velocity"] = {-7.5,0}
+                self_side_obj_char["velocity"] = {-7.5,0}
             elseif test_input_sys_press_or_hold(input["right"]) then
-                obj_char["velocity"] = {7.5,0}
+                self_side_obj_char["velocity"] = {7.5,0}
             else
-                obj_char["velocity"] = {7.5*obj_char[5],0}
+                self_side_obj_char["velocity"] = {7.5*self_side_obj_char[5],0}
             end
-        elseif forward_dash_state[obj_char["state"]] then
-            obj_char["velocity"] = {7.5*obj_char[5],0}
+        elseif forward_dash_state[self_side_obj_char["state"]] then
+            self_side_obj_char["velocity"] = {7.5*self_side_obj_char[5],0}
         else
-            obj_char["velocity"] = {0,0}
+            self_side_obj_char["velocity"] = {0,0}
         end
-        if velocity_cache_uncommon_case[obj_char["state"]] then
-            obj_char["velocity_cache"] = velocity_cache_uncommon_case[obj_char["state"]]
+        if velocity_cache_uncommon_case[self_side_obj_char["state"]] then
+            self_side_obj_char["velocity_cache"] = velocity_cache_uncommon_case[self_side_obj_char["state"]]
         end
-        if obj_char["state"] == "6dash_dash_cancel" and obj_char["velocity"][2] < 0 then
-            obj_char["velocity_cache"][2] = -12.5
+        if self_side_obj_char["state"] == "6dash_dash_cancel" and self_side_obj_char["velocity"][2] < 0 then
+            self_side_obj_char["velocity_cache"][2] = -12.5
         end
-        if obj_char["state"] == "7_8_9_jump_air" and obj_char["velocity"][2] == 0 then
-            obj_char["velocity_cache"][2] = -25
+        if self_side_obj_char["state"] == "7_8_9_jump_air" and self_side_obj_char["velocity"][2] == 0 then
+            self_side_obj_char["velocity_cache"][2] = -25
         end
-        obj_char["velocity_cache"][2] = math.max(obj_char["velocity_cache"][2],-25)
-        obj_char["velocity_cache"][2] = math.min(obj_char["velocity_cache"][2],12.5)
+        self_side_obj_char["velocity_cache"][2] = math.max(self_side_obj_char["velocity_cache"][2],-25)
+        self_side_obj_char["velocity_cache"][2] = math.min(self_side_obj_char["velocity_cache"][2],12.5)
 
-        obj_char["physics_lock"] = false
-        if obj_char["height"] == "air" then
-            obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
-            obj_char["anchor_pos"] = {330,485}
-            obj_char["pushbox"] = {0,-100,120,200}
-            obj_char["collision_ground_height_offset"] = 185
-            obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
+        self_side_obj_char["physics_lock"] = false
+        if self_side_obj_char["height"] == "air" then
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
+            self_side_obj_char["anchor_pos"] = {330,485}
+            self_side_obj_char["pushbox"] = {0,-100,120,200}
+            self_side_obj_char["collision_ground_height_offset"] = 185
+            self_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         else
-            obj_char["height"] = "stand"
-            obj_char["sprite_sheet"] = "burst_rc_ground"
-            obj_char["anchor_pos"] = {300,615}
-            obj_char["pushbox"]  = {0,-185,120,370}
-            obj_char["collision_ground_height_offset"] = 0
-            obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+            self_side_obj_char["height"] = "stand"
+            self_side_obj_char["sprite_sheet"] = "burst_rc_ground"
+            self_side_obj_char["anchor_pos"] = {300,615}
+            self_side_obj_char["pushbox"]  = {0,-185,120,370}
+            self_side_obj_char["collision_ground_height_offset"] = 0
+            self_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
-        obj_char["character_animation"] = 
+        self_side_obj_char["character_animation"] = 
         load_game_scene_anim_char_common_burst_RC_blue(
             self_side_obj_char,opponent_side_obj_char,
             character_function_game_scene_TRM_RC_state_character_uncommon_update
         )
-        obj_char["state"] = "burst_RC_blue"
-        init_character_anim_with(obj_char,obj_char["character_animation"])
+        self_side_obj_char["state"] = "burst_RC_blue"
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         return true
     end
 end
-function state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char)
-    local self_side_obj_char = obj_char
-    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
-    if obj_char["heat_gauge"][1] < 100.0 then
+function state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char)
+    if self_side_obj_char["heat_gauge"][1] < 100.0 then
         return
     end
     if test_input_sys_press(input["RC"]) then
-        obj_char["velocity_cache"] = {0,0}
+        self_side_obj_char["velocity_cache"] = {0,0}
         if test_input_sys_press_or_hold(input["dash"]) then
             if test_input_sys_press_or_hold(input["up"]) then
-                obj_char["velocity"] = {0,-7.5}
+                self_side_obj_char["velocity"] = {0,-7.5}
             elseif test_input_sys_press_or_hold(input["down"]) then
-                obj_char["velocity"] = {0,7.5}
+                self_side_obj_char["velocity"] = {0,7.5}
             elseif test_input_sys_press_or_hold(input["left"]) then
-                obj_char["velocity"] = {-7.5,0}
+                self_side_obj_char["velocity"] = {-7.5,0}
             elseif test_input_sys_press_or_hold(input["right"]) then
-                obj_char["velocity"] = {7.5,0}
+                self_side_obj_char["velocity"] = {7.5,0}
             else
-                obj_char["velocity"] = {7.5*obj_char[5],0}
+                self_side_obj_char["velocity"] = {7.5*self_side_obj_char[5],0}
             end
         else
-            obj_char["velocity"] = {0,0}
+            self_side_obj_char["velocity"] = {0,0}
         end
-        obj_char["physics_lock"] = false
-        if obj_char["height"] == "air" then
-            obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
-            obj_char["anchor_pos"] = {330,485}
-            obj_char["pushbox"] = {0,-100,120,200}
-            obj_char["collision_ground_height_offset"] = 185
-            obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
+        self_side_obj_char["physics_lock"] = false
+        if self_side_obj_char["height"] == "air" then
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
+            self_side_obj_char["anchor_pos"] = {330,485}
+            self_side_obj_char["pushbox"] = {0,-100,120,200}
+            self_side_obj_char["collision_ground_height_offset"] = 185
+            self_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         else
-            obj_char["height"] = "stand"
-            obj_char["sprite_sheet"] = "burst_rc_ground"
-            obj_char["anchor_pos"] = {300,615}
-            obj_char["pushbox"]  = {0,-185,120,370}
-            obj_char["collision_ground_height_offset"] = 0
-            obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+            self_side_obj_char["height"] = "stand"
+            self_side_obj_char["sprite_sheet"] = "burst_rc_ground"
+            self_side_obj_char["anchor_pos"] = {300,615}
+            self_side_obj_char["pushbox"]  = {0,-185,120,370}
+            self_side_obj_char["collision_ground_height_offset"] = 0
+            self_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
-        obj_char["character_animation"] = 
+        self_side_obj_char["character_animation"] = 
         load_game_scene_anim_char_common_burst_RC_purple(
             self_side_obj_char,opponent_side_obj_char,
             character_function_game_scene_TRM_RC_state_character_uncommon_update
         )
-        obj_char["state"] = "burst_RC_purple"
-        init_character_anim_with(obj_char,obj_char["character_animation"])
+        self_side_obj_char["state"] = "burst_RC_purple"
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         return true
     end
 end
-function state_gate_game_scene_char_LP_common_to_burst_RC_yellow(input,obj_char)
-    local self_side_obj_char = obj_char
-    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
-    if obj_char["heat_gauge"][1] < 100.0 then
+function state_gate_game_scene_char_LP_common_to_burst_RC_yellow(input,self_side_obj_char,opponent_side_obj_char)
+    if self_side_obj_char["heat_gauge"][1] < 100.0 then
         return
     end
     if test_input_sys_press(input["RC"]) 
-    -- and obj_char["height"] ~= "air" 
+    -- and self_side_obj_char["height"] ~= "air" 
     then
-        obj_char["velocity"] = {0,0}
-        obj_char["velocity_cache"] = {0,0}
-        obj_char["physics_lock"] = false
-        if obj_char["height"] == "air" then
-            obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
-            obj_char["anchor_pos"] = {330,485}
-            obj_char["pushbox"] = {0,-100,120,200}
-            obj_char["collision_ground_height_offset"] = 185
-            obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
+        self_side_obj_char["velocity"] = {0,0}
+        self_side_obj_char["velocity_cache"] = {0,0}
+        self_side_obj_char["physics_lock"] = false
+        if self_side_obj_char["height"] == "air" then
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
+            self_side_obj_char["anchor_pos"] = {330,485}
+            self_side_obj_char["pushbox"] = {0,-100,120,200}
+            self_side_obj_char["collision_ground_height_offset"] = 185
+            self_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         else
-            obj_char["height"] = "stand"
-            obj_char["sprite_sheet"] = "burst_rc_ground"
-            obj_char["anchor_pos"] = {300,615}
-            obj_char["pushbox"]  = {0,-185,120,370}
-            obj_char["collision_ground_height_offset"] = 0
-            obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+            self_side_obj_char["height"] = "stand"
+            self_side_obj_char["sprite_sheet"] = "burst_rc_ground"
+            self_side_obj_char["anchor_pos"] = {300,615}
+            self_side_obj_char["pushbox"]  = {0,-185,120,370}
+            self_side_obj_char["collision_ground_height_offset"] = 0
+            self_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
-        obj_char["character_animation"] = 
+        self_side_obj_char["character_animation"] = 
         load_game_scene_anim_char_common_burst_RC_yellow(
             self_side_obj_char,opponent_side_obj_char,
             character_function_game_scene_TRM_RC_state_character_uncommon_update
         )
-        obj_char["state"] = "burst_RC_yellow"
-        init_character_anim_with(obj_char,obj_char["character_animation"])
+        self_side_obj_char["state"] = "burst_RC_yellow"
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         return true
     end
 end
 
-function state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,type)
+function state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,type)
     -- _overdrive
     if test_input_sys_press(input["burst"]) and type == "overdrive" and self_side_obj_char["overdrive_gauge"][1] == self_side_obj_char["overdrive_gauge"][2] then
-        local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
         local hit_cancel_RC_state_table = {
             ["block"] = true,
             ["hurt"] = true,
@@ -3322,147 +3316,146 @@ function state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side
 end
 
 -- uncommon_to_gate
-function state_gate_game_scene_char_LP_to_5H(input,obj_char)
+function state_gate_game_scene_char_LP_to_5H(input,self_side_obj_char,opponent_side_obj_char)
     -- _5H
-    if test_input_sys_press(input["H"]) and obj_char["shot_sys_state"] == "off" then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5H(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5H"
+    if test_input_sys_press(input["H"]) and self_side_obj_char["shot_sys_state"] == "off" then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5H(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5H"
         return true
     end
 end
 
 -- from_gate
-function state_gate_game_scene_char_LP_from_active_FD_block(input,obj_char)
+function state_gate_game_scene_char_LP_from_active_FD_block(input,self_side_obj_char,opponent_side_obj_char)
 end
-function state_gate_game_scene_char_LP_from_block(input,obj_char)
+function state_gate_game_scene_char_LP_from_block(input,self_side_obj_char,opponent_side_obj_char)
     -- _burst
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"burst") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"burst") then
         return true
     end
     -- _YRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_yellow(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_yellow(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- animation_end
-    if not get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
+    if not get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
         return
     end
-    obj_char["input_sys_state"] = "load" -- none save load
+    self_side_obj_char["input_sys_state"] = "load" -- none save load
     state_machine_char_game_scene_char_LP_input_sys_cache()
     -- _5_stand_idle
-    if obj_char["height"] == "stand" then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)  
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
+    if self_side_obj_char["height"] == "stand" then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)  
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
         -- _common_ground_idle_to_move
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         -- 5_stand_idle
-        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- _1_2_3_crouch
-    if obj_char["height"] == "crouch" then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "1_2_3_crouch"
-        obj_char["f"] = 4
-        character_animator(obj_char,obj_char["character_animation"])
+    if self_side_obj_char["height"] == "crouch" then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "1_2_3_crouch"
+        self_side_obj_char["f"] = 4
+        character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
         -- _common_ground_idle_to_move
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         -- 1_2_3_crouch
-        if state_gate_game_scene_char_LP_from_1_2_3_crouch(input,obj_char) then
+        if state_gate_game_scene_char_LP_from_1_2_3_crouch(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
 end
-function state_gate_game_scene_char_LP_from_hurt(input,obj_char)
+function state_gate_game_scene_char_LP_from_hurt(input,self_side_obj_char,opponent_side_obj_char)
     -- _burst
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"burst") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"burst") then
         return true
     end
     -- until land
-    if obj_char["height"] == "air" then
-        if (obj_char["collision_move_available"][1] == 0 or obj_char["collision_move_available"][2] == 0) 
-        and obj_char["self_wallbounce_hurt_animation"] ~= nil then
-            obj_char["character_animation"] = obj_char["self_wallbounce_hurt_animation"]
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-        elseif collision_test_char_on_ground(obj_char) and obj_char["self_groundbounce_hurt_animation"] ~= nil then
-            obj_char["character_animation"] = obj_char["self_groundbounce_hurt_animation"]
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-        elseif collision_test_char_on_ground(obj_char) then
-            obj_char["y"] = 0
-            obj_char["state"] = obj_char["state_cache"]
-            if obj_char["state"] == "knockdown" then
-                obj_char["character_animation"] = obj_char["self_knockdown_animation"] 
-                init_character_anim_with(obj_char,obj_char["character_animation"])
-            elseif obj_char["state"] == "knockdown_recovery" then
-                obj_char["character_animation"] = obj_char["self_knockdown_recovery_animation"] 
-                init_character_anim_with(obj_char,obj_char["character_animation"])
+    if self_side_obj_char["height"] == "air" then
+        if (self_side_obj_char["collision_move_available"][1] == 0 or self_side_obj_char["collision_move_available"][2] == 0) 
+        and self_side_obj_char["self_wallbounce_hurt_animation"] ~= nil then
+            self_side_obj_char["character_animation"] = self_side_obj_char["self_wallbounce_hurt_animation"]
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        elseif collision_test_char_on_ground(self_side_obj_char) and self_side_obj_char["self_groundbounce_hurt_animation"] ~= nil then
+            self_side_obj_char["character_animation"] = self_side_obj_char["self_groundbounce_hurt_animation"]
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        elseif collision_test_char_on_ground(self_side_obj_char) then
+            self_side_obj_char["y"] = 0
+            self_side_obj_char["state"] = self_side_obj_char["state_cache"]
+            if self_side_obj_char["state"] == "knockdown" then
+                self_side_obj_char["character_animation"] = self_side_obj_char["self_knockdown_animation"] 
+                init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            elseif self_side_obj_char["state"] == "knockdown_recovery" then
+                self_side_obj_char["character_animation"] = self_side_obj_char["self_knockdown_recovery_animation"] 
+                init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             end
         end
         return
     end
     -- animation_end
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["input_sys_state"] = "load" -- none save load
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["input_sys_state"] = "load" -- none save load
         -- something could use for combo HUD
         -- print("hurt animation end")
         state_machine_char_game_scene_char_LP_input_sys_cache()
         -- 5_stand_idle
-        if obj_char["height"] == "stand" then
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)  
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "5_stand_idle"
+        if self_side_obj_char["height"] == "stand" then
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)  
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             -- 5_stand_idle
-            if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+            if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
         -- 1_2_3_crouch
-        elseif obj_char["height"] == "crouch" then
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "1_2_3_crouch"
-            obj_char["f"] = 4
-            character_animator(obj_char,obj_char["character_animation"])
+        elseif self_side_obj_char["height"] == "crouch" then
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(self_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "1_2_3_crouch"
+            self_side_obj_char["f"] = 4
+            character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             -- 1_2_3_crouch
-            if state_gate_game_scene_char_LP_from_1_2_3_crouch(input,obj_char) then
+            if state_gate_game_scene_char_LP_from_1_2_3_crouch(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
-        elseif obj_char["height"] == "OTG" then
+        elseif self_side_obj_char["height"] == "OTG" then
             assert("此受伤动画为OTG状态中结束了")
         end
         return
     end
 end
 
-function state_gate_game_scene_char_LP_from_throw_success(input,self_side_obj_char)
+function state_gate_game_scene_char_LP_from_throw_success(input,self_side_obj_char,opponent_side_obj_char)
     local obj_stage_main = obj_stage_game_scene_main
-    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
     local obj_camera = obj_stage_game_scene_camera
     -- _overdrive
-    if self_side_obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,"overdrive") then
+    if self_side_obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
         return true
     end
     -- _RRC
-    if self_side_obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_red(input,self_side_obj_char) then
+    if self_side_obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_red(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _PRC
-    if not self_side_obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char) then
+    if not self_side_obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         self_side_obj_char["pushbox_opponent_collision_active"] = true
         self_side_obj_char["physics_lock"] = false
         common_game_scene_nil_load_camear_shake_anim(self_side_obj_char)
@@ -3493,11 +3486,11 @@ function state_gate_game_scene_char_LP_from_throw_success(input,self_side_obj_ch
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "5_stand_idle"
         -- _common_ground_idle_to_move
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         -- 5_stand_idle
-        if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char) then
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return
@@ -3507,45 +3500,46 @@ function state_gate_game_scene_char_LP_from_throw_success(input,self_side_obj_ch
         -- air
         if self_side_obj_char["height"] == "air" then
             -- _common_air_to_move
-            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             -- 7_8_9_jump_air
-            if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
         -- stand_idle
         elseif self_side_obj_char["height"] == "stand" then
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             -- 5_stand_idle
-            if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
         end
     end
 end
-function state_gate_game_scene_char_LP_from_throw_hurt_success(input,obj_char)
+function state_gate_game_scene_char_LP_from_throw_hurt_success(input,self_side_obj_char,opponent_side_obj_char)
     -- knockdown knockdown_recovery
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["y"] = 0
-        obj_char["state"] = obj_char["state_cache"]
-        if obj_char["state"] == "knockdown" then
-            obj_char["character_animation"] = obj_char["self_knockdown_animation"] 
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-        elseif obj_char["state"] == "knockdown_recovery" then
-            obj_char["character_animation"] = obj_char["self_knockdown_recovery_animation"] 
-            init_character_anim_with(obj_char,obj_char["character_animation"])
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["y"] = 0
+        self_side_obj_char["state"] = self_side_obj_char["state_cache"]
+        if self_side_obj_char["state"] == "knockdown" then
+            self_side_obj_char["character_animation"] = self_side_obj_char["self_knockdown_animation"] 
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        elseif self_side_obj_char["state"] == "knockdown_recovery" then
+            self_side_obj_char["character_animation"] = self_side_obj_char["self_knockdown_recovery_animation"] 
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         end
         return
     end
 end
-function state_gate_game_scene_char_LP_from_throw_testing(input,self_side_obj_char)
-    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
+function state_gate_game_scene_char_LP_from_throw_testing(input,self_side_obj_char,opponent_side_obj_char)
+    local self_side = self_side_obj_char["player_side"]
+    local opponent_side = opponent_side_obj_char["player_side"]
     self_side_obj_char["f"] = self_side_obj_char["f"] + 1
-    if opponent_side_obj_char["hurt_state"] == "idle" and self_side_obj_char["f"] <= 9 and common_game_scene_change_input_state("L")["Launcher"] == "Pressing" then
+    if opponent_side_obj_char["hurt_state"] == "idle" and self_side_obj_char["f"] <= 9 and common_game_scene_get_input_state(opponent_side)["Launcher"] == "Pressing" then
         self_side_obj_char["state"] = "throw_teched"
         self_side_obj_char["physics_lock"] = false
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
@@ -3562,15 +3556,14 @@ function state_gate_game_scene_char_LP_from_throw_testing(input,self_side_obj_ch
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
-        state_gate_game_scene_char_LP_from_throw_success(input,self_side_obj_char)
+        state_gate_game_scene_char_LP_from_throw_success(input,self_side_obj_char,opponent_side_obj_char)
         -- insert_VFX
         if opponent_side_obj_char["hurt_state"] ~= "idle" then
             insert_VFX_HUD_game_scene_punish(self_side_obj_char)
         end
     end
 end
-function state_gate_game_scene_char_LP_from_throw_tested(input,self_side_obj_char)
-    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
+function state_gate_game_scene_char_LP_from_throw_tested(input,self_side_obj_char,opponent_side_obj_char)
     self_side_obj_char["f"] = self_side_obj_char["f"] + 1
     if self_side_obj_char["hurt_state"] == "idle" and self_side_obj_char["f"] <= 9 and input["Launcher"] == "Pressing" then
         self_side_obj_char["state"] = "throw_teching"
@@ -3588,36 +3581,36 @@ function state_gate_game_scene_char_LP_from_throw_tested(input,self_side_obj_cha
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
     end
 end
-function state_gate_game_scene_char_LP_from_throw_tech(input,obj_char)
+function state_gate_game_scene_char_LP_from_throw_tech(input,self_side_obj_char,opponent_side_obj_char)
     -- animation_end
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
         -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
+        self_side_obj_char["input_sys_state"] = "load" -- none save load
         state_machine_char_game_scene_char_LP_input_sys_cache()
         -- air
-        if obj_char["height"] == "air" then
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "7_8_9_jump_air"
+        if self_side_obj_char["height"] == "air" then
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "7_8_9_jump_air"
             -- _common_air_to_move
-            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(input,obj_char) then
+            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             -- 7_8_9_jump_air
-            if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
+            if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
         -- stand_idle
-        elseif obj_char["height"] == "stand" then
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "5_stand_idle"
+        elseif self_side_obj_char["height"] == "stand" then
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             -- 5_stand_idle
-            if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+            if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
         end
@@ -3625,60 +3618,60 @@ function state_gate_game_scene_char_LP_from_throw_tech(input,obj_char)
     end
 end
 
-function state_gate_game_scene_char_LP_from_hitstop(input,obj_char)
+function state_gate_game_scene_char_LP_from_hitstop(input,self_side_obj_char,opponent_side_obj_char)
     -- _[any_SP_hit_state_saved_in_state_cache]
-    if obj_char["hit_hurt_blockstop_countdown"] <= 10 then
+    if self_side_obj_char["hit_hurt_blockstop_countdown"] <= 10 then
         if test_input_sys_press_or_hold(input["down"]) then
-            obj_char["input_sys_cache"]["down"] = true
+            self_side_obj_char["input_sys_cache"]["down"] = true
         end
     end
-    if obj_char["hit_hurt_blockstop_countdown"] <= 0 then
+    if self_side_obj_char["hit_hurt_blockstop_countdown"] <= 0 then
         -- original_state
-        obj_char["state"] = obj_char["state_cache"]
-        obj_char["physics_lock"] = false
+        self_side_obj_char["state"] = self_side_obj_char["state_cache"]
+        self_side_obj_char["physics_lock"] = false
         -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
+        self_side_obj_char["input_sys_state"] = "load" -- none save load
         state_machine_char_game_scene_char_LP_input_sys_cache()
         -- _overdrive
-        if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
+        if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
             return true
         end
         -- _RRC
-        if state_gate_game_scene_char_LP_common_to_burst_RC_red(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_to_burst_RC_red(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         -- force_delayed_gatling_cancel_input_sys_cache_processing
-        character_function_game_scene_TRM_hitstop_force_delay_gatling_cancel_input_sys_cache_process(input,obj_char)
+        character_function_game_scene_TRM_hitstop_force_delay_gatling_cancel_input_sys_cache_process(input,self_side_obj_char,opponent_side_obj_char)
         update_game_scene_char_LP()
         return
     end
 end
-function state_gate_game_scene_char_LP_from_blockstop(input,obj_char)
+function state_gate_game_scene_char_LP_from_blockstop(input,self_side_obj_char,opponent_side_obj_char)
     -- _block
-    if obj_char["hit_hurt_blockstop_countdown"] <= 0 then
-        obj_char["state"] = obj_char["state_cache"]
-        obj_char["physics_lock"] = false
+    if self_side_obj_char["hit_hurt_blockstop_countdown"] <= 0 then
+        self_side_obj_char["state"] = self_side_obj_char["state_cache"]
+        self_side_obj_char["physics_lock"] = false
         -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
+        self_side_obj_char["input_sys_state"] = "load" -- none save load
         state_machine_char_game_scene_char_LP_input_sys_cache()
         -- _burst
-        if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
+        if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
             return true
         end
         update_game_scene_char_LP()
         return
     end
 end
-function state_gate_game_scene_char_LP_from_hurtstop(input,obj_char)
+function state_gate_game_scene_char_LP_from_hurtstop(input,self_side_obj_char,opponent_side_obj_char)
     -- _hurtstop
-    if obj_char["hit_hurt_blockstop_countdown"] <= 0 then
-        obj_char["state"] = obj_char["state_cache"]
-        obj_char["physics_lock"] = false
+    if self_side_obj_char["hit_hurt_blockstop_countdown"] <= 0 then
+        self_side_obj_char["state"] = self_side_obj_char["state_cache"]
+        self_side_obj_char["physics_lock"] = false
         -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
+        self_side_obj_char["input_sys_state"] = "load" -- none save load
         state_machine_char_game_scene_char_LP_input_sys_cache()
         -- _burst
-        if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"burst") then
+        if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"burst") then
             return true
         end
         update_game_scene_char_LP()
@@ -3686,81 +3679,81 @@ function state_gate_game_scene_char_LP_from_hurtstop(input,obj_char)
     end
 end
 
-function state_gate_game_scene_char_LP_from_wallstick(input,obj_char)
+function state_gate_game_scene_char_LP_from_wallstick(input,self_side_obj_char,opponent_side_obj_char)
     -- animation_end
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["state"] = obj_char["state_cache"]
-        obj_char["character_animation"] = obj_char["self_knockdown_recovery_animation"] 
-        init_character_anim_with(obj_char,obj_char["character_animation"])
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["state"] = self_side_obj_char["state_cache"]
+        self_side_obj_char["character_animation"] = self_side_obj_char["self_knockdown_recovery_animation"] 
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         return
     end
 end
 
-function state_gate_game_scene_char_LP_from_knockdown(input,obj_char)
+function state_gate_game_scene_char_LP_from_knockdown(input,self_side_obj_char,opponent_side_obj_char)
     -- _burst
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"burst") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"burst") then
         return true
     end
     -- _knockdown_recover
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = obj_char["self_knockdown_recovery_animation"]
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "knockdown_recovery"
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = self_side_obj_char["self_knockdown_recovery_animation"]
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "knockdown_recovery"
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_knockdown_recovery(input,obj_char)
+function state_gate_game_scene_char_LP_from_knockdown_recovery(input,self_side_obj_char,opponent_side_obj_char)
     -- _burst
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"burst") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"burst") then
         return true
     end
     -- animation_end
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
         -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
+        self_side_obj_char["input_sys_state"] = "load" -- none save load
         state_machine_char_game_scene_char_LP_input_sys_cache()
         -- 5_stand_idle
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
         -- _common_ground_idle_to_move
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         -- 5_stand_idle
-        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return
     end
 end
-function state_gate_game_scene_char_LP_from_knockdown_recovery_wallstick(input,obj_char)
+function state_gate_game_scene_char_LP_from_knockdown_recovery_wallstick(input,self_side_obj_char,opponent_side_obj_char)
     -- animation_end
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
         -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
+        self_side_obj_char["input_sys_state"] = "load" -- none save load
         state_machine_char_game_scene_char_LP_input_sys_cache()
-        obj_char["state"] = obj_char["state_cache"]
-        if obj_char["state"] == "5_stand_idle" then
+        self_side_obj_char["state"] = self_side_obj_char["state_cache"]
+        if self_side_obj_char["state"] == "5_stand_idle" then
             -- 5_stand_idle
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             -- 5_stand_idle
-            if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+            if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             return
-        elseif obj_char["state"] == "7_8_9_jump_air" then
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["idle_cancel"] = true
-            obj_char["f"] = 20
-            character_animator(obj_char,obj_char["character_animation"])
-            if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
+        elseif self_side_obj_char["state"] == "7_8_9_jump_air" then
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["idle_cancel"] = true
+            self_side_obj_char["f"] = 20
+            character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
+            if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             return true
@@ -3768,901 +3761,900 @@ function state_gate_game_scene_char_LP_from_knockdown_recovery_wallstick(input,o
     end
 end
 
-function state_gate_game_scene_char_LP_from_1_2_3_crouch(input,obj_char)
+function state_gate_game_scene_char_LP_from_1_2_3_crouch(input,self_side_obj_char,opponent_side_obj_char)
     -- _1_2_3_crouch_turn
-    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-        obj_char[5] = -obj_char[5]
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch_turn(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "1_2_3_crouch_turn"
-        common_update_game_scene_input_direction(obj_char)
-        state_gate_game_scene_char_LP_from_1_2_3_crouch_turn(input,obj_char)
+    if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+        self_side_obj_char[5] = -self_side_obj_char[5]
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch_turn(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "1_2_3_crouch_turn"
+        common_update_game_scene_input_direction(self_side_obj_char)
+        state_gate_game_scene_char_LP_from_1_2_3_crouch_turn(input,self_side_obj_char,opponent_side_obj_char)
         return true
     end
     -- _overdrive
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
-    if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache"] = obj_char["direction_input"]
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_pre_jump"
+    if common_game_scene_check_jump_direction(self_side_obj_char) then
+        self_side_obj_char["direction_input_cache"] = self_side_obj_char["direction_input"]
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_pre_jump"
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _4_walk
-    if obj_char["direction_input"] == 4 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_walk(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "4_walk"
+    if self_side_obj_char["direction_input"] == 4 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_walk(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4_walk"
         return true
     end
     -- _6_walk
-    if obj_char["direction_input"] == 6 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6_walk(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6_walk"
+    if self_side_obj_char["direction_input"] == 6 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6_walk(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6_walk"
         return true
     end
     -- _1_2_3_crouch_to_stand_idle
-    if obj_char["direction_input"] == 5 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch_to_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "1_2_3_crouch_to_stand_idle"
+    if self_side_obj_char["direction_input"] == 5 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch_to_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "1_2_3_crouch_to_stand_idle"
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_1_2_3_crouch_turn(input,obj_char)
+function state_gate_game_scene_char_LP_from_1_2_3_crouch_turn(input,self_side_obj_char,opponent_side_obj_char)
     -- _init_if_changed_again
-    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-        obj_char[5] = -obj_char[5]
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch_turn(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        common_update_game_scene_input_direction(obj_char)
+    if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+        self_side_obj_char[5] = -self_side_obj_char[5]
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch_turn(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        common_update_game_scene_input_direction(self_side_obj_char)
     end
     -- _overdrive
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
-    if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache"] = obj_char["direction_input"]
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_pre_jump"
+    if common_game_scene_check_jump_direction(self_side_obj_char) then
+        self_side_obj_char["direction_input_cache"] = self_side_obj_char["direction_input"]
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_pre_jump"
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _4_walk
-    if obj_char["direction_input"] == 4 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_walk(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "4_walk"
+    if self_side_obj_char["direction_input"] == 4 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_walk(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4_walk"
         return true
     end
     -- _6_walk
-    if obj_char["direction_input"] == 6 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6_walk(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6_walk"
+    if self_side_obj_char["direction_input"] == 6 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6_walk(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6_walk"
         return true
     end
     -- _1_2_3_crouch_to_stand_idle
-    if obj_char["direction_input"] == 5 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch_to_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "1_2_3_crouch_to_stand_idle"
+    if self_side_obj_char["direction_input"] == 5 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch_to_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "1_2_3_crouch_to_stand_idle"
         return true
     end
     -- animation_end
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "1_2_3_crouch"
-        obj_char["f"] = 4
-        character_animator(obj_char,obj_char["character_animation"])
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "1_2_3_crouch"
+        self_side_obj_char["f"] = 4
+        character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_1_2_3_crouch_to_stand_idle(input,obj_char)
+function state_gate_game_scene_char_LP_from_1_2_3_crouch_to_stand_idle(input,self_side_obj_char,opponent_side_obj_char)
     -- _5_stand_turn
-    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-        obj_char[5] = -obj_char[5]
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_turn"
-        state_gate_game_scene_char_LP_from_5_stand_turn(input,obj_char)
-        common_update_game_scene_input_direction(obj_char)
+    if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+        self_side_obj_char[5] = -self_side_obj_char[5]
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_turn"
+        state_gate_game_scene_char_LP_from_5_stand_turn(input,self_side_obj_char,opponent_side_obj_char)
+        common_update_game_scene_input_direction(self_side_obj_char)
         return true
     end
     -- _overdrive
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
-    if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache"] = obj_char["direction_input"]
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_pre_jump"
+    if common_game_scene_check_jump_direction(self_side_obj_char) then
+        self_side_obj_char["direction_input_cache"] = self_side_obj_char["direction_input"]
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_pre_jump"
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _1_2_3_crouch
-    if common_game_scene_check_crouch_direction(obj_char) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "1_2_3_crouch"
+    if common_game_scene_check_crouch_direction(self_side_obj_char) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "1_2_3_crouch"
         return true
     end
     -- _4_walk
-    if obj_char["direction_input"] == 4 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_walk(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "4_walk"
+    if self_side_obj_char["direction_input"] == 4 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_walk(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4_walk"
         return true
     end
     -- _6_walk
-    if obj_char["direction_input"] == 6 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6_walk(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6_walk"
+    if self_side_obj_char["direction_input"] == 6 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6_walk(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6_walk"
         return true
     end
     -- animation_end
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char)
+function state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char)
     -- _5_stand_turn
-    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-        obj_char[5] = -obj_char[5]
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_turn"
-        state_gate_game_scene_char_LP_from_5_stand_turn(input,obj_char)
-        common_update_game_scene_input_direction(obj_char)
+    if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+        self_side_obj_char[5] = -self_side_obj_char[5]
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_turn"
+        state_gate_game_scene_char_LP_from_5_stand_turn(input,self_side_obj_char,opponent_side_obj_char)
+        common_update_game_scene_input_direction(self_side_obj_char)
         return true
     end
     -- _overdrive
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
-    if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache"] = obj_char["direction_input"]
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_pre_jump"
+    if common_game_scene_check_jump_direction(self_side_obj_char) then
+        self_side_obj_char["direction_input_cache"] = self_side_obj_char["direction_input"]
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_pre_jump"
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _1_2_3_crouch
-    if common_game_scene_check_crouch_direction(obj_char) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "1_2_3_crouch"
+    if common_game_scene_check_crouch_direction(self_side_obj_char) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "1_2_3_crouch"
         return true
     end
     -- _4_walk
-    if obj_char["direction_input"] == 4 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_walk(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "4_walk"
+    if self_side_obj_char["direction_input"] == 4 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_walk(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4_walk"
         return true
     end
     -- _6_walk
-    if obj_char["direction_input"] == 6 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6_walk(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6_walk"
+    if self_side_obj_char["direction_input"] == 6 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6_walk(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6_walk"
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_5_stand_turn(input,obj_char)
+function state_gate_game_scene_char_LP_from_5_stand_turn(input,self_side_obj_char,opponent_side_obj_char)
     -- _init_if_changed_again
-    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-        obj_char[5] = -obj_char[5]
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        common_update_game_scene_input_direction(obj_char)
+    if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+        self_side_obj_char[5] = -self_side_obj_char[5]
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        common_update_game_scene_input_direction(self_side_obj_char)
     end
     -- _overdrive
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
-    if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache"] = obj_char["direction_input"]
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_pre_jump"
+    if common_game_scene_check_jump_direction(self_side_obj_char) then
+        self_side_obj_char["direction_input_cache"] = self_side_obj_char["direction_input"]
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_pre_jump"
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _1_2_3_crouch
-    if common_game_scene_check_crouch_direction(obj_char) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "1_2_3_crouch"
+    if common_game_scene_check_crouch_direction(self_side_obj_char) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "1_2_3_crouch"
         return true
     end
     -- _4_walk
-    if obj_char["direction_input"] == 4 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_walk(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "4_walk"
+    if self_side_obj_char["direction_input"] == 4 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_walk(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4_walk"
         return true
     end
     -- _6_walk
-    if obj_char["direction_input"] == 6 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6_walk(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6_walk"
+    if self_side_obj_char["direction_input"] == 6 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6_walk(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6_walk"
         return true
     end
     -- animation_end
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_5_stand_dash_skid(input,obj_char)
+function state_gate_game_scene_char_LP_from_5_stand_dash_skid(input,self_side_obj_char,opponent_side_obj_char)
     -- _overdrive
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
-    if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache"] = obj_char["direction_input"]
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_pre_jump"
+    if common_game_scene_check_jump_direction(self_side_obj_char) then
+        self_side_obj_char["direction_input_cache"] = self_side_obj_char["direction_input"]
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_pre_jump"
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    if obj_char["idle_cancel"] and state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+    if self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- animation_end
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_4_walk(input,obj_char)
+function state_gate_game_scene_char_LP_from_4_walk(input,self_side_obj_char,opponent_side_obj_char)
     -- _5_stand_turn
-    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-        obj_char[5] = -obj_char[5]
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_turn"
-        common_update_game_scene_input_direction(obj_char)
-        state_gate_game_scene_char_LP_from_5_stand_turn(input,obj_char)
+    if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+        self_side_obj_char[5] = -self_side_obj_char[5]
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_turn"
+        common_update_game_scene_input_direction(self_side_obj_char)
+        state_gate_game_scene_char_LP_from_5_stand_turn(input,self_side_obj_char,opponent_side_obj_char)
         return true
     end
     -- _overdrive
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
-    if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache"] = obj_char["direction_input"]
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_pre_jump"
+    if common_game_scene_check_jump_direction(self_side_obj_char) then
+        self_side_obj_char["direction_input_cache"] = self_side_obj_char["direction_input"]
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_pre_jump"
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
-        if obj_char["velocity"][1]*obj_char[5] < 0 then
-            obj_char["velocity"][1] = 0
+    if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,self_side_obj_char,opponent_side_obj_char) then
+        if self_side_obj_char["velocity"][1]*self_side_obj_char[5] < 0 then
+            self_side_obj_char["velocity"][1] = 0
         end
         return true
     end
     -- _1_2_3_crouch
-    if common_game_scene_check_crouch_direction(obj_char) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "1_2_3_crouch"
+    if common_game_scene_check_crouch_direction(self_side_obj_char) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "1_2_3_crouch"
         return true
     end
     -- _6_walk
-    if obj_char["direction_input"] == 6 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6_walk(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6_walk"
+    if self_side_obj_char["direction_input"] == 6 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6_walk(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6_walk"
         return true
     end
     -- _4_walk_to_stand_idle
-    if obj_char["direction_input"] == 5 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_walk_to_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "4_walk_to_stand_idle"
+    if self_side_obj_char["direction_input"] == 5 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_walk_to_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4_walk_to_stand_idle"
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_4_walk_to_stand_idle(input,obj_char)
+function state_gate_game_scene_char_LP_from_4_walk_to_stand_idle(input,self_side_obj_char,opponent_side_obj_char)
     -- _5_stand_turn
-    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-        obj_char[5] = -obj_char[5]
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_turn"
-        common_update_game_scene_input_direction(obj_char)
-        state_gate_game_scene_char_LP_from_5_stand_turn(input,obj_char)
+    if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+        self_side_obj_char[5] = -self_side_obj_char[5]
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_turn"
+        common_update_game_scene_input_direction(self_side_obj_char)
+        state_gate_game_scene_char_LP_from_5_stand_turn(input,self_side_obj_char,opponent_side_obj_char)
         return true
     end
     -- _overdrive
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
-    if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache"] = obj_char["direction_input"]
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_pre_jump"
+    if common_game_scene_check_jump_direction(self_side_obj_char) then
+        self_side_obj_char["direction_input_cache"] = self_side_obj_char["direction_input"]
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_pre_jump"
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _1_2_3_crouch
-    if common_game_scene_check_crouch_direction(obj_char) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "1_2_3_crouch"
+    if common_game_scene_check_crouch_direction(self_side_obj_char) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "1_2_3_crouch"
         return true
     end
     -- _4_walk
-    if obj_char["direction_input"] == 4 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_walk(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "4_walk"
+    if self_side_obj_char["direction_input"] == 4 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_walk(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4_walk"
         return true
     end
     -- _6_walk
-    if obj_char["direction_input"] == 6 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6_walk(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6_walk"
+    if self_side_obj_char["direction_input"] == 6 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6_walk(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6_walk"
         return true
     end
     -- animation_end
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
-        obj_char["f"] = 20
-        character_animator(obj_char,obj_char["character_animation"])
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
+        self_side_obj_char["f"] = 20
+        character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_6_walk(input,obj_char)
+function state_gate_game_scene_char_LP_from_6_walk(input,self_side_obj_char,opponent_side_obj_char)
     -- _5_stand_turn
-    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-        obj_char[5] = -obj_char[5]
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_turn"
-        common_update_game_scene_input_direction(obj_char)
-        state_gate_game_scene_char_LP_from_5_stand_turn(input,obj_char)
+    if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+        self_side_obj_char[5] = -self_side_obj_char[5]
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_turn"
+        common_update_game_scene_input_direction(self_side_obj_char)
+        state_gate_game_scene_char_LP_from_5_stand_turn(input,self_side_obj_char,opponent_side_obj_char)
         return true
     end
     -- _overdrive
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
-    if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache"] = obj_char["direction_input"]
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_pre_jump"
+    if common_game_scene_check_jump_direction(self_side_obj_char) then
+        self_side_obj_char["direction_input_cache"] = self_side_obj_char["direction_input"]
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_pre_jump"
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _1_2_3_crouch
-    if common_game_scene_check_crouch_direction(obj_char) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "1_2_3_crouch"
+    if common_game_scene_check_crouch_direction(self_side_obj_char) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "1_2_3_crouch"
         return true
     end
     -- _4_walk
-    if obj_char["direction_input"] == 4 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_walk(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "4_walk"
+    if self_side_obj_char["direction_input"] == 4 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_walk(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4_walk"
         return true
     end
     -- _6_walk_to_stand_idle
-    if obj_char["direction_input"] == 5 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6_walk_to_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6_walk_to_stand_idle"
+    if self_side_obj_char["direction_input"] == 5 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6_walk_to_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6_walk_to_stand_idle"
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_6_walk_to_stand_idle(input,obj_char)
+function state_gate_game_scene_char_LP_from_6_walk_to_stand_idle(input,self_side_obj_char,opponent_side_obj_char)
     -- _5_stand_turn
-    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-        obj_char[5] = -obj_char[5]
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_turn"
-        common_update_game_scene_input_direction(obj_char)
-        state_gate_game_scene_char_LP_from_5_stand_turn(input,obj_char)
+    if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+        self_side_obj_char[5] = -self_side_obj_char[5]
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_turn"
+        common_update_game_scene_input_direction(self_side_obj_char)
+        state_gate_game_scene_char_LP_from_5_stand_turn(input,self_side_obj_char,opponent_side_obj_char)
         return true
     end
     -- _overdrive
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
-    if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache"] = obj_char["direction_input"]
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_pre_jump"
+    if common_game_scene_check_jump_direction(self_side_obj_char) then
+        self_side_obj_char["direction_input_cache"] = self_side_obj_char["direction_input"]
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_pre_jump"
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _1_2_3_crouch
-    if common_game_scene_check_crouch_direction(obj_char) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "1_2_3_crouch"
+    if common_game_scene_check_crouch_direction(self_side_obj_char) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "1_2_3_crouch"
         return true
     end
     -- _4_walk
-    if obj_char["direction_input"] == 4 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_walk(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "4_walk"
+    if self_side_obj_char["direction_input"] == 4 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4_walk(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4_walk"
         return true
     end
     -- _6_walk
-    if obj_char["direction_input"] == 6 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_6_walk(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "6_walk"
+    if self_side_obj_char["direction_input"] == 6 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6_walk(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6_walk"
         return true
     end
     -- animation_end
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
         return true
     end
 end
 
-function state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,obj_char)
+function state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,self_side_obj_char,opponent_side_obj_char)
     -- _overdrive
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _common_ground_idle_to_move
-    if obj_char["idle_cancel"] then
+    if self_side_obj_char["idle_cancel"] then
         -- _common_ground_idle_to_move
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         -- 5_stand_idle
-        if state_gate_game_scene_char_LP_from_5_stand_turn(input,obj_char) then
+        if state_gate_game_scene_char_LP_from_5_stand_turn(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- animation_end
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
-        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char)
+function state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char,opponent_side_obj_char)
     -- _overdrive
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
-    if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if collision_test_char_on_ground(self_side_obj_char) and self_side_obj_char["velocity"][2] > 0.0 then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
         return true
     end
     -- _common_air_idle_to_move
-    if obj_char["idle_cancel"] then
+    if self_side_obj_char["idle_cancel"] then
         -- _common_air_idle_to_move
-        if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_4dash_only(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_4dash_only(input,self_side_obj_char,opponent_side_obj_char) then
             -- save_input_sys_cache_from_pre_jump_and_7_8_9_jump_air
-            load_input_sys_cache_manual_release(input,obj_char,"dash")
-            load_input_sys_cache_recache(input,obj_char)
-            obj_char["input_sys_state"] = "save" -- none save load
+            load_input_sys_cache_manual_release(input,self_side_obj_char,"dash")
+            load_input_sys_cache_recache(input,self_side_obj_char,opponent_side_obj_char)
+            self_side_obj_char["input_sys_state"] = "save" -- none save load
             return true
         end
-        if state_gate_game_scene_char_LP_common_air_to_special_move(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_air_to_special_move(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        if state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- _7_8_9_jump_air(second_air_jump)
-    if obj_char["air_move"]["jump"][1] > 0 and test_input_sys_press(input["up"]) and obj_char["idle_cancel"] then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if self_side_obj_char["air_move"]["jump"][1] > 0 and test_input_sys_press(input["up"]) and self_side_obj_char["idle_cancel"] then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        common_update_game_scene_input_direction(obj_char)
+        common_update_game_scene_input_direction(self_side_obj_char)
         -- air_move
-        obj_char["air_move"]["jump"][1] = math.max(math.min(obj_char["air_move"]["jump"][1]-1,obj_char["air_move"]["jump"][2]),0)
-        obj_char["air_move"]["air_dash"][1] = 0
+        self_side_obj_char["air_move"]["jump"][1] = math.max(math.min(self_side_obj_char["air_move"]["jump"][1]-1,self_side_obj_char["air_move"]["jump"][2]),0)
+        self_side_obj_char["air_move"]["air_dash"][1] = 0
         -- velocity
-        if obj_char["direction_input"] == 7 then
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,470},obj_char["velocity"][1]*0.1 - obj_char[5]*11.5,-45.0)
-        elseif obj_char["direction_input"] == 8 then
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},0,-45.0)
-        elseif obj_char["direction_input"] == 9 then
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{320,430},obj_char["velocity"][1]*0.1 + obj_char[5]*11.5,-45.0)
+        if self_side_obj_char["direction_input"] == 7 then
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"7_jump",{200,470},self_side_obj_char["velocity"][1]*0.1 - self_side_obj_char[5]*11.5,-45.0)
+        elseif self_side_obj_char["direction_input"] == 8 then
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},0,-45.0)
+        elseif self_side_obj_char["direction_input"] == 9 then
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"9_jump",{320,430},self_side_obj_char["velocity"][1]*0.1 + self_side_obj_char[5]*11.5,-45.0)
         end
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_jump_air"
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_jump_air"
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_7_8_9_pre_jump(input,obj_char)
+function state_gate_game_scene_char_LP_from_7_8_9_pre_jump(input,self_side_obj_char,opponent_side_obj_char)
     -- _overdrive
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_jump_air
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
         -- velocity_cache
         local multiplyer = 1
         if test_input_sys_press_or_hold(input["SP"]) then
             multiplyer = 1.08
-            obj_char["air_move"]["jump"][1] = math.max(math.min(obj_char["air_move"]["jump"][1]-1,obj_char["air_move"]["jump"][2]),0)
+            self_side_obj_char["air_move"]["jump"][1] = math.max(math.min(self_side_obj_char["air_move"]["jump"][1]-1,self_side_obj_char["air_move"]["jump"][2]),0)
         end
-        if obj_char["direction_input_cache"] == 7 then
-            if (obj_char[5]*obj_char["velocity_cache"][1] <= 0) then
-                obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,470},(obj_char["velocity_cache"][1]*0.6 - obj_char[5]*2.75)*multiplyer,-55.0*multiplyer)
+        if self_side_obj_char["direction_input_cache"] == 7 then
+            if (self_side_obj_char[5]*self_side_obj_char["velocity_cache"][1] <= 0) then
+                self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"7_jump",{200,470},(self_side_obj_char["velocity_cache"][1]*0.6 - self_side_obj_char[5]*2.75)*multiplyer,-55.0*multiplyer)
             else
-                obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},(obj_char["velocity_cache"][1]*0.6 - obj_char[5]*2.75)*multiplyer,-55.0*multiplyer)
+                self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},(self_side_obj_char["velocity_cache"][1]*0.6 - self_side_obj_char[5]*2.75)*multiplyer,-55.0*multiplyer)
             end
-        elseif obj_char["direction_input_cache"] == 8 then
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},(obj_char["velocity_cache"][1]*0.25)*multiplyer,-55.0*multiplyer)
-        elseif obj_char["direction_input_cache"] == 9 then
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{320,430},(obj_char["velocity_cache"][1]*0.6 + obj_char[5]*2.75)*multiplyer,-55.0*multiplyer)
+        elseif self_side_obj_char["direction_input_cache"] == 8 then
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},(self_side_obj_char["velocity_cache"][1]*0.25)*multiplyer,-55.0*multiplyer)
+        elseif self_side_obj_char["direction_input_cache"] == 9 then
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"9_jump",{320,430},(self_side_obj_char["velocity_cache"][1]*0.6 + self_side_obj_char[5]*2.75)*multiplyer,-55.0*multiplyer)
         end
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["y"] = -140
-        obj_char["state"] = "7_8_9_jump_air"
-        obj_char["velocity"][1] = obj_char["velocity_cache"][1]
-        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["y"] = -140
+        self_side_obj_char["state"] = "7_8_9_jump_air"
+        self_side_obj_char["velocity"][1] = self_side_obj_char["velocity_cache"][1]
+        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return true
     end
 end
 
-function state_gate_game_scene_char_LP_from_4dash_backdash(input,obj_char)
+function state_gate_game_scene_char_LP_from_4dash_backdash(input,self_side_obj_char,opponent_side_obj_char)
     -- _overdrive
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _common_ground_idle_to_move
-    if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
-        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_4dash_air_backdash(input,obj_char)
+function state_gate_game_scene_char_LP_from_4dash_air_backdash(input,self_side_obj_char,opponent_side_obj_char)
     -- _overdrive
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
-    if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if collision_test_char_on_ground(self_side_obj_char) and self_side_obj_char["velocity"][2] > 0.0 then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
-        if state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,obj_char) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
+        if state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return true
     end
     -- _common_air_idle_to_move
-    if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
-            if obj_char["velocity"][1] ~= 0 then
-                obj_char["velocity"][1] = obj_char["velocity"][1]/math.abs(obj_char["velocity"][1])*math.min(15,math.abs(obj_char["velocity"][1]))
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char,opponent_side_obj_char) then
+            if self_side_obj_char["velocity"][1] ~= 0 then
+                self_side_obj_char["velocity"][1] = self_side_obj_char["velocity"][1]/math.abs(self_side_obj_char["velocity"][1])*math.min(15,math.abs(self_side_obj_char["velocity"][1]))
             end
-            obj_char["gravity"] = 2.0
+            self_side_obj_char["gravity"] = 2.0
             return true
         end
     end
     -- _7_8_9_jump_air
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,470},-9.0*obj_char[5],nil)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_jump_air"
-        obj_char["idle_cancel"] = true
-        obj_char["f"] = 12
-        character_animator(obj_char,obj_char["character_animation"])
-        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"7_jump",{200,470},-9.0*self_side_obj_char[5],nil)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_jump_air"
+        self_side_obj_char["idle_cancel"] = true
+        self_side_obj_char["f"] = 12
+        character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
+        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_6dash_dash(input,obj_char)
+function state_gate_game_scene_char_LP_from_6dash_dash(input,self_side_obj_char,opponent_side_obj_char)
     -- _overdrive
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_pre_jump
-    if common_game_scene_check_jump_direction(obj_char) then
-        obj_char["direction_input_cache"] = obj_char["direction_input"]
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_pre_jump"
-        if state_gate_game_scene_char_LP_from_7_8_9_pre_jump(input,obj_char) then
+    if common_game_scene_check_jump_direction(self_side_obj_char) then
+        self_side_obj_char["direction_input_cache"] = self_side_obj_char["direction_input"]
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_pre_jump"
+        if state_gate_game_scene_char_LP_from_7_8_9_pre_jump(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return true
     end
     -- _common_ground_idle_to_move
-    if obj_char["direction_input"] == 4 and test_input_sys_press(input["dash"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "4dash_backdash"
+    if self_side_obj_char["direction_input"] == 4 and test_input_sys_press(input["dash"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4dash_backdash"
         return true
     end
-    if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _5_stand_dash_skid
-    if not test_input_sys_press_or_hold(input["dash"]) or obj_char["direction_input"] == 4 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_dash_skid"
-        if state_gate_game_scene_char_LP_from_5_stand_dash_skid(input,obj_char) then
+    if not test_input_sys_press_or_hold(input["dash"]) or self_side_obj_char["direction_input"] == 4 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_dash_skid(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_dash_skid"
+        if state_gate_game_scene_char_LP_from_5_stand_dash_skid(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_6dash_air_dash(input,obj_char)
+function state_gate_game_scene_char_LP_from_6dash_air_dash(input,self_side_obj_char,opponent_side_obj_char)
     -- _overdrive
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
-    if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if collision_test_char_on_ground(self_side_obj_char) and self_side_obj_char["velocity"][2] > 0.0 then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
-        state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,obj_char)
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
+        state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,self_side_obj_char,opponent_side_obj_char)
         return true
     end
     -- _common_air_idle_to_move
-    if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
-            if obj_char["velocity"][1] ~= 0 then
-                obj_char["velocity"][1] = obj_char["velocity"][1]/math.abs(obj_char["velocity"][1])*math.min(25,math.abs(obj_char["velocity"][1]))
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char,opponent_side_obj_char) then
+            if self_side_obj_char["velocity"][1] ~= 0 then
+                self_side_obj_char["velocity"][1] = self_side_obj_char["velocity"][1]/math.abs(self_side_obj_char["velocity"][1])*math.min(25,math.abs(self_side_obj_char["velocity"][1]))
             end
             return true
         end
     end
     -- _7_8_9_jump_air
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{320,430},18.0*obj_char[5],nil)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_jump_air"
-        obj_char["f"] = 12
-        obj_char["idle_cancel"] = true
-        character_animator(obj_char,obj_char["character_animation"])
-        state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char)
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"9_jump",{320,430},18.0*self_side_obj_char[5],nil)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_jump_air"
+        self_side_obj_char["f"] = 12
+        self_side_obj_char["idle_cancel"] = true
+        character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
+        state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char,opponent_side_obj_char)
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_6dash_dash_cancel(input,obj_char)
+function state_gate_game_scene_char_LP_from_6dash_dash_cancel(input,self_side_obj_char,opponent_side_obj_char)
     -- _overdrive
-    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
         return true
     end
     -- _BRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- common_ground_to_special_move
-    if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- _5_stand_dash_skid
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_dash_skid"
-        state_gate_game_scene_char_LP_from_5_stand_dash_skid(input,obj_char)
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_dash_skid(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_dash_skid"
+        state_gate_game_scene_char_LP_from_5_stand_dash_skid(input,self_side_obj_char,opponent_side_obj_char)
         return true
     end
 end
 
-function state_gate_game_scene_char_LP_from_burst_RC_red(input,self_side_obj_char)
-    local opponent_side_obj_char  = common_game_scene_change_character("L")
+function state_gate_game_scene_char_LP_from_burst_RC_red(input,self_side_obj_char,opponent_side_obj_char)
     if self_side_obj_char["idle_cancel"] then
         if self_side_obj_char["height"] == "air" then
             -- _common_air_idle_to_move
-            if state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver(input,self_side_obj_char,opponent_side_obj_char) then
                 common_game_scene_game_speed_load_application(self_side_obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(opponent_side_obj_char ,{1,2,1,19,0,nil})
                 self_side_obj_char["heat_penalty"] = 0.1
@@ -4671,7 +4663,7 @@ function state_gate_game_scene_char_LP_from_burst_RC_red(input,self_side_obj_cha
                 self_side_obj_char["velocity"][2] = self_side_obj_char["velocity"][2]*5
                 return true
             end
-            if state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,self_side_obj_char,opponent_side_obj_char) then
                 common_game_scene_game_speed_load_application(self_side_obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(opponent_side_obj_char ,{1,2,1,19,0,nil})
                 self_side_obj_char["heat_penalty"] = 0.1
@@ -4682,7 +4674,7 @@ function state_gate_game_scene_char_LP_from_burst_RC_red(input,self_side_obj_cha
             end
         else
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,self_side_obj_char,opponent_side_obj_char) then
                 common_game_scene_game_speed_load_application(self_side_obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(opponent_side_obj_char ,{1,2,1,19,0,nil})
                 self_side_obj_char["heat_penalty"] = 0.1
@@ -4712,10 +4704,10 @@ function state_gate_game_scene_char_LP_from_burst_RC_red(input,self_side_obj_cha
             self_side_obj_char["f"] = 20
             character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             -- _common_air_idle_to_move
-            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
-            if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             return true
@@ -4724,22 +4716,21 @@ function state_gate_game_scene_char_LP_from_burst_RC_red(input,self_side_obj_cha
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
-            if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
         end
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_burst_RC_blue(input,self_side_obj_char)
-    local opponent_side_obj_char  = common_game_scene_change_character("L")
+function state_gate_game_scene_char_LP_from_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char)
     if self_side_obj_char["idle_cancel"] then
         if self_side_obj_char["height"] == "air" then
             -- _common_air_idle_to_move
-            if state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver(input,self_side_obj_char,opponent_side_obj_char) then
                 common_game_scene_game_speed_load_application(self_side_obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(opponent_side_obj_char ,{1,2,1,29,0,nil})
                 self_side_obj_char["heat_penalty"] = 0.1
@@ -4748,7 +4739,7 @@ function state_gate_game_scene_char_LP_from_burst_RC_blue(input,self_side_obj_ch
                 self_side_obj_char["velocity"][2] = self_side_obj_char["velocity"][2]*1 + self_side_obj_char["velocity_cache"][2]*1.25
                 return true
             end
-            if state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,self_side_obj_char,opponent_side_obj_char) then
                 common_game_scene_game_speed_load_application(self_side_obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(opponent_side_obj_char ,{1,2,1,29,0,nil})
                 self_side_obj_char["heat_penalty"] = 0.1
@@ -4759,7 +4750,7 @@ function state_gate_game_scene_char_LP_from_burst_RC_blue(input,self_side_obj_ch
             end
         else
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,self_side_obj_char,opponent_side_obj_char) then
                 common_game_scene_game_speed_load_application(self_side_obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(opponent_side_obj_char ,{1,2,1,29,0,nil})
                 self_side_obj_char["heat_penalty"] = 0.1
@@ -4789,10 +4780,10 @@ function state_gate_game_scene_char_LP_from_burst_RC_blue(input,self_side_obj_ch
             self_side_obj_char["f"] = 20
             character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             -- _common_air_idle_to_move
-            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
-            if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             return true
@@ -4801,22 +4792,21 @@ function state_gate_game_scene_char_LP_from_burst_RC_blue(input,self_side_obj_ch
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
-            if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
         end
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_burst_RC_purple(input,self_side_obj_char)
-    local opponent_side_obj_char = common_game_scene_change_character("L")
+function state_gate_game_scene_char_LP_from_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char)
     if self_side_obj_char["idle_cancel"] then
         if self_side_obj_char["height"] == "air" then
             -- _common_air_idle_to_move
-            if state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver(input,self_side_obj_char,opponent_side_obj_char) then
                 common_game_scene_game_speed_load_application(self_side_obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(opponent_side_obj_char,{1,2,1,29,0,nil})
                 self_side_obj_char["heat_penalty"] = 0.1
@@ -4825,7 +4815,7 @@ function state_gate_game_scene_char_LP_from_burst_RC_purple(input,self_side_obj_
                 self_side_obj_char["velocity"][2] = self_side_obj_char["velocity"][2]*5
                 return true
             end
-            if state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,self_side_obj_char,opponent_side_obj_char) then
                 common_game_scene_game_speed_load_application(self_side_obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(opponent_side_obj_char,{1,2,1,29,0,nil})
                 self_side_obj_char["heat_penalty"] = 0.1
@@ -4836,7 +4826,7 @@ function state_gate_game_scene_char_LP_from_burst_RC_purple(input,self_side_obj_
             end
         else
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,self_side_obj_char,opponent_side_obj_char) then
                 common_game_scene_game_speed_load_application(self_side_obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(opponent_side_obj_char,{1,2,1,29,0,nil})
                 self_side_obj_char["heat_penalty"] = 0.1
@@ -4866,10 +4856,10 @@ function state_gate_game_scene_char_LP_from_burst_RC_purple(input,self_side_obj_
             self_side_obj_char["f"] = 20
             character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             -- _common_air_idle_to_move
-            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
-            if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             return true
@@ -4878,52 +4868,52 @@ function state_gate_game_scene_char_LP_from_burst_RC_purple(input,self_side_obj_
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
-            if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char) then
+            if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
         end
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_burst_RC_yellow(input,obj_char)
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
+function state_gate_game_scene_char_LP_from_burst_RC_yellow(input,self_side_obj_char,opponent_side_obj_char)
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
         -- state
-        obj_char["idle_cancel"] = true
-        obj_char["physics_lock"] = false
+        self_side_obj_char["idle_cancel"] = true
+        self_side_obj_char["physics_lock"] = false
         -- state_number
-        obj_char["heat_penalty"] = 0.1
-        obj_char["heat_penalty_countdown"] = 480
+        self_side_obj_char["heat_penalty"] = 0.1
+        self_side_obj_char["heat_penalty_countdown"] = 480
         -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
-        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
+        self_side_obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
         -- init_character_anim
-        if obj_char["height"] == "air" then
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "7_8_9_jump_air"
-            obj_char["idle_cancel"] = true
-            obj_char["f"] = 20
-            character_animator(obj_char,obj_char["character_animation"])
+        if self_side_obj_char["height"] == "air" then
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "7_8_9_jump_air"
+            self_side_obj_char["idle_cancel"] = true
+            self_side_obj_char["f"] = 20
+            character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             -- _common_air_idle_to_move
-            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(input,obj_char) then
+            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
-            if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
+            if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             return true
         else
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)  
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "5_stand_idle"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)  
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
-            if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+            if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
         end
@@ -4931,972 +4921,972 @@ function state_gate_game_scene_char_LP_from_burst_RC_yellow(input,obj_char)
     end
 end
 
-function state_gate_game_scene_char_LP_from_burst_overdrive(input,obj_char)
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
+function state_gate_game_scene_char_LP_from_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char)
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
         -- to stand_idle
-        obj_char["idle_cancel"] = true
-        obj_char["physics_lock"] = false
+        self_side_obj_char["idle_cancel"] = true
+        self_side_obj_char["physics_lock"] = false
         -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
-        common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
-        if obj_char["height"] == "air" then
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "7_8_9_jump_air"
-            obj_char["idle_cancel"] = true
-            obj_char["f"] = 20
-            character_animator(obj_char,obj_char["character_animation"])
+        self_side_obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
+        if self_side_obj_char["height"] == "air" then
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "7_8_9_jump_air"
+            self_side_obj_char["idle_cancel"] = true
+            self_side_obj_char["f"] = 20
+            character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             -- _common_air_idle_to_move
-            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(input,obj_char) then
+            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
-            if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
+            if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             return true
         else
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)  
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["f"] = 28
-            character_animator(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "5_stand_idle"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)  
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["f"] = 28
+            character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+            if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
-            if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+            if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
         end
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_burst_burst(input,obj_char)
+function state_gate_game_scene_char_LP_from_burst_burst(input,self_side_obj_char,opponent_side_obj_char)
 end
 
-function state_gate_game_scene_char_LP_from_2P(input,obj_char)
+function state_gate_game_scene_char_LP_from_2P(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- hit_cancel
-    if obj_char["hit_cancel"] then
+    if self_side_obj_char["hit_cancel"] then
         -- special
-        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         -- _2P
-        if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press(input["P"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_2P(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "2P"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_2P(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "2P"
             return true
         end
         -- _6P
-        if obj_char["direction_input"] == 6 and test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if self_side_obj_char["direction_input"] == 6 and test_input_sys_press(input["P"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_6P(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "6P"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6P(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "6P"
             return true
         end
         -- _5P
         if test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_5P(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "5P"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5P(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "5P"
             return true
         end
         -- _6K
-        if obj_char["direction_input"] == 6 and test_input_sys_press(input["K"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if self_side_obj_char["direction_input"] == 6 and test_input_sys_press(input["K"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_6K(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "6K"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6K(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "6K"
             return true
         end
         -- _6S
-        if obj_char["direction_input"] == 6 and test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if self_side_obj_char["direction_input"] == 6 and test_input_sys_press(input["S"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_6S(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "6S"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6S(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "6S"
             return true
         end
     end
     -- idle_cancel
-    if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        if state_gate_game_scene_char_LP_from_1_2_3_crouch(input,obj_char) then
+        if state_gate_game_scene_char_LP_from_1_2_3_crouch(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- _1_2_3_crouch
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "1_2_3_crouch"
-        obj_char["f"] = 4
-        character_animator(obj_char,obj_char["character_animation"])
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "1_2_3_crouch"
+        self_side_obj_char["f"] = 4
+        character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_6P(input,obj_char)
+function state_gate_game_scene_char_LP_from_6P(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- hit_cancel
-    if obj_char["hit_cancel"] then
+    if self_side_obj_char["hit_cancel"] then
         -- special
-        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- idle_cancel
-    if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_5P(input,obj_char)
+function state_gate_game_scene_char_LP_from_5P(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- hit_cancel
-    if obj_char["hit_cancel"] then
+    if self_side_obj_char["hit_cancel"] then
         -- special
-        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         -- _2P
-        if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press(input["P"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_2P(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "2P"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_2P(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "2P"
             return true
         end
         -- _6P
-        if obj_char["direction_input"] == 6 and test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if self_side_obj_char["direction_input"] == 6 and test_input_sys_press(input["P"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_6P(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "6P"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6P(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "6P"
             return true
         end
         -- _5P
         if test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_5P(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "5P"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5P(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "5P"
             return true
         end
         -- _6K
-        if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["K"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3) and test_input_sys_press(input["K"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_6K(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "6K"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6K(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "6K"
             return true
         end
         -- _6S
-        if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3) and test_input_sys_press(input["S"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_6S(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "6S"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6S(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "6S"
             return true
         end
     end
     -- idle_cancel
-    if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_2K(input,obj_char)
+function state_gate_game_scene_char_LP_from_2K(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- hit_cancel
-    if obj_char["hit_cancel"] then
+    if self_side_obj_char["hit_cancel"] then
         -- special
-        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         -- _6K
-        if (obj_char["direction_input"] == 6) and test_input_sys_press(input["K"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if (self_side_obj_char["direction_input"] == 6) and test_input_sys_press(input["K"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_6K(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "6K"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6K(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "6K"
             return true
         end
         -- _6S
-        if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3) and test_input_sys_press(input["S"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_6S(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "6S"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6S(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "6S"
             return true
         end
         -- 2Launcher
-        if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["Launcher"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press(input["Launcher"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_2Launcher(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "2Launcher"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_2Launcher(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "2Launcher"
             return true
         end
         -- _5Launcher
         if test_input_sys_press(input["Launcher"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_5Launcher(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "5Launcher"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5Launcher(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "5Launcher"
             return true
         end
     end
     -- idle_cancel
-    if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        if state_gate_game_scene_char_LP_from_1_2_3_crouch(input,obj_char) then
+        if state_gate_game_scene_char_LP_from_1_2_3_crouch(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- _1_2_3_crouch
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "1_2_3_crouch"
-        obj_char["f"] = 4
-        character_animator(obj_char,obj_char["character_animation"])
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "1_2_3_crouch"
+        self_side_obj_char["f"] = 4
+        character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_6K(input,obj_char)
+function state_gate_game_scene_char_LP_from_6K(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- hit_cancel
-    if obj_char["hit_cancel"] then
+    if self_side_obj_char["hit_cancel"] then
         -- special
-        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- idle_cancel
-    if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_5K(input,obj_char)
+function state_gate_game_scene_char_LP_from_5K(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- kara
     -- 2K
-    if common_game_scene_check_crouch_direction(obj_char) and obj_char["f"] <= 4 then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if common_game_scene_check_crouch_direction(self_side_obj_char) and self_side_obj_char["f"] <= 4 then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["velocity"] = obj_char["velocity_cache"]
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_2K(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "2K"
+        self_side_obj_char["velocity"] = self_side_obj_char["velocity_cache"]
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_2K(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "2K"
         return true
     end
     -- hit_cancel
-    if obj_char["hit_cancel"] then
+    if self_side_obj_char["hit_cancel"] then
         -- special
-        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         -- _6P
-        if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3) and test_input_sys_press(input["P"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_6P(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "6P"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6P(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "6P"
             return true
         end
         -- _6K
-        if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["K"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3) and test_input_sys_press(input["K"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_6K(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "6K"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6K(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "6K"
             return true
         end
         -- _6S
-        if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3) and test_input_sys_press(input["S"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_6S(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "6S"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6S(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "6S"
             return true
         end
         -- _2Launcher
-        if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["Launcher"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press(input["Launcher"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_2Launcher(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "2Launcher"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_2Launcher(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "2Launcher"
             return true
         end
         -- _5Launcher
         if test_input_sys_press(input["Launcher"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_5Launcher(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "5Launcher"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5Launcher(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "5Launcher"
             return true
         end
         -- _6dash_dash_cancel
-        if test_input_sys_press(input["dash"]) and obj_char["f"] < 13 then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if test_input_sys_press(input["dash"]) and self_side_obj_char["f"] < 13 then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "6dash_dash_cancel"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash_cancel(self_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "6dash_dash_cancel"
             return true
         end
         -- _7_8_9_pre_jump
         if test_input_sys_press(input["up"]) then
-            character_function_game_scene_TRM_histop_ground_jump_cancel(input,obj_char)
+            character_function_game_scene_TRM_histop_ground_jump_cancel(input,self_side_obj_char,opponent_side_obj_char)
             return true
         end
     end
     -- idle_cancel
-    if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_2S(input,obj_char)
+function state_gate_game_scene_char_LP_from_2S(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- hit_cancel
-    if obj_char["hit_cancel"] then
+    if self_side_obj_char["hit_cancel"] then
         -- special
-        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- idle_cancel
-    if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        if state_gate_game_scene_char_LP_from_1_2_3_crouch(input,obj_char) then
+        if state_gate_game_scene_char_LP_from_1_2_3_crouch(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- _1_2_3_crouch
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "1_2_3_crouch"
-        obj_char["f"] = 4
-        character_animator(obj_char,obj_char["character_animation"])
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "1_2_3_crouch"
+        self_side_obj_char["f"] = 4
+        character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_6S(input,obj_char)
+function state_gate_game_scene_char_LP_from_6S(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- hit_cancel
-    if obj_char["hit_cancel"] then
+    if self_side_obj_char["hit_cancel"] then
         -- special
-        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- idle_cancel
-    if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_cS(input,obj_char)
+function state_gate_game_scene_char_LP_from_cS(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- hit_cancel
-    if obj_char["hit_cancel"] then
+    if self_side_obj_char["hit_cancel"] then
         -- special
-        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         -- _6P
-        if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3) and test_input_sys_press(input["P"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_6P(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "6P"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6P(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "6P"
             return true
         end
         -- _6K
-        if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["K"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3) and test_input_sys_press(input["K"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_6K(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "6K"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6K(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "6K"
             return true
         end
         -- _2S
-        if (obj_char["direction_input"] == 2 or obj_char["direction_input"] == 1) and test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if (self_side_obj_char["direction_input"] == 2 or self_side_obj_char["direction_input"] == 1) and test_input_sys_press(input["S"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_2S(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "2S"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_2S(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "2S"
             return true
         end
         -- _6S
-        if (obj_char["direction_input"] == 6 or obj_char["direction_input"] == 3) and test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3) and test_input_sys_press(input["S"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_6S(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "6S"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6S(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "6S"
             return true
         end
         -- _fS
         if test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_fS(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "fS"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_fS(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "fS"
             return true
         end
         -- _2Launcher
-        if common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["Launcher"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press(input["Launcher"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_2Launcher(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "2Launcher"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_2Launcher(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "2Launcher"
             return true
         end
         -- _5Launcher
         if test_input_sys_press(input["Launcher"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_5Launcher(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "5Launcher"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5Launcher(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "5Launcher"
             return true
         end
         -- _6dash_dash_cancel
-        if test_input_sys_press(input["dash"]) and obj_char["f"] < 13 then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if test_input_sys_press(input["dash"]) and self_side_obj_char["f"] < 13 then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "6dash_dash_cancel"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash_cancel(self_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "6dash_dash_cancel"
             return true
         end
         -- _7_8_9_pre_jump
         if test_input_sys_press(input["up"]) then
-            character_function_game_scene_TRM_histop_ground_jump_cancel(input,obj_char)
+            character_function_game_scene_TRM_histop_ground_jump_cancel(input,self_side_obj_char,opponent_side_obj_char)
             return true
         end
     end
     -- idle_cancel
-    if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_fS(input,obj_char)
+function state_gate_game_scene_char_LP_from_fS(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- hit_cancel
-    if obj_char["hit_cancel"] then
+    if self_side_obj_char["hit_cancel"] then
         -- special
-        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- idle_cancel
-    if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_5H(input,obj_char)
-    if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+function state_gate_game_scene_char_LP_from_5H(input,self_side_obj_char,opponent_side_obj_char)
+    if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_2Launcher(input,obj_char)
+function state_gate_game_scene_char_LP_from_2Launcher(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- hit_cancel
-    if obj_char["hit_cancel"] then
+    if self_side_obj_char["hit_cancel"] then
         -- special
-        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- idle_cancel
-    if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        if state_gate_game_scene_char_LP_from_1_2_3_crouch(input,obj_char) then
+        if state_gate_game_scene_char_LP_from_1_2_3_crouch(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- _1_2_3_crouch
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "1_2_3_crouch"
-        obj_char["f"] = 4
-        character_animator(obj_char,obj_char["character_animation"])
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "1_2_3_crouch"
+        self_side_obj_char["f"] = 4
+        character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_4_6Launcher(input,obj_char)
+function state_gate_game_scene_char_LP_from_4_6Launcher(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- idle_cancel
-    if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_5Launcher(input,obj_char)
+function state_gate_game_scene_char_LP_from_5Launcher(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- hit_cancel
-    if obj_char["hit_cancel"] then
+    if self_side_obj_char["hit_cancel"] then
         -- special
-        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_special_move(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- idle_cancel
-    if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_5Launcher_hold(input,obj_char)
+function state_gate_game_scene_char_LP_from_5Launcher_hold(input,self_side_obj_char,opponent_side_obj_char)
 end
 
-function state_gate_game_scene_char_LP_from_jP(input,obj_char)
+function state_gate_game_scene_char_LP_from_jP(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
-    if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if collision_test_char_on_ground(self_side_obj_char) and self_side_obj_char["velocity"][2] > 0.0 then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
-        if state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,obj_char) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
+        if state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return true
     end
     -- hit_cancel
-    if obj_char["hit_cancel"] then
+    if self_side_obj_char["hit_cancel"] then
         -- _jP
-        if obj_char["y"] < -240 and test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if self_side_obj_char["y"] < -240 and test_input_sys_press(input["P"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_jP(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "jP"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jP(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "jP"
             return true
         end
     end
-    if obj_char["hit_cancel"] and obj_char["air_gatling_state"] then
+    if self_side_obj_char["hit_cancel"] and self_side_obj_char["air_gatling_state"] then
         -- _j2K
-        if obj_char["y"] < -240 and common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["K"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if self_side_obj_char["y"] < -240 and common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press(input["K"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "j2K"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "j2K"
             return true
         end
         -- _jK
-        if obj_char["y"] < -240 and test_input_sys_press(input["K"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if self_side_obj_char["y"] < -240 and test_input_sys_press(input["K"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_jK(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "jK"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jK(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "jK"
             return true
         end
         -- _jS
-        if obj_char["y"] < -240 and test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if self_side_obj_char["y"] < -240 and test_input_sys_press(input["S"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "jS"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "jS"
             return true
         end
     end
     -- _7_8_9_jump_air
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_jump_air"
-        obj_char["idle_cancel"] = true
-        obj_char["f"] = 20
-        character_animator(obj_char,obj_char["character_animation"])
-        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_jump_air"
+        self_side_obj_char["idle_cancel"] = true
+        self_side_obj_char["f"] = 20
+        character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
+        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_jK(input,obj_char)
+function state_gate_game_scene_char_LP_from_jK(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
-    if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if collision_test_char_on_ground(self_side_obj_char) and self_side_obj_char["velocity"][2] > 0.0 then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
-        if state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,obj_char) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
+        if state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return true
     end
     -- hit_cancel
-    if obj_char["hit_cancel"] then
+    if self_side_obj_char["hit_cancel"] then
         -- _jS
-        if obj_char["y"] < -240 and test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if self_side_obj_char["y"] < -240 and test_input_sys_press(input["S"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "jS"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "jS"
             return true
         end
     end
-    if obj_char["hit_cancel"] and obj_char["air_gatling_state"] then
+    if self_side_obj_char["hit_cancel"] and self_side_obj_char["air_gatling_state"] then
         -- _jP
-        if obj_char["y"] < -240 and test_input_sys_press(input["P"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if self_side_obj_char["y"] < -240 and test_input_sys_press(input["P"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_jP(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "jP"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jP(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "jP"
             return true
         end
         -- _j2K
-        if obj_char["y"] < -240 and common_game_scene_check_crouch_direction(obj_char) and test_input_sys_press(input["K"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if self_side_obj_char["y"] < -240 and common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press(input["K"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "j2K"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "j2K"
             return true
         end
         -- _jS
-        if obj_char["y"] < -240 and test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+        if self_side_obj_char["y"] < -240 and test_input_sys_press(input["S"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "jS"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "jS"
             return true
         end
     end
     -- _7_8_9_jump_air
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_jump_air"
-        obj_char["idle_cancel"] = true
-        obj_char["f"] = 20
-        character_animator(obj_char,obj_char["character_animation"])
-        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_jump_air"
+        self_side_obj_char["idle_cancel"] = true
+        self_side_obj_char["f"] = 20
+        character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
+        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_j2K(input,obj_char)
+function state_gate_game_scene_char_LP_from_j2K(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
-    if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if collision_test_char_on_ground(self_side_obj_char) and self_side_obj_char["velocity"][2] > 0.0 then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
-        if state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,obj_char) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
+        if state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return true
     end
     -- hit_cancel
-    if obj_char["hit_cancel"] and obj_char["f"] >= 15 then
+    if self_side_obj_char["hit_cancel"] and self_side_obj_char["f"] >= 15 then
         if test_input_sys_press(input["S"]) then
-            if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-                obj_char[5] = -obj_char[5]
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "jS"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "jS"
             return true
         end
         if test_input_sys_press(input["Launcher"]) then
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_j5Launcher(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "j5Launcher"
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j5Launcher(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "j5Launcher"
             return true
         end
     end
     -- _7_8_9_jump_air
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_jump_air"
-        obj_char["idle_cancel"] = true
-        obj_char["f"] = 20
-        character_animator(obj_char,obj_char["character_animation"])
-        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_jump_air"
+        self_side_obj_char["idle_cancel"] = true
+        self_side_obj_char["f"] = 20
+        character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
+        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_jS(input,obj_char)
+function state_gate_game_scene_char_LP_from_jS(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
-    if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if collision_test_char_on_ground(self_side_obj_char) and self_side_obj_char["velocity"][2] > 0.0 then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
-        if state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,obj_char) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
+        if state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return true
     end
     -- hit_cancel
-    if obj_char["hit_cancel"] then
+    if self_side_obj_char["hit_cancel"] then
         -- jump_cancel
-        if test_input_sys_press(input["up"]) and obj_char["air_move"]["jump"][1] > 0 then
+        if test_input_sys_press(input["up"]) and self_side_obj_char["air_move"]["jump"][1] > 0 then
             character_function_game_scene_TRM_hitstop_air_jump_cancel(
-                input,obj_char,
+                input,self_side_obj_char,opponent_side_obj_char,
                 0.1,-11.5,-30,
                 0,0,-30,
                 0.1,11.5,-25
@@ -5905,75 +5895,75 @@ function state_gate_game_scene_char_LP_from_jS(input,obj_char)
         end
     end
     -- _7_8_9_jump_air
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_jump_air"
-        obj_char["idle_cancel"] = true
-        obj_char["f"] = 20
-        character_animator(obj_char,obj_char["character_animation"])
-        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_jump_air"
+        self_side_obj_char["idle_cancel"] = true
+        self_side_obj_char["f"] = 20
+        character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
+        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_j4_6Launcher(input,obj_char)
+function state_gate_game_scene_char_LP_from_j4_6Launcher(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
-    if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if collision_test_char_on_ground(self_side_obj_char) and self_side_obj_char["velocity"][2] > 0.0 then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
-        if state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,obj_char) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
+        if state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return true
     end
     -- _7_8_9_jump_air
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_jump_air"
-        obj_char["idle_cancel"] = true
-        obj_char["f"] = 20
-        character_animator(obj_char,obj_char["character_animation"])
-        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_jump_air"
+        self_side_obj_char["idle_cancel"] = true
+        self_side_obj_char["f"] = 20
+        character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
+        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_j5Launcher(input,obj_char)
+function state_gate_game_scene_char_LP_from_j5Launcher(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
-    if collision_test_char_on_ground(obj_char) and obj_char["velocity"][2] > 0.0 then
-        if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-            obj_char[5] = -obj_char[5]
+    if collision_test_char_on_ground(self_side_obj_char) and self_side_obj_char["velocity"][2] > 0.0 then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
-        if state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,obj_char) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_jump_air_to_stand_idle"
+        if state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return true
     end
     -- hit_cancel
-    if obj_char["hit_cancel"] then
-        if test_input_sys_press(input["up"]) and obj_char["air_move"]["jump"][1] > 0 then
+    if self_side_obj_char["hit_cancel"] then
+        if test_input_sys_press(input["up"]) and self_side_obj_char["air_move"]["jump"][1] > 0 then
             -- jump_cancel
             character_function_game_scene_TRM_hitstop_air_jump_cancel(
-                input,obj_char,
+                input,self_side_obj_char,opponent_side_obj_char,
                 0.1,-11.5,-30,
                 0,0,-30,
                 0.1,11.5,-29.5
@@ -5982,165 +5972,165 @@ function state_gate_game_scene_char_LP_from_j5Launcher(input,obj_char)
         end
     end
     -- _7_8_9_jump_air
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1],obj_char["velocity"][2])
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "7_8_9_jump_air"
-        obj_char["idle_cancel"] = true
-        obj_char["f"] = 24
-        character_animator(obj_char,obj_char["character_animation"])
-        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,obj_char) then
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "7_8_9_jump_air"
+        self_side_obj_char["idle_cancel"] = true
+        self_side_obj_char["f"] = 24
+        character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
+        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return true
     end
 end
 
-function state_gate_game_scene_char_LP_from_4SP_P(input,obj_char)
+function state_gate_game_scene_char_LP_from_4SP_P(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- idle_cancel
-    if obj_char["idle_cancel"] then
+    if self_side_obj_char["idle_cancel"] then
         -- _overdrive
-        if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,obj_char,"overdrive") then
+        if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
             return true
         end
         -- _7_8_9_pre_jump
-        if common_game_scene_check_jump_direction(obj_char) then
-            obj_char["direction_input_cache"] = obj_char["direction_input"]
-            obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
-            init_character_anim_with(obj_char,obj_char["character_animation"])
-            obj_char["state"] = "7_8_9_pre_jump"
+        if common_game_scene_check_jump_direction(self_side_obj_char) then
+            self_side_obj_char["direction_input_cache"] = self_side_obj_char["direction_input"]
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(self_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "7_8_9_pre_jump"
             return true
         end
         -- _common_ground_idle_to_move
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_attack_move(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_6SP_P(input,obj_char)
+function state_gate_game_scene_char_LP_from_6SP_P(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _common_ground_idle_to_move
-    if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
-        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_4SP_K(input,obj_char)
+function state_gate_game_scene_char_LP_from_4SP_K(input,self_side_obj_char,opponent_side_obj_char)
 end
-function state_gate_game_scene_char_LP_from_6SP_K(input,obj_char)
+function state_gate_game_scene_char_LP_from_6SP_K(input,self_side_obj_char,opponent_side_obj_char)
 end
-function state_gate_game_scene_char_LP_from_4SP_S(input,obj_char)
+function state_gate_game_scene_char_LP_from_4SP_S(input,self_side_obj_char,opponent_side_obj_char)
 end
-function state_gate_game_scene_char_LP_from_4SP_S_4dash(input,obj_char)
+function state_gate_game_scene_char_LP_from_4SP_S_4dash(input,self_side_obj_char,opponent_side_obj_char)
 end
-function state_gate_game_scene_char_LP_from_4SP_S_6dash(input,obj_char)
+function state_gate_game_scene_char_LP_from_4SP_S_6dash(input,self_side_obj_char,opponent_side_obj_char)
 end
-function state_gate_game_scene_char_LP_from_4SP_S_S(input,obj_char)
+function state_gate_game_scene_char_LP_from_4SP_S_S(input,self_side_obj_char,opponent_side_obj_char)
 end
-function state_gate_game_scene_char_LP_from_4SP_S_H(input,obj_char)
+function state_gate_game_scene_char_LP_from_4SP_S_H(input,self_side_obj_char,opponent_side_obj_char)
 end
-function state_gate_game_scene_char_LP_from_4SP_S_2Launcher(input,obj_char)
+function state_gate_game_scene_char_LP_from_4SP_S_2Launcher(input,self_side_obj_char,opponent_side_obj_char)
 end
-function state_gate_game_scene_char_LP_from_4SP_S_6Launcher(input,obj_char)
+function state_gate_game_scene_char_LP_from_4SP_S_6Launcher(input,self_side_obj_char,opponent_side_obj_char)
 end
-function state_gate_game_scene_char_LP_from_4SP_S_5Launcher(input,obj_char)
+function state_gate_game_scene_char_LP_from_4SP_S_5Launcher(input,self_side_obj_char,opponent_side_obj_char)
 end
-function state_gate_game_scene_char_LP_from_6SP_S(input,obj_char)
+function state_gate_game_scene_char_LP_from_6SP_S(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,obj_char) then
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- idle_cancel
-    if obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,obj_char) then
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        if state_gate_game_scene_char_LP_from_5_stand_idle(input,obj_char) then
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- _5_stand_idle
-    if get_character_anim_end_state(obj_char,obj_char["character_animation"]) then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
-        init_character_anim_with(obj_char,obj_char["character_animation"])
-        obj_char["state"] = "5_stand_idle"
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
         return true
     end
 end
-function state_gate_game_scene_char_LP_from_SP_H(input,obj_char)
+function state_gate_game_scene_char_LP_from_SP_H(input,self_side_obj_char,opponent_side_obj_char)
 end
-function state_gate_game_scene_char_LP_from_SP_H_P(input,obj_char)
+function state_gate_game_scene_char_LP_from_SP_H_P(input,self_side_obj_char,opponent_side_obj_char)
 end
-function state_gate_game_scene_char_LP_from_SP_H_K(input,obj_char)
+function state_gate_game_scene_char_LP_from_SP_H_K(input,self_side_obj_char,opponent_side_obj_char)
 end
-function state_gate_game_scene_char_LP_from_SP_H_S(input,obj_char)
+function state_gate_game_scene_char_LP_from_SP_H_S(input,self_side_obj_char,opponent_side_obj_char)
 end
-function state_gate_game_scene_char_LP_from_SP_H_H(input,obj_char)
-end
-
-function state_gate_game_scene_char_LP_from_jSP_S(input,obj_char)
-end
-function state_gate_game_scene_char_LP_from_jSP_H(input,obj_char)
-end
-function state_gate_game_scene_char_LP_from_jSP_H_P(input,obj_char)
-end
-function state_gate_game_scene_char_LP_from_jSP_H_K(input,obj_char)
-end
-function state_gate_game_scene_char_LP_from_jSP_H_S(input,obj_char)
-end
-function state_gate_game_scene_char_LP_from_jSP_H_H(input,obj_char)
+function state_gate_game_scene_char_LP_from_SP_H_H(input,self_side_obj_char,opponent_side_obj_char)
 end
 
-function state_gate_game_scene_char_LP_from_4UA(input,obj_char)
+function state_gate_game_scene_char_LP_from_jSP_S(input,self_side_obj_char,opponent_side_obj_char)
 end
-function state_gate_game_scene_char_LP_from_6UA(input,obj_char)
+function state_gate_game_scene_char_LP_from_jSP_H(input,self_side_obj_char,opponent_side_obj_char)
 end
-function state_gate_game_scene_char_LP_from_5UA(input,obj_char)
+function state_gate_game_scene_char_LP_from_jSP_H_P(input,self_side_obj_char,opponent_side_obj_char)
 end
-function state_gate_game_scene_char_LP_from_4SP_S_5UA(input,obj_char)
+function state_gate_game_scene_char_LP_from_jSP_H_K(input,self_side_obj_char,opponent_side_obj_char)
+end
+function state_gate_game_scene_char_LP_from_jSP_H_S(input,self_side_obj_char,opponent_side_obj_char)
+end
+function state_gate_game_scene_char_LP_from_jSP_H_H(input,self_side_obj_char,opponent_side_obj_char)
+end
+
+function state_gate_game_scene_char_LP_from_4UA(input,self_side_obj_char,opponent_side_obj_char)
+end
+function state_gate_game_scene_char_LP_from_6UA(input,self_side_obj_char,opponent_side_obj_char)
+end
+function state_gate_game_scene_char_LP_from_5UA(input,self_side_obj_char,opponent_side_obj_char)
+end
+function state_gate_game_scene_char_LP_from_4SP_S_5UA(input,self_side_obj_char,opponent_side_obj_char)
 end
 
 -- draw
 function draw_game_scene_char_LP_logic_graphic_pos_sync()
     local obj = nil
-    local obj_char = obj_char_game_scene_char_LP
-    local oroboros_ease_current = obj_char["shot_sys_oroboros_ease_current"]
-    local shot_offset_amount = obj_char["shot_sys_oroboros_offset_amount"] 
-    local shot_r = obj_char["shot_sys_oroboros_aim_r"]*obj_char[5]
+    local self_side_obj_char = obj_char_game_scene_char_LP
+    local oroboros_ease_current = self_side_obj_char["shot_sys_oroboros_ease_current"]
+    local shot_offset_amount = self_side_obj_char["shot_sys_oroboros_offset_amount"] 
+    local shot_r = self_side_obj_char["shot_sys_oroboros_aim_r"]*self_side_obj_char[5]
     local dx = -15
     local dy = -50
     local rot_dx = nil
     local rot_dy = nil
 
-    if obj_char[5] > 0 then
+    if self_side_obj_char[5] > 0 then
         shot_r = math.min(shot_r,0.42)
         shot_r = math.max(shot_r,-0.8)
     else
@@ -6150,84 +6140,84 @@ function draw_game_scene_char_LP_logic_graphic_pos_sync()
 
     -- x y z opacity sx sy r f
     -- oroboros_back
-    obj = obj_char["shot_sys_oroboros_back"]
+    obj = self_side_obj_char["shot_sys_oroboros_back"]
     obj[1] = oroboros_ease_current[1] + oroboros_ease_current[3]*(dx - math.cos(shot_r)*shot_offset_amount*0.5)
     obj[2] = oroboros_ease_current[2] + oroboros_ease_current[4]*(dy - math.sin(shot_r)*shot_offset_amount*0.5)
-    obj[3] = obj_char[3]
-    obj[5] = obj_char[5]
-    obj[6] = obj_char[6]
-    obj[7] = obj_char[7]
+    obj[3] = self_side_obj_char[3]
+    obj[5] = self_side_obj_char[5]
+    obj[6] = self_side_obj_char[6]
+    obj[7] = self_side_obj_char[7]
 
     -- character
-    obj_char[1] = obj_char["x"]+obj_char["hurtstop_wiggle_current_x"]-obj_char[5]*obj_char["anchor_pos"][1]
-    obj_char[2] = obj_char["y"]+obj_char["hurtstop_wiggle_current_y"]-obj_char[6]*obj_char["anchor_pos"][2]
+    self_side_obj_char[1] = self_side_obj_char["x"]+self_side_obj_char["hurtstop_wiggle_current_x"]-self_side_obj_char[5]*self_side_obj_char["anchor_pos"][1]
+    self_side_obj_char[2] = self_side_obj_char["y"]+self_side_obj_char["hurtstop_wiggle_current_y"]-self_side_obj_char[6]*self_side_obj_char["anchor_pos"][2]
 
     -- oroboros_mid
-    obj = obj_char["shot_sys_oroboros_mid"]
+    obj = self_side_obj_char["shot_sys_oroboros_mid"]
     dx = -80
     dy = -95
     rot_dx = dx*oroboros_ease_current[3]*math.cos(shot_r) - dy*oroboros_ease_current[4]*math.sin(shot_r)
     rot_dy = dx*oroboros_ease_current[3]*math.sin(shot_r) + dy*oroboros_ease_current[4]*math.cos(shot_r)
     obj[1] = oroboros_ease_current[1] + rot_dx
     obj[2] = oroboros_ease_current[2] + rot_dy
-    obj[3] = obj_char[3]
-    obj[5] = obj_char[5]
-    obj[6] = obj_char[6]
+    obj[3] = self_side_obj_char[3]
+    obj[5] = self_side_obj_char[5]
+    obj[6] = self_side_obj_char[6]
     obj[7] = shot_r
 
     -- oroboros_front
-    obj = obj_char["shot_sys_oroboros_front"]
+    obj = self_side_obj_char["shot_sys_oroboros_front"]
     dx = -80
     dy = -80
     obj[1] = oroboros_ease_current[1] + oroboros_ease_current[3]*(dx - math.cos(shot_r)*shot_offset_amount*0.7)
     obj[2] = oroboros_ease_current[2] + oroboros_ease_current[4]*(dy - math.sin(shot_r)*shot_offset_amount*0.7)
-    obj[3] = obj_char[3]
-    obj[5] = obj_char[5]
-    obj[6] = obj_char[6]
-    obj[7] = obj_char[7]
+    obj[3] = self_side_obj_char[3]
+    obj[5] = self_side_obj_char[5]
+    obj[6] = self_side_obj_char[6]
+    obj[7] = self_side_obj_char[7]
 end
 function draw_game_scene_char_LP()
     local obj = {0,0,0,0,0,0,0,0}
-    local obj_char = obj_char_game_scene_char_LP
+    local self_side_obj_char = obj_char_game_scene_char_LP
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = nil
     
     local shader = shader_game_scene_brightness_contrast
-    shader:send("contrast",obj_char["contrast"])
-    shader:send("brightness",obj_char["brightness"])
+    shader:send("contrast",self_side_obj_char["contrast"])
+    shader:send("brightness",self_side_obj_char["brightness"])
 
     -- draw_back
     -- x y z opacity sx sy r f
-    obj = obj_char["shot_sys_oroboros_back"]
+    obj = self_side_obj_char["shot_sys_oroboros_back"]
     image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     
     -- draw_3d_image_table(obj_camera,obj,character_image_table)
-    image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj_char["sprite_sheet"]]
+    image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[self_side_obj_char["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
-    draw_3d_image_sprite_batch(obj_camera,obj_char,image_sprite_sheet,tostring(obj_char[8]))
+    draw_3d_image_sprite_batch(obj_camera,self_side_obj_char,image_sprite_sheet,tostring(self_side_obj_char[8]))
     love.graphics.setShader(shader)
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     love.graphics.setShader()
 
     -- draw_mid
-    obj = obj_char["shot_sys_oroboros_mid"]
+    obj = self_side_obj_char["shot_sys_oroboros_mid"]
     image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
 
     -- darw_front
-    obj = obj_char["shot_sys_oroboros_front"]
+    obj = self_side_obj_char["shot_sys_oroboros_front"]
     image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
 end
 function draw_game_scene_char_LP_shadow()
-    local obj_char = obj_char_game_scene_char_LP
+    local self_side_obj_char = obj_char_game_scene_char_LP
     local obj_camera = obj_stage_game_scene_camera
     local light_obj = obj_stage_game_scene_glow_with_linear_fade_alpha
 
@@ -6271,17 +6261,17 @@ function draw_game_scene_char_LP_shadow()
     love.graphics.setCanvas()
 
     -- local opacity = math.max(0,(obj["y"] - 345)/20)*0.5
-    love.graphics.setColor(0,0,0,obj_char["shadow_opacity"])
+    love.graphics.setColor(0,0,0,self_side_obj_char["shadow_opacity"])
     love.graphics.draw(DRAW_SHADOW_CANVAS)
     love.graphics.setColor(1,1,1,1)
 end
 function draw_game_scene_char_LP_attachment_front()
     -- retcile
-    local obj_char = obj_char_game_scene_char_LP
+    local self_side_obj_char = obj_char_game_scene_char_LP
     local obj_camera = obj_stage_game_scene_camera
-    local image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj_char["shot_sys_reticle_sprite_sheet"]]
+    local image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[self_side_obj_char["shot_sys_reticle_sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
-    draw_3d_image_sprite_batch(obj_camera,obj_char["shot_sys_reticle"],image_sprite_sheet,tostring(obj_char["shot_sys_reticle"][8]))
+    draw_3d_image_sprite_batch(obj_camera,self_side_obj_char["shot_sys_reticle"],image_sprite_sheet,tostring(self_side_obj_char["shot_sys_reticle"][8]))
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
 end
 function draw_game_scene_char_LP_attachment_back()
@@ -6292,22 +6282,22 @@ function draw_game_scene_char_LP_pushbox()
         return
     end
 
-    local obj_char = obj_char_game_scene_char_LP
+    local self_side_obj_char = obj_char_game_scene_char_LP
     local obj_camera = obj_stage_game_scene_camera
 
     -- push box
     local color = DEBUG_BOX_COLOR_YELLOW
     local draw_box = {
-        obj_char["x"] + (obj_char["pushbox"][1] - obj_char["pushbox"][3]/2)*obj_char[5],
-        obj_char["y"] + obj_char["pushbox"][2] - obj_char["pushbox"][4]/2,
-        obj_char[3],obj_char[5],1
+        self_side_obj_char["x"] + (self_side_obj_char["pushbox"][1] - self_side_obj_char["pushbox"][3]/2)*self_side_obj_char[5],
+        self_side_obj_char["y"] + self_side_obj_char["pushbox"][2] - self_side_obj_char["pushbox"][4]/2,
+        self_side_obj_char[3],self_side_obj_char[5],1
     }
-    draw_box["w"] = obj_char["pushbox"][3]
-    draw_box["h"] = obj_char["pushbox"][4]
+    draw_box["w"] = self_side_obj_char["pushbox"][3]
+    draw_box["h"] = self_side_obj_char["pushbox"][4]
     draw_3d_color_box(obj_camera,draw_box,color)
 
-    for i=1,#obj_char["projectile_table"] do
-        local current_projectile = obj_char["projectile_table"][i]
+    for i=1,#self_side_obj_char["projectile_table"] do
+        local current_projectile = self_side_obj_char["projectile_table"][i]
         local current_pushbox = current_projectile["pushbox"]
         if current_pushbox then
             local draw_box = {
@@ -6326,24 +6316,24 @@ function draw_game_scene_char_LP_hurtbox()
         return
     end
 
-    local obj_char = obj_char_game_scene_char_LP
+    local self_side_obj_char = obj_char_game_scene_char_LP
     local obj_camera = obj_stage_game_scene_camera
 
     -- hurt box
     local color = DEBUG_BOX_COLOR_BLUE
-    for i=1,#obj_char["hurtbox_table"] do
-        local current_hurtbox = obj_char["hurtbox_table"][i]
+    for i=1,#self_side_obj_char["hurtbox_table"] do
+        local current_hurtbox = self_side_obj_char["hurtbox_table"][i]
         local draw_box = {
-            obj_char["x"] + (current_hurtbox[1] - current_hurtbox[3]/2)*obj_char[5],
-            obj_char["y"] + current_hurtbox[2] - current_hurtbox[4]/2,
-            obj_char[3],obj_char[5],1
+            self_side_obj_char["x"] + (current_hurtbox[1] - current_hurtbox[3]/2)*self_side_obj_char[5],
+            self_side_obj_char["y"] + current_hurtbox[2] - current_hurtbox[4]/2,
+            self_side_obj_char[3],self_side_obj_char[5],1
         }
         draw_box["w"] = current_hurtbox[3]
         draw_box["h"] = current_hurtbox[4]
         draw_3d_color_box(obj_camera,draw_box,color)
     end
-    for i=1,#obj_char["projectile_table"] do
-        local current_projectile = obj_char["projectile_table"][i]
+    for i=1,#self_side_obj_char["projectile_table"] do
+        local current_projectile = self_side_obj_char["projectile_table"][i]
         for j=1,#current_projectile["hurtbox_table"] do
             local current_hurtbox = current_projectile["hurtbox_table"][j]
             if current_hurtbox then
@@ -6364,24 +6354,24 @@ function draw_game_scene_char_LP_hitbox()
         return
     end
 
-    local obj_char = obj_char_game_scene_char_LP
+    local self_side_obj_char = obj_char_game_scene_char_LP
     local obj_camera = obj_stage_game_scene_camera
 
     -- hit box
     local color = DEBUG_BOX_COLOR_RED
-    for i=1,#obj_char["hitbox_table"] do
-        local current_hitbox = obj_char["hitbox_table"][i]
+    for i=1,#self_side_obj_char["hitbox_table"] do
+        local current_hitbox = self_side_obj_char["hitbox_table"][i]
         local draw_box = {
-            obj_char["x"] + (current_hitbox[1] - current_hitbox[3]/2)*obj_char[5],
-            obj_char["y"] + current_hitbox[2] - current_hitbox[4]/2,
-            obj_char[3],obj_char[5],1
+            self_side_obj_char["x"] + (current_hitbox[1] - current_hitbox[3]/2)*self_side_obj_char[5],
+            self_side_obj_char["y"] + current_hitbox[2] - current_hitbox[4]/2,
+            self_side_obj_char[3],self_side_obj_char[5],1
         }
         draw_box["w"] = current_hitbox[3]
         draw_box["h"] = current_hitbox[4]
         draw_3d_color_box(obj_camera,draw_box,color)
     end
-    for i=1,#obj_char["projectile_table"] do
-        local current_projectile = obj_char["projectile_table"][i]
+    for i=1,#self_side_obj_char["projectile_table"] do
+        local current_projectile = self_side_obj_char["projectile_table"][i]
         for j=1,#current_projectile["hitbox_table"] do
             local current_hitbox = current_projectile["hitbox_table"][j]
             if current_hitbox then
@@ -6396,8 +6386,8 @@ function draw_game_scene_char_LP_hitbox()
             end
         end
     end
-    for i=1,#obj_char["projectile_rc_table"] do
-        local current_projectile = obj_char["projectile_rc_table"][i]
+    for i=1,#self_side_obj_char["projectile_rc_table"] do
+        local current_projectile = self_side_obj_char["projectile_rc_table"][i]
         for j=1,#current_projectile["hitbox_table"] do
             local current_hitbox = current_projectile["hitbox_table"][j]
             if current_hitbox then
@@ -6550,127 +6540,127 @@ end
 
 -- countdown
 function update_game_scene_char_LP_overdrive_countdown()
-    local obj_char = obj_char_game_scene_char_LP
-    if obj_char["state"] == "hitstop"
-    or obj_char["state"] == "hurtstop"
-    or obj_char["state"] == "blockstop"
-    or obj_char["game_speed_force_1_countdown"] > 0 then
+    local self_side_obj_char = obj_char_game_scene_char_LP
+    if self_side_obj_char["state"] == "hitstop"
+    or self_side_obj_char["state"] == "hurtstop"
+    or self_side_obj_char["state"] == "blockstop"
+    or self_side_obj_char["game_speed_force_1_countdown"] > 0 then
         return
     end
-    if obj_char["state"] ~= "burst_overdrive" and 
-    obj_char["overdrive_timer"][1] + obj_char["overdrive_timer"][2] +
-    obj_char["overdrive_timer"][3] + obj_char["overdrive_timer"][4] > 1
+    if self_side_obj_char["state"] ~= "burst_overdrive" and 
+    self_side_obj_char["overdrive_timer"][1] + self_side_obj_char["overdrive_timer"][2] +
+    self_side_obj_char["overdrive_timer"][3] + self_side_obj_char["overdrive_timer"][4] > 1
     then
-        if obj_char["overdrive_timer"][4] == 0 and obj_char["overdrive_timer"][3] ~= 0 then 
-            obj_char["overdrive_timer"][3] = obj_char["overdrive_timer"][3] - 1
-            obj_char["overdrive_timer"][4] = 9
-        elseif obj_char["overdrive_timer"][4] > 0 then
-            obj_char["overdrive_timer"][4] = obj_char["overdrive_timer"][4] - 1
+        if self_side_obj_char["overdrive_timer"][4] == 0 and self_side_obj_char["overdrive_timer"][3] ~= 0 then 
+            self_side_obj_char["overdrive_timer"][3] = self_side_obj_char["overdrive_timer"][3] - 1
+            self_side_obj_char["overdrive_timer"][4] = 9
+        elseif self_side_obj_char["overdrive_timer"][4] > 0 then
+            self_side_obj_char["overdrive_timer"][4] = self_side_obj_char["overdrive_timer"][4] - 1
         end
-        if obj_char["overdrive_timer"][3] == 0 and obj_char["overdrive_timer"][2] ~= 0 then 
-            obj_char["overdrive_timer"][2] = obj_char["overdrive_timer"][2] - 1
-            obj_char["overdrive_timer"][3] = 5
+        if self_side_obj_char["overdrive_timer"][3] == 0 and self_side_obj_char["overdrive_timer"][2] ~= 0 then 
+            self_side_obj_char["overdrive_timer"][2] = self_side_obj_char["overdrive_timer"][2] - 1
+            self_side_obj_char["overdrive_timer"][3] = 5
         end
-        if obj_char["overdrive_timer"][2] < 0 and obj_char["overdrive_timer"][1] ~= 0 then 
-            obj_char["overdrive_timer"][1] = obj_char["overdrive_timer"][1] - 1
-            obj_char["overdrive_timer"][2] = 9
+        if self_side_obj_char["overdrive_timer"][2] < 0 and self_side_obj_char["overdrive_timer"][1] ~= 0 then 
+            self_side_obj_char["overdrive_timer"][1] = self_side_obj_char["overdrive_timer"][1] - 1
+            self_side_obj_char["overdrive_timer"][2] = 9
         end
-    elseif obj_char["state"] ~= "burst_overdrive" and 
-    obj_char["overdrive_timer"][1] + obj_char["overdrive_timer"][2] +
-    obj_char["overdrive_timer"][3] + obj_char["overdrive_timer"][4] <= 1
+    elseif self_side_obj_char["state"] ~= "burst_overdrive" and 
+    self_side_obj_char["overdrive_timer"][1] + self_side_obj_char["overdrive_timer"][2] +
+    self_side_obj_char["overdrive_timer"][3] + self_side_obj_char["overdrive_timer"][4] <= 1
     then
-        obj_char["overdrive_timer"] = {0,0,0,0}
-        obj_char["overdrive_gauge"][3] = "off"
+        self_side_obj_char["overdrive_timer"] = {0,0,0,0}
+        self_side_obj_char["overdrive_gauge"][3] = "off"
     end
 end
 function update_game_scene_char_LP_inv_state_countdown()
-    local obj_char = obj_char_game_scene_char_LP
-    if obj_char["state"] == "hitstop"
-    or obj_char["state"] == "hurtstop"
-    or obj_char["state"] == "blockstop"
-    or obj_char["game_speed_force_1_countdown"] > 0 then
+    local self_side_obj_char = obj_char_game_scene_char_LP
+    if self_side_obj_char["state"] == "hitstop"
+    or self_side_obj_char["state"] == "hurtstop"
+    or self_side_obj_char["state"] == "blockstop"
+    or self_side_obj_char["game_speed_force_1_countdown"] > 0 then
         return
     end
-    if obj_char["strike_inv_countdown"] > 1 then
-        obj_char["strike_inv_countdown"] = obj_char["strike_inv_countdown"] - 1
+    if self_side_obj_char["strike_inv_countdown"] > 1 then
+        self_side_obj_char["strike_inv_countdown"] = self_side_obj_char["strike_inv_countdown"] - 1
     else
-        obj_char["strike_inv"] = false
-        obj_char["strike_inv_countdown"] = 0
+        self_side_obj_char["strike_inv"] = false
+        self_side_obj_char["strike_inv_countdown"] = 0
     end
-    if obj_char["throw_inv_countdown"] > 1 then
-        obj_char["throw_inv_countdown"] = obj_char["throw_inv_countdown"] - 1
+    if self_side_obj_char["throw_inv_countdown"] > 1 then
+        self_side_obj_char["throw_inv_countdown"] = self_side_obj_char["throw_inv_countdown"] - 1
     else
-        obj_char["throw_inv"] = false
-        obj_char["throw_inv_countdown"] = 0
+        self_side_obj_char["throw_inv"] = false
+        self_side_obj_char["throw_inv_countdown"] = 0
     end
-    if obj_char["projectile_inv_countdown"] > 1 then
-        obj_char["projectile_inv_countdown"] = obj_char["projectile_inv_countdown"] - 1
+    if self_side_obj_char["projectile_inv_countdown"] > 1 then
+        self_side_obj_char["projectile_inv_countdown"] = self_side_obj_char["projectile_inv_countdown"] - 1
     else
-        obj_char["projectile_inv"] = false
-        obj_char["projectile_inv_countdown"] = 0
+        self_side_obj_char["projectile_inv"] = false
+        self_side_obj_char["projectile_inv_countdown"] = 0
     end
 end
 function update_game_scene_char_LP_heat_penalty_countdown()
-    local obj_char = obj_char_game_scene_char_LP
-    if obj_char["state"] == "hitstop"
-    or obj_char["state"] == "hurtstop"
-    or obj_char["state"] == "blockstop"
-    or obj_char["game_speed_force_1_countdown"] > 0 then
+    local self_side_obj_char = obj_char_game_scene_char_LP
+    if self_side_obj_char["state"] == "hitstop"
+    or self_side_obj_char["state"] == "hurtstop"
+    or self_side_obj_char["state"] == "blockstop"
+    or self_side_obj_char["game_speed_force_1_countdown"] > 0 then
         return
     end
-    if obj_char["heat_penalty_countdown"] > 1 then
-        obj_char["heat_penalty_countdown"] = obj_char["heat_penalty_countdown"] - 1
+    if self_side_obj_char["heat_penalty_countdown"] > 1 then
+        self_side_obj_char["heat_penalty_countdown"] = self_side_obj_char["heat_penalty_countdown"] - 1
     else
-        obj_char["heat_penalty"] = 1
-        obj_char["heat_penalty_countdown"] = 0
+        self_side_obj_char["heat_penalty"] = 1
+        self_side_obj_char["heat_penalty_countdown"] = 0
     end
 end
 function update_game_scene_char_LP_ability_penalty_countdown()
-    local obj_char = obj_char_game_scene_char_LP
-    if obj_char["state"] == "hitstop"
-    or obj_char["state"] == "hurtstop"
-    or obj_char["state"] == "blockstop"
-    or obj_char["game_speed_force_1_countdown"] > 0 then
+    local self_side_obj_char = obj_char_game_scene_char_LP
+    if self_side_obj_char["state"] == "hitstop"
+    or self_side_obj_char["state"] == "hurtstop"
+    or self_side_obj_char["state"] == "blockstop"
+    or self_side_obj_char["game_speed_force_1_countdown"] > 0 then
         return
     end
-    if obj_char["ability_penalty_countdown"] > 1 then
-        obj_char["ability_penalty_countdown"] = obj_char["ability_penalty_countdown"] - 1
+    if self_side_obj_char["ability_penalty_countdown"] > 1 then
+        self_side_obj_char["ability_penalty_countdown"] = self_side_obj_char["ability_penalty_countdown"] - 1
     else
-        obj_char["ability_penalty"] = 1
-        obj_char["ability_penalty_countdown"] = 0
+        self_side_obj_char["ability_penalty"] = 1
+        self_side_obj_char["ability_penalty_countdown"] = 0
     end
 end
 function update_game_scene_char_LP_positive_bonus_countdown()
-    local obj_char = obj_char_game_scene_char_LP
-    if obj_char["state"] == "hitstop"
-    or obj_char["state"] == "hurtstop"
-    or obj_char["state"] == "blockstop"
-    or obj_char["game_speed_force_1_countdown"] > 0 then
+    local self_side_obj_char = obj_char_game_scene_char_LP
+    if self_side_obj_char["state"] == "hitstop"
+    or self_side_obj_char["state"] == "hurtstop"
+    or self_side_obj_char["state"] == "blockstop"
+    or self_side_obj_char["game_speed_force_1_countdown"] > 0 then
         return
     end
-    if obj_char["positive_bonus_countdown"] > 1 then
-        obj_char["positive_bonus_countdown"] = obj_char["positive_bonus_countdown"] - 1
+    if self_side_obj_char["positive_bonus_countdown"] > 1 then
+        self_side_obj_char["positive_bonus_countdown"] = self_side_obj_char["positive_bonus_countdown"] - 1
     else
-        obj_char["positive_bonus"] = false
-        obj_char["positive_bonus_heat_gain_buff"] = 1
-        obj_char["positive_bonus_hit_damage_buff"] = 1
-        obj_char["positive_bonus_hurt_damage_buff"] = 1
-        obj_char["positive_bonus_countdown"] = 0
+        self_side_obj_char["positive_bonus"] = false
+        self_side_obj_char["positive_bonus_heat_gain_buff"] = 1
+        self_side_obj_char["positive_bonus_hit_damage_buff"] = 1
+        self_side_obj_char["positive_bonus_hurt_damage_buff"] = 1
+        self_side_obj_char["positive_bonus_countdown"] = 0
     end
 end
 function update_game_scene_char_LP_shot_sys_curse_countdown()
-    local obj_char = obj_char_game_scene_char_LP
-    if obj_char["state"] == "hitstop"
-    or obj_char["state"] == "hurtstop"
-    or obj_char["state"] == "blockstop"
-    or obj_char["game_speed_force_1_countdown"] > 0 then
+    local self_side_obj_char = obj_char_game_scene_char_LP
+    if self_side_obj_char["state"] == "hitstop"
+    or self_side_obj_char["state"] == "hurtstop"
+    or self_side_obj_char["state"] == "blockstop"
+    or self_side_obj_char["game_speed_force_1_countdown"] > 0 then
         return
     end
-    if obj_char["shot_sys_curse_countdown"] > 1 then
-        obj_char["shot_sys_curse_countdown"] = obj_char["shot_sys_curse_countdown"] - 1
+    if self_side_obj_char["shot_sys_curse_countdown"] > 1 then
+        self_side_obj_char["shot_sys_curse_countdown"] = self_side_obj_char["shot_sys_curse_countdown"] - 1
     else
-        obj_char["shot_sys_curse"] = false
-        obj_char["shot_sys_curse_countdown"] = 0
+        self_side_obj_char["shot_sys_curse"] = false
+        self_side_obj_char["shot_sys_curse_countdown"] = 0
     end
 end
 function update_game_scene_char_LP_uncommon()

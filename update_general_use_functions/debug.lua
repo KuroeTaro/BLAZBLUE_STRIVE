@@ -388,9 +388,8 @@ function set_spawn_pos()
     if this_function then this_function() end
 end
 
-function update_character_frame_adv_info_init(self_side_obj_char)
+function update_character_frame_adv_info_init(self_side_obj_char,opponent_side_obj_char)
     -- none startup active recovery
-    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
     if self_side_obj_char["last_move_state"] == "none" and self_side_obj_char["move_state"] ~= "none" then
         if opponent_side_obj_char["move_state"] == "none" then
             opponent_side_obj_char["frame_adv"] = 0
@@ -399,8 +398,7 @@ function update_character_frame_adv_info_init(self_side_obj_char)
     end
     self_side_obj_char["last_move_state"] = self_side_obj_char["move_state"]
 end
-function update_character_frame_info(self_side_obj_char)
-    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
+function update_character_frame_info(self_side_obj_char,opponent_side_obj_char)
     if self_side_obj_char["move_state"] == "none" and opponent_side_obj_char["move_state"] ~= "none" then
         self_side_obj_char["frame_adv"] = self_side_obj_char["frame_adv"] + 1
         return

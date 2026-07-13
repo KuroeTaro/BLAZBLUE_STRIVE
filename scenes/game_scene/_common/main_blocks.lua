@@ -523,10 +523,10 @@ function update_game_scene_training_main()
     update_game_scene_HUD()
 
     -- 更新角色DEBUG信息
-    update_character_frame_adv_info_init(obj_char_game_scene_char_LP)
-    update_character_frame_adv_info_init(obj_char_game_scene_char_RP)
-    update_character_frame_info(obj_char_game_scene_char_LP)
-    update_character_frame_info(obj_char_game_scene_char_RP)
+    update_character_frame_adv_info_init(obj_char_game_scene_char_LP, obj_char_game_scene_char_RP)
+    update_character_frame_adv_info_init(obj_char_game_scene_char_RP, obj_char_game_scene_char_LP)
+    update_character_frame_info(obj_char_game_scene_char_LP, obj_char_game_scene_char_RP)
+    update_character_frame_info(obj_char_game_scene_char_RP, obj_char_game_scene_char_LP)
 
     if obj_stage_game_scene_main["state"] == "wallbreak" then
         current_update_block = update_game_scene_training_wallbreak

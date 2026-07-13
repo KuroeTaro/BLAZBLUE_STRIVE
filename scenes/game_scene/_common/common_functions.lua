@@ -114,6 +114,13 @@ function common_game_scene_get_VFX_sprite_sheet_table(side)
     }
     return side_table[side]
 end
+function common_game_scene_get_input_state(side)
+    local side_table = {
+        ["L"] = INPUT_SYS_CURRENT_COMMAND_STATE["L"],
+        ["R"] = INPUT_SYS_CURRENT_COMMAND_STATE["R"]
+    }
+    return side_table[side]
+end
 function common_game_scene_get_input_sys_cache_state_machine(side)
     local side_table = {
         ["L"] = state_machine_char_game_scene_char_LP_input_sys_cache,
@@ -210,49 +217,6 @@ function common_game_scene_get_character_hurt_direction(self_side_obj_char,oppon
     return hurt_horizontal_velocity*(dx)/math.abs(dx)
 end
 function common_game_scene_char_enclose_heat_gain(self_side_obj_char,opponent_side_obj_char)
-end
-
-function common_game_scene_change_character(side)
-    local side_table = {
-        ["L"] = obj_char_game_scene_char_RP,
-        ["R"] = obj_char_game_scene_char_LP
-    }
-    return side_table[side]
-end
-function common_game_scene_change_character_pushbox(side)
-    local side_table = {
-        ["L"] = obj_pushboxs_data_game_scene_char_RP,
-        ["R"] = obj_pushboxs_data_game_scene_char_LP
-    }
-    return side_table[side]
-end
-function common_game_scene_change_character_hurtbox(side)
-    local side_table = {
-        ["L"] = obj_hurtboxs_data_game_scene_char_RP,
-        ["R"] = obj_hurtboxs_data_game_scene_char_LP
-    }
-    return side_table[side]
-end
-function common_game_scene_change_character_anchor(side)
-    local side_table = {
-        ["L"] = obj_anchor_data_game_scene_char_RP,
-        ["R"] = obj_anchor_data_game_scene_char_LP
-    }
-    return side_table[side]
-end
-function common_game_scene_change_character_VFX_spawn_anchor(side)
-    local side_table = {
-        ["L"] = obj_VFX_spawn_anchor_data_game_scene_char_RP,
-        ["R"] = obj_VFX_spawn_anchor_data_game_scene_char_LP
-    }
-    return side_table[side]
-end
-function common_game_scene_change_input_state(side)
-    local side_table = {
-        ["L"] = "R",
-        ["R"] = "L"
-    }
-    return INPUT_SYS_CURRENT_COMMAND_STATE[side_table[side]]
 end
 
 function common_game_scene_check_block_direction(obj_char)
@@ -611,10 +575,9 @@ function common_game_scene_strike_hurt_function_common_hurt(hurt_side_obj_char,h
     init_character_anim_with(hurt_side_obj_char,hurt_side_obj_char["character_animation"])
 end
 
-function common_game_scene_projectile_hurt_function(hurt_side_obj_char,projectile)
+function common_game_scene_projectile_hurt_function(hurt_side_obj_char,hit_side_obj_char,projectile)
     local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
-    local hit_side_obj_char = common_game_scene_change_character(hurt_side_obj_char["player_side"])
     local wallhurt_wallstick_on_side_cache = hurt_side_obj_char["wallhurt_wallstick_on_side"]
 
     -- set_physics_lock
@@ -820,9 +783,8 @@ function common_game_scene_projectile_hurt_function_common_hurt(hurt_side_obj_ch
     projectile["hurt_VFX_insert_function"]()
 end
 
-function common_game_scene_throw_hit_function(hurt_side_obj_char)
+function common_game_scene_throw_hit_function(hurt_side_obj_char,hit_side_obj_char)
     local side = hurt_side_obj_char["player_side"]
-    local hit_side_obj_char = common_game_scene_change_character(hurt_side_obj_char["player_side"])
     -- physics_lock
     hit_side_obj_char["physics_lock"] = true
     -- change_draw_front
@@ -852,9 +814,8 @@ function common_game_scene_throw_hit_function(hurt_side_obj_char)
     -- game_speed
     common_game_scene_game_speed_load_application(hit_side_obj_char,{1,1,1,0,0,0})
 end
-function common_game_scene_throw_hurt_function(hurt_side_obj_char)
+function common_game_scene_throw_hurt_function(hurt_side_obj_char,hit_side_obj_char)
     local side = hurt_side_obj_char["player_side"]
-    local hit_side_obj_char = common_game_scene_change_character(side)
     local obj_camera = obj_stage_game_scene_camera
     local pushbox_data = common_game_scene_get_pushbox(side)
     local anchor_data = common_game_scene_get_anchor(side)

@@ -1,7 +1,6 @@
 -- hit_function
-function character_function_game_scene_TRM_j2K_strike_hit_function(obj_char)
-    local hit_side_obj_char = common_game_scene_change_character(obj_char["player_side"])
-    common_game_scene_strike_hit_function(obj_char,hit_side_obj_char)
+function character_function_game_scene_TRM_j2K_strike_hit_function(hurt_side_obj_char,hit_side_obj_char)
+    common_game_scene_strike_hit_function(hurt_side_obj_char,hit_side_obj_char)
     -- velocity
     hit_side_obj_char["velocity"][2] = -5
     if hit_side_obj_char["direction_input"] == 3 then
@@ -15,8 +14,8 @@ function character_function_game_scene_TRM_j2K_strike_hit_function(obj_char)
     -- debug
     hit_side_obj_char["active_frame"] = hit_side_obj_char["active_frame"] + 1
 end
-function character_function_game_scene_TRM_j2K_strike_hurt_function(obj_char)
-    common_game_scene_strike_hurt_function(obj_char,common_game_scene_change_character(obj_char["player_side"]))
+function character_function_game_scene_TRM_j2K_strike_hurt_function(hurt_side_obj_char,hit_side_obj_char)
+    common_game_scene_strike_hurt_function(hurt_side_obj_char,hit_side_obj_char)
 end
 
 -- RC_state_update_function
@@ -40,53 +39,43 @@ end
 
 -- cancel_function
 function character_function_game_scene_TRM_hitstop_air_jump_cancel(
-    input,obj_char,
+    input,self_side_obj_char,opponent_side_obj_char,
     v1,v2,v3,v4,v5,v6,v7,v8,v9
 )
     local down_cache = input["down"]
     input["down"] = false
-    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-        obj_char[5] = -obj_char[5]
+    if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+        self_side_obj_char[5] = -self_side_obj_char[5]
     end
-    common_update_game_scene_input_direction(obj_char)
+    common_update_game_scene_input_direction(self_side_obj_char)
     input["down"] = down_cache
     -- air_move
-    obj_char["air_move"]["jump"][1] = math.max(math.min(obj_char["air_move"]["jump"][1]-1,obj_char["air_move"]["jump"][2]),0)
-    obj_char["air_move"]["air_dash"][1] = 0
+    self_side_obj_char["air_move"]["jump"][1] = math.max(math.min(self_side_obj_char["air_move"]["jump"][1]-1,self_side_obj_char["air_move"]["jump"][2]),0)
+    self_side_obj_char["air_move"]["air_dash"][1] = 0
     -- velocity_cache
-    if obj_char["direction_input"] == 7 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"7_jump",{200,470},obj_char["velocity"][1]*v1 + obj_char[5]*v2,v3)
-    elseif obj_char["direction_input"] == 8 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"8_jump",{350,430},obj_char["velocity"][1]*v4 + obj_char[5]*v5,v6)
-    elseif obj_char["direction_input"] == 9 then
-        obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,"9_jump",{320,430},obj_char["velocity"][1]*v7 + obj_char[5]*v8,v9)
+    if self_side_obj_char["direction_input"] == 7 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"7_jump",{200,470},self_side_obj_char["velocity"][1]*v1 + self_side_obj_char[5]*v2,v3)
+    elseif self_side_obj_char["direction_input"] == 8 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1]*v4 + self_side_obj_char[5]*v5,v6)
+    elseif self_side_obj_char["direction_input"] == 9 then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"9_jump",{320,430},self_side_obj_char["velocity"][1]*v7 + self_side_obj_char[5]*v8,v9)
     end
-    init_character_anim_with(obj_char,obj_char["character_animation"])
-    obj_char["state"] = "7_8_9_jump_air"
+    init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+    self_side_obj_char["state"] = "7_8_9_jump_air"
     -- save_input_sys_cache_from_jS_and_7_8_9_jump_air
-    load_input_sys_cache_manual_release(input,obj_char,"up")
-    load_input_sys_cache_recache(input,obj_char)
-    obj_char["input_sys_state"] = "save" -- none save load
+    load_input_sys_cache_manual_release(input,self_side_obj_char,"up")
+    load_input_sys_cache_recache(input,self_side_obj_char)
+    self_side_obj_char["input_sys_state"] = "save" -- none save load
 end
-function character_function_game_scene_TRM_histop_ground_jump_cancel(input,obj_char)
-    obj_char["direction_input_cache"],obj_char["direction_input"] = obj_char["direction_input"],obj_char["direction_input_cache"]
-    if not common_game_scene_get_character_facing_currect(obj_char,common_game_scene_change_character(obj_char["player_side"])) then
-        obj_char[5] = -obj_char[5]
+function character_function_game_scene_TRM_histop_ground_jump_cancel(input,self_side_obj_char,opponent_side_obj_char)
+    self_side_obj_char["direction_input_cache"],self_side_obj_char["direction_input"] = self_side_obj_char["direction_input"],self_side_obj_char["direction_input_cache"]
+    if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+        self_side_obj_char[5] = -self_side_obj_char[5]
     end
-    obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
-    init_character_anim_with(obj_char,obj_char["character_animation"])
-    obj_char["direction_input_cache"],obj_char["direction_input"] = obj_char["direction_input"],obj_char["direction_input_cache"]
-    obj_char["state"] = "7_8_9_pre_jump"
-end
-function character_function_game_scene_TRM_hitstop_dash_cancel(
-    input,obj_char,
-    v1,v2,v3,v4,v5,v6,v7,v8,v9
-)
-end
-function character_function_game_scene_TRM_hitstop_air_dash_cancel(
-    input,obj_char,
-    v1,v2,v3,v4,v5,v6,v7,v8,v9
-)
+    self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(self_side_obj_char)
+    init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+    self_side_obj_char["direction_input_cache"],self_side_obj_char["direction_input"] = self_side_obj_char["direction_input"],self_side_obj_char["direction_input_cache"]
+    self_side_obj_char["state"] = "7_8_9_pre_jump"
 end
 function character_function_game_scene_TRM_hitstop_force_delay_gatling_cancel_input_sys_cache_process(input,obj_char)
     if obj_char["state"] == "j2K" then
@@ -106,8 +95,7 @@ function character_function_game_scene_TRM_shot_sys_ability_gauge_use(obj_char)
     end
 end
 -- aim_process_init
-function character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char)
-    local hurt_side_obj_char = common_game_scene_change_character(hit_side_obj_char["player_side"])
+function character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
     local instant_aim_state = {
         ["block"] = true,
         ["hurt"] = true,
@@ -127,7 +115,7 @@ function character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_ob
     end
 end
 -- aim_process_update
-function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(self_side_obj_char)
+function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(self_side_obj_char,opponent_side_obj_char)
     -- 0.敌我之间距离
     -- 1.敌方绝对速度
     -- 2.水平相对速度
@@ -136,7 +124,6 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_upd
     -- 5.诅咒
     -- 6.特定的己方模组（哈皮的翻滚）
     local obj_char_shot_sys_aim_process = self_side_obj_char["shot_sys_aim_process"]
-    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
     local instant_aim_state = {
         ["block"] = true,
         ["hurt"] = true,
@@ -191,8 +178,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculati
     return center_r
 end
 -- reticle_basic_prop_update
-function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(self_side_obj_char)
-    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
+function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(self_side_obj_char,opponent_side_obj_char)
     local self_side_obj_char_shot_sys_aim_process = self_side_obj_char["shot_sys_aim_process"]
     local div_value = 30-math.min(self_side_obj_char_shot_sys_aim_process[1],self_side_obj_char_shot_sys_aim_process[3])/15
 
@@ -215,11 +201,10 @@ function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_re
     self_side_obj_char["shot_sys_reticle"][2] = self_side_obj_char["shot_sys_reticle_stage_pos_current"][2]
     return
 end
-function character_function_game_scene_TRM_shot_sys_reticle_pos_update_ease_in(self_side_obj_char)
+function character_function_game_scene_TRM_shot_sys_reticle_pos_update_ease_in(self_side_obj_char,opponent_side_obj_char)
     if self_side_obj_char["shot_sys_aim_process"][1] < self_side_obj_char["shot_sys_aim_process"][3] then
         return
     end
-    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
     local self_side_obj_char_shot_sys_aim_process = self_side_obj_char["shot_sys_aim_process"]
     local div_value = 30-math.min(self_side_obj_char_shot_sys_aim_process[1],self_side_obj_char_shot_sys_aim_process[3])/15
 
@@ -242,11 +227,10 @@ function character_function_game_scene_TRM_shot_sys_reticle_pos_update_ease_in(s
     self_side_obj_char["shot_sys_reticle"][2] = self_side_obj_char["shot_sys_reticle_stage_pos_current"][2]
     return
 end
-function character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(self_side_obj_char)
+function character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(self_side_obj_char,opponent_side_obj_char)
     local random_offset = (math.random(2) == 1) and 1 or 0
     local random_index = math.random(1, 2)
     local offset_multiplier = 100
-    local opponent_side_obj_char = common_game_scene_change_character(self_side_obj_char["player_side"])
     local height_offset = {
         [370] = 315,
         [285] = 200,
@@ -307,46 +291,46 @@ function character_function_game_scene_TRM_shot_sys_off_update(obj_char)
     obj_char["hurt_state"] = obj_char["hurt_state_target"]
     return
 end
-function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(obj_char)
+function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(self_side_obj_char,opponent_side_obj_char)
     -- hurt_state
-    if obj_char["hurt_state"] == "idle" then
-        obj_char["hurt_state"] = "unblock"
+    if self_side_obj_char["hurt_state"] == "idle" then
+        self_side_obj_char["hurt_state"] = "unblock"
     end
     -- shot_sys
-    obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_in(obj_char)
-    init_character_anim_with(obj_char,obj_char["shot_sys_animation"])
-    obj_char["shot_sys_aim_process"] = {0,0,420,450,false}
-    character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
+    self_side_obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_in(self_side_obj_char)
+    init_character_anim_with(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
+    self_side_obj_char["shot_sys_aim_process"] = {0,0,420,450,false}
+    character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(self_side_obj_char,opponent_side_obj_char)
     -- oroboros
-    obj_char["shot_sys_oroboros_aim_r"] = 0.42
-    obj_char["shot_sys_oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["shot_sys_oroboros_front"])
-    obj_char["shot_sys_oroboros_animation_table"][2] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char["shot_sys_oroboros_front"],"5H_oroboros_loop_front")
-    obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj_char["shot_sys_oroboros_mid"],"5H_oroboros_ease_in_mid")
-    obj_char["shot_sys_oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj_char["shot_sys_oroboros_back"])
-    obj_char["shot_sys_oroboros_animation_table"][5] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj_char["shot_sys_oroboros_back"],"5H_oroboros_loop_back")
-    init_character_anim_without(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][1])
-    init_character_anim_without(obj_char["shot_sys_oroboros_front"],obj_char["shot_sys_oroboros_animation_table"][2])
-    init_character_anim_without(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
-    init_character_anim_without(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
-    init_character_anim_without(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][5])
-    character_function_game_scene_TRM_shot_sys_oroboros_pos_init(obj_char)
-    obj_char["shot_sys_oroboros_state"] = "ease_in"
+    self_side_obj_char["shot_sys_oroboros_aim_r"] = 0.42
+    self_side_obj_char["shot_sys_oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(self_side_obj_char["shot_sys_oroboros_front"])
+    self_side_obj_char["shot_sys_oroboros_animation_table"][2] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(self_side_obj_char["shot_sys_oroboros_front"],"5H_oroboros_loop_front")
+    self_side_obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(self_side_obj_char["shot_sys_oroboros_mid"],"5H_oroboros_ease_in_mid")
+    self_side_obj_char["shot_sys_oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(self_side_obj_char["shot_sys_oroboros_back"])
+    self_side_obj_char["shot_sys_oroboros_animation_table"][5] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(self_side_obj_char["shot_sys_oroboros_back"],"5H_oroboros_loop_back")
+    init_character_anim_without(self_side_obj_char["shot_sys_oroboros_front"],self_side_obj_char["shot_sys_oroboros_animation_table"][1])
+    init_character_anim_without(self_side_obj_char["shot_sys_oroboros_front"],self_side_obj_char["shot_sys_oroboros_animation_table"][2])
+    init_character_anim_without(self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3])
+    init_character_anim_without(self_side_obj_char["shot_sys_oroboros_back"],self_side_obj_char["shot_sys_oroboros_animation_table"][4])
+    init_character_anim_without(self_side_obj_char["shot_sys_oroboros_back"],self_side_obj_char["shot_sys_oroboros_animation_table"][5])
+    character_function_game_scene_TRM_shot_sys_oroboros_pos_init(self_side_obj_char)
+    self_side_obj_char["shot_sys_oroboros_state"] = "ease_in"
     -- reticle
-    obj_char["shot_sys_reticle_animation_table"][1] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(obj_char)
-    init_character_anim_without(obj_char,obj_char["shot_sys_reticle_animation_table"][1])
-    character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(obj_char)
-    character_function_game_scene_TRM_shot_sys_reticle_pos_update_ease_in(obj_char)
-    obj_char["shot_sys_reticle_state"] = "at_the_ready_ease_in"
+    self_side_obj_char["shot_sys_reticle_animation_table"][1] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(self_side_obj_char)
+    init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
+    character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(self_side_obj_char,opponent_side_obj_char)
+    character_function_game_scene_TRM_shot_sys_reticle_pos_update_ease_in(self_side_obj_char,opponent_side_obj_char)
+    self_side_obj_char["shot_sys_reticle_state"] = "at_the_ready_ease_in"
     return
 end
-function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_update(obj_char)
+function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_update(self_side_obj_char,opponent_side_obj_char)
     -- hurt_state
-    if obj_char["hurt_state"] == "idle" then
-        obj_char["hurt_state"] = "unblock"
+    if self_side_obj_char["hurt_state"] == "idle" then
+        self_side_obj_char["hurt_state"] = "unblock"
     end
     -- shot_sys
-    character_animator(obj_char,obj_char["shot_sys_animation"])
-    character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
+    character_animator(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
+    character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(self_side_obj_char,opponent_side_obj_char)
     return
 end
 function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(obj_char)
@@ -391,14 +375,14 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_init(obj_char)
     -- rewrite in case of aim_process change in at_the_ready
     return
 end
-function character_function_game_scene_TRM_shot_sys_at_the_ready_update(obj_char)
+function character_function_game_scene_TRM_shot_sys_at_the_ready_update(self_side_obj_char,opponent_side_obj_char)
     -- hurt_state
-    if obj_char["hurt_state"] == "idle" then
-        obj_char["hurt_state"] = "unblock"
+    if self_side_obj_char["hurt_state"] == "idle" then
+        self_side_obj_char["hurt_state"] = "unblock"
     end
     -- shot_sys
-    obj_char["ability_gauge"][1] = math.max(0,obj_char["ability_gauge"][1]-0.5)
-    character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(obj_char)
+    self_side_obj_char["ability_gauge"][1] = math.max(0,self_side_obj_char["ability_gauge"][1]-0.5)
+    character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(self_side_obj_char,opponent_side_obj_char)
     return
 end
 function character_function_game_scene_TRM_shot_sys_steady_aim_ease_in_init(obj_char)
@@ -413,24 +397,24 @@ function character_function_game_scene_TRM_shot_sys_steady_aim_init(obj_char)
 end
 function character_function_game_scene_TRM_shot_sys_steady_aim_update(obj_char)
 end
-function character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(obj_char)
+function character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(self_side_obj_char,opponent_side_obj_char)
     -- hurt_state
-    if obj_char["hurt_state"] == "idle" then
-        obj_char["hurt_state"] = "unblock"
+    if self_side_obj_char["hurt_state"] == "idle" then
+        self_side_obj_char["hurt_state"] = "unblock"
     end
     -- shot_sys
-    obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(obj_char)
-    init_character_anim_with(obj_char,obj_char["shot_sys_animation"])
+    self_side_obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(self_side_obj_char,opponent_side_obj_char)
+    init_character_anim_with(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
     -- 已经在ease_in阶段完成了当前帧数的aim_process
     -- oroboros
-    obj_char["shot_sys_oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
-    init_character_anim_without(obj_char,obj_char["shot_sys_oroboros_animation_table"][6])
-    character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
-    obj_char["shot_sys_oroboros_state"] = "shot"
+    self_side_obj_char["shot_sys_oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_shot(self_side_obj_char)
+    init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_oroboros_animation_table"][6])
+    character_function_game_scene_TRM_shot_sys_oroboros_pos_update(self_side_obj_char)
+    self_side_obj_char["shot_sys_oroboros_state"] = "shot"
     -- reticle
-    obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_shot(obj_char)
-    init_character_anim_with(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
-    obj_char["shot_sys_reticle_state"] = "at_the_ready_shot"
+    self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_shot(self_side_obj_char)
+    init_character_anim_with(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
+    self_side_obj_char["shot_sys_reticle_state"] = "at_the_ready_shot"
     return
 end
 function character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(obj_char)
