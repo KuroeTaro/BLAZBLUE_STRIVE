@@ -665,8 +665,7 @@ function update_game_scene_friction()
     
     char_LP["velocity_debug"][1] = char_LP["velocity"][1]
     char_LP["velocity_debug"][2] = char_LP["velocity"][2]
-    char_RP["velocity_debug"][1] = char_RP["velocity"][1]
-    char_RP["velocity_debug"][2] = char_RP["velocity"][2]
+
     if char_LP["height"] ~= "air" and LP_RUN_AT_THIS_FRAME and not char_LP["physics_lock"] then
         if char_LP["friction"] == 0 then
             char_LP["velocity"][1] = char_LP["velocity"][1]
@@ -677,6 +676,21 @@ function update_game_scene_friction()
             char_LP["velocity"][1] = 0
         end
     end
+    for i = 1,#char_LP["projectile_table"] do
+        local current_projectile = char_LP["projectile_table"][i]
+        if current_projectile["friction"] == 0 then
+            current_projectile["velocity"][1] = current_projectile["velocity"][1]
+        else
+            current_projectile["velocity"][1] = current_projectile["velocity"][1] - (current_projectile["velocity"][1] / current_projectile["friction"])
+        end
+        if math.abs(current_projectile["velocity"][1]) < 0.001 then
+            current_projectile["velocity"][1] = 0
+        end
+    end
+
+    char_RP["velocity_debug"][1] = char_RP["velocity"][1]
+    char_RP["velocity_debug"][2] = char_RP["velocity"][2]
+
     if char_RP["height"] ~= "air" and RP_RUN_AT_THIS_FRAME and not char_RP["physics_lock"] then
         if char_RP["friction"] == 0 then
             char_RP["velocity"][1] = char_RP["velocity"][1]
@@ -685,6 +699,17 @@ function update_game_scene_friction()
         end
         if math.abs(char_RP["velocity"][1]) < 0.001 then
             char_RP["velocity"][1] = 0
+        end
+    end
+    for i = 1,#char_RP["projectile_table"] do
+        local current_projectile = char_RP["projectile_table"][i]
+        if current_projectile["friction"] == 0 then
+            current_projectile["velocity"][1] = current_projectile["velocity"][1]
+        else
+            current_projectile["velocity"][1] = current_projectile["velocity"][1] - (current_projectile["velocity"][1] / current_projectile["friction"])
+        end
+        if math.abs(current_projectile["velocity"][1]) < 0.001 then
+            current_projectile["velocity"][1] = 0
         end
     end
 end
@@ -719,6 +744,10 @@ function update_game_scene_gravity()
     elseif LP_RUN_AT_THIS_FRAME and not char_LP["physics_lock"] then
         char_LP["velocity"][2] = char_LP["velocity"][2] + char_LP["gravity"]
     end
+    for i = 1,#char_LP["projectile_table"] do
+        local current_projectile = char_LP["projectile_table"][i]
+        current_projectile["velocity"][2] = current_projectile["velocity"][2] + current_projectile["gravity"]
+    end
     
     if char_RP["y"] == 0 then
         char_RP["velocity"][2] = math.min(char_RP["velocity"][2],0)
@@ -728,6 +757,10 @@ function update_game_scene_gravity()
         char_LP["gravity_correction"] = 1
     elseif RP_RUN_AT_THIS_FRAME and not char_RP["physics_lock"] then
         char_RP["velocity"][2] = char_RP["velocity"][2] + char_RP["gravity"]
+    end
+    for i = 1,#char_RP["projectile_table"] do
+        local current_projectile = char_RP["projectile_table"][i]
+        current_projectile["velocity"][2] = current_projectile["velocity"][2] + current_projectile["gravity"]
     end
 end
 function update_game_scene_gauge()
