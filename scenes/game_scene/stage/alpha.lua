@@ -618,21 +618,28 @@ function state_machine_stage_game_scene_camera()
     if this_function then this_function() end
 end
 function state_machine_stage_game_scene_wallstick()
-    local obj_stage_wallstick = obj_stage_game_scene_wallstick
+    local obj_wallstick = obj_stage_game_scene_wallstick
     local switch = {
         ["off"] = function()
 
         end,
+        ["paused"] = function()
+            obj_wallstick["pause_countdown"] = obj_wallstick["pause_countdown"] - 1
+            if obj_wallstick["pause_countdown"] <= 0 then
+                obj_wallstick["state"] = "on"
+                init_frame_anim_with(obj_wallstick,anim_state_frame_game_scene_wallstick_frame)
+            end
+        end,
         ["on"] = function()
-            frame_animator(obj_stage_wallstick,anim_state_frame_game_scene_wallstick_frame)
-            if get_frame_anim_end_state(obj_stage_wallstick,anim_state_frame_game_scene_wallstick_frame) then
-                obj_stage_wallstick[4] = 0
-                obj_stage_wallstick[8] = 0
-                obj_stage_wallstick["state"] = "off"
+            frame_animator(obj_wallstick,anim_state_frame_game_scene_wallstick_frame)
+            if get_frame_anim_end_state(obj_wallstick,anim_state_frame_game_scene_wallstick_frame) then
+                obj_wallstick[4] = 0
+                obj_wallstick[8] = 0
+                obj_wallstick["state"] = "off"
             end
         end,
     }
-    local this_function = switch[obj_stage_wallstick["state"]]
+    local this_function = switch[obj_wallstick["state"]]
     if this_function then this_function() end
 end
 

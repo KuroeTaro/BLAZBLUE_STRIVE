@@ -105,7 +105,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["hit_function"] = function() end
     obj_char_game_scene_char_LP["hurt_function"] = function() end
     obj_char_game_scene_char_LP["parry_function"] = function() end
-    obj_char_game_scene_char_LP["hit_counter_ver_function"] = function() end
+    obj_char_game_scene_char_LP["strike_counter_ver_function"] = function() end
 
     obj_char_game_scene_char_LP["health_gauge_update_function"] = function() end
     obj_char_game_scene_char_LP["overdrive_gauge_update_function"] = function() end
@@ -203,12 +203,12 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["hit_VFX_insert_function"] = nil
     obj_char_game_scene_char_LP["hit_VFX_insert_function_argument"] = nil
     obj_char_game_scene_char_LP["hit_SFX"] = nil
-    obj_char_game_scene_char_LP["hit_counter_VFX_insert_function"] = nil
-    obj_char_game_scene_char_LP["hit_counter_VFX_insert_function_argument"] = nil
-    obj_char_game_scene_char_LP["hit_counter_SFX"] = nil
     obj_char_game_scene_char_LP["hit_block_VFX_insert_function"] = nil
     obj_char_game_scene_char_LP["hit_block_VFX_insert_function_argument"] = nil
     obj_char_game_scene_char_LP["hit_block_SFX"] = nil
+    obj_char_game_scene_char_LP["hit_counter_VFX_insert_function"] = nil
+    obj_char_game_scene_char_LP["hit_counter_VFX_insert_function_argument"] = nil
+    obj_char_game_scene_char_LP["hit_counter_SFX"] = nil
     obj_char_game_scene_char_LP["hurt_block_VFX_insert_function"] = nil
     obj_char_game_scene_char_LP["hurt_block_SFX"] = nil
     
@@ -6334,17 +6334,19 @@ function draw_game_scene_char_LP_hurtbox()
     end
     for i=1,#self_side_obj_char["projectile_table"] do
         local current_projectile = self_side_obj_char["projectile_table"][i]
-        for j=1,#current_projectile["hurtbox_table"] do
-            local current_hurtbox = current_projectile["hurtbox_table"][j]
-            if current_hurtbox then
-                local draw_box = {
-                    current_projectile["x"] + (current_hurtbox[1] - current_hurtbox[3]/2)*current_projectile[5],
-                    current_projectile["y"] + current_hurtbox[2] - current_hurtbox[4]/2,
-                    current_projectile[3],current_projectile[5],1
-                }
-                draw_box["w"] = current_hurtbox[3]
-                draw_box["h"] = current_hurtbox[4]
-                draw_3d_color_box(obj_camera,draw_box,color)
+        if current_projectile["hurtbox_table"] then
+            for j=1,#current_projectile["hurtbox_table"] do
+                local current_hurtbox = current_projectile["hurtbox_table"][j]
+                if current_hurtbox then
+                    local draw_box = {
+                        current_projectile["x"] + (current_hurtbox[1] - current_hurtbox[3]/2)*current_projectile[5],
+                        current_projectile["y"] + current_hurtbox[2] - current_hurtbox[4]/2,
+                        current_projectile[3],current_projectile[5],1
+                    }
+                    draw_box["w"] = current_hurtbox[3]
+                    draw_box["h"] = current_hurtbox[4]
+                    draw_3d_color_box(obj_camera,draw_box,color)
+                end
             end
         end
     end
@@ -6372,17 +6374,19 @@ function draw_game_scene_char_LP_hitbox()
     end
     for i=1,#self_side_obj_char["projectile_table"] do
         local current_projectile = self_side_obj_char["projectile_table"][i]
-        for j=1,#current_projectile["hitbox_table"] do
-            local current_hitbox = current_projectile["hitbox_table"][j]
-            if current_hitbox then
-                local draw_box = {
-                    current_projectile["x"] + (current_hitbox[1] - current_hitbox[3]/2)*current_projectile[5],
-                    current_projectile["y"] + current_hitbox[2] - current_hitbox[4]/2,
-                    current_projectile[3],current_projectile[5],1
-                }
-                draw_box["w"] = current_hitbox[3]
-                draw_box["h"] = current_hitbox[4]
-                draw_3d_color_box(obj_camera,draw_box,color)
+        if current_projectile["hitbox_table"] then
+            for j=1,#current_projectile["hitbox_table"] do
+                local current_hitbox = current_projectile["hitbox_table"][j]
+                if current_hitbox then
+                    local draw_box = {
+                        current_projectile["x"] + (current_hitbox[1] - current_hitbox[3]/2)*current_projectile[5],
+                        current_projectile["y"] + current_hitbox[2] - current_hitbox[4]/2,
+                        current_projectile[3],current_projectile[5],1
+                    }
+                    draw_box["w"] = current_hitbox[3]
+                    draw_box["h"] = current_hitbox[4]
+                    draw_3d_color_box(obj_camera,draw_box,color)
+                end
             end
         end
     end

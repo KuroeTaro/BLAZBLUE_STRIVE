@@ -4842,7 +4842,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
 end
 
 -- wallstick_lead_to_wallbreak
-function load_game_scene_anim_char_common_0_general_hurt_wallbreak(hit_side_obj_char,hurt_side_obj_char,projectile,adv)
+function load_game_scene_anim_char_common_0_general_hurt_wallbreak(hit_side_obj_char,hurt_side_obj_char,obj_projectile,adv)
     local res = {}
     res["prop_f"] = "f"
     res["anim_length"] = 1
@@ -4853,13 +4853,13 @@ function load_game_scene_anim_char_common_0_general_hurt_wallbreak(hit_side_obj_
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = adv
         
-        if not projectile then
+        if not obj_projectile then
             common_game_scene_char_apply_damage_heat(
                 hit_side_obj_char,hurt_side_obj_char,"hurt",false
             )
         else
             common_game_scene_projectile_apply_damage_heat(
-                hit_side_obj_char,hurt_side_obj_char,"hurt",false,projectile
+                hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",false
             )
         end
     end

@@ -110,7 +110,7 @@ obj_char["projectile_inv_countdown"] = 0
 obj_char["hit_function"] = function() end
 obj_char["hurt_function"] = function() end
 obj_char["parry_function"] = function() end
-obj_char["hit_counter_ver_function"] = function() end
+obj_char["strike_counter_ver_function"] = function() end
 
 obj_char["shot_sys_state"] = "idle"
 obj_char["shot_sys_oroboros_anchor_pos"] = {168,210}

@@ -1,9 +1,13 @@
+-- setup force hot compilation
+require("jit.opt").start("hotloop=42", "hotexit=7")
+-- include required modules
 require("advance_require_functions")
 require("draw_general_use_functions")
 require_all_in_folder("update_general_use_functions")
 require_all_in_folder("scenes/load_scene")
 require_all_init_load_function()
 
+-- int main()/mandatory entry point
 function love.run()
 	if love.load then love.load(love.arg.parseGameArguments(arg),arg) end
 

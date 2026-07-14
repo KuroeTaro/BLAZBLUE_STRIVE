@@ -1,4 +1,59 @@
--- x y velocity enemy_interact_function hitbox
+-- global_projectile_prop_table
+-- type life x y velocity projectile_clash_type
+-- 1-8 f sprite_sheet
+
+-- state state_cache physics_lock
+-- pushbox_interact_function	pushbox
+-- projectile_clashed_function	projectile_clash_box
+-- enemy_interact_function		hitbox hurtbox hit_type	hit_damage hit_damage_correction_factor 
+--                              hit_heat_gain hit_wallbreak_damage hurt_heat_gain 
+--                              blocked_heat_gain block_heat_gain block_risk_gauge_gain FD_block_heat_drain
+--                              stand_hurt_animation stand_block_animation
+--                              crouch_hurt_animation crouch_block_animation
+--                              air_hurt_animation air_block_animation
+--                              OTG_hurt_animation wallstick_hurt_animation
+--                              hit_VFX_dynamic_spawn_pos
+--                              hit_VFX_insert_function hit_VFX_insert_function_argument hit_SFX
+--                              hit_counter_VFX_insert_function hit_counter_VFX_insert_function_argument hit_counter_SFX
+--                              hit_block_VFX_insert_function hit_block_VFX_insert_function_argument hit_block_SFX
+--                              hurt_block_VFX_insert_function, hurt_block_SFX
+--                              strike_counter_ver_function
+--                                  hit_type: strike/throw/projectile_active hit_guard_type
+-- friendly_interact_function   same_as_above
+-- friction_update_function	    friction
+-- gravity_update_function		gravity
+-- animation                    projectile_animation camera_animation
+-- update/draw
+-- uncommon
+-- projectile_init_fix
+
+-- min_require common_projectile_hit_function
+    -- state
+    -- state_cache
+    -- physics_lock
+    -- hit_damage 
+    -- hit_VFX_insert_function
+    -- hit_SFX
+    -- hit_counter_VFX_insert_function
+    -- hit_counter_SFX
+    -- hit_block_VFX_insert_function
+    -- hit_block_SFX
+
+-- min_require common_projectile_hurt_function
+    -- hit_guard_type
+    -- hit_hurt_blockstop_countdown
+    -- camera_x_shake_anim
+    -- camera_y_shake_anim
+    -- camera_enclosing_anim
+    -- enclose_position_offset
+    -- stand_block_animation crouch_block_animation air_block_animation
+    -- stand_hurt_animation crouch_hurt_animation air_hurt_animation OTG_hurt_animation wallstick_hurt_animation
+    -- hurt_block_VFX_insert_function
+    -- strike_counter_ver_function
+
+
+
+
 
 function load_game_scene_anim_projectile_rc_main(obj_projectile)
     local res = {}
@@ -18,6 +73,23 @@ function load_game_scene_anim_projectile_rc_main(obj_projectile)
     end
     return res
 end
+
+-- insert_projectile_game_scene_char_common_RC_shockwave_red
+-- type life x y velocity projectile_clash_type
+-- 1-8 f sprite_sheet
+
+-- enemy_interact_function		hitbox 
+--                              stand_hurt_animation stand_block_animation
+--                              crouch_hurt_animation crouch_block_animation
+--                              air_hurt_animation air_block_animation
+--                              OTG_hurt_animation wallstick_hurt_animation
+--                              hit_VFX_insert_function hit_SFX
+--                              hurt_block_VFX_insert_function, hurt_block_SFX
+--                                  hit_type: strike/throw/projectile_active hit_guard_type
+-- animation                    projectile_animation camera_animation
+-- update/draw
+-- uncommon
+-- projectile_init_fix
 
 function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_char,hurt_side_obj_char)
     -- clear_projectile_rc_table
@@ -227,7 +299,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
     )
     obj_projectile["hit_hurt_blockstop_countdown"] = 0
-    obj_projectile["hit_counter_ver_function"] = common_game_scene_counter_ver0
+    obj_projectile["strike_counter_ver_function"] = common_game_scene_counter_ver0
 
     obj_projectile["update"] = function()
         if hit_side_obj_char["height"] == "air" then
@@ -273,7 +345,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
                 hurt_side_obj_char[5] = -hurt_side_obj_char[5]
             end
             -- block_test
-            local block_bool = common_game_scene_block_test(hurt_side_obj_char,obj_projectile)
+            local block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
             if hurt_side_obj_char["height"] ~= "air" and block_bool then
                 if common_game_scene_check_crouch_direction(hurt_side_obj_char) then
                     hurt_side_obj_char["height"] = "crouch"
@@ -353,9 +425,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
                 -- hit_hurt_blockstop_countdown
                 hurt_side_obj_char["hit_hurt_blockstop_countdown"] = obj_projectile["hit_hurt_blockstop_countdown"]
                 hurt_side_obj_char["last_hitstop_frame"] = 0
-                -- hit_counter_ver_function
+                -- strike_counter_ver_function
                 if hurt_side_obj_char["hurt_state"] == "counter" then 
-                    obj_projectile["hit_counter_ver_function"](hit_side_obj_char,hurt_side_obj_char)
+                    obj_projectile["strike_counter_ver_function"](hit_side_obj_char,hurt_side_obj_char)
                 end
                 -- set_insert_camera_anim
                 common_game_scene_hit_load_camera_shake_anim(obj_projectile,1.0,30)
@@ -395,7 +467,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
                 insert_VFX_game_scene_char_blast_special(hit_side_obj_char,hurt_side_obj_char)
             end
             -- wallbreak_test_and_apply
-            common_game_scene_test_and_apply_wallbreak(hit_side_obj_char,hurt_side_obj_char,obj_projectile,wallhurt_wallstick_on_side_cache)
+            common_game_scene_test_and_apply_wallbreak(hit_side_obj_char,hurt_side_obj_char,wallhurt_wallstick_on_side_cache)
         end
     end
     -- obj_projectile["friendly_interact_function"] = function()
@@ -403,6 +475,17 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     -- end
     table.insert(hit_side_obj_char["projectile_rc_table"],obj_projectile)
 end
+
+-- insert_projectile_game_scene_char_common_RC_shockwave_blue
+-- type life x y velocity projectile_clash_type
+-- 1-8 f sprite_sheet
+
+-- enemy_interact_function		hitbox
+-- animation                    projectile_animation camera_animation
+-- update/draw
+-- uncommon
+-- projectile_init_fix
+
 function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj_char,hurt_side_obj_char)
     -- clear_projectile_rc_table
     hit_side_obj_char["projectile_rc_table"] = {}
@@ -488,6 +571,18 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
     -- end
     table.insert(hit_side_obj_char["projectile_rc_table"],obj_projectile)
 end
+
+-- insert_projectile_game_scene_char_common_RC_shockwave_purple
+-- type life x y velocity projectile_clash_type
+-- 1-8 f sprite_sheet
+
+-- enemy_interact_function		hitbox
+-- animation                    projectile_animation camera_animation
+-- update/draw
+-- uncommon
+-- projectile_init_fix
+
+
 function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_obj_char,hurt_side_obj_char)
     -- clear_projectile_rc_table
     hit_side_obj_char["projectile_rc_table"] = {}
@@ -573,6 +668,24 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
     -- end
     table.insert(hit_side_obj_char["projectile_rc_table"],obj_projectile)
 end
+
+-- insert_projectile_game_scene_char_common_RC_shockwave_yellow
+-- type life x y velocity projectile_clash_type
+-- 1-8 f sprite_sheet
+
+-- enemy_interact_function		hitbox 
+--                              stand_hurt_animation stand_block_animation
+--                              crouch_hurt_animation crouch_block_animation
+--                              air_hurt_animation air_block_animation
+--                              OTG_hurt_animation wallstick_hurt_animation
+--                              hit_VFX_insert_function hit_SFX
+--                              hurt_block_VFX_insert_function, hurt_block_SFX
+--                                  hit_type: strike/throw/projectile_active hit_guard_type
+-- animation                    projectile_animation camera_animation
+-- update/draw
+-- uncommon
+-- projectile_init_fix
+
 function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_obj_char,hurt_side_obj_char)
     -- clear_projectile_rc_table
     hit_side_obj_char["projectile_rc_table"] = {}
@@ -788,7 +901,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
                 hurt_side_obj_char[5] = -hurt_side_obj_char[5]
             end
             -- block_test
-            local block_bool = common_game_scene_block_test(hurt_side_obj_char,obj_projectile)
+            local block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
             if hurt_side_obj_char["height"] ~= "air" and block_bool then
                 if common_game_scene_check_crouch_direction(hurt_side_obj_char) then
                     hurt_side_obj_char["height"] = "crouch"
@@ -905,7 +1018,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
                 -- insert_hit_VFX
             end
             -- wallbreak_test_and_apply
-            common_game_scene_test_and_apply_wallbreak(hit_side_obj_char,hurt_side_obj_char,obj_projectile,wallhurt_wallstick_on_side_cache)
+            common_game_scene_test_and_apply_wallbreak(hit_side_obj_char,hurt_side_obj_char,wallhurt_wallstick_on_side_cache)
         end
     end
     -- obj_projectile["friendly_interact_function"] = function()
@@ -969,7 +1082,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
         common_game_scene_projectile_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"block",FD_block,obj_projectile
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",FD_block
         )
         common_game_scene_projectile_apply_hurt_velocity(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,
@@ -1112,7 +1225,7 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
         common_game_scene_projectile_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"block",FD_block,obj_projectile
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",FD_block
         )
         common_game_scene_projectile_apply_hurt_velocity(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,
@@ -1268,7 +1381,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
         hurt_side_obj_char["projectile_inv_countdown"] = 0
         -- state_number
         common_game_scene_projectile_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"hurt",false,obj_projectile
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",false
         )
         common_game_scene_projectile_apply_hurt_velocity(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,
@@ -1455,7 +1568,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
         common_game_scene_projectile_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"block",FD_block,obj_projectile
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",FD_block
         )
         common_game_scene_projectile_apply_hurt_velocity(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,
@@ -1604,7 +1717,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
         local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
         common_game_scene_projectile_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"block",FD_block,obj_projectile
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",FD_block
         )
         common_game_scene_projectile_apply_hurt_velocity(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,
@@ -1760,7 +1873,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
         hurt_side_obj_char["projectile_inv_countdown"] = 0
         -- state_number
         common_game_scene_projectile_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"hurt",false,obj_projectile
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",false
         )
         common_game_scene_projectile_apply_hurt_velocity(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,
@@ -1890,4 +2003,4 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
         -- animation_end
     end
     return res
-end
+end 
