@@ -18,17 +18,7 @@ config选项中自定义要不要79空投
     -- the other side is Y positive
 
 
-
--- 1. 碰撞系统的dx == 0的情况
-2. 飞行道具的格式统一 hit类飞行道具的hurt_function统一 在main循环中添加飞行道具的friction gravity update
--- 3. side == L 和 side == R 都统一到 common_function
--- 4. 变量名修改
-    -- 去除所有的other_side
-    -- 参数顺序为hit_side_obj_char,hurt_side_obj_char
-    -- 修正所有local side为 hit_side hurt_side
+2. 飞行道具的格式统一 hit类飞行道具的hurt_function统一
 
 修改TRM的air block
 修改蓝RC badge
--- 修改hit_side hurt_side 参数位置
-
--- 跳起后JD的方向输入保留延迟

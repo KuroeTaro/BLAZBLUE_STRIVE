@@ -678,13 +678,8 @@ function update_game_scene_friction()
     end
     for i = 1,#char_LP["projectile_table"] do
         local current_projectile = char_LP["projectile_table"][i]
-        if current_projectile["friction"] == 0 then
-            current_projectile["velocity"][1] = current_projectile["velocity"][1]
-        else
-            current_projectile["velocity"][1] = current_projectile["velocity"][1] - (current_projectile["velocity"][1] / current_projectile["friction"])
-        end
-        if math.abs(current_projectile["velocity"][1]) < 0.001 then
-            current_projectile["velocity"][1] = 0
+        if current_projectile["friction_update_function"] then
+            current_projectile["friction_update_function"]()
         end
     end
 
@@ -703,13 +698,8 @@ function update_game_scene_friction()
     end
     for i = 1,#char_RP["projectile_table"] do
         local current_projectile = char_RP["projectile_table"][i]
-        if current_projectile["friction"] == 0 then
-            current_projectile["velocity"][1] = current_projectile["velocity"][1]
-        else
-            current_projectile["velocity"][1] = current_projectile["velocity"][1] - (current_projectile["velocity"][1] / current_projectile["friction"])
-        end
-        if math.abs(current_projectile["velocity"][1]) < 0.001 then
-            current_projectile["velocity"][1] = 0
+        if current_projectile["friction_update_function"] then
+            current_projectile["friction_update_function"]()
         end
     end
 end
@@ -746,7 +736,9 @@ function update_game_scene_gravity()
     end
     for i = 1,#char_LP["projectile_table"] do
         local current_projectile = char_LP["projectile_table"][i]
-        current_projectile["velocity"][2] = current_projectile["velocity"][2] + current_projectile["gravity"]
+        if current_projectile["gravity_update_function"] then
+            current_projectile["gravity_update_function"]()
+        end
     end
     
     if char_RP["y"] == 0 then
@@ -760,7 +752,9 @@ function update_game_scene_gravity()
     end
     for i = 1,#char_RP["projectile_table"] do
         local current_projectile = char_RP["projectile_table"][i]
-        current_projectile["velocity"][2] = current_projectile["velocity"][2] + current_projectile["gravity"]
+        if current_projectile["gravity_update_function"] then
+            current_projectile["gravity_update_function"]()
+        end
     end
 end
 function update_game_scene_gauge()
