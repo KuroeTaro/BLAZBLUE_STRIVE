@@ -220,17 +220,27 @@ function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_R
     end
 end
 
-function collision_uncondicational_hurtbox_test(hit_obj,hurt_obj)
-    for i=1,#hit_obj["hitbox_table"] do
-        local current_hitbox = collision_box_to_real_world_box(hit_obj,hit_obj["hitbox_table"][i])
-        local current_hurtbox = collision_box_to_real_world_box(hurt_obj,hurt_obj["pushbox"])
-        if collision_box_aabb_detection(current_hitbox,current_hurtbox) then
-            return true
-        end
-    end
-    return false
+function collision_strike_assign_hit_VFX_dynamic_spawn_pos(hit_obj,current_hitbox,current_hurtbox)
+    hit_obj["hit_VFX_dynamic_spawn_pos"] = {
+        (current_hitbox[1]+current_hurtbox[1])/2,
+        (current_hitbox[2]+current_hurtbox[2])/2
+    }
 end
-function collision_strike_hurtbox_test(hit_obj,hurt_obj)
+function collision_strike_hitbox_clash_test()
+end
+function collision_throw_air_or_not_test(hit_obj,hurt_obj)
+    if hit_obj["height"] == "air" and hurt_obj["height"] ~= "air" then
+        return true
+    elseif hurt_obj["height"] == "air" and hit_obj["height"] ~= "air" then
+        return true
+    else
+        return false
+    end
+end
+function collision_projectile_clash_test(obj_A,obj_B)
+end
+
+function collision_strike_hit_confirm_test(hit_obj,hurt_obj)
     if hit_obj["hit_type"] ~= "strike" or hurt_obj["strike_inv"] == true or hit_obj["strike_active"] == false then
         return false
     end
@@ -246,13 +256,7 @@ function collision_strike_hurtbox_test(hit_obj,hurt_obj)
     end
     return false
 end
-function collision_strike_assign_hit_VFX_dynamic_spawn_pos(hit_obj,current_hitbox,current_hurtbox)
-    hit_obj["hit_VFX_dynamic_spawn_pos"] = {
-        (current_hitbox[1]+current_hurtbox[1])/2,
-        (current_hitbox[2]+current_hurtbox[2])/2
-    }
-end
-function collision_throw_hurtbox_test(hit_obj,hurt_obj)
+function collision_throw_hit_confirm_test(hit_obj,hurt_obj)
     if hit_obj["hit_type"] ~= "throw" 
     or hurt_obj["throw_inv"] == true 
     or hit_obj["throw_active"] == false 
@@ -271,27 +275,21 @@ function collision_throw_hurtbox_test(hit_obj,hurt_obj)
     end
     return false
 end
-function collision_throw_air_or_not_test(hit_obj,hurt_obj)
-    if hit_obj["height"] == "air" and hurt_obj["height"] ~= "air" then
-        return true
-    elseif hurt_obj["height"] == "air" and hit_obj["height"] ~= "air" then
-        return true
-    else
-        return false
-    end
-end
-function collision_projectile_hurtbox_test(hit_obj,hurt_obj)
-    -- none strike throw burst projectile
+function collision_projectile_hit_confirm_test(hit_obj,hurt_obj)
+    -- none strike throw projectile all
     if hit_obj["hit_type"] == "none" then
         return false
     end
-    if hit_obj["hit_type"] == "strike" and (hurt_obj["strike_inv"] == true or hit_obj["strike_active"] == false) then
+    if not hit_obj["projectile_active"] then
         return false
     end
-    if hit_obj["hit_type"] == "throw" and (hurt_obj["throw_inv"] == true or hit_obj["throw_active"] == false) then
+    if hit_obj["hit_type"] == "strike" and hurt_obj["strike_inv"] then
         return false
     end
-    if hit_obj["hit_type"] == "projectile" and (hurt_obj["projectile_inv"] == true or hit_obj["projectile_active"] == false) then
+    if hit_obj["hit_type"] == "throw" and hurt_obj["throw_inv"] then
+        return false
+    end
+    if hit_obj["hit_type"] == "projectile" and hurt_obj["projectile_inv"] then
         return false
     end
     for i=1,#hit_obj["hitbox_table"] do
@@ -304,9 +302,18 @@ function collision_projectile_hurtbox_test(hit_obj,hurt_obj)
         end
     end
 end
-function collision_strike_hitbox_clash_test()
+function collision_uncondicational_hit_confirm_test(hit_obj,hurt_obj)
+    for i=1,#hit_obj["hitbox_table"] do
+        local current_hitbox = collision_box_to_real_world_box(hit_obj,hit_obj["hitbox_table"][i])
+        local current_hurtbox = collision_box_to_real_world_box(hurt_obj,hurt_obj["pushbox"])
+        if collision_box_aabb_detection(current_hitbox,current_hurtbox) then
+            return true
+        end
+    end
+    return false
 end
-function collision_projectile_clash_test(obj_A,obj_B)
+function collision_RC_hit_confirm_test(hit_obj,hurt_obj)
+    return collision_uncondicational_hit_confirm_test(hit_obj,hurt_obj) or collision_projectile_hit_confirm_test(hit_obj,hurt_obj)
 end
 
 -- optimal CCD algo but not 100% currect

@@ -1,28 +1,27 @@
 -- global_projectile_prop_table
--- type life x y velocity projectile_clash_type
--- 1-8 f sprite_sheet
+-- 1-8 type life x y velocity projectile_clash_type f
 
--- state state_cache physics_lock
+-- state state_cache physics_lock sprite_sheet
 -- pushbox_interact_function	pushbox
 -- projectile_clashed_function	projectile_clash_box
--- enemy_interact_function		hitbox hurtbox hit_type	hit_damage hit_damage_correction_factor 
+-- enemy_interact_function		hitbox hit_type	hit_guard_type hit_hurt_blockstop_countdown
+--                              hit_damage hit_damage_correction_factor 
 --                              hit_heat_gain hit_wallbreak_damage hurt_heat_gain 
 --                              blocked_heat_gain block_heat_gain block_risk_gauge_gain FD_block_heat_drain
 --                              stand_hurt_animation stand_block_animation
 --                              crouch_hurt_animation crouch_block_animation
 --                              air_hurt_animation air_block_animation
 --                              OTG_hurt_animation wallstick_hurt_animation
+--                              projectile_active projectile_counter_ver_function
 --                              hit_VFX_dynamic_spawn_pos
 --                              hit_VFX_insert_function hit_VFX_insert_function_argument hit_SFX
 --                              hit_counter_VFX_insert_function hit_counter_VFX_insert_function_argument hit_counter_SFX
 --                              hit_block_VFX_insert_function hit_block_VFX_insert_function_argument hit_block_SFX
---                              hurt_block_VFX_insert_function, hurt_block_SFX
---                              strike_counter_ver_function
---                                  hit_type: strike/throw/projectile_active hit_guard_type
+--                              hurt_block_VFX_insert_function hurt_block_SFX
 -- friendly_interact_function   same_as_above
 -- friction_update_function	    friction
 -- gravity_update_function		gravity
--- animation                    projectile_animation camera_animation
+-- animation                    projectile_animation camera_x_shake_anim camera_y_shake_anim camera_enclosing_anim enclose_position_offset
 -- update/draw
 -- uncommon
 -- projectile_init_fix
@@ -31,13 +30,21 @@
     -- state
     -- state_cache
     -- physics_lock
-    -- hit_damage 
+    -- hit_damage
+    -- hit_damage_correction_factor
+    -- hit_heat_gain
+    -- hit_wallbreak_damage
+    -- hurt_heat_gain
+    -- blocked_heat_gain
+    -- block_heat_gain
+    -- block_risk_gauge_gain
+    -- FD_block_heat_drain
     -- hit_VFX_insert_function
     -- hit_SFX
-    -- hit_counter_VFX_insert_function
-    -- hit_counter_SFX
     -- hit_block_VFX_insert_function
     -- hit_block_SFX
+    -- hit_counter_VFX_insert_function
+    -- hit_counter_SFX
 
 -- min_require common_projectile_hurt_function
     -- hit_guard_type
@@ -48,10 +55,15 @@
     -- enclose_position_offset
     -- stand_block_animation crouch_block_animation air_block_animation
     -- stand_hurt_animation crouch_hurt_animation air_hurt_animation OTG_hurt_animation wallstick_hurt_animation
+    -- projectile_counter_ver_function
     -- hurt_block_VFX_insert_function
-    -- strike_counter_ver_function
+    -- hurt_block_SFX
 
-
+-- min_require common_projectile_clashed_by_char
+    -- state
+    -- state_cache
+    -- physics_lock
+    -- projectile_clash_box
 
 
 
@@ -75,49 +87,40 @@ function load_game_scene_anim_projectile_rc_main(obj_projectile)
 end
 
 -- insert_projectile_game_scene_char_common_RC_shockwave_red
--- type life x y velocity projectile_clash_type
--- 1-8 f sprite_sheet
+-- 1-8 type life x y velocity projectile_clash_type f
 
--- enemy_interact_function		hitbox 
+-- enemy_interact_function		hitbox hit_guard_type hit_damage hit_damage_correction_factor 
+--                              hit_heat_gain hit_wallbreak_damage hurt_heat_gain 
+--                              blocked_heat_gain block_heat_gain block_risk_gauge_gain FD_block_heat_drain
 --                              stand_hurt_animation stand_block_animation
 --                              crouch_hurt_animation crouch_block_animation
 --                              air_hurt_animation air_block_animation
 --                              OTG_hurt_animation wallstick_hurt_animation
 --                              hit_VFX_insert_function hit_SFX
 --                              hurt_block_VFX_insert_function, hurt_block_SFX
---                                  hit_type: strike/throw/projectile_active hit_guard_type
--- animation                    projectile_animation camera_animation
+--                              projectile_counter_ver_function
+--                              projectile_active
+-- animation                    projectile_animation camera_x_shake_anim camera_y_shake_anim camera_enclosing_anim enclose_position_offset
 -- update/draw
 -- uncommon
 -- projectile_init_fix
-
 function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_char,hurt_side_obj_char)
-    -- clear_projectile_rc_table
-    hit_side_obj_char["projectile_rc_table"] = {}
-    -- x y z opacity sx sy r f
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
-    if hit_side_obj_char["height"] == "air" then
-        obj_projectile["y_offset"] = 150
-    else
-        obj_projectile["y_offset"] = 280
-    end
+    -- clear_projectile_rc_table
+    hit_side_obj_char["projectile_rc_table"] = {}
     -- common
     obj_projectile["type"] = "projectile"
-    obj_projectile["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
-    -- obj_projectile["projectile_clash_box"] = {}
-    -- obj_projectile["projectile_clashed_function"] = function end
-    obj_projectile["hit_type"] = "strike"
     obj_projectile["life"] = 30
-
     obj_projectile["x"] = hit_side_obj_char["x"]
-    obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
+    obj_projectile["y"] = hit_side_obj_char["y"]
+    obj_projectile["velocity"] = {hit_side_obj_char["velocity"][1],hit_side_obj_char["velocity"][2]}
+    obj_projectile["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
     obj_projectile["f"] = -1
-    obj_projectile[1] = obj_projectile["x"] - hit_side_obj_char[5]*600
-    obj_projectile[2] = obj_projectile["y"] - 600
-    obj_projectile[5] = hit_side_obj_char[5]
-
+    -- enemy_interact_function
+    obj_projectile["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
+    obj_projectile["hit_guard_type"] = "all"
     obj_projectile["hit_damage"] = 0
     obj_projectile["hit_damage_correction_factor"] = 1
     obj_projectile["hit_heat_gain"] = 0
@@ -127,25 +130,6 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     obj_projectile["block_heat_gain"] = 0
     obj_projectile["block_risk_gauge_gain"] = 0
     obj_projectile["FD_block_heat_drain"] = 0
-
-    obj_projectile["velocity"] = {hit_side_obj_char["velocity"][1],hit_side_obj_char["velocity"][2]}
-
-    obj_projectile["pushbox"] = nil
-    obj_projectile["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
-    obj_projectile["hurtbox_table"] = {}
-
-    obj_projectile["strike_active"] = true
-
-    obj_projectile["hit_guard_type"] = "all"
-
-    obj_projectile["animation"] = load_game_scene_anim_projectile_rc_main(obj_projectile)
-    init_character_anim_without(obj_projectile,obj_projectile["animation"] )
-
-    obj_projectile["camera_x_shake_anim"] = nil
-    obj_projectile["camera_y_shake_anim"] = nil
-    obj_projectile["camera_enclosing_anim"] = nil
-    obj_projectile["enclose_position_offset"] = {0,0,0}
-
     obj_projectile["stand_hurt_animation"] = load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
         hit_side_obj_char,hurt_side_obj_char,obj_projectile,
         true,nil,"0_general_hurt_launched_high",
@@ -244,7 +228,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         true,nil,"1_4_7_air_block",
         "air","5_stand_idle",
         7.5,5,1.00,
-        -7.5,7.5,1.00,
+        -7.5,5,1.00,
         nil,nil,nil,nil,
         function() end
     )
@@ -298,9 +282,42 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         nil,nil,
         function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
     )
-    obj_projectile["hit_hurt_blockstop_countdown"] = 0
-    obj_projectile["strike_counter_ver_function"] = common_game_scene_counter_ver0
-
+    obj_projectile["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_special
+    obj_projectile["hit_SFX"] = nil
+    obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC
+    obj_projectile["hurt_block_SFX"] = nil
+    obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
+    obj_projectile["projectile_active"] = true
+    obj_projectile["enemy_interact_function"] = function()
+        -- if hit
+        if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) and obj_projectile["projectile_active"] and (not hurt_side_obj_char["strike_inv"]) then
+            -- projectile_active
+            obj_projectile["projectile_active"] = false
+            -- block_test
+            local block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
+            -- risk_gauge
+            if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
+                hurt_side_obj_char["hurt_state"] = "counter"
+            end
+            -- insert_projectile_VFX 
+            if (not block_bool) then
+                obj_projectile["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
+                -- SFX_audio_code_place_holder
+            end
+            -- common_hurt_function
+            common_game_scene_projectile_RC_red_yellow_hurt_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+        end
+    end
+    -- animation
+        -- projectile_animation
+    obj_projectile["projectile_animation"] = load_game_scene_anim_projectile_rc_main(obj_projectile)
+    init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
+        -- camera_animation
+    obj_projectile["camera_x_shake_anim"] = nil
+    obj_projectile["camera_y_shake_anim"] = nil
+    obj_projectile["camera_enclosing_anim"] = nil
+    obj_projectile["enclose_position_offset"] = {0,0,0}
+    -- update
     obj_projectile["update"] = function()
         if hit_side_obj_char["height"] == "air" then
             obj_projectile["y_offset"] = 150
@@ -309,9 +326,10 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         end
         obj_projectile["x"] = hit_side_obj_char["x"]
         obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
-        character_animator(obj_projectile,obj_projectile["animation"])
+        character_animator(obj_projectile,obj_projectile["projectile_animation"])
         obj_projectile["life"] = obj_projectile["life"] - 1
     end
+    -- draw
     obj_projectile["draw"] = function()
         obj_projectile[1] = obj_projectile["x"] - hit_side_obj_char[5]*600
         obj_projectile[2] = obj_projectile["y"] - 600
@@ -322,206 +340,68 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
     end
-    obj_projectile["enemy_interact_function"] = function()
-        -- strike_clash
-        -- projectile_and_projectile_interaction
-        -- interaction_with_enemy
-        local hit_side = hit_side_obj_char["player_side"]
-        local hurt_side = hurt_side_obj_char["player_side"]
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        local obj_stage_main = obj_stage_game_scene_main
-        local obj_camera = obj_stage_game_scene_camera
-        local wallhurt_wallstick_on_side_cache = hurt_side_obj_char["wallhurt_wallstick_on_side"]
-            -- if hit
-        if collision_strike_hurtbox_test(obj_projectile,hurt_side_obj_char) and obj_projectile["strike_active"] and (not hurt_side_obj_char["strike_inv"]) then
-            -- set_projectile_strike_active
-            obj_projectile["strike_active"] = false
-            -- set_physics_lock
-            hurt_side_obj_char["physics_lock"] = false
-            -- change_draw_front
-            CHARACTER_VISUAL_FRONT = hit_side
-            -- change_character_face
-            if not common_game_scene_get_character_facing_currect(hurt_side_obj_char,hit_side_obj_char) then
-                hurt_side_obj_char[5] = -hurt_side_obj_char[5]
-            end
-            -- block_test
-            local block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
-            if hurt_side_obj_char["height"] ~= "air" and block_bool then
-                if common_game_scene_check_crouch_direction(hurt_side_obj_char) then
-                    hurt_side_obj_char["height"] = "crouch"
-                else
-                    hurt_side_obj_char["height"] = "stand"
-                end
-            end
-            -- if block
-            if block_bool then
-                -- set_state_and_state_cache
-                hurt_side_obj_char["state_cache"] = "block"
-                hurt_side_obj_char["state"] = "block"
-                -- set_hit_hurt_blockstop_countdown
-                hurt_side_obj_char["hit_hurt_blockstop_countdown"] = obj_projectile["hit_hurt_blockstop_countdown"]
-                hurt_side_obj_char["last_hitstop_frame"] = 0
-                -- set_insert_camera_anim
-                common_game_scene_hit_load_camera_shake_anim(obj_projectile,0.5,30)
-                table.insert(obj_stage_main["camera_active_application_table"],
-                    function()
-                        anim_stage_point_linear_game_scene_camera_shake_x = obj_projectile["camera_x_shake_anim"]
-                        anim_stage_point_linear_game_scene_camera_shake_y = obj_projectile["camera_y_shake_anim"]
-                        init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-                        init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
-                        obj_camera["state"] = "active"
-                    end
-                )
-                -- set_play_block_animaiton_by_height_and_input
-                if common_game_scene_check_crouch_direction(hurt_side_obj_char) and hurt_side_obj_char["height"] == "stand" then
-                    hurt_side_obj_char["height"] = "crouch"
-                elseif common_game_scene_check_stand_direction(hurt_side_obj_char) and hurt_side_obj_char["height"] == "crouch" then
-                    hurt_side_obj_char["height"] = "stand"
-                end
-                if hurt_side_obj_char["height"] == "stand" then
-                    hurt_side_obj_char["character_animation"] = obj_projectile["stand_block_animation"]
-                elseif hurt_side_obj_char["height"] == "crouch" then
-                    hurt_side_obj_char["character_animation"] = obj_projectile["crouch_block_animation"]
-                elseif hurt_side_obj_char["height"] == "air" then
-                    hurt_side_obj_char["character_animation"] = obj_projectile["air_block_animation"]
-                end
-                init_character_anim_with(hurt_side_obj_char,hurt_side_obj_char["character_animation"])
-                -- return
-            -- GP
-            elseif hurt_side_obj_char["hurt_state"] == "GP" then -- idle unblock punish counter GP parry
-                -- set_state_and_state_cache
-                hurt_side_obj_char["state_cache"] = hurt_side_obj_char["state"]
-                hurt_side_obj_char["state"] = hurt_side_obj_char["state"]
-                -- set_hit_hurt_blockstop_countdown
-                hurt_side_obj_char["hit_hurt_blockstop_countdown"] = obj_projectile["hit_hurt_blockstop_countdown"]
-                hurt_side_obj_char["last_hitstop_frame"] = 0
-                -- set_insert_camera_anim
-                common_game_scene_hit_load_camera_shake_anim(obj_projectile,1.0,30)
-                table.insert(obj_stage_main["camera_active_application_table"],
-                    function()
-                        anim_stage_point_linear_game_scene_camera_shake_x = obj_projectile["camera_x_shake_anim"]
-                        anim_stage_point_linear_game_scene_camera_shake_y = obj_projectile["camera_y_shake_anim"]
-                        init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-                        init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
-                        obj_camera["state"] = "active"
-                    end
-                )
-                -- insert_VFX_game_scene_char_GP
-                insert_VFX_game_scene_char_GP(hurt_side_obj_char)
-            -- parry
-            elseif hurt_side_obj_char["hurt_state"] == "parry" then -- idle unblock punish counter GP parry
-                -- parry function
-                hurt_side_obj_char["parry_function"](obj_projectile,hurt_side_obj_char)
-            -- idle_and_unblock
-            else
-                -- insert_VFX
-                if hurt_side_obj_char["hurt_state"] == "punish" then
-                    insert_VFX_HUD_game_scene_punish(hit_side_obj_char)
-                end
-                -- set_state_and_state_cache
-                hurt_side_obj_char["state_cache"] = "hurt"
-                hurt_side_obj_char["state"] = "hurt"
-                hurt_side_obj_char["collision_move_available_cache"] = {1,1}
-                -- hit_hurt_blockstop_countdown
-                hurt_side_obj_char["hit_hurt_blockstop_countdown"] = obj_projectile["hit_hurt_blockstop_countdown"]
-                hurt_side_obj_char["last_hitstop_frame"] = 0
-                -- strike_counter_ver_function
-                if hurt_side_obj_char["hurt_state"] == "counter" then 
-                    obj_projectile["strike_counter_ver_function"](hit_side_obj_char,hurt_side_obj_char)
-                end
-                -- set_insert_camera_anim
-                common_game_scene_hit_load_camera_shake_anim(obj_projectile,1.0,30)
-                common_game_scene_red_rc_hit_load_camera_enclose_anim(obj_projectile)
-                obj_projectile["enclose_position_offset"] = {
-                    0,
-                    37.5,
-                    75
-                }
-                table.insert(obj_stage_main["camera_active_application_table"],
-                    function()
-                        anim_stage_point_linear_game_scene_camera_enclosing = obj_projectile["camera_enclosing_anim"]
-                        anim_stage_point_linear_game_scene_camera_shake_x = obj_projectile["camera_x_shake_anim"]
-                        anim_stage_point_linear_game_scene_camera_shake_y = obj_projectile["camera_y_shake_anim"]
-                        init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_enclosing)
-                        init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-                        init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
-                        obj_camera["enclose_position_offset"] = obj_projectile["enclose_position_offset"]
-                        obj_camera["state"] = "active"
-                    end
-                )
-                -- hurt_animation
-                if hurt_side_obj_char["height"] == "stand" then
-                    hurt_side_obj_char["character_animation"] = obj_projectile["stand_hurt_animation"]
-                elseif hurt_side_obj_char["height"] == "crouch" then
-                    hurt_side_obj_char["character_animation"] = obj_projectile["crouch_hurt_animation"]
-                elseif hurt_side_obj_char["height"] == "air" then
-                    hurt_side_obj_char["character_animation"] = obj_projectile["air_hurt_animation"]
-                elseif hurt_side_obj_char["height"] == "OTG" then
-                    hurt_side_obj_char["character_animation"] = obj_projectile["OTG_hurt_animation"]
-                elseif hurt_side_obj_char["height"] == "wallstick" then
-                    hurt_side_obj_char["character_animation"] = obj_projectile["wallstick_hurt_animation"]
-                end
-                init_character_anim_with(hurt_side_obj_char,hurt_side_obj_char["character_animation"])
-
-                -- insert_hurt_VFX
-                insert_VFX_game_scene_char_blast_special(hit_side_obj_char,hurt_side_obj_char)
-            end
-            -- wallbreak_test_and_apply
-            common_game_scene_test_and_apply_wallbreak(hit_side_obj_char,hurt_side_obj_char,wallhurt_wallstick_on_side_cache)
-        end
+    -- uncommon nil
+    -- projectile_init_fix
+    if hit_side_obj_char["height"] == "air" then
+        obj_projectile["y_offset"] = 150
+    else
+        obj_projectile["y_offset"] = 280
     end
-    -- obj_projectile["friendly_interact_function"] = function()
-
-    -- end
+    obj_projectile["x"] = hit_side_obj_char["x"]
+    obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
+    obj_projectile[1] = obj_projectile["x"] - hit_side_obj_char[5]*600
+    obj_projectile[2] = obj_projectile["y"] - 600
+    obj_projectile[5] = hit_side_obj_char[5]
+    -- insert_projectile
     table.insert(hit_side_obj_char["projectile_rc_table"],obj_projectile)
 end
 
 -- insert_projectile_game_scene_char_common_RC_shockwave_blue
--- type life x y velocity projectile_clash_type
--- 1-8 f sprite_sheet
+-- 1-8 type life x y velocity projectile_clash_type f
 
--- enemy_interact_function		hitbox
--- animation                    projectile_animation camera_animation
+-- enemy_interact_function		hitbox projectile_active
+-- animation                    projectile_animation
 -- update/draw
 -- uncommon
 -- projectile_init_fix
-
 function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj_char,hurt_side_obj_char)
-    -- clear_projectile_rc_table
-    hit_side_obj_char["projectile_rc_table"] = {}
     -- x y z opacity sx sy r f
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
-    if hit_side_obj_char["height"] == "air" then
-        obj_projectile["y_offset"] = 150
-    else
-        obj_projectile["y_offset"] = 280
-    end
+    -- clear_projectile_rc_table
+    hit_side_obj_char["projectile_rc_table"] = {}
     -- common
     obj_projectile["type"] = "projectile"
-    obj_projectile["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
-    -- obj_projectile["projectile_clash_box"] = {}
-    -- obj_projectile["projectile_clashed_function"] = function end
-    obj_projectile["hit_type"] = "none"
     obj_projectile["life"] = 30
-
     obj_projectile["x"] = hit_side_obj_char["x"]
-    obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
-    obj_projectile["f"] = -1
-    obj_projectile[1] = obj_projectile["x"] - hit_side_obj_char[5]*600
-    obj_projectile[2] = obj_projectile["y"] - 600
-    obj_projectile[5] = hit_side_obj_char[5]
-
+    obj_projectile["y"] = hit_side_obj_char["y"]
     obj_projectile["velocity"] = {hit_side_obj_char["velocity"][1],hit_side_obj_char["velocity"][2]}
-
+    obj_projectile["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
+    obj_projectile["f"] = -1
+    -- enemy_interact_function
     obj_projectile["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
-
-    obj_projectile["hit_active"] = true
-
-    obj_projectile["animation"] = load_game_scene_anim_projectile_rc_main(obj_projectile)
-    init_character_anim_without(obj_projectile,obj_projectile["animation"] )
-
+    obj_projectile["projectile_active"] = true
+    obj_projectile["enemy_interact_function"] = function()
+        local hit_side = hit_side_obj_char["player_side"]
+        local hurt_side = hurt_side_obj_char["player_side"]
+        -- if hit
+        if collision_RC_hit_confirm_test(obj_projectile,hurt_side_obj_char) and obj_projectile["projectile_active"] then
+            -- projectile_hit_active
+            obj_projectile["projectile_active"] = false
+            -- physics_lock
+            hurt_side_obj_char["physics_lock"] = false
+            -- common_hurt_function
+            common_game_scene_projectile_RC_blue_purple_hurt_function(
+                hit_side_obj_char,hurt_side_obj_char,{1,2,1,59,45-27,nil}
+            )
+        end
+    end
+    -- animation
+        -- projectile_animation
+    obj_projectile["projectile_animation"] = load_game_scene_anim_projectile_rc_main(obj_projectile)
+    init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
+    -- update
     obj_projectile["update"] = function()
         if hit_side_obj_char["height"] == "air" then
             obj_projectile["y_offset"] = 150
@@ -530,9 +410,10 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
         end
         obj_projectile["x"] = hit_side_obj_char["x"]
         obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
-        character_animator(obj_projectile,obj_projectile["animation"])
+        character_animator(obj_projectile,obj_projectile["projectile_animation"])
         obj_projectile["life"] = obj_projectile["life"] - 1
     end
+    -- draw
     obj_projectile["draw"] = function()
         obj_projectile[1] = obj_projectile["x"] - hit_side_obj_char[5]*600
         obj_projectile[2] = obj_projectile["y"] - 600
@@ -545,80 +426,68 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
         love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("alpha")
     end
-    obj_projectile["enemy_interact_function"] = function()
-        -- strike_clash
-        -- projectile_and_projectile_interaction
-        -- interaction_with_enemy
-        local hit_side = hit_side_obj_char["player_side"]
-        local hurt_side = hurt_side_obj_char["player_side"]
-        local obj_stage_main = obj_stage_game_scene_main
-        local obj_camera = obj_stage_game_scene_camera
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        -- if hit
-        if collision_uncondicational_hurtbox_test(obj_projectile,hurt_side_obj_char) and obj_projectile["hit_active"] then
-            -- set_projectile_hit_active
-            obj_projectile["hit_active"] = false
-            -- set_physics_lock
-            hurt_side_obj_char["physics_lock"] = false
-            -- change_draw_front
-            CHARACTER_VISUAL_FRONT = hit_side
-            -- game_speed
-            common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,2,1,59,45-27,nil})
-        end
+    -- uncommon
+    -- projectile_init_fix
+    if hit_side_obj_char["height"] == "air" then
+        obj_projectile["y_offset"] = 150
+    else
+        obj_projectile["y_offset"] = 280
     end
-    -- obj_projectile["friendly_interact_function"] = function()
-
-    -- end
+    obj_projectile["x"] = hit_side_obj_char["x"]
+    obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
+    obj_projectile[1] = obj_projectile["x"] - hit_side_obj_char[5]*600
+    obj_projectile[2] = obj_projectile["y"] - 600
+    obj_projectile[5] = hit_side_obj_char[5]
+    -- insert_projectile
     table.insert(hit_side_obj_char["projectile_rc_table"],obj_projectile)
 end
 
 -- insert_projectile_game_scene_char_common_RC_shockwave_purple
--- type life x y velocity projectile_clash_type
--- 1-8 f sprite_sheet
+-- 1-8 type life x y velocity projectile_clash_type f
 
--- enemy_interact_function		hitbox
+-- enemy_interact_function		hitbox projectile_active
 -- animation                    projectile_animation camera_animation
 -- update/draw
 -- uncommon
 -- projectile_init_fix
-
-
 function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_obj_char,hurt_side_obj_char)
-    -- clear_projectile_rc_table
-    hit_side_obj_char["projectile_rc_table"] = {}
     -- x y z opacity sx sy r f
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
-    if hit_side_obj_char["height"] == "air" then
-        obj_projectile["y_offset"] = 150
-    else
-        obj_projectile["y_offset"] = 280
-    end
+    -- clear_projectile_rc_table
+    hit_side_obj_char["projectile_rc_table"] = {}
     -- common
     obj_projectile["type"] = "projectile"
-    obj_projectile["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
-    -- obj_projectile["projectile_clash_box"] = {}
-    -- obj_projectile["projectile_clashed_function"] = function end
-    obj_projectile["hit_type"] = "strike"
     obj_projectile["life"] = 30
-
     obj_projectile["x"] = hit_side_obj_char["x"]
-    obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
-    obj_projectile["f"] = -1
-    obj_projectile[1] = obj_projectile["x"] - hit_side_obj_char[5]*600
-    obj_projectile[2] = obj_projectile["y"] - 600
-    obj_projectile[5] = hit_side_obj_char[5]
-
+    obj_projectile["y"] = hit_side_obj_char["y"]
     obj_projectile["velocity"] = {hit_side_obj_char["velocity"][1],hit_side_obj_char["velocity"][2]}
-
+    obj_projectile["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
+    obj_projectile["f"] = -1
+    -- enemy_interact_function
     obj_projectile["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
-
-    obj_projectile["hit_active"] = true
-
-    obj_projectile["animation"] = load_game_scene_anim_projectile_rc_main(obj_projectile)
-    init_character_anim_without(obj_projectile,obj_projectile["animation"])
-
+    obj_projectile["projectile_active"] = true
+    obj_projectile["enemy_interact_function"] = function()
+        local hit_side = hit_side_obj_char["player_side"]
+        local hurt_side = hurt_side_obj_char["player_side"]
+        -- if hit
+        if collision_RC_hit_confirm_test(obj_projectile,hurt_side_obj_char) and obj_projectile["projectile_active"] then
+            -- projectile_hit_active
+            obj_projectile["projectile_active"] = false
+            -- physics_lock
+            hurt_side_obj_char["physics_lock"] = false
+            -- common_hurt_function
+            common_game_scene_projectile_RC_blue_purple_hurt_function(
+                hit_side_obj_char,hurt_side_obj_char,{1,2,1,19,45-27,nil}
+            )
+        end
+    end
+    -- animation
+        -- projectile_animation
+    obj_projectile["projectile_animation"] = load_game_scene_anim_projectile_rc_main(obj_projectile)
+    init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
+    -- update
     obj_projectile["update"] = function()
         if hit_side_obj_char["height"] == "air" then
             obj_projectile["y_offset"] = 150
@@ -627,9 +496,10 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
         end
         obj_projectile["x"] = hit_side_obj_char["x"]
         obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
-        character_animator(obj_projectile,obj_projectile["animation"])
+        character_animator(obj_projectile,obj_projectile["projectile_animation"])
         obj_projectile["life"] = obj_projectile["life"] - 1
     end
+    -- draw
     obj_projectile["draw"] = function()
         obj_projectile[1] = obj_projectile["x"] - hit_side_obj_char[5]*600
         obj_projectile[2] = obj_projectile["y"] - 600
@@ -642,77 +512,58 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
         love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("alpha")
     end
-    obj_projectile["enemy_interact_function"] = function()
-        -- strike_clash
-        -- projectile_and_projectile_interaction
-        -- interaction_with_enemy
-        local hit_side = hit_side_obj_char["player_side"]
-        local hurt_side = hurt_side_obj_char["player_side"]
-        local obj_stage_main = obj_stage_game_scene_main
-        local obj_camera = obj_stage_game_scene_camera
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        -- if hit
-        if collision_uncondicational_hurtbox_test(obj_projectile,hurt_side_obj_char) and obj_projectile["hit_active"] then
-            -- set_projectile_hit_active
-            obj_projectile["hit_active"] = false
-            -- set_physics_lock
-            hurt_side_obj_char["physics_lock"] = false
-            -- change_draw_front
-            CHARACTER_VISUAL_FRONT = hit_side
-            -- game_speed
-            common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,2,1,19,45-27,nil})
-        end
+    -- uncommon
+    -- projectile_init_fix
+    if hit_side_obj_char["height"] == "air" then
+        obj_projectile["y_offset"] = 150
+    else
+        obj_projectile["y_offset"] = 280
     end
-    -- obj_projectile["friendly_interact_function"] = function()
-
-    -- end
+    obj_projectile["x"] = hit_side_obj_char["x"]
+    obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
+    obj_projectile[1] = obj_projectile["x"] - hit_side_obj_char[5]*600
+    obj_projectile[2] = obj_projectile["y"] - 600
+    obj_projectile[5] = hit_side_obj_char[5]
+    -- insert_projectile
     table.insert(hit_side_obj_char["projectile_rc_table"],obj_projectile)
 end
 
 -- insert_projectile_game_scene_char_common_RC_shockwave_yellow
--- type life x y velocity projectile_clash_type
--- 1-8 f sprite_sheet
+-- 1-8 type life x y velocity projectile_clash_type f
 
--- enemy_interact_function		hitbox 
+-- enemy_interact_function		hitbox hit_guard_type hit_damage hit_damage_correction_factor 
+--                              hit_heat_gain hit_wallbreak_damage hurt_heat_gain 
+--                              blocked_heat_gain block_heat_gain block_risk_gauge_gain FD_block_heat_drain
 --                              stand_hurt_animation stand_block_animation
 --                              crouch_hurt_animation crouch_block_animation
 --                              air_hurt_animation air_block_animation
 --                              OTG_hurt_animation wallstick_hurt_animation
 --                              hit_VFX_insert_function hit_SFX
 --                              hurt_block_VFX_insert_function, hurt_block_SFX
---                                  hit_type: strike/throw/projectile_active hit_guard_type
--- animation                    projectile_animation camera_animation
+--                              projectile_counter_ver_function
+--                              projectile_active
+-- animation                    projectile_animation camera_x_shake_anim camera_y_shake_anim camera_enclosing_anim enclose_position_offset
 -- update/draw
 -- uncommon
 -- projectile_init_fix
 
 function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_obj_char,hurt_side_obj_char)
-    -- clear_projectile_rc_table
-    hit_side_obj_char["projectile_rc_table"] = {}
-    -- x y z opacity sx sy r f
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
-    if hit_side_obj_char["height"] == "air" then
-        obj_projectile["y_offset"] = 150
-    else
-        obj_projectile["y_offset"] = 280
-    end
+    -- clear_projectile_rc_table
+    hit_side_obj_char["projectile_rc_table"] = {}
     -- common
     obj_projectile["type"] = "projectile"
-    obj_projectile["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
-    -- obj_projectile["projectile_clash_box"] = {}
-    -- obj_projectile["projectile_clashed_function"] = function end
-    obj_projectile["hit_type"] = "strike"
     obj_projectile["life"] = 30
-
     obj_projectile["x"] = hit_side_obj_char["x"]
-    obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
+    obj_projectile["y"] = hit_side_obj_char["y"]
+    obj_projectile["velocity"] = {hit_side_obj_char["velocity"][1],hit_side_obj_char["velocity"][2]}
+    obj_projectile["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
     obj_projectile["f"] = -1
-    obj_projectile[1] = obj_projectile["x"] - hit_side_obj_char[5]*600
-    obj_projectile[2] = obj_projectile["y"] - 600
-    obj_projectile[5] = hit_side_obj_char[5]
-
+    -- enemy_interact_function
+    obj_projectile["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
+    obj_projectile["hit_guard_type"] = "all"
     obj_projectile["hit_damage"] = 0
     obj_projectile["hit_damage_correction_factor"] = 1
     obj_projectile["hit_heat_gain"] = 0
@@ -722,25 +573,6 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
     obj_projectile["block_heat_gain"] = 0
     obj_projectile["block_risk_gauge_gain"] = 0
     obj_projectile["FD_block_heat_drain"] = 0
-
-    obj_projectile["velocity"] = {hit_side_obj_char["velocity"][1],hit_side_obj_char["velocity"][2]}
-
-    obj_projectile["pushbox"] = nil
-    obj_projectile["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
-    obj_projectile["hurtbox_table"] = {}
-
-    obj_projectile["strike_active"] = true
-
-    obj_projectile["hit_guard_type"] = "all"
-
-    obj_projectile["animation"] = load_game_scene_anim_projectile_rc_main(obj_projectile)
-    init_character_anim_without(obj_projectile,obj_projectile["animation"] )
-
-    obj_projectile["camera_x_shake_anim"] = nil
-    obj_projectile["camera_y_shake_anim"] = nil
-    obj_projectile["camera_enclosing_anim"] = nil
-    obj_projectile["enclose_position_offset"] = {0,0,0}
-
     obj_projectile["stand_hurt_animation"] = load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
         hit_side_obj_char,hurt_side_obj_char,obj_projectile,
         true,nil,"0_general_hurt_launched_high",
@@ -815,7 +647,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         true,nil,"1_4_7_air_block",
         "air","5_stand_idle",
         7.5,5,1.00,
-        -7.5,7.5,1.00,
+        -7.5,5,1.00,
         nil,nil,nil,nil,
         function() end
     )
@@ -853,8 +685,42 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         nil,nil,
         function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
     )
-    obj_projectile["hit_hurt_blockstop_countdown"] = 0
-
+    obj_projectile["hit_VFX_insert_function"] = function() end
+    obj_projectile["hit_SFX"] = nil
+    obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC
+    obj_projectile["hurt_block_SFX"] = nil
+    obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
+    obj_projectile["projectile_active"] = true
+    obj_projectile["enemy_interact_function"] = function()
+        -- if hit
+        if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) and obj_projectile["projectile_active"] and (not hurt_side_obj_char["strike_inv"]) then
+            -- projectile_active
+            obj_projectile["projectile_active"] = false
+            -- block_test
+            local block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
+            -- risk_gauge
+            if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
+                hurt_side_obj_char["hurt_state"] = "counter"
+            end
+            -- insert_projectile_VFX 
+            if (not block_bool) then
+                obj_projectile["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
+                -- SFX_audio_code_place_holder
+            end
+            -- common_hurt_function
+            common_game_scene_projectile_RC_red_yellow_hurt_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+        end
+    end
+    -- animation
+        -- projectile_animation
+    obj_projectile["projectile_animation"] = load_game_scene_anim_projectile_rc_main(obj_projectile)
+    init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
+        -- camera_animation
+    obj_projectile["camera_x_shake_anim"] = nil
+    obj_projectile["camera_y_shake_anim"] = nil
+    obj_projectile["camera_enclosing_anim"] = nil
+    obj_projectile["enclose_position_offset"] = {0,0,0}
+    -- update
     obj_projectile["update"] = function()
         if hit_side_obj_char["height"] == "air" then
             obj_projectile["y_offset"] = 150
@@ -863,9 +729,10 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         end
         obj_projectile["x"] = hit_side_obj_char["x"]
         obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
-        character_animator(obj_projectile,obj_projectile["animation"])
+        character_animator(obj_projectile,obj_projectile["projectile_animation"])
         obj_projectile["life"] = obj_projectile["life"] - 1
     end
+    -- draw
     obj_projectile["draw"] = function()
         obj_projectile[1] = obj_projectile["x"] - hit_side_obj_char[5]*600
         obj_projectile[2] = obj_projectile["y"] - 600
@@ -873,157 +740,22 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8]))
         love.graphics.setBlendMode("add")
-        love.graphics.setColor(1,1,1,1)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("alpha")
     end
-    obj_projectile["enemy_interact_function"] = function()
-        -- strike_clash
-        -- projectile_and_projectile_interaction
-        -- interaction_with_enemy
-        local hit_side = hit_side_obj_char["player_side"]
-        local hurt_side = hurt_side_obj_char["player_side"]
-        local obj_stage_main = obj_stage_game_scene_main
-        local obj_camera = obj_stage_game_scene_camera
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        local wallhurt_wallstick_on_side_cache = hurt_side_obj_char["wallhurt_wallstick_on_side"]
-            -- if hit
-        if collision_strike_hurtbox_test(obj_projectile,hurt_side_obj_char) and obj_projectile["strike_active"] and (not hurt_side_obj_char["strike_inv"]) then
-            -- set_projectile_strike_active
-            obj_projectile["strike_active"] = false
-            -- set_physics_lock
-            hurt_side_obj_char["physics_lock"] = false
-            -- change_draw_front
-            CHARACTER_VISUAL_FRONT = hit_side
-            -- change_character_face
-            if not common_game_scene_get_character_facing_currect(hurt_side_obj_char,hit_side_obj_char) then
-                hurt_side_obj_char[5] = -hurt_side_obj_char[5]
-            end
-            -- block_test
-            local block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
-            if hurt_side_obj_char["height"] ~= "air" and block_bool then
-                if common_game_scene_check_crouch_direction(hurt_side_obj_char) then
-                    hurt_side_obj_char["height"] = "crouch"
-                else
-                    hurt_side_obj_char["height"] = "stand"
-                end
-            end
-            -- if block
-            if block_bool then
-                -- set_state_and_state_cache
-                hurt_side_obj_char["state_cache"] = "block"
-                hurt_side_obj_char["state"] = "block"
-                -- set_hit_hurt_blockstop_countdown
-                hurt_side_obj_char["hit_hurt_blockstop_countdown"] = obj_projectile["hit_hurt_blockstop_countdown"]
-                hurt_side_obj_char["last_hitstop_frame"] = 0
-                -- set_insert_camera_anim
-                common_game_scene_hit_load_camera_shake_anim(obj_projectile,0.5,30)
-                table.insert(obj_stage_main["camera_active_application_table"],
-                    function()
-                        anim_stage_point_linear_game_scene_camera_shake_x = obj_projectile["camera_x_shake_anim"]
-                        anim_stage_point_linear_game_scene_camera_shake_y = obj_projectile["camera_y_shake_anim"]
-                        init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-                        init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
-                        obj_camera["state"] = "active"
-                    end
-                )
-                -- set_play_block_animaiton_by_height_and_input
-                if common_game_scene_check_crouch_direction(hurt_side_obj_char) and hurt_side_obj_char["height"] == "stand" then
-                    hurt_side_obj_char["height"] = "crouch"
-                elseif common_game_scene_check_stand_direction(hurt_side_obj_char) and hurt_side_obj_char["height"] == "crouch" then
-                    hurt_side_obj_char["height"] = "stand"
-                end
-                if hurt_side_obj_char["height"] == "stand" then
-                    hurt_side_obj_char["character_animation"] = obj_projectile["stand_block_animation"]
-                elseif hurt_side_obj_char["height"] == "crouch" then
-                    hurt_side_obj_char["character_animation"] = obj_projectile["crouch_block_animation"]
-                elseif hurt_side_obj_char["height"] == "air" then
-                    hurt_side_obj_char["character_animation"] = obj_projectile["air_block_animation"]
-                end
-                init_character_anim_with(hurt_side_obj_char,hurt_side_obj_char["character_animation"])
-                -- return
-            -- GP
-            elseif hurt_side_obj_char["hurt_state"] == "GP" then -- idle unblock punish counter GP parry
-                -- set_state_and_state_cache
-                hurt_side_obj_char["state_cache"] = hurt_side_obj_char["state"]
-                hurt_side_obj_char["state"] = hurt_side_obj_char["state"]
-                -- set_hit_hurt_blockstop_countdown
-                hurt_side_obj_char["hit_hurt_blockstop_countdown"] = obj_projectile["hit_hurt_blockstop_countdown"]
-                hurt_side_obj_char["last_hitstop_frame"] = 0
-                -- set_insert_camera_anim
-                common_game_scene_hit_load_camera_shake_anim(obj_projectile,1.0,30)
-                table.insert(obj_stage_main["camera_active_application_table"],
-                    function()
-                        anim_stage_point_linear_game_scene_camera_shake_x = obj_projectile["camera_x_shake_anim"]
-                        anim_stage_point_linear_game_scene_camera_shake_y = obj_projectile["camera_y_shake_anim"]
-                        init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-                        init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
-                        obj_camera["state"] = "active"
-                    end
-                )
-                -- insert_VFX_game_scene_char_GP
-                insert_VFX_game_scene_char_GP(hurt_side_obj_char)
-            -- parry
-            elseif hurt_side_obj_char["hurt_state"] == "parry" then -- idle unblock punish counter GP parry
-                -- parry function
-                hurt_side_obj_char["parry_function"](obj_projectile,hurt_side_obj_char)
-            -- idle_and_unblock
-            else
-                -- insert_VFX
-                if hurt_side_obj_char["hurt_state"] == "punish" then
-                    insert_VFX_HUD_game_scene_punish(hit_side_obj_char)
-                end
-                -- set_state_and_state_cache
-                hurt_side_obj_char["state_cache"] = "hurt"
-                hurt_side_obj_char["state"] = "hurt"
-                hurt_side_obj_char["collision_move_available_cache"] = {1,1}
-                -- hit_hurt_blockstop_countdown
-                hurt_side_obj_char["hit_hurt_blockstop_countdown"] = obj_projectile["hit_hurt_blockstop_countdown"]
-                hurt_side_obj_char["last_hitstop_frame"] = 0
-                -- set_insert_camera_anim
-                common_game_scene_hit_load_camera_shake_anim(obj_projectile,1.0,30)
-                common_game_scene_red_rc_hit_load_camera_enclose_anim(obj_projectile)
-                obj_projectile["enclose_position_offset"] = {
-                    0,
-                    37.5,
-                    75
-                }
-                table.insert(obj_stage_main["camera_active_application_table"],
-                    function()
-                        anim_stage_point_linear_game_scene_camera_enclosing = obj_projectile["camera_enclosing_anim"]
-                        anim_stage_point_linear_game_scene_camera_shake_x = obj_projectile["camera_x_shake_anim"]
-                        anim_stage_point_linear_game_scene_camera_shake_y = obj_projectile["camera_y_shake_anim"]
-                        init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_enclosing)
-                        init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-                        init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
-                        obj_camera["enclose_position_offset"] = obj_projectile["enclose_position_offset"]
-                        obj_camera["state"] = "active"
-                    end
-                )
-                -- hurt_animation
-                if hurt_side_obj_char["height"] == "stand" then
-                    hurt_side_obj_char["character_animation"] = obj_projectile["stand_hurt_animation"]
-                elseif hurt_side_obj_char["height"] == "crouch" then
-                    hurt_side_obj_char["character_animation"] = obj_projectile["crouch_hurt_animation"]
-                elseif hurt_side_obj_char["height"] == "air" then
-                    hurt_side_obj_char["character_animation"] = obj_projectile["air_hurt_animation"]
-                elseif hurt_side_obj_char["height"] == "OTG" then
-                    hurt_side_obj_char["character_animation"] = obj_projectile["OTG_hurt_animation"]
-                elseif hurt_side_obj_char["height"] == "wallstick" then
-                    hurt_side_obj_char["character_animation"] = obj_projectile["wallstick_hurt_animation"]
-                end
-                init_character_anim_with(hurt_side_obj_char,hurt_side_obj_char["character_animation"])
-
-                -- insert_hit_VFX
-            end
-            -- wallbreak_test_and_apply
-            common_game_scene_test_and_apply_wallbreak(hit_side_obj_char,hurt_side_obj_char,wallhurt_wallstick_on_side_cache)
-        end
+    -- uncommon nil
+    -- projectile_init_fix
+    if hit_side_obj_char["height"] == "air" then
+        obj_projectile["y_offset"] = 150
+    else
+        obj_projectile["y_offset"] = 280
     end
-    -- obj_projectile["friendly_interact_function"] = function()
-
-    -- end
+    obj_projectile["x"] = hit_side_obj_char["x"]
+    obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
+    obj_projectile[1] = obj_projectile["x"] - hit_side_obj_char[5]*600
+    obj_projectile[2] = obj_projectile["y"] - 600
+    obj_projectile[5] = hit_side_obj_char[5]
+    -- insert_projectile
     table.insert(hit_side_obj_char["projectile_rc_table"],obj_projectile)
 end
 

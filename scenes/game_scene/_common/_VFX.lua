@@ -461,9 +461,7 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver0(active_op_side_obj_
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -536,7 +534,7 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver1(active_op_side_obj_
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
 
-    VFX_obj["life"] = 21
+    VFX_obj["life"] = 16
     VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x)
     VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y)
     VFX_obj[3] = active_op_side_obj_char[3]
@@ -550,20 +548,18 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver1(active_op_side_obj_
     VFX_obj["LCD"] = {0,0,0,0,0,0,0,0}
     VFX_obj["animation"] = {}
     VFX_obj["animation"][0] = 0
-    VFX_obj["animation"][2] = 1
-    VFX_obj["animation"][4] = 2
-    VFX_obj["animation"][7] = 3
-    VFX_obj["animation"][10] = 4
-    VFX_obj["animation"][13] = 5
-    VFX_obj["animation"][17] = 6
+    VFX_obj["animation"][1] = 1
+    VFX_obj["animation"][2] = 2
+    VFX_obj["animation"][4] = 3
+    VFX_obj["animation"][7] = 4
+    VFX_obj["animation"][10] = 5
+    VFX_obj["animation"][13] = 6
     VFX_obj["animation"]["prop"] = 8
-    VFX_obj["animation"]["length"] = 21
+    VFX_obj["animation"]["length"] = 16
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -652,9 +648,7 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver1(active_op_side_obj_
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -762,9 +756,7 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver0(active_op_s
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -837,7 +829,7 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
 
-    VFX_obj["life"] = 21
+    VFX_obj["life"] = 16
     VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x)
     VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y)
     VFX_obj[3] = active_op_side_obj_char[3]
@@ -851,20 +843,18 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
     VFX_obj["LCD"] = {0,0,0,0,0,0,0,0}
     VFX_obj["animation"] = {}
     VFX_obj["animation"][0] = 0
-    VFX_obj["animation"][2] = 1
-    VFX_obj["animation"][4] = 2
-    VFX_obj["animation"][7] = 3
-    VFX_obj["animation"][10] = 4
-    VFX_obj["animation"][13] = 5
-    VFX_obj["animation"][17] = 6
+    VFX_obj["animation"][1] = 1
+    VFX_obj["animation"][2] = 2
+    VFX_obj["animation"][4] = 3
+    VFX_obj["animation"][7] = 4
+    VFX_obj["animation"][10] = 5
+    VFX_obj["animation"][13] = 6
     VFX_obj["animation"]["prop"] = 8
-    VFX_obj["animation"]["length"] = 21
+    VFX_obj["animation"]["length"] = 16
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -953,9 +943,7 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -1039,9 +1027,7 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
     VFX_obj["opacity_point_linear_animation"]["loop"] = false
     init_point_linear_anim_without(VFX_obj,VFX_obj["opacity_point_linear_animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             point_linear_animator(VFX_obj,VFX_obj["opacity_point_linear_animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -1109,9 +1095,7 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -1189,9 +1173,7 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver0(active_op_sid
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -1264,7 +1246,7 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_sid
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
 
-    VFX_obj["life"] = 21
+    VFX_obj["life"] = 16
     VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x)
     VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y)
     VFX_obj[3] = active_op_side_obj_char[3]
@@ -1278,20 +1260,18 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_sid
     VFX_obj["LCD"] = {0,0,0,0,0,0,0,0}
     VFX_obj["animation"] = {}
     VFX_obj["animation"][0] = 0
-    VFX_obj["animation"][2] = 1
-    VFX_obj["animation"][4] = 2
-    VFX_obj["animation"][7] = 3
-    VFX_obj["animation"][10] = 4
-    VFX_obj["animation"][13] = 5
-    VFX_obj["animation"][17] = 6
+    VFX_obj["animation"][1] = 1
+    VFX_obj["animation"][2] = 2
+    VFX_obj["animation"][4] = 3
+    VFX_obj["animation"][7] = 4
+    VFX_obj["animation"][10] = 5
+    VFX_obj["animation"][13] = 6
     VFX_obj["animation"]["prop"] = 8
-    VFX_obj["animation"]["length"] = 21
+    VFX_obj["animation"]["length"] = 16
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -1380,9 +1360,7 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_sid
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -1475,9 +1453,7 @@ function insert_VFX_game_scene_char_blast_dynamic_ver0(active_op_side_obj_char,p
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -1521,7 +1497,7 @@ function insert_VFX_game_scene_char_blast_dynamic_ver1(active_op_side_obj_char,p
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
 
-    VFX_obj["life"] = 21
+    VFX_obj["life"] = 16
     VFX_obj[1] = center_x
     VFX_obj[2] = center_y
     VFX_obj[3] = active_op_side_obj_char[3]
@@ -1535,20 +1511,18 @@ function insert_VFX_game_scene_char_blast_dynamic_ver1(active_op_side_obj_char,p
     VFX_obj["LCD"] = {0,0,0,0,0,0,0,0}
     VFX_obj["animation"] = {}
     VFX_obj["animation"][0] = 0
-    VFX_obj["animation"][2] = 1
-    VFX_obj["animation"][4] = 2
-    VFX_obj["animation"][7] = 3
-    VFX_obj["animation"][10] = 4
-    VFX_obj["animation"][13] = 5
-    VFX_obj["animation"][17] = 6
+    VFX_obj["animation"][1] = 1
+    VFX_obj["animation"][2] = 2
+    VFX_obj["animation"][4] = 3
+    VFX_obj["animation"][7] = 4
+    VFX_obj["animation"][10] = 5
+    VFX_obj["animation"][13] = 6
     VFX_obj["animation"]["prop"] = 8
-    VFX_obj["animation"]["length"] = 21
+    VFX_obj["animation"]["length"] = 16
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -1608,9 +1582,7 @@ function insert_VFX_game_scene_char_blast_dynamic_ver1(active_op_side_obj_char,p
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -1685,9 +1657,7 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver0(active_op_side_ob
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -1731,7 +1701,7 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
 
-    VFX_obj["life"] = 21
+    VFX_obj["life"] = 16
     VFX_obj[1] = center_x
     VFX_obj[2] = center_y
     VFX_obj[3] = active_op_side_obj_char[3]
@@ -1745,20 +1715,18 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
     VFX_obj["LCD"] = {0,0,0,0,0,0,0,0}
     VFX_obj["animation"] = {}
     VFX_obj["animation"][0] = 0
-    VFX_obj["animation"][2] = 1
-    VFX_obj["animation"][4] = 2
-    VFX_obj["animation"][7] = 3
-    VFX_obj["animation"][10] = 4
-    VFX_obj["animation"][13] = 5
-    VFX_obj["animation"][17] = 6
+    VFX_obj["animation"][1] = 1
+    VFX_obj["animation"][2] = 2
+    VFX_obj["animation"][4] = 3
+    VFX_obj["animation"][7] = 4
+    VFX_obj["animation"][10] = 5
+    VFX_obj["animation"][13] = 6
     VFX_obj["animation"]["prop"] = 8
-    VFX_obj["animation"]["length"] = 21
+    VFX_obj["animation"]["length"] = 16
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -1813,9 +1781,7 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -1861,9 +1827,7 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
     VFX_obj["opacity_point_linear_animation"]["loop"] = false
     init_point_linear_anim_without(VFX_obj,VFX_obj["opacity_point_linear_animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             point_linear_animator(VFX_obj,VFX_obj["opacity_point_linear_animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -1906,9 +1870,7 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -1978,9 +1940,7 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver0(active_op_side_obj_
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -2024,7 +1984,7 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver1(active_op_side_obj_
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
 
-    VFX_obj["life"] = 21
+    VFX_obj["life"] = 16
     VFX_obj[1] = center_x
     VFX_obj[2] = center_y
     VFX_obj[3] = active_op_side_obj_char[3]
@@ -2038,20 +1998,18 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver1(active_op_side_obj_
     VFX_obj["LCD"] = {0,0,0,0,0,0,0,0}
     VFX_obj["animation"] = {}
     VFX_obj["animation"][0] = 0
-    VFX_obj["animation"][2] = 1
-    VFX_obj["animation"][4] = 2
-    VFX_obj["animation"][7] = 3
-    VFX_obj["animation"][10] = 4
-    VFX_obj["animation"][13] = 5
-    VFX_obj["animation"][17] = 6
+    VFX_obj["animation"][1] = 1
+    VFX_obj["animation"][2] = 2
+    VFX_obj["animation"][4] = 3
+    VFX_obj["animation"][7] = 4
+    VFX_obj["animation"][10] = 5
+    VFX_obj["animation"][13] = 6
     VFX_obj["animation"]["prop"] = 8
-    VFX_obj["animation"]["length"] = 21
+    VFX_obj["animation"]["length"] = 16
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -2111,9 +2069,7 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver1(active_op_side_obj_
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -2213,9 +2169,7 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
     VFX_obj["animation"]["length"] = 27
     VFX_obj["animation"]["loop"] = false
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -2377,9 +2331,7 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
     VFX_obj["animation"]["length"] = 27
     VFX_obj["animation"]["loop"] = false
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -2485,9 +2437,7 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
-        if active_op_side_obj_char["state"] == "hitstop" then
-            -- do nothing
-        else
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(VFX_obj,VFX_obj["animation"])
             VFX_obj["life"] = VFX_obj["life"] - 1
         end
@@ -2593,6 +2543,63 @@ function insert_VFX_game_scene_char_block_ver1(active_op_side_obj_char)
     VFX_obj["animation"][27] = 6
     VFX_obj["animation"]["prop"] = 8
     VFX_obj["animation"]["length"] = 31
+    VFX_obj["animation"]["loop"] = false
+    init_frame_anim_without(VFX_obj,VFX_obj["animation"])
+    VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor[1])
+    VFX_obj["update"] = function()
+        frame_animator(VFX_obj,VFX_obj["animation"])
+        VFX_obj["life"] = VFX_obj["life"] - 1
+    end
+    VFX_obj["draw_sync"] = function()
+        VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor[1])
+        VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(VFX_spawn_anchor[2])
+        VFX_obj[5] = active_op_side_obj_char[5]
+        VFX_obj[6] = active_op_side_obj_char[6]
+        -- VFX_obj["draw_sync"] = function() end
+    end
+    VFX_obj["draw"] = function()
+        local obj_camera = obj_stage_game_scene_camera
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_block_ver1
+        VFX_obj["draw_sync"]()
+        VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor[1])
+        VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(VFX_spawn_anchor[2])
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,VFX_obj,image_sprite_sheet,""..VFX_obj[8].."")
+        love.graphics.setBlendMode("add")
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setBlendMode("alpha")
+    end
+    table.insert(active_op_side_obj_char["VFX_hit_front_table"],VFX_obj)
+end
+function insert_VFX_game_scene_char_block_RC(active_op_side_obj_char)
+    -- x y z opacity sx sy r f
+    local VFX_obj = {0,0,0,1,1,1,0,0}
+    local VFX_spawn_anchor = common_game_scene_get_VFX_spawn_anchor(active_op_side_obj_char["player_side"])["block_ver1_spawn_anchor_pos"][active_op_side_obj_char["sprite_sheet"]]
+    active_op_side_obj_char["VFX_hit_front_table"] = {}
+    active_op_side_obj_char["VFX_hit_back_table"] = {}
+
+    VFX_obj["life"] = 18
+    VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor[1])
+    VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(VFX_spawn_anchor[2])
+    VFX_obj[3] = active_op_side_obj_char[3]
+    VFX_obj[4] = 0.75
+    VFX_obj[5] = active_op_side_obj_char[5]
+    VFX_obj[6] = active_op_side_obj_char[6]
+    VFX_obj[7] = 0
+    VFX_obj[8] = 0
+    VFX_obj["FCT"] = {0,0,0,0,0,0,0,0}
+    VFX_obj["LCT"] = {0,0,0,0,0,0,0,0}
+    VFX_obj["LCD"] = {0,0,0,0,0,0,0,0}
+    VFX_obj["animation"] = {}
+    VFX_obj["animation"][0] = 0
+    VFX_obj["animation"][1] = 1
+    VFX_obj["animation"][3] = 2
+    VFX_obj["animation"][5] = 3
+    VFX_obj["animation"][8] = 4
+    VFX_obj["animation"][11] = 5
+    VFX_obj["animation"][14] = 6
+    VFX_obj["animation"]["prop"] = 8
+    VFX_obj["animation"]["length"] = 18
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor[1])

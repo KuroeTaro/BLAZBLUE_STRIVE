@@ -170,8 +170,8 @@ function update_game_scene_training_main()
     state_machine_char_game_scene_char_RP_input_sys_cache()
     state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
     state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
-    common_update_game_scene_input_direction(char_LP)
-    common_update_game_scene_input_direction(char_RP)
+    common_game_scene_update_input_direction(char_LP)
+    common_game_scene_update_input_direction(char_RP)
 
     -- debug_delete_after
     if DEBUG_TRAINNING_TOGGLE then
@@ -359,8 +359,8 @@ function update_game_scene_training_main()
 
         -- 打击受击检测
         -- 检测投受击盒交互
-        local LP_hurt_throw_accur = collision_throw_hurtbox_test(char_RP,char_LP) -- (obj_hit,obj_hurt)
-        local RP_hurt_throw_accur = collision_throw_hurtbox_test(char_LP,char_RP)
+        local LP_hurt_throw_accur = collision_throw_hit_confirm_test(char_RP,char_LP) -- (obj_hit,obj_hurt)
+        local RP_hurt_throw_accur = collision_throw_hit_confirm_test(char_LP,char_RP)
 
         -- 检测打击受击盒交互
         if LP_hurt_throw_accur and not RP_hurt_throw_accur then
@@ -407,8 +407,8 @@ function update_game_scene_training_main()
         end
 
         -- 保留双康后的LP_hurt_strike_accur RP_hurt_strike_accur
-        local LP_hurt_strike_accur = collision_strike_hurtbox_test(char_RP,char_LP) -- (obj_hit,obj_hurt)
-        local RP_hurt_strike_accur = collision_strike_hurtbox_test(char_LP,char_RP)
+        local LP_hurt_strike_accur = collision_strike_hit_confirm_test(char_RP,char_LP) -- (obj_hit,obj_hurt)
+        local RP_hurt_strike_accur = collision_strike_hit_confirm_test(char_LP,char_RP)
 
         -- 检测打击受击盒交互
         if LP_hurt_strike_accur then
@@ -954,6 +954,13 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char_a,obj_char_b)
     then
         table.insert(obj_stage_main["wallstick_char_obj_active_application_table"],
             function()
+                -- init_wallsitck
+                obj_char_a[5] = -collision_side
+                obj_char_a["state_cache"] = "wallstick"
+                obj_char_a["state"] = "hurtstop"
+                obj_char_a["wallhurt_wallstick_on_side"] = collision_side
+                obj_char_a["physics_lock"] = true
+                -- init_animation
                 if obj_char_a["height"] == "air" then
                     obj_char_a["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(obj_char_a)
                     init_character_anim_with(obj_char_a,obj_char_a["character_animation"])
@@ -961,11 +968,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char_a,obj_char_b)
                     obj_char_a["character_animation"] = load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstick_ground(obj_char_a)
                     init_character_anim_with(obj_char_a,obj_char_a["character_animation"])
                 end
-                obj_char_a[5] = -collision_side
-                obj_char_a["state_cache"] = "wallstick"
-                obj_char_a["state"] = "hurtstop"
-                obj_char_a["wallhurt_wallstick_on_side"] = collision_side
-                obj_char_a["physics_lock"] = true
+                -- hitstop
                 if obj_char_b["state"] ~= "hitstop" then
                     obj_char_b["state_cache"] = obj_char_b["state"]
                     obj_char_b["state"] = "hitstop"

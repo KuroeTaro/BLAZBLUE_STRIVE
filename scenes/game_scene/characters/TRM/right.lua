@@ -26,7 +26,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["sprite_sheet"] = "5_stand_idle"
     obj_char_game_scene_char_RP["height"] = "stand" -- stand crouch air OTG wallstick
     obj_char_game_scene_char_RP["air_gatling_state"] = false
-    obj_char_game_scene_char_RP["hit_type"] = "none" -- none strike throw burst projectile
+    obj_char_game_scene_char_RP["hit_type"] = "none" -- none strike throw projectile all
     obj_char_game_scene_char_RP["hit_guard_type"] = "none" -- none all low mid high
     obj_char_game_scene_char_RP["hurt_state"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_RP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
@@ -1086,7 +1086,7 @@ function load_game_scene_wallbreak_end_init_RP()
     obj_char_game_scene_char_RP["basic_prop_cache"] = {0,0,0,1,1,1,0,0}
     -- state
     obj_char_game_scene_char_RP["state_cache"] = "none"
-    obj_char_game_scene_char_RP["hit_type"] = "none" -- none strike throw burst projectile
+    obj_char_game_scene_char_RP["hit_type"] = "none" -- none strike throw projectile all
     obj_char_game_scene_char_RP["hit_guard_type"] = "none" -- none all low mid high
     obj_char_game_scene_char_RP["hurt_state"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_RP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
@@ -2311,7 +2311,7 @@ function state_machine_char_game_scene_char_RP_input_sys_cache()
                     input[INPUT_SYS_COMMAND_TABLE[i]] = "Pressing"
                 end
             end
-            common_update_game_scene_input_direction(self_side_obj_char)
+            common_game_scene_update_input_direction(self_side_obj_char)
             self_side_obj_char["input_sys_state"] = "none"
             init_input_sys_cache_RP(self_side_obj_char)
         end,
@@ -2321,7 +2321,7 @@ function state_machine_char_game_scene_char_RP_input_sys_cache()
                     input[INPUT_SYS_COMMAND_TABLE[i]] = "Pressing"
                 end
             end
-            common_update_game_scene_input_direction(self_side_obj_char)
+            common_game_scene_update_input_direction(self_side_obj_char)
             self_side_obj_char["input_sys_state"] = "none"
             init_input_sys_cache_RP(self_side_obj_char)
         end,
@@ -2387,7 +2387,7 @@ function state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(i
     -- direction_input
     if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) and test_input_sys_press_or_hold(input["dash"]) then
         self_side_obj_char[5] = -self_side_obj_char[5]
-        common_update_game_scene_input_direction(self_side_obj_char)
+        common_game_scene_update_input_direction(self_side_obj_char)
     end
     -- _4dash_backdash
     if self_side_obj_char["direction_input"] == 4 and test_input_sys_press_or_hold(input["dash"]) then
@@ -2411,7 +2411,7 @@ function state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_6dash
     -- direction_input
     if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) and test_input_sys_press_or_hold(input["dash"]) then
         self_side_obj_char[5] = -self_side_obj_char[5]
-        common_update_game_scene_input_direction(self_side_obj_char)
+        common_game_scene_update_input_direction(self_side_obj_char)
     end
     -- _4dash_backdash
     if self_side_obj_char["direction_input"] == 4 and test_input_sys_press(input["dash"]) then
@@ -2435,7 +2435,7 @@ function state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_4dash
     -- direction_input
     if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) and test_input_sys_press_or_hold(input["dash"]) then
         self_side_obj_char[5] = -self_side_obj_char[5]
-        common_update_game_scene_input_direction(self_side_obj_char)
+        common_game_scene_update_input_direction(self_side_obj_char)
     end
     -- _6dash_dash
     if (self_side_obj_char["direction_input"] == 5 or self_side_obj_char["direction_input"] == 6) 
@@ -3768,7 +3768,7 @@ function state_gate_game_scene_char_RP_from_1_2_3_crouch(input,self_side_obj_cha
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch_turn(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "1_2_3_crouch_turn"
-        common_update_game_scene_input_direction(self_side_obj_char)
+        common_game_scene_update_input_direction(self_side_obj_char)
         state_gate_game_scene_char_RP_from_1_2_3_crouch_turn(input,self_side_obj_char,opponent_side_obj_char)
         return true
     end
@@ -3823,7 +3823,7 @@ function state_gate_game_scene_char_RP_from_1_2_3_crouch_turn(input,self_side_ob
         self_side_obj_char[5] = -self_side_obj_char[5]
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch_turn(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-        common_update_game_scene_input_direction(self_side_obj_char)
+        common_game_scene_update_input_direction(self_side_obj_char)
     end
     -- _overdrive
     if state_gate_game_scene_char_RP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
@@ -3887,7 +3887,7 @@ function state_gate_game_scene_char_RP_from_1_2_3_crouch_to_stand_idle(input,sel
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "5_stand_turn"
         state_gate_game_scene_char_RP_from_5_stand_turn(input,self_side_obj_char,opponent_side_obj_char)
-        common_update_game_scene_input_direction(self_side_obj_char)
+        common_game_scene_update_input_direction(self_side_obj_char)
         return true
     end
     -- _overdrive
@@ -3950,7 +3950,7 @@ function state_gate_game_scene_char_RP_from_5_stand_idle(input,self_side_obj_cha
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "5_stand_turn"
         state_gate_game_scene_char_RP_from_5_stand_turn(input,self_side_obj_char,opponent_side_obj_char)
-        common_update_game_scene_input_direction(self_side_obj_char)
+        common_game_scene_update_input_direction(self_side_obj_char)
         return true
     end
     -- _overdrive
@@ -4004,7 +4004,7 @@ function state_gate_game_scene_char_RP_from_5_stand_turn(input,self_side_obj_cha
         self_side_obj_char[5] = -self_side_obj_char[5]
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-        common_update_game_scene_input_direction(self_side_obj_char)
+        common_game_scene_update_input_direction(self_side_obj_char)
     end
     -- _overdrive
     if state_gate_game_scene_char_RP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
@@ -4100,7 +4100,7 @@ function state_gate_game_scene_char_RP_from_4_walk(input,self_side_obj_char,oppo
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "5_stand_turn"
-        common_update_game_scene_input_direction(self_side_obj_char)
+        common_game_scene_update_input_direction(self_side_obj_char)
         state_gate_game_scene_char_RP_from_5_stand_turn(input,self_side_obj_char,opponent_side_obj_char)
         return true
     end
@@ -4159,7 +4159,7 @@ function state_gate_game_scene_char_RP_from_4_walk_to_stand_idle(input,self_side
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "5_stand_turn"
-        common_update_game_scene_input_direction(self_side_obj_char)
+        common_game_scene_update_input_direction(self_side_obj_char)
         state_gate_game_scene_char_RP_from_5_stand_turn(input,self_side_obj_char,opponent_side_obj_char)
         return true
     end
@@ -4224,7 +4224,7 @@ function state_gate_game_scene_char_RP_from_6_walk(input,self_side_obj_char,oppo
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "5_stand_turn"
-        common_update_game_scene_input_direction(self_side_obj_char)
+        common_game_scene_update_input_direction(self_side_obj_char)
         state_gate_game_scene_char_RP_from_5_stand_turn(input,self_side_obj_char,opponent_side_obj_char)
         return true
     end
@@ -4280,7 +4280,7 @@ function state_gate_game_scene_char_RP_from_6_walk_to_stand_idle(input,self_side
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_turn(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "5_stand_turn"
-        common_update_game_scene_input_direction(self_side_obj_char)
+        common_game_scene_update_input_direction(self_side_obj_char)
         state_gate_game_scene_char_RP_from_5_stand_turn(input,self_side_obj_char,opponent_side_obj_char)
         return true
     end
@@ -4415,7 +4415,7 @@ function state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,self_side_obj_c
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        common_update_game_scene_input_direction(self_side_obj_char)
+        common_game_scene_update_input_direction(self_side_obj_char)
         -- air_move
         self_side_obj_char["air_move"]["jump"][1] = math.max(math.min(self_side_obj_char["air_move"]["jump"][1]-1,self_side_obj_char["air_move"]["jump"][2]),0)
         self_side_obj_char["air_move"]["air_dash"][1] = 0

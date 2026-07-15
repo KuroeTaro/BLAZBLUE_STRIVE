@@ -862,8 +862,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         hurt_side_obj_char["projectile_inv"] = false
         hurt_side_obj_char["projectile_inv_countdown"] = 0
         -- state_number
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
+        local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
+        local FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_char_apply_damage_heat(
             hit_side_obj_char,hurt_side_obj_char,"block",FD_block
         )
@@ -971,8 +971,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         hurt_side_obj_char["projectile_inv"] = false
         hurt_side_obj_char["projectile_inv_countdown"] = 0
         -- state_number
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
+        local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
+        local FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_char_apply_damage_heat(
             hit_side_obj_char,hurt_side_obj_char,"block",FD_block
         )
@@ -1084,8 +1084,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         hurt_side_obj_char["projectile_inv"] = false
         hurt_side_obj_char["projectile_inv_countdown"] = 0
         -- state_number
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
+        local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
+        local FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_char_apply_damage_heat(
             hit_side_obj_char,hurt_side_obj_char,"block",FD_block
         )
@@ -1195,8 +1195,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         hurt_side_obj_char["projectile_inv"] = false
         hurt_side_obj_char["projectile_inv_countdown"] = 0
         -- state_number
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
+        local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
+        local FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_char_apply_damage_heat(
             hit_side_obj_char,hurt_side_obj_char,"block",FD_block
         )
@@ -1310,8 +1310,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         hurt_side_obj_char["projectile_inv"] = false
         hurt_side_obj_char["projectile_inv_countdown"] = 0
         -- state_number
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
+        local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
+        local FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_char_apply_damage_heat(
             hit_side_obj_char,hurt_side_obj_char,"block",FD_block
         )
@@ -1459,8 +1459,8 @@ function load_game_scene_anim_char_common_0_air_block(
         hurt_side_obj_char["projectile_inv"] = false
         hurt_side_obj_char["projectile_inv_countdown"] = 0
         -- state_number
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
+        local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
+        local FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_char_apply_damage_heat(
             hit_side_obj_char,hurt_side_obj_char,"block",FD_block
         )

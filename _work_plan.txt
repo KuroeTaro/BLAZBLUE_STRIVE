@@ -17,6 +17,8 @@ config选项中自定义要不要79空投
     -- and so call up is toward the inside of the ring Y is negative
     -- the other side is Y positive
 
+6SP_P
+添加音效
 wallstick state修改 ease_in/pause/ease_out/off
 knockout场景
 碎墙的血量伤害应用和碎墙knockout

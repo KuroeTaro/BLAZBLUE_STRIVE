@@ -810,7 +810,8 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anch
             obj_char[8] = 2
         end
     end
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
+    local side = obj_char["player_side"]
+    local input = INPUT_SYS_CURRENT_COMMAND_STATE[side]
     res["prop_f"] = "f"
     res["anim_length"] = 35
     width_table[0] = 200
@@ -1920,8 +1921,8 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char,hurt_side_obj_char)
             hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            22.5,5,1.14,
-            -17.5,2.5,1.14,
+            22.5,5,1.035,
+            -17.5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
@@ -1946,8 +1947,8 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char,hurt_side_obj_char)
             hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            42.5,5,1.14,
-            0,2.5,1.14,
+            42.5,5,1.035,
+            0,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
@@ -2455,8 +2456,8 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char,hurt_side_obj_char)
             hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            22.5,5,1.14,
-            -17.5,2.5,1.14,
+            22.5,5,1.035,
+            -17.5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
@@ -2481,8 +2482,8 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char,hurt_side_obj_char)
             hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            42.5,5,1.14,
-            0,2.5,1.14,
+            42.5,5,1.035,
+            0,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
@@ -2967,7 +2968,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
             "0_stand_hurt_low",
             "stand","5_stand_idle",
             35,5,1.00,
-            0,2.5,1.035,
+            0,2.5,1.07,
             nil,nil,nil,nil,
             function() end
         )
@@ -2985,7 +2986,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
             "0_crouch_hurt",
             "crouch","1_2_3_crouch",
             35,5,1.00,
-            0,2.5,1.035,
+            0,2.5,1.07,
             nil,nil,nil,nil,
             function() end
         )
@@ -3002,8 +3003,8 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
             hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            5,5,1.035,
-            -42.5,2.5,1.035,
+            7.5,5,1.07,
+            -42.5,2.5,1.07,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
@@ -3028,8 +3029,8 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
             hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            50,5,1.035,
-            -7.5,2.5,1.035,
+            50,5,1.07,
+            -7.5,2.5,1.07,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
@@ -3931,7 +3932,7 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
             hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            32.5,5,1.035,
+            37.5,5,1.035,
             -17.5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
@@ -5724,7 +5725,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(hit_side_obj_char,hurt_side_o
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side_obj_char["player_side"]]
+    local input = INPUT_SYS_CURRENT_COMMAND_STATE[side]
     res["prop_f"] = "f"
     res["anim_length"] = 42
 
@@ -6129,7 +6130,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(hit_side_obj_char,hur
     local obj_camera = obj_stage_game_scene_camera
     local side = hit_side_obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side_obj_char["player_side"]]
+    local input = INPUT_SYS_CURRENT_COMMAND_STATE[side]
     res["prop_f"] = "f"
     res["anim_length"] = 129
 
@@ -8343,7 +8344,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(hit_side_obj_char,hurt_side_
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side_obj_char["player_side"]]
+    local input = INPUT_SYS_CURRENT_COMMAND_STATE[side]
     res["prop_f"] = "f"
     res["anim_length"] = 42
 
@@ -8728,7 +8729,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(hit_side_obj_char,hu
     local obj_camera = obj_stage_game_scene_camera
     local side = hit_side_obj_char["player_side"]
     local SFX_table = common_game_scene_get_SFX_table(side)
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side_obj_char["player_side"]]
+    local input = INPUT_SYS_CURRENT_COMMAND_STATE[side]
     res["prop_f"] = "f"
     res["anim_length"] = 48
 

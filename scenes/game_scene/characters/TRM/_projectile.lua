@@ -1,18 +1,19 @@
 -- insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot
--- type life x y velocity projectile_clash_type
--- 1-8 f sprite_sheet
+-- 1-8 type life x y velocity projectile_clash_type f
 
--- enemy_interact_function		hitbox hit_type	hit_damage hit_damage_correction_factor 
+-- sprite_sheet
+-- enemy_interact_function		hitbox hit_type	hit_guard_type hit_hurt_blockstop_countdown
+--                              hit_damage hit_damage_correction_factor 
 --                              hit_heat_gain hit_wallbreak_damage hurt_heat_gain 
 --                              blocked_heat_gain block_heat_gain block_risk_gauge_gain FD_block_heat_drain
 --                              stand_hurt_animation stand_block_animation
 --                              crouch_hurt_animation crouch_block_animation
 --                              air_hurt_animation air_block_animation
 --                              OTG_hurt_animation wallstick_hurt_animation
---                              hurt_block_VFX_insert_function, hurt_block_SFX
---                              strike_counter_ver_function
---                                  hit_type: strike/throw/projectile_active hit_guard_type
--- animation                    projectile_animation camera_animation
+--                              projectile_active projectile_counter_ver_function
+--                              hit_SFX hit_block_SFX hit_counter_SFX
+--                              hurt_block_VFX_insert_function hurt_block_SFX
+-- animation                    projectile_animation camera_x_shake_anim camera_y_shake_anim camera_enclosing_anim enclose_position_offset
 -- update/draw
 -- uncommon
 -- projectile_init_fix
@@ -31,12 +32,15 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     obj_projectile["velocity"] = {0,0}
     obj_projectile["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
     obj_projectile["f"] = -1
+
     obj_projectile["sprite_sheet"] = "5H_miss_projectile"
     -- pushbox_interact_function nil
     -- projectile_clashed_function nil
     -- enemy_interact_function
     obj_projectile["hitbox_table"] = {}
     obj_projectile["hit_type"] = "strike"
+    obj_projectile["hit_guard_type"] = "all"
+    obj_projectile["hit_hurt_blockstop_countdown"] = 12
     obj_projectile["hit_damage"] = 0
     obj_projectile["hit_damage_correction_factor"] = 1
     obj_projectile["hit_heat_gain"] = 0
@@ -128,19 +132,24 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     obj_projectile["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
         hit_side_obj_char,hurt_side_obj_char,obj_projectile,true
     )
-    obj_projectile["hit_hurt_blockstop_countdown"] = 12
-    obj_projectile["hit_SFX"] = nil
+    obj_projectile["projectile_active"] = true
+    obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
     obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
     obj_projectile["hurt_block_SFX"] = nil
-    obj_projectile["strike_counter_ver_function"] = common_game_scene_counter_ver0
-    obj_projectile["strike_active"] = true
-    obj_projectile["hit_guard_type"] = "all"
     obj_projectile["enemy_interact_function"] = function()
-        if collision_strike_hurtbox_test(obj_projectile,hurt_side_obj_char) and obj_projectile["strike_active"] and (not hurt_side_obj_char["strike_inv"]) then
-            -- insert_projectile_VFX
+        if collision_projectile_hit_confirm_test(obj_projectile,hurt_side_obj_char) then
+            -- projectile_active
+            obj_projectile["projectile_active"] = false
+            -- block_test
+            local block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
+            -- risk_gauge
+            if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
+                hurt_side_obj_char["hurt_state"] = "counter"
+            end
+            -- insert_projectile_VFX 
+            -- insert same projectile VFX no matter counter/hurt/block in this case
             insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
-            -- set_projectile_strike_active
-            obj_projectile["strike_active"] = false
+            -- SFX_audio_code_place_holder
             -- common_hurt_function
             common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
         end
@@ -156,7 +165,10 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
         -- camera_animation
     obj_projectile["camera_x_shake_anim"] = nil
     obj_projectile["camera_y_shake_anim"] = nil
+    obj_projectile["camera_enclosing_anim"] = nil
+    obj_projectile["enclose_position_offset"] = nil
     common_game_scene_hit_load_camera_shake_anim(obj_projectile,0.25,15)
+    common_game_scene_nil_load_camera_enclose_anim(obj_projectile)
     -- update
     obj_projectile["update"] = function()
         obj_projectile["x"] = hurt_side_obj_char["x"]
@@ -178,7 +190,6 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
         love.graphics.setBlendMode("alpha")
     end
     -- uncommon nil
-    obj_projectile["hit_miss_SFX"] = nil
     -- projectile_init_fix
     obj_projectile[1] = hit_side_obj_char["shot_sys_reticle"][1]
     obj_projectile[2] = hit_side_obj_char["shot_sys_reticle"][2]
@@ -207,7 +218,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main_anim(obj_
         obj_projectile[1] = hit_side_obj_char["shot_sys_reticle"][1]
         obj_projectile[2] = hit_side_obj_char["shot_sys_reticle"][2]
         if test_shot_sys_ban_state then
-            obj_projectile["strike_active"] = false
+            obj_projectile["projectile_active"] = false
         end
         -- state_number
         obj_projectile["hit_damage"] = 300.0
@@ -224,7 +235,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main_anim(obj_
     end
     res[1] = function()
         if test_shot_sys_ban_state then
-            obj_projectile["strike_active"] = false
+            obj_projectile["projectile_active"] = false
         end
     end
     res[2] = function()
@@ -235,7 +246,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main_anim(obj_
         end
         -- collide
         obj_projectile["hitbox_table"] = {}
-        obj_projectile["strike_active"] = false
+        obj_projectile["projectile_active"] = false
         -- draw_correction
         obj_projectile[8] = 1
     end
@@ -298,8 +309,8 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         hurt_side_obj_char["projectile_inv"] = false
         hurt_side_obj_char["projectile_inv_countdown"] = 0
         -- state_number
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
-        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
+        local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
+        local FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_projectile_apply_damage_heat(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",FD_block
         )
@@ -440,8 +451,8 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
         hurt_side_obj_char["projectile_inv"] = false
         hurt_side_obj_char["projectile_inv_countdown"] = 0
         -- state_number
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
-        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
+        local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
+        local FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_projectile_apply_damage_heat(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",FD_block
         )
@@ -843,22 +854,19 @@ end
 
 -- insert_projectile_game_scene_char_TRM_6SP_P
 -- type life x y velocity projectile_clash_type
--- 1-8 f sprite_sheet
+-- 1-8 f 
 
+-- sprite_sheet
 -- state
 -- enemy_interact_function		hitbox
 --                              hit_VFX_insert_function  hit_SFX
---                              hit_block_VFX_insert_function hit_block_VFX_insert_function_argument hit_block_SFX
---                              hit_counter_VFX_insert_function hit_counter_VFX_insert_function_argument hit_counter_SFX
---                              hurt_block_VFX_insert_function, hurt_block_SFX
---                              strike_counter_ver_function
---                                  hit_type: strike/throw/projectile_active hit_guard_type
--- friendly_interact_function   same_as_above
+--                              projectile_active
 -- friction_update_function	    friction
 -- gravity_update_function		gravity
 -- animation                    projectile_animation camera_animation
 -- update/draw
 -- uncommon
+    -- hurt_VFX_insert_function hurt_SFX
 -- projectile_init_fix
 
 function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_char)
@@ -884,7 +892,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     obj_projectile["hitbox_table"] = {0,0,100,100}
     obj_projectile["enemy_interact_function"] = function()
         -- -- if hit
-        -- if collision_strike_hurtbox_test(obj_projectile,hurt_side_obj_char) then
+        -- if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) then
 
         -- end
     end

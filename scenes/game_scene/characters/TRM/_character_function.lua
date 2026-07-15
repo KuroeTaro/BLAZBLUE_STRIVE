@@ -47,7 +47,7 @@ function character_function_game_scene_TRM_hitstop_air_jump_cancel(
     if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
         self_side_obj_char[5] = -self_side_obj_char[5]
     end
-    common_update_game_scene_input_direction(self_side_obj_char)
+    common_game_scene_update_input_direction(self_side_obj_char)
     input["down"] = down_cache
     -- air_move
     self_side_obj_char["air_move"]["jump"][1] = math.max(math.min(self_side_obj_char["air_move"]["jump"][1]-1,self_side_obj_char["air_move"]["jump"][2]),0)
@@ -148,14 +148,13 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_upd
         local result = (dist/600*0.05+1)*speed*k_speed - approaching*speed*k_approach
         return result
     end
-    -- set_focus_speed
+    -- focus_speed
     obj_char_shot_sys_aim_process[2] = 10
     if self_side_obj_char["shot_sys_curse"] then
         obj_char_shot_sys_aim_process[2] = 17.5
     end
-    -- set_buff_base_on_abs_and_relative_velocity
-    obj_char_shot_sys_aim_process[1] = obj_char_shot_sys_aim_process[1] - 
-        debuff(self_side_obj_char, opponent_side_obj_char)
+    -- debuff_base_on_abs_and_relative_velocity
+    obj_char_shot_sys_aim_process[1] = obj_char_shot_sys_aim_process[1] - debuff(self_side_obj_char, opponent_side_obj_char)
     -- add_focus_speed
     obj_char_shot_sys_aim_process[1] = 
         math.min(
@@ -163,7 +162,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_upd
             obj_char_shot_sys_aim_process[4]
         )
     obj_char_shot_sys_aim_process[1] = math.max(obj_char_shot_sys_aim_process[1],0)
-    -- set_instandt_aim
+    -- instandt_aim
     if instant_aim_state[opponent_side_obj_char["state"]] then
         obj_char_shot_sys_aim_process[1] = math.max(obj_char_shot_sys_aim_process[1], obj_char_shot_sys_aim_process[3])
     end
