@@ -23,7 +23,6 @@ wallstick state修改 ease_in/pause/ease_out/off
 knockout场景
 碎墙的血量伤害应用和碎墙knockout
 
-2. 飞行道具的格式统一 hit类飞行道具的hurt_function统一
 
 修改TRM的air block
 修改蓝RC badge
