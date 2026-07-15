@@ -329,6 +329,10 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         character_animator(obj_projectile,obj_projectile["projectile_animation"])
         obj_projectile["life"] = obj_projectile["life"] - 1
     end
+    obj_projectile["update_sub_frame"] = function()
+        obj_projectile["x"] = hit_side_obj_char["x"]
+        obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
+    end
     -- draw
     obj_projectile["draw"] = function()
         obj_projectile[1] = obj_projectile["x"] - hit_side_obj_char[5]*600
@@ -412,6 +416,10 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
         obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
         character_animator(obj_projectile,obj_projectile["projectile_animation"])
         obj_projectile["life"] = obj_projectile["life"] - 1
+    end
+    obj_projectile["update_sub_frame"] = function()
+        obj_projectile["x"] = hit_side_obj_char["x"]
+        obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
     end
     -- draw
     obj_projectile["draw"] = function()
@@ -499,6 +507,10 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
         character_animator(obj_projectile,obj_projectile["projectile_animation"])
         obj_projectile["life"] = obj_projectile["life"] - 1
     end
+    obj_projectile["update_sub_frame"] = function()
+        obj_projectile["x"] = hit_side_obj_char["x"]
+        obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
+    end
     -- draw
     obj_projectile["draw"] = function()
         obj_projectile[1] = obj_projectile["x"] - hit_side_obj_char[5]*600
@@ -546,7 +558,6 @@ end
 -- update/draw
 -- uncommon
 -- projectile_init_fix
-
 function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_obj_char,hurt_side_obj_char)
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
@@ -731,6 +742,10 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
         character_animator(obj_projectile,obj_projectile["projectile_animation"])
         obj_projectile["life"] = obj_projectile["life"] - 1
+    end
+    obj_projectile["update_sub_frame"] = function()
+        obj_projectile["x"] = hit_side_obj_char["x"]
+        obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
     end
     -- draw
     obj_projectile["draw"] = function()

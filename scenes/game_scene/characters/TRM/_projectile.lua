@@ -176,6 +176,10 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
         character_animator(obj_projectile,obj_projectile["projectile_animation"])
         obj_projectile["life"] = obj_projectile["life"] - 1
     end
+    obj_projectile["update_sub_frame"] = function()
+        obj_projectile["x"] = hurt_side_obj_char["x"]
+        obj_projectile["y"] = hurt_side_obj_char["y"]-hurt_side_obj_char["pushbox"][4]/2
+    end
     -- draw
     obj_projectile["draw"] = function()
         local image_sprite_sheet = image_sprite_sheet_table[obj_projectile["sprite_sheet"]]
@@ -861,7 +865,6 @@ end
 -- enemy_interact_function		hitbox
 --                              hit_VFX_insert_function  hit_SFX
 --                              projectile_active
--- friction_update_function	    friction
 -- gravity_update_function		gravity
 -- animation                    projectile_animation camera_animation
 -- update/draw
@@ -908,10 +911,18 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
         -- camera_animation nil
     -- update
     obj_projectile["update"] = function()
-        -- obj_projectile["x"] = hurt_side_obj_char["x"]
-        -- obj_projectile["y"] = hurt_side_obj_char["y"]-hurt_side_obj_char["pushbox"][4]/2
         -- character_animator(obj_projectile,obj_projectile["projectile_animation"])
         obj_projectile["life"] = obj_projectile["life"] - 1
+    end
+    obj_projectile["update_sub_frame"] = function()
+        -- play_animation(in_self_side_char's hand)
+        -- update_pos
+
+        -- update_pos
+        -- collide_relocate
+        -- update_velocity
+
+        -- play_animation(after_hit_opponent_side_char)
     end
     -- draw
     obj_projectile["draw"] = function()

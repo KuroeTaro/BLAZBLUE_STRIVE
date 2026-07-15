@@ -293,17 +293,27 @@ function update_game_scene_training_main()
         -- 检测pushbox 更新X位置 dynamic_relocate_x
         collision_pushbox_dynamic_normal_aabb_relocate_x(char_LP,char_RP)
 
+        -- 更新飞行道具sub_frame位置
+        for i = #char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
+            local current_projectile = char_LP["projectile_table"][i]
+            current_projectile["update_sub_frame"]()
+        end
+        for i = #char_RP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
+            local current_projectile = char_RP["projectile_table"][i]
+            current_projectile["update_sub_frame"]()
+        end
+
         -- 更新飞行道具 与角色碰撞交互
         for i = #char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
-            local object = char_LP["projectile_table"][i]
-            if object["pushbox_interact_update"] then
-                object["pushbox_interact_update"]()
+            local current_projectile = char_LP["projectile_table"][i]
+            if current_projectile["pushbox_interact_update"] then
+                current_projectile["pushbox_interact_update"]()
             end
         end
         for i = #char_RP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
-            local object = char_RP["projectile_table"][i]
-            if object["pushbox_interact_update"] then
-                object["pushbox_interact_update"]()
+            local current_projectile = char_RP["projectile_table"][i]
+            if current_projectile["pushbox_interact_update"] then
+                current_projectile["pushbox_interact_update"]()
             end
         end
 
@@ -459,15 +469,15 @@ function update_game_scene_training_main()
 
         -- 更新飞行道具 与角色碰撞交互
         for i = #char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
-            local object = char_LP["projectile_table"][i]
-            if object["pushbox_interact_update"] then
-                object["pushbox_interact_update"]()
+            local current_projectile = char_LP["projectile_table"][i]
+            if current_projectile["pushbox_interact_update"] then
+                current_projectile["pushbox_interact_update"]()
             end
         end
         for i = #char_RP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
-            local object = char_RP["projectile_table"][i]
-            if object["pushbox_interact_update"] then
-                object["pushbox_interact_update"]()
+            local current_projectile = char_RP["projectile_table"][i]
+            if current_projectile["pushbox_interact_update"] then
+                current_projectile["pushbox_interact_update"]()
             end
         end
     end
@@ -486,15 +496,15 @@ function update_game_scene_training_main()
 
     -- 更新飞行道具 与角色碰撞交互
     for i = #char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
-        local object = char_LP["projectile_table"][i]
-        if object["pushbox_interact_update"] then
-            object["pushbox_interact_update"]()
+        local current_projectile = char_LP["projectile_table"][i]
+        if current_projectile["pushbox_interact_update"] then
+            current_projectile["pushbox_interact_update"]()
         end
     end
     for i = #char_RP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
-        local object = char_RP["projectile_table"][i]
-        if object["pushbox_interact_update"] then
-            object["pushbox_interact_update"]()
+        local current_projectile = char_RP["projectile_table"][i]
+        if current_projectile["pushbox_interact_update"] then
+            current_projectile["pushbox_interact_update"]()
         end
     end
 
