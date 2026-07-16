@@ -228,7 +228,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         true,nil,"1_4_7_air_block",
         "air","5_stand_idle",
         7.5,5,1.00,
-        -7.5,5,1.00,
+        -7.5,2.5,1.00,
         nil,nil,nil,nil,
         function() end
     )
@@ -284,7 +284,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     )
     obj_projectile["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_special
     obj_projectile["hit_SFX"] = nil
-    obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC
+    obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC_red
     obj_projectile["hurt_block_SFX"] = nil
     obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
     obj_projectile["projectile_active"] = true
@@ -605,7 +605,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         hit_side_obj_char,hurt_side_obj_char,obj_projectile,
         true,nil,"4_stand_block_high",
         "stand","5_stand_idle",
-        8,5,1.00,
+        42.5,5,1.00,
         0,2.5,1.00,
         nil,nil,nil,nil,
         function() end
@@ -631,7 +631,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         hit_side_obj_char,hurt_side_obj_char,obj_projectile,
         true,nil,"1_crouch_block",
         "crouch","1_2_3_crouch",
-        8,5,1.00,
+        42.5,5,1.00,
         0,2.5,1.00,
         nil,nil,nil,nil,
         function() end
@@ -658,7 +658,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         true,nil,"1_4_7_air_block",
         "air","5_stand_idle",
         7.5,5,1.00,
-        -7.5,5,1.00,
+        -7.5,2.5,1.00,
         nil,nil,nil,nil,
         function() end
     )
@@ -698,7 +698,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
     )
     obj_projectile["hit_VFX_insert_function"] = function() end
     obj_projectile["hit_SFX"] = nil
-    obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC
+    obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC_yellow
     obj_projectile["hurt_block_SFX"] = nil
     obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
     obj_projectile["projectile_active"] = true

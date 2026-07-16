@@ -926,7 +926,9 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     obj_projectile["update"] = function()
         -- state_in_hand
             -- play_animation
+        character_animator(obj_projectile,obj_projectile["projectile_animation"])
             -- update_pos
+        
         -- state_in_air
             -- play_animation
             -- update_pos

@@ -215,7 +215,7 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
 
     obj_VFX["update"] = function()
         local switch = {
-            -- ease_in 之前的状�?如果达到�?0帧则为下一个动画的�?�?
+            -- ease_in 之前的状�?如果达到�?0帧则为下一个动画的�?�?
             ["ease_in"] = function()
                 point_linear_animator(obj_VFX,obj_VFX["size_anim"])
                 point_linear_animator(obj_VFX,obj_VFX["opacity_ease_in_anim"])
@@ -263,7 +263,7 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
         obj_VFX["blur_shader"]:send("Size",8)
         obj_VFX["blur_shader"]:send("resolution",{love.graphics.getWidth(),love.graphics.getHeight()})
         love.graphics.setShader(obj_VFX["blur_shader"])
-        love.graphics.draw(obj_VFX["draw_canvas"]) -- 画到屏幕�?
+        love.graphics.draw(obj_VFX["draw_canvas"]) -- 画到屏幕�?
         love.graphics.setShader()
     end
     table.insert(active_op_side_obj_char["VFX_black_overlay_table"],obj_VFX)
@@ -2571,7 +2571,7 @@ function insert_VFX_game_scene_char_block_ver1(active_op_side_obj_char)
     end
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
-function insert_VFX_game_scene_char_block_RC(active_op_side_obj_char)
+function insert_VFX_game_scene_char_block_RC_red(active_op_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local VFX_spawn_anchor = common_game_scene_get_VFX_spawn_anchor(active_op_side_obj_char["player_side"])["block_ver1_spawn_anchor_pos"][active_op_side_obj_char["sprite_sheet"]]
@@ -2600,6 +2600,63 @@ function insert_VFX_game_scene_char_block_RC(active_op_side_obj_char)
     obj_VFX["animation"][14] = 6
     obj_VFX["animation"]["prop"] = 8
     obj_VFX["animation"]["length"] = 18
+    obj_VFX["animation"]["loop"] = false
+    init_frame_anim_without(obj_VFX,obj_VFX["animation"])
+    obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor[1])
+    obj_VFX["update"] = function()
+        frame_animator(obj_VFX,obj_VFX["animation"])
+        obj_VFX["life"] = obj_VFX["life"] - 1
+    end
+    obj_VFX["draw_sync"] = function()
+        obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor[1])
+        obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(VFX_spawn_anchor[2])
+        obj_VFX[5] = active_op_side_obj_char[5]
+        obj_VFX[6] = active_op_side_obj_char[6]
+        -- obj_VFX["draw_sync"] = function() end
+    end
+    obj_VFX["draw"] = function()
+        local obj_camera = obj_stage_game_scene_camera
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_block_ver1
+        obj_VFX["draw_sync"]()
+        obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor[1])
+        obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(VFX_spawn_anchor[2])
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8].."")
+        love.graphics.setBlendMode("add")
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setBlendMode("alpha")
+    end
+    table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
+end
+function insert_VFX_game_scene_char_block_RC_yellow(active_op_side_obj_char)
+    -- x y z opacity sx sy r f
+    local obj_VFX = {0,0,0,1,1,1,0,0}
+    local VFX_spawn_anchor = common_game_scene_get_VFX_spawn_anchor(active_op_side_obj_char["player_side"])["block_ver1_spawn_anchor_pos"][active_op_side_obj_char["sprite_sheet"]]
+    active_op_side_obj_char["VFX_hit_front_table"] = {}
+    active_op_side_obj_char["VFX_hit_back_table"] = {}
+
+    obj_VFX["life"] = 31
+    obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor[1])
+    obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(VFX_spawn_anchor[2])
+    obj_VFX[3] = active_op_side_obj_char[3]
+    obj_VFX[4] = 0.75
+    obj_VFX[5] = active_op_side_obj_char[5]
+    obj_VFX[6] = active_op_side_obj_char[6]
+    obj_VFX[7] = 0
+    obj_VFX[8] = 0
+    obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["animation"] = {}
+    obj_VFX["animation"][0] = 0
+    obj_VFX["animation"][12] = 1
+    obj_VFX["animation"][14] = 2
+    obj_VFX["animation"][17] = 3
+    obj_VFX["animation"][20] = 4
+    obj_VFX["animation"][23] = 5
+    obj_VFX["animation"][27] = 6
+    obj_VFX["animation"]["prop"] = 8
+    obj_VFX["animation"]["length"] = 31
     obj_VFX["animation"]["loop"] = false
     init_frame_anim_without(obj_VFX,obj_VFX["animation"])
     obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor[1])

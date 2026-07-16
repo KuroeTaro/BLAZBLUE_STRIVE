@@ -240,7 +240,7 @@ function load_game_scene_obj_char_RP()
         ["knockdown_recovery"] = true,
         ["knockout"] = true,
         ["5Launcher_hold_hurt_entering"] = true,
-        ["5Launcher_hold_hurt_exiting"] = true
+        ["5Launcher_hold_hurt_exiting"] = true,
         ["burst_RC_blue"] = true,
         ["burst_RC_purple"] = true,
         ["burst_RC_red"] = true,
