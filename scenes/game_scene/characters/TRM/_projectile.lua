@@ -14,16 +14,14 @@
 --                              hit_SFX hit_block_SFX hit_counter_SFX
 --                              hurt_block_VFX_insert_function hurt_block_SFX
 -- animation                    projectile_animation camera_x_shake_anim camera_y_shake_anim camera_enclosing_anim enclose_position_offset
--- update/draw
+-- update/update_sub_frame/draw
 -- uncommon
 -- projectile_init_fix
-
 function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj_char,hurt_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_projectile = {0,0,0,0.75,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(hit_side_obj_char["player_side"])
-    
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 42
@@ -159,7 +157,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     -- gravity_update_function nil
     -- animation
         -- projectile_animation
-        -- this projectile is spwaned by an attchment of charcter, so the animation is init and play at same frame with spawning
+        -- this projectile is spwaned by an attchment of charcter,so the animation is init and play at same frame with spawning.
     obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
     init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
         -- camera_animation
@@ -857,70 +855,94 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
 end
 
 -- insert_projectile_game_scene_char_TRM_6SP_P
--- type life x y velocity projectile_clash_type
--- 1-8 f 
+-- 1-8 type life x y velocity projectile_clash_type f
 
--- sprite_sheet
--- state
--- enemy_interact_function		hitbox
+-- state sprite_sheet
+-- enemy_interact_function		hitbox projectile_active
 --                              hit_VFX_insert_function  hit_SFX
---                              projectile_active
 -- gravity_update_function		gravity
--- animation                    projectile_animation camera_animation
--- update/draw
+-- animation                    projectile_animation
+-- update/update_sub_frame/draw
 -- uncommon
-    -- hurt_VFX_insert_function hurt_SFX
 -- projectile_init_fix
-
 function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_projectile = {0,0,0,0.75,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(hit_side_obj_char["player_side"])
-    
     -- common
     obj_projectile["type"] = "projectile"
-    obj_projectile["life"] = 90
-    obj_projectile["x"] = hit_side_obj_char["x"]
-    obj_projectile["y"] = hit_side_obj_char["y"]
+    obj_projectile["life"] = 42
+    obj_projectile["x"] = hurt_side_obj_char["x"]
+    obj_projectile["y"] = hurt_side_obj_char["y"]-hurt_side_obj_char["pushbox"][4]/2
     obj_projectile["velocity"] = {0,0}
     obj_projectile["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
     obj_projectile["f"] = -1
-    obj_projectile["sprite_sheet"] = "5H_miss_projectile"
-    obj_projectile["update_SFX_table"] = {}
 
+    obj_projectile["state"] = "in_hand"
+    obj_projectile["sprite_sheet"] = "6SP_P_loop_projectile"
     -- pushbox_interact_function nil
     -- projectile_clashed_function nil
     -- enemy_interact_function
-    obj_projectile["hitbox_table"] = {0,0,100,100}
+    obj_projectile["hitbox_table"] = {}
+    obj_projectile["projectile_active"] = true
+    obj_projectile["hit_VFX_insert_function"] = insert_VFX_game_scene_char_TRM_6SP_P_arua
+    obj_projectile["hit_SFX"] = nil
     obj_projectile["enemy_interact_function"] = function()
-        -- -- if hit
-        -- if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) then
-
-        -- end
+        if collision_projectile_hit_confirm_test(obj_projectile,hurt_side_obj_char) then
+            -- projectile_active
+            obj_projectile["projectile_active"] = false
+            -- insert_projectile_VFX 
+            -- insert same projectile VFX no matter counter/hurt/block in this case
+            insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
+            -- SFX_audio_code_place_holder
+            -- blast_state_init
+            obj_projectile["velocity"] = {0,0}
+            obj_projectile["state"] = "blast"
+            obj_projectile["sprite_sheet"] = "6SP_P_blast_projectile"
+            obj_projectile["hitbox_table"] = {}
+            obj_projectile["projectile_active"] = false
+            obj_projectile["hit_VFX_insert_function"]()
+            -- SFX_audio_code_place_holder
+            obj_projectile["gravity"] = 0
+            obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_P_projectile_blast(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+            init_character_anim_with(obj_projectile,obj_projectile["projectile_animation"])
+            -- shot_sys_curse
+            hit_side_obj_char["shot_sys_curse"] = true
+            hit_side_obj_char["shot_sys_curse_countdown"] = 420
+        end
     end
     -- gravity_update_function
     obj_projectile["gravity"] = 2.5
+    obj_projectile["gravity_update_function"] = function()
+        obj_projectile["velocity"][2] = obj_projectile["velocity"][2] + obj_projectile["gravity"]
+    end
     -- animation
         -- projectile_animation
-        -- do not play this anim until cures ball leave terumi's hand
+        -- this projectile is spwaned by an attchment of charcter, so the animation is init and play at same frame with spawning
     obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_P_projectile_loop(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
-    -- init_character_anim_with(obj_projectile,obj_projectile["projectile_animation"])
-        -- camera_animation nil
+    init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
     -- update
     obj_projectile["update"] = function()
-        -- character_animator(obj_projectile,obj_projectile["projectile_animation"])
-        obj_projectile["life"] = obj_projectile["life"] - 1
+        -- state_in_hand
+            -- play_animation
+            -- update_pos
+        -- state_in_air
+            -- play_animation
+            -- update_pos
+            -- collide_relocate
+            -- update_velocity
+        -- state_blast
+            -- play_animation
     end
     obj_projectile["update_sub_frame"] = function()
-        -- play_animation(in_self_side_char's hand)
-        -- update_pos
-
-        -- update_pos
-        -- collide_relocate
-        -- update_velocity
-
-        -- play_animation(after_hit_opponent_side_char)
+        -- state_in_hand
+            -- update_pos
+        -- state_in_air
+            -- update_pos
+            -- collide_relocate
+            -- update_velocity
+        -- state_blast
     end
     -- draw
     obj_projectile["draw"] = function()
@@ -935,13 +957,40 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     end
     -- uncommon nil
     -- projectile_init_fix
-    obj_projectile[1] = hit_side_obj_char["x"]
-    obj_projectile[2] = hit_side_obj_char["y"]
+    obj_projectile["x"] = hit_side_obj_char["x"]
+    obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
+    obj_projectile[1] = obj_projectile["x"] - hit_side_obj_char[5]*600
+    obj_projectile[2] = obj_projectile["y"] - 600
+    obj_projectile[5] = hit_side_obj_char[5]
     -- insert_projectile
     table.insert(hit_side_obj_char["projectile_table"],obj_projectile)
 end
 
 function load_game_scene_anim_char_TRM_6SP_P_projectile_loop(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+    local res = {}
+    res["prop_f"] = "f"
+    res["anim_length"] = 61
+    for i = 0,29 do
+        res[i*2] = function() obj_projectile[8] = i end
+    end
+    res[60] = function()
+        obj_projectile[8] = 0
+        obj_projectile["f"] = 0
+    end
+    res[61] = function()
+        -- animation_end
+    end
+    return res
 end
 function load_game_scene_anim_char_TRM_6SP_P_projectile_blast(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+    local res = {}
+    res["prop_f"] = "f"
+    res["anim_length"] = 45
+    for i = 0,22 do
+        res[i*2] = function() obj_projectile[8] = i end
+    end
+    res[45] = function()
+        -- animation_end
+    end
+    return res
 end

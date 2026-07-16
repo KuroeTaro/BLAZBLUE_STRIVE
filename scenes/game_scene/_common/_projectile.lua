@@ -22,7 +22,7 @@
 -- friction_update_function	    friction
 -- gravity_update_function		gravity
 -- animation                    projectile_animation camera_x_shake_anim camera_y_shake_anim camera_enclosing_anim enclose_position_offset
--- update/draw
+-- update/update_sub_frame/draw
 -- uncommon
 -- projectile_init_fix
 
@@ -101,7 +101,7 @@ end
 --                              projectile_counter_ver_function
 --                              projectile_active
 -- animation                    projectile_animation camera_x_shake_anim camera_y_shake_anim camera_enclosing_anim enclose_position_offset
--- update/draw
+-- update/update_sub_frame/draw
 -- uncommon
 -- projectile_init_fix
 function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_char,hurt_side_obj_char)
@@ -365,7 +365,7 @@ end
 
 -- enemy_interact_function		hitbox projectile_active
 -- animation                    projectile_animation
--- update/draw
+-- update/update_sub_frame/draw
 -- uncommon
 -- projectile_init_fix
 function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj_char,hurt_side_obj_char)
@@ -455,7 +455,7 @@ end
 
 -- enemy_interact_function		hitbox projectile_active
 -- animation                    projectile_animation camera_animation
--- update/draw
+-- update/update_sub_frame/draw
 -- uncommon
 -- projectile_init_fix
 function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_obj_char,hurt_side_obj_char)
@@ -555,7 +555,7 @@ end
 --                              projectile_counter_ver_function
 --                              projectile_active
 -- animation                    projectile_animation camera_x_shake_anim camera_y_shake_anim camera_enclosing_anim enclose_position_offset
--- update/draw
+-- update/update_sub_frame/draw
 -- uncommon
 -- projectile_init_fix
 function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_obj_char,hurt_side_obj_char)

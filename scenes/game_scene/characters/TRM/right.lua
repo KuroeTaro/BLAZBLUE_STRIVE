@@ -233,11 +233,14 @@ function load_game_scene_obj_char_RP()
         ["throw_tested"] = true,
         ["hurtstop"] = true,
         ["blockstop"] = true,
+        ["wallstick"] = true,
         ["wallbreak_hit"] = true,
         ["wallbreak_hurt"] = true,
         ["knockdown"] = true,
         ["knockdown_recovery"] = true,
         ["knockout"] = true,
+        ["5Launcher_hold_hurt_entering"] = true,
+        ["5Launcher_hold_hurt_exiting"] = true
         ["burst_RC_blue"] = true,
         ["burst_RC_purple"] = true,
         ["burst_RC_red"] = true,
@@ -263,17 +266,18 @@ function load_game_scene_obj_char_RP()
         ["4SP_S_5UA"] = true
     }
     obj_char_game_scene_char_RP["shot_sys_curse_force_off_state"] = {
+        ["before_ease_in"] = true,
+        ["hurt"] = true,
         ["throw_hurt_success"] = true,
         ["throw_tested"] = true,
         ["hurtstop"] = true,
-        ["blockstop"] = true,
         ["wallstick"] = true,
         ["wallbreak_hurt"] = true,
-        ["5Launcher_hold_hit_entering"] = true,
-        ["5Launcher_hold_hit_exiting"] = true,
+        ["knockdown"] = true,
+        ["knockdown_recovery"] = true,
+        ["knockout"] = true,
         ["5Launcher_hold_hurt_entering"] = true,
-        ["5Launcher_hold_hurt_exiting"] = true,
-        ["before_ease_in"] = true
+        ["5Launcher_hold_hurt_exiting"] = true
     }
     obj_char_game_scene_char_RP["6SP_S_shot_sys_pass_state"] = {
         ["at_the_ready_ease_out"] = true,
@@ -1843,7 +1847,7 @@ function state_machine_char_game_scene_char_RP()
         end,
     }
     if run_at_current_frame then
-        update_game_scene_char_RP_uncommon()
+        update_game_scene_char_RP_uncommon_countdown()
     end
     local this_function = switch[self_side_obj_char["state"]]
     if this_function then this_function() end
@@ -6606,7 +6610,8 @@ function update_game_scene_char_RP_inv_state_countdown()
 end
 function update_game_scene_char_RP_heat_penalty_countdown()
     local self_side_obj_char = obj_char_game_scene_char_RP
-    if self_side_obj_char["state"] == "hitstop"
+    if (self_side_obj_char["heat_penalty"] == 1)
+    or self_side_obj_char["state"] == "hitstop"
     or self_side_obj_char["state"] == "hurtstop"
     or self_side_obj_char["state"] == "blockstop"
     or self_side_obj_char["game_speed_force_1_countdown"] > 0 then
@@ -6621,7 +6626,8 @@ function update_game_scene_char_RP_heat_penalty_countdown()
 end
 function update_game_scene_char_RP_ability_penalty_countdown()
     local self_side_obj_char = obj_char_game_scene_char_RP
-    if self_side_obj_char["state"] == "hitstop"
+    if (self_side_obj_char["ability_penalty"] == 1)
+    or self_side_obj_char["state"] == "hitstop"
     or self_side_obj_char["state"] == "hurtstop"
     or self_side_obj_char["state"] == "blockstop"
     or self_side_obj_char["game_speed_force_1_countdown"] > 0 then
@@ -6636,7 +6642,8 @@ function update_game_scene_char_RP_ability_penalty_countdown()
 end
 function update_game_scene_char_RP_positive_bonus_countdown()
     local self_side_obj_char = obj_char_game_scene_char_RP
-    if self_side_obj_char["state"] == "hitstop"
+    if (not self_side_obj_char["positive_bonus"])
+    or self_side_obj_char["state"] == "hitstop"
     or self_side_obj_char["state"] == "hurtstop"
     or self_side_obj_char["state"] == "blockstop"
     or self_side_obj_char["game_speed_force_1_countdown"] > 0 then
@@ -6654,20 +6661,22 @@ function update_game_scene_char_RP_positive_bonus_countdown()
 end
 function update_game_scene_char_RP_shot_sys_curse_countdown()
     local self_side_obj_char = obj_char_game_scene_char_RP
-    if self_side_obj_char["state"] == "hitstop"
+    if (not self_side_obj_char["shot_sys_curse"])
+    or self_side_obj_char["state"] == "hitstop"
     or self_side_obj_char["state"] == "hurtstop"
     or self_side_obj_char["state"] == "blockstop"
     or self_side_obj_char["game_speed_force_1_countdown"] > 0 then
         return
     end
-    if self_side_obj_char["shot_sys_curse_countdown"] > 1 then
+    if self_side_obj_char["shot_sys_curse_countdown"] > 1 
+    and (not self_side_obj_char["shot_sys_curse_force_off_state"][self_side_obj_char["state"]]) then
         self_side_obj_char["shot_sys_curse_countdown"] = self_side_obj_char["shot_sys_curse_countdown"] - 1
     else
         self_side_obj_char["shot_sys_curse"] = false
         self_side_obj_char["shot_sys_curse_countdown"] = 0
     end
 end
-function update_game_scene_char_RP_uncommon()
+function update_game_scene_char_RP_uncommon_countdown()
     -- countdown
     update_game_scene_char_RP_overdrive_countdown()
     update_game_scene_char_RP_inv_state_countdown()
