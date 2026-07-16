@@ -534,7 +534,7 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver1(active_op_side_obj_
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
 
-    VFX_obj["life"] = 16
+    VFX_obj["life"] = 21
     VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x)
     VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y)
     VFX_obj[3] = active_op_side_obj_char[3]
@@ -548,14 +548,14 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver1(active_op_side_obj_
     VFX_obj["LCD"] = {0,0,0,0,0,0,0,0}
     VFX_obj["animation"] = {}
     VFX_obj["animation"][0] = 0
-    VFX_obj["animation"][1] = 1
-    VFX_obj["animation"][2] = 2
-    VFX_obj["animation"][4] = 3
-    VFX_obj["animation"][7] = 4
-    VFX_obj["animation"][10] = 5
-    VFX_obj["animation"][13] = 6
+    VFX_obj["animation"][2] = 1
+    VFX_obj["animation"][4] = 2
+    VFX_obj["animation"][7] = 3
+    VFX_obj["animation"][10] = 4
+    VFX_obj["animation"][13] = 5
+    VFX_obj["animation"][17] = 6
     VFX_obj["animation"]["prop"] = 8
-    VFX_obj["animation"]["length"] = 16
+    VFX_obj["animation"]["length"] = 21
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
@@ -829,7 +829,7 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
 
-    VFX_obj["life"] = 16
+    VFX_obj["life"] = 21
     VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x)
     VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y)
     VFX_obj[3] = active_op_side_obj_char[3]
@@ -843,14 +843,14 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
     VFX_obj["LCD"] = {0,0,0,0,0,0,0,0}
     VFX_obj["animation"] = {}
     VFX_obj["animation"][0] = 0
-    VFX_obj["animation"][1] = 1
-    VFX_obj["animation"][2] = 2
-    VFX_obj["animation"][4] = 3
-    VFX_obj["animation"][7] = 4
-    VFX_obj["animation"][10] = 5
-    VFX_obj["animation"][13] = 6
+    VFX_obj["animation"][2] = 1
+    VFX_obj["animation"][4] = 2
+    VFX_obj["animation"][7] = 3
+    VFX_obj["animation"][10] = 4
+    VFX_obj["animation"][13] = 5
+    VFX_obj["animation"][17] = 6
     VFX_obj["animation"]["prop"] = 8
-    VFX_obj["animation"]["length"] = 16
+    VFX_obj["animation"]["length"] = 21
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
@@ -1246,7 +1246,7 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_sid
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
 
-    VFX_obj["life"] = 16
+    VFX_obj["life"] = 21
     VFX_obj[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x)
     VFX_obj[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y)
     VFX_obj[3] = active_op_side_obj_char[3]
@@ -1260,14 +1260,14 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_sid
     VFX_obj["LCD"] = {0,0,0,0,0,0,0,0}
     VFX_obj["animation"] = {}
     VFX_obj["animation"][0] = 0
-    VFX_obj["animation"][1] = 1
-    VFX_obj["animation"][2] = 2
-    VFX_obj["animation"][4] = 3
-    VFX_obj["animation"][7] = 4
-    VFX_obj["animation"][10] = 5
-    VFX_obj["animation"][13] = 6
+    VFX_obj["animation"][2] = 1
+    VFX_obj["animation"][4] = 2
+    VFX_obj["animation"][7] = 3
+    VFX_obj["animation"][10] = 4
+    VFX_obj["animation"][13] = 5
+    VFX_obj["animation"][17] = 6
     VFX_obj["animation"]["prop"] = 8
-    VFX_obj["animation"]["length"] = 16
+    VFX_obj["animation"]["length"] = 21
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
@@ -1497,7 +1497,7 @@ function insert_VFX_game_scene_char_blast_dynamic_ver1(active_op_side_obj_char,p
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
 
-    VFX_obj["life"] = 16
+    VFX_obj["life"] = 21
     VFX_obj[1] = center_x
     VFX_obj[2] = center_y
     VFX_obj[3] = active_op_side_obj_char[3]
@@ -1511,14 +1511,14 @@ function insert_VFX_game_scene_char_blast_dynamic_ver1(active_op_side_obj_char,p
     VFX_obj["LCD"] = {0,0,0,0,0,0,0,0}
     VFX_obj["animation"] = {}
     VFX_obj["animation"][0] = 0
-    VFX_obj["animation"][1] = 1
-    VFX_obj["animation"][2] = 2
-    VFX_obj["animation"][4] = 3
-    VFX_obj["animation"][7] = 4
-    VFX_obj["animation"][10] = 5
-    VFX_obj["animation"][13] = 6
+    VFX_obj["animation"][2] = 1
+    VFX_obj["animation"][4] = 2
+    VFX_obj["animation"][7] = 3
+    VFX_obj["animation"][10] = 4
+    VFX_obj["animation"][13] = 5
+    VFX_obj["animation"][17] = 6
     VFX_obj["animation"]["prop"] = 8
-    VFX_obj["animation"]["length"] = 16
+    VFX_obj["animation"]["length"] = 21
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
@@ -1701,7 +1701,7 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
 
-    VFX_obj["life"] = 16
+    VFX_obj["life"] = 21
     VFX_obj[1] = center_x
     VFX_obj[2] = center_y
     VFX_obj[3] = active_op_side_obj_char[3]
@@ -1715,14 +1715,14 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
     VFX_obj["LCD"] = {0,0,0,0,0,0,0,0}
     VFX_obj["animation"] = {}
     VFX_obj["animation"][0] = 0
-    VFX_obj["animation"][1] = 1
-    VFX_obj["animation"][2] = 2
-    VFX_obj["animation"][4] = 3
-    VFX_obj["animation"][7] = 4
-    VFX_obj["animation"][10] = 5
-    VFX_obj["animation"][13] = 6
+    VFX_obj["animation"][2] = 1
+    VFX_obj["animation"][4] = 2
+    VFX_obj["animation"][7] = 3
+    VFX_obj["animation"][10] = 4
+    VFX_obj["animation"][13] = 5
+    VFX_obj["animation"][17] = 6
     VFX_obj["animation"]["prop"] = 8
-    VFX_obj["animation"]["length"] = 16
+    VFX_obj["animation"]["length"] = 21
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()
@@ -1984,7 +1984,7 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver1(active_op_side_obj_
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
 
-    VFX_obj["life"] = 16
+    VFX_obj["life"] = 21
     VFX_obj[1] = center_x
     VFX_obj[2] = center_y
     VFX_obj[3] = active_op_side_obj_char[3]
@@ -1998,14 +1998,14 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver1(active_op_side_obj_
     VFX_obj["LCD"] = {0,0,0,0,0,0,0,0}
     VFX_obj["animation"] = {}
     VFX_obj["animation"][0] = 0
-    VFX_obj["animation"][1] = 1
-    VFX_obj["animation"][2] = 2
-    VFX_obj["animation"][4] = 3
-    VFX_obj["animation"][7] = 4
-    VFX_obj["animation"][10] = 5
-    VFX_obj["animation"][13] = 6
+    VFX_obj["animation"][2] = 1
+    VFX_obj["animation"][4] = 2
+    VFX_obj["animation"][7] = 3
+    VFX_obj["animation"][10] = 4
+    VFX_obj["animation"][13] = 5
+    VFX_obj["animation"][17] = 6
     VFX_obj["animation"]["prop"] = 8
-    VFX_obj["animation"]["length"] = 16
+    VFX_obj["animation"]["length"] = 21
     VFX_obj["animation"]["loop"] = false
     init_frame_anim_without(VFX_obj,VFX_obj["animation"])
     VFX_obj["update"] = function()

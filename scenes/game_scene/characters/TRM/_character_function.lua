@@ -104,9 +104,7 @@ function character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_ob
         ["blockstop"] = true,
         ["wallstick"] = true,
         ["wallbreak"] = true,
-        ["knockdown"] = true,
-        ["knockdown_recovery"] = true,
-        ["knockdown_recovery_wallstick"] = true
+        ["knockdown"] = true
     }
     if instant_aim_state[hurt_side_obj_char["state"]] then
         hit_side_obj_char["shot_sys_aim_process"][1] = hit_side_obj_char["shot_sys_aim_process"][3]
@@ -132,9 +130,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_upd
         ["blockstop"] = true,
         ["wallstick"] = true,
         ["wallbreak"] = true,
-        ["knockdown"] = true,
-        ["knockdown_recovery"] = true,
-        ["knockdown_recovery_wallstick"] = true
+        ["knockdown"] = true
     }
     local function debuff(self_side_obj_char, opponent_side_obj_char)
         local dx = opponent_side_obj_char["x"] - self_side_obj_char["x"]
