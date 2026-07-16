@@ -252,16 +252,13 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
     end
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
+        obj_VFX["blur_shader"]:send("resolution",{love.graphics.getWidth(),love.graphics.getHeight()})
         love.graphics.setCanvas(obj_VFX["draw_canvas"])
         love.graphics.clear(0,0,0,0)
         love.graphics.setColor(0,0,0,obj_VFX[4])
         love.graphics.circle( "fill",obj_VFX["cood_res"][1],obj_VFX["cood_res"][2],draw_resolution_correction(obj_VFX[5]) )
         love.graphics.setColor(1,1,1,1)
         love.graphics.setCanvas()
-        obj_VFX["blur_shader"]:send("Directions",16)
-        obj_VFX["blur_shader"]:send("Quality",5)
-        obj_VFX["blur_shader"]:send("Size",8)
-        obj_VFX["blur_shader"]:send("resolution",{love.graphics.getWidth(),love.graphics.getHeight()})
         love.graphics.setShader(obj_VFX["blur_shader"])
         love.graphics.draw(obj_VFX["draw_canvas"]) -- 画到屏幕�?
         love.graphics.setShader()

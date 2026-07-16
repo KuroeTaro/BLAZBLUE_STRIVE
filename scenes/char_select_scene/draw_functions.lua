@@ -213,7 +213,10 @@ function draw_char_select_scene_glow(obj,f_shader,r_shader)
 
     love.graphics.setCanvas(CANVAS_ALPHA_ONLY)
     love.graphics.clear(0,0,0,0) 
-    love.graphics.polygon("fill",alpha_points)
+    love.graphics.setLineStyle('smooth')
+    love.graphics.setLineWidth(1.5) -- 线宽设为 1 或略大于 1 的值（如 1.5）以覆盖锯齿边界
+    love.graphics.polygon('fill', alpha_points)
+    love.graphics.polygon('line', alpha_points)
 
     love.graphics.setCanvas(CANVAS)
     love.graphics.clear(0,0,0,0) 
