@@ -891,35 +891,33 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
     -- update
     obj_projectile["update"] = function()
-        -- state_in_spawner
-            -- play_animation
-        character_animator(obj_projectile,obj_projectile["projectile_animation"])
-            -- update_pos
-        obj_projectile["x"] = hit_side_obj_char["x"] + hit_side_obj_char[5]*obj_projectile["in_spawner_offset_x"]
-        obj_projectile["y"] = hit_side_obj_char["y"] + obj_projectile["in_spawner_offset_y"]
-        -- state_in_air
-            -- play_animation
-        character_animator(obj_projectile,obj_projectile["projectile_animation"])
-        -- state_blast
-            -- play_animation
-        character_animator(obj_projectile,obj_projectile["projectile_animation"])
-    end
-    obj_projectile["update_sub_frame"] = function()
         local switch = {
-            -- ease_in
             ["in_spawner"] = function()
-                -- update_pos
+                character_animator(obj_projectile,obj_projectile["projectile_animation"])
                 obj_projectile["x"] = hit_side_obj_char["x"] + hit_side_obj_char[5]*obj_projectile["in_spawner_offset_x"]
                 obj_projectile["y"] = hit_side_obj_char["y"] + obj_projectile["in_spawner_offset_y"]
             end,
             ["in_air"] = function()
-                -- update_pos
+                character_animator(obj_projectile,obj_projectile["projectile_animation"])
+            end,
+            ["blast"] = function()
+                character_animator(obj_projectile,obj_projectile["projectile_animation"])
+            end
+        }
+        local this_function = switch[obj_projectile["state"]]
+        if this_function then this_function() end
+    end
+    obj_projectile["update_sub_frame"] = function()
+        local switch = {
+            ["in_spawner"] = function()
+                obj_projectile["x"] = hit_side_obj_char["x"] + hit_side_obj_char[5]*obj_projectile["in_spawner_offset_x"]
+                obj_projectile["y"] = hit_side_obj_char["y"] + obj_projectile["in_spawner_offset_y"]
+            end,
+            ["in_air"] = function()
                 obj_projectile["x"] = hit_side_obj_char["x"] + obj_projectile["velocity"][1]/COLLIDE_TICK
                 obj_projectile["y"] = hit_side_obj_char["y"] + obj_projectile["velocity"][2]/COLLIDE_TICK
-                -- collide_relocate
                 if obj_projectile["y"] > 0 then
                     obj_projectile["y"] = 0
-                    -- update_velocity
                     obj_projectile["velocity"][2] = -obj_projectile["velocity"][2]
                 end
             end,
@@ -931,14 +929,24 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     end
     -- draw
     obj_projectile["draw"] = function()
-        -- local image_sprite_sheet = image_sprite_sheet_table[obj_projectile["sprite_sheet"]]
-        -- obj_projectile[1] = hit_side_obj_char["shot_sys_reticle"][1]
-        -- obj_projectile[2] = hit_side_obj_char["shot_sys_reticle"][2]
-        -- image_sprite_sheet["sprite_batch"]:clear()
-        -- draw_3d_image_sprite_batch(obj_projectile_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8]))
-        -- love.graphics.setBlendMode("add")
-        -- love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        -- love.graphics.setBlendMode("alpha")
+        -- local switch = {
+        --     ["in_spawner"] = function()
+        --         obj_projectile["x"] = hit_side_obj_char["x"] + hit_side_obj_char[5]*obj_projectile["in_spawner_offset_x"]
+        --         obj_projectile["y"] = hit_side_obj_char["y"] + obj_projectile["in_spawner_offset_y"]
+        --     end,
+        --     ["in_air"] = function()
+        --         obj_projectile["x"] = hit_side_obj_char["x"] + obj_projectile["velocity"][1]/COLLIDE_TICK
+        --         obj_projectile["y"] = hit_side_obj_char["y"] + obj_projectile["velocity"][2]/COLLIDE_TICK
+        --         if obj_projectile["y"] > 0 then
+        --             obj_projectile["y"] = 0
+        --             obj_projectile["velocity"][2] = -obj_projectile["velocity"][2]
+        --         end
+        --     end,
+        --     ["blast"] = function()
+        --     end
+        -- }
+        -- local this_function = switch[obj_projectile["state"]]
+        -- if this_function then this_function() end
     end
     -- uncommon
     obj_projectile["in_spawner_offset_x"] = 0

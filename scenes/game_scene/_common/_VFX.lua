@@ -204,7 +204,6 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
     init_point_linear_anim_without(obj_VFX,obj_VFX["opacity_ease_in_anim"])
     obj_VFX["update"] = function()
         local switch = {
-            -- ease_in
             ["ease_in"] = function()
                 point_linear_animator(obj_VFX,obj_VFX["size_anim"])
                 point_linear_animator(obj_VFX,obj_VFX["opacity_ease_in_anim"])

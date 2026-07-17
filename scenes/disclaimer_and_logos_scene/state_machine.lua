@@ -3,7 +3,6 @@
 -- 控制 disclaimer and logos scene 唯一一个 obj 更新的状态机
 function state_machine_UI_disclaimer_and_logos_scene_singular(obj)
     local switch = {
-        -- ease_in 之前的状态 如果达到第10帧则为下一个动画的第0帧 
         ["pre_disclaimer_ease_in"] = function()
             -- 如果按D或者scene timer 到达10f则进入ease_in
             if SCENE_TIMER >= 10 or INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then

@@ -911,7 +911,6 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     end
     obj_VFX["update"] = function()
         local switch = {
-            -- ease_in 之前的状态 如果达到第10帧则为下一个动画的第0帧 
             ["loop"] = function()
                 obj_VFX["life"] = 42
                 update_frame_animation()

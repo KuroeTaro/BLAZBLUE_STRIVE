@@ -40,7 +40,7 @@ function order_load_char_select_scene_UI_char(load_order)
             image_UI_char_select_scene_control_method_L = love.graphics.newImage(ASSET_DATA[1][4])
             image_UI_char_select_scene_control_method_R = love.graphics.newImage(ASSET_DATA[1][5])
             image_UI_char_select_scene_ring = love.graphics.newImage(ASSET_DATA[1][6])
-            -- -- char icon alpha image name
+                -- char icon alpha image name
             image_table_UI_char_select_scene_char_icon_alpha = {}
             for i = 1,8 do
                 image_table_UI_char_select_scene_char_icon_alpha[i] = love.graphics.newImage(ASSET_DATA[1]["char_icon_alpha"][i])

@@ -13,7 +13,6 @@ function state_machine_UI_start_scene_noise_BG_static_loop(obj)
 end
 function state_machine_UI_start_scene_config_controller(obj,input_id)
     local switch = {
-        -- ease_in 之前的状态 如果达到第10帧则为下一个动画的第0帧 
         ["off_state"] = function() 
             local ease_in_anim = anim_UI_point_linear_start_scene_general_ease_in_0p5_1_opacity
             -- 如果按D或者scene timer 到达10f则进入ease_in
