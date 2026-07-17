@@ -290,7 +290,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
                 hurt_side_obj_char["hurt_state"] = "counter"
             end
             -- insert_projectile_VFX 
-            if (not block_bool) then
+            if not block_bool then
                 obj_projectile["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
                 -- SFX_audio_code_place_holder
             end
@@ -378,7 +378,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
         local hit_side = hit_side_obj_char["player_side"]
         local hurt_side = hurt_side_obj_char["player_side"]
         -- if hit
-        if collision_RC_hit_confirm_test(obj_projectile,hurt_side_obj_char) and obj_projectile["projectile_active"] then
+        if collision_all_hit_type_hit_confirm_test(obj_projectile,hurt_side_obj_char) and obj_projectile["projectile_active"] then
             -- projectile_hit_active
             obj_projectile["projectile_active"] = false
             -- physics_lock
@@ -466,7 +466,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
         local hit_side = hit_side_obj_char["player_side"]
         local hurt_side = hurt_side_obj_char["player_side"]
         -- if hit
-        if collision_RC_hit_confirm_test(obj_projectile,hurt_side_obj_char) and obj_projectile["projectile_active"] then
+        if collision_all_hit_type_hit_confirm_test(obj_projectile,hurt_side_obj_char) and obj_projectile["projectile_active"] then
             -- projectile_hit_active
             obj_projectile["projectile_active"] = false
             -- physics_lock
@@ -698,7 +698,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
                 hurt_side_obj_char["hurt_state"] = "counter"
             end
             -- insert_projectile_VFX 
-            if (not block_bool) then
+            if not block_bool then
                 obj_projectile["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
                 -- SFX_audio_code_place_holder
             end
@@ -838,7 +838,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
         )
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)
         -- game_speed
         common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,2,1,39,45-27,0})
         -- character_uncommon_init
@@ -851,7 +851,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
     res[6] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)
         -- draw_correction
         hurt_side_obj_char[8] = 2
     end
@@ -969,7 +969,7 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)
         -- game_speed
         common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,2,1,39,45-27,0})
         -- character_uncommon_init
@@ -1021,7 +1021,7 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
     res[26] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)
     end
     res[28] = function()
         -- collide
@@ -1121,7 +1121,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
         update_before_land()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)
         -- game_speed
         common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,2,1,39,45-27,0})
         -- character_uncommon_init
@@ -1307,7 +1307,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
         )
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)
         -- game_speed
         common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,1,1,0,0,0})
         -- character_uncommon_init
@@ -1328,7 +1328,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
     res[11] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)
     end
     res[12] = function()
         -- draw_correction
@@ -1444,7 +1444,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)
         -- game_speed
         common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,1,1,0,0,0})
         -- character_uncommon_init
@@ -1496,7 +1496,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
     res[26] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)
     end
     res[28] = function()
         -- collide
@@ -1596,7 +1596,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
         update_before_land()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_set_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)
         -- game_speed
         common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,1,1,0,0,0})
         -- character_uncommon_init

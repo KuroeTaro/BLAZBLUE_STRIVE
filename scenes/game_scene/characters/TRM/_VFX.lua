@@ -874,6 +874,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     else
         obj_VFX["y_offset"] = 400 + hurt_side_obj_char["pushbox"][4]/4*3
     end
+    obj_VFX["status_name"] = "TRM_6SP_P_arua"
     obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
@@ -895,13 +896,19 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     obj_VFX["frame_animation"]["length"] = 300
     obj_VFX["frame_animation"]["loop"] = false
     init_frame_anim_without(obj_VFX,obj_VFX["frame_animation"])
-    obj_VFX["opacity_point_linear_animation"] = {}
-    obj_VFX["opacity_point_linear_animation"][0] = {0.75,20}
-    obj_VFX["opacity_point_linear_animation"][20] = {0,20}
-    obj_VFX["opacity_point_linear_animation"]["prop"] = 4
-    obj_VFX["opacity_point_linear_animation"]["length"] = 20
-    obj_VFX["opacity_point_linear_animation"]["loop"] = false
+    obj_VFX["opacity_ease_out_point_linear_animation"] = {}
+    obj_VFX["opacity_ease_out_point_linear_animation"][0] = {0.75,20}
+    obj_VFX["opacity_ease_out_point_linear_animation"][20] = {0,20}
+    obj_VFX["opacity_ease_out_point_linear_animation"]["prop"] = 4
+    obj_VFX["opacity_ease_out_point_linear_animation"]["length"] = 20
+    obj_VFX["opacity_ease_out_point_linear_animation"]["loop"] = false
     -- init_point_linear_anim_without(obj_VFX,obj_VFX["opacity_point_linear_animation"])
+    obj_VFX["opacity_ease_in_point_linear_animation"] = {}
+    obj_VFX["opacity_ease_in_point_linear_animation"][0] = {0,20}
+    obj_VFX["opacity_ease_in_point_linear_animation"][20] = {0.75,20}
+    obj_VFX["opacity_ease_in_point_linear_animation"]["prop"] = 4
+    obj_VFX["opacity_ease_in_point_linear_animation"]["length"] = 20
+    obj_VFX["opacity_ease_in_point_linear_animation"]["loop"] = false
     local function update_frame_animation()
         frame_animator(obj_VFX,obj_VFX["frame_animation"])
         if get_frame_anim_end_state(obj_VFX,obj_VFX["frame_animation"]) then
@@ -912,11 +919,10 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     obj_VFX["update"] = function()
         local switch = {
             ["loop"] = function()
-                obj_VFX["life"] = 42
                 update_frame_animation()
                 if shot_sys_curse_force_off_state[hit_side_obj_char["state"]] or (not hit_side_obj_char["shot_sys_curse"]) then
                     obj_VFX["state"] = "end"
-                    init_point_linear_anim_with(obj_VFX,obj_VFX["opacity_point_linear_animation"])
+                    init_point_linear_anim_with(obj_VFX,obj_VFX["opacity_ease_out_point_linear_animation"])
                 end
                 if hurt_side_obj_char["state"] == "wallbreak_hurt" then
                     obj_VFX[4] = 0
@@ -924,26 +930,41 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
                 end
             end,
             ["end"] = function()
-                obj_VFX["life"] = 42
                 update_frame_animation()
-                point_linear_animator(obj_VFX,obj_VFX["opacity_point_linear_animation"])
-                if get_point_linear_anim_end_state(obj_VFX,obj_VFX["opacity_point_linear_animation"])
+                point_linear_animator(obj_VFX,obj_VFX["opacity_ease_out_point_linear_animation"])
+                if get_point_linear_anim_end_state(obj_VFX,obj_VFX["opacity_ease_out_point_linear_animation"])
                 or hurt_side_obj_char["state"] == "wallbreak_hurt" then
                     obj_VFX["life"] = 0
                 end
             end,
             ["wallbreak"] = function()
-                obj_VFX["life"] = 42
                 if hurt_side_obj_char["state"] ~= "wallbreak_hit" and hurt_side_obj_char["state"] ~= "wallbreak_hurt" then
-                    obj_VFX[4] = 1
-                    obj_VFX["state"] = "loop"
+                    obj_VFX[4] = 0
+                    obj_VFX["state"] = "ease_in_after_wallbreak"
                     init_frame_anim_with(obj_VFX,obj_VFX["frame_animation"])
+                    init_point_linear_anim_with(obj_VFX,obj_VFX["opacity_ease_in_point_linear_animation"])
+                    obj_VFX["FCT"][8] = 60
+                    obj_VFX[8] = 30
+                end
+            end,
+            ["ease_in_after_wallbreak"] = function()
+                update_frame_animation()
+                point_linear_animator(obj_VFX,obj_VFX["opacity_ease_in_point_linear_animation"])
+                if get_point_linear_anim_end_state(obj_VFX,obj_VFX["opacity_ease_in_point_linear_animation"]) then
+                    obj_VFX["state"] = "loop"
+                end
+                if shot_sys_curse_force_off_state[hit_side_obj_char["state"]] or (not hit_side_obj_char["shot_sys_curse"]) then
+                    obj_VFX["state"] = "end"
+                    init_point_linear_anim_with(obj_VFX,obj_VFX["opacity_ease_out_point_linear_animation"])
+                end
+                if hurt_side_obj_char["state"] == "wallbreak_hurt" then
+                    obj_VFX[4] = 0
+                    obj_VFX["state"] = "wallbreak"
                 end
             end
         }
         local this_function = switch[obj_VFX["state"]]
         if this_function then this_function() end
-        obj_VFX["life"] = obj_VFX["life"] - 1
     end
     obj_VFX["draw_sync"] = function()
         if hurt_side_obj_char["height"] == "air" then

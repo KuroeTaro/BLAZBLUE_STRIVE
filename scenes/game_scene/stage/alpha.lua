@@ -440,8 +440,8 @@ function load_game_scene_stage_apply_wallbreak_end_init(hit_side_obj_char,hurt_s
     end
     load_game_scene_wallbreak_end_init_LP()
     load_game_scene_wallbreak_end_init_RP()
-    common_game_scene_reset_input_state_for_wallbreak(hurt_side_obj_char)
-    common_game_scene_reset_input_state_for_wallbreak(hit_side_obj_char)
+    common_game_scene_init_input_sys_state_for_wallbreak(hurt_side_obj_char)
+    common_game_scene_init_input_sys_state_for_wallbreak(hit_side_obj_char)
     init_character_anim_with(hit_side_obj_char,hit_side_obj_char["character_animation"])
     init_character_anim_with(hurt_side_obj_char,hurt_side_obj_char["character_animation"])
     -- stage

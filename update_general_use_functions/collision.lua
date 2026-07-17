@@ -300,7 +300,7 @@ function collision_uncondicational_hit_confirm_test(hit_obj,hurt_obj)
     end
     return false
 end
-function collision_RC_hit_confirm_test(hit_obj,hurt_obj)
+function collision_all_hit_type_hit_confirm_test(hit_obj,hurt_obj)
     return collision_uncondicational_hit_confirm_test(hit_obj,hurt_obj) or collision_projectile_hit_confirm_test(hit_obj,hurt_obj)
 end
 -- optimal CCD algo but not 100% currect

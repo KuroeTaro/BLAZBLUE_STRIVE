@@ -125,7 +125,7 @@ function set_jump_breakpoint()
             end
         end,
         ["Holding"] = function()
-            if (not love.keyboard.isDown("f5")) then
+            if not love.keyboard.isDown("f5") then
                 DEBUG_JUMPING_BREAKPOINT_STATE = "Stop"
             end
         end

@@ -3014,7 +3014,7 @@ function insert_VFX_HUD_game_scene_counter_ver0_2(active_op_side_obj_char)
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
     obj_VFX["image"] = image_VFX_game_scene_HUD_counter_ver0_2
-    obj_VFX["life"] = 70
+    obj_VFX["life"] = 50
     obj_VFX[1] = side_table[side]
     obj_VFX[2] = 35
 -- y_anim
@@ -3224,7 +3224,7 @@ function insert_VFX_HUD_game_scene_punish(active_op_side_obj_char)
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
     obj_VFX["image"] = image_VFX_game_scene_HUD_punish
-    obj_VFX["life"] = 70
+    obj_VFX["life"] = 50
     obj_VFX[1] = side_table[side]
     obj_VFX[2] = 35
 -- y_anim
