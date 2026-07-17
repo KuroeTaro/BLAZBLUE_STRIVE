@@ -110,7 +110,7 @@ function order_load_game_scene_common(load_order)
                 "asset/game_scene/common/movie_cover.json",
                 love.graphics.newImage(ASSET_DATA[1]["movie_cover_sprite_batch"])
             )
-        end,
+        end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
@@ -141,7 +141,7 @@ function order_load_game_scene_act(load_order)
                 "asset/game_scene/common/act_3.json",
                 love.graphics.newImage(ASSET_DATA[5]["act_3_sprite_batch"])
             )
-        end,
+        end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
@@ -163,7 +163,7 @@ function order_load_game_scene_HUD(load_order)
                 "asset/game_scene/common/HUD/HUD_ease_in.json",
                 love.graphics.newImage(ASSET_DATA[6]["HUD_ease_in_sprite_batch"])
             )
-        end,
+        end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
@@ -178,7 +178,7 @@ function order_load_game_scene_lets_dance(load_order)
                 love.graphics.newImage(ASSET_DATA[7]["lets_dance_sprite_batch"])
             )
 
-        end,
+        end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
@@ -343,7 +343,7 @@ function order_load_game_scene_VFX(load_order)
                 -- positive_bonus
             image_VFX_game_scene_HUD_positive_bouns_LP = love.graphics.newImage(ASSET_DATA[8]["HUD_positive_bouns_LP"])
             image_VFX_game_scene_HUD_positive_bouns_RP = love.graphics.newImage(ASSET_DATA[8]["HUD_positive_bouns_RP"])
-        end,
+        end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end

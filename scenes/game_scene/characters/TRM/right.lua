@@ -592,7 +592,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 "asset/game_scene/VFX/overdrive_badge/TRM_overdrive_badge.json",
                 love.graphics.newImage(PLAYER_ASSET_DATA["overdrive_badge"])
             )
-        end,
+        end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
@@ -996,7 +996,7 @@ function load_game_scene_box_anchor_data_RP()
         ["stand"] = 865,
         ["crouch"] = 765,
         ["air"] = 715,
-        ["OTG"] = 775,
+        ["OTG"] = 775
     }
 end
 function load_game_scene_audio_char_RP()
@@ -1844,7 +1844,7 @@ function state_machine_char_game_scene_char_RP()
                 character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
             state_gate_game_scene_char_RP_from_4SP_S_5UA(input,self_side_obj_char,opponent_side_obj_char)
-        end,
+        end
     }
     if run_at_current_frame then
         update_game_scene_char_RP_uncommon_countdown()
@@ -2000,7 +2000,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 self_side_obj_char["shot_sys_state"] = "at_the_ready"
                 return
             end
-        end,
+        end
     }
     local this_function = switch[self_side_obj_char["shot_sys_state"]]
     if this_function then this_function() end
@@ -2083,7 +2083,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_oroboros()
                 self_side_obj_char["shot_sys_oroboros_state"] = "at_the_ready_or_steady_aim"
                 return
             end
-        end,
+        end
     }
     local this_function = switch[self_side_obj_char["shot_sys_oroboros_state"]]
     if this_function then this_function() end
@@ -2234,7 +2234,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_reticle()
         ["steady_aim_ease_out"] = function()
         end,
         ["steady_aim_shot"] = function()
-        end,
+        end
     }
     local this_function = switch[self_side_obj_char["shot_sys_reticle_state"]]
     if this_function then this_function() end
@@ -2328,7 +2328,7 @@ function state_machine_char_game_scene_char_RP_input_sys_cache()
             common_game_scene_update_input_direction(self_side_obj_char)
             self_side_obj_char["input_sys_state"] = "none"
             init_input_sys_cache_RP(self_side_obj_char)
-        end,
+        end
     }
     local this_function = switch[self_side_obj_char["input_sys_state"]]
     if this_function then this_function() end
@@ -2350,7 +2350,7 @@ function state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
             end
             self_side_obj_char["input_sys_state_negative_edge"] = "none"
             init_input_sys_cache_negative_edge_RP(self_side_obj_char)
-        end,
+        end
     }
     local this_function = switch[self_side_obj_char["input_sys_state_negative_edge"]]
     if this_function then this_function() end
@@ -3275,7 +3275,7 @@ function state_gate_game_scene_char_RP_common_to_burst_overdrive(input,self_side
             ["blockstop"] = true,
             ["hurtstop"] = true,
             ["wallstick"] = true,
-            ["wallbreak_hurt"] = true,
+            ["wallbreak_hurt"] = true
         }
         local obj_camera = obj_stage_game_scene_camera
         local height = self_side_obj_char["height"]

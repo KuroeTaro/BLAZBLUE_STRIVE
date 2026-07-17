@@ -283,7 +283,7 @@ function state_machine_UI_char_select_scene_char_select(input_id)
             then
                 obj["select_state"] = "selected"
             end
-        end,
+        end
     }
 
     state_machine_UI_char_select_scene_char_select_ease(obj,obj_char,obj_text,obj_icon_cover,input_id)
@@ -427,7 +427,7 @@ function state_machine_UI_char_select_scene_char_select_ease(obj,obj_char,obj_te
                     anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
                 )
             end
-        end,
+        end
     }
     local this_function = switch[obj["ease_state"]]
     if this_function then this_function() end
@@ -517,7 +517,7 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_
                 end
                 init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
             end
-        end,
+        end
     }
     local this_function = switch[obj_bar_mark["state"]]
     if this_function then this_function() end
@@ -730,12 +730,10 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
 
         end,
         ["locked"] = function()
-        end,
+        end
     }
-
     state_machine_UI_char_select_scene_char_select_ease_train_dummy(obj,obj_char,obj_text,obj_icon_cover)
     state_machine_UI_char_select_scene_char_select_bar_mark_select_train_dummy(obj,obj_bar_mark)
-
     local this_function = switch[obj["select_state"]]
     if this_function then this_function() end
 end
@@ -876,7 +874,7 @@ function state_machine_UI_char_select_scene_char_select_ease_train_dummy(obj,obj
                     anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
                 )
             end
-        end,
+        end
     }
     local this_function = switch[obj["ease_state"]]
     if this_function then this_function() end
@@ -960,7 +958,7 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select_train_du
                 end
                 init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
             end
-        end,
+        end
     }
     local this_function = switch[obj_bar_mark["state"]]
     if this_function then this_function() end

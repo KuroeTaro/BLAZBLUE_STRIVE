@@ -131,9 +131,9 @@ end
 function update_game_scene_training_main()
     -- 获得输入 更新角色 状态 速度 和 碰撞盒
     -- 更新VFX
-    -- loop * 16
-        -- 角色更新位置 1/16
-        -- 飞行道具更新位置 1/16
+    -- loop * COLLIDE_TICK
+        -- 角色更新位置 1/COLLIDE_TICK
+        -- 飞行道具更新位置 1/COLLIDE_TICK
         -- 检测pushbox 更新Y位置
         -- 检测pushbox 更新X位置 static_relocate_x
         -- 检测pushbox 更新X位置 dynamic_relocate_x
@@ -240,44 +240,44 @@ function update_game_scene_training_main()
     end
 
     -- 进行push box hit box hurt box的检测
-    for i = 1,16 do
+    for i = 1,COLLIDE_TICK do
         -- 更新角色和飞行道具位置
         if char_LP["game_speed_force_0_countdown"] == 0 and not char_LP["physics_lock"] then
-            -- 角色更新位置 1/16
-            char_LP["x"] = char_LP["x"] + char_LP_velocity[1]/(16* char_LP_final_game_speed)
-            char_LP["y"] = char_LP["y"] + char_LP_velocity[2]/(16* char_LP_final_game_speed)
+            -- 角色更新位置 1/COLLIDE_TICK
+            char_LP["x"] = char_LP["x"] + char_LP_velocity[1]/(COLLIDE_TICK* char_LP_final_game_speed)
+            char_LP["y"] = char_LP["y"] + char_LP_velocity[2]/(COLLIDE_TICK* char_LP_final_game_speed)
 
-            -- RC更新位置 1/16
+            -- RC更新位置 1/COLLIDE_TICK
             for i = 1,#char_LP["projectile_rc_table"] do
                 local current_projectile = char_LP["projectile_rc_table"][i]
-                current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(16* char_LP_final_game_speed)
-                current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(16* char_LP_final_game_speed)
+                current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(COLLIDE_TICK* char_LP_final_game_speed)
+                current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(COLLIDE_TICK* char_LP_final_game_speed)
             end
 
-            -- 飞行道具更新位置 1/16
+            -- 飞行道具更新位置 1/COLLIDE_TICK
             for i = 1,#char_LP["projectile_table"] do
                 local current_projectile = char_LP["projectile_table"][i]
-                current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(16* char_LP_final_game_speed)
-                current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(16* char_LP_final_game_speed)
+                current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(COLLIDE_TICK* char_LP_final_game_speed)
+                current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(COLLIDE_TICK* char_LP_final_game_speed)
             end
         end
         if char_RP["game_speed_force_0_countdown"] == 0 and not char_RP["physics_lock"] then
-            -- 角色更新位置 1/16
-            char_RP["x"] = char_RP["x"] + char_RP_velocity[1]/(16* char_RP_final_game_speed)
-            char_RP["y"] = char_RP["y"] + char_RP_velocity[2]/(16* char_RP_final_game_speed)
+            -- 角色更新位置 1/COLLIDE_TICK
+            char_RP["x"] = char_RP["x"] + char_RP_velocity[1]/(COLLIDE_TICK* char_RP_final_game_speed)
+            char_RP["y"] = char_RP["y"] + char_RP_velocity[2]/(COLLIDE_TICK* char_RP_final_game_speed)
 
-            -- RC更新位置 1/16
+            -- RC更新位置 1/COLLIDE_TICK
             for i = 1,#char_RP["projectile_rc_table"] do
                 local current_projectile = char_RP["projectile_rc_table"][i]
-                current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(16* char_RP_final_game_speed)
-                current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(16* char_RP_final_game_speed)
+                current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(COLLIDE_TICK* char_RP_final_game_speed)
+                current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(COLLIDE_TICK* char_RP_final_game_speed)
             end
 
-            -- 飞行道具更新位置 1/16
+            -- 飞行道具更新位置 1/COLLIDE_TICK
             for i = 1,#char_RP["projectile_table"] do
                 local current_projectile = char_RP["projectile_table"][i]
-                current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(16* char_RP_final_game_speed)
-                current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(16* char_RP_final_game_speed)
+                current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(COLLIDE_TICK* char_RP_final_game_speed)
+                current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(COLLIDE_TICK* char_RP_final_game_speed)
             end
         end
 
@@ -1069,7 +1069,7 @@ function update_game_scene_HUD_overdrive_timer(obj_char,timer_obj)
                 init_point_linear_anim_with(timer_obj,anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1)
                 init_point_linear_anim_with(obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_in)
             end
-        end,
+        end
     }
     local this_function = switch[timer_obj["state"]]
     if this_function then this_function() end

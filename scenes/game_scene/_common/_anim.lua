@@ -3070,7 +3070,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
                 -- draw_correction
                 hurt_side_obj_char[8] = 11
             end
-        end,
+        end
     }
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true

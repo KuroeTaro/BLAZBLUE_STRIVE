@@ -143,8 +143,7 @@ function state_machine_UI_disclaimer_and_logos_scene_singular(obj)
             end
         end,
         ["end"] = function()
-
-        end,
+        end
     }
     local this_function = switch[obj["state"]]
     if this_function then this_function() end

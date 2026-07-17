@@ -215,7 +215,7 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
 
     obj_VFX["update"] = function()
         local switch = {
-            -- ease_in 之前的状�?如果达到�?0帧则为下一个动画的�?�?
+            -- ease_in
             ["ease_in"] = function()
                 point_linear_animator(obj_VFX,obj_VFX["size_anim"])
                 point_linear_animator(obj_VFX,obj_VFX["opacity_ease_in_anim"])
@@ -232,7 +232,7 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
                 if get_point_linear_anim_end_state(obj_VFX,obj_VFX["opacity_ease_out_anim"]) then
                     obj_VFX["life"] = 0
                 end
-            end,
+            end
         }
         local this_function = switch[obj_VFX["state"]]
         if this_function then this_function() end
@@ -260,7 +260,7 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
         love.graphics.setColor(1,1,1,1)
         love.graphics.setCanvas()
         love.graphics.setShader(obj_VFX["blur_shader"])
-        love.graphics.draw(obj_VFX["draw_canvas"]) -- 画到屏幕�?
+        love.graphics.draw(obj_VFX["draw_canvas"])
         love.graphics.setShader()
     end
     table.insert(active_op_side_obj_char["VFX_black_overlay_table"],obj_VFX)
@@ -2089,8 +2089,8 @@ end
 function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passive_op_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
-    local x = -(active_op_side_obj_char["x"] - passive_op_side_obj_char["x"])*active_op_side_obj_char[5]
-    local y = -((active_op_side_obj_char["y"] - passive_op_side_obj_char["y"])+100)*active_op_side_obj_char[6]
+    local x = -active_op_side_obj_char[5]*(active_op_side_obj_char["x"] - passive_op_side_obj_char["x"])
+    local y = -active_op_side_obj_char[6]*((active_op_side_obj_char["y"] - passive_op_side_obj_char["y"])+100)
     local dx = -1410
     local dy = -200
     local center_black_offset = {}
@@ -2100,31 +2100,31 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
         r0,
         r0 + (1.570 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5],
         r0 + (3.141 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5],
-        r0 + (4.712 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5],
+        r0 + (4.712 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5]
     }
     local rot_x_table_cache = {
         dx * active_op_side_obj_char[5] * math.cos(r_table_cache[1]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[1]),
         dx * active_op_side_obj_char[5] * math.cos(r_table_cache[2]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[2]),
         dx * active_op_side_obj_char[5] * math.cos(r_table_cache[3]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[3]),
-        dx * active_op_side_obj_char[5] * math.cos(r_table_cache[4]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[4]),
+        dx * active_op_side_obj_char[5] * math.cos(r_table_cache[4]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[4])
     }
     local rot_y_table_cache = {
         dx * active_op_side_obj_char[5] * math.sin(r_table_cache[1]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[1]),
         dx * active_op_side_obj_char[5] * math.sin(r_table_cache[2]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[2]),
         dx * active_op_side_obj_char[5] * math.sin(r_table_cache[3]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[3]),
-        dx * active_op_side_obj_char[5] * math.sin(r_table_cache[4]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[4]),
+        dx * active_op_side_obj_char[5] * math.sin(r_table_cache[4]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[4])
     }
     local obj_x_table = {
         active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[1],
         active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[2],
         active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[3],
-        active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[4],
+        active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[4]
     }
     local obj_y_table = {
         active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[1],
         active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[2],
         active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[3],
-        active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[4],
+        active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[4]
     }
     local obj_center = {
         active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x-500),
@@ -2148,7 +2148,7 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
         [2] = {obj_x_table[2],obj_y_table[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],r_table_cache[2],0},
         [3] = {obj_x_table[3],obj_y_table[3],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],r_table_cache[3],0},
         [4] = {obj_x_table[4],obj_y_table[4],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],r_table_cache[4],0},
-        [5] = {obj_center[1],obj_center[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],0,0},
+        [5] = {obj_center[1],obj_center[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],0,0}
     }
 
     obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
@@ -2172,8 +2172,8 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
         end
     end
     obj_VFX["draw_sync"] = function()
-        local x = -(active_op_side_obj_char["x"] - passive_op_side_obj_char["x"])*active_op_side_obj_char[5]
-        local y = -((active_op_side_obj_char["y"] - passive_op_side_obj_char["y"])+100)*active_op_side_obj_char[6]
+        local x = -active_op_side_obj_char[5]*(active_op_side_obj_char["x"] - passive_op_side_obj_char["x"])
+        local y = -active_op_side_obj_char[6]*((active_op_side_obj_char["y"] - passive_op_side_obj_char["y"])+100)
         local dx = -1410
         local dy = -200
         local center_black_offset = {}
@@ -2183,35 +2183,35 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
             r0,
             r0 + (1.570 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5],
             r0 + (3.141 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5],
-            r0 + (4.712 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5],
+            r0 + (4.712 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5]
         }
         local rot_x_table_cache = {
             dx * active_op_side_obj_char[5] * math.cos(r_table_cache[1]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[1]),
             dx * active_op_side_obj_char[5] * math.cos(r_table_cache[2]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[2]),
             dx * active_op_side_obj_char[5] * math.cos(r_table_cache[3]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[3]),
-            dx * active_op_side_obj_char[5] * math.cos(r_table_cache[4]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[4]),
+            dx * active_op_side_obj_char[5] * math.cos(r_table_cache[4]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[4])
         }
         local rot_y_table_cache = {
             dx * active_op_side_obj_char[5] * math.sin(r_table_cache[1]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[1]),
             dx * active_op_side_obj_char[5] * math.sin(r_table_cache[2]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[2]),
             dx * active_op_side_obj_char[5] * math.sin(r_table_cache[3]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[3]),
-            dx * active_op_side_obj_char[5] * math.sin(r_table_cache[4]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[4]),
+            dx * active_op_side_obj_char[5] * math.sin(r_table_cache[4]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[4])
         }
         local obj_x_table = {
             active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[1],
             active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[2],
             active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[3],
-            active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[4],
+            active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[4]
         }
         local obj_y_table = {
             active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[1],
             active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[2],
             active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[3],
-            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[4],
+            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[4]
         }
         local obj_center = {
             active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x-500),
-            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y-500),
+            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y-500)
         }
 
         obj_VFX["r_cache"] = r_table_cache
@@ -2224,7 +2224,7 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
             [2] = {obj_x_table[2],obj_y_table[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],r_table_cache[2],0},
             [3] = {obj_x_table[3],obj_y_table[3],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],r_table_cache[3],0},
             [4] = {obj_x_table[4],obj_y_table[4],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],r_table_cache[4],0},
-            [5] = {obj_center[1],obj_center[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],0,0},
+            [5] = {obj_center[1],obj_center[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],0,0}
         }
         obj_VFX["draw_sync"] = function() end
     end
@@ -2251,8 +2251,8 @@ end
 function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_char,passive_op_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
-    local x = -(active_op_side_obj_char["x"] - passive_op_side_obj_char["x"])*active_op_side_obj_char[5]
-    local y = -((active_op_side_obj_char["y"] - passive_op_side_obj_char["y"])+100)*active_op_side_obj_char[6]
+    local x = -active_op_side_obj_char[5]*(active_op_side_obj_char["x"] - passive_op_side_obj_char["x"])
+    local y = -active_op_side_obj_char[6]*((active_op_side_obj_char["y"] - passive_op_side_obj_char["y"])+100)
     local dx = -1410
     local dy = -200
     local center_black_offset = {}
@@ -2262,31 +2262,31 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
         r0,
         r0 + (1.570 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5],
         r0 + (3.141 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5],
-        r0 + (4.712 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5],
+        r0 + (4.712 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5]
     }
     local rot_x_table_cache = {
         dx * active_op_side_obj_char[5] * math.cos(r_table_cache[1]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[1]),
         dx * active_op_side_obj_char[5] * math.cos(r_table_cache[2]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[2]),
         dx * active_op_side_obj_char[5] * math.cos(r_table_cache[3]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[3]),
-        dx * active_op_side_obj_char[5] * math.cos(r_table_cache[4]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[4]),
+        dx * active_op_side_obj_char[5] * math.cos(r_table_cache[4]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[4])
     }
     local rot_y_table_cache = {
         dx * active_op_side_obj_char[5] * math.sin(r_table_cache[1]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[1]),
         dx * active_op_side_obj_char[5] * math.sin(r_table_cache[2]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[2]),
         dx * active_op_side_obj_char[5] * math.sin(r_table_cache[3]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[3]),
-        dx * active_op_side_obj_char[5] * math.sin(r_table_cache[4]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[4]),
+        dx * active_op_side_obj_char[5] * math.sin(r_table_cache[4]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[4])
     }
     local obj_x_table = {
         active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[1],
         active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[2],
         active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[3],
-        active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[4],
+        active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[4]
     }
     local obj_y_table = {
         active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[1],
         active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[2],
         active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[3],
-        active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[4],
+        active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[4]
     }
     local obj_center = {
         active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x-500),
@@ -2310,7 +2310,7 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
         [2] = {obj_x_table[2],obj_y_table[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],r_table_cache[2],0},
         [3] = {obj_x_table[3],obj_y_table[3],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],r_table_cache[3],0},
         [4] = {obj_x_table[4],obj_y_table[4],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],r_table_cache[4],0},
-        [5] = {obj_center[1],obj_center[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],0,0},
+        [5] = {obj_center[1],obj_center[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],0,0}
     }
 
     obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
@@ -2334,8 +2334,8 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
         end
     end
     obj_VFX["draw_sync"] = function()
-        local x = -(active_op_side_obj_char["x"] - passive_op_side_obj_char["x"])*active_op_side_obj_char[5]
-        local y = -((active_op_side_obj_char["y"] - passive_op_side_obj_char["y"])+100)*active_op_side_obj_char[6]
+        local x = -active_op_side_obj_char[5]*(active_op_side_obj_char["x"] - passive_op_side_obj_char["x"])
+        local y = -active_op_side_obj_char[6]*((active_op_side_obj_char["y"] - passive_op_side_obj_char["y"])+100)
         local dx = -1410
         local dy = -200
         local center_black_offset = {}
@@ -2345,35 +2345,35 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
             r0,
             r0 + (1.570 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5],
             r0 + (3.141 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5],
-            r0 + (4.712 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5],
+            r0 + (4.712 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5]
         }
         local rot_x_table_cache = {
             dx * active_op_side_obj_char[5] * math.cos(r_table_cache[1]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[1]),
             dx * active_op_side_obj_char[5] * math.cos(r_table_cache[2]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[2]),
             dx * active_op_side_obj_char[5] * math.cos(r_table_cache[3]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[3]),
-            dx * active_op_side_obj_char[5] * math.cos(r_table_cache[4]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[4]),
+            dx * active_op_side_obj_char[5] * math.cos(r_table_cache[4]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[4])
         }
         local rot_y_table_cache = {
             dx * active_op_side_obj_char[5] * math.sin(r_table_cache[1]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[1]),
             dx * active_op_side_obj_char[5] * math.sin(r_table_cache[2]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[2]),
             dx * active_op_side_obj_char[5] * math.sin(r_table_cache[3]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[3]),
-            dx * active_op_side_obj_char[5] * math.sin(r_table_cache[4]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[4]),
+            dx * active_op_side_obj_char[5] * math.sin(r_table_cache[4]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[4])
         }
         local obj_x_table = {
             active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[1],
             active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[2],
             active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[3],
-            active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[4],
+            active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[4]
         }
         local obj_y_table = {
             active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[1],
             active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[2],
             active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[3],
-            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[4],
+            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[4]
         }
         local obj_center = {
             active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x-500),
-            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y-500),
+            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y-500)
         }
 
         obj_VFX["r_cache"] = r_table_cache
@@ -2386,7 +2386,7 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
             [2] = {obj_x_table[2],obj_y_table[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],r_table_cache[2],0},
             [3] = {obj_x_table[3],obj_y_table[3],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],r_table_cache[3],0},
             [4] = {obj_x_table[4],obj_y_table[4],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],r_table_cache[4],0},
-            [5] = {obj_center[1],obj_center[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],0,0},
+            [5] = {obj_center[1],obj_center[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],0,0}
         }
         obj_VFX["draw_sync"] = function() end
     end

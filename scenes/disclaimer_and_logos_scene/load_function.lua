@@ -36,7 +36,7 @@ function order_load_disclaimer_and_logo_scene_1_general(load_order)
             image_table_UI_disclaimer_and_logos_scene_singular[0] = love.graphics.newImage(ASSET_DATA[1][1])
             image_table_UI_disclaimer_and_logos_scene_singular[1] = love.graphics.newImage(ASSET_DATA[1][2])
             image_table_UI_disclaimer_and_logos_scene_singular[2] = love.graphics.newImage(ASSET_DATA[1][3])
-        end,
+        end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end

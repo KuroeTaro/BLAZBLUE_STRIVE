@@ -26,7 +26,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 42
     obj_projectile["x"] = hurt_side_obj_char["x"]
-    obj_projectile["y"] = hurt_side_obj_char["y"]-hurt_side_obj_char["pushbox"][4]/2
+    obj_projectile["y"] = hurt_side_obj_char["y"] - hurt_side_obj_char[6]*hurt_side_obj_char["pushbox"][4]/2
     obj_projectile["velocity"] = {0,0}
     obj_projectile["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
     obj_projectile["f"] = -1
@@ -170,13 +170,13 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     -- update
     obj_projectile["update"] = function()
         obj_projectile["x"] = hurt_side_obj_char["x"]
-        obj_projectile["y"] = hurt_side_obj_char["y"]-hurt_side_obj_char["pushbox"][4]/2
+        obj_projectile["y"] = hurt_side_obj_char["y"] - hurt_side_obj_char[6]*hurt_side_obj_char["pushbox"][4]/2
         character_animator(obj_projectile,obj_projectile["projectile_animation"])
         obj_projectile["life"] = obj_projectile["life"] - 1
     end
     obj_projectile["update_sub_frame"] = function()
         obj_projectile["x"] = hurt_side_obj_char["x"]
-        obj_projectile["y"] = hurt_side_obj_char["y"]-hurt_side_obj_char["pushbox"][4]/2
+        obj_projectile["y"] = hurt_side_obj_char["y"] - hurt_side_obj_char[6]*hurt_side_obj_char["pushbox"][4]/2
     end
     -- draw
     obj_projectile["draw"] = function()
@@ -873,8 +873,8 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 42
-    obj_projectile["x"] = hurt_side_obj_char["x"]
-    obj_projectile["y"] = hurt_side_obj_char["y"]-hurt_side_obj_char["pushbox"][4]/2
+    obj_projectile["x"] = hit_side_obj_char["x"]
+    obj_projectile["y"] = hit_side_obj_char["y"]
     obj_projectile["velocity"] = {0,0}
     obj_projectile["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
     obj_projectile["f"] = -1
@@ -924,20 +924,39 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
             -- play_animation
         character_animator(obj_projectile,obj_projectile["projectile_animation"])
             -- update_pos
+        obj_projectile["x"] = hit_side_obj_char["x"] + hit_side_obj_char[5]*obj_projectile["in_spawner_offset_x"]
+        obj_projectile["y"] = hit_side_obj_char["y"] + obj_projectile["in_spawner_offset_y"]
         -- state_in_air
             -- play_animation
         character_animator(obj_projectile,obj_projectile["projectile_animation"])
         -- state_blast
             -- play_animation
+        character_animator(obj_projectile,obj_projectile["projectile_animation"])
     end
     obj_projectile["update_sub_frame"] = function()
-        -- state_in_spawner
-            -- update_pos
-        -- state_in_air
-            -- update_pos
-            -- collide_relocate
-            -- update_velocity
-        -- state_blast
+        local switch = {
+            -- ease_in
+            ["in_spawner"] = function()
+                -- update_pos
+                obj_projectile["x"] = hit_side_obj_char["x"] + hit_side_obj_char[5]*obj_projectile["in_spawner_offset_x"]
+                obj_projectile["y"] = hit_side_obj_char["y"] + obj_projectile["in_spawner_offset_y"]
+            end,
+            ["in_air"] = function()
+                -- update_pos
+                obj_projectile["x"] = hit_side_obj_char["x"] + obj_projectile["velocity"][1]/COLLIDE_TICK
+                obj_projectile["y"] = hit_side_obj_char["y"] + obj_projectile["velocity"][2]/COLLIDE_TICK
+                -- collide_relocate
+                if obj_projectile["y"] > 0 then
+                    obj_projectile["y"] = 0
+                    -- update_velocity
+                    obj_projectile["velocity"][2] = -obj_projectile["velocity"][2]
+                end
+            end,
+            ["blast"] = function()
+            end
+        }
+        local this_function = switch[obj_projectile["state"]]
+        if this_function then this_function() end
     end
     -- draw
     obj_projectile["draw"] = function()
@@ -950,12 +969,15 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
         -- love.graphics.draw(image_sprite_sheet["sprite_batch"])
         -- love.graphics.setBlendMode("alpha")
     end
-    -- uncommon nil
+    -- uncommon
+    obj_projectile["in_spawner_offset_x"] = 0
+    obj_projectile["in_spawner_offset_y"] = 0
+    obj_projectile["ground_collide"] = false
     -- projectile_init_fix
-    obj_projectile["x"] = hit_side_obj_char["x"]
-    obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
-    obj_projectile[1] = obj_projectile["x"] - hit_side_obj_char[5]*600
-    obj_projectile[2] = obj_projectile["y"] - 600
+    obj_projectile["x"] = hit_side_obj_char["x"] + obj_projectile["in_spawner_offset_x"]*hit_side_obj_char[5]
+    obj_projectile["y"] = hit_side_obj_char["y"] + obj_projectile["in_spawner_offset_y"]
+    obj_projectile[1] = obj_projectile["x"] - hit_side_obj_char[5]*80
+    obj_projectile[2] = obj_projectile["y"] - 80
     obj_projectile[5] = hit_side_obj_char[5]
     -- insert_projectile
     table.insert(hit_side_obj_char["projectile_table"],obj_projectile)

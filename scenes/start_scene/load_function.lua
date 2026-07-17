@@ -10,7 +10,7 @@ function load_start_scene_prep()
     THREAD_TABLE = {
         "threads/start_scene/start_scene_thread_1_main_UI.lua",
         "threads/start_scene/start_scene_thread_2_main_UI_BG.lua",
-        "threads/start_scene/start_scene_thread_3_sub_UI.lua",
+        "threads/start_scene/start_scene_thread_3_sub_UI.lua"
     }
     THREAD_AMOUNT = 3   -- 线程数目
     THREAD_ONCE_TABLE = {false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
@@ -18,7 +18,7 @@ function load_start_scene_prep()
     ORDER_LOAD_TABLE = {
         order_load_start_scene_main_UI,
         order_load_start_scene_main_UI_BG,
-        order_load_start_scene_sub_UI,
+        order_load_start_scene_sub_UI
     }    -- load function table
     CURRENT_ORDER_TABLE = {1,1,1}  -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
     ORDER_SIZE_TABLE = {2,1,1}  -- 每个load function的最大值
@@ -104,7 +104,7 @@ function order_load_start_scene_main_UI(load_order)
             load_start_scene_obj()
             load_start_scene_anim()
             load_start_scene_audio()
-        end,
+        end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
@@ -118,7 +118,7 @@ function order_load_start_scene_main_UI_BG(load_order)
                 image_table_UI_start_scene_BG_loop[i] = love.graphics.newImage(ASSET_DATA[2][i+1])
             end
             image_UI_start_scene_shutter = love.graphics.newImage(ASSET_DATA[2][51])
-        end,
+        end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
@@ -169,7 +169,7 @@ function order_load_start_scene_sub_UI(load_order)
             end
             image_UI_start_scene_time_indi_barcode = love.graphics.newImage(ASSET_DATA[3][23])
 
-        end,
+        end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end

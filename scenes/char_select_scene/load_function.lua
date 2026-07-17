@@ -10,7 +10,7 @@ function load_char_select_scene_prep()
     THREAD_TABLE = {
         "threads/char_select_scene/char_select_thread_1_char.lua",
         "threads/char_select_scene/char_select_thread_2_start_0_110f.lua",
-        "threads/char_select_scene/char_select_thread_3_movie_cover.lua",
+        "threads/char_select_scene/char_select_thread_3_movie_cover.lua"
     }
     THREAD_AMOUNT = 3   -- 线程数目
     THREAD_ONCE_TABLE = {false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
@@ -18,7 +18,7 @@ function load_char_select_scene_prep()
     ORDER_LOAD_TABLE = {
         order_load_char_select_scene_UI_char,
         order_load_char_select_scene_UI_start_0_110f,
-        order_load_char_select_scene_UI_movie_cover,
+        order_load_char_select_scene_UI_movie_cover
     }    -- load function table
     CURRENT_ORDER_TABLE = {1,1,1}  -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
     ORDER_SIZE_TABLE = {2,1,1}  -- 每个load function的最大值
@@ -69,7 +69,7 @@ function order_load_char_select_scene_UI_char(load_order)
             load_char_select_scene_anim()
             load_char_select_scene_audio()
             load_char_select_scene_shader()
-        end,
+        end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
@@ -83,7 +83,7 @@ function order_load_char_select_scene_UI_start_0_110f(load_order)
                 "asset/char_select_scene/scene_start_0_110f.json",
                 love.graphics.newImage(ASSET_DATA[2]["scene_start_0_110f"])
             )
-        end,
+        end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
@@ -97,7 +97,7 @@ function order_load_char_select_scene_UI_movie_cover(load_order)
                 "asset/char_select_scene/movie_cover.json",
                 love.graphics.newImage(ASSET_DATA[3]["movie_cover"])
             )
-        end,
+        end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end

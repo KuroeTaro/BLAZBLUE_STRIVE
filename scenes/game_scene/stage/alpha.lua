@@ -390,7 +390,7 @@ function order_load_game_scene_stage(load_order)
             image_sprite_batch_stage_game_scene_stair:add(1600*2,0)
             image_sprite_batch_stage_game_scene_stair:add(1600*3,0)
             image_sprite_batch_stage_game_scene_stair:add(1600*4,0)
-        end,
+        end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
@@ -637,7 +637,7 @@ function state_machine_stage_game_scene_wallstick()
                 obj_wallstick[8] = 0
                 obj_wallstick["state"] = "off"
             end
-        end,
+        end
     }
     local this_function = switch[obj_wallstick["state"]]
     if this_function then this_function() end

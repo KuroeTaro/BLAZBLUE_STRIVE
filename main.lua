@@ -158,6 +158,7 @@ function love.load()
 	MATCH_POINT["R"] = 0
 	ROUND_COUNTER = 1
 	ROUND_TIMER = {9,9,6,0} -- 99s and 60f
+	COLLIDE_TICK = 16
 
 	-- to be continue
 
@@ -184,7 +185,7 @@ function love.load()
 	DISCLAIMER_AND_LOGOS_POSITION = {
 		{175,125},
 		{620,255},
-		{620,255},
+		{620,255}
 	}
 
 	-- start_scene
@@ -252,7 +253,7 @@ function love.load()
 		{765,168},
 		{921,120},
 		{1116,122},
-		{1327,121},
+		{1327,121}
 	}
 
 	-- game_scene
@@ -269,7 +270,7 @@ function love.load()
         ["knockdown"] = true,
         ["knockdown_recovery"] = true,
         ["knockdown_recovery_wallstick"] = true,
-        ["knockout"] = true,
+        ["knockout"] = true
     }
 
 	--	general_scene_global_variable

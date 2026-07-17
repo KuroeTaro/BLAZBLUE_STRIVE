@@ -61,7 +61,7 @@ function state_machine_UI_start_scene_config_controller(obj,input_id)
                 obj[4] = 0.5
                 obj["state"] = "off_state"
             end
-        end,
+        end
     }
     local this_function = switch[obj["state"]]
     if this_function then this_function() end
