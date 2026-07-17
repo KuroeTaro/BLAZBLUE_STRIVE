@@ -378,7 +378,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
         local hit_side = hit_side_obj_char["player_side"]
         local hurt_side = hurt_side_obj_char["player_side"]
         -- if hit
-        if collision_all_hit_type_hit_confirm_test(obj_projectile,hurt_side_obj_char) and obj_projectile["projectile_active"] then
+        if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) and obj_projectile["projectile_active"] then
             -- projectile_hit_active
             obj_projectile["projectile_active"] = false
             -- physics_lock
@@ -466,7 +466,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
         local hit_side = hit_side_obj_char["player_side"]
         local hurt_side = hurt_side_obj_char["player_side"]
         -- if hit
-        if collision_all_hit_type_hit_confirm_test(obj_projectile,hurt_side_obj_char) and obj_projectile["projectile_active"] then
+        if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) and obj_projectile["projectile_active"] then
             -- projectile_hit_active
             obj_projectile["projectile_active"] = false
             -- physics_lock

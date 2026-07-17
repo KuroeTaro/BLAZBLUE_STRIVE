@@ -6467,8 +6467,8 @@ function load_game_scene_anim_char_TRM_5Launcher(hit_side_obj_char,hurt_side_obj
         hit_side_obj_char["move_state"] = "active" -- none startup active recovery
         hit_side_obj_char["strike_active"] = true
         -- collide
-        hit_side_obj_char["hitbox_table"] = {{140,-285,120,450}}
-        hit_side_obj_char["hurtbox_table"] = {{0,-237.5,210,475},{140,-285,170,500}}
+        hit_side_obj_char["hitbox_table"] = {{140,-285,180,450}}
+        hit_side_obj_char["hurtbox_table"] = {{0,-237.5,210,475},{140,-285,230,500}}
         -- oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-150,-385}
         -- draw_correction

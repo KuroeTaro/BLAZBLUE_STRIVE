@@ -869,7 +869,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     end
     obj_projectile["hit_SFX"] = nil
     obj_projectile["enemy_interact_function"] = function()
-        if collision_all_hit_type_hit_confirm_test(obj_projectile,hurt_side_obj_char) then
+        if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) then
             -- blast_state_init
             obj_projectile["velocity"] = {0,0}
             obj_projectile["sprite_sheet"] = "6SP_P_curse_ball_blast_projectile"
