@@ -41,7 +41,6 @@ function load_game_scene_prep()
     ORDER_SIZE_TABLE = {14,24,24,25,26,27,28,32}  -- 每个load function的最大值
     LOAD_ONCE_TABLE = {false,false,false,false,false,false,false,false}   -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     LOADING_FUNCTION_AMOUNT = 8 -- 和线程数相同
-
     -- GAME_MODE = 0
     -- TRAINING_MODE_CONFIG["announcer"] = true
     -- 训练模式
@@ -61,7 +60,6 @@ function load_game_scene_prep()
         NEXT_PRESET = preset_game_scene_match
     end
 end
-
 function order_load_game_scene_common(load_order)
     local switch = 
     {
@@ -124,7 +122,6 @@ function order_load_game_scene_act(load_order)
                 "asset/game_scene/common/act_common.json",
                 love.graphics.newImage(ASSET_DATA[5]["act_common_sprite_batch"])
             )
-
             image_sprite_sheet_table_announcer_game_scene_act_number = {}
             image_sprite_sheet_table_announcer_game_scene_act_number[1] = 
             common_sprite_sheet_load(
@@ -151,13 +148,11 @@ function order_load_game_scene_HUD(load_order)
     {
         [27] = function()
             image_HUD_game_scene_background_gauge = love.graphics.newImage(ASSET_DATA[6]["HUD_background_gauge"])
-            
             image_sprite_sheet_HUD_game_scene_common = 
             common_sprite_sheet_load(
                 "asset/game_scene/common/HUD/HUD_common.json",
                 love.graphics.newImage(ASSET_DATA[6]["HUD_common_sprite_batch"])
             )
-
             image_sprite_sheet_announcer_game_scene_HUD_ease_in = 
             common_sprite_sheet_load(
                 "asset/game_scene/common/HUD/HUD_ease_in.json",
@@ -177,7 +172,6 @@ function order_load_game_scene_lets_dance(load_order)
                 "asset/game_scene/common/lets_dance.json",
                 love.graphics.newImage(ASSET_DATA[7]["lets_dance_sprite_batch"])
             )
-
         end
     }
     local this_function = switch[load_order]
@@ -281,7 +275,6 @@ function order_load_game_scene_VFX(load_order)
                 "asset/game_scene/VFX/overdrive_partical.json",
                 love.graphics.newImage(ASSET_DATA[8]["overdrive_partical_sprite_batch"])
             )
-
             -- RC
             image_sprite_sheet_VFX_game_scene_RC_partical = 
             common_sprite_sheet_load(
@@ -313,14 +306,12 @@ function order_load_game_scene_VFX(load_order)
                 "asset/game_scene/VFX/RC_yellow_badge.json",
                 love.graphics.newImage(ASSET_DATA[8]["RC_yellow_badge_sprite_batch"])
             )
-
             -- UA
             image_sprite_sheet_VFX_game_scene_UA_common = 
             common_sprite_sheet_load(
                 "asset/game_scene/VFX/UA_common.json",
                 love.graphics.newImage(ASSET_DATA[8]["UA_common_sprite_batch"])
             )
-
             -- burst
             image_sprite_sheet_VFX_game_scene_burst_back = 
             common_sprite_sheet_load(
@@ -348,7 +339,6 @@ function order_load_game_scene_VFX(load_order)
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
-
 function load_game_scene_require(LP_name,RP_name,stage_name)
     require_all_in_folder("scenes/game_scene/_common")
     require("scenes.game_scene.characters." .. LP_name .. ".left")
@@ -363,7 +353,6 @@ function load_game_scene_require(LP_name,RP_name,stage_name)
     require("scenes.game_scene.characters." .. RP_name .. "._VFX")
     require("scenes.game_scene.stage." .. stage_name)
 end
-
 function load_game_scene_thread_table(LP_name,RP_name,stage_name)
     local res_table = {}
     table.insert(

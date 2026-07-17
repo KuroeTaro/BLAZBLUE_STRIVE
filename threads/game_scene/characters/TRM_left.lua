@@ -5,7 +5,6 @@ local compress_module = image_module.newCompressedData
 local non_compress_module = image_module.newImageData
 local sound_module = auido_module.newSoundData
 local thread_data = {}
-
 -- 通用类
 local load_universal_name_table = {
     "0_air_Launcher_teched",
@@ -72,7 +71,6 @@ local load_universal_name_table = {
 for i,v in ipairs(load_universal_name_table) do
     thread_data[v] = compress_module("asset/game_scene/characters/TRM/_character/UNIVERSAL/TRM_"..v..".dds")
 end 
-
 -- 攻击类
 local load_attack_name_table = {
     "burst_overdrive_ground",
@@ -120,7 +118,6 @@ local load_attack_name_table = {
 for i,v in ipairs(load_attack_name_table) do
     thread_data[v] = compress_module("asset/game_scene/characters/TRM/_character/ATTACK/TRM_"..v..".dds")
 end
-
 -- 角色move_VFX类
 local load_move_VFX_name_table = {
     "2P",
@@ -154,7 +151,6 @@ local load_move_VFX_name_table = {
 for i,v in ipairs(load_move_VFX_name_table) do
     thread_data[v.."_move_VFX"] = compress_module("asset/game_scene/VFX/move_VFX/TRM/".."TRM_"..v..".dds")
 end
-
 -- projectile
 local load_projectile_name_table = {
     "5H_hit",
@@ -165,8 +161,6 @@ local load_projectile_name_table = {
 for i,v in ipairs(load_projectile_name_table) do
     thread_data[v.."_projectile"] = compress_module("asset/game_scene/characters/TRM/_character/PROJECTILE/".."TRM_"..v..".dds")
 end
-
 -- uncommon
 thread_data["overdrive_badge"] = compress_module("asset/game_scene/VFX/overdrive_badge/TRM_overdrive_badge.dds")
-
 love.thread.getChannel( 'thread_data_2' ):push( thread_data )

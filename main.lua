@@ -6,17 +6,13 @@ require("draw_general_use_functions")
 require_all_in_folder("update_general_use_functions")
 require_all_in_folder("scenes/load_scene")
 require_all_init_load_function()
-
 -- int main()/mandatory entry point
 function love.run()
 	if love.load then love.load(love.arg.parseGameArguments(arg),arg) end
-
 	-- We don't want the first frame's dt to include time taken by love.load.
 	if love.timer then love.timer.step() end
-
 	local UPDATE_RATE = 60
 	local DRAW_RATE = 120
-
 	local dt = 0
 	local LFRST = 1/UPDATE_RATE  --logic frame rate stabilization timer
 	local GFRST = 1/DRAW_RATE --graphic frame rate stabilization timer
@@ -38,7 +34,6 @@ function love.run()
 				love.handlers[name](a,b,c,d,e,f)
 			end
 		end
-
 		-- Update dt,as we'll be passing it to update
 		dt = love.timer.step()
 		LFRST = LFRST + dt
@@ -76,7 +71,6 @@ function love.run()
 		if love.timer then love.timer.sleep(DEBUG_LAST_SLEEP) end
 	end
 end
-
 function love.load()
 	DEBUG_GAP_NUM = 0
 	DEBUG_LAST_SLEEP = 0
@@ -87,7 +81,6 @@ function love.load()
 	DEBUG_HITBOX_SHOWS_STATE = "Released"
 	DEBUG_INFO_SHOWS = false
 	DEBUG_INFO_SHOWS_STATE = "Released"
-
 	DEBUG_TRAINNING_TOGGLE = true
 	DEBUG_TRAINNING_TOGGLE_STATE = "Released"
 	DEBUG_TRAINNING_COUNTER = false
@@ -113,24 +106,17 @@ function love.load()
 	DEBUG_TRAINNING_SPAWN_ARRAY[2][0] = {2040-120,2040,1,-1}
 	DEBUG_TRAINNING_SPAWN_ARRAY[2][1] = {2040,2040-120,-1,1}
 	DEBUG_TRAINNING_SPAWN_STATE = "Released"
-
 	DEBUG_BOX_COLOR_YELLOW = {1,1,0,0.5}
 	DEBUG_BOX_COLOR_BLUE = {0,180/255,1,0.5}
 	DEBUG_BOX_COLOR_RED = {1,0,0,0.5}
-
 	DEBUG_CACHE_VALUES = {}
-
 	init_input()
-
 	-- read save data
 	read_volume_config()
 	read_game_duration()
 	get_current_resolution()
-
 	modify_quit_game_reocrd()
-
 	JSON = require("dkjson")
-
 	-- character_select_scene & game_scene
 	GAME_MODE = 0 -- 1.训练模式 2.本地多人 3.在线多人
 	CHAR_SELECT_LR = {}
@@ -159,9 +145,7 @@ function love.load()
 	ROUND_COUNTER = 1
 	ROUND_TIMER = {9,9,6,0} -- 99s and 60f
 	COLLIDE_TICK = 16
-
 	-- to be continue
-
 	-- non-character global variable
 -------------------------------------------------
 	-- load_scene
@@ -174,27 +158,22 @@ function love.load()
 	ORDER_SIZE_TABLE = {}
 	LOAD_ONCE_TABLE = {}
 	LOADING_FUNCTION_AMOUNT = 0
-
 	LOADING_AUDIO_PLAYED_ONCE = false
-
 	NEXT_UPDATE_BLOCK = update_disclaimer_and_logos_scene_main
 	NEXT_DRAW_BLOCK = draw_disclaimer_and_logos_scene_main
 	NEXT_PRESET = preset_disclaimer_and_logos_scene
-
 	-- disclaimer_and_logos_scene
 	DISCLAIMER_AND_LOGOS_POSITION = {
 		{175,125},
 		{620,255},
 		{620,255}
 	}
-
 	-- start_scene
 	OPTION_ID = 0
 	SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID = 0
 	AUDIO_BAR_MARK_ID = 0
 	CONSOLE_TEXT_1_ID = 0
 	CONSOLE_TEXT_2_ID = 0
-
 	OPTION_TEXT_X_POSITION_TABLE = {704,704,729,725,684}
 	CONSOLE_TYPE_IN_MARK_X_POSITION_TABLE = {1065,795,815,505,565,930,1115,1110}
 	DABO_TIRG_RECORD_SUB_SCENE_Y_POSITION = 500
@@ -203,7 +182,6 @@ function love.load()
 	BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE = {400,425}
 	BAR_MARK_CONFIG_SUB_SCENE_RESOLUTION_X_POSITION = 1000
 	BAR_MARK_CONFIG_SUB_SCENE_RESOLUTION_Y_POSITION = 530
-
 	-- char_select_scene
 	LEFT_CHAR_SELECT_CHAR_POSITION = {
 		{-400,-5,0},
@@ -255,7 +233,6 @@ function love.load()
 		{1116,122},
 		{1327,121}
 	}
-
 	-- game_scene
     COLLSION_CONER_OUT_STATE = {
         ["block"] = true,
@@ -272,16 +249,12 @@ function love.load()
         ["knockdown_recovery_wallstick"] = true,
         ["knockout"] = true
     }
-
 	--	general_scene_global_variable
 	FRAMES_DRAWN = 0
 	SCENE_TIMER = 0
-
 ---------------------------------------------------
-
 	current_update_block = update_load_scene_load_pre_timer
 	current_draw_block = function() end
-
 end    
 function love.update()
 	-- http://127.0.0.1:8000
@@ -295,7 +268,6 @@ function love.update()
 	set_show_hitbox()
 	set_hot_update()
 	set_jump_breakpoint()
-
 	set_toggle()
 	set_counter()
 	set_height()

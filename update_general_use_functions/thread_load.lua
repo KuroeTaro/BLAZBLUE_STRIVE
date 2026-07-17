@@ -44,7 +44,6 @@ function run_table_order_load()
         i = i + 1
     end
 end
-
 function init_order_load_table()
     THREAD_TABLE = {}
     THREAD_AMOUNT = 0
@@ -55,7 +54,6 @@ function init_order_load_table()
     ORDER_SIZE_TABLE = {}
 	LOAD_ONCE_TABLE = {}
     LOADING_FUNCTION_AMOUNT = 0
-
 	NEXT_UPDATE_BLOCK = nil
 	NEXT_DRAW_BLOCK = nil
     NEXT_PRESET = nil

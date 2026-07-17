@@ -1,7 +1,6 @@
 function update_game_scene_training_before_ease_in()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_game_scene_movie_cover_loop(obj_UI_game_scene_movie_cover)
-
     -- 状态出口
     if SCENE_TIMER >= 5 then
         SCENE_TIMER = 0
@@ -22,9 +21,7 @@ end
 function update_game_scene_training_black_solid_ease_in()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_game_scene_movie_cover_loop(obj_UI_game_scene_movie_cover)
-
     update_game_scene_char()
-    
     point_linear_animator(
         obj_UI_game_scene_black_solid,
         anim_UI_point_linear_game_scene_solid_ease_out_opacity_1_0
@@ -45,9 +42,7 @@ end
 function update_game_scene_training_annoucer_ease_in()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_game_scene_movie_cover_loop(obj_UI_game_scene_movie_cover)
-
     update_game_scene_char()
-
     if SCENE_TIMER <= 5 then
         point_linear_animator(
             obj_UI_game_scene_black_solid,
@@ -79,7 +74,6 @@ function update_game_scene_training_annoucer_ease_in()
         -- input_sys save
         obj_char_game_scene_char_LP["input_sys_state"] = "save" -- none save load
         init_input_sys_cache_LP(obj_char_game_scene_char_LP)
-
         obj_char_game_scene_char_RP["input_sys_state"] = "save" -- none save load
         init_input_sys_cache_RP(obj_char_game_scene_char_RP)
     elseif SCENE_TIMER < 165 then
@@ -118,12 +112,10 @@ function update_game_scene_training_annoucer_ease_in()
         current_update_block = update_game_scene_training_main
         obj_char_game_scene_char_LP["state"] = "5_stand_idle"
         obj_char_game_scene_char_RP["state"] = "5_stand_idle"
-
         state_machine_char_game_scene_char_LP_input_sys_cache()
         state_machine_char_game_scene_char_RP_input_sys_cache()
         state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
         state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
-
         common_game_scene_toggle_dynamic_HUD(1)
         common_game_scene_toggle_ease_in(0)
     end
@@ -142,20 +134,15 @@ function update_game_scene_training_main()
     -- 检测pushbox 更新Y位置
     -- 检测pushbox 更新X位置 static_relocate_x
     -- 检测pushbox 更新X位置 dynamic_relocate_x
-
     -- 删除已经命中的飞行道具
-
         -- 取整角色位置
     -- 取整飞行道具位置
-
     -- 更新HUD
     -- 更新场景
     state_machine_UI_game_scene_movie_cover_loop(obj_UI_game_scene_movie_cover)
-
     SCENE_TIMER = SCENE_TIMER + 1
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
-
     -- debug_delete_after 
     if DEBUG_TRAINNING_SPAWN_STATE == "Pressing" and DEBUG_TRAINNING_TOGGLE then
         SCENE_TIMER = 5
@@ -163,7 +150,6 @@ function update_game_scene_training_main()
         current_update_block = update_game_scene_training_before_ease_in
         return
     end
-
     -- 获得输入 更新角色 状态 速度 和 碰撞盒
     -- 会被game_speed限制
     state_machine_char_game_scene_char_LP_input_sys_cache()
@@ -172,7 +158,6 @@ function update_game_scene_training_main()
     state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
     common_game_scene_update_input_direction(char_LP)
     common_game_scene_update_input_direction(char_RP)
-
     -- debug_delete_after
     if DEBUG_TRAINNING_TOGGLE then
         INPUT_SYS_CURRENT_COMMAND_STATE["R"]["left"] = "Released"
@@ -185,22 +170,18 @@ function update_game_scene_training_main()
             INPUT_SYS_CURRENT_COMMAND_STATE["R"]["up"] = "Holding"
         end
         obj_char_game_scene_char_RP["direction_input"] = DEBUG_TRAINNING_HEIGHT
-
         if obj_char_game_scene_char_RP["state"] == "wallstick" or obj_char_game_scene_char_RP["state"] == "knockdown" then
             obj_char_game_scene_char_RP["direction_input"] = DEBUG_TRAINNING_WALLSTICK_SOFT_RECOVER_POS
         end
     end
-
     -- game_speed_countdown
     -- countdown -> game_speed_application(last_frame) -> actual_use(apply_on_character_update_and_objects_intercation)
     common_update_game_scene_char_game_speed_abnormal_realtime_countdown(char_LP)
     common_update_game_scene_char_game_speed_abnormal_realtime_countdown(char_RP)
     common_game_scene_game_speed_apply_application()
-
     -- 更新角色
     -- -> uncommon_countdown -> uncommon_state_application(current_frame_by_character_update) -> actual_use(apply_on_objects_intercation)
     update_game_scene_char()
-
     -- debug_delete_after
     if DEBUG_TRAINNING_TOGGLE then
         if DEBUG_TRAINNING_BLOCK ~= 0 and obj_char_game_scene_char_RP["hurt_state_target"] == "idle" then
@@ -220,12 +201,10 @@ function update_game_scene_training_main()
             obj_char_game_scene_char_RP["hurt_state_target"] = "counter"
         end
     end
-
     local char_LP_velocity = char_LP["velocity"]
     local char_RP_velocity = char_RP["velocity"]
     local char_LP_final_game_speed = char_LP["game_speed"]
     local char_RP_final_game_speed = char_RP["game_speed"]
-
     if char_LP["game_speed_force_1_countdown"] > 0 then
         char_LP_final_game_speed = 1
     end
@@ -238,7 +217,6 @@ function update_game_scene_training_main()
     if char_RP["game_speed_force_0_countdown"] > 0 then
         char_RP_final_game_speed = 0
     end
-
     -- 进行push box hit box hurt box的检测
     for i = 1,COLLIDE_TICK do
         -- 更新角色和飞行道具位置
@@ -246,14 +224,12 @@ function update_game_scene_training_main()
             -- 角色更新位置 1/COLLIDE_TICK
             char_LP["x"] = char_LP["x"] + char_LP_velocity[1]/(COLLIDE_TICK* char_LP_final_game_speed)
             char_LP["y"] = char_LP["y"] + char_LP_velocity[2]/(COLLIDE_TICK* char_LP_final_game_speed)
-
             -- RC更新位置 1/COLLIDE_TICK
             for i = 1,#char_LP["projectile_rc_table"] do
                 local current_projectile = char_LP["projectile_rc_table"][i]
                 current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(COLLIDE_TICK* char_LP_final_game_speed)
                 current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(COLLIDE_TICK* char_LP_final_game_speed)
             end
-
             -- 飞行道具更新位置 1/COLLIDE_TICK
             for i = 1,#char_LP["projectile_table"] do
                 local current_projectile = char_LP["projectile_table"][i]
@@ -265,14 +241,12 @@ function update_game_scene_training_main()
             -- 角色更新位置 1/COLLIDE_TICK
             char_RP["x"] = char_RP["x"] + char_RP_velocity[1]/(COLLIDE_TICK* char_RP_final_game_speed)
             char_RP["y"] = char_RP["y"] + char_RP_velocity[2]/(COLLIDE_TICK* char_RP_final_game_speed)
-
             -- RC更新位置 1/COLLIDE_TICK
             for i = 1,#char_RP["projectile_rc_table"] do
                 local current_projectile = char_RP["projectile_rc_table"][i]
                 current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(COLLIDE_TICK* char_RP_final_game_speed)
                 current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(COLLIDE_TICK* char_RP_final_game_speed)
             end
-
             -- 飞行道具更新位置 1/COLLIDE_TICK
             for i = 1,#char_RP["projectile_table"] do
                 local current_projectile = char_RP["projectile_table"][i]
@@ -280,19 +254,15 @@ function update_game_scene_training_main()
                 current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(COLLIDE_TICK* char_RP_final_game_speed)
             end
         end
-
         -- 检测pushbox 更新Y位置
         collision_pushbox_relocate_y(char_LP)
         collision_pushbox_relocate_y(char_RP)
-
         -- 检测pushbox 更新X位置 static_relocate_x
         collision_pushbox_stage_relocate_x(char_LP)
         collision_pushbox_stage_relocate_x(char_RP)
         collision_pushbox_state_relocate_in_character_x(char_LP,char_RP,obj_stage_game_scene_mid_collision_anchor)
-
         -- 检测pushbox 更新X位置 dynamic_relocate_x
         collision_pushbox_dynamic_normal_aabb_relocate_x(char_LP,char_RP)
-
         -- 更新飞行道具sub_frame位置
         for i = #char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
             local current_projectile = char_LP["projectile_table"][i]
@@ -302,7 +272,6 @@ function update_game_scene_training_main()
             local current_projectile = char_RP["projectile_table"][i]
             current_projectile["update_sub_frame"]()
         end
-
         -- 更新飞行道具 与角色碰撞交互
         for i = #char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
             local current_projectile = char_LP["projectile_table"][i]
@@ -316,14 +285,12 @@ function update_game_scene_training_main()
                 current_projectile["pushbox_interact_update"]()
             end
         end
-
         -- enemy_interact_function
             -- strike_clash
             -- projectile_and_projectile_interaction
             -- interaction_with_enemy
         -- friendly_interact_function
             -- interaction_with_friendly
-
         -- 检测飞行道具人物交互
         for i = 1,#char_LP["projectile_rc_table"] do
             local current_projectile = char_LP["projectile_rc_table"][i]
@@ -341,7 +308,6 @@ function update_game_scene_training_main()
                 common_update_game_scene_projetile_clash(projectile_LP,projectile_RP)
             end
         end
-
         for i = 1,#char_LP["projectile_table"] do
             local current_projectile = char_LP["projectile_table"][i]
             if current_projectile["enemy_interact_function"] then
@@ -366,12 +332,10 @@ function update_game_scene_training_main()
                 current_projectile["friendly_interact_function"]()
             end
         end
-
         -- 打击受击检测
         -- 检测投受击盒交互
         local LP_hurt_throw_accur = collision_throw_hit_confirm_test(char_RP,char_LP) -- (obj_hit,obj_hurt)
         local RP_hurt_throw_accur = collision_throw_hit_confirm_test(char_LP,char_RP)
-
         -- 检测打击受击盒交互
         if LP_hurt_throw_accur and not RP_hurt_throw_accur then
             char_RP["hit_function"](char_RP,char_LP) -- RP更新主动攻击状态
@@ -384,7 +348,6 @@ function update_game_scene_training_main()
         if LP_hurt_throw_accur and RP_hurt_throw_accur then
             common_update_game_scene_char_throw_clash()
         end
-
         -- debug_delete_after
         if (DEBUG_TRAINNING_THROW_CLASH and DEBUG_TRAINNING_TOGGLE) then
             if (char_LP["state"] == "throw_testing" and char_RP["state"] == "throw_tested") then
@@ -415,11 +378,9 @@ function update_game_scene_training_main()
                 init_character_anim_with(char_LP,char_LP["character_animation"])
             end
         end
-
         -- 保留双康后的LP_hurt_strike_accur RP_hurt_strike_accur
         local LP_hurt_strike_accur = collision_strike_hit_confirm_test(char_RP,char_LP) -- (obj_hit,obj_hurt)
         local RP_hurt_strike_accur = collision_strike_hit_confirm_test(char_LP,char_RP)
-
         -- 检测打击受击盒交互
         if LP_hurt_strike_accur then
             char_RP["hit_function"](char_RP,char_LP) -- RP更新主动攻击状态
@@ -433,7 +394,6 @@ function update_game_scene_training_main()
         if RP_hurt_strike_accur then
             char_LP["hurt_function"](char_LP,char_RP) -- LP更新被攻击状态
         end
-
         -- 检测双康
         if LP_hurt_strike_accur and RP_hurt_strike_accur then
             local obj_camera = obj_stage_game_scene_camera
@@ -441,32 +401,25 @@ function update_game_scene_training_main()
             char_RP["hit_hurt_blockstop_countdown"] = 0
             char_LP["hit_hurt_block_slowdown_countdown"] = 0
             char_RP["hit_hurt_block_slowdown_countdown"] = 0
-
             common_game_scene_game_speed_load_application(char_LP,{1,1,1,0,0,0})
             common_game_scene_game_speed_load_application(char_RP,{1,1,1,0,0,0})
-
             obj_camera["state"] = "main"
             obj_camera["enclose_percentage"] = 0.0
             obj_camera["enclose_position_offset"] = {0,0,0}
         end
-
         -- 检测相杀
         if collision_strike_hitbox_clash_test() then
             common_update_game_scene_char_strike_clash()
         end
-
         -- 检测pushbox 更新Y位置
         collision_pushbox_relocate_y(char_LP)
         collision_pushbox_relocate_y(char_RP)
-
         -- 检测pushbox 更新X位置 static_relocate_x
         collision_pushbox_stage_relocate_x(char_LP)
         collision_pushbox_stage_relocate_x(char_RP)
         collision_pushbox_state_relocate_in_character_x(char_LP,char_RP,obj_stage_game_scene_mid_collision_anchor)
-
         -- 检测pushbox 更新X位置 dynamic_relocate_x
         collision_pushbox_dynamic_normal_aabb_relocate_x(char_LP,char_RP)
-
         -- 更新飞行道具 与角色碰撞交互
         for i = #char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
             local current_projectile = char_LP["projectile_table"][i]
@@ -481,19 +434,15 @@ function update_game_scene_training_main()
             end
         end
     end
-
     -- 检测pushbox 更新Y位置
     collision_pushbox_relocate_y(char_LP)
     collision_pushbox_relocate_y(char_RP)
-
     -- 检测pushbox 更新X位置 static_relocate_x
     collision_pushbox_stage_relocate_x(char_LP)
     collision_pushbox_stage_relocate_x(char_RP)
     collision_pushbox_state_relocate_in_character_x(char_LP,char_RP,obj_stage_game_scene_mid_collision_anchor)
-
     -- 检测pushbox 更新X位置 dynamic_relocate_x
     collision_pushbox_dynamic_normal_aabb_relocate_x(char_LP,char_RP)
-
     -- 更新飞行道具 与角色碰撞交互
     for i = #char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
         local current_projectile = char_LP["projectile_table"][i]
@@ -507,37 +456,27 @@ function update_game_scene_training_main()
             current_projectile["pushbox_interact_update"]()
         end
     end
-
     -- 更新阻力
     update_game_scene_friction()
-
     -- 更新角色重力方向速度
     update_game_scene_gravity()
-
     -- 更新sub_frame
     update_game_scene_game_speed_sub_frame()
-
     -- 更新上墙
     update_game_scene_test_and_apply_wallstick()
-
     -- 更新application_table
     update_game_scene_application_table()
-
     -- 更新资源槽
     update_game_scene_gauge()
-
     -- 更新场景
     update_game_scene_stage()
-
     -- 更新HUD
     update_game_scene_HUD()
-
     -- 更新角色DEBUG信息
     update_character_frame_adv_info_init(obj_char_game_scene_char_LP, obj_char_game_scene_char_RP)
     update_character_frame_adv_info_init(obj_char_game_scene_char_RP, obj_char_game_scene_char_LP)
     update_character_frame_info(obj_char_game_scene_char_LP, obj_char_game_scene_char_RP)
     update_character_frame_info(obj_char_game_scene_char_RP, obj_char_game_scene_char_LP)
-
     if obj_stage_game_scene_main["state"] == "wallbreak" then
         current_update_block = update_game_scene_training_wallbreak
     end
@@ -546,16 +485,13 @@ function update_game_scene_training_wallbreak()
     local obj_stage_main = obj_stage_game_scene_main
     -- movie_cover_loop
     state_machine_UI_game_scene_movie_cover_loop(obj_UI_game_scene_movie_cover)
-
     SCENE_TIMER = SCENE_TIMER + 1
-
     if DEBUG_TRAINNING_SPAWN_STATE == "Pressing" and DEBUG_TRAINNING_TOGGLE then
         SCENE_TIMER = 5
         common_game_scene_init_chars_trainning()
         current_update_block = update_game_scene_training_before_ease_in
         return
     end
-
     -- character
     update_game_scene_char_LP_projectile()
     update_game_scene_char_LP_VFX()
@@ -563,7 +499,6 @@ function update_game_scene_training_wallbreak()
     update_game_scene_char_RP_VFX()
     -- stage
     update_game_scene_stage_wallbreak()
-
     -- 场景出口
     if get_stage_anim_end_state(obj_stage_main,anim_stage_game_scene_wallbreak_main) then
         load_game_scene_stage_apply_wallbreak_end_init(
@@ -575,7 +510,6 @@ function update_game_scene_training_wallbreak()
 end
 function update_game_scene_training_5Launcher_hold()
 end
-
 function update_game_scene_local_match_before_ease_in()
     update_game_scene_char_LP()
     update_game_scene_char_RP()
@@ -584,17 +518,14 @@ function update_game_scene_online_match_synchronizing()
     update_game_scene_char_LP()
     update_game_scene_char_RP()
 end
-
 function update_game_scene_char()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
-
     -- 计算摩擦力时再将game_speed_subframe初始化
     local game_speed_cache_LP = char_LP["game_speed"]
     local game_speed_cache_RP = char_RP["game_speed"]
     local game_speed_subframe_cache_LP = char_LP["game_speed_subframe"]
     local game_speed_subframe_cache_RP = char_RP["game_speed_subframe"]
-
     if char_LP["game_speed_force_1_countdown"] > 0 then
         game_speed_cache_LP = 1
     end
@@ -607,7 +538,6 @@ function update_game_scene_char()
     if char_RP["game_speed_force_0_countdown"] > 0 then
         game_speed_cache_RP = 0
     end
-
     if game_speed_cache_LP ~= 0 then
         update_game_scene_char_LP()
     end
@@ -624,16 +554,13 @@ function update_game_scene_char()
         update_game_scene_char_RP_VFX()
         update_game_scene_char_RP_black_overlay()
     end
-
     -- attachment 用于某些需要根据角色本身本帧数据来更新的部分
     if game_speed_cache_LP ~= 0 then
         update_game_scene_char_LP_attachment()
     end
-
     if game_speed_cache_RP ~= 0 then
         update_game_scene_char_RP_attachment()
     end
-
     local game_speed_force_0_countdown_LP = char_LP["game_speed_force_0_countdown"]
     local game_speed_force_0_countdown_RP = char_RP["game_speed_force_0_countdown"]
     if char_LP["game_speed_force_0_countdown"] > 0 and char_RP["game_speed_force_0_countdown"] > 0 then
@@ -656,7 +583,6 @@ function update_game_scene_friction()
     local char_RP = obj_char_game_scene_char_RP
     local LP_game_speed = char_LP["game_speed"]
     local RP_game_speed = char_RP["game_speed"]
-
     if char_LP["game_speed_force_1_countdown"] > 0 then
         LP_game_speed = 1
     end
@@ -669,13 +595,10 @@ function update_game_scene_friction()
     if char_RP["game_speed_force_0_countdown"] > 0 then
         RP_game_speed = 0
     end
-
     local LP_RUN_AT_THIS_FRAME = (LP_game_speed ~= 0 and char_LP["game_speed_subframe"] > LP_game_speed) or LP_game_speed == 1
     local RP_RUN_AT_THIS_FRAME = (RP_game_speed ~= 0 and char_RP["game_speed_subframe"] > RP_game_speed) or RP_game_speed == 1
-    
     char_LP["velocity_debug"][1] = char_LP["velocity"][1]
     char_LP["velocity_debug"][2] = char_LP["velocity"][2]
-
     if char_LP["height"] ~= "air" and LP_RUN_AT_THIS_FRAME and not char_LP["physics_lock"] then
         if char_LP["friction"] == 0 then
             char_LP["velocity"][1] = char_LP["velocity"][1]
@@ -692,10 +615,8 @@ function update_game_scene_friction()
             current_projectile["friction_update_function"]()
         end
     end
-
     char_RP["velocity_debug"][1] = char_RP["velocity"][1]
     char_RP["velocity_debug"][2] = char_RP["velocity"][2]
-
     if char_RP["height"] ~= "air" and RP_RUN_AT_THIS_FRAME and not char_RP["physics_lock"] then
         if char_RP["friction"] == 0 then
             char_RP["velocity"][1] = char_RP["velocity"][1]
@@ -718,7 +639,6 @@ function update_game_scene_gravity()
     local char_RP = obj_char_game_scene_char_RP
     local LP_game_speed = char_LP["game_speed"]
     local RP_game_speed = char_RP["game_speed"]
-
     if char_LP["game_speed_force_1_countdown"] > 0 then
         LP_game_speed = 1
     end
@@ -731,10 +651,8 @@ function update_game_scene_gravity()
     if char_RP["game_speed_force_0_countdown"] > 0 then
         RP_game_speed = 0
     end
-
     local LP_RUN_AT_THIS_FRAME = (LP_game_speed ~= 0 and char_LP["game_speed_subframe"] > LP_game_speed) or LP_game_speed == 1
     local RP_RUN_AT_THIS_FRAME = (RP_game_speed ~= 0 and char_RP["game_speed_subframe"] > RP_game_speed) or RP_game_speed == 1
-
     if char_LP["y"] == 0 then
         char_LP["velocity"][2] = math.min(char_LP["velocity"][2],0)
     elseif char_LP["y"] > 0 then
@@ -750,7 +668,6 @@ function update_game_scene_gravity()
             current_projectile["gravity_update_function"]()
         end
     end
-    
     if char_RP["y"] == 0 then
         char_RP["velocity"][2] = math.min(char_RP["velocity"][2],0)
     elseif char_RP["y"] > 0 then
@@ -770,20 +687,17 @@ end
 function update_game_scene_gauge()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
-
     char_LP["health_gauge_update_function"]()
     char_LP["overdrive_gauge_update_function"]()
     char_LP["ability_gauge_update_function"]()
     char_LP["risk_gauge_update_function"]()
     char_LP["wallstick_gauge_update_function"]()
-    
     char_RP["health_gauge_update_function"]()
     char_RP["overdrive_gauge_update_function"]()
     char_RP["ability_gauge_update_function"]()
     char_RP["risk_gauge_update_function"]()
     char_RP["wallstick_gauge_update_function"]()
 end
-
 function update_game_scene_application_table()
     -- application_table
     update_game_scene_application_table_validation()
@@ -879,7 +793,6 @@ function update_game_scene_camera_application_table()
         obj_stage_main["camera_active_application_table"] = {}
     end
 end
-
 function update_game_scene_test_and_apply_wallstick()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
@@ -895,7 +808,6 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char_a,obj_char_b)
     local stage_collision = false
     local collision_side = 0
     local collision_side_cache = 0
-
     if obj_char_a["state"] ~= "hurt" and obj_char_a["state"] ~= "hurtstop" then
         return
     end
@@ -909,7 +821,6 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char_a,obj_char_b)
     else
         return
     end
-
     if obj_char_a["collision_move_available_cache"][1] == 0 then
         collision_side_cache = -1
     elseif obj_char_a["collision_move_available_cache"][2] == 0 then
@@ -996,14 +907,12 @@ end
 function update_game_scene_game_speed_sub_frame()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
-
     if char_LP["game_speed_force_0_countdown"] < 1 
     and char_LP["game_speed_force_1_countdown"] < 1 
     and char_LP["game_speed_subframe"] > char_LP["game_speed"] 
     then
         char_LP["game_speed_subframe"] = 1
     end
-
     if char_RP["game_speed_force_0_countdown"] < 1 
     and char_RP["game_speed_force_1_countdown"] < 1 
     and char_RP["game_speed_subframe"] > char_RP["game_speed"] 
@@ -1014,7 +923,6 @@ end
 function update_game_scene_HUD()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
-
     update_game_scene_HUD_overdrive_timer(
         obj_char_game_scene_char_LP,
         obj_HUD_game_scene_overdrive_timer_LP

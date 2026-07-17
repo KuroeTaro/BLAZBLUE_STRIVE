@@ -50,7 +50,6 @@ end
 function insert_VFX_game_scene_char_overdrive_airflow(active_op_side_obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     obj_VFX["y_offset"] = 0
-
     if active_op_side_obj_char["height"] == "air" then
         obj_VFX["y_offset"] = 745
     else
@@ -110,15 +109,12 @@ function insert_VFX_game_scene_char_overdrive_partical(active_op_side_obj_char,p
     }
     local obj_VFX = side_table[active_op_side_obj_char["player_side"]]
     local obj_camera = obj_stage_game_scene_camera
-
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
-    
     obj_VFX["life"] = 70
     obj_VFX["f"] = -1
-
     obj_VFX["update"] = function()
         obj_VFX["f"] = obj_VFX["f"] + 1
         if obj_VFX["f"] >= 1 then
@@ -153,7 +149,6 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
     else
         obj_VFX["y_offset"] = 345
     end
-
     obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
@@ -173,7 +168,6 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
     obj_VFX["blur_shader"]:send("Quality",5)
     obj_VFX["blur_shader"]:send("Size",8)
     obj_VFX["blur_shader"]:send("resolution",{love.graphics.getWidth(),love.graphics.getHeight()})
-
     obj_VFX["opacity_ease_in_anim"] = {}
     obj_VFX["opacity_ease_in_anim"][0] = {0.00,1}
     obj_VFX["opacity_ease_in_anim"][1] = {0.04,3}
@@ -190,7 +184,6 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
     obj_VFX["opacity_ease_in_anim"]["length"] = 33
     obj_VFX["opacity_ease_in_anim"]["loop"] = false
     obj_VFX["opacity_ease_in_anim"]["fix_type"] = true
-
     obj_VFX["opacity_ease_out_anim"] = {}
     obj_VFX["opacity_ease_out_anim"][0] = {0.50,10}
     obj_VFX["opacity_ease_out_anim"][10] = {0.00,10}
@@ -198,7 +191,6 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
     obj_VFX["opacity_ease_out_anim"]["length"] = 10
     obj_VFX["opacity_ease_out_anim"]["loop"] = false
     obj_VFX["opacity_ease_out_anim"]["fix_type"] = true
-
     obj_VFX["size_anim"] = {}
     obj_VFX["size_anim"][0] = {200,28}
     obj_VFX["size_anim"][28] = {800,33}
@@ -207,12 +199,9 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
     obj_VFX["size_anim"]["length"] = 33
     obj_VFX["size_anim"]["loop"] = false
     obj_VFX["size_anim"]["fix_type"] = true
-
     obj_VFX["draw_canvas"] = love.graphics.newCanvas(love.graphics.getWidth(),love.graphics.getHeight())
-
     init_point_linear_anim_without(obj_VFX,obj_VFX["size_anim"])
     init_point_linear_anim_without(obj_VFX,obj_VFX["opacity_ease_in_anim"])
-
     obj_VFX["update"] = function()
         local switch = {
             -- ease_in
@@ -236,7 +225,6 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
         }
         local this_function = switch[obj_VFX["state"]]
         if this_function then this_function() end
-
         obj_VFX["life"] = obj_VFX["life"] - 1
     end
     obj_VFX["draw_sync"] = function()
@@ -265,7 +253,6 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
     end
     table.insert(active_op_side_obj_char["VFX_black_overlay_table"],obj_VFX)
 end
-
 function insert_VFX_game_scene_char_RC_badge(active_op_side_obj_char,image_sprite_sheet)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     obj_VFX["y_offset"] = 0
@@ -274,7 +261,6 @@ function insert_VFX_game_scene_char_RC_badge(active_op_side_obj_char,image_sprit
     else
         obj_VFX["y_offset"] = 880
     end
-
     obj_VFX["life"] = 15
     obj_VFX[1] = active_op_side_obj_char["x"] - active_op_side_obj_char[5]*(600)
     obj_VFX[2] = active_op_side_obj_char["y"] - active_op_side_obj_char[6]*(obj_VFX["y_offset"])
@@ -323,7 +309,6 @@ function insert_VFX_game_scene_char_RC_partical(active_op_side_obj_char,color)
     else
         obj_VFX["y_offset"] = 850
     end
-    
     obj_VFX["life"] = 40
     obj_VFX[1] = active_op_side_obj_char["x"] - active_op_side_obj_char[5]*(600)
     obj_VFX[2] = active_op_side_obj_char["y"] - active_op_side_obj_char[6]*(obj_VFX["y_offset"])
@@ -369,12 +354,10 @@ function insert_VFX_game_scene_char_RC_partical(active_op_side_obj_char,color)
 end
 function insert_VFX_game_scene_char_RC_black_overlay(active_op_side_obj_char)
     local obj_VFX = {0,0,0,0,0,0,0,0}
-
     obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
     obj_VFX["life"] = 95
-    
     obj_VFX["opacity_anim"] = {}
     obj_VFX["opacity_anim"][0] = {0.00,20}
     obj_VFX["opacity_anim"][20] = {0.50,85}
@@ -400,12 +383,10 @@ function insert_VFX_game_scene_char_RC_black_overlay(active_op_side_obj_char)
     end
     table.insert(active_op_side_obj_char["VFX_black_overlay_table"],obj_VFX)
 end
-
 -- blast slash directional ray_impact
 function insert_VFX_game_scene_char_blast_attack_socket_ver0(active_op_side_obj_char,passive_op_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
-
     local hit_VFX_insert_function_argument = active_op_side_obj_char["hit_VFX_insert_function_argument"]
     local x = hit_VFX_insert_function_argument[1]
     local y = hit_VFX_insert_function_argument[2]
@@ -415,7 +396,6 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver0(active_op_side_obj_
     local r = hit_VFX_insert_function_argument[6]
     local fix_pos = hit_VFX_insert_function_argument[7]
     local negative_side = hit_VFX_insert_function_argument[8]
-
     local center_x = x
     local center_y = y
     local center_r = active_op_side_obj_char[5]*r
@@ -429,12 +409,10 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver0(active_op_side_obj_
         end
     end
     center_y = center_y + center_dy
-    
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
-
     obj_VFX["life"] = 11
     obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x)
     obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y)
@@ -477,7 +455,6 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver0(active_op_side_obj_
             end
         end
         center_y = center_y + center_dy
-
         obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x)
         obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y)
         obj_VFX[3] = active_op_side_obj_char[3]
@@ -501,7 +478,6 @@ end
 function insert_VFX_game_scene_char_blast_attack_socket_ver1(active_op_side_obj_char,passive_op_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
-
     local hit_VFX_insert_function_argument = active_op_side_obj_char["hit_VFX_insert_function_argument"]
     local x = hit_VFX_insert_function_argument[1]
     local y = hit_VFX_insert_function_argument[2]
@@ -511,7 +487,6 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver1(active_op_side_obj_
     local r = hit_VFX_insert_function_argument[6]
     local fix_pos = hit_VFX_insert_function_argument[7]
     local negative_side = hit_VFX_insert_function_argument[8]
-
     local center_x = x
     local center_y = y
     local center_r = active_op_side_obj_char[5]*r
@@ -525,12 +500,10 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver1(active_op_side_obj_
         end
     end
     center_y = center_y + center_dy
-
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
-
     obj_VFX["life"] = 21
     obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x)
     obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y)
@@ -575,7 +548,6 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver1(active_op_side_obj_
             end
         end
         center_y = center_y + center_dy
-
         obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x)
         obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y)
         obj_VFX[3] = active_op_side_obj_char[3]
@@ -595,7 +567,6 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver1(active_op_side_obj_
         love.graphics.setBlendMode("alpha")
     end
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
-
     -- air_blow
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local center_x = x
@@ -615,7 +586,6 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver1(active_op_side_obj_
         end
     end
     center_y = center_y + center_dy
-
     obj_VFX["life"] = 16
     obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x) + rot_dx
     obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y) + rot_dy
@@ -668,7 +638,6 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver1(active_op_side_obj_
             end
         end
         center_y = center_y + center_dy
-        
         obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x) + rot_dx
         obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y) + rot_dy
         obj_VFX[3] = active_op_side_obj_char[3]
@@ -692,7 +661,6 @@ end
 function insert_VFX_game_scene_char_counter_blast_attack_socket_ver0(active_op_side_obj_char,passive_op_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
-
     local hit_counter_VFX_insert_function_argument = active_op_side_obj_char["hit_counter_VFX_insert_function_argument"]
     local x = hit_counter_VFX_insert_function_argument[1]
     local y = hit_counter_VFX_insert_function_argument[2]
@@ -702,7 +670,6 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver0(active_op_s
     local r = hit_counter_VFX_insert_function_argument[6]
     local fix_pos = hit_counter_VFX_insert_function_argument[7]
     local negative_side = hit_counter_VFX_insert_function_argument[8]
-
     local center_x = x
     local center_y = y
     local center_r = active_op_side_obj_char[5]*r
@@ -716,12 +683,10 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver0(active_op_s
         end
     end
     center_y = center_y + center_dy
-
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
-
     obj_VFX["life"] = 27
     obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x)
     obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y)
@@ -772,7 +737,6 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver0(active_op_s
             end
         end
         center_y = center_y + center_dy
-
         obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x)
         obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y)
         obj_VFX[3] = active_op_side_obj_char[3]
@@ -796,7 +760,6 @@ end
 function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_side_obj_char,passive_op_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
-
     local hit_counter_VFX_insert_function_argument = active_op_side_obj_char["hit_counter_VFX_insert_function_argument"]
     local x = hit_counter_VFX_insert_function_argument[1]
     local y = hit_counter_VFX_insert_function_argument[2]
@@ -806,7 +769,6 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
     local r = hit_counter_VFX_insert_function_argument[6]
     local fix_pos = hit_counter_VFX_insert_function_argument[7]
     local negative_side = hit_counter_VFX_insert_function_argument[8]
-
     local center_x = x
     local center_y = y
     local center_r = active_op_side_obj_char[5]*r
@@ -820,12 +782,10 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
         end
     end
     center_y = center_y + center_dy
-
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
-
     obj_VFX["life"] = 21
     obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x)
     obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y)
@@ -870,7 +830,6 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
             end
         end
         center_y = center_y + center_dy
-
         obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x)
         obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y)
         obj_VFX[3] = active_op_side_obj_char[3]
@@ -890,7 +849,6 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
         love.graphics.setBlendMode("alpha")
     end
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
-
     -- air_blow
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local center_x = x
@@ -910,7 +868,6 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
         end
     end
     center_y = center_y + center_dy
-
     obj_VFX["life"] = 16
     obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x) + rot_dx
     obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y) + rot_dy
@@ -963,7 +920,6 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
             end
         end
         center_y = center_y + center_dy
-        
         obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x) + rot_dx
         obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y) + rot_dy
         obj_VFX[3] = active_op_side_obj_char[3]
@@ -983,7 +939,6 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
         love.graphics.setBlendMode("alpha")
     end
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
-    
     -- counter_glow
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local center_x = x
@@ -1003,7 +958,6 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
         end
     end
     center_y = center_y + center_dy
-
     obj_VFX["life"] = 5
     obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x) + rot_dx
     obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y) + rot_dy
@@ -1047,7 +1001,6 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
             end
         end
         center_y = center_y + center_dy
-        
         obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x) + rot_dx
         obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y) + rot_dy
         obj_VFX[3] = active_op_side_obj_char[3]
@@ -1067,7 +1020,6 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
         love.graphics.setBlendMode("alpha")
     end
     table.insert(active_op_side_obj_char["VFX_hit_back_table"],obj_VFX)
-
     -- partical
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
@@ -1117,7 +1069,6 @@ end
 function insert_VFX_game_scene_char_block_blast_attack_socket_ver0(active_op_side_obj_char,passive_op_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
-
     local hit_block_VFX_insert_function_argument = active_op_side_obj_char["hit_block_VFX_insert_function_argument"]
     local x = hit_block_VFX_insert_function_argument[1]
     local y = hit_block_VFX_insert_function_argument[2]
@@ -1127,7 +1078,6 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver0(active_op_sid
     local r = hit_block_VFX_insert_function_argument[6]
     local fix_pos = hit_block_VFX_insert_function_argument[7]
     local negative_side = hit_block_VFX_insert_function_argument[8]
-
     local center_x = x
     local center_y = y
     local center_r = active_op_side_obj_char[5]*r
@@ -1141,12 +1091,10 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver0(active_op_sid
         end
     end
     center_y = center_y + center_dy
-    
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
-
     obj_VFX["life"] = 11
     obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x)
     obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y)
@@ -1189,7 +1137,6 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver0(active_op_sid
             end
         end
         center_y = center_y + center_dy
-
         obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x)
         obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y)
         obj_VFX[3] = active_op_side_obj_char[3]
@@ -1213,7 +1160,6 @@ end
 function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_side_obj_char,passive_op_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
-
     local hit_block_VFX_insert_function_argument = active_op_side_obj_char["hit_block_VFX_insert_function_argument"]
     local x = hit_block_VFX_insert_function_argument[1]
     local y = hit_block_VFX_insert_function_argument[2]
@@ -1223,7 +1169,6 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_sid
     local r = hit_block_VFX_insert_function_argument[6]
     local fix_pos = hit_block_VFX_insert_function_argument[7]
     local negative_side = hit_block_VFX_insert_function_argument[8]
-
     local center_x = x
     local center_y = y
     local center_r = active_op_side_obj_char[5]*r
@@ -1237,12 +1182,10 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_sid
         end
     end
     center_y = center_y + center_dy
-
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
-
     obj_VFX["life"] = 21
     obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x)
     obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y)
@@ -1287,7 +1230,6 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_sid
             end
         end
         center_y = center_y + center_dy
-
         obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x)
         obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y)
         obj_VFX[3] = active_op_side_obj_char[3]
@@ -1307,7 +1249,6 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_sid
         love.graphics.setBlendMode("alpha")
     end
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
-
     -- air_blow
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local center_x = x
@@ -1327,7 +1268,6 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_sid
         end
     end
     center_y = center_y + center_dy
-
     obj_VFX["life"] = 16
     obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x) + rot_dx
     obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y) + rot_dy
@@ -1380,7 +1320,6 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_sid
             end
         end
         center_y = center_y + center_dy
-        
         obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(center_x) + rot_dx
         obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(center_y) + rot_dy
         obj_VFX[3] = active_op_side_obj_char[3]
@@ -1401,14 +1340,11 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_sid
     end
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
-
 function insert_VFX_game_scene_char_blast_dynamic_ver0(active_op_side_obj_char,passive_op_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
-
     local hit_VFX_insert_function_argument = active_op_side_obj_char["hit_VFX_insert_function_argument"]
     local hit_VFX_dynamic_spawn_pos = active_op_side_obj_char["hit_VFX_dynamic_spawn_pos"] 
-
     local center_x = hit_VFX_dynamic_spawn_pos[1]
     local center_y = hit_VFX_dynamic_spawn_pos[2]
     local opacity = hit_VFX_insert_function_argument[3]
@@ -1417,16 +1353,13 @@ function insert_VFX_game_scene_char_blast_dynamic_ver0(active_op_side_obj_char,p
     local r = hit_VFX_insert_function_argument[6]
     local fix_pos = hit_VFX_insert_function_argument[7]
     local negative_side = hit_VFX_insert_function_argument[8]
-
     local center_r = active_op_side_obj_char[5]*r
     center_x = center_x - 220*sx*active_op_side_obj_char[5]
     center_y = center_y - 255*sy*active_op_side_obj_char[6]
-    
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
-
     obj_VFX["life"] = 11
     obj_VFX[1] = center_x
     obj_VFX[2] = center_y
@@ -1472,10 +1405,8 @@ end
 function insert_VFX_game_scene_char_blast_dynamic_ver1(active_op_side_obj_char,passive_op_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
-
     local hit_VFX_insert_function_argument = active_op_side_obj_char["hit_VFX_insert_function_argument"]
     local hit_VFX_dynamic_spawn_pos = active_op_side_obj_char["hit_VFX_dynamic_spawn_pos"] 
-
     local center_x = hit_VFX_dynamic_spawn_pos[1]
     local center_y = hit_VFX_dynamic_spawn_pos[2]
     local opacity = hit_VFX_insert_function_argument[3]
@@ -1484,16 +1415,13 @@ function insert_VFX_game_scene_char_blast_dynamic_ver1(active_op_side_obj_char,p
     local r = hit_VFX_insert_function_argument[6]
     local fix_pos = hit_VFX_insert_function_argument[7]
     local negative_side = hit_VFX_insert_function_argument[8]
-
     local center_r = active_op_side_obj_char[5]*r
     center_x = center_x - 305*sx*active_op_side_obj_char[5]
     center_y = center_y - 340*sy*active_op_side_obj_char[6]
-
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
-
     obj_VFX["life"] = 21
     obj_VFX[1] = center_x
     obj_VFX[2] = center_y
@@ -1537,7 +1465,6 @@ function insert_VFX_game_scene_char_blast_dynamic_ver1(active_op_side_obj_char,p
         love.graphics.setBlendMode("alpha")
     end
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
-
     -- air_blow
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local center_x = hit_VFX_dynamic_spawn_pos[1]
@@ -1549,7 +1476,6 @@ function insert_VFX_game_scene_char_blast_dynamic_ver1(active_op_side_obj_char,p
     local rot_dy = sub_dx * active_op_side_obj_char[5] * math.sin(center_r) + sub_dy * active_op_side_obj_char[6] * math.cos(center_r)
     center_x = center_x - 300*sx*active_op_side_obj_char[5]
     center_y = center_y - 300*sy*active_op_side_obj_char[6]
-
     obj_VFX["life"] = 16
     obj_VFX[1] = center_x + rot_dx
     obj_VFX[2] = center_y + rot_dy
@@ -1601,10 +1527,8 @@ end
 function insert_VFX_game_scene_char_counter_blast_dynamic_ver0(active_op_side_obj_char,passive_op_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
-
     local hit_VFX_insert_function_argument = active_op_side_obj_char["hit_VFX_insert_function_argument"]
     local hit_VFX_dynamic_spawn_pos = active_op_side_obj_char["hit_VFX_dynamic_spawn_pos"] 
-
     local center_x = hit_VFX_dynamic_spawn_pos[1]
     local center_y = hit_VFX_dynamic_spawn_pos[2]
     local opacity = hit_VFX_insert_function_argument[3]
@@ -1613,16 +1537,13 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver0(active_op_side_ob
     local r = hit_VFX_insert_function_argument[6]
     local fix_pos = hit_VFX_insert_function_argument[7]
     local negative_side = hit_VFX_insert_function_argument[8]
-
     local center_r = active_op_side_obj_char[5]*r
     center_x = center_x - 180*sx*active_op_side_obj_char[5]
     center_y = center_y - 470*sy*active_op_side_obj_char[6]
-
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
-
     obj_VFX["life"] = 27
     obj_VFX[1] = center_x
     obj_VFX[2] = center_y
@@ -1676,10 +1597,8 @@ end
 function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_obj_char,passive_op_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
-
     local hit_VFX_insert_function_argument = active_op_side_obj_char["hit_VFX_insert_function_argument"]
     local hit_VFX_dynamic_spawn_pos = active_op_side_obj_char["hit_VFX_dynamic_spawn_pos"] 
-
     local center_x = hit_VFX_dynamic_spawn_pos[1]
     local center_y = hit_VFX_dynamic_spawn_pos[2]
     local opacity = hit_VFX_insert_function_argument[3]
@@ -1688,16 +1607,13 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
     local r = hit_VFX_insert_function_argument[6]
     local fix_pos = hit_VFX_insert_function_argument[7]
     local negative_side = hit_VFX_insert_function_argument[8]
-
     local center_r = active_op_side_obj_char[5]*r
     center_x = center_x - 180*sx*active_op_side_obj_char[5]
     center_y = center_y - 470*sy*active_op_side_obj_char[6]
-
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
-
     obj_VFX["life"] = 21
     obj_VFX[1] = center_x
     obj_VFX[2] = center_y
@@ -1741,14 +1657,12 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
         love.graphics.setBlendMode("alpha")
     end
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
-
     -- air_blow
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local sub_dx = -50*sx
     local sub_dy = -200*sy
     local rot_dx = sub_dx * active_op_side_obj_char[5] * math.cos(center_r) - sub_dy * active_op_side_obj_char[6] * math.sin(center_r)
     local rot_dy = sub_dx * active_op_side_obj_char[5] * math.sin(center_r) + sub_dy * active_op_side_obj_char[6] * math.cos(center_r)
-
     obj_VFX["life"] = 16
     obj_VFX[1] = center_x + rot_dx
     obj_VFX[2] = center_y + rot_dy
@@ -1796,14 +1710,12 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
         love.graphics.setBlendMode("alpha")
     end
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
-    
     -- counter_glow
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local sub_dx = 45*sx
     local sub_dy = 30*sy
     local rot_dx = sub_dx * active_op_side_obj_char[5] * math.cos(center_r) - sub_dy * active_op_side_obj_char[6] * math.sin(center_r)
     local rot_dy = sub_dx * active_op_side_obj_char[5] * math.sin(center_r) + sub_dy * active_op_side_obj_char[6] * math.cos(center_r)
-
     obj_VFX["life"] = 5
     obj_VFX[1] = center_x + rot_dx
     obj_VFX[2] = center_y + rot_dy
@@ -1842,7 +1754,6 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
         love.graphics.setBlendMode("alpha")
     end
     table.insert(active_op_side_obj_char["VFX_hit_back_table"],obj_VFX)
-
     -- partical
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
@@ -1892,10 +1803,8 @@ end
 function insert_VFX_game_scene_char_block_blast_dynamic_ver0(active_op_side_obj_char,passive_op_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
-
     local hit_block_VFX_insert_function_argument = active_op_side_obj_char["hit_block_VFX_insert_function_argument"]
     local hit_VFX_dynamic_spawn_pos = active_op_side_obj_char["hit_VFX_dynamic_spawn_pos"] 
-
     local center_x = hit_VFX_dynamic_spawn_pos[1]
     local center_y = hit_VFX_dynamic_spawn_pos[2]
     local opacity = hit_block_VFX_insert_function_argument[3]
@@ -1904,16 +1813,13 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver0(active_op_side_obj_
     local r = hit_block_VFX_insert_function_argument[6]
     local fix_pos = hit_block_VFX_insert_function_argument[7]
     local negative_side = hit_block_VFX_insert_function_argument[8]
-
     local center_r = active_op_side_obj_char[5]*r
     center_x = center_x - 220*sx*active_op_side_obj_char[5]
     center_y = center_y - 255*sy*active_op_side_obj_char[6]
-    
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
-
     obj_VFX["life"] = 11
     obj_VFX[1] = center_x
     obj_VFX[2] = center_y
@@ -1959,10 +1865,8 @@ end
 function insert_VFX_game_scene_char_block_blast_dynamic_ver1(active_op_side_obj_char,passive_op_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
-
     local hit_block_VFX_insert_function_argument = active_op_side_obj_char["hit_block_VFX_insert_function_argument"]
     local hit_VFX_dynamic_spawn_pos = active_op_side_obj_char["hit_VFX_dynamic_spawn_pos"] 
-
     local center_x = hit_VFX_dynamic_spawn_pos[1]
     local center_y = hit_VFX_dynamic_spawn_pos[2]
     local opacity = hit_block_VFX_insert_function_argument[3]
@@ -1971,16 +1875,13 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver1(active_op_side_obj_
     local r = hit_block_VFX_insert_function_argument[6]
     local fix_pos = hit_block_VFX_insert_function_argument[7]
     local negative_side = hit_block_VFX_insert_function_argument[8]
-
     local center_r = active_op_side_obj_char[5]*r
     center_x = center_x - 305*sx*active_op_side_obj_char[5]
     center_y = center_y - 340*sy*active_op_side_obj_char[6]
-
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
-
     obj_VFX["life"] = 21
     obj_VFX[1] = center_x
     obj_VFX[2] = center_y
@@ -2024,7 +1925,6 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver1(active_op_side_obj_
         love.graphics.setBlendMode("alpha")
     end
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
-
     -- air_blow
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local center_x = hit_VFX_dynamic_spawn_pos[1]
@@ -2036,7 +1936,6 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver1(active_op_side_obj_
     local rot_dy = sub_dx * active_op_side_obj_char[5] * math.sin(center_r) + sub_dy * active_op_side_obj_char[6] * math.cos(center_r)
     center_x = center_x - 300*sx*active_op_side_obj_char[5]
     center_y = center_y - 300*sy*active_op_side_obj_char[6]
-
     obj_VFX["life"] = 16
     obj_VFX[1] = center_x + rot_dx
     obj_VFX[2] = center_y + rot_dy
@@ -2085,7 +1984,6 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver1(active_op_side_obj_
     end
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
-
 function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passive_op_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
@@ -2130,18 +2028,15 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
         active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x-500),
         active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y-500)
     }
-
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
-
     obj_VFX["life"] = 27
     obj_VFX["r_cache"] = r_table_cache
     obj_VFX["x_table"] = obj_x_table
     obj_VFX["y_table"] = obj_y_table
     obj_VFX["center_table"] = obj_center
-
     -- x y z opacity sx sy r f
     obj_VFX["sub_obj"] = {
         [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],r_table_cache[1],0},
@@ -2150,7 +2045,6 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
         [4] = {obj_x_table[4],obj_y_table[4],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],r_table_cache[4],0},
         [5] = {obj_center[1],obj_center[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],0,0}
     }
-
     obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
@@ -2213,12 +2107,10 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
             active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x-500),
             active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y-500)
         }
-
         obj_VFX["r_cache"] = r_table_cache
         obj_VFX["x_table"] = obj_x_table
         obj_VFX["y_table"] = obj_y_table
         obj_VFX["center_table"] = obj_center
-
         obj_VFX["sub_obj"] = {
             [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],r_table_cache[1],0},
             [2] = {obj_x_table[2],obj_y_table[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],r_table_cache[2],0},
@@ -2292,18 +2184,15 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
         active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x-500),
         active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y-500)
     }
-
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
-
     obj_VFX["life"] = 27
     obj_VFX["r_cache"] = r_table_cache
     obj_VFX["x_table"] = obj_x_table
     obj_VFX["y_table"] = obj_y_table
     obj_VFX["center_table"] = obj_center
-
     -- x y z opacity sx sy r f
     obj_VFX["sub_obj"] = {
         [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],r_table_cache[1],0},
@@ -2312,7 +2201,6 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
         [4] = {obj_x_table[4],obj_y_table[4],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],r_table_cache[4],0},
         [5] = {obj_center[1],obj_center[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],0,0}
     }
-
     obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
@@ -2375,12 +2263,10 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
             active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x-500),
             active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y-500)
         }
-
         obj_VFX["r_cache"] = r_table_cache
         obj_VFX["x_table"] = obj_x_table
         obj_VFX["y_table"] = obj_y_table
         obj_VFX["center_table"] = obj_center
-
         obj_VFX["sub_obj"] = {
             [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],r_table_cache[1],0},
             [2] = {obj_x_table[2],obj_y_table[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],active_op_side_obj_char[6],r_table_cache[2],0},
@@ -2409,7 +2295,6 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
     table.insert(active_op_side_obj_char["VFX_hit_back_table"],obj_VFX)
-
     -- partical
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
@@ -2456,14 +2341,12 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
     end
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
-
 function insert_VFX_game_scene_char_block_ver0(active_op_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local VFX_spawn_anchor = common_game_scene_get_VFX_spawn_anchor(active_op_side_obj_char["player_side"])["block_ver0_spawn_anchor_pos"][active_op_side_obj_char["sprite_sheet"]]
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
-
     obj_VFX["life"] = 21
     obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor[1])
     obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(VFX_spawn_anchor[2])
@@ -2517,7 +2400,6 @@ function insert_VFX_game_scene_char_block_ver1(active_op_side_obj_char)
     local VFX_spawn_anchor = common_game_scene_get_VFX_spawn_anchor(active_op_side_obj_char["player_side"])["block_ver1_spawn_anchor_pos"][active_op_side_obj_char["sprite_sheet"]]
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
-
     obj_VFX["life"] = 31
     obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor[1])
     obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(VFX_spawn_anchor[2])
@@ -2574,7 +2456,6 @@ function insert_VFX_game_scene_char_block_RC_red(active_op_side_obj_char)
     local VFX_spawn_anchor = common_game_scene_get_VFX_spawn_anchor(active_op_side_obj_char["player_side"])["block_ver1_spawn_anchor_pos"][active_op_side_obj_char["sprite_sheet"]]
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
-
     obj_VFX["life"] = 18
     obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor[1])
     obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(VFX_spawn_anchor[2])
@@ -2631,7 +2512,6 @@ function insert_VFX_game_scene_char_block_RC_yellow(active_op_side_obj_char)
     local VFX_spawn_anchor = common_game_scene_get_VFX_spawn_anchor(active_op_side_obj_char["player_side"])["block_ver1_spawn_anchor_pos"][active_op_side_obj_char["sprite_sheet"]]
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
-
     obj_VFX["life"] = 31
     obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(VFX_spawn_anchor[1])
     obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(VFX_spawn_anchor[2])
@@ -2686,10 +2566,8 @@ function insert_VFX_game_scene_char_FD_block(active_op_side_obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local FD_VFX_spawn_anchor_table = common_game_scene_get_VFX_spawn_anchor(active_op_side_obj_char["player_side"])["FD_block_spawn_anchor_pos"]
     local FD_VFX_spawn_anchor = FD_VFX_spawn_anchor_table[active_op_side_obj_char["height"]]
-
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
-
     obj_VFX["life"] = 35
     obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(FD_VFX_spawn_anchor[1])
     obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(FD_VFX_spawn_anchor[2])
@@ -2760,7 +2638,6 @@ function insert_VFX_game_scene_char_throw_tech(active_op_side_obj_char,passive_o
     active_op_side_obj_char["VFX_hit_back_table"] = {}
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
-
     obj_VFX["life"] = 20
     obj_VFX[1] = (active_op_side_obj_char["x"] + passive_op_side_obj_char["x"])/2 + active_op_side_obj_char[5]*(x)
     obj_VFX[2] = (active_op_side_obj_char["y"] + passive_op_side_obj_char["y"])/2 + active_op_side_obj_char[6]*(y)
@@ -2799,7 +2676,6 @@ function insert_VFX_game_scene_char_throw_tech(active_op_side_obj_char,passive_o
     end
     table.insert(active_op_side_obj_char["VFX_hit_back_table"],obj_VFX)
 end
-
 -- smoke
 function insert_VFX_game_scene_stage_smoke_dash_shot(active_op_side_obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
@@ -2972,7 +2848,6 @@ function insert_VFX_game_scene_stage_smoke_vertical_shot(active_op_side_obj_char
     end
     table.insert(active_op_side_obj_char["VFX_common_back_table"],obj_VFX)
 end
-
 -- shockwave
 function insert_VFX_game_scene_stage_4dash_air_backdash_shockwave(active_op_side_obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
@@ -3054,7 +2929,6 @@ function insert_VFX_game_scene_stage_6dash_air_dash_shockwave(active_op_side_obj
     end
     table.insert(active_op_side_obj_char["VFX_common_back_table"],obj_VFX)
 end
-
 -- burst
 function insert_VFX_game_scne_stage_dash_cancel_blow(active_op_side_obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
@@ -3130,7 +3004,6 @@ function insert_VFX_game_scene_char_GP(active_op_side_obj_char)
     end
     table.insert(active_op_side_obj_char["VFX_common_back_table"],obj_VFX)
 end
-
 -- HUD
 function insert_VFX_HUD_game_scene_counter_ver0_2(active_op_side_obj_char)
     local obj_VFX = {0,0,0,0,0.75,0.65,0,0}
@@ -3143,10 +3016,8 @@ function insert_VFX_HUD_game_scene_counter_ver0_2(active_op_side_obj_char)
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
     obj_VFX["image"] = image_VFX_game_scene_HUD_counter_ver0_2
     obj_VFX["life"] = 70
-
     obj_VFX[1] = side_table[side]
     obj_VFX[2] = 35
-
 -- y_anim
     obj_VFX["y_anim"] = {}
     obj_VFX["y_anim"][0] = {0.00,1}
@@ -3211,7 +3082,6 @@ function insert_VFX_HUD_game_scene_counter_ver3(active_op_side_obj_char)
     obj_VFX["life"] = 40
     obj_VFX[1] = obj_VFX["x"] - obj_VFX[5]*(600)
     obj_VFX[2] = obj_VFX["y"] - obj_VFX[6]*(200)
-
 -- sx_anim
     obj_VFX["sx_anim"] = {}
     obj_VFX["sx_anim"][0] = {1.000,1}
@@ -3314,7 +3184,6 @@ function insert_VFX_HUD_game_scene_counter_ver3(active_op_side_obj_char)
         love.graphics.setBlendMode("alpha")
     end
     table.insert(active_op_side_obj_char["VFX_HUD_table"],obj_VFX)
-
 -- black_overlay
     local obj_VFX = {0,0,0,0.5,0,0,0,0}
     local width = love.graphics.getWidth()
@@ -3331,7 +3200,6 @@ function insert_VFX_HUD_game_scene_counter_ver3(active_op_side_obj_char)
     obj_VFX["opacity_anim"]["loop"] = false
     obj_VFX["opacity_anim"]["fix_type"] = true
     init_point_linear_anim_without(obj_VFX,obj_VFX["opacity_anim"])
-
     obj_VFX["update"] = function()
         point_linear_animator(obj_VFX,obj_VFX["opacity_anim"])
         obj_VFX["life"] = obj_VFX["life"] - 1
@@ -3358,10 +3226,8 @@ function insert_VFX_HUD_game_scene_punish(active_op_side_obj_char)
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
     obj_VFX["image"] = image_VFX_game_scene_HUD_punish
     obj_VFX["life"] = 70
-
     obj_VFX[1] = side_table[side]
     obj_VFX[2] = 35
-
 -- y_anim
     obj_VFX["y_anim"] = {}
     obj_VFX["y_anim"][0] = {0.00,1}

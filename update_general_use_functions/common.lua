@@ -19,7 +19,6 @@ function common_sprite_sheet_load(json_file,image)
         frames = frames
     }
 end
-
 function common_queue_new(length)
     local res = {}
     res["length"] = length
@@ -29,7 +28,6 @@ end
 function common_queue_push(queue,v)
     local current_length = #queue["content"]+1
     local static_length = queue["length"]
-
     queue["content"][current_length] = v
     if static_length == -1 then
         return
@@ -42,7 +40,6 @@ function common_queue_pop(queue)
     table.remove(queue["content"], 1)
     return res
 end
-
 function common_ringbuffer_new(length)
     local res = {}
     res["length"] = length
@@ -51,7 +48,6 @@ function common_ringbuffer_new(length)
     res["count"] = 0
     return res
 end
-
 function common_ringbuffer_push(rb, v)
     rb["content"][rb["head"]] = v
     rb["head"] = (rb["head"] % rb["length"]) + 1
@@ -59,7 +55,6 @@ function common_ringbuffer_push(rb, v)
         rb["count"] = rb["count"] + 1
     end
 end
-
 function common_ringbuffer_get(rb, index)
     if index < 1 or index > rb["count"] then
         return nil

@@ -18,17 +18,14 @@ function write_volume_config()
     local chunk = 
     [[ BGM_VOLUME = ]]..BGM_VOLUME.."\n"..
     [[ SFX_VOLUME = ]]..SFX_VOLUME..[[ ]]
-
     love.filesystem.write('audio_config.lua',chunk)
 end
-
 -- function update_BGM_VOLUME(src)
 --     src:setVolume(BGM_VOLUME/10)
 -- end
 -- function update_SFX_VOLUME(src)
 --     src:setVolume(SFX_VOLUME/10)
 -- end
-
 function update_BGM_VOLUME(obj)
     obj["audio"]:setVolume(obj[1]*BGM_VOLUME/10)
 end

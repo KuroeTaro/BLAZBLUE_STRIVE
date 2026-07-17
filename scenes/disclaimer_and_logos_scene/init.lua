@@ -14,7 +14,6 @@ function load_disclaimer_and_logos_scene_anim()
     anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_in_opacity_0_1["length"] = 5
     anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_in_opacity_0_1["loop"] = false
     anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_in_opacity_0_1["fix_type"] = true
-
     anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_out_opacity_1_0 = {}
     anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_out_opacity_1_0[0] = {1,5}
     anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_out_opacity_1_0[5] = {0,5}
@@ -22,9 +21,7 @@ function load_disclaimer_and_logos_scene_anim()
     anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_out_opacity_1_0["length"] = 5
     anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_out_opacity_1_0["loop"] = false
     anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_out_opacity_1_0["fix_type"] = true
-
 end
-
 function unload_disclaimer_and_logos_scene_all()
     for key in pairs(_G) do
         if string.find(key,"disclaimer_and_logos_scene") or string.find(key,"CANVAS")

@@ -133,7 +133,6 @@ function set_jump_breakpoint()
     local this_function = switch[DEBUG_JUMPING_BREAKPOINT_STATE]
     if this_function then this_function() end
 end
-
 function set_toggle()
     local switch = 
     {
@@ -387,7 +386,6 @@ function set_spawn_pos()
     local this_function = switch[DEBUG_TRAINNING_SPAWN_STATE]
     if this_function then this_function() end
 end
-
 function update_character_frame_adv_info_init(self_side_obj_char,opponent_side_obj_char)
     -- none startup active recovery
     if self_side_obj_char["last_move_state"] == "none" and self_side_obj_char["move_state"] ~= "none" then
@@ -406,7 +404,6 @@ function update_character_frame_info(self_side_obj_char,opponent_side_obj_char)
     if self_side_obj_char["game_speed"] == 0 or opponent_side_obj_char["game_speed"] == 0 then
         return
     end
-
     if self_side_obj_char["move_state"] == "startup" then
         self_side_obj_char["startup_frame"] = self_side_obj_char["startup_frame"] + 1
     end
@@ -420,12 +417,10 @@ function update_character_frame_info(self_side_obj_char,opponent_side_obj_char)
     if self_side_obj_char["move_state"] == "recovery" then
         self_side_obj_char["recovery_frame"] = self_side_obj_char["recovery_frame"] + 1
     end
-
     if self_side_obj_char["state"] == "hitstop" or self_side_obj_char["state"] == "hurtstop" or self_side_obj_char["state"] == "blockstop" then
         self_side_obj_char["last_hitstop_frame"] = self_side_obj_char["last_hitstop_frame"] + 1
     end
 end
-
 function draw_debug_info_all(x_offset,y_offset)
     draw_input_sys(x_offset,y_offset)
     love.graphics.print( "FRAMES_DRAWN",0+x_offset,315+y_offset)
@@ -442,7 +437,6 @@ function draw_debug_info_all(x_offset,y_offset)
     love.graphics.print("Texture Memory: " .. stats.texturememory / 1024 / 1024 .. " MB",250+x_offset,50+y_offset)
     -- love.graphics.print("Images Loaded: " .. stats.images,250+x_offset,70+y_offset)
     -- love.graphics.print("Global variables: " .. globalCount,250+x_offset,90+y_offset)
-
     -- 绘制角色帧数
     if obj_char_game_scene_char_LP and obj_char_game_scene_char_RP then
         love.graphics.print("LP_current_f : " .. obj_char_game_scene_char_LP["f"],0+x_offset,315+15*3+y_offset)
@@ -468,7 +462,6 @@ function draw_debug_info_all(x_offset,y_offset)
         love.graphics.print("RP_last_hitstop_frame  : " .. obj_char_game_scene_char_RP["last_hitstop_frame"],300+x_offset,315+15*12+y_offset)
         love.graphics.print("RP_direction_input : " .. obj_char_game_scene_char_RP["direction_input"],300+x_offset,315+15*13+y_offset)
     end
-
     love.graphics.print("DEBUG_TRAINNING_COUNTER : " .. tostring(DEBUG_TRAINNING_COUNTER),250+x_offset,170+15*0+y_offset)
     love.graphics.print("DEBUG_TRAINNING_HEIGHT : " .. DEBUG_TRAINNING_HEIGHT,250+x_offset,170+15*1+y_offset)
     love.graphics.print("DEBUG_TRAINNING_BLOCK : " .. DEBUG_TRAINNING_BLOCK,250+x_offset,170+15*2+y_offset)

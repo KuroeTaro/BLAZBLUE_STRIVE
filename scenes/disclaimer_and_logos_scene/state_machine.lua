@@ -1,7 +1,5 @@
 -- state machine 只在持续更新同一个object时使用
 -- 格式参考input state machine
-
-
 -- 控制 disclaimer and logos scene 唯一一个 obj 更新的状态机
 function state_machine_UI_disclaimer_and_logos_scene_singular(obj)
     local switch = {

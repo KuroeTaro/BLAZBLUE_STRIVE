@@ -10,7 +10,6 @@ function love.conf(t)
         t.window.height = 900
         love.filesystem.write('resolution_config.lua','16000900')
     end
-
     t.console = true
     t.window.title = "BLAZBLUE_STRIVE.ver.1/4.005"
     t.window.vsync = 0

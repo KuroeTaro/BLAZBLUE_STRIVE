@@ -36,7 +36,6 @@ function set_nuGC(time_budget, memory_ceiling, disable_otherwise)
 		collectgarbage("stop")
 	end
 end
-
 function get_global_val_num()
 	local count = 0
 	for name, value in pairs(_G) do

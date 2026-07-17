@@ -24,12 +24,10 @@ function load_char_select_scene_prep()
     ORDER_SIZE_TABLE = {2,1,1}  -- 每个load function的最大值
     LOAD_ONCE_TABLE = {false,false,false}   -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     LOADING_FUNCTION_AMOUNT = 3 -- 和线程数相同
-
 	NEXT_UPDATE_BLOCK = update_char_select_scene_ease_in_0f_36f
 	NEXT_DRAW_BLOCK = draw_char_select_scene_ease_in_0f_36f
     NEXT_PRESET = preset_char_select_scene
 end
-
 -- 分步骤将素材加载
 function order_load_char_select_scene_UI_char(load_order)
     local switch = 
@@ -42,23 +40,19 @@ function order_load_char_select_scene_UI_char(load_order)
             image_UI_char_select_scene_control_method_L = love.graphics.newImage(ASSET_DATA[1][4])
             image_UI_char_select_scene_control_method_R = love.graphics.newImage(ASSET_DATA[1][5])
             image_UI_char_select_scene_ring = love.graphics.newImage(ASSET_DATA[1][6])
-
             -- -- char icon alpha image name
             image_table_UI_char_select_scene_char_icon_alpha = {}
             for i = 1,8 do
                 image_table_UI_char_select_scene_char_icon_alpha[i] = love.graphics.newImage(ASSET_DATA[1]["char_icon_alpha"][i])
             end
-
             image_table_UI_char_select_scene_char_select_char = {}
             for i = 1,8 do
                 image_table_UI_char_select_scene_char_select_char[i] = love.graphics.newImage(ASSET_DATA[1]["char_select_char"][i])
             end
-
             image_table_UI_char_select_scene_char_select_char_txt = {}
             for i = 1,8 do
                 image_table_UI_char_select_scene_char_select_char_txt[i] = love.graphics.newImage(ASSET_DATA[1]["char_select_char_txt"][i])
             end
-
             image_table_UI_char_select_scene_number = {}
             for i = 1,10 do
                 image_table_UI_char_select_scene_number[i-1] = love.graphics.newImage(ASSET_DATA[1]["number"][i-1])
@@ -102,7 +96,6 @@ function order_load_char_select_scene_UI_movie_cover(load_order)
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
-
 -- reuqire
 function load_char_select_scene_require()
     require_all_in_folder("scenes/char_select_scene")

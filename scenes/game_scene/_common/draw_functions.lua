@@ -1,33 +1,25 @@
 function draw_game_scene_main()
     -- 绘制场景固定物
     draw_game_scene_stage_static() -- alpha 2 draw calls
-
     -- 更新角色的图像位置
     draw_game_scene_char_LP_logic_graphic_pos_sync()
     draw_game_scene_char_RP_logic_graphic_pos_sync()
-
     -- 绘制 overlay
     draw_game_scene_char_LP_black_overlay()
     draw_game_scene_char_RP_black_overlay()
-
     -- 绘制wallbreak_背景
     draw_game_scene_stage_wallbreak_at_character_back()
-
     -- 绘制背侧VFX
     draw_game_scene_char_LP_VFX_back()
     draw_game_scene_char_RP_VFX_back()
-
     draw_game_scene_char_LP_projectile_rc()
     draw_game_scene_char_RP_projectile_rc()
-
     -- 绘制背侧挂件
     draw_game_scene_char_LP_attachment_back()
     draw_game_scene_char_RP_attachment_back()
-
     -- 绘制角色阴影
     draw_game_scene_char_LP_shadow()
     draw_game_scene_char_RP_shadow()
-
     -- 绘制角色
     love.graphics.setCanvas(DRAW_MAIN_CHARACTER_CANVAS)
     love.graphics.clear()
@@ -44,13 +36,10 @@ function draw_game_scene_main()
     side_table[CHARACTER_VISUAL_FRONT]()
     love.graphics.setCanvas()
     love.graphics.draw(DRAW_MAIN_CHARACTER_CANVAS)
-
     -- 绘制上帝光
     draw_game_scene_stage_glow() -- 5 draw calls 10
-
     -- 绘制静态HUD
     draw_2d_image(obj_HUD_game_scene_background_gauge,image_HUD_game_scene_background_gauge) -- 1 draw call 11
-
     -- 绘制HUD缓入动画
     local obj = obj_HUD_game_scene_ease_in
     local image_sprite_sheet = image_sprite_sheet_announcer_game_scene_HUD_ease_in
@@ -60,7 +49,6 @@ function draw_game_scene_main()
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         -- draw_2d_image_table(obj_HUD_game_scene_ease_in,image_table_announcer_game_scene_HUD_ease_in) -- 1 draw call 16
     end
-
     -- 绘制动态HUD
     image_sprite_sheet = image_sprite_sheet_HUD_game_scene_common
     image_sprite_sheet["sprite_batch"]:clear()
@@ -205,30 +193,23 @@ function draw_game_scene_main()
         R_character["overdrive_timer"]
     )
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
-
     draw_game_scene_char_LP_VFX_HUD()
     draw_game_scene_char_RP_VFX_HUD()
-
     -- 透过上帝光和HUD
     love.graphics.setColor(1,1,1,0.5)
     love.graphics.draw(DRAW_MAIN_CHARACTER_CANVAS) -- 1 draw call 13
     love.graphics.setColor(1,1,1,1)
-
     -- 绘制前侧挂件
     draw_game_scene_char_LP_attachment_front()
     draw_game_scene_char_RP_attachment_front()
-
     -- 绘制前侧VFX
     draw_game_scene_char_LP_VFX_front()
     draw_game_scene_char_RP_VFX_front()
-
     -- 绘制飞行道具
     draw_game_scene_char_LP_projectile()
     draw_game_scene_char_RP_projectile()
-
     -- 绘制wallbreak_前景
     draw_game_scene_stage_wallbreak_at_character_front()
-
     -- 绘制ease_in annoucer 和 HUD ease in
     obj = obj_annoucer_game_scene_act_common
     if obj[4] ~= 0 then
@@ -237,7 +218,6 @@ function draw_game_scene_main()
         draw_game_scene_act_common(obj_annoucer_game_scene_act_common,image_sprite_sheet)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
-
     obj = obj_annoucer_game_scene_act_num
     if obj[4] ~= 0 then
         image_sprite_sheet = image_sprite_sheet_table_announcer_game_scene_act_number[ROUND_COUNTER]
@@ -245,7 +225,6 @@ function draw_game_scene_main()
         draw_2d_image_sprite_batch(obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
-
     obj = obj_annoucer_game_scene_lets_dance
     if obj[4] ~= 0 then
         image_sprite_sheet = image_sprite_sheet_announcer_game_scene_lets_dance
@@ -253,11 +232,9 @@ function draw_game_scene_main()
         draw_2d_image_sprite_batch(obj,image_sprite_sheet,""..obj[8].."")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
-
     -- draw_game_scene_act_common(obj_annoucer_game_scene_act_common,image_table_announcer_game_scene_act_common)
     -- draw_2d_image_table(obj_annoucer_game_scene_act_num,image_table_announcer_game_scene_act_number[ROUND_COUNTER]) -- 1 draw call 15
     -- draw_2d_image_table(obj_annoucer_game_scene_lets_dance,image_table_announcer_game_scene_lets_dance) -- 1 draw call 17
-
     obj = obj_UI_game_scene_movie_cover
     image_sprite_sheet = image_sprite_sheet_UI_game_scene_movie_cover
     image_sprite_sheet["sprite_batch"]:clear()
@@ -265,7 +242,6 @@ function draw_game_scene_main()
     love.graphics.setBlendMode("add")
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     love.graphics.setBlendMode("alpha")
-
     -- DEBUG
     draw_game_scene_char_LP_hurtbox()
     draw_game_scene_char_RP_hurtbox()
@@ -273,11 +249,9 @@ function draw_game_scene_main()
     draw_game_scene_char_RP_pushbox()
     draw_game_scene_char_LP_hitbox()
     draw_game_scene_char_RP_hitbox()
-
     -- 绘制ease in black solid
     draw_solid(obj_UI_game_scene_black_solid)
 end
-
 -- x y z opacity sx sy r f
 function draw_game_scene_add_to_sprite_batch_bars(obj,image_sprite_sheet,quad_name,percentage)
     local x = draw_resolution_correction(obj[1])
@@ -286,9 +260,7 @@ function draw_game_scene_add_to_sprite_batch_bars(obj,image_sprite_sheet,quad_na
     local sx = draw_resolution_correction(obj[5])
     local sy = draw_resolution_correction(obj[6])
     local opacity = obj[4]
-
     local frame = image_sprite_sheet["frames"][quad_name]
-
     local quad = love.graphics.newQuad(
         frame[1],
         frame[2],
@@ -308,12 +280,9 @@ function draw_game_scene_add_to_sprite_batch_heat_bar_extra(obj,image_sprite_she
     local sx = draw_resolution_correction(obj[5])
     local sy = draw_resolution_correction(obj[6])
     local opacity = obj[4]
-
     x = x + 97*sx
     y = y + 11*sy
-
     local frame = image_sprite_sheet["frames"][quad_name]
-
     local quad = love.graphics.newQuad(
         frame[1],
         frame[2],
@@ -347,9 +316,7 @@ function draw_game_scene_add_to_sprite_batch_risk_bars(obj,image_sprite_sheet,qu
     local sx = draw_resolution_correction(obj[5])
     local sy = draw_resolution_correction(obj[6])
     local opacity = obj[4]
-
     local frame = image_sprite_sheet["frames"][quad_name]
-
     local quad = love.graphics.newQuad(
         frame[1],
         frame[2],
@@ -380,7 +347,6 @@ function draw_game_scene_add_to_sprite_batch_overdrive_pie(obj,image_sprite_shee
     local sx = draw_resolution_correction(obj[5])
     local sy = draw_resolution_correction(obj[6])
     local opacity = obj[4]
-
     local quad_name_table = {
         "HUD_OD_pie_0",
         "HUD_OD_pie_1",
@@ -404,7 +370,6 @@ function draw_game_scene_add_to_sprite_batch_overdrive_pie(obj,image_sprite_shee
             frames[i][6]
         )
     end
-
     image_sprite_sheet["sprite_batch"]:setColor(1,1,1,opacity)
     for i = 1,6,1 do 
         if overdrive_value >= 1 then
@@ -425,7 +390,6 @@ function draw_game_scene_add_to_sprite_batch_round_timer(obj,image_sprite_sheet)
     local sx = draw_resolution_correction(obj[5])
     local sy = draw_resolution_correction(obj[6])
     local opacity = obj[4]
-
     local quad_name_table = {
         "HUD_nums_0",
         "HUD_nums_1",
@@ -473,9 +437,7 @@ function draw_game_scene_add_to_sprite_batch_round_win_marks(obj,image_sprite_sh
     local sx = draw_resolution_correction(obj[5])
     local sy = draw_resolution_correction(obj[6])
     local opacity = obj[4]
-
     local frame = image_sprite_sheet["frames"][quad_name]
-
     local quad = love.graphics.newQuad(
         frame[1],
         frame[2],
@@ -504,7 +466,6 @@ function draw_game_scene_add_to_sprite_batch_overdrive_timer(obj,image_sprite_sh
     local sx = draw_resolution_correction(obj[5])
     local sy = draw_resolution_correction(obj[6])
     local opacity = obj[4]
-
     local quad_name_table = {
         "HUD_nums_0",
         "HUD_nums_1",
@@ -567,14 +528,11 @@ end
 function draw_game_scene_act_common(obj,image_sprite_sheet)
     local f = obj[8]
     local opacity = obj[4]
-
     if opacity == 0 then
         return
     end
-
     if image_sprite_sheet["frames"][""..f..""]== nil then
         f = 50
     end
-
     draw_2d_image_sprite_batch(obj,image_sprite_sheet,""..f.."")
 end

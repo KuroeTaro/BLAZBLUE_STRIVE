@@ -7,9 +7,7 @@ function load_game_scene_obj_stage()
     DRAW_STAGE_RADIAL_BLUR_CANVAS = love.graphics.newCanvas(width,height)
     DRAW_STAGE_ALPHA_COMP_CANVAS = love.graphics.newCanvas(width,height)
     DRAW_STAGE_ALPHA_ONLY_CANVAS = love.graphics.newCanvas(width,height)
-
     obj_stage_game_scene_mid_collision_anchor = 0
-
     -- common
     -- main
     obj_stage_game_scene_main = {0,0,0,1,1,1,0,0}
@@ -21,7 +19,6 @@ function load_game_scene_obj_stage()
     obj_stage_game_scene_main["wallstick_char_obj_active_application_table"] = {}
     obj_stage_game_scene_main["wallstick_stage_obj_active_application_table"] = {}
     obj_stage_game_scene_main["wallbreak_active_application_table"] = {}
-
     -- camera
     obj_stage_game_scene_camera = {0,-365,-800}
     obj_stage_game_scene_camera["3d_pos_x"] = 0
@@ -36,10 +33,8 @@ function load_game_scene_obj_stage()
     obj_stage_game_scene_camera["state"] = "main"
     obj_stage_game_scene_camera["enclose_percentage"] = 0.0
     obj_stage_game_scene_camera["enclose_position_offset"] = {0,0,0}
-
     obj_stage_game_scene_camera["LCT"]["enclose_percentage"] = 0.0
     obj_stage_game_scene_camera["LCD"]["enclose_percentage"] = 0.0
-
     -- wallstick
     obj_stage_game_scene_wallstick = {}
     obj_stage_game_scene_wallstick = {1800,-450,0,0,0,1,0,0}
@@ -48,28 +43,23 @@ function load_game_scene_obj_stage()
     obj_stage_game_scene_wallstick["LCD"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallstick["state"] = "off"
     obj_stage_game_scene_wallstick["sprite_sheet"] = 0
-
     -- wallbreak
     obj_stage_game_scene_wallbreak_after_debris = {0,-865,0,0,0,1,0,0}
     obj_stage_game_scene_wallbreak_after_debris["FCT"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallbreak_after_debris["LCT"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallbreak_after_debris["LCD"] = {0,0,0,0,0,0,0,0}
-
     obj_stage_game_scene_wallbreak_dynamic = {0,-610,0,0,0,1,0,0}
     obj_stage_game_scene_wallbreak_dynamic["FCT"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallbreak_dynamic["LCT"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallbreak_dynamic["LCD"] = {0,0,0,0,0,0,0,0}
-
     obj_stage_game_scene_wallbreak_smoke = {0,-25,0,0,0,1.3,0,0}
     obj_stage_game_scene_wallbreak_smoke["FCT"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallbreak_smoke["LCT"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallbreak_smoke["LCD"] = {0,0,0,0,0,0,0,0}
-
     obj_stage_game_scene_wallbreak_glow = {0,-630,0,0,0,2,0,0}
     obj_stage_game_scene_wallbreak_glow["FCT"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallbreak_glow["LCT"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallbreak_glow["LCD"] = {0,0,0,0,0,0,0,0}
-
     -- adjust_character_color
     obj_char_game_scene_char_LP["brightness"] = -0.05
     obj_char_game_scene_char_LP["brightness_const"] = -0.05
@@ -85,16 +75,12 @@ function load_game_scene_obj_stage()
         obj_char_game_scene_char_RP["brightness_overdrive_const"] = -0.3
         obj_char_game_scene_char_RP["contrast"] = 1
     end
-
     -- uncommon
     -- stage_objects
     obj_stage_game_scene_ground = {-4000,-45,200,1,1,1,0,0}
-
     obj_stage_game_scene_glow_with_linear_fade_alpha = {0,0,-800,1,1,1,0,0}
     obj_stage_game_scene_glow_with_linear_fade_alpha["glow_3d_pos"] = {0,-2565,1600}
-
     obj_stage_game_scene_stair = {-4000,-190,300,1,1,1,0,0}
-
     obj_stage_game_scene_tile_map = {-4000,-2215,800,1,1,1,0,0}
 end
 function load_game_scene_anim_stage()
@@ -111,7 +97,6 @@ function load_game_scene_anim_stage()
     end
     anim_stage_game_scene_wallbreak_main["prop_f"] = "f"
     anim_stage_game_scene_wallbreak_main["anim_length"] = 150
-
     -- camera_animation
     anim_stage_point_linear_game_scene_camera_enclosing = {}
     anim_stage_point_linear_game_scene_camera_enclosing[0] = {0.00,0}
@@ -119,10 +104,8 @@ function load_game_scene_anim_stage()
     anim_stage_point_linear_game_scene_camera_enclosing["length"] = 0
     anim_stage_point_linear_game_scene_camera_enclosing["loop"] = false
     anim_stage_point_linear_game_scene_camera_enclosing["fix_type"] = true
-
     anim_stage_point_linear_game_scene_camera_shake_x = {}
     anim_stage_point_linear_game_scene_camera_shake_y = {}
-
     -- wallstick
     anim_state_frame_game_scene_wallstick_frame = {}
     for i = 0,19 do
@@ -131,7 +114,6 @@ function load_game_scene_anim_stage()
     anim_state_frame_game_scene_wallstick_frame["prop"] = 8
     anim_state_frame_game_scene_wallstick_frame["length"] = 19
     anim_state_frame_game_scene_wallstick_frame["loop"] = false
-
     -- wallbreak
     -- camera_animation
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x = {}
@@ -139,19 +121,16 @@ function load_game_scene_anim_stage()
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x["length"] = 150
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x["loop"] = false
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x["fix_type"] = true
-
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y = {}
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y["prop"] = "3d_pos_y"
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y["length"] = 150
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y["loop"] = false
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y["fix_type"] = true
-
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z = {}
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z["prop"] = "3d_pos_z"
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z["length"] = 150
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z["loop"] = false
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z["fix_type"] = true
-
     -- wallbreak_hit_side_character
     anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity = {}
     anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity[0] = 0
@@ -160,52 +139,43 @@ function load_game_scene_anim_stage()
     anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity["prop"] = "shadow_opacity"
     anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity["length"] = 150
     anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity["loop"] = false
-
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x = {}
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x["prop"] = "x"
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x["length"] = 150
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x["loop"] = false
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x["fix_type"] = true
-
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y = {}
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y["prop"] = "y"
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y["length"] = 150
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y["loop"] = false
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y["fix_type"] = true
-
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame = {}
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["prop"] = 8
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["length"] = 150
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["loop"] = false
-
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet = {}
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet["prop"] = "sprite_sheet"
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet["length"] = 150
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet["loop"] = false
-
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos = {}
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["prop"] = "anchor_pos"
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["length"] = 150
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["loop"] = false
-
     -- wallbreak_hurt_side_character
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x = {}
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["prop"] = "x"
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["length"] = 150
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["loop"] = false
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["fix_type"] = true
-
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y = {}
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y["prop"] = "y"
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y["length"] = 150
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y["loop"] = false
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y["fix_type"] = true
-
     anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame = {}
     anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["prop"] = 8
     anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["length"] = 150
     anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["loop"] = false
-
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity = {}
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity[0] = {0.5,10}
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity[10] = {0,104}
@@ -216,7 +186,6 @@ function load_game_scene_anim_stage()
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity["length"] = 150
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity["loop"] = false
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity["fix_type"] = true
-
     -- wallbreak_after_debris_opacity_anim after_debris 105f-150f
     anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity = {}
     anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity[0] = {0,104}
@@ -238,7 +207,6 @@ function load_game_scene_anim_stage()
     anim_stage_frame_game_scene_wallbreak_after_debris_frame["prop"] = 8
     anim_stage_frame_game_scene_wallbreak_after_debris_frame["length"] = 150
     anim_stage_frame_game_scene_wallbreak_after_debris_frame["loop"] = false
-
     -- wallbreak_dynamic_frame_anim_opacity
     anim_stage_frame_game_scene_wallbreak_dynamic_opacity = {}
     anim_stage_frame_game_scene_wallbreak_dynamic_opacity[0] = 1
@@ -257,7 +225,6 @@ function load_game_scene_anim_stage()
     anim_stage_frame_game_scene_wallbreak_dynamic_frame["prop"] = 8
     anim_stage_frame_game_scene_wallbreak_dynamic_frame["length"] = 150
     anim_stage_frame_game_scene_wallbreak_dynamic_frame["loop"] = false
-
     -- wallbreak_smoke_opacity_anim
     anim_stage_point_linear_game_scene_wallbreak_smoke_opacity = {}
     anim_stage_point_linear_game_scene_wallbreak_smoke_opacity[0] = {0,45}
@@ -281,7 +248,6 @@ function load_game_scene_anim_stage()
     anim_stage_frame_game_scene_wallbreak_smoke_frame["prop"] = 8
     anim_stage_frame_game_scene_wallbreak_smoke_frame["length"] = 150
     anim_stage_frame_game_scene_wallbreak_smoke_frame["loop"] = false
-
     -- wallbreak_glow_opacity
     anim_stage_point_linear_game_scene_wallbreak_glow_opacity = {}
     anim_stage_point_linear_game_scene_wallbreak_glow_opacity[0] = {0,5}
@@ -298,7 +264,6 @@ function load_game_scene_anim_stage()
     anim_stage_point_linear_game_scene_wallbreak_glow_opacity["length"] = 150
     anim_stage_point_linear_game_scene_wallbreak_glow_opacity["loop"] = false
     anim_stage_point_linear_game_scene_wallbreak_glow_opacity["fix_type"] = true
-
     -- uncommon
 end
 function order_load_game_scene_stage(load_order)
@@ -321,7 +286,6 @@ function order_load_game_scene_stage(load_order)
                 "asset/game_scene/stage/alpha/wallbreak_smoke.json",
                 love.graphics.newImage(ASSET_DATA[4][4])
             )
-
             image_sprite_sheet_stage_game_scene_wallstick = {}
             image_sprite_sheet_stage_game_scene_wallstick[0] = 
             common_sprite_sheet_load(
@@ -333,7 +297,6 @@ function order_load_game_scene_stage(load_order)
                 "asset/game_scene/stage/alpha/wallstick_ver1.json",
                 love.graphics.newImage(ASSET_DATA[4][6])
             )
-
             -- stage_VFX
                 -- shockwave
             image_sprite_sheet_VFX_game_scene_air_dash_shockwave =
@@ -368,22 +331,18 @@ function order_load_game_scene_stage(load_order)
                 "asset/game_scene/VFX/stage_VFX/alpha/dcc_blow.json",
                 love.graphics.newImage(ASSET_DATA[4]["dcc_blow"])
             )
-
             image_stage_game_scene_ground = love.graphics.newImage(ASSET_DATA[4][7])
             image_stage_game_scene_stage_liner_fade_alpha = love.graphics.newImage(ASSET_DATA[4][8])
             image_stage_game_scene_stair = love.graphics.newImage(ASSET_DATA[4][9])
             image_stage_game_scene_tile_map = love.graphics.newImage(ASSET_DATA[4][10])
-
             image_sprite_batch_stage_game_scene_ground = love.graphics.newSpriteBatch(image_stage_game_scene_ground)
             image_sprite_batch_stage_game_scene_stair = love.graphics.newSpriteBatch(image_stage_game_scene_stair)
-
             image_sprite_batch_stage_game_scene_ground:clear()
             image_sprite_batch_stage_game_scene_ground:add(0,0)
             image_sprite_batch_stage_game_scene_ground:add(1600,0)
             image_sprite_batch_stage_game_scene_ground:add(1600*2,0)
             image_sprite_batch_stage_game_scene_ground:add(1600*3,0)
             image_sprite_batch_stage_game_scene_ground:add(1600*4,0)
-
             image_sprite_batch_stage_game_scene_stair:clear()
             image_sprite_batch_stage_game_scene_stair:add(0,0)
             image_sprite_batch_stage_game_scene_stair:add(1600,0)
@@ -467,7 +426,6 @@ function load_game_scene_stage_apply_wallbreak_start_init(hit_side_obj_char,hurt
 end
 function load_game_scene_stage_apply_wallbreak_end_init(hit_side_obj_char,hurt_side_obj_char)
     local adv = hurt_side_obj_char["wallhurt_wallbreak_adv"]
-
     -- character
     hit_side_obj_char["state"] = "5_stand_idle"
     hit_side_obj_char["character_animation"] = hit_side_obj_char["init_animation_load_function"](hit_side_obj_char)
@@ -482,10 +440,8 @@ function load_game_scene_stage_apply_wallbreak_end_init(hit_side_obj_char,hurt_s
     end
     load_game_scene_wallbreak_end_init_LP()
     load_game_scene_wallbreak_end_init_RP()
-
     common_game_scene_reset_input_state_for_wallbreak(hurt_side_obj_char)
     common_game_scene_reset_input_state_for_wallbreak(hit_side_obj_char)
-    
     init_character_anim_with(hit_side_obj_char,hit_side_obj_char["character_animation"])
     init_character_anim_with(hurt_side_obj_char,hurt_side_obj_char["character_animation"])
     -- stage
@@ -505,7 +461,6 @@ end
 function update_game_scene_stage()
     -- static stage no update need
     -- glow update no need for this stage
-    
     -- camera_update
     state_machine_stage_game_scene_camera()
     -- wallstick_update
@@ -515,17 +470,13 @@ function update_game_scene_stage_camera_pos_sub()
     local obj_camera = obj_stage_game_scene_camera
     local obj_char_L = obj_char_game_scene_char_LP
     local obj_char_R = obj_char_game_scene_char_RP
-
     obj_stage_game_scene_mid_collision_anchor = (obj_char_L["x"] + obj_char_R["x"])/2
-
     obj_camera["3d_pos_z_target"] = (math.abs(obj_char_L["x"]-obj_char_R["x"])-720)*(-170)/720-800
     obj_camera["3d_pos_z_target"] = math.min(obj_camera["3d_pos_z_target"],-800)
     obj_camera["3d_pos_z_target"] = math.max(obj_camera["3d_pos_z_target"],-970)
-
     obj_camera["3d_pos_x_target"] = (obj_char_L["x"] + obj_char_R["x"])/2   -- 必须要保持两个pushbox宽度相同
     obj_camera["3d_pos_x_target"] = math.max(obj_camera["3d_pos_x_target"],-1350-(obj_camera["3d_pos_z_target"]+800)*1)
     obj_camera["3d_pos_x_target"] = math.min(obj_camera["3d_pos_x_target"],1350+(obj_camera["3d_pos_z_target"]+800)*1)
-
     obj_camera["3d_pos_y_target"] = math.min(obj_char_L["y"],obj_char_R["y"])+75
     obj_camera["3d_pos_y_target"] = math.min(obj_camera["3d_pos_y_target"],-365)
     obj_camera["3d_pos_y_target"] = obj_camera["3d_pos_y_target"]+(800+obj_camera["3d_pos_z_target"])*0.5
@@ -579,13 +530,11 @@ function update_game_scene_stage_wallbreak()
     -- state_machine
     state_machine_stage_game_scene_camera()
 end
-
 -- state_machine
 function state_machine_stage_game_scene_camera()
     local obj_camera = obj_stage_game_scene_camera
     local obj_char_L = obj_char_game_scene_char_LP
     local obj_char_R = obj_char_game_scene_char_RP
-
     local switch = {
         ["main"] = function()
             update_game_scene_stage_camera_pos_sub()
@@ -621,7 +570,6 @@ function state_machine_stage_game_scene_wallstick()
     local obj_wallstick = obj_stage_game_scene_wallstick
     local switch = {
         ["off"] = function()
-
         end,
         ["paused"] = function()
             obj_wallstick["pause_countdown"] = obj_wallstick["pause_countdown"] - 1
@@ -642,22 +590,18 @@ function state_machine_stage_game_scene_wallstick()
     local this_function = switch[obj_wallstick["state"]]
     if this_function then this_function() end
 end
-
 -- draw
 function draw_game_scene_stage_static()
     love.graphics.clear(125/255,125/255,125/255,1)
-
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = nil
     local obj = nil
-
     obj = obj_stage_game_scene_tile_map
     draw_3d_image(obj_camera,obj,image_stage_game_scene_tile_map)
     obj = obj_stage_game_scene_stair
     draw_3d_image(obj_camera,obj,image_sprite_batch_stage_game_scene_stair)
     obj = obj_stage_game_scene_ground
     draw_3d_image(obj_camera,obj,image_sprite_batch_stage_game_scene_ground)
-
     -- common
     obj = obj_stage_game_scene_wallstick
     image_sprite_sheet = image_sprite_sheet_stage_game_scene_wallstick[obj["sprite_sheet"]]
@@ -670,25 +614,19 @@ end
 function draw_game_scene_stage_glow()
     local obj_camera = obj_stage_game_scene_camera
     local obj = obj_stage_game_scene_glow_with_linear_fade_alpha
-
     local x = obj["glow_3d_pos"][1]
     local y = obj["glow_3d_pos"][2]
     local z = obj["glow_3d_pos"][3]
-
     local camera_x = obj_camera[1]
     local camera_y = obj_camera[2]
     local camera_z = obj_camera[3]
-
     local scale = draw_resolution_correction(800)/(z-camera_z)
-
     local width = love.graphics.getWidth()
     local height = love.graphics.getHeight()
-
     local cood_res = {
         scale * (x - camera_x) + draw_resolution_correction(800),
         scale * (y - camera_y) + draw_resolution_correction(450)
     }
-
     love.graphics.setCanvas(DRAW_STAGE_ALPHA_ONLY_CANVAS)
     love.graphics.clear(0,0,0,0)
     love.graphics.rectangle("fill",0,0,width,height/2)
@@ -698,14 +636,12 @@ function draw_game_scene_stage_glow()
         draw_resolution_correction(1),
         draw_resolution_correction(1)
     )
-
     love.graphics.setCanvas(DRAW_STAGE_GLOW_CANVAS)
     love.graphics.clear(0,0,0,0)
     love.graphics.setShader(shader_game_scene_fractal_noise)
     shader_game_scene_fractal_noise:send("time",love.timer.getTime())
     shader_game_scene_fractal_noise:send("input_x",0)
     love.graphics.rectangle("fill",0,0,width,height)
-
     love.graphics.setCanvas(DRAW_STAGE_RADIAL_BLUR_CANVAS)
     love.graphics.clear(0,0,0,0)
     love.graphics.setShader(shader_game_scene_radial_blur)
@@ -713,7 +649,6 @@ function draw_game_scene_stage_glow()
     shader_game_scene_radial_blur:send("input_screen_coords",{width,height})
     love.graphics.draw(DRAW_STAGE_GLOW_CANVAS,0,0)
     love.graphics.setShader()
-
     love.graphics.setCanvas(DRAW_STAGE_ALPHA_COMP_CANVAS)
     love.graphics.clear(0,0,0,0)
     love.graphics.draw(DRAW_STAGE_RADIAL_BLUR_CANVAS)
@@ -721,7 +656,6 @@ function draw_game_scene_stage_glow()
     love.graphics.draw(DRAW_STAGE_ALPHA_ONLY_CANVAS)
     love.graphics.setBlendMode('alpha','alphamultiply')
     love.graphics.setCanvas()
-
     love.graphics.setBlendMode("add")
     love.graphics.setColor(1,1,1,0.675)
     love.graphics.draw(DRAW_STAGE_ALPHA_COMP_CANVAS)
@@ -731,7 +665,6 @@ end
 function draw_game_scene_stage_wallbreak_at_character_back()
     -- local obj_camera = obj_stage_game_scene_camera
     -- local obj = nil
-    
     -- obj = obj_stage_game_scene_wallbreak_glow
     -- love.graphics.setBlendMode("add")
     -- draw_3d_image(obj_camera,obj,image_stage_game_scene_wallbreak_glow)
@@ -741,12 +674,10 @@ function draw_game_scene_stage_wallbreak_at_character_front()
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = nil
     local obj = nil
-
     obj = obj_stage_game_scene_wallbreak_glow
     love.graphics.setBlendMode("add")
     draw_3d_image(obj_camera,obj,image_stage_game_scene_wallbreak_glow)
     love.graphics.setBlendMode("alpha")
-
     obj = obj_stage_game_scene_wallbreak_after_debris
     image_sprite_sheet = image_sprite_sheet_stage_game_scene_wallbreak_after_debris
     image_sprite_sheet["sprite_batch"]:clear()
@@ -754,7 +685,6 @@ function draw_game_scene_stage_wallbreak_at_character_front()
     love.graphics.setBlendMode("add")
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     love.graphics.setBlendMode("alpha")
-
     obj = obj_stage_game_scene_wallbreak_dynamic
     image_sprite_sheet = image_sprite_sheet_stage_game_scene_wallbreak_dynamic
     image_sprite_sheet["sprite_batch"]:clear()
@@ -762,20 +692,17 @@ function draw_game_scene_stage_wallbreak_at_character_front()
     love.graphics.setBlendMode("add")
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     love.graphics.setBlendMode("alpha")
-
     obj = obj_stage_game_scene_wallbreak_smoke
     image_sprite_sheet = image_sprite_sheet_stage_game_scene_wallbreak_smoke
     image_sprite_sheet["sprite_batch"]:clear()
     draw_2d_image_sprite_batch(obj,image_sprite_sheet,""..obj[8].."")
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
 end
-
 -- stage_animation_load_function
 function load_game_scene_anim_stage_camera_wallbreak(obj_camera,hurt_side_obj_char,adv)
     local x_dst = 2290
     local obj_camera_start_x = obj_camera["3d_pos_x"]
     local wallstick_on_side = hurt_side_obj_char["wallhurt_wallstick_on_side"]
-
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x = {}
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[0] = {wallstick_on_side*1910.0,1}
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x[1] = {wallstick_on_side*(1910.1+5.0),2}
@@ -830,7 +757,6 @@ function load_game_scene_anim_stage_camera_wallbreak(obj_camera,hurt_side_obj_ch
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x["length"] = 150
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x["loop"] = false
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x["fix_type"] = true
-
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y = {}
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[0] = {hurt_side_obj_char["y"]-50,1}
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y[1] = {hurt_side_obj_char["y"]-50,2}
@@ -880,7 +806,6 @@ function load_game_scene_anim_stage_camera_wallbreak(obj_camera,hurt_side_obj_ch
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y["length"] = 150
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y["loop"] = false
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y["fix_type"] = true
-
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z = {}
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[0] = {-650,104}
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z[104] = {-650,105}
@@ -936,7 +861,6 @@ function load_game_scene_anim_point_linear_character_hit_side_wallbreak(hit_side
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x["length"] = 150
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x["loop"] = false
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x["fix_type"] = true
-
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y = {}
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[0] = {hit_side_obj_char["y"],104}
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y[104] = {hit_side_obj_char["y"],105}
@@ -946,7 +870,6 @@ function load_game_scene_anim_point_linear_character_hit_side_wallbreak(hit_side
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y["length"] = 150
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y["loop"] = false
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y["fix_type"] = true
-
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame = {}
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[0] = hit_side_obj_char[8]
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame[105] = 0
@@ -961,7 +884,6 @@ function load_game_scene_anim_point_linear_character_hit_side_wallbreak(hit_side
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["prop"] = 8
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["length"] = 150
     anim_stage_frame_game_scene_char_hit_side_wallbreak_frame["loop"] = false
-
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet = {}
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet[0] = hit_side_obj_char["sprite_sheet"]
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet[105] = "0_wallbreak_hit"
@@ -969,7 +891,6 @@ function load_game_scene_anim_point_linear_character_hit_side_wallbreak(hit_side
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet["prop"] = "sprite_sheet"
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet["length"] = 150
     anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet["loop"] = false
-
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos = {}
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos[0] = hit_side_obj_char["anchor_pos"]
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos[105] = hit_side_wallbreak_hit_anchor
@@ -1015,7 +936,6 @@ function load_game_scene_anim_point_linear_character_hurt_side_wallbreak(hurt_si
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["length"] = 150
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["loop"] = false
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x["fix_type"] = true
-
     -- wallbreak_y
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y = {}
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y[0] = {hurt_side_obj_char["y"],104}
@@ -1054,7 +974,6 @@ function load_game_scene_anim_point_linear_character_hurt_side_wallbreak(hurt_si
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y["length"] = 150
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y["loop"] = false
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y["fix_type"] = true
-
     -- wallbreak_frame
     anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame = {}
     anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame[0] = 0
@@ -1108,7 +1027,6 @@ end
 -- dynamic 0f-60f
 -- smoke 45f-120f
 -- glow 0f-30f
-
 -- 0 30 45 60 105 120 150
 -- 0
     -- camera

@@ -15,7 +15,6 @@ function update_start_scene_config_audio_main_update_volume()
     update_SFX_VOLUME(audio_SFX_start_scene_right_2)
     update_SFX_VOLUME(audio_SFX_start_scene_blazblue_click_echo)
     update_SFX_VOLUME(audio_SFX_start_scene_scene_out)
-    
     update_BGM_VOLUME(audio_BGM_start_scene_NOC_high)
     update_BGM_VOLUME(audio_BGM_start_scene_NOC_low)
 end

@@ -3,7 +3,6 @@ function insert_VFX_game_scene_char_TRM_2P_move(obj_char)
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["2P_move_VFX"]
-
     obj_VFX["life"] = 8
     obj_VFX[1] = obj_char["x"] + obj_char[5]*(35)
     obj_VFX[2] = obj_char["y"] + obj_char[6]*(-230)
@@ -57,7 +56,6 @@ function insert_VFX_game_scene_char_TRM_6P_move(obj_char)
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["6P_move_VFX"]
-
     obj_VFX["life"] = 15
     obj_VFX[1] = obj_char["x"] + obj_char[5]*(-294)
     obj_VFX[2] = obj_char["y"] + obj_char[6]*(-543)
@@ -116,7 +114,6 @@ function insert_VFX_game_scene_char_TRM_5P_move(obj_char)
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["5P_move_VFX"]
-
     obj_VFX["life"] = 8
     obj_VFX[1] = obj_char["x"] + obj_char[5]*(56)
     obj_VFX[2] = obj_char["y"] + obj_char[6]*(-468)
@@ -170,7 +167,6 @@ function insert_VFX_game_scene_char_TRM_2S_move(obj_char)
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["2S_move_VFX"]
-
     obj_VFX["life"] = 6
     obj_VFX[1] = obj_char["x"] + obj_char[5]*(115)
     obj_VFX[2] = obj_char["y"] + obj_char[6]*(-247)
@@ -224,7 +220,6 @@ function insert_VFX_game_scene_char_TRM_6S_move(obj_char)
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["6S_move_VFX"]
-
     obj_VFX["life"] = 36
     obj_VFX[1] = obj_char["x"] + obj_char[5]*(-430)
     obj_VFX[2] = obj_char["y"] + obj_char[6]*(-520)
@@ -285,7 +280,6 @@ function insert_VFX_game_scene_char_TRM_cS_move(obj_char)
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["cS_move_VFX"]
-
     obj_VFX["life"] = 19
     obj_VFX[1] = obj_char["x"] + obj_char[5]*(140)
     obj_VFX[2] = obj_char["y"] + obj_char[6]*(-440)
@@ -351,7 +345,6 @@ function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_switch(obj_char)
         ["OTG"] = -230
     }
     obj_VFX["y_offset"] = height_y_offset[obj_char["height"]]
-
     obj_VFX["life"] = 30
     obj_VFX[1] = obj_char["x"] + obj_char[5]*(-370)
     obj_VFX[2] = obj_char["y"] + obj_char[6]*obj_VFX["y_offset"]
@@ -416,7 +409,6 @@ function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_shot_oroboros_blast
     local center_r = character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,rectile_pos)
     local rot_dx = center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.cos(center_r) - center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.sin(center_r)
     local rot_dy = center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.sin(center_r) + center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.cos(center_r)
-
     obj_VFX["life"] = 15
     obj_VFX[1] = obj_char["shot_sys_oroboros_ease_current"][1] + rot_dx
     obj_VFX[2] = obj_char["shot_sys_oroboros_ease_current"][2] + rot_dy
@@ -477,7 +469,6 @@ end
 function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
-
     obj_VFX["life"] = 16
     obj_VFX[1] = hit_side_obj_char["shot_sys_reticle"][1] - 230 + 160
     obj_VFX[2] = hit_side_obj_char["shot_sys_reticle"][2] - 255 + 160
@@ -543,7 +534,6 @@ function insert_VFX_game_scene_char_TRM_5Launcher_move_slash(obj_char)
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["5Launcher_move_VFX"]
-
     obj_VFX["life"] = 3
     obj_VFX[1] = obj_char["x"] + obj_char[5]*(-285)
     obj_VFX[2] = obj_char["y"] + obj_char[6]*(-535)
@@ -596,7 +586,6 @@ function insert_VFX_game_scene_char_TRM_5Launcher_move_glow(obj_char)
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["5Launcher_glow_move_VFX"]
-
     obj_VFX["life"] = 18
     obj_VFX[1] = obj_char["x"] + obj_char[5]*(-380)
     obj_VFX[2] = obj_char["y"] + obj_char[6]*(-636)
@@ -647,13 +636,11 @@ function insert_VFX_game_scene_char_TRM_5Launcher_move_glow(obj_char)
     end
     table.insert(obj_char["VFX_common_front_table"],obj_VFX)
 end
-
 function insert_VFX_game_scene_char_TRM_jS_move(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["jS_move_VFX"]
-
     obj_VFX["life"] = 13
     obj_VFX[1] = obj_char["x"] + obj_char[5]*(-160)
     obj_VFX[2] = obj_char["y"] + obj_char[6]*(-370)
@@ -714,13 +701,11 @@ function insert_VFX_game_scene_char_TRM_jS_move(obj_char)
     end
     table.insert(obj_char["VFX_common_front_table"],obj_VFX)
 end
-
 function insert_VFX_game_scene_char_TRM_6SP_P_curse_ball_spawner(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["6SP_P_curse_ball_spawner_move_VFX"]
-
     obj_VFX["life"] = 9
     obj_VFX[1] = obj_char["x"] + obj_char[5]*(180)
     obj_VFX[2] = obj_char["y"] + obj_char[6]*(110)
@@ -805,7 +790,6 @@ function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["6SP_P_curse_ball_spawn_halo_move_VFX"]
-
     obj_VFX["life"] = 5
     obj_VFX[1] = obj_char["x"] + obj_char[5]*(-72.5)
     obj_VFX[2] = obj_char["y"] + obj_char[6]*(-352.5)
@@ -883,7 +867,6 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     local image_sprite_sheet = image_sprite_sheet_table["6SP_P_arua_move_VFX"]
     local obj_camera = obj_stage_game_scene_camera
     local shot_sys_curse_force_off_state = hit_side_obj_char["shot_sys_curse_force_off_state"]
-
     if hurt_side_obj_char["height"] == "air" then
         obj_VFX["y_offset"] = 375 + hurt_side_obj_char["pushbox"][4]/4*3
     elseif hurt_side_obj_char["height"] == "wallstick" then
@@ -891,7 +874,6 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     else
         obj_VFX["y_offset"] = 400 + hurt_side_obj_char["pushbox"][4]/4*3
     end
-
     obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
@@ -905,7 +887,6 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     obj_VFX[7] = 0
     obj_VFX[8] = 0
     obj_VFX["state"] = "loop"
-    
     obj_VFX["frame_animation"] = {}
     for i = 0,149 do
         obj_VFX["frame_animation"][i*2] = i
@@ -914,7 +895,6 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     obj_VFX["frame_animation"]["length"] = 300
     obj_VFX["frame_animation"]["loop"] = false
     init_frame_anim_without(obj_VFX,obj_VFX["frame_animation"])
-
     obj_VFX["opacity_point_linear_animation"] = {}
     obj_VFX["opacity_point_linear_animation"][0] = {0.75,20}
     obj_VFX["opacity_point_linear_animation"][20] = {0,20}
@@ -922,7 +902,6 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     obj_VFX["opacity_point_linear_animation"]["length"] = 20
     obj_VFX["opacity_point_linear_animation"]["loop"] = false
     -- init_point_linear_anim_without(obj_VFX,obj_VFX["opacity_point_linear_animation"])
-
     local function update_frame_animation()
         frame_animator(obj_VFX,obj_VFX["frame_animation"])
         if get_frame_anim_end_state(obj_VFX,obj_VFX["frame_animation"]) then
@@ -930,7 +909,6 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
             frame_animator(obj_VFX,obj_VFX["frame_animation"])
         end
     end
-
     obj_VFX["update"] = function()
         local switch = {
             -- ease_in 之前的状态 如果达到第10帧则为下一个动画的第0帧 
@@ -966,7 +944,6 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
         }
         local this_function = switch[obj_VFX["state"]]
         if this_function then this_function() end
-
         obj_VFX["life"] = obj_VFX["life"] - 1
     end
     obj_VFX["draw_sync"] = function()
@@ -994,13 +971,11 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     end
     table.insert(hurt_side_obj_char["VFX_status_back_table"],obj_VFX)
 end
-
 function insert_VFX_game_scene_char_TRM_6SP_S_move(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["6SP_S_move_VFX"]
-
     obj_VFX["life"] = 21
     obj_VFX[1] = obj_char["x"] + obj_char[5]*(-63)
     obj_VFX[2] = obj_char["y"] + obj_char[6]*(-727)

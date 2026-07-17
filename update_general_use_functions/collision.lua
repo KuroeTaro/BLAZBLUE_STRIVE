@@ -14,18 +14,14 @@ function collision_box_aabb_detection(box_a,box_b)
     local box_a_R = box_a[1]+box_a[3]/2 -- 365
     local box_a_T = box_a[2]-box_a[4]/2 -- 155 - 210 = -55
     local box_a_B = box_a[2]+box_a[4]/2 -- 155 + 210 = 365 
-
     local box_b_L = box_b[1]-box_b[3]/2 -- 320 - 65 = 255
     local box_b_R = box_b[1]+box_b[3]/2 -- 385
     local box_b_T = box_b[2]-box_b[4]/2 -- -55
     local box_b_B = box_b[2]+box_b[4]/2 -- 365
-
     local x_overlap = ( box_a_R >= box_b_L and box_b_R >= box_a_L )
     local y_overlap = ( box_a_T <= box_b_B and box_b_T <= box_a_B )
-
     return (x_overlap and y_overlap)   
 end
-
 function collision_test_char_on_ground(obj)
     local box = collision_box_to_real_world_box(obj,obj["pushbox"])
     local stage_B_collision = 0
@@ -92,7 +88,6 @@ end
 function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_RP)
     local box_L = collision_box_to_real_world_box(obj_char_LP,obj_char_LP["pushbox"])
     local box_R = collision_box_to_real_world_box(obj_char_RP,obj_char_RP["pushbox"])
-
     if (not obj_char_LP["pushbox_opponent_collision_active"])
     or (not obj_char_RP["pushbox_opponent_collision_active"]) then
         return
@@ -155,7 +150,6 @@ function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_R
                     obj_char_LP["x"] = box_R[1]+box_R[3]/2+box_L[3]/2
                     return
                 end
-
                 if COLLSION_CONER_OUT_STATE[obj_char_LP["state"]] then
                     obj_char_RP["x"] = box_L[1]+box_L[3]/2+box_R[3]/2
                     return
@@ -164,7 +158,6 @@ function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_R
                     obj_char_LP["x"] = box_R[1]+box_R[3]/2+box_L[3]/2
                     return
                 end
-
                 if obj_char_LP["y"] < obj_char_RP["y"] then
                     obj_char_LP["x"] = box_R[1]+box_R[3]/2+box_L[3]/2
                     return
@@ -188,7 +181,6 @@ function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_R
                     obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
                     return
                 end
-
                 if COLLSION_CONER_OUT_STATE[obj_char_LP["state"]] then
                     obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
                     return
@@ -197,7 +189,6 @@ function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_R
                     obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
                     return
                 end
-
                 if obj_char_LP["y"] < obj_char_RP["y"] then
                     obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
                     return
@@ -205,7 +196,6 @@ function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_R
                     obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
                     return
                 end
-
                 if obj_char_LP["y"] < obj_char_RP["y"] then
                     obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
                     return
@@ -219,7 +209,6 @@ function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_R
         if this_function then this_function() end
     end
 end
-
 function collision_strike_assign_hit_VFX_dynamic_spawn_pos(hit_obj,current_hitbox,current_hurtbox)
     hit_obj["hit_VFX_dynamic_spawn_pos"] = {
         (current_hitbox[1]+current_hurtbox[1])/2,
@@ -239,7 +228,6 @@ function collision_throw_air_or_not_test(hit_obj,hurt_obj)
 end
 function collision_projectile_clash_test(obj_A,obj_B)
 end
-
 function collision_strike_hit_confirm_test(hit_obj,hurt_obj)
     if hit_obj["hit_type"] ~= "strike" or hurt_obj["strike_inv"] == true or hit_obj["strike_active"] == false then
         return false
@@ -315,7 +303,6 @@ end
 function collision_RC_hit_confirm_test(hit_obj,hurt_obj)
     return collision_uncondicational_hit_confirm_test(hit_obj,hurt_obj) or collision_projectile_hit_confirm_test(hit_obj,hurt_obj)
 end
-
 -- optimal CCD algo but not 100% currect
 -------------------------------------------------------------------------------------------------
     -- function pushbox_dynamic_CCD(obj_A,obj_B,time_enter,time_exit)
@@ -335,13 +322,10 @@ end
     --         box_B_start[3],
     --         box_B_start[4],
     --     }
-
     --     local velocity_rel_x = velocity_A[1] - velocity_B[1]
     --     local velocity_rel_y = velocity_A[2] - velocity_B[2]
-
     --     local time_enter = 0
     --     local time_exit = 1
-
     --     -- X轴投影计算
     --     if velocity_rel_x ~= 0 then
     --         local overlap_start = (
@@ -352,7 +336,6 @@ end
     --             (box_B_start[1]+box_B_start[3]/2) - 
     --             (box_A_start[1]+box_A_start[3]/2)
     --         )/velocity_rel_x
-            
     --         if velocity_rel_x > 0 then
     --             time_enter = math.max(time_enter,overlap_start)
     --             time_exit = math.min(time_exit,overlap_end)
@@ -368,7 +351,6 @@ end
     --             return nil -- 无碰撞
     --         end
     --     end
-
     --     -- Y轴投影计算
     --     if velocity_rel_y ~= 0 then
     --         local overlap_start = (
@@ -379,7 +361,6 @@ end
     --             (box_B_start[2]+box_B_start[4]/2) - 
     --             (box_A_start[2]+box_A_start[4]/2)
     --         )/velocity_rel_y
-            
     --         if velocity_rel_y > 0 then
     --             time_enter = math.max(time_enter,overlap_start)
     --             time_exit = math.min(time_exit,overlap_end)
@@ -395,12 +376,10 @@ end
     --             return nil -- 无碰撞
     --         end
     --     end
-
     --     -- 判断有效时间区间
     --     if time_enter > time_exit or time_exit < 0 or time_enter > 1 then
     --         return nil -- 无碰撞
     --     end
-
     --     -- 返回最早碰撞时间和碰撞点
     --     local t = math.max(time_enter,0)
     --     obj_A["x"] = round(obj_A["x"] + velocity_A * t)
@@ -408,9 +387,7 @@ end
     --     local res_velocity = (obj_A["velocity"][1] + obj_B["velocity"][1])/2
     --     obj_A["velocity"][1] = res_velocity
     --     obj_B["velocity"][1] = res_velocity
-
     -- end
-
 -- capsule collision detection and relocation
 -- -------------------------------------------------------------------------------------------------
     -- function collision_box_to_capsule(box)
@@ -429,19 +406,16 @@ end
     --     if dx > r then
     --         return false
     --     end
-
     --     local capsule_a_top = capsule_a[2]-capsule_a[3]/2+capsule_a[4] 
     --     local capsule_a_bottom = capsule_a[2]+capsule_a[3]/2-capsule_a[4] 
     --     local capsule_b_top = capsule_b[2]-capsule_b[3]/2+capsule_b[4] 
     --     local capsule_b_bottom = capsule_b[2]+capsule_b[3]/2-capsule_b[4]
-
     --     local gap = 0
     --     if capsule_a_bottom < capsule_b_top then
     --         gap = capsule_b_top-capsule_a_bottom
     --     elseif capsule_b_bottom < capsule_a_top then
     --         gap = capsule_a_top-capsule_b_bottom
     --     end
-
     --     return dx*dx+gap*gap<=r*r
     -- end
     -- function collision_capsule_x_relocate_distance(capsule_a,capsule_b)
@@ -450,14 +424,12 @@ end
     --     local capsule_a_bottom = capsule_a[2]+capsule_a[3]/2-capsule_a[4] 
     --     local capsule_b_top = capsule_b[2]-capsule_b[3]/2+capsule_b[4] 
     --     local capsule_b_bottom = capsule_b[2]+capsule_b[3]/2-capsule_b[4]
-
     --     local gap = 0
     --     if capsule_a_bottom < capsule_b_top then
     --         gap = capsule_b_top-capsule_a_bottom
     --     elseif capsule_b_bottom < capsule_a_top then
     --         gap = capsule_a_top-capsule_b_bottom
     --     end
-
     --     return math.sqrt(r*r-gap*gap)
     -- end
     -- function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_RP)
@@ -504,7 +476,6 @@ end
     --                     obj_char_LP["x"] = box_R[1]+distance
     --                     return
     --                 end
-
     --                 if COLLSION_CONER_OUT_STATE[obj_char_LP["state"]] then
     --                     obj_char_RP["x"] = box_L[1]+distance
     --                     return
@@ -513,7 +484,6 @@ end
     --                     obj_char_LP["x"] = box_R[1]+distance
     --                     return
     --                 end
-
     --                 if obj_char_LP["y"] < obj_char_RP["y"] then
     --                     obj_char_LP["x"] = box_R[1]+distance
     --                     return
@@ -537,7 +507,6 @@ end
     --                     obj_char_LP["x"] = box_R[1]-distance
     --                     return
     --                 end
-
     --                 if COLLSION_CONER_OUT_STATE[obj_char_LP["state"]] then
     --                     obj_char_RP["x"] = box_L[1]-distance
     --                     return
@@ -546,7 +515,6 @@ end
     --                     obj_char_LP["x"] = box_R[1]-distance
     --                     return
     --                 end
-
     --                 if obj_char_LP["y"] < obj_char_RP["y"] then
     --                     obj_char_LP["x"] = box_R[1]-distance
     --                     return
@@ -554,7 +522,6 @@ end
     --                     obj_char_RP["x"] = box_L[1]-distance
     --                     return
     --                 end
-
     --                 if obj_char_LP["y"] < obj_char_RP["y"] then
     --                     obj_char_LP["x"] = box_R[1]-distance
     --                     return

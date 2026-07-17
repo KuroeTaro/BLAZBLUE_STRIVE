@@ -5,25 +5,20 @@ local compress_module = image_module.newCompressedData
 local non_compress_module = image_module.newImageData
 local sound_module = auido_module.newSoundData
 local thread_data = {}
-
 -- common
 thread_data["overdrive_airflow_sprite_batch"] = compress_module("asset/game_scene/VFX/overdrive_airflow.dds")
 thread_data["overdrive_partical_sprite_batch"] = compress_module("asset/game_scene/VFX/overdrive_partical.dds")
-
 thread_data["RC_partical_sprite_batch"] = compress_module("asset/game_scene/VFX/RC_partical.dds")
 thread_data["RC_shockwave_sprite_batch"] = compress_module("asset/game_scene/VFX/RC_shockwave.dds")
 thread_data["RC_blue_badge_sprite_batch"] = compress_module("asset/game_scene/VFX/RC_blue_badge.dds")
 thread_data["RC_purple_badge_sprite_batch"] = compress_module("asset/game_scene/VFX/RC_purple_badge.dds")
 thread_data["RC_red_badge_sprite_batch"] = compress_module("asset/game_scene/VFX/RC_red_badge.dds")
 thread_data["RC_yellow_badge_sprite_batch"] = compress_module("asset/game_scene/VFX/RC_yellow_badge.dds")
-
 thread_data["UA_common_sprite_batch"] = compress_module("asset/game_scene/VFX/UA_common.dds")
-
 -- burst_VFX
 thread_data["burst_back_sprite_batch"] = compress_module("asset/game_scene/VFX/burst_VFX/burst_back.dds")
 thread_data["burst_front_sprite_batch"] = compress_module("asset/game_scene/VFX/burst_VFX/burst_front.dds")
 thread_data["burst_ring"] = compress_module("asset/game_scene/VFX/burst_VFX/burst_ring.dds")
-
 -- hit_VFX
 thread_data["air_blow_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/air_blow.dds")
 thread_data["blast_ver0_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/blast_ver0.dds")
@@ -43,7 +38,6 @@ thread_data["throw_tech_sprite_batch"] = compress_module("asset/game_scene/VFX/h
 thread_data["special_lighting_0_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/_special/lighting_0.dds")
 thread_data["special_lighting_1_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/_special/lighting_1.dds")
 thread_data["special_radial_sprite_batch"] = compress_module("asset/game_scene/VFX/hit_VFX/_special/radial.dds")
-
 -- HUD_VFX
 thread_data["HUD_punish"] = non_compress_module("asset/game_scene/VFX/HUD_VFX/PUINISH_HUD_VFX.png")
     -- counter
@@ -52,5 +46,4 @@ thread_data["HUD_counter_ver3"] = compress_module("asset/game_scene/VFX/HUD_VFX/
     -- positive_bouns
 thread_data["HUD_positive_bouns_LP"] = compress_module("asset/game_scene/VFX/HUD_VFX/_positive_bonus_VFX/HUD_positive_bouns_LP.dds")
 thread_data["HUD_positive_bouns_RP"] = compress_module("asset/game_scene/VFX/HUD_VFX/_positive_bonus_VFX/HUD_positive_bouns_RP.dds")
-
 love.thread.getChannel( 'thread_data_8' ):push( thread_data )

@@ -8,7 +8,6 @@
     -- hurt_vertical_gravity,
     -- hurt_vertical_gravity_correction,
     -- self_knockdown_animation
-
 -- character_animation
 -- 0_general_hurt_falled_knockout
     -- 需要修改的角色属性
@@ -66,26 +65,21 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 95
-
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = true
         hurt_side_obj_char["strike_inv_countdown"] = 1000
         hurt_side_obj_char["throw_inv"] = true
@@ -181,7 +175,6 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
     end
     return res
 end
-
 -- 0_ground_hurt
     -- 需要修改的角色属性
         -- 打击方
@@ -237,26 +230,21 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 13
-
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-        
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -350,26 +338,21 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 15
-
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -463,26 +446,21 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 17
-
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -576,26 +554,21 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 20
-
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -689,26 +662,21 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 22
-
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -779,7 +747,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
     end
     return res
 end
-
 -- 0_ground_block
     -- 需要修改的角色属性
         -- 打击方
@@ -835,26 +802,21 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 10
-
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -944,26 +906,21 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 12
-
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -1057,26 +1014,21 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 14
-
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -1168,26 +1120,21 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 17
-
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -1283,26 +1230,21 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 19
-
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -1432,26 +1374,21 @@ function load_game_scene_anim_char_common_0_air_block(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 32
-
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -1548,7 +1485,6 @@ function load_game_scene_anim_char_common_0_air_block(
     end
     return res
 end
-
 -- teching&teched
 function load_game_scene_anim_char_common_0_Launcher_throw_tech(
     hit_side_obj_char,hurt_side_obj_char,teching_or_teched
@@ -1571,7 +1507,6 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 30
-    
     if hit_side_obj_char["height"] == "air" then
         hit_side_obj_char["y"] = math.min(hit_side_obj_char["y"],-240)
         if teching_or_teched == "teching" then
@@ -1598,32 +1533,26 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
             update_1f_15f_air(i)
         end
     end
-
     res[0] = function()
         -- state
         hit_side_obj_char["sprite_sheet"] = sprite_sheet
         hit_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hit_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hit_side_obj_char["wallhurt_wallstickable"] = false
         hit_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
         hit_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hit_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hit_side_obj_char["startup_frame"] = 0
         hit_side_obj_char["active_frame"] = 0
         hit_side_obj_char["recovery_frame"] = 0
-
         hit_side_obj_char["idle_cancel"] = false
-
         hit_side_obj_char["strike_inv"] = true
         hit_side_obj_char["strike_inv_countdown"] = 30
         hit_side_obj_char["throw_inv"] = true
         hit_side_obj_char["throw_inv_countdown"] = 30
         hit_side_obj_char["projectile_inv"] = true
         hit_side_obj_char["projectile_inv_countdown"] = 30
-
         update_1f_15f_air(0)
         -- state_number
         hit_side_obj_char["velocity"] = velocity
@@ -1688,7 +1617,6 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
     end
     return res
 end
-
 -- hurt_soft_knockdown_wallstick_air
     -- 需要修改的角色属性
         -- 打击方
@@ -1732,23 +1660,18 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
     local sprite_sheet = "0_general_hurt_soft_knockdown_wallstick_air"
     res["prop_f"] = "f"
     res["anim_length"] = 60
-
     res[0] = function()
         -- state
         obj_char["sprite_sheet"] = sprite_sheet
         obj_char["height"] = "wallstick" -- stand crouch air OTG wallstick
         obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
-
         obj_char["startup_frame"] = 0
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
-
         obj_char["self_knockdown_recovery_animation"] = 
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick_air(obj_char)
-
         obj_char["idle_cancel"] = false
-
         obj_char["strike_inv"] = false
         obj_char["strike_inv_countdown"] = 0
         obj_char["throw_inv"] = true
@@ -1785,7 +1708,6 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
     end
     return res
 end
-
 -- hurt_hard_knockdown
     -- 需要修改的角色属性
         -- 打击方
@@ -1841,26 +1763,21 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 25
-
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -1964,26 +1881,21 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 25
-
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -2087,26 +1999,21 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 25
-
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -2202,7 +2109,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
             obj_char["y"] = -210 + (i-59)*10
         end
     end
-
     res[0] = function()
         -- state
         obj_char["y"] = -200
@@ -2210,23 +2116,18 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         obj_char["height"] = "wallstick" -- stand crouch air OTG wallstick
         obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
-
         obj_char["startup_frame"] = 0
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
-
         obj_char["self_knockdown_recovery_animation"] = 
         load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick_ground(obj_char)
-
         obj_char["idle_cancel"] = false
-
         obj_char["strike_inv"] = false
         obj_char["strike_inv_countdown"] = 0
         obj_char["throw_inv"] = true
         obj_char["throw_inv_countdown"] = res["anim_length"]+5
         obj_char["projectile_inv"] = false
         obj_char["projectile_inv_countdown"] = 0
-
         obj_char["velocity"] = {0,0}
         obj_char["velocity_debug"] = {0,0}
         obj_char["velocity_cache"] = {0,0}
@@ -2297,24 +2198,20 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallbrea
     local sprite_sheet = "0_general_hurt_hard_knockdown_up"
     res["prop_f"] = "f"
     res["anim_length"] = 7
-
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = "OTG" -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["self_knockdown_animation"] = nil
         hurt_side_obj_char["self_knockdown_recovery_animation"] = 
         load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
@@ -2324,16 +2221,13 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallbrea
             "5_stand_idle",
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         )
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = res["anim_length"]+5
         hurt_side_obj_char["projectile_inv"] = false
         hurt_side_obj_char["projectile_inv_countdown"] = 0
-    
         -- collide
         hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][2]
         hurt_side_obj_char["pushbox_opponent_collision_active"] = true
@@ -2351,10 +2245,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallbrea
     res[7] = function()
         -- animation_end
     end
-
     return res
 end
-
 -- recovery
     -- 需要修改的角色属性
         -- 打击方
@@ -2408,22 +2300,18 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 30
-
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -2437,7 +2325,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
         hurt_side_obj_char["horizontal_velocity_correction"] = 1
         hurt_side_obj_char["gravity_correction"] = 1
         hurt_side_obj_char["damage_correction"] = 1
-
         hurt_side_obj_char["air_move"]["jump"][1] = hurt_side_obj_char["air_move"]["jump"][2]
         hurt_side_obj_char["air_move"]["air_dash"][1] = hurt_side_obj_char["air_move"]["air_dash"][2]
         -- collide
@@ -2521,22 +2408,18 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 30
-
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -2550,7 +2433,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
         hurt_side_obj_char["horizontal_velocity_correction"] = 1
         hurt_side_obj_char["gravity_correction"] = 1
         hurt_side_obj_char["damage_correction"] = 1
-
         hurt_side_obj_char["air_move"]["jump"][1] = hurt_side_obj_char["air_move"]["jump"][2]
         hurt_side_obj_char["air_move"]["air_dash"][1] = hurt_side_obj_char["air_move"]["air_dash"][2]
         -- collide
@@ -2621,7 +2503,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
     local sprite_sheet = "0_general_hurt_hard_recovery_wallstick_ground"
     res["prop_f"] = "f"
     res["anim_length"] = 25
-
     res[0] = function()
         -- state
         obj_char["y"] = 0
@@ -2629,15 +2510,12 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
         obj_char["height"] = "OTG" -- stand crouch air OTG wallstick
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
-
         obj_char["wallhurt_wallstick_on_side"] = 0
         obj_char["wallhurt_wallstickable"] = false
         obj_char["wallhurt_wallbreakable_with_wallstick"] = false
         obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         obj_char["wallhurt_wallbreak_adv"] = false
-
         obj_char["idle_cancel"] = false
-
         obj_char["strike_inv"] = false
         obj_char["strike_inv_countdown"] = 0
         obj_char["throw_inv"] = true
@@ -2651,7 +2529,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
-
         obj_char["air_move"]["jump"][1] = obj_char["air_move"]["jump"][2]
         obj_char["air_move"]["air_dash"][1] = obj_char["air_move"]["air_dash"][2]
         -- collide
@@ -2725,7 +2602,6 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 30
-
     res[0] = function()
         -- state
         hurt_side_obj_char["y"] = 0
@@ -2733,15 +2609,12 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -2755,7 +2628,6 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         hurt_side_obj_char["horizontal_velocity_correction"] = 1
         hurt_side_obj_char["gravity_correction"] = 1
         hurt_side_obj_char["damage_correction"] = 1
-
         hurt_side_obj_char["air_move"]["jump"][1] = hurt_side_obj_char["air_move"]["jump"][2]
         hurt_side_obj_char["air_move"]["air_dash"][1] = hurt_side_obj_char["air_move"]["air_dash"][2]
         -- collide
@@ -2845,22 +2717,18 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
     local sprite_sheet = "0_general_hurt_soft_recovery_wallstick_air"
     res["prop_f"] = "f"
     res["anim_length"] = 10
-    
     res[0] = function()
         -- state
         obj_char["sprite_sheet"] = sprite_sheet
         obj_char["height"] = "air" -- stand crouch air OTG wallstick
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
-
         obj_char["wallhurt_wallstick_on_side"] = 0
         obj_char["wallhurt_wallstickable"] = false
         obj_char["wallhurt_wallbreakable_with_wallstick"] = false
         obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         obj_char["wallhurt_wallbreak_adv"] = false
-
         obj_char["idle_cancel"] = false
-
         obj_char["strike_inv"] = false
         obj_char["strike_inv_countdown"] = 0
         obj_char["throw_inv"] = true
@@ -2882,7 +2750,6 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
-
         obj_char["air_move"]["jump"][1] = obj_char["air_move"]["jump"][2]
         obj_char["air_move"]["air_dash"][1] = obj_char["air_move"]["air_dash"][2]
         -- collide
@@ -2917,7 +2784,6 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
     end
     return res
 end
-
 -- hurt_launched
     -- 需要修改的角色属性
         -- 打击方
@@ -3063,10 +2929,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
             else
                 -- state
                 hurt_side_obj_char["f"] = 36
-
                 -- collide
                 hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][11]
-                
                 -- draw_correction
                 hurt_side_obj_char[8] = 11
             end
@@ -3085,7 +2949,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 45
-
     for i = 0,44 do
         res[i] = function()
             update_before_land()
@@ -3102,24 +2965,19 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["self_wallbounce_hurt_animation"] = self_wallbounce_hurt_animation
         hurt_side_obj_char["self_groundbounce_hurt_animation"] = self_groundbounce_hurt_animation
         hurt_side_obj_char["self_knockdown_animation"] = self_knockdown_animation
         hurt_side_obj_char["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -3327,7 +3185,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 34
-
     for i = 0,33 do
         res[i] = function()
             update_before_land()
@@ -3339,24 +3196,19 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["self_wallbounce_hurt_animation"] = self_wallbounce_hurt_animation
         hurt_side_obj_char["self_groundbounce_hurt_animation"] = self_groundbounce_hurt_animation
         hurt_side_obj_char["self_knockdown_animation"] = self_knockdown_animation
         hurt_side_obj_char["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -3516,7 +3368,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 19
-
     for i = 0,18 do
         res[i] = function()
             update_before_land()
@@ -3528,24 +3379,19 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["self_wallbounce_hurt_animation"] = self_wallbounce_hurt_animation
         hurt_side_obj_char["self_groundbounce_hurt_animation"] = self_groundbounce_hurt_animation
         hurt_side_obj_char["self_knockdown_animation"] = self_knockdown_animation
         hurt_side_obj_char["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -3651,7 +3497,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
     end
     res["prop_f"] = "f"
     res["anim_length"] = 10
-
     for i = 0,9 do
         res[i] = function()
             update_before_land()
@@ -3663,24 +3508,19 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["self_wallbounce_hurt_animation"] = self_wallbounce_hurt_animation
         hurt_side_obj_char["self_groundbounce_hurt_animation"] = self_groundbounce_hurt_animation
         hurt_side_obj_char["self_knockdown_animation"] = self_knockdown_animation
         hurt_side_obj_char["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -3788,7 +3628,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 25
-
     for i = 0,9 do
         res[i] = function()
             update_before_falling()
@@ -3805,24 +3644,19 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["self_wallbounce_hurt_animation"] = self_wallbounce_hurt_animation
         hurt_side_obj_char["self_groundbounce_hurt_animation"] = self_groundbounce_hurt_animation
         hurt_side_obj_char["self_knockdown_animation"] = self_knockdown_animation
         hurt_side_obj_char["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -3961,7 +3795,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 25
-
     for i = 0,24 do
         res[i] = function()
             update_before_land()
@@ -3973,24 +3806,19 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["self_wallbounce_hurt_animation"] = self_wallbounce_hurt_animation
         hurt_side_obj_char["self_groundbounce_hurt_animation"] = self_groundbounce_hurt_animation
         hurt_side_obj_char["self_knockdown_animation"] = self_knockdown_animation
         hurt_side_obj_char["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -4115,7 +3943,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 16
-
     for i = 0,15 do
         res[i] = function()
             update_before_land()
@@ -4127,24 +3954,19 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["self_wallbounce_hurt_animation"] = self_wallbounce_hurt_animation
         hurt_side_obj_char["self_groundbounce_hurt_animation"] = self_groundbounce_hurt_animation
         hurt_side_obj_char["self_knockdown_animation"] = self_knockdown_animation
         hurt_side_obj_char["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -4251,7 +4073,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 16
-
     for i = 0,15 do
         res[i] = function()
             update_before_land()
@@ -4263,24 +4084,19 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["self_wallbounce_hurt_animation"] = self_wallbounce_hurt_animation
         hurt_side_obj_char["self_groundbounce_hurt_animation"] = self_groundbounce_hurt_animation
         hurt_side_obj_char["self_knockdown_animation"] = self_knockdown_animation
         hurt_side_obj_char["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -4389,7 +4205,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 22
-    
     for i = 0,21 do
         res[i] = function()
             update_before_land()
@@ -4406,24 +4221,19 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["self_wallbounce_hurt_animation"] = self_wallbounce_hurt_animation
         hurt_side_obj_char["self_groundbounce_hurt_animation"] = self_groundbounce_hurt_animation
         hurt_side_obj_char["self_knockdown_animation"] = self_knockdown_animation
         hurt_side_obj_char["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -4435,7 +4245,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
         hurt_side_obj_char["gravity"] = hurt_vertical_gravity*hurt_vertical_gravity_correction
         hurt_side_obj_char["velocity"][1] = hurt_horizontal_velocity*hurt_horizontal_velocity_correction*(-hurt_side_obj_char[5])
         hurt_side_obj_char["velocity"][2] = hurt_vertical_velocity
-
         -- collide
         hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][0]
         hurt_side_obj_char["pushbox_opponent_collision_active"] = true
@@ -4516,7 +4325,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
     end
     return res
 end
-
 function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_PRC(
     hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
     hurt_horizontal_velocity,
@@ -4544,7 +4352,6 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_
     end
     res["prop_f"] = "f"
     res["anim_length"] = 34
-
     for i = 0,33 do
         res[i] = function()
             update_before_land()
@@ -4556,24 +4363,19 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["self_wallbounce_hurt_animation"] = self_wallbounce_hurt_animation
         hurt_side_obj_char["self_groundbounce_hurt_animation"] = self_groundbounce_hurt_animation
         hurt_side_obj_char["self_knockdown_animation"] = self_knockdown_animation
         hurt_side_obj_char["self_knockdown_recovery_animation"] = self_knockdown_recovery_animation
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -4707,7 +4509,6 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_
     end
     return res
 end
-
 -- semi_launched
 function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
     hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
@@ -4732,7 +4533,6 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 29
-
     res[0] = function()
         -- state
         hurt_side_obj_char["y"] = -265
@@ -4740,19 +4540,15 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
-
         hurt_side_obj_char["startup_frame"] = 0
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
-
         hurt_side_obj_char["idle_cancel"] = false
-
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
@@ -4840,19 +4636,16 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
     end
     return res
 end
-
 -- wallstick_lead_to_wallbreak
 function load_game_scene_anim_char_common_0_general_hurt_wallbreak(hit_side_obj_char,hurt_side_obj_char,obj_projectile,adv)
     local res = {}
     res["prop_f"] = "f"
     res["anim_length"] = 1
-
     res[0] = function()
         hurt_side_obj_char["wallhurt_wallstickable"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = adv
-        
         if not obj_projectile then
             common_game_scene_char_apply_damage_heat(
                 hit_side_obj_char,hurt_side_obj_char,"hurt",false
@@ -4868,7 +4661,6 @@ function load_game_scene_anim_char_common_0_general_hurt_wallbreak(hit_side_obj_
     end
     return res
 end
-
 -- active_common_move
 -- burst_overdrive
     -- 需要修改的角色属性
@@ -4931,7 +4723,6 @@ function load_game_scene_anim_char_common_burst_overdrive(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 70
-
     for i = 0,69 do
         res[i] = function()
             -- state
@@ -4945,7 +4736,6 @@ function load_game_scene_anim_char_common_burst_overdrive(
         self_side_obj_char["startup_frame"] = 0
         self_side_obj_char["active_frame"] = 0
         self_side_obj_char["recovery_frame"] = 0
-
         self_side_obj_char["strike_inv"] = true
         self_side_obj_char["strike_inv_countdown"] = 70
         self_side_obj_char["throw_inv"] = true
@@ -4961,10 +4751,8 @@ function load_game_scene_anim_char_common_burst_overdrive(
         self_side_obj_char["horizontal_velocity_correction"] = 1
         self_side_obj_char["gravity_correction"] = 1
         self_side_obj_char["damage_correction"] = 1
-
         self_side_obj_char["overdrive_gauge"][3] = "on"
         update_move_overdrive_state()
-
         play_obj_audio(audio_SFX_game_scene_overdrive)
         -- air_move
         self_side_obj_char["air_move"] = {}
@@ -4973,7 +4761,6 @@ function load_game_scene_anim_char_common_burst_overdrive(
         -- game_speed
         -- 设置为强制速度为1到动画结束
         common_game_scene_game_speed_load_application(self_side_obj_char,{1,nil,nil,nil,nil,69})
-
         self_side_obj_char["hit_hurt_blockstop_countdown"] = 0
         -- collide
         self_side_obj_char["pushbox_opponent_collision_active"] = true
@@ -5147,7 +4934,6 @@ function load_game_scene_anim_char_common_burst_overdrive(
     end
     return res
 end
-
 -- RC
 -- logic attack by projectile
 -- 需要修改的角色属性
@@ -5230,7 +5016,6 @@ function load_game_scene_anim_char_common_burst_RC_red(
         end
         character_uncommon_update(self_side_obj_char)
     end
-    
     res["prop_f"] = "f"
     res["anim_length"] = 45
     for i = 0,44 do
@@ -5253,10 +5038,8 @@ function load_game_scene_anim_char_common_burst_RC_red(
         self_side_obj_char["startup_frame"] = 0
         self_side_obj_char["active_frame"] = 0
         self_side_obj_char["recovery_frame"] = 0
-
         self_side_obj_char["idle_cancel"] = false
         update_state()
-
         self_side_obj_char["strike_inv"] = true
         self_side_obj_char["strike_inv_countdown"] = res["anim_length"]
         self_side_obj_char["throw_inv"] = true
@@ -5415,7 +5198,6 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         end
         character_uncommon_update(self_side_obj_char)
     end
-    
     res["prop_f"] = "f"
     res["anim_length"] = 45
     for i = 0,44 do
@@ -5447,10 +5229,8 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         self_side_obj_char["startup_frame"] = 0
         self_side_obj_char["active_frame"] = 0
         self_side_obj_char["recovery_frame"] = 0
-
         self_side_obj_char["idle_cancel"] = false
         update_state()
-
         self_side_obj_char["strike_inv"] = false
         self_side_obj_char["strike_inv_countdown"] = 0
         self_side_obj_char["throw_inv"] = true
@@ -5629,7 +5409,6 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         end
         character_uncommon_update(self_side_obj_char)
     end
-    
     res["prop_f"] = "f"
     res["anim_length"] = 45
     for i = 0,44 do
@@ -5661,10 +5440,8 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         self_side_obj_char["startup_frame"] = 0
         self_side_obj_char["active_frame"] = 0
         self_side_obj_char["recovery_frame"] = 0
-
         self_side_obj_char["idle_cancel"] = false
         update_state()
-
         self_side_obj_char["strike_inv"] = false
         self_side_obj_char["strike_inv_countdown"] = 0
         self_side_obj_char["throw_inv"] = true
@@ -5848,7 +5625,6 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         end
         character_uncommon_update(self_side_obj_char)
     end
-    
     res["prop_f"] = "f"
     res["anim_length"] = 75
     for i = 0,75 do
@@ -5880,10 +5656,8 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         self_side_obj_char["startup_frame"] = 0
         self_side_obj_char["active_frame"] = 0
         self_side_obj_char["recovery_frame"] = 0
-
         self_side_obj_char["idle_cancel"] = false
         update_state()
-
         self_side_obj_char["strike_inv"] = true
         self_side_obj_char["strike_inv_countdown"] = 42
         self_side_obj_char["throw_inv"] = true

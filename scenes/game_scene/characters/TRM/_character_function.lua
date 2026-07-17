@@ -17,7 +17,6 @@ end
 function character_function_game_scene_TRM_j2K_strike_hurt_function(hit_side_obj_char,hurt_side_obj_char)
     common_game_scene_strike_hurt_function(hit_side_obj_char,hurt_side_obj_char)
 end
-
 -- RC_state_update_function
 function character_function_game_scene_TRM_RC_state_character_uncommon_update(obj_char)
     -- height
@@ -36,7 +35,6 @@ function character_function_game_scene_TRM_overdrive_state_character_uncommon_in
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
     end
 end
-
 -- cancel_function
 function character_function_game_scene_TRM_hitstop_air_jump_cancel(
     input,self_side_obj_char,opponent_side_obj_char,
@@ -83,7 +81,6 @@ function character_function_game_scene_TRM_hitstop_force_delay_gatling_cancel_in
         obj_char["input_sys_state"] = "save" -- none save load
     end
 end
-
 -- shot_sys_function
 -- ability_use_calculation
 function character_function_game_scene_TRM_shot_sys_ability_gauge_use(obj_char)
@@ -176,7 +173,6 @@ end
 function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(self_side_obj_char,opponent_side_obj_char)
     local self_side_obj_char_shot_sys_aim_process = self_side_obj_char["shot_sys_aim_process"]
     local div_value = 30-math.min(self_side_obj_char_shot_sys_aim_process[1],self_side_obj_char_shot_sys_aim_process[3])/15
-
     local height_offset = {
         [370] = 315,
         [285] = 200,
@@ -202,7 +198,6 @@ function character_function_game_scene_TRM_shot_sys_reticle_pos_update_ease_in(s
     end
     local self_side_obj_char_shot_sys_aim_process = self_side_obj_char["shot_sys_aim_process"]
     local div_value = 30-math.min(self_side_obj_char_shot_sys_aim_process[1],self_side_obj_char_shot_sys_aim_process[3])/15
-
     local height_offset = {
         [370] = 315,
         [285] = 200,
@@ -232,7 +227,6 @@ function character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(self_si
         [200] = 100,
         [130] = 100
     }
-
     if random_index == 1 then
         self_side_obj_char["shot_sys_reticle_stage_pos_current"][1] = opponent_side_obj_char["x"]-160
             +(math.random() * 2 - 1)*offset_multiplier

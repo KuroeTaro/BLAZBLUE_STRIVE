@@ -24,23 +24,19 @@ function load_start_scene_prep()
     ORDER_SIZE_TABLE = {2,1,1}  -- 每个load function的最大值
     LOAD_ONCE_TABLE = {false,false,false}   -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     LOADING_FUNCTION_AMOUNT = 3 -- 和线程数相同
-
 	NEXT_UPDATE_BLOCK = update_start_scene_ease_in
 	NEXT_DRAW_BLOCK = draw_start_scene_main
     NEXT_PRESET = preset_start_scene
 end
-
 -- 分步骤将素材加载
 function order_load_start_scene_main_UI(load_order)
     local switch = 
     {
         [1] = function()
             -- image_table以0开头 因为AE的帧数是以0开头设计的
-
             -- global use shape image
             image_UI_start_scene_global_dabo_trig = love.graphics.newImage(ASSET_DATA[1][1])
             image_UI_start_scene_global_type_in_mark = love.graphics.newImage(ASSET_DATA[1][2])
-
             -- up console text image
             -- single_person
             image_table_UI_start_scene_up_console_text = {}
@@ -55,8 +51,6 @@ function order_load_start_scene_main_UI(load_order)
             image_table_UI_start_scene_up_console_text[4] = love.graphics.newImage(ASSET_DATA[1][7])
             -- update_controller
             image_table_UI_start_scene_up_console_text[5] = love.graphics.newImage(ASSET_DATA[1][8])
-
-
             -- down console text image
             -- training_mode
             image_table_UI_start_scene_down_console_text = {}
@@ -75,8 +69,6 @@ function order_load_start_scene_main_UI(load_order)
             image_table_UI_start_scene_down_console_text[6] = love.graphics.newImage(ASSET_DATA[1][15])
             -- two_or_more_controller
             image_table_UI_start_scene_down_console_text[7] = love.graphics.newImage(ASSET_DATA[1][16])
-
-
             -- option text image
             -- training
             image_table_UI_start_scene_option_text = {}
@@ -89,16 +81,11 @@ function order_load_start_scene_main_UI(load_order)
             image_table_UI_start_scene_option_text[3] = love.graphics.newImage(ASSET_DATA[1][20])
             -- exit_to_OS
             image_table_UI_start_scene_option_text[4] = love.graphics.newImage(ASSET_DATA[1][21])
-
-
             -- option breath tag
             image_UI_start_scene_breath_tag = love.graphics.newImage(ASSET_DATA[1][22])
-
-
             -- main logo
             image_UI_start_scene_main_logo = love.graphics.newImage(ASSET_DATA[1][23])
             image_UI_start_scene_press_any_key = love.graphics.newImage(ASSET_DATA[1][24])
-
         end,
         [2] = function()
             load_start_scene_obj()
@@ -127,7 +114,6 @@ function order_load_start_scene_sub_UI(load_order)
     local switch = 
     {
         [1] = function()
-
             -- resolution text in config resolution sub UI only
             image_table_UI_start_scene_resolution_text = {}
             -- 1280_x_720
@@ -142,25 +128,15 @@ function order_load_start_scene_sub_UI(load_order)
             image_table_UI_start_scene_resolution_text[4] = love.graphics.newImage(ASSET_DATA[3][5])
             -- select_res_text
             image_UI_start_scene_select_res_text = love.graphics.newImage(ASSET_DATA[3][6])
-
-
             -- audio text in config audio sub UI only
             image_UI_start_scene_config_audio_bar = love.graphics.newImage(ASSET_DATA[3][7])
             image_UI_start_scene_config_audio_text = love.graphics.newImage(ASSET_DATA[3][8])
-
-
             -- controller text in config controller sub UI only
             image_UI_start_scene_controller_indi_text = love.graphics.newImage(ASSET_DATA[3][9])
-
-
             -- global config menu sub UI text
             image_UI_start_scene_config_menu_text = love.graphics.newImage(ASSET_DATA[3][10])
-
-
             -- global config menu sub UI shape
             image_UI_start_scene_bar_mark = love.graphics.newImage(ASSET_DATA[3][11])
-
-
             -- record text in config record sub UI only
             image_UI_start_scene_game_duration_text = love.graphics.newImage(ASSET_DATA[3][12])
             image_table_UI_start_scene_game_duration_number = {}
@@ -168,13 +144,11 @@ function order_load_start_scene_sub_UI(load_order)
                 image_table_UI_start_scene_game_duration_number[i-13] = love.graphics.newImage(ASSET_DATA[3][i])
             end
             image_UI_start_scene_time_indi_barcode = love.graphics.newImage(ASSET_DATA[3][23])
-
         end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
-
 -- require
 function load_start_select_scene_require()
     require_all_in_folder("scenes/start_scene")
