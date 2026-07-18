@@ -1623,6 +1623,7 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
     end
     return res
 end
+-- _6dash_dash_cancel
 function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
     local dash_acceleration = 0.625
     local res = {}
@@ -1893,12 +1894,12 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char,hurt_side_obj_char)
             nil,nil,
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
-        hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv0(
+        hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
             hit_side_obj_char,hurt_side_obj_char,
-            "4_stand_block_mid",
-            "stand","5_stand_idle",
-            37.5,5,1.00,
-            0,2.5,1.00,
+            "1_4_7_air_block",
+            "air","5_stand_idle",
+            17.5,5,1.00,
+            -12.5,12.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -1906,8 +1907,8 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char,hurt_side_obj_char)
             hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            42.5,5,1.035,
-            0,2.5,1.035,
+            12.5,5,1.035,
+            -5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
@@ -2145,7 +2146,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
             hit_side_obj_char,hurt_side_obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            12.5,5,1.00,
+            27.5,5,1.00,
             -22.5,12.5,1.00,
             nil,nil,nil,nil,
             function() end
@@ -2155,7 +2156,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             60,5,1.035,
-            0,2.5,1.035,
+            -6.25,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
@@ -2427,8 +2428,8 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char,hurt_side_obj_char)
             hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            42.5,5,1.035,
-            0,2.5,1.035,
+            12.5,5,1.035,
+            -5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
@@ -2651,7 +2652,7 @@ function load_game_scene_anim_char_TRM_2K(hit_side_obj_char,hurt_side_obj_char)
             hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            17.5,5,1.035,
+            22.5,5,1.035,
             -17.5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
@@ -2664,12 +2665,12 @@ function load_game_scene_anim_char_TRM_2K(hit_side_obj_char,hurt_side_obj_char)
             nil,nil,
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
-        hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv1(
+        hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
             hit_side_obj_char,hurt_side_obj_char,
-            "1_crouch_block",
-            "crouch","1_2_3_crouch",
-            25,5,1.00,
-            0,2.5,1.00,
+            "1_4_7_air_block",
+            "air","5_stand_idle",
+            17.5,5,1.00,
+            -12.5,12.5,1.00,
             nil,nil,nil,nil,
             function() end
         )
@@ -2960,7 +2961,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
             hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            50,5,1.07,
+            45,5,1.07,
             -7.5,2.5,1.07,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
@@ -3523,7 +3524,7 @@ function load_game_scene_anim_char_TRM_2S(hit_side_obj_char,hurt_side_obj_char)
             hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            8,5,1.035,
+            8.75,5,1.035,
             -27.5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
@@ -3536,14 +3537,14 @@ function load_game_scene_anim_char_TRM_2S(hit_side_obj_char,hurt_side_obj_char)
             nil,nil,
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
-        hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
+        hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
             hit_side_obj_char,hurt_side_obj_char,
-            "4_stand_block_mid",
-            "stand","5_stand_idle",
-            72.5,5,1.00,
-            0,2.5,1.00,
+            "1_4_7_air_block",
+            "air","5_stand_idle",
+            22.5,5,1.00,
+            -25,12.5,1.00,
             nil,nil,nil,nil,
-            function() hurt_side_obj_char["y"] = 0 end
+            function() end
         )
         hit_side_obj_char["OTG_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_launched_high(
             hit_side_obj_char,hurt_side_obj_char,
@@ -3839,7 +3840,7 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
             hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            37.5,5,1.035,
+            32.5,5,1.035,
             -17.5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
@@ -3856,7 +3857,7 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
             hit_side_obj_char,hurt_side_obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            37.5,5,1.00,
+            32.5,5,1.00,
             -17.5,12.5,1.00,
             nil,nil,nil,nil,
             function() end
@@ -3865,7 +3866,7 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
             hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            37.5,5,1.035,
+            32.5,5,1.035,
             -5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
@@ -5375,14 +5376,14 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char,hurt_side_obj
                 hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200)
             end
         )
-        hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv2(
+        hit_side_obj_char["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
             hit_side_obj_char,hurt_side_obj_char,
-            "1_crouch_block",
-            "crouch","1_2_3_crouch",
-            32.5,5,1.00,
-            0,2.5,1.00,
+            "1_4_7_air_block",
+            "air","5_stand_idle",
+            22.5,5,1.00,
+            -25,12.5,1.00,
             nil,nil,nil,nil,
-            function() hurt_side_obj_char["y"] = 0 end
+            function() end
         )
         hit_side_obj_char["OTG_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_launched_high(
             hit_side_obj_char,hurt_side_obj_char,
@@ -5759,7 +5760,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(hit_side_obj_cha
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
-    local SFX_table = common_game_scene_get_SFX_table(hit_side)
     local function update_y_37f_43f(i)
         hurt_side_obj_char["y"] = 2.5*(i-39)^2-180
     end
@@ -6927,7 +6927,7 @@ function load_game_scene_anim_char_TRM_jP(hit_side_obj_char,hurt_side_obj_char)
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
             10,5,1.035,
-            -15,2.5,1.035,
+            -12.5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
@@ -7172,7 +7172,7 @@ function load_game_scene_anim_char_TRM_jK(hit_side_obj_char,hurt_side_obj_char)
             hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            12.5,5,1.035,
+            7.5,5,1.035,
             -12.5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
@@ -7189,7 +7189,7 @@ function load_game_scene_anim_char_TRM_jK(hit_side_obj_char,hurt_side_obj_char)
             hit_side_obj_char,hurt_side_obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            12.5,5,1.00,
+            7.5,5,1.00,
             5,2.5,1.00,
             nil,nil,nil,nil,
             function() end
@@ -7693,7 +7693,7 @@ function load_game_scene_anim_char_TRM_jS(hit_side_obj_char,hurt_side_obj_char)
             hit_side_obj_char,hurt_side_obj_char,
             "1_4_7_air_block",
             "air","5_stand_idle",
-            10,5,1.00,
+            12.5,5,1.00,
             5,2.5,1.00,
             nil,nil,nil,nil,
             function() end
@@ -7934,7 +7934,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(hit_side_obj_char,hurt_side_ob
             hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            12.5,5,1.035,
+            10,5,1.035,
             -27.5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
@@ -8300,7 +8300,6 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(hit_side_obj_ch
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
-    local SFX_table = common_game_scene_get_SFX_table(hurt_side)
     local function update_13f_18f()
         point_linear_animator(hurt_side_obj_char,hurt_side_obj_char["hurtstop_wiggle_x_animation"])
         point_linear_animator(hurt_side_obj_char,hurt_side_obj_char["hurtstop_wiggle_y_animation"])
@@ -9236,7 +9235,7 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
             hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_launched_high",
             "air","knockdown_recovery",
-            7.5,5,1.10,
+            27.5,5,1.10,
             -5,2.5,1.10,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
