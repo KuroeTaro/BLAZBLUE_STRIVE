@@ -1,0 +1,36 @@
+{"frames": {
+
+"0":
+{
+	"frame": {"x":0,"y":0,"w":500,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":440},
+	"sourceSize": {"w":500,"h":440}
+},
+"1":
+{
+	"frame": {"x":500,"y":0,"w":500,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":440},
+	"sourceSize": {"w":500,"h":440}
+},
+"2":
+{
+	"frame": {"x":1000,"y":0,"w":500,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":440},
+	"sourceSize": {"w":500,"h":440}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_0_general_hurt_soft_recovery_wallstick_air",
+	"format": "RGBA8888",
+	"size": {"w":1500,"h":440},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d1e8774f2af38791e2616796094c3ddf:82f77413c1ef06f75b1f946bb77475e6:1afa57809e65a75424874f939dd9e6d1$"
+}
+}

@@ -357,7 +357,7 @@ function load_game_scene_thread_table(LP_name,RP_name,stage_name)
     local res_table = {}
     table.insert(
         res_table,
-        "threads/game_scene/_common.lua"
+        "threads/game_scene/common.lua"
     )
     table.insert(
         res_table,

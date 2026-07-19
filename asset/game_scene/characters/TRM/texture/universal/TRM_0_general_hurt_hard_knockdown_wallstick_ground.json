@@ -1,0 +1,60 @@
+{"frames": {
+
+"0":
+{
+	"frame": {"x":0,"y":0,"w":460,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":500},
+	"sourceSize": {"w":460,"h":500}
+},
+"1":
+{
+	"frame": {"x":460,"y":0,"w":460,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":500},
+	"sourceSize": {"w":460,"h":500}
+},
+"2":
+{
+	"frame": {"x":0,"y":500,"w":460,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":500},
+	"sourceSize": {"w":460,"h":500}
+},
+"3":
+{
+	"frame": {"x":460,"y":500,"w":460,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":500},
+	"sourceSize": {"w":460,"h":500}
+},
+"4":
+{
+	"frame": {"x":0,"y":1000,"w":460,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":500},
+	"sourceSize": {"w":460,"h":500}
+},
+"5":
+{
+	"frame": {"x":460,"y":1000,"w":460,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":500},
+	"sourceSize": {"w":460,"h":500}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_0_general_hurt_hard_knockdown_wallstick_ground",
+	"format": "RGBA8888",
+	"size": {"w":920,"h":1500},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:327a89a048fae0d151f72113f8dab8c1:46ea2d26bba48505bb9f12a6732eb3be:e42d22b1ccb9ec8dbbf76453d151261f$"
+}
+}

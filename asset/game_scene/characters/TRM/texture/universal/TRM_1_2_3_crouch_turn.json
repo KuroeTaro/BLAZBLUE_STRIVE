@@ -1,0 +1,36 @@
+{"frames": {
+
+"0":
+{
+	"frame": {"x":0,"y":0,"w":540,"h":320},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":540,"h":320},
+	"sourceSize": {"w":540,"h":320}
+},
+"1":
+{
+	"frame": {"x":540,"y":0,"w":540,"h":320},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":540,"h":320},
+	"sourceSize": {"w":540,"h":320}
+},
+"2":
+{
+	"frame": {"x":1080,"y":0,"w":540,"h":320},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":540,"h":320},
+	"sourceSize": {"w":540,"h":320}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_1_2_3_crouch_turn",
+	"format": "RGBA8888",
+	"size": {"w":1620,"h":320},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:da26c86f5cf415294eafa2da33bf7b2c:58f066f6e91ab895f78dd4dd8a1a1e6d:7102b2cb4c007fc5c3169c8a71f95793$"
+}
+}

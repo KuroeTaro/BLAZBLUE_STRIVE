@@ -1,0 +1,20 @@
+{"frames": {
+
+"0":
+{
+	"frame": {"x":0,"y":0,"w":400,"h":460},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":460},
+	"sourceSize": {"w":400,"h":460}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_6SP_P_curse_ball_spawner.png",
+	"format": "RGBA8888",
+	"size": {"w":400,"h":460},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:bd78c7d6d513972a0b363a20f0715d2f:8a715d0e93193f0a071d4af8dad339d1:a39bcf05a65d25a52fee34f514b36b74$"
+}
+}

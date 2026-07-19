@@ -1,0 +1,84 @@
+{"frames": {
+
+"0":
+{
+	"frame": {"x":0,"y":0,"w":600,"h":540},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":600,"h":540},
+	"sourceSize": {"w":600,"h":540}
+},
+"1":
+{
+	"frame": {"x":600,"y":0,"w":600,"h":540},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":600,"h":540},
+	"sourceSize": {"w":600,"h":540}
+},
+"2":
+{
+	"frame": {"x":1200,"y":0,"w":600,"h":540},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":600,"h":540},
+	"sourceSize": {"w":600,"h":540}
+},
+"3":
+{
+	"frame": {"x":0,"y":540,"w":600,"h":540},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":600,"h":540},
+	"sourceSize": {"w":600,"h":540}
+},
+"4":
+{
+	"frame": {"x":600,"y":540,"w":600,"h":540},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":600,"h":540},
+	"sourceSize": {"w":600,"h":540}
+},
+"5":
+{
+	"frame": {"x":1200,"y":540,"w":600,"h":540},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":600,"h":540},
+	"sourceSize": {"w":600,"h":540}
+},
+"6":
+{
+	"frame": {"x":0,"y":1080,"w":600,"h":540},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":600,"h":540},
+	"sourceSize": {"w":600,"h":540}
+},
+"7":
+{
+	"frame": {"x":600,"y":1080,"w":600,"h":540},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":600,"h":540},
+	"sourceSize": {"w":600,"h":540}
+},
+"8":
+{
+	"frame": {"x":1200,"y":1080,"w":600,"h":540},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":600,"h":540},
+	"sourceSize": {"w":600,"h":540}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_0_general_hurt_hard_recovery_down",
+	"format": "RGBA8888",
+	"size": {"w":1800,"h":1620},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:951964665c19ae462e3bda43a8c269de:1c6a13bb7836286a5b460184d476781d:b8a9bacb8b12efd284614f68badf1e6d$"
+}
+}

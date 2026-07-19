@@ -74,7 +74,7 @@ function order_load_char_select_scene_UI_start_0_110f(load_order)
         [1] = function()
             image_sprite_sheet_UI_char_select_scene_start_0_110f = 
             common_sprite_sheet_load(
-                "asset/char_select_scene/scene_start_0_110f.json",
+                "asset/char_select_scene/texture/scene_start_0_110f.json",
                 love.graphics.newImage(ASSET_DATA[2]["scene_start_0_110f"])
             )
         end
@@ -88,7 +88,7 @@ function order_load_char_select_scene_UI_movie_cover(load_order)
         [1] = function()
             image_sprite_sheet_UI_char_select_scene_movie_cover = 
             common_sprite_sheet_load(
-                "asset/char_select_scene/movie_cover.json",
+                "asset/char_select_scene/texture/movie_cover.json",
                 love.graphics.newImage(ASSET_DATA[3]["movie_cover"])
             )
         end

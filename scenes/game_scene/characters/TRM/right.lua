@@ -307,7 +307,7 @@ function order_load_game_scene_char_RP_frames(load_order)
     local switch = 
     {
         [15] = function()
-            -- UNIVERSAL 1 2 3
+            -- universal 1 2 3
             image_sprite_sheet_table_char_game_scene_RP = {}
             local load_name_table = {
                 "0_air_Launcher_teched",
@@ -334,7 +334,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] = 
                 common_sprite_sheet_load(
-                    "asset/game_scene/characters/TRM/image/UNIVERSAL/TRM_"..v..".json",
+                    "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
             end 
@@ -368,7 +368,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] = 
                 common_sprite_sheet_load(
-                    "asset/game_scene/characters/TRM/image/UNIVERSAL/TRM_"..v..".json",
+                    "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
             end 
@@ -396,13 +396,13 @@ function order_load_game_scene_char_RP_frames(load_order)
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] = 
                 common_sprite_sheet_load(
-                    "asset/game_scene/characters/TRM/image/UNIVERSAL/TRM_"..v..".json",
+                    "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
             end 
         end,
         [18] = function()
-            -- ATTACK 4 5 6
+            -- attack 4 5 6
             local load_name_table = {
                 "burst_overdrive_ground",
                 "burst_overdrive_rc_air",
@@ -445,7 +445,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] = 
                 common_sprite_sheet_load(
-                    "asset/game_scene/characters/TRM/image/ATTACK/TRM_"..v..".json",
+                    "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
             end 
@@ -459,7 +459,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] = 
                 common_sprite_sheet_load(
-                    "asset/game_scene/characters/TRM/image/ATTACK/TRM_"..v..".json",
+                    "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
             end 
@@ -470,7 +470,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] = 
                 common_sprite_sheet_load(
-                    "asset/game_scene/characters/TRM/image/ATTACK/TRM_"..v..".json",
+                    "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
             end 
@@ -507,7 +507,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_VFX_game_scene_RP[v.."_move_VFX"] = 
                 common_sprite_sheet_load(
-                    "asset/game_scene/VFX/move_VFX/TRM/".."TRM_"..v..".json",
+                    "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
                 )
             end 
@@ -535,7 +535,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_projectile_game_scene_RP[v.."_projectile"] = 
                 common_sprite_sheet_load(
-                    "asset/game_scene/characters/TRM/image/PROJECTILE/TRM_"..v..".json",
+                    "asset/game_scene/characters/TRM/texture/projectile/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v.."_projectile"])
                 )
             end 
@@ -544,7 +544,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             -- special
             image_sprite_sheet_VFX_game_scene_RP_overdrive_badge = 
             common_sprite_sheet_load(
-                "asset/game_scene/VFX/overdrive_badge/TRM_overdrive_badge.json",
+                "asset/game_scene/characters/TRM/texture/overdrive_badge/TRM_overdrive_badge.json",
                 love.graphics.newImage(PLAYER_ASSET_DATA["overdrive_badge"])
             )
         end

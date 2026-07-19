@@ -24,11 +24,11 @@ function load_game_scene_common_audio()
     audio_SFX_game_scene_annoucer_ease_in = {1}
     audio_SFX_game_scene_annoucer_ease_in["LCT"] = {0}
     audio_SFX_game_scene_annoucer_ease_in["LCD"] = {0}
-    audio_SFX_game_scene_annoucer_ease_in["audio"] = love.audio.newSource(ASSET_DATA[1]["audio_annoucer_ease_in"],"static")
+    audio_SFX_game_scene_annoucer_ease_in["audio"] = love.audio.newSource("asset/game_scene/common/audio/annoucer_ease_in.wav","static")
     audio_SFX_game_scene_overdrive = {1}
     audio_SFX_game_scene_overdrive["LCT"] = {0}
     audio_SFX_game_scene_overdrive["LCD"] = {0}
-    audio_SFX_game_scene_overdrive["audio"] = love.audio.newSource(ASSET_DATA[1]["audio_overdrive"],"static")
+    audio_SFX_game_scene_overdrive["audio"] = love.audio.newSource("asset/game_scene/common/audio/overdrive.wav","static")
     update_SFX_VOLUME(audio_SFX_game_scene_annoucer_ease_in)
     update_SFX_VOLUME(audio_SFX_game_scene_overdrive)
 end

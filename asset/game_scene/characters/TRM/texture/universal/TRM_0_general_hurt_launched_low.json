@@ -1,0 +1,44 @@
+{"frames": {
+
+"0":
+{
+	"frame": {"x":0,"y":0,"w":580,"h":460},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":580,"h":460},
+	"sourceSize": {"w":580,"h":460}
+},
+"1":
+{
+	"frame": {"x":0,"y":460,"w":580,"h":460},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":580,"h":460},
+	"sourceSize": {"w":580,"h":460}
+},
+"2":
+{
+	"frame": {"x":0,"y":920,"w":580,"h":460},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":580,"h":460},
+	"sourceSize": {"w":580,"h":460}
+},
+"3":
+{
+	"frame": {"x":0,"y":1380,"w":580,"h":460},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":580,"h":460},
+	"sourceSize": {"w":580,"h":460}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_0_general_hurt_launched_low",
+	"format": "RGBA8888",
+	"size": {"w":580,"h":1840},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:31a6601d1b1a40bfe72eaec903d91ba1:ef0a2a60fed8b4925bb344d3fbb3fcc7:c3a82da04cb2b8bde4756d55df3b472d$"
+}
+}
