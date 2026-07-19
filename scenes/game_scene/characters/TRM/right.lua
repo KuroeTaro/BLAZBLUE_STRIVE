@@ -334,7 +334,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] = 
                 common_sprite_sheet_load(
-                    "asset/game_scene/characters/TRM/_character/UNIVERSAL/TRM_"..v..".json",
+                    "asset/game_scene/characters/TRM/image/UNIVERSAL/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
             end 
@@ -368,7 +368,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] = 
                 common_sprite_sheet_load(
-                    "asset/game_scene/characters/TRM/_character/UNIVERSAL/TRM_"..v..".json",
+                    "asset/game_scene/characters/TRM/image/UNIVERSAL/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
             end 
@@ -396,7 +396,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] = 
                 common_sprite_sheet_load(
-                    "asset/game_scene/characters/TRM/_character/UNIVERSAL/TRM_"..v..".json",
+                    "asset/game_scene/characters/TRM/image/UNIVERSAL/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
             end 
@@ -445,7 +445,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] = 
                 common_sprite_sheet_load(
-                    "asset/game_scene/characters/TRM/_character/ATTACK/TRM_"..v..".json",
+                    "asset/game_scene/characters/TRM/image/ATTACK/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
             end 
@@ -459,7 +459,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] = 
                 common_sprite_sheet_load(
-                    "asset/game_scene/characters/TRM/_character/ATTACK/TRM_"..v..".json",
+                    "asset/game_scene/characters/TRM/image/ATTACK/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
             end 
@@ -470,7 +470,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] = 
                 common_sprite_sheet_load(
-                    "asset/game_scene/characters/TRM/_character/ATTACK/TRM_"..v..".json",
+                    "asset/game_scene/characters/TRM/image/ATTACK/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
             end 
@@ -535,7 +535,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_projectile_game_scene_RP[v.."_projectile"] = 
                 common_sprite_sheet_load(
-                    "asset/game_scene/characters/TRM/_character/PROJECTILE/TRM_"..v..".json",
+                    "asset/game_scene/characters/TRM/image/PROJECTILE/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v.."_projectile"])
                 )
             end 
@@ -910,7 +910,7 @@ function load_game_scene_audio_char_RP()
     audio_SFX_game_scene_RP["5P"] = {1}
     audio_SFX_game_scene_RP["5P"]["LCT"] = {0}
     audio_SFX_game_scene_RP["5P"]["LCD"] = {0}
-    audio_SFX_game_scene_RP["5P"]["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_confirm_1.mp3","static")
+    audio_SFX_game_scene_RP["5P"]["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_confirm_0.wav","static")
     update_SFX_VOLUME(audio_SFX_game_scene_RP["5P"])
 end
 function load_game_scene_shader_char_RP()

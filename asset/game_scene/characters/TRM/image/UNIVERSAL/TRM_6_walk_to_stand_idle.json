@@ -1,0 +1,28 @@
+{"frames": {
+
+"0":
+{
+	"frame": {"x":0,"y":0,"w":260,"h":540},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":260,"h":540},
+	"sourceSize": {"w":260,"h":540}
+},
+"1":
+{
+	"frame": {"x":260,"y":0,"w":260,"h":540},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":260,"h":540},
+	"sourceSize": {"w":260,"h":540}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_6_walk_to_stand_idle",
+	"format": "RGBA8888",
+	"size": {"w":520,"h":540},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:408d4d4b4260cc7a36f4b12711440dfd:70e74a33320bb31c2b34ae5f36f19311:1af98b0118722b87914a08744f85b672$"
+}
+}

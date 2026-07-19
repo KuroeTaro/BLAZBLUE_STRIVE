@@ -421,95 +421,95 @@ function load_start_scene_anim()
 end
 function load_start_scene_audio()
     -- confirm
+    audio_SFX_start_scene_confirm_0 = {1}
+    audio_SFX_start_scene_confirm_0["LCT"] = {0}
+    audio_SFX_start_scene_confirm_0["LCD"] = {0}
+    audio_SFX_start_scene_confirm_0["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_confirm_0.wav","static")
     audio_SFX_start_scene_confirm_1 = {1}
     audio_SFX_start_scene_confirm_1["LCT"] = {0}
     audio_SFX_start_scene_confirm_1["LCD"] = {0}
-    audio_SFX_start_scene_confirm_1["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_confirm_1.mp3","static")
+    audio_SFX_start_scene_confirm_1["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_confirm_1.wav","static")
     audio_SFX_start_scene_confirm_2 = {1}
     audio_SFX_start_scene_confirm_2["LCT"] = {0}
     audio_SFX_start_scene_confirm_2["LCD"] = {0}
-    audio_SFX_start_scene_confirm_2["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_confirm_2.mp3","static")
+    audio_SFX_start_scene_confirm_2["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_confirm_2.wav","static")
     audio_SFX_start_scene_confirm_3 = {1}
     audio_SFX_start_scene_confirm_3["LCT"] = {0}
     audio_SFX_start_scene_confirm_3["LCD"] = {0}
-    audio_SFX_start_scene_confirm_3["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_confirm_3.mp3","static")
-    audio_SFX_start_scene_confirm_4 = {1}
-    audio_SFX_start_scene_confirm_4["LCT"] = {0}
-    audio_SFX_start_scene_confirm_4["LCD"] = {0}
-    audio_SFX_start_scene_confirm_4["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_confirm_4.mp3","static")
+    audio_SFX_start_scene_confirm_3["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_confirm_3.wav","static")
     -- exit
+    audio_SFX_start_scene_exit_0 = {1}
+    audio_SFX_start_scene_exit_0["LCT"] = {0}
+    audio_SFX_start_scene_exit_0["LCD"] = {0}
+    audio_SFX_start_scene_exit_0["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_exit_0.wav","static")
     audio_SFX_start_scene_exit_1 = {1}
     audio_SFX_start_scene_exit_1["LCT"] = {0}
     audio_SFX_start_scene_exit_1["LCD"] = {0}
-    audio_SFX_start_scene_exit_1["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_exit_1.mp3","static")
-    audio_SFX_start_scene_exit_2 = {1}
-    audio_SFX_start_scene_exit_2["LCT"] = {0}
-    audio_SFX_start_scene_exit_2["LCD"] = {0}
-    audio_SFX_start_scene_exit_2["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_exit_2.mp3","static")
+    audio_SFX_start_scene_exit_1["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_exit_1.wav","static")
     -- up down left right
+    audio_SFX_start_scene_up_0 = {1}
+    audio_SFX_start_scene_up_0["LCT"] = {0}
+    audio_SFX_start_scene_up_0["LCD"] = {0}
+    audio_SFX_start_scene_up_0["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_up_0.wav","static")
     audio_SFX_start_scene_up_1 = {1}
     audio_SFX_start_scene_up_1["LCT"] = {0}
     audio_SFX_start_scene_up_1["LCD"] = {0}
-    audio_SFX_start_scene_up_1["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_up_1.mp3","static")
-    audio_SFX_start_scene_up_2 = {1}
-    audio_SFX_start_scene_up_2["LCT"] = {0}
-    audio_SFX_start_scene_up_2["LCD"] = {0}
-    audio_SFX_start_scene_up_2["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_up_2.mp3","static")
+    audio_SFX_start_scene_up_1["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_up_1.wav","static")
+    audio_SFX_start_scene_down_0 = {1}
+    audio_SFX_start_scene_down_0["LCT"] = {0}
+    audio_SFX_start_scene_down_0["LCD"] = {0}
+    audio_SFX_start_scene_down_0["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_down_0.wav","static")
     audio_SFX_start_scene_down_1 = {1}
     audio_SFX_start_scene_down_1["LCT"] = {0}
     audio_SFX_start_scene_down_1["LCD"] = {0}
-    audio_SFX_start_scene_down_1["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_down_1.mp3","static")
-    audio_SFX_start_scene_down_2 = {1}
-    audio_SFX_start_scene_down_2["LCT"] = {0}
-    audio_SFX_start_scene_down_2["LCD"] = {0}
-    audio_SFX_start_scene_down_2["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_down_2.mp3","static")
+    audio_SFX_start_scene_down_1["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_down_1.wav","static")
+    audio_SFX_start_scene_left_0 = {1}
+    audio_SFX_start_scene_left_0["LCT"] = {0}
+    audio_SFX_start_scene_left_0["LCD"] = {0}
+    audio_SFX_start_scene_left_0["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_left_0.wav","static")
     audio_SFX_start_scene_left_1 = {1}
     audio_SFX_start_scene_left_1["LCT"] = {0}
     audio_SFX_start_scene_left_1["LCD"] = {0}
-    audio_SFX_start_scene_left_1["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_left_1.mp3","static")
-    audio_SFX_start_scene_left_2 = {1}
-    audio_SFX_start_scene_left_2["LCT"] = {0}
-    audio_SFX_start_scene_left_2["LCD"] = {0}
-    audio_SFX_start_scene_left_2["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_left_2.mp3","static")
+    audio_SFX_start_scene_left_1["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_left_1.wav","static")
+    audio_SFX_start_scene_right_0 = {1}
+    audio_SFX_start_scene_right_0["LCT"] = {0}
+    audio_SFX_start_scene_right_0["LCD"] = {0}
+    audio_SFX_start_scene_right_0["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_right_0.wav","static")
     audio_SFX_start_scene_right_1 = {1}
     audio_SFX_start_scene_right_1["LCT"] = {0}
     audio_SFX_start_scene_right_1["LCD"] = {0}
-    audio_SFX_start_scene_right_1["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_right_1.mp3","static")
-    audio_SFX_start_scene_right_2 = {1}
-    audio_SFX_start_scene_right_2["LCT"] = {0}
-    audio_SFX_start_scene_right_2["LCD"] = {0}
-    audio_SFX_start_scene_right_2["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_right_2.mp3","static")
+    audio_SFX_start_scene_right_1["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_right_1.wav","static")
     -- other
     audio_SFX_start_scene_blazblue_click_echo = {1}
     audio_SFX_start_scene_blazblue_click_echo["LCT"] = {0}
     audio_SFX_start_scene_blazblue_click_echo["LCD"] = {0}
-    audio_SFX_start_scene_blazblue_click_echo["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_blazblue_confirm_echo.mp3","static")
+    audio_SFX_start_scene_blazblue_click_echo["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_blazblue_confirm_echo.wav","static")
     audio_SFX_start_scene_scene_out = {1}
     audio_SFX_start_scene_scene_out["LCT"] = {0}
     audio_SFX_start_scene_scene_out["LCD"] = {0}
-    audio_SFX_start_scene_scene_out["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_scene_out.mp3","static")
+    audio_SFX_start_scene_scene_out["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_scene_out.wav","static")
     audio_BGM_start_scene_NOC_high = {1}
     audio_BGM_start_scene_NOC_high["LCT"] = {0}
     audio_BGM_start_scene_NOC_high["LCD"] = {0}
-    audio_BGM_start_scene_NOC_high["audio"] = love.audio.newSource("asset/start_scene/audio/BGM_NOC_high.mp3","stream")
+    audio_BGM_start_scene_NOC_high["audio"] = love.audio.newSource("asset/start_scene/audio/BGM_NOC_high.wav","stream")
     audio_BGM_start_scene_NOC_low = {0}
     audio_BGM_start_scene_NOC_low["LCT"] = {0}
     audio_BGM_start_scene_NOC_low["LCD"] = {0}
-    audio_BGM_start_scene_NOC_low["audio"] = love.audio.newSource("asset/start_scene/audio/BGM_NOC_low.mp3","stream")
+    audio_BGM_start_scene_NOC_low["audio"] = love.audio.newSource("asset/start_scene/audio/BGM_NOC_low.wav","stream")
+    update_SFX_VOLUME(audio_SFX_start_scene_confirm_0)
     update_SFX_VOLUME(audio_SFX_start_scene_confirm_1)
     update_SFX_VOLUME(audio_SFX_start_scene_confirm_2)
     update_SFX_VOLUME(audio_SFX_start_scene_confirm_3)
-    update_SFX_VOLUME(audio_SFX_start_scene_confirm_4)
+    update_SFX_VOLUME(audio_SFX_start_scene_exit_0)
     update_SFX_VOLUME(audio_SFX_start_scene_exit_1)
-    update_SFX_VOLUME(audio_SFX_start_scene_exit_2)
+    update_SFX_VOLUME(audio_SFX_start_scene_up_0)
     update_SFX_VOLUME(audio_SFX_start_scene_up_1)
-    update_SFX_VOLUME(audio_SFX_start_scene_up_2)
+    update_SFX_VOLUME(audio_SFX_start_scene_down_0)
     update_SFX_VOLUME(audio_SFX_start_scene_down_1)
-    update_SFX_VOLUME(audio_SFX_start_scene_down_2)
+    update_SFX_VOLUME(audio_SFX_start_scene_left_0)
     update_SFX_VOLUME(audio_SFX_start_scene_left_1)
-    update_SFX_VOLUME(audio_SFX_start_scene_left_2)
+    update_SFX_VOLUME(audio_SFX_start_scene_right_0)
     update_SFX_VOLUME(audio_SFX_start_scene_right_1)
-    update_SFX_VOLUME(audio_SFX_start_scene_right_2)
     update_SFX_VOLUME(audio_SFX_start_scene_blazblue_click_echo)
     update_SFX_VOLUME(audio_SFX_start_scene_scene_out)
     update_BGM_VOLUME(audio_BGM_start_scene_NOC_high)

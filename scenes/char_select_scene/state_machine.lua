@@ -76,7 +76,7 @@ function state_machine_UI_char_select_scene_char_select(input_id)
     local switch = {
         ["idle"] = function()
             if INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["K"] == "Pressing" then
-                play_obj_audio(audio_SFX_char_select_scene_confirm_3)
+                play_obj_audio(audio_SFX_char_select_scene_confirm_2)
                 obj["select_state"] = "selecting"
                 obj[4] = 1
                 obj_bar_mark[4] = 0
@@ -114,7 +114,7 @@ function state_machine_UI_char_select_scene_char_select(input_id)
             then
                 obj["select_state"] = "selected"
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["H"] == "Pressing" then
-                play_obj_audio(audio_SFX_char_select_scene_exit_2)
+                play_obj_audio(audio_SFX_char_select_scene_exit_1)
                 obj["select_state"] = "unselecting"
                 obj[4] = 0.25
                 obj_bar_mark[4] = 1
@@ -132,7 +132,7 @@ function state_machine_UI_char_select_scene_char_select(input_id)
                     anim_UI_point_linear_char_select_scene_control_method_bar_mark_unselecting_ease_out_opacity_1_0
                 )
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["K"] == "Pressing" then
-                play_obj_audio(audio_SFX_char_select_scene_confirm_4)
+                play_obj_audio(audio_SFX_char_select_scene_confirm_3)
                 obj["select_state"] = "locking"
                 obj[4] = 0.25
                 obj_bar_mark[4] = 1
@@ -153,7 +153,7 @@ function state_machine_UI_char_select_scene_char_select(input_id)
         end,
         ["selected"] = function()
             if INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["H"] == "Pressing" then
-                play_obj_audio(audio_SFX_char_select_scene_exit_2)
+                play_obj_audio(audio_SFX_char_select_scene_exit_1)
                 obj["select_state"] = "unselecting"
                 obj[4] = 0.25
                 obj_bar_mark[4] = 1
@@ -171,7 +171,7 @@ function state_machine_UI_char_select_scene_char_select(input_id)
                     anim_UI_point_linear_char_select_scene_control_method_bar_mark_unselecting_ease_out_opacity_1_0
                 )
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["K"] == "Pressing" then
-                play_obj_audio(audio_SFX_char_select_scene_confirm_4)
+                play_obj_audio(audio_SFX_char_select_scene_confirm_3)
                 obj["select_state"] = "locking"
                 obj[4] = 0.25
                 obj_bar_mark[4] = 1
@@ -209,7 +209,7 @@ function state_machine_UI_char_select_scene_char_select(input_id)
             then
                 obj["select_state"] = "idle"
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["K"] == "Pressing" then
-                play_obj_audio(audio_SFX_char_select_scene_confirm_3)
+                play_obj_audio(audio_SFX_char_select_scene_confirm_2)
                 obj["select_state"] = "selecting"
                 obj[4] = 1
                 obj_bar_mark[4] = 0
@@ -294,7 +294,7 @@ function state_machine_UI_char_select_scene_char_select_ease(obj,obj_char,obj_te
             if INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["left"] == "Pressing" 
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
-                play_obj_audio(audio_SFX_char_select_scene_left_2)
+                play_obj_audio(audio_SFX_char_select_scene_left_1)
                 obj["ease_state"] = "ease_out"
                 common_char_select_scene_reset_char_text_ease_out(obj_char,obj_text,obj_icon_cover,input_id)
                 CHAR_SELECT_LR[input_id] = CHAR_SELECT_LR[input_id] - 1
@@ -312,7 +312,7 @@ function state_machine_UI_char_select_scene_char_select_ease(obj,obj_char,obj_te
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["right"] == "Pressing"
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
-                play_obj_audio(audio_SFX_char_select_scene_right_2)
+                play_obj_audio(audio_SFX_char_select_scene_right_1)
                 obj["ease_state"] = "ease_out"
                 common_char_select_scene_reset_char_text_ease_out(obj_char,obj_text,obj_icon_cover,input_id)
                 CHAR_SELECT_LR[input_id] = CHAR_SELECT_LR[input_id] + 1
@@ -360,7 +360,7 @@ function state_machine_UI_char_select_scene_char_select_ease(obj,obj_char,obj_te
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["left"] == "Pressing" 
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
-                play_obj_audio(audio_SFX_char_select_scene_left_2)
+                play_obj_audio(audio_SFX_char_select_scene_left_1)
                 obj["ease_state"] = "ease_out"
                 common_char_select_scene_reset_char_text_ease_out(obj_char,obj_text,obj_icon_cover,input_id)
                 CHAR_SELECT_LR[input_id] = CHAR_SELECT_LR[input_id] - 1
@@ -378,7 +378,7 @@ function state_machine_UI_char_select_scene_char_select_ease(obj,obj_char,obj_te
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["right"] == "Pressing"
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
-                play_obj_audio(audio_SFX_char_select_scene_right_2)
+                play_obj_audio(audio_SFX_char_select_scene_right_1)
                 obj["ease_state"] = "ease_out"
                 common_char_select_scene_reset_char_text_ease_out(obj_char,obj_text,obj_icon_cover,input_id)
                 CHAR_SELECT_LR[input_id] = CHAR_SELECT_LR[input_id] + 1
@@ -405,7 +405,7 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_
             if INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["up"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(audio_SFX_char_select_scene_up_2)
+                play_obj_audio(audio_SFX_char_select_scene_up_1)
                 obj_bar_mark["state"] = "up_twitch"
                 if CONTROL_METHOD[input_id] == 1 then
                     local side_table = {["L"] = 469, ["R"] = 699}
@@ -416,7 +416,7 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["down"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(audio_SFX_char_select_scene_down_2)
+                play_obj_audio(audio_SFX_char_select_scene_down_1)
                 obj_bar_mark["state"] = "down_twitch"
                 if CONTROL_METHOD[input_id] == 0 then
                     local side_table = {["L"] = 509, ["R"] = 739}
@@ -433,7 +433,7 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["up"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(audio_SFX_char_select_scene_up_2)
+                play_obj_audio(audio_SFX_char_select_scene_up_1)
                 obj_bar_mark["state"] = "up_twitch"
                 if CONTROL_METHOD[input_id] == 1 then
                     local side_table = {["L"] = 469, ["R"] = 699}
@@ -444,7 +444,7 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["down"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(audio_SFX_char_select_scene_down_2)
+                play_obj_audio(audio_SFX_char_select_scene_down_1)
                 obj_bar_mark["state"] = "down_twitch"
                 if CONTROL_METHOD[input_id] == 0 then
                     local side_table = {["L"] = 509, ["R"] = 739}
@@ -461,7 +461,7 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["up"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(audio_SFX_char_select_scene_up_2)
+                play_obj_audio(audio_SFX_char_select_scene_up_1)
                 obj_bar_mark["state"] = "up_twitch"
                 if CONTROL_METHOD[input_id] == 1 then
                     local side_table = {["L"] = 469, ["R"] = 699}
@@ -472,7 +472,7 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["down"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(audio_SFX_char_select_scene_down_2)
+                play_obj_audio(audio_SFX_char_select_scene_down_1)
                 obj_bar_mark["state"] = "down_twitch"
                 if CONTROL_METHOD[input_id] == 0 then
                     local side_table = {["L"] = 509, ["R"] = 739}
@@ -497,7 +497,7 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
     local switch = {
         ["idle"] = function()
             if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
-                play_obj_audio(audio_SFX_char_select_scene_confirm_3)
+                play_obj_audio(audio_SFX_char_select_scene_confirm_2)
                 obj["select_state"] = "selecting"
                 obj[4] = 1
                 obj_bar_mark[4] = 0
@@ -535,7 +535,7 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
             then
                 obj["select_state"] = "selected"
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["H"] == "Pressing" then
-                play_obj_audio(audio_SFX_char_select_scene_exit_2)
+                play_obj_audio(audio_SFX_char_select_scene_exit_1)
                 obj["select_state"] = "unselecting"
                 obj[4] = 0.25
                 obj_bar_mark[4] = 1
@@ -553,7 +553,7 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
                     anim_UI_point_linear_char_select_scene_control_method_bar_mark_unselecting_ease_out_opacity_1_0
                 )
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
-                play_obj_audio(audio_SFX_char_select_scene_confirm_4)
+                play_obj_audio(audio_SFX_char_select_scene_confirm_3)
                 obj["select_state"] = "locking"
                 obj[4] = 0.25
                 obj_bar_mark[4] = 1
@@ -574,7 +574,7 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
         end,
         ["selected"] = function()
             if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["H"] == "Pressing" then
-                play_obj_audio(audio_SFX_char_select_scene_exit_2)
+                play_obj_audio(audio_SFX_char_select_scene_exit_1)
                 obj["select_state"] = "unselecting"
                 obj[4] = 0.25
                 obj_bar_mark[4] = 1
@@ -592,7 +592,7 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
                     anim_UI_point_linear_char_select_scene_control_method_bar_mark_unselecting_ease_out_opacity_1_0
                 )
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
-                play_obj_audio(audio_SFX_char_select_scene_confirm_4)
+                play_obj_audio(audio_SFX_char_select_scene_confirm_3)
                 obj["select_state"] = "locking"
                 obj[4] = 0.25
                 obj_bar_mark[4] = 1
@@ -630,7 +630,7 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
             then
                 obj["select_state"] = "idle"
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
-                play_obj_audio(audio_SFX_char_select_scene_confirm_3)
+                play_obj_audio(audio_SFX_char_select_scene_confirm_2)
                 obj["select_state"] = "selecting"
                 obj[4] = 1
                 obj_bar_mark[4] = 0
@@ -695,7 +695,7 @@ function state_machine_UI_char_select_scene_char_select_ease_train_dummy(obj,obj
             if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["left"] == "Pressing" 
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
-                play_obj_audio(audio_SFX_char_select_scene_left_2)
+                play_obj_audio(audio_SFX_char_select_scene_left_1)
                 obj["ease_state"] = "ease_out"
                 common_char_select_scene_reset_char_text_ease_out(obj_char,obj_text,obj_icon_cover,"R")
                 CHAR_SELECT_LR["R"] = CHAR_SELECT_LR["R"] - 1
@@ -713,7 +713,7 @@ function state_machine_UI_char_select_scene_char_select_ease_train_dummy(obj,obj
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["right"] == "Pressing"
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
-                play_obj_audio(audio_SFX_char_select_scene_right_2)
+                play_obj_audio(audio_SFX_char_select_scene_right_1)
                 obj["ease_state"] = "ease_out"
                 common_char_select_scene_reset_char_text_ease_out(obj_char,obj_text,obj_icon_cover,"R")
                 CHAR_SELECT_LR["R"] = CHAR_SELECT_LR["R"] + 1
@@ -761,7 +761,7 @@ function state_machine_UI_char_select_scene_char_select_ease_train_dummy(obj,obj
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["left"] == "Pressing" 
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
-                play_obj_audio(audio_SFX_char_select_scene_left_2)
+                play_obj_audio(audio_SFX_char_select_scene_left_1)
                 obj["ease_state"] = "ease_out"
                 common_char_select_scene_reset_char_text_ease_out(obj_char,obj_text,obj_icon_cover,"R")
                 CHAR_SELECT_LR["R"] = CHAR_SELECT_LR["R"] - 1
@@ -779,7 +779,7 @@ function state_machine_UI_char_select_scene_char_select_ease_train_dummy(obj,obj
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["right"] == "Pressing"
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
-                play_obj_audio(audio_SFX_char_select_scene_right_2)
+                play_obj_audio(audio_SFX_char_select_scene_right_1)
                 obj["ease_state"] = "ease_out"
                 common_char_select_scene_reset_char_text_ease_out(obj_char,obj_text,obj_icon_cover,"R")
                 CHAR_SELECT_LR["R"] = CHAR_SELECT_LR["R"] + 1
@@ -806,7 +806,7 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select_train_du
             if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["up"] == "Pressing" 
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(audio_SFX_char_select_scene_up_2)
+                play_obj_audio(audio_SFX_char_select_scene_up_1)
                 obj_bar_mark["state"] = "up_twitch"
                 if CONTROL_METHOD["R"] == 1 then
                     obj_bar_mark[2] = 699
@@ -816,7 +816,7 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select_train_du
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["down"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(audio_SFX_char_select_scene_down_2)
+                play_obj_audio(audio_SFX_char_select_scene_down_1)
                 obj_bar_mark["state"] = "down_twitch"
                 if CONTROL_METHOD["R"] == 0 then
                     obj_bar_mark[2] = 739
@@ -832,7 +832,7 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select_train_du
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["up"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(audio_SFX_char_select_scene_up_2)
+                play_obj_audio(audio_SFX_char_select_scene_up_1)
                 obj_bar_mark["state"] = "up_twitch"
                 if CONTROL_METHOD["R"] == 1 then
                     obj_bar_mark[2] = 699
@@ -842,7 +842,7 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select_train_du
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["down"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(audio_SFX_char_select_scene_down_2)
+                play_obj_audio(audio_SFX_char_select_scene_down_1)
                 obj_bar_mark["state"] = "down_twitch"
                 if CONTROL_METHOD["R"] == 0 then
                     obj_bar_mark[2] = 739
@@ -858,7 +858,7 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select_train_du
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["up"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(audio_SFX_char_select_scene_up_2)
+                play_obj_audio(audio_SFX_char_select_scene_up_1)
                 obj_bar_mark["state"] = "up_twitch"
                 if CONTROL_METHOD["R"] == 1 then
                     obj_bar_mark[2] = 699
@@ -868,7 +868,7 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select_train_du
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["down"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(audio_SFX_char_select_scene_down_2)
+                play_obj_audio(audio_SFX_char_select_scene_down_1)
                 obj_bar_mark["state"] = "down_twitch"
                 if CONTROL_METHOD["R"] == 0 then
                     obj_bar_mark[2] = 739

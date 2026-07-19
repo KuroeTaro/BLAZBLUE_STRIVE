@@ -1,0 +1,44 @@
+{"frames": {
+
+"0":
+{
+	"frame": {"x":0,"y":0,"w":540,"h":540},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":540,"h":540},
+	"sourceSize": {"w":540,"h":540}
+},
+"1":
+{
+	"frame": {"x":540,"y":0,"w":540,"h":540},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":540,"h":540},
+	"sourceSize": {"w":540,"h":540}
+},
+"2":
+{
+	"frame": {"x":0,"y":540,"w":540,"h":540},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":540,"h":540},
+	"sourceSize": {"w":540,"h":540}
+},
+"3":
+{
+	"frame": {"x":540,"y":540,"w":540,"h":540},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":540,"h":540},
+	"sourceSize": {"w":540,"h":540}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_5_stand_dash_skid",
+	"format": "RGBA8888",
+	"size": {"w":1080,"h":1080},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d7b32950895389a0d8af781309b8bc14:ed33ee69b0433c5839936add764dd695:688fbef5c8d040fe3dca8ca3992fb187$"
+}
+}

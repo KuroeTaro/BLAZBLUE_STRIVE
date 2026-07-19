@@ -20,7 +20,7 @@ function update_start_scene_30f_confirm()
     -- 场景出口
     if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then 
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_confirm_4)
+        play_obj_audio(audio_SFX_start_scene_confirm_3)
         -- 初始化此出口所需属性 但是目前没有
         -- 初始化main所需要的动画机
         init_point_linear_anim_with(obj_UI_start_scene_up_console_text,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity)
@@ -70,7 +70,7 @@ function update_start_scene_main()
     if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["left"] == "Pressing" then 
         SCENE_TIMER = 0
         -- 播放twitch音频
-        play_obj_audio(audio_SFX_start_scene_left_1)
+        play_obj_audio(audio_SFX_start_scene_left_0)
         -- 轮转 option id
         if OPTION_ID == 0 then 
             OPTION_ID = 4 
@@ -106,7 +106,7 @@ function update_start_scene_main()
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["right"] == "Pressing" then 
         SCENE_TIMER = 0
         -- 播放twitch音频
-        play_obj_audio(audio_SFX_start_scene_right_1)
+        play_obj_audio(audio_SFX_start_scene_right_0)
         -- 轮转 option ID
         if OPTION_ID == 4 then 
             OPTION_ID = 0 
@@ -141,7 +141,7 @@ function update_start_scene_main()
     -- 场景出口 option 确认
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then 
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_confirm_1)
+        play_obj_audio(audio_SFX_start_scene_confirm_0)
         local switch = {
             [0] = function()
                 SCENE_TIMER = 0
@@ -533,7 +533,7 @@ function update_start_scene_config_main()
     -- 场景出口
     if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["up"] == "Pressing" then
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_up_1)
+        play_obj_audio(audio_SFX_start_scene_up_0)
         -- 更新 config dabo trig ID
         if SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID ~= 0 then
             SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID = SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID - 1
@@ -550,7 +550,7 @@ function update_start_scene_config_main()
         current_update_block = update_start_scene_config_twitch_up
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["down"] == "Pressing" then
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_down_1)
+        play_obj_audio(audio_SFX_start_scene_down_0)
         -- 更新 config dabo trig ID
         if SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID ~= 3 then
             SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID = SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID + 1
@@ -570,7 +570,7 @@ function update_start_scene_config_main()
         local switch = {
             [0] = function()
                 -- audio config
-                play_obj_audio(audio_SFX_start_scene_confirm_2)
+                play_obj_audio(audio_SFX_start_scene_confirm_0)
                 -- current bar mark ID
                 AUDIO_BAR_MARK_ID = 0
                 -- 初始化此出口所需属性
@@ -627,7 +627,7 @@ function update_start_scene_config_main()
             end,
             [1] = function()
                 -- controller config
-                play_obj_audio(audio_SFX_start_scene_confirm_2)
+                play_obj_audio(audio_SFX_start_scene_confirm_0)
                 -- 初始化此出口所需属性
                 obj_UI_start_scene_config_controller_bar_mark_LP["state"] = "off_state"
                 obj_UI_start_scene_config_controller_bar_mark_RP["state"] = "off_state"
@@ -663,7 +663,7 @@ function update_start_scene_config_main()
             end,
             [2] = function()
                 -- resolution config
-                play_obj_audio(audio_SFX_start_scene_confirm_2)
+                play_obj_audio(audio_SFX_start_scene_confirm_0)
                 -- current bar mark ID
                 get_current_resolution()
                 -- 初始化此出口所需属性
@@ -701,7 +701,7 @@ function update_start_scene_config_main()
             end,
             [3] = function()
                 -- back to config main
-                play_obj_audio(audio_SFX_start_scene_confirm_1)
+                play_obj_audio(audio_SFX_start_scene_confirm_0)
                 -- 初始化此出口所需属性
                 obj_UI_start_scene_shutter[4] = 1
                 obj_UI_start_scene_config_menu_dabo_trig[4] = 1
@@ -742,7 +742,7 @@ function update_start_scene_config_main()
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["H"] == "Pressing" then
         SCENE_TIMER = 0
         -- 播放scene out to sub
-        play_obj_audio(audio_SFX_start_scene_exit_1)
+        play_obj_audio(audio_SFX_start_scene_exit_0)
         -- 初始化此出口所需属性
         obj_UI_start_scene_shutter[4] = 1
         obj_UI_start_scene_config_menu_dabo_trig[4] = 1
@@ -941,7 +941,7 @@ function update_start_scene_config_audio_main()
     -- 场景出口
     if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["up"] == "Pressing" then
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_up_1)
+        play_obj_audio(audio_SFX_start_scene_up_0)
         -- 改变 AUDIO_BAR_MARK_ID
         if AUDIO_BAR_MARK_ID ~= 0 then
             AUDIO_BAR_MARK_ID = AUDIO_BAR_MARK_ID - 1
@@ -962,7 +962,7 @@ function update_start_scene_config_audio_main()
         current_update_block = update_start_scene_config_audio_bar_mark_twtich_up
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["down"] == "Pressing" then
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_down_1)
+        play_obj_audio(audio_SFX_start_scene_down_0)
         -- 改变AUDIO_BAR_MARK_ID
         if AUDIO_BAR_MARK_ID ~= 1 then
             AUDIO_BAR_MARK_ID = AUDIO_BAR_MARK_ID + 1
@@ -983,7 +983,7 @@ function update_start_scene_config_audio_main()
         current_update_block = update_start_scene_config_audio_bar_mark_twtich_down
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["left"] == "Pressing" then
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_left_1)
+        play_obj_audio(audio_SFX_start_scene_left_0)
         -- 初始化此出口所需属性
         obj_UI_start_scene_config_audio_bar_mark[2] = 
         BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID + 1]
@@ -1025,7 +1025,7 @@ function update_start_scene_config_audio_main()
         end
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["right"] == "Pressing" then
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_right_1)
+        play_obj_audio(audio_SFX_start_scene_right_0)
         -- 初始化此出口所需属性
         obj_UI_start_scene_config_audio_bar_mark[2] = 
         BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID + 1]
@@ -1068,7 +1068,7 @@ function update_start_scene_config_audio_main()
         end
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["H"] == "Pressing" or INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_exit_1)
+        play_obj_audio(audio_SFX_start_scene_exit_0)
         -- 初始化此出口所需属性
         obj_UI_start_scene_config_audio_bar_mark[4] = 1
         obj_UI_start_scene_config_audio_BGM_bar_light[4] = 1
@@ -1435,7 +1435,7 @@ function update_start_scene_config_controller_main()
     -- 场景出口
     if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["H"] == "Pressing" or INPUT_SYS_CURRENT_COMMAND_STATE["R"]["H"] == "Pressing" then
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_exit_1)
+        play_obj_audio(audio_SFX_start_scene_exit_0)
         -- 初始化此出口所需属性
         obj_UI_start_scene_config_controller_bar_mark_LP[4] = 0.5
         obj_UI_start_scene_config_controller_bar_mark_RP[4] = 0.5
@@ -1557,7 +1557,7 @@ function update_start_scene_config_resolution_main()
     )
     if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["left"] == "Pressing" then
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_left_1)
+        play_obj_audio(audio_SFX_start_scene_left_0)
         if RES_PARTTEN ~= 0 then
             RES_PARTTEN = RES_PARTTEN - 1
         end
@@ -1574,7 +1574,7 @@ function update_start_scene_config_resolution_main()
         current_update_block = update_start_scene_config_resolution_bar_mark_twtich_left
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["right"] == "Pressing" then
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_right_1)
+        play_obj_audio(audio_SFX_start_scene_right_0)
         if RES_PARTTEN ~= 4 then
             RES_PARTTEN = RES_PARTTEN + 1
         end
@@ -1593,7 +1593,7 @@ function update_start_scene_config_resolution_main()
         set_current_resolution()
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["H"] == "Pressing" then
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_exit_1)
+        play_obj_audio(audio_SFX_start_scene_exit_0)
         -- 初始化此出口所需属性
         obj_UI_start_scene_config_resolution_bar_mark[4] = 1
         obj_UI_start_scene_config_resolution_w_x_h[4] = 1
@@ -1802,7 +1802,7 @@ function update_start_scene_record_main()
     -- 场景出口
     if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["up"] == "Pressing" then
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_up_1)
+        play_obj_audio(audio_SFX_start_scene_up_0)
         -- 初始化此出口所需属性
         obj_UI_start_scene_record_dabo_trig[2] = 
         DABO_TIRG_RECORD_SUB_SCENE_Y_POSITION
@@ -1815,7 +1815,7 @@ function update_start_scene_record_main()
         current_update_block = update_start_scene_record_twitch_up
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["down"] == "Pressing" then
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_down_1)
+        play_obj_audio(audio_SFX_start_scene_down_0)
         -- 初始化此出口所需属性
         obj_UI_start_scene_record_dabo_trig[2] = 
         DABO_TIRG_RECORD_SUB_SCENE_Y_POSITION
@@ -1828,7 +1828,7 @@ function update_start_scene_record_main()
         current_update_block = update_start_scene_record_twitch_down
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" or INPUT_SYS_CURRENT_COMMAND_STATE["L"]["H"] == "Pressing" then
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_exit_1)
+        play_obj_audio(audio_SFX_start_scene_exit_0)
         -- 初始化此出口所需属性
         obj_UI_start_scene_shutter[4] = 1
         obj_UI_start_scene_record_dabo_trig[4] = 1

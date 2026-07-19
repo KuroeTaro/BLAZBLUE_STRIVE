@@ -600,7 +600,7 @@ function update_char_select_scene_train_dummy_select()
             obj_UI_char_select_scene_control_method_left,
             anim_UI_point_linear_char_select_scene_control_method_bar_mark_unlocking_ease_in_opacity_0_1
         )
-        play_obj_audio(audio_SFX_char_select_scene_exit_2)
+        play_obj_audio(audio_SFX_char_select_scene_exit_1)
         -- 更新 current_update_block
         current_update_block = update_char_select_scene_main
     end

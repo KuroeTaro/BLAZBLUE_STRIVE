@@ -1,0 +1,84 @@
+{"frames": {
+
+"0":
+{
+	"frame": {"x":0,"y":0,"w":520,"h":580},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":580},
+	"sourceSize": {"w":520,"h":580}
+},
+"1":
+{
+	"frame": {"x":520,"y":0,"w":520,"h":580},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":580},
+	"sourceSize": {"w":520,"h":580}
+},
+"2":
+{
+	"frame": {"x":1040,"y":0,"w":520,"h":580},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":580},
+	"sourceSize": {"w":520,"h":580}
+},
+"3":
+{
+	"frame": {"x":0,"y":580,"w":520,"h":580},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":580},
+	"sourceSize": {"w":520,"h":580}
+},
+"4":
+{
+	"frame": {"x":520,"y":580,"w":520,"h":580},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":580},
+	"sourceSize": {"w":520,"h":580}
+},
+"5":
+{
+	"frame": {"x":1040,"y":580,"w":520,"h":580},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":580},
+	"sourceSize": {"w":520,"h":580}
+},
+"6":
+{
+	"frame": {"x":0,"y":1160,"w":520,"h":580},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":580},
+	"sourceSize": {"w":520,"h":580}
+},
+"7":
+{
+	"frame": {"x":520,"y":1160,"w":520,"h":580},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":580},
+	"sourceSize": {"w":520,"h":580}
+},
+"8":
+{
+	"frame": {"x":1040,"y":1160,"w":520,"h":580},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":580},
+	"sourceSize": {"w":520,"h":580}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_0_general_hurt_launched_mid_up",
+	"format": "RGBA8888",
+	"size": {"w":1560,"h":1740},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:f20de6a73e40b9da7fbc130b969268a6:779798861e7191506a3993dd5475a321:6866080916043aa81e194caa9926bf5e$"
+}
+}
