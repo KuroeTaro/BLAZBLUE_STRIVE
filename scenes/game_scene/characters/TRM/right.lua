@@ -518,7 +518,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_VFX_game_scene_RP[v.."_move_VFX"] = 
                 common_sprite_sheet_load(
-                    "asset/game_scene/VFX/move_VFX/TRM/"..v..".json",
+                    "asset/game_scene/characters/TRM/texture/move_VFX/"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
                 )
             end 

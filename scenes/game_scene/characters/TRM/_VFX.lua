@@ -222,7 +222,7 @@ function insert_VFX_game_scene_char_TRM_6S_move(obj_char)
     local image_sprite_sheet = image_sprite_sheet_table["6S_move_VFX"]
     obj_VFX["life"] = 36
     obj_VFX[1] = obj_char["x"] + obj_char[5]*(-430)
-    obj_VFX[2] = obj_char["y"] + obj_char[6]*(-520)
+    obj_VFX[2] = obj_char["y"] + obj_char[6]*(-510)
     obj_VFX[3] = obj_char[3]
     obj_VFX[4] = 1
     obj_VFX[5] = obj_char[5]
@@ -257,7 +257,7 @@ function insert_VFX_game_scene_char_TRM_6S_move(obj_char)
     end
     obj_VFX["draw_sync"] = function()
         obj_VFX[1] = obj_char["x"] + obj_char[5]*(-430)
-        obj_VFX[2] = obj_char["y"] + obj_char[6]*(-520)
+        obj_VFX[2] = obj_char["y"] + obj_char[6]*(-510)
         obj_VFX[3] = obj_char[3]
         obj_VFX[5] = obj_char[5]
         obj_VFX[6] = obj_char[6]
