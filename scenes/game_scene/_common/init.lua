@@ -49,42 +49,50 @@ function load_game_scene_common_shader(i)
     -- shader_game_scene_gaussian_blur = love.graphics.newShader("shaders/gaussian_blur.glsl")
 end
 function load_game_scene_announcer_HUD_obj()
+    -- black_solid
     obj_UI_game_scene_black_solid = {0,0,nil,0,1,1,0,0}
     obj_UI_game_scene_black_solid["FCT"] = {0,0,0,0,0,0,0,0}
     obj_UI_game_scene_black_solid["LCT"] = {0,0,0,0,0,0,0,0}
     obj_UI_game_scene_black_solid["LCD"] = {0,0,0,0,0,0,0,0}
     obj_UI_game_scene_black_solid["state"] = "default"
     obj_UI_game_scene_black_solid["rgb"] = {7/255,19/255,31/255}
+    -- move_cover
     obj_UI_game_scene_movie_cover = {0,0,nil,0.8,1,1,0,0}
     obj_UI_game_scene_movie_cover["FCT"] = {0,0,0,0,0,0,0,0}
     obj_UI_game_scene_movie_cover["LCT"] = {0,0,0,0,0,0,0,0}
     obj_UI_game_scene_movie_cover["LCD"] = {0,0,0,0,0,0,0,0}
     obj_UI_game_scene_movie_cover["state"] = "default"
+    -- act_common
     obj_annoucer_game_scene_act_common = {0,200,nil,0,1,1,0,0}
     obj_annoucer_game_scene_act_common["FCT"] = {0,0,0,0,0,0,0,0}
     obj_annoucer_game_scene_act_common["LCT"] = {0,0,0,0,0,0,0,0}
     obj_annoucer_game_scene_act_common["LCD"] = {0,0,0,0,0,0,0,0}
     obj_annoucer_game_scene_act_common["state"] = "default"
+    -- act_num
     obj_annoucer_game_scene_act_num = {675,400,nil,0,1,1,0,0}
     obj_annoucer_game_scene_act_num["FCT"] = {0,0,0,0,0,0,0,0}
     obj_annoucer_game_scene_act_num["LCT"] = {0,0,0,0,0,0,0,0}
     obj_annoucer_game_scene_act_num["LCD"] = {0,0,0,0,0,0,0,0}
     obj_annoucer_game_scene_act_num["state"] = "default"
+    -- lets_dance
     obj_annoucer_game_scene_lets_dance = {0,0,nil,0,1,1,0,0}
     obj_annoucer_game_scene_lets_dance["FCT"] = {0,0,0,0,0,0,0,0}
     obj_annoucer_game_scene_lets_dance["LCT"] = {0,0,0,0,0,0,0,0}
     obj_annoucer_game_scene_lets_dance["LCD"] = {0,0,0,0,0,0,0,0}
     obj_annoucer_game_scene_lets_dance["state"] = "default"
+    -- HUD_ease_in
     obj_HUD_game_scene_ease_in = {0,0,nil,0,1,1,0,0}
     obj_HUD_game_scene_ease_in["FCT"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_ease_in["LCT"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_ease_in["LCD"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_ease_in["state"] = "default"
+    -- HUD_timer
     obj_HUD_game_scene_timer = {780,85,nil,0,1,1,0,0}
     obj_HUD_game_scene_timer["FCT"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_timer["LCT"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_timer["LCD"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_timer["state"] = "default"
+    -- bars
     obj_HUD_game_scene_health_bar_LP = {685,65,nil,0,-1,1,0,0}
     obj_HUD_game_scene_health_bar_RP = {915,65,nil,0,1,1,0,0}
     obj_HUD_game_scene_health_bar_LP_fade = {685,65,nil,0,-1,1,0,0}
@@ -101,6 +109,7 @@ function load_game_scene_announcer_HUD_obj()
     obj_HUD_game_scene_match_point_RP = {883,85,nil,0,-1,1,0,0}
     obj_HUD_game_scene_risk_LP = {255,127,nil,0,1,1,0,0}
     obj_HUD_game_scene_risk_RP = {1345,127,nil,0,-1,1,0,0}
+    -- overdrive_text
     obj_HUD_game_scene_overdrive_text_LP = {205,102,nil,0,1,1,0,0}
     obj_HUD_game_scene_overdrive_text_LP["FCT"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_overdrive_text_LP["LCT"] = {0,0,0,0,0,0,0,0}
@@ -111,6 +120,7 @@ function load_game_scene_announcer_HUD_obj()
     obj_HUD_game_scene_overdrive_text_RP["LCT"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_overdrive_text_RP["LCD"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_overdrive_text_RP["state"] = "default"
+    -- overdrive_timer
     obj_HUD_game_scene_overdrive_timer_LP = {217,149,nil,0,1,1,0,0}
     obj_HUD_game_scene_overdrive_timer_LP["FCT"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_overdrive_timer_LP["LCT"] = {0,0,0,0,0,0,0,0}
@@ -121,6 +131,7 @@ function load_game_scene_announcer_HUD_obj()
     obj_HUD_game_scene_overdrive_timer_RP["LCT"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_overdrive_timer_RP["LCD"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_overdrive_timer_RP["state"] = "default"
+    -- background_gauge
     obj_HUD_game_scene_background_gauge = {0,0,nil,0,1,1,0,0}
     obj_HUD_game_scene_background_gauge["FCT"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_background_gauge["LCT"] = {0,0,0,0,0,0,0,0}
@@ -128,6 +139,7 @@ function load_game_scene_announcer_HUD_obj()
     obj_HUD_game_scene_background_gauge["state"] = "default"
 end
 function load_game_scene_announcer_HUD_anim()
+    -- solid_ease_in
     anim_UI_point_linear_game_scene_solid_ease_in_opacity_0_1 = {}
     anim_UI_point_linear_game_scene_solid_ease_in_opacity_0_1[0] = {0,5}
     anim_UI_point_linear_game_scene_solid_ease_in_opacity_0_1[5] = {1,5}
@@ -135,6 +147,7 @@ function load_game_scene_announcer_HUD_anim()
     anim_UI_point_linear_game_scene_solid_ease_in_opacity_0_1["length"] = 5
     anim_UI_point_linear_game_scene_solid_ease_in_opacity_0_1["loop"] = false
     anim_UI_point_linear_game_scene_solid_ease_in_opacity_0_1["fix_type"] = true
+    -- solid_ease_out
     anim_UI_point_linear_game_scene_solid_ease_out_opacity_1_0 = {}
     anim_UI_point_linear_game_scene_solid_ease_out_opacity_1_0[0] = {1,5}
     anim_UI_point_linear_game_scene_solid_ease_out_opacity_1_0[5] = {0,5}
@@ -142,6 +155,7 @@ function load_game_scene_announcer_HUD_anim()
     anim_UI_point_linear_game_scene_solid_ease_out_opacity_1_0["length"] = 5
     anim_UI_point_linear_game_scene_solid_ease_out_opacity_1_0["loop"] = false
     anim_UI_point_linear_game_scene_solid_ease_out_opacity_1_0["fix_type"] = true
+    -- timer_ease_in
     anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1 = {}
     anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1[0] = {0,10}
     anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1[10] = {1,10}
@@ -149,6 +163,7 @@ function load_game_scene_announcer_HUD_anim()
     anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1["length"] = 10
     anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1["loop"] = false
     anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1["fix_type"] = true
+    -- timer_ease_out
     anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0 = {}
     anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0[0] = {1,10}
     anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0[10] = {0,10}
@@ -156,6 +171,7 @@ function load_game_scene_announcer_HUD_anim()
     anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0["length"] = 10
     anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0["loop"] = false
     anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0["fix_type"] = true
+    -- overdrive_brighness_ease_in
     anim_char_point_linear_game_scene_overdrive_brightness_ease_in = {}
     anim_char_point_linear_game_scene_overdrive_brightness_ease_in[0] = {0,32}
     anim_char_point_linear_game_scene_overdrive_brightness_ease_in[32] = {0.2,32}
@@ -163,6 +179,7 @@ function load_game_scene_announcer_HUD_anim()
     anim_char_point_linear_game_scene_overdrive_brightness_ease_in["length"] = 32
     anim_char_point_linear_game_scene_overdrive_brightness_ease_in["loop"] = false
     anim_char_point_linear_game_scene_overdrive_brightness_ease_in["fix_type"] = false
+    -- overdrive_brighness_ease_out
     anim_char_point_linear_game_scene_overdrive_brightness_ease_out = {}
     anim_char_point_linear_game_scene_overdrive_brightness_ease_out[0] = {0.2,10}
     anim_char_point_linear_game_scene_overdrive_brightness_ease_out[10] = {0,10}
