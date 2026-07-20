@@ -906,6 +906,7 @@ function load_game_scene_box_anchor_data_LP()
     }
 end
 function load_game_scene_audio_char_LP()
+    -- 5P
     audio_SFX_game_scene_LP = {}
     audio_SFX_game_scene_LP["5P"] = {1}
     audio_SFX_game_scene_LP["5P"]["LCT"] = {0}

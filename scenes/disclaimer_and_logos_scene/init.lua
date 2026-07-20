@@ -7,6 +7,7 @@ function load_disclaimer_and_logos_scene_obj()
     obj_UI_disclaimer_and_logos_scene_singular["state"] = "pre_disclaimer_ease_in"
 end
 function load_disclaimer_and_logos_scene_anim()
+    -- ease_in
     anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_in_opacity_0_1 = {}
     anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_in_opacity_0_1[0] = {0,5}
     anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_in_opacity_0_1[5] = {1,5}
@@ -14,6 +15,7 @@ function load_disclaimer_and_logos_scene_anim()
     anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_in_opacity_0_1["length"] = 5
     anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_in_opacity_0_1["loop"] = false
     anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_in_opacity_0_1["fix_type"] = true
+    -- ease_out
     anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_out_opacity_1_0 = {}
     anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_out_opacity_1_0[0] = {1,5}
     anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_out_opacity_1_0[5] = {0,5}

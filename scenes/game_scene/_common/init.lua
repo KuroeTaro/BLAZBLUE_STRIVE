@@ -21,15 +21,17 @@ function load_game_scene_box_anchor_data()
     load_game_scene_box_anchor_data_RP()
 end
 function load_game_scene_common_audio()
+    -- ease_in
     audio_SFX_game_scene_annoucer_ease_in = {1}
     audio_SFX_game_scene_annoucer_ease_in["LCT"] = {0}
     audio_SFX_game_scene_annoucer_ease_in["LCD"] = {0}
     audio_SFX_game_scene_annoucer_ease_in["audio"] = love.audio.newSource("asset/game_scene/common/audio/annoucer_ease_in.wav","static")
+    update_SFX_VOLUME(audio_SFX_game_scene_annoucer_ease_in)
+    -- overdrive
     audio_SFX_game_scene_overdrive = {1}
     audio_SFX_game_scene_overdrive["LCT"] = {0}
     audio_SFX_game_scene_overdrive["LCD"] = {0}
     audio_SFX_game_scene_overdrive["audio"] = love.audio.newSource("asset/game_scene/common/audio/overdrive.wav","static")
-    update_SFX_VOLUME(audio_SFX_game_scene_annoucer_ease_in)
     update_SFX_VOLUME(audio_SFX_game_scene_overdrive)
 end
 function load_game_scene_common_shader(i)
