@@ -861,7 +861,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     obj_projectile["hit_VFX_insert_function"] = function()
         for i = 1,#hurt_side_obj_char["VFX_status_back_table"] do
             local current_VFX = hurt_side_obj_char["VFX_status_back_table"][i]
-            if current_VFX["status_name"] == "TRM_6SP_P_arua" then
+            if current_VFX["status_name"] == "TRM_6SP_P_arua" and current_VFX["state"] ~= "end" then
                 return
             end
         end
