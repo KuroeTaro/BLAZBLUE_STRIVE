@@ -567,6 +567,7 @@ function load_game_scene_box_anchor_data_RP()
     local crouch_hurtbox = {{0,-155,220,310}}
     local air_hurtbox = {{0,-140,220,320}}
     local OTG_hurtbox = {{0,-75,475,150}}
+    -- box_anchor_data_global_variable
     obj_hurtboxs_data_game_scene_char_RP = {}
     obj_pushboxs_data_game_scene_char_RP = {}
     obj_anchor_data_game_scene_char_RP = {}
@@ -575,13 +576,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_VFX_spawn_anchor_data_game_scene_char_RP["block_ver0_spawn_anchor_pos"] = {}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["block_ver1_spawn_anchor_pos"] = {}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["wallstick_spawn_anchor_pos"] = {}
-    -- obj_hurtboxs_data_game_scene_char_RP["__"] = {}
-    -- obj_hurtboxs_data_game_scene_char_RP["__"][0] = {{__,__,__,__}}
-    -- obj_pushboxs_data_game_scene_char_RP["__"] = {}
-    -- obj_pushboxs_data_game_scene_char_RP["__"][0] = 
-    -- obj_anchor_data_game_scene_char_RP["__"] = {__,__}
-    obj_anchor_data_game_scene_char_RP["0_air_Launcher_teched"] = {370,310}
-    obj_anchor_data_game_scene_char_RP["0_air_Launcher_teching"] = {275,360}
+    -- 0_crouch_hurt
     obj_pushboxs_data_game_scene_char_RP["0_crouch_hurt"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_crouch_hurt"][0] = crouch_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_crouch_hurt"] = {}
@@ -592,6 +587,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_crouch_hurt"][4] = {{0,-150,260,300}}
     obj_anchor_data_game_scene_char_RP["0_crouch_hurt"] = {297,420}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["0_crouch_hurt"] = {600,-195}
+    -- 0_general_hurt_falled_knockout
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_falled_knockout"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_falled_knockout"][0] = stand_pushbox
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_falled_knockout"][1] = crouch_pushbox
@@ -608,6 +604,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_falled_knockout"][10] = OTG_hurtbox
     obj_anchor_data_game_scene_char_RP["0_general_hurt_falled_knockout"] = {330,456}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["0_general_hurt_falled_knockout"] = {-370,-150}
+    -- 0_stand_hurt_high
     obj_pushboxs_data_game_scene_char_RP["0_stand_hurt_high"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_stand_hurt_high"][0] = stand_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_stand_hurt_high"] = {}
@@ -618,6 +615,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_stand_hurt_high"][4] = {{0,-190,260,380}}
     obj_anchor_data_game_scene_char_RP["0_stand_hurt_high"] = {208,495}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["0_stand_hurt_high"] = {600,-195}
+    -- 0_stand_hurt_low
     obj_pushboxs_data_game_scene_char_RP["0_stand_hurt_low"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_stand_hurt_low"][0] = stand_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_stand_hurt_low"] = {}
@@ -628,6 +626,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_stand_hurt_low"][4] = {{0,-190,260,380}}
     obj_anchor_data_game_scene_char_RP["0_stand_hurt_low"] = {249,495}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["0_stand_hurt_low"] = {600,-195}
+    -- 0_stand_hurt_mid
     obj_pushboxs_data_game_scene_char_RP["0_stand_hurt_mid"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_stand_hurt_mid"][0] = stand_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_stand_hurt_mid"] = {}
@@ -638,21 +637,25 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_stand_hurt_mid"][4] = {{0,-190,260,380}}
     obj_anchor_data_game_scene_char_RP["0_stand_hurt_mid"] = {205,475}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["0_stand_hurt_mid"] = {600,-195}
+    -- 0_wallbreak_hit
     obj_pushboxs_data_game_scene_char_RP["0_wallbreak_hit"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_wallbreak_hit"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_wallbreak_hit"] = {}
     obj_hurtboxs_data_game_scene_char_RP["0_wallbreak_hit"][0] = {}
     obj_anchor_data_game_scene_char_RP["0_wallbreak_hit"] = {280,510}
+    -- 0_wallbreak_hurt_adv
     obj_pushboxs_data_game_scene_char_RP["0_wallbreak_hurt_adv"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_wallbreak_hurt_adv"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_wallbreak_hurt_adv"] = {}
     obj_hurtboxs_data_game_scene_char_RP["0_wallbreak_hurt_adv"][0] = {}
     obj_anchor_data_game_scene_char_RP["0_wallbreak_hurt_adv"] = {280,275}
+    -- 0_wallbreak_hurt_non_adv
     obj_pushboxs_data_game_scene_char_RP["0_wallbreak_hurt_non_adv"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_wallbreak_hurt_non_adv"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_wallbreak_hurt_non_adv"] = {}
     obj_hurtboxs_data_game_scene_char_RP["0_wallbreak_hurt_non_adv"][0] = {}
     obj_anchor_data_game_scene_char_RP["0_wallbreak_hurt_non_adv"] = {270,575}
+    -- 4_stand_block_guard_crash
     obj_pushboxs_data_game_scene_char_RP["4_stand_block_guard_crash"] = {}
     obj_pushboxs_data_game_scene_char_RP["4_stand_block_guard_crash"][0] = stand_pushbox
     obj_hurtboxs_data_game_scene_char_RP["4_stand_block_guard_crash"] = {}
@@ -661,6 +664,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["4_stand_block_guard_crash"] = {600,-195}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["block_ver0_spawn_anchor_pos"]["4_stand_block_guard_crash"] = {-430,-595}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["block_ver1_spawn_anchor_pos"]["4_stand_block_guard_crash"] = {-430,-595}
+    -- 4_stand_block_high
     obj_pushboxs_data_game_scene_char_RP["4_stand_block_high"] = {}
     obj_pushboxs_data_game_scene_char_RP["4_stand_block_high"][0] = stand_pushbox
     obj_hurtboxs_data_game_scene_char_RP["4_stand_block_high"] = {}
@@ -669,6 +673,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["4_stand_block_high"] = {600,-195}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["block_ver0_spawn_anchor_pos"]["4_stand_block_high"] = {-430,-645}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["block_ver1_spawn_anchor_pos"]["4_stand_block_high"] = {-430,-645}
+    -- 4_stand_block_mid
     obj_pushboxs_data_game_scene_char_RP["4_stand_block_mid"] = {}
     obj_pushboxs_data_game_scene_char_RP["4_stand_block_mid"][0] = stand_pushbox
     obj_hurtboxs_data_game_scene_char_RP["4_stand_block_mid"] = {}
@@ -677,6 +682,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["4_stand_block_mid"] = {600,-195}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["block_ver0_spawn_anchor_pos"]["4_stand_block_mid"] = {-430,-440}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["block_ver1_spawn_anchor_pos"]["4_stand_block_mid"] = {-430,-440}
+    -- 1_crouch_block
     obj_pushboxs_data_game_scene_char_RP["1_crouch_block"] = {}
     obj_pushboxs_data_game_scene_char_RP["1_crouch_block"][0] = crouch_pushbox
     obj_hurtboxs_data_game_scene_char_RP["1_crouch_block"] = {}
@@ -685,6 +691,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["1_crouch_block"] = {600,-195}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["block_ver0_spawn_anchor_pos"]["1_crouch_block"] = {-430,-475}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["block_ver1_spawn_anchor_pos"]["1_crouch_block"] = {-430,-475}
+    -- 1_crouch_block_guard_crash
     obj_pushboxs_data_game_scene_char_RP["1_crouch_block_guard_crash"] = {}
     obj_pushboxs_data_game_scene_char_RP["1_crouch_block_guard_crash"][0] = crouch_pushbox
     obj_hurtboxs_data_game_scene_char_RP["1_crouch_block_guard_crash"] = {}
@@ -693,6 +700,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["1_crouch_block_guard_crash"] = {600,-195}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["block_ver0_spawn_anchor_pos"]["1_crouch_block_guard_crash"] = {-430,-475}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["block_ver1_spawn_anchor_pos"]["1_crouch_block_guard_crash"] = {-430,-475}
+    -- 1_4_7_air_block
     obj_pushboxs_data_game_scene_char_RP["1_4_7_air_block"] = {}
     obj_pushboxs_data_game_scene_char_RP["1_4_7_air_block"][0] = air_pushbox
     obj_pushboxs_data_game_scene_char_RP["1_4_7_air_block"][6] = stand_pushbox
@@ -705,6 +713,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["1_4_7_air_block"] = {-355,-160}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["block_ver0_spawn_anchor_pos"]["1_4_7_air_block"] = {-420,-465}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["block_ver1_spawn_anchor_pos"]["1_4_7_air_block"] = {-420,-465}
+    -- 1_4_7_air_block_guard_crash
     obj_pushboxs_data_game_scene_char_RP["1_4_7_air_block_guard_crash"] = {}
     obj_pushboxs_data_game_scene_char_RP["1_4_7_air_block_guard_crash"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_RP["1_4_7_air_block_guard_crash"] = {}
@@ -713,15 +722,13 @@ function load_game_scene_box_anchor_data_RP()
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["1_4_7_air_block_guard_crash"] = {600,-195}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["block_ver0_spawn_anchor_pos"]["1_4_7_air_block_guard_crash"] = {-420,-490}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["block_ver1_spawn_anchor_pos"]["1_4_7_air_block_guard_crash"] = {-420,-490}
-    obj_VFX_spawn_anchor_data_game_scene_char_RP["FD_block_spawn_anchor_pos"] = {}
-    obj_VFX_spawn_anchor_data_game_scene_char_RP["FD_block_spawn_anchor_pos"]["stand"] = {-300,-540}
-    obj_VFX_spawn_anchor_data_game_scene_char_RP["FD_block_spawn_anchor_pos"]["crouch"] = {-300,-420}
-    obj_VFX_spawn_anchor_data_game_scene_char_RP["FD_block_spawn_anchor_pos"]["air"] = {-300,-440}
+    -- 0_general_hurt_soft_knockdown_wallstick_air
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_soft_knockdown_wallstick_air"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_soft_knockdown_wallstick_air"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_soft_knockdown_wallstick_air"] = {}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_soft_knockdown_wallstick_air"][0] = {{0,-120,240,400}}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_soft_knockdown_wallstick_air"] = {210,345}
+    -- 0_general_hurt_hard_knockdown_down
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_down"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_down"][0] = air_pushbox
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_down"][2] = OTG_pushbox
@@ -731,6 +738,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_down"][6] = OTG_hurtbox
     obj_anchor_data_game_scene_char_RP["0_general_hurt_hard_knockdown_down"] = {320,330}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["0_general_hurt_hard_knockdown_down"] = {-367,-165}
+    -- 0_general_hurt_hard_knockdown_head_down
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_head_down"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_head_down"][0] = air_pushbox
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_head_down"][2] = OTG_pushbox
@@ -740,6 +748,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_head_down"][6] = OTG_hurtbox
     obj_anchor_data_game_scene_char_RP["0_general_hurt_hard_knockdown_head_down"] = {321,335}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["0_general_hurt_hard_knockdown_head_down"] = {-357,-168}
+    -- 0_general_hurt_hard_knockdown_up
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_up"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_up"][0] = air_pushbox
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_up"][2] = OTG_pushbox
@@ -749,6 +758,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_up"][6] = OTG_hurtbox
     obj_anchor_data_game_scene_char_RP["0_general_hurt_hard_knockdown_up"] = {240,285}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["0_general_hurt_hard_knockdown_up"] = {-390,-154}
+    -- 0_general_hurt_hard_knockdown_wallstick_ground
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_wallstick_ground"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_wallstick_ground"][0] = air_pushbox
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_wallstick_ground"][3] = crouch_pushbox
@@ -759,21 +769,25 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_wallstick_ground"][4] = {{0,-112.5,220,225}}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_hard_knockdown_wallstick_ground"] = {315,355}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["0_general_hurt_hard_knockdown_wallstick_ground"] = {-343,-128}
+    -- 0_general_hurt_hard_recovery_down
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_down"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_down"][0] = crouch_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_down"] = {}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_down"][0] = {}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_hard_recovery_down"] = {323,509}
+    -- 0_general_hurt_hard_recovery_up
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_up"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_up"][0] = crouch_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_up"] = {}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_up"][0] = {}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_hard_recovery_up"] = {248,535}
+    -- 0_general_hurt_hard_recovery_wallstick_ground
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_wallstick_ground"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_wallstick_ground"][0] = crouch_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_wallstick_ground"] = {}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_wallstick_ground"][0] = {}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_hard_recovery_wallstick_ground"] = {248,535}
+    -- 0_general_hurt_soft_recovery_ground
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_soft_recovery_ground"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_soft_recovery_ground"][0] = OTG_pushbox
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_soft_recovery_ground"][4] = crouch_pushbox
@@ -784,11 +798,13 @@ function load_game_scene_box_anchor_data_RP()
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["0_general_hurt_soft_recovery_ground"] = {}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["0_general_hurt_soft_recovery_ground"][0] = {600,-195}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["0_general_hurt_soft_recovery_ground"][1] = {-335,-160}
+    -- 0_general_hurt_soft_recovery_wallstick_air
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_soft_recovery_wallstick_air"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_soft_recovery_wallstick_air"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_soft_recovery_wallstick_air"] = {}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_soft_recovery_wallstick_air"][0] = {}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_soft_recovery_wallstick_air"] = {320,430}
+    -- 0_general_hurt_launched_float
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_float"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_float"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_float"] = {}
@@ -800,6 +816,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_float"][9] = {{0,-60,410,280}}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_float"][11] = {{0,-60,410,300}}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_launched_float"] = {269,275}
+    -- 0_general_hurt_launched_groundbounce
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_groundbounce"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_groundbounce"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_groundbounce"] = {}
@@ -808,6 +825,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_groundbounce"][3] = {{0,-130,430,290}}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_groundbounce"][4] = {{0,-135,400,290}}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_launched_groundbounce"] = {270,290}
+    -- 0_general_hurt_launched_high
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_high"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_high"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_high"] = {}
@@ -819,6 +837,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_high"][8] = {{0,-130,430,290}}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_high"][9] = {{0,-135,400,290}}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_launched_high"] = {270,290}
+    -- 0_general_hurt_launched_low
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_low"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_low"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_low"] = {}
@@ -826,12 +845,14 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_low"][1] = {{0,-107,375,320}}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_low"][2] = {{0,-110,460,220}}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_launched_low"] = {300,330}
+    -- 0_general_hurt_launched_mid_hori_heavy
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_hori_heavy"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_hori_heavy"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_hori_heavy"] = {}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_hori_heavy"][0] = {{0,-106,260,350}}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_hori_heavy"][1] = {{0,-100,355,261}}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_launched_mid_hori_heavy"] = {186,286}
+    -- 0_general_hurt_launched_mid_up
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_up"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_up"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_up"] = {}
@@ -843,16 +864,19 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_up"][6] = {{-12,-220,335,350}}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_mid_up"][7] = {{-12,-265,240,550}}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_launched_mid_up"] = {282,550}
+    -- 0_general_hurt_launched_rolling
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_rolling"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_rolling"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_rolling"] = {}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_rolling"][0] = {{0,-50,370,380}}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_launched_rolling"] = {215,265}
+    -- 0_general_hurt_launched_rotate
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_rotate"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_rotate"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_rotate"] = {}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_rotate"][0] = {{0,-74,400,390}}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_launched_rotate"] = {225,290}
+    -- 0_general_hurt_launched_wallbounce
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_wallbounce"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_launched_wallbounce"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_wallbounce"] = {}
@@ -861,6 +885,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_wallbounce"][2] = {{0,-68,330,450}}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_launched_wallbounce"][3] = {{0,-68,374,380}}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_launched_wallbounce"] = {233,317}
+    -- 0_general_hurt_semi_launched_mid
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"][0] = air_pushbox
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"][3] = stand_pushbox
@@ -872,6 +897,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"][5] = {{0,-207.5,190,415}}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"][6] = {{0,-215,170,430},{0,-445,100,30}}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_semi_launched_mid"] = {265,510}
+    -- 0_general_hurt_semi_launched_rotate
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_rotate"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_rotate"][0] = stand_pushbox
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_rotate"][12] = OTG_pushbox
@@ -883,12 +909,23 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_rotate"][11] = {{0,-190,350,380}}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_semi_launched_rotate"][12] = {{0,-150,380,300}}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_semi_launched_rotate"] = {255,525}
+    -- 0_air_Launcher_tech
+    obj_anchor_data_game_scene_char_RP["0_air_Launcher_teched"] = {370,310}
+    obj_anchor_data_game_scene_char_RP["0_air_Launcher_teching"] = {275,360}
+    -- 0_ground_Launcher_tech
     obj_anchor_data_game_scene_char_RP["0_ground_Launcher_teching"] = {205,400}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["0_ground_Launcher_teching"] = {-750,-190}
     obj_anchor_data_game_scene_char_RP["0_ground_Launcher_teched"] = {223,510}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["0_ground_Launcher_teched"] = {-850,-195}
+    -- thrown_tested
     obj_anchor_data_game_scene_char_RP["air_thrown_tested"] = {340,430}
     obj_anchor_data_game_scene_char_RP["ground_thrown_tested"] = {150,530}
+    -- FD_block
+    obj_VFX_spawn_anchor_data_game_scene_char_RP["FD_block_spawn_anchor_pos"] = {}
+    obj_VFX_spawn_anchor_data_game_scene_char_RP["FD_block_spawn_anchor_pos"]["stand"] = {-300,-540}
+    obj_VFX_spawn_anchor_data_game_scene_char_RP["FD_block_spawn_anchor_pos"]["crouch"] = {-300,-420}
+    obj_VFX_spawn_anchor_data_game_scene_char_RP["FD_block_spawn_anchor_pos"]["air"] = {-300,-440}
+    -- RC
     obj_pushboxs_data_game_scene_char_RP["RC"] = {}
     obj_hurtboxs_data_game_scene_char_RP["RC"] = {}
     obj_anchor_data_game_scene_char_RP["RC"] = {}
@@ -898,6 +935,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_pushboxs_data_game_scene_char_RP["RC"]["air"] = air_pushbox
     obj_hurtboxs_data_game_scene_char_RP["RC"]["air"] = {{0,-120,230,500}}
     obj_anchor_data_game_scene_char_RP["RC"]["air"] = {330,485}
+    -- wallstick
     obj_VFX_spawn_anchor_data_game_scene_char_RP["wallstick_spawn_anchor_pos"] = {
         ["stand"] = 865,
         ["crouch"] = 765,
@@ -906,16 +944,66 @@ function load_game_scene_box_anchor_data_RP()
     }
 end
 function load_game_scene_audio_char_RP()
-    -- 5P
+    -- audio_global_variable
     audio_SFX_game_scene_RP = {}
-    audio_SFX_game_scene_RP["5P"] = {1}
-    audio_SFX_game_scene_RP["5P"]["LCT"] = {0}
-    audio_SFX_game_scene_RP["5P"]["LCD"] = {0}
-    audio_SFX_game_scene_RP["5P"]["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_confirm_0.wav","static")
-    update_SFX_VOLUME(audio_SFX_game_scene_RP["5P"])
+    -- load_common_block_hit_whiff_SFX
+    local block_files = {
+        "lv0_block_blast_0","lv0_block_blast_1","lv0_block_slash","lv1_block_blast_0","lv1_block_blast_1","lv1_block_slash",
+        "lv2_block_blast_0","lv2_block_blast_1","lv2_block_slash","lv3_block_blast_0","lv3_block_blast_1","lv3_block_slash"
+    }
+    for i = 1,12 do
+        local key = block_files[i]
+        local path = "asset/game_scene/common/audio/block_SFX/"..key..".wav"
+        audio_SFX_game_scene_RP[key] = {1}
+        audio_SFX_game_scene_RP[key]["LCT"] = {0}
+        audio_SFX_game_scene_RP[key]["LCD"] = {0}
+        audio_SFX_game_scene_RP[key]["audio"] = love.audio.newSource(path,"static")
+        update_SFX_VOLUME(audio_SFX_game_scene_RP[key])
+    end
+    local hit_files = {
+        "lv0_hit_blast_0","lv0_hit_blast_1","lv0_hit_slash","lv1_hit_blast_0","lv1_hit_blast_1","lv1_hit_slash",
+        "lv2_hit_blast_0","lv2_hit_blast_1","lv2_hit_slash","lv3_hit_blast_0","lv3_hit_blast_1","lv3_hit_slash"
+    }
+    for i = 1,12 do
+        local key = hit_files[i]
+        local path = "asset/game_scene/common/audio/hit_SFX/"..key..".wav"
+        audio_SFX_game_scene_RP[key] = {1}
+        audio_SFX_game_scene_RP[key]["LCT"] = {0}
+        audio_SFX_game_scene_RP[key]["LCD"] = {0}
+        audio_SFX_game_scene_RP[key]["audio"] = love.audio.newSource(path,"static")
+        update_SFX_VOLUME(audio_SFX_game_scene_RP[key])
+    end
+    local whiff_files = {
+        "lv0_whiff_blast_0","lv0_whiff_blast_1","lv0_whiff_slash","lv1_whiff_blast_0","lv1_whiff_blast_1","lv1_whiff_slash",
+        "lv2_whiff_blast_0","lv2_whiff_blast_1","lv2_whiff_slash","lv3_whiff_blast_0","lv3_whiff_blast_1","lv3_whiff_slash"
+    }
+    for i = 1,12 do
+        local key = whiff_files[i]
+        local path = "asset/game_scene/common/audio/whiff_SFX/"..key..".wav"
+        audio_SFX_game_scene_RP[key] = {1}
+        audio_SFX_game_scene_RP[key]["LCT"] = {0}
+        audio_SFX_game_scene_RP[key]["LCD"] = {0}
+        audio_SFX_game_scene_RP[key]["audio"] = love.audio.newSource(path,"static")
+        update_SFX_VOLUME(audio_SFX_game_scene_RP[key])
+    end
+    -- load_5Launcher_SFX
+    local launcher_files = {
+        "5Launcher_block","5Launcher_hit","5Launcher_hold_block","5Launcher_hold_hit",
+        "5Launcher_hold_hit_Launcher_jump","5Launcher_hold_startup","5Launcher_hold_whiff","5Launcher_whiff"
+    }
+    for i = 1,8 do
+        local name = launcher_files[i]
+        local path = "asset/game_scene/common/audio/5Launcher_SFX/"..name..".wav"
+        audio_SFX_game_scene_RP[name] = {1}
+        audio_SFX_game_scene_RP[name]["LCT"] = {0}
+        audio_SFX_game_scene_RP[name]["LCD"] = {0}
+        audio_SFX_game_scene_RP[name]["audio"] = love.audio.newSource(path,"static")
+        update_SFX_VOLUME(audio_SFX_game_scene_RP[name])
+    end
 end
 function load_game_scene_shader_char_RP()
-    -- no shader for now
+    -- shader_global_variable no_shader_in_this_case
+    shader_game_scene_RP = {}
 end
 function load_game_scene_wallbreak_start_init_RP()
     local stand_pushbox = {0,-185,120,370}

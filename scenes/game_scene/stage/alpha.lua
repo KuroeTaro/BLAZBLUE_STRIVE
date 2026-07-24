@@ -266,6 +266,39 @@ function load_game_scene_anim_stage()
     anim_stage_point_linear_game_scene_wallbreak_glow_opacity["fix_type"] = true
     -- uncommon
 end
+function load_game_scene_audio_stage()
+    -- audio_global_variable no_BGM_in_this_case
+    audio_BGM_game_scene_stage = {}
+    audio_SFX_game_scene_stage = {}
+    audio_environment_game_scene_stage = {}
+    -- load_BGM
+    -- load_SFX
+    local SFX_files = {
+        "air_backdash","air_dash","ground_dash_cancel","ground_dash_loop","ground_dash_skid",
+        "ground_dash_start_up","ground_hard_knockdown","ground_jump","ground_land","ground_soft_knockdown",
+        "ground_SP_jump","ground_step_0","ground_step_1","wall_wallbreak"
+    }
+    for i = 1,14 do
+        local name = SFX_files[i]
+        local path = "asset/game_scene/stage/alpha/audio/SFX/"..name..".wav"
+        audio_SFX_game_scene_stage[name] = {1}
+        audio_SFX_game_scene_stage[name]["LCT"] = {0}
+        audio_SFX_game_scene_stage[name]["LCD"] = {0}
+        audio_SFX_game_scene_stage[name]["audio"] = love.audio.newSource(path,"static")
+        update_SFX_VOLUME(audio_SFX_game_scene_stage[name])
+    end
+    -- load_environment
+    local environment_files = {"wind"}
+    for i = 1,1 do
+        local name = environment_files[i]
+        local path = "asset/game_scene/stage/alpha/audio/environment/"..name..".wav"
+        audio_environment_game_scene_stage[name] = {1}
+        audio_environment_game_scene_stage[name]["LCT"] = {0}
+        audio_environment_game_scene_stage[name]["LCD"] = {0}
+        audio_environment_game_scene_stage[name]["audio"] = love.audio.newSource(path,"static")
+        update_SFX_VOLUME(audio_environment_game_scene_stage[name])
+    end
+end
 function order_load_game_scene_stage(load_order)
     local switch = 
     {

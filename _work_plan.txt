@@ -16,29 +16,7 @@ config选项中自定义要不要79空投
     -- the ground of the ring at y = 0
     -- and so call up is toward the inside of the ring Y is negative
     -- the other side is Y positive
-
-添加音效
-    _5_stand_dash_skid
-    _4_walk
-    _6_walk
-    _7_8_9_jump_air_to_stand_idle
-    _7_8_9_pre_jump
-    _4dash_backdash
-    _4dash_air_backdash
-    _6dash_dash
-    _6dash_air_dash
-    _6dash_dash_cancel
-    _2P_whiff
-    _6P_whiff
-    _5P_whiff
-    _2K_whiff
-    _6K
-    _5K
-    _2S
-    _6S
-    _cS
-    _fS
-    _5H
+    
 obj_wallstick state修改 ease_in/pause/ease_out/off
 knockout场景
 碎墙的血量伤害应用和碎墙knockout
