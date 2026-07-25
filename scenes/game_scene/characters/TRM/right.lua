@@ -147,7 +147,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["collision_ground_height_offset"] = 0 -- 用于检测和地面碰撞的
     -- sub_obj_table
     obj_char_game_scene_char_RP["projectile_table"] = {}
-    obj_char_game_scene_char_RP["projectile_rc_table"] = {}
+    obj_char_game_scene_char_RP["projectile_RC_table"] = {}
     obj_char_game_scene_char_RP["VFX_HUD_table"] = {}
     obj_char_game_scene_char_RP["VFX_status_front_table"] = {}
     obj_char_game_scene_char_RP["VFX_status_back_table"] = {}
@@ -405,8 +405,8 @@ function order_load_game_scene_char_RP_frames(load_order)
             -- attack 4 5 6
             local load_name_table = {
                 "burst_overdrive_ground",
-                "burst_overdrive_rc_air",
-                "burst_rc_ground",
+                "burst_overdrive_RC_air",
+                "burst_RC_ground",
                 "2P",
                 "6P",
                 "5P",
@@ -946,60 +946,6 @@ end
 function load_game_scene_audio_char_RP()
     -- audio_global_variable
     audio_SFX_game_scene_RP = {}
-    -- load_common_block_hit_whiff_SFX
-    local block_files = {
-        "lv0_block_blast_0","lv0_block_blast_1","lv0_block_slash","lv1_block_blast_0","lv1_block_blast_1","lv1_block_slash",
-        "lv2_block_blast_0","lv2_block_blast_1","lv2_block_slash","lv3_block_blast_0","lv3_block_blast_1","lv3_block_slash"
-    }
-    for i = 1,12 do
-        local key = block_files[i]
-        local path = "asset/game_scene/common/audio/block_SFX/"..key..".wav"
-        audio_SFX_game_scene_RP[key] = {1}
-        audio_SFX_game_scene_RP[key]["LCT"] = {0}
-        audio_SFX_game_scene_RP[key]["LCD"] = {0}
-        audio_SFX_game_scene_RP[key]["audio"] = love.audio.newSource(path,"static")
-        update_SFX_VOLUME(audio_SFX_game_scene_RP[key])
-    end
-    local hit_files = {
-        "lv0_hit_blast_0","lv0_hit_blast_1","lv0_hit_slash","lv1_hit_blast_0","lv1_hit_blast_1","lv1_hit_slash",
-        "lv2_hit_blast_0","lv2_hit_blast_1","lv2_hit_slash","lv3_hit_blast_0","lv3_hit_blast_1","lv3_hit_slash"
-    }
-    for i = 1,12 do
-        local key = hit_files[i]
-        local path = "asset/game_scene/common/audio/hit_SFX/"..key..".wav"
-        audio_SFX_game_scene_RP[key] = {1}
-        audio_SFX_game_scene_RP[key]["LCT"] = {0}
-        audio_SFX_game_scene_RP[key]["LCD"] = {0}
-        audio_SFX_game_scene_RP[key]["audio"] = love.audio.newSource(path,"static")
-        update_SFX_VOLUME(audio_SFX_game_scene_RP[key])
-    end
-    local whiff_files = {
-        "lv0_whiff_blast_0","lv0_whiff_blast_1","lv0_whiff_slash","lv1_whiff_blast_0","lv1_whiff_blast_1","lv1_whiff_slash",
-        "lv2_whiff_blast_0","lv2_whiff_blast_1","lv2_whiff_slash","lv3_whiff_blast_0","lv3_whiff_blast_1","lv3_whiff_slash"
-    }
-    for i = 1,12 do
-        local key = whiff_files[i]
-        local path = "asset/game_scene/common/audio/whiff_SFX/"..key..".wav"
-        audio_SFX_game_scene_RP[key] = {1}
-        audio_SFX_game_scene_RP[key]["LCT"] = {0}
-        audio_SFX_game_scene_RP[key]["LCD"] = {0}
-        audio_SFX_game_scene_RP[key]["audio"] = love.audio.newSource(path,"static")
-        update_SFX_VOLUME(audio_SFX_game_scene_RP[key])
-    end
-    -- load_5Launcher_SFX
-    local launcher_files = {
-        "5Launcher_block","5Launcher_hit","5Launcher_hold_block","5Launcher_hold_hit",
-        "5Launcher_hold_hit_Launcher_jump","5Launcher_hold_startup","5Launcher_hold_whiff","5Launcher_whiff"
-    }
-    for i = 1,8 do
-        local name = launcher_files[i]
-        local path = "asset/game_scene/common/audio/5Launcher_SFX/"..name..".wav"
-        audio_SFX_game_scene_RP[name] = {1}
-        audio_SFX_game_scene_RP[name]["LCT"] = {0}
-        audio_SFX_game_scene_RP[name]["LCD"] = {0}
-        audio_SFX_game_scene_RP[name]["audio"] = love.audio.newSource(path,"static")
-        update_SFX_VOLUME(audio_SFX_game_scene_RP[name])
-    end
 end
 function load_game_scene_shader_char_RP()
     -- shader_global_variable no_shader_in_this_case
@@ -3010,14 +2956,14 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_red(input,self_side_ob
         end
         self_side_obj_char["physics_lock"] = false
         if self_side_obj_char["height"] == "air" then
-            self_side_obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
             self_side_obj_char["anchor_pos"] = {330,485}
             self_side_obj_char["pushbox"] = {0,-100,120,200}
             self_side_obj_char["collision_ground_height_offset"] = 185
             self_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         else
             self_side_obj_char["height"] = "stand"
-            self_side_obj_char["sprite_sheet"] = "burst_rc_ground"
+            self_side_obj_char["sprite_sheet"] = "burst_RC_ground"
             self_side_obj_char["anchor_pos"] = {300,615}
             self_side_obj_char["pushbox"]  = {0,-185,120,370}
             self_side_obj_char["collision_ground_height_offset"] = 0
@@ -3083,14 +3029,14 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,self_side_o
         self_side_obj_char["velocity_cache"][2] = math.min(self_side_obj_char["velocity_cache"][2],12.5)
         self_side_obj_char["physics_lock"] = false
         if self_side_obj_char["height"] == "air" then
-            self_side_obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
             self_side_obj_char["anchor_pos"] = {330,485}
             self_side_obj_char["pushbox"] = {0,-100,120,200}
             self_side_obj_char["collision_ground_height_offset"] = 185
             self_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         else
             self_side_obj_char["height"] = "stand"
-            self_side_obj_char["sprite_sheet"] = "burst_rc_ground"
+            self_side_obj_char["sprite_sheet"] = "burst_RC_ground"
             self_side_obj_char["anchor_pos"] = {300,615}
             self_side_obj_char["pushbox"]  = {0,-185,120,370}
             self_side_obj_char["collision_ground_height_offset"] = 0
@@ -3129,14 +3075,14 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,self_side
         end
         self_side_obj_char["physics_lock"] = false
         if self_side_obj_char["height"] == "air" then
-            self_side_obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
             self_side_obj_char["anchor_pos"] = {330,485}
             self_side_obj_char["pushbox"] = {0,-100,120,200}
             self_side_obj_char["collision_ground_height_offset"] = 185
             self_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         else
             self_side_obj_char["height"] = "stand"
-            self_side_obj_char["sprite_sheet"] = "burst_rc_ground"
+            self_side_obj_char["sprite_sheet"] = "burst_RC_ground"
             self_side_obj_char["anchor_pos"] = {300,615}
             self_side_obj_char["pushbox"]  = {0,-185,120,370}
             self_side_obj_char["collision_ground_height_offset"] = 0
@@ -3163,14 +3109,14 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_yellow(input,self_side
         self_side_obj_char["velocity_cache"] = {0,0}
         self_side_obj_char["physics_lock"] = false
         if self_side_obj_char["height"] == "air" then
-            self_side_obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
             self_side_obj_char["anchor_pos"] = {330,485}
             self_side_obj_char["pushbox"] = {0,-100,120,200}
             self_side_obj_char["collision_ground_height_offset"] = 185
             self_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         else
             self_side_obj_char["height"] = "stand"
-            self_side_obj_char["sprite_sheet"] = "burst_rc_ground"
+            self_side_obj_char["sprite_sheet"] = "burst_RC_ground"
             self_side_obj_char["anchor_pos"] = {300,615}
             self_side_obj_char["pushbox"]  = {0,-185,120,370}
             self_side_obj_char["collision_ground_height_offset"] = 0
@@ -3206,7 +3152,7 @@ function state_gate_game_scene_char_RP_common_to_burst_overdrive(input,self_side
         local obj_camera = obj_stage_game_scene_camera
         local height = self_side_obj_char["height"]
         if height == "air" then
-            self_side_obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
             self_side_obj_char["anchor_pos"] = {330,485}
             self_side_obj_char["pushbox"] = {0,-100,120,200}
             self_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
@@ -6276,8 +6222,8 @@ function draw_game_scene_char_RP_hitbox()
             end
         end
     end
-    for i=1,#self_side_obj_char["projectile_rc_table"] do
-        local current_projectile = self_side_obj_char["projectile_rc_table"][i]
+    for i=1,#self_side_obj_char["projectile_RC_table"] do
+        local current_projectile = self_side_obj_char["projectile_RC_table"][i]
         for j=1,#current_projectile["hitbox_table"] do
             local current_hitbox = current_projectile["hitbox_table"][j]
             if current_hitbox then
@@ -6295,11 +6241,11 @@ function draw_game_scene_char_RP_hitbox()
 end
 -- projectile
 function update_game_scene_char_RP_projectile()
-    for i = #obj_char_game_scene_char_RP["projectile_rc_table"],1,-1 do -- 反向遍历，便于删除元素
-        local object = obj_char_game_scene_char_RP["projectile_rc_table"][i]
+    for i = #obj_char_game_scene_char_RP["projectile_RC_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_RP["projectile_RC_table"][i]
         object["update"](object)
         if object["life"] <= 0 then
-            table.remove(obj_char_game_scene_char_RP["projectile_rc_table"],i) -- 寿命耗尽，从列表中移除
+            table.remove(obj_char_game_scene_char_RP["projectile_RC_table"],i) -- 寿命耗尽，从列表中移除
         end
     end
     for i = #obj_char_game_scene_char_RP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
@@ -6316,9 +6262,9 @@ function draw_game_scene_char_RP_projectile()
         object["draw"]()
     end
 end
-function draw_game_scene_char_RP_projectile_rc()
-    for i = #obj_char_game_scene_char_RP["projectile_rc_table"],1,-1 do -- 反向遍历，便于删除元素
-        local object = obj_char_game_scene_char_RP["projectile_rc_table"][i]
+function draw_game_scene_char_RP_projectile_RC()
+    for i = #obj_char_game_scene_char_RP["projectile_RC_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_RP["projectile_RC_table"][i]
         object["draw"]()
     end
 end

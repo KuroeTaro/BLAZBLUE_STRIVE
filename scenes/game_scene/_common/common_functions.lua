@@ -58,11 +58,7 @@ function common_game_scene_anim_0_update_function_unwallstick(obj_char)
 end
 -- get
 function common_game_scene_get_SFX_table(side)
-    local side_table = {
-        ["L"] = audio_SFX_game_scene_LP,
-        ["R"] = audio_SFX_game_scene_RP
-    }
-    return side_table[side]
+    return audio_SFX_game_scene_common
 end
 function common_game_scene_get_pushbox(side)
     local side_table = {
@@ -879,7 +875,7 @@ function common_game_scene_projectile_RC_red_yellow_hurt_function_common_hurt(hi
     end
     -- insert_camera_shake_enclose
     common_game_scene_hit_load_camera_shake_anim(obj_projectile,1.0,30)
-    common_game_scene_red_rc_hit_load_camera_enclose_anim(obj_projectile)
+    common_game_scene_red_RC_hit_load_camera_enclose_anim(obj_projectile)
     obj_projectile["enclose_position_offset"] = {
         0,
         37.5,
@@ -1442,7 +1438,7 @@ function common_game_scene_counter_ver3_load_camera_enclose_anim(obj_char)
     anim["nil_mark"] = false
     obj_char["camera_enclosing_anim"] = anim
 end
-function common_game_scene_red_rc_hit_load_camera_enclose_anim(obj_char)
+function common_game_scene_red_RC_hit_load_camera_enclose_anim(obj_char)
     local anim = {}
     local obj_camera = obj_stage_game_scene_camera
     anim[0] = {obj_camera["enclose_percentage"],2}

@@ -60,7 +60,7 @@
     -- state_cache
     -- physics_lock
     -- projectile_clash_box
-function load_game_scene_anim_projectile_rc_main(obj_projectile)
+function load_game_scene_anim_projectile_RC_main(obj_projectile)
     local res = {}
     res["prop_f"] = "f"
     res["anim_length"] = 15
@@ -98,8 +98,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
-    -- clear_projectile_rc_table
-    hit_side_obj_char["projectile_rc_table"] = {}
+    -- clear_projectile_RC_table
+    hit_side_obj_char["projectile_RC_table"] = {}
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 30
@@ -300,7 +300,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     end
     -- animation
         -- projectile_animation
-    obj_projectile["projectile_animation"] = load_game_scene_anim_projectile_rc_main(obj_projectile)
+    obj_projectile["projectile_animation"] = load_game_scene_anim_projectile_RC_main(obj_projectile)
     init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
         -- camera_animation
     obj_projectile["camera_x_shake_anim"] = nil
@@ -347,7 +347,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     obj_projectile[2] = obj_projectile["y"] - 600
     obj_projectile[5] = hit_side_obj_char[5]
     -- insert_projectile
-    table.insert(hit_side_obj_char["projectile_rc_table"],obj_projectile)
+    table.insert(hit_side_obj_char["projectile_RC_table"],obj_projectile)
 end
 -- insert_projectile_game_scene_char_common_RC_shockwave_blue
 -- 1-8 type life x y velocity projectile_clash_type f
@@ -361,8 +361,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
-    -- clear_projectile_rc_table
-    hit_side_obj_char["projectile_rc_table"] = {}
+    -- clear_projectile_RC_table
+    hit_side_obj_char["projectile_RC_table"] = {}
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 30
@@ -391,7 +391,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
     end
     -- animation
         -- projectile_animation
-    obj_projectile["projectile_animation"] = load_game_scene_anim_projectile_rc_main(obj_projectile)
+    obj_projectile["projectile_animation"] = load_game_scene_anim_projectile_RC_main(obj_projectile)
     init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
     -- update
     obj_projectile["update"] = function()
@@ -435,7 +435,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
     obj_projectile[2] = obj_projectile["y"] - 600
     obj_projectile[5] = hit_side_obj_char[5]
     -- insert_projectile
-    table.insert(hit_side_obj_char["projectile_rc_table"],obj_projectile)
+    table.insert(hit_side_obj_char["projectile_RC_table"],obj_projectile)
 end
 -- insert_projectile_game_scene_char_common_RC_shockwave_purple
 -- 1-8 type life x y velocity projectile_clash_type f
@@ -449,8 +449,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
-    -- clear_projectile_rc_table
-    hit_side_obj_char["projectile_rc_table"] = {}
+    -- clear_projectile_RC_table
+    hit_side_obj_char["projectile_RC_table"] = {}
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 30
@@ -479,7 +479,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
     end
     -- animation
         -- projectile_animation
-    obj_projectile["projectile_animation"] = load_game_scene_anim_projectile_rc_main(obj_projectile)
+    obj_projectile["projectile_animation"] = load_game_scene_anim_projectile_RC_main(obj_projectile)
     init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
     -- update
     obj_projectile["update"] = function()
@@ -523,7 +523,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
     obj_projectile[2] = obj_projectile["y"] - 600
     obj_projectile[5] = hit_side_obj_char[5]
     -- insert_projectile
-    table.insert(hit_side_obj_char["projectile_rc_table"],obj_projectile)
+    table.insert(hit_side_obj_char["projectile_RC_table"],obj_projectile)
 end
 -- insert_projectile_game_scene_char_common_RC_shockwave_yellow
 -- 1-8 type life x y velocity projectile_clash_type f
@@ -546,8 +546,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
-    -- clear_projectile_rc_table
-    hit_side_obj_char["projectile_rc_table"] = {}
+    -- clear_projectile_RC_table
+    hit_side_obj_char["projectile_RC_table"] = {}
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 30
@@ -708,7 +708,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
     end
     -- animation
         -- projectile_animation
-    obj_projectile["projectile_animation"] = load_game_scene_anim_projectile_rc_main(obj_projectile)
+    obj_projectile["projectile_animation"] = load_game_scene_anim_projectile_RC_main(obj_projectile)
     init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
         -- camera_animation
     obj_projectile["camera_x_shake_anim"] = nil
@@ -755,7 +755,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
     obj_projectile[2] = obj_projectile["y"] - 600
     obj_projectile[5] = hit_side_obj_char[5]
     -- insert_projectile
-    table.insert(hit_side_obj_char["projectile_rc_table"],obj_projectile)
+    table.insert(hit_side_obj_char["projectile_RC_table"],obj_projectile)
 end
 function load_game_scene_anim_char_RC_red_projectile_ground_block(
     hit_side_obj_char,hurt_side_obj_char,obj_projectile,

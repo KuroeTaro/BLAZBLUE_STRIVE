@@ -4753,7 +4753,7 @@ function load_game_scene_anim_char_common_burst_overdrive(
         self_side_obj_char["damage_correction"] = 1
         self_side_obj_char["overdrive_gauge"][3] = "on"
         update_move_overdrive_state()
-        play_obj_audio(audio_SFX_game_scene_overdrive)
+        play_obj_audio(audio_SFX_game_scene_common["overdrive"])
         -- air_move
         self_side_obj_char["air_move"] = {}
         self_side_obj_char["air_move"]["jump"] = {1,1}
@@ -5003,13 +5003,13 @@ function load_game_scene_anim_char_common_burst_RC_red(
         if self_height == "air" and collision_test_char_on_ground(self_side_obj_char) then
             self_side_obj_char["y"] = 0
             self_side_obj_char["height"] = "stand"
-            self_side_obj_char["sprite_sheet"] = "burst_rc_ground"
+            self_side_obj_char["sprite_sheet"] = "burst_RC_ground"
             self_side_obj_char["pushbox"]  = pushbox_data["RC"]["stand"]
             self_side_obj_char["anchor_pos"] = anchor_data["RC"]["stand"]
             self_side_obj_char["collision_ground_height_offset"] = 0
         elseif self_height ~= "air" and not collision_test_char_on_ground(self_side_obj_char) then
             self_side_obj_char["height"] = "air"
-            self_side_obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
             self_side_obj_char["pushbox"]  = pushbox_data["RC"]["air"]
             self_side_obj_char["anchor_pos"] = anchor_data["RC"]["air"]
             self_side_obj_char["collision_ground_height_offset"] = 185
@@ -5185,13 +5185,13 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         if self_height == "air" and collision_test_char_on_ground(self_side_obj_char) then
             self_side_obj_char["y"] = 0
             self_side_obj_char["height"] = "stand"
-            self_side_obj_char["sprite_sheet"] = "burst_rc_ground"
+            self_side_obj_char["sprite_sheet"] = "burst_RC_ground"
             self_side_obj_char["pushbox"]  = pushbox_data["RC"]["stand"]
             self_side_obj_char["anchor_pos"] = anchor_data["RC"]["stand"]
             self_side_obj_char["collision_ground_height_offset"] = 0
         elseif self_height ~= "air" and not collision_test_char_on_ground(self_side_obj_char) then
             self_side_obj_char["height"] = "air"
-            self_side_obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
             self_side_obj_char["pushbox"]  = pushbox_data["RC"]["air"]
             self_side_obj_char["anchor_pos"] = anchor_data["RC"]["air"]
             self_side_obj_char["collision_ground_height_offset"] = 185
@@ -5396,13 +5396,13 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         if self_height == "air" and collision_test_char_on_ground(self_side_obj_char) then
             self_side_obj_char["y"] = 0
             self_side_obj_char["height"] = "stand"
-            self_side_obj_char["sprite_sheet"] = "burst_rc_ground"
+            self_side_obj_char["sprite_sheet"] = "burst_RC_ground"
             self_side_obj_char["pushbox"]  = pushbox_data["RC"]["stand"]
             self_side_obj_char["anchor_pos"] = anchor_data["RC"]["stand"]
             self_side_obj_char["collision_ground_height_offset"] = 0
         elseif self_height ~= "air" and not collision_test_char_on_ground(self_side_obj_char) then
             self_side_obj_char["height"] = "air"
-            self_side_obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
             self_side_obj_char["pushbox"]  = pushbox_data["RC"]["air"]
             self_side_obj_char["anchor_pos"] = anchor_data["RC"]["air"]
             self_side_obj_char["collision_ground_height_offset"] = 185
@@ -5612,13 +5612,13 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         if self_height == "air" and collision_test_char_on_ground(self_side_obj_char) then
             self_side_obj_char["y"] = 0
             self_side_obj_char["height"] = "stand"
-            self_side_obj_char["sprite_sheet"] = "burst_rc_ground"
+            self_side_obj_char["sprite_sheet"] = "burst_RC_ground"
             self_side_obj_char["pushbox"]  = pushbox_data["RC"]["stand"]
             self_side_obj_char["anchor_pos"] = anchor_data["RC"]["stand"]
             self_side_obj_char["collision_ground_height_offset"] = 0
         elseif self_height ~= "air" and not collision_test_char_on_ground(self_side_obj_char) then
             self_side_obj_char["height"] = "air"
-            self_side_obj_char["sprite_sheet"] = "burst_overdrive_rc_air"
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
             self_side_obj_char["pushbox"]  = pushbox_data["RC"]["air"]
             self_side_obj_char["anchor_pos"] = anchor_data["RC"]["air"]
             self_side_obj_char["collision_ground_height_offset"] = 185

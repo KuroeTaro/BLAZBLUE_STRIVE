@@ -16,7 +16,10 @@ config选项中自定义要不要79空投
     -- the ground of the ring at y = 0
     -- and so call up is toward the inside of the ring Y is negative
     -- the other side is Y positive
-    
+
+-- 哈皮球的音效
+-- 哈扎马蛇链音效
+
 obj_wallstick state修改 ease_in/pause/ease_out/off
 knockout场景
 碎墙的血量伤害应用和碎墙knockout

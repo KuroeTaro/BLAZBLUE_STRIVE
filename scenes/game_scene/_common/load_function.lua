@@ -91,18 +91,12 @@ function order_load_game_scene_common(load_order)
             load_game_scene_common_shader(5)
         end,
         [10] = function()
-            load_game_scene_audio_char_LP()
-        end,
-        [11] = function()
-            load_game_scene_audio_char_RP()
-        end,
-        [12] = function()
             load_game_scene_shader_char_LP()
         end,
-        [13] = function()
+        [11] = function()
             load_game_scene_shader_char_RP()
         end,
-        [14] = function()
+        [12] = function()
             image_sprite_sheet_UI_game_scene_movie_cover = 
             common_sprite_sheet_load(
                 "asset/game_scene/common/texture/movie_cover.json",
