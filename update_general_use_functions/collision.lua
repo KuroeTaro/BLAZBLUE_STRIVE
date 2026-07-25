@@ -181,26 +181,19 @@ function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_R
                     obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
                     return
                 end
-                if COLLSION_CONER_OUT_STATE[obj_char_LP["state"]] then
-                    obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
-                    return
-                end
                 if COLLSION_CONER_OUT_STATE[obj_char_RP["state"]] then
                     obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
                     return
                 end
-                if obj_char_LP["y"] < obj_char_RP["y"] then
-                    obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
-                    return
-                else
+                if COLLSION_CONER_OUT_STATE[obj_char_LP["state"]] then
                     obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
                     return
                 end
-                if obj_char_LP["y"] < obj_char_RP["y"] then
-                    obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
+                if obj_char_RP["y"] < obj_char_LP["y"] then
+                    obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
                     return
                 else
-                    obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
+                    obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
                     return
                 end
             end
