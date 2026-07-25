@@ -274,9 +274,9 @@ function load_game_scene_audio_stage()
     -- load_BGM
     -- load_SFX
     local SFX_files = {
-        "air_backdash","air_dash","ground_dash_cancel","ground_dash_loop","ground_dash_skid",
-        "ground_dash_start_up","ground_hard_knockdown","ground_jump","ground_land","ground_soft_knockdown",
-        "ground_SP_jump","ground_step_0","ground_step_1","wall_wallbreak"
+        "air_backdash","air_dash","ground_dash_cancel","air_jump","air_SP_jump",
+        "ground_dash_loop","ground_dash_skid","ground_dash_start_up","ground_hard_knockdown",
+        "ground_land","ground_soft_knockdown","ground_step_0","ground_step_1","wall_wallbreak"
     }
     for i = 1,14 do
         local name = SFX_files[i]

@@ -18,7 +18,8 @@ config选项中自定义要不要79空投
     -- the other side is Y positive
 
 -- 哈皮球的音效
--- 哈扎马蛇链音效
+-- 哈皮拔枪的音效
+-- 哈扎马26a音效
 
 obj_wallstick state修改 ease_in/pause/ease_out/off
 knockout场景
