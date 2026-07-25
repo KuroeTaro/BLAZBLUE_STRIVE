@@ -23,19 +23,19 @@ end
 function load_game_scene_common_audio()
     -- audio_global_variable
     audio_SFX_game_scene_common = {}
-    -- ease_in
+    -- ease_in_SFX
     audio_SFX_game_scene_common["annoucer_ease_in"] = {1}
     audio_SFX_game_scene_common["annoucer_ease_in"]["LCT"] = {0}
     audio_SFX_game_scene_common["annoucer_ease_in"]["LCD"] = {0}
     audio_SFX_game_scene_common["annoucer_ease_in"]["audio"] = love.audio.newSource("asset/game_scene/common/audio/annoucer_ease_in.wav","static")
     update_SFX_VOLUME(audio_SFX_game_scene_common["annoucer_ease_in"])
-    -- overdrive
+    -- overdrive_SFX
     audio_SFX_game_scene_common["overdrive"] = {1}
     audio_SFX_game_scene_common["overdrive"]["LCT"] = {0}
     audio_SFX_game_scene_common["overdrive"]["LCD"] = {0}
     audio_SFX_game_scene_common["overdrive"]["audio"] = love.audio.newSource("asset/game_scene/common/audio/overdrive.wav","static")
     update_SFX_VOLUME(audio_SFX_game_scene_common["overdrive"])
-    -- load_blast_SFX
+    -- blast_SFX
     local blast_files = {
         "lv0_block_blast_0","lv0_block_blast_1","lv0_hit_blast_0","lv0_hit_blast_1","lv0_whiff_blast_0","lv0_whiff_blast_1",
         "lv1_block_blast_0","lv1_block_blast_1","lv1_hit_blast_0","lv1_hit_blast_1","lv1_whiff_blast_0","lv1_whiff_blast_1",
@@ -51,7 +51,7 @@ function load_game_scene_common_audio()
         audio_SFX_game_scene_common[key]["audio"] = love.audio.newSource(path,"static")
         update_SFX_VOLUME(audio_SFX_game_scene_common[key])
     end
-    -- load_slash_SFX
+    -- slash_SFX
     local slash_files = {
         "lv0_block_slash","lv0_hit_slash","lv0_whiff_slash",
         "lv1_block_slash","lv1_hit_slash","lv1_whiff_slash",
@@ -67,7 +67,7 @@ function load_game_scene_common_audio()
         audio_SFX_game_scene_common[key]["audio"] = love.audio.newSource(path,"static")
         update_SFX_VOLUME(audio_SFX_game_scene_common[key])
     end
-    -- load_RC_SFX
+    -- RC_SFX
     local RC_files = {
         "blue_RC","purple_RC",
         "red_RC_block","red_RC_hit","red_RC_whiff",
@@ -82,7 +82,7 @@ function load_game_scene_common_audio()
         audio_SFX_game_scene_common[key]["audio"] = love.audio.newSource(path,"static")
         update_SFX_VOLUME(audio_SFX_game_scene_common[key])
     end
-    -- load_5Launcher_SFX
+    -- 5Launcher_SFX
     local launcher_files = {
         "5Launcher_block","5Launcher_hit","5Launcher_hold_block","5Launcher_hold_hit",
         "5Launcher_hold_hit_Launcher_jump","5Launcher_hold_startup","5Launcher_hold_whiff","5Launcher_whiff"
