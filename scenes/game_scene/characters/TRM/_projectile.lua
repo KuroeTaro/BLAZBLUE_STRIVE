@@ -10,8 +10,8 @@
 --                              air_hurt_animation air_block_animation
 --                              OTG_hurt_animation wallstick_hurt_animation
 --                              projectile_active projectile_counter_ver_function
---                              hit_SFX hit_block_SFX hit_counter_SFX
---                              hurt_block_VFX_insert_function hurt_block_SFX
+--                              block_SFX counter_SFX hit_SFX_whiff_SFX
+--                              hurt_block_VFX_insert_function
 -- animation                    projectile_animation camera_x_shake_anim camera_y_shake_anim camera_enclosing_anim enclose_position_offset
 -- update/update_sub_frame/draw
 -- uncommon
@@ -130,8 +130,11 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     )
     obj_projectile["projectile_active"] = true
     obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
+    obj_projectile["block_SFX"] = nil
+    obj_projectile["counter_SFX"] = nil
+    obj_projectile["hit_SFX"] = nil
+    obj_projectile["whiff_SFX"] = nil
     obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-    obj_projectile["hurt_block_SFX"] = nil
     obj_projectile["enemy_interact_function"] = function()
         if collision_projectile_hit_confirm_test(obj_projectile,hurt_side_obj_char) then
             -- projectile_active
@@ -831,7 +834,8 @@ end
 -- 1-8 type life x y velocity projectile_clash_type f
 -- state sprite_sheet
 -- enemy_interact_function		hitbox projectile_active
---                              hit_VFX_insert_function  hit_SFX
+--                              block_SFX counter_SFX hit_SFX_whiff_SFX
+--                              hit_VFX_insert_function
 -- gravity_update_function		gravity
 -- animation                    projectile_animation
 -- update/update_sub_frame/draw
@@ -856,8 +860,11 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     -- projectile_clashed_function nil
     -- enemy_interact_function
     obj_projectile["hitbox_table"] = {}
-    obj_projectile["hit_type"] = "all"
     obj_projectile["projectile_active"] = true
+    obj_projectile["block_SFX"] = nil
+    obj_projectile["counter_SFX"] = nil
+    obj_projectile["hit_SFX"] = nil
+    obj_projectile["whiff_SFX"] = nil
     obj_projectile["hit_VFX_insert_function"] = function()
         for i = 1,#hurt_side_obj_char["VFX_status_back_table"] do
             local current_VFX = hurt_side_obj_char["VFX_status_back_table"][i]
@@ -867,7 +874,6 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
         end
         insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_obj_char)
     end
-    obj_projectile["hit_SFX"] = nil
     obj_projectile["enemy_interact_function"] = function()
         if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) then
             -- blast_state_init

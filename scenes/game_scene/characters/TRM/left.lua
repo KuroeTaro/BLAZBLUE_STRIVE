@@ -157,18 +157,18 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["VFX_hit_back_table"] = {}
     obj_char_game_scene_char_LP["VFX_black_overlay_table"] = {}
     -- sub_hit_hurt_function
+    obj_char_game_scene_char_LP["block_SFX"] = nil
+    obj_char_game_scene_char_LP["counter_SFX"] = nil
+    obj_char_game_scene_char_LP["hit_SFX"] = nil
+    obj_char_game_scene_char_LP["whiff_SFX"] = nil
     obj_char_game_scene_char_LP["hit_VFX_dynamic_spawn_pos"] = {}
     obj_char_game_scene_char_LP["hit_VFX_insert_function"] = nil
     obj_char_game_scene_char_LP["hit_VFX_insert_function_argument"] = nil
-    obj_char_game_scene_char_LP["hit_SFX"] = nil
     obj_char_game_scene_char_LP["hit_block_VFX_insert_function"] = nil
     obj_char_game_scene_char_LP["hit_block_VFX_insert_function_argument"] = nil
-    obj_char_game_scene_char_LP["hit_block_SFX"] = nil
     obj_char_game_scene_char_LP["hit_counter_VFX_insert_function"] = nil
     obj_char_game_scene_char_LP["hit_counter_VFX_insert_function_argument"] = nil
-    obj_char_game_scene_char_LP["hit_counter_SFX"] = nil
     obj_char_game_scene_char_LP["hurt_block_VFX_insert_function"] = nil
-    obj_char_game_scene_char_LP["hurt_block_SFX"] = nil
     -- 5H_shot_sys
     obj_char_game_scene_char_LP["shot_sys_state"] = "off"
     obj_char_game_scene_char_LP["shot_sys_f"] = 0

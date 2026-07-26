@@ -676,7 +676,7 @@ function common_game_scene_projectile_hurt_function_common_block(hit_side_obj_ch
         insert_VFX_game_scene_char_FD_block(hurt_side_obj_char)
     end
     -- -- block_SFX
-    -- love.audio.play(obj_projectile["hurt_block_SFX"]["audio"])
+    -- SFX_audio_code_place_holder
 end
 function common_game_scene_projectile_hurt_function_common_GP_hurt(hit_side_obj_char,hurt_side_obj_char,obj_projectile,obj_stage_main,obj_camera)
     -- state
@@ -859,7 +859,7 @@ function common_game_scene_projectile_RC_red_yellow_hurt_function_common_block(h
         insert_VFX_game_scene_char_FD_block(hurt_side_obj_char)
     end
     -- -- block_SFX
-    -- love.audio.play(obj_projectile["hurt_block_SFX"]["audio"])
+    -- SFX_audio_code_place_holder
 end
 function common_game_scene_projectile_RC_red_yellow_hurt_function_common_hurt(hit_side_obj_char,hurt_side_obj_char,obj_projectile,obj_stage_main,obj_camera)
     -- state

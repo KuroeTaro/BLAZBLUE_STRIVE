@@ -12,11 +12,12 @@
 --                              air_hurt_animation air_block_animation
 --                              OTG_hurt_animation wallstick_hurt_animation
 --                              projectile_active projectile_counter_ver_function
+--                              block_SFX counter_SFX hit_SFX_whiff_SFX
 --                              hit_VFX_dynamic_spawn_pos
---                              hit_VFX_insert_function hit_VFX_insert_function_argument hit_SFX
---                              hit_counter_VFX_insert_function hit_counter_VFX_insert_function_argument hit_counter_SFX
---                              hit_block_VFX_insert_function hit_block_VFX_insert_function_argument hit_block_SFX
---                              hurt_block_VFX_insert_function hurt_block_SFX
+--                              hit_VFX_insert_function hit_VFX_insert_function_argument
+--                              hit_counter_VFX_insert_function hit_counter_VFX_insert_function_argument
+--                              hit_block_VFX_insert_function hit_block_VFX_insert_function_argument
+--                              hurt_block_VFX_insert_function
 -- friendly_interact_function   same_as_above
 -- friction_update_function	    friction
 -- gravity_update_function		gravity
@@ -86,10 +87,10 @@ end
 --                              crouch_hurt_animation crouch_block_animation
 --                              air_hurt_animation air_block_animation
 --                              OTG_hurt_animation wallstick_hurt_animation
---                              hit_VFX_insert_function hit_SFX
---                              hurt_block_VFX_insert_function, hurt_block_SFX
---                              projectile_counter_ver_function
---                              projectile_active
+--                              projectile_active projectile_counter_ver_function
+--                              block_SFX counter_SFX hit_SFX_whiff_SFX
+--                              hit_VFX_insert_function
+--                              hurt_block_VFX_insert_function
 -- animation                    projectile_animation camera_x_shake_anim camera_y_shake_anim camera_enclosing_anim enclose_position_offset
 -- update/update_sub_frame/draw
 -- uncommon
@@ -272,12 +273,14 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         nil,nil,
         function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
     )
-    obj_projectile["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_special
-    obj_projectile["hit_SFX"] = nil
-    obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC_red
-    obj_projectile["hurt_block_SFX"] = nil
-    obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
     obj_projectile["projectile_active"] = true
+    obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
+    obj_projectile["block_SFX"] = nil
+    obj_projectile["counter_SFX"] = nil
+    obj_projectile["hit_SFX"] = nil
+    obj_projectile["whiff_SFX"] = nil
+    obj_projectile["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_special
+    obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC_red
     obj_projectile["enemy_interact_function"] = function()
         -- if hit
         if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) and obj_projectile["projectile_active"] and (not hurt_side_obj_char["strike_inv"]) then
@@ -534,10 +537,10 @@ end
 --                              crouch_hurt_animation crouch_block_animation
 --                              air_hurt_animation air_block_animation
 --                              OTG_hurt_animation wallstick_hurt_animation
+--                              projectile_active projectile_counter_ver_function
+--                              block_SFX counter_SFX hit_SFX_whiff_SFX
 --                              hit_VFX_insert_function hit_SFX
 --                              hurt_block_VFX_insert_function, hurt_block_SFX
---                              projectile_counter_ver_function
---                              projectile_active
 -- animation                    projectile_animation camera_x_shake_anim camera_y_shake_anim camera_enclosing_anim enclose_position_offset
 -- update/update_sub_frame/draw
 -- uncommon
@@ -680,12 +683,14 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         nil,nil,
         function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
     )
-    obj_projectile["hit_VFX_insert_function"] = function() end
-    obj_projectile["hit_SFX"] = nil
-    obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC_yellow
-    obj_projectile["hurt_block_SFX"] = nil
-    obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
     obj_projectile["projectile_active"] = true
+    obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
+    obj_projectile["block_SFX"] = nil
+    obj_projectile["counter_SFX"] = nil
+    obj_projectile["hit_SFX"] = nil
+    obj_projectile["whiff_SFX"] = nil
+    obj_projectile["hit_VFX_insert_function"] = function() end
+    obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC_yellow
     obj_projectile["enemy_interact_function"] = function()
         -- if hit
         if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) and obj_projectile["projectile_active"] and (not hurt_side_obj_char["strike_inv"]) then
