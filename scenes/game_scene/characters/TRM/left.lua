@@ -949,6 +949,8 @@ function load_game_scene_audio_char_LP()
     -- stage_interactive_SFX 
     -- no_any_co_play_special_SFX_in_this_char_case(beep shoes something like May dolphin could use)
     audio_SFX_game_scene_LP["stage_interactive_SFX"] = nil
+    -- move_SFX
+    audio_SFX_game_scene_LP["move_SFX"] = {}
 end
 function load_game_scene_shader_char_LP()
     -- shader_global_variable no_shader_in_this_case

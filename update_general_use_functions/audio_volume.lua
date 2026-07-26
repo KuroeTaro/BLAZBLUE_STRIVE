@@ -36,3 +36,6 @@ function play_obj_audio(obj)
     love.audio.stop(obj["audio"])
     love.audio.play(obj["audio"])
 end
+function stop_obj_audio(obj)
+    love.audio.stop(obj["audio"])
+end

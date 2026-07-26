@@ -275,10 +275,10 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     )
     obj_projectile["projectile_active"] = true
     obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
-    obj_projectile["block_SFX"] = nil
+    obj_projectile["block_SFX"] = audio_SFX_game_scene_common["red_RC_block"]
     obj_projectile["counter_SFX"] = nil
-    obj_projectile["hit_SFX"] = nil
-    obj_projectile["whiff_SFX"] = nil
+    obj_projectile["hit_SFX"] = audio_SFX_game_scene_common["red_RC_hit"]
+    obj_projectile["whiff_SFX"] = audio_SFX_game_scene_common["red_RC_whiff"]
     obj_projectile["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_special
     obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC_red
     obj_projectile["enemy_interact_function"] = function()
@@ -292,10 +292,14 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
             if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
                 hurt_side_obj_char["hurt_state"] = "counter"
             end
-            -- insert_projectile_VFX 
+            -- insert_projectile_VFX_SFX
             if not block_bool then
                 obj_projectile["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
-                -- SFX_audio_code_place_holder
+                stop_obj_audio(obj_projectile["whiff_SFX"])
+                play_obj_audio(obj_projectile["hit_SFX"])
+            else
+                stop_obj_audio(obj_projectile["whiff_SFX"])
+                play_obj_audio(obj_projectile["block_SFX"])
             end
             -- common_hurt_function
             common_game_scene_projectile_RC_red_yellow_hurt_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
@@ -685,10 +689,10 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
     )
     obj_projectile["projectile_active"] = true
     obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
-    obj_projectile["block_SFX"] = nil
+    obj_projectile["block_SFX"] = audio_SFX_game_scene_common["yellow_RC_block"]
     obj_projectile["counter_SFX"] = nil
-    obj_projectile["hit_SFX"] = nil
-    obj_projectile["whiff_SFX"] = nil
+    obj_projectile["hit_SFX"] = audio_SFX_game_scene_common["yellow_RC_hit"]
+    obj_projectile["whiff_SFX"] = audio_SFX_game_scene_common["yellow_RC_whiff"]
     obj_projectile["hit_VFX_insert_function"] = function() end
     obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC_yellow
     obj_projectile["enemy_interact_function"] = function()
@@ -702,10 +706,14 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
             if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
                 hurt_side_obj_char["hurt_state"] = "counter"
             end
-            -- insert_projectile_VFX 
+            -- insert_projectile_VFX_SFX
             if not block_bool then
                 obj_projectile["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
-                -- SFX_audio_code_place_holder
+                stop_obj_audio(obj_projectile["whiff_SFX"])
+                play_obj_audio(obj_projectile["hit_SFX"])
+            else
+                stop_obj_audio(obj_projectile["whiff_SFX"])
+                play_obj_audio(obj_projectile["block_SFX"])
             end
             -- common_hurt_function
             common_game_scene_projectile_RC_red_yellow_hurt_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)

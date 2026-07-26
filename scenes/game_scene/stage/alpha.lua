@@ -272,7 +272,9 @@ function load_game_scene_audio_stage()
     audio_SFX_game_scene_stage = {}
     audio_environment_game_scene_stage = {}
     -- load_BGM
-    -- load_SFX
+    -- load_SFX(something like water/sand/stone ground type different SFX play whith move_SFX)
+    audio_SFX_game_scene_stage["L"] = {}
+    audio_SFX_game_scene_stage["R"] = {}
     local SFX_files = {
         "air_backdash","air_dash","ground_dash_cancel","air_jump","air_SP_jump",
         "ground_dash_loop","ground_dash_skid","ground_dash_start_up","ground_hard_knockdown",
@@ -281,11 +283,20 @@ function load_game_scene_audio_stage()
     for i = 1,14 do
         local name = SFX_files[i]
         local path = "asset/game_scene/stage/alpha/audio/SFX/"..name..".wav"
-        audio_SFX_game_scene_stage[name] = {1}
-        audio_SFX_game_scene_stage[name]["LCT"] = {0}
+        audio_SFX_game_scene_stage["L"][name] = {1}
+        audio_SFX_game_scene_stage["L"]["L"][name]["LCT"] = {0}
         audio_SFX_game_scene_stage[name]["LCD"] = {0}
-        audio_SFX_game_scene_stage[name]["audio"] = love.audio.newSource(path,"static")
-        update_SFX_VOLUME(audio_SFX_game_scene_stage[name])
+        audio_SFX_game_scene_stage["L"][name]["audio"] = love.audio.newSource(path,"static")
+        update_SFX_VOLUME(audio_SFX_game_scene_stage["L"][name])
+    end
+    for i = 1,14 do
+        local name = SFX_files[i]
+        local path = "asset/game_scene/stage/alpha/audio/SFX/"..name..".wav"
+        audio_SFX_game_scene_stage["R"][name] = {1}
+        audio_SFX_game_scene_stage["R"]["R"][name]["LCT"] = {0}
+        audio_SFX_game_scene_stage[name]["LCD"] = {0}
+        audio_SFX_game_scene_stage["R"][name]["audio"] = love.audio.newSource(path,"static")
+        update_SFX_VOLUME(audio_SFX_game_scene_stage["R"][name])
     end
     -- load_environment
     local environment_files = {"wind"}
