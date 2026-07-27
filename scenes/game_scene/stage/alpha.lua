@@ -275,14 +275,14 @@ function load_game_scene_audio_stage()
     -- load_SFX(something like water/sand/stone ground type different SFX play whith move_SFX)
     audio_SFX_game_scene_stage["L"] = {}
     audio_SFX_game_scene_stage["R"] = {}
-    local SFX_files = {
+    local file_name_table = {
         "air_backdash","air_dash","ground_dash_cancel","air_jump","air_SP_jump",
         "ground_dash_loop","ground_dash_skid","ground_dash_start_up","ground_hard_knockdown",
         "ground_land","ground_soft_knockdown","ground_step_0","ground_step_1","wall_wallbreak"
     }
     for i = 1,14 do
-        local name = SFX_files[i]
-        local path = "asset/game_scene/stage/alpha/audio/SFX/"..name..".wav"
+        local name = file_name_table[i]
+        local path = "asset/game_scene/stage/alpha/audio/character_interactive_SFX/"..name..".wav"
         audio_SFX_game_scene_stage["L"][name] = {1}
         audio_SFX_game_scene_stage["L"]["L"][name]["LCT"] = {0}
         audio_SFX_game_scene_stage[name]["LCD"] = {0}
@@ -290,8 +290,8 @@ function load_game_scene_audio_stage()
         update_SFX_VOLUME(audio_SFX_game_scene_stage["L"][name])
     end
     for i = 1,14 do
-        local name = SFX_files[i]
-        local path = "asset/game_scene/stage/alpha/audio/SFX/"..name..".wav"
+        local name = file_name_table[i]
+        local path = "asset/game_scene/stage/alpha/audio/character_interactive_SFX/"..name..".wav"
         audio_SFX_game_scene_stage["R"][name] = {1}
         audio_SFX_game_scene_stage["R"]["R"][name]["LCT"] = {0}
         audio_SFX_game_scene_stage[name]["LCD"] = {0}
@@ -299,10 +299,10 @@ function load_game_scene_audio_stage()
         update_SFX_VOLUME(audio_SFX_game_scene_stage["R"][name])
     end
     -- load_environment
-    local environment_files = {"wind"}
+    local file_name_table = {"wind"}
     for i = 1,1 do
-        local name = environment_files[i]
-        local path = "asset/game_scene/stage/alpha/audio/environment/"..name..".wav"
+        local name = file_name_table[i]
+        local path = "asset/game_scene/stage/alpha/audio/environment_SFX/"..name..".wav"
         audio_environment_game_scene_stage[name] = {1}
         audio_environment_game_scene_stage[name]["LCT"] = {0}
         audio_environment_game_scene_stage[name]["LCD"] = {0}

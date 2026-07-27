@@ -944,13 +944,98 @@ function load_game_scene_box_anchor_data_LP()
     }
 end
 function load_game_scene_audio_char_LP()
-    -- audio_global_variable
-    audio_SFX_game_scene_LP = {}
-    -- stage_interactive_SFX 
-    -- no_any_co_play_special_SFX_in_this_char_case(beep shoes something like May dolphin could use)
-    audio_SFX_game_scene_LP["stage_interactive_SFX"] = nil
-    -- move_SFX
-    audio_SFX_game_scene_LP["move_SFX"] = {}
+    -- audio_global_variables
+    audio_SFX_game_scene_common_SFX_LP = {}
+    audio_SFX_game_scene_stage_interactive_SFX_LP = {}
+    audio_SFX_game_scene_uncommon_SFX_LP = {}
+    local base = "asset/game_scene/characters/TRM/audio/"
+    -- common_SFX
+    -- blast_SFX
+    local file_name_table = {
+        "lv0_block_blast_0","lv0_block_blast_1","lv0_hit_blast_0","lv0_hit_blast_1","lv0_whiff_blast_0","lv0_whiff_blast_1",
+        "lv1_block_blast_0","lv1_block_blast_1","lv1_hit_blast_0","lv1_hit_blast_1","lv1_whiff_blast_0","lv1_whiff_blast_1",
+        "lv2_block_blast_0","lv2_block_blast_1","lv2_hit_blast_0","lv2_hit_blast_1","lv2_whiff_blast_0","lv2_whiff_blast_1",
+        "lv3_block_blast_0","lv3_block_blast_1","lv3_hit_blast_0","lv3_hit_blast_1","lv3_whiff_blast_0","lv3_whiff_blast_1"
+    }
+    for i = 1, #file_name_table do
+        local key = file_name_table[i]
+        local path = base .. "common_SFX/blast/" .. key .. ".wav"
+        audio_SFX_game_scene_common_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
+        audio_SFX_game_scene_common_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
+        update_SFX_VOLUME(audio_SFX_game_scene_common_SFX_LP[key])
+    end
+    -- slash_SFX
+    file_name_table = {
+        "lv0_block_slash","lv0_hit_slash","lv0_whiff_slash",
+        "lv1_block_slash","lv1_hit_slash","lv1_whiff_slash",
+        "lv2_block_slash","lv2_hit_slash","lv2_whiff_slash",
+        "lv3_block_slash","lv3_hit_slash","lv3_whiff_slash"
+    }
+    for i = 1, #file_name_table do
+        local key = file_name_table[i]
+        local path = base .. "common_SFX/slash/" .. key .. ".wav"
+        audio_SFX_game_scene_common_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
+        audio_SFX_game_scene_common_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
+        update_SFX_VOLUME(audio_SFX_game_scene_common_SFX_LP[key])
+    end
+    -- stage_interactive_SFX
+    file_name_table = {
+        "air_backdash","air_dash","air_jump","air_SP_jump",
+        "ground_dash_cancel","ground_dash_loop","ground_dash_skid","ground_dash_start_up",
+        "ground_hard_knockdown","ground_land","ground_soft_knockdown",
+        "ground_step_0","ground_step_1","wall_wallbreak"
+    }
+    for i = 1, #file_name_table do
+        local key = file_name_table[i]
+        local path = base .. "stage_interactive_SFX/" .. key .. ".wav"
+        audio_SFX_game_scene_stage_interactive_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
+        audio_SFX_game_scene_stage_interactive_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
+        update_SFX_VOLUME(audio_SFX_game_scene_stage_interactive_SFX_LP[key])
+    end
+    -- uncommon_SFX
+    -- 5Launcher_SFX
+    file_name_table = {
+        "5Launcher_block","5Launcher_hit","5Launcher_hold_block","5Launcher_hold_hit",
+        "5Launcher_hold_hit_Launcher_jump","5Launcher_hold_startup","5Launcher_hold_whiff","5Launcher_whiff"
+    }
+    for i = 1, #file_name_table do
+        local key = file_name_table[i]
+        local path = base .. "uncommon_SFX/5Launcher/" .. key .. ".wav"
+        audio_SFX_game_scene_uncommon_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
+        audio_SFX_game_scene_uncommon_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
+        update_SFX_VOLUME(audio_SFX_game_scene_uncommon_SFX_LP[key])
+    end
+    -- 6SP_S_SFX
+    file_name_table = {"6SP_S_block", "6SP_S_hit", "6SP_S_whiff"}
+    for i = 1, #file_name_table do
+        local key = file_name_table[i]
+        local path = base .. "uncommon_SFX/6SP_S/" .. key .. ".wav"
+        audio_SFX_game_scene_uncommon_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
+        audio_SFX_game_scene_uncommon_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
+        update_SFX_VOLUME(audio_SFX_game_scene_uncommon_SFX_LP[key])
+    end
+    -- overdrive_SFX
+    file_name_table = {"overdrive"}
+    for i = 1, #file_name_table do
+        local key = file_name_table[i]
+        local path = base .. "uncommon_SFX/overdrive/" .. key .. ".wav"
+        audio_SFX_game_scene_uncommon_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
+        audio_SFX_game_scene_uncommon_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
+        update_SFX_VOLUME(audio_SFX_game_scene_uncommon_SFX_LP[key])
+    end
+    -- RC_SFX
+    file_name_table = {
+        "blue_RC","purple_RC",
+        "red_RC_block","red_RC_hit","red_RC_whiff",
+        "yellow_RC_block","yellow_RC_hit","yellow_RC_whiff"
+    }
+    for i = 1, #file_name_table do
+        local key = file_name_table[i]
+        local path = base .. "uncommon_SFX/RC/" .. key .. ".wav"
+        audio_SFX_game_scene_uncommon_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
+        audio_SFX_game_scene_uncommon_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
+        update_SFX_VOLUME(audio_SFX_game_scene_uncommon_SFX_LP[key])
+    end
 end
 function load_game_scene_shader_char_LP()
     -- shader_global_variable no_shader_in_this_case
