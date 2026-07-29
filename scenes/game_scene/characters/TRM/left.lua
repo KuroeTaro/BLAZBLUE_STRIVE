@@ -4500,12 +4500,19 @@ function state_gate_game_scene_char_LP_from_4dash_air_backdash(input,self_side_o
     end
 end
 function state_gate_game_scene_char_LP_from_6dash_dash(input,self_side_obj_char,opponent_side_obj_char)
+    local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(self_side_obj_char["player_side"])
     -- _overdrive
     if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
+        play_obj_audio(stage_interactive_SFX_table["ground_dash_skid"])
+        stop_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
+        stop_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
         return true
     end
     -- _BRC
     if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
+        play_obj_audio(stage_interactive_SFX_table["ground_dash_skid"])
+        stop_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
+        stop_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
         return true
     end
     -- _7_8_9_pre_jump
@@ -4513,6 +4520,9 @@ function state_gate_game_scene_char_LP_from_6dash_dash(input,self_side_obj_char,
         self_side_obj_char["direction_input_cache"] = self_side_obj_char["direction_input"]
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        play_obj_audio(stage_interactive_SFX_table["ground_dash_skid"])
+        stop_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
+        stop_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
         self_side_obj_char["state"] = "7_8_9_pre_jump"
         if state_gate_game_scene_char_LP_from_7_8_9_pre_jump(input,self_side_obj_char,opponent_side_obj_char) then
             return true
@@ -4523,16 +4533,25 @@ function state_gate_game_scene_char_LP_from_6dash_dash(input,self_side_obj_char,
     if self_side_obj_char["direction_input"] == 4 and test_input_sys_press(input["dash"]) then
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        play_obj_audio(stage_interactive_SFX_table["ground_dash_skid"])
+        stop_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
+        stop_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
         self_side_obj_char["state"] = "4dash_backdash"
         return true
     end
     if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(input,self_side_obj_char,opponent_side_obj_char) then
+        play_obj_audio(stage_interactive_SFX_table["ground_dash_skid"])
+        stop_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
+        stop_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
         return true
     end
     -- _5_stand_dash_skid
     if not test_input_sys_press_or_hold(input["dash"]) or self_side_obj_char["direction_input"] == 4 then
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_dash_skid(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        play_obj_audio(stage_interactive_SFX_table["ground_dash_skid"])
+        stop_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
+        stop_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
         self_side_obj_char["state"] = "5_stand_dash_skid"
         if state_gate_game_scene_char_LP_from_5_stand_dash_skid(input,self_side_obj_char,opponent_side_obj_char) then
             return true

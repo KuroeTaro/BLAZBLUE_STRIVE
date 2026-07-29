@@ -258,6 +258,7 @@ end
 -- _5_stand_dash_skid
 function load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
     local res = {}
+    local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(obj_char["player_side"])
     res["prop_f"] = "f"
     res["anim_length"] = 16
     res[0] = function()
@@ -284,6 +285,9 @@ function load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {323,515}
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["ground_dash_skid"])
+        play_obj_audio(stage_interactive_SFX_table["ground_step_0"])
     end
     res[4] = function()
         -- collide
@@ -305,6 +309,8 @@ function load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
     res[12] = function()
         -- draw_correction
         obj_char[8] = 3
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["ground_step_1"])
     end
     res[16] = function()
         -- animation_end
@@ -343,6 +349,7 @@ end
 function load_game_scene_anim_char_TRM_4_walk(obj_char)
     local walk_speed = -7.0
     local res = {}
+    local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(obj_char["player_side"])
     res["prop_f"] = "f"
     res["anim_length"] = 85
     for i = 0,84 do
@@ -395,6 +402,8 @@ function load_game_scene_anim_char_TRM_4_walk(obj_char)
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
         -- draw_correction
         obj_char[8] = 3
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["ground_step_0"])
     end
     res[28] = function()
         -- state_number
@@ -419,6 +428,8 @@ function load_game_scene_anim_char_TRM_4_walk(obj_char)
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
         -- draw_correction
         obj_char[8] = 7
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["ground_step_1"])
     end
     res[56] = function()
         -- state_number
@@ -451,6 +462,8 @@ function load_game_scene_anim_char_TRM_4_walk(obj_char)
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
         -- draw_correction
         obj_char[8] = 2
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["ground_step_0"])
     end
     res[85] = function()
         -- animation_end
@@ -500,6 +513,7 @@ end
 function load_game_scene_anim_char_TRM_6_walk(obj_char)
     local walk_speed = 9.0
     local res = {}
+    local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(obj_char["player_side"])
     res["prop_f"] = "f"
     res["anim_length"] = 85
     for i = 0,84 do
@@ -552,6 +566,8 @@ function load_game_scene_anim_char_TRM_6_walk(obj_char)
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
         -- draw_correction
         obj_char[8] = 3
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["ground_step_0"])
     end
     res[28] = function()
         -- state_number
@@ -588,6 +604,8 @@ function load_game_scene_anim_char_TRM_6_walk(obj_char)
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
         -- draw_correction
         obj_char[8] = 9
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["ground_step_0"])
     end
     res[70] = function()
         -- state_number
@@ -690,6 +708,7 @@ end
             -- frame_adv
 function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
     local res = {}
+    local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(obj_char["player_side"])
     res["prop_f"] = "f"
     res["anim_length"] = 8
     res[0] = function()
@@ -724,6 +743,8 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {325,480}
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["ground_land"])
         -- VFX
         insert_VFX_game_scene_stage_smoke_land_blow(obj_char,-355,-160,1,1,1,0)
     end
@@ -777,6 +798,7 @@ end
             ------
 function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anchor_pos,horizontal_velocity,vertical_velocity)
     local res = {}
+    local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(obj_char["player_side"])
     local width_table = {200,200,230,260,270,235,200}
     local function update_maintain_horizontal_velocity()
         -- state_number
@@ -836,6 +858,8 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anch
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = anchor_pos
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["air_jump"])
         -- update
         update_before_falling()
     end
@@ -1064,6 +1088,7 @@ end
             -- frame_adv
 function load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
     local res = {}
+    local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(obj_char["player_side"])
     res["prop_f"] = "f"
     res["anim_length"] = 30
     for i=0,10 do
@@ -1151,6 +1176,8 @@ function load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
         obj_char[8] = 3
         -- VFX
         insert_VFX_game_scene_stage_smoke_land_blow(obj_char,-340,-160,1,1,1,0)
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["ground_land"])
     end
     res[18] = function()
         -- state
@@ -1217,6 +1244,7 @@ end
             -- frame_adv
 function load_game_scene_anim_char_TRM_4dash_air_backdash(obj_char)
     local res = {}
+    local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(obj_char["player_side"])
     res["prop_f"] = "f"
     res["anim_length"] = 11
     for i=0,6 do
@@ -1262,6 +1290,8 @@ function load_game_scene_anim_char_TRM_4dash_air_backdash(obj_char)
         obj_char["anchor_pos"] = {242,285}
         -- VFX
         insert_VFX_game_scene_stage_4dash_air_backdash_shockwave(obj_char,150,-400,0.75,-0.75,0.75,0)
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["air_backdash"])
     end
     res[3] = function()
         -- state_number
@@ -1338,8 +1368,9 @@ end
         -- 对方
             ------
 function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
-    local dash_acceleration = 0.4
     local res = {}
+    local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(obj_char["player_side"])
+    local dash_acceleration = 0.4
     local function update_horizontal_velocity()
         obj_char["velocity"] = {
             obj_char[5]*dash_acceleration+obj_char["velocity"][1],0
@@ -1380,6 +1411,9 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {288,510}
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
+        play_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
     end
     res[4] = function()
         -- state_number
@@ -1399,6 +1433,8 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         obj_char[8] = 2
         -- VFX
         insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["ground_step_0"])
     end
     res[12] = function()
         -- state_number
@@ -1431,6 +1467,8 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         obj_char[8] = 6
         -- VFX
         insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["ground_step_1"])
     end
     res[28] = function()
         -- state_number
@@ -1457,6 +1495,8 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         obj_char[8] = 1
         -- VFX
         insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
     end
     res[37] = function()
         -- animation_end
@@ -1498,6 +1538,7 @@ end
             -- frame_adv
 function load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
     local res = {}
+    local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(obj_char["player_side"])
     res["prop_f"] = "f"
     res["anim_length"] = 24
     for i=0,11 do
@@ -1546,12 +1587,14 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
         obj_char["pushbox_opponent_collision_active"] = true
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-125,260,270}}
-        obj_char["collision_ground_height_offset"] = 185
+        obj_char["collision_ground_height_offset"] = 185        -- VFX
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {350,283}
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["air_backdash"])
     end
     res[3] = function()
         -- state_number
@@ -1625,8 +1668,9 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
 end
 -- _6dash_dash_cancel
 function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
-    local dash_acceleration = 0.625
     local res = {}
+    local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(obj_char["player_side"])
+    local dash_acceleration = 0.625
     local function update_horizontal_velocity()
         obj_char["velocity"] = {
             obj_char[5]*dash_acceleration+obj_char["velocity"][1],0
@@ -1668,9 +1712,13 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {288,510}
-        -- insert_VFX
+        -- VFX
         insert_VFX_game_scne_stage_dash_cancel_blow(obj_char,-870,-175,1,1,1,0)
         insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
+        play_obj_audio(stage_interactive_SFX_table["ground_dash_cancel"])
+        play_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
     end
     res[4] = function()
         -- state_number
@@ -1690,6 +1738,8 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
         obj_char[8] = 2
         -- VFX
         insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["ground_step_0"])
     end
     res[10] = function()
         -- state
@@ -1729,6 +1779,8 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
         obj_char[8] = 6
         -- VFX
         insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["ground_step_1"])
     end
     res[26] = function()
         -- input_sys_cache
@@ -1816,7 +1868,7 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char,hurt_side_obj_char)
     local friction = 4
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     res["prop_f"] = "f"
     res["anim_length"] = 27
     res[0] = function()
@@ -1953,10 +2005,10 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{0,-150,200,300}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
+        hit_side_obj_char["block_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv0_block_blast")
         hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
+        hit_side_obj_char["hit_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv0_hit_blast")
+        hit_side_obj_char["whiff_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv0_whiff_blast")
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver0
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {95,-380,0.8,0.75,0.75,0,false,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver0
@@ -1993,7 +2045,7 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hitbox_table"] = {{150,-200,240,100}}
         hit_side_obj_char["hurtbox_table"] = {{0,-150,200,300},{150,-200,290,150}}
         -- SFX
-        -- play_obj_audio(SFX_table["5P"])
+        -- play_obj_audio(common_SFX_table["5P"])
         -- VFX
         insert_VFX_game_scene_char_TRM_2P_move(hit_side_obj_char)
         -- draw_correction
@@ -2064,7 +2116,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
     local friction = 10
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     res["prop_f"] = "f"
     res["anim_length"] = 42
     res[0] = function()
@@ -2229,7 +2281,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{-25,-75,320,150}}
         -- SFX
-        -- play_obj_audio(SFX_table["5P"])
+        -- play_obj_audio(common_SFX_table["5P"])
         -- VFX
         insert_VFX_game_scene_char_TRM_6P_move(hit_side_obj_char)
         -- oroboros
@@ -2337,7 +2389,7 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char,hurt_side_obj_char)
     local friction = 4
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     res["prop_f"] = "f"
     res["anim_length"] = 27
     res[0] = function()
@@ -2514,7 +2566,7 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hitbox_table"] = {{130,-416,260,98}}
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30},{130,-416,290,128}}
         -- SFX
-        -- play_obj_audio(SFX_table["5P"])
+        -- play_obj_audio(common_SFX_table["5P"])
         -- VFX
         insert_VFX_game_scene_char_TRM_5P_move(hit_side_obj_char)
         -- draw_correction
@@ -2587,7 +2639,7 @@ function load_game_scene_anim_char_TRM_2K(hit_side_obj_char,hurt_side_obj_char)
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[side]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     res["prop_f"] = "f"
     res["anim_length"] = 39
     res[0] = function()
@@ -2779,7 +2831,7 @@ function load_game_scene_anim_char_TRM_2K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hitbox_table"] = {{160,-52.5,260,105}}
         hit_side_obj_char["hurtbox_table"] = {{0,-75,200,150},{160,-62.5,300,125}}
         -- SFX
-        -- play_obj_audio(SFX_table["5P"])
+        -- play_obj_audio(common_SFX_table["5P"])
         -- draw_correction
         hit_side_obj_char[8] = 3
     end
@@ -2869,7 +2921,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[side]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     local velocity_cache = hit_side_obj_char["velocity"][1]*hit_side_obj_char[5]
     res["prop_f"] = "f"
     res["anim_length"] = 44
@@ -3072,7 +3124,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hitbox_table"] = {{90,-180,140,250},{180,-160,40,210}}
         hit_side_obj_char["hurtbox_table"] = {{-15,-215,200,430},{110,-375,50,110},{90,-180,170,280},{180,-160,70,240}}
         -- SFX
-        -- play_obj_audio(SFX_table["5P"])
+        -- play_obj_audio(common_SFX_table["5P"])
         -- oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-180,-455}
         -- draw_correction
@@ -3163,7 +3215,7 @@ function load_game_scene_anim_char_TRM_5K(hit_side_obj_char,hurt_side_obj_char)
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[side]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     local function direction_input_mapping()
         if hit_side_obj_char["direction_input"] >= 7 then
             hit_side_obj_char["direction_input_cache"] = hit_side_obj_char["direction_input"]
@@ -3364,7 +3416,7 @@ function load_game_scene_anim_char_TRM_5K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hitbox_table"] = {{187,-300,320,100},{87,-210,120,80}}
         hit_side_obj_char["hurtbox_table"] = {{-28,-325,200,250},{-50,-100,154,200},{187,-300,360,140},{87,-210,160,120}}
         -- SFX
-        -- play_obj_audio(SFX_table["5P"])
+        -- play_obj_audio(common_SFX_table["5P"])
         -- draw_correction
         hit_side_obj_char[8] = 3
     end
@@ -3459,7 +3511,7 @@ function load_game_scene_anim_char_TRM_2S(hit_side_obj_char,hurt_side_obj_char)
     local friction = 10
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     res["prop_f"] = "f"
     res["anim_length"] = 56
     res[0] = function()
@@ -3659,7 +3711,7 @@ function load_game_scene_anim_char_TRM_2S(hit_side_obj_char,hurt_side_obj_char)
         -- draw_correction
         hit_side_obj_char[8] = 4
         -- SFX
-        -- play_obj_audio(SFX_table["5P"])
+        -- play_obj_audio(common_SFX_table["5P"])
         -- VFX
         insert_VFX_game_scene_char_TRM_2S_move(hit_side_obj_char)
     end
@@ -3759,7 +3811,7 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
     local friction = 50
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     res["prop_f"] = "f"
     res["anim_length"] = 59
     res[0] = function()
@@ -3973,7 +4025,7 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
         -- draw_correction
         hit_side_obj_char[8] = 3
         -- SFX
-        -- play_obj_audio(SFX_table["5P"])
+        -- play_obj_audio(common_SFX_table["5P"])
     end
     res[15] = function()
         -- state_number
@@ -4089,7 +4141,7 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char,hurt_side_obj_char)
     local friction = 10
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     local function direction_input_mapping()
         if hit_side_obj_char["direction_input"] >= 7 then
             hit_side_obj_char["direction_input_cache"] = hit_side_obj_char["direction_input"]
@@ -4282,7 +4334,7 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char,hurt_side_obj_char)
         -- draw_correction
         hit_side_obj_char[8] = 2
         -- SFX
-        -- play_obj_audio(SFX_table["5P"])
+        -- play_obj_audio(common_SFX_table["5P"])
         -- VFX
         insert_VFX_game_scene_char_TRM_cS_move(hit_side_obj_char)
     end
@@ -4357,7 +4409,7 @@ function load_game_scene_anim_char_TRM_fS(hit_side_obj_char,hurt_side_obj_char)
     local friction = 12
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     res["prop_f"] = "f"
     res["anim_length"] = 40
     res[0] = function()
@@ -4553,7 +4605,7 @@ function load_game_scene_anim_char_TRM_fS(hit_side_obj_char,hurt_side_obj_char)
         -- draw_correction
         hit_side_obj_char[8] = 3
         -- SFX
-        -- play_obj_audio(SFX_table["5P"])
+        -- play_obj_audio(common_SFX_table["5P"])
     end
     res[12] = function()
         -- collide
@@ -4816,7 +4868,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_out(obj_cha
     res["prop_f"] = "shot_sys_f"
     res["anim_length"] = 1
     res[0] = function()
-        -- insert_VFX
+        -- VFX
         insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_switch(obj_char)
     end
     res[1] = function()
@@ -5260,7 +5312,7 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char,hurt_side_obj
     local friction = 7
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     res["prop_f"] = "f"
     res["anim_length"] = 50
     res[0] = function()
@@ -5484,7 +5536,7 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char,hurt_side_obj
         -- draw_correction
         hit_side_obj_char[8] = 3
         -- SFX
-        -- play_obj_audio(SFX_table["5P"])
+        -- play_obj_audio(common_SFX_table["5P"])
     end
     res[12] = function()
         -- state
@@ -5584,7 +5636,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(hit_side_obj_char,hurt_side_o
     local friction = 7
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[side]
     res["prop_f"] = "f"
     res["anim_length"] = 42
@@ -5973,7 +6025,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(hit_side_obj_char,hur
     local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local side = hit_side_obj_char["player_side"]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[side]
     res["prop_f"] = "f"
     res["anim_length"] = 129
@@ -6270,7 +6322,7 @@ function load_game_scene_anim_char_TRM_5Launcher(hit_side_obj_char,hurt_side_obj
     local friction = 4
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     res["prop_f"] = "f"
     res["anim_length"] = 65
     res[0] = function()
@@ -6474,7 +6526,7 @@ function load_game_scene_anim_char_TRM_5Launcher(hit_side_obj_char,hurt_side_obj
         -- draw_correction
         hit_side_obj_char[8] = 4
         -- SFX
-        -- play_obj_audio(SFX_table["5P"])
+        -- play_obj_audio(common_SFX_table["5P"])
         -- VFX
         insert_VFX_game_scene_char_TRM_5Launcher_move_slash(hit_side_obj_char)
     end
@@ -6567,7 +6619,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(hit_side_obj_char,hurt_sid
     local friction = 4
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     res["prop_f"] = "f"
     res["anim_length"] = 65
     res[0] = function()
@@ -6769,7 +6821,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(hit_side_obj_char,hurt_sid
         -- draw_correction
         hit_side_obj_char[8] = 4
         -- SFX
-        -- play_obj_audio(SFX_table["5P"])
+        -- play_obj_audio(common_SFX_table["5P"])
         -- VFX
         insert_VFX_game_scene_char_TRM_5Launcher_move_slash(hit_side_obj_char)
     end
@@ -6863,7 +6915,7 @@ function load_game_scene_anim_char_TRM_jP(hit_side_obj_char,hurt_side_obj_char)
     local friction = 4
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     res["prop_f"] = "f"
     res["anim_length"] = 24
     res[0] = function()
@@ -7038,7 +7090,7 @@ function load_game_scene_anim_char_TRM_jP(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hitbox_table"] = {{160,-60,120,120}}
         hit_side_obj_char["hurtbox_table"] = {{0,-135,230,290},{160,-60,150,150}}
         -- SFX
-        -- play_obj_audio(SFX_table["5P"])
+        -- play_obj_audio(common_SFX_table["5P"])
         -- draw_correction
         hit_side_obj_char[8] = 3
     end
@@ -7109,7 +7161,7 @@ function load_game_scene_anim_char_TRM_jK(hit_side_obj_char,hurt_side_obj_char)
     local friction = 4
     local gravity = 2.575
     local side = hit_side_obj_char["player_side"]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     res["prop_f"] = "f"
     res["anim_length"] = 27
     res[0] = function()
@@ -7351,7 +7403,7 @@ function load_game_scene_anim_char_TRM_j2K(hit_side_obj_char,hurt_side_obj_char)
     local friction = 4
     local gravity = 2.575
     local side = hit_side_obj_char["player_side"]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     res["prop_f"] = "f"
     res["anim_length"] = 30
     res[0] = function()
@@ -7613,7 +7665,7 @@ function load_game_scene_anim_char_TRM_jS(hit_side_obj_char,hurt_side_obj_char)
     local friction = 4
     local gravity = 2.575
     local side = hit_side_obj_char["player_side"]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     res["prop_f"] = "f"
     res["anim_length"] = 50
     res[0] = function()
@@ -7871,7 +7923,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(hit_side_obj_char,hurt_side_ob
     local friction = 4
     local gravity = 3.5
     local side = hit_side_obj_char["player_side"]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     res["prop_f"] = "f"
     res["anim_length"] = 40
     res[0] = function()
@@ -8119,7 +8171,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(hit_side_obj_char,hurt_side_
     local friction = 7
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[side]
     res["prop_f"] = "f"
     res["anim_length"] = 42
@@ -8488,7 +8540,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(hit_side_obj_char,hu
     local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local side = hit_side_obj_char["player_side"]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[side]
     res["prop_f"] = "f"
     res["anim_length"] = 48
@@ -8780,7 +8832,7 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
     local friction = 5
     local gravity = 2.5
     local side = obj_char["player_side"]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     local function test_full_ability_gauge_anim_jump()
         if obj_char["ability_gauge"][1] == obj_char["ability_gauge"][2] then
             -- state
@@ -9120,7 +9172,7 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
     local friction = 5
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
-    local SFX_table = common_game_scene_get_SFX_table(side)
+    local common_SFX_table = common_game_scene_get_SFX_common(side)
     local shot_sys_force_ease_out_state = {
         ["at_the_ready_ease_in"] = true,
         ["at_the_ready"] = true,

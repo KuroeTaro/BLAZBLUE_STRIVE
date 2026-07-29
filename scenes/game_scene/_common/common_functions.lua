@@ -57,9 +57,6 @@ function common_game_scene_anim_0_update_function_unwallstick(obj_char)
     obj_char["wallhurt_wallbreak_adv"] = false
 end
 -- get
-function common_game_scene_get_SFX_table(side)
-    return audio_SFX_game_scene_common
-end
 function common_game_scene_get_pushbox(side)
     local side_table = {
         ["L"] = obj_pushboxs_data_game_scene_char_LP,
@@ -108,6 +105,31 @@ function common_game_scene_get_VFX_sprite_sheet_table(side)
         ["R"] = image_sprite_sheet_table_VFX_game_scene_RP
     }
     return side_table[side]
+end
+function common_game_scene_get_SFX_common(side)
+    local side_table = {
+        ["L"] = audio_SFX_game_scene_common_SFX_LP,
+        ["R"] = audio_SFX_game_scene_common_SFX_RP
+    }
+    return side_table[side]
+end
+function common_game_scene_get_SFX_stage_interactive(side)
+    local side_table = {
+        ["L"] = audio_SFX_game_scene_stage_interactive_SFX_LP,
+        ["R"] = audio_SFX_game_scene_stage_interactive_SFX_RP
+    }
+    return side_table[side]
+end
+function common_game_scene_get_SFX_uncommon(side)
+    local side_table = {
+        ["L"] = audio_SFX_game_scene_uncommon_SFX_LP,
+        ["R"] = audio_SFX_game_scene_uncommon_SFX_RP
+    }
+    return side_table[side]
+end
+function common_game_scene_get_SFX_random_0_or_1(SFX_table, key_prefix)
+    local key = key_prefix .. (love.math.random(0, 1) == 0 and "_0" or "_1")
+    return SFX_table[key]
 end
 function common_game_scene_get_input_state(side)
     local side_table = {
