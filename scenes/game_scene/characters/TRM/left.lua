@@ -952,10 +952,10 @@ function load_game_scene_audio_char_LP()
     -- common_SFX
     -- blast_SFX
     local file_name_table = {
-        "lv0_block_blast_0","lv0_block_blast_1","lv0_hit_blast_0","lv0_hit_blast_1","lv0_whiff_blast_0","lv0_whiff_blast_1",
-        "lv1_block_blast_0","lv1_block_blast_1","lv1_hit_blast_0","lv1_hit_blast_1","lv1_whiff_blast_0","lv1_whiff_blast_1",
-        "lv2_block_blast_0","lv2_block_blast_1","lv2_hit_blast_0","lv2_hit_blast_1","lv2_whiff_blast_0","lv2_whiff_blast_1",
-        "lv3_block_blast_0","lv3_block_blast_1","lv3_hit_blast_0","lv3_hit_blast_1","lv3_whiff_blast_0","lv3_whiff_blast_1"
+        "lv0_block_blast_0","lv0_block_blast_1","lv0_counter_blast","lv0_hit_blast_0","lv0_hit_blast_1","lv0_whiff_blast_0","lv0_whiff_blast_1",
+        "lv1_block_blast_0","lv1_block_blast_1","lv1_counter_blast","lv1_hit_blast_0","lv1_hit_blast_1","lv1_whiff_blast_0","lv1_whiff_blast_1",
+        "lv2_block_blast_0","lv2_block_blast_1","lv2_counter_blast","lv2_hit_blast_0","lv2_hit_blast_1","lv2_whiff_blast_0","lv2_whiff_blast_1",
+        "lv3_block_blast_0","lv3_block_blast_1","lv3_counter_blast","lv3_hit_blast_0","lv3_hit_blast_1","lv3_whiff_blast_0","lv3_whiff_blast_1"
     }
     for i = 1, #file_name_table do
         local key = file_name_table[i]
@@ -966,10 +966,10 @@ function load_game_scene_audio_char_LP()
     end
     -- slash_SFX
     file_name_table = {
-        "lv0_block_slash","lv0_hit_slash","lv0_whiff_slash",
-        "lv1_block_slash","lv1_hit_slash","lv1_whiff_slash",
-        "lv2_block_slash","lv2_hit_slash","lv2_whiff_slash",
-        "lv3_block_slash","lv3_hit_slash","lv3_whiff_slash"
+        "lv0_block_slash","lv0_counter_slash","lv0_hit_slash","lv0_whiff_slash",
+        "lv1_block_slash","lv1_counter_slash","lv1_hit_slash","lv1_whiff_slash",
+        "lv2_block_slash","lv2_counter_slash","lv2_hit_slash","lv2_whiff_slash",
+        "lv3_block_slash","lv3_counter_slash","lv3_hit_slash","lv3_whiff_slash"
     }
     for i = 1, #file_name_table do
         local key = file_name_table[i]
