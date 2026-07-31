@@ -285,8 +285,8 @@ function load_game_scene_audio_stage()
         local name = file_name_table[i]
         local path = "asset/game_scene/stage/alpha/audio/character_interactive_SFX/"..name..".wav"
         audio_SFX_game_scene_stage["L"][name] = {1}
-        audio_SFX_game_scene_stage["L"]["L"][name]["LCT"] = {0}
-        audio_SFX_game_scene_stage[name]["LCD"] = {0}
+        audio_SFX_game_scene_stage["L"][name]["LCT"] = {0}
+        audio_SFX_game_scene_stage["L"][name]["LCD"] = {0}
         audio_SFX_game_scene_stage["L"][name]["audio"] = love.audio.newSource(path,"static")
         update_SFX_VOLUME(audio_SFX_game_scene_stage["L"][name])
     end
@@ -294,8 +294,8 @@ function load_game_scene_audio_stage()
         local name = file_name_table[i]
         local path = "asset/game_scene/stage/alpha/audio/character_interactive_SFX/"..name..".wav"
         audio_SFX_game_scene_stage["R"][name] = {1}
-        audio_SFX_game_scene_stage["R"]["R"][name]["LCT"] = {0}
-        audio_SFX_game_scene_stage[name]["LCD"] = {0}
+        audio_SFX_game_scene_stage["R"][name]["LCT"] = {0}
+        audio_SFX_game_scene_stage["R"][name]["LCD"] = {0}
         audio_SFX_game_scene_stage["R"][name]["audio"] = love.audio.newSource(path,"static")
         update_SFX_VOLUME(audio_SFX_game_scene_stage["R"][name])
     end

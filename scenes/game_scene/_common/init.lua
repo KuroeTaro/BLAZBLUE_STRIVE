@@ -32,6 +32,7 @@ function load_game_scene_common_audio()
 
     load_game_scene_audio_char_LP()
     load_game_scene_audio_char_RP()
+    load_game_scene_audio_stage()
 end
 function load_game_scene_common_shader(i)
     local switch = {
