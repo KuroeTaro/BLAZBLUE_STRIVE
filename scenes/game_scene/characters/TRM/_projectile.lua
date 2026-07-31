@@ -130,11 +130,11 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     )
     obj_projectile["projectile_active"] = true
     obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
+    obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
     obj_projectile["block_SFX"] = nil
     obj_projectile["counter_SFX"] = nil
     obj_projectile["hit_SFX"] = nil
     obj_projectile["whiff_SFX"] = nil
-    obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
     obj_projectile["enemy_interact_function"] = function()
         if collision_projectile_hit_confirm_test(obj_projectile,hurt_side_obj_char) then
             -- projectile_active
@@ -145,10 +145,12 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
             if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
                 hurt_side_obj_char["hurt_state"] = "counter"
             end
-            -- insert_projectile_VFX 
+            -- VFX 
             -- insert same projectile VFX no matter counter/hurt/block in this case
             insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
-            -- SFX_audio_code_place_holder
+            -- SFX
+            stop_obj_audio(obj_projectile["whiff_SFX"])
+            play_obj_audio(obj_projectile["hit_SFX"])
             -- common_hurt_function
             common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
         end
@@ -846,6 +848,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     local obj_projectile = {0,0,0,0.875,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(hit_side_obj_char["player_side"])
+    local uncommon_SFX_table = common_game_scene_get_SFX_uncommon(hit_side_obj_char["player_side"])
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 42+45
@@ -861,10 +864,6 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     -- enemy_interact_function
     obj_projectile["hitbox_table"] = {}
     obj_projectile["projectile_active"] = true
-    obj_projectile["block_SFX"] = nil
-    obj_projectile["counter_SFX"] = nil
-    obj_projectile["hit_SFX"] = nil
-    obj_projectile["whiff_SFX"] = nil
     obj_projectile["hit_VFX_insert_function"] = function()
         for i = 1,#hurt_side_obj_char["VFX_status_back_table"] do
             local current_VFX = hurt_side_obj_char["VFX_status_back_table"][i]
@@ -874,6 +873,11 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
         end
         insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_obj_char)
     end
+    obj_projectile["block_SFX"] = nil
+    obj_projectile["counter_SFX"] = nil
+    obj_projectile["hit_SFX"] = nil
+    obj_projectile["whiff_SFX"] = nil
+    obj_projectile["ground_bounce_SFX"] = nil
     obj_projectile["enemy_interact_function"] = function()
         if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) then
             -- blast_state_init
@@ -882,8 +886,12 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
             obj_projectile["state"] = "blast"
             obj_projectile["hitbox_table"] = {}
             obj_projectile["projectile_active"] = false
+            -- VFX
             obj_projectile["hit_VFX_insert_function"]()
-            -- SFX_audio_code_place_holder
+            -- SFX
+            stop_obj_audio(obj_projectile["whiff_SFX"])
+            stop_obj_audio(obj_projectile["ground_bounce_SFX"])
+            play_obj_audio(obj_projectile["hit_SFX"])
             obj_projectile["gravity"] = 0
             obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_P_projectile_blast(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
             init_character_anim_with(obj_projectile,obj_projectile["projectile_animation"])
@@ -937,7 +945,8 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
                     obj_projectile["state"] = "blast"
                     obj_projectile["hitbox_table"] = {}
                     obj_projectile["projectile_active"] = false
-                    -- SFX_audio_code_place_holder
+                    stop_obj_audio(obj_projectile["whiff_SFX"])
+                    play_obj_audio(obj_projectile["hit_SFX"])
                     obj_projectile["gravity"] = 0
                     obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_P_projectile_blast(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
                     init_character_anim_with(obj_projectile,obj_projectile["projectile_animation"])
@@ -968,6 +977,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
                 if obj_projectile["y"] > -25 then
                     obj_projectile["y"] = -25
                     obj_projectile["velocity"] = {obj_projectile[5]*25,-32.5}
+                    play_obj_audio(obj_projectile["ground_bounce_SFX"])
                 end
             end,
             ["blast"] = function()

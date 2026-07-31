@@ -157,10 +157,6 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["VFX_hit_back_table"] = {}
     obj_char_game_scene_char_LP["VFX_black_overlay_table"] = {}
     -- sub_hit_hurt_function
-    obj_char_game_scene_char_LP["block_SFX"] = nil
-    obj_char_game_scene_char_LP["counter_SFX"] = nil
-    obj_char_game_scene_char_LP["hit_SFX"] = nil
-    obj_char_game_scene_char_LP["whiff_SFX"] = nil
     obj_char_game_scene_char_LP["hit_VFX_dynamic_spawn_pos"] = {}
     obj_char_game_scene_char_LP["hit_VFX_insert_function"] = nil
     obj_char_game_scene_char_LP["hit_VFX_insert_function_argument"] = nil
@@ -169,6 +165,10 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["hit_counter_VFX_insert_function"] = nil
     obj_char_game_scene_char_LP["hit_counter_VFX_insert_function_argument"] = nil
     obj_char_game_scene_char_LP["hurt_block_VFX_insert_function"] = nil
+    obj_char_game_scene_char_LP["block_SFX"] = nil
+    obj_char_game_scene_char_LP["counter_SFX"] = nil
+    obj_char_game_scene_char_LP["hit_SFX"] = nil
+    obj_char_game_scene_char_LP["whiff_SFX"] = nil
     -- 5H_shot_sys
     obj_char_game_scene_char_LP["shot_sys_state"] = "off"
     obj_char_game_scene_char_LP["shot_sys_f"] = 0
@@ -983,7 +983,7 @@ function load_game_scene_audio_char_LP()
         "air_backdash","air_dash","air_jump","air_SP_jump",
         "ground_dash_cancel","ground_dash_loop","ground_dash_skid","ground_dash_start_up",
         "ground_hard_knockdown","ground_land","ground_soft_knockdown",
-        "ground_step_0","ground_step_1","wall_wallbreak"
+        "ground_step_0","ground_step_1","wall_wallbreak","wall_wallstick"
     }
     for i = 1, #file_name_table do
         local key = file_name_table[i]
@@ -1006,7 +1006,7 @@ function load_game_scene_audio_char_LP()
         update_SFX_VOLUME(audio_SFX_game_scene_uncommon_SFX_LP[key])
     end
     -- 6SP_S_SFX
-    file_name_table = {"6SP_S_block", "6SP_S_hit", "6SP_S_whiff"}
+    file_name_table = {"6SP_S_block","6SP_S_counter","6SP_S_hit","6SP_S_whiff"}
     for i = 1, #file_name_table do
         local key = file_name_table[i]
         local path = base .. "uncommon_SFX/6SP_S/" .. key .. ".wav"
@@ -3519,7 +3519,7 @@ function state_gate_game_scene_char_LP_from_throw_testing(input,self_side_obj_ch
         self_side_obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
         state_gate_game_scene_char_LP_from_throw_success(input,self_side_obj_char,opponent_side_obj_char)
-        -- insert_VFX
+        -- VFX
         if opponent_side_obj_char["hurt_state"] ~= "idle" then
             insert_VFX_HUD_game_scene_punish(self_side_obj_char)
         end
@@ -4601,17 +4601,27 @@ function state_gate_game_scene_char_LP_from_6dash_air_dash(input,self_side_obj_c
     end
 end
 function state_gate_game_scene_char_LP_from_6dash_dash_cancel(input,self_side_obj_char,opponent_side_obj_char)
+    local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(self_side_obj_char["player_side"])
     -- _overdrive
     if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
+        play_obj_audio(stage_interactive_SFX_table["ground_dash_skid"])
+        stop_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
+        stop_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
         return true
     end
     -- _BRC
     if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
+        play_obj_audio(stage_interactive_SFX_table["ground_dash_skid"])
+        stop_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
+        stop_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
         return true
     end
     -- common_ground_to_special_move
     if self_side_obj_char["idle_cancel"] then
         if state_gate_game_scene_char_LP_common_ground_to_special_move(input,self_side_obj_char,opponent_side_obj_char) then
+            play_obj_audio(stage_interactive_SFX_table["ground_dash_skid"])
+            stop_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
+            stop_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
             return true
         end
     end
@@ -4619,6 +4629,9 @@ function state_gate_game_scene_char_LP_from_6dash_dash_cancel(input,self_side_ob
     if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_dash_skid(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        play_obj_audio(stage_interactive_SFX_table["ground_dash_skid"])
+        stop_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
+        stop_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
         self_side_obj_char["state"] = "5_stand_dash_skid"
         state_gate_game_scene_char_LP_from_5_stand_dash_skid(input,self_side_obj_char,opponent_side_obj_char)
         return true

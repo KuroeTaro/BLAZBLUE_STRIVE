@@ -280,14 +280,14 @@ function load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-160,290,320}}
         obj_char["collision_ground_height_offset"] = 0
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["ground_dash_skid"])
+        play_obj_audio(stage_interactive_SFX_table["ground_step_0"])
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {323,515}
-        -- SFX
-        play_obj_audio(stage_interactive_SFX_table["ground_dash_skid"])
-        play_obj_audio(stage_interactive_SFX_table["ground_step_0"])
     end
     res[4] = function()
         -- collide
@@ -307,10 +307,10 @@ function load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
         obj_char[8] = 2
     end
     res[12] = function()
-        -- draw_correction
-        obj_char[8] = 3
         -- SFX
         play_obj_audio(stage_interactive_SFX_table["ground_step_1"])
+        -- draw_correction
+        obj_char[8] = 3
     end
     res[16] = function()
         -- animation_end
@@ -400,10 +400,10 @@ function load_game_scene_anim_char_TRM_4_walk(obj_char)
     res[21] = function()
         -- state_number
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
-        -- draw_correction
-        obj_char[8] = 3
         -- SFX
         play_obj_audio(stage_interactive_SFX_table["ground_step_0"])
+        -- draw_correction
+        obj_char[8] = 3
     end
     res[28] = function()
         -- state_number
@@ -426,10 +426,10 @@ function load_game_scene_anim_char_TRM_4_walk(obj_char)
     res[49] = function()
         -- state_number
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
-        -- draw_correction
-        obj_char[8] = 7
         -- SFX
         play_obj_audio(stage_interactive_SFX_table["ground_step_1"])
+        -- draw_correction
+        obj_char[8] = 7
     end
     res[56] = function()
         -- state_number
@@ -460,10 +460,10 @@ function load_game_scene_anim_char_TRM_4_walk(obj_char)
         obj_char["f"] = 21
         -- state_number
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
-        -- draw_correction
-        obj_char[8] = 2
         -- SFX
         play_obj_audio(stage_interactive_SFX_table["ground_step_0"])
+        -- draw_correction
+        obj_char[8] = 2
     end
     res[85] = function()
         -- animation_end
@@ -564,10 +564,10 @@ function load_game_scene_anim_char_TRM_6_walk(obj_char)
     res[21] = function()
         -- state_number
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
-        -- draw_correction
-        obj_char[8] = 3
         -- SFX
         play_obj_audio(stage_interactive_SFX_table["ground_step_0"])
+        -- draw_correction
+        obj_char[8] = 3
     end
     res[28] = function()
         -- state_number
@@ -602,10 +602,10 @@ function load_game_scene_anim_char_TRM_6_walk(obj_char)
     res[63] = function()
         -- state_number
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
-        -- draw_correction
-        obj_char[8] = 9
         -- SFX
         play_obj_audio(stage_interactive_SFX_table["ground_step_0"])
+        -- draw_correction
+        obj_char[8] = 9
     end
     res[70] = function()
         -- state_number
@@ -738,15 +738,15 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-190,180,380}}
         obj_char["collision_ground_height_offset"] = 0
+        -- VFX
+        insert_VFX_game_scene_stage_smoke_land_blow(obj_char,-355,-160,1,1,1,0)
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["ground_land"])
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {325,480}
-        -- SFX
-        play_obj_audio(stage_interactive_SFX_table["ground_land"])
-        -- VFX
-        insert_VFX_game_scene_stage_smoke_land_blow(obj_char,-355,-160,1,1,1,0)
     end
     res[3] = function()
         -- state
@@ -842,6 +842,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anch
         if vertical_velocity ~= nil then
             obj_char["velocity"][2] = vertical_velocity
         end
+        update_before_falling()
         obj_char["friction"] = 0
         obj_char["gravity"] = 2.5
         obj_char["horizontal_velocity_correction"] = 1
@@ -853,35 +854,33 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anch
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-180,width_table[0],380}}
         obj_char["collision_ground_height_offset"] = 185
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["air_jump"])
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = anchor_pos
-        -- SFX
-        play_obj_audio(stage_interactive_SFX_table["air_jump"])
-        -- update
-        update_before_falling()
     end
     res[4] = function()
         -- state
         obj_char["idle_cancel"] = true
+        -- state_number
+        update_before_falling()
         -- input_sys_cache
         obj_char["input_sys_state"] = "load_without_direction" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(obj_char["player_side"])()
         -- draw_correction
         obj_char[8] = 1
-        -- update
-        update_before_falling()
     end
     res[8] = function()
         -- 上升阶段循环结束
         -- state
         obj_char["f"] = 0
+        -- state_number
+        update_before_falling()
         -- draw_correction
         obj_char[8] = 0
-        -- update
-        update_before_falling()
     end
     res[9] = function()
         -- 上升到下降的转换阶段
@@ -1170,14 +1169,14 @@ function load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
         obj_char["pushbox"] = {0,-185,120,370}
         obj_char["hurtbox_table"] = {{0,-225,180,450}}
         obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
-        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
-        -- draw_correction
-        obj_char[8] = 3
         -- VFX
         insert_VFX_game_scene_stage_smoke_land_blow(obj_char,-340,-160,1,1,1,0)
         -- SFX
         play_obj_audio(stage_interactive_SFX_table["ground_land"])
+        -- oroboros
+        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        -- draw_correction
+        obj_char[8] = 3
     end
     res[18] = function()
         -- state
@@ -1283,15 +1282,15 @@ function load_game_scene_anim_char_TRM_4dash_air_backdash(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-125,260,270}}
         obj_char["collision_ground_height_offset"] = 185
+        -- VFX
+        insert_VFX_game_scene_stage_4dash_air_backdash_shockwave(obj_char,150,-400,0.75,-0.75,0.75,0)
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["air_backdash"])
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {242,285}
-        -- VFX
-        insert_VFX_game_scene_stage_4dash_air_backdash_shockwave(obj_char,150,-400,0.75,-0.75,0.75,0)
-        -- SFX
-        play_obj_audio(stage_interactive_SFX_table["air_backdash"])
     end
     res[3] = function()
         -- state_number
@@ -1406,14 +1405,14 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-190,285,380}}
         obj_char["collision_ground_height_offset"] = 0
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
+        play_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {60,-350}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {288,510}
-        -- SFX
-        play_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
-        play_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
     end
     res[4] = function()
         -- state_number
@@ -1429,12 +1428,12 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
     res[8] = function()
         -- state_number
         update_horizontal_velocity()
-        -- draw_correction
-        obj_char[8] = 2
         -- VFX
         insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
         -- SFX
         play_obj_audio(stage_interactive_SFX_table["ground_step_0"])
+        -- draw_correction
+        obj_char[8] = 2
     end
     res[12] = function()
         -- state_number
@@ -1463,12 +1462,12 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
     res[24] = function()
         -- state_number
         update_horizontal_velocity()
-        -- draw_correction
-        obj_char[8] = 6
         -- VFX
         insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
         -- SFX
         play_obj_audio(stage_interactive_SFX_table["ground_step_1"])
+        -- draw_correction
+        obj_char[8] = 6
     end
     res[28] = function()
         -- state_number
@@ -1491,12 +1490,12 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         obj_char["f"] = 4
         -- state_number
         update_horizontal_velocity()
-        -- draw_correction
-        obj_char[8] = 1
         -- VFX
         insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
         -- SFX
         play_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
+        -- draw_correction
+        obj_char[8] = 1
     end
     res[37] = function()
         -- animation_end
@@ -1587,14 +1586,14 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
         obj_char["pushbox_opponent_collision_active"] = true
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-125,260,270}}
-        obj_char["collision_ground_height_offset"] = 185        -- VFX
+        obj_char["collision_ground_height_offset"] = 185
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["air_backdash"])
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {350,283}
-        -- SFX
-        play_obj_audio(stage_interactive_SFX_table["air_backdash"])
     end
     res[3] = function()
         -- state_number
@@ -1707,11 +1706,6 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-190,285,380}}
         obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
-        obj_char["shot_sys_oroboros_anchor_pos"] = {60,-350}
-        -- draw_correction
-        obj_char[8] = 0
-        obj_char["anchor_pos"] = {288,510}
         -- VFX
         insert_VFX_game_scne_stage_dash_cancel_blow(obj_char,-870,-175,1,1,1,0)
         insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
@@ -1719,6 +1713,11 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
         play_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
         play_obj_audio(stage_interactive_SFX_table["ground_dash_cancel"])
         play_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
+        -- oroboros
+        obj_char["shot_sys_oroboros_anchor_pos"] = {60,-350}
+        -- draw_correction
+        obj_char[8] = 0
+        obj_char["anchor_pos"] = {288,510}
     end
     res[4] = function()
         -- state_number
@@ -1734,12 +1733,12 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
     res[8] = function()
         -- state_number
         update_horizontal_velocity()
-        -- draw_correction
-        obj_char[8] = 2
         -- VFX
         insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
         -- SFX
         play_obj_audio(stage_interactive_SFX_table["ground_step_0"])
+        -- draw_correction
+        obj_char[8] = 2
     end
     res[10] = function()
         -- state
@@ -1775,12 +1774,12 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
     res[24] = function()
         -- state_number
         update_horizontal_velocity()
-        -- draw_correction
-        obj_char[8] = 6
         -- VFX
         insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
         -- SFX
         play_obj_audio(stage_interactive_SFX_table["ground_step_1"])
+        -- draw_correction
+        obj_char[8] = 6
     end
     res[26] = function()
         -- input_sys_cache
@@ -2005,10 +2004,6 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{0,-150,200,300}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv0_block_blast")
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv0_hit_blast")
-        hit_side_obj_char["whiff_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv0_whiff_blast")
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver0
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {95,-380,0.8,0.75,0.75,0,false,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver0
@@ -2016,6 +2011,10 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver0
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {70,-700,1,1.1,1.1,0,false,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver0
+        hit_side_obj_char["block_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv0_block_blast")
+        hit_side_obj_char["counter_SFX"] = common_SFX_table["lv0_counter_blast"]
+        hit_side_obj_char["hit_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv0_hit_blast")
+        hit_side_obj_char["whiff_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv0_whiff_blast")
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
         -- oroboros
@@ -2044,10 +2043,10 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char,hurt_side_obj_char)
         -- collide
         hit_side_obj_char["hitbox_table"] = {{150,-200,240,100}}
         hit_side_obj_char["hurtbox_table"] = {{0,-150,200,300},{150,-200,290,150}}
-        -- SFX
-        -- play_obj_audio(common_SFX_table["5P"])
         -- VFX
         insert_VFX_game_scene_char_TRM_2P_move(hit_side_obj_char)
+        -- SFX
+        play_obj_audio(hit_side_obj_char["whiff_SFX"])
         -- draw_correction
         hit_side_obj_char[8] = 3
     end
@@ -2253,10 +2252,6 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{-10,-105,230,210}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_dynamic_ver1
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {-150,-510,0.9,0.8,0.8,0,false,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_dynamic_ver1
@@ -2264,6 +2259,10 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {-150,-510,1,0.8,0.8,0,false,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        hit_side_obj_char["block_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv2_block_blast")
+        hit_side_obj_char["counter_SFX"] = common_SFX_table["lv2_counter_blast"]
+        hit_side_obj_char["hit_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv2_hit_blast")
+        hit_side_obj_char["whiff_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv2_whiff_blast")
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
         -- oroboros
@@ -2280,8 +2279,6 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
     res[2] = function()
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{-25,-75,320,150}}
-        -- SFX
-        -- play_obj_audio(common_SFX_table["5P"])
         -- VFX
         insert_VFX_game_scene_char_TRM_6P_move(hit_side_obj_char)
         -- oroboros
@@ -2303,12 +2300,15 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["strike_active"] = true
         -- collide
         hit_side_obj_char["hitbox_table"] = {{95,-300,130,240},{170,-275,20,190},{190,-255,20,150}}
+        -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hit_side_obj_char,
             500,
             -160,
             0.5,-0.8,0.8,0
         )
+        -- SFX
+        play_obj_audio(hit_side_obj_char["whiff_SFX"])
         -- oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-90,-405}
         -- draw_correction
@@ -2526,10 +2526,6 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver0
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {99,-600,0.8,0.75,0.75,0,false,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver0
@@ -2537,6 +2533,10 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver0
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {75,-915,1,1.1,1.1,0,false,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver0
+        hit_side_obj_char["block_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv0_block_blast")
+        hit_side_obj_char["counter_SFX"] = common_SFX_table["lv0_counter_blast"]
+        hit_side_obj_char["hit_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv0_hit_blast")
+        hit_side_obj_char["whiff_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv0_whiff_blast")
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
         -- oroboros
@@ -2565,10 +2565,10 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char,hurt_side_obj_char)
         -- collide
         hit_side_obj_char["hitbox_table"] = {{130,-416,260,98}}
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30},{130,-416,290,128}}
-        -- SFX
-        -- play_obj_audio(common_SFX_table["5P"])
         -- VFX
         insert_VFX_game_scene_char_TRM_5P_move(hit_side_obj_char)
+        -- SFX
+        play_obj_audio(hit_side_obj_char["whiff_SFX"])
         -- draw_correction
         hit_side_obj_char[8] = 3
     end
@@ -2776,10 +2776,6 @@ function load_game_scene_anim_char_TRM_2K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{0,-125,200,250}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver0
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {115,-306,0.8,1,1,0,false,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver0
@@ -2787,6 +2783,10 @@ function load_game_scene_anim_char_TRM_2K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver0
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {100,-614,0.9,1.2,1.2,0,false,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        hit_side_obj_char["block_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv1_block_blast")
+        hit_side_obj_char["counter_SFX"] = common_SFX_table["lv1_counter_blast"]
+        hit_side_obj_char["hit_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv1_hit_blast")
+        hit_side_obj_char["whiff_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv1_whiff_blast")
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
         -- oroboros
@@ -2831,7 +2831,7 @@ function load_game_scene_anim_char_TRM_2K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hitbox_table"] = {{160,-52.5,260,105}}
         hit_side_obj_char["hurtbox_table"] = {{0,-75,200,150},{160,-62.5,300,125}}
         -- SFX
-        -- play_obj_audio(common_SFX_table["5P"])
+        play_obj_audio(hit_side_obj_char["whiff_SFX"])
         -- draw_correction
         hit_side_obj_char[8] = 3
     end
@@ -3060,10 +3060,6 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_dynamic_ver1
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {0,0,0.6,0.8,0.8,0,false,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_dynamic_ver1
@@ -3071,6 +3067,10 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_dynamic_ver1
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {0,0,0.8,1.0,1.0,0,false,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        hit_side_obj_char["block_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv2_block_blast")
+        hit_side_obj_char["counter_SFX"] = common_SFX_table["lv2_counter_blast"]
+        hit_side_obj_char["hit_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv2_hit_blast")
+        hit_side_obj_char["whiff_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv2_whiff_blast")
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
         -- oroboros
@@ -3124,7 +3124,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hitbox_table"] = {{90,-180,140,250},{180,-160,40,210}}
         hit_side_obj_char["hurtbox_table"] = {{-15,-215,200,430},{110,-375,50,110},{90,-180,170,280},{180,-160,70,240}}
         -- SFX
-        -- play_obj_audio(common_SFX_table["5P"])
+        play_obj_audio(hit_side_obj_char["whiff_SFX"])
         -- oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-180,-455}
         -- draw_correction
@@ -3365,10 +3365,6 @@ function load_game_scene_anim_char_TRM_5K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{-20,-215,200,430},{-36,-455,100,50}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver0
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {145,-555,0.8,1,1,0,false,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver0
@@ -3376,6 +3372,10 @@ function load_game_scene_anim_char_TRM_5K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver0
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {150,-860,0.9,1.2,1.2,0,false,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        hit_side_obj_char["block_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv1_block_blast")
+        hit_side_obj_char["counter_SFX"] = common_SFX_table["lv1_counter_blast"]
+        hit_side_obj_char["hit_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv1_hit_blast")
+        hit_side_obj_char["whiff_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv1_whiff_blast")
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
         -- oroboros
@@ -3416,7 +3416,7 @@ function load_game_scene_anim_char_TRM_5K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hitbox_table"] = {{187,-300,320,100},{87,-210,120,80}}
         hit_side_obj_char["hurtbox_table"] = {{-28,-325,200,250},{-50,-100,154,200},{187,-300,360,140},{87,-210,160,120}}
         -- SFX
-        -- play_obj_audio(common_SFX_table["5P"])
+        play_obj_audio(hit_side_obj_char["whiff_SFX"])
         -- draw_correction
         hit_side_obj_char[8] = 3
     end
@@ -3648,10 +3648,6 @@ function load_game_scene_anim_char_TRM_2S(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{0,-150,200,300}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver1
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {305,-325,0.9,0.75,0.75,0,false,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
@@ -3659,6 +3655,10 @@ function load_game_scene_anim_char_TRM_2S(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {305,-325,1,0.75,0.75,0,false,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        hit_side_obj_char["block_SFX"] = common_SFX_table["lv2_block_slash"]
+        hit_side_obj_char["counter_SFX"] = common_SFX_table["lv2_counter_slash"]
+        hit_side_obj_char["hit_SFX"] = common_SFX_table["lv2_hit_slash"]
+        hit_side_obj_char["whiff_SFX"] = common_SFX_table["lv2_whiff_slash"]
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
         -- oroboros
@@ -3708,12 +3708,12 @@ function load_game_scene_anim_char_TRM_2S(hit_side_obj_char,hurt_side_obj_char)
         -- collide
         hit_side_obj_char["hitbox_table"] = {{180,-100,130,200},{325,-75,420,150}}
         hit_side_obj_char["hurtbox_table"] = {{20,-150,240,300},{180,-110,170,220},{240,-85,280,170}}
-        -- draw_correction
-        hit_side_obj_char[8] = 4
-        -- SFX
-        -- play_obj_audio(common_SFX_table["5P"])
         -- VFX
         insert_VFX_game_scene_char_TRM_2S_move(hit_side_obj_char)
+        -- SFX
+        play_obj_audio(hit_side_obj_char["whiff_SFX"])
+        -- draw_correction
+        hit_side_obj_char[8] = 4
     end
     res[12] = function()
         -- draw_correction
@@ -3968,10 +3968,6 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{0,-210,180,420}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver1
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {130,-690,0.9,0.75,0.75,0,false,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
@@ -3979,6 +3975,10 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {130,-690,1,0.75,0.75,0,false,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        hit_side_obj_char["block_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv2_block_blast")
+        hit_side_obj_char["counter_SFX"] = common_SFX_table["lv2_counter_blast"]
+        hit_side_obj_char["hit_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv2_hit_blast")
+        hit_side_obj_char["whiff_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv2_whiff_blast")
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
         -- VFX
@@ -4022,10 +4022,10 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
         -- collide
         hit_side_obj_char["hitbox_table"] = {{200,-450,350,100}}
         hit_side_obj_char["hurtbox_table"] = {{0,-190,270,380},{-65,-400,60,40},{200,-260,130,200},{150,-385,370,160}}
+        -- SFX
+        play_obj_audio(hit_side_obj_char["whiff_SFX"])
         -- draw_correction
         hit_side_obj_char[8] = 3
-        -- SFX
-        -- play_obj_audio(common_SFX_table["5P"])
     end
     res[15] = function()
         -- state_number
@@ -4291,10 +4291,6 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver1
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {10,-580,0.6,0.75,0.75,0,false,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
@@ -4302,6 +4298,10 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {10,-580,0.75,0.75,0.75,0,false,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        hit_side_obj_char["block_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv3_block_blast")
+        hit_side_obj_char["counter_SFX"] = common_SFX_table["lv3_counter_blast"]
+        hit_side_obj_char["hit_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv3_hit_blast")
+        hit_side_obj_char["whiff_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv3_whiff_blast")
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
         -- oroboros
@@ -4331,12 +4331,12 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char,hurt_side_obj_char)
         -- collide
         hit_side_obj_char["hitbox_table"] = {{185,-230,240,350}}
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30},{185,-230,290,400}}
-        -- draw_correction
-        hit_side_obj_char[8] = 2
-        -- SFX
-        -- play_obj_audio(common_SFX_table["5P"])
         -- VFX
         insert_VFX_game_scene_char_TRM_cS_move(hit_side_obj_char)
+        -- SFX
+        play_obj_audio(hit_side_obj_char["whiff_SFX"])
+        -- draw_correction
+        hit_side_obj_char[8] = 2
     end
     res[10] = function()
         -- state
@@ -4550,10 +4550,6 @@ function load_game_scene_anim_char_TRM_fS(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{0,-200,220,400}}
         hit_side_obj_char["collision_ground_height_offset"] = 0 
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver1
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {-40,-600,0.6,0.75,0.75,0,false,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
@@ -4561,6 +4557,10 @@ function load_game_scene_anim_char_TRM_fS(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {-40,-600,0.75,0.75,0.75,0,false,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        hit_side_obj_char["block_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv2_block_blast")
+        hit_side_obj_char["counter_SFX"] = common_SFX_table["lv2_counter_blast"]
+        hit_side_obj_char["hit_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv2_hit_blast")
+        hit_side_obj_char["whiff_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv2_whiff_blast")
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
         -- oroboros
@@ -4602,20 +4602,16 @@ function load_game_scene_anim_char_TRM_fS(hit_side_obj_char,hurt_side_obj_char)
         -- collide
         hit_side_obj_char["hitbox_table"] = {{85,-325,280,120}}
         hit_side_obj_char["hurtbox_table"] = {{-80,-200,250,400},{20,-230,150,160},{20,-325,300,160}}
+        -- SFX
+        play_obj_audio(hit_side_obj_char["whiff_SFX"])
         -- draw_correction
         hit_side_obj_char[8] = 3
-        -- SFX
-        -- play_obj_audio(common_SFX_table["5P"])
     end
     res[12] = function()
         -- collide
         hit_side_obj_char["hitbox_table"] = {{160,-325,280,120}}
         hit_side_obj_char["hurtbox_table"] = {{-80,-200,250,400},{95,-230,150,160},{85,-325,300,160}}
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver1
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {35,-600,0.6,0.75,0.75,0,false,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
@@ -5487,10 +5483,6 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char,hurt_side_obj
         hit_side_obj_char["hurtbox_table"] = {{0,-150,200,300}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver1
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {100,-350,0.6,0.75,0.75,0,false,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
@@ -5498,6 +5490,10 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char,hurt_side_obj
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {100,-350,0.75,0.75,0.75,0,false,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        hit_side_obj_char["block_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv3_block_blast")
+        hit_side_obj_char["counter_SFX"] = common_SFX_table["lv3_counter_blast"]
+        hit_side_obj_char["hit_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv3_hit_blast")
+        hit_side_obj_char["whiff_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv3_whiff_blast")
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
         -- VFX
@@ -5533,10 +5529,10 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char,hurt_side_obj
         -- collide
         hit_side_obj_char["hitbox_table"] = {{240,-65,320,130}}
         hit_side_obj_char["hurtbox_table"] = {{25,-150,250,300},{240,-72.5,350,145}}
+        -- SFX
+        play_obj_audio(hit_side_obj_char["whiff_SFX"])
         -- draw_correction
         hit_side_obj_char[8] = 3
-        -- SFX
-        -- play_obj_audio(common_SFX_table["5P"])
     end
     res[12] = function()
         -- state
@@ -5716,10 +5712,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher(hit_side_obj_char,hurt_side_o
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{-18,-455,100,50}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = nil
         hit_side_obj_char["hit_VFX_insert_function_argument"] = nil
         hit_side_obj_char["hit_block_VFX_insert_function"] = nil
@@ -5727,6 +5719,10 @@ function load_game_scene_anim_char_TRM_4_6Launcher(hit_side_obj_char,hurt_side_o
         hit_side_obj_char["hit_counter_VFX_insert_function"] = nil
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = nil
         hit_side_obj_char["hurt_block_VFX_insert_function"] = nil
+        hit_side_obj_char["block_SFX"] = nil
+        hit_side_obj_char["counter_SFX"] = nil
+        hit_side_obj_char["hit_SFX"] = nil
+        hit_side_obj_char["whiff_SFX"] = nil
         -- oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-150,-455}
         -- draw_correction
@@ -5929,6 +5925,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(hit_side_obj_cha
     end
     res[37] = function()
         -- state
+        update_y_37f_43f(37)
         common_game_scene_char_apply_damage_heat(
             hit_side_obj_char,hurt_side_obj_char,"hurt",false
         )
@@ -5952,20 +5949,18 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(hit_side_obj_cha
         hurt_side_obj_char["hurtstop_wiggle_y"] = 0
         hurt_side_obj_char["hurtstop_wiggle_current_x"] = 0
         hurt_side_obj_char["hurtstop_wiggle_current_y"] = 0
-        -- update
-        update_y_37f_43f(37)
     end
     res[40] = function()
+        -- state
+        update_y_37f_43f(40)
         -- collide
         hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data["0_general_hurt_launched_high"][3]
         -- draw_correction
         hurt_side_obj_char[8] = 3
-        -- update
-        update_y_37f_43f(40)
     end
     res[44] = function()
         -- state
-        hurt_side_obj_char["y"] = 0
+        update_y_44f_55f(44)
         hurt_side_obj_char["sprite_sheet"] = "0_general_hurt_hard_knockdown_up"
         -- collide
         hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data["0_general_hurt_hard_knockdown_up"][0]
@@ -5975,39 +5970,36 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(hit_side_obj_cha
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data["0_general_hurt_hard_knockdown_up"]
         -- VFX
         insert_VFX_game_scene_stage_smoke_land_blow(hurt_side_obj_char,-355,-160,1,1,1,0)
-        -- update
-        update_y_44f_55f(44)
     end
     res[49] = function()
+        -- state
+        update_y_44f_55f(49)
         -- collide
         hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data["0_general_hurt_hard_knockdown_up"][2]
         hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data["0_general_hurt_hard_knockdown_up"][2]
         -- draw_correction
         hurt_side_obj_char[8] = 2
-        -- update
-        update_y_44f_55f(49)
     end
     res[53] = function()
+        -- state
+        update_y_44f_55f(55)
         -- draw_correction
         hurt_side_obj_char[8] = 4
-        -- update
-        update_y_44f_55f(55)
     end
     res[57] = function()
+        -- state
+        update_y_56f_60f(56)
         -- draw_correction
         hurt_side_obj_char[8] = 5
-        -- update
-        update_y_56f_60f(56)
     end
     res[60] = function()
         -- state
+        update_y_56f_60f(60)
         hurt_side_obj_char["height"] = "OTG"
         -- collide
         hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data["0_general_hurt_hard_knockdown_up"][6]
         -- draw_correction
         hurt_side_obj_char[8] = 6
-        -- update
-        update_y_56f_60f(60)
     end
     res[65] = function()
         -- draw_correction
@@ -6080,10 +6072,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(hit_side_obj_char,hur
         hit_side_obj_char["hurtbox_table"] = {}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver1
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {250,-500,0.8,0.6,0.6,0.262,true,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = nil
@@ -6091,6 +6079,10 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(hit_side_obj_char,hur
         hit_side_obj_char["hit_counter_VFX_insert_function"] = nil
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = nil
+        hit_side_obj_char["block_SFX"] = nil
+        hit_side_obj_char["counter_SFX"] = nil
+        hit_side_obj_char["hit_SFX"] = nil
+        hit_side_obj_char["whiff_SFX"] = nil
         -- oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
@@ -6461,10 +6453,6 @@ function load_game_scene_anim_char_TRM_5Launcher(hit_side_obj_char,hurt_side_obj
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{-25,-455,100,50}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver1
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {-20,-690,0.6,0.75,0.75,0,false,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
@@ -6472,6 +6460,10 @@ function load_game_scene_anim_char_TRM_5Launcher(hit_side_obj_char,hurt_side_obj
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {-20,-690,0.75,0.75,0.75,0,false,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        hit_side_obj_char["block_SFX"] = nil
+        hit_side_obj_char["counter_SFX"] = nil
+        hit_side_obj_char["hit_SFX"] = nil
+        hit_side_obj_char["whiff_SFX"] = nil
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
         -- oroboros
@@ -6525,8 +6517,6 @@ function load_game_scene_anim_char_TRM_5Launcher(hit_side_obj_char,hurt_side_obj
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-150,-385}
         -- draw_correction
         hit_side_obj_char[8] = 4
-        -- SFX
-        -- play_obj_audio(common_SFX_table["5P"])
         -- VFX
         insert_VFX_game_scene_char_TRM_5Launcher_move_slash(hit_side_obj_char)
     end
@@ -6758,10 +6748,6 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(hit_side_obj_char,hurt_sid
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{-25,-455,100,50}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver1
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {-20,-690,0.6,0.75,0.75,0,false,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
@@ -6769,6 +6755,10 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(hit_side_obj_char,hurt_sid
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {-20,-690,0.75,0.75,0.75,0,false,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        hit_side_obj_char["block_SFX"] = nil
+        hit_side_obj_char["counter_SFX"] = nil
+        hit_side_obj_char["hit_SFX"] = nil
+        hit_side_obj_char["whiff_SFX"] = nil
         -- oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-170,-425}
         -- draw_correction
@@ -6820,8 +6810,6 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(hit_side_obj_char,hurt_sid
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-150,-385}
         -- draw_correction
         hit_side_obj_char[8] = 4
-        -- SFX
-        -- play_obj_audio(common_SFX_table["5P"])
         -- VFX
         insert_VFX_game_scene_char_TRM_5Launcher_move_slash(hit_side_obj_char)
     end
@@ -7050,10 +7038,6 @@ function load_game_scene_anim_char_TRM_jP(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{0,-130,270,280}}
         hit_side_obj_char["collision_ground_height_offset"] = 185
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver0
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {-70,-325,0.8,1,1,0,true,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver0
@@ -7061,6 +7045,10 @@ function load_game_scene_anim_char_TRM_jP(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver0
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {-100,-710,1,1.35,1.35,0,true,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver0
+        hit_side_obj_char["block_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv0_block_blast")
+        hit_side_obj_char["counter_SFX"] = common_SFX_table["lv0_counter_blast"]
+        hit_side_obj_char["hit_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv0_hit_blast")
+        hit_side_obj_char["whiff_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv0_whiff_blast")
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
         -- oroboros
@@ -7090,7 +7078,7 @@ function load_game_scene_anim_char_TRM_jP(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hitbox_table"] = {{160,-60,120,120}}
         hit_side_obj_char["hurtbox_table"] = {{0,-135,230,290},{160,-60,150,150}}
         -- SFX
-        -- play_obj_audio(common_SFX_table["5P"])
+        play_obj_audio(hit_side_obj_char["whiff_SFX"])
         -- draw_correction
         hit_side_obj_char[8] = 3
     end
@@ -7296,10 +7284,6 @@ function load_game_scene_anim_char_TRM_jK(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{0,-150,235,320}}
         hit_side_obj_char["collision_ground_height_offset"] = 185
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver0
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {135,-440,0.8,1,1,0,false,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver0
@@ -7307,6 +7291,10 @@ function load_game_scene_anim_char_TRM_jK(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver0
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {80,-895,0.85,1.5,1.5,0,false,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        hit_side_obj_char["block_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv1_block_blast")
+        hit_side_obj_char["counter_SFX"] = common_SFX_table["lv1_counter_blast"]
+        hit_side_obj_char["hit_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv1_hit_blast")
+        hit_side_obj_char["whiff_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv1_whiff_blast")
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
         -- oroboros
@@ -7331,6 +7319,8 @@ function load_game_scene_anim_char_TRM_jK(hit_side_obj_char,hurt_side_obj_char)
         -- collide
         hit_side_obj_char["hitbox_table"] = {{242.5,-215,310,100},{100,-165,160,70}}
         hit_side_obj_char["hurtbox_table"] = {{0,-150,235,320},{-18,-335,180,50},{242.5,-215,350,140},{100,-165,200,110}}
+        -- SFX
+        play_obj_audio(hit_side_obj_char["whiff_SFX"])
         -- draw_correction
         hit_side_obj_char[8] = 2
     end
@@ -7541,10 +7531,6 @@ function load_game_scene_anim_char_TRM_j2K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{0,-150,235,320}}
         hit_side_obj_char["collision_ground_height_offset"] = 185
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver1
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {245,-120,0.6,0.75,0.75,1.571,true,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
@@ -7552,6 +7538,10 @@ function load_game_scene_anim_char_TRM_j2K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {245,-120,0.9,0.75,0.75,1.571,true,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        hit_side_obj_char["block_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv3_block_blast")
+        hit_side_obj_char["counter_SFX"] = common_SFX_table["lv3_counter_blast"]
+        hit_side_obj_char["hit_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv3_hit_blast")
+        hit_side_obj_char["whiff_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv3_whiff_blast")
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
         -- oroboros
@@ -7576,6 +7566,8 @@ function load_game_scene_anim_char_TRM_j2K(hit_side_obj_char,hurt_side_obj_char)
         -- collide
         hit_side_obj_char["hitbox_table"] = {{0,65,150,190}}
         hit_side_obj_char["hurtbox_table"] = {{0,-165,210,350},{0,65,210,250}}
+        -- SFX
+        play_obj_audio(hit_side_obj_char["whiff_SFX"])
         -- draw_correction
         hit_side_obj_char[8] = 2
     end
@@ -7800,10 +7792,6 @@ function load_game_scene_anim_char_TRM_jS(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{0,-140,260,300}}
         hit_side_obj_char["collision_ground_height_offset"] = 185
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver1
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {10,-315,0.6,1,1,0,false,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
@@ -7811,6 +7799,10 @@ function load_game_scene_anim_char_TRM_jS(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {10,-315,0.75,1,1,0,false,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        hit_side_obj_char["block_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv2_block_blast")
+        hit_side_obj_char["counter_SFX"] = common_SFX_table["lv2_counter_blast"]
+        hit_side_obj_char["hit_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv2_hit_blast")
+        hit_side_obj_char["whiff_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv2_whiff_blast")
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
         -- oroboros
@@ -7843,6 +7835,8 @@ function load_game_scene_anim_char_TRM_jS(hit_side_obj_char,hurt_side_obj_char)
         -- collide
         hit_side_obj_char["hitbox_table"] = {{200,10,400,190},{275,-145,250,120},{200,-255,220,100}}
         hit_side_obj_char["hurtbox_table"] = {{0,-140,280,300},{170,-50,530,380},{200,-255,290,170}}
+        -- SFX
+        play_obj_audio(hit_side_obj_char["whiff_SFX"])
         -- draw_correction
         hit_side_obj_char[8] = 3
     end
@@ -8058,10 +8052,6 @@ function load_game_scene_anim_char_TRM_j5Launcher(hit_side_obj_char,hurt_side_ob
         hit_side_obj_char["hurtbox_table"] = {{0,-160,220,340}}
         hit_side_obj_char["collision_ground_height_offset"] = 185
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver1
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {-10,200,0.6,0.8,0.8,3.14,false,true}
         hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
@@ -8069,6 +8059,10 @@ function load_game_scene_anim_char_TRM_j5Launcher(hit_side_obj_char,hurt_side_ob
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {-10,200,0.75,0.8,0.8,3.14,false,true}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        hit_side_obj_char["block_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv2_block_blast")
+        hit_side_obj_char["counter_SFX"] = common_SFX_table["lv2_counter_blast"]
+        hit_side_obj_char["hit_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv2_hit_blast")
+        hit_side_obj_char["whiff_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv2_whiff_blast")
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
         -- oroboros
@@ -8099,6 +8093,8 @@ function load_game_scene_anim_char_TRM_j5Launcher(hit_side_obj_char,hurt_side_ob
         -- collide
         hit_side_obj_char["hitbox_table"] = {{-205,-45,220,100},{-230,-125,170,60}}
         hit_side_obj_char["hurtbox_table"] = {{0,-120,250,260},{-205,-45,260,140},{-230,-125,210,100}}
+        -- SFX
+        play_obj_audio(hit_side_obj_char["whiff_SFX"])
         -- draw_correction
         hit_side_obj_char[8] = 3
     end
@@ -8249,10 +8245,6 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(hit_side_obj_char,hurt_side_
         hit_side_obj_char["hurtbox_table"] = {{0,-140,250,300}}
         hit_side_obj_char["collision_ground_height_offset"] = 185
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = nil
         hit_side_obj_char["hit_VFX_insert_function_argument"] = nil
         hit_side_obj_char["hit_block_VFX_insert_function"] = nil
@@ -8260,6 +8252,10 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(hit_side_obj_char,hurt_side_
         hit_side_obj_char["hit_counter_VFX_insert_function"] = nil
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = nil
         hit_side_obj_char["hurt_block_VFX_insert_function"] = nil
+        hit_side_obj_char["block_SFX"] = nil
+        hit_side_obj_char["counter_SFX"] = nil
+        hit_side_obj_char["hit_SFX"] = nil
+        hit_side_obj_char["whiff_SFX"] = nil
         -- oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
@@ -8595,10 +8591,6 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(hit_side_obj_char,hu
         hit_side_obj_char["hurtbox_table"] = {}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver1
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {355,-595,0.9,1,1,1.047,true,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = nil
@@ -8606,6 +8598,10 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(hit_side_obj_char,hu
         hit_side_obj_char["hit_counter_VFX_insert_function"] = nil
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = nil
+        hit_side_obj_char["block_SFX"] = nil
+        hit_side_obj_char["counter_SFX"] = nil
+        hit_side_obj_char["hit_SFX"] = nil
+        hit_side_obj_char["whiff_SFX"] = nil
         -- oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
@@ -9172,7 +9168,7 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
     local friction = 5
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
-    local common_SFX_table = common_game_scene_get_SFX_common(side)
+    local uncommon_SFX_table = common_game_scene_get_SFX_uncommon(side)
     local shot_sys_force_ease_out_state = {
         ["at_the_ready_ease_in"] = true,
         ["at_the_ready"] = true,
@@ -9334,10 +9330,6 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- sub_obj
-        hit_side_obj_char["block_SFX"] = nil
-        hit_side_obj_char["counter_SFX"] = nil
-        hit_side_obj_char["hit_SFX"] = nil
-        hit_side_obj_char["whiff_SFX"] = nil
         hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_special
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {0,0,1,0,0,0,true,false}
         hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_dynamic_ver1
@@ -9345,6 +9337,10 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_special
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {0,0,1,0,0,0,true,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+        hit_side_obj_char["block_SFX"] = uncommon_SFX_table["6SP_S_block"]
+        hit_side_obj_char["counter_SFX"] = uncommon_SFX_table["6SP_S_counter"]
+        hit_side_obj_char["hit_SFX"] = uncommon_SFX_table["6SP_S_hit"]
+        hit_side_obj_char["whiff_SFX"] = uncommon_SFX_table["6SP_S_whiff"]
         -- oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
@@ -9376,10 +9372,12 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
         -- collide
         hit_side_obj_char["hitbox_table"] = {{120,-425,160,320},{220,-425,40,290}}
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30},{120,-425,220,370},{220,-425,90,340}}
-        -- draw_correction
-        hit_side_obj_char[8] = 3
         -- VFX
         insert_VFX_game_scene_char_TRM_6SP_S_move(hit_side_obj_char)
+        -- SFX
+        play_obj_audio(hit_side_obj_char["whiff_SFX"])
+        -- draw_correction
+        hit_side_obj_char[8] = 3
     end
     res[11] = function()
         -- state

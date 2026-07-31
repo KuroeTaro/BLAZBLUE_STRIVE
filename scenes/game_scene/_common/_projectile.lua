@@ -275,12 +275,12 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     )
     obj_projectile["projectile_active"] = true
     obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
+    obj_projectile["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_special
+    obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC_red
     obj_projectile["block_SFX"] = audio_SFX_game_scene_common["red_RC_block"]
     obj_projectile["counter_SFX"] = nil
     obj_projectile["hit_SFX"] = audio_SFX_game_scene_common["red_RC_hit"]
     obj_projectile["whiff_SFX"] = audio_SFX_game_scene_common["red_RC_whiff"]
-    obj_projectile["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_special
-    obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC_red
     obj_projectile["enemy_interact_function"] = function()
         -- if hit
         if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) and obj_projectile["projectile_active"] and (not hurt_side_obj_char["strike_inv"]) then
@@ -689,12 +689,12 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
     )
     obj_projectile["projectile_active"] = true
     obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
+    obj_projectile["hit_VFX_insert_function"] = function() end
+    obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC_yellow
     obj_projectile["block_SFX"] = audio_SFX_game_scene_common["yellow_RC_block"]
     obj_projectile["counter_SFX"] = nil
     obj_projectile["hit_SFX"] = audio_SFX_game_scene_common["yellow_RC_hit"]
     obj_projectile["whiff_SFX"] = audio_SFX_game_scene_common["yellow_RC_whiff"]
-    obj_projectile["hit_VFX_insert_function"] = function() end
-    obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC_yellow
     obj_projectile["enemy_interact_function"] = function()
         -- if hit
         if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) and obj_projectile["projectile_active"] and (not hurt_side_obj_char["strike_inv"]) then

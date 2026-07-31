@@ -128,7 +128,7 @@ function common_game_scene_get_SFX_uncommon(side)
     return side_table[side]
 end
 function common_game_scene_get_SFX_random_0_or_1(SFX_table, key_prefix)
-    local key = key_prefix .. (love.math.random(0, 1) == 0 and "_0" or "_1")
+    local key = key_prefix .. (math.random(0, 1) == 0 and "_0" or "_1")
     return SFX_table[key]
 end
 function common_game_scene_get_input_state(side)
@@ -353,13 +353,14 @@ function common_game_scene_strike_hit_function(hit_side_obj_char,hurt_side_obj_c
     if hurt_side_obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
         hit_side_obj_char["hit_damage"] = hit_side_obj_char["hit_damage"]*1.1
         hit_side_obj_char["hit_counter_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
-        -- SFX_audio_code_place_holder
+        stop_obj_audio(hit_side_obj_char["whiff_SFX"])
+        play_obj_audio(hit_side_obj_char["counter_SFX"])
     elseif not block_bool then
         hit_side_obj_char["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
-        -- SFX_audio_code_place_holder
+        stop_obj_audio(hit_side_obj_char["whiff_SFX"])
+        play_obj_audio(hit_side_obj_char["hit_SFX"])
     elseif block_bool then
         hit_side_obj_char["hit_block_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
-        -- SFX_audio_code_place_holder
     end
     -- debug
     hit_side_obj_char["active_frame"] = hit_side_obj_char["active_frame"] + 1
@@ -460,7 +461,8 @@ function common_game_scene_strike_hurt_function_common_block(hit_side_obj_char,h
     init_character_anim_with(hurt_side_obj_char,hurt_side_obj_char["character_animation"])
     -- block_VFX
     hit_side_obj_char["hurt_block_VFX_insert_function"](hurt_side_obj_char)
-    -- SFX_audio_code_place_holder
+    stop_obj_audio(hit_side_obj_char["whiff_SFX"])
+    play_obj_audio(hit_side_obj_char["block_SFX"])
     if FD_block then
         insert_VFX_game_scene_char_FD_block(hurt_side_obj_char)
     end
@@ -591,13 +593,14 @@ function common_game_scene_projectile_hit_function(hit_side_obj_char,hurt_side_o
     if hurt_side_obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
         obj_projectile["hit_damage"] = obj_projectile["hit_damage"]*1.1
         obj_projectile["hit_counter_VFX_insert_function"](obj_projectile,hurt_side_obj_char)
-        -- SFX_audio_code_place_holder
+        stop_obj_audio(obj_projectile["whiff_SFX"])
+        play_obj_audio(obj_projectile["counter_SFX"])
     elseif not block_bool then
         obj_projectile["hit_VFX_insert_function"](obj_projectile,hurt_side_obj_char)
-        -- SFX_audio_code_place_holder
+        stop_obj_audio(obj_projectile["whiff_SFX"])
+        play_obj_audio(obj_projectile["hit_SFX"])
     elseif block_bool then
         obj_projectile["hit_block_VFX_insert_function"](obj_projectile,hurt_side_obj_char)
-        -- SFX_audio_code_place_holder
     end
 end
 function common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
@@ -632,7 +635,7 @@ function common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_
         -- parry function
         hurt_side_obj_char["parry_function"](obj_projectile,hurt_side_obj_char)
     else
-        -- insert_VFX
+        -- VFX
         if hurt_side_obj_char["hurt_state"] == "punish" then
             insert_VFX_HUD_game_scene_punish(hit_side_obj_char)
         end
@@ -693,12 +696,11 @@ function common_game_scene_projectile_hurt_function_common_block(hit_side_obj_ch
     init_character_anim_with(hurt_side_obj_char,hurt_side_obj_char["character_animation"])
     -- block_VFX
     obj_projectile["hurt_block_VFX_insert_function"](hurt_side_obj_char)
-    -- SFX_audio_code_place_holder
+    stop_obj_audio(obj_projectile["whiff_SFX"])
+    play_obj_audio(obj_projectile["block_SFX"])
     if FD_block then
         insert_VFX_game_scene_char_FD_block(hurt_side_obj_char)
     end
-    -- -- block_SFX
-    -- SFX_audio_code_place_holder
 end
 function common_game_scene_projectile_hurt_function_common_GP_hurt(hit_side_obj_char,hurt_side_obj_char,obj_projectile,obj_stage_main,obj_camera)
     -- state
@@ -832,7 +834,7 @@ function common_game_scene_projectile_RC_red_yellow_hurt_function(hit_side_obj_c
     if block_bool then
         common_game_scene_projectile_RC_red_yellow_hurt_function_common_block(hit_side_obj_char,hurt_side_obj_char,obj_projectile,obj_stage_main,obj_camera)
     else
-        -- insert_VFX
+        -- VFX
         if hurt_side_obj_char["hurt_state"] == "punish" then
             insert_VFX_HUD_game_scene_punish(hit_side_obj_char)
         end
@@ -877,11 +879,11 @@ function common_game_scene_projectile_RC_red_yellow_hurt_function_common_block(h
     init_character_anim_with(hurt_side_obj_char,hurt_side_obj_char["character_animation"])
     -- block_VFX
     obj_projectile["hurt_block_VFX_insert_function"](hurt_side_obj_char)
+    stop_obj_audio(obj_projectile["whiff_SFX"])
+    play_obj_audio(obj_projectile["block_SFX"])
     if FD_block then
         insert_VFX_game_scene_char_FD_block(hurt_side_obj_char)
     end
-    -- -- block_SFX
-    -- SFX_audio_code_place_holder
 end
 function common_game_scene_projectile_RC_red_yellow_hurt_function_common_hurt(hit_side_obj_char,hurt_side_obj_char,obj_projectile,obj_stage_main,obj_camera)
     -- state

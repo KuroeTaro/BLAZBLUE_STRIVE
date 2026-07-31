@@ -1657,6 +1657,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
     local hurtbox_data = common_game_scene_get_hurtbox(side)
     local anchor_data = common_game_scene_get_anchor(side)
     local VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
+    local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(side)
     local sprite_sheet = "0_general_hurt_soft_knockdown_wallstick_air"
     res["prop_f"] = "f"
     res["anim_length"] = 60
@@ -1693,6 +1694,8 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = anchor_data[sprite_sheet]
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["wall_wallstick"])
     end
     res[1] = function()
         -- state
@@ -1761,6 +1764,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
+    local hurt_side_stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 25
     res[0] = function()
@@ -1810,6 +1814,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,1,1,0
         )
+        -- SFX
+        play_obj_audio(hurt_side_stage_interactive_SFX_table["ground_hard_knockdown"])
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -1879,6 +1885,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
+    local hurt_side_stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 25
     res[0] = function()
@@ -1928,6 +1935,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,1,1,0
         )
+        -- SFX
+        play_obj_audio(hurt_side_stage_interactive_SFX_table["ground_hard_knockdown"])
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -1997,6 +2006,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
+    local hurt_side_stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 25
     res[0] = function()
@@ -2046,6 +2056,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,1,1,0
         )
+        -- SFX
+        play_obj_audio(hurt_side_stage_interactive_SFX_table["ground_hard_knockdown"])
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -2101,6 +2113,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
     local hurtbox_data = common_game_scene_get_hurtbox(side)
     local anchor_data = common_game_scene_get_anchor(side)
     local VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
+    local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(side)
     local sprite_sheet = "0_general_hurt_hard_knockdown_wallstick_ground"
     res["prop_f"] = "f"
     res["anim_length"] = 85
@@ -2142,6 +2155,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = anchor_data[sprite_sheet]
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["wall_wallstick"])
     end
     res[1] = function()
         -- state
@@ -2600,6 +2615,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
+    local hurt_side_stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 30
     res[0] = function()
@@ -2639,13 +2655,15 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         -- draw_correction
         hurt_side_obj_char[8] = 0
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
-        -- insert_VFX
+        -- VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][0][1],
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][0][2],
             0.5,-1,1,0
         )
+        -- SFX
+        play_obj_audio(hurt_side_stage_interactive_SFX_table["ground_soft_knockdown"])
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -2681,7 +2699,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][5]
         -- draw_correction
         hurt_side_obj_char[8] = 5
-        -- insert_VFX
+        -- VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
             hurt_side_obj_char,
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1][1],
@@ -2714,6 +2732,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
     local hurtbox_data = common_game_scene_get_hurtbox(side)
     local anchor_data = common_game_scene_get_anchor(side)
     local VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
+    local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(side)
     local sprite_sheet = "0_general_hurt_soft_recovery_wallstick_air"
     res["prop_f"] = "f"
     res["anim_length"] = 10
@@ -2761,6 +2780,8 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
         -- draw_correction
         obj_char[8] = 2
         obj_char["anchor_pos"] = anchor_data[sprite_sheet]
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["air_jump"])
     end
     res[1] = function()
         -- state
@@ -4710,6 +4731,7 @@ function load_game_scene_anim_char_common_burst_overdrive(
     local res = {}
     local obj_camera = obj_stage_game_scene_camera
     local obj_stage_main = obj_stage_game_scene_main
+    local uncommon_SFX_table = common_game_scene_get_SFX_uncommon(self_side_obj_char["player_side"])
     local function update_move_overdrive_state()
         if opponent_side_obj_char["game_speed_force_0_countdown"] == 0 and self_side_obj_char["f"] >= 4 then
             self_side_obj_char["move_state"] = "recovery"
@@ -4753,7 +4775,6 @@ function load_game_scene_anim_char_common_burst_overdrive(
         self_side_obj_char["damage_correction"] = 1
         self_side_obj_char["overdrive_gauge"][3] = "on"
         update_move_overdrive_state()
-        play_obj_audio(audio_SFX_game_scene_common["overdrive"])
         -- air_move
         self_side_obj_char["air_move"] = {}
         self_side_obj_char["air_move"]["jump"] = {1,1}
@@ -4789,6 +4810,8 @@ function load_game_scene_anim_char_common_burst_overdrive(
         insert_VFX_game_scene_char_overdrive_badge(self_side_obj_char)
         insert_VFX_game_scene_char_overdrive_partical(self_side_obj_char,opponent_side_obj_char)
         insert_VFX_game_scene_char_overdrive_black_overlay(self_side_obj_char)
+        -- SFX
+        play_obj_audio(uncommon_SFX_table["overdrive"])
         -- character_uncommon_init
         character_uncommon_init(self_side_obj_char)
     end

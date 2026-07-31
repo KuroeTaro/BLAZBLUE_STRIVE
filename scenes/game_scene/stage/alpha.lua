@@ -276,11 +276,12 @@ function load_game_scene_audio_stage()
     audio_SFX_game_scene_stage["L"] = {}
     audio_SFX_game_scene_stage["R"] = {}
     local file_name_table = {
-        "air_backdash","air_dash","ground_dash_cancel","air_jump","air_SP_jump",
-        "ground_dash_loop","ground_dash_skid","ground_dash_start_up","ground_hard_knockdown",
-        "ground_land","ground_soft_knockdown","ground_step_0","ground_step_1","wall_wallbreak"
+        "air_backdash","air_dash","air_jump","air_SP_jump",
+        "ground_dash_cancel","ground_dash_loop","ground_dash_skid","ground_dash_start_up",
+        "ground_hard_knockdown","ground_land","ground_soft_knockdown",
+        "ground_step_0","ground_step_1","wall_wallbreak","wall_wallstick"
     }
-    for i = 1,14 do
+    for i = 1,#file_name_table do
         local name = file_name_table[i]
         local path = "asset/game_scene/stage/alpha/audio/character_interactive_SFX/"..name..".wav"
         audio_SFX_game_scene_stage["L"][name] = {1}
@@ -289,7 +290,7 @@ function load_game_scene_audio_stage()
         audio_SFX_game_scene_stage["L"][name]["audio"] = love.audio.newSource(path,"static")
         update_SFX_VOLUME(audio_SFX_game_scene_stage["L"][name])
     end
-    for i = 1,14 do
+    for i = 1,#file_name_table do
         local name = file_name_table[i]
         local path = "asset/game_scene/stage/alpha/audio/character_interactive_SFX/"..name..".wav"
         audio_SFX_game_scene_stage["R"][name] = {1}
@@ -300,7 +301,7 @@ function load_game_scene_audio_stage()
     end
     -- load_environment
     local file_name_table = {"wind"}
-    for i = 1,1 do
+    for i = 1,#file_name_table do
         local name = file_name_table[i]
         local path = "asset/game_scene/stage/alpha/audio/environment_SFX/"..name..".wav"
         audio_environment_game_scene_stage[name] = {1}
