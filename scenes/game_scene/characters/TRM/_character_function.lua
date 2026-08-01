@@ -161,8 +161,8 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_upd
     end
 end
 -- r_visual_calculation
-function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,rectile_pos)
-    local center_r = math.atan2((rectile_pos[2]-oroboros_pos[2]),(rectile_pos[1]-oroboros_pos[1]))
+function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,reticle_pos)
+    local center_r = math.atan2((reticle_pos[2]-oroboros_pos[2]),(reticle_pos[1]-oroboros_pos[1]))
     if obj_char[5] < 0 then
         center_r = center_r + 3.1416
     end

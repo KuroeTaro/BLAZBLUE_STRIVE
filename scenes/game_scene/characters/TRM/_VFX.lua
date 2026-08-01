@@ -403,10 +403,10 @@ function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_shot_oroboros_blast
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["5H_shot_oroboros_blast_move_VFX"]
     local oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
-    local rectile_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1]+160,obj_char["shot_sys_reticle_stage_pos_current"][2]+160}
+    local reticle_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1]+160,obj_char["shot_sys_reticle_stage_pos_current"][2]+160}
     local center_dx = 35
     local center_dy = -210
-    local center_r = character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,rectile_pos)
+    local center_r = character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,reticle_pos)
     local rot_dx = center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.cos(center_r) - center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.sin(center_r)
     local rot_dy = center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.sin(center_r) + center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.cos(center_r)
     obj_VFX["life"] = 15
@@ -441,10 +441,10 @@ function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_shot_oroboros_blast
     end
     obj_VFX["draw_sync"] = function()
         local oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
-        local rectile_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1]+160,obj_char["shot_sys_reticle_stage_pos_current"][2]+160}
+        local reticle_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1]+160,obj_char["shot_sys_reticle_stage_pos_current"][2]+160}
         local center_dx = 35
         local center_dy = -210
-        local center_r = character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,rectile_pos)
+        local center_r = character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,reticle_pos)
         local rot_dx = center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.cos(center_r) - center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.sin(center_r)
         local rot_dy = center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.sin(center_r) + center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.cos(center_r)
         obj_VFX[1] = obj_char["shot_sys_oroboros_ease_current"][1] + rot_dx

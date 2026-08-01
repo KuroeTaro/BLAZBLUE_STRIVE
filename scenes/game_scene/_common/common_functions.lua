@@ -361,6 +361,8 @@ function common_game_scene_strike_hit_function(hit_side_obj_char,hurt_side_obj_c
         play_obj_audio(hit_side_obj_char["hit_SFX"])
     elseif block_bool then
         hit_side_obj_char["hit_block_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
+        stop_obj_audio(hit_side_obj_char["whiff_SFX"])
+        play_obj_audio(hit_side_obj_char["block_SFX"])
     end
     -- debug
     hit_side_obj_char["active_frame"] = hit_side_obj_char["active_frame"] + 1
@@ -461,8 +463,6 @@ function common_game_scene_strike_hurt_function_common_block(hit_side_obj_char,h
     init_character_anim_with(hurt_side_obj_char,hurt_side_obj_char["character_animation"])
     -- block_VFX
     hit_side_obj_char["hurt_block_VFX_insert_function"](hurt_side_obj_char)
-    stop_obj_audio(hit_side_obj_char["whiff_SFX"])
-    play_obj_audio(hit_side_obj_char["block_SFX"])
     if FD_block then
         insert_VFX_game_scene_char_FD_block(hurt_side_obj_char)
     end
@@ -601,6 +601,8 @@ function common_game_scene_projectile_hit_function(hit_side_obj_char,hurt_side_o
         play_obj_audio(obj_projectile["hit_SFX"])
     elseif block_bool then
         obj_projectile["hit_block_VFX_insert_function"](obj_projectile,hurt_side_obj_char)
+        stop_obj_audio(obj_projectile["whiff_SFX"])
+        play_obj_audio(obj_projectile["block_SFX"])
     end
 end
 function common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
@@ -696,8 +698,6 @@ function common_game_scene_projectile_hurt_function_common_block(hit_side_obj_ch
     init_character_anim_with(hurt_side_obj_char,hurt_side_obj_char["character_animation"])
     -- block_VFX
     obj_projectile["hurt_block_VFX_insert_function"](hurt_side_obj_char)
-    stop_obj_audio(obj_projectile["whiff_SFX"])
-    play_obj_audio(obj_projectile["block_SFX"])
     if FD_block then
         insert_VFX_game_scene_char_FD_block(hurt_side_obj_char)
     end
@@ -879,8 +879,6 @@ function common_game_scene_projectile_RC_red_yellow_hurt_function_common_block(h
     init_character_anim_with(hurt_side_obj_char,hurt_side_obj_char["character_animation"])
     -- block_VFX
     obj_projectile["hurt_block_VFX_insert_function"](hurt_side_obj_char)
-    stop_obj_audio(obj_projectile["whiff_SFX"])
-    play_obj_audio(obj_projectile["block_SFX"])
     if FD_block then
         insert_VFX_game_scene_char_FD_block(hurt_side_obj_char)
     end

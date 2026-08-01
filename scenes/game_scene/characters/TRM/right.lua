@@ -993,6 +993,20 @@ function load_game_scene_audio_char_RP()
         update_SFX_VOLUME(audio_SFX_game_scene_stage_interactive_SFX_RP[key])
     end
     -- uncommon_SFX
+    -- 5H_SFX
+    file_name_table = {
+        "5H_clip_0","5H_clip_1","5H_clip_2","5H_oroboros_blast",
+        "5H_projectile_block","5H_projectile_counter","5H_projectile_hit","5H_projectile_whiff",
+        "5H_reticle_ease_in","5H_reticle_ease_out","5H_reticle_locking",
+        "5H_whiff"
+    }
+    for i = 1, #file_name_table do
+        local key = file_name_table[i]
+        local path = base .. "uncommon_SFX/5H/" .. key .. ".wav"
+        audio_SFX_game_scene_uncommon_SFX_RP[key] = {1, LCT = {0}, LCD = {0}}
+        audio_SFX_game_scene_uncommon_SFX_RP[key]["audio"] = love.audio.newSource(path, "static")
+        update_SFX_VOLUME(audio_SFX_game_scene_uncommon_SFX_RP[key])
+    end
     -- 5Launcher_SFX
     file_name_table = {
         "5Launcher_block","5Launcher_hit","5Launcher_hold_block","5Launcher_hold_hit",
@@ -1010,6 +1024,15 @@ function load_game_scene_audio_char_RP()
     for i = 1, #file_name_table do
         local key = file_name_table[i]
         local path = base .. "uncommon_SFX/6SP_S/" .. key .. ".wav"
+        audio_SFX_game_scene_uncommon_SFX_RP[key] = {1, LCT = {0}, LCD = {0}}
+        audio_SFX_game_scene_uncommon_SFX_RP[key]["audio"] = love.audio.newSource(path, "static")
+        update_SFX_VOLUME(audio_SFX_game_scene_uncommon_SFX_RP[key])
+    end
+    -- cS_SFX
+    file_name_table = {"cS_block","cS_counter","cS_hit","cS_whiff"}
+    for i = 1, #file_name_table do
+        local key = file_name_table[i]
+        local path = base .. "uncommon_SFX/cS/" .. key .. ".wav"
         audio_SFX_game_scene_uncommon_SFX_RP[key] = {1, LCT = {0}, LCD = {0}}
         audio_SFX_game_scene_uncommon_SFX_RP[key]["audio"] = love.audio.newSource(path, "static")
         update_SFX_VOLUME(audio_SFX_game_scene_uncommon_SFX_RP[key])

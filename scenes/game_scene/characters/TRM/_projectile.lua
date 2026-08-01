@@ -21,6 +21,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     local obj_projectile = {0,0,0,0.75,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(hit_side_obj_char["player_side"])
+    local uncommon_SFX_table = common_game_scene_get_SFX_uncommon(hit_side_obj_char["player_side"])
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 40
@@ -131,10 +132,10 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     obj_projectile["projectile_active"] = true
     obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
     obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-    obj_projectile["block_SFX"] = nil
-    obj_projectile["counter_SFX"] = nil
-    obj_projectile["hit_SFX"] = nil
-    obj_projectile["whiff_SFX"] = nil
+    obj_projectile["block_SFX"] = uncommon_SFX_table["5H_projectile_block"]
+    obj_projectile["counter_SFX"] = uncommon_SFX_table["5H_projectile_counter"]
+    obj_projectile["hit_SFX"] = uncommon_SFX_table["5H_projectile_hit"]
+    obj_projectile["whiff_SFX"] = uncommon_SFX_table["5H_projectile_whiff"]
     obj_projectile["enemy_interact_function"] = function()
         if collision_projectile_hit_confirm_test(obj_projectile,hurt_side_obj_char) then
             -- projectile_active
@@ -145,12 +146,28 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
             if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
                 hurt_side_obj_char["hurt_state"] = "counter"
             end
-            -- VFX 
-            -- insert same projectile VFX no matter counter/hurt/block in this case
-            insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
-            -- SFX
-            stop_obj_audio(obj_projectile["whiff_SFX"])
-            play_obj_audio(obj_projectile["hit_SFX"])
+            -- counter/hit/block
+            if hurt_side_obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
+                -- state_number
+                obj_projectile["hit_damage"] = obj_projectile["hit_damage"]*1.1
+                -- VFX
+                insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
+                -- SFX
+                stop_obj_audio(obj_projectile["whiff_SFX"])
+                play_obj_audio(obj_projectile["counter_SFX"])
+            elseif not block_bool then
+                -- VFX
+                insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
+                -- SFX
+                stop_obj_audio(obj_projectile["whiff_SFX"])
+                play_obj_audio(obj_projectile["hit_SFX"])
+            elseif block_bool then
+                -- VFX
+                insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
+                -- SFX
+                stop_obj_audio(obj_projectile["whiff_SFX"])
+                play_obj_audio(obj_projectile["block_SFX"])
+            end
             -- common_hurt_function
             common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
         end
@@ -233,6 +250,8 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main(hit_side_
         obj_projectile["block_heat_gain"] = 2.0
         obj_projectile["block_risk_gauge_gain"] = 25.0
         obj_projectile["FD_block_heat_drain"] = 5.0
+        -- SFX
+        play_obj_audio(obj_projectile["whiff_SFX"])
         -- draw_correction
         obj_projectile[8] = 0
     end
