@@ -21,7 +21,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     local obj_projectile = {0,0,0,0.75,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(hit_side_obj_char["player_side"])
-    local uncommon_SFX_table = common_game_scene_get_SFX_uncommon(hit_side_obj_char["player_side"])
+    local move_SFX_table = common_game_scene_get_SFX_move(hit_side_obj_char["player_side"])
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 40
@@ -132,10 +132,10 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     obj_projectile["projectile_active"] = true
     obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
     obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-    obj_projectile["block_SFX"] = uncommon_SFX_table["5H_projectile_block"]
-    obj_projectile["counter_SFX"] = uncommon_SFX_table["5H_projectile_counter"]
-    obj_projectile["hit_SFX"] = uncommon_SFX_table["5H_projectile_hit"]
-    obj_projectile["whiff_SFX"] = uncommon_SFX_table["5H_projectile_whiff"]
+    obj_projectile["block_SFX"] = move_SFX_table["5H_projectile_block"]
+    obj_projectile["counter_SFX"] = move_SFX_table["5H_projectile_counter"]
+    obj_projectile["hit_SFX"] = move_SFX_table["5H_projectile_hit"]
+    obj_projectile["whiff_SFX"] = move_SFX_table["5H_projectile_whiff"]
     obj_projectile["enemy_interact_function"] = function()
         if collision_projectile_hit_confirm_test(obj_projectile,hurt_side_obj_char) then
             -- projectile_active
@@ -359,7 +359,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         )
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hurt_side_obj_char["player_side"])(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -370,7 +370,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
     res[6] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hurt_side_obj_char["player_side"])(hurt_side_obj_char)
         -- draw_correction
         hurt_side_obj_char[8] = 2
     end
@@ -489,7 +489,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hurt_side_obj_char["player_side"])(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -539,7 +539,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
     res[26] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hurt_side_obj_char["player_side"])(hurt_side_obj_char)
     end
     res[28] = function()
         -- collide
@@ -632,7 +632,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         )
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hurt_side_obj_char["player_side"])(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -645,7 +645,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
     res[10] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hurt_side_obj_char["player_side"])(hurt_side_obj_char)
     end
     res[11] = function()
         -- collide
@@ -752,7 +752,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         update_before_land()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hurt_side_obj_char["player_side"])(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -867,7 +867,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     local obj_projectile = {0,0,0,0.875,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(hit_side_obj_char["player_side"])
-    local uncommon_SFX_table = common_game_scene_get_SFX_uncommon(hit_side_obj_char["player_side"])
+    local move_SFX_table = common_game_scene_get_SFX_move(hit_side_obj_char["player_side"])
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 42+45

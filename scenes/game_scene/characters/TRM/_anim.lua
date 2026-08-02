@@ -805,7 +805,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anch
         obj_char["velocity"][1] = horizontal_velocity
     end
     local function update_before_falling()
-        -- state&state_number
+        -- state_number
         obj_char["velocity"][1] = horizontal_velocity
         if obj_char["velocity"][2] >= - 16.0 and obj_char["f"] <= 8 then
             obj_char["f"] = 9
@@ -1001,7 +1001,7 @@ function load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
         obj_char["throw_inv_countdown"] = 4
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
         -- state_number
         if test_input_sys_press_or_hold(INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]["dash"]) 
         and obj_char["velocity"][1] <= 1.0
@@ -1155,7 +1155,7 @@ function load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
     res[13] = function()
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
     end
     res[15] = function()
         -- state
@@ -1267,7 +1267,7 @@ function load_game_scene_anim_char_TRM_4dash_air_backdash(obj_char)
         obj_char["idle_cancel"] = false
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
         -- state_number
         obj_char["velocity"][1] = -25*obj_char[5]
         obj_char["velocity"][2] = obj_char["velocity"][2]*0.6
@@ -1568,7 +1568,7 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
         obj_char["idle_cancel"] = false
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
         -- state_number
         obj_char["velocity"][1] = 4*obj_char[5]
         obj_char["velocity"][2] = obj_char["velocity"][2]*0.6
@@ -1765,7 +1765,7 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
         update_horizontal_velocity()
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
         -- draw_correction
         obj_char[8] = 5
         -- VFX
@@ -1867,7 +1867,7 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char,hurt_side_obj_char)
     local friction = 4
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
-    local common_SFX_table = common_game_scene_get_SFX_common(side)
+    local move_SFX_table = common_game_scene_get_SFX_move(side)
     res["prop_f"] = "f"
     res["anim_length"] = 27
     res[0] = function()
@@ -1988,7 +1988,7 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["strike_counter_ver_function"] = common_game_scene_counter_ver1
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- state_number
         hit_side_obj_char["friction"] = friction
         hit_side_obj_char["gravity"] = gravity
@@ -2011,10 +2011,10 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver0
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {70,-700,1,1.1,1.1,0,false,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver0
-        hit_side_obj_char["block_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv0_block_blast")
-        hit_side_obj_char["counter_SFX"] = common_SFX_table["lv0_counter_blast"]
-        hit_side_obj_char["hit_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv0_hit_blast")
-        hit_side_obj_char["whiff_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv0_whiff_blast")
+        hit_side_obj_char["block_SFX"] = move_SFX_table["2P_block"]
+        hit_side_obj_char["counter_SFX"] = move_SFX_table["2P_counter"]
+        hit_side_obj_char["hit_SFX"] = move_SFX_table["2P_hit"]
+        hit_side_obj_char["whiff_SFX"] = move_SFX_table["2P_whiff"]
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
         -- oroboros
@@ -2071,7 +2071,7 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char,hurt_side_obj_char)
     res[11] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
     end
     res[15] = function()
         -- draw_correction
@@ -2115,7 +2115,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
     local friction = 10
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
-    local common_SFX_table = common_game_scene_get_SFX_common(side)
+    local move_SFX_table = common_game_scene_get_SFX_move(side)
     res["prop_f"] = "f"
     res["anim_length"] = 42
     res[0] = function()
@@ -2236,7 +2236,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["strike_counter_ver_function"] = common_game_scene_counter_ver2
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- state_number
         hit_side_obj_char["friction"] = friction
         hit_side_obj_char["gravity"] = gravity
@@ -2259,10 +2259,10 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {-150,-510,1,0.8,0.8,0,false,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-        hit_side_obj_char["block_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv2_block_blast")
-        hit_side_obj_char["counter_SFX"] = common_SFX_table["lv2_counter_blast"]
-        hit_side_obj_char["hit_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv2_hit_blast")
-        hit_side_obj_char["whiff_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv2_whiff_blast")
+        hit_side_obj_char["block_SFX"] = move_SFX_table["6P_block"]
+        hit_side_obj_char["counter_SFX"] = move_SFX_table["6P_counter"]
+        hit_side_obj_char["hit_SFX"] = move_SFX_table["6P_hit"]
+        hit_side_obj_char["whiff_SFX"] = move_SFX_table["6P_whiff"]
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
         -- oroboros
@@ -2289,6 +2289,8 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
     res[4] = function()
         -- draw_correction
         hit_side_obj_char[8] = 2
+        -- SFX
+        play_obj_audio(move_SFX_table["oroboros_in_normal"])
     end
     res[6] = function()
         -- draw_correction
@@ -2353,7 +2355,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
     res[36] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430}}
         -- oroboros
@@ -2389,7 +2391,7 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char,hurt_side_obj_char)
     local friction = 4
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
-    local common_SFX_table = common_game_scene_get_SFX_common(side)
+    local move_SFX_table = common_game_scene_get_SFX_move(side)
     res["prop_f"] = "f"
     res["anim_length"] = 27
     res[0] = function()
@@ -2510,7 +2512,7 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["strike_counter_ver_function"] = common_game_scene_counter_ver1
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- state_number
         hit_side_obj_char["friction"] = friction
         hit_side_obj_char["gravity"] = gravity
@@ -2533,10 +2535,10 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver0
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {75,-915,1,1.1,1.1,0,false,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver0
-        hit_side_obj_char["block_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv0_block_blast")
-        hit_side_obj_char["counter_SFX"] = common_SFX_table["lv0_counter_blast"]
-        hit_side_obj_char["hit_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv0_hit_blast")
-        hit_side_obj_char["whiff_SFX"] = common_game_scene_get_SFX_random_0_or_1(common_SFX_table, "lv0_whiff_blast")
+        hit_side_obj_char["block_SFX"] = move_SFX_table["5P_block"]
+        hit_side_obj_char["counter_SFX"] = move_SFX_table["5P_counter"]
+        hit_side_obj_char["hit_SFX"] = move_SFX_table["5P_hit"]
+        hit_side_obj_char["whiff_SFX"] = move_SFX_table["5P_whiff"]
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
         -- oroboros
@@ -2593,7 +2595,7 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char,hurt_side_obj_char)
     res[10] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
     end
     res[12] = function()
         -- draw_correction
@@ -2760,7 +2762,7 @@ function load_game_scene_anim_char_TRM_2K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["strike_counter_ver_function"] = common_game_scene_counter_ver1
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- state_number
         hit_side_obj_char["friction"] = friction
         hit_side_obj_char["gravity"] = gravity
@@ -2864,7 +2866,7 @@ function load_game_scene_anim_char_TRM_2K(hit_side_obj_char,hurt_side_obj_char)
     res[17] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
     end
     res[19] = function()
         -- draw_correction
@@ -3043,7 +3045,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["strike_counter_ver_function"] = common_game_scene_counter_ver2
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- state_number
         hit_side_obj_char["velocity"] = {hit_side_obj_char[5]*(60+velocity_cache),0}
         hit_side_obj_char["friction"] = friction
@@ -3155,7 +3157,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
     res[26] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
     end
     res[28] = function()
         -- draw_correction
@@ -3349,7 +3351,7 @@ function load_game_scene_anim_char_TRM_5K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["strike_counter_ver_function"] = common_game_scene_counter_ver1
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- state_number
         hit_side_obj_char["friction"] = friction
         hit_side_obj_char["gravity"] = gravity
@@ -3449,7 +3451,7 @@ function load_game_scene_anim_char_TRM_5K(hit_side_obj_char,hurt_side_obj_char)
     res[15] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
     end
     res[18] = function()
         -- VFX
@@ -3632,7 +3634,7 @@ function load_game_scene_anim_char_TRM_2S(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["strike_counter_ver_function"] = common_game_scene_counter_ver2
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- state_number
         hit_side_obj_char["friction"] = friction
         hit_side_obj_char["gravity"] = gravity
@@ -3755,7 +3757,7 @@ function load_game_scene_anim_char_TRM_2S(hit_side_obj_char,hurt_side_obj_char)
     res[26] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
     end
     res[28] = function()
         -- collide
@@ -3948,7 +3950,7 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["strike_counter_ver_function"] = common_game_scene_counter_ver2
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- state_number
         if hit_side_obj_char["velocity"][1]*hit_side_obj_char[5] < 9.0 then
             hit_side_obj_char["velocity"][1] = 9.0*hit_side_obj_char[5]
@@ -4089,7 +4091,7 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
     res[37] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
     end
     res[42] = function()
         -- state
@@ -4141,7 +4143,7 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char,hurt_side_obj_char)
     local friction = 10
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
-    local uncommon_SFX_table = common_game_scene_get_SFX_uncommon(side)
+    local move_SFX_table = common_game_scene_get_SFX_move(side)
     local function direction_input_mapping()
         if hit_side_obj_char["direction_input"] >= 7 then
             hit_side_obj_char["direction_input_cache"] = hit_side_obj_char["direction_input"]
@@ -4275,7 +4277,7 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["strike_counter_ver_function"] = common_game_scene_counter_ver2
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- state_number
         hit_side_obj_char["friction"] = friction
         hit_side_obj_char["gravity"] = gravity
@@ -4298,10 +4300,10 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {10,-580,0.75,0.75,0.75,0,false,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-        hit_side_obj_char["block_SFX"] = uncommon_SFX_table["cS_block"]
-        hit_side_obj_char["counter_SFX"] = uncommon_SFX_table["cS_counter"]
-        hit_side_obj_char["hit_SFX"] = uncommon_SFX_table["cS_hit"]
-        hit_side_obj_char["whiff_SFX"] = uncommon_SFX_table["cS_whiff"]
+        hit_side_obj_char["block_SFX"] = move_SFX_table["cS_block"]
+        hit_side_obj_char["counter_SFX"] = move_SFX_table["cS_counter"]
+        hit_side_obj_char["hit_SFX"] = move_SFX_table["cS_hit"]
+        hit_side_obj_char["whiff_SFX"] = move_SFX_table["cS_whiff"]
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
         -- oroboros
@@ -4362,7 +4364,7 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char,hurt_side_obj_char)
     res[18] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
     end
     res[20] = function()
         -- collide
@@ -4530,7 +4532,7 @@ function load_game_scene_anim_char_TRM_fS(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["strike_counter_ver_function"] = common_game_scene_counter_ver2
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- state_number
         if hit_side_obj_char["velocity"][1]*hit_side_obj_char[5] < 9.0 then
             hit_side_obj_char["velocity"][1] = 9.0*hit_side_obj_char[5]
@@ -4663,7 +4665,7 @@ function load_game_scene_anim_char_TRM_fS(hit_side_obj_char,hurt_side_obj_char)
     res[32] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{-30,-455,100,50}}
         -- oroboros
@@ -4704,7 +4706,7 @@ end
 -- _5H
 function load_game_scene_anim_char_TRM_5H(obj_char)
     local res = {}
-    local uncommon_SFX_table = common_game_scene_get_SFX_uncommon(obj_char["player_side"])
+    local move_SFX_table = common_game_scene_get_SFX_move(obj_char["player_side"])
     res["prop_f"] = "f"
     res["anim_length"] = 60
     res[0] = function()
@@ -4741,13 +4743,13 @@ function load_game_scene_anim_char_TRM_5H(obj_char)
     end
     res[11] = function()
         -- SFX
-        play_obj_audio(uncommon_SFX_table["5H_clip_0"])
+        play_obj_audio(move_SFX_table["5H_clip_0"])
         -- draw_correction
         obj_char[8] = 3
     end
     res[16] = function()
         -- SFX
-        play_obj_audio(uncommon_SFX_table["5H_clip_1"])
+        play_obj_audio(move_SFX_table["5H_clip_1"])
         -- draw_correction
         obj_char[8] = 4
     end
@@ -4757,13 +4759,13 @@ function load_game_scene_anim_char_TRM_5H(obj_char)
     end
     res[28] = function()
         -- SFX
-        play_obj_audio(uncommon_SFX_table["5H_clip_2"])
+        play_obj_audio(move_SFX_table["5H_clip_2"])
         -- draw_correction
         obj_char[8] = 6
     end
     res[35] = function()
         -- SFX
-        play_obj_audio(uncommon_SFX_table["5H_whiff"])
+        play_obj_audio(move_SFX_table["5H_whiff"])
         -- draw_correction
         obj_char[8] = 7
     end
@@ -4792,11 +4794,6 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_in(obj_char
         --VFX
         insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_switch(obj_char)
     end
-    -- res[10] = function()
-    --     -- input_sys_cache
-    --     obj_char["input_sys_state_negative_edge"] = "save" -- none save load
-    --     common_game_scene_get_input_sys_cache_negative_edge_init(obj_char["player_side"])(obj_char)
-    -- end
     res[12] = function()
         -- -- input_sys_cache
         -- obj_char["input_sys_state_negative_edge"] = "load" -- none save load
@@ -4925,7 +4922,7 @@ end
     -- ease_out
 function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(obj_char)
     local res = {}
-    local uncommon_SFX_table = common_game_scene_get_SFX_uncommon(obj_char["player_side"])
+    local move_SFX_table = common_game_scene_get_SFX_move(obj_char["player_side"])
     res["prop_f"] = "shot_sys_reticle_f_4"
     res["anim_length"] = 13
     res[0] = function()
@@ -4933,7 +4930,7 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(obj_char)
         obj_char["shot_sys_reticle"][8] = 0
         obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
         -- SFX
-        play_obj_audio(uncommon_SFX_table["5H_reticle_ease_in"])
+        play_obj_audio(move_SFX_table["5H_reticle_ease_in"])
     end
     res[1] = function()
         obj_char["shot_sys_reticle"][4] = 0.4
@@ -4954,7 +4951,7 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(obj_char)
 end
 function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(obj_char,sprite_sheet)
     local res = {}
-    local uncommon_SFX_table = common_game_scene_get_SFX_uncommon(obj_char["player_side"])
+    local move_SFX_table = common_game_scene_get_SFX_move(obj_char["player_side"])
     res["prop_f"] = "shot_sys_reticle_f_8"
     res["anim_length"] = 10
     res[0] = function()
@@ -4963,7 +4960,7 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unloc
         obj_char["shot_sys_reticle"][8] = 0
         -- SFX
         if sprite_sheet == "5H_reticle_locking" then
-            play_obj_audio(uncommon_SFX_table["5H_reticle_locking"])
+            play_obj_audio(move_SFX_table["5H_reticle_locking"])
         end
     end
     res[1] = function()
@@ -5008,7 +5005,7 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locked(obj_char)
 end
 function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_out(obj_char)
     local res = {}
-    local uncommon_SFX_table = common_game_scene_get_SFX_uncommon(obj_char["player_side"])
+    local move_SFX_table = common_game_scene_get_SFX_move(obj_char["player_side"])
     res["prop_f"] = "shot_sys_reticle_f_8"
     res["anim_length"] = 8
     res[0] = function()
@@ -5016,7 +5013,7 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_out(obj_char
         obj_char["shot_sys_reticle"][4] = 1
         obj_char["shot_sys_reticle"][8] = 0
         -- SFX
-        play_obj_audio(uncommon_SFX_table["5H_reticle_ease_out"])
+        play_obj_audio(move_SFX_table["5H_reticle_ease_out"])
     end
     res[2] = function()
         obj_char["shot_sys_reticle"][8] = 1
@@ -5254,7 +5251,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     local res = {}
     local side = obj_char["player_side"]
     local obj_camera = obj_stage_game_scene_camera
-    local uncommon_SFX_table = common_game_scene_get_SFX_uncommon(side)
+    local move_SFX_table = common_game_scene_get_SFX_move(side)
     local oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
     local reticle_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1]+160,obj_char["shot_sys_reticle_stage_pos_current"][2]+160}
     local center_r = obj_char[5]*character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,reticle_pos)
@@ -5270,7 +5267,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
         obj_char["shot_sys_oroboros_mid"]["sprite_sheet"]  = "5H_oroboros_shot"
         obj_char["shot_sys_oroboros_mid"][8] = 0
         -- SFX
-        play_obj_audio(uncommon_SFX_table["5H_oroboros_blast"])
+        play_obj_audio(move_SFX_table["5H_oroboros_blast"])
     end
     res[1] = function()
         -- oroboros
@@ -5490,7 +5487,7 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char,hurt_side_obj
         hit_side_obj_char["strike_counter_ver_function"] = common_game_scene_counter_ver3
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- state_number
         hit_side_obj_char["friction"] = friction
         hit_side_obj_char["gravity"] = gravity
@@ -5596,7 +5593,7 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char,hurt_side_obj
     res[26] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
     end
     res[27] = function()
         -- draw_correction
@@ -5714,7 +5711,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(hit_side_obj_char,hurt_side_o
         hit_side_obj_char["hurt_function"] = common_game_scene_throw_hurt_function
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         if test_input_sys_press_or_hold(input["left"]) then
             hit_side_obj_char["input_sys_cache"]["left"] = true
         elseif test_input_sys_press_or_hold(input["right"]) then
@@ -6202,7 +6199,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(hit_side_obj_char,hur
     res[67] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- draw_correction
         hit_side_obj_char[8] = 9
     end
@@ -6460,7 +6457,7 @@ function load_game_scene_anim_char_TRM_5Launcher(hit_side_obj_char,hurt_side_obj
         hit_side_obj_char["strike_counter_ver_function"] = common_game_scene_counter_ver2
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- state_number
         hit_side_obj_char["friction"] = friction
         hit_side_obj_char["gravity"] = gravity
@@ -6579,7 +6576,7 @@ function load_game_scene_anim_char_TRM_5Launcher(hit_side_obj_char,hurt_side_obj
     res[43] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
     end
     res[45] = function()
         -- draw_correction
@@ -6755,7 +6752,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(hit_side_obj_char,hurt_sid
         hit_side_obj_char["strike_counter_ver_function"] = common_game_scene_counter_ver2
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- state_number
         hit_side_obj_char["friction"] = friction
         hit_side_obj_char["gravity"] = gravity
@@ -6872,7 +6869,7 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(hit_side_obj_char,hurt_sid
     res[43] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
     end
     res[45] = function()
         -- draw_correction
@@ -7045,7 +7042,7 @@ function load_game_scene_anim_char_TRM_jP(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["strike_counter_ver_function"] = common_game_scene_counter_ver0
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- state_number
         hit_side_obj_char["friction"] = friction
         hit_side_obj_char["gravity"] = gravity
@@ -7138,7 +7135,7 @@ function load_game_scene_anim_char_TRM_jP(hit_side_obj_char,hurt_side_obj_char)
     res[19] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
     end
     res[20] = function()
         -- collide
@@ -7291,7 +7288,7 @@ function load_game_scene_anim_char_TRM_jK(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["strike_counter_ver_function"] = common_game_scene_counter_ver1
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- state_number
         hit_side_obj_char["friction"] = friction
         hit_side_obj_char["gravity"] = gravity
@@ -7382,7 +7379,7 @@ function load_game_scene_anim_char_TRM_jK(hit_side_obj_char,hurt_side_obj_char)
     res[22] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
     end
     res[24] = function()
         -- collide
@@ -7538,7 +7535,7 @@ function load_game_scene_anim_char_TRM_j2K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["strike_counter_ver_function"] = common_game_scene_counter_ver2
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- state_number
         hit_side_obj_char["friction"] = friction
         hit_side_obj_char["gravity"] = gravity
@@ -7617,7 +7614,7 @@ function load_game_scene_anim_char_TRM_j2K(hit_side_obj_char,hurt_side_obj_char)
     res[16] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
     end
     res[19] = function()
         -- collide
@@ -7648,7 +7645,7 @@ function load_game_scene_anim_char_TRM_j2K(hit_side_obj_char,hurt_side_obj_char)
     res[25] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{0,-155,230,330}}
         -- draw_correction
@@ -7799,7 +7796,7 @@ function load_game_scene_anim_char_TRM_jS(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["strike_counter_ver_function"] = common_game_scene_counter_ver2
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- state_number
         hit_side_obj_char["friction"] = friction
         hit_side_obj_char["gravity"] = gravity
@@ -7898,7 +7895,7 @@ function load_game_scene_anim_char_TRM_jS(hit_side_obj_char,hurt_side_obj_char)
     res[31] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
     end
     res[35] = function()
         -- draw_correction
@@ -8059,7 +8056,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(hit_side_obj_char,hurt_side_ob
         hit_side_obj_char["strike_counter_ver_function"] = common_game_scene_counter_ver2
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- state_number
         hit_side_obj_char["friction"] = friction
         hit_side_obj_char["gravity"] = gravity
@@ -8156,7 +8153,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(hit_side_obj_char,hurt_side_ob
     res[30] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- draw_correction
         hit_side_obj_char[8] = 8
     end
@@ -8247,7 +8244,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(hit_side_obj_char,hurt_side_
         hit_side_obj_char["hurt_function"] = common_game_scene_throw_hurt_function
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         if test_input_sys_press_or_hold(input["left"]) then
             hit_side_obj_char["input_sys_cache"]["left"] = true
         elseif test_input_sys_press_or_hold(input["right"]) then
@@ -8329,7 +8326,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(hit_side_obj_char,hurt_side_
     res[33] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- draw_correction
         hit_side_obj_char[8] = 6
     end
@@ -8721,7 +8718,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(hit_side_obj_char,hu
     res[43] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
     end
     res[45] = function()
         -- draw_correction
@@ -8891,7 +8888,7 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
         obj_char["projectile_inv_countdown"] = 0
         -- input_sys_cache
         obj_char["input_sys_state"] = "none" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
         -- state_number
         obj_char["friction"] = friction
         obj_char["gravity"] = gravity
@@ -8923,7 +8920,7 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
     res[13] = function()
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(obj_char["player_side"])(obj_char)
     end
     res[14] = function()
         -- draw_correction
@@ -9143,7 +9140,7 @@ function load_game_scene_anim_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_cha
     res[22] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
     end
     res[25] = function()
         -- collide
@@ -9191,7 +9188,7 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
     local friction = 5
     local gravity = 2.5
     local side = hit_side_obj_char["player_side"]
-    local uncommon_SFX_table = common_game_scene_get_SFX_uncommon(side)
+    local move_SFX_table = common_game_scene_get_SFX_move(side)
     local shot_sys_force_ease_out_state = {
         ["at_the_ready_ease_in"] = true,
         ["at_the_ready"] = true,
@@ -9336,7 +9333,7 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["strike_counter_ver_function"] = common_game_scene_counter_ver3
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
         -- state_number
         hit_side_obj_char["friction"] = friction
         hit_side_obj_char["gravity"] = gravity
@@ -9360,10 +9357,10 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_special
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {0,0,1,0,0,0,true,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-        hit_side_obj_char["block_SFX"] = uncommon_SFX_table["6SP_S_block"]
-        hit_side_obj_char["counter_SFX"] = uncommon_SFX_table["6SP_S_counter"]
-        hit_side_obj_char["hit_SFX"] = uncommon_SFX_table["6SP_S_hit"]
-        hit_side_obj_char["whiff_SFX"] = uncommon_SFX_table["6SP_S_whiff"]
+        hit_side_obj_char["block_SFX"] = move_SFX_table["6SP_S_block"]
+        hit_side_obj_char["counter_SFX"] = move_SFX_table["6SP_S_counter"]
+        hit_side_obj_char["hit_SFX"] = move_SFX_table["6SP_S_hit"]
+        hit_side_obj_char["whiff_SFX"] = move_SFX_table["6SP_S_whiff"]
         -- oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
@@ -9432,7 +9429,7 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
     res[17] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])
+        common_game_scene_get_input_sys_cache_init(hit_side_obj_char["player_side"])(hit_side_obj_char)
     end
     res[20] = function()
         -- collide

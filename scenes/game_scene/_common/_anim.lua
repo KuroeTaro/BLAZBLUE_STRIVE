@@ -104,7 +104,7 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -153,7 +153,7 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
     res[84] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- draw_correction
         hurt_side_obj_char[8] = 8
     end
@@ -283,7 +283,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         )
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -296,7 +296,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
     res[8] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
     end
     res[9] = function()
         -- collide
@@ -391,7 +391,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         )
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -404,7 +404,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
     res[10] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
     end
     res[11] = function()
         -- collide
@@ -499,7 +499,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         )
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -512,7 +512,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
     res[12] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
     end
     res[13] = function()
         -- collide
@@ -607,7 +607,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         )
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -620,7 +620,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
     res[15] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
     end
     res[16] = function()
         -- collide
@@ -715,7 +715,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         )
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -728,7 +728,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
     res[17] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
     end
     res[18] = function()
         -- collide
@@ -857,7 +857,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         )
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -868,7 +868,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
     res[5] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
     end
     res[6] = function()
         -- draw_correction
@@ -961,7 +961,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         )
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -976,7 +976,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
     res[7] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
     end
     res[9] = function()
         -- draw_correction
@@ -1069,7 +1069,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         )
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -1084,7 +1084,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
     res[9] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- draw_correction
         hurt_side_obj_char[8] = 1
     end
@@ -1175,7 +1175,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         )
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -1194,7 +1194,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
     res[12] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- draw_correction
         hurt_side_obj_char[8] = 1
     end
@@ -1285,7 +1285,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         )
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -1308,7 +1308,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
     res[14] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
     end
     res[16] = function()
         -- draw_correction
@@ -1422,7 +1422,7 @@ function load_game_scene_anim_char_common_0_air_block(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -1472,7 +1472,7 @@ function load_game_scene_anim_char_common_0_air_block(
     res[27] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
     end
     res[28] = function()
         -- collide
@@ -1570,7 +1570,7 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         hit_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side)
+        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
         -- insert VFX
         if teching_or_teched == "teching" then
             insert_VFX_game_scene_char_throw_tech(
@@ -1606,7 +1606,7 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
     res[25] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side)
+        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
     end
     res[28] = function()
         -- draw_correction
@@ -1704,7 +1704,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
     res[55] = function()
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(side)
+        common_game_scene_get_input_sys_cache_init(side)(obj_char)
     end
     res[60] = function()
         -- animation
@@ -2389,7 +2389,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
     res[25] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
     end
     res[27] = function()
         -- draw_correction
@@ -2497,7 +2497,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
     res[25] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
     end
     res[27] = function()
         -- draw_correction
@@ -2583,7 +2583,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
     res[20] = function()
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(side)
+        common_game_scene_get_input_sys_cache_init(side)(obj_char)
     end
     res[21] = function()
         -- draw_correction
@@ -2714,7 +2714,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
     res[25] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
     end
     res[28] = function()
         -- draw_correction
@@ -2794,7 +2794,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
     res[5] = function()
         -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(side)
+        common_game_scene_get_input_sys_cache_init(side)(obj_char)
     end
     res[7] = function()
         -- draw_correction
@@ -3032,7 +3032,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
         update_before_last_loop()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -3263,7 +3263,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         update_before_land()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -3446,7 +3446,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         update_before_land()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -3573,7 +3573,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -3709,7 +3709,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- update
         update_before_falling()
         -- character_uncommon_init
@@ -3873,7 +3873,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
         update_before_land()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -4021,7 +4021,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         update_before_land()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -4137,7 +4137,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
         update_before_land()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -4279,7 +4279,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
         update_before_falling()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -4431,7 +4431,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_
         update_before_land()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -4601,7 +4601,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- character_uncommon_init
         character_uncommon_init()
     end
@@ -4650,7 +4650,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
     res[24] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
     end
     res[29] = function()
         -- animation_end
@@ -4729,9 +4729,10 @@ function load_game_scene_anim_char_common_burst_overdrive(
     overdrive_halved,character_uncommon_init
 )
     local res = {}
+    local self_side = self_side_obj_char["player_side"]
     local obj_camera = obj_stage_game_scene_camera
     local obj_stage_main = obj_stage_game_scene_main
-    local uncommon_SFX_table = common_game_scene_get_SFX_uncommon(self_side_obj_char["player_side"])
+    local move_SFX_table = common_game_scene_get_SFX_move(self_side_obj_char["player_side"])
     local function update_move_overdrive_state()
         if opponent_side_obj_char["game_speed_force_0_countdown"] == 0 and self_side_obj_char["f"] >= 4 then
             self_side_obj_char["move_state"] = "recovery"
@@ -4807,11 +4808,13 @@ function load_game_scene_anim_char_common_burst_overdrive(
             end
         )
         -- VFX
+        self_side_obj_char["VFX_common_front_table"] = {}
+        self_side_obj_char["VFX_common_back_table"] = {}
         insert_VFX_game_scene_char_overdrive_badge(self_side_obj_char)
         insert_VFX_game_scene_char_overdrive_partical(self_side_obj_char,opponent_side_obj_char)
         insert_VFX_game_scene_char_overdrive_black_overlay(self_side_obj_char)
         -- SFX
-        play_obj_audio(uncommon_SFX_table["overdrive"])
+        play_obj_audio(move_SFX_table["overdrive"])
         -- character_uncommon_init
         character_uncommon_init(self_side_obj_char)
     end
@@ -4942,7 +4945,7 @@ function load_game_scene_anim_char_common_burst_overdrive(
         update_move_overdrive_state()
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(self_side)
+        common_game_scene_get_input_sys_cache_init(self_side)(self_side_obj_char)
         -- draw_correction
         self_side_obj_char[8] = 8
     end
@@ -5009,6 +5012,7 @@ function load_game_scene_anim_char_common_burst_RC_red(
     local hurtbox_data = common_game_scene_get_hurtbox(self_side)
     local anchor_data = common_game_scene_get_anchor(self_side)
     local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1]-100)
+    local move_SFX_table = common_game_scene_get_SFX_move(self_side)
     local function update_heat_gauge_state()
         if self_side_obj_char["heat_gauge"][1] > goal_heat_gauge_remain then
             self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - 5
@@ -5071,7 +5075,7 @@ function load_game_scene_anim_char_common_burst_RC_red(
         self_side_obj_char["projectile_inv_countdown"] = res["anim_length"]
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(self_side)
+        common_game_scene_get_input_sys_cache_init(self_side)(self_side_obj_char)
         -- state_number
         self_side_obj_char["friction"] = 0
         self_side_obj_char["gravity"] = 0
@@ -5092,8 +5096,6 @@ function load_game_scene_anim_char_common_burst_RC_red(
         self_side_obj_char["pushbox_opponent_collision_active"] = true
         self_side_obj_char["hitbox_table"] = {} --{ 攻击类型 是投还是打， function值 内部为命中后的逻辑,具体的box形状}
         self_side_obj_char["hurtbox_table"] = {}
-        -- draw_correction
-        self_side_obj_char[8] = 0
         -- VFX
         self_side_obj_char["VFX_hit_front_table"] = {}
         self_side_obj_char["VFX_hit_back_table"] = {}
@@ -5102,6 +5104,8 @@ function load_game_scene_anim_char_common_burst_RC_red(
         insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_red_badge)
         insert_VFX_game_scene_char_RC_partical(self_side_obj_char)
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
+        -- draw_correction
+        self_side_obj_char[8] = 0
     end
     res[3] = function()
         -- state&state_number
@@ -5118,6 +5122,8 @@ function load_game_scene_anim_char_common_burst_RC_red(
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(self_side)()
+        -- SFX
+        play_obj_audio(move_SFX_table["red_RC_whiff"])
         -- draw_correction
         self_side_obj_char[8] = 2
     end
@@ -5159,7 +5165,7 @@ function load_game_scene_anim_char_common_burst_RC_red(
         update_state()
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(self_side)
+        common_game_scene_get_input_sys_cache_init(self_side)(self_side_obj_char)
         -- draw_correction
         self_side_obj_char[8] = 7
     end
@@ -5191,6 +5197,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
     local hurtbox_data = common_game_scene_get_hurtbox(self_side)
     local anchor_data = common_game_scene_get_anchor(self_side)
     local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1]-100)
+    local move_SFX_table = common_game_scene_get_SFX_move(self_side)
     local function update_heat_gauge_state()
         if self_side_obj_char["heat_gauge"][1] > goal_heat_gauge_remain then
             self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - 5
@@ -5262,7 +5269,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         self_side_obj_char["projectile_inv_countdown"] = 0
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(self_side)
+        common_game_scene_get_input_sys_cache_init(self_side)(self_side_obj_char)
         -- state_number
         self_side_obj_char["friction"] = 0
         self_side_obj_char["gravity"] = 0
@@ -5279,8 +5286,6 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         self_side_obj_char["pushbox_opponent_collision_active"] = true
         self_side_obj_char["hitbox_table"] = {} --{ 攻击类型 是投还是打， function值 内部为命中后的逻辑,具体的box形状}
         self_side_obj_char["hurtbox_table"] = hurtbox_data["RC"][self_side_obj_char["height"]]
-        -- draw_correction
-        self_side_obj_char[8] = 0
         -- VFX
         self_side_obj_char["VFX_hit_front_table"] = {}
         self_side_obj_char["VFX_hit_back_table"] = {}
@@ -5289,6 +5294,8 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_blue_badge)
         insert_VFX_game_scene_char_RC_partical(self_side_obj_char)
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
+        -- draw_correction
+        self_side_obj_char[8] = 0
     end
     res[3] = function()
         -- state&state_number
@@ -5321,8 +5328,11 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         common_game_scene_game_speed_load_application(opponent_side_obj_char,{1,nil,nil,nil,39,nil})
     end
     res[7] = function()
+        -- state&state_number
         update_state()
         update_heat_gauge_state()
+        -- SFX
+        play_obj_audio(move_SFX_table["blue_RC"])
         -- draw_correction
         self_side_obj_char[8] = 2
     end
@@ -5370,7 +5380,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         update_state()
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(self_side)
+        common_game_scene_get_input_sys_cache_init(self_side)(self_side_obj_char)
         -- draw_correction
         self_side_obj_char[8] = 7
     end
@@ -5402,6 +5412,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
     local hurtbox_data = common_game_scene_get_hurtbox(self_side)
     local anchor_data = common_game_scene_get_anchor(self_side)
     local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1]-100)
+    local move_SFX_table = common_game_scene_get_SFX_move(self_side)
     local function update_heat_gauge_state()
         if self_side_obj_char["heat_gauge"][1] > goal_heat_gauge_remain then
             self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - 5
@@ -5473,7 +5484,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         self_side_obj_char["projectile_inv_countdown"] = 0
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(self_side)
+        common_game_scene_get_input_sys_cache_init(self_side)(self_side_obj_char)
         -- state_number
         self_side_obj_char["friction"] = 0
         self_side_obj_char["gravity"] = 0
@@ -5492,14 +5503,6 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         self_side_obj_char["hurtbox_table"] = {}
         -- draw_correction
         self_side_obj_char[8] = 0
-        -- VFX
-        self_side_obj_char["VFX_hit_front_table"] = {}
-        self_side_obj_char["VFX_hit_back_table"] = {}
-        opponent_side_obj_char["VFX_hit_front_table"] = {}
-        opponent_side_obj_char["VFX_hit_back_table"] = {}
-        insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_purple_badge)
-        insert_VFX_game_scene_char_RC_partical(self_side_obj_char)
-        insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
     end
     res[3] = function()
         -- state&state_number
@@ -5532,8 +5535,19 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         common_game_scene_game_speed_load_application(opponent_side_obj_char,{1,nil,nil,nil,39,nil})
     end
     res[7] = function()
+        -- state&state_number
         update_state()
         update_heat_gauge_state()
+        -- VFX
+        self_side_obj_char["VFX_hit_front_table"] = {}
+        self_side_obj_char["VFX_hit_back_table"] = {}
+        opponent_side_obj_char["VFX_hit_front_table"] = {}
+        opponent_side_obj_char["VFX_hit_back_table"] = {}
+        insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_purple_badge)
+        insert_VFX_game_scene_char_RC_partical(self_side_obj_char)
+        insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
+        -- SFX
+        play_obj_audio(move_SFX_table["purple_RC"])
         -- draw_correction
         self_side_obj_char[8] = 2
     end
@@ -5586,7 +5600,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         update_state()
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(self_side)
+        common_game_scene_get_input_sys_cache_init(self_side)(self_side_obj_char)
         -- draw_correction
         self_side_obj_char[8] = 7
     end
@@ -5618,6 +5632,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     local hurtbox_data = common_game_scene_get_hurtbox(self_side)
     local anchor_data = common_game_scene_get_anchor(self_side)
     local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1]-100)
+    local move_SFX_table = common_game_scene_get_SFX_move(self_side)
     local function update_heat_gauge_state()
         if self_side_obj_char["heat_gauge"][1] > goal_heat_gauge_remain then
             self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - 5
@@ -5689,7 +5704,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         self_side_obj_char["projectile_inv_countdown"] = 42
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "none" -- none save load
-        common_game_scene_get_input_sys_cache_init(self_side)
+        common_game_scene_get_input_sys_cache_init(self_side)(self_side_obj_char)
         -- state_number
         self_side_obj_char["friction"] = 0
         self_side_obj_char["gravity"] = 0
@@ -5708,14 +5723,6 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         self_side_obj_char["hurtbox_table"] = {}
         -- draw_correction
         self_side_obj_char[8] = 0
-        -- VFX
-        self_side_obj_char["VFX_hit_front_table"] = {}
-        self_side_obj_char["VFX_hit_back_table"] = {}
-        opponent_side_obj_char["VFX_hit_front_table"] = {}
-        opponent_side_obj_char["VFX_hit_back_table"] = {}
-        insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_yellow_badge)
-        insert_VFX_game_scene_char_RC_partical(self_side_obj_char)
-        insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
     end
     res[3] = function()
         -- state&state_number
@@ -5725,8 +5732,19 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         self_side_obj_char[8] = 1
     end
     res[7] = function()
+        -- state&state_number
         update_state()
         update_heat_gauge_state()
+        -- VFX
+        self_side_obj_char["VFX_hit_front_table"] = {}
+        self_side_obj_char["VFX_hit_back_table"] = {}
+        opponent_side_obj_char["VFX_hit_front_table"] = {}
+        opponent_side_obj_char["VFX_hit_back_table"] = {}
+        insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_yellow_badge)
+        insert_VFX_game_scene_char_RC_partical(self_side_obj_char)
+        insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
+        -- SFX
+        play_obj_audio(move_SFX_table["yellow_RC_whiff"])
         -- draw_correction
         self_side_obj_char[8] = 2
     end
@@ -5766,7 +5784,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         update_state()
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(self_side)
+        common_game_scene_get_input_sys_cache_init(self_side)(self_side_obj_char)
         -- draw_correction
         self_side_obj_char[8] = 7
     end

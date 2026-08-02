@@ -947,7 +947,7 @@ function load_game_scene_audio_char_LP()
     -- audio_global_variables
     audio_SFX_game_scene_common_SFX_LP = {}
     audio_SFX_game_scene_stage_interactive_SFX_LP = {}
-    audio_SFX_game_scene_uncommon_SFX_LP = {}
+    audio_SFX_game_scene_move_SFX_LP = {}
     local base = "asset/game_scene/characters/TRM/audio/"
     -- common_SFX
     -- blast_SFX
@@ -992,7 +992,45 @@ function load_game_scene_audio_char_LP()
         audio_SFX_game_scene_stage_interactive_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
         update_SFX_VOLUME(audio_SFX_game_scene_stage_interactive_SFX_LP[key])
     end
-    -- uncommon_SFX
+    -- move_SFX
+    -- oroboros_in_normal_SFX
+    audio_SFX_game_scene_move_SFX_LP["oroboros_in_normal"] = {1, LCT = {0}, LCD = {0}}
+    audio_SFX_game_scene_move_SFX_LP["oroboros_in_normal"]["audio"] = 
+    love.audio.newSource("asset/game_scene/characters/TRM/audio/move_SFX/oroboros_in_normal.wav", "static")
+    update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP["oroboros_in_normal"])
+    -- 2P_SFX
+    file_name_table = {
+        "2P_block","2P_counter","2P_hit","2P_whiff"
+    }
+    for i = 1, #file_name_table do
+        local key = file_name_table[i]
+        local path = base .. "move_SFX/2P/" .. key .. ".wav"
+        audio_SFX_game_scene_move_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
+        audio_SFX_game_scene_move_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
+        update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[key])
+    end
+    -- 5P_SFX
+    file_name_table = {
+        "5P_block","5P_counter","5P_hit","5P_whiff"
+    }
+    for i = 1, #file_name_table do
+        local key = file_name_table[i]
+        local path = base .. "move_SFX/5P/" .. key .. ".wav"
+        audio_SFX_game_scene_move_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
+        audio_SFX_game_scene_move_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
+        update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[key])
+    end
+    -- 6P_SFX
+    file_name_table = {
+        "6P_block","6P_counter","6P_hit","6P_whiff"
+    }
+    for i = 1, #file_name_table do
+        local key = file_name_table[i]
+        local path = base .. "move_SFX/6P/" .. key .. ".wav"
+        audio_SFX_game_scene_move_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
+        audio_SFX_game_scene_move_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
+        update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[key])
+    end
     -- 5H_SFX
     file_name_table = {
         "5H_clip_0","5H_clip_1","5H_clip_2","5H_oroboros_blast",
@@ -1002,10 +1040,10 @@ function load_game_scene_audio_char_LP()
     }
     for i = 1, #file_name_table do
         local key = file_name_table[i]
-        local path = base .. "uncommon_SFX/5H/" .. key .. ".wav"
-        audio_SFX_game_scene_uncommon_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
-        audio_SFX_game_scene_uncommon_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
-        update_SFX_VOLUME(audio_SFX_game_scene_uncommon_SFX_LP[key])
+        local path = base .. "move_SFX/5H/" .. key .. ".wav"
+        audio_SFX_game_scene_move_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
+        audio_SFX_game_scene_move_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
+        update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[key])
     end
     -- 5Launcher_SFX
     file_name_table = {
@@ -1014,37 +1052,37 @@ function load_game_scene_audio_char_LP()
     }
     for i = 1, #file_name_table do
         local key = file_name_table[i]
-        local path = base .. "uncommon_SFX/5Launcher/" .. key .. ".wav"
-        audio_SFX_game_scene_uncommon_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
-        audio_SFX_game_scene_uncommon_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
-        update_SFX_VOLUME(audio_SFX_game_scene_uncommon_SFX_LP[key])
+        local path = base .. "move_SFX/5Launcher/" .. key .. ".wav"
+        audio_SFX_game_scene_move_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
+        audio_SFX_game_scene_move_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
+        update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[key])
     end
     -- 6SP_S_SFX
     file_name_table = {"6SP_S_block","6SP_S_counter","6SP_S_hit","6SP_S_whiff"}
     for i = 1, #file_name_table do
         local key = file_name_table[i]
-        local path = base .. "uncommon_SFX/6SP_S/" .. key .. ".wav"
-        audio_SFX_game_scene_uncommon_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
-        audio_SFX_game_scene_uncommon_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
-        update_SFX_VOLUME(audio_SFX_game_scene_uncommon_SFX_LP[key])
+        local path = base .. "move_SFX/6SP_S/" .. key .. ".wav"
+        audio_SFX_game_scene_move_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
+        audio_SFX_game_scene_move_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
+        update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[key])
     end
     -- cS_SFX
     file_name_table = {"cS_block","cS_counter","cS_hit","cS_whiff"}
     for i = 1, #file_name_table do
         local key = file_name_table[i]
-        local path = base .. "uncommon_SFX/cS/" .. key .. ".wav"
-        audio_SFX_game_scene_uncommon_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
-        audio_SFX_game_scene_uncommon_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
-        update_SFX_VOLUME(audio_SFX_game_scene_uncommon_SFX_LP[key])
+        local path = base .. "move_SFX/cS/" .. key .. ".wav"
+        audio_SFX_game_scene_move_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
+        audio_SFX_game_scene_move_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
+        update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[key])
     end
     -- overdrive_SFX
     file_name_table = {"overdrive"}
     for i = 1, #file_name_table do
         local key = file_name_table[i]
-        local path = base .. "uncommon_SFX/overdrive/" .. key .. ".wav"
-        audio_SFX_game_scene_uncommon_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
-        audio_SFX_game_scene_uncommon_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
-        update_SFX_VOLUME(audio_SFX_game_scene_uncommon_SFX_LP[key])
+        local path = base .. "move_SFX/overdrive/" .. key .. ".wav"
+        audio_SFX_game_scene_move_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
+        audio_SFX_game_scene_move_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
+        update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[key])
     end
     -- RC_SFX
     file_name_table = {
@@ -1054,10 +1092,10 @@ function load_game_scene_audio_char_LP()
     }
     for i = 1, #file_name_table do
         local key = file_name_table[i]
-        local path = base .. "uncommon_SFX/RC/" .. key .. ".wav"
-        audio_SFX_game_scene_uncommon_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
-        audio_SFX_game_scene_uncommon_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
-        update_SFX_VOLUME(audio_SFX_game_scene_uncommon_SFX_LP[key])
+        local path = base .. "move_SFX/RC/" .. key .. ".wav"
+        audio_SFX_game_scene_move_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
+        audio_SFX_game_scene_move_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
+        update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[key])
     end
 end
 function load_game_scene_shader_char_LP()

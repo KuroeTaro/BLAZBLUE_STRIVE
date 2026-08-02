@@ -120,10 +120,10 @@ function common_game_scene_get_SFX_stage_interactive(side)
     }
     return side_table[side]
 end
-function common_game_scene_get_SFX_uncommon(side)
+function common_game_scene_get_SFX_move(side)
     local side_table = {
-        ["L"] = audio_SFX_game_scene_uncommon_SFX_LP,
-        ["R"] = audio_SFX_game_scene_uncommon_SFX_RP
+        ["L"] = audio_SFX_game_scene_move_SFX_LP,
+        ["R"] = audio_SFX_game_scene_move_SFX_RP
     }
     return side_table[side]
 end
@@ -184,12 +184,8 @@ function common_game_scene_init_input_sys_state_for_wallbreak(obj_char)
     obj_char["direction_input_cache"] = 5
     obj_char["input_sys_state"] = "none"
     obj_char["input_sys_state_negative_edge"] = "none"
-    if init_cache then
-        init_cache(obj_char)
-    end
-    if init_negative_edge then
-        init_negative_edge(obj_char)
-    end
+    init_cache(obj_char)
+    init_negative_edge(obj_char)
 end
 function common_game_scene_update_input_sys_direction(obj_char)
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
