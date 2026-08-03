@@ -106,13 +106,6 @@ function common_game_scene_get_VFX_sprite_sheet_table(side)
     }
     return side_table[side]
 end
-function common_game_scene_get_SFX_common(side)
-    local side_table = {
-        ["L"] = audio_SFX_game_scene_common_SFX_LP,
-        ["R"] = audio_SFX_game_scene_common_SFX_RP
-    }
-    return side_table[side]
-end
 function common_game_scene_get_SFX_stage_interactive(side)
     local side_table = {
         ["L"] = audio_SFX_game_scene_stage_interactive_SFX_LP,

@@ -21,7 +21,6 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     local obj_projectile = {0,0,0,0.75,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(hit_side_obj_char["player_side"])
-    local move_SFX_table = common_game_scene_get_SFX_move(hit_side_obj_char["player_side"])
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 40
@@ -132,10 +131,6 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     obj_projectile["projectile_active"] = true
     obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
     obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-    obj_projectile["block_SFX"] = move_SFX_table["5H_projectile_block"]
-    obj_projectile["counter_SFX"] = move_SFX_table["5H_projectile_counter"]
-    obj_projectile["hit_SFX"] = move_SFX_table["5H_projectile_hit"]
-    obj_projectile["whiff_SFX"] = move_SFX_table["5H_projectile_whiff"]
     obj_projectile["enemy_interact_function"] = function()
         if collision_projectile_hit_confirm_test(obj_projectile,hurt_side_obj_char) then
             -- projectile_active
@@ -867,7 +862,6 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     local obj_projectile = {0,0,0,0.875,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(hit_side_obj_char["player_side"])
-    local move_SFX_table = common_game_scene_get_SFX_move(hit_side_obj_char["player_side"])
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 42+45

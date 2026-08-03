@@ -31,22 +31,33 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_LP["move_state"] = "none" -- none startup active recovery
     obj_char_game_scene_char_LP["last_move_state"] = "none" -- none startup active recovery
-    -- input
-    obj_char_game_scene_char_LP["direction_input"] = 5
-    obj_char_game_scene_char_LP["direction_input_cache"] = 5
-    obj_char_game_scene_char_LP["startup_frame"] = 0
-    obj_char_game_scene_char_LP["active_frame"] = 0
-    obj_char_game_scene_char_LP["recovery_frame"] = 0
-    obj_char_game_scene_char_LP["frame_adv"] = 0
-    obj_char_game_scene_char_LP["last_hitstop_frame"] = 0
-    obj_char_game_scene_char_LP["input_sys_state"] = "none" -- none save load
-    obj_char_game_scene_char_LP["input_sys_cache"] = {}
-    obj_char_game_scene_char_LP["input_sys_state_negative_edge"] = "none"
-    obj_char_game_scene_char_LP["input_sys_cache_negative_edge"] = {}
-    obj_char_game_scene_char_LP["input_sys_cache_hit_jump_cancel"] = {}
-    init_input_sys_cache_LP(obj_char_game_scene_char_LP)
-    init_input_sys_cache_negative_edge_LP(obj_char_game_scene_char_LP)
-        -- hit_hurt_block_animation
+    obj_char_game_scene_char_LP["air_move"] = {}
+    obj_char_game_scene_char_LP["air_move"]["jump"] = {1,1}
+    obj_char_game_scene_char_LP["air_move"]["air_dash"] = {1,1}
+    -- state_number
+    obj_char_game_scene_char_LP["velocity"] = {0,0}
+    obj_char_game_scene_char_LP["velocity_debug"] = {0,0}
+    obj_char_game_scene_char_LP["velocity_cache"] = {0,0}
+    obj_char_game_scene_char_LP["friction"] = 1
+    obj_char_game_scene_char_LP["gravity"] = 2.5
+    obj_char_game_scene_char_LP["physics_lock"] = false
+    obj_char_game_scene_char_LP["health_gauge"] = {12000,12000,12000,"fade_off"}
+    obj_char_game_scene_char_LP["heat_gauge"] = {0.0,200.0} -- 0.0 - 200.0
+    obj_char_game_scene_char_LP["ability_gauge"] = {600.0,600.0} -- 0.0 - 600.0
+    obj_char_game_scene_char_LP["overdrive_gauge"] = {600.0,600.0,"off"} -- 0.0 - 600.0
+    obj_char_game_scene_char_LP["overdrive_timer"] = {0,0,0,0} -- 0f 00:00 
+    obj_char_game_scene_char_LP["risk_gauge"] = {0.0,300.0} -- 0.0 - 300.0
+    obj_char_game_scene_char_LP["wallstick_gauge"] = {0.0,200.0} -- 0.0 - 200.0
+    obj_char_game_scene_char_LP["heat_penalty"] = 1
+    obj_char_game_scene_char_LP["heat_penalty_countdown"] = 0
+    obj_char_game_scene_char_LP["ability_penalty"] = 1
+    obj_char_game_scene_char_LP["ability_penalty_countdown"] = 0
+    obj_char_game_scene_char_LP["positive_bonus"] = false
+    obj_char_game_scene_char_LP["positive_bonus_heat_gain_buff"] = 1
+    obj_char_game_scene_char_LP["positive_bonus_hit_damage_buff"] = 1
+    obj_char_game_scene_char_LP["positive_bonus_hurt_damage_buff"] = 1
+    obj_char_game_scene_char_LP["positive_bonus_countdown"] = 0
+    -- hit_hurt_function
     obj_char_game_scene_char_LP["hit_damage"] = 0
     obj_char_game_scene_char_LP["hit_damage_correction_factor"] = 1
     obj_char_game_scene_char_LP["hit_heat_gain"] = 0
@@ -97,37 +108,24 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["ability_gauge_update_function"] = function() end
     obj_char_game_scene_char_LP["risk_gauge_update_function"] = function() end
     obj_char_game_scene_char_LP["wallstick_gauge_update_function"] = function() end
-    -- state_number
-    obj_char_game_scene_char_LP["velocity"] = {0,0}
-    obj_char_game_scene_char_LP["velocity_debug"] = {0,0}
-    obj_char_game_scene_char_LP["velocity_cache"] = {0,0}
-    obj_char_game_scene_char_LP["friction"] = 1
-    obj_char_game_scene_char_LP["gravity"] = 2.5
-    obj_char_game_scene_char_LP["physics_lock"] = false
-    obj_char_game_scene_char_LP["health_gauge"] = {12000,12000,12000,"fade_off"}
-    obj_char_game_scene_char_LP["heat_gauge"] = {0.0,200.0} -- 0.0 - 200.0
-    obj_char_game_scene_char_LP["ability_gauge"] = {600.0,600.0} -- 0.0 - 600.0
-    obj_char_game_scene_char_LP["overdrive_gauge"] = {600.0,600.0,"off"} -- 0.0 - 600.0
-    obj_char_game_scene_char_LP["overdrive_timer"] = {0,0,0,0} -- 0f 00:00 
-    obj_char_game_scene_char_LP["risk_gauge"] = {0.0,300.0} -- 0.0 - 300.0
-    obj_char_game_scene_char_LP["wallstick_gauge"] = {0.0,200.0} -- 0.0 - 200.0
-    obj_char_game_scene_char_LP["heat_penalty"] = 1
-    obj_char_game_scene_char_LP["heat_penalty_countdown"] = 0
-    obj_char_game_scene_char_LP["ability_penalty"] = 1
-    obj_char_game_scene_char_LP["ability_penalty_countdown"] = 0
-    obj_char_game_scene_char_LP["positive_bonus"] = false
-    obj_char_game_scene_char_LP["positive_bonus_heat_gain_buff"] = 1
-    obj_char_game_scene_char_LP["positive_bonus_hit_damage_buff"] = 1
-    obj_char_game_scene_char_LP["positive_bonus_hurt_damage_buff"] = 1
-    obj_char_game_scene_char_LP["positive_bonus_countdown"] = 0
-    -- currection
     obj_char_game_scene_char_LP["horizontal_velocity_correction"] = 1
     obj_char_game_scene_char_LP["gravity_correction"] = 1
     obj_char_game_scene_char_LP["damage_correction"] = 1
-    -- air_move
-    obj_char_game_scene_char_LP["air_move"] = {}
-    obj_char_game_scene_char_LP["air_move"]["jump"] = {1,1}
-    obj_char_game_scene_char_LP["air_move"]["air_dash"] = {1,1}
+    -- input
+    obj_char_game_scene_char_LP["direction_input"] = 5
+    obj_char_game_scene_char_LP["direction_input_cache"] = 5
+    obj_char_game_scene_char_LP["startup_frame"] = 0
+    obj_char_game_scene_char_LP["active_frame"] = 0
+    obj_char_game_scene_char_LP["recovery_frame"] = 0
+    obj_char_game_scene_char_LP["frame_adv"] = 0
+    obj_char_game_scene_char_LP["last_hitstop_frame"] = 0
+    obj_char_game_scene_char_LP["input_sys_state"] = "none" -- none save load
+    obj_char_game_scene_char_LP["input_sys_cache"] = {}
+    obj_char_game_scene_char_LP["input_sys_state_negative_edge"] = "none"
+    obj_char_game_scene_char_LP["input_sys_cache_negative_edge"] = {}
+    obj_char_game_scene_char_LP["input_sys_cache_hit_jump_cancel"] = {}
+    init_input_sys_cache_LP(obj_char_game_scene_char_LP)
+    init_input_sys_cache_negative_edge_LP(obj_char_game_scene_char_LP)
     -- game_speed
     obj_char_game_scene_char_LP["game_speed"] = 1
     obj_char_game_scene_char_LP["game_speed_subframe"] = 1
@@ -945,39 +943,9 @@ function load_game_scene_box_anchor_data_LP()
 end
 function load_game_scene_audio_char_LP()
     -- audio_global_variables
-    audio_SFX_game_scene_common_SFX_LP = {}
     audio_SFX_game_scene_stage_interactive_SFX_LP = {}
     audio_SFX_game_scene_move_SFX_LP = {}
     local base = "asset/game_scene/characters/TRM/audio/"
-    -- common_SFX
-    -- blast_SFX
-    local file_name_table = {
-        "lv0_block_blast_0","lv0_block_blast_1","lv0_counter_blast","lv0_hit_blast_0","lv0_hit_blast_1","lv0_whiff_blast_0","lv0_whiff_blast_1",
-        "lv1_block_blast_0","lv1_block_blast_1","lv1_counter_blast","lv1_hit_blast_0","lv1_hit_blast_1","lv1_whiff_blast_0","lv1_whiff_blast_1",
-        "lv2_block_blast_0","lv2_block_blast_1","lv2_counter_blast","lv2_hit_blast_0","lv2_hit_blast_1","lv2_whiff_blast_0","lv2_whiff_blast_1",
-        "lv3_block_blast_0","lv3_block_blast_1","lv3_counter_blast","lv3_hit_blast_0","lv3_hit_blast_1","lv3_whiff_blast_0","lv3_whiff_blast_1"
-    }
-    for i = 1, #file_name_table do
-        local key = file_name_table[i]
-        local path = base .. "common_SFX/blast/" .. key .. ".wav"
-        audio_SFX_game_scene_common_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
-        audio_SFX_game_scene_common_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
-        update_SFX_VOLUME(audio_SFX_game_scene_common_SFX_LP[key])
-    end
-    -- slash_SFX
-    file_name_table = {
-        "lv0_block_slash","lv0_counter_slash","lv0_hit_slash","lv0_whiff_slash",
-        "lv1_block_slash","lv1_counter_slash","lv1_hit_slash","lv1_whiff_slash",
-        "lv2_block_slash","lv2_counter_slash","lv2_hit_slash","lv2_whiff_slash",
-        "lv3_block_slash","lv3_counter_slash","lv3_hit_slash","lv3_whiff_slash"
-    }
-    for i = 1, #file_name_table do
-        local key = file_name_table[i]
-        local path = base .. "common_SFX/slash/" .. key .. ".wav"
-        audio_SFX_game_scene_common_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
-        audio_SFX_game_scene_common_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
-        update_SFX_VOLUME(audio_SFX_game_scene_common_SFX_LP[key])
-    end
     -- stage_interactive_SFX
     file_name_table = {
         "air_backdash","air_dash","air_jump","air_SP_jump",
@@ -991,111 +959,6 @@ function load_game_scene_audio_char_LP()
         audio_SFX_game_scene_stage_interactive_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
         audio_SFX_game_scene_stage_interactive_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
         update_SFX_VOLUME(audio_SFX_game_scene_stage_interactive_SFX_LP[key])
-    end
-    -- move_SFX
-    -- oroboros_in_normal_SFX
-    audio_SFX_game_scene_move_SFX_LP["oroboros_in_normal"] = {1, LCT = {0}, LCD = {0}}
-    audio_SFX_game_scene_move_SFX_LP["oroboros_in_normal"]["audio"] = 
-    love.audio.newSource("asset/game_scene/characters/TRM/audio/move_SFX/oroboros_in_normal.wav", "static")
-    update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP["oroboros_in_normal"])
-    -- 2P_SFX
-    file_name_table = {
-        "2P_block","2P_counter","2P_hit","2P_whiff"
-    }
-    for i = 1, #file_name_table do
-        local key = file_name_table[i]
-        local path = base .. "move_SFX/2P/" .. key .. ".wav"
-        audio_SFX_game_scene_move_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
-        audio_SFX_game_scene_move_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
-        update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[key])
-    end
-    -- 5P_SFX
-    file_name_table = {
-        "5P_block","5P_counter","5P_hit","5P_whiff"
-    }
-    for i = 1, #file_name_table do
-        local key = file_name_table[i]
-        local path = base .. "move_SFX/5P/" .. key .. ".wav"
-        audio_SFX_game_scene_move_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
-        audio_SFX_game_scene_move_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
-        update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[key])
-    end
-    -- 6P_SFX
-    file_name_table = {
-        "6P_block","6P_counter","6P_hit","6P_whiff"
-    }
-    for i = 1, #file_name_table do
-        local key = file_name_table[i]
-        local path = base .. "move_SFX/6P/" .. key .. ".wav"
-        audio_SFX_game_scene_move_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
-        audio_SFX_game_scene_move_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
-        update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[key])
-    end
-    -- 5H_SFX
-    file_name_table = {
-        "5H_clip_0","5H_clip_1","5H_clip_2","5H_oroboros_blast",
-        "5H_projectile_block","5H_projectile_counter","5H_projectile_hit","5H_projectile_whiff",
-        "5H_reticle_ease_in","5H_reticle_ease_out","5H_reticle_locking",
-        "5H_whiff"
-    }
-    for i = 1, #file_name_table do
-        local key = file_name_table[i]
-        local path = base .. "move_SFX/5H/" .. key .. ".wav"
-        audio_SFX_game_scene_move_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
-        audio_SFX_game_scene_move_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
-        update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[key])
-    end
-    -- 5Launcher_SFX
-    file_name_table = {
-        "5Launcher_block","5Launcher_hit","5Launcher_hold_block","5Launcher_hold_hit",
-        "5Launcher_hold_hit_Launcher_jump","5Launcher_hold_startup","5Launcher_hold_whiff","5Launcher_whiff"
-    }
-    for i = 1, #file_name_table do
-        local key = file_name_table[i]
-        local path = base .. "move_SFX/5Launcher/" .. key .. ".wav"
-        audio_SFX_game_scene_move_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
-        audio_SFX_game_scene_move_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
-        update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[key])
-    end
-    -- 6SP_S_SFX
-    file_name_table = {"6SP_S_block","6SP_S_counter","6SP_S_hit","6SP_S_whiff"}
-    for i = 1, #file_name_table do
-        local key = file_name_table[i]
-        local path = base .. "move_SFX/6SP_S/" .. key .. ".wav"
-        audio_SFX_game_scene_move_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
-        audio_SFX_game_scene_move_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
-        update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[key])
-    end
-    -- cS_SFX
-    file_name_table = {"cS_block","cS_counter","cS_hit","cS_whiff"}
-    for i = 1, #file_name_table do
-        local key = file_name_table[i]
-        local path = base .. "move_SFX/cS/" .. key .. ".wav"
-        audio_SFX_game_scene_move_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
-        audio_SFX_game_scene_move_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
-        update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[key])
-    end
-    -- overdrive_SFX
-    file_name_table = {"overdrive"}
-    for i = 1, #file_name_table do
-        local key = file_name_table[i]
-        local path = base .. "move_SFX/overdrive/" .. key .. ".wav"
-        audio_SFX_game_scene_move_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
-        audio_SFX_game_scene_move_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
-        update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[key])
-    end
-    -- RC_SFX
-    file_name_table = {
-        "blue_RC","purple_RC",
-        "red_RC_block","red_RC_hit","red_RC_whiff",
-        "yellow_RC_block","yellow_RC_hit","yellow_RC_whiff"
-    }
-    for i = 1, #file_name_table do
-        local key = file_name_table[i]
-        local path = base .. "move_SFX/RC/" .. key .. ".wav"
-        audio_SFX_game_scene_move_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
-        audio_SFX_game_scene_move_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
-        update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[key])
     end
 end
 function load_game_scene_shader_char_LP()
