@@ -57,7 +57,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["positive_bonus_hit_damage_buff"] = 1
     obj_char_game_scene_char_LP["positive_bonus_hurt_damage_buff"] = 1
     obj_char_game_scene_char_LP["positive_bonus_countdown"] = 0
-    -- hit_hurt_function
+    -- enemy_friend_interaction
     obj_char_game_scene_char_LP["hit_damage"] = 0
     obj_char_game_scene_char_LP["hit_damage_correction_factor"] = 1
     obj_char_game_scene_char_LP["hit_heat_gain"] = 0
@@ -111,14 +111,16 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["horizontal_velocity_correction"] = 1
     obj_char_game_scene_char_LP["gravity_correction"] = 1
     obj_char_game_scene_char_LP["damage_correction"] = 1
-    -- input
+    -- direction_input
     obj_char_game_scene_char_LP["direction_input"] = 5
     obj_char_game_scene_char_LP["direction_input_cache"] = 5
+    -- frame_data
     obj_char_game_scene_char_LP["startup_frame"] = 0
     obj_char_game_scene_char_LP["active_frame"] = 0
     obj_char_game_scene_char_LP["recovery_frame"] = 0
     obj_char_game_scene_char_LP["frame_adv"] = 0
     obj_char_game_scene_char_LP["last_hitstop_frame"] = 0
+    -- input_sys_cache
     obj_char_game_scene_char_LP["input_sys_state"] = "none" -- none save load
     obj_char_game_scene_char_LP["input_sys_cache"] = {}
     obj_char_game_scene_char_LP["input_sys_state_negative_edge"] = "none"
@@ -154,7 +156,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["VFX_hit_front_table"] = {}
     obj_char_game_scene_char_LP["VFX_hit_back_table"] = {}
     obj_char_game_scene_char_LP["VFX_black_overlay_table"] = {}
-    -- sub_hit_hurt_function
+    -- sub_hit_hurt_VFX_SFX_table
     obj_char_game_scene_char_LP["hit_VFX_dynamic_spawn_pos"] = {}
     obj_char_game_scene_char_LP["hit_VFX_insert_function"] = nil
     obj_char_game_scene_char_LP["hit_VFX_insert_function_argument"] = nil
@@ -971,18 +973,18 @@ function load_game_scene_wallbreak_start_init_LP()
     local air_pushbox = {0,-100,120,200}
     local OTG_pushbox = {0,-65,120,130}
     -- init_char
-    obj_char_game_scene_char_LP["strike_inv"] = false
-    obj_char_game_scene_char_LP["strike_inv_countdown"] = 0
-    obj_char_game_scene_char_LP["throw_inv"] = false
-    obj_char_game_scene_char_LP["throw_inv_countdown"] = 0
-    obj_char_game_scene_char_LP["projectile_inv"] = false
-    obj_char_game_scene_char_LP["projectile_inv_countdown"] = 0
     obj_char_game_scene_char_LP["velocity"] = {0,0}
     obj_char_game_scene_char_LP["velocity_debug"] = {0,0}
     obj_char_game_scene_char_LP["velocity_cache"] = {0,0}
     obj_char_game_scene_char_LP["friction"] = 1
     obj_char_game_scene_char_LP["gravity"] = 2.5
     obj_char_game_scene_char_LP["physics_lock"] = true
+    obj_char_game_scene_char_LP["strike_inv"] = false
+    obj_char_game_scene_char_LP["strike_inv_countdown"] = 0
+    obj_char_game_scene_char_LP["throw_inv"] = false
+    obj_char_game_scene_char_LP["throw_inv_countdown"] = 0
+    obj_char_game_scene_char_LP["projectile_inv"] = false
+    obj_char_game_scene_char_LP["projectile_inv_countdown"] = 0
     obj_char_game_scene_char_LP["game_speed"] = 1
     obj_char_game_scene_char_LP["game_speed_subframe"] = 1
     obj_char_game_scene_char_LP["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
@@ -1042,13 +1044,27 @@ function load_game_scene_wallbreak_end_init_LP()
     obj_char_game_scene_char_LP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_LP["move_state"] = "none" -- none startup active recovery
     obj_char_game_scene_char_LP["last_move_state"] = "none" -- none startup active recovery
-    -- input
-    obj_char_game_scene_char_LP["startup_frame"] = 0
-    obj_char_game_scene_char_LP["active_frame"] = 0
-    obj_char_game_scene_char_LP["recovery_frame"] = 0
-    obj_char_game_scene_char_LP["frame_adv"] = 0
-    obj_char_game_scene_char_LP["last_hitstop_frame"] = 0
-        -- hit_hurt_block_animation
+    obj_char_game_scene_char_LP["air_move"] = {}
+    obj_char_game_scene_char_LP["air_move"]["jump"] = {1,1}
+    obj_char_game_scene_char_LP["air_move"]["air_dash"] = {1,1}
+    -- state_number
+    obj_char_game_scene_char_LP["velocity"] = {0,0}
+    obj_char_game_scene_char_LP["velocity_debug"] = {0,0}
+    obj_char_game_scene_char_LP["velocity_cache"] = {0,0}
+    obj_char_game_scene_char_LP["friction"] = 1
+    obj_char_game_scene_char_LP["gravity"] = 2.5
+    obj_char_game_scene_char_LP["physics_lock"] = false
+    obj_char_game_scene_char_LP["wallstick_gauge"] = {0.0,200.0} -- 0.0 - 200.0
+    obj_char_game_scene_char_LP["heat_penalty"] = 1
+    obj_char_game_scene_char_LP["heat_penalty_countdown"] = 0
+    obj_char_game_scene_char_LP["ability_penalty"] = 1
+    obj_char_game_scene_char_LP["ability_penalty_countdown"] = 0
+    obj_char_game_scene_char_LP["positive_bonus"] = false
+    obj_char_game_scene_char_LP["positive_bonus_heat_gain_buff"] = 1
+    obj_char_game_scene_char_LP["positive_bonus_hit_damage_buff"] = 1
+    obj_char_game_scene_char_LP["positive_bonus_hurt_damage_buff"] = 1
+    obj_char_game_scene_char_LP["positive_bonus_countdown"] = 0
+    -- enemy_friend_interaction
     obj_char_game_scene_char_LP["hit_damage"] = 0
     obj_char_game_scene_char_LP["hit_damage_correction_factor"] = 1
     obj_char_game_scene_char_LP["hit_heat_gain"] = 0
@@ -1073,29 +1089,15 @@ function load_game_scene_wallbreak_end_init_LP()
     obj_char_game_scene_char_LP["throw_inv_countdown"] = 0
     obj_char_game_scene_char_LP["projectile_inv"] = false
     obj_char_game_scene_char_LP["projectile_inv_countdown"] = 0
-    -- state_number
-    obj_char_game_scene_char_LP["velocity"] = {0,0}
-    obj_char_game_scene_char_LP["velocity_debug"] = {0,0}
-    obj_char_game_scene_char_LP["velocity_cache"] = {0,0}
-    obj_char_game_scene_char_LP["friction"] = 1
-    obj_char_game_scene_char_LP["gravity"] = 2.5
-    obj_char_game_scene_char_LP["physics_lock"] = false
-    obj_char_game_scene_char_LP["wallstick_gauge"] = {0.0,200.0} -- 0.0 - 200.0
-    obj_char_game_scene_char_LP["heat_penalty"] = 1
-    obj_char_game_scene_char_LP["heat_penalty_countdown"] = 0
-    obj_char_game_scene_char_LP["ability_penalty"] = 1
-    obj_char_game_scene_char_LP["ability_penalty_countdown"] = 0
-    obj_char_game_scene_char_LP["positive_bonus"] = false
-    obj_char_game_scene_char_LP["positive_bonus_heat_gain_buff"] = 1
-    obj_char_game_scene_char_LP["positive_bonus_hit_damage_buff"] = 1
-    obj_char_game_scene_char_LP["positive_bonus_hurt_damage_buff"] = 1
-    obj_char_game_scene_char_LP["positive_bonus_countdown"] = 0
     obj_char_game_scene_char_LP["horizontal_velocity_correction"] = 1
     obj_char_game_scene_char_LP["gravity_correction"] = 1
     obj_char_game_scene_char_LP["damage_correction"] = 1
-    obj_char_game_scene_char_LP["air_move"] = {}
-    obj_char_game_scene_char_LP["air_move"]["jump"] = {1,1}
-    obj_char_game_scene_char_LP["air_move"]["air_dash"] = {1,1}
+    -- frame_data
+    obj_char_game_scene_char_LP["startup_frame"] = 0
+    obj_char_game_scene_char_LP["active_frame"] = 0
+    obj_char_game_scene_char_LP["recovery_frame"] = 0
+    obj_char_game_scene_char_LP["frame_adv"] = 0
+    obj_char_game_scene_char_LP["last_hitstop_frame"] = 0
     -- game_speed
     obj_char_game_scene_char_LP["game_speed"] = 1
     obj_char_game_scene_char_LP["game_speed_subframe"] = 1
