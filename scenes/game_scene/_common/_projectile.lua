@@ -811,7 +811,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
         common_game_scene_projectile_apply_damage_heat(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",FD_block
         )
-        -- hit_hurt_function
+        -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
@@ -910,7 +910,7 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
             -- state_number
             hurt_side_obj_char["friction"] = 7
             hurt_side_obj_char["gravity"] = 2.5
-            -- hit_hurt_function
+            -- enemy_friend_interaction
             hurt_side_obj_char["throw_inv"] = true
             hurt_side_obj_char["throw_inv_countdown"] = res["anim_length"]+5-13
             -- collide
@@ -953,7 +953,7 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
         common_game_scene_projectile_apply_damage_heat(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",FD_block
         )
-        -- hit_hurt_function
+        -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
@@ -1101,7 +1101,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
         common_game_scene_projectile_apply_damage_heat(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",false
         )
-        -- hit_hurt_function
+        -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
@@ -1274,9 +1274,6 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
         hurt_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
         -- state_number
-        common_game_scene_projectile_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",FD_block
-        )
         common_game_scene_projectile_apply_hurt_velocity(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,
             hurt_horizontal_velocity,
@@ -1288,7 +1285,10 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
             false,
             "character"
         )
-        -- hit_hurt_function
+        common_game_scene_projectile_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",FD_block
+        )
+        -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
@@ -1393,7 +1393,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
             -- state_number
             hurt_side_obj_char["friction"] = 7
             hurt_side_obj_char["gravity"] = 2.5
-            -- hit_hurt_function
+            -- enemy_friend_interaction
             hurt_side_obj_char["throw_inv"] = true
             hurt_side_obj_char["throw_inv_countdown"] = res["anim_length"]+5-13
             -- collide
@@ -1436,7 +1436,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
         common_game_scene_projectile_apply_damage_heat(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",FD_block
         )
-        -- hit_hurt_function
+        -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
@@ -1584,7 +1584,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
         common_game_scene_projectile_apply_damage_heat(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",false
         )
-        -- hit_hurt_function
+        -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false

@@ -2234,7 +2234,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         obj_char[8] = 4
     end
     res[75] = function()
-        -- state
+        -- draw_correction
         obj_char[8] = 5
     end
     res[85] = function()
@@ -3943,43 +3943,43 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
         update_before_land()
     end
     res[3] = function()
-        -- state
+        -- draw_correction
         hurt_side_obj_char[8] = 1
         -- update
         update_before_land()
     end
     res[6] = function()
-        -- state
+        -- draw_correction
         hurt_side_obj_char[8] = 2
         -- update
         update_before_land()
     end
     res[9] = function()
-        -- state
+        -- draw_correction
         hurt_side_obj_char[8] = 3
         -- update
         update_before_land()
     end
     res[12] = function()
-        -- state
+        -- draw_correction
         hurt_side_obj_char[8] = 4
         -- update
         update_before_land()
     end
     res[15] = function()
-        -- state
+        -- draw_correction
         hurt_side_obj_char[8] = 5
         -- update
         update_before_land()
     end
     res[18] = function()
-        -- state
+        -- draw_correction
         hurt_side_obj_char[8] = 6
         -- update
         update_before_land()
     end
     res[21] = function()
-        -- state
+        -- draw_correction
         hurt_side_obj_char[8] = 7
         -- update
         update_before_land()
@@ -4093,25 +4093,25 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         update_before_land()
     end
     res[3] = function()
-        -- state
+        -- draw_correction
         hurt_side_obj_char[8] = 1
         -- update
         update_before_land()
     end
     res[6] = function()
-        -- state
+        -- draw_correction
         hurt_side_obj_char[8] = 2
         -- update
         update_before_land()
     end
     res[9] = function()
-        -- state
+        -- draw_correction
         hurt_side_obj_char[8] = 3
         -- update
         update_before_land()
     end
     res[12] = function()
-        -- state
+        -- draw_correction
         hurt_side_obj_char[8] = 4
         -- update
         update_before_land()
@@ -4940,7 +4940,7 @@ function load_game_scene_anim_char_common_burst_overdrive(
         update_move_overdrive_state()
     end
     res[38] = function()
-        -- state & state_number
+        -- state_number
         if overdrive_halved then
             if self_side_obj_char["health_gauge"][1]/self_side_obj_char["health_gauge"][3] > 0.85 then
                 self_side_obj_char["overdrive_timer"] = {0,2,0,0}
@@ -4967,10 +4967,10 @@ function load_game_scene_anim_char_common_burst_overdrive(
             end
         end
         self_side_obj_char["overdrive_gauge"][3] = "on"
-        -- update
-        update_move_overdrive_state()
         -- draw_correction
         self_side_obj_char[8] = 7
+        -- update
+        update_move_overdrive_state()
     end
     res[41] = function()
         -- draw_correction
@@ -5401,9 +5401,9 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         update_heat_gauge_state()
     end
     res[7] = function()
-        -- SFX
         -- draw_correction
         self_side_obj_char[8] = 2
+        -- SFX
         -- update
         update_state()
         update_heat_gauge_state()
@@ -5612,6 +5612,8 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         update_heat_gauge_state()
     end
     res[7] = function()
+        -- draw_correction
+        self_side_obj_char[8] = 2
         -- VFX
         self_side_obj_char["VFX_hit_front_table"] = {}
         opponent_side_obj_char["VFX_hit_front_table"] = {}
@@ -5624,8 +5626,6 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         -- update
         update_state()
         update_heat_gauge_state()
-        -- draw_correction
-        self_side_obj_char[8] = 2
     end
     res[10] = function()
         -- state
