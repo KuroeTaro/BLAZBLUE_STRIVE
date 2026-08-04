@@ -52,11 +52,29 @@ function character_function_game_scene_TRM_hitstop_air_jump_cancel(
     self_side_obj_char["air_move"]["air_dash"][1] = 0
     -- velocity_cache
     if self_side_obj_char["direction_input"] == 7 then
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"7_jump",{200,470},self_side_obj_char["velocity"][1]*v1 + self_side_obj_char[5]*v2,v3)
+        self_side_obj_char["character_animation"] =
+        load_game_scene_anim_char_TRM_7_8_9_jump_air(
+            self_side_obj_char,"7_jump",{200,470},
+            self_side_obj_char["velocity"][1]*v1 + self_side_obj_char[5]*v2,
+            v3,
+            "air_jump"
+        )
     elseif self_side_obj_char["direction_input"] == 8 then
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1]*v4 + self_side_obj_char[5]*v5,v6)
+        self_side_obj_char["character_animation"] =
+        load_game_scene_anim_char_TRM_7_8_9_jump_air(
+            self_side_obj_char,"8_jump",{350,430},
+            self_side_obj_char["velocity"][1]*v4 + self_side_obj_char[5]*v5,
+            v6,
+            "air_jump"
+        )
     elseif self_side_obj_char["direction_input"] == 9 then
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"9_jump",{320,430},self_side_obj_char["velocity"][1]*v7 + self_side_obj_char[5]*v8,v9)
+        self_side_obj_char["character_animation"] =
+        load_game_scene_anim_char_TRM_7_8_9_jump_air(
+            self_side_obj_char,"9_jump",{320,430},
+            self_side_obj_char["velocity"][1]*v7 + self_side_obj_char[5]*v8,
+            v9,
+            "air_jump"
+        )
     end
     init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
     self_side_obj_char["state"] = "7_8_9_jump_air"

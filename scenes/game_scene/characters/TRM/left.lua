@@ -3477,7 +3477,13 @@ function state_gate_game_scene_char_LP_from_throw_tech(input,self_side_obj_char,
         state_machine_char_game_scene_char_LP_input_sys_cache()
         -- air
         if self_side_obj_char["height"] == "air" then
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+            self_side_obj_char["character_animation"] =
+            load_game_scene_anim_char_TRM_7_8_9_jump_air(
+                self_side_obj_char,"8_jump",{350,430},
+                self_side_obj_char["velocity"][1],
+                self_side_obj_char["velocity"][2],
+                nil
+            )
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "7_8_9_jump_air"
             -- _common_air_to_move
@@ -3633,7 +3639,13 @@ function state_gate_game_scene_char_LP_from_knockdown_recovery_wallstick(input,s
             end
             return
         elseif self_side_obj_char["state"] == "7_8_9_jump_air" then
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+            self_side_obj_char["character_animation"] =
+            load_game_scene_anim_char_TRM_7_8_9_jump_air(
+                self_side_obj_char,"8_jump",{350,430},
+                self_side_obj_char["velocity"][1],
+                self_side_obj_char["velocity"][2],
+                "air_jump"
+            )
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["idle_cancel"] = true
             self_side_obj_char["f"] = 20
@@ -4295,6 +4307,7 @@ function state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_c
     end
     -- _7_8_9_jump_air(second_air_jump)
     if self_side_obj_char["air_move"]["jump"][1] > 0 and test_input_sys_press(input["up"]) and self_side_obj_char["idle_cancel"] then
+        local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(self_side_obj_char["player_side"])
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
@@ -4304,14 +4317,34 @@ function state_gate_game_scene_char_LP_from_7_8_9_jump_air(input,self_side_obj_c
         self_side_obj_char["air_move"]["air_dash"][1] = 0
         -- velocity
         if self_side_obj_char["direction_input"] == 7 then
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"7_jump",{200,470},self_side_obj_char["velocity"][1]*0.1 - self_side_obj_char[5]*11.5,-45.0)
+            self_side_obj_char["character_animation"] =
+            load_game_scene_anim_char_TRM_7_8_9_jump_air(
+                self_side_obj_char,"7_jump",{200,470},
+                self_side_obj_char["velocity"][1]*0.1 - self_side_obj_char[5]*11.5,
+                -45.0,
+                "air_jump"
+            )
         elseif self_side_obj_char["direction_input"] == 8 then
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},0,-45.0)
+            self_side_obj_char["character_animation"] =
+            load_game_scene_anim_char_TRM_7_8_9_jump_air(
+                self_side_obj_char,"8_jump",{350,430},
+                0,
+                -45.0,
+                "air_jump"
+            )
         elseif self_side_obj_char["direction_input"] == 9 then
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"9_jump",{320,430},self_side_obj_char["velocity"][1]*0.1 + self_side_obj_char[5]*11.5,-45.0)
+            self_side_obj_char["character_animation"] =
+            load_game_scene_anim_char_TRM_7_8_9_jump_air(
+                self_side_obj_char,"9_jump",{320,430},
+                self_side_obj_char["velocity"][1]*0.1 + self_side_obj_char[5]*11.5,
+                -45.0,
+                "air_jump"
+            )
         end
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "7_8_9_jump_air"
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["air_jump"])
         return true
     end
 end
@@ -4328,20 +4361,47 @@ function state_gate_game_scene_char_LP_from_7_8_9_pre_jump(input,self_side_obj_c
     if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
         -- velocity_cache
         local multiplyer = 1
+        local SFX_name = "air_jump"
         if test_input_sys_press_or_hold(input["SP"]) then
             multiplyer = 1.08
+            SFX_name = "air_SP_jump"
             self_side_obj_char["air_move"]["jump"][1] = math.max(math.min(self_side_obj_char["air_move"]["jump"][1]-1,self_side_obj_char["air_move"]["jump"][2]),0)
         end
+        -- animation
         if self_side_obj_char["direction_input_cache"] == 7 then
             if (self_side_obj_char[5]*self_side_obj_char["velocity_cache"][1] <= 0) then
-                self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"7_jump",{200,470},(self_side_obj_char["velocity_cache"][1]*0.6 - self_side_obj_char[5]*2.75)*multiplyer,-55.0*multiplyer)
+                self_side_obj_char["character_animation"] =
+                load_game_scene_anim_char_TRM_7_8_9_jump_air(
+                    self_side_obj_char,"7_jump",{200,470},
+                    (self_side_obj_char["velocity_cache"][1]*0.6 - self_side_obj_char[5]*2.75)*multiplyer,
+                    -55.0*multiplyer,
+                    SFX_name
+                )
             else
-                self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},(self_side_obj_char["velocity_cache"][1]*0.6 - self_side_obj_char[5]*2.75)*multiplyer,-55.0*multiplyer)
+                self_side_obj_char["character_animation"] =
+                load_game_scene_anim_char_TRM_7_8_9_jump_air(
+                    self_side_obj_char,"8_jump",{350,430},
+                    (self_side_obj_char["velocity_cache"][1]*0.6 - self_side_obj_char[5]*2.75)*multiplyer,
+                    -55.0*multiplyer,
+                    SFX_name
+                )
             end
         elseif self_side_obj_char["direction_input_cache"] == 8 then
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},(self_side_obj_char["velocity_cache"][1]*0.25)*multiplyer,-55.0*multiplyer)
+            self_side_obj_char["character_animation"] =
+            load_game_scene_anim_char_TRM_7_8_9_jump_air(
+                self_side_obj_char,"8_jump",{350,430},
+                (self_side_obj_char["velocity_cache"][1]*0.25)*multiplyer,
+                -55.0*multiplyer,
+                SFX_name
+            )
         elseif self_side_obj_char["direction_input_cache"] == 9 then
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"9_jump",{320,430},(self_side_obj_char["velocity_cache"][1]*0.6 + self_side_obj_char[5]*2.75)*multiplyer,-55.0*multiplyer)
+            self_side_obj_char["character_animation"] = 
+            load_game_scene_anim_char_TRM_7_8_9_jump_air(
+                self_side_obj_char,"9_jump",{320,430},
+                (self_side_obj_char["velocity_cache"][1]*0.6 + self_side_obj_char[5]*2.75)*multiplyer,
+                -55.0*multiplyer,
+                SFX_name
+            )
         end
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["y"] = -140
@@ -4413,7 +4473,13 @@ function state_gate_game_scene_char_LP_from_4dash_air_backdash(input,self_side_o
     end
     -- _7_8_9_jump_air
     if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"7_jump",{200,470},-9.0*self_side_obj_char[5],nil)
+        self_side_obj_char["character_animation"] =
+        load_game_scene_anim_char_TRM_7_8_9_jump_air(
+            self_side_obj_char,"7_jump",{200,470},
+            -9.0*self_side_obj_char[5],
+            self_side_obj_char["velocity"][2],
+            nil
+        )
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "7_8_9_jump_air"
         self_side_obj_char["idle_cancel"] = true
@@ -4429,14 +4495,14 @@ function state_gate_game_scene_char_LP_from_6dash_dash(input,self_side_obj_char,
     local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(self_side_obj_char["player_side"])
     -- _overdrive
     if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
-        play_obj_audio(stage_interactive_SFX_table["ground_dash_skid"])
+        -- SFX
         stop_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
         stop_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
         return true
     end
     -- _BRC
     if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
-        play_obj_audio(stage_interactive_SFX_table["ground_dash_skid"])
+        -- SFX
         stop_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
         stop_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
         return true
@@ -4475,7 +4541,6 @@ function state_gate_game_scene_char_LP_from_6dash_dash(input,self_side_obj_char,
     if not test_input_sys_press_or_hold(input["dash"]) or self_side_obj_char["direction_input"] == 4 then
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_dash_skid(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-        play_obj_audio(stage_interactive_SFX_table["ground_dash_skid"])
         stop_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
         stop_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
         self_side_obj_char["state"] = "5_stand_dash_skid"
@@ -4516,7 +4581,13 @@ function state_gate_game_scene_char_LP_from_6dash_air_dash(input,self_side_obj_c
     end
     -- _7_8_9_jump_air
     if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"9_jump",{320,430},18.0*self_side_obj_char[5],nil)
+        self_side_obj_char["character_animation"] =
+        load_game_scene_anim_char_TRM_7_8_9_jump_air(
+            self_side_obj_char,"9_jump",{320,430},
+            18.0*self_side_obj_char[5],
+            self_side_obj_char["velocity"][2],
+            nil
+        )
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "7_8_9_jump_air"
         self_side_obj_char["f"] = 12
@@ -4530,14 +4601,12 @@ function state_gate_game_scene_char_LP_from_6dash_dash_cancel(input,self_side_ob
     local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(self_side_obj_char["player_side"])
     -- _overdrive
     if state_gate_game_scene_char_LP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
-        play_obj_audio(stage_interactive_SFX_table["ground_dash_skid"])
         stop_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
         stop_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
         return true
     end
     -- _BRC
     if state_gate_game_scene_char_LP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
-        play_obj_audio(stage_interactive_SFX_table["ground_dash_skid"])
         stop_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
         stop_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
         return true
@@ -4556,7 +4625,6 @@ function state_gate_game_scene_char_LP_from_6dash_dash_cancel(input,self_side_ob
         -- init_character_anim
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_dash_skid(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-        play_obj_audio(stage_interactive_SFX_table["ground_dash_skid"])
         stop_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
         stop_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
         self_side_obj_char["state"] = "5_stand_dash_skid"
@@ -4615,7 +4683,13 @@ function state_gate_game_scene_char_LP_from_burst_RC_red(input,self_side_obj_cha
         common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
         -- init_character_anim
         if self_side_obj_char["height"] == "air" then
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+            self_side_obj_char["character_animation"] =
+            load_game_scene_anim_char_TRM_7_8_9_jump_air(
+                self_side_obj_char,"8_jump",{350,430},
+                self_side_obj_char["velocity"][1],
+                self_side_obj_char["velocity"][2],
+                nil
+            )
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "7_8_9_jump_air"
             self_side_obj_char["idle_cancel"] = true
@@ -4691,7 +4765,13 @@ function state_gate_game_scene_char_LP_from_burst_RC_blue(input,self_side_obj_ch
         common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
         -- init_character_anim
         if self_side_obj_char["height"] == "air" then
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+            self_side_obj_char["character_animation"] =
+            load_game_scene_anim_char_TRM_7_8_9_jump_air(
+                self_side_obj_char,"8_jump",{350,430},
+                self_side_obj_char["velocity"][1],
+                self_side_obj_char["velocity"][2],
+                nil
+            )
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "7_8_9_jump_air"
             self_side_obj_char["idle_cancel"] = true
@@ -4767,7 +4847,13 @@ function state_gate_game_scene_char_LP_from_burst_RC_purple(input,self_side_obj_
         common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
         -- init_character_anim
         if self_side_obj_char["height"] == "air" then
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+            self_side_obj_char["character_animation"] =
+            load_game_scene_anim_char_TRM_7_8_9_jump_air(
+                self_side_obj_char,"8_jump",{350,430},
+                self_side_obj_char["velocity"][1],
+                self_side_obj_char["velocity"][2],
+                nil
+            )
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "7_8_9_jump_air"
             self_side_obj_char["idle_cancel"] = true
@@ -4809,7 +4895,13 @@ function state_gate_game_scene_char_LP_from_burst_RC_yellow(input,self_side_obj_
         common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
         -- init_character_anim
         if self_side_obj_char["height"] == "air" then
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+            self_side_obj_char["character_animation"] =
+            load_game_scene_anim_char_TRM_7_8_9_jump_air(
+                self_side_obj_char,"8_jump",{350,430},
+                self_side_obj_char["velocity"][1],
+                self_side_obj_char["velocity"][2],
+                nil
+            )
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "7_8_9_jump_air"
             self_side_obj_char["idle_cancel"] = true
@@ -4847,7 +4939,13 @@ function state_gate_game_scene_char_LP_from_burst_overdrive(input,self_side_obj_
         self_side_obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
         if self_side_obj_char["height"] == "air" then
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+            self_side_obj_char["character_animation"] =
+            load_game_scene_anim_char_TRM_7_8_9_jump_air(
+                self_side_obj_char,"8_jump",{350,430},
+                self_side_obj_char["velocity"][1],
+                self_side_obj_char["velocity"][2],
+                nil
+            )
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "7_8_9_jump_air"
             self_side_obj_char["idle_cancel"] = true
@@ -5639,7 +5737,13 @@ function state_gate_game_scene_char_LP_from_jP(input,self_side_obj_char,opponent
     end
     -- _7_8_9_jump_air
     if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+        self_side_obj_char["character_animation"] =
+        load_game_scene_anim_char_TRM_7_8_9_jump_air(
+            self_side_obj_char,"8_jump",{350,430},
+            self_side_obj_char["velocity"][1],
+            self_side_obj_char["velocity"][2],
+            nil
+        )
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "7_8_9_jump_air"
         self_side_obj_char["idle_cancel"] = true
@@ -5716,7 +5820,13 @@ function state_gate_game_scene_char_LP_from_jK(input,self_side_obj_char,opponent
     end
     -- _7_8_9_jump_air
     if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+        self_side_obj_char["character_animation"] =
+        load_game_scene_anim_char_TRM_7_8_9_jump_air(
+            self_side_obj_char,"8_jump",{350,430},
+            self_side_obj_char["velocity"][1],
+            self_side_obj_char["velocity"][2],
+            nil
+        )
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "7_8_9_jump_air"
         self_side_obj_char["idle_cancel"] = true
@@ -5766,7 +5876,13 @@ function state_gate_game_scene_char_LP_from_j2K(input,self_side_obj_char,opponen
     end
     -- _7_8_9_jump_air
     if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+        self_side_obj_char["character_animation"] =
+        load_game_scene_anim_char_TRM_7_8_9_jump_air(
+            self_side_obj_char,"8_jump",{350,430},
+            self_side_obj_char["velocity"][1],
+            self_side_obj_char["velocity"][2],
+            nil
+        )
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "7_8_9_jump_air"
         self_side_obj_char["idle_cancel"] = true
@@ -5811,7 +5927,13 @@ function state_gate_game_scene_char_LP_from_jS(input,self_side_obj_char,opponent
     end
     -- _7_8_9_jump_air
     if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+        self_side_obj_char["character_animation"] =
+        load_game_scene_anim_char_TRM_7_8_9_jump_air(
+            self_side_obj_char,"8_jump",{350,430},
+            self_side_obj_char["velocity"][1],
+            self_side_obj_char["velocity"][2],
+            nil
+        )
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "7_8_9_jump_air"
         self_side_obj_char["idle_cancel"] = true
@@ -5843,7 +5965,13 @@ function state_gate_game_scene_char_LP_from_j4_6Launcher(input,self_side_obj_cha
     end
     -- _7_8_9_jump_air
     if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+        self_side_obj_char["character_animation"] = 
+        load_game_scene_anim_char_TRM_7_8_9_jump_air(
+            self_side_obj_char,"8_jump",{350,430},
+            self_side_obj_char["velocity"][1],
+            self_side_obj_char["velocity"][2],
+            nil
+        )
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "7_8_9_jump_air"
         self_side_obj_char["idle_cancel"] = true
@@ -5888,7 +6016,13 @@ function state_gate_game_scene_char_LP_from_j5Launcher(input,self_side_obj_char,
     end
     -- _7_8_9_jump_air
     if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_jump_air(self_side_obj_char,"8_jump",{350,430},self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2])
+        self_side_obj_char["character_animation"] =
+        load_game_scene_anim_char_TRM_7_8_9_jump_air(
+            self_side_obj_char,"8_jump",{350,430},
+            self_side_obj_char["velocity"][1],
+            self_side_obj_char["velocity"][2],
+            nil
+        )
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "7_8_9_jump_air"
         self_side_obj_char["idle_cancel"] = true

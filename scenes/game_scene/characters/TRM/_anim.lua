@@ -799,10 +799,12 @@ end
             -- anchor_pos
         -- 对方
             ------
-function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anchor_pos,horizontal_velocity,vertical_velocity)
+function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anchor_pos,horizontal_velocity,vertical_velocity,SFX_name)
     local res = {}
+    local side = obj_char["player_side"]
+    local input = INPUT_SYS_CURRENT_COMMAND_STATE[side]
     local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(obj_char["player_side"])
-    local width_table = {200,200,230,260,270,235,200}
+    local width_table = {200,200,200,230,260,270,235,200}
     local function update_maintain_horizontal_velocity()
         -- state_number
         obj_char["velocity"][1] = horizontal_velocity
@@ -817,14 +819,10 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anch
             obj_char[8] = 2
         end
     end
-    local side = obj_char["player_side"]
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[side]
     res["prop_f"] = "f"
     res["anim_length"] = 35
-    width_table[0] = 200
     if sprite_sheet == "8_jump" then
-        width_table = {200,200,200,200,200,200,200}
-        width_table[0] = 200
+        width_table = {200,200,200,200,200,200,200,200}
     end
     for i=0,35 do
         res[i] = function() update_maintain_horizontal_velocity() end
@@ -855,7 +853,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anch
         obj_char["pushbox"] = {0,-100,120,200}
         obj_char["pushbox_opponent_collision_active"] = true
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = {{0,-180,width_table[0],380}}
+        obj_char["hurtbox_table"] = {{0,-180,width_table[1],380}}
         obj_char["collision_ground_height_offset"] = 185
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
@@ -863,7 +861,9 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anch
         obj_char[8] = 0
         obj_char["anchor_pos"] = anchor_pos
         -- SFX
-        play_obj_audio(stage_interactive_SFX_table["air_jump"])
+        if SFX_name then
+            play_obj_audio(stage_interactive_SFX_table[SFX_name])
+        end
         -- update
         update_before_falling()
     end
@@ -890,7 +890,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anch
     res[9] = function()
         -- 上升到下降的转换阶段
         -- collide
-        obj_char["hurtbox_table"] = {{0,-150,width_table[2],320}}
+        obj_char["hurtbox_table"] = {{0,-150,width_table[3],320}}
         -- draw_correction
         obj_char[8] = 2
         -- update
@@ -898,7 +898,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anch
     end
     res[13] = function()
         -- collide
-        obj_char["hurtbox_table"] = {{0,-145,width_table[3],310}}
+        obj_char["hurtbox_table"] = {{0,-145,width_table[4],310}}
         -- draw_correction
         obj_char[8] = 3
         -- update
@@ -906,7 +906,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anch
     end
     res[17] = function()
         -- collide
-        obj_char["hurtbox_table"] = {{0,-130,width_table[4],280}}
+        obj_char["hurtbox_table"] = {{0,-130,width_table[5],280}}
         -- draw_correction
         obj_char[8] = 4
         -- update
@@ -914,7 +914,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anch
     end
     res[21] = function()
         -- collide
-        obj_char["hurtbox_table"] = {{0,-125,width_table[5],270}}
+        obj_char["hurtbox_table"] = {{0,-125,width_table[6],270}}
         -- draw_correction
         obj_char[8] = 5
         -- update
@@ -922,7 +922,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anch
     end
     res[25] = function()
         -- collide
-        obj_char["hurtbox_table"] = {{0,-150,width_table[6],320}}
+        obj_char["hurtbox_table"] = {{0,-150,width_table[7],320}}
         -- draw_correction
         obj_char[8] = 6
         -- update
@@ -931,7 +931,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anch
     res[26] = function()
         -- 下降阶段开始
         -- collide
-        obj_char["hurtbox_table"] = {{0,-180,width_table[7],380}}
+        obj_char["hurtbox_table"] = {{0,-180,width_table[8],380}}
         -- draw_correction
         obj_char[8] = 7
         -- update
@@ -1607,8 +1607,6 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {350,283}
-        -- SFX
-        play_obj_audio(stage_interactive_SFX_table["air_backdash"])
     end
     res[3] = function()
         -- state_number
@@ -1652,6 +1650,8 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
         obj_char[8] = 3
         -- VFX
         insert_VFX_game_scene_stage_6dash_air_dash_shockwave(obj_char,50,-430,0.75,0.75,0.75,0)
+        -- SFX
+        play_obj_audio(stage_interactive_SFX_table["air_dash"])
     end
     res[15] = function()
         -- state_number
