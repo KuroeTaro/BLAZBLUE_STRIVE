@@ -962,6 +962,19 @@ function load_game_scene_audio_char_LP()
         audio_SFX_game_scene_stage_interactive_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
         update_SFX_VOLUME(audio_SFX_game_scene_stage_interactive_SFX_LP[key])
     end
+    -- move_SFX
+    file_name_table = {
+        "blue_RC","purple_RC",
+        "red_RC_block","red_RC_hit","red_RC_whiff",
+        "yellow_RC_block","yellow_RC_hit","yellow_RC_whiff"
+    }
+    for i = 1, #file_name_table do
+        local key = file_name_table[i]
+        local path = base .. "move_SFX/RC/" .. key .. ".wav"
+        audio_SFX_game_scene_move_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
+        audio_SFX_game_scene_move_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
+        update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[key])
+    end
 end
 function load_game_scene_shader_char_LP()
     -- shader_global_variable no_shader_in_this_case

@@ -5080,6 +5080,7 @@ function load_game_scene_anim_char_common_burst_RC_red(
     local hurtbox_data = common_game_scene_get_hurtbox(self_side)
     local anchor_data = common_game_scene_get_anchor(self_side)
     local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1]-100)
+    local move_SFX_table = common_game_scene_get_SFX_move(self_side)
     local function update_heat_gauge_state()
         if self_side_obj_char["heat_gauge"][1] > goal_heat_gauge_remain then
             self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - 5
@@ -5192,6 +5193,7 @@ function load_game_scene_anim_char_common_burst_RC_red(
         -- draw_correction
         self_side_obj_char[8] = 2
         -- SFX
+        play_obj_audio(move_SFX_table["red_RC_whiff"])
         -- update
         update_state()
         update_heat_gauge_state()
@@ -5267,6 +5269,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
     local hurtbox_data = common_game_scene_get_hurtbox(self_side)
     local anchor_data = common_game_scene_get_anchor(self_side)
     local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1]-100)
+    local move_SFX_table = common_game_scene_get_SFX_move(self_side)
     local function update_heat_gauge_state()
         if self_side_obj_char["heat_gauge"][1] > goal_heat_gauge_remain then
             self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - 5
@@ -5404,6 +5407,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         -- draw_correction
         self_side_obj_char[8] = 2
         -- SFX
+        play_obj_audio(move_SFX_table["blue_RC"])
         -- update
         update_state()
         update_heat_gauge_state()
@@ -5486,6 +5490,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
     local hurtbox_data = common_game_scene_get_hurtbox(self_side)
     local anchor_data = common_game_scene_get_anchor(self_side)
     local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1]-100)
+    local move_SFX_table = common_game_scene_get_SFX_move(self_side)
     local function update_heat_gauge_state()
         if self_side_obj_char["heat_gauge"][1] > goal_heat_gauge_remain then
             self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - 5
@@ -5623,6 +5628,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         insert_VFX_game_scene_char_RC_partical(self_side_obj_char)
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
         -- SFX
+        play_obj_audio(move_SFX_table["purple_RC"])
         -- update
         update_state()
         update_heat_gauge_state()
@@ -5705,6 +5711,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     local hurtbox_data = common_game_scene_get_hurtbox(self_side)
     local anchor_data = common_game_scene_get_anchor(self_side)
     local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1]-100)
+    local move_SFX_table = common_game_scene_get_SFX_move(self_side)
     local function update_heat_gauge_state()
         if self_side_obj_char["heat_gauge"][1] > goal_heat_gauge_remain then
             self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - 5
@@ -5808,6 +5815,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         insert_VFX_game_scene_char_RC_partical(self_side_obj_char)
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
         -- SFX
+        play_obj_audio(move_SFX_table["yellow_RC_whiff"])
         -- update
         update_state()
         update_heat_gauge_state()
