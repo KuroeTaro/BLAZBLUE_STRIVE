@@ -4553,12 +4553,17 @@ function state_gate_game_scene_char_LP_from_6dash_dash_cancel(input,self_side_ob
     end
     -- _5_stand_dash_skid
     if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        -- init_character_anim
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_dash_skid(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         play_obj_audio(stage_interactive_SFX_table["ground_dash_skid"])
         stop_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
         stop_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
         self_side_obj_char["state"] = "5_stand_dash_skid"
+        -- input_sys_cache
+        self_side_obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
+        -- _from_5_stand_dash_skid
         state_gate_game_scene_char_LP_from_5_stand_dash_skid(input,self_side_obj_char,opponent_side_obj_char)
         return true
     end

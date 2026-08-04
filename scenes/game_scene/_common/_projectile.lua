@@ -786,11 +786,11 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-    local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
     res["prop_f"] = "f"
     res["anim_length"] = 12
     res[0] = function()
+        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
+        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
@@ -899,8 +899,6 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-    local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -933,6 +931,8 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
     res["prop_f"] = "f"
     res["anim_length"] = 32
     res[0] = function()
+        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
+        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
@@ -1263,11 +1263,11 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-    local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
     res["prop_f"] = "f"
     res["anim_length"] = 17
     res[0] = function()
+        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
+        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
@@ -1382,8 +1382,6 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-    local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -1416,6 +1414,8 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
     res["prop_f"] = "f"
     res["anim_length"] = 32
     res[0] = function()
+        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
+        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
