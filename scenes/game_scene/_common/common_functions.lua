@@ -120,8 +120,8 @@ function common_game_scene_get_SFX_move(side)
     }
     return side_table[side]
 end
-function common_game_scene_get_SFX_random_0_or_1(SFX_table, key_prefix)
-    local key = key_prefix .. (math.random(0, 1) == 0 and "_0" or "_1")
+function common_game_scene_get_SFX_random_0_or_1(SFX_table,key_prefix)
+    local key = key_prefix .. (math.random(0,1) == 0 and "_0" or "_1")
     return SFX_table[key]
 end
 function common_game_scene_get_input_state(side)

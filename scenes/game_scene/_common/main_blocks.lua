@@ -473,10 +473,10 @@ function update_game_scene_training_main()
     -- 更新HUD
     update_game_scene_HUD()
     -- 更新角色DEBUG信息
-    update_character_frame_adv_info_init(obj_char_game_scene_char_LP, obj_char_game_scene_char_RP)
-    update_character_frame_adv_info_init(obj_char_game_scene_char_RP, obj_char_game_scene_char_LP)
-    update_character_frame_info(obj_char_game_scene_char_LP, obj_char_game_scene_char_RP)
-    update_character_frame_info(obj_char_game_scene_char_RP, obj_char_game_scene_char_LP)
+    update_character_frame_adv_info_init(obj_char_game_scene_char_LP,obj_char_game_scene_char_RP)
+    update_character_frame_adv_info_init(obj_char_game_scene_char_RP,obj_char_game_scene_char_LP)
+    update_character_frame_info(obj_char_game_scene_char_LP,obj_char_game_scene_char_RP)
+    update_character_frame_info(obj_char_game_scene_char_RP,obj_char_game_scene_char_LP)
     if obj_stage_game_scene_main["state"] == "wallbreak" then
         current_update_block = update_game_scene_training_wallbreak
     end
@@ -721,7 +721,7 @@ function update_game_scene_application_table_validation()
         print("You could do that but I won't code a wallstick with it since this would cause a sync wallstick or wallbreak.")
         print("That is a issue even arcsys deal it shity.")
         print("I would just ban the wallbreak/wallstick process with it. BTW I don't like guarantee projectile either")
-        print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000000")
+        print("if you want do make the sync wallstick and wallbreak effect,this is a place to mod it.WALL#00000000")
     end
 end
 function update_game_scene_wallbreak_application_table()
@@ -734,7 +734,7 @@ function update_game_scene_wallbreak_application_table()
         obj_stage_main["wallbreak_active_application_table"] = {}
     elseif #obj_stage_main["wallbreak_active_application_table"] > 1 then
         obj_stage_main["wallbreak_active_application_table"] = {}
-        print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000001")
+        print("if you want do make the sync wallstick and wallbreak effect,this is a place to mod it.WALL#00000001")
     end
 end
 function update_game_scene_wallstick_stage_obj_application_table()
@@ -746,14 +746,14 @@ function update_game_scene_wallstick_stage_obj_application_table()
     end
     if #obj_stage_main["wallstick_stage_obj_active_application_table"] == 1 then
         if obj_stage_main["state"] == "wallbreak" then
-            print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000002")
+            print("if you want do make the sync wallstick and wallbreak effect,this is a place to mod it.WALL#00000002")
             return
         end
         obj_stage_main["wallstick_stage_obj_active_application_table"][1]()
         obj_stage_main["wallstick_stage_obj_active_application_table"] = {}
     elseif #obj_stage_main["wallstick_stage_obj_active_application_table"] > 1 then
         obj_stage_main["wallstick_stage_obj_active_application_table"] = {}
-        print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000003")
+        print("if you want do make the sync wallstick and wallbreak effect,this is a place to mod it.WALL#00000003")
     end
 end
 function update_game_scene_wallstick_char_obj_application_table()
@@ -767,7 +767,7 @@ function update_game_scene_wallstick_char_obj_application_table()
     end
     if #obj_stage_main["wallstick_char_obj_active_application_table"] == 1 then
         if obj_stage_main["state"] == "wallbreak" then
-            print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000004")
+            print("if you want do make the sync wallstick and wallbreak effect,this is a place to mod it.WALL#00000004")
             return
         end
         char_LP["collision_move_available_cache"] = char_LP["collision_move_available"]
@@ -776,7 +776,7 @@ function update_game_scene_wallstick_char_obj_application_table()
         obj_stage_main["wallstick_char_obj_active_application_table"] = {}
     elseif #obj_stage_main["wallstick_char_obj_active_application_table"] > 1 then
         obj_stage_main["wallstick_char_obj_active_application_table"] = {}
-        print("if you want do make the sync wallstick and wallbreak effect, this is a place to mod it.WALL#00000005")
+        print("if you want do make the sync wallstick and wallbreak effect,this is a place to mod it.WALL#00000005")
     end
 end
 function update_game_scene_camera_application_table()

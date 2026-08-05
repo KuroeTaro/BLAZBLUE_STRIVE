@@ -147,12 +147,12 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_upd
         ["wallbreak"] = true,
         ["knockdown"] = true
     }
-    local function debuff(self_side_obj_char, opponent_side_obj_char)
+    local function debuff(self_side_obj_char,opponent_side_obj_char)
         local dx = opponent_side_obj_char["x"] - self_side_obj_char["x"]
         local vx = opponent_side_obj_char["velocity"][1]
         local v = math.sqrt(opponent_side_obj_char["velocity"][1]^2 + opponent_side_obj_char["velocity"][2]^2)
-        local dist = math.max(math.abs(dx)-1000, 0)
-        local speed = math.min(math.abs(v), 40)
+        local dist = math.max(math.abs(dx)-1000,0)
+        local speed = math.min(math.abs(v),40)
         local approaching = (dx * vx < 0) and 1.075 or 0
         local k_speed = 1.625
         local k_approach = 1.5
@@ -165,7 +165,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_upd
         obj_char_shot_sys_aim_process[2] = 17.5
     end
     -- debuff_base_on_abs_and_relative_velocity
-    obj_char_shot_sys_aim_process[1] = obj_char_shot_sys_aim_process[1] - debuff(self_side_obj_char, opponent_side_obj_char)
+    obj_char_shot_sys_aim_process[1] = obj_char_shot_sys_aim_process[1] - debuff(self_side_obj_char,opponent_side_obj_char)
     -- add_focus_speed
     obj_char_shot_sys_aim_process[1] = 
         math.min(
@@ -175,7 +175,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_upd
     obj_char_shot_sys_aim_process[1] = math.max(obj_char_shot_sys_aim_process[1],0)
     -- instandt_aim
     if instant_aim_state[opponent_side_obj_char["state"]] then
-        obj_char_shot_sys_aim_process[1] = math.max(obj_char_shot_sys_aim_process[1], obj_char_shot_sys_aim_process[3])
+        obj_char_shot_sys_aim_process[1] = math.max(obj_char_shot_sys_aim_process[1],obj_char_shot_sys_aim_process[3])
     end
 end
 -- r_visual_calculation
@@ -237,7 +237,7 @@ function character_function_game_scene_TRM_shot_sys_reticle_pos_update_ease_in(s
 end
 function character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(self_side_obj_char,opponent_side_obj_char)
     local random_offset = (math.random(2) == 1) and 1 or 0
-    local random_index = math.random(1, 2)
+    local random_index = math.random(1,2)
     local offset_multiplier = 100
     local height_offset = {
         [370] = 315,

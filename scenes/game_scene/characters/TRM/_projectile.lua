@@ -931,7 +931,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     end
     -- animation
         -- projectile_animation
-        -- this projectile is spwaned by an attchment of charcter, so the animation is init and play at same frame with spawning
+        -- this projectile is spwaned by an attchment of charcter,so the animation is init and play at same frame with spawning
     obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_P_projectile_in_spawner(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
     init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
     -- update

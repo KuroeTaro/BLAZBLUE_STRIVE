@@ -496,7 +496,7 @@ function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit
         obj_VFX[1] = hit_side_obj_char["shot_sys_reticle"][1] + 230 + 160
         obj_VFX[5] = -1
     elseif hit_side_obj_char["x"] == hurt_side_obj_char["x"] then
-        if math.random(0, 1) == 0 then
+        if math.random(0,1) == 0 then
             obj_VFX[1] = hit_side_obj_char["shot_sys_reticle"][1] + 230 + 160
             obj_VFX[5] = -1
         end
@@ -510,7 +510,7 @@ function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit
             obj_VFX[1] = hit_side_obj_char["shot_sys_reticle"][1] + 230 + 160
             obj_VFX[5] = -1
         elseif hit_side_obj_char["x"] == hurt_side_obj_char["x"] then
-            if math.random(0, 1) == 0 then
+            if math.random(0,1) == 0 then
                 obj_VFX[1] = hit_side_obj_char["shot_sys_reticle"][1] + 230 + 160
                 obj_VFX[5] = -1
             end

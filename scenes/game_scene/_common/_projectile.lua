@@ -545,7 +545,7 @@ end
 --                              projectile_active projectile_counter_ver_function
 --                              block_SFX counter_SFX hit_SFX_whiff_SFX
 --                              hit_VFX_insert_function hit_SFX
---                              hurt_block_VFX_insert_function, hurt_block_SFX
+--                              hurt_block_VFX_insert_function,hurt_block_SFX
 -- animation                    projectile_animation camera_x_shake_anim camera_y_shake_anim camera_enclosing_anim enclose_position_offset
 -- update/update_sub_frame/draw
 -- uncommon

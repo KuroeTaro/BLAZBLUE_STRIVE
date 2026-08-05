@@ -955,25 +955,37 @@ function load_game_scene_audio_char_LP()
         "ground_hard_knockdown","ground_land","ground_soft_knockdown",
         "ground_step_0","ground_step_1","wall_wallbreak","wall_wallstick"
     }
-    for i = 1, #file_name_table do
+    for i = 1,#file_name_table do
         local key = file_name_table[i]
         local path = base .. "stage_interactive_SFX/" .. key .. ".wav"
-        audio_SFX_game_scene_stage_interactive_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
-        audio_SFX_game_scene_stage_interactive_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
+        audio_SFX_game_scene_stage_interactive_SFX_LP[key] = {1,LCT = {0},LCD = {0}}
+        audio_SFX_game_scene_stage_interactive_SFX_LP[key]["audio"] = love.audio.newSource(path,"static")
         update_SFX_VOLUME(audio_SFX_game_scene_stage_interactive_SFX_LP[key])
     end
     -- move_SFX
-    file_name_table = {
-        "blue_RC","purple_RC",
-        "red_RC_block","red_RC_hit","red_RC_whiff",
-        "yellow_RC_block","yellow_RC_hit","yellow_RC_whiff"
+    local move_SFX_folder_table = {
+        {folder = "RC",files = {"blue_RC","purple_RC","red_RC_block","red_RC_hit","red_RC_whiff","yellow_RC_block","yellow_RC_hit","yellow_RC_whiff"}},
+        {folder = "normal/2P",files = {"2P_block","2P_counter","2P_hit","2P_whiff"}},
+        {folder = "normal/6P",files = {"6P_block","6P_counter","6P_hit","6P_whiff"}},
+        {folder = "normal/5P",files = {"5P_block","5P_counter","5P_hit","5P_whiff"}},
+        {folder = "normal/2K",files = {"2K_block","2K_counter","2K_hit","2K_whiff"}},
+        {folder = "normal/6K",files = {"6K_block","6K_counter","6K_hit","6K_whiff"}},
+        {folder = "normal/5K",files = {"5K_block","5K_counter","5K_hit","5K_whiff"}},
+        {folder = "normal/2S",files = {"2S_block","2S_counter","2S_hit","2S_whiff"}},
+        {folder = "normal/6S",files = {"6S_block","6S_counter","6S_hit","6S_whiff"}},
+        {folder = "normal/cS",files = {"cS_block","cS_counter","cS_hit","cS_whiff"}},
+        {folder = "normal/fS",files = {"fS_block","fS_counter","fS_hit","fS_whiff"}},
     }
-    for i = 1, #file_name_table do
-        local key = file_name_table[i]
-        local path = base .. "move_SFX/RC/" .. key .. ".wav"
-        audio_SFX_game_scene_move_SFX_LP[key] = {1, LCT = {0}, LCD = {0}}
-        audio_SFX_game_scene_move_SFX_LP[key]["audio"] = love.audio.newSource(path, "static")
-        update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[key])
+    for i = 1,#move_SFX_folder_table do
+        local folder = move_SFX_folder_table[i].folder
+        local file_name_table = move_SFX_folder_table[i].files
+        for j = 1,#file_name_table do
+            local key = file_name_table[j]
+            local path = base .. "move_SFX/" .. folder .. "/" .. key .. ".wav"
+            audio_SFX_game_scene_move_SFX_LP[key] = {1,LCT = {0},LCD = {0}}
+            audio_SFX_game_scene_move_SFX_LP[key]["audio"] = love.audio.newSource(path,"static")
+            update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[key])
+        end
     end
 end
 function load_game_scene_shader_char_LP()
@@ -2827,7 +2839,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_4dash_on
     end
 end
 function state_gate_game_scene_char_LP_common_air_to_attack_move(input,self_side_obj_char,opponent_side_obj_char)
-    local direction_input_true_table = { [4] = true, [6] = true, [7] = true, [9] = true }
+    local direction_input_true_table = { [4] = true,[6] = true,[7] = true,[9] = true }
     -- _burst_overdrive
     -- _burst_RC_blue
     -- _active_FD_block
@@ -2893,7 +2905,7 @@ function state_gate_game_scene_char_LP_common_air_to_attack_move(input,self_side
     return false
 end
 function state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(input,self_side_obj_char,opponent_side_obj_char)
-    local direction_input_true_table = { [4] = true, [6] = true, [7] = true, [9] = true }
+    local direction_input_true_table = { [4] = true,[6] = true,[7] = true,[9] = true }
     -- _burst_overdrive
     -- _burst_RC_blue
     -- _active_FD_block
