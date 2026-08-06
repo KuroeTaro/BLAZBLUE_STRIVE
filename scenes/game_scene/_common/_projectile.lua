@@ -293,8 +293,13 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
             if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
                 hurt_side_obj_char["hurt_state"] = "counter"
             end
-            -- insert_projectile_VFX_SFX
-            if not block_bool then
+            -- insert_projectile_VFX_SFX_counter_apply
+            if hurt_side_obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
+                obj_projectile["projectile_counter_ver_function"]()
+                obj_projectile["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
+                stop_obj_audio(obj_projectile["whiff_SFX"])
+                play_obj_audio(obj_projectile["counter_SFX"])
+            elseif not block_bool then
                 obj_projectile["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
                 stop_obj_audio(obj_projectile["whiff_SFX"])
                 play_obj_audio(obj_projectile["hit_SFX"])
@@ -694,6 +699,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
     obj_projectile["hit_VFX_insert_function"] = function() end
     obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC_yellow
     obj_projectile["block_SFX"] = move_SFX_table["yellow_RC_block"]
+    obj_projectile["counter_SFX"] = move_SFX_table["yellow_RC_counter"]
     obj_projectile["hit_SFX"] = move_SFX_table["yellow_RC_hit"]
     obj_projectile["whiff_SFX"] = move_SFX_table["yellow_RC_whiff"]
     obj_projectile["enemy_interact_function"] = function()
@@ -707,8 +713,13 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
             if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
                 hurt_side_obj_char["hurt_state"] = "counter"
             end
-            -- insert_projectile_VFX_SFX
-            if not block_bool then
+            -- insert_projectile_VFX_SFX_counter_apply
+            if hurt_side_obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
+                obj_projectile["projectile_counter_ver_function"]()
+                obj_projectile["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
+                stop_obj_audio(obj_projectile["whiff_SFX"])
+                play_obj_audio(obj_projectile["counter_SFX"])
+            elseif not block_bool then
                 obj_projectile["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
                 stop_obj_audio(obj_projectile["whiff_SFX"])
                 play_obj_audio(obj_projectile["hit_SFX"])

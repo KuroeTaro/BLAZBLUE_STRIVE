@@ -78,7 +78,7 @@ function character_function_game_scene_TRM_hitstop_air_jump_cancel(
     end
     init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
     self_side_obj_char["state"] = "7_8_9_jump_air"
-    -- save_input_sys_cache_from_jS_and_7_8_9_jump_air
+    -- save_input_sys_cache_from_j5S_and_7_8_9_jump_air
     load_input_sys_cache_manual_release(input,self_side_obj_char,"up")
     load_input_sys_cache_recache(input,self_side_obj_char)
     self_side_obj_char["input_sys_state"] = "save" -- none save load

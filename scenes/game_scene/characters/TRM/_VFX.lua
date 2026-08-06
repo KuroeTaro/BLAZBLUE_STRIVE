@@ -636,11 +636,11 @@ function insert_VFX_game_scene_char_TRM_5Launcher_move_glow(obj_char)
     end
     table.insert(obj_char["VFX_common_front_table"],obj_VFX)
 end
-function insert_VFX_game_scene_char_TRM_jS_move(obj_char)
+function insert_VFX_game_scene_char_TRM_j5S_move(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
-    local image_sprite_sheet = image_sprite_sheet_table["jS_move_VFX"]
+    local image_sprite_sheet = image_sprite_sheet_table["j5S_move_VFX"]
     obj_VFX["life"] = 13
     obj_VFX[1] = obj_char["x"] + obj_char[5]*(-160)
     obj_VFX[2] = obj_char["y"] + obj_char[6]*(-370)
@@ -671,7 +671,7 @@ function insert_VFX_game_scene_char_TRM_jS_move(obj_char)
         end
     end
     obj_VFX["draw_sync"] = function()
-        if obj_VFX["FCT"][8] < 7 and obj_char["state"] == "jS" then
+        if obj_VFX["FCT"][8] < 7 and obj_char["state"] == "j5S" then
             obj_VFX[1] = obj_char["x"] + obj_char[5]*(-120)
             obj_VFX[2] = obj_char["y"] + obj_char[6]*(-370)
             obj_VFX[3] = obj_char[3]
@@ -679,7 +679,7 @@ function insert_VFX_game_scene_char_TRM_jS_move(obj_char)
             obj_VFX[5] = obj_char[5]
             obj_VFX[6] = obj_char[6]
             obj_VFX[7] = obj_char[7]
-        elseif obj_char["state"] == "jS" then
+        elseif obj_char["state"] == "j5S" then
             obj_VFX[1] = obj_char["x"] + obj_char[5]*(-120)
             obj_VFX[2] = obj_char["y"] + obj_char[6]*(-370)
             obj_VFX[3] = obj_char[3]

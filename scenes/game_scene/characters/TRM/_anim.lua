@@ -6930,8 +6930,8 @@ function load_game_scene_anim_char_TRM_5Launcher_hold(hit_side_obj_char,hurt_sid
     end
     return res
 end
--- _jP
-function load_game_scene_anim_char_TRM_jP(hit_side_obj_char,hurt_side_obj_char)
+-- _j5P
+function load_game_scene_anim_char_TRM_j5P(hit_side_obj_char,hurt_side_obj_char)
     local res = {}
     local friction = 4
     local gravity = 2.5
@@ -6940,7 +6940,7 @@ function load_game_scene_anim_char_TRM_jP(hit_side_obj_char,hurt_side_obj_char)
     res["anim_length"] = 24
     res[0] = function()
         -- state
-        hit_side_obj_char["sprite_sheet"] = "jP"
+        hit_side_obj_char["sprite_sheet"] = "j5P"
         hit_side_obj_char["height"] = "air" -- stand crouch air OTG wallstick
         hit_side_obj_char["hit_type"] = "strike" -- none strike throw burst
         hit_side_obj_char["hit_guard_type"] = "mid" -- none all low mid high
@@ -7175,8 +7175,8 @@ function load_game_scene_anim_char_TRM_jP(hit_side_obj_char,hurt_side_obj_char)
     end
     return res
 end
--- _jK
-function load_game_scene_anim_char_TRM_jK(hit_side_obj_char,hurt_side_obj_char)
+-- _j5K
+function load_game_scene_anim_char_TRM_j5K(hit_side_obj_char,hurt_side_obj_char)
     local res = {}
     local friction = 4
     local gravity = 2.575
@@ -7185,7 +7185,7 @@ function load_game_scene_anim_char_TRM_jK(hit_side_obj_char,hurt_side_obj_char)
     res["anim_length"] = 27
     res[0] = function()
         -- state
-        hit_side_obj_char["sprite_sheet"] = "jK"
+        hit_side_obj_char["sprite_sheet"] = "j5K"
         hit_side_obj_char["height"] = "air" -- stand crouch air OTG wallstick
         hit_side_obj_char["hit_type"] = "strike" -- none strike throw burst
         hit_side_obj_char["hit_guard_type"] = "mid" -- none all low mid high
@@ -7681,8 +7681,8 @@ function load_game_scene_anim_char_TRM_j2K(hit_side_obj_char,hurt_side_obj_char)
     end
     return res
 end
--- _jS
-function load_game_scene_anim_char_TRM_jS(hit_side_obj_char,hurt_side_obj_char)
+-- _j5S
+function load_game_scene_anim_char_TRM_j5S(hit_side_obj_char,hurt_side_obj_char)
     local res = {}
     local friction = 4
     local gravity = 2.575
@@ -7691,7 +7691,7 @@ function load_game_scene_anim_char_TRM_jS(hit_side_obj_char,hurt_side_obj_char)
     res["anim_length"] = 50
     res[0] = function()
         -- state
-        hit_side_obj_char["sprite_sheet"] = "jS"
+        hit_side_obj_char["sprite_sheet"] = "j5S"
         hit_side_obj_char["height"] = "air" -- stand crouch air OTG wallstick
         hit_side_obj_char["hit_type"] = "strike" -- none strike throw burst
         hit_side_obj_char["hit_guard_type"] = "mid" -- none all low mid high
@@ -7853,7 +7853,7 @@ function load_game_scene_anim_char_TRM_jS(hit_side_obj_char,hurt_side_obj_char)
     end
     res[6] = function()
         -- VFX
-        insert_VFX_game_scene_char_TRM_jS_move(hit_side_obj_char)
+        insert_VFX_game_scene_char_TRM_j5S_move(hit_side_obj_char)
     end
     res[9] = function()
         -- state

@@ -434,10 +434,10 @@ function order_load_game_scene_char_RP_frames(load_order)
                 "4_6Launcher",
                 "4_6Launcher_success",
                 "5Launcher",
-                "jP",
-                "jK",
+                "j5P",
+                "j5K",
                 "j2K",
-                "jS",
+                "j5S",
                 "j5Launcher",
                 "j4_6Launcher",
                 "j4_6Launcher_success"
@@ -496,9 +496,9 @@ function order_load_game_scene_char_RP_frames(load_order)
                 -- "4_6Launcher_success",
                 "5Launcher",
                 "5Launcher_glow",
-                -- "jP",
-                -- "jK",
-                "jS",
+                -- "j5P",
+                -- "j5K",
+                "j5S",
                 "6SP_P_arua",
                 "6SP_P_curse_ball_spawn_halo",
                 "6SP_P_curse_ball_spawner",
@@ -964,7 +964,13 @@ function load_game_scene_audio_char_RP()
     end
     -- move_SFX
     local move_SFX_folder_table = {
-        {folder = "RC",files = {"blue_RC","purple_RC","red_RC_block","red_RC_hit","red_RC_whiff","yellow_RC_block","yellow_RC_hit","yellow_RC_whiff"}},
+        {folder = "common",files = {"common_oroboros","common_throw_tech"}},
+        {folder = "RC",files = {
+                "blue_RC","purple_RC",
+                "red_RC_block","red_RC_counter","red_RC_hit","red_RC_whiff",
+                "yellow_RC_block","yellow_RC_counter","yellow_RC_hit","yellow_RC_whiff"
+            }
+        },
         {folder = "normal/2P",files = {"2P_block","2P_counter","2P_hit","2P_whiff"}},
         {folder = "normal/6P",files = {"6P_block","6P_counter","6P_hit","6P_whiff"}},
         {folder = "normal/5P",files = {"5P_block","5P_counter","5P_hit","5P_whiff"}},
@@ -975,6 +981,25 @@ function load_game_scene_audio_char_RP()
         {folder = "normal/6S",files = {"6S_block","6S_counter","6S_hit","6S_whiff"}},
         {folder = "normal/cS",files = {"cS_block","cS_counter","cS_hit","cS_whiff"}},
         {folder = "normal/fS",files = {"fS_block","fS_counter","fS_hit","fS_whiff"}},
+        {folder = "normal/5H",files = {
+                "5H_knife_clip_0","5H_knife_clip_1","5H_knife_clip_2",
+                "5H_oroboros_blast","5H_projectile_block","5H_projectile_counter","5H_projectile_hit","5H_projectile_whiff",
+                "5H_reticle_ease_in","5H_reticle_ease_out","5H_reticle_locking"
+            }
+        },
+        {folder = "normal/2Launcher",files = {"2Launcher_block","2Launcher_counter","2Launcher_hit","2Launcher_whiff"}},
+        {folder = "normal/4_6Launcher",files = {"4_6Launcher_hit","4_6Launcher_throw","4_6Launcher_whiff"}},
+        {folder = "normal/5Launcher",files = {
+                "5Launcher_block","5Launcher_counter","5Launcher_hit",
+                "5Launcher_hold_block","5Launcher_hold_hit","5Launcher_hold_launcher_jump","5Launcher_hold_whiff"
+            }
+        },
+        {folder = "normal/j5P",files = {"j5P_block","j5P_counter","j5P_hit","j5P_whiff"}},
+        {folder = "normal/j2K",files = {"j2K_block","j2K_counter","j2K_hit","j2K_whiff"}},
+        {folder = "normal/j5K",files = {"j5K_block","j5K_counter","j5K_hit","j5K_whiff"}},
+        {folder = "normal/j5S",files = {"j5S_block","j5S_counter","j5S_hit","j5S_whiff"}},
+        {folder = "normal/j4_6Launcher",files = {"j4_6Launcher_hit","j4_6Launcher_throw","j4_6Launcher_whiff"}},
+        {folder = "normal/j5Launcher",files = {"j5Launcher_block","j5Launcher_counter","j5Launcher_hit","j5Launcher_whiff"}}
     }
     for i = 1,#move_SFX_folder_table do
         local folder = move_SFX_folder_table[i].folder
@@ -1566,17 +1591,17 @@ function state_machine_char_game_scene_char_RP()
             end
             state_gate_game_scene_char_RP_from_5Launcher_hold(input,self_side_obj_char,opponent_side_obj_char)
         end,
-        ["jP"] = function()
+        ["j5P"] = function()
             if run_at_current_frame then
                 character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_RP_from_jP(input,self_side_obj_char,opponent_side_obj_char)
+            state_gate_game_scene_char_RP_from_j5P(input,self_side_obj_char,opponent_side_obj_char)
         end,
-        ["jK"] = function()
+        ["j5K"] = function()
             if run_at_current_frame then
                 character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_RP_from_jK(input,self_side_obj_char,opponent_side_obj_char)
+            state_gate_game_scene_char_RP_from_j5K(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["j2K"] = function()
             if run_at_current_frame then
@@ -1584,11 +1609,11 @@ function state_machine_char_game_scene_char_RP()
             end
             state_gate_game_scene_char_RP_from_j2K(input,self_side_obj_char,opponent_side_obj_char)
         end,
-        ["jS"] = function()
+        ["j5S"] = function()
             if run_at_current_frame then
                 character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_RP_from_jS(input,self_side_obj_char,opponent_side_obj_char)
+            state_gate_game_scene_char_RP_from_j5S(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["j2S"] = function()
             if run_at_current_frame then
@@ -2845,14 +2870,14 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move(input,self_side
     -- _active_FD_block
     -- _jSP_S
     -- _jSP_H
-    -- _jP
+    -- _j5P
     if test_input_sys_press(input["P"]) then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jP(self_side_obj_char,opponent_side_obj_char)
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j5P(self_side_obj_char,opponent_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-        self_side_obj_char["state"] = "jP"
+        self_side_obj_char["state"] = "j5P"
         return true
     end
     -- _j2K
@@ -2865,24 +2890,24 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move(input,self_side
         self_side_obj_char["state"] = "j2K"
         return true
     end
-    -- _jK
+    -- _j5K
     if test_input_sys_press(input["K"]) then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jK(self_side_obj_char,opponent_side_obj_char)
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j5K(self_side_obj_char,opponent_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-        self_side_obj_char["state"] = "jK"
+        self_side_obj_char["state"] = "j5K"
         return true
     end
-    -- _jS
+    -- _j5S
     if test_input_sys_press(input["S"]) then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(self_side_obj_char,opponent_side_obj_char)
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j5S(self_side_obj_char,opponent_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-        self_side_obj_char["state"] = "jS"
+        self_side_obj_char["state"] = "j5S"
         return true
     end
     -- _j4_6Launcher
@@ -2911,14 +2936,14 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,
     -- _active_FD_block
     -- _jSP_S
     -- _jSP_H
-    -- _jP
+    -- _j5P
     if test_input_sys_press_or_hold(input["P"]) then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jP(self_side_obj_char,opponent_side_obj_char)
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j5P(self_side_obj_char,opponent_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-        self_side_obj_char["state"] = "jP"
+        self_side_obj_char["state"] = "j5P"
         return true
     end
     -- _j2K
@@ -2931,24 +2956,24 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(input,
         self_side_obj_char["state"] = "j2K"
         return true
     end
-    -- _jK
+    -- _j5K
     if test_input_sys_press_or_hold(input["K"]) then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jK(self_side_obj_char,opponent_side_obj_char)
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j5K(self_side_obj_char,opponent_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-        self_side_obj_char["state"] = "jK"
+        self_side_obj_char["state"] = "j5K"
         return true
     end
-    -- _jS
+    -- _j5S
     if test_input_sys_press_or_hold(input["S"]) then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(self_side_obj_char,opponent_side_obj_char)
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j5S(self_side_obj_char,opponent_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-        self_side_obj_char["state"] = "jS"
+        self_side_obj_char["state"] = "j5S"
         return true
     end
     -- _j4_6Launcher
@@ -5697,7 +5722,7 @@ function state_gate_game_scene_char_RP_from_5Launcher(input,self_side_obj_char,o
 end
 function state_gate_game_scene_char_RP_from_5Launcher_hold(input,self_side_obj_char,opponent_side_obj_char)
 end
-function state_gate_game_scene_char_RP_from_jP(input,self_side_obj_char,opponent_side_obj_char)
+function state_gate_game_scene_char_RP_from_j5P(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
     if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
@@ -5717,14 +5742,14 @@ function state_gate_game_scene_char_RP_from_jP(input,self_side_obj_char,opponent
     end
     -- hit_cancel
     if self_side_obj_char["hit_cancel"] then
-        -- _jP
+        -- _j5P
         if self_side_obj_char["y"] < -240 and test_input_sys_press(input["P"]) then
             if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
                 self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jP(self_side_obj_char,opponent_side_obj_char)
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j5P(self_side_obj_char,opponent_side_obj_char)
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-            self_side_obj_char["state"] = "jP"
+            self_side_obj_char["state"] = "j5P"
             return true
         end
     end
@@ -5739,24 +5764,24 @@ function state_gate_game_scene_char_RP_from_jP(input,self_side_obj_char,opponent
             self_side_obj_char["state"] = "j2K"
             return true
         end
-        -- _jK
+        -- _j5K
         if self_side_obj_char["y"] < -240 and test_input_sys_press(input["K"]) then
             if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
                 self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jK(self_side_obj_char,opponent_side_obj_char)
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j5K(self_side_obj_char,opponent_side_obj_char)
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-            self_side_obj_char["state"] = "jK"
+            self_side_obj_char["state"] = "j5K"
             return true
         end
-        -- _jS
+        -- _j5S
         if self_side_obj_char["y"] < -240 and test_input_sys_press(input["S"]) then
             if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
                 self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(self_side_obj_char,opponent_side_obj_char)
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j5S(self_side_obj_char,opponent_side_obj_char)
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-            self_side_obj_char["state"] = "jS"
+            self_side_obj_char["state"] = "j5S"
             return true
         end
     end
@@ -5780,7 +5805,7 @@ function state_gate_game_scene_char_RP_from_jP(input,self_side_obj_char,opponent
         return true
     end
 end
-function state_gate_game_scene_char_RP_from_jK(input,self_side_obj_char,opponent_side_obj_char)
+function state_gate_game_scene_char_RP_from_j5K(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
     if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true
@@ -5800,26 +5825,26 @@ function state_gate_game_scene_char_RP_from_jK(input,self_side_obj_char,opponent
     end
     -- hit_cancel
     if self_side_obj_char["hit_cancel"] then
-        -- _jS
+        -- _j5S
         if self_side_obj_char["y"] < -240 and test_input_sys_press(input["S"]) then
             if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
                 self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(self_side_obj_char,opponent_side_obj_char)
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j5S(self_side_obj_char,opponent_side_obj_char)
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-            self_side_obj_char["state"] = "jS"
+            self_side_obj_char["state"] = "j5S"
             return true
         end
     end
     if self_side_obj_char["hit_cancel"] and self_side_obj_char["air_gatling_state"] then
-        -- _jP
+        -- _j5P
         if self_side_obj_char["y"] < -240 and test_input_sys_press(input["P"]) then
             if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
                 self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jP(self_side_obj_char,opponent_side_obj_char)
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j5P(self_side_obj_char,opponent_side_obj_char)
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-            self_side_obj_char["state"] = "jP"
+            self_side_obj_char["state"] = "j5P"
             return true
         end
         -- _j2K
@@ -5832,14 +5857,14 @@ function state_gate_game_scene_char_RP_from_jK(input,self_side_obj_char,opponent
             self_side_obj_char["state"] = "j2K"
             return true
         end
-        -- _jS
+        -- _j5S
         if self_side_obj_char["y"] < -240 and test_input_sys_press(input["S"]) then
             if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
                 self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(self_side_obj_char,opponent_side_obj_char)
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j5S(self_side_obj_char,opponent_side_obj_char)
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-            self_side_obj_char["state"] = "jS"
+            self_side_obj_char["state"] = "j5S"
             return true
         end
     end
@@ -5887,9 +5912,9 @@ function state_gate_game_scene_char_RP_from_j2K(input,self_side_obj_char,opponen
             if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
                 self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_jS(self_side_obj_char,opponent_side_obj_char)
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j5S(self_side_obj_char,opponent_side_obj_char)
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-            self_side_obj_char["state"] = "jS"
+            self_side_obj_char["state"] = "j5S"
             return true
         end
         if test_input_sys_press(input["Launcher"]) then
@@ -5919,7 +5944,7 @@ function state_gate_game_scene_char_RP_from_j2K(input,self_side_obj_char,opponen
         return true
     end
 end
-function state_gate_game_scene_char_RP_from_jS(input,self_side_obj_char,opponent_side_obj_char)
+function state_gate_game_scene_char_RP_from_j5S(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
     if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
         return true

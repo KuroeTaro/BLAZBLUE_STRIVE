@@ -45,10 +45,10 @@ _common_air_idle_to_move
     _active_FD_block
     _jSP_S
     _jSP_H
-    _jP
-    _jK
+    _j5P
+    _j5K
     _j2K
-    _jS
+    _j5S
     _j2S
     _j4_6Launcher
     _j5Launcher
@@ -341,15 +341,15 @@ _5Launcher_hold
     _5_stand_idle
 
 
-_jP
+_j5P
     _7_8_9_jump_air_to_stand_idle(landing)
     _common_air_to_special_move
     _burst_RC_purple
-    _jP
+    _j5P
     _j2K
     _j2S
     _7_8_9_jump_air(air_move+hit_cancel)(animation_end)
-_jK
+_j5K
     _7_8_9_jump_air_to_stand_idle(landing)
     _common_air_to_special_move
     _burst_RC_purple
@@ -362,11 +362,11 @@ _j2K
     _common_air_to_special_move
     _burst_RC_purple
     _7_8_9_jump_air(air_move+hit_cancel)(animation_end)
-_jS
+_j5S
     _7_8_9_jump_air_to_stand_idle(landing)
     _common_air_to_special_move
     _burst_RC_purple
-    _jS(2_5+hit_cancel)
+    _j5S(2_5+hit_cancel)
     _j5Launcher
     _7_8_9_jump_air(air_move+hit_cancel)(animation_end)
 _j2S
