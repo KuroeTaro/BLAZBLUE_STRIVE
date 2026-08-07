@@ -67,4 +67,4 @@ for i = 1,#move_SFX_folder_table do
         thread_data["move_SFX_keys"][#thread_data["move_SFX_keys"]+1] = key
     end
 end
-love.thread.getChannel( 'thread_data_10' ):push( thread_data )
+love.thread.getChannel( 'thread_data_7' ):push( thread_data )

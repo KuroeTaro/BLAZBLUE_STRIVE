@@ -25,4 +25,4 @@ thread_data["land_blow"] = compress_module("asset/game_scene/stage/alpha/texture
 thread_data["vertical_shot"] = compress_module("asset/game_scene/stage/alpha/texture/stage_VFX/vertical_shot.dds")
     -- spark
 thread_data["dcc_blow"] = compress_module("asset/game_scene/stage/alpha/texture/stage_VFX/dcc_blow.dds")
-love.thread.getChannel( 'thread_data_4' ):push( thread_data )
+love.thread.getChannel( 'thread_data_5' ):push( thread_data )

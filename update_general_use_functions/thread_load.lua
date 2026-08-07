@@ -36,6 +36,8 @@ function run_table_order_load()
                 LOAD_ONCE_TABLE[i] = true
                 LOADING_FUNCTION_AMOUNT = LOADING_FUNCTION_AMOUNT -1
             end
+            -- 每帧只执行一个switch
+            break
         end
         -- loop_time = love.timer.getTime() - loop_time
         -- if loop_time > 0.01 then

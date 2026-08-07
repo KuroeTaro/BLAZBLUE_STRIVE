@@ -1,6 +1,6 @@
-# Verify new order_load_game_scene_char_{L,R}P_frames layout:
-#  - every batch < 10
-#  - sprite set matches ORIGINAL exactly (plus overdrive_badge via direct assign)
+# Verify renumbered order_load_game_scene_char_{L,R}P_frames:
+#  - keys dense 1..38, every batch < 10
+#  - sprite set matches the ORIGINAL 120 exactly
 import re
 import sys
 
@@ -40,7 +40,7 @@ ORIGINAL = [
     "overdrive_badge",
 ]
 ORIG_SET = set(ORIGINAL)
-print(f"original unique count: {len(ORIG_SET)}  (raw {len(ORIGINAL)})")
+print(f"original unique: {len(ORIG_SET)} raw: {len(ORIGINAL)}")
 
 
 def extract_batches(path, func_name):
@@ -55,8 +55,7 @@ def extract_batches(path, func_name):
     batches = {}
     for i in range(0, len(cases), 2):
         num = int(cases[i])
-        case = cases[i + 1]
-        m = re.search(r"local load_name_table = \{(.*?)\}", case, re.S)
+        m = re.search(r"local load_name_table = \{(.*?)\}", cases[i + 1], re.S)
         names = re.findall(r'"([^"]+)"', m.group(1)) if m else []
         batches[num] = names
     return batches
@@ -64,35 +63,33 @@ def extract_batches(path, func_name):
 
 def check(label, path, func_name):
     batches = extract_batches(path, func_name)
-    print(f"== {label} ==")
     all_names = []
     too_big = []
-    for num in sorted(batches):
+    keys = sorted(batches)
+    for num in keys:
         b = batches[num]
         if len(b) >= 10:
             too_big.append((num, len(b)))
         all_names.extend(b)
-        if b:
-            print(f"  [{num}] ({len(b)}): {', '.join(b)}")
     new_set = set(all_names)
-    print(f"  cases: {len(batches)} ({min(batches)}..{max(batches)})  raw total: {len(all_names)}  unique: {len(new_set)}")
-    print(f"  max batch: {max((len(v) for v in batches.values()), default=0)}  batches>=10: {too_big}")
-    print(f"  MISSING vs original: {sorted(ORIG_SET - new_set)}")
-    print(f"  EXTRA  vs original: {sorted(new_set - ORIG_SET)}")
-    print(f"  all batches < 10: {not too_big}")
-    return batches
+    dense = keys == list(range(1, len(keys) + 1))
+    print(f"== {label} == keys {keys[0]}..{keys[-1]} count {len(keys)} dense_from_1: {dense}")
+    print(f"   raw total: {len(all_names)} unique: {len(new_set)} max_batch: {max((len(v) for v in batches.values()), default=0)} batches>=10: {too_big}")
+    print(f"   MISSING: {sorted(ORIG_SET - new_set)}")
+    print(f"   EXTRA:   {sorted(new_set - ORIG_SET)}")
 
 
 check("LP", LEFT, "order_load_game_scene_char_LP_frames")
 check("RP", RIGHT, "order_load_game_scene_char_RP_frames")
 
-# compare LP/RP sprite multisets
+
 def names_of(path, func_name):
     batches = extract_batches(path, func_name)
     return sorted(n for b in batches.values() for n in b)
 
+
 lp = names_of(LEFT, "order_load_game_scene_char_LP_frames")
 rp = names_of(RIGHT, "order_load_game_scene_char_RP_frames")
 print("== LP vs RP ==")
-print("  sprite lists identical:", lp == rp)
+print("   sprite lists identical:", lp == rp)
 sys.exit(0)

@@ -163,4 +163,4 @@ for i,v in ipairs(load_projectile_name_table) do
 end
 -- overdrive_badge
 thread_data["overdrive_badge"] = compress_module("asset/game_scene/characters/TRM/texture/overdrive_badge/TRM_overdrive_badge.dds")
-love.thread.getChannel( 'thread_data_2' ):push( thread_data )
+love.thread.getChannel( 'thread_data_3' ):push( thread_data )
