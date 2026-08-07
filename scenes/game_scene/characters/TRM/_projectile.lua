@@ -20,7 +20,9 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     -- x y z opacity sx sy r f
     local obj_projectile = {0,0,0,0.75,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
-    local image_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(hit_side_obj_char["player_side"])
+    local hit_side = hit_side_obj_char["player_side"]
+    local image_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(hit_side)
+    local move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 40
@@ -131,6 +133,10 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     obj_projectile["projectile_active"] = true
     obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
     obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
+    obj_projectile["hit_SFX"] = move_SFX_table["5H_projectile_hit"]
+    obj_projectile["hit_block_SFX"] = move_SFX_table["5H_projectile_block"]
+    obj_projectile["hit_counter_SFX"] = move_SFX_table["5H_projectile_counter"]
+    obj_projectile["hit_whiff_SFX"] = move_SFX_table["5H_projectile_whiff"]
     obj_projectile["enemy_interact_function"] = function()
         if collision_projectile_hit_confirm_test(obj_projectile,hurt_side_obj_char) then
             -- projectile_active
@@ -148,20 +154,20 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
                 -- VFX
                 insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
                 -- SFX
-                stop_obj_audio(obj_projectile["whiff_SFX"])
-                play_obj_audio(obj_projectile["counter_SFX"])
+                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
+                play_obj_audio(obj_projectile["hit_counter_SFX"])
             elseif not block_bool then
                 -- VFX
                 insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
                 -- SFX
-                stop_obj_audio(obj_projectile["whiff_SFX"])
+                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
                 play_obj_audio(obj_projectile["hit_SFX"])
             elseif block_bool then
                 -- VFX
                 insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
                 -- SFX
-                stop_obj_audio(obj_projectile["whiff_SFX"])
-                play_obj_audio(obj_projectile["block_SFX"])
+                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
+                play_obj_audio(obj_projectile["hit_block_SFX"])
             end
             -- common_hurt_function
             common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
@@ -248,7 +254,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main(hit_side_
         -- draw_correction
         obj_projectile[8] = 0
         -- SFX
-        play_obj_audio(obj_projectile["whiff_SFX"])
+        play_obj_audio(obj_projectile["hit_whiff_SFX"])
     end
     res[1] = function()
         if test_shot_sys_ban_state then
@@ -305,7 +311,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         hurt_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
         -- state_number
-        local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
+        local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_projectile_apply_hurt_velocity(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,
@@ -340,7 +346,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         hurt_side_obj_char["recovery_frame"] = 0
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side_obj_char["player_side"])(hurt_side_obj_char)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- collide
         hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][0]
         hurt_side_obj_char["pushbox_opponent_collision_active"] = true
@@ -367,7 +373,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
     res[6] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side_obj_char["player_side"])(hurt_side_obj_char)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- draw_correction
         hurt_side_obj_char[8] = 2
     end
@@ -444,7 +450,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
         hurt_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
         -- state_number
-        local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
+        local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_projectile_apply_hurt_velocity(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,
@@ -479,7 +485,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
         hurt_side_obj_char["recovery_frame"] = 0
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side_obj_char["player_side"])(hurt_side_obj_char)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- collide
         hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][0]
         hurt_side_obj_char["pushbox_opponent_collision_active"] = true
@@ -538,7 +544,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
     res[26] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side_obj_char["player_side"])(hurt_side_obj_char)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
     end
     res[28] = function()
         -- collide
@@ -617,7 +623,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         hurt_side_obj_char["recovery_frame"] = 0
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side_obj_char["player_side"])(hurt_side_obj_char)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- collide
         hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][0]
         hurt_side_obj_char["pushbox_opponent_collision_active"] = true
@@ -646,7 +652,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
     res[10] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side_obj_char["player_side"])(hurt_side_obj_char)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
     end
     res[11] = function()
         -- collide
@@ -744,7 +750,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
         hurt_side_obj_char["recovery_frame"] = 0
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hurt_side_obj_char["player_side"])(hurt_side_obj_char)
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- collide
         hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][0]
         hurt_side_obj_char["pushbox_opponent_collision_active"] = true
@@ -894,10 +900,10 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
         end
         insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_obj_char)
     end
-    obj_projectile["block_SFX"] = nil
-    obj_projectile["counter_SFX"] = nil
     obj_projectile["hit_SFX"] = nil
-    obj_projectile["whiff_SFX"] = nil
+    obj_projectile["hit_block_SFX"] = nil
+    obj_projectile["hit_counter_SFX"] = nil
+    obj_projectile["hit_whiff_SFX"] = nil
     obj_projectile["ground_bounce_SFX"] = nil
     obj_projectile["enemy_interact_function"] = function()
         if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) then
@@ -910,7 +916,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
             -- VFX
             obj_projectile["hit_VFX_insert_function"]()
             -- SFX
-            stop_obj_audio(obj_projectile["whiff_SFX"])
+            stop_obj_audio(obj_projectile["hit_whiff_SFX"])
             stop_obj_audio(obj_projectile["ground_bounce_SFX"])
             play_obj_audio(obj_projectile["hit_SFX"])
             obj_projectile["gravity"] = 0
@@ -966,7 +972,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
                     obj_projectile["state"] = "blast"
                     obj_projectile["hitbox_table"] = {}
                     obj_projectile["projectile_active"] = false
-                    stop_obj_audio(obj_projectile["whiff_SFX"])
+                    stop_obj_audio(obj_projectile["hit_whiff_SFX"])
                     play_obj_audio(obj_projectile["hit_SFX"])
                     obj_projectile["gravity"] = 0
                     obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_P_projectile_blast(hit_side_obj_char,hurt_side_obj_char,obj_projectile)

@@ -862,8 +862,8 @@ function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
 end
 function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_obj_char)
     local obj_VFX = {0,0,0,0.75,0,0,0,0}
-    local side = hit_side_obj_char["player_side"]
-    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
+    local hit_side = hit_side_obj_char["player_side"]
+    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(hit_side)
     local image_sprite_sheet = image_sprite_sheet_table["6SP_P_arua_move_VFX"]
     local obj_camera = obj_stage_game_scene_camera
     local shot_sys_curse_force_off_state = hit_side_obj_char["shot_sys_curse_force_off_state"]

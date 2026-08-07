@@ -342,16 +342,16 @@ function common_game_scene_strike_hit_function(hit_side_obj_char,hurt_side_obj_c
     if hurt_side_obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
         hit_side_obj_char["hit_damage"] = hit_side_obj_char["hit_damage"]*1.1
         hit_side_obj_char["hit_counter_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
-        stop_obj_audio(hit_side_obj_char["whiff_SFX"])
-        play_obj_audio(hit_side_obj_char["counter_SFX"])
+        stop_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
+        play_obj_audio(hit_side_obj_char["hit_counter_SFX"])
     elseif not block_bool then
         hit_side_obj_char["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
-        stop_obj_audio(hit_side_obj_char["whiff_SFX"])
+        stop_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
         play_obj_audio(hit_side_obj_char["hit_SFX"])
     elseif block_bool then
         hit_side_obj_char["hit_block_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
-        stop_obj_audio(hit_side_obj_char["whiff_SFX"])
-        play_obj_audio(hit_side_obj_char["block_SFX"])
+        stop_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
+        play_obj_audio(hit_side_obj_char["hit_block_SFX"])
     end
     -- debug
     hit_side_obj_char["active_frame"] = hit_side_obj_char["active_frame"] + 1
@@ -582,16 +582,16 @@ function common_game_scene_projectile_hit_function(hit_side_obj_char,hurt_side_o
     if hurt_side_obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
         obj_projectile["hit_damage"] = obj_projectile["hit_damage"]*1.1
         obj_projectile["hit_counter_VFX_insert_function"](obj_projectile,hurt_side_obj_char)
-        stop_obj_audio(obj_projectile["whiff_SFX"])
-        play_obj_audio(obj_projectile["counter_SFX"])
+        stop_obj_audio(obj_projectile["hit_whiff_SFX"])
+        play_obj_audio(obj_projectile["hit_counter_SFX"])
     elseif not block_bool then
         obj_projectile["hit_VFX_insert_function"](obj_projectile,hurt_side_obj_char)
-        stop_obj_audio(obj_projectile["whiff_SFX"])
+        stop_obj_audio(obj_projectile["hit_whiff_SFX"])
         play_obj_audio(obj_projectile["hit_SFX"])
     elseif block_bool then
         obj_projectile["hit_block_VFX_insert_function"](obj_projectile,hurt_side_obj_char)
-        stop_obj_audio(obj_projectile["whiff_SFX"])
-        play_obj_audio(obj_projectile["block_SFX"])
+        stop_obj_audio(obj_projectile["hit_whiff_SFX"])
+        play_obj_audio(obj_projectile["hit_block_SFX"])
     end
 end
 function common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
@@ -928,11 +928,11 @@ function common_game_scene_projectile_RC_blue_purple_hurt_function(hit_side_obj_
 end
 -- throw
 function common_game_scene_throw_hit_function(hit_side_obj_char,hurt_side_obj_char)
-    local side = hurt_side_obj_char["player_side"]
+    local hurt_side = hurt_side_obj_char["player_side"]
     -- physics_lock
     hit_side_obj_char["physics_lock"] = true
     -- change_draw_front
-    CHARACTER_VISUAL_FRONT = side
+    CHARACTER_VISUAL_FRONT = hurt_side
     -- change_character_face
     if not common_game_scene_get_character_facing_currect(hit_side_obj_char,hurt_side_obj_char) then
         hit_side_obj_char[5] = -hit_side_obj_char[5]
@@ -957,10 +957,10 @@ function common_game_scene_throw_hit_function(hit_side_obj_char,hurt_side_obj_ch
     common_game_scene_game_speed_load_application(hit_side_obj_char,{1,1,1,0,0,0})
 end
 function common_game_scene_throw_hurt_function(hit_side_obj_char,hurt_side_obj_char)
-    local side = hurt_side_obj_char["player_side"]
+    local hurt_side = hurt_side_obj_char["player_side"]
     local obj_camera = obj_stage_game_scene_camera
-    local pushbox_data = common_game_scene_get_pushbox(side)
-    local anchor_data = common_game_scene_get_anchor(side)
+    local pushbox_data = common_game_scene_get_pushbox(hurt_side)
+    local anchor_data = common_game_scene_get_anchor(hurt_side)
     local sprite_sheet = nil
     local collision_ground_height_offset = nil
     -- physics_lock

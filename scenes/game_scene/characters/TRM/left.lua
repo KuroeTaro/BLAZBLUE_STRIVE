@@ -156,7 +156,8 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["VFX_hit_front_table"] = {}
     obj_char_game_scene_char_LP["VFX_hit_back_table"] = {}
     obj_char_game_scene_char_LP["VFX_black_overlay_table"] = {}
-    -- sub_hit_hurt_VFX_SFX_table
+    -- sub_obj_table
+    -- VFX
     obj_char_game_scene_char_LP["hit_VFX_dynamic_spawn_pos"] = {}
     obj_char_game_scene_char_LP["hit_VFX_insert_function"] = nil
     obj_char_game_scene_char_LP["hit_VFX_insert_function_argument"] = nil
@@ -165,10 +166,11 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["hit_counter_VFX_insert_function"] = nil
     obj_char_game_scene_char_LP["hit_counter_VFX_insert_function_argument"] = nil
     obj_char_game_scene_char_LP["hurt_block_VFX_insert_function"] = nil
-    obj_char_game_scene_char_LP["block_SFX"] = nil
-    obj_char_game_scene_char_LP["counter_SFX"] = nil
+    -- SFX
     obj_char_game_scene_char_LP["hit_SFX"] = nil
-    obj_char_game_scene_char_LP["whiff_SFX"] = nil
+    obj_char_game_scene_char_LP["hit_block_SFX"] = nil
+    obj_char_game_scene_char_LP["hit_counter_SFX"] = nil
+    obj_char_game_scene_char_LP["hit_whiff_SFX"] = nil
     -- 5H_shot_sys
     obj_char_game_scene_char_LP["shot_sys_state"] = "off"
     obj_char_game_scene_char_LP["shot_sys_f"] = 0
@@ -982,7 +984,7 @@ function load_game_scene_audio_char_LP()
         {folder = "normal/cS",files = {"cS_block","cS_counter","cS_hit","cS_whiff"}},
         {folder = "normal/fS",files = {"fS_block","fS_counter","fS_hit","fS_whiff"}},
         {folder = "normal/5H",files = {
-                "5H_knife_clip_0","5H_knife_clip_1","5H_knife_clip_2",
+                "5H_knife_clip_0","5H_knife_clip_1","5H_knife_clip_2","5H_knife_whiff",
                 "5H_oroboros_blast","5H_projectile_block","5H_projectile_counter","5H_projectile_hit","5H_projectile_whiff",
                 "5H_reticle_ease_in","5H_reticle_ease_out","5H_reticle_locking"
             }
@@ -5968,12 +5970,15 @@ function state_gate_game_scene_char_LP_from_j5S(input,self_side_obj_char,opponen
     if self_side_obj_char["hit_cancel"] then
         -- jump_cancel
         if test_input_sys_press(input["up"]) and self_side_obj_char["air_move"]["jump"][1] > 0 then
+            local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(self_side_obj_char["player_side"])
             character_function_game_scene_TRM_hitstop_air_jump_cancel(
                 input,self_side_obj_char,opponent_side_obj_char,
                 0.1,-11.5,-30,
                 0,0,-30,
                 0.1,11.5,-25
             )
+            -- SFX
+            play_obj_audio(stage_interactive_SFX_table["air_jump"])
             return true
         end
     end
