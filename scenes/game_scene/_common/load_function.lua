@@ -41,7 +41,7 @@ function load_game_scene_prep()
         order_load_game_scene_stage_audio
     }    -- load function table
     CURRENT_ORDER_TABLE = {1,1,1,1,1,1,1,1,1,1,1}  -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
-    ORDER_SIZE_TABLE = {14,38,38,25,26,27,28,32,8,8,3}  -- 每个load function的最大值
+    ORDER_SIZE_TABLE = {14,52,52,25,26,27,28,32,8,8,3}  -- 每个load function的最大值
     LOAD_ONCE_TABLE = {false,false,false,false,false,false,false,false,false,false,false}   -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     LOADING_FUNCTION_AMOUNT = 11 -- 和线程数相同
     -- GAME_MODE = 0

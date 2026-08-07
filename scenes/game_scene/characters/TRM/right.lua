@@ -942,7 +942,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end 
         end,
-        -- universal 0_general_hurt_launched_ 浮空
+        -- universal 0_general_hurt_launched_ 浮空 part1
         [17] = function()
             local load_name_table = {
                 "0_general_hurt_launched_float",
@@ -959,13 +959,25 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end 
         end,
-        -- universal 0_general_hurt_launched_mid/ 浮空/半浮空
+        -- universal 0_general_hurt_launched_ 浮空 part2
         [18] = function()
             local load_name_table = {
                 "0_general_hurt_launched_mid_up",
                 "0_general_hurt_launched_rolling",
                 "0_general_hurt_launched_rotate",
-                "0_general_hurt_launched_wallbounce",
+                "0_general_hurt_launched_wallbounce"
+            }
+            for i,v in ipairs(load_name_table) do
+                image_sprite_sheet_table_char_game_scene_RP[v] = 
+                common_sprite_sheet_load(
+                    "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                )
+            end 
+        end,
+        -- universal 0_general_hurt_semi_launched_ 半浮空
+        [19] = function()
+            local load_name_table = {
                 "0_general_hurt_semi_launched_mid",
                 "0_general_hurt_semi_launched_rotate"
             }
@@ -978,7 +990,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             end 
         end,
         -- universal 0_general_hurt_soft_/0_ground_ 软击倒/起身
-        [19] = function()
+        [20] = function()
             local load_name_table = {
                 "0_general_hurt_soft_knockdown_wallstick_air",
                 "0_general_hurt_soft_recovery_ground",
@@ -995,7 +1007,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             end 
         end,
         -- universal 0_stand_hurt_/0_wallbreak_ 站立受击/破墙
-        [20] = function()
+        [21] = function()
             local load_name_table = {
                 "0_stand_hurt_high",
                 "0_stand_hurt_low",
@@ -1012,33 +1024,31 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end 
         end,
-        -- universal 1_ 蹲/防
-        [21] = function()
+        -- universal 1_2_3_ 蹲
+        [22] = function()
             local load_name_table = {
                 "1_2_3_crouch",
                 "1_2_3_crouch_to_stand_idle",
-                "1_2_3_crouch_turn",
+                "1_2_3_crouch_turn"
+            }
+            for i,v in ipairs(load_name_table) do
+                image_sprite_sheet_table_char_game_scene_RP[v] = 
+                common_sprite_sheet_load(
+                    "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                )
+            end 
+        end,
+        -- universal block 防御
+        [23] = function()
+            local load_name_table = {
                 "1_4_7_air_block",
                 "1_4_7_air_block_guard_crash",
                 "1_crouch_block",
-                "1_crouch_block_guard_crash"
-            }
-            for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_RP[v] = 
-                common_sprite_sheet_load(
-                    "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
-                )
-            end 
-        end,
-        -- universal 4_ 站防/走路
-        [22] = function()
-            local load_name_table = {
+                "1_crouch_block_guard_crash",
                 "4_stand_block_guard_crash",
                 "4_stand_block_high",
-                "4_stand_block_mid",
-                "4_walk",
-                "4_walk_to_stand_idle"
+                "4_stand_block_mid"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] = 
@@ -1048,11 +1058,25 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end 
         end,
-        -- universal 4dash_/5_ 疾退/站立
-        [23] = function()
+        -- universal 4_walk/4dash_ 走路/疾退
+        [24] = function()
             local load_name_table = {
+                "4_walk",
+                "4_walk_to_stand_idle",
                 "4dash_air_backdash",
-                "4dash_backdash",
+                "4dash_backdash"
+            }
+            for i,v in ipairs(load_name_table) do
+                image_sprite_sheet_table_char_game_scene_RP[v] = 
+                common_sprite_sheet_load(
+                    "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                )
+            end 
+        end,
+        -- universal 5_ 站立
+        [25] = function()
+            local load_name_table = {
                 "5_stand_idle",
                 "5_stand_dash_skid",
                 "5_stand_turn"
@@ -1065,14 +1089,13 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end 
         end,
-        -- universal 6_/6dash_/7_8_9 移动/跳跃
-        [24] = function()
+        -- universal 6_/6dash_ 移动
+        [26] = function()
             local load_name_table = {
                 "6_walk",
                 "6_walk_to_stand_idle",
                 "6dash_air_dash",
-                "6dash_dash",
-                "7_8_9[Launcher]_follow_jump"
+                "6dash_dash"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] = 
@@ -1083,8 +1106,9 @@ function order_load_game_scene_char_RP_frames(load_order)
             end 
         end,
         -- universal 7_8_9 跳跃
-        [25] = function()
+        [27] = function()
             local load_name_table = {
+                "7_8_9[Launcher]_follow_jump",
                 "7_8_9_jump_air_to_stand_idle",
                 "7_8_9_pre_jump",
                 "7_jump",
@@ -1100,11 +1124,23 @@ function order_load_game_scene_char_RP_frames(load_order)
             end 
         end,
         -- attack burst_ 霸/RC
-        [26] = function()
+        [28] = function()
             local load_name_table = {
                 "burst_overdrive_ground",
                 "burst_overdrive_RC_air",
-                "burst_RC_ground",
+                "burst_RC_ground"
+            }
+            for i,v in ipairs(load_name_table) do
+                image_sprite_sheet_table_char_game_scene_RP[v] = 
+                common_sprite_sheet_load(
+                    "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                )
+            end 
+        end,
+        -- attack P 拳
+        [29] = function()
+            local load_name_table = {
                 "2P",
                 "6P",
                 "5P"
@@ -1117,12 +1153,24 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end 
         end,
-        -- attack 2/5/6 拳脚
-        [27] = function()
+        -- attack K 脚
+        [30] = function()
             local load_name_table = {
                 "2K",
                 "6K",
-                "5K",
+                "5K"
+            }
+            for i,v in ipairs(load_name_table) do
+                image_sprite_sheet_table_char_game_scene_RP[v] = 
+                common_sprite_sheet_load(
+                    "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                )
+            end 
+        end,
+        -- attack S 斩
+        [31] = function()
+            local load_name_table = {
                 "2S",
                 "6S",
                 "cS",
@@ -1137,7 +1185,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             end 
         end,
         -- attack 5H oroboros
-        [28] = function()
+        [32] = function()
             local load_name_table = {
                 "5H",
                 "5H_oroboros_ease_in_mid",
@@ -1154,7 +1202,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             end 
         end,
         -- attack 5H oroboros/reticle
-        [29] = function()
+        [33] = function()
             local load_name_table = {
                 "5H_oroboros_loop_mid",
                 "5H_oroboros_shot",
@@ -1170,12 +1218,24 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end 
         end,
-        -- attack 5H_reticle/Launcher
-        [30] = function()
+        -- attack 5H_reticle
+        [34] = function()
             local load_name_table = {
                 "5H_reticle_shot",
                 "5H_reticle_unlocked",
-                "5H_reticle_unlocking",
+                "5H_reticle_unlocking"
+            }
+            for i,v in ipairs(load_name_table) do
+                image_sprite_sheet_table_char_game_scene_RP[v] = 
+                common_sprite_sheet_load(
+                    "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                )
+            end 
+        end,
+        -- attack Launcher
+        [35] = function()
+            local load_name_table = {
                 "2Launcher",
                 "4_6Launcher",
                 "4_6Launcher_success",
@@ -1190,7 +1250,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             end 
         end,
         -- attack j 空中拳脚
-        [31] = function()
+        [36] = function()
             local load_name_table = {
                 "j5P",
                 "j5K",
@@ -1209,7 +1269,7 @@ function order_load_game_scene_char_RP_frames(load_order)
             end 
         end,
         -- special 必杀
-        [32] = function()
+        [37] = function()
             local load_name_table = {
                 "4SP_P",
                 "6SP_P",
@@ -1223,8 +1283,30 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end 
         end,
+        [38] = function()
+            local load_name_table = {
+            }
+            for i,v in ipairs(load_name_table) do
+                image_sprite_sheet_table_char_game_scene_RP[v] = 
+                common_sprite_sheet_load(
+                    "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                )
+            end 
+        end,
+        [39] = function()
+            local load_name_table = {
+            }
+            for i,v in ipairs(load_name_table) do
+                image_sprite_sheet_table_char_game_scene_RP[v] = 
+                common_sprite_sheet_load(
+                    "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                )
+            end 
+        end,
         -- projectile 飞行道具
-        [33] = function()
+        [40] = function()
             image_sprite_sheet_table_projectile_game_scene_RP = {}
             local load_name_table = {
                 "5H_hit",
@@ -1240,9 +1322,31 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end 
         end,
-        -- UA 超必杀 (预留槽)
-        [34] = function()
-            image_sprite_sheet_table_UA_game_scene_RP = image_sprite_sheet_table_UA_game_scene_RP or {}
+        [41] = function()
+            local load_name_table = {
+            }
+            for i,v in ipairs(load_name_table) do
+                image_sprite_sheet_table_projectile_game_scene_RP[v.."_projectile"] = 
+                common_sprite_sheet_load(
+                    "asset/game_scene/characters/TRM/texture/projectile/TRM_"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_projectile"])
+                )
+            end 
+        end,
+        [42] = function()
+            local load_name_table = {
+            }
+            for i,v in ipairs(load_name_table) do
+                image_sprite_sheet_table_projectile_game_scene_RP[v.."_projectile"] = 
+                common_sprite_sheet_load(
+                    "asset/game_scene/characters/TRM/texture/projectile/TRM_"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_projectile"])
+                )
+            end 
+        end,
+        -- UA 超必杀
+        [43] = function()
+            image_sprite_sheet_table_UA_game_scene_RP = {}
             local load_name_table = {
             }
             for i,v in ipairs(load_name_table) do
@@ -1253,8 +1357,30 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end 
         end,
-        -- move_VFX 招式特效 part1
-        [35] = function()
+        [44] = function()
+            local load_name_table = {
+            }
+            for i,v in ipairs(load_name_table) do
+                image_sprite_sheet_table_UA_game_scene_RP[v.."_UA"] = 
+                common_sprite_sheet_load(
+                    "asset/game_scene/characters/TRM/texture/UA/TRM_"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_UA"])
+                )
+            end 
+        end,
+        [45] = function()
+            local load_name_table = {
+            }
+            for i,v in ipairs(load_name_table) do
+                image_sprite_sheet_table_UA_game_scene_RP[v.."_UA"] = 
+                common_sprite_sheet_load(
+                    "asset/game_scene/characters/TRM/texture/UA/TRM_"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_UA"])
+                )
+            end 
+        end,
+        -- move_VFX 招式特效
+        [46] = function()
             image_sprite_sheet_table_VFX_game_scene_RP = {}
             local load_name_table = {
                 "2P",
@@ -1262,25 +1388,9 @@ function order_load_game_scene_char_RP_frames(load_order)
                 "5P",
                 "2S",
                 "6S",
-                "cS"
-            }
-            for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_VFX_game_scene_RP[v.."_move_VFX"] = 
-                common_sprite_sheet_load(
-                    "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
-                )
-            end 
-        end,
-        -- move_VFX 招式特效 part2
-        [36] = function()
-            local load_name_table = {
+                "cS",
                 "5H_shot_oroboros_blast",
-                "5H_switch",
-                "5Launcher",
-                "5Launcher_glow",
-                "j5S",
-                "6SP_S"
+                "5H_switch"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_VFX_game_scene_RP[v.."_move_VFX"] = 
@@ -1290,9 +1400,37 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end 
         end,
-        -- move_VFX 招式特效 part3
-        [37] = function()
+        -- move_VFX Launcher
+        [47] = function()
             local load_name_table = {
+                "5Launcher",
+                "5Launcher_glow"
+            }
+            for i,v in ipairs(load_name_table) do
+                image_sprite_sheet_table_VFX_game_scene_RP[v.."_move_VFX"] = 
+                common_sprite_sheet_load(
+                    "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
+                )
+            end 
+        end,
+        -- move_VFX air
+        [48] = function()
+            local load_name_table = {
+                "j5S"
+            }
+            for i,v in ipairs(load_name_table) do
+                image_sprite_sheet_table_VFX_game_scene_RP[v.."_move_VFX"] = 
+                common_sprite_sheet_load(
+                    "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
+                )
+            end 
+        end,
+        -- move_VFX special
+        [49] = function()
+            local load_name_table = {
+                "6SP_S",
                 "6SP_P_arua",
                 "6SP_P_curse_ball_spawn_halo",
                 "6SP_P_curse_ball_spawner"
@@ -1305,8 +1443,30 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end 
         end,
-        -- special overdrive_badge
-        [38] = function()
+        [50] = function()
+            local load_name_table = {
+            }
+            for i,v in ipairs(load_name_table) do
+                image_sprite_sheet_table_VFX_game_scene_RP[v.."_move_VFX"] = 
+                common_sprite_sheet_load(
+                    "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
+                )
+            end 
+        end,
+        [51] = function()
+            local load_name_table = {
+            }
+            for i,v in ipairs(load_name_table) do
+                image_sprite_sheet_table_VFX_game_scene_RP[v.."_move_VFX"] = 
+                common_sprite_sheet_load(
+                    "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
+                )
+            end 
+        end,
+        -- overdrive_badge
+        [52] = function()
             image_sprite_sheet_VFX_game_scene_RP_overdrive_badge = 
             common_sprite_sheet_load(
                 "asset/game_scene/characters/TRM/texture/overdrive_badge/TRM_overdrive_badge.json",
