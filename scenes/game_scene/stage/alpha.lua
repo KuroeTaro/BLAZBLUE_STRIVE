@@ -266,50 +266,66 @@ function load_game_scene_anim_stage()
     anim_stage_point_linear_game_scene_wallbreak_glow_opacity["fix_type"] = true
     -- uncommon
 end
-function load_game_scene_audio_stage()
-    -- audio_global_variable no_BGM_in_this_case
-    audio_BGM_game_scene_stage = {}
-    audio_SFX_game_scene_stage = {}
-    audio_environment_game_scene_stage = {}
-    -- load_BGM
-    -- load_SFX(something like water/sand/stone ground type different SFX play whith move_SFX)
-    audio_SFX_game_scene_stage["L"] = {}
-    audio_SFX_game_scene_stage["R"] = {}
-    local file_name_table = {
-        "air_backdash","air_dash","air_jump","air_SP_jump",
-        "ground_dash_cancel","ground_dash_loop","ground_dash_skid","ground_dash_start_up",
-        "ground_hard_knockdown","ground_land","ground_soft_knockdown",
-        "ground_step_0","ground_step_1","wall_wallbreak","wall_wallstick"
+function order_load_game_scene_stage_audio(load_order)
+    local STAGE_AUDIO_DATA = ASSET_DATA[11]
+    local switch = 
+    {
+        [1] = function()
+            -- audio_global_variable no_BGM_in_this_case
+            audio_BGM_game_scene_stage = {}
+            audio_SFX_game_scene_stage = {}
+            audio_environment_game_scene_stage = {}
+            -- load_SFX(something like water/sand/stone ground type different SFX play whith move_SFX)
+            audio_SFX_game_scene_stage["L"] = {}
+            audio_SFX_game_scene_stage["R"] = {}
+            -- L 声道
+            local key_table = {
+                "air_backdash","air_dash","air_jump","air_SP_jump",
+                "ground_dash_cancel","ground_dash_loop","ground_dash_skid","ground_dash_start_up",
+                "ground_hard_knockdown","ground_land","ground_soft_knockdown",
+                "ground_step_0","ground_step_1","wall_wallbreak","wall_wallstick"
+            }
+            for i = 1,#key_table do
+                local name = key_table[i]
+                audio_SFX_game_scene_stage["L"][name] = {1}
+                audio_SFX_game_scene_stage["L"][name]["LCT"] = {0}
+                audio_SFX_game_scene_stage["L"][name]["LCD"] = {0}
+                audio_SFX_game_scene_stage["L"][name]["audio"] = love.audio.newSource(STAGE_AUDIO_DATA["character_interactive_SFX"][name],"static")
+                update_SFX_VOLUME(audio_SFX_game_scene_stage["L"][name])
+            end
+        end,
+        [2] = function()
+            -- R 声道
+            local key_table = {
+                "air_backdash","air_dash","air_jump","air_SP_jump",
+                "ground_dash_cancel","ground_dash_loop","ground_dash_skid","ground_dash_start_up",
+                "ground_hard_knockdown","ground_land","ground_soft_knockdown",
+                "ground_step_0","ground_step_1","wall_wallbreak","wall_wallstick"
+            }
+            for i = 1,#key_table do
+                local name = key_table[i]
+                audio_SFX_game_scene_stage["R"][name] = {1}
+                audio_SFX_game_scene_stage["R"][name]["LCT"] = {0}
+                audio_SFX_game_scene_stage["R"][name]["LCD"] = {0}
+                audio_SFX_game_scene_stage["R"][name]["audio"] = love.audio.newSource(STAGE_AUDIO_DATA["character_interactive_SFX"][name],"static")
+                update_SFX_VOLUME(audio_SFX_game_scene_stage["R"][name])
+            end
+        end,
+        [3] = function()
+            -- load_environment
+            local key_table = {"wind"}
+            for i = 1,#key_table do
+                local name = key_table[i]
+                audio_environment_game_scene_stage[name] = {1}
+                audio_environment_game_scene_stage[name]["LCT"] = {0}
+                audio_environment_game_scene_stage[name]["LCD"] = {0}
+                audio_environment_game_scene_stage[name]["audio"] = love.audio.newSource(STAGE_AUDIO_DATA["environment_SFX"][name],"static")
+                update_SFX_VOLUME(audio_environment_game_scene_stage[name])
+            end
+        end
     }
-    for i = 1,#file_name_table do
-        local name = file_name_table[i]
-        local path = "asset/game_scene/stage/alpha/audio/character_interactive_SFX/"..name..".wav"
-        audio_SFX_game_scene_stage["L"][name] = {1}
-        audio_SFX_game_scene_stage["L"][name]["LCT"] = {0}
-        audio_SFX_game_scene_stage["L"][name]["LCD"] = {0}
-        audio_SFX_game_scene_stage["L"][name]["audio"] = love.audio.newSource(path,"static")
-        update_SFX_VOLUME(audio_SFX_game_scene_stage["L"][name])
-    end
-    for i = 1,#file_name_table do
-        local name = file_name_table[i]
-        local path = "asset/game_scene/stage/alpha/audio/character_interactive_SFX/"..name..".wav"
-        audio_SFX_game_scene_stage["R"][name] = {1}
-        audio_SFX_game_scene_stage["R"][name]["LCT"] = {0}
-        audio_SFX_game_scene_stage["R"][name]["LCD"] = {0}
-        audio_SFX_game_scene_stage["R"][name]["audio"] = love.audio.newSource(path,"static")
-        update_SFX_VOLUME(audio_SFX_game_scene_stage["R"][name])
-    end
-    -- load_environment
-    local file_name_table = {"wind"}
-    for i = 1,#file_name_table do
-        local name = file_name_table[i]
-        local path = "asset/game_scene/stage/alpha/audio/environment_SFX/"..name..".wav"
-        audio_environment_game_scene_stage[name] = {1}
-        audio_environment_game_scene_stage[name]["LCT"] = {0}
-        audio_environment_game_scene_stage[name]["LCD"] = {0}
-        audio_environment_game_scene_stage[name]["audio"] = love.audio.newSource(path,"static")
-        update_SFX_VOLUME(audio_environment_game_scene_stage[name])
-    end
+    local this_function = switch[load_order]
+    if this_function then this_function() end
 end
 function order_load_game_scene_stage(load_order)
     local switch = 

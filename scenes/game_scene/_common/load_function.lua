@@ -24,8 +24,8 @@ function load_game_scene_prep()
     local thread_stage_name = stage_name
     load_game_scene_require(LP_name,RP_name,stage_name)
     THREAD_TABLE = load_game_scene_thread_table(thread_LP_name,thread_RP_name,thread_stage_name)
-    THREAD_AMOUNT = 8   -- 线程数目
-    THREAD_ONCE_TABLE = {false,false,false,false,false,false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
+    THREAD_AMOUNT = 11   -- 线程数目
+    THREAD_ONCE_TABLE = {false,false,false,false,false,false,false,false,false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     ASSET_DATA = {}   -- 保持为nil
     ORDER_LOAD_TABLE = {
         order_load_game_scene_common,
@@ -35,12 +35,15 @@ function load_game_scene_prep()
         order_load_game_scene_act,
         order_load_game_scene_HUD,
         order_load_game_scene_lets_dance,
-        order_load_game_scene_VFX
+        order_load_game_scene_VFX,
+        order_load_game_scene_char_LP_audio,
+        order_load_game_scene_char_RP_audio,
+        order_load_game_scene_stage_audio
     }    -- load function table
-    CURRENT_ORDER_TABLE = {1,1,1,1,1,1,1,1}  -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
-    ORDER_SIZE_TABLE = {14,24,24,25,26,27,28,32}  -- 每个load function的最大值
-    LOAD_ONCE_TABLE = {false,false,false,false,false,false,false,false}   -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
-    LOADING_FUNCTION_AMOUNT = 8 -- 和线程数相同
+    CURRENT_ORDER_TABLE = {1,1,1,1,1,1,1,1,1,1,1}  -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
+    ORDER_SIZE_TABLE = {14,38,38,25,26,27,28,32,8,8,3}  -- 每个load function的最大值
+    LOAD_ONCE_TABLE = {false,false,false,false,false,false,false,false,false,false,false}   -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
+    LOADING_FUNCTION_AMOUNT = 11 -- 和线程数相同
     -- GAME_MODE = 0
     -- TRAINING_MODE_CONFIG["announcer"] = true
     -- 训练模式
@@ -355,11 +358,11 @@ function load_game_scene_thread_table(LP_name,RP_name,stage_name)
     )
     table.insert(
         res_table,
-        "threads/game_scene/characters/" .. LP_name .. ".lua"
+        "threads/game_scene/characters/" .. LP_name .. "_texture.lua"
     )
     table.insert(
         res_table,
-        "threads/game_scene/characters/" .. RP_name .. ".lua"
+        "threads/game_scene/characters/" .. RP_name .. "_texture.lua"
     )
     table.insert(
         res_table,
@@ -380,6 +383,18 @@ function load_game_scene_thread_table(LP_name,RP_name,stage_name)
     table.insert(
         res_table,
         "threads/game_scene/VFX.lua"
+    )
+    table.insert(
+        res_table,
+        "threads/game_scene/characters/" .. LP_name .. "_audio.lua"
+    )
+    table.insert(
+        res_table,
+        "threads/game_scene/characters/" .. RP_name .. "_audio.lua"
+    )
+    table.insert(
+        res_table,
+        "threads/game_scene/stage/" .. stage_name .. "_audio.lua"
     )
     return res_table
 end

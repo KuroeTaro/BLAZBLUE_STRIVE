@@ -29,10 +29,6 @@ function load_game_scene_common_audio()
     audio_SFX_game_scene_common["annoucer_ease_in"]["LCD"] = {0}
     audio_SFX_game_scene_common["annoucer_ease_in"]["audio"] = love.audio.newSource("asset/game_scene/common/audio/annoucer_ease_in.wav","static")
     update_SFX_VOLUME(audio_SFX_game_scene_common["annoucer_ease_in"])
-
-    load_game_scene_audio_char_LP()
-    load_game_scene_audio_char_RP()
-    load_game_scene_audio_stage()
 end
 function load_game_scene_common_shader(i)
     local switch = {
