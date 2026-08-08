@@ -389,8 +389,6 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
     obj_projectile["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
     obj_projectile["projectile_active"] = true
     obj_projectile["enemy_interact_function"] = function()
-        local hit_side = hit_side_obj_char["player_side"]
-        local hurt_side = hurt_side_obj_char["player_side"]
         -- if hit
         if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) and obj_projectile["projectile_active"] then
             -- projectile_hit_active
@@ -477,8 +475,6 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
     obj_projectile["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
     obj_projectile["projectile_active"] = true
     obj_projectile["enemy_interact_function"] = function()
-        local hit_side = hit_side_obj_char["player_side"]
-        local hurt_side = hurt_side_obj_char["player_side"]
         -- if hit
         if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) and obj_projectile["projectile_active"] then
             -- projectile_hit_active
@@ -800,7 +796,6 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -913,7 +908,6 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -1083,7 +1077,6 @@ function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -1277,7 +1270,6 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -1396,7 +1388,6 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -1566,7 +1557,6 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)

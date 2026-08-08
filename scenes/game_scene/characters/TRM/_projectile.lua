@@ -296,7 +296,6 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -408,7 +407,6 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -575,7 +573,6 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -689,7 +686,6 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)

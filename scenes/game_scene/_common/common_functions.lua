@@ -920,7 +920,6 @@ function common_game_scene_projectile_RC_red_yellow_hurt_function_common_hurt(hi
 end
 function common_game_scene_projectile_RC_blue_purple_hurt_function(hit_side_obj_char,hurt_side_obj_char,game_speed_application)
     local hit_side = hit_side_obj_char["player_side"]
-    local hurt_side = hurt_side_obj_char["player_side"]
     -- change_draw_front
     CHARACTER_VISUAL_FRONT = hit_side
     -- game_speed

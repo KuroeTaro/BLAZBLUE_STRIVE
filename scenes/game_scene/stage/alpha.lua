@@ -94,6 +94,7 @@ function load_game_scene_anim_stage()
         load_game_scene_wallbreak_mid_init_RP()
     end
     anim_stage_game_scene_wallbreak_main[150] = function()
+        -- animation_end
     end
     anim_stage_game_scene_wallbreak_main["prop_f"] = "f"
     anim_stage_game_scene_wallbreak_main["anim_length"] = 150
@@ -427,7 +428,10 @@ end
 function load_game_scene_stage_apply_wallbreak_start_init(hit_side_obj_char,hurt_side_obj_char)
     local adv = hurt_side_obj_char["wallhurt_wallbreak_adv"]
     local wallstick_on_side = hurt_side_obj_char["wallhurt_wallstick_on_side"]
-    local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side_obj_char["player_side"])
+    local hit_side = hit_side_obj_char["player_side"]
+    local hurt_side = hit_side_obj_char["player_side"]
+    local hit_side_stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(hit_side)
+    local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
     -- character_init
     hit_side_obj_char["state"] = "wallbreak_hit"
     hurt_side_obj_char["state"] = "wallbreak_hurt"
@@ -493,6 +497,8 @@ function load_game_scene_stage_apply_wallbreak_start_init(hit_side_obj_char,hurt
     init_point_linear_anim_with(obj_stage_game_scene_wallbreak_smoke,anim_stage_point_linear_game_scene_wallbreak_smoke_opacity)
     init_frame_anim_with(obj_stage_game_scene_wallbreak_smoke,anim_stage_frame_game_scene_wallbreak_smoke_frame)
     init_point_linear_anim_with(obj_stage_game_scene_wallbreak_glow,anim_stage_point_linear_game_scene_wallbreak_glow_opacity)
+    -- play_SFX
+    play_obj_audio(hit_side_stage_interactive_SFX_table["wall_wallbreak"])
 end
 function load_game_scene_stage_apply_wallbreak_end_init(hit_side_obj_char,hurt_side_obj_char)
     local adv = hurt_side_obj_char["wallhurt_wallbreak_adv"]
@@ -970,6 +976,18 @@ function load_game_scene_anim_point_linear_character_hit_side_wallbreak(hit_side
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["loop"] = false
 end
 function load_game_scene_anim_point_linear_character_hurt_side_wallbreak(hurt_side_obj_char,wallstick_on_side,adv)
+    -- stage_anim
+    local hurt_side = hurt_side_obj_char["player_side"]
+    local hurt_side_stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(hurt_side)
+    if adv then
+        anim_stage_game_scene_wallbreak_main[125] = function()
+            play_obj_audio(hurt_side_stage_interactive_SFX_table["ground_hard_knockdown"])
+        end
+    else
+        anim_stage_game_scene_wallbreak_main[125] = function()
+            play_obj_audio(hurt_side_stage_interactive_SFX_table["ground_soft_knockdown"])
+        end
+    end
     -- wallbreak_x
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x = {}
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x[0] = {wallstick_on_side*2100.0,30}

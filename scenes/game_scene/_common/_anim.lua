@@ -57,7 +57,6 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -224,7 +223,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -334,7 +332,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -444,7 +441,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -554,7 +550,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -664,7 +659,6 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -806,7 +800,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -912,7 +905,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -1022,7 +1014,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -1130,7 +1121,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -1242,7 +1232,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -1356,7 +1345,6 @@ function load_game_scene_anim_char_common_0_air_block(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -1794,7 +1782,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -1917,7 +1904,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -2040,7 +2026,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -2249,7 +2234,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
 end
 function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallbreak(hit_side_obj_char,hurt_side_obj_char)
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -2354,7 +2338,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -2463,7 +2446,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -2659,7 +2641,6 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -2908,7 +2889,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -3248,7 +3228,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -3433,7 +3412,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -3564,7 +3542,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -3685,7 +3662,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -3866,7 +3842,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -4016,7 +3991,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -4148,7 +4122,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -4273,7 +4246,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -4431,7 +4403,6 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -4618,7 +4589,6 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
     character_uncommon_init
 )
     local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)

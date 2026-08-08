@@ -2318,6 +2318,8 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char[8] = 1
         -- insert_VFX
         insert_VFX_game_scene_char_TRM_6P_move(hit_side_obj_char)
+        -- play_SFX
+        play_obj_audio(hit_side_move_SFX_table["common_oroboros"])
     end
     res[4] = function()
         -- draw_correction
@@ -4059,6 +4061,8 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
             0.5,0.8,0.8,0
         )
         insert_VFX_game_scene_char_TRM_6S_move(hit_side_obj_char)
+        -- play_SFX
+        play_obj_audio(hit_side_move_SFX_table["common_oroboros"])
     end
     res[2] = function()
         -- collide
@@ -5903,7 +5907,6 @@ end
 function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(hit_side_obj_char,hurt_side_obj_char)
     local res = {}
     local obj_camera = obj_stage_game_scene_camera
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
@@ -6580,6 +6583,8 @@ function load_game_scene_anim_char_TRM_5Launcher(hit_side_obj_char,hurt_side_obj
         -- camera_animation_load
         common_game_scene_hit_load_camera_shake_anim(hit_side_obj_char,0.42,15)
         common_game_scene_nil_load_camera_enclose_anim(hit_side_obj_char)
+        -- play_SFX
+        play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
@@ -7947,6 +7952,8 @@ function load_game_scene_anim_char_TRM_j5S(hit_side_obj_char,hurt_side_obj_char)
     res[6] = function()
         -- insert_VFX
         insert_VFX_game_scene_char_TRM_j5S_move(hit_side_obj_char)
+        -- play_SFX
+        play_obj_audio(hit_side_move_SFX_table["common_oroboros"])
     end
     res[9] = function()
         -- state
@@ -8468,7 +8475,6 @@ end
 function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(hit_side_obj_char,hurt_side_obj_char)
     local res = {}
     local obj_camera = obj_stage_game_scene_camera
-    local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
