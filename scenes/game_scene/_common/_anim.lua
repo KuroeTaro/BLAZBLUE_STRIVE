@@ -1599,12 +1599,6 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         hit_side_obj_char[8] = 0
         hit_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- insert VFX
-        if teching_or_teched == "teching" then
-            insert_VFX_game_scene_char_throw_tech(
-                hit_side_obj_char,hurt_side_obj_char,
-                -450,-900,1,1.2,1.2,0
-            )
-        end
         if hit_side_obj_char["height"] ~= "air" then
             insert_VFX_game_scene_stage_smoke_horizontal_shot(
                 hit_side_obj_char,
@@ -1612,6 +1606,17 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
                 hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
                 0.5,1,1,0
             )
+        end
+        if teching_or_teched == "teching" then
+            insert_VFX_game_scene_char_throw_tech(
+                hit_side_obj_char,hurt_side_obj_char,
+                -450,-900,1,1.2,1.2,0
+            )
+        -- play_SFX
+        else
+            play_obj_audio(audio_SFX_game_scene_common["common_throw_tech"])
+            stop_obj_audio(hit_side_obj_char["hit_throw_SFX"])
+            stop_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
         end
         -- update
         update_1f_15f_air(0)

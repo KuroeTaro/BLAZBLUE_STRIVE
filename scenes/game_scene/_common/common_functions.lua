@@ -342,16 +342,16 @@ function common_game_scene_strike_hit_function(hit_side_obj_char,hurt_side_obj_c
     if hurt_side_obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
         hit_side_obj_char["hit_damage"] = hit_side_obj_char["hit_damage"]*1.1
         hit_side_obj_char["hit_counter_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
-        stop_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
         play_obj_audio(hit_side_obj_char["hit_counter_SFX"])
+        stop_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
     elseif not block_bool then
         hit_side_obj_char["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
-        stop_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
         play_obj_audio(hit_side_obj_char["hit_SFX"])
+        stop_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
     elseif block_bool then
         hit_side_obj_char["hit_block_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
-        stop_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
         play_obj_audio(hit_side_obj_char["hit_block_SFX"])
+        stop_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
     end
     -- debug
     hit_side_obj_char["active_frame"] = hit_side_obj_char["active_frame"] + 1
@@ -582,16 +582,16 @@ function common_game_scene_projectile_hit_function(hit_side_obj_char,hurt_side_o
     if hurt_side_obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
         obj_projectile["hit_damage"] = obj_projectile["hit_damage"]*1.1
         obj_projectile["hit_counter_VFX_insert_function"](obj_projectile,hurt_side_obj_char)
-        stop_obj_audio(obj_projectile["hit_whiff_SFX"])
         play_obj_audio(obj_projectile["hit_counter_SFX"])
+        stop_obj_audio(obj_projectile["hit_whiff_SFX"])
     elseif not block_bool then
         obj_projectile["hit_VFX_insert_function"](obj_projectile,hurt_side_obj_char)
-        stop_obj_audio(obj_projectile["hit_whiff_SFX"])
         play_obj_audio(obj_projectile["hit_SFX"])
+        stop_obj_audio(obj_projectile["hit_whiff_SFX"])
     elseif block_bool then
         obj_projectile["hit_block_VFX_insert_function"](obj_projectile,hurt_side_obj_char)
-        stop_obj_audio(obj_projectile["hit_whiff_SFX"])
         play_obj_audio(obj_projectile["hit_block_SFX"])
+        stop_obj_audio(obj_projectile["hit_whiff_SFX"])
     end
 end
 function common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
@@ -953,6 +953,8 @@ function common_game_scene_throw_hit_function(hit_side_obj_char,hurt_side_obj_ch
     hit_side_obj_char["projectile_inv"] = true
     hit_side_obj_char["projectile_inv_countdown"] = 10
     hit_side_obj_char["velocity"] = {0,0}
+    -- play_SFX
+    play_obj_audio(hit_side_obj_char["hit_throw_SFX"])
     -- game_speed
     common_game_scene_game_speed_load_application(hit_side_obj_char,{1,1,1,0,0,0})
 end
@@ -1047,22 +1049,8 @@ end
 function common_update_game_scene_char_strike_clash()
 end
 function common_update_game_scene_char_throw_clash()
-    local char_LP = obj_char_game_scene_char_LP
-    local char_RP = obj_char_game_scene_char_RP
-    -- teched_LP
-    char_LP["state"] = "throw_teched"
-    char_LP["physics_lock"] = false
-    char_LP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
-        char_LP,char_RP,"teched"
-    )
-    init_character_anim_with(char_LP,char_LP["character_animation"])
-    -- teched_RP
-    char_RP["state"] = "throw_teched"
-    char_RP["physics_lock"] = false
-    char_RP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
-        char_RP,char_LP,"teched"
-    )
-    init_character_anim_with(char_RP,char_RP["character_animation"])
+    obj_char_game_scene_char_LP["throw_active"] = false
+    obj_char_game_scene_char_RP["throw_active"] = false
 end
 function common_update_game_scene_projetile_clash(projectile_LP,projectile_RP)
     if projectile_LP["projectile_clash_type"] == -1 or projectile_RP["projectile_clash_type"] == -1 then

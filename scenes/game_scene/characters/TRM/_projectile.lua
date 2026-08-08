@@ -154,20 +154,20 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
                 -- insert_VFX
                 insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
                 -- play_SFX
-                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
                 play_obj_audio(obj_projectile["hit_counter_SFX"])
+                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
             elseif not block_bool then
                 -- insert_VFX
                 insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
                 -- play_SFX
-                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
                 play_obj_audio(obj_projectile["hit_SFX"])
+                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
             elseif block_bool then
                 -- insert_VFX
                 insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
                 -- play_SFX
-                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
                 play_obj_audio(obj_projectile["hit_block_SFX"])
+                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
             end
             -- common_hurt_function
             common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
@@ -916,9 +916,9 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
             -- insert_VFX
             obj_projectile["hit_VFX_insert_function"]()
             -- play_SFX
+            play_obj_audio(obj_projectile["hit_SFX"])
             stop_obj_audio(obj_projectile["hit_whiff_SFX"])
             stop_obj_audio(obj_projectile["ground_bounce_SFX"])
-            play_obj_audio(obj_projectile["hit_SFX"])
             obj_projectile["gravity"] = 0
             obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_P_projectile_blast(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
             init_character_anim_with(obj_projectile,obj_projectile["projectile_animation"])

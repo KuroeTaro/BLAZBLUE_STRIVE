@@ -5730,6 +5730,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(hit_side_obj_char,hurt_side_o
     local res = {}
     local hit_side = hit_side_obj_char["player_side"]
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
+    local move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     res["prop_f"] = "f"
     res["anim_length"] = 42
     res[0] = function()
@@ -8282,6 +8283,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(hit_side_obj_char,hurt_side_
     local res = {}
     local hit_side = hit_side_obj_char["player_side"]
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
+    local move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     res["prop_f"] = "f"
     res["anim_length"] = 42
     res[0] = function()

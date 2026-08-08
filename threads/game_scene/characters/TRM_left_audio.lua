@@ -19,7 +19,7 @@ end
 thread_data["move_SFX"] = {}
 thread_data["move_SFX_keys"] = {}
 local move_SFX_folder_table = {
-    {folder = "common",files = {"common_oroboros","common_throw_tech"}},
+    {folder = "common",files = {"common_oroboros"}},
     {folder = "RC",files = {
             "blue_RC","purple_RC",
             "red_RC_block","red_RC_counter","red_RC_hit","red_RC_whiff",

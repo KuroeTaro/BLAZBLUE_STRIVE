@@ -298,15 +298,15 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
             if hurt_side_obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
                 obj_projectile["projectile_counter_ver_function"]()
                 obj_projectile["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
-                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
                 play_obj_audio(obj_projectile["hit_counter_SFX"])
+                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
             elseif not block_bool then
                 obj_projectile["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
-                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
                 play_obj_audio(obj_projectile["hit_SFX"])
-            else
                 stop_obj_audio(obj_projectile["hit_whiff_SFX"])
+            else
                 play_obj_audio(obj_projectile["hit_block_SFX"])
+                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
             end
             -- common_hurt_function
             common_game_scene_projectile_RC_red_yellow_hurt_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
@@ -718,15 +718,15 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
             if hurt_side_obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
                 obj_projectile["projectile_counter_ver_function"]()
                 obj_projectile["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
-                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
                 play_obj_audio(obj_projectile["hit_counter_SFX"])
+                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
             elseif not block_bool then
                 obj_projectile["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
-                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
                 play_obj_audio(obj_projectile["hit_SFX"])
-            else
                 stop_obj_audio(obj_projectile["hit_whiff_SFX"])
+            else
                 play_obj_audio(obj_projectile["hit_block_SFX"])
+                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
             end
             -- common_hurt_function
             common_game_scene_projectile_RC_red_yellow_hurt_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
