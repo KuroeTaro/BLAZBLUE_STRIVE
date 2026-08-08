@@ -100,7 +100,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
-    local move_SFX_table = common_game_scene_get_SFX_move(hit_side_obj_char["player_side"])
+    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side_obj_char["player_side"])
     -- clear_projectile_RC_table
     hit_side_obj_char["projectile_RC_table"] = {}
     -- common
@@ -280,10 +280,10 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     obj_projectile["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_special
     obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC_red
     obj_projectile["enemy_interact_function"] = function()
-    obj_projectile["hit_SFX"] = move_SFX_table["red_RC_hit"]
-    obj_projectile["hit_block_SFX"] = move_SFX_table["red_RC_block"]
-    obj_projectile["hit_counter_SFX"] = move_SFX_table["red_RC_counter"]
-    obj_projectile["hit_whiff_SFX"] = move_SFX_table["red_RC_whiff"]
+    obj_projectile["hit_SFX"] = hit_side_move_SFX_table["red_RC_hit"]
+    obj_projectile["hit_block_SFX"] = hit_side_move_SFX_table["red_RC_block"]
+    obj_projectile["hit_counter_SFX"] = hit_side_move_SFX_table["red_RC_counter"]
+    obj_projectile["hit_whiff_SFX"] = hit_side_move_SFX_table["red_RC_whiff"]
         -- if hit
         if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) and obj_projectile["projectile_active"] and (not hurt_side_obj_char["strike_inv"]) then
             -- projectile_active
@@ -560,7 +560,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
-    local move_SFX_table = common_game_scene_get_SFX_move(hit_side_obj_char["player_side"])
+    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side_obj_char["player_side"])
     -- clear_projectile_RC_table
     hit_side_obj_char["projectile_RC_table"] = {}
     -- common
@@ -699,10 +699,10 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
     obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
     obj_projectile["hit_VFX_insert_function"] = function() end
     obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC_yellow
-    obj_projectile["hit_SFX"] = move_SFX_table["yellow_RC_hit"]
-    obj_projectile["hit_block_SFX"] = move_SFX_table["yellow_RC_block"]
-    obj_projectile["hit_counter_SFX"] = move_SFX_table["yellow_RC_counter"]
-    obj_projectile["hit_whiff_SFX"] = move_SFX_table["yellow_RC_whiff"]
+    obj_projectile["hit_SFX"] = hit_side_move_SFX_table["yellow_RC_hit"]
+    obj_projectile["hit_block_SFX"] = hit_side_move_SFX_table["yellow_RC_block"]
+    obj_projectile["hit_counter_SFX"] = hit_side_move_SFX_table["yellow_RC_counter"]
+    obj_projectile["hit_whiff_SFX"] = hit_side_move_SFX_table["yellow_RC_whiff"]
     obj_projectile["enemy_interact_function"] = function()
         -- if hit
         if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) and obj_projectile["projectile_active"] and (not hurt_side_obj_char["strike_inv"]) then
