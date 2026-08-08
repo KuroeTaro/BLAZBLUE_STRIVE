@@ -815,9 +815,9 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
         -- state_number
         local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        local FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
+        local hurt_side_FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,FD_block,
+            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -827,7 +827,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
             false
         )
         common_game_scene_char_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"block",FD_block
+            hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
@@ -920,9 +920,9 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
         -- state_number
         local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        local FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
+        local hurt_side_FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,FD_block,
+            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -932,7 +932,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
             false
         )
         common_game_scene_char_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"block",FD_block
+            hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
@@ -1029,9 +1029,9 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
         -- state_number
         local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        local FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
+        local hurt_side_FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,FD_block,
+            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -1041,7 +1041,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
             false
         )
         common_game_scene_char_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"block",FD_block
+            hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
@@ -1136,9 +1136,9 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
         -- state_number
         local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        local FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
+        local hurt_side_FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,FD_block,
+            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -1148,7 +1148,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
             false
         )
         common_game_scene_char_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"block",FD_block
+            hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
@@ -1247,9 +1247,9 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
         -- state_number
         local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        local FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
+        local hurt_side_FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,FD_block,
+            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -1259,7 +1259,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
             false
         )
         common_game_scene_char_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"block",FD_block
+            hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
@@ -1394,9 +1394,9 @@ function load_game_scene_anim_char_common_0_air_block(
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
         -- state_number
         local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        local FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
+        local hurt_side_FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,FD_block,
+            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,
             hurt_horizontal_velocity,
             hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,
@@ -1406,7 +1406,7 @@ function load_game_scene_anim_char_common_0_air_block(
             false
         )
         common_game_scene_char_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"block",FD_block
+            hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
@@ -1675,11 +1675,11 @@ end
 function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(obj_char)
     local res = {}
     local side = obj_char["player_side"]
-    local side_pushbox_data = common_game_scene_get_pushbox(side)
-    local side_hurtbox_data = common_game_scene_get_hurtbox(side)
-    local side_anchor_data = common_game_scene_get_anchor(side)
-    local side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
-    local side_stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(side)
+    local pushbox_data = common_game_scene_get_pushbox(side)
+    local hurtbox_data = common_game_scene_get_hurtbox(side)
+    local anchor_data = common_game_scene_get_anchor(side)
+    local VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
+    local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(side)
     local sprite_sheet = "0_general_hurt_soft_knockdown_wallstick_air"
     res["prop_f"] = "f"
     res["anim_length"] = 60
@@ -1710,16 +1710,16 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
         -- collide
-        obj_char["pushbox"] = side_pushbox_data[sprite_sheet][0]
+        obj_char["pushbox"] = pushbox_data[sprite_sheet][0]
         obj_char["pushbox_opponent_collision_active"] = true
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = side_hurtbox_data[sprite_sheet][0]
+        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][0]
         obj_char["collision_ground_height_offset"] = 185
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = side_anchor_data[sprite_sheet]
+        obj_char["anchor_pos"] = anchor_data[sprite_sheet]
         -- play_SFX
-        play_obj_audio(side_stage_interactive_SFX_table["wall_wallstick"])
+        play_obj_audio(stage_interactive_SFX_table["wall_wallstick"])
     end
     res[1] = function()
         -- state
@@ -2136,11 +2136,11 @@ end
 function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstick_ground(obj_char)
     local res = {}
     local side = obj_char["player_side"]
-    local side_pushbox_data = common_game_scene_get_pushbox(side)
-    local side_hurtbox_data = common_game_scene_get_hurtbox(side)
-    local side_anchor_data = common_game_scene_get_anchor(side)
-    local side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
-    local side_stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(side)
+    local pushbox_data = common_game_scene_get_pushbox(side)
+    local hurtbox_data = common_game_scene_get_hurtbox(side)
+    local anchor_data = common_game_scene_get_anchor(side)
+    local VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
+    local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(side)
     local sprite_sheet = "0_general_hurt_hard_knockdown_wallstick_ground"
     res["prop_f"] = "f"
     res["anim_length"] = 85
@@ -2177,16 +2177,16 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
         -- collide
-        obj_char["pushbox"] = side_pushbox_data[sprite_sheet][0]
+        obj_char["pushbox"] = pushbox_data[sprite_sheet][0]
         obj_char["pushbox_opponent_collision_active"] = true
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = side_hurtbox_data[sprite_sheet][0]
+        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][0]
         obj_char["collision_ground_height_offset"] = 0
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = side_anchor_data[sprite_sheet]
+        obj_char["anchor_pos"] = anchor_data[sprite_sheet]
         -- play_SFX
-        play_obj_audio(side_stage_interactive_SFX_table["wall_wallstick"])
+        play_obj_audio(stage_interactive_SFX_table["wall_wallstick"])
     end
     res[1] = function()
         -- state
@@ -2205,22 +2205,25 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
     res[70] = function()
         -- state
         obj_char["y"] = 0
-        obj_char["pushbox"] = side_pushbox_data[sprite_sheet][3]
+        obj_char["pushbox"] = pushbox_data[sprite_sheet][3]
         -- collide
-        obj_char["hurtbox_table"] = side_hurtbox_data[sprite_sheet][3]
+        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][3]
         obj_char[8] = 3
+        -- insert_VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
             obj_char,
-            side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
-            side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
+            VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,1,1,0
         )
+        -- play_SFX
+        play_obj_audio(stage_interactive_SFX_table["ground_hard_knockdown"])
     end
     res[72] = function()
         -- state
-        obj_char["pushbox"] = side_pushbox_data[sprite_sheet][4]
+        obj_char["pushbox"] = pushbox_data[sprite_sheet][4]
         -- collide
-        obj_char["hurtbox_table"] = side_hurtbox_data[sprite_sheet][4]
+        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][4]
         obj_char[8] = 4
     end
     res[75] = function()
@@ -2542,10 +2545,10 @@ end
 function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick_ground(obj_char)
     local res = {}
     local side = obj_char["player_side"]
-    local side_pushbox_data = common_game_scene_get_pushbox(side)
-    local side_hurtbox_data = common_game_scene_get_hurtbox(side)
-    local side_anchor_data = common_game_scene_get_anchor(side)
-    local side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
+    local pushbox_data = common_game_scene_get_pushbox(side)
+    local hurtbox_data = common_game_scene_get_hurtbox(side)
+    local anchor_data = common_game_scene_get_anchor(side)
+    local VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
     local sprite_sheet = "0_general_hurt_hard_recovery_wallstick_ground"
     res["prop_f"] = "f"
     res["anim_length"] = 25
@@ -2579,14 +2582,14 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- collide
-        obj_char["pushbox"] = side_pushbox_data[sprite_sheet][0]
+        obj_char["pushbox"] = pushbox_data[sprite_sheet][0]
         obj_char["pushbox_opponent_collision_active"] = true
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = side_hurtbox_data[sprite_sheet][0]
+        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][0]
         obj_char["collision_ground_height_offset"] = 0
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = side_anchor_data[sprite_sheet]
+        obj_char["anchor_pos"] = anchor_data[sprite_sheet]
     end
     res[1] = function()
         -- state
@@ -2760,11 +2763,11 @@ end
 function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick_air(obj_char)
     local res = {}
     local side = obj_char["player_side"]
-    local side_pushbox_data = common_game_scene_get_pushbox(side)
-    local side_hurtbox_data = common_game_scene_get_hurtbox(side)
-    local side_anchor_data = common_game_scene_get_anchor(side)
-    local side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
-    local side_stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(side)
+    local pushbox_data = common_game_scene_get_pushbox(side)
+    local hurtbox_data = common_game_scene_get_hurtbox(side)
+    local anchor_data = common_game_scene_get_anchor(side)
+    local VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
+    local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(side)
     local sprite_sheet = "0_general_hurt_soft_recovery_wallstick_air"
     res["prop_f"] = "f"
     res["anim_length"] = 10
@@ -2805,16 +2808,16 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- collide
-        obj_char["pushbox"] = side_pushbox_data[sprite_sheet][0]
+        obj_char["pushbox"] = pushbox_data[sprite_sheet][0]
         obj_char["pushbox_opponent_collision_active"] = false
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = side_hurtbox_data[sprite_sheet][0]
+        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][0]
         obj_char["collision_ground_height_offset"] = 185
         -- draw_correction
         obj_char[8] = 2
-        obj_char["anchor_pos"] = side_anchor_data[sprite_sheet]
+        obj_char["anchor_pos"] = anchor_data[sprite_sheet]
         -- play_SFX
-        play_obj_audio(side_stage_interactive_SFX_table["air_jump"])
+        play_obj_audio(stage_interactive_SFX_table["air_jump"])
     end
     res[1] = function()
         -- state

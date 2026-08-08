@@ -136,7 +136,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_upd
     -- 4.空拳脚 开枪
     -- 5.诅咒
     -- 6.特定的己方模组（哈皮的翻滚）
-    local obj_char_shot_sys_aim_process = self_side_obj_char["shot_sys_aim_process"]
+    local self_side_obj_char_shot_sys_aim_process = self_side_obj_char["shot_sys_aim_process"]
     local instant_aim_state = {
         ["block"] = true,
         ["hurt"] = true,
@@ -149,33 +149,33 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_upd
     }
     local function debuff(self_side_obj_char,opponent_side_obj_char)
         local dx = opponent_side_obj_char["x"] - self_side_obj_char["x"]
-        local vx = opponent_side_obj_char["velocity"][1]
-        local v = math.sqrt(opponent_side_obj_char["velocity"][1]^2 + opponent_side_obj_char["velocity"][2]^2)
+        local opponent_side_vx = opponent_side_obj_char["velocity"][1]
+        local opponent_side_v = math.sqrt(opponent_side_obj_char["velocity"][1]^2 + opponent_side_obj_char["velocity"][2]^2)
         local dist = math.max(math.abs(dx)-1000,0)
-        local speed = math.min(math.abs(v),40)
-        local approaching = (dx * vx < 0) and 1.075 or 0
+        local opponent_side_speed = math.min(math.abs(opponent_side_v),40)
+        local approaching = (dx * opponent_side_vx < 0) and 1.075 or 0
         local k_speed = 1.625
         local k_approach = 1.5
-        local result = (dist/600*0.05+1)*speed*k_speed - approaching*speed*k_approach
+        local result = (dist/600*0.05+1)*opponent_side_speed*k_speed - approaching*opponent_side_speed*k_approach
         return result
     end
     -- focus_speed
-    obj_char_shot_sys_aim_process[2] = 10
+    self_side_obj_char_shot_sys_aim_process[2] = 10
     if self_side_obj_char["shot_sys_curse"] then
-        obj_char_shot_sys_aim_process[2] = 17.5
+        self_side_obj_char_shot_sys_aim_process[2] = 17.5
     end
     -- debuff_base_on_abs_and_relative_velocity
-    obj_char_shot_sys_aim_process[1] = obj_char_shot_sys_aim_process[1] - debuff(self_side_obj_char,opponent_side_obj_char)
+    self_side_obj_char_shot_sys_aim_process[1] = self_side_obj_char_shot_sys_aim_process[1] - debuff(self_side_obj_char,opponent_side_obj_char)
     -- add_focus_speed
-    obj_char_shot_sys_aim_process[1] = 
+    self_side_obj_char_shot_sys_aim_process[1] = 
         math.min(
-            obj_char_shot_sys_aim_process[1]+obj_char_shot_sys_aim_process[2],
-            obj_char_shot_sys_aim_process[4]
+            self_side_obj_char_shot_sys_aim_process[1]+self_side_obj_char_shot_sys_aim_process[2],
+            self_side_obj_char_shot_sys_aim_process[4]
         )
-    obj_char_shot_sys_aim_process[1] = math.max(obj_char_shot_sys_aim_process[1],0)
+    self_side_obj_char_shot_sys_aim_process[1] = math.max(self_side_obj_char_shot_sys_aim_process[1],0)
     -- instandt_aim
     if instant_aim_state[opponent_side_obj_char["state"]] then
-        obj_char_shot_sys_aim_process[1] = math.max(obj_char_shot_sys_aim_process[1],obj_char_shot_sys_aim_process[3])
+        self_side_obj_char_shot_sys_aim_process[1] = math.max(self_side_obj_char_shot_sys_aim_process[1],self_side_obj_char_shot_sys_aim_process[3])
     end
 end
 -- r_visual_calculation
@@ -190,7 +190,7 @@ end
 -- reticle_basic_prop_update
 function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(self_side_obj_char,opponent_side_obj_char)
     local self_side_obj_char_shot_sys_aim_process = self_side_obj_char["shot_sys_aim_process"]
-    local div_value = 30-math.min(self_side_obj_char_shot_sys_aim_process[1],self_side_obj_char_shot_sys_aim_process[3])/15
+    local self_side_div_value = 30-math.min(self_side_obj_char_shot_sys_aim_process[1],self_side_obj_char_shot_sys_aim_process[3])/15
     local height_offset = {
         [370] = 315,
         [285] = 200,
@@ -203,8 +203,8 @@ function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_re
         opponent_side_obj_char["y"]-height_offset[opponent_side_obj_char["pushbox"][4]]-160
     }
     self_side_obj_char["shot_sys_reticle_stage_pos_current"] = {
-        (self_side_obj_char["shot_sys_reticle_stage_pos_current"][1]*(div_value-1)+self_side_obj_char["shot_sys_reticle_stage_pos_target"][1])/div_value,
-        (self_side_obj_char["shot_sys_reticle_stage_pos_current"][2]*(div_value-1)+self_side_obj_char["shot_sys_reticle_stage_pos_target"][2])/div_value
+        (self_side_obj_char["shot_sys_reticle_stage_pos_current"][1]*(self_side_div_value-1)+self_side_obj_char["shot_sys_reticle_stage_pos_target"][1])/self_side_div_value,
+        (self_side_obj_char["shot_sys_reticle_stage_pos_current"][2]*(self_side_div_value-1)+self_side_obj_char["shot_sys_reticle_stage_pos_target"][2])/self_side_div_value
     }
     self_side_obj_char["shot_sys_reticle"][1] = self_side_obj_char["shot_sys_reticle_stage_pos_current"][1]
     self_side_obj_char["shot_sys_reticle"][2] = self_side_obj_char["shot_sys_reticle_stage_pos_current"][2]
@@ -215,7 +215,7 @@ function character_function_game_scene_TRM_shot_sys_reticle_pos_update_ease_in(s
         return
     end
     local self_side_obj_char_shot_sys_aim_process = self_side_obj_char["shot_sys_aim_process"]
-    local div_value = 30-math.min(self_side_obj_char_shot_sys_aim_process[1],self_side_obj_char_shot_sys_aim_process[3])/15
+    local self_side_div_value = 30-math.min(self_side_obj_char_shot_sys_aim_process[1],self_side_obj_char_shot_sys_aim_process[3])/15
     local height_offset = {
         [370] = 315,
         [285] = 200,
@@ -228,8 +228,8 @@ function character_function_game_scene_TRM_shot_sys_reticle_pos_update_ease_in(s
         opponent_side_obj_char["y"]-height_offset[opponent_side_obj_char["pushbox"][4]]-160
     }
     self_side_obj_char["shot_sys_reticle_stage_pos_current"] = {
-        (self_side_obj_char["shot_sys_reticle_stage_pos_current"][1]*(div_value-1)+self_side_obj_char["shot_sys_reticle_stage_pos_target"][1])/div_value,
-        (self_side_obj_char["shot_sys_reticle_stage_pos_current"][2]*(div_value-1)+self_side_obj_char["shot_sys_reticle_stage_pos_target"][2])/div_value
+        (self_side_obj_char["shot_sys_reticle_stage_pos_current"][1]*(self_side_div_value-1)+self_side_obj_char["shot_sys_reticle_stage_pos_target"][1])/self_side_div_value,
+        (self_side_obj_char["shot_sys_reticle_stage_pos_current"][2]*(self_side_div_value-1)+self_side_obj_char["shot_sys_reticle_stage_pos_target"][2])/self_side_div_value
     }
     self_side_obj_char["shot_sys_reticle"][1] = self_side_obj_char["shot_sys_reticle_stage_pos_current"][1]
     self_side_obj_char["shot_sys_reticle"][2] = self_side_obj_char["shot_sys_reticle_stage_pos_current"][2]

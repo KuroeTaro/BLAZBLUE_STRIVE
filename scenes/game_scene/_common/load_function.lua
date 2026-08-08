@@ -41,7 +41,7 @@ function load_game_scene_prep()
         order_load_game_scene_lets_dance
     }
     CURRENT_ORDER_TABLE = {1,1,1,1,1,1,1,1,1,1,1}  -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
-    ORDER_SIZE_TABLE = {12,8,39,39,4,8,8,3,4,3,1}  -- 每个load function的最大值
+    ORDER_SIZE_TABLE = {12,8,39,39,4,9,9,3,4,3,1}  -- 每个load function的最大值
     LOAD_ONCE_TABLE = {false,false,false,false,false,false,false,false,false,false,false}   -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     LOADING_FUNCTION_AMOUNT = 11 -- 和线程数相同
     -- GAME_MODE = 0

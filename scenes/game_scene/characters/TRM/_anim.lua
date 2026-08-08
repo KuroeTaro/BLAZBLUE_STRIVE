@@ -2678,7 +2678,7 @@ end
 function load_game_scene_anim_char_TRM_2K(hit_side_obj_char,hurt_side_obj_char)
     local res = {}
     local hit_side = hit_side_obj_char["player_side"]
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
+    local hit_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     res["prop_f"] = "f"
     res["anim_length"] = 39
@@ -2962,9 +2962,9 @@ end
 function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
     local res = {}
     local hit_side = hit_side_obj_char["player_side"]
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
+    local hit_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
-    local velocity_cache = hit_side_obj_char["velocity"][1]*hit_side_obj_char[5]
+    local hit_side_velocity_cache = hit_side_obj_char["velocity"][1]*hit_side_obj_char[5]
     res["prop_f"] = "f"
     res["anim_length"] = 44
     res[0] = function()
@@ -2978,7 +2978,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
         -- state_number
-        hit_side_obj_char["velocity"] = {hit_side_obj_char[5]*(60+velocity_cache),0}
+        hit_side_obj_char["velocity"] = {hit_side_obj_char[5]*(60+hit_side_velocity_cache),0}
         hit_side_obj_char["friction"] = 1
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
@@ -3132,7 +3132,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
     end
     res[3] = function()
         -- state_number
-        hit_side_obj_char["velocity"] = {hit_side_obj_char[5]*(120+velocity_cache),0}
+        hit_side_obj_char["velocity"] = {hit_side_obj_char[5]*(120+hit_side_velocity_cache),0}
         hit_side_obj_char["friction"] = 1
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{0,-200,190,400}}
@@ -3141,14 +3141,14 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
     end
     res[8] = function()
         -- state_number
-        hit_side_obj_char["velocity"] = {hit_side_obj_char[5]*(80+velocity_cache),0}
+        hit_side_obj_char["velocity"] = {hit_side_obj_char[5]*(80+hit_side_velocity_cache),0}
         hit_side_obj_char["friction"] = 1
         -- draw_correction
         hit_side_obj_char[8] = 2
     end
     res[12] = function()
         -- state_number
-        hit_side_obj_char["velocity"] = {hit_side_obj_char[5]*(40+velocity_cache),0}
+        hit_side_obj_char["velocity"] = {hit_side_obj_char[5]*(40+hit_side_velocity_cache),0}
         hit_side_obj_char["friction"] = 1
         -- draw_correction
         hit_side_obj_char[8] = 3
@@ -3164,7 +3164,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
         -- state
         hit_side_obj_char["move_state"] = "active" -- none startup active recovery
         -- state_number
-        hit_side_obj_char["velocity"] = {hit_side_obj_char[5]*(20+velocity_cache),0}
+        hit_side_obj_char["velocity"] = {hit_side_obj_char[5]*(20+hit_side_velocity_cache),0}
         hit_side_obj_char["friction"] = 1
         -- enemy_friend_interaction
         hit_side_obj_char["strike_active"] = true 
@@ -3261,7 +3261,7 @@ end
 function load_game_scene_anim_char_TRM_5K(hit_side_obj_char,hurt_side_obj_char)
     local res = {}
     local hit_side = hit_side_obj_char["player_side"]
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
+    local hit_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     local function direction_input_mapping()
         if hit_side_obj_char["direction_input"] >= 7 then
@@ -4782,7 +4782,8 @@ end
 -- _5H
 function load_game_scene_anim_char_TRM_5H(obj_char)
     local res = {}
-    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(obj_char["player_side"])
+    local side = obj_char["player_side"]
+    local move_SFX_table = common_game_scene_get_SFX_move(side)
     res["prop_f"] = "f"
     res["anim_length"] = 60
     res[0] = function()
@@ -4819,13 +4820,13 @@ function load_game_scene_anim_char_TRM_5H(obj_char)
     end
     res[11] = function()
         -- play_SFX
-        play_obj_audio(hit_side_move_SFX_table["5H_knife_clip_0"])
+        play_obj_audio(move_SFX_table["5H_knife_clip_0"])
         -- draw_correction
         obj_char[8] = 3
     end
     res[16] = function()
         -- play_SFX
-        play_obj_audio(hit_side_move_SFX_table["5H_knife_clip_1"])
+        play_obj_audio(move_SFX_table["5H_knife_clip_1"])
         -- draw_correction
         obj_char[8] = 4
     end
@@ -4835,13 +4836,13 @@ function load_game_scene_anim_char_TRM_5H(obj_char)
     end
     res[28] = function()
         -- play_SFX
-        play_obj_audio(hit_side_move_SFX_table["5H_knife_clip_2"])
+        play_obj_audio(move_SFX_table["5H_knife_clip_2"])
         -- draw_correction
         obj_char[8] = 6
     end
     res[35] = function()
         -- play_SFX
-        play_obj_audio(hit_side_move_SFX_table["5H_knife_whiff"])
+        play_obj_audio(move_SFX_table["5H_knife_whiff"])
         -- draw_correction
         obj_char[8] = 7
     end
@@ -4999,7 +5000,7 @@ end
 function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(obj_char)
     local res = {}
     local side = obj_char["player_side"]
-    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(side)
+    local move_SFX_table = common_game_scene_get_SFX_move(side)
     res["prop_f"] = "shot_sys_reticle_f_4"
     res["anim_length"] = 13
     res[0] = function()
@@ -5007,7 +5008,7 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(obj_char)
         obj_char["shot_sys_reticle"][8] = 0
         obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
         -- play_SFX
-        play_obj_audio(hit_side_move_SFX_table["5H_reticle_ease_in"])
+        play_obj_audio(move_SFX_table["5H_reticle_ease_in"])
     end
     res[1] = function()
         obj_char["shot_sys_reticle"][4] = 0.4
@@ -5029,7 +5030,7 @@ end
 function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(obj_char,sprite_sheet)
     local res = {}
     local side = obj_char["player_side"]
-    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(side)
+    local move_SFX_table = common_game_scene_get_SFX_move(side)
     res["prop_f"] = "shot_sys_reticle_f_8"
     res["anim_length"] = 10
     res[0] = function()
@@ -5038,7 +5039,7 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unloc
         obj_char["shot_sys_reticle"][8] = 0
         -- play_SFX
         if sprite_sheet == "5H_reticle_locking" then
-            play_obj_audio(hit_side_move_SFX_table["5H_reticle_locking"])
+            play_obj_audio(move_SFX_table["5H_reticle_locking"])
         end
     end
     res[1] = function()
@@ -5084,7 +5085,7 @@ end
 function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_out(obj_char)
     local res = {}
     local side = obj_char["player_side"]
-    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(side)
+    local move_SFX_table = common_game_scene_get_SFX_move(side)
     res["prop_f"] = "shot_sys_reticle_f_8"
     res["anim_length"] = 8
     res[0] = function()
@@ -5092,7 +5093,7 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_out(obj_char
         obj_char["shot_sys_reticle"][4] = 1
         obj_char["shot_sys_reticle"][8] = 0
         -- play_SFX
-        play_obj_audio(hit_side_move_SFX_table["5H_reticle_ease_out"])
+        play_obj_audio(move_SFX_table["5H_reticle_ease_out"])
     end
     res[2] = function()
         obj_char["shot_sys_reticle"][8] = 1
@@ -5328,9 +5329,9 @@ function load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj)
 end
 function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     local res = {}
-    local side = obj_char["player_side"]
     local obj_camera = obj_stage_game_scene_camera
-    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(side)
+    local side = obj_char["player_side"]
+    local move_SFX_table = common_game_scene_get_SFX_move(side)
     local oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
     local reticle_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1]+160,obj_char["shot_sys_reticle_stage_pos_current"][2]+160}
     local center_r = obj_char[5]*character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,reticle_pos)
@@ -5346,7 +5347,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
         obj_char["shot_sys_oroboros_mid"]["sprite_sheet"]  = "5H_oroboros_shot"
         obj_char["shot_sys_oroboros_mid"][8] = 0
         -- play_SFX
-        play_obj_audio(hit_side_move_SFX_table["5H_oroboros_blast"])
+        play_obj_audio(move_SFX_table["5H_oroboros_blast"])
     end
     res[1] = function()
         -- oroboros
@@ -5733,7 +5734,7 @@ end
 function load_game_scene_anim_char_TRM_4_6Launcher(hit_side_obj_char,hurt_side_obj_char)
     local res = {}
     local hit_side = hit_side_obj_char["player_side"]
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
+    local hit_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     res["prop_f"] = "f"
     res["anim_length"] = 42
@@ -5801,9 +5802,9 @@ function load_game_scene_anim_char_TRM_4_6Launcher(hit_side_obj_char,hurt_side_o
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
-        if test_input_sys_press_or_hold(input["left"]) then
+        if test_input_sys_press_or_hold(hit_side_input["left"]) then
             hit_side_obj_char["input_sys_cache"]["left"] = true
-        elseif test_input_sys_press_or_hold(input["right"]) then
+        elseif test_input_sys_press_or_hold(hit_side_input["right"]) then
             hit_side_obj_char["input_sys_cache"]["right"] = true
         end
         -- game_speed
@@ -6124,22 +6125,22 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(hit_side_obj_char,hur
     local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local hit_side = hit_side_obj_char["player_side"]
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
+    local hit_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     res["prop_f"] = "f"
     res["anim_length"] = 129
     res[0] = function()
         -- state
         -- throw_relocate_x
-        local dx = hit_side_obj_char[5]*200
-        if test_input_sys_press_or_hold(input["left"]) then
-            dx = -200
-        elseif test_input_sys_press_or_hold(input["right"]) then
-            dx = 200
+        local hit_side_dx = hit_side_obj_char[5]*200
+        if test_input_sys_press_or_hold(hit_side_input["left"]) then
+            hit_side_dx = -200
+        elseif test_input_sys_press_or_hold(hit_side_input["right"]) then
+            hit_side_dx = 200
         end
-        hurt_side_obj_char["x"] = hit_side_obj_char["x"] + dx
+        hurt_side_obj_char["x"] = hit_side_obj_char["x"] + hit_side_dx
         collision_pushbox_stage_relocate_x(hurt_side_obj_char)
-        hit_side_obj_char["x"] = hurt_side_obj_char["x"] - dx
+        hit_side_obj_char["x"] = hurt_side_obj_char["x"] - hit_side_dx
         -- facing_currect
         if not common_game_scene_get_character_facing_currect(hit_side_obj_char,hurt_side_obj_char) then
             hit_side_obj_char[5] = -hit_side_obj_char[5]
@@ -8298,7 +8299,7 @@ end
 function load_game_scene_anim_char_TRM_j4_6Launcher(hit_side_obj_char,hurt_side_obj_char)
     local res = {}
     local hit_side = hit_side_obj_char["player_side"]
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
+    local hit_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     res["prop_f"] = "f"
     res["anim_length"] = 42
@@ -8364,9 +8365,9 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(hit_side_obj_char,hurt_side_
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
-        if test_input_sys_press_or_hold(input["left"]) then
+        if test_input_sys_press_or_hold(hit_side_input["left"]) then
             hit_side_obj_char["input_sys_cache"]["left"] = true
-        elseif test_input_sys_press_or_hold(input["right"]) then
+        elseif test_input_sys_press_or_hold(hit_side_input["right"]) then
             hit_side_obj_char["input_sys_cache"]["right"] = true
         end
         -- game_speed
@@ -8671,22 +8672,22 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(hit_side_obj_char,hu
     local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local hit_side = hit_side_obj_char["player_side"]
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
+    local hit_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     res["prop_f"] = "f"
     res["anim_length"] = 48
     res[0] = function()
         -- state
         -- throw_relocate_x
-        local dx = hit_side_obj_char[5]*200
-        if test_input_sys_press_or_hold(input["left"]) then
-            dx = -200
-        elseif test_input_sys_press_or_hold(input["right"]) then
-            dx = 200
+        local hit_side_dx = hit_side_obj_char[5]*200
+        if test_input_sys_press_or_hold(hit_side_input["left"]) then
+            hit_side_dx = -200
+        elseif test_input_sys_press_or_hold(hit_side_input["right"]) then
+            hit_side_dx = 200
         end
-        hurt_side_obj_char["x"] = hit_side_obj_char["x"] + dx
+        hurt_side_obj_char["x"] = hit_side_obj_char["x"] + hit_side_dx
         collision_pushbox_stage_relocate_x(hurt_side_obj_char)
-        hit_side_obj_char["x"] = hurt_side_obj_char["x"] - dx
+        hit_side_obj_char["x"] = hurt_side_obj_char["x"] - hit_side_dx
         -- facing_currect
         if not common_game_scene_get_character_facing_currect(hit_side_obj_char,hurt_side_obj_char) then
             hit_side_obj_char[5] = -hit_side_obj_char[5]
@@ -8961,10 +8962,14 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
     res["anim_length"] = 85
     local res = {}
     local side = obj_char["player_side"]
+    local move_SFX_table = common_game_scene_get_SFX_move(side)
     local function test_full_ability_gauge_anim_jump()
         if obj_char["ability_gauge"][1] == obj_char["ability_gauge"][2] then
             -- state
             obj_char["f"] = 57
+            -- play_SFX
+            play_obj_audio(move_SFX_table["4SP_P_knife_whiff"])
+            play_obj_audio(move_SFX_table["4SP_P_clip_2"])
             -- draw_correction
             obj_char[8] = 12
         end
@@ -9043,12 +9048,16 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
     res[19] = function()
         -- draw_correction
         obj_char[8] = 4
+        -- play_SFX
+        play_obj_audio(move_SFX_table["4SP_P_knife_whiff"])
     end
     res[23] = function()
         -- sub_obj_table
         obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
         -- draw_correction
         obj_char[8] = 5
+        -- play_SFX
+        play_obj_audio(move_SFX_table["4SP_P_clip_1"])
     end
     res[29] = function()
         -- state
@@ -9072,6 +9081,8 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
         obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
         -- draw_correction
         obj_char[8] = 6
+        -- play_SFX
+        play_obj_audio(move_SFX_table["4SP_P_clip_0"])
         -- uncommon_update
         test_full_ability_gauge_anim_jump()
     end
@@ -9086,6 +9097,8 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
         obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
         -- draw_correction
         obj_char[8] = 8
+        -- play_SFX
+        play_obj_audio(move_SFX_table["4SP_P_clip_1"])
         -- uncommon_update
         test_full_ability_gauge_anim_jump()
     end
@@ -9100,6 +9113,8 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
         obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
         -- draw_correction
         obj_char[8] = 10
+        -- play_SFX
+        play_obj_audio(move_SFX_table["4SP_P_clip_2"])
         -- uncommon_update
         test_full_ability_gauge_anim_jump()
     end
@@ -9112,6 +9127,9 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
     res[57] = function()
         -- sub_obj_table
         obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
+        -- play_SFX
+        play_obj_audio(move_SFX_table["4SP_P_knife_whiff"])
+        play_obj_audio(move_SFX_table["4SP_P_clip_1"])
         -- draw_correction
         obj_char[8] = 12
     end
@@ -9122,6 +9140,8 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
     res[66] = function()
         -- sub_obj_table
         obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
+        -- play_SFX
+        play_obj_audio(move_SFX_table["4SP_P_clip_0"])
         -- draw_correction
         obj_char[8] = 14
     end

@@ -806,8 +806,8 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
     res["prop_f"] = "f"
     res["anim_length"] = 12
     res[0] = function()
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
+        local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
+        local hurt_side_FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
@@ -826,7 +826,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
             "character"
         )
         common_game_scene_projectile_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",FD_block
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
@@ -947,8 +947,8 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
     res["prop_f"] = "f"
     res["anim_length"] = 32
     res[0] = function()
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
+        local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
+        local hurt_side_FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
@@ -967,7 +967,7 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
             "character"
         )
         common_game_scene_projectile_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",FD_block
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
@@ -1280,8 +1280,8 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
     res["prop_f"] = "f"
     res["anim_length"] = 17
     res[0] = function()
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
+        local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
+        local hurt_side_FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
@@ -1300,7 +1300,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
             "character"
         )
         common_game_scene_projectile_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",FD_block
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
@@ -1427,8 +1427,8 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
     res["prop_f"] = "f"
     res["anim_length"] = 32
     res[0] = function()
-        local input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        local FD_block = test_input_sys_press_or_hold(input["correction_left"]) or test_input_sys_press_or_hold(input["correction_right"])
+        local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
+        local hurt_side_FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
         hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
@@ -1447,7 +1447,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
             "character"
         )
         common_game_scene_projectile_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",FD_block
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0

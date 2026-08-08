@@ -142,9 +142,9 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
             -- projectile_active
             obj_projectile["projectile_active"] = false
             -- block_test
-            local block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
+            local hurt_side_block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
             -- risk_gauge
-            if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
+            if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not hurt_side_block_bool) then
                 hurt_side_obj_char["hurt_state"] = "counter"
             end
             -- counter/hit/block
@@ -156,13 +156,13 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
                 -- play_SFX
                 play_obj_audio(obj_projectile["hit_counter_SFX"])
                 stop_obj_audio(obj_projectile["hit_whiff_SFX"])
-            elseif not block_bool then
+            elseif not hurt_side_block_bool then
                 -- insert_VFX
                 insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
                 -- play_SFX
                 play_obj_audio(obj_projectile["hit_SFX"])
                 stop_obj_audio(obj_projectile["hit_whiff_SFX"])
-            elseif block_bool then
+            elseif hurt_side_block_bool then
                 -- insert_VFX
                 insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
                 -- play_SFX
@@ -225,7 +225,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
 end
 function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
     local res = {}
-    local test_shot_sys_ban_state = hit_side_obj_char["shot_sys_at_the_ready_force_off_state"][hit_side_obj_char["state"]]
+    local hit_side_test_shot_sys_ban_state = hit_side_obj_char["shot_sys_at_the_ready_force_off_state"][hit_side_obj_char["state"]]
     res["prop_f"] = "f"
     res["anim_length"] = 40
     for i = 0,19 do
@@ -238,7 +238,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main(hit_side_
         -- state
         obj_projectile[1] = hit_side_obj_char["shot_sys_reticle"][1]
         obj_projectile[2] = hit_side_obj_char["shot_sys_reticle"][2]
-        if test_shot_sys_ban_state then
+        if hit_side_test_shot_sys_ban_state then
             obj_projectile["projectile_active"] = false
         end
         -- state_number
@@ -257,7 +257,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main(hit_side_
         play_obj_audio(obj_projectile["hit_whiff_SFX"])
     end
     res[1] = function()
-        if test_shot_sys_ban_state then
+        if hit_side_test_shot_sys_ban_state then
             obj_projectile["projectile_active"] = false
         end
     end
@@ -311,7 +311,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
         -- state_number
         local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        local FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
+        local hurt_side_FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_projectile_apply_hurt_velocity(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,
             hurt_horizontal_velocity,
@@ -324,7 +324,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
             "character"
         )
         common_game_scene_projectile_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",FD_block
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
@@ -449,7 +449,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
         -- state_number
         local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
-        local FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
+        local hurt_side_FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_projectile_apply_hurt_velocity(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,
             hurt_horizontal_velocity,
@@ -462,7 +462,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
             "character"
         )
         common_game_scene_projectile_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",FD_block
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
