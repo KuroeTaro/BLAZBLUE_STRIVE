@@ -282,6 +282,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     obj_projectile["enemy_interact_function"] = function()
     obj_projectile["hit_SFX"] = move_SFX_table["red_RC_hit"]
     obj_projectile["hit_block_SFX"] = move_SFX_table["red_RC_block"]
+    obj_projectile["hit_counter_SFX"] = move_SFX_table["red_RC_counter"]
     obj_projectile["hit_whiff_SFX"] = move_SFX_table["red_RC_whiff"]
         -- if hit
         if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) and obj_projectile["projectile_active"] and (not hurt_side_obj_char["strike_inv"]) then

@@ -5818,6 +5818,9 @@ function load_game_scene_anim_char_TRM_4_6Launcher(hit_side_obj_char,hurt_side_o
         hit_side_obj_char["hit_counter_VFX_insert_function"] = nil
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = nil
         hit_side_obj_char["hurt_block_VFX_insert_function"] = nil
+        -- SFX
+        hit_side_obj_char["hit_throw_SFX"] = move_SFX_table["4_6Launcher_throw"]
+        hit_side_obj_char["hit_whiff_SFX"] = move_SFX_table["4_6Launcher_whiff"]
         -- oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-150,-455}
         -- draw_correction
@@ -6115,6 +6118,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(hit_side_obj_char,hur
     local obj_camera = obj_stage_game_scene_camera
     local hit_side = hit_side_obj_char["player_side"]
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
+    local move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     res["prop_f"] = "f"
     res["anim_length"] = 129
     res[0] = function()
@@ -6250,6 +6254,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(hit_side_obj_char,hur
         hit_side_obj_char["hit_cancel"] = true
         -- insert_VFX
         hit_side_obj_char["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
+        -- play_SFX
+        play_obj_audio(move_SFX_table["4_6Launcher_hit"])
         -- draw_correction
         hit_side_obj_char[8] = 5
     end
@@ -8362,6 +8368,9 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(hit_side_obj_char,hurt_side_
         hit_side_obj_char["hit_counter_VFX_insert_function"] = nil
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = nil
         hit_side_obj_char["hurt_block_VFX_insert_function"] = nil
+        -- SFX
+        hit_side_obj_char["hit_throw_SFX"] = move_SFX_table["j4_6Launcher_throw"]
+        hit_side_obj_char["hit_whiff_SFX"] = move_SFX_table["j4_6Launcher_whiff"]
         -- oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction

@@ -170,6 +170,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["hit_SFX"] = nil
     obj_char_game_scene_char_LP["hit_block_SFX"] = nil
     obj_char_game_scene_char_LP["hit_counter_SFX"] = nil
+    obj_char_game_scene_char_LP["hit_throw_SFX"] = nil
     obj_char_game_scene_char_LP["hit_whiff_SFX"] = nil
     -- 5H_shot_sys
     obj_char_game_scene_char_LP["shot_sys_state"] = "off"
