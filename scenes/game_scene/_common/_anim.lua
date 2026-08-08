@@ -1675,11 +1675,11 @@ end
 function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(obj_char)
     local res = {}
     local side = obj_char["player_side"]
-    local pushbox_data = common_game_scene_get_pushbox(side)
-    local hurtbox_data = common_game_scene_get_hurtbox(side)
-    local anchor_data = common_game_scene_get_anchor(side)
-    local VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
-    local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(side)
+    local side_pushbox_data = common_game_scene_get_pushbox(side)
+    local side_hurtbox_data = common_game_scene_get_hurtbox(side)
+    local side_anchor_data = common_game_scene_get_anchor(side)
+    local side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
+    local side_stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(side)
     local sprite_sheet = "0_general_hurt_soft_knockdown_wallstick_air"
     res["prop_f"] = "f"
     res["anim_length"] = 60
@@ -1710,16 +1710,16 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
         -- collide
-        obj_char["pushbox"] = pushbox_data[sprite_sheet][0]
+        obj_char["pushbox"] = side_pushbox_data[sprite_sheet][0]
         obj_char["pushbox_opponent_collision_active"] = true
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][0]
+        obj_char["hurtbox_table"] = side_hurtbox_data[sprite_sheet][0]
         obj_char["collision_ground_height_offset"] = 185
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = anchor_data[sprite_sheet]
+        obj_char["anchor_pos"] = side_anchor_data[sprite_sheet]
         -- play_SFX
-        play_obj_audio(stage_interactive_SFX_table["wall_wallstick"])
+        play_obj_audio(side_stage_interactive_SFX_table["wall_wallstick"])
     end
     res[1] = function()
         -- state
@@ -2136,11 +2136,11 @@ end
 function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstick_ground(obj_char)
     local res = {}
     local side = obj_char["player_side"]
-    local pushbox_data = common_game_scene_get_pushbox(side)
-    local hurtbox_data = common_game_scene_get_hurtbox(side)
-    local anchor_data = common_game_scene_get_anchor(side)
-    local VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
-    local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(side)
+    local side_pushbox_data = common_game_scene_get_pushbox(side)
+    local side_hurtbox_data = common_game_scene_get_hurtbox(side)
+    local side_anchor_data = common_game_scene_get_anchor(side)
+    local side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
+    local side_stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(side)
     local sprite_sheet = "0_general_hurt_hard_knockdown_wallstick_ground"
     res["prop_f"] = "f"
     res["anim_length"] = 85
@@ -2177,16 +2177,16 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
         -- collide
-        obj_char["pushbox"] = pushbox_data[sprite_sheet][0]
+        obj_char["pushbox"] = side_pushbox_data[sprite_sheet][0]
         obj_char["pushbox_opponent_collision_active"] = true
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][0]
+        obj_char["hurtbox_table"] = side_hurtbox_data[sprite_sheet][0]
         obj_char["collision_ground_height_offset"] = 0
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = anchor_data[sprite_sheet]
+        obj_char["anchor_pos"] = side_anchor_data[sprite_sheet]
         -- play_SFX
-        play_obj_audio(stage_interactive_SFX_table["wall_wallstick"])
+        play_obj_audio(side_stage_interactive_SFX_table["wall_wallstick"])
     end
     res[1] = function()
         -- state
@@ -2205,22 +2205,22 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
     res[70] = function()
         -- state
         obj_char["y"] = 0
-        obj_char["pushbox"] = pushbox_data[sprite_sheet][3]
+        obj_char["pushbox"] = side_pushbox_data[sprite_sheet][3]
         -- collide
-        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][3]
+        obj_char["hurtbox_table"] = side_hurtbox_data[sprite_sheet][3]
         obj_char[8] = 3
         insert_VFX_game_scene_stage_smoke_land_blow(
             obj_char,
-            VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
-            VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
+            side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,1,1,0
         )
     end
     res[72] = function()
         -- state
-        obj_char["pushbox"] = pushbox_data[sprite_sheet][4]
+        obj_char["pushbox"] = side_pushbox_data[sprite_sheet][4]
         -- collide
-        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][4]
+        obj_char["hurtbox_table"] = side_hurtbox_data[sprite_sheet][4]
         obj_char[8] = 4
     end
     res[75] = function()
@@ -2542,10 +2542,10 @@ end
 function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick_ground(obj_char)
     local res = {}
     local side = obj_char["player_side"]
-    local pushbox_data = common_game_scene_get_pushbox(side)
-    local hurtbox_data = common_game_scene_get_hurtbox(side)
-    local anchor_data = common_game_scene_get_anchor(side)
-    local VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
+    local side_pushbox_data = common_game_scene_get_pushbox(side)
+    local side_hurtbox_data = common_game_scene_get_hurtbox(side)
+    local side_anchor_data = common_game_scene_get_anchor(side)
+    local side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
     local sprite_sheet = "0_general_hurt_hard_recovery_wallstick_ground"
     res["prop_f"] = "f"
     res["anim_length"] = 25
@@ -2579,14 +2579,14 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- collide
-        obj_char["pushbox"] = pushbox_data[sprite_sheet][0]
+        obj_char["pushbox"] = side_pushbox_data[sprite_sheet][0]
         obj_char["pushbox_opponent_collision_active"] = true
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][0]
+        obj_char["hurtbox_table"] = side_hurtbox_data[sprite_sheet][0]
         obj_char["collision_ground_height_offset"] = 0
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = anchor_data[sprite_sheet]
+        obj_char["anchor_pos"] = side_anchor_data[sprite_sheet]
     end
     res[1] = function()
         -- state
@@ -2760,11 +2760,11 @@ end
 function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick_air(obj_char)
     local res = {}
     local side = obj_char["player_side"]
-    local pushbox_data = common_game_scene_get_pushbox(side)
-    local hurtbox_data = common_game_scene_get_hurtbox(side)
-    local anchor_data = common_game_scene_get_anchor(side)
-    local VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
-    local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(side)
+    local side_pushbox_data = common_game_scene_get_pushbox(side)
+    local side_hurtbox_data = common_game_scene_get_hurtbox(side)
+    local side_anchor_data = common_game_scene_get_anchor(side)
+    local side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(side)
+    local side_stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(side)
     local sprite_sheet = "0_general_hurt_soft_recovery_wallstick_air"
     res["prop_f"] = "f"
     res["anim_length"] = 10
@@ -2805,16 +2805,16 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
         -- collide
-        obj_char["pushbox"] = pushbox_data[sprite_sheet][0]
+        obj_char["pushbox"] = side_pushbox_data[sprite_sheet][0]
         obj_char["pushbox_opponent_collision_active"] = false
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][0]
+        obj_char["hurtbox_table"] = side_hurtbox_data[sprite_sheet][0]
         obj_char["collision_ground_height_offset"] = 185
         -- draw_correction
         obj_char[8] = 2
-        obj_char["anchor_pos"] = anchor_data[sprite_sheet]
+        obj_char["anchor_pos"] = side_anchor_data[sprite_sheet]
         -- play_SFX
-        play_obj_audio(stage_interactive_SFX_table["air_jump"])
+        play_obj_audio(side_stage_interactive_SFX_table["air_jump"])
     end
     res[1] = function()
         -- state
@@ -5050,12 +5050,12 @@ function load_game_scene_anim_char_common_burst_RC_red(
 )
     local res = {}
     local self_side = self_side_obj_char["player_side"]
-    local self_height = self_side_obj_char["height"]
-    local pushbox_data = common_game_scene_get_pushbox(self_side)
-    local hurtbox_data = common_game_scene_get_hurtbox(self_side)
-    local anchor_data = common_game_scene_get_anchor(self_side)
+    local self_side_height = self_side_obj_char["height"]
+    local self_side_pushbox_data = common_game_scene_get_pushbox(self_side)
+    local self_side_hurtbox_data = common_game_scene_get_hurtbox(self_side)
+    local self_side_anchor_data = common_game_scene_get_anchor(self_side)
     local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1]-100)
-    local move_SFX_table = common_game_scene_get_SFX_move(self_side)
+    local self_side_move_SFX_table = common_game_scene_get_SFX_move(self_side)
     local function update_heat_gauge_state()
         if self_side_obj_char["heat_gauge"][1] > goal_heat_gauge_remain then
             self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - 5
@@ -5066,22 +5066,22 @@ function load_game_scene_anim_char_common_burst_RC_red(
         if opponent_side_obj_char["game_speed_force_0_countdown"] == 0 and self_side_obj_char["f"] >= 26 then
             self_side_obj_char["move_state"] = "recovery"
         end
-        if self_height ~= self_side_obj_char["height"] then
+        if self_side_height ~= self_side_obj_char["height"] then
             return
         end
         -- height
-        if self_height == "air" and collision_test_char_on_ground(self_side_obj_char) then
+        if self_side_height == "air" and collision_test_char_on_ground(self_side_obj_char) then
             self_side_obj_char["y"] = 0
             self_side_obj_char["height"] = "stand"
             self_side_obj_char["sprite_sheet"] = "burst_RC_ground"
-            self_side_obj_char["pushbox"]  = pushbox_data["RC"]["stand"]
-            self_side_obj_char["anchor_pos"] = anchor_data["RC"]["stand"]
+            self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["stand"]
+            self_side_obj_char["anchor_pos"] = self_side_anchor_data["RC"]["stand"]
             self_side_obj_char["collision_ground_height_offset"] = 0
-        elseif self_height ~= "air" and not collision_test_char_on_ground(self_side_obj_char) then
+        elseif self_side_height ~= "air" and not collision_test_char_on_ground(self_side_obj_char) then
             self_side_obj_char["height"] = "air"
             self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
-            self_side_obj_char["pushbox"]  = pushbox_data["RC"]["air"]
-            self_side_obj_char["anchor_pos"] = anchor_data["RC"]["air"]
+            self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["air"]
+            self_side_obj_char["anchor_pos"] = self_side_anchor_data["RC"]["air"]
             self_side_obj_char["collision_ground_height_offset"] = 185
         end
         character_uncommon_update(self_side_obj_char)
@@ -5168,7 +5168,7 @@ function load_game_scene_anim_char_common_burst_RC_red(
         -- draw_correction
         self_side_obj_char[8] = 2
         -- play_SFX
-        play_obj_audio(move_SFX_table["red_RC_whiff"])
+        play_obj_audio(self_side_move_SFX_table["red_RC_whiff"])
         -- update
         update_state()
         update_heat_gauge_state()
@@ -5239,12 +5239,12 @@ function load_game_scene_anim_char_common_burst_RC_blue(
 )
     local res = {}
     local self_side = self_side_obj_char["player_side"]
-    local self_height = self_side_obj_char["height"]
-    local pushbox_data = common_game_scene_get_pushbox(self_side)
-    local hurtbox_data = common_game_scene_get_hurtbox(self_side)
-    local anchor_data = common_game_scene_get_anchor(self_side)
+    local self_side_height = self_side_obj_char["height"]
+    local self_side_pushbox_data = common_game_scene_get_pushbox(self_side)
+    local self_side_hurtbox_data = common_game_scene_get_hurtbox(self_side)
+    local self_side_anchor_data = common_game_scene_get_anchor(self_side)
     local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1]-100)
-    local move_SFX_table = common_game_scene_get_SFX_move(self_side)
+    local self_side_move_SFX_table = common_game_scene_get_SFX_move(self_side)
     local function update_heat_gauge_state()
         if self_side_obj_char["heat_gauge"][1] > goal_heat_gauge_remain then
             self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - 5
@@ -5255,22 +5255,22 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         if opponent_side_obj_char["game_speed_force_0_countdown"] == 0 and self_side_obj_char["f"] >= 26 then
             self_side_obj_char["move_state"] = "recovery"
         end
-        if self_height ~= self_side_obj_char["height"] then
+        if self_side_height ~= self_side_obj_char["height"] then
             return
         end
         -- height
-        if self_height == "air" and collision_test_char_on_ground(self_side_obj_char) then
+        if self_side_height == "air" and collision_test_char_on_ground(self_side_obj_char) then
             self_side_obj_char["y"] = 0
             self_side_obj_char["height"] = "stand"
             self_side_obj_char["sprite_sheet"] = "burst_RC_ground"
-            self_side_obj_char["pushbox"]  = pushbox_data["RC"]["stand"]
-            self_side_obj_char["anchor_pos"] = anchor_data["RC"]["stand"]
+            self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["stand"]
+            self_side_obj_char["anchor_pos"] = self_side_anchor_data["RC"]["stand"]
             self_side_obj_char["collision_ground_height_offset"] = 0
-        elseif self_height ~= "air" and not collision_test_char_on_ground(self_side_obj_char) then
+        elseif self_side_height ~= "air" and not collision_test_char_on_ground(self_side_obj_char) then
             self_side_obj_char["height"] = "air"
             self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
-            self_side_obj_char["pushbox"]  = pushbox_data["RC"]["air"]
-            self_side_obj_char["anchor_pos"] = anchor_data["RC"]["air"]
+            self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["air"]
+            self_side_obj_char["anchor_pos"] = self_side_anchor_data["RC"]["air"]
             self_side_obj_char["collision_ground_height_offset"] = 185
         end
         character_uncommon_update(self_side_obj_char)
@@ -5293,7 +5293,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
     for i = 0,4 do
         res[i] = function()
             -- collide
-            self_side_obj_char["hurtbox_table"] = hurtbox_data["RC"][self_side_obj_char["height"]]
+            self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
             -- update
             update_state()
             update_heat_gauge_state()
@@ -5331,7 +5331,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         -- collide
         self_side_obj_char["pushbox_opponent_collision_active"] = true
         self_side_obj_char["hitbox_table"] = {} --{ 攻击类型 是投还是打， function值 内部为命中后的逻辑,具体的box形状}
-        self_side_obj_char["hurtbox_table"] = hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 0
         -- insert_VFX
@@ -5348,7 +5348,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
     end
     res[3] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 1
         -- update
@@ -5382,7 +5382,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         -- draw_correction
         self_side_obj_char[8] = 2
         -- play_SFX
-        play_obj_audio(move_SFX_table["blue_RC"])
+        play_obj_audio(self_side_move_SFX_table["blue_RC"])
         -- update
         update_state()
         update_heat_gauge_state()
@@ -5460,12 +5460,12 @@ function load_game_scene_anim_char_common_burst_RC_purple(
 )
     local res = {}
     local self_side = self_side_obj_char["player_side"]
-    local self_height = self_side_obj_char["height"]
-    local pushbox_data = common_game_scene_get_pushbox(self_side)
-    local hurtbox_data = common_game_scene_get_hurtbox(self_side)
-    local anchor_data = common_game_scene_get_anchor(self_side)
+    local self_side_height = self_side_obj_char["height"]
+    local self_side_pushbox_data = common_game_scene_get_pushbox(self_side)
+    local self_side_hurtbox_data = common_game_scene_get_hurtbox(self_side)
+    local self_side_anchor_data = common_game_scene_get_anchor(self_side)
     local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1]-100)
-    local move_SFX_table = common_game_scene_get_SFX_move(self_side)
+    local self_side_move_SFX_table = common_game_scene_get_SFX_move(self_side)
     local function update_heat_gauge_state()
         if self_side_obj_char["heat_gauge"][1] > goal_heat_gauge_remain then
             self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - 5
@@ -5476,22 +5476,22 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         if opponent_side_obj_char["game_speed_force_0_countdown"] == 0 and self_side_obj_char["f"] >= 26 then
             self_side_obj_char["move_state"] = "recovery"
         end
-        if self_height ~= self_side_obj_char["height"] then
+        if self_side_height ~= self_side_obj_char["height"] then
             return
         end
         -- height
-        if self_height == "air" and collision_test_char_on_ground(self_side_obj_char) then
+        if self_side_height == "air" and collision_test_char_on_ground(self_side_obj_char) then
             self_side_obj_char["y"] = 0
             self_side_obj_char["height"] = "stand"
             self_side_obj_char["sprite_sheet"] = "burst_RC_ground"
-            self_side_obj_char["pushbox"]  = pushbox_data["RC"]["stand"]
-            self_side_obj_char["anchor_pos"] = anchor_data["RC"]["stand"]
+            self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["stand"]
+            self_side_obj_char["anchor_pos"] = self_side_anchor_data["RC"]["stand"]
             self_side_obj_char["collision_ground_height_offset"] = 0
-        elseif self_height ~= "air" and not collision_test_char_on_ground(self_side_obj_char) then
+        elseif self_side_height ~= "air" and not collision_test_char_on_ground(self_side_obj_char) then
             self_side_obj_char["height"] = "air"
             self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
-            self_side_obj_char["pushbox"]  = pushbox_data["RC"]["air"]
-            self_side_obj_char["anchor_pos"] = anchor_data["RC"]["air"]
+            self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["air"]
+            self_side_obj_char["anchor_pos"] = self_side_anchor_data["RC"]["air"]
             self_side_obj_char["collision_ground_height_offset"] = 185
         end
         character_uncommon_update(self_side_obj_char)
@@ -5514,7 +5514,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
     for i = 0,4 do
         res[i] = function()
             -- collide
-            self_side_obj_char["hurtbox_table"] = hurtbox_data["RC"][self_side_obj_char["height"]]
+            self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
             -- update
             update_state()
             update_heat_gauge_state()
@@ -5561,7 +5561,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
     end
     res[3] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 1
         -- update
@@ -5603,7 +5603,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         insert_VFX_game_scene_char_RC_partical(self_side_obj_char)
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
         -- play_SFX
-        play_obj_audio(move_SFX_table["purple_RC"])
+        play_obj_audio(self_side_move_SFX_table["purple_RC"])
         -- update
         update_state()
         update_heat_gauge_state()
@@ -5681,12 +5681,12 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
 )
     local res = {}
     local self_side = self_side_obj_char["player_side"]
-    local self_height = self_side_obj_char["height"]
-    local pushbox_data = common_game_scene_get_pushbox(self_side)
-    local hurtbox_data = common_game_scene_get_hurtbox(self_side)
-    local anchor_data = common_game_scene_get_anchor(self_side)
+    local self_side_height = self_side_obj_char["height"]
+    local self_side_pushbox_data = common_game_scene_get_pushbox(self_side)
+    local self_side_hurtbox_data = common_game_scene_get_hurtbox(self_side)
+    local self_side_anchor_data = common_game_scene_get_anchor(self_side)
     local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1]-100)
-    local move_SFX_table = common_game_scene_get_SFX_move(self_side)
+    local self_side_move_SFX_table = common_game_scene_get_SFX_move(self_side)
     local function update_heat_gauge_state()
         if self_side_obj_char["heat_gauge"][1] > goal_heat_gauge_remain then
             self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - 5
@@ -5697,22 +5697,22 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         if opponent_side_obj_char["game_speed_force_0_countdown"] == 0 and self_side_obj_char["f"] >= 26 then
             self_side_obj_char["move_state"] = "recovery"
         end
-        if self_height ~= self_side_obj_char["height"] then
+        if self_side_height ~= self_side_obj_char["height"] then
             return
         end
         -- height
-        if self_height == "air" and collision_test_char_on_ground(self_side_obj_char) then
+        if self_side_height == "air" and collision_test_char_on_ground(self_side_obj_char) then
             self_side_obj_char["y"] = 0
             self_side_obj_char["height"] = "stand"
             self_side_obj_char["sprite_sheet"] = "burst_RC_ground"
-            self_side_obj_char["pushbox"]  = pushbox_data["RC"]["stand"]
-            self_side_obj_char["anchor_pos"] = anchor_data["RC"]["stand"]
+            self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["stand"]
+            self_side_obj_char["anchor_pos"] = self_side_anchor_data["RC"]["stand"]
             self_side_obj_char["collision_ground_height_offset"] = 0
-        elseif self_height ~= "air" and not collision_test_char_on_ground(self_side_obj_char) then
+        elseif self_side_height ~= "air" and not collision_test_char_on_ground(self_side_obj_char) then
             self_side_obj_char["height"] = "air"
             self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
-            self_side_obj_char["pushbox"]  = pushbox_data["RC"]["air"]
-            self_side_obj_char["anchor_pos"] = anchor_data["RC"]["air"]
+            self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["air"]
+            self_side_obj_char["anchor_pos"] = self_side_anchor_data["RC"]["air"]
             self_side_obj_char["collision_ground_height_offset"] = 185
         end
         character_uncommon_update(self_side_obj_char)
@@ -5790,7 +5790,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         insert_VFX_game_scene_char_RC_partical(self_side_obj_char)
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
         -- play_SFX
-        play_obj_audio(move_SFX_table["yellow_RC_whiff"])
+        play_obj_audio(self_side_move_SFX_table["yellow_RC_whiff"])
         -- update
         update_state()
         update_heat_gauge_state()
@@ -5847,13 +5847,13 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         self_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         self_side_obj_char["move_state"] = "recovery" -- none startup active recovery
         -- collide
-        self_side_obj_char["hurtbox_table"] = hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
         -- update
         update_state()
     end
     res[43] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 6
         -- update
@@ -5861,7 +5861,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     end
     res[47] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 7
         -- update
@@ -5869,7 +5869,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     end
     res[51] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 5
         -- update
@@ -5877,7 +5877,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     end
     res[55] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 6
         -- update
@@ -5885,7 +5885,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     end
     res[59] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 7
         -- update
@@ -5893,7 +5893,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     end
     res[63] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 5
         -- update
@@ -5901,7 +5901,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     end
     res[67] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 6
         -- update
@@ -5909,7 +5909,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     end
     res[69] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 8
         -- update
@@ -5917,7 +5917,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     end
     res[72] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 9
         -- update

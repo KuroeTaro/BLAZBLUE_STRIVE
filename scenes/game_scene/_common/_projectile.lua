@@ -100,7 +100,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
-    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side_obj_char["player_side"])
+    local hit_side = hit_side_obj_char["player_side"]
+    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     -- clear_projectile_RC_table
     hit_side_obj_char["projectile_RC_table"] = {}
     -- common
@@ -556,7 +557,8 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
-    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side_obj_char["player_side"])
+    local hit_side = hit_side_obj_char["player_side"]
+    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     -- clear_projectile_RC_table
     hit_side_obj_char["projectile_RC_table"] = {}
     -- common

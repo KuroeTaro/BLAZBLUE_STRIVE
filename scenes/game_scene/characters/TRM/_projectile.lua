@@ -871,10 +871,12 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     -- x y z opacity sx sy r f
     local obj_projectile = {0,0,0,0.875,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
-    local hit_side_projectile_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(hit_side_obj_char["player_side"])
+    local hit_side = hit_side_obj_char["player_side"]
+    local hit_side_projectile_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(hit_side)
+    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     -- common
     obj_projectile["type"] = "projectile"
-    obj_projectile["life"] = 42+45
+    obj_projectile["life"] = 42
     obj_projectile["x"] = hit_side_obj_char["x"]
     obj_projectile["y"] = hit_side_obj_char["y"]
     obj_projectile["velocity"] = {0,0}
@@ -896,11 +898,9 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
         end
         insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_obj_char)
     end
-    obj_projectile["hit_SFX"] = nil
-    obj_projectile["hit_block_SFX"] = nil
-    obj_projectile["hit_counter_SFX"] = nil
-    obj_projectile["hit_whiff_SFX"] = nil
-    obj_projectile["ground_bounce_SFX"] = nil
+    obj_projectile["hit_SFX"] = hit_side_move_SFX_table["6SP_P_hit"]
+    obj_projectile["hit_whiff_SFX"] = hit_side_move_SFX_table["6SP_P_whiff"]
+    obj_projectile["ground_bounce_SFX"] = hit_side_move_SFX_table["6SP_P_ground_bounce"]
     obj_projectile["enemy_interact_function"] = function()
         if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) then
             -- blast_state_init
@@ -961,19 +961,6 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
             ["in_air"] = function()
                 character_animator(obj_projectile,obj_projectile["projectile_animation"])
                 obj_projectile["life"] = obj_projectile["life"] - 1
-                if obj_projectile["life"] <= 45 then
-                    -- blast_state_init
-                    obj_projectile["velocity"] = {0,0}
-                    obj_projectile["sprite_sheet"] = "6SP_P_curse_ball_blast_projectile"
-                    obj_projectile["state"] = "blast"
-                    obj_projectile["hitbox_table"] = {}
-                    obj_projectile["projectile_active"] = false
-                    stop_obj_audio(obj_projectile["hit_whiff_SFX"])
-                    play_obj_audio(obj_projectile["hit_SFX"])
-                    obj_projectile["gravity"] = 0
-                    obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_P_projectile_blast(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
-                    init_character_anim_with(obj_projectile,obj_projectile["projectile_animation"])
-                end
             end,
             ["blast"] = function()
                 character_animator(obj_projectile,obj_projectile["projectile_animation"])

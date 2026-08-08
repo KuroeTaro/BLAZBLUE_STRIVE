@@ -56,7 +56,7 @@ function insert_VFX_game_scene_char_TRM_6P_move(obj_char)
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["6P_move_VFX"]
-    obj_VFX["life"] = 23
+    obj_VFX["life"] = 15
     obj_VFX[1] = obj_char["x"] + obj_char[5]*(-294)
     obj_VFX[2] = obj_char["y"] + obj_char[6]*(-543)
     obj_VFX[3] = obj_char[3]
@@ -72,11 +72,11 @@ function insert_VFX_game_scene_char_TRM_6P_move(obj_char)
     obj_VFX["animation"][0] = 0
     obj_VFX["animation"][2] = 1
     obj_VFX["animation"][4] = 2
-    obj_VFX["animation"][8] = 3
-    obj_VFX["animation"][13] = 4
-    obj_VFX["animation"][18] = 5
+    obj_VFX["animation"][6] = 3
+    obj_VFX["animation"][10] = 4
+    obj_VFX["animation"][13] = 5
     obj_VFX["animation"]["prop"] = 8
-    obj_VFX["animation"]["length"] = 23
+    obj_VFX["animation"]["length"] = 15
     obj_VFX["animation"]["loop"] = false
     init_frame_anim_without(obj_VFX,obj_VFX["animation"])
     obj_VFX["update"] = function()
@@ -868,7 +868,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     local obj_camera = obj_stage_game_scene_camera
     local shot_sys_curse_force_off_state = hit_side_obj_char["shot_sys_curse_force_off_state"]
     if hurt_side_obj_char["height"] == "air" then
-        obj_VFX["y_offset"] = 375 + hurt_side_obj_char["pushbox"][4]/4*3
+        obj_VFX["y_offset"] = 400 + hurt_side_obj_char["pushbox"][4]/4*3
     elseif hurt_side_obj_char["height"] == "wallstick" then
         obj_VFX["y_offset"] = 350 + hurt_side_obj_char["pushbox"][4]/4*3
     else
@@ -968,7 +968,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     end
     obj_VFX["draw_sync"] = function()
         if hurt_side_obj_char["height"] == "air" then
-            obj_VFX["y_offset"] = 375 + hurt_side_obj_char["pushbox"][4]/4*3
+            obj_VFX["y_offset"] = 400 + hurt_side_obj_char["pushbox"][4]/4*3
         elseif hurt_side_obj_char["height"] == "wallstick" then
             obj_VFX["y_offset"] = 350 + hurt_side_obj_char["pushbox"][4]/4*3
         else

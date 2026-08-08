@@ -9138,6 +9138,7 @@ end
 function load_game_scene_anim_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_char)
     local res = {}
     local hit_side = hit_side_obj_char["player_side"]
+    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     res["prop_f"] = "f"
     res["anim_length"] = 37
     for i=5,14 do
@@ -9228,6 +9229,7 @@ function load_game_scene_anim_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["velocity"][1] = -34.0*hit_side_obj_char[5]
         -- draw_correction
         hit_side_obj_char[8] = 2
+        play_obj_audio(hit_side_move_SFX_table["6SP_P_whiff"])
     end
     res[15] = function()
         -- state_number
