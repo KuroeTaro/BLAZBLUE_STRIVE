@@ -287,7 +287,7 @@ function load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {323,515}
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["ground_dash_skid"])
         play_obj_audio(stage_interactive_SFX_table["ground_step_0"])
     end
@@ -311,7 +311,7 @@ function load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
     res[12] = function()
         -- draw_correction
         obj_char[8] = 3
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["ground_step_1"])
     end
     res[16] = function()
@@ -405,7 +405,7 @@ function load_game_scene_anim_char_TRM_4_walk(obj_char)
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
         -- draw_correction
         obj_char[8] = 3
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["ground_step_0"])
     end
     res[28] = function()
@@ -431,7 +431,7 @@ function load_game_scene_anim_char_TRM_4_walk(obj_char)
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
         -- draw_correction
         obj_char[8] = 7
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["ground_step_1"])
     end
     res[56] = function()
@@ -465,7 +465,7 @@ function load_game_scene_anim_char_TRM_4_walk(obj_char)
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
         -- draw_correction
         obj_char[8] = 2
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["ground_step_0"])
     end
     res[85] = function()
@@ -570,7 +570,7 @@ function load_game_scene_anim_char_TRM_6_walk(obj_char)
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
         -- draw_correction
         obj_char[8] = 3
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["ground_step_0"])
     end
     res[28] = function()
@@ -608,7 +608,7 @@ function load_game_scene_anim_char_TRM_6_walk(obj_char)
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
         -- draw_correction
         obj_char[8] = 9
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["ground_step_1"])
     end
     res[70] = function()
@@ -752,7 +752,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         obj_char["anchor_pos"] = {325,480}
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_land_blow(obj_char,-355,-160,1,1,1,0)
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["ground_land"])
     end
     res[3] = function()
@@ -864,7 +864,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anch
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = anchor_pos
-        -- SFX
+        -- play_SFX
         if SFX_name then
             play_obj_audio(stage_interactive_SFX_table[SFX_name])
         end
@@ -1190,7 +1190,7 @@ function load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
         obj_char[8] = 3
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_land_blow(obj_char,-340,-160,1,1,1,0)
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["ground_land"])
     end
     res[18] = function()
@@ -1307,7 +1307,7 @@ function load_game_scene_anim_char_TRM_4dash_air_backdash(obj_char)
         obj_char["anchor_pos"] = {242,285}
         -- insert_VFX
         insert_VFX_game_scene_stage_4dash_air_backdash_shockwave(obj_char,150,-400,0.75,-0.75,0.75,0)
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["air_backdash"])
     end
     res[3] = function()
@@ -1431,7 +1431,7 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {288,510}
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
         play_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
     end
@@ -1453,7 +1453,7 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         obj_char[8] = 2
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["ground_step_0"])
     end
     res[12] = function()
@@ -1487,7 +1487,7 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         obj_char[8] = 6
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["ground_step_1"])
     end
     res[28] = function()
@@ -1515,7 +1515,7 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         obj_char[8] = 1
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
     end
     res[37] = function()
@@ -1659,7 +1659,7 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
         obj_char[8] = 3
         -- insert_VFX
         insert_VFX_game_scene_stage_6dash_air_dash_shockwave(obj_char,50,-430,0.75,0.75,0.75,0)
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["air_dash"])
     end
     res[15] = function()
@@ -1742,7 +1742,7 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
         -- insert_VFX
         insert_VFX_game_scne_stage_dash_cancel_blow(obj_char,-870,-175,1,1,1,0)
         insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
         play_obj_audio(stage_interactive_SFX_table["ground_dash_cancel"])
         play_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
@@ -1765,7 +1765,7 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
         obj_char[8] = 2
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["ground_step_0"])
         -- update
         update_horizontal_velocity()
@@ -1806,7 +1806,7 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
         obj_char[8] = 6
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,-1800,-600,0.5,1,1,0)
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["ground_step_1"])
         -- update
         update_horizontal_velocity()
@@ -2077,7 +2077,7 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char[8] = 3
         -- insert_VFX
         insert_VFX_game_scene_char_TRM_2P_move(hit_side_obj_char)
-        -- SFX
+        -- play_SFX
         play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
     end
     res[5] = function()
@@ -2322,7 +2322,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
     res[4] = function()
         -- draw_correction
         hit_side_obj_char[8] = 2
-        -- SFX
+        -- play_SFX
     end
     res[6] = function()
         -- draw_correction
@@ -2346,7 +2346,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
             -160,
             0.5,-0.8,0.8,0
         )
-        -- SFX
+        -- play_SFX
         play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
     end
     res[13] = function()
@@ -2608,7 +2608,7 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char[8] = 3
         -- insert_VFX
         insert_VFX_game_scene_char_TRM_5P_move(hit_side_obj_char)
-        -- SFX
+        -- play_SFX
         play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
     end
     res[5] = function()
@@ -2873,7 +2873,7 @@ function load_game_scene_anim_char_TRM_2K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{0,-75,200,150},{160,-62.5,300,125}}
         -- draw_correction
         hit_side_obj_char[8] = 3
-        -- SFX
+        -- play_SFX
         play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
     end
     res[10] = function()
@@ -3173,7 +3173,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-180,-455}
         -- draw_correction
         hit_side_obj_char[8] = 4
-        -- SFX
+        -- play_SFX
         play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
     end
     res[20] = function()
@@ -3467,7 +3467,7 @@ function load_game_scene_anim_char_TRM_5K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{-28,-325,200,250},{-50,-100,154,200},{187,-300,360,140},{87,-210,160,120}}
         -- draw_correction
         hit_side_obj_char[8] = 3
-        -- SFX
+        -- play_SFX
         play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
         -- update
         direction_input_mapping()
@@ -3769,7 +3769,7 @@ function load_game_scene_anim_char_TRM_2S(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char[8] = 4
         -- insert_VFX
         insert_VFX_game_scene_char_TRM_2S_move(hit_side_obj_char)
-        -- SFX
+        -- play_SFX
         play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
     end
     res[12] = function()
@@ -4084,7 +4084,7 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{0,-190,270,380},{-65,-400,60,40},{200,-260,130,200},{150,-385,370,160}}
         -- draw_correction
         hit_side_obj_char[8] = 3
-        -- SFX
+        -- play_SFX
         play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
     end
     res[15] = function()
@@ -4400,7 +4400,7 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char[8] = 2
         -- insert_VFX
         insert_VFX_game_scene_char_TRM_cS_move(hit_side_obj_char)
-        -- SFX
+        -- play_SFX
         play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
         -- update
         direction_input_mapping()
@@ -4676,7 +4676,7 @@ function load_game_scene_anim_char_TRM_fS(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{-80,-200,250,400},{20,-230,150,160},{20,-325,300,160}}
         -- draw_correction
         hit_side_obj_char[8] = 3
-        -- SFX
+        -- play_SFX
         play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
     end
     res[12] = function()
@@ -4814,13 +4814,13 @@ function load_game_scene_anim_char_TRM_5H(obj_char)
         obj_char[8] = 2
     end
     res[11] = function()
-        -- SFX
+        -- play_SFX
         play_obj_audio(move_SFX_table["5H_knife_clip_0"])
         -- draw_correction
         obj_char[8] = 3
     end
     res[16] = function()
-        -- SFX
+        -- play_SFX
         play_obj_audio(move_SFX_table["5H_knife_clip_1"])
         -- draw_correction
         obj_char[8] = 4
@@ -4830,13 +4830,13 @@ function load_game_scene_anim_char_TRM_5H(obj_char)
         obj_char[8] = 5
     end
     res[28] = function()
-        -- SFX
+        -- play_SFX
         play_obj_audio(move_SFX_table["5H_knife_clip_2"])
         -- draw_correction
         obj_char[8] = 6
     end
     res[35] = function()
-        -- SFX
+        -- play_SFX
         play_obj_audio(move_SFX_table["5H_knife_whiff"])
         -- draw_correction
         obj_char[8] = 7
@@ -5002,7 +5002,7 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(obj_char)
         obj_char["shot_sys_reticle"][4] = 0.2
         obj_char["shot_sys_reticle"][8] = 0
         obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
-        -- SFX
+        -- play_SFX
         play_obj_audio(move_SFX_table["5H_reticle_ease_in"])
     end
     res[1] = function()
@@ -5032,7 +5032,7 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unloc
         obj_char["shot_sys_reticle_sprite_sheet"] = sprite_sheet
         obj_char["shot_sys_reticle"][4] = 1
         obj_char["shot_sys_reticle"][8] = 0
-        -- SFX
+        -- play_SFX
         if sprite_sheet == "5H_reticle_locking" then
             play_obj_audio(move_SFX_table["5H_reticle_locking"])
         end
@@ -5087,7 +5087,7 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_out(obj_char
         obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_ease_out"
         obj_char["shot_sys_reticle"][4] = 1
         obj_char["shot_sys_reticle"][8] = 0
-        -- SFX
+        -- play_SFX
         play_obj_audio(move_SFX_table["5H_reticle_ease_out"])
     end
     res[2] = function()
@@ -5341,7 +5341,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
         obj_char["shot_sys_oroboros_offset_amount"] = 75
         obj_char["shot_sys_oroboros_mid"]["sprite_sheet"]  = "5H_oroboros_shot"
         obj_char["shot_sys_oroboros_mid"][8] = 0
-        -- SFX
+        -- play_SFX
         play_obj_audio(move_SFX_table["5H_oroboros_blast"])
     end
     res[1] = function()
@@ -5629,7 +5629,7 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char,hurt_side_obj
         hit_side_obj_char["hurtbox_table"] = {{25,-150,250,300},{240,-72.5,350,145}}
         -- draw_correction
         hit_side_obj_char[8] = 3
-        -- SFX
+        -- play_SFX
         play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
     end
     res[12] = function()
@@ -7172,7 +7172,7 @@ function load_game_scene_anim_char_TRM_j5P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{0,-135,230,290},{160,-60,150,150}}
         -- draw_correction
         hit_side_obj_char[8] = 3
-        -- SFX
+        -- play_SFX
         play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
     end
     res[6] = function()
@@ -7418,7 +7418,7 @@ function load_game_scene_anim_char_TRM_j5K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{0,-150,235,320},{-18,-335,180,50},{242.5,-215,350,140},{100,-165,200,110}}
         -- draw_correction
         hit_side_obj_char[8] = 2
-        -- SFX
+        -- play_SFX
         play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
     end
     res[9] = function()
@@ -7669,7 +7669,7 @@ function load_game_scene_anim_char_TRM_j2K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{0,-165,210,350},{0,65,210,250}}
         -- draw_correction
         hit_side_obj_char[8] = 2
-        -- SFX
+        -- play_SFX
         play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
     end
     res[11] = function()
@@ -7942,7 +7942,7 @@ function load_game_scene_anim_char_TRM_j5S(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurtbox_table"] = {{0,-140,280,300},{170,-50,530,380},{200,-255,290,170}}
         -- draw_correction
         hit_side_obj_char[8] = 3
-        -- SFX
+        -- play_SFX
         play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
     end
     res[13] = function()
@@ -8204,7 +8204,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(hit_side_obj_char,hurt_side_ob
         hit_side_obj_char["hurtbox_table"] = {{0,-120,250,260},{-205,-45,260,140},{-230,-125,210,100}}
         -- draw_correction
         hit_side_obj_char[8] = 3
-        -- SFX
+        -- play_SFX
         play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
     end
     res[14] = function()
@@ -8643,6 +8643,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(hit_side_obj_char,hu
     local obj_camera = obj_stage_game_scene_camera
     local hit_side = hit_side_obj_char["player_side"]
     local input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
+    local move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     res["prop_f"] = "f"
     res["anim_length"] = 48
     res[0] = function()
@@ -8755,6 +8756,8 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(hit_side_obj_char,hu
         hit_side_obj_char["hit_cancel"] = true
         -- insert_VFX
         hit_side_obj_char["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
+        -- play_SFX
+        play_obj_audio(move_SFX_table["j4_6Launcher_hit"])
         -- draw_correction
         hit_side_obj_char[8] = 4
     end
@@ -9484,7 +9487,7 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char[8] = 3
         -- insert_VFX
         insert_VFX_game_scene_char_TRM_6SP_S_move(hit_side_obj_char)
-        -- SFX
+        -- play_SFX
         play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
     end
     res[11] = function()

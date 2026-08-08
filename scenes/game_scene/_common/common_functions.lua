@@ -626,7 +626,7 @@ function common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_
         -- parry function
         hurt_side_obj_char["parry_function"](obj_projectile,hurt_side_obj_char)
     else
-        -- VFX
+        -- insert_VFX
         if hurt_side_obj_char["hurt_state"] == "punish" then
             insert_VFX_HUD_game_scene_punish(hit_side_obj_char)
         end
@@ -823,7 +823,7 @@ function common_game_scene_projectile_RC_red_yellow_hurt_function(hit_side_obj_c
     if block_bool then
         common_game_scene_projectile_RC_red_yellow_hurt_function_common_block(hit_side_obj_char,hurt_side_obj_char,obj_projectile,obj_stage_main,obj_camera)
     else
-        -- VFX
+        -- insert_VFX
         if hurt_side_obj_char["hurt_state"] == "punish" then
             insert_VFX_HUD_game_scene_punish(hit_side_obj_char)
         end

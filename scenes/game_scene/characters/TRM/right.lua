@@ -3792,7 +3792,7 @@ function state_gate_game_scene_char_RP_from_throw_testing(input,self_side_obj_ch
         self_side_obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
         state_gate_game_scene_char_RP_from_throw_success(input,self_side_obj_char,opponent_side_obj_char)
-        -- VFX
+        -- insert_VFX
         if opponent_side_obj_char["hurt_state"] ~= "idle" then
             insert_VFX_HUD_game_scene_punish(self_side_obj_char)
         end
@@ -4690,7 +4690,7 @@ function state_gate_game_scene_char_RP_from_7_8_9_jump_air(input,self_side_obj_c
         end
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "7_8_9_jump_air"
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["air_jump"])
         return true
     end
@@ -4842,14 +4842,14 @@ function state_gate_game_scene_char_RP_from_6dash_dash(input,self_side_obj_char,
     local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(self_side_obj_char["player_side"])
     -- _overdrive
     if state_gate_game_scene_char_RP_common_to_burst_overdrive(input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
-        -- SFX
+        -- play_SFX
         stop_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
         stop_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
         return true
     end
     -- _BRC
     if state_gate_game_scene_char_RP_common_to_burst_RC_blue(input,self_side_obj_char,opponent_side_obj_char) then
-        -- SFX
+        -- play_SFX
         stop_obj_audio(stage_interactive_SFX_table["ground_dash_start_up"])
         stop_obj_audio(stage_interactive_SFX_table["ground_dash_loop"])
         return true
@@ -6270,7 +6270,7 @@ function state_gate_game_scene_char_RP_from_j5S(input,self_side_obj_char,opponen
                 0,0,-30,
                 0.1,11.5,-25
             )
-            -- SFX
+            -- play_SFX
             play_obj_audio(stage_interactive_SFX_table["air_jump"])
             return true
         end

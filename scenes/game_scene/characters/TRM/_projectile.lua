@@ -151,21 +151,21 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
             if hurt_side_obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
                 -- state_number
                 obj_projectile["hit_damage"] = obj_projectile["hit_damage"]*1.1
-                -- VFX
+                -- insert_VFX
                 insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
-                -- SFX
+                -- play_SFX
                 stop_obj_audio(obj_projectile["hit_whiff_SFX"])
                 play_obj_audio(obj_projectile["hit_counter_SFX"])
             elseif not block_bool then
-                -- VFX
+                -- insert_VFX
                 insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
-                -- SFX
+                -- play_SFX
                 stop_obj_audio(obj_projectile["hit_whiff_SFX"])
                 play_obj_audio(obj_projectile["hit_SFX"])
             elseif block_bool then
-                -- VFX
+                -- insert_VFX
                 insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
-                -- SFX
+                -- play_SFX
                 stop_obj_audio(obj_projectile["hit_whiff_SFX"])
                 play_obj_audio(obj_projectile["hit_block_SFX"])
             end
@@ -253,7 +253,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main(hit_side_
         obj_projectile["FD_block_heat_drain"] = 5.0
         -- draw_correction
         obj_projectile[8] = 0
-        -- SFX
+        -- play_SFX
         play_obj_audio(obj_projectile["hit_whiff_SFX"])
     end
     res[1] = function()
@@ -356,7 +356,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         -- draw_correction
         hurt_side_obj_char[8] = 5
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
-        -- VFX
+        -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
@@ -432,7 +432,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
             hurt_side_obj_char["collision_ground_height_offset"] = 0
             -- draw_correction
             hurt_side_obj_char[8] = 6
-            -- VFX
+            -- insert_VFX
             insert_VFX_game_scene_stage_smoke_land_blow(
                 hurt_side_obj_char,
                 hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
@@ -633,7 +633,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(hurt_side_obj_char,0,1)
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
-        -- VFX
+        -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
@@ -913,9 +913,9 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
             obj_projectile["state"] = "blast"
             obj_projectile["hitbox_table"] = {}
             obj_projectile["projectile_active"] = false
-            -- VFX
+            -- insert_VFX
             obj_projectile["hit_VFX_insert_function"]()
-            -- SFX
+            -- play_SFX
             stop_obj_audio(obj_projectile["hit_whiff_SFX"])
             stop_obj_audio(obj_projectile["ground_bounce_SFX"])
             play_obj_audio(obj_projectile["hit_SFX"])

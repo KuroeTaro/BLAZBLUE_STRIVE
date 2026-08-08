@@ -861,7 +861,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
         -- draw_correction
         hurt_side_obj_char[8] = 5
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
-        -- VFX
+        -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
@@ -938,7 +938,7 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
             hurt_side_obj_char["collision_ground_height_offset"] = 0
             -- draw_correction
             hurt_side_obj_char[8] = 6
-            -- VFX
+            -- insert_VFX
             insert_VFX_game_scene_stage_smoke_land_blow(
                 hurt_side_obj_char,
                 hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
@@ -1338,7 +1338,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
         -- draw_correction
         hurt_side_obj_char[8] = 5
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
-        -- VFX
+        -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
@@ -1421,7 +1421,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
             hurt_side_obj_char["collision_ground_height_offset"] = 0
             -- draw_correction
             hurt_side_obj_char[8] = 6
-            -- VFX
+            -- insert_VFX
             insert_VFX_game_scene_stage_smoke_land_blow(
                 hurt_side_obj_char,
                 hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],

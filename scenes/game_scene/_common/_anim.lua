@@ -281,7 +281,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(hurt_side_obj_char,0,1)
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
-        -- VFX
+        -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
@@ -391,7 +391,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(hurt_side_obj_char,0,1)
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
-        -- VFX
+        -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
@@ -501,7 +501,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(hurt_side_obj_char,0,1)
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
-        -- VFX
+        -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
@@ -611,7 +611,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(hurt_side_obj_char,0,1)
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
-        -- VFX
+        -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
@@ -721,7 +721,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         -- draw_correction
         common_game_scene_hurt_animation_oscillator_obj_8(hurt_side_obj_char,0,1)
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
-        -- VFX
+        -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
@@ -865,7 +865,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         -- draw_correction
         hurt_side_obj_char[8] = 5
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
-        -- VFX
+        -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
@@ -971,7 +971,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         -- draw_correction
         hurt_side_obj_char[8] = 5
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
-        -- VFX
+        -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
@@ -1081,7 +1081,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         -- draw_correction
         hurt_side_obj_char[8] = 5
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
-        -- VFX
+        -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
@@ -1189,7 +1189,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         -- draw_correction
         hurt_side_obj_char[8] = 5
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
-        -- VFX
+        -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
@@ -1301,7 +1301,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         -- draw_correction
         hurt_side_obj_char[8] = 5
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
-        -- VFX
+        -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
@@ -1382,7 +1382,7 @@ function load_game_scene_anim_char_common_0_air_block(
             hurt_side_obj_char["collision_ground_height_offset"] = 0
             -- draw_correction
             hurt_side_obj_char[8] = 6
-            -- VFX
+            -- insert_VFX
             insert_VFX_game_scene_stage_smoke_land_blow(
                 hurt_side_obj_char,
                 hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
@@ -1725,7 +1725,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = anchor_data[sprite_sheet]
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["wall_wallstick"])
     end
     res[1] = function()
@@ -1840,14 +1840,14 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
         -- draw_correction
         hurt_side_obj_char[8] = 0
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
-        -- VFX
+        -- insert_VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
             hurt_side_obj_char,
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,1,1,0
         )
-        -- SFX
+        -- play_SFX
         play_obj_audio(hurt_side_stage_interactive_SFX_table["ground_hard_knockdown"])
         -- character_uncommon_init
         character_uncommon_init()
@@ -1963,14 +1963,14 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
         -- draw_correction
         hurt_side_obj_char[8] = 0
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
-        -- VFX
+        -- insert_VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
             hurt_side_obj_char,
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,1,1,0
         )
-        -- SFX
+        -- play_SFX
         play_obj_audio(hurt_side_stage_interactive_SFX_table["ground_hard_knockdown"])
         -- character_uncommon_init
         character_uncommon_init()
@@ -2086,14 +2086,14 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
         -- draw_correction
         hurt_side_obj_char[8] = 0
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
-        -- VFX
+        -- insert_VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
             hurt_side_obj_char,
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
             0.5,1,1,0
         )
-        -- SFX
+        -- play_SFX
         play_obj_audio(hurt_side_stage_interactive_SFX_table["ground_hard_knockdown"])
         -- character_uncommon_init
         character_uncommon_init()
@@ -2195,7 +2195,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = anchor_data[sprite_sheet]
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["wall_wallstick"])
     end
     res[1] = function()
@@ -2701,14 +2701,14 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         -- draw_correction
         hurt_side_obj_char[8] = 0
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
-        -- VFX
+        -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hurt_side_obj_char,
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][0][1],
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][0][2],
             0.5,-1,1,0
         )
-        -- SFX
+        -- play_SFX
         play_obj_audio(hurt_side_stage_interactive_SFX_table["ground_soft_knockdown"])
         -- character_uncommon_init
         character_uncommon_init()
@@ -2745,7 +2745,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][5]
         -- draw_correction
         hurt_side_obj_char[8] = 5
-        -- VFX
+        -- insert_VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
             hurt_side_obj_char,
             hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1][1],
@@ -2827,7 +2827,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick
         -- draw_correction
         obj_char[8] = 2
         obj_char["anchor_pos"] = anchor_data[sprite_sheet]
-        -- SFX
+        -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["air_jump"])
     end
     res[1] = function()
@@ -4876,12 +4876,12 @@ function load_game_scene_anim_char_common_burst_overdrive(
                 obj_camera["state"] = "active"
             end
         )
-        -- VFX
+        -- insert_VFX
         self_side_obj_char["VFX_common_back_table"] = {}
         insert_VFX_game_scene_char_overdrive_badge(self_side_obj_char)
         insert_VFX_game_scene_char_overdrive_partical(self_side_obj_char,opponent_side_obj_char)
         insert_VFX_game_scene_char_overdrive_black_overlay(self_side_obj_char)
-        -- SFX
+        -- play_SFX
         -- update
         update_move_overdrive_state()
         -- character_uncommon_init
@@ -4922,7 +4922,7 @@ function load_game_scene_anim_char_common_burst_overdrive(
         update_move_overdrive_state()
     end
     res[30] = function()
-        -- VFX
+        -- insert_VFX
         insert_VFX_game_scene_char_overdrive_airflow(self_side_obj_char)
         -- update
         update_move_overdrive_state()
@@ -5165,7 +5165,7 @@ function load_game_scene_anim_char_common_burst_RC_red(
         self_side_obj_char["hurtbox_table"] = {}
         -- draw_correction
         self_side_obj_char[8] = 0
-        -- VFX
+        -- insert_VFX
         self_side_obj_char["VFX_hit_front_table"] = {}
         opponent_side_obj_char["VFX_hit_front_table"] = {}
         self_side_obj_char["VFX_hit_back_table"] = {}
@@ -5192,7 +5192,7 @@ function load_game_scene_anim_char_common_burst_RC_red(
         common_game_scene_get_input_sys_cache_state_machine(self_side)()
         -- draw_correction
         self_side_obj_char[8] = 2
-        -- SFX
+        -- play_SFX
         play_obj_audio(move_SFX_table["red_RC_whiff"])
         -- update
         update_state()
@@ -5359,7 +5359,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         self_side_obj_char["hurtbox_table"] = hurtbox_data["RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 0
-        -- VFX
+        -- insert_VFX
         self_side_obj_char["VFX_hit_front_table"] = {}
         opponent_side_obj_char["VFX_hit_front_table"] = {}
         self_side_obj_char["VFX_hit_back_table"] = {}
@@ -5406,7 +5406,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
     res[7] = function()
         -- draw_correction
         self_side_obj_char[8] = 2
-        -- SFX
+        -- play_SFX
         play_obj_audio(move_SFX_table["blue_RC"])
         -- update
         update_state()
@@ -5619,7 +5619,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
     res[7] = function()
         -- draw_correction
         self_side_obj_char[8] = 2
-        -- VFX
+        -- insert_VFX
         self_side_obj_char["VFX_hit_front_table"] = {}
         opponent_side_obj_char["VFX_hit_front_table"] = {}
         self_side_obj_char["VFX_hit_back_table"] = {}
@@ -5627,7 +5627,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_purple_badge)
         insert_VFX_game_scene_char_RC_partical(self_side_obj_char)
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
-        -- SFX
+        -- play_SFX
         play_obj_audio(move_SFX_table["purple_RC"])
         -- update
         update_state()
@@ -5806,7 +5806,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     res[7] = function()
         -- draw_correction
         self_side_obj_char[8] = 2
-        -- VFX
+        -- insert_VFX
         self_side_obj_char["VFX_hit_front_table"] = {}
         opponent_side_obj_char["VFX_hit_front_table"] = {}
         self_side_obj_char["VFX_hit_back_table"] = {}
@@ -5814,7 +5814,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_yellow_badge)
         insert_VFX_game_scene_char_RC_partical(self_side_obj_char)
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
-        -- SFX
+        -- play_SFX
         play_obj_audio(move_SFX_table["yellow_RC_whiff"])
         -- update
         update_state()
