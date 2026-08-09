@@ -636,7 +636,7 @@ function insert_VFX_game_scene_char_TRM_j5S_move(obj_char)
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["j5S_move_VFX"]
-    obj_VFX["life"] = 12
+    obj_VFX["life"] = 9
     obj_VFX[1] = obj_char["x"] + obj_char[5]*(-160)
     obj_VFX[2] = obj_char["y"] + obj_char[6]*(-370)
     obj_VFX[3] = obj_char[3]
@@ -651,10 +651,10 @@ function insert_VFX_game_scene_char_TRM_j5S_move(obj_char)
     obj_VFX["animation"] = {}
     obj_VFX["animation"][0] = 0
     obj_VFX["animation"][3] = 1
-    obj_VFX["animation"][6] = 2
-    obj_VFX["animation"][9] = 3
+    obj_VFX["animation"][5] = 2
+    obj_VFX["animation"][7] = 3
     obj_VFX["animation"]["prop"] = 8
-    obj_VFX["animation"]["length"] = 12
+    obj_VFX["animation"]["length"] = 9
     obj_VFX["animation"]["loop"] = false
     init_frame_anim_without(obj_VFX,obj_VFX["animation"])
     obj_VFX["update"] = function()
