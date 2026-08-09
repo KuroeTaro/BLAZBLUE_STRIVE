@@ -1606,14 +1606,35 @@ function order_load_game_scene_char_RP_audio(load_order)
                 update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
             end
         end,
-        -- move_SFX 空中j系 part2 + 必杀
+        -- move_SFX 空中j系 part2
         [9] = function()
             local load_name_table = {
                 "j4_6Launcher_hit","j4_6Launcher_throw","j4_6Launcher_whiff",
-                "j5Launcher_block","j5Launcher_counter","j5Launcher_hit","j5Launcher_whiff",
+                "j5Launcher_block","j5Launcher_counter","j5Launcher_hit","j5Launcher_whiff"
+            }
+            for i,v in ipairs(load_name_table) do
+                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
+                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(PLAYER_AUDIO_DATA["move_SFX"][v],"static")
+                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
+            end
+        end,
+        -- move_SFX 必杀
+        [10] = function()
+            local load_name_table = {
                 "4SP_P_clip_0","4SP_P_clip_1","4SP_P_clip_2","4SP_P_knife_whiff",
                 "6SP_P_end","6SP_P_ground_bounce","6SP_P_hit","6SP_P_whiff",
                 "6SP_S_block","6SP_S_counter","6SP_S_hit","6SP_S_whiff"
+            }
+            for i,v in ipairs(load_name_table) do
+                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
+                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(PLAYER_AUDIO_DATA["move_SFX"][v],"static")
+                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
+            end
+        end,
+        -- move_SFX overdrive
+        [11] = function()
+            local load_name_table = {
+                "overdrive"
             }
             for i,v in ipairs(load_name_table) do
                 audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}

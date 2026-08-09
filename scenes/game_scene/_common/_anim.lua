@@ -4779,6 +4779,7 @@ function load_game_scene_anim_char_common_burst_overdrive(
     local obj_camera = obj_stage_game_scene_camera
     local obj_stage_main = obj_stage_game_scene_main
     local self_side = self_side_obj_char["player_side"]
+    local self_side_move_SFX_table = common_game_scene_get_SFX_move(self_side)
     local function update_move_overdrive_state()
         if opponent_side_obj_char["game_speed_force_0_countdown"] == 0 and self_side_obj_char["f"] >= 4 then
             self_side_obj_char["move_state"] = "recovery"
@@ -4860,6 +4861,7 @@ function load_game_scene_anim_char_common_burst_overdrive(
         insert_VFX_game_scene_char_overdrive_partical(self_side_obj_char,opponent_side_obj_char)
         insert_VFX_game_scene_char_overdrive_black_overlay(self_side_obj_char)
         -- play_SFX
+        play_obj_audio(self_side_move_SFX_table["overdrive"])
         -- update
         update_move_overdrive_state()
         -- character_uncommon_init
