@@ -123,10 +123,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "burst_RC_red_badge",
+	"image": "RC_red_badge",
 	"format": "RGBA8888",
 	"size": {"w":6000,"h":3600},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:ec8f02cbb8f4c3dc5606bde0a555541f:3c7ae68a9e56df0fb6bcbe189a75340f:9571ead7e51dcd663c3c7fa8f30ed54e$"
+	"smartupdate": "$TexturePacker:SmartUpdate:486b5785a8ebde8192db9c59782c5225:a5865336e3d5732bd061600f011b8d5f:9571ead7e51dcd663c3c7fa8f30ed54e$"
 }
 }

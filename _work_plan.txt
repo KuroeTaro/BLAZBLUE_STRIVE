@@ -1,12 +1,9 @@
 __WORK_PLAN__
 
-修改TRM的air block
-修改蓝RC badge
-
 ??config选项中自定义要不要79空投
 
--- 哈皮部分*各个必杀
--- 哈皮部分*超必杀
+各个必杀
+超必杀
 
 -- knockout场景
 -- 碎墙的血量伤害应用和碎墙knockout
