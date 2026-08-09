@@ -43,6 +43,7 @@ function load_game_scene_obj_stage()
     obj_stage_game_scene_wallstick["LCD"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallstick["state"] = "off"
     obj_stage_game_scene_wallstick["sprite_sheet"] = 0
+    obj_stage_game_scene_wallstick["pause_countdown"] = 0
     -- wallbreak
     obj_stage_game_scene_wallbreak_after_debris = {0,-865,0,0,0,1,0,0}
     obj_stage_game_scene_wallbreak_after_debris["FCT"] = {0,0,0,0,0,0,0,0}
@@ -108,13 +109,22 @@ function load_game_scene_anim_stage()
     anim_stage_point_linear_game_scene_camera_shake_x = {}
     anim_stage_point_linear_game_scene_camera_shake_y = {}
     -- wallstick
-    anim_state_frame_game_scene_wallstick_frame = {}
-    for i = 0,19 do
-        anim_state_frame_game_scene_wallstick_frame[i] = i
+    -- ease_in 阶段: 从第0帧播放到第11帧 (sprite_sheet id == 11)
+    anim_state_frame_game_scene_wallstick_ease_in = {}
+    for i = 0,11 do
+        anim_state_frame_game_scene_wallstick_ease_in[i] = i
     end
-    anim_state_frame_game_scene_wallstick_frame["prop"] = 8
-    anim_state_frame_game_scene_wallstick_frame["length"] = 19
-    anim_state_frame_game_scene_wallstick_frame["loop"] = false
+    anim_state_frame_game_scene_wallstick_ease_in["prop"] = 8
+    anim_state_frame_game_scene_wallstick_ease_in["length"] = 11
+    anim_state_frame_game_scene_wallstick_ease_in["loop"] = false
+    -- ease_out 阶段: 从第11帧继续播放到第19帧
+    anim_state_frame_game_scene_wallstick_ease_out = {}
+    for i = 11,19 do
+        anim_state_frame_game_scene_wallstick_ease_out[i-11] = i
+    end
+    anim_state_frame_game_scene_wallstick_ease_out["prop"] = 8
+    anim_state_frame_game_scene_wallstick_ease_out["length"] = 8
+    anim_state_frame_game_scene_wallstick_ease_out["loop"] = false
     -- wallbreak
     -- camera_animation
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x = {}
@@ -411,7 +421,7 @@ function order_load_game_scene_stage_audio(load_order)
         end,
         [3] = function()
             -- load_environment
-            local key_table = {"wind"}
+            local key_table = {"wallbreak_knockdown","wind"}
             for i = 1,#key_table do
                 local name = key_table[i]
                 audio_environment_game_scene_stage[name] = {1}
@@ -647,16 +657,22 @@ function state_machine_stage_game_scene_wallstick()
     local switch = {
         ["off"] = function()
         end,
-        ["paused"] = function()
-            obj_wallstick["pause_countdown"] = obj_wallstick["pause_countdown"] - 1
-            if obj_wallstick["pause_countdown"] <= 0 then
-                obj_wallstick["state"] = "on"
-                init_frame_anim_with(obj_wallstick,anim_state_frame_game_scene_wallstick_frame)
+        ["ease_in"] = function()
+            frame_animator(obj_wallstick,anim_state_frame_game_scene_wallstick_ease_in)
+            if get_frame_anim_end_state(obj_wallstick,anim_state_frame_game_scene_wallstick_ease_in) then
+                obj_wallstick["state"] = "pause"
             end
         end,
-        ["on"] = function()
-            frame_animator(obj_wallstick,anim_state_frame_game_scene_wallstick_frame)
-            if get_frame_anim_end_state(obj_wallstick,anim_state_frame_game_scene_wallstick_frame) then
+        ["pause"] = function()
+            obj_wallstick["pause_countdown"] = obj_wallstick["pause_countdown"] - 1
+            if obj_wallstick["pause_countdown"] <= 0 then
+                obj_wallstick["state"] = "ease_out"
+                init_frame_anim_with(obj_wallstick,anim_state_frame_game_scene_wallstick_ease_out)
+            end
+        end,
+        ["ease_out"] = function()
+            frame_animator(obj_wallstick,anim_state_frame_game_scene_wallstick_ease_out)
+            if get_frame_anim_end_state(obj_wallstick,anim_state_frame_game_scene_wallstick_ease_out) then
                 obj_wallstick[4] = 0
                 obj_wallstick[8] = 0
                 obj_wallstick["state"] = "off"
@@ -978,9 +994,8 @@ end
 function load_game_scene_anim_point_linear_character_hurt_side_wallbreak(hurt_side_obj_char,wallstick_on_side,adv)
     -- stage_anim
     local hurt_side = hurt_side_obj_char["player_side"]
-    local hurt_side_stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(hurt_side)
     anim_stage_game_scene_wallbreak_main[125] = function()
-        play_obj_audio(hurt_side_stage_interactive_SFX_table["ground_hard_knockdown"])
+        play_obj_audio(audio_environment_game_scene_stage["wallbreak_knockdown"])
     end
     -- wallbreak_x
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x = {}

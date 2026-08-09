@@ -848,13 +848,14 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char_a,obj_char_b)
                     obj_camera["state"] = "active"
                 end
             )
-            -- onwall_hit_effect_stage_obj
+            -- onwall_hit_effect_stage_obj (确认进入wallstick状态)
             table.insert(obj_stage_main["wallstick_stage_obj_active_application_table"],
                 function()
                     obj_wallstick[4] = 1
                     obj_wallstick["sprite_sheet"] = 1
-                    init_frame_anim_with(obj_wallstick,anim_state_frame_game_scene_wallstick_frame)
-                    obj_wallstick["state"] = "on"
+                    obj_wallstick["pause_countdown"] = 30
+                    init_frame_anim_with(obj_wallstick,anim_state_frame_game_scene_wallstick_ease_in)
+                    obj_wallstick["state"] = "ease_in"
                 end
             )
         -- not_engage_wallstick_but_shows_onwall_hit_effect_stage_obj
@@ -863,8 +864,9 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char_a,obj_char_b)
                 function()
                     obj_wallstick[4] = 1
                     obj_wallstick["sprite_sheet"] = 0
-                    init_frame_anim_with(obj_wallstick,anim_state_frame_game_scene_wallstick_frame)
-                    obj_wallstick["state"] = "on"
+                    obj_wallstick["pause_countdown"] = 0
+                    init_frame_anim_with(obj_wallstick,anim_state_frame_game_scene_wallstick_ease_in)
+                    obj_wallstick["state"] = "ease_in"
                 end
             )
         end
