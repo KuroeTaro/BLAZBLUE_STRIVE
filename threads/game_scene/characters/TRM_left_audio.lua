@@ -45,8 +45,7 @@ local move_SFX_folder_table = {
     {folder = "normal/2Launcher",files = {"2Launcher_block","2Launcher_counter","2Launcher_hit","2Launcher_whiff"}},
     {folder = "normal/4_6Launcher",files = {"4_6Launcher_hit","4_6Launcher_throw","4_6Launcher_whiff"}},
     {folder = "normal/5Launcher",files = {
-            "5Launcher_block","5Launcher_counter","5Launcher_hit",
-            "5Launcher_hold_block","5Launcher_hold_hit","5Launcher_hold_launcher_jump","5Launcher_hold_whiff"
+            "5Launcher_block","5Launcher_counter","5Launcher_hit"
         }
     },
     {folder = "normal/j5P",files = {"j5P_block","j5P_counter","j5P_hit","j5P_whiff"}},

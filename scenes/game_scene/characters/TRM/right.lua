@@ -17,14 +17,13 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["run_at_current_frame"] = false
     obj_char_game_scene_char_RP["run_at_current_sub_frame"] = false
     obj_char_game_scene_char_RP["player_side"] = "R"
-    obj_char_game_scene_char_RP["character_mode"] = "Dr.Due.Dasher" -- "Dr.Due.Dasher" "Roman.Raid.Radio"
+    obj_char_game_scene_char_RP["character_mode"] = "Good.Game.WP" -- "Good.Game.WP" "RW.Baby.Blue"
     obj_char_game_scene_char_RP["type"] = "character"
     obj_char_game_scene_char_RP["default_throw_distance"] = 0
     obj_char_game_scene_char_RP["state"] = "before_ease_in"
     obj_char_game_scene_char_RP["state_cache"] = "none"
     obj_char_game_scene_char_RP["sprite_sheet"] = "5_stand_idle"
     obj_char_game_scene_char_RP["height"] = "stand" -- stand crouch air OTG wallstick
-    obj_char_game_scene_char_RP["air_gatling_state"] = false
     obj_char_game_scene_char_RP["hit_type"] = "none" -- none strike throw projectile all
     obj_char_game_scene_char_RP["hit_guard_type"] = "none" -- none all low mid high
     obj_char_game_scene_char_RP["hurt_state"] = "idle" -- idle unblock punish counter GP parry
@@ -199,8 +198,6 @@ function load_game_scene_obj_char_RP()
         ["knockdown"] = true,
         ["knockdown_recovery"] = true,
         ["knockout"] = true,
-        ["5Launcher_hold_hurt_entering"] = true,
-        ["5Launcher_hold_hurt_exiting"] = true,
         ["burst_RC_blue"] = true,
         ["burst_RC_purple"] = true,
         ["burst_RC_red"] = true,
@@ -235,9 +232,7 @@ function load_game_scene_obj_char_RP()
         ["wallbreak_hurt"] = true,
         ["knockdown"] = true,
         ["knockdown_recovery"] = true,
-        ["knockout"] = true,
-        ["5Launcher_hold_hurt_entering"] = true,
-        ["5Launcher_hold_hurt_exiting"] = true
+        ["knockout"] = true
     }
     obj_char_game_scene_char_RP["6SP_S_shot_sys_pass_state"] = {
         ["at_the_ready_ease_out"] = true,
@@ -1583,8 +1578,7 @@ function order_load_game_scene_char_RP_audio(load_order)
             local load_name_table = {
                 "2Launcher_block","2Launcher_counter","2Launcher_hit","2Launcher_whiff",
                 "4_6Launcher_hit","4_6Launcher_throw","4_6Launcher_whiff",
-                "5Launcher_block","5Launcher_counter","5Launcher_hit",
-                "5Launcher_hold_block","5Launcher_hold_hit","5Launcher_hold_launcher_jump","5Launcher_hold_whiff"
+                "5Launcher_block","5Launcher_counter","5Launcher_hit"
             }
             for i,v in ipairs(load_name_table) do
                 audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
@@ -2011,12 +2005,6 @@ function state_machine_char_game_scene_char_RP()
                 character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
             state_gate_game_scene_char_RP_from_5Launcher(input,self_side_obj_char,opponent_side_obj_char)
-        end,
-        ["5Launcher_hold"] = function()
-            if run_at_current_frame then
-                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
-            end
-            state_gate_game_scene_char_RP_from_5Launcher_hold(input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["j5P"] = function()
             if run_at_current_frame then
@@ -6148,8 +6136,6 @@ function state_gate_game_scene_char_RP_from_5Launcher(input,self_side_obj_char,o
         return true
     end
 end
-function state_gate_game_scene_char_RP_from_5Launcher_hold(input,self_side_obj_char,opponent_side_obj_char)
-end
 function state_gate_game_scene_char_RP_from_j5P(input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
     if state_gate_game_scene_char_RP_common_to_burst_RC_purple(input,self_side_obj_char,opponent_side_obj_char) then
@@ -6181,7 +6167,7 @@ function state_gate_game_scene_char_RP_from_j5P(input,self_side_obj_char,opponen
             return true
         end
     end
-    if self_side_obj_char["hit_cancel"] and self_side_obj_char["air_gatling_state"] then
+    if self_side_obj_char["hit_cancel"] and self_side_obj_char["character_mode"] == "RW.Baby.Blue" then
         -- _j2K
         if self_side_obj_char["y"] < -240 and common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press(input["K"]) then
             if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
@@ -6264,7 +6250,7 @@ function state_gate_game_scene_char_RP_from_j5K(input,self_side_obj_char,opponen
             return true
         end
     end
-    if self_side_obj_char["hit_cancel"] and self_side_obj_char["air_gatling_state"] then
+    if self_side_obj_char["hit_cancel"] and self_side_obj_char["character_mode"] == "RW.Baby.Blue" then
         -- _j5P
         if self_side_obj_char["y"] < -240 and test_input_sys_press(input["P"]) then
             if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then

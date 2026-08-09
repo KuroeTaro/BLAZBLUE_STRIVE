@@ -336,9 +336,6 @@ _4_6Launcher
 _5Launcher
     _burst_RC_purple
     _5_stand_idle
-_5Launcher_hold
-    _burst_RC_purple
-    _5_stand_idle
 
 
 _j5P

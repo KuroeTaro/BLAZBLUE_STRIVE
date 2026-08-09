@@ -508,8 +508,6 @@ function update_game_scene_training_wallbreak()
         current_update_block = update_game_scene_training_main
     end
 end
-function update_game_scene_training_5Launcher_hold()
-end
 function update_game_scene_local_match_before_ease_in()
     update_game_scene_char_LP()
     update_game_scene_char_RP()
