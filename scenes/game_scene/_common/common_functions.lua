@@ -958,8 +958,8 @@ function common_game_scene_throw_hit_function(hit_side_obj_char,hurt_side_obj_ch
     common_game_scene_game_speed_load_application(hit_side_obj_char,{1,1,1,0,0,0})
 end
 function common_game_scene_throw_hurt_function(hit_side_obj_char,hurt_side_obj_char)
-    local hurt_side = hurt_side_obj_char["player_side"]
     local obj_camera = obj_stage_game_scene_camera
+    local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
     local sprite_sheet = nil

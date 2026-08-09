@@ -4776,9 +4776,9 @@ function load_game_scene_anim_char_common_burst_overdrive(
     overdrive_halved,character_uncommon_init
 )
     local res = {}
-    local self_side = self_side_obj_char["player_side"]
     local obj_camera = obj_stage_game_scene_camera
     local obj_stage_main = obj_stage_game_scene_main
+    local self_side = self_side_obj_char["player_side"]
     local function update_move_overdrive_state()
         if opponent_side_obj_char["game_speed_force_0_countdown"] == 0 and self_side_obj_char["f"] >= 4 then
             self_side_obj_char["move_state"] = "recovery"

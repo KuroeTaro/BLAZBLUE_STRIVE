@@ -794,9 +794,9 @@ function update_game_scene_camera_application_table()
     end
 end
 function update_game_scene_test_and_apply_wallstick()
+    local obj_camera = obj_stage_game_scene_camera
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
-    local obj_camera = obj_stage_game_scene_camera
     update_game_scene_test_and_apply_wallstick_sub(char_LP,char_RP)
     update_game_scene_test_and_apply_wallstick_sub(char_RP,char_LP)
 end

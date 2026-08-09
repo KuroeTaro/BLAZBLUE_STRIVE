@@ -1,5 +1,6 @@
 function insert_VFX_game_scene_char_TRM_2P_move(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["2P_move_VFX"]
@@ -43,7 +44,6 @@ function insert_VFX_game_scene_char_TRM_2P_move(obj_char)
         -- obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
-        local obj_camera = obj_stage_game_scene_camera
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
@@ -53,6 +53,7 @@ function insert_VFX_game_scene_char_TRM_2P_move(obj_char)
 end
 function insert_VFX_game_scene_char_TRM_6P_move(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["6P_move_VFX"]
@@ -99,7 +100,6 @@ function insert_VFX_game_scene_char_TRM_6P_move(obj_char)
         -- obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
-        local obj_camera = obj_stage_game_scene_camera
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
@@ -111,6 +111,7 @@ function insert_VFX_game_scene_char_TRM_6P_move(obj_char)
 end
 function insert_VFX_game_scene_char_TRM_5P_move(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["5P_move_VFX"]
@@ -154,7 +155,6 @@ function insert_VFX_game_scene_char_TRM_5P_move(obj_char)
         -- obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
-        local obj_camera = obj_stage_game_scene_camera
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
@@ -164,6 +164,7 @@ function insert_VFX_game_scene_char_TRM_5P_move(obj_char)
 end
 function insert_VFX_game_scene_char_TRM_2S_move(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["2S_move_VFX"]
@@ -207,7 +208,6 @@ function insert_VFX_game_scene_char_TRM_2S_move(obj_char)
         -- obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
-        local obj_camera = obj_stage_game_scene_camera
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
@@ -217,6 +217,7 @@ function insert_VFX_game_scene_char_TRM_2S_move(obj_char)
 end
 function insert_VFX_game_scene_char_TRM_6S_move(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["6S_move_VFX"]
@@ -265,7 +266,6 @@ function insert_VFX_game_scene_char_TRM_6S_move(obj_char)
         -- obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
-        local obj_camera = obj_stage_game_scene_camera
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
@@ -277,6 +277,7 @@ function insert_VFX_game_scene_char_TRM_6S_move(obj_char)
 end
 function insert_VFX_game_scene_char_TRM_cS_move(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["cS_move_VFX"]
@@ -323,7 +324,6 @@ function insert_VFX_game_scene_char_TRM_cS_move(obj_char)
         -- obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
-        local obj_camera = obj_stage_game_scene_camera
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
@@ -335,15 +335,16 @@ function insert_VFX_game_scene_char_TRM_cS_move(obj_char)
 end
 function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_switch(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
-    local side = obj_char["player_side"]
-    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
-    local image_sprite_sheet = image_sprite_sheet_table["5H_switch_move_VFX"]
+    local obj_camera = obj_stage_game_scene_camera
     local height_y_offset = {
         ["stand"] = -730,
         ["crouch"] = -530,
         ["air"] = -440,
         ["OTG"] = -230
     }
+    local side = obj_char["player_side"]
+    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
+    local image_sprite_sheet = image_sprite_sheet_table["5H_switch_move_VFX"]
     obj_VFX["y_offset"] = height_y_offset[obj_char["height"]]
     obj_VFX["life"] = 30
     obj_VFX[1] = obj_char["x"] + obj_char[5]*(-370)
@@ -370,12 +371,6 @@ function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_switch(obj_char)
         obj_VFX["life"] = obj_VFX["life"] - 1
     end
     obj_VFX["draw_sync"] = function()
-        local height_y_offset = {
-            ["stand"] = -730,
-            ["crouch"] = -530,
-            ["air"] = -440,
-            ["OTG"] = -230
-        }
         obj_VFX["y_offset"] = height_y_offset[obj_char["height"]]
         obj_VFX[1] = obj_char["x"] + obj_char[5]*(-370)
         obj_VFX[2] = obj_char["y"] + obj_char[6]*obj_VFX["y_offset"]
@@ -386,7 +381,6 @@ function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_switch(obj_char)
         obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
-        local obj_camera = obj_stage_game_scene_camera
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
@@ -399,9 +393,7 @@ end
 function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_shot_oroboros_blast(obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
-    local side = obj_char["player_side"]
-    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
-    local image_sprite_sheet = image_sprite_sheet_table["5H_shot_oroboros_blast_move_VFX"]
+    local obj_camera = obj_stage_game_scene_camera
     local oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
     local reticle_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1]+160,obj_char["shot_sys_reticle_stage_pos_current"][2]+160}
     local center_dx = 35
@@ -409,6 +401,9 @@ function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_shot_oroboros_blast
     local center_r = character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,reticle_pos)
     local rot_dx = center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.cos(center_r) - center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.sin(center_r)
     local rot_dy = center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.sin(center_r) + center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.cos(center_r)
+    local side = obj_char["player_side"]
+    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
+    local image_sprite_sheet = image_sprite_sheet_table["5H_shot_oroboros_blast_move_VFX"]
     obj_VFX["life"] = 15
     obj_VFX[1] = obj_char["shot_sys_oroboros_ease_current"][1] + rot_dx
     obj_VFX[2] = obj_char["shot_sys_oroboros_ease_current"][2] + rot_dy
@@ -456,7 +451,6 @@ function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_shot_oroboros_blast
         obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
-        local obj_camera = obj_stage_game_scene_camera
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8].."")
@@ -469,6 +463,7 @@ end
 function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
     obj_VFX["life"] = 16
     obj_VFX[1] = hit_side_obj_char["shot_sys_reticle"][1] - 230 + 160
     obj_VFX[2] = hit_side_obj_char["shot_sys_reticle"][2] - 255 + 160
@@ -518,7 +513,6 @@ function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit
         obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
-        local obj_camera = obj_stage_game_scene_camera
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_blast_ver0
         -- obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
@@ -531,6 +525,7 @@ function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit
 end
 function insert_VFX_game_scene_char_TRM_5Launcher_move_slash(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["5Launcher_move_VFX"]
@@ -573,7 +568,6 @@ function insert_VFX_game_scene_char_TRM_5Launcher_move_slash(obj_char)
         -- obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
-        local obj_camera = obj_stage_game_scene_camera
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
@@ -583,6 +577,7 @@ function insert_VFX_game_scene_char_TRM_5Launcher_move_slash(obj_char)
 end
 function insert_VFX_game_scene_char_TRM_5Launcher_move_glow(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["5Launcher_glow_move_VFX"]
@@ -626,7 +621,6 @@ function insert_VFX_game_scene_char_TRM_5Launcher_move_glow(obj_char)
         -- obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
-        local obj_camera = obj_stage_game_scene_camera
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
@@ -638,6 +632,7 @@ function insert_VFX_game_scene_char_TRM_5Launcher_move_glow(obj_char)
 end
 function insert_VFX_game_scene_char_TRM_j5S_move(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["j5S_move_VFX"]
@@ -691,7 +686,6 @@ function insert_VFX_game_scene_char_TRM_j5S_move(obj_char)
         -- obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
-        local obj_camera = obj_stage_game_scene_camera
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
@@ -703,6 +697,7 @@ function insert_VFX_game_scene_char_TRM_j5S_move(obj_char)
 end
 function insert_VFX_game_scene_char_TRM_6SP_P_curse_ball_spawner(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["6SP_P_curse_ball_spawner_move_VFX"]
@@ -777,7 +772,6 @@ function insert_VFX_game_scene_char_TRM_6SP_P_curse_ball_spawner(obj_char)
         -- obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
-        local obj_camera = obj_stage_game_scene_camera
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
@@ -787,6 +781,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_curse_ball_spawner(obj_char)
 end
 function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["6SP_P_curse_ball_spawn_halo_move_VFX"]
@@ -850,7 +845,6 @@ function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
         -- obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
-        local obj_camera = obj_stage_game_scene_camera
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
@@ -862,11 +856,11 @@ function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
 end
 function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_obj_char)
     local obj_VFX = {0,0,0,0.75,0,0,0,0}
-    local hit_side = hit_side_obj_char["player_side"]
-    local hit_side_image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(hit_side)
-    local hit_side_image_sprite_sheet = hit_side_image_sprite_sheet_table["6SP_P_arua_move_VFX"]
     local obj_camera = obj_stage_game_scene_camera
+    local hit_side = hit_side_obj_char["player_side"]
     local hit_side_shot_sys_curse_force_off_state = hit_side_obj_char["shot_sys_curse_force_off_state"]
+    local hit_side_image_sprite_sheet = common_game_scene_get_VFX_sprite_sheet_table(hit_side)["6SP_P_arua_move_VFX"]
+    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     if hurt_side_obj_char["height"] == "air" then
         obj_VFX["y_offset"] = 400 + hurt_side_obj_char["pushbox"][4]/4*3
     elseif hurt_side_obj_char["height"] == "wallstick" then
@@ -923,6 +917,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
                 if hit_side_shot_sys_curse_force_off_state[hit_side_obj_char["state"]] or (not hit_side_obj_char["shot_sys_curse"]) then
                     obj_VFX["state"] = "end"
                     init_point_linear_anim_with(obj_VFX,obj_VFX["opacity_ease_out_point_linear_animation"])
+                    play_obj_audio(hit_side_move_SFX_table["6SP_P_end"])
                 end
                 if hurt_side_obj_char["state"] == "wallbreak_hurt" then
                     obj_VFX[4] = 0
@@ -993,6 +988,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
 end
 function insert_VFX_game_scene_char_TRM_6SP_S_move(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["6SP_S_move_VFX"]
@@ -1040,7 +1036,6 @@ function insert_VFX_game_scene_char_TRM_6SP_S_move(obj_char)
         -- obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
-        local obj_camera = obj_stage_game_scene_camera
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))

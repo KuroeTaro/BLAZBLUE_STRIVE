@@ -56,7 +56,7 @@ local move_SFX_folder_table = {
     {folder = "normal/j4_6Launcher",files = {"j4_6Launcher_hit","j4_6Launcher_throw","j4_6Launcher_whiff"}},
     {folder = "normal/j5Launcher",files = {"j5Launcher_block","j5Launcher_counter","j5Launcher_hit","j5Launcher_whiff"}},
     {folder = "special/4SP_P",files = {"4SP_P_clip_0","4SP_P_clip_1","4SP_P_clip_2","4SP_P_knife_whiff"}},
-    {folder = "special/6SP_P",files = {"6SP_P_ground_bounce","6SP_P_hit","6SP_P_whiff"}},
+    {folder = "special/6SP_P",files = {"6SP_P_end","6SP_P_ground_bounce","6SP_P_hit","6SP_P_whiff"}},
     {folder = "special/6SP_S",files = {"6SP_S_block","6SP_S_counter","6SP_S_hit","6SP_S_whiff"}}
 }
 for i = 1,#move_SFX_folder_table do

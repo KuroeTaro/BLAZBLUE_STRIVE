@@ -4885,8 +4885,8 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_in(obj_char
 end
 function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(hit_side_obj_char,hurt_side_obj_char)
     local res = {}
-    local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
+    local obj_stage_main = obj_stage_game_scene_main
     res["prop_f"] = "shot_sys_f"
     res["anim_length"] = 18
     for i = 13,17 do
@@ -5330,11 +5330,11 @@ end
 function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     local res = {}
     local obj_camera = obj_stage_game_scene_camera
-    local side = obj_char["player_side"]
-    local move_SFX_table = common_game_scene_get_SFX_move(side)
     local oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
     local reticle_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1]+160,obj_char["shot_sys_reticle_stage_pos_current"][2]+160}
     local center_r = obj_char[5]*character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,reticle_pos)
+    local side = obj_char["player_side"]
+    local move_SFX_table = common_game_scene_get_SFX_move(side)
     local function update_oroboros_r(obj_char,i)
         obj_char["shot_sys_oroboros_aim_r"] = center_r*(27-i)/17 + 0.42*(1-(27-i)/17)
     end
@@ -6122,8 +6122,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(hit_side_obj_cha
 end
 function load_game_scene_anim_char_TRM_4_6Launcher_success(hit_side_obj_char,hurt_side_obj_char)
     local res = {}
-    local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
+    local obj_stage_main = obj_stage_game_scene_main
     local hit_side = hit_side_obj_char["player_side"]
     local hit_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
@@ -8669,8 +8669,8 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(hit_side_obj_ch
 end
 function load_game_scene_anim_char_TRM_j4_6Launcher_success(hit_side_obj_char,hurt_side_obj_char)
     local res = {}
-    local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
+    local obj_stage_main = obj_stage_game_scene_main
     local hit_side = hit_side_obj_char["player_side"]
     local hit_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
@@ -8967,9 +8967,6 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
         if obj_char["ability_gauge"][1] == obj_char["ability_gauge"][2] then
             -- state
             obj_char["f"] = 57
-            -- play_SFX
-            play_obj_audio(move_SFX_table["4SP_P_knife_whiff"])
-            play_obj_audio(move_SFX_table["4SP_P_clip_2"])
             -- draw_correction
             obj_char[8] = 12
         end
@@ -9048,8 +9045,6 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
     res[19] = function()
         -- draw_correction
         obj_char[8] = 4
-        -- play_SFX
-        play_obj_audio(move_SFX_table["4SP_P_knife_whiff"])
     end
     res[23] = function()
         -- sub_obj_table
@@ -9057,7 +9052,7 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
         -- draw_correction
         obj_char[8] = 5
         -- play_SFX
-        play_obj_audio(move_SFX_table["4SP_P_clip_1"])
+        play_obj_audio(move_SFX_table["4SP_P_clip_2"])
     end
     res[29] = function()
         -- state
@@ -9081,10 +9076,12 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
         obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
         -- draw_correction
         obj_char[8] = 6
-        -- play_SFX
-        play_obj_audio(move_SFX_table["4SP_P_clip_0"])
         -- uncommon_update
         test_full_ability_gauge_anim_jump()
+    end
+    res[32] = function()
+        -- play_SFX
+        play_obj_audio(move_SFX_table["4SP_P_clip_0"])
     end
     res[35] = function()
         -- draw_correction
@@ -9114,7 +9111,7 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
         -- draw_correction
         obj_char[8] = 10
         -- play_SFX
-        play_obj_audio(move_SFX_table["4SP_P_clip_2"])
+        play_obj_audio(move_SFX_table["4SP_P_clip_0"])
         -- uncommon_update
         test_full_ability_gauge_anim_jump()
     end
@@ -9123,25 +9120,26 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
         obj_char[8] = 11
         -- uncommon_update
         test_full_ability_gauge_anim_jump()
+        -- play_SFX
+        play_obj_audio(move_SFX_table["4SP_P_clip_2"])
     end
     res[57] = function()
         -- sub_obj_table
         obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
-        -- play_SFX
-        play_obj_audio(move_SFX_table["4SP_P_knife_whiff"])
-        play_obj_audio(move_SFX_table["4SP_P_clip_1"])
         -- draw_correction
         obj_char[8] = 12
     end
     res[61] = function()
         -- draw_correction
         obj_char[8] = 13
+        -- play_SFX
+        play_obj_audio(move_SFX_table["4SP_P_knife_whiff"])
     end
     res[66] = function()
         -- sub_obj_table
         obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
         -- play_SFX
-        play_obj_audio(move_SFX_table["4SP_P_clip_0"])
+        play_obj_audio(move_SFX_table["4SP_P_clip_1"])
         -- draw_correction
         obj_char[8] = 14
     end

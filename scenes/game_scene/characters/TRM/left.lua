@@ -1612,7 +1612,7 @@ function order_load_game_scene_char_LP_audio(load_order)
                 "j4_6Launcher_hit","j4_6Launcher_throw","j4_6Launcher_whiff",
                 "j5Launcher_block","j5Launcher_counter","j5Launcher_hit","j5Launcher_whiff",
                 "4SP_P_clip_0","4SP_P_clip_1","4SP_P_clip_2","4SP_P_knife_whiff",
-                "6SP_P_ground_bounce","6SP_P_hit","6SP_P_whiff",
+                "6SP_P_end","6SP_P_ground_bounce","6SP_P_hit","6SP_P_whiff",
                 "6SP_S_block","6SP_S_counter","6SP_S_hit","6SP_S_whiff"
             }
             for i,v in ipairs(load_name_table) do
