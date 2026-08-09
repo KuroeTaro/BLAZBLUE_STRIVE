@@ -5080,6 +5080,10 @@ function state_gate_game_scene_char_RP_from_6dash_dash_cancel(input,self_side_ob
     -- common_ground_to_special_move
     if self_side_obj_char["idle_cancel"] then
         if state_gate_game_scene_char_RP_common_ground_to_special_move(input,self_side_obj_char,opponent_side_obj_char) then
+            -- Good.Game.WP dash cancel -> special does not apply damage correction
+            if self_side_obj_char["character_mode"] == "Good.Game.WP" then
+                self_side_obj_char["hit_damage_correction_factor"] = 1
+            end
             play_obj_audio(self_side_stage_interactive_SFX_table["ground_dash_skid"])
             stop_obj_audio(self_side_stage_interactive_SFX_table["ground_dash_start_up"])
             stop_obj_audio(self_side_stage_interactive_SFX_table["ground_dash_loop"])
