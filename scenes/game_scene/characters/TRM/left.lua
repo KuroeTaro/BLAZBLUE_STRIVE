@@ -402,7 +402,7 @@ function load_game_scene_box_anchor_data_LP()
     obj_pushboxs_data_game_scene_char_LP["0_wallbreak_hurt_non_adv"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_LP["0_wallbreak_hurt_non_adv"] = {}
     obj_hurtboxs_data_game_scene_char_LP["0_wallbreak_hurt_non_adv"][0] = {}
-    obj_anchor_data_game_scene_char_LP["0_wallbreak_hurt_non_adv"] = {270,575}
+    obj_anchor_data_game_scene_char_LP["0_wallbreak_hurt_non_adv"] = {280,575}
     -- 4_stand_block_guard_crash
     obj_pushboxs_data_game_scene_char_LP["4_stand_block_guard_crash"] = {}
     obj_pushboxs_data_game_scene_char_LP["4_stand_block_guard_crash"][0] = stand_pushbox
