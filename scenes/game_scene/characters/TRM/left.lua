@@ -1578,7 +1578,7 @@ function order_load_game_scene_char_LP_audio(load_order)
             local load_name_table = {
                 "2Launcher_block","2Launcher_counter","2Launcher_hit","2Launcher_whiff",
                 "4_6Launcher_hit","4_6Launcher_throw","4_6Launcher_whiff",
-                "5Launcher_block","5Launcher_counter","5Launcher_hit"
+                "5Launcher_block","5Launcher_counter","5Launcher_hit","5Launcher_whiff"
             }
             for i,v in ipairs(load_name_table) do
                 audio_SFX_game_scene_move_SFX_LP[v] = {1,LCT = {0},LCD = {0}}
