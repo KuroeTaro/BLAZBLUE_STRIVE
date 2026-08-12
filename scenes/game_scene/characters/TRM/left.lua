@@ -1264,9 +1264,9 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "j2K",
                 "j5K",
                 "j5S",
-                "j5Launcher",
                 "j4_6Launcher",
-                "j4_6Launcher_success"
+                "j4_6Launcher_success",
+                "j5Launcher"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_LP[v] = 
@@ -1439,10 +1439,10 @@ function order_load_game_scene_char_LP_frames(load_order)
         -- move_VFX special
         [36] = function()
             local load_name_table = {
-                "6SP_S",
-                "6SP_P_arua",
+                "6SP_P_curse_ball_spawner",
                 "6SP_P_curse_ball_spawn_halo",
-                "6SP_P_curse_ball_spawner"
+                "6SP_P_arua",
+                "6SP_S"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_VFX_game_scene_LP[v.."_move_VFX"] = 
