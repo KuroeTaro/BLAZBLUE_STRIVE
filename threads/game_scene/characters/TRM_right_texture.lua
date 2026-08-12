@@ -113,6 +113,7 @@ local load_attack_name_table = {
         -- special
     "4SP_P",
     "6SP_P",
+    "4SP_K",
     "6SP_S"
 }
 for i,v in ipairs(load_attack_name_table) do
