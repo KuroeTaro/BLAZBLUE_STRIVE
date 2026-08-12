@@ -2991,7 +2991,10 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
         -- state_number
-        hit_side_obj_char["velocity"] = {hit_side_obj_char[5]*(60+hit_side_velocity_cache),0}
+        if hit_side_velocity_cache < 0 then
+            hit_side_velocity_cache = 0
+        end
+        hit_side_obj_char["velocity"] = {(hit_side_velocity_cache+60)*hit_side_obj_char[5],0}
         hit_side_obj_char["friction"] = 1
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
@@ -3885,6 +3888,7 @@ end
 function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
     local res = {}
     local hit_side = hit_side_obj_char["player_side"]
+    local hit_side_velocity_cache = hit_side_obj_char["velocity"][1]*hit_side_obj_char[5]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     res["prop_f"] = "f"
     res["anim_length"] = 59
@@ -3899,10 +3903,10 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
         -- state_number
-        if hit_side_obj_char["velocity"][1]*hit_side_obj_char[5] < 9.0 then
-            hit_side_obj_char["velocity"][1] = 9.0*hit_side_obj_char[5]
+        if hit_side_velocity_cache < 0 then
+            hit_side_velocity_cache = 0
         end
-        hit_side_obj_char["velocity"][1] = hit_side_obj_char["velocity"][1]+12.5*hit_side_obj_char[5]
+        hit_side_obj_char["velocity"] = {(hit_side_velocity_cache+21.5)*hit_side_obj_char[5],0}
         hit_side_obj_char["friction"] = 50
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
@@ -4498,6 +4502,7 @@ end
 function load_game_scene_anim_char_TRM_fS(hit_side_obj_char,hurt_side_obj_char)
     local res = {}
     local hit_side = hit_side_obj_char["player_side"]
+    local hit_side_velocity_cache = hit_side_obj_char["velocity"][1]*hit_side_obj_char[5]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     res["prop_f"] = "f"
     res["anim_length"] = 40
@@ -4512,10 +4517,10 @@ function load_game_scene_anim_char_TRM_fS(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
         -- state_number
-        if hit_side_obj_char["velocity"][1]*hit_side_obj_char[5] < 9.0 then
-            hit_side_obj_char["velocity"][1] = 9.0*hit_side_obj_char[5]
+        if hit_side_velocity_cache < 0 then
+            hit_side_velocity_cache = 0
         end
-        hit_side_obj_char["velocity"][1] = hit_side_obj_char["velocity"][1]+46.0*hit_side_obj_char[5]
+        hit_side_obj_char["velocity"] = {(hit_side_velocity_cache+55)*hit_side_obj_char[5],0}
         hit_side_obj_char["friction"] = 12
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
@@ -9057,16 +9062,10 @@ function load_game_scene_anim_char_TRM_4SP_K(hit_side_obj_char,hurt_side_obj_cha
     local res = {}
     local hit_side = hit_side_obj_char["player_side"]
     local hit_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
-    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     local hit_side_velocity_cache = hit_side_obj_char["velocity"][1]*hit_side_obj_char[5]
+    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     res["prop_f"] = "f"
     res["anim_length"] = 40
-    for i=0,16 do
-        res[i] = function()
-            -- state_number
-            hit_side_obj_char["velocity"][1] = hit_side_obj_char[5]*(15+hit_side_velocity_cache)
-        end
-    end
     res[0] = function()
         -- pre_set
         common_game_scene_reset_velocity_by_ground_friction(hit_side_obj_char)
@@ -9076,8 +9075,11 @@ function load_game_scene_anim_char_TRM_4SP_K(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "recovery" -- none startup active recovery
         -- state_number
-        hit_side_obj_char["velocity"][1] = hit_side_obj_char[5]*(15+hit_side_velocity_cache)
-        hit_side_obj_char["friction"] = 1
+        if hit_side_velocity_cache < 0 then
+            hit_side_velocity_cache = 0
+        end
+        hit_side_obj_char["velocity"] = {(hit_side_velocity_cache+75)*hit_side_obj_char[5],0}
+        hit_side_obj_char["friction"] = 5
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["idle_cancel"] = false
@@ -9100,13 +9102,11 @@ function load_game_scene_anim_char_TRM_4SP_K(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 0
-        hit_side_obj_char["anchor_pos"] = {370,540}
+        hit_side_obj_char["anchor_pos"] = {315,330}
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
     res[3] = function()
-        -- state_number
-        hit_side_obj_char["velocity"][1] = hit_side_obj_char[5]*(15+hit_side_velocity_cache)
         -- collide
         hit_side_obj_char["pushbox"] = {0,-65,120,130}
         hit_side_obj_char["hurtbox_table"] = {{0,-75,280,150}}
@@ -9114,20 +9114,14 @@ function load_game_scene_anim_char_TRM_4SP_K(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char[8] = 1
     end
     res[8] = function()
-        -- state_number
-        hit_side_obj_char["velocity"][1] = hit_side_obj_char[5]*(15+hit_side_velocity_cache)
         -- draw_correction
         hit_side_obj_char[8] = 2
     end
     res[13] = function()
-        -- state_number
-        hit_side_obj_char["velocity"][1] = hit_side_obj_char[5]*(15+hit_side_velocity_cache)
         -- draw_correction
         hit_side_obj_char[8] = 3
     end
     res[16] = function()
-        -- state_number
-        hit_side_obj_char["velocity"][1] = 0
         -- collide
         hit_side_obj_char["pushbox"] = {0,-185,120,370}
         hit_side_obj_char["pushbox_opponent_collision_active"] = true
