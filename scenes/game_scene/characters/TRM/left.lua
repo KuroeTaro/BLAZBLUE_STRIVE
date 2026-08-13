@@ -2676,7 +2676,7 @@ function state_machine_char_game_scene_char_LP_input_sys_cache()
             end
         end,
         ["load"] = function()
-            for i=1,20 do
+            for i = 1,20 do
                 if self_side_obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] then
                     input[INPUT_SYS_COMMAND_TABLE[i]] = "Pressing"
                 end
@@ -2686,7 +2686,7 @@ function state_machine_char_game_scene_char_LP_input_sys_cache()
             init_input_sys_cache_LP(self_side_obj_char)
         end,
         ["load_without_direction"] = function()
-            for i=5,20 do
+            for i = 5,20 do
                 if self_side_obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] then
                     input[INPUT_SYS_COMMAND_TABLE[i]] = "Pressing"
                 end
@@ -2722,12 +2722,12 @@ function state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
     if this_function then this_function() end
 end
 function init_input_sys_cache_LP(self_side_obj_char)
-    for i=1,20 do
+    for i = 1,20 do
         self_side_obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] = false
     end
 end
 function init_input_sys_cache_negative_edge_LP(self_side_obj_char)
-    for i=1,20 do
+    for i = 1,20 do
         self_side_obj_char["input_sys_cache_negative_edge"][INPUT_SYS_COMMAND_TABLE[i]] = false
     end
 end
@@ -6925,7 +6925,7 @@ function draw_game_scene_char_LP_pushbox()
     draw_box["w"] = self_side_obj_char["pushbox"][3]
     draw_box["h"] = self_side_obj_char["pushbox"][4]
     draw_3d_color_box(obj_camera,draw_box,color)
-    for i=1,#self_side_obj_char["projectile_table"] do
+    for i = 1,#self_side_obj_char["projectile_table"] do
         local current_projectile = self_side_obj_char["projectile_table"][i]
         local current_pushbox = current_projectile["pushbox"]
         if current_pushbox then
@@ -6948,7 +6948,7 @@ function draw_game_scene_char_LP_hurtbox()
     local obj_camera = obj_stage_game_scene_camera
     -- hurt box
     local color = DEBUG_BOX_COLOR_BLUE
-    for i=1,#self_side_obj_char["hurtbox_table"] do
+    for i = 1,#self_side_obj_char["hurtbox_table"] do
         local current_hurtbox = self_side_obj_char["hurtbox_table"][i]
         local draw_box = {
             self_side_obj_char["x"] + (current_hurtbox[1] - current_hurtbox[3]/2)*self_side_obj_char[5],
@@ -6959,10 +6959,10 @@ function draw_game_scene_char_LP_hurtbox()
         draw_box["h"] = current_hurtbox[4]
         draw_3d_color_box(obj_camera,draw_box,color)
     end
-    for i=1,#self_side_obj_char["projectile_table"] do
+    for i = 1,#self_side_obj_char["projectile_table"] do
         local current_projectile = self_side_obj_char["projectile_table"][i]
         if current_projectile["hurtbox_table"] then
-            for j=1,#current_projectile["hurtbox_table"] do
+            for j = 1,#current_projectile["hurtbox_table"] do
                 local current_hurtbox = current_projectile["hurtbox_table"][j]
                 if current_hurtbox then
                     local draw_box = {
@@ -6986,7 +6986,7 @@ function draw_game_scene_char_LP_hitbox()
     local obj_camera = obj_stage_game_scene_camera
     -- hit box
     local color = DEBUG_BOX_COLOR_RED
-    for i=1,#self_side_obj_char["hitbox_table"] do
+    for i = 1,#self_side_obj_char["hitbox_table"] do
         local current_hitbox = self_side_obj_char["hitbox_table"][i]
         local draw_box = {
             self_side_obj_char["x"] + (current_hitbox[1] - current_hitbox[3]/2)*self_side_obj_char[5],
@@ -6997,10 +6997,10 @@ function draw_game_scene_char_LP_hitbox()
         draw_box["h"] = current_hitbox[4]
         draw_3d_color_box(obj_camera,draw_box,color)
     end
-    for i=1,#self_side_obj_char["projectile_table"] do
+    for i = 1,#self_side_obj_char["projectile_table"] do
         local current_projectile = self_side_obj_char["projectile_table"][i]
         if current_projectile["hitbox_table"] then
-            for j=1,#current_projectile["hitbox_table"] do
+            for j = 1,#current_projectile["hitbox_table"] do
                 local current_hitbox = current_projectile["hitbox_table"][j]
                 if current_hitbox then
                     local draw_box = {
@@ -7015,9 +7015,9 @@ function draw_game_scene_char_LP_hitbox()
             end
         end
     end
-    for i=1,#self_side_obj_char["projectile_RC_table"] do
+    for i = 1,#self_side_obj_char["projectile_RC_table"] do
         local current_projectile = self_side_obj_char["projectile_RC_table"][i]
-        for j=1,#current_projectile["hitbox_table"] do
+        for j = 1,#current_projectile["hitbox_table"] do
             local current_hitbox = current_projectile["hitbox_table"][j]
             if current_hitbox then
                 local draw_box = {

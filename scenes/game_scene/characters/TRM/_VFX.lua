@@ -594,7 +594,7 @@ function insert_VFX_game_scene_char_TRM_5Launcher_move_glow(obj_char)
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
     obj_VFX["animation"] = {}
-    for i=0,17 do
+    for i = 0,17 do
         obj_VFX["animation"][i] = i
     end
     obj_VFX["animation"]["prop"] = 8

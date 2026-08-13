@@ -50,7 +50,7 @@ function init_input()
         "u","h","r","space",
         "t","g","b","n"
     }
-    for i=1,20 do
+    for i = 1,20 do
         INPUT_SYS_CURRENT_COMMAND_STATE["L"][INPUT_SYS_COMMAND_TABLE[i]] = "Released"
         INPUT_SYS_CURRENT_COMMAND_STATE["R"][INPUT_SYS_COMMAND_TABLE[i]] = "Released"
     end
@@ -115,7 +115,7 @@ function update_try_keyboard_reassign(side,reassigned_controller)
 end
 function update_try_joystick_assign_iterate(side)
     -- 检测手柄的按钮 如果有手柄按键按下则设定手柄为本侧控制器
-    for i=1,#INPUT_SYS_CURRENT_JOYSTICK_TABLE,1 do
+    for i = 1,#INPUT_SYS_CURRENT_JOYSTICK_TABLE,1 do
         if get_input_sys_anykey_joystick(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]) then
             INPUT_SYS_CURRENT_CONTROLLER[side] = {"joystick",INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]}
             INPUT_SYS_LAST_JOYSTICK_ID[side] = get_joystick_id(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i])
@@ -125,7 +125,7 @@ function update_try_joystick_assign_iterate(side)
 end
 function update_try_joystick_reassign_iterate(side,reassigned_controller_id)
     -- 检测手柄的按钮 如果有手柄按键按下则设定手柄为本侧控制器
-    for i=1,#INPUT_SYS_CURRENT_JOYSTICK_TABLE,1 do
+    for i = 1,#INPUT_SYS_CURRENT_JOYSTICK_TABLE,1 do
         local current_controller_id = get_joystick_id(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i])
         if get_input_sys_anykey_joystick(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]) and current_controller_id ~= reassigned_controller_id then
             INPUT_SYS_CURRENT_CONTROLLER[side] = {"joystick",INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]}
@@ -140,7 +140,7 @@ function update_try_joystick_reconnect_iterate(side)
     if (last_controller_ID and current_contoller[1] ~= "joystick") == false then
         return
     end
-    for i=1,#INPUT_SYS_CURRENT_JOYSTICK_TABLE,1 do
+    for i = 1,#INPUT_SYS_CURRENT_JOYSTICK_TABLE,1 do
         if get_joystick_id(INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]) == last_controller_ID then
             INPUT_SYS_CURRENT_CONTROLLER[side] = {
                 "joystick", INPUT_SYS_CURRENT_JOYSTICK_TABLE[i]
@@ -287,7 +287,7 @@ function get_input_sys_current_command(INPUT_SYS_CURRENT_COMMAND,INPUT_SYS_CURRE
 end
 --输入状态机
 function state_machine_input(INPUT_SYS_CURRENT_COMMAND_STATE,INPUT_SYS_CURRENT_COMMAND)
-    for i=1,20 do
+    for i = 1,20 do
         local switch = 
         {
             ["Released"] = function()
@@ -324,14 +324,14 @@ function load_input_sys_cache_manual_release(input,obj_char,button_name)
     input[button_name] = "Released"
 end
 function load_input_sys_cache_recache(input,obj_char)
-    for i=1,20 do
+    for i = 1,20 do
         if input[INPUT_SYS_COMMAND_TABLE[i]] == "Pressing" then
             obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] = true
         end
     end
 end
 function load_input_sys_cache_negative_edge_recache(input,obj_char)
-    for i=1,20 do
+    for i = 1,20 do
         if input[INPUT_SYS_COMMAND_TABLE[i]] == "Pressing" then
             obj_char["input_sys_cache_negative_edge"][INPUT_SYS_COMMAND_TABLE[i]] = true
         end

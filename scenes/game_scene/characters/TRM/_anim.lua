@@ -837,10 +837,10 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anch
     if sprite_sheet == "8_jump" then
         width_table = {200,200,200,200,200,200,200,200}
     end
-    for i=0,35 do
+    for i = 0,35 do
         res[i] = function() update_maintain_horizontal_velocity() end
     end
-    for i=0,8 do
+    for i = 0,8 do
         res[i] = function() update_before_falling() end
     end
     res[0] = function()
@@ -1112,7 +1112,7 @@ function load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
     local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(side)
     res["prop_f"] = "f"
     res["anim_length"] = 30
-    for i=0,10 do
+    for i = 0,10 do
         res[i] = function()
             -- state_number
             obj_char["velocity"][1] = (-32.0+i)*obj_char[5]
@@ -1271,7 +1271,7 @@ function load_game_scene_anim_char_TRM_4dash_air_backdash(obj_char)
     local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(side)
     res["prop_f"] = "f"
     res["anim_length"] = 11
-    for i=0,6 do
+    for i = 0,6 do
         res[i] = function()
             -- state_number
             if obj_char["velocity"][2] > 0 then
@@ -1571,7 +1571,7 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
     local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(side)
     res["prop_f"] = "f"
     res["anim_length"] = 24
-    for i=0,11 do
+    for i = 0,11 do
         res[i] = function()
             -- state_number
             obj_char["velocity"][1] = (4+i*0.5)*obj_char[5]
@@ -1581,7 +1581,7 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
             end
         end
     end
-    for i=12,23 do
+    for i = 12,23 do
         res[i] = function()
             -- state_number
             obj_char["velocity"][1] = (90-(i-12)*6)*obj_char[5]
@@ -8906,7 +8906,7 @@ function load_game_scene_anim_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_cha
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     res["prop_f"] = "f"
     res["anim_length"] = 37
-    for i=5,14 do
+    for i = 5,14 do
         res[i] = function()
             -- state_number
             hit_side_obj_char["velocity"][1] = (-45.0+i)*hit_side_obj_char[5]
@@ -9075,9 +9075,6 @@ function load_game_scene_anim_char_TRM_4SP_K(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "recovery" -- none startup active recovery
         -- state_number
-        if hit_side_velocity_cache < 0 then
-            hit_side_velocity_cache = 0
-        end
         hit_side_obj_char["velocity"] = {(hit_side_velocity_cache+75)*hit_side_obj_char[5],0}
         hit_side_obj_char["friction"] = 5
         hit_side_obj_char["gravity"] = 2.5
@@ -9097,9 +9094,9 @@ function load_game_scene_anim_char_TRM_4SP_K(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- shot_sys
-        character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
+        hit_side_obj_char["shot_sys_aim_process"][1] = 0
         -- oroboros
-        hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         hit_side_obj_char[8] = 0
         hit_side_obj_char["anchor_pos"] = {315,330}

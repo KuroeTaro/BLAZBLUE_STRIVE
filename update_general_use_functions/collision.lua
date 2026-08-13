@@ -36,7 +36,7 @@ function collision_test_cS_distance_check(self_side_obj_char,opponent_side_obj_c
     local hurtbox_edge_x2 = 0
     local num_hurtbox_table = #opponent_side_obj_char["hurtbox_table"]
     if #opponent_side_obj_char["hurtbox_table"] == 0 then return true end
-    for i=1,num_hurtbox_table do
+    for i = 1,num_hurtbox_table do
         hurtbox = opponent_side_obj_char["hurtbox_table"][i]
         hurtbox_front_x = hurtbox[1] * opponent_side_obj_char[5] + opponent_side_obj_char["x"]
         -- hurtbox_front_x 是hurtbox中心，加减width/2得到前后边界
@@ -225,9 +225,9 @@ function collision_strike_hit_confirm_test(hit_obj,hurt_obj)
     if hit_obj["hit_type"] ~= "strike" or hurt_obj["strike_inv"] == true or hit_obj["strike_active"] == false then
         return false
     end
-    for i=1,#hit_obj["hitbox_table"] do
+    for i = 1,#hit_obj["hitbox_table"] do
         local current_hitbox = collision_box_to_real_world_box(hit_obj,hit_obj["hitbox_table"][i])
-        for j=1,#hurt_obj["hurtbox_table"] do
+        for j = 1,#hurt_obj["hurtbox_table"] do
             local current_hurtbox = collision_box_to_real_world_box(hurt_obj,hurt_obj["hurtbox_table"][j])
             if collision_box_aabb_detection(current_hitbox,current_hurtbox) then
                 collision_strike_assign_hit_VFX_dynamic_spawn_pos(hit_obj,current_hitbox,current_hurtbox)
@@ -245,9 +245,9 @@ function collision_throw_hit_confirm_test(hit_obj,hurt_obj)
     or math.abs(hit_obj["x"]-hurt_obj["x"]) > hit_obj["default_throw_distance"] then
         return false
     end
-    for i=1,#hit_obj["hitbox_table"] do
+    for i = 1,#hit_obj["hitbox_table"] do
         local current_hitbox = collision_box_to_real_world_box(hit_obj,hit_obj["hitbox_table"][i])
-        for j=1,#hurt_obj["hurtbox_table"] do
+        for j = 1,#hurt_obj["hurtbox_table"] do
             local current_hurtbox = collision_box_to_real_world_box(hurt_obj,hurt_obj["hurtbox_table"][j])
             if collision_box_aabb_detection(current_hitbox,current_hurtbox) then
                 return true
@@ -273,9 +273,9 @@ function collision_projectile_hit_confirm_test(hit_obj,hurt_obj)
     if hit_obj["hit_type"] == "projectile" and hurt_obj["projectile_inv"] then
         return false
     end
-    for i=1,#hit_obj["hitbox_table"] do
+    for i = 1,#hit_obj["hitbox_table"] do
         local current_hitbox = collision_box_to_real_world_box(hit_obj,hit_obj["hitbox_table"][i])
-        for j=1,#hurt_obj["hurtbox_table"] do
+        for j = 1,#hurt_obj["hurtbox_table"] do
             local current_hurtbox = collision_box_to_real_world_box(hurt_obj,hurt_obj["hurtbox_table"][j])
             if collision_box_aabb_detection(current_hitbox,current_hurtbox) then
                 return true
@@ -284,7 +284,7 @@ function collision_projectile_hit_confirm_test(hit_obj,hurt_obj)
     end
 end
 function collision_uncondicational_hit_confirm_test(hit_obj,hurt_obj)
-    for i=1,#hit_obj["hitbox_table"] do
+    for i = 1,#hit_obj["hitbox_table"] do
         local current_hitbox = collision_box_to_real_world_box(hit_obj,hit_obj["hitbox_table"][i])
         local current_hurtbox = collision_box_to_real_world_box(hurt_obj,hurt_obj["pushbox"])
         if collision_box_aabb_detection(current_hitbox,current_hurtbox) then

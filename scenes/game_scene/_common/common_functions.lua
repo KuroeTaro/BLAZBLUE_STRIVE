@@ -169,7 +169,7 @@ function common_game_scene_init_input_sys_state_for_wallbreak(obj_char)
     local init_cache = common_game_scene_get_input_sys_cache_init(side)
     local init_negative_edge = common_game_scene_get_input_sys_cache_negative_edge_init(side)
     if input_state then
-        for i=1,20 do
+        for i = 1,20 do
             input_state[INPUT_SYS_COMMAND_TABLE[i]] = "Released"
         end
     end

@@ -1542,7 +1542,7 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(
         pushbox = hurt_side_pushbox_data["4_stand_block_high"][0]
         collision_ground_height_offset = 0
     end
-    for i=1,15 do
+    for i = 1,15 do
         res[i] = function()
             update_1f_15f_air(i)
         end

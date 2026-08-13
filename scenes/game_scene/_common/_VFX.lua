@@ -1030,7 +1030,7 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
     obj_VFX["animation"] = {}
-    for i=0,29 do
+    for i = 0,29 do
         obj_VFX["animation"][i] = i
     end
     obj_VFX["animation"]["prop"] = 8
@@ -1758,7 +1758,7 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
     obj_VFX["animation"] = {}
-    for i=0,29 do
+    for i = 0,29 do
         obj_VFX["animation"][i] = i
     end
     obj_VFX["animation"]["prop"] = 8
@@ -2296,7 +2296,7 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
     obj_VFX["animation"] = {}
-    for i=0,29 do
+    for i = 0,29 do
         obj_VFX["animation"][i] = i
     end
     obj_VFX["animation"]["prop"] = 8
