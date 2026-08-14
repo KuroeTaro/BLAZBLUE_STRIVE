@@ -114,6 +114,7 @@ local load_attack_name_table = {
     "4SP_P",
     "6SP_P",
     "4SP_K",
+    "6SP_K",
     "6SP_S"
 }
 for i,v in ipairs(load_attack_name_table) do
@@ -157,7 +158,10 @@ local load_projectile_name_table = {
     "5H_hit",
     "5H_miss",
     "6SP_P_curse_ball_blast",
-    "6SP_P_curse_ball_loop"
+    "6SP_P_curse_ball_loop",
+    "6SP_K_scapegoat_end",
+    "6SP_K_scapegoat_hurt",
+    "6SP_K_scapegoat_idle"
 }
 for i,v in ipairs(load_projectile_name_table) do
     thread_data[v.."_projectile"] = compress_module("asset/game_scene/characters/TRM/texture/projectile/".."TRM_"..v..".dds")

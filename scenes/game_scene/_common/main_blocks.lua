@@ -222,36 +222,36 @@ function update_game_scene_training_main()
         -- 更新角色和飞行道具位置
         if char_LP["game_speed_force_0_countdown"] == 0 and not char_LP["physics_lock"] then
             -- 角色更新位置 1/COLLIDE_TICK
-            char_LP["x"] = char_LP["x"] + char_LP_velocity[1]/(COLLIDE_TICK* char_LP_final_game_speed)
-            char_LP["y"] = char_LP["y"] + char_LP_velocity[2]/(COLLIDE_TICK* char_LP_final_game_speed)
+            char_LP["x"] = char_LP["x"] + char_LP_velocity[1]/(COLLIDE_TICK*char_LP_final_game_speed)
+            char_LP["y"] = char_LP["y"] + char_LP_velocity[2]/(COLLIDE_TICK*char_LP_final_game_speed)
             -- RC更新位置 1/COLLIDE_TICK
             for i = 1,#char_LP["projectile_RC_table"] do
                 local current_projectile = char_LP["projectile_RC_table"][i]
-                current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(COLLIDE_TICK* char_LP_final_game_speed)
-                current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(COLLIDE_TICK* char_LP_final_game_speed)
+                current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(COLLIDE_TICK*char_LP_final_game_speed)
+                current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(COLLIDE_TICK*char_LP_final_game_speed)
             end
             -- 飞行道具更新位置 1/COLLIDE_TICK
             for i = 1,#char_LP["projectile_table"] do
                 local current_projectile = char_LP["projectile_table"][i]
-                current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(COLLIDE_TICK* char_LP_final_game_speed)
-                current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(COLLIDE_TICK* char_LP_final_game_speed)
+                current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(COLLIDE_TICK*char_LP_final_game_speed)
+                current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(COLLIDE_TICK*char_LP_final_game_speed)
             end
         end
         if char_RP["game_speed_force_0_countdown"] == 0 and not char_RP["physics_lock"] then
             -- 角色更新位置 1/COLLIDE_TICK
-            char_RP["x"] = char_RP["x"] + char_RP_velocity[1]/(COLLIDE_TICK* char_RP_final_game_speed)
-            char_RP["y"] = char_RP["y"] + char_RP_velocity[2]/(COLLIDE_TICK* char_RP_final_game_speed)
+            char_RP["x"] = char_RP["x"] + char_RP_velocity[1]/(COLLIDE_TICK*char_RP_final_game_speed)
+            char_RP["y"] = char_RP["y"] + char_RP_velocity[2]/(COLLIDE_TICK*char_RP_final_game_speed)
             -- RC更新位置 1/COLLIDE_TICK
             for i = 1,#char_RP["projectile_RC_table"] do
                 local current_projectile = char_RP["projectile_RC_table"][i]
-                current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(COLLIDE_TICK* char_RP_final_game_speed)
-                current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(COLLIDE_TICK* char_RP_final_game_speed)
+                current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(COLLIDE_TICK*char_RP_final_game_speed)
+                current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(COLLIDE_TICK*char_RP_final_game_speed)
             end
             -- 飞行道具更新位置 1/COLLIDE_TICK
             for i = 1,#char_RP["projectile_table"] do
                 local current_projectile = char_RP["projectile_table"][i]
-                current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(COLLIDE_TICK* char_RP_final_game_speed)
-                current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(COLLIDE_TICK* char_RP_final_game_speed)
+                current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(COLLIDE_TICK*char_RP_final_game_speed)
+                current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(COLLIDE_TICK*char_RP_final_game_speed)
             end
         end
         -- 检测pushbox 更新Y位置

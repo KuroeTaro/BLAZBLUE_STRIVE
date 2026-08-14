@@ -43,10 +43,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "TRM_6SP_K_hurt",
+	"image": "TRM_6SP_K_scapegoat_hurt",
 	"format": "RGBA8888",
 	"size": {"w":2100,"h":540},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:1a85e1c2643d9ab0d5e3b52cc6f50c51:c906fd102bca7327863fbffb6a8aabf8:a0896d794975f3b73fd1d70c0098c693$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e524de4e456db3a55cba082b1123a363:92c60ffdf6afba0d7aa27656dcee6808:2adb9044904ea1ae9ec21b0fa7c0cd89$"
 }
 }
