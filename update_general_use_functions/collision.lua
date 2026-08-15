@@ -88,6 +88,28 @@ end
 function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_RP)
     local box_L = collision_box_to_real_world_box(obj_char_LP,obj_char_LP["pushbox"])
     local box_R = collision_box_to_real_world_box(obj_char_RP,obj_char_RP["pushbox"])
+    local left_stage_collision = -2100.0
+    local right_stage_collision = 2100.0
+    local function stage_collision_fix_LR()
+        if obj_char_LP["x"] < left_stage_collision + box_L[3]/2 then
+            obj_char_LP["x"] = left_stage_collision + box_L[3]/2
+            obj_char_RP["x"] = left_stage_collision + box_L[3] + box_R[3]/2
+        end
+        if obj_char_RP["x"] > right_stage_collision - box_R[3]/2 then
+            obj_char_RP["x"] = right_stage_collision + box_R[3]/2
+            obj_char_LP["x"] = right_stage_collision + box_R[3] + box_L[3]/2
+        end
+    end
+    local function stage_collision_fix_RL()
+        if obj_char_RP["x"] < left_stage_collision + box_R[3]/2 then
+            obj_char_RP["x"] = left_stage_collision + box_R[3]/2
+            obj_char_LP["x"] = left_stage_collision + box_R[3] + box_L[3]/2
+        end
+        if obj_char_LP["x"] > right_stage_collision - box_L[3]/2 then
+            obj_char_LP["x"] = right_stage_collision + box_L[3]/2
+            obj_char_RP["x"] = right_stage_collision + box_L[3] + box_R[3]/2
+        end
+    end
     if (not obj_char_LP["pushbox_opponent_collision_active"])
     or (not obj_char_RP["pushbox_opponent_collision_active"]) then
         return
@@ -105,33 +127,39 @@ function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_R
                     local mid = (box_L[1]+box_L[3]/2+box_R[1]-box_R[3]/2)/2
                     obj_char_LP["x"] = mid-box_L[3]/2
                     obj_char_RP["x"] = mid+box_R[3]/2
+                    stage_collision_fix_LR()
                     return
                 elseif box_L[1] > box_R[1] then
                     local mid = (box_R[1]+box_R[3]/2+box_L[1]-box_L[3]/2)/2
                     obj_char_LP["x"] = mid+box_L[3]/2
                     obj_char_RP["x"] = mid-box_R[3]/2
+                    stage_collision_fix_RL()
                     return
                 end
                 if obj_char_LP[5] > 0 and obj_char_RP[5] < 0 then
                     local mid = (box_L[1]+box_L[3]/2+box_R[1]-box_R[3]/2)/2
                     obj_char_LP["x"] = mid-box_L[3]/2
                     obj_char_RP["x"] = mid+box_R[3]/2
+                    stage_collision_fix_LR()
                     return
                 elseif obj_char_RP[5] > 0 and obj_char_LP[5] < 0 then
                     local mid = (box_R[1]+box_R[3]/2+box_L[1]-box_L[3]/2)/2
                     obj_char_LP["x"] = mid+box_L[3]/2
                     obj_char_RP["x"] = mid-box_R[3]/2
+                    stage_collision_fix_RL()
                     return
                 end
                 if obj_char_LP[5] > 0 and obj_char_RP[5] > 0 then
                     local mid = (box_L[1]+box_L[3]/2+box_R[1]-box_R[3]/2)/2
                     obj_char_LP["x"] = mid-box_L[3]/2
                     obj_char_RP["x"] = mid+box_R[3]/2
+                    stage_collision_fix_LR()
                     return
                 elseif obj_char_RP[5] < 0 and obj_char_LP[5] < 0 then
                     local mid = (box_R[1]+box_R[3]/2+box_L[1]-box_L[3]/2)/2
                     obj_char_LP["x"] = mid+box_L[3]/2
                     obj_char_RP["x"] = mid-box_R[3]/2
+                    stage_collision_fix_RL()
                     return
                 end
             end,
