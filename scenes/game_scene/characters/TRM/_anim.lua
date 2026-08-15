@@ -8959,7 +8959,6 @@ function load_game_scene_anim_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_cha
     res[5] = function()
         -- state
         hit_side_obj_char["y"] = -180
-        hit_side_obj_char["sprite_sheet"] = "6SP_P"
         hit_side_obj_char["height"] = "air" -- stand crouch air OTG wallstick
         -- state_number
         hit_side_obj_char["velocity"] = {-40.0*hit_side_obj_char[5],-7.0}
@@ -9023,12 +9022,10 @@ function load_game_scene_anim_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_cha
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_land_blow(hit_side_obj_char,-340,-160,1,1,1,0)
     end
-    res[22] = function()
+    res[24] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
-    end
-    res[25] = function()
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{0,-195,205,390}}
         -- draw_correction
@@ -9175,6 +9172,159 @@ function load_game_scene_anim_char_TRM_4SP_K(hit_side_obj_char,hurt_side_obj_cha
     return res
 end
 -- _6SP_K
+function load_game_scene_anim_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_char)
+    local res = {}
+    local hit_side = hit_side_obj_char["player_side"]
+    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
+    res["prop_f"] = "f"
+    res["anim_length"] = 52
+    for i = 9,30 do
+        res[i] = function()
+            -- state_number
+            hit_side_obj_char["velocity"][1] = (-45.0+i)*hit_side_obj_char[5]
+        end
+    end
+    res[0] = function()
+        -- state
+        hit_side_obj_char["y"] = 0
+        hit_side_obj_char["sprite_sheet"] = "6SP_K"
+        hit_side_obj_char["height"] = "stand" -- stand crouch air OTG wallstick
+        hit_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
+        hit_side_obj_char["move_state"] = "recovery" -- none startup active recovery
+        -- state_number
+        hit_side_obj_char["velocity"] = {0,0}
+        hit_side_obj_char["friction"] = 0
+        hit_side_obj_char["gravity"] = 1.0
+        -- enemy_friend_interaction
+        hit_side_obj_char["idle_cancel"] = false
+        hit_side_obj_char["strike_inv"] = false
+        hit_side_obj_char["strike_inv_countdown"] = 0
+        hit_side_obj_char["throw_inv"] = true
+        hit_side_obj_char["throw_inv_countdown"] = 19
+        hit_side_obj_char["projectile_inv"] = false
+        hit_side_obj_char["projectile_inv_countdown"] = 0
+        hit_side_obj_char["horizontal_velocity_correction"] = 1
+        hit_side_obj_char["gravity_correction"] = 1
+        hit_side_obj_char["damage_correction"] = 1
+        -- frame_data
+        hit_side_obj_char["startup_frame"] = 0
+        hit_side_obj_char["active_frame"] = 0
+        hit_side_obj_char["recovery_frame"] = 0
+        -- collide
+        hit_side_obj_char["pushbox"] = {0,-185,120,370}
+        hit_side_obj_char["pushbox_opponent_collision_active"] = true
+        hit_side_obj_char["hitbox_table"] = {}
+        hit_side_obj_char["hurtbox_table"] = {{0,-195,205,390}}
+        hit_side_obj_char["collision_ground_height_offset"] = 0
+        -- oroboros
+        hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        -- draw_correction
+        hit_side_obj_char[8] = 4
+        hit_side_obj_char["anchor_pos"] = {275,505}
+    end
+    res[4] = function()
+        -- collide
+        hit_side_obj_char["hurtbox_table"] = {{0,-200,170,400}}
+        -- draw_correction
+        hit_side_obj_char[8] = 5
+    end
+    res[9] = function()
+        -- state
+        hit_side_obj_char["y"] = -180
+        hit_side_obj_char["height"] = "air" -- stand crouch air OTG wallstick
+        -- state_number
+        hit_side_obj_char["velocity"] = {-36.0*hit_side_obj_char[5],-12.0}
+        hit_side_obj_char["friction"] = 0
+        hit_side_obj_char["gravity"] = 1.0
+        -- enemy_friend_interaction
+        hit_side_obj_char["horizontal_velocity_correction"] = 1
+        hit_side_obj_char["gravity_correction"] = 1
+        hit_side_obj_char["damage_correction"] = 1
+        -- collide
+        hit_side_obj_char["pushbox"] = {0,-100,120,200}
+        hit_side_obj_char["hurtbox_table"] = {{-15,-100,170,360}}
+        hit_side_obj_char["collision_ground_height_offset"] = 0
+        -- oroboros
+        hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-175,-200}
+        -- draw_correction
+        hit_side_obj_char[8] = 0
+    end
+    res[12] = function()
+        -- state_number
+        hit_side_obj_char["velocity"][1] = -33.0*hit_side_obj_char[5]
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[17] = function()
+        -- state_number
+        hit_side_obj_char["velocity"][1] = -28.0*hit_side_obj_char[5]
+        -- draw_correction
+        hit_side_obj_char[8] = 2
+    end
+    res[22] = function()
+        -- state_number
+        hit_side_obj_char["velocity"][1] = -23.0*hit_side_obj_char[5]
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[27] = function()
+        -- state_number
+        hit_side_obj_char["velocity"][1] = -7.0*hit_side_obj_char[5]
+        -- draw_correction
+        hit_side_obj_char[8] = 2
+    end
+    res[31] = function()
+        -- state
+        hit_side_obj_char["y"] = 0
+        hit_side_obj_char["height"] = "stand" -- stand crouch air OTG wallstick
+        -- state_number
+        hit_side_obj_char["velocity"][2] = 0
+        hit_side_obj_char["friction"] = 10
+        hit_side_obj_char["gravity"] = 2.5
+        -- collide
+        hit_side_obj_char["pushbox"] = {0,-185,120,370}
+        hit_side_obj_char["hurtbox_table"] = {{0,-225,180,450}}
+        hit_side_obj_char["collision_ground_height_offset"] = 0
+        -- oroboros
+        hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        -- draw_correction
+        hit_side_obj_char[8] = 3
+        -- insert_VFX
+        insert_VFX_game_scene_stage_smoke_land_blow(hit_side_obj_char,-340,-160,1,1,1,0)
+    end
+    res[38] = function()
+        -- input_sys_cache
+        hit_side_obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
+        -- collide
+        hit_side_obj_char["hurtbox_table"] = {{0,-195,205,390}}
+        -- draw_correction
+        hit_side_obj_char[8] = 4
+    end
+    res[43] = function()
+        -- state
+        hit_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
+        hit_side_obj_char["move_state"] = "none" 
+        hit_side_obj_char["idle_cancel"] = true
+        -- input_sys_cache
+        hit_side_obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(hit_side)()
+        -- collide
+        hit_side_obj_char["hurtbox_table"] = {{0,-200,170,400}}
+        -- draw_correction
+        hit_side_obj_char[8] = 5
+    end
+    res[47] = function()
+        -- collide
+        hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{15,-455,100,50}}
+        -- draw_correction
+        hit_side_obj_char[8] = 6
+    end
+    res[52] = function()
+        -- animation_end
+    end
+    return res
+end
 -- _4SP_S
 -- _4SP_S_4dash
 -- _4SP_S_6dash
