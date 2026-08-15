@@ -29,7 +29,10 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["hurt_state"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_RP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_RP["move_state"] = "none" -- none startup active recovery
-    obj_char_game_scene_char_RP["last_move_state"] = "none" -- none startup active recovery
+    obj_char_game_scene_char_RP["last_move_state"] = "none" -- none startup active recovery'
+    obj_char_game_scene_char_RP["hit_cancel"] = false
+    obj_char_game_scene_char_RP["idle_cancel"] = false
+    obj_char_game_scene_char_RP["physics_lock"] = false
     obj_char_game_scene_char_RP["air_move"] = {}
     obj_char_game_scene_char_RP["air_move"]["jump"] = {1,1}
     obj_char_game_scene_char_RP["air_move"]["air_dash"] = {1,1}
@@ -39,7 +42,6 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["velocity_cache"] = {0,0}
     obj_char_game_scene_char_RP["friction"] = 1
     obj_char_game_scene_char_RP["gravity"] = 2.5
-    obj_char_game_scene_char_RP["physics_lock"] = false
     obj_char_game_scene_char_RP["health_gauge"] = {12000,12000,12000,"fade_off"}
     obj_char_game_scene_char_RP["heat_gauge"] = {0.0,200.0} -- 0.0 - 200.0
     obj_char_game_scene_char_RP["ability_gauge"] = {600.0,600.0} -- 0.0 - 600.0
@@ -88,8 +90,6 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["self_knockdown_animation"] = nil
     obj_char_game_scene_char_RP["self_knockdown_recovery_animation"] = nil
     obj_char_game_scene_char_RP["character_animation"] = nil
-    obj_char_game_scene_char_RP["hit_cancel"] = false
-    obj_char_game_scene_char_RP["idle_cancel"] = false
     obj_char_game_scene_char_RP["strike_active"] = false -- 防止在同一动作的active多次触发
     obj_char_game_scene_char_RP["throw_active"] = false -- 防止在同一动作的active多次触发
     obj_char_game_scene_char_RP["strike_inv"] = false
@@ -102,11 +102,6 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["hurt_function"] = function() end
     obj_char_game_scene_char_RP["parry_function"] = function() end
     obj_char_game_scene_char_RP["strike_counter_ver_function"] = function() end
-    obj_char_game_scene_char_RP["health_gauge_update_function"] = function() end
-    obj_char_game_scene_char_RP["overdrive_gauge_update_function"] = function() end
-    obj_char_game_scene_char_RP["ability_gauge_update_function"] = function() end
-    obj_char_game_scene_char_RP["risk_gauge_update_function"] = function() end
-    obj_char_game_scene_char_RP["wallstick_gauge_update_function"] = function() end
     obj_char_game_scene_char_RP["horizontal_velocity_correction"] = 1
     obj_char_game_scene_char_RP["gravity_correction"] = 1
     obj_char_game_scene_char_RP["damage_correction"] = 1
@@ -171,6 +166,12 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["hit_counter_SFX"] = nil
     obj_char_game_scene_char_RP["hit_throw_SFX"] = nil
     obj_char_game_scene_char_RP["hit_whiff_SFX"] = nil
+    -- update_function
+    obj_char_game_scene_char_RP["health_gauge_update_function"] = function() end
+    obj_char_game_scene_char_RP["overdrive_gauge_update_function"] = function() end
+    obj_char_game_scene_char_RP["ability_gauge_update_function"] = function() end
+    obj_char_game_scene_char_RP["risk_gauge_update_function"] = function() end
+    obj_char_game_scene_char_RP["wallstick_gauge_update_function"] = function() end
     -- 5H_shot_sys
     obj_char_game_scene_char_RP["shot_sys_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_f"] = 0
@@ -701,18 +702,22 @@ function load_game_scene_wallbreak_start_init_RP()
     local air_pushbox = {0,-100,120,200}
     local OTG_pushbox = {0,-65,120,130}
     -- init_char
+    -- state
+    obj_char_game_scene_char_RP["physics_lock"] = true
+    -- state_number
     obj_char_game_scene_char_RP["velocity"] = {0,0}
     obj_char_game_scene_char_RP["velocity_debug"] = {0,0}
     obj_char_game_scene_char_RP["velocity_cache"] = {0,0}
     obj_char_game_scene_char_RP["friction"] = 1
     obj_char_game_scene_char_RP["gravity"] = 2.5
-    obj_char_game_scene_char_RP["physics_lock"] = true
+    -- enemy_friend_interaction
     obj_char_game_scene_char_RP["strike_inv"] = false
     obj_char_game_scene_char_RP["strike_inv_countdown"] = 0
     obj_char_game_scene_char_RP["throw_inv"] = false
     obj_char_game_scene_char_RP["throw_inv_countdown"] = 0
     obj_char_game_scene_char_RP["projectile_inv"] = false
     obj_char_game_scene_char_RP["projectile_inv_countdown"] = 0
+    -- game_speed
     obj_char_game_scene_char_RP["game_speed"] = 1
     obj_char_game_scene_char_RP["game_speed_subframe"] = 1
     obj_char_game_scene_char_RP["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
@@ -772,6 +777,9 @@ function load_game_scene_wallbreak_end_init_RP()
     obj_char_game_scene_char_RP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_RP["move_state"] = "none" -- none startup active recovery
     obj_char_game_scene_char_RP["last_move_state"] = "none" -- none startup active recovery
+    obj_char_game_scene_char_RP["hit_cancel"] = false
+    obj_char_game_scene_char_RP["idle_cancel"] = false
+    obj_char_game_scene_char_RP["physics_lock"] = false
     obj_char_game_scene_char_RP["air_move"] = {}
     obj_char_game_scene_char_RP["air_move"]["jump"] = {1,1}
     obj_char_game_scene_char_RP["air_move"]["air_dash"] = {1,1}
@@ -781,7 +789,6 @@ function load_game_scene_wallbreak_end_init_RP()
     obj_char_game_scene_char_RP["velocity_cache"] = {0,0}
     obj_char_game_scene_char_RP["friction"] = 1
     obj_char_game_scene_char_RP["gravity"] = 2.5
-    obj_char_game_scene_char_RP["physics_lock"] = false
     obj_char_game_scene_char_RP["wallstick_gauge"] = {0.0,200.0} -- 0.0 - 200.0
     obj_char_game_scene_char_RP["heat_penalty"] = 1
     obj_char_game_scene_char_RP["heat_penalty_countdown"] = 0
@@ -807,8 +814,6 @@ function load_game_scene_wallbreak_end_init_RP()
     obj_char_game_scene_char_RP["wallhurt_wallbreakable_with_wallstick"] = false
     obj_char_game_scene_char_RP["wallhurt_wallbreakable_without_wallstick"] = false
     obj_char_game_scene_char_RP["wallhurt_wallbreak_adv"] = false
-    obj_char_game_scene_char_RP["hit_cancel"] = false
-    obj_char_game_scene_char_RP["idle_cancel"] = false
     obj_char_game_scene_char_RP["strike_active"] = false -- 防止在同一动作的active多次触发
     obj_char_game_scene_char_RP["throw_active"] = false -- 防止在同一动作的active多次触发
     obj_char_game_scene_char_RP["strike_inv"] = false

@@ -322,13 +322,15 @@ end
 function common_game_scene_strike_hit_function(hit_side_obj_char,hurt_side_obj_char)
     -- 只需要设置hitstop
     local hit_VFX_insert_function_argument = hit_side_obj_char["hit_VFX_insert_function_argument"]
+    -- state
     hit_side_obj_char["state_cache"] = hit_side_obj_char["state"]
     hit_side_obj_char["state"] = "hitstop"
-    hit_side_obj_char["last_hitstop_frame"] = 0
-    hit_side_obj_char["strike_active"] = false
     hit_side_obj_char["hit_cancel"] = true
-    -- physics_lock
     hit_side_obj_char["physics_lock"] = true
+    -- enemy_friend_interaction
+    hit_side_obj_char["strike_active"] = false
+    -- frame_data
+    hit_side_obj_char["last_hitstop_frame"] = 0
     -- block_test
     local block_bool = common_game_scene_block_test(hit_side_obj_char,hurt_side_obj_char)
     -- risk_gauge
@@ -362,14 +364,14 @@ function common_game_scene_strike_hurt_function(hit_side_obj_char,hurt_side_obj_
     local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local wallhurt_wallstick_on_side_cache = hurt_side_obj_char["wallhurt_wallstick_on_side"]
-    -- physics_lock
-    hurt_side_obj_char["physics_lock"] = true
     -- change_draw_front
     CHARACTER_VISUAL_FRONT = hit_side_obj_char["player_side"]
     -- change_character_face
     if not common_game_scene_get_character_facing_currect(hurt_side_obj_char,hit_side_obj_char) then
         hurt_side_obj_char[5] = -hurt_side_obj_char[5]
     end
+    -- state
+    hurt_side_obj_char["physics_lock"] = true
     -- block_test
     local block_bool = common_game_scene_block_test(hit_side_obj_char,hurt_side_obj_char)
     if hurt_side_obj_char["height"] ~= "air" and block_bool then
@@ -566,12 +568,12 @@ function common_game_scene_strike_hurt_function_common_hurt(hit_side_obj_char,hu
 end
 -- projectile
 function common_game_scene_projectile_hit_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
-    -- 只需要设置hitstop
+    -- state
     obj_projectile["state_cache"] = obj_projectile["state"]
     obj_projectile["state"] = "hitstop"
-    obj_projectile["hit_active"] = false
-    -- physics_lock
     obj_projectile["physics_lock"] = true
+    -- enemy_friend_interaction
+    obj_projectile["hit_active"] = false
     -- block_test
     local block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
     -- risk_gauge
@@ -600,14 +602,14 @@ function common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_
     local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local wallhurt_wallstick_on_side_cache = hurt_side_obj_char["wallhurt_wallstick_on_side"]
-    -- physics_lock
-    hurt_side_obj_char["physics_lock"] = true
     -- change_draw_front
     CHARACTER_VISUAL_FRONT = hit_side_obj_char["player_side"]
     -- change_character_face
     if not common_game_scene_get_character_facing_currect(hurt_side_obj_char,hit_side_obj_char) then
         hurt_side_obj_char[5] = -hurt_side_obj_char[5]
     end
+    -- state
+    hurt_side_obj_char["physics_lock"] = true
     -- block_test
     local block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
     if hurt_side_obj_char["height"] ~= "air" and block_bool then
@@ -802,14 +804,14 @@ function common_game_scene_projectile_RC_red_yellow_hurt_function(hit_side_obj_c
     local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local wallhurt_wallstick_on_side_cache = hurt_side_obj_char["wallhurt_wallstick_on_side"]
-    -- physics_lock
-    hurt_side_obj_char["physics_lock"] = false
     -- change_draw_front
     CHARACTER_VISUAL_FRONT = hit_side_obj_char["player_side"]
     -- change_character_face
     if not common_game_scene_get_character_facing_currect(hurt_side_obj_char,hit_side_obj_char) then
         hurt_side_obj_char[5] = -hurt_side_obj_char[5]
     end
+    -- state
+    hurt_side_obj_char["physics_lock"] = false
     -- block_test
     local block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
     if hurt_side_obj_char["height"] ~= "air" and block_bool then
@@ -876,6 +878,7 @@ function common_game_scene_projectile_RC_red_yellow_hurt_function_common_hurt(hi
     -- state
     hurt_side_obj_char["state_cache"] = "hurt"
     hurt_side_obj_char["state"] = "hurt"
+    -- collide
     hurt_side_obj_char["collision_move_available_cache"] = {1,1}
     -- hit_hurt_blockstop_countdown
     hurt_side_obj_char["hit_hurt_blockstop_countdown"] = obj_projectile["hit_hurt_blockstop_countdown"]
@@ -928,15 +931,15 @@ end
 -- throw
 function common_game_scene_throw_hit_function(hit_side_obj_char,hurt_side_obj_char)
     local hurt_side = hurt_side_obj_char["player_side"]
-    -- physics_lock
-    hit_side_obj_char["physics_lock"] = true
     -- change_draw_front
     CHARACTER_VISUAL_FRONT = hurt_side
     -- change_character_face
     if not common_game_scene_get_character_facing_currect(hit_side_obj_char,hurt_side_obj_char) then
         hit_side_obj_char[5] = -hit_side_obj_char[5]
     end
-    -- set min hight of air throw
+    -- state
+    hit_side_obj_char["physics_lock"] = true
+    -- set_min_height_of_air_throw
     if hurt_side_obj_char["height"] == "air" then
         hit_side_obj_char["y"] = math.min(hit_side_obj_char["y"],-240)
     end
@@ -962,51 +965,53 @@ function common_game_scene_throw_hurt_function(hit_side_obj_char,hurt_side_obj_c
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
-    local sprite_sheet = nil
     local collision_ground_height_offset = nil
-    -- physics_lock
-    hurt_side_obj_char["physics_lock"] = true
     -- change_character_face
     if not common_game_scene_get_character_facing_currect(hurt_side_obj_char,hit_side_obj_char) then
         hurt_side_obj_char[5] = -hurt_side_obj_char[5]
     end
     -- state
     hurt_side_obj_char[8] = 4
+    hurt_side_obj_char["f"] = 0
     if hurt_side_obj_char["height"] == "air" then
         hurt_side_obj_char["sprite_sheet"] = "1_4_7_air_block"
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data["air_thrown_tested"]
+        sprite_sheet = hurt_side_obj_char["sprite_sheet"]
         collision_ground_height_offset = 185
     else
         hurt_side_obj_char["height"] = "stand"
         hurt_side_obj_char["sprite_sheet"] = "4_stand_block_high"
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data["ground_thrown_tested"]
+        sprite_sheet = hurt_side_obj_char["sprite_sheet"]
         collision_ground_height_offset = 0
     end
-    sprite_sheet = hurt_side_obj_char["sprite_sheet"]
-    hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][0]
-    hurt_side_obj_char["pushbox_opponent_collision_active"] = false
-    hurt_side_obj_char["hitbox_table"] = {}
-    hurt_side_obj_char["hurtbox_table"] = {}
-    hurt_side_obj_char["collision_ground_height_offset"] = collision_ground_height_offset    
-    hit_side_obj_char["x"] = hurt_side_obj_char["x"] + hurt_side_obj_char[5]*160
-    collision_pushbox_stage_relocate_x(hit_side_obj_char)
-    hurt_side_obj_char["x"] = hit_side_obj_char["x"] + hit_side_obj_char[5]*160
-    hurt_side_obj_char["f"] = 0
     hurt_side_obj_char["state"] = "throw_tested"
-    hurt_side_obj_char["startup_frame"] = 0
-    hurt_side_obj_char["active_frame"] = 0
-    hurt_side_obj_char["recovery_frame"] = 0
     hurt_side_obj_char["idle_cancel"] = false
+    hurt_side_obj_char["physics_lock"] = true
+    -- state_number
+    hurt_side_obj_char["velocity"] = {0,0}
+    -- enemy_friend_interaction
     hurt_side_obj_char["strike_inv"] = true
     hurt_side_obj_char["strike_inv_countdown"] = 10
     hurt_side_obj_char["throw_inv"] = true
     hurt_side_obj_char["throw_inv_countdown"] = 10
     hurt_side_obj_char["projectile_inv"] = true
     hurt_side_obj_char["projectile_inv_countdown"] = 10
-    -- state_number
-    hurt_side_obj_char["velocity"] = {0,0}
+    -- frame_data
+    hurt_side_obj_char["startup_frame"] = 0
+    hurt_side_obj_char["active_frame"] = 0
+    hurt_side_obj_char["recovery_frame"] = 0
     -- game_speed
     common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,1,1,0,0,0})
+    -- collide
+    hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][0]
+    hurt_side_obj_char["pushbox_opponent_collision_active"] = false
+    hurt_side_obj_char["hitbox_table"] = {}
+    hurt_side_obj_char["hurtbox_table"] = {}
+    hurt_side_obj_char["collision_ground_height_offset"] = collision_ground_height_offset 
+    hit_side_obj_char["x"] = hurt_side_obj_char["x"] + hurt_side_obj_char[5]*160
+    collision_pushbox_stage_relocate_x(hit_side_obj_char)
+    hurt_side_obj_char["x"] = hit_side_obj_char["x"] + hit_side_obj_char[5]*160  
 end
 function common_game_scene_hurt_animation_oscillator_obj_8(obj_char,option_0,option_1)
     if obj_char[8] == option_0 then

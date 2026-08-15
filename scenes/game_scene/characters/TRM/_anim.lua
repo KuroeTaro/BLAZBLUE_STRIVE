@@ -273,11 +273,11 @@ function load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
         obj_char["height"] = "stand" -- stand crouch air OTG wallstick
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
+        obj_char["idle_cancel"] = false
         -- state_number
         obj_char["friction"] = 10
         obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
-        obj_char["idle_cancel"] = false
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -732,6 +732,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         obj_char["height"] = "stand" -- stand crouch air OTG wallstick
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
+        obj_char["idle_cancel"] = false
         -- state_number
         obj_char["velocity"] = {0,0}
         obj_char["velocity_cache"] = {0,0}
@@ -740,7 +741,6 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         obj_char["air_move"]["jump"][1] = obj_char["air_move"]["jump"][2]
         obj_char["air_move"]["air_dash"][1] = obj_char["air_move"]["air_dash"][2]
         -- enemy_friend_interaction
-        obj_char["idle_cancel"] = false
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -850,6 +850,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anch
         obj_char["height"] = "air" -- stand crouch air OTG wallstick
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
+        obj_char["idle_cancel"] = false
         -- state_number
         obj_char["velocity"][1] = horizontal_velocity
         if vertical_velocity ~= nil then
@@ -858,7 +859,6 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anch
         obj_char["friction"] = 0
         obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
-        obj_char["idle_cancel"] = false
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -1125,12 +1125,12 @@ function load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
         obj_char["height"] = "air" -- stand crouch air OTG wallstick
         obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
+        obj_char["idle_cancel"] = false
         -- state_number
         obj_char["velocity"] = {-32.0*obj_char[5],-7.0}
         obj_char["friction"] = 0
         obj_char["gravity"] = 1.0
         -- enemy_friend_interaction
-        obj_char["idle_cancel"] = false
         obj_char["strike_inv"] = true
         obj_char["strike_inv_countdown"] = 7
         obj_char["throw_inv"] = true
@@ -1286,13 +1286,13 @@ function load_game_scene_anim_char_TRM_4dash_air_backdash(obj_char)
         obj_char["height"] = "air" -- stand crouch air OTG wallstick
         obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
+        obj_char["idle_cancel"] = false
         -- state_number
         obj_char["velocity"][1] = -25*obj_char[5]
         obj_char["velocity"][2] = obj_char["velocity"][2]*0.6
         obj_char["friction"] = 0
         obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
-        obj_char["idle_cancel"] = false
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -1593,6 +1593,7 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
         obj_char["height"] = "air" -- stand crouch air OTG wallstick
         obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
+        obj_char["idle_cancel"] = false
         -- state_number
         obj_char["velocity"][1] = 4*obj_char[5]
         obj_char["velocity"][2] = obj_char["velocity"][2]*0.6
@@ -1603,7 +1604,6 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
             obj_char["gravity"] = 0
         end
         -- enemy_friend_interaction
-        obj_char["idle_cancel"] = false
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -1724,12 +1724,12 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
         obj_char["height"] = "stand" -- stand crouch air OTG wallstick
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
+        obj_char["idle_cancel"] = true
         -- state_number
         obj_char["velocity"] = {21.25*obj_char[5],0}
         obj_char["friction"] = 100
         obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
-        obj_char["idle_cancel"] = true
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
         obj_char["damage_correction"] = 1
@@ -1914,6 +1914,8 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_guard_type"] = "all" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["friction"] = 4
         hit_side_obj_char["gravity"] = 2.5
@@ -2009,8 +2011,6 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             hit_side_obj_char,hurt_side_obj_char,nil,false
         )
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
@@ -2167,6 +2167,8 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_guard_type"] = "high" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["friction"] = 10
         hit_side_obj_char["gravity"] = 2.5
@@ -2262,8 +2264,6 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             hit_side_obj_char,hurt_side_obj_char,nil,false
         )
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
@@ -2398,10 +2398,12 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
         -- draw_correction
         hit_side_obj_char[8] = 9
     end
-    res[36] = function()
+    res[33] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
+    end
+    res[36] = function()
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430}}
         -- oroboros
@@ -2449,6 +2451,8 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_guard_type"] = "all" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["friction"] = 4
         hit_side_obj_char["gravity"] = 2.5
@@ -2544,8 +2548,6 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             hit_side_obj_char,hurt_side_obj_char,nil,false
         )
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
@@ -2704,6 +2706,8 @@ function load_game_scene_anim_char_TRM_2K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_guard_type"] = "low" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["friction"] = 10
         hit_side_obj_char["gravity"] = 2.5
@@ -2799,8 +2803,6 @@ function load_game_scene_anim_char_TRM_2K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             hit_side_obj_char,hurt_side_obj_char,nil,false
         )
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
@@ -2990,6 +2992,8 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_guard_type"] = "low" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         if hit_side_velocity_cache < 0 then
             hit_side_velocity_cache = 0
@@ -3089,8 +3093,6 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             hit_side_obj_char,hurt_side_obj_char,nil,false
         )
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
@@ -3303,7 +3305,8 @@ function load_game_scene_anim_char_TRM_5K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_guard_type"] = "all" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
-        hit_side_obj_char["direction_input_cache"] = 9
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["friction"] = 7
         hit_side_obj_char["gravity"] = 2.5
@@ -3399,8 +3402,6 @@ function load_game_scene_anim_char_TRM_5K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             hit_side_obj_char,hurt_side_obj_char,nil,false
         )
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
@@ -3414,6 +3415,8 @@ function load_game_scene_anim_char_TRM_5K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["horizontal_velocity_correction"] = 1
         hit_side_obj_char["gravity_correction"] = 1
         hit_side_obj_char["damage_correction"] = 1
+        -- direction_input
+        hit_side_obj_char["direction_input_cache"] = 9
         -- frame_data
         hit_side_obj_char["startup_frame"] = 0
         hit_side_obj_char["active_frame"] = 0
@@ -3596,6 +3599,8 @@ function load_game_scene_anim_char_TRM_2S(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_guard_type"] = "all" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["friction"] = 10
         hit_side_obj_char["gravity"] = 2.5
@@ -3691,8 +3696,6 @@ function load_game_scene_anim_char_TRM_2S(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             hit_side_obj_char,hurt_side_obj_char,nil,false
         )
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
@@ -3902,6 +3905,8 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_guard_type"] = "all" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         if hit_side_velocity_cache < 0 then
             hit_side_velocity_cache = 0
@@ -4017,8 +4022,6 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             hit_side_obj_char,hurt_side_obj_char,nil,false
         )
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
@@ -4251,6 +4254,8 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
         hit_side_obj_char["direction_input_cache"] = 9
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["friction"] = 10
         hit_side_obj_char["gravity"] = 2.5
@@ -4346,8 +4351,6 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             hit_side_obj_char,hurt_side_obj_char,nil,false
         )
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
@@ -4453,7 +4456,7 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char,hurt_side_obj_char)
         -- update
         direction_input_mapping()
     end
-    res[18] = function()
+    res[17] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
@@ -4516,6 +4519,8 @@ function load_game_scene_anim_char_TRM_fS(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_guard_type"] = "all" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         if hit_side_velocity_cache < 0 then
             hit_side_velocity_cache = 0
@@ -4615,8 +4620,6 @@ function load_game_scene_anim_char_TRM_fS(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             hit_side_obj_char,hurt_side_obj_char,nil,false
         )
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
@@ -5444,6 +5447,8 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char,hurt_side_obj
         hit_side_obj_char["hit_guard_type"] = "low" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["friction"] = 7
         hit_side_obj_char["gravity"] = 2.5
@@ -5577,8 +5582,6 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char,hurt_side_obj
         hit_side_obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             hit_side_obj_char,hurt_side_obj_char,nil,false
         )
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
@@ -5775,6 +5778,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher(hit_side_obj_char,hurt_side_o
         hit_side_obj_char["hit_guard_type"] = "all" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["friction"] = 7
         hit_side_obj_char["gravity"] = 2.5
@@ -5807,8 +5812,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher(hit_side_obj_char,hurt_side_o
             nil,nil,
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["throw_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
@@ -5981,6 +5984,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(hit_side_obj_cha
         hurt_side_obj_char["height"] = "stand" -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
+        hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         hurt_side_obj_char["velocity"] = {0,0}
         hurt_side_obj_char["gravity"] = 0
@@ -5999,7 +6003,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(hit_side_obj_cha
             "5_stand_idle",
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         )
-        hurt_side_obj_char["idle_cancel"] = false
         hurt_side_obj_char["strike_inv"] = true
         hurt_side_obj_char["strike_inv_countdown"] = 27
         hurt_side_obj_char["throw_inv"] = true
@@ -6060,6 +6063,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(hit_side_obj_cha
     res[37] = function()
         -- state
         update_y_37f_43f(37)
+        hurt_side_obj_char["physics_lock"] = false
+        -- state_number
         common_game_scene_char_apply_damage_heat(
             hit_side_obj_char,hurt_side_obj_char,"hurt",false
         )
@@ -6073,9 +6078,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(hit_side_obj_cha
             1,
             false
         )
-        hurt_side_obj_char["physics_lock"] = false
-        hurt_side_obj_char["pushbox_opponent_collision_active"] = true
         -- collide
+        hurt_side_obj_char["pushbox_opponent_collision_active"] = true
         hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data["0_general_hurt_launched_high"][1]
         -- draw_correction
         hurt_side_obj_char[8] = 1
@@ -6178,6 +6182,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(hit_side_obj_char,hur
         hit_side_obj_char["hit_guard_type"] = "all" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "recovery" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["velocity"] = {0,0}
         hit_side_obj_char["friction"] = 1
@@ -6192,8 +6198,6 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(hit_side_obj_char,hur
         hit_side_obj_char["block_heat_gain"] = 2.0
         hit_side_obj_char["block_risk_gauge_gain"] = 25.0
         hit_side_obj_char["FD_block_heat_drain"] = 5.0
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["throw_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = true
         hit_side_obj_char["strike_inv_countdown"] = res["anim_length"]
@@ -6284,7 +6288,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(hit_side_obj_char,hur
         hit_side_obj_char[8] = 4
     end
     res[27] = function()
-        -- state
+        -- enemy_friend_interaction
         hit_side_obj_char["hit_cancel"] = true
         -- insert_VFX
         hit_side_obj_char["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
@@ -6296,6 +6300,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(hit_side_obj_char,hur
     res[37] = function()
         -- state
         hit_side_obj_char["physics_lock"] = false
+        -- collide
         hit_side_obj_char["pushbox_opponent_collision_active"] = true
     end
     res[45] = function()
@@ -6311,13 +6316,13 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(hit_side_obj_char,hur
         hit_side_obj_char[8] = 8
     end
     res[67] = function()
-        -- input_sys_cache
-        hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
         -- draw_correction
         hit_side_obj_char[8] = 9
     end
     res[72] = function()
+        -- input_sys_cache
+        hit_side_obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
         -- draw_correction
         hit_side_obj_char[8] = 10
     end
@@ -6460,6 +6465,8 @@ function load_game_scene_anim_char_TRM_5Launcher(hit_side_obj_char,hurt_side_obj
         hit_side_obj_char["hit_guard_type"] = "mid" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["friction"] = 4
         hit_side_obj_char["gravity"] = 2.5
@@ -6557,8 +6564,6 @@ function load_game_scene_anim_char_TRM_5Launcher(hit_side_obj_char,hurt_side_obj
         hit_side_obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             hit_side_obj_char,hurt_side_obj_char,nil,false
         )
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
@@ -6761,6 +6766,8 @@ function load_game_scene_anim_char_TRM_j5P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_guard_type"] = "mid" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["friction"] = 4
         hit_side_obj_char["gravity"] = 2.5
@@ -6856,8 +6863,6 @@ function load_game_scene_anim_char_TRM_j5P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             hit_side_obj_char,hurt_side_obj_char,nil,false
         )
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
@@ -7012,6 +7017,8 @@ function load_game_scene_anim_char_TRM_j2K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_guard_type"] = "mid" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["friction"] = 4
         hit_side_obj_char["gravity"] = 2.575
@@ -7110,8 +7117,6 @@ function load_game_scene_anim_char_TRM_j2K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             hit_side_obj_char,hurt_side_obj_char,nil,false
         )
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
@@ -7282,6 +7287,8 @@ function load_game_scene_anim_char_TRM_j5K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_guard_type"] = "mid" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["friction"] = 4
         hit_side_obj_char["gravity"] = 2.575
@@ -7377,8 +7384,6 @@ function load_game_scene_anim_char_TRM_j5K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             hit_side_obj_char,hurt_side_obj_char,nil,false
         )
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
@@ -7531,6 +7536,8 @@ function load_game_scene_anim_char_TRM_j5S(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_guard_type"] = "mid" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["friction"] = 4
         hit_side_obj_char["gravity"] = 2.575
@@ -7626,8 +7633,6 @@ function load_game_scene_anim_char_TRM_j5S(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             hit_side_obj_char,hurt_side_obj_char,nil,false
         )
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
@@ -7800,6 +7805,8 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(hit_side_obj_char,hurt_side_
         hit_side_obj_char["hit_guard_type"] = "all" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["friction"] = 7
         hit_side_obj_char["gravity"] = 2.5
@@ -7832,8 +7839,6 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(hit_side_obj_char,hurt_side_
             nil,nil,
             function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
         )
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["throw_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
@@ -8006,6 +8011,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(hit_side_obj_ch
         hurt_side_obj_char["height"] = "air" -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
+        hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         hurt_side_obj_char["velocity"] = {0,0}
         hurt_side_obj_char["friction"] = 4
@@ -8025,7 +8031,6 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(hit_side_obj_ch
             "5_stand_idle",
             nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
         )
-        hurt_side_obj_char["idle_cancel"] = false
         hurt_side_obj_char["strike_inv"] = true
         hurt_side_obj_char["strike_inv_countdown"] = 12
         hurt_side_obj_char["throw_inv"] = true
@@ -8081,10 +8086,10 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success_hurt(hit_side_obj_ch
     res[19] = function()
         -- state
         hurt_side_obj_char["physics_lock"] = false
-        hurt_side_obj_char["pushbox_opponent_collision_active"] = true
         -- state_number
         hurt_side_obj_char["velocity"] = {hit_side_obj_char[5]*7.5,0}
         -- collide
+        hurt_side_obj_char["pushbox_opponent_collision_active"] = true
         hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data["0_general_hurt_launched_low"][1]
         -- draw_correction
         hurt_side_obj_char[8] = 1
@@ -8188,6 +8193,8 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(hit_side_obj_char,hu
         hit_side_obj_char["hit_guard_type"] = "all" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "recovery" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["velocity"] = {0,0}
         hit_side_obj_char["friction"] = 1
@@ -8202,8 +8209,6 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(hit_side_obj_char,hu
         hit_side_obj_char["block_heat_gain"] = 2.0
         hit_side_obj_char["block_risk_gauge_gain"] = 25.0
         hit_side_obj_char["FD_block_heat_drain"] = 5.0
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["throw_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = true
         hit_side_obj_char["strike_inv_countdown"] = res["anim_length"]
@@ -8271,7 +8276,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(hit_side_obj_char,hu
         hit_side_obj_char[8] = 3
     end
     res[12] = function()
-        -- state
+        -- enemy_friend_interaction
         hit_side_obj_char["hit_cancel"] = true
         -- insert_VFX
         hit_side_obj_char["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
@@ -8283,6 +8288,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(hit_side_obj_char,hu
     res[19] = function()
         -- state
         hit_side_obj_char["physics_lock"] = false
+        -- collide
         hit_side_obj_char["pushbox_opponent_collision_active"] = true
         -- draw_correction
         hit_side_obj_char[8] = 5
@@ -8424,6 +8430,8 @@ function load_game_scene_anim_char_TRM_j5Launcher(hit_side_obj_char,hurt_side_ob
         hit_side_obj_char["hit_guard_type"] = "mid" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["friction"] = 4
         hit_side_obj_char["gravity"] = 3.5
@@ -8519,8 +8527,6 @@ function load_game_scene_anim_char_TRM_j5Launcher(hit_side_obj_char,hurt_side_ob
         hit_side_obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             hit_side_obj_char,hurt_side_obj_char,nil,false
         )
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
@@ -8734,12 +8740,12 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
         obj_char["hit_guard_type"] = "all" -- none all low mid high
         obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
+        obj_char["hit_cancel"] = false
+        obj_char["idle_cancel"] = false
         -- state_number
         obj_char["friction"] = 5
         obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
-        obj_char["hit_cancel"] = false
-        obj_char["idle_cancel"] = false
         obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         obj_char["strike_inv"] = false
         obj_char["strike_inv_countdown"] = 0
@@ -8793,14 +8799,6 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
         obj_char[8] = 4
     end
     res[23] = function()
-        -- sub_obj_table
-        obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
-        -- draw_correction
-        obj_char[8] = 5
-        -- play_SFX
-        play_obj_audio(move_SFX_table["4SP_P_clip_2"])
-    end
-    res[29] = function()
         -- state
         obj_char["hit_type"] = "none" -- none strike throw burst
         obj_char["hit_guard_type"] = "none" -- none all low mid high
@@ -8810,6 +8808,7 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
         obj_char["idle_cancel"] = true
         -- state_number
         obj_char["gravity"] = 2.5
+        obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
         -- enemy_friend_interaction
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
@@ -8817,6 +8816,10 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
         -- input_sys_cache
         obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(side)()
+        -- draw_correction
+        obj_char[8] = 5
+        -- play_SFX
+        play_obj_audio(move_SFX_table["4SP_P_clip_2"])
     end
     res[30] = function()
         -- sub_obj_table
@@ -8919,12 +8922,12 @@ function load_game_scene_anim_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["height"] = "stand" -- stand crouch air OTG wallstick
         hit_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "recovery" -- none startup active recovery
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["velocity"] = {0,0}
         hit_side_obj_char["friction"] = 0
         hit_side_obj_char["gravity"] = 1.0
         -- enemy_friend_interaction
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
         hit_side_obj_char["throw_inv"] = true
@@ -9072,12 +9075,12 @@ function load_game_scene_anim_char_TRM_4SP_K(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["height"] = "crouch" -- stand crouch air OTG wallstick
         hit_side_obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "recovery" -- none startup active recovery
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["velocity"] = {(hit_side_velocity_cache+62.5)*hit_side_obj_char[5],0}
         hit_side_obj_char["friction"] = 5
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["horizontal_velocity_correction"] = 1
         hit_side_obj_char["gravity_correction"] = 1
         hit_side_obj_char["damage_correction"] = 1
@@ -9191,12 +9194,12 @@ function load_game_scene_anim_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["height"] = "stand" -- stand crouch air OTG wallstick
         hit_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "recovery" -- none startup active recovery
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["velocity"] = {0,0}
         hit_side_obj_char["friction"] = 0
         hit_side_obj_char["gravity"] = 1.0
         -- enemy_friend_interaction
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
         hit_side_obj_char["throw_inv"] = true
@@ -9358,6 +9361,8 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["hit_guard_type"] = "all" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["friction"] = 5
         hit_side_obj_char["gravity"] = 2.5
@@ -9470,8 +9475,6 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
             hit_side_obj_char,hurt_side_obj_char,nil,false
         )
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
         hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
