@@ -80,15 +80,36 @@ __WORK_PLAN__
             重叠时 → 把对手推到"远离替身那一侧"(替身固定)
                 方向：比较替身中心 x 与对手中心 x
                 collision_move_available 该方向=1 → 直接推出
-                =0(在板边) → 对手钳制板边，接受"被夹在板边与替身之间"
+                =0(该侧是板边) → 不推，对手钳制板边，接受"被夹在板边与替身之间"
+                任何情况下禁止把对手推出板外(板边专项见 4.2 边缘1)
         5. 替身 vs 主人(Chaos)：不解析，主人可自由穿过 (已确认·GGST原版只挡敌人)
-        6. 三体解析顺序：统一求解 (已确认)
-            一个函数内收集所有参与对 (LP-RP、替身-对手)
-            替身视为不可移动；按确定性顺序逐一解析，必要时迭代到无重叠
-            每次解析只移动"可动方"(角色)
+        6. 解析顺序：统一求解 (已确认)
+            按确定性顺序逐一解析，必要时迭代到无重叠；每次解析只移动"可动方"(角色)
+            参与对随场上替身数量变化：
+                · 无替身     ：仅 (LP-RP)
+                · 单替身(三体)：LP-RP、替身-对手
+                · 双替身(四体)：LP-RP、替身A-对手A、替身B-对手B  (双替身专项见 4.2 边缘2)
+            每 pass 固定顺序(与 main_blocks 现有调用顺序一致)：
+                char-char → LP 侧替身 → RP 侧替身
+            替身一律视为不可移动墙；迭代到全部无重叠为止
+        6.1 解析优先级：替身对角色挤压 > 角色之间 (已确认)
+            约束等级(高→低)：
+                P0 (绝对)  板边/墙：move_available=0 的方向永不可推(边缘1 场景A)
+                P1 (硬)    替身 vs 对手：AABB 永不允许重叠, 替身压人优先
+                P2         角色 vs 角色：只能在替身留下的空隙内分离,
+                           不得把角色推进"它的阻挡替身"(违反 P1)
+                P3 (允许)  角色 vs 自己的替身：可重叠(owner_pass_through)
+            冲突裁决：
+                · char-char 的分离量被 P1 封顶；空隙不足 → 按 4.2 [边缘2.1] 让位
+                · P1 遇到 P0 时让步(板边钳制), 接受"对手夹在板边与替身之间"
+                · 最终状态以不违反"P1 之上各级"为准：替身 vs 对手无重叠,
+                  除非被 P0 板边挡住
         7. Y 方向：全高墙 (已确认)
             替身 pushbox 高度跨 y=0(地面)~替身最高点
             对手无论地面/空中，pushbox Y 重叠即参与 X 解析(不可跳过)
+        8. 替身自身位置钳制 (板边专项)
+            替身 x 永不动；但替身 pushbox 左/右边缘永不出板
+            (生成时参照 collision_pushbox_stage_relocate_x 钳制到 ±2100 内)
 
     4.1 参考实现: pushbox_interact_update (闭包)
         创建替身时注入 obj_scapegoat["pushbox_interact_update"]，
@@ -98,48 +119,205 @@ __WORK_PLAN__
             调用点3  L449-456  循环结束 帧末 (最后再解析一次)
         闭包创建时捕获 (obj_scapegoat, obj_char_owner, obj_char_opponent)
 
-        -- 工厂函数 (创建替身时调用)
+        -- ======================================================================
+        -- 工厂函数 (创建替身时调用; 返回闭包注入 obj_scapegoat["pushbox_interact_update"])
+        -- 覆盖: 规则1~8 + 规则6.1优先级(P0板边 > P1替身 > P2角色 > P3自己的替身)
+        --       + 4.2 [边缘1]板边夹持 / [边缘2]双替身 / [边缘2.1]挤压死锁
+        -- 依赖 (collision.lua): collision_box_to_real_world_box / collision_box_aabb_detection
+        -- 全局 (代码库已有):   COLLSION_CONER_OUT_STATE / obj_char_game_scene_char_RP
+        -- 运行前提 (main_blocks 每碰撞tick): 本闭包被调用前, 本pass已完成
+        --   角色 stage_relocate_x + dynamic_normal_aabb_relocate_x
+        --   → obj_char_opponent["collision_move_available"] 是当帧最新值
+        -- ======================================================================
         function collision_pushbox_create_scapegoat_interact_update(
             obj_scapegoat, obj_char_owner, obj_char_opponent)
-            return function() -- 这就是 obj_scapegoat["pushbox_interact_update"]
-                -- 1. 开关: 消散后 pushbox_opponent_collision_active=false → 直接退出
+
+            -- 板边常量 (与 collision_pushbox_stage_relocate_x 保持一致)
+            local left_stage_collision  = -2100.0
+            local right_stage_collision =  2100.0
+
+            -- box = {cx, cy, w, h} 的左右边缘 (real world)
+            local function box_left(box)  return box[1] - box[3]/2 end
+            local function box_right(box) return box[1] + box[3]/2 end
+
+            -- 板边钳制 (仅角色; 替身 x 永不动, 生成时已按规则8钳定)
+            local function clamp_opponent_to_stage()
+                local box = collision_box_to_real_world_box(
+                    obj_char_opponent, obj_char_opponent["pushbox"])
+                if box_left(box) <= left_stage_collision then
+                    obj_char_opponent["x"] = left_stage_collision + box[3]/2
+                    obj_char_opponent["collision_move_available"] = {0,1}
+                elseif box_right(box) >= right_stage_collision then
+                    obj_char_opponent["x"] = right_stage_collision - box[3]/2
+                    obj_char_opponent["collision_move_available"] = {1,0}
+                else
+                    obj_char_opponent["collision_move_available"] = {1,1}
+                end
+            end
+
+            -- [边缘2.1] 让位优先级 (全部基于稳定属性 → 跨帧稳定, 无振荡)
+            -- 仿照 char-char "0101" corner 优先链: wallhurt → corner-out → y → 固定侧
+            -- 返回 true  = 本闭包的"对手"让位
+            -- 返回 false = 本闭包的"主人"让位 (对侧替身闭包把主人压入主人自己的替身)
+            local function opponent_should_yield()
+                if obj_char_opponent["wallhurt_wallstick_on_side"] ~= 0 then return true end
+                if obj_char_owner["wallhurt_wallstick_on_side"] ~= 0 then return false end
+                if COLLSION_CONER_OUT_STATE[obj_char_opponent["state"]] then return true end
+                if COLLSION_CONER_OUT_STATE[obj_char_owner["state"]] then return false end
+                if obj_char_opponent["y"] > obj_char_owner["y"] then return true end
+                if obj_char_owner["y"] > obj_char_opponent["y"] then return false end
+                return obj_char_opponent == obj_char_game_scene_char_RP
+            end
+
+            return function() -- main_blocks 每碰撞tick调用的"替身 vs 对手"物理入口
+                -- [点1] 开关: 消散/失效后 pushbox_opponent_collision_active=false → 退出
                 if not obj_scapegoat["pushbox_opponent_collision_active"] then
                     return
                 end
-                -- 2. real_world pushbox: 替身 + 对手
+                -- [点2] real_world pushbox: 替身 + 对手 (替身永远固定, x 永不动)
                 local box_sc = collision_box_to_real_world_box(
                     obj_scapegoat, obj_scapegoat["pushbox"])
                 local box_op = collision_box_to_real_world_box(
                     obj_char_opponent, obj_char_opponent["pushbox"])
-                -- 3. AABB 重叠检测
+                -- [点3] AABB 重叠检测 (规则7 全高墙: pushbox Y 重叠即参与 X 解析)
                 if not collision_box_aabb_detection(box_sc, box_op) then
                     return
                 end
-                -- 4. 替身固定不动, 把对手推到"远离替身那一侧"
-                if box_op[1] < box_sc[1] then
-                    -- 对手在替身左侧 → 往左推
+                -- [点4] 替身不可移动; 只移动"对手", 往"远离替身那一侧"推
+                --       方向: 比较替身中心x 与 对手中心x (中心相等 tiebreak→右)
+                local push_left = (box_op[1] < box_sc[1])
+                local target_x = nil
+                if push_left then
+                    -- 对手在替身左侧 → 往左推, 推到与替身左缘相切
                     if obj_char_opponent["collision_move_available"][1] == 1 then
-                        obj_char_opponent["x"] =
-                            box_sc[1] - box_sc[3]/2 - box_op[3]/2
+                        target_x = box_left(box_sc) - box_op[3]/2
                     end
-                    -- [1]==0(左侧是板边): 不推, 接受"对手被夹在板边与替身之间"
-                    -- 板边钳制由 collision_pushbox_stage_relocate_x 负责
+                    -- [1]==0 (左侧板边): 不推 → 对手被夹在板边与替身之间(边缘1场景A)
                 else
-                    -- 对手在替身右侧(含中心相等tiebreak→右) → 往右推
+                    -- 对手在替身右侧(含中心相等tiebreak→右) → 往右推, 推到与替身右缘相切
                     if obj_char_opponent["collision_move_available"][2] == 1 then
-                        obj_char_opponent["x"] =
-                            box_sc[1] + box_sc[3]/2 + box_op[3]/2
+                        target_x = box_right(box_sc) + box_op[3]/2
                     end
+                    -- [2]==0 (右侧板边): 不推(不把对手推出板外)
                 end
-                -- 5. 三体统一求解(已确认):
-                --    本函数与 collision_pushbox_dynamic_normal_aabb_relocate_x(char_LP,char_RP)
-                --    在同一tick内顺序执行(各2次+帧末1次), 自然迭代收敛
-                --    本函数只动"对手"(可动方), 替身 x 永不动
-                -- 6. 主人(owner)不解析: 自由穿过
-                -- 7. 全高墙: 替身 pushbox 高度须覆盖 y=0(地面)~替身最高点
-                --    空中对手 pushbox Y 重叠即被推回, 无需额外Y逻辑
+                -- [点5] 主人(owner)不解析: 闭包只捕获 opponent, owner 天然自由穿过
+                if target_x == nil then
+                    return -- 被 P0 板边挡住: 本pass不推, 保持钳制在板边
+                end
+
+                -- [点6] 双替身挤压死锁 (边缘2 / 边缘2.1)
+                -- 预演: 把对手推到 target_x 是否与主人重叠?
+                --       是 → 空隙不足 (G < 双pushbox宽), 走确定性让位
+                local box_ow = collision_box_to_real_world_box(
+                    obj_char_owner, obj_char_owner["pushbox"])
+                local saved_x = obj_char_opponent["x"]
+                obj_char_opponent["x"] = target_x
+                local box_op_t = collision_box_to_real_world_box(
+                    obj_char_opponent, obj_char_opponent["pushbox"])
+                local clash_with_owner = collision_box_aabb_detection(box_op_t, box_ow)
+                obj_char_opponent["x"] = saved_x
+
+                if not clash_with_owner then
+                    -- 空隙足够: P1 正常执行 (替身压人优先, 推离替身)
+                    obj_char_opponent["x"] = target_x
+                else
+                    -- 空隙不足 (边缘2.1): 永不与主人重叠/同x, 按优先级让位
+                    if opponent_should_yield() then
+                        -- 对手让位 → 对手退到主人"远离替身那一侧"相切
+                        -- (对手更靠近它自己的替身, 由对侧替身闭包继续收拢)
+                        if push_left then
+                            obj_char_opponent["x"] = box_right(box_ow) + box_op[3]/2
+                        else
+                            obj_char_opponent["x"] = box_left(box_ow) - box_op[3]/2
+                        end
+                    else
+                        -- 主人让位 → 对手保留在空隙 (停在与主人相切),
+                        -- 主人由对侧替身闭包压入它自己的替身
+                        if push_left then
+                            obj_char_opponent["x"] = box_left(box_ow) - box_op[3]/2
+                        else
+                            obj_char_opponent["x"] = box_right(box_ow) + box_op[3]/2
+                        end
+                    end
+                    -- 注: 极端交叉位(双方替身都在对方角色身后)下若仍有残余重叠,
+                    -- 由 3pass+帧末1pass 迭代 + 双方闭包同一优先级链持续收敛
+                end
+
+                -- [点6a] 板边钳制 (边缘1: 推挤后永不出板; 刷新 collision_move_available)
+                clamp_opponent_to_stage()
             end
         end
+
+    4.2 边缘情况专项 (Edge Cases)
+
+    [边缘1] 板边夹持: 替身 × 板边 × 角色
+        场景A(对手夹在板边与替身之间): 板边 → 对手 → 替身 → 中场
+            · 对手被墙(±2100)与替身两面夹住, 无法穿过替身逃出角落
+            · 对手贴墙侧 collision_move_available=0 → 替身不推, 对手钳制板边
+            · 对手只能等替身消散(90/45f)或被飞道/打击打掉才能离开
+            · 禁止把对手推出板外; 每 pass 末尾的
+              collision_pushbox_stage_relocate_x 仍会重新钳制
+        场景B(替身在板边、对手在替身与中场之间): 板边 → 替身 → 对手 → 中场
+            · 替身贴板生成(自身 box 被 ±2100 钳制, 规则8)
+            · 对手在替身"外侧" → 正常往远离替身方向推(往中场)
+            · 对手移动方向 collision_move_available=1 时直接推出
+        共同要求:
+            · 替身 x 永不动; 板边夹持时只有对手可动
+            · char-char 的 corner 优先逻辑("0111"/"1101"/"0101")可能把一方
+              推进替身方向 → 本函数在其后运行, 再把对手推出替身
+              (每帧3pass+帧末1pass迭代收敛, 不允许穿透替身/墙)
+            · 收敛判据: pass 结束后替身与对手无 AABB 重叠, 且对手不出板
+
+    [边缘2] 双替罪羊: 两个替身同时在版中相互挤压
+        场景: LP 有替身A(挡RP), RP 有替身B(挡LP), 两个角色被夹在中间
+            · 四体参与对: (LP-RP), (A-RP), (B-LP)
+            · 每个替身只推"自己的对手"; 替身之间互不解析(可互相穿过) (已确认)
+            · 优先级: 替身对角色挤压 (A-RP)/(B-LP) > 角色之间 (LP-RP) (已确认)
+              → char-char 只能在替身留下的空隙内分离, 不得把角色推进阻挡替身
+        解析顺序(与 main_blocks 现有顺序一致, 确定性):
+            pass: char-char → LP侧替身A(推RP) → RP侧替身B(推LP)
+            每帧 3 pass + 帧末 1 pass, 迭代到无重叠
+        相互挤压的物理结果:
+            · 替身A 推 RP、替身B 推 LP, 两角色被压向彼此
+            · 但 char-char 保持两角色不重叠 → 稳定态:
+              角色贴住各自的"阻挡墙", 角色间相切不重叠
+              (仅当两阻挡墙之间空隙 G ≥ LP_pushbox_w + RP_pushbox_w 时可达成)
+            · 空隙不足时见 [边缘2.1] 挤压死锁
+        必须验证的收敛性质:
+            · 无跨帧振荡: char-char 推开 与 替身推回 必须同一帧内收敛
+            · 同一帧多次执行不能让角色抖动/来回弹
+            · 若 (LP-RP) 与 (A-RP)/(B-LP) 推挤方向冲突:
+              以"迭代到全部无重叠"为准, 替身优先级最高(不可动)
+            · 空隙不足时不得振荡/同x/重叠, 按 [边缘2.1] 的确定性优先级让位
+
+    [边缘2.1] 空隙不足: 两替身夹缝 < 双pushbox宽 (挤压死锁)
+        场景: 两个"阻挡墙"(替身A/B)之间空隙 G < LP_pushbox_w + RP_pushbox_w
+            · 不存在"两角色彼此不重叠、且都不重叠对方阻挡墙"的合法解
+            · 若按自然迭代: 替身推拢 vs char-char 推散 每帧互相抵消 → 振荡,
+              甚至收敛到 LP["x"]==RP["x"] 的重叠态 → 必须禁止
+        让位规则 (确定性优先级, 仿照 char-char "0101" corner 优先链):
+            0. 硬约束先行 (P1 > P2): 每 pass 内 char-char 先执行, 但分离量被
+               替身封顶; 其后替身闭包重新强制 P1, 最终状态以
+               "替身 vs 对手 无重叠" 为准, char-char 未完全分离不构成错误
+            1. wallhurt/wallstick 侧优先: 正在撞墙的一方让位
+            2. corner-out 状态 (COLLSION_CONER_OUT_STATE) 优先让位
+            3. y 优先级: 高处角色让位 (与现有 0101 一致)
+            4. 保底 tie-break: 固定侧优先 (LP/RP 或 owner/opponent)
+        关键允许项: 角色可重叠"自己的替身" (owner_pass_through)
+            · 让位方被压入"自己的替身"重叠区, 给另一方腾出空隙
+            · 例: LP 让位 → LP 压入 A(LP 自己的替身)内, RP 留在空隙中
+            · 禁止: 让位方与"对方的阻挡替身"重叠 (P1 永不让步, 除非 P0 板边)
+        永不出现:
+            · LP["x"] == RP["x"]
+            · 两角色 pushbox 彼此重叠; 最紧只允许"相切"(重叠=0)
+        收敛判据(修正):
+            · (A-RP) 与 (B-LP) 无 AABB 重叠; 角色与"自己的替身"重叠不算违反
+            · (LP-RP) 无 AABB 重叠 (相切=0 允许)
+            · 优先级须基于稳定属性(wallhurt/corner-out/y/固定侧),
+              不得基于当帧瞬时 x 重叠符号 → 跨帧稳定, 无振荡
+        实现取向(二选一):
+            · 闭包内: 推挤前判断"对侧空隙是否足够", 不足则按优先级跳过/让位
+            · main_blocks: 末次 pass 后做一次"死锁检测+优先级收敛"兜底
 
 五、生命周期 / 消散
     1. 持续 life 帧 (90 / 弱化 45)
@@ -148,12 +326,21 @@ __WORK_PLAN__
     4. 生成瞬间扣血 7.5% 当前血量(最低 1 HP)
 
 六、已确认决策汇总
-    [owner_pass_through] 替身只挡对手，主人可穿过
-    [air_block]          替身是全高墙，空中也挡(不可跳过)
-    [spawn_overlap]      生成重叠时替身固定，对方被推开(板边则被夹住)
-    [dissipate]          被命中消散时 pushbox 立即失效
-    [three_body]         三体统一求解(替身不可移动)
-    [projectile_block]   替身可被敌方飞道打掉(吸收一击)
+    [owner_pass_through]   替身只挡对手，主人可穿过
+    [air_block]            替身是全高墙，空中也挡(不可跳过)
+    [spawn_overlap]        生成重叠时替身固定，对方被推开(板边则被夹住)
+    [dissipate]            被命中消散时 pushbox 立即失效
+    [three_body]           三体(双方都有替身时四体)统一求解(替身不可移动)
+    [projectile_block]     替身可被敌方飞道打掉(吸收一击)
+    [corner_pin]           对手夹在板边与替身之间 → 钳制板边, 替身不推(不穿墙)
+    [scapegoat_box_clamp]  替身自身 box 永被钳制在 ±2100 内(参照 stage_relocate)
+    [scapegoat_no_collide] 替身 vs 替身 互不解析, 可互相穿过
+    [multi_body_order]     解析顺序固定: char-char → LP侧替身 → RP侧替身 (确定性)
+    [scapegoat_push_priority] 替身对角色挤压优先级 > 角色之间 (P1>P2);
+                              char-char 不得把角色推进它的阻挡替身
+    [squeeze_deadlock]     空隙不足时按确定性优先级让位, 让位方可压入自己的替身
+    [yield_priority]       让位优先级链: wallhurt → corner-out → y → 固定侧 (跨帧稳定)
+    [no_identical_x]       永不出现 LP["x"]==RP["x"]; 两角色最紧只允许相切
 
 -- fuck this world coordinate axis
     -- just consider we are in a halo ring
