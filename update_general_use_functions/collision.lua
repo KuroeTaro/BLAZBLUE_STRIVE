@@ -94,20 +94,24 @@ function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_R
         if obj_char_LP["x"] < left_stage_collision + box_L[3]/2 then
             obj_char_LP["x"] = left_stage_collision + box_L[3]/2
             obj_char_RP["x"] = left_stage_collision + box_L[3] + box_R[3]/2
+            obj_char_LP["collision_move_available"][1] = 0
         end
         if obj_char_RP["x"] > right_stage_collision - box_R[3]/2 then
             obj_char_RP["x"] = right_stage_collision + box_R[3]/2
             obj_char_LP["x"] = right_stage_collision + box_R[3] + box_L[3]/2
+            obj_char_RP["collision_move_available"][2] = 0
         end
     end
     local function stage_collision_fix_RL()
         if obj_char_RP["x"] < left_stage_collision + box_R[3]/2 then
             obj_char_RP["x"] = left_stage_collision + box_R[3]/2
             obj_char_LP["x"] = left_stage_collision + box_R[3] + box_L[3]/2
+            obj_char_RP["collision_move_available"][1] = 0
         end
         if obj_char_LP["x"] > right_stage_collision - box_L[3]/2 then
             obj_char_LP["x"] = right_stage_collision + box_L[3]/2
             obj_char_RP["x"] = right_stage_collision + box_L[3] + box_R[3]/2
+            obj_char_LP["collision_move_available"][2] = 0
         end
     end
     if (not obj_char_LP["pushbox_opponent_collision_active"])

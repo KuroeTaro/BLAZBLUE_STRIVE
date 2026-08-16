@@ -23,6 +23,23 @@ __WORK_PLAN__
 -- 开始界面重做
 -- 联机
 
+
+
+
+
+-- 替罪羊pushbox逻辑
+    获取两个角色的 collision_state
+    local collision_state = table.concat({
+        obj_char_LP["collision_move_available"][1],
+        obj_char_LP["collision_move_available"][2],
+        obj_char_RP["collision_move_available"][1],
+        obj_char_RP["collision_move_available"][2]
+    })
+    生成位置：角色前一定距离 极限位置为板边
+    生成时的碰撞盒挤开：
+        1.从角色x y=0 替罪羊最高点最外点生成一个pushbox 如果碰撞则挤开 极限位置为板边
+        2.
+
 -- fuck this world coordinate axis
     -- just consider we are in a halo ring
     -- the ground of the ring at y = 0
