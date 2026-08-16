@@ -27,18 +27,133 @@ __WORK_PLAN__
 
 
 
--- 替罪羊pushbox逻辑
-    获取两个角色的 collision_state
-    local collision_state = table.concat({
-        obj_char_LP["collision_move_available"][1],
-        obj_char_LP["collision_move_available"][2],
-        obj_char_RP["collision_move_available"][1],
-        obj_char_RP["collision_move_available"][2]
-    })
-    生成位置：角色前一定距离 极限位置为板边
-    生成时的碰撞盒挤开：
-        1.从角色x y=0 替罪羊最高点最外点生成一个pushbox 如果碰撞则挤开 极限位置为板边
-        2.
+================================================================================
+替罪羊(Scapegoat / 236K) pushbox 物理碰撞算法 需求
+================================================================================
+
+一、GGST 参考行为 (Happy Chaos 236K)
+    1. Chaos 后撤(backdash)，在"原位置前方"留下一个替身(clone)
+    2. 替身是持续 90f 的"碰撞墙(collision wall)"：阻挡敌方穿过，敌人无法走进去
+    3. 替身能吸收"任意一击"(非超必杀)，吸收后立即消散
+    4. 被命中时有"类被击(on-hit cancel)"交互
+    5. 若对方在板边(corner)，替身必定生成在 Chaos 面前(朝向对方一侧)
+    6. 1 HP 时生成"弱化替身"：仅持续 45f，hurtbox 与碰撞盒都明显缩小
+    7. 消耗 7.5% 当前血量(最低扣到 1 HP)
+
+二、对象模型 (建议)
+    替身走 projectile 体系，放入 projectile_table；自身静止(位置固定)不移动。
+    字段参考：
+        type                           = "scapegoat"
+        x / y                          -- 世界坐标(生成时定死)
+        pushbox                        -- {cx, cy, w, h} 与角色 pushbox 同格式，y=0 为地面
+        pushbox_opponent_collision_active -- 是否参与对手 pushbox 碰撞
+        pushbox_interact_update / pushbox_interact_function
+                                       -- 每个碰撞 tick 调用的"替身 vs 角色"物理入口
+        owner_player_side              -- 归属(Chaos 侧) → 判断 owner / opponent
+        life = 90 (弱化 = 45)
+    碰撞语义：
+        · 只与"对手"做 pushbox 解析；主人(owner)可自由穿过
+        · 替身有 hurtbox_table：可被对手的打击/飞道命中，命中即消散(吸收一击)
+
+三、生成 (Spawn)
+    1. 生成位置：角色前一定距离 = obj_char["x"] + obj_char[5] * SPAWN_DISTANCE
+       极限位置为板边(±2100，参照 collision_pushbox_stage_relocate_x 钳制)
+       对方在板边时：替身必定生成在角色面前(朝对方一侧)
+    2. 生成时碰撞盒挤开：
+        1. 从"角色x、y=0、替身最高点最外点"生成一个 pushbox
+           与对方 pushbox 碰撞 → 替身固定不动，对方被推开(远离替身一侧)
+           对方在板边 → 对方被夹在板边与替身之间(钳制板边)
+        2. 生成完成后立即执行一次"四、每帧物理碰撞算法"做收敛(替身固定，只动对手)
+
+四、每帧物理碰撞算法 (核心需求)
+    在 main_blocks 每个碰撞 tick 与现有
+        collision_pushbox_dynamic_normal_aabb_relocate_x(char_LP,char_RP)
+    相同位置，新增：
+        collision_pushbox_dynamic_scapegoat_relocate_x(obj_scapegoat, obj_char_owner, obj_char_opponent)
+    输入：替身 + 双方角色；owner/opponent 由 owner_player_side 从 char_LP/char_RP 选出
+
+    规则：
+        1. 替身 = 不可移动墙；碰撞解析只移动"对手"，替身 x 永不动
+        2. 仅 pushbox_opponent_collision_active 为真才参与
+        3. 用 collision_box_to_real_world_box 取三者的 real_world pushbox
+        4. 替身 vs 对手 AABB(collision_box_aabb_detection)：
+            重叠时 → 把对手推到"远离替身那一侧"(替身固定)
+                方向：比较替身中心 x 与对手中心 x
+                collision_move_available 该方向=1 → 直接推出
+                =0(在板边) → 对手钳制板边，接受"被夹在板边与替身之间"
+        5. 替身 vs 主人(Chaos)：不解析，主人可自由穿过 (已确认·GGST原版只挡敌人)
+        6. 三体解析顺序：统一求解 (已确认)
+            一个函数内收集所有参与对 (LP-RP、替身-对手)
+            替身视为不可移动；按确定性顺序逐一解析，必要时迭代到无重叠
+            每次解析只移动"可动方"(角色)
+        7. Y 方向：全高墙 (已确认)
+            替身 pushbox 高度跨 y=0(地面)~替身最高点
+            对手无论地面/空中，pushbox Y 重叠即参与 X 解析(不可跳过)
+
+    4.1 参考实现: pushbox_interact_update (闭包)
+        创建替身时注入 obj_scapegoat["pushbox_interact_update"]，
+        由 main_blocks.lua 每碰撞tick调用(替身挂在 owner 的 projectile_table)：
+            调用点1  L278-285  COLLIDE_TICK循环内 第1次 (角色pushbox解析后, enemy_interact前)
+            调用点2  L426-433  COLLIDE_TICK循环内 第2次 (打击受击检测+第二次pushbox解析后)
+            调用点3  L449-456  循环结束 帧末 (最后再解析一次)
+        闭包创建时捕获 (obj_scapegoat, obj_char_owner, obj_char_opponent)
+
+        -- 工厂函数 (创建替身时调用)
+        function collision_pushbox_create_scapegoat_interact_update(
+            obj_scapegoat, obj_char_owner, obj_char_opponent)
+            return function() -- 这就是 obj_scapegoat["pushbox_interact_update"]
+                -- 1. 开关: 消散后 pushbox_opponent_collision_active=false → 直接退出
+                if not obj_scapegoat["pushbox_opponent_collision_active"] then
+                    return
+                end
+                -- 2. real_world pushbox: 替身 + 对手
+                local box_sc = collision_box_to_real_world_box(
+                    obj_scapegoat, obj_scapegoat["pushbox"])
+                local box_op = collision_box_to_real_world_box(
+                    obj_char_opponent, obj_char_opponent["pushbox"])
+                -- 3. AABB 重叠检测
+                if not collision_box_aabb_detection(box_sc, box_op) then
+                    return
+                end
+                -- 4. 替身固定不动, 把对手推到"远离替身那一侧"
+                if box_op[1] < box_sc[1] then
+                    -- 对手在替身左侧 → 往左推
+                    if obj_char_opponent["collision_move_available"][1] == 1 then
+                        obj_char_opponent["x"] =
+                            box_sc[1] - box_sc[3]/2 - box_op[3]/2
+                    end
+                    -- [1]==0(左侧是板边): 不推, 接受"对手被夹在板边与替身之间"
+                    -- 板边钳制由 collision_pushbox_stage_relocate_x 负责
+                else
+                    -- 对手在替身右侧(含中心相等tiebreak→右) → 往右推
+                    if obj_char_opponent["collision_move_available"][2] == 1 then
+                        obj_char_opponent["x"] =
+                            box_sc[1] + box_sc[3]/2 + box_op[3]/2
+                    end
+                end
+                -- 5. 三体统一求解(已确认):
+                --    本函数与 collision_pushbox_dynamic_normal_aabb_relocate_x(char_LP,char_RP)
+                --    在同一tick内顺序执行(各2次+帧末1次), 自然迭代收敛
+                --    本函数只动"对手"(可动方), 替身 x 永不动
+                -- 6. 主人(owner)不解析: 自由穿过
+                -- 7. 全高墙: 替身 pushbox 高度须覆盖 y=0(地面)~替身最高点
+                --    空中对手 pushbox Y 重叠即被推回, 无需额外Y逻辑
+            end
+        end
+
+五、生命周期 / 消散
+    1. 持续 life 帧 (90 / 弱化 45)
+    2. 替身有 hurtbox，可被"打击/飞道"命中(吸收一击)，命中即消散
+    3. 消散瞬间 pushbox 立即失效(只保留消失动画视觉) (已确认)
+    4. 生成瞬间扣血 7.5% 当前血量(最低 1 HP)
+
+六、已确认决策汇总
+    [owner_pass_through] 替身只挡对手，主人可穿过
+    [air_block]          替身是全高墙，空中也挡(不可跳过)
+    [spawn_overlap]      生成重叠时替身固定，对方被推开(板边则被夹住)
+    [dissipate]          被命中消散时 pushbox 立即失效
+    [three_body]         三体统一求解(替身不可移动)
+    [projectile_block]   替身可被敌方飞道打掉(吸收一击)
 
 -- fuck this world coordinate axis
     -- just consider we are in a halo ring
