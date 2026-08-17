@@ -1854,8 +1854,9 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
     end
     res[6] = function()
         -- state
-        hurt_side_obj_char["velocity"][2] = -5.0
         hurt_side_obj_char["height"] = "OTG" -- stand crouch air OTG wallstick
+        -- state_number
+        hurt_side_obj_char["velocity"][2] = -5.0
         -- collide
         hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][2]
         hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][2]
@@ -1976,8 +1977,9 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
     end
     res[6] = function()
         -- state
-        hurt_side_obj_char["velocity"][2] = -5.0
         hurt_side_obj_char["height"] = "OTG" -- stand crouch air OTG wallstick
+        -- state_number
+        hurt_side_obj_char["velocity"][2] = -5.0
         -- collide
         hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][2]
         hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][2]
@@ -2098,8 +2100,9 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
     end
     res[6] = function()
         -- state
-        hurt_side_obj_char["velocity"][2] = -5.0
         hurt_side_obj_char["height"] = "OTG" -- stand crouch air OTG wallstick
+        -- state_number
+        hurt_side_obj_char["velocity"][2] = -5.0
         -- collide
         hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][2]
         hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][2]
@@ -2205,8 +2208,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
     res[70] = function()
         -- state
         obj_char["y"] = 0
-        obj_char["pushbox"] = pushbox_data[sprite_sheet][3]
         -- collide
+        obj_char["pushbox"] = pushbox_data[sprite_sheet][3]
         obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][3]
         obj_char[8] = 3
         -- insert_VFX
@@ -2220,9 +2223,8 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         play_obj_audio(stage_interactive_SFX_table["ground_hard_knockdown"])
     end
     res[72] = function()
-        -- state
-        obj_char["pushbox"] = pushbox_data[sprite_sheet][4]
         -- collide
+        obj_char["pushbox"] = pushbox_data[sprite_sheet][4]
         obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][4]
         obj_char[8] = 4
     end
@@ -2721,6 +2723,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
     res[13] = function()
         -- state
         hurt_side_obj_char["height"] = "crouch" -- stand crouch air OTG wallstick
+        -- state_number
         hurt_side_obj_char["friction"] = 7
         -- collide
         hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][4]
@@ -4710,6 +4713,7 @@ function load_game_scene_anim_char_common_0_general_hurt_wallbreak(hit_side_obj_
     res["prop_f"] = "f"
     res["anim_length"] = 1
     res[0] = function()
+        -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstickable"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = true
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false

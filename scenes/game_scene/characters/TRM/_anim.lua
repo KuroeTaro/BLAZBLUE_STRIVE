@@ -733,13 +733,13 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "recovery" -- none startup active recovery
         obj_char["idle_cancel"] = false
+        obj_char["air_move"]["jump"][1] = obj_char["air_move"]["jump"][2]
+        obj_char["air_move"]["air_dash"][1] = obj_char["air_move"]["air_dash"][2]
         -- state_number
         obj_char["velocity"] = {0,0}
         obj_char["velocity_cache"] = {0,0}
         obj_char["friction"] = 1
         obj_char["gravity"] = 2.5
-        obj_char["air_move"]["jump"][1] = obj_char["air_move"]["jump"][2]
-        obj_char["air_move"]["air_dash"][1] = obj_char["air_move"]["air_dash"][2]
         -- enemy_friend_interaction
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
@@ -4903,7 +4903,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_in(obj_char
         -- -- input_sys_cache
         -- obj_char["input_sys_state_negative_edge"] = "load" -- none save load
         -- common_game_scene_get_input_sys_cache_negative_edge_state_machine(obj_char["player_side"])()
-        -- -- shot_sys
+        -- shot_sys
         obj_char["shot_sys_fire_cancel"] = true
     end
     res[13] = function()
@@ -5032,6 +5032,7 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(obj_char)
     res["prop_f"] = "shot_sys_reticle_f_4"
     res["anim_length"] = 13
     res[0] = function()
+        -- shot_sys
         obj_char["shot_sys_reticle"][4] = 0.2
         obj_char["shot_sys_reticle"][8] = 0
         obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
@@ -5039,15 +5040,19 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(obj_char)
         play_obj_audio(move_SFX_table["5H_reticle_ease_in"])
     end
     res[1] = function()
+        -- shot_sys
         obj_char["shot_sys_reticle"][4] = 0.4
     end
     res[2] = function()
+        -- shot_sys
         obj_char["shot_sys_reticle"][4] = 0.6
     end
     res[3] = function()
+        -- shot_sys
         obj_char["shot_sys_reticle"][4] = 0.8
     end
     res[4] = function()
+        -- shot_sys
         obj_char["shot_sys_reticle"][4] = 1
     end
     res[13] = function()
@@ -5062,6 +5067,7 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unloc
     res["prop_f"] = "shot_sys_reticle_f_8"
     res["anim_length"] = 10
     res[0] = function()
+        -- shot_sys
         obj_char["shot_sys_reticle_sprite_sheet"] = sprite_sheet
         obj_char["shot_sys_reticle"][4] = 1
         obj_char["shot_sys_reticle"][8] = 0
@@ -5071,15 +5077,19 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unloc
         end
     end
     res[1] = function()
+        -- shot_sys
         obj_char["shot_sys_reticle"][8] = 1
     end
     res[3] = function()
+        -- shot_sys
         obj_char["shot_sys_reticle"][8] = 2
     end
     res[5] = function()
+        -- shot_sys
         obj_char["shot_sys_reticle"][8] = 3
     end
     res[7] = function()
+        -- shot_sys
         obj_char["shot_sys_reticle"][8] = 4
     end
     res[10] = function()
@@ -5093,15 +5103,18 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locked(obj_char)
     res["anim_length"] = 41
     for i = 0,19 do
         res[i*2] = function()
+            -- shot_sys
             obj_char["shot_sys_reticle"][8] = i
         end
     end
     res[0] = function()
+        -- shot_sys
         obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_locked"
         obj_char["shot_sys_reticle"][4] = 1
         obj_char["shot_sys_reticle"][8] = 0
     end
     res[40] = function()
+        -- shot_sys
         obj_char["shot_sys_reticle_f_8"] = 0
         obj_char["shot_sys_reticle"][8] = 0
     end
@@ -5117,6 +5130,7 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_out(obj_char
     res["prop_f"] = "shot_sys_reticle_f_8"
     res["anim_length"] = 8
     res[0] = function()
+        -- shot_sys
         obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_ease_out"
         obj_char["shot_sys_reticle"][4] = 1
         obj_char["shot_sys_reticle"][8] = 0
@@ -5124,9 +5138,11 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_out(obj_char
         play_obj_audio(move_SFX_table["5H_reticle_ease_out"])
     end
     res[2] = function()
+        -- shot_sys
         obj_char["shot_sys_reticle"][8] = 1
     end
     res[4] = function()
+        -- shot_sys
         obj_char["shot_sys_reticle"][8] = 2
     end
     res[8] = function()
@@ -5139,17 +5155,21 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_shot(obj_char)
     res["prop_f"] = "shot_sys_reticle_f_8"
     res["anim_length"] = 8
     res[0] = function()
+        -- shot_sys
         obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_shot"
         obj_char["shot_sys_reticle"][4] = 1
         obj_char["shot_sys_reticle"][8] = 0
     end
     res[2] = function()
+        -- shot_sys
         obj_char["shot_sys_reticle"][8] = 1
     end
     res[4] = function()
+        -- shot_sys
         obj_char["shot_sys_reticle"][8] = 2
     end
     res[6] = function()
+        -- shot_sys
         obj_char["shot_sys_reticle"][8] = 3
     end
     res[8] = function()
@@ -6288,7 +6308,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(hit_side_obj_char,hur
         hit_side_obj_char[8] = 4
     end
     res[27] = function()
-        -- enemy_friend_interaction
+        -- state
         hit_side_obj_char["hit_cancel"] = true
         -- insert_VFX
         hit_side_obj_char["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
@@ -8276,7 +8296,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(hit_side_obj_char,hu
         hit_side_obj_char[8] = 3
     end
     res[12] = function()
-        -- enemy_friend_interaction
+        -- state
         hit_side_obj_char["hit_cancel"] = true
         -- insert_VFX
         hit_side_obj_char["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
@@ -9539,7 +9559,7 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char[8] = 2
     end
     res[7] = function()
-        -- input_sys
+        -- input_sys_cache
         hit_side_obj_char["input_sys_state_negative_edge"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_negative_edge_init(hit_side)(hit_side_obj_char)
     end
@@ -9576,7 +9596,7 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char[8] = 4
     end
     res[14] = function()
-        -- sub_obj_table
+        -- shot_sys
         character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["shot_sys_state"] = "at_the_ready_ease_in"
     end
