@@ -1,7 +1,6 @@
 -- global_projectile_prop_table
 -- 1-8 type life x y velocity projectile_clash_type f
 -- state state_cache physics_lock sprite_sheet
--- pushbox_interact_function	pushbox
 -- projectile_clashed_function	projectile_clash_box
 -- enemy_interact_function		hitbox hit_type	hit_guard_type hit_hurt_blockstop_countdown
 --                              hit_damage hit_damage_correction_factor 

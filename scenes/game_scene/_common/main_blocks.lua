@@ -272,19 +272,6 @@ function update_game_scene_training_main()
             local current_projectile = char_RP["projectile_table"][i]
             current_projectile["update_sub_frame"]()
         end
-        -- 更新飞行道具 与角色碰撞交互
-        for i = #char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
-            local current_projectile = char_LP["projectile_table"][i]
-            if current_projectile["pushbox_interact_update"] then
-                current_projectile["pushbox_interact_update"]()
-            end
-        end
-        for i = #char_RP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
-            local current_projectile = char_RP["projectile_table"][i]
-            if current_projectile["pushbox_interact_update"] then
-                current_projectile["pushbox_interact_update"]()
-            end
-        end
         -- enemy_interact_function
             -- strike_clash
             -- projectile_and_projectile_interaction
@@ -420,19 +407,6 @@ function update_game_scene_training_main()
         collision_pushbox_state_relocate_in_character_x(char_LP,char_RP,obj_stage_game_scene_mid_collision_anchor)
         -- 检测pushbox 更新X位置 dynamic_relocate_x
         collision_pushbox_dynamic_normal_aabb_relocate_x(char_LP,char_RP)
-        -- 更新飞行道具 与角色碰撞交互
-        for i = #char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
-            local current_projectile = char_LP["projectile_table"][i]
-            if current_projectile["pushbox_interact_update"] then
-                current_projectile["pushbox_interact_update"]()
-            end
-        end
-        for i = #char_RP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
-            local current_projectile = char_RP["projectile_table"][i]
-            if current_projectile["pushbox_interact_update"] then
-                current_projectile["pushbox_interact_update"]()
-            end
-        end
     end
     -- 检测pushbox 更新Y位置
     collision_pushbox_relocate_y(char_LP)
@@ -443,19 +417,6 @@ function update_game_scene_training_main()
     collision_pushbox_state_relocate_in_character_x(char_LP,char_RP,obj_stage_game_scene_mid_collision_anchor)
     -- 检测pushbox 更新X位置 dynamic_relocate_x
     collision_pushbox_dynamic_normal_aabb_relocate_x(char_LP,char_RP)
-    -- 更新飞行道具 与角色碰撞交互
-    for i = #char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
-        local current_projectile = char_LP["projectile_table"][i]
-        if current_projectile["pushbox_interact_update"] then
-            current_projectile["pushbox_interact_update"]()
-        end
-    end
-    for i = #char_RP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
-        local current_projectile = char_RP["projectile_table"][i]
-        if current_projectile["pushbox_interact_update"] then
-            current_projectile["pushbox_interact_update"]()
-        end
-    end
     -- 更新阻力
     update_game_scene_friction()
     -- 更新角色重力方向速度

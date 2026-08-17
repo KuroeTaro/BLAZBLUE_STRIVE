@@ -32,7 +32,6 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     obj_projectile["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
     obj_projectile["f"] = -1
     obj_projectile["sprite_sheet"] = "5H_miss_projectile"
-    -- pushbox_interact_function nil
     -- projectile_clashed_function nil
     -- enemy_interact_function
     obj_projectile["hitbox_table"] = {}
@@ -884,7 +883,6 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     obj_projectile["f"] = -1
     obj_projectile["state"] = "in_spawner"
     obj_projectile["sprite_sheet"] = "6SP_P_curse_ball_loop_projectile"
-    -- pushbox_interact_function nil
     -- projectile_clashed_function nil
     -- enemy_interact_function
     obj_projectile["hitbox_table"] = {}

@@ -1,13 +1,3 @@
-# -*- coding: utf-8 -*-
-"""Validate the scapegoat pushbox_interact_update reference implementation
-extracted from _work_plan.txt using a real LuaJIT (lupa) interpreter.
-
-Scenarios:
-  1. 边缘1 场景A: opponent pinned at corner between wall and scapegoat -> no push
-  2. P1 basic push: scapegoat pushes opponent out (sufficient gap)
-  3. 边缘2 dual scapegoat, sufficient gap -> chars absorb into own scapegoats
-  4. 边缘2.1 deadlock (insufficient gap) -> no overlap, no identical x, deterministic
-"""
 import re
 import lupa
 
