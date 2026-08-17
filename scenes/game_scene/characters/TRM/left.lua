@@ -17,7 +17,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["run_at_current_frame"] = false
     obj_char_game_scene_char_LP["run_at_current_sub_frame"] = false
     obj_char_game_scene_char_LP["player_side"] = "L"
-    obj_char_game_scene_char_LP["character_mode"] = "RW.Baby.Blue" -- "Good.Game.WP" "RW.Baby.Blue"
+    obj_char_game_scene_char_LP["character_mode"] = "RW.Baby.Blue" -- "Good.Grief.MP" "RW.Baby.Blue"
     obj_char_game_scene_char_LP["type"] = "character"
     obj_char_game_scene_char_LP["default_throw_distance"] = 0
     obj_char_game_scene_char_LP["state"] = "before_ease_in"
@@ -5134,7 +5134,7 @@ function state_gate_game_scene_char_LP_from_6dash_dash_cancel(input,self_side_ob
     if self_side_obj_char["idle_cancel"] then
         if state_gate_game_scene_char_LP_common_ground_to_special_move(input,self_side_obj_char,opponent_side_obj_char) then
             -- Good.Game.WP dash cancel -> special does not apply damage correction
-            if self_side_obj_char["character_mode"] == "Good.Game.WP" then
+            if self_side_obj_char["character_mode"] == "Good.Grief.MP" then
                 self_side_obj_char["hit_damage_correction_factor"] = 1
             end
             play_obj_audio(self_side_stage_interactive_SFX_table["ground_dash_skid"])
