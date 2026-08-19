@@ -917,7 +917,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
                 if hit_side_shot_sys_curse_force_off_state[hit_side_obj_char["state"]] or (not hit_side_obj_char["shot_sys_curse"]) then
                     obj_VFX["state"] = "end"
                     init_point_linear_anim_with(obj_VFX,obj_VFX["opacity_ease_out_point_linear_animation"])
-                    play_obj_audio(hit_side_move_SFX_table["6SP_P_end"])
+                    play_obj_audio(hit_side_move_SFX_table["6SP_P_curse_end"])
                 end
                 if hurt_side_obj_char["state"] == "wallbreak_hurt" then
                     obj_VFX[4] = 0

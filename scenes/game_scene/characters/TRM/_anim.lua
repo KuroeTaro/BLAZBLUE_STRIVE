@@ -9244,8 +9244,6 @@ function load_game_scene_anim_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_cha
         -- draw_correction
         hit_side_obj_char[8] = 4
         hit_side_obj_char["anchor_pos"] = {275,505}
-        -- SFX
-        play_obj_audio(hit_side_move_SFX_table["6SP_K_whiff"])
     end
     res[4] = function()
         -- collide

@@ -896,9 +896,9 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
         end
         insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_obj_char)
     end
-    obj_projectile["hit_SFX"] = hit_side_move_SFX_table["6SP_P_hit"]
+    obj_projectile["hit_SFX"] = hit_side_move_SFX_table["6SP_P_curse_ball_hit"]
     obj_projectile["hit_whiff_SFX"] = hit_side_move_SFX_table["6SP_P_whiff"]
-    obj_projectile["ground_bounce_SFX"] = hit_side_move_SFX_table["6SP_P_ground_bounce"]
+    obj_projectile["ground_bounce_SFX"] = hit_side_move_SFX_table["6SP_P_curse_ball_ground_bounce"]
     obj_projectile["enemy_interact_function"] = function()
         if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) then
             -- blast_state_init

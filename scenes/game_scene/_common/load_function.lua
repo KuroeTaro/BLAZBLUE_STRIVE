@@ -30,18 +30,18 @@ function load_game_scene_prep()
     ORDER_LOAD_TABLE = {
         order_load_game_scene_common,
         order_load_game_scene_common_VFX,
-        order_load_game_scene_char_LP_frames,
-        order_load_game_scene_char_RP_frames,
-        order_load_game_scene_stage_frames,
+        order_load_game_scene_UI_act,
+        order_load_game_scene_UI_HUD,
+        order_load_game_scene_UI_lets_dance,
         order_load_game_scene_char_LP_audio,
+        order_load_game_scene_char_LP_frames,
         order_load_game_scene_char_RP_audio,
+        order_load_game_scene_char_RP_frames,
         order_load_game_scene_stage_audio,
-        order_load_game_scene_act,
-        order_load_game_scene_HUD,
-        order_load_game_scene_lets_dance
+        order_load_game_scene_stage_frames
     }
     CURRENT_ORDER_TABLE = {1,1,1,1,1,1,1,1,1,1,1}  -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
-    ORDER_SIZE_TABLE = {12,8,39,39,4,11,11,3,4,3,1}  -- 每个load function的最大值
+    ORDER_SIZE_TABLE = {12,8,4,3,1,11,39,11,39,3,4}  -- 每个load function的最大值
     LOAD_ONCE_TABLE = {false,false,false,false,false,false,false,false,false,false,false}   -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     LOADING_FUNCTION_AMOUNT = 11 -- 和线程数相同
     -- GAME_MODE = 0
@@ -110,14 +110,14 @@ function order_load_game_scene_common(load_order)
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
-function order_load_game_scene_act(load_order)
+function order_load_game_scene_UI_act(load_order)
     local switch = 
     {
         [1] = function()
             image_sprite_sheet_announcer_game_scene_act_common = 
             common_sprite_sheet_load(
                 "asset/game_scene/common/texture/act_common.json",
-                love.graphics.newImage(ASSET_DATA[9]["act_common_sprite_batch"])
+                love.graphics.newImage(ASSET_DATA[3]["act_common_sprite_batch"])
             )
             image_sprite_sheet_table_announcer_game_scene_act_number = {}
         end,
@@ -125,59 +125,59 @@ function order_load_game_scene_act(load_order)
             image_sprite_sheet_table_announcer_game_scene_act_number[1] = 
             common_sprite_sheet_load(
                 "asset/game_scene/common/texture/act_1.json",
-                love.graphics.newImage(ASSET_DATA[9]["act_1_sprite_batch"])
+                love.graphics.newImage(ASSET_DATA[3]["act_1_sprite_batch"])
             )
         end,
         [3] = function()
             image_sprite_sheet_table_announcer_game_scene_act_number[2] = 
             common_sprite_sheet_load(
                 "asset/game_scene/common/texture/act_2.json",
-                love.graphics.newImage(ASSET_DATA[9]["act_2_sprite_batch"])
+                love.graphics.newImage(ASSET_DATA[3]["act_2_sprite_batch"])
             )
         end,
         [4] = function()
             image_sprite_sheet_table_announcer_game_scene_act_number[3] = 
             common_sprite_sheet_load(
                 "asset/game_scene/common/texture/act_3.json",
-                love.graphics.newImage(ASSET_DATA[9]["act_3_sprite_batch"])
+                love.graphics.newImage(ASSET_DATA[3]["act_3_sprite_batch"])
             )
         end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
-function order_load_game_scene_HUD(load_order)
+function order_load_game_scene_UI_HUD(load_order)
     local switch = 
     {
         [1] = function()
-            image_HUD_game_scene_background_gauge = love.graphics.newImage(ASSET_DATA[10]["HUD_background_gauge"])
+            image_HUD_game_scene_background_gauge = love.graphics.newImage(ASSET_DATA[4]["HUD_background_gauge"])
         end,
         [2] = function()
             image_sprite_sheet_HUD_game_scene_common = 
             common_sprite_sheet_load(
                 "asset/game_scene/common/texture/HUD/HUD_common.json",
-                love.graphics.newImage(ASSET_DATA[10]["HUD_common_sprite_batch"])
+                love.graphics.newImage(ASSET_DATA[4]["HUD_common_sprite_batch"])
             )
         end,
         [3] = function()
             image_sprite_sheet_announcer_game_scene_HUD_ease_in = 
             common_sprite_sheet_load(
                 "asset/game_scene/common/texture/HUD/HUD_ease_in.json",
-                love.graphics.newImage(ASSET_DATA[10]["HUD_ease_in_sprite_batch"])
+                love.graphics.newImage(ASSET_DATA[4]["HUD_ease_in_sprite_batch"])
             )
         end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
-function order_load_game_scene_lets_dance(load_order)
+function order_load_game_scene_UI_lets_dance(load_order)
     local switch = 
     {
         [1] = function()
             image_sprite_sheet_announcer_game_scene_lets_dance = 
             common_sprite_sheet_load(
                 "asset/game_scene/common/texture/lets_dance.json",
-                love.graphics.newImage(ASSET_DATA[11]["lets_dance_sprite_batch"])
+                love.graphics.newImage(ASSET_DATA[5]["lets_dance_sprite_batch"])
             )
         end
     }
@@ -382,30 +382,6 @@ function load_game_scene_thread_table(LP_name,RP_name,stage_name)
     )
     table.insert(
         res_table,
-        "threads/game_scene/characters/" .. LP_name .. "_texture.lua"
-    )
-    table.insert(
-        res_table,
-        "threads/game_scene/characters/" .. RP_name .. "_texture.lua"
-    )
-    table.insert(
-        res_table,
-        "threads/game_scene/stage/" .. stage_name .. ".lua"
-    )
-    table.insert(
-        res_table,
-        "threads/game_scene/characters/" .. LP_name .. "_audio.lua"
-    )
-    table.insert(
-        res_table,
-        "threads/game_scene/characters/" .. RP_name .. "_audio.lua"
-    )
-    table.insert(
-        res_table,
-        "threads/game_scene/stage/" .. stage_name .. "_audio.lua"
-    )
-    table.insert(
-        res_table,
         "threads/game_scene/act.lua"
     )
     table.insert(
@@ -415,6 +391,30 @@ function load_game_scene_thread_table(LP_name,RP_name,stage_name)
     table.insert(
         res_table,
         "threads/game_scene/lets_dance.lua"
+    )
+    table.insert(
+        res_table,
+        "threads/game_scene/characters/" .. LP_name .. "_audio.lua"
+    )
+    table.insert(
+        res_table,
+        "threads/game_scene/characters/" .. LP_name .. "_texture.lua"
+    )
+    table.insert(
+        res_table,
+        "threads/game_scene/characters/" .. RP_name .. "_audio.lua"
+    )
+    table.insert(
+        res_table,
+        "threads/game_scene/characters/" .. RP_name .. "_texture.lua"
+    )
+    table.insert(
+        res_table,
+        "threads/game_scene/stage/" .. stage_name .. "_audio.lua"
+    )
+    table.insert(
+        res_table,
+        "threads/game_scene/stage/" .. stage_name .. ".lua"
     )
     return res_table
 end

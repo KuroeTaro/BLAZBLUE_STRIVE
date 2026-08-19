@@ -285,29 +285,29 @@ function order_load_game_scene_stage_frames(load_order)
             image_sprite_sheet_stage_game_scene_wallbreak_after_debris = 
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_obj/wallbreak_after_debris.json",
-                love.graphics.newImage(ASSET_DATA[5][1])
+                love.graphics.newImage(ASSET_DATA[11][1])
             )
             image_sprite_sheet_stage_game_scene_wallbreak_dynamic  = 
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_obj/wallbreak_dynamic.json",
-                love.graphics.newImage(ASSET_DATA[5][2])
+                love.graphics.newImage(ASSET_DATA[11][2])
             )
-            image_stage_game_scene_wallbreak_glow = love.graphics.newImage(ASSET_DATA[5][3])
+            image_stage_game_scene_wallbreak_glow = love.graphics.newImage(ASSET_DATA[11][3])
             image_sprite_sheet_stage_game_scene_wallbreak_smoke = 
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_obj/wallbreak_smoke.json",
-                love.graphics.newImage(ASSET_DATA[5][4])
+                love.graphics.newImage(ASSET_DATA[11][4])
             )
             image_sprite_sheet_stage_game_scene_wallstick = {}
             image_sprite_sheet_stage_game_scene_wallstick[0] = 
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_obj/wallstick_ver0.json",
-                love.graphics.newImage(ASSET_DATA[5][5])
+                love.graphics.newImage(ASSET_DATA[11][5])
             )
             image_sprite_sheet_stage_game_scene_wallstick[1] = 
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_obj/wallstick_ver1.json",
-                love.graphics.newImage(ASSET_DATA[5][6])
+                love.graphics.newImage(ASSET_DATA[11][6])
             )
         end,
         [2] = function()
@@ -316,42 +316,42 @@ function order_load_game_scene_stage_frames(load_order)
             image_sprite_sheet_VFX_game_scene_air_dash_shockwave =
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_VFX/air_dash_shockwave.json",
-                love.graphics.newImage(ASSET_DATA[5]["air_dash_shockwave"])
+                love.graphics.newImage(ASSET_DATA[11]["air_dash_shockwave"])
             )
                 -- smoke
             image_sprite_sheet_VFX_game_scene_dash_shot = 
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_VFX/dash_shot.json",
-                love.graphics.newImage(ASSET_DATA[5]["dash_shot"])
+                love.graphics.newImage(ASSET_DATA[11]["dash_shot"])
             )
             image_sprite_sheet_VFX_game_scene_horizontal_shot = 
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_VFX/horizontal_shot.json",
-                love.graphics.newImage(ASSET_DATA[5]["horizontal_shot"])
+                love.graphics.newImage(ASSET_DATA[11]["horizontal_shot"])
             )
             image_sprite_sheet_VFX_game_scene_land_blow = 
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_VFX/land_blow.json",
-                love.graphics.newImage(ASSET_DATA[5]["land_blow"])
+                love.graphics.newImage(ASSET_DATA[11]["land_blow"])
             )
             image_sprite_sheet_VFX_game_scene_vertical_shot = 
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_VFX/vertical_shot.json",
-                love.graphics.newImage(ASSET_DATA[5]["vertical_shot"])
+                love.graphics.newImage(ASSET_DATA[11]["vertical_shot"])
             )
                 -- spark
             image_sprite_sheet_VFX_game_scene_dcc_blow = 
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_VFX/dcc_blow.json",
-                love.graphics.newImage(ASSET_DATA[5]["dcc_blow"])
+                love.graphics.newImage(ASSET_DATA[11]["dcc_blow"])
             )
         end,
         [3] = function()
             -- stage images
-            image_stage_game_scene_ground = love.graphics.newImage(ASSET_DATA[5][7])
-            image_stage_game_scene_stage_liner_fade_alpha = love.graphics.newImage(ASSET_DATA[5][8])
-            image_stage_game_scene_stair = love.graphics.newImage(ASSET_DATA[5][9])
-            image_stage_game_scene_tile_map = love.graphics.newImage(ASSET_DATA[5][10])
+            image_stage_game_scene_ground = love.graphics.newImage(ASSET_DATA[11][7])
+            image_stage_game_scene_stage_liner_fade_alpha = love.graphics.newImage(ASSET_DATA[11][8])
+            image_stage_game_scene_stair = love.graphics.newImage(ASSET_DATA[11][9])
+            image_stage_game_scene_tile_map = love.graphics.newImage(ASSET_DATA[11][10])
         end,
         [4] = function()
             -- stage sprite_batch
@@ -375,7 +375,7 @@ function order_load_game_scene_stage_frames(load_order)
     if this_function then this_function() end
 end
 function order_load_game_scene_stage_audio(load_order)
-    local STAGE_AUDIO_DATA = ASSET_DATA[8]
+    local STAGE_AUDIO_DATA = ASSET_DATA[10]
     local switch = 
     {
         [1] = function()

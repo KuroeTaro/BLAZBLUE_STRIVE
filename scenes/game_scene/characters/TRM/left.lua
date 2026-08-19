@@ -1,5 +1,5 @@
 -- LP -> RP
--- ASSET_DATA[3] -> ASSET_DATA[4]
+-- ASSET_DATA[7] -> ASSET_DATA[9]
 -- "L" -> "R"
 -- obj_char_game_scene_char_LP = {0,0,0,1,1,1,0,0} -> obj_char_game_scene_char_RP = {0,0,0,1,-1,1,0,0}
 -- obj_char_game_scene_char_LP["x"] = -320 -> obj_char_game_scene_char_RP["x"] = 320
@@ -904,7 +904,7 @@ function load_game_scene_wallbreak_end_init_LP()
 end
 -- order_load
 function order_load_game_scene_char_LP_frames(load_order)
-    local PLAYER_ASSET_DATA = ASSET_DATA[3]
+    local PLAYER_ASSET_DATA = ASSET_DATA[7]
     local switch = 
     {
         -- universal 0_ 通用受伤/击飞 part1

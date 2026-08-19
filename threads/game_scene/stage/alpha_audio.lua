@@ -19,4 +19,4 @@ end
 thread_data["environment_SFX"] = {}
 thread_data["environment_SFX"]["wallbreak_knockdown"] = sound_module(base .. "environment_SFX/wallbreak_knockdown.wav")
 thread_data["environment_SFX"]["wind"] = sound_module(base .. "environment_SFX/wind.wav")
-love.thread.getChannel( 'thread_data_8' ):push( thread_data )
+love.thread.getChannel( 'thread_data_10' ):push( thread_data )
