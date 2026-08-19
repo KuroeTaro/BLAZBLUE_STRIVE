@@ -5486,7 +5486,7 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char,hurt_side_obj
             hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_launched_low",
             "air","knockdown",
-            12,5,1.00,
+            15,5,1.00,
             -15,2.5,1.035,
             load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
                 hit_side_obj_char,hurt_side_obj_char,
@@ -5522,7 +5522,7 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char,hurt_side_obj
             hit_side_obj_char,hurt_side_obj_char,
             "0_general_hurt_launched_low",
             "air","knockdown",
-            12,5,1.00,
+            15,5,1.00,
             -15,2.5,1.035,
             load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
                 hit_side_obj_char,hurt_side_obj_char,

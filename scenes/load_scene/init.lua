@@ -96,18 +96,18 @@ function init_load_scene_audio()
     audio_UI_SFX_load_scene_general_end_load = {1}
     audio_UI_SFX_load_scene_general_end_load["LCT"] = {0}
     audio_UI_SFX_load_scene_general_end_load["LCD"] = {0}
-    audio_UI_SFX_load_scene_general_end_load["audio"] = love.audio.newSource("asset/load_scene/audio/end_load.wav","static")
+    audio_UI_SFX_load_scene_general_end_load["audio"] = love.audio.newSource("asset/load_scene/audio/end_load.ogg","static")
     update_SFX_VOLUME(audio_UI_SFX_load_scene_general_end_load)
     -- loading
     audio_UI_SFX_load_scene_general_loading = {1}
     audio_UI_SFX_load_scene_general_loading["LCT"] = {0}
     audio_UI_SFX_load_scene_general_loading["LCD"] = {0}
-    audio_UI_SFX_load_scene_general_loading["audio"] = love.audio.newSource("asset/load_scene/audio/loading.wav","static")
+    audio_UI_SFX_load_scene_general_loading["audio"] = love.audio.newSource("asset/load_scene/audio/loading.ogg","static")
     update_SFX_VOLUME(audio_UI_SFX_load_scene_general_loading)
     -- start_load
     audio_UI_SFX_load_scene_general_start_load = {1}
     audio_UI_SFX_load_scene_general_start_load["LCT"] = {0}
     audio_UI_SFX_load_scene_general_start_load["LCD"] = {0}
-    audio_UI_SFX_load_scene_general_start_load["audio"] = love.audio.newSource("asset/load_scene/audio/start_load.wav","static")
+    audio_UI_SFX_load_scene_general_start_load["audio"] = love.audio.newSource("asset/load_scene/audio/start_load.ogg","static")
     update_SFX_VOLUME(audio_UI_SFX_load_scene_general_start_load)
 end

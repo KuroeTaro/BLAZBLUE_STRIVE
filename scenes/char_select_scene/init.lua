@@ -437,85 +437,85 @@ function load_char_select_scene_audio()
     audio_SFX_char_select_scene_confirm_0 = {1}
     audio_SFX_char_select_scene_confirm_0["LCT"] = {0}
     audio_SFX_char_select_scene_confirm_0["LCD"] = {0}
-    audio_SFX_char_select_scene_confirm_0["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_confirm_0.wav","static")
+    audio_SFX_char_select_scene_confirm_0["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_confirm_0.ogg","static")
     update_SFX_VOLUME(audio_SFX_char_select_scene_confirm_0)
     audio_SFX_char_select_scene_confirm_1 = {1}
     audio_SFX_char_select_scene_confirm_1["LCT"] = {0}
     audio_SFX_char_select_scene_confirm_1["LCD"] = {0}
-    audio_SFX_char_select_scene_confirm_1["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_confirm_1.wav","static")
+    audio_SFX_char_select_scene_confirm_1["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_confirm_1.ogg","static")
     update_SFX_VOLUME(audio_SFX_char_select_scene_confirm_1)
     audio_SFX_char_select_scene_confirm_2 = {1}
     audio_SFX_char_select_scene_confirm_2["LCT"] = {0}
     audio_SFX_char_select_scene_confirm_2["LCD"] = {0}
-    audio_SFX_char_select_scene_confirm_2["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_confirm_2.wav","static")
+    audio_SFX_char_select_scene_confirm_2["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_confirm_2.ogg","static")
     update_SFX_VOLUME(audio_SFX_char_select_scene_confirm_2)
     audio_SFX_char_select_scene_confirm_3 = {1}
     audio_SFX_char_select_scene_confirm_3["LCT"] = {0}
     audio_SFX_char_select_scene_confirm_3["LCD"] = {0}
-    audio_SFX_char_select_scene_confirm_3["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_confirm_3.wav","static")
+    audio_SFX_char_select_scene_confirm_3["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_confirm_3.ogg","static")
     update_SFX_VOLUME(audio_SFX_char_select_scene_confirm_3)
     -- exit
     audio_SFX_char_select_scene_exit_0 = {1}
     audio_SFX_char_select_scene_exit_0["LCT"] = {0}
     audio_SFX_char_select_scene_exit_0["LCD"] = {0}
-    audio_SFX_char_select_scene_exit_0["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_exit_0.wav","static")
+    audio_SFX_char_select_scene_exit_0["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_exit_0.ogg","static")
     update_SFX_VOLUME(audio_SFX_char_select_scene_exit_0)
     audio_SFX_char_select_scene_exit_1 = {1}
     audio_SFX_char_select_scene_exit_1["LCT"] = {0}
     audio_SFX_char_select_scene_exit_1["LCD"] = {0}
-    audio_SFX_char_select_scene_exit_1["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_exit_1.wav","static")
+    audio_SFX_char_select_scene_exit_1["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_exit_1.ogg","static")
     update_SFX_VOLUME(audio_SFX_char_select_scene_exit_1)
     -- up down left right
     audio_SFX_char_select_scene_up_0 = {1}
     audio_SFX_char_select_scene_up_0["LCT"] = {0}
     audio_SFX_char_select_scene_up_0["LCD"] = {0}
-    audio_SFX_char_select_scene_up_0["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_up_0.wav","static")
+    audio_SFX_char_select_scene_up_0["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_up_0.ogg","static")
     update_SFX_VOLUME(audio_SFX_char_select_scene_up_0)
     audio_SFX_char_select_scene_up_1 = {1}
     audio_SFX_char_select_scene_up_1["LCT"] = {0}
     audio_SFX_char_select_scene_up_1["LCD"] = {0}
-    audio_SFX_char_select_scene_up_1["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_up_1.wav","static")
+    audio_SFX_char_select_scene_up_1["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_up_1.ogg","static")
     update_SFX_VOLUME(audio_SFX_char_select_scene_up_1)
     audio_SFX_char_select_scene_down_0 = {1}
     audio_SFX_char_select_scene_down_0["LCT"] = {0}
     audio_SFX_char_select_scene_down_0["LCD"] = {0}
-    audio_SFX_char_select_scene_down_0["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_down_0.wav","static")
+    audio_SFX_char_select_scene_down_0["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_down_0.ogg","static")
     update_SFX_VOLUME(audio_SFX_char_select_scene_down_0)
     audio_SFX_char_select_scene_down_1 = {1}
     audio_SFX_char_select_scene_down_1["LCT"] = {0}
     audio_SFX_char_select_scene_down_1["LCD"] = {0}
-    audio_SFX_char_select_scene_down_1["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_down_1.wav","static")
+    audio_SFX_char_select_scene_down_1["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_down_1.ogg","static")
     update_SFX_VOLUME(audio_SFX_char_select_scene_down_1)
     audio_SFX_char_select_scene_left_0 = {1}
     audio_SFX_char_select_scene_left_0["LCT"] = {0}
     audio_SFX_char_select_scene_left_0["LCD"] = {0}
-    audio_SFX_char_select_scene_left_0["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_left_0.wav","static")
+    audio_SFX_char_select_scene_left_0["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_left_0.ogg","static")
     update_SFX_VOLUME(audio_SFX_char_select_scene_left_0)
     audio_SFX_char_select_scene_left_1 = {1}
     audio_SFX_char_select_scene_left_1["LCT"] = {0}
     audio_SFX_char_select_scene_left_1["LCD"] = {0}
-    audio_SFX_char_select_scene_left_1["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_left_1.wav","static")
+    audio_SFX_char_select_scene_left_1["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_left_1.ogg","static")
     update_SFX_VOLUME(audio_SFX_char_select_scene_left_1)
     audio_SFX_char_select_scene_right_0 = {1}
     audio_SFX_char_select_scene_right_0["LCT"] = {0}
     audio_SFX_char_select_scene_right_0["LCD"] = {0}
-    audio_SFX_char_select_scene_right_0["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_right_0.wav","static")
+    audio_SFX_char_select_scene_right_0["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_right_0.ogg","static")
     update_SFX_VOLUME(audio_SFX_char_select_scene_right_0)
     audio_SFX_char_select_scene_right_1 = {1}
     audio_SFX_char_select_scene_right_1["LCT"] = {0}
     audio_SFX_char_select_scene_right_1["LCD"] = {0}
-    audio_SFX_char_select_scene_right_1["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_right_1.wav","static")
+    audio_SFX_char_select_scene_right_1["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_right_1.ogg","static")
     update_SFX_VOLUME(audio_SFX_char_select_scene_right_1)
     -- scene audio
     audio_SFX_char_select_scene_ease_out = {1}
     audio_SFX_char_select_scene_ease_out["LCT"] = {0}
     audio_SFX_char_select_scene_ease_out["LCD"] = {0}
-    audio_SFX_char_select_scene_ease_out["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_ease_out.wav","static")
+    audio_SFX_char_select_scene_ease_out["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_ease_out.ogg","static")
     update_SFX_VOLUME(audio_SFX_char_select_scene_ease_out)
     audio_BGM_char_select_scene_moonlight_re_edit = {1}
     audio_BGM_char_select_scene_moonlight_re_edit["LCT"] = {0}
     audio_BGM_char_select_scene_moonlight_re_edit["LCD"] = {0}
-    audio_BGM_char_select_scene_moonlight_re_edit["audio"] = love.audio.newSource("asset/char_select_scene/audio/BGM_moonlight_re_edit.wav","stream")
+    audio_BGM_char_select_scene_moonlight_re_edit["audio"] = love.audio.newSource("asset/char_select_scene/audio/BGM_moonlight_re_edit.ogg","stream")
     update_BGM_VOLUME(audio_BGM_char_select_scene_moonlight_re_edit)
     -- audio anim
     anim_UI_point_linear_char_select_scene_audio_ease_out_1_0_volume_1 = {}

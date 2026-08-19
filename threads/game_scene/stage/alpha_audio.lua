@@ -13,10 +13,10 @@ local file_name_table = {
 }
 for i = 1,#file_name_table do
     local name = file_name_table[i]
-    thread_data["character_interactive_SFX"][name] = sound_module(base .. "character_interactive_SFX/" .. name .. ".wav")
+    thread_data["character_interactive_SFX"][name] = sound_module(base .. "character_interactive_SFX/" .. name .. ".ogg")
 end
 -- environment_SFX
 thread_data["environment_SFX"] = {}
-thread_data["environment_SFX"]["wallbreak_knockdown"] = sound_module(base .. "environment_SFX/wallbreak_knockdown.wav")
-thread_data["environment_SFX"]["wind"] = sound_module(base .. "environment_SFX/wind.wav")
+thread_data["environment_SFX"]["wallbreak_knockdown"] = sound_module(base .. "environment_SFX/wallbreak_knockdown.ogg")
+thread_data["environment_SFX"]["wind"] = sound_module(base .. "environment_SFX/wind.ogg")
 love.thread.getChannel( 'thread_data_12' ):push( thread_data )
