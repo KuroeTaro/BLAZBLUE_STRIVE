@@ -5487,7 +5487,7 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char,hurt_side_obj
             "0_general_hurt_launched_low",
             "air","knockdown",
             12,5,1.00,
-            -22.5,2.5,1.035,
+            -15,2.5,1.035,
             load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_hard_knockdown_down",
@@ -5523,7 +5523,7 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char,hurt_side_obj
             "0_general_hurt_launched_low",
             "air","knockdown",
             12,5,1.00,
-            -22.5,2.5,1.035,
+            -15,2.5,1.035,
             load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_hard_knockdown_down",
@@ -5559,7 +5559,7 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char,hurt_side_obj
             "0_general_hurt_launched_low",
             "air","knockdown_recovery",
             8,5,1.035,
-            -27.5,2.5,1.035,
+            -22.5,2.5,1.035,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
