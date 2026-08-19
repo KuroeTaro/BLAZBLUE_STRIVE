@@ -24,15 +24,17 @@ function load_game_scene_prep()
     local thread_stage_name = stage_name
     load_game_scene_require(LP_name,RP_name,stage_name)
     THREAD_TABLE = load_game_scene_thread_table(thread_LP_name,thread_RP_name,thread_stage_name)
-    THREAD_AMOUNT = 11   -- 线程数目
-    THREAD_ONCE_TABLE = {false,false,false,false,false,false,false,false,false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
+    THREAD_AMOUNT = 13   -- 线程数目
+    THREAD_ONCE_TABLE = {false,false,false,false,false,false,false,false,false,false,false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     ASSET_DATA = {}   -- 保持为nil
     ORDER_LOAD_TABLE = {
         order_load_game_scene_common,
         order_load_game_scene_UI_act,
         order_load_game_scene_UI_HUD,
         order_load_game_scene_UI_lets_dance,
-        order_load_game_scene_VFX,
+        order_load_game_scene_VFX_overdrive_heat,
+        order_load_game_scene_VFX_move,
+        order_load_game_scene_VFX_HUD,
         order_load_game_scene_char_LP_audio,
         order_load_game_scene_char_LP_frames,
         order_load_game_scene_char_RP_audio,
@@ -40,10 +42,10 @@ function load_game_scene_prep()
         order_load_game_scene_stage_audio,
         order_load_game_scene_stage_frames
     }
-    CURRENT_ORDER_TABLE = {1,1,1,1,1,1,1,1,1,1,1}  -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
-    ORDER_SIZE_TABLE = {12,4,3,1,8,11,39,11,39,3,4}  -- 每个load function的最大值
-    LOAD_ONCE_TABLE = {false,false,false,false,false,false,false,false,false,false,false}   -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
-    LOADING_FUNCTION_AMOUNT = 11 -- 和线程数相同
+    CURRENT_ORDER_TABLE = {1,1,1,1,1,1,1,1,1,1,1,1,1}  -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
+    ORDER_SIZE_TABLE = {12,4,3,1,3,4,1,11,39,11,39,3,4}  -- 每个load function的最大值
+    LOAD_ONCE_TABLE = {false,false,false,false,false,false,false,false,false,false,false,false,false}   -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
+    LOADING_FUNCTION_AMOUNT = 13 -- 和线程数相同
     -- GAME_MODE = 0
     -- TRAINING_MODE_CONFIG["announcer"] = true
     -- 训练模式
@@ -184,99 +186,10 @@ function order_load_game_scene_UI_lets_dance(load_order)
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
-function order_load_game_scene_VFX(load_order)
+function order_load_game_scene_VFX_overdrive_heat(load_order)
     local switch = 
     {
         [1] = function()
-            -- hit normal part1
-            image_sprite_sheet_VFX_game_scene_air_blow = 
-            common_sprite_sheet_load(
-                "asset/game_scene/common/texture/VFX/hit_VFX/air_blow.json",
-                love.graphics.newImage(ASSET_DATA[5]["air_blow_sprite_batch"])
-            )
-            image_sprite_sheet_VFX_game_scene_blast_ver0 = 
-            common_sprite_sheet_load(
-                "asset/game_scene/common/texture/VFX/hit_VFX/blast_ver0.json",
-                love.graphics.newImage(ASSET_DATA[5]["blast_ver0_sprite_batch"])
-            )
-            image_sprite_sheet_VFX_game_scene_blast_ver0_counter = 
-            common_sprite_sheet_load(
-                "asset/game_scene/common/texture/VFX/hit_VFX/blast_ver0_counter.json",
-                love.graphics.newImage(ASSET_DATA[5]["blast_ver0_counter_sprite_batch"])
-            )
-            image_sprite_sheet_VFX_game_scene_blast_ver1 = 
-            common_sprite_sheet_load(
-                "asset/game_scene/common/texture/VFX/hit_VFX/blast_ver1.json",
-                love.graphics.newImage(ASSET_DATA[5]["blast_ver1_sprite_batch"])
-            )
-        end,
-        [2] = function()
-            -- hit normal part2
-            image_sprite_sheet_VFX_game_scene_block_FD = 
-            common_sprite_sheet_load(
-                "asset/game_scene/common/texture/VFX/hit_VFX/block_FD.json",
-                love.graphics.newImage(ASSET_DATA[5]["block_FD_sprite_batch"])
-            )
-            image_sprite_sheet_VFX_game_scene_block_ver0 = 
-            common_sprite_sheet_load(
-                "asset/game_scene/common/texture/VFX/hit_VFX/block_ver0.json",
-                love.graphics.newImage(ASSET_DATA[5]["block_ver0_sprite_batch"])
-            )
-            image_sprite_sheet_VFX_game_scene_block_ver1 = 
-            common_sprite_sheet_load(
-                "asset/game_scene/common/texture/VFX/hit_VFX/block_ver1.json",
-                love.graphics.newImage(ASSET_DATA[5]["block_ver1_sprite_batch"])
-            )
-            image_VFX_game_scene_counter_glow = love.graphics.newImage(ASSET_DATA[5]["counter_glow"])
-            image_VFX_game_scene_FD_bubble = love.graphics.newImage(ASSET_DATA[5]["FD_bubble"])
-        end,
-        [3] = function()
-            -- hit normal part3
-            image_sprite_sheet_VFX_game_scene_partical_ver1_counter = 
-            common_sprite_sheet_load(
-                "asset/game_scene/common/texture/VFX/hit_VFX/partical_ver1_counter.json",
-                love.graphics.newImage(ASSET_DATA[5]["partical_ver1_counter_sprite_batch"])
-            )
-            image_sprite_sheet_VFX_game_scene_slash_ver0 = 
-            common_sprite_sheet_load(
-                "asset/game_scene/common/texture/VFX/hit_VFX/slash_ver0.json",
-                love.graphics.newImage(ASSET_DATA[5]["slash_ver0_sprite_batch"])
-            )
-            image_sprite_sheet_VFX_game_scene_slash_ver0_counter = 
-            common_sprite_sheet_load(
-                "asset/game_scene/common/texture/VFX/hit_VFX/slash_ver0_counter.json",
-                love.graphics.newImage(ASSET_DATA[5]["slash_ver0_counter_sprite_batch"])
-            )
-            image_sprite_sheet_VFX_game_scene_slash_ver1 = 
-            common_sprite_sheet_load(
-                "asset/game_scene/common/texture/VFX/hit_VFX/slash_ver1.json",
-                love.graphics.newImage(ASSET_DATA[5]["slash_ver1_sprite_batch"])
-            )
-            image_sprite_sheet_VFX_game_scene_throw_tech = 
-            common_sprite_sheet_load(
-                "asset/game_scene/common/texture/VFX/hit_VFX/throw_tech.json",
-                love.graphics.newImage(ASSET_DATA[5]["throw_tech_sprite_batch"])
-            )
-        end,
-        [4] = function()
-            -- hit special
-            image_sprite_sheet_VFX_game_scene_special_lighting_0 = 
-            common_sprite_sheet_load(
-                "asset/game_scene/common/texture/VFX/hit_VFX/_special/lighting_0.json",
-                love.graphics.newImage(ASSET_DATA[5]["special_lighting_0_sprite_batch"])
-            )
-            image_sprite_sheet_VFX_game_scene_special_lighting_1 = 
-            common_sprite_sheet_load(
-                "asset/game_scene/common/texture/VFX/hit_VFX/_special/lighting_1.json",
-                love.graphics.newImage(ASSET_DATA[5]["special_lighting_1_sprite_batch"])
-            )
-            image_sprite_sheet_VFX_game_scene_special_radial = 
-            common_sprite_sheet_load(
-                "asset/game_scene/common/texture/VFX/hit_VFX/_special/radial.json",
-                love.graphics.newImage(ASSET_DATA[5]["special_radial_sprite_batch"])
-            )
-        end,
-        [5] = function()
             -- overdrive
             image_sprite_sheet_VFX_game_scene_overdrive_airflow = 
             common_sprite_sheet_load(
@@ -289,7 +202,7 @@ function order_load_game_scene_VFX(load_order)
                 love.graphics.newImage(ASSET_DATA[5]["overdrive_partical_sprite_batch"])
             )
         end,
-        [6] = function()
+        [2] = function()
             -- RC
             image_sprite_sheet_VFX_game_scene_RC_partical = 
             common_sprite_sheet_load(
@@ -322,7 +235,7 @@ function order_load_game_scene_VFX(load_order)
                 love.graphics.newImage(ASSET_DATA[5]["RC_yellow_badge_sprite_batch"])
             )
         end,
-        [7] = function()
+        [3] = function()
             -- UA
             image_sprite_sheet_VFX_game_scene_UA_common = 
             common_sprite_sheet_load(
@@ -341,16 +254,119 @@ function order_load_game_scene_VFX(load_order)
                 love.graphics.newImage(ASSET_DATA[5]["burst_front_sprite_batch"])
             )
             image_VFX_game_scene_burst_ring = love.graphics.newImage(ASSET_DATA[5]["burst_ring"])
+        end
+    }
+    local this_function = switch[load_order]
+    if this_function then this_function() end
+end
+function order_load_game_scene_VFX_move(load_order)
+    local switch = 
+    {
+        [1] = function()
+            -- hit normal part1
+            image_sprite_sheet_VFX_game_scene_air_blow = 
+            common_sprite_sheet_load(
+                "asset/game_scene/common/texture/VFX/hit_VFX/air_blow.json",
+                love.graphics.newImage(ASSET_DATA[6]["air_blow_sprite_batch"])
+            )
+            image_sprite_sheet_VFX_game_scene_blast_ver0 = 
+            common_sprite_sheet_load(
+                "asset/game_scene/common/texture/VFX/hit_VFX/blast_ver0.json",
+                love.graphics.newImage(ASSET_DATA[6]["blast_ver0_sprite_batch"])
+            )
+            image_sprite_sheet_VFX_game_scene_blast_ver0_counter = 
+            common_sprite_sheet_load(
+                "asset/game_scene/common/texture/VFX/hit_VFX/blast_ver0_counter.json",
+                love.graphics.newImage(ASSET_DATA[6]["blast_ver0_counter_sprite_batch"])
+            )
+            image_sprite_sheet_VFX_game_scene_blast_ver1 = 
+            common_sprite_sheet_load(
+                "asset/game_scene/common/texture/VFX/hit_VFX/blast_ver1.json",
+                love.graphics.newImage(ASSET_DATA[6]["blast_ver1_sprite_batch"])
+            )
         end,
-        [8] = function()
+        [2] = function()
+            -- hit normal part2
+            image_sprite_sheet_VFX_game_scene_block_FD = 
+            common_sprite_sheet_load(
+                "asset/game_scene/common/texture/VFX/hit_VFX/block_FD.json",
+                love.graphics.newImage(ASSET_DATA[6]["block_FD_sprite_batch"])
+            )
+            image_sprite_sheet_VFX_game_scene_block_ver0 = 
+            common_sprite_sheet_load(
+                "asset/game_scene/common/texture/VFX/hit_VFX/block_ver0.json",
+                love.graphics.newImage(ASSET_DATA[6]["block_ver0_sprite_batch"])
+            )
+            image_sprite_sheet_VFX_game_scene_block_ver1 = 
+            common_sprite_sheet_load(
+                "asset/game_scene/common/texture/VFX/hit_VFX/block_ver1.json",
+                love.graphics.newImage(ASSET_DATA[6]["block_ver1_sprite_batch"])
+            )
+            image_VFX_game_scene_counter_glow = love.graphics.newImage(ASSET_DATA[6]["counter_glow"])
+            image_VFX_game_scene_FD_bubble = love.graphics.newImage(ASSET_DATA[6]["FD_bubble"])
+        end,
+        [3] = function()
+            -- hit normal part3
+            image_sprite_sheet_VFX_game_scene_partical_ver1_counter = 
+            common_sprite_sheet_load(
+                "asset/game_scene/common/texture/VFX/hit_VFX/partical_ver1_counter.json",
+                love.graphics.newImage(ASSET_DATA[6]["partical_ver1_counter_sprite_batch"])
+            )
+            image_sprite_sheet_VFX_game_scene_slash_ver0 = 
+            common_sprite_sheet_load(
+                "asset/game_scene/common/texture/VFX/hit_VFX/slash_ver0.json",
+                love.graphics.newImage(ASSET_DATA[6]["slash_ver0_sprite_batch"])
+            )
+            image_sprite_sheet_VFX_game_scene_slash_ver0_counter = 
+            common_sprite_sheet_load(
+                "asset/game_scene/common/texture/VFX/hit_VFX/slash_ver0_counter.json",
+                love.graphics.newImage(ASSET_DATA[6]["slash_ver0_counter_sprite_batch"])
+            )
+            image_sprite_sheet_VFX_game_scene_slash_ver1 = 
+            common_sprite_sheet_load(
+                "asset/game_scene/common/texture/VFX/hit_VFX/slash_ver1.json",
+                love.graphics.newImage(ASSET_DATA[6]["slash_ver1_sprite_batch"])
+            )
+            image_sprite_sheet_VFX_game_scene_throw_tech = 
+            common_sprite_sheet_load(
+                "asset/game_scene/common/texture/VFX/hit_VFX/throw_tech.json",
+                love.graphics.newImage(ASSET_DATA[6]["throw_tech_sprite_batch"])
+            )
+        end,
+        [4] = function()
+            -- hit special
+            image_sprite_sheet_VFX_game_scene_special_lighting_0 = 
+            common_sprite_sheet_load(
+                "asset/game_scene/common/texture/VFX/hit_VFX/_special/lighting_0.json",
+                love.graphics.newImage(ASSET_DATA[6]["special_lighting_0_sprite_batch"])
+            )
+            image_sprite_sheet_VFX_game_scene_special_lighting_1 = 
+            common_sprite_sheet_load(
+                "asset/game_scene/common/texture/VFX/hit_VFX/_special/lighting_1.json",
+                love.graphics.newImage(ASSET_DATA[6]["special_lighting_1_sprite_batch"])
+            )
+            image_sprite_sheet_VFX_game_scene_special_radial = 
+            common_sprite_sheet_load(
+                "asset/game_scene/common/texture/VFX/hit_VFX/_special/radial.json",
+                love.graphics.newImage(ASSET_DATA[6]["special_radial_sprite_batch"])
+            )
+        end
+    }
+    local this_function = switch[load_order]
+    if this_function then this_function() end
+end
+function order_load_game_scene_VFX_HUD(load_order)
+    local switch = 
+    {
+        [1] = function()
             -- HUD_VFX
-            image_VFX_game_scene_HUD_punish = love.graphics.newImage(ASSET_DATA[5]["HUD_punish"])
+            image_VFX_game_scene_HUD_punish = love.graphics.newImage(ASSET_DATA[7]["HUD_punish"])
                 -- counter
-            image_VFX_game_scene_HUD_counter_ver0_2 = love.graphics.newImage(ASSET_DATA[5]["HUD_counter_ver0_2"])
-            image_VFX_game_scene_HUD_counter_ver3 = love.graphics.newImage(ASSET_DATA[5]["HUD_counter_ver3"])
+            image_VFX_game_scene_HUD_counter_ver0_2 = love.graphics.newImage(ASSET_DATA[7]["HUD_counter_ver0_2"])
+            image_VFX_game_scene_HUD_counter_ver3 = love.graphics.newImage(ASSET_DATA[7]["HUD_counter_ver3"])
                 -- positive_bonus
-            image_VFX_game_scene_HUD_positive_bouns_LP = love.graphics.newImage(ASSET_DATA[5]["HUD_positive_bouns_LP"])
-            image_VFX_game_scene_HUD_positive_bouns_RP = love.graphics.newImage(ASSET_DATA[5]["HUD_positive_bouns_RP"])
+            image_VFX_game_scene_HUD_positive_bouns_LP = love.graphics.newImage(ASSET_DATA[7]["HUD_positive_bouns_LP"])
+            image_VFX_game_scene_HUD_positive_bouns_RP = love.graphics.newImage(ASSET_DATA[7]["HUD_positive_bouns_RP"])
         end
     }
     local this_function = switch[load_order]
@@ -390,7 +406,15 @@ function load_game_scene_thread_table(LP_name,RP_name,stage_name)
     )
     table.insert(
         res_table,
-        "threads/game_scene/VFX.lua"
+        "threads/game_scene/VFX_overdrive_heat.lua"
+    )
+    table.insert(
+        res_table,
+        "threads/game_scene/VFX_move.lua"
+    )
+    table.insert(
+        res_table,
+        "threads/game_scene/VFX_HUD.lua"
     )
     table.insert(
         res_table,

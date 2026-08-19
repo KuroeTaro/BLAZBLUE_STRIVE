@@ -1,5 +1,5 @@
 -- RP -> RP
--- ASSET_DATA[9] -> ASSET_DATA[9]
+-- ASSET_DATA[9] -> ASSET_DATA[11]
 -- "R" -> "R"
 -- obj_char_game_scene_char_RP = {0,0,0,1,-1,1,0,0} -> obj_char_game_scene_char_RP = {0,0,0,1,-1,1,0,0}
 -- obj_char_game_scene_char_RP["x"] = 320 -> obj_char_game_scene_char_RP["x"] = 320
@@ -904,7 +904,7 @@ function load_game_scene_wallbreak_end_init_RP()
 end
 -- order_load
 function order_load_game_scene_char_RP_frames(load_order)
-    local PLAYER_ASSET_DATA = ASSET_DATA[9]
+    local PLAYER_ASSET_DATA = ASSET_DATA[11]
     local switch = 
     {
         -- universal 0_ 通用受伤/击飞 part1
@@ -1497,7 +1497,7 @@ function order_load_game_scene_char_RP_frames(load_order)
     if this_function then this_function() end
 end
 function order_load_game_scene_char_RP_audio(load_order)
-    local PLAYER_AUDIO_DATA = ASSET_DATA[8]
+    local PLAYER_AUDIO_DATA = ASSET_DATA[10]
     local switch =
     {
         -- stage_interactive_SFX 通用 移动/跳跃/落地/墙
