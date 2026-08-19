@@ -9199,8 +9199,9 @@ function load_game_scene_anim_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_cha
     local res = {}
     local hit_side = hit_side_obj_char["player_side"]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
+    local hit_side_stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(hit_side)
     res["prop_f"] = "f"
-    res["anim_length"] = 52
+    res["anim_length"] = 47
     for i = 9,30 do
         res[i] = function()
             -- state_number
@@ -9314,15 +9315,23 @@ function load_game_scene_anim_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char[8] = 3
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_land_blow(hit_side_obj_char,-340,-160,1,1,1,0)
+        -- play_SFX
+        play_obj_audio(hit_side_stage_interactive_SFX_table["ground_land"])
+    end
+    res[34] = function()
+        -- collide
+        hit_side_obj_char["hurtbox_table"] = {{0,-195,205,390}}
+        -- draw_correction
+        hit_side_obj_char[8] = 4
     end
     res[38] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
         -- collide
-        hit_side_obj_char["hurtbox_table"] = {{0,-195,205,390}}
+        hit_side_obj_char["hurtbox_table"] = {{0,-200,170,400}}
         -- draw_correction
-        hit_side_obj_char[8] = 4
+        hit_side_obj_char[8] = 5
     end
     res[43] = function()
         -- state
@@ -9333,17 +9342,11 @@ function load_game_scene_anim_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(hit_side)()
         -- collide
-        hit_side_obj_char["hurtbox_table"] = {{0,-200,170,400}}
-        -- draw_correction
-        hit_side_obj_char[8] = 5
-    end
-    res[47] = function()
-        -- collide
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{15,-455,100,50}}
         -- draw_correction
         hit_side_obj_char[8] = 6
     end
-    res[52] = function()
+    res[47] = function()
         -- animation_end
     end
     return res
