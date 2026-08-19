@@ -21,4 +21,4 @@ thread_data["UA_common_sprite_batch"] = compress_module("asset/game_scene/common
 thread_data["burst_back_sprite_batch"] = compress_module("asset/game_scene/common/texture/VFX/burst_VFX/burst_back.dds")
 thread_data["burst_front_sprite_batch"] = compress_module("asset/game_scene/common/texture/VFX/burst_VFX/burst_front.dds")
 thread_data["burst_ring"] = compress_module("asset/game_scene/common/texture/VFX/burst_VFX/burst_ring.dds")
-love.thread.getChannel( 'thread_data_5' ):push( thread_data )
+love.thread.getChannel( 'thread_data_7' ):push( thread_data )

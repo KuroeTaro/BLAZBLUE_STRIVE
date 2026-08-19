@@ -11,4 +11,4 @@ thread_data["HUD_counter_ver0_2"] = compress_module("asset/game_scene/common/tex
 thread_data["HUD_counter_ver3"] = compress_module("asset/game_scene/common/texture/VFX/HUD_VFX/_counter_VFX/HUD_counter_ver3.dds")
 thread_data["HUD_positive_bouns_LP"] = compress_module("asset/game_scene/common/texture/VFX/HUD_VFX/_positive_bonus_VFX/HUD_positive_bouns_LP.dds")
 thread_data["HUD_positive_bouns_RP"] = compress_module("asset/game_scene/common/texture/VFX/HUD_VFX/_positive_bonus_VFX/HUD_positive_bouns_RP.dds")
-love.thread.getChannel( 'thread_data_7' ):push( thread_data )
+love.thread.getChannel( 'thread_data_5' ):push( thread_data )
