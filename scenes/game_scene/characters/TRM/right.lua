@@ -1,5 +1,5 @@
 -- RP -> RP
--- ASSET_DATA[9] -> ASSET_DATA[11]
+-- ASSET_DATA[11] -> ASSET_DATA[11]
 -- "R" -> "R"
 -- obj_char_game_scene_char_RP = {0,0,0,1,-1,1,0,0} -> obj_char_game_scene_char_RP = {0,0,0,1,-1,1,0,0}
 -- obj_char_game_scene_char_RP["x"] = 320 -> obj_char_game_scene_char_RP["x"] = 320
