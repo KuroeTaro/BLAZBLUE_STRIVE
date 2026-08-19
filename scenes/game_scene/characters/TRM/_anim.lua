@@ -9097,8 +9097,8 @@ function load_game_scene_anim_char_TRM_4SP_K(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["move_state"] = "recovery" -- none startup active recovery
         hit_side_obj_char["idle_cancel"] = false
         -- state_number
-        hit_side_obj_char["velocity"] = {(hit_side_velocity_cache+62.5)*hit_side_obj_char[5],0}
-        hit_side_obj_char["friction"] = 5
+        hit_side_obj_char["velocity"] = {(hit_side_velocity_cache+82.5)*hit_side_obj_char[5],0}
+        hit_side_obj_char["friction"] = 6
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["horizontal_velocity_correction"] = 1
@@ -9122,7 +9122,7 @@ function load_game_scene_anim_char_TRM_4SP_K(hit_side_obj_char,hurt_side_obj_cha
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
             hit_side_obj_char,
-            -550,
+            -275,
             -160,
             0.5,0.8,0.8,0
         )

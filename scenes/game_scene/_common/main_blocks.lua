@@ -156,8 +156,8 @@ function update_game_scene_training_main()
     state_machine_char_game_scene_char_RP_input_sys_cache()
     state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
     state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
-    common_game_scene_update_input_sys_direction(char_LP)
-    common_game_scene_update_input_sys_direction(char_RP)
+    common_game_scene_update_input_sys_direction(char_LP,char_RP)
+    common_game_scene_update_input_sys_direction(char_RP,char_LP)
     -- debug_delete_after
     if DEBUG_TRAINNING_TOGGLE then
         INPUT_SYS_CURRENT_COMMAND_STATE["R"]["left"] = "Released"

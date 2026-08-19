@@ -180,8 +180,8 @@ function common_game_scene_init_input_sys_state_for_wallbreak(obj_char)
     init_cache(obj_char)
     init_negative_edge(obj_char)
 end
-function common_game_scene_update_input_sys_direction(obj_char)
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
+function common_game_scene_update_input_sys_direction(self_side_obj_char,opponent_side_obj_char)
+    local input = INPUT_SYS_CURRENT_COMMAND_STATE[self_side_obj_char["player_side"]]
     local right = (test_input_sys_press_or_hold(input["right"]) and 1 or 0)
     local left  = (test_input_sys_press_or_hold(input["left"]) and 1 or 0)
     local up    = (test_input_sys_press_or_hold(input["up"]) and 1 or 0)
@@ -191,10 +191,19 @@ function common_game_scene_update_input_sys_direction(obj_char)
     elseif test_input_sys_press_or_hold(input["correction_down"]) then
         down = 1 up = 0
     end
-    if obj_char[5] == -1 then
+    -- 根据 self 与 opponent 的左右位置关系决定是否翻转左右输入
+    -- self 在 opponent 右侧(面向左)时翻转
+    if self_side_obj_char["x"] > opponent_side_obj_char["x"] then
         left,right = right,left
     end
-    obj_char["direction_input"] = 5 + 3*up - 3*down + right*1 - left*1
+    self_side_obj_char["direction_input"] = 5 + 3*up - 3*down + right*1 - left*1
+end
+function common_game_scene_get_opponent_obj_char(self_side_obj_char)
+    -- 根据自身 player_side 返回对手角色对象（left/right 文件共用，不受 LP/RP 重生成影响）
+    if self_side_obj_char["player_side"] == "L" then
+        return obj_char_game_scene_char_RP
+    end
+    return obj_char_game_scene_char_LP
 end
 -- character_direction
 function common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char)

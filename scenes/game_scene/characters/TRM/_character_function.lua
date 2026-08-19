@@ -45,7 +45,6 @@ function character_function_game_scene_TRM_hitstop_air_jump_cancel(
     if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
         self_side_obj_char[5] = -self_side_obj_char[5]
     end
-    common_game_scene_update_input_sys_direction(self_side_obj_char)
     input["down"] = down_cache
     -- air_move
     self_side_obj_char["air_move"]["jump"][1] = math.max(math.min(self_side_obj_char["air_move"]["jump"][1]-1,self_side_obj_char["air_move"]["jump"][2]),0)
