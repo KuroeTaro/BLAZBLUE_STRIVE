@@ -1327,7 +1327,11 @@ function order_load_game_scene_char_RP_frames(load_order)
                 "5H_hit",
                 "5H_miss",
                 "6SP_P_curse_ball_blast",
-                "6SP_P_curse_ball_loop"
+                "6SP_P_curse_ball_loop",
+                "6SP_K_scapegoat_buff_flow",
+                "6SP_K_scapegoat_ease_in",
+                "6SP_K_scapegoat_ease_out",
+                "6SP_K_scapegoat_idle"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_projectile_game_scene_RP[v.."_projectile"] = 
@@ -1623,9 +1627,9 @@ function order_load_game_scene_char_RP_audio(load_order)
         [10] = function()
             local load_name_table = {
                 "4SP_P_clip_0","4SP_P_clip_1","4SP_P_clip_2","4SP_P_knife_whiff",
-                "6SP_P_end","6SP_P_ground_bounce","6SP_P_hit","6SP_P_whiff",
+                "6SP_P_curse_ball_ground_bounce","6SP_P_curse_ball_hit","6SP_P_curse_end","6SP_P_whiff",
                 "4SP_K_whiff",
-                "6SP_K_end","6SP_K_whiff",
+                "6SP_K_scapegoat_ease_in","6SP_K_scapegoat_ease_out",
                 "6SP_S_block","6SP_S_counter","6SP_S_hit","6SP_S_whiff"
             }
             for i,v in ipairs(load_name_table) do

@@ -123,10 +123,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "6SP_K_scapegoat_idle",
+	"image": "TRM_6SP_K_scapegoat_ease_in",
 	"format": "RGBA8888",
 	"size": {"w":6300,"h":540},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:71320d5099694acc2f4cbcf7f6b8f9de:8da06c25c5fdefaff653e61b793d1d1f:c89fed5dcab7f3ef76d890b46db2e10e$"
+	"smartupdate": "$TexturePacker:SmartUpdate:860ffed3fcb3801607776088afd20e36:073f145844a9f5640b044584bdb64406:6f9b60bc26e45d3e2ef86e1ccd5e7d86$"
 }
 }

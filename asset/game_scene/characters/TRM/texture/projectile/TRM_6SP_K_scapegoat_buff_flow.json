@@ -1,0 +1,20 @@
+{"frames": {
+
+"0":
+{
+	"frame": {"x":0,"y":0,"w":120,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":120,"h":400},
+	"sourceSize": {"w":120,"h":400}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "6SP_K_scapegoat_buff_flow",
+	"format": "RGBA8888",
+	"size": {"w":120,"h":400},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ada5b6ae0923542ff5e6f86a894e7f6c:74c3346ba0ebbb5b7aa6f3ea4b920d4a:74b8a80b333f4647f05188513297d2e0$"
+}
+}
