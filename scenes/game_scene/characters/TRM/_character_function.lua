@@ -42,6 +42,7 @@ function character_function_game_scene_TRM_hitstop_air_jump_cancel(
 )
     local down_cache = input["down"]
     input["down"] = false
+    common_game_scene_update_input_sys_direction(self_side_obj_char,opponent_side_obj_char)
     if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
         self_side_obj_char[5] = -self_side_obj_char[5]
     end
@@ -75,6 +76,7 @@ function character_function_game_scene_TRM_hitstop_air_jump_cancel(
             "air_jump"
         )
     end
+    common_game_scene_update_input_sys_direction(self_side_obj_char,opponent_side_obj_char)
     init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
     self_side_obj_char["state"] = "7_8_9_jump_air"
     -- save_input_sys_cache_from_j5S_and_7_8_9_jump_air
