@@ -2619,8 +2619,8 @@ function state_machine_char_game_scene_char_LP_shot_sys_reticle()
 end
 -- input_sys
 function state_machine_char_game_scene_char_LP_input_sys_cache()
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE["L"]
     local self_side_obj_char = obj_char_game_scene_char_LP
+    local input = INPUT_SYS_CURRENT_COMMAND_STATE["L"]
     local switch = {
         ["none"] = function()
         end,
@@ -2711,8 +2711,8 @@ function state_machine_char_game_scene_char_LP_input_sys_cache()
     if this_function then this_function() end
 end
 function state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE["L"]
     local self_side_obj_char = obj_char_game_scene_char_LP
+    local input = INPUT_SYS_CURRENT_COMMAND_STATE["L"]
     local switch = {
         ["none"] = function()
         end,
@@ -3891,6 +3891,21 @@ function state_gate_game_scene_char_LP_from_throw_success(input,self_side_obj_ch
         init_character_anim_with(opponent_side_obj_char,opponent_side_obj_char["character_animation"])
         return true
     end
+    -- animation_end
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
+        -- _common_ground_idle_to_move
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
+            return true
+        end
+        -- 5_stand_idle
+        if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
+            return true
+        end
+        return
+    end
     -- idle_cancel
     if self_side_obj_char["idle_cancel"] then
         -- air
@@ -3914,21 +3929,6 @@ function state_gate_game_scene_char_LP_from_throw_success(input,self_side_obj_ch
                 return true
             end
         end
-    end
-    -- animation_end
-    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
-        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-        self_side_obj_char["state"] = "5_stand_idle"
-        -- _common_ground_idle_to_move
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(input,self_side_obj_char,opponent_side_obj_char) then
-            return true
-        end
-        -- 5_stand_idle
-        if state_gate_game_scene_char_LP_from_5_stand_idle(input,self_side_obj_char,opponent_side_obj_char) then
-            return true
-        end
-        return
     end
 end
 function state_gate_game_scene_char_LP_from_throw_hurt_success(input,self_side_obj_char,opponent_side_obj_char)
