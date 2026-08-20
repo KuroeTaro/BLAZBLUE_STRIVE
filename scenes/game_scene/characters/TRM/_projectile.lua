@@ -1111,3 +1111,21 @@ function load_game_scene_anim_char_TRM_6SP_P_projectile_blast(hit_side_obj_char,
     end
     return res
 end
+-- insert_projectile_game_scene_char_TRM_6SP_K
+-- 1-8 type life x y projectile_clash_type f
+-- state sprite_sheet
+-- projectile_clashed_function	projectile_clash_box
+-- enemy_interact_function      hurtbox projectile_active
+--                              ease_in_SFX loop_SFX ease_out_SFX
+-- animation                    projectile_animation VFX_buff_vertix_animation
+-- update/update_sub_frame/draw
+-- uncommon                     VFX_buff_vertix
+-- projectile_init_fix
+function insert_projectile_game_scene_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_char)
+    -- x y z opacity sx sy r f
+    local obj_projectile = {0,0,0,0.875,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
+    local hit_side = hit_side_obj_char["player_side"]
+    local hit_side_projectile_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(hit_side)
+    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
+end
