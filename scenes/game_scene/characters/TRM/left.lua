@@ -2920,7 +2920,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move(self_side_in
         return true
     end
     -- _cS
-    if test_input_sys_press(self_side_input["S"]) and collision_test_cS_distance_check(self_side_obj_char,opponent_side_obj_char,300) then
+    if test_input_sys_press(self_side_input["S"]) and collision_test_cS_distance_check(self_side_obj_char,opponent_side_obj_char,360) then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
@@ -3063,7 +3063,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(sel
         return true
     end
     -- _cS
-    if test_input_sys_press_or_hold(self_side_input["S"]) and collision_test_cS_distance_check(self_side_obj_char,opponent_side_obj_char,300) then
+    if test_input_sys_press_or_hold(self_side_input["S"]) and collision_test_cS_distance_check(self_side_obj_char,opponent_side_obj_char,360) then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
@@ -3903,6 +3903,9 @@ function state_gate_game_scene_char_LP_from_throw_success(self_side_input,oppone
             if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
+            if state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+                return true
+            end
             -- 7_8_9_jump_air
             if state_gate_game_scene_char_LP_from_7_8_9_jump_air(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
@@ -3911,6 +3914,9 @@ function state_gate_game_scene_char_LP_from_throw_success(self_side_input,oppone
         elseif self_side_obj_char["height"] == "stand" then
             -- _common_ground_idle_to_move
             if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             -- 5_stand_idle
