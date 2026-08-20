@@ -1120,7 +1120,7 @@ function load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
     end
     res[0] = function()
         -- state
-        obj_char["y"] = -180
+        obj_char["y"] = -190
         obj_char["sprite_sheet"] = "4dash_backdash"
         obj_char["height"] = "air" -- stand crouch air OTG wallstick
         obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
@@ -8936,7 +8936,7 @@ function load_game_scene_anim_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_cha
     for i = 5,14 do
         res[i] = function()
             -- state_number
-            hit_side_obj_char["velocity"][1] = (-45.0+i)*hit_side_obj_char[5]
+            hit_side_obj_char["velocity"][1] = (-49.0+i)*hit_side_obj_char[5]
         end
     end
     res[0] = function()
@@ -8985,10 +8985,10 @@ function load_game_scene_anim_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_cha
     end
     res[5] = function()
         -- state
-        hit_side_obj_char["y"] = -180
+        hit_side_obj_char["y"] = -185.75
         hit_side_obj_char["height"] = "air" -- stand crouch air OTG wallstick
         -- state_number
-        hit_side_obj_char["velocity"] = {-40.0*hit_side_obj_char[5],-7.0}
+        hit_side_obj_char["velocity"] = {-44.0*hit_side_obj_char[5],-7.0}
         hit_side_obj_char["friction"] = 0
         hit_side_obj_char["gravity"] = 1.0
         -- enemy_friend_interaction
@@ -9008,7 +9008,7 @@ function load_game_scene_anim_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_cha
     end
     res[8] = function()
         -- state_number
-        hit_side_obj_char["velocity"][1] = -37.0*hit_side_obj_char[5]
+        hit_side_obj_char["velocity"][1] = -42.0*hit_side_obj_char[5]
         -- draw_correction
         hit_side_obj_char[8] = 1
         -- insert_VFX
@@ -9018,7 +9018,7 @@ function load_game_scene_anim_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_cha
     end
     res[11] = function()
         -- state_number
-        hit_side_obj_char["velocity"][1] = -34.0*hit_side_obj_char[5]
+        hit_side_obj_char["velocity"][1] = -38.0*hit_side_obj_char[5]
         -- draw_correction
         hit_side_obj_char[8] = 2
         -- play_SFX
@@ -9206,10 +9206,10 @@ function load_game_scene_anim_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_cha
     local hit_side_stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(hit_side)
     res["prop_f"] = "f"
     res["anim_length"] = 47
-    for i = 9,30 do
+    for i = 9,18 do
         res[i] = function()
             -- state_number
-            hit_side_obj_char["velocity"][1] = (-45.0+i)*hit_side_obj_char[5]
+            hit_side_obj_char["velocity"][1] = (-47.0+i)*hit_side_obj_char[5]
         end
     end
     res[0] = function()
@@ -9223,7 +9223,7 @@ function load_game_scene_anim_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_cha
         -- state_number
         hit_side_obj_char["velocity"] = {0,0}
         hit_side_obj_char["friction"] = 0
-        hit_side_obj_char["gravity"] = 0.625
+        hit_side_obj_char["gravity"] = 1
         -- enemy_friend_interaction
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
@@ -9258,12 +9258,12 @@ function load_game_scene_anim_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_cha
     end
     res[9] = function()
         -- state
-        hit_side_obj_char["y"] = -180
+        hit_side_obj_char["y"] = -200
         hit_side_obj_char["height"] = "air" -- stand crouch air OTG wallstick
         -- state_number
-        hit_side_obj_char["velocity"] = {-36.0*hit_side_obj_char[5],-7.0}
+        hit_side_obj_char["velocity"] = {-38.0*hit_side_obj_char[5],-9.5}
         hit_side_obj_char["friction"] = 0
-        hit_side_obj_char["gravity"] = 0.625
+        hit_side_obj_char["gravity"] = 1
         -- enemy_friend_interaction
         hit_side_obj_char["horizontal_velocity_correction"] = 1
         hit_side_obj_char["gravity_correction"] = 1
@@ -9279,29 +9279,29 @@ function load_game_scene_anim_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_cha
     end
     res[12] = function()
         -- state_number
-        hit_side_obj_char["velocity"][1] = -33.0*hit_side_obj_char[5]
+        hit_side_obj_char["velocity"][1] = -35.0*hit_side_obj_char[5]
         -- draw_correction
         hit_side_obj_char[8] = 1
     end
     res[17] = function()
         -- state_number
-        hit_side_obj_char["velocity"][1] = -28.0*hit_side_obj_char[5]
+        hit_side_obj_char["velocity"][1] = -30.0*hit_side_obj_char[5]
         -- draw_correction
         hit_side_obj_char[8] = 2
     end
-    res[22] = function()
+    res[19] = function()
         -- state_number
-        hit_side_obj_char["velocity"][1] = -23.0*hit_side_obj_char[5]
+        hit_side_obj_char["velocity"][1] = -11.0*hit_side_obj_char[5]
+    end
+    res[22] = function()
         -- draw_correction
         hit_side_obj_char[8] = 1
     end
-    res[27] = function()
-        -- state_number
-        hit_side_obj_char["velocity"][1] = -7.0*hit_side_obj_char[5]
+    res[26] = function()
         -- draw_correction
         hit_side_obj_char[8] = 2
     end
-    res[31] = function()
+    res[30] = function()
         -- state
         hit_side_obj_char["y"] = 0
         hit_side_obj_char["height"] = "stand" -- stand crouch air OTG wallstick
