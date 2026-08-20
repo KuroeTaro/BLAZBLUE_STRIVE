@@ -2621,6 +2621,7 @@ end
 function state_machine_char_game_scene_char_LP_input_sys_cache()
     local input = INPUT_SYS_CURRENT_COMMAND_STATE["L"]
     local self_side_obj_char = obj_char_game_scene_char_LP
+    local opponent_side_obj_char = obj_char_game_scene_char_RP
     local switch = {
         ["none"] = function()
         end,
@@ -2692,7 +2693,7 @@ function state_machine_char_game_scene_char_LP_input_sys_cache()
                     input[INPUT_SYS_COMMAND_TABLE[i]] = "Pressing"
                 end
             end
-            common_game_scene_update_input_sys_direction(self_side_obj_char,common_game_scene_get_opponent_obj_char(self_side_obj_char))
+            common_game_scene_update_input_sys_direction(self_side_obj_char,opponent_side_obj_char)
             self_side_obj_char["input_sys_state"] = "none"
             init_input_sys_cache_LP(self_side_obj_char)
         end,
@@ -2702,7 +2703,7 @@ function state_machine_char_game_scene_char_LP_input_sys_cache()
                     input[INPUT_SYS_COMMAND_TABLE[i]] = "Pressing"
                 end
             end
-            common_game_scene_update_input_sys_direction(self_side_obj_char,common_game_scene_get_opponent_obj_char(self_side_obj_char))
+            common_game_scene_update_input_sys_direction(self_side_obj_char,opponent_side_obj_char)
             self_side_obj_char["input_sys_state"] = "none"
             init_input_sys_cache_LP(self_side_obj_char)
         end

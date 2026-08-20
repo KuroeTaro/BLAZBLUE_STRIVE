@@ -1,8 +1,8 @@
 -- RP -> RP
 -- ASSET_DATA[11] -> ASSET_DATA[11]
 -- "R" -> "R"
--- obj_char_game_scene_char_RP = {0,0,0,1,-1,1,0,0} -> obj_char_game_scene_char_RP = {0,0,0,1,-1,1,0,0}
--- obj_char_game_scene_char_RP["x"] = 320 -> obj_char_game_scene_char_RP["x"] = 320
+-- obj_char_game_scene_char_RP = {0,0,0,1,-1,1,0,0} -> obj_char_game_scene_char_LP = {0,0,0,1,-1,1,0,0}
+-- obj_char_game_scene_char_RP["x"] = 320 -> obj_char_game_scene_char_LP["x"] = 320
 function load_game_scene_obj_char_RP()
     -- x y z opacity sx sy r f
     obj_char_game_scene_char_RP = {0,0,0,1,-1,1,0,0} -- obj[1-8]都为图形上的数据 obj[8]为图形上的帧数
@@ -731,7 +731,7 @@ function load_game_scene_wallbreak_start_init_RP()
     obj_char_game_scene_char_RP["hurtbox_table"] = {}
 end
 function load_game_scene_wallbreak_mid_init_RP()
-    if not common_game_scene_get_character_facing_currect(obj_char_game_scene_char_RP,obj_char_game_scene_char_RP) then
+    if not common_game_scene_get_character_facing_currect(obj_char_game_scene_char_RP,obj_char_game_scene_char_LP) then
         obj_char_game_scene_char_RP[5] = -obj_char_game_scene_char_RP[5]
     end
     obj_char_game_scene_char_RP["projectile_table"] = {}
@@ -2621,6 +2621,7 @@ end
 function state_machine_char_game_scene_char_RP_input_sys_cache()
     local input = INPUT_SYS_CURRENT_COMMAND_STATE["R"]
     local self_side_obj_char = obj_char_game_scene_char_RP
+    local opponent_side_obj_char = obj_char_game_scene_char_LP
     local switch = {
         ["none"] = function()
         end,
@@ -2692,7 +2693,7 @@ function state_machine_char_game_scene_char_RP_input_sys_cache()
                     input[INPUT_SYS_COMMAND_TABLE[i]] = "Pressing"
                 end
             end
-            common_game_scene_update_input_sys_direction(self_side_obj_char,common_game_scene_get_opponent_obj_char(self_side_obj_char))
+            common_game_scene_update_input_sys_direction(self_side_obj_char,opponent_side_obj_char)
             self_side_obj_char["input_sys_state"] = "none"
             init_input_sys_cache_RP(self_side_obj_char)
         end,
@@ -2702,7 +2703,7 @@ function state_machine_char_game_scene_char_RP_input_sys_cache()
                     input[INPUT_SYS_COMMAND_TABLE[i]] = "Pressing"
                 end
             end
-            common_game_scene_update_input_sys_direction(self_side_obj_char,common_game_scene_get_opponent_obj_char(self_side_obj_char))
+            common_game_scene_update_input_sys_direction(self_side_obj_char,opponent_side_obj_char)
             self_side_obj_char["input_sys_state"] = "none"
             init_input_sys_cache_RP(self_side_obj_char)
         end

@@ -198,13 +198,6 @@ function common_game_scene_update_input_sys_direction(self_side_obj_char,opponen
     end
     self_side_obj_char["direction_input"] = 5 + 3*up - 3*down + right*1 - left*1
 end
-function common_game_scene_get_opponent_obj_char(self_side_obj_char)
-    -- 根据自身 player_side 返回对手角色对象（left/right 文件共用，不受 LP/RP 重生成影响）
-    if self_side_obj_char["player_side"] == "L" then
-        return obj_char_game_scene_char_RP
-    end
-    return obj_char_game_scene_char_LP
-end
 -- character_direction
 function common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char)
     if self_side_obj_char[5] == -1 and self_side_obj_char["x"] < opponent_side_obj_char["x"] then
