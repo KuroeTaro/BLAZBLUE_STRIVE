@@ -4813,7 +4813,7 @@ function state_gate_game_scene_char_LP_from_7_8_9_jump_air(self_side_input,oppon
         if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_4dash_only(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             -- save_input_sys_cache_from_pre_jump_and_7_8_9_jump_air
             load_input_sys_cache_manual_release(self_side_input,self_side_obj_char,"dash")
-            load_input_sys_cache_recache(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+            load_input_sys_cache_recache(self_side_input,self_side_obj_char)
             self_side_obj_char["input_sys_state"] = "save" -- none save load
             return true
         end

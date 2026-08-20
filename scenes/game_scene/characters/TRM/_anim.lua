@@ -6090,7 +6090,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(hit_side_obj_cha
         )
         common_game_scene_char_apply_hurt_velocity(
             hit_side_obj_char,hurt_side_obj_char,false,
-            10,
+            12.5,
             1,
             1,
             0,
@@ -8188,6 +8188,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(hit_side_obj_char,hu
     local hit_side = hit_side_obj_char["player_side"]
     local hit_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hit_side]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
+    local hit_side_stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(hit_side)
     res["prop_f"] = "f"
     res["anim_length"] = 48
     res[0] = function()
@@ -8336,16 +8337,27 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(hit_side_obj_char,hu
         -- state
         hit_side_obj_char["y"] = 0
         hit_side_obj_char["sprite_sheet"] = "7_8_9_jump_air_to_stand_idle"
+        hit_side_obj_char["height"] = "stand" -- stand crouch air OTG wallstick
         -- state_number
+        hit_side_obj_char["velocity"] = {0,0}
+        hit_side_obj_char["velocity_cache"] = {0,0}
         hit_side_obj_char["friction"] = 1
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["horizontal_velocity_correction"] = 1
         hit_side_obj_char["gravity_correction"] = 1
         hit_side_obj_char["damage_correction"] = 1
+        -- collide
+        hit_side_obj_char["pushbox"] = {0,-185,120,370}
+        hit_side_obj_char["pushbox_opponent_collision_active"] = true
+        hit_side_obj_char["hurtbox_table"] = {{0,-190,180,380}}
         -- draw_correction
         hit_side_obj_char[8] = 0
         hit_side_obj_char["anchor_pos"] = {325,480}
+        -- insert_VFX
+        insert_VFX_game_scene_stage_smoke_land_blow(hit_side_obj_char,-355,-160,1,1,1,0)
+        -- play_SFX
+        play_obj_audio(hit_side_stage_interactive_SFX_table["ground_land"])
     end
     res[43] = function()
         -- input_sys_cache
@@ -8364,21 +8376,13 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(hit_side_obj_char,hu
         hit_side_obj_char["move_state"] = "none" -- none startup active recovery
         hit_side_obj_char["hit_cancel"] = false
         hit_side_obj_char["idle_cancel"] = true
-        -- state_number
-        hit_side_obj_char["gravity"] = 2.5
-        -- enemy_friend_interaction
-        hit_side_obj_char["horizontal_velocity_correction"] = 1
-        hit_side_obj_char["gravity_correction"] = 1
-        hit_side_obj_char["damage_correction"] = 1
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(hit_side)()
         -- collide
         hit_side_obj_char["pushbox"] = {0,-185,120,370}
         hit_side_obj_char["pushbox_opponent_collision_active"] = false
-        hit_side_obj_char["hitbox_table"] = {}
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430}}
-        hit_side_obj_char["collision_ground_height_offset"] = 0
         -- animation_end
     end
     return res
