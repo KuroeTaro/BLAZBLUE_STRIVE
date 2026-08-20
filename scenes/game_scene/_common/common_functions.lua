@@ -181,14 +181,15 @@ function common_game_scene_init_input_sys_state_for_wallbreak(obj_char)
     init_negative_edge(obj_char)
 end
 function common_game_scene_update_input_sys_direction(self_side_obj_char,opponent_side_obj_char)
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[self_side_obj_char["player_side"]]
-    local right = (test_input_sys_press_or_hold(input["right"]) and 1 or 0)
-    local left  = (test_input_sys_press_or_hold(input["left"]) and 1 or 0)
-    local up    = (test_input_sys_press_or_hold(input["up"]) and 1 or 0)
-    local down  = (test_input_sys_press_or_hold(input["down"]) and 1 or 0)
-    if test_input_sys_press_or_hold(input["correction_up"]) then
+    local self_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[self_side_obj_char["player_side"]]
+    local opponent_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[opponent_side_obj_char["player_side"]]
+    local right = (test_input_sys_press_or_hold(self_side_input["right"]) and 1 or 0)
+    local left  = (test_input_sys_press_or_hold(self_side_input["left"]) and 1 or 0)
+    local up    = (test_input_sys_press_or_hold(self_side_input["up"]) and 1 or 0)
+    local down  = (test_input_sys_press_or_hold(self_side_input["down"]) and 1 or 0)
+    if test_input_sys_press_or_hold(self_side_input["correction_up"]) then
         up = 1 down = 0
-    elseif test_input_sys_press_or_hold(input["correction_down"]) then
+    elseif test_input_sys_press_or_hold(self_side_input["correction_down"]) then
         down = 1 up = 0
     end
     -- 根据 self 与 opponent 的左右位置关系决定是否翻转左右输入

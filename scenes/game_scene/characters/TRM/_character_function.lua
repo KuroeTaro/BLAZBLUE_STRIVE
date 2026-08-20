@@ -37,16 +37,16 @@ function character_function_game_scene_TRM_overdrive_state_character_uncommon_in
 end
 -- cancel_function
 function character_function_game_scene_TRM_hitstop_air_jump_cancel(
-    input,self_side_obj_char,opponent_side_obj_char,
+    self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char,
     v1,v2,v3,v4,v5,v6,v7,v8,v9
 )
-    local down_cache = input["down"]
-    input["down"] = false
+    local down_cache = self_side_input["down"]
+    self_side_input["down"] = false
     common_game_scene_update_input_sys_direction(self_side_obj_char,opponent_side_obj_char)
     if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
         self_side_obj_char[5] = -self_side_obj_char[5]
     end
-    input["down"] = down_cache
+    self_side_input["down"] = down_cache
     -- air_move
     self_side_obj_char["air_move"]["jump"][1] = math.max(math.min(self_side_obj_char["air_move"]["jump"][1]-1,self_side_obj_char["air_move"]["jump"][2]),0)
     self_side_obj_char["air_move"]["air_dash"][1] = 0
@@ -80,11 +80,11 @@ function character_function_game_scene_TRM_hitstop_air_jump_cancel(
     init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
     self_side_obj_char["state"] = "7_8_9_jump_air"
     -- save_input_sys_cache_from_j5S_and_7_8_9_jump_air
-    load_input_sys_cache_manual_release(input,self_side_obj_char,"up")
-    load_input_sys_cache_recache(input,self_side_obj_char)
+    load_input_sys_cache_manual_release(self_side_input,self_side_obj_char,"up")
+    load_input_sys_cache_recache(self_side_input,self_side_obj_char)
     self_side_obj_char["input_sys_state"] = "save" -- none save load
 end
-function character_function_game_scene_TRM_histop_ground_jump_cancel(input,self_side_obj_char,opponent_side_obj_char)
+function character_function_game_scene_TRM_histop_ground_jump_cancel(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     self_side_obj_char["direction_input_cache"],self_side_obj_char["direction_input"] = self_side_obj_char["direction_input"],self_side_obj_char["direction_input_cache"]
     if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
         self_side_obj_char[5] = -self_side_obj_char[5]
