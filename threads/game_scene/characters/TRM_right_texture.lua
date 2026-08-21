@@ -162,6 +162,7 @@ local load_projectile_name_table = {
     "6SP_K_scapegoat_buff_flow",
     "6SP_K_scapegoat_ease_in",
     "6SP_K_scapegoat_ease_out",
+    "6SP_K_scapegoat_hurt",
     "6SP_K_scapegoat_idle"
 }
 for i,v in ipairs(load_projectile_name_table) do
