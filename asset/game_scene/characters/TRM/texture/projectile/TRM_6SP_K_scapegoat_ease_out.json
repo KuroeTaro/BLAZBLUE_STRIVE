@@ -2,51 +2,51 @@
 
 "0":
 {
-	"frame": {"x":0,"y":0,"w":420,"h":540},
+	"frame": {"x":0,"y":0,"w":320,"h":540},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":540},
-	"sourceSize": {"w":420,"h":540}
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":540},
+	"sourceSize": {"w":320,"h":540}
 },
 "1":
 {
-	"frame": {"x":420,"y":0,"w":420,"h":540},
+	"frame": {"x":320,"y":0,"w":320,"h":540},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":540},
-	"sourceSize": {"w":420,"h":540}
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":540},
+	"sourceSize": {"w":320,"h":540}
 },
 "2":
 {
-	"frame": {"x":840,"y":0,"w":420,"h":540},
+	"frame": {"x":640,"y":0,"w":320,"h":540},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":540},
-	"sourceSize": {"w":420,"h":540}
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":540},
+	"sourceSize": {"w":320,"h":540}
 },
 "3":
 {
-	"frame": {"x":1260,"y":0,"w":420,"h":540},
+	"frame": {"x":960,"y":0,"w":320,"h":540},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":540},
-	"sourceSize": {"w":420,"h":540}
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":540},
+	"sourceSize": {"w":320,"h":540}
 },
 "4":
 {
-	"frame": {"x":1680,"y":0,"w":420,"h":540},
+	"frame": {"x":1280,"y":0,"w":320,"h":540},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":540},
-	"sourceSize": {"w":420,"h":540}
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":540},
+	"sourceSize": {"w":320,"h":540}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "6SP_K_scapegoat_ease_out",
+	"image": "TRM_6SP_K_scapegoat_ease_out",
 	"format": "RGBA8888",
-	"size": {"w":2100,"h":540},
+	"size": {"w":1600,"h":540},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:4f94dea86f1990aa0e1496889e64e4f6:5ad9fb4db188e4aea1331cab87d0f5e0:abd6ef3b025333dfd142000ddeeafcef$"
+	"smartupdate": "$TexturePacker:SmartUpdate:c55414bebd4d623bd850fa0e13bbb489:92a7d2100a4b1c203fa5b9b721589dbb:aff6279a9b410c0798c31deb0b352bf9$"
 }
 }

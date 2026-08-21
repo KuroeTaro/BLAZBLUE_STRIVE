@@ -1115,9 +1115,9 @@ end
 -- 1-8 type life x y projectile_clash_type f
 -- state sprite_sheet
 -- projectile_clashed_function	projectile_clash_box
--- enemy_interact_function      hurtbox projectile_active
---                              ease_in_SFX loop_SFX ease_out_SFX
--- animation                    projectile_animation VFX_buff_vertix_animation
+-- enemy_interact_function      hurtbox
+--                              ease_in_SFX ease_out_SFX
+-- animation                    projectile_animation projectile_buff_vertix_animation
 -- update/update_sub_frame/draw
 -- uncommon                     VFX_buff_vertix projectile_exist_countdown
 -- projectile_init_fix
@@ -1141,4 +1141,21 @@ function insert_projectile_game_scene_char_TRM_6SP_K(hit_side_obj_char,hurt_side
     -- projectile_clashed_function
     obj_projectile["projectile_clash_box"] = {{0,-215,170,430}}
     obj_projectile["projectile_clashed_function"] = function() end
+    -- enemy_interact_function
+    obj_projectile["hurtbox"] = {{0,-215,170,430}}
+    obj_projectile["ease_in_SFX"] = hit_side_move_SFX_table["6SP_K_scapegoat_ease_in"]
+    obj_projectile["ease_out_SFX"] = hit_side_move_SFX_table["6SP_K_scapegoat_ease_out"]
+    obj_projectile["enemy_interact_function"] = function() end
+    -- animation
+    obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_K_projectile_ease_in(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+    init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
+    obj_projectile["projectile_buff_vertix_animation"] = load_game_scene_anim_char_TRM_6SP_K_projectile_buff_vertix(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+end
+function load_game_scene_anim_char_TRM_6SP_K_projectile_ease_in(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+end
+function load_game_scene_anim_char_TRM_6SP_K_projectile_loop(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+end
+function load_game_scene_anim_char_TRM_6SP_K_projectile_ease_out(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+end
+function load_game_scene_anim_char_TRM_6SP_K_projectile_buff_vertix(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
 end
