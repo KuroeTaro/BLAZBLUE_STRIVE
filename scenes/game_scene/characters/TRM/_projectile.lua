@@ -29,7 +29,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     obj_projectile["x"] = hurt_side_obj_char["x"]
     obj_projectile["y"] = hurt_side_obj_char["y"] - hurt_side_obj_char[6]*hurt_side_obj_char["pushbox"][4]/2
     obj_projectile["velocity"] = {0,0}
-    obj_projectile["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
+    obj_projectile["projectile_clash_type"] = 0 -- -1: 只要接触双方同时必然消失 0: 不与其他飞道交互 1-3：飞行道具等级
     obj_projectile["f"] = -1
     obj_projectile["sprite_sheet"] = "5H_miss_projectile"
     -- projectile_clashed_function nil
@@ -879,7 +879,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     obj_projectile["x"] = hit_side_obj_char["x"]
     obj_projectile["y"] = hit_side_obj_char["y"]
     obj_projectile["velocity"] = {0,0}
-    obj_projectile["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
+    obj_projectile["projectile_clash_type"] = 0 -- -1: 只要接触双方同时必然消失 0: 不与其他飞道交互 1-3：飞行道具等级
     obj_projectile["f"] = -1
     obj_projectile["state"] = "in_spawner"
     obj_projectile["sprite_sheet"] = "6SP_P_curse_ball_loop_projectile"
@@ -1119,7 +1119,7 @@ end
 --                              ease_in_SFX loop_SFX ease_out_SFX
 -- animation                    projectile_animation VFX_buff_vertix_animation
 -- update/update_sub_frame/draw
--- uncommon                     VFX_buff_vertix
+-- uncommon                     VFX_buff_vertix projectile_exist_countdown
 -- projectile_init_fix
 function insert_projectile_game_scene_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_char)
     -- x y z opacity sx sy r f
@@ -1128,4 +1128,17 @@ function insert_projectile_game_scene_char_TRM_6SP_K(hit_side_obj_char,hurt_side
     local hit_side = hit_side_obj_char["player_side"]
     local hit_side_projectile_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(hit_side)
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
+    -- common
+    obj_projectile["type"] = "projectile"
+    obj_projectile["life"] = 42
+    obj_projectile["x"] = hit_side_obj_char["x"]
+    obj_projectile["y"] = hit_side_obj_char["y"]
+    obj_projectile["velocity"] = {0,0}
+    obj_projectile["projectile_clash_type"] = 0 -- -1: 只要接触双方同时必然消失 0: 不与其他飞道交互 1-3：飞行道具等级
+    obj_projectile["f"] = -1
+    obj_projectile["state"] = "in_spawner"
+    obj_projectile["sprite_sheet"] = "6SP_K_curse_ball_loop_projectile"
+    -- projectile_clashed_function
+    obj_projectile["projectile_clash_box"] = {{0,-215,170,430}}
+    obj_projectile["projectile_clashed_function"] = function() end
 end

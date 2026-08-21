@@ -109,7 +109,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     obj_projectile["x"] = hit_side_obj_char["x"]
     obj_projectile["y"] = hit_side_obj_char["y"]
     obj_projectile["velocity"] = {hit_side_obj_char["velocity"][1],hit_side_obj_char["velocity"][2]}
-    obj_projectile["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
+    obj_projectile["projectile_clash_type"] = 0 -- -1: 只要接触双方同时必然消失 0: 不与其他飞道交互 1-3：飞行道具等级
     obj_projectile["f"] = -1
     -- enemy_interact_function
     obj_projectile["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
@@ -383,7 +383,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
     obj_projectile["x"] = hit_side_obj_char["x"]
     obj_projectile["y"] = hit_side_obj_char["y"]
     obj_projectile["velocity"] = {hit_side_obj_char["velocity"][1],hit_side_obj_char["velocity"][2]}
-    obj_projectile["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
+    obj_projectile["projectile_clash_type"] = 0 -- -1: 只要接触双方同时必然消失 0: 不与其他飞道交互 1-3：飞行道具等级
     obj_projectile["f"] = -1
     -- enemy_interact_function
     obj_projectile["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
@@ -469,7 +469,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
     obj_projectile["x"] = hit_side_obj_char["x"]
     obj_projectile["y"] = hit_side_obj_char["y"]
     obj_projectile["velocity"] = {hit_side_obj_char["velocity"][1],hit_side_obj_char["velocity"][2]}
-    obj_projectile["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
+    obj_projectile["projectile_clash_type"] = 0 -- -1: 只要接触双方同时必然消失 0: 不与其他飞道交互 1-3：飞行道具等级
     obj_projectile["f"] = -1
     -- enemy_interact_function
     obj_projectile["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
@@ -566,7 +566,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
     obj_projectile["x"] = hit_side_obj_char["x"]
     obj_projectile["y"] = hit_side_obj_char["y"]
     obj_projectile["velocity"] = {hit_side_obj_char["velocity"][1],hit_side_obj_char["velocity"][2]}
-    obj_projectile["projectile_clash_type"] = -1 -- -1: 不与其他飞道交互 0-3：飞行道具等级
+    obj_projectile["projectile_clash_type"] = 0 -- -1: 只要接触双方同时必然消失 0: 不与其他飞道交互 1-3：飞行道具等级
     obj_projectile["f"] = -1
     -- enemy_interact_function
     obj_projectile["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
