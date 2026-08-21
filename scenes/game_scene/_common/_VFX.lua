@@ -1,3 +1,4 @@
+-- overdrive
 function insert_VFX_game_scene_char_overdrive_badge(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
@@ -251,6 +252,7 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
     end
     table.insert(active_op_side_obj_char["VFX_black_overlay_table"],obj_VFX)
 end
+-- RC
 function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera

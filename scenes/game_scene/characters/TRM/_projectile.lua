@@ -194,6 +194,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
         character_animator(obj_projectile,obj_projectile["projectile_animation"])
         obj_projectile["life"] = obj_projectile["life"] - 1
     end
+    -- update_sub_frame
     obj_projectile["update_sub_frame"] = function()
         obj_projectile["x"] = hurt_side_obj_char["x"]
         obj_projectile["y"] = hurt_side_obj_char["y"] - hurt_side_obj_char[6]*hurt_side_obj_char["pushbox"][4]/2
@@ -864,7 +865,7 @@ end
 -- gravity_update_function		gravity
 -- animation                    projectile_animation
 -- update/update_sub_frame/draw
--- uncommon
+-- uncommon                     in_spawner_offset_x in_spawner_offset_y ground_collide
 -- projectile_init_fix
 function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_char)
     -- x y z opacity sx sy r f
@@ -982,6 +983,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
         local this_function = switch[obj_projectile["state"]]
         if this_function then this_function() end
     end
+    -- update_sub_frame
     obj_projectile["update_sub_frame"] = function()
         if not hit_side_obj_char["run_at_current_sub_frame"] then
             return
@@ -1117,9 +1119,9 @@ end
 -- projectile_clashed_function	projectile_clash_box
 -- enemy_interact_function      hurtbox
 --                              ease_in_SFX ease_out_SFX
--- animation                    projectile_animation projectile_buff_vertix_animation
+-- animation                    projectile_animation
 -- update/update_sub_frame/draw
--- uncommon                     VFX_buff_vertix projectile_exist_countdown
+-- uncommon                     projectile_buff_8 projectile_exist_countdown
 -- projectile_init_fix
 function insert_projectile_game_scene_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_char)
     -- x y z opacity sx sy r f
@@ -1149,13 +1151,22 @@ function insert_projectile_game_scene_char_TRM_6SP_K(hit_side_obj_char,hurt_side
     -- animation
     obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_K_projectile_ease_in(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
     init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
-    obj_projectile["projectile_buff_vertix_animation"] = load_game_scene_anim_char_TRM_6SP_K_projectile_buff_vertix(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+    -- update
+    obj_projectile["update"] = function() end
+    -- update_sub_frame
+    obj_projectile["update_sub_frame"] = function() end
+    -- draw
+    obj_projectile["draw"] = function() end
+    -- uncommon
+    obj_projectile["projectile_buff_8"] = 0
+    obj_projectile["projectile_exist_countdown"] = 0
+    -- projectile_init_fix
 end
 function load_game_scene_anim_char_TRM_6SP_K_projectile_ease_in(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
 end
-function load_game_scene_anim_char_TRM_6SP_K_projectile_loop(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
-end
 function load_game_scene_anim_char_TRM_6SP_K_projectile_ease_out(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
 end
-function load_game_scene_anim_char_TRM_6SP_K_projectile_buff_vertix(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+function load_game_scene_anim_char_TRM_6SP_K_projectile_hurt(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+end
+function load_game_scene_anim_char_TRM_6SP_K_projectile_idle(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
 end
