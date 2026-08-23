@@ -914,7 +914,9 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
             play_obj_audio(obj_projectile["hit_SFX"])
             stop_obj_audio(obj_projectile["hit_whiff_SFX"])
             stop_obj_audio(obj_projectile["ground_bounce_SFX"])
+            -- gravity_update_function
             obj_projectile["gravity"] = 0
+            -- animation
             obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_P_projectile_blast(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
             init_character_anim_with(obj_projectile,obj_projectile["projectile_animation"])
             -- shot_sys_curse
@@ -1136,18 +1138,35 @@ function insert_projectile_game_scene_char_TRM_6SP_K(hit_side_obj_char,hurt_side
     obj_projectile["x"] = hit_side_obj_char["x"]
     obj_projectile["y"] = hit_side_obj_char["y"]
     obj_projectile["velocity"] = {0,0}
-    obj_projectile["projectile_clash_type"] = 0 -- -1: 只要接触双方同时必然消失 0: 不与其他飞道交互 1-3：飞行道具等级
+    obj_projectile["projectile_clash_type"] = -1 -- -1: 只要接触双方同时必然消失 0: 不与其他飞道交互 1-3：飞行道具等级
     obj_projectile["f"] = -1
     obj_projectile["state"] = "in_spawner"
     obj_projectile["sprite_sheet"] = "6SP_K_curse_ball_loop_projectile"
     -- projectile_clashed_function
     obj_projectile["projectile_clash_box"] = {{0,-215,170,430}}
-    obj_projectile["projectile_clashed_function"] = function() end
+    obj_projectile["projectile_clashed_function"] = function()
+        -- hurt_state_init
+        obj_projectile["sprite_sheet"] = "6SP_K_scapegoat_hurt"
+        obj_projectile["state"] = "hurt"
+        obj_projectile["hurtbox"] = {}
+        -- play_SFX
+        play_obj_audio(obj_projectile["ease_out_SFX"])
+        stop_obj_audio(obj_projectile["ease_in_SFX"])
+        -- animation
+        obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_K_projectile_hurt(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+        init_character_anim_with(obj_projectile,obj_projectile["projectile_animation"])
+        -- shot_sys_scapegoat
+        hit_side_obj_char["shot_sys_scapegoat_buff"] = false
+    end
     -- enemy_interact_function
     obj_projectile["hurtbox"] = {{0,-215,170,430}}
     obj_projectile["ease_in_SFX"] = hit_side_move_SFX_table["6SP_K_scapegoat_ease_in"]
     obj_projectile["ease_out_SFX"] = hit_side_move_SFX_table["6SP_K_scapegoat_ease_out"]
-    obj_projectile["enemy_interact_function"] = function() end
+    obj_projectile["enemy_interact_function"] = function()
+        if collision_strike_hit_confirm_test(hurt_side_obj_char,obj_projectile) then
+            
+        end
+    end
     -- animation
     obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_K_projectile_ease_in(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
     init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])

@@ -338,9 +338,6 @@ function common_game_scene_strike_hit_function(hit_side_obj_char,hurt_side_obj_c
     local block_bool = common_game_scene_block_test(hit_side_obj_char,hurt_side_obj_char)
     -- risk_gauge
     if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
-        hurt_side_obj_char["hurt_state"] = "counter"
-        hit_side_obj_char["hit_function"] = common_game_scene_strike_hit_function
-        hit_side_obj_char["hurt_function"] = common_game_scene_strike_hurt_function
         hit_side_obj_char["strike_counter_ver_function"] = common_game_scene_counter_ver3
     end
     -- counter
@@ -383,6 +380,10 @@ function common_game_scene_strike_hurt_function(hit_side_obj_char,hurt_side_obj_
         else
             hurt_side_obj_char["height"] = "stand"
         end
+    end
+    -- risk_gauge
+    if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
+        hurt_side_obj_char["hurt_state"] = "counter"
     end
     -- idle block
     if block_bool then
@@ -579,10 +580,6 @@ function common_game_scene_projectile_hit_function(hit_side_obj_char,hurt_side_o
     obj_projectile["hit_active"] = false
     -- block_test
     local block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
-    -- risk_gauge
-    if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
-        hurt_side_obj_char["hurt_state"] = "counter"
-    end
     -- counter
     if hurt_side_obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
         obj_projectile["hit_damage"] = obj_projectile["hit_damage"]*1.1
@@ -621,6 +618,10 @@ function common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_
         else
             hurt_side_obj_char["height"] = "stand"
         end
+    end
+    -- risk_gauge
+    if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
+        hurt_side_obj_char["hurt_state"] = "counter"
     end
     -- if block
     if block_bool then

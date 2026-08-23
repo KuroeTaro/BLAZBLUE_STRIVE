@@ -11,8 +11,6 @@ function character_function_game_scene_TRM_j2K_strike_hit_function(hit_side_obj_
     else
         hit_side_obj_char["velocity"][1] = 10*hit_side_obj_char[5]
     end
-    -- debug
-    hit_side_obj_char["active_frame"] = hit_side_obj_char["active_frame"] + 1
 end
 function character_function_game_scene_TRM_j2K_strike_hurt_function(hit_side_obj_char,hurt_side_obj_char)
     common_game_scene_strike_hurt_function(hit_side_obj_char,hurt_side_obj_char)
