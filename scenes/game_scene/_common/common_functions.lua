@@ -1087,6 +1087,30 @@ function common_update_game_scene_projetile_clash(projectile_LP,projectile_RP)
         end
     end
 end
+-- 遍历某一方的飞行道具表列表（前表+后表），按顺序应用函数
+function common_game_scene_projectile_table_apply(projectile_table_list, apply_function)
+    for a = 1,#projectile_table_list do
+        local projectile_table = projectile_table_list[a]
+        for i = 1,#projectile_table do
+            apply_function(projectile_table[i])
+        end
+    end
+end
+-- 双方飞行道具两两对比（前表+后表），按顺序对比（反向遍历便于删除）
+function common_game_scene_projectile_pair_interact(projectile_table_list_A, projectile_table_list_B, interact_function)
+    for a = 1,#projectile_table_list_A do
+        local projectile_table_A = projectile_table_list_A[a]
+        for i = #projectile_table_A,1,-1 do
+            local projectile_A = projectile_table_A[i]
+            for b = 1,#projectile_table_list_B do
+                local projectile_table_B = projectile_table_list_B[b]
+                for j = #projectile_table_B,1,-1 do
+                    interact_function(projectile_A,projectile_table_B[j])
+                end
+            end
+        end
+    end
+end
 -- damage/velocity_apply
 function common_game_scene_char_apply_damage_heat(
     hit_side_obj_char,hurt_side_obj_char,block_or_hurt,FD_block

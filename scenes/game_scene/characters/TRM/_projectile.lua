@@ -221,7 +221,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
         obj_projectile["sprite_sheet"] = "5H_hit_projectile"
     end
     -- insert_projectile
-    table.insert(hit_side_obj_char["projectile_table"],obj_projectile)
+    table.insert(hit_side_obj_char["projectile_front_table"],obj_projectile)
 end
 function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
     local res = {}
@@ -1059,7 +1059,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     obj_projectile[2] = obj_projectile["y"] - 80
     obj_projectile[5] = hit_side_obj_char[5]
     -- insert_projectile
-    table.insert(hit_side_obj_char["projectile_table"],obj_projectile)
+    table.insert(hit_side_obj_char["projectile_front_table"],obj_projectile)
 end
 function load_game_scene_anim_char_TRM_6SP_P_projectile_spawn(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
     local res = {}
@@ -1334,7 +1334,7 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
     obj_projectile["projectile_buff"][2] = active_op_side_obj_char["y"] - obj_projectile["projectile_buff_anchor_pos"][2]
     obj_projectile["projectile_buff"][5] = active_op_side_obj_char[5]
     -- insert_projectile
-    table.insert(active_op_side_obj_char["projectile_table"],obj_projectile)
+    table.insert(active_op_side_obj_char["projectile_back_table"],obj_projectile)
 end
 function load_game_scene_anim_char_TRM_6SP_K_projectile_ease_in(active_op_side_obj_char,passive_op_side_obj_char,obj_projectile)
     local res = {}

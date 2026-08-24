@@ -231,8 +231,13 @@ function update_game_scene_training_main()
                 current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(COLLIDE_TICK*char_LP_final_game_speed)
             end
             -- 飞行道具更新位置 1/COLLIDE_TICK
-            for i = 1,#char_LP["projectile_table"] do
-                local current_projectile = char_LP["projectile_table"][i]
+            for i = 1,#char_LP["projectile_front_table"] do
+                local current_projectile = char_LP["projectile_front_table"][i]
+                current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(COLLIDE_TICK*char_LP_final_game_speed)
+                current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(COLLIDE_TICK*char_LP_final_game_speed)
+            end
+            for i = 1,#char_LP["projectile_back_table"] do
+                local current_projectile = char_LP["projectile_back_table"][i]
                 current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(COLLIDE_TICK*char_LP_final_game_speed)
                 current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(COLLIDE_TICK*char_LP_final_game_speed)
             end
@@ -248,8 +253,13 @@ function update_game_scene_training_main()
                 current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(COLLIDE_TICK*char_RP_final_game_speed)
             end
             -- 飞行道具更新位置 1/COLLIDE_TICK
-            for i = 1,#char_RP["projectile_table"] do
-                local current_projectile = char_RP["projectile_table"][i]
+            for i = 1,#char_RP["projectile_front_table"] do
+                local current_projectile = char_RP["projectile_front_table"][i]
+                current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(COLLIDE_TICK*char_RP_final_game_speed)
+                current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(COLLIDE_TICK*char_RP_final_game_speed)
+            end
+            for i = 1,#char_RP["projectile_back_table"] do
+                local current_projectile = char_RP["projectile_back_table"][i]
                 current_projectile["x"] = current_projectile["x"] + current_projectile["velocity"][1]/(COLLIDE_TICK*char_RP_final_game_speed)
                 current_projectile["y"] = current_projectile["y"] + current_projectile["velocity"][2]/(COLLIDE_TICK*char_RP_final_game_speed)
             end
@@ -264,12 +274,20 @@ function update_game_scene_training_main()
         -- 检测pushbox 更新X位置 dynamic_relocate_x
         collision_pushbox_dynamic_normal_aabb_relocate_x(char_LP,char_RP)
         -- 更新飞行道具sub_frame位置
-        for i = #char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
-            local current_projectile = char_LP["projectile_table"][i]
+        for i = #char_LP["projectile_front_table"],1,-1 do -- 反向遍历，便于删除元素
+            local current_projectile = char_LP["projectile_front_table"][i]
             current_projectile["update_sub_frame"]()
         end
-        for i = #char_RP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
-            local current_projectile = char_RP["projectile_table"][i]
+        for i = #char_LP["projectile_back_table"],1,-1 do -- 反向遍历，便于删除元素
+            local current_projectile = char_LP["projectile_back_table"][i]
+            current_projectile["update_sub_frame"]()
+        end
+        for i = #char_RP["projectile_front_table"],1,-1 do -- 反向遍历，便于删除元素
+            local current_projectile = char_RP["projectile_front_table"][i]
+            current_projectile["update_sub_frame"]()
+        end
+        for i = #char_RP["projectile_back_table"],1,-1 do -- 反向遍历，便于删除元素
+            local current_projectile = char_RP["projectile_back_table"][i]
             current_projectile["update_sub_frame"]()
         end
         -- enemy_interact_function
@@ -288,37 +306,43 @@ function update_game_scene_training_main()
             current_projectile["enemy_interact_function"]()
         end
         -- projectile_interaction
-        for i = #char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
-            local projectile_LP = char_LP["projectile_table"][i]
-            for i = #char_RP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
-                local projectile_RP = char_RP["projectile_table"][i]
-                common_update_game_scene_projetile_clash(projectile_LP,projectile_RP)
+        common_game_scene_projectile_pair_interact(
+            {char_LP["projectile_front_table"],char_LP["projectile_back_table"]},
+            {char_RP["projectile_front_table"],char_RP["projectile_back_table"]},
+            common_update_game_scene_projetile_clash
+        )
+        common_game_scene_projectile_table_apply(
+            {char_LP["projectile_front_table"],char_LP["projectile_back_table"]},
+            function(current_projectile)
+                if current_projectile["enemy_interact_function"] then
+                    current_projectile["enemy_interact_function"]()
+                end
             end
-        end
-        for i = 1,#char_LP["projectile_table"] do
-            local current_projectile = char_LP["projectile_table"][i]
-            if current_projectile["enemy_interact_function"] then
-                current_projectile["enemy_interact_function"]()
+        )
+        common_game_scene_projectile_table_apply(
+            {char_RP["projectile_front_table"],char_RP["projectile_back_table"]},
+            function(current_projectile)
+                if current_projectile["enemy_interact_function"] then
+                    current_projectile["enemy_interact_function"]()
+                end
             end
-        end
-        for i = 1,#char_RP["projectile_table"] do
-            local current_projectile = char_RP["projectile_table"][i]
-            if current_projectile["enemy_interact_function"] then
-                current_projectile["enemy_interact_function"]()
+        )
+        common_game_scene_projectile_table_apply(
+            {char_LP["projectile_front_table"],char_LP["projectile_back_table"]},
+            function(current_projectile)
+                if current_projectile["friendly_interact_function"] then
+                    current_projectile["friendly_interact_function"]()
+                end
             end
-        end
-        for i = 1,#char_LP["projectile_table"] do
-            local current_projectile = char_LP["projectile_table"][i]
-            if current_projectile["friendly_interact_function"] then
-                current_projectile["friendly_interact_function"]()
+        )
+        common_game_scene_projectile_table_apply(
+            {char_RP["projectile_front_table"],char_RP["projectile_back_table"]},
+            function(current_projectile)
+                if current_projectile["friendly_interact_function"] then
+                    current_projectile["friendly_interact_function"]()
+                end
             end
-        end
-        for i = 1,#char_RP["projectile_table"] do
-            local current_projectile = char_RP["projectile_table"][i]
-            if current_projectile["friendly_interact_function"] then
-                current_projectile["friendly_interact_function"]()
-            end
-        end
+        )
         -- 打击受击检测
         -- 检测投受击盒交互
         local LP_hurt_throw_accur = collision_throw_hit_confirm_test(char_RP,char_LP) -- (obj_hit,obj_hurt)
@@ -568,8 +592,14 @@ function update_game_scene_friction()
             char_LP["velocity"][1] = 0
         end
     end
-    for i = 1,#char_LP["projectile_table"] do
-        local current_projectile = char_LP["projectile_table"][i]
+    for i = 1,#char_LP["projectile_front_table"] do
+        local current_projectile = char_LP["projectile_front_table"][i]
+        if current_projectile["friction_update_function"] then
+            current_projectile["friction_update_function"]()
+        end
+    end
+    for i = 1,#char_LP["projectile_back_table"] do
+        local current_projectile = char_LP["projectile_back_table"][i]
         if current_projectile["friction_update_function"] then
             current_projectile["friction_update_function"]()
         end
@@ -586,8 +616,14 @@ function update_game_scene_friction()
             char_RP["velocity"][1] = 0
         end
     end
-    for i = 1,#char_RP["projectile_table"] do
-        local current_projectile = char_RP["projectile_table"][i]
+    for i = 1,#char_RP["projectile_front_table"] do
+        local current_projectile = char_RP["projectile_front_table"][i]
+        if current_projectile["friction_update_function"] then
+            current_projectile["friction_update_function"]()
+        end
+    end
+    for i = 1,#char_RP["projectile_back_table"] do
+        local current_projectile = char_RP["projectile_back_table"][i]
         if current_projectile["friction_update_function"] then
             current_projectile["friction_update_function"]()
         end
@@ -621,8 +657,14 @@ function update_game_scene_gravity()
     elseif LP_RUN_AT_THIS_FRAME and not char_LP["physics_lock"] then
         char_LP["velocity"][2] = char_LP["velocity"][2] + char_LP["gravity"]
     end
-    for i = 1,#char_LP["projectile_table"] do
-        local current_projectile = char_LP["projectile_table"][i]
+    for i = 1,#char_LP["projectile_front_table"] do
+        local current_projectile = char_LP["projectile_front_table"][i]
+        if current_projectile["gravity_update_function"] then
+            current_projectile["gravity_update_function"]()
+        end
+    end
+    for i = 1,#char_LP["projectile_back_table"] do
+        local current_projectile = char_LP["projectile_back_table"][i]
         if current_projectile["gravity_update_function"] then
             current_projectile["gravity_update_function"]()
         end
@@ -636,8 +678,14 @@ function update_game_scene_gravity()
     elseif RP_RUN_AT_THIS_FRAME and not char_RP["physics_lock"] then
         char_RP["velocity"][2] = char_RP["velocity"][2] + char_RP["gravity"]
     end
-    for i = 1,#char_RP["projectile_table"] do
-        local current_projectile = char_RP["projectile_table"][i]
+    for i = 1,#char_RP["projectile_front_table"] do
+        local current_projectile = char_RP["projectile_front_table"][i]
+        if current_projectile["gravity_update_function"] then
+            current_projectile["gravity_update_function"]()
+        end
+    end
+    for i = 1,#char_RP["projectile_back_table"] do
+        local current_projectile = char_RP["projectile_back_table"][i]
         if current_projectile["gravity_update_function"] then
             current_projectile["gravity_update_function"]()
         end

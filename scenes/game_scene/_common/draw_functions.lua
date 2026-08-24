@@ -14,6 +14,9 @@ function draw_game_scene_main()
     draw_game_scene_char_RP_VFX_back()
     draw_game_scene_char_LP_projectile_RC()
     draw_game_scene_char_RP_projectile_RC()
+    -- 绘制背侧飞行道具
+    draw_game_scene_char_LP_projectile_back()
+    draw_game_scene_char_RP_projectile_back()
     -- 绘制背侧挂件
     draw_game_scene_char_LP_attachment_back()
     draw_game_scene_char_RP_attachment_back()
@@ -206,8 +209,8 @@ function draw_game_scene_main()
     draw_game_scene_char_LP_VFX_front()
     draw_game_scene_char_RP_VFX_front()
     -- 绘制飞行道具
-    draw_game_scene_char_LP_projectile()
-    draw_game_scene_char_RP_projectile()
+    draw_game_scene_char_LP_projectile_front()
+    draw_game_scene_char_RP_projectile_front()
     -- 绘制wallbreak_前景
     draw_game_scene_stage_wallbreak_at_character_front()
     -- 绘制ease_in annoucer 和 HUD ease in

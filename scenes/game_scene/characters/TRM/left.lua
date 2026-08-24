@@ -140,7 +140,8 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["collision_move_available_cache"] = {1,1}
     obj_char_game_scene_char_LP["collision_ground_height_offset"] = 0 -- 用于检测和地面碰撞的
     -- sub_obj_table
-    obj_char_game_scene_char_LP["projectile_table"] = {}
+    obj_char_game_scene_char_LP["projectile_front_table"] = {}
+    obj_char_game_scene_char_LP["projectile_back_table"] = {}
     obj_char_game_scene_char_LP["projectile_RC_table"] = {}
     obj_char_game_scene_char_LP["VFX_HUD_table"] = {}
     obj_char_game_scene_char_LP["VFX_status_front_table"] = {}
@@ -735,7 +736,8 @@ function load_game_scene_wallbreak_mid_init_LP()
     if not common_game_scene_get_character_facing_currect(obj_char_game_scene_char_LP,obj_char_game_scene_char_RP) then
         obj_char_game_scene_char_LP[5] = -obj_char_game_scene_char_LP[5]
     end
-    obj_char_game_scene_char_LP["projectile_table"] = {}
+    obj_char_game_scene_char_LP["projectile_front_table"] = {}
+    obj_char_game_scene_char_LP["projectile_back_table"] = {}
     obj_char_game_scene_char_LP["VFX_common_front_table"] = {}
     obj_char_game_scene_char_LP["VFX_common_back_table"] = {}
     obj_char_game_scene_char_LP["VFX_hit_front_table"] = {}
@@ -846,7 +848,8 @@ function load_game_scene_wallbreak_end_init_LP()
     obj_char_game_scene_char_LP["collision_move_available_cache"] = {1,1}
     obj_char_game_scene_char_LP["collision_ground_height_offset"] = 0 -- 用于检测和地面碰撞的
     -- sub_obj_table
-    obj_char_game_scene_char_LP["projectile_table"] = {}
+    obj_char_game_scene_char_LP["projectile_front_table"] = {}
+    obj_char_game_scene_char_LP["projectile_back_table"] = {}
     obj_char_game_scene_char_LP["VFX_HUD_table"] = {}
     obj_char_game_scene_char_LP["VFX_common_front_table"] = {}
     obj_char_game_scene_char_LP["VFX_common_back_table"] = {}
@@ -6943,8 +6946,22 @@ function draw_game_scene_char_LP_pushbox()
     draw_box["w"] = self_side_obj_char["pushbox"][3]
     draw_box["h"] = self_side_obj_char["pushbox"][4]
     draw_3d_color_box(obj_camera,draw_box,color)
-    for i = 1,#self_side_obj_char["projectile_table"] do
-        local current_projectile = self_side_obj_char["projectile_table"][i]
+    for i = 1,#self_side_obj_char["projectile_front_table"] do
+        local current_projectile = self_side_obj_char["projectile_front_table"][i]
+        local current_pushbox = current_projectile["pushbox"]
+        if current_pushbox then
+            local draw_box = {
+                current_projectile["x"] + (current_pushbox[1] - current_pushbox[3]/2)*current_projectile[5],
+                current_projectile["y"] + current_pushbox[2] - current_pushbox[4]/2,
+                current_projectile[3],current_projectile[5],1
+            }
+            draw_box["w"] = current_hurtbox[3]
+            draw_box["h"] = current_hurtbox[4]
+            draw_3d_color_box(obj_camera,draw_box,color)
+        end
+    end
+    for i = 1,#self_side_obj_char["projectile_back_table"] do
+        local current_projectile = self_side_obj_char["projectile_back_table"][i]
         local current_pushbox = current_projectile["pushbox"]
         if current_pushbox then
             local draw_box = {
@@ -6977,8 +6994,26 @@ function draw_game_scene_char_LP_hurtbox()
         draw_box["h"] = current_hurtbox[4]
         draw_3d_color_box(obj_camera,draw_box,color)
     end
-    for i = 1,#self_side_obj_char["projectile_table"] do
-        local current_projectile = self_side_obj_char["projectile_table"][i]
+    for i = 1,#self_side_obj_char["projectile_front_table"] do
+        local current_projectile = self_side_obj_char["projectile_front_table"][i]
+        if current_projectile["hurtbox_table"] then
+            for j = 1,#current_projectile["hurtbox_table"] do
+                local current_hurtbox = current_projectile["hurtbox_table"][j]
+                if current_hurtbox then
+                    local draw_box = {
+                        current_projectile["x"] + (current_hurtbox[1] - current_hurtbox[3]/2)*current_projectile[5],
+                        current_projectile["y"] + current_hurtbox[2] - current_hurtbox[4]/2,
+                        current_projectile[3],current_projectile[5],1
+                    }
+                    draw_box["w"] = current_hurtbox[3]
+                    draw_box["h"] = current_hurtbox[4]
+                    draw_3d_color_box(obj_camera,draw_box,color)
+                end
+            end
+        end
+    end
+    for i = 1,#self_side_obj_char["projectile_back_table"] do
+        local current_projectile = self_side_obj_char["projectile_back_table"][i]
         if current_projectile["hurtbox_table"] then
             for j = 1,#current_projectile["hurtbox_table"] do
                 local current_hurtbox = current_projectile["hurtbox_table"][j]
@@ -7015,8 +7050,26 @@ function draw_game_scene_char_LP_hitbox()
         draw_box["h"] = current_hitbox[4]
         draw_3d_color_box(obj_camera,draw_box,color)
     end
-    for i = 1,#self_side_obj_char["projectile_table"] do
-        local current_projectile = self_side_obj_char["projectile_table"][i]
+    for i = 1,#self_side_obj_char["projectile_front_table"] do
+        local current_projectile = self_side_obj_char["projectile_front_table"][i]
+        if current_projectile["hitbox_table"] then
+            for j = 1,#current_projectile["hitbox_table"] do
+                local current_hitbox = current_projectile["hitbox_table"][j]
+                if current_hitbox then
+                    local draw_box = {
+                        current_projectile["x"] + (current_hitbox[1] - current_hitbox[3]/2)*current_projectile[5],
+                        current_projectile["y"] + current_hitbox[2] - current_hitbox[4]/2,
+                        current_projectile[3],current_projectile[5],1
+                    }
+                    draw_box["w"] = current_hitbox[3]
+                    draw_box["h"] = current_hitbox[4]
+                    draw_3d_color_box(obj_camera,draw_box,color)
+                end
+            end
+        end
+    end
+    for i = 1,#self_side_obj_char["projectile_back_table"] do
+        local current_projectile = self_side_obj_char["projectile_back_table"][i]
         if current_projectile["hitbox_table"] then
             for j = 1,#current_projectile["hitbox_table"] do
                 local current_hitbox = current_projectile["hitbox_table"][j]
@@ -7059,17 +7112,30 @@ function update_game_scene_char_LP_projectile()
             table.remove(obj_char_game_scene_char_LP["projectile_RC_table"],i) -- 寿命耗尽，从列表中移除
         end
     end
-    for i = #obj_char_game_scene_char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
-        local object = obj_char_game_scene_char_LP["projectile_table"][i]
+    for i = #obj_char_game_scene_char_LP["projectile_front_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["projectile_front_table"][i]
         object["update"](object)
         if object["life"] <= 0 then
-            table.remove(obj_char_game_scene_char_LP["projectile_table"],i) -- 寿命耗尽，从列表中移除
+            table.remove(obj_char_game_scene_char_LP["projectile_front_table"],i) -- 寿命耗尽，从列表中移除
+        end
+    end
+    for i = #obj_char_game_scene_char_LP["projectile_back_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["projectile_back_table"][i]
+        object["update"](object)
+        if object["life"] <= 0 then
+            table.remove(obj_char_game_scene_char_LP["projectile_back_table"],i) -- 寿命耗尽，从列表中移除
         end
     end
 end
-function draw_game_scene_char_LP_projectile()
-    for i = #obj_char_game_scene_char_LP["projectile_table"],1,-1 do -- 反向遍历，便于删除元素
-        local object = obj_char_game_scene_char_LP["projectile_table"][i]
+function draw_game_scene_char_LP_projectile_front()
+    for i = #obj_char_game_scene_char_LP["projectile_front_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["projectile_front_table"][i]
+        object["draw"]()
+    end
+end
+function draw_game_scene_char_LP_projectile_back()
+    for i = #obj_char_game_scene_char_LP["projectile_back_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["projectile_back_table"][i]
         object["draw"]()
     end
 end
