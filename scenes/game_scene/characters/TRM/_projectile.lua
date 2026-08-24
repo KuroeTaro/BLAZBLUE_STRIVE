@@ -865,7 +865,7 @@ end
 -- gravity_update_function		gravity
 -- animation                    projectile_animation
 -- update/update_sub_frame/draw
--- uncommon                     in_spawner_offset_x in_spawner_offset_y ground_collide
+-- uncommon                     spawn_offset_x spawn_offset_y ground_collide
 -- projectile_init_fix
 function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_char)
     -- x y z opacity sx sy r f
@@ -882,7 +882,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     obj_projectile["velocity"] = {0,0}
     obj_projectile["projectile_clash_type"] = 0 -- -1: 只要接触双方同时必然消失 0: 不与其他飞道交互 1-3：飞行道具等级
     obj_projectile["f"] = -1
-    obj_projectile["state"] = "in_spawner"
+    obj_projectile["state"] = "spawn"
     obj_projectile["sprite_sheet"] = "6SP_P_curse_ball_loop_projectile"
     -- projectile_clashed_function nil
     -- enemy_interact_function
@@ -935,7 +935,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     -- animation
         -- projectile_animation
         -- this projectile is spwaned by an attchment of charcter,so the animation is init and play at same frame with spawning
-    obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_P_projectile_in_spawner(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+    obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_P_projectile_spawn(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
     init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
     -- update
     obj_projectile["update"] = function()
@@ -946,17 +946,18 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
             return
         end
         local switch = {
-            ["in_spawner"] = function()
+            ["spawn"] = function()
                 character_animator(obj_projectile,obj_projectile["projectile_animation"])
-                obj_projectile["x"] = hit_side_obj_char["x"] + hit_side_obj_char[5]*obj_projectile["in_spawner_offset_x"]
-                obj_projectile["y"] = hit_side_obj_char["y"] + obj_projectile["in_spawner_offset_y"]
+                obj_projectile["x"] = hit_side_obj_char["x"] + hit_side_obj_char[5]*obj_projectile["spawn_offset_x"]
+                obj_projectile["y"] = hit_side_obj_char["y"] + obj_projectile["spawn_offset_y"]
                 if get_character_anim_end_state(obj_projectile,obj_projectile["projectile_animation"]) then
+                    obj_projectile[8] = 0
+                    obj_projectile["velocity"] = {obj_projectile[5]*20,-12.5}
                     obj_projectile["state"] = "in_air"
                     obj_projectile["hitbox_table"] = {{0,0,160,160}}
-                    obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_P_projectile_in_air(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
-                    obj_projectile["velocity"] = {obj_projectile[5]*20,-12.5}
                     obj_projectile["gravity"] = 2.5
-                    obj_projectile[8] = 0
+                    obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_P_projectile_in_air(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+                    init_character_anim_with(obj_projectile,obj_projectile["projectile_animation"])
                 end
             end,
             ["in_air"] = function()
@@ -965,8 +966,8 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
                 if obj_projectile["life"] <= 45 then
                     -- blast_state_init
                     obj_projectile["velocity"] = {0,0}
-                    obj_projectile["sprite_sheet"] = "6SP_P_curse_ball_blast_projectile"
                     obj_projectile["state"] = "blast"
+                    obj_projectile["sprite_sheet"] = "6SP_P_curse_ball_blast_projectile"
                     obj_projectile["hitbox_table"] = {}
                     obj_projectile["projectile_active"] = false
                     stop_obj_audio(obj_projectile["hit_whiff_SFX"])
@@ -991,9 +992,9 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
             return
         end
         local switch = {
-            ["in_spawner"] = function()
-                obj_projectile["x"] = hit_side_obj_char["x"] + hit_side_obj_char[5]*obj_projectile["in_spawner_offset_x"]
-                obj_projectile["y"] = hit_side_obj_char["y"] + obj_projectile["in_spawner_offset_y"]
+            ["spawn"] = function()
+                obj_projectile["x"] = hit_side_obj_char["x"] + hit_side_obj_char[5]*obj_projectile["spawn_offset_x"]
+                obj_projectile["y"] = hit_side_obj_char["y"] + obj_projectile["spawn_offset_y"]
             end,
             ["in_air"] = function()
                 obj_projectile["x"] = obj_projectile["x"] + obj_projectile["velocity"][1]/COLLIDE_TICK
@@ -1013,7 +1014,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     -- draw
     obj_projectile["draw"] = function()
         local switch = {
-            ["in_spawner"] = function()
+            ["spawn"] = function()
                 local image_sprite_sheet = hit_side_projectile_sprite_sheet_table[obj_projectile["sprite_sheet"]]
                 obj_projectile[1] = obj_projectile["x"] - hit_side_obj_char[5]*80
                 obj_projectile[2] = obj_projectile["y"] - 80
@@ -1048,39 +1049,39 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
         if this_function then this_function() end
     end
     -- uncommon
-    obj_projectile["in_spawner_offset_x"] = 0
-    obj_projectile["in_spawner_offset_y"] = 0
+    obj_projectile["spawn_offset_x"] = 0
+    obj_projectile["spawn_offset_y"] = 0
     obj_projectile["ground_collide"] = false
     -- projectile_init_fix
-    obj_projectile["x"] = hit_side_obj_char["x"] + obj_projectile["in_spawner_offset_x"]*hit_side_obj_char[5]
-    obj_projectile["y"] = hit_side_obj_char["y"] + obj_projectile["in_spawner_offset_y"]
+    obj_projectile["x"] = hit_side_obj_char["x"] + obj_projectile["spawn_offset_x"]*hit_side_obj_char[5]
+    obj_projectile["y"] = hit_side_obj_char["y"] + obj_projectile["spawn_offset_y"]
     obj_projectile[1] = obj_projectile["x"] - hit_side_obj_char[5]*80
     obj_projectile[2] = obj_projectile["y"] - 80
     obj_projectile[5] = hit_side_obj_char[5]
     -- insert_projectile
     table.insert(hit_side_obj_char["projectile_table"],obj_projectile)
 end
-function load_game_scene_anim_char_TRM_6SP_P_projectile_in_spawner(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+function load_game_scene_anim_char_TRM_6SP_P_projectile_spawn(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
     local res = {}
     res["prop_f"] = "f"
     res["anim_length"] = 4
     res[0] = function()
-        obj_projectile["in_spawner_offset_x"] = 105.0
-        obj_projectile["in_spawner_offset_y"] = -175.0
+        obj_projectile["spawn_offset_x"] = 105.0
+        obj_projectile["spawn_offset_y"] = -175.0
         obj_projectile[8] = 0
     end
     res[1] = function()
-        obj_projectile["in_spawner_offset_x"] = 111.7
-        obj_projectile["in_spawner_offset_y"] = -175.8
+        obj_projectile["spawn_offset_x"] = 111.7
+        obj_projectile["spawn_offset_y"] = -175.8
     end
     res[2] = function()
-        obj_projectile["in_spawner_offset_x"] = 118.3
-        obj_projectile["in_spawner_offset_y"] = -176.6
+        obj_projectile["spawn_offset_x"] = 118.3
+        obj_projectile["spawn_offset_y"] = -176.6
         obj_projectile[8] = 1
     end
     res[3] = function()
-        obj_projectile["in_spawner_offset_x"] = 125.0
-        obj_projectile["in_spawner_offset_y"] = -177.5
+        obj_projectile["spawn_offset_x"] = 125.0
+        obj_projectile["spawn_offset_y"] = -177.5
     end
     res[4] = function()
         -- animation_end
@@ -1123,69 +1124,283 @@ end
 --                              ease_in_SFX ease_out_SFX
 -- animation                    projectile_animation
 -- update/update_sub_frame/draw
--- uncommon                     projectile_buff_8 projectile_exist_countdown
+-- uncommon                     projectile_exist_countdown projectile_anchor_pos
+--                              projectile_buff projectile_buff_f projectile_buff_animation projectile_buff_anchor_pos
+--                              state_cache VFX_hit_front_table VFX_hit_back_table
 -- projectile_init_fix
-function insert_projectile_game_scene_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_char)
+function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,passive_op_side_obj_char)
     -- x y z opacity sx sy r f
-    local obj_projectile = {0,0,0,0.875,1,1,0,0}
+    local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
-    local hit_side = hit_side_obj_char["player_side"]
-    local hit_side_projectile_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(hit_side)
-    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
+    local active_side = active_op_side_obj_char["player_side"]
+    local active_side_projectile_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(active_side)
+    local active_side_move_SFX_table = common_game_scene_get_SFX_move(active_side)
     -- common
     obj_projectile["type"] = "projectile"
-    obj_projectile["life"] = 42
-    obj_projectile["x"] = hit_side_obj_char["x"]
-    obj_projectile["y"] = hit_side_obj_char["y"]
+    obj_projectile["life"] = 15
+    obj_projectile["x"] = active_op_side_obj_char["x"]
+    obj_projectile["y"] = 0
     obj_projectile["velocity"] = {0,0}
     obj_projectile["projectile_clash_type"] = -1 -- -1: 只要接触双方同时必然消失 0: 不与其他飞道交互 1-3：飞行道具等级
     obj_projectile["f"] = -1
-    obj_projectile["state"] = "in_spawner"
-    obj_projectile["sprite_sheet"] = "6SP_K_curse_ball_loop_projectile"
+    obj_projectile["state"] = "ease_in"
+    obj_projectile["sprite_sheet"] = "6SP_K_scapegoat_ease_in_projectile"
     -- projectile_clashed_function
     obj_projectile["projectile_clash_box"] = {{0,-215,170,430}}
     obj_projectile["projectile_clashed_function"] = function()
         -- hurt_state_init
-        obj_projectile["sprite_sheet"] = "6SP_K_scapegoat_hurt"
+        obj_projectile["sprite_sheet"] = "6SP_K_scapegoat_hurt_projectile"
         obj_projectile["state"] = "hurt"
-        obj_projectile["hurtbox"] = {}
+        obj_projectile["hurtbox_table"] = {}
         -- play_SFX
         play_obj_audio(obj_projectile["ease_out_SFX"])
         stop_obj_audio(obj_projectile["ease_in_SFX"])
         -- animation
-        obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_K_projectile_hurt(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+        obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_K_projectile_hurt(active_op_side_obj_char,passive_op_side_obj_char,obj_projectile)
         init_character_anim_with(obj_projectile,obj_projectile["projectile_animation"])
         -- shot_sys_scapegoat
-        hit_side_obj_char["shot_sys_scapegoat_buff"] = false
+        active_op_side_obj_char["shot_sys_scapegoat_buff"] = false
     end
     -- enemy_interact_function
-    obj_projectile["hurtbox"] = {{0,-215,170,430}}
-    obj_projectile["ease_in_SFX"] = hit_side_move_SFX_table["6SP_K_scapegoat_ease_in"]
-    obj_projectile["ease_out_SFX"] = hit_side_move_SFX_table["6SP_K_scapegoat_ease_out"]
+    obj_projectile["hurtbox_table"] = {{0,-215,170,430}}
+    obj_projectile["ease_in_SFX"] = active_side_move_SFX_table["6SP_K_scapegoat_ease_in"]
+    obj_projectile["ease_out_SFX"] = active_side_move_SFX_table["6SP_K_scapegoat_ease_out"]
     obj_projectile["enemy_interact_function"] = function()
-        if collision_strike_hit_confirm_test(hurt_side_obj_char,obj_projectile) then
-            
+        if collision_strike_hit_confirm_test(passive_op_side_obj_char,obj_projectile) then
+            -- hit_side_hit_function
+            passive_op_side_obj_char["hit_function"](passive_op_side_obj_char,obj_projectile)
+            -- hurt_state_init
+            obj_projectile["state"] = "hurt"
+            obj_projectile["sprite_sheet"] = "6SP_K_scapegoat_hurt_projectile"
+            obj_projectile["hurtbox_table"] = {}
+            -- play_SFX
+            play_obj_audio(obj_projectile["ease_out_SFX"])
+            stop_obj_audio(obj_projectile["ease_in_SFX"])
+            -- animation
+            obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_K_projectile_hurt(active_op_side_obj_char,passive_op_side_obj_char,obj_projectile)
+            init_character_anim_with(obj_projectile,obj_projectile["projectile_animation"])
+            -- projectile_anchor_pos
+            obj_projectile["projectile_anchor_pos"] = {185,490}
+            -- shot_sys_scapegoat
+            active_op_side_obj_char["shot_sys_scapegoat_buff"] = false
         end
     end
     -- animation
-    obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_K_projectile_ease_in(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+    obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_K_projectile_ease_in(active_op_side_obj_char,passive_op_side_obj_char,obj_projectile)
     init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
     -- update
-    obj_projectile["update"] = function() end
+    obj_projectile["update"] = function()
+        if not active_op_side_obj_char["run_at_current_frame"] then
+            return
+        end
+        if passive_op_side_obj_char["state_cache"] == "wallstick" then
+            return
+        end
+        local switch = {
+            ["ease_in"] = function()
+                character_animator(obj_projectile,obj_projectile["projectile_animation"])
+                obj_projectile["projectile_exist_countdown"] = obj_projectile["projectile_exist_countdown"] - 1
+                if get_character_anim_end_state(obj_projectile,obj_projectile["projectile_animation"]) then
+                    -- state
+                    obj_projectile["state"] = "idle"
+                    obj_projectile["sprite_sheet"] = "6SP_K_scapegoat_idle_projectile"
+                    -- init_animation
+                    obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_K_projectile_idle(active_op_side_obj_char,passive_op_side_obj_char,obj_projectile)
+                    obj_projectile["projectile_buff_animation"] = load_game_scene_anim_char_TRM_6SP_K_projectile_buff(active_op_side_obj_char,passive_op_side_obj_char,obj_projectile)
+                    init_character_anim_with(obj_projectile,obj_projectile["projectile_animation"])
+                    init_character_anim_with(obj_projectile,obj_projectile["projectile_buff_animation"])
+                    obj_projectile["f"] = 32
+                    character_animator(obj_projectile,obj_projectile["projectile_animation"])
+                    -- draw_correction
+                    obj_projectile["projectile_anchor_pos"] = {165,515}
+                    obj_projectile["projectile_buff_anchor_pos"] = {160,625}
+                end
+            end,
+            ["idle"] = function()
+                character_animator(obj_projectile,obj_projectile["projectile_animation"])
+                character_animator(obj_projectile,obj_projectile["projectile_buff_animation"])
+                obj_projectile["projectile_exist_countdown"] = obj_projectile["projectile_exist_countdown"] - 1
+                if obj_projectile["projectile_exist_countdown"] <= 0 then
+                    -- state
+                    obj_projectile["state"] = "ease_out"
+                    obj_projectile["sprite_sheet"] = "6SP_K_scapegoat_ease_out_projectile"
+                    -- init_animation
+                    obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_K_projectile_ease_out(active_op_side_obj_char,passive_op_side_obj_char,obj_projectile)
+                    init_character_anim_with(obj_projectile,obj_projectile["projectile_animation"])
+                    -- uncommon
+                    obj_projectile["projectile_anchor_pos"] = {165,515}
+                    -- shot_sys_scapegoat
+                    active_op_side_obj_char["shot_sys_scapegoat_buff"] = false
+                end
+            end,
+            ["ease_out"] = function()
+                character_animator(obj_projectile,obj_projectile["projectile_animation"])
+                if get_character_anim_end_state(obj_projectile,obj_projectile["projectile_animation"]) then
+                    obj_projectile["life"] = 0
+                end
+            end,
+            ["hurt"] = function()
+                character_animator(obj_projectile,obj_projectile["projectile_animation"])
+                if get_character_anim_end_state(obj_projectile,obj_projectile["projectile_animation"]) then
+                    obj_projectile["life"] = 0
+                end
+            end,
+            ["hurtstop"] = function()
+                -- set a hurtstop countdown
+            end
+        }
+        local this_function = switch[obj_projectile["state"]]
+        if this_function then this_function() end
+    end
     -- update_sub_frame
-    obj_projectile["update_sub_frame"] = function() end
+    obj_projectile["update_sub_frame"] = function()
+    end
     -- draw
-    obj_projectile["draw"] = function() end
+    obj_projectile["draw"] = function()
+        local switch = {
+            ["ease_in"] = function()
+                local image_sprite_sheet = active_side_projectile_sprite_sheet_table[obj_projectile["sprite_sheet"]]
+                image_sprite_sheet["sprite_batch"]:clear()
+                draw_3d_image_sprite_batch(obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8]))
+                love.graphics.setColor(1,1,1,obj_projectile[4])
+                love.graphics.draw(image_sprite_sheet["sprite_batch"])
+                love.graphics.setColor(1,1,1,1)
+                image_sprite_sheet = active_side_projectile_sprite_sheet_table[obj_projectile["projectile_buff_sprite_sheet"]]
+                image_sprite_sheet["sprite_batch"]:clear()
+                draw_3d_image_sprite_batch(obj_camera,obj_projectile["projectile_buff"],image_sprite_sheet,tostring(obj_projectile["projectile_buff"][8]))
+                love.graphics.setColor(1,1,1,obj_projectile["projectile_buff"][4])
+                love.graphics.draw(image_sprite_sheet["sprite_batch"])
+                love.graphics.setColor(1,1,1,1)
+            end,
+            ["idle"] = function()
+                local image_sprite_sheet = active_side_projectile_sprite_sheet_table[obj_projectile["sprite_sheet"]]
+                image_sprite_sheet["sprite_batch"]:clear()
+                draw_3d_image_sprite_batch(obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8]))
+                love.graphics.setColor(1,1,1,obj_projectile[4])
+                love.graphics.draw(image_sprite_sheet["sprite_batch"])
+                love.graphics.setColor(1,1,1,1)
+                image_sprite_sheet = active_side_projectile_sprite_sheet_table[obj_projectile["projectile_buff_sprite_sheet"]]
+                image_sprite_sheet["sprite_batch"]:clear()
+                draw_3d_image_sprite_batch(obj_camera,obj_projectile["projectile_buff"],image_sprite_sheet,tostring(obj_projectile["projectile_buff"][8]))
+                love.graphics.setColor(1,1,1,obj_projectile["projectile_buff"][4])
+                love.graphics.draw(image_sprite_sheet["sprite_batch"])
+                love.graphics.setColor(1,1,1,1)
+            end,
+            ["ease_out"] = function()
+                local image_sprite_sheet = active_side_projectile_sprite_sheet_table[obj_projectile["sprite_sheet"]]
+                image_sprite_sheet["sprite_batch"]:clear()
+                draw_3d_image_sprite_batch(obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8]))
+                love.graphics.setColor(1,1,1,obj_projectile[4])
+                love.graphics.draw(image_sprite_sheet["sprite_batch"])
+                love.graphics.setColor(1,1,1,1)
+            end,
+            ["hurt"] = function()
+                local image_sprite_sheet = active_side_projectile_sprite_sheet_table[obj_projectile["sprite_sheet"]]
+                image_sprite_sheet["sprite_batch"]:clear()
+                draw_3d_image_sprite_batch(obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8]))
+                love.graphics.setColor(1,1,1,obj_projectile[4])
+                love.graphics.draw(image_sprite_sheet["sprite_batch"])
+                love.graphics.setColor(1,1,1,1)
+            end
+        }
+        local this_function = switch[obj_projectile["state"]]
+        if this_function then this_function() end
+    end
     -- uncommon
-    obj_projectile["projectile_buff_8"] = 0
-    obj_projectile["projectile_exist_countdown"] = 0
+    -- compatibility_with_common_hit_function
+    obj_projectile["state_cache"] = "none"
+    obj_projectile["hurt_state"] = "none"
+    obj_projectile["direction_input"] = 5
+    obj_projectile["player_side"] = active_side
+    obj_projectile["risk_gauge"] = {0,1}
+    -- compatibility_with_common_hit_VFX_insert_function
+    obj_projectile["VFX_hit_front_table"] = {}
+    obj_projectile["VFX_hit_back_table"] = {}
+    -- unique
+    obj_projectile["projectile_exist_countdown"] = 240
+    obj_projectile["projectile_anchor_pos"] = {165,515}
+    obj_projectile["projectile_buff"] = {0,0,0,1,1,1,0,0}
+    obj_projectile["projectile_buff_f"] = 0
+    obj_projectile["projectile_buff_sprite_sheet"] = "6SP_K_scapegoat_buff_flow_projectile"
+    obj_projectile["projectile_buff_animation"] = nil
+    obj_projectile["projectile_buff_anchor_pos"] = {160,625}
     -- projectile_init_fix
+    obj_projectile["x"] = active_op_side_obj_char["x"]
+    obj_projectile["y"] = 0
+    obj_projectile[1] = obj_projectile["x"] - active_op_side_obj_char[5]*obj_projectile["projectile_anchor_pos"][1]
+    obj_projectile[2] = obj_projectile["y"] - obj_projectile["projectile_anchor_pos"][2]
+    obj_projectile[5] = active_op_side_obj_char[5]
+    obj_projectile["projectile_buff"][1] = active_op_side_obj_char["x"] - active_op_side_obj_char[5]*obj_projectile["projectile_buff_anchor_pos"][1]
+    obj_projectile["projectile_buff"][2] = active_op_side_obj_char["y"] - obj_projectile["projectile_buff_anchor_pos"][2]
+    obj_projectile["projectile_buff"][5] = active_op_side_obj_char[5]
+    -- insert_projectile
+    table.insert(active_op_side_obj_char["projectile_table"],obj_projectile)
 end
-function load_game_scene_anim_char_TRM_6SP_K_projectile_ease_in(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+function load_game_scene_anim_char_TRM_6SP_K_projectile_ease_in(active_op_side_obj_char,passive_op_side_obj_char,obj_projectile)
+    local res = {}
+    res["prop_f"] = "f"
+    res["anim_length"] = 32
+    for i = 0,7 do
+        res[i*4] = function() obj_projectile[8] = i end
+    end
+    res[32] = function()
+        -- animation_end
+    end
+    return res
 end
-function load_game_scene_anim_char_TRM_6SP_K_projectile_ease_out(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+function load_game_scene_anim_char_TRM_6SP_K_projectile_ease_out(active_op_side_obj_char,passive_op_side_obj_char,obj_projectile)
+    local res = {}
+    res["prop_f"] = "f"
+    res["anim_length"] = 20
+    for i = 0,4 do
+        res[i*4] = function() obj_projectile[8] = i end
+    end
+    res[20] = function()
+        -- animation_end
+    end
+    return res
 end
-function load_game_scene_anim_char_TRM_6SP_K_projectile_hurt(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+function load_game_scene_anim_char_TRM_6SP_K_projectile_hurt(active_op_side_obj_char,passive_op_side_obj_char,obj_projectile)
+    local res = {}
+    res["prop_f"] = "f"
+    res["anim_length"] = 20
+    for i = 0,4 do
+        res[i*4] = function() obj_projectile[8] = i end
+    end
+    res[20] = function()
+        -- animation_end
+    end
+    return res
 end
-function load_game_scene_anim_char_TRM_6SP_K_projectile_idle(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+function load_game_scene_anim_char_TRM_6SP_K_projectile_idle(active_op_side_obj_char,passive_op_side_obj_char,obj_projectile)
+    local res = {}
+    res["prop_f"] = "f"
+    res["anim_length"] = 61
+    for i = 0,14 do
+        res[i*4] = function() obj_projectile[8] = i end
+    end
+    res[60] = function()
+        obj_projectile[8] = 0
+        obj_projectile["f"] = 0
+    end
+    res[61] = function()
+        -- animation_end
+    end
+    return res
+end
+function load_game_scene_anim_char_TRM_6SP_K_projectile_buff(active_op_side_obj_char,passive_op_side_obj_char,obj_projectile)
+    local res = {}
+    res["prop_f"] = "projectile_buff_f"
+    res["anim_length"] = 61
+    for i = 0,27 do
+        res[i] = function() obj_projectile["projectile_buff"][8] = i end
+    end
+    res[60] = function()
+        obj_projectile["projectile_buff"][8] = 0
+        obj_projectile["projectile_buff_f"] = 0
+    end
+    res[61] = function()
+        -- animation_end
+    end
+    return res
 end

@@ -9277,6 +9277,12 @@ function load_game_scene_anim_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_cha
         -- draw_correction
         hit_side_obj_char[8] = 0
     end
+    res[10] = function()
+        -- state_number
+        hit_side_obj_char["velocity"][1] = (-37.0)*hit_side_obj_char[5]
+        -- insert_projectile
+        insert_projectile_game_scene_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_char)
+    end
     res[12] = function()
         -- state_number
         hit_side_obj_char["velocity"][1] = -35.0*hit_side_obj_char[5]
