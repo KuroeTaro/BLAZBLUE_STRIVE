@@ -1273,6 +1273,9 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
                     active_op_side_obj_char["shot_sys_scapegoat_buff"] = false
                     -- draw_correction
                     obj_projectile["projectile_anchor_pos"] = {165,515}
+                    -- play_SFX
+                    play_obj_audio(obj_projectile["ease_out_SFX"])
+                    stop_obj_audio(obj_projectile["ease_in_SFX"])
                 end
             end,
             ["ease_out"] = function()
@@ -1300,6 +1303,7 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
     -- update_sub_frame
     obj_projectile["update_sub_frame"] = function()
     end
+    -- draw_sync
     obj_projectile["draw_sync"] = function()
         obj_projectile[1] = obj_projectile["x"]+obj_projectile["hurtstop_wiggle_current_x"]-obj_projectile[5]*obj_projectile["projectile_anchor_pos"][1]
         obj_projectile[2] = obj_projectile["y"]+obj_projectile["hurtstop_wiggle_current_y"]-obj_projectile[6]*obj_projectile["projectile_anchor_pos"][2]

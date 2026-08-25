@@ -9282,6 +9282,8 @@ function load_game_scene_anim_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["velocity"][1] = (-37.0)*hit_side_obj_char[5]
         -- insert_projectile
         insert_projectile_game_scene_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_char)
+        -- play_SFX
+        play_obj_audio(hit_side_move_SFX_table["6SP_K_scapegoat_ease_in"])
     end
     res[12] = function()
         -- state_number
