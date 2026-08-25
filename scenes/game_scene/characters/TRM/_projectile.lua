@@ -1120,7 +1120,7 @@ end
 -- 1-8 type life x y projectile_clash_type f
 -- state sprite_sheet
 -- projectile_clashed_function	projectile_clash_box
--- enemy_interact_function      hurtbox
+-- enemy_interact_function      hurtbox projectile_active
 --                              ease_in_SFX ease_out_SFX
 -- animation                    projectile_animation
 -- update/update_sub_frame/draw
@@ -1131,6 +1131,7 @@ end
 function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,passive_op_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_projectile = {0,0,0,1,1,1,0,0}
+    local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local active_side = active_op_side_obj_char["player_side"]
     local active_side_projectile_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(active_side)
@@ -1144,6 +1145,7 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
     obj_projectile["projectile_clash_type"] = -1 -- -1: 只要接触双方同时必然消失 0: 不与其他飞道交互 1-3：飞行道具等级
     obj_projectile["f"] = -1
     obj_projectile["state"] = "ease_in"
+    obj_projectile["state_cache"] = "none"
     obj_projectile["sprite_sheet"] = "6SP_K_scapegoat_ease_in_projectile"
     -- projectile_clashed_function
     obj_projectile["projectile_clash_box"] = {{0,-215,170,430}}
@@ -1162,27 +1164,62 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
         active_op_side_obj_char["shot_sys_scapegoat_buff"] = false
     end
     -- enemy_interact_function
+    obj_projectile["projectile_active"] = true
     obj_projectile["hurtbox_table"] = {{0,-215,170,430}}
     obj_projectile["ease_in_SFX"] = active_side_move_SFX_table["6SP_K_scapegoat_ease_in"]
     obj_projectile["ease_out_SFX"] = active_side_move_SFX_table["6SP_K_scapegoat_ease_out"]
     obj_projectile["enemy_interact_function"] = function()
-        if collision_strike_hit_confirm_test(passive_op_side_obj_char,obj_projectile) then
+        if collision_strike_hit_confirm_test(passive_op_side_obj_char,obj_projectile) and obj_projectile["projectile_active"] then
             -- hit_side_hit_function
             passive_op_side_obj_char["hit_function"](passive_op_side_obj_char,obj_projectile)
-            -- hurt_state_init
-            obj_projectile["state"] = "hurt"
-            obj_projectile["sprite_sheet"] = "6SP_K_scapegoat_hurt_projectile"
-            obj_projectile["hurtbox_table"] = {}
-            -- play_SFX
-            play_obj_audio(obj_projectile["ease_out_SFX"])
-            stop_obj_audio(obj_projectile["ease_in_SFX"])
+            -- state
+            obj_projectile["state_cache"] = "hurt"
+            obj_projectile["state"] = "hurtstop"
+            -- hit_hurt_blockstop_countdown
+            obj_projectile["hit_hurt_blockstop_countdown"] = passive_op_side_obj_char["hit_hurt_blockstop_countdown"]
+            -- camera_shake_enclose
+            table.insert(obj_stage_main["camera_active_application_table"],
+                function()
+                    anim_stage_point_linear_game_scene_camera_shake_x = passive_op_side_obj_char["camera_x_shake_anim"]
+                    anim_stage_point_linear_game_scene_camera_shake_y = passive_op_side_obj_char["camera_y_shake_anim"]
+                    init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+                    init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
+                    obj_camera["state"] = "active"
+                end
+            )
+            -- character_shake
+            obj_projectile["hurtstop_wiggle_x_animation"] = 
+            common_game_scene_create_hurtstop_wiggle_animation(
+                obj_projectile["hit_hurt_blockstop_countdown"] - 1,
+                "hurtstop_wiggle_x",
+                15
+            )
+            obj_projectile["hurtstop_wiggle_y_animation"] = 
+            common_game_scene_create_hurtstop_wiggle_animation(
+                obj_projectile["hit_hurt_blockstop_countdown"] - 1,
+                "hurtstop_wiggle_y",
+                7
+            )
+            init_point_linear_anim_with(obj_projectile,obj_projectile["hurtstop_wiggle_x_animation"])
+            init_point_linear_anim_with(obj_projectile,obj_projectile["hurtstop_wiggle_y_animation"])
+            obj_projectile["hurtstop_wiggle_current_x"] = (obj_projectile["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
+            obj_projectile["hurtstop_wiggle_current_y"] = (obj_projectile["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
             -- animation
             obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_K_projectile_hurt(active_op_side_obj_char,passive_op_side_obj_char,obj_projectile)
             init_character_anim_with(obj_projectile,obj_projectile["projectile_animation"])
+            -- uncommon
+            -- state
+            obj_projectile["projectile_active"] = false
+            -- collision
+            obj_projectile["hurtbox_table"] = {}
             -- projectile_anchor_pos
+            obj_projectile["sprite_sheet"] = "6SP_K_scapegoat_hurt_projectile"
             obj_projectile["projectile_anchor_pos"] = {185,490}
             -- shot_sys_scapegoat
             active_op_side_obj_char["shot_sys_scapegoat_buff"] = false
+            -- play_SFX
+            play_obj_audio(obj_projectile["ease_out_SFX"])
+            stop_obj_audio(obj_projectile["ease_in_SFX"])
         end
     end
     -- animation
@@ -1228,9 +1265,14 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
                     obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_K_projectile_ease_out(active_op_side_obj_char,passive_op_side_obj_char,obj_projectile)
                     init_character_anim_with(obj_projectile,obj_projectile["projectile_animation"])
                     -- uncommon
-                    obj_projectile["projectile_anchor_pos"] = {165,515}
+                    -- state
+                    obj_projectile["projectile_active"] = false
+                    -- collision
+                    obj_projectile["hurtbox_table"] = {}
                     -- shot_sys_scapegoat
                     active_op_side_obj_char["shot_sys_scapegoat_buff"] = false
+                    -- draw_correction
+                    obj_projectile["projectile_anchor_pos"] = {165,515}
                 end
             end,
             ["ease_out"] = function()
@@ -1246,7 +1288,10 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
                 end
             end,
             ["hurtstop"] = function()
-                -- set a hurtstop countdown
+                common_update_game_scene_char_blockstop_hurtstop_countdown(obj_projectile)
+                if obj_projectile["hit_hurt_blockstop_countdown"] <= 0 then
+                    obj_projectile["state"] = obj_projectile["state_cache"]
+                end
             end
         }
         local this_function = switch[obj_projectile["state"]]
@@ -1254,6 +1299,10 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
     end
     -- update_sub_frame
     obj_projectile["update_sub_frame"] = function()
+    end
+    obj_projectile["draw_sync"] = function()
+        obj_projectile[1] = obj_projectile["x"]+obj_projectile["hurtstop_wiggle_current_x"]-obj_projectile[5]*obj_projectile["projectile_anchor_pos"][1]
+        obj_projectile[2] = obj_projectile["y"]+obj_projectile["hurtstop_wiggle_current_y"]-obj_projectile[6]*obj_projectile["projectile_anchor_pos"][2]
     end
     -- draw
     obj_projectile["draw"] = function()
@@ -1301,9 +1350,18 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
                 love.graphics.setColor(1,1,1,obj_projectile[4])
                 love.graphics.draw(image_sprite_sheet["sprite_batch"])
                 love.graphics.setColor(1,1,1,1)
+            end,
+            ["hurtstop"] = function()
+                local image_sprite_sheet = active_side_projectile_sprite_sheet_table[obj_projectile["sprite_sheet"]]
+                image_sprite_sheet["sprite_batch"]:clear()
+                draw_3d_image_sprite_batch(obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8]))
+                love.graphics.setColor(1,1,1,obj_projectile[4])
+                love.graphics.draw(image_sprite_sheet["sprite_batch"])
+                love.graphics.setColor(1,1,1,1)
             end
         }
         local this_function = switch[obj_projectile["state"]]
+        obj_projectile["draw_sync"]()
         if this_function then this_function() end
     end
     -- uncommon
@@ -1316,6 +1374,17 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
     -- compatibility_with_common_hit_VFX_insert_function
     obj_projectile["VFX_hit_front_table"] = {}
     obj_projectile["VFX_hit_back_table"] = {}
+    -- compatibility_with_hurtstop
+    obj_projectile["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_projectile["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_projectile["hit_hurt_blockstop_countdown"] = 0
+    obj_projectile["hit_hurt_block_slowdown_countdown"] = 0
+    obj_projectile["hurtstop_wiggle_x_animation"] = nil
+    obj_projectile["hurtstop_wiggle_y_animation"] = nil
+    obj_projectile["hurtstop_wiggle_x"] = 0
+    obj_projectile["hurtstop_wiggle_y"] = 0
+    obj_projectile["hurtstop_wiggle_current_x"] = 0
+    obj_projectile["hurtstop_wiggle_current_y"] = 0
     -- unique
     obj_projectile["projectile_exist_countdown"] = 240
     obj_projectile["projectile_anchor_pos"] = {165,515}
