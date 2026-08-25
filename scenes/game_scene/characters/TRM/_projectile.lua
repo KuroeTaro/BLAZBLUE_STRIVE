@@ -1209,7 +1209,7 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
                     obj_projectile["projectile_buff_animation"] = load_game_scene_anim_char_TRM_6SP_K_projectile_buff(active_op_side_obj_char,passive_op_side_obj_char,obj_projectile)
                     init_character_anim_with(obj_projectile,obj_projectile["projectile_animation"])
                     init_character_anim_with(obj_projectile,obj_projectile["projectile_buff_animation"])
-                    obj_projectile["f"] = 32
+                    obj_projectile["f"] = 31
                     character_animator(obj_projectile,obj_projectile["projectile_animation"])
                     -- draw_correction
                     obj_projectile["projectile_anchor_pos"] = {165,515}
@@ -1323,7 +1323,7 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
     obj_projectile["projectile_buff_f"] = 0
     obj_projectile["projectile_buff_sprite_sheet"] = "6SP_K_scapegoat_buff_flow_projectile"
     obj_projectile["projectile_buff_animation"] = nil
-    obj_projectile["projectile_buff_anchor_pos"] = {160,625}
+    obj_projectile["projectile_buff_anchor_pos"] = {160,325}
     -- projectile_init_fix
     obj_projectile["x"] = active_op_side_obj_char["x"]
     obj_projectile["y"] = 0
