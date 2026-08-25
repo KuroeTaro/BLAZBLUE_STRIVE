@@ -6899,6 +6899,18 @@ function draw_game_scene_char_LP_shadow()
     love.graphics.setCanvas(DRAW_CHARACTER_CANVAS)
     love.graphics.clear(0,0,0,0)
     draw_game_scene_char_LP()
+    -- 所有飞行道具与角色一样获得阴影效果
+    love.graphics.setBlendMode("alpha")
+    for i = #self_side_obj_char["projectile_RC_table"],1,-1 do
+        self_side_obj_char["projectile_RC_table"][i]["draw"]()
+    end
+    for i = #self_side_obj_char["projectile_back_table"],1,-1 do
+        self_side_obj_char["projectile_back_table"][i]["draw"]()
+    end
+    for i = #self_side_obj_char["projectile_front_table"],1,-1 do
+        self_side_obj_char["projectile_front_table"][i]["draw"]()
+    end
+    love.graphics.setBlendMode("alpha")
     local center_blur_start = 0.5
     local side_blur_start = 0.75
     local blur_start = side_blur_start - ((width-dx_light_char_2d)/width*(side_blur_start-center_blur_start))
