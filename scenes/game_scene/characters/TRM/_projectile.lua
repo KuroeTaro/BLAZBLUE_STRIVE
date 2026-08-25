@@ -1148,7 +1148,7 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
     obj_projectile["state_cache"] = "none"
     obj_projectile["sprite_sheet"] = "6SP_K_scapegoat_ease_in_projectile"
     -- projectile_clashed_function
-    obj_projectile["projectile_clash_box"] = {{0,-215,170,430}}
+    obj_projectile["projectile_clash_box"] = {{0,-225,170,470}}
     obj_projectile["projectile_clashed_function"] = function()
         -- hurt_state_init
         obj_projectile["sprite_sheet"] = "6SP_K_scapegoat_hurt_projectile"
@@ -1165,7 +1165,7 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
     end
     -- enemy_interact_function
     obj_projectile["projectile_active"] = true
-    obj_projectile["hurtbox_table"] = {{0,-215,170,430}}
+    obj_projectile["hurtbox_table"] = {{0,-225,170,470}}
     obj_projectile["ease_in_SFX"] = active_side_move_SFX_table["6SP_K_scapegoat_ease_in"]
     obj_projectile["ease_out_SFX"] = active_side_move_SFX_table["6SP_K_scapegoat_ease_out"]
     obj_projectile["enemy_interact_function"] = function()
@@ -1214,7 +1214,6 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
             obj_projectile["hurtbox_table"] = {}
             -- projectile_anchor_pos
             obj_projectile["sprite_sheet"] = "6SP_K_scapegoat_hurt_projectile"
-            obj_projectile["projectile_anchor_pos"] = {185,490}
             -- shot_sys_scapegoat
             active_op_side_obj_char["shot_sys_scapegoat_buff"] = false
             -- play_SFX

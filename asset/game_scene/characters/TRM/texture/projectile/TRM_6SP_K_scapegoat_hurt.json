@@ -2,51 +2,51 @@
 
 "0":
 {
-	"frame": {"x":0,"y":0,"w":420,"h":520},
+	"frame": {"x":0,"y":0,"w":320,"h":540},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":520},
-	"sourceSize": {"w":420,"h":520}
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":540},
+	"sourceSize": {"w":320,"h":540}
 },
 "1":
 {
-	"frame": {"x":420,"y":0,"w":420,"h":520},
+	"frame": {"x":320,"y":0,"w":320,"h":540},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":520},
-	"sourceSize": {"w":420,"h":520}
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":540},
+	"sourceSize": {"w":320,"h":540}
 },
 "2":
 {
-	"frame": {"x":840,"y":0,"w":420,"h":520},
+	"frame": {"x":640,"y":0,"w":320,"h":540},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":520},
-	"sourceSize": {"w":420,"h":520}
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":540},
+	"sourceSize": {"w":320,"h":540}
 },
 "3":
 {
-	"frame": {"x":1260,"y":0,"w":420,"h":520},
+	"frame": {"x":960,"y":0,"w":320,"h":540},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":520},
-	"sourceSize": {"w":420,"h":520}
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":540},
+	"sourceSize": {"w":320,"h":540}
 },
 "4":
 {
-	"frame": {"x":1680,"y":0,"w":420,"h":520},
+	"frame": {"x":1280,"y":0,"w":320,"h":540},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":520},
-	"sourceSize": {"w":420,"h":520}
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":540},
+	"sourceSize": {"w":320,"h":540}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "6SP_K_scapegoat_hurt",
+	"image": "TRM_6SP_K_scapegoat_hurt",
 	"format": "RGBA8888",
-	"size": {"w":2100,"h":520},
+	"size": {"w":1600,"h":540},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:1b996a4e95065e1aacf74f10c4fb21ae:1ffb645cc8f8b30c5c2ec657b20cdc0b:ee2c45b2cd46edea92ad9d582d342e68$"
+	"smartupdate": "$TexturePacker:SmartUpdate:f2673e4bad73481c020b0855a0d0d0df:7cb1d0c05dd32658deb5945e404289db:2adb9044904ea1ae9ec21b0fa7c0cd89$"
 }
 }
