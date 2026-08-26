@@ -1064,26 +1064,31 @@ function common_update_game_scene_projetile_clash(projectile_LP,projectile_RP)
     if projectile_LP["projectile_clash_type"] == 0 or projectile_RP["projectile_clash_type"] == 0 then
         return
     end
-    local projectile_clash_box_table_LP = collision_box_to_real_world_box(projectile_LP,projectile_LP["projectile_clash_box_table"])
-    local projectile_clash_box_table_RP = collision_box_to_real_world_box(projectile_RP,projectile_RP["projectile_clash_box_table"])
-    if collision_box_aabb_detection(projectile_clash_box_table_LP,projectile_clash_box_table_RP) then
-        if projectile_LP["projectile_clash_type"] == -1 or projectile_RP["projectile_clash_type"] == -1 then
-            projectile_LP["projectile_clashed_function"]()
-            projectile_RP["projectile_clashed_function"]()
-            return
-        end
-        if projectile_LP["projectile_clash_type"] == projectile_RP["projectile_clash_type"] then
-            projectile_LP["projectile_clashed_function"]()
-            projectile_RP["projectile_clashed_function"]()
-            return
-        end
-        if projectile_LP["projectile_clash_type"] > projectile_RP["projectile_clash_type"] then
-            projectile_RP["projectile_clashed_function"]()
-            return
-        end
-        if projectile_RP["projectile_clash_type"] > projectile_LP["projectile_clash_type"] then
-            projectile_LP["projectile_clashed_function"]()
-            return
+    -- 逐对对比双方的 projectile_clash_box_table（可能不止一个box），任一box接触即触发相杀
+    for i = 1,#projectile_LP["projectile_clash_box_table"] do
+        local current_clash_box_LP = collision_box_to_real_world_box(projectile_LP,projectile_LP["projectile_clash_box_table"][i])
+        for j = 1,#projectile_RP["projectile_clash_box_table"] do
+            local current_clash_box_RP = collision_box_to_real_world_box(projectile_RP,projectile_RP["projectile_clash_box_table"][j])
+            if collision_box_aabb_detection(current_clash_box_LP,current_clash_box_RP) then
+                if projectile_LP["projectile_clash_type"] == -1 or projectile_RP["projectile_clash_type"] == -1 then
+                    projectile_LP["projectile_clashed_function"]()
+                    projectile_RP["projectile_clashed_function"]()
+                    return
+                end
+                if projectile_LP["projectile_clash_type"] == projectile_RP["projectile_clash_type"] then
+                    projectile_LP["projectile_clashed_function"]()
+                    projectile_RP["projectile_clashed_function"]()
+                    return
+                end
+                if projectile_LP["projectile_clash_type"] > projectile_RP["projectile_clash_type"] then
+                    projectile_RP["projectile_clashed_function"]()
+                    return
+                end
+                if projectile_RP["projectile_clash_type"] > projectile_LP["projectile_clash_type"] then
+                    projectile_LP["projectile_clashed_function"]()
+                    return
+                end
+            end
         end
     end
 end

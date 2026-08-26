@@ -1247,9 +1247,6 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
                     init_character_anim_with(obj_projectile,obj_projectile["projectile_buff_animation"])
                     obj_projectile["f"] = 31
                     character_animator(obj_projectile,obj_projectile["projectile_animation"])
-                    -- draw_correction
-                    obj_projectile["projectile_anchor_pos"] = {165,515}
-                    obj_projectile["projectile_buff_anchor_pos"] = {160,625}
                 end
             end,
             ["idle"] = function()
@@ -1270,8 +1267,6 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
                     obj_projectile["hurtbox_table"] = {}
                     -- shot_sys_scapegoat
                     active_op_side_obj_char["shot_sys_scapegoat_exist"] = false
-                    -- draw_correction
-                    obj_projectile["projectile_anchor_pos"] = {165,515}
                     -- play_SFX
                     play_obj_audio(obj_projectile["ease_out_SFX"])
                     stop_obj_audio(obj_projectile["ease_in_SFX"])
@@ -1396,12 +1391,12 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
     obj_projectile["brightness"] = active_op_side_obj_char["brightness"]
     -- unique
     obj_projectile["projectile_exist_countdown"] = 240
-    obj_projectile["projectile_anchor_pos"] = {165,515}
+    obj_projectile["projectile_anchor_pos"] = {185,515}
     obj_projectile["projectile_buff"] = {0,0,0,1,1,1,0,0}
     obj_projectile["projectile_buff_f"] = 0
     obj_projectile["projectile_buff_sprite_sheet"] = "6SP_K_scapegoat_buff_flow_projectile"
     obj_projectile["projectile_buff_animation"] = nil
-    obj_projectile["projectile_buff_anchor_pos"] = {160,325}
+    obj_projectile["projectile_buff_anchor_pos"] = {180,375}
     -- projectile_init_fix
     obj_projectile["x"] = active_op_side_obj_char["x"]
     obj_projectile["y"] = 0
