@@ -9159,17 +9159,21 @@ function load_game_scene_anim_char_TRM_4SP_K(hit_side_obj_char,hurt_side_obj_cha
         -- collide
         hit_side_obj_char["pushbox"] = {0,-142.5,120,285}
         hit_side_obj_char["pushbox_opponent_collision_active"] = true
-        hit_side_obj_char["hurtbox_table"] = {{0,-175,180,350}}
+        hit_side_obj_char["hurtbox_table"] = {{0,-125,220,250}}
         -- draw_correction
         hit_side_obj_char[8] = 4
     end
     res[21] = function()
         -- draw_correction
         hit_side_obj_char[8] = 5
+        -- collide
+        hit_side_obj_char["hurtbox_table"] = {{0,-160,190,320}}
     end
     res[27] = function()
         -- draw_correction
         hit_side_obj_char[8] = 6
+        -- collide
+        hit_side_obj_char["hurtbox_table"] = {{0,-175,180,350}}
     end
     res[30] = function()
         -- input_sys_cache

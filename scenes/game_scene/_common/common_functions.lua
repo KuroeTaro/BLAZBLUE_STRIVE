@@ -1064,9 +1064,9 @@ function common_update_game_scene_projetile_clash(projectile_LP,projectile_RP)
     if projectile_LP["projectile_clash_type"] == 0 or projectile_RP["projectile_clash_type"] == 0 then
         return
     end
-    local projectile_clash_box_LP = collision_box_to_real_world_box(projectile_LP,projectile_LP["projectile_clash_box"])
-    local projectile_clash_box_RP = collision_box_to_real_world_box(projectile_RP,projectile_RP["projectile_clash_box"])
-    if collision_box_aabb_detection(projectile_clash_box_LP,projectile_clash_box_RP) then
+    local projectile_clash_box_table_LP = collision_box_to_real_world_box(projectile_LP,projectile_LP["projectile_clash_box_table"])
+    local projectile_clash_box_table_RP = collision_box_to_real_world_box(projectile_RP,projectile_RP["projectile_clash_box_table"])
+    if collision_box_aabb_detection(projectile_clash_box_table_LP,projectile_clash_box_table_RP) then
         if projectile_LP["projectile_clash_type"] == -1 or projectile_RP["projectile_clash_type"] == -1 then
             projectile_LP["projectile_clashed_function"]()
             projectile_RP["projectile_clashed_function"]()

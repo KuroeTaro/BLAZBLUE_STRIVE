@@ -1,7 +1,7 @@
 -- global_projectile_prop_table
 -- 1-8 type life x y velocity projectile_clash_type f
 -- state state_cache physics_lock sprite_sheet
--- projectile_clashed_function	projectile_clash_box
+-- projectile_clashed_function	projectile_clash_box_table
 -- enemy_interact_function		hitbox hit_type	hit_guard_type hit_hurt_blockstop_countdown
 --                              hit_damage hit_damage_correction_factor 
 --                              hit_heat_gain hit_wallbreak_damage hurt_heat_gain 
@@ -59,7 +59,7 @@
     -- state
     -- state_cache
     -- physics_lock
-    -- projectile_clash_box
+    -- projectile_clash_box_table
 function load_game_scene_anim_projectile_RC_main(obj_projectile)
     local res = {}
     res["prop_f"] = "f"
