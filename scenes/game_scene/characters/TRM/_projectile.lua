@@ -1309,14 +1309,17 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
     end
     -- draw
     obj_projectile["draw"] = function()
+        local shader = shader_game_scene_brightness_contrast
+        shader:send("contrast",obj_projectile["contrast"])
+        shader:send("brightness",obj_projectile["brightness"])
         local switch = {
             ["ease_in"] = function()
                 local image_sprite_sheet = active_side_projectile_sprite_sheet_table[obj_projectile["sprite_sheet"]]
                 image_sprite_sheet["sprite_batch"]:clear()
                 draw_3d_image_sprite_batch(obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8]))
-                love.graphics.setColor(1,1,1,obj_projectile[4])
+                love.graphics.setShader(shader)
                 love.graphics.draw(image_sprite_sheet["sprite_batch"])
-                love.graphics.setColor(1,1,1,1)
+                love.graphics.setShader()
                 image_sprite_sheet = active_side_projectile_sprite_sheet_table[obj_projectile["projectile_buff_sprite_sheet"]]
                 image_sprite_sheet["sprite_batch"]:clear()
                 draw_3d_image_sprite_batch(obj_camera,obj_projectile["projectile_buff"],image_sprite_sheet,tostring(obj_projectile["projectile_buff"][8]))
@@ -1328,9 +1331,9 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
                 local image_sprite_sheet = active_side_projectile_sprite_sheet_table[obj_projectile["sprite_sheet"]]
                 image_sprite_sheet["sprite_batch"]:clear()
                 draw_3d_image_sprite_batch(obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8]))
-                love.graphics.setColor(1,1,1,obj_projectile[4])
+                love.graphics.setShader(shader)
                 love.graphics.draw(image_sprite_sheet["sprite_batch"])
-                love.graphics.setColor(1,1,1,1)
+                love.graphics.setShader()
                 image_sprite_sheet = active_side_projectile_sprite_sheet_table[obj_projectile["projectile_buff_sprite_sheet"]]
                 image_sprite_sheet["sprite_batch"]:clear()
                 draw_3d_image_sprite_batch(obj_camera,obj_projectile["projectile_buff"],image_sprite_sheet,tostring(obj_projectile["projectile_buff"][8]))
@@ -1342,25 +1345,25 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
                 local image_sprite_sheet = active_side_projectile_sprite_sheet_table[obj_projectile["sprite_sheet"]]
                 image_sprite_sheet["sprite_batch"]:clear()
                 draw_3d_image_sprite_batch(obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8]))
-                love.graphics.setColor(1,1,1,obj_projectile[4])
+                love.graphics.setShader(shader)
                 love.graphics.draw(image_sprite_sheet["sprite_batch"])
-                love.graphics.setColor(1,1,1,1)
+                love.graphics.setShader()
             end,
             ["hurt"] = function()
                 local image_sprite_sheet = active_side_projectile_sprite_sheet_table[obj_projectile["sprite_sheet"]]
                 image_sprite_sheet["sprite_batch"]:clear()
                 draw_3d_image_sprite_batch(obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8]))
-                love.graphics.setColor(1,1,1,obj_projectile[4])
+                love.graphics.setShader(shader)
                 love.graphics.draw(image_sprite_sheet["sprite_batch"])
-                love.graphics.setColor(1,1,1,1)
+                love.graphics.setShader()
             end,
             ["hurtstop"] = function()
                 local image_sprite_sheet = active_side_projectile_sprite_sheet_table[obj_projectile["sprite_sheet"]]
                 image_sprite_sheet["sprite_batch"]:clear()
                 draw_3d_image_sprite_batch(obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8]))
-                love.graphics.setColor(1,1,1,obj_projectile[4])
+                love.graphics.setShader(shader)
                 love.graphics.draw(image_sprite_sheet["sprite_batch"])
-                love.graphics.setColor(1,1,1,1)
+                love.graphics.setShader()
             end
         }
         local this_function = switch[obj_projectile["state"]]
@@ -1388,6 +1391,9 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
     obj_projectile["hurtstop_wiggle_y"] = 0
     obj_projectile["hurtstop_wiggle_current_x"] = 0
     obj_projectile["hurtstop_wiggle_current_y"] = 0
+    -- compatibility_draw
+    obj_projectile["contrast"] = active_op_side_obj_char["contrast"]
+    obj_projectile["brightness"] = active_op_side_obj_char["brightness"]
     -- unique
     obj_projectile["projectile_exist_countdown"] = 240
     obj_projectile["projectile_anchor_pos"] = {165,515}
