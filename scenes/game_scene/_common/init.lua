@@ -30,6 +30,12 @@ function load_game_scene_common_audio()
     audio_SFX_game_scene_common["annoucer_ease_in"]["audio"] = love.audio.newSource("asset/game_scene/common/audio/annoucer_ease_in.ogg","static")
     update_SFX_VOLUME(audio_SFX_game_scene_common["annoucer_ease_in"])
     -- throw_tech_SFX
+    audio_SFX_game_scene_common["common_risk_force_counter"] = {1}
+    audio_SFX_game_scene_common["common_risk_force_counter"]["LCT"] = {0}
+    audio_SFX_game_scene_common["common_risk_force_counter"]["LCD"] = {0}
+    audio_SFX_game_scene_common["common_risk_force_counter"]["audio"] = love.audio.newSource("asset/game_scene/common/audio/common_risk_force_counter.ogg","static")
+    update_SFX_VOLUME(audio_SFX_game_scene_common["common_risk_force_counter"])
+    -- throw_tech_SFX
     audio_SFX_game_scene_common["common_throw_tech"] = {1}
     audio_SFX_game_scene_common["common_throw_tech"]["LCT"] = {0}
     audio_SFX_game_scene_common["common_throw_tech"]["LCD"] = {0}

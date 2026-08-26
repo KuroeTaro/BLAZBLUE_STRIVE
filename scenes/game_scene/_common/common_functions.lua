@@ -338,7 +338,11 @@ function common_game_scene_strike_hit_function(hit_side_obj_char,hurt_side_obj_c
     local block_bool = common_game_scene_block_test(hit_side_obj_char,hurt_side_obj_char)
     -- risk_gauge
     if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
+        -- hit_side
         hit_side_obj_char["strike_counter_ver_function"] = common_game_scene_counter_ver3
+        hit_side_obj_char["hit_counter_SFX"] = audio_SFX_game_scene_common["common_risk_force_counter"]
+        -- hurt_side
+        hurt_side_obj_char["hurt_state"] = "counter"
     end
     -- counter
     if hurt_side_obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
@@ -1026,30 +1030,47 @@ function common_game_scene_hurt_animation_oscillator_obj_8(obj_char,option_0,opt
 end
 -- counter_ver
 function common_game_scene_counter_ver0(hit_side_obj_char,hurt_side_obj_char)
+    -- hit_side
+    -- insert_VFX
     insert_VFX_HUD_game_scene_counter_ver0_2(hit_side_obj_char)
 end
 function common_game_scene_counter_ver1(hit_side_obj_char,hurt_side_obj_char)
+    -- hit_side
+    -- insert_VFX
     insert_VFX_HUD_game_scene_counter_ver0_2(hit_side_obj_char)
+    -- hurt_side
+    -- game_speed
     hurt_side_obj_char["hit_hurt_block_slowdown_countdown"] = 11
 end
 function common_game_scene_counter_ver2(hit_side_obj_char,hurt_side_obj_char)
-    insert_VFX_HUD_game_scene_counter_ver0_2(hit_side_obj_char)
+    -- hit_side
+    -- game_speed
     hit_side_obj_char["hit_hurt_blockstop_countdown"] = 21
     hit_side_obj_char["hit_hurt_block_slowdown_countdown"] = 0
+    -- insert_VFX
+    insert_VFX_HUD_game_scene_counter_ver0_2(hit_side_obj_char)
+    --hurt_side
+    -- game_speed
     hurt_side_obj_char["hit_hurt_blockstop_countdown"] = 21
     hurt_side_obj_char["hit_hurt_block_slowdown_countdown"] = 25
 end
 function common_game_scene_counter_ver3(hit_side_obj_char,hurt_side_obj_char)
     local obj_camera = obj_stage_game_scene_camera
-    insert_VFX_HUD_game_scene_counter_ver3(hit_side_obj_char)
+    -- hit_side
+    -- game_speed
+    hit_side_obj_char["hit_hurt_blockstop_countdown"] = 31
+    hit_side_obj_char["hit_hurt_block_slowdown_countdown"] = 0
+    -- camera
     common_game_scene_counter_ver3_load_camera_enclose_anim(hit_side_obj_char)
     hit_side_obj_char["enclose_position_offset"] = {
         (hit_side_obj_char["x"]+hurt_side_obj_char["x"])/2 - obj_camera["3d_pos_x"],
         80,
         100
     }
-    hit_side_obj_char["hit_hurt_blockstop_countdown"] = 31
-    hit_side_obj_char["hit_hurt_block_slowdown_countdown"] = 0
+    -- insert_VFX
+    insert_VFX_HUD_game_scene_counter_ver3(hit_side_obj_char)
+    -- hurt_side
+    -- game_speed
     hurt_side_obj_char["hit_hurt_blockstop_countdown"] = 31
     hurt_side_obj_char["hit_hurt_block_slowdown_countdown"] = 35
 end
