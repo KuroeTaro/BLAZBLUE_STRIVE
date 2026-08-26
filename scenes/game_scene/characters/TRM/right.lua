@@ -173,12 +173,12 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["ability_gauge_update_function"] = function() end
     obj_char_game_scene_char_RP["risk_gauge_update_function"] = function() end
     obj_char_game_scene_char_RP["wallstick_gauge_update_function"] = function() end
-    -- 5H_shot_sys
+    -- shot_sys
     obj_char_game_scene_char_RP["shot_sys_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_curse"] = false
     obj_char_game_scene_char_RP["shot_sys_curse_countdown"] = 0
-    obj_char_game_scene_char_RP["shot_sys_scapegoat_buff"] = false
+    obj_char_game_scene_char_RP["shot_sys_scapegoat_exist"] = false
     obj_char_game_scene_char_RP["shot_sys_fire_cancel"] = false
     obj_char_game_scene_char_RP["shot_sys_idle_cancel"] = false
     obj_char_game_scene_char_RP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值 上一帧是否高于瞄准命中最低数值
@@ -242,12 +242,12 @@ function load_game_scene_obj_char_RP()
         ["steady_aim_ease_out"] = true,
         ["off"] = true
     }
-    -- 5H_shot_sys_oroboros
+    -- shot_sys_oroboros
     obj_char_game_scene_char_RP["shot_sys_oroboros_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_oroboros_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_aim_r"] = 0.42
     obj_char_game_scene_char_RP["shot_sys_oroboros_animation_table"] = {}
-    -- 5H_shot_sys_oroboros_sub_obj
+    -- shot_sys_oroboros_sub_obj
     obj_char_game_scene_char_RP["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
     obj_char_game_scene_char_RP["shot_sys_oroboros_front"]["f_8"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_front"]["f_4"] = 0
@@ -259,7 +259,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["f_8"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["f_4"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["sprite_sheet"] = "5H_oroboros_loop_back"
-    -- 5H_shot_sys_oroboros_sub_obj_update_value
+    -- shot_sys_oroboros_sub_obj_update_value
     obj_char_game_scene_char_RP["shot_sys_oroboros_offset_amount"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_anchor_pos"] = {-110,-455}
     obj_char_game_scene_char_RP["shot_sys_oroboros_ease_current"] = {
@@ -274,7 +274,7 @@ function load_game_scene_obj_char_RP()
         obj_char_game_scene_char_RP[5],
         obj_char_game_scene_char_RP[6]
     }
-    -- 5H_shot_sys_reticle
+    -- shot_sys_reticle
     obj_char_game_scene_char_RP["shot_sys_reticle_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_reticle"] = {0,0,0,0,1,1,0,0}
     obj_char_game_scene_char_RP["shot_sys_reticle_f"] = 0
@@ -744,6 +744,7 @@ function load_game_scene_wallbreak_mid_init_RP()
     obj_char_game_scene_char_RP["VFX_hit_back_table"] = {}
     obj_char_game_scene_char_RP["shot_sys_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_f"] = 0
+    obj_char_game_scene_char_RP["shot_sys_scapegoat_exist"] = false
     obj_char_game_scene_char_RP["shot_sys_oroboros_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_oroboros_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_aim_r"] = 0.42
@@ -855,7 +856,7 @@ function load_game_scene_wallbreak_end_init_RP()
     obj_char_game_scene_char_RP["VFX_common_back_table"] = {}
     obj_char_game_scene_char_RP["VFX_hit_front_table"] = {}
     obj_char_game_scene_char_RP["VFX_hit_back_table"] = {}
-    -- 5H_shot_sys
+    -- shot_sys
     obj_char_game_scene_char_RP["shot_sys_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_fire_cancel"] = false
@@ -863,12 +864,12 @@ function load_game_scene_wallbreak_end_init_RP()
     obj_char_game_scene_char_RP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值 上一帧是否高于瞄准命中最低数值
     obj_char_game_scene_char_RP["shot_sys_animation"] = nil
     obj_char_game_scene_char_RP["shot_sys_camera_shake_table"] = {}
-    -- 5H_shot_sys_oroboros
+    -- shot_sys_oroboros
     obj_char_game_scene_char_RP["shot_sys_oroboros_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_oroboros_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_aim_r"] = 0.42
     obj_char_game_scene_char_RP["shot_sys_oroboros_animation_table"] = {}
-    -- 5H_shot_sys_oroboros_sub_obj
+    -- shot_sys_oroboros_sub_obj
     obj_char_game_scene_char_RP["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
     obj_char_game_scene_char_RP["shot_sys_oroboros_front"]["f_8"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_front"]["f_4"] = 0
@@ -880,7 +881,7 @@ function load_game_scene_wallbreak_end_init_RP()
     obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["f_8"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["f_4"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["sprite_sheet"] = "5H_oroboros_loop_back"
-    -- 5H_shot_sys_oroboros_sub_obj_update_value
+    -- shot_sys_oroboros_sub_obj_update_value
     obj_char_game_scene_char_RP["shot_sys_oroboros_offset_amount"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_anchor_pos"] = {-110,-455}
     obj_char_game_scene_char_RP["shot_sys_oroboros_ease_current"] = {
@@ -895,7 +896,7 @@ function load_game_scene_wallbreak_end_init_RP()
         obj_char_game_scene_char_RP[5],
         obj_char_game_scene_char_RP[6]
     }
-    -- 5H_shot_sys_reticle
+    -- shot_sys_reticle
     obj_char_game_scene_char_RP["shot_sys_reticle_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_reticle"] = {0,0,0,0,1,1,0,0}
     obj_char_game_scene_char_RP["shot_sys_reticle_f"] = 0
@@ -2282,7 +2283,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 common_game_scene_get_input_sys_cache_negative_edge_init(self_side_obj_char["player_side"])(self_side_obj_char)
                 self_side_obj_char["input_sys_cache_negative_edge"]["H"] = true
             end
-            if self_side_obj_char["shot_sys_fire_cancel"] and test_input_sys_release(self_side_input["H"]) 
+            if self_side_obj_char["shot_sys_fire_cancel"] and test_input_sys_release(self_side_input["H"])
             and self_side_obj_char["state"] ~= "hitstop" and self_side_obj_char["ability_gauge"][1] > 0 then
                 self_side_obj_char["input_sys_cache_negative_edge"]["H"] = false
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(self_side_obj_char,opponent_side_obj_char)
@@ -2324,7 +2325,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
             if test_input_sys_release(self_side_input["H"]) and self_side_obj_char["state"] == "hitstop" then
                 self_side_obj_char["input_sys_cache_negative_edge"]["H"] = true
             end
-            if self_side_obj_char["shot_sys_fire_cancel"] and test_input_sys_release(self_side_input["H"]) 
+            if self_side_obj_char["shot_sys_fire_cancel"] and test_input_sys_release(self_side_input["H"])
             and self_side_obj_char["state"] ~= "hitstop" and self_side_obj_char["ability_gauge"][1] > 0 then
                 self_side_obj_char["input_sys_cache_negative_edge"]["H"] = false
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(self_side_obj_char,opponent_side_obj_char)
@@ -2342,7 +2343,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 self_side_obj_char["shot_sys_state"] = "at_the_ready_ease_out"
                 return
             end
-            if self_side_obj_char["shot_sys_fire_cancel"] and test_input_sys_release(self_side_input["H"]) 
+            if self_side_obj_char["shot_sys_fire_cancel"] and test_input_sys_release(self_side_input["H"])
             and self_side_obj_char["state"] ~= "hitstop" and self_side_obj_char["ability_gauge"][1] > 0 then
                 self_side_obj_char["input_sys_cache_negative_edge"]["H"] = false
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(self_side_obj_char,opponent_side_obj_char)
@@ -2766,8 +2767,8 @@ function state_gate_game_scene_char_RP_common_ground_to_dash_move(self_side_inpu
         return true
     end
     -- _6dash_dash
-    if (self_side_obj_char["direction_input"] == 5 or self_side_obj_char["direction_input"] == 6) 
-    and test_input_sys_press(self_side_input["dash"]) 
+    if (self_side_obj_char["direction_input"] == 5 or self_side_obj_char["direction_input"] == 6)
+    and test_input_sys_press(self_side_input["dash"])
     and self_side_obj_char["state"] ~= "6dash_dash" then
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
@@ -2789,8 +2790,8 @@ function state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(s
         return true
     end
     -- _6dash_dash
-    if (self_side_obj_char["direction_input"] == 5 or self_side_obj_char["direction_input"] == 6) 
-    and test_input_sys_press_or_hold(self_side_input["dash"]) 
+    if (self_side_obj_char["direction_input"] == 5 or self_side_obj_char["direction_input"] == 6)
+    and test_input_sys_press_or_hold(self_side_input["dash"])
     and self_side_obj_char["state"] ~= "6dash_dash" then
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
@@ -2812,8 +2813,8 @@ function state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_6dash
         return true
     end
     -- _6dash_dash
-    if (self_side_obj_char["direction_input"] == 5 or self_side_obj_char["direction_input"] == 6) 
-    and test_input_sys_press_or_hold(self_side_input["dash"]) 
+    if (self_side_obj_char["direction_input"] == 5 or self_side_obj_char["direction_input"] == 6)
+    and test_input_sys_press_or_hold(self_side_input["dash"])
     and self_side_obj_char["state"] ~= "6dash_dash" then
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
@@ -2828,8 +2829,8 @@ function state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_4dash
         self_side_obj_char[5] = -self_side_obj_char[5]
     end
     -- _6dash_dash
-    if (self_side_obj_char["direction_input"] == 5 or self_side_obj_char["direction_input"] == 6) 
-    and test_input_sys_press_or_hold(self_side_input["dash"]) 
+    if (self_side_obj_char["direction_input"] == 5 or self_side_obj_char["direction_input"] == 6)
+    and test_input_sys_press_or_hold(self_side_input["dash"])
     and self_side_obj_char["state"] ~= "6dash_dash" then
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
@@ -2955,7 +2956,7 @@ function state_gate_game_scene_char_RP_common_ground_to_attack_move(self_side_in
         return true
     end
     -- _4_6Launcher
-    if (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 6) 
+    if (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 6)
     and test_input_sys_press(self_side_input["Launcher"]) then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
@@ -3098,7 +3099,7 @@ function state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(sel
         return true
     end
     -- _4_6Launcher
-    if (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 6) 
+    if (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 6)
     and test_input_sys_press_or_hold(self_side_input["Launcher"]) then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
@@ -3164,7 +3165,9 @@ function state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_i
     -- 6SP_K
     if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3)
     and test_input_sys_press_or_hold(self_side_input["SP"])
-    and test_input_sys_press(self_side_input["K"]) then
+    and test_input_sys_press(self_side_input["K"])
+    and (not self_side_obj_char["shot_sys_scapegoat_exist"])
+    then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
@@ -3220,7 +3223,7 @@ function state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(se
     end
     -- 6SP_P
     if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3)
-    and test_input_sys_press_or_hold(self_side_input["SP"]) 
+    and test_input_sys_press_or_hold(self_side_input["SP"])
     and test_input_sys_press_or_hold(self_side_input["P"]) then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
@@ -3244,8 +3247,10 @@ function state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(se
     end
     -- 6SP_K
     if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3)
-    and test_input_sys_press_or_hold(self_side_input["SP"]) 
-    and test_input_sys_press_or_hold(self_side_input["K"]) then
+    and test_input_sys_press_or_hold(self_side_input["SP"])
+    and test_input_sys_press_or_hold(self_side_input["K"])
+    and (not self_side_obj_char["shot_sys_scapegoat_exist"])
+    then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
@@ -3266,7 +3271,7 @@ function state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(se
     if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3)
     and self_side_obj_char["6SP_S_shot_sys_pass_state"][self_side_obj_char["shot_sys_state"]]
     and self_side_obj_char["ability_gauge"][1] > 0
-    and test_input_sys_press_or_hold(self_side_input["SP"]) 
+    and test_input_sys_press_or_hold(self_side_input["SP"])
     and test_input_sys_press_or_hold(self_side_input["S"]) then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
@@ -3650,7 +3655,7 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_yellow(self_side_input
     if self_side_obj_char["heat_gauge"][1] < 100.0 then
         return
     end
-    if test_input_sys_press(self_side_input["RC"]) 
+    if test_input_sys_press(self_side_input["RC"])
     -- and self_side_obj_char["height"] ~= "air" 
     then
         self_side_obj_char["velocity"] = {0,0}
@@ -3804,7 +3809,7 @@ function state_gate_game_scene_char_RP_from_hurt(self_side_input,opponent_side_i
     end
     -- until land
     if self_side_obj_char["height"] == "air" then
-        if (self_side_obj_char["collision_move_available"][1] == 0 or self_side_obj_char["collision_move_available"][2] == 0) 
+        if (self_side_obj_char["collision_move_available"][1] == 0 or self_side_obj_char["collision_move_available"][2] == 0)
         and self_side_obj_char["self_wallbounce_hurt_animation"] ~= nil then
             self_side_obj_char["character_animation"] = self_side_obj_char["self_wallbounce_hurt_animation"]
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
@@ -6178,13 +6183,6 @@ function state_gate_game_scene_char_RP_from_5Launcher(self_side_input,opponent_s
     -- _PRC
     if state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
-    end
-    -- hit_cancel
-    if self_side_obj_char["hit_cancel"] then
-        -- special
-        if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
-            return true
-        end
     end
     -- idle_cancel
     if self_side_obj_char["idle_cancel"] then

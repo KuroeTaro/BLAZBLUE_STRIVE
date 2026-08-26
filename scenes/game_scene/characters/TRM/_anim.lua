@@ -9280,6 +9280,8 @@ function load_game_scene_anim_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_cha
     res[10] = function()
         -- state_number
         hit_side_obj_char["velocity"][1] = (-37.0)*hit_side_obj_char[5]
+        -- shot_sys
+        hit_side_obj_char["shot_sys_scapegoat_exist"] = true
         -- insert_projectile
         insert_projectile_game_scene_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_char)
         -- play_SFX

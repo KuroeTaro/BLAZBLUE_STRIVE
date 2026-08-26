@@ -1161,7 +1161,7 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
         obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_K_projectile_hurt(active_op_side_obj_char,passive_op_side_obj_char,obj_projectile)
         init_character_anim_with(obj_projectile,obj_projectile["projectile_animation"])
         -- shot_sys_scapegoat
-        active_op_side_obj_char["shot_sys_scapegoat_buff"] = false
+        active_op_side_obj_char["shot_sys_scapegoat_exist"] = false
     end
     -- enemy_interact_function
     obj_projectile["projectile_active"] = true
@@ -1215,7 +1215,7 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
             -- projectile_anchor_pos
             obj_projectile["sprite_sheet"] = "6SP_K_scapegoat_hurt_projectile"
             -- shot_sys_scapegoat
-            active_op_side_obj_char["shot_sys_scapegoat_buff"] = false
+            active_op_side_obj_char["shot_sys_scapegoat_exist"] = false
             -- play_SFX
             play_obj_audio(obj_projectile["ease_out_SFX"])
             stop_obj_audio(obj_projectile["ease_in_SFX"])
@@ -1269,7 +1269,7 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
                     -- collision
                     obj_projectile["hurtbox_table"] = {}
                     -- shot_sys_scapegoat
-                    active_op_side_obj_char["shot_sys_scapegoat_buff"] = false
+                    active_op_side_obj_char["shot_sys_scapegoat_exist"] = false
                     -- draw_correction
                     obj_projectile["projectile_anchor_pos"] = {165,515}
                     -- play_SFX
