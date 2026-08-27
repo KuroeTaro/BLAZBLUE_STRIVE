@@ -834,7 +834,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char_a,obj_char_b)
         collision_side_cache = 1
     end
     obj_wallstick[1] = math.abs(obj_wallstick[1])*collision_side
-    obj_wallstick[5] = collision_side
+    obj_wallstick[5] = -collision_side
     -- wallstick_visual_effect
     if collision_side ~= 0 and collision_side ~= collision_side_cache then
         -- wallstick_stage_obj

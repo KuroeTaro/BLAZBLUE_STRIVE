@@ -37,7 +37,7 @@ function load_game_scene_obj_stage()
     obj_stage_game_scene_camera["LCD"]["enclose_percentage"] = 0.0
     -- wallstick
     obj_stage_game_scene_wallstick = {}
-    obj_stage_game_scene_wallstick = {1800,-450,0,0,0,1,0,0}
+    obj_stage_game_scene_wallstick = {2400,-450,0,0,0,1,0,0}
     obj_stage_game_scene_wallstick["FCT"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallstick["LCT"] = {0,0,0,0,0,0,0,0}
     obj_stage_game_scene_wallstick["LCD"] = {0,0,0,0,0,0,0,0}

@@ -689,9 +689,9 @@ function load_game_scene_box_anchor_data_RP()
     -- wallstick
     obj_VFX_spawn_anchor_data_game_scene_char_RP["wallstick_spawn_anchor_pos"] = {
         ["stand"] = 865,
-        ["crouch"] = 765,
+        ["crouch"] = 865,
         ["air"] = 715,
-        ["OTG"] = 775
+        ["OTG"] = 865
     }
 end
 function load_game_scene_shader_char_RP()
