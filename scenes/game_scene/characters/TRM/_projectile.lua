@@ -141,7 +141,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
             -- projectile_active
             obj_projectile["projectile_active"] = false
             -- block_test
-            local hurt_side_block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
+            local hurt_side_block_bool = character_function_game_scene_TRM_5H_block_test(obj_projectile,hurt_side_obj_char)
             -- risk_gauge
             if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not hurt_side_block_bool) then
                 hurt_side_obj_char["hurt_state"] = "counter"

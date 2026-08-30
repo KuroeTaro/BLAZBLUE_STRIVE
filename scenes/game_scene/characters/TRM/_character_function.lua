@@ -99,6 +99,57 @@ function character_function_game_scene_TRM_hitstop_force_delay_gatling_cancel_in
     end
 end
 -- shot_sys_function
+-- 5H_uncommon_projectile_block_function
+function character_function_game_scene_TRM_5H_block_test(hit_obj,hurt_side_obj_char)
+    -- block_test
+    local block_bool = false
+    local block_direction = hurt_side_obj_char["direction_input"]
+    local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
+    local hurt_side_FD_block = test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
+    -- low mid high all 
+    -- air non_air
+    -- FD
+        -- air low ok
+        -- air mid ok
+        -- air high ok
+        -- air all ok
+        -- non_air low block_direction == 1 ok
+        -- non_air mid block_direction == 4||7 ok
+        -- non_air high ok
+        -- non_air all ok
+    -- not_FD
+        -- air low ok
+        -- air mid ok
+        -- air all ok
+        -- non_air low block_direction == 1 ok
+        -- non_air mid block_direction == 4||7 ok
+        -- non_air high ok
+        -- non_air all ok
+    if hurt_side_obj_char["hurt_state"] == "idle" and common_game_scene_check_block_direction(hurt_side_obj_char) then
+        if hurt_side_FD_block then
+            if hurt_side_obj_char["height"] == "air" then
+                block_bool = true
+            elseif hit_obj["hit_guard_type"] == "high" or hit_obj["hit_guard_type"] == "all" then
+                block_bool = true
+            end
+        else
+            if hurt_side_obj_char["height"] == "air" and hit_obj["hit_guard_type"] ~= "high" then
+                block_bool = true
+            elseif hit_obj["hit_guard_type"] == "all" then
+                block_bool = true
+            end
+        end
+        if block_direction == 1 and hit_obj["hit_guard_type"] == "low" then
+            block_bool = true
+        elseif (block_direction == 4 or block_direction == 7) and hit_obj["hit_guard_type"] == "mid" then
+            block_bool = true
+        elseif hurt_side_obj_char["height"] ~= "air" and hit_obj["hit_guard_type"] == "high" then
+            block_bool = true
+        end
+    end
+    -- no_cross_up_protection_for_this_you_little_fuck
+    return block_bool
+end
 -- ability_use_calculation
 function character_function_game_scene_TRM_shot_sys_ability_gauge_use(obj_char)
     local current_ability_gauge = obj_char["ability_gauge"][1]

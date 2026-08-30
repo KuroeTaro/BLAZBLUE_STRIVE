@@ -301,20 +301,18 @@ function common_game_scene_block_test(hit_obj,hurt_side_obj_char)
             block_bool = true
         end
     end
-    -- You bunch of fools speak like not been protected by this while happy chaos doing cross_up.
-    -- Even complaining that this is what causing you to get stuck in an endless 528 loop?
-    -- Well then. I shall grant your idoit wish.
-    -- if hurt_side_obj_char["hurt_state"] == "idle" and (hurt_side_obj_char["state"] == "block" or hurt_side_obj_char["state"] == "blockstop")then
-    --     if hurt_side_obj_char["height"] == "air" then
-    --         block_bool = true
-    --     elseif common_game_scene_check_crouch_direction(hurt_side_obj_char) and hit_obj["hit_guard_type"] == "low" then
-    --         block_bool = true
-    --     elseif ( not common_game_scene_check_crouch_direction(hurt_side_obj_char)) and hit_obj["hit_guard_type"] == "mid" then
-    --         block_bool = true
-    --     elseif hit_obj["hit_guard_type"] == "all" then
-    --         block_bool = true
-    --     end
-    -- end
+    -- cross_up_protection_for_ass_long_active_projectile
+    if hurt_side_obj_char["hurt_state"] == "idle" and (hurt_side_obj_char["state"] == "block" or hurt_side_obj_char["state"] == "blockstop")then
+        if hurt_side_obj_char["height"] == "air" then
+            block_bool = true
+        elseif common_game_scene_check_crouch_direction(hurt_side_obj_char) and hit_obj["hit_guard_type"] == "low" then
+            block_bool = true
+        elseif ( not common_game_scene_check_crouch_direction(hurt_side_obj_char)) and hit_obj["hit_guard_type"] == "mid" then
+            block_bool = true
+        elseif hit_obj["hit_guard_type"] == "all" then
+            block_bool = true
+        end
+    end
     return block_bool
 end
 -- heat_gain_algo
