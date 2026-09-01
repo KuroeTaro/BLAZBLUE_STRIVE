@@ -8850,12 +8850,10 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
         obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
         -- draw_correction
         obj_char[8] = 6
-        -- uncommon_update
-        test_full_ability_gauge_anim_jump()
-    end
-    res[32] = function()
         -- play_SFX
         play_obj_audio(move_SFX_table["4SP_P_clip_0"])
+        -- uncommon_update
+        test_full_ability_gauge_anim_jump()
     end
     res[35] = function()
         -- draw_correction
@@ -8894,14 +8892,14 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char)
         obj_char[8] = 11
         -- uncommon_update
         test_full_ability_gauge_anim_jump()
-        -- play_SFX
-        play_obj_audio(move_SFX_table["4SP_P_clip_2"])
     end
     res[57] = function()
         -- sub_obj_table
         obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
         -- draw_correction
         obj_char[8] = 12
+        -- play_SFX
+        play_obj_audio(move_SFX_table["4SP_P_clip_2"])
     end
     res[61] = function()
         -- draw_correction
