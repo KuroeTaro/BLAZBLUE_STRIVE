@@ -1156,7 +1156,7 @@ function order_load_game_scene_char_LP_frames(load_order)
                 )
             end 
         end,
-        -- attack P 拳
+        -- attack P
         [16] = function()
             local load_name_table = {
                 "2P",
@@ -1171,7 +1171,7 @@ function order_load_game_scene_char_LP_frames(load_order)
                 )
             end 
         end,
-        -- attack K 脚
+        -- attack K
         [17] = function()
             local load_name_table = {
                 "2K",
@@ -1186,7 +1186,7 @@ function order_load_game_scene_char_LP_frames(load_order)
                 )
             end 
         end,
-        -- attack S 斩
+        -- attack S
         [18] = function()
             local load_name_table = {
                 "2S",
@@ -1293,6 +1293,7 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "6SP_P",
                 "4SP_K",
                 "6SP_K",
+                "4SP_S",
                 "6SP_S"
             }
             for i,v in ipairs(load_name_table) do
@@ -1305,6 +1306,8 @@ function order_load_game_scene_char_LP_frames(load_order)
         end,
         [25] = function()
             local load_name_table = {
+                "4SP_S_4P",
+                "4SP_S_4S"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_LP[v] = 
@@ -1636,7 +1639,8 @@ function order_load_game_scene_char_LP_audio(load_order)
                 "6SP_P_curse_ball_ground_bounce","6SP_P_curse_ball_hit","6SP_P_curse_end","6SP_P_whiff",
                 "4SP_K_whiff",
                 "6SP_K_scapegoat_ease_in","6SP_K_scapegoat_ease_out",
-                "6SP_S_block","6SP_S_counter","6SP_S_hit","6SP_S_whiff"
+                "4SP_S_ease_out","4SP_S_locking","4SP_S_startup",
+                "6SP_S_block","6SP_S_counter","6SP_S_hit","6SP_S_whiff",
             }
             for i,v in ipairs(load_name_table) do
                 audio_SFX_game_scene_move_SFX_LP[v] = {1,LCT = {0},LCD = {0}}
