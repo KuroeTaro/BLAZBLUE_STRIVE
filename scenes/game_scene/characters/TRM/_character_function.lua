@@ -371,7 +371,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(se
     init_character_anim_without(self_side_obj_char["shot_sys_oroboros_back"],self_side_obj_char["shot_sys_oroboros_animation_table"][4])
     init_character_anim_without(self_side_obj_char["shot_sys_oroboros_back"],self_side_obj_char["shot_sys_oroboros_animation_table"][5])
     character_function_game_scene_TRM_shot_sys_oroboros_pos_init(self_side_obj_char)
-    self_side_obj_char["shot_sys_oroboros_state"] = "ease_in"
+    self_side_obj_char["shot_sys_oroboros_state"] = "at_the_ready_ease_in"
     -- reticle
     self_side_obj_char["shot_sys_reticle_animation_table"][1] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(self_side_obj_char)
     init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
@@ -407,7 +407,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(o
     init_character_anim_without(obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3])
     init_character_anim_without(obj_char["shot_sys_oroboros_back"],obj_char["shot_sys_oroboros_animation_table"][4])
     character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char)
-    obj_char["shot_sys_oroboros_state"] = "ease_out"
+    obj_char["shot_sys_oroboros_state"] = "at_the_ready_ease_out"
     -- reticle
     obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_out(obj_char)
     init_character_anim_without(obj_char,obj_char["shot_sys_reticle_animation_table"][2])
@@ -467,7 +467,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(self_
     self_side_obj_char["shot_sys_oroboros_animation_table"][6] = load_game_scene_anim_char_TRM_5H_oroboros_shot(self_side_obj_char)
     init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_oroboros_animation_table"][6])
     character_function_game_scene_TRM_shot_sys_oroboros_pos_update(self_side_obj_char)
-    self_side_obj_char["shot_sys_oroboros_state"] = "shot"
+    self_side_obj_char["shot_sys_oroboros_state"] = "at_the_ready_shot"
     -- reticle
     self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_shot(self_side_obj_char)
     init_character_anim_with(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
