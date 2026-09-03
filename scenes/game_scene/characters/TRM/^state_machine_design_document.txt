@@ -434,7 +434,7 @@ _4SP_S_6dash
     _6SP_K
     _6SP_S
     _5_stand_idle
-_4SP_S_S
+_4SP_S_4S
     _burst_RC_purple
     _5_stand_idle
 _4SP_S_H||_4SP_S_SP_H
