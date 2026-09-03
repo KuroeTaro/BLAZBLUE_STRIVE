@@ -858,7 +858,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     local obj_VFX = {0,0,0,0.75,0,0,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local hit_side = hit_side_obj_char["player_side"]
-    local hit_side_shot_sys_curse_force_off_state = hit_side_obj_char["shot_sys_curse_force_off_state"]
+    local hit_side_shot_sys_curse_ban_state = hit_side_obj_char["shot_sys_curse_ban_state"]
     local hit_side_image_sprite_sheet = common_game_scene_get_VFX_sprite_sheet_table(hit_side)["6SP_P_arua_move_VFX"]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     if hurt_side_obj_char["height"] == "air" then
@@ -914,7 +914,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
         local switch = {
             ["loop"] = function()
                 update_frame_animation()
-                if hit_side_shot_sys_curse_force_off_state[hit_side_obj_char["state"]] or (not hit_side_obj_char["shot_sys_curse"]) then
+                if hit_side_shot_sys_curse_ban_state[hit_side_obj_char["state"]] or (not hit_side_obj_char["shot_sys_curse"]) then
                     obj_VFX["state"] = "end"
                     init_point_linear_anim_with(obj_VFX,obj_VFX["opacity_ease_out_point_linear_animation"])
                     play_obj_audio(hit_side_move_SFX_table["6SP_P_curse_end"])
@@ -948,7 +948,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
                 if get_point_linear_anim_end_state(obj_VFX,obj_VFX["opacity_ease_in_point_linear_animation"]) then
                     obj_VFX["state"] = "loop"
                 end
-                if hit_side_shot_sys_curse_force_off_state[hit_side_obj_char["state"]] or (not hit_side_obj_char["shot_sys_curse"]) then
+                if hit_side_shot_sys_curse_ban_state[hit_side_obj_char["state"]] or (not hit_side_obj_char["shot_sys_curse"]) then
                     obj_VFX["state"] = "end"
                     init_point_linear_anim_with(obj_VFX,obj_VFX["opacity_ease_out_point_linear_animation"])
                 end

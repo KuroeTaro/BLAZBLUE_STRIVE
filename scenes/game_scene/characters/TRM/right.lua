@@ -184,7 +184,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值 上一帧是否高于瞄准命中最低数值
     obj_char_game_scene_char_RP["shot_sys_animation"] = nil
     obj_char_game_scene_char_RP["shot_sys_camera_shake_table"] = {}
-    obj_char_game_scene_char_RP["shot_sys_at_the_ready_force_off_state"] = {
+    obj_char_game_scene_char_RP["shot_sys_at_the_ready_ban_state"] = {
         ["before_ease_in"] = true,
         ["active_FD_block"] = true,
         ["block"] = true,
@@ -225,7 +225,7 @@ function load_game_scene_obj_char_RP()
         ["5UA"] = true,
         ["4SP_S_5UA"] = true
     }
-    obj_char_game_scene_char_RP["shot_sys_curse_force_off_state"] = {
+    obj_char_game_scene_char_RP["shot_sys_curse_ban_state"] = {
         ["before_ease_in"] = true,
         ["hurt"] = true,
         ["throw_hurt_success"] = true,
@@ -2257,7 +2257,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
     local test_input_shot_to_ease_out = 
     (test_input_sys_press(self_side_input["H"]) and common_game_scene_check_crouch_direction(self_side_obj_char)) or
     (test_input_sys_release(self_side_input["H"]) and common_game_scene_check_crouch_direction(self_side_obj_char)) or self_side_obj_char["ability_gauge"][1] <= 0 
-    local test_shot_sys_ban_state = self_side_obj_char["shot_sys_at_the_ready_force_off_state"][self_side_obj_char["state"]]
+    local shot_sys_at_the_ready_ban_state = self_side_obj_char["shot_sys_at_the_ready_ban_state"][self_side_obj_char["state"]]
     local run_at_current_frame = self_side_obj_char["run_at_current_frame"]
     -- state_machine
     local switch = {
@@ -2266,7 +2266,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 character_function_game_scene_TRM_shot_sys_off_update(self_side_obj_char)
             end
             -- ease_in
-            if test_input_sys_press(self_side_input["H"]) and (not test_shot_sys_ban_state) and self_side_obj_char["ability_gauge"][1] > 0 then
+            if test_input_sys_press(self_side_input["H"]) and (not shot_sys_at_the_ready_ban_state) and self_side_obj_char["ability_gauge"][1] > 0 then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(self_side_obj_char,opponent_side_obj_char)
                 self_side_obj_char["shot_sys_state"] = "at_the_ready_ease_in"
                 return
@@ -2276,7 +2276,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_update(self_side_obj_char,opponent_side_obj_char)
             end
-            if (self_side_obj_char["shot_sys_idle_cancel"] and test_input_idle_to_ease_out) or test_shot_sys_ban_state then
+            if (self_side_obj_char["shot_sys_idle_cancel"] and test_input_idle_to_ease_out) or shot_sys_at_the_ready_ban_state then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(self_side_obj_char)
                 self_side_obj_char["shot_sys_state"] = "at_the_ready_ease_out"
                 return
@@ -2305,7 +2305,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_update(self_side_obj_char)
             end
-            if test_input_sys_press(self_side_input["H"]) and (not test_shot_sys_ban_state) then
+            if test_input_sys_press(self_side_input["H"]) and (not shot_sys_at_the_ready_ban_state) then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(self_side_obj_char,opponent_side_obj_char)
                 self_side_obj_char["shot_sys_state"] = "at_the_ready_ease_in"
                 return
@@ -2320,7 +2320,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_update(self_side_obj_char,opponent_side_obj_char)
             end
-            if test_input_idle_to_ease_out or test_shot_sys_ban_state then
+            if test_input_idle_to_ease_out or shot_sys_at_the_ready_ban_state then
                 self_side_obj_char["input_sys_cache_negative_edge"]["H"] = false
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(self_side_obj_char)
                 self_side_obj_char["shot_sys_state"] = "at_the_ready_ease_out"
@@ -2342,7 +2342,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(self_side_obj_char)
             end
-            if (self_side_obj_char["shot_sys_idle_cancel"] and test_input_shot_to_ease_out) or test_shot_sys_ban_state then
+            if (self_side_obj_char["shot_sys_idle_cancel"] and test_input_shot_to_ease_out) or shot_sys_at_the_ready_ban_state then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(self_side_obj_char)
                 self_side_obj_char["shot_sys_state"] = "at_the_ready_ease_out"
                 return
@@ -2362,38 +2362,12 @@ function state_machine_char_game_scene_char_RP_shot_sys()
             end
         end,
         ["steady_aim_ease_in"] = function()
-            self_side_obj_char["hurt_state"] = "counter"
-            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(self_side_obj_char)
         end,
         ["steady_aim_ease_out"] = function()
-            self_side_obj_char["hurt_state"] = "counter"
-            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(self_side_obj_char)
         end,
         ["steady_aim"] = function()
-            self_side_obj_char["hurt_state"] = "counter"
-            character_function_game_scene_TRM_shot_sys_reticle_steady_aim_update(self_side_obj_char)
         end,
         ["steady_aim_shot"] = function()
-            character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(self_side_obj_char)
-            if (self_side_obj_char["shot_sys_idle_cancel"] and test_input_shot_to_ease_out) or test_shot_sys_ban_state then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(self_side_obj_char)
-                self_side_obj_char["shot_sys_state"] = "at_the_ready_ease_out"
-                return
-            end
-            if test_input_sys_release(self_side_input["H"]) and self_side_obj_char["state"] == "hitstop" then
-                self_side_obj_char["input_sys_cache_negative_edge"]["H"] = true
-            end
-            if self_side_obj_char["shot_sys_fire_cancel"] and test_input_sys_release(self_side_input["H"]) and self_side_obj_char["state"] ~= "hitstop" then
-                self_side_obj_char["input_sys_cache_negative_edge"]["H"] = false
-                character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(self_side_obj_char,opponent_side_obj_char)
-                self_side_obj_char["shot_sys_state"] = "at_the_ready_shot"
-                return
-            end
-            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"]) then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_init(self_side_obj_char)
-                self_side_obj_char["shot_sys_state"] = "at_the_ready"
-                return
-            end
         end
     }
     local this_function = switch[self_side_obj_char["shot_sys_state"]]
@@ -7383,7 +7357,7 @@ function update_game_scene_char_RP_shot_sys_curse_countdown()
         return
     end
     if self_side_obj_char["shot_sys_curse_countdown"] > 1 
-    and (not self_side_obj_char["shot_sys_curse_force_off_state"][self_side_obj_char["state"]]) then
+    and (not self_side_obj_char["shot_sys_curse_ban_state"][self_side_obj_char["state"]]) then
         self_side_obj_char["shot_sys_curse_countdown"] = self_side_obj_char["shot_sys_curse_countdown"] - 1
     else
         self_side_obj_char["shot_sys_curse"] = false

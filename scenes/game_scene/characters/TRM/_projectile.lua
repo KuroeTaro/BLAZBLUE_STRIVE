@@ -225,7 +225,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
 end
 function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
     local res = {}
-    local hit_side_test_shot_sys_ban_state = hit_side_obj_char["shot_sys_at_the_ready_force_off_state"][hit_side_obj_char["state"]]
+    local hit_side_test_shot_sys_at_the_ready_ban_state = hit_side_obj_char["shot_sys_at_the_ready_ban_state"][hit_side_obj_char["state"]]
     res["prop_f"] = "f"
     res["anim_length"] = 40
     for i = 0,19 do
@@ -238,7 +238,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main(hit_side_
         -- state
         obj_projectile[1] = hit_side_obj_char["shot_sys_reticle"][1]
         obj_projectile[2] = hit_side_obj_char["shot_sys_reticle"][2]
-        if hit_side_test_shot_sys_ban_state then
+        if hit_side_test_shot_sys_at_the_ready_ban_state then
             obj_projectile["projectile_active"] = false
         end
         -- state_number
@@ -257,7 +257,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main(hit_side_
         play_obj_audio(obj_projectile["hit_whiff_SFX"])
     end
     res[1] = function()
-        if hit_side_test_shot_sys_ban_state then
+        if hit_side_test_shot_sys_at_the_ready_ban_state then
             obj_projectile["projectile_active"] = false
         end
     end
