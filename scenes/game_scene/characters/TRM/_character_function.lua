@@ -335,6 +335,7 @@ function character_function_game_scene_TRM_shot_sys_oroboros_pos_update(obj_char
     }
 end
 -- employment_function
+-- common
 function character_function_game_scene_TRM_shot_sys_off_init(obj_char)
     -- hurt_state
     obj_char["hurt_state"] = obj_char["hurt_state_target"]
@@ -348,6 +349,7 @@ function character_function_game_scene_TRM_shot_sys_off_update(obj_char)
     obj_char["hurt_state"] = obj_char["hurt_state_target"]
     return
 end
+-- at_the_ready
 function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(self_side_obj_char,opponent_side_obj_char)
     -- hurt_state
     if self_side_obj_char["hurt_state"] == "idle" then
@@ -442,18 +444,6 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_update(self_sid
     character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(self_side_obj_char,opponent_side_obj_char)
     return
 end
-function character_function_game_scene_TRM_shot_sys_steady_aim_ease_in_init(obj_char)
-end
-function character_function_game_scene_TRM_shot_sys_steady_aim_ease_in_update(obj_char)
-end
-function character_function_game_scene_TRM_shot_sys_steady_aim_ease_out_init(obj_char)
-end
-function character_function_game_scene_TRM_shot_sys_steady_aim_ease_out_update(obj_char)
-end
-function character_function_game_scene_TRM_shot_sys_steady_aim_init(obj_char)
-end
-function character_function_game_scene_TRM_shot_sys_steady_aim_update(obj_char)
-end
 function character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(self_side_obj_char,opponent_side_obj_char)
     -- hurt_state
     if self_side_obj_char["hurt_state"] == "idle" then
@@ -482,4 +472,17 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(obj
     -- shot_sys
     character_animator(obj_char,obj_char["shot_sys_animation"])
     return
+end
+-- steady_aim
+function character_function_game_scene_TRM_shot_sys_steady_aim_ease_out_init(obj_char)
+end
+function character_function_game_scene_TRM_shot_sys_steady_aim_ease_out_update(obj_char)
+end
+function character_function_game_scene_TRM_shot_sys_steady_aim_locked_init(obj_char)
+end
+function character_function_game_scene_TRM_shot_sys_steady_aim_locked_update(obj_char)
+end
+function character_function_game_scene_TRM_shot_sys_steady_aim_locking_init(obj_char)
+end
+function character_function_game_scene_TRM_shot_sys_steady_aim_locking_update(obj_char)
 end
