@@ -1438,7 +1438,7 @@ function common_game_scene_game_speed_projectile_test_run_in_update(obj_char)
     if obj_char["game_speed_force_0_countdown"] > 0 then
         game_speed_cache = 0
     end
-    return (game_speed_subframe_cache > game_speed_cache and game_speed_cache ~= 0) or (game_speed_cache == 1)
+    return (game_speed_cache == 1) or (game_speed_subframe_cache > game_speed_cache and game_speed_cache ~= 0)
 end
 function common_game_scene_game_speed_projectile_test_run_in_update_sub_frame(obj_char)
     return obj_char["game_speed_force_0_countdown"] == 0 and (not obj_char["physics_lock"])

@@ -2262,8 +2262,7 @@ function state_machine_char_game_scene_char_LP_shot_sys()
     local test_input_idle_to_ease_out = 
     (test_input_sys_press(self_side_input["H"]) and common_game_scene_check_crouch_direction(self_side_obj_char)) or self_side_obj_char["ability_gauge"][1] <= 0 
     local test_input_shot_to_ease_out = 
-    (test_input_sys_press(self_side_input["H"]) and common_game_scene_check_crouch_direction(self_side_obj_char)) or
-    (test_input_sys_release(self_side_input["H"]) and common_game_scene_check_crouch_direction(self_side_obj_char)) or self_side_obj_char["ability_gauge"][1] <= 0 
+    (test_input_sys_release(self_side_input["H"]) and common_game_scene_check_crouch_direction(self_side_obj_char)) or test_input_idle_to_ease_out
     local shot_sys_at_the_ready_ban_state = self_side_obj_char["shot_sys_at_the_ready_ban_state"][self_side_obj_char["state"]]
     local run_at_current_frame = self_side_obj_char["run_at_current_frame"]
     -- state_machine

@@ -430,8 +430,6 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_init(obj_char)
     end
     -- shot_sys
     -- 已经在ease_in阶段完成了当前帧数的aim_process
-    -- reticle
-    -- rewrite in case of aim_process change in at_the_ready
     return
 end
 function character_function_game_scene_TRM_shot_sys_at_the_ready_update(self_side_obj_char,opponent_side_obj_char)
