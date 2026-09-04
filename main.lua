@@ -145,6 +145,11 @@ function love.load()
 	ROUND_COUNTER = 1
 	ROUND_TIMER = {9,9,6,0} -- 99s and 60f
 	COLLIDE_TICK = 16
+	GAME_SPEED_APPLY_FIELD_NAME_TABLE = {
+		"0","game_speed","game_speed_subframe",
+		"game_speed_abnormal_realtime_countdown",
+		"game_speed_force_0_countdown","game_speed_force_1_countdown"
+	}
 	-- to be continue
 	-- non-character global variable
 -------------------------------------------------

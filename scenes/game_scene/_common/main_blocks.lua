@@ -540,11 +540,11 @@ end
 function update_game_scene_friction()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
-    local LP_RUN_AT_THIS_FRAME = common_game_scene_character_run_at_this_frame(char_LP)
-    local RP_RUN_AT_THIS_FRAME = common_game_scene_character_run_at_this_frame(char_RP)
+    local LP_run_at_this_frame = common_game_scene_character_run_at_this_frame(char_LP)
+    local RP_run_at_this_frame = common_game_scene_character_run_at_this_frame(char_RP)
     char_LP["velocity_debug"][1] = char_LP["velocity"][1]
     char_LP["velocity_debug"][2] = char_LP["velocity"][2]
-    if char_LP["height"] ~= "air" and LP_RUN_AT_THIS_FRAME and not char_LP["physics_lock"] then
+    if char_LP["height"] ~= "air" and LP_run_at_this_frame and not char_LP["physics_lock"] then
         if char_LP["friction"] == 0 then
             char_LP["velocity"][1] = char_LP["velocity"][1]
         else
@@ -568,7 +568,7 @@ function update_game_scene_friction()
     end
     char_RP["velocity_debug"][1] = char_RP["velocity"][1]
     char_RP["velocity_debug"][2] = char_RP["velocity"][2]
-    if char_RP["height"] ~= "air" and RP_RUN_AT_THIS_FRAME and not char_RP["physics_lock"] then
+    if char_RP["height"] ~= "air" and RP_run_at_this_frame and not char_RP["physics_lock"] then
         if char_RP["friction"] == 0 then
             char_RP["velocity"][1] = char_RP["velocity"][1]
         else
@@ -594,15 +594,15 @@ end
 function update_game_scene_gravity()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
-    local LP_RUN_AT_THIS_FRAME = common_game_scene_character_run_at_this_frame(char_LP)
-    local RP_RUN_AT_THIS_FRAME = common_game_scene_character_run_at_this_frame(char_RP)
+    local LP_run_at_this_frame = common_game_scene_character_run_at_this_frame(char_LP)
+    local RP_run_at_this_frame = common_game_scene_character_run_at_this_frame(char_RP)
     if char_LP["y"] == 0 then
         char_LP["velocity"][2] = math.min(char_LP["velocity"][2],0)
     elseif char_LP["y"] > 0 then
         char_LP["y"] = 0
         char_LP["velocity"][2] = 0
         char_LP["gravity_correction"] = 1
-    elseif LP_RUN_AT_THIS_FRAME and not char_LP["physics_lock"] then
+    elseif LP_run_at_this_frame and not char_LP["physics_lock"] then
         char_LP["velocity"][2] = char_LP["velocity"][2] + char_LP["gravity"]
     end
     for i = 1,#char_LP["projectile_front_table"] do
@@ -623,7 +623,7 @@ function update_game_scene_gravity()
         char_RP["y"] = 0
         char_RP["velocity"][2] = 0
         char_RP["gravity_correction"] = 1
-    elseif RP_RUN_AT_THIS_FRAME and not char_RP["physics_lock"] then
+    elseif RP_run_at_this_frame and not char_RP["physics_lock"] then
         char_RP["velocity"][2] = char_RP["velocity"][2] + char_RP["gravity"]
     end
     for i = 1,#char_RP["projectile_front_table"] do

@@ -1396,13 +1396,13 @@ function common_game_scene_char_apply_hurt_velocity_sub_hurt_side(
     end
 end
 -- game_speed
--- game_speed_application 槽位: [1]=触发标记 [2]=game_speed [3]=game_speed_subframe
---   [4]=game_speed_abnormal_realtime_countdown [5]=game_speed_force_0_countdown [6]=game_speed_force_1_countdown
-local GAME_SPEED_APPLY_FIELD_NAME_TABLE = {
-    "0","game_speed","game_speed_subframe",
-    "game_speed_abnormal_realtime_countdown",
-    "game_speed_force_0_countdown","game_speed_force_1_countdown"
-}
+-- game_speed_application 槽位: 
+--  [1]=触发标记
+--  [2]=game_speed 
+--  [3]=game_speed_subframe
+--  [4]=game_speed_abnormal_realtime_countdown 
+--  [5]=game_speed_force_0_countdown 
+--  [6]=game_speed_force_1_countdown
 -- 计算角色本帧最终生效的 game_speed (force_1 -> 1, force_0 -> 0)
 function common_game_scene_get_character_effective_game_speed(obj_char)
     local game_speed = obj_char["game_speed"]
