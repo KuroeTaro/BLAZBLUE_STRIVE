@@ -125,10 +125,10 @@ function load_game_scene_obj_char_RP()
     -- game_speed
     obj_char_game_scene_char_RP["game_speed"] = 1
     obj_char_game_scene_char_RP["game_speed_subframe"] = 1
-    obj_char_game_scene_char_RP["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
-    obj_char_game_scene_char_RP["game_speed_force_0_countdown"] = 0 -- 只能是game_speed的倍数
+    obj_char_game_scene_char_RP["game_speed_abnormal_realtime_countdown"] = 0 -- 慢放持续的真实帧数(建议为game_speed的倍数)
+    obj_char_game_scene_char_RP["game_speed_force_0_countdown"] = 0 -- 全停冻结的帧数(real frame)
     obj_char_game_scene_char_RP["game_speed_force_1_countdown"] = 0
-    obj_char_game_scene_char_RP["game_speed_application"] = {0,1,1,0,0,0}
+    obj_char_game_scene_char_RP["game_speed_application"] = {0,nil,nil,nil,nil,nil}
     obj_char_game_scene_char_RP["hit_hurt_blockstop_countdown"] = 0
     obj_char_game_scene_char_RP["hit_hurt_block_slowdown_countdown"] = 0
     -- collide
@@ -723,10 +723,10 @@ function load_game_scene_wallbreak_start_init_RP()
     -- game_speed
     obj_char_game_scene_char_RP["game_speed"] = 1
     obj_char_game_scene_char_RP["game_speed_subframe"] = 1
-    obj_char_game_scene_char_RP["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
-    obj_char_game_scene_char_RP["game_speed_force_0_countdown"] = 0 -- 只能是game_speed的倍数
+    obj_char_game_scene_char_RP["game_speed_abnormal_realtime_countdown"] = 0 -- 慢放持续的真实帧数(建议为game_speed的倍数)
+    obj_char_game_scene_char_RP["game_speed_force_0_countdown"] = 0 -- 全停冻结的帧数(real frame)
     obj_char_game_scene_char_RP["game_speed_force_1_countdown"] = 0
-    obj_char_game_scene_char_RP["game_speed_application"] = {0,1,1,0,0,0}
+    obj_char_game_scene_char_RP["game_speed_application"] = {0,nil,nil,nil,nil,nil}
     obj_char_game_scene_char_RP["hit_hurt_blockstop_countdown"] = 0
     obj_char_game_scene_char_RP["hit_hurt_block_slowdown_countdown"] = 0
     obj_char_game_scene_char_RP["pushbox_opponent_collision_active"] = false
@@ -840,10 +840,10 @@ function load_game_scene_wallbreak_end_init_RP()
     -- game_speed
     obj_char_game_scene_char_RP["game_speed"] = 1
     obj_char_game_scene_char_RP["game_speed_subframe"] = 1
-    obj_char_game_scene_char_RP["game_speed_abnormal_realtime_countdown"] = 0 -- 只能是game_speed的倍数
-    obj_char_game_scene_char_RP["game_speed_force_0_countdown"] = 0 -- 只能是game_speed的倍数
+    obj_char_game_scene_char_RP["game_speed_abnormal_realtime_countdown"] = 0 -- 慢放持续的真实帧数(建议为game_speed的倍数)
+    obj_char_game_scene_char_RP["game_speed_force_0_countdown"] = 0 -- 全停冻结的帧数(real frame)
     obj_char_game_scene_char_RP["game_speed_force_1_countdown"] = 0
-    obj_char_game_scene_char_RP["game_speed_application"] = {0,1,1,0,0,0}
+    obj_char_game_scene_char_RP["game_speed_application"] = {0,nil,nil,nil,nil,nil}
     obj_char_game_scene_char_RP["hit_hurt_blockstop_countdown"] = 0
     obj_char_game_scene_char_RP["hit_hurt_block_slowdown_countdown"] = 0
     -- collide
@@ -1697,8 +1697,8 @@ function state_machine_char_game_scene_char_RP()
     local opponent_side_input = INPUT_SYS_CURRENT_COMMAND_STATE["L"]
     local self_side_obj_char = obj_char_game_scene_char_RP
     local opponent_side_obj_char = obj_char_game_scene_char_LP
-    local run_at_current_frame = common_game_scene_game_speed_projectile_test_run_in_update(self_side_obj_char)
-    local run_at_current_sub_frame = common_game_scene_game_speed_projectile_test_run_in_update_sub_frame(self_side_obj_char)
+    local run_at_current_frame = common_game_scene_character_run_at_this_frame(self_side_obj_char)
+    local run_at_current_sub_frame = common_game_scene_character_run_at_this_sub_frame(self_side_obj_char)
     self_side_obj_char["run_at_current_frame"] = run_at_current_frame
     self_side_obj_char["run_at_current_sub_frame"] = run_at_current_sub_frame
     local switch = {
@@ -1762,11 +1762,15 @@ function state_machine_char_game_scene_char_RP()
             state_gate_game_scene_char_RP_from_throw_tech(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["hitstop"] = function()
-            common_update_game_scene_char_hitstop_countdown(self_side_obj_char)
+            if run_at_current_frame then
+                common_update_game_scene_char_hitstop_countdown(self_side_obj_char)
+            end
             state_gate_game_scene_char_RP_from_hitstop(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["hurtstop"] = function()
-            common_update_game_scene_char_blockstop_hurtstop_countdown(self_side_obj_char)
+            if run_at_current_frame then
+                common_update_game_scene_char_blockstop_hurtstop_countdown(self_side_obj_char)
+            end
             state_gate_game_scene_char_RP_from_hurtstop(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["blockstop"] = function()
@@ -7249,30 +7253,32 @@ function update_game_scene_char_RP_overdrive_countdown()
     or self_side_obj_char["game_speed_force_1_countdown"] > 0 then
         return
     end
-    if self_side_obj_char["state"] ~= "burst_overdrive" and 
-    self_side_obj_char["overdrive_timer"][1] + self_side_obj_char["overdrive_timer"][2] +
-    self_side_obj_char["overdrive_timer"][3] + self_side_obj_char["overdrive_timer"][4] > 1
-    then
-        if self_side_obj_char["overdrive_timer"][4] == 0 and self_side_obj_char["overdrive_timer"][3] ~= 0 then 
-            self_side_obj_char["overdrive_timer"][3] = self_side_obj_char["overdrive_timer"][3] - 1
-            self_side_obj_char["overdrive_timer"][4] = 9
-        elseif self_side_obj_char["overdrive_timer"][4] > 0 then
-            self_side_obj_char["overdrive_timer"][4] = self_side_obj_char["overdrive_timer"][4] - 1
-        end
-        if self_side_obj_char["overdrive_timer"][3] == 0 and self_side_obj_char["overdrive_timer"][2] ~= 0 then 
-            self_side_obj_char["overdrive_timer"][2] = self_side_obj_char["overdrive_timer"][2] - 1
-            self_side_obj_char["overdrive_timer"][3] = 5
-        end
-        if self_side_obj_char["overdrive_timer"][2] < 0 and self_side_obj_char["overdrive_timer"][1] ~= 0 then 
-            self_side_obj_char["overdrive_timer"][1] = self_side_obj_char["overdrive_timer"][1] - 1
-            self_side_obj_char["overdrive_timer"][2] = 9
-        end
-    elseif self_side_obj_char["state"] ~= "burst_overdrive" and 
-    self_side_obj_char["overdrive_timer"][1] + self_side_obj_char["overdrive_timer"][2] +
-    self_side_obj_char["overdrive_timer"][3] + self_side_obj_char["overdrive_timer"][4] <= 1
-    then
+    if self_side_obj_char["state"] == "burst_overdrive" then
+        return
+    end
+    local t = self_side_obj_char["overdrive_timer"]
+    -- 归零判定 (逐位判断, 到 00:00 才结束)
+    if t[1] == 0 and t[2] == 0 and t[3] == 0 and t[4] == 0 then
         self_side_obj_char["overdrive_timer"] = {0,0,0,0}
         self_side_obj_char["overdrive_gauge"][3] = "off"
+        return
+    end
+    -- 每调用推进 1 帧 (后两位 t3t4 = 帧 00..59)
+    if t[4] > 0 then
+        t[4] = t[4] - 1
+    elseif t[3] > 0 then
+        t[3] = t[3] - 1
+        t[4] = 9
+    else
+        -- 帧 00 -> 59
+        t[3] = 5
+        t[4] = 9
+        if t[2] > 0 then
+            t[2] = t[2] - 1
+        elseif t[1] > 0 then
+            t[1] = t[1] - 1
+            t[2] = 9 -- 高两位 10 -> 09
+        end
     end
 end
 function update_game_scene_char_RP_inv_state_countdown()

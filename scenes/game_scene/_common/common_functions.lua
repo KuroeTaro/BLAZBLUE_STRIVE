@@ -1396,6 +1396,24 @@ function common_game_scene_char_apply_hurt_velocity_sub_hurt_side(
     end
 end
 -- game_speed
+-- game_speed_application 槽位: [1]=触发标记 [2]=game_speed [3]=game_speed_subframe
+--   [4]=game_speed_abnormal_realtime_countdown [5]=game_speed_force_0_countdown [6]=game_speed_force_1_countdown
+local GAME_SPEED_APPLY_FIELD_NAME_TABLE = {
+    "0","game_speed","game_speed_subframe",
+    "game_speed_abnormal_realtime_countdown",
+    "game_speed_force_0_countdown","game_speed_force_1_countdown"
+}
+-- 计算角色本帧最终生效的 game_speed (force_1 -> 1, force_0 -> 0)
+function common_game_scene_get_character_effective_game_speed(obj_char)
+    local game_speed = obj_char["game_speed"]
+    if obj_char["game_speed_force_1_countdown"] > 0 then
+        game_speed = 1
+    end
+    if obj_char["game_speed_force_0_countdown"] > 0 then
+        game_speed = 0
+    end
+    return game_speed
+end
 function common_game_scene_game_speed_load_application(obj_char,application_table)
     for i = 1,6 do
         if application_table[i] ~= nil then
@@ -1407,40 +1425,29 @@ function common_game_scene_game_speed_apply_application()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
     if char_LP["game_speed_application"][1] == 1 then
-        local apply_table = {
-            "0","game_speed","game_speed_subframe","game_speed_abnormal_realtime_countdown","game_speed_force_0_countdown","game_speed_force_1_countdown"
-        }
         for i = 2,6 do
             if char_LP["game_speed_application"][i] ~= nil then
-                char_LP[apply_table[i]] = char_LP["game_speed_application"][i]
+                char_LP[GAME_SPEED_APPLY_FIELD_NAME_TABLE[i]] = char_LP["game_speed_application"][i]
             end
         end
         char_LP["game_speed_application"] = {0,nil,nil,nil,nil,nil}
     end
     if char_RP["game_speed_application"][1] == 1 then
-        local apply_table = {
-            "0","game_speed","game_speed_subframe","game_speed_abnormal_realtime_countdown","game_speed_force_0_countdown","game_speed_force_1_countdown"
-        }
         for i = 2,6 do
             if char_RP["game_speed_application"][i] ~= nil then
-                char_RP[apply_table[i]] = char_RP["game_speed_application"][i]
+                char_RP[GAME_SPEED_APPLY_FIELD_NAME_TABLE[i]] = char_RP["game_speed_application"][i]
             end
         end
         char_RP["game_speed_application"] = {0,nil,nil,nil,nil,nil}
     end
 end
-function common_game_scene_game_speed_projectile_test_run_in_update(obj_char)
-    local game_speed_cache = obj_char["game_speed"]
-    local game_speed_subframe_cache = obj_char["game_speed_subframe"]
-    if obj_char["game_speed_force_1_countdown"] > 0 then
-        game_speed_cache = 1
-    end
-    if obj_char["game_speed_force_0_countdown"] > 0 then
-        game_speed_cache = 0
-    end
-    return (game_speed_cache == 1) or (game_speed_subframe_cache > game_speed_cache and game_speed_cache ~= 0)
+-- 角色本帧是否推进一个逻辑帧 (subframe 越过最终生效的 game_speed)
+function common_game_scene_character_run_at_this_frame(obj_char)
+    local game_speed = common_game_scene_get_character_effective_game_speed(obj_char)
+    return (game_speed == 1) or (game_speed ~= 0 and obj_char["game_speed_subframe"] > game_speed)
 end
-function common_game_scene_game_speed_projectile_test_run_in_update_sub_frame(obj_char)
+-- 本帧是否推进 sub_frame (需要未冻结且非 physics_lock)
+function common_game_scene_character_run_at_this_sub_frame(obj_char)
     return obj_char["game_speed_force_0_countdown"] == 0 and (not obj_char["physics_lock"])
 end
 -- animation_creater
