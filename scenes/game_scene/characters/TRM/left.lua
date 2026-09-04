@@ -14,8 +14,6 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["LCT"] = {0,0,0,0,0,0,0,0}
     obj_char_game_scene_char_LP["LCD"] = {0,0,0,0,0,0,0,0}
     -- state
-    obj_char_game_scene_char_LP["run_at_current_frame"] = false
-    obj_char_game_scene_char_LP["run_at_current_sub_frame"] = false
     obj_char_game_scene_char_LP["player_side"] = "L"
     obj_char_game_scene_char_LP["character_mode"] = "RW.Baby.Blue" -- "Good.Grief.MP" "RW.Baby.Blue"
     obj_char_game_scene_char_LP["type"] = "character"
@@ -1698,9 +1696,6 @@ function state_machine_char_game_scene_char_LP()
     local self_side_obj_char = obj_char_game_scene_char_LP
     local opponent_side_obj_char = obj_char_game_scene_char_RP
     local run_at_current_frame = common_game_scene_character_run_at_this_frame(self_side_obj_char)
-    local run_at_current_sub_frame = common_game_scene_character_run_at_this_sub_frame(self_side_obj_char)
-    self_side_obj_char["run_at_current_frame"] = run_at_current_frame
-    self_side_obj_char["run_at_current_sub_frame"] = run_at_current_sub_frame
     local switch = {
         ["before_ease_in"] = function()
             if run_at_current_frame then
@@ -2268,7 +2263,7 @@ function state_machine_char_game_scene_char_LP_shot_sys()
     local test_input_shot_to_ease_out = 
     (test_input_sys_release(self_side_input["H"]) and common_game_scene_check_crouch_direction(self_side_obj_char)) or test_input_idle_to_ease_out
     local shot_sys_at_the_ready_ban_state = self_side_obj_char["shot_sys_at_the_ready_ban_state"][self_side_obj_char["state"]]
-    local run_at_current_frame = self_side_obj_char["run_at_current_frame"]
+    local run_at_current_frame = common_game_scene_character_run_at_this_frame(self_side_obj_char)
     -- state_machine
     local switch = {
         ["off"] = function()
@@ -2385,7 +2380,7 @@ function state_machine_char_game_scene_char_LP_shot_sys()
 end
 function state_machine_char_game_scene_char_LP_shot_sys_oroboros()
     local self_side_obj_char = obj_char_game_scene_char_LP
-    local run_at_current_frame = self_side_obj_char["run_at_current_frame"]
+    local run_at_current_frame = common_game_scene_character_run_at_this_frame(self_side_obj_char)
     local switch = {
         ["off"] = function()
         end,
@@ -2474,7 +2469,7 @@ function state_machine_char_game_scene_char_LP_shot_sys_reticle()
     -- shot
     local self_side_obj_char = obj_char_game_scene_char_LP
     local opponent_side_obj_char = obj_char_game_scene_char_RP
-    local run_at_current_frame = self_side_obj_char["run_at_current_frame"]
+    local run_at_current_frame = common_game_scene_character_run_at_this_frame(self_side_obj_char)
     local switch = {
         ["off"] = function()
         end,
