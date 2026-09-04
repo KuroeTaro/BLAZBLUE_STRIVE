@@ -927,7 +927,8 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     -- gravity_update_function
     obj_projectile["gravity"] = 0
     obj_projectile["gravity_update_function"] = function()
-        if not hit_side_obj_char["run_at_current_sub_frame"] then
+        -- 实时判定(冻结/物理锁时立即停止累加重力), 不读 owner 的缓存字段
+        if not common_game_scene_character_run_at_this_sub_frame(hit_side_obj_char) then
             return
         end
         obj_projectile["velocity"][2] = obj_projectile["velocity"][2] + obj_projectile["gravity"]
@@ -939,7 +940,8 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
     -- update
     obj_projectile["update"] = function()
-        if not hit_side_obj_char["run_at_current_frame"] then
+        -- 实时判定(慢速只跑逻辑帧/冻结停止), 不读 owner 的缓存字段
+        if not common_game_scene_character_run_at_this_frame(hit_side_obj_char) then
             return
         end
         if hurt_side_obj_char["state_cache"] == "wallstick" then
@@ -952,10 +954,10 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
                 obj_projectile["y"] = hit_side_obj_char["y"] + obj_projectile["spawn_offset_y"]
                 if get_character_anim_end_state(obj_projectile,obj_projectile["projectile_animation"]) then
                     obj_projectile[8] = 0
-                    obj_projectile["velocity"] = {obj_projectile[5]*20,-12.5}
+                    obj_projectile["velocity"] = {obj_projectile[5]*50,-27.5}
                     obj_projectile["state"] = "in_air"
                     obj_projectile["hitbox_table"] = {{0,0,160,160}}
-                    obj_projectile["gravity"] = 2.5
+                    obj_projectile["gravity"] = 5
                     obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_P_projectile_in_air(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
                     init_character_anim_with(obj_projectile,obj_projectile["projectile_animation"])
                 end
@@ -988,7 +990,8 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     end
     -- update_sub_frame
     obj_projectile["update_sub_frame"] = function()
-        if not hit_side_obj_char["run_at_current_sub_frame"] then
+        -- 实时判定(冻结/物理锁时立即停止), 不读 owner 的缓存字段
+        if not common_game_scene_character_run_at_this_sub_frame(hit_side_obj_char) then
             return
         end
         local switch = {
@@ -997,11 +1000,11 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
                 obj_projectile["y"] = hit_side_obj_char["y"] + obj_projectile["spawn_offset_y"]
             end,
             ["in_air"] = function()
-                obj_projectile["x"] = obj_projectile["x"] + obj_projectile["velocity"][1]/COLLIDE_TICK
-                obj_projectile["y"] = obj_projectile["y"] + obj_projectile["velocity"][2]/COLLIDE_TICK
+                -- 位置位移统一由 main_blocks 的中央积分推进(已按 owner 的 game_speed 缩放/force_0 冻结),
+                -- 这里只做地面反弹判定, 不再自加 velocity, 避免双倍位移与无视慢速/冻结。
                 if obj_projectile["y"] > -25 then
                     obj_projectile["y"] = -25
-                    obj_projectile["velocity"] = {obj_projectile[5]*25,-32.5}
+                    obj_projectile["velocity"] = {obj_projectile[5]*50,-62.5}
                     play_obj_audio(obj_projectile["ground_bounce_SFX"])
                 end
             end,
@@ -1226,7 +1229,8 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
     init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
     -- update
     obj_projectile["update"] = function()
-        if not active_op_side_obj_char["run_at_current_frame"] then
+        -- 实时判定(慢速只跑逻辑帧/冻结停止), 不读 owner 的缓存字段
+        if not common_game_scene_character_run_at_this_frame(active_op_side_obj_char) then
             return
         end
         if passive_op_side_obj_char["state_cache"] == "wallstick" then
