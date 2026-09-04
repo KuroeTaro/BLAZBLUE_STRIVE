@@ -1,0 +1,20 @@
+{"frames": {
+
+"0":
+{
+	"frame": {"x":0,"y":0,"w":320,"h":320},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":320},
+	"sourceSize": {"w":320,"h":320}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_4SP_S_reticle_locked",
+	"format": "RGBA8888",
+	"size": {"w":320,"h":320},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:e7df56a833772cba2a883ee61cbf834b:3581d7cbb16228cf849624a25f1d80dc:fceeaa07d428232492a3e97f3ea59cc2$"
+}
+}

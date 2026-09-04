@@ -1202,14 +1202,10 @@ function order_load_game_scene_char_LP_frames(load_order)
                 )
             end 
         end,
-        -- attack 5H oroboros
+        -- attack H
         [19] = function()
             local load_name_table = {
-                "5H",
-                "5H_oroboros_ease_in_mid",
-                "5H_oroboros_ease_out_mid",
-                "5H_oroboros_loop_back",
-                "5H_oroboros_loop_front"
+                "5H"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_LP[v] = 
@@ -1219,14 +1215,15 @@ function order_load_game_scene_char_LP_frames(load_order)
                 )
             end 
         end,
-        -- attack 5H oroboros/reticle
+        -- attack 5H_oroboros
         [20] = function()
             local load_name_table = {
+                "5H_oroboros_ease_in_mid",
+                "5H_oroboros_ease_out_mid",
+                "5H_oroboros_loop_back",
+                "5H_oroboros_loop_front",
                 "5H_oroboros_loop_mid",
-                "5H_oroboros_shot",
-                "5H_reticle_ease_out",
-                "5H_reticle_locked",
-                "5H_reticle_locking"
+                "5H_oroboros_shot"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_LP[v] = 
@@ -1239,6 +1236,9 @@ function order_load_game_scene_char_LP_frames(load_order)
         -- attack 5H_reticle
         [21] = function()
             local load_name_table = {
+                "5H_reticle_ease_out",
+                "5H_reticle_locked",
+                "5H_reticle_locking",
                 "5H_reticle_shot",
                 "5H_reticle_unlocked",
                 "5H_reticle_unlocking"
@@ -1319,6 +1319,10 @@ function order_load_game_scene_char_LP_frames(load_order)
         end,
         [26] = function()
             local load_name_table = {
+                "4SP_S_reticle_ease_out",
+                "4SP_S_reticle_locked",
+                "4SP_S_reticle_locking",
+                "4SP_S_reticle_shot"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_LP[v] = 

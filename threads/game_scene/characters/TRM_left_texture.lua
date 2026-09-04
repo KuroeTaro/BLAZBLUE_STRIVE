@@ -116,6 +116,10 @@ local load_attack_name_table = {
     "4SP_K",
     "6SP_K",
     "4SP_S",
+    "4SP_S_reticle_ease_out",
+    "4SP_S_reticle_locked",
+    "4SP_S_reticle_locking",
+    "4SP_S_reticle_shot",
     "4SP_S_4P",
     "4SP_S_4S",
     "6SP_S"
