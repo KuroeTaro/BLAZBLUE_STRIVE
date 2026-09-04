@@ -55,7 +55,7 @@ local move_SFX_folder_table = {
     {folder = "special/6SP_P",files = {"6SP_P_curse_ball_ground_bounce","6SP_P_curse_ball_hit","6SP_P_curse_end","6SP_P_whiff"}},
     {folder = "special/4SP_K",files = {"4SP_K_whiff"}},
     {folder = "special/6SP_K",files = {"6SP_K_scapegoat_ease_in","6SP_K_scapegoat_ease_out"}},
-    {folder = "special/4SP_S",files = {"4SP_S_ease_out","4SP_S_locking","4SP_S_startup"}},
+    {folder = "special/4SP_S",files = {"4SP_S_projectile_whiff","4SP_S_reticle_ease_out","4SP_S_reticle_locking"}},
     {folder = "special/6SP_S",files = {"6SP_S_block","6SP_S_counter","6SP_S_hit","6SP_S_whiff"}},
     -- overdrive
     {folder = "overdrive",files = {"overdrive"}}

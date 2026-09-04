@@ -179,6 +179,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["shot_sys_curse"] = false
     obj_char_game_scene_char_RP["shot_sys_curse_countdown"] = 0
     obj_char_game_scene_char_RP["shot_sys_scapegoat_exist"] = false
+    obj_char_game_scene_char_RP["shot_sys_steady_aim_countdown"] = 0
     obj_char_game_scene_char_RP["shot_sys_fire_cancel"] = false
     obj_char_game_scene_char_RP["shot_sys_idle_cancel"] = false
     obj_char_game_scene_char_RP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值 上一帧是否高于瞄准命中最低数值
@@ -745,6 +746,7 @@ function load_game_scene_wallbreak_mid_init_RP()
     obj_char_game_scene_char_RP["shot_sys_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_scapegoat_exist"] = false
+    obj_char_game_scene_char_RP["shot_sys_steady_aim_countdown"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_oroboros_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_aim_r"] = 0.42
@@ -1643,7 +1645,8 @@ function order_load_game_scene_char_RP_audio(load_order)
                 "6SP_P_curse_ball_ground_bounce","6SP_P_curse_ball_hit","6SP_P_curse_end","6SP_P_whiff",
                 "4SP_K_whiff",
                 "6SP_K_scapegoat_ease_in","6SP_K_scapegoat_ease_out",
-                "4SP_S_ease_out","4SP_S_locking","4SP_S_startup",
+                "4SP_S_projectile_whiff",
+                "4SP_S_reticle_ease_out","4SP_S_reticle_locking",
                 "6SP_S_block","6SP_S_counter","6SP_S_hit","6SP_S_whiff",
             }
             for i,v in ipairs(load_name_table) do

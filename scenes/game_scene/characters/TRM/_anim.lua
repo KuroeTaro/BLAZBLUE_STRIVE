@@ -5177,15 +5177,120 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_shot(obj_char)
     end
     return res
 end
-function load_game_scene_anim_char_TRM_5H_reticle_steady_aim_ease_in(obj_char)
+function load_game_scene_anim_char_TRM_4SP_S_reticle_steady_aim_locking(obj_char)
+    local res = {}
+    local side = obj_char["player_side"]
+    local move_SFX_table = common_game_scene_get_SFX_move(side)
+    res["prop_f"] = "shot_sys_reticle_f_8"
+    res["anim_length"] = 23
+    res[0] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][4] = 1
+        obj_char["shot_sys_reticle"][8] = 0
+        obj_char["shot_sys_reticle_sprite_sheet"] = "4SP_S_reticle_locking"
+        -- play_SFX
+        play_obj_audio(move_SFX_table["4SP_S_reticle_locking"])
+    end
+    res[1] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 1
+    end
+    res[3] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 2
+    end
+    res[5] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 3
+    end
+    res[7] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 4
+    end
+    res[9] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 5
+    end
+    res[11] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 6
+    end
+    res[13] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 7
+    end
+    res[15] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 8
+    end
+    res[17] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 9
+    end
+    res[20] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 10
+    end
+    res[23] = function()
+        -- animation_end
+    end
+    return res
 end
-function load_game_scene_anim_char_TRM_5H_reticle_steady_aim_locking_and_unlocking(obj_char)
+function load_game_scene_anim_char_TRM_4SP_S_reticle_steady_aim_ease_out(obj_char)
+    local res = {}
+    local side = obj_char["player_side"]
+    local move_SFX_table = common_game_scene_get_SFX_move(side)
+    res["prop_f"] = "shot_sys_reticle_f_8"
+    res["anim_length"] = 6
+    res[0] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][4] = 1
+        obj_char["shot_sys_reticle"][8] = 0
+        obj_char["shot_sys_reticle_sprite_sheet"] = "4SP_S_reticle_ease_out"
+        -- play_SFX
+        play_obj_audio(move_SFX_table["4SP_S_reticle_ease_out"])
+    end
+    res[2] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 1
+    end
+    res[4] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 2
+    end
+    res[6] = function()
+        -- animation_end
+    end
+    return res
 end
-function load_game_scene_anim_char_TRM_5H_reticle_steady_aim_unlocking(obj_char)
-end
-function load_game_scene_anim_char_TRM_5H_reticle_steady_aim_ease_out(obj_char)
-end
-function load_game_scene_anim_char_TRM_5H_reticle_steady_aim_shot(obj_char)
+function load_game_scene_anim_char_TRM_4SP_S_reticle_steady_aim_shot(obj_char)
+    local res = {}
+    local side = obj_char["player_side"]
+    local move_SFX_table = common_game_scene_get_SFX_move(side)
+    res["prop_f"] = "shot_sys_reticle_f_8"
+    res["anim_length"] = 15
+    res[0] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][4] = 1
+        obj_char["shot_sys_reticle"][8] = 0
+        obj_char["shot_sys_reticle_sprite_sheet"] = "4SP_S_reticle_shot"
+    end
+    res[2] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 1
+    end
+    res[5] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 2
+    end
+    res[10] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 3
+    end
+    res[15] = function()
+        -- animation_end
+    end
+    return res
 end
 -- shot_sys_oroboros
 function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj)
