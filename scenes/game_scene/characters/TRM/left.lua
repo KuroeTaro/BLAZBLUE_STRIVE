@@ -149,7 +149,6 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["VFX_hit_front_table"] = {}
     obj_char_game_scene_char_LP["VFX_hit_back_table"] = {}
     obj_char_game_scene_char_LP["VFX_black_overlay_table"] = {}
-    -- sub_obj_table
     -- VFX
     obj_char_game_scene_char_LP["hit_VFX_dynamic_spawn_pos"] = {}
     obj_char_game_scene_char_LP["hit_VFX_insert_function"] = nil
@@ -861,7 +860,7 @@ function load_game_scene_wallbreak_end_init_LP()
     obj_char_game_scene_char_LP["shot_sys_f"] = 0
     obj_char_game_scene_char_LP["shot_sys_fire_cancel"] = false
     obj_char_game_scene_char_LP["shot_sys_idle_cancel"] = false
-    obj_char_game_scene_char_LP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值 上一帧是否高于瞄准命中最低数值
+    obj_char_game_scene_char_LP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值
     obj_char_game_scene_char_LP["shot_sys_animation"] = nil
     obj_char_game_scene_char_LP["shot_sys_camera_shake_table"] = {}
     -- shot_sys_oroboros
@@ -3785,7 +3784,7 @@ function state_gate_game_scene_char_LP_from_block(self_side_input,opponent_side_
         if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        -- 5_stand_idle
+        -- _5_stand_idle
         if state_gate_game_scene_char_LP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
@@ -3801,7 +3800,7 @@ function state_gate_game_scene_char_LP_from_block(self_side_input,opponent_side_
         if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        -- 1_2_3_crouch
+        -- _1_2_3_crouch
         if state_gate_game_scene_char_LP_from_1_2_3_crouch(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
@@ -3840,7 +3839,7 @@ function state_gate_game_scene_char_LP_from_hurt(self_side_input,opponent_side_i
         -- something could use for combo HUD
         -- print("hurt animation end")
         state_machine_char_game_scene_char_LP_input_sys_cache()
-        -- 5_stand_idle
+        -- _5_stand_idle
         if self_side_obj_char["height"] == "stand" then
             self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)  
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
@@ -3849,11 +3848,11 @@ function state_gate_game_scene_char_LP_from_hurt(self_side_input,opponent_side_i
             if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
-            -- 5_stand_idle
+            -- _5_stand_idle
             if state_gate_game_scene_char_LP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
-        -- 1_2_3_crouch
+        -- _1_2_3_crouch
         elseif self_side_obj_char["height"] == "crouch" then
             self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(self_side_obj_char)
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
@@ -3864,7 +3863,7 @@ function state_gate_game_scene_char_LP_from_hurt(self_side_input,opponent_side_i
             if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
-            -- 1_2_3_crouch
+            -- _1_2_3_crouch
             if state_gate_game_scene_char_LP_from_1_2_3_crouch(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
@@ -3921,7 +3920,7 @@ function state_gate_game_scene_char_LP_from_throw_success(self_side_input,oppone
             if state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
-            -- 7_8_9_jump_air
+            -- _7_8_9_jump_air
             if state_gate_game_scene_char_LP_from_7_8_9_jump_air(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
@@ -3934,7 +3933,7 @@ function state_gate_game_scene_char_LP_from_throw_success(self_side_input,oppone
             if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
-            -- 5_stand_idle
+            -- _5_stand_idle
             if state_gate_game_scene_char_LP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
@@ -3949,7 +3948,7 @@ function state_gate_game_scene_char_LP_from_throw_success(self_side_input,oppone
         if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        -- 5_stand_idle
+        -- _5_stand_idle
         if state_gate_game_scene_char_LP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
@@ -4152,7 +4151,7 @@ function state_gate_game_scene_char_LP_from_knockdown_recovery(self_side_input,o
         -- input_sys_cache
         self_side_obj_char["input_sys_state"] = "load" -- none save load
         state_machine_char_game_scene_char_LP_input_sys_cache()
-        -- 5_stand_idle
+        -- _5_stand_idle
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "5_stand_idle"
@@ -4160,7 +4159,7 @@ function state_gate_game_scene_char_LP_from_knockdown_recovery(self_side_input,o
         if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        -- 5_stand_idle
+        -- _5_stand_idle
         if state_gate_game_scene_char_LP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
@@ -4175,14 +4174,14 @@ function state_gate_game_scene_char_LP_from_knockdown_recovery_wallstick(self_si
         state_machine_char_game_scene_char_LP_input_sys_cache()
         self_side_obj_char["state"] = self_side_obj_char["state_cache"]
         if self_side_obj_char["state"] == "5_stand_idle" then
-            -- 5_stand_idle
+            -- _5_stand_idle
             self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             -- _common_ground_idle_to_move
             if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
-            -- 5_stand_idle
+            -- _5_stand_idle
             if state_gate_game_scene_char_LP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
@@ -4793,7 +4792,7 @@ function state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle(self_si
         if state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        -- 5_stand_idle
+        -- _5_stand_idle
         if state_gate_game_scene_char_LP_from_5_stand_turn(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
@@ -5741,7 +5740,7 @@ function state_gate_game_scene_char_LP_from_2K(self_side_input,opponent_side_inp
             self_side_obj_char["state"] = "6S"
             return true
         end
-        -- 2Launcher
+        -- _2Launcher
         if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press(self_side_input["Launcher"]) then
             if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
                 self_side_obj_char[5] = -self_side_obj_char[5]
@@ -5816,7 +5815,7 @@ function state_gate_game_scene_char_LP_from_5K(self_side_input,opponent_side_inp
         return true
     end
     -- kara
-    -- 2K
+    -- _2K
     if common_game_scene_check_crouch_direction(self_side_obj_char) and self_side_obj_char["f"] <= 4 then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
@@ -6730,10 +6729,10 @@ function state_gate_game_scene_char_LP_from_4SP_S(self_side_input,opponent_side_
     if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    -- 4UA
-    -- 5UA
-    -- 4SP_S_6UA
-    -- 4SP_P
+    -- _4UA
+    -- _5UA
+    -- _4SP_S_6UA
+    -- _4SP_P
     if (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 1)
     and test_input_sys_press_or_hold(self_side_input["SP"])
     and test_input_sys_press(self_side_input["P"]) then
@@ -6745,7 +6744,7 @@ function state_gate_game_scene_char_LP_from_4SP_S(self_side_input,opponent_side_
         self_side_obj_char["state"] = "4SP_P"
         return true
     end
-    -- 6SP_P
+    -- _6SP_P
     if self_side_obj_char["direction_input"] == 6
     and test_input_sys_press_or_hold(self_side_input["SP"])
     and test_input_sys_press(self_side_input["P"]) then
@@ -6757,7 +6756,7 @@ function state_gate_game_scene_char_LP_from_4SP_S(self_side_input,opponent_side_
         self_side_obj_char["state"] = "6SP_P"
         return true
     end
-    -- 4SP_K
+    -- _4SP_K
     if self_side_obj_char["direction_input"] == 4
     and test_input_sys_press_or_hold(self_side_input["SP"])
     and test_input_sys_press(self_side_input["K"]) then
@@ -6769,7 +6768,7 @@ function state_gate_game_scene_char_LP_from_4SP_S(self_side_input,opponent_side_
         self_side_obj_char["state"] = "4SP_K"
         return true
     end
-    -- 6SP_K
+    -- _6SP_K
     if self_side_obj_char["direction_input"] == 6
     and test_input_sys_press_or_hold(self_side_input["SP"])
     and test_input_sys_press(self_side_input["K"])
@@ -6785,13 +6784,13 @@ function state_gate_game_scene_char_LP_from_4SP_S(self_side_input,opponent_side_
     end
     -- _派生
     if self_side_obj_char["idle_cancel"] then
-        -- 4SP_S_4dash
-        -- 4SP_S_6dash
-        -- 4SP_S_4S
-        -- 4SP_S_H
-        -- 4SP_S_2Launcher
-        -- 4SP_S_6Launcher
-        -- 4SP_S_5Launcher
+        -- _4SP_S_4dash
+        -- _4SP_S_6dash
+        -- _4SP_S_4S
+        -- _4SP_S_H
+        -- _4SP_S_2Launcher
+        -- _4SP_S_6Launcher
+        -- _4SP_S_5Launcher
     end
 end
 function state_gate_game_scene_char_LP_from_4SP_S_4dash(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
@@ -6941,7 +6940,7 @@ function draw_game_scene_char_LP()
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,tostring(obj[8]))
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
-    -- darw_front
+    -- draw_front
     obj = self_side_obj_char["shot_sys_oroboros_front"]
     image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
@@ -7001,7 +7000,7 @@ function draw_game_scene_char_LP_shadow()
     love.graphics.setColor(1,1,1,1)
 end
 function draw_game_scene_char_LP_attachment_front()
-    -- retcile
+    -- reticle
     local self_side_obj_char = obj_char_game_scene_char_LP
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[self_side_obj_char["shot_sys_reticle_sprite_sheet"]]
@@ -7280,35 +7279,35 @@ function update_game_scene_char_LP_VFX()
     end
 end
 function draw_game_scene_char_LP_VFX_HUD()
-    for i = 1,#obj_char_game_scene_char_LP["VFX_HUD_table"],1 do -- 反向遍历，便于删除元素
+    for i = 1,#obj_char_game_scene_char_LP["VFX_HUD_table"],1 do
         local object = obj_char_game_scene_char_LP["VFX_HUD_table"][i]
         object["draw"]()
     end
 end
 function draw_game_scene_char_LP_VFX_front()
-    for i = 1,#obj_char_game_scene_char_LP["VFX_common_front_table"],1 do -- 反向遍历，便于删除元素
+    for i = 1,#obj_char_game_scene_char_LP["VFX_common_front_table"],1 do
         local object = obj_char_game_scene_char_LP["VFX_common_front_table"][i]
         object["draw"]()
     end
-    for i = 1,#obj_char_game_scene_char_LP["VFX_status_front_table"],1 do -- 反向遍历，便于删除元素
+    for i = 1,#obj_char_game_scene_char_LP["VFX_status_front_table"],1 do
         local object = obj_char_game_scene_char_LP["VFX_status_front_table"][i]
         object["draw"]()
     end
-    for i = 1,#obj_char_game_scene_char_LP["VFX_hit_front_table"],1 do -- 反向遍历，便于删除元素
+    for i = 1,#obj_char_game_scene_char_LP["VFX_hit_front_table"],1 do
         local object = obj_char_game_scene_char_LP["VFX_hit_front_table"][i]
         object["draw"]()
     end
 end
 function draw_game_scene_char_LP_VFX_back()
-    for i = 1,#obj_char_game_scene_char_LP["VFX_common_back_table"],1 do -- 反向遍历，便于删除元素
+    for i = 1,#obj_char_game_scene_char_LP["VFX_common_back_table"],1 do
         local object = obj_char_game_scene_char_LP["VFX_common_back_table"][i]
         object["draw"]()
     end
-    for i = 1,#obj_char_game_scene_char_LP["VFX_status_back_table"],1 do -- 反向遍历，便于删除元素
+    for i = 1,#obj_char_game_scene_char_LP["VFX_status_back_table"],1 do
         local object = obj_char_game_scene_char_LP["VFX_status_back_table"][i]
         object["draw"]()
     end
-    for i = 1,#obj_char_game_scene_char_LP["VFX_hit_back_table"],1 do -- 反向遍历，便于删除元素
+    for i = 1,#obj_char_game_scene_char_LP["VFX_hit_back_table"],1 do
         local object = obj_char_game_scene_char_LP["VFX_hit_back_table"][i]
         object["draw"]()
     end
@@ -7323,7 +7322,7 @@ function update_game_scene_char_LP_black_overlay()
     end
 end
 function draw_game_scene_char_LP_black_overlay()
-    for i = 1,#obj_char_game_scene_char_LP["VFX_black_overlay_table"],1 do -- 反向遍历，便于删除元素
+    for i = 1,#obj_char_game_scene_char_LP["VFX_black_overlay_table"],1 do
         local object = obj_char_game_scene_char_LP["VFX_black_overlay_table"][i]
         object["draw"]()
     end
