@@ -9464,6 +9464,7 @@ end
 function load_game_scene_anim_char_TRM_4SP_S(obj_char)
     local res = {}
     local side = obj_char["player_side"]
+    local move_SFX_table = common_game_scene_get_SFX_move(side)
     res["prop_f"] = "f"
     res["anim_length"] = 117
     for i = 1,23 do
@@ -9485,7 +9486,7 @@ function load_game_scene_anim_char_TRM_4SP_S(obj_char)
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
         -- state_number
-        obj_char["friction"] = 5
+        obj_char["friction"] = 3.25
         obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
@@ -9503,7 +9504,7 @@ function load_game_scene_anim_char_TRM_4SP_S(obj_char)
         obj_char["active_frame"] = 0
         obj_char["recovery_frame"] = 0
         -- input_sys_cache
-        obj_char["input_sys_state"] = "none" -- none save load
+        obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(side)(obj_char)
         -- collide
         obj_char["pushbox"] = {0,-185,120,370}
@@ -9517,7 +9518,7 @@ function load_game_scene_anim_char_TRM_4SP_S(obj_char)
         obj_char[8] = 0
         obj_char["anchor_pos"] = {325,510}
         -- play_SFX
-        play_obj_audio(move_SFX_table["4SP_S_startup"])
+        play_obj_audio(move_SFX_table["4SP_S_whiff"])
         -- visual_front
         CHARACTER_VISUAL_FRONT = side
     end
@@ -9528,11 +9529,6 @@ function load_game_scene_anim_char_TRM_4SP_S(obj_char)
     res[11] = function()
         -- draw_correction
         obj_char[8] = 2
-    end
-    res[12] = function()
-        -- input_sys_cache
-        obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(side)(obj_char)
     end
     res[14] = function()
         -- draw_correction

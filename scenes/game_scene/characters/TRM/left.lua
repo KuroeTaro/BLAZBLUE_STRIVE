@@ -1642,6 +1642,7 @@ function order_load_game_scene_char_LP_audio(load_order)
                 "6SP_P_curse_ball_ground_bounce","6SP_P_curse_ball_hit","6SP_P_curse_end","6SP_P_whiff",
                 "4SP_K_whiff",
                 "6SP_K_scapegoat_ease_in","6SP_K_scapegoat_ease_out",
+                "4SP_S_whiff",
                 "4SP_S_projectile_whiff",
                 "4SP_S_reticle_ease_out","4SP_S_reticle_locking",
                 "6SP_S_block","6SP_S_counter","6SP_S_hit","6SP_S_whiff",
@@ -6653,7 +6654,41 @@ function state_gate_game_scene_char_LP_from_4SP_P(self_side_input,opponent_side_
     end
     -- idle_cancel
     if self_side_obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_LP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        -- _overdrive
+        if state_gate_game_scene_char_LP_common_to_burst_overdrive(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
+            return true
+        end
+        -- _BRC
+        if state_gate_game_scene_char_LP_common_to_burst_RC_blue(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            return true
+        end
+        -- _7_8_9_pre_jump
+        if common_game_scene_check_jump_direction(self_side_obj_char) then
+            self_side_obj_char["direction_input_cache"] = self_side_obj_char["direction_input"]
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_7_8_9_pre_jump(self_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "7_8_9_pre_jump"
+            return true
+        end
+        -- _common_ground_idle_to_move
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_LP_common_ground_to_attack_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            return true
+        end
+        -- _1_2_3_crouch
+        if common_game_scene_check_crouch_direction(self_side_obj_char) then
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(self_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "1_2_3_crouch"
+            return true
+        end
+        -- _6_walk
+        if self_side_obj_char["direction_input"] == 6 then
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6_walk(self_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "6_walk"
             return true
         end
     end
@@ -6732,58 +6767,54 @@ function state_gate_game_scene_char_LP_from_4SP_S(self_side_input,opponent_side_
     -- _4UA
     -- _5UA
     -- _4SP_S_6UA
-    -- _4SP_P
-    if (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 1)
-    and test_input_sys_press_or_hold(self_side_input["SP"])
-    and test_input_sys_press(self_side_input["P"]) then
-        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
-            self_side_obj_char[5] = -self_side_obj_char[5]
-        end
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_P(self_side_obj_char,"4SP_P",{190,515})
-        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-        self_side_obj_char["state"] = "4SP_P"
-        return true
-    end
-    -- _6SP_P
-    if self_side_obj_char["direction_input"] == 6
-    and test_input_sys_press_or_hold(self_side_input["SP"])
-    and test_input_sys_press(self_side_input["P"]) then
-        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
-            self_side_obj_char[5] = -self_side_obj_char[5]
-        end
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_P(self_side_obj_char,opponent_side_obj_char)
-        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-        self_side_obj_char["state"] = "6SP_P"
-        return true
-    end
-    -- _4SP_K
-    if self_side_obj_char["direction_input"] == 4
-    and test_input_sys_press_or_hold(self_side_input["SP"])
-    and test_input_sys_press(self_side_input["K"]) then
-        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
-            self_side_obj_char[5] = -self_side_obj_char[5]
-        end
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_K(self_side_obj_char,opponent_side_obj_char)
-        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-        self_side_obj_char["state"] = "4SP_K"
-        return true
-    end
-    -- _6SP_K
-    if self_side_obj_char["direction_input"] == 6
-    and test_input_sys_press_or_hold(self_side_input["SP"])
-    and test_input_sys_press(self_side_input["K"])
-    and (not self_side_obj_char["shot_sys_scapegoat_exist"])
-    then
-        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
-            self_side_obj_char[5] = -self_side_obj_char[5]
-        end
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_K(self_side_obj_char,opponent_side_obj_char)
-        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-        self_side_obj_char["state"] = "6SP_K"
-        return true
-    end
     -- _派生
     if self_side_obj_char["idle_cancel"] then
+        -- _4SP_P
+        if (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 1)
+        and test_input_sys_press(self_side_input["P"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
+            end
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_P(self_side_obj_char,"4SP_S_4P",{275,525})
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "4SP_P"
+            return true
+        end
+        -- _6SP_P
+        if self_side_obj_char["direction_input"] == 6
+        and test_input_sys_press(self_side_input["P"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
+            end
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_P(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "6SP_P"
+            return true
+        end
+        -- _4SP_K
+        if self_side_obj_char["direction_input"] == 4
+        and test_input_sys_press(self_side_input["K"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
+            end
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_K(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "4SP_K"
+            return true
+        end
+        -- _6SP_K
+        if self_side_obj_char["direction_input"] == 6
+        and test_input_sys_press(self_side_input["K"])
+        and (not self_side_obj_char["shot_sys_scapegoat_exist"])
+        then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
+            end
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_K(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "6SP_K"
+            return true
+        end
         -- _4SP_S_4dash
         -- _4SP_S_6dash
         -- _4SP_S_4S
