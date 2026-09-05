@@ -201,7 +201,7 @@ jSP_H_H
 4UA
 6UA
 5UA
-4SP_S_5UA
+4SP_S_6UA
 
         ["4UA"] = function()
             if run_at_current_frame then
@@ -221,9 +221,9 @@ jSP_H_H
             end
             state_gate_game_scene_char_LP_from_5UA(input,obj_char)
         end,
-        ["4SP_S_5UA"] = function()
+        ["4SP_S_6UA"] = function()
             if run_at_current_frame then
                 character_animator(obj_char,obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4SP_S_5UA(input,obj_char)
+            state_gate_game_scene_char_LP_from_4SP_S_6UA(input,obj_char)
         end,

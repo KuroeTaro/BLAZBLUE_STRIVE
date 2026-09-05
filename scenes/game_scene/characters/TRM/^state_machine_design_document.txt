@@ -418,7 +418,7 @@ _4SP_S
     _5_stand_idle
 _4SP_S_4dash
     _burst_RC_purple
-    _4SP_S_5UA
+    _4SP_S_6UA
     _4SP_P
     _6SP_P
     _4SP_K
@@ -427,7 +427,7 @@ _4SP_S_4dash
     _5_stand_idle
 _4SP_S_6dash
     _burst_RC_purple
-    _4SP_S_5UA
+    _4SP_S_6UA
     _4SP_P
     _6SP_P
     _4SP_K
@@ -505,7 +505,7 @@ _6UA
 _5UA
     _burst_RC_purple
     _5_stand_idle
-_4SP_S_5UA
+_4SP_S_6UA
     _burst_RC_purple
     _5_stand_idle
 

@@ -180,7 +180,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["shot_sys_steady_aim_countdown"] = 0
     obj_char_game_scene_char_LP["shot_sys_fire_cancel"] = false
     obj_char_game_scene_char_LP["shot_sys_idle_cancel"] = false
-    obj_char_game_scene_char_LP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值 上一帧是否高于瞄准命中最低数值
+    obj_char_game_scene_char_LP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值
     obj_char_game_scene_char_LP["shot_sys_animation"] = nil
     obj_char_game_scene_char_LP["shot_sys_camera_shake_table"] = {}
     obj_char_game_scene_char_LP["shot_sys_at_the_ready_ban_state"] = {
@@ -222,7 +222,7 @@ function load_game_scene_obj_char_LP()
         ["4UA"] = true,
         ["6UA"] = true,
         ["5UA"] = true,
-        ["4SP_S_5UA"] = true
+        ["4SP_S_6UA"] = true
     }
     obj_char_game_scene_char_LP["shot_sys_curse_ban_state"] = {
         ["before_ease_in"] = true,
@@ -2240,11 +2240,11 @@ function state_machine_char_game_scene_char_LP()
             end
             state_gate_game_scene_char_LP_from_5UA(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
         end,
-        ["4SP_S_5UA"] = function()
+        ["4SP_S_6UA"] = function()
             if run_at_current_frame then
                 character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
-            state_gate_game_scene_char_LP_from_4SP_S_5UA(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+            state_gate_game_scene_char_LP_from_4SP_S_6UA(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
         end
     }
     if run_at_current_frame then
@@ -2963,10 +2963,10 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move(self_side_in
 end
 function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _active_FD_block
-    -- 4UA
-    -- 6UA
-    -- 5UA
-    -- 4SP_S_5UA
+    -- _4UA
+    -- _6UA
+    -- _5UA
+    -- _4SP_S_6UA
     -- special
     if state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
@@ -3105,11 +3105,11 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(sel
     return false
 end
 function state_gate_game_scene_char_LP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
-    -- 4UA
-    -- 6UA
-    -- 5UA
-    -- 4SP_S_5UA
-    -- 4SP_P
+    -- _4UA
+    -- _6UA
+    -- _5UA
+    -- _4SP_S_6UA
+    -- _4SP_P
     if (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 1)
     and test_input_sys_press_or_hold(self_side_input["SP"])
     and test_input_sys_press(self_side_input["P"]) then
@@ -3121,7 +3121,7 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move(self_side_i
         self_side_obj_char["state"] = "4SP_P"
         return true
     end
-    -- 6SP_P
+    -- _6SP_P
     if self_side_obj_char["direction_input"] == 6
     and test_input_sys_press_or_hold(self_side_input["SP"])
     and test_input_sys_press(self_side_input["P"]) then
@@ -3133,7 +3133,7 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move(self_side_i
         self_side_obj_char["state"] = "6SP_P"
         return true
     end
-    -- 4SP_K
+    -- _4SP_K
     if self_side_obj_char["direction_input"] == 4
     and test_input_sys_press_or_hold(self_side_input["SP"])
     and test_input_sys_press(self_side_input["K"]) then
@@ -3145,7 +3145,7 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move(self_side_i
         self_side_obj_char["state"] = "4SP_K"
         return true
     end
-    -- 6SP_K
+    -- _6SP_K
     if self_side_obj_char["direction_input"] == 6
     and test_input_sys_press_or_hold(self_side_input["SP"])
     and test_input_sys_press(self_side_input["K"])
@@ -3159,15 +3159,26 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move(self_side_i
         self_side_obj_char["state"] = "6SP_K"
         return true
     end
-    -- 4SP_S
-    -- 4SP_S_4dash
-    -- 4SP_S_6dash
-    -- 4SP_S_4S
-    -- 4SP_S_H
-    -- 4SP_S_2Launcher
-    -- 4SP_S_6Launcher
-    -- 4SP_S_5Launcher
-    -- 6SP_S
+    -- _4SP_S
+    if self_side_obj_char["direction_input"] == 4
+    and test_input_sys_press_or_hold(self_side_input["SP"])
+    and test_input_sys_press(self_side_input["S"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
+        end
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4SP_S"
+        return true
+    end
+        -- _4SP_S_4dash
+        -- _4SP_S_6dash
+        -- _4SP_S_4S
+        -- _4SP_S_H
+        -- _4SP_S_2Launcher
+        -- _4SP_S_6Launcher
+        -- _4SP_S_5Launcher
+    -- _6SP_S
     if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3)
     and self_side_obj_char["6SP_S_shot_sys_pass_state"][self_side_obj_char["shot_sys_state"]]
     and self_side_obj_char["ability_gauge"][1] > 0
@@ -3181,18 +3192,18 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move(self_side_i
         self_side_obj_char["state"] = "6SP_S"
         return true
     end
-    -- SP_H
-    -- SP_H_P
-    -- SP_H_K
-    -- SP_H_S
-    -- SP_H_H
+    -- _SP_H
+        -- _SP_H_P
+        -- _SP_H_K
+        -- _SP_H_S
+        -- _SP_H_H
 end
 function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
-    -- 4UA
-    -- 6UA
-    -- 5UA
-    -- 4SP_S_5UA
-    -- 4SP_P
+    -- _4UA
+    -- _6UA
+    -- _5UA
+    -- _4SP_S_6UA
+    -- _4SP_P
     if (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 1)
     and test_input_sys_press_or_hold(self_side_input["SP"])
     and test_input_sys_press_or_hold(self_side_input["P"]) then
@@ -3204,7 +3215,7 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(se
         self_side_obj_char["state"] = "4SP_P"
         return true
     end
-    -- 6SP_P
+    -- _6SP_P
     if self_side_obj_char["direction_input"] == 6
     and test_input_sys_press_or_hold(self_side_input["SP"])
     and test_input_sys_press_or_hold(self_side_input["P"]) then
@@ -3216,7 +3227,7 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(se
         self_side_obj_char["state"] = "6SP_P"
         return true
     end
-    -- 4SP_K
+    -- _4SP_K
     if self_side_obj_char["direction_input"] == 4
     and test_input_sys_press_or_hold(self_side_input["SP"])
     and test_input_sys_press_or_hold(self_side_input["K"]) then
@@ -3228,7 +3239,7 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(se
         self_side_obj_char["state"] = "4SP_K"
         return true
     end
-    -- 6SP_K
+    -- _6SP_K
     if self_side_obj_char["direction_input"] == 6
     and test_input_sys_press_or_hold(self_side_input["SP"])
     and test_input_sys_press_or_hold(self_side_input["K"])
@@ -3242,15 +3253,26 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(se
         self_side_obj_char["state"] = "6SP_K"
         return true
     end
-    -- 4SP_S
-    -- 4SP_S_4dash
-    -- 4SP_S_6dash
-    -- 4SP_S_4S
-    -- 4SP_S_H
-    -- 4SP_S_2Launcher
-    -- 4SP_S_6Launcher
-    -- 4SP_S_5Launcher
-    -- 6SP_S
+    -- _4SP_S
+    if self_side_obj_char["direction_input"] == 4
+    and test_input_sys_press_or_hold(self_side_input["SP"])
+    and test_input_sys_press_or_hold(self_side_input["S"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
+        end
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4SP_S"
+        return true
+    end
+        -- _4SP_S_4dash
+        -- _4SP_S_6dash
+        -- _4SP_S_4S
+        -- _4SP_S_H
+        -- _4SP_S_2Launcher
+        -- _4SP_S_6Launcher
+        -- _4SP_S_5Launcher
+    -- _6SP_S
     if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3)
     and self_side_obj_char["6SP_S_shot_sys_pass_state"][self_side_obj_char["shot_sys_state"]]
     and self_side_obj_char["ability_gauge"][1] > 0
@@ -3264,11 +3286,11 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(se
         self_side_obj_char["state"] = "6SP_S"
         return true
     end
-    -- SP_H
-    -- SP_H_P
-    -- SP_H_K
-    -- SP_H_S
-    -- SP_H_H
+    -- _SP_H
+        -- _SP_H_P
+        -- _SP_H_K
+        -- _SP_H_S
+        -- _SP_H_H
 end
 function state_gate_game_scene_char_LP_common_air_to_dash_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _4dash_air_backdash
@@ -3790,7 +3812,7 @@ function state_gate_game_scene_char_LP_from_hurt(self_side_input,opponent_side_i
     if state_gate_game_scene_char_LP_common_to_burst_overdrive(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char,"burst") then
         return true
     end
-    -- until land
+    -- until_land
     if self_side_obj_char["height"] == "air" then
         if (self_side_obj_char["collision_move_available"][1] == 0 or self_side_obj_char["collision_move_available"][2] == 0)
         and self_side_obj_char["self_wallbounce_hurt_animation"] ~= nil then
@@ -3935,7 +3957,7 @@ function state_gate_game_scene_char_LP_from_throw_success(self_side_input,oppone
     end
 end
 function state_gate_game_scene_char_LP_from_throw_hurt_success(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
-    -- knockdown knockdown_recovery
+    -- knockdown&knockdown_recovery
     if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
         self_side_obj_char["y"] = 0
         self_side_obj_char["state"] = self_side_obj_char["state_cache"]
@@ -4017,7 +4039,7 @@ function state_gate_game_scene_char_LP_from_throw_tech(self_side_input,opponent_
             if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
-            -- 7_8_9_jump_air
+            -- _7_8_9_jump_air
             if state_gate_game_scene_char_LP_from_7_8_9_jump_air(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
@@ -4030,7 +4052,7 @@ function state_gate_game_scene_char_LP_from_throw_tech(self_side_input,opponent_
             if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
-            -- 5_stand_idle
+            -- _5_stand_idle
             if state_gate_game_scene_char_LP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
@@ -6704,6 +6726,73 @@ function state_gate_game_scene_char_LP_from_6SP_K(self_side_input,opponent_side_
     end
 end
 function state_gate_game_scene_char_LP_from_4SP_S(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+    -- _PRC
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    -- 4UA
+    -- 5UA
+    -- 4SP_S_6UA
+    -- 4SP_P
+    if (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 1)
+    and test_input_sys_press_or_hold(self_side_input["SP"])
+    and test_input_sys_press(self_side_input["P"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
+        end
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_P(self_side_obj_char,"4SP_P",{190,515})
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4SP_P"
+        return true
+    end
+    -- 6SP_P
+    if self_side_obj_char["direction_input"] == 6
+    and test_input_sys_press_or_hold(self_side_input["SP"])
+    and test_input_sys_press(self_side_input["P"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
+        end
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_P(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6SP_P"
+        return true
+    end
+    -- 4SP_K
+    if self_side_obj_char["direction_input"] == 4
+    and test_input_sys_press_or_hold(self_side_input["SP"])
+    and test_input_sys_press(self_side_input["K"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
+        end
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_K(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4SP_K"
+        return true
+    end
+    -- 6SP_K
+    if self_side_obj_char["direction_input"] == 6
+    and test_input_sys_press_or_hold(self_side_input["SP"])
+    and test_input_sys_press(self_side_input["K"])
+    and (not self_side_obj_char["shot_sys_scapegoat_exist"])
+    then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
+        end
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_K(self_side_obj_char,opponent_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6SP_K"
+        return true
+    end
+    -- _派生
+    if self_side_obj_char["idle_cancel"] then
+        -- 4SP_S_4dash
+        -- 4SP_S_6dash
+        -- 4SP_S_4S
+        -- 4SP_S_H
+        -- 4SP_S_2Launcher
+        -- 4SP_S_6Launcher
+        -- 4SP_S_5Launcher
+    end
 end
 function state_gate_game_scene_char_LP_from_4SP_S_4dash(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
 end
@@ -6769,7 +6858,7 @@ function state_gate_game_scene_char_LP_from_6UA(self_side_input,opponent_side_in
 end
 function state_gate_game_scene_char_LP_from_5UA(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
 end
-function state_gate_game_scene_char_LP_from_4SP_S_5UA(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+function state_gate_game_scene_char_LP_from_4SP_S_6UA(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
 end
 -- draw
 function draw_game_scene_char_LP_logic_graphic_pos_sync()
