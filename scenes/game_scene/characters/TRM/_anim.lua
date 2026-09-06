@@ -9573,7 +9573,7 @@ end
 -- _4SP_S_4dash
 -- _4SP_S_6dash
 -- _4SP_S_4S
-function load_game_scene_anim_char_TRM_4SP_4S(obj_char)
+function load_game_scene_anim_char_TRM_4SP_S_4S(obj_char)
     local res = {}
     local side = obj_char["player_side"]
     res["prop_f"] = "f"
@@ -9622,8 +9622,6 @@ function load_game_scene_anim_char_TRM_4SP_4S(obj_char)
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = {285,510}
-        -- play_SFX
-        play_obj_audio(move_SFX_table["4SP_S_startup"])
         -- visual_front
         CHARACTER_VISUAL_FRONT = side
     end
@@ -9869,11 +9867,6 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
     res[5] = function()
         -- draw_correction
         hit_side_obj_char[8] = 2
-    end
-    res[7] = function()
-        -- input_sys_cache
-        hit_side_obj_char["input_sys_state_negative_edge"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_init(hit_side)(hit_side_obj_char)
     end
     res[8] = function()
         -- state

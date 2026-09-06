@@ -1,0 +1,5391 @@
+{
+ "LP": {
+  "side": "LP",
+  "file": "left.lua",
+  "dispatch_name": "state_machine_char_game_scene_char_LP",
+  "dispatch_states": [
+   "before_ease_in",
+   "active_FD_block",
+   "active_FD_block_to_idle",
+   "block",
+   "hurt",
+   "throw_success",
+   "throw_hurt_success",
+   "throw_testing",
+   "throw_tested",
+   "throw_teching",
+   "throw_teched",
+   "hitstop",
+   "hurtstop",
+   "blockstop",
+   "wallstick",
+   "wallbreak_hurt",
+   "wallbreak_hit",
+   "knockdown",
+   "knockdown_recovery",
+   "knockdown_recovery_wallstick",
+   "knockout",
+   "1_2_3_crouch",
+   "1_2_3_crouch_turn",
+   "1_2_3_crouch_to_stand_idle",
+   "5_stand_idle",
+   "5_stand_turn",
+   "5_stand_dash_skid",
+   "4_walk",
+   "4_walk_to_stand_idle",
+   "6_walk",
+   "6_walk_to_stand_idle",
+   "7_8_9_jump_air_to_stand_idle",
+   "7_8_9_jump_air",
+   "7_8_9_pre_jump",
+   "4dash_backdash",
+   "4dash_air_backdash",
+   "6dash_dash",
+   "6dash_air_dash",
+   "6dash_dash_cancel",
+   "burst_RC_red",
+   "burst_RC_blue",
+   "burst_RC_purple",
+   "burst_RC_yellow",
+   "burst_overdrive",
+   "burst_burst",
+   "2P",
+   "6P",
+   "5P",
+   "2K",
+   "6K",
+   "5K",
+   "2S",
+   "6S",
+   "cS",
+   "fS",
+   "5H",
+   "2Launcher",
+   "4_6Launcher",
+   "5Launcher",
+   "j5P",
+   "j2K",
+   "j5K",
+   "j5S",
+   "j2S",
+   "j4_6Launcher",
+   "j5Launcher",
+   "4SP_P",
+   "6SP_P",
+   "4SP_K",
+   "6SP_K",
+   "4SP_S",
+   "4SP_S_4dash",
+   "4SP_S_6dash",
+   "4SP_S_4S",
+   "4SP_S_H",
+   "4SP_S_2Launcher",
+   "4SP_S_6Launcher",
+   "4SP_S_5Launcher",
+   "6SP_S",
+   "SP_H",
+   "SP_H_P",
+   "SP_H_K",
+   "SP_H_S",
+   "SP_H_H",
+   "jSP_S",
+   "jSP_H",
+   "jSP_H_P",
+   "jSP_H_K",
+   "jSP_H_S",
+   "jSP_H_H",
+   "4UA",
+   "6UA",
+   "5UA",
+   "4SP_S_6UA"
+  ],
+  "functions": [
+   {
+    "name": "state_machine_char_game_scene_char_LP",
+    "kind": null,
+    "state": null,
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [
+     [
+      "from",
+      "1_2_3_crouch"
+     ],
+     [
+      "from",
+      "1_2_3_crouch_to_stand_idle"
+     ],
+     [
+      "from",
+      "1_2_3_crouch_turn"
+     ],
+     [
+      "from",
+      "2K"
+     ],
+     [
+      "from",
+      "2Launcher"
+     ],
+     [
+      "from",
+      "2P"
+     ],
+     [
+      "from",
+      "2S"
+     ],
+     [
+      "from",
+      "4SP_K"
+     ],
+     [
+      "from",
+      "4SP_P"
+     ],
+     [
+      "from",
+      "4SP_S"
+     ],
+     [
+      "from",
+      "4SP_S_2Launcher"
+     ],
+     [
+      "from",
+      "4SP_S_4S"
+     ],
+     [
+      "from",
+      "4SP_S_4dash"
+     ],
+     [
+      "from",
+      "4SP_S_5Launcher"
+     ],
+     [
+      "from",
+      "4SP_S_6Launcher"
+     ],
+     [
+      "from",
+      "4SP_S_6UA"
+     ],
+     [
+      "from",
+      "4SP_S_6dash"
+     ],
+     [
+      "from",
+      "4SP_S_H"
+     ],
+     [
+      "from",
+      "4UA"
+     ],
+     [
+      "from",
+      "4_6Launcher"
+     ],
+     [
+      "from",
+      "4_walk"
+     ],
+     [
+      "from",
+      "4_walk_to_stand_idle"
+     ],
+     [
+      "from",
+      "4dash_air_backdash"
+     ],
+     [
+      "from",
+      "4dash_backdash"
+     ],
+     [
+      "from",
+      "5H"
+     ],
+     [
+      "from",
+      "5K"
+     ],
+     [
+      "from",
+      "5Launcher"
+     ],
+     [
+      "from",
+      "5P"
+     ],
+     [
+      "from",
+      "5UA"
+     ],
+     [
+      "from",
+      "5_stand_dash_skid"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ],
+     [
+      "from",
+      "5_stand_turn"
+     ],
+     [
+      "from",
+      "6K"
+     ],
+     [
+      "from",
+      "6P"
+     ],
+     [
+      "from",
+      "6S"
+     ],
+     [
+      "from",
+      "6SP_K"
+     ],
+     [
+      "from",
+      "6SP_P"
+     ],
+     [
+      "from",
+      "6SP_S"
+     ],
+     [
+      "from",
+      "6UA"
+     ],
+     [
+      "from",
+      "6_walk"
+     ],
+     [
+      "from",
+      "6_walk_to_stand_idle"
+     ],
+     [
+      "from",
+      "6dash_air_dash"
+     ],
+     [
+      "from",
+      "6dash_dash"
+     ],
+     [
+      "from",
+      "6dash_dash_cancel"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air_to_stand_idle"
+     ],
+     [
+      "from",
+      "7_8_9_pre_jump"
+     ],
+     [
+      "from",
+      "SP_H"
+     ],
+     [
+      "from",
+      "SP_H_H"
+     ],
+     [
+      "from",
+      "SP_H_K"
+     ],
+     [
+      "from",
+      "SP_H_P"
+     ],
+     [
+      "from",
+      "SP_H_S"
+     ],
+     [
+      "from",
+      "active_FD_block"
+     ],
+     [
+      "from",
+      "active_FD_block_to_idle"
+     ],
+     [
+      "from",
+      "block"
+     ],
+     [
+      "from",
+      "blockstop"
+     ],
+     [
+      "from",
+      "burst_RC_blue"
+     ],
+     [
+      "from",
+      "burst_RC_purple"
+     ],
+     [
+      "from",
+      "burst_RC_red"
+     ],
+     [
+      "from",
+      "burst_RC_yellow"
+     ],
+     [
+      "from",
+      "burst_burst"
+     ],
+     [
+      "from",
+      "burst_overdrive"
+     ],
+     [
+      "from",
+      "cS"
+     ],
+     [
+      "from",
+      "fS"
+     ],
+     [
+      "from",
+      "hitstop"
+     ],
+     [
+      "from",
+      "hurt"
+     ],
+     [
+      "from",
+      "hurtstop"
+     ],
+     [
+      "from",
+      "j2K"
+     ],
+     [
+      "from",
+      "j2S"
+     ],
+     [
+      "from",
+      "j4_6Launcher"
+     ],
+     [
+      "from",
+      "j5K"
+     ],
+     [
+      "from",
+      "j5Launcher"
+     ],
+     [
+      "from",
+      "j5P"
+     ],
+     [
+      "from",
+      "j5S"
+     ],
+     [
+      "from",
+      "jSP_H"
+     ],
+     [
+      "from",
+      "jSP_H_H"
+     ],
+     [
+      "from",
+      "jSP_H_K"
+     ],
+     [
+      "from",
+      "jSP_H_P"
+     ],
+     [
+      "from",
+      "jSP_H_S"
+     ],
+     [
+      "from",
+      "jSP_S"
+     ],
+     [
+      "from",
+      "knockdown"
+     ],
+     [
+      "from",
+      "knockdown_recovery"
+     ],
+     [
+      "from",
+      "knockdown_recovery_wallstick"
+     ],
+     [
+      "from",
+      "throw_hurt_success"
+     ],
+     [
+      "from",
+      "throw_success"
+     ],
+     [
+      "from",
+      "throw_tech"
+     ],
+     [
+      "from",
+      "throw_tested"
+     ],
+     [
+      "from",
+      "throw_testing"
+     ],
+     [
+      "from",
+      "wallstick"
+     ],
+     [
+      "to",
+      "5H"
+     ]
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_ground_to_dash_move",
+    "kind": "common",
+    "state": "ground_to_dash_move",
+    "line": null,
+    "self_writes": [
+     "4dash_backdash",
+     "6dash_dash"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "4dash_backdash",
+     "6dash_dash"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [],
+    "reach": [
+     "4dash_backdash",
+     "6dash_dash"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all",
+    "kind": "common",
+    "state": "ground_to_dash_move_hold_ver_all",
+    "line": null,
+    "self_writes": [
+     "4dash_backdash",
+     "6dash_dash"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "4dash_backdash",
+     "6dash_dash"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [],
+    "reach": [
+     "4dash_backdash",
+     "6dash_dash"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only",
+    "kind": "common",
+    "state": "ground_to_dash_move_hold_ver_6dash_only",
+    "line": null,
+    "self_writes": [
+     "4dash_backdash",
+     "6dash_dash"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "4dash_backdash",
+     "6dash_dash"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [],
+    "reach": [
+     "4dash_backdash",
+     "6dash_dash"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_4dash_to_walk",
+    "kind": "common",
+    "state": "ground_to_dash_move_hold_ver_4dash_to_walk",
+    "line": null,
+    "self_writes": [
+     "6dash_dash"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "6dash_dash"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [],
+    "reach": [
+     "6dash_dash"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_ground_to_attack_move",
+    "kind": "common",
+    "state": "ground_to_attack_move",
+    "line": null,
+    "self_writes": [
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4_6Launcher",
+     "5K",
+     "5Launcher",
+     "5P",
+     "6K",
+     "6P",
+     "6S",
+     "cS",
+     "fS"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4_6Launcher",
+     "5K",
+     "5Launcher",
+     "5P",
+     "6K",
+     "6P",
+     "6S",
+     "cS",
+     "fS"
+    ],
+    "nonlit_self_write": 13,
+    "calls": [
+     [
+      "common",
+      "ground_to_special_move"
+     ]
+    ],
+    "reach": [
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "5K",
+     "5Launcher",
+     "5P",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver",
+    "kind": "common",
+    "state": "ground_to_attack_move_hold_ver",
+    "line": null,
+    "self_writes": [
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4_6Launcher",
+     "5K",
+     "5Launcher",
+     "5P",
+     "6K",
+     "6P",
+     "6S",
+     "cS",
+     "fS"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4_6Launcher",
+     "5K",
+     "5Launcher",
+     "5P",
+     "6K",
+     "6P",
+     "6S",
+     "cS",
+     "fS"
+    ],
+    "nonlit_self_write": 13,
+    "calls": [
+     [
+      "common",
+      "ground_to_special_move_hold_ver"
+     ]
+    ],
+    "reach": [
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "5K",
+     "5Launcher",
+     "5P",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_ground_to_special_move",
+    "kind": "common",
+    "state": "ground_to_special_move",
+    "line": null,
+    "self_writes": [
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S"
+    ],
+    "nonlit_self_write": 6,
+    "calls": [],
+    "reach": [
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver",
+    "kind": "common",
+    "state": "ground_to_special_move_hold_ver",
+    "line": null,
+    "self_writes": [
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S"
+    ],
+    "nonlit_self_write": 6,
+    "calls": [],
+    "reach": [
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_air_to_dash_move",
+    "kind": "common",
+    "state": "air_to_dash_move",
+    "line": null,
+    "self_writes": [
+     "4dash_air_backdash",
+     "6dash_air_dash"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "4dash_air_backdash",
+     "6dash_air_dash"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [],
+    "reach": [
+     "4dash_air_backdash",
+     "6dash_air_dash"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all",
+    "kind": "common",
+    "state": "air_to_dash_move_hold_ver_all",
+    "line": null,
+    "self_writes": [
+     "4dash_air_backdash",
+     "6dash_air_dash"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "4dash_air_backdash",
+     "6dash_air_dash"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [],
+    "reach": [
+     "4dash_air_backdash",
+     "6dash_air_dash"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_4dash_only",
+    "kind": "common",
+    "state": "air_to_dash_move_hold_ver_4dash_only",
+    "line": null,
+    "self_writes": [
+     "4dash_air_backdash",
+     "6dash_air_dash"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "4dash_air_backdash",
+     "6dash_air_dash"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [],
+    "reach": [
+     "4dash_air_backdash",
+     "6dash_air_dash"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_air_to_attack_move",
+    "kind": "common",
+    "state": "air_to_attack_move",
+    "line": null,
+    "self_writes": [
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ],
+    "nonlit_self_write": 6,
+    "calls": [],
+    "reach": [
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver",
+    "kind": "common",
+    "state": "air_to_attack_move_hold_ver",
+    "line": null,
+    "self_writes": [
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ],
+    "nonlit_self_write": 6,
+    "calls": [],
+    "reach": [
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_air_to_special_move",
+    "kind": "common",
+    "state": "air_to_special_move",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver",
+    "kind": "common",
+    "state": "air_to_special_move_hold_ver",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_to_burst_RC_red",
+    "kind": "common",
+    "state": "to_burst_RC_red",
+    "line": null,
+    "self_writes": [
+     "burst_RC_red"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "burst_RC_red"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [],
+    "reach": [
+     "burst_RC_red"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_to_burst_RC_blue",
+    "kind": "common",
+    "state": "to_burst_RC_blue",
+    "line": null,
+    "self_writes": [
+     "burst_RC_blue"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "burst_RC_blue"
+    ],
+    "nonlit_self_write": 3,
+    "calls": [],
+    "reach": [
+     "burst_RC_blue"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_to_burst_RC_purple",
+    "kind": "common",
+    "state": "to_burst_RC_purple",
+    "line": null,
+    "self_writes": [
+     "burst_RC_purple"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "burst_RC_purple"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [],
+    "reach": [
+     "burst_RC_purple"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_to_burst_RC_yellow",
+    "kind": "common",
+    "state": "to_burst_RC_yellow",
+    "line": null,
+    "self_writes": [
+     "burst_RC_yellow"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "burst_RC_yellow"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [],
+    "reach": [
+     "burst_RC_yellow"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_to_burst_overdrive",
+    "kind": "common",
+    "state": "to_burst_overdrive",
+    "line": null,
+    "self_writes": [
+     "burst_overdrive"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "burst_overdrive"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [],
+    "reach": [
+     "burst_overdrive"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_to_5H",
+    "kind": "to",
+    "state": "5H",
+    "line": null,
+    "self_writes": [
+     "5H"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5H"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [],
+    "reach": [
+     "5H"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_active_FD_block",
+    "kind": "from",
+    "state": "active_FD_block",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_block",
+    "kind": "from",
+    "state": "block",
+    "line": null,
+    "self_writes": [
+     "1_2_3_crouch",
+     "5_stand_idle"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "1_2_3_crouch",
+     "5_stand_idle"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "to_burst_RC_yellow"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ],
+     [
+      "from",
+      "1_2_3_crouch"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "1_2_3_crouch_to_stand_idle",
+     "1_2_3_crouch_turn",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_yellow",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_hurt",
+    "kind": "from",
+    "state": "hurt",
+    "line": null,
+    "self_writes": [
+     "1_2_3_crouch",
+     "5_stand_idle"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "1_2_3_crouch",
+     "5_stand_idle"
+    ],
+    "nonlit_self_write": 5,
+    "calls": [
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ],
+     [
+      "from",
+      "1_2_3_crouch"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "1_2_3_crouch_to_stand_idle",
+     "1_2_3_crouch_turn",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_throw_success",
+    "kind": "from",
+    "state": "throw_success",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle"
+    ],
+    "opp_writes": [
+     "hurt"
+    ],
+    "any_lit": [
+     "5_stand_idle",
+     "active",
+     "hurt"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "air_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "air_to_special_move_hold_ver"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "ground_to_special_move_hold_ver"
+     ],
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "common",
+      "to_burst_RC_red"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_air_backdash",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_air_dash",
+     "6dash_dash",
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_RC_red",
+     "burst_overdrive",
+     "cS",
+     "fS",
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_throw_hurt_success",
+    "kind": "from",
+    "state": "throw_hurt_success",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 3,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_throw_testing",
+    "kind": "from",
+    "state": "throw_testing",
+    "line": null,
+    "self_writes": [
+     "throw_success",
+     "throw_teched"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "throw_success",
+     "throw_teched"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [
+     [
+      "from",
+      "throw_success"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_air_backdash",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_air_dash",
+     "6dash_dash",
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_RC_red",
+     "burst_overdrive",
+     "cS",
+     "fS",
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S",
+     "throw_success",
+     "throw_teched"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_throw_tested",
+    "kind": "from",
+    "state": "throw_tested",
+    "line": null,
+    "self_writes": [
+     "throw_hurt_success",
+     "throw_teching"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "throw_hurt_success",
+     "throw_teching"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [],
+    "reach": [
+     "throw_hurt_success",
+     "throw_teching"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_throw_tech",
+    "kind": "from",
+    "state": "throw_tech",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle",
+     "7_8_9_jump_air"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_idle",
+     "7_8_9_jump_air"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [
+     [
+      "common",
+      "air_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_air_backdash",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_air_dash",
+     "6dash_dash",
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS",
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_hitstop",
+    "kind": "from",
+    "state": "hitstop",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "to_burst_RC_red"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ]
+    ],
+    "reach": [
+     "burst_RC_red",
+     "burst_overdrive"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_blockstop",
+    "kind": "from",
+    "state": "blockstop",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "to_burst_overdrive"
+     ]
+    ],
+    "reach": [
+     "burst_overdrive"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_hurtstop",
+    "kind": "from",
+    "state": "hurtstop",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "to_burst_overdrive"
+     ]
+    ],
+    "reach": [
+     "burst_overdrive"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_wallstick",
+    "kind": "from",
+    "state": "wallstick",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 1,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_knockdown",
+    "kind": "from",
+    "state": "knockdown",
+    "line": null,
+    "self_writes": [
+     "knockdown_recovery"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "knockdown_recovery"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "to_burst_overdrive"
+     ]
+    ],
+    "reach": [
+     "burst_overdrive",
+     "knockdown_recovery"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_knockdown_recovery",
+    "kind": "from",
+    "state": "knockdown_recovery",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_idle"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_knockdown_recovery_wallstick",
+    "kind": "from",
+    "state": "knockdown_recovery_wallstick",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 3,
+    "calls": [
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_air_backdash",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_air_dash",
+     "6dash_dash",
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS",
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_1_2_3_crouch",
+    "kind": "from",
+    "state": "1_2_3_crouch",
+    "line": null,
+    "self_writes": [
+     "1_2_3_crouch_to_stand_idle",
+     "1_2_3_crouch_turn",
+     "4_walk",
+     "6_walk",
+     "7_8_9_pre_jump"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "1_2_3_crouch_to_stand_idle",
+     "1_2_3_crouch_turn",
+     "4_walk",
+     "6_walk",
+     "7_8_9_pre_jump"
+    ],
+    "nonlit_self_write": 5,
+    "calls": [
+     [
+      "common",
+      "ground_to_attack_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_6dash_only"
+     ],
+     [
+      "common",
+      "to_burst_RC_blue"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ],
+     [
+      "from",
+      "1_2_3_crouch_turn"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "1_2_3_crouch_to_stand_idle",
+     "1_2_3_crouch_turn",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_1_2_3_crouch_turn",
+    "kind": "from",
+    "state": "1_2_3_crouch_turn",
+    "line": null,
+    "self_writes": [
+     "1_2_3_crouch",
+     "1_2_3_crouch_to_stand_idle",
+     "4_walk",
+     "6_walk",
+     "7_8_9_pre_jump"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "1_2_3_crouch",
+     "1_2_3_crouch_to_stand_idle",
+     "4_walk",
+     "6_walk",
+     "7_8_9_pre_jump"
+    ],
+    "nonlit_self_write": 5,
+    "calls": [
+     [
+      "common",
+      "ground_to_attack_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_6dash_only"
+     ],
+     [
+      "common",
+      "to_burst_RC_blue"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "1_2_3_crouch_to_stand_idle",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_1_2_3_crouch_to_stand_idle",
+    "kind": "from",
+    "state": "1_2_3_crouch_to_stand_idle",
+    "line": null,
+    "self_writes": [
+     "1_2_3_crouch",
+     "4_walk",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6_walk",
+     "7_8_9_pre_jump"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "1_2_3_crouch",
+     "4_walk",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6_walk",
+     "7_8_9_pre_jump"
+    ],
+    "nonlit_self_write": 6,
+    "calls": [
+     [
+      "common",
+      "ground_to_attack_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_6dash_only"
+     ],
+     [
+      "common",
+      "to_burst_RC_blue"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ],
+     [
+      "from",
+      "5_stand_turn"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_5_stand_idle",
+    "kind": "from",
+    "state": "5_stand_idle",
+    "line": null,
+    "self_writes": [
+     "1_2_3_crouch",
+     "4_walk",
+     "5_stand_turn",
+     "6_walk",
+     "7_8_9_pre_jump"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "1_2_3_crouch",
+     "4_walk",
+     "5_stand_turn",
+     "6_walk",
+     "7_8_9_pre_jump"
+    ],
+    "nonlit_self_write": 5,
+    "calls": [
+     [
+      "common",
+      "ground_to_attack_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_6dash_only"
+     ],
+     [
+      "common",
+      "to_burst_RC_blue"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ],
+     [
+      "from",
+      "5_stand_turn"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_5_stand_turn",
+    "kind": "from",
+    "state": "5_stand_turn",
+    "line": null,
+    "self_writes": [
+     "1_2_3_crouch",
+     "4_walk",
+     "5_stand_idle",
+     "6_walk",
+     "7_8_9_pre_jump"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "1_2_3_crouch",
+     "4_walk",
+     "5_stand_idle",
+     "6_walk",
+     "7_8_9_pre_jump"
+    ],
+    "nonlit_self_write": 5,
+    "calls": [
+     [
+      "common",
+      "ground_to_attack_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_6dash_only"
+     ],
+     [
+      "common",
+      "to_burst_RC_blue"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_5_stand_dash_skid",
+    "kind": "from",
+    "state": "5_stand_dash_skid",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle",
+     "7_8_9_pre_jump"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_idle",
+     "7_8_9_pre_jump"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [
+     [
+      "common",
+      "ground_to_attack_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_6dash_only"
+     ],
+     [
+      "common",
+      "to_burst_RC_blue"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_4_walk",
+    "kind": "from",
+    "state": "4_walk",
+    "line": null,
+    "self_writes": [
+     "1_2_3_crouch",
+     "4_walk_to_stand_idle",
+     "5_stand_turn",
+     "6_walk",
+     "7_8_9_pre_jump"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "1_2_3_crouch",
+     "4_walk_to_stand_idle",
+     "5_stand_turn",
+     "6_walk",
+     "7_8_9_pre_jump"
+    ],
+    "nonlit_self_write": 5,
+    "calls": [
+     [
+      "common",
+      "ground_to_attack_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_6dash_only"
+     ],
+     [
+      "common",
+      "to_burst_RC_blue"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ],
+     [
+      "from",
+      "5_stand_turn"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4_walk_to_stand_idle",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_4_walk_to_stand_idle",
+    "kind": "from",
+    "state": "4_walk_to_stand_idle",
+    "line": null,
+    "self_writes": [
+     "1_2_3_crouch",
+     "4_walk",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6_walk",
+     "7_8_9_pre_jump"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "1_2_3_crouch",
+     "4_walk",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6_walk",
+     "7_8_9_pre_jump"
+    ],
+    "nonlit_self_write": 6,
+    "calls": [
+     [
+      "common",
+      "ground_to_attack_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_6dash_only"
+     ],
+     [
+      "common",
+      "to_burst_RC_blue"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ],
+     [
+      "from",
+      "5_stand_turn"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_6_walk",
+    "kind": "from",
+    "state": "6_walk",
+    "line": null,
+    "self_writes": [
+     "1_2_3_crouch",
+     "4_walk",
+     "5_stand_turn",
+     "6_walk_to_stand_idle",
+     "7_8_9_pre_jump"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "1_2_3_crouch",
+     "4_walk",
+     "5_stand_turn",
+     "6_walk_to_stand_idle",
+     "7_8_9_pre_jump"
+    ],
+    "nonlit_self_write": 5,
+    "calls": [
+     [
+      "common",
+      "ground_to_attack_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_6dash_only"
+     ],
+     [
+      "common",
+      "to_burst_RC_blue"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ],
+     [
+      "from",
+      "5_stand_turn"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6_walk_to_stand_idle",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_6_walk_to_stand_idle",
+    "kind": "from",
+    "state": "6_walk_to_stand_idle",
+    "line": null,
+    "self_writes": [
+     "1_2_3_crouch",
+     "4_walk",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6_walk",
+     "7_8_9_pre_jump"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "1_2_3_crouch",
+     "4_walk",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6_walk",
+     "7_8_9_pre_jump"
+    ],
+    "nonlit_self_write": 6,
+    "calls": [
+     [
+      "common",
+      "ground_to_attack_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_6dash_only"
+     ],
+     [
+      "common",
+      "to_burst_RC_blue"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ],
+     [
+      "from",
+      "5_stand_turn"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_7_8_9_jump_air_to_stand_idle",
+    "kind": "from",
+    "state": "7_8_9_jump_air_to_stand_idle",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_idle"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "ground_to_attack_move_hold_ver"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "to_burst_RC_blue"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ],
+     [
+      "from",
+      "5_stand_turn"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_7_8_9_jump_air",
+    "kind": "from",
+    "state": "7_8_9_jump_air",
+    "line": null,
+    "self_writes": [
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [
+     [
+      "common",
+      "air_to_attack_move_hold_ver"
+     ],
+     [
+      "common",
+      "air_to_dash_move_hold_ver_4dash_only"
+     ],
+     [
+      "common",
+      "air_to_special_move"
+     ],
+     [
+      "common",
+      "to_burst_RC_blue"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ]
+    ],
+    "reach": [
+     "4dash_air_backdash",
+     "6dash_air_dash",
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_7_8_9_pre_jump",
+    "kind": "from",
+    "state": "7_8_9_pre_jump",
+    "line": null,
+    "self_writes": [
+     "7_8_9_jump_air"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "7_8_9_jump_air"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "to_burst_RC_blue"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air"
+     ]
+    ],
+    "reach": [
+     "4dash_air_backdash",
+     "6dash_air_dash",
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_4dash_backdash",
+    "kind": "from",
+    "state": "4dash_backdash",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_idle"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "to_burst_RC_blue"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_4dash_air_backdash",
+    "kind": "from",
+    "state": "4dash_air_backdash",
+    "line": null,
+    "self_writes": [
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [
+     [
+      "common",
+      "to_burst_RC_blue"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air_to_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_air_backdash",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_air_dash",
+     "6dash_dash",
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS",
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_6dash_dash",
+    "kind": "from",
+    "state": "6dash_dash",
+    "line": null,
+    "self_writes": [
+     "4dash_backdash",
+     "5_stand_dash_skid",
+     "7_8_9_pre_jump"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "4dash_backdash",
+     "5_stand_dash_skid",
+     "7_8_9_pre_jump"
+    ],
+    "nonlit_self_write": 3,
+    "calls": [
+     [
+      "common",
+      "ground_to_attack_move_hold_ver"
+     ],
+     [
+      "common",
+      "to_burst_RC_blue"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ],
+     [
+      "from",
+      "5_stand_dash_skid"
+     ],
+     [
+      "from",
+      "7_8_9_pre_jump"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_air_backdash",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_dash_skid",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_air_dash",
+     "6dash_dash",
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS",
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_6dash_air_dash",
+    "kind": "from",
+    "state": "6dash_air_dash",
+    "line": null,
+    "self_writes": [
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [
+     [
+      "common",
+      "to_burst_RC_blue"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air_to_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_air_backdash",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_air_dash",
+     "6dash_dash",
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS",
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_6dash_dash_cancel",
+    "kind": "from",
+    "state": "6dash_dash_cancel",
+    "line": null,
+    "self_writes": [
+     "5_stand_dash_skid"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_dash_skid"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "ground_to_special_move"
+     ],
+     [
+      "common",
+      "to_burst_RC_blue"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ],
+     [
+      "from",
+      "5_stand_dash_skid"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_dash_skid",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_burst_RC_red",
+    "kind": "from",
+    "state": "burst_RC_red",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle",
+     "7_8_9_jump_air"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_idle",
+     "7_8_9_jump_air"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [
+     [
+      "common",
+      "air_to_attack_move_hold_ver"
+     ],
+     [
+      "common",
+      "air_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "air_to_special_move_hold_ver"
+     ],
+     [
+      "common",
+      "ground_to_attack_move_hold_ver"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_air_backdash",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_air_dash",
+     "6dash_dash",
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS",
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_burst_RC_blue",
+    "kind": "from",
+    "state": "burst_RC_blue",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle",
+     "7_8_9_jump_air"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_idle",
+     "7_8_9_jump_air"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [
+     [
+      "common",
+      "air_to_attack_move_hold_ver"
+     ],
+     [
+      "common",
+      "air_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "air_to_special_move_hold_ver"
+     ],
+     [
+      "common",
+      "ground_to_attack_move_hold_ver"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_air_backdash",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_air_dash",
+     "6dash_dash",
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS",
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_burst_RC_purple",
+    "kind": "from",
+    "state": "burst_RC_purple",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle",
+     "7_8_9_jump_air"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_idle",
+     "7_8_9_jump_air"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [
+     [
+      "common",
+      "air_to_attack_move_hold_ver"
+     ],
+     [
+      "common",
+      "air_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "air_to_special_move_hold_ver"
+     ],
+     [
+      "common",
+      "ground_to_attack_move_hold_ver"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_air_backdash",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_air_dash",
+     "6dash_dash",
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS",
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_burst_RC_yellow",
+    "kind": "from",
+    "state": "burst_RC_yellow",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle",
+     "7_8_9_jump_air"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_idle",
+     "7_8_9_jump_air"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [
+     [
+      "common",
+      "air_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_air_backdash",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_air_dash",
+     "6dash_dash",
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS",
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_burst_overdrive",
+    "kind": "from",
+    "state": "burst_overdrive",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle",
+     "7_8_9_jump_air"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_idle",
+     "7_8_9_jump_air"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [
+     [
+      "common",
+      "air_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_air_backdash",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_air_dash",
+     "6dash_dash",
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS",
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_burst_burst",
+    "kind": "from",
+    "state": "burst_burst",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_2P",
+    "kind": "from",
+    "state": "2P",
+    "line": null,
+    "self_writes": [
+     "1_2_3_crouch",
+     "2P",
+     "5P",
+     "6K",
+     "6P",
+     "6S"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "1_2_3_crouch",
+     "2P",
+     "5P",
+     "6K",
+     "6P",
+     "6S"
+    ],
+    "nonlit_self_write": 6,
+    "calls": [
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
+     ],
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "1_2_3_crouch"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "1_2_3_crouch_to_stand_idle",
+     "1_2_3_crouch_turn",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_6P",
+    "kind": "from",
+    "state": "6P",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_idle"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
+     ],
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_5P",
+    "kind": "from",
+    "state": "5P",
+    "line": null,
+    "self_writes": [
+     "2P",
+     "5P",
+     "5_stand_idle",
+     "6K",
+     "6P",
+     "6S"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "2P",
+     "5P",
+     "5_stand_idle",
+     "6K",
+     "6P",
+     "6S"
+    ],
+    "nonlit_self_write": 6,
+    "calls": [
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
+     ],
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_2K",
+    "kind": "from",
+    "state": "2K",
+    "line": null,
+    "self_writes": [
+     "1_2_3_crouch",
+     "2Launcher",
+     "5Launcher",
+     "6K",
+     "6S"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "1_2_3_crouch",
+     "2Launcher",
+     "5Launcher",
+     "6K",
+     "6S"
+    ],
+    "nonlit_self_write": 5,
+    "calls": [
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
+     ],
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "1_2_3_crouch"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "1_2_3_crouch_to_stand_idle",
+     "1_2_3_crouch_turn",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_6K",
+    "kind": "from",
+    "state": "6K",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_idle"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
+     ],
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_5K",
+    "kind": "from",
+    "state": "5K",
+    "line": null,
+    "self_writes": [
+     "2K",
+     "2Launcher",
+     "5Launcher",
+     "5_stand_idle",
+     "6K",
+     "6P",
+     "6S",
+     "6dash_dash_cancel"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "2K",
+     "2Launcher",
+     "5Launcher",
+     "5_stand_idle",
+     "6K",
+     "6P",
+     "6S",
+     "6dash_dash_cancel"
+    ],
+    "nonlit_self_write": 8,
+    "calls": [
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
+     ],
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "6dash_dash_cancel",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_2S",
+    "kind": "from",
+    "state": "2S",
+    "line": null,
+    "self_writes": [
+     "1_2_3_crouch"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "1_2_3_crouch"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
+     ],
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "1_2_3_crouch"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "1_2_3_crouch_to_stand_idle",
+     "1_2_3_crouch_turn",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_6S",
+    "kind": "from",
+    "state": "6S",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_idle"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
+     ],
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_cS",
+    "kind": "from",
+    "state": "cS",
+    "line": null,
+    "self_writes": [
+     "2Launcher",
+     "2S",
+     "5Launcher",
+     "5_stand_idle",
+     "6K",
+     "6P",
+     "6S",
+     "6dash_dash_cancel",
+     "fS"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "2Launcher",
+     "2S",
+     "5Launcher",
+     "5_stand_idle",
+     "6K",
+     "6P",
+     "6S",
+     "6dash_dash_cancel",
+     "fS"
+    ],
+    "nonlit_self_write": 9,
+    "calls": [
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
+     ],
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "6dash_dash_cancel",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_fS",
+    "kind": "from",
+    "state": "fS",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_idle"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
+     ],
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_5H",
+    "kind": "from",
+    "state": "5H",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_idle"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "from",
+      "5_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_2Launcher",
+    "kind": "from",
+    "state": "2Launcher",
+    "line": null,
+    "self_writes": [
+     "1_2_3_crouch"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "1_2_3_crouch"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
+     ],
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "1_2_3_crouch"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "1_2_3_crouch_to_stand_idle",
+     "1_2_3_crouch_turn",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_4_6Launcher",
+    "kind": "from",
+    "state": "4_6Launcher",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_idle"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_5Launcher",
+    "kind": "from",
+    "state": "5Launcher",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_idle"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_j5P",
+    "kind": "from",
+    "state": "j5P",
+    "line": null,
+    "self_writes": [
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "j2K",
+     "j5K",
+     "j5P",
+     "j5S"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "j2K",
+     "j5K",
+     "j5P",
+     "j5S"
+    ],
+    "nonlit_self_write": 6,
+    "calls": [
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air_to_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_air_backdash",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_air_dash",
+     "6dash_dash",
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS",
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_j2K",
+    "kind": "from",
+    "state": "j2K",
+    "line": null,
+    "self_writes": [
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "j2K",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "j2K",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ],
+    "nonlit_self_write": 8,
+    "calls": [
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air_to_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_air_backdash",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_air_dash",
+     "6dash_dash",
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS",
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_j5K",
+    "kind": "from",
+    "state": "j5K",
+    "line": null,
+    "self_writes": [
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "j2K",
+     "j5P",
+     "j5S"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "j2K",
+     "j5P",
+     "j5S"
+    ],
+    "nonlit_self_write": 6,
+    "calls": [
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air_to_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_air_backdash",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_air_dash",
+     "6dash_dash",
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS",
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_j5S",
+    "kind": "from",
+    "state": "j5S",
+    "line": null,
+    "self_writes": [
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "j2K",
+     "j5K",
+     "j5P"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "j2K",
+     "j5K",
+     "j5P"
+    ],
+    "nonlit_self_write": 5,
+    "calls": [
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air_to_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_air_backdash",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_air_dash",
+     "6dash_dash",
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS",
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_j4_6Launcher",
+    "kind": "from",
+    "state": "j4_6Launcher",
+    "line": null,
+    "self_writes": [
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air_to_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_air_backdash",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_air_dash",
+     "6dash_dash",
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS",
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_j5Launcher",
+    "kind": "from",
+    "state": "j5Launcher",
+    "line": null,
+    "self_writes": [
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle"
+    ],
+    "nonlit_self_write": 2,
+    "calls": [
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air"
+     ],
+     [
+      "from",
+      "7_8_9_jump_air_to_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_air_backdash",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_air_dash",
+     "6dash_dash",
+     "7_8_9_jump_air",
+     "7_8_9_jump_air_to_stand_idle",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS",
+     "j2K",
+     "j4_6Launcher",
+     "j5K",
+     "j5Launcher",
+     "j5P",
+     "j5S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_4SP_P",
+    "kind": "from",
+    "state": "4SP_P",
+    "line": null,
+    "self_writes": [
+     "1_2_3_crouch",
+     "5_stand_idle",
+     "6_walk",
+     "7_8_9_pre_jump"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "1_2_3_crouch",
+     "5_stand_idle",
+     "6_walk",
+     "7_8_9_pre_jump"
+    ],
+    "nonlit_self_write": 4,
+    "calls": [
+     [
+      "common",
+      "ground_to_attack_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_6dash_only"
+     ],
+     [
+      "common",
+      "to_burst_RC_blue"
+     ],
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_6SP_P",
+    "kind": "from",
+    "state": "6SP_P",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_idle"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_4SP_K",
+    "kind": "from",
+    "state": "4SP_K",
+    "line": null,
+    "self_writes": [
+     "1_2_3_crouch"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "1_2_3_crouch"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "1_2_3_crouch"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "1_2_3_crouch_to_stand_idle",
+     "1_2_3_crouch_turn",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_6SP_K",
+    "kind": "from",
+    "state": "6SP_K",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_idle"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_4SP_S",
+    "kind": "from",
+    "state": "4SP_S",
+    "line": null,
+    "self_writes": [
+     "4SP_S_4S",
+     "4SP_K",
+     "4SP_P",
+     "6SP_K",
+     "6SP_P"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "4SP_S_4S",
+     "4SP_K",
+     "4SP_P",
+     "6SP_K",
+     "6SP_P"
+    ],
+    "nonlit_self_write": 5,
+    "calls": [
+     [
+      "common",
+      "to_burst_RC_purple"
+     ]
+    ],
+    "reach": [
+     "4SP_S_4S",
+     "4SP_K",
+     "4SP_P",
+     "6SP_K",
+     "6SP_P",
+     "burst_RC_purple"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_4SP_S_4dash",
+    "kind": "from",
+    "state": "4SP_S_4dash",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_4SP_S_6dash",
+    "kind": "from",
+    "state": "4SP_S_6dash",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_4SP_S_4S",
+    "kind": "from",
+    "state": "4SP_S_4S",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_idle"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "to_burst_RC_blue"
+     ],
+     [
+      "common",
+      "to_burst_overdrive"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_4SP_S_H",
+    "kind": "from",
+    "state": "4SP_S_H",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_4SP_S_2Launcher",
+    "kind": "from",
+    "state": "4SP_S_2Launcher",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_4SP_S_6Launcher",
+    "kind": "from",
+    "state": "4SP_S_6Launcher",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_4SP_S_5Launcher",
+    "kind": "from",
+    "state": "4SP_S_5Launcher",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_6SP_S",
+    "kind": "from",
+    "state": "6SP_S",
+    "line": null,
+    "self_writes": [
+     "5_stand_idle"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "5_stand_idle"
+    ],
+    "nonlit_self_write": 1,
+    "calls": [
+     [
+      "common",
+      "ground_to_dash_move_hold_ver_all"
+     ],
+     [
+      "common",
+      "to_burst_RC_purple"
+     ],
+     [
+      "from",
+      "5_stand_idle"
+     ]
+    ],
+    "reach": [
+     "1_2_3_crouch",
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "4_walk",
+     "4dash_backdash",
+     "5K",
+     "5Launcher",
+     "5P",
+     "5_stand_idle",
+     "5_stand_turn",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "6_walk",
+     "6dash_dash",
+     "7_8_9_pre_jump",
+     "burst_RC_blue",
+     "burst_RC_purple",
+     "burst_overdrive",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_SP_H",
+    "kind": "from",
+    "state": "SP_H",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_SP_H_P",
+    "kind": "from",
+    "state": "SP_H_P",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_SP_H_K",
+    "kind": "from",
+    "state": "SP_H_K",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_SP_H_S",
+    "kind": "from",
+    "state": "SP_H_S",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_SP_H_H",
+    "kind": "from",
+    "state": "SP_H_H",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_jSP_S",
+    "kind": "from",
+    "state": "jSP_S",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_jSP_H",
+    "kind": "from",
+    "state": "jSP_H",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_jSP_H_P",
+    "kind": "from",
+    "state": "jSP_H_P",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_jSP_H_K",
+    "kind": "from",
+    "state": "jSP_H_K",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_jSP_H_S",
+    "kind": "from",
+    "state": "jSP_H_S",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_jSP_H_H",
+    "kind": "from",
+    "state": "jSP_H_H",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_4UA",
+    "kind": "from",
+    "state": "4UA",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_6UA",
+    "kind": "from",
+    "state": "6UA",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_5UA",
+    "kind": "from",
+    "state": "5UA",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_from_4SP_S_6UA",
+    "kind": "from",
+    "state": "4SP_S_6UA",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   }
+  ]
+ }
+}

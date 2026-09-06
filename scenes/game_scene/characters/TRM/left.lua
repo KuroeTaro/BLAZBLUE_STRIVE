@@ -5523,7 +5523,7 @@ function state_gate_game_scene_char_LP_from_burst_burst(self_side_input,opponent
 end
 function state_gate_game_scene_char_LP_from_2P(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- hit_cancel
@@ -5604,7 +5604,7 @@ function state_gate_game_scene_char_LP_from_2P(self_side_input,opponent_side_inp
 end
 function state_gate_game_scene_char_LP_from_6P(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- hit_cancel
@@ -5633,7 +5633,7 @@ function state_gate_game_scene_char_LP_from_6P(self_side_input,opponent_side_inp
 end
 function state_gate_game_scene_char_LP_from_5P(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- hit_cancel
@@ -5712,7 +5712,7 @@ function state_gate_game_scene_char_LP_from_5P(self_side_input,opponent_side_inp
 end
 function state_gate_game_scene_char_LP_from_2K(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- hit_cancel
@@ -5783,7 +5783,7 @@ function state_gate_game_scene_char_LP_from_2K(self_side_input,opponent_side_inp
 end
 function state_gate_game_scene_char_LP_from_6K(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- hit_cancel
@@ -5812,7 +5812,7 @@ function state_gate_game_scene_char_LP_from_6K(self_side_input,opponent_side_inp
 end
 function state_gate_game_scene_char_LP_from_5K(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- kara
@@ -5918,7 +5918,7 @@ function state_gate_game_scene_char_LP_from_5K(self_side_input,opponent_side_inp
 end
 function state_gate_game_scene_char_LP_from_2S(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- hit_cancel
@@ -5949,7 +5949,7 @@ function state_gate_game_scene_char_LP_from_2S(self_side_input,opponent_side_inp
 end
 function state_gate_game_scene_char_LP_from_6S(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- hit_cancel
@@ -5978,7 +5978,7 @@ function state_gate_game_scene_char_LP_from_6S(self_side_input,opponent_side_inp
 end
 function state_gate_game_scene_char_LP_from_cS(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- hit_cancel
@@ -6092,7 +6092,7 @@ function state_gate_game_scene_char_LP_from_cS(self_side_input,opponent_side_inp
 end
 function state_gate_game_scene_char_LP_from_fS(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- hit_cancel
@@ -6133,7 +6133,7 @@ function state_gate_game_scene_char_LP_from_5H(self_side_input,opponent_side_inp
 end
 function state_gate_game_scene_char_LP_from_2Launcher(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- hit_cancel
@@ -6164,7 +6164,7 @@ function state_gate_game_scene_char_LP_from_2Launcher(self_side_input,opponent_s
 end
 function state_gate_game_scene_char_LP_from_4_6Launcher(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- idle_cancel
@@ -6186,7 +6186,7 @@ function state_gate_game_scene_char_LP_from_4_6Launcher(self_side_input,opponent
 end
 function state_gate_game_scene_char_LP_from_5Launcher(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- idle_cancel
@@ -6208,7 +6208,7 @@ function state_gate_game_scene_char_LP_from_5Launcher(self_side_input,opponent_s
 end
 function state_gate_game_scene_char_LP_from_j5P(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
@@ -6291,7 +6291,7 @@ function state_gate_game_scene_char_LP_from_j5P(self_side_input,opponent_side_in
 end
 function state_gate_game_scene_char_LP_from_j2K(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
@@ -6390,7 +6390,7 @@ function state_gate_game_scene_char_LP_from_j2K(self_side_input,opponent_side_in
 end
 function state_gate_game_scene_char_LP_from_j5K(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
@@ -6473,7 +6473,7 @@ function state_gate_game_scene_char_LP_from_j5K(self_side_input,opponent_side_in
 end
 function state_gate_game_scene_char_LP_from_j5S(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
@@ -6560,7 +6560,7 @@ function state_gate_game_scene_char_LP_from_j5S(self_side_input,opponent_side_in
 end
 function state_gate_game_scene_char_LP_from_j4_6Launcher(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
@@ -6598,7 +6598,7 @@ function state_gate_game_scene_char_LP_from_j4_6Launcher(self_side_input,opponen
 end
 function state_gate_game_scene_char_LP_from_j5Launcher(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _7_8_9_jump_air_to_stand_idle
@@ -6649,7 +6649,7 @@ function state_gate_game_scene_char_LP_from_j5Launcher(self_side_input,opponent_
 end
 function state_gate_game_scene_char_LP_from_4SP_P(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- idle_cancel
@@ -6702,7 +6702,7 @@ function state_gate_game_scene_char_LP_from_4SP_P(self_side_input,opponent_side_
 end
 function state_gate_game_scene_char_LP_from_6SP_P(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _common_ground_idle_to_move
@@ -6721,7 +6721,7 @@ function state_gate_game_scene_char_LP_from_6SP_P(self_side_input,opponent_side_
 end
 function state_gate_game_scene_char_LP_from_4SP_K(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- idle_cancel
@@ -6742,7 +6742,7 @@ function state_gate_game_scene_char_LP_from_4SP_K(self_side_input,opponent_side_
 end
 function state_gate_game_scene_char_LP_from_6SP_K(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _common_ground_idle_to_move
@@ -6761,7 +6761,7 @@ function state_gate_game_scene_char_LP_from_6SP_K(self_side_input,opponent_side_
 end
 function state_gate_game_scene_char_LP_from_4SP_S(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _4UA
@@ -6818,6 +6818,17 @@ function state_gate_game_scene_char_LP_from_4SP_S(self_side_input,opponent_side_
         -- _4SP_S_4dash
         -- _4SP_S_6dash
         -- _4SP_S_4S
+        if self_side_obj_char["direction_input"] == 4
+        and test_input_sys_press(self_side_input["S"])
+        then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
+            end
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S_4S(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "4SP_S_4S"
+            return true
+        end
         -- _4SP_S_H
         -- _4SP_S_2Launcher
         -- _4SP_S_6Launcher
@@ -6829,6 +6840,30 @@ end
 function state_gate_game_scene_char_LP_from_4SP_S_6dash(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
 end
 function state_gate_game_scene_char_LP_from_4SP_S_4S(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+    -- _overdrive
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
+        return true
+    end
+    -- _BRC
+    if state_gate_game_scene_char_LP_common_to_burst_RC_blue(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    -- _common_ground_idle_to_move
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            return true
+        end
+    end
+    -- _5_stand_idle
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "5_stand_idle"
+        if state_gate_game_scene_char_LP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            return true
+        end
+        return true
+    end
 end
 function state_gate_game_scene_char_LP_from_4SP_S_H(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
 end
@@ -6840,7 +6875,7 @@ function state_gate_game_scene_char_LP_from_4SP_S_5Launcher(self_side_input,oppo
 end
 function state_gate_game_scene_char_LP_from_6SP_S(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _PRC
-    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- idle_cancel
