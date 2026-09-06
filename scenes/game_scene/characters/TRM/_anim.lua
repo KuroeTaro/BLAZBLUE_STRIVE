@@ -9621,7 +9621,7 @@ function load_game_scene_anim_char_TRM_4SP_S_4S(obj_char)
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = {285,510}
+        obj_char["anchor_pos"] = {275,510}
         -- visual_front
         CHARACTER_VISUAL_FRONT = side
     end
