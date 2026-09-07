@@ -176,6 +176,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["shot_sys_curse"] = false
     obj_char_game_scene_char_LP["shot_sys_curse_countdown"] = 0
     obj_char_game_scene_char_LP["shot_sys_scapegoat_exist"] = false
+    obj_char_game_scene_char_LP["shot_sys_steady_aim_clean_hit"] = false
     obj_char_game_scene_char_LP["shot_sys_fire_cancel"] = false
     obj_char_game_scene_char_LP["shot_sys_idle_cancel"] = false
     obj_char_game_scene_char_LP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值
@@ -742,6 +743,7 @@ function load_game_scene_wallbreak_mid_init_LP()
     obj_char_game_scene_char_LP["shot_sys_f"] = 0
     obj_char_game_scene_char_LP["shot_sys_state"] = "off"
     obj_char_game_scene_char_LP["shot_sys_scapegoat_exist"] = false
+    obj_char_game_scene_char_LP["shot_sys_steady_aim_clean_hit"] = false
     obj_char_game_scene_char_LP["shot_sys_oroboros_state"] = "off"
     obj_char_game_scene_char_LP["shot_sys_oroboros_f"] = 0
     obj_char_game_scene_char_LP["shot_sys_oroboros_aim_r"] = 0.42
@@ -2353,9 +2355,9 @@ function state_machine_char_game_scene_char_LP_shot_sys()
                 return
             end
         end,
-        ["steady_aim_locking"] = function()
+        ["steady_aim_lock"] = function()
         end,
-        ["steady_aim_locked"] = function()
+        ["steady_aim_unlock"] = function()
         end,
         ["steady_aim_ease_out"] = function()
         end,
@@ -2580,13 +2582,9 @@ function state_machine_char_game_scene_char_LP_shot_sys_reticle()
                 return
             end
         end,
-        ["steady_aim_ease_in"] = function()
+        ["steady_aim_lock"] = function()
         end,
-        ["steady_aim_locking"] = function()
-        end,
-        ["steady_aim_locked"] = function()
-        end,
-        ["steady_aim_unlocking"] = function()
+        ["steady_aim_unlock"] = function()
         end,
         ["steady_aim_ease_out"] = function()
         end,

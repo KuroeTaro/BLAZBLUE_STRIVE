@@ -9819,7 +9819,36 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
 end
 -- 4SP_S
 -- shot_sys
-function load_game_scene_anim_char_TRM_4SP_S_shot_sys_steady_aim_locking(obj_char,shot_sys_curse)
+function load_game_scene_anim_char_TRM_4SP_S_shot_sys_steady_aim_lock(obj_char,shot_sys_curse)
+    local res = {}
+    res["prop_f"] = "shot_sys_f"
+    res["anim_length"] = 27
+    res[0] = function()
+    end
+    res[18] = function()
+        -- input_sys_cache
+        hit_side_obj_char["input_sys_state_negative_edge"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_negative_edge_state_machine(hit_side_obj_char["player_side"])()
+        -- shot_sys
+        obj_char["shot_sys_aim_process"] = {0,0,420,450}
+        obj_char["shot_sys_fire_cancel"] = true
+    end
+    res[27] = function()
+        -- shot_sys
+        obj_char["shot_sys_aim_process"] = {450,0,420,450}
+        obj_char["shot_sys_fire_cancel"] = true
+        -- animation_end
+    end
+    if shot_sys_curse then
+        res[18] = function()
+            -- shot_sys
+            obj_char["shot_sys_aim_process"] = {450,0,420,450}
+            obj_char["shot_sys_fire_cancel"] = true
+        end
+    end
+    return res
+end
+function load_game_scene_anim_char_TRM_4SP_S_shot_sys_steady_aim_unlock(obj_char,shot_sys_curse)
     local res = {}
     res["prop_f"] = "shot_sys_f"
     res["anim_length"] = 27
@@ -9872,7 +9901,83 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_steady_aim_shot(obj_char)
     return res
 end
 -- shot_sys_reticle
-function load_game_scene_anim_char_TRM_4SP_S_reticle_steady_aim_locking(obj_char)
+function load_game_scene_anim_char_TRM_4SP_S_reticle_steady_aim_lock(obj_char)
+    local res = {}
+    local side = obj_char["player_side"]
+    local move_SFX_table = common_game_scene_get_SFX_move(side)
+    local opacity_cache = obj_char["shot_sys_reticle"][4]
+    res["prop_f"] = "shot_sys_reticle_f"
+    res["anim_length"] = 27
+    res[0] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][4] = opacity_cache*0.8
+        -- play_SFX
+        play_obj_audio(move_SFX_table["4SP_S_reticle_locking"])
+    end
+    res[1] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][4] = opacity_cache*0.6
+    end
+    res[2] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][4] = opacity_cache*0.4
+    end
+    res[3] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][4] = opacity_cache*0.2
+    end
+    res[4] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][4] = 1
+        obj_char["shot_sys_reticle"][8] = 0
+        obj_char["shot_sys_reticle_sprite_sheet"] = "4SP_S_reticle_locking"
+    end
+    res[5] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 1
+    end
+    res[7] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 2
+    end
+    res[9] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 3
+    end
+    res[11] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 4
+    end
+    res[13] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 5
+    end
+    res[15] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 6
+    end
+    res[17] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 7
+    end
+    res[19] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 8
+    end
+    res[21] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 9
+    end
+    res[24] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 10
+    end
+    res[27] = function()
+        -- animation_end
+    end
+    return res
+end
+function load_game_scene_anim_char_TRM_4SP_S_reticle_steady_aim_unlock(obj_char)
     local res = {}
     local side = obj_char["player_side"]
     local move_SFX_table = common_game_scene_get_SFX_move(side)
