@@ -9340,7 +9340,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(hit_side_ob
         -- shot_sys
         hit_side_obj_char["shot_sys_fire_cancel"] = false
         hit_side_obj_char["shot_sys_idle_cancel"] = false
-        character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(hit_side_obj_char,hurt_side_obj_char)
+        -- 当前帧的aim_process已由进入shot前的状态机*_update完成，此处不再调用以避免同帧双算
         -- camera_animation_application
         table.insert(obj_stage_main["camera_active_application_table"],
             function()
@@ -9364,7 +9364,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(hit_side_ob
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
     end
-    res[8] = function()
+    res[6] = function()
         -- shot_sys
         if hit_side_obj_char["shot_sys_aim_process"][1] < hit_side_obj_char["shot_sys_aim_process"][3] then
             character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(hit_side_obj_char,hurt_side_obj_char)
@@ -9530,26 +9530,26 @@ end
 function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_shot(obj_char)
     local res = {}
     res["prop_f"] = "shot_sys_reticle_f_8"
-    res["anim_length"] = 8
+    res["anim_length"] = 6
     res[0] = function()
         -- shot_sys
         obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_shot"
         obj_char["shot_sys_reticle"][4] = 1
         obj_char["shot_sys_reticle"][8] = 0
     end
-    res[2] = function()
+    res[1] = function()
         -- shot_sys
         obj_char["shot_sys_reticle"][8] = 1
     end
-    res[4] = function()
+    res[2] = function()
         -- shot_sys
         obj_char["shot_sys_reticle"][8] = 2
     end
-    res[6] = function()
+    res[4] = function()
         -- shot_sys
         obj_char["shot_sys_reticle"][8] = 3
     end
-    res[8] = function()
+    res[6] = function()
         -- animation_end
     end
     return res
