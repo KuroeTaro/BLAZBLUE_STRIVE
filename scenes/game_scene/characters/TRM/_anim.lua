@@ -384,7 +384,7 @@ function load_game_scene_anim_char_TRM_4_walk(obj_char)
         obj_char["pushbox"] = {0,-185,120,370}
         obj_char["pushbox_opponent_collision_active"] = true
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = {{0,-215,170,430},{-7,-455,100,50}}
+        obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         obj_char["collision_ground_height_offset"] = 0
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-120,-455}
@@ -395,8 +395,6 @@ function load_game_scene_anim_char_TRM_4_walk(obj_char)
     res[7] = function()
         -- state_number
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
-        -- collide
-        obj_char["hurtbox_table"] = {{0,-215,170,430},{-3,-455,100,50}}
         -- draw_correction
         obj_char[8] = 1
     end
@@ -551,7 +549,7 @@ function load_game_scene_anim_char_TRM_6_walk(obj_char)
         obj_char["pushbox"] = {0,-185,120,370}
         obj_char["pushbox_opponent_collision_active"] = true
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = {{0,-215,170,430},{7,-455,100,50}}
+        obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         obj_char["collision_ground_height_offset"] = 0
         -- oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
@@ -562,8 +560,6 @@ function load_game_scene_anim_char_TRM_6_walk(obj_char)
     res[7] = function()
         -- state_number
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
-        -- collide
-        obj_char["hurtbox_table"] = {{0,-215,170,430},{10,-455,100,50}}
         -- draw_correction
         obj_char[8] = 1
     end
@@ -774,7 +770,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
     end
     res[5] = function()
         -- collide
-        obj_char["hurtbox_table"] = {{0,-215,170,430},{15,-455,100,50}}
+        obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         -- draw_correction
         obj_char[8] = 1
     end
@@ -1223,7 +1219,7 @@ function load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
     end
     res[26] = function()
         -- collide
-        obj_char["hurtbox_table"] = {{0,-215,170,430},{15,-455,100,50}}
+        obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         -- draw_correction
         obj_char[8] = 6
     end
@@ -9164,7 +9160,7 @@ function load_game_scene_anim_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_cha
     end
     res[33] = function()
         -- collide
-        hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{15,-455,100,50}}
+        hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         -- draw_correction
         hit_side_obj_char[8] = 6
     end
@@ -9451,7 +9447,7 @@ function load_game_scene_anim_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(hit_side)()
         -- collide
-        hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{15,-455,100,50}}
+        hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         -- draw_correction
         hit_side_obj_char[8] = 6
     end
