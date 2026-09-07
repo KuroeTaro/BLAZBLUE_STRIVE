@@ -2571,6 +2571,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_reticle()
                 return
             end
             if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2]) then
+                self_side_obj_char["shot_sys_reticle"][4] = 0
                 self_side_obj_char["shot_sys_reticle"][8] = 0
                 self_side_obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
                 self_side_obj_char["shot_sys_reticle_animation_table"][1] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(self_side_obj_char)

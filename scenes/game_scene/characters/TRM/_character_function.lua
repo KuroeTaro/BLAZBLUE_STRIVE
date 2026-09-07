@@ -375,6 +375,8 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(se
     character_function_game_scene_TRM_shot_sys_oroboros_pos_init(self_side_obj_char)
     self_side_obj_char["shot_sys_oroboros_state"] = "at_the_ready_ease_in"
     -- reticle
+    self_side_obj_char["shot_sys_reticle"][4] = 0
+    self_side_obj_char["shot_sys_reticle"][8] = 0
     self_side_obj_char["shot_sys_reticle_animation_table"][1] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(self_side_obj_char)
     init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
     character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(self_side_obj_char,opponent_side_obj_char)

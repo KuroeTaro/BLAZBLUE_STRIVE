@@ -257,16 +257,17 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main(hit_side_
         play_obj_audio(obj_projectile["hit_whiff_SFX"])
     end
     res[1] = function()
+        -- state
+        obj_projectile[1] = hit_side_obj_char["shot_sys_reticle"][1]
+        obj_projectile[2] = hit_side_obj_char["shot_sys_reticle"][2]
         if hit_side_test_shot_sys_at_the_ready_ban_state then
             obj_projectile["projectile_active"] = false
         end
     end
     res[2] = function()
         -- state
-        if hit_side_obj_char["shot_sys_state"] == "at_the_ready_shot" then
-            obj_projectile[1] = hit_side_obj_char["shot_sys_reticle"][1]
-            obj_projectile[2] = hit_side_obj_char["shot_sys_reticle"][2]
-        end
+        obj_projectile[1] = hit_side_obj_char["shot_sys_reticle"][1]
+        obj_projectile[2] = hit_side_obj_char["shot_sys_reticle"][2]
         -- collide
         obj_projectile["hitbox_table"] = {}
         obj_projectile["projectile_active"] = false

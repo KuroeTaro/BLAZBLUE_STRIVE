@@ -9364,7 +9364,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(hit_side_ob
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
     end
-    res[6] = function()
+    res[8] = function()
         -- shot_sys
         if hit_side_obj_char["shot_sys_aim_process"][1] < hit_side_obj_char["shot_sys_aim_process"][3] then
             character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(hit_side_obj_char,hurt_side_obj_char)
@@ -10000,67 +10000,6 @@ function load_game_scene_anim_char_TRM_4SP_S_reticle_steady_aim_shot(obj_char)
         obj_char["shot_sys_reticle"][8] = 3
     end
     res[15] = function()
-        -- animation_end
-    end
-    return res
-end
--- shot_sys_oroboros
-function load_game_scene_anim_char_TRM_4SP_S_oroboros_chain_ease_out(obj)
-    local res = {}
-    res["prop_f"] = "f_4"
-    res["anim_length"] = 20
-    for i = 0,10 do
-        res[i] = function()
-            -- oroboros
-            obj[4] = 1-0.8*((i+1)/10)
-        end
-    end
-    for i = 11,20 do
-        res[i] = function()
-            -- oroboros
-            obj[4] = 0.12-0.12*((i-10)/10)
-        end
-    end
-    res[0] = function()
-        -- oroboros
-        obj[4] = 0.92
-    end
-    res[10] = function()
-        -- oroboros
-        obj[4] = 0.12
-    end
-    res[20] = function()
-        -- animation_end
-    end
-    return res
-end
-function load_game_scene_anim_char_TRM_4SP_S_oroboros_mid_ease_out(obj,sprite_sheet)
-    local res = {}
-    res["prop_f"] = "f_8"
-    res["anim_length"] = 20
-    res[0] = function()
-        -- oroboros
-        obj[4] = 1
-        obj[8] = 1
-        obj["sprite_sheet"]  = sprite_sheet
-    end
-    res[3] = function()
-        -- oroboros
-        obj[8] = 1
-    end
-    res[7] = function()
-        -- oroboros
-        obj[8] = 2
-    end
-    res[11] = function()
-        -- oroboros
-        obj[8] = 3
-    end
-    res[15] = function()
-        -- oroboros
-        obj[8] = 4
-    end
-    res[20] = function()
         -- animation_end
     end
     return res
