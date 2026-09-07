@@ -171,12 +171,11 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["risk_gauge_update_function"] = function() end
     obj_char_game_scene_char_RP["wallstick_gauge_update_function"] = function() end
     -- shot_sys
-    obj_char_game_scene_char_RP["shot_sys_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_f"] = 0
+    obj_char_game_scene_char_RP["shot_sys_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_curse"] = false
     obj_char_game_scene_char_RP["shot_sys_curse_countdown"] = 0
     obj_char_game_scene_char_RP["shot_sys_scapegoat_exist"] = false
-    obj_char_game_scene_char_RP["shot_sys_steady_aim_countdown"] = 0
     obj_char_game_scene_char_RP["shot_sys_fire_cancel"] = false
     obj_char_game_scene_char_RP["shot_sys_idle_cancel"] = false
     obj_char_game_scene_char_RP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值
@@ -740,10 +739,9 @@ function load_game_scene_wallbreak_mid_init_RP()
     obj_char_game_scene_char_RP["VFX_common_back_table"] = {}
     obj_char_game_scene_char_RP["VFX_hit_front_table"] = {}
     obj_char_game_scene_char_RP["VFX_hit_back_table"] = {}
-    obj_char_game_scene_char_RP["shot_sys_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_f"] = 0
+    obj_char_game_scene_char_RP["shot_sys_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_scapegoat_exist"] = false
-    obj_char_game_scene_char_RP["shot_sys_steady_aim_countdown"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_oroboros_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_aim_r"] = 0.42
@@ -856,8 +854,8 @@ function load_game_scene_wallbreak_end_init_RP()
     obj_char_game_scene_char_RP["VFX_hit_front_table"] = {}
     obj_char_game_scene_char_RP["VFX_hit_back_table"] = {}
     -- shot_sys
-    obj_char_game_scene_char_RP["shot_sys_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_f"] = 0
+    obj_char_game_scene_char_RP["shot_sys_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_fire_cancel"] = false
     obj_char_game_scene_char_RP["shot_sys_idle_cancel"] = false
     obj_char_game_scene_char_RP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值
@@ -2286,15 +2284,8 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 self_side_obj_char["shot_sys_state"] = "at_the_ready_ease_out"
                 return
             end
-            if test_input_sys_release(self_side_input["H"]) and self_side_obj_char["state"] == "hitstop" then
-                -- input_sys_cache
-                self_side_obj_char["input_sys_state_negative_edge"] = "save" -- none save load
-                common_game_scene_get_input_sys_cache_negative_edge_init(self_side_obj_char["player_side"])(self_side_obj_char)
-                self_side_obj_char["input_sys_cache_negative_edge"]["H"] = true
-            end
             if self_side_obj_char["shot_sys_fire_cancel"] and test_input_sys_release(self_side_input["H"])
             and self_side_obj_char["state"] ~= "hitstop" and self_side_obj_char["ability_gauge"][1] > 0 then
-                self_side_obj_char["input_sys_cache_negative_edge"]["H"] = false
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(self_side_obj_char,opponent_side_obj_char)
                 character_function_game_scene_TRM_shot_sys_ability_gauge_use(self_side_obj_char)
                 self_side_obj_char["shot_sys_state"] = "at_the_ready_shot"
@@ -2331,12 +2322,8 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 self_side_obj_char["shot_sys_state"] = "at_the_ready_ease_out"
                 return
             end
-            if test_input_sys_release(self_side_input["H"]) and self_side_obj_char["state"] == "hitstop" then
-                self_side_obj_char["input_sys_cache_negative_edge"]["H"] = true
-            end
             if self_side_obj_char["shot_sys_fire_cancel"] and test_input_sys_release(self_side_input["H"])
             and self_side_obj_char["state"] ~= "hitstop" and self_side_obj_char["ability_gauge"][1] > 0 then
-                self_side_obj_char["input_sys_cache_negative_edge"]["H"] = false
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(self_side_obj_char,opponent_side_obj_char)
                 character_function_game_scene_TRM_shot_sys_ability_gauge_use(self_side_obj_char)
                 self_side_obj_char["shot_sys_state"] = "at_the_ready_shot"
@@ -2366,11 +2353,11 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 return
             end
         end,
-        ["steady_aim_ease_in"] = function()
+        ["steady_aim_locking"] = function()
+        end,
+        ["steady_aim_locked"] = function()
         end,
         ["steady_aim_ease_out"] = function()
-        end,
-        ["steady_aim"] = function()
         end,
         ["steady_aim_shot"] = function()
         end
