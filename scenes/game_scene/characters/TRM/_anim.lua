@@ -9819,61 +9819,25 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
 end
 -- 4SP_S
 -- shot_sys
-function load_game_scene_anim_char_TRM_4SP_S_shot_sys_steady_aim_lock(obj_char,shot_sys_curse)
+function load_game_scene_anim_char_TRM_4SP_S_shot_sys_steady_aim_lock(self_side_obj_char,opponent_side_obj_char)
     local res = {}
     res["prop_f"] = "shot_sys_f"
-    res["anim_length"] = 27
+    res["anim_length"] = 1
     res[0] = function()
     end
-    res[18] = function()
-        -- input_sys_cache
-        hit_side_obj_char["input_sys_state_negative_edge"] = "load" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_state_machine(hit_side_obj_char["player_side"])()
-        -- shot_sys
-        obj_char["shot_sys_aim_process"] = {0,0,420,450}
-        obj_char["shot_sys_fire_cancel"] = true
-    end
-    res[27] = function()
-        -- shot_sys
-        obj_char["shot_sys_aim_process"] = {450,0,420,450}
-        obj_char["shot_sys_fire_cancel"] = true
+    res[1] = function()
         -- animation_end
-    end
-    if shot_sys_curse then
-        res[18] = function()
-            -- shot_sys
-            obj_char["shot_sys_aim_process"] = {450,0,420,450}
-            obj_char["shot_sys_fire_cancel"] = true
-        end
     end
     return res
 end
-function load_game_scene_anim_char_TRM_4SP_S_shot_sys_steady_aim_unlock(obj_char,shot_sys_curse)
+function load_game_scene_anim_char_TRM_4SP_S_shot_sys_steady_aim_unlock(obj_char)
     local res = {}
     res["prop_f"] = "shot_sys_f"
-    res["anim_length"] = 27
+    res["anim_length"] = 1
     res[0] = function()
     end
-    res[18] = function()
-        -- input_sys_cache
-        hit_side_obj_char["input_sys_state_negative_edge"] = "load" -- none save load
-        common_game_scene_get_input_sys_cache_negative_edge_state_machine(hit_side_obj_char["player_side"])()
-        -- shot_sys
-        obj_char["shot_sys_aim_process"] = {0,0,420,450}
-        obj_char["shot_sys_fire_cancel"] = true
-    end
-    res[27] = function()
-        -- shot_sys
-        obj_char["shot_sys_aim_process"] = {450,0,420,450}
-        obj_char["shot_sys_fire_cancel"] = true
+    res[1] = function()
         -- animation_end
-    end
-    if shot_sys_curse then
-        res[18] = function()
-            -- shot_sys
-            obj_char["shot_sys_aim_process"] = {450,0,420,450}
-            obj_char["shot_sys_fire_cancel"] = true
-        end
     end
     return res
 end
