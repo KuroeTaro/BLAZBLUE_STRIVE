@@ -9844,7 +9844,7 @@ end
 function load_game_scene_anim_char_TRM_4SP_S_shot_sys_steady_aim_lock(self_side_obj_char,opponent_side_obj_char)
     local res = {}
     res["prop_f"] = "shot_sys_f"
-    res["anim_length"] = 30
+    res["anim_length"] = 27
     res[0] = function()
         -- shot_sys
         obj_char["shot_sys_fire_cancel"] = false
@@ -9853,7 +9853,7 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_steady_aim_lock(self_side_
         -- shot_sys
         obj_char["shot_sys_fire_cancel"] = true
     end
-    res[30] = function()
+    res[27] = function()
         -- animation_end
     end
     return res
@@ -9861,7 +9861,7 @@ end
 function load_game_scene_anim_char_TRM_4SP_S_shot_sys_steady_aim_unlock(obj_char)
     local res = {}
     res["prop_f"] = "shot_sys_f"
-    res["anim_length"] = 16
+    res["anim_length"] = 27
     res[0] = function()
         -- shot_sys
         obj_char["shot_sys_fire_cancel"] = false
@@ -9869,6 +9869,9 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_steady_aim_unlock(obj_char
     res[16] = function()
         -- shot_sys
         obj_char["shot_sys_fire_cancel"] = true
+    end
+    res[27] = function()
+        -- animation_end
     end
     return res
 end
@@ -9898,8 +9901,7 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_steady_aim_to_at_the_ready
         obj_char["shot_sys_fire_cancel"] = false
     end
     res[16] = function()
-        -- shot_sys
-        obj_char["shot_sys_fire_cancel"] = true
+        -- animation_end
     end
     return res
 end
