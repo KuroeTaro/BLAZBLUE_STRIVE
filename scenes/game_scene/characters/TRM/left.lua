@@ -2355,13 +2355,15 @@ function state_machine_char_game_scene_char_LP_shot_sys()
                 return
             end
         end,
+        ["at_the_ready_to_steady_aim"] = function()
+        end,
         ["steady_aim_lock"] = function()
         end,
         ["steady_aim_unlock"] = function()
         end,
-        ["steady_aim_ease_out"] = function()
-        end,
         ["steady_aim_shot"] = function()
+        end,
+        ["steady_aim_to_at_the_ready"] = function()
         end
     }
     local this_function = switch[self_side_obj_char["shot_sys_state"]]
