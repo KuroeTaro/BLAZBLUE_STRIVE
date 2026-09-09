@@ -182,6 +182,7 @@ function common_game_scene_init_input_sys_state_for_wallbreak(obj_char)
 end
 function common_game_scene_update_input_sys_direction(self_side_obj_char,opponent_side_obj_char)
     local self_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[self_side_obj_char["player_side"]]
+    local opponent_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[opponent_side_obj_char["player_side"]]
     local right = (test_input_sys_press_or_hold(self_side_input["right"]) and 1 or 0)
     local left  = (test_input_sys_press_or_hold(self_side_input["left"]) and 1 or 0)
     local up    = (test_input_sys_press_or_hold(self_side_input["up"]) and 1 or 0)
@@ -193,7 +194,8 @@ function common_game_scene_update_input_sys_direction(self_side_obj_char,opponen
     end
     -- 根据 self 与 opponent 的左右位置关系决定是否翻转左右输入
     -- self 在 opponent 右侧(面向左)时翻转
-    if self_side_obj_char[5] == -1 then
+    if (self_side_obj_char["x"] == opponent_side_obj_char["x"] and self_side_obj_char[5] == -1)
+    or (self_side_obj_char["x"] > opponent_side_obj_char["x"]) then
         left,right = right,left
     end
     self_side_obj_char["direction_input"] = 5 + 3*up - 3*down + right*1 - left*1
