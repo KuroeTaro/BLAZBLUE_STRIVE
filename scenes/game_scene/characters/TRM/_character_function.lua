@@ -352,6 +352,7 @@ end
 -- at_the_ready
 function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(self_side_obj_char,opponent_side_obj_char)
     -- hurt_state
+    self_side_obj_char["hurt_state"] = self_side_obj_char["hurt_state_target"]
     if self_side_obj_char["hurt_state"] == "idle" then
         self_side_obj_char["hurt_state"] = "unblock"
     end
@@ -386,6 +387,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(se
 end
 function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_update(self_side_obj_char,opponent_side_obj_char)
     -- hurt_state
+    self_side_obj_char["hurt_state"] = self_side_obj_char["hurt_state_target"]
     if self_side_obj_char["hurt_state"] == "idle" then
         self_side_obj_char["hurt_state"] = "unblock"
     end
@@ -427,6 +429,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_update
 end
 function character_function_game_scene_TRM_shot_sys_at_the_ready_init(obj_char)
     -- hurt_state
+    obj_char["hurt_state"] = obj_char["hurt_state_target"]
     if obj_char["hurt_state"] == "idle" then
         obj_char["hurt_state"] = "unblock"
     end
@@ -436,6 +439,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_init(obj_char)
 end
 function character_function_game_scene_TRM_shot_sys_at_the_ready_update(self_side_obj_char,opponent_side_obj_char)
     -- hurt_state
+    self_side_obj_char["hurt_state"] = self_side_obj_char["hurt_state_target"]
     if self_side_obj_char["hurt_state"] == "idle" then
         self_side_obj_char["hurt_state"] = "unblock"
     end
@@ -446,6 +450,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_update(self_sid
 end
 function character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(self_side_obj_char,opponent_side_obj_char)
     -- hurt_state
+    self_side_obj_char["hurt_state"] = self_side_obj_char["hurt_state_target"]
     if self_side_obj_char["hurt_state"] == "idle" then
         self_side_obj_char["hurt_state"] = "unblock"
     end
@@ -466,6 +471,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(self_
 end
 function character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(obj_char)
     -- hurt_state
+    obj_char["hurt_state"] = obj_char["hurt_state_target"]
     if obj_char["hurt_state"] == "idle" then
         obj_char["hurt_state"] = "unblock"
     end
