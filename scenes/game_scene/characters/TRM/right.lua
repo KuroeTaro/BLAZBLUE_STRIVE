@@ -2372,12 +2372,12 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 return
             end
         end,
-        ["steady_aim_lock"] = function()
+        ["steady_aim_ease_in"] = function()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_steady_aim_lock_update(self_side_obj_char,opponent_side_obj_char)
             end
         end,
-        ["steady_aim_unlock"] = function()
+        ["steady_aim_ease_out"] = function()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_steady_aim_unlock_update(self_side_obj_char,opponent_side_obj_char)
             end
@@ -2385,11 +2385,6 @@ function state_machine_char_game_scene_char_RP_shot_sys()
         ["steady_aim_shot"] = function()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_steady_aim_shot_update(self_side_obj_char,opponent_side_obj_char)
-            end
-        end,
-        ["steady_aim_to_at_the_ready"] = function()
-            if run_at_current_frame then
-                character_function_game_scene_TRM_shot_sys_steady_aim_to_at_the_ready_update(self_side_obj_char,opponent_side_obj_char)
             end
         end
     }
@@ -2611,9 +2606,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_reticle()
                 return
             end
         end,
-        ["steady_aim_lock"] = function()
-        end,
-        ["steady_aim_unlock"] = function()
+        ["steady_aim_ease_in"] = function()
         end,
         ["steady_aim_ease_out"] = function()
         end,

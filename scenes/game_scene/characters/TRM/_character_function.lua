@@ -536,7 +536,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(obj
     return
 end
 -- steady_aim
-function character_function_game_scene_TRM_shot_sys_steady_aim_lock_init(self_side_obj_char,opponent_side_obj_char)
+function character_function_game_scene_TRM_shot_sys_steady_aim_ease_in_init(self_side_obj_char,opponent_side_obj_char)
     -- hurt_state
     self_side_obj_char["hurt_state"] = self_side_obj_char["hurt_state_target"]
     if self_side_obj_char["hurt_state"] == "idle" then
@@ -560,12 +560,12 @@ function character_function_game_scene_TRM_shot_sys_steady_aim_lock_init(self_si
     self_side_obj_char["shot_sys_reticle_state"] = "steady_aim_lock"
     return
 end
-function character_function_game_scene_TRM_shot_sys_steady_aim_lock_update(obj_char)
+function character_function_game_scene_TRM_shot_sys_steady_aim_ease_in_update(obj_char)
     character_animator(obj_char,obj_char["shot_sys_animation"])
     character_function_game_scene_TRM_shot_sys_steady_aim_aim_process_update(self_side_obj_char,opponent_side_obj_char)
     return
 end
-function character_function_game_scene_TRM_shot_sys_steady_aim_unlock_init(obj_char)
+function character_function_game_scene_TRM_shot_sys_steady_aim_ease_out_init(obj_char)
     -- hurt_state
     self_side_obj_char["hurt_state"] = self_side_obj_char["hurt_state_target"]
     if self_side_obj_char["hurt_state"] == "idle" then
@@ -577,8 +577,6 @@ function character_function_game_scene_TRM_shot_sys_steady_aim_unlock_init(obj_c
     self_side_obj_char["shot_sys_aim_process"] = {0,0,420,450,false}
     character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(self_side_obj_char,opponent_side_obj_char)
     -- reticle
-    self_side_obj_char["shot_sys_reticle"][4] = 0
-    self_side_obj_char["shot_sys_reticle"][8] = 0
     self_side_obj_char["shot_sys_reticle_animation_table"][1] = load_game_scene_anim_char_TRM_4SP_S_reticle_steady_aim_unlock(self_side_obj_char)
     init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
     character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(self_side_obj_char,opponent_side_obj_char)
@@ -586,13 +584,9 @@ function character_function_game_scene_TRM_shot_sys_steady_aim_unlock_init(obj_c
     self_side_obj_char["shot_sys_reticle_state"] = "steady_aim_unlock"
     return
 end
-function character_function_game_scene_TRM_shot_sys_steady_aim_unlock_update(obj_char)
+function character_function_game_scene_TRM_shot_sys_steady_aim_ease_out_update(obj_char)
 end
 function character_function_game_scene_TRM_shot_sys_steady_aim_shot_init(obj_char)
 end
 function character_function_game_scene_TRM_shot_sys_steady_aim_shot_update(obj_char)
-end
-function character_function_game_scene_TRM_shot_sys_steady_aim_to_at_the_ready_init(obj_char)
-end
-function character_function_game_scene_TRM_shot_sys_steady_aim_to_at_the_ready_update(obj_char)
 end
