@@ -253,8 +253,9 @@ function load_game_scene_obj_char_LP()
         ["off"] = true
     }
     -- shot_sys_oroboros
-    obj_char_game_scene_char_LP["shot_sys_oroboros_state"] = "off"
     obj_char_game_scene_char_LP["shot_sys_oroboros_f"] = 0
+    obj_char_game_scene_char_LP["shot_sys_oroboros_state"] = "off"
+    obj_char_game_scene_char_LP["shot_sys_oroboros_state_cache"] = "off"
     obj_char_game_scene_char_LP["shot_sys_oroboros_aim_r"] = 0.42
     obj_char_game_scene_char_LP["shot_sys_oroboros_animation_table"] = {}
     -- shot_sys_oroboros_sub_obj
@@ -285,11 +286,12 @@ function load_game_scene_obj_char_LP()
         obj_char_game_scene_char_LP[6]
     }
     -- shot_sys_reticle
-    obj_char_game_scene_char_LP["shot_sys_reticle_state"] = "off"
     obj_char_game_scene_char_LP["shot_sys_reticle"] = {0,0,0,0,1,1,0,0}
     obj_char_game_scene_char_LP["shot_sys_reticle_f"] = 0
     obj_char_game_scene_char_LP["shot_sys_reticle_f_4"] = 0
     obj_char_game_scene_char_LP["shot_sys_reticle_f_8"] = 0
+    obj_char_game_scene_char_LP["shot_sys_reticle_state"] = "off"
+    obj_char_game_scene_char_LP["shot_sys_reticle_state_cache"] = "off"
     obj_char_game_scene_char_LP["shot_sys_reticle_animation_table"] = {}
     obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_current"] = {0,0}
     obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_target"] = {0,0}
@@ -759,8 +761,9 @@ function load_game_scene_wallbreak_mid_init_LP()
     obj_char_game_scene_char_LP["shot_sys_steady_aim_clean_hit"] = false
     obj_char_game_scene_char_LP["shot_sys_steady_aim_curse_cache"] = false
     obj_char_game_scene_char_LP["shot_sys_steady_aim_hit_cache"] = false
-    obj_char_game_scene_char_LP["shot_sys_oroboros_state"] = "off"
     obj_char_game_scene_char_LP["shot_sys_oroboros_f"] = 0
+    obj_char_game_scene_char_LP["shot_sys_oroboros_state"] = "off"
+    obj_char_game_scene_char_LP["shot_sys_oroboros_state_cache"] = "off"
     obj_char_game_scene_char_LP["shot_sys_oroboros_aim_r"] = 0.42
     obj_char_game_scene_char_LP["shot_sys_oroboros_animation_table"] = {}
     obj_char_game_scene_char_LP["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
@@ -774,11 +777,12 @@ function load_game_scene_wallbreak_mid_init_LP()
     obj_char_game_scene_char_LP["shot_sys_oroboros_back"]["f_8"] = 0
     obj_char_game_scene_char_LP["shot_sys_oroboros_back"]["f_4"] = 0
     obj_char_game_scene_char_LP["shot_sys_oroboros_back"]["sprite_sheet"] = "5H_oroboros_loop_back"
-    obj_char_game_scene_char_LP["shot_sys_reticle_state"] = "off"
     obj_char_game_scene_char_LP["shot_sys_reticle"] = {0,0,0,0,1,1,0,0}
     obj_char_game_scene_char_LP["shot_sys_reticle_f"] = 0
     obj_char_game_scene_char_LP["shot_sys_reticle_f_4"] = 0
     obj_char_game_scene_char_LP["shot_sys_reticle_f_8"] = 0
+    obj_char_game_scene_char_LP["shot_sys_reticle_state"] = "off"
+    obj_char_game_scene_char_LP["shot_sys_reticle_state_cache"] = "off"
     obj_char_game_scene_char_LP["shot_sys_reticle_animation_table"] = {}
     obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_current"] = {0,0}
     obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_target"] = {0,0}
@@ -882,8 +886,9 @@ function load_game_scene_wallbreak_end_init_LP()
     obj_char_game_scene_char_LP["shot_sys_animation"] = nil
     obj_char_game_scene_char_LP["shot_sys_camera_shake_table"] = {}
     -- shot_sys_oroboros
-    obj_char_game_scene_char_LP["shot_sys_oroboros_state"] = "off"
     obj_char_game_scene_char_LP["shot_sys_oroboros_f"] = 0
+    obj_char_game_scene_char_LP["shot_sys_oroboros_state"] = "off"
+    obj_char_game_scene_char_LP["shot_sys_oroboros_state_cache"] = "off"
     obj_char_game_scene_char_LP["shot_sys_oroboros_aim_r"] = 0.42
     obj_char_game_scene_char_LP["shot_sys_oroboros_animation_table"] = {}
     -- shot_sys_oroboros_sub_obj
@@ -914,11 +919,12 @@ function load_game_scene_wallbreak_end_init_LP()
         obj_char_game_scene_char_LP[6]
     }
     -- shot_sys_reticle
-    obj_char_game_scene_char_LP["shot_sys_reticle_state"] = "off"
     obj_char_game_scene_char_LP["shot_sys_reticle"] = {0,0,0,0,1,1,0,0}
     obj_char_game_scene_char_LP["shot_sys_reticle_f"] = 0
     obj_char_game_scene_char_LP["shot_sys_reticle_f_4"] = 0
     obj_char_game_scene_char_LP["shot_sys_reticle_f_8"] = 0
+    obj_char_game_scene_char_LP["shot_sys_reticle_state"] = "off"
+    obj_char_game_scene_char_LP["shot_sys_reticle_state_cache"] = "off"
     obj_char_game_scene_char_LP["shot_sys_reticle_animation_table"] = {}
     obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_current"] = {0,0}
     obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_target"] = {0,0}
@@ -2434,6 +2440,8 @@ function state_machine_char_game_scene_char_LP_shot_sys_oroboros()
                 character_function_game_scene_TRM_shot_sys_oroboros_pos_update(self_side_obj_char)
             end
             if get_character_anim_end_state(self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3]) then
+                self_side_obj_char["shot_sys_oroboros_state"] = "off"
+                self_side_obj_char["shot_sys_oroboros_state_cache"] = "off"
                 self_side_obj_char["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
                 self_side_obj_char["shot_sys_oroboros_front"]["f_8"] = 0
                 self_side_obj_char["shot_sys_oroboros_front"]["f_4"] = 0
@@ -2445,7 +2453,6 @@ function state_machine_char_game_scene_char_LP_shot_sys_oroboros()
                 self_side_obj_char["shot_sys_oroboros_back"]["f_8"] = 0
                 self_side_obj_char["shot_sys_oroboros_back"]["f_4"] = 0
                 self_side_obj_char["shot_sys_oroboros_back"]["sprite_sheet"] = "5H_oroboros_loop_back"
-                self_side_obj_char["shot_sys_oroboros_state"] = "off"
                 return
             end
         end,
@@ -2575,11 +2582,11 @@ function state_machine_char_game_scene_char_LP_shot_sys_reticle()
                 self_side_obj_char["shot_sys_reticle_f"] = 0
                 self_side_obj_char["shot_sys_reticle_f_4"] = 0
                 self_side_obj_char["shot_sys_reticle_f_8"] = 0
+                self_side_obj_char["shot_sys_reticle_state"] = "off"
                 self_side_obj_char["shot_sys_reticle_animation_table"] = {}
                 self_side_obj_char["shot_sys_reticle_stage_pos_current"] = {0,0}
                 self_side_obj_char["shot_sys_reticle_stage_pos_target"] = {0,0}
                 self_side_obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
-                self_side_obj_char["shot_sys_reticle_state"] = "off"
                 return
             end
         end,
