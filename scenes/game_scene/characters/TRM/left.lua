@@ -173,10 +173,13 @@ function load_game_scene_obj_char_LP()
     -- shot_sys
     obj_char_game_scene_char_LP["shot_sys_f"] = 0
     obj_char_game_scene_char_LP["shot_sys_state"] = "off"
+    obj_char_game_scene_char_LP["shot_sys_state_cache"] = "off"
     obj_char_game_scene_char_LP["shot_sys_curse"] = false
     obj_char_game_scene_char_LP["shot_sys_curse_countdown"] = 0
     obj_char_game_scene_char_LP["shot_sys_scapegoat_exist"] = false
     obj_char_game_scene_char_LP["shot_sys_steady_aim_clean_hit"] = false
+    obj_char_game_scene_char_LP["shot_sys_steady_aim_curse_cache"] = false
+    obj_char_game_scene_char_LP["shot_sys_steady_aim_hit_cache"] = false
     obj_char_game_scene_char_LP["shot_sys_fire_cancel"] = false
     obj_char_game_scene_char_LP["shot_sys_idle_cancel"] = false
     obj_char_game_scene_char_LP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值
@@ -234,6 +237,15 @@ function load_game_scene_obj_char_LP()
         ["knockdown"] = true,
         ["knockdown_recovery"] = true,
         ["knockout"] = true
+    }
+    obj_char_game_scene_char_LP["shot_sys_steady_aim_hit_state"] = {
+        ["hurt"] = true,
+        ["throw_hurt_success"] = true,
+        ["hurtstop"] = true,
+        ["wallstick"] = true,
+        ["wallbreak_hurt"] = true,
+        ["knockdown"] = true,
+        ["knockdown_recovery"] = true
     }
     obj_char_game_scene_char_LP["6SP_S_shot_sys_pass_state"] = {
         ["at_the_ready_ease_out"] = true,
@@ -742,8 +754,11 @@ function load_game_scene_wallbreak_mid_init_LP()
     obj_char_game_scene_char_LP["VFX_hit_back_table"] = {}
     obj_char_game_scene_char_LP["shot_sys_f"] = 0
     obj_char_game_scene_char_LP["shot_sys_state"] = "off"
+    obj_char_game_scene_char_LP["shot_sys_state_cache"] = "off"
     obj_char_game_scene_char_LP["shot_sys_scapegoat_exist"] = false
     obj_char_game_scene_char_LP["shot_sys_steady_aim_clean_hit"] = false
+    obj_char_game_scene_char_LP["shot_sys_steady_aim_curse_cache"] = false
+    obj_char_game_scene_char_LP["shot_sys_steady_aim_hit_cache"] = false
     obj_char_game_scene_char_LP["shot_sys_oroboros_state"] = "off"
     obj_char_game_scene_char_LP["shot_sys_oroboros_f"] = 0
     obj_char_game_scene_char_LP["shot_sys_oroboros_aim_r"] = 0.42
@@ -858,8 +873,11 @@ function load_game_scene_wallbreak_end_init_LP()
     -- shot_sys
     obj_char_game_scene_char_LP["shot_sys_f"] = 0
     obj_char_game_scene_char_LP["shot_sys_state"] = "off"
-    obj_char_game_scene_char_LP["shot_sys_fire_cancel"] = false
-    obj_char_game_scene_char_LP["shot_sys_idle_cancel"] = false
+    obj_char_game_scene_char_LP["shot_sys_state_cache"] = "off"
+    obj_char_game_scene_char_LP["shot_sys_scapegoat_exist"] = false
+    obj_char_game_scene_char_LP["shot_sys_steady_aim_clean_hit"] = false
+    obj_char_game_scene_char_LP["shot_sys_steady_aim_curse_cache"] = false
+    obj_char_game_scene_char_LP["shot_sys_steady_aim_hit_cache"] = false
     obj_char_game_scene_char_LP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值
     obj_char_game_scene_char_LP["shot_sys_animation"] = nil
     obj_char_game_scene_char_LP["shot_sys_camera_shake_table"] = {}
@@ -2270,7 +2288,6 @@ function state_machine_char_game_scene_char_LP_shot_sys()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_off_update(self_side_obj_char)
             end
-            -- ease_in
             if test_input_sys_press(self_side_input["H"]) and (not shot_sys_at_the_ready_ban_state) and self_side_obj_char["ability_gauge"][1] > 0 then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(self_side_obj_char,opponent_side_obj_char)
                 self_side_obj_char["shot_sys_state"] = "at_the_ready_ease_in"
@@ -2355,9 +2372,10 @@ function state_machine_char_game_scene_char_LP_shot_sys()
                 return
             end
         end,
-        ["at_the_ready_to_steady_aim"] = function()
-        end,
         ["steady_aim_lock"] = function()
+            if run_at_current_frame then
+                character_function_game_scene_TRM_shot_sys_steady_aim_lock_update(self_side_obj_char,opponent_side_obj_char)
+            end
         end,
         ["steady_aim_unlock"] = function()
         end,
@@ -2467,7 +2485,7 @@ function state_machine_char_game_scene_char_LP_shot_sys_reticle()
         ["at_the_ready_ease_in"] = function()
             if run_at_current_frame then
                 character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
-                character_function_game_scene_TRM_shot_sys_reticle_pos_update_ease_in(self_side_obj_char,opponent_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready_ease_in(self_side_obj_char,opponent_side_obj_char)
             end
             if self_side_obj_char["shot_sys_aim_process"][1] >= self_side_obj_char["shot_sys_aim_process"][3] then
                 self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_locking")
