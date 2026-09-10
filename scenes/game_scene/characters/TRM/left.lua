@@ -2378,10 +2378,19 @@ function state_machine_char_game_scene_char_LP_shot_sys()
             end
         end,
         ["steady_aim_unlock"] = function()
+            if run_at_current_frame then
+                character_function_game_scene_TRM_shot_sys_steady_aim_unlock_update(self_side_obj_char,opponent_side_obj_char)
+            end
         end,
         ["steady_aim_shot"] = function()
+            if run_at_current_frame then
+                character_function_game_scene_TRM_shot_sys_steady_aim_shot_update(self_side_obj_char,opponent_side_obj_char)
+            end
         end,
         ["steady_aim_to_at_the_ready"] = function()
+            if run_at_current_frame then
+                character_function_game_scene_TRM_shot_sys_steady_aim_to_at_the_ready_update(self_side_obj_char,opponent_side_obj_char)
+            end
         end
     }
     local this_function = switch[self_side_obj_char["shot_sys_state"]]
