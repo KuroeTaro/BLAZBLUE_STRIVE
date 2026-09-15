@@ -178,13 +178,25 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["shot_sys_curse_countdown"] = 0
     obj_char_game_scene_char_RP["shot_sys_scapegoat_exist"] = false
     obj_char_game_scene_char_RP["shot_sys_steady_aim_clean_hit"] = false
-    obj_char_game_scene_char_RP["shot_sys_steady_aim_curse_cache"] = false
-    obj_char_game_scene_char_RP["shot_sys_steady_aim_hit_cache"] = false
+    obj_char_game_scene_char_RP["shot_sys_steady_quick_aim_cache"] = false
+    obj_char_game_scene_char_RP["shot_sys_steady_quick_clean_hit_cache"] = false
     obj_char_game_scene_char_RP["shot_sys_fire_cancel"] = false
     obj_char_game_scene_char_RP["shot_sys_idle_cancel"] = false
     obj_char_game_scene_char_RP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值
     obj_char_game_scene_char_RP["shot_sys_animation"] = nil
     obj_char_game_scene_char_RP["shot_sys_camera_shake_table"] = {}
+    obj_char_game_scene_char_RP["shot_sys_curse_ban_state"] = {
+        ["before_ease_in"] = true,
+        ["hurt"] = true,
+        ["throw_hurt_success"] = true,
+        ["throw_tested"] = true,
+        ["hurtstop"] = true,
+        ["wallstick"] = true,
+        ["wallbreak_hurt"] = true,
+        ["knockdown"] = true,
+        ["knockdown_recovery"] = true,
+        ["knockout"] = true
+    }
     obj_char_game_scene_char_RP["shot_sys_at_the_ready_ban_state"] = {
         ["before_ease_in"] = true,
         ["active_FD_block"] = true,
@@ -226,19 +238,12 @@ function load_game_scene_obj_char_RP()
         ["5UA"] = true,
         ["4SP_S_6UA"] = true
     }
-    obj_char_game_scene_char_RP["shot_sys_curse_ban_state"] = {
-        ["before_ease_in"] = true,
-        ["hurt"] = true,
-        ["throw_hurt_success"] = true,
-        ["throw_tested"] = true,
-        ["hurtstop"] = true,
-        ["wallstick"] = true,
-        ["wallbreak_hurt"] = true,
-        ["knockdown"] = true,
-        ["knockdown_recovery"] = true,
-        ["knockout"] = true
+    obj_char_game_scene_char_RP["shot_sys_at_the_ready_6SP_S_pass_state"] = {
+        ["at_the_ready_ease_out"] = true,
+        ["steady_aim_ease_out"] = true,
+        ["off"] = true
     }
-    obj_char_game_scene_char_RP["shot_sys_steady_aim_hit_state"] = {
+    obj_char_game_scene_char_RP["shot_sys_steady_aim_quick_clean_hit_state"] = {
         ["hurt"] = true,
         ["throw_hurt_success"] = true,
         ["hurtstop"] = true,
@@ -247,10 +252,9 @@ function load_game_scene_obj_char_RP()
         ["knockdown"] = true,
         ["knockdown_recovery"] = true
     }
-    obj_char_game_scene_char_RP["6SP_S_shot_sys_pass_state"] = {
-        ["at_the_ready_ease_out"] = true,
-        ["steady_aim_ease_out"] = true,
-        ["off"] = true
+    obj_char_game_scene_char_RP["shot_sys_steady_aim_quick_clean_hit_from_at_the_ready_state"] = {
+        ["block"] = true,
+        ["blockstop"] = true
     }
     -- shot_sys_oroboros
     obj_char_game_scene_char_RP["shot_sys_oroboros_f"] = 0
@@ -759,8 +763,8 @@ function load_game_scene_wallbreak_mid_init_RP()
     obj_char_game_scene_char_RP["shot_sys_state_cache"] = "off"
     obj_char_game_scene_char_RP["shot_sys_scapegoat_exist"] = false
     obj_char_game_scene_char_RP["shot_sys_steady_aim_clean_hit"] = false
-    obj_char_game_scene_char_RP["shot_sys_steady_aim_curse_cache"] = false
-    obj_char_game_scene_char_RP["shot_sys_steady_aim_hit_cache"] = false
+    obj_char_game_scene_char_RP["shot_sys_steady_quick_aim_cache"] = false
+    obj_char_game_scene_char_RP["shot_sys_steady_quick_clean_hit_cache"] = false
     obj_char_game_scene_char_RP["shot_sys_oroboros_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_oroboros_state_cache"] = "off"
@@ -880,8 +884,8 @@ function load_game_scene_wallbreak_end_init_RP()
     obj_char_game_scene_char_RP["shot_sys_state_cache"] = "off"
     obj_char_game_scene_char_RP["shot_sys_scapegoat_exist"] = false
     obj_char_game_scene_char_RP["shot_sys_steady_aim_clean_hit"] = false
-    obj_char_game_scene_char_RP["shot_sys_steady_aim_curse_cache"] = false
-    obj_char_game_scene_char_RP["shot_sys_steady_aim_hit_cache"] = false
+    obj_char_game_scene_char_RP["shot_sys_steady_quick_aim_cache"] = false
+    obj_char_game_scene_char_RP["shot_sys_steady_quick_clean_hit_cache"] = false
     obj_char_game_scene_char_RP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值
     obj_char_game_scene_char_RP["shot_sys_animation"] = nil
     obj_char_game_scene_char_RP["shot_sys_camera_shake_table"] = {}
@@ -2283,9 +2287,9 @@ function state_machine_char_game_scene_char_RP_shot_sys()
     local self_side_obj_char = obj_char_game_scene_char_RP
     local opponent_side_obj_char = obj_char_game_scene_char_LP
     local test_input_idle_to_ease_out = 
-    (test_input_sys_press(self_side_input["H"]) and common_game_scene_check_crouch_direction(self_side_obj_char)) or self_side_obj_char["ability_gauge"][1] <= 0 
-    local test_input_shot_to_ease_out = 
-    (test_input_sys_release(self_side_input["H"]) and common_game_scene_check_crouch_direction(self_side_obj_char)) or test_input_idle_to_ease_out
+    (test_input_sys_press(self_side_input["H"]) and common_game_scene_check_crouch_direction(self_side_obj_char))
+    or (test_input_sys_hold(self_side_input["H"]) and test_input_sys_press(self_side_input["SP"]))
+    or self_side_obj_char["ability_gauge"][1] <= 0 
     local shot_sys_at_the_ready_ban_state = self_side_obj_char["shot_sys_at_the_ready_ban_state"][self_side_obj_char["state"]]
     local run_at_current_frame = common_game_scene_character_run_at_this_frame(self_side_obj_char)
     -- state_machine
@@ -2359,7 +2363,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(self_side_obj_char)
             end
-            if (self_side_obj_char["shot_sys_idle_cancel"] and test_input_shot_to_ease_out) or shot_sys_at_the_ready_ban_state then
+            if (self_side_obj_char["shot_sys_idle_cancel"] and test_input_idle_to_ease_out) or shot_sys_at_the_ready_ban_state then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(self_side_obj_char)
                 self_side_obj_char["shot_sys_state"] = "at_the_ready_ease_out"
                 return
@@ -3195,7 +3199,7 @@ function state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_i
         -- _4SP_S_5Launcher
     -- _6SP_S
     if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3)
-    and self_side_obj_char["6SP_S_shot_sys_pass_state"][self_side_obj_char["shot_sys_state"]]
+    and self_side_obj_char["shot_sys_at_the_ready_6SP_S_pass_state"][self_side_obj_char["shot_sys_state"]]
     and self_side_obj_char["ability_gauge"][1] > 0
     and test_input_sys_press_or_hold(self_side_input["SP"])
     and test_input_sys_press(self_side_input["S"]) then
@@ -3289,7 +3293,7 @@ function state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(se
         -- _4SP_S_5Launcher
     -- _6SP_S
     if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3)
-    and self_side_obj_char["6SP_S_shot_sys_pass_state"][self_side_obj_char["shot_sys_state"]]
+    and self_side_obj_char["shot_sys_at_the_ready_6SP_S_pass_state"][self_side_obj_char["shot_sys_state"]]
     and self_side_obj_char["ability_gauge"][1] > 0
     and test_input_sys_press_or_hold(self_side_input["SP"])
     and test_input_sys_press_or_hold(self_side_input["S"]) then
