@@ -174,15 +174,15 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["shot_sys_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_state_cache"] = "off"
+    obj_char_game_scene_char_RP["shot_sys_fire_cancel"] = false
+    obj_char_game_scene_char_RP["shot_sys_idle_cancel"] = false
+    obj_char_game_scene_char_RP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值
     obj_char_game_scene_char_RP["shot_sys_curse"] = false
     obj_char_game_scene_char_RP["shot_sys_curse_countdown"] = 0
     obj_char_game_scene_char_RP["shot_sys_scapegoat_exist"] = false
     obj_char_game_scene_char_RP["shot_sys_steady_aim_clean_hit"] = false
     obj_char_game_scene_char_RP["shot_sys_steady_quick_aim_cache"] = false
     obj_char_game_scene_char_RP["shot_sys_steady_quick_clean_hit_cache"] = false
-    obj_char_game_scene_char_RP["shot_sys_fire_cancel"] = false
-    obj_char_game_scene_char_RP["shot_sys_idle_cancel"] = false
-    obj_char_game_scene_char_RP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值
     obj_char_game_scene_char_RP["shot_sys_animation"] = nil
     obj_char_game_scene_char_RP["shot_sys_camera_shake_table"] = {}
     obj_char_game_scene_char_RP["shot_sys_curse_ban_state"] = {
@@ -882,11 +882,11 @@ function load_game_scene_wallbreak_end_init_RP()
     obj_char_game_scene_char_RP["shot_sys_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_state_cache"] = "off"
+    obj_char_game_scene_char_RP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值
     obj_char_game_scene_char_RP["shot_sys_scapegoat_exist"] = false
     obj_char_game_scene_char_RP["shot_sys_steady_aim_clean_hit"] = false
     obj_char_game_scene_char_RP["shot_sys_steady_quick_aim_cache"] = false
     obj_char_game_scene_char_RP["shot_sys_steady_quick_clean_hit_cache"] = false
-    obj_char_game_scene_char_RP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值
     obj_char_game_scene_char_RP["shot_sys_animation"] = nil
     obj_char_game_scene_char_RP["shot_sys_camera_shake_table"] = {}
     -- shot_sys_oroboros

@@ -456,9 +456,9 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(o
     -- hurt_state
     obj_char["hurt_state"] = obj_char["hurt_state_target"]
     -- shot_sys
-    obj_char["shot_sys_aim_process"][1] = 0
     obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_out(obj_char)
     init_character_anim_with(obj_char,obj_char["shot_sys_animation"])
+    obj_char["shot_sys_aim_process"][1] = 0
     -- oroboros
     obj_char["shot_sys_oroboros_aim_r"] = 0.42
     obj_char["shot_sys_oroboros_offset_amount"] = 0
