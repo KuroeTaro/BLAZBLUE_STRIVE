@@ -228,37 +228,6 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_upd
         self_side_obj_char_shot_sys_aim_process[1] = math.max(self_side_obj_char_shot_sys_aim_process[1],self_side_obj_char_shot_sys_aim_process[3])
     end
 end
-function character_function_game_scene_TRM_shot_sys_at_the_steady_aim_process_update(self_side_obj_char,opponent_side_obj_char)
-    -- 0.命中对方
-    -- 1.诅咒缓存
-    local self_side_obj_char_shot_sys_aim_process = self_side_obj_char["shot_sys_aim_process"]
-    local instant_aim_state = {
-        ["hurt"] = true,
-        ["throw_hurt_success"] = true,
-        ["hurtstop"] = true,
-        ["wallstick"] = true,
-        ["wallbreak"] = true,
-        ["knockdown"] = true
-    }
-    -- focus_speed
-    self_side_obj_char_shot_sys_aim_process[2] = 10
-    if self_side_obj_char["shot_sys_curse"] then
-        self_side_obj_char_shot_sys_aim_process[2] = 17.5
-    end
-    -- debuff_base_on_abs_and_relative_velocity
-    self_side_obj_char_shot_sys_aim_process[1] = self_side_obj_char_shot_sys_aim_process[1] - debuff(self_side_obj_char,opponent_side_obj_char)
-    -- add_focus_speed
-    self_side_obj_char_shot_sys_aim_process[1] = 
-        math.min(
-            self_side_obj_char_shot_sys_aim_process[1]+self_side_obj_char_shot_sys_aim_process[2],
-            self_side_obj_char_shot_sys_aim_process[4]
-        )
-    self_side_obj_char_shot_sys_aim_process[1] = math.max(self_side_obj_char_shot_sys_aim_process[1],0)
-    -- instandt_aim
-    if instant_aim_state[opponent_side_obj_char["state"]] then
-        self_side_obj_char_shot_sys_aim_process[1] = math.max(self_side_obj_char_shot_sys_aim_process[1],self_side_obj_char_shot_sys_aim_process[3])
-    end
-end
 -- r_visual_calculation
 function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,reticle_pos)
     local center_r = math.atan2((reticle_pos[2]-oroboros_pos[2]),(reticle_pos[1]-oroboros_pos[1]))
@@ -552,7 +521,6 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_ease_in_init(s
     self_side_obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock(self_side_obj_char)
     init_character_anim_with(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
     self_side_obj_char["shot_sys_aim_process"] = {0,0,420,450,false}
-    character_function_game_scene_TRM_shot_sys_at_the_steady_aim_process_update(self_side_obj_char,opponent_side_obj_char)
     -- oroboros
     obj_char["shot_sys_oroboros_aim_r"] = 0.42
     obj_char["shot_sys_oroboros_offset_amount"] = 0
@@ -574,7 +542,6 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_ease_in_init(s
 end
 function character_function_game_scene_TRM_shot_sys_at_the_steady_ease_in_update(obj_char)
     character_animator(obj_char,obj_char["shot_sys_animation"])
-    character_function_game_scene_TRM_shot_sys_at_the_steady_aim_process_update(self_side_obj_char,opponent_side_obj_char)
     return
 end
 function character_function_game_scene_TRM_shot_sys_at_the_steady_ease_out_init(obj_char)
