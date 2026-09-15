@@ -9003,9 +9003,9 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
         ["at_the_ready_ease_in"] = true,
         ["at_the_ready"] = true,
         ["at_the_ready_shot"] = true,
-        ["steady_aim_ease_in"] = true,
-        ["steady_aim"] = true,
-        ["steady_aim_shot"] = true
+        ["at_the_steady_ease_in"] = true,
+        ["at_the_steady"] = true,
+        ["at_the_steady_shot"] = true
     }
     res["prop_f"] = "f"
     res["anim_length"] = 45
@@ -9819,7 +9819,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
 end
 -- 4SP_S
 -- shot_sys
-function load_game_scene_anim_char_TRM_4SP_S_shot_sys_steady_aim_lock(self_side_obj_char,opponent_side_obj_char)
+function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock(self_side_obj_char,opponent_side_obj_char)
     local res = {}
     res["prop_f"] = "shot_sys_f"
     res["anim_length"] = 27
@@ -9836,7 +9836,7 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_steady_aim_lock(self_side_
     end
     return res
 end
-function load_game_scene_anim_char_TRM_4SP_S_shot_sys_steady_aim_unlock(obj_char)
+function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_unlock(obj_char)
     local res = {}
     res["prop_f"] = "shot_sys_f"
     res["anim_length"] = 27
@@ -9853,7 +9853,7 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_steady_aim_unlock(obj_char
     end
     return res
 end
-function load_game_scene_anim_char_TRM_4SP_S_shot_sys_steady_aim_shot(obj_char)
+function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_shot(obj_char)
     local res = {}
     res["prop_f"] = "shot_sys_f"
     res["anim_length"] = 60
@@ -9871,7 +9871,7 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_steady_aim_shot(obj_char)
     return res
 end
 -- shot_sys_reticle
-function load_game_scene_anim_char_TRM_4SP_S_reticle_steady_aim_lock(obj_char)
+function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock(obj_char)
     local res = {}
     local side = obj_char["player_side"]
     local move_SFX_table = common_game_scene_get_SFX_move(side)
@@ -9929,7 +9929,7 @@ function load_game_scene_anim_char_TRM_4SP_S_reticle_steady_aim_lock(obj_char)
     end
     return res
 end
-function load_game_scene_anim_char_TRM_4SP_S_reticle_steady_aim_unlock(obj_char)
+function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_unlock(obj_char)
     local res = {}
     local side = obj_char["player_side"]
     local move_SFX_table = common_game_scene_get_SFX_move(side)
@@ -9955,7 +9955,7 @@ function load_game_scene_anim_char_TRM_4SP_S_reticle_steady_aim_unlock(obj_char)
     end
     return res
 end
-function load_game_scene_anim_char_TRM_4SP_S_reticle_steady_aim_shot(obj_char)
+function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_shot(obj_char)
     local res = {}
     local side = obj_char["player_side"]
     local move_SFX_table = common_game_scene_get_SFX_move(side)
