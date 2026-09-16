@@ -50,7 +50,7 @@
 },
 "6":
 {
-	"frame": {"x":0,"y":320,"w":320,"h":320},
+	"frame": {"x":1920,"y":0,"w":320,"h":320},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":320},
@@ -58,7 +58,7 @@
 },
 "7":
 {
-	"frame": {"x":320,"y":320,"w":320,"h":320},
+	"frame": {"x":2240,"y":0,"w":320,"h":320},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":320},
@@ -66,7 +66,7 @@
 },
 "8":
 {
-	"frame": {"x":640,"y":320,"w":320,"h":320},
+	"frame": {"x":2560,"y":0,"w":320,"h":320},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":320},
@@ -74,7 +74,7 @@
 },
 "9":
 {
-	"frame": {"x":960,"y":320,"w":320,"h":320},
+	"frame": {"x":2880,"y":0,"w":320,"h":320},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":320},
@@ -82,7 +82,7 @@
 },
 "10":
 {
-	"frame": {"x":1280,"y":320,"w":320,"h":320},
+	"frame": {"x":3200,"y":0,"w":320,"h":320},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":320},
@@ -91,10 +91,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "TRM_4SP_S_reticle_locking",
+	"image": "TRM_4SP_S_reticle_lock",
 	"format": "RGBA8888",
-	"size": {"w":1920,"h":640},
+	"size": {"w":3520,"h":320},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:94c6fb9452d0d6c234c9258d33297a6e:010db4d2342bb77ad2d34b92881ba07f:07f5bb9d1449983fc1b4f977ef826206$"
+	"smartupdate": "$TexturePacker:SmartUpdate:6009dab7c8b41d0739bf19a15b6310e4:5f81e2fb1a4cd5297b7c5659a1c84ab3:19d4ce4d74f5de4ad7b57f2ac446ae0a$"
 }
 }

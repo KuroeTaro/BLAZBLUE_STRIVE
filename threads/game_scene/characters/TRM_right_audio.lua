@@ -38,7 +38,8 @@ local move_SFX_folder_table = {
     {folder = "normal/fS",files = {"fS_block","fS_counter","fS_hit","fS_whiff"}},
     {folder = "normal/5H",files = {
             "5H_knife_clip_0","5H_knife_clip_1","5H_knife_clip_2","5H_knife_whiff",
-            "5H_oroboros_blast","5H_projectile_block","5H_projectile_counter","5H_projectile_hit","5H_projectile_whiff",
+            "5H_projectile_block","5H_projectile_counter","5H_projectile_hit","5H_projectile_whiff",
+            "5H_oroboros_blast",
             "5H_reticle_ease_in","5H_reticle_ease_out","5H_reticle_locking"
         }
     },
@@ -52,12 +53,13 @@ local move_SFX_folder_table = {
     {folder = "normal/j4_6Launcher",files = {"j4_6Launcher_hit","j4_6Launcher_throw","j4_6Launcher_whiff"}},
     {folder = "normal/j5Launcher",files = {"j5Launcher_block","j5Launcher_counter","j5Launcher_hit","j5Launcher_whiff"}},
     {folder = "special/4SP_P",files = {"4SP_P_clip_0","4SP_P_clip_1","4SP_P_clip_2","4SP_P_knife_whiff"}},
-    {folder = "special/6SP_P",files = {"6SP_P_curse_ball_ground_bounce","6SP_P_curse_ball_hit","6SP_P_curse_end","6SP_P_whiff"}},
+    {folder = "special/6SP_P",files = {"6SP_P_whiff","6SP_P_curse_ball_ground_bounce","6SP_P_curse_ball_hit","6SP_P_curse_end"}},
     {folder = "special/4SP_K",files = {"4SP_K_whiff"}},
     {folder = "special/6SP_K",files = {"6SP_K_scapegoat_ease_in","6SP_K_scapegoat_ease_out"}},
     {folder = "special/4SP_S",files = {
-            "4SP_S_projectile_whiff","4SP_S_reticle_ease_out","4SP_S_reticle_locking",
-            "4SP_S_whiff"
+            "4SP_S_whiff",
+            "4SP_S_projectile_whiff",
+            "4SP_S_reticle_unlock","4SP_S_reticle_lock"
         }
     },
     {folder = "special/6SP_S",files = {"6SP_S_block","6SP_S_counter","6SP_S_hit","6SP_S_whiff"}},

@@ -1343,10 +1343,9 @@ function order_load_game_scene_char_LP_frames(load_order)
         end,
         [26] = function()
             local load_name_table = {
-                "4SP_S_reticle_ease_out",
-                "4SP_S_reticle_locked",
-                "4SP_S_reticle_locking",
-                "4SP_S_reticle_shot"
+                "4SP_S_reticle_lock",
+                "4SP_S_reticle_shot",
+                "4SP_S_reticle_unlock"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_LP[v] = 
@@ -1612,7 +1611,8 @@ function order_load_game_scene_char_LP_audio(load_order)
         [6] = function()
             local load_name_table = {
                 "5H_knife_clip_0","5H_knife_clip_1","5H_knife_clip_2","5H_knife_whiff",
-                "5H_oroboros_blast","5H_projectile_block","5H_projectile_counter","5H_projectile_hit","5H_projectile_whiff",
+                "5H_projectile_block","5H_projectile_counter","5H_projectile_hit","5H_projectile_whiff",
+                "5H_oroboros_blast",
                 "5H_reticle_ease_in","5H_reticle_ease_out","5H_reticle_locking"
             }
             for i,v in ipairs(load_name_table) do
@@ -1664,12 +1664,12 @@ function order_load_game_scene_char_LP_audio(load_order)
         [10] = function()
             local load_name_table = {
                 "4SP_P_clip_0","4SP_P_clip_1","4SP_P_clip_2","4SP_P_knife_whiff",
-                "6SP_P_curse_ball_ground_bounce","6SP_P_curse_ball_hit","6SP_P_curse_end","6SP_P_whiff",
+                "6SP_P_whiff","6SP_P_curse_ball_ground_bounce","6SP_P_curse_ball_hit","6SP_P_curse_end",
                 "4SP_K_whiff",
                 "6SP_K_scapegoat_ease_in","6SP_K_scapegoat_ease_out",
                 "4SP_S_whiff",
                 "4SP_S_projectile_whiff",
-                "4SP_S_reticle_ease_out","4SP_S_reticle_locking",
+                "4SP_S_reticle_lock","4SP_S_reticle_unlock",
                 "6SP_S_block","6SP_S_counter","6SP_S_hit","6SP_S_whiff",
             }
             for i,v in ipairs(load_name_table) do
@@ -2615,6 +2615,10 @@ function state_machine_char_game_scene_char_LP_shot_sys_reticle()
             end
         end,
         ["at_the_steady_lock"] = function()
+            if run_at_current_frame then
+                character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
+                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_steady(self_side_obj_char,opponent_side_obj_char)
+            end
         end,
         ["at_the_steady_unlock"] = function()
         end,
