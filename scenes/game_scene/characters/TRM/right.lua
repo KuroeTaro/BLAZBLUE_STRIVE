@@ -2283,9 +2283,10 @@ function state_machine_char_game_scene_char_RP_shot_sys()
     local opponent_side_input = INPUT_SYS_CURRENT_COMMAND_STATE["L"]
     local self_side_obj_char = obj_char_game_scene_char_RP
     local opponent_side_obj_char = obj_char_game_scene_char_LP
+    local active_at_the_ready_ease_out_input = test_input_sys_press(self_side_input["dash"]) and common_game_scene_check_crouch_direction(self_side_obj_char)
     local test_input_idle_to_ease_out = 
     (test_input_sys_press(self_side_input["H"]) and common_game_scene_check_crouch_direction(self_side_obj_char))
-    or (test_input_sys_hold(self_side_input["H"]) and test_input_sys_press(self_side_input["SP"]))
+    or (test_input_sys_hold(self_side_input["H"]) and active_at_the_ready_ease_out_input)
     or self_side_obj_char["ability_gauge"][1] <= 0 
     local shot_sys_at_the_ready_ban_state = self_side_obj_char["shot_sys_at_the_ready_ban_state"][self_side_obj_char["state"]]
     local run_at_current_frame = common_game_scene_character_run_at_this_frame(self_side_obj_char)
