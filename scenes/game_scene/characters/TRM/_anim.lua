@@ -57,7 +57,7 @@ function load_game_scene_anim_char_TRM_1_2_3_crouch(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-175,180,350}}
         obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         obj_char[8] = 0
@@ -110,7 +110,7 @@ function load_game_scene_anim_char_TRM_1_2_3_crouch_turn(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-150,200,300}}
         obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         obj_char[8] = 0
@@ -153,7 +153,7 @@ function load_game_scene_anim_char_TRM_1_2_3_crouch_to_stand_idle(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-190,190,380}}
         obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
@@ -200,7 +200,7 @@ function load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
@@ -241,7 +241,7 @@ function load_game_scene_anim_char_TRM_5_stand_turn(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
@@ -287,7 +287,7 @@ function load_game_scene_anim_char_TRM_5_stand_dash_skid(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-160,290,320}}
         obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
@@ -386,7 +386,7 @@ function load_game_scene_anim_char_TRM_4_walk(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-120,-455}
         -- draw_correction
         obj_char[8] = 0
@@ -502,7 +502,7 @@ function load_game_scene_anim_char_TRM_4_walk_to_stand_idle(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
@@ -551,7 +551,7 @@ function load_game_scene_anim_char_TRM_6_walk(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
@@ -665,7 +665,7 @@ function load_game_scene_anim_char_TRM_6_walk_to_stand_idle(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
@@ -750,7 +750,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-190,180,380}}
         obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
@@ -864,7 +864,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(obj_char,sprite_sheet,anch
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-180,width_table[1],380}}
         obj_char["collision_ground_height_offset"] = 185
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
         -- draw_correction
         obj_char[8] = 0
@@ -1048,7 +1048,7 @@ function load_game_scene_anim_char_TRM_7_8_9_pre_jump(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-215,170,430}}
         obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
@@ -1146,7 +1146,7 @@ function load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {}
         obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-175,-200}
         -- draw_correction
         obj_char[8] = 0
@@ -1189,7 +1189,7 @@ function load_game_scene_anim_char_TRM_4dash_backdash(obj_char)
         obj_char["pushbox"] = {0,-185,120,370}
         obj_char["hurtbox_table"] = {{0,-225,180,450}}
         obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 3
@@ -1305,7 +1305,7 @@ function load_game_scene_anim_char_TRM_4dash_air_backdash(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-125,260,270}}
         obj_char["collision_ground_height_offset"] = 185
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
@@ -1431,7 +1431,7 @@ function load_game_scene_anim_char_TRM_6dash_dash(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-190,285,380}}
         obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {60,-350}
         -- draw_correction
         obj_char[8] = 0
@@ -1616,7 +1616,7 @@ function load_game_scene_anim_char_TRM_6dash_air_dash(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-125,260,270}}
         obj_char["collision_ground_height_offset"] = 185
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         obj_char[8] = 0
@@ -1739,7 +1739,7 @@ function load_game_scene_anim_char_TRM_6dash_dash_cancel(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-190,285,380}}
         obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {60,-350}
         -- draw_correction
         obj_char[8] = 0
@@ -2051,7 +2051,7 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_whiff_SFX"] = hit_side_move_SFX_table["2P_whiff"]
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -2304,7 +2304,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_whiff_SFX"] = hit_side_move_SFX_table["6P_whiff"]
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-170,-435}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -2318,7 +2318,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
     res[2] = function()
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{-25,-75,320,150}}
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-225,-455}
         -- draw_correction
         hit_side_obj_char[8] = 1
@@ -2343,7 +2343,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["strike_active"] = true
         -- collide
         hit_side_obj_char["hitbox_table"] = {{95,-300,130,240},{170,-275,20,190},{190,-255,20,150}}
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-90,-405}
         -- draw_correction
         hit_side_obj_char[8] = 4
@@ -2389,7 +2389,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
     res[32] = function()
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{0,-205,180,410}}
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-105,-445}
         -- draw_correction
         hit_side_obj_char[8] = 9
@@ -2402,7 +2402,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
     res[36] = function()
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430}}
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 10
@@ -2588,7 +2588,7 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_whiff_SFX"] = hit_side_move_SFX_table["5P_whiff"]
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -2843,7 +2843,7 @@ function load_game_scene_anim_char_TRM_2K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_whiff_SFX"] = hit_side_move_SFX_table["2K_whiff"]
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-355}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -2949,7 +2949,7 @@ function load_game_scene_anim_char_TRM_2K(hit_side_obj_char,hurt_side_obj_char)
     res[26] = function()
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{0,-125,200,250}}
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         hit_side_obj_char[8] = 8
@@ -3133,7 +3133,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_whiff_SFX"] = hit_side_move_SFX_table["6K_whiff"]
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -3185,7 +3185,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
         -- collide
         hit_side_obj_char["hitbox_table"] = {{90,-180,140,250},{180,-160,40,210}}
         hit_side_obj_char["hurtbox_table"] = {{-15,-215,200,430},{110,-375,50,110},{90,-180,170,280},{180,-160,70,240}}
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-180,-455}
         -- draw_correction
         hit_side_obj_char[8] = 4
@@ -3259,7 +3259,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["friction"] = 1
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{-5,-215,170,430},{-15,-455,100,50}}
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 10
@@ -3444,7 +3444,7 @@ function load_game_scene_anim_char_TRM_5K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_whiff_SFX"] = hit_side_move_SFX_table["5K_whiff"]
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-145,-440}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -3468,7 +3468,7 @@ function load_game_scene_anim_char_TRM_5K(hit_side_obj_char,hurt_side_obj_char)
     res[4] = function()
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{-28,-325,200,250},{-50,-100,154,200}}
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-170,-400}
         -- draw_correction
         hit_side_obj_char[8] = 2
@@ -3552,13 +3552,13 @@ function load_game_scene_anim_char_TRM_5K(hit_side_obj_char,hurt_side_obj_char)
         -- collide
         hit_side_obj_char["hitbox_table"] = {}
         hit_side_obj_char["hurtbox_table"] = {{-5,-225,180,450}}
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-140,-425}
         -- draw_correction
         hit_side_obj_char[8] = 6
     end
     res[23] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 7
@@ -3736,7 +3736,7 @@ function load_game_scene_anim_char_TRM_2S(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_whiff_SFX"] = hit_side_move_SFX_table["2S_whiff"]
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-50,-345}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -3837,7 +3837,7 @@ function load_game_scene_anim_char_TRM_2S(hit_side_obj_char,hurt_side_obj_char)
     res[28] = function()
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{10,-150,220,300}}
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         hit_side_obj_char[8] = 8
@@ -4062,7 +4062,7 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_whiff_SFX"] = hit_side_move_SFX_table["6S_whiff"]
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-430}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -4092,7 +4092,7 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
     res[5] = function()
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{0,-215,190,430},{125,-215,60,280}}
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-90,-420}
         -- draw_correction
         hit_side_obj_char[8] = 2
@@ -4124,7 +4124,7 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_block_VFX_insert_function_argument"] = {175,-500,0.45,0.75,0.75,0,false,false}
         hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {175,-500,1,0.75,0.75,0,false,false}
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-100,-355}
         -- draw_correction
         hit_side_obj_char[8] = 4
@@ -4201,7 +4201,7 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
     res[47] = function()
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430}}
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 10
@@ -4391,7 +4391,7 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_whiff_SFX"] = hit_side_move_SFX_table["cS_whiff"]
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -4405,7 +4405,7 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char,hurt_side_obj_char)
         direction_input_mapping()
     end
     res[3] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-145,-455}
         -- draw_correction
         hit_side_obj_char[8] = 1
@@ -4487,7 +4487,7 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char[8] = 5
     end
     res[26] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-120,-455}
         -- draw_correction
         hit_side_obj_char[8] = 6
@@ -4660,7 +4660,7 @@ function load_game_scene_anim_char_TRM_fS(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_whiff_SFX"] = hit_side_move_SFX_table["fS_whiff"]
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-20,-375}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -4766,7 +4766,7 @@ function load_game_scene_anim_char_TRM_fS(hit_side_obj_char,hurt_side_obj_char)
         common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{-30,-455,100,50}}
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-100,-405}
         -- draw_correction
         hit_side_obj_char[8] = 9
@@ -4774,7 +4774,7 @@ function load_game_scene_anim_char_TRM_fS(hit_side_obj_char,hurt_side_obj_char)
     res[36] = function()
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{-20,-215,170,430},{-30,-455,100,50}}
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-105,-445}
         -- draw_correction
         hit_side_obj_char[8] = 10
@@ -4828,7 +4828,7 @@ function load_game_scene_anim_char_TRM_5H(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
@@ -5086,7 +5086,7 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char,hurt_side_obj
             -160,
             0.5,-0.8,0.8,0
         )
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -5136,7 +5136,7 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char,hurt_side_obj
     res[14] = function()
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{0,-150,200,300},{120,-115,40,230}}
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-120,-355}
         -- draw_correction
         hit_side_obj_char[8] = 4
@@ -5192,13 +5192,13 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char,hurt_side_obj
         hit_side_obj_char[8] = 10
     end
     res[37] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-90,-355}
         -- draw_correction
         hit_side_obj_char[8] = 11
     end
     res[40] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         hit_side_obj_char[8] = 12
@@ -5309,7 +5309,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(hit_side_obj_char,hurt_side_o
         -- SFX
         hit_side_obj_char["hit_throw_SFX"] = hit_side_move_SFX_table["4_6Launcher_throw"]
         hit_side_obj_char["hit_whiff_SFX"] = hit_side_move_SFX_table["4_6Launcher_whiff"]
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-150,-455}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -5349,7 +5349,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(hit_side_obj_char,hurt_side_o
     res[12] = function()
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{22,-455,100,50}}
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 3
@@ -5687,7 +5687,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(hit_side_obj_char,hur
         hit_side_obj_char["hit_counter_VFX_insert_function"] = nil
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = nil
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -6061,7 +6061,7 @@ function load_game_scene_anim_char_TRM_5Launcher(hit_side_obj_char,hurt_side_obj
         hit_side_obj_char["hit_whiff_SFX"] = hit_side_move_SFX_table["5Launcher_whiff"]
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-170,-425}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -6111,7 +6111,7 @@ function load_game_scene_anim_char_TRM_5Launcher(hit_side_obj_char,hurt_side_obj
         -- collide
         hit_side_obj_char["hitbox_table"] = {{140,-285,180,450}}
         hit_side_obj_char["hurtbox_table"] = {{0,-237.5,210,475},{140,-285,230,500}}
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-150,-385}
         -- draw_correction
         hit_side_obj_char[8] = 4
@@ -6194,7 +6194,7 @@ function load_game_scene_anim_char_TRM_5Launcher(hit_side_obj_char,hurt_side_obj
     res[59] = function()
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{-12,-455,100,50}}
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 12
@@ -6360,7 +6360,7 @@ function load_game_scene_anim_char_TRM_j5P(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_whiff_SFX"] = hit_side_move_SFX_table["j5P_whiff"]
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -6614,7 +6614,7 @@ function load_game_scene_anim_char_TRM_j2K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_whiff_SFX"] = hit_side_move_SFX_table["j2K_whiff"]
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -6881,7 +6881,7 @@ function load_game_scene_anim_char_TRM_j5K(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_whiff_SFX"] = hit_side_move_SFX_table["j5K_whiff"]
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -7130,7 +7130,7 @@ function load_game_scene_anim_char_TRM_j5S(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["hit_whiff_SFX"] = hit_side_move_SFX_table["j5S_whiff"]
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -7336,7 +7336,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(hit_side_obj_char,hurt_side_
         -- SFX
         hit_side_obj_char["hit_throw_SFX"] = hit_side_move_SFX_table["j4_6Launcher_throw"]
         hit_side_obj_char["hit_whiff_SFX"] = hit_side_move_SFX_table["j4_6Launcher_whiff"]
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -7699,7 +7699,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(hit_side_obj_char,hu
         hit_side_obj_char["hit_counter_VFX_insert_function"] = nil
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = nil
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -8028,7 +8028,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(hit_side_obj_char,hurt_side_ob
         hit_side_obj_char["hit_whiff_SFX"] = hit_side_move_SFX_table["j5Launcher_whiff"]
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-260}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -8187,7 +8187,7 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char,sprite_sheet,anchor_pos)
         obj_char["height"] = "stand" -- stand crouch air OTG wallstick
         obj_char["hit_type"] = "none" -- none strike throw burst
         obj_char["hit_guard_type"] = "all" -- none all low mid high
-        obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
+        obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
         obj_char["hit_cancel"] = false
         obj_char["idle_cancel"] = false
@@ -8218,7 +8218,7 @@ function load_game_scene_anim_char_TRM_4SP_P(obj_char,sprite_sheet,anchor_pos)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
@@ -8390,7 +8390,7 @@ function load_game_scene_anim_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["hitbox_table"] = {}
         hit_side_obj_char["hurtbox_table"] = {{0,-195,205,390}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 4
@@ -8418,7 +8418,7 @@ function load_game_scene_anim_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["pushbox"] = {0,-100,120,200}
         hit_side_obj_char["hurtbox_table"] = {{-15,-100,170,360}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-175,-200}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -8461,7 +8461,7 @@ function load_game_scene_anim_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["pushbox"] = {0,-185,120,370}
         hit_side_obj_char["hurtbox_table"] = {{0,-225,180,450}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 3
@@ -8516,7 +8516,7 @@ function load_game_scene_anim_char_TRM_4SP_K(hit_side_obj_char,hurt_side_obj_cha
         -- state
         hit_side_obj_char["sprite_sheet"] = "4SP_K"
         hit_side_obj_char["height"] = "crouch" -- stand crouch air OTG wallstick
-        hit_side_obj_char["hurt_state_target"] = "punish" -- idle unblock punish counter GP parry
+        hit_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "recovery" -- none startup active recovery
         hit_side_obj_char["idle_cancel"] = false
         -- state_number
@@ -8537,7 +8537,7 @@ function load_game_scene_anim_char_TRM_4SP_K(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["hitbox_table"] = {}
         hit_side_obj_char["hurtbox_table"] = {{0,-175,180,350}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-80,-355}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -8667,7 +8667,7 @@ function load_game_scene_anim_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["hitbox_table"] = {}
         hit_side_obj_char["hurtbox_table"] = {{0,-195,205,390}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 4
@@ -8695,7 +8695,7 @@ function load_game_scene_anim_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["pushbox"] = {0,-100,120,200}
         hit_side_obj_char["hurtbox_table"] = {{-15,-100,170,360}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-175,-200}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -8746,7 +8746,7 @@ function load_game_scene_anim_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["pushbox"] = {0,-185,120,370}
         hit_side_obj_char["hurtbox_table"] = {{0,-225,180,450}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 3
@@ -8789,62 +8789,65 @@ function load_game_scene_anim_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_cha
     return res
 end
 -- _4SP_S
-function load_game_scene_anim_char_TRM_4SP_S(obj_char)
+function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_char)
     local res = {}
-    local side = obj_char["player_side"]
+    local side = hit_side_obj_char["player_side"]
     local move_SFX_table = common_game_scene_get_SFX_move(side)
     res["prop_f"] = "f"
     res["anim_length"] = 117
     for i = 1,23 do
         res[i*4+20] = function()
             -- draw_correction
-            obj_char[8] = i+5
+            hit_side_obj_char[8] = i+5
         end
     end
     res[0] = function()
         -- pre_set
-        common_game_scene_reset_velocity_by_ground_friction(obj_char)
+        common_game_scene_reset_velocity_by_ground_friction(hit_side_obj_char)
         -- state
-        obj_char["sprite_sheet"] = "4SP_S"
-        obj_char["height"] = "stand" -- stand crouch air OTG wallstick
-        obj_char["hit_type"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type"] = "all" -- none all low mid high
-        obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
-        obj_char["move_state"] = "startup" -- none startup active recovery
-        obj_char["hit_cancel"] = false
-        obj_char["idle_cancel"] = false
+        hit_side_obj_char["sprite_sheet"] = "4SP_S"
+        hit_side_obj_char["height"] = "stand" -- stand crouch air OTG wallstick
+        hit_side_obj_char["hit_type"] = "none" -- none strike throw burst
+        hit_side_obj_char["hit_guard_type"] = "all" -- none all low mid high
+        hit_side_obj_char["hurt_state_target"] = "counter" -- idle unblock punish counter GP parry
+        hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
-        obj_char["friction"] = 3.25
-        obj_char["gravity"] = 2.5
+        hit_side_obj_char["friction"] = 3.25
+        hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
-        obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
-        obj_char["strike_inv"] = false
-        obj_char["strike_inv_countdown"] = 0
-        obj_char["throw_inv"] = false
-        obj_char["throw_inv_countdown"] = 0
-        obj_char["projectile_inv"] = false
-        obj_char["projectile_inv_countdown"] = 0
-        obj_char["horizontal_velocity_correction"] = 1
-        obj_char["gravity_correction"] = 1
-        obj_char["damage_correction"] = 1
+        hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
+        hit_side_obj_char["strike_inv"] = false
+        hit_side_obj_char["strike_inv_countdown"] = 0
+        hit_side_obj_char["throw_inv"] = false
+        hit_side_obj_char["throw_inv_countdown"] = 0
+        hit_side_obj_char["projectile_inv"] = false
+        hit_side_obj_char["projectile_inv_countdown"] = 0
+        hit_side_obj_char["horizontal_velocity_correction"] = 1
+        hit_side_obj_char["gravity_correction"] = 1
+        hit_side_obj_char["damage_correction"] = 1
         -- frame_data
-        obj_char["startup_frame"] = 0
-        obj_char["active_frame"] = 0
-        obj_char["recovery_frame"] = 0
+        hit_side_obj_char["startup_frame"] = 0
+        hit_side_obj_char["active_frame"] = 0
+        hit_side_obj_char["recovery_frame"] = 0
         -- input_sys_cache
-        obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(side)(obj_char)
+        hit_side_obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(side)(hit_side_obj_char)
         -- collide
-        obj_char["pushbox"] = {0,-185,120,370}
-        obj_char["pushbox_opponent_collision_active"] = true
-        obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
-        obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
-        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        hit_side_obj_char["pushbox"] = {0,-185,120,370}
+        hit_side_obj_char["pushbox_opponent_collision_active"] = true
+        hit_side_obj_char["hitbox_table"] = {}
+        hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
+        hit_side_obj_char["collision_ground_height_offset"] = 0
+        -- shot_sys
+        hit_side_obj_char["shot_sys_state_cache"] = hit_side_obj_char["shot_sys_state"]
+        character_function_game_scene_TRM_shot_sys_at_the_steady_lock_init(self_side_obj_char,opponent_side_obj_char)
+        -- shot_sys_oroboros
+        hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
-        obj_char[8] = 0
-        obj_char["anchor_pos"] = {325,510}
+        hit_side_obj_char[8] = 0
+        hit_side_obj_char["anchor_pos"] = {325,510}
         -- play_SFX
         play_obj_audio(move_SFX_table["4SP_S_whiff"])
         -- visual_front
@@ -8852,45 +8855,45 @@ function load_game_scene_anim_char_TRM_4SP_S(obj_char)
     end
     res[5] = function()
         -- draw_correction
-        obj_char[8] = 1
+        hit_side_obj_char[8] = 1
     end
     res[11] = function()
         -- draw_correction
-        obj_char[8] = 2
+        hit_side_obj_char[8] = 2
     end
     res[14] = function()
         -- draw_correction
-        obj_char[8] = 3
+        hit_side_obj_char[8] = 3
     end
     res[18] = function()
         -- state
-        obj_char["hit_type"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type"] = "none" -- none all low mid high
-        obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
-        obj_char["move_state"] = "recovery" -- none startup active recovery
-        obj_char["hit_cancel"] = false
-        obj_char["idle_cancel"] = true
+        hit_side_obj_char["hit_type"] = "none" -- none strike throw burst
+        hit_side_obj_char["hit_guard_type"] = "none" -- none all low mid high
+        hit_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
+        hit_side_obj_char["move_state"] = "recovery" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = true
         -- state_number
-        obj_char["gravity"] = 2.5
+        hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
-        obj_char["horizontal_velocity_correction"] = 1
-        obj_char["gravity_correction"] = 1
-        obj_char["damage_correction"] = 1
+        hit_side_obj_char["horizontal_velocity_correction"] = 1
+        hit_side_obj_char["gravity_correction"] = 1
+        hit_side_obj_char["damage_correction"] = 1
         -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
+        hit_side_obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(side)()
         -- draw_correction
-        obj_char[8] = 4
+        hit_side_obj_char[8] = 4
     end
     res[20] = function()
         -- draw_correction
-        obj_char[8] = 5
+        hit_side_obj_char[8] = 5
     end
     res[116] = function()
         -- state
-        obj_char["f"] = 20
+        hit_side_obj_char["f"] = 20
         -- draw_correction
-        obj_char[8] = 5
+        hit_side_obj_char[8] = 5
     end
     res[117] = function()
         -- animation_end
@@ -8944,7 +8947,7 @@ function load_game_scene_anim_char_TRM_4SP_S_4S(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         obj_char["collision_ground_height_offset"] = 0
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
@@ -8999,14 +9002,6 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
     local res = {}
     local hit_side = hit_side_obj_char["player_side"]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
-    local shot_sys_force_ease_out_state = {
-        ["at_the_ready_ease_in"] = true,
-        ["at_the_ready"] = true,
-        ["at_the_ready_shot"] = true,
-        ["at_the_steady_ease_in"] = true,
-        ["at_the_steady"] = true,
-        ["at_the_steady_shot"] = true
-    }
     res["prop_f"] = "f"
     res["anim_length"] = 45
     res[0] = function()
@@ -9175,7 +9170,7 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["hit_block_SFX"] = hit_side_move_SFX_table["6SP_S_block"]
         hit_side_obj_char["hit_counter_SFX"] = hit_side_move_SFX_table["6SP_S_counter"]
         hit_side_obj_char["hit_whiff_SFX"] = hit_side_move_SFX_table["6SP_S_whiff"]
-        -- oroboros
+        -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 0
@@ -9560,23 +9555,23 @@ function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj)
     res["prop_f"] = "f_4"
     res["anim_length"] = 20
     res[0] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[4] = 0
     end
     res[3] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[4] = 0.56
     end
     res[7] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[4] = 0.80
     end
     res[11] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[4] = 0.92
     end
     res[15] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[4] = 0.98
     end
     res[20] = function()
@@ -9590,22 +9585,22 @@ function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj)
     res["anim_length"] = 20
     for i = 0,10 do
         res[i] = function()
-            -- oroboros
+            -- shot_sys_oroboros
             obj[4] = 1-0.8*((i+1)/10)
         end
     end
     for i = 11,20 do
         res[i] = function()
-            -- oroboros
+            -- shot_sys_oroboros
             obj[4] = 0.12-0.12*((i-10)/10)
         end
     end
     res[0] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[4] = 0.92
     end
     res[10] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[4] = 0.12
     end
     res[20] = function()
@@ -9618,19 +9613,19 @@ function load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj,sprite_sheet)
     res["prop_f"] = "f_8"
     res["anim_length"] = 91
     res[0] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj["sprite_sheet"] = sprite_sheet
         obj[4] = 1
         obj[8] = 0
     end
     for i = 1,14 do
         res[i*6] = function()
-            -- oroboros
+            -- shot_sys_oroboros
             obj[8] = i
         end
     end
     res[90] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj["f_8"] = 0
         obj[8] = 0
     end
@@ -9641,25 +9636,25 @@ function load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj,sprite_sheet)
     res["prop_f"] = "f_8"
     res["anim_length"] = 20
     res[0] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[4] = 1
         obj[8] = 1
         obj["sprite_sheet"]  = sprite_sheet
     end
     res[3] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[8] = 1
     end
     res[7] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[8] = 2
     end
     res[11] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[8] = 3
     end
     res[15] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[8] = 4
     end
     res[20] = function()
@@ -9672,68 +9667,68 @@ function load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj)
     res["prop_f"] = "f_8"
     res["anim_length"] = 91
     res[0] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj["sprite_sheet"]  = "5H_oroboros_loop_mid"
         obj[8] = 0
     end
     res[6] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[8] = 1
     end
     res[12] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[8] = 2
     end
     res[18] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[8] = 3
     end
     res[24] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[8] = 4
     end
     res[30] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[8] = 5
     end
     res[36] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[8] = 6
     end
     res[42] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[8] = 7
     end
     res[48] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[8] = 8
     end
     res[54] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[8] = 9
     end
     res[60] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[8] = 10
     end
     res[66] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[8] = 11
     end
     res[72] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[8] = 12
     end
     res[78] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[8] = 13
     end
     res[84] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj[8] = 14
     end
     res[90] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj["f_8"] = 0
         obj[8] = 0
     end
@@ -9756,7 +9751,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
     res["prop_f"] = "shot_sys_oroboros_f"
     res["anim_length"] = 28
     res[0] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_aim_r"] = center_r
         obj_char["shot_sys_oroboros_offset_amount"] = 75
         obj_char["shot_sys_oroboros_mid"]["sprite_sheet"]  = "5H_oroboros_shot"
@@ -9765,50 +9760,50 @@ function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
         play_obj_audio(move_SFX_table["5H_oroboros_blast"])
     end
     res[1] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         update_oroboros_r(obj_char,10)
         obj_char["shot_sys_oroboros_mid"][8] = 1
         -- insert_VFX
         insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_shot_oroboros_blast(obj_char)
     end
     res[3] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         update_oroboros_r(obj_char,10)
         obj_char["shot_sys_oroboros_mid"][8] = 2
     end
     res[10] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         update_oroboros_r(obj_char,10)
         obj_char["shot_sys_oroboros_offset_amount"] = 75*(17-0)/17
         obj_char["shot_sys_oroboros_mid"][8] = 3
     end
     res[15] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         update_oroboros_r(obj_char,15)
         obj_char["shot_sys_oroboros_offset_amount"] = 75*(17-5)/17
         obj_char["shot_sys_oroboros_mid"][8] = 4
     end
     res[17] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         if obj_char[5] ~= obj_char["basic_prop_cache"][5] then
             update_oroboros_r(obj_char,17)
         end
         obj_char["shot_sys_idle_cancel"] = true
     end
     res[19] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         update_oroboros_r(obj_char,19)
         obj_char["shot_sys_oroboros_offset_amount"] = 75*(17-9)/17
         obj_char["shot_sys_oroboros_mid"][8] = 5
     end
     res[23] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         update_oroboros_r(obj_char,23)
         obj_char["shot_sys_oroboros_offset_amount"] = 75*(17-13)/17
         obj_char["shot_sys_oroboros_mid"][8] = 6
     end
     res[27] = function()
-        -- oroboros
+        -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_aim_r"] = 0.42
         obj_char["shot_sys_oroboros_offset_amount"] = 0
     end
@@ -9821,49 +9816,69 @@ end
 -- shot_sys
 function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock(self_side_obj_char,opponent_side_obj_char)
     local res = {}
+    local self_side_shot_sys_state_cache = self_side_obj_char["shot_sys_state"]
+    local opponent_side_quick_clean_hit_state = 
+    (self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit_state"][opponent_side_obj_char["state"]])
+    local opponent_side_quick_clean_hit_from_at_the_ready_state = (self_side_shot_sys_state_cache ~= "off"
+    and self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit_from_at_the_ready_state"][opponent_side_obj_char["state"]])
+    local quick_clean_hit_cache = opponent_side_quick_clean_hit_state or opponent_side_quick_clean_hit_from_at_the_ready_state
+    local quick_aim_cache = quick_clean_hit_cache or self_side_obj_char["shot_sys_curse_state"]
     res["prop_f"] = "shot_sys_f"
     res["anim_length"] = 27
     res[0] = function()
         -- shot_sys
-        obj_char["shot_sys_fire_cancel"] = false
+        self_side_obj_char["shot_sys_fire_cancel"] = false
     end
     res[18] = function()
         -- shot_sys
-        obj_char["shot_sys_fire_cancel"] = true
+        self_side_obj_char["shot_sys_fire_cancel"] = true
+        if quick_aim_cache then
+            self_side_obj_char["shot_sys_at_the_steady_aim"] = true
+        end
+        if quick_clean_hit_cache then
+            self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = true
+        end
     end
     res[27] = function()
+        self_side_obj_char["shot_sys_at_the_steady_aim"] = true
+        self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = true
         -- animation_end
     end
     return res
 end
-function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_unlock(obj_char)
+function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_unlock(self_side_obj_char,opponent_side_obj_char)
     local res = {}
+    local self_side_shot_sys_state_cache = self_side_obj_char["shot_sys_state"]
     res["prop_f"] = "shot_sys_f"
-    res["anim_length"] = 27
+    res["anim_length"] = 18
     res[0] = function()
         -- shot_sys
-        obj_char["shot_sys_fire_cancel"] = false
+        self_side_obj_char["shot_sys_fire_cancel"] = false
     end
-    res[16] = function()
+    res[18] = function()
         -- shot_sys
-        obj_char["shot_sys_fire_cancel"] = true
-    end
-    res[27] = function()
+        if self_side_shot_sys_state_cache ~= "off" then
+            self_side_obj_char["shot_sys_fire_cancel"] = true
+        end
         -- animation_end
     end
     return res
 end
-function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_shot(obj_char)
+function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_shot(self_side_obj_char,opponent_side_obj_char)
     local res = {}
     res["prop_f"] = "shot_sys_f"
     res["anim_length"] = 60
     res[0] = function()
         -- shot_sys
-        obj_char["shot_sys_fire_cancel"] = false
+        self_side_obj_char["shot_sys_fire_cancel"] = false
+        self_side_obj_char["shot_sys_at_the_steady_aim"] = false
+        self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = false
     end
     res[45] = function()
         -- shot_sys
-        obj_char["shot_sys_fire_cancel"] = true
+        self_side_obj_char["shot_sys_fire_cancel"] = true
+        self_side_obj_char["shot_sys_at_the_steady_aim"] = true
+        self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = true
     end
     res[60] = function()
         -- animation_end

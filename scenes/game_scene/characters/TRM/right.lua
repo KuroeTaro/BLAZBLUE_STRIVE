@@ -170,7 +170,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["ability_gauge_update_function"] = function() end
     obj_char_game_scene_char_RP["risk_gauge_update_function"] = function() end
     obj_char_game_scene_char_RP["wallstick_gauge_update_function"] = function() end
-    -- shot_sys
+    -- shot_sys/uncommon
     obj_char_game_scene_char_RP["shot_sys_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_state_cache"] = "off"
@@ -180,9 +180,8 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["shot_sys_curse"] = false
     obj_char_game_scene_char_RP["shot_sys_curse_countdown"] = 0
     obj_char_game_scene_char_RP["shot_sys_scapegoat_exist"] = false
+    obj_char_game_scene_char_RP["shot_sys_at_the_steady_aim"] = false
     obj_char_game_scene_char_RP["shot_sys_at_the_steady_clean_hit"] = false
-    obj_char_game_scene_char_RP["shot_sys_steady_quick_aim_cache"] = false
-    obj_char_game_scene_char_RP["shot_sys_steady_quick_clean_hit_cache"] = false
     obj_char_game_scene_char_RP["shot_sys_animation"] = nil
     obj_char_game_scene_char_RP["shot_sys_camera_shake_table"] = {}
     obj_char_game_scene_char_RP["shot_sys_curse_ban_state"] = {
@@ -240,7 +239,7 @@ function load_game_scene_obj_char_RP()
     }
     obj_char_game_scene_char_RP["shot_sys_at_the_ready_6SP_S_pass_state"] = {
         ["at_the_ready_ease_out"] = true,
-        ["at_the_steady_ease_out"] = true,
+        ["at_the_steady_unlock"] = true,
         ["off"] = true
     }
     obj_char_game_scene_char_RP["shot_sys_at_the_steady_quick_clean_hit_state"] = {
@@ -256,7 +255,7 @@ function load_game_scene_obj_char_RP()
         ["block"] = true,
         ["blockstop"] = true
     }
-    -- shot_sys_oroboros
+    -- shot_sys_oroboros/uncommon
     obj_char_game_scene_char_RP["shot_sys_oroboros_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_oroboros_state_cache"] = "off"
@@ -274,7 +273,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["f_8"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["f_4"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_back"]["sprite_sheet"] = "5H_oroboros_loop_back"
-    -- shot_sys_oroboros_sub_obj_update_value
+    -- shot_sys_oroboros_sub_obj_update_value/uncommon
     obj_char_game_scene_char_RP["shot_sys_oroboros_offset_amount"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_anchor_pos"] = {-110,-455}
     obj_char_game_scene_char_RP["shot_sys_oroboros_ease_current"] = {
@@ -289,7 +288,7 @@ function load_game_scene_obj_char_RP()
         obj_char_game_scene_char_RP[5],
         obj_char_game_scene_char_RP[6]
     }
-    -- shot_sys_reticle
+    -- shot_sys_reticle/uncommon
     obj_char_game_scene_char_RP["shot_sys_reticle"] = {0,0,0,0,1,1,0,0}
     obj_char_game_scene_char_RP["shot_sys_reticle_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_reticle_f_4"] = 0
@@ -762,9 +761,8 @@ function load_game_scene_wallbreak_mid_init_RP()
     obj_char_game_scene_char_RP["shot_sys_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_state_cache"] = "off"
     obj_char_game_scene_char_RP["shot_sys_scapegoat_exist"] = false
+    obj_char_game_scene_char_RP["shot_sys_at_the_steady_aim"] = false
     obj_char_game_scene_char_RP["shot_sys_at_the_steady_clean_hit"] = false
-    obj_char_game_scene_char_RP["shot_sys_steady_quick_aim_cache"] = false
-    obj_char_game_scene_char_RP["shot_sys_steady_quick_clean_hit_cache"] = false
     obj_char_game_scene_char_RP["shot_sys_oroboros_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_state"] = "off"
     obj_char_game_scene_char_RP["shot_sys_oroboros_state_cache"] = "off"
@@ -884,9 +882,8 @@ function load_game_scene_wallbreak_end_init_RP()
     obj_char_game_scene_char_RP["shot_sys_state_cache"] = "off"
     obj_char_game_scene_char_RP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值
     obj_char_game_scene_char_RP["shot_sys_scapegoat_exist"] = false
+    obj_char_game_scene_char_RP["shot_sys_at_the_steady_aim"] = false
     obj_char_game_scene_char_RP["shot_sys_at_the_steady_clean_hit"] = false
-    obj_char_game_scene_char_RP["shot_sys_steady_quick_aim_cache"] = false
-    obj_char_game_scene_char_RP["shot_sys_steady_quick_clean_hit_cache"] = false
     obj_char_game_scene_char_RP["shot_sys_animation"] = nil
     obj_char_game_scene_char_RP["shot_sys_camera_shake_table"] = {}
     -- shot_sys_oroboros
@@ -2382,12 +2379,12 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 return
             end
         end,
-        ["at_the_steady_ease_in"] = function()
+        ["at_the_steady_lock"] = function()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_at_the_steady_lock_update(self_side_obj_char,opponent_side_obj_char)
             end
         end,
-        ["at_the_steady_ease_out"] = function()
+        ["at_the_steady_unlock"] = function()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_at_the_steady_unlock_update(self_side_obj_char,opponent_side_obj_char)
             end
@@ -2617,9 +2614,9 @@ function state_machine_char_game_scene_char_RP_shot_sys_reticle()
                 return
             end
         end,
-        ["at_the_steady_ease_in"] = function()
+        ["at_the_steady_lock"] = function()
         end,
-        ["at_the_steady_ease_out"] = function()
+        ["at_the_steady_unlock"] = function()
         end,
         ["at_the_steady_shot"] = function()
         end
@@ -6963,7 +6960,7 @@ function draw_game_scene_char_RP_logic_graphic_pos_sync()
         shot_r = math.min(shot_r,0.8)
     end
     -- x y z opacity sx sy r f
-    -- oroboros_back
+    -- shot_sys_oroboros_back
     obj = self_side_obj_char["shot_sys_oroboros_back"]
     obj[1] = oroboros_ease_current[1] + oroboros_ease_current[3]*(dx - math.cos(shot_r)*shot_offset_amount*0.5)
     obj[2] = oroboros_ease_current[2] + oroboros_ease_current[4]*(dy - math.sin(shot_r)*shot_offset_amount*0.5)
@@ -6974,7 +6971,7 @@ function draw_game_scene_char_RP_logic_graphic_pos_sync()
     -- character
     self_side_obj_char[1] = self_side_obj_char["x"]+self_side_obj_char["hurtstop_wiggle_current_x"]-self_side_obj_char[5]*self_side_obj_char["anchor_pos"][1]
     self_side_obj_char[2] = self_side_obj_char["y"]+self_side_obj_char["hurtstop_wiggle_current_y"]-self_side_obj_char[6]*self_side_obj_char["anchor_pos"][2]
-    -- oroboros_mid
+    -- shot_sys_oroboros_mid
     obj = self_side_obj_char["shot_sys_oroboros_mid"]
     dx = -80
     dy = -95
@@ -6986,7 +6983,7 @@ function draw_game_scene_char_RP_logic_graphic_pos_sync()
     obj[5] = self_side_obj_char[5]
     obj[6] = self_side_obj_char[6]
     obj[7] = shot_r
-    -- oroboros_front
+    -- shot_sys_oroboros_front
     obj = self_side_obj_char["shot_sys_oroboros_front"]
     dx = -80
     dy = -80
@@ -7085,7 +7082,7 @@ function draw_game_scene_char_RP_shadow()
     love.graphics.setColor(1,1,1,1)
 end
 function draw_game_scene_char_RP_attachment_front()
-    -- reticle
+    -- shot_sys_reticle
     local self_side_obj_char = obj_char_game_scene_char_RP
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[self_side_obj_char["shot_sys_reticle_sprite_sheet"]]

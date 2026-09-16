@@ -3,7 +3,7 @@
 对 TRM/left.lua 做注释规范化（left.lua 为源文件，right.lua 由其经 __REPLACE_SCRIPT.py 生成）：
 
 [1] 删除重复的分组头：load 函数里出现两次相邻的 `-- sub_obj_table`，删掉第二个。
-[2] 修正拼写：`-- darw_front` -> `-- draw_front`；`-- retcile` -> `-- reticle`。
+[2] 修正拼写：`-- darw_front` -> `-- draw_front`；`-- retcile` -> `-- shot_sys_reticle`。
 [3] 删除正序 draw 循环里误复制的 `-- 反向遍历，便于删除元素`（正向遍历不删除元素）。
 [4] shot_sys_aim_process 的注释与数组元素数不符：初始化数组为 4 元素，注释改为 4 项说明
     （删掉“上一帧是否高于瞄准命中最低数值”），与 load 顶部同名行的注释保持一致。
@@ -86,7 +86,7 @@ def fix_typos(lines):
     """[2] 拼写修正。返回 (lines, [(line_no, old, new), ...])"""
     subs = {
         "-- darw_front": "-- draw_front",
-        "-- retcile": "-- reticle",
+        "-- retcile": "-- shot_sys_reticle",
     }
     changed = []
     for idx, line in enumerate(lines):
