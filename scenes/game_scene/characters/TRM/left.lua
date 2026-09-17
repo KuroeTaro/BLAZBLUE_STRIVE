@@ -714,11 +714,6 @@ function load_game_scene_shader_char_LP()
     shader_game_scene_LP = {}
 end
 function load_game_scene_wallbreak_start_init_LP()
-    local stand_pushbox = {0,-185,120,370}
-    local crouch_pushbox = {0,-142.5,120,285}
-    local air_pushbox = {0,-100,120,200}
-    local OTG_pushbox = {0,-65,120,130}
-    -- init_char
     -- state
     obj_char_game_scene_char_LP["physics_lock"] = true
     -- state_number
@@ -743,31 +738,42 @@ function load_game_scene_wallbreak_start_init_LP()
     obj_char_game_scene_char_LP["game_speed_application"] = {0,nil,nil,nil,nil,nil}
     obj_char_game_scene_char_LP["hit_hurt_blockstop_countdown"] = 0
     obj_char_game_scene_char_LP["hit_hurt_block_slowdown_countdown"] = 0
+    -- collide
     obj_char_game_scene_char_LP["pushbox_opponent_collision_active"] = false
     obj_char_game_scene_char_LP["hitbox_table"] = {}
     obj_char_game_scene_char_LP["hurtbox_table"] = {}
 end
 function load_game_scene_wallbreak_mid_init_LP()
+    -- state
     if not common_game_scene_get_character_facing_currect(obj_char_game_scene_char_LP,obj_char_game_scene_char_RP) then
         obj_char_game_scene_char_LP[5] = -obj_char_game_scene_char_LP[5]
     end
+    -- sub_obj_table
     obj_char_game_scene_char_LP["projectile_front_table"] = {}
     obj_char_game_scene_char_LP["projectile_back_table"] = {}
     obj_char_game_scene_char_LP["VFX_common_front_table"] = {}
     obj_char_game_scene_char_LP["VFX_common_back_table"] = {}
     obj_char_game_scene_char_LP["VFX_hit_front_table"] = {}
     obj_char_game_scene_char_LP["VFX_hit_back_table"] = {}
+    -- shot_sys/uncommon
     obj_char_game_scene_char_LP["shot_sys_f"] = 0
     obj_char_game_scene_char_LP["shot_sys_state"] = "off"
     obj_char_game_scene_char_LP["shot_sys_state_cache"] = "off"
+    obj_char_game_scene_char_LP["shot_sys_fire_cancel"] = false
+    obj_char_game_scene_char_LP["shot_sys_idle_cancel"] = false
+    obj_char_game_scene_char_LP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值
     obj_char_game_scene_char_LP["shot_sys_scapegoat_exist"] = false
     obj_char_game_scene_char_LP["shot_sys_at_the_steady_aim"] = false
     obj_char_game_scene_char_LP["shot_sys_at_the_steady_clean_hit"] = false
+    obj_char_game_scene_char_LP["shot_sys_animation"] = nil
+    obj_char_game_scene_char_LP["shot_sys_camera_shake_table"] = {}
+    -- shot_sys_oroboros/uncommon
     obj_char_game_scene_char_LP["shot_sys_oroboros_f"] = 0
     obj_char_game_scene_char_LP["shot_sys_oroboros_state"] = "off"
     obj_char_game_scene_char_LP["shot_sys_oroboros_state_cache"] = "off"
     obj_char_game_scene_char_LP["shot_sys_oroboros_aim_r"] = 0.42
     obj_char_game_scene_char_LP["shot_sys_oroboros_animation_table"] = {}
+    -- shot_sys_oroboros_sub_obj
     obj_char_game_scene_char_LP["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
     obj_char_game_scene_char_LP["shot_sys_oroboros_front"]["f_8"] = 0
     obj_char_game_scene_char_LP["shot_sys_oroboros_front"]["f_4"] = 0
@@ -779,6 +785,22 @@ function load_game_scene_wallbreak_mid_init_LP()
     obj_char_game_scene_char_LP["shot_sys_oroboros_back"]["f_8"] = 0
     obj_char_game_scene_char_LP["shot_sys_oroboros_back"]["f_4"] = 0
     obj_char_game_scene_char_LP["shot_sys_oroboros_back"]["sprite_sheet"] = "5H_oroboros_loop_back"
+    -- shot_sys_oroboros_sub_obj_update_value/uncommon
+    obj_char_game_scene_char_LP["shot_sys_oroboros_offset_amount"] = 0
+    obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+    obj_char_game_scene_char_LP["shot_sys_oroboros_ease_current"] = {
+        obj_char_game_scene_char_LP["x"] + obj_char_game_scene_char_LP[5] * obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][1],
+        obj_char_game_scene_char_LP["y"] + obj_char_game_scene_char_LP[6] * obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][2],
+        obj_char_game_scene_char_LP[5],
+        obj_char_game_scene_char_LP[6]
+    }
+    obj_char_game_scene_char_LP["shot_sys_oroboros_ease_target"] = {
+        obj_char_game_scene_char_LP["x"] + obj_char_game_scene_char_LP[5] * obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][1],
+        obj_char_game_scene_char_LP["y"] + obj_char_game_scene_char_LP[6] * obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][2],
+        obj_char_game_scene_char_LP[5],
+        obj_char_game_scene_char_LP[6]
+    }
+    -- shot_sys_reticle/uncommon
     obj_char_game_scene_char_LP["shot_sys_reticle"] = {0,0,0,0,1,1,0,0}
     obj_char_game_scene_char_LP["shot_sys_reticle_f"] = 0
     obj_char_game_scene_char_LP["shot_sys_reticle_f_4"] = 0
@@ -868,6 +890,9 @@ function load_game_scene_wallbreak_end_init_LP()
     obj_char_game_scene_char_LP["collision_move_available"] = {1,1}
     obj_char_game_scene_char_LP["collision_move_available_cache"] = {1,1}
     obj_char_game_scene_char_LP["collision_ground_height_offset"] = 0 -- 用于检测和地面碰撞的
+    obj_char_game_scene_char_LP["pushbox_opponent_collision_active"] = true
+    obj_char_game_scene_char_LP["hitbox_table"] = {}
+    obj_char_game_scene_char_LP["hurtbox_table"] = {}
     -- sub_obj_table
     obj_char_game_scene_char_LP["projectile_front_table"] = {}
     obj_char_game_scene_char_LP["projectile_back_table"] = {}
@@ -876,60 +901,6 @@ function load_game_scene_wallbreak_end_init_LP()
     obj_char_game_scene_char_LP["VFX_common_back_table"] = {}
     obj_char_game_scene_char_LP["VFX_hit_front_table"] = {}
     obj_char_game_scene_char_LP["VFX_hit_back_table"] = {}
-    -- shot_sys
-    obj_char_game_scene_char_LP["shot_sys_f"] = 0
-    obj_char_game_scene_char_LP["shot_sys_state"] = "off"
-    obj_char_game_scene_char_LP["shot_sys_state_cache"] = "off"
-    obj_char_game_scene_char_LP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值
-    obj_char_game_scene_char_LP["shot_sys_scapegoat_exist"] = false
-    obj_char_game_scene_char_LP["shot_sys_at_the_steady_aim"] = false
-    obj_char_game_scene_char_LP["shot_sys_at_the_steady_clean_hit"] = false
-    obj_char_game_scene_char_LP["shot_sys_animation"] = nil
-    obj_char_game_scene_char_LP["shot_sys_camera_shake_table"] = {}
-    -- shot_sys_oroboros
-    obj_char_game_scene_char_LP["shot_sys_oroboros_f"] = 0
-    obj_char_game_scene_char_LP["shot_sys_oroboros_state"] = "off"
-    obj_char_game_scene_char_LP["shot_sys_oroboros_state_cache"] = "off"
-    obj_char_game_scene_char_LP["shot_sys_oroboros_aim_r"] = 0.42
-    obj_char_game_scene_char_LP["shot_sys_oroboros_animation_table"] = {}
-    -- shot_sys_oroboros_sub_obj
-    obj_char_game_scene_char_LP["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
-    obj_char_game_scene_char_LP["shot_sys_oroboros_front"]["f_8"] = 0
-    obj_char_game_scene_char_LP["shot_sys_oroboros_front"]["f_4"] = 0
-    obj_char_game_scene_char_LP["shot_sys_oroboros_front"]["sprite_sheet"] = "5H_oroboros_loop_front"
-    obj_char_game_scene_char_LP["shot_sys_oroboros_mid"] = {0,0,0,0,1,1,0,0}
-    obj_char_game_scene_char_LP["shot_sys_oroboros_mid"]["f_8"] = 0
-    obj_char_game_scene_char_LP["shot_sys_oroboros_mid"]["sprite_sheet"] = "5H_oroboros_loop_mid"
-    obj_char_game_scene_char_LP["shot_sys_oroboros_back"] = {0,0,0,0,1,1,0,0}
-    obj_char_game_scene_char_LP["shot_sys_oroboros_back"]["f_8"] = 0
-    obj_char_game_scene_char_LP["shot_sys_oroboros_back"]["f_4"] = 0
-    obj_char_game_scene_char_LP["shot_sys_oroboros_back"]["sprite_sheet"] = "5H_oroboros_loop_back"
-    -- shot_sys_oroboros_sub_obj_update_value
-    obj_char_game_scene_char_LP["shot_sys_oroboros_offset_amount"] = 0
-    obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"] = {-110,-455}
-    obj_char_game_scene_char_LP["shot_sys_oroboros_ease_current"] = {
-        obj_char_game_scene_char_LP["x"] + obj_char_game_scene_char_LP[5] * obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][1],
-        obj_char_game_scene_char_LP["y"] + obj_char_game_scene_char_LP[6] * obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][2],
-        obj_char_game_scene_char_LP[5],
-        obj_char_game_scene_char_LP[6]
-    }
-    obj_char_game_scene_char_LP["shot_sys_oroboros_ease_target"] = {
-        obj_char_game_scene_char_LP["x"] + obj_char_game_scene_char_LP[5] * obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][1],
-        obj_char_game_scene_char_LP["y"] + obj_char_game_scene_char_LP[6] * obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][2],
-        obj_char_game_scene_char_LP[5],
-        obj_char_game_scene_char_LP[6]
-    }
-    -- shot_sys_reticle
-    obj_char_game_scene_char_LP["shot_sys_reticle"] = {0,0,0,0,1,1,0,0}
-    obj_char_game_scene_char_LP["shot_sys_reticle_f"] = 0
-    obj_char_game_scene_char_LP["shot_sys_reticle_f_4"] = 0
-    obj_char_game_scene_char_LP["shot_sys_reticle_f_8"] = 0
-    obj_char_game_scene_char_LP["shot_sys_reticle_state"] = "off"
-    obj_char_game_scene_char_LP["shot_sys_reticle_state_cache"] = "off"
-    obj_char_game_scene_char_LP["shot_sys_reticle_animation_table"] = {}
-    obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_current"] = {0,0}
-    obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_target"] = {0,0}
-    obj_char_game_scene_char_LP["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
 end
 -- order_load
 function order_load_game_scene_char_LP_frames(load_order)
