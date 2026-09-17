@@ -8165,180 +8165,180 @@ end
 -- end
 -- special
 -- _4SP_P
-function load_game_scene_anim_char_TRM_4SP_P(obj_char,sprite_sheet,anchor_pos)
+function load_game_scene_anim_char_TRM_4SP_P(hit_side_obj_char,hurt_side_obj_char,sprite_sheet,anchor_pos)
     local res = {}
-    local side = obj_char["player_side"]
-    local move_SFX_table = common_game_scene_get_SFX_move(side)
+    local hit_side = hit_side_obj_char["player_side"]
+    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     local function test_full_ability_gauge_anim_jump()
-        if obj_char["ability_gauge"][1] == obj_char["ability_gauge"][2] then
+        if hit_side_obj_char["ability_gauge"][1] == hit_side_obj_char["ability_gauge"][2] then
             -- state
-            obj_char["f"] = 57
+            hit_side_obj_char["f"] = 57
             -- draw_correction
-            obj_char[8] = 12
+            hit_side_obj_char[8] = 12
         end
     end
     res["prop_f"] = "f"
     res["anim_length"] = 85
     res[0] = function()
         -- pre_set
-        common_game_scene_reset_velocity_by_ground_friction(obj_char)
+        common_game_scene_reset_velocity_by_ground_friction(hit_side_obj_char)
         -- state
-        obj_char["sprite_sheet"] = sprite_sheet
-        obj_char["height"] = "stand" -- stand crouch air OTG wallstick
-        obj_char["hit_type"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type"] = "all" -- none all low mid high
-        obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
-        obj_char["move_state"] = "startup" -- none startup active recovery
-        obj_char["hit_cancel"] = false
-        obj_char["idle_cancel"] = false
+        hit_side_obj_char["sprite_sheet"] = sprite_sheet
+        hit_side_obj_char["height"] = "stand" -- stand crouch air OTG wallstick
+        hit_side_obj_char["hit_type"] = "none" -- none strike throw burst
+        hit_side_obj_char["hit_guard_type"] = "all" -- none all low mid high
+        hit_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
+        hit_side_obj_char["move_state"] = "startup" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
-        obj_char["friction"] = 5
-        obj_char["gravity"] = 2.5
+        hit_side_obj_char["friction"] = 5
+        hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
-        obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
-        obj_char["strike_inv"] = false
-        obj_char["strike_inv_countdown"] = 0
-        obj_char["throw_inv"] = false
-        obj_char["throw_inv_countdown"] = 0
-        obj_char["projectile_inv"] = false
-        obj_char["projectile_inv_countdown"] = 0
-        obj_char["horizontal_velocity_correction"] = 1
-        obj_char["gravity_correction"] = 1
-        obj_char["damage_correction"] = 1
+        hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
+        hit_side_obj_char["strike_inv"] = false
+        hit_side_obj_char["strike_inv_countdown"] = 0
+        hit_side_obj_char["throw_inv"] = false
+        hit_side_obj_char["throw_inv_countdown"] = 0
+        hit_side_obj_char["projectile_inv"] = false
+        hit_side_obj_char["projectile_inv_countdown"] = 0
+        hit_side_obj_char["horizontal_velocity_correction"] = 1
+        hit_side_obj_char["gravity_correction"] = 1
+        hit_side_obj_char["damage_correction"] = 1
         -- frame_data
-        obj_char["startup_frame"] = 0
-        obj_char["active_frame"] = 0
-        obj_char["recovery_frame"] = 0
+        hit_side_obj_char["startup_frame"] = 0
+        hit_side_obj_char["active_frame"] = 0
+        hit_side_obj_char["recovery_frame"] = 0
         -- input_sys_cache
-        obj_char["input_sys_state"] = "none" -- none save load
-        common_game_scene_get_input_sys_cache_init(side)(obj_char)
+        hit_side_obj_char["input_sys_state"] = "none" -- none save load
+        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
         -- collide
-        obj_char["pushbox"] = {0,-185,120,370}
-        obj_char["pushbox_opponent_collision_active"] = true
-        obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
-        obj_char["collision_ground_height_offset"] = 0
+        hit_side_obj_char["pushbox"] = {0,-185,120,370}
+        hit_side_obj_char["pushbox_opponent_collision_active"] = true
+        hit_side_obj_char["hitbox_table"] = {}
+        hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
+        hit_side_obj_char["collision_ground_height_offset"] = 0
         -- shot_sys_oroboros
-        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
-        obj_char[8] = 0
-        obj_char["anchor_pos"] = anchor_pos
+        hit_side_obj_char[8] = 0
+        hit_side_obj_char["anchor_pos"] = anchor_pos
         -- visual_front
-        CHARACTER_VISUAL_FRONT = side
+        CHARACTER_VISUAL_FRONT = hit_side
     end
     res[5] = function()
         -- draw_correction
-        obj_char[8] = 1
+        hit_side_obj_char[8] = 1
     end
     res[10] = function()
         -- draw_correction
-        obj_char[8] = 2
+        hit_side_obj_char[8] = 2
     end
     res[13] = function()
         -- input_sys_cache
-        obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(side)(obj_char)
+        hit_side_obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
     end
     res[14] = function()
         -- draw_correction
-        obj_char[8] = 3
+        hit_side_obj_char[8] = 3
     end
     res[19] = function()
         -- draw_correction
-        obj_char[8] = 4
+        hit_side_obj_char[8] = 4
     end
     res[23] = function()
         -- state
-        obj_char["hit_type"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type"] = "none" -- none all low mid high
-        obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
-        obj_char["move_state"] = "recovery" -- none startup active recovery
-        obj_char["hit_cancel"] = false
-        obj_char["idle_cancel"] = true
+        hit_side_obj_char["hit_type"] = "none" -- none strike throw burst
+        hit_side_obj_char["hit_guard_type"] = "none" -- none all low mid high
+        hit_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
+        hit_side_obj_char["move_state"] = "recovery" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = true
         -- state_number
-        obj_char["gravity"] = 2.5
-        obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
+        hit_side_obj_char["gravity"] = 2.5
+        hit_side_obj_char["ability_gauge"][1] = math.min(hit_side_obj_char["ability_gauge"][1] + 100.0,hit_side_obj_char["ability_gauge"][2])
         -- enemy_friend_interaction
-        obj_char["horizontal_velocity_correction"] = 1
-        obj_char["gravity_correction"] = 1
-        obj_char["damage_correction"] = 1
+        hit_side_obj_char["horizontal_velocity_correction"] = 1
+        hit_side_obj_char["gravity_correction"] = 1
+        hit_side_obj_char["damage_correction"] = 1
         -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
-        common_game_scene_get_input_sys_cache_state_machine(side)()
+        hit_side_obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(hit_side)()
         -- draw_correction
-        obj_char[8] = 5
+        hit_side_obj_char[8] = 5
         -- play_SFX
-        play_obj_audio(move_SFX_table["4SP_P_clip_2"])
+        play_obj_audio(hit_side_move_SFX_table["4SP_P_clip_2"])
         -- uncommon_update
         test_full_ability_gauge_anim_jump()
     end
     res[30] = function()
         -- sub_obj_table
-        obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
+        hit_side_obj_char["ability_gauge"][1] = math.min(hit_side_obj_char["ability_gauge"][1] + 100.0,hit_side_obj_char["ability_gauge"][2])
         -- draw_correction
-        obj_char[8] = 6
+        hit_side_obj_char[8] = 6
         -- play_SFX
-        play_obj_audio(move_SFX_table["4SP_P_clip_0"])
+        play_obj_audio(hit_side_move_SFX_table["4SP_P_clip_0"])
         -- uncommon_update
         test_full_ability_gauge_anim_jump()
     end
     res[35] = function()
         -- draw_correction
-        obj_char[8] = 7
+        hit_side_obj_char[8] = 7
     end
     res[39] = function()
         -- sub_obj_table
-        obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
+        hit_side_obj_char["ability_gauge"][1] = math.min(hit_side_obj_char["ability_gauge"][1] + 100.0,hit_side_obj_char["ability_gauge"][2])
         -- draw_correction
-        obj_char[8] = 8
+        hit_side_obj_char[8] = 8
         -- play_SFX
-        play_obj_audio(move_SFX_table["4SP_P_clip_1"])
+        play_obj_audio(hit_side_move_SFX_table["4SP_P_clip_1"])
         -- uncommon_update
         test_full_ability_gauge_anim_jump()
     end
     res[44] = function()
         -- draw_correction
-        obj_char[8] = 9
+        hit_side_obj_char[8] = 9
     end
     res[48] = function()
         -- sub_obj_table
-        obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
+        hit_side_obj_char["ability_gauge"][1] = math.min(hit_side_obj_char["ability_gauge"][1] + 100.0,hit_side_obj_char["ability_gauge"][2])
         -- draw_correction
-        obj_char[8] = 10
+        hit_side_obj_char[8] = 10
         -- play_SFX
-        play_obj_audio(move_SFX_table["4SP_P_clip_0"])
+        play_obj_audio(hit_side_move_SFX_table["4SP_P_clip_0"])
         -- uncommon_update
         test_full_ability_gauge_anim_jump()
     end
     res[52] = function()
         -- draw_correction
-        obj_char[8] = 11
+        hit_side_obj_char[8] = 11
     end
     res[57] = function()
         -- sub_obj_table
-        obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
+        hit_side_obj_char["ability_gauge"][1] = math.min(hit_side_obj_char["ability_gauge"][1] + 100.0,hit_side_obj_char["ability_gauge"][2])
         -- draw_correction
-        obj_char[8] = 12
+        hit_side_obj_char[8] = 12
         -- play_SFX
-        play_obj_audio(move_SFX_table["4SP_P_clip_2"])
+        play_obj_audio(hit_side_move_SFX_table["4SP_P_clip_2"])
     end
     res[61] = function()
         -- draw_correction
-        obj_char[8] = 13
+        hit_side_obj_char[8] = 13
         -- play_SFX
-        play_obj_audio(move_SFX_table["4SP_P_knife_whiff"])
+        play_obj_audio(hit_side_move_SFX_table["4SP_P_knife_whiff"])
     end
     res[66] = function()
         -- sub_obj_table
-        obj_char["ability_gauge"][1] = math.min(obj_char["ability_gauge"][1] + 100.0,obj_char["ability_gauge"][2])
+        hit_side_obj_char["ability_gauge"][1] = math.min(hit_side_obj_char["ability_gauge"][1] + 100.0,hit_side_obj_char["ability_gauge"][2])
         -- play_SFX
-        play_obj_audio(move_SFX_table["4SP_P_clip_1"])
+        play_obj_audio(hit_side_move_SFX_table["4SP_P_clip_1"])
         -- draw_correction
-        obj_char[8] = 14
+        hit_side_obj_char[8] = 14
     end
     res[75] = function()
         -- draw_correction
-        obj_char[8] = 15
+        hit_side_obj_char[8] = 15
     end
     res[85] = function()
         -- animation_end
@@ -8647,6 +8647,7 @@ function load_game_scene_anim_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["velocity"] = {0,0}
         hit_side_obj_char["friction"] = 0
         hit_side_obj_char["gravity"] = 1
+        hit_side_obj_char["health_gauge"][1] = hit_side_obj_char["health_gauge"][1]*0.925
         -- enemy_friend_interaction
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
@@ -8840,10 +8841,6 @@ function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["hitbox_table"] = {}
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
-        -- shot_sys
-        hit_side_obj_char["shot_sys_state_cache"] = hit_side_obj_char["shot_sys_state"]
-        character_function_game_scene_TRM_shot_sys_at_the_steady_lock_init(hit_side_obj_char,hurt_side_obj_char)
-        hit_side_obj_char["shot_sys_state"] = "at_the_steady_lock"
         -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
@@ -8904,91 +8901,91 @@ end
 -- _4SP_S_4dash
 -- _4SP_S_6dash
 -- _4SP_S_4S
-function load_game_scene_anim_char_TRM_4SP_S_4S(obj_char)
+function load_game_scene_anim_char_TRM_4SP_S_4S(hit_side_obj_char,hurt_side_obj_char)
     local res = {}
-    local side = obj_char["player_side"]
+    local hit_side = hit_side_obj_char["player_side"]
     res["prop_f"] = "f"
     res["anim_length"] = 16
     res[0] = function()
         -- pre_set
-        common_game_scene_reset_velocity_by_ground_friction(obj_char)
+        common_game_scene_reset_velocity_by_ground_friction(hit_side_obj_char)
         -- state
-        obj_char["sprite_sheet"] = "4SP_S_4S"
-        obj_char["height"] = "stand" -- stand crouch air OTG wallstick
-        obj_char["hit_type"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type"] = "all" -- none all low mid high
-        obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
-        obj_char["move_state"] = "recovery" -- none startup active recovery
-        obj_char["hit_cancel"] = false
-        obj_char["idle_cancel"] = false
+        hit_side_obj_char["sprite_sheet"] = "4SP_S_4S"
+        hit_side_obj_char["height"] = "stand" -- stand crouch air OTG wallstick
+        hit_side_obj_char["hit_type"] = "none" -- none strike throw burst
+        hit_side_obj_char["hit_guard_type"] = "all" -- none all low mid high
+        hit_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
+        hit_side_obj_char["move_state"] = "recovery" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
         -- state_number
-        obj_char["friction"] = 5
-        obj_char["gravity"] = 2.5
+        hit_side_obj_char["friction"] = 5
+        hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
-        obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
-        obj_char["strike_inv"] = false
-        obj_char["strike_inv_countdown"] = 0
-        obj_char["throw_inv"] = false
-        obj_char["throw_inv_countdown"] = 0
-        obj_char["projectile_inv"] = false
-        obj_char["projectile_inv_countdown"] = 0
-        obj_char["horizontal_velocity_correction"] = 1
-        obj_char["gravity_correction"] = 1
-        obj_char["damage_correction"] = 1
+        hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
+        hit_side_obj_char["strike_inv"] = false
+        hit_side_obj_char["strike_inv_countdown"] = 0
+        hit_side_obj_char["throw_inv"] = false
+        hit_side_obj_char["throw_inv_countdown"] = 0
+        hit_side_obj_char["projectile_inv"] = false
+        hit_side_obj_char["projectile_inv_countdown"] = 0
+        hit_side_obj_char["horizontal_velocity_correction"] = 1
+        hit_side_obj_char["gravity_correction"] = 1
+        hit_side_obj_char["damage_correction"] = 1
         -- frame_data
-        obj_char["startup_frame"] = 0
-        obj_char["active_frame"] = 0
-        obj_char["recovery_frame"] = 0
+        hit_side_obj_char["startup_frame"] = 0
+        hit_side_obj_char["active_frame"] = 0
+        hit_side_obj_char["recovery_frame"] = 0
         -- input_sys_cache
-        obj_char["input_sys_state"] = "none" -- none save load
-        common_game_scene_get_input_sys_cache_init(side)(obj_char)
+        hit_side_obj_char["input_sys_state"] = "none" -- none save load
+        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
         -- collide
-        obj_char["pushbox"] = {0,-185,120,370}
-        obj_char["pushbox_opponent_collision_active"] = true
-        obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
-        obj_char["collision_ground_height_offset"] = 0
+        hit_side_obj_char["pushbox"] = {0,-185,120,370}
+        hit_side_obj_char["pushbox_opponent_collision_active"] = true
+        hit_side_obj_char["hitbox_table"] = {}
+        hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
+        hit_side_obj_char["collision_ground_height_offset"] = 0
         -- shot_sys_oroboros
-        obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
-        obj_char[8] = 0
-        obj_char["anchor_pos"] = {275,510}
+        hit_side_obj_char[8] = 0
+        hit_side_obj_char["anchor_pos"] = {275,510}
         -- visual_front
-        CHARACTER_VISUAL_FRONT = side
+        CHARACTER_VISUAL_FRONT = hit_side
     end
     res[3] = function()
         -- draw_correction
-        obj_char[8] = 1
+        hit_side_obj_char[8] = 1
     end
     res[7] = function()
         -- draw_correction
-        obj_char[8] = 2
+        hit_side_obj_char[8] = 2
     end
     res[11] = function()
         -- input_sys_cache
-        obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(side)(obj_char)
+        hit_side_obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(side)(hit_side_obj_char)
     end
     res[12] = function()
         -- draw_correction
-        obj_char[8] = 3
+        hit_side_obj_char[8] = 3
     end
     res[16] = function()
         -- state
-        obj_char["hit_type"] = "none" -- none strike throw burst
-        obj_char["hit_guard_type"] = "none" -- none all low mid high
-        obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
-        obj_char["move_state"] = "none" -- none startup active recovery
-        obj_char["hit_cancel"] = false
-        obj_char["idle_cancel"] = true
+        hit_side_obj_char["hit_type"] = "none" -- none strike throw burst
+        hit_side_obj_char["hit_guard_type"] = "none" -- none all low mid high
+        hit_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
+        hit_side_obj_char["move_state"] = "none" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = true
         -- state_number
-        obj_char["gravity"] = 2.5
+        hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
-        obj_char["horizontal_velocity_correction"] = 1
-        obj_char["gravity_correction"] = 1
-        obj_char["damage_correction"] = 1
+        hit_side_obj_char["horizontal_velocity_correction"] = 1
+        hit_side_obj_char["gravity_correction"] = 1
+        hit_side_obj_char["damage_correction"] = 1
         -- input_sys_cache
-        obj_char["input_sys_state"] = "load" -- none save load
+        hit_side_obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(side)()
         -- animation_end
     end
@@ -9816,187 +9813,15 @@ end
 -- 4SP_S
 -- shot_sys
 function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock(self_side_obj_char,opponent_side_obj_char)
-    local res = {}
-    local self_side_shot_sys_state_cache = self_side_obj_char["shot_sys_state"]
-    local opponent_side_quick_clean_hit_state = 
-    (self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit_state"][opponent_side_obj_char["state"]])
-    local opponent_side_quick_clean_hit_from_at_the_ready_state = (self_side_shot_sys_state_cache ~= "off"
-    and self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit_from_at_the_ready_state"][opponent_side_obj_char["state"]])
-    local quick_clean_hit_cache = opponent_side_quick_clean_hit_state or opponent_side_quick_clean_hit_from_at_the_ready_state
-    local quick_aim_cache = quick_clean_hit_cache or self_side_obj_char["shot_sys_curse_state"]
-    res["prop_f"] = "shot_sys_f"
-    res["anim_length"] = 27
-    res[0] = function()
-        -- shot_sys
-        self_side_obj_char["shot_sys_fire_cancel"] = false
-    end
-    res[18] = function()
-        -- shot_sys
-        self_side_obj_char["shot_sys_fire_cancel"] = true
-        if quick_aim_cache then
-            self_side_obj_char["shot_sys_at_the_steady_aim"] = true
-        end
-        if quick_clean_hit_cache then
-            self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = true
-        end
-    end
-    res[27] = function()
-        self_side_obj_char["shot_sys_at_the_steady_aim"] = true
-        self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = true
-        -- animation_end
-    end
-    return res
 end
 function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_unlock(self_side_obj_char,opponent_side_obj_char)
-    local res = {}
-    local self_side_shot_sys_state_cache = self_side_obj_char["shot_sys_state"]
-    res["prop_f"] = "shot_sys_f"
-    res["anim_length"] = 18
-    res[0] = function()
-        -- shot_sys
-        self_side_obj_char["shot_sys_fire_cancel"] = false
-    end
-    res[18] = function()
-        -- shot_sys
-        if self_side_shot_sys_state_cache ~= "off" then
-            self_side_obj_char["shot_sys_fire_cancel"] = true
-        end
-        -- animation_end
-    end
-    return res
 end
 function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_shot(self_side_obj_char,opponent_side_obj_char)
-    local res = {}
-    res["prop_f"] = "shot_sys_f"
-    res["anim_length"] = 60
-    res[0] = function()
-        -- shot_sys
-        self_side_obj_char["shot_sys_fire_cancel"] = false
-        self_side_obj_char["shot_sys_at_the_steady_aim"] = false
-        self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = false
-    end
-    res[45] = function()
-        -- shot_sys
-        self_side_obj_char["shot_sys_fire_cancel"] = true
-        self_side_obj_char["shot_sys_at_the_steady_aim"] = true
-        self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = true
-    end
-    res[60] = function()
-        -- animation_end
-    end
-    return res
 end
 -- shot_sys_reticle
 function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock(obj_char)
-    local res = {}
-    local side = obj_char["player_side"]
-    local move_SFX_table = common_game_scene_get_SFX_move(side)
-    local opacity_cache = obj_char["shot_sys_reticle"][4]
-    res["prop_f"] = "shot_sys_reticle_f"
-    res["anim_length"] = 23
-    res[0] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][4] = 1
-        obj_char["shot_sys_reticle"][8] = 0
-        obj_char["shot_sys_reticle_sprite_sheet"] = "4SP_S_reticle_lock"
-    end
-    res[1] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 1
-    end
-    res[3] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 2
-    end
-    res[5] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 3
-    end
-    res[7] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 4
-    end
-    res[9] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 5
-    end
-    res[11] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 6
-    end
-    res[13] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 7
-    end
-    res[15] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 8
-    end
-    res[17] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 9
-    end
-    res[20] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 10
-    end
-    res[23] = function()
-        -- animation_end
-    end
-    return res
 end
 function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_unlock(obj_char)
-    local res = {}
-    local side = obj_char["player_side"]
-    local move_SFX_table = common_game_scene_get_SFX_move(side)
-    local opacity_cache = obj_char["shot_sys_reticle"][4]
-    res["prop_f"] = "shot_sys_reticle_f"
-    res["anim_length"] = 7
-    res[0] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][4] = 1
-        obj_char["shot_sys_reticle"][8] = 0
-        obj_char["shot_sys_reticle_sprite_sheet"] = "4SP_S_reticle_unlock"
-    end
-    res[2] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 1
-    end
-    res[4] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 2
-    end
-    res[7] = function()
-        -- animation_end
-    end
-    return res
 end
 function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_shot(obj_char)
-    local res = {}
-    local side = obj_char["player_side"]
-    local move_SFX_table = common_game_scene_get_SFX_move(side)
-    res["prop_f"] = "shot_sys_reticle_f"
-    res["anim_length"] = 15
-    res[0] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][4] = 1
-        obj_char["shot_sys_reticle"][8] = 0
-        obj_char["shot_sys_reticle_sprite_sheet"] = "4SP_S_reticle_shot"
-    end
-    res[2] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 1
-    end
-    res[5] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 2
-    end
-    res[10] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 3
-    end
-    res[15] = function()
-        -- animation_end
-    end
-    return res
 end

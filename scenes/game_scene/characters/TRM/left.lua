@@ -255,6 +255,11 @@ function load_game_scene_obj_char_LP()
         ["block"] = true,
         ["blockstop"] = true
     }
+    obj_char_game_scene_char_LP["shot_sys_at_the_steady_state"] = {
+        ["at_the_steady_lock"] = true,
+        ["at_the_steady_unlock"] = true,
+        ["at_the_steady_shot"] = true
+    }
     -- shot_sys_oroboros/uncommon
     obj_char_game_scene_char_LP["shot_sys_oroboros_f"] = 0
     obj_char_game_scene_char_LP["shot_sys_oroboros_state"] = "off"
@@ -2284,8 +2289,7 @@ function state_machine_char_game_scene_char_LP_shot_sys()
     local self_side_obj_char = obj_char_game_scene_char_LP
     local opponent_side_obj_char = obj_char_game_scene_char_RP
     local active_at_the_ready_ease_out_input = test_input_sys_press(self_side_input["dash"]) and common_game_scene_check_crouch_direction(self_side_obj_char)
-    local test_input_idle_to_ease_out = 
-    (test_input_sys_press(self_side_input["H"]) and common_game_scene_check_crouch_direction(self_side_obj_char))
+    local test_input_idle_to_ease_out = (test_input_sys_press(self_side_input["H"]) and common_game_scene_check_crouch_direction(self_side_obj_char))
     or (test_input_sys_hold(self_side_input["H"]) and active_at_the_ready_ease_out_input)
     or self_side_obj_char["ability_gauge"][1] <= 0 
     local shot_sys_at_the_ready_ban_state = self_side_obj_char["shot_sys_at_the_ready_ban_state"][self_side_obj_char["state"]]
@@ -2383,6 +2387,8 @@ function state_machine_char_game_scene_char_LP_shot_sys()
         ["at_the_steady_lock"] = function()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_at_the_steady_lock_update(self_side_obj_char,opponent_side_obj_char)
+            end
+            if test_input_sys_release(self_side_input["H"]) then
             end
         end,
         ["at_the_steady_unlock"] = function()
@@ -3137,7 +3143,7 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move(self_side_i
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_P(self_side_obj_char,"4SP_P",{190,515})
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_P(self_side_obj_char,opponent_side_obj_char,"4SP_P",{190,515})
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "4SP_P"
         return true
@@ -3231,7 +3237,7 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(se
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_P(self_side_obj_char,"4SP_P",{190,515})
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_P(self_side_obj_char,opponent_side_obj_char,"4SP_P",{190,515})
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "4SP_P"
         return true
@@ -6796,7 +6802,7 @@ function state_gate_game_scene_char_LP_from_4SP_S(self_side_input,opponent_side_
             if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
                 self_side_obj_char[5] = -self_side_obj_char[5]
             end
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_P(self_side_obj_char,"4SP_S_4P",{275,525})
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_P(self_side_obj_char,opponent_side_obj_char,"4SP_S_4P",{275,525})
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "4SP_P"
             return true
