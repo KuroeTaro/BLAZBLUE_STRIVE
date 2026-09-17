@@ -239,7 +239,7 @@ function load_game_scene_obj_char_RP()
     }
     obj_char_game_scene_char_RP["shot_sys_at_the_ready_6SP_S_pass_state"] = {
         ["at_the_ready_ease_out"] = true,
-        ["at_the_steady_unlock"] = true,
+        ["at_the_steady_to_off"] = true,
         ["off"] = true
     }
     obj_char_game_scene_char_RP["shot_sys_at_the_steady_quick_clean_hit_state"] = {
@@ -254,11 +254,6 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["shot_sys_at_the_steady_quick_clean_hit_from_at_the_ready_state"] = {
         ["block"] = true,
         ["blockstop"] = true
-    }
-    obj_char_game_scene_char_RP["shot_sys_at_the_steady_state"] = {
-        ["at_the_steady_lock"] = true,
-        ["at_the_steady_unlock"] = true,
-        ["at_the_steady_shot"] = true
     }
     -- shot_sys_oroboros/uncommon
     obj_char_game_scene_char_RP["shot_sys_oroboros_f"] = 0
@@ -2391,9 +2386,14 @@ function state_machine_char_game_scene_char_RP_shot_sys()
             if test_input_sys_release(self_side_input["H"]) then
             end
         end,
-        ["at_the_steady_unlock"] = function()
+        ["at_the_steady_lock_to_off"] = function()
             if run_at_current_frame then
-                character_function_game_scene_TRM_shot_sys_at_the_steady_unlock_update(self_side_obj_char,opponent_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_off_update(self_side_obj_char,opponent_side_obj_char)
+            end
+        end,
+        ["at_the_steady_lock_to_ready"] = function()
+            if run_at_current_frame then
+                character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_update(self_side_obj_char,opponent_side_obj_char)
             end
         end,
         ["at_the_steady_shot"] = function()
@@ -2627,7 +2627,9 @@ function state_machine_char_game_scene_char_RP_shot_sys_reticle()
                 character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_steady(self_side_obj_char,opponent_side_obj_char)
             end
         end,
-        ["at_the_steady_unlock"] = function()
+        ["at_the_steady_lock_to_off"] = function()
+        end,
+        ["at_the_steady_lock_to_ready"] = function()
         end,
         ["at_the_steady_shot"] = function()
         end
