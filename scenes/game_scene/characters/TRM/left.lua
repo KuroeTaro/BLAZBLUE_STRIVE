@@ -813,8 +813,10 @@ function load_game_scene_wallbreak_mid_init_LP()
     obj_char_game_scene_char_LP["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
 end
 function load_game_scene_wallbreak_end_init_LP()
-    -- x y z opacity sx sy r f
-    obj_char_game_scene_char_LP["basic_prop_cache"] = {0,0,0,1,1,1,0,0}
+    -- basic_prop_cache
+    for i = 1,8 do
+        obj_char_game_scene_char_LP["basic_prop_cache"][i] = obj_char_game_scene_char_LP[i]
+    end
     -- state
     obj_char_game_scene_char_LP["state_cache"] = "none"
     obj_char_game_scene_char_LP["hit_type"] = "none" -- none strike throw projectile all

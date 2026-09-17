@@ -738,6 +738,7 @@ function load_game_scene_wallbreak_start_init_RP()
     obj_char_game_scene_char_RP["game_speed_application"] = {0,nil,nil,nil,nil,nil}
     obj_char_game_scene_char_RP["hit_hurt_blockstop_countdown"] = 0
     obj_char_game_scene_char_RP["hit_hurt_block_slowdown_countdown"] = 0
+    -- collide
     obj_char_game_scene_char_RP["pushbox_opponent_collision_active"] = false
     obj_char_game_scene_char_RP["hitbox_table"] = {}
     obj_char_game_scene_char_RP["hurtbox_table"] = {}
@@ -812,8 +813,10 @@ function load_game_scene_wallbreak_mid_init_RP()
     obj_char_game_scene_char_RP["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
 end
 function load_game_scene_wallbreak_end_init_RP()
-    -- x y z opacity sx sy r f
-    obj_char_game_scene_char_RP["basic_prop_cache"] = {0,0,0,1,1,1,0,0}
+    -- basic_prop_cache
+    for i = 1,8 do
+        obj_char_game_scene_char_RP["basic_prop_cache"][i] = obj_char_game_scene_char_RP[i]
+    end
     -- state
     obj_char_game_scene_char_RP["state_cache"] = "none"
     obj_char_game_scene_char_RP["hit_type"] = "none" -- none strike throw projectile all
@@ -889,6 +892,9 @@ function load_game_scene_wallbreak_end_init_RP()
     obj_char_game_scene_char_RP["collision_move_available"] = {1,1}
     obj_char_game_scene_char_RP["collision_move_available_cache"] = {1,1}
     obj_char_game_scene_char_RP["collision_ground_height_offset"] = 0 -- 用于检测和地面碰撞的
+    obj_char_game_scene_char_RP["pushbox_opponent_collision_active"] = true
+    obj_char_game_scene_char_RP["hitbox_table"] = {}
+    obj_char_game_scene_char_RP["hurtbox_table"] = {}
     -- sub_obj_table
     obj_char_game_scene_char_RP["projectile_front_table"] = {}
     obj_char_game_scene_char_RP["projectile_back_table"] = {}
