@@ -813,10 +813,6 @@ function load_game_scene_wallbreak_mid_init_RP()
     obj_char_game_scene_char_RP["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
 end
 function load_game_scene_wallbreak_end_init_RP()
-    -- basic_prop_cache
-    for i = 1,8 do
-        obj_char_game_scene_char_RP["basic_prop_cache"][i] = obj_char_game_scene_char_RP[i]
-    end
     -- state
     obj_char_game_scene_char_RP["state_cache"] = "none"
     obj_char_game_scene_char_RP["hit_type"] = "none" -- none strike throw projectile all
