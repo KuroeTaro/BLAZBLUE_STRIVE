@@ -5331,6 +5331,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher(hit_side_obj_char,hurt_side_o
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{-18,-455,100,50},{75,-190,180,370}}
         -- draw_correction
         hit_side_obj_char[8] = 1
+        -- play_SFX
+        play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
     end
     res[4] = function()
         -- state
@@ -7358,6 +7360,8 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(hit_side_obj_char,hurt_side_
         hit_side_obj_char["hurtbox_table"] = {{0,-140,250,300}}
         -- draw_correction
         hit_side_obj_char[8] = 1
+        -- play_SFX
+        play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
     end
     res[4] = function()
         -- state
