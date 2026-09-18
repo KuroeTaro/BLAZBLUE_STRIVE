@@ -9819,35 +9819,32 @@ end
 -- shot_sys
 function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock(self_side_obj_char,opponent_side_obj_char)
     local res = {}
-    local side = obj_char["player_side"]
-    local move_SFX_table = common_game_scene_get_SFX_move(side)
-    res["prop_f"] = "shot_sys_reticle_f_4"
-    res["anim_length"] = 28
+    local self_side_shot_sys_state_cache = self_side_obj_char["shot_sys_state"]
+    local opponent_side_quick_clean_hit_state = 
+    (self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit_state"][opponent_side_obj_char["state"]])
+    local opponent_side_quick_clean_hit_from_at_the_ready_state = (self_side_shot_sys_state_cache ~= "off"
+    and self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit_from_at_the_ready_state"][opponent_side_obj_char["state"]])
+    local quick_clean_hit_cache = opponent_side_quick_clean_hit_state or opponent_side_quick_clean_hit_from_at_the_ready_state
+    local quick_aim_cache = quick_clean_hit_cache or self_side_obj_char["shot_sys_curse_state"]
+    res["prop_f"] = "shot_sys_f"
+    res["anim_length"] = 27
     res[0] = function()
         -- shot_sys
-        obj_char["shot_sys_reticle"][4] = 0.2
-        obj_char["shot_sys_reticle"][8] = 0
-        obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
-        -- play_SFX
-        play_obj_audio(move_SFX_table["5H_reticle_ease_in"])
+        self_side_obj_char["shot_sys_fire_cancel"] = false
     end
-    res[1] = function()
+    res[18] = function()
         -- shot_sys
-        obj_char["shot_sys_reticle"][4] = 0.4
+        self_side_obj_char["shot_sys_fire_cancel"] = true
+        if quick_aim_cache then
+            self_side_obj_char["shot_sys_at_the_steady_aim"] = true
+        end
+        if quick_clean_hit_cache then
+            self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = true
+        end
     end
-    res[2] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][4] = 0.6
-    end
-    res[3] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][4] = 0.8
-    end
-    res[4] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][4] = 1
-    end
-    res[28] = function()
+    res[27] = function()
+        self_side_obj_char["shot_sys_at_the_steady_aim"] = true
+        self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = true
         -- animation_end
     end
     return res
@@ -9863,17 +9860,76 @@ function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock(obj_char
     local res = {}
     local side = obj_char["player_side"]
     local move_SFX_table = common_game_scene_get_SFX_move(side)
+    local opacity_cache = obj_char["shot_sys_reticle"][4]
     res["prop_f"] = "shot_sys_reticle_f"
-    res["anim_length"] = 28
+    res["anim_length"] = 27
     res[0] = function()
         -- shot_sys
-        obj_char["shot_sys_reticle"][4] = 0.2
-        obj_char["shot_sys_reticle"][8] = 0
-        obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
-        -- play_SFX
-        play_obj_audio(move_SFX_table["5H_reticle_ease_in"])
+        obj_char["shot_sys_reticle"][4] = opacity_cache*0.8
     end
-    res[28] = function()
+    res[1] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][4] = opacity_cache*0.6
+    end
+    res[2] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][4] = opacity_cache*0.4
+    end
+    res[3] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][4] = opacity_cache*0.2
+    end
+    res[4] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][4] = 0
+    end
+    res[5] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][4] = 1
+        obj_char["shot_sys_reticle"][8] = 0
+        obj_char["shot_sys_reticle_sprite_sheet"] = "4SP_S_reticle_lock"
+    end
+    res[6] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 1
+    end
+    res[8] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 2
+    end
+    res[10] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 3
+    end
+    res[12] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 4
+    end
+    res[14] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 5
+    end
+    res[16] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 6
+    end
+    res[18] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 7
+    end
+    res[20] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 8
+    end
+    res[22] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 9
+    end
+    res[25] = function()
+        -- shot_sys
+        obj_char["shot_sys_reticle"][8] = 10
+    end
+    res[27] = function()
         -- animation_end
     end
     return res

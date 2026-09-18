@@ -485,8 +485,25 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(sel
 end
 -- at_the_steady
 function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_init(self_side_obj_char,opponent_side_obj_char)
+    -- hurt_state
+    self_side_obj_char["hurt_state"] = self_side_obj_char["hurt_state_target"]
+    if self_side_obj_char["hurt_state"] == "idle" then
+        self_side_obj_char["hurt_state"] = "counter"
+    end
+    -- shot_sys
+    self_side_obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock(self_side_obj_char,opponent_side_obj_char)
+    init_character_anim_with(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
+    self_side_obj_char["shot_sys_aim_process"] = {0,0,420,450,false}
+    -- shot_sys_reticle
+    self_side_obj_char["shot_sys_reticle_animation_table"][1] = load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock(self_side_obj_char)
+    init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
+    character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(self_side_obj_char,opponent_side_obj_char)
+    character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_steady_lock(self_side_obj_char,opponent_side_obj_char)
+    self_side_obj_char["shot_sys_reticle_state"] = "at_the_ready_ease_in"
+    return
 end
 function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_update(self_side_obj_char,opponent_side_obj_char)
+
 end
 function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_off_init(self_side_obj_char,opponent_side_obj_char)
 end
