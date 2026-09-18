@@ -1312,9 +1312,10 @@ function order_load_game_scene_char_RP_frames(load_order)
         end,
         [26] = function()
             local load_name_table = {
+                "4SP_S_reticle_lock_to_off",
+                "4SP_S_reticle_lock_to_ready",
                 "4SP_S_reticle_lock",
-                "4SP_S_reticle_shot",
-                "4SP_S_reticle_unlock"
+                "4SP_S_reticle_shot"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] = 
