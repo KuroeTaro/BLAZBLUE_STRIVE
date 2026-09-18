@@ -9848,7 +9848,6 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock(self_si
     end
     return res
 end
-end
 function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock_to_off(self_side_obj_char,opponent_side_obj_char)
 end
 function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock_to_ready(self_side_obj_char,opponent_side_obj_char)
