@@ -285,7 +285,9 @@ function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_re
     self_side_obj_char["shot_sys_reticle"][2] = self_side_obj_char["shot_sys_reticle_stage_pos_current"][2]
     return
 end
-function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_steady(self_side_obj_char,opponent_side_obj_char)
+function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_steady_lock(self_side_obj_char,opponent_side_obj_char)
+end
+function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_steady_lock_to_ready(self_side_obj_char,opponent_side_obj_char)
 end
 function character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(self_side_obj_char,opponent_side_obj_char)
     local random_offset = (math.random(2) == 1) and 1 or 0

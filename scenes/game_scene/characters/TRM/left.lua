@@ -2594,7 +2594,7 @@ function state_machine_char_game_scene_char_LP_shot_sys_reticle()
         ["at_the_steady_lock"] = function()
             if run_at_current_frame then
                 character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
-                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_steady(self_side_obj_char,opponent_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_steady_lock(self_side_obj_char,opponent_side_obj_char)
             end
         end,
         ["at_the_steady_lock_to_off"] = function()

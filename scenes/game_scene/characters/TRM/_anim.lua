@@ -9523,7 +9523,7 @@ end
 function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_shot(obj_char)
     local res = {}
     res["prop_f"] = "shot_sys_reticle_f_8"
-    res["anim_length"] = 6
+    res["anim_length"] = 7
     res[0] = function()
         -- shot_sys
         obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_shot"
@@ -9542,7 +9542,7 @@ function load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_shot(obj_char)
         -- shot_sys
         obj_char["shot_sys_reticle"][8] = 3
     end
-    res[6] = function()
+    res[7] = function()
         -- animation_end
     end
     return res
@@ -9626,6 +9626,9 @@ function load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj,sprite_sheet)
         -- shot_sys_oroboros
         obj["f_8"] = 0
         obj[8] = 0
+    end
+    res[91] = function()
+        -- animation_end
     end
     return res
 end
