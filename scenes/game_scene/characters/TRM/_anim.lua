@@ -8964,7 +8964,7 @@ function load_game_scene_anim_char_TRM_4SP_S_4S(hit_side_obj_char,hurt_side_obj_
     res[11] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(side)(hit_side_obj_char)
+        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
     end
     res[12] = function()
         -- draw_correction
@@ -8986,7 +8986,7 @@ function load_game_scene_anim_char_TRM_4SP_S_4S(hit_side_obj_char,hurt_side_obj_
         hit_side_obj_char["damage_correction"] = 1
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "load" -- none save load
-        common_game_scene_get_input_sys_cache_state_machine(side)()
+        common_game_scene_get_input_sys_cache_state_machine(hit_side)()
         -- animation_end
     end
     return res
