@@ -161,17 +161,7 @@ function character_function_game_scene_TRM_shot_sys_ability_gauge_use(obj_char)
 end
 -- aim_process_init
 function character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
-    local instant_aim_state = {
-        ["block"] = true,
-        ["hurt"] = true,
-        ["throw_hurt_success"] = true,
-        ["hurtstop"] = true,
-        ["blockstop"] = true,
-        ["wallstick"] = true,
-        ["wallbreak"] = true,
-        ["knockdown"] = true
-    }
-    if instant_aim_state[hurt_side_obj_char["state"]] then
+    if hurt_side_obj_char["shot_sys_at_the_ready_instant_aim_state"][hurt_side_obj_char["state"]] then
         hit_side_obj_char["shot_sys_aim_process"][1] = hit_side_obj_char["shot_sys_aim_process"][3]
     else
         hit_side_obj_char["shot_sys_aim_process"][1] = 0
@@ -187,16 +177,6 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_upd
     -- 5.诅咒
     -- 6.特定的己方模组（哈皮的翻滚）
     local self_side_obj_char_shot_sys_aim_process = self_side_obj_char["shot_sys_aim_process"]
-    local instant_aim_state = {
-        ["block"] = true,
-        ["hurt"] = true,
-        ["throw_hurt_success"] = true,
-        ["hurtstop"] = true,
-        ["blockstop"] = true,
-        ["wallstick"] = true,
-        ["wallbreak"] = true,
-        ["knockdown"] = true
-    }
     local function debuff(self_side_obj_char,opponent_side_obj_char)
         local dx = opponent_side_obj_char["x"] - self_side_obj_char["x"]
         local opponent_side_vx = opponent_side_obj_char["velocity"][1]
@@ -223,8 +203,8 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_upd
             self_side_obj_char_shot_sys_aim_process[4]
         )
     self_side_obj_char_shot_sys_aim_process[1] = math.max(self_side_obj_char_shot_sys_aim_process[1],0)
-    -- instandt_aim
-    if instant_aim_state[opponent_side_obj_char["state"]] then
+    -- instant_aim
+    if opponent_side_obj_char["shot_sys_at_the_ready_instant_aim_state"][opponent_side_obj_char["state"]] then
         self_side_obj_char_shot_sys_aim_process[1] = math.max(self_side_obj_char_shot_sys_aim_process[1],self_side_obj_char_shot_sys_aim_process[3])
     end
 end
@@ -275,7 +255,7 @@ function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_re
 end
 function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_steady_lock(self_side_obj_char,opponent_side_obj_char)
     local self_side_obj_char_shot_sys_at_the_steady_aim = self_side_obj_char["shot_sys_at_the_steady_aim"]
-    local self_side_div_value = 5
+    local self_side_div_value = 4.75
     if self_side_obj_char_shot_sys_at_the_steady_aim then
         self_side_div_value = 1.25
     end
@@ -514,7 +494,9 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_init(self
     -- shot_sys_reticle
     self_side_obj_char["shot_sys_reticle_animation_table"][1] = load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock(self_side_obj_char)
     init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
-    character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(self_side_obj_char,opponent_side_obj_char,800)
+    if self_side_obj_char["shot_sys_reticle_state"] == "off" then
+        character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(self_side_obj_char,opponent_side_obj_char,800)
+    end
     character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_steady_lock(self_side_obj_char,opponent_side_obj_char)
     self_side_obj_char["shot_sys_reticle_state"] = "at_the_steady_lock"
     return

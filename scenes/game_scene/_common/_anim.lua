@@ -2407,6 +2407,10 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
         hurt_side_obj_char[8] = 3
     end
     res[10] = function()
+        -- state
+        hurt_side_obj_char["height"] = "crouch" -- stand crouch air OTG wallstick
+        -- collide
+        hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][4]
         -- draw_correction
         hurt_side_obj_char[8] = 4
     end
@@ -2419,6 +2423,10 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
         hurt_side_obj_char[8] = 6
     end
     res[24] = function()
+        -- state
+        hurt_side_obj_char["height"] = "stand" -- stand crouch air OTG wallstick
+        -- collide
+        hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][7]
         -- draw_correction
         hurt_side_obj_char[8] = 7
     end
@@ -2515,6 +2523,10 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
         hurt_side_obj_char[8] = 3
     end
     res[10] = function()
+        -- state
+        hurt_side_obj_char["height"] = "crouch" -- stand crouch air OTG wallstick
+        -- collide
+        hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][4]
         -- draw_correction
         hurt_side_obj_char[8] = 4
     end
@@ -2527,6 +2539,10 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
         hurt_side_obj_char[8] = 6
     end
     res[24] = function()
+        -- state
+        hurt_side_obj_char["height"] = "stand" -- stand crouch air OTG wallstick
+        -- collide
+        hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][7]
         -- draw_correction
         hurt_side_obj_char[8] = 7
     end
@@ -2598,10 +2614,18 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
         obj_char["state_cache"] = "5_stand_idle"
     end
     res[4] = function()
+        -- state
+        obj_char["height"] = "crouch" -- stand crouch air OTG wallstick
+        -- collide
+        obj_char["pushbox"] = pushbox_data[sprite_sheet][1]
         -- draw_correction
         obj_char[8] = 1
     end
     res[8] = function()
+        -- state
+        obj_char["height"] = "stand" -- stand crouch air OTG wallstick
+        -- collide
+        obj_char["pushbox"] = pushbox_data[sprite_sheet][2]
         -- draw_correction
         obj_char[8] = 2
     end
@@ -2658,7 +2682,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         -- state
         hurt_side_obj_char["y"] = 0
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
-        hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
+        hurt_side_obj_char["height"] = "stand" -- stand crouch air OTG wallstick
         hurt_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
         hurt_side_obj_char["idle_cancel"] = false
@@ -2721,20 +2745,12 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         hurt_side_obj_char[8] = 3
     end
     res[13] = function()
-        -- state
-        hurt_side_obj_char["height"] = "crouch" -- stand crouch air OTG wallstick
         -- state_number
         hurt_side_obj_char["friction"] = 7
-        -- collide
-        hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][4]
         -- draw_correction
         hurt_side_obj_char[8] = 4
     end
     res[18] = function()
-        -- state
-        hurt_side_obj_char["height"] = "OTG" -- stand crouch air OTG wallstick
-        -- collide
-        hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][5]
         -- draw_correction
         hurt_side_obj_char[8] = 5
         -- insert_VFX

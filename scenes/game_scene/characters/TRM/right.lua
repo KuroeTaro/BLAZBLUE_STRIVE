@@ -236,6 +236,18 @@ function load_game_scene_obj_char_RP()
         ["5UA"] = true,
         ["4SP_S_6UA"] = true
     }
+    obj_char_game_scene_char_RP["shot_sys_at_the_ready_instant_aim_state"] = {
+        ["block"] = true,
+        ["hurt"] = true,
+        ["throw_hurt_success"] = true,
+        ["blockstop"] = true,
+        ["hurtstop"] = true,
+        ["wallstick"] = true,
+        ["wallbreak_hurt"] = true,
+        ["knockdown"] = true,
+        ["knockdown_recovery"] = true,
+        ["knockout"] = true
+    }
     obj_char_game_scene_char_RP["shot_sys_at_the_ready_6SP_S_pass_state"] = {
         ["at_the_ready_ease_out"] = true,
         ["at_the_steady_to_off"] = true,
@@ -248,7 +260,8 @@ function load_game_scene_obj_char_RP()
         ["wallstick"] = true,
         ["wallbreak_hurt"] = true,
         ["knockdown"] = true,
-        ["knockdown_recovery"] = true
+        ["knockdown_recovery"] = true,
+        ["knockout"] = true
     }
     obj_char_game_scene_char_RP["shot_sys_at_the_steady_quick_clean_hit_from_at_the_ready_state"] = {
         ["block"] = true,
@@ -540,28 +553,34 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_knockdown_wallstick_ground"][4] = {{0,-112.5,220,225}}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_hard_knockdown_wallstick_ground"] = {315,355}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["0_general_hurt_hard_knockdown_wallstick_ground"] = {-343,-128}
-    -- 0_general_hurt_hard_recovery_down
+    -- 0_general_hurt_hard_recovery_down 躺(OTG)0-3 -> 蹲4-6 -> 站7-8
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_down"] = {}
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_down"][0] = crouch_pushbox
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_down"][0] = OTG_pushbox
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_down"][4] = crouch_pushbox
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_down"][7] = stand_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_down"] = {}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_down"][0] = {}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_hard_recovery_down"] = {323,509}
-    -- 0_general_hurt_hard_recovery_up
+    -- 0_general_hurt_hard_recovery_up 躺(OTG)0-3 -> 蹲4-6 -> 站7-8
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_up"] = {}
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_up"][0] = crouch_pushbox
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_up"][0] = OTG_pushbox
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_up"][4] = crouch_pushbox
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_up"][7] = stand_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_up"] = {}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_up"][0] = {}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_hard_recovery_up"] = {248,535}
-    -- 0_general_hurt_hard_recovery_wallstick_ground
+    -- 0_general_hurt_hard_recovery_wallstick_ground 躺(OTG)0 -> 蹲1 -> 站2-6
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_wallstick_ground"] = {}
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_wallstick_ground"][0] = crouch_pushbox
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_wallstick_ground"][0] = OTG_pushbox
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_wallstick_ground"][1] = crouch_pushbox
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_wallstick_ground"][2] = stand_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_wallstick_ground"] = {}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_hard_recovery_wallstick_ground"][0] = {}
     obj_anchor_data_game_scene_char_RP["0_general_hurt_hard_recovery_wallstick_ground"] = {248,535}
-    -- 0_general_hurt_soft_recovery_ground
+    -- 0_general_hurt_soft_recovery_ground 全流程站姿
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_soft_recovery_ground"] = {}
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_soft_recovery_ground"][0] = OTG_pushbox
-    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_soft_recovery_ground"][4] = crouch_pushbox
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_soft_recovery_ground"][0] = stand_pushbox
+    obj_pushboxs_data_game_scene_char_RP["0_general_hurt_soft_recovery_ground"][4] = stand_pushbox
     obj_pushboxs_data_game_scene_char_RP["0_general_hurt_soft_recovery_ground"][5] = stand_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_soft_recovery_ground"] = {}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_soft_recovery_ground"][0] = {}
@@ -1755,6 +1774,12 @@ function state_machine_char_game_scene_char_RP()
             end
             state_gate_game_scene_char_RP_from_throw_tech(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
         end,
+        ["blockstop"] = function()
+            if run_at_current_frame then
+                common_update_game_scene_char_blockstop_hurtstop_countdown(self_side_obj_char)
+            end
+            state_gate_game_scene_char_RP_from_blockstop(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+        end,
         ["hitstop"] = function()
             if run_at_current_frame then
                 common_update_game_scene_char_hitstop_countdown(self_side_obj_char)
@@ -1767,21 +1792,15 @@ function state_machine_char_game_scene_char_RP()
             end
             state_gate_game_scene_char_RP_from_hurtstop(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
         end,
-        ["blockstop"] = function()
-            if run_at_current_frame then
-                common_update_game_scene_char_blockstop_hurtstop_countdown(self_side_obj_char)
-            end
-            state_gate_game_scene_char_RP_from_blockstop(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
-        end,
         ["wallstick"] = function()
             if run_at_current_frame then
                 character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
             state_gate_game_scene_char_RP_from_wallstick(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
         end,
-        ["wallbreak_hurt"] = function()
-        end,
         ["wallbreak_hit"] = function()
+        end,
+        ["wallbreak_hurt"] = function()
         end,
         ["knockdown"] = function()
             if run_at_current_frame then

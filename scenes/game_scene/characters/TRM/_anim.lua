@@ -1971,7 +1971,7 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -1997,7 +1997,7 @@ function load_game_scene_anim_char_TRM_2P(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -2224,7 +2224,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -2250,7 +2250,7 @@ function load_game_scene_anim_char_TRM_6P(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -2508,7 +2508,7 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -2534,7 +2534,7 @@ function load_game_scene_anim_char_TRM_5P(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -2763,7 +2763,7 @@ function load_game_scene_anim_char_TRM_2K(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -2789,7 +2789,7 @@ function load_game_scene_anim_char_TRM_2K(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -3053,7 +3053,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -3079,7 +3079,7 @@ function load_game_scene_anim_char_TRM_6K(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -3362,7 +3362,7 @@ function load_game_scene_anim_char_TRM_5K(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -3388,7 +3388,7 @@ function load_game_scene_anim_char_TRM_5K(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -3656,7 +3656,7 @@ function load_game_scene_anim_char_TRM_2S(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -3682,7 +3682,7 @@ function load_game_scene_anim_char_TRM_2S(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -3930,7 +3930,7 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -3956,7 +3956,7 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -3982,7 +3982,7 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -4008,7 +4008,7 @@ function load_game_scene_anim_char_TRM_6S(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -4311,7 +4311,7 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -4337,7 +4337,7 @@ function load_game_scene_anim_char_TRM_cS(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -4580,7 +4580,7 @@ function load_game_scene_anim_char_TRM_fS(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -4606,7 +4606,7 @@ function load_game_scene_anim_char_TRM_fS(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -4997,7 +4997,7 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char,hurt_side_obj
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -5025,7 +5025,7 @@ function load_game_scene_anim_char_TRM_2Launcher(hit_side_obj_char,hurt_side_obj
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -5258,7 +5258,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(hit_side_obj_char,hurt_side_o
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -5983,7 +5983,7 @@ function load_game_scene_anim_char_TRM_5Launcher(hit_side_obj_char,hurt_side_obj
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -6009,7 +6009,7 @@ function load_game_scene_anim_char_TRM_5Launcher(hit_side_obj_char,hurt_side_obj
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -6282,7 +6282,7 @@ function load_game_scene_anim_char_TRM_j5P(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -6308,7 +6308,7 @@ function load_game_scene_anim_char_TRM_j5P(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -6534,7 +6534,7 @@ function load_game_scene_anim_char_TRM_j2K(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -6560,7 +6560,7 @@ function load_game_scene_anim_char_TRM_j2K(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -6803,7 +6803,7 @@ function load_game_scene_anim_char_TRM_j5K(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -6829,7 +6829,7 @@ function load_game_scene_anim_char_TRM_j5K(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -7052,7 +7052,7 @@ function load_game_scene_anim_char_TRM_j5S(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -7078,7 +7078,7 @@ function load_game_scene_anim_char_TRM_j5S(hit_side_obj_char,hurt_side_obj_char)
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -7287,7 +7287,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(hit_side_obj_char,hurt_side_
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -7952,7 +7952,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(hit_side_obj_char,hurt_side_ob
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -7978,7 +7978,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(hit_side_obj_char,hurt_side_ob
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -8152,7 +8152,7 @@ end
 --             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
 --                 hit_side_obj_char,hurt_side_obj_char,
 --                 "0_general_hurt_soft_recovery_ground",
---                 "OTG",
+--                 "stand",
 --                 "5_stand_idle",
 --                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
 --             ),
@@ -9043,7 +9043,7 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -9069,7 +9069,7 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -9095,7 +9095,7 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -9121,7 +9121,7 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,
                 "0_general_hurt_soft_recovery_ground",
-                "OTG",
+                "stand",
                 "5_stand_idle",
                 nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,function() end
             ),
@@ -9831,16 +9831,18 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock(self_si
     res[0] = function()
         -- shot_sys
         self_side_obj_char["shot_sys_fire_cancel"] = false
-    end
-    res[18] = function()
-        -- shot_sys
-        self_side_obj_char["shot_sys_fire_cancel"] = true
+        self_side_obj_char["shot_sys_at_the_steady_aim"] = false
+        self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = false
         if quick_aim_cache then
             self_side_obj_char["shot_sys_at_the_steady_aim"] = true
         end
         if quick_clean_hit_cache then
             self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = true
         end
+    end
+    res[18] = function()
+        -- shot_sys
+        self_side_obj_char["shot_sys_fire_cancel"] = true
     end
     res[27] = function()
         self_side_obj_char["shot_sys_at_the_steady_aim"] = true
