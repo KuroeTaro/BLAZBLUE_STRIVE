@@ -2271,6 +2271,7 @@ function state_machine_char_game_scene_char_LP_shot_sys()
             end
             if test_input_sys_press(self_side_input["H"]) and (not shot_sys_at_the_ready_ban_state) and self_side_obj_char["ability_gauge"][1] > 0 then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(self_side_obj_char,opponent_side_obj_char)
+                character_animator(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
                 return
             end
         end,
@@ -2299,6 +2300,7 @@ function state_machine_char_game_scene_char_LP_shot_sys()
             end
             if test_input_sys_press(self_side_input["H"]) and (not shot_sys_at_the_ready_ban_state) then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(self_side_obj_char,opponent_side_obj_char)
+                character_animator(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
                 return
             end
             if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"]) then
