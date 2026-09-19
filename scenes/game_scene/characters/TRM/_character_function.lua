@@ -241,16 +241,10 @@ end
 function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(self_side_obj_char,opponent_side_obj_char)
     local self_side_obj_char_shot_sys_aim_process = self_side_obj_char["shot_sys_aim_process"]
     local self_side_div_value = 30-math.min(self_side_obj_char_shot_sys_aim_process[1],self_side_obj_char_shot_sys_aim_process[3])/15
-    local height_offset = {
-        [370] = 315,
-        [285] = 200,
-        [200] = 100,
-        [130] = 100
-    }
     -- update_shot_sys_reticle_visual_offset
     self_side_obj_char["shot_sys_reticle_stage_pos_target"] = {
         opponent_side_obj_char["x"]-160,
-        opponent_side_obj_char["y"]-height_offset[opponent_side_obj_char["pushbox"][4]]-160
+        opponent_side_obj_char["y"]-opponent_side_obj_char["shot_sys_reticle_height_offset"][opponent_side_obj_char["pushbox"][4]]-160
     }
     self_side_obj_char["shot_sys_reticle_stage_pos_current"] = {
         (self_side_obj_char["shot_sys_reticle_stage_pos_current"][1]*(self_side_div_value-1)+self_side_obj_char["shot_sys_reticle_stage_pos_target"][1])/self_side_div_value,
@@ -266,16 +260,10 @@ function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_re
     end
     local self_side_obj_char_shot_sys_aim_process = self_side_obj_char["shot_sys_aim_process"]
     local self_side_div_value = 30-math.min(self_side_obj_char_shot_sys_aim_process[1],self_side_obj_char_shot_sys_aim_process[3])/15
-    local height_offset = {
-        [370] = 315,
-        [285] = 200,
-        [200] = 100,
-        [130] = 100
-    }
     -- update_shot_sys_reticle_visual_offset
     self_side_obj_char["shot_sys_reticle_stage_pos_target"] = {
         opponent_side_obj_char["x"]-160,
-        opponent_side_obj_char["y"]-height_offset[opponent_side_obj_char["pushbox"][4]]-160
+        opponent_side_obj_char["y"]-opponent_side_obj_char["shot_sys_reticle_height_offset"][opponent_side_obj_char["pushbox"][4]]-160
     }
     self_side_obj_char["shot_sys_reticle_stage_pos_current"] = {
         (self_side_obj_char["shot_sys_reticle_stage_pos_current"][1]*(self_side_div_value-1)+self_side_obj_char["shot_sys_reticle_stage_pos_target"][1])/self_side_div_value,
@@ -286,30 +274,40 @@ function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_re
     return
 end
 function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_steady_lock(self_side_obj_char,opponent_side_obj_char)
+    local self_side_obj_char_shot_sys_at_the_steady_aim = self_side_obj_char["shot_sys_at_the_steady_aim"]
+    local self_side_div_value = 5
+    if self_side_obj_char_shot_sys_at_the_steady_aim then
+        self_side_div_value = 1.25
+    end
+    -- update_shot_sys_reticle_visual_offset
+    self_side_obj_char["shot_sys_reticle_stage_pos_target"] = {
+        opponent_side_obj_char["x"]-160,
+        opponent_side_obj_char["y"]-opponent_side_obj_char["shot_sys_reticle_height_offset"][opponent_side_obj_char["pushbox"][4]]-160
+    }
+    self_side_obj_char["shot_sys_reticle_stage_pos_current"] = {
+        (self_side_obj_char["shot_sys_reticle_stage_pos_current"][1]*(self_side_div_value-1)+self_side_obj_char["shot_sys_reticle_stage_pos_target"][1])/self_side_div_value,
+        (self_side_obj_char["shot_sys_reticle_stage_pos_current"][2]*(self_side_div_value-1)+self_side_obj_char["shot_sys_reticle_stage_pos_target"][2])/self_side_div_value
+    }
+    self_side_obj_char["shot_sys_reticle"][1] = self_side_obj_char["shot_sys_reticle_stage_pos_current"][1]
+    self_side_obj_char["shot_sys_reticle"][2] = self_side_obj_char["shot_sys_reticle_stage_pos_current"][2]
+    return
 end
 function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_steady_lock_to_ready(self_side_obj_char,opponent_side_obj_char)
 end
-function character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(self_side_obj_char,opponent_side_obj_char)
+function character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(self_side_obj_char,opponent_side_obj_char,offset_multiplier)
     local random_offset = (math.random(2) == 1) and 1 or 0
     local random_index = math.random(1,2)
-    local offset_multiplier = 100
-    local height_offset = {
-        [370] = 315,
-        [285] = 200,
-        [200] = 100,
-        [130] = 100
-    }
     if random_index == 1 then
         self_side_obj_char["shot_sys_reticle_stage_pos_current"][1] = opponent_side_obj_char["x"]-160
             +(math.random() * 2 - 1)*offset_multiplier
         self_side_obj_char["shot_sys_reticle_stage_pos_current"][2] = opponent_side_obj_char["y"]
-            -height_offset[opponent_side_obj_char["pushbox"][4]]-160
+            -opponent_side_obj_char["shot_sys_reticle_height_offset"][opponent_side_obj_char["pushbox"][4]]-160
             +((math.random(2) == 1) and 1 or -1)*offset_multiplier
     else
         self_side_obj_char["shot_sys_reticle_stage_pos_current"][1] = opponent_side_obj_char["x"]-160
             +((math.random(2) == 1) and 1 or -1)*offset_multiplier
         self_side_obj_char["shot_sys_reticle_stage_pos_current"][2] = opponent_side_obj_char["y"]
-            -height_offset[opponent_side_obj_char["pushbox"][4]]-160
+            -opponent_side_obj_char["shot_sys_reticle_height_offset"][opponent_side_obj_char["pushbox"][4]]-160
             +(math.random() * 2 - 1)*offset_multiplier
     end
     self_side_obj_char["shot_sys_reticle"][1] = self_side_obj_char["shot_sys_reticle_stage_pos_current"][1]
@@ -386,7 +384,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(se
     self_side_obj_char["shot_sys_reticle"][8] = 0
     self_side_obj_char["shot_sys_reticle_animation_table"][1] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(self_side_obj_char)
     init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
-    character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(self_side_obj_char,opponent_side_obj_char)
+    character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(self_side_obj_char,opponent_side_obj_char,100)
     character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready_ease_in(self_side_obj_char,opponent_side_obj_char)
     self_side_obj_char["shot_sys_reticle_state"] = "at_the_ready_ease_in"
     return
@@ -516,7 +514,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_init(self
     -- shot_sys_reticle
     self_side_obj_char["shot_sys_reticle_animation_table"][1] = load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock(self_side_obj_char)
     init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
-    character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(self_side_obj_char,opponent_side_obj_char)
+    character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(self_side_obj_char,opponent_side_obj_char,800)
     character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_steady_lock(self_side_obj_char,opponent_side_obj_char)
     self_side_obj_char["shot_sys_reticle_state"] = "at_the_steady_lock"
     return

@@ -298,6 +298,12 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["shot_sys_reticle_stage_pos_current"] = {0,0}
     obj_char_game_scene_char_RP["shot_sys_reticle_stage_pos_target"] = {0,0}
     obj_char_game_scene_char_RP["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
+    obj_char_game_scene_char_RP["shot_sys_reticle_height_offset"] = { -- pushbox高度 -> 准星视觉高度偏移
+        [370] = 315,
+        [285] = 200,
+        [200] = 100,
+        [130] = 100
+    }
     -- draw_correction
     obj_char_game_scene_char_RP["anchor_pos"] = {215,510}
     obj_char_game_scene_char_RP["contrast"] = 1
@@ -2265,6 +2271,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
             end
             if test_input_sys_press(self_side_input["H"]) and (not shot_sys_at_the_ready_ban_state) and self_side_obj_char["ability_gauge"][1] > 0 then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(self_side_obj_char,opponent_side_obj_char)
+                character_animator(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
                 return
             end
         end,
@@ -2293,6 +2300,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
             end
             if test_input_sys_press(self_side_input["H"]) and (not shot_sys_at_the_ready_ban_state) then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(self_side_obj_char,opponent_side_obj_char)
+                character_animator(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
                 return
             end
             if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"]) then

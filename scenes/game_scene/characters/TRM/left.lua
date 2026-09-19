@@ -298,6 +298,12 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_current"] = {0,0}
     obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_target"] = {0,0}
     obj_char_game_scene_char_LP["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
+    obj_char_game_scene_char_LP["shot_sys_reticle_height_offset"] = { -- pushbox高度 -> 准星视觉高度偏移
+        [370] = 315,
+        [285] = 200,
+        [200] = 100,
+        [130] = 100
+    }
     -- draw_correction
     obj_char_game_scene_char_LP["anchor_pos"] = {215,510}
     obj_char_game_scene_char_LP["contrast"] = 1

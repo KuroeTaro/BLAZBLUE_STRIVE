@@ -9375,7 +9375,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(hit_side_ob
     res[6] = function()
         -- shot_sys
         if hit_side_obj_char["shot_sys_aim_process"][1] < hit_side_obj_char["shot_sys_aim_process"][3] then
-            character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(hit_side_obj_char,hurt_side_obj_char)
+            character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(hit_side_obj_char,hurt_side_obj_char,100)
         end
     end
     res[12] = function()
@@ -9825,7 +9825,7 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock(self_si
     local opponent_side_quick_clean_hit_from_at_the_ready_state = (self_side_shot_sys_state_cache ~= "off"
     and self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit_from_at_the_ready_state"][opponent_side_obj_char["state"]])
     local quick_clean_hit_cache = opponent_side_quick_clean_hit_state or opponent_side_quick_clean_hit_from_at_the_ready_state
-    local quick_aim_cache = quick_clean_hit_cache or self_side_obj_char["shot_sys_curse_state"]
+    local quick_aim_cache = quick_clean_hit_cache or self_side_obj_char["shot_sys_curse"]
     res["prop_f"] = "shot_sys_f"
     res["anim_length"] = 27
     res[0] = function()
