@@ -8565,7 +8565,6 @@ function load_game_scene_anim_char_TRM_4SP_K(hit_side_obj_char,hurt_side_obj_cha
         -- shot_sys
         if hit_side_obj_char["shot_sys_state"] ~= "off" then
             character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(hit_side_obj_char,hurt_side_obj_char)
-            hit_side_obj_char["shot_sys_state"] = "at_the_ready_ease_in"
         end
         -- draw_correction
         hit_side_obj_char[8] = 1
@@ -8845,6 +8844,8 @@ function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["hitbox_table"] = {}
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
+        -- shot_sys
+        character_function_game_scene_TRM_shot_sys_at_the_steady_lock_init(hit_side_obj_char,hurt_side_obj_char)
         -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
@@ -9226,7 +9227,6 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
     res[14] = function()
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(hit_side_obj_char,hurt_side_obj_char)
-        hit_side_obj_char["shot_sys_state"] = "at_the_ready_ease_in"
     end
     res[15] = function()
         -- collide
