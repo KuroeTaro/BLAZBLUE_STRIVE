@@ -8865,10 +8865,12 @@ function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char[8] = 1
     end
     res[11] = function()
+        hit_side_obj_char["velocity"] = {(-20)*hit_side_obj_char[5],0}
         -- draw_correction
         hit_side_obj_char[8] = 2
     end
     res[14] = function()
+        hit_side_obj_char["velocity"] = {(-60)*hit_side_obj_char[5],0}
         -- draw_correction
         hit_side_obj_char[8] = 3
     end
@@ -8881,6 +8883,7 @@ function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["hit_cancel"] = false
         hit_side_obj_char["idle_cancel"] = true
         -- state_number
+        hit_side_obj_char["velocity"] = {(-25)*hit_side_obj_char[5],0}
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["horizontal_velocity_correction"] = 1
@@ -8893,6 +8896,7 @@ function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char[8] = 4
     end
     res[20] = function()
+        hit_side_obj_char["velocity"] = {(-15)*hit_side_obj_char[5],0}
         -- draw_correction
         hit_side_obj_char[8] = 5
     end
