@@ -2612,6 +2612,21 @@ function state_machine_char_game_scene_char_LP_shot_sys_reticle()
             end
         end,
         ["at_the_steady_lock_to_off"] = function()
+            if run_at_current_frame then
+                character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
+            end
+            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1]) then
+                self_side_obj_char["shot_sys_reticle"] = {0,0,0,0,1,1,0,0}
+                self_side_obj_char["shot_sys_reticle_f"] = 0
+                self_side_obj_char["shot_sys_reticle_f_4"] = 0
+                self_side_obj_char["shot_sys_reticle_f_8"] = 0
+                self_side_obj_char["shot_sys_reticle_state"] = "off"
+                self_side_obj_char["shot_sys_reticle_animation_table"] = {}
+                self_side_obj_char["shot_sys_reticle_stage_pos_current"] = {0,0}
+                self_side_obj_char["shot_sys_reticle_stage_pos_target"] = {0,0}
+                self_side_obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
+                return
+            end
         end,
         ["at_the_steady_lock_to_ready"] = function()
         end,

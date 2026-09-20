@@ -512,8 +512,25 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_update(se
     return
 end
 function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_off_init(self_side_obj_char,opponent_side_obj_char)
+    -- hurt_state
+    self_side_obj_char["hurt_state"] = self_side_obj_char["hurt_state_target"]
+    -- shot_sys
+    self_side_obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock_to_off(self_side_obj_char,opponent_side_obj_char)
+    init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
+    self_side_obj_char["shot_sys_aim_process"] = {0,0,420,450,false}
+    self_side_obj_char["shot_sys_state"] = "at_the_steady_lock_to_off"
+    -- shot_sys_reticle
+    self_side_obj_char["shot_sys_reticle_animation_table"][1] = load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock_to_off(self_side_obj_char)
+    init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
+    self_side_obj_char["shot_sys_reticle_state"] = "at_the_steady_lock_to_off"
+    return
 end
 function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_off_update(self_side_obj_char,opponent_side_obj_char)
+    -- hurt_state
+    self_side_obj_char["hurt_state"] = self_side_obj_char["hurt_state_target"]
+    -- shot_sys
+    character_animator(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
+    return
 end
 function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_init(self_side_obj_char,opponent_side_obj_char)
 end
