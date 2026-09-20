@@ -6699,7 +6699,7 @@ function state_gate_game_scene_char_LP_from_4SP_P(self_side_input,opponent_side_
             return true
         end
         -- _common_ground_idle_to_move
-        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         if state_gate_game_scene_char_LP_common_ground_to_attack_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
