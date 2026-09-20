@@ -8197,6 +8197,10 @@ function load_game_scene_anim_char_TRM_4SP_P(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["friction"] = 5
+        if sprite_sheet == "4SP_S_4P" then
+            hit_side_obj_char["velocity"] = {15*hit_side_obj_char[5],0}
+            hit_side_obj_char["friction"] = 1
+        end
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
@@ -8235,10 +8239,18 @@ function load_game_scene_anim_char_TRM_4SP_P(hit_side_obj_char,hurt_side_obj_cha
         CHARACTER_VISUAL_FRONT = hit_side
     end
     res[5] = function()
+        -- state_number
+        if sprite_sheet == "4SP_S_4P" then
+            hit_side_obj_char["velocity"] = {50*hit_side_obj_char[5],0}
+        end
         -- draw_correction
         hit_side_obj_char[8] = 1
     end
     res[10] = function()
+        -- state_number
+        if sprite_sheet == "4SP_S_4P" then
+            hit_side_obj_char["velocity"] = {15*hit_side_obj_char[5],0}
+        end
         -- draw_correction
         hit_side_obj_char[8] = 2
     end
@@ -8865,11 +8877,13 @@ function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char[8] = 1
     end
     res[11] = function()
+        -- state_number
         hit_side_obj_char["velocity"] = {(-20)*hit_side_obj_char[5],0}
         -- draw_correction
         hit_side_obj_char[8] = 2
     end
     res[14] = function()
+        -- state_number
         hit_side_obj_char["velocity"] = {(-60)*hit_side_obj_char[5],0}
         -- draw_correction
         hit_side_obj_char[8] = 3
@@ -8896,6 +8910,7 @@ function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char[8] = 4
     end
     res[20] = function()
+        -- state_number
         hit_side_obj_char["velocity"] = {(-15)*hit_side_obj_char[5],0}
         -- draw_correction
         hit_side_obj_char[8] = 5
@@ -8932,7 +8947,8 @@ function load_game_scene_anim_char_TRM_4SP_S_4S(hit_side_obj_char,hurt_side_obj_
         hit_side_obj_char["hit_cancel"] = false
         hit_side_obj_char["idle_cancel"] = false
         -- state_number
-        hit_side_obj_char["friction"] = 5
+        hit_side_obj_char["velocity"] = {85*hit_side_obj_char[5],0}
+        hit_side_obj_char["friction"] = 1
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
@@ -8967,10 +8983,14 @@ function load_game_scene_anim_char_TRM_4SP_S_4S(hit_side_obj_char,hurt_side_obj_
         CHARACTER_VISUAL_FRONT = hit_side
     end
     res[3] = function()
+        -- state_number
+        hit_side_obj_char["velocity"] = {30*hit_side_obj_char[5],0}
         -- draw_correction
         hit_side_obj_char[8] = 1
     end
     res[7] = function()
+        -- state_number
+        hit_side_obj_char["velocity"] = {20*hit_side_obj_char[5],0}
         -- draw_correction
         hit_side_obj_char[8] = 2
     end
@@ -8980,6 +9000,8 @@ function load_game_scene_anim_char_TRM_4SP_S_4S(hit_side_obj_char,hurt_side_obj_
         common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
     end
     res[12] = function()
+        -- state_number
+        hit_side_obj_char["velocity"] = {10*hit_side_obj_char[5],0}
         -- draw_correction
         hit_side_obj_char[8] = 3
     end
@@ -8992,6 +9014,7 @@ function load_game_scene_anim_char_TRM_4SP_S_4S(hit_side_obj_char,hurt_side_obj_
         hit_side_obj_char["hit_cancel"] = false
         hit_side_obj_char["idle_cancel"] = true
         -- state_number
+        hit_side_obj_char["velocity"] = {20*hit_side_obj_char[5],0}
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["horizontal_velocity_correction"] = 1
