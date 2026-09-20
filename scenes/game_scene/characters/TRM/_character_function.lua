@@ -533,6 +533,40 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_off_up
     return
 end
 function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_init(self_side_obj_char,opponent_side_obj_char)
+    -- hurt_state
+    self_side_obj_char["hurt_state"] = self_side_obj_char["hurt_state_target"]
+    if self_side_obj_char["hurt_state"] == "idle" then
+        self_side_obj_char["hurt_state"] = "unblock"
+    end
+    -- shot_sys
+    self_side_obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_in(self_side_obj_char)
+    init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
+    self_side_obj_char["shot_sys_aim_process"] = {0,0,420,450,false}
+    character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(self_side_obj_char,opponent_side_obj_char)
+    self_side_obj_char["shot_sys_state"] = "at_the_ready_ease_in"
+    -- shot_sys_oroboros
+    self_side_obj_char["shot_sys_oroboros_aim_r"] = 0.42
+    self_side_obj_char["shot_sys_oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(self_side_obj_char["shot_sys_oroboros_front"])
+    self_side_obj_char["shot_sys_oroboros_animation_table"][2] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(self_side_obj_char["shot_sys_oroboros_front"],"5H_oroboros_loop_front")
+    self_side_obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(self_side_obj_char["shot_sys_oroboros_mid"],"5H_oroboros_ease_in_mid")
+    self_side_obj_char["shot_sys_oroboros_animation_table"][4] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(self_side_obj_char["shot_sys_oroboros_back"])
+    self_side_obj_char["shot_sys_oroboros_animation_table"][5] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(self_side_obj_char["shot_sys_oroboros_back"],"5H_oroboros_loop_back")
+    init_character_anim_without(self_side_obj_char["shot_sys_oroboros_front"],self_side_obj_char["shot_sys_oroboros_animation_table"][1])
+    init_character_anim_without(self_side_obj_char["shot_sys_oroboros_front"],self_side_obj_char["shot_sys_oroboros_animation_table"][2])
+    init_character_anim_without(self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3])
+    init_character_anim_without(self_side_obj_char["shot_sys_oroboros_back"],self_side_obj_char["shot_sys_oroboros_animation_table"][4])
+    init_character_anim_without(self_side_obj_char["shot_sys_oroboros_back"],self_side_obj_char["shot_sys_oroboros_animation_table"][5])
+    character_function_game_scene_TRM_shot_sys_oroboros_pos_init(self_side_obj_char)
+    self_side_obj_char["shot_sys_oroboros_state"] = "at_the_ready_ease_in"
+    -- shot_sys_reticle
+    self_side_obj_char["shot_sys_reticle"][4] = 0
+    self_side_obj_char["shot_sys_reticle"][8] = 0
+    self_side_obj_char["shot_sys_reticle_animation_table"][1] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(self_side_obj_char)
+    init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
+    character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(self_side_obj_char,opponent_side_obj_char,100)
+    character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready_ease_in(self_side_obj_char,opponent_side_obj_char)
+    self_side_obj_char["shot_sys_reticle_state"] = "at_the_ready_ease_in"
+    return
 end
 function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_update(self_side_obj_char,opponent_side_obj_char)
 end
