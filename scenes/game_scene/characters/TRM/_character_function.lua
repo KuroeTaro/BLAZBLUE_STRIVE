@@ -342,7 +342,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(se
     -- shot_sys
     self_side_obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_in(self_side_obj_char)
     init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
-    self_side_obj_char["shot_sys_aim_process"] = {0,0,420,450,false}
+    self_side_obj_char["shot_sys_aim_process"][1] = 0
     character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(self_side_obj_char,opponent_side_obj_char)
     self_side_obj_char["shot_sys_state"] = "at_the_ready_ease_in"
     -- shot_sys_oroboros
@@ -476,7 +476,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_init(self
     -- shot_sys
     self_side_obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock(self_side_obj_char,opponent_side_obj_char)
     init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
-    self_side_obj_char["shot_sys_aim_process"] = {0,0,420,450,false}
+    self_side_obj_char["shot_sys_aim_process"][1] = 0
     self_side_obj_char["shot_sys_state"] = "at_the_steady_lock"
     -- shot_sys_oroboros
     if self_side_obj_char["shot_sys_oroboros_state"] ~= "off" then
@@ -517,7 +517,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_off_in
     -- shot_sys
     self_side_obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock_to_off(self_side_obj_char,opponent_side_obj_char)
     init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
-    self_side_obj_char["shot_sys_aim_process"] = {0,0,420,450,false}
+    self_side_obj_char["shot_sys_aim_process"][1] = 0
     self_side_obj_char["shot_sys_state"] = "at_the_steady_lock_to_off"
     -- shot_sys_reticle
     self_side_obj_char["shot_sys_reticle_animation_table"][1] = load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock_to_off(self_side_obj_char)
@@ -541,7 +541,10 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_
     -- shot_sys
     self_side_obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock_to_ready(self_side_obj_char)
     init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
-    self_side_obj_char["shot_sys_aim_process"][1] = self_side_obj_char["shot_sys_aim_process"][3]/2
+    self_side_obj_char["shot_sys_aim_process"][1] = 0
+    if self_side_obj_char["shot_sys_at_the_steady_aim"] then
+        self_side_obj_char["shot_sys_aim_process"][1] = self_side_obj_char["shot_sys_aim_process"][3]/2
+    end
     character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(self_side_obj_char,opponent_side_obj_char)
     self_side_obj_char["shot_sys_state"] = "at_the_steady_lock_to_ready"
     -- shot_sys_oroboros
