@@ -8223,8 +8223,8 @@ function load_game_scene_anim_char_TRM_4SP_P(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- shot_sys
-        if hit_side_obj_char["shot_sys_state"] == "at_the_steady_lock" then
-            character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_off_init(hit_side_obj_char,hurt_side_obj_char)
+        if hit_side_obj_char["shot_sys_at_the_steady_state_table"][hit_side_obj_char["shot_sys_state"]] then
+            character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_init(hit_side_obj_char,hurt_side_obj_char)
         end
         -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
@@ -8398,6 +8398,9 @@ function load_game_scene_anim_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["hitbox_table"] = {}
         hit_side_obj_char["hurtbox_table"] = {{0,-195,205,390}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
+        if hit_side_obj_char["shot_sys_at_the_steady_state_table"][hit_side_obj_char["shot_sys_state"]] then
+            character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_init(hit_side_obj_char,hurt_side_obj_char)
+        end
         -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
@@ -8567,8 +8570,11 @@ function load_game_scene_anim_char_TRM_4SP_K(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["pushbox"] = {0,-65,120,130}
         hit_side_obj_char["hurtbox_table"] = {{0,-75,280,150}}
         -- shot_sys
-        if hit_side_obj_char["shot_sys_state"] ~= "off" then
+        if hit_side_obj_char["shot_sys_at_the_ready_state_table"][hit_side_obj_char["shot_sys_state"]] then
             character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(hit_side_obj_char,hurt_side_obj_char)
+        end
+        if hit_side_obj_char["shot_sys_at_the_steady_state_table"][hit_side_obj_char["shot_sys_state"]] then
+            character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_init(hit_side_obj_char,hurt_side_obj_char)
         end
         -- draw_correction
         hit_side_obj_char[8] = 1
@@ -8675,6 +8681,9 @@ function load_game_scene_anim_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["hitbox_table"] = {}
         hit_side_obj_char["hurtbox_table"] = {{0,-195,205,390}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
+        if hit_side_obj_char["shot_sys_at_the_steady_state_table"][hit_side_obj_char["shot_sys_state"]] then
+            character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_init(hit_side_obj_char,hurt_side_obj_char)
+        end
         -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
@@ -8954,6 +8963,8 @@ function load_game_scene_anim_char_TRM_4SP_S_4S(hit_side_obj_char,hurt_side_obj_
         hit_side_obj_char["hitbox_table"] = {}
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
+        -- shot_sys
+        character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_init(hit_side_obj_char,hurt_side_obj_char)
         -- shot_sys_oroboros
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
@@ -9826,7 +9837,8 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock(self_si
     local self_side_shot_sys_state_cache = self_side_obj_char["shot_sys_state"]
     local opponent_side_quick_clean_hit_state = 
     (self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit_state"][opponent_side_obj_char["state"]])
-    local opponent_side_quick_clean_hit_from_at_the_ready_state = (self_side_shot_sys_state_cache ~= "off"
+    local opponent_side_quick_clean_hit_from_at_the_ready_state = 
+    (self_side_obj_char["shot_sys_at_the_ready_state_table"][self_side_shot_sys_state_cache]
     and self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit_from_at_the_ready_state"][opponent_side_obj_char["state"]])
     local quick_clean_hit_cache = opponent_side_quick_clean_hit_state or opponent_side_quick_clean_hit_from_at_the_ready_state
     local quick_aim_cache = quick_clean_hit_cache or self_side_obj_char["shot_sys_curse"]
@@ -9869,35 +9881,20 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock_to_off(
 end
 function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock_to_ready(self_side_obj_char,opponent_side_obj_char)
     local res = {}
-    local side = obj_char["player_side"]
-    local move_SFX_table = common_game_scene_get_SFX_move(side)
-    res["prop_f"] = "shot_sys_reticle_f_4"
+    res["prop_f"] = "shot_sys_f"
     res["anim_length"] = 16
     res[0] = function()
         -- shot_sys
-        obj_char["shot_sys_reticle"][4] = 0.2
-        obj_char["shot_sys_reticle"][8] = 0
-        obj_char["shot_sys_reticle_sprite_sheet"] = "5H_reticle_unlocked"
-        -- play_SFX
-        play_obj_audio(move_SFX_table["5H_reticle_ease_in"])
-    end
-    res[1] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][4] = 0.4
-    end
-    res[2] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][4] = 0.6
+        self_side_obj_char["shot_sys_fire_cancel"] = false
+        self_side_obj_char["shot_sys_idle_cancel"] = true
+        --VFX
+        insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_switch(self_side_obj_char)
     end
     res[3] = function()
         -- shot_sys
-        obj_char["shot_sys_reticle"][4] = 0.8
+        self_side_obj_char["shot_sys_fire_cancel"] = true
     end
-    res[4] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][4] = 1
-    end
-    res[12] = function()
+    res[16] = function()
         -- animation_end
     end
     return res
@@ -10019,49 +10016,17 @@ function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock_to_ready
         -- shot_sys
         obj_char["shot_sys_reticle"][4] = 1
         obj_char["shot_sys_reticle"][8] = 0
-        obj_char["shot_sys_reticle_sprite_sheet"] = "4SP_S_reticle_lock"
+        obj_char["shot_sys_reticle_sprite_sheet"] = "4SP_S_reticle_lock_to_ready"
     end
-    res[6] = function()
+    res[2] = function()
         -- shot_sys
         obj_char["shot_sys_reticle"][8] = 1
     end
-    res[8] = function()
+    res[4] = function()
         -- shot_sys
         obj_char["shot_sys_reticle"][8] = 2
     end
-    res[10] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 3
-    end
-    res[12] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 4
-    end
-    res[14] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 5
-    end
-    res[16] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 6
-    end
-    res[18] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 7
-    end
-    res[20] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 8
-    end
-    res[22] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 9
-    end
-    res[25] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 10
-    end
-    res[27] = function()
+    res[7] = function()
         -- animation_end
     end
     return res

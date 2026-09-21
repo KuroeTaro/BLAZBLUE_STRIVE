@@ -203,8 +203,8 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     obj_projectile["draw"] = function()
         local image_sprite_sheet = hit_side_projectile_sprite_sheet_table[obj_projectile["sprite_sheet"]]
         if obj_projectile["sprite_sheet"] == "5H_hit_projectile" then
-            obj_projectile[1] = hit_side_obj_char["shot_sys_reticle"][1]
-            obj_projectile[2] = hit_side_obj_char["shot_sys_reticle"][2]
+            obj_projectile[1] = hurt_side_obj_char["x"]-160
+            obj_projectile[2] = hurt_side_obj_char["y"]-hurt_side_obj_char["shot_sys_reticle_height_offset"][hurt_side_obj_char["pushbox"][4]]-160
         end
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8]))

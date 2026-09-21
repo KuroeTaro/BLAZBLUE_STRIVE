@@ -183,90 +183,6 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["shot_sys_at_the_steady_clean_hit"] = false
     obj_char_game_scene_char_RP["shot_sys_animation"] = nil
     obj_char_game_scene_char_RP["shot_sys_camera_shake_table"] = {}
-    obj_char_game_scene_char_RP["shot_sys_curse_ban_state"] = {
-        ["before_ease_in"] = true,
-        ["hurt"] = true,
-        ["throw_hurt_success"] = true,
-        ["throw_tested"] = true,
-        ["hurtstop"] = true,
-        ["wallstick"] = true,
-        ["wallbreak_hurt"] = true,
-        ["knockdown"] = true,
-        ["knockdown_recovery"] = true,
-        ["knockout"] = true
-    }
-    obj_char_game_scene_char_RP["shot_sys_at_the_ready_ban_state"] = {
-        ["before_ease_in"] = true,
-        ["active_FD_block"] = true,
-        ["block"] = true,
-        ["hurt"] = true,
-        ["throw_success"] = true,
-        ["throw_hurt_success"] = true,
-        ["throw_testing"] = true,
-        ["throw_tested"] = true,
-        ["hurtstop"] = true,
-        ["blockstop"] = true,
-        ["wallstick"] = true,
-        ["wallbreak_hit"] = true,
-        ["wallbreak_hurt"] = true,
-        ["knockdown"] = true,
-        ["knockdown_recovery"] = true,
-        ["knockout"] = true,
-        ["burst_RC_blue"] = true,
-        ["burst_RC_purple"] = true,
-        ["burst_RC_red"] = true,
-        ["burst_RC_yellow"] = true,
-        ["burst_overdrive"] = true,
-        ["burst_burst"] = true,
-        ["4_6Launcher"] = true,
-        ["j4_6Launcher"] = true,
-        ["4SP_P"] = true,
-        ["4SP_S"] = true,
-        ["4SP_S_4dash"] = true,
-        ["4SP_S_6dash"] = true,
-        ["4SP_S_4S"] = true,
-        ["4SP_S_H"] = true,
-        ["4SP_S_2Launcher"] = true,
-        ["4SP_S_6Launcher"] = true,
-        ["4SP_S_5Launcher"] = true,
-        ["SP_H"] = true,
-        ["jSP_H"] = true,
-        ["4UA"] = true,
-        ["6UA"] = true,
-        ["5UA"] = true,
-        ["4SP_S_6UA"] = true
-    }
-    obj_char_game_scene_char_RP["shot_sys_at_the_ready_instant_aim_state"] = {
-        ["block"] = true,
-        ["hurt"] = true,
-        ["throw_hurt_success"] = true,
-        ["blockstop"] = true,
-        ["hurtstop"] = true,
-        ["wallstick"] = true,
-        ["wallbreak_hurt"] = true,
-        ["knockdown"] = true,
-        ["knockdown_recovery"] = true,
-        ["knockout"] = true
-    }
-    obj_char_game_scene_char_RP["shot_sys_at_the_ready_6SP_S_pass_state"] = {
-        ["at_the_ready_ease_out"] = true,
-        ["at_the_steady_to_off"] = true,
-        ["off"] = true
-    }
-    obj_char_game_scene_char_RP["shot_sys_at_the_steady_quick_clean_hit_state"] = {
-        ["hurt"] = true,
-        ["throw_hurt_success"] = true,
-        ["hurtstop"] = true,
-        ["wallstick"] = true,
-        ["wallbreak_hurt"] = true,
-        ["knockdown"] = true,
-        ["knockdown_recovery"] = true,
-        ["knockout"] = true
-    }
-    obj_char_game_scene_char_RP["shot_sys_at_the_steady_quick_clean_hit_from_at_the_ready_state"] = {
-        ["block"] = true,
-        ["blockstop"] = true
-    }
     -- shot_sys_oroboros/uncommon
     obj_char_game_scene_char_RP["shot_sys_oroboros_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_state"] = "off"
@@ -316,6 +232,104 @@ function load_game_scene_obj_char_RP()
         [285] = 200,
         [200] = 100,
         [130] = 100
+    }
+    -- shot_sys_table_curse/uncommon
+    obj_char_game_scene_char_RP["shot_sys_curse_ban_state"] = {
+        ["before_ease_in"] = true,
+        ["hurt"] = true,
+        ["throw_hurt_success"] = true,
+        ["throw_tested"] = true,
+        ["hurtstop"] = true,
+        ["wallstick"] = true,
+        ["wallbreak_hurt"] = true,
+        ["knockdown"] = true,
+        ["knockdown_recovery"] = true,
+        ["knockout"] = true
+    }
+    -- shot_sys_table_at_the_ready/uncommon
+    obj_char_game_scene_char_RP["shot_sys_at_the_ready_ban_state"] = {
+        ["before_ease_in"] = true,
+        ["active_FD_block"] = true,
+        ["block"] = true,
+        ["hurt"] = true,
+        ["throw_success"] = true,
+        ["throw_hurt_success"] = true,
+        ["throw_testing"] = true,
+        ["throw_tested"] = true,
+        ["hurtstop"] = true,
+        ["blockstop"] = true,
+        ["wallstick"] = true,
+        ["wallbreak_hit"] = true,
+        ["wallbreak_hurt"] = true,
+        ["knockdown"] = true,
+        ["knockdown_recovery"] = true,
+        ["knockout"] = true,
+        ["burst_RC_blue"] = true,
+        ["burst_RC_purple"] = true,
+        ["burst_RC_red"] = true,
+        ["burst_RC_yellow"] = true,
+        ["burst_overdrive"] = true,
+        ["burst_burst"] = true,
+        ["4_6Launcher"] = true,
+        ["j4_6Launcher"] = true,
+        ["4SP_P"] = true,
+        ["4SP_S"] = true,
+        ["4SP_S_4dash"] = true,
+        ["4SP_S_6dash"] = true,
+        ["4SP_S_H"] = true,
+        ["4SP_S_2Launcher"] = true,
+        ["4SP_S_6Launcher"] = true,
+        ["4SP_S_5Launcher"] = true,
+        ["SP_H"] = true,
+        ["jSP_H"] = true,
+        ["4UA"] = true,
+        ["6UA"] = true,
+        ["5UA"] = true,
+        ["4SP_S_6UA"] = true
+    }
+    obj_char_game_scene_char_RP["shot_sys_at_the_ready_instant_aim_state"] = {
+        ["block"] = true,
+        ["hurt"] = true,
+        ["throw_hurt_success"] = true,
+        ["blockstop"] = true,
+        ["hurtstop"] = true,
+        ["wallstick"] = true,
+        ["wallbreak_hurt"] = true,
+        ["knockdown"] = true,
+        ["knockdown_recovery"] = true,
+        ["knockout"] = true
+    }
+    obj_char_game_scene_char_RP["shot_sys_at_the_ready_6SP_S_pass_state"] = {
+        ["at_the_ready_ease_out"] = true,
+        ["at_the_steady_to_off"] = true,
+        ["off"] = true
+    }
+    obj_char_game_scene_char_RP["shot_sys_at_the_ready_state_table"] = {
+        ["at_the_ready_ease_in"] = true,
+        ["at_the_ready_ease_out"] = true,
+        ["at_the_ready"] = true,
+        ["at_the_ready_shot"] = true
+    }
+    -- shot_sys_table_at_the_steady/uncommon
+    obj_char_game_scene_char_RP["shot_sys_at_the_steady_quick_clean_hit_state"] = {
+        ["hurt"] = true,
+        ["throw_hurt_success"] = true,
+        ["hurtstop"] = true,
+        ["wallstick"] = true,
+        ["wallbreak_hurt"] = true,
+        ["knockdown"] = true,
+        ["knockdown_recovery"] = true,
+        ["knockout"] = true
+    }
+    obj_char_game_scene_char_RP["shot_sys_at_the_steady_quick_clean_hit_from_at_the_ready_state"] = {
+        ["block"] = true,
+        ["blockstop"] = true
+    }
+    obj_char_game_scene_char_RP["shot_sys_at_the_steady_state_table"] = {
+        ["at_the_steady_lock"] = true,
+        ["at_the_steady_lock_to_off"] = true,
+        ["at_the_steady_lock_to_ready"] = true,
+        ["at_the_steady_shot"] = true
     }
     -- draw_correction
     obj_char_game_scene_char_RP["anchor_pos"] = {215,510}
@@ -2374,10 +2388,33 @@ function state_machine_char_game_scene_char_RP_shot_sys()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_off_update(self_side_obj_char,opponent_side_obj_char)
             end
+            if test_input_sys_press(self_side_input["H"]) and (not shot_sys_at_the_ready_ban_state) then
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(self_side_obj_char,opponent_side_obj_char)
+                character_animator(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
+                return
+            end
+            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"]) then
+                character_function_game_scene_TRM_shot_sys_off_init(self_side_obj_char)
+                return
+            end
         end,
         ["at_the_steady_lock_to_ready"] = function()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_update(self_side_obj_char,opponent_side_obj_char)
+            end
+            if (self_side_obj_char["shot_sys_idle_cancel"] and test_input_idle_to_ease_out) or shot_sys_at_the_ready_ban_state then
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(self_side_obj_char)
+                return
+            end
+            if self_side_obj_char["shot_sys_fire_cancel"] and test_input_sys_release(self_side_input["H"])
+            and self_side_obj_char["state"] ~= "hitstop" and self_side_obj_char["ability_gauge"][1] > 0 then
+                character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(self_side_obj_char,opponent_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_ability_gauge_use(self_side_obj_char)
+                return
+            end
+            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"])  then
+                character_function_game_scene_TRM_shot_sys_at_the_ready_init(self_side_obj_char)
+                return
             end
         end,
         ["at_the_steady_shot"] = function()
@@ -2629,6 +2666,23 @@ function state_machine_char_game_scene_char_RP_shot_sys_reticle()
             end
         end,
         ["at_the_steady_lock_to_ready"] = function()
+            if run_at_current_frame then
+                character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
+                character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
+                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(self_side_obj_char,opponent_side_obj_char)
+            end
+            if self_side_obj_char["shot_sys_aim_process"][1] < self_side_obj_char["shot_sys_aim_process"][3] then
+                self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_unlocking")
+                init_character_anim_with(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
+                self_side_obj_char["shot_sys_reticle_state"] = "at_the_ready_unlocking"
+                return
+            end
+            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2]) then
+                self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locked(self_side_obj_char)
+                init_character_anim_with(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
+                self_side_obj_char["shot_sys_reticle_state"] = "at_the_ready_locked"
+                return
+            end
         end,
         ["at_the_steady_shot"] = function()
         end

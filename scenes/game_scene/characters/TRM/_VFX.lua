@@ -427,12 +427,8 @@ function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_shot_oroboros_blast
     obj_VFX["animation"]["loop"] = false
     init_frame_anim_without(obj_VFX,obj_VFX["animation"])
     obj_VFX["update"] = function()
-        if obj_char["shot_sys_state"] == "at_the_ready_shot" or obj_char["state"] == "wallbreak_hit" then
-            frame_animator(obj_VFX,obj_VFX["animation"])
-            obj_VFX["life"] = obj_VFX["life"] - 1
-        else
-            obj_VFX["life"] = 0
-        end
+        frame_animator(obj_VFX,obj_VFX["animation"])
+        obj_VFX["life"] = obj_VFX["life"] - 1
     end
     obj_VFX["draw_sync"] = function()
         local oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}

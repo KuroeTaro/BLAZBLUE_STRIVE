@@ -539,11 +539,11 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_
         self_side_obj_char["hurt_state"] = "unblock"
     end
     -- shot_sys
-    self_side_obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_in(self_side_obj_char)
+    self_side_obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock_to_ready(self_side_obj_char)
     init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
-    self_side_obj_char["shot_sys_aim_process"] = {0,0,420,450,false}
+    self_side_obj_char["shot_sys_aim_process"][1] = self_side_obj_char["shot_sys_aim_process"][3]/2
     character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(self_side_obj_char,opponent_side_obj_char)
-    self_side_obj_char["shot_sys_state"] = "at_the_ready_ease_in"
+    self_side_obj_char["shot_sys_state"] = "at_the_steady_lock_to_ready"
     -- shot_sys_oroboros
     self_side_obj_char["shot_sys_oroboros_aim_r"] = 0.42
     self_side_obj_char["shot_sys_oroboros_animation_table"][1] = load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(self_side_obj_char["shot_sys_oroboros_front"])
@@ -559,16 +559,27 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_
     character_function_game_scene_TRM_shot_sys_oroboros_pos_init(self_side_obj_char)
     self_side_obj_char["shot_sys_oroboros_state"] = "at_the_ready_ease_in"
     -- shot_sys_reticle
-    self_side_obj_char["shot_sys_reticle"][4] = 0
+    self_side_obj_char["shot_sys_reticle"][4] = 1
     self_side_obj_char["shot_sys_reticle"][8] = 0
     self_side_obj_char["shot_sys_reticle_animation_table"][1] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(self_side_obj_char)
+    self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock_to_ready(self_side_obj_char)
     init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
-    character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(self_side_obj_char,opponent_side_obj_char,100)
+    init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
+    self_side_obj_char["shot_sys_reticle_f_4"] = 12
     character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready_ease_in(self_side_obj_char,opponent_side_obj_char)
-    self_side_obj_char["shot_sys_reticle_state"] = "at_the_ready_ease_in"
+    self_side_obj_char["shot_sys_reticle_state"] = "at_the_steady_lock_to_ready"
     return
 end
 function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_update(self_side_obj_char,opponent_side_obj_char)
+    -- hurt_state
+    self_side_obj_char["hurt_state"] = self_side_obj_char["hurt_state_target"]
+    if self_side_obj_char["hurt_state"] == "idle" then
+        self_side_obj_char["hurt_state"] = "unblock"
+    end
+    -- shot_sys
+    character_animator(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
+    character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(self_side_obj_char,opponent_side_obj_char)
+    return
 end
 function character_function_game_scene_TRM_shot_sys_at_the_steady_shot_init(self_side_obj_char,opponent_side_obj_char)
 end
