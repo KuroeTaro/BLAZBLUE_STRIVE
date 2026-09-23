@@ -122,6 +122,7 @@ local load_attack_name_table = {
     "4SP_S_reticle_shot",
     "4SP_S_4P",
     "4SP_S_4S",
+    "4SP_S_H",
     "6SP_S"
 }
 for i,v in ipairs(load_attack_name_table) do

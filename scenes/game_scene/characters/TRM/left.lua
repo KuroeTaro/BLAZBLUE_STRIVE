@@ -1337,7 +1337,8 @@ function order_load_game_scene_char_LP_frames(load_order)
         [25] = function()
             local load_name_table = {
                 "4SP_S_4P",
-                "4SP_S_4S"
+                "4SP_S_4S",
+                "4SP_S_H"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_LP[v] = 
