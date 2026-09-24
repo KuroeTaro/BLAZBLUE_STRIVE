@@ -171,7 +171,9 @@ local load_projectile_name_table = {
     "6SP_K_scapegoat_ease_in",
     "6SP_K_scapegoat_ease_out",
     "6SP_K_scapegoat_hurt",
-    "6SP_K_scapegoat_idle"
+    "6SP_K_scapegoat_idle",
+    "4SP_S_H_hit",
+    "4SP_S_H_whiff"
 }
 for i,v in ipairs(load_projectile_name_table) do
     thread_data[v.."_projectile"] = compress_module("asset/game_scene/characters/TRM/texture/projectile/".."TRM_"..v..".dds")

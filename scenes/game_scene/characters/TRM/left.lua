@@ -1375,7 +1375,9 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "6SP_K_scapegoat_ease_in",
                 "6SP_K_scapegoat_ease_out",
                 "6SP_K_scapegoat_hurt",
-                "6SP_K_scapegoat_idle"
+                "6SP_K_scapegoat_idle",
+                "4SP_S_H_hit",
+                "4SP_S_H_whiff"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_projectile_game_scene_LP[v.."_projectile"] = 
