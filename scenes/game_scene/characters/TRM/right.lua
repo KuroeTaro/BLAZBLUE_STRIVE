@@ -2442,14 +2442,14 @@ function state_machine_char_game_scene_char_RP_shot_sys_oroboros()
                 character_animator(self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3])
                 character_animator(self_side_obj_char["shot_sys_oroboros_back"],self_side_obj_char["shot_sys_oroboros_animation_table"][4])
                 character_animator(self_side_obj_char["shot_sys_oroboros_back"],self_side_obj_char["shot_sys_oroboros_animation_table"][5])
-                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(self_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(self_side_obj_char)
             end
             if get_character_anim_end_state(self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3]) then
                 self_side_obj_char["shot_sys_oroboros_front"][4] = 1
                 self_side_obj_char["shot_sys_oroboros_back"][4] = 1
                 self_side_obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(self_side_obj_char["shot_sys_oroboros_mid"])
                 init_character_anim_with(self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3])
-                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(self_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(self_side_obj_char)
                 self_side_obj_char["shot_sys_oroboros_state"] = "at_the_ready"
                 return
             end
@@ -2459,7 +2459,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_oroboros()
                 character_animator(self_side_obj_char["shot_sys_oroboros_front"],self_side_obj_char["shot_sys_oroboros_animation_table"][2])
                 character_animator(self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3])
                 character_animator(self_side_obj_char["shot_sys_oroboros_back"],self_side_obj_char["shot_sys_oroboros_animation_table"][5])
-                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(self_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(self_side_obj_char)
             end
         end,
         ["at_the_ready_ease_out"] = function()
@@ -2469,7 +2469,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_oroboros()
                 character_animator(self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3])
                 character_animator(self_side_obj_char["shot_sys_oroboros_back"],self_side_obj_char["shot_sys_oroboros_animation_table"][4])
                 character_animator(self_side_obj_char["shot_sys_oroboros_back"],self_side_obj_char["shot_sys_oroboros_animation_table"][5])
-                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(self_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(self_side_obj_char)
             end
             if get_character_anim_end_state(self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3]) then
                 self_side_obj_char["shot_sys_oroboros_state"] = "off"
@@ -2495,14 +2495,14 @@ function state_machine_char_game_scene_char_RP_shot_sys_oroboros()
                 character_animator(self_side_obj_char["shot_sys_oroboros_back"],self_side_obj_char["shot_sys_oroboros_animation_table"][4])
                 character_animator(self_side_obj_char["shot_sys_oroboros_back"],self_side_obj_char["shot_sys_oroboros_animation_table"][5])
                 character_animator(self_side_obj_char,self_side_obj_char["shot_sys_oroboros_animation_table"][6])
-                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(self_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(self_side_obj_char)
             end
             if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_oroboros_animation_table"][6]) then
                 self_side_obj_char["shot_sys_oroboros_aim_r"] = 0.42
                 self_side_obj_char["shot_sys_oroboros_offset_amount"] = 0
                 self_side_obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(self_side_obj_char["shot_sys_oroboros_mid"])
                 init_character_anim_with(self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3])
-                character_function_game_scene_TRM_shot_sys_oroboros_pos_update(self_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(self_side_obj_char)
                 self_side_obj_char["shot_sys_oroboros_state"] = "at_the_ready"
                 return
             end
@@ -2528,7 +2528,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_reticle()
         ["at_the_ready_ease_in"] = function()
             if run_at_current_frame then
                 character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
-                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready_ease_in(self_side_obj_char,opponent_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_reticle_pos_update_ease_in(self_side_obj_char,opponent_side_obj_char)
             end
             if self_side_obj_char["shot_sys_aim_process"][1] >= self_side_obj_char["shot_sys_aim_process"][3] then
                 self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_locking")
@@ -2547,7 +2547,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_reticle()
             if run_at_current_frame then
                 character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
                 character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
-                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(self_side_obj_char,opponent_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_reticle_pos_update(self_side_obj_char,opponent_side_obj_char)
             end
             if self_side_obj_char["shot_sys_aim_process"][1] < self_side_obj_char["shot_sys_aim_process"][3] then
                 self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_unlocking")
@@ -2566,7 +2566,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_reticle()
             if run_at_current_frame then
                 character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
                 character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
-                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(self_side_obj_char,opponent_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_reticle_pos_update(self_side_obj_char,opponent_side_obj_char)
             end
             if self_side_obj_char["shot_sys_aim_process"][1] < self_side_obj_char["shot_sys_aim_process"][3] then
                 self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_unlocking")
@@ -2579,7 +2579,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_reticle()
             if run_at_current_frame then
                 character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
                 character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
-                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(self_side_obj_char,opponent_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_reticle_pos_update(self_side_obj_char,opponent_side_obj_char)
             end
             if self_side_obj_char["shot_sys_aim_process"][1] >= self_side_obj_char["shot_sys_aim_process"][3] then
                 self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_locking")
@@ -2596,7 +2596,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_reticle()
         end,
         ["at_the_ready_unlocked"] = function()
             if run_at_current_frame then
-                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(self_side_obj_char,opponent_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_reticle_pos_update(self_side_obj_char,opponent_side_obj_char)
             end
             if self_side_obj_char["shot_sys_aim_process"][1] >= self_side_obj_char["shot_sys_aim_process"][3] then
                 self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_locking")
@@ -2629,7 +2629,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_reticle()
             if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
             and self_side_obj_char["shot_sys_aim_process"][1] >= self_side_obj_char["shot_sys_aim_process"][3] 
             then
-                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(self_side_obj_char,opponent_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_reticle_pos_update(self_side_obj_char,opponent_side_obj_char)
                 self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_locking")
                 init_character_anim_with(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
                 self_side_obj_char["shot_sys_reticle_state"] = "at_the_ready_locking"
@@ -2648,7 +2648,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_reticle()
         ["at_the_steady_lock"] = function()
             if run_at_current_frame then
                 character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
-                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_steady_lock(self_side_obj_char,opponent_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_steady_reticle_pos_update_lock(self_side_obj_char,opponent_side_obj_char)
             end
         end,
         ["at_the_steady_lock_to_off"] = function()
@@ -2672,7 +2672,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_reticle()
             if run_at_current_frame then
                 character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
                 character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
-                character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(self_side_obj_char,opponent_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_reticle_pos_update(self_side_obj_char,opponent_side_obj_char)
             end
             if self_side_obj_char["shot_sys_aim_process"][1] < self_side_obj_char["shot_sys_aim_process"][3] then
                 self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_unlocking")
