@@ -957,7 +957,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
                     obj_projectile[8] = 0
                     obj_projectile["velocity"] = {obj_projectile[5]*50,-27.5}
                     obj_projectile["state"] = "in_air"
-                    obj_projectile["hitbox_table"] = {{0,0,160,160}}
+                    obj_projectile["hitbox_table"] = {{0,0,110,135},{0,0,135,110}}
                     obj_projectile["gravity"] = 5
                     obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_P_projectile_in_air(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
                     init_character_anim_with(obj_projectile,obj_projectile["projectile_animation"])

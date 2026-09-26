@@ -5852,9 +5852,6 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         update_state()
     end
     res[35] = function()
-        -- input_sys_cache
-        self_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(self_side)(self_side_obj_char)
         -- draw_correction
         self_side_obj_char[8] = 7
         -- update
@@ -5921,6 +5918,13 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 5
+        -- update
+        update_state()
+    end
+    res[65] = function()
+        -- input_sys_cache
+        self_side_obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(self_side)(self_side_obj_char)
         -- update
         update_state()
     end
