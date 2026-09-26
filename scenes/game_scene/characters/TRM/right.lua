@@ -2822,7 +2822,7 @@ function init_input_sys_cache_negative_edge_RP(obj_char)
 end
 -- 状态机连接门
 -- to_gate
-function state_gate_game_scene_char_RP_common_ground_to_dash_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+function state_gate_game_scene_char_RP_common_ground_to_dash_move_PP(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- direction_input
     if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) and test_input_sys_press_or_hold(self_side_input["dash"]) then
         self_side_obj_char[5] = -self_side_obj_char[5]
@@ -2845,30 +2845,7 @@ function state_gate_game_scene_char_RP_common_ground_to_dash_move(self_side_inpu
     end
     return false
 end
-function state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
-    -- direction_input
-    if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) and test_input_sys_press_or_hold(self_side_input["dash"]) then
-        self_side_obj_char[5] = -self_side_obj_char[5]
-    end
-    -- _4dash_backdash
-    if self_side_obj_char["direction_input"] == 4 and test_input_sys_press_or_hold(self_side_input["dash"]) then
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(self_side_obj_char)
-        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-        self_side_obj_char["state"] = "4dash_backdash"
-        return true
-    end
-    -- _6dash_dash
-    if (self_side_obj_char["direction_input"] == 5 or self_side_obj_char["direction_input"] == 6)
-    and test_input_sys_press_or_hold(self_side_input["dash"])
-    and self_side_obj_char["state"] ~= "6dash_dash" then
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(self_side_obj_char)
-        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-        self_side_obj_char["state"] = "6dash_dash"
-        return true
-    end
-    return false
-end
-function state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_6dash_only(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+function state_gate_game_scene_char_RP_common_ground_to_dash_move_PH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- direction_input
     if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) and test_input_sys_press_or_hold(self_side_input["dash"]) then
         self_side_obj_char[5] = -self_side_obj_char[5]
@@ -2891,7 +2868,30 @@ function state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_6dash
     end
     return false
 end
-function state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_4dash_to_walk(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+function state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+    -- direction_input
+    if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) and test_input_sys_press_or_hold(self_side_input["dash"]) then
+        self_side_obj_char[5] = -self_side_obj_char[5]
+    end
+    -- _4dash_backdash
+    if self_side_obj_char["direction_input"] == 4 and test_input_sys_press_or_hold(self_side_input["dash"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_backdash(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "4dash_backdash"
+        return true
+    end
+    -- _6dash_dash
+    if (self_side_obj_char["direction_input"] == 5 or self_side_obj_char["direction_input"] == 6)
+    and test_input_sys_press_or_hold(self_side_input["dash"])
+    and self_side_obj_char["state"] ~= "6dash_dash" then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(self_side_obj_char)
+        init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+        self_side_obj_char["state"] = "6dash_dash"
+        return true
+    end
+    return false
+end
+function state_gate_game_scene_char_RP_common_ground_to_dash_move_NH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- direction_input
     if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) and test_input_sys_press_or_hold(self_side_input["dash"]) then
         self_side_obj_char[5] = -self_side_obj_char[5]
@@ -2907,12 +2907,8 @@ function state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_4dash
     end
     return false
 end
-function state_gate_game_scene_char_RP_common_ground_to_attack_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+function state_gate_game_scene_char_RP_common_ground_to_normal_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _active_FD_block
-    -- special
-    if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
-        return true
-    end
     -- _2P
     if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press(self_side_input["P"]) then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
@@ -3046,16 +3042,8 @@ function state_gate_game_scene_char_RP_common_ground_to_attack_move(self_side_in
     end
     return false
 end
-function state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+function state_gate_game_scene_char_RP_common_ground_to_normal_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _active_FD_block
-    -- _4UA
-    -- _6UA
-    -- _5UA
-    -- _4SP_S_6UA
-    -- special
-    if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
-        return true
-    end
     -- _2P
     if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press_or_hold(self_side_input["P"]) then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
@@ -3190,10 +3178,6 @@ function state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(sel
     return false
 end
 function state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
-    -- _4UA
-    -- _6UA
-    -- _5UA
-    -- _4SP_S_6UA
     -- _4SP_P
     if (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 1)
     and test_input_sys_press_or_hold(self_side_input["SP"])
@@ -3284,10 +3268,6 @@ function state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_i
         -- _SP_H_H
 end
 function state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
-    -- _4UA
-    -- _6UA
-    -- _5UA
-    -- _4SP_S_6UA
     -- _4SP_P
     if (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 1)
     and test_input_sys_press_or_hold(self_side_input["SP"])
@@ -3377,6 +3357,49 @@ function state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(se
         -- _SP_H_S
         -- _SP_H_H
 end
+function state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+    -- _4UA
+    -- _6UA
+    -- _5UA
+    -- _4SP_S_6UA
+end
+function state_gate_game_scene_char_RP_common_ground_to_UA_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+    -- _4UA
+    -- _6UA
+    -- _5UA
+    -- _4SP_S_6UA
+end
+function state_gate_game_scene_char_RP_common_ground_to_attack_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+    -- _UA_move
+    if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    -- _special_move
+    if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    -- _normal_move
+    if state_gate_game_scene_char_RP_common_ground_to_normal_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    return false
+end
+function state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+    -- _UA_move
+    if state_gate_game_scene_char_RP_common_ground_to_UA_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    -- _special_move
+    if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    -- _normal_move
+    if state_gate_game_scene_char_RP_common_ground_to_normal_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    return false
+end
+-- 合并门：等价于依次调用 UA_move -> special_move -> normal_move
 function state_gate_game_scene_char_RP_common_air_to_dash_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
     -- _4dash_air_backdash
     if self_side_obj_char["y"] < -320 and (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 1)
@@ -3867,7 +3890,7 @@ function state_gate_game_scene_char_RP_from_block(self_side_input,opponent_side_
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "5_stand_idle"
         -- _common_ground_idle_to_move
-        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         -- _5_stand_idle
@@ -3883,7 +3906,7 @@ function state_gate_game_scene_char_RP_from_block(self_side_input,opponent_side_
         self_side_obj_char["f"] = 4
         character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
         -- _common_ground_idle_to_move
-        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         -- _1_2_3_crouch
@@ -3931,7 +3954,7 @@ function state_gate_game_scene_char_RP_from_hurt(self_side_input,opponent_side_i
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             -- _5_stand_idle
@@ -3946,7 +3969,7 @@ function state_gate_game_scene_char_RP_from_hurt(self_side_input,opponent_side_i
             self_side_obj_char["f"] = 4
             character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             -- _1_2_3_crouch
@@ -4013,7 +4036,10 @@ function state_gate_game_scene_char_RP_from_throw_success(self_side_input,oppone
         -- stand_idle
         elseif self_side_obj_char["height"] == "stand" then
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_ground_to_UA_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
@@ -4031,7 +4057,7 @@ function state_gate_game_scene_char_RP_from_throw_success(self_side_input,oppone
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "5_stand_idle"
         -- _common_ground_idle_to_move
-        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         -- _5_stand_idle
@@ -4134,7 +4160,7 @@ function state_gate_game_scene_char_RP_from_throw_tech(self_side_input,opponent_
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             -- _5_stand_idle
@@ -4242,7 +4268,7 @@ function state_gate_game_scene_char_RP_from_knockdown_recovery(self_side_input,o
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "5_stand_idle"
         -- _common_ground_idle_to_move
-        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         -- _5_stand_idle
@@ -4264,7 +4290,7 @@ function state_gate_game_scene_char_RP_from_knockdown_recovery_wallstick(self_si
             self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             -- _5_stand_idle
@@ -4318,10 +4344,16 @@ function state_gate_game_scene_char_RP_from_1_2_3_crouch(self_side_input,opponen
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_6dash_only(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move_PH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    if state_gate_game_scene_char_RP_common_ground_to_attack_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_normal_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _4_walk
@@ -4370,10 +4402,16 @@ function state_gate_game_scene_char_RP_from_1_2_3_crouch_turn(self_side_input,op
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_6dash_only(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move_PH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    if state_gate_game_scene_char_RP_common_ground_to_attack_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_normal_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _4_walk
@@ -4434,10 +4472,16 @@ function state_gate_game_scene_char_RP_from_1_2_3_crouch_to_stand_idle(self_side
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_6dash_only(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move_PH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    if state_gate_game_scene_char_RP_common_ground_to_attack_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_normal_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _1_2_3_crouch
@@ -4496,10 +4540,16 @@ function state_gate_game_scene_char_RP_from_5_stand_idle(self_side_input,opponen
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_6dash_only(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move_PH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    if state_gate_game_scene_char_RP_common_ground_to_attack_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_normal_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _1_2_3_crouch
@@ -4548,10 +4598,16 @@ function state_gate_game_scene_char_RP_from_5_stand_turn(self_side_input,opponen
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_6dash_only(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move_PH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    if state_gate_game_scene_char_RP_common_ground_to_attack_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_normal_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _1_2_3_crouch
@@ -4601,10 +4657,16 @@ function state_gate_game_scene_char_RP_from_5_stand_dash_skid(self_side_input,op
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_6dash_only(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move_PH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    if state_gate_game_scene_char_RP_common_ground_to_attack_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_normal_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     if self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
@@ -4645,10 +4707,12 @@ function state_gate_game_scene_char_RP_from_4_walk(self_side_input,opponent_side
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_6dash_only(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move_PH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    if state_gate_game_scene_char_RP_common_ground_to_attack_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+    or state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+    or state_gate_game_scene_char_RP_common_ground_to_normal_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         if self_side_obj_char["velocity"][1]*self_side_obj_char[5] < 0 then
             self_side_obj_char["velocity"][1] = 0
         end
@@ -4703,10 +4767,16 @@ function state_gate_game_scene_char_RP_from_4_walk_to_stand_idle(self_side_input
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_6dash_only(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move_PH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    if state_gate_game_scene_char_RP_common_ground_to_attack_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_normal_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _1_2_3_crouch
@@ -4767,10 +4837,16 @@ function state_gate_game_scene_char_RP_from_6_walk(self_side_input,opponent_side
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_6dash_only(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move_PH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    if state_gate_game_scene_char_RP_common_ground_to_attack_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_normal_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _1_2_3_crouch
@@ -4822,10 +4898,16 @@ function state_gate_game_scene_char_RP_from_6_walk_to_stand_idle(self_side_input
         return true
     end
     -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_6dash_only(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move_PH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
-    if state_gate_game_scene_char_RP_common_ground_to_attack_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_normal_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         return true
     end
     -- _1_2_3_crouch
@@ -4869,13 +4951,16 @@ function state_gate_game_scene_char_RP_from_7_8_9_jump_air_to_stand_idle(self_si
     -- _common_ground_idle_to_move
     if self_side_obj_char["idle_cancel"] then
         -- _common_ground_idle_to_move
-        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        if state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_UA_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        if state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_ground_to_normal_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         -- _5_stand_idle
@@ -5155,7 +5240,21 @@ function state_gate_game_scene_char_RP_from_6dash_dash(self_side_input,opponent_
         self_side_obj_char["state"] = "4dash_backdash"
         return true
     end
-    if state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if state_gate_game_scene_char_RP_common_ground_to_UA_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        -- play_SFX
+        play_obj_audio(self_side_stage_interactive_SFX_table["ground_dash_skid"])
+        stop_obj_audio(self_side_stage_interactive_SFX_table["ground_dash_start_up"])
+        stop_obj_audio(self_side_stage_interactive_SFX_table["ground_dash_loop"])
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        -- play_SFX
+        play_obj_audio(self_side_stage_interactive_SFX_table["ground_dash_skid"])
+        stop_obj_audio(self_side_stage_interactive_SFX_table["ground_dash_start_up"])
+        stop_obj_audio(self_side_stage_interactive_SFX_table["ground_dash_loop"])
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_ground_to_normal_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
         play_obj_audio(self_side_stage_interactive_SFX_table["ground_dash_skid"])
         stop_obj_audio(self_side_stage_interactive_SFX_table["ground_dash_start_up"])
         stop_obj_audio(self_side_stage_interactive_SFX_table["ground_dash_loop"])
@@ -5237,6 +5336,9 @@ function state_gate_game_scene_char_RP_from_6dash_dash_cancel(self_side_input,op
     end
     -- common_ground_to_special_move
     if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            return true
+        end
         if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             -- Good.Game.WP dash cancel -> special does not apply damage correction
             if self_side_obj_char["character_mode"] == "Good.Grief.MP" then
@@ -5288,7 +5390,13 @@ function state_gate_game_scene_char_RP_from_burst_RC_red(self_side_input,opponen
             end
         else
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            if state_gate_game_scene_char_RP_common_ground_to_UA_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_ground_to_normal_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 common_game_scene_game_speed_load_application(self_side_obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(opponent_side_obj_char ,{1,2,1,19,0,nil})
                 self_side_obj_char["heat_penalty"] = 0.1
@@ -5336,7 +5444,7 @@ function state_gate_game_scene_char_RP_from_burst_RC_red(self_side_input,opponen
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             if state_gate_game_scene_char_RP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
@@ -5370,7 +5478,13 @@ function state_gate_game_scene_char_RP_from_burst_RC_blue(self_side_input,oppone
             end
         else
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            if state_gate_game_scene_char_RP_common_ground_to_UA_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_ground_to_normal_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 common_game_scene_game_speed_load_application(self_side_obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(opponent_side_obj_char ,{1,2,1,29,0,nil})
                 self_side_obj_char["heat_penalty"] = 0.1
@@ -5418,7 +5532,7 @@ function state_gate_game_scene_char_RP_from_burst_RC_blue(self_side_input,oppone
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             if state_gate_game_scene_char_RP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
@@ -5452,7 +5566,13 @@ function state_gate_game_scene_char_RP_from_burst_RC_purple(self_side_input,oppo
             end
         else
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            if state_gate_game_scene_char_RP_common_ground_to_UA_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+                return true
+            end
+            if state_gate_game_scene_char_RP_common_ground_to_normal_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 common_game_scene_game_speed_load_application(self_side_obj_char,{1,nil,nil,nil,0,nil})
                 common_game_scene_game_speed_load_application(opponent_side_obj_char,{1,2,1,29,0,nil})
                 self_side_obj_char["heat_penalty"] = 0.1
@@ -5500,7 +5620,7 @@ function state_gate_game_scene_char_RP_from_burst_RC_purple(self_side_input,oppo
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             if state_gate_game_scene_char_RP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
@@ -5548,7 +5668,7 @@ function state_gate_game_scene_char_RP_from_burst_RC_yellow(self_side_input,oppo
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             if state_gate_game_scene_char_RP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
@@ -5594,7 +5714,7 @@ function state_gate_game_scene_char_RP_from_burst_overdrive(self_side_input,oppo
             character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
-            if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
                 return true
             end
             if state_gate_game_scene_char_RP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
@@ -5614,6 +5734,9 @@ function state_gate_game_scene_char_RP_from_2P(self_side_input,opponent_side_inp
     -- hit_cancel
     if self_side_obj_char["hit_cancel"] then
         -- special
+        if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            return true
+        end
         if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
@@ -5670,7 +5793,7 @@ function state_gate_game_scene_char_RP_from_2P(self_side_input,opponent_side_inp
     end
     -- idle_cancel
     if self_side_obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         if state_gate_game_scene_char_RP_from_1_2_3_crouch(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
@@ -5695,13 +5818,16 @@ function state_gate_game_scene_char_RP_from_6P(self_side_input,opponent_side_inp
     -- hit_cancel
     if self_side_obj_char["hit_cancel"] then
         -- special
+        if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            return true
+        end
         if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- idle_cancel
     if self_side_obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         if state_gate_game_scene_char_RP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
@@ -5724,6 +5850,9 @@ function state_gate_game_scene_char_RP_from_5P(self_side_input,opponent_side_inp
     -- hit_cancel
     if self_side_obj_char["hit_cancel"] then
         -- special
+        if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            return true
+        end
         if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
@@ -5780,7 +5909,7 @@ function state_gate_game_scene_char_RP_from_5P(self_side_input,opponent_side_inp
     end
     -- idle_cancel
     if self_side_obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         if state_gate_game_scene_char_RP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
@@ -5803,6 +5932,9 @@ function state_gate_game_scene_char_RP_from_2K(self_side_input,opponent_side_inp
     -- hit_cancel
     if self_side_obj_char["hit_cancel"] then
         -- special
+        if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            return true
+        end
         if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
@@ -5849,7 +5981,7 @@ function state_gate_game_scene_char_RP_from_2K(self_side_input,opponent_side_inp
     end
     -- idle_cancel
     if self_side_obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         if state_gate_game_scene_char_RP_from_1_2_3_crouch(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
@@ -5874,13 +6006,16 @@ function state_gate_game_scene_char_RP_from_6K(self_side_input,opponent_side_inp
     -- hit_cancel
     if self_side_obj_char["hit_cancel"] then
         -- special
+        if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            return true
+        end
         if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- idle_cancel
     if self_side_obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         if state_gate_game_scene_char_RP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
@@ -5915,6 +6050,9 @@ function state_gate_game_scene_char_RP_from_5K(self_side_input,opponent_side_inp
     -- hit_cancel
     if self_side_obj_char["hit_cancel"] then
         -- special
+        if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            return true
+        end
         if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
@@ -5986,7 +6124,7 @@ function state_gate_game_scene_char_RP_from_5K(self_side_input,opponent_side_inp
     end
     -- idle_cancel
     if self_side_obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         if state_gate_game_scene_char_RP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
@@ -6009,13 +6147,16 @@ function state_gate_game_scene_char_RP_from_2S(self_side_input,opponent_side_inp
     -- hit_cancel
     if self_side_obj_char["hit_cancel"] then
         -- special
+        if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            return true
+        end
         if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- idle_cancel
     if self_side_obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         if state_gate_game_scene_char_RP_from_1_2_3_crouch(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
@@ -6040,13 +6181,16 @@ function state_gate_game_scene_char_RP_from_6S(self_side_input,opponent_side_inp
     -- hit_cancel
     if self_side_obj_char["hit_cancel"] then
         -- special
+        if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            return true
+        end
         if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- idle_cancel
     if self_side_obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         if state_gate_game_scene_char_RP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
@@ -6069,6 +6213,9 @@ function state_gate_game_scene_char_RP_from_cS(self_side_input,opponent_side_inp
     -- hit_cancel
     if self_side_obj_char["hit_cancel"] then
         -- special
+        if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            return true
+        end
         if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
@@ -6160,7 +6307,7 @@ function state_gate_game_scene_char_RP_from_cS(self_side_input,opponent_side_inp
     end
     -- idle_cancel
     if self_side_obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         if state_gate_game_scene_char_RP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
@@ -6183,13 +6330,16 @@ function state_gate_game_scene_char_RP_from_fS(self_side_input,opponent_side_inp
     -- hit_cancel
     if self_side_obj_char["hit_cancel"] then
         -- special
+        if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            return true
+        end
         if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- idle_cancel
     if self_side_obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         if state_gate_game_scene_char_RP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
@@ -6224,13 +6374,16 @@ function state_gate_game_scene_char_RP_from_2Launcher(self_side_input,opponent_s
     -- hit_cancel
     if self_side_obj_char["hit_cancel"] then
         -- special
+        if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            return true
+        end
         if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
     end
     -- idle_cancel
     if self_side_obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         if state_gate_game_scene_char_RP_from_1_2_3_crouch(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
@@ -6254,7 +6407,7 @@ function state_gate_game_scene_char_RP_from_4_6Launcher(self_side_input,opponent
     end
     -- idle_cancel
     if self_side_obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         if state_gate_game_scene_char_RP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
@@ -6276,7 +6429,7 @@ function state_gate_game_scene_char_RP_from_5Launcher(self_side_input,opponent_s
     end
     -- idle_cancel
     if self_side_obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         if state_gate_game_scene_char_RP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
@@ -6756,10 +6909,63 @@ function state_gate_game_scene_char_RP_from_4SP_P(self_side_input,opponent_side_
             return true
         end
         -- _common_ground_idle_to_move
-        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        if state_gate_game_scene_char_RP_common_ground_to_attack_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+            return true
+        end
+        -- _6SP_P
+        if self_side_obj_char["direction_input"] == 6
+        and test_input_sys_press_or_hold(self_side_input["SP"])
+        and test_input_sys_press(self_side_input["P"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
+            end
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_P(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "6SP_P"
+            return true
+        end
+        -- _4SP_K
+        if self_side_obj_char["direction_input"] == 4
+        and test_input_sys_press_or_hold(self_side_input["SP"])
+        and test_input_sys_press(self_side_input["K"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
+            end
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_K(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "4SP_K"
+            return true
+        end
+        -- _6SP_K
+        if self_side_obj_char["direction_input"] == 6
+        and test_input_sys_press_or_hold(self_side_input["SP"])
+        and test_input_sys_press(self_side_input["K"])
+        and (not self_side_obj_char["shot_sys_scapegoat_exist"])
+        then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
+            end
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_K(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "6SP_K"
+            return true
+        end
+        -- _4SP_S
+        if self_side_obj_char["direction_input"] == 4
+        and test_input_sys_press_or_hold(self_side_input["SP"])
+        and test_input_sys_press(self_side_input["S"]) then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
+            end
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S(self_side_obj_char,opponent_side_obj_char)
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "4SP_S"
+            return true
+        end
+        if state_gate_game_scene_char_RP_common_ground_to_normal_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         -- _1_2_3_crouch
@@ -6965,7 +7171,7 @@ function state_gate_game_scene_char_RP_from_6SP_S(self_side_input,opponent_side_
     end
     -- idle_cancel
     if self_side_obj_char["idle_cancel"] then
-        if state_gate_game_scene_char_RP_common_ground_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
         if state_gate_game_scene_char_RP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
