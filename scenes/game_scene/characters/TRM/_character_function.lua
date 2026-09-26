@@ -167,56 +167,6 @@ function character_function_game_scene_TRM_shot_sys_aim_process_init(hit_side_ob
         hit_side_obj_char["shot_sys_aim_process"][1] = 0
     end
 end
--- aim_process_update
-function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(self_side_obj_char,opponent_side_obj_char)
-    -- 0.敌我之间距离
-    -- 1.敌方绝对速度
-    -- 2.水平相对速度
-    -- 3.命中对方
-    -- 4.空拳脚 开枪
-    -- 5.诅咒
-    -- 6.特定的己方模组（哈皮的翻滚）
-    local self_side_obj_char_shot_sys_aim_process = self_side_obj_char["shot_sys_aim_process"]
-    local function debuff(self_side_obj_char,opponent_side_obj_char)
-        local dx = opponent_side_obj_char["x"] - self_side_obj_char["x"]
-        local opponent_side_vx = opponent_side_obj_char["velocity"][1]
-        local opponent_side_v = math.sqrt(opponent_side_obj_char["velocity"][1]^2 + opponent_side_obj_char["velocity"][2]^2)
-        local dist = math.max(math.abs(dx)-1000,0)
-        local opponent_side_speed = math.min(math.abs(opponent_side_v),40)
-        local approaching = (dx * opponent_side_vx < 0) and 1.075 or 0
-        local k_speed = 1.625
-        local k_approach = 1.5
-        local result = (dist/600*0.05+1)*opponent_side_speed*k_speed - approaching*opponent_side_speed*k_approach
-        return result
-    end
-    -- focus_speed
-    self_side_obj_char_shot_sys_aim_process[2] = 10
-    if self_side_obj_char["shot_sys_curse"] then
-        self_side_obj_char_shot_sys_aim_process[2] = 17.5
-    end
-    -- debuff_base_on_abs_and_relative_velocity
-    self_side_obj_char_shot_sys_aim_process[1] = self_side_obj_char_shot_sys_aim_process[1] - debuff(self_side_obj_char,opponent_side_obj_char)
-    -- add_focus_speed
-    self_side_obj_char_shot_sys_aim_process[1] = 
-        math.min(
-            self_side_obj_char_shot_sys_aim_process[1]+self_side_obj_char_shot_sys_aim_process[2],
-            self_side_obj_char_shot_sys_aim_process[4]
-        )
-    self_side_obj_char_shot_sys_aim_process[1] = math.max(self_side_obj_char_shot_sys_aim_process[1],0)
-    -- instant_aim
-    if opponent_side_obj_char["shot_sys_at_the_ready_instant_aim_state"][opponent_side_obj_char["state"]] then
-        self_side_obj_char_shot_sys_aim_process[1] = math.max(self_side_obj_char_shot_sys_aim_process[1],self_side_obj_char_shot_sys_aim_process[3])
-    end
-end
--- r_visual_calculation
-function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,reticle_pos)
-    local center_r = math.atan2((reticle_pos[2]-oroboros_pos[2]),(reticle_pos[1]-oroboros_pos[1]))
-    if obj_char[5] < 0 then
-        center_r = center_r + 3.1416
-    end
-    if center_r > 3.1416 then center_r = center_r - 2*3.1416 end
-    return center_r
-end
 -- shot_sys_reticle_basic_prop_update
 function character_function_game_scene_TRM_shot_sys_reticle_pos_update_at_the_ready(self_side_obj_char,opponent_side_obj_char)
     local self_side_obj_char_shot_sys_aim_process = self_side_obj_char["shot_sys_aim_process"]
@@ -465,6 +415,56 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(sel
     -- shot_sys
     character_animator(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
     return
+end
+-- at_the_ready/aim_process_update
+function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(self_side_obj_char,opponent_side_obj_char)
+    -- 0.敌我之间距离
+    -- 1.敌方绝对速度
+    -- 2.水平相对速度
+    -- 3.命中对方
+    -- 4.空拳脚 开枪
+    -- 5.诅咒
+    -- 6.特定的己方模组（哈皮的翻滚）
+    local self_side_obj_char_shot_sys_aim_process = self_side_obj_char["shot_sys_aim_process"]
+    local function debuff(self_side_obj_char,opponent_side_obj_char)
+        local dx = opponent_side_obj_char["x"] - self_side_obj_char["x"]
+        local opponent_side_vx = opponent_side_obj_char["velocity"][1]
+        local opponent_side_v = math.sqrt(opponent_side_obj_char["velocity"][1]^2 + opponent_side_obj_char["velocity"][2]^2)
+        local dist = math.max(math.abs(dx)-1000,0)
+        local opponent_side_speed = math.min(math.abs(opponent_side_v),40)
+        local approaching = (dx * opponent_side_vx < 0) and 1.075 or 0
+        local k_speed = 1.625
+        local k_approach = 1.5
+        local result = (dist/600*0.05+1)*opponent_side_speed*k_speed - approaching*opponent_side_speed*k_approach
+        return result
+    end
+    -- focus_speed
+    self_side_obj_char_shot_sys_aim_process[2] = 10
+    if self_side_obj_char["shot_sys_curse"] then
+        self_side_obj_char_shot_sys_aim_process[2] = 17.5
+    end
+    -- debuff_base_on_abs_and_relative_velocity
+    self_side_obj_char_shot_sys_aim_process[1] = self_side_obj_char_shot_sys_aim_process[1] - debuff(self_side_obj_char,opponent_side_obj_char)
+    -- add_focus_speed
+    self_side_obj_char_shot_sys_aim_process[1] = 
+        math.min(
+            self_side_obj_char_shot_sys_aim_process[1]+self_side_obj_char_shot_sys_aim_process[2],
+            self_side_obj_char_shot_sys_aim_process[4]
+        )
+    self_side_obj_char_shot_sys_aim_process[1] = math.max(self_side_obj_char_shot_sys_aim_process[1],0)
+    -- instant_aim
+    if opponent_side_obj_char["shot_sys_at_the_ready_instant_aim_state"][opponent_side_obj_char["state"]] then
+        self_side_obj_char_shot_sys_aim_process[1] = math.max(self_side_obj_char_shot_sys_aim_process[1],self_side_obj_char_shot_sys_aim_process[3])
+    end
+end
+-- at_the_ready/aim_r_visual_calculation
+function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,reticle_pos)
+    local center_r = math.atan2((reticle_pos[2]-oroboros_pos[2]),(reticle_pos[1]-oroboros_pos[1]))
+    if obj_char[5] < 0 then
+        center_r = center_r + 3.1416
+    end
+    if center_r > 3.1416 then center_r = center_r - 2*3.1416 end
+    return center_r
 end
 -- at_the_steady
 function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_init(self_side_obj_char,opponent_side_obj_char)

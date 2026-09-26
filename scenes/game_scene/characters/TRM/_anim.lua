@@ -9012,6 +9012,8 @@ function load_game_scene_anim_char_TRM_4SP_S_4S(hit_side_obj_char,hurt_side_obj_
     return res
 end
 -- _4SP_S_H
+function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_char)
+end
 -- _4SP_S_2Launcher
 -- _4SP_S_6Launcher
 -- _4SP_S_5Launcher
