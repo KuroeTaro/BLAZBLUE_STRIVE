@@ -8878,6 +8878,8 @@ function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char[8] = 2
     end
     res[14] = function()
+        -- collide
+        hit_side_obj_char["hurtbox_table"] = {{0,-200,200,400},{0,-410,120,20}}
         -- draw_correction
         hit_side_obj_char[8] = 3
     end
@@ -8898,6 +8900,8 @@ function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_cha
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(side)()
+        -- collide
+        hit_side_obj_char["hurtbox_table"] = {{0,-190,220,380}}
         -- draw_correction
         hit_side_obj_char[8] = 4
     end
@@ -9062,7 +9066,7 @@ function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_c
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 0
-        hit_side_obj_char["anchor_pos"] = {275,525}
+        hit_side_obj_char["anchor_pos"] = {305,535}
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
