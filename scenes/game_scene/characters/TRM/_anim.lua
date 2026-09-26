@@ -9052,7 +9052,7 @@ function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_c
         hit_side_obj_char["active_frame"] = 0
         hit_side_obj_char["recovery_frame"] = 0
         -- input_sys_cache
-        hit_side_obj_char["input_sys_state"] = "none" -- none save load
+        hit_side_obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
         -- collide
         hit_side_obj_char["pushbox"] = {0,-185,120,370}
@@ -9070,39 +9070,8 @@ function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_c
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
-    res[1] = function()
-        -- draw_correction
-        hit_side_obj_char[8] = 1
-    end
     res[2] = function()
-        -- draw_correction
-        hit_side_obj_char[8] = 2
-    end
-    res[4] = function()
-        -- draw_correction
-        hit_side_obj_char[8] = 3
-    end
-    res[7] = function()
-        -- draw_correction
-        hit_side_obj_char[8] = 4
-    end
-    res[10] = function()
-        -- input_sys_cache
-        hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
-        -- draw_correction
-        hit_side_obj_char[8] = 5
-    end
-    res[14] = function()
-        -- draw_correction
-        hit_side_obj_char[8] = 6
-    end
-    res[20] = function()
         -- state
-        hit_side_obj_char["hit_type"] = "none" -- none strike throw burst
-        hit_side_obj_char["hit_guard_type"] = "none" -- none all low mid high
-        hit_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
-        hit_side_obj_char["move_state"] = "none" -- none startup active recovery
         hit_side_obj_char["hit_cancel"] = false
         hit_side_obj_char["idle_cancel"] = true
         -- state_number
@@ -9114,7 +9083,50 @@ function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_c
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(hit_side)()
-        -- animation_end
+    end
+    res[3] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[7] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 2
+    end
+    res[11] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 3
+    end
+    res[15] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 4
+    end
+    res[18] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 5
+    end
+    res[21] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 6
+    end
+    res[25] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 0
+    end
+    res[30] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[36] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 2
+    end
+    res[39] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 3
+    end
+    res[42] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 4
     end
     res[45] = function()
         -- animation_end
@@ -10009,60 +10021,6 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock_to_read
     return res
 end
 function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_shot(self_side_obj_char,opponent_side_obj_char)
-    local res = {}
-    local obj_camera = obj_stage_game_scene_camera
-    local obj_stage_main = obj_stage_game_scene_main
-    res["prop_f"] = "shot_sys_f"
-    res["anim_length"] = 18
-    for i = 13,17 do
-        res[i] = function()
-            character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(self_side_obj_char,opponent_side_obj_char)
-        end
-    end
-    res[0] = function()
-        -- shot_sys
-        self_side_obj_char["shot_sys_fire_cancel"] = false
-        self_side_obj_char["shot_sys_idle_cancel"] = false
-        -- 当前帧的aim_process已由进入shot前的状态机*_update完成，此处不再调用以避免同帧双算
-        -- camera_animation_application
-        table.insert(obj_stage_main["camera_active_application_table"],
-            function()
-                -- cameara_animation_load
-                common_game_scene_hit_load_camera_shake_anim(self_side_obj_char["shot_sys_camera_shake_table"],0.1,15)
-                anim_stage_point_linear_game_scene_camera_shake_x = self_side_obj_char["shot_sys_camera_shake_table"]["camera_x_shake_anim"]
-                anim_stage_point_linear_game_scene_camera_shake_y = self_side_obj_char["shot_sys_camera_shake_table"]["camera_y_shake_anim"]
-                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
-                obj_camera["state"] = "active"
-            end
-        )
-    end
-    res[1] = function()
-        -- shot_sys
-        character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(self_side_obj_char,opponent_side_obj_char)
-        -- insert_projectile
-        insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(self_side_obj_char,opponent_side_obj_char)
-    end
-    res[3] = function()
-        -- shot_sys
-        character_function_game_scene_TRM_shot_sys_aim_process_init(self_side_obj_char,opponent_side_obj_char)
-    end
-    res[6] = function()
-        -- shot_sys
-        if self_side_obj_char["shot_sys_aim_process"][1] < self_side_obj_char["shot_sys_aim_process"][3] then
-            character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(self_side_obj_char,opponent_side_obj_char,100)
-        end
-    end
-    res[12] = function()
-        -- shot_sys
-        self_side_obj_char["shot_sys_idle_cancel"] = true
-        self_side_obj_char["shot_sys_fire_cancel"] = true
-        character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(self_side_obj_char,opponent_side_obj_char)
-    end
-    res[18] = function()
-        -- animation_end
-    end
-    return res
 end
 -- shot_sys_reticle
 function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock(obj_char)
@@ -10195,33 +10153,4 @@ function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock_to_ready
     return res
 end
 function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_shot(obj_char)
-    local res = {}
-    res["prop_f"] = "shot_sys_reticle_f_8"
-    res["anim_length"] = 7
-    res[0] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle_sprite_sheet"] = "4SP_S_reticle_shot"
-        obj_char["shot_sys_reticle"][4] = 1
-        obj_char["shot_sys_reticle"][8] = 0
-    end
-    res[1] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 1
-    end
-    res[2] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 2
-    end
-    res[4] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 3
-    end
-    res[6] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 4
-    end
-    res[7] = function()
-        -- animation_end
-    end
-    return res
 end
