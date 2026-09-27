@@ -8808,8 +8808,8 @@ end
 -- _4SP_S
 function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_char)
     local res = {}
-    local side = hit_side_obj_char["player_side"]
-    local move_SFX_table = common_game_scene_get_SFX_move(side)
+    local hit_side = hit_side_obj_char["player_side"]
+    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     res["prop_f"] = "f"
     res["anim_length"] = 117
     for i = 1,23 do
@@ -8850,7 +8850,9 @@ function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["recovery_frame"] = 0
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(side)(hit_side_obj_char)
+        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
+        hit_side_obj_char["input_sys_state_negative_edge"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_negative_edge_init(hit_side)(hit_side_obj_char)
         -- collide
         hit_side_obj_char["pushbox"] = {0,-185,120,370}
         hit_side_obj_char["pushbox_opponent_collision_active"] = true
@@ -8865,9 +8867,9 @@ function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char[8] = 0
         hit_side_obj_char["anchor_pos"] = {325,510}
         -- play_SFX
-        play_obj_audio(move_SFX_table["4SP_S_whiff"])
+        play_obj_audio(hit_side_move_SFX_table["4SP_S_whiff"])
         -- visual_front
-        CHARACTER_VISUAL_FRONT = side
+        CHARACTER_VISUAL_FRONT = hit_side
     end
     res[5] = function()
         -- draw_correction
@@ -8899,7 +8901,9 @@ function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["damage_correction"] = 1
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "load" -- none save load
-        common_game_scene_get_input_sys_cache_state_machine(side)()
+        common_game_scene_get_input_sys_cache_state_machine(hit_side)()
+        hit_side_obj_char["input_sys_state_negative_edge"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_negative_edge_state_machine(hit_side)()
         -- collide
         hit_side_obj_char["hurtbox_table"] = {{0,-190,220,380}}
         -- draw_correction
