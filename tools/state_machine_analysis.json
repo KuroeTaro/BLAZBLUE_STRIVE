@@ -15,12 +15,12 @@
    "throw_tested",
    "throw_teching",
    "throw_teched",
+   "blockstop",
    "hitstop",
    "hurtstop",
-   "blockstop",
    "wallstick",
-   "wallbreak_hurt",
    "wallbreak_hit",
+   "wallbreak_hurt",
    "knockdown",
    "knockdown_recovery",
    "knockdown_recovery_wallstick",
@@ -78,7 +78,6 @@
    "4SP_S_4dash",
    "4SP_S_6dash",
    "4SP_S_4S",
-   "4SP_S_H",
    "4SP_S_2Launcher",
    "4SP_S_6Launcher",
    "4SP_S_5Launcher",
@@ -177,10 +176,6 @@
      [
       "from",
       "4SP_S_6dash"
-     ],
-     [
-      "from",
-      "4SP_S_H"
      ],
      [
       "from",
@@ -473,9 +468,9 @@
     ]
    },
    {
-    "name": "state_gate_game_scene_char_LP_common_ground_to_dash_move",
+    "name": "state_gate_game_scene_char_LP_common_ground_to_dash_move_PP",
     "kind": "common",
-    "state": "ground_to_dash_move",
+    "state": "ground_to_dash_move_PP",
     "line": null,
     "self_writes": [
      "4dash_backdash",
@@ -494,9 +489,9 @@
     ]
    },
    {
-    "name": "state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_all",
+    "name": "state_gate_game_scene_char_LP_common_ground_to_dash_move_PH",
     "kind": "common",
-    "state": "ground_to_dash_move_hold_ver_all",
+    "state": "ground_to_dash_move_PH",
     "line": null,
     "self_writes": [
      "4dash_backdash",
@@ -515,9 +510,9 @@
     ]
    },
    {
-    "name": "state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_6dash_only",
+    "name": "state_gate_game_scene_char_LP_common_ground_to_dash_move_HH",
     "kind": "common",
-    "state": "ground_to_dash_move_hold_ver_6dash_only",
+    "state": "ground_to_dash_move_HH",
     "line": null,
     "self_writes": [
      "4dash_backdash",
@@ -536,9 +531,9 @@
     ]
    },
    {
-    "name": "state_gate_game_scene_char_LP_common_ground_to_dash_move_hold_ver_4dash_to_walk",
+    "name": "state_gate_game_scene_char_LP_common_ground_to_dash_move_NH",
     "kind": "common",
-    "state": "ground_to_dash_move_hold_ver_4dash_to_walk",
+    "state": "ground_to_dash_move_NH",
     "line": null,
     "self_writes": [
      "6dash_dash"
@@ -554,9 +549,9 @@
     ]
    },
    {
-    "name": "state_gate_game_scene_char_LP_common_ground_to_attack_move",
+    "name": "state_gate_game_scene_char_LP_common_ground_to_normal_move",
     "kind": "common",
-    "state": "ground_to_attack_move",
+    "state": "ground_to_normal_move",
     "line": null,
     "self_writes": [
      "2K",
@@ -590,20 +585,12 @@
      "fS"
     ],
     "nonlit_self_write": 13,
-    "calls": [
-     [
-      "common",
-      "ground_to_special_move"
-     ]
-    ],
+    "calls": [],
     "reach": [
      "2K",
      "2Launcher",
      "2P",
      "2S",
-     "4SP_K",
-     "4SP_P",
-     "4SP_S",
      "4_6Launcher",
      "5K",
      "5Launcher",
@@ -611,17 +598,14 @@
      "6K",
      "6P",
      "6S",
-     "6SP_K",
-     "6SP_P",
-     "6SP_S",
      "cS",
      "fS"
     ]
    },
    {
-    "name": "state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver",
+    "name": "state_gate_game_scene_char_LP_common_ground_to_normal_move_hold_ver",
     "kind": "common",
-    "state": "ground_to_attack_move_hold_ver",
+    "state": "ground_to_normal_move_hold_ver",
     "line": null,
     "self_writes": [
      "2K",
@@ -655,20 +639,12 @@
      "fS"
     ],
     "nonlit_self_write": 13,
-    "calls": [
-     [
-      "common",
-      "ground_to_special_move_hold_ver"
-     ]
-    ],
+    "calls": [],
     "reach": [
      "2K",
      "2Launcher",
      "2P",
      "2S",
-     "4SP_K",
-     "4SP_P",
-     "4SP_S",
      "4_6Launcher",
      "5K",
      "5Launcher",
@@ -676,9 +652,6 @@
      "6K",
      "6P",
      "6S",
-     "6SP_K",
-     "6SP_P",
-     "6SP_S",
      "cS",
      "fS"
     ]
@@ -747,6 +720,120 @@
      "6SP_K",
      "6SP_P",
      "6SP_S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_ground_to_UA_move",
+    "kind": "common",
+    "state": "ground_to_UA_move",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_ground_to_UA_move_hold_ver",
+    "kind": "common",
+    "state": "ground_to_UA_move_hold_ver",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [],
+    "reach": []
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_ground_to_attack_move",
+    "kind": "common",
+    "state": "ground_to_attack_move",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [
+     [
+      "common",
+      "ground_to_UA_move"
+     ],
+     [
+      "common",
+      "ground_to_normal_move"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
+     ]
+    ],
+    "reach": [
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "5K",
+     "5Launcher",
+     "5P",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "cS",
+     "fS"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver",
+    "kind": "common",
+    "state": "ground_to_attack_move_hold_ver",
+    "line": null,
+    "self_writes": [],
+    "opp_writes": [],
+    "any_lit": [],
+    "nonlit_self_write": 0,
+    "calls": [
+     [
+      "common",
+      "ground_to_UA_move_hold_ver"
+     ],
+     [
+      "common",
+      "ground_to_normal_move_hold_ver"
+     ],
+     [
+      "common",
+      "ground_to_special_move_hold_ver"
+     ]
+    ],
+    "reach": [
+     "2K",
+     "2Launcher",
+     "2P",
+     "2S",
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "4_6Launcher",
+     "5K",
+     "5Launcher",
+     "5P",
+     "6K",
+     "6P",
+     "6S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S",
+     "cS",
+     "fS"
     ]
    },
    {
@@ -1011,6 +1098,69 @@
     ]
    },
    {
+    "name": "state_gate_game_scene_char_LP_4SP_P_to_special",
+    "kind": null,
+    "state": null,
+    "line": null,
+    "self_writes": [
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S"
+    ],
+    "nonlit_self_write": 6,
+    "calls": [],
+    "reach": [
+     "4SP_K",
+     "4SP_P",
+     "4SP_S",
+     "6SP_K",
+     "6SP_P",
+     "6SP_S"
+    ]
+   },
+   {
+    "name": "state_gate_game_scene_char_LP_4SP_S_to_special",
+    "kind": null,
+    "state": null,
+    "line": null,
+    "self_writes": [
+     "4SP_K",
+     "4SP_P",
+     "4SP_S_4S",
+     "6SP_K",
+     "6SP_P"
+    ],
+    "opp_writes": [],
+    "any_lit": [
+     "4SP_K",
+     "4SP_P",
+     "4SP_S_4S",
+     "6SP_K",
+     "6SP_P"
+    ],
+    "nonlit_self_write": 5,
+    "calls": [],
+    "reach": [
+     "4SP_K",
+     "4SP_P",
+     "4SP_S_4S",
+     "6SP_K",
+     "6SP_P"
+    ]
+   },
+   {
     "name": "state_gate_game_scene_char_LP_from_active_FD_block",
     "kind": "from",
     "state": "active_FD_block",
@@ -1040,7 +1190,7 @@
     "calls": [
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_dash_move_HH"
      ],
      [
       "common",
@@ -1112,7 +1262,7 @@
     "calls": [
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_dash_move_HH"
      ],
      [
       "common",
@@ -1189,7 +1339,11 @@
      ],
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_UA_move_hold_ver"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_HH"
      ],
      [
       "common",
@@ -1382,7 +1536,7 @@
      ],
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_dash_move_HH"
      ],
      [
       "from",
@@ -1549,7 +1703,7 @@
     "calls": [
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_dash_move_HH"
      ],
      [
       "common",
@@ -1604,7 +1758,7 @@
     "calls": [
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_dash_move_HH"
      ],
      [
       "from",
@@ -1681,11 +1835,19 @@
     "calls": [
      [
       "common",
-      "ground_to_attack_move"
+      "ground_to_UA_move"
      ],
      [
       "common",
-      "ground_to_dash_move_hold_ver_6dash_only"
+      "ground_to_dash_move_PH"
+     ],
+     [
+      "common",
+      "ground_to_normal_move"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
      ],
      [
       "common",
@@ -1756,11 +1918,19 @@
     "calls": [
      [
       "common",
-      "ground_to_attack_move"
+      "ground_to_UA_move"
      ],
      [
       "common",
-      "ground_to_dash_move_hold_ver_6dash_only"
+      "ground_to_dash_move_PH"
+     ],
+     [
+      "common",
+      "ground_to_normal_move"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
      ],
      [
       "common",
@@ -1828,11 +1998,19 @@
     "calls": [
      [
       "common",
-      "ground_to_attack_move"
+      "ground_to_UA_move"
      ],
      [
       "common",
-      "ground_to_dash_move_hold_ver_6dash_only"
+      "ground_to_dash_move_PH"
+     ],
+     [
+      "common",
+      "ground_to_normal_move"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
      ],
      [
       "common",
@@ -1903,11 +2081,19 @@
     "calls": [
      [
       "common",
-      "ground_to_attack_move"
+      "ground_to_UA_move"
      ],
      [
       "common",
-      "ground_to_dash_move_hold_ver_6dash_only"
+      "ground_to_dash_move_PH"
+     ],
+     [
+      "common",
+      "ground_to_normal_move"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
      ],
      [
       "common",
@@ -1978,11 +2164,19 @@
     "calls": [
      [
       "common",
-      "ground_to_attack_move"
+      "ground_to_UA_move"
      ],
      [
       "common",
-      "ground_to_dash_move_hold_ver_6dash_only"
+      "ground_to_dash_move_PH"
+     ],
+     [
+      "common",
+      "ground_to_normal_move"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
      ],
      [
       "common",
@@ -2042,11 +2236,19 @@
     "calls": [
      [
       "common",
-      "ground_to_attack_move"
+      "ground_to_UA_move"
      ],
      [
       "common",
-      "ground_to_dash_move_hold_ver_6dash_only"
+      "ground_to_dash_move_PH"
+     ],
+     [
+      "common",
+      "ground_to_normal_move"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
      ],
      [
       "common",
@@ -2117,11 +2319,19 @@
     "calls": [
      [
       "common",
-      "ground_to_attack_move"
+      "ground_to_UA_move"
      ],
      [
       "common",
-      "ground_to_dash_move_hold_ver_6dash_only"
+      "ground_to_dash_move_PH"
+     ],
+     [
+      "common",
+      "ground_to_normal_move"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
      ],
      [
       "common",
@@ -2195,11 +2405,19 @@
     "calls": [
      [
       "common",
-      "ground_to_attack_move"
+      "ground_to_UA_move"
      ],
      [
       "common",
-      "ground_to_dash_move_hold_ver_6dash_only"
+      "ground_to_dash_move_PH"
+     ],
+     [
+      "common",
+      "ground_to_normal_move"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
      ],
      [
       "common",
@@ -2270,11 +2488,19 @@
     "calls": [
      [
       "common",
-      "ground_to_attack_move"
+      "ground_to_UA_move"
      ],
      [
       "common",
-      "ground_to_dash_move_hold_ver_6dash_only"
+      "ground_to_dash_move_PH"
+     ],
+     [
+      "common",
+      "ground_to_normal_move"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
      ],
      [
       "common",
@@ -2348,11 +2574,19 @@
     "calls": [
      [
       "common",
-      "ground_to_attack_move"
+      "ground_to_UA_move"
      ],
      [
       "common",
-      "ground_to_dash_move_hold_ver_6dash_only"
+      "ground_to_dash_move_PH"
+     ],
+     [
+      "common",
+      "ground_to_normal_move"
+     ],
+     [
+      "common",
+      "ground_to_special_move"
      ],
      [
       "common",
@@ -2415,11 +2649,19 @@
     "calls": [
      [
       "common",
-      "ground_to_attack_move_hold_ver"
+      "ground_to_UA_move_hold_ver"
      ],
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_dash_move_HH"
+     ],
+     [
+      "common",
+      "ground_to_normal_move_hold_ver"
+     ],
+     [
+      "common",
+      "ground_to_special_move_hold_ver"
      ],
      [
       "common",
@@ -2718,7 +2960,15 @@
     "calls": [
      [
       "common",
-      "ground_to_attack_move_hold_ver"
+      "ground_to_UA_move_hold_ver"
+     ],
+     [
+      "common",
+      "ground_to_normal_move_hold_ver"
+     ],
+     [
+      "common",
+      "ground_to_special_move_hold_ver"
      ],
      [
       "common",
@@ -2871,6 +3121,10 @@
     "calls": [
      [
       "common",
+      "ground_to_UA_move"
+     ],
+     [
+      "common",
       "ground_to_special_move"
      ],
      [
@@ -2949,11 +3203,19 @@
      ],
      [
       "common",
-      "ground_to_attack_move_hold_ver"
+      "ground_to_UA_move_hold_ver"
      ],
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_dash_move_HH"
+     ],
+     [
+      "common",
+      "ground_to_normal_move_hold_ver"
+     ],
+     [
+      "common",
+      "ground_to_special_move_hold_ver"
      ],
      [
       "from",
@@ -3036,11 +3298,19 @@
      ],
      [
       "common",
-      "ground_to_attack_move_hold_ver"
+      "ground_to_UA_move_hold_ver"
      ],
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_dash_move_HH"
+     ],
+     [
+      "common",
+      "ground_to_normal_move_hold_ver"
+     ],
+     [
+      "common",
+      "ground_to_special_move_hold_ver"
      ],
      [
       "from",
@@ -3123,11 +3393,19 @@
      ],
      [
       "common",
-      "ground_to_attack_move_hold_ver"
+      "ground_to_UA_move_hold_ver"
      ],
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_dash_move_HH"
+     ],
+     [
+      "common",
+      "ground_to_normal_move_hold_ver"
+     ],
+     [
+      "common",
+      "ground_to_special_move_hold_ver"
      ],
      [
       "from",
@@ -3202,7 +3480,7 @@
      ],
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_dash_move_HH"
      ],
      [
       "from",
@@ -3277,7 +3555,7 @@
      ],
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_dash_move_HH"
      ],
      [
       "from",
@@ -3368,7 +3646,11 @@
     "calls": [
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_UA_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_HH"
      ],
      [
       "common",
@@ -3432,7 +3714,11 @@
     "calls": [
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_UA_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_HH"
      ],
      [
       "common",
@@ -3506,7 +3792,11 @@
     "calls": [
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_UA_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_HH"
      ],
      [
       "common",
@@ -3578,7 +3868,11 @@
     "calls": [
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_UA_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_HH"
      ],
      [
       "common",
@@ -3642,7 +3936,11 @@
     "calls": [
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_UA_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_HH"
      ],
      [
       "common",
@@ -3720,7 +4018,11 @@
     "calls": [
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_UA_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_HH"
      ],
      [
       "common",
@@ -3785,7 +4087,11 @@
     "calls": [
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_UA_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_HH"
      ],
      [
       "common",
@@ -3849,7 +4155,11 @@
     "calls": [
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_UA_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_HH"
      ],
      [
       "common",
@@ -3929,7 +4239,11 @@
     "calls": [
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_UA_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_HH"
      ],
      [
       "common",
@@ -3994,7 +4308,11 @@
     "calls": [
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_UA_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_HH"
      ],
      [
       "common",
@@ -4109,7 +4427,11 @@
     "calls": [
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_UA_move"
+     ],
+     [
+      "common",
+      "ground_to_dash_move_HH"
      ],
      [
       "common",
@@ -4173,7 +4495,7 @@
     "calls": [
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_dash_move_HH"
      ],
      [
       "common",
@@ -4233,7 +4555,7 @@
     "calls": [
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_dash_move_HH"
      ],
      [
       "common",
@@ -4761,11 +5083,15 @@
     "calls": [
      [
       "common",
-      "ground_to_attack_move"
+      "ground_to_UA_move"
      ],
      [
       "common",
-      "ground_to_dash_move_hold_ver_6dash_only"
+      "ground_to_dash_move_HH"
+     ],
+     [
+      "common",
+      "ground_to_normal_move"
      ],
      [
       "common",
@@ -4786,9 +5112,6 @@
      "2Launcher",
      "2P",
      "2S",
-     "4SP_K",
-     "4SP_P",
-     "4SP_S",
      "4_6Launcher",
      "4dash_backdash",
      "5K",
@@ -4798,9 +5121,6 @@
      "6K",
      "6P",
      "6S",
-     "6SP_K",
-     "6SP_P",
-     "6SP_S",
      "6_walk",
      "6dash_dash",
      "7_8_9_pre_jump",
@@ -4984,22 +5304,10 @@
     "kind": "from",
     "state": "4SP_S",
     "line": null,
-    "self_writes": [
-     "4SP_S_4S",
-     "4SP_K",
-     "4SP_P",
-     "6SP_K",
-     "6SP_P"
-    ],
+    "self_writes": [],
     "opp_writes": [],
-    "any_lit": [
-     "4SP_S_4S",
-     "4SP_K",
-     "4SP_P",
-     "6SP_K",
-     "6SP_P"
-    ],
-    "nonlit_self_write": 5,
+    "any_lit": [],
+    "nonlit_self_write": 0,
     "calls": [
      [
       "common",
@@ -5007,11 +5315,6 @@
      ]
     ],
     "reach": [
-     "4SP_S_4S",
-     "4SP_K",
-     "4SP_P",
-     "6SP_K",
-     "6SP_P",
      "burst_RC_purple"
     ]
    },
@@ -5055,7 +5358,7 @@
     "calls": [
      [
       "common",
-      "to_burst_RC_blue"
+      "to_burst_RC_purple"
      ],
      [
       "common",
@@ -5093,22 +5396,11 @@
      "6dash_dash",
      "7_8_9_pre_jump",
      "burst_RC_blue",
+     "burst_RC_purple",
      "burst_overdrive",
      "cS",
      "fS"
     ]
-   },
-   {
-    "name": "state_gate_game_scene_char_LP_from_4SP_S_H",
-    "kind": "from",
-    "state": "4SP_S_H",
-    "line": null,
-    "self_writes": [],
-    "opp_writes": [],
-    "any_lit": [],
-    "nonlit_self_write": 0,
-    "calls": [],
-    "reach": []
    },
    {
     "name": "state_gate_game_scene_char_LP_from_4SP_S_2Launcher",
@@ -5162,7 +5454,7 @@
     "calls": [
      [
       "common",
-      "ground_to_dash_move_hold_ver_all"
+      "ground_to_dash_move_HH"
      ],
      [
       "common",

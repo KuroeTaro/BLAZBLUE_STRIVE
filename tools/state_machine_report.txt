@@ -1,12 +1,16 @@
 == COMMON HELPER GATES (LP) ==
-common_ground_to_dash_move                                        direct->{4dash_backdash,6dash_dash} calls{}
-common_ground_to_dash_move_hold_ver_all                           direct->{4dash_backdash,6dash_dash} calls{}
-common_ground_to_dash_move_hold_ver_6dash_only                    direct->{4dash_backdash,6dash_dash} calls{}
-common_ground_to_dash_move_hold_ver_4dash_to_walk                 direct->{6dash_dash} calls{}
-common_ground_to_attack_move                                      direct->{2K,2Launcher,2P,2S,4_6Launcher,5K,5Launcher,5P,6K,6P,6S,cS,fS} calls{ground_to_special_move}
-common_ground_to_attack_move_hold_ver                             direct->{2K,2Launcher,2P,2S,4_6Launcher,5K,5Launcher,5P,6K,6P,6S,cS,fS} calls{ground_to_special_move_hold_ver}
+common_ground_to_dash_move_PP                                     direct->{4dash_backdash,6dash_dash} calls{}
+common_ground_to_dash_move_PH                                     direct->{4dash_backdash,6dash_dash} calls{}
+common_ground_to_dash_move_HH                                     direct->{4dash_backdash,6dash_dash} calls{}
+common_ground_to_dash_move_NH                                     direct->{6dash_dash} calls{}
+common_ground_to_normal_move                                      direct->{2K,2Launcher,2P,2S,4_6Launcher,5K,5Launcher,5P,6K,6P,6S,cS,fS} calls{}
+common_ground_to_normal_move_hold_ver                             direct->{2K,2Launcher,2P,2S,4_6Launcher,5K,5Launcher,5P,6K,6P,6S,cS,fS} calls{}
 common_ground_to_special_move                                     direct->{4SP_K,4SP_P,4SP_S,6SP_K,6SP_P,6SP_S} calls{}
 common_ground_to_special_move_hold_ver                            direct->{4SP_K,4SP_P,4SP_S,6SP_K,6SP_P,6SP_S} calls{}
+common_ground_to_UA_move                                          direct->{} calls{}
+common_ground_to_UA_move_hold_ver                                 direct->{} calls{}
+common_ground_to_attack_move                                      direct->{} calls{ground_to_UA_move,ground_to_normal_move,ground_to_special_move}
+common_ground_to_attack_move_hold_ver                             direct->{} calls{ground_to_UA_move_hold_ver,ground_to_normal_move_hold_ver,ground_to_special_move_hold_ver}
 common_air_to_dash_move                                           direct->{4dash_air_backdash,6dash_air_dash} calls{}
 common_air_to_dash_move_hold_ver_all                              direct->{4dash_air_backdash,6dash_air_dash} calls{}
 common_air_to_dash_move_hold_ver_4dash_only                       direct->{4dash_air_backdash,6dash_air_dash} calls{}
@@ -28,16 +32,16 @@ common_to_burst_overdrive                                         direct->{burst
 [from_block]
     direct_self_state -> 1_2_3_crouch, 5_stand_idle
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_dash_move_hold_ver_all, to_burst_RC_yellow, to_burst_overdrive} ; from:{1_2_3_crouch, 5_stand_idle}
+    calls -> common:{ground_to_dash_move_HH, to_burst_RC_yellow, to_burst_overdrive} ; from:{1_2_3_crouch, 5_stand_idle}
 [from_hurt]
     direct_self_state -> 1_2_3_crouch, 5_stand_idle
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_dash_move_hold_ver_all, to_burst_overdrive} ; from:{1_2_3_crouch, 5_stand_idle}
+    calls -> common:{ground_to_dash_move_HH, to_burst_overdrive} ; from:{1_2_3_crouch, 5_stand_idle}
 [from_throw_success]
     direct_self_state -> 5_stand_idle
     opp_state -> hurt
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{air_to_dash_move_hold_ver_all, air_to_special_move_hold_ver, ground_to_dash_move_hold_ver_all, ground_to_special_move_hold_ver, to_burst_RC_purple, to_burst_RC_red, to_burst_overdrive} ; from:{5_stand_idle, 7_8_9_jump_air}
+    calls -> common:{air_to_dash_move_hold_ver_all, air_to_special_move_hold_ver, ground_to_UA_move_hold_ver, ground_to_dash_move_HH, ground_to_special_move_hold_ver, to_burst_RC_purple, to_burst_RC_red, to_burst_overdrive} ; from:{5_stand_idle, 7_8_9_jump_air}
 [from_throw_hurt_success]
     (has non-literal self state write, e.g. = state_cache)
 [from_throw_testing]
@@ -50,7 +54,7 @@ common_to_burst_overdrive                                         direct->{burst
 [from_throw_tech]
     direct_self_state -> 5_stand_idle, 7_8_9_jump_air
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{air_to_dash_move_hold_ver_all, ground_to_dash_move_hold_ver_all} ; from:{5_stand_idle, 7_8_9_jump_air}
+    calls -> common:{air_to_dash_move_hold_ver_all, ground_to_dash_move_HH} ; from:{5_stand_idle, 7_8_9_jump_air}
 [from_hitstop]
     (has non-literal self state write, e.g. = state_cache)
     calls -> common:{to_burst_RC_red, to_burst_overdrive}
@@ -69,54 +73,54 @@ common_to_burst_overdrive                                         direct->{burst
 [from_knockdown_recovery]
     direct_self_state -> 5_stand_idle
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_dash_move_hold_ver_all, to_burst_overdrive} ; from:{5_stand_idle}
+    calls -> common:{ground_to_dash_move_HH, to_burst_overdrive} ; from:{5_stand_idle}
 [from_knockdown_recovery_wallstick]
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_dash_move_hold_ver_all} ; from:{5_stand_idle, 7_8_9_jump_air}
+    calls -> common:{ground_to_dash_move_HH} ; from:{5_stand_idle, 7_8_9_jump_air}
 [from_1_2_3_crouch]
     direct_self_state -> 1_2_3_crouch_to_stand_idle, 1_2_3_crouch_turn, 4_walk, 6_walk, 7_8_9_pre_jump
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_attack_move, ground_to_dash_move_hold_ver_6dash_only, to_burst_RC_blue, to_burst_overdrive} ; from:{1_2_3_crouch_turn}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_PH, ground_to_normal_move, ground_to_special_move, to_burst_RC_blue, to_burst_overdrive} ; from:{1_2_3_crouch_turn}
 [from_1_2_3_crouch_turn]
     direct_self_state -> 1_2_3_crouch, 1_2_3_crouch_to_stand_idle, 4_walk, 6_walk, 7_8_9_pre_jump
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_attack_move, ground_to_dash_move_hold_ver_6dash_only, to_burst_RC_blue, to_burst_overdrive}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_PH, ground_to_normal_move, ground_to_special_move, to_burst_RC_blue, to_burst_overdrive}
 [from_1_2_3_crouch_to_stand_idle]
     direct_self_state -> 1_2_3_crouch, 4_walk, 5_stand_idle, 5_stand_turn, 6_walk, 7_8_9_pre_jump
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_attack_move, ground_to_dash_move_hold_ver_6dash_only, to_burst_RC_blue, to_burst_overdrive} ; from:{5_stand_turn}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_PH, ground_to_normal_move, ground_to_special_move, to_burst_RC_blue, to_burst_overdrive} ; from:{5_stand_turn}
 [from_5_stand_idle]
     direct_self_state -> 1_2_3_crouch, 4_walk, 5_stand_turn, 6_walk, 7_8_9_pre_jump
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_attack_move, ground_to_dash_move_hold_ver_6dash_only, to_burst_RC_blue, to_burst_overdrive} ; from:{5_stand_turn}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_PH, ground_to_normal_move, ground_to_special_move, to_burst_RC_blue, to_burst_overdrive} ; from:{5_stand_turn}
 [from_5_stand_turn]
     direct_self_state -> 1_2_3_crouch, 4_walk, 5_stand_idle, 6_walk, 7_8_9_pre_jump
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_attack_move, ground_to_dash_move_hold_ver_6dash_only, to_burst_RC_blue, to_burst_overdrive}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_PH, ground_to_normal_move, ground_to_special_move, to_burst_RC_blue, to_burst_overdrive}
 [from_5_stand_dash_skid]
     direct_self_state -> 5_stand_idle, 7_8_9_pre_jump
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_attack_move, ground_to_dash_move_hold_ver_6dash_only, to_burst_RC_blue, to_burst_overdrive} ; from:{5_stand_idle}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_PH, ground_to_normal_move, ground_to_special_move, to_burst_RC_blue, to_burst_overdrive} ; from:{5_stand_idle}
 [from_4_walk]
     direct_self_state -> 1_2_3_crouch, 4_walk_to_stand_idle, 5_stand_turn, 6_walk, 7_8_9_pre_jump
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_attack_move, ground_to_dash_move_hold_ver_6dash_only, to_burst_RC_blue, to_burst_overdrive} ; from:{5_stand_turn}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_PH, ground_to_normal_move, ground_to_special_move, to_burst_RC_blue, to_burst_overdrive} ; from:{5_stand_turn}
 [from_4_walk_to_stand_idle]
     direct_self_state -> 1_2_3_crouch, 4_walk, 5_stand_idle, 5_stand_turn, 6_walk, 7_8_9_pre_jump
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_attack_move, ground_to_dash_move_hold_ver_6dash_only, to_burst_RC_blue, to_burst_overdrive} ; from:{5_stand_turn}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_PH, ground_to_normal_move, ground_to_special_move, to_burst_RC_blue, to_burst_overdrive} ; from:{5_stand_turn}
 [from_6_walk]
     direct_self_state -> 1_2_3_crouch, 4_walk, 5_stand_turn, 6_walk_to_stand_idle, 7_8_9_pre_jump
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_attack_move, ground_to_dash_move_hold_ver_6dash_only, to_burst_RC_blue, to_burst_overdrive} ; from:{5_stand_turn}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_PH, ground_to_normal_move, ground_to_special_move, to_burst_RC_blue, to_burst_overdrive} ; from:{5_stand_turn}
 [from_6_walk_to_stand_idle]
     direct_self_state -> 1_2_3_crouch, 4_walk, 5_stand_idle, 5_stand_turn, 6_walk, 7_8_9_pre_jump
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_attack_move, ground_to_dash_move_hold_ver_6dash_only, to_burst_RC_blue, to_burst_overdrive} ; from:{5_stand_turn}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_PH, ground_to_normal_move, ground_to_special_move, to_burst_RC_blue, to_burst_overdrive} ; from:{5_stand_turn}
 [from_7_8_9_jump_air_to_stand_idle]
     direct_self_state -> 5_stand_idle
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_attack_move_hold_ver, ground_to_dash_move_hold_ver_all, to_burst_RC_blue, to_burst_overdrive} ; from:{5_stand_idle, 5_stand_turn}
+    calls -> common:{ground_to_UA_move_hold_ver, ground_to_dash_move_HH, ground_to_normal_move_hold_ver, ground_to_special_move_hold_ver, to_burst_RC_blue, to_burst_overdrive} ; from:{5_stand_idle, 5_stand_turn}
 [from_7_8_9_jump_air]
     direct_self_state -> 7_8_9_jump_air, 7_8_9_jump_air_to_stand_idle
     (has non-literal self state write, e.g. = state_cache)
@@ -136,7 +140,7 @@ common_to_burst_overdrive                                         direct->{burst
 [from_6dash_dash]
     direct_self_state -> 4dash_backdash, 5_stand_dash_skid, 7_8_9_pre_jump
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_attack_move_hold_ver, to_burst_RC_blue, to_burst_overdrive} ; from:{5_stand_dash_skid, 7_8_9_pre_jump}
+    calls -> common:{ground_to_UA_move_hold_ver, ground_to_normal_move_hold_ver, ground_to_special_move_hold_ver, to_burst_RC_blue, to_burst_overdrive} ; from:{5_stand_dash_skid, 7_8_9_pre_jump}
 [from_6dash_air_dash]
     direct_self_state -> 7_8_9_jump_air, 7_8_9_jump_air_to_stand_idle
     (has non-literal self state write, e.g. = state_cache)
@@ -144,68 +148,68 @@ common_to_burst_overdrive                                         direct->{burst
 [from_6dash_dash_cancel]
     direct_self_state -> 5_stand_dash_skid
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_special_move, to_burst_RC_blue, to_burst_overdrive} ; from:{5_stand_dash_skid}
+    calls -> common:{ground_to_UA_move, ground_to_special_move, to_burst_RC_blue, to_burst_overdrive} ; from:{5_stand_dash_skid}
 [from_burst_RC_red]
     direct_self_state -> 5_stand_idle, 7_8_9_jump_air
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{air_to_attack_move_hold_ver, air_to_dash_move_hold_ver_all, air_to_special_move_hold_ver, ground_to_attack_move_hold_ver, ground_to_dash_move_hold_ver_all} ; from:{5_stand_idle, 7_8_9_jump_air}
+    calls -> common:{air_to_attack_move_hold_ver, air_to_dash_move_hold_ver_all, air_to_special_move_hold_ver, ground_to_UA_move_hold_ver, ground_to_dash_move_HH, ground_to_normal_move_hold_ver, ground_to_special_move_hold_ver} ; from:{5_stand_idle, 7_8_9_jump_air}
 [from_burst_RC_blue]
     direct_self_state -> 5_stand_idle, 7_8_9_jump_air
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{air_to_attack_move_hold_ver, air_to_dash_move_hold_ver_all, air_to_special_move_hold_ver, ground_to_attack_move_hold_ver, ground_to_dash_move_hold_ver_all} ; from:{5_stand_idle, 7_8_9_jump_air}
+    calls -> common:{air_to_attack_move_hold_ver, air_to_dash_move_hold_ver_all, air_to_special_move_hold_ver, ground_to_UA_move_hold_ver, ground_to_dash_move_HH, ground_to_normal_move_hold_ver, ground_to_special_move_hold_ver} ; from:{5_stand_idle, 7_8_9_jump_air}
 [from_burst_RC_purple]
     direct_self_state -> 5_stand_idle, 7_8_9_jump_air
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{air_to_attack_move_hold_ver, air_to_dash_move_hold_ver_all, air_to_special_move_hold_ver, ground_to_attack_move_hold_ver, ground_to_dash_move_hold_ver_all} ; from:{5_stand_idle, 7_8_9_jump_air}
+    calls -> common:{air_to_attack_move_hold_ver, air_to_dash_move_hold_ver_all, air_to_special_move_hold_ver, ground_to_UA_move_hold_ver, ground_to_dash_move_HH, ground_to_normal_move_hold_ver, ground_to_special_move_hold_ver} ; from:{5_stand_idle, 7_8_9_jump_air}
 [from_burst_RC_yellow]
     direct_self_state -> 5_stand_idle, 7_8_9_jump_air
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{air_to_dash_move_hold_ver_all, ground_to_dash_move_hold_ver_all} ; from:{5_stand_idle, 7_8_9_jump_air}
+    calls -> common:{air_to_dash_move_hold_ver_all, ground_to_dash_move_HH} ; from:{5_stand_idle, 7_8_9_jump_air}
 [from_burst_overdrive]
     direct_self_state -> 5_stand_idle, 7_8_9_jump_air
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{air_to_dash_move_hold_ver_all, ground_to_dash_move_hold_ver_all} ; from:{5_stand_idle, 7_8_9_jump_air}
+    calls -> common:{air_to_dash_move_hold_ver_all, ground_to_dash_move_HH} ; from:{5_stand_idle, 7_8_9_jump_air}
 [from_burst_burst]
 [from_2P]
     direct_self_state -> 1_2_3_crouch, 2P, 5P, 6K, 6P, 6S
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_dash_move_hold_ver_all, ground_to_special_move, to_burst_RC_purple} ; from:{1_2_3_crouch}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_HH, ground_to_special_move, to_burst_RC_purple} ; from:{1_2_3_crouch}
 [from_6P]
     direct_self_state -> 5_stand_idle
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_dash_move_hold_ver_all, ground_to_special_move, to_burst_RC_purple} ; from:{5_stand_idle}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_HH, ground_to_special_move, to_burst_RC_purple} ; from:{5_stand_idle}
 [from_5P]
     direct_self_state -> 2P, 5P, 5_stand_idle, 6K, 6P, 6S
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_dash_move_hold_ver_all, ground_to_special_move, to_burst_RC_purple} ; from:{5_stand_idle}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_HH, ground_to_special_move, to_burst_RC_purple} ; from:{5_stand_idle}
 [from_2K]
     direct_self_state -> 1_2_3_crouch, 2Launcher, 5Launcher, 6K, 6S
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_dash_move_hold_ver_all, ground_to_special_move, to_burst_RC_purple} ; from:{1_2_3_crouch}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_HH, ground_to_special_move, to_burst_RC_purple} ; from:{1_2_3_crouch}
 [from_6K]
     direct_self_state -> 5_stand_idle
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_dash_move_hold_ver_all, ground_to_special_move, to_burst_RC_purple} ; from:{5_stand_idle}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_HH, ground_to_special_move, to_burst_RC_purple} ; from:{5_stand_idle}
 [from_5K]
     direct_self_state -> 2K, 2Launcher, 5Launcher, 5_stand_idle, 6K, 6P, 6S, 6dash_dash_cancel
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_dash_move_hold_ver_all, ground_to_special_move, to_burst_RC_purple} ; from:{5_stand_idle}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_HH, ground_to_special_move, to_burst_RC_purple} ; from:{5_stand_idle}
 [from_2S]
     direct_self_state -> 1_2_3_crouch
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_dash_move_hold_ver_all, ground_to_special_move, to_burst_RC_purple} ; from:{1_2_3_crouch}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_HH, ground_to_special_move, to_burst_RC_purple} ; from:{1_2_3_crouch}
 [from_6S]
     direct_self_state -> 5_stand_idle
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_dash_move_hold_ver_all, ground_to_special_move, to_burst_RC_purple} ; from:{5_stand_idle}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_HH, ground_to_special_move, to_burst_RC_purple} ; from:{5_stand_idle}
 [from_cS]
     direct_self_state -> 2Launcher, 2S, 5Launcher, 5_stand_idle, 6K, 6P, 6S, 6dash_dash_cancel, fS
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_dash_move_hold_ver_all, ground_to_special_move, to_burst_RC_purple} ; from:{5_stand_idle}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_HH, ground_to_special_move, to_burst_RC_purple} ; from:{5_stand_idle}
 [from_fS]
     direct_self_state -> 5_stand_idle
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_dash_move_hold_ver_all, ground_to_special_move, to_burst_RC_purple} ; from:{5_stand_idle}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_HH, ground_to_special_move, to_burst_RC_purple} ; from:{5_stand_idle}
 [from_5H]
     direct_self_state -> 5_stand_idle
     (has non-literal self state write, e.g. = state_cache)
@@ -213,15 +217,15 @@ common_to_burst_overdrive                                         direct->{burst
 [from_2Launcher]
     direct_self_state -> 1_2_3_crouch
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_dash_move_hold_ver_all, ground_to_special_move, to_burst_RC_purple} ; from:{1_2_3_crouch}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_HH, ground_to_special_move, to_burst_RC_purple} ; from:{1_2_3_crouch}
 [from_4_6Launcher]
     direct_self_state -> 5_stand_idle
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_dash_move_hold_ver_all, to_burst_RC_purple} ; from:{5_stand_idle}
+    calls -> common:{ground_to_dash_move_HH, to_burst_RC_purple} ; from:{5_stand_idle}
 [from_5Launcher]
     direct_self_state -> 5_stand_idle
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_dash_move_hold_ver_all, to_burst_RC_purple} ; from:{5_stand_idle}
+    calls -> common:{ground_to_dash_move_HH, to_burst_RC_purple} ; from:{5_stand_idle}
 [from_j5P]
     direct_self_state -> 7_8_9_jump_air, 7_8_9_jump_air_to_stand_idle, j2K, j5K, j5P, j5S
     (has non-literal self state write, e.g. = state_cache)
@@ -249,7 +253,7 @@ common_to_burst_overdrive                                         direct->{burst
 [from_4SP_P]
     direct_self_state -> 1_2_3_crouch, 5_stand_idle, 6_walk, 7_8_9_pre_jump
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_attack_move, ground_to_dash_move_hold_ver_6dash_only, to_burst_RC_blue, to_burst_RC_purple, to_burst_overdrive}
+    calls -> common:{ground_to_UA_move, ground_to_dash_move_HH, ground_to_normal_move, to_burst_RC_blue, to_burst_RC_purple, to_burst_overdrive}
 [from_6SP_P]
     direct_self_state -> 5_stand_idle
     (has non-literal self state write, e.g. = state_cache)
@@ -263,23 +267,20 @@ common_to_burst_overdrive                                         direct->{burst
     (has non-literal self state write, e.g. = state_cache)
     calls -> common:{to_burst_RC_purple} ; from:{5_stand_idle}
 [from_4SP_S]
-    direct_self_state -> 4SP_S_4S, 4SP_K, 4SP_P, 6SP_K, 6SP_P
-    (has non-literal self state write, e.g. = state_cache)
     calls -> common:{to_burst_RC_purple}
 [from_4SP_S_4dash]
 [from_4SP_S_6dash]
 [from_4SP_S_4S]
     direct_self_state -> 5_stand_idle
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{to_burst_RC_blue, to_burst_overdrive} ; from:{5_stand_idle}
-[from_4SP_S_H]
+    calls -> common:{to_burst_RC_purple, to_burst_overdrive} ; from:{5_stand_idle}
 [from_4SP_S_2Launcher]
 [from_4SP_S_6Launcher]
 [from_4SP_S_5Launcher]
 [from_6SP_S]
     direct_self_state -> 5_stand_idle
     (has non-literal self state write, e.g. = state_cache)
-    calls -> common:{ground_to_dash_move_hold_ver_all, to_burst_RC_purple} ; from:{5_stand_idle}
+    calls -> common:{ground_to_dash_move_HH, to_burst_RC_purple} ; from:{5_stand_idle}
 [from_SP_H]
 [from_SP_H_P]
 [from_SP_H_K]

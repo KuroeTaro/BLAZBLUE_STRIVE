@@ -107,7 +107,7 @@ LP / RP 两套完全同构, 只有对象/函数名的 `LP/RP` 与输入侧 `L/R`
 
 ### K. 必杀(地面)
 - `4SP_P, 6SP_P, 4SP_K, 6SP_K, 4SP_S, 6SP_S`(已实现)
-- `4SP_S` 派生(架式后出招): `4SP_S_4dash / 4SP_S_6dash / 4SP_S_4S / 4SP_S_H / 4SP_S_2Launcher / 4SP_S_6Launcher / 4SP_S_5Launcher / 4SP_S_6UA` —— 见 §3.6「已登记但未实现」
+- `4SP_S` 派生(架式后出招): `4SP_S_4dash / 4SP_S_6dash / 4SP_S_4S / 4SP_S_2Launcher / 4SP_S_6Launcher / 4SP_S_5Launcher / 4SP_S_6UA` —— 见 §3.6「已登记但未实现」
 
 ### L. 空中必杀 / 超必杀 / 固有技(UA)—— 全部尚未实现(占位)
 - 空中必杀: `jSP_S, jSP_H, jSP_H_P, jSP_H_K, jSP_H_S, jSP_H_H`
@@ -117,9 +117,9 @@ LP / RP 两套完全同构, 只有对象/函数名的 `LP/RP` 与输入侧 `L/R`
 
 > 分类来源: `tools/classify_states.py` 输出 —— 94 个 dispatch 状态中:
 > **8 个完全没有 from_ 门**: `before_ease_in, active_FD_block_to_idle, throw_teching, throw_teched, wallbreak_hurt, wallbreak_hit, knockout, j2S`
-> **23 个 from_ 门为空(无自机转态逻辑)**: `active_FD_block, burst_burst, 4SP_S_4dash, 4SP_S_6dash, 4SP_S_H, 4SP_S_2Launcher, 4SP_S_6Launcher, 4SP_S_5Launcher, SP_H, SP_H_P, SP_H_K, SP_H_S, SP_H_H, jSP_S, jSP_H, jSP_H_P, jSP_H_K, jSP_H_S, jSP_H_H, 4UA, 6UA, 5UA, 4SP_S_6UA`
+> **22 个 from_ 门为空(无自机转态逻辑)**: `active_FD_block, burst_burst, 4SP_S_4dash, 4SP_S_6dash, 4SP_S_2Launcher, 4SP_S_6Launcher, 4SP_S_5Launcher, SP_H, SP_H_P, SP_H_K, SP_H_S, SP_H_H, jSP_S, jSP_H, jSP_H_P, jSP_H_K, jSP_H_S, jSP_H_H, 4UA, 6UA, 5UA, 4SP_S_6UA`
 >
-> 前 8 个多为「由对方/外部进入、没有自机主动离开逻辑」的受击/终结态(进入边的责任在攻击方); 后 23 个的**攻击类状态(SP_H 系列 / jSP 系列 / UA / 4SP_S 各派生)在 `_anim.lua` 中查不到动画 loader, 属于已登记未实现的占位**(旧设计稿里的派生在代码里大多被注释成 `-- _4UA` 等)。
+> 前 8 个多为「由对方/外部进入、没有自机主动离开逻辑」的受击/终结态(进入边的责任在攻击方); 后 22 个的**攻击类状态(SP_H 系列 / jSP 系列 / UA / 4SP_S 各派生)在 `_anim.lua` 中查不到动画 loader, 属于已登记未实现的占位**(旧设计稿里的派生在代码里大多被注释成 `-- _4UA` 等)。
 
 ---
 
@@ -306,7 +306,7 @@ end
 | → `4SP_P`(4/1+P), → `6SP_P`(6+P) | 已实现(直接转态) |
 | → `4SP_K`(4+K), → `6SP_K`(6+K) | 已实现; `6SP_K` 额外要求场上无 scapegoat(`shot_sys_scapegoat_exist == false`) |
 | → `4SP_S_4S`(4+S) | **已实现但状态名不一致**: 写的是 `state = "4SP_S_4S"`, 而 dispatch 表与门函数名为 `4SP_S_4S`、动画 loader 为 `load_game_scene_anim_char_TRM_4SP_S_4S` → 见 §6 待核对项 |
-| → `4SP_S_4dash / 4SP_S_6dash / 4SP_S_H / 4SP_S_2Launcher / 4SP_S_6Launcher / 4SP_S_5Launcher / 4SP_S_6UA / 4UA / 5UA` | **占位**: 代码里是 `-- _4UA` 等注释, 门为空, `_anim.lua` 无对应 loader |
+| → `4SP_S_4dash / 4SP_S_6dash / 4SP_S_2Launcher / 4SP_S_6Launcher / 4SP_S_5Launcher / 4SP_S_6UA / 4UA / 5UA` | **占位**: 代码里是 `-- _4UA` 等注释, 门为空, `_anim.lua` 无对应 loader |
 
 `4SP_S` 门自身的转态: PRC(紫 RC)→ 派生列表 →(架式结束)未回到中立(门里没有 idle 收招回中立, 现状依赖派生或被打断离开)。`4SP_S_4S` 的门(`from_4SP_S_4S`)是**有内容的**, 动画结束后回 `5_stand_idle`, 但因为上面状态名写错, 这个门目前不会被走到。
 

@@ -276,7 +276,6 @@ function load_game_scene_obj_char_RP()
         ["4SP_S"] = true,
         ["4SP_S_4dash"] = true,
         ["4SP_S_6dash"] = true,
-        ["4SP_S_H"] = true,
         ["4SP_S_2Launcher"] = true,
         ["4SP_S_6Launcher"] = true,
         ["4SP_S_5Launcher"] = true,
@@ -1339,8 +1338,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 "4SP_P_4SP_P",
                 "4SP_P_6SP_S",
                 "4SP_S_4P",
-                "4SP_S_4S",
-                "4SP_S_H"
+                "4SP_S_4S"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] = 
@@ -1377,9 +1375,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 "6SP_K_scapegoat_ease_in",
                 "6SP_K_scapegoat_ease_out",
                 "6SP_K_scapegoat_hurt",
-                "6SP_K_scapegoat_idle",
-                "4SP_S_H_hit",
-                "4SP_S_H_whiff"
+                "6SP_K_scapegoat_idle"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_projectile_game_scene_RP[v.."_projectile"] = 
@@ -2162,12 +2158,6 @@ function state_machine_char_game_scene_char_RP()
                 character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
             end
             state_gate_game_scene_char_RP_from_4SP_S_4S(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
-        end,
-        ["4SP_S_H"] = function()
-            if run_at_current_frame then
-                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
-            end
-            state_gate_game_scene_char_RP_from_4SP_S_H(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
         end,
         ["4SP_S_2Launcher"] = function()
             if run_at_current_frame then
@@ -3245,7 +3235,6 @@ function state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_i
         -- _4SP_S_4dash
         -- _4SP_S_6dash
         -- _4SP_S_4S
-        -- _4SP_S_H
         -- _4SP_S_2Launcher
         -- _4SP_S_6Launcher
         -- _4SP_S_5Launcher
@@ -3335,7 +3324,6 @@ function state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(se
         -- _4SP_S_4dash
         -- _4SP_S_6dash
         -- _4SP_S_4S
-        -- _4SP_S_H
         -- _4SP_S_2Launcher
         -- _4SP_S_6Launcher
         -- _4SP_S_5Launcher
@@ -4010,16 +3998,6 @@ function state_gate_game_scene_char_RP_4SP_S_to_special(self_side_input,opponent
             self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S_4S(self_side_obj_char,opponent_side_obj_char)
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "4SP_S_4S"
-            return true
-        end
-        -- _4SP_S_H
-        if test_input_sys_release(self_side_input["H"]) then
-            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
-                self_side_obj_char[5] = -self_side_obj_char[5]
-            end
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S_H(self_side_obj_char,opponent_side_obj_char)
-            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-            self_side_obj_char["state"] = "4SP_S_H"
             return true
         end
         -- _4SP_S_2Launcher
@@ -7205,89 +7183,6 @@ function state_gate_game_scene_char_RP_from_4SP_S_4S(self_side_input,opponent_si
         if state_gate_game_scene_char_RP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
             return true
         end
-        return true
-    end
-end
-function state_gate_game_scene_char_RP_from_4SP_S_H(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
-    -- _PRC
-    if state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
-        return true
-    end
-    -- _4UA
-    -- _5UA
-    -- _4SP_S_6UA
-    -- _派生
-    if self_side_obj_char["idle_cancel"] then
-        -- _4SP_P
-        if (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 1)
-        and test_input_sys_press(self_side_input["P"]) then
-            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
-                self_side_obj_char[5] = -self_side_obj_char[5]
-            end
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_P(self_side_obj_char,opponent_side_obj_char,"4SP_S_4P",{275,525})
-            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-            self_side_obj_char["state"] = "4SP_P"
-            return true
-        end
-        -- _6SP_P
-        if self_side_obj_char["direction_input"] == 6
-        and test_input_sys_press(self_side_input["P"]) then
-            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
-                self_side_obj_char[5] = -self_side_obj_char[5]
-            end
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_P(self_side_obj_char,opponent_side_obj_char)
-            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-            self_side_obj_char["state"] = "6SP_P"
-            return true
-        end
-        -- _4SP_K
-        if self_side_obj_char["direction_input"] == 4
-        and test_input_sys_press(self_side_input["K"]) then
-            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
-                self_side_obj_char[5] = -self_side_obj_char[5]
-            end
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_K(self_side_obj_char,opponent_side_obj_char)
-            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-            self_side_obj_char["state"] = "4SP_K"
-            return true
-        end
-        -- _6SP_K
-        if self_side_obj_char["direction_input"] == 6
-        and test_input_sys_press(self_side_input["K"])
-        and (not self_side_obj_char["shot_sys_scapegoat_exist"])
-        then
-            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
-                self_side_obj_char[5] = -self_side_obj_char[5]
-            end
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6SP_K(self_side_obj_char,opponent_side_obj_char)
-            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-            self_side_obj_char["state"] = "6SP_K"
-            return true
-        end
-        -- _4SP_S_4dash
-        -- _4SP_S_6dash
-        -- _4SP_S_4S
-        if self_side_obj_char["direction_input"] == 4
-        and test_input_sys_press(self_side_input["S"])
-        then
-            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
-                self_side_obj_char[5] = -self_side_obj_char[5]
-            end
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S_4S(self_side_obj_char,opponent_side_obj_char)
-            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
-            self_side_obj_char["state"] = "4SP_S_4S"
-            return true
-        end
-        -- _4SP_S_2Launcher
-        -- _4SP_S_6Launcher
-        -- _4SP_S_5Launcher
-    end
-    -- _4SP_S
-    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S(self_side_obj_char,opponent_side_obj_char)
-        self_side_obj_char["f"] = 19
-        character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
-        self_side_obj_char["state"] = "4SP_S"
         return true
     end
 end
