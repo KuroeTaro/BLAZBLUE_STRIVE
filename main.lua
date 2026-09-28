@@ -239,7 +239,7 @@ function love.load()
 		{1327,121}
 	}
 	-- game_scene
-    COLLSION_CONER_OUT_STATE = {
+    COLLSION_CONER_IN_STATE = {
         ["block"] = true,
         ["hurt"] = true,
         ["throw_hurt_success"] = true,

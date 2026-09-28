@@ -1,10 +1,14 @@
 import io
+import os
 import re
 import sys
 
+_HERE = os.path.dirname(os.path.abspath(__file__))   # .../TRM/script
+_TRM = os.path.dirname(_HERE)                        # .../TRM
+
 FILES = {
-    "LP": "scenes/game_scene/characters/TRM/left.lua",
-    "RP": "scenes/game_scene/characters/TRM/right.lua",
+    "LP": os.path.join(_TRM, "left.lua"),
+    "RP": os.path.join(_TRM, "right.lua"),
 }
 ARGS = "(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)"
 

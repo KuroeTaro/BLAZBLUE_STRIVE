@@ -1,8 +1,10 @@
 import io
+import os
 import re
 import collections
 
-REL = "scenes/game_scene/characters/TRM/left.lua"
+_HERE = os.path.dirname(os.path.abspath(__file__))   # .../TRM/script
+REL = os.path.join(os.path.dirname(_HERE), "left.lua")
 text = io.open(REL, "r", encoding="utf-8", newline="").read()
 lines = re.split(r"\r?\n", text)
 

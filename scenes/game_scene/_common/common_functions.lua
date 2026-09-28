@@ -1466,20 +1466,7 @@ function common_game_scene_create_hurtstop_wiggle_animation(length,prop,wiggle_a
     return res_anim
 end
 -- camera
-function common_game_scene_nil_load_camera_enclose_anim(obj_char)
-    local obj_camera = obj_stage_game_scene_camera
-    local anim = {}
-    anim[0] = {obj_camera["enclose_percentage"],5}
-    anim[5] = {obj_camera["enclose_percentage"]*0.25,10}
-    anim[10] = {obj_camera["enclose_percentage"]*0.125,15}
-    anim[15] = {0.00,15}
-    anim["prop"] = "enclose_percentage"
-    anim["length"] = 15
-    anim["loop"] = false
-    anim["fix_type"] = true
-    anim["nil_mark"] = true
-    obj_char["camera_enclosing_anim"] = anim
-end
+-- shake_anim
 function common_game_scene_nil_load_camear_shake_anim(obj_char)
     local anim = {}
     anim[0] = {0,1}
@@ -1491,45 +1478,35 @@ function common_game_scene_nil_load_camear_shake_anim(obj_char)
     obj_char["camera_x_shake_anim"] = anim
     obj_char["camera_y_shake_anim"] = anim
 end
-function common_game_scene_counter_ver3_load_camera_enclose_anim(obj_char)
+function common_game_scene_hit_load_camera_shake_anim(obj_char,multiplyer,animation_length)
+    local x = 0
+    local function linear_return(i)
+        return (animation_length-i)/animation_length
+    end
+    local function random_function()
+        x = (x + 0.61803398875) % 1
+        return x
+    end
     local anim = {}
-    local obj_camera = obj_stage_game_scene_camera
-    anim[0] = {obj_camera["enclose_percentage"],5}
-    anim[5] = {obj_camera["enclose_percentage"]*0.5+0.5,10}
-    anim[10] = {obj_camera["enclose_percentage"]*0.25+0.75,20}
-    anim[20] = {obj_camera["enclose_percentage"]*0.0625+0.9375,30}
-    anim[30] = {obj_camera["enclose_percentage"]*0.0156+0.9844,40}
-    anim[40] = {1.00,45}
-    anim[45] = {1.00,50}
-    anim[50] = {0.97,60}
-    anim[60] = {0.69,70}
-    anim[70] = {0.20,80}
-    anim[80] = {0.03,90}
-    anim[90] = {0.00,90}
-    anim["prop"] = "enclose_percentage"
-    anim["length"] = 90
+    for i = 0,animation_length-1 do
+        anim[i] = {(random_function()-0.5)*3*linear_return(i)*13*multiplyer,i+1}
+    end
+    anim[animation_length] = {0*multiplyer,animation_length}
+    anim["prop"] = "3d_pos_x"
+    anim["length"] = animation_length
     anim["loop"] = false
-    anim["fix_type"] = true
-    anim["nil_mark"] = false
-    obj_char["camera_enclosing_anim"] = anim
-end
-function common_game_scene_red_RC_hit_load_camera_enclose_anim(obj_char)
-    local anim = {}
-    local obj_camera = obj_stage_game_scene_camera
-    anim[0] = {obj_camera["enclose_percentage"],2}
-    anim[2] = {obj_camera["enclose_percentage"]*0.2+0.8,5}
-    anim[5] = {obj_camera["enclose_percentage"]*0.05+0.95,10}
-    anim[10] = {obj_camera["enclose_percentage"]*0.0125+0.9875,15}
-    anim[15] = {1.00,20}
-    anim[20] = {0.43,25}
-    anim[25] = {0.17,30}
-    anim[30] = {0.00,30}
-    anim["prop"] = "enclose_percentage"
-    anim["length"] = 30
+    anim["fix_type"] = false
+    obj_char["camera_x_shake_anim"] = anim
+    anim = {}
+    for i = 0,animation_length-1 do
+        anim[i] = {(random_function()-0.5)*3*linear_return(i)*3*multiplyer,i+1}
+    end
+    anim[animation_length] = {0*multiplyer,animation_length}
+    anim["prop"] = "3d_pos_y"
+    anim["length"] = animation_length
     anim["loop"] = false
-    anim["fix_type"] = true
-    anim["nil_mark"] = false
-    obj_char["camera_enclosing_anim"] = anim
+    anim["fix_type"] = false
+    obj_char["camera_y_shake_anim"] = anim
 end
 function common_game_scene_overdrive_load_camera_shake_anim(obj_char)
     local anim = {}
@@ -1604,36 +1581,6 @@ function common_game_scene_overdrive_load_camera_shake_anim(obj_char)
     anim[78] = {0.00,78}
     anim["prop"] = "3d_pos_y"
     anim["length"] = 78
-    anim["loop"] = false
-    anim["fix_type"] = false
-    obj_char["camera_y_shake_anim"] = anim
-end
-function common_game_scene_hit_load_camera_shake_anim(obj_char,multiplyer,animation_length)
-    local x = 0
-    local function linear_return(i)
-        return (animation_length-i)/animation_length
-    end
-    local function random_function()
-        x = (x + 0.61803398875) % 1
-        return x
-    end
-    local anim = {}
-    for i = 0,animation_length-1 do
-        anim[i] = {(random_function()-0.5)*3*linear_return(i)*13*multiplyer,i+1}
-    end
-    anim[animation_length] = {0*multiplyer,animation_length}
-    anim["prop"] = "3d_pos_x"
-    anim["length"] = animation_length
-    anim["loop"] = false
-    anim["fix_type"] = false
-    obj_char["camera_x_shake_anim"] = anim
-    anim = {}
-    for i = 0,animation_length-1 do
-        anim[i] = {(random_function()-0.5)*3*linear_return(i)*3*multiplyer,i+1}
-    end
-    anim[animation_length] = {0*multiplyer,animation_length}
-    anim["prop"] = "3d_pos_y"
-    anim["length"] = animation_length
     anim["loop"] = false
     anim["fix_type"] = false
     obj_char["camera_y_shake_anim"] = anim
@@ -1742,6 +1689,61 @@ function common_game_scene_wallbreak_init_all_camera_shake_enclose_anim(multiply
     anim_y["loop"] = false
     anim_y["fix_type"] = false
     return anim_enclose,anim_x,anim_y
+end
+-- enclose_anim
+function common_game_scene_nil_load_camera_enclose_anim(obj_char)
+    local obj_camera = obj_stage_game_scene_camera
+    local anim = {}
+    anim[0] = {obj_camera["enclose_percentage"],5}
+    anim[5] = {obj_camera["enclose_percentage"]*0.25,10}
+    anim[10] = {obj_camera["enclose_percentage"]*0.125,15}
+    anim[15] = {0.00,15}
+    anim["prop"] = "enclose_percentage"
+    anim["length"] = 15
+    anim["loop"] = false
+    anim["fix_type"] = true
+    anim["nil_mark"] = true
+    obj_char["camera_enclosing_anim"] = anim
+end
+function common_game_scene_counter_ver3_load_camera_enclose_anim(obj_char)
+    local anim = {}
+    local obj_camera = obj_stage_game_scene_camera
+    anim[0] = {obj_camera["enclose_percentage"],5}
+    anim[5] = {obj_camera["enclose_percentage"]*0.5+0.5,10}
+    anim[10] = {obj_camera["enclose_percentage"]*0.25+0.75,20}
+    anim[20] = {obj_camera["enclose_percentage"]*0.0625+0.9375,30}
+    anim[30] = {obj_camera["enclose_percentage"]*0.0156+0.9844,40}
+    anim[40] = {1.00,45}
+    anim[45] = {1.00,50}
+    anim[50] = {0.97,60}
+    anim[60] = {0.69,70}
+    anim[70] = {0.20,80}
+    anim[80] = {0.03,90}
+    anim[90] = {0.00,90}
+    anim["prop"] = "enclose_percentage"
+    anim["length"] = 90
+    anim["loop"] = false
+    anim["fix_type"] = true
+    anim["nil_mark"] = false
+    obj_char["camera_enclosing_anim"] = anim
+end
+function common_game_scene_red_RC_hit_load_camera_enclose_anim(obj_char)
+    local anim = {}
+    local obj_camera = obj_stage_game_scene_camera
+    anim[0] = {obj_camera["enclose_percentage"],2}
+    anim[2] = {obj_camera["enclose_percentage"]*0.2+0.8,5}
+    anim[5] = {obj_camera["enclose_percentage"]*0.05+0.95,10}
+    anim[10] = {obj_camera["enclose_percentage"]*0.0125+0.9875,15}
+    anim[15] = {1.00,20}
+    anim[20] = {0.43,25}
+    anim[25] = {0.17,30}
+    anim[30] = {0.00,30}
+    anim["prop"] = "enclose_percentage"
+    anim["length"] = 30
+    anim["loop"] = false
+    anim["fix_type"] = true
+    anim["nil_mark"] = false
+    obj_char["camera_enclosing_anim"] = anim
 end
 -- countdown
 function common_update_game_scene_char_hitstop_countdown(obj_char)

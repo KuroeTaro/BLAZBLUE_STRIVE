@@ -182,21 +182,29 @@ function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_R
                     obj_char_LP["x"] = box_R[1]+box_R[3]/2+box_L[3]/2
                     return
                 end
-                if COLLSION_CONER_OUT_STATE[obj_char_LP["state"]] then
+                if COLLSION_CONER_IN_STATE[obj_char_LP["state"]] then
                     obj_char_RP["x"] = box_L[1]+box_L[3]/2+box_R[3]/2
                     return
                 end
-                if COLLSION_CONER_OUT_STATE[obj_char_RP["state"]] then
+                if COLLSION_CONER_IN_STATE[obj_char_RP["state"]] then
                     obj_char_LP["x"] = box_R[1]+box_R[3]/2+box_L[3]/2
+                    return
+                end
+                if obj_char_LP[5] == -1 and obj_char_RP[5] == 1 then
+                    obj_char_LP["x"] = box_R[1]+box_R[3]/2+box_L[3]/2
+                    return
+                elseif obj_char_RP[5] == -1 and obj_char_LP[5] == 1 then
+                    obj_char_RP["x"] = box_L[1]+box_L[3]/2+box_R[3]/2
                     return
                 end
                 if obj_char_LP["y"] < obj_char_RP["y"] then
                     obj_char_LP["x"] = box_R[1]+box_R[3]/2+box_L[3]/2
                     return
-                else
+                elseif obj_char_LP["y"] > obj_char_RP["y"] then
                     obj_char_RP["x"] = box_L[1]+box_L[3]/2+box_R[3]/2
                     return
                 end
+                obj_char_LP["x"] = box_R[1]+box_R[3]/2+box_L[3]/2
             end,
             ["1011"] = function()
                 obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
@@ -213,21 +221,29 @@ function collision_pushbox_dynamic_normal_aabb_relocate_x(obj_char_LP,obj_char_R
                     obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
                     return
                 end
-                if COLLSION_CONER_OUT_STATE[obj_char_RP["state"]] then
-                    obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
-                    return
-                end
-                if COLLSION_CONER_OUT_STATE[obj_char_LP["state"]] then
+                if COLLSION_CONER_IN_STATE[obj_char_LP["state"]] then
                     obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
                     return
                 end
-                if obj_char_RP["y"] < obj_char_LP["y"] then
-                    obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
-                    return
-                else
+                if COLLSION_CONER_IN_STATE[obj_char_RP["state"]] then
                     obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
                     return
                 end
+                if obj_char_LP[5] == -1 and obj_char_RP[5] == 1 then
+                    obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
+                    return
+                elseif obj_char_RP[5] == -1 and obj_char_LP[5] == 1 then
+                    obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
+                    return
+                end
+                if obj_char_LP["y"] < obj_char_RP["y"] then
+                    obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
+                    return
+                elseif obj_char_LP["y"] > obj_char_RP["y"] then
+                    obj_char_LP["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
+                    return
+                end
+                obj_char_RP["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
             end
         }
         local this_function = switch[collision_state]
@@ -501,11 +517,11 @@ end
     --                     obj_char_LP["x"] = box_R[1]+distance
     --                     return
     --                 end
-    --                 if COLLSION_CONER_OUT_STATE[obj_char_LP["state"]] then
+    --                 if COLLSION_CONER_IN_STATE[obj_char_LP["state"]] then
     --                     obj_char_RP["x"] = box_L[1]+distance
     --                     return
     --                 end
-    --                 if COLLSION_CONER_OUT_STATE[obj_char_RP["state"]] then
+    --                 if COLLSION_CONER_IN_STATE[obj_char_RP["state"]] then
     --                     obj_char_LP["x"] = box_R[1]+distance
     --                     return
     --                 end
@@ -532,11 +548,11 @@ end
     --                     obj_char_LP["x"] = box_R[1]-distance
     --                     return
     --                 end
-    --                 if COLLSION_CONER_OUT_STATE[obj_char_LP["state"]] then
+    --                 if COLLSION_CONER_IN_STATE[obj_char_LP["state"]] then
     --                     obj_char_RP["x"] = box_L[1]-distance
     --                     return
     --                 end
-    --                 if COLLSION_CONER_OUT_STATE[obj_char_RP["state"]] then
+    --                 if COLLSION_CONER_IN_STATE[obj_char_RP["state"]] then
     --                     obj_char_LP["x"] = box_R[1]-distance
     --                     return
     --                 end

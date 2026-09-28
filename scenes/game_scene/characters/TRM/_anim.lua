@@ -7118,11 +7118,11 @@ function load_game_scene_anim_char_TRM_j5S(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["collision_ground_height_offset"] = 185
         -- sub_obj_table
         -- VFX
-        hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_attack_socket_ver1
+        hit_side_obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_dynamic_ver1
         hit_side_obj_char["hit_VFX_insert_function_argument"] = {10,-315,0.6,1,1,0,false,false}
-        hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_attack_socket_ver1
+        hit_side_obj_char["hit_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_blast_dynamic_ver1
         hit_side_obj_char["hit_block_VFX_insert_function_argument"] = {10,-315,0.3,1,1,0,false,false}
-        hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver1
+        hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_dynamic_ver1
         hit_side_obj_char["hit_counter_VFX_insert_function_argument"] = {10,-315,0.75,1,1,0,false,false}
         hit_side_obj_char["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
         -- SFX

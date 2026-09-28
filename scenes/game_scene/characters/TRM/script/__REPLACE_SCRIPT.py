@@ -7,6 +7,10 @@
 # --   例）local opponent_side_obj_char = obj_char_game_scene_char_RP   -> ..._LP
 # --       common_game_scene_get_character_facing_currect(obj_char_game_scene_char_LP,obj_char_game_scene_char_RP)
 # --           -> common_game_scene_get_character_facing_currect(obj_char_game_scene_char_RP,obj_char_game_scene_char_LP)
+#
+# 用法（在任意目录下均可，路径按本脚本位置解析）:
+#   python <repo>\scenes\game_scene\characters\TRM\script\__REPLACE_SCRIPT.py
+import os
 import re
 
 def replace_content(line: str) -> str:
@@ -42,4 +46,6 @@ def process_file(input_file: str,output_file: str):
 
 
 if __name__ == "__main__":
-    process_file("left.lua","right.lua")
+    # TRM 目录 = 本脚本所在目录(script/)的上一级
+    trm_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    process_file(os.path.join(trm_dir,"left.lua"), os.path.join(trm_dir,"right.lua"))

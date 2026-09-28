@@ -30,7 +30,7 @@ function collision_box_aabb_detection(box_a,box_b)
 end
 
 -- ---- globals the closure references ----
-COLLSION_CONER_OUT_STATE = {}
+COLLSION_CONER_IN_STATE = {}
 obj_char_game_scene_char_RP = nil
 
 -- ---- helpers ----
