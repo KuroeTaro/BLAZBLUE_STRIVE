@@ -9298,7 +9298,7 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
     end
     res[39] = function()
         -- draw_correction
-        hit_side_obj_char[8] = 0
+        hit_side_obj_char[8] = 9
     end
     res[49] = function()
         -- animation_end
