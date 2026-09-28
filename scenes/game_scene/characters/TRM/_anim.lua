@@ -9146,7 +9146,7 @@ end
 -- _4SP_S_6Launcher
 -- _4SP_S_5Launcher
 -- _6SP_S
-function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_char)
+function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_char,sprite_sheet,anchor_pos)
     local res = {}
     local hit_side = hit_side_obj_char["player_side"]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
@@ -9156,7 +9156,7 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
         -- pre_set
         common_game_scene_reset_velocity_by_ground_friction(hit_side_obj_char)
         -- state
-        hit_side_obj_char["sprite_sheet"] = "6SP_S"
+        hit_side_obj_char["sprite_sheet"] = sprite_sheet
         hit_side_obj_char["height"] = "stand" -- stand crouch air OTG wallstick
         hit_side_obj_char["hit_type"] = "strike" -- none strike throw burst
         hit_side_obj_char["hit_guard_type"] = "all" -- none all low mid high
@@ -9322,7 +9322,7 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 0
-        hit_side_obj_char["anchor_pos"] = {200,570}
+        hit_side_obj_char["anchor_pos"] = anchor_pos
         -- camera_animation_load
         common_game_scene_hit_load_camera_shake_anim(hit_side_obj_char,0.54,10)
         common_game_scene_nil_load_camera_enclose_anim(hit_side_obj_char)

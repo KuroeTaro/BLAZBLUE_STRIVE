@@ -112,6 +112,8 @@ local load_attack_name_table = {
     "j4_6Launcher_success",
         -- special
     "4SP_P",
+    "4SP_P_4SP_P",
+    "4SP_P_6SP_S",
     "6SP_P",
     "4SP_K",
     "6SP_K",
