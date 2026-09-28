@@ -9924,6 +9924,82 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_shot(self_si
     end
     return res
 end
+-- shot_sys_oroboros
+function load_game_scene_anim_char_TRM_4SP_S_oroboros_shot(obj_char)
+    local res = {}
+    local obj_camera = obj_stage_game_scene_camera
+    local oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
+    local reticle_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1]+160,obj_char["shot_sys_reticle_stage_pos_current"][2]+160}
+    local center_r = obj_char[5]*character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,reticle_pos)
+    local side = obj_char["player_side"]
+    local move_SFX_table = common_game_scene_get_SFX_move(side)
+    local function update_oroboros_r(obj_char,i)
+        obj_char["shot_sys_oroboros_aim_r"] = center_r*(27-i)/17 + 0.42*(1-(27-i)/17)
+    end
+    res["prop_f"] = "shot_sys_oroboros_f"
+    res["anim_length"] = 28
+    res[0] = function()
+        -- shot_sys_oroboros
+        obj_char["shot_sys_oroboros_aim_r"] = center_r
+        obj_char["shot_sys_oroboros_offset_amount"] = 75
+        obj_char["shot_sys_oroboros_mid"]["sprite_sheet"]  = "5H_oroboros_shot"
+        obj_char["shot_sys_oroboros_mid"][8] = 0
+        -- play_SFX
+        play_obj_audio(move_SFX_table["5H_oroboros_blast"])
+    end
+    res[1] = function()
+        -- shot_sys_oroboros
+        update_oroboros_r(obj_char,10)
+        obj_char["shot_sys_oroboros_mid"][8] = 1
+        -- insert_VFX
+        insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_shot_oroboros_blast(obj_char)
+    end
+    res[3] = function()
+        -- shot_sys_oroboros
+        update_oroboros_r(obj_char,10)
+        obj_char["shot_sys_oroboros_mid"][8] = 2
+    end
+    res[10] = function()
+        -- shot_sys_oroboros
+        update_oroboros_r(obj_char,10)
+        obj_char["shot_sys_oroboros_offset_amount"] = 75*(17-0)/17
+        obj_char["shot_sys_oroboros_mid"][8] = 3
+    end
+    res[15] = function()
+        -- shot_sys_oroboros
+        update_oroboros_r(obj_char,15)
+        obj_char["shot_sys_oroboros_offset_amount"] = 75*(17-5)/17
+        obj_char["shot_sys_oroboros_mid"][8] = 4
+    end
+    res[17] = function()
+        -- shot_sys_oroboros
+        if obj_char[5] ~= obj_char["basic_prop_cache"][5] then
+            update_oroboros_r(obj_char,17)
+        end
+        obj_char["shot_sys_idle_cancel"] = true
+    end
+    res[19] = function()
+        -- shot_sys_oroboros
+        update_oroboros_r(obj_char,19)
+        obj_char["shot_sys_oroboros_offset_amount"] = 75*(17-9)/17
+        obj_char["shot_sys_oroboros_mid"][8] = 5
+    end
+    res[23] = function()
+        -- shot_sys_oroboros
+        update_oroboros_r(obj_char,23)
+        obj_char["shot_sys_oroboros_offset_amount"] = 75*(17-13)/17
+        obj_char["shot_sys_oroboros_mid"][8] = 6
+    end
+    res[27] = function()
+        -- shot_sys_oroboros
+        obj_char["shot_sys_oroboros_aim_r"] = 0.42
+        obj_char["shot_sys_oroboros_offset_amount"] = 0
+    end
+    res[28] = function()
+        -- animation_end
+    end
+    return res
+end
 -- shot_sys_reticle
 function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock(obj_char)
     local res = {}

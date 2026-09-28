@@ -31,7 +31,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     obj_projectile["velocity"] = {0,0}
     obj_projectile["projectile_clash_type"] = 0 -- -1: 只要接触双方同时必然消失 0: 不与其他飞道交互 1-3：飞行道具等级
     obj_projectile["f"] = -1
-    obj_projectile["sprite_sheet"] = "5H_miss_projectile"
+    obj_projectile["sprite_sheet"] = "5H_4SP_S_H_miss_projectile"
     -- projectile_clashed_function nil
     -- enemy_interact_function
     obj_projectile["hitbox_table"] = {}
@@ -202,7 +202,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     -- draw
     obj_projectile["draw"] = function()
         local image_sprite_sheet = hit_side_projectile_sprite_sheet_table[obj_projectile["sprite_sheet"]]
-        if obj_projectile["sprite_sheet"] == "5H_hit_projectile" then
+        if obj_projectile["sprite_sheet"] == "5H_4SP_S_H_hit_projectile" then
             obj_projectile[1] = hurt_side_obj_char["x"]-160
             obj_projectile[2] = hurt_side_obj_char["y"]-hurt_side_obj_char["shot_sys_reticle_height_offset"][hurt_side_obj_char["pushbox"][4]]-160
         end
@@ -218,7 +218,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     obj_projectile[2] = hit_side_obj_char["shot_sys_reticle"][2]
     if (hit_side_obj_char["shot_sys_aim_process"][1] >= hit_side_obj_char["shot_sys_aim_process"][3]) then
         obj_projectile["hitbox_table"] = {{0,0,200,200}}
-        obj_projectile["sprite_sheet"] = "5H_hit_projectile"
+        obj_projectile["sprite_sheet"] = "5H_4SP_S_H_hit_projectile"
     end
     -- insert_projectile
     table.insert(hit_side_obj_char["projectile_front_table"],obj_projectile)

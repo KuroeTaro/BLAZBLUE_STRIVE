@@ -157,6 +157,8 @@ local load_move_VFX_name_table = {
     "6SP_P_arua",
     "6SP_P_curse_ball_spawn_halo",
     "6SP_P_curse_ball_spawner",
+    "4SP_S_H_hit",
+    "4SP_S_H_shot_oroboros_blast",
     "6SP_S"
 }
 for i,v in ipairs(load_move_VFX_name_table) do
@@ -164,8 +166,8 @@ for i,v in ipairs(load_move_VFX_name_table) do
 end
 -- projectile
 local load_projectile_name_table = {
-    "5H_hit",
-    "5H_miss",
+    "5H_4SP_S_H_hit",
+    "5H_4SP_S_H_miss",
     "6SP_P_curse_ball_blast",
     "6SP_P_curse_ball_loop",
     "6SP_K_scapegoat_buff_flow",

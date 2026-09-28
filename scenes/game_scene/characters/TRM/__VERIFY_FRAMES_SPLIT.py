@@ -35,7 +35,7 @@ ORIGINAL = [
     "2P","6P","5P","2S","6S","cS","5H_shot_oroboros_blast","5H_switch","5Launcher","5Launcher_glow","j5S",
     "6SP_P_arua","6SP_P_curse_ball_spawn_halo","6SP_P_curse_ball_spawner","6SP_S",
     # projectile
-    "5H_hit","5H_miss","6SP_P_curse_ball_blast","6SP_P_curse_ball_loop",
+    "5H_4SP_S_H_hit","5H_4SP_S_H_miss","6SP_P_curse_ball_blast","6SP_P_curse_ball_loop",
     # overdrive_badge (direct assign, not in load_name_table)
     "overdrive_badge",
 ]
