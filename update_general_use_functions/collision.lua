@@ -29,20 +29,44 @@ function collision_test_char_on_ground(obj)
     box_B_collision = box[2]+box[4]/2+obj["collision_ground_height_offset"]
     return box_B_collision >= stage_B_collision
 end
-function collision_test_cS_distance_check(self_side_obj_char,opponent_side_obj_char,max_distance)    
+function collision_test_cS_distance_check(self_side_obj_char,opponent_side_obj_char,max_distance,friction,velocity,startup_frame)    
+    -- 有效帧(active)命中前的滑动距离
+    -- 引擎每帧顺序 = 先按当前速度位移 -> 再按阻力衰减(见 main_blocks.update_game_scene_friction)
+    -- 故滑行 startup_frame 帧 = v0 + v1 + ... + v(startup_frame-1)，其中 v(k+1) = v(k) - v(k)/friction
+    -- friction == 0 表示不衰减；参数缺省(旧调用)时滑动距离为 0
+    -- 切换前 friction==1 的状态(walk/idle)会在新动作 res[0] 被 common_game_scene_reset_velocity_by_ground_friction 清零
     local hurtbox = {}
     local hurtbox_front_x = 0
     local hurtbox_edge_x1 = 0
     local hurtbox_edge_x2 = 0
-    local num_hurtbox_table = #opponent_side_obj_char["hurtbox_table"]
-    if #opponent_side_obj_char["hurtbox_table"] == 0 then return true end
-    for i = 1,num_hurtbox_table do
+    local hurtbox_table_size = #opponent_side_obj_char["hurtbox_table"]
+    local self_active_frame_x = 0
+    local self_slide_distance = 0
+    local self_slide_velocity = velocity
+    -- calculate_slide_distance
+    if hurtbox_table_size == 0 then return true end
+    if self_side_obj_char["friction"] == 1 then self_slide_velocity = 0 end
+    if self_slide_velocity ~= 0 then
+        for i = 1,startup_frame do
+            self_slide_distance = self_slide_distance + self_slide_velocity
+            if friction ~= 0 then
+                self_slide_velocity = self_slide_velocity - (self_slide_velocity/friction)
+                if math.abs(self_slide_velocity) < 0.001 then
+                    self_slide_velocity = 0
+                end
+            end
+        end
+    end
+    print(self_slide_distance)
+    self_active_frame_x = self_side_obj_char["x"] + self_slide_distance
+    -- compare_distance
+    for i = 1,hurtbox_table_size do
         hurtbox = opponent_side_obj_char["hurtbox_table"][i]
         hurtbox_front_x = hurtbox[1] * opponent_side_obj_char[5] + opponent_side_obj_char["x"]
         -- hurtbox_front_x 是hurtbox中心，加减width/2得到前后边界
         hurtbox_edge_x1 = hurtbox_front_x + (hurtbox[3]/2) * opponent_side_obj_char[5]
         hurtbox_edge_x2 = hurtbox_front_x - (hurtbox[3]/2) * opponent_side_obj_char[5]
-        if math.abs(hurtbox_edge_x1 - self_side_obj_char["x"]) < max_distance or math.abs(hurtbox_edge_x2 - self_side_obj_char["x"]) < max_distance then
+        if math.abs(hurtbox_edge_x1 - self_active_frame_x) <= max_distance or math.abs(hurtbox_edge_x2 - self_active_frame_x) <= max_distance then
             return true
         end
     end
