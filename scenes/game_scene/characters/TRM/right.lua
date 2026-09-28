@@ -2427,7 +2427,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_oroboros()
     local switch = {
         ["off"] = function()
         end,
-        ["at_the_ready_ease_in"] = function()
+        ["at_the_ready_steady_ease_in"] = function()
             if run_at_current_frame then
                 character_animator(self_side_obj_char["shot_sys_oroboros_front"],self_side_obj_char["shot_sys_oroboros_animation_table"][1])
                 character_animator(self_side_obj_char["shot_sys_oroboros_front"],self_side_obj_char["shot_sys_oroboros_animation_table"][2])
@@ -2442,11 +2442,11 @@ function state_machine_char_game_scene_char_RP_shot_sys_oroboros()
                 self_side_obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(self_side_obj_char["shot_sys_oroboros_mid"])
                 init_character_anim_with(self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3])
                 character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(self_side_obj_char)
-                self_side_obj_char["shot_sys_oroboros_state"] = "at_the_ready"
+                self_side_obj_char["shot_sys_oroboros_state"] = "at_the_ready_steady"
                 return
             end
         end,
-        ["at_the_ready"] = function()
+        ["at_the_ready_steady"] = function()
             if run_at_current_frame then
                 character_animator(self_side_obj_char["shot_sys_oroboros_front"],self_side_obj_char["shot_sys_oroboros_animation_table"][2])
                 character_animator(self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3])
@@ -2454,7 +2454,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_oroboros()
                 character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(self_side_obj_char)
             end
         end,
-        ["at_the_ready_ease_out"] = function()
+        ["at_the_ready_steady_ease_out"] = function()
             if run_at_current_frame then
                 character_animator(self_side_obj_char["shot_sys_oroboros_front"],self_side_obj_char["shot_sys_oroboros_animation_table"][1])
                 character_animator(self_side_obj_char["shot_sys_oroboros_front"],self_side_obj_char["shot_sys_oroboros_animation_table"][2])
@@ -2480,7 +2480,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_oroboros()
                 return
             end
         end,
-        ["at_the_ready_shot"] = function()
+        ["at_the_ready_steady_shot"] = function()
             if run_at_current_frame then
                 character_animator(self_side_obj_char["shot_sys_oroboros_front"],self_side_obj_char["shot_sys_oroboros_animation_table"][1])
                 character_animator(self_side_obj_char["shot_sys_oroboros_front"],self_side_obj_char["shot_sys_oroboros_animation_table"][2])
@@ -2495,7 +2495,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_oroboros()
                 self_side_obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(self_side_obj_char["shot_sys_oroboros_mid"])
                 init_character_anim_with(self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3])
                 character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(self_side_obj_char)
-                self_side_obj_char["shot_sys_oroboros_state"] = "at_the_ready"
+                self_side_obj_char["shot_sys_oroboros_state"] = "at_the_ready_steady"
                 return
             end
         end

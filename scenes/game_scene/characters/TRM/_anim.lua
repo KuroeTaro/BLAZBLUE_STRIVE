@@ -9862,6 +9862,8 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock(self_si
         if quick_clean_hit_cache then
             self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = true
         end
+        --VFX
+        insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_switch(self_side_obj_char)
     end
     res[18] = function()
         -- shot_sys
@@ -9894,8 +9896,6 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock_to_read
         -- shot_sys
         self_side_obj_char["shot_sys_fire_cancel"] = false
         self_side_obj_char["shot_sys_idle_cancel"] = true
-        --VFX
-        insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_switch(self_side_obj_char)
     end
     res[3] = function()
         -- shot_sys
