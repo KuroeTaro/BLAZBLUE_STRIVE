@@ -2984,7 +2984,7 @@ function state_gate_game_scene_char_RP_common_ground_to_normal_move(self_side_in
         return true
     end
     -- _cS
-    if test_input_sys_press(self_side_input["S"]) and collision_test_cS_distance_check(self_side_obj_char,opponent_side_obj_char,305,10,self_side_obj_char["velocity"][1],12) then
+    if test_input_sys_press(self_side_input["S"]) and collision_test_cS_distance_check(self_side_obj_char,opponent_side_obj_char,305,10,self_side_obj_char["velocity"][1],10) then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
@@ -3119,7 +3119,7 @@ function state_gate_game_scene_char_RP_common_ground_to_normal_move_hold_ver(sel
         return true
     end
     -- _cS
-    if test_input_sys_press_or_hold(self_side_input["S"]) and collision_test_cS_distance_check(self_side_obj_char,opponent_side_obj_char,305,10,self_side_obj_char["velocity"][1],12) then
+    if test_input_sys_press_or_hold(self_side_input["S"]) and collision_test_cS_distance_check(self_side_obj_char,opponent_side_obj_char,305,10,self_side_obj_char["velocity"][1],10) then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
