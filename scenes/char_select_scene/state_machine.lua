@@ -408,7 +408,7 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_
         end,
         ["up_twitch"] = function()
             point_linear_animator(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)
-            if get_point_linear_anim_end_state(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)then
+            if get_point_linear_anim_end_state(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y) then
                 obj_bar_mark["state"] = "idle"
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["up"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
@@ -436,7 +436,7 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_
         end,
         ["down_twitch"] = function()
             point_linear_animator(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
-            if get_point_linear_anim_end_state(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)then
+            if get_point_linear_anim_end_state(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y) then
                 obj_bar_mark["state"] = "idle"
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["up"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
@@ -782,7 +782,7 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select_train_du
         end,
         ["up_twitch"] = function()
             point_linear_animator(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)
-            if get_point_linear_anim_end_state(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)then
+            if get_point_linear_anim_end_state(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y) then
                 obj_bar_mark["state"] = "idle"
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["up"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
@@ -808,7 +808,7 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select_train_du
         end,
         ["down_twitch"] = function()
             point_linear_animator(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
-            if get_point_linear_anim_end_state(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)then
+            if get_point_linear_anim_end_state(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y) then
                 obj_bar_mark["state"] = "idle"
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["up"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")

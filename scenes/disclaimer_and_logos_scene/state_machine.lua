@@ -19,7 +19,7 @@ function state_machine_UI_disclaimer_and_logos_scene_singular(obj)
             local anim = anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_in_opacity_0_1
             point_linear_animator(obj,anim)
             -- 如果运行完毕 跳到update状态 结束的第0帧数就跳转到 update
-            if get_point_linear_anim_end_state(obj,anim)then
+            if get_point_linear_anim_end_state(obj,anim) then
                 obj["state"] = "disclaimer_update"
                 SCENE_TIMER = 0
             end
@@ -70,7 +70,7 @@ function state_machine_UI_disclaimer_and_logos_scene_singular(obj)
             local anim = anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_in_opacity_0_1
             point_linear_animator(obj,anim)
             -- 如果ease in 动画运行完成 跳转到 update
-            if get_point_linear_anim_end_state(obj,anim)then
+            if get_point_linear_anim_end_state(obj,anim) then
                 obj["state"] = "kuroe_taro_s_handicraft_logo_update"
                 SCENE_TIMER = 0
             end
@@ -119,7 +119,7 @@ function state_machine_UI_disclaimer_and_logos_scene_singular(obj)
             local anim = anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_in_opacity_0_1
             point_linear_animator(obj,anim)
             -- 如果动画运行完成 则跳转到update
-            if get_point_linear_anim_end_state(obj,anim)then
+            if get_point_linear_anim_end_state(obj,anim) then
                 obj["state"] = "love_logo_update"
                 SCENE_TIMER = 0
             end

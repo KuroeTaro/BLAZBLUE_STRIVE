@@ -96,7 +96,7 @@ function get_joystick_id(js)
     return nil
 end
 function update_try_keyboard_assign(side)
-    if (get_input_sys_anykey_keyboard() or INPUT_SYS_CURRENT_JOYSTICK_TABLE[1] == nil)then
+    if (get_input_sys_anykey_keyboard() or INPUT_SYS_CURRENT_JOYSTICK_TABLE[1] == nil) then
         INPUT_SYS_CURRENT_CONTROLLER[side] = {"keyboard",nil}
     end
 end

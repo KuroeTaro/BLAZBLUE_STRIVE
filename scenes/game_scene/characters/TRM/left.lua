@@ -3999,7 +3999,7 @@ end
 function state_gate_game_scene_char_LP_common_air_to_attack_move(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
-    local direction_input_true_table = { [4] = true,[6] = true,[7] = true,[9] = true }
+    local direction_input_true_table = {[4] = true,[6] = true,[7] = true,[9] = true}
     -- _burst_overdrive
     -- _burst_RC_blue
     -- _active_FD_block
@@ -4080,7 +4080,7 @@ end
 function state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
-    local direction_input_true_table = { [4] = true,[6] = true,[7] = true,[9] = true }
+    local direction_input_true_table = {[4] = true,[6] = true,[7] = true,[9] = true}
     -- _burst_overdrive
     -- _burst_RC_blue
     -- _active_FD_block
@@ -4791,8 +4791,9 @@ function state_gate_game_scene_char_LP_from_throw_success(
     ) then
         self_side_obj_char["pushbox_opponent_collision_active"] = true
         self_side_obj_char["physics_lock"] = false
-        common_game_scene_nil_load_camear_shake_anim(self_side_obj_char)
-        common_game_scene_nil_load_camera_enclose_anim(self_side_obj_char)
+        self_side_obj_char["camera_x_shake_anim"],self_side_obj_char["camera_y_shake_anim"] =
+        common_game_scene_nil_load_camear_shake_anim()
+        self_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
         table.insert(
             obj_stage_main["camera_active_application_table"],
             function()

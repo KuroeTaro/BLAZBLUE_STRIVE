@@ -714,8 +714,8 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         -- state_number
         local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local hurt_side_FD_block =
-        test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or
-        test_input_sys_press_or_hold(hurt_side_input["correction_right"])
+            test_input_sys_press_or_hold(hurt_side_input["correction_left"])
+            or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_char_apply_hurt_velocity(
             hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,hurt_horizontal_velocity,hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
@@ -4444,8 +4444,9 @@ function load_game_scene_anim_char_common_burst_overdrive(
         self_side_obj_char["VFX_common_front_table"] = {}
         self_side_obj_char[8] = 0
         -- camera_animation_load
-        common_game_scene_overdrive_load_camera_shake_anim(self_side_obj_char)
-        common_game_scene_nil_load_camera_enclose_anim(self_side_obj_char)
+        self_side_obj_char["camera_x_shake_anim"],self_side_obj_char["camera_y_shake_anim"] =
+        common_game_scene_overdrive_load_camera_shake_anim()
+        self_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
         -- camera_animation_application
         table.insert(
             obj_stage_main["camera_active_application_table"],

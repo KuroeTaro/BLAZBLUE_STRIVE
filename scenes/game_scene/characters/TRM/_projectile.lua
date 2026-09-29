@@ -155,8 +155,9 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     obj_projectile["camera_y_shake_anim"] = nil
     obj_projectile["camera_enclosing_anim"] = nil
     obj_projectile["enclose_position_offset"] = nil
-    common_game_scene_hit_load_camera_shake_anim(obj_projectile,0.25,15)
-    common_game_scene_nil_load_camera_enclose_anim(obj_projectile)
+    obj_projectile["camera_x_shake_anim"],obj_projectile["camera_y_shake_anim"] =
+    common_game_scene_hit_load_camera_shake_anim(0.25,15)
+    obj_projectile["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
     -- update
     obj_projectile["update"] = function()
         obj_projectile["x"] = hurt_side_obj_char["x"]

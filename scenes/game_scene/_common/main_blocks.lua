@@ -806,7 +806,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char_a,obj_char_b)
                 obj_stage_main["camera_active_application_table"],
                 function()
                     anim_stage_point_linear_game_scene_camera_shake_x,
-                anim_stage_point_linear_game_scene_camera_shake_y
+                    anim_stage_point_linear_game_scene_camera_shake_y
                     = common_game_scene_wallstick_load_camera_shake_anim(1.5)
                     init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
                     init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
@@ -912,9 +912,8 @@ function update_game_scene_HUD_overdrive_timer(obj_char,timer_obj)
             point_linear_animator(timer_obj,anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1)
             point_linear_animator(obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_in)
             if get_point_linear_anim_end_state(timer_obj,anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1)
-            and get_point_linear_anim_end_state(
-                obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_in
-            ) then
+            and get_point_linear_anim_end_state(obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_in)
+            then
                 timer_obj["state"] = "active"
                 obj_char["brightness"] = obj_char["brightness_overdrive_const"]
             elseif obj_char["overdrive_gauge"][3] == "off" then
@@ -936,9 +935,8 @@ function update_game_scene_HUD_overdrive_timer(obj_char,timer_obj)
             point_linear_animator(timer_obj,anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0)
             point_linear_animator(obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_out)
             if get_point_linear_anim_end_state(timer_obj,anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0)
-            and get_point_linear_anim_end_state(
-                obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_out
-            ) then
+            and get_point_linear_anim_end_state(obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_out)
+            then
                 timer_obj["state"] = "default"
                 obj_char["brightness"] = obj_char["brightness_const"]
             elseif obj_char["overdrive_gauge"][3] == "on" then
