@@ -1,0 +1,119 @@
+====================================================================================================
+其它  (1065 行)  随机样例：
+====================================================================================================
+ 133  scenes/char_select_scene/init.lua                   :440
+      audio_SFX_char_select_scene_confirm_0["audio"] = love.audio.newSource("asset/char_select_scene/audio/SFX_confirm_0.ogg","static")
+ 137  scenes/char_select_scene/state_machine.lua          :748
+      and get_point_linear_anim_end_state(obj_icon_cover,anim_UI_point_linear_char_select_scene_icon_select_ease_out_opacity_0p5_0)
+ 123  scenes/game_scene/_common/_VFX.lua                  :2013
+      dx*active_op_side_obj_char[5]*math.sin(r_table_cache[4]) + dy*active_op_side_obj_char[6]*math.cos(r_table_cache[4])
+ 128  scenes/game_scene/_common/_VFX.lua                  :2247
+      dx*active_op_side_obj_char[5]*math.sin(r_table_cache[3]) + dy*active_op_side_obj_char[6]*math.cos(r_table_cache[3]),
+ 156  scenes/game_scene/_common/common_functions.lua      :884
+      function common_game_scene_projectile_RC_red_yellow_hurt_function_common_hurt(hit_side_obj_char,hurt_side_obj_char,obj_projectile,obj_stage_main,obj_camera)
+ 148  scenes/game_scene/_common/init.lua                  :42
+      audio_SFX_game_scene_common["common_throw_tech"]["audio"] = love.audio.newSource("asset/game_scene/common/audio/common_throw_tech.ogg","static")
+ 122  scenes/game_scene/characters/TRM/_anim.lua          :2581
+      hit_side_obj_char["hit_counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_blast_attack_socket_ver0
+ 125  scenes/game_scene/characters/TRM/_anim.lua          :8402
+      character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_init(hit_side_obj_char,hurt_side_obj_char)
+ 176  scenes/game_scene/characters/TRM/_character_function.lua:314
+      (self_side_obj_char["shot_sys_reticle_stage_pos_current"][2]*(self_side_div_value - 1) + self_side_obj_char["shot_sys_reticle_stage_pos_target"][2])/self_side_div_value
+ 156  scenes/game_scene/characters/TRM/_projectile.lua    :1307
+      obj_projectile[1] = obj_projectile["x"] + obj_projectile["hurtstop_wiggle_current_x"] - obj_projectile[5]*obj_projectile["projectile_anchor_pos"][1]
+ 126  scenes/game_scene/characters/TRM/left.lua           :1616
+      audio_SFX_game_scene_move_SFX_LP[v]["audio"] = love.audio.newSource(PLAYER_AUDIO_DATA["move_SFX"][v],"static")
+ 140  scenes/game_scene/characters/TRM/left.lua           :1928
+      state_gate_game_scene_char_LP_from_4dash_backdash(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+ 137  scenes/game_scene/characters/TRM/left.lua           :2156
+      state_gate_game_scene_char_LP_from_4SP_S_6dash(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+ 139  scenes/game_scene/characters/TRM/left.lua           :2442
+      character_animator(self_side_obj_char["shot_sys_oroboros_back"],self_side_obj_char["shot_sys_oroboros_animation_table"][5])
+ 173  scenes/game_scene/characters/TRM/left.lua           :3413
+      self_side_obj_char["air_move"]["air_dash"][1] = math.max(math.min(self_side_obj_char["air_move"]["air_dash"][1] - 1,self_side_obj_char["air_move"]["air_dash"][2]),0)
+ 140  scenes/game_scene/characters/TRM/left.lua           :4525
+      function state_gate_game_scene_char_LP_from_1_2_3_crouch_turn(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+ 134  scenes/game_scene/characters/TRM/left.lua           :5611
+      self_side_obj_char["velocity"][2] = self_side_obj_char["velocity"][2]*1 + self_side_obj_char["velocity_cache"][2]*1.25
+ 131  scenes/game_scene/characters/TRM/left.lua           :7169
+      function state_gate_game_scene_char_LP_from_4SP_S_4S(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+ 124  scenes/game_scene/characters/TRM/right.lua          :557
+      obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["0_general_hurt_hard_knockdown_up"] = {-390,-154}
+ 152  scenes/game_scene/characters/TRM/right.lua          :1861
+      state_gate_game_scene_char_RP_from_1_2_3_crouch_to_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+ 129  scenes/game_scene/characters/TRM/right.lua          :2084
+      state_gate_game_scene_char_RP_from_j2K(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+ 124  scenes/game_scene/characters/TRM/right.lua          :2355
+      character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(self_side_obj_char,opponent_side_obj_char)
+ 147  scenes/game_scene/characters/TRM/right.lua          :2869
+      function state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+ 135  scenes/game_scene/characters/TRM/right.lua          :4258
+      function state_gate_game_scene_char_RP_from_throw_tested(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+ 133  scenes/game_scene/characters/TRM/right.lua          :5347
+      function state_gate_game_scene_char_RP_from_6dash_dash(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+ 126  scenes/game_scene/characters/TRM/right.lua          :6773
+      function state_gate_game_scene_char_RP_from_j5K(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char)
+ 147  scenes/game_scene/stage/alpha.lua                   :418
+      audio_SFX_game_scene_stage["R"][name]["audio"] = love.audio.newSource(STAGE_AUDIO_DATA["character_interactive_SFX"][name],"static")
+ 136  scenes/start_scene/main_blocks.lua                  :32
+      init_point_linear_anim_with(obj_UI_start_scene_main_press_any_key,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity)
+
+====================================================================================================
+if 条件  (709 行)  随机样例：
+====================================================================================================
+ 136  scenes/char_select_scene/state_machine.lua          :111
+      if get_point_linear_anim_end_state(obj,anim_UI_point_linear_char_select_scene_char_select_selecting_ease_out_opacity_1_0p25)
+ 126  scenes/game_scene/characters/TRM/left.lua           :2556
+      if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2]) then
+ 146  scenes/game_scene/characters/TRM/left.lua           :3411
+      if self_side_obj_char["y"] < -320 and test_input_sys_press(self_side_input["dash"]) and self_side_obj_char["air_move"]["air_dash"][1] > 0 then
+ 165  scenes/game_scene/characters/TRM/left.lua           :4170
+      if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+ 148  scenes/game_scene/characters/TRM/left.lua           :4457
+      if state_gate_game_scene_char_LP_from_7_8_9_jump_air(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+ 158  scenes/game_scene/characters/TRM/left.lua           :4729
+      if state_gate_game_scene_char_LP_common_to_burst_overdrive(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
+ 150  scenes/game_scene/characters/TRM/left.lua           :4984
+      if state_gate_game_scene_char_LP_common_ground_to_dash_move_PH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+ 144  scenes/game_scene/characters/TRM/left.lua           :5210
+      if state_gate_game_scene_char_LP_common_to_burst_RC_blue(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+ 164  scenes/game_scene/characters/TRM/left.lua           :5517
+      if state_gate_game_scene_char_LP_common_air_to_special_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+ 158  scenes/game_scene/characters/TRM/left.lua           :5767
+      if state_gate_game_scene_char_LP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+ 153  scenes/game_scene/characters/TRM/left.lua           :6034
+      if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3) and test_input_sys_press(self_side_input["K"]) then
+ 188  scenes/game_scene/characters/TRM/left.lua           :6288
+      if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+ 138  scenes/game_scene/characters/TRM/left.lua           :6502
+      if state_gate_game_scene_char_LP_from_5_stand_idle(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+ 188  scenes/game_scene/characters/TRM/left.lua           :6858
+      if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+ 158  scenes/game_scene/characters/TRM/left.lua           :7171
+      if state_gate_game_scene_char_LP_common_to_burst_overdrive(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
+ 163  scenes/game_scene/characters/TRM/right.lua          :2894
+      if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) and test_input_sys_press_or_hold(self_side_input["dash"]) then
+ 146  scenes/game_scene/characters/TRM/right.lua          :4022
+      if state_gate_game_scene_char_RP_common_to_burst_RC_yellow(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+ 133  scenes/game_scene/characters/TRM/right.lua          :4260
+      if self_side_obj_char["hurt_state"] == "idle" and self_side_obj_char["f"] <= 9 and self_side_input["Launcher"] == "Pressing" then
+ 145  scenes/game_scene/characters/TRM/right.lua          :4552
+      if state_gate_game_scene_char_RP_common_ground_to_UA_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+ 150  scenes/game_scene/characters/TRM/right.lua          :4810
+      if state_gate_game_scene_char_RP_common_ground_to_special_move(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+ 158  scenes/game_scene/characters/TRM/right.lua          :5088
+      if state_gate_game_scene_char_RP_common_to_burst_overdrive(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
+ 144  scenes/game_scene/characters/TRM/right.lua          :5341
+      if state_gate_game_scene_char_RP_from_7_8_9_jump_air(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+ 163  scenes/game_scene/characters/TRM/right.lua          :5614
+      if state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+ 188  scenes/game_scene/characters/TRM/right.lua          :5875
+      if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+ 142  scenes/game_scene/characters/TRM/right.lua          :6131
+      if state_gate_game_scene_char_RP_from_1_2_3_crouch(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+ 188  scenes/game_scene/characters/TRM/right.lua          :6354
+      if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+ 154  scenes/game_scene/characters/TRM/right.lua          :6576
+      if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+ 188  scenes/game_scene/characters/TRM/right.lua          :7034
+      if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then

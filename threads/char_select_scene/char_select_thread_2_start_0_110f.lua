@@ -9,5 +9,11 @@ local thread_data = {}
 -- for i = 1,111 do
 --     thread_data[i] = compress_module("asset/char_select_scene/texture/scene_start_0_110f/"..(i-1)..".dds")
 -- end
-thread_data["scene_start_0_110f"] = compress_module("asset/char_select_scene/texture/scene_start_0_110f.dds")
-love.thread.getChannel( 'thread_data_2' ):push( thread_data )
+thread_data["scene_start_0_110f"] = compress_module(
+    "asset/char_select_scene/texture/scene_start_0_110f.dds"
+)
+love.thread.getChannel(
+    'thread_data_2'
+):push(
+    thread_data
+)

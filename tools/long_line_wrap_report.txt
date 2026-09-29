@@ -1,0 +1,100 @@
+超长行折行报告（阈值 120 字符）
+已折行文件：34 个
+统计：已折行=2095, 整行注释=10, 无法折行=8
+
+超长行折行报告（阈值 120 字符）
+
+scenes/char_select_scene/init.lua  —— 已折行 17 行
+
+scenes/char_select_scene/load_function.lua  —— 已折行 3 行
+
+scenes/char_select_scene/main_blocks.lua  —— 已折行 1 行
+
+scenes/char_select_scene/state_machine.lua  —— 已折行 27 行
+
+scenes/disclaimer_and_logos_scene/state_machine.lua  —— 已折行 9 行
+
+scenes/game_scene/_common/_VFX.lua  —— 已折行 78 行
+      ↳ 仍超长 124 字符 @ 原第 2345 行 [折行后该段本身过长]: common_game_scene_get_VFX_spawn_anchor(obj_char["player_side"])["block_ver0_spawn_anchor_pos"][obj_c
+      ↳ 仍超长 124 字符 @ 原第 2398 行 [折行后该段本身过长]: common_game_scene_get_VFX_spawn_anchor(obj_char["player_side"])["block_ver1_spawn_anchor_pos"][obj_c
+      ↳ 仍超长 124 字符 @ 原第 2454 行 [折行后该段本身过长]: common_game_scene_get_VFX_spawn_anchor(obj_char["player_side"])["block_ver1_spawn_anchor_pos"][obj_c
+      ↳ 仍超长 124 字符 @ 原第 2510 行 [折行后该段本身过长]: common_game_scene_get_VFX_spawn_anchor(obj_char["player_side"])["block_ver1_spawn_anchor_pos"][obj_c
+
+scenes/game_scene/_common/_anim.lua  —— 已折行 3 行
+
+scenes/game_scene/_common/_projectile.lua  —— 已折行 2 行
+      跳过(整行注释)：3
+
+scenes/game_scene/_common/common_functions.lua  —— 已折行 57 行
+      跳过(无法折行)：2
+      ↳ 仍超长 137 字符 @ 原第 1164 行 [折行后该段本身过长]: hurt_side_obj_char["damage_correction"]*hit_side_obj_char["hit_damage_correction_factor"] -- hit_dam
+      ↳ 仍超长 125 字符 @ 原第 1173 行 [超长来自行尾注释，不动注释]: hurt_side_obj_char["wallstick_gauge"][1] + hit_side_obj_char["hit_wallbreak_damage"], -- hit_wallbre
+      ↳ 仍超长 122 字符 @ 原第 1191 行 [超长来自行尾注释，不动注释]: hurt_side_obj_char["risk_gauge"][1] + hit_side_obj_char["block_risk_gauge_gain"], -- block_risk_gaug
+
+scenes/game_scene/_common/draw_functions.lua  —— 已折行 0 行
+      跳过(整行注释)：3
+
+scenes/game_scene/_common/init.lua  —— 已折行 6 行
+
+scenes/game_scene/_common/load_function.lua  —— 已折行 0 行
+      跳过(无法折行)：2
+      ↳ 仍超长 160 字符 @ 原第 28 行 [超长来自行尾注释，不动注释]: THREAD_ONCE_TABLE = {false,false,false,false,false,false,false,false,false,false,false,false,false} 
+      ↳ 仍超长 158 字符 @ 原第 47 行 [超长来自行尾注释，不动注释]: LOAD_ONCE_TABLE = {false,false,false,false,false,false,false,false,false,false,false,false,false} --
+
+scenes/game_scene/_common/main_blocks.lua  —— 已折行 20 行
+      跳过(无法折行)：3
+      跳过(整行注释)：1
+      ↳ 仍超长 146 字符 @ 原第 674 行 [超长来自长字符串字面量，拆开会改字符串内容]: print("or you made a extremely fucking wired hurt animation that could cause both characters to be i
+      ↳ 仍超长 162 字符 @ 原第 675 行 [超长来自长字符串字面量，拆开会改字符串内容]: print("These texts only show when you have a sync wallstick or wallbreak process that cause more tha
+      ↳ 仍超长 125 字符 @ 原第 676 行 [超长来自长字符串字面量，拆开会改字符串内容]: print("You could do that but I won't code a wallstick with it since this would cause a sync wallstic
+
+scenes/game_scene/characters/TRM/_VFX.lua  —— 已折行 12 行
+
+scenes/game_scene/characters/TRM/_anim.lua  —— 已折行 59 行
+      跳过(无法折行)：1
+      ↳ 仍超长 126 字符 @ 原第 9849 行 [超长来自长字符串字面量，拆开会改字符串内容]: and self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit_from_at_the_ready_state"][opponent_si
+
+scenes/game_scene/characters/TRM/_character_function.lua  —— 已折行 79 行
+
+scenes/game_scene/characters/TRM/_projectile.lua  —— 已折行 35 行
+      跳过(整行注释)：3
+
+scenes/game_scene/characters/TRM/left.lua  —— 已折行 788 行
+      ↳ 仍超长 126 字符 @ 原第 568 行 [折行后该段本身过长]: obj_VFX_spawn_anchor_data_game_scene_char_LP["stage_VFX_spawn_anchor"]["0_general_hurt_hard_knockdow
+
+scenes/game_scene/characters/TRM/right.lua  —— 已折行 788 行
+      ↳ 仍超长 126 字符 @ 原第 568 行 [折行后该段本身过长]: obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["0_general_hurt_hard_knockdow
+
+scenes/game_scene/stage/alpha.lua  —— 已折行 24 行
+
+scenes/load_scene/init.lua  —— 已折行 3 行
+
+scenes/start_scene/init.lua  —— 已折行 6 行
+
+scenes/start_scene/main_blocks.lua  —— 已折行 18 行
+
+scenes/start_scene/state_machine.lua  —— 已折行 4 行
+
+threads/game_scene/VFX_HUD.lua  —— 已折行 4 行
+
+threads/game_scene/VFX_move.lua  —— 已折行 6 行
+
+threads/game_scene/VFX_overdrive_heat.lua  —— 已折行 3 行
+
+threads/game_scene/characters/TRM_left_audio.lua  —— 已折行 2 行
+
+threads/game_scene/characters/TRM_left_texture.lua  —— 已折行 3 行
+
+threads/game_scene/characters/TRM_right_audio.lua  —— 已折行 2 行
+
+threads/game_scene/characters/TRM_right_texture.lua  —— 已折行 3 行
+
+threads/game_scene/stage/alpha.lua  —— 已折行 1 行
+
+threads/game_scene/stage/alpha_audio.lua  —— 已折行 1 行
+
+update_general_use_functions/collision.lua  —— 已折行 3 行
+
+update_general_use_functions/debug.lua  —— 已折行 27 行
+
+update_general_use_functions/input_sys.lua  —— 已折行 1 行

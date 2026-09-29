@@ -21,7 +21,9 @@ function load_disclaimer_logos_scene_prep()
     NEXT_PRESET = preset_disclaimer_and_logos_scene
 end
 -- 分步骤将素材加载
-function order_load_disclaimer_and_logo_scene_1_general(load_order)
+function order_load_disclaimer_and_logo_scene_1_general(
+    load_order
+)
     local switch =
     {
         [1] = function()
@@ -29,9 +31,15 @@ function order_load_disclaimer_and_logo_scene_1_general(load_order)
             load_disclaimer_and_logos_scene_anim()
             -- image_table以0开头 因为AE的帧数是以0开头设计的
             image_table_UI_disclaimer_and_logos_scene_singular = {}
-            image_table_UI_disclaimer_and_logos_scene_singular[0] = love.graphics.newImage(ASSET_DATA[1][1])
-            image_table_UI_disclaimer_and_logos_scene_singular[1] = love.graphics.newImage(ASSET_DATA[1][2])
-            image_table_UI_disclaimer_and_logos_scene_singular[2] = love.graphics.newImage(ASSET_DATA[1][3])
+            image_table_UI_disclaimer_and_logos_scene_singular[0] = love.graphics.newImage(
+                ASSET_DATA[1][1]
+            )
+            image_table_UI_disclaimer_and_logos_scene_singular[1] = love.graphics.newImage(
+                ASSET_DATA[1][2]
+            )
+            image_table_UI_disclaimer_and_logos_scene_singular[2] = love.graphics.newImage(
+                ASSET_DATA[1][3]
+            )
         end
     }
     local this_function = switch[load_order]
@@ -39,7 +47,9 @@ function order_load_disclaimer_and_logo_scene_1_general(load_order)
 end
 -- require
 function load_disclaimer_and_logos_scene_require()
-    require_all_in_folder("scenes/disclaimer_and_logos_scene")
+    require_all_in_folder(
+        "scenes/disclaimer_and_logos_scene"
+    )
     -- require("scenes/disclaimer_and_logos_scene/draw_functions")
     -- require("scenes/disclaimer_and_logos_scene/init")
     -- require("scenes/disclaimer_and_logos_scene/load_function")

@@ -43,21 +43,37 @@ REPORT_PATH = os.path.join(ROOT, "tools", "operator_spacing_report.txt")
 EXCLUDE_BASENAMES = {"dkjson.lua", "lovebird.lua", "lume.lua", "lurker.lua"}
 SKIP_DIRS = {".git", "build", "node_modules", "__pycache__"}
 
-# 已批准保留 `=` 列对垂的行（1-based，含端点）。
+# 已批准保留 `=` 列对垂的行（**按行内内容匹配**，不用行号，避免折行/插入后行号漂移）。
 # 除这些行外，其余位置（包括其它对齐写法）一律按规则修正。
 ALIGN_KEEP = {
-    "scenes/char_select_scene/state_machine.lua": [(54, 58), (62, 66)],
+    "scenes/char_select_scene/state_machine.lua": [
+        re.compile(r'^\s*\["[a-z_]+"\]\s{2,}='),   # ["obj"]            = ...
+    ],
 }
 KEPT_DETAIL = "保留对齐（已批准，不修改）"
 NOTE_TAB_DETAIL = "行内单个制表符分隔（附注，需人工确认）"
 
 
-def align_keep_lines(rel_path):
-    """返回该文件需要保留 `=` 列对齐的行号集合（无则空集）。"""
-    out = set()
-    for lo, hi in ALIGN_KEEP.get(rel_path, ()):
-        out.update(range(lo, hi + 1))
-    return out
+def _never_keep(_line):
+    return False
+
+
+def make_keep_checker(src, rel_path):
+    """返回 keep(line) 判定函数：该行是否属于「已批准保留对齐」。
+
+    按行内容匹配（而非行号），这样其它工具插入/删除行后依然成立。
+    """
+    patterns = ALIGN_KEEP.get(rel_path, ())
+    if not patterns:
+        return _never_keep
+    texts = [t[:-1] if t.endswith("\r") else t for t in src.split("\n")]
+
+    def keep(line):
+        if line < 1 or line > len(texts):
+            return False
+        return any(p.match(texts[line - 1]) for p in patterns)
+
+    return keep
 
 KEYWORDS = set(
     "and break do else elseif end false for function goto if in local nil not or "
@@ -296,7 +312,7 @@ def check_trailing_space(src, tokens, line_starts):
 INNER_WS_RE = re.compile(r"[ \t]+")
 
 
-def _inner_ws_runs(src, tokens, line_starts, keep_lines):
+def _inner_ws_runs(src, tokens, line_starts, keep_line):
     """产出「行内、非缩进、非行尾、非字符串/注释内容、非保留对齐」的空白段。
 
     产出元组：(s, e, line, col, run)，s/e 为源码下标，run 为空白文本。
@@ -315,18 +331,18 @@ def _inner_ws_runs(src, tokens, line_starts, keep_lines):
             continue  # 字符串 / 注释内容
 
         line, col = line_of(src, line_starts, s)
-        if line in keep_lines:
+        if keep_line(line):
             continue  # 已批准保留的对齐
         yield s, e, line, col, m.group(0)
 
 
-def check_inner_whitespace(src, tokens, line_starts, keep_lines):
+def check_inner_whitespace(src, tokens, line_starts, keep_line):
     """规则 [5]：行内无意义的连续多个空格（≥2 个字符）。
 
     行内孤立的单个制表符不算规则 [5]，单独作为附注返回。
     """
     out = []
-    for _s, _e, line, col, run in _inner_ws_runs(src, tokens, line_starts, keep_lines):
+    for _s, _e, line, col, run in _inner_ws_runs(src, tokens, line_starts, keep_line):
         if len(run) >= 2:
             out.append((line, col, 5, "行内无意义的连续多个空格（%d 个字符）" % len(run)))
         elif run == "\t":
@@ -334,10 +350,10 @@ def check_inner_whitespace(src, tokens, line_starts, keep_lines):
     return out
 
 
-def inner_ws_edits(src, tokens, line_starts, keep_lines):
+def inner_ws_edits(src, tokens, line_starts, keep_line):
     """规则 [5] 的修复：把行内连续多个空格塔缩为 1 个空格。"""
     return [(s, e, " ")
-            for s, e, _line, _col, run in _inner_ws_runs(src, tokens, line_starts, keep_lines)
+            for s, e, _line, _col, run in _inner_ws_runs(src, tokens, line_starts, keep_line)
             if len(run) >= 2]
 
 
@@ -347,7 +363,7 @@ def check_source(src, rel_path=None):
     line_starts = [0]
     for m in re.finditer("\n", src):
         line_starts.append(m.end())
-    keep_lines = align_keep_lines(rel_path) if rel_path else set()
+    keep_line = make_keep_checker(src, rel_path) if rel_path else _never_keep
 
     violations = []
 
@@ -362,12 +378,12 @@ def check_source(src, rel_path=None):
         elif text in ("=", "=="):
             line, _c = line_of(src, line_starts, start)
             _check_one_space(src, line_starts, start, end, 3, violations,
-                             keep=line in keep_lines)
+                             keep=keep_line(line))
         elif text in ("*", "/", "//"):
             _check_tight(src, line_starts, start, end, 2, violations)
 
     violations.extend(check_trailing_space(src, tokens, line_starts))
-    violations.extend(check_inner_whitespace(src, tokens, line_starts, keep_lines))
+    violations.extend(check_inner_whitespace(src, tokens, line_starts, keep_line))
     violations.sort(key=lambda v: (v[0], v[1], v[2]))
     return violations
 
@@ -440,17 +456,17 @@ def fix_source(src, tokens, rel_path=None):
     line_starts = [0]
     for m in re.finditer("\n", src):
         line_starts.append(m.end())
-    keep_lines = align_keep_lines(rel_path) if rel_path else set()
+    keep_line = make_keep_checker(src, rel_path) if rel_path else _never_keep
 
     edits = []
     for idx in range(len(tokens)):
         line, _c = line_of(src, line_starts, tokens[idx][2])
-        edits.extend(desired_spacing(src, tokens, idx, keep_align=line in keep_lines))
+        edits.extend(desired_spacing(src, tokens, idx, keep_align=keep_line(line)))
     edits.extend(trailing_space_edits(src, tokens))
 
     # 规则 [5]：与规则 [1]~[4] 命中同一区间时，以规则 [1]~[4] 为准
     occupied = set((s, e) for s, e, _rep in edits)
-    edits.extend(e for e in inner_ws_edits(src, tokens, line_starts, keep_lines)
+    edits.extend(e for e in inner_ws_edits(src, tokens, line_starts, keep_line)
                  if (e[0], e[1]) not in occupied)
 
     if not edits:

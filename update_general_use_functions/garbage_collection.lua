@@ -16,7 +16,11 @@
 --   misrepresented as being the original software.
 --3. This notice may not be removed or altered from any source distribution.
 --This function was slightly modified from it's original state
-function set_nuGC(time_budget, memory_ceiling, disable_otherwise)
+function set_nuGC(
+    time_budget,
+    memory_ceiling,
+    disable_otherwise
+)
 	local max_steps = 1000
 	local steps = 0
 	local start_time = love.timer.getTime()
@@ -24,22 +28,35 @@ function set_nuGC(time_budget, memory_ceiling, disable_otherwise)
 		love.timer.getTime() - start_time < time_budget and
 		steps < max_steps
 	do
-		collectgarbage("step", 1)
+		collectgarbage(
+			"step",
+			1
+		)
 		steps = steps + 1
 	end
 	--safety net
-	if collectgarbage("count")/1024 > memory_ceiling then
-		collectgarbage("collect")
+	if collectgarbage(
+		"count"
+	)/1024 > memory_ceiling then
+		collectgarbage(
+			"collect"
+		)
 	end
 	--don't collect gc outside this margin
 	if disable_otherwise then
-		collectgarbage("stop")
+		collectgarbage(
+			"stop"
+		)
 	end
 end
 function get_global_val_num()
 	local count = 0
-	for name, value in pairs(_G) do
+	for name, value in pairs(
+		_G
+	) do
 		count = count + 1
 	end
-	print("全局变量总数是: " .. count)
+	print(
+		"全局变量总数是: " .. count
+	)
 end

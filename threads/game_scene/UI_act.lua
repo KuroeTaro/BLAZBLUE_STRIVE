@@ -5,8 +5,20 @@ local compress_module = image_module.newCompressedData
 local non_compress_module = image_module.newImageData
 local sound_module = auido_module.newSoundData
 local thread_data = {}
-thread_data["act_common_sprite_batch"] = compress_module("asset/game_scene/common/texture/act_common.dds")
-thread_data["act_1_sprite_batch"] = compress_module("asset/game_scene/common/texture/act_1.dds")
-thread_data["act_2_sprite_batch"] = compress_module("asset/game_scene/common/texture/act_2.dds")
-thread_data["act_3_sprite_batch"] = compress_module("asset/game_scene/common/texture/act_3.dds")
-love.thread.getChannel( 'thread_data_2' ):push( thread_data )
+thread_data["act_common_sprite_batch"] = compress_module(
+    "asset/game_scene/common/texture/act_common.dds"
+)
+thread_data["act_1_sprite_batch"] = compress_module(
+    "asset/game_scene/common/texture/act_1.dds"
+)
+thread_data["act_2_sprite_batch"] = compress_module(
+    "asset/game_scene/common/texture/act_2.dds"
+)
+thread_data["act_3_sprite_batch"] = compress_module(
+    "asset/game_scene/common/texture/act_3.dds"
+)
+love.thread.getChannel(
+    'thread_data_2'
+):push(
+    thread_data
+)

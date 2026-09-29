@@ -1,0 +1,135 @@
+已有续行风格统计：缩进增量 = 续行缩进 - 语句行缩进
+
+endswith ','           delta=+0    4838 次
+       draw_general_use_functions.lua:90
+        |        scale*(x - camera_x) + draw_resolution_correction(800),
+        |        scale*(y - camera_y) + draw_resolution_correction(450)
+       draw_general_use_functions.lua:123
+        |        frame[1],
+        |        frame[2],
+       draw_general_use_functions.lua:124
+        |        frame[2],
+        |        frame[3],
+
+endswith '('           delta=+4    1186 次
+       draw_general_use_functions.lua:122
+        |    local quad = love.graphics.newQuad(
+        |        frame[1],
+       draw_general_use_functions.lua:147
+        |    local quad = love.graphics.newQuad(
+        |        frame[1],
+       scenes/char_select_scene/common_functions.lua:16
+        |    init_point_linear_anim_with(
+        |        obj_icon_cover,anim_UI_point_linear_char_select_scene_icon_select_ease_out_opacity_0p5_0
+
+endswith '{'           delta=+4     323 次
+       draw_general_use_functions.lua:89
+        |    local cood_res = {
+        |        scale*(x - camera_x) + draw_resolution_correction(800),
+       main.lua:242
+        |    COLLSION_CONER_IN_STATE = {
+        |        ["block"] = true,
+       scenes/char_select_scene/common_functions.lua:3
+        |    local side_table_char_pos = {
+        |        ["L"] = LEFT_CHAR_SELECT_CHAR_POSITION,["R"] = RIGHT_CHAR_SELECT_CHAR_POSITION
+
+endswith '='           delta=+0     278 次
+       scenes/char_select_scene/load_function.lua:33
+        |    local switch =
+        |    {
+       scenes/char_select_scene/load_function.lua:72
+        |    local switch =
+        |    {
+       scenes/char_select_scene/load_function.lua:75
+        |            image_sprite_sheet_UI_char_select_scene_start_0_110f =
+        |            common_sprite_sheet_load(
+
+endswith '{'           delta=+0      29 次
+       draw_general_use_functions.lua:192
+        |    -- local draw_capsule = {
+        |    --     obj_char["x"] + obj_char["pushbox"][1]*obj_char[5],
+       main.lua:148
+        |	GAME_SPEED_APPLY_FIELD_NAME_TABLE = {
+        |		"0","game_speed","game_speed_subframe",
+       main.lua:171
+        |	DISCLAIMER_AND_LOGOS_POSITION = {
+        |		{175,125},
+
+endswith ','           delta=+4      26 次
+       scenes/game_scene/_common/_anim.lua:4879
+        |        table.insert(obj_stage_main["camera_active_application_table"],
+        |            function()
+       scenes/game_scene/_common/common_functions.lua:46
+        |        table.insert(obj_stage_game_scene_main["wallbreak_active_application_table"],
+        |            function()
+       scenes/game_scene/_common/common_functions.lua:422
+        |    table.insert(obj_stage_main["camera_active_application_table"],
+        |        function()
+
+endswith '='           delta=+4      18 次
+       scenes/game_scene/_common/_VFX.lua:666
+        |    local active_op_hit_counter_VFX_insert_function_argument =
+        |        active_op_side_obj_char["hit_counter_VFX_insert_function_argument"]
+       scenes/game_scene/_common/_VFX.lua:766
+        |    local active_op_hit_counter_VFX_insert_function_argument =
+        |        active_op_side_obj_char["hit_counter_VFX_insert_function_argument"]
+       scenes/game_scene/_common/_anim.lua:924
+        |        local hurt_side_FD_block =
+        |            test_input_sys_press_or_hold(hurt_side_input["correction_left"])
+
+endswith '('           delta=+0      15 次
+       scenes/char_select_scene/draw_functions.lua:3
+        |    -- draw_2d_image_table(
+        |    --     obj_UI_char_select_scene_start_0f_110f,
+       scenes/char_select_scene/draw_functions.lua:13
+        |    -- draw_2d_image_table(
+        |    --     obj_UI_char_select_scene_movie_cover,
+       scenes/char_select_scene/draw_functions.lua:26
+        |    -- draw_2d_image_table(
+        |    --     obj_UI_char_select_scene_start_0f_110f,
+
+endswith ' or'         delta=+0      11 次
+       scenes/game_scene/_common/common_functions.lua:221
+        |        obj_char["direction_input"] == 1 or
+        |        obj_char["direction_input"] == 4 or
+       scenes/game_scene/_common/common_functions.lua:222
+        |        obj_char["direction_input"] == 4 or
+        |        obj_char["direction_input"] == 7
+       scenes/game_scene/_common/common_functions.lua:229
+        |        obj_char["direction_input"] == 9 or
+        |        obj_char["direction_input"] == 6 or
+
+endswith ' and'        delta=+0       9 次
+       scenes/load_scene/main_blocks.lua:21
+        |    if audio_UI_SFX_load_scene_general_start_load["audio"]:isPlaying() == false and
+        |    audio_UI_SFX_load_scene_general_loading["audio"]:isPlaying() == false and
+       scenes/load_scene/main_blocks.lua:22
+        |    audio_UI_SFX_load_scene_general_loading["audio"]:isPlaying() == false and
+        |    LOADING_AUDIO_PLAYED_ONCE == false then
+       scenes/load_scene/main_blocks.lua:34
+        |    if audio_UI_SFX_load_scene_general_start_load["audio"]:isPlaying() == false and
+        |    SCENE_TIMER >= 5 then
+
+endswith '{'           delta=+8       6 次
+       threads/game_scene/characters/TRM_left_audio.lua:23
+        |    {folder = "RC",files = {
+        |            "blue_RC","purple_RC",
+       threads/game_scene/characters/TRM_left_audio.lua:39
+        |    {folder = "normal/5H",files = {
+        |            "5H_knife_clip_0","5H_knife_clip_1","5H_knife_clip_2","5H_knife_whiff",
+       threads/game_scene/characters/TRM_left_audio.lua:59
+        |    {folder = "special/4SP_S",files = {
+        |            "4SP_S_whiff",
+
+endswith ','           delta=-4       2 次
+       scenes/game_scene/characters/TRM/left.lua:1683
+        |                "6SP_S_block","6SP_S_counter","6SP_S_hit","6SP_S_whiff",
+        |            }
+       scenes/game_scene/characters/TRM/right.lua:1683
+        |                "6SP_S_block","6SP_S_counter","6SP_S_hit","6SP_S_whiff",
+        |            }
+
+endswith '['           delta=+4       1 次
+       scenes/game_scene/_common/_anim.lua:3031
+        |        update_before_land_actions[
+        |            math.floor((hurt_side_obj_char["velocity"][2] + hurt_side_obj_char["gravity"]*hurt_side_obj_char["gravity_correction"] + 60)/20) + 1

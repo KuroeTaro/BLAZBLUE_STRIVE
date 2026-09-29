@@ -29,33 +29,58 @@ function load_char_select_scene_prep()
     NEXT_PRESET = preset_char_select_scene
 end
 -- 分步骤将素材加载
-function order_load_char_select_scene_UI_char(load_order)
+function order_load_char_select_scene_UI_char(
+    load_order
+)
     local switch =
     {
         [1] = function()
             -- global use shape image
-            image_UI_char_select_scene_bar_mark = love.graphics.newImage(ASSET_DATA[1][1])
-            image_UI_char_select_scene_char_select_left_alpha = love.graphics.newImage(ASSET_DATA[1][2])
-            image_UI_char_select_scene_char_select_right_alpha = love.graphics.newImage(ASSET_DATA[1][3])
-            image_UI_char_select_scene_control_method_L = love.graphics.newImage(ASSET_DATA[1][4])
-            image_UI_char_select_scene_control_method_R = love.graphics.newImage(ASSET_DATA[1][5])
-            image_UI_char_select_scene_ring = love.graphics.newImage(ASSET_DATA[1][6])
+            image_UI_char_select_scene_bar_mark = love.graphics.newImage(
+                ASSET_DATA[1][1]
+            )
+            image_UI_char_select_scene_char_select_left_alpha = love.graphics.newImage(
+                ASSET_DATA[1][2]
+            )
+            image_UI_char_select_scene_char_select_right_alpha = love.graphics.newImage(
+                ASSET_DATA[1][3]
+            )
+            image_UI_char_select_scene_control_method_L = love.graphics.newImage(
+                ASSET_DATA[1][4]
+            )
+            image_UI_char_select_scene_control_method_R = love.graphics.newImage(
+                ASSET_DATA[1][5]
+            )
+            image_UI_char_select_scene_ring = love.graphics.newImage(
+                ASSET_DATA[1][6]
+            )
                 -- char icon alpha image name
             image_table_UI_char_select_scene_char_icon_alpha = {}
             for i = 1,8 do
-                image_table_UI_char_select_scene_char_icon_alpha[i] = love.graphics.newImage(ASSET_DATA[1]["char_icon_alpha"][i])
+                image_table_UI_char_select_scene_char_icon_alpha[i] =
+                love.graphics.newImage(
+                    ASSET_DATA[1]["char_icon_alpha"][i]
+                )
             end
             image_table_UI_char_select_scene_char_select_char = {}
             for i = 1,8 do
-                image_table_UI_char_select_scene_char_select_char[i] = love.graphics.newImage(ASSET_DATA[1]["char_select_char"][i])
+                image_table_UI_char_select_scene_char_select_char[i] =
+                love.graphics.newImage(
+                    ASSET_DATA[1]["char_select_char"][i]
+                )
             end
             image_table_UI_char_select_scene_char_select_char_txt = {}
             for i = 1,8 do
-                image_table_UI_char_select_scene_char_select_char_txt[i] = love.graphics.newImage(ASSET_DATA[1]["char_select_char_txt"][i])
+                image_table_UI_char_select_scene_char_select_char_txt[i] =
+                love.graphics.newImage(
+                    ASSET_DATA[1]["char_select_char_txt"][i]
+                )
             end
             image_table_UI_char_select_scene_number = {}
             for i = 1,10 do
-                image_table_UI_char_select_scene_number[i - 1] = love.graphics.newImage(ASSET_DATA[1]["number"][i - 1])
+                image_table_UI_char_select_scene_number[i - 1] = love.graphics.newImage(
+                    ASSET_DATA[1]["number"][i - 1]
+                )
             end
         end,
         [2] = function()
@@ -68,7 +93,9 @@ function order_load_char_select_scene_UI_char(load_order)
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
-function order_load_char_select_scene_UI_start_0_110f(load_order)
+function order_load_char_select_scene_UI_start_0_110f(
+    load_order
+)
     local switch =
     {
         [1] = function()
@@ -82,7 +109,9 @@ function order_load_char_select_scene_UI_start_0_110f(load_order)
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
-function order_load_char_select_scene_UI_movie_cover(load_order)
+function order_load_char_select_scene_UI_movie_cover(
+    load_order
+)
     local switch =
     {
         [1] = function()
@@ -98,5 +127,7 @@ function order_load_char_select_scene_UI_movie_cover(load_order)
 end
 -- reuqire
 function load_char_select_scene_require()
-    require_all_in_folder("scenes/char_select_scene")
+    require_all_in_folder(
+        "scenes/char_select_scene"
+    )
 end

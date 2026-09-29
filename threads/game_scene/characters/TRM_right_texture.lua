@@ -68,8 +68,12 @@ local load_universal_name_table = {
     "8_jump",
     "9_jump"
 }
-for i,v in ipairs(load_universal_name_table) do
-    thread_data[v] = compress_module("asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".dds")
+for i,v in ipairs(
+    load_universal_name_table
+) do
+    thread_data[v] = compress_module(
+        "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".dds"
+    )
 end
 -- 攻击类
 local load_attack_name_table = {
@@ -126,8 +130,12 @@ local load_attack_name_table = {
     "4SP_S_4S",
     "6SP_S"
 }
-for i,v in ipairs(load_attack_name_table) do
-    thread_data[v] = compress_module("asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".dds")
+for i,v in ipairs(
+    load_attack_name_table
+) do
+    thread_data[v] = compress_module(
+        "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".dds"
+    )
 end
 -- 角色move_VFX类
 local load_move_VFX_name_table = {
@@ -161,8 +169,13 @@ local load_move_VFX_name_table = {
     "4SP_S_H_shot_oroboros_blast",
     "6SP_S"
 }
-for i,v in ipairs(load_move_VFX_name_table) do
-    thread_data[v.."_move_VFX"] = compress_module("asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".dds")
+for i,v in ipairs(
+    load_move_VFX_name_table
+) do
+    thread_data[v.."_move_VFX"] =
+    compress_module(
+        "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".dds"
+    )
 end
 -- projectile
 local load_projectile_name_table = {
@@ -176,9 +189,21 @@ local load_projectile_name_table = {
     "6SP_K_scapegoat_hurt",
     "6SP_K_scapegoat_idle"
 }
-for i,v in ipairs(load_projectile_name_table) do
-    thread_data[v.."_projectile"] = compress_module("asset/game_scene/characters/TRM/texture/projectile/".."TRM_"..v..".dds")
+for i,v in ipairs(
+    load_projectile_name_table
+) do
+    thread_data[v.."_projectile"] =
+    compress_module(
+        "asset/game_scene/characters/TRM/texture/projectile/".."TRM_"..v..".dds"
+    )
 end
 -- overdrive_badge
-thread_data["overdrive_badge"] = compress_module("asset/game_scene/characters/TRM/texture/overdrive_badge/TRM_overdrive_badge.dds")
-love.thread.getChannel( 'thread_data_11' ):push( thread_data )
+thread_data["overdrive_badge"] =
+compress_module(
+    "asset/game_scene/characters/TRM/texture/overdrive_badge/TRM_overdrive_badge.dds"
+)
+love.thread.getChannel(
+    'thread_data_11'
+):push(
+    thread_data
+)

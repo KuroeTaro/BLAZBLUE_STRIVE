@@ -13,7 +13,9 @@ local file_name_table = {
 }
 for i = 1,#file_name_table do
     local key = file_name_table[i]
-    thread_data["stage_interactive_SFX"][key] = sound_module(base .. "stage_interactive_SFX/" .. key .. ".ogg")
+    thread_data["stage_interactive_SFX"][key] = sound_module(
+        base .. "stage_interactive_SFX/" .. key .. ".ogg"
+    )
 end
 -- move_SFX
 thread_data["move_SFX"] = {}
@@ -51,9 +53,15 @@ local move_SFX_folder_table = {
     {folder = "normal/j5K",files = {"j5K_block","j5K_counter","j5K_hit","j5K_whiff"}},
     {folder = "normal/j5S",files = {"j5S_block","j5S_counter","j5S_hit","j5S_whiff"}},
     {folder = "normal/j4_6Launcher",files = {"j4_6Launcher_hit","j4_6Launcher_throw","j4_6Launcher_whiff"}},
-    {folder = "normal/j5Launcher",files = {"j5Launcher_block","j5Launcher_counter","j5Launcher_hit","j5Launcher_whiff"}},
+    {
+        folder = "normal/j5Launcher",
+        files = {"j5Launcher_block","j5Launcher_counter","j5Launcher_hit","j5Launcher_whiff"}
+    },
     {folder = "special/4SP_P",files = {"4SP_P_clip_0","4SP_P_clip_1","4SP_P_clip_2","4SP_P_knife_whiff"}},
-    {folder = "special/6SP_P",files = {"6SP_P_whiff","6SP_P_curse_ball_ground_bounce","6SP_P_curse_ball_hit","6SP_P_curse_end"}},
+    {
+        folder = "special/6SP_P",
+        files = {"6SP_P_whiff","6SP_P_curse_ball_ground_bounce","6SP_P_curse_ball_hit","6SP_P_curse_end"}
+    },
     {folder = "special/4SP_K",files = {"4SP_K_whiff"}},
     {folder = "special/6SP_K",files = {"6SP_K_scapegoat_ease_in","6SP_K_scapegoat_ease_out"}},
     {folder = "special/4SP_S",files = {
@@ -71,8 +79,14 @@ for i = 1,#move_SFX_folder_table do
     local file_name_table = move_SFX_folder_table[i].files
     for j = 1,#file_name_table do
         local key = file_name_table[j]
-        thread_data["move_SFX"][key] = sound_module(base .. "move_SFX/" .. folder .. "/" .. key .. ".ogg")
+        thread_data["move_SFX"][key] = sound_module(
+            base .. "move_SFX/" .. folder .. "/" .. key .. ".ogg"
+        )
         thread_data["move_SFX_keys"][#thread_data["move_SFX_keys"] + 1] = key
     end
 end
-love.thread.getChannel( 'thread_data_8' ):push( thread_data )
+love.thread.getChannel(
+    'thread_data_8'
+):push(
+    thread_data
+)

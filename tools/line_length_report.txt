@@ -1,0 +1,138 @@
+最长 40 条 >120 字符的行（未做字符串/注释区分）
+
+ 195  scenes/game_scene/characters/TRM/right.lua:4133
+          if self_side_obj_char["hit_cancel"] and state_gate_game_scene_char_RP_common_to_burst_overdrive(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
+
+ 195  scenes/game_scene/characters/TRM/left.lua:4133
+          if self_side_obj_char["hit_cancel"] and state_gate_game_scene_char_LP_common_to_burst_overdrive(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char,"overdrive") then
+
+ 194  scenes/game_scene/characters/TRM/right.lua:2676
+                      self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_unlocking")
+
+ 194  scenes/game_scene/characters/TRM/right.lua:2570
+                      self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_unlocking")
+
+ 194  scenes/game_scene/characters/TRM/right.lua:2551
+                      self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_unlocking")
+
+ 194  scenes/game_scene/characters/TRM/left.lua:2676
+                      self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_unlocking")
+
+ 194  scenes/game_scene/characters/TRM/left.lua:2570
+                      self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_unlocking")
+
+ 194  scenes/game_scene/characters/TRM/left.lua:2551
+                      self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_unlocking")
+
+ 193  scenes/game_scene/characters/TRM/_character_function.lua:486
+              self_side_obj_char["shot_sys_oroboros_animation_table"][2] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(self_side_obj_char["shot_sys_oroboros_front"],"5H_oroboros_loop_front")
+
+ 192  scenes/game_scene/characters/TRM/right.lua:2631
+                      self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_locking")
+
+ 192  scenes/game_scene/characters/TRM/right.lua:2600
+                      self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_locking")
+
+ 192  scenes/game_scene/characters/TRM/right.lua:2583
+                      self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_locking")
+
+ 192  scenes/game_scene/characters/TRM/right.lua:2532
+                      self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_locking")
+
+ 192  scenes/game_scene/characters/TRM/left.lua:2631
+                      self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_locking")
+
+ 192  scenes/game_scene/characters/TRM/left.lua:2600
+                      self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_locking")
+
+ 192  scenes/game_scene/characters/TRM/left.lua:2583
+                      self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_locking")
+
+ 192  scenes/game_scene/characters/TRM/left.lua:2532
+                      self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_locking")
+
+ 191  scenes/game_scene/characters/TRM/_character_function.lua:489
+              self_side_obj_char["shot_sys_oroboros_animation_table"][5] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(self_side_obj_char["shot_sys_oroboros_back"],"5H_oroboros_loop_back")
+
+ 190  scenes/game_scene/characters/TRM/_character_function.lua:487
+              self_side_obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(self_side_obj_char["shot_sys_oroboros_mid"],"5H_oroboros_ease_in_mid")
+
+ 189  scenes/game_scene/characters/TRM/_character_function.lua:352
+          self_side_obj_char["shot_sys_oroboros_animation_table"][2] = load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(self_side_obj_char["shot_sys_oroboros_front"],"5H_oroboros_loop_front")
+
+ 188  scenes/game_scene/characters/TRM/right.lua:7203
+          if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+
+ 188  scenes/game_scene/characters/TRM/right.lua:7175
+          if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+
+ 188  scenes/game_scene/characters/TRM/right.lua:7133
+          if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+
+ 188  scenes/game_scene/characters/TRM/right.lua:7112
+          if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+
+ 188  scenes/game_scene/characters/TRM/right.lua:7093
+          if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+
+ 188  scenes/game_scene/characters/TRM/right.lua:7034
+          if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+
+ 188  scenes/game_scene/characters/TRM/right.lua:6983
+          if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+
+ 188  scenes/game_scene/characters/TRM/right.lua:6945
+          if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+
+ 188  scenes/game_scene/characters/TRM/right.lua:6858
+          if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+
+ 188  scenes/game_scene/characters/TRM/right.lua:6775
+          if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+
+ 188  scenes/game_scene/characters/TRM/right.lua:6676
+          if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+
+ 188  scenes/game_scene/characters/TRM/right.lua:6593
+          if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+
+ 188  scenes/game_scene/characters/TRM/right.lua:6571
+          if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+
+ 188  scenes/game_scene/characters/TRM/right.lua:6549
+          if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+
+ 188  scenes/game_scene/characters/TRM/right.lua:6515
+          if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+
+ 188  scenes/game_scene/characters/TRM/right.lua:6471
+          if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+
+ 188  scenes/game_scene/characters/TRM/right.lua:6354
+          if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+
+ 188  scenes/game_scene/characters/TRM/right.lua:6322
+          if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+
+ 188  scenes/game_scene/characters/TRM/right.lua:6288
+          if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+
+ 188  scenes/game_scene/characters/TRM/right.lua:6179
+          if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+
+--- 最常见的行首前缀（>120 行）---
+   240  self_side_obj_char["character_animation"]
+    50  if not self_side_obj_char["idle_cancel"] and state_gate_game
+    40  if state_gate_game_scene_char_RP_common_ground_to_dash_move_
+    40  if state_gate_game_scene_char_LP_common_ground_to_dash_move_
+    30  if state_gate_game_scene_char_RP_from_5_stand_idle(self_side
+    30  if state_gate_game_scene_char_LP_from_5_stand_idle(self_side
+    29  if state_gate_game_scene_char_RP_common_ground_to_special_mo
+    29  if state_gate_game_scene_char_LP_common_ground_to_special_mo
+    27  if state_gate_game_scene_char_RP_common_to_burst_overdrive(s
+    27  if state_gate_game_scene_char_LP_common_to_burst_overdrive(s
+    24  if state_gate_game_scene_char_RP_common_ground_to_UA_move(se
+    24  if state_gate_game_scene_char_LP_common_ground_to_UA_move(se
+    22  if common_game_scene_check_crouch_direction(self_side_obj_ch
+    21  self_side_obj_char["shot_sys_reticle_animation_table"][2]
+    20  if (self_side_obj_char["direction_input"]

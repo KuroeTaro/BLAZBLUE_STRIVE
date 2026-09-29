@@ -5,17 +5,16 @@ Lua 格式检查报告（运算符空格 + 行尾空白）
 规则 [4] 行尾不允许残留空白（空格 / 制表符）
 规则 [5] 行内不允许无意义的连续多个空格（≥2 个字符；字符串/注释内容除外）
 检查范围：71 个 Lua 文件（已排除 dkjson / lovebird / lume / lurker）
-已修复文件：12 个（全部通过 token 序列一致性校验）
 违规文件：0 个 | 规则[1]：0 处 | 规则[2]：0 处 | 规则[3]：0 处 | 规则[4]：0 处 | 规则[5]：0 处
 
 保留 `=` 列对齐（已批准，不修改）：10 处
-    scenes/char_select_scene/state_machine.lua:54:32              ["obj"]            = obj_UI_char_select_scene_char_select_left,
-    scenes/char_select_scene/state_machine.lua:55:32              ["char"]           = obj_UI_char_select_scene_char_select_char_left,
-    scenes/char_select_scene/state_machine.lua:56:32              ["text"]           = obj_UI_char_select_scene_char_select_text_left,
-    scenes/char_select_scene/state_machine.lua:57:32              ["icon_cover"]     = obj_UI_char_select_scene_icon_select_left,
-    scenes/char_select_scene/state_machine.lua:58:32              ["bar_mark"]       = obj_UI_char_select_scene_bar_mark_left,
-    scenes/char_select_scene/state_machine.lua:62:32              ["obj"]            = obj_UI_char_select_scene_char_select_right,
-    scenes/char_select_scene/state_machine.lua:63:32              ["char"]           = obj_UI_char_select_scene_char_select_char_right,
-    scenes/char_select_scene/state_machine.lua:64:32              ["text"]           = obj_UI_char_select_scene_char_select_text_right,
-    scenes/char_select_scene/state_machine.lua:65:32              ["icon_cover"]     = obj_UI_char_select_scene_icon_select_right,
-    scenes/char_select_scene/state_machine.lua:66:32              ["bar_mark"]       = obj_UI_char_select_scene_bar_mark_right,
+    scenes/char_select_scene/state_machine.lua:67:32              ["obj"]            = obj_UI_char_select_scene_char_select_left,
+    scenes/char_select_scene/state_machine.lua:68:32              ["char"]           = obj_UI_char_select_scene_char_select_char_left,
+    scenes/char_select_scene/state_machine.lua:69:32              ["text"]           = obj_UI_char_select_scene_char_select_text_left,
+    scenes/char_select_scene/state_machine.lua:70:32              ["icon_cover"]     = obj_UI_char_select_scene_icon_select_left,
+    scenes/char_select_scene/state_machine.lua:71:32              ["bar_mark"]       = obj_UI_char_select_scene_bar_mark_left,
+    scenes/char_select_scene/state_machine.lua:75:32              ["obj"]            = obj_UI_char_select_scene_char_select_right,
+    scenes/char_select_scene/state_machine.lua:76:32              ["char"]           = obj_UI_char_select_scene_char_select_char_right,
+    scenes/char_select_scene/state_machine.lua:77:32              ["text"]           = obj_UI_char_select_scene_char_select_text_right,
+    scenes/char_select_scene/state_machine.lua:78:32              ["icon_cover"]     = obj_UI_char_select_scene_icon_select_right,
+    scenes/char_select_scene/state_machine.lua:79:32              ["bar_mark"]       = obj_UI_char_select_scene_bar_mark_right,
