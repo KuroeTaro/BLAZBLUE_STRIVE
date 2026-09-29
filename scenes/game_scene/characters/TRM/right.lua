@@ -2551,7 +2551,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(
                     self_side_obj_char,opponent_side_obj_char
                 )
-                character_function_game_scene_TRM_shot_sys_ability_gauge_use(self_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ability_gauge_use(self_side_obj_char)
                 return
             end
             if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"]) then
@@ -2591,7 +2591,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(
                     self_side_obj_char,opponent_side_obj_char
                 )
-                character_function_game_scene_TRM_shot_sys_ability_gauge_use(self_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ability_gauge_use(self_side_obj_char)
                 return
             end
         end,
@@ -2610,7 +2610,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(
                     self_side_obj_char,opponent_side_obj_char
                 )
-                character_function_game_scene_TRM_shot_sys_ability_gauge_use(self_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ability_gauge_use(self_side_obj_char)
                 return
             end
             if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"]) then
@@ -2626,6 +2626,11 @@ function state_machine_char_game_scene_char_RP_shot_sys()
             end
             if self_side_obj_char["shot_sys_fire_cancel"] and test_input_sys_release(self_side_input["H"])
             and self_side_obj_char["state"] ~= "hitstop" and self_side_obj_char["ability_gauge"][1] > 0 then
+                character_function_game_scene_TRM_shot_sys_at_the_steady_shot_init(
+                    self_side_obj_char,opponent_side_obj_char
+                )
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ability_gauge_use(self_side_obj_char)
+                return
             end
         end,
         ["at_the_steady_lock_to_off"] = function()
@@ -2662,7 +2667,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(
                     self_side_obj_char,opponent_side_obj_char
                 )
-                character_function_game_scene_TRM_shot_sys_ability_gauge_use(self_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_ability_gauge_use(self_side_obj_char)
                 return
             end
             if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"]) then

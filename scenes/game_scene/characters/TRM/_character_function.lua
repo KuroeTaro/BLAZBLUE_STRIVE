@@ -99,14 +99,6 @@ function character_function_game_scene_TRM_hitstop_force_delay_gatling_cancel_in
 end
 -- shot_sys_function
 -- common_function_of_shot_sys
-function character_function_game_scene_TRM_shot_sys_ability_gauge_use(obj_char)
-    local current_ability_gauge = obj_char["ability_gauge"][1]
-    if current_ability_gauge >= 100 and current_ability_gauge % 100 == 0 then
-        obj_char["ability_gauge"][1] = current_ability_gauge - 100
-    else
-        obj_char["ability_gauge"][1] = math.floor(current_ability_gauge/100)*100
-    end
-end
 function character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(
     self_side_obj_char,opponent_side_obj_char,offset_multiplier
 )
@@ -129,59 +121,6 @@ function character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(
     self_side_obj_char["shot_sys_reticle"][2] = self_side_obj_char["shot_sys_reticle_stage_pos_current"][2]
 end
 -- common_function_of_shot_sys_at_the_ready
--- at_the_ready_uncommon_projectile_block_function
-function character_function_game_scene_TRM_shot_sys_at_the_ready_block_test(hit_obj,hurt_side_obj_char)
-    -- block_test
-    local block_bool = false
-    local block_direction = hurt_side_obj_char["direction_input"]
-    local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
-    local hurt_side_FD_block =
-    test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or
-    test_input_sys_press_or_hold(hurt_side_input["correction_right"])
-    -- low mid high all
-    -- air non_air
-    -- FD
-        -- air low ok
-        -- air mid ok
-        -- air high ok
-        -- air all ok
-        -- non_air low block_direction == 1 ok
-        -- non_air mid block_direction == 4||7 ok
-        -- non_air high ok
-        -- non_air all ok
-    -- not_FD
-        -- air low ok
-        -- air mid ok
-        -- air all ok
-        -- non_air low block_direction == 1 ok
-        -- non_air mid block_direction == 4||7 ok
-        -- non_air high ok
-        -- non_air all ok
-    if hurt_side_obj_char["hurt_state"] == "idle" and common_game_scene_check_block_direction(hurt_side_obj_char) then
-        if hurt_side_FD_block then
-            if hurt_side_obj_char["height"] == "air" then
-                block_bool = true
-            elseif hit_obj["hit_guard_type"] == "high" or hit_obj["hit_guard_type"] == "all" then
-                block_bool = true
-            end
-        else
-            if hurt_side_obj_char["height"] == "air" and hit_obj["hit_guard_type"] ~= "high" then
-                block_bool = true
-            elseif hit_obj["hit_guard_type"] == "all" then
-                block_bool = true
-            end
-        end
-        if block_direction == 1 and hit_obj["hit_guard_type"] == "low" then
-            block_bool = true
-        elseif (block_direction == 4 or block_direction == 7) and hit_obj["hit_guard_type"] == "mid" then
-            block_bool = true
-        elseif hurt_side_obj_char["height"] ~= "air" and hit_obj["hit_guard_type"] == "high" then
-            block_bool = true
-        end
-    end
-    -- no_cross_up_protection_for_this_you_little_fuck
-    return block_bool
-end
 -- at_the_ready/aim_process_init
 function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
     if hurt_side_obj_char["shot_sys_at_the_ready_instant_aim_state"][hurt_side_obj_char["state"]] then
@@ -246,6 +185,61 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculati
     end
     if center_r > 3.1416 then center_r = center_r - 2*3.1416 end
     return center_r
+end
+-- at_the_ready/ability_gauge_use
+function character_function_game_scene_TRM_shot_sys_at_the_ready_ability_gauge_use(obj_char)
+    local current_ability_gauge = obj_char["ability_gauge"][1]
+    if current_ability_gauge >= 100 and current_ability_gauge % 100 == 0 then
+        obj_char["ability_gauge"][1] = current_ability_gauge - 100
+    else
+        obj_char["ability_gauge"][1] = math.floor(current_ability_gauge/100)*100
+    end
+end
+-- at_the_ready_uncommon_projectile_block_function
+function character_function_game_scene_TRM_shot_sys_at_the_ready_block_test(hit_obj,hurt_side_obj_char)
+    -- block_test
+    local block_bool = false
+    local block_direction = hurt_side_obj_char["direction_input"]
+    local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
+    local hurt_side_FD_block =
+        test_input_sys_press_or_hold(hurt_side_input["correction_left"])
+        or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
+    -- low mid high all
+    -- air non_air
+    -- FD
+        -- air low ok
+        -- air mid ok
+        -- air high ok
+        -- air all ok
+        -- non_air low block_direction == 1 ok
+        -- non_air mid block_direction == 4||7 ok
+        -- non_air high ok
+        -- non_air all ok
+    -- not_FD
+        -- air low ok
+        -- air mid ok
+        -- air all ok
+        -- non_air low block_direction == 1 ok
+        -- non_air mid block_direction == 4||7 ok
+        -- non_air high ok
+        -- non_air all ok
+    if hurt_side_obj_char["hurt_state"] == "idle" and common_game_scene_check_block_direction(hurt_side_obj_char) then
+        if hurt_side_FD_block then
+            if hurt_side_obj_char["height"] == "air" then
+                block_bool = true
+            elseif hit_obj["hit_guard_type"] == "high" or hit_obj["hit_guard_type"] == "all" then
+                block_bool = true
+            end
+        else
+            if hurt_side_obj_char["height"] == "air" and hit_obj["hit_guard_type"] ~= "high" then
+                block_bool = true
+            elseif hit_obj["hit_guard_type"] == "all" then
+                block_bool = true
+            end
+        end
+    end
+    -- no_cross_up_protection_for_this_you_little_fuck
+    return block_bool
 end
 -- at_the_ready/shot_sys_oroboros_pos_update
 function character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_init(obj_char)

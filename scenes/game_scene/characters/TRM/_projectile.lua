@@ -280,8 +280,8 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         -- state_number
         local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local hurt_side_FD_block =
-        test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or
-        test_input_sys_press_or_hold(hurt_side_input["correction_right"])
+            test_input_sys_press_or_hold(hurt_side_input["correction_left"])
+            or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_projectile_apply_hurt_velocity(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,hurt_horizontal_velocity,hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
@@ -400,8 +400,8 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
         -- state_number
         local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local hurt_side_FD_block =
-        test_input_sys_press_or_hold(hurt_side_input["correction_left"]) or
-        test_input_sys_press_or_hold(hurt_side_input["correction_right"])
+            test_input_sys_press_or_hold(hurt_side_input["correction_left"])
+            or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_projectile_apply_hurt_velocity(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,hurt_horizontal_velocity,hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
