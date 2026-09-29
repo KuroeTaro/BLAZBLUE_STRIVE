@@ -1,6 +1,6 @@
 function draw_resolution_correction(length)
     local ratio = love.graphics.getWidth()/1600
-    local result = length * ratio
+    local result = length*ratio
     return result
 end
 function draw_2d_image(obj,image)
@@ -16,7 +16,7 @@ function draw_2d_image(obj,image)
     love.graphics.setColor(1,1,1,obj[4])
     love.graphics.draw(image,x,y,r,sx,sy)
     love.graphics.setColor(1,1,1,1)
-end 
+end
 function draw_2d_image_table(obj,image_table)
     local x = draw_resolution_correction(obj[1])
     local y = draw_resolution_correction(obj[2])
@@ -51,7 +51,7 @@ function draw_3d_image(obj_camera,obj,image)
     local f = obj[8]
     local opacity = obj[4]
     local camera_z = obj_camera[3]
-    local scale = draw_resolution_correction(800)/(z-camera_z)
+    local scale = draw_resolution_correction(800)/(z - camera_z)
     local cood_res = draw_3d_point_to_2D(obj_camera,obj)
     if opacity == 0 then
         return
@@ -68,7 +68,7 @@ function draw_3d_image_table(obj_camera,obj,image_table)
     local f = obj[8]
     local opacity = obj[4]
     local camera_z = obj_camera[3]
-    local scale = draw_resolution_correction(800)/(z-camera_z)
+    local scale = draw_resolution_correction(800)/(z - camera_z)
     local cood_res = draw_3d_point_to_2D(obj_camera,obj)
     if opacity == 0 then
         return
@@ -85,25 +85,25 @@ function draw_3d_point_to_2D(obj_camera,obj)
     local camera_x = obj_camera[1]
     local camera_y = obj_camera[2]
     local camera_z = obj_camera[3]
-    local scale = draw_resolution_correction(800)/(z-camera_z)
+    local scale = draw_resolution_correction(800)/(z - camera_z)
     local cood_res = {
-        scale * (x - camera_x) + draw_resolution_correction(800),
-        scale * (y - camera_y) + draw_resolution_correction(450)
+        scale*(x - camera_x) + draw_resolution_correction(800),
+        scale*(y - camera_y) + draw_resolution_correction(450)
     }
     return cood_res
 end
 function draw_sector(x,y,radius,startAngle,endAngle,segments)
     -- 计算每个三角形的角度增量
-    local angleIncrement = (endAngle - startAngle) / segments
+    local angleIncrement = (endAngle - startAngle)/segments
     -- 画扇形
     for i = 0,segments do
-        local angle1 = startAngle + i * angleIncrement
-        local angle2 = startAngle + (i + 1) * angleIncrement
+        local angle1 = startAngle + i*angleIncrement
+        local angle2 = startAngle + (i + 1)*angleIncrement
         -- 计算每个三角形的三个顶点
-        local x1 = x + radius * math.cos(angle1)
-        local y1 = y + radius * math.sin(angle1)
-        local x2 = x + radius * math.cos(angle2)
-        local y2 = y + radius * math.sin(angle2)
+        local x1 = x + radius*math.cos(angle1)
+        local y1 = y + radius*math.sin(angle1)
+        local x2 = x + radius*math.cos(angle2)
+        local y2 = y + radius*math.sin(angle2)
         -- 绘制三角形
         love.graphics.polygon("fill",x,y,x1,y1,x2,y2)
     end
@@ -138,7 +138,7 @@ function draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,quad_name)
     local r = obj[7]
     local opacity = obj[4]
     local camera_z = obj_camera[3]
-    local scale = draw_resolution_correction(800)/(z-camera_z)
+    local scale = draw_resolution_correction(800)/(z - camera_z)
     local cood_res = draw_3d_point_to_2D(obj_camera,obj)
     if opacity == 0 then
         return
@@ -164,7 +164,7 @@ function draw_3d_color_box(obj_camera,obj_box,color)
     local sy = obj_box[5]
     local z = obj_box[3]
     local camera_z = obj_camera[3]
-    local scale = draw_resolution_correction(800)/(z-camera_z)
+    local scale = draw_resolution_correction(800)/(z - camera_z)
     love.graphics.setColor(color[1],color[2],color[3],color[4])
     love.graphics.rectangle("fill",cood_res[1],cood_res[2],obj_box["w"]*scale*sx,obj_box["h"]*scale*sy)
     love.graphics.setColor(1,1,1,1)

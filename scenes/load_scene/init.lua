@@ -1,4 +1,4 @@
--- 只有load场景使用init前缀 
+-- 只有load场景使用init前缀
 -- 其他场景有load和unload配套使用
 function init_load_scene_obj()
     -- 场景object
@@ -62,7 +62,7 @@ function init_load_scene_anim()
     anim_UI_frame_load_scene_type_in_mark_blink_opacity["prop"] = 4
     anim_UI_frame_load_scene_type_in_mark_blink_opacity["length"] = 20
     anim_UI_frame_load_scene_type_in_mark_blink_opacity["loop"] = true
-    -- dabo_trig_ease_in_x 
+    -- dabo_trig_ease_in_x
     anim_UI_frame_load_scene_dabo_trig_ease_in_x = {}
     anim_UI_frame_load_scene_dabo_trig_ease_in_x[0] = 1280
     anim_UI_frame_load_scene_dabo_trig_ease_in_x[2] = 1250

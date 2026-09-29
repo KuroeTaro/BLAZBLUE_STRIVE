@@ -1,0 +1,130 @@
+`=` 等号实际对齐情况清单（需人工审查）
+共 45 处：左侧对齐多空格 + 右侧多空格/制表符
+
+====================================================================================================
+scenes/char_select_scene/init.lua   (1 处)
+====================================================================================================
+
+  [L]   419:80       anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity  = {}
+
+====================================================================================================
+scenes/char_select_scene/state_machine.lua   (10 处)
+====================================================================================================
+
+  [L]    54:32               ["obj"]            = obj_UI_char_select_scene_char_select_left,
+  [L]    55:32               ["char"]           = obj_UI_char_select_scene_char_select_char_left,
+  [L]    56:32               ["text"]           = obj_UI_char_select_scene_char_select_text_left,
+  [L]    57:32               ["icon_cover"]     = obj_UI_char_select_scene_icon_select_left,
+  [L]    58:32               ["bar_mark"]       = obj_UI_char_select_scene_bar_mark_left,
+
+  [L]    62:32               ["obj"]            = obj_UI_char_select_scene_char_select_right,
+  [L]    63:32               ["char"]           = obj_UI_char_select_scene_char_select_char_right,
+  [L]    64:32               ["text"]           = obj_UI_char_select_scene_char_select_text_right,
+  [L]    65:32               ["icon_cover"]     = obj_UI_char_select_scene_icon_select_right,
+  [L]    66:32               ["bar_mark"]       = obj_UI_char_select_scene_bar_mark_right,
+
+====================================================================================================
+scenes/game_scene/_common/_VFX.lua   (1 处)
+====================================================================================================
+
+  [L]   291:31           obj_VFX["draw_sync"]  = function() end
+
+====================================================================================================
+scenes/game_scene/_common/_anim.lua   (9 处)
+====================================================================================================
+
+  [L]  1368:43               hurt_side_obj_char["height"]  = "stand"
+
+  [L]  5115:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["stand"]
+
+  [L]  5121:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["air"]
+
+  [L]  5304:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["stand"]
+
+  [L]  5310:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["air"]
+
+  [L]  5525:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["stand"]
+
+  [L]  5531:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["air"]
+
+  [L]  5746:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["stand"]
+
+  [L]  5752:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["air"]
+
+====================================================================================================
+scenes/game_scene/_common/_projectile.lua   (2 处)
+====================================================================================================
+
+  [L]   934:43               hurt_side_obj_char["height"]  = "stand"
+
+  [L]  1418:43               hurt_side_obj_char["height"]  = "stand"
+
+====================================================================================================
+scenes/game_scene/_common/common_functions.lua   (4 处)
+====================================================================================================
+
+  [L]   187:17       local left  = (test_input_sys_press_or_hold(self_side_input["left"]) and 1 or 0)
+  [L]   188:17       local up    = (test_input_sys_press_or_hold(self_side_input["up"]) and 1 or 0)
+  [L]   189:17       local down  = (test_input_sys_press_or_hold(self_side_input["down"]) and 1 or 0)
+
+  [R]  1845:29       if 	CHAR_SELECT_LR["L"] == 	CHAR_SELECT_LR["R"] then
+
+====================================================================================================
+scenes/game_scene/characters/TRM/_anim.lua   (4 处)
+====================================================================================================
+
+  [L]  9507:30           obj["sprite_sheet"]  = sprite_sheet
+
+  [L]  9536:30           obj["sprite_sheet"]  = "5H_oroboros_loop_mid"
+
+  [L]  9622:60           obj_char["shot_sys_oroboros_mid"]["sprite_sheet"]  = "5H_oroboros_shot"
+
+  [L]  9943:60           obj_char["shot_sys_oroboros_mid"]["sprite_sheet"]  = "5H_oroboros_shot"
+
+====================================================================================================
+scenes/game_scene/characters/TRM/_projectile.lua   (1 处)
+====================================================================================================
+
+  [L]   423:43               hurt_side_obj_char["height"]  = "stand"
+
+====================================================================================================
+scenes/game_scene/characters/TRM/left.lua   (5 处)
+====================================================================================================
+
+  [L]  3630:44               self_side_obj_char["pushbox"]  = {0,-185,120,370}
+
+  [L]  3703:44               self_side_obj_char["pushbox"]  = {0,-185,120,370}
+
+  [L]  3749:44               self_side_obj_char["pushbox"]  = {0,-185,120,370}
+
+  [L]  3783:44               self_side_obj_char["pushbox"]  = {0,-185,120,370}
+
+  [L]  3825:44               self_side_obj_char["pushbox"]  = {0,-185,120,370}
+
+====================================================================================================
+scenes/game_scene/characters/TRM/right.lua   (5 处)
+====================================================================================================
+
+  [L]  3630:44               self_side_obj_char["pushbox"]  = {0,-185,120,370}
+
+  [L]  3703:44               self_side_obj_char["pushbox"]  = {0,-185,120,370}
+
+  [L]  3749:44               self_side_obj_char["pushbox"]  = {0,-185,120,370}
+
+  [L]  3783:44               self_side_obj_char["pushbox"]  = {0,-185,120,370}
+
+  [L]  3825:44               self_side_obj_char["pushbox"]  = {0,-185,120,370}
+
+====================================================================================================
+scenes/game_scene/stage/alpha.lua   (2 处)
+====================================================================================================
+
+  [R]    73:29       if 	CHAR_SELECT_LR["L"] == 	CHAR_SELECT_LR["R"] then
+
+  [L]   290:68               image_sprite_sheet_stage_game_scene_wallbreak_dynamic  = 
+
+====================================================================================================
+update_general_use_functions/animator.lua   (1 处)
+====================================================================================================
+
+  [R]   102:23           current_value =  current_value + current_delta

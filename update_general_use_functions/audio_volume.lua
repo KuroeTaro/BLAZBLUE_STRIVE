@@ -1,21 +1,21 @@
 function read_volume_config()
     BGM_VOLUME = nil
     SFX_VOLUME = nil
-    local chunk = love.filesystem.load( 'audio_config.lua' ) 
-    if chunk then 
+    local chunk = love.filesystem.load( 'audio_config.lua' )
+    if chunk then
         chunk()
-        if BGM_VOLUME == nil then 
+        if BGM_VOLUME == nil then
             BGM_VOLUME = 5
             SFX_VOLUME = 5
         end
-    else 
+    else
         BGM_VOLUME = 5
         SFX_VOLUME = 5
         write_volume_config()
     end
 end
 function write_volume_config()
-    local chunk = 
+    local chunk =
     [[ BGM_VOLUME = ]]..BGM_VOLUME.."\n"..
     [[ SFX_VOLUME = ]]..SFX_VOLUME..[[ ]]
     love.filesystem.write('audio_config.lua',chunk)

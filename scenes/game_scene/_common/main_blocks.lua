@@ -27,7 +27,7 @@ function update_game_scene_training_black_solid_ease_in()
         anim_UI_point_linear_game_scene_solid_ease_out_opacity_1_0
     )
     -- 状态出口
-    if SCENE_TIMER >= 5 
+    if SCENE_TIMER >= 5
     and get_point_linear_anim_end_state(
         obj_UI_game_scene_black_solid,
         anim_UI_point_linear_game_scene_solid_ease_out_opacity_1_0
@@ -129,7 +129,7 @@ function update_game_scene_training_main()
         -- 检测pushbox 更新Y位置
         -- 检测pushbox 更新X位置 static_relocate_x
         -- 检测pushbox 更新X位置 dynamic_relocate_x
-        -- 检测打击受击盒 
+        -- 检测打击受击盒
             -- 如果命中 更新角色 状态 速度 和 碰撞盒 跳出loop
     -- 检测pushbox 更新Y位置
     -- 检测pushbox 更新X位置 static_relocate_x
@@ -143,7 +143,7 @@ function update_game_scene_training_main()
     SCENE_TIMER = SCENE_TIMER + 1
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
-    -- debug_delete_after 
+    -- debug_delete_after
     if DEBUG_TRAINNING_SPAWN_STATE == "Pressing" and DEBUG_TRAINNING_TOGGLE then
         SCENE_TIMER = 5
         common_game_scene_init_chars_trainning()
@@ -524,11 +524,11 @@ function update_game_scene_char()
     local game_speed_force_0_countdown_RP = char_RP["game_speed_force_0_countdown"]
     if char_LP["game_speed_force_0_countdown"] > 0 and char_RP["game_speed_force_0_countdown"] > 0 then
         if game_speed_force_0_countdown_LP > game_speed_force_0_countdown_RP then
-            char_LP["game_speed_force_0_countdown"] = 
+            char_LP["game_speed_force_0_countdown"] =
             game_speed_force_0_countdown_LP - game_speed_force_0_countdown_RP
             char_RP["game_speed_force_0_countdown"] = 0
         elseif game_speed_force_0_countdown_RP > game_speed_force_0_countdown_LP then
-            char_RP["game_speed_force_0_countdown"] = 
+            char_RP["game_speed_force_0_countdown"] =
             game_speed_force_0_countdown_RP - game_speed_force_0_countdown_LP
             char_LP["game_speed_force_0_countdown"] = 0
         else
@@ -548,7 +548,7 @@ function update_game_scene_friction()
         if char_LP["friction"] == 0 then
             char_LP["velocity"][1] = char_LP["velocity"][1]
         else
-            char_LP["velocity"][1] = char_LP["velocity"][1] - (char_LP["velocity"][1] / char_LP["friction"])
+            char_LP["velocity"][1] = char_LP["velocity"][1] - (char_LP["velocity"][1]/char_LP["friction"])
         end
         if math.abs(char_LP["velocity"][1]) < 0.001 then
             char_LP["velocity"][1] = 0
@@ -572,7 +572,7 @@ function update_game_scene_friction()
         if char_RP["friction"] == 0 then
             char_RP["velocity"][1] = char_RP["velocity"][1]
         else
-            char_RP["velocity"][1] = char_RP["velocity"][1] - (char_RP["velocity"][1] / char_RP["friction"])
+            char_RP["velocity"][1] = char_RP["velocity"][1] - (char_RP["velocity"][1]/char_RP["friction"])
         end
         if math.abs(char_RP["velocity"][1]) < 0.001 then
             char_RP["velocity"][1] = 0
@@ -788,15 +788,15 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char_a,obj_char_b)
         -- wallstick_stage_obj
         obj_wallstick[2] = obj_char_a["y"] - wallstick_spwan_anchor_pos[obj_char_a["height"]]
         -- wallstick
-        if obj_char_a["wallhurt_wallstickable"] and collision_side ~= 0 
-        and obj_char_a["wallstick_gauge"][1] >= obj_char_a["wallstick_gauge"][2] 
+        if obj_char_a["wallhurt_wallstickable"] and collision_side ~= 0
+        and obj_char_a["wallstick_gauge"][1] >= obj_char_a["wallstick_gauge"][2]
         then
             -- camera_shake
             obj_stage_main["camera_active_application_table"] = {}
             table.insert(obj_stage_main["camera_active_application_table"],
                 function()
                     anim_stage_point_linear_game_scene_camera_shake_x,
-                    anim_stage_point_linear_game_scene_camera_shake_y 
+                    anim_stage_point_linear_game_scene_camera_shake_y
                     = common_game_scene_wallstick_load_camera_shake_anim(1.5)
                     init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
                     init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
@@ -827,7 +827,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char_a,obj_char_b)
         end
     end
     -- wallstick_state_change
-    if obj_char_a["wallhurt_wallstickable"] and collision_side ~= 0 
+    if obj_char_a["wallhurt_wallstickable"] and collision_side ~= 0
     and obj_char_a["wallstick_gauge"][1] >= obj_char_a["wallstick_gauge"][2]
     then
         table.insert(obj_stage_main["wallstick_char_obj_active_application_table"],
@@ -864,15 +864,15 @@ end
 function update_game_scene_game_speed_sub_frame()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
-    if char_LP["game_speed_force_0_countdown"] < 1 
-    and char_LP["game_speed_force_1_countdown"] < 1 
-    and char_LP["game_speed_subframe"] > char_LP["game_speed"] 
+    if char_LP["game_speed_force_0_countdown"] < 1
+    and char_LP["game_speed_force_1_countdown"] < 1
+    and char_LP["game_speed_subframe"] > char_LP["game_speed"]
     then
         char_LP["game_speed_subframe"] = 1
     end
-    if char_RP["game_speed_force_0_countdown"] < 1 
-    and char_RP["game_speed_force_1_countdown"] < 1 
-    and char_RP["game_speed_subframe"] > char_RP["game_speed"] 
+    if char_RP["game_speed_force_0_countdown"] < 1
+    and char_RP["game_speed_force_1_countdown"] < 1
+    and char_RP["game_speed_subframe"] > char_RP["game_speed"]
     then
         char_RP["game_speed_subframe"] = 1
     end
@@ -902,7 +902,7 @@ function update_game_scene_HUD_overdrive_timer(obj_char,timer_obj)
         ["ease_in"] = function()
             point_linear_animator(timer_obj,anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1)
             point_linear_animator(obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_in)
-            if get_point_linear_anim_end_state(timer_obj,anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1) 
+            if get_point_linear_anim_end_state(timer_obj,anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1)
             and get_point_linear_anim_end_state(obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_in) then
                 timer_obj["state"] = "active"
                 obj_char["brightness"] = obj_char["brightness_overdrive_const"]
@@ -924,7 +924,7 @@ function update_game_scene_HUD_overdrive_timer(obj_char,timer_obj)
         ["ease_out"] = function()
             point_linear_animator(timer_obj,anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0)
             point_linear_animator(obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_out)
-            if get_point_linear_anim_end_state(timer_obj,anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0) 
+            if get_point_linear_anim_end_state(timer_obj,anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0)
             and get_point_linear_anim_end_state(obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_out) then
                 timer_obj["state"] = "default"
                 obj_char["brightness"] = obj_char["brightness_const"]

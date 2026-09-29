@@ -13,7 +13,7 @@ function state_machine_UI_start_scene_noise_BG_static_loop(obj)
 end
 function state_machine_UI_start_scene_config_controller(obj,input_id)
     local switch = {
-        ["off_state"] = function() 
+        ["off_state"] = function()
             local ease_in_anim = anim_UI_point_linear_start_scene_general_ease_in_0p5_1_opacity
             -- 如果按D或者scene timer 到达10f则进入ease_in
             if INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["K"] == "Pressing" or INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["K"] == "Holding" then
@@ -23,7 +23,7 @@ function state_machine_UI_start_scene_config_controller(obj,input_id)
                 obj["state"] = "ease_in"
             end
         end,
-        ["ease_in"] = function() 
+        ["ease_in"] = function()
             local ease_in_anim = anim_UI_point_linear_start_scene_general_ease_in_0p5_1_opacity
             local ease_out_anim = anim_UI_point_linear_start_scene_general_ease_out_1_0p5_opacity
             point_linear_animator(obj,ease_in_anim)
@@ -37,7 +37,7 @@ function state_machine_UI_start_scene_config_controller(obj,input_id)
                 obj["state"] = "on_state"
             end
         end,
-        ["on_state"] = function() 
+        ["on_state"] = function()
             local ease_out_anim = anim_UI_point_linear_start_scene_general_ease_out_1_0p5_opacity
             if INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["K"] == "Releasing" or INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["K"] == "Released" then
                 -- 设置ease out 动画
@@ -46,7 +46,7 @@ function state_machine_UI_start_scene_config_controller(obj,input_id)
                 obj["state"] = "ease_out"
             end
         end,
-        ["ease_out"] = function() 
+        ["ease_out"] = function()
             local ease_in_anim = anim_UI_point_linear_start_scene_general_ease_in_0p5_1_opacity
             local ease_out_anim = anim_UI_point_linear_start_scene_general_ease_out_1_0p5_opacity
             point_linear_animator(obj,ease_out_anim)

@@ -24,7 +24,7 @@ thread_data[11] = compress_module("asset/start_scene/texture/config/bar_mark.dds
 -- record text in config record sub UI only
 thread_data[12] = compress_module("asset/start_scene/texture/record/game_duration_text.dds")
 for i = 13,22 do
-    thread_data[i] = compress_module("asset/start_scene/texture/record/number/"..(i-13)..".dds")
+    thread_data[i] = compress_module("asset/start_scene/texture/record/number/"..(i - 13)..".dds")
 end
 thread_data[23] = compress_module("asset/start_scene/texture/record/time_indi_barcode.dds")
 love.thread.getChannel( 'thread_data_3' ):push( thread_data )

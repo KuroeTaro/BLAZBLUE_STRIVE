@@ -416,7 +416,7 @@ function load_char_select_scene_anim()
     anim_UI_point_linear_char_select_scene_bar_mark_down_y["loop"] = false
     anim_UI_point_linear_char_select_scene_bar_mark_down_y["fix_type"] = false
     -- black_solid_scene_ease_out
-    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity  = {}
+    anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity = {}
     anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity [0] = {0.00,2}
     anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity [2] = {0.01,4}
     anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity [4] = {0.03,6}

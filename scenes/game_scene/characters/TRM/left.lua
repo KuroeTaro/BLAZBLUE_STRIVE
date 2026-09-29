@@ -44,7 +44,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["heat_gauge"] = {0.0,200.0} -- 0.0 - 200.0
     obj_char_game_scene_char_LP["ability_gauge"] = {600.0,600.0} -- 0.0 - 600.0
     obj_char_game_scene_char_LP["overdrive_gauge"] = {600.0,600.0,"off"} -- 0.0 - 600.0
-    obj_char_game_scene_char_LP["overdrive_timer"] = {0,0,0,0} -- 0f 00:00 
+    obj_char_game_scene_char_LP["overdrive_timer"] = {0,0,0,0} -- 0f 00:00
     obj_char_game_scene_char_LP["risk_gauge"] = {0.0,300.0} -- 0.0 - 300.0
     obj_char_game_scene_char_LP["wallstick_gauge"] = {0.0,200.0} -- 0.0 - 200.0
     obj_char_game_scene_char_LP["heat_penalty"] = 1
@@ -205,14 +205,14 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["shot_sys_oroboros_offset_amount"] = 0
     obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"] = {-110,-455}
     obj_char_game_scene_char_LP["shot_sys_oroboros_ease_current"] = {
-        obj_char_game_scene_char_LP["x"] + obj_char_game_scene_char_LP[5] * obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][1],
-        obj_char_game_scene_char_LP["y"] + obj_char_game_scene_char_LP[6] * obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][2],
+        obj_char_game_scene_char_LP["x"] + obj_char_game_scene_char_LP[5]*obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][1],
+        obj_char_game_scene_char_LP["y"] + obj_char_game_scene_char_LP[6]*obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][2],
         obj_char_game_scene_char_LP[5],
         obj_char_game_scene_char_LP[6]
     }
     obj_char_game_scene_char_LP["shot_sys_oroboros_ease_target"] = {
-        obj_char_game_scene_char_LP["x"] + obj_char_game_scene_char_LP[5] * obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][1],
-        obj_char_game_scene_char_LP["y"] + obj_char_game_scene_char_LP[6] * obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][2],
+        obj_char_game_scene_char_LP["x"] + obj_char_game_scene_char_LP[5]*obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][1],
+        obj_char_game_scene_char_LP["y"] + obj_char_game_scene_char_LP[6]*obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][2],
         obj_char_game_scene_char_LP[5],
         obj_char_game_scene_char_LP[6]
     }
@@ -825,14 +825,14 @@ function load_game_scene_wallbreak_mid_init_LP()
     obj_char_game_scene_char_LP["shot_sys_oroboros_offset_amount"] = 0
     obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"] = {-110,-455}
     obj_char_game_scene_char_LP["shot_sys_oroboros_ease_current"] = {
-        obj_char_game_scene_char_LP["x"] + obj_char_game_scene_char_LP[5] * obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][1],
-        obj_char_game_scene_char_LP["y"] + obj_char_game_scene_char_LP[6] * obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][2],
+        obj_char_game_scene_char_LP["x"] + obj_char_game_scene_char_LP[5]*obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][1],
+        obj_char_game_scene_char_LP["y"] + obj_char_game_scene_char_LP[6]*obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][2],
         obj_char_game_scene_char_LP[5],
         obj_char_game_scene_char_LP[6]
     }
     obj_char_game_scene_char_LP["shot_sys_oroboros_ease_target"] = {
-        obj_char_game_scene_char_LP["x"] + obj_char_game_scene_char_LP[5] * obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][1],
-        obj_char_game_scene_char_LP["y"] + obj_char_game_scene_char_LP[6] * obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][2],
+        obj_char_game_scene_char_LP["x"] + obj_char_game_scene_char_LP[5]*obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][1],
+        obj_char_game_scene_char_LP["y"] + obj_char_game_scene_char_LP[6]*obj_char_game_scene_char_LP["shot_sys_oroboros_anchor_pos"][2],
         obj_char_game_scene_char_LP[5],
         obj_char_game_scene_char_LP[6]
     }
@@ -939,7 +939,7 @@ end
 -- order_load
 function order_load_game_scene_char_LP_frames(load_order)
     local PLAYER_ASSET_DATA = ASSET_DATA[9]
-    local switch = 
+    local switch =
     {
         -- universal 0_ 通用受伤/击飞 part1
         [1] = function()
@@ -951,12 +951,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "0_general_hurt_falled_knockout"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- universal 0_general_hurt_hard_ 硬直击飞
         [2] = function()
@@ -967,12 +967,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "0_general_hurt_hard_knockdown_wallstick_ground"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- universal 0_general_hurt_hard_recovery_ 硬直受身/起身
         [3] = function()
@@ -982,12 +982,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "0_general_hurt_hard_recovery_wallstick_ground"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- universal 0_general_hurt_launched_ 浮空 part1
         [4] = function()
@@ -999,12 +999,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "0_general_hurt_launched_mid_hori_heavy"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- universal 0_general_hurt_launched_ 浮空 part2
         [5] = function()
@@ -1015,12 +1015,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "0_general_hurt_launched_wallbounce"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- universal 0_general_hurt_semi_launched_ 半浮空
         [6] = function()
@@ -1029,12 +1029,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "0_general_hurt_semi_launched_rotate"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- universal 0_general_hurt_soft_/0_ground_ 软击倒/起身
         [7] = function()
@@ -1046,12 +1046,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "0_ground_Launcher_teching"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- universal 0_stand_hurt_/0_wallbreak_ 站立受击/破墙
         [8] = function()
@@ -1064,12 +1064,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "0_wallbreak_hurt_non_adv"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- universal 1_2_3_ 蹲
         [9] = function()
@@ -1079,12 +1079,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "1_2_3_crouch_turn"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- universal block 防御
         [10] = function()
@@ -1098,12 +1098,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "4_stand_block_mid"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- universal 4_walk/4dash_ 走路/疾退
         [11] = function()
@@ -1114,12 +1114,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "4dash_backdash"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- universal 5_ 站立
         [12] = function()
@@ -1129,12 +1129,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "5_stand_turn"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- universal 6_/6dash_ 移动
         [13] = function()
@@ -1145,12 +1145,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "6dash_dash"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- universal 7_8_9 跳跃
         [14] = function()
@@ -1163,12 +1163,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "9_jump"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- attack burst_ 霸/RC
         [15] = function()
@@ -1178,12 +1178,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "burst_RC_ground"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- attack P
         [16] = function()
@@ -1193,12 +1193,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "5P"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- attack K
         [17] = function()
@@ -1208,12 +1208,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "5K"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- attack S
         [18] = function()
@@ -1224,12 +1224,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "fS"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- attack H
         [19] = function()
@@ -1237,12 +1237,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "5H"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- attack 5H_oroboros
         [20] = function()
@@ -1255,12 +1255,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "5H_oroboros_shot"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- attack 5H_reticle
         [21] = function()
@@ -1273,12 +1273,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "5H_reticle_unlocking"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- attack Launcher
         [22] = function()
@@ -1289,12 +1289,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "5Launcher"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- attack j 空中拳脚
         [23] = function()
@@ -1308,12 +1308,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "j5Launcher"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- special 必杀
         [24] = function()
@@ -1326,12 +1326,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "6SP_S"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         [25] = function()
             local load_name_table = {
@@ -1341,12 +1341,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "4SP_S_4S"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         [26] = function()
             local load_name_table = {
@@ -1356,12 +1356,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "4SP_S_reticle_shot"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_char_game_scene_LP[v] = 
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
-            end 
+            end
         end,
         -- projectile 飞行道具
         [27] = function()
@@ -1378,34 +1378,34 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "6SP_K_scapegoat_idle"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_projectile_game_scene_LP[v.."_projectile"] = 
+                image_sprite_sheet_table_projectile_game_scene_LP[v.."_projectile"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/projectile/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v.."_projectile"])
                 )
-            end 
+            end
         end,
         [28] = function()
             local load_name_table = {
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_projectile_game_scene_LP[v.."_projectile"] = 
+                image_sprite_sheet_table_projectile_game_scene_LP[v.."_projectile"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/projectile/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v.."_projectile"])
                 )
-            end 
+            end
         end,
         [29] = function()
             local load_name_table = {
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_projectile_game_scene_LP[v.."_projectile"] = 
+                image_sprite_sheet_table_projectile_game_scene_LP[v.."_projectile"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/projectile/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v.."_projectile"])
                 )
-            end 
+            end
         end,
         -- UA 超必杀
         [30] = function()
@@ -1413,34 +1413,34 @@ function order_load_game_scene_char_LP_frames(load_order)
             local load_name_table = {
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_UA_game_scene_LP[v.."_UA"] = 
+                image_sprite_sheet_table_UA_game_scene_LP[v.."_UA"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/UA/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v.."_UA"])
                 )
-            end 
+            end
         end,
         [31] = function()
             local load_name_table = {
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_UA_game_scene_LP[v.."_UA"] = 
+                image_sprite_sheet_table_UA_game_scene_LP[v.."_UA"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/UA/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v.."_UA"])
                 )
-            end 
+            end
         end,
         [32] = function()
             local load_name_table = {
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_UA_game_scene_LP[v.."_UA"] = 
+                image_sprite_sheet_table_UA_game_scene_LP[v.."_UA"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/UA/TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v.."_UA"])
                 )
-            end 
+            end
         end,
         -- move_VFX 招式特效
         [33] = function()
@@ -1456,12 +1456,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "5H_switch"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_VFX_game_scene_LP[v.."_move_VFX"] = 
+                image_sprite_sheet_table_VFX_game_scene_LP[v.."_move_VFX"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
                 )
-            end 
+            end
         end,
         -- move_VFX Launcher
         [34] = function()
@@ -1470,12 +1470,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "5Launcher_glow"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_VFX_game_scene_LP[v.."_move_VFX"] = 
+                image_sprite_sheet_table_VFX_game_scene_LP[v.."_move_VFX"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
                 )
-            end 
+            end
         end,
         -- move_VFX air
         [35] = function()
@@ -1483,12 +1483,12 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "j5S"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_VFX_game_scene_LP[v.."_move_VFX"] = 
+                image_sprite_sheet_table_VFX_game_scene_LP[v.."_move_VFX"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
                 )
-            end 
+            end
         end,
         -- move_VFX special
         [36] = function()
@@ -1501,38 +1501,38 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "6SP_S"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_VFX_game_scene_LP[v.."_move_VFX"] = 
+                image_sprite_sheet_table_VFX_game_scene_LP[v.."_move_VFX"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
                 )
-            end 
+            end
         end,
         [37] = function()
             local load_name_table = {
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_VFX_game_scene_LP[v.."_move_VFX"] = 
+                image_sprite_sheet_table_VFX_game_scene_LP[v.."_move_VFX"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
                 )
-            end 
+            end
         end,
         [38] = function()
             local load_name_table = {
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_VFX_game_scene_LP[v.."_move_VFX"] = 
+                image_sprite_sheet_table_VFX_game_scene_LP[v.."_move_VFX"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
                     love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
                 )
-            end 
+            end
         end,
         -- overdrive_badge
         [39] = function()
-            image_sprite_sheet_VFX_game_scene_LP_overdrive_badge = 
+            image_sprite_sheet_VFX_game_scene_LP_overdrive_badge =
             common_sprite_sheet_load(
                 "asset/game_scene/characters/TRM/texture/overdrive_badge/TRM_overdrive_badge.json",
                 love.graphics.newImage(PLAYER_ASSET_DATA["overdrive_badge"])
@@ -2287,11 +2287,14 @@ function state_machine_char_game_scene_char_LP_shot_sys()
     local opponent_side_input = INPUT_SYS_CURRENT_COMMAND_STATE["R"]
     local self_side_obj_char = obj_char_game_scene_char_LP
     local opponent_side_obj_char = obj_char_game_scene_char_RP
-    local active_at_the_ready_ease_out_input = test_input_sys_press(self_side_input["dash"]) and common_game_scene_check_crouch_direction(self_side_obj_char)
-    local test_input_idle_to_ease_out = (test_input_sys_press(self_side_input["H"]) and common_game_scene_check_crouch_direction(self_side_obj_char))
-    or (test_input_sys_hold(self_side_input["H"]) and active_at_the_ready_ease_out_input)
-    or self_side_obj_char["ability_gauge"][1] <= 0 
-    local shot_sys_at_the_ready_ban_state = self_side_obj_char["shot_sys_at_the_ready_ban_state"][self_side_obj_char["state"]]
+    local test_input_at_the_ready_ease_out_at_hold =
+        test_input_sys_press(self_side_input["dash"]) and common_game_scene_check_crouch_direction(self_side_obj_char)
+    local test_input_at_the_ready_ease_out_at_release =
+        (test_input_sys_press(self_side_input["H"]) and common_game_scene_check_crouch_direction(self_side_obj_char))
+        or (test_input_sys_hold(self_side_input["H"]) and test_input_at_the_ready_ease_out_at_hold)
+    local shot_sys_at_the_ready_ban_state =
+        self_side_obj_char["shot_sys_at_the_ready_ban_state"][self_side_obj_char["state"]]
+        or self_side_obj_char["ability_gauge"][1] <= 0
     local run_at_current_frame = common_game_scene_character_run_at_this_frame(self_side_obj_char)
     -- state_machine
     local switch = {
@@ -2309,7 +2312,7 @@ function state_machine_char_game_scene_char_LP_shot_sys()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_update(self_side_obj_char,opponent_side_obj_char)
             end
-            if (self_side_obj_char["shot_sys_idle_cancel"] and test_input_idle_to_ease_out) or shot_sys_at_the_ready_ban_state then
+            if (self_side_obj_char["shot_sys_idle_cancel"] and test_input_at_the_ready_ease_out_at_release) or shot_sys_at_the_ready_ban_state then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(self_side_obj_char)
                 return
             end
@@ -2319,7 +2322,7 @@ function state_machine_char_game_scene_char_LP_shot_sys()
                 character_function_game_scene_TRM_shot_sys_ability_gauge_use(self_side_obj_char)
                 return
             end
-            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"])  then
+            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"]) then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_init(self_side_obj_char)
                 return
             end
@@ -2342,7 +2345,7 @@ function state_machine_char_game_scene_char_LP_shot_sys()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_update(self_side_obj_char,opponent_side_obj_char)
             end
-            if test_input_idle_to_ease_out or shot_sys_at_the_ready_ban_state then
+            if test_input_at_the_ready_ease_out_at_release or shot_sys_at_the_ready_ban_state then
                 self_side_obj_char["input_sys_cache_negative_edge"]["H"] = false
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(self_side_obj_char)
                 return
@@ -2358,7 +2361,7 @@ function state_machine_char_game_scene_char_LP_shot_sys()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(self_side_obj_char)
             end
-            if (self_side_obj_char["shot_sys_idle_cancel"] and test_input_idle_to_ease_out) or shot_sys_at_the_ready_ban_state then
+            if (self_side_obj_char["shot_sys_idle_cancel"] and test_input_at_the_ready_ease_out_at_release) or shot_sys_at_the_ready_ban_state then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(self_side_obj_char)
                 return
             end
@@ -2378,7 +2381,8 @@ function state_machine_char_game_scene_char_LP_shot_sys()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_at_the_steady_lock_update(self_side_obj_char,opponent_side_obj_char)
             end
-            if test_input_sys_release(self_side_input["H"]) then
+            if self_side_obj_char["shot_sys_fire_cancel"] and test_input_sys_release(self_side_input["H"])
+            and self_side_obj_char["state"] ~= "hitstop" and self_side_obj_char["ability_gauge"][1] > 0 then
             end
         end,
         ["at_the_steady_lock_to_off"] = function()
@@ -2399,7 +2403,7 @@ function state_machine_char_game_scene_char_LP_shot_sys()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_update(self_side_obj_char,opponent_side_obj_char)
             end
-            if (self_side_obj_char["shot_sys_idle_cancel"] and test_input_idle_to_ease_out) or shot_sys_at_the_ready_ban_state then
+            if (self_side_obj_char["shot_sys_idle_cancel"] and test_input_at_the_ready_ease_out_at_release) or shot_sys_at_the_ready_ban_state then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(self_side_obj_char)
                 return
             end
@@ -2409,7 +2413,7 @@ function state_machine_char_game_scene_char_LP_shot_sys()
                 character_function_game_scene_TRM_shot_sys_ability_gauge_use(self_side_obj_char)
                 return
             end
-            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"])  then
+            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"]) then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_init(self_side_obj_char)
                 return
             end
@@ -2621,7 +2625,7 @@ function state_machine_char_game_scene_char_LP_shot_sys_reticle()
                 character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
             end
             if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
-            and self_side_obj_char["shot_sys_aim_process"][1] >= self_side_obj_char["shot_sys_aim_process"][3] 
+            and self_side_obj_char["shot_sys_aim_process"][1] >= self_side_obj_char["shot_sys_aim_process"][3]
             then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_reticle_pos_update(self_side_obj_char,opponent_side_obj_char)
                 self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_locking")
@@ -3397,7 +3401,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move(self_side_input,o
     if self_side_obj_char["y"] < -320 and (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 1)
     and test_input_sys_press(self_side_input["dash"]) and self_side_obj_char["air_move"]["air_dash"][1] > 0 then
         self_side_obj_char["air_move"]["jump"][1] = 0
-        self_side_obj_char["air_move"]["air_dash"][1] = math.max(math.min(self_side_obj_char["air_move"]["air_dash"][1]-1,self_side_obj_char["air_move"]["air_dash"][2]),0)
+        self_side_obj_char["air_move"]["air_dash"][1] = math.max(math.min(self_side_obj_char["air_move"]["air_dash"][1] - 1,self_side_obj_char["air_move"]["air_dash"][2]),0)
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_air_backdash(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "4dash_air_backdash"
@@ -3406,7 +3410,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move(self_side_input,o
     -- _6dash_air_dash
     if self_side_obj_char["y"] < -320 and test_input_sys_press(self_side_input["dash"]) and self_side_obj_char["air_move"]["air_dash"][1] > 0 then
         self_side_obj_char["air_move"]["jump"][1] = 0
-        self_side_obj_char["air_move"]["air_dash"][1] = math.max(math.min(self_side_obj_char["air_move"]["air_dash"][1]-1,self_side_obj_char["air_move"]["air_dash"][2]),0)
+        self_side_obj_char["air_move"]["air_dash"][1] = math.max(math.min(self_side_obj_char["air_move"]["air_dash"][1] - 1,self_side_obj_char["air_move"]["air_dash"][2]),0)
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_air_dash(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "6dash_air_dash"
@@ -3418,7 +3422,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(self
     if self_side_obj_char["y"] < -320 and (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 1)
     and test_input_sys_press_or_hold(self_side_input["dash"]) and self_side_obj_char["air_move"]["air_dash"][1] > 0 then
         self_side_obj_char["air_move"]["jump"][1] = 0
-        self_side_obj_char["air_move"]["air_dash"][1] = math.max(math.min(self_side_obj_char["air_move"]["air_dash"][1]-1,self_side_obj_char["air_move"]["air_dash"][2]),0)
+        self_side_obj_char["air_move"]["air_dash"][1] = math.max(math.min(self_side_obj_char["air_move"]["air_dash"][1] - 1,self_side_obj_char["air_move"]["air_dash"][2]),0)
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_air_backdash(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "4dash_air_backdash"
@@ -3427,7 +3431,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(self
     -- _6dash_air_dash
     if self_side_obj_char["y"] < -320 and test_input_sys_press_or_hold(self_side_input["dash"]) and self_side_obj_char["air_move"]["air_dash"][1] > 0 then
         self_side_obj_char["air_move"]["jump"][1] = 0
-        self_side_obj_char["air_move"]["air_dash"][1] = math.max(math.min(self_side_obj_char["air_move"]["air_dash"][1]-1,self_side_obj_char["air_move"]["air_dash"][2]),0)
+        self_side_obj_char["air_move"]["air_dash"][1] = math.max(math.min(self_side_obj_char["air_move"]["air_dash"][1] - 1,self_side_obj_char["air_move"]["air_dash"][2]),0)
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_air_dash(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "6dash_air_dash"
@@ -3439,7 +3443,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_4dash_on
     if self_side_obj_char["y"] < -320 and (self_side_obj_char["direction_input"] == 4 or self_side_obj_char["direction_input"] == 1)
     and test_input_sys_press_or_hold(self_side_input["dash"]) and self_side_obj_char["air_move"]["air_dash"][1] > 0 then
         self_side_obj_char["air_move"]["jump"][1] = 0
-        self_side_obj_char["air_move"]["air_dash"][1] = math.max(math.min(self_side_obj_char["air_move"]["air_dash"][1]-1,self_side_obj_char["air_move"]["air_dash"][2]),0)
+        self_side_obj_char["air_move"]["air_dash"][1] = math.max(math.min(self_side_obj_char["air_move"]["air_dash"][1] - 1,self_side_obj_char["air_move"]["air_dash"][2]),0)
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4dash_air_backdash(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "4dash_air_backdash"
@@ -3448,7 +3452,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_4dash_on
     -- _6dash_air_dash
     if self_side_obj_char["y"] < -320 and test_input_sys_press(self_side_input["dash"]) and self_side_obj_char["air_move"]["air_dash"][1] > 0 then
         self_side_obj_char["air_move"]["jump"][1] = 0
-        self_side_obj_char["air_move"]["air_dash"][1] = math.max(math.min(self_side_obj_char["air_move"]["air_dash"][1]-1,self_side_obj_char["air_move"]["air_dash"][2]),0)
+        self_side_obj_char["air_move"]["air_dash"][1] = math.max(math.min(self_side_obj_char["air_move"]["air_dash"][1] - 1,self_side_obj_char["air_move"]["air_dash"][2]),0)
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_air_dash(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "6dash_air_dash"
@@ -3623,11 +3627,11 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_red(self_side_input,op
             self_side_obj_char["height"] = "stand"
             self_side_obj_char["sprite_sheet"] = "burst_RC_ground"
             self_side_obj_char["anchor_pos"] = {300,615}
-            self_side_obj_char["pushbox"]  = {0,-185,120,370}
+            self_side_obj_char["pushbox"] = {0,-185,120,370}
             self_side_obj_char["collision_ground_height_offset"] = 0
             self_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
-        self_side_obj_char["character_animation"] = 
+        self_side_obj_char["character_animation"] =
         load_game_scene_anim_char_common_burst_RC_red(
             self_side_obj_char,opponent_side_obj_char,
             character_function_game_scene_TRM_RC_state_character_uncommon_update
@@ -3696,11 +3700,11 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_blue(self_side_input,o
             self_side_obj_char["height"] = "stand"
             self_side_obj_char["sprite_sheet"] = "burst_RC_ground"
             self_side_obj_char["anchor_pos"] = {300,615}
-            self_side_obj_char["pushbox"]  = {0,-185,120,370}
+            self_side_obj_char["pushbox"] = {0,-185,120,370}
             self_side_obj_char["collision_ground_height_offset"] = 0
             self_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
-        self_side_obj_char["character_animation"] = 
+        self_side_obj_char["character_animation"] =
         load_game_scene_anim_char_common_burst_RC_blue(
             self_side_obj_char,opponent_side_obj_char,
             character_function_game_scene_TRM_RC_state_character_uncommon_update
@@ -3742,11 +3746,11 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_purple(self_side_input
             self_side_obj_char["height"] = "stand"
             self_side_obj_char["sprite_sheet"] = "burst_RC_ground"
             self_side_obj_char["anchor_pos"] = {300,615}
-            self_side_obj_char["pushbox"]  = {0,-185,120,370}
+            self_side_obj_char["pushbox"] = {0,-185,120,370}
             self_side_obj_char["collision_ground_height_offset"] = 0
             self_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
-        self_side_obj_char["character_animation"] = 
+        self_side_obj_char["character_animation"] =
         load_game_scene_anim_char_common_burst_RC_purple(
             self_side_obj_char,opponent_side_obj_char,
             character_function_game_scene_TRM_RC_state_character_uncommon_update
@@ -3761,7 +3765,7 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_yellow(self_side_input
         return
     end
     if test_input_sys_press(self_side_input["RC"])
-    -- and self_side_obj_char["height"] ~= "air" 
+    -- and self_side_obj_char["height"] ~= "air"
     then
         self_side_obj_char["velocity"] = {0,0}
         self_side_obj_char["velocity_cache"] = {0,0}
@@ -3776,11 +3780,11 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_yellow(self_side_input
             self_side_obj_char["height"] = "stand"
             self_side_obj_char["sprite_sheet"] = "burst_RC_ground"
             self_side_obj_char["anchor_pos"] = {300,615}
-            self_side_obj_char["pushbox"]  = {0,-185,120,370}
+            self_side_obj_char["pushbox"] = {0,-185,120,370}
             self_side_obj_char["collision_ground_height_offset"] = 0
             self_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
-        self_side_obj_char["character_animation"] = 
+        self_side_obj_char["character_animation"] =
         load_game_scene_anim_char_common_burst_RC_yellow(
             self_side_obj_char,opponent_side_obj_char,
             character_function_game_scene_TRM_RC_state_character_uncommon_update
@@ -3818,28 +3822,28 @@ function state_gate_game_scene_char_LP_common_to_burst_overdrive(self_side_input
             self_side_obj_char["height"] = "stand"
             self_side_obj_char["sprite_sheet"] = "burst_overdrive_ground"
             self_side_obj_char["anchor_pos"] = {300,615}
-            self_side_obj_char["pushbox"]  = {0,-185,120,370}
+            self_side_obj_char["pushbox"] = {0,-185,120,370}
             self_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         end
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
         if hit_cancel_RC_state_table[opponent_side_obj_char["state"]] then
-            self_side_obj_char["character_animation"] = 
+            self_side_obj_char["character_animation"] =
             load_game_scene_anim_char_common_burst_overdrive(
-                self_side_obj_char,opponent_side_obj_char,70-3,true,
+                self_side_obj_char,opponent_side_obj_char,70 - 3,true,
                 character_function_game_scene_TRM_overdrive_state_character_uncommon_init
             )
         elseif self_side_obj_char["state"] == "block" then
-            self_side_obj_char["character_animation"] = 
+            self_side_obj_char["character_animation"] =
             load_game_scene_anim_char_common_burst_overdrive(
-                self_side_obj_char,opponent_side_obj_char,70-23,true,
+                self_side_obj_char,opponent_side_obj_char,70 - 23,true,
                 character_function_game_scene_TRM_overdrive_state_character_uncommon_init
             )
         else
-            self_side_obj_char["character_animation"] = 
+            self_side_obj_char["character_animation"] =
             load_game_scene_anim_char_common_burst_overdrive(
-                self_side_obj_char,opponent_side_obj_char,70-13,false,
+                self_side_obj_char,opponent_side_obj_char,70 - 13,false,
                 character_function_game_scene_TRM_overdrive_state_character_uncommon_init
             )
         end
@@ -4026,7 +4030,7 @@ function state_gate_game_scene_char_LP_from_block(self_side_input,opponent_side_
     state_machine_char_game_scene_char_LP_input_sys_cache()
     -- _5_stand_idle
     if self_side_obj_char["height"] == "stand" then
-        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)  
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "5_stand_idle"
         -- _common_ground_idle_to_move
@@ -4073,10 +4077,10 @@ function state_gate_game_scene_char_LP_from_hurt(self_side_input,opponent_side_i
             self_side_obj_char["y"] = 0
             self_side_obj_char["state"] = self_side_obj_char["state_cache"]
             if self_side_obj_char["state"] == "knockdown" then
-                self_side_obj_char["character_animation"] = self_side_obj_char["self_knockdown_animation"] 
+                self_side_obj_char["character_animation"] = self_side_obj_char["self_knockdown_animation"]
                 init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             elseif self_side_obj_char["state"] == "knockdown_recovery" then
-                self_side_obj_char["character_animation"] = self_side_obj_char["self_knockdown_recovery_animation"] 
+                self_side_obj_char["character_animation"] = self_side_obj_char["self_knockdown_recovery_animation"]
                 init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             end
         end
@@ -4090,7 +4094,7 @@ function state_gate_game_scene_char_LP_from_hurt(self_side_input,opponent_side_i
         state_machine_char_game_scene_char_LP_input_sys_cache()
         -- _5_stand_idle
         if self_side_obj_char["height"] == "stand" then
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)  
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
@@ -4213,10 +4217,10 @@ function state_gate_game_scene_char_LP_from_throw_hurt_success(self_side_input,o
         self_side_obj_char["y"] = 0
         self_side_obj_char["state"] = self_side_obj_char["state_cache"]
         if self_side_obj_char["state"] == "knockdown" then
-            self_side_obj_char["character_animation"] = self_side_obj_char["self_knockdown_animation"] 
+            self_side_obj_char["character_animation"] = self_side_obj_char["self_knockdown_animation"]
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         elseif self_side_obj_char["state"] == "knockdown_recovery" then
-            self_side_obj_char["character_animation"] = self_side_obj_char["self_knockdown_recovery_animation"] 
+            self_side_obj_char["character_animation"] = self_side_obj_char["self_knockdown_recovery_animation"]
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         end
         return
@@ -4264,7 +4268,7 @@ function state_gate_game_scene_char_LP_from_throw_tested(self_side_input,opponen
         self_side_obj_char["state"] = "throw_hurt_success"
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
-        end 
+        end
         self_side_obj_char["character_animation"] = opponent_side_obj_char["throw_hurt_success_animation"]
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
     end
@@ -4375,7 +4379,7 @@ function state_gate_game_scene_char_LP_from_wallstick(self_side_input,opponent_s
     -- animation_end
     if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
         self_side_obj_char["state"] = self_side_obj_char["state_cache"]
-        self_side_obj_char["character_animation"] = self_side_obj_char["self_knockdown_recovery_animation"] 
+        self_side_obj_char["character_animation"] = self_side_obj_char["self_knockdown_recovery_animation"]
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         return
     end
@@ -5162,7 +5166,7 @@ function state_gate_game_scene_char_LP_from_7_8_9_jump_air(self_side_input,oppon
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
         -- air_move
-        self_side_obj_char["air_move"]["jump"][1] = math.max(math.min(self_side_obj_char["air_move"]["jump"][1]-1,self_side_obj_char["air_move"]["jump"][2]),0)
+        self_side_obj_char["air_move"]["jump"][1] = math.max(math.min(self_side_obj_char["air_move"]["jump"][1] - 1,self_side_obj_char["air_move"]["jump"][2]),0)
         self_side_obj_char["air_move"]["air_dash"][1] = 0
         -- velocity
         if self_side_obj_char["direction_input"] == 7 then
@@ -5214,7 +5218,7 @@ function state_gate_game_scene_char_LP_from_7_8_9_pre_jump(self_side_input,oppon
         if test_input_sys_press_or_hold(self_side_input["SP"]) then
             multiplyer = 1.08
             SFX_name = "air_SP_jump"
-            self_side_obj_char["air_move"]["jump"][1] = math.max(math.min(self_side_obj_char["air_move"]["jump"][1]-1,self_side_obj_char["air_move"]["jump"][2]),0)
+            self_side_obj_char["air_move"]["jump"][1] = math.max(math.min(self_side_obj_char["air_move"]["jump"][1] - 1,self_side_obj_char["air_move"]["jump"][2]),0)
         end
         -- animation
         if self_side_obj_char["direction_input_cache"] == 7 then
@@ -5244,7 +5248,7 @@ function state_gate_game_scene_char_LP_from_7_8_9_pre_jump(self_side_input,oppon
                 SFX_name
             )
         elseif self_side_obj_char["direction_input_cache"] == 9 then
-            self_side_obj_char["character_animation"] = 
+            self_side_obj_char["character_animation"] =
             load_game_scene_anim_char_TRM_7_8_9_jump_air(
                 self_side_obj_char,"9_jump",{320,430},
                 (self_side_obj_char["velocity_cache"][1]*0.6 + self_side_obj_char[5]*2.75)*multiplyer,
@@ -5580,7 +5584,7 @@ function state_gate_game_scene_char_LP_from_burst_RC_red(self_side_input,opponen
             end
             return true
         else
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)  
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
@@ -5668,7 +5672,7 @@ function state_gate_game_scene_char_LP_from_burst_RC_blue(self_side_input,oppone
             end
             return true
         else
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)  
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
@@ -5756,7 +5760,7 @@ function state_gate_game_scene_char_LP_from_burst_RC_purple(self_side_input,oppo
             end
             return true
         else
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)  
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
@@ -5804,7 +5808,7 @@ function state_gate_game_scene_char_LP_from_burst_RC_yellow(self_side_input,oppo
             end
             return true
         else
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)  
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "5_stand_idle"
             -- _common_ground_idle_to_move
@@ -5848,7 +5852,7 @@ function state_gate_game_scene_char_LP_from_burst_overdrive(self_side_input,oppo
             end
             return true
         else
-            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)  
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["f"] = 28
             character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
@@ -6956,7 +6960,7 @@ function state_gate_game_scene_char_LP_from_j4_6Launcher(self_side_input,opponen
     end
     -- _7_8_9_jump_air
     if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
-        self_side_obj_char["character_animation"] = 
+        self_side_obj_char["character_animation"] =
         load_game_scene_anim_char_TRM_7_8_9_jump_air(
             self_side_obj_char,"8_jump",{350,430},
             self_side_obj_char["velocity"][1],
@@ -7251,7 +7255,7 @@ function draw_game_scene_char_LP_logic_graphic_pos_sync()
     local obj = nil
     local self_side_obj_char = obj_char_game_scene_char_LP
     local oroboros_ease_current = self_side_obj_char["shot_sys_oroboros_ease_current"]
-    local shot_offset_amount = self_side_obj_char["shot_sys_oroboros_offset_amount"] 
+    local shot_offset_amount = self_side_obj_char["shot_sys_oroboros_offset_amount"]
     local shot_r = self_side_obj_char["shot_sys_oroboros_aim_r"]*self_side_obj_char[5]
     local dx = -15
     local dy = -50
@@ -7274,8 +7278,8 @@ function draw_game_scene_char_LP_logic_graphic_pos_sync()
     obj[6] = self_side_obj_char[6]
     obj[7] = self_side_obj_char[7]
     -- character
-    self_side_obj_char[1] = self_side_obj_char["x"]+self_side_obj_char["hurtstop_wiggle_current_x"]-self_side_obj_char[5]*self_side_obj_char["anchor_pos"][1]
-    self_side_obj_char[2] = self_side_obj_char["y"]+self_side_obj_char["hurtstop_wiggle_current_y"]-self_side_obj_char[6]*self_side_obj_char["anchor_pos"][2]
+    self_side_obj_char[1] = self_side_obj_char["x"] + self_side_obj_char["hurtstop_wiggle_current_x"] - self_side_obj_char[5]*self_side_obj_char["anchor_pos"][1]
+    self_side_obj_char[2] = self_side_obj_char["y"] + self_side_obj_char["hurtstop_wiggle_current_y"] - self_side_obj_char[6]*self_side_obj_char["anchor_pos"][2]
     -- shot_sys_oroboros_mid
     obj = self_side_obj_char["shot_sys_oroboros_mid"]
     dx = -80
@@ -7344,12 +7348,12 @@ function draw_game_scene_char_LP_shadow()
     local camera_x = obj_camera[1]
     local camera_y = obj_camera[2]
     local camera_z = obj_camera[3]
-    local scale = draw_resolution_correction(800)/(light_z-camera_z)
+    local scale = draw_resolution_correction(800)/(light_z - camera_z)
     local width = love.graphics.getWidth()
     local height = love.graphics.getHeight()
     local cood_res = {
-        scale * (light_x - camera_x) + draw_resolution_correction(800),
-        scale * (light_y - camera_y) + draw_resolution_correction(450)
+        scale*(light_x - camera_x) + draw_resolution_correction(800),
+        scale*(light_y - camera_y) + draw_resolution_correction(450)
     }
     local dx_light_char_2d = math.abs((light_x - camera_x))
     love.graphics.setCanvas(DRAW_CHARACTER_CANVAS)
@@ -7369,7 +7373,7 @@ function draw_game_scene_char_LP_shadow()
     love.graphics.setBlendMode("alpha")
     local center_blur_start = 0.5
     local side_blur_start = 0.75
-    local blur_start = side_blur_start - ((width-dx_light_char_2d)/width*(side_blur_start-center_blur_start))
+    local blur_start = side_blur_start - ((width - dx_light_char_2d)/width*(side_blur_start - center_blur_start))
     local blur_width = (1.0 - blur_start)*0.85
     love.graphics.setCanvas(DRAW_SHADOW_CANVAS)
     love.graphics.clear(0,0,0,0)
@@ -7838,7 +7842,7 @@ function update_game_scene_char_LP_shot_sys_curse_countdown()
     or self_side_obj_char["game_speed_force_1_countdown"] > 0 then
         return
     end
-    if self_side_obj_char["shot_sys_curse_countdown"] > 1 
+    if self_side_obj_char["shot_sys_curse_countdown"] > 1
     and (not self_side_obj_char["shot_sys_curse_ban_state"][self_side_obj_char["state"]]) then
         self_side_obj_char["shot_sys_curse_countdown"] = self_side_obj_char["shot_sys_curse_countdown"] - 1
     else

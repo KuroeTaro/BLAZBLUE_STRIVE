@@ -17,15 +17,15 @@
 -- 确保动画机在声明时第0帧已经被运行(一般为保持当前值不变，初始化当前值)
 -- 此时LCT对应的数是1 这只能说明第1帧是下一个要被运行的帧数 并没有被实际运行
 -- 如果LCT = anim_length + 1 则说明动画的最后一帧已经被执行完成 可以以此为依据跳出当前代码块或者状态机状态
--- 和frame_animator一样 
--- 
+-- 和frame_animator一样
+--
 -- function frame_animator(obj,anim)
 --     local prop = anim["prop"]
 --     local FCT = obj["FCT"][prop]
 --     local anim_length = anim["length"]
---     if anim[FCT] then 
+--     if anim[FCT] then
 --         obj[prop] = anim[FCT]
---     end    
+--     end
 --     if FCT <= anim_length then
 --         obj["FCT"][prop] = FCT + 1
 --     end
@@ -42,13 +42,13 @@ function frame_animator(obj,anim)
     if current_time <= anim_length then
         current_time = current_time + 1
     end
-    if anim_loop and current_time > anim_length  then
+    if anim_loop and current_time > anim_length then
         current_time = 0
     end
     local key_frame_bool = anim[current_time]
-    if key_frame_bool then 
+    if key_frame_bool then
         current_value = key_frame_bool
-    end    
+    end
     obj[anim_change_prop] = current_value
     obj["FCT"][anim_change_prop] = current_time
 end
@@ -84,8 +84,8 @@ end
 -- 确保动画机在声明时第0帧已经被运行
 -- 此时LCT对应的数是1 这只能说明第1帧是下一个要被运行的帧数 并没有被实际运行
 -- 如果LCT = anim_length + 1 则说明动画的最后一帧已经被执行完成 可以以此为依据跳出当前代码块或者状态机状态
--- 和frame_animator一样 
--- 
+-- 和frame_animator一样
+--
 -- 音频object 使用 不透明度作为音量
 function point_linear_animator(obj,anim)
     local anim_change_prop = anim["prop"]
@@ -99,14 +99,14 @@ function point_linear_animator(obj,anim)
     end
     current_delta = obj["LCD"][anim_change_prop]
     if current_time <= anim_length then
-        current_value =  current_value + current_delta
+        current_value = current_value + current_delta
 		current_time = current_time + 1
     end
     if current_time > anim_length and anim_loop then
         current_time = 0
     end
     local key_frame_bool = anim[current_time]
-    if key_frame_bool ~= nil then 
+    if key_frame_bool ~= nil then
         local next_frame_time = key_frame_bool[2]
         local next_frame_value = anim[next_frame_time][1]
         local current_frame_time = current_time
@@ -119,7 +119,7 @@ function point_linear_animator(obj,anim)
             current_delta = 0
         end
     end
-    if  key_frame_bool ~= nil and anim["fix_type"] then 
+    if key_frame_bool ~= nil and anim["fix_type"] then
         current_value = key_frame_bool[1]
     end
     obj[anim_change_prop] = current_value
@@ -132,7 +132,7 @@ function init_point_linear_anim_with(obj,anim)
     point_linear_animator(obj,anim)
 end
 function init_point_linear_anim_without(obj,anim)
-    obj["LCT"][anim["prop"]] = -1 
+    obj["LCT"][anim["prop"]] = -1
     obj["LCD"][anim["prop"]] = 0
 end
 function get_point_linear_anim_end_state(obj,anim)
@@ -151,9 +151,9 @@ function init_character_anim_without(obj_char,anim)
 end
 function character_animator(obj_char,anim)
     local f = obj_char[anim["prop_f"]]
-    obj_char[anim["prop_f"]] = f+1
-    local key_frame_funciton = anim[f+1]
-    if key_frame_funciton then 
+    obj_char[anim["prop_f"]] = f + 1
+    local key_frame_funciton = anim[f + 1]
+    if key_frame_funciton then
         key_frame_funciton()
     end
 end
@@ -169,9 +169,9 @@ function init_stage_anim_without(obj_stage,anim)
 end
 function stage_animator(obj_stage,anim)
     local f = obj_stage[anim["prop_f"]]
-    obj_stage[anim["prop_f"]] = f+1
-    local key_frame_funciton = anim[f+1]
-    if key_frame_funciton then 
+    obj_stage[anim["prop_f"]] = f + 1
+    local key_frame_funciton = anim[f + 1]
+    if key_frame_funciton then
         key_frame_funciton()
     end
 end

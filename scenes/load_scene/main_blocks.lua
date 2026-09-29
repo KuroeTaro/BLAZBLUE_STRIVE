@@ -3,7 +3,7 @@ function update_load_scene_load_pre_timer()
     -- 场景时间更新
     SCENE_TIMER = SCENE_TIMER + 1
     -- 场景出口
-    if SCENE_TIMER >= 20 then 
+    if SCENE_TIMER >= 20 then
         load_disclaimer_logos_scene_prep()
         -------------------------------------------------------------------------
         -- 以下直到end为止 是所有其他scene转load scene ease in之前所都必须的步骤
@@ -18,8 +18,8 @@ function update_load_scene_ease_in()
     frame_animator(obj_UI_load_scene_dabo_trig,anim_UI_frame_load_scene_dabo_trig_ease_in_x)
     frame_animator(obj_UI_load_scene_type_in_mark,anim_UI_frame_load_scene_type_in_mark_ease_in_opacity)
     frame_animator(obj_UI_load_scene_loading_text,anim_UI_frame_load_scene_loading_text_ease_in_opacity)
-    if audio_UI_SFX_load_scene_general_start_load["audio"]:isPlaying() == false and 
-    audio_UI_SFX_load_scene_general_loading["audio"]:isPlaying() == false  and
+    if audio_UI_SFX_load_scene_general_start_load["audio"]:isPlaying() == false and
+    audio_UI_SFX_load_scene_general_loading["audio"]:isPlaying() == false and
     LOADING_AUDIO_PLAYED_ONCE == false then
         play_obj_audio(audio_UI_SFX_load_scene_general_loading)
         LOADING_AUDIO_PLAYED_ONCE = true
@@ -33,7 +33,7 @@ function update_load_scene_ease_in()
     -- ******************************************
     if audio_UI_SFX_load_scene_general_start_load["audio"]:isPlaying() == false and
     SCENE_TIMER >= 5 then
-        -- 将SCENE_TIMER设为 0   
+        -- 将SCENE_TIMER设为 0
         -- 所有obj如果动画机正常运行应该处都处于正确的位置 不进行直接修改
         -- 如果出现了错误 请修改动画机
         SCENE_TIMER = 0
@@ -90,7 +90,7 @@ function update_load_scene_ease_out()
     -- 已经加载完了图像 不运行加载图像的实际线程功能
     -- run_table_order_load()
     -- 场景出口
-    if get_frame_anim_end_state(obj_UI_load_scene_dabo_trig,anim_UI_frame_load_scene_dabo_trig_ease_out_x) and 
+    if get_frame_anim_end_state(obj_UI_load_scene_dabo_trig,anim_UI_frame_load_scene_dabo_trig_ease_out_x) and
     get_frame_anim_end_state(obj_UI_load_scene_dabo_trig,anim_UI_frame_load_scene_dabo_trig_ease_out_opacity) and
     get_frame_anim_end_state(obj_UI_load_scene_loading_text,anim_UI_frame_load_scene_loading_text_ease_out_x) and
     get_frame_anim_end_state(obj_UI_load_scene_loading_text,anim_UI_frame_load_scene_loading_text_ease_out_opacity) and

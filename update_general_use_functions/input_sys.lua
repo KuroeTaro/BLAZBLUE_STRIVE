@@ -6,10 +6,10 @@ function init_input()
     INPUT_SYS_CURRENT_COMMAND["R"] = {}
     INPUT_SYS_CURRENT_COMMAND_STATE["R"] = {}
     INPUT_SYS_CURRENT_CONTROLLER = {}
-    -- string:keyboard ("keyboard",nil) 
-    -- joystick:joystick ("joystick",joystick) 
+    -- string:keyboard ("keyboard",nil)
+    -- joystick:joystick ("joystick",joystick)
     -- table:network ("network",table)
-    INPUT_SYS_CURRENT_CONTROLLER["L"] = {nil,nil} 
+    INPUT_SYS_CURRENT_CONTROLLER["L"] = {nil,nil}
     INPUT_SYS_CURRENT_CONTROLLER["R"] = {nil,nil}
     INPUT_SYS_JOYSTICK_STATE = {0,0,0,0}
     INPUT_SYS_CURRENT_JOYSTICK_TABLE = love.joystick.getJoysticks()
@@ -82,17 +82,17 @@ function get_joystick_buttom_command(js,button_name)
     local result = nil
     if js ~= nil then
         result = js:isGamepadDown(button_name)
-    else result = false end 
-    return result 
-end 
+    else result = false end
+    return result
+end
 --将手柄扳机的值转化为指令表内的数值
 function get_joystick_axis_command(js,axis_name)
     local result = nil
-    if js ~= nil then 
+    if js ~= nil then
         result = js:getGamepadAxis(axis_name)
     else result = 0.0 end
     return result
-end 
+end
 function get_joystick_id(js)
     if js == nil then return nil end
     if js.getID then
@@ -205,16 +205,16 @@ function update_controller()
     -- legacy
     INPUT_SYS_JOYSTICK_STATE[2] = INPUT_SYS_JOYSTICK_STATE[0]
     INPUT_SYS_JOYSTICK_STATE[3] = INPUT_SYS_JOYSTICK_STATE[1]
-    if INPUT_SYS_CURRENT_JOYSTICK_TABLE[1] == nil then 
+    if INPUT_SYS_CURRENT_JOYSTICK_TABLE[1] == nil then
         INPUT_SYS_JOYSTICK_STATE[0] = 0
-    else 
+    else
         INPUT_SYS_JOYSTICK_STATE[0] = 1
-    end 
-    if INPUT_SYS_CURRENT_JOYSTICK_TABLE[2] == nil then 
+    end
+    if INPUT_SYS_CURRENT_JOYSTICK_TABLE[2] == nil then
         INPUT_SYS_JOYSTICK_STATE[1] = 0
-    else 
+    else
         INPUT_SYS_JOYSTICK_STATE[1] = 1
-    end 
+    end
 end
 --获得所有指令的现在布尔值和上一帧布尔值（键盘）
 function get_input_sys_current_command(INPUT_SYS_CURRENT_COMMAND,INPUT_SYS_CURRENT_CONTROLLER)
@@ -234,8 +234,8 @@ function get_input_sys_current_command(INPUT_SYS_CURRENT_COMMAND,INPUT_SYS_CURRE
         end
         for i = 1,2 do
             if get_joystick_axis_command(INPUT_SYS_CURRENT_CONTROLLER[2],INPUT_SYS_AXIS_TABLE[i]) > 0.2 then
-                INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i+12]] = 1
-            else INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i+12]] = 0
+                INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i + 12]] = 1
+            else INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i + 12]] = 0
             end
         end
         -- 使用左摇杆
@@ -277,8 +277,8 @@ function get_input_sys_current_command(INPUT_SYS_CURRENT_COMMAND,INPUT_SYS_CURRE
         end
         for i = 1,2 do
             if get_joystick_buttom_command(INPUT_SYS_CURRENT_CONTROLLER[2],INPUT_SYS_STICK_TABLE[i]) then
-                INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i+14]] = 1
-            else INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i+14]] = 0
+                INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i + 14]] = 1
+            else INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i + 14]] = 0
             end
         end
     elseif INPUT_SYS_CURRENT_CONTROLLER[1] == "network" then
@@ -288,29 +288,29 @@ end
 --输入状态机
 function state_machine_input(INPUT_SYS_CURRENT_COMMAND_STATE,INPUT_SYS_CURRENT_COMMAND)
     for i = 1,20 do
-        local switch = 
+        local switch =
         {
             ["Released"] = function()
-                if INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i]] == 1 then 
+                if INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i]] == 1 then
                     INPUT_SYS_CURRENT_COMMAND_STATE[INPUT_SYS_COMMAND_TABLE[i]] = "Pressing"
                 end
             end,
             ["Releasing"] = function()
-                if INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i]] == 1 then 
+                if INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i]] == 1 then
                     INPUT_SYS_CURRENT_COMMAND_STATE[INPUT_SYS_COMMAND_TABLE[i]] = "Pressing"
                 else
                     INPUT_SYS_CURRENT_COMMAND_STATE[INPUT_SYS_COMMAND_TABLE[i]] = "Released"
                 end
             end,
             ["Pressing"] = function()
-                if INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i]] == 1 then 
+                if INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i]] == 1 then
                     INPUT_SYS_CURRENT_COMMAND_STATE[INPUT_SYS_COMMAND_TABLE[i]] = "Holding"
                 else
                     INPUT_SYS_CURRENT_COMMAND_STATE[INPUT_SYS_COMMAND_TABLE[i]] = "Releasing"
                 end
             end,
             ["Holding"] = function()
-                if INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i]] == 0 then 
+                if INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i]] == 0 then
                     INPUT_SYS_CURRENT_COMMAND_STATE[INPUT_SYS_COMMAND_TABLE[i]] = "Releasing"
                 end
             end
@@ -340,10 +340,10 @@ end
 -- 绘制input_sys
 function draw_input_sys(x_offset,y_offset)
     for i,v in ipairs(INPUT_SYS_COMMAND_TABLE) do
-        love.graphics.print(v,0+x_offset,i*15-15+y_offset)
-        love.graphics.print(INPUT_SYS_CURRENT_COMMAND_STATE["L"][v],100+x_offset,i*15-15+y_offset)
-        love.graphics.print(INPUT_SYS_CURRENT_COMMAND_STATE["R"][v],160+x_offset,i*15-15+y_offset)
-    end 
+        love.graphics.print(v,0 + x_offset,i*15 - 15 + y_offset)
+        love.graphics.print(INPUT_SYS_CURRENT_COMMAND_STATE["L"][v],100 + x_offset,i*15 - 15 + y_offset)
+        love.graphics.print(INPUT_SYS_CURRENT_COMMAND_STATE["R"][v],160 + x_offset,i*15 - 15 + y_offset)
+    end
 end
 -- 获得input
 function get_input_sys_anykey_keyboard()
@@ -366,7 +366,7 @@ function get_input_sys_anykey_joystick(joystick)
         end
     end
     for i = 3,6 do
-        if get_joystick_axis_command(joystick,INPUT_SYS_AXIS_TABLE[i]) > 0.5 
+        if get_joystick_axis_command(joystick,INPUT_SYS_AXIS_TABLE[i]) > 0.5
         or get_joystick_axis_command(joystick,INPUT_SYS_AXIS_TABLE[i]) < -0.5 then
             return true
         end

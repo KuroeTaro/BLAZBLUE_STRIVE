@@ -1,0 +1,70 @@
+========================================================================================================
+A. 代码内部的多余空格（必删，无歧义）  (9 处)
+========================================================================================================
+
+  scenes/game_scene/_common/common_functions.lua  (1 处)
+      1845:7    2 空格  |    if 	CHAR_SELECT_LR["L"] == CHAR_SELECT_LR["R"] then
+
+  scenes/game_scene/characters/TRM/left.lua  (2 处)
+      2325:105  2 空格  |            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"])  then
+      2416:105  2 空格  |            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"])  then
+
+  scenes/game_scene/characters/TRM/right.lua  (2 处)
+      2325:105  2 空格  |            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"])  then
+      2416:105  2 空格  |            if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"])  then
+
+  scenes/game_scene/stage/alpha.lua  (1 处)
+        73:7    2 空格  |    if 	CHAR_SELECT_LR["L"] == CHAR_SELECT_LR["R"] then
+
+  scenes/load_scene/main_blocks.lua  (1 处)
+        22:74   2 空格  |    audio_UI_SFX_load_scene_general_loading["audio"]:isPlaying() == false  and
+
+  update_general_use_functions/animator.lua  (2 处)
+        45:48   2 空格  |    if anim_loop and current_time > anim_length  then
+       122:7    2 空格  |    if  key_frame_bool ~= nil and anim["fix_type"] then
+
+========================================================================================================
+B. 行尾注释前的对齐空格（需审查）  (26 处)
+========================================================================================================
+
+  main.lua  (1 处)
+        17:29   2 空格  |	local LFRST = 1/UPDATE_RATE  --logic frame rate stabilization timer
+
+  scenes/char_select_scene/load_function.lua  (6 处)
+        15:22   3 空格  |    THREAD_AMOUNT = 3   -- 线程数目
+        17:20   3 空格  |    ASSET_DATA = {}   -- 保持为nil
+        22:6    4 空格  |    }    -- load function table
+        23:34   2 空格  |    CURRENT_ORDER_TABLE = {1,1,1}  -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
+        24:31   2 空格  |    ORDER_SIZE_TABLE = {2,1,1}  -- 每个load function的最大值
+        25:42   3 空格  |    LOAD_ONCE_TABLE = {false,false,false}   -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
+
+  scenes/disclaimer_and_logos_scene/load_function.lua  (6 处)
+        11:22   3 空格  |    THREAD_AMOUNT = 1   -- 线程数目
+        13:20   3 空格  |    ASSET_DATA = {}   -- 保持为nil
+        14:72   4 空格  |    ORDER_LOAD_TABLE = {order_load_disclaimer_and_logo_scene_1_general}    -- load function table
+        15:30   2 空格  |    CURRENT_ORDER_TABLE = {1}  -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
+        16:27   2 空格  |    ORDER_SIZE_TABLE = {1}  -- 每个load function的最大值
+        17:30   3 空格  |    LOAD_ONCE_TABLE = {false}   -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
+
+  scenes/game_scene/_common/load_function.lua  (5 处)
+        27:23   3 空格  |    THREAD_AMOUNT = 13   -- 线程数目
+        29:20   3 空格  |    ASSET_DATA = {}   -- 保持为nil
+        45:54   2 空格  |    CURRENT_ORDER_TABLE = {1,1,1,1,1,1,1,1,1,1,1,1,1}  -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
+        46:56   2 空格  |    ORDER_SIZE_TABLE = {12,4,3,1,1,4,3,11,39,11,39,3,4}  -- 每个load function的最大值
+        47:102  3 空格  |    LOAD_ONCE_TABLE = {false,false,false,false,false,false,false,false,false,false,false,false,false}   -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
+
+  scenes/game_scene/characters/TRM/_anim.lua  (1 处)
+      5701:93   3 空格  |        obj_camera["3d_pos_x_target"] = (hit_side_obj_char["x"] + hurt_side_obj_char["x"])/2   -- 必须要保持两个pushbox宽度相同
+
+  scenes/game_scene/stage/alpha.lua  (1 处)
+       563:74   3 空格  |    obj_camera["3d_pos_x_target"] = (obj_char_L["x"] + obj_char_R["x"])/2   -- 必须要保持两个pushbox宽度相同
+
+  scenes/start_scene/load_function.lua  (6 处)
+        15:22   3 空格  |    THREAD_AMOUNT = 3   -- 线程数目
+        17:20   3 空格  |    ASSET_DATA = {}   -- 保持为nil
+        22:6    4 空格  |    }    -- load function table
+        23:34   2 空格  |    CURRENT_ORDER_TABLE = {1,1,1}  -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
+        24:31   2 空格  |    ORDER_SIZE_TABLE = {2,1,1}  -- 每个load function的最大值
+        25:42   3 空格  |    LOAD_ONCE_TABLE = {false,false,false}   -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
+
+TOTAL: A=9  B=26  =35

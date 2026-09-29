@@ -395,7 +395,7 @@ function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_shot_oroboros_blast
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
-    local reticle_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1]+160,obj_char["shot_sys_reticle_stage_pos_current"][2]+160}
+    local reticle_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1] + 160,obj_char["shot_sys_reticle_stage_pos_current"][2] + 160}
     local center_dx = 35
     local center_dy = -210
     local center_r = character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,reticle_pos)
@@ -432,7 +432,7 @@ function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_shot_oroboros_blast
     end
     obj_VFX["draw_sync"] = function()
         local oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
-        local reticle_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1]+160,obj_char["shot_sys_reticle_stage_pos_current"][2]+160}
+        local reticle_pos = {obj_char["shot_sys_reticle_stage_pos_current"][1] + 160,obj_char["shot_sys_reticle_stage_pos_current"][2] + 160}
         local center_dx = 35
         local center_dy = -210
         local center_r = character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(obj_char,oroboros_pos,reticle_pos)

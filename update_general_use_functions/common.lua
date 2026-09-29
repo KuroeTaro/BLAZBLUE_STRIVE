@@ -26,7 +26,7 @@ function common_queue_new(length)
     return res
 end
 function common_queue_push(queue,v)
-    local current_length = #queue["content"]+1
+    local current_length = #queue["content"] + 1
     local static_length = queue["length"]
     queue["content"][current_length] = v
     if static_length == -1 then

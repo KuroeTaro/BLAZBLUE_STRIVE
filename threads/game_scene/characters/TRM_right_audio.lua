@@ -72,7 +72,7 @@ for i = 1,#move_SFX_folder_table do
     for j = 1,#file_name_table do
         local key = file_name_table[j]
         thread_data["move_SFX"][key] = sound_module(base .. "move_SFX/" .. folder .. "/" .. key .. ".ogg")
-        thread_data["move_SFX_keys"][#thread_data["move_SFX_keys"]+1] = key
+        thread_data["move_SFX_keys"][#thread_data["move_SFX_keys"] + 1] = key
     end
 end
 love.thread.getChannel( 'thread_data_10' ):push( thread_data )

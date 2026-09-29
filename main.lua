@@ -14,7 +14,7 @@ function love.run()
 	local UPDATE_RATE = 60
 	local DRAW_RATE = 120
 	local dt = 0
-	local LFRST = 1/UPDATE_RATE  --logic frame rate stabilization timer
+	local LFRST = 1/UPDATE_RATE --logic frame rate stabilization timer
 	local GFRST = 1/DRAW_RATE --graphic frame rate stabilization timer
 	-- global_counter = 0
 	local loop_time = love.timer.getTime()
@@ -67,7 +67,7 @@ function love.run()
 		if loop_time > 0.016 then
 			print(update_time,draw_time)
 		end
-		DEBUG_LAST_SLEEP = math.max(0,(1/DRAW_RATE-GFRST))
+		DEBUG_LAST_SLEEP = math.max(0,(1/DRAW_RATE - GFRST))
 		if love.timer then love.timer.sleep(DEBUG_LAST_SLEEP) end
 	end
 end
@@ -99,12 +99,12 @@ function love.load()
 	DEBUG_TRAINNING_SPAWN_ARRAY[0] = {}
 	DEBUG_TRAINNING_SPAWN_ARRAY[1] = {}
 	DEBUG_TRAINNING_SPAWN_ARRAY[2] = {}
-	DEBUG_TRAINNING_SPAWN_ARRAY[0][0] = {-2040,-2040+120,1,-1}
-	DEBUG_TRAINNING_SPAWN_ARRAY[0][1] = {-2040+120,-2040,-1,1}
+	DEBUG_TRAINNING_SPAWN_ARRAY[0][0] = {-2040,-2040 + 120,1,-1}
+	DEBUG_TRAINNING_SPAWN_ARRAY[0][1] = {-2040 + 120,-2040,-1,1}
 	DEBUG_TRAINNING_SPAWN_ARRAY[1][0] = {-320,320,1,-1}
 	DEBUG_TRAINNING_SPAWN_ARRAY[1][1] = {320,-320,-1,1}
-	DEBUG_TRAINNING_SPAWN_ARRAY[2][0] = {2040-120,2040,1,-1}
-	DEBUG_TRAINNING_SPAWN_ARRAY[2][1] = {2040,2040-120,-1,1}
+	DEBUG_TRAINNING_SPAWN_ARRAY[2][0] = {2040 - 120,2040,1,-1}
+	DEBUG_TRAINNING_SPAWN_ARRAY[2][1] = {2040,2040 - 120,-1,1}
 	DEBUG_TRAINNING_SPAWN_STATE = "Released"
 	DEBUG_BOX_COLOR_YELLOW = {1,1,0,0.5}
 	DEBUG_BOX_COLOR_BLUE = {0,180/255,1,0.5}
@@ -260,7 +260,7 @@ function love.load()
 ---------------------------------------------------
 	current_update_block = update_load_scene_load_pre_timer
 	current_draw_block = function() end
-end    
+end
 function love.update()
 	-- http://127.0.0.1:8000
 	require("lovebird").update()

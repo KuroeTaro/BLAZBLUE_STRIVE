@@ -70,7 +70,7 @@ local load_universal_name_table = {
 }
 for i,v in ipairs(load_universal_name_table) do
     thread_data[v] = compress_module("asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".dds")
-end 
+end
 -- 攻击类
 local load_attack_name_table = {
     "burst_overdrive_ground",

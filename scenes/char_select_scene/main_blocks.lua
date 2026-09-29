@@ -4,7 +4,7 @@ function update_char_select_scene_ease_in_0f_36f()
     state_machine_UI_char_select_scene_movie_cover_loop(obj_UI_char_select_scene_movie_cover)
     state_machine_UI_char_select_scene_start_0f_110f(obj_UI_char_select_scene_start_0f_110f)
     -- 场景出口
-    if SCENE_TIMER >= 36 then 
+    if SCENE_TIMER >= 36 then
         -- 初始化此出口所需属性
         obj_UI_char_select_scene_black_solid[4] = 0
         -- 初始化此出口所需要的动画机 但是目前没有
@@ -18,7 +18,7 @@ function update_char_select_scene_ease_in_36f_40f()
     state_machine_UI_char_select_scene_movie_cover_loop(obj_UI_char_select_scene_movie_cover)
     state_machine_UI_char_select_scene_start_0f_110f(obj_UI_char_select_scene_start_0f_110f)
     -- 场景出口
-    if SCENE_TIMER >= 40 then 
+    if SCENE_TIMER >= 40 then
         -- 初始化此出口所需属性
         obj_UI_char_select_scene_timer[4] = 1
         obj_UI_char_select_scene_glow[4] = 1
@@ -460,7 +460,7 @@ function update_char_select_scene_ease_in_40f_130f()
         end
     end
     -- 场景出口
-    if SCENE_TIMER >= 130 then 
+    if SCENE_TIMER >= 130 then
         state_machine_UI_char_select_scene_char_select("L")
         if GAME_MODE ~= 0 then
             state_machine_UI_char_select_scene_char_select("R")
@@ -482,13 +482,13 @@ function update_char_select_scene_main()
     if GAME_MODE ~= 0 then
         state_machine_UI_char_select_scene_char_select("R")
     end
-    if GAME_MODE == 0 
-    and obj_UI_char_select_scene_char_select_left["select_state"] == "locking" 
+    if GAME_MODE == 0
+    and obj_UI_char_select_scene_char_select_left["select_state"] == "locking"
     then
         -- 初始化此出口所需属性
         SCENE_TIMER = 0
         CHAR_SELECT_LR["R"] = CHAR_SELECT_LR["L"]
-        -- 初始化此出口所需要的动画机 
+        -- 初始化此出口所需要的动画机
         obj_UI_char_select_scene_char_select_right["select_state"] = "idle"
         obj_UI_char_select_scene_char_select_right["ease_state"] = "ease_in"
         obj_UI_char_select_scene_char_select_char_right[1] = RIGHT_CHAR_SELECT_CHAR_POSITION[CHAR_SELECT_LR["L"]][1]
@@ -508,17 +508,17 @@ function update_char_select_scene_main()
         )
         -- 更新 current_update_block
         current_update_block = update_char_select_scene_train_dummy_select
-    elseif GAME_MODE ~= 0 
+    elseif GAME_MODE ~= 0
     and obj_UI_char_select_scene_char_select_left["select_state"] == "locked"
     and obj_UI_char_select_scene_char_select_right["select_state"] == "locked"
-    then 
+    then
         -- 初始化此出口所需属性
         SCENE_TIMER = 0
         play_obj_audio(audio_SFX_char_select_scene_ease_out)
         -- 初始化此出口所需要的动画机
         init_point_linear_anim_with(
             obj_UI_char_select_scene_black_solid,
-            anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity 
+            anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity
         )
         init_point_linear_anim_with(
             audio_BGM_char_select_scene_moonlight_re_edit,
@@ -550,14 +550,14 @@ function update_char_select_scene_train_dummy_select()
     common_char_select_scene_char_select_left_locked_exit()
     if obj_UI_char_select_scene_char_select_left["select_state"] == "locked"
     and obj_UI_char_select_scene_char_select_right["select_state"] == "locked"
-    then 
+    then
         -- 初始化此出口所需属性
         SCENE_TIMER = 0
         play_obj_audio(audio_SFX_char_select_scene_ease_out)
         -- 初始化此出口所需要的动画机
         init_point_linear_anim_with(
             obj_UI_char_select_scene_black_solid,
-            anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity 
+            anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity
         )
         init_point_linear_anim_with(
             audio_BGM_char_select_scene_moonlight_re_edit,
@@ -567,13 +567,13 @@ function update_char_select_scene_train_dummy_select()
         -- 更新 current_update_block
         current_update_block = update_char_select_scene_ease_out
     end
-    if ( 
-        obj_UI_char_select_scene_char_select_left["select_state"] == "locked" 
+    if (
+        obj_UI_char_select_scene_char_select_left["select_state"] == "locked"
         or obj_UI_char_select_scene_char_select_left["select_state"] == "locking"
     )
     and obj_UI_char_select_scene_char_select_right["select_state"] == "idle"
     and INPUT_SYS_CURRENT_COMMAND_STATE["L"]["H"] == "Pressing"
-    then 
+    then
         obj_UI_char_select_scene_char_select_right["select_state"] = "idle"
         obj_UI_char_select_scene_char_select_right["ease_state"] = "ease_in"
         obj_UI_char_select_scene_char_select_char_right[1] = 1600
@@ -604,7 +604,7 @@ function update_char_select_scene_train_dummy_select()
         -- 更新 current_update_block
         current_update_block = update_char_select_scene_main
     end
-end 
+end
 function update_char_select_scene_ease_out()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_char_select_scene_movie_cover_loop(obj_UI_char_select_scene_movie_cover)
@@ -612,7 +612,7 @@ function update_char_select_scene_ease_out()
     state_machine_UI_char_select_scene_ring_blink(obj_UI_char_select_scene_ring)
     point_linear_animator(
         obj_UI_char_select_scene_black_solid,
-        anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity 
+        anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity
     )
     point_linear_animator(
         audio_BGM_char_select_scene_moonlight_re_edit,
@@ -628,4 +628,4 @@ function update_char_select_scene_ease_out()
         -- 卸载所有资源 包括object anim image audio
         unload_char_select_scene_all()
     end
-end 
+end

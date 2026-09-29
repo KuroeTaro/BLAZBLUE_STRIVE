@@ -12,17 +12,17 @@ function load_char_select_scene_prep()
         "threads/char_select_scene/char_select_thread_2_start_0_110f.lua",
         "threads/char_select_scene/char_select_thread_3_movie_cover.lua"
     }
-    THREAD_AMOUNT = 3   -- 线程数目
+    THREAD_AMOUNT = 3 -- 线程数目
     THREAD_ONCE_TABLE = {false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
-    ASSET_DATA = {}   -- 保持为nil
+    ASSET_DATA = {} -- 保持为nil
     ORDER_LOAD_TABLE = {
         order_load_char_select_scene_UI_char,
         order_load_char_select_scene_UI_start_0_110f,
         order_load_char_select_scene_UI_movie_cover
-    }    -- load function table
-    CURRENT_ORDER_TABLE = {1,1,1}  -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
-    ORDER_SIZE_TABLE = {2,1,1}  -- 每个load function的最大值
-    LOAD_ONCE_TABLE = {false,false,false}   -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
+    } -- load function table
+    CURRENT_ORDER_TABLE = {1,1,1} -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
+    ORDER_SIZE_TABLE = {2,1,1} -- 每个load function的最大值
+    LOAD_ONCE_TABLE = {false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     LOADING_FUNCTION_AMOUNT = 3 -- 和线程数相同
 	NEXT_UPDATE_BLOCK = update_char_select_scene_ease_in_0f_36f
 	NEXT_DRAW_BLOCK = draw_char_select_scene_ease_in_0f_36f
@@ -30,7 +30,7 @@ function load_char_select_scene_prep()
 end
 -- 分步骤将素材加载
 function order_load_char_select_scene_UI_char(load_order)
-    local switch = 
+    local switch =
     {
         [1] = function()
             -- global use shape image
@@ -55,7 +55,7 @@ function order_load_char_select_scene_UI_char(load_order)
             end
             image_table_UI_char_select_scene_number = {}
             for i = 1,10 do
-                image_table_UI_char_select_scene_number[i-1] = love.graphics.newImage(ASSET_DATA[1]["number"][i-1])
+                image_table_UI_char_select_scene_number[i - 1] = love.graphics.newImage(ASSET_DATA[1]["number"][i - 1])
             end
         end,
         [2] = function()
@@ -69,10 +69,10 @@ function order_load_char_select_scene_UI_char(load_order)
     if this_function then this_function() end
 end
 function order_load_char_select_scene_UI_start_0_110f(load_order)
-    local switch = 
+    local switch =
     {
         [1] = function()
-            image_sprite_sheet_UI_char_select_scene_start_0_110f = 
+            image_sprite_sheet_UI_char_select_scene_start_0_110f =
             common_sprite_sheet_load(
                 "asset/char_select_scene/texture/scene_start_0_110f.json",
                 love.graphics.newImage(ASSET_DATA[2]["scene_start_0_110f"])
@@ -83,10 +83,10 @@ function order_load_char_select_scene_UI_start_0_110f(load_order)
     if this_function then this_function() end
 end
 function order_load_char_select_scene_UI_movie_cover(load_order)
-    local switch = 
+    local switch =
     {
         [1] = function()
-            image_sprite_sheet_UI_char_select_scene_movie_cover = 
+            image_sprite_sheet_UI_char_select_scene_movie_cover =
             common_sprite_sheet_load(
                 "asset/char_select_scene/texture/movie_cover.json",
                 love.graphics.newImage(ASSET_DATA[3]["movie_cover"])

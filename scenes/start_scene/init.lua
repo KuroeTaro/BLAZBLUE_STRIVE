@@ -218,7 +218,7 @@ function load_start_scene_obj()
     obj_UI_start_scene_noise_bg["state"] = "default"
 end
 function load_start_scene_anim()
-    -- general_ease_in_0_1_opacity 
+    -- general_ease_in_0_1_opacity
     anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity = {}
     anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity[0] = {0,5}
     anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity[5] = {1,5}
@@ -406,7 +406,7 @@ function load_start_scene_anim()
     anim_UI_point_linear_start_scene_config_audio_bar_mark_down_y["length"] = 4
     anim_UI_point_linear_start_scene_config_audio_bar_mark_down_y["loop"] = false
     anim_UI_point_linear_start_scene_config_audio_bar_mark_down_y["fix_type"] = false
-    -- config_resolution_bar_mark_left_x 
+    -- config_resolution_bar_mark_left_x
     anim_UI_point_linear_start_scene_config_resolution_bar_mark_left_x = {}
     anim_UI_point_linear_start_scene_config_resolution_bar_mark_left_x[0] = {1000,1}
     anim_UI_point_linear_start_scene_config_resolution_bar_mark_left_x[1] = {994,4}
@@ -415,7 +415,7 @@ function load_start_scene_anim()
     anim_UI_point_linear_start_scene_config_resolution_bar_mark_left_x["length"] = 4
     anim_UI_point_linear_start_scene_config_resolution_bar_mark_left_x["loop"] = false
     anim_UI_point_linear_start_scene_config_resolution_bar_mark_left_x["fix_type"] = true
-    -- config_resolution_bar_mark_right_x 
+    -- config_resolution_bar_mark_right_x
     anim_UI_point_linear_start_scene_config_resolution_bar_mark_right_x = {}
     anim_UI_point_linear_start_scene_config_resolution_bar_mark_right_x[0] = {1000,1}
     anim_UI_point_linear_start_scene_config_resolution_bar_mark_right_x[1] = {1006,4}

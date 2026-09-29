@@ -8,13 +8,13 @@
 function load_disclaimer_logos_scene_prep()
     load_disclaimer_and_logos_scene_require()
     THREAD_TABLE = {"threads/disclaimer_and_logos_scene/disclaimer_and_logos_scene_thread_1_general.lua"}
-    THREAD_AMOUNT = 1   -- 线程数目
+    THREAD_AMOUNT = 1 -- 线程数目
     THREAD_ONCE_TABLE = {false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
-    ASSET_DATA = {}   -- 保持为nil
-    ORDER_LOAD_TABLE = {order_load_disclaimer_and_logo_scene_1_general}    -- load function table
-    CURRENT_ORDER_TABLE = {1}  -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
-    ORDER_SIZE_TABLE = {1}  -- 每个load function的最大值
-    LOAD_ONCE_TABLE = {false}   -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
+    ASSET_DATA = {} -- 保持为nil
+    ORDER_LOAD_TABLE = {order_load_disclaimer_and_logo_scene_1_general} -- load function table
+    CURRENT_ORDER_TABLE = {1} -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
+    ORDER_SIZE_TABLE = {1} -- 每个load function的最大值
+    LOAD_ONCE_TABLE = {false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     LOADING_FUNCTION_AMOUNT = 1 -- 和线程数相同
 	NEXT_UPDATE_BLOCK = update_disclaimer_and_logos_scene_main
 	NEXT_DRAW_BLOCK = draw_disclaimer_and_logos_scene_main
@@ -22,7 +22,7 @@ function load_disclaimer_logos_scene_prep()
 end
 -- 分步骤将素材加载
 function order_load_disclaimer_and_logo_scene_1_general(load_order)
-    local switch = 
+    local switch =
     {
         [1] = function()
             load_disclaimer_and_logos_scene_obj()

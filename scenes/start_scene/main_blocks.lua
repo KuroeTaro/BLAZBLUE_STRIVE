@@ -2,23 +2,23 @@ function update_start_scene_ease_in()
     SCENE_TIMER = SCENE_TIMER + 1
     point_linear_animator(obj_UI_start_scene_solid_color,anim_UI_point_linear_start_scene_solid_ease_in_opacity)
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    if SCENE_TIMER == 10 then 
+    if SCENE_TIMER == 10 then
         play_obj_audio(audio_SFX_start_scene_blazblue_click_echo)
     end
     -- 场景出口
-    if SCENE_TIMER >= 30 then 
+    if SCENE_TIMER >= 30 then
         SCENE_TIMER = 0
         -- 初始化此出口所需属性 但是目前没有
         -- 初始化此出口所需要的动画机 但是目前没有
         -- 更新 current_update_block
         current_update_block = update_start_scene_30f_confirm
     end
-end 
+end
 function update_start_scene_30f_confirm()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
     -- 场景出口
-    if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then 
+    if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
         SCENE_TIMER = 0
         play_obj_audio(audio_SFX_start_scene_confirm_3)
         -- 初始化此出口所需属性 但是目前没有
@@ -33,7 +33,7 @@ function update_start_scene_30f_confirm()
         -- 更新 current_update_block
         current_update_block = update_start_scene_1s45f_1s50f
     end
-end 
+end
 function update_start_scene_1s45f_1s50f()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -45,7 +45,7 @@ function update_start_scene_1s45f_1s50f()
     point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_general_ease_in_0_0p1_opacity)
     point_linear_animator(obj_UI_start_scene_main_press_any_key,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity)
     -- 场景出口
-    if SCENE_TIMER >= 5 then 
+    if SCENE_TIMER >= 5 then
         SCENE_TIMER = 0
         -- 初始化此出口所需属性 但是目前没有
         -- 初始化此出口所需要的动画机
@@ -54,7 +54,7 @@ function update_start_scene_1s45f_1s50f()
         -- 更新 current_update_block
         current_update_block = update_start_scene_main
     end
-end 
+end
 function update_start_scene_main()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -67,20 +67,20 @@ function update_start_scene_main()
         anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
     )
     -- 场景出口
-    if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["left"] == "Pressing" then 
+    if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["left"] == "Pressing" then
         SCENE_TIMER = 0
         -- 播放twitch音频
         play_obj_audio(audio_SFX_start_scene_left_0)
         -- 轮转 option id
-        if OPTION_ID == 0 then 
-            OPTION_ID = 4 
-        else 
+        if OPTION_ID == 0 then
+            OPTION_ID = 4
+        else
             OPTION_ID = OPTION_ID - 1
         end
         -- 轮转 CONSOLE TEXT
         CONSOLE_TEXT_1_ID = OPTION_ID
         CONSOLE_TEXT_2_ID = OPTION_ID
-        -- 初始化此出口所需属性 
+        -- 初始化此出口所需属性
         obj_UI_start_scene_breath_tag[4] = 0
         obj_UI_start_scene_console_dabo_trig[1] = 75
         obj_UI_start_scene_console_dabo_trig[4] = 0
@@ -103,14 +103,14 @@ function update_start_scene_main()
         -- 更新 current_update_block
         current_update_block = update_start_scene_option_twitch
     -- 场景出口 option twitch right
-    elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["right"] == "Pressing" then 
+    elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["right"] == "Pressing" then
         SCENE_TIMER = 0
         -- 播放twitch音频
         play_obj_audio(audio_SFX_start_scene_right_0)
         -- 轮转 option ID
-        if OPTION_ID == 4 then 
-            OPTION_ID = 0 
-        else 
+        if OPTION_ID == 4 then
+            OPTION_ID = 0
+        else
             OPTION_ID = OPTION_ID + 1
         end
         -- 轮转 CONSOLE TEXT
@@ -139,7 +139,7 @@ function update_start_scene_main()
         -- 更新 current_update_block
         current_update_block = update_start_scene_option_twitch
     -- 场景出口 option 确认
-    elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then 
+    elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
         SCENE_TIMER = 0
         play_obj_audio(audio_SFX_start_scene_confirm_0)
         local switch = {
@@ -236,7 +236,7 @@ function update_start_scene_main()
                 -- 初始化此出口所需属性
                 obj_UI_start_scene_shutter[4] = 0
                 obj_UI_start_scene_record_dabo_trig[4] = 0
-                obj_UI_start_scene_record_dabo_trig[2] = 
+                obj_UI_start_scene_record_dabo_trig[2] =
                 DABO_TIRG_RECORD_SUB_SCENE_Y_POSITION
                 obj_UI_start_scene_record_game_duration_text[4] = 0
                 obj_UI_start_scene_record_num_0[4] = 0
@@ -330,18 +330,18 @@ function update_start_scene_main()
             end
         }
         local thisFunction = switch[OPTION_ID]
-        if thisFunction then 
-            thisFunction() 
+        if thisFunction then
+            thisFunction()
         end
     -- 场景出口 控制器更新
-    elseif (INPUT_SYS_JOYSTICK_STATE[0] ~= INPUT_SYS_JOYSTICK_STATE[2] or INPUT_SYS_JOYSTICK_STATE[1] ~= INPUT_SYS_JOYSTICK_STATE[3]) then 
+    elseif (INPUT_SYS_JOYSTICK_STATE[0] ~= INPUT_SYS_JOYSTICK_STATE[2] or INPUT_SYS_JOYSTICK_STATE[1] ~= INPUT_SYS_JOYSTICK_STATE[3]) then
         SCENE_TIMER = 0
         -- 检测控制器具体变化 修改console text
-        if INPUT_SYS_JOYSTICK_STATE[0] == 0 and INPUT_SYS_JOYSTICK_STATE[1] == 0 then 
+        if INPUT_SYS_JOYSTICK_STATE[0] == 0 and INPUT_SYS_JOYSTICK_STATE[1] == 0 then
             CONSOLE_TEXT_2_ID = 5
-        elseif INPUT_SYS_JOYSTICK_STATE[0] == 1 and INPUT_SYS_JOYSTICK_STATE[1] == 0 then 
+        elseif INPUT_SYS_JOYSTICK_STATE[0] == 1 and INPUT_SYS_JOYSTICK_STATE[1] == 0 then
             CONSOLE_TEXT_2_ID = 6
-        elseif INPUT_SYS_JOYSTICK_STATE[0] == 1 and INPUT_SYS_JOYSTICK_STATE[1] == 1 then 
+        elseif INPUT_SYS_JOYSTICK_STATE[0] == 1 and INPUT_SYS_JOYSTICK_STATE[1] == 1 then
             CONSOLE_TEXT_2_ID = 7
         end
         CONSOLE_TEXT_1_ID = 5
@@ -360,7 +360,7 @@ function update_start_scene_main()
         -- 更新 current_update_block
         current_update_block = update_start_scene_only_console_twitch
     end
-end 
+end
 function update_start_scene_ease_out()
     SCENE_TIMER = SCENE_TIMER + 1
     point_linear_animator(
@@ -399,7 +399,7 @@ function update_start_scene_ease_out()
         local this_function = switch[OPTION_ID]
         if this_function then this_function() end
     end
-end 
+end
 -- option twitch
 function update_start_scene_option_twitch()
     SCENE_TIMER = SCENE_TIMER + 1
@@ -441,7 +441,7 @@ function update_start_scene_option_twitch()
         -- 更新 current_update_block
         current_update_block = update_start_scene_main
     end
-end 
+end
 function update_start_scene_only_console_twitch()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -475,7 +475,7 @@ function update_start_scene_only_console_twitch()
         -- 更新 current_update_block
         current_update_block = update_start_scene_main
     end
-end 
+end
 -- config
 function update_start_scene_config_ease_in()
     SCENE_TIMER = SCENE_TIMER + 1
@@ -518,7 +518,7 @@ function update_start_scene_config_ease_in()
         -- 更新 current_update_block
         current_update_block = update_start_scene_config_main
     end
-end 
+end
 function update_start_scene_config_main()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -539,7 +539,7 @@ function update_start_scene_config_main()
             SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID = SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID - 1
         end
         -- 初始化此出口所需属性
-        obj_UI_start_scene_config_menu_dabo_trig[2] = 
+        obj_UI_start_scene_config_menu_dabo_trig[2] =
         DABO_TIRG_CONFIG_SUB_SCENE_Y_POSITION_TABLE[SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID + 1]
         -- 初始化此出口所需要的动画机
         init_point_linear_anim_with(
@@ -556,7 +556,7 @@ function update_start_scene_config_main()
             SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID = SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID + 1
         end
         -- 更新 twitch 场景属性 preset
-        obj_UI_start_scene_config_menu_dabo_trig[2] = 
+        obj_UI_start_scene_config_menu_dabo_trig[2] =
         DABO_TIRG_CONFIG_SUB_SCENE_Y_POSITION_TABLE[SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID + 1]
         -- 更新 twitch 场景动画 preset
         init_point_linear_anim_with(
@@ -582,10 +582,10 @@ function update_start_scene_config_main()
                 obj_UI_start_scene_config_audio_text[4] = 0
                 obj_UI_start_scene_config_menu_dabo_trig[4] = 1
                 obj_UI_start_scene_config_menu_text[4] = 1
-                obj_UI_start_scene_config_audio_bar_mark[1] 
+                obj_UI_start_scene_config_audio_bar_mark[1]
                 = BAR_MARK_CONFIG_SUB_SCENE_AUDIO_X_POSITION
-                obj_UI_start_scene_config_audio_bar_mark[2] 
-                = BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID+1]
+                obj_UI_start_scene_config_audio_bar_mark[2]
+                = BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID + 1]
                 obj_UI_start_scene_config_audio_BGM_bar_alpha[1] = BGM_VOLUME*23
                 obj_UI_start_scene_config_audio_SFX_bar_alpha[1] = SFX_VOLUME*23
                 -- 初始化此出口所需要的动画机
@@ -707,7 +707,7 @@ function update_start_scene_config_main()
                 obj_UI_start_scene_config_menu_dabo_trig[4] = 1
                 obj_UI_start_scene_config_menu_text[4] = 1
                 audio_BGM_start_scene_NOC_high[1] = 0
-                audio_BGM_start_scene_NOC_low[1] = 1 
+                audio_BGM_start_scene_NOC_low[1] = 1
                 -- 初始化此出口所需要的动画机
                 init_point_linear_anim_with(
                     obj_UI_start_scene_shutter,
@@ -736,8 +736,8 @@ function update_start_scene_config_main()
             end
         }
         local thisFunction = switch[SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID]
-        if thisFunction then 
-            thisFunction() 
+        if thisFunction then
+            thisFunction()
         end
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["H"] == "Pressing" then
         SCENE_TIMER = 0
@@ -748,7 +748,7 @@ function update_start_scene_config_main()
         obj_UI_start_scene_config_menu_dabo_trig[4] = 1
         obj_UI_start_scene_config_menu_text[4] = 1
         audio_BGM_start_scene_NOC_high[1] = 0
-        audio_BGM_start_scene_NOC_low[1] = 1 
+        audio_BGM_start_scene_NOC_low[1] = 1
         -- 初始化此出口所需要的动画机
         init_point_linear_anim_with(
             obj_UI_start_scene_shutter,
@@ -775,7 +775,7 @@ function update_start_scene_config_main()
         -- 更新 current_update_block
         current_update_block = update_start_scene_config_ease_out
     end
-end 
+end
 function update_start_scene_config_twitch_up()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -795,13 +795,13 @@ function update_start_scene_config_twitch_up()
     if SCENE_TIMER >= 5 then
         SCENE_TIMER = 0
         -- 初始化此出口所需属性
-        obj_UI_start_scene_config_menu_dabo_trig[2] = 
+        obj_UI_start_scene_config_menu_dabo_trig[2] =
         DABO_TIRG_CONFIG_SUB_SCENE_Y_POSITION_TABLE[SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID + 1]
         -- 初始化此出口所需要的动画机 但是目前没有
         -- 更新 current_update_block
         current_update_block = update_start_scene_config_main
     end
-end 
+end
 function update_start_scene_config_twitch_down()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -821,13 +821,13 @@ function update_start_scene_config_twitch_down()
     if SCENE_TIMER >= 5 then
         SCENE_TIMER = 0
         -- 初始化此出口所需属性
-        obj_UI_start_scene_config_menu_dabo_trig[2] = 
+        obj_UI_start_scene_config_menu_dabo_trig[2] =
         DABO_TIRG_CONFIG_SUB_SCENE_Y_POSITION_TABLE[SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID + 1]
         -- 初始化此出口所需要的动画机 但是目前没有
         -- 更新 current_update_block
         current_update_block = update_start_scene_config_main
     end
-end 
+end
 function update_start_scene_config_ease_out()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -866,14 +866,14 @@ function update_start_scene_config_ease_out()
         SCENE_TIMER = 0
         -- 初始化此出口所需属性
         SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID = 0
-        obj_UI_start_scene_config_menu_dabo_trig[2] = 
+        obj_UI_start_scene_config_menu_dabo_trig[2] =
         DABO_TIRG_CONFIG_SUB_SCENE_Y_POSITION_TABLE[SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID + 1]
         -- 初始化此出口所需要的动画机 但是目前没有
         -- 更新 current_update_block
         current_update_block = update_start_scene_main
         current_draw_block = draw_start_scene_main
     end
-end 
+end
     -- config audio
 function update_start_scene_config_audio_ease_in()
     SCENE_TIMER = SCENE_TIMER + 1
@@ -926,7 +926,7 @@ function update_start_scene_config_audio_ease_in()
         -- 更新 current_update_block
         current_update_block = update_start_scene_config_audio_main
     end
-end 
+end
 function update_start_scene_config_audio_main()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -947,9 +947,9 @@ function update_start_scene_config_audio_main()
             AUDIO_BAR_MARK_ID = AUDIO_BAR_MARK_ID - 1
         end
         -- 初始化此出口所需属性
-        obj_UI_start_scene_config_audio_bar_mark[2] = 
+        obj_UI_start_scene_config_audio_bar_mark[2] =
         BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID + 1]
-        obj_UI_start_scene_config_audio_bar_mark[1] = 
+        obj_UI_start_scene_config_audio_bar_mark[1] =
         BAR_MARK_CONFIG_SUB_SCENE_AUDIO_X_POSITION
         obj_UI_start_scene_config_audio_BGM_bar_alpha[1] = BGM_VOLUME*23
         obj_UI_start_scene_config_audio_SFX_bar_alpha[1] = SFX_VOLUME*23
@@ -968,9 +968,9 @@ function update_start_scene_config_audio_main()
             AUDIO_BAR_MARK_ID = AUDIO_BAR_MARK_ID + 1
         end
         -- 初始化此出口所需属性
-        obj_UI_start_scene_config_audio_bar_mark[2] = 
+        obj_UI_start_scene_config_audio_bar_mark[2] =
         BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID + 1]
-        obj_UI_start_scene_config_audio_bar_mark[1] = 
+        obj_UI_start_scene_config_audio_bar_mark[1] =
         BAR_MARK_CONFIG_SUB_SCENE_AUDIO_X_POSITION
         obj_UI_start_scene_config_audio_BGM_bar_alpha[1] = BGM_VOLUME*23
         obj_UI_start_scene_config_audio_SFX_bar_alpha[1] = SFX_VOLUME*23
@@ -985,9 +985,9 @@ function update_start_scene_config_audio_main()
         SCENE_TIMER = 0
         play_obj_audio(audio_SFX_start_scene_left_0)
         -- 初始化此出口所需属性
-        obj_UI_start_scene_config_audio_bar_mark[2] = 
+        obj_UI_start_scene_config_audio_bar_mark[2] =
         BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID + 1]
-        obj_UI_start_scene_config_audio_bar_mark[1] = 
+        obj_UI_start_scene_config_audio_bar_mark[1] =
         BAR_MARK_CONFIG_SUB_SCENE_AUDIO_X_POSITION
         obj_UI_start_scene_config_audio_BGM_bar_alpha[1] = BGM_VOLUME*23
         obj_UI_start_scene_config_audio_SFX_bar_alpha[1] = SFX_VOLUME*23
@@ -1005,15 +1005,15 @@ function update_start_scene_config_audio_main()
             obj_UI_start_scene_config_audio_bar_mark,
             anim_UI_point_linear_start_scene_config_audio_bar_mark_left_x
         )
-        if volume_table[AUDIO_BAR_MARK_ID+1] > 0 then
+        if volume_table[AUDIO_BAR_MARK_ID + 1] > 0 then
             -- 带 alpha
             -- 初始化此出口所需要的动画机
             init_point_linear_anim_with(
-                alpha_bar_table[AUDIO_BAR_MARK_ID+1],
+                alpha_bar_table[AUDIO_BAR_MARK_ID + 1],
                 anim_UI_point_linear_start_scene_config_audio_general_bar_alpha_left_23_x
             )
             -- 更新BGM SFX volume
-            volume_table[AUDIO_BAR_MARK_ID+1] = volume_table[AUDIO_BAR_MARK_ID+1] - 1
+            volume_table[AUDIO_BAR_MARK_ID + 1] = volume_table[AUDIO_BAR_MARK_ID + 1] - 1
             BGM_VOLUME = volume_table[1]
             SFX_VOLUME = volume_table[2]
             update_start_scene_config_audio_main_update_volume()
@@ -1027,9 +1027,9 @@ function update_start_scene_config_audio_main()
         SCENE_TIMER = 0
         play_obj_audio(audio_SFX_start_scene_right_0)
         -- 初始化此出口所需属性
-        obj_UI_start_scene_config_audio_bar_mark[2] = 
+        obj_UI_start_scene_config_audio_bar_mark[2] =
         BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID + 1]
-        obj_UI_start_scene_config_audio_bar_mark[1] = 
+        obj_UI_start_scene_config_audio_bar_mark[1] =
         BAR_MARK_CONFIG_SUB_SCENE_AUDIO_X_POSITION
         obj_UI_start_scene_config_audio_BGM_bar_alpha[1] = BGM_VOLUME*23
         obj_UI_start_scene_config_audio_SFX_bar_alpha[1] = SFX_VOLUME*23
@@ -1047,14 +1047,14 @@ function update_start_scene_config_audio_main()
             obj_UI_start_scene_config_audio_bar_mark,
             anim_UI_point_linear_start_scene_config_audio_bar_mark_right_x
         )
-        if volume_table[AUDIO_BAR_MARK_ID+1] < 10 then
+        if volume_table[AUDIO_BAR_MARK_ID + 1] < 10 then
             -- 带 alpha
             -- 初始化此出口所需要的动画机
             init_point_linear_anim_with(
-                alpha_bar_table[AUDIO_BAR_MARK_ID+1],
+                alpha_bar_table[AUDIO_BAR_MARK_ID + 1],
                 anim_UI_point_linear_start_scene_config_audio_general_bar_alpha_right_23_x
             )
-            volume_table[AUDIO_BAR_MARK_ID+1] = volume_table[AUDIO_BAR_MARK_ID+1] + 1
+            volume_table[AUDIO_BAR_MARK_ID + 1] = volume_table[AUDIO_BAR_MARK_ID + 1] + 1
             -- 更新BGM SFX volume
             BGM_VOLUME = volume_table[1]
             SFX_VOLUME = volume_table[2]
@@ -1078,10 +1078,10 @@ function update_start_scene_config_audio_main()
         obj_UI_start_scene_config_audio_text[4] = 1
         obj_UI_start_scene_config_menu_dabo_trig[4] = 0.5
         obj_UI_start_scene_config_menu_text[4] = 0.5
-        obj_UI_start_scene_config_audio_bar_mark[1] 
+        obj_UI_start_scene_config_audio_bar_mark[1]
         = BAR_MARK_CONFIG_SUB_SCENE_AUDIO_X_POSITION
-        obj_UI_start_scene_config_audio_bar_mark[2] 
-        = BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID+1]
+        obj_UI_start_scene_config_audio_bar_mark[2]
+        = BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID + 1]
         obj_UI_start_scene_config_audio_BGM_bar_alpha[1] = BGM_VOLUME*23
         obj_UI_start_scene_config_audio_SFX_bar_alpha[1] = SFX_VOLUME*23
         -- 初始化此出口所需要的动画机
@@ -1120,7 +1120,7 @@ function update_start_scene_config_audio_main()
         -- 更新 current_update_block
         current_update_block = update_start_scene_config_audio_ease_out
     end
-end 
+end
 function update_start_scene_config_audio_bar_mark_twtich_up()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -1140,15 +1140,15 @@ function update_start_scene_config_audio_bar_mark_twtich_up()
     if SCENE_TIMER >= 5 then
         SCENE_TIMER = 0
         -- 初始化此出口所需属性
-        obj_UI_start_scene_config_audio_bar_mark[1] = 
+        obj_UI_start_scene_config_audio_bar_mark[1] =
         BAR_MARK_CONFIG_SUB_SCENE_AUDIO_X_POSITION
-        obj_UI_start_scene_config_audio_bar_mark[2] = 
-        BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID+1]
+        obj_UI_start_scene_config_audio_bar_mark[2] =
+        BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID + 1]
         -- 初始化此出口所需要的动画机 但是目前没有
         -- 更新 current_update_block
         current_update_block = update_start_scene_config_audio_main
     end
-end 
+end
 function update_start_scene_config_audio_bar_mark_twtich_down()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -1168,15 +1168,15 @@ function update_start_scene_config_audio_bar_mark_twtich_down()
     if SCENE_TIMER >= 5 then
         SCENE_TIMER = 0
         -- 初始化此出口所需属性
-        obj_UI_start_scene_config_audio_bar_mark[1] = 
+        obj_UI_start_scene_config_audio_bar_mark[1] =
         BAR_MARK_CONFIG_SUB_SCENE_AUDIO_X_POSITION
-        obj_UI_start_scene_config_audio_bar_mark[2] = 
-        BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID+1]
+        obj_UI_start_scene_config_audio_bar_mark[2] =
+        BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID + 1]
         -- 初始化此出口所需要的动画机 但是目前没有
         -- 更新 current_update_block
         current_update_block = update_start_scene_config_audio_main
     end
-end 
+end
 function update_start_scene_config_audio_bar_mark_twtich_left_with_alpha()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -1198,28 +1198,28 @@ function update_start_scene_config_audio_bar_mark_twtich_left_with_alpha()
         anim_UI_point_linear_start_scene_config_audio_bar_mark_left_x
     )
     point_linear_animator(
-        alpha_bar_table[AUDIO_BAR_MARK_ID+1],
+        alpha_bar_table[AUDIO_BAR_MARK_ID + 1],
         anim_UI_point_linear_start_scene_config_audio_general_bar_alpha_left_23_x
     )
     -- 场景出口
     if SCENE_TIMER >= 5 then
         SCENE_TIMER = 0
         -- 初始化此出口所需属性
-        obj_UI_start_scene_config_audio_bar_mark[1] = 
+        obj_UI_start_scene_config_audio_bar_mark[1] =
         BAR_MARK_CONFIG_SUB_SCENE_AUDIO_X_POSITION
-        obj_UI_start_scene_config_audio_bar_mark[2] = 
-        BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID+1]
+        obj_UI_start_scene_config_audio_bar_mark[2] =
+        BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID + 1]
         -- 仅此出口使用所需table
         local volume_table = {
             BGM_VOLUME,
             SFX_VOLUME
         }
-        alpha_bar_table[AUDIO_BAR_MARK_ID+1][1] = volume_table[AUDIO_BAR_MARK_ID+1]*23
+        alpha_bar_table[AUDIO_BAR_MARK_ID + 1][1] = volume_table[AUDIO_BAR_MARK_ID + 1]*23
         -- 初始化此出口所需要的动画机 但是目前没有
         -- 更新 current_update_block
         current_update_block = update_start_scene_config_audio_main
     end
-end 
+end
 function update_start_scene_config_audio_bar_mark_twtich_left_without_alpha()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -1239,15 +1239,15 @@ function update_start_scene_config_audio_bar_mark_twtich_left_without_alpha()
     if SCENE_TIMER >= 5 then
         SCENE_TIMER = 0
         -- 初始化此出口所需属性
-        obj_UI_start_scene_config_audio_bar_mark[1] = 
+        obj_UI_start_scene_config_audio_bar_mark[1] =
         BAR_MARK_CONFIG_SUB_SCENE_AUDIO_X_POSITION
-        obj_UI_start_scene_config_audio_bar_mark[2] = 
-        BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID+1]
+        obj_UI_start_scene_config_audio_bar_mark[2] =
+        BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID + 1]
         -- 初始化此出口所需要的动画机 但是目前没有
         -- 更新 current_update_block
         current_update_block = update_start_scene_config_audio_main
     end
-end 
+end
 function update_start_scene_config_audio_bar_mark_twtich_right_with_alpha()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -1269,27 +1269,27 @@ function update_start_scene_config_audio_bar_mark_twtich_right_with_alpha()
         anim_UI_point_linear_start_scene_config_audio_bar_mark_right_x
     )
     point_linear_animator(
-        alpha_bar_table[AUDIO_BAR_MARK_ID+1],
+        alpha_bar_table[AUDIO_BAR_MARK_ID + 1],
         anim_UI_point_linear_start_scene_config_audio_general_bar_alpha_right_23_x
     )
     -- 场景出口
     if SCENE_TIMER >= 5 then
         SCENE_TIMER = 0
         -- 初始化此出口所需属性
-        obj_UI_start_scene_config_audio_bar_mark[1] = 
+        obj_UI_start_scene_config_audio_bar_mark[1] =
         BAR_MARK_CONFIG_SUB_SCENE_AUDIO_X_POSITION
-        obj_UI_start_scene_config_audio_bar_mark[2] = 
-        BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID+1]
+        obj_UI_start_scene_config_audio_bar_mark[2] =
+        BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID + 1]
         -- 仅此出口使用所需table
         local volume_table = {
             BGM_VOLUME,
             SFX_VOLUME
         }
-        alpha_bar_table[AUDIO_BAR_MARK_ID+1][1] = volume_table[AUDIO_BAR_MARK_ID+1]*23
+        alpha_bar_table[AUDIO_BAR_MARK_ID + 1][1] = volume_table[AUDIO_BAR_MARK_ID + 1]*23
         -- 更新 current_update_block
         current_update_block = update_start_scene_config_audio_main
     end
-end 
+end
 function update_start_scene_config_audio_bar_mark_twtich_right_without_alpha()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -1309,15 +1309,15 @@ function update_start_scene_config_audio_bar_mark_twtich_right_without_alpha()
     if SCENE_TIMER >= 5 then
         SCENE_TIMER = 0
         -- 初始化此出口所需属性
-        obj_UI_start_scene_config_audio_bar_mark[1] = 
+        obj_UI_start_scene_config_audio_bar_mark[1] =
         BAR_MARK_CONFIG_SUB_SCENE_AUDIO_X_POSITION
-        obj_UI_start_scene_config_audio_bar_mark[2] = 
-        BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID+1]
+        obj_UI_start_scene_config_audio_bar_mark[2] =
+        BAR_MARK_CONFIG_SUB_SCENE_AUDIO_Y_POSITION_TABLE[AUDIO_BAR_MARK_ID + 1]
         -- 初始化此出口所需要的动画机 但是目前没有
         -- 更新 current_update_block
         current_update_block = update_start_scene_config_audio_main
     end
-end 
+end
 function update_start_scene_config_audio_ease_out()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -1373,8 +1373,8 @@ function update_start_scene_config_audio_ease_out()
         current_update_block = update_start_scene_config_main
         current_draw_block = draw_start_scene_config_sub_scene
     end
-end 
-    -- config controller 
+end
+    -- config controller
 function update_start_scene_config_controller_ease_in()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -1410,14 +1410,14 @@ function update_start_scene_config_controller_ease_in()
         SCENE_TIMER = 0
         -- 初始化此出口所需属性 但是目前没有
         -- 初始化此出口所需要的动画机 但是目前没有
-        INPUT_SYS_CURRENT_CONTROLLER["L"] = {nil,nil} 
+        INPUT_SYS_CURRENT_CONTROLLER["L"] = {nil,nil}
         INPUT_SYS_CURRENT_CONTROLLER["R"] = {nil,nil}
         INPUT_SYS_LAST_JOYSTICK_ID["L"] = nil
         INPUT_SYS_LAST_JOYSTICK_ID["R"] = nil
         -- 更新 current_update_block
         current_update_block = update_start_scene_config_controller_main
     end
-end 
+end
 function update_start_scene_config_controller_main()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -1463,7 +1463,7 @@ function update_start_scene_config_controller_main()
         -- 更新 current_update_block
         current_update_block = update_start_scene_config_controller_ease_out
     end
-end 
+end
 function update_start_scene_config_controller_ease_out()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -1503,8 +1503,8 @@ function update_start_scene_config_controller_ease_out()
         current_update_block = update_start_scene_config_main
         current_draw_block = draw_start_scene_config_sub_scene
     end
-end 
-    -- config resolution 
+end
+    -- config resolution
 function update_start_scene_config_resolution_ease_in()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -1543,7 +1543,7 @@ function update_start_scene_config_resolution_ease_in()
         -- 更新 current_update_block
         current_update_block = update_start_scene_config_resolution_main
     end
-end 
+end
 function update_start_scene_config_resolution_main()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -1624,7 +1624,7 @@ function update_start_scene_config_resolution_main()
         -- 更新 current_update_block
         current_update_block = update_start_scene_config_resolution_ease_out
     end
-end 
+end
 function update_start_scene_config_resolution_bar_mark_twtich_left()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -1647,7 +1647,7 @@ function update_start_scene_config_resolution_bar_mark_twtich_left()
         -- 更新 current_update_block
         current_update_block = update_start_scene_config_resolution_main
     end
-end 
+end
 function update_start_scene_config_resolution_bar_mark_twtich_right()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -1670,7 +1670,7 @@ function update_start_scene_config_resolution_bar_mark_twtich_right()
         -- 更新 current_update_block
         current_update_block = update_start_scene_config_resolution_main
     end
-end 
+end
 function update_start_scene_config_resolution_ease_out()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -1710,7 +1710,7 @@ function update_start_scene_config_resolution_ease_out()
         current_update_block = update_start_scene_config_main
         current_draw_block = draw_start_scene_config_sub_scene
     end
-end 
+end
 -- record
 function update_start_scene_record_ease_in()
     SCENE_TIMER = SCENE_TIMER + 1
@@ -1804,7 +1804,7 @@ function update_start_scene_record_main()
         SCENE_TIMER = 0
         play_obj_audio(audio_SFX_start_scene_up_0)
         -- 初始化此出口所需属性
-        obj_UI_start_scene_record_dabo_trig[2] = 
+        obj_UI_start_scene_record_dabo_trig[2] =
         DABO_TIRG_RECORD_SUB_SCENE_Y_POSITION
         -- 初始化此出口所需要的动画机
         init_point_linear_anim_with(
@@ -1817,7 +1817,7 @@ function update_start_scene_record_main()
         SCENE_TIMER = 0
         play_obj_audio(audio_SFX_start_scene_down_0)
         -- 初始化此出口所需属性
-        obj_UI_start_scene_record_dabo_trig[2] = 
+        obj_UI_start_scene_record_dabo_trig[2] =
         DABO_TIRG_RECORD_SUB_SCENE_Y_POSITION
         -- 初始化此出口所需要的动画机
         init_point_linear_anim_with(
@@ -1832,7 +1832,7 @@ function update_start_scene_record_main()
         -- 初始化此出口所需属性
         obj_UI_start_scene_shutter[4] = 1
         obj_UI_start_scene_record_dabo_trig[4] = 1
-        obj_UI_start_scene_record_dabo_trig[2] = 
+        obj_UI_start_scene_record_dabo_trig[2] =
         DABO_TIRG_RECORD_SUB_SCENE_Y_POSITION
         obj_UI_start_scene_record_game_duration_text[4] = 1
         obj_UI_start_scene_record_num_0[4] = 1

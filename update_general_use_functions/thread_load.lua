@@ -7,7 +7,7 @@ function run_table_order_load()
             i = i + 1
             break
         end
-        if THREAD_ONCE_TABLE[i] == false then 
+        if THREAD_ONCE_TABLE[i] == false then
             local thread = love.thread.newThread(THREAD_TABLE[i])
             thread:start()
             THREAD_ONCE_TABLE[i] = true
@@ -18,7 +18,7 @@ function run_table_order_load()
     i = 1
     while (i<=THREAD_AMOUNT)
     do
-        if ASSET_DATA[i] == nil then 
+        if ASSET_DATA[i] == nil then
             ASSET_DATA[i] = love.thread.getChannel("thread_data_"..i..""):pop()
         end
         i = i + 1
@@ -31,10 +31,10 @@ function run_table_order_load()
         if ASSET_DATA[i] ~= nil and LOAD_ONCE_TABLE[i] == false then
             ORDER_LOAD_TABLE[i](CURRENT_ORDER_TABLE[i])
             CURRENT_ORDER_TABLE[i] = CURRENT_ORDER_TABLE[i] + 1
-            if CURRENT_ORDER_TABLE[i] > ORDER_SIZE_TABLE[i] then 
+            if CURRENT_ORDER_TABLE[i] > ORDER_SIZE_TABLE[i] then
                 CURRENT_ORDER_TABLE[i] = 0
                 LOAD_ONCE_TABLE[i] = true
-                LOADING_FUNCTION_AMOUNT = LOADING_FUNCTION_AMOUNT -1
+                LOADING_FUNCTION_AMOUNT = LOADING_FUNCTION_AMOUNT - 1
             end
             -- 每帧只执行一个switch
             break

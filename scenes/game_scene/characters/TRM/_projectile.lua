@@ -2,8 +2,8 @@
 -- 1-8 type life x y velocity projectile_clash_type f
 -- sprite_sheet
 -- enemy_interact_function		hitbox hit_type	hit_guard_type hit_hurt_blockstop_countdown
---                              hit_damage hit_damage_correction_factor 
---                              hit_heat_gain hit_wallbreak_damage hurt_heat_gain 
+--                              hit_damage hit_damage_correction_factor
+--                              hit_heat_gain hit_wallbreak_damage hurt_heat_gain
 --                              blocked_heat_gain block_heat_gain block_risk_gauge_gain FD_block_heat_drain
 --                              stand_hurt_animation stand_block_animation
 --                              crouch_hurt_animation crouch_block_animation
@@ -203,8 +203,8 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     obj_projectile["draw"] = function()
         local image_sprite_sheet = hit_side_projectile_sprite_sheet_table[obj_projectile["sprite_sheet"]]
         if obj_projectile["sprite_sheet"] == "5H_4SP_S_H_hit_projectile" then
-            obj_projectile[1] = hurt_side_obj_char["x"]-160
-            obj_projectile[2] = hurt_side_obj_char["y"]-hurt_side_obj_char["shot_sys_reticle_height_offset"][hurt_side_obj_char["pushbox"][4]]-160
+            obj_projectile[1] = hurt_side_obj_char["x"] - 160
+            obj_projectile[2] = hurt_side_obj_char["y"] - hurt_side_obj_char["shot_sys_reticle_height_offset"][hurt_side_obj_char["pushbox"][4]] - 160
         end
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8]))
@@ -337,7 +337,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
-        hurt_side_obj_char["throw_inv_countdown"] = res["anim_length"]+5
+        hurt_side_obj_char["throw_inv_countdown"] = res["anim_length"] + 5
         hurt_side_obj_char["projectile_inv"] = false
         hurt_side_obj_char["projectile_inv_countdown"] = 0
         -- frame_data
@@ -420,9 +420,9 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
             -- state
             hurt_side_obj_char["y"] = 0
             hurt_side_obj_char["f"] = 13
-            hurt_side_obj_char["height"]  = "stand"
+            hurt_side_obj_char["height"] = "stand"
             hurt_side_obj_char["throw_inv"] = true
-            hurt_side_obj_char["throw_inv_countdown"] = res["anim_length"]+5-13
+            hurt_side_obj_char["throw_inv_countdown"] = res["anim_length"] + 5 - 13
             hurt_side_obj_char["friction"] = 7
             hurt_side_obj_char["gravity"] = 2.5
             -- collide
@@ -612,7 +612,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
         hurt_side_obj_char["throw_inv"] = true
-        hurt_side_obj_char["throw_inv_countdown"] = res["anim_length"]+5
+        hurt_side_obj_char["throw_inv_countdown"] = res["anim_length"] + 5
         hurt_side_obj_char["projectile_inv"] = false
         hurt_side_obj_char["projectile_inv_countdown"] = 0
         -- frame_data
@@ -877,7 +877,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     -- common
     obj_projectile["type"] = "projectile"
-    obj_projectile["life"] = 42+45
+    obj_projectile["life"] = 42 + 45
     obj_projectile["x"] = hit_side_obj_char["x"]
     obj_projectile["y"] = hit_side_obj_char["y"]
     obj_projectile["velocity"] = {0,0}
@@ -1192,13 +1192,13 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
                 end
             )
             -- character_shake
-            obj_projectile["hurtstop_wiggle_x_animation"] = 
+            obj_projectile["hurtstop_wiggle_x_animation"] =
             common_game_scene_create_hurtstop_wiggle_animation(
                 obj_projectile["hit_hurt_blockstop_countdown"] - 1,
                 "hurtstop_wiggle_x",
                 15
             )
-            obj_projectile["hurtstop_wiggle_y_animation"] = 
+            obj_projectile["hurtstop_wiggle_y_animation"] =
             common_game_scene_create_hurtstop_wiggle_animation(
                 obj_projectile["hit_hurt_blockstop_countdown"] - 1,
                 "hurtstop_wiggle_y",
@@ -1206,8 +1206,8 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
             )
             init_point_linear_anim_with(obj_projectile,obj_projectile["hurtstop_wiggle_x_animation"])
             init_point_linear_anim_with(obj_projectile,obj_projectile["hurtstop_wiggle_y_animation"])
-            obj_projectile["hurtstop_wiggle_current_x"] = (obj_projectile["hurtstop_wiggle_x"]*(math.random()-0.5)*2)
-            obj_projectile["hurtstop_wiggle_current_y"] = (obj_projectile["hurtstop_wiggle_y"]*(math.random()-0.5)*2)
+            obj_projectile["hurtstop_wiggle_current_x"] = (obj_projectile["hurtstop_wiggle_x"]*(math.random() - 0.5)*2)
+            obj_projectile["hurtstop_wiggle_current_y"] = (obj_projectile["hurtstop_wiggle_y"]*(math.random() - 0.5)*2)
             -- animation
             obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_K_projectile_hurt(active_op_side_obj_char,passive_op_side_obj_char,obj_projectile)
             init_character_anim_with(obj_projectile,obj_projectile["projectile_animation"])
@@ -1304,8 +1304,8 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
     end
     -- draw_sync
     obj_projectile["draw_sync"] = function()
-        obj_projectile[1] = obj_projectile["x"]+obj_projectile["hurtstop_wiggle_current_x"]-obj_projectile[5]*obj_projectile["projectile_anchor_pos"][1]
-        obj_projectile[2] = obj_projectile["y"]+obj_projectile["hurtstop_wiggle_current_y"]-obj_projectile[6]*obj_projectile["projectile_anchor_pos"][2]
+        obj_projectile[1] = obj_projectile["x"] + obj_projectile["hurtstop_wiggle_current_x"] - obj_projectile[5]*obj_projectile["projectile_anchor_pos"][1]
+        obj_projectile[2] = obj_projectile["y"] + obj_projectile["hurtstop_wiggle_current_y"] - obj_projectile[6]*obj_projectile["projectile_anchor_pos"][2]
     end
     -- draw
     obj_projectile["draw"] = function()

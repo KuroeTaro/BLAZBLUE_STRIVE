@@ -194,7 +194,7 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
     obj_VFX["size_anim"] = {}
     obj_VFX["size_anim"][0] = {200,28}
     obj_VFX["size_anim"][28] = {800,33}
-    obj_VFX["size_anim"][33] = {2600,33} 
+    obj_VFX["size_anim"][33] = {2600,33}
     obj_VFX["size_anim"]["prop"] = 5
     obj_VFX["size_anim"]["length"] = 33
     obj_VFX["size_anim"]["loop"] = false
@@ -288,7 +288,7 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
         end
         obj_VFX[1] = obj_char["x"] - obj_char[5]*(600)
         obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"])
-        obj_VFX["draw_sync"]  = function() end
+        obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
@@ -400,7 +400,7 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver0(active_op_side_obj_
     local active_op_center_x = active_op_x
     local active_op_center_y = active_op_y
     local active_op_center_r = active_op_side_obj_char[5]*active_op_r
-    local center_dx = math.abs(passive_op_side_obj_char["x"]-active_op_side_obj_char["x"])-220*active_op_sx
+    local center_dx = math.abs(passive_op_side_obj_char["x"] - active_op_side_obj_char["x"]) - 220*active_op_sx
     local center_dy = 0
     if not active_op_fix_pos then
         if active_op_negative_side then
@@ -446,7 +446,7 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver0(active_op_side_obj_
         local active_op_center_x = active_op_x
         local active_op_center_y = active_op_y
         local active_op_center_r = active_op_side_obj_char[5]*active_op_r
-        local center_dx = math.abs(passive_op_side_obj_char["x"]-active_op_side_obj_char["x"])-220*active_op_sx
+        local center_dx = math.abs(passive_op_side_obj_char["x"] - active_op_side_obj_char["x"]) - 220*active_op_sx
         local center_dy = 0
         if not active_op_fix_pos then
             if active_op_negative_side then
@@ -491,7 +491,7 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver1(active_op_side_obj_
     local active_op_center_x = active_op_x
     local active_op_center_y = active_op_y
     local active_op_center_r = active_op_side_obj_char[5]*active_op_r
-    local center_dx = math.abs(passive_op_side_obj_char["x"]-active_op_side_obj_char["x"])-310*active_op_sx
+    local center_dx = math.abs(passive_op_side_obj_char["x"] - active_op_side_obj_char["x"]) - 310*active_op_sx
     local center_dy = 0
     if not active_op_fix_pos then
         if active_op_negative_side then
@@ -539,7 +539,7 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver1(active_op_side_obj_
         local active_op_center_x = active_op_x
         local active_op_center_y = active_op_y
         local active_op_center_r = active_op_side_obj_char[5]*active_op_r
-        local center_dx = math.abs(passive_op_side_obj_char["x"]-active_op_side_obj_char["x"])-310*active_op_sx
+        local center_dx = math.abs(passive_op_side_obj_char["x"] - active_op_side_obj_char["x"]) - 310*active_op_sx
         local center_dy = 0
         if not active_op_fix_pos then
             if active_op_negative_side then
@@ -572,12 +572,12 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver1(active_op_side_obj_
     local active_op_center_x = active_op_x
     local active_op_center_y = active_op_y
     local active_op_center_r = active_op_side_obj_char[5]*active_op_r
-    local center_dx = math.abs(passive_op_side_obj_char["x"]-active_op_side_obj_char["x"])-310*active_op_sx
+    local center_dx = math.abs(passive_op_side_obj_char["x"] - active_op_side_obj_char["x"]) - 310*active_op_sx
     local center_dy = 0
     local active_op_sub_dx = -50*active_op_sx
     local active_op_sub_dy = -200*active_op_sy
-    local active_op_rot_dx = active_op_sub_dx * active_op_side_obj_char[5] * math.cos(active_op_center_r) - active_op_sub_dy * active_op_side_obj_char[6] * math.sin(active_op_center_r)
-    local active_op_rot_dy = active_op_sub_dx * active_op_side_obj_char[5] * math.sin(active_op_center_r) + active_op_sub_dy * active_op_side_obj_char[6] * math.cos(active_op_center_r)
+    local active_op_rot_dx = active_op_sub_dx*active_op_side_obj_char[5]*math.cos(active_op_center_r) - active_op_sub_dy*active_op_side_obj_char[6]*math.sin(active_op_center_r)
+    local active_op_rot_dy = active_op_sub_dx*active_op_side_obj_char[5]*math.sin(active_op_center_r) + active_op_sub_dy*active_op_side_obj_char[6]*math.cos(active_op_center_r)
     if not active_op_fix_pos then
         if active_op_negative_side then
             active_op_center_x = math.max(-center_dx,active_op_x)
@@ -624,12 +624,14 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver1(active_op_side_obj_
         local active_op_center_x = active_op_x
         local active_op_center_y = active_op_y
         local active_op_center_r = active_op_side_obj_char[5]*active_op_r
-        local center_dx = math.abs(passive_op_side_obj_char["x"]-active_op_side_obj_char["x"])-310*active_op_sx
+        local center_dx = math.abs(passive_op_side_obj_char["x"] - active_op_side_obj_char["x"]) - 310*active_op_sx
         local center_dy = 0
         local active_op_sub_dx = -50*active_op_sx
         local active_op_sub_dy = -200*active_op_sy
-        local active_op_rot_dx = active_op_sub_dx * active_op_side_obj_char[5] * math.cos(active_op_center_r) - active_op_sub_dy * active_op_side_obj_char[6] * math.sin(active_op_center_r)
-        local active_op_rot_dy = active_op_sub_dx * active_op_side_obj_char[5] * math.sin(active_op_center_r) + active_op_sub_dy * active_op_side_obj_char[6] * math.cos(active_op_center_r)
+        local active_op_rot_dx = active_op_sub_dx*active_op_side_obj_char[5]*math.cos(active_op_center_r)
+            - active_op_sub_dy*active_op_side_obj_char[6]*math.sin(active_op_center_r)
+        local active_op_rot_dy = active_op_sub_dx*active_op_side_obj_char[5]*math.sin(active_op_center_r)
+            + active_op_sub_dy*active_op_side_obj_char[6]*math.cos(active_op_center_r)
         if not active_op_fix_pos then
             if active_op_negative_side then
                 active_op_center_x = math.max(-center_dx,active_op_x)
@@ -661,7 +663,8 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver0(active_op_s
     -- active_op_x active_op_y z active_op_opacity active_op_sx active_op_sy active_op_r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
-    local active_op_hit_counter_VFX_insert_function_argument = active_op_side_obj_char["hit_counter_VFX_insert_function_argument"]
+    local active_op_hit_counter_VFX_insert_function_argument =
+        active_op_side_obj_char["hit_counter_VFX_insert_function_argument"]
     local active_op_x = active_op_hit_counter_VFX_insert_function_argument[1]
     local active_op_y = active_op_hit_counter_VFX_insert_function_argument[2]
     local active_op_opacity = active_op_hit_counter_VFX_insert_function_argument[3]
@@ -673,7 +676,7 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver0(active_op_s
     local active_op_center_x = active_op_x
     local active_op_center_y = active_op_y
     local active_op_center_r = active_op_side_obj_char[5]*active_op_r
-    local center_dx = math.abs(passive_op_side_obj_char["x"]-active_op_side_obj_char["x"])-185*active_op_sx
+    local center_dx = math.abs(passive_op_side_obj_char["x"] - active_op_side_obj_char["x"]) - 185*active_op_sx
     local center_dy = 0
     if not active_op_fix_pos then
         if active_op_negative_side then
@@ -727,7 +730,7 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver0(active_op_s
         local active_op_center_x = active_op_x
         local active_op_center_y = active_op_y
         local active_op_center_r = active_op_side_obj_char[5]*active_op_r
-        local center_dx = math.abs(passive_op_side_obj_char["x"]-active_op_side_obj_char["x"])-185*active_op_sx
+        local center_dx = math.abs(passive_op_side_obj_char["x"] - active_op_side_obj_char["x"]) - 185*active_op_sx
         local center_dy = 0
         if not active_op_fix_pos then
             if active_op_negative_side then
@@ -760,7 +763,8 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
     -- active_op_x active_op_y z active_op_opacity active_op_sx active_op_sy active_op_r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
-    local active_op_hit_counter_VFX_insert_function_argument = active_op_side_obj_char["hit_counter_VFX_insert_function_argument"]
+    local active_op_hit_counter_VFX_insert_function_argument =
+        active_op_side_obj_char["hit_counter_VFX_insert_function_argument"]
     local active_op_x = active_op_hit_counter_VFX_insert_function_argument[1]
     local active_op_y = active_op_hit_counter_VFX_insert_function_argument[2]
     local active_op_opacity = active_op_hit_counter_VFX_insert_function_argument[3]
@@ -772,7 +776,7 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
     local active_op_center_x = active_op_x
     local active_op_center_y = active_op_y
     local active_op_center_r = active_op_side_obj_char[5]*active_op_r
-    local center_dx = math.abs(passive_op_side_obj_char["x"]-active_op_side_obj_char["x"])-310*active_op_sx
+    local center_dx = math.abs(passive_op_side_obj_char["x"] - active_op_side_obj_char["x"]) - 310*active_op_sx
     local center_dy = 0
     if not active_op_fix_pos then
         if active_op_negative_side then
@@ -820,7 +824,7 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
         local active_op_center_x = active_op_x
         local active_op_center_y = active_op_y
         local active_op_center_r = active_op_side_obj_char[5]*active_op_r
-        local center_dx = math.abs(passive_op_side_obj_char["x"]-active_op_side_obj_char["x"])-220*active_op_sx
+        local center_dx = math.abs(passive_op_side_obj_char["x"] - active_op_side_obj_char["x"]) - 220*active_op_sx
         local center_dy = 0
         if not active_op_fix_pos then
             if active_op_negative_side then
@@ -853,12 +857,14 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
     local active_op_center_x = active_op_x
     local active_op_center_y = active_op_y
     local active_op_center_r = active_op_side_obj_char[5]*active_op_r
-    local center_dx = math.abs(passive_op_side_obj_char["x"]-active_op_side_obj_char["x"])-310*active_op_sx
+    local center_dx = math.abs(passive_op_side_obj_char["x"] - active_op_side_obj_char["x"]) - 310*active_op_sx
     local center_dy = 0
     local active_op_sub_dx = -50*active_op_sx
     local active_op_sub_dy = -200*active_op_sy
-    local active_op_rot_dx = active_op_sub_dx * active_op_side_obj_char[5] * math.cos(active_op_center_r) - active_op_sub_dy * active_op_side_obj_char[6] * math.sin(active_op_center_r)
-    local active_op_rot_dy = active_op_sub_dx * active_op_side_obj_char[5] * math.sin(active_op_center_r) + active_op_sub_dy * active_op_side_obj_char[6] * math.cos(active_op_center_r)
+    local active_op_rot_dx = active_op_sub_dx*active_op_side_obj_char[5]*math.cos(active_op_center_r)
+        - active_op_sub_dy*active_op_side_obj_char[6]*math.sin(active_op_center_r)
+    local active_op_rot_dy = active_op_sub_dx*active_op_side_obj_char[5]*math.sin(active_op_center_r)
+        + active_op_sub_dy*active_op_side_obj_char[6]*math.cos(active_op_center_r)
     if not active_op_fix_pos then
         if active_op_negative_side then
             active_op_center_x = math.max(-center_dx,active_op_x)
@@ -896,7 +902,8 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
     obj_VFX["animation"]["loop"] = false
     init_frame_anim_without(obj_VFX,obj_VFX["animation"])
     obj_VFX["update"] = function()
-        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
+        if active_op_side_obj_char["state"] ~= "hitstop"
+        or passive_op_side_obj_char["state_cache"] == "wallstick" then
             frame_animator(obj_VFX,obj_VFX["animation"])
             obj_VFX["life"] = obj_VFX["life"] - 1
         end
@@ -905,12 +912,12 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
         local active_op_center_x = active_op_x
         local active_op_center_y = active_op_y
         local active_op_center_r = active_op_side_obj_char[5]*active_op_r
-        local center_dx = math.abs(passive_op_side_obj_char["x"]-active_op_side_obj_char["x"])-310*active_op_sx
+        local center_dx = math.abs(passive_op_side_obj_char["x"] - active_op_side_obj_char["x"]) - 310*active_op_sx
         local center_dy = 0
         local active_op_sub_dx = -50*active_op_sx
         local active_op_sub_dy = -200*active_op_sy
-        local active_op_rot_dx = active_op_sub_dx * active_op_side_obj_char[5] * math.cos(active_op_center_r) - active_op_sub_dy * active_op_side_obj_char[6] * math.sin(active_op_center_r)
-        local active_op_rot_dy = active_op_sub_dx * active_op_side_obj_char[5] * math.sin(active_op_center_r) + active_op_sub_dy * active_op_side_obj_char[6] * math.cos(active_op_center_r)
+        local active_op_rot_dx = active_op_sub_dx*active_op_side_obj_char[5]*math.cos(active_op_center_r) - active_op_sub_dy*active_op_side_obj_char[6]*math.sin(active_op_center_r)
+        local active_op_rot_dy = active_op_sub_dx*active_op_side_obj_char[5]*math.sin(active_op_center_r) + active_op_sub_dy*active_op_side_obj_char[6]*math.cos(active_op_center_r)
         if not active_op_fix_pos then
             if active_op_negative_side then
                 active_op_center_x = math.max(-center_dx,active_op_x)
@@ -942,12 +949,14 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
     local active_op_center_x = active_op_x
     local active_op_center_y = active_op_y
     local active_op_center_r = active_op_side_obj_char[5]*active_op_r
-    local center_dx = math.abs(passive_op_side_obj_char["x"]-active_op_side_obj_char["x"])-310*active_op_sx
+    local center_dx = math.abs(passive_op_side_obj_char["x"] - active_op_side_obj_char["x"]) - 310*active_op_sx
     local center_dy = 0
     local active_op_sub_dx = 45*active_op_sx
     local active_op_sub_dy = 30*active_op_sy
-    local active_op_rot_dx = active_op_sub_dx * active_op_side_obj_char[5] * math.cos(active_op_center_r) - active_op_sub_dy * active_op_side_obj_char[6] * math.sin(active_op_center_r)
-    local active_op_rot_dy = active_op_sub_dx * active_op_side_obj_char[5] * math.sin(active_op_center_r) + active_op_sub_dy * active_op_side_obj_char[6] * math.cos(active_op_center_r)
+    local active_op_rot_dx = active_op_sub_dx*active_op_side_obj_char[5]*math.cos(active_op_center_r)
+        - active_op_sub_dy*active_op_side_obj_char[6]*math.sin(active_op_center_r)
+    local active_op_rot_dy = active_op_sub_dx*active_op_side_obj_char[5]*math.sin(active_op_center_r)
+        + active_op_sub_dy*active_op_side_obj_char[6]*math.cos(active_op_center_r)
     if not active_op_fix_pos then
         if active_op_negative_side then
             active_op_center_x = math.max(-center_dx,active_op_x)
@@ -985,12 +994,14 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
         local active_op_center_x = active_op_x
         local active_op_center_y = active_op_y
         local active_op_center_r = active_op_side_obj_char[5]*active_op_r
-        local center_dx = math.abs(passive_op_side_obj_char["x"]-active_op_side_obj_char["x"])-310*active_op_sx
+        local center_dx = math.abs(passive_op_side_obj_char["x"] - active_op_side_obj_char["x"]) - 310*active_op_sx
         local center_dy = 0
         local active_op_sub_dx = 45*active_op_sx
         local active_op_sub_dy = 30*active_op_sy
-        local active_op_rot_dx = active_op_sub_dx * active_op_side_obj_char[5] * math.cos(active_op_center_r) - active_op_sub_dy * active_op_side_obj_char[6] * math.sin(active_op_center_r)
-        local active_op_rot_dy = active_op_sub_dx * active_op_side_obj_char[5] * math.sin(active_op_center_r) + active_op_sub_dy * active_op_side_obj_char[6] * math.cos(active_op_center_r)
+        local active_op_rot_dx = active_op_sub_dx*active_op_side_obj_char[5]*math.cos(active_op_center_r)
+            - active_op_sub_dy*active_op_side_obj_char[6]*math.sin(active_op_center_r)
+        local active_op_rot_dy = active_op_sub_dx*active_op_side_obj_char[5]*math.sin(active_op_center_r)
+            + active_op_sub_dy*active_op_side_obj_char[6]*math.cos(active_op_center_r)
         if not active_op_fix_pos then
             if active_op_negative_side then
                 active_op_center_x = math.max(-center_dx,active_op_x)
@@ -1077,7 +1088,7 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver0(active_op_sid
     local active_op_center_x = active_op_x
     local active_op_center_y = active_op_y
     local active_op_center_r = active_op_side_obj_char[5]*active_op_r
-    local center_dx = math.abs(passive_op_side_obj_char["x"]-active_op_side_obj_char["x"])-220*active_op_sx
+    local center_dx = math.abs(passive_op_side_obj_char["x"] - active_op_side_obj_char["x"]) - 220*active_op_sx
     local center_dy = 0
     if not active_op_fix_pos then
         if active_op_negative_side then
@@ -1123,7 +1134,7 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver0(active_op_sid
         local active_op_center_x = active_op_x
         local active_op_center_y = active_op_y
         local active_op_center_r = active_op_side_obj_char[5]*active_op_r
-        local center_dx = math.abs(passive_op_side_obj_char["x"]-active_op_side_obj_char["x"])-220*active_op_sx
+        local center_dx = math.abs(passive_op_side_obj_char["x"] - active_op_side_obj_char["x"]) - 220*active_op_sx
         local center_dy = 0
         if not active_op_fix_pos then
             if active_op_negative_side then
@@ -1168,7 +1179,7 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_sid
     local active_op_center_x = active_op_x
     local active_op_center_y = active_op_y
     local active_op_center_r = active_op_side_obj_char[5]*active_op_r
-    local center_dx = math.abs(passive_op_side_obj_char["x"]-active_op_side_obj_char["x"])-310*active_op_sx
+    local center_dx = math.abs(passive_op_side_obj_char["x"] - active_op_side_obj_char["x"]) - 310*active_op_sx
     local center_dy = 0
     if not active_op_fix_pos then
         if active_op_negative_side then
@@ -1216,7 +1227,7 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_sid
         local active_op_center_x = active_op_x
         local active_op_center_y = active_op_y
         local active_op_center_r = active_op_side_obj_char[5]*active_op_r
-        local center_dx = math.abs(passive_op_side_obj_char["x"]-active_op_side_obj_char["x"])-310*active_op_sx
+        local center_dx = math.abs(passive_op_side_obj_char["x"] - active_op_side_obj_char["x"]) - 310*active_op_sx
         local center_dy = 0
         if not active_op_fix_pos then
             if active_op_negative_side then
@@ -1249,12 +1260,12 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_sid
     local active_op_center_x = active_op_x
     local active_op_center_y = active_op_y
     local active_op_center_r = active_op_side_obj_char[5]*active_op_r
-    local center_dx = math.abs(passive_op_side_obj_char["x"]-active_op_side_obj_char["x"])-310*active_op_sx
+    local center_dx = math.abs(passive_op_side_obj_char["x"] - active_op_side_obj_char["x"]) - 310*active_op_sx
     local center_dy = 0
     local active_op_sub_dx = -50*active_op_sx
     local active_op_sub_dy = -200*active_op_sy
-    local active_op_rot_dx = active_op_sub_dx * active_op_side_obj_char[5] * math.cos(active_op_center_r) - active_op_sub_dy * active_op_side_obj_char[6] * math.sin(active_op_center_r)
-    local active_op_rot_dy = active_op_sub_dx * active_op_side_obj_char[5] * math.sin(active_op_center_r) + active_op_sub_dy * active_op_side_obj_char[6] * math.cos(active_op_center_r)
+    local active_op_rot_dx = active_op_sub_dx*active_op_side_obj_char[5]*math.cos(active_op_center_r) - active_op_sub_dy*active_op_side_obj_char[6]*math.sin(active_op_center_r)
+    local active_op_rot_dy = active_op_sub_dx*active_op_side_obj_char[5]*math.sin(active_op_center_r) + active_op_sub_dy*active_op_side_obj_char[6]*math.cos(active_op_center_r)
     if not active_op_fix_pos then
         if active_op_negative_side then
             active_op_center_x = math.max(-center_dx,active_op_x)
@@ -1301,12 +1312,12 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_sid
         local active_op_center_x = active_op_x
         local active_op_center_y = active_op_y
         local active_op_center_r = active_op_side_obj_char[5]*active_op_r
-        local center_dx = math.abs(passive_op_side_obj_char["x"]-active_op_side_obj_char["x"])-310*active_op_sx
+        local center_dx = math.abs(passive_op_side_obj_char["x"] - active_op_side_obj_char["x"]) - 310*active_op_sx
         local center_dy = 0
         local active_op_sub_dx = -50*active_op_sx
         local active_op_sub_dy = -200*active_op_sy
-        local active_op_rot_dx = active_op_sub_dx * active_op_side_obj_char[5] * math.cos(active_op_center_r) - active_op_sub_dy * active_op_side_obj_char[6] * math.sin(active_op_center_r)
-        local active_op_rot_dy = active_op_sub_dx * active_op_side_obj_char[5] * math.sin(active_op_center_r) + active_op_sub_dy * active_op_side_obj_char[6] * math.cos(active_op_center_r)
+        local active_op_rot_dx = active_op_sub_dx*active_op_side_obj_char[5]*math.cos(active_op_center_r) - active_op_sub_dy*active_op_side_obj_char[6]*math.sin(active_op_center_r)
+        local active_op_rot_dy = active_op_sub_dx*active_op_side_obj_char[5]*math.sin(active_op_center_r) + active_op_sub_dy*active_op_side_obj_char[6]*math.cos(active_op_center_r)
         if not active_op_fix_pos then
             if active_op_negative_side then
                 active_op_center_x = math.max(-center_dx,active_op_x)
@@ -1339,7 +1350,7 @@ function insert_VFX_game_scene_char_blast_dynamic_ver0(active_op_side_obj_char,p
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_VFX_insert_function_argument = active_op_side_obj_char["hit_VFX_insert_function_argument"]
-    local active_op_hit_VFX_dynamic_spawn_pos = active_op_side_obj_char["hit_VFX_dynamic_spawn_pos"] 
+    local active_op_hit_VFX_dynamic_spawn_pos = active_op_side_obj_char["hit_VFX_dynamic_spawn_pos"]
     local active_op_center_x = active_op_hit_VFX_dynamic_spawn_pos[1]
     local active_op_center_y = active_op_hit_VFX_dynamic_spawn_pos[2]
     local active_op_opacity = active_op_hit_VFX_insert_function_argument[3]
@@ -1401,7 +1412,7 @@ function insert_VFX_game_scene_char_blast_dynamic_ver1(active_op_side_obj_char,p
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_VFX_insert_function_argument = active_op_side_obj_char["hit_VFX_insert_function_argument"]
-    local active_op_hit_VFX_dynamic_spawn_pos = active_op_side_obj_char["hit_VFX_dynamic_spawn_pos"] 
+    local active_op_hit_VFX_dynamic_spawn_pos = active_op_side_obj_char["hit_VFX_dynamic_spawn_pos"]
     local active_op_center_x = active_op_hit_VFX_dynamic_spawn_pos[1]
     local active_op_center_y = active_op_hit_VFX_dynamic_spawn_pos[2]
     local active_op_opacity = active_op_hit_VFX_insert_function_argument[3]
@@ -1466,8 +1477,8 @@ function insert_VFX_game_scene_char_blast_dynamic_ver1(active_op_side_obj_char,p
     local active_op_center_r = active_op_side_obj_char[5]*active_op_r
     local active_op_sub_dx = -50*active_op_sx
     local active_op_sub_dy = -200*active_op_sy
-    local active_op_rot_dx = active_op_sub_dx * active_op_side_obj_char[5] * math.cos(active_op_center_r) - active_op_sub_dy * active_op_side_obj_char[6] * math.sin(active_op_center_r)
-    local active_op_rot_dy = active_op_sub_dx * active_op_side_obj_char[5] * math.sin(active_op_center_r) + active_op_sub_dy * active_op_side_obj_char[6] * math.cos(active_op_center_r)
+    local active_op_rot_dx = active_op_sub_dx*active_op_side_obj_char[5]*math.cos(active_op_center_r) - active_op_sub_dy*active_op_side_obj_char[6]*math.sin(active_op_center_r)
+    local active_op_rot_dy = active_op_sub_dx*active_op_side_obj_char[5]*math.sin(active_op_center_r) + active_op_sub_dy*active_op_side_obj_char[6]*math.cos(active_op_center_r)
     active_op_center_x = active_op_center_x - 300*active_op_sx*active_op_side_obj_char[5]
     active_op_center_y = active_op_center_y - 300*active_op_sy*active_op_side_obj_char[6]
     obj_VFX["life"] = 16
@@ -1504,7 +1515,7 @@ function insert_VFX_game_scene_char_blast_dynamic_ver1(active_op_side_obj_char,p
             obj_VFX["life"] = obj_VFX["life"] - 1
         end
     end
-    obj_VFX["draw_sync"] = function()        
+    obj_VFX["draw_sync"] = function()
     end
     obj_VFX["draw"] = function()
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_air_blow
@@ -1522,7 +1533,7 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver0(active_op_side_ob
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_VFX_insert_function_argument = active_op_side_obj_char["hit_VFX_insert_function_argument"]
-    local active_op_hit_VFX_dynamic_spawn_pos = active_op_side_obj_char["hit_VFX_dynamic_spawn_pos"] 
+    local active_op_hit_VFX_dynamic_spawn_pos = active_op_side_obj_char["hit_VFX_dynamic_spawn_pos"]
     local active_op_center_x = active_op_hit_VFX_dynamic_spawn_pos[1]
     local active_op_center_y = active_op_hit_VFX_dynamic_spawn_pos[2]
     local active_op_opacity = active_op_hit_VFX_insert_function_argument[3]
@@ -1592,7 +1603,7 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_VFX_insert_function_argument = active_op_side_obj_char["hit_VFX_insert_function_argument"]
-    local active_op_hit_VFX_dynamic_spawn_pos = active_op_side_obj_char["hit_VFX_dynamic_spawn_pos"] 
+    local active_op_hit_VFX_dynamic_spawn_pos = active_op_side_obj_char["hit_VFX_dynamic_spawn_pos"]
     local active_op_center_x = active_op_hit_VFX_dynamic_spawn_pos[1]
     local active_op_center_y = active_op_hit_VFX_dynamic_spawn_pos[2]
     local active_op_opacity = active_op_hit_VFX_insert_function_argument[3]
@@ -1654,8 +1665,8 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local active_op_sub_dx = -50*active_op_sx
     local active_op_sub_dy = -200*active_op_sy
-    local active_op_rot_dx = active_op_sub_dx * active_op_side_obj_char[5] * math.cos(active_op_center_r) - active_op_sub_dy * active_op_side_obj_char[6] * math.sin(active_op_center_r)
-    local active_op_rot_dy = active_op_sub_dx * active_op_side_obj_char[5] * math.sin(active_op_center_r) + active_op_sub_dy * active_op_side_obj_char[6] * math.cos(active_op_center_r)
+    local active_op_rot_dx = active_op_sub_dx*active_op_side_obj_char[5]*math.cos(active_op_center_r) - active_op_sub_dy*active_op_side_obj_char[6]*math.sin(active_op_center_r)
+    local active_op_rot_dy = active_op_sub_dx*active_op_side_obj_char[5]*math.sin(active_op_center_r) + active_op_sub_dy*active_op_side_obj_char[6]*math.cos(active_op_center_r)
     obj_VFX["life"] = 16
     obj_VFX[1] = active_op_center_x + active_op_rot_dx
     obj_VFX[2] = active_op_center_y + active_op_rot_dy
@@ -1690,7 +1701,7 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
             obj_VFX["life"] = obj_VFX["life"] - 1
         end
     end
-    obj_VFX["draw_sync"] = function()        
+    obj_VFX["draw_sync"] = function()
     end
     obj_VFX["draw"] = function()
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_air_blow
@@ -1706,8 +1717,8 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local active_op_sub_dx = 45*active_op_sx
     local active_op_sub_dy = 30*active_op_sy
-    local active_op_rot_dx = active_op_sub_dx * active_op_side_obj_char[5] * math.cos(active_op_center_r) - active_op_sub_dy * active_op_side_obj_char[6] * math.sin(active_op_center_r)
-    local active_op_rot_dy = active_op_sub_dx * active_op_side_obj_char[5] * math.sin(active_op_center_r) + active_op_sub_dy * active_op_side_obj_char[6] * math.cos(active_op_center_r)
+    local active_op_rot_dx = active_op_sub_dx*active_op_side_obj_char[5]*math.cos(active_op_center_r) - active_op_sub_dy*active_op_side_obj_char[6]*math.sin(active_op_center_r)
+    local active_op_rot_dy = active_op_sub_dx*active_op_side_obj_char[5]*math.sin(active_op_center_r) + active_op_sub_dy*active_op_side_obj_char[6]*math.cos(active_op_center_r)
     obj_VFX["life"] = 5
     obj_VFX[1] = active_op_center_x + active_op_rot_dx
     obj_VFX[2] = active_op_center_y + active_op_rot_dy
@@ -1794,7 +1805,7 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver0(active_op_side_obj_
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_block_VFX_insert_function_argument = active_op_side_obj_char["hit_block_VFX_insert_function_argument"]
-    local active_op_hit_VFX_dynamic_spawn_pos = active_op_side_obj_char["hit_VFX_dynamic_spawn_pos"] 
+    local active_op_hit_VFX_dynamic_spawn_pos = active_op_side_obj_char["hit_VFX_dynamic_spawn_pos"]
     local active_op_center_x = active_op_hit_VFX_dynamic_spawn_pos[1]
     local active_op_center_y = active_op_hit_VFX_dynamic_spawn_pos[2]
     local active_op_opacity = active_op_hit_block_VFX_insert_function_argument[3]
@@ -1856,7 +1867,7 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver1(active_op_side_obj_
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_block_VFX_insert_function_argument = active_op_side_obj_char["hit_block_VFX_insert_function_argument"]
-    local active_op_hit_VFX_dynamic_spawn_pos = active_op_side_obj_char["hit_VFX_dynamic_spawn_pos"] 
+    local active_op_hit_VFX_dynamic_spawn_pos = active_op_side_obj_char["hit_VFX_dynamic_spawn_pos"]
     local active_op_center_x = active_op_hit_VFX_dynamic_spawn_pos[1]
     local active_op_center_y = active_op_hit_VFX_dynamic_spawn_pos[2]
     local active_op_opacity = active_op_hit_block_VFX_insert_function_argument[3]
@@ -1921,8 +1932,8 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver1(active_op_side_obj_
     local active_op_center_r = active_op_side_obj_char[5]*active_op_r
     local active_op_sub_dx = -50*active_op_sx
     local active_op_sub_dy = -200*active_op_sy
-    local active_op_rot_dx = active_op_sub_dx * active_op_side_obj_char[5] * math.cos(active_op_center_r) - active_op_sub_dy * active_op_side_obj_char[6] * math.sin(active_op_center_r)
-    local active_op_rot_dy = active_op_sub_dx * active_op_side_obj_char[5] * math.sin(active_op_center_r) + active_op_sub_dy * active_op_side_obj_char[6] * math.cos(active_op_center_r)
+    local active_op_rot_dx = active_op_sub_dx*active_op_side_obj_char[5]*math.cos(active_op_center_r) - active_op_sub_dy*active_op_side_obj_char[6]*math.sin(active_op_center_r)
+    local active_op_rot_dy = active_op_sub_dx*active_op_side_obj_char[5]*math.sin(active_op_center_r) + active_op_sub_dy*active_op_side_obj_char[6]*math.cos(active_op_center_r)
     active_op_center_x = active_op_center_x - 300*active_op_sx*active_op_side_obj_char[5]
     active_op_center_y = active_op_center_y - 300*active_op_sy*active_op_side_obj_char[6]
     obj_VFX["life"] = 16
@@ -1959,7 +1970,7 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver1(active_op_side_obj_
             obj_VFX["life"] = obj_VFX["life"] - 1
         end
     end
-    obj_VFX["draw_sync"] = function()        
+    obj_VFX["draw_sync"] = function()
     end
     obj_VFX["draw"] = function()
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_air_blow
@@ -1977,29 +1988,29 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local x = -active_op_side_obj_char[5]*(active_op_side_obj_char["x"] - passive_op_side_obj_char["x"])
-    local y = -active_op_side_obj_char[6]*((active_op_side_obj_char["y"] - passive_op_side_obj_char["y"])+100)
+    local y = -active_op_side_obj_char[6]*((active_op_side_obj_char["y"] - passive_op_side_obj_char["y"]) + 100)
     local dx = -1410
     local dy = -200
     local center_black_offset = {}
     local center_white_offset = {}
-    local active_op_r0 = (0.523+(math.random()*0.087))*active_op_side_obj_char[5]
+    local active_op_r0 = (0.523 + (math.random()*0.087))*active_op_side_obj_char[5]
     local r_table_cache = {
         active_op_r0,
-        active_op_r0 + (1.570 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5],
-        active_op_r0 + (3.141 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5],
-        active_op_r0 + (4.712 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5]
+        active_op_r0 + (1.570 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5],
+        active_op_r0 + (3.141 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5],
+        active_op_r0 + (4.712 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5]
     }
     local rot_x_table_cache = {
-        dx * active_op_side_obj_char[5] * math.cos(r_table_cache[1]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[1]),
-        dx * active_op_side_obj_char[5] * math.cos(r_table_cache[2]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[2]),
-        dx * active_op_side_obj_char[5] * math.cos(r_table_cache[3]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[3]),
-        dx * active_op_side_obj_char[5] * math.cos(r_table_cache[4]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[4])
+        dx*active_op_side_obj_char[5]*math.cos(r_table_cache[1]) - dy*active_op_side_obj_char[6]*math.sin(r_table_cache[1]),
+        dx*active_op_side_obj_char[5]*math.cos(r_table_cache[2]) - dy*active_op_side_obj_char[6]*math.sin(r_table_cache[2]),
+        dx*active_op_side_obj_char[5]*math.cos(r_table_cache[3]) - dy*active_op_side_obj_char[6]*math.sin(r_table_cache[3]),
+        dx*active_op_side_obj_char[5]*math.cos(r_table_cache[4]) - dy*active_op_side_obj_char[6]*math.sin(r_table_cache[4])
     }
     local rot_y_table_cache = {
-        dx * active_op_side_obj_char[5] * math.sin(r_table_cache[1]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[1]),
-        dx * active_op_side_obj_char[5] * math.sin(r_table_cache[2]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[2]),
-        dx * active_op_side_obj_char[5] * math.sin(r_table_cache[3]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[3]),
-        dx * active_op_side_obj_char[5] * math.sin(r_table_cache[4]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[4])
+        dx*active_op_side_obj_char[5]*math.sin(r_table_cache[1]) + dy*active_op_side_obj_char[6]*math.cos(r_table_cache[1]),
+        dx*active_op_side_obj_char[5]*math.sin(r_table_cache[2]) + dy*active_op_side_obj_char[6]*math.cos(r_table_cache[2]),
+        dx*active_op_side_obj_char[5]*math.sin(r_table_cache[3]) + dy*active_op_side_obj_char[6]*math.cos(r_table_cache[3]),
+        dx*active_op_side_obj_char[5]*math.sin(r_table_cache[4]) + dy*active_op_side_obj_char[6]*math.cos(r_table_cache[4])
     }
     local obj_x_table = {
         active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[1],
@@ -2014,8 +2025,8 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
         active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[4]
     }
     local obj_center = {
-        active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x-500),
-        active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y-500)
+        active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x - 500),
+        active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y - 500)
     }
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
@@ -2056,29 +2067,29 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
     end
     obj_VFX["draw_sync"] = function()
         local x = -active_op_side_obj_char[5]*(active_op_side_obj_char["x"] - passive_op_side_obj_char["x"])
-        local y = -active_op_side_obj_char[6]*((active_op_side_obj_char["y"] - passive_op_side_obj_char["y"])+100)
+        local y = -active_op_side_obj_char[6]*((active_op_side_obj_char["y"] - passive_op_side_obj_char["y"]) + 100)
         local dx = -1410
         local dy = -200
         local center_black_offset = {}
         local center_white_offset = {}
-        local active_op_r0 = (0.523+(math.random()*0.087))*active_op_side_obj_char[5]
+        local active_op_r0 = (0.523 + (math.random()*0.087))*active_op_side_obj_char[5]
         local r_table_cache = {
             active_op_r0,
-            active_op_r0 + (1.570 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5],
-            active_op_r0 + (3.141 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5],
-            active_op_r0 + (4.712 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5]
+            active_op_r0 + (1.570 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5],
+            active_op_r0 + (3.141 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5],
+            active_op_r0 + (4.712 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5]
         }
         local rot_x_table_cache = {
-            dx * active_op_side_obj_char[5] * math.cos(r_table_cache[1]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[1]),
-            dx * active_op_side_obj_char[5] * math.cos(r_table_cache[2]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[2]),
-            dx * active_op_side_obj_char[5] * math.cos(r_table_cache[3]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[3]),
-            dx * active_op_side_obj_char[5] * math.cos(r_table_cache[4]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[4])
+            dx*active_op_side_obj_char[5]*math.cos(r_table_cache[1]) - dy*active_op_side_obj_char[6]*math.sin(r_table_cache[1]),
+            dx*active_op_side_obj_char[5]*math.cos(r_table_cache[2]) - dy*active_op_side_obj_char[6]*math.sin(r_table_cache[2]),
+            dx*active_op_side_obj_char[5]*math.cos(r_table_cache[3]) - dy*active_op_side_obj_char[6]*math.sin(r_table_cache[3]),
+            dx*active_op_side_obj_char[5]*math.cos(r_table_cache[4]) - dy*active_op_side_obj_char[6]*math.sin(r_table_cache[4])
         }
         local rot_y_table_cache = {
-            dx * active_op_side_obj_char[5] * math.sin(r_table_cache[1]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[1]),
-            dx * active_op_side_obj_char[5] * math.sin(r_table_cache[2]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[2]),
-            dx * active_op_side_obj_char[5] * math.sin(r_table_cache[3]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[3]),
-            dx * active_op_side_obj_char[5] * math.sin(r_table_cache[4]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[4])
+            dx*active_op_side_obj_char[5]*math.sin(r_table_cache[1]) + dy*active_op_side_obj_char[6]*math.cos(r_table_cache[1]),
+            dx*active_op_side_obj_char[5]*math.sin(r_table_cache[2]) + dy*active_op_side_obj_char[6]*math.cos(r_table_cache[2]),
+            dx*active_op_side_obj_char[5]*math.sin(r_table_cache[3]) + dy*active_op_side_obj_char[6]*math.cos(r_table_cache[3]),
+            dx*active_op_side_obj_char[5]*math.sin(r_table_cache[4]) + dy*active_op_side_obj_char[6]*math.cos(r_table_cache[4])
         }
         local obj_x_table = {
             active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[1],
@@ -2093,8 +2104,8 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
             active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[4]
         }
         local obj_center = {
-            active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x-500),
-            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y-500)
+            active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x - 500),
+            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y - 500)
         }
         obj_VFX["r_cache"] = r_table_cache
         obj_VFX["x_table"] = obj_x_table
@@ -2133,29 +2144,29 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local x = -active_op_side_obj_char[5]*(active_op_side_obj_char["x"] - passive_op_side_obj_char["x"])
-    local y = -active_op_side_obj_char[6]*((active_op_side_obj_char["y"] - passive_op_side_obj_char["y"])+100)
+    local y = -active_op_side_obj_char[6]*((active_op_side_obj_char["y"] - passive_op_side_obj_char["y"]) + 100)
     local dx = -1410
     local dy = -200
     local center_black_offset = {}
     local center_white_offset = {}
-    local active_op_r0 = (0.523+(math.random()*0.087))*active_op_side_obj_char[5]
+    local active_op_r0 = (0.523 + (math.random()*0.087))*active_op_side_obj_char[5]
     local r_table_cache = {
         active_op_r0,
-        active_op_r0 + (1.570 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5],
-        active_op_r0 + (3.141 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5],
-        active_op_r0 + (4.712 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5]
+        active_op_r0 + (1.570 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5],
+        active_op_r0 + (3.141 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5],
+        active_op_r0 + (4.712 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5]
     }
     local rot_x_table_cache = {
-        dx * active_op_side_obj_char[5] * math.cos(r_table_cache[1]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[1]),
-        dx * active_op_side_obj_char[5] * math.cos(r_table_cache[2]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[2]),
-        dx * active_op_side_obj_char[5] * math.cos(r_table_cache[3]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[3]),
-        dx * active_op_side_obj_char[5] * math.cos(r_table_cache[4]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[4])
+        dx*active_op_side_obj_char[5]*math.cos(r_table_cache[1]) - dy*active_op_side_obj_char[6]*math.sin(r_table_cache[1]),
+        dx*active_op_side_obj_char[5]*math.cos(r_table_cache[2]) - dy*active_op_side_obj_char[6]*math.sin(r_table_cache[2]),
+        dx*active_op_side_obj_char[5]*math.cos(r_table_cache[3]) - dy*active_op_side_obj_char[6]*math.sin(r_table_cache[3]),
+        dx*active_op_side_obj_char[5]*math.cos(r_table_cache[4]) - dy*active_op_side_obj_char[6]*math.sin(r_table_cache[4])
     }
     local rot_y_table_cache = {
-        dx * active_op_side_obj_char[5] * math.sin(r_table_cache[1]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[1]),
-        dx * active_op_side_obj_char[5] * math.sin(r_table_cache[2]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[2]),
-        dx * active_op_side_obj_char[5] * math.sin(r_table_cache[3]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[3]),
-        dx * active_op_side_obj_char[5] * math.sin(r_table_cache[4]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[4])
+        dx*active_op_side_obj_char[5]*math.sin(r_table_cache[1]) + dy*active_op_side_obj_char[6]*math.cos(r_table_cache[1]),
+        dx*active_op_side_obj_char[5]*math.sin(r_table_cache[2]) + dy*active_op_side_obj_char[6]*math.cos(r_table_cache[2]),
+        dx*active_op_side_obj_char[5]*math.sin(r_table_cache[3]) + dy*active_op_side_obj_char[6]*math.cos(r_table_cache[3]),
+        dx*active_op_side_obj_char[5]*math.sin(r_table_cache[4]) + dy*active_op_side_obj_char[6]*math.cos(r_table_cache[4])
     }
     local obj_x_table = {
         active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[1],
@@ -2170,8 +2181,8 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
         active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[4]
     }
     local obj_center = {
-        active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x-500),
-        active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y-500)
+        active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x - 500),
+        active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y - 500)
     }
     active_op_side_obj_char["VFX_hit_front_table"] = {}
     active_op_side_obj_char["VFX_hit_back_table"] = {}
@@ -2212,29 +2223,29 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
     end
     obj_VFX["draw_sync"] = function()
         local x = -active_op_side_obj_char[5]*(active_op_side_obj_char["x"] - passive_op_side_obj_char["x"])
-        local y = -active_op_side_obj_char[6]*((active_op_side_obj_char["y"] - passive_op_side_obj_char["y"])+100)
+        local y = -active_op_side_obj_char[6]*((active_op_side_obj_char["y"] - passive_op_side_obj_char["y"]) + 100)
         local dx = -1410
         local dy = -200
         local center_black_offset = {}
         local center_white_offset = {}
-        local active_op_r0 = (0.523+(math.random()*0.087))*active_op_side_obj_char[5]
+        local active_op_r0 = (0.523 + (math.random()*0.087))*active_op_side_obj_char[5]
         local r_table_cache = {
             active_op_r0,
-            active_op_r0 + (1.570 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5],
-            active_op_r0 + (3.141 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5],
-            active_op_r0 + (4.712 + (math.random()-0.5)*0.174)*active_op_side_obj_char[5]
+            active_op_r0 + (1.570 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5],
+            active_op_r0 + (3.141 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5],
+            active_op_r0 + (4.712 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5]
         }
         local rot_x_table_cache = {
-            dx * active_op_side_obj_char[5] * math.cos(r_table_cache[1]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[1]),
-            dx * active_op_side_obj_char[5] * math.cos(r_table_cache[2]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[2]),
-            dx * active_op_side_obj_char[5] * math.cos(r_table_cache[3]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[3]),
-            dx * active_op_side_obj_char[5] * math.cos(r_table_cache[4]) - dy * active_op_side_obj_char[6] * math.sin(r_table_cache[4])
+            dx*active_op_side_obj_char[5]*math.cos(r_table_cache[1]) - dy*active_op_side_obj_char[6]*math.sin(r_table_cache[1]),
+            dx*active_op_side_obj_char[5]*math.cos(r_table_cache[2]) - dy*active_op_side_obj_char[6]*math.sin(r_table_cache[2]),
+            dx*active_op_side_obj_char[5]*math.cos(r_table_cache[3]) - dy*active_op_side_obj_char[6]*math.sin(r_table_cache[3]),
+            dx*active_op_side_obj_char[5]*math.cos(r_table_cache[4]) - dy*active_op_side_obj_char[6]*math.sin(r_table_cache[4])
         }
         local rot_y_table_cache = {
-            dx * active_op_side_obj_char[5] * math.sin(r_table_cache[1]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[1]),
-            dx * active_op_side_obj_char[5] * math.sin(r_table_cache[2]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[2]),
-            dx * active_op_side_obj_char[5] * math.sin(r_table_cache[3]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[3]),
-            dx * active_op_side_obj_char[5] * math.sin(r_table_cache[4]) + dy * active_op_side_obj_char[6] * math.cos(r_table_cache[4])
+            dx*active_op_side_obj_char[5]*math.sin(r_table_cache[1]) + dy*active_op_side_obj_char[6]*math.cos(r_table_cache[1]),
+            dx*active_op_side_obj_char[5]*math.sin(r_table_cache[2]) + dy*active_op_side_obj_char[6]*math.cos(r_table_cache[2]),
+            dx*active_op_side_obj_char[5]*math.sin(r_table_cache[3]) + dy*active_op_side_obj_char[6]*math.cos(r_table_cache[3]),
+            dx*active_op_side_obj_char[5]*math.sin(r_table_cache[4]) + dy*active_op_side_obj_char[6]*math.cos(r_table_cache[4])
         }
         local obj_x_table = {
             active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[1],
@@ -2249,8 +2260,8 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
             active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[4]
         }
         local obj_center = {
-            active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x-500),
-            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y-500)
+            active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x - 500),
+            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y - 500)
         }
         obj_VFX["r_cache"] = r_table_cache
         obj_VFX["x_table"] = obj_x_table
@@ -2668,7 +2679,7 @@ function insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,x,y,opacity,sx,sy,
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     obj_VFX["life"] = 30
-    obj_VFX[1] = obj_char["x"] + obj_char[5]*(x-math.random()*150)
+    obj_VFX[1] = obj_char["x"] + obj_char[5]*(x - math.random()*150)
     obj_VFX[2] = obj_char["y"] + obj_char[6]*(y)
     obj_VFX[3] = obj_char[3]
     obj_VFX[4] = opacity
@@ -2894,7 +2905,7 @@ function insert_VFX_game_scene_stage_6dash_air_dash_shockwave(obj_char,x,y,opaci
     obj_VFX["update"] = function()
         obj_VFX["f"] = obj_VFX["f"] + 1
         if obj_VFX["f"] >= 2 then
-            obj_VFX[8] = math.min(obj_VFX[8]+1,12)
+            obj_VFX[8] = math.min(obj_VFX[8] + 1,12)
             obj_VFX["f"] = 0
         end
         obj_VFX[1] = obj_VFX[1] - 0.2*obj_VFX[5]
@@ -2933,7 +2944,7 @@ function insert_VFX_game_scne_stage_dash_cancel_blow(obj_char,x,y,opacity,sx,sy,
     obj_VFX["update"] = function()
         obj_VFX["f"] = obj_VFX["f"] + 1
         if obj_VFX["f"] >= 2 then
-            obj_VFX[8] = math.min(obj_VFX[8]+1,9)
+            obj_VFX[8] = math.min(obj_VFX[8] + 1,9)
             obj_VFX["f"] = 0
         end
         obj_VFX["life"] = obj_VFX["life"] - 1

@@ -297,9 +297,9 @@ function draw_game_scene_add_to_sprite_batch_heat_bar_extra(obj,image_sprite_she
     )
     local offset_counter = 0
     image_sprite_sheet["sprite_batch"]:setColor(1,1,1,opacity)
-    for i = 1,3,1 do 
+    for i = 1,3,1 do
         if mark_value >= 1 then
-            image_sprite_sheet["sprite_batch"]:add(quad,x+offset_counter*97*sx,y,r,-sx,sy)
+            image_sprite_sheet["sprite_batch"]:add(quad,x + offset_counter*97*sx,y,r,-sx,sy)
             mark_value = mark_value - 1
             offset_counter = offset_counter + 1
         else
@@ -309,7 +309,7 @@ function draw_game_scene_add_to_sprite_batch_heat_bar_extra(obj,image_sprite_she
     if mark_value >= 1 then
         x = draw_resolution_correction(obj[1])
         y = draw_resolution_correction(obj[2])
-        image_sprite_sheet["sprite_batch"]:add(quad,x+393*sx,y+6*sy,r,-sx,sy)
+        image_sprite_sheet["sprite_batch"]:add(quad,x + 393*sx,y + 6*sy,r,-sx,sy)
     end
     image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
 end
@@ -331,14 +331,14 @@ function draw_game_scene_add_to_sprite_batch_risk_bars(obj,image_sprite_sheet,qu
     )
     local offset_counter = 0
     image_sprite_sheet["sprite_batch"]:setColor(1,1,1,opacity)
-    for i = 1,3,1 do 
+    for i = 1,3,1 do
         if risk_value >= 1 then
-            image_sprite_sheet["sprite_batch"]:add(quad,x-offset_counter*30*sx,y,r,sx,sy)
+            image_sprite_sheet["sprite_batch"]:add(quad,x - offset_counter*30*sx,y,r,sx,sy)
             risk_value = risk_value - 1
             offset_counter = offset_counter + 1
         else
             image_sprite_sheet["sprite_batch"]:setColor(1,1,1,risk_value*opacity)
-            image_sprite_sheet["sprite_batch"]:add(quad,x-offset_counter*30*sx,y,r,sx,sy)
+            image_sprite_sheet["sprite_batch"]:add(quad,x - offset_counter*30*sx,y,r,sx,sy)
             break
         end
     end
@@ -375,7 +375,7 @@ function draw_game_scene_add_to_sprite_batch_overdrive_pie(obj,image_sprite_shee
         )
     end
     image_sprite_sheet["sprite_batch"]:setColor(1,1,1,opacity)
-    for i = 1,6,1 do 
+    for i = 1,6,1 do
         if overdrive_value >= 1 then
             image_sprite_sheet["sprite_batch"]:add(quads[i],x,y,r,sx,sy)
             overdrive_value = overdrive_value - 1
@@ -422,10 +422,10 @@ function draw_game_scene_add_to_sprite_batch_round_timer(obj,image_sprite_sheet)
         )
     end
     image_sprite_sheet["sprite_batch"]:setColor(1,1,1,opacity)
-    for i = 1,2,1 do 
+    for i = 1,2,1 do
         image_sprite_sheet["sprite_batch"]:add(
-            quads[ROUND_TIMER[i]+1],
-            x+draw_resolution_correction((i-1)*23),
+            quads[ROUND_TIMER[i] + 1],
+            x + draw_resolution_correction((i - 1)*23),
             y,
             r,
             sx,
@@ -452,9 +452,9 @@ function draw_game_scene_add_to_sprite_batch_round_win_marks(obj,image_sprite_sh
     )
     local offset_counter = 0
     image_sprite_sheet["sprite_batch"]:setColor(1,1,1,opacity)
-    for i = 1,10,1 do 
+    for i = 1,10,1 do
         if mark_value >= 1 then
-            image_sprite_sheet["sprite_batch"]:add(quad,x-offset_counter*15*sx,y+offset_counter*3*sy,r,sx,sy)
+            image_sprite_sheet["sprite_batch"]:add(quad,x - offset_counter*15*sx,y + offset_counter*3*sy,r,sx,sy)
             mark_value = mark_value - 1
             offset_counter = offset_counter + 1
         else
@@ -499,20 +499,20 @@ function draw_game_scene_add_to_sprite_batch_overdrive_timer(obj,image_sprite_sh
         )
     end
     image_sprite_sheet["sprite_batch"]:setColor(1,1,1,opacity)
-    for i = 1,2,1 do 
+    for i = 1,2,1 do
         image_sprite_sheet["sprite_batch"]:add(
-            quads[time[i]+1],
-            x+draw_resolution_correction((i-1)*27),
+            quads[time[i] + 1],
+            x + draw_resolution_correction((i - 1)*27),
             y,
             r,
             sx,
             sy
         )
     end
-    for i = 1,2,1 do 
+    for i = 1,2,1 do
         image_sprite_sheet["sprite_batch"]:add(
-            quads[time[i+2]+1],
-            x+draw_resolution_correction((i-1)*27+72),
+            quads[time[i + 2] + 1],
+            x + draw_resolution_correction((i - 1)*27 + 72),
             y,
             r,
             sx,
@@ -521,7 +521,7 @@ function draw_game_scene_add_to_sprite_batch_overdrive_timer(obj,image_sprite_sh
     end
     image_sprite_sheet["sprite_batch"]:add(
         quads[11],
-        x+draw_resolution_correction(49),
+        x + draw_resolution_correction(49),
         y,
         r,
         sx,
@@ -535,7 +535,7 @@ function draw_game_scene_act_common(obj,image_sprite_sheet)
     if opacity == 0 then
         return
     end
-    if image_sprite_sheet["frames"][""..f..""]== nil then
+    if image_sprite_sheet["frames"][""..f..""] == nil then
         f = 50
     end
     draw_2d_image_sprite_batch(obj,image_sprite_sheet,""..f.."")

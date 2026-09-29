@@ -1,6 +1,6 @@
 function love.conf(t)
     local res = love.filesystem.read( 'resolution_config.lua',8 )
-    if res then 
+    if res then
         local width = tonumber(string.sub(res,1,4))
         local height = tonumber(string.sub(res,5,8))
         t.window.width = width
@@ -14,12 +14,12 @@ function love.conf(t)
     t.window.title = "BLAZBLUE_STRIVE.ver.1/4.005"
     t.window.vsync = 0
     t.window.msaa = 0
-    t.modules.physics = false 
-    t.modules.touch = false 
+    t.modules.physics = false
+    t.modules.touch = false
     t.modules.video = false
     t.modules.math = false
     t.modules.mouse = false
     if t.version == "12.0" then
-        t.graphics.renderers = {"vulkan","opengl"} 
+        t.graphics.renderers = {"vulkan","opengl"}
     end
-end 
+end

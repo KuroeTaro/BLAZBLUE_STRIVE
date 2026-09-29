@@ -12,17 +12,17 @@ function load_start_scene_prep()
         "threads/start_scene/start_scene_thread_2_main_UI_BG.lua",
         "threads/start_scene/start_scene_thread_3_sub_UI.lua"
     }
-    THREAD_AMOUNT = 3   -- 线程数目
+    THREAD_AMOUNT = 3 -- 线程数目
     THREAD_ONCE_TABLE = {false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
-    ASSET_DATA = {}   -- 保持为nil
+    ASSET_DATA = {} -- 保持为nil
     ORDER_LOAD_TABLE = {
         order_load_start_scene_main_UI,
         order_load_start_scene_main_UI_BG,
         order_load_start_scene_sub_UI
-    }    -- load function table
-    CURRENT_ORDER_TABLE = {1,1,1}  -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
-    ORDER_SIZE_TABLE = {2,1,1}  -- 每个load function的最大值
-    LOAD_ONCE_TABLE = {false,false,false}   -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
+    } -- load function table
+    CURRENT_ORDER_TABLE = {1,1,1} -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
+    ORDER_SIZE_TABLE = {2,1,1} -- 每个load function的最大值
+    LOAD_ONCE_TABLE = {false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     LOADING_FUNCTION_AMOUNT = 3 -- 和线程数相同
 	NEXT_UPDATE_BLOCK = update_start_scene_ease_in
 	NEXT_DRAW_BLOCK = draw_start_scene_main
@@ -30,7 +30,7 @@ function load_start_scene_prep()
 end
 -- 分步骤将素材加载
 function order_load_start_scene_main_UI(load_order)
-    local switch = 
+    local switch =
     {
         [1] = function()
             -- image_table以0开头 因为AE的帧数是以0开头设计的
@@ -97,12 +97,12 @@ function order_load_start_scene_main_UI(load_order)
     if this_function then this_function() end
 end
 function order_load_start_scene_main_UI_BG(load_order)
-    local switch = 
+    local switch =
     {
         [1] = function()
             image_table_UI_start_scene_BG_loop = {}
             for i = 0,49 do
-                image_table_UI_start_scene_BG_loop[i] = love.graphics.newImage(ASSET_DATA[2][i+1])
+                image_table_UI_start_scene_BG_loop[i] = love.graphics.newImage(ASSET_DATA[2][i + 1])
             end
             image_UI_start_scene_shutter = love.graphics.newImage(ASSET_DATA[2][51])
         end
@@ -111,7 +111,7 @@ function order_load_start_scene_main_UI_BG(load_order)
     if this_function then this_function() end
 end
 function order_load_start_scene_sub_UI(load_order)
-    local switch = 
+    local switch =
     {
         [1] = function()
             -- resolution text in config resolution sub UI only
@@ -141,7 +141,7 @@ function order_load_start_scene_sub_UI(load_order)
             image_UI_start_scene_game_duration_text = love.graphics.newImage(ASSET_DATA[3][12])
             image_table_UI_start_scene_game_duration_number = {}
             for i = 13,22 do
-                image_table_UI_start_scene_game_duration_number[i-13] = love.graphics.newImage(ASSET_DATA[3][i])
+                image_table_UI_start_scene_game_duration_number[i - 13] = love.graphics.newImage(ASSET_DATA[3][i])
             end
             image_UI_start_scene_time_indi_barcode = love.graphics.newImage(ASSET_DATA[3][23])
         end
