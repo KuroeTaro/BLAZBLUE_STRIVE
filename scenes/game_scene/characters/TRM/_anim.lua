@@ -8591,7 +8591,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(hit_side_ob
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(hit_side_obj_char,hurt_side_obj_char)
         -- insert_projectile
-        insert_projectile_game_scene_char_TRM_at_the_ready_shot(hit_side_obj_char,hurt_side_obj_char)
+        insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj_char,hurt_side_obj_char)
     end
     res[3] = function()
         -- shot_sys
