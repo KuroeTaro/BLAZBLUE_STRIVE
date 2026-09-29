@@ -8631,7 +8631,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(hit_side_ob
     return res
 end
 -- shot_sys_oroboros
-function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj)
+function load_game_scene_anim_char_TRM_oroboros_at_the_ready_chain_ease_in(obj)
     local res = {}
     res["prop_f"] = "f_4"
     res["anim_length"] = 20
@@ -8660,7 +8660,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_in(obj)
     end
     return res
 end
-function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj)
+function load_game_scene_anim_char_TRM_oroboros_at_the_ready_chain_ease_out(obj)
     local res = {}
     res["prop_f"] = "f_4"
     res["anim_length"] = 20
@@ -8689,7 +8689,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_chain_ease_out(obj)
     end
     return res
 end
-function load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj,sprite_sheet)
+function load_game_scene_anim_char_TRM_oroboros_at_the_ready_chain_loop(obj,sprite_sheet)
     local res = {}
     res["prop_f"] = "f_8"
     res["anim_length"] = 91
@@ -8715,7 +8715,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_chain_loop(obj,sprite_sheet)
     end
     return res
 end
-function load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj,sprite_sheet)
+function load_game_scene_anim_char_TRM_oroboros_at_the_ready_mid_ease(obj,sprite_sheet)
     local res = {}
     res["prop_f"] = "f_8"
     res["anim_length"] = 20
@@ -8746,7 +8746,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_mid_ease(obj,sprite_sheet)
     end
     return res
 end
-function load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj)
+function load_game_scene_anim_char_TRM_oroboros_at_the_ready_mid_loop(obj)
     local res = {}
     res["prop_f"] = "f_8"
     res["anim_length"] = 91
@@ -8821,12 +8821,16 @@ function load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(obj)
     end
     return res
 end
-function load_game_scene_anim_char_TRM_5H_oroboros_shot(obj_char)
+function load_game_scene_anim_char_TRM_oroboros_at_the_ready_shot(obj_char)
     local res = {}
     local obj_camera = obj_stage_game_scene_camera
-    local oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
-    local reticle_pos =
-    {obj_char["shot_sys_reticle_stage_pos_current"][1] + 160,obj_char["shot_sys_reticle_stage_pos_current"][2] + 160}
+    local oroboros_pos = {
+        obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]
+    }
+    local reticle_pos = {
+        obj_char["shot_sys_reticle_stage_pos_current"][1] + 160,
+        obj_char["shot_sys_reticle_stage_pos_current"][2] + 160
+    }
     local center_r = obj_char[5]*character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(
         obj_char,oroboros_pos,reticle_pos
     )
@@ -9076,9 +9080,9 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock(self_si
     res["anim_length"] = 27
     res[0] = function()
         -- shot_sys
-        self_side_obj_char["shot_sys_fire_cancel"] = false
         self_side_obj_char["shot_sys_at_the_steady_aim"] = false
         self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = false
+        self_side_obj_char["shot_sys_fire_cancel"] = false
         if quick_aim_cache then
             self_side_obj_char["shot_sys_at_the_steady_aim"] = true
         end
@@ -9140,6 +9144,11 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_shot(self_si
     res[0] = function()
         -- shot_sys
         self_side_obj_char["shot_sys_fire_cancel"] = false
+        self_side_obj_char["shot_sys_idle_cancel"] = false
+    end
+    res[2] = function()
+        -- shot_sys
+        self_side_obj_char["shot_sys_idle_cancel"] = true
     end
     res[45] = function()
         self_side_obj_char["shot_sys_fire_cancel"] = true
@@ -9150,12 +9159,16 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_shot(self_si
     return res
 end
 -- shot_sys_oroboros
-function load_game_scene_anim_char_TRM_4SP_S_oroboros_shot(obj_char)
+function load_game_scene_anim_char_TRM_4SP_S_oroboros_at_the_steady_shot(obj_char)
     local res = {}
     local obj_camera = obj_stage_game_scene_camera
-    local oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
-    local reticle_pos =
-    {obj_char["shot_sys_reticle_stage_pos_current"][1] + 160,obj_char["shot_sys_reticle_stage_pos_current"][2] + 160}
+    local oroboros_pos = {
+        obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]
+    }
+    local reticle_pos = {
+        obj_char["shot_sys_reticle_stage_pos_current"][1] + 160,
+        obj_char["shot_sys_reticle_stage_pos_current"][2] + 160
+    }
     local center_r = obj_char[5]*character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(
         obj_char,oroboros_pos,reticle_pos
     )

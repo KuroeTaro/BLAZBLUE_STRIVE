@@ -394,20 +394,24 @@ function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_shot_oroboros_blast
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
-    local oroboros_pos = {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
-    local reticle_pos =
-    {obj_char["shot_sys_reticle_stage_pos_current"][1] + 160,obj_char["shot_sys_reticle_stage_pos_current"][2] + 160}
+    local oroboros_pos = {
+        obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]
+    }
+    local reticle_pos = {
+        obj_char["shot_sys_reticle_stage_pos_current"][1] + 160,
+        obj_char["shot_sys_reticle_stage_pos_current"][2] + 160
+    }
     local center_dx = 35
     local center_dy = -210
     local center_r = character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(
         obj_char,oroboros_pos,reticle_pos
     )
     local rot_dx =
-    center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.cos(center_r) -
-    center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.sin(center_r)
+        center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.cos(center_r) -
+        center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.sin(center_r)
     local rot_dy =
-    center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.sin(center_r) +
-    center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.cos(center_r)
+        center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.sin(center_r) +
+        center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.cos(center_r)
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
     local image_sprite_sheet = image_sprite_sheet_table["5H_shot_oroboros_blast_move_VFX"]
@@ -438,22 +442,24 @@ function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_shot_oroboros_blast
         obj_VFX["life"] = obj_VFX["life"] - 1
     end
     obj_VFX["draw_sync"] = function()
-        local oroboros_pos =
-        {obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]}
-        local reticle_pos =
-        {obj_char["shot_sys_reticle_stage_pos_current"][1] +
-        160,obj_char["shot_sys_reticle_stage_pos_current"][2] + 160}
+        local oroboros_pos = {
+            obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]
+        }
+        local reticle_pos = {
+            obj_char["shot_sys_reticle_stage_pos_current"][1] + 160,
+            obj_char["shot_sys_reticle_stage_pos_current"][2] + 160
+        }
         local center_dx = 35
         local center_dy = -210
         local center_r = character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(
             obj_char,oroboros_pos,reticle_pos
         )
         local rot_dx =
-        center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.cos(center_r) -
-        center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.sin(center_r)
+            center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.cos(center_r) -
+            center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.sin(center_r)
         local rot_dy =
-        center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.sin(center_r) +
-        center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.cos(center_r)
+            center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.sin(center_r) +
+            center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.cos(center_r)
         obj_VFX[1] = obj_char["shot_sys_oroboros_ease_current"][1] + rot_dx
         obj_VFX[2] = obj_char["shot_sys_oroboros_ease_current"][2] + rot_dy
         obj_VFX[3] = obj_char[3]
@@ -727,6 +733,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_curse_ball_spawner(obj_char)
     obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
+    -- x_point_linear_animation
     obj_VFX["x_point_linear_animation"] = {}
     obj_VFX["x_point_linear_animation"][0] = {-95,1}
     obj_VFX["x_point_linear_animation"][1] = {-98.6,2}
@@ -739,6 +746,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_curse_ball_spawner(obj_char)
     obj_VFX["x_point_linear_animation"]["length"] = 9
     obj_VFX["x_point_linear_animation"]["loop"] = false
     init_point_linear_anim_without(obj_VFX,obj_VFX["x_point_linear_animation"])
+    -- y_point_linear_animation
     obj_VFX["y_point_linear_animation"] = {}
     obj_VFX["y_point_linear_animation"][0] = {-395,1}
     obj_VFX["y_point_linear_animation"][1] = {-393.2,2}
@@ -751,6 +759,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_curse_ball_spawner(obj_char)
     obj_VFX["y_point_linear_animation"]["length"] = 9
     obj_VFX["y_point_linear_animation"]["loop"] = false
     init_point_linear_anim_without(obj_VFX,obj_VFX["y_point_linear_animation"])
+    -- opacity_point_linear_animation
     obj_VFX["opacity_point_linear_animation"] = {}
     obj_VFX["opacity_point_linear_animation"][0] = {0,1}
     obj_VFX["opacity_point_linear_animation"][1] = {0.44,2}
@@ -811,6 +820,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
     obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
+    -- x_point_linear_animation
     obj_VFX["x_point_linear_animation"] = {}
     obj_VFX["x_point_linear_animation"][0] = {-72.5,2}
     obj_VFX["x_point_linear_animation"][2] = {-72.5,5}
@@ -819,6 +829,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
     obj_VFX["x_point_linear_animation"]["length"] = 5
     obj_VFX["x_point_linear_animation"]["loop"] = false
     init_point_linear_anim_without(obj_VFX,obj_VFX["x_point_linear_animation"])
+    -- y_point_linear_animation
     obj_VFX["y_point_linear_animation"] = {}
     obj_VFX["y_point_linear_animation"][0] = {-352.5,2}
     obj_VFX["y_point_linear_animation"][2] = {-352.5,5}
@@ -827,6 +838,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
     obj_VFX["y_point_linear_animation"]["length"] = 5
     obj_VFX["y_point_linear_animation"]["loop"] = false
     init_point_linear_anim_without(obj_VFX,obj_VFX["y_point_linear_animation"])
+    -- frame_animation
     obj_VFX["frame_animation"] = {}
     obj_VFX["frame_animation"][0] = 0
     obj_VFX["frame_animation"][1] = 1
@@ -894,6 +906,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     obj_VFX[7] = 0
     obj_VFX[8] = 0
     obj_VFX["state"] = "loop"
+    -- frame_animation
     obj_VFX["frame_animation"] = {}
     for i = 0,149 do
         obj_VFX["frame_animation"][i*2] = i
@@ -902,19 +915,20 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     obj_VFX["frame_animation"]["length"] = 300
     obj_VFX["frame_animation"]["loop"] = false
     init_frame_anim_without(obj_VFX,obj_VFX["frame_animation"])
-    obj_VFX["opacity_ease_out_point_linear_animation"] = {}
-    obj_VFX["opacity_ease_out_point_linear_animation"][0] = {0.75,20}
-    obj_VFX["opacity_ease_out_point_linear_animation"][20] = {0,20}
-    obj_VFX["opacity_ease_out_point_linear_animation"]["prop"] = 4
-    obj_VFX["opacity_ease_out_point_linear_animation"]["length"] = 20
-    obj_VFX["opacity_ease_out_point_linear_animation"]["loop"] = false
-    -- init_point_linear_anim_without(obj_VFX,obj_VFX["opacity_point_linear_animation"])
+    -- opacity_ease_in_point_linear_animation
     obj_VFX["opacity_ease_in_point_linear_animation"] = {}
     obj_VFX["opacity_ease_in_point_linear_animation"][0] = {0,20}
     obj_VFX["opacity_ease_in_point_linear_animation"][20] = {0.75,20}
     obj_VFX["opacity_ease_in_point_linear_animation"]["prop"] = 4
     obj_VFX["opacity_ease_in_point_linear_animation"]["length"] = 20
     obj_VFX["opacity_ease_in_point_linear_animation"]["loop"] = false
+    -- opacity_ease_out_point_linear_animation
+    obj_VFX["opacity_ease_out_point_linear_animation"] = {}
+    obj_VFX["opacity_ease_out_point_linear_animation"][0] = {0.75,20}
+    obj_VFX["opacity_ease_out_point_linear_animation"][20] = {0,20}
+    obj_VFX["opacity_ease_out_point_linear_animation"]["prop"] = 4
+    obj_VFX["opacity_ease_out_point_linear_animation"]["length"] = 20
+    obj_VFX["opacity_ease_out_point_linear_animation"]["loop"] = false
     local function update_frame_animation()
         frame_animator(obj_VFX,obj_VFX["frame_animation"])
         if get_frame_anim_end_state(obj_VFX,obj_VFX["frame_animation"]) then

@@ -176,13 +176,14 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["shot_sys_fire_cancel"] = false
     obj_char_game_scene_char_RP["shot_sys_idle_cancel"] = false
     obj_char_game_scene_char_RP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值
+    obj_char_game_scene_char_RP["shot_sys_at_the_steady_aim"] = false
+    obj_char_game_scene_char_RP["shot_sys_at_the_steady_clean_hit"] = false
     obj_char_game_scene_char_RP["shot_sys_curse"] = false
     obj_char_game_scene_char_RP["shot_sys_curse_countdown"] = 0
     obj_char_game_scene_char_RP["shot_sys_scapegoat_exist"] = false
-    obj_char_game_scene_char_RP["shot_sys_at_the_steady_aim"] = false
-    obj_char_game_scene_char_RP["shot_sys_at_the_steady_clean_hit"] = false
+    -- shot_sys/anim/uncommon
     obj_char_game_scene_char_RP["shot_sys_animation"] = nil
-    obj_char_game_scene_char_RP["shot_sys_camera_shake_table"] = {}
+    obj_char_game_scene_char_RP["shot_sys_camera_shake_anim_table"] = {}
     -- shot_sys_oroboros/uncommon
     obj_char_game_scene_char_RP["shot_sys_oroboros_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_state"] = "off"
@@ -815,11 +816,11 @@ function load_game_scene_wallbreak_mid_init_RP()
     obj_char_game_scene_char_RP["shot_sys_fire_cancel"] = false
     obj_char_game_scene_char_RP["shot_sys_idle_cancel"] = false
     obj_char_game_scene_char_RP["shot_sys_aim_process"] = {0,0,420,450} -- 当前值 当前速度 瞄准命中最低值 瞄准命中最高保存值
-    obj_char_game_scene_char_RP["shot_sys_scapegoat_exist"] = false
     obj_char_game_scene_char_RP["shot_sys_at_the_steady_aim"] = false
     obj_char_game_scene_char_RP["shot_sys_at_the_steady_clean_hit"] = false
+    obj_char_game_scene_char_RP["shot_sys_scapegoat_exist"] = false
     obj_char_game_scene_char_RP["shot_sys_animation"] = nil
-    obj_char_game_scene_char_RP["shot_sys_camera_shake_table"] = {}
+    obj_char_game_scene_char_RP["shot_sys_camera_shake_anim_table"] = {}
     -- shot_sys_oroboros/uncommon
     obj_char_game_scene_char_RP["shot_sys_oroboros_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_oroboros_state"] = "off"
@@ -2599,8 +2600,7 @@ function state_machine_char_game_scene_char_RP_shot_sys()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(self_side_obj_char)
             end
-            if (self_side_obj_char["shot_sys_idle_cancel"] and test_input_at_the_ready_ease_out_at_release) or
-            shot_sys_at_the_ready_ban_state then
+            if (self_side_obj_char["shot_sys_idle_cancel"] and test_input_at_the_ready_ease_out_at_release) then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(self_side_obj_char)
                 return
             end
@@ -2625,11 +2625,11 @@ function state_machine_char_game_scene_char_RP_shot_sys()
                 )
             end
             if self_side_obj_char["shot_sys_fire_cancel"] and test_input_sys_release(self_side_input["H"])
-            and self_side_obj_char["state"] ~= "hitstop" and self_side_obj_char["ability_gauge"][1] > 0 then
+            and self_side_obj_char["state"] ~= "hitstop" and self_side_obj_char["ability_gauge"][1] > 100 then
                 character_function_game_scene_TRM_shot_sys_at_the_steady_shot_init(
                     self_side_obj_char,opponent_side_obj_char
                 )
-                character_function_game_scene_TRM_shot_sys_at_the_ready_ability_gauge_use(self_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_steady_ability_gauge_use(self_side_obj_char)
                 return
             end
         end,
@@ -2722,7 +2722,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_oroboros()
                 self_side_obj_char["shot_sys_oroboros_front"][4] = 1
                 self_side_obj_char["shot_sys_oroboros_back"][4] = 1
                 self_side_obj_char["shot_sys_oroboros_animation_table"][3] =
-                load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(self_side_obj_char["shot_sys_oroboros_mid"])
+                load_game_scene_anim_char_TRM_oroboros_at_the_ready_mid_loop(self_side_obj_char["shot_sys_oroboros_mid"])
                 init_character_anim_with(
                     self_side_obj_char["shot_sys_oroboros_mid"],
                     self_side_obj_char["shot_sys_oroboros_animation_table"][3]
@@ -2819,7 +2819,7 @@ function state_machine_char_game_scene_char_RP_shot_sys_oroboros()
                 self_side_obj_char["shot_sys_oroboros_aim_r"] = 0.42
                 self_side_obj_char["shot_sys_oroboros_offset_amount"] = 0
                 self_side_obj_char["shot_sys_oroboros_animation_table"][3] =
-                load_game_scene_anim_char_TRM_5H_oroboros_mid_loop(self_side_obj_char["shot_sys_oroboros_mid"])
+                load_game_scene_anim_char_TRM_oroboros_at_the_ready_mid_loop(self_side_obj_char["shot_sys_oroboros_mid"])
                 init_character_anim_with(
                     self_side_obj_char["shot_sys_oroboros_mid"],
                     self_side_obj_char["shot_sys_oroboros_animation_table"][3]
@@ -8753,11 +8753,11 @@ function draw_game_scene_char_RP_logic_graphic_pos_sync()
     obj[7] = self_side_obj_char[7]
     -- character
     self_side_obj_char[1] =
-    self_side_obj_char["x"] + self_side_obj_char["hurtstop_wiggle_current_x"] -
-    self_side_obj_char[5]*self_side_obj_char["anchor_pos"][1]
+        self_side_obj_char["x"] + self_side_obj_char["hurtstop_wiggle_current_x"] -
+        self_side_obj_char[5]*self_side_obj_char["anchor_pos"][1]
     self_side_obj_char[2] =
-    self_side_obj_char["y"] + self_side_obj_char["hurtstop_wiggle_current_y"] -
-    self_side_obj_char[6]*self_side_obj_char["anchor_pos"][2]
+        self_side_obj_char["y"] + self_side_obj_char["hurtstop_wiggle_current_y"] -
+        self_side_obj_char[6]*self_side_obj_char["anchor_pos"][2]
     -- shot_sys_oroboros_mid
     obj = self_side_obj_char["shot_sys_oroboros_mid"]
     dx = -80
