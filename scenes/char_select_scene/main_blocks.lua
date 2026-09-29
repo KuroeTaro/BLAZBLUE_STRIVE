@@ -1,15 +1,10 @@
 function update_char_select_scene_ease_in_0f_36f()
     SCENE_TIMER = SCENE_TIMER + 1
     point_linear_animator(
-        obj_UI_char_select_scene_black_solid,
-        anim_UI_point_linear_char_select_scene_black_solid_ease_out_opacity
+        obj_UI_char_select_scene_black_solid,anim_UI_point_linear_char_select_scene_black_solid_ease_out_opacity
     )
-    state_machine_UI_char_select_scene_movie_cover_loop(
-        obj_UI_char_select_scene_movie_cover
-    )
-    state_machine_UI_char_select_scene_start_0f_110f(
-        obj_UI_char_select_scene_start_0f_110f
-    )
+    state_machine_UI_char_select_scene_movie_cover_loop(obj_UI_char_select_scene_movie_cover)
+    state_machine_UI_char_select_scene_start_0f_110f(obj_UI_char_select_scene_start_0f_110f)
     -- 场景出口
     if SCENE_TIMER >= 36 then
         -- 初始化此出口所需属性
@@ -22,12 +17,8 @@ function update_char_select_scene_ease_in_0f_36f()
 end
 function update_char_select_scene_ease_in_36f_40f()
     SCENE_TIMER = SCENE_TIMER + 1
-    state_machine_UI_char_select_scene_movie_cover_loop(
-        obj_UI_char_select_scene_movie_cover
-    )
-    state_machine_UI_char_select_scene_start_0f_110f(
-        obj_UI_char_select_scene_start_0f_110f
-    )
+    state_machine_UI_char_select_scene_movie_cover_loop(obj_UI_char_select_scene_movie_cover)
+    state_machine_UI_char_select_scene_start_0f_110f(obj_UI_char_select_scene_start_0f_110f)
     -- 场景出口
     if SCENE_TIMER >= 40 then
         -- 初始化此出口所需属性
@@ -35,25 +26,18 @@ function update_char_select_scene_ease_in_36f_40f()
         obj_UI_char_select_scene_glow[4] = 1
         obj_UI_char_select_scene_ring[4] = 0.75
         -- 初始化此出口所需要的动画机
+        init_point_linear_anim_with(obj_UI_char_select_scene_glow,anim_UI_point_linear_char_select_scene_glow_opacity)
         init_point_linear_anim_with(
-            obj_UI_char_select_scene_glow,
-            anim_UI_point_linear_char_select_scene_glow_opacity
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
         )
         init_point_linear_anim_with(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
         )
         init_point_linear_anim_with(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
         )
         init_point_linear_anim_with(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
-        )
-        init_point_linear_anim_with(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
         )
         -- 更新 current_update_block
         current_update_block = update_char_select_scene_ease_in_40f_130f
@@ -62,53 +46,35 @@ function update_char_select_scene_ease_in_36f_40f()
 end
 function update_char_select_scene_ease_in_40f_130f()
     SCENE_TIMER = SCENE_TIMER + 1
-    state_machine_UI_char_select_scene_movie_cover_loop(
-        obj_UI_char_select_scene_movie_cover
-    )
-    state_machine_UI_char_select_scene_start_0f_110f(
-        obj_UI_char_select_scene_start_0f_110f
-    )
+    state_machine_UI_char_select_scene_movie_cover_loop(obj_UI_char_select_scene_movie_cover)
+    state_machine_UI_char_select_scene_start_0f_110f(obj_UI_char_select_scene_start_0f_110f)
     if SCENE_TIMER < 60 then
+        point_linear_animator(obj_UI_char_select_scene_glow,anim_UI_point_linear_char_select_scene_glow_opacity)
         point_linear_animator(
-            obj_UI_char_select_scene_glow,
-            anim_UI_point_linear_char_select_scene_glow_opacity
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
-        )
-        point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
         )
     elseif SCENE_TIMER == 60 then
+        point_linear_animator(obj_UI_char_select_scene_glow,anim_UI_point_linear_char_select_scene_glow_opacity)
         point_linear_animator(
-            obj_UI_char_select_scene_glow,
-            anim_UI_point_linear_char_select_scene_glow_opacity
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
-        )
-        point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
         )
         obj_UI_char_select_scene_icon_select_right[1] = ICON_COVER_POSITION[CHAR_SELECT_LR["R"]][1]
         obj_UI_char_select_scene_icon_select_right[2] = ICON_COVER_POSITION[CHAR_SELECT_LR["R"]][2]
@@ -118,50 +84,36 @@ function update_char_select_scene_ease_in_40f_130f()
             anim_UI_point_linear_char_select_scene_icon_select_ease_in_opacity_0_0p5
         )
     elseif SCENE_TIMER < 65 then
+        point_linear_animator(obj_UI_char_select_scene_glow,anim_UI_point_linear_char_select_scene_glow_opacity)
         point_linear_animator(
-            obj_UI_char_select_scene_glow,
-            anim_UI_point_linear_char_select_scene_glow_opacity
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
-        )
-        point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
         )
         point_linear_animator(
             obj_UI_char_select_scene_icon_select_right,
             anim_UI_point_linear_char_select_scene_icon_select_ease_in_opacity_0_0p5
         )
     elseif SCENE_TIMER == 65 then
+        point_linear_animator(obj_UI_char_select_scene_glow,anim_UI_point_linear_char_select_scene_glow_opacity)
         point_linear_animator(
-            obj_UI_char_select_scene_glow,
-            anim_UI_point_linear_char_select_scene_glow_opacity
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
-        )
-        point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
         )
         obj_UI_char_select_scene_icon_select_left[1] = ICON_COVER_POSITION[CHAR_SELECT_LR["L"]][1]
         obj_UI_char_select_scene_icon_select_left[2] = ICON_COVER_POSITION[CHAR_SELECT_LR["L"]][2]
@@ -190,25 +142,18 @@ function update_char_select_scene_ease_in_40f_130f()
             anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x
         )
     elseif SCENE_TIMER < 70 then
+        point_linear_animator(obj_UI_char_select_scene_glow,anim_UI_point_linear_char_select_scene_glow_opacity)
         point_linear_animator(
-            obj_UI_char_select_scene_glow,
-            anim_UI_point_linear_char_select_scene_glow_opacity
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
-        )
-        point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
         )
         point_linear_animator(
             obj_UI_char_select_scene_icon_select_left,
@@ -227,25 +172,18 @@ function update_char_select_scene_ease_in_40f_130f()
             anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x
         )
     elseif SCENE_TIMER == 70 then
+        point_linear_animator(obj_UI_char_select_scene_glow,anim_UI_point_linear_char_select_scene_glow_opacity)
         point_linear_animator(
-            obj_UI_char_select_scene_glow,
-            anim_UI_point_linear_char_select_scene_glow_opacity
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
-        )
-        point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
         )
         point_linear_animator(
             obj_UI_char_select_scene_icon_select_right,
@@ -298,20 +236,16 @@ function update_char_select_scene_ease_in_40f_130f()
         end
     elseif SCENE_TIMER < 75 then
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
         )
         point_linear_animator(
             obj_UI_char_select_scene_char_select_char_left,
@@ -337,20 +271,16 @@ function update_char_select_scene_ease_in_40f_130f()
         end
     elseif SCENE_TIMER == 75 then
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
         )
         point_linear_animator(
             obj_UI_char_select_scene_icon_select_left,
@@ -380,20 +310,16 @@ function update_char_select_scene_ease_in_40f_130f()
         end
     elseif SCENE_TIMER < 90 then
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
         )
         point_linear_animator(
             obj_UI_char_select_scene_char_select_char_left,
@@ -415,20 +341,16 @@ function update_char_select_scene_ease_in_40f_130f()
         end
     elseif SCENE_TIMER == 90 then
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
         )
         point_linear_animator(
             obj_UI_char_select_scene_char_select_char_left,
@@ -454,39 +376,27 @@ function update_char_select_scene_ease_in_40f_130f()
         obj_UI_char_select_scene_char_select_right["ease_state"] = "ease_in"
     elseif SCENE_TIMER < 130 then
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt2_x
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt4_y
         )
         point_linear_animator(
-            obj_UI_char_select_scene_glow["alpha_points"],
-            anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
+            obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
         )
-        state_machine_UI_char_select_scene_char_select(
-            "L"
-        )
+        state_machine_UI_char_select_scene_char_select("L")
         if GAME_MODE ~= 0 then
-            state_machine_UI_char_select_scene_char_select(
-                "R"
-            )
+            state_machine_UI_char_select_scene_char_select("R")
         end
     end
     -- 场景出口
     if SCENE_TIMER >= 130 then
-        state_machine_UI_char_select_scene_char_select(
-            "L"
-        )
+        state_machine_UI_char_select_scene_char_select("L")
         if GAME_MODE ~= 0 then
-            state_machine_UI_char_select_scene_char_select(
-                "R"
-            )
+            state_machine_UI_char_select_scene_char_select("R")
         end
         -- 初始化此出口所需属性
         SCENE_TIMER = 0
@@ -498,22 +408,12 @@ function update_char_select_scene_ease_in_40f_130f()
 end
 function update_char_select_scene_main()
     SCENE_TIMER = SCENE_TIMER + 1
-    state_machine_UI_char_select_scene_movie_cover_loop(
-        obj_UI_char_select_scene_movie_cover
-    )
-    state_machine_UI_char_select_scene_timer(
-        obj_UI_char_select_scene_timer
-    )
-    state_machine_UI_char_select_scene_ring_blink(
-        obj_UI_char_select_scene_ring
-    )
-    state_machine_UI_char_select_scene_char_select(
-        "L"
-    )
+    state_machine_UI_char_select_scene_movie_cover_loop(obj_UI_char_select_scene_movie_cover)
+    state_machine_UI_char_select_scene_timer(obj_UI_char_select_scene_timer)
+    state_machine_UI_char_select_scene_ring_blink(obj_UI_char_select_scene_ring)
+    state_machine_UI_char_select_scene_char_select("L")
     if GAME_MODE ~= 0 then
-        state_machine_UI_char_select_scene_char_select(
-            "R"
-        )
+        state_machine_UI_char_select_scene_char_select("R")
     end
     if GAME_MODE == 0
     and obj_UI_char_select_scene_char_select_left["select_state"] == "locking"
@@ -547,9 +447,7 @@ function update_char_select_scene_main()
     then
         -- 初始化此出口所需属性
         SCENE_TIMER = 0
-        play_obj_audio(
-            audio_SFX_char_select_scene_ease_out
-        )
+        play_obj_audio(audio_SFX_char_select_scene_ease_out)
         -- 初始化此出口所需要的动画机
         init_point_linear_anim_with(
             obj_UI_char_select_scene_black_solid,
@@ -559,24 +457,16 @@ function update_char_select_scene_main()
             audio_BGM_char_select_scene_moonlight_re_edit,
             anim_UI_point_linear_char_select_scene_audio_ease_out_1_0_volume_1
         )
-        update_BGM_VOLUME(
-            audio_BGM_char_select_scene_moonlight_re_edit
-        )
+        update_BGM_VOLUME(audio_BGM_char_select_scene_moonlight_re_edit)
         -- 更新 current_update_block
         current_update_block = update_char_select_scene_ease_out
     end
 end
 function update_char_select_scene_train_dummy_select()
     SCENE_TIMER = SCENE_TIMER + 1
-    state_machine_UI_char_select_scene_movie_cover_loop(
-        obj_UI_char_select_scene_movie_cover
-    )
-    state_machine_UI_char_select_scene_timer(
-        obj_UI_char_select_scene_timer
-    )
-    state_machine_UI_char_select_scene_ring_blink(
-        obj_UI_char_select_scene_ring
-    )
+    state_machine_UI_char_select_scene_movie_cover_loop(obj_UI_char_select_scene_movie_cover)
+    state_machine_UI_char_select_scene_timer(obj_UI_char_select_scene_timer)
+    state_machine_UI_char_select_scene_ring_blink(obj_UI_char_select_scene_ring)
     state_machine_UI_char_select_scene_char_select_train_dummy()
     point_linear_animator(
         obj_UI_char_select_scene_char_select_left,
@@ -596,9 +486,7 @@ function update_char_select_scene_train_dummy_select()
     then
         -- 初始化此出口所需属性
         SCENE_TIMER = 0
-        play_obj_audio(
-            audio_SFX_char_select_scene_ease_out
-        )
+        play_obj_audio(audio_SFX_char_select_scene_ease_out)
         -- 初始化此出口所需要的动画机
         init_point_linear_anim_with(
             obj_UI_char_select_scene_black_solid,
@@ -608,9 +496,7 @@ function update_char_select_scene_train_dummy_select()
             audio_BGM_char_select_scene_moonlight_re_edit,
             anim_UI_point_linear_char_select_scene_audio_ease_out_1_0_volume_1
         )
-        update_BGM_VOLUME(
-            audio_BGM_char_select_scene_moonlight_re_edit
-        )
+        update_BGM_VOLUME(audio_BGM_char_select_scene_moonlight_re_edit)
         -- 更新 current_update_block
         current_update_block = update_char_select_scene_ease_out
     end
@@ -647,35 +533,24 @@ function update_char_select_scene_train_dummy_select()
             obj_UI_char_select_scene_control_method_left,
             anim_UI_point_linear_char_select_scene_control_method_bar_mark_unlocking_ease_in_opacity_0_1
         )
-        play_obj_audio(
-            audio_SFX_char_select_scene_exit_1
-        )
+        play_obj_audio(audio_SFX_char_select_scene_exit_1)
         -- 更新 current_update_block
         current_update_block = update_char_select_scene_main
     end
 end
 function update_char_select_scene_ease_out()
     SCENE_TIMER = SCENE_TIMER + 1
-    state_machine_UI_char_select_scene_movie_cover_loop(
-        obj_UI_char_select_scene_movie_cover
-    )
-    state_machine_UI_char_select_scene_timer(
-        obj_UI_char_select_scene_timer
-    )
-    state_machine_UI_char_select_scene_ring_blink(
-        obj_UI_char_select_scene_ring
-    )
+    state_machine_UI_char_select_scene_movie_cover_loop(obj_UI_char_select_scene_movie_cover)
+    state_machine_UI_char_select_scene_timer(obj_UI_char_select_scene_timer)
+    state_machine_UI_char_select_scene_ring_blink(obj_UI_char_select_scene_ring)
     point_linear_animator(
-        obj_UI_char_select_scene_black_solid,
-        anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity
+        obj_UI_char_select_scene_black_solid,anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity
     )
     point_linear_animator(
         audio_BGM_char_select_scene_moonlight_re_edit,
         anim_UI_point_linear_char_select_scene_audio_ease_out_1_0_volume_1
     )
-    update_BGM_VOLUME(
-        audio_BGM_char_select_scene_moonlight_re_edit
-    )
+    update_BGM_VOLUME(audio_BGM_char_select_scene_moonlight_re_edit)
     if audio_SFX_char_select_scene_ease_out["audio"]:isPlaying() == false then
         -- 初始化此出口所需属性
         SCENE_TIMER = 0

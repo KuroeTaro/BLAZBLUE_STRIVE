@@ -33,10 +33,7 @@
 --         obj["FCT"][prop] = 0
 --     end
 -- end
-function frame_animator(
-    obj,
-    anim
-)
+function frame_animator(obj,anim)
     local anim_change_prop = anim["prop"]
     local anim_length = anim["length"]
     local anim_loop = anim["loop"]
@@ -55,26 +52,14 @@ function frame_animator(
     obj[anim_change_prop] = current_value
     obj["FCT"][anim_change_prop] = current_time
 end
-function init_frame_anim_with(
-    obj,
-    anim
-)
+function init_frame_anim_with(obj,anim)
     obj["FCT"][anim["prop"]] = -1
-    frame_animator(
-        obj,
-        anim
-    )
+    frame_animator(obj,anim)
 end
-function init_frame_anim_without(
-    obj,
-    anim
-)
+function init_frame_anim_without(obj,anim)
     obj["FCT"][anim["prop"]] = -1
 end
-function get_frame_anim_end_state(
-    obj,
-    anim
-)
+function get_frame_anim_end_state(obj,anim)
     if obj["FCT"][anim["prop"]] >= anim["length"] then
         return true
     else
@@ -102,10 +87,7 @@ end
 -- 和frame_animator一样
 --
 -- 音频object 使用 不透明度作为音量
-function point_linear_animator(
-    obj,
-    anim
-)
+function point_linear_animator(obj,anim)
     local anim_change_prop = anim["prop"]
     local anim_length = anim["length"]
     local anim_loop = anim["loop"]
@@ -144,54 +126,30 @@ function point_linear_animator(
     obj["LCT"][anim_change_prop] = current_time
     obj["LCD"][anim_change_prop] = current_delta
 end
-function init_point_linear_anim_with(
-    obj,
-    anim
-)
+function init_point_linear_anim_with(obj,anim)
     obj["LCT"][anim["prop"]] = -1
     obj["LCD"][anim["prop"]] = 0
-    point_linear_animator(
-        obj,
-        anim
-    )
+    point_linear_animator(obj,anim)
 end
-function init_point_linear_anim_without(
-    obj,
-    anim
-)
+function init_point_linear_anim_without(obj,anim)
     obj["LCT"][anim["prop"]] = -1
     obj["LCD"][anim["prop"]] = 0
 end
-function get_point_linear_anim_end_state(
-    obj,
-    anim
-)
+function get_point_linear_anim_end_state(obj,anim)
     if obj["LCT"][anim["prop"]] >= anim["length"] then
         return true
     else
         return false
     end
 end
-function init_character_anim_with(
-    obj_char,
-    anim
-)
+function init_character_anim_with(obj_char,anim)
     obj_char[anim["prop_f"]] = -1
-    character_animator(
-        obj_char,
-        anim
-    )
+    character_animator(obj_char,anim)
 end
-function init_character_anim_without(
-    obj_char,
-    anim
-)
+function init_character_anim_without(obj_char,anim)
     obj_char[anim["prop_f"]] = -1
 end
-function character_animator(
-    obj_char,
-    anim
-)
+function character_animator(obj_char,anim)
     local f = obj_char[anim["prop_f"]]
     obj_char[anim["prop_f"]] = f + 1
     local key_frame_funciton = anim[f + 1]
@@ -199,32 +157,17 @@ function character_animator(
         key_frame_funciton()
     end
 end
-function get_character_anim_end_state(
-    obj_char,
-    anim
-)
+function get_character_anim_end_state(obj_char,anim)
     return obj_char[anim["prop_f"]] >= anim["anim_length"]
 end
-function init_stage_anim_with(
-    obj_stage,
-    anim
-)
+function init_stage_anim_with(obj_stage,anim)
     obj_stage[anim["prop_f"]] = -1
-    character_animator(
-        obj_stage,
-        anim
-    )
+    character_animator(obj_stage,anim)
 end
-function init_stage_anim_without(
-    obj_stage,
-    anim
-)
+function init_stage_anim_without(obj_stage,anim)
     obj_stage[anim["prop_f"]] = -1
 end
-function stage_animator(
-    obj_stage,
-    anim
-)
+function stage_animator(obj_stage,anim)
     local f = obj_stage[anim["prop_f"]]
     obj_stage[anim["prop_f"]] = f + 1
     local key_frame_funciton = anim[f + 1]
@@ -232,9 +175,6 @@ function stage_animator(
         key_frame_funciton()
     end
 end
-function get_stage_anim_end_state(
-    obj_stage,
-    anim
-)
+function get_stage_anim_end_state(obj_stage,anim)
     return obj_stage[anim["prop_f"]] >= anim["anim_length"]
 end

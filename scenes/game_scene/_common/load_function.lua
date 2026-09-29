@@ -22,16 +22,8 @@ function load_game_scene_prep()
     local thread_LP_name = LP_name .. "_left"
     local thread_RP_name = RP_name .. "_right"
     local thread_stage_name = stage_name
-    load_game_scene_require(
-        LP_name,
-        RP_name,
-        stage_name
-    )
-    THREAD_TABLE = load_game_scene_thread_table(
-        thread_LP_name,
-        thread_RP_name,
-        thread_stage_name
-    )
+    load_game_scene_require(LP_name,RP_name,stage_name)
+    THREAD_TABLE = load_game_scene_thread_table(thread_LP_name,thread_RP_name,thread_stage_name)
     THREAD_AMOUNT = 13 -- 线程数目
     THREAD_ONCE_TABLE = {false,false,false,false,false,false,false,false,false,false,false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     ASSET_DATA = {} -- 保持为nil
@@ -73,9 +65,7 @@ function load_game_scene_prep()
         NEXT_PRESET = preset_game_scene_match
     end
 end
-function order_load_game_scene_common(
-    load_order
-)
+function order_load_game_scene_common(load_order)
     local switch =
     {
         [1] = function()
@@ -91,29 +81,19 @@ function order_load_game_scene_common(
             load_game_scene_common_audio()
         end,
         [5] = function()
-            load_game_scene_common_shader(
-                1
-            )
+            load_game_scene_common_shader(1)
         end,
         [6] = function()
-            load_game_scene_common_shader(
-                2
-            )
+            load_game_scene_common_shader(2)
         end,
         [7] = function()
-            load_game_scene_common_shader(
-                3
-            )
+            load_game_scene_common_shader(3)
         end,
         [8] = function()
-            load_game_scene_common_shader(
-                4
-            )
+            load_game_scene_common_shader(4)
         end,
         [9] = function()
-            load_game_scene_common_shader(
-                5
-            )
+            load_game_scene_common_shader(5)
         end,
         [10] = function()
             load_game_scene_shader_char_LP()
@@ -132,9 +112,7 @@ function order_load_game_scene_common(
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
-function order_load_game_scene_UI_act(
-    load_order
-)
+function order_load_game_scene_UI_act(load_order)
     local switch =
     {
         [1] = function()
@@ -170,15 +148,11 @@ function order_load_game_scene_UI_act(
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
-function order_load_game_scene_UI_HUD(
-    load_order
-)
+function order_load_game_scene_UI_HUD(load_order)
     local switch =
     {
         [1] = function()
-            image_HUD_game_scene_background_gauge = love.graphics.newImage(
-                ASSET_DATA[3]["HUD_background_gauge"]
-            )
+            image_HUD_game_scene_background_gauge = love.graphics.newImage(ASSET_DATA[3]["HUD_background_gauge"])
         end,
         [2] = function()
             image_sprite_sheet_HUD_game_scene_common =
@@ -198,9 +172,7 @@ function order_load_game_scene_UI_HUD(
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
-function order_load_game_scene_UI_lets_dance(
-    load_order
-)
+function order_load_game_scene_UI_lets_dance(load_order)
     local switch =
     {
         [1] = function()
@@ -214,9 +186,7 @@ function order_load_game_scene_UI_lets_dance(
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
-function order_load_game_scene_VFX_overdrive_heat(
-    load_order
-)
+function order_load_game_scene_VFX_overdrive_heat(load_order)
     local switch =
     {
         [1] = function()
@@ -283,17 +253,13 @@ function order_load_game_scene_VFX_overdrive_heat(
                 "asset/game_scene/common/texture/VFX/burst_VFX/burst_front.json",
                 love.graphics.newImage(ASSET_DATA[7]["burst_front_sprite_batch"])
             )
-            image_VFX_game_scene_burst_ring = love.graphics.newImage(
-                ASSET_DATA[7]["burst_ring"]
-            )
+            image_VFX_game_scene_burst_ring = love.graphics.newImage(ASSET_DATA[7]["burst_ring"])
         end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
-function order_load_game_scene_VFX_move(
-    load_order
-)
+function order_load_game_scene_VFX_move(load_order)
     local switch =
     {
         [1] = function()
@@ -336,12 +302,8 @@ function order_load_game_scene_VFX_move(
                 "asset/game_scene/common/texture/VFX/hit_VFX/block_ver1.json",
                 love.graphics.newImage(ASSET_DATA[6]["block_ver1_sprite_batch"])
             )
-            image_VFX_game_scene_counter_glow = love.graphics.newImage(
-                ASSET_DATA[6]["counter_glow"]
-            )
-            image_VFX_game_scene_FD_bubble = love.graphics.newImage(
-                ASSET_DATA[6]["FD_bubble"]
-            )
+            image_VFX_game_scene_counter_glow = love.graphics.newImage(ASSET_DATA[6]["counter_glow"])
+            image_VFX_game_scene_FD_bubble = love.graphics.newImage(ASSET_DATA[6]["FD_bubble"])
         end,
         [3] = function()
             -- hit normal part3
@@ -393,134 +355,51 @@ function order_load_game_scene_VFX_move(
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
-function order_load_game_scene_VFX_HUD(
-    load_order
-)
+function order_load_game_scene_VFX_HUD(load_order)
     local switch =
     {
         [1] = function()
             -- HUD_VFX
-            image_VFX_game_scene_HUD_punish = love.graphics.newImage(
-                ASSET_DATA[5]["HUD_punish"]
-            )
+            image_VFX_game_scene_HUD_punish = love.graphics.newImage(ASSET_DATA[5]["HUD_punish"])
                 -- counter
-            image_VFX_game_scene_HUD_counter_ver0_2 = love.graphics.newImage(
-                ASSET_DATA[5]["HUD_counter_ver0_2"]
-            )
-            image_VFX_game_scene_HUD_counter_ver3 = love.graphics.newImage(
-                ASSET_DATA[5]["HUD_counter_ver3"]
-            )
+            image_VFX_game_scene_HUD_counter_ver0_2 = love.graphics.newImage(ASSET_DATA[5]["HUD_counter_ver0_2"])
+            image_VFX_game_scene_HUD_counter_ver3 = love.graphics.newImage(ASSET_DATA[5]["HUD_counter_ver3"])
                 -- positive_bonus
-            image_VFX_game_scene_HUD_positive_bouns_LP = love.graphics.newImage(
-                ASSET_DATA[5]["HUD_positive_bouns_LP"]
-            )
-            image_VFX_game_scene_HUD_positive_bouns_RP = love.graphics.newImage(
-                ASSET_DATA[5]["HUD_positive_bouns_RP"]
-            )
+            image_VFX_game_scene_HUD_positive_bouns_LP = love.graphics.newImage(ASSET_DATA[5]["HUD_positive_bouns_LP"])
+            image_VFX_game_scene_HUD_positive_bouns_RP = love.graphics.newImage(ASSET_DATA[5]["HUD_positive_bouns_RP"])
         end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
-function load_game_scene_require(
-    LP_name,
-    RP_name,
-    stage_name
-)
-    require_all_in_folder(
-        "scenes/game_scene/_common"
-    )
-    require(
-        "scenes.game_scene.characters." .. LP_name .. ".left"
-    )
-    require(
-        "scenes.game_scene.characters." .. RP_name .. ".right"
-    )
-    require(
-        "scenes.game_scene.characters." .. LP_name .. "._character_function"
-    )
-    require(
-        "scenes.game_scene.characters." .. RP_name .. "._character_function"
-    )
-    require(
-        "scenes.game_scene.characters." .. LP_name .. "._anim"
-    )
-    require(
-        "scenes.game_scene.characters." .. RP_name .. "._anim"
-    )
-    require(
-        "scenes.game_scene.characters." .. LP_name .. "._projectile"
-    )
-    require(
-        "scenes.game_scene.characters." .. RP_name .. "._projectile"
-    )
-    require(
-        "scenes.game_scene.characters." .. LP_name .. "._VFX"
-    )
-    require(
-        "scenes.game_scene.characters." .. RP_name .. "._VFX"
-    )
-    require(
-        "scenes.game_scene.stage." .. stage_name
-    )
+function load_game_scene_require(LP_name,RP_name,stage_name)
+    require_all_in_folder("scenes/game_scene/_common")
+    require("scenes.game_scene.characters." .. LP_name .. ".left")
+    require("scenes.game_scene.characters." .. RP_name .. ".right")
+    require("scenes.game_scene.characters." .. LP_name .. "._character_function")
+    require("scenes.game_scene.characters." .. RP_name .. "._character_function")
+    require("scenes.game_scene.characters." .. LP_name .. "._anim")
+    require("scenes.game_scene.characters." .. RP_name .. "._anim")
+    require("scenes.game_scene.characters." .. LP_name .. "._projectile")
+    require("scenes.game_scene.characters." .. RP_name .. "._projectile")
+    require("scenes.game_scene.characters." .. LP_name .. "._VFX")
+    require("scenes.game_scene.characters." .. RP_name .. "._VFX")
+    require("scenes.game_scene.stage." .. stage_name)
 end
-function load_game_scene_thread_table(
-    LP_name,
-    RP_name,
-    stage_name
-)
+function load_game_scene_thread_table(LP_name,RP_name,stage_name)
     local res_table = {}
-    table.insert(
-        res_table,
-        "threads/game_scene/common.lua"
-    )
-    table.insert(
-        res_table,
-        "threads/game_scene/UI_act.lua"
-    )
-    table.insert(
-        res_table,
-        "threads/game_scene/UI_HUD.lua"
-    )
-    table.insert(
-        res_table,
-        "threads/game_scene/UI_lets_dance.lua"
-    )
-    table.insert(
-        res_table,
-        "threads/game_scene/VFX_HUD.lua"
-    )
-    table.insert(
-        res_table,
-        "threads/game_scene/VFX_move.lua"
-    )
-    table.insert(
-        res_table,
-        "threads/game_scene/VFX_overdrive_heat.lua"
-    )
-    table.insert(
-        res_table,
-        "threads/game_scene/characters/" .. LP_name .. "_audio.lua"
-    )
-    table.insert(
-        res_table,
-        "threads/game_scene/characters/" .. LP_name .. "_texture.lua"
-    )
-    table.insert(
-        res_table,
-        "threads/game_scene/characters/" .. RP_name .. "_audio.lua"
-    )
-    table.insert(
-        res_table,
-        "threads/game_scene/characters/" .. RP_name .. "_texture.lua"
-    )
-    table.insert(
-        res_table,
-        "threads/game_scene/stage/" .. stage_name .. "_audio.lua"
-    )
-    table.insert(
-        res_table,
-        "threads/game_scene/stage/" .. stage_name .. ".lua"
-    )
+    table.insert(res_table,"threads/game_scene/common.lua")
+    table.insert(res_table,"threads/game_scene/UI_act.lua")
+    table.insert(res_table,"threads/game_scene/UI_HUD.lua")
+    table.insert(res_table,"threads/game_scene/UI_lets_dance.lua")
+    table.insert(res_table,"threads/game_scene/VFX_HUD.lua")
+    table.insert(res_table,"threads/game_scene/VFX_move.lua")
+    table.insert(res_table,"threads/game_scene/VFX_overdrive_heat.lua")
+    table.insert(res_table,"threads/game_scene/characters/" .. LP_name .. "_audio.lua")
+    table.insert(res_table,"threads/game_scene/characters/" .. LP_name .. "_texture.lua")
+    table.insert(res_table,"threads/game_scene/characters/" .. RP_name .. "_audio.lua")
+    table.insert(res_table,"threads/game_scene/characters/" .. RP_name .. "_texture.lua")
+    table.insert(res_table,"threads/game_scene/stage/" .. stage_name .. "_audio.lua")
+    table.insert(res_table,"threads/game_scene/stage/" .. stage_name .. ".lua")
     return res_table
 end

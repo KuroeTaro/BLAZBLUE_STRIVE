@@ -1,84 +1,37 @@
-function require_all_in_folder(
-    folder
-)
+function require_all_in_folder(folder)
     -- 获取文件夹内的所有文件和子文件夹
-    local files = love.filesystem.getDirectoryItems(
-        folder
-    )
-    for _,file in ipairs(
-        files
-    ) do
+    local files = love.filesystem.getDirectoryItems(folder)
+    for _,file in ipairs(files) do
         local filePath = folder .. "/" .. file
         -- 检查是否是文件
-        if love.filesystem.getInfo(
-            filePath,
-            "file"
-        ) then
+        if love.filesystem.getInfo(filePath,"file") then
             -- 检查扩展名是否是 .lua
-            if file:sub(
-                -4
-            ) == ".lua" then
+            if file:sub(-4) == ".lua" then
                 -- 动态加载文件，去掉 .lua 扩展名
-                local moduleName = filePath:gsub(
-                    "%.lua$",
-                    ""
-                ):gsub(
-                    "/",
-                    "."
-                )
-                require(
-                    moduleName
-                )
+                local moduleName = filePath:gsub("%.lua$",""):gsub("/",".")
+                require(moduleName)
             end
-        elseif love.filesystem.getInfo(
-            filePath,
-            "directory"
-        ) then
+        elseif love.filesystem.getInfo(filePath,"directory") then
             -- 如果是子文件夹，递归加载
-            require_all_in_folder(
-                filePath
-            )
+            require_all_in_folder(filePath)
         end
     end
 end
-function unrequire_prefix(
-    prefix
-)
-    for name,_ in pairs(
-        package.loaded
-    ) do
-        if name:sub(
-            1,
-            #prefix
-        ) == prefix then
+function unrequire_prefix(prefix)
+    for name,_ in pairs(package.loaded) do
+        if name:sub(1,#prefix) == prefix then
             package.loaded[name] = nil
         end
     end
     require_all_init_load_function()
 end
 function require_all_init_load_function()
-    require(
-        "scenes.disclaimer_and_logos_scene.load_function"
-    )
-    require(
-        "scenes.disclaimer_and_logos_scene.init"
-    )
-    require(
-        "scenes.start_scene.load_function"
-    )
-    require(
-        "scenes.start_scene.init"
-    )
-    require(
-        "scenes.char_select_scene.load_function"
-    )
-    require(
-        "scenes.char_select_scene.init"
-    )
-    require(
-        "scenes.game_scene._common.load_function"
-    )
-    require(
-        "scenes.game_scene._common.init"
-    )
+    require("scenes.disclaimer_and_logos_scene.load_function")
+    require("scenes.disclaimer_and_logos_scene.init")
+    require("scenes.start_scene.load_function")
+    require("scenes.start_scene.init")
+    require("scenes.char_select_scene.load_function")
+    require("scenes.char_select_scene.init")
+    require("scenes.game_scene._common.load_function")
+    require("scenes.game_scene._common.init")
 end

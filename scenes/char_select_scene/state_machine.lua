@@ -1,7 +1,5 @@
 -- common
-function state_machine_UI_char_select_scene_movie_cover_loop(
-    obj
-)
+function state_machine_UI_char_select_scene_movie_cover_loop(obj)
     local speed = 2
     obj["FCT"][8] = obj["FCT"][8] + 1
     if obj["FCT"][8] > speed then
@@ -12,9 +10,7 @@ function state_machine_UI_char_select_scene_movie_cover_loop(
         obj[8] = 0
     end
 end
-function state_machine_UI_char_select_scene_start_0f_110f(
-    obj
-)
+function state_machine_UI_char_select_scene_start_0f_110f(obj)
     local speed = 0
     if obj[8] >= 110 then
         return
@@ -25,9 +21,7 @@ function state_machine_UI_char_select_scene_start_0f_110f(
         obj["FCT"][8] = 0
     end
 end
-function state_machine_UI_char_select_scene_timer(
-    obj
-)
+function state_machine_UI_char_select_scene_timer(obj)
     if obj["time"][1] == 0 and obj["time"][2] == 0 then
         return
     end
@@ -44,18 +38,11 @@ function state_machine_UI_char_select_scene_timer(
         obj["time"][1] = 0
     end
 end
-function state_machine_UI_char_select_scene_ring_blink(
-    obj
-)
-    obj[4] = 0.8 + math.random(
-        -1,
-        1
-    )*0.03
+function state_machine_UI_char_select_scene_ring_blink(obj)
+    obj[4] = 0.8 + math.random(-1,1)*0.03
 end
 -- match
-function state_machine_UI_char_select_scene_char_select(
-    input_id
-)
+function state_machine_UI_char_select_scene_char_select(input_id)
     local obj = nil
     local obj_char = nil
     local obj_text = nil
@@ -89,16 +76,13 @@ function state_machine_UI_char_select_scene_char_select(
     local switch = {
         ["idle"] = function()
             if INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["K"] == "Pressing" then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_confirm_2
-                )
+                play_obj_audio(audio_SFX_char_select_scene_confirm_2)
                 obj["select_state"] = "selecting"
                 obj[4] = 1
                 obj_bar_mark[4] = 0
                 obj_control_method[4] = 0
                 init_point_linear_anim_with(
-                    obj,
-                    anim_UI_point_linear_char_select_scene_char_select_selecting_ease_out_opacity_1_0p25
+                    obj,anim_UI_point_linear_char_select_scene_char_select_selecting_ease_out_opacity_1_0p25
                 )
                 init_point_linear_anim_with(
                     obj_bar_mark,
@@ -112,8 +96,7 @@ function state_machine_UI_char_select_scene_char_select(
         end,
         ["selecting"] = function()
             point_linear_animator(
-                obj,
-                anim_UI_point_linear_char_select_scene_char_select_selecting_ease_out_opacity_1_0p25
+                obj,anim_UI_point_linear_char_select_scene_char_select_selecting_ease_out_opacity_1_0p25
             )
             point_linear_animator(
                 obj_bar_mark,
@@ -124,8 +107,7 @@ function state_machine_UI_char_select_scene_char_select(
                 anim_UI_point_linear_char_select_scene_control_method_bar_mark_selecting_ease_in_opacity_0_1
             )
             if get_point_linear_anim_end_state(
-                obj,
-                anim_UI_point_linear_char_select_scene_char_select_selecting_ease_out_opacity_1_0p25
+                obj,anim_UI_point_linear_char_select_scene_char_select_selecting_ease_out_opacity_1_0p25
             )
             and get_point_linear_anim_end_state(
                 obj_bar_mark,
@@ -138,16 +120,13 @@ function state_machine_UI_char_select_scene_char_select(
             then
                 obj["select_state"] = "selected"
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["H"] == "Pressing" then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_exit_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_exit_1)
                 obj["select_state"] = "unselecting"
                 obj[4] = 0.25
                 obj_bar_mark[4] = 1
                 obj_control_method[4] = 1
                 init_point_linear_anim_with(
-                    obj,
-                    anim_UI_point_linear_char_select_scene_char_select_unselecting_ease_in_opacity_0p25_1
+                    obj,anim_UI_point_linear_char_select_scene_char_select_unselecting_ease_in_opacity_0p25_1
                 )
                 init_point_linear_anim_with(
                     obj_bar_mark,
@@ -158,16 +137,13 @@ function state_machine_UI_char_select_scene_char_select(
                     anim_UI_point_linear_char_select_scene_control_method_bar_mark_unselecting_ease_out_opacity_1_0
                 )
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["K"] == "Pressing" then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_confirm_3
-                )
+                play_obj_audio(audio_SFX_char_select_scene_confirm_3)
                 obj["select_state"] = "locking"
                 obj[4] = 0.25
                 obj_bar_mark[4] = 1
                 obj_control_method[4] = 1
                 init_point_linear_anim_with(
-                    obj,
-                    anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5
+                    obj,anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5
                 )
                 init_point_linear_anim_with(
                     obj_bar_mark,
@@ -181,16 +157,13 @@ function state_machine_UI_char_select_scene_char_select(
         end,
         ["selected"] = function()
             if INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["H"] == "Pressing" then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_exit_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_exit_1)
                 obj["select_state"] = "unselecting"
                 obj[4] = 0.25
                 obj_bar_mark[4] = 1
                 obj_control_method[4] = 1
                 init_point_linear_anim_with(
-                    obj,
-                    anim_UI_point_linear_char_select_scene_char_select_unselecting_ease_in_opacity_0p25_1
+                    obj,anim_UI_point_linear_char_select_scene_char_select_unselecting_ease_in_opacity_0p25_1
                 )
                 init_point_linear_anim_with(
                     obj_bar_mark,
@@ -201,16 +174,13 @@ function state_machine_UI_char_select_scene_char_select(
                     anim_UI_point_linear_char_select_scene_control_method_bar_mark_unselecting_ease_out_opacity_1_0
                 )
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["K"] == "Pressing" then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_confirm_3
-                )
+                play_obj_audio(audio_SFX_char_select_scene_confirm_3)
                 obj["select_state"] = "locking"
                 obj[4] = 0.25
                 obj_bar_mark[4] = 1
                 obj_control_method[4] = 1
                 init_point_linear_anim_with(
-                    obj,
-                    anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5
+                    obj,anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5
                 )
                 init_point_linear_anim_with(
                     obj_bar_mark,
@@ -224,8 +194,7 @@ function state_machine_UI_char_select_scene_char_select(
         end,
         ["unselecting"] = function()
             point_linear_animator(
-                obj,
-                anim_UI_point_linear_char_select_scene_char_select_unselecting_ease_in_opacity_0p25_1
+                obj,anim_UI_point_linear_char_select_scene_char_select_unselecting_ease_in_opacity_0p25_1
             )
             point_linear_animator(
                 obj_bar_mark,
@@ -236,8 +205,7 @@ function state_machine_UI_char_select_scene_char_select(
                 anim_UI_point_linear_char_select_scene_control_method_bar_mark_unselecting_ease_out_opacity_1_0
             )
             if get_point_linear_anim_end_state(
-                obj,
-                anim_UI_point_linear_char_select_scene_char_select_unselecting_ease_in_opacity_0p25_1
+                obj,anim_UI_point_linear_char_select_scene_char_select_unselecting_ease_in_opacity_0p25_1
             )
             and get_point_linear_anim_end_state(
                 obj_bar_mark,
@@ -250,16 +218,13 @@ function state_machine_UI_char_select_scene_char_select(
             then
                 obj["select_state"] = "idle"
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["K"] == "Pressing" then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_confirm_2
-                )
+                play_obj_audio(audio_SFX_char_select_scene_confirm_2)
                 obj["select_state"] = "selecting"
                 obj[4] = 1
                 obj_bar_mark[4] = 0
                 obj_control_method[4] = 0
                 init_point_linear_anim_with(
-                    obj,
-                    anim_UI_point_linear_char_select_scene_char_select_selecting_ease_out_opacity_1_0p25
+                    obj,anim_UI_point_linear_char_select_scene_char_select_selecting_ease_out_opacity_1_0p25
                 )
                 init_point_linear_anim_with(
                     obj_bar_mark,
@@ -272,10 +237,7 @@ function state_machine_UI_char_select_scene_char_select(
             end
         end,
         ["locking"] = function()
-            point_linear_animator(
-                obj,
-                anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5
-            )
+            point_linear_animator(obj,anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5)
             point_linear_animator(
                 obj_bar_mark,
                 anim_UI_point_linear_char_select_scene_control_method_bar_mark_locking_ease_out_opacity_1_0
@@ -285,8 +247,7 @@ function state_machine_UI_char_select_scene_char_select(
                 anim_UI_point_linear_char_select_scene_control_method_bar_mark_locking_ease_out_opacity_1_0
             )
             if get_point_linear_anim_end_state(
-                obj,
-                anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5
+                obj,anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5
             )
             and get_point_linear_anim_end_state(
                 obj_bar_mark,
@@ -303,10 +264,7 @@ function state_machine_UI_char_select_scene_char_select(
         ["locked"] = function()
         end,
         ["unlocking"] = function()
-            point_linear_animator(
-                obj,
-                anim_UI_point_linear_char_select_scene_char_select_unlocking_opacity_0p5_0p25
-            )
+            point_linear_animator(obj,anim_UI_point_linear_char_select_scene_char_select_unlocking_opacity_0p5_0p25)
             point_linear_animator(
                 obj_bar_mark,
                 anim_UI_point_linear_char_select_scene_control_method_bar_mark_unlocking_ease_in_opacity_0_1
@@ -316,8 +274,7 @@ function state_machine_UI_char_select_scene_char_select(
                 anim_UI_point_linear_char_select_scene_control_method_bar_mark_unlocking_ease_in_opacity_0_1
             )
             if get_point_linear_anim_end_state(
-                obj,
-                anim_UI_point_linear_char_select_scene_char_select_unlocking_opacity_0p5_0p25
+                obj,anim_UI_point_linear_char_select_scene_char_select_unlocking_opacity_0p5_0p25
             )
             and get_point_linear_anim_end_state(
                 obj_bar_mark,
@@ -332,319 +289,177 @@ function state_machine_UI_char_select_scene_char_select(
             end
         end
     }
-    state_machine_UI_char_select_scene_char_select_ease(
-        obj,
-        obj_char,
-        obj_text,
-        obj_icon_cover,
-        input_id
-    )
-    state_machine_UI_char_select_scene_char_select_bar_mark_select(
-        obj,
-        obj_bar_mark,
-        input_id
-    )
+    state_machine_UI_char_select_scene_char_select_ease(obj,obj_char,obj_text,obj_icon_cover,input_id)
+    state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_bar_mark,input_id)
     local this_function = switch[obj["select_state"]]
     if this_function then this_function() end
 end
-function state_machine_UI_char_select_scene_char_select_ease(
-    obj,
-    obj_char,
-    obj_text,
-    obj_icon_cover,
-    input_id
-)
+function state_machine_UI_char_select_scene_char_select_ease(obj,obj_char,obj_text,obj_icon_cover,input_id)
     local switch = {
         ["ease_in"] = function()
+            point_linear_animator(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_in_x)
+            point_linear_animator(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x)
             point_linear_animator(
-                obj_char,
-                anim_UI_point_linear_char_select_scene_char_select_char_ease_in_x
-            )
-            point_linear_animator(
-                obj_text,
-                anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x
-            )
-            point_linear_animator(
-                obj_icon_cover,
-                anim_UI_point_linear_char_select_scene_icon_select_ease_in_opacity_0_0p5
+                obj_icon_cover,anim_UI_point_linear_char_select_scene_icon_select_ease_in_opacity_0_0p5
             )
             if INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["left"] == "Pressing"
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_left_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_left_1)
                 obj["ease_state"] = "ease_out"
-                common_char_select_scene_reset_char_text_ease_out(
-                    obj_char,
-                    obj_text,
-                    obj_icon_cover,
-                    input_id
-                )
+                common_char_select_scene_reset_char_text_ease_out(obj_char,obj_text,obj_icon_cover,input_id)
                 CHAR_SELECT_LR[input_id] = CHAR_SELECT_LR[input_id] - 1
                 if CHAR_SELECT_LR[input_id] == 0 then
                     CHAR_SELECT_LR[input_id] = 8
                 end
-                init_point_linear_anim_with(
-                    obj_char,
-                    anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
-                )
-                init_point_linear_anim_with(
-                    obj_text,
-                    anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
-                )
+                init_point_linear_anim_with(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x)
+                init_point_linear_anim_with(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x)
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["right"] == "Pressing"
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_right_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_right_1)
                 obj["ease_state"] = "ease_out"
-                common_char_select_scene_reset_char_text_ease_out(
-                    obj_char,
-                    obj_text,
-                    obj_icon_cover,
-                    input_id
-                )
+                common_char_select_scene_reset_char_text_ease_out(obj_char,obj_text,obj_icon_cover,input_id)
                 CHAR_SELECT_LR[input_id] = CHAR_SELECT_LR[input_id] + 1
                 if CHAR_SELECT_LR[input_id] == 9 then
                     CHAR_SELECT_LR[input_id] = 1
                 end
-                init_point_linear_anim_with(
-                    obj_char,
-                    anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
-                )
-                init_point_linear_anim_with(
-                    obj_text,
-                    anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
-                )
+                init_point_linear_anim_with(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x)
+                init_point_linear_anim_with(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x)
             end
         end,
         ["ease_out"] = function()
+            point_linear_animator(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x)
+            point_linear_animator(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x)
             point_linear_animator(
-                obj_char,
-                anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
-            )
-            point_linear_animator(
-                obj_text,
-                anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
-            )
-            point_linear_animator(
-                obj_icon_cover,
-                anim_UI_point_linear_char_select_scene_icon_select_ease_out_opacity_0p5_0
+                obj_icon_cover,anim_UI_point_linear_char_select_scene_icon_select_ease_out_opacity_0p5_0
             )
             if get_point_linear_anim_end_state(
-                obj_char,
-                anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
+                obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
             )
             and get_point_linear_anim_end_state(
-                obj_text,
-                anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
+                obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
             )
             and get_point_linear_anim_end_state(
-                obj_icon_cover,
-                anim_UI_point_linear_char_select_scene_icon_select_ease_out_opacity_0p5_0
+                obj_icon_cover,anim_UI_point_linear_char_select_scene_icon_select_ease_out_opacity_0p5_0
             )
             then
                 obj["ease_state"] = "ease_in"
-                common_char_select_scene_reset_char_text_ease_in(
-                    obj_char,
-                    obj_text,
-                    obj_icon_cover,
-                    input_id
-                )
+                common_char_select_scene_reset_char_text_ease_in(obj_char,obj_text,obj_icon_cover,input_id)
                 obj[8] = CHAR_SELECT_LR[input_id]
-                init_point_linear_anim_with(
-                    obj_char,
-                    anim_UI_point_linear_char_select_scene_char_select_char_ease_in_x
-                )
-                init_point_linear_anim_with(
-                    obj_text,
-                    anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x
-                )
+                init_point_linear_anim_with(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_in_x)
+                init_point_linear_anim_with(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x)
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["left"] == "Pressing"
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_left_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_left_1)
                 obj["ease_state"] = "ease_out"
-                common_char_select_scene_reset_char_text_ease_out(
-                    obj_char,
-                    obj_text,
-                    obj_icon_cover,
-                    input_id
-                )
+                common_char_select_scene_reset_char_text_ease_out(obj_char,obj_text,obj_icon_cover,input_id)
                 CHAR_SELECT_LR[input_id] = CHAR_SELECT_LR[input_id] - 1
                 if CHAR_SELECT_LR[input_id] == 0 then
                     CHAR_SELECT_LR[input_id] = 8
                 end
-                init_point_linear_anim_with(
-                    obj_char,
-                    anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
-                )
-                init_point_linear_anim_with(
-                    obj_text,
-                    anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
-                )
+                init_point_linear_anim_with(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x)
+                init_point_linear_anim_with(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x)
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["right"] == "Pressing"
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_right_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_right_1)
                 obj["ease_state"] = "ease_out"
-                common_char_select_scene_reset_char_text_ease_out(
-                    obj_char,
-                    obj_text,
-                    obj_icon_cover,
-                    input_id
-                )
+                common_char_select_scene_reset_char_text_ease_out(obj_char,obj_text,obj_icon_cover,input_id)
                 CHAR_SELECT_LR[input_id] = CHAR_SELECT_LR[input_id] + 1
                 if CHAR_SELECT_LR[input_id] == 9 then
                     CHAR_SELECT_LR[input_id] = 1
                 end
-                init_point_linear_anim_with(
-                    obj_char,
-                    anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
-                )
-                init_point_linear_anim_with(
-                    obj_text,
-                    anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
-                )
+                init_point_linear_anim_with(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x)
+                init_point_linear_anim_with(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x)
             end
         end
     }
     local this_function = switch[obj["ease_state"]]
     if this_function then this_function() end
 end
-function state_machine_UI_char_select_scene_char_select_bar_mark_select(
-    obj,
-    obj_bar_mark,
-    input_id
-)
+function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_bar_mark,input_id)
     local switch = {
         ["idle"] = function()
             if INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["up"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_up_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_up_1)
                 obj_bar_mark["state"] = "up_twitch"
                 if CONTROL_METHOD[input_id] == 1 then
-                    local side_table = {["L"] = 469, ["R"] = 699}
+                    local side_table = {["L"] = 469,["R"] = 699}
                     obj_bar_mark[2] = side_table[input_id]
                     CONTROL_METHOD[input_id] = 0
                 end
-                init_point_linear_anim_with(
-                    obj_bar_mark,
-                    anim_UI_point_linear_char_select_scene_bar_mark_up_y
-                )
+                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["down"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_down_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_down_1)
                 obj_bar_mark["state"] = "down_twitch"
                 if CONTROL_METHOD[input_id] == 0 then
-                    local side_table = {["L"] = 509, ["R"] = 739}
+                    local side_table = {["L"] = 509,["R"] = 739}
                     obj_bar_mark[2] = side_table[input_id]
                     CONTROL_METHOD[input_id] = 1
                 end
-                init_point_linear_anim_with(
-                    obj_bar_mark,
-                    anim_UI_point_linear_char_select_scene_bar_mark_down_y
-                )
+                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
             end
         end,
         ["up_twitch"] = function()
-            point_linear_animator(
-                obj_bar_mark,
-                anim_UI_point_linear_char_select_scene_bar_mark_up_y
-            )
-            if get_point_linear_anim_end_state(
-                obj_bar_mark,
-                anim_UI_point_linear_char_select_scene_bar_mark_up_y
-            )then
+            point_linear_animator(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)
+            if get_point_linear_anim_end_state(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)then
                 obj_bar_mark["state"] = "idle"
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["up"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_up_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_up_1)
                 obj_bar_mark["state"] = "up_twitch"
                 if CONTROL_METHOD[input_id] == 1 then
-                    local side_table = {["L"] = 469, ["R"] = 699}
+                    local side_table = {["L"] = 469,["R"] = 699}
                     obj_bar_mark[2] = side_table[input_id]
                     CONTROL_METHOD[input_id] = 0
                 end
-                init_point_linear_anim_with(
-                    obj_bar_mark,
-                    anim_UI_point_linear_char_select_scene_bar_mark_up_y
-                )
+                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["down"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_down_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_down_1)
                 obj_bar_mark["state"] = "down_twitch"
                 if CONTROL_METHOD[input_id] == 0 then
-                    local side_table = {["L"] = 509, ["R"] = 739}
+                    local side_table = {["L"] = 509,["R"] = 739}
                     obj_bar_mark[2] = side_table[input_id]
                     CONTROL_METHOD[input_id] = 1
                 end
-                init_point_linear_anim_with(
-                    obj_bar_mark,
-                    anim_UI_point_linear_char_select_scene_bar_mark_down_y
-                )
+                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
             end
         end,
         ["down_twitch"] = function()
-            point_linear_animator(
-                obj_bar_mark,
-                anim_UI_point_linear_char_select_scene_bar_mark_down_y
-            )
-            if get_point_linear_anim_end_state(
-                obj_bar_mark,
-                anim_UI_point_linear_char_select_scene_bar_mark_down_y
-            )then
+            point_linear_animator(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
+            if get_point_linear_anim_end_state(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)then
                 obj_bar_mark["state"] = "idle"
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["up"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_up_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_up_1)
                 obj_bar_mark["state"] = "up_twitch"
                 if CONTROL_METHOD[input_id] == 1 then
-                    local side_table = {["L"] = 469, ["R"] = 699}
+                    local side_table = {["L"] = 469,["R"] = 699}
                     obj_bar_mark[2] = side_table[input_id]
                     CONTROL_METHOD[input_id] = 0
                 end
-                init_point_linear_anim_with(
-                    obj_bar_mark,
-                    anim_UI_point_linear_char_select_scene_bar_mark_up_y
-                )
+                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["down"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_down_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_down_1)
                 obj_bar_mark["state"] = "down_twitch"
                 if CONTROL_METHOD[input_id] == 0 then
-                    local side_table = {["L"] = 509, ["R"] = 739}
+                    local side_table = {["L"] = 509,["R"] = 739}
                     obj_bar_mark[2] = side_table[input_id]
                     CONTROL_METHOD[input_id] = 1
                 end
-                init_point_linear_anim_with(
-                    obj_bar_mark,
-                    anim_UI_point_linear_char_select_scene_bar_mark_down_y
-                )
+                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
             end
         end
     }
@@ -662,16 +477,13 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
     local switch = {
         ["idle"] = function()
             if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_confirm_2
-                )
+                play_obj_audio(audio_SFX_char_select_scene_confirm_2)
                 obj["select_state"] = "selecting"
                 obj[4] = 1
                 obj_bar_mark[4] = 0
                 obj_control_method[4] = 0
                 init_point_linear_anim_with(
-                    obj,
-                    anim_UI_point_linear_char_select_scene_char_select_selecting_ease_out_opacity_1_0p25
+                    obj,anim_UI_point_linear_char_select_scene_char_select_selecting_ease_out_opacity_1_0p25
                 )
                 init_point_linear_anim_with(
                     obj_bar_mark,
@@ -685,8 +497,7 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
         end,
         ["selecting"] = function()
             point_linear_animator(
-                obj,
-                anim_UI_point_linear_char_select_scene_char_select_selecting_ease_out_opacity_1_0p25
+                obj,anim_UI_point_linear_char_select_scene_char_select_selecting_ease_out_opacity_1_0p25
             )
             point_linear_animator(
                 obj_bar_mark,
@@ -697,8 +508,7 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
                 anim_UI_point_linear_char_select_scene_control_method_bar_mark_selecting_ease_in_opacity_0_1
             )
             if get_point_linear_anim_end_state(
-                obj,
-                anim_UI_point_linear_char_select_scene_char_select_selecting_ease_out_opacity_1_0p25
+                obj,anim_UI_point_linear_char_select_scene_char_select_selecting_ease_out_opacity_1_0p25
             )
             and get_point_linear_anim_end_state(
                 obj_bar_mark,
@@ -711,16 +521,13 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
             then
                 obj["select_state"] = "selected"
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["H"] == "Pressing" then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_exit_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_exit_1)
                 obj["select_state"] = "unselecting"
                 obj[4] = 0.25
                 obj_bar_mark[4] = 1
                 obj_control_method[4] = 1
                 init_point_linear_anim_with(
-                    obj,
-                    anim_UI_point_linear_char_select_scene_char_select_unselecting_ease_in_opacity_0p25_1
+                    obj,anim_UI_point_linear_char_select_scene_char_select_unselecting_ease_in_opacity_0p25_1
                 )
                 init_point_linear_anim_with(
                     obj_bar_mark,
@@ -731,16 +538,13 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
                     anim_UI_point_linear_char_select_scene_control_method_bar_mark_unselecting_ease_out_opacity_1_0
                 )
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_confirm_3
-                )
+                play_obj_audio(audio_SFX_char_select_scene_confirm_3)
                 obj["select_state"] = "locking"
                 obj[4] = 0.25
                 obj_bar_mark[4] = 1
                 obj_control_method[4] = 1
                 init_point_linear_anim_with(
-                    obj,
-                    anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5
+                    obj,anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5
                 )
                 init_point_linear_anim_with(
                     obj_bar_mark,
@@ -754,16 +558,13 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
         end,
         ["selected"] = function()
             if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["H"] == "Pressing" then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_exit_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_exit_1)
                 obj["select_state"] = "unselecting"
                 obj[4] = 0.25
                 obj_bar_mark[4] = 1
                 obj_control_method[4] = 1
                 init_point_linear_anim_with(
-                    obj,
-                    anim_UI_point_linear_char_select_scene_char_select_unselecting_ease_in_opacity_0p25_1
+                    obj,anim_UI_point_linear_char_select_scene_char_select_unselecting_ease_in_opacity_0p25_1
                 )
                 init_point_linear_anim_with(
                     obj_bar_mark,
@@ -774,16 +575,13 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
                     anim_UI_point_linear_char_select_scene_control_method_bar_mark_unselecting_ease_out_opacity_1_0
                 )
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_confirm_3
-                )
+                play_obj_audio(audio_SFX_char_select_scene_confirm_3)
                 obj["select_state"] = "locking"
                 obj[4] = 0.25
                 obj_bar_mark[4] = 1
                 obj_control_method[4] = 1
                 init_point_linear_anim_with(
-                    obj,
-                    anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5
+                    obj,anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5
                 )
                 init_point_linear_anim_with(
                     obj_bar_mark,
@@ -797,8 +595,7 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
         end,
         ["unselecting"] = function()
             point_linear_animator(
-                obj,
-                anim_UI_point_linear_char_select_scene_char_select_unselecting_ease_in_opacity_0p25_1
+                obj,anim_UI_point_linear_char_select_scene_char_select_unselecting_ease_in_opacity_0p25_1
             )
             point_linear_animator(
                 obj_bar_mark,
@@ -809,8 +606,7 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
                 anim_UI_point_linear_char_select_scene_control_method_bar_mark_unselecting_ease_out_opacity_1_0
             )
             if get_point_linear_anim_end_state(
-                obj,
-                anim_UI_point_linear_char_select_scene_char_select_unselecting_ease_in_opacity_0p25_1
+                obj,anim_UI_point_linear_char_select_scene_char_select_unselecting_ease_in_opacity_0p25_1
             )
             and get_point_linear_anim_end_state(
                 obj_bar_mark,
@@ -823,16 +619,13 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
             then
                 obj["select_state"] = "idle"
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_confirm_2
-                )
+                play_obj_audio(audio_SFX_char_select_scene_confirm_2)
                 obj["select_state"] = "selecting"
                 obj[4] = 1
                 obj_bar_mark[4] = 0
                 obj_control_method[4] = 0
                 init_point_linear_anim_with(
-                    obj,
-                    anim_UI_point_linear_char_select_scene_char_select_selecting_ease_out_opacity_1_0p25
+                    obj,anim_UI_point_linear_char_select_scene_char_select_selecting_ease_out_opacity_1_0p25
                 )
                 init_point_linear_anim_with(
                     obj_bar_mark,
@@ -845,10 +638,7 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
             end
         end,
         ["locking"] = function()
-            point_linear_animator(
-                obj,
-                anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5
-            )
+            point_linear_animator(obj,anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5)
             point_linear_animator(
                 obj_bar_mark,
                 anim_UI_point_linear_char_select_scene_control_method_bar_mark_locking_ease_out_opacity_1_0
@@ -858,8 +648,7 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
                 anim_UI_point_linear_char_select_scene_control_method_bar_mark_locking_ease_out_opacity_1_0
             )
             if get_point_linear_anim_end_state(
-                obj,
-                anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5
+                obj,anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5
             )
             and get_point_linear_anim_end_state(
                 obj_bar_mark,
@@ -876,309 +665,171 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
         ["locked"] = function()
         end
     }
-    state_machine_UI_char_select_scene_char_select_ease_train_dummy(
-        obj,
-        obj_char,
-        obj_text,
-        obj_icon_cover
-    )
-    state_machine_UI_char_select_scene_char_select_bar_mark_select_train_dummy(
-        obj,
-        obj_bar_mark
-    )
+    state_machine_UI_char_select_scene_char_select_ease_train_dummy(obj,obj_char,obj_text,obj_icon_cover)
+    state_machine_UI_char_select_scene_char_select_bar_mark_select_train_dummy(obj,obj_bar_mark)
     local this_function = switch[obj["select_state"]]
     if this_function then this_function() end
 end
-function state_machine_UI_char_select_scene_char_select_ease_train_dummy(
-    obj,
-    obj_char,
-    obj_text,
-    obj_icon_cover
-)
+function state_machine_UI_char_select_scene_char_select_ease_train_dummy(obj,obj_char,obj_text,obj_icon_cover)
     local switch = {
         ["ease_in"] = function()
+            point_linear_animator(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_in_x)
+            point_linear_animator(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x)
             point_linear_animator(
-                obj_char,
-                anim_UI_point_linear_char_select_scene_char_select_char_ease_in_x
-            )
-            point_linear_animator(
-                obj_text,
-                anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x
-            )
-            point_linear_animator(
-                obj_icon_cover,
-                anim_UI_point_linear_char_select_scene_icon_select_ease_in_opacity_0_0p5
+                obj_icon_cover,anim_UI_point_linear_char_select_scene_icon_select_ease_in_opacity_0_0p5
             )
             if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["left"] == "Pressing"
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_left_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_left_1)
                 obj["ease_state"] = "ease_out"
-                common_char_select_scene_reset_char_text_ease_out(
-                    obj_char,
-                    obj_text,
-                    obj_icon_cover,
-                    "R"
-                )
+                common_char_select_scene_reset_char_text_ease_out(obj_char,obj_text,obj_icon_cover,"R")
                 CHAR_SELECT_LR["R"] = CHAR_SELECT_LR["R"] - 1
                 if CHAR_SELECT_LR["R"] == 0 then
                     CHAR_SELECT_LR["R"] = 8
                 end
-                init_point_linear_anim_with(
-                    obj_char,
-                    anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
-                )
-                init_point_linear_anim_with(
-                    obj_text,
-                    anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
-                )
+                init_point_linear_anim_with(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x)
+                init_point_linear_anim_with(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x)
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["right"] == "Pressing"
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_right_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_right_1)
                 obj["ease_state"] = "ease_out"
-                common_char_select_scene_reset_char_text_ease_out(
-                    obj_char,
-                    obj_text,
-                    obj_icon_cover,
-                    "R"
-                )
+                common_char_select_scene_reset_char_text_ease_out(obj_char,obj_text,obj_icon_cover,"R")
                 CHAR_SELECT_LR["R"] = CHAR_SELECT_LR["R"] + 1
                 if CHAR_SELECT_LR["R"] == 9 then
                     CHAR_SELECT_LR["R"] = 1
                 end
-                init_point_linear_anim_with(
-                    obj_char,
-                    anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
-                )
-                init_point_linear_anim_with(
-                    obj_text,
-                    anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
-                )
+                init_point_linear_anim_with(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x)
+                init_point_linear_anim_with(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x)
             end
         end,
         ["ease_out"] = function()
+            point_linear_animator(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x)
+            point_linear_animator(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x)
             point_linear_animator(
-                obj_char,
-                anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
-            )
-            point_linear_animator(
-                obj_text,
-                anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
-            )
-            point_linear_animator(
-                obj_icon_cover,
-                anim_UI_point_linear_char_select_scene_icon_select_ease_out_opacity_0p5_0
+                obj_icon_cover,anim_UI_point_linear_char_select_scene_icon_select_ease_out_opacity_0p5_0
             )
             if get_point_linear_anim_end_state(
-                obj_char,
-                anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
+                obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
             )
             and get_point_linear_anim_end_state(
-                obj_text,
-                anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
+                obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
             )
             and get_point_linear_anim_end_state(
-                obj_icon_cover,
-                anim_UI_point_linear_char_select_scene_icon_select_ease_out_opacity_0p5_0
+                obj_icon_cover,anim_UI_point_linear_char_select_scene_icon_select_ease_out_opacity_0p5_0
             )
             then
                 obj["ease_state"] = "ease_in"
-                common_char_select_scene_reset_char_text_ease_in(
-                    obj_char,
-                    obj_text,
-                    obj_icon_cover,
-                    "R"
-                )
+                common_char_select_scene_reset_char_text_ease_in(obj_char,obj_text,obj_icon_cover,"R")
                 obj[8] = CHAR_SELECT_LR["R"]
-                init_point_linear_anim_with(
-                    obj_char,
-                    anim_UI_point_linear_char_select_scene_char_select_char_ease_in_x
-                )
-                init_point_linear_anim_with(
-                    obj_text,
-                    anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x
-                )
+                init_point_linear_anim_with(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_in_x)
+                init_point_linear_anim_with(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x)
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["left"] == "Pressing"
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_left_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_left_1)
                 obj["ease_state"] = "ease_out"
-                common_char_select_scene_reset_char_text_ease_out(
-                    obj_char,
-                    obj_text,
-                    obj_icon_cover,
-                    "R"
-                )
+                common_char_select_scene_reset_char_text_ease_out(obj_char,obj_text,obj_icon_cover,"R")
                 CHAR_SELECT_LR["R"] = CHAR_SELECT_LR["R"] - 1
                 if CHAR_SELECT_LR["R"] == 0 then
                     CHAR_SELECT_LR["R"] = 8
                 end
-                init_point_linear_anim_with(
-                    obj_char,
-                    anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
-                )
-                init_point_linear_anim_with(
-                    obj_text,
-                    anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
-                )
+                init_point_linear_anim_with(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x)
+                init_point_linear_anim_with(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x)
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["right"] == "Pressing"
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_right_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_right_1)
                 obj["ease_state"] = "ease_out"
-                common_char_select_scene_reset_char_text_ease_out(
-                    obj_char,
-                    obj_text,
-                    obj_icon_cover,
-                    "R"
-                )
+                common_char_select_scene_reset_char_text_ease_out(obj_char,obj_text,obj_icon_cover,"R")
                 CHAR_SELECT_LR["R"] = CHAR_SELECT_LR["R"] + 1
                 if CHAR_SELECT_LR["R"] == 9 then
                     CHAR_SELECT_LR["R"] = 1
                 end
-                init_point_linear_anim_with(
-                    obj_char,
-                    anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
-                )
-                init_point_linear_anim_with(
-                    obj_text,
-                    anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
-                )
+                init_point_linear_anim_with(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x)
+                init_point_linear_anim_with(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x)
             end
         end
     }
     local this_function = switch[obj["ease_state"]]
     if this_function then this_function() end
 end
-function state_machine_UI_char_select_scene_char_select_bar_mark_select_train_dummy(
-    obj,
-    obj_bar_mark
-)
+function state_machine_UI_char_select_scene_char_select_bar_mark_select_train_dummy(obj,obj_bar_mark)
     local switch = {
         ["idle"] = function()
             if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["up"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_up_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_up_1)
                 obj_bar_mark["state"] = "up_twitch"
                 if CONTROL_METHOD["R"] == 1 then
                     obj_bar_mark[2] = 699
                     CONTROL_METHOD["R"] = 0
                 end
-                init_point_linear_anim_with(
-                    obj_bar_mark,
-                    anim_UI_point_linear_char_select_scene_bar_mark_up_y
-                )
+                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["down"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_down_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_down_1)
                 obj_bar_mark["state"] = "down_twitch"
                 if CONTROL_METHOD["R"] == 0 then
                     obj_bar_mark[2] = 739
                     CONTROL_METHOD["R"] = 1
                 end
-                init_point_linear_anim_with(
-                    obj_bar_mark,
-                    anim_UI_point_linear_char_select_scene_bar_mark_down_y
-                )
+                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
             end
         end,
         ["up_twitch"] = function()
-            point_linear_animator(
-                obj_bar_mark,
-                anim_UI_point_linear_char_select_scene_bar_mark_up_y
-            )
-            if get_point_linear_anim_end_state(
-                obj_bar_mark,
-                anim_UI_point_linear_char_select_scene_bar_mark_up_y
-            )then
+            point_linear_animator(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)
+            if get_point_linear_anim_end_state(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)then
                 obj_bar_mark["state"] = "idle"
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["up"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_up_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_up_1)
                 obj_bar_mark["state"] = "up_twitch"
                 if CONTROL_METHOD["R"] == 1 then
                     obj_bar_mark[2] = 699
                     CONTROL_METHOD["R"] = 0
                 end
-                init_point_linear_anim_with(
-                    obj_bar_mark,
-                    anim_UI_point_linear_char_select_scene_bar_mark_up_y
-                )
+                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["down"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_down_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_down_1)
                 obj_bar_mark["state"] = "down_twitch"
                 if CONTROL_METHOD["R"] == 0 then
                     obj_bar_mark[2] = 739
                     CONTROL_METHOD["R"] = 1
                 end
-                init_point_linear_anim_with(
-                    obj_bar_mark,
-                    anim_UI_point_linear_char_select_scene_bar_mark_down_y
-                )
+                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
             end
         end,
         ["down_twitch"] = function()
-            point_linear_animator(
-                obj_bar_mark,
-                anim_UI_point_linear_char_select_scene_bar_mark_down_y
-            )
-            if get_point_linear_anim_end_state(
-                obj_bar_mark,
-                anim_UI_point_linear_char_select_scene_bar_mark_down_y
-            )then
+            point_linear_animator(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
+            if get_point_linear_anim_end_state(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)then
                 obj_bar_mark["state"] = "idle"
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["up"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_up_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_up_1)
                 obj_bar_mark["state"] = "up_twitch"
                 if CONTROL_METHOD["R"] == 1 then
                     obj_bar_mark[2] = 699
                     CONTROL_METHOD["R"] = 0
                 end
-                init_point_linear_anim_with(
-                    obj_bar_mark,
-                    anim_UI_point_linear_char_select_scene_bar_mark_up_y
-                )
+                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["down"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
-                play_obj_audio(
-                    audio_SFX_char_select_scene_down_1
-                )
+                play_obj_audio(audio_SFX_char_select_scene_down_1)
                 obj_bar_mark["state"] = "down_twitch"
                 if CONTROL_METHOD["R"] == 0 then
                     obj_bar_mark[2] = 739
                     CONTROL_METHOD["R"] = 1
                 end
-                init_point_linear_anim_with(
-                    obj_bar_mark,
-                    anim_UI_point_linear_char_select_scene_bar_mark_down_y
-                )
+                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
             end
         end
     }

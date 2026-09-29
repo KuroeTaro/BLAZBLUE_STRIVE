@@ -2,18 +2,9 @@ function load_game_scene_common_obj()
     -- CANVAS
     local width = love.graphics.getWidth()
     local height = love.graphics.getHeight()
-    DRAW_MAIN_CHARACTER_CANVAS = love.graphics.newCanvas(
-        width,
-        height
-    )
-    DRAW_CHARACTER_CANVAS = love.graphics.newCanvas(
-        width,
-        height
-    )
-    DRAW_SHADOW_CANVAS = love.graphics.newCanvas(
-        width,
-        height
-    )
+    DRAW_MAIN_CHARACTER_CANVAS = love.graphics.newCanvas(width,height)
+    DRAW_CHARACTER_CANVAS = love.graphics.newCanvas(width,height)
+    DRAW_SHADOW_CANVAS = love.graphics.newCanvas(width,height)
     load_game_scene_obj_char_LP()
     load_game_scene_obj_char_RP()
     load_game_scene_obj_stage()
@@ -37,54 +28,39 @@ function load_game_scene_common_audio()
     audio_SFX_game_scene_common["annoucer_ease_in"]["LCT"] = {0}
     audio_SFX_game_scene_common["annoucer_ease_in"]["LCD"] = {0}
     audio_SFX_game_scene_common["annoucer_ease_in"]["audio"] = love.audio.newSource(
-        "asset/game_scene/common/audio/annoucer_ease_in.ogg",
-        "static"
+        "asset/game_scene/common/audio/annoucer_ease_in.ogg","static"
     )
-    update_SFX_VOLUME(
-        audio_SFX_game_scene_common["annoucer_ease_in"]
-    )
+    update_SFX_VOLUME(audio_SFX_game_scene_common["annoucer_ease_in"])
     -- throw_tech_SFX
     audio_SFX_game_scene_common["common_risk_force_counter"] = {1}
     audio_SFX_game_scene_common["common_risk_force_counter"]["LCT"] = {0}
     audio_SFX_game_scene_common["common_risk_force_counter"]["LCD"] = {0}
     audio_SFX_game_scene_common["common_risk_force_counter"]["audio"] = love.audio.newSource(
-        "asset/game_scene/common/audio/common_risk_force_counter.ogg",
-        "static"
+        "asset/game_scene/common/audio/common_risk_force_counter.ogg","static"
     )
-    update_SFX_VOLUME(
-        audio_SFX_game_scene_common["common_risk_force_counter"]
-    )
+    update_SFX_VOLUME(audio_SFX_game_scene_common["common_risk_force_counter"])
     -- throw_tech_SFX
     audio_SFX_game_scene_common["common_throw_tech"] = {1}
     audio_SFX_game_scene_common["common_throw_tech"]["LCT"] = {0}
     audio_SFX_game_scene_common["common_throw_tech"]["LCD"] = {0}
     audio_SFX_game_scene_common["common_throw_tech"]["audio"] = love.audio.newSource(
-        "asset/game_scene/common/audio/common_throw_tech.ogg",
-        "static"
+        "asset/game_scene/common/audio/common_throw_tech.ogg","static"
     )
-    update_SFX_VOLUME(
-        audio_SFX_game_scene_common["common_throw_tech"]
-    )
+    update_SFX_VOLUME(audio_SFX_game_scene_common["common_throw_tech"])
 end
-function load_game_scene_common_shader(
-    i
-)
+function load_game_scene_common_shader(i)
     local switch = {
         [1] = function() shader_game_scene_fractal_noise = love.graphics.newShader(
             "shaders/game_fractal_noise.glsl"
         ) end,
-        [2] = function() shader_game_scene_radial_blur = love.graphics.newShader(
-            "shaders/radial_blur.glsl"
-        ) end,
+        [2] = function() shader_game_scene_radial_blur = love.graphics.newShader("shaders/radial_blur.glsl") end,
         [3] = function() shader_game_scene_shadow_radial_blur = love.graphics.newShader(
             "shaders/shadow_radial_blur.glsl"
         ) end,
         [4] = function() shader_game_scene_brightness_contrast = love.graphics.newShader(
             "shaders/brightness_contrast.glsl"
         ) end,
-        [5] = function() shader_game_scene_gaussian_blur = love.graphics.newShader(
-            "shaders/gaussian_blur.glsl"
-        ) end
+        [5] = function() shader_game_scene_gaussian_blur = love.graphics.newShader("shaders/gaussian_blur.glsl") end
     }
     local this_function = switch[i]
     if this_function then this_function() end
@@ -235,42 +211,22 @@ function load_game_scene_announcer_HUD_anim()
     anim_char_point_linear_game_scene_overdrive_brightness_ease_out["fix_type"] = false
 end
 function unload_game_scene_all()
-    for key in pairs(
-        _G
-    ) do
-        if string.find(
-            key,
-            "game_scene"
-        ) or string.find(
-            key,
-            "CANVAS"
-        )
+    for key in pairs(_G) do
+        if string.find(key,"game_scene") or string.find(key,"CANVAS")
         then -- 检查变量名是否以 "prefix_" 开头
             _G[key] = nil -- 删除该变量
         end
     end
-    unrequire_prefix(
-        "scenes.game_scene."
-    )
+    unrequire_prefix("scenes.game_scene.")
 end
 function preset_game_scene_training()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
     obj_UI_game_scene_black_solid[4] = 1
-    char_LP["character_animation"] = char_LP["init_animation_load_function"](
-        char_LP
-    )
-    char_RP["character_animation"] = char_RP["init_animation_load_function"](
-        char_RP
-    )
-    init_character_anim_with(
-        char_LP,
-        char_LP["character_animation"]
-    )
-    init_character_anim_with(
-        char_RP,
-        char_RP["character_animation"]
-    )
+    char_LP["character_animation"] = char_LP["init_animation_load_function"](char_LP)
+    char_RP["character_animation"] = char_RP["init_animation_load_function"](char_RP)
+    init_character_anim_with(char_LP,char_LP["character_animation"])
+    init_character_anim_with(char_RP,char_RP["character_animation"])
 end
 function preset_game_scene_match()
 end

@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 """
+【已废弃 2026-09-29】已被 `tools/wrap_arg_lists.py` 取代：规则重定为「<=120 收成一行，
+超过才换行（参数行 +4 贪心填充，`)` 独占一行）」。**不要再跑本工具**，它会把已经收成一行的
+参数表重新竖排。保留代码仅作历史参考。
+
 把函数**调用**的实参表统一改成竖排（每个实参一行）。
 
 规则（与 `tools/vertical_function_params.py` 的「声明形参竖排」一致）：
@@ -8,15 +12,18 @@
         arg2
     )
 - 实参缩进 = `(` 所在行的缩进 **+4**；`)` 回到该行缩进单独一行。
+- **只有一个实参的调用不竖排**（用户 2026-09-29 追加规则：单参数不换行，
+  由 `tools/rejoin_single_args.py` 负责合并），所以 `--min-args` 默认 **2**。
 - 嵌套调用按「由外向内」逐层展开（depth 0, 1, 2, ...），每层展开后重新分词，
   这样内层调用的 `(` 已经落在自己的行上，其续行缩进才正确。
 - depth 不跨 `function` 边界计数：匿名 `function ... end` 体内的调用算最外层。
 
 用法:
-    python tools/vertical_call_args.py                  # 只报告（默认全部带实参的调用）
+    python tools/vertical_call_args.py                  # 只报告（默认 ≥2 实参、只最外层）
     python tools/vertical_call_args.py --fix            # 写回
-    python tools/vertical_call_args.py --min-args 2     # 只处理 ≥2 个实参的调用
-    python tools/vertical_call_args.py --max-depth 0    # 只处理最外层调用，不递归嵌套
+    python tools/vertical_call_args.py --min-args 1     # 连单实参也竖排（旧行为）
+    python tools/vertical_call_args.py --max-depth 3    # 递归展开嵌套调用；默认 0 = 只最外层
+    python tools/vertical_call_args.py --reindent-only  # 只修已竖排列表的续行缩进，不新建换行
     python tools/vertical_call_args.py --show 4         # 打印 before/after 样例
     python tools/vertical_call_args.py --grep SUBSTR    # 只打印含 SUBSTR 的样例
 
@@ -128,8 +135,12 @@ def call_frames(toks):
     return frames
 
 
-def pass_edits(src, toks, frames, depth, min_args):
-    """返回 (edits, 需要展开的调用数, 已符合的调用数)。"""
+def pass_edits(src, toks, frames, depth, min_args, reindent_only=False):
+    """返回 (edits, 需要展开的调用数, 已符合的调用数)。
+
+    reindent_only=True 时跳过 `(` 后还没有换行的调用，只修正「已经竖排」的续行缩进，
+    绝不新建换行——合并单参数后内层列表会跟着位移，用这个模式对齐。
+    """
     starts = [s for s, _e in W.iter_lines(src)]
     edits = []
     todo = 0
@@ -138,6 +149,8 @@ def pass_edits(src, toks, frames, depth, min_args):
         if f["depth"] != depth or f["nargs"] < min_args or f["m"] == f["p"] + 1:
             continue
         p, m = f["p"], f["m"]
+        if reindent_only and "\n" not in src[toks[p][3]:toks[p + 1][2]]:
+            continue
         line = V.line_text_of(src, starts, toks[p][2])
         base = line[:len(line) - len(line.lstrip(" \t"))]
         ind4 = base + ("\t" if "\t" in base else "    ")
@@ -163,18 +176,21 @@ def pass_edits(src, toks, frames, depth, min_args):
     return edits, todo, ok
 
 
-def process(src, min_args, max_depth):
+def process(src, min_args, max_depth, reindent_only=False):
     """逐层展开；返回 (new_src, stats)。"""
     stats = collections.Counter()
     depth = 0
     while max_depth is None or depth <= max_depth:
         toks = C.tokenize(src)
         frames = call_frames(toks)
-        edits, todo, ok = pass_edits(src, toks, frames, depth, min_args)
+        edits, todo, ok = pass_edits(src, toks, frames, depth, min_args, reindent_only)
         if not frames:
             break
         at_depth = sum(1 for f in frames
-                       if f["depth"] == depth and f["nargs"] >= min_args and f["m"] > f["p"] + 1)
+                       if f["depth"] == depth and f["nargs"] >= min_args
+                       and f["m"] > f["p"] + 1
+                       and not (reindent_only
+                                and "\n" not in src[toks[f["p"]][3]:toks[f["p"] + 1][2]]))
         if at_depth == 0:
             break
         stats["已竖排"] += todo
@@ -192,10 +208,11 @@ def process(src, min_args, max_depth):
 def main():
     argv = sys.argv[1:]
     do_fix = "--fix" in argv
-    min_args = int(argv[argv.index("--min-args") + 1]) if "--min-args" in argv else 1
-    max_depth = int(argv[argv.index("--max-depth") + 1]) if "--max-depth" in argv else None
+    min_args = int(argv[argv.index("--min-args") + 1]) if "--min-args" in argv else 2
+    max_depth = int(argv[argv.index("--max-depth") + 1]) if "--max-depth" in argv else 0
     show = int(argv[argv.index("--show") + 1]) if "--show" in argv else 0
     grep = argv[argv.index("--grep") + 1] if "--grep" in argv else None
+    reindent_only = "--reindent-only" in argv
 
     files = C.collect_files()
     total = collections.Counter()
@@ -207,7 +224,7 @@ def main():
         rel = os.path.relpath(path, C.ROOT).replace("\\", "/")
         with io.open(path, "r", encoding="utf-8", newline="") as f:
             src = f.read()
-        new_src, stats = process(src, min_args, max_depth)
+        new_src, stats = process(src, min_args, max_depth, reindent_only)
         if not stats:
             continue
         total.update(stats)
@@ -227,7 +244,7 @@ def main():
                     or (new_src.count("\n") - new_src.count("\r\n"))
                     < (src.count("\n") - src.count("\r\n"))):
                 raise RuntimeError("行尾符减少，已中止（未写入任何文件）：%s" % path)
-            _, again = process(new_src, min_args, max_depth)
+            _, again = process(new_src, min_args, max_depth, reindent_only)
             if again.get("已竖排"):
                 raise RuntimeError("未收敛（不幂等）：%s" % path)
             pending.append((path, new_src))
@@ -250,7 +267,8 @@ def main():
                         continue
                     local = V.apply_edits(before, [(s - a0, e - a0, r)
                                                    for s, e, r in
-                                                   pass_edits(src, toks, [f], 0, min_args)[0]])
+                                                   pass_edits(src, toks, [f], 0, min_args,
+                                                              reindent_only)[0]])
                     samples.append((rel, before, local[0]))
                     break
 
@@ -260,8 +278,9 @@ def main():
                 f.write(new_src)
 
     lines = []
-    lines.append("调用实参竖排报告（min-args=%d, max-depth=%s）"
-                 % (min_args, "不限" if max_depth is None else max_depth))
+    lines.append("调用实参竖排报告（min-args=%d, max-depth=%s%s）"
+                 % (min_args, "不限" if max_depth is None else max_depth,
+                    ", reindent-only" if reindent_only else ""))
     lines.append("已改文件：%d 个" % len(pending) if do_fix else "（本次为试算，未写回）")
     lines.append("统计：" + ", ".join("%s=%d" % (k, v) for k, v in sorted(total.items())))
     lines.append("")
@@ -269,8 +288,10 @@ def main():
     with io.open(REPORT_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
 
-    print("试算/写回：%s | min-args=%d | max-depth=%s"
-          % ("写回" if do_fix else "仅试算", min_args, "不限" if max_depth is None else max_depth))
+    print("试算/写回：%s | min-args=%d | max-depth=%s%s"
+          % ("写回" if do_fix else "仅试算", min_args,
+             "不限" if max_depth is None else max_depth,
+             " | reindent-only" if reindent_only else ""))
     print("已改文件：%d 个" % len(pending))
     print("统计：" + ", ".join("%s=%d" % (k, v) for k, v in sorted(total.items())))
     print("详细报告：%s" % os.path.relpath(REPORT_PATH, C.ROOT))

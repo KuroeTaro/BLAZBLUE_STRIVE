@@ -1,30 +1,14 @@
 -- setup force hot compilation
-require(
-    "jit.opt"
-).start(
-    "hotloop=42",
-    "hotexit=7"
-)
+require("jit.opt").start("hotloop=42","hotexit=7")
 -- include required modules
-require(
-    "advance_require_functions"
-)
-require(
-    "draw_general_use_functions"
-)
-require_all_in_folder(
-    "update_general_use_functions"
-)
-require_all_in_folder(
-    "scenes/load_scene"
-)
+require("advance_require_functions")
+require("draw_general_use_functions")
+require_all_in_folder("update_general_use_functions")
+require_all_in_folder("scenes/load_scene")
 require_all_init_load_function()
 -- int main()/mandatory entry point
 function love.run()
-	if love.load then love.load(
-		love.arg.parseGameArguments(arg),
-		arg
-	) end
+	if love.load then love.load(love.arg.parseGameArguments(arg),arg) end
 	-- We don't want the first frame's dt to include time taken by love.load.
 	if love.timer then love.timer.step() end
 	local UPDATE_RATE = 60
@@ -47,14 +31,7 @@ function love.run()
 						return a or 0
 					end
 				end
-				love.handlers[name](
-					a,
-					b,
-					c,
-					d,
-					e,
-					f
-				)
+				love.handlers[name](a,b,c,d,e,f)
 			end
 		end
 		-- Update dt,as we'll be passing it to update
@@ -88,18 +65,10 @@ function love.run()
 		end
 		loop_time = love.timer.getTime() - loop_time
 		if loop_time > 0.016 then
-			print(
-				update_time,
-				draw_time
-			)
+			print(update_time,draw_time)
 		end
-		DEBUG_LAST_SLEEP = math.max(
-			0,
-			(1/DRAW_RATE - GFRST)
-		)
-		if love.timer then love.timer.sleep(
-			DEBUG_LAST_SLEEP
-		) end
+		DEBUG_LAST_SLEEP = math.max(0,(1/DRAW_RATE - GFRST))
+		if love.timer then love.timer.sleep(DEBUG_LAST_SLEEP) end
 	end
 end
 function love.load()
@@ -147,9 +116,7 @@ function love.load()
 	read_game_duration()
 	get_current_resolution()
 	modify_quit_game_reocrd()
-	JSON = require(
-		"dkjson"
-	)
+	JSON = require("dkjson")
 	-- character_select_scene & game_scene
 	GAME_MODE = 0 -- 1.训练模式 2.本地多人 3.在线多人
 	CHAR_SELECT_LR = {}
@@ -296,15 +263,9 @@ function love.load()
 end
 function love.update()
 	-- http://127.0.0.1:8000
-	require(
-		"lovebird"
-	).update()
+	require("lovebird").update()
 	-- gc
-	set_nuGC(
-		0.001,
-		10,
-		true
-	)
+	set_nuGC(0.001,10,true)
 	-- trainning_mode_debug_low_ver
 	-- change_later
 	set_pause()
@@ -329,45 +290,15 @@ function love.update()
 	FRAMES_DRAWN = FRAMES_DRAWN + 1
 end
 function love.draw()
-	love.graphics.clear(
-		7/255,
-		19/255,
-		31/255,
-		1
-	)
+	love.graphics.clear(7/255,19/255,31/255,1)
 	current_draw_block()
 	if DEBUG_INFO_SHOWS then
-		love.graphics.setColor(
-			0,
-			0,
-			0,
-			0.5
-		)
-		draw_debug_info_all(
-			2,
-			2
-		)
-		draw_debug_info_all(
-			0,
-			2
-		)
-		draw_debug_info_all(
-			2,
-			0
-		)
-		draw_debug_info_all(
-			0,
-			0
-		)
-		love.graphics.setColor(
-			1,
-			1,
-			1,
-			1
-		)
-		draw_debug_info_all(
-			1,
-			1
-		)
+		love.graphics.setColor(0,0,0,0.5)
+		draw_debug_info_all(2,2)
+		draw_debug_info_all(0,2)
+		draw_debug_info_all(2,0)
+		draw_debug_info_all(0,0)
+		love.graphics.setColor(1,1,1,1)
+		draw_debug_info_all(1,1)
 	end
 end

@@ -1,8 +1,6 @@
 function read_game_duration()
     GAME_DURATION = nil
-    local chunk = love.filesystem.load(
-        'game_duration_record.lua'
-    )
+    local chunk = love.filesystem.load('game_duration_record.lua')
     if chunk then
         chunk()
         if GAME_DURATION == nil then
@@ -18,17 +16,11 @@ function read_game_duration()
 end
 function write_game_duration_record()
     local chunk = "GAME_DURATION = "..
-    "{" ..table.concat(
-        GAME_DURATION,
-        ","
-    ).."}" ..
+    "{" ..table.concat(GAME_DURATION,",").."}" ..
     "\n"..
     "CTO_COUNT = ".. CTO_COUNT.. "" ..
     "\n".. ""
-    love.filesystem.write(
-        'game_duration_record.lua',
-        chunk
-    )
+    love.filesystem.write('game_duration_record.lua',chunk)
 end
 function update_record_game_duration()
     if FRAMES_DRAWN >= 60 then

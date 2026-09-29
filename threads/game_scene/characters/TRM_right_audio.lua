@@ -13,9 +13,7 @@ local file_name_table = {
 }
 for i = 1,#file_name_table do
     local key = file_name_table[i]
-    thread_data["stage_interactive_SFX"][key] = sound_module(
-        base .. "stage_interactive_SFX/" .. key .. ".ogg"
-    )
+    thread_data["stage_interactive_SFX"][key] = sound_module(base .. "stage_interactive_SFX/" .. key .. ".ogg")
 end
 -- move_SFX
 thread_data["move_SFX"] = {}
@@ -79,14 +77,8 @@ for i = 1,#move_SFX_folder_table do
     local file_name_table = move_SFX_folder_table[i].files
     for j = 1,#file_name_table do
         local key = file_name_table[j]
-        thread_data["move_SFX"][key] = sound_module(
-            base .. "move_SFX/" .. folder .. "/" .. key .. ".ogg"
-        )
+        thread_data["move_SFX"][key] = sound_module(base .. "move_SFX/" .. folder .. "/" .. key .. ".ogg")
         thread_data["move_SFX_keys"][#thread_data["move_SFX_keys"] + 1] = key
     end
 end
-love.thread.getChannel(
-    'thread_data_10'
-):push(
-    thread_data
-)
+love.thread.getChannel('thread_data_10'):push(thread_data)

@@ -3,22 +3,10 @@ function load_game_scene_obj_stage()
     -- CANVAS
     local width = love.graphics.getWidth()
     local height = love.graphics.getHeight()
-    DRAW_STAGE_GLOW_CANVAS = love.graphics.newCanvas(
-        width,
-        height
-    )
-    DRAW_STAGE_RADIAL_BLUR_CANVAS = love.graphics.newCanvas(
-        width,
-        height
-    )
-    DRAW_STAGE_ALPHA_COMP_CANVAS = love.graphics.newCanvas(
-        width,
-        height
-    )
-    DRAW_STAGE_ALPHA_ONLY_CANVAS = love.graphics.newCanvas(
-        width,
-        height
-    )
+    DRAW_STAGE_GLOW_CANVAS = love.graphics.newCanvas(width,height)
+    DRAW_STAGE_RADIAL_BLUR_CANVAS = love.graphics.newCanvas(width,height)
+    DRAW_STAGE_ALPHA_COMP_CANVAS = love.graphics.newCanvas(width,height)
+    DRAW_STAGE_ALPHA_ONLY_CANVAS = love.graphics.newCanvas(width,height)
     obj_stage_game_scene_mid_collision_anchor = 0
     -- common
     -- main
@@ -289,9 +277,7 @@ function load_game_scene_anim_stage()
     anim_stage_point_linear_game_scene_wallbreak_glow_opacity["fix_type"] = true
     -- uncommon
 end
-function order_load_game_scene_stage_frames(
-    load_order
-)
+function order_load_game_scene_stage_frames(load_order)
     local switch =
     {
         [1] = function()
@@ -306,9 +292,7 @@ function order_load_game_scene_stage_frames(
                 "asset/game_scene/stage/alpha/texture/stage_obj/wallbreak_dynamic.json",
                 love.graphics.newImage(ASSET_DATA[13][2])
             )
-            image_stage_game_scene_wallbreak_glow = love.graphics.newImage(
-                ASSET_DATA[13][3]
-            )
+            image_stage_game_scene_wallbreak_glow = love.graphics.newImage(ASSET_DATA[13][3])
             image_sprite_sheet_stage_game_scene_wallbreak_smoke =
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_obj/wallbreak_smoke.json",
@@ -364,77 +348,33 @@ function order_load_game_scene_stage_frames(
         end,
         [3] = function()
             -- stage images
-            image_stage_game_scene_ground = love.graphics.newImage(
-                ASSET_DATA[13][7]
-            )
-            image_stage_game_scene_stage_liner_fade_alpha = love.graphics.newImage(
-                ASSET_DATA[13][8]
-            )
-            image_stage_game_scene_stair = love.graphics.newImage(
-                ASSET_DATA[13][9]
-            )
-            image_stage_game_scene_tile_map = love.graphics.newImage(
-                ASSET_DATA[13][10]
-            )
+            image_stage_game_scene_ground = love.graphics.newImage(ASSET_DATA[13][7])
+            image_stage_game_scene_stage_liner_fade_alpha = love.graphics.newImage(ASSET_DATA[13][8])
+            image_stage_game_scene_stair = love.graphics.newImage(ASSET_DATA[13][9])
+            image_stage_game_scene_tile_map = love.graphics.newImage(ASSET_DATA[13][10])
         end,
         [4] = function()
             -- stage sprite_batch
-            image_sprite_batch_stage_game_scene_ground = love.graphics.newSpriteBatch(
-                image_stage_game_scene_ground
-            )
-            image_sprite_batch_stage_game_scene_stair = love.graphics.newSpriteBatch(
-                image_stage_game_scene_stair
-            )
+            image_sprite_batch_stage_game_scene_ground = love.graphics.newSpriteBatch(image_stage_game_scene_ground)
+            image_sprite_batch_stage_game_scene_stair = love.graphics.newSpriteBatch(image_stage_game_scene_stair)
             image_sprite_batch_stage_game_scene_ground:clear()
-            image_sprite_batch_stage_game_scene_ground:add(
-                0,
-                0
-            )
-            image_sprite_batch_stage_game_scene_ground:add(
-                1600,
-                0
-            )
-            image_sprite_batch_stage_game_scene_ground:add(
-                1600*2,
-                0
-            )
-            image_sprite_batch_stage_game_scene_ground:add(
-                1600*3,
-                0
-            )
-            image_sprite_batch_stage_game_scene_ground:add(
-                1600*4,
-                0
-            )
+            image_sprite_batch_stage_game_scene_ground:add(0,0)
+            image_sprite_batch_stage_game_scene_ground:add(1600,0)
+            image_sprite_batch_stage_game_scene_ground:add(1600*2,0)
+            image_sprite_batch_stage_game_scene_ground:add(1600*3,0)
+            image_sprite_batch_stage_game_scene_ground:add(1600*4,0)
             image_sprite_batch_stage_game_scene_stair:clear()
-            image_sprite_batch_stage_game_scene_stair:add(
-                0,
-                0
-            )
-            image_sprite_batch_stage_game_scene_stair:add(
-                1600,
-                0
-            )
-            image_sprite_batch_stage_game_scene_stair:add(
-                1600*2,
-                0
-            )
-            image_sprite_batch_stage_game_scene_stair:add(
-                1600*3,
-                0
-            )
-            image_sprite_batch_stage_game_scene_stair:add(
-                1600*4,
-                0
-            )
+            image_sprite_batch_stage_game_scene_stair:add(0,0)
+            image_sprite_batch_stage_game_scene_stair:add(1600,0)
+            image_sprite_batch_stage_game_scene_stair:add(1600*2,0)
+            image_sprite_batch_stage_game_scene_stair:add(1600*3,0)
+            image_sprite_batch_stage_game_scene_stair:add(1600*4,0)
         end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
-function order_load_game_scene_stage_audio(
-    load_order
-)
+function order_load_game_scene_stage_audio(load_order)
     local STAGE_AUDIO_DATA = ASSET_DATA[12]
     local switch =
     {
@@ -459,12 +399,9 @@ function order_load_game_scene_stage_audio(
                 audio_SFX_game_scene_stage["L"][name]["LCT"] = {0}
                 audio_SFX_game_scene_stage["L"][name]["LCD"] = {0}
                 audio_SFX_game_scene_stage["L"][name]["audio"] = love.audio.newSource(
-                    STAGE_AUDIO_DATA["character_interactive_SFX"][name],
-                    "static"
+                    STAGE_AUDIO_DATA["character_interactive_SFX"][name],"static"
                 )
-                update_SFX_VOLUME(
-                    audio_SFX_game_scene_stage["L"][name]
-                )
+                update_SFX_VOLUME(audio_SFX_game_scene_stage["L"][name])
             end
         end,
         [2] = function()
@@ -481,12 +418,9 @@ function order_load_game_scene_stage_audio(
                 audio_SFX_game_scene_stage["R"][name]["LCT"] = {0}
                 audio_SFX_game_scene_stage["R"][name]["LCD"] = {0}
                 audio_SFX_game_scene_stage["R"][name]["audio"] = love.audio.newSource(
-                    STAGE_AUDIO_DATA["character_interactive_SFX"][name],
-                    "static"
+                    STAGE_AUDIO_DATA["character_interactive_SFX"][name],"static"
                 )
-                update_SFX_VOLUME(
-                    audio_SFX_game_scene_stage["R"][name]
-                )
+                update_SFX_VOLUME(audio_SFX_game_scene_stage["R"][name])
             end
         end,
         [3] = function()
@@ -498,39 +432,26 @@ function order_load_game_scene_stage_audio(
                 audio_environment_game_scene_stage[name]["LCT"] = {0}
                 audio_environment_game_scene_stage[name]["LCD"] = {0}
                 audio_environment_game_scene_stage[name]["audio"] = love.audio.newSource(
-                    STAGE_AUDIO_DATA["environment_SFX"][name],
-                    "static"
+                    STAGE_AUDIO_DATA["environment_SFX"][name],"static"
                 )
-                update_SFX_VOLUME(
-                    audio_environment_game_scene_stage[name]
-                )
+                update_SFX_VOLUME(audio_environment_game_scene_stage[name])
             end
         end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
-function load_game_scene_stage_apply_wallbreak_start_init(
-    hit_side_obj_char,
-    hurt_side_obj_char
-)
+function load_game_scene_stage_apply_wallbreak_start_init(hit_side_obj_char,hurt_side_obj_char)
     local hit_side = hit_side_obj_char["player_side"]
-    local hit_side_stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(
-        hit_side
-    )
+    local hit_side_stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(hit_side)
     local hurt_side = hurt_side_obj_char["player_side"]
     local hurt_side_adv = hurt_side_obj_char["wallhurt_wallbreak_adv"]
     local hurt_side_wallstick_on_side = hurt_side_obj_char["wallhurt_wallstick_on_side"]
-    local hurt_side_anchor_data = common_game_scene_get_anchor(
-        hurt_side
-    )
+    local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
     -- character_init
     hit_side_obj_char["state"] = "wallbreak_hit"
     hurt_side_obj_char["state"] = "wallbreak_hurt"
-    hurt_side_obj_char["y"] = math.min(
-        hurt_side_obj_char["y"],
-        -265
-    )
+    hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-265)
     if hurt_side_adv then
         hurt_side_obj_char["sprite_sheet"] = "0_wallbreak_hurt_adv"
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[hurt_side_obj_char["sprite_sheet"]]
@@ -561,156 +482,78 @@ function load_game_scene_stage_apply_wallbreak_start_init(
     obj_stage_game_scene_wallbreak_glow[2] = hurt_side_obj_char["y"] - 545
     obj_stage_game_scene_wallbreak_glow[5] = 2*hurt_side_wallstick_on_side
     -- update_animation
-    load_game_scene_anim_stage_camera_wallbreak(
-        obj_stage_game_scene_camera,
-        hurt_side_obj_char,
-        hurt_side_adv
-    )
-    load_game_scene_anim_point_linear_character_hit_side_wallbreak(
-        hit_side_obj_char,
-        hurt_side_wallstick_on_side
-    )
+    load_game_scene_anim_stage_camera_wallbreak(obj_stage_game_scene_camera,hurt_side_obj_char,hurt_side_adv)
+    load_game_scene_anim_point_linear_character_hit_side_wallbreak(hit_side_obj_char,hurt_side_wallstick_on_side)
     load_game_scene_anim_point_linear_character_hurt_side_wallbreak(
-        hurt_side_obj_char,
-        hurt_side_wallstick_on_side,
-        hurt_side_adv
+        hurt_side_obj_char,hurt_side_wallstick_on_side,hurt_side_adv
     )
     -- init_animation
     -- stage
-    init_stage_anim_with(
-        obj_stage_game_scene_main,
-        anim_stage_game_scene_wallbreak_main
-    )
+    init_stage_anim_with(obj_stage_game_scene_main,anim_stage_game_scene_wallbreak_main)
     -- camera
     init_point_linear_anim_with(
-        obj_stage_game_scene_camera,
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x
+        obj_stage_game_scene_camera,anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x
     )
     init_point_linear_anim_with(
-        obj_stage_game_scene_camera,
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y
+        obj_stage_game_scene_camera,anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y
     )
     init_point_linear_anim_with(
-        obj_stage_game_scene_camera,
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z
+        obj_stage_game_scene_camera,anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z
     )
     -- character
     -- hit_side
-    init_frame_anim_with(
-        hit_side_obj_char,
-        anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity
-    )
-    init_point_linear_anim_with(
-        hit_side_obj_char,
-        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x
-    )
-    init_point_linear_anim_with(
-        hit_side_obj_char,
-        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y
-    )
-    init_frame_anim_with(
-        hit_side_obj_char,
-        anim_stage_frame_game_scene_char_hit_side_wallbreak_frame
-    )
-    init_frame_anim_with(
-        hit_side_obj_char,
-        anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet
-    )
-    init_frame_anim_with(
-        hit_side_obj_char,
-        anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos
-    )
+    init_frame_anim_with(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity)
+    init_point_linear_anim_with(hit_side_obj_char,anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x)
+    init_point_linear_anim_with(hit_side_obj_char,anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y)
+    init_frame_anim_with(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_frame)
+    init_frame_anim_with(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet)
+    init_frame_anim_with(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos)
     -- hurt_side
     init_point_linear_anim_with(
-        hurt_side_obj_char,
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity
+        hurt_side_obj_char,anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity
     )
-    init_point_linear_anim_with(
-        hurt_side_obj_char,
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x
-    )
-    init_point_linear_anim_with(
-        hurt_side_obj_char,
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y
-    )
-    init_frame_anim_with(
-        hurt_side_obj_char,
-        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame
-    )
+    init_point_linear_anim_with(hurt_side_obj_char,anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x)
+    init_point_linear_anim_with(hurt_side_obj_char,anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y)
+    init_frame_anim_with(hurt_side_obj_char,anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame)
     -- wallbreak_objects
     init_point_linear_anim_with(
-        obj_stage_game_scene_wallbreak_after_debris,
-        anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity
+        obj_stage_game_scene_wallbreak_after_debris,anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity
     )
     init_frame_anim_with(
-        obj_stage_game_scene_wallbreak_after_debris,
-        anim_stage_frame_game_scene_wallbreak_after_debris_frame
+        obj_stage_game_scene_wallbreak_after_debris,anim_stage_frame_game_scene_wallbreak_after_debris_frame
     )
-    init_frame_anim_with(
-        obj_stage_game_scene_wallbreak_dynamic,
-        anim_stage_frame_game_scene_wallbreak_dynamic_opacity
-    )
-    init_frame_anim_with(
-        obj_stage_game_scene_wallbreak_dynamic,
-        anim_stage_frame_game_scene_wallbreak_dynamic_frame
-    )
+    init_frame_anim_with(obj_stage_game_scene_wallbreak_dynamic,anim_stage_frame_game_scene_wallbreak_dynamic_opacity)
+    init_frame_anim_with(obj_stage_game_scene_wallbreak_dynamic,anim_stage_frame_game_scene_wallbreak_dynamic_frame)
     init_point_linear_anim_with(
-        obj_stage_game_scene_wallbreak_smoke,
-        anim_stage_point_linear_game_scene_wallbreak_smoke_opacity
+        obj_stage_game_scene_wallbreak_smoke,anim_stage_point_linear_game_scene_wallbreak_smoke_opacity
     )
-    init_frame_anim_with(
-        obj_stage_game_scene_wallbreak_smoke,
-        anim_stage_frame_game_scene_wallbreak_smoke_frame
-    )
+    init_frame_anim_with(obj_stage_game_scene_wallbreak_smoke,anim_stage_frame_game_scene_wallbreak_smoke_frame)
     init_point_linear_anim_with(
-        obj_stage_game_scene_wallbreak_glow,
-        anim_stage_point_linear_game_scene_wallbreak_glow_opacity
+        obj_stage_game_scene_wallbreak_glow,anim_stage_point_linear_game_scene_wallbreak_glow_opacity
     )
     -- play_SFX
-    play_obj_audio(
-        hit_side_stage_interactive_SFX_table["wall_wallbreak"]
-    )
+    play_obj_audio(hit_side_stage_interactive_SFX_table["wall_wallbreak"])
 end
-function load_game_scene_stage_apply_wallbreak_end_init(
-    hit_side_obj_char,
-    hurt_side_obj_char
-)
+function load_game_scene_stage_apply_wallbreak_end_init(hit_side_obj_char,hurt_side_obj_char)
     local hurt_side_adv = hurt_side_obj_char["wallhurt_wallbreak_adv"]
     -- character
     hit_side_obj_char["state"] = "5_stand_idle"
-    hit_side_obj_char["character_animation"] = hit_side_obj_char["init_animation_load_function"](
-        hit_side_obj_char
-    )
+    hit_side_obj_char["character_animation"] = hit_side_obj_char["init_animation_load_function"](hit_side_obj_char)
     if hurt_side_adv then
         hurt_side_obj_char["state"] = "knockdown"
         hurt_side_obj_char["character_animation"] =
-        load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallbreak(
-            hit_side_obj_char,
-            hurt_side_obj_char
-        )
+        load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallbreak(hit_side_obj_char,hurt_side_obj_char)
     else
         hurt_side_obj_char["state"] = "5_stand_idle"
         hurt_side_obj_char["character_animation"] =
-        hurt_side_obj_char["init_animation_load_function"](
-            hurt_side_obj_char
-        )
+        hurt_side_obj_char["init_animation_load_function"](hurt_side_obj_char)
     end
     load_game_scene_wallbreak_end_init_LP()
     load_game_scene_wallbreak_end_init_RP()
-    common_game_scene_init_input_sys_state_for_wallbreak(
-        hurt_side_obj_char
-    )
-    common_game_scene_init_input_sys_state_for_wallbreak(
-        hit_side_obj_char
-    )
-    init_character_anim_with(
-        hit_side_obj_char,
-        hit_side_obj_char["character_animation"]
-    )
-    init_character_anim_with(
-        hurt_side_obj_char,
-        hurt_side_obj_char["character_animation"]
-    )
+    common_game_scene_init_input_sys_state_for_wallbreak(hurt_side_obj_char)
+    common_game_scene_init_input_sys_state_for_wallbreak(hit_side_obj_char)
+    init_character_anim_with(hit_side_obj_char,hit_side_obj_char["character_animation"])
+    init_character_anim_with(hurt_side_obj_char,hurt_side_obj_char["character_animation"])
     -- stage
     obj_stage_game_scene_main["f"] = 0
     obj_stage_game_scene_main["state"] = "main"
@@ -738,57 +581,32 @@ function update_game_scene_stage_camera_pos_sub()
     local obj_char_L = obj_char_game_scene_char_LP
     local obj_char_R = obj_char_game_scene_char_RP
     obj_stage_game_scene_mid_collision_anchor = (obj_char_L["x"] + obj_char_R["x"])/2
-    obj_camera["3d_pos_z_target"] = (math.abs(
-        obj_char_L["x"] - obj_char_R["x"]
-    ) - 720)*(-170)/720 - 800
-    obj_camera["3d_pos_z_target"] = math.min(
-        obj_camera["3d_pos_z_target"],
-        -800
-    )
-    obj_camera["3d_pos_z_target"] = math.max(
-        obj_camera["3d_pos_z_target"],
-        -970
-    )
+    obj_camera["3d_pos_z_target"] = (math.abs(obj_char_L["x"] - obj_char_R["x"]) - 720)*(-170)/720 - 800
+    obj_camera["3d_pos_z_target"] = math.min(obj_camera["3d_pos_z_target"],-800)
+    obj_camera["3d_pos_z_target"] = math.max(obj_camera["3d_pos_z_target"],-970)
     obj_camera["3d_pos_x_target"] = (obj_char_L["x"] + obj_char_R["x"])/2 -- 必须要保持两个pushbox宽度相同
     obj_camera["3d_pos_x_target"] = math.max(
-        obj_camera["3d_pos_x_target"],
-        -1350 - (obj_camera["3d_pos_z_target"] + 800)*1
+        obj_camera["3d_pos_x_target"],-1350 - (obj_camera["3d_pos_z_target"] + 800)*1
     )
     obj_camera["3d_pos_x_target"] = math.min(
-        obj_camera["3d_pos_x_target"],
-        1350 + (obj_camera["3d_pos_z_target"] + 800)*1
+        obj_camera["3d_pos_x_target"],1350 + (obj_camera["3d_pos_z_target"] + 800)*1
     )
-    obj_camera["3d_pos_y_target"] = math.min(
-        obj_char_L["y"],
-        obj_char_R["y"]
-    ) + 75
-    obj_camera["3d_pos_y_target"] = math.min(
-        obj_camera["3d_pos_y_target"],
-        -365
-    )
+    obj_camera["3d_pos_y_target"] = math.min(obj_char_L["y"],obj_char_R["y"]) + 75
+    obj_camera["3d_pos_y_target"] = math.min(obj_camera["3d_pos_y_target"],-365)
     obj_camera["3d_pos_y_target"] = obj_camera["3d_pos_y_target"] + (800 + obj_camera["3d_pos_z_target"])*0.5
-    obj_camera["3d_pos_y_target"] = math.max(
-        obj_camera["3d_pos_y_target"],
-        -900
-    )
+    obj_camera["3d_pos_y_target"] = math.max(obj_camera["3d_pos_y_target"],-900)
     -- camera_smooth_move
     local div_value = 3
     obj_camera["3d_pos_x"] = (obj_camera["3d_pos_x"]*(div_value - 1) + obj_camera["3d_pos_x_target"])/div_value
     obj_camera["3d_pos_y"] = (obj_camera["3d_pos_y"]*(div_value - 1) + obj_camera["3d_pos_y_target"])/div_value
     obj_camera["3d_pos_z"] = (obj_camera["3d_pos_z"]*(div_value - 1) + obj_camera["3d_pos_z_target"])/div_value
-    if math.abs(
-        obj_camera["3d_pos_x"] - obj_camera["3d_pos_x_target"]
-    ) < 0.05 then
+    if math.abs(obj_camera["3d_pos_x"] - obj_camera["3d_pos_x_target"]) < 0.05 then
         obj_camera["3d_pos_x"] = obj_camera["3d_pos_x_target"]
     end
-    if math.abs(
-        obj_camera["3d_pos_y"] - obj_camera["3d_pos_y_target"]
-    ) < 0.05 then
+    if math.abs(obj_camera["3d_pos_y"] - obj_camera["3d_pos_y_target"]) < 0.05 then
         obj_camera["3d_pos_y"] = obj_camera["3d_pos_y_target"]
     end
-    if math.abs(
-        obj_camera["3d_pos_z"] - obj_camera["3d_pos_z_target"]
-    ) < 0.05 then
+    if math.abs(obj_camera["3d_pos_z"] - obj_camera["3d_pos_z_target"]) < 0.05 then
         obj_camera["3d_pos_z"] = obj_camera["3d_pos_z_target"]
     end
 end
@@ -797,95 +615,38 @@ function update_game_scene_stage_wallbreak()
     local hit_side_obj_char = obj_stage_main["wallbreak_hit_side_obj_char"]
     local hurt_side_obj_char = obj_stage_main["wallbreak_hurt_side_obj_char"]
     -- stage
-    stage_animator(
-        obj_stage_game_scene_main,
-        anim_stage_game_scene_wallbreak_main
-    )
+    stage_animator(obj_stage_game_scene_main,anim_stage_game_scene_wallbreak_main)
     -- camera
-    point_linear_animator(
-        obj_stage_game_scene_camera,
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x
-    )
-    point_linear_animator(
-        obj_stage_game_scene_camera,
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y
-    )
-    point_linear_animator(
-        obj_stage_game_scene_camera,
-        anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z
-    )
+    point_linear_animator(obj_stage_game_scene_camera,anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_x)
+    point_linear_animator(obj_stage_game_scene_camera,anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_y)
+    point_linear_animator(obj_stage_game_scene_camera,anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z)
     -- character
     -- hurt_side
     point_linear_animator(
-        hurt_side_obj_char,
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity
+        hurt_side_obj_char,anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_shadow_opeacity
     )
-    point_linear_animator(
-        hurt_side_obj_char,
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x
-    )
-    point_linear_animator(
-        hurt_side_obj_char,
-        anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y
-    )
-    frame_animator(
-        hurt_side_obj_char,
-        anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame
-    )
+    point_linear_animator(hurt_side_obj_char,anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x)
+    point_linear_animator(hurt_side_obj_char,anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_y)
+    frame_animator(hurt_side_obj_char,anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame)
     -- hit_side
-    frame_animator(
-        hit_side_obj_char,
-        anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity
-    )
-    point_linear_animator(
-        hit_side_obj_char,
-        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x
-    )
-    point_linear_animator(
-        hit_side_obj_char,
-        anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y
-    )
-    frame_animator(
-        hit_side_obj_char,
-        anim_stage_frame_game_scene_char_hit_side_wallbreak_frame
-    )
-    frame_animator(
-        hit_side_obj_char,
-        anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet
-    )
-    frame_animator(
-        hit_side_obj_char,
-        anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos
-    )
+    frame_animator(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_shadow_opeacity)
+    point_linear_animator(hit_side_obj_char,anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x)
+    point_linear_animator(hit_side_obj_char,anim_stage_point_linear_game_scene_char_hit_side_wallbreak_y)
+    frame_animator(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_frame)
+    frame_animator(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_sprite_sheet)
+    frame_animator(hit_side_obj_char,anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos)
     -- wallbreak_objects
     point_linear_animator(
-        obj_stage_game_scene_wallbreak_after_debris,
-        anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity
+        obj_stage_game_scene_wallbreak_after_debris,anim_stage_point_linear_game_scene_wallbreak_after_debris_opacity
     )
-    frame_animator(
-        obj_stage_game_scene_wallbreak_after_debris,
-        anim_stage_frame_game_scene_wallbreak_after_debris_frame
-    )
-    frame_animator(
-        obj_stage_game_scene_wallbreak_dynamic,
-        anim_stage_frame_game_scene_wallbreak_dynamic_opacity
-    )
-    frame_animator(
-        obj_stage_game_scene_wallbreak_dynamic,
-        anim_stage_frame_game_scene_wallbreak_dynamic_frame
-    )
+    frame_animator(obj_stage_game_scene_wallbreak_after_debris,anim_stage_frame_game_scene_wallbreak_after_debris_frame)
+    frame_animator(obj_stage_game_scene_wallbreak_dynamic,anim_stage_frame_game_scene_wallbreak_dynamic_opacity)
+    frame_animator(obj_stage_game_scene_wallbreak_dynamic,anim_stage_frame_game_scene_wallbreak_dynamic_frame)
     point_linear_animator(
-        obj_stage_game_scene_wallbreak_smoke,
-        anim_stage_point_linear_game_scene_wallbreak_smoke_opacity
+        obj_stage_game_scene_wallbreak_smoke,anim_stage_point_linear_game_scene_wallbreak_smoke_opacity
     )
-    frame_animator(
-        obj_stage_game_scene_wallbreak_smoke,
-        anim_stage_frame_game_scene_wallbreak_smoke_frame
-    )
-    point_linear_animator(
-        obj_stage_game_scene_wallbreak_glow,
-        anim_stage_point_linear_game_scene_wallbreak_glow_opacity
-    )
+    frame_animator(obj_stage_game_scene_wallbreak_smoke,anim_stage_frame_game_scene_wallbreak_smoke_frame)
+    point_linear_animator(obj_stage_game_scene_wallbreak_glow,anim_stage_point_linear_game_scene_wallbreak_glow_opacity)
     -- state_machine
     state_machine_stage_game_scene_camera()
 end
@@ -906,30 +667,12 @@ function state_machine_stage_game_scene_camera()
         end,
         ["active"] = function()
             update_game_scene_stage_camera_pos_sub()
-            point_linear_animator(
-                obj_camera,
-                anim_stage_point_linear_game_scene_camera_enclosing
-            )
-            point_linear_animator(
-                obj_camera,
-                anim_stage_point_linear_game_scene_camera_shake_x
-            )
-            point_linear_animator(
-                obj_camera,
-                anim_stage_point_linear_game_scene_camera_shake_y
-            )
-            if get_point_linear_anim_end_state(
-                obj_camera,
-                anim_stage_point_linear_game_scene_camera_enclosing
-            )
-            and get_point_linear_anim_end_state(
-                obj_camera,
-                anim_stage_point_linear_game_scene_camera_shake_x
-            )
-            and get_point_linear_anim_end_state(
-                obj_camera,
-                anim_stage_point_linear_game_scene_camera_shake_y
-            ) then
+            point_linear_animator(obj_camera,anim_stage_point_linear_game_scene_camera_enclosing)
+            point_linear_animator(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+            point_linear_animator(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
+            if get_point_linear_anim_end_state(obj_camera,anim_stage_point_linear_game_scene_camera_enclosing)
+            and get_point_linear_anim_end_state(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
+            and get_point_linear_anim_end_state(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y) then
                 obj_camera["state"] = "main"
                 obj_camera["enclose_position_offset"] = {0,0,0}
             end
@@ -955,14 +698,8 @@ function state_machine_stage_game_scene_wallstick()
         ["off"] = function()
         end,
         ["ease_in"] = function()
-            frame_animator(
-                obj_wallstick,
-                anim_state_frame_game_scene_wallstick_ease_in
-            )
-            if get_frame_anim_end_state(
-                obj_wallstick,
-                anim_state_frame_game_scene_wallstick_ease_in
-            ) then
+            frame_animator(obj_wallstick,anim_state_frame_game_scene_wallstick_ease_in)
+            if get_frame_anim_end_state(obj_wallstick,anim_state_frame_game_scene_wallstick_ease_in) then
                 obj_wallstick["state"] = "pause"
             end
         end,
@@ -970,21 +707,12 @@ function state_machine_stage_game_scene_wallstick()
             obj_wallstick["pause_countdown"] = obj_wallstick["pause_countdown"] - 1
             if obj_wallstick["pause_countdown"] <= 0 then
                 obj_wallstick["state"] = "ease_out"
-                init_frame_anim_with(
-                    obj_wallstick,
-                    anim_state_frame_game_scene_wallstick_ease_out
-                )
+                init_frame_anim_with(obj_wallstick,anim_state_frame_game_scene_wallstick_ease_out)
             end
         end,
         ["ease_out"] = function()
-            frame_animator(
-                obj_wallstick,
-                anim_state_frame_game_scene_wallstick_ease_out
-            )
-            if get_frame_anim_end_state(
-                obj_wallstick,
-                anim_state_frame_game_scene_wallstick_ease_out
-            ) then
+            frame_animator(obj_wallstick,anim_state_frame_game_scene_wallstick_ease_out)
+            if get_frame_anim_end_state(obj_wallstick,anim_state_frame_game_scene_wallstick_ease_out) then
                 obj_wallstick[4] = 0
                 obj_wallstick[8] = 0
                 obj_wallstick["state"] = "off"
@@ -996,52 +724,24 @@ function state_machine_stage_game_scene_wallstick()
 end
 -- draw
 function draw_game_scene_stage_static()
-    love.graphics.clear(
-        125/255,
-        125/255,
-        125/255,
-        1
-    )
+    love.graphics.clear(125/255,125/255,125/255,1)
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = nil
     local obj = nil
     obj = obj_stage_game_scene_tile_map
-    draw_3d_image(
-        obj_camera,
-        obj,
-        image_stage_game_scene_tile_map
-    )
+    draw_3d_image(obj_camera,obj,image_stage_game_scene_tile_map)
     obj = obj_stage_game_scene_stair
-    draw_3d_image(
-        obj_camera,
-        obj,
-        image_sprite_batch_stage_game_scene_stair
-    )
+    draw_3d_image(obj_camera,obj,image_sprite_batch_stage_game_scene_stair)
     obj = obj_stage_game_scene_ground
-    draw_3d_image(
-        obj_camera,
-        obj,
-        image_sprite_batch_stage_game_scene_ground
-    )
+    draw_3d_image(obj_camera,obj,image_sprite_batch_stage_game_scene_ground)
     -- common
     obj = obj_stage_game_scene_wallstick
     image_sprite_sheet = image_sprite_sheet_stage_game_scene_wallstick[obj["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
-    draw_3d_image_sprite_batch(
-        obj_camera,
-        obj,
-        image_sprite_sheet,
-        ""..obj[8]..""
-    )
-    love.graphics.setBlendMode(
-        "add"
-    )
-    love.graphics.draw(
-        image_sprite_sheet["sprite_batch"]
-    )
-    love.graphics.setBlendMode(
-        "alpha"
-    )
+    draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
+    love.graphics.setBlendMode("add")
+    love.graphics.draw(image_sprite_sheet["sprite_batch"])
+    love.graphics.setBlendMode("alpha")
 end
 function draw_game_scene_stage_glow()
     local obj_camera = obj_stage_game_scene_camera
@@ -1052,141 +752,45 @@ function draw_game_scene_stage_glow()
     local camera_x = obj_camera[1]
     local camera_y = obj_camera[2]
     local camera_z = obj_camera[3]
-    local scale = draw_resolution_correction(
-        800
-    )/(z - camera_z)
+    local scale = draw_resolution_correction(800)/(z - camera_z)
     local width = love.graphics.getWidth()
     local height = love.graphics.getHeight()
     local cood_res = {
-        scale*(x - camera_x) + draw_resolution_correction(
-            800
-        ),
-        scale*(y - camera_y) + draw_resolution_correction(
-            450
-        )
+        scale*(x - camera_x) + draw_resolution_correction(800),
+        scale*(y - camera_y) + draw_resolution_correction(450)
     }
-    love.graphics.setCanvas(
-        DRAW_STAGE_ALPHA_ONLY_CANVAS
-    )
-    love.graphics.clear(
-        0,
-        0,
-        0,
-        0
-    )
-    love.graphics.rectangle(
-        "fill",
-        0,
-        0,
-        width,
-        height/2
-    )
+    love.graphics.setCanvas(DRAW_STAGE_ALPHA_ONLY_CANVAS)
+    love.graphics.clear(0,0,0,0)
+    love.graphics.rectangle("fill",0,0,width,height/2)
     love.graphics.draw(
-        image_stage_game_scene_stage_liner_fade_alpha,
-        0,
-        -camera_y*0.375,
-        0,
-        draw_resolution_correction(1),
+        image_stage_game_scene_stage_liner_fade_alpha,0,-camera_y*0.375,0,draw_resolution_correction(1),
         draw_resolution_correction(1)
     )
-    love.graphics.setCanvas(
-        DRAW_STAGE_GLOW_CANVAS
-    )
-    love.graphics.clear(
-        0,
-        0,
-        0,
-        0
-    )
-    love.graphics.setShader(
-        shader_game_scene_fractal_noise
-    )
-    shader_game_scene_fractal_noise:send(
-        "time",
-        love.timer.getTime()
-    )
-    shader_game_scene_fractal_noise:send(
-        "input_x",
-        0
-    )
-    love.graphics.rectangle(
-        "fill",
-        0,
-        0,
-        width,
-        height
-    )
-    love.graphics.setCanvas(
-        DRAW_STAGE_RADIAL_BLUR_CANVAS
-    )
-    love.graphics.clear(
-        0,
-        0,
-        0,
-        0
-    )
-    love.graphics.setShader(
-        shader_game_scene_radial_blur
-    )
-    shader_game_scene_radial_blur:send(
-        "start_coods",
-        cood_res
-    )
-    shader_game_scene_radial_blur:send(
-        "input_screen_coords",
-        {width,height}
-    )
-    love.graphics.draw(
-        DRAW_STAGE_GLOW_CANVAS,
-        0,
-        0
-    )
+    love.graphics.setCanvas(DRAW_STAGE_GLOW_CANVAS)
+    love.graphics.clear(0,0,0,0)
+    love.graphics.setShader(shader_game_scene_fractal_noise)
+    shader_game_scene_fractal_noise:send("time",love.timer.getTime())
+    shader_game_scene_fractal_noise:send("input_x",0)
+    love.graphics.rectangle("fill",0,0,width,height)
+    love.graphics.setCanvas(DRAW_STAGE_RADIAL_BLUR_CANVAS)
+    love.graphics.clear(0,0,0,0)
+    love.graphics.setShader(shader_game_scene_radial_blur)
+    shader_game_scene_radial_blur:send("start_coods",cood_res)
+    shader_game_scene_radial_blur:send("input_screen_coords",{width,height})
+    love.graphics.draw(DRAW_STAGE_GLOW_CANVAS,0,0)
     love.graphics.setShader()
-    love.graphics.setCanvas(
-        DRAW_STAGE_ALPHA_COMP_CANVAS
-    )
-    love.graphics.clear(
-        0,
-        0,
-        0,
-        0
-    )
-    love.graphics.draw(
-        DRAW_STAGE_RADIAL_BLUR_CANVAS
-    )
-    love.graphics.setBlendMode(
-        'multiply',
-        'premultiplied'
-    )
-    love.graphics.draw(
-        DRAW_STAGE_ALPHA_ONLY_CANVAS
-    )
-    love.graphics.setBlendMode(
-        'alpha',
-        'alphamultiply'
-    )
+    love.graphics.setCanvas(DRAW_STAGE_ALPHA_COMP_CANVAS)
+    love.graphics.clear(0,0,0,0)
+    love.graphics.draw(DRAW_STAGE_RADIAL_BLUR_CANVAS)
+    love.graphics.setBlendMode('multiply','premultiplied')
+    love.graphics.draw(DRAW_STAGE_ALPHA_ONLY_CANVAS)
+    love.graphics.setBlendMode('alpha','alphamultiply')
     love.graphics.setCanvas()
-    love.graphics.setBlendMode(
-        "add"
-    )
-    love.graphics.setColor(
-        1,
-        1,
-        1,
-        0.675
-    )
-    love.graphics.draw(
-        DRAW_STAGE_ALPHA_COMP_CANVAS
-    )
-    love.graphics.setColor(
-        1,
-        1,
-        1,
-        1
-    )
-    love.graphics.setBlendMode(
-        "alpha"
-    )
+    love.graphics.setBlendMode("add")
+    love.graphics.setColor(1,1,1,0.675)
+    love.graphics.draw(DRAW_STAGE_ALPHA_COMP_CANVAS)
+    love.graphics.setColor(1,1,1,1)
+    love.graphics.setBlendMode("alpha")
 end
 function draw_game_scene_stage_wallbreak_at_character_back()
     -- local obj_camera = obj_stage_game_scene_camera
@@ -1201,71 +805,31 @@ function draw_game_scene_stage_wallbreak_at_character_front()
     local image_sprite_sheet = nil
     local obj = nil
     obj = obj_stage_game_scene_wallbreak_glow
-    love.graphics.setBlendMode(
-        "add"
-    )
-    draw_3d_image(
-        obj_camera,
-        obj,
-        image_stage_game_scene_wallbreak_glow
-    )
-    love.graphics.setBlendMode(
-        "alpha"
-    )
+    love.graphics.setBlendMode("add")
+    draw_3d_image(obj_camera,obj,image_stage_game_scene_wallbreak_glow)
+    love.graphics.setBlendMode("alpha")
     obj = obj_stage_game_scene_wallbreak_after_debris
     image_sprite_sheet = image_sprite_sheet_stage_game_scene_wallbreak_after_debris
     image_sprite_sheet["sprite_batch"]:clear()
-    draw_3d_image_sprite_batch(
-        obj_camera,
-        obj,
-        image_sprite_sheet,
-        ""..obj[8]..""
-    )
-    love.graphics.setBlendMode(
-        "add"
-    )
-    love.graphics.draw(
-        image_sprite_sheet["sprite_batch"]
-    )
-    love.graphics.setBlendMode(
-        "alpha"
-    )
+    draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
+    love.graphics.setBlendMode("add")
+    love.graphics.draw(image_sprite_sheet["sprite_batch"])
+    love.graphics.setBlendMode("alpha")
     obj = obj_stage_game_scene_wallbreak_dynamic
     image_sprite_sheet = image_sprite_sheet_stage_game_scene_wallbreak_dynamic
     image_sprite_sheet["sprite_batch"]:clear()
-    draw_3d_image_sprite_batch(
-        obj_camera,
-        obj,
-        image_sprite_sheet,
-        ""..obj[8]..""
-    )
-    love.graphics.setBlendMode(
-        "add"
-    )
-    love.graphics.draw(
-        image_sprite_sheet["sprite_batch"]
-    )
-    love.graphics.setBlendMode(
-        "alpha"
-    )
+    draw_3d_image_sprite_batch(obj_camera,obj,image_sprite_sheet,""..obj[8].."")
+    love.graphics.setBlendMode("add")
+    love.graphics.draw(image_sprite_sheet["sprite_batch"])
+    love.graphics.setBlendMode("alpha")
     obj = obj_stage_game_scene_wallbreak_smoke
     image_sprite_sheet = image_sprite_sheet_stage_game_scene_wallbreak_smoke
     image_sprite_sheet["sprite_batch"]:clear()
-    draw_2d_image_sprite_batch(
-        obj,
-        image_sprite_sheet,
-        ""..obj[8]..""
-    )
-    love.graphics.draw(
-        image_sprite_sheet["sprite_batch"]
-    )
+    draw_2d_image_sprite_batch(obj,image_sprite_sheet,""..obj[8].."")
+    love.graphics.draw(image_sprite_sheet["sprite_batch"])
 end
 -- stage_animation_load_function
-function load_game_scene_anim_stage_camera_wallbreak(
-    obj_camera,
-    hurt_side_obj_char,
-    adv
-)
+function load_game_scene_anim_stage_camera_wallbreak(obj_camera,hurt_side_obj_char,adv)
     local x_dst = 2290
     local obj_camera_start_x = obj_camera["3d_pos_x"]
     local hurt_side_wallstick_on_side = hurt_side_obj_char["wallhurt_wallstick_on_side"]
@@ -1408,14 +972,9 @@ function load_game_scene_anim_stage_camera_wallbreak(
     anim_stage_point_linear_game_scene_camera_wallbreak_3d_pos_z["fix_type"] = true
 end
 -- frame_and_point_linear_animation
-function load_game_scene_anim_point_linear_character_hit_side_wallbreak(
-    hit_side_obj_char,
-    wallstick_on_side
-)
+function load_game_scene_anim_point_linear_character_hit_side_wallbreak(hit_side_obj_char,wallstick_on_side)
     local hit_side_wallbreak_hit_anchor =
-    common_game_scene_get_anchor(
-        hit_side_obj_char["player_side"]
-    )["0_wallbreak_hit"]
+    common_game_scene_get_anchor(hit_side_obj_char["player_side"])["0_wallbreak_hit"]
     -- 105f-150f
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x = {}
     anim_stage_point_linear_game_scene_char_hit_side_wallbreak_x[0] = {hit_side_obj_char["x"],104}
@@ -1471,17 +1030,11 @@ function load_game_scene_anim_point_linear_character_hit_side_wallbreak(
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["length"] = 150
     anim_stage_frame_game_scene_char_hit_side_wallbreak_anchor_pos["loop"] = false
 end
-function load_game_scene_anim_point_linear_character_hurt_side_wallbreak(
-    hurt_side_obj_char,
-    wallstick_on_side,
-    adv
-)
+function load_game_scene_anim_point_linear_character_hurt_side_wallbreak(hurt_side_obj_char,wallstick_on_side,adv)
     -- stage_anim
     local hurt_side = hurt_side_obj_char["player_side"]
     anim_stage_game_scene_wallbreak_main[125] = function()
-        play_obj_audio(
-            audio_environment_game_scene_stage["wallbreak_knockdown"]
-        )
+        play_obj_audio(audio_environment_game_scene_stage["wallbreak_knockdown"])
     end
     -- wallbreak_x
     anim_stage_point_linear_game_scene_char_hurt_side_wallbreak_x = {}

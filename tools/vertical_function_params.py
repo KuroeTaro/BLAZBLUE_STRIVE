@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 """
+【已废弃 2026-09-29】已被 `tools/wrap_arg_lists.py` 取代（形参表与实参表同一套规则）。
+**不要再跑本工具**，它会把已经收成一行的形参表重新竖排。保留代码仅作历史参考。
+
 把 `function` 声明的形参表统一改成竖排（每个形参一行）。
 
 规则（沿用本仓库既有 `(` 续行规范，见 docs / repo memory）：
@@ -10,7 +13,8 @@
 - 形参缩进 = 语句缩进 **+4**；`)` 回到语句缩进单独一行。
 - 只处理**具名声明**：`function name(...)`、`local function name(...)`、
   `function a.b.c(...)`、`function a:b(...)`。
-- **不处理**：无形参的 `function foo()`（无参可竖排）、匿名函数表达式
+- **不处理**：无形参的 `function foo()`、**只有一个形参**的声明（用户 2026-09-29 追加规则：
+  单参数不换行，见 `tools/rejoin_single_args.py`）、匿名函数表达式
   （`function(...)` 回调、`x = function(i) ... end`）——它们不是声明，竖排会很难看。
 - 已经是竖排的（`(` 后即换行）跳过，因此可重复执行（幂等）。
 
@@ -21,9 +25,10 @@
 - 折行后复跑应无任何可改项（幂等）。
 
 用法:
-    python tools/vertical_function_params.py           # 只报告
-    python tools/vertical_function_params.py --fix     # 实际写回
-    python tools/vertical_function_params.py --show 4  # 打印 before/after 样例
+    python tools/vertical_function_params.py                # 只报告
+    python tools/vertical_function_params.py --fix          # 实际写回
+    python tools/vertical_function_params.py --show 4       # 打印 before/after 样例
+    python tools/vertical_function_params.py --min-params 1 # 连单形参也竖排（旧行为）
 """
 import io
 import os
@@ -62,11 +67,12 @@ def line_text_of(src, starts, offset):
     return text
 
 
-def collect_edits(src):
+def collect_edits(src, min_params=2):
     """返回 (edits, stats, records)。
 
     edits   = [(start, end, replacement)]
     records = [(decl_start, decl_end, local_edits)]，用于生成 before/after 样例。
+    min_params < 2 时单形参声明也会被竖排（旧行为）。
     """
     tokens = C.tokenize(src)
     starts = [s for s, _e in W.iter_lines(src)]
@@ -127,6 +133,10 @@ def collect_edits(src):
             elif tx == "," and depth == 0:
                 commas.append(q)
 
+        if len(commas) + 1 < min_params:
+            stats["参数不足(跳过)"] += 1
+            continue
+
         base = line_text_of(src, starts, start)
         base = base[:len(base) - len(base.lstrip(" \t"))]
         ind4 = base + ("\t" if "\t" in base else "    ")
@@ -176,6 +186,7 @@ def main():
     show = 0
     if "--show" in argv:
         show = int(argv[argv.index("--show") + 1])
+    min_params = int(argv[argv.index("--min-params") + 1]) if "--min-params" in argv else 2
 
     files = C.collect_files()
     total = collections.Counter()
@@ -187,7 +198,7 @@ def main():
         rel = os.path.relpath(path, C.ROOT).replace("\\", "/")
         with io.open(path, "r", encoding="utf-8", newline="") as f:
             src = f.read()
-        edits, stats, records = collect_edits(src)
+        edits, stats, records = collect_edits(src, min_params)
         if not stats:
             continue
         new_src, n_applied = apply_edits(src, edits)
@@ -214,7 +225,7 @@ def main():
             if (new_src.count("\r\n") < src.count("\r\n")
                     or (new_src.count("\n") - new_src.count("\r\n")) < (src.count("\n") - src.count("\r\n"))):
                 raise RuntimeError("行尾符减少，已中止（未写入任何文件）：%s" % path)
-            _, stats2, _ = collect_edits(new_src)
+            _, stats2, _ = collect_edits(new_src, min_params)
             if stats2.get("已竖排"):
                 raise RuntimeError("未收敛（不幂等）：%s" % path)
             pending.append((path, new_src))
@@ -225,7 +236,7 @@ def main():
                 f.write(new_src)
 
     lines = []
-    lines.append("function 声明形参竖排报告")
+    lines.append("function 声明形参竖排报告（min-params=%d）" % min_params)
     lines.append("已改文件：%d 个" % len(pending) if do_fix else "（本次为试算，未写回）")
     lines.append("统计：" + ", ".join("%s=%d" % (k, v) for k, v in sorted(total.items())))
     lines.append("")
@@ -233,7 +244,7 @@ def main():
     with io.open(REPORT_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
 
-    print("试算/写回：%s" % ("写回" if do_fix else "仅试算"))
+    print("试算/写回：%s | min-params=%d" % ("写回" if do_fix else "仅试算", min_params))
     print("已改文件：%d 个" % len(pending))
     print("统计：" + ", ".join("%s=%d" % (k, v) for k, v in sorted(total.items())))
     print("详细报告：%s" % os.path.relpath(REPORT_PATH, C.ROOT))

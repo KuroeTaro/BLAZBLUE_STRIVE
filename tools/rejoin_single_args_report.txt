@@ -1,0 +1,17 @@
+单参数合并回一行报告（max-len=120）
+已改文件：1 个
+统计：多参数(不适用)=5709, 已单行(跳过)=3647, 已合并=9, 已合并:call=6, 已合并:decl=3, 无参数(跳过)=1446, 缩进修正=0, 跳过:合并后超长=10
+
+update_general_use_functions/collision.lua  —— 合并 9 个（声明 3 / 调用 6）+ 缩进修正 0
+
+---- 跳过明细（10 处）----
+scenes/game_scene/_common/_VFX.lua:3316  [合并后超长(124)|call]  common_game_scene_get_VFX_spawn_anchor(
+scenes/game_scene/_common/_VFX.lua:3386  [合并后超长(124)|call]  common_game_scene_get_VFX_spawn_anchor(
+scenes/game_scene/_common/_VFX.lua:3459  [合并后超长(124)|call]  common_game_scene_get_VFX_spawn_anchor(
+scenes/game_scene/_common/_VFX.lua:3532  [合并后超长(124)|call]  common_game_scene_get_VFX_spawn_anchor(
+scenes/game_scene/_common/init.lua:65  [合并后超长(122)|call]  [1] = function() shader_game_scene_fractal_noise = love.graphics.newShader(
+scenes/game_scene/_common/init.lua:69  [合并后超长(127)|call]  [3] = function() shader_game_scene_shadow_radial_blur = love.graphics.newShader(
+scenes/game_scene/_common/init.lua:72  [合并后超长(129)|call]  [4] = function() shader_game_scene_brightness_contrast = love.graphics.newShader(
+scenes/game_scene/_common/main_blocks.lua:828  [合并后超长(146)|call]  print(
+scenes/game_scene/_common/main_blocks.lua:831  [合并后超长(162)|call]  print(
+scenes/game_scene/_common/main_blocks.lua:834  [合并后超长(125)|call]  print(
