@@ -4560,7 +4560,7 @@ function state_gate_game_scene_char_RP_4SP_S_to_special(
                 self_side_obj_char[5] = -self_side_obj_char[5]
             end
             self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_P(
-                self_side_obj_char,opponent_side_obj_char,"4SP_S_4P",{275,525}
+                self_side_obj_char,opponent_side_obj_char,"4SP_S_4P",{190,515}
             )
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "4SP_P"

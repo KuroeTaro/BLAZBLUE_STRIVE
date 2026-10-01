@@ -8135,7 +8135,7 @@ function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_cha
         -- draw_correction
         hit_side_obj_char[8] = 1
     end
-    res[11] = function()
+    res[10] = function()
         -- draw_correction
         hit_side_obj_char[8] = 2
     end
