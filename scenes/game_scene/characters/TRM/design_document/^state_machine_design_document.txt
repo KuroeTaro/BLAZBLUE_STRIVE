@@ -383,11 +383,16 @@ _j5Launcher
     _7_8_9_jump_air(air_move+hit_cancel)(animation_end)
 
 
-!all sp move has a overdrive version
+!some sp move has a overdrive version
 _4SP_P
     _burst_RC_purple
     _7_8_9_pre_jump
     _5_stand_idle
+    ----
+    -- uncommon_state_change_case
+        -- self
+        -- _4SP_S
+        -- _6SP_S
 _6SP_P
     _burst_RC_purple
     _5_stand_idle
@@ -416,6 +421,9 @@ _4SP_S
     _6SP_S||_4SP_S_6S
     _4SP_S_SP_H||_4SP_S_H
     _5_stand_idle
+    ----
+    -- uncommon_state_change_case
+        -- _4SP_P
 _4SP_S_4dash
     _burst_RC_purple
     _4SP_S_6UA
@@ -440,6 +448,8 @@ _4SP_S_4S
 _4SP_S_H||_4SP_S_SP_H
     _burst_RC_purple
     _5_stand_idle
+    -- uncommon_state_change_case
+        -- _4SP_P
 _4SP_S_2Launcher
     _burst_RC_purple
     _5_stand_idle
@@ -518,3 +528,16 @@ _4SP_S_6UA
 
 
 ________________________________________
+
+rework_plan
+_4SP_P //ok
+    -- uncommon_state_change_case
+        -- _4SP_P //ok
+        -- _4SP_S
+        -- _6SP_S //ok
+_4SP_S
+    -- uncommon_state_change_case
+        -- _4SP_P
+_4SP_S_4S
+
+_4SP_S_H
