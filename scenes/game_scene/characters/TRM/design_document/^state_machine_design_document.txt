@@ -533,11 +533,11 @@ rework_plan
 _4SP_P //ok
     -- uncommon_state_change_case
         -- _4SP_P //ok
-        -- _4SP_S
+        -- _4SP_S //ok
         -- _6SP_S //ok
 _4SP_S
     -- uncommon_state_change_case
-        -- _4SP_P
-_4SP_S_4S
+        -- _4SP_P //ok
+_4SP_S_4S   //ok
 
-_4SP_S_H
+_4SP_S_H    //ok
