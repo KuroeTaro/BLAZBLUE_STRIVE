@@ -7495,8 +7495,11 @@ function load_game_scene_anim_char_TRM_4SP_P(hit_side_obj_char,hurt_side_obj_cha
         common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
     end
     res[15] = function()
+        -- state
+        hit_side_obj_char["sprite_sheet"] = "4SP_P"
         -- draw_correction
         hit_side_obj_char[8] = 3
+        hit_side_obj_char["anchor_pos"] = {190,515}
     end
     res[19] = function()
         -- draw_correction
@@ -8066,14 +8069,14 @@ function load_game_scene_anim_char_TRM_6SP_K(hit_side_obj_char,hurt_side_obj_cha
     return res
 end
 -- _4SP_S
-function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_char)
+function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_char,sprite_sheet,anchor_pos)
     local res = {}
     local hit_side = hit_side_obj_char["player_side"]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     res["prop_f"] = "f"
-    res["anim_length"] = 117
+    res["anim_length"] = 145
     for i = 1,23 do
-        res[i*4 + 20] = function()
+        res[i*5 + 24] = function()
             -- draw_correction
             hit_side_obj_char[8] = i + 5
         end
@@ -8082,7 +8085,7 @@ function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_cha
         -- pre_set
         common_game_scene_reset_velocity_by_ground_friction(hit_side_obj_char)
         -- state
-        hit_side_obj_char["sprite_sheet"] = "4SP_S"
+        hit_side_obj_char["sprite_sheet"] = sprite_sheet
         hit_side_obj_char["height"] = "stand" -- stand crouch air OTG wallstick
         hit_side_obj_char["hit_type"] = "none" -- none strike throw burst
         hit_side_obj_char["hit_guard_type"] = "all" -- none all low mid high
@@ -8125,23 +8128,24 @@ function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 0
-        hit_side_obj_char["anchor_pos"] = {325,510}
+        hit_side_obj_char["anchor_pos"] = anchor_pos
         -- play_SFX
         play_obj_audio(hit_side_move_SFX_table["4SP_S_whiff"])
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
-    res[5] = function()
+    res[1] = function()
+        -- state
+        hit_side_obj_char["sprite_sheet"] = "4SP_S"
         -- draw_correction
         hit_side_obj_char[8] = 1
+        hit_side_obj_char["anchor_pos"] = {325,510}
     end
-    res[10] = function()
+    res[6] = function()
         -- draw_correction
         hit_side_obj_char[8] = 2
     end
-    res[14] = function()
-        -- collide
-        hit_side_obj_char["hurtbox_table"] = {{0,-200,200,400},{0,-410,120,20}}
+    res[11] = function()
         -- draw_correction
         hit_side_obj_char[8] = 3
     end
@@ -8164,25 +8168,26 @@ function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_cha
         common_game_scene_get_input_sys_cache_state_machine(hit_side)()
         hit_side_obj_char["input_sys_state_negative_edge"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_negative_edge_state_machine(hit_side)()
-        -- collide
-        hit_side_obj_char["hurtbox_table"] = {{0,-190,220,380}}
         -- draw_correction
         hit_side_obj_char[8] = 4
     end
-    res[20] = function()
+    res[24] = function()
         -- draw_correction
         hit_side_obj_char[8] = 5
     end
-    res[116] = function()
+    res[144] = function()
         -- state
-        hit_side_obj_char["f"] = 20
+        hit_side_obj_char["f"] = 24
         -- draw_correction
         hit_side_obj_char[8] = 5
     end
-    res[117] = function()
+    res[145] = function()
         -- animation_end
     end
     return res
+end
+-- _4SP_S_H
+function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_char)
 end
 -- _4SP_S_4dash
 -- _4SP_S_6dash
@@ -8239,26 +8244,18 @@ function load_game_scene_anim_char_TRM_4SP_S_4S(hit_side_obj_char,hurt_side_obj_
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 0
-        hit_side_obj_char["anchor_pos"] = {275,510}
+        hit_side_obj_char["anchor_pos"] = {155,510}
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
-    res[3] = function()
+    res[6] = function()
         -- draw_correction
         hit_side_obj_char[8] = 1
-    end
-    res[7] = function()
-        -- draw_correction
-        hit_side_obj_char[8] = 2
     end
     res[11] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
-    end
-    res[12] = function()
-        -- draw_correction
-        hit_side_obj_char[8] = 3
     end
     res[16] = function()
         -- state
@@ -8427,8 +8424,11 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char[8] = 1
     end
     res[5] = function()
+        -- state
+        hit_side_obj_char["sprite_sheet"] = sprite_sheet
         -- draw_correction
         hit_side_obj_char[8] = 2
+        hit_side_obj_char["anchor_pos"] = anchor_pos
     end
     res[8] = function()
         -- state

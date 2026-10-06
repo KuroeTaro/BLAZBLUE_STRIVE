@@ -15,78 +15,14 @@
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":600},
 	"sourceSize": {"w":400,"h":600}
-},
-"2":
-{
-	"frame": {"x":800,"y":0,"w":400,"h":600},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":600},
-	"sourceSize": {"w":400,"h":600}
-},
-"3":
-{
-	"frame": {"x":1200,"y":0,"w":400,"h":600},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":600},
-	"sourceSize": {"w":400,"h":600}
-},
-"4":
-{
-	"frame": {"x":1600,"y":0,"w":400,"h":600},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":600},
-	"sourceSize": {"w":400,"h":600}
-},
-"5":
-{
-	"frame": {"x":0,"y":600,"w":400,"h":600},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":600},
-	"sourceSize": {"w":400,"h":600}
-},
-"6":
-{
-	"frame": {"x":400,"y":600,"w":400,"h":600},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":600},
-	"sourceSize": {"w":400,"h":600}
-},
-"7":
-{
-	"frame": {"x":800,"y":600,"w":400,"h":600},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":600},
-	"sourceSize": {"w":400,"h":600}
-},
-"8":
-{
-	"frame": {"x":1200,"y":600,"w":400,"h":600},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":600},
-	"sourceSize": {"w":400,"h":600}
-},
-"9":
-{
-	"frame": {"x":1600,"y":600,"w":400,"h":600},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":600},
-	"sourceSize": {"w":400,"h":600}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "TRM_4SP_P_6SP_S",
+	"image": "4SP_P_6SP_S",
 	"format": "RGBA8888",
-	"size": {"w":2000,"h":1200},
+	"size": {"w":800,"h":600},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:e23e921d47fd922944be7df9b001696c:4edd4d2bfc5d721042423bd26f28fb0d:3b34a59f5b67948b7a161427eac81bfd$"
+	"smartupdate": "$TexturePacker:SmartUpdate:46b0a2707e5552e94677d9e9f0f5ee56:5da1e4a8a42be258ef83e6a6b39e83db:fae3329bd64c0cd5e69237a22ba07f40$"
 }
 }

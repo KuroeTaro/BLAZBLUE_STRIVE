@@ -1358,9 +1358,11 @@ function order_load_game_scene_char_RP_frames(load_order)
         [25] = function()
             local load_name_table = {
                 "4SP_P_4SP_P",
+                "4SP_P_4SP_S",
                 "4SP_P_6SP_S",
                 "4SP_S_4P",
-                "4SP_S_4S"
+                "4SP_S_4S",
+                "4SP_S_H"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] =
@@ -3711,7 +3713,7 @@ function state_gate_game_scene_char_RP_common_ground_to_special_move(
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S(
-            self_side_obj_char,opponent_side_obj_char
+            self_side_obj_char,opponent_side_obj_char,"4SP_S",{325,510}
         )
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "4SP_S"
@@ -3814,7 +3816,7 @@ function state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S(
-            self_side_obj_char,opponent_side_obj_char
+            self_side_obj_char,opponent_side_obj_char,"4SP_S",{325,510}
         )
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "4SP_S"
@@ -4522,7 +4524,7 @@ function state_gate_game_scene_char_RP_4SP_P_to_special(
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S(
-            self_side_obj_char,opponent_side_obj_char
+            self_side_obj_char,opponent_side_obj_char,"4SP_P_4SP_S",{325,510}
         )
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "4SP_S"
