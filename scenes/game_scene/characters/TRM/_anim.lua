@@ -8191,7 +8191,7 @@ function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_c
     local res = {}
     local hit_side = hit_side_obj_char["player_side"]
     res["prop_f"] = "f"
-    res["anim_length"] = 49
+    res["anim_length"] = 50
     res[0] = function()
         -- pre_set
         common_game_scene_reset_velocity_by_ground_friction(hit_side_obj_char)
