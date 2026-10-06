@@ -8191,7 +8191,7 @@ function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_c
     local res = {}
     local hit_side = hit_side_obj_char["player_side"]
     res["prop_f"] = "f"
-    res["anim_length"] = 45
+    res["anim_length"] = 49
     res[0] = function()
         -- pre_set
         common_game_scene_reset_velocity_by_ground_friction(hit_side_obj_char)
@@ -8229,7 +8229,7 @@ function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_c
         hit_side_obj_char["pushbox"] = {0,-185,120,370}
         hit_side_obj_char["pushbox_opponent_collision_active"] = true
         hit_side_obj_char["hitbox_table"] = {}
-        hit_side_obj_char["hurtbox_table"] = {{0,-215,230,430}}
+        hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_at_the_steady_shot_init(hit_side_obj_char,hurt_side_obj_char)
@@ -8237,9 +8237,13 @@ function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_c
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 0
-        hit_side_obj_char["anchor_pos"] = {305,535}
+        hit_side_obj_char["anchor_pos"] = {215,510}
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
+    end
+    res[1] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
     end
     res[2] = function()
         -- state
@@ -8248,8 +8252,14 @@ function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_c
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_state_machine(hit_side)()
+        -- draw_correction
+        hit_side_obj_char[8] = 2
     end
     res[3] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 0
+    end
+    res[5] = function()
         -- draw_correction
         hit_side_obj_char[8] = 1
     end
@@ -8257,54 +8267,54 @@ function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_c
         -- draw_correction
         hit_side_obj_char[8] = 2
     end
-    res[11] = function()
-        -- draw_correction
-        hit_side_obj_char[8] = 3
-    end
-    res[15] = function()
-        -- draw_correction
-        hit_side_obj_char[8] = 4
-    end
-    res[18] = function()
-        -- collide
-        hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
-        -- draw_correction
-        hit_side_obj_char[8] = 5
-    end
-    res[21] = function()
-        -- draw_correction
-        hit_side_obj_char[8] = 6
-    end
-    res[25] = function()
-        -- state
-        hit_side_obj_char["sprite_sheet"] = "4SP_S"
-        -- collide
-        hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
+    res[9] = function()
         -- draw_correction
         hit_side_obj_char[8] = 0
-        hit_side_obj_char["anchor_pos"] = {325,510}
     end
-    res[30] = function()
+    res[11] = function()
         -- draw_correction
         hit_side_obj_char[8] = 1
     end
-    res[36] = function()
+    res[13] = function()
         -- draw_correction
         hit_side_obj_char[8] = 2
     end
-    res[39] = function()
-        -- collide
-        hit_side_obj_char["hurtbox_table"] = {{0,-200,200,400},{0,-410,120,20}}
+    res[15] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 0
+    end
+    res[18] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[21] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 2
+    end
+    res[24] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 0
+    end
+    res[28] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[32] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 2
+    end
+    res[36] = function()
+        -- state
+        hit_side_obj_char["sprite_sheet"] = "4SP_S"
         -- draw_correction
         hit_side_obj_char[8] = 3
+        hit_side_obj_char["anchor_pos"] = {325,510}
     end
     res[42] = function()
-        -- collide
-        hit_side_obj_char["hurtbox_table"] = {{0,-190,220,380}}
         -- draw_correction
         hit_side_obj_char[8] = 4
     end
-    res[45] = function()
+    res[49] = function()
         -- animation_end
     end
     return res
