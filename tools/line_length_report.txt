@@ -25,7 +25,7 @@
                       self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_unlocking")
 
  193  scenes/game_scene/characters/TRM/_character_function.lua:486
-              self_side_obj_char["shot_sys_oroboros_animation_table"][2] = load_game_scene_anim_char_TRM_oroboros_at_the_ready_chain_loop(self_side_obj_char["shot_sys_oroboros_front"],"5H_oroboros_loop_front")
+              self_side_obj_char["shot_sys_oroboros_animation_table"][2] = load_game_scene_anim_char_TRM_5H_oroboros_at_the_ready_chain_loop(self_side_obj_char["shot_sys_oroboros_front"],"5H_oroboros_loop_front")
 
  192  scenes/game_scene/characters/TRM/right.lua:2631
                       self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_locking")
@@ -52,13 +52,13 @@
                       self_side_obj_char["shot_sys_reticle_animation_table"][2] = load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_locking_and_unlocking(self_side_obj_char,"5H_reticle_locking")
 
  191  scenes/game_scene/characters/TRM/_character_function.lua:489
-              self_side_obj_char["shot_sys_oroboros_animation_table"][5] = load_game_scene_anim_char_TRM_oroboros_at_the_ready_chain_loop(self_side_obj_char["shot_sys_oroboros_back"],"5H_oroboros_loop_back")
+              self_side_obj_char["shot_sys_oroboros_animation_table"][5] = load_game_scene_anim_char_TRM_5H_oroboros_at_the_ready_chain_loop(self_side_obj_char["shot_sys_oroboros_back"],"5H_oroboros_loop_back")
 
  190  scenes/game_scene/characters/TRM/_character_function.lua:487
-              self_side_obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_oroboros_at_the_ready_mid_ease(self_side_obj_char["shot_sys_oroboros_mid"],"5H_oroboros_ease_in_mid")
+              self_side_obj_char["shot_sys_oroboros_animation_table"][3] = load_game_scene_anim_char_TRM_5H_oroboros_at_the_ready_mid_ease(self_side_obj_char["shot_sys_oroboros_mid"],"5H_oroboros_ease_in_mid")
 
  189  scenes/game_scene/characters/TRM/_character_function.lua:352
-          self_side_obj_char["shot_sys_oroboros_animation_table"][2] = load_game_scene_anim_char_TRM_oroboros_at_the_ready_chain_loop(self_side_obj_char["shot_sys_oroboros_front"],"5H_oroboros_loop_front")
+          self_side_obj_char["shot_sys_oroboros_animation_table"][2] = load_game_scene_anim_char_TRM_5H_oroboros_at_the_ready_chain_loop(self_side_obj_char["shot_sys_oroboros_front"],"5H_oroboros_loop_front")
 
  188  scenes/game_scene/characters/TRM/right.lua:7203
           if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_RP_common_to_burst_RC_purple(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then

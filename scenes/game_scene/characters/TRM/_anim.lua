@@ -7469,7 +7469,7 @@ function load_game_scene_anim_char_TRM_4SP_P(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- shot_sys
         if hit_side_obj_char["shot_sys_at_the_steady_state_table"][hit_side_obj_char["shot_sys_state"]] then
-            character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_init(
+            character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_off_init(
                 hit_side_obj_char,hurt_side_obj_char
             )
         end
@@ -8139,7 +8139,7 @@ function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["sprite_sheet"] = "4SP_S"
         -- draw_correction
         hit_side_obj_char[8] = 1
-        hit_side_obj_char["anchor_pos"] = {325,510}
+        hit_side_obj_char["anchor_pos"] = {155,510}
     end
     res[6] = function()
         -- draw_correction
@@ -8186,10 +8186,100 @@ function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_cha
     end
     return res
 end
+-- _4SP_S_4dash
+-- _4SP_S_6dash
+-- _4SP_S_4S
+function load_game_scene_anim_char_TRM_4SP_S_4S(hit_side_obj_char,hurt_side_obj_char)
+    local res = {}
+    local hit_side = hit_side_obj_char["player_side"]
+    res["prop_f"] = "f"
+    res["anim_length"] = 16
+    res[0] = function()
+        -- pre_set
+        common_game_scene_reset_velocity_by_ground_friction(hit_side_obj_char)
+        -- state
+        hit_side_obj_char["sprite_sheet"] = "4SP_S_4S"
+        hit_side_obj_char["height"] = "stand" -- stand crouch air OTG wallstick
+        hit_side_obj_char["hit_type"] = "none" -- none strike throw burst
+        hit_side_obj_char["hit_guard_type"] = "all" -- none all low mid high
+        hit_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
+        hit_side_obj_char["move_state"] = "recovery" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
+        -- state_number
+        hit_side_obj_char["friction"] = 5
+        hit_side_obj_char["gravity"] = 2.5
+        -- enemy_friend_interaction
+        hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
+        hit_side_obj_char["strike_inv"] = false
+        hit_side_obj_char["strike_inv_countdown"] = 0
+        hit_side_obj_char["throw_inv"] = false
+        hit_side_obj_char["throw_inv_countdown"] = 0
+        hit_side_obj_char["projectile_inv"] = false
+        hit_side_obj_char["projectile_inv_countdown"] = 0
+        hit_side_obj_char["horizontal_velocity_correction"] = 1
+        hit_side_obj_char["gravity_correction"] = 1
+        hit_side_obj_char["damage_correction"] = 1
+        -- frame_data
+        hit_side_obj_char["startup_frame"] = 0
+        hit_side_obj_char["active_frame"] = 0
+        hit_side_obj_char["recovery_frame"] = 0
+        -- input_sys_cache
+        hit_side_obj_char["input_sys_state"] = "none" -- none save load
+        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
+        -- collide
+        hit_side_obj_char["pushbox"] = {0,-185,120,370}
+        hit_side_obj_char["pushbox_opponent_collision_active"] = true
+        hit_side_obj_char["hitbox_table"] = {}
+        hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
+        hit_side_obj_char["collision_ground_height_offset"] = 0
+        -- shot_sys
+        character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_init(
+            hit_side_obj_char,hurt_side_obj_char
+        )
+        -- shot_sys_oroboros
+        hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        -- draw_correction
+        hit_side_obj_char[8] = 0
+        hit_side_obj_char["anchor_pos"] = {155,510}
+        -- visual_front
+        CHARACTER_VISUAL_FRONT = hit_side
+    end
+    res[6] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[11] = function()
+        -- input_sys_cache
+        hit_side_obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
+    end
+    res[16] = function()
+        -- state
+        hit_side_obj_char["hit_type"] = "none" -- none strike throw burst
+        hit_side_obj_char["hit_guard_type"] = "none" -- none all low mid high
+        hit_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
+        hit_side_obj_char["move_state"] = "none" -- none startup active recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = true
+        -- state_number
+        hit_side_obj_char["gravity"] = 2.5
+        -- enemy_friend_interaction
+        hit_side_obj_char["horizontal_velocity_correction"] = 1
+        hit_side_obj_char["gravity_correction"] = 1
+        hit_side_obj_char["damage_correction"] = 1
+        -- input_sys_cache
+        hit_side_obj_char["input_sys_state"] = "load" -- none save load
+        common_game_scene_get_input_sys_cache_state_machine(hit_side)()
+        -- animation_end
+    end
+    return res
+end
 -- _4SP_S_H
 function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_char)
     local res = {}
     local hit_side = hit_side_obj_char["player_side"]
+    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     res["prop_f"] = "f"
     res["anim_length"] = 50
     res[0] = function()
@@ -8291,9 +8381,11 @@ function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_c
         -- draw_correction
         hit_side_obj_char[8] = 2
     end
-    res[24] = function()
+    res[23] = function()
         -- draw_correction
         hit_side_obj_char[8] = 0
+        -- play_SFX
+        play_obj_audio(hit_side_move_SFX_table["4SP_S_whiff"])
     end
     res[28] = function()
         -- draw_correction
@@ -8337,14 +8429,8 @@ function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_c
         hit_side_obj_char["hitbox_table"] = {}
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
-        -- shot_sys
-        character_function_game_scene_TRM_shot_sys_at_the_steady_lock_init(hit_side_obj_char,hurt_side_obj_char)
-        -- shot_sys_oroboros
-        hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 2
-        -- play_SFX
-        play_obj_audio(hit_side_move_SFX_table["4SP_S_whiff"])
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
@@ -8353,9 +8439,9 @@ function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_c
         hit_side_obj_char["sprite_sheet"] = "4SP_S"
         -- draw_correction
         hit_side_obj_char[8] = 3
-        hit_side_obj_char["anchor_pos"] = {325,510}
+        hit_side_obj_char["anchor_pos"] = {155,510}
     end
-    res[42] = function()
+    res[43] = function()
         -- draw_correction
         hit_side_obj_char[8] = 4
     end
@@ -8378,95 +8464,6 @@ function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_c
         common_game_scene_get_input_sys_cache_negative_edge_state_machine(hit_side)()
         -- draw_correction
         hit_side_obj_char[8] = 4
-        -- animation_end
-    end
-    return res
-end
--- _4SP_S_4dash
--- _4SP_S_6dash
--- _4SP_S_4S
-function load_game_scene_anim_char_TRM_4SP_S_4S(hit_side_obj_char,hurt_side_obj_char)
-    local res = {}
-    local hit_side = hit_side_obj_char["player_side"]
-    res["prop_f"] = "f"
-    res["anim_length"] = 16
-    res[0] = function()
-        -- pre_set
-        common_game_scene_reset_velocity_by_ground_friction(hit_side_obj_char)
-        -- state
-        hit_side_obj_char["sprite_sheet"] = "4SP_S_4S"
-        hit_side_obj_char["height"] = "stand" -- stand crouch air OTG wallstick
-        hit_side_obj_char["hit_type"] = "none" -- none strike throw burst
-        hit_side_obj_char["hit_guard_type"] = "all" -- none all low mid high
-        hit_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
-        hit_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
-        -- state_number
-        hit_side_obj_char["friction"] = 5
-        hit_side_obj_char["gravity"] = 2.5
-        -- enemy_friend_interaction
-        hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
-        hit_side_obj_char["strike_inv"] = false
-        hit_side_obj_char["strike_inv_countdown"] = 0
-        hit_side_obj_char["throw_inv"] = false
-        hit_side_obj_char["throw_inv_countdown"] = 0
-        hit_side_obj_char["projectile_inv"] = false
-        hit_side_obj_char["projectile_inv_countdown"] = 0
-        hit_side_obj_char["horizontal_velocity_correction"] = 1
-        hit_side_obj_char["gravity_correction"] = 1
-        hit_side_obj_char["damage_correction"] = 1
-        -- frame_data
-        hit_side_obj_char["startup_frame"] = 0
-        hit_side_obj_char["active_frame"] = 0
-        hit_side_obj_char["recovery_frame"] = 0
-        -- input_sys_cache
-        hit_side_obj_char["input_sys_state"] = "none" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
-        -- collide
-        hit_side_obj_char["pushbox"] = {0,-185,120,370}
-        hit_side_obj_char["pushbox_opponent_collision_active"] = true
-        hit_side_obj_char["hitbox_table"] = {}
-        hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
-        hit_side_obj_char["collision_ground_height_offset"] = 0
-        -- shot_sys
-        character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_init(
-            hit_side_obj_char,hurt_side_obj_char
-        )
-        -- shot_sys_oroboros
-        hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
-        -- draw_correction
-        hit_side_obj_char[8] = 0
-        hit_side_obj_char["anchor_pos"] = {155,510}
-        -- visual_front
-        CHARACTER_VISUAL_FRONT = hit_side
-    end
-    res[6] = function()
-        -- draw_correction
-        hit_side_obj_char[8] = 1
-    end
-    res[11] = function()
-        -- input_sys_cache
-        hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
-    end
-    res[16] = function()
-        -- state
-        hit_side_obj_char["hit_type"] = "none" -- none strike throw burst
-        hit_side_obj_char["hit_guard_type"] = "none" -- none all low mid high
-        hit_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
-        hit_side_obj_char["move_state"] = "none" -- none startup active recovery
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = true
-        -- state_number
-        hit_side_obj_char["gravity"] = 2.5
-        -- enemy_friend_interaction
-        hit_side_obj_char["horizontal_velocity_correction"] = 1
-        hit_side_obj_char["gravity_correction"] = 1
-        hit_side_obj_char["damage_correction"] = 1
-        -- input_sys_cache
-        hit_side_obj_char["input_sys_state"] = "load" -- none save load
-        common_game_scene_get_input_sys_cache_state_machine(hit_side)()
         -- animation_end
     end
     return res
@@ -8618,10 +8615,10 @@ function load_game_scene_anim_char_TRM_6SP_S(hit_side_obj_char,hurt_side_obj_cha
     end
     res[5] = function()
         -- state
-        hit_side_obj_char["sprite_sheet"] = sprite_sheet
+        hit_side_obj_char["sprite_sheet"] = "6SP_S"
         -- draw_correction
         hit_side_obj_char[8] = 2
-        hit_side_obj_char["anchor_pos"] = anchor_pos
+        hit_side_obj_char["anchor_pos"] = {200,570}
     end
     res[8] = function()
         -- state
@@ -8742,7 +8739,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_in(obj_char
         obj_char["shot_sys_fire_cancel"] = false
         obj_char["shot_sys_idle_cancel"] = true
         --VFX
-        insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_switch(obj_char)
+        insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char)
     end
     res[12] = function()
         -- shot_sys
@@ -8757,7 +8754,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_out(obj_cha
     res["anim_length"] = 1
     res[0] = function()
         -- insert_VFX
-        insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_switch(obj_char)
+        insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char)
     end
     res[1] = function()
         -- animation_end
@@ -8824,7 +8821,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(hit_side_ob
     return res
 end
 -- shot_sys_oroboros
-function load_game_scene_anim_char_TRM_oroboros_at_the_ready_chain_ease_in(obj)
+function load_game_scene_anim_char_TRM_5H_oroboros_at_the_ready_chain_ease_in(obj)
     local res = {}
     res["prop_f"] = "f_4"
     res["anim_length"] = 20
@@ -8853,7 +8850,7 @@ function load_game_scene_anim_char_TRM_oroboros_at_the_ready_chain_ease_in(obj)
     end
     return res
 end
-function load_game_scene_anim_char_TRM_oroboros_at_the_ready_chain_ease_out(obj)
+function load_game_scene_anim_char_TRM_5H_oroboros_at_the_ready_chain_ease_out(obj)
     local res = {}
     res["prop_f"] = "f_4"
     res["anim_length"] = 20
@@ -8882,7 +8879,7 @@ function load_game_scene_anim_char_TRM_oroboros_at_the_ready_chain_ease_out(obj)
     end
     return res
 end
-function load_game_scene_anim_char_TRM_oroboros_at_the_ready_chain_loop(obj,sprite_sheet)
+function load_game_scene_anim_char_TRM_5H_oroboros_at_the_ready_chain_loop(obj,sprite_sheet)
     local res = {}
     res["prop_f"] = "f_8"
     res["anim_length"] = 91
@@ -8908,7 +8905,7 @@ function load_game_scene_anim_char_TRM_oroboros_at_the_ready_chain_loop(obj,spri
     end
     return res
 end
-function load_game_scene_anim_char_TRM_oroboros_at_the_ready_mid_ease(obj,sprite_sheet)
+function load_game_scene_anim_char_TRM_5H_oroboros_at_the_ready_mid_ease(obj,sprite_sheet)
     local res = {}
     res["prop_f"] = "f_8"
     res["anim_length"] = 20
@@ -8939,7 +8936,7 @@ function load_game_scene_anim_char_TRM_oroboros_at_the_ready_mid_ease(obj,sprite
     end
     return res
 end
-function load_game_scene_anim_char_TRM_oroboros_at_the_ready_mid_loop(obj)
+function load_game_scene_anim_char_TRM_5H_oroboros_at_the_ready_mid_loop(obj)
     local res = {}
     res["prop_f"] = "f_8"
     res["anim_length"] = 91
@@ -9014,7 +9011,7 @@ function load_game_scene_anim_char_TRM_oroboros_at_the_ready_mid_loop(obj)
     end
     return res
 end
-function load_game_scene_anim_char_TRM_oroboros_at_the_ready_shot(obj_char)
+function load_game_scene_anim_char_TRM_5H_oroboros_at_the_ready_shot(obj_char)
     local res = {}
     local obj_camera = obj_stage_game_scene_camera
     local oroboros_pos = {
@@ -9283,7 +9280,7 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock(self_si
             self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = true
         end
         --VFX
-        insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_switch(self_side_obj_char)
+        insert_VFX_game_scene_char_TRM_oroboros_switch(self_side_obj_char)
     end
     res[18] = function()
         -- shot_sys
@@ -9524,6 +9521,10 @@ function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock_to_off(o
         obj_char["shot_sys_reticle_sprite_sheet"] = "4SP_S_reticle_lock_to_off"
         obj_char["shot_sys_reticle"][4] = 1
         obj_char["shot_sys_reticle"][8] = 0
+        --VFX
+        insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char)
+        -- play_SFX
+        play_obj_audio(move_SFX_table["5H_reticle_ease_out"])
     end
     res[2] = function()
         -- shot_sys

@@ -333,7 +333,7 @@ function insert_VFX_game_scene_char_TRM_cS_move(obj_char)
     end
     table.insert(obj_char["VFX_common_front_table"],obj_VFX)
 end
-function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_switch(obj_char)
+function insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local height_y_offset = {

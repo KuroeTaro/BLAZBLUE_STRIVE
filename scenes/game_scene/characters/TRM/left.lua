@@ -2349,6 +2349,14 @@ function state_machine_char_game_scene_char_LP()
                 self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
             )
         end,
+        ["4SP_S_H"] = function()
+            if run_at_current_frame then
+                character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
+            end
+            state_gate_game_scene_char_LP_from_4SP_S_H(
+                self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+            )
+        end,
         ["4SP_S_2Launcher"] = function()
             if run_at_current_frame then
                 character_animator(self_side_obj_char,self_side_obj_char["character_animation"])
@@ -2724,7 +2732,7 @@ function state_machine_char_game_scene_char_LP_shot_sys_oroboros()
                 self_side_obj_char["shot_sys_oroboros_front"][4] = 1
                 self_side_obj_char["shot_sys_oroboros_back"][4] = 1
                 self_side_obj_char["shot_sys_oroboros_animation_table"][3] =
-                load_game_scene_anim_char_TRM_oroboros_at_the_ready_mid_loop(self_side_obj_char["shot_sys_oroboros_mid"])
+                load_game_scene_anim_char_TRM_5H_oroboros_at_the_ready_mid_loop(self_side_obj_char["shot_sys_oroboros_mid"])
                 init_character_anim_with(
                     self_side_obj_char["shot_sys_oroboros_mid"],
                     self_side_obj_char["shot_sys_oroboros_animation_table"][3]
@@ -2821,7 +2829,7 @@ function state_machine_char_game_scene_char_LP_shot_sys_oroboros()
                 self_side_obj_char["shot_sys_oroboros_aim_r"] = 0.42
                 self_side_obj_char["shot_sys_oroboros_offset_amount"] = 0
                 self_side_obj_char["shot_sys_oroboros_animation_table"][3] =
-                load_game_scene_anim_char_TRM_oroboros_at_the_ready_mid_loop(self_side_obj_char["shot_sys_oroboros_mid"])
+                load_game_scene_anim_char_TRM_5H_oroboros_at_the_ready_mid_loop(self_side_obj_char["shot_sys_oroboros_mid"])
                 init_character_anim_with(
                     self_side_obj_char["shot_sys_oroboros_mid"],
                     self_side_obj_char["shot_sys_oroboros_animation_table"][3]
@@ -3070,6 +3078,12 @@ function state_machine_char_game_scene_char_LP_shot_sys_reticle()
             end
         end,
         ["at_the_steady_shot"] = function()
+            if run_at_current_frame then
+                character_animator(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
+                character_function_game_scene_TRM_shot_sys_at_the_steady_reticle_pos_update_lock(
+                    self_side_obj_char,opponent_side_obj_char
+                )
+            end
         end
     }
     local this_function = switch[self_side_obj_char["shot_sys_reticle_state"]]
@@ -3713,7 +3727,7 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move(
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S(
-            self_side_obj_char,opponent_side_obj_char,"4SP_S",{325,510}
+            self_side_obj_char,opponent_side_obj_char,"4SP_S",{155,510}
         )
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "4SP_S"
@@ -3816,7 +3830,7 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S(
-            self_side_obj_char,opponent_side_obj_char,"4SP_S",{325,510}
+            self_side_obj_char,opponent_side_obj_char,"4SP_S",{155,510}
         )
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "4SP_S"
@@ -4524,7 +4538,7 @@ function state_gate_game_scene_char_LP_4SP_P_to_special(
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S(
-            self_side_obj_char,opponent_side_obj_char,"4SP_P_4SP_S",{325,510}
+            self_side_obj_char,opponent_side_obj_char,"4SP_P_4SP_S",{155,510}
         )
         init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
         self_side_obj_char["state"] = "4SP_S"
@@ -4623,6 +4637,19 @@ function state_gate_game_scene_char_LP_4SP_S_to_special(
             )
             init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
             self_side_obj_char["state"] = "4SP_S_4S"
+            return true
+        end
+        -- _4SP_S_H
+        if test_input_sys_press(self_side_input["H"])
+        then
+            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+                self_side_obj_char[5] = -self_side_obj_char[5]
+            end
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S_H(
+                self_side_obj_char,opponent_side_obj_char
+            )
+            init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
+            self_side_obj_char["state"] = "4SP_S_H"
             return true
         end
         -- _4SP_S_2Launcher
@@ -8621,6 +8648,33 @@ function state_gate_game_scene_char_LP_from_4SP_S_4S(
         ) then
             return true
         end
+        return true
+    end
+end
+function state_gate_game_scene_char_LP_from_4SP_S_H(
+    self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+)
+    -- _PRC
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(
+        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+    ) then
+        return true
+    end
+    -- _4UA
+    -- _5UA
+    -- _4SP_S_6UA
+    -- _派生
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_4SP_S_to_special(
+            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+        ) then
+            return true
+        end
+    end
+    -- _4SP_S
+    if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["character_animation"]) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S(self_side_obj_char)
+        self_side_obj_char["f"] = 23
         return true
     end
 end
