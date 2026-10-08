@@ -2086,7 +2086,7 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
     active_op_side_obj_char["VFX_hit_back_table"] = {}
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
-    obj_VFX["life"] = 27
+    obj_VFX["life"] = 18
     obj_VFX["r_cache"] = r_table_cache
     obj_VFX["x_table"] = obj_x_table
     obj_VFX["y_table"] = obj_y_table
@@ -2154,17 +2154,17 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
     obj_VFX["animation"] = {}
     obj_VFX["animation"][0] = 0
-    obj_VFX["animation"][7] = 1
-    obj_VFX["animation"][10] = 2
-    obj_VFX["animation"][14] = 3
-    obj_VFX["animation"][17] = 4
-    obj_VFX["animation"][20] = 5
-    obj_VFX["animation"][23] = 6
+    obj_VFX["animation"][4] = 1
+    obj_VFX["animation"][7] = 2
+    obj_VFX["animation"][10] = 3
+    obj_VFX["animation"][13] = 4
+    obj_VFX["animation"][15] = 5
+    obj_VFX["animation"][17] = 6
     obj_VFX["animation"]["prop"] = 8
-    obj_VFX["animation"]["length"] = 27
+    obj_VFX["animation"]["length"] = 18
     obj_VFX["animation"]["loop"] = false
     obj_VFX["update"] = function()
-        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state_cache"] == "wallstick" then
+        if active_op_side_obj_char["state"] ~= "hitstop" or passive_op_side_obj_char["state"] == "wallstick" then
             frame_animator(obj_VFX,obj_VFX["animation"])
             obj_VFX["life"] = obj_VFX["life"] - 1
         end

@@ -333,64 +333,7 @@ function insert_VFX_game_scene_char_TRM_cS_move(obj_char)
     end
     table.insert(obj_char["VFX_common_front_table"],obj_VFX)
 end
-function insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char)
-    local obj_VFX = {0,0,0,1,1,1,0,0}
-    local obj_camera = obj_stage_game_scene_camera
-    local height_y_offset = {
-        ["stand"] = -730,
-        ["crouch"] = -530,
-        ["air"] = -440,
-        ["OTG"] = -230
-    }
-    local side = obj_char["player_side"]
-    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
-    local image_sprite_sheet = image_sprite_sheet_table["5H_switch_move_VFX"]
-    obj_VFX["y_offset"] = height_y_offset[obj_char["height"]]
-    obj_VFX["life"] = 30
-    obj_VFX[1] = obj_char["x"] + obj_char[5]*(-370)
-    obj_VFX[2] = obj_char["y"] + obj_char[6]*obj_VFX["y_offset"]
-    obj_VFX[3] = obj_char[3]
-    obj_VFX[4] = 1
-    obj_VFX[5] = obj_char[5]
-    obj_VFX[6] = obj_char[6]
-    obj_VFX[7] = obj_char[7]
-    obj_VFX[8] = 0
-    obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
-    obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
-    obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_VFX["animation"] = {}
-    for i = 0,14 do
-        obj_VFX["animation"][i*2] = i
-    end
-    obj_VFX["animation"]["prop"] = 8
-    obj_VFX["animation"]["length"] = 30
-    obj_VFX["animation"]["loop"] = false
-    init_frame_anim_without(obj_VFX,obj_VFX["animation"])
-    obj_VFX["update"] = function()
-        frame_animator(obj_VFX,obj_VFX["animation"])
-        obj_VFX["life"] = obj_VFX["life"] - 1
-    end
-    obj_VFX["draw_sync"] = function()
-        obj_VFX["y_offset"] = height_y_offset[obj_char["height"]]
-        obj_VFX[1] = obj_char["x"] + obj_char[5]*(-370)
-        obj_VFX[2] = obj_char["y"] + obj_char[6]*obj_VFX["y_offset"]
-        obj_VFX[3] = obj_char[3]
-        obj_VFX[5] = obj_char[5]
-        obj_VFX[6] = obj_char[6]
-        obj_VFX[7] = obj_char[7]
-        obj_VFX["draw_sync"] = function() end
-    end
-    obj_VFX["draw"] = function()
-        obj_VFX["draw_sync"]()
-        image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
-        love.graphics.setColor(5/255,5/255,5/255,0.5)
-        love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
-    end
-    table.insert(obj_char["VFX_common_back_table"],obj_VFX)
-end
-function insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_shot_oroboros_blast(obj_char)
+function insert_VFX_game_scene_char_TRM_5H_at_the_ready_shot_oroboros_blast(obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
@@ -1073,4 +1016,62 @@ function insert_VFX_game_scene_char_TRM_6SP_S_move(obj_char)
         love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_common_front_table"],obj_VFX)
+end
+-- attachment
+function insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char)
+    local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
+    local height_y_offset = {
+        ["stand"] = -730,
+        ["crouch"] = -530,
+        ["air"] = -440,
+        ["OTG"] = -230
+    }
+    local side = obj_char["player_side"]
+    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
+    local image_sprite_sheet = image_sprite_sheet_table["5H_switch_move_VFX"]
+    obj_VFX["y_offset"] = height_y_offset[obj_char["height"]]
+    obj_VFX["life"] = 30
+    obj_VFX[1] = obj_char["x"] + obj_char[5]*(-370)
+    obj_VFX[2] = obj_char["y"] + obj_char[6]*obj_VFX["y_offset"]
+    obj_VFX[3] = obj_char[3]
+    obj_VFX[4] = 1
+    obj_VFX[5] = obj_char[5]
+    obj_VFX[6] = obj_char[6]
+    obj_VFX[7] = obj_char[7]
+    obj_VFX[8] = 0
+    obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["animation"] = {}
+    for i = 0,14 do
+        obj_VFX["animation"][i*2] = i
+    end
+    obj_VFX["animation"]["prop"] = 8
+    obj_VFX["animation"]["length"] = 30
+    obj_VFX["animation"]["loop"] = false
+    init_frame_anim_without(obj_VFX,obj_VFX["animation"])
+    obj_VFX["update"] = function()
+        frame_animator(obj_VFX,obj_VFX["animation"])
+        obj_VFX["life"] = obj_VFX["life"] - 1
+    end
+    obj_VFX["draw_sync"] = function()
+        obj_VFX["y_offset"] = height_y_offset[obj_char["height"]]
+        obj_VFX[1] = obj_char["x"] + obj_char[5]*(-370)
+        obj_VFX[2] = obj_char["y"] + obj_char[6]*obj_VFX["y_offset"]
+        obj_VFX[3] = obj_char[3]
+        obj_VFX[5] = obj_char[5]
+        obj_VFX[6] = obj_char[6]
+        obj_VFX[7] = obj_char[7]
+        obj_VFX["draw_sync"] = function() end
+    end
+    obj_VFX["draw"] = function()
+        obj_VFX["draw_sync"]()
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
+        love.graphics.setColor(5/255,5/255,5/255,0.5)
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setColor(1,1,1,1)
+    end
+    table.insert(obj_char["VFX_common_back_table"],obj_VFX)
 end

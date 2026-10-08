@@ -9045,7 +9045,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_at_the_ready_shot(obj_char)
         update_oroboros_r(obj_char,10)
         obj_char["shot_sys_oroboros_mid"][8] = 1
         -- insert_VFX
-        insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_shot_oroboros_blast(obj_char)
+        insert_VFX_game_scene_char_TRM_5H_at_the_ready_shot_oroboros_blast(obj_char)
     end
     res[3] = function()
         -- shot_sys_oroboros
@@ -9383,7 +9383,7 @@ function load_game_scene_anim_char_TRM_4SP_S_oroboros_at_the_steady_shot(obj_cha
         update_oroboros_r(obj_char,10)
         obj_char["shot_sys_oroboros_mid"][8] = 1
         -- insert_VFX
-        insert_VFX_game_scene_char_TRM_5H_move_at_the_ready_shot_oroboros_blast(obj_char)
+        insert_VFX_game_scene_char_TRM_5H_at_the_ready_shot_oroboros_blast(obj_char)
     end
     res[3] = function()
         -- shot_sys_oroboros
