@@ -107,6 +107,15 @@ function order_load_game_scene_common(load_order)
                 "asset/game_scene/common/texture/movie_cover.json",
                 love.graphics.newImage(ASSET_DATA[1]["movie_cover_sprite_batch"])
             )
+            -- VFX_image
+            -- alpha过渡用渐变图(前段线性渐变 后段实心)
+            local alpha_gradient_ramp_ratio = 0.15
+            local alpha_gradient_image_data = love.image.newImageData(256,1)
+            for alpha_gradient_x = 0,255 do
+                local alpha_gradient_ramp = math.min(1,alpha_gradient_x/(255*alpha_gradient_ramp_ratio))
+                alpha_gradient_image_data:setPixel(alpha_gradient_x,0,1,1,1,alpha_gradient_ramp)
+            end
+            image_game_scene_alpha_gradient = love.graphics.newImage(alpha_gradient_image_data)
         end
     }
     local this_function = switch[load_order]

@@ -421,6 +421,116 @@ function insert_VFX_game_scene_char_TRM_5H_at_the_ready_shot_oroboros_blast(obj_
     end
     table.insert(obj_char["VFX_common_front_table"],obj_VFX)
 end
+function insert_VFX_game_scene_char_TRM_5H_at_the_ready_shot_oroboros_blast_trajectory(obj_char,blast_width)
+    -- 未命中则不生成弹道
+    if obj_char["shot_sys_aim_process"][1] < obj_char["shot_sys_aim_process"][3] then
+        return
+    end
+    -- x y z opacity sx sy r f
+    local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
+    obj_VFX["f"] = 0 -- 本VFX插入于VFX更新之后，首次绘制时帧数仍为0
+    obj_VFX["life"] = 5
+    obj_VFX["blast_width"] = blast_width
+    obj_VFX["blast_start_distance"] = 240
+    obj_VFX["blast_extend_distance"] = 1000
+    obj_VFX["blast_blur_size"] = 5 -- 抗锯齿用的小半径模糊
+    obj_VFX["blast_draw_canvas"] = love.graphics.newCanvas(love.graphics.getWidth(),love.graphics.getHeight())
+    obj_VFX["blur_shader"] = shader_game_scene_gaussian_blur
+    obj_VFX["update"] = function()
+        obj_VFX["f"] = obj_VFX["f"] + 1
+        obj_VFX["life"] = obj_VFX["life"] - 1
+    end
+    obj_VFX["draw_sync"] = function()
+        obj_VFX[3] = obj_char[3]
+        -- 只在首次绘制时确定弹道位置，之后仅随摄像机重新投影
+        local oroboros_pos = {
+            obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]
+        }
+        local reticle_pos = {
+            obj_char["shot_sys_reticle_stage_pos_current"][1] + 160,
+            obj_char["shot_sys_reticle_stage_pos_current"][2] + 160
+        }
+        local blast_dx = reticle_pos[1] - oroboros_pos[1]
+        local blast_dy = reticle_pos[2] - oroboros_pos[2]
+        local blast_dist = math.sqrt(blast_dx^2 + blast_dy^2)
+        if blast_dist > obj_VFX["blast_start_distance"] then
+            local blast_start_offset = obj_VFX["blast_start_distance"]/blast_dist
+            -- 延长线按原方向随机偏转(5度以上15度以内)
+            local blast_extend_r = math.atan2(blast_dy,blast_dx) +
+                math.rad(math.random(5,15))*((math.random(2) == 1) and 1 or -1)
+            obj_VFX["blast_end_pos"] = reticle_pos
+            obj_VFX["blast_start_pos"] = {
+                oroboros_pos[1] + blast_dx*blast_start_offset,
+                oroboros_pos[2] + blast_dy*blast_start_offset
+            }
+            obj_VFX["blast_extend_pos"] = {
+                reticle_pos[1] + math.cos(blast_extend_r)*obj_VFX["blast_extend_distance"],
+                reticle_pos[2] + math.sin(blast_extend_r)*obj_VFX["blast_extend_distance"]
+            }
+        end
+        obj_VFX["draw_sync"] = function() end
+    end
+    obj_VFX["draw"] = function()
+        obj_VFX["draw_sync"]()
+        local blast_frame_alpha = 1 - (obj_VFX["f"]/5)^2
+        if obj_VFX["blast_start_pos"] and blast_frame_alpha > 0 then
+            love.graphics.setCanvas(obj_VFX["blast_draw_canvas"])
+            love.graphics.clear(0,0,0,0)
+            love.graphics.setBlendMode("alpha")
+            local blast_scale = draw_resolution_correction(800)/(obj_VFX[3] - obj_camera[3])
+            local blast_screen_width = draw_resolution_correction(obj_VFX["blast_width"])*blast_scale
+            local blast_end_cood = draw_3d_point_to_2D(
+                obj_camera,{obj_VFX["blast_end_pos"][1],obj_VFX["blast_end_pos"][2],obj_VFX[3]}
+            )
+            -- blast_box
+            local blast_start_cood = draw_3d_point_to_2D(
+                obj_camera,{obj_VFX["blast_start_pos"][1],obj_VFX["blast_start_pos"][2],obj_VFX[3]}
+            )
+            local blast_start_dx = blast_end_cood[1] - blast_start_cood[1]
+            local blast_start_dy = blast_end_cood[2] - blast_start_cood[2]
+            local blast_start_length = math.sqrt(blast_start_dx^2 + blast_start_dy^2)
+            local blast_start_sx = blast_start_length/image_game_scene_alpha_gradient:getWidth()
+            love.graphics.push()
+            love.graphics.translate(blast_start_cood[1],blast_start_cood[2])
+            love.graphics.rotate(math.atan2(blast_start_dy,blast_start_dx))
+            love.graphics.setColor(55/255,55/255,55/255,blast_frame_alpha)
+            love.graphics.draw(
+                image_game_scene_alpha_gradient,0,-blast_screen_width/2,0,blast_start_sx,blast_screen_width
+            )
+            love.graphics.pop()
+            -- blast_extend_box
+            local blast_extend_cood = draw_3d_point_to_2D(
+                obj_camera,{obj_VFX["blast_extend_pos"][1],obj_VFX["blast_extend_pos"][2],obj_VFX[3]}
+            )
+            local blast_extend_dx = blast_end_cood[1] - blast_extend_cood[1]
+            local blast_extend_dy = blast_end_cood[2] - blast_extend_cood[2]
+            local blast_extend_length = math.sqrt(blast_extend_dx^2 + blast_extend_dy^2)
+            local blast_extend_sx = blast_extend_length/image_game_scene_alpha_gradient:getWidth()
+            love.graphics.push()
+            love.graphics.translate(blast_extend_cood[1],blast_extend_cood[2])
+            love.graphics.rotate(math.atan2(blast_extend_dy,blast_extend_dx))
+            love.graphics.setColor(55/255,55/255,55/255,blast_frame_alpha)
+            love.graphics.draw(
+                image_game_scene_alpha_gradient,0,-blast_screen_width/2,0,blast_extend_sx,blast_screen_width
+            )
+            love.graphics.pop()
+            love.graphics.setColor(1,1,1,1)
+            love.graphics.setCanvas()
+            obj_VFX["blur_shader"]:send("Directions",16)
+            obj_VFX["blur_shader"]:send("Quality",5)
+            obj_VFX["blur_shader"]:send("Size",obj_VFX["blast_blur_size"])
+            obj_VFX["blur_shader"]:send("resolution",{love.graphics.getWidth(),love.graphics.getHeight()})
+            love.graphics.setShader(obj_VFX["blur_shader"])
+            love.graphics.setBlendMode("alpha","premultiplied")
+            love.graphics.draw(obj_VFX["blast_draw_canvas"])
+            love.graphics.setBlendMode("alpha","alphamultiply")
+            love.graphics.setShader()
+            obj_VFX["blur_shader"]:send("Size",8) -- 还原共享 shader 的模糊半径
+        end
+    end
+    table.insert(obj_char["VFX_common_front_table"],obj_VFX)
+end
 function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}

@@ -9045,6 +9045,7 @@ function load_game_scene_anim_char_TRM_5H_oroboros_at_the_ready_shot(obj_char)
         update_oroboros_r(obj_char,10)
         obj_char["shot_sys_oroboros_mid"][8] = 1
         -- insert_VFX
+        insert_VFX_game_scene_char_TRM_5H_at_the_ready_shot_oroboros_blast_trajectory(obj_char,5)
         insert_VFX_game_scene_char_TRM_5H_at_the_ready_shot_oroboros_blast(obj_char)
     end
     res[3] = function()
@@ -9285,10 +9286,14 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock(self_si
     res[18] = function()
         -- shot_sys
         self_side_obj_char["shot_sys_fire_cancel"] = true
+        if self_side_obj_char["shot_sys_at_the_steady_aim"] then
+            self_side_obj_char["shot_sys_aim_process"][1] = self_side_obj_char["shot_sys_aim_process"][4]
+        end
     end
     res[27] = function()
         self_side_obj_char["shot_sys_at_the_steady_aim"] = true
         self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = true
+        self_side_obj_char["shot_sys_aim_process"][1] = self_side_obj_char["shot_sys_aim_process"][4]
         -- animation_end
     end
     return res
@@ -9383,6 +9388,7 @@ function load_game_scene_anim_char_TRM_4SP_S_oroboros_at_the_steady_shot(obj_cha
         update_oroboros_r(obj_char,10)
         obj_char["shot_sys_oroboros_mid"][8] = 1
         -- insert_VFX
+        insert_VFX_game_scene_char_TRM_5H_at_the_ready_shot_oroboros_blast_trajectory(obj_char,7.5)
         insert_VFX_game_scene_char_TRM_5H_at_the_ready_shot_oroboros_blast(obj_char)
     end
     res[3] = function()
