@@ -432,9 +432,9 @@ function insert_VFX_game_scene_char_TRM_5H_at_the_ready_shot_oroboros_blast_traj
     obj_VFX["f"] = 0 -- 本VFX插入于VFX更新之后，首次绘制时帧数仍为0
     obj_VFX["life"] = 5
     obj_VFX["blast_width"] = blast_width
+    obj_VFX["blast_blur_size"] = 5 -- 抗锯齿用的小半径模糊
     obj_VFX["blast_start_distance"] = 240
     obj_VFX["blast_extend_distance"] = 1000
-    obj_VFX["blast_blur_size"] = 5 -- 抗锯齿用的小半径模糊
     obj_VFX["blast_draw_canvas"] = love.graphics.newCanvas(love.graphics.getWidth(),love.graphics.getHeight())
     obj_VFX["blur_shader"] = shader_game_scene_gaussian_blur
     obj_VFX["update"] = function()
