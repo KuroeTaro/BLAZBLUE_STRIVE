@@ -473,9 +473,9 @@ function insert_VFX_game_scene_char_TRM_5H_at_the_ready_shot_oroboros_blast_traj
         local blast_dist = math.sqrt(blast_dx^2 + blast_dy^2)
         if blast_dist > obj_VFX["blast_start_distance"] then
             local blast_start_offset = obj_VFX["blast_start_distance"]/blast_dist
-            -- 延长线按原方向随机偏转(5度以上15度以内)
+            -- 延长线按原方向随机偏转(2度以上13度以内)
             local blast_extend_r = math.atan2(blast_dy,blast_dx) +
-                math.rad(math.random(5,15))*((math.random(2) == 1) and 1 or -1)
+                math.rad(math.random(2,13))*((math.random(2) == 1) and 1 or -1)
             obj_VFX["blast_end_pos"] = reticle_pos
             obj_VFX["blast_start_pos"] = {
                 oroboros_pos[1] + blast_dx*blast_start_offset,
