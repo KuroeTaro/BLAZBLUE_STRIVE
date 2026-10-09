@@ -429,14 +429,31 @@ function insert_VFX_game_scene_char_TRM_5H_at_the_ready_shot_oroboros_blast_traj
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
+    local blast_box_points = {0,0,0,0,0,0,0,0}
+    local blast_canvas_table = {["L"] = CANVAS_CHAR_BLAST_TRAJECTORY_LP,["R"] = CANVAS_CHAR_BLAST_TRAJECTORY_RP}
+    local function draw_blast_box(start_cood,end_cood,half_width)
+        local box_dx = end_cood[1] - start_cood[1]
+        local box_dy = end_cood[2] - start_cood[2]
+        local box_scale = half_width/math.sqrt(box_dx^2 + box_dy^2)
+        local box_offset_x = -box_dy*box_scale
+        local box_offset_y = box_dx*box_scale
+        blast_box_points[1] = start_cood[1] + box_offset_x
+        blast_box_points[2] = start_cood[2] + box_offset_y
+        blast_box_points[3] = end_cood[1] + box_offset_x
+        blast_box_points[4] = end_cood[2] + box_offset_y
+        blast_box_points[5] = end_cood[1] - box_offset_x
+        blast_box_points[6] = end_cood[2] - box_offset_y
+        blast_box_points[7] = start_cood[1] - box_offset_x
+        blast_box_points[8] = start_cood[2] - box_offset_y
+        love.graphics.polygon("fill",blast_box_points)
+        love.graphics.polygon("line",blast_box_points)
+    end
     obj_VFX["f"] = 0 -- 本VFX插入于VFX更新之后，首次绘制时帧数仍为0
     obj_VFX["life"] = 5
     obj_VFX["blast_width"] = blast_width
-    obj_VFX["blast_blur_size"] = 5 -- 抗锯齿用的小半径模糊
     obj_VFX["blast_start_distance"] = 240
     obj_VFX["blast_extend_distance"] = 1000
-    obj_VFX["blast_draw_canvas"] = love.graphics.newCanvas(love.graphics.getWidth(),love.graphics.getHeight())
-    obj_VFX["blur_shader"] = shader_game_scene_gaussian_blur
+    obj_VFX["blast_draw_canvas"] = blast_canvas_table[obj_char["player_side"]]
     obj_VFX["update"] = function()
         obj_VFX["f"] = obj_VFX["f"] + 1
         obj_VFX["life"] = obj_VFX["life"] - 1
@@ -475,58 +492,58 @@ function insert_VFX_game_scene_char_TRM_5H_at_the_ready_shot_oroboros_blast_traj
         obj_VFX["draw_sync"]()
         local blast_frame_alpha = 1 - (obj_VFX["f"]/5)^2
         if obj_VFX["blast_start_pos"] and blast_frame_alpha > 0 then
-            love.graphics.setCanvas(obj_VFX["blast_draw_canvas"])
-            love.graphics.clear(0,0,0,0)
-            love.graphics.setBlendMode("alpha")
             local blast_scale = draw_resolution_correction(800)/(obj_VFX[3] - obj_camera[3])
             local blast_screen_width = draw_resolution_correction(obj_VFX["blast_width"])*blast_scale
+            local blast_half_width = blast_screen_width/2
+            local blast_mask_margin = 2 -- 遮罩需比梁体略大,以覆盖描边超出的部分
+            local blast_mask_height = blast_screen_width + blast_mask_margin*2
             local blast_end_cood = draw_3d_point_to_2D(
                 obj_camera,{obj_VFX["blast_end_pos"][1],obj_VFX["blast_end_pos"][2],obj_VFX[3]}
             )
-            -- blast_box
             local blast_start_cood = draw_3d_point_to_2D(
                 obj_camera,{obj_VFX["blast_start_pos"][1],obj_VFX["blast_start_pos"][2],obj_VFX[3]}
             )
             local blast_start_dx = blast_end_cood[1] - blast_start_cood[1]
             local blast_start_dy = blast_end_cood[2] - blast_start_cood[2]
-            local blast_start_length = math.sqrt(blast_start_dx^2 + blast_start_dy^2)
-            local blast_start_sx = blast_start_length/image_game_scene_alpha_gradient:getWidth()
-            love.graphics.push()
-            love.graphics.translate(blast_start_cood[1],blast_start_cood[2])
-            love.graphics.rotate(math.atan2(blast_start_dy,blast_start_dx))
-            love.graphics.setColor(55/255,55/255,55/255,blast_frame_alpha)
-            love.graphics.draw(
-                image_game_scene_alpha_gradient,0,-blast_screen_width/2,0,blast_start_sx,blast_screen_width
-            )
-            love.graphics.pop()
-            -- blast_extend_box
+            local blast_start_sx =
+                math.sqrt(blast_start_dx^2 + blast_start_dy^2)/image_game_scene_alpha_gradient_mask:getWidth()
             local blast_extend_cood = draw_3d_point_to_2D(
                 obj_camera,{obj_VFX["blast_extend_pos"][1],obj_VFX["blast_extend_pos"][2],obj_VFX[3]}
             )
             local blast_extend_dx = blast_end_cood[1] - blast_extend_cood[1]
             local blast_extend_dy = blast_end_cood[2] - blast_extend_cood[2]
-            local blast_extend_length = math.sqrt(blast_extend_dx^2 + blast_extend_dy^2)
-            local blast_extend_sx = blast_extend_length/image_game_scene_alpha_gradient:getWidth()
-            love.graphics.push()
-            love.graphics.translate(blast_extend_cood[1],blast_extend_cood[2])
-            love.graphics.rotate(math.atan2(blast_extend_dy,blast_extend_dx))
-            love.graphics.setColor(55/255,55/255,55/255,blast_frame_alpha)
-            love.graphics.draw(
-                image_game_scene_alpha_gradient,0,-blast_screen_width/2,0,blast_extend_sx,blast_screen_width
-            )
-            love.graphics.pop()
-            love.graphics.setColor(1,1,1,1)
-            love.graphics.setCanvas()
-            obj_VFX["blur_shader"]:send("Directions",16)
-            obj_VFX["blur_shader"]:send("Quality",5)
-            obj_VFX["blur_shader"]:send("Size",obj_VFX["blast_blur_size"])
-            obj_VFX["blur_shader"]:send("resolution",{love.graphics.getWidth(),love.graphics.getHeight()})
-            love.graphics.setShader(obj_VFX["blur_shader"])
-            love.graphics.setBlendMode("alpha","premultiplied")
-            love.graphics.draw(obj_VFX["blast_draw_canvas"])
+            local blast_extend_sx =
+                math.sqrt(blast_extend_dx^2 + blast_extend_dy^2)/image_game_scene_alpha_gradient_mask:getWidth()
+            -- 先在canvas上把填充和描边一起画出(描边覆盖锯齿边界,与draw_char_select_scene_glow一致)
+            love.graphics.setCanvas(obj_VFX["blast_draw_canvas"])
+            love.graphics.clear(0,0,0,0)
             love.graphics.setBlendMode("alpha","alphamultiply")
-            love.graphics.setShader()
-            obj_VFX["blur_shader"]:send("Size",8) -- 还原共享 shader 的模糊半径
+            love.graphics.setColor(1,1,1,1)
+            love.graphics.setLineStyle("smooth")
+            love.graphics.setLineWidth(1.5) -- 线宽略大于1以覆盖锯齿边界
+            draw_blast_box(blast_start_cood,blast_end_cood,blast_half_width)
+            draw_blast_box(blast_extend_cood,blast_end_cood,blast_half_width)
+            -- 再用alpha渐变遮罩乘算,给整条梁做淡入淡出
+            love.graphics.setBlendMode("multiply","premultiplied")
+            love.graphics.setColor(1,1,1,1)
+            love.graphics.draw(
+                image_game_scene_alpha_gradient_mask,blast_start_cood[1],blast_start_cood[2],
+                math.atan2(blast_start_dy,blast_start_dx),blast_start_sx,blast_mask_height,0,0.5
+            )
+            love.graphics.draw(
+                image_game_scene_alpha_gradient_mask,blast_extend_cood[1],blast_extend_cood[2],
+                math.atan2(blast_extend_dy,blast_extend_dx),blast_extend_sx,blast_mask_height,0,0.5
+            )
+            love.graphics.setLineWidth(1)
+            love.graphics.setCanvas()
+            -- 透明度统一在canvas合成时应用
+            love.graphics.setBlendMode("alpha","premultiplied")
+            love.graphics.setColor(
+                55/255*blast_frame_alpha,55/255*blast_frame_alpha,55/255*blast_frame_alpha,blast_frame_alpha
+            )
+            love.graphics.draw(obj_VFX["blast_draw_canvas"])
+            love.graphics.setColor(1,1,1,1)
+            love.graphics.setBlendMode("alpha","alphamultiply")
         end
     end
     table.insert(obj_char["VFX_common_front_table"],obj_VFX)

@@ -768,6 +768,12 @@ function load_game_scene_shader_char_RP()
     -- shader_global_variable no_shader_in_this_case
     shader_game_scene_RP = {}
 end
+function load_game_scene_canvas_char_RP()
+    -- CANVAS
+    local width = love.graphics.getWidth()
+    local height = love.graphics.getHeight()
+    CANVAS_CHAR_BLAST_TRAJECTORY_RP = love.graphics.newCanvas(width,height)
+end
 function load_game_scene_wallbreak_start_init_RP()
     -- state
     obj_char_game_scene_char_RP["physics_lock"] = true
