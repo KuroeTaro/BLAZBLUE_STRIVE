@@ -1432,3 +1432,51 @@ function load_game_scene_anim_char_TRM_6SP_K_projectile_buff(
     end
     return res
 end
+-- insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot
+-- 1-8 type life x y velocity projectile_clash_type f
+-- sprite_sheet
+-- enemy_interact_function		hitbox hit_type	hit_guard_type hit_hurt_blockstop_countdown
+--                              hit_damage hit_damage_correction_factor
+--                              hit_heat_gain hit_wallbreak_damage hurt_heat_gain
+--                              blocked_heat_gain block_heat_gain block_risk_gauge_gain FD_block_heat_drain
+--                              stand_hurt_animation stand_block_animation
+--                              crouch_hurt_animation crouch_block_animation
+--                              air_hurt_animation air_block_animation
+--                              OTG_hurt_animation wallstick_hurt_animation
+--                              projectile_active projectile_counter_ver_function
+--                              block_SFX counter_SFX hit_SFX_whiff_SFX
+--                              hurt_block_VFX_insert_function
+-- animation                    projectile_animation camera_x_shake_anim camera_y_shake_anim camera_enclosing_anim enclose_position_offset
+-- update/update_sub_frame/draw
+-- uncommon
+-- projectile_init_fix
+function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_side_obj_char,hurt_side_obj_char)
+end
+function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_main(
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile
+)
+end
+function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_ground_block(
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
+    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
+    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,fix_direction,velocity_center,
+    character_uncommon_init
+)
+end
+function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_air_block(
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
+    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
+    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,fix_direction,velocity_center,
+    character_uncommon_init
+)
+end
+function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_hurt(
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
+    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
+    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,fix_direction,velocity_center,
+    character_uncommon_init
+)
+end

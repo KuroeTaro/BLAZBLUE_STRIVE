@@ -768,7 +768,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char_a,obj_char_b)
     local obj_camera = obj_stage_game_scene_camera
     local obj_wallstick = obj_stage_game_scene_wallstick
     local wallstick_spwan_anchor_pos =
-    common_game_scene_get_VFX_spawn_anchor(obj_char_a["player_side"])["wallstick_spawn_anchor_pos"]
+        common_game_scene_get_VFX_spawn_anchor(obj_char_a["player_side"])["wallstick_spawn_anchor_pos"]
     local stage_collision = false
     local collision_side = 0
     local collision_side_cache = 0
@@ -791,7 +791,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char_a,obj_char_b)
         collision_side_cache = 1
     end
     obj_wallstick[1] = math.abs(obj_wallstick[1])*collision_side
-    obj_wallstick[5] = -collision_side
+    obj_wallstick[5] = -collision_side*1.625
     -- wallstick_visual_effect
     if collision_side ~= 0 and collision_side ~= collision_side_cache then
         -- wallstick_stage_obj
@@ -819,7 +819,7 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char_a,obj_char_b)
                 function()
                     obj_wallstick[4] = 1
                     obj_wallstick["sprite_sheet"] = 1
-                    obj_wallstick["pause_countdown"] = 30
+                    obj_wallstick["pause_countdown"] = 60
                     init_frame_anim_with(obj_wallstick,anim_state_frame_game_scene_wallstick_ease_in)
                     obj_wallstick["state"] = "ease_in"
                 end

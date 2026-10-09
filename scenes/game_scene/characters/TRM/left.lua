@@ -758,10 +758,10 @@ function load_game_scene_box_anchor_data_LP()
     obj_anchor_data_game_scene_char_LP["RC"]["air"] = {330,485}
     -- wallstick
     obj_VFX_spawn_anchor_data_game_scene_char_LP["wallstick_spawn_anchor_pos"] = {
-        ["stand"] = 865,
-        ["crouch"] = 865,
-        ["air"] = 655,
-        ["OTG"] = 865
+        ["stand"] = 1175,
+        ["crouch"] = 1175,
+        ["air"] = 1025,
+        ["OTG"] = 1175
     }
 end
 function load_game_scene_shader_char_LP()

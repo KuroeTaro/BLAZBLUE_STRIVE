@@ -59,7 +59,6 @@ function collision_test_cS_distance_check(
             end
         end
     end
-    print(self_slide_distance)
     self_active_frame_x = self_side_obj_char["x"] + self_slide_distance
     -- compare_distance
     for i = 1,hurtbox_table_size do
