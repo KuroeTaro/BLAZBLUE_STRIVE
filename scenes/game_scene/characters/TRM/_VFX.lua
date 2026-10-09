@@ -873,26 +873,37 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     end
     table.insert(hurt_side_obj_char["VFX_status_back_table"],obj_VFX)
 end
-function insert_VFX_game_scene_char_TRM_4SP_S_at_the_steady_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
+function insert_VFX_game_scene_char_TRM_4SP_S_H_at_the_steady_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
-    local hit_side = obj_char["player_side"]
+    local hit_side = hit_side_obj_char["player_side"]
     local hit_side_image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(hit_side)
     local hit_side_image_sprite_sheet = hit_side_image_sprite_sheet_table["4SP_S_H_hit_blast_move_VFX"]
+    -- 旋转角取 oroboros 指向 reticle 的方向
+    local oroboros_pos = {
+        hit_side_obj_char["shot_sys_oroboros_ease_current"][1],
+        hit_side_obj_char["shot_sys_oroboros_ease_current"][2]
+    }
+    local reticle_pos = {
+        hit_side_obj_char["shot_sys_reticle_stage_pos_current"][1] + 160,
+        hit_side_obj_char["shot_sys_reticle_stage_pos_current"][2] + 160
+    }
+    local center_r = character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(
+        hit_side_obj_char,oroboros_pos,reticle_pos
+    )
     obj_VFX["life"] = 16
-    obj_VFX[1] = hit_side_obj_char["shot_sys_reticle"][1] - 230 + 160
-    obj_VFX[2] = hit_side_obj_char["shot_sys_reticle"][2] - 255 + 160
+    obj_VFX[1] = hit_side_obj_char["shot_sys_reticle"][1] - 200 + 160
+    obj_VFX[2] = hit_side_obj_char["shot_sys_reticle"][2] - 350 + 160
     obj_VFX[3] = 0
     obj_VFX[4] = 1
     obj_VFX[5] = 1
     obj_VFX[6] = 1
-    obj_VFX[7] = 0
+    obj_VFX[7] = center_r
     obj_VFX[8] = 0
     obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_VFX["animation"] = {}
     obj_VFX["animation"] = {}
     obj_VFX["animation"][0] = 0
     obj_VFX["animation"][3] = 1
@@ -926,6 +937,7 @@ function insert_VFX_game_scene_char_TRM_4SP_S_at_the_steady_projectile_hit_blast
                 obj_VFX[5] = -1
             end
         end
+        obj_VFX[7] = center_r
         obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()

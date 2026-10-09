@@ -160,9 +160,9 @@ local load_move_VFX_name_table = {
     "6SP_P_arua",
     "6SP_P_curse_ball_spawn_halo",
     "6SP_P_curse_ball_spawner",
+    "4SP_S_switch",
     "4SP_S_H_hit_blast",
     "4SP_S_H_shot_oroboros_blast",
-    "4SP_S_H_switch",
     "6SP_S"
 }
 for i,v in ipairs(load_move_VFX_name_table) do

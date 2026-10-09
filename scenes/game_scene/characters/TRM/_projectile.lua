@@ -1450,7 +1450,7 @@ end
 -- update/update_sub_frame/draw
 -- uncommon
 -- projectile_init_fix
-function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_side_obj_char,hurt_side_obj_char)
+function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_side_obj_char,hurt_side_obj_char,clean_hit)
 end
 function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_main(
     hit_side_obj_char,hurt_side_obj_char,obj_projectile
@@ -1473,6 +1473,30 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_air_bloc
 )
 end
 function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_hurt(
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
+    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
+    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,fix_direction,velocity_center,
+    character_uncommon_init
+)
+end
+function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_clean_hit_ground_block(
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
+    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
+    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,fix_direction,velocity_center,
+    character_uncommon_init
+)
+end
+function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_clean_hit_air_block(
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
+    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
+    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,fix_direction,velocity_center,
+    character_uncommon_init
+)
+end
+function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_clean_hit_hurt(
     hit_side_obj_char,hurt_side_obj_char,obj_projectile,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
     hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
     hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
