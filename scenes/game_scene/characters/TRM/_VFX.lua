@@ -333,225 +333,13 @@ function insert_VFX_game_scene_char_TRM_cS_move(obj_char)
     end
     table.insert(obj_char["VFX_common_front_table"],obj_VFX)
 end
-function insert_VFX_game_scene_char_TRM_5H_at_the_ready_shot_oroboros_blast(obj_char)
-    -- x y z opacity sx sy r f
-    local obj_VFX = {0,0,0,1,1,1,0,0}
-    local obj_camera = obj_stage_game_scene_camera
-    local oroboros_pos = {
-        obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]
-    }
-    local reticle_pos = {
-        obj_char["shot_sys_reticle_stage_pos_current"][1] + 160,
-        obj_char["shot_sys_reticle_stage_pos_current"][2] + 160
-    }
-    local center_dx = 35
-    local center_dy = -210
-    local center_r = character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(
-        obj_char,oroboros_pos,reticle_pos
-    )
-    local rot_dx =
-        center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.cos(center_r) -
-        center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.sin(center_r)
-    local rot_dy =
-        center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.sin(center_r) +
-        center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.cos(center_r)
-    local side = obj_char["player_side"]
-    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
-    local image_sprite_sheet = image_sprite_sheet_table["5H_shot_oroboros_blast_move_VFX"]
-    obj_VFX["life"] = 15
-    obj_VFX[1] = obj_char["shot_sys_oroboros_ease_current"][1] + rot_dx
-    obj_VFX[2] = obj_char["shot_sys_oroboros_ease_current"][2] + rot_dy
-    obj_VFX[3] = obj_char[3]
-    obj_VFX[4] = 1
-    obj_VFX[5] = obj_char[5]
-    obj_VFX[6] = obj_char[6]
-    obj_VFX[7] = center_r
-    obj_VFX[8] = 0
-    obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
-    obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
-    obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_VFX["animation"] = {}
-    obj_VFX["animation"][0] = 0
-    obj_VFX["animation"][1] = 1
-    obj_VFX["animation"][3] = 2
-    obj_VFX["animation"][6] = 3
-    obj_VFX["animation"][10] = 4
-    obj_VFX["animation"]["prop"] = 8
-    obj_VFX["animation"]["length"] = 15
-    obj_VFX["animation"]["loop"] = false
-    init_frame_anim_without(obj_VFX,obj_VFX["animation"])
-    obj_VFX["update"] = function()
-        frame_animator(obj_VFX,obj_VFX["animation"])
-        obj_VFX["life"] = obj_VFX["life"] - 1
-    end
-    obj_VFX["draw_sync"] = function()
-        local oroboros_pos = {
-            obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]
-        }
-        local reticle_pos = {
-            obj_char["shot_sys_reticle_stage_pos_current"][1] + 160,
-            obj_char["shot_sys_reticle_stage_pos_current"][2] + 160
-        }
-        local center_dx = 35
-        local center_dy = -210
-        local center_r = character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(
-            obj_char,oroboros_pos,reticle_pos
-        )
-        local rot_dx =
-            center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.cos(center_r) -
-            center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.sin(center_r)
-        local rot_dy =
-            center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.sin(center_r) +
-            center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.cos(center_r)
-        obj_VFX[1] = obj_char["shot_sys_oroboros_ease_current"][1] + rot_dx
-        obj_VFX[2] = obj_char["shot_sys_oroboros_ease_current"][2] + rot_dy
-        obj_VFX[3] = obj_char[3]
-        obj_VFX[5] = obj_char[5]
-        obj_VFX[6] = obj_char[6]
-        obj_VFX[7] = center_r
-        obj_VFX["draw_sync"] = function() end
-    end
-    obj_VFX["draw"] = function()
-        obj_VFX["draw_sync"]()
-        image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8].."")
-        love.graphics.setColor(55/255,55/255,55/255,255/255)
-        love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setColor(1,1,1,1)
-    end
-    table.insert(obj_char["VFX_common_front_table"],obj_VFX)
-end
-function insert_VFX_game_scene_char_TRM_5H_at_the_ready_shot_oroboros_blast_trajectory(obj_char,blast_width)
-    -- 未命中则不生成弹道
-    if obj_char["shot_sys_aim_process"][1] < obj_char["shot_sys_aim_process"][3] then
-        return
-    end
-    -- x y z opacity sx sy r f
-    local obj_VFX = {0,0,0,1,1,1,0,0}
-    local obj_camera = obj_stage_game_scene_camera
-    local blast_box_points = {0,0,0,0,0,0,0,0}
-    local blast_canvas_table = {["L"] = CANVAS_CHAR_BLAST_TRAJECTORY_LP,["R"] = CANVAS_CHAR_BLAST_TRAJECTORY_RP}
-    local function draw_blast_box(start_cood,end_cood,half_width)
-        local box_dx = end_cood[1] - start_cood[1]
-        local box_dy = end_cood[2] - start_cood[2]
-        local box_scale = half_width/math.sqrt(box_dx^2 + box_dy^2)
-        local box_offset_x = -box_dy*box_scale
-        local box_offset_y = box_dx*box_scale
-        blast_box_points[1] = start_cood[1] + box_offset_x
-        blast_box_points[2] = start_cood[2] + box_offset_y
-        blast_box_points[3] = end_cood[1] + box_offset_x
-        blast_box_points[4] = end_cood[2] + box_offset_y
-        blast_box_points[5] = end_cood[1] - box_offset_x
-        blast_box_points[6] = end_cood[2] - box_offset_y
-        blast_box_points[7] = start_cood[1] - box_offset_x
-        blast_box_points[8] = start_cood[2] - box_offset_y
-        love.graphics.polygon("fill",blast_box_points)
-        love.graphics.polygon("line",blast_box_points)
-    end
-    obj_VFX["f"] = 0 -- 本VFX插入于VFX更新之后，首次绘制时帧数仍为0
-    obj_VFX["life"] = 5
-    obj_VFX["blast_width"] = blast_width
-    obj_VFX["blast_start_distance"] = 240
-    obj_VFX["blast_extend_distance"] = 1000
-    obj_VFX["blast_draw_canvas"] = blast_canvas_table[obj_char["player_side"]]
-    obj_VFX["update"] = function()
-        obj_VFX["f"] = obj_VFX["f"] + 1
-        obj_VFX["life"] = obj_VFX["life"] - 1
-    end
-    obj_VFX["draw_sync"] = function()
-        obj_VFX[3] = obj_char[3]
-        -- 只在首次绘制时确定弹道位置，之后仅随摄像机重新投影
-        local oroboros_pos = {
-            obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]
-        }
-        local reticle_pos = {
-            obj_char["shot_sys_reticle_stage_pos_current"][1] + 160,
-            obj_char["shot_sys_reticle_stage_pos_current"][2] + 160
-        }
-        local blast_dx = reticle_pos[1] - oroboros_pos[1]
-        local blast_dy = reticle_pos[2] - oroboros_pos[2]
-        local blast_dist = math.sqrt(blast_dx^2 + blast_dy^2)
-        if blast_dist > obj_VFX["blast_start_distance"] then
-            local blast_start_offset = obj_VFX["blast_start_distance"]/blast_dist
-            -- 延长线按原方向随机偏转(2度以上13度以内)
-            local blast_extend_r = math.atan2(blast_dy,blast_dx) +
-                math.rad(math.random(2,13))*((math.random(2) == 1) and 1 or -1)
-            obj_VFX["blast_end_pos"] = reticle_pos
-            obj_VFX["blast_start_pos"] = {
-                oroboros_pos[1] + blast_dx*blast_start_offset,
-                oroboros_pos[2] + blast_dy*blast_start_offset
-            }
-            obj_VFX["blast_extend_pos"] = {
-                reticle_pos[1] + math.cos(blast_extend_r)*obj_VFX["blast_extend_distance"],
-                reticle_pos[2] + math.sin(blast_extend_r)*obj_VFX["blast_extend_distance"]
-            }
-        end
-        obj_VFX["draw_sync"] = function() end
-    end
-    obj_VFX["draw"] = function()
-        obj_VFX["draw_sync"]()
-        local blast_frame_alpha = 1 - (obj_VFX["f"]/5)^2
-        if obj_VFX["blast_start_pos"] and blast_frame_alpha > 0 then
-            local blast_scale = draw_resolution_correction(800)/(obj_VFX[3] - obj_camera[3])
-            local blast_screen_width = draw_resolution_correction(obj_VFX["blast_width"])*blast_scale
-            local blast_half_width = blast_screen_width/2
-            local blast_mask_margin = 2 -- 遮罩需比梁体略大,以覆盖描边超出的部分
-            local blast_mask_height = blast_screen_width + blast_mask_margin*2
-            local blast_end_cood = draw_3d_point_to_2D(
-                obj_camera,{obj_VFX["blast_end_pos"][1],obj_VFX["blast_end_pos"][2],obj_VFX[3]}
-            )
-            local blast_start_cood = draw_3d_point_to_2D(
-                obj_camera,{obj_VFX["blast_start_pos"][1],obj_VFX["blast_start_pos"][2],obj_VFX[3]}
-            )
-            local blast_start_dx = blast_end_cood[1] - blast_start_cood[1]
-            local blast_start_dy = blast_end_cood[2] - blast_start_cood[2]
-            local blast_start_sx =
-                math.sqrt(blast_start_dx^2 + blast_start_dy^2)/image_game_scene_alpha_gradient_mask:getWidth()
-            local blast_extend_cood = draw_3d_point_to_2D(
-                obj_camera,{obj_VFX["blast_extend_pos"][1],obj_VFX["blast_extend_pos"][2],obj_VFX[3]}
-            )
-            local blast_extend_dx = blast_end_cood[1] - blast_extend_cood[1]
-            local blast_extend_dy = blast_end_cood[2] - blast_extend_cood[2]
-            local blast_extend_sx =
-                math.sqrt(blast_extend_dx^2 + blast_extend_dy^2)/image_game_scene_alpha_gradient_mask:getWidth()
-            -- 先在canvas上把填充和描边一起画出(描边覆盖锯齿边界,与draw_char_select_scene_glow一致)
-            love.graphics.setCanvas(obj_VFX["blast_draw_canvas"])
-            love.graphics.clear(0,0,0,0)
-            love.graphics.setBlendMode("alpha","alphamultiply")
-            love.graphics.setColor(1,1,1,1)
-            love.graphics.setLineStyle("smooth")
-            love.graphics.setLineWidth(1.5) -- 线宽略大于1以覆盖锯齿边界
-            draw_blast_box(blast_start_cood,blast_end_cood,blast_half_width)
-            draw_blast_box(blast_extend_cood,blast_end_cood,blast_half_width)
-            -- 再用alpha渐变遮罩乘算,给整条梁做淡入淡出
-            love.graphics.setBlendMode("multiply","premultiplied")
-            love.graphics.setColor(1,1,1,1)
-            love.graphics.draw(
-                image_game_scene_alpha_gradient_mask,blast_start_cood[1],blast_start_cood[2],
-                math.atan2(blast_start_dy,blast_start_dx),blast_start_sx,blast_mask_height,0,0.5
-            )
-            love.graphics.draw(
-                image_game_scene_alpha_gradient_mask,blast_extend_cood[1],blast_extend_cood[2],
-                math.atan2(blast_extend_dy,blast_extend_dx),blast_extend_sx,blast_mask_height,0,0.5
-            )
-            love.graphics.setLineWidth(1)
-            love.graphics.setCanvas()
-            -- 透明度统一在canvas合成时应用
-            love.graphics.setBlendMode("alpha","premultiplied")
-            love.graphics.setColor(
-                55/255*blast_frame_alpha,55/255*blast_frame_alpha,55/255*blast_frame_alpha,blast_frame_alpha
-            )
-            love.graphics.draw(obj_VFX["blast_draw_canvas"])
-            love.graphics.setColor(1,1,1,1)
-            love.graphics.setBlendMode("alpha","alphamultiply")
-        end
-    end
-    table.insert(obj_char["VFX_common_front_table"],obj_VFX)
-end
 function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
+    local hit_side = hit_side_obj_char["player_side"]
+    local hit_side_image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(hit_side)
+    local hit_side_image_sprite_sheet = hit_side_image_sprite_sheet_table["5H_hit_blast_move_VFX"]
     obj_VFX["life"] = 16
     obj_VFX[1] = hit_side_obj_char["shot_sys_reticle"][1] - 230 + 160
     obj_VFX[2] = hit_side_obj_char["shot_sys_reticle"][2] - 255 + 160
@@ -601,7 +389,7 @@ function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit
         obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
-        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_blast_ver0
+        local image_sprite_sheet = hit_side_image_sprite_sheet
         -- obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8].."")
@@ -1085,6 +873,72 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     end
     table.insert(hurt_side_obj_char["VFX_status_back_table"],obj_VFX)
 end
+function insert_VFX_game_scene_char_TRM_4SP_S_H_at_the_steady_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
+    -- x y z opacity sx sy r f
+    local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
+    local hit_side = obj_char["player_side"]
+    local hit_side_image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(hit_side)
+    local hit_side_image_sprite_sheet = hit_side_image_sprite_sheet_table["4SP_S_H_hit_blast_move_VFX"]
+    obj_VFX["life"] = 16
+    obj_VFX[1] = hit_side_obj_char["shot_sys_reticle"][1] - 230 + 160
+    obj_VFX[2] = hit_side_obj_char["shot_sys_reticle"][2] - 255 + 160
+    obj_VFX[3] = 0
+    obj_VFX[4] = 1
+    obj_VFX[5] = 1
+    obj_VFX[6] = 1
+    obj_VFX[7] = 0
+    obj_VFX[8] = 0
+    obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["animation"] = {}
+    obj_VFX["animation"] = {}
+    obj_VFX["animation"][0] = 0
+    obj_VFX["animation"][3] = 1
+    obj_VFX["animation"][7] = 2
+    obj_VFX["animation"][10] = 3
+    obj_VFX["animation"][13] = 4
+    obj_VFX["animation"]["prop"] = 8
+    obj_VFX["animation"]["length"] = 16
+    obj_VFX["animation"]["loop"] = false
+    init_frame_anim_without(obj_VFX,obj_VFX["animation"])
+    if hit_side_obj_char["x"] > hurt_side_obj_char["x"] then
+        obj_VFX[1] = hit_side_obj_char["shot_sys_reticle"][1] + 230 + 160
+        obj_VFX[5] = -1
+    elseif hit_side_obj_char["x"] == hurt_side_obj_char["x"] then
+        if math.random(0,1) == 0 then
+            obj_VFX[1] = hit_side_obj_char["shot_sys_reticle"][1] + 230 + 160
+            obj_VFX[5] = -1
+        end
+    end
+    obj_VFX["update"] = function()
+        frame_animator(obj_VFX,obj_VFX["animation"])
+        obj_VFX["life"] = obj_VFX["life"] - 1
+    end
+    obj_VFX["draw_sync"] = function()
+        if hit_side_obj_char["x"] > hurt_side_obj_char["x"] then
+            obj_VFX[1] = hit_side_obj_char["shot_sys_reticle"][1] + 230 + 160
+            obj_VFX[5] = -1
+        elseif hit_side_obj_char["x"] == hurt_side_obj_char["x"] then
+            if math.random(0,1) == 0 then
+                obj_VFX[1] = hit_side_obj_char["shot_sys_reticle"][1] + 230 + 160
+                obj_VFX[5] = -1
+            end
+        end
+        obj_VFX["draw_sync"] = function() end
+    end
+    obj_VFX["draw"] = function()
+        local image_sprite_sheet = hit_side_image_sprite_sheet
+        -- obj_VFX["draw_sync"]()
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8].."")
+        love.graphics.setColor(35/255,35/255,35/255,175/255)
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setColor(1,1,1,1)
+    end
+    table.insert(hit_side_obj_char["VFX_hit_front_table"],obj_VFX)
+end
 function insert_VFX_game_scene_char_TRM_6SP_S_move(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
@@ -1145,7 +999,7 @@ function insert_VFX_game_scene_char_TRM_6SP_S_move(obj_char)
     table.insert(obj_char["VFX_common_front_table"],obj_VFX)
 end
 -- attachment
-function insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char)
+function insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char,sprite_sheet)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local height_y_offset = {
@@ -1156,7 +1010,7 @@ function insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char)
     }
     local side = obj_char["player_side"]
     local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
-    local image_sprite_sheet = image_sprite_sheet_table["5H_switch_move_VFX"]
+    local image_sprite_sheet = image_sprite_sheet_table[sprite_sheet]
     obj_VFX["y_offset"] = height_y_offset[obj_char["height"]]
     obj_VFX["life"] = 30
     obj_VFX[1] = obj_char["x"] + obj_char[5]*(-370)
@@ -1201,4 +1055,219 @@ function insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char)
         love.graphics.setColor(1,1,1,1)
     end
     table.insert(obj_char["VFX_common_back_table"],obj_VFX)
+end
+function insert_VFX_game_scene_char_TRM_oroboros_blast(obj_char,sprite_sheet)
+    -- x y z opacity sx sy r f
+    local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
+    local oroboros_pos = {
+        obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]
+    }
+    local reticle_pos = {
+        obj_char["shot_sys_reticle_stage_pos_current"][1] + 160,
+        obj_char["shot_sys_reticle_stage_pos_current"][2] + 160
+    }
+    local center_dx = 35
+    local center_dy = -210
+    local center_r = character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(
+        obj_char,oroboros_pos,reticle_pos
+    )
+    local rot_dx =
+        center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.cos(center_r) -
+        center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.sin(center_r)
+    local rot_dy =
+        center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.sin(center_r) +
+        center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.cos(center_r)
+    local side = obj_char["player_side"]
+    local image_sprite_sheet_table = common_game_scene_get_VFX_sprite_sheet_table(side)
+    local image_sprite_sheet = image_sprite_sheet_table[sprite_sheet]
+    obj_VFX["life"] = 15
+    obj_VFX[1] = obj_char["shot_sys_oroboros_ease_current"][1] + rot_dx
+    obj_VFX[2] = obj_char["shot_sys_oroboros_ease_current"][2] + rot_dy
+    obj_VFX[3] = obj_char[3]
+    obj_VFX[4] = 1
+    obj_VFX[5] = obj_char[5]
+    obj_VFX[6] = obj_char[6]
+    obj_VFX[7] = center_r
+    obj_VFX[8] = 0
+    obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["animation"] = {}
+    obj_VFX["animation"][0] = 0
+    obj_VFX["animation"][1] = 1
+    obj_VFX["animation"][3] = 2
+    obj_VFX["animation"][6] = 3
+    obj_VFX["animation"][10] = 4
+    obj_VFX["animation"]["prop"] = 8
+    obj_VFX["animation"]["length"] = 15
+    obj_VFX["animation"]["loop"] = false
+    init_frame_anim_without(obj_VFX,obj_VFX["animation"])
+    obj_VFX["update"] = function()
+        frame_animator(obj_VFX,obj_VFX["animation"])
+        obj_VFX["life"] = obj_VFX["life"] - 1
+    end
+    obj_VFX["draw_sync"] = function()
+        local oroboros_pos = {
+            obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]
+        }
+        local reticle_pos = {
+            obj_char["shot_sys_reticle_stage_pos_current"][1] + 160,
+            obj_char["shot_sys_reticle_stage_pos_current"][2] + 160
+        }
+        local center_dx = 35
+        local center_dy = -210
+        local center_r = character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(
+            obj_char,oroboros_pos,reticle_pos
+        )
+        local rot_dx =
+            center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.cos(center_r) -
+            center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.sin(center_r)
+        local rot_dy =
+            center_dx*obj_char["shot_sys_oroboros_ease_current"][3]*math.sin(center_r) +
+            center_dy*obj_char["shot_sys_oroboros_ease_current"][4]*math.cos(center_r)
+        obj_VFX[1] = obj_char["shot_sys_oroboros_ease_current"][1] + rot_dx
+        obj_VFX[2] = obj_char["shot_sys_oroboros_ease_current"][2] + rot_dy
+        obj_VFX[3] = obj_char[3]
+        obj_VFX[5] = obj_char[5]
+        obj_VFX[6] = obj_char[6]
+        obj_VFX[7] = center_r
+        obj_VFX["draw_sync"] = function() end
+    end
+    obj_VFX["draw"] = function()
+        obj_VFX["draw_sync"]()
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8].."")
+        love.graphics.setColor(55/255,55/255,55/255,255/255)
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setColor(1,1,1,1)
+    end
+    table.insert(obj_char["VFX_common_front_table"],obj_VFX)
+end
+function insert_VFX_game_scene_char_TRM_oroboros_blast_trajectory(obj_char,blast_width)
+    -- 未命中则不生成弹道
+    if obj_char["shot_sys_aim_process"][1] < obj_char["shot_sys_aim_process"][3] then
+        return
+    end
+    -- x y z opacity sx sy r f
+    local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
+    local blast_box_points = {0,0,0,0,0,0,0,0}
+    local blast_canvas_table = {["L"] = CANVAS_CHAR_BLAST_TRAJECTORY_LP,["R"] = CANVAS_CHAR_BLAST_TRAJECTORY_RP}
+    local function draw_blast_box(start_cood,end_cood,half_width)
+        local box_dx = end_cood[1] - start_cood[1]
+        local box_dy = end_cood[2] - start_cood[2]
+        local box_scale = half_width/math.sqrt(box_dx^2 + box_dy^2)
+        local box_offset_x = -box_dy*box_scale
+        local box_offset_y = box_dx*box_scale
+        blast_box_points[1] = start_cood[1] + box_offset_x
+        blast_box_points[2] = start_cood[2] + box_offset_y
+        blast_box_points[3] = end_cood[1] + box_offset_x
+        blast_box_points[4] = end_cood[2] + box_offset_y
+        blast_box_points[5] = end_cood[1] - box_offset_x
+        blast_box_points[6] = end_cood[2] - box_offset_y
+        blast_box_points[7] = start_cood[1] - box_offset_x
+        blast_box_points[8] = start_cood[2] - box_offset_y
+        love.graphics.polygon("fill",blast_box_points)
+        love.graphics.polygon("line",blast_box_points)
+    end
+    obj_VFX["f"] = 0 -- 本VFX插入于VFX更新之后，首次绘制时帧数仍为0
+    obj_VFX["life"] = 5
+    obj_VFX["blast_width"] = blast_width
+    obj_VFX["blast_start_distance"] = 240
+    obj_VFX["blast_extend_distance"] = 1000
+    obj_VFX["blast_draw_canvas"] = blast_canvas_table[obj_char["player_side"]]
+    obj_VFX["update"] = function()
+        obj_VFX["f"] = obj_VFX["f"] + 1
+        obj_VFX["life"] = obj_VFX["life"] - 1
+    end
+    obj_VFX["draw_sync"] = function()
+        obj_VFX[3] = obj_char[3]
+        -- 只在首次绘制时确定弹道位置，之后仅随摄像机重新投影
+        local oroboros_pos = {
+            obj_char["shot_sys_oroboros_ease_current"][1],obj_char["shot_sys_oroboros_ease_current"][2]
+        }
+        local reticle_pos = {
+            obj_char["shot_sys_reticle_stage_pos_current"][1] + 160,
+            obj_char["shot_sys_reticle_stage_pos_current"][2] + 160
+        }
+        local blast_dx = reticle_pos[1] - oroboros_pos[1]
+        local blast_dy = reticle_pos[2] - oroboros_pos[2]
+        local blast_dist = math.sqrt(blast_dx^2 + blast_dy^2)
+        if blast_dist > obj_VFX["blast_start_distance"] then
+            local blast_start_offset = obj_VFX["blast_start_distance"]/blast_dist
+            -- 延长线按原方向随机偏转(2度以上13度以内)
+            local blast_extend_r = math.atan2(blast_dy,blast_dx) +
+                math.rad(math.random(2,13))*((math.random(2) == 1) and 1 or -1)
+            obj_VFX["blast_end_pos"] = reticle_pos
+            obj_VFX["blast_start_pos"] = {
+                oroboros_pos[1] + blast_dx*blast_start_offset,
+                oroboros_pos[2] + blast_dy*blast_start_offset
+            }
+            obj_VFX["blast_extend_pos"] = {
+                reticle_pos[1] + math.cos(blast_extend_r)*obj_VFX["blast_extend_distance"],
+                reticle_pos[2] + math.sin(blast_extend_r)*obj_VFX["blast_extend_distance"]
+            }
+        end
+        obj_VFX["draw_sync"] = function() end
+    end
+    obj_VFX["draw"] = function()
+        obj_VFX["draw_sync"]()
+        local blast_frame_alpha = 1 - (obj_VFX["f"]/5)^2
+        if obj_VFX["blast_start_pos"] and blast_frame_alpha > 0 then
+            local blast_scale = draw_resolution_correction(800)/(obj_VFX[3] - obj_camera[3])
+            local blast_screen_width = draw_resolution_correction(obj_VFX["blast_width"])*blast_scale
+            local blast_half_width = blast_screen_width/2
+            local blast_mask_margin = 2 -- 遮罩需比梁体略大,以覆盖描边超出的部分
+            local blast_mask_height = blast_screen_width + blast_mask_margin*2
+            local blast_end_cood = draw_3d_point_to_2D(
+                obj_camera,{obj_VFX["blast_end_pos"][1],obj_VFX["blast_end_pos"][2],obj_VFX[3]}
+            )
+            local blast_start_cood = draw_3d_point_to_2D(
+                obj_camera,{obj_VFX["blast_start_pos"][1],obj_VFX["blast_start_pos"][2],obj_VFX[3]}
+            )
+            local blast_start_dx = blast_end_cood[1] - blast_start_cood[1]
+            local blast_start_dy = blast_end_cood[2] - blast_start_cood[2]
+            local blast_start_sx =
+                math.sqrt(blast_start_dx^2 + blast_start_dy^2)/image_game_scene_alpha_gradient_mask:getWidth()
+            local blast_extend_cood = draw_3d_point_to_2D(
+                obj_camera,{obj_VFX["blast_extend_pos"][1],obj_VFX["blast_extend_pos"][2],obj_VFX[3]}
+            )
+            local blast_extend_dx = blast_end_cood[1] - blast_extend_cood[1]
+            local blast_extend_dy = blast_end_cood[2] - blast_extend_cood[2]
+            local blast_extend_sx =
+                math.sqrt(blast_extend_dx^2 + blast_extend_dy^2)/image_game_scene_alpha_gradient_mask:getWidth()
+            -- 先在canvas上把填充和描边一起画出(描边覆盖锯齿边界,与draw_char_select_scene_glow一致)
+            love.graphics.setCanvas(obj_VFX["blast_draw_canvas"])
+            love.graphics.clear(0,0,0,0)
+            love.graphics.setBlendMode("alpha","alphamultiply")
+            love.graphics.setColor(1,1,1,1)
+            love.graphics.setLineStyle("smooth")
+            love.graphics.setLineWidth(1.5) -- 线宽略大于1以覆盖锯齿边界
+            draw_blast_box(blast_start_cood,blast_end_cood,blast_half_width)
+            draw_blast_box(blast_extend_cood,blast_end_cood,blast_half_width)
+            -- 再用alpha渐变遮罩乘算,给整条梁做淡入淡出
+            love.graphics.setBlendMode("multiply","premultiplied")
+            love.graphics.setColor(1,1,1,1)
+            love.graphics.draw(
+                image_game_scene_alpha_gradient_mask,blast_start_cood[1],blast_start_cood[2],
+                math.atan2(blast_start_dy,blast_start_dx),blast_start_sx,blast_mask_height,0,0.5
+            )
+            love.graphics.draw(
+                image_game_scene_alpha_gradient_mask,blast_extend_cood[1],blast_extend_cood[2],
+                math.atan2(blast_extend_dy,blast_extend_dx),blast_extend_sx,blast_mask_height,0,0.5
+            )
+            love.graphics.setLineWidth(1)
+            love.graphics.setCanvas()
+            -- 透明度统一在canvas合成时应用
+            love.graphics.setBlendMode("alpha","premultiplied")
+            love.graphics.setColor(
+                55/255*blast_frame_alpha,55/255*blast_frame_alpha,55/255*blast_frame_alpha,blast_frame_alpha
+            )
+            love.graphics.draw(obj_VFX["blast_draw_canvas"])
+            love.graphics.setColor(1,1,1,1)
+            love.graphics.setBlendMode("alpha","alphamultiply")
+        end
+    end
+    table.insert(obj_char["VFX_common_front_table"],obj_VFX)
 end

@@ -2,67 +2,51 @@
 
 "0":
 {
-	"frame": {"x":0,"y":0,"w":420,"h":440},
+	"frame": {"x":0,"y":0,"w":520,"h":400},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
-	"sourceSize": {"w":420,"h":440}
+	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":400},
+	"sourceSize": {"w":520,"h":400}
 },
 "1":
 {
-	"frame": {"x":420,"y":0,"w":420,"h":440},
+	"frame": {"x":0,"y":400,"w":520,"h":400},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
-	"sourceSize": {"w":420,"h":440}
+	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":400},
+	"sourceSize": {"w":520,"h":400}
 },
 "2":
 {
-	"frame": {"x":840,"y":0,"w":420,"h":440},
+	"frame": {"x":0,"y":800,"w":520,"h":400},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
-	"sourceSize": {"w":420,"h":440}
+	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":400},
+	"sourceSize": {"w":520,"h":400}
 },
 "3":
 {
-	"frame": {"x":1260,"y":0,"w":420,"h":440},
+	"frame": {"x":0,"y":1200,"w":520,"h":400},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
-	"sourceSize": {"w":420,"h":440}
+	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":400},
+	"sourceSize": {"w":520,"h":400}
 },
 "4":
 {
-	"frame": {"x":1680,"y":0,"w":420,"h":440},
+	"frame": {"x":0,"y":1600,"w":520,"h":400},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
-	"sourceSize": {"w":420,"h":440}
-},
-"5":
-{
-	"frame": {"x":2100,"y":0,"w":420,"h":440},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
-	"sourceSize": {"w":420,"h":440}
-},
-"6":
-{
-	"frame": {"x":2520,"y":0,"w":420,"h":440},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
-	"sourceSize": {"w":420,"h":440}
+	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":400},
+	"sourceSize": {"w":520,"h":400}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "TRM_4SP_S_H_shot_oroboros_blast",
+	"image": "TRM_5H_shot_oroboros_blast",
 	"format": "RGBA8888",
-	"size": {"w":2940,"h":440},
+	"size": {"w":520,"h":2000},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:3999d5bcde0eac3cac05113cba5b3a0d:93ad42612f7ce34ab0e29ad03be2c6d2:a9c8ac96e67c2e2c0a198fb0de70464b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:f5fff0bdc979f77b6be112e704524933:11a25b85a82bfdfaa4e4954bdd6c4c9c:3233ef7b1af7b312b39ca5c651fe8264$"
 }
 }

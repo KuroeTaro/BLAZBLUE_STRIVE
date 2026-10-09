@@ -8739,7 +8739,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_in(obj_char
         obj_char["shot_sys_fire_cancel"] = false
         obj_char["shot_sys_idle_cancel"] = true
         --VFX
-        insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char)
+        insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char,"5H_switch_move_VFX")
     end
     res[12] = function()
         -- shot_sys
@@ -8754,7 +8754,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_out(obj_cha
     res["anim_length"] = 1
     res[0] = function()
         -- insert_VFX
-        insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char)
+        insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char,"5H_switch_move_VFX")
     end
     res[1] = function()
         -- animation_end
@@ -9045,8 +9045,8 @@ function load_game_scene_anim_char_TRM_5H_oroboros_at_the_ready_shot(obj_char)
         update_oroboros_r(obj_char,10)
         obj_char["shot_sys_oroboros_mid"][8] = 1
         -- insert_VFX
-        insert_VFX_game_scene_char_TRM_5H_at_the_ready_shot_oroboros_blast_trajectory(obj_char,5)
-        insert_VFX_game_scene_char_TRM_5H_at_the_ready_shot_oroboros_blast(obj_char)
+        insert_VFX_game_scene_char_TRM_oroboros_blast_trajectory(obj_char,5)
+        insert_VFX_game_scene_char_TRM_oroboros_blast(obj_char,"5H_shot_oroboros_blast_move_VFX")
     end
     res[3] = function()
         -- shot_sys_oroboros
@@ -9281,7 +9281,7 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock(self_si
             self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = true
         end
         --VFX
-        insert_VFX_game_scene_char_TRM_oroboros_switch(self_side_obj_char)
+        insert_VFX_game_scene_char_TRM_oroboros_switch(self_side_obj_char,"4SP_S_switch_move_VFX")
     end
     res[18] = function()
         -- shot_sys
@@ -9332,7 +9332,7 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock_to_read
     end
     return res
 end
-function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_shot(self_side_obj_char,opponent_side_obj_char)
+function load_game_scene_anim_char_TRM_4SP_S_H_shot_sys_at_the_steady_shot(self_side_obj_char,opponent_side_obj_char)
     local res = {}
     res["prop_f"] = "shot_sys_f"
     res["anim_length"] = 45
@@ -9354,7 +9354,7 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_shot(self_si
     return res
 end
 -- shot_sys_oroboros
-function load_game_scene_anim_char_TRM_4SP_S_oroboros_at_the_steady_shot(obj_char)
+function load_game_scene_anim_char_TRM_4SP_S_H_oroboros_at_the_steady_shot(obj_char)
     local res = {}
     local obj_camera = obj_stage_game_scene_camera
     local oroboros_pos = {
@@ -9388,8 +9388,8 @@ function load_game_scene_anim_char_TRM_4SP_S_oroboros_at_the_steady_shot(obj_cha
         update_oroboros_r(obj_char,10)
         obj_char["shot_sys_oroboros_mid"][8] = 1
         -- insert_VFX
-        insert_VFX_game_scene_char_TRM_5H_at_the_ready_shot_oroboros_blast_trajectory(obj_char,7.5)
-        insert_VFX_game_scene_char_TRM_5H_at_the_ready_shot_oroboros_blast(obj_char)
+        insert_VFX_game_scene_char_TRM_oroboros_blast_trajectory(obj_char,7.5)
+        insert_VFX_game_scene_char_TRM_oroboros_blast(obj_char,"4SP_S_H_shot_oroboros_blast_move_VFX")
     end
     res[3] = function()
         -- shot_sys_oroboros
@@ -9528,7 +9528,7 @@ function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock_to_off(o
         obj_char["shot_sys_reticle"][4] = 1
         obj_char["shot_sys_reticle"][8] = 0
         --VFX
-        insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char)
+        insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char,"4SP_S_switch_move_VFX")
         -- play_SFX
         play_obj_audio(move_SFX_table["5H_reticle_ease_out"])
     end
@@ -9571,7 +9571,7 @@ function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock_to_ready
     end
     return res
 end
-function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_shot(obj_char)
+function load_game_scene_anim_char_TRM_4SP_S_H_reticle_at_the_steady_shot(obj_char)
     local res = {}
     local side = obj_char["player_side"]
     local move_SFX_table = common_game_scene_get_SFX_move(side)

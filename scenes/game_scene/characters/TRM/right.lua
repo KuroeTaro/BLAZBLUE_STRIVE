@@ -1482,6 +1482,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 "2S",
                 "6S",
                 "cS",
+                "5H_hit_blast",
                 "5H_shot_oroboros_blast",
                 "5H_switch"
             }
@@ -1523,11 +1524,12 @@ function order_load_game_scene_char_RP_frames(load_order)
         -- move_VFX special
         [36] = function()
             local load_name_table = {
-                "4SP_S_H_hit",
-                "4SP_S_H_shot_oroboros_blast",
                 "6SP_P_curse_ball_spawner",
                 "6SP_P_curse_ball_spawn_halo",
                 "6SP_P_arua",
+                "4SP_S_H_hit_blast",
+                "4SP_S_H_shot_oroboros_blast",
+                "4SP_S_H_switch",
                 "6SP_S"
             }
             for i,v in ipairs(load_name_table) do
