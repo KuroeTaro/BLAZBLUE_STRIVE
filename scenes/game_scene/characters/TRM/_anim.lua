@@ -9332,7 +9332,7 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock_to_read
     end
     return res
 end
-function load_game_scene_anim_char_TRM_4SP_S_H_shot_sys_at_the_steady_shot(self_side_obj_char,opponent_side_obj_char)
+function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_shot(self_side_obj_char,opponent_side_obj_char)
     local res = {}
     res["prop_f"] = "shot_sys_f"
     res["anim_length"] = 45
@@ -9354,7 +9354,7 @@ function load_game_scene_anim_char_TRM_4SP_S_H_shot_sys_at_the_steady_shot(self_
     return res
 end
 -- shot_sys_oroboros
-function load_game_scene_anim_char_TRM_4SP_S_H_oroboros_at_the_steady_shot(obj_char)
+function load_game_scene_anim_char_TRM_4SP_S_oroboros_at_the_steady_shot(obj_char)
     local res = {}
     local obj_camera = obj_stage_game_scene_camera
     local oroboros_pos = {
@@ -9571,7 +9571,7 @@ function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock_to_ready
     end
     return res
 end
-function load_game_scene_anim_char_TRM_4SP_S_H_reticle_at_the_steady_shot(obj_char)
+function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_shot(obj_char)
     local res = {}
     local side = obj_char["player_side"]
     local move_SFX_table = common_game_scene_get_SFX_move(side)

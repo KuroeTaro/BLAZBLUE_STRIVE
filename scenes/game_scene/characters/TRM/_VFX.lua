@@ -873,7 +873,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     end
     table.insert(hurt_side_obj_char["VFX_status_back_table"],obj_VFX)
 end
-function insert_VFX_game_scene_char_TRM_4SP_S_H_at_the_steady_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
+function insert_VFX_game_scene_char_TRM_4SP_S_at_the_steady_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera

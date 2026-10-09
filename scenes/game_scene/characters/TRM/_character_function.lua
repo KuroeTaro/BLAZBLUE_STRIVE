@@ -730,7 +730,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_shot_init(self
         self_side_obj_char["hurt_state"] = "unblock"
     end
     -- shot_sys
-    self_side_obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_4SP_S_H_shot_sys_at_the_steady_shot(
+    self_side_obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_shot(
         self_side_obj_char,opponent_side_obj_char
     )
     init_character_anim_with(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
@@ -738,13 +738,13 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_shot_init(self
     -- 已经在ease_in阶段完成了当前帧数的aim_process
     -- shot_sys_oroboros
     self_side_obj_char["shot_sys_oroboros_animation_table"][6] =
-    load_game_scene_anim_char_TRM_4SP_S_H_oroboros_at_the_steady_shot(self_side_obj_char)
+    load_game_scene_anim_char_TRM_4SP_S_oroboros_at_the_steady_shot(self_side_obj_char)
     init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_oroboros_animation_table"][6])
     character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(self_side_obj_char)
     self_side_obj_char["shot_sys_oroboros_state"] = "shot"
     -- shot_sys_reticle
     self_side_obj_char["shot_sys_reticle_animation_table"][2] =
-    load_game_scene_anim_char_TRM_4SP_S_H_reticle_at_the_steady_shot(self_side_obj_char)
+    load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_shot(self_side_obj_char)
     init_character_anim_with(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
     self_side_obj_char["shot_sys_reticle_state"] = "at_the_steady_shot"
     return
