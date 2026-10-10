@@ -2638,19 +2638,6 @@ function state_machine_char_game_scene_char_LP_shot_sys()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(self_side_obj_char)
             end
-            if (self_side_obj_char["shot_sys_idle_cancel"] and test_input_at_the_ready_ease_out_at_release) then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(self_side_obj_char)
-                return
-            end
-            if self_side_obj_char["shot_sys_fire_cancel"] and test_input_sys_release(self_side_input["H"])
-            and self_side_obj_char["state"] ~= "hitstop" and self_side_obj_char["ability_gauge"][1] > 0 then
-                self_side_obj_char["input_sys_cache_negative_edge"]["H"] = false
-                character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(
-                    self_side_obj_char,opponent_side_obj_char
-                )
-                character_function_game_scene_TRM_shot_sys_at_the_ready_ability_gauge_use(self_side_obj_char)
-                return
-            end
             if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"]) then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_init(self_side_obj_char)
                 return
@@ -2662,27 +2649,12 @@ function state_machine_char_game_scene_char_LP_shot_sys()
                     self_side_obj_char,opponent_side_obj_char
                 )
             end
-            if self_side_obj_char["shot_sys_fire_cancel"] and test_input_sys_release(self_side_input["H"])
-            and self_side_obj_char["state"] ~= "hitstop" and self_side_obj_char["ability_gauge"][1] > 100 then
-                character_function_game_scene_TRM_shot_sys_at_the_steady_shot_init(
-                    self_side_obj_char,opponent_side_obj_char
-                )
-                character_function_game_scene_TRM_shot_sys_at_the_steady_ability_gauge_use(self_side_obj_char)
-                return
-            end
         end,
         ["at_the_steady_lock_to_off"] = function()
             if run_at_current_frame then
                 character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_off_update(
                     self_side_obj_char,opponent_side_obj_char
                 )
-            end
-            if test_input_sys_press(self_side_input["H"]) and (not shot_sys_at_the_ready_ban_state) then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(
-                    self_side_obj_char,opponent_side_obj_char
-                )
-                character_animator(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
-                return
             end
             if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"]) then
                 character_function_game_scene_TRM_shot_sys_off_init(self_side_obj_char)
@@ -2694,19 +2666,6 @@ function state_machine_char_game_scene_char_LP_shot_sys()
                 character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_update(
                     self_side_obj_char,opponent_side_obj_char
                 )
-            end
-            if (self_side_obj_char["shot_sys_idle_cancel"] and test_input_at_the_ready_ease_out_at_release) or
-            shot_sys_at_the_ready_ban_state then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(self_side_obj_char)
-                return
-            end
-            if self_side_obj_char["shot_sys_fire_cancel"] and test_input_sys_release(self_side_input["H"])
-            and self_side_obj_char["state"] ~= "hitstop" and self_side_obj_char["ability_gauge"][1] > 0 then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init(
-                    self_side_obj_char,opponent_side_obj_char
-                )
-                character_function_game_scene_TRM_shot_sys_at_the_ready_ability_gauge_use(self_side_obj_char)
-                return
             end
             if get_character_anim_end_state(self_side_obj_char,self_side_obj_char["shot_sys_animation"]) then
                 character_function_game_scene_TRM_shot_sys_at_the_ready_init(self_side_obj_char)
@@ -4669,6 +4628,7 @@ function state_gate_game_scene_char_LP_4SP_S_to_special(
         end
         -- _4SP_S_H
         if test_input_sys_release(self_side_input["H"])
+        and self_side_obj_char["hit_cancel"]
         then
             self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S_H(
                 self_side_obj_char,opponent_side_obj_char

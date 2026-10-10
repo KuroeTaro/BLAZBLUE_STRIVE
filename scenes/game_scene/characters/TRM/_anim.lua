@@ -8155,7 +8155,7 @@ function load_game_scene_anim_char_TRM_4SP_S(hit_side_obj_char,hurt_side_obj_cha
         hit_side_obj_char["hit_guard_type"] = "none" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["hit_cancel"] = true
         hit_side_obj_char["idle_cancel"] = true
         -- state_number
         hit_side_obj_char["gravity"] = 2.5
@@ -8429,6 +8429,13 @@ function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_c
         hit_side_obj_char["hitbox_table"] = {}
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
+        -- shot_sys
+        hit_side_obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock(
+            hit_side_obj_char,hurt_side_obj_char
+        )
+        init_character_anim_without(hit_side_obj_char,hit_side_obj_char["shot_sys_animation"])
+        hit_side_obj_char["shot_sys_aim_process"][1] = 0
+        hit_side_obj_char["shot_sys_state"] = "at_the_steady_lock"
         -- draw_correction
         hit_side_obj_char[8] = 2
         -- visual_front
@@ -8451,7 +8458,7 @@ function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_c
         hit_side_obj_char["hit_guard_type"] = "none" -- none all low mid high
         hit_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
         hit_side_obj_char["move_state"] = "recovery" -- none startup active recovery
-        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["hit_cancel"] = true
         hit_side_obj_char["idle_cancel"] = true
         -- state_number
         hit_side_obj_char["gravity"] = 2.5
@@ -8462,6 +8469,11 @@ function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_c
         -- input_sys_cache
         hit_side_obj_char["input_sys_state_negative_edge"] = "load" -- none save load
         common_game_scene_get_input_sys_cache_negative_edge_state_machine(hit_side)()
+        -- shot_sys
+        hit_side_obj_char["shot_sys_at_the_steady_aim"] = true
+        hit_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = true
+        hit_side_obj_char["shot_sys_fire_cancel"] = true
+        hit_side_obj_char["shot_sys_aim_process"][1] = hit_side_obj_char["shot_sys_aim_process"][4]
         -- draw_correction
         hit_side_obj_char[8] = 4
         -- animation_end

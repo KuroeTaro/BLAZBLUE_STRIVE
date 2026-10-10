@@ -897,6 +897,9 @@ function insert_VFX_game_scene_char_TRM_4SP_S_H_at_the_steady_projectile_hit_bla
     )
     local rot_dx = center_dx*math.cos(center_r) - center_dy*math.sin(center_r)
     local rot_dy = center_dx*math.sin(center_r) + center_dy*math.cos(center_r)
+    -- 反向情况(命中方在受击方右侧)贴图水平翻转, 偏移量的 x 分量同步取反
+    local rot_dx_reverse = -center_dx*math.cos(center_r) - center_dy*math.sin(center_r)
+    local rot_dy_reverse = -center_dx*math.sin(center_r) + center_dy*math.cos(center_r)
     obj_VFX["life"] = 17
     obj_VFX[1] = reticle_pos[1] + rot_dx
     obj_VFX[2] = reticle_pos[2] + rot_dy
@@ -927,13 +930,13 @@ function insert_VFX_game_scene_char_TRM_4SP_S_H_at_the_steady_projectile_hit_bla
     end
     obj_VFX["draw_sync"] = function()
         if hit_side_obj_char["x"] > hurt_side_obj_char["x"] then
-            obj_VFX[1] = reticle_pos[1] - rot_dx
-            obj_VFX[2] = reticle_pos[2] + rot_dy
+            obj_VFX[1] = reticle_pos[1] + rot_dx_reverse
+            obj_VFX[2] = reticle_pos[2] + rot_dy_reverse
             obj_VFX[5] = -1
         elseif hit_side_obj_char["x"] == hurt_side_obj_char["x"] then
             if math.random(0,1) == 0 then
-                obj_VFX[1] = reticle_pos[1] - rot_dx
-                obj_VFX[2] = reticle_pos[2] + rot_dy
+                obj_VFX[1] = reticle_pos[1] + rot_dx_reverse
+                obj_VFX[2] = reticle_pos[2] + rot_dy_reverse
                 obj_VFX[5] = -1
             end
         end
