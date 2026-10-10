@@ -36,3 +36,9 @@ __WORK_PLAN__
     -- the ground of the ring at y = 0
     -- and so call up is toward the inside of the ring Y is negative
     -- the other side is Y positive
+
+
+更新双手构命中后飞行道具的精灵设计 只留空枪状态的
+修改cl动画 命中不改 但是打防动画的CL是崩防
+音效添加和修正
+飞行道具的

@@ -3661,8 +3661,8 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         hurt_side_obj_char["throw_inv_countdown"] = 1
     end
     res["prop_f"] = "f"
-    res["anim_length"] = 16
-    for i = 0,15 do
+    res["anim_length"] = 13
+    for i = 0,11 do
         res[i] = function()
             update_before_land()
         end
@@ -3743,19 +3743,13 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         update_before_land()
     end
     res[12] = function()
-        -- draw_correction
-        hurt_side_obj_char[8] = 4
-        -- update
-        update_before_land()
-    end
-    res[15] = function()
         -- state
         hurt_side_obj_char["f"] = 1
-        hurt_side_obj_char[8] = 1
+        hurt_side_obj_char[8] = 0
         -- update
         update_before_land()
     end
-    res[16] = function()
+    res[13] = function()
         -- animation_end
     end
     return res

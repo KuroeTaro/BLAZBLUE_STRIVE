@@ -178,9 +178,8 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
         local image_sprite_sheet = hit_side_projectile_sprite_sheet_table[obj_projectile["sprite_sheet"]]
         if obj_projectile["sprite_sheet"] == "5H_4SP_S_H_hit_projectile" then
             obj_projectile[1] = hurt_side_obj_char["x"] - 160
-            obj_projectile[2] =
-            hurt_side_obj_char["y"] -
-            hurt_side_obj_char["shot_sys_reticle_height_offset"][hurt_side_obj_char["pushbox"][4]] - 160
+            obj_projectile[2] = hurt_side_obj_char["y"] -
+                hurt_side_obj_char["shot_sys_reticle_height_offset"][hurt_side_obj_char["pushbox"][4]] - 160
         end
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8]))
@@ -1509,7 +1508,7 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
     obj_projectile["block_risk_gauge_gain"] = 0
     obj_projectile["FD_block_heat_drain"] = 0
     obj_projectile["stand_hurt_animation"] = load_hurt_animation(
-        hit_side_obj_char,hurt_side_obj_char,obj_projectile,"0_general_hurt_launched_high","air","knockdown_recovery",
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,"0_general_hurt_launched_rotate","air","knockdown_recovery",
         3.25,5,1.147,-40,2.0,1.071,nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",nil,nil,
@@ -1522,7 +1521,7 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
         1.00,nil,nil,nil,nil,true,nil,function() end
     )
     obj_projectile["crouch_hurt_animation"] = load_hurt_animation(
-        hit_side_obj_char,hurt_side_obj_char,obj_projectile,"0_general_hurt_launched_high","air","knockdown_recovery",
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,"0_general_hurt_launched_rotate","air","knockdown_recovery",
         3.25,5,1.147,-40,2.0,1.071,nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",nil,nil,
@@ -1535,7 +1534,7 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
         1.00,nil,nil,nil,nil,true,nil,function() end
     )
     obj_projectile["air_hurt_animation"] = load_hurt_animation(
-        hit_side_obj_char,hurt_side_obj_char,obj_projectile,"0_general_hurt_launched_high","air","knockdown_recovery",
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,"0_general_hurt_launched_rotate","air","knockdown_recovery",
         3.25,5,1.147,-40,2.0,1.071,nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",nil,nil,
@@ -1544,7 +1543,7 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
         nil,nil,true,nil,function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
     )
     obj_projectile["OTG_hurt_animation"] = load_hurt_animation(
-        hit_side_obj_char,hurt_side_obj_char,obj_projectile,"0_general_hurt_launched_high","air","knockdown_recovery",
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,"0_general_hurt_launched_rotate","air","knockdown_recovery",
         3.25,5,1.147,-40,2.0,1.071,nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",nil,nil,
@@ -1585,6 +1584,7 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
                 obj_projectile["hit_damage"] = obj_projectile["hit_damage"]*1.1
                 -- insert_VFX
                 insert_VFX_game_scene_char_TRM_oroboros_blast_trajectory(hit_side_obj_char,5)
+                insert_VFX_game_scene_char_blast_special(hit_side_obj_char,hurt_side_obj_char)
                 insert_VFX_game_scene_char_TRM_4SP_S_H_at_the_steady_projectile_hit_blast(
                     hit_side_obj_char,hurt_side_obj_char
                 )
@@ -1594,6 +1594,7 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
             elseif not hurt_side_block_bool then
                 -- insert_VFX
                 insert_VFX_game_scene_char_TRM_oroboros_blast_trajectory(hit_side_obj_char,5)
+                insert_VFX_game_scene_char_blast_special(hit_side_obj_char,hurt_side_obj_char)
                 insert_VFX_game_scene_char_TRM_4SP_S_H_at_the_steady_projectile_hit_blast(
                     hit_side_obj_char,hurt_side_obj_char
                 )
@@ -1664,7 +1665,7 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
     obj_projectile[1] = hit_side_obj_char["shot_sys_reticle"][1]
     obj_projectile[2] = hit_side_obj_char["shot_sys_reticle"][2]
     if (hit_side_obj_char["shot_sys_aim_process"][1] >= hit_side_obj_char["shot_sys_aim_process"][3]) then
-        obj_projectile["sprite_sheet"] = "5H_4SP_S_H_hit_projectile"
+        -- obj_projectile["sprite_sheet"] = "5H_4SP_S_H_hit_projectile"
         obj_projectile["hitbox_table"] = {{0,0,200,200}}
         obj_projectile["projectile_active"] = true
     end
@@ -1994,8 +1995,8 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_hurt(
         hurt_side_obj_char["throw_inv_countdown"] = 1
     end
     res["prop_f"] = "f"
-    res["anim_length"] = 34
-    for i = 0,33 do
+    res["anim_length"] = 13
+    for i = 0,11 do
         res[i] = function()
             update_before_land()
         end
@@ -2008,12 +2009,12 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_hurt(
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
-        common_game_scene_projectile_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,obj_projectile,hurt_horizontal_velocity,hurt_horizontal_friction,
+        common_game_scene_char_apply_hurt_velocity(
+            hit_side_obj_char,hurt_side_obj_char,false,hurt_horizontal_velocity,hurt_horizontal_friction,
             hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false,"character"
+            hurt_vertical_gravity_correction,false
         )
-        common_game_scene_projectile_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",false)
+        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
@@ -2058,90 +2059,31 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_hurt(
         update_before_land()
     end
     res[3] = function()
-        -- collide
-        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][1]
+        -- draw_correction
+        hurt_side_obj_char[8] = 1
+        -- update
+        update_before_land()
+    end
+    res[6] = function()
         -- draw_correction
         hurt_side_obj_char[8] = 2
         -- update
         update_before_land()
     end
     res[9] = function()
-        -- collide
-        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][3]
         -- draw_correction
         hurt_side_obj_char[8] = 3
         -- update
         update_before_land()
     end
     res[12] = function()
-        -- draw_correction
-        hurt_side_obj_char[8] = 4
-        -- update
-        update_before_land()
-    end
-    res[15] = function()
-        -- collide
-        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][5]
-        -- draw_correction
-        hurt_side_obj_char[8] = 5
-        -- update
-        update_before_land()
-    end
-    res[18] = function()
-        -- draw_correction
-        hurt_side_obj_char[8] = 6
-        -- update
-        update_before_land()
-    end
-    res[21] = function()
         -- state
-        if hurt_side_obj_char["velocity"][2] <= math.abs(hurt_side_obj_char["velocity"][1])*2 then
-            -- collide
-            hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][7]
-            -- draw_correction
-            hurt_side_obj_char[8] = 7
-        else
-            -- state
-            hurt_side_obj_char["f"] = 15
-            -- draw_correction
-            hurt_side_obj_char[8] = 5
-        end
+        hurt_side_obj_char["f"] = 1
+        hurt_side_obj_char[8] = 0
         -- update
         update_before_land()
     end
-    res[24] = function()
-        -- collide
-        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][8]
-        -- draw_correction
-        hurt_side_obj_char[8] = 8
-        -- update
-        update_before_land()
-    end
-    res[27] = function()
-        -- collide
-        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][9]
-        -- draw_correction
-        hurt_side_obj_char[8] = 9
-        -- update
-        update_before_land()
-    end
-    res[30] = function()
-        -- draw_correction
-        hurt_side_obj_char[8] = 10
-        -- update
-        update_before_land()
-    end
-    res[33] = function()
-        -- state
-        hurt_side_obj_char["f"] = 27
-        -- collide
-        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][9]
-        -- draw_correction
-        hurt_side_obj_char[8] = 9
-        -- update
-        update_before_land()
-    end
-    res[34] = function()
+    res[13] = function()
         -- animation_end
     end
     return res
