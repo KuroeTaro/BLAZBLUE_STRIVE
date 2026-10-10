@@ -1009,7 +1009,7 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
         if active_op_side_obj_char["state"] == "hitstop" then
             return
         end
-        frame_animator(obj_VFX,obj_VFX["animation"])
+        frame_animator(obj_VFX,obj_VFX["opacity_point_linear_animation"])
         obj_VFX["life"] = obj_VFX["life"] - 1
     end
     obj_VFX["draw_sync"] = function()
@@ -1798,7 +1798,7 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
         if active_op_side_obj_char["state"] == "hitstop" then
             return
         end
-        frame_animator(obj_VFX,obj_VFX["animation"])
+        frame_animator(obj_VFX,obj_VFX["opacity_point_linear_animation"])
         obj_VFX["life"] = obj_VFX["life"] - 1
     end
     obj_VFX["draw_sync"] = function()

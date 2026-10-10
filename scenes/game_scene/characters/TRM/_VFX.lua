@@ -390,7 +390,7 @@ function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit
     end
     obj_VFX["draw"] = function()
         local image_sprite_sheet = hit_side_image_sprite_sheet
-        -- obj_VFX["draw_sync"]()
+        obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8].."")
         love.graphics.setColor(35/255,35/255,35/255,175/255)
@@ -744,11 +744,11 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     local hit_side_image_sprite_sheet = common_game_scene_get_VFX_sprite_sheet_table(hit_side)["6SP_P_arua_move_VFX"]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     if hurt_side_obj_char["height"] == "air" then
-        obj_VFX["y_offset"] = 400 + hurt_side_obj_char["pushbox"][4]/4*3
+        obj_VFX["y_offset"] = 550
     elseif hurt_side_obj_char["height"] == "wallstick" then
-        obj_VFX["y_offset"] = 350 + hurt_side_obj_char["pushbox"][4]/4*3
+        obj_VFX["y_offset"] = 550
     else
-        obj_VFX["y_offset"] = 400 + hurt_side_obj_char["pushbox"][4]/4*3
+        obj_VFX["y_offset"] = 400
     end
     obj_VFX["status_name"] = "TRM_6SP_P_arua"
     obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
@@ -850,11 +850,11 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     end
     obj_VFX["draw_sync"] = function()
         if hurt_side_obj_char["height"] == "air" then
-            obj_VFX["y_offset"] = 400 + hurt_side_obj_char["pushbox"][4]/4*3
+            obj_VFX["y_offset"] = 550
         elseif hurt_side_obj_char["height"] == "wallstick" then
-            obj_VFX["y_offset"] = 350 + hurt_side_obj_char["pushbox"][4]/4*3
+            obj_VFX["y_offset"] = 550
         else
-            obj_VFX["y_offset"] = 400 + hurt_side_obj_char["pushbox"][4]/4*3
+            obj_VFX["y_offset"] = 400
         end
         obj_VFX[1] = hurt_side_obj_char["x"] - 400
         obj_VFX[2] = math.min(hurt_side_obj_char["y"] - hurt_side_obj_char[6]*obj_VFX["y_offset"],-677.5)
@@ -889,12 +889,17 @@ function insert_VFX_game_scene_char_TRM_4SP_S_H_at_the_steady_projectile_hit_bla
         hit_side_obj_char["shot_sys_reticle_stage_pos_current"][1] + 160,
         hit_side_obj_char["shot_sys_reticle_stage_pos_current"][2] + 160
     }
+    -- 旋转锚点为命中点(reticle 中心), -260/-300 为未旋转时贴图左上角相对锚点的偏移
+    local center_dx = -260
+    local center_dy = -300
     local center_r = character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation(
         hit_side_obj_char,oroboros_pos,reticle_pos
     )
-    obj_VFX["life"] = 16
-    obj_VFX[1] = hit_side_obj_char["shot_sys_reticle"][1] - 200 + 160
-    obj_VFX[2] = hit_side_obj_char["shot_sys_reticle"][2] - 350 + 160
+    local rot_dx = center_dx*math.cos(center_r) - center_dy*math.sin(center_r)
+    local rot_dy = center_dx*math.sin(center_r) + center_dy*math.cos(center_r)
+    obj_VFX["life"] = 17
+    obj_VFX[1] = reticle_pos[1] + rot_dx
+    obj_VFX[2] = reticle_pos[2] + rot_dy
     obj_VFX[3] = 0
     obj_VFX[4] = 1
     obj_VFX[5] = 1
@@ -906,46 +911,40 @@ function insert_VFX_game_scene_char_TRM_4SP_S_H_at_the_steady_projectile_hit_bla
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
     obj_VFX["animation"] = {}
     obj_VFX["animation"][0] = 0
-    obj_VFX["animation"][3] = 1
-    obj_VFX["animation"][7] = 2
-    obj_VFX["animation"][10] = 3
+    obj_VFX["animation"][5] = 1
+    obj_VFX["animation"][8] = 2
+    obj_VFX["animation"][11] = 3
     obj_VFX["animation"][13] = 4
+    obj_VFX["animation"][15] = 5
+    obj_VFX["animation"][16] = 6
     obj_VFX["animation"]["prop"] = 8
-    obj_VFX["animation"]["length"] = 16
+    obj_VFX["animation"]["length"] = 17
     obj_VFX["animation"]["loop"] = false
     init_frame_anim_without(obj_VFX,obj_VFX["animation"])
-    if hit_side_obj_char["x"] > hurt_side_obj_char["x"] then
-        obj_VFX[1] = hit_side_obj_char["shot_sys_reticle"][1] + 230 + 160
-        obj_VFX[5] = -1
-    elseif hit_side_obj_char["x"] == hurt_side_obj_char["x"] then
-        if math.random(0,1) == 0 then
-            obj_VFX[1] = hit_side_obj_char["shot_sys_reticle"][1] + 230 + 160
-            obj_VFX[5] = -1
-        end
-    end
     obj_VFX["update"] = function()
         frame_animator(obj_VFX,obj_VFX["animation"])
         obj_VFX["life"] = obj_VFX["life"] - 1
     end
     obj_VFX["draw_sync"] = function()
         if hit_side_obj_char["x"] > hurt_side_obj_char["x"] then
-            obj_VFX[1] = hit_side_obj_char["shot_sys_reticle"][1] + 230 + 160
+            obj_VFX[1] = reticle_pos[1] - rot_dx
+            obj_VFX[2] = reticle_pos[2] + rot_dy
             obj_VFX[5] = -1
         elseif hit_side_obj_char["x"] == hurt_side_obj_char["x"] then
             if math.random(0,1) == 0 then
-                obj_VFX[1] = hit_side_obj_char["shot_sys_reticle"][1] + 230 + 160
+                obj_VFX[1] = reticle_pos[1] - rot_dx
+                obj_VFX[2] = reticle_pos[2] + rot_dy
                 obj_VFX[5] = -1
             end
         end
-        obj_VFX[7] = center_r
         obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
         local image_sprite_sheet = hit_side_image_sprite_sheet
-        -- obj_VFX["draw_sync"]()
+        obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8].."")
-        love.graphics.setColor(35/255,35/255,35/255,175/255)
+        love.graphics.setColor(35/255,35/255,35/255,225/255)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
     end
@@ -1210,7 +1209,7 @@ function insert_VFX_game_scene_char_TRM_oroboros_blast_trajectory(obj_char,blast
             local blast_start_offset = obj_VFX["blast_start_distance"]/blast_dist
             -- 延长线按原方向随机偏转(2度以上13度以内)
             local blast_extend_r = math.atan2(blast_dy,blast_dx) +
-                math.rad(math.random(2,13))*((math.random(2) == 1) and 1 or -1)
+                math.rad(math.random(2,7))*((math.random(2) == 1) and 1 or -1)
             obj_VFX["blast_end_pos"] = reticle_pos
             obj_VFX["blast_start_pos"] = {
                 oroboros_pos[1] + blast_dx*blast_start_offset,

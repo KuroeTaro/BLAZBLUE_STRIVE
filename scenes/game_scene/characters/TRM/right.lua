@@ -261,8 +261,8 @@ function load_game_scene_obj_char_RP()
         ["throw_hurt_success"] = true,
         ["throw_testing"] = true,
         ["throw_tested"] = true,
-        ["hurtstop"] = true,
         ["blockstop"] = true,
+        ["hurtstop"] = true,
         ["wallstick"] = true,
         ["wallbreak_hit"] = true,
         ["wallbreak_hurt"] = true,
@@ -315,6 +315,24 @@ function load_game_scene_obj_char_RP()
         ["at_the_ready_shot"] = true
     }
     -- shot_sys_table_at_the_steady/uncommon
+    obj_char_game_scene_char_RP["shot_sys_at_the_steady_ban_state"] = {
+        ["before_ease_in"] = true,
+        ["active_FD_block"] = true,
+        ["block"] = true,
+        ["hurt"] = true,
+        ["throw_success"] = true,
+        ["throw_hurt_success"] = true,
+        ["throw_testing"] = true,
+        ["throw_tested"] = true,
+        ["blockstop"] = true,
+        ["hurtstop"] = true,
+        ["wallstick"] = true,
+        ["wallbreak_hit"] = true,
+        ["wallbreak_hurt"] = true,
+        ["knockdown"] = true,
+        ["knockdown_recovery"] = true,
+        ["knockout"] = true
+    }
     obj_char_game_scene_char_RP["shot_sys_at_the_steady_quick_clean_hit_state"] = {
         ["hurt"] = true,
         ["throw_hurt_success"] = true,
@@ -327,7 +345,9 @@ function load_game_scene_obj_char_RP()
     }
     obj_char_game_scene_char_RP["shot_sys_at_the_steady_quick_clean_hit_from_at_the_ready_state"] = {
         ["block"] = true,
-        ["blockstop"] = true
+        ["hurt"] = true,
+        ["blockstop"] = true,
+        ["hurtstop"] = true
     }
     obj_char_game_scene_char_RP["shot_sys_at_the_steady_state_table"] = {
         ["at_the_steady_lock"] = true,
@@ -4648,11 +4668,8 @@ function state_gate_game_scene_char_RP_4SP_S_to_special(
             return true
         end
         -- _4SP_S_H
-        if test_input_sys_press(self_side_input["H"])
+        if test_input_sys_release(self_side_input["H"])
         then
-            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
-                self_side_obj_char[5] = -self_side_obj_char[5]
-            end
             self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S_H(
                 self_side_obj_char,opponent_side_obj_char
             )
