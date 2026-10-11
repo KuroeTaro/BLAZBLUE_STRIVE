@@ -2107,7 +2107,7 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
     active_op_side_obj_char["VFX_hit_back_table"] = {}
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
-    obj_VFX["life"] = 13
+    obj_VFX["life"] = 26
     obj_VFX["r_cache"] = r_table_cache
     obj_VFX["x_table"] = obj_x_table
     obj_VFX["y_table"] = obj_y_table
@@ -2175,14 +2175,14 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
     obj_VFX["animation"] = {}
     obj_VFX["animation"][0] = 0
-    obj_VFX["animation"][4] = 1
-    obj_VFX["animation"][7] = 2
-    obj_VFX["animation"][9] = 3
-    obj_VFX["animation"][10] = 4
-    obj_VFX["animation"][11] = 5
-    obj_VFX["animation"][12] = 6
+    obj_VFX["animation"][5] = 1
+    obj_VFX["animation"][10] = 2
+    obj_VFX["animation"][14] = 3
+    obj_VFX["animation"][18] = 4
+    obj_VFX["animation"][21] = 5
+    obj_VFX["animation"][24] = 6
     obj_VFX["animation"]["prop"] = 8
-    obj_VFX["animation"]["length"] = 13
+    obj_VFX["animation"]["length"] = 26
     obj_VFX["animation"]["loop"] = false
     obj_VFX["update"] = function()
         if active_op_side_obj_char["state"] == "hitstop" then
@@ -2448,14 +2448,14 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
     obj_VFX["animation"] = {}
     obj_VFX["animation"][0] = 0
-    obj_VFX["animation"][4] = 1
-    obj_VFX["animation"][7] = 2
-    obj_VFX["animation"][9] = 3
-    obj_VFX["animation"][10] = 4
-    obj_VFX["animation"][11] = 5
-    obj_VFX["animation"][12] = 6
+    obj_VFX["animation"][5] = 1
+    obj_VFX["animation"][10] = 2
+    obj_VFX["animation"][14] = 3
+    obj_VFX["animation"][18] = 4
+    obj_VFX["animation"][21] = 5
+    obj_VFX["animation"][24] = 6
     obj_VFX["animation"]["prop"] = 8
-    obj_VFX["animation"]["length"] = 13
+    obj_VFX["animation"]["length"] = 26
     obj_VFX["animation"]["loop"] = false
     obj_VFX["update"] = function()
         if active_op_side_obj_char["state"] == "hitstop" then
