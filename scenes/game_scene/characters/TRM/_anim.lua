@@ -8430,11 +8430,10 @@ function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_c
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- shot_sys
-        hit_side_obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock(
-            hit_side_obj_char,hurt_side_obj_char
-        )
+        hit_side_obj_char["shot_sys_animation"] =
+            load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock_to_ready(hit_side_obj_char)
         init_character_anim_without(hit_side_obj_char,hit_side_obj_char["shot_sys_animation"])
-        hit_side_obj_char["shot_sys_aim_process"][1] = 0
+        character_function_game_scene_TRM_shot_sys_at_the_steady_quick_aim_clean_hit_update(hit_side_obj_char,hurt_side_obj_char)
         hit_side_obj_char["shot_sys_state"] = "at_the_steady_lock"
         -- draw_correction
         hit_side_obj_char[8] = 2
@@ -8471,7 +8470,7 @@ function load_game_scene_anim_char_TRM_4SP_S_H(hit_side_obj_char,hurt_side_obj_c
         common_game_scene_get_input_sys_cache_negative_edge_state_machine(hit_side)()
         -- shot_sys
         hit_side_obj_char["shot_sys_at_the_steady_aim"] = true
-        hit_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = true
+        hit_side_obj_char["shot_sys_at_the_steady_clean_hit"] = true
         hit_side_obj_char["shot_sys_fire_cancel"] = true
         hit_side_obj_char["shot_sys_aim_process"][1] = hit_side_obj_char["shot_sys_aim_process"][4]
         -- draw_correction
@@ -9283,14 +9282,14 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock(self_si
     res[0] = function()
         -- shot_sys
         self_side_obj_char["shot_sys_at_the_steady_aim"] = false
-        self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = false
+        self_side_obj_char["shot_sys_at_the_steady_clean_hit"] = false
         self_side_obj_char["shot_sys_fire_cancel"] = false
         if quick_aim_cache then
             self_side_obj_char["shot_sys_at_the_steady_aim"] = true
             self_side_obj_char["shot_sys_aim_process"][1] = self_side_obj_char["shot_sys_aim_process"][4]
         end
         if quick_clean_hit_cache then
-            self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = true
+            self_side_obj_char["shot_sys_at_the_steady_clean_hit"] = true
         end
         --VFX
         insert_VFX_game_scene_char_TRM_oroboros_switch(self_side_obj_char,"4SP_S_switch_move_VFX")
@@ -9301,7 +9300,7 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock(self_si
     end
     res[27] = function()
         self_side_obj_char["shot_sys_at_the_steady_aim"] = true
-        self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = true
+        self_side_obj_char["shot_sys_at_the_steady_clean_hit"] = true
         self_side_obj_char["shot_sys_aim_process"][1] = self_side_obj_char["shot_sys_aim_process"][4]
         -- animation_end
     end
@@ -9359,7 +9358,7 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_shot(self_si
     res[45] = function()
         self_side_obj_char["shot_sys_fire_cancel"] = true
         self_side_obj_char["shot_sys_at_the_steady_aim"] = true
-        self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit"] = true
+        self_side_obj_char["shot_sys_at_the_steady_clean_hit"] = true
         -- animation_end
     end
     return res

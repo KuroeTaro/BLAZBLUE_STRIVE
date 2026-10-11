@@ -543,8 +543,8 @@ function load_game_scene_box_anchor_data_LP()
     obj_hurtboxs_data_game_scene_char_LP["1_4_7_air_block_guard_crash"][0] = air_hurtbox
     obj_anchor_data_game_scene_char_LP["1_4_7_air_block_guard_crash"] = {370,310}
     obj_VFX_spawn_anchor_data_game_scene_char_LP["stage_VFX_spawn_anchor"]["1_4_7_air_block_guard_crash"] = {600,-195}
-    obj_VFX_spawn_anchor_data_game_scene_char_LP["block_ver0_spawn_anchor_pos"]["1_4_7_air_block_guard_crash"] = {-420,-490}
-    obj_VFX_spawn_anchor_data_game_scene_char_LP["block_ver1_spawn_anchor_pos"]["1_4_7_air_block_guard_crash"] = {-420,-490}
+    obj_VFX_spawn_anchor_data_game_scene_char_LP["block_ver0_spawn_anchor_pos"]["1_4_7_air_block_guard_crash"] = {-420,-450}
+    obj_VFX_spawn_anchor_data_game_scene_char_LP["block_ver1_spawn_anchor_pos"]["1_4_7_air_block_guard_crash"] = {-420,-450}
     -- 0_general_hurt_soft_knockdown_wallstick_air
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_soft_knockdown_wallstick_air"] = {}
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_soft_knockdown_wallstick_air"][0] = air_pushbox
@@ -3545,8 +3545,7 @@ function state_gate_game_scene_char_LP_common_ground_to_normal_move_hold_ver(
         return true
     end
     -- _2S
-    if common_game_scene_check_crouch_direction(self_side_obj_char) and
-    test_input_sys_press_or_hold(self_side_input["S"]) then
+    if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press_or_hold(self_side_input["S"]) then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
         end
@@ -7164,8 +7163,7 @@ function state_gate_game_scene_char_LP_from_5P(
             return true
         end
         -- _6S
-        if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3) and
-        test_input_sys_press(self_side_input["S"]) then
+        if self_side_obj_char["direction_input"] == 6 and test_input_sys_press(self_side_input["S"]) then
             if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
                 self_side_obj_char[5] = -self_side_obj_char[5]
             end
@@ -7233,8 +7231,7 @@ function state_gate_game_scene_char_LP_from_2K(
             return true
         end
         -- _6S
-        if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3) and
-        test_input_sys_press(self_side_input["S"]) then
+        if self_side_obj_char["direction_input"] == 6 and test_input_sys_press(self_side_input["S"]) then
             if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
                 self_side_obj_char[5] = -self_side_obj_char[5]
             end
@@ -7259,7 +7256,8 @@ function state_gate_game_scene_char_LP_from_2K(
             return true
         end
         -- _5Launcher
-        if test_input_sys_press(self_side_input["Launcher"]) then
+        if (self_side_obj_char["direction_input"] ~= 4 and self_side_obj_char["direction_input"] ~= 6) and
+        test_input_sys_press(self_side_input["Launcher"]) then
             if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
                 self_side_obj_char[5] = -self_side_obj_char[5]
             end
@@ -7401,8 +7399,7 @@ function state_gate_game_scene_char_LP_from_5K(
             return true
         end
         -- _6S
-        if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3) and
-        test_input_sys_press(self_side_input["S"]) then
+        if self_side_obj_char["direction_input"] == 6 and test_input_sys_press(self_side_input["S"]) then
             if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
                 self_side_obj_char[5] = -self_side_obj_char[5]
             end
@@ -7427,7 +7424,8 @@ function state_gate_game_scene_char_LP_from_5K(
             return true
         end
         -- _5Launcher
-        if test_input_sys_press(self_side_input["Launcher"]) then
+        if (self_side_obj_char["direction_input"] ~= 4 and self_side_obj_char["direction_input"] ~= 6) and
+        test_input_sys_press(self_side_input["Launcher"]) then
             if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
                 self_side_obj_char[5] = -self_side_obj_char[5]
             end
@@ -7617,8 +7615,7 @@ function state_gate_game_scene_char_LP_from_cS(
             return true
         end
         -- _2S
-        if (self_side_obj_char["direction_input"] == 2 or self_side_obj_char["direction_input"] == 1) and
-        test_input_sys_press(self_side_input["S"]) then
+        if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press_or_hold(self_side_input["S"]) then
             if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
                 self_side_obj_char[5] = -self_side_obj_char[5]
             end
@@ -7630,8 +7627,7 @@ function state_gate_game_scene_char_LP_from_cS(
             return true
         end
         -- _6S
-        if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3) and
-        test_input_sys_press(self_side_input["S"]) then
+        if self_side_obj_char["direction_input"] == 6 and test_input_sys_press(self_side_input["S"]) then
             if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
                 self_side_obj_char[5] = -self_side_obj_char[5]
             end
@@ -7668,7 +7664,8 @@ function state_gate_game_scene_char_LP_from_cS(
             return true
         end
         -- _5Launcher
-        if test_input_sys_press(self_side_input["Launcher"]) then
+        if (self_side_obj_char["direction_input"] ~= 4 and self_side_obj_char["direction_input"] ~= 6) and 
+        test_input_sys_press(self_side_input["Launcher"]) then
             if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
                 self_side_obj_char[5] = -self_side_obj_char[5]
             end

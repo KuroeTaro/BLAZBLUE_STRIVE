@@ -1155,17 +1155,10 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         -- draw_correction
         hurt_side_obj_char[8] = 0
     end
-    res[res["anim_length"]] = function()
+    res[19] = function()
         -- animation end
     end
     return res
-end
-function load_game_scene_anim_char_common_0_ground_block_guard_crash(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init,anim_length
-)
 end
 function load_game_scene_anim_char_common_0_air_block(
     hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
@@ -1327,6 +1320,157 @@ function load_game_scene_anim_char_common_0_air_block_guard_crash(
     hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
     self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
 )
+    local res = {}
+    local hurt_side = hurt_side_obj_char["player_side"]
+    local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
+    local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
+    local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
+    local function update_before_land()
+        hurt_side_obj_char["throw_inv"] = true
+        hurt_side_obj_char["throw_inv_countdown"] = 1
+        if collision_test_char_on_ground(hurt_side_obj_char) then
+            -- state
+            hurt_side_obj_char["sprite_sheet"] = "1_4_7_air_block"
+            hurt_side_obj_char["y"] = 0
+            hurt_side_obj_char["f"] = 24
+            hurt_side_obj_char["height"] = "stand"
+            -- state_number
+            hurt_side_obj_char["velocity"][2] = 0
+            hurt_side_obj_char["gravity"] = 2.5
+            -- enemy_friend_interaction
+            hurt_side_obj_char["throw_inv"] = true
+            hurt_side_obj_char["throw_inv_countdown"] = res["anim_length"] - 24
+            -- collide
+            hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data["1_4_7_air_block"][6]
+            hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data["1_4_7_air_block"][6]
+            hurt_side_obj_char["collision_ground_height_offset"] = 0
+            -- draw_correction
+            hurt_side_obj_char[8] = 6
+            hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data["1_4_7_air_block"]
+            -- insert_VFX
+            insert_VFX_game_scene_stage_smoke_land_blow(
+                hurt_side_obj_char,hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"]["1_4_7_air_block"][1],
+                hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"]["1_4_7_air_block"][2],0.5,1,1,0
+            )
+        end
+    end
+    for i = 0,23 do
+        res[i] = function()
+            update_before_land()
+        end
+    end
+    res["prop_f"] = "f"
+    res["anim_length"] = 43
+    res[0] = function()
+        -- state
+        hurt_side_obj_char["sprite_sheet"] = "1_4_7_air_block_guard_crash"
+        hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
+        hurt_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
+        hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
+        hurt_side_obj_char["idle_cancel"] = false
+        -- state_number
+        local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
+        local hurt_side_FD_block =
+            test_input_sys_press_or_hold(hurt_side_input["correction_left"])
+            or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
+        common_game_scene_char_apply_hurt_velocity(
+            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,hurt_horizontal_velocity,hurt_horizontal_friction,
+            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
+            hurt_vertical_gravity_correction,false
+        )
+        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
+        -- enemy_friend_interaction
+        hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
+        hurt_side_obj_char["wallhurt_wallstickable"] = false
+        hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
+        hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
+        hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
+        hurt_side_obj_char["strike_inv"] = false
+        hurt_side_obj_char["strike_inv_countdown"] = 0
+        hurt_side_obj_char["throw_inv"] = true
+        hurt_side_obj_char["throw_inv_countdown"] = 1
+        hurt_side_obj_char["projectile_inv"] = false
+        hurt_side_obj_char["projectile_inv_countdown"] = 0
+        -- frame_data
+        hurt_side_obj_char["startup_frame"] = 0
+        hurt_side_obj_char["active_frame"] = 0
+        hurt_side_obj_char["recovery_frame"] = 0
+        -- input_sys_cache
+        hurt_side_obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
+        -- collide
+        hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data["1_4_7_air_block_guard_crash"][0]
+        hurt_side_obj_char["pushbox_opponent_collision_active"] = true
+        hurt_side_obj_char["hitbox_table"] = {}
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data["1_4_7_air_block_guard_crash"][0]
+        hurt_side_obj_char["collision_ground_height_offset"] = 185
+        -- draw_correction
+        hurt_side_obj_char[8] = 0
+        hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data["1_4_7_air_block_guard_crash"]
+        -- character_uncommon_init
+        character_uncommon_init()
+    end
+    res[1] = function()
+        -- draw_correction
+        hurt_side_obj_char[8] = 1
+        -- update
+        update_before_land()
+    end
+    res[5] = function()
+        -- draw_correction
+        hurt_side_obj_char[8] = 2
+        -- update
+        update_before_land()
+    end
+    res[13] = function()
+        -- draw_correction
+        hurt_side_obj_char[8] = 3
+        -- update
+        update_before_land()
+    end
+    res[23] = function()
+        -- state
+        hurt_side_obj_char["f"] = 22
+        -- draw_correction
+        hurt_side_obj_char[8] = 4
+        -- update
+        update_before_land()
+    end
+    res[24] = function()
+        -- land animation start
+    end
+    res[27] = function()
+        -- state
+        hurt_side_obj_char["sprite_sheet"] = "1_4_7_air_block"
+        -- collide
+        hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data["1_4_7_air_block"][6]
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data["1_4_7_air_block"][6]
+        hurt_side_obj_char["collision_ground_height_offset"] = 0
+        -- draw_correction
+        hurt_side_obj_char[8] = 6
+    end
+    res[33] = function()
+        -- collide
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data["1_4_7_air_block"][7]
+        -- draw_correction
+        hurt_side_obj_char[8] = 7
+    end
+    res[38] = function()
+        -- input_sys_cache
+        hurt_side_obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
+    end
+    res[39] = function()
+        -- collide
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data["1_4_7_air_block"][8]
+        -- draw_correction
+        hurt_side_obj_char[8] = 8
+    end
+    res[43] = function()
+        -- animation end
+    end
+    return res
 end
 -- teching&teched
 function load_game_scene_anim_char_common_0_Launcher_throw_tech(hit_side_obj_char,hurt_side_obj_char,teching_or_teched)

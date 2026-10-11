@@ -326,6 +326,30 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_ability_gauge_
     ability_gauge_cache = math.ceil(ability_gauge_cache/100)*100
     obj_char["ability_gauge"][1] = math.max(0,ability_gauge_cache)
 end
+-- clean_hit & quick_aim update
+function character_function_game_scene_TRM_shot_sys_at_the_steady_quick_aim_clean_hit_update(self_side_obj_char,opponent_side_obj_char)
+    local self_side_shot_sys_state_cache = self_side_obj_char["shot_sys_state"]
+    local quick_clean_hit_from_all_state =
+        (self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit_state"][opponent_side_obj_char["state"]])
+    local quick_clean_hit_from_at_the_ready_state =
+        (self_side_obj_char["shot_sys_at_the_ready_state_table"][self_side_shot_sys_state_cache]) and
+        (self_side_obj_char["shot_sys_at_the_steady_quick_clean_hit_from_at_the_ready_state"][opponent_side_obj_char["state"]] or
+        self_side_obj_char["shot_sys_aim_process"][1] >= self_side_obj_char["shot_sys_aim_process"][3])
+    local quick_clean_hit_cache =
+        quick_clean_hit_from_all_state or quick_clean_hit_from_at_the_ready_state
+    local quick_aim_cache = quick_clean_hit_cache or self_side_obj_char["shot_sys_curse"]
+    -- shot_sys
+    self_side_obj_char["shot_sys_at_the_steady_aim"] = false
+    self_side_obj_char["shot_sys_at_the_steady_clean_hit"] = false
+    self_side_obj_char["shot_sys_fire_cancel"] = false
+    if quick_aim_cache then
+        self_side_obj_char["shot_sys_at_the_steady_aim"] = true
+        self_side_obj_char["shot_sys_aim_process"][1] = self_side_obj_char["shot_sys_aim_process"][4]
+    end
+    if quick_clean_hit_cache then
+        self_side_obj_char["shot_sys_at_the_steady_clean_hit"] = true
+    end
+end
 -- at_the_steady/reticle_basic_prop_update
 function character_function_game_scene_TRM_shot_sys_at_the_steady_reticle_pos_update_lock(
     self_side_obj_char,opponent_side_obj_char
@@ -565,7 +589,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_init(self
         self_side_obj_char,opponent_side_obj_char
     )
     init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
-    self_side_obj_char["shot_sys_aim_process"][1] = 0
+    character_function_game_scene_TRM_shot_sys_at_the_steady_quick_aim_clean_hit_update(self_side_obj_char,opponent_side_obj_char)
     self_side_obj_char["shot_sys_state"] = "at_the_steady_lock"
     -- shot_sys_oroboros
     if self_side_obj_char["shot_sys_oroboros_state"] == "off" then
@@ -682,7 +706,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_
     end
     -- shot_sys
     self_side_obj_char["shot_sys_animation"] =
-    load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock_to_ready(self_side_obj_char)
+        load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock_to_ready(self_side_obj_char)
     init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
     self_side_obj_char["shot_sys_aim_process"][1] = 0
     if self_side_obj_char["shot_sys_at_the_steady_aim"] then
@@ -696,9 +720,9 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_to_ready_
     self_side_obj_char["shot_sys_reticle"][4] = 1
     self_side_obj_char["shot_sys_reticle"][8] = 0
     self_side_obj_char["shot_sys_reticle_animation_table"][1] =
-    load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(self_side_obj_char)
+        load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_ease_in(self_side_obj_char)
     self_side_obj_char["shot_sys_reticle_animation_table"][2] =
-    load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock_to_ready(self_side_obj_char)
+        load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock_to_ready(self_side_obj_char)
     init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][1])
     init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
     self_side_obj_char["shot_sys_reticle_f_4"] = 12
@@ -738,13 +762,13 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_shot_init(self
     -- 已经在ease_in阶段完成了当前帧数的aim_process
     -- shot_sys_oroboros
     self_side_obj_char["shot_sys_oroboros_animation_table"][6] =
-    load_game_scene_anim_char_TRM_4SP_S_oroboros_at_the_steady_shot(self_side_obj_char)
+        load_game_scene_anim_char_TRM_4SP_S_oroboros_at_the_steady_shot(self_side_obj_char)
     init_character_anim_without(self_side_obj_char,self_side_obj_char["shot_sys_oroboros_animation_table"][6])
     character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(self_side_obj_char)
     self_side_obj_char["shot_sys_oroboros_state"] = "shot"
     -- shot_sys_reticle
     self_side_obj_char["shot_sys_reticle_animation_table"][2] =
-    load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_shot(self_side_obj_char)
+        load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_shot(self_side_obj_char)
     init_character_anim_with(self_side_obj_char,self_side_obj_char["shot_sys_reticle_animation_table"][2])
     self_side_obj_char["shot_sys_reticle_state"] = "at_the_steady_shot"
     return

@@ -277,7 +277,7 @@ end
 -- gravity_update_function		gravity
 -- animation                    projectile_animation
 -- update/update_sub_frame/draw
--- uncommon                     spawn_offset_x spawn_offset_y ground_collide
+-- uncommon                     spawn_offset_x spawn_offset_y
 -- projectile_init_fix
 function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_char)
     -- x y z opacity sx sy r f
@@ -424,7 +424,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
                 -- 这里只做地面反弹判定, 不再自加 velocity, 避免双倍位移与无视慢速/冻结。
                 if obj_projectile["y"] > -25 then
                     obj_projectile["y"] = -25
-                    obj_projectile["velocity"] = {obj_projectile[5]*50,-62.5}
+                    obj_projectile["velocity"] = {obj_projectile[5]*50,-57.5}
                     play_obj_audio(obj_projectile["ground_bounce_SFX"])
                 end
             end,
@@ -474,7 +474,6 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     -- uncommon
     obj_projectile["spawn_offset_x"] = 0
     obj_projectile["spawn_offset_y"] = 0
-    obj_projectile["ground_collide"] = false
     -- projectile_init_fix
     obj_projectile["x"] = hit_side_obj_char["x"] + obj_projectile["spawn_offset_x"]*hit_side_obj_char[5]
     obj_projectile["y"] = hit_side_obj_char["y"] + obj_projectile["spawn_offset_y"]
@@ -969,9 +968,80 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
     local clean_hit_hurt_blockstop_countdown = 16
     -- clean_hit: 由 hit_side 的 shot_sys 判定, 只提升伤害与 hitstop
     local hit_side_clean_hit = hit_side_obj_char["shot_sys_at_the_steady_clean_hit"]
+    -- local load_ground_block_animation_non_clean_hit = load_game_scene_anim_char_common_0_ground_block_lv1
+    -- local load_ground_hurt_animation_non_clean_hit = load_game_scene_anim_char_common_0_general_hurt_launched_rotate
+    -- local load_air_block_animation_non_clean_hit = load_game_scene_anim_char_common_0_air_block
+    -- local load_air_hurt_animation_non_clean_hit = load_game_scene_anim_char_common_0_general_hurt_launched_rotate
+    -- local load_ground_block_animation_clean_hit = load_game_scene_anim_char_common_0_ground_block_lv1
+    -- local load_ground_hurt_animation_clean_hit = load_game_scene_anim_char_common_0_general_hurt_launched_rotate
+    -- local load_air_block_animation_clean_hit = load_game_scene_anim_char_common_0_air_block
+    -- local load_air_hurt_animation_clean_hit = load_game_scene_anim_char_common_0_general_hurt_launched_rotate
+    local stand_hurt_animation_cache = load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
+        hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_launched_rotate","air","knockdown_recovery",
+        3.25,5,1.147,-40,2.0,1.071,nil,
+        load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
+            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",nil,nil,
+            nil,nil,nil,nil,nil,nil,nil,nil,function() end
+        ),
+        nil,nil,function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
+    )
+    local stand_block_animation_cache = load_game_scene_anim_char_common_0_ground_block_lv1(
+        hit_side_obj_char,hurt_side_obj_char,"4_stand_block_high","stand","5_stand_idle",8,5,1.00,0,2.5,
+        1.00,nil,nil,nil,nil,function() end
+    )
+    local crouch_hurt_animation_cache = load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
+        hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_launched_rotate","air","knockdown_recovery",
+        3.25,5,1.147,-40,2.0,1.071,nil,
+        load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
+            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",nil,nil,
+            nil,nil,nil,nil,nil,nil,nil,nil,function() end
+        ),
+        nil,nil,function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
+    )
+    local crouch_block_animation_cache = load_game_scene_anim_char_common_0_ground_block_lv1(
+        hit_side_obj_char,hurt_side_obj_char,"1_crouch_block","crouch","1_2_3_crouch",8,5,1.00,0,2.5,
+        1.00,nil,nil,nil,nil,function() end
+    )
+    local air_hurt_animation_cache = load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
+        hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_launched_rotate","air","knockdown_recovery",
+        3.25,5,1.147,-40,2.0,1.071,nil,
+        load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
+            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",nil,nil,
+            nil,nil,nil,nil,nil,nil,nil,nil,function() end
+        ),
+        nil,nil,function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
+    )
+    local air_block_animation_cache = load_game_scene_anim_char_common_0_air_block(
+        hit_side_obj_char,hurt_side_obj_char,"1_4_7_air_block","air","5_stand_idle",12.5,5,1.00,-12.5,
+        2.5,1.00,nil,nil,nil,nil,function() end
+    )
+    local OTG_hurt_animation_cache = load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
+        hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_launched_rotate","air","knockdown_recovery",
+        3.25,5,1.147,-40,2.0,1.071,nil,
+        load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
+            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",nil,nil,
+            nil,nil,nil,nil,nil,nil,nil,nil,function() end
+        ),
+        nil,nil,function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
+    )
+    local wallstick_hurt_animation_cache = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,true
+    )
     if hit_side_clean_hit then
         hit_damage = clean_hit_hit_damage
         hit_hurt_blockstop_countdown = clean_hit_hurt_blockstop_countdown
+        stand_block_animation_cache = load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_clean_hit_guard_crash_block(
+            hit_side_obj_char,hurt_side_obj_char,"4_stand_block_guard_crash","stand","5_stand_idle",12,5,1.00,0,2.5,
+            1.00,nil,nil,nil,nil,function() end
+        )
+        crouch_block_animation_cache = load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_clean_hit_guard_crash_block(
+            hit_side_obj_char,hurt_side_obj_char,"1_crouch_block_guard_crash","crouch","1_2_3_crouch",12,5,1.00,0,2.5,
+            1.00,nil,nil,nil,nil,function() end
+        )
+        air_block_animation_cache = load_game_scene_anim_char_common_0_air_block_guard_crash(
+            hit_side_obj_char,hurt_side_obj_char,"1_4_7_air_block","air","5_stand_idle",12.5,5,1.00,-12.5,
+            2.5,1.00,nil,nil,nil,nil,function() end
+        )
     end
     -- common
     obj_projectile["type"] = "projectile"
@@ -997,57 +1067,14 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
     obj_projectile["block_heat_gain"] = 0
     obj_projectile["block_risk_gauge_gain"] = 0
     obj_projectile["FD_block_heat_drain"] = 0
-    obj_projectile["stand_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
-        hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_launched_rotate","air","knockdown_recovery",
-        3.25,5,1.147,-40,2.0,1.071,nil,
-        load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
-            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",nil,nil,
-            nil,nil,nil,nil,nil,nil,nil,nil,function() end
-        ),
-        nil,nil,function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
-    )
-    obj_projectile["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv1(
-        hit_side_obj_char,hurt_side_obj_char,"4_stand_block_high","stand","5_stand_idle",8,5,1.00,0,2.5,
-        1.00,nil,nil,nil,nil,function() end
-    )
-    obj_projectile["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
-        hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_launched_rotate","air","knockdown_recovery",
-        3.25,5,1.147,-40,2.0,1.071,nil,
-        load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
-            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",nil,nil,
-            nil,nil,nil,nil,nil,nil,nil,nil,function() end
-        ),
-        nil,nil,function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
-    )
-    obj_projectile["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv1(
-        hit_side_obj_char,hurt_side_obj_char,"1_crouch_block","crouch","1_2_3_crouch",8,5,1.00,0,2.5,
-        1.00,nil,nil,nil,nil,function() end
-    )
-    obj_projectile["air_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
-        hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_launched_rotate","air","knockdown_recovery",
-        3.25,5,1.147,-40,2.0,1.071,nil,
-        load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
-            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",nil,nil,
-            nil,nil,nil,nil,nil,nil,nil,nil,function() end
-        ),
-        nil,nil,function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
-    )
-    obj_projectile["OTG_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
-        hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_launched_rotate","air","knockdown_recovery",
-        3.25,5,1.147,-40,2.0,1.071,nil,
-        load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
-            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",nil,nil,
-            nil,nil,nil,nil,nil,nil,nil,nil,function() end
-        ),
-        nil,nil,function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
-    )
-    obj_projectile["air_block_animation"] = load_game_scene_anim_char_common_0_air_block(
-        hit_side_obj_char,hurt_side_obj_char,"1_4_7_air_block","air","5_stand_idle",12.5,5,1.00,-7.5,
-        12.5,1.00,nil,nil,nil,nil,function() end
-    )
-    obj_projectile["wallstick_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
-        hit_side_obj_char,hurt_side_obj_char,obj_projectile,true
-    )
+    obj_projectile["stand_hurt_animation"] = stand_hurt_animation_cache
+    obj_projectile["stand_block_animation"] = stand_block_animation_cache
+    obj_projectile["crouch_hurt_animation"] = crouch_hurt_animation_cache
+    obj_projectile["crouch_block_animation"] = crouch_block_animation_cache
+    obj_projectile["air_hurt_animation"] = air_hurt_animation_cache
+    obj_projectile["air_block_animation"] = air_block_animation_cache
+    obj_projectile["OTG_hurt_animation"] = OTG_hurt_animation_cache
+    obj_projectile["wallstick_hurt_animation"] = wallstick_hurt_animation_cache
     obj_projectile["projectile_active"] = false
     obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
     obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
@@ -1223,6 +1250,100 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_main(
     end
     res[40] = function()
         -- animation_end
+    end
+    return res
+end
+function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_clean_hit_guard_crash_block(
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
+    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
+    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init,anim_length
+)
+    local res = {}
+    local hurt_side = hurt_side_obj_char["player_side"]
+    local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
+    local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
+    local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
+    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
+    res["prop_f"] = "f"
+    res["anim_length"] = 27
+    res[0] = function()
+        -- state
+        hurt_side_obj_char["sprite_sheet"] = sprite_sheet
+        hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
+        hurt_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
+        hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
+        hurt_side_obj_char["idle_cancel"] = false
+        -- state_number
+        local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
+        local hurt_side_FD_block =
+            test_input_sys_press_or_hold(hurt_side_input["correction_left"])
+            or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
+        common_game_scene_char_apply_hurt_velocity(
+            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,hurt_horizontal_velocity,hurt_horizontal_friction,
+            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
+            hurt_vertical_gravity_correction,false
+        )
+        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
+        -- enemy_friend_interaction
+        hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
+        hurt_side_obj_char["wallhurt_wallstickable"] = false
+        hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"] = false
+        hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
+        hurt_side_obj_char["wallhurt_wallbreak_adv"] = false
+        hurt_side_obj_char["strike_inv"] = false
+        hurt_side_obj_char["strike_inv_countdown"] = 0
+        hurt_side_obj_char["throw_inv"] = true
+        hurt_side_obj_char["throw_inv_countdown"] = res["anim_length"]
+        hurt_side_obj_char["projectile_inv"] = false
+        hurt_side_obj_char["projectile_inv_countdown"] = 0
+        -- frame_data
+        hurt_side_obj_char["startup_frame"] = 0
+        hurt_side_obj_char["active_frame"] = 0
+        hurt_side_obj_char["recovery_frame"] = 0
+        -- input_sys_cache
+        hurt_side_obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
+        -- collide
+        hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][0]
+        hurt_side_obj_char["pushbox_opponent_collision_active"] = true
+        hurt_side_obj_char["hitbox_table"] = {}
+        hurt_side_obj_char["hurtbox_table"] = hurt_side_hurtbox_data[sprite_sheet][0]
+        hurt_side_obj_char["collision_ground_height_offset"] = 0
+        -- draw_correction
+        hurt_side_obj_char[8] = 0
+        hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
+        -- insert_VFX
+        insert_VFX_game_scene_stage_smoke_horizontal_shot(
+            hurt_side_obj_char,hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],0.5,-1,1,0
+        )
+        -- character_uncommon_init
+        character_uncommon_init()
+    end
+    res[1] = function()
+        -- draw_correction
+        hurt_side_obj_char[8] = 1
+    end
+    res[4] = function()
+        -- draw_correction
+        hurt_side_obj_char[8] = 2
+    end
+    res[16] = function()
+        -- draw_correction
+        hurt_side_obj_char[8] = 3
+    end
+    res[20] = function()
+        -- draw_correction
+        hurt_side_obj_char[8] = 4
+    end
+    res[22] = function()
+        -- input_sys_cache
+        hurt_side_obj_char["input_sys_state"] = "save" -- none save load
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
+    end
+    res[27] = function()
+        -- animation end
     end
     return res
 end
