@@ -171,8 +171,10 @@ for i,v in ipairs(load_move_VFX_name_table) do
 end
 -- projectile
 local load_projectile_name_table = {
-    "5H_4SP_S_H_hit",
-    "5H_4SP_S_H_miss",
+    "4SP_S_H_hit",
+    "4SP_S_H_miss",
+    "5H_hit",
+    "5H_miss",
     "6SP_P_curse_ball_blast",
     "6SP_P_curse_ball_loop",
     "6SP_K_scapegoat_buff_flow",

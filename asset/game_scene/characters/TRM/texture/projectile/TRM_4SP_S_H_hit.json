@@ -163,10 +163,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "TRM_5H",
+	"image": "TRM_4SP_S_hit",
 	"format": "RGBA8888",
 	"size": {"w":1600,"h":1280},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:dc15b52efd9b8e8515f69302020e872d:6ffc1e48ed14fd25ec928cfc94d2db14:42625f06469a5313809ea3b9a49eb696$"
+	"smartupdate": "$TexturePacker:SmartUpdate:6805ab96e12c03ba25952aeb2d18d073:3d3e66f435769e8e00b18e8bdb7d9345:359bf9facc54e063311bb609b47dff60$"
 }
 }

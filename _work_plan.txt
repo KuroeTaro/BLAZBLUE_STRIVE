@@ -38,6 +38,5 @@ __WORK_PLAN__
     -- the other side is Y positive
 
 
-更新双手构命中后飞行道具的精灵设计 只留空枪状态的
 修改cl动画 命中不改 但是打防动画的CL是崩防
 音效添加和修正
