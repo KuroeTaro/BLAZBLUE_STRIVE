@@ -2114,61 +2114,16 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
     obj_VFX["center_table"] = obj_center
     -- x y z opacity sx sy r f
     obj_VFX["sub_obj"] = {
-        [1] =
-        {
-            obj_x_table[1],
-            obj_y_table[1],
-            active_op_side_obj_char[3],
-            1,
-            active_op_side_obj_char[5],
-            active_op_side_obj_char[6],
-            r_table_cache[1],
-            0
-        },
-        [2] =
-        {
-            obj_x_table[2],
-            obj_y_table[2],
-            active_op_side_obj_char[3],
-            1,
-            active_op_side_obj_char[5],
-            active_op_side_obj_char[6],
-            r_table_cache[2],
-            0
-        },
-        [3] =
-        {
-            obj_x_table[3],
-            obj_y_table[3],
-            active_op_side_obj_char[3],
-            1,
-            active_op_side_obj_char[5],
-            active_op_side_obj_char[6],
-            r_table_cache[3],
-            0
-        },
-        [4] =
-        {
-            obj_x_table[4],
-            obj_y_table[4],
-            active_op_side_obj_char[3],
-            1,
-            active_op_side_obj_char[5],
-            active_op_side_obj_char[6],
-            r_table_cache[4],
-            0
-        },
-        [5] =
-        {
-            obj_center[1],
-            obj_center[2],
-            active_op_side_obj_char[3],
-            1,
-            active_op_side_obj_char[5],
-            active_op_side_obj_char[6],
-            0,
-            0
-        }
+        [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+            active_op_side_obj_char[6],r_table_cache[1],0},
+        [2] = {obj_x_table[2],obj_y_table[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+            active_op_side_obj_char[6],r_table_cache[2],0},
+        [3] = {obj_x_table[3],obj_y_table[3],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+            active_op_side_obj_char[6],r_table_cache[3],0},
+        [4] = {obj_x_table[4],obj_y_table[4],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+            active_op_side_obj_char[6],r_table_cache[4],0},
+        [5] = {obj_center[1],obj_center[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+            active_op_side_obj_char[6],0,0}
     }
     obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
@@ -2246,61 +2201,16 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
         obj_VFX["y_table"] = obj_y_table
         obj_VFX["center_table"] = obj_center
         obj_VFX["sub_obj"] = {
-            [1] =
-            {
-                obj_x_table[1],
-                obj_y_table[1],
-                active_op_side_obj_char[3],
-                1,
-                active_op_side_obj_char[5],
-                active_op_side_obj_char[6],
-                r_table_cache[1],
-                0
-            },
-            [2] =
-            {
-                obj_x_table[2],
-                obj_y_table[2],
-                active_op_side_obj_char[3],
-                1,
-                active_op_side_obj_char[5],
-                active_op_side_obj_char[6],
-                r_table_cache[2],
-                0
-            },
-            [3] =
-            {
-                obj_x_table[3],
-                obj_y_table[3],
-                active_op_side_obj_char[3],
-                1,
-                active_op_side_obj_char[5],
-                active_op_side_obj_char[6],
-                r_table_cache[3],
-                0
-            },
-            [4] =
-            {
-                obj_x_table[4],
-                obj_y_table[4],
-                active_op_side_obj_char[3],
-                1,
-                active_op_side_obj_char[5],
-                active_op_side_obj_char[6],
-                r_table_cache[4],
-                0
-            },
-            [5] =
-            {
-                obj_center[1],
-                obj_center[2],
-                active_op_side_obj_char[3],
-                1,
-                active_op_side_obj_char[5],
-                active_op_side_obj_char[6],
-                0,
-                0
-            }
+            [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+                active_op_side_obj_char[6],r_table_cache[1],0},
+            [2] = {obj_x_table[2],obj_y_table[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+                active_op_side_obj_char[6],r_table_cache[2],0},
+            [3] = {obj_x_table[3],obj_y_table[3],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+                active_op_side_obj_char[6],r_table_cache[3],0},
+            [4] = {obj_x_table[4],obj_y_table[4],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+                active_op_side_obj_char[6],r_table_cache[4],0},
+            [5] = {obj_center[1],obj_center[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+                active_op_side_obj_char[6],0,0}
         }
         obj_VFX["draw_sync"] = function() end
     end
@@ -2387,61 +2297,16 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
     obj_VFX["center_table"] = obj_center
     -- x y z opacity sx sy r f
     obj_VFX["sub_obj"] = {
-        [1] =
-        {
-            obj_x_table[1],
-            obj_y_table[1],
-            active_op_side_obj_char[3],
-            1,
-            active_op_side_obj_char[5],
-            active_op_side_obj_char[6],
-            r_table_cache[1],
-            0
-        },
-        [2] =
-        {
-            obj_x_table[2],
-            obj_y_table[2],
-            active_op_side_obj_char[3],
-            1,
-            active_op_side_obj_char[5],
-            active_op_side_obj_char[6],
-            r_table_cache[2],
-            0
-        },
-        [3] =
-        {
-            obj_x_table[3],
-            obj_y_table[3],
-            active_op_side_obj_char[3],
-            1,
-            active_op_side_obj_char[5],
-            active_op_side_obj_char[6],
-            r_table_cache[3],
-            0
-        },
-        [4] =
-        {
-            obj_x_table[4],
-            obj_y_table[4],
-            active_op_side_obj_char[3],
-            1,
-            active_op_side_obj_char[5],
-            active_op_side_obj_char[6],
-            r_table_cache[4],
-            0
-        },
-        [5] =
-        {
-            obj_center[1],
-            obj_center[2],
-            active_op_side_obj_char[3],
-            1,
-            active_op_side_obj_char[5],
-            active_op_side_obj_char[6],
-            0,
-            0
-        }
+        [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+            active_op_side_obj_char[6],r_table_cache[1],0},
+        [2] = {obj_x_table[2],obj_y_table[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+            active_op_side_obj_char[6],r_table_cache[2],0},
+        [3] = {obj_x_table[3],obj_y_table[3],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+            active_op_side_obj_char[6],r_table_cache[3],0},
+        [4] = {obj_x_table[4],obj_y_table[4],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+            active_op_side_obj_char[6],r_table_cache[4],0},
+        [5] = {obj_center[1],obj_center[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+            active_op_side_obj_char[6],0,0}
     }
     obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
@@ -2519,61 +2384,16 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
         obj_VFX["y_table"] = obj_y_table
         obj_VFX["center_table"] = obj_center
         obj_VFX["sub_obj"] = {
-            [1] =
-            {
-                obj_x_table[1],
-                obj_y_table[1],
-                active_op_side_obj_char[3],
-                1,
-                active_op_side_obj_char[5],
-                active_op_side_obj_char[6],
-                r_table_cache[1],
-                0
-            },
-            [2] =
-            {
-                obj_x_table[2],
-                obj_y_table[2],
-                active_op_side_obj_char[3],
-                1,
-                active_op_side_obj_char[5],
-                active_op_side_obj_char[6],
-                r_table_cache[2],
-                0
-            },
-            [3] =
-            {
-                obj_x_table[3],
-                obj_y_table[3],
-                active_op_side_obj_char[3],
-                1,
-                active_op_side_obj_char[5],
-                active_op_side_obj_char[6],
-                r_table_cache[3],
-                0
-            },
-            [4] =
-            {
-                obj_x_table[4],
-                obj_y_table[4],
-                active_op_side_obj_char[3],
-                1,
-                active_op_side_obj_char[5],
-                active_op_side_obj_char[6],
-                r_table_cache[4],
-                0
-            },
-            [5] =
-            {
-                obj_center[1],
-                obj_center[2],
-                active_op_side_obj_char[3],
-                1,
-                active_op_side_obj_char[5],
-                active_op_side_obj_char[6],
-                0,
-                0
-            }
+            [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+                active_op_side_obj_char[6],r_table_cache[1],0},
+            [2] = {obj_x_table[2],obj_y_table[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+                active_op_side_obj_char[6],r_table_cache[2],0},
+            [3] = {obj_x_table[3],obj_y_table[3],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+                active_op_side_obj_char[6],r_table_cache[3],0},
+            [4] = {obj_x_table[4],obj_y_table[4],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+                active_op_side_obj_char[6],r_table_cache[4],0},
+            [5] = {obj_center[1],obj_center[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+                active_op_side_obj_char[6],0,0}
         }
         obj_VFX["draw_sync"] = function() end
     end
