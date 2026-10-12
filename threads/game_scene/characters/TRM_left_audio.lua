@@ -63,7 +63,7 @@ local move_SFX_folder_table = {
     {folder = "special/4SP_K",files = {"4SP_K_whiff"}},
     {folder = "special/6SP_K",files = {"6SP_K_scapegoat_ease_in","6SP_K_scapegoat_ease_out"}},
     {folder = "special/4SP_S",files = {
-            "4SP_S_projectile_hit","4SP_S_projectile_whiff",
+            "4SP_S_H_projectile_block","4SP_S_H_projectile_counter","4SP_S_H_projectile_hit","4SP_S_H_projectile_whiff",
             "4SP_S_reticle_unlock","4SP_S_reticle_lock"
         }
     },

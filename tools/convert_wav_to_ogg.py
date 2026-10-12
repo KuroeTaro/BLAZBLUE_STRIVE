@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-将工程 asset/ 目录下所有 .wav 转成 .ogg（保留原 .wav，生成同名 .ogg）。
+将工程目录下所有 .wav 转成同名 .ogg（保留原 .wav，覆盖已有 .ogg）。
 依赖：PyAV（pip install av，内置 FFmpeg 库，无需系统安装 ffmpeg）。
 
 用法：
@@ -10,12 +10,12 @@
 import argparse
 import os
 import sys
+import tempfile
 
 import av
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ASSET_DIR = os.path.join(ROOT, "asset")
-AUDIO_BITRATE = 192000  # Vorbis 目标码率（SFX/BGM 通用）
+AUDIO_BITRATE = 500000  # FFmpeg 原生 Vorbis 的最高常规码率
 
 
 def find_wav_files(root_dir):
@@ -54,13 +54,13 @@ def convert_wav_to_ogg(src, dst, bitrate=AUDIO_BITRATE):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Convert all WAV assets to OGG.")
+    parser = argparse.ArgumentParser(description="Convert all project WAV files to OGG.")
     parser.add_argument("--dry-run", action="store_true",
                         help="only list files that would be converted")
     args = parser.parse_args()
 
-    wav_files = list(find_wav_files(ASSET_DIR))
-    print("Found %d WAV files under %s" % (len(wav_files), ASSET_DIR))
+    wav_files = list(find_wav_files(ROOT))
+    print("Found %d WAV files under %s" % (len(wav_files), ROOT))
 
     if args.dry_run:
         for src in wav_files:
@@ -71,16 +71,24 @@ def main():
     ok, failed = 0, 0
     for src in wav_files:
         dst = os.path.splitext(src)[0] + ".ogg"
+        temp_dst = None
         try:
-            convert_wav_to_ogg(src, dst)
+            fd, temp_dst = tempfile.mkstemp(
+                prefix="." + os.path.basename(dst) + ".",
+                suffix=".ogg",
+                dir=os.path.dirname(dst),
+            )
+            os.close(fd)
+            convert_wav_to_ogg(src, temp_dst)
+            os.replace(temp_dst, dst)
             ok += 1
             print("[%3d/%3d] %s  ->  %s" % (ok, len(wav_files), src, dst))
         except Exception as exc:  # noqa: BLE001
             failed += 1
             print("[FAIL] %s : %s" % (src, exc), file=sys.stderr)
-            if os.path.exists(dst):
+            if temp_dst and os.path.exists(temp_dst):
                 try:
-                    os.remove(dst)
+                    os.remove(temp_dst)
                 except OSError:
                     pass
 

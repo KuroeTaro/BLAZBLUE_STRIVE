@@ -1078,10 +1078,10 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
     obj_projectile["projectile_active"] = false
     obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
     obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
-    obj_projectile["hit_SFX"] = hit_side_move_SFX_table["5H_projectile_hit"] -- 4SP_S 暂无专用命中音效, 暂用 5H
-    obj_projectile["hit_block_SFX"] = hit_side_move_SFX_table["5H_projectile_block"]
-    obj_projectile["hit_counter_SFX"] = hit_side_move_SFX_table["5H_projectile_counter"]
-    obj_projectile["hit_whiff_SFX"] = hit_side_move_SFX_table["4SP_S_projectile_whiff"]
+    obj_projectile["hit_SFX"] = hit_side_move_SFX_table["4SP_S_H_projectile_hit"]
+    obj_projectile["hit_block_SFX"] = hit_side_move_SFX_table["4SP_S_H_projectile_block"]
+    obj_projectile["hit_counter_SFX"] = hit_side_move_SFX_table["4SP_S_H_projectile_counter"]
+    obj_projectile["hit_whiff_SFX"] = hit_side_move_SFX_table["4SP_S_H_projectile_whiff"]
     obj_projectile["enemy_interact_function"] = function()
         if collision_projectile_hit_confirm_test(obj_projectile,hurt_side_obj_char) then
             -- projectile_active
@@ -1158,7 +1158,7 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
     obj_projectile["camera_enclosing_anim"] = nil
     obj_projectile["enclose_position_offset"] = nil
     obj_projectile["camera_x_shake_anim"],obj_projectile["camera_y_shake_anim"] =
-    common_game_scene_hit_load_camera_shake_anim(0.25,15)
+    common_game_scene_hit_load_camera_shake_anim(0.75,15)
     obj_projectile["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
     -- update
     obj_projectile["update"] = function()

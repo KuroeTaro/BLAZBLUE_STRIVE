@@ -8743,7 +8743,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_ease_in(obj_char
         -- shot_sys
         obj_char["shot_sys_fire_cancel"] = false
         obj_char["shot_sys_idle_cancel"] = true
-        --VFX
+        -- insert_VFX
         insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char,"5H_switch_move_VFX")
     end
     res[12] = function()
@@ -9285,7 +9285,7 @@ function load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_lock(self_si
         if quick_clean_hit_cache then
             self_side_obj_char["shot_sys_at_the_steady_clean_hit"] = true
         end
-        --VFX
+        -- insert_VFX
         insert_VFX_game_scene_char_TRM_oroboros_switch(self_side_obj_char,"4SP_S_switch_move_VFX")
     end
     res[18] = function()
@@ -9451,6 +9451,8 @@ function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock(obj_char
     res[0] = function()
         -- shot_sys
         obj_char["shot_sys_reticle"][4] = opacity_cache*0.8
+        -- play_SFX
+        play_obj_audio(move_SFX_table["4SP_S_reticle_lock"])
     end
     res[1] = function()
         -- shot_sys
@@ -9530,10 +9532,10 @@ function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock_to_off(o
         obj_char["shot_sys_reticle_sprite_sheet"] = "4SP_S_reticle_lock_to_off"
         obj_char["shot_sys_reticle"][4] = 1
         obj_char["shot_sys_reticle"][8] = 0
-        --VFX
+        -- insert_VFX
         insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char,"4SP_S_switch_move_VFX")
         -- play_SFX
-        play_obj_audio(move_SFX_table["5H_reticle_ease_out"])
+        play_obj_audio(move_SFX_table["4SP_S_reticle_unlock"])
     end
     res[2] = function()
         -- shot_sys
