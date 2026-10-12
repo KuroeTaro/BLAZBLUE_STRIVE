@@ -68,17 +68,17 @@ function character_function_game_scene_TRM_hitstop_air_jump_cancel(
 )
     local down_cache = self_side_input["down"]
     self_side_input["down"] = false
-    common_game_scene_update_input_sys_direction(self_side_obj_char,opponent_side_obj_char)
     if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
         self_side_obj_char[5] = -self_side_obj_char[5]
     end
+    common_game_scene_update_input_sys_direction(self_side_obj_char,opponent_side_obj_char)
     self_side_input["down"] = down_cache
     -- air_move
     self_side_obj_char["air_move"]["jump"][1] = math.max(
         math.min(self_side_obj_char["air_move"]["jump"][1] - 1,self_side_obj_char["air_move"]["jump"][2]),0
     )
     self_side_obj_char["air_move"]["air_dash"][1] = 0
-    -- velocity_cache
+    -- velocity_cach
     if self_side_obj_char["direction_input"] == 7 then
         self_side_obj_char["character_animation"] =
         load_game_scene_anim_char_TRM_7_8_9_jump_air(
