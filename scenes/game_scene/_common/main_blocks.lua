@@ -640,16 +640,22 @@ end
 function update_game_scene_gauge()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
-    char_LP["health_gauge_update_function"]()
-    char_LP["overdrive_gauge_update_function"]()
-    char_LP["ability_gauge_update_function"]()
-    char_LP["risk_gauge_update_function"]()
-    char_LP["wallstick_gauge_update_function"]()
-    char_RP["health_gauge_update_function"]()
-    char_RP["overdrive_gauge_update_function"]()
-    char_RP["ability_gauge_update_function"]()
-    char_RP["risk_gauge_update_function"]()
-    char_RP["wallstick_gauge_update_function"]()
+    local LP_run_at_this_frame = common_game_scene_character_run_at_this_frame(char_LP)
+    local RP_run_at_this_frame = common_game_scene_character_run_at_this_frame(char_RP)
+    if LP_run_at_this_frame then
+        char_LP["health_gauge_update_function"]()
+        char_LP["overdrive_gauge_update_function"]()
+        char_LP["ability_gauge_update_function"]()
+        char_LP["risk_gauge_update_function"]()
+        char_LP["wallstick_gauge_update_function"]()
+    end
+    if RP_run_at_this_frame then
+        char_RP["health_gauge_update_function"]()
+        char_RP["overdrive_gauge_update_function"]()
+        char_RP["ability_gauge_update_function"]()
+        char_RP["risk_gauge_update_function"]()
+        char_RP["wallstick_gauge_update_function"]()
+    end
 end
 function update_game_scene_application_table()
     -- application_table

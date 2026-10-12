@@ -40,7 +40,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["velocity_cache"] = {0,0}
     obj_char_game_scene_char_RP["friction"] = 1
     obj_char_game_scene_char_RP["gravity"] = 2.5
-    obj_char_game_scene_char_RP["health_gauge"] = {12000,12000,12000,"fade_off"}
+    obj_char_game_scene_char_RP["health_gauge"] = {12000,12000,12000}
     obj_char_game_scene_char_RP["heat_gauge"] = {0.0,200.0} -- 0.0 - 200.0
     obj_char_game_scene_char_RP["ability_gauge"] = {600.0,600.0} -- 0.0 - 600.0
     obj_char_game_scene_char_RP["overdrive_gauge"] = {600.0,600.0,"off"} -- 0.0 - 600.0
@@ -165,11 +165,33 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["hit_throw_SFX"] = nil
     obj_char_game_scene_char_RP["hit_whiff_SFX"] = nil
     -- update_function
-    obj_char_game_scene_char_RP["health_gauge_update_function"] = function() end
+    obj_char_game_scene_char_RP["health_gauge_update_function"] = function()
+        character_function_game_scene_TRM_health_gauge_update_function(obj_char_game_scene_char_RP)
+    end
     obj_char_game_scene_char_RP["overdrive_gauge_update_function"] = function() end
     obj_char_game_scene_char_RP["ability_gauge_update_function"] = function() end
     obj_char_game_scene_char_RP["risk_gauge_update_function"] = function() end
     obj_char_game_scene_char_RP["wallstick_gauge_update_function"] = function() end
+    -- update_function_cache
+    obj_char_game_scene_char_RP["health_gauge_update_health_countdown"] = 0
+    obj_char_game_scene_char_RP["health_gauge_update_pause_state"] = {
+        ["before_ease_in"] = true,
+        ["active_FD_block"] = true,
+        ["block"] = true,
+        ["hurt"] = true,
+        ["throw_success"] = true,
+        ["throw_hurt_success"] = true,
+        ["throw_testing"] = true,
+        ["throw_tested"] = true,
+        ["blockstop"] = true,
+        ["hurtstop"] = true,
+        ["wallstick"] = true,
+        ["wallbreak_hit"] = true,
+        ["wallbreak_hurt"] = true,
+        ["knockdown"] = true,
+        ["knockdown_recovery"] = true,
+        ["knockout"] = true
+    }
     -- shot_sys/uncommon
     obj_char_game_scene_char_RP["shot_sys_f"] = 0
     obj_char_game_scene_char_RP["shot_sys_state"] = "off"

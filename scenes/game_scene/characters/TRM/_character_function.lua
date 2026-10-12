@@ -1,22 +1,29 @@
 -- update_function
-function character_function_game_scene_TRM_health_gauge_update_function(hit_side_obj_char,hurt_side_obj_char)
+function character_function_game_scene_TRM_health_gauge_update_function(obj_char)
     -- update_health_gauge_fade
-    -- countdown
+    -- health_gauge_update_health_countdown
+    if obj_char["health_gauge_update_pause_state"][obj_char["state"]] then
+        obj_char["health_gauge_update_health_countdown"] = 15
+    end
+    if obj_char["health_gauge_update_health_countdown"] == 0 then
+        obj_char["health_gauge"][2] = math.max(obj_char["health_gauge"][1],obj_char["health_gauge"][2] - 50)
+    end
+    obj_char["health_gauge_update_health_countdown"] = math.max(0,obj_char["health_gauge_update_health_countdown"] - 1)
 end
-function character_function_game_scene_TRM_overdrive_gauge_update_function(hit_side_obj_char,hurt_side_obj_char)
+function character_function_game_scene_TRM_overdrive_gauge_update_function(obj_char)
     -- update_overdrive_gauge_text
     -- update_overdrive
     -- refill if positive_bonus
 end
-function character_function_game_scene_TRM_ability_gauge_update_function(hit_side_obj_char,hurt_side_obj_char)
+function character_function_game_scene_TRM_ability_gauge_update_function(obj_char)
     -- update_ability_gauge_auto_refill
     -- countdown
 end
-function character_function_game_scene_TRM_risk_gauge_update_function(hit_side_obj_char,hurt_side_obj_char)
+function character_function_game_scene_TRM_risk_gauge_update_function(obj_char)
     -- update_risk_gauge_auto_fade
     -- countdown
 end
-function character_function_game_scene_TRM_wallstick_gauge_update_function(hit_side_obj_char,hurt_side_obj_char)
+function character_function_game_scene_TRM_wallstick_gauge_update_function(obj_char)
     -- update_wallstick_gauge_fade
     -- countdown
 end
