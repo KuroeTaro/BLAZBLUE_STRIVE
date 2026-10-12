@@ -6113,6 +6113,7 @@ function state_gate_game_scene_char_LP_from_7_8_9_jump_air(
         common_game_scene_get_SFX_stage_interactive(self_side_obj_char["player_side"])
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
+            common_game_scene_update_input_sys_direction(self_side_obj_char,opponent_side_obj_char)
         end
         -- air_move
         self_side_obj_char["air_move"]["jump"][1] = math.max(
@@ -6120,12 +6121,6 @@ function state_gate_game_scene_char_LP_from_7_8_9_jump_air(
         )
         self_side_obj_char["air_move"]["air_dash"][1] = 0
         -- velocity
-        if common_game_scene_check_jump_direction(self_side_obj_char)
-        and (not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char))
-        then
-            self_side_obj_char[5] = -self_side_obj_char[5]
-            common_game_scene_update_input_sys_direction(self_side_obj_char,opponent_side_obj_char)
-        end
         if self_side_obj_char["direction_input"] == 7 then
             self_side_obj_char["character_animation"] =
             load_game_scene_anim_char_TRM_7_8_9_jump_air(
