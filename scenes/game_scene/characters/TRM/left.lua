@@ -1737,8 +1737,7 @@ function order_load_game_scene_char_LP_audio(load_order)
                 "6SP_P_whiff","6SP_P_curse_ball_ground_bounce","6SP_P_curse_ball_hit","6SP_P_curse_end",
                 "4SP_K_whiff",
                 "6SP_K_scapegoat_ease_in","6SP_K_scapegoat_ease_out",
-                "4SP_S_whiff",
-                "4SP_S_projectile_whiff",
+                "4SP_S_projectile_hit","4SP_S_projectile_whiff",
                 "4SP_S_reticle_lock","4SP_S_reticle_unlock",
                 "6SP_S_block","6SP_S_counter","6SP_S_hit","6SP_S_whiff",
             }

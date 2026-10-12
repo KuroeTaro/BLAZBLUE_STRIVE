@@ -1,3 +1,25 @@
+-- update_function
+function character_function_game_scene_TRM_health_gauge_update_function(hit_side_obj_char,hurt_side_obj_char)
+    -- update_health_gauge_fade
+    -- countdown
+end
+function character_function_game_scene_TRM_overdrive_gauge_update_function(hit_side_obj_char,hurt_side_obj_char)
+    -- update_overdrive_gauge_text
+    -- update_overdrive
+    -- refill if positive_bonus
+end
+function character_function_game_scene_TRM_ability_gauge_update_function(hit_side_obj_char,hurt_side_obj_char)
+    -- update_ability_gauge_auto_refill
+    -- countdown
+end
+function character_function_game_scene_TRM_risk_gauge_update_function(hit_side_obj_char,hurt_side_obj_char)
+    -- update_risk_gauge_auto_fade
+    -- countdown
+end
+function character_function_game_scene_TRM_wallstick_gauge_update_function(hit_side_obj_char,hurt_side_obj_char)
+    -- update_wallstick_gauge_fade
+    -- countdown
+end
 -- hit_function
 function character_function_game_scene_TRM_j2K_strike_hit_function(hit_side_obj_char,hurt_side_obj_char)
     common_game_scene_strike_hit_function(hit_side_obj_char,hurt_side_obj_char)
