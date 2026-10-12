@@ -206,6 +206,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
         obj_projectile["hitbox_table"] = {{0,0,200,200}}
         obj_projectile["projectile_active"] = true
     end
+    character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
     -- insert_projectile
     table.insert(hit_side_obj_char["projectile_front_table"],obj_projectile)
 end
@@ -313,7 +314,9 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     obj_projectile["hit_whiff_SFX"] = hit_side_move_SFX_table["6SP_P_whiff"]
     obj_projectile["ground_bounce_SFX"] = hit_side_move_SFX_table["6SP_P_curse_ball_ground_bounce"]
     obj_projectile["enemy_interact_function"] = function()
-        if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) then
+        if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) 
+        or collision_projectile_hit_confirm_test(obj_projectile,hurt_side_obj_char)
+        then
             -- blast_state_init
             obj_projectile["velocity"] = {0,0}
             obj_projectile["sprite_sheet"] = "6SP_P_curse_ball_blast_projectile"
@@ -424,7 +427,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
                 -- 这里只做地面反弹判定, 不再自加 velocity, 避免双倍位移与无视慢速/冻结。
                 if obj_projectile["y"] > -25 then
                     obj_projectile["y"] = -25
-                    obj_projectile["velocity"] = {obj_projectile[5]*50,-57.5}
+                    obj_projectile["velocity"] = {obj_projectile[5]*50,-67.5}
                     play_obj_audio(obj_projectile["ground_bounce_SFX"])
                 end
             end,
@@ -1190,6 +1193,7 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
         obj_projectile["hitbox_table"] = {{0,0,200,200}}
         obj_projectile["projectile_active"] = true
     end
+    character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
     -- insert_projectile
     table.insert(hit_side_obj_char["projectile_front_table"],obj_projectile)
 end

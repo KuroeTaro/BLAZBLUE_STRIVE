@@ -348,10 +348,8 @@ end
 -- common_function_of_shot_sys_at_the_steady
 -- at_the_steady/ability_gauge_use
 function character_function_game_scene_TRM_shot_sys_at_the_steady_ability_gauge_use(obj_char)
-    local ability_gauge_cost = 100
     local ability_gauge_cache = obj_char["ability_gauge"][1]
-    if not obj_char["shot_sys_scapegoat_exist"] then ability_gauge_cost = 200 end
-    ability_gauge_cache = ability_gauge_cache - ability_gauge_cost
+    ability_gauge_cache = ability_gauge_cache - 100
     ability_gauge_cache = math.ceil(ability_gauge_cache/100)*100
     obj_char["ability_gauge"][1] = math.max(0,ability_gauge_cache)
 end
@@ -673,6 +671,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_update(se
     -- hurt_state
     self_side_obj_char["hurt_state"] = self_side_obj_char["hurt_state_target"]
     -- shot_sys
+    self_side_obj_char["ability_gauge"][1] = math.max(0,self_side_obj_char["ability_gauge"][1] - 7.5)
     character_animator(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
     return
 end
@@ -783,6 +782,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_shot_init(self
         self_side_obj_char["hurt_state"] = "unblock"
     end
     -- shot_sys
+    character_function_game_scene_TRM_shot_sys_at_the_steady_ability_gauge_use(self_side_obj_char)
     self_side_obj_char["shot_sys_animation"] = load_game_scene_anim_char_TRM_4SP_S_shot_sys_at_the_steady_shot(
         self_side_obj_char,opponent_side_obj_char
     )

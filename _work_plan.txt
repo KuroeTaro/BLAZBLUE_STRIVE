@@ -39,6 +39,6 @@ __WORK_PLAN__
 
 
 修改cl动画 命中不改 但是打防动画的CL是崩防 //ok
-音效添加和修正
-ability_gauge消费算法
+音效添加和修正 //ok
+ability_gauge消费算法 //ok
 update_function
