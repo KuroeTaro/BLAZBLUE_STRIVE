@@ -8260,8 +8260,9 @@ function state_gate_game_scene_char_RP_from_j5S(
             local self_side_stage_interactive_SFX_table =
             common_game_scene_get_SFX_stage_interactive(self_side_obj_char["player_side"])
             character_function_game_scene_TRM_hitstop_air_jump_cancel(
-                self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char,0.1,-11.5,-30,0,0,-30,0.1,
-                11.5,-25
+                self_side_input,opponent_side_input,
+                self_side_obj_char,opponent_side_obj_char,
+                0.1,-11.5,-30,0,0,-30,0.1,11.5,-25
             )
             -- play_SFX
             play_obj_audio(self_side_stage_interactive_SFX_table["air_jump"])
@@ -8404,8 +8405,9 @@ function state_gate_game_scene_char_RP_from_j5Launcher(
         if test_input_sys_press(self_side_input["up"]) and self_side_obj_char["air_move"]["jump"][1] > 0 then
             -- jump_cancel
             character_function_game_scene_TRM_hitstop_air_jump_cancel(
-                self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char,0.1,-11.5,-30,0,0,-30,0.1,
-                11.5,-29.5
+                self_side_input,opponent_side_input,
+                self_side_obj_char,opponent_side_obj_char,
+                0.1,-11.5,-30,0,0,-30,0.1,11.5,-29.5
             )
             return true
         end

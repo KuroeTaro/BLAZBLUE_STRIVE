@@ -827,7 +827,9 @@ function common_game_scene_projectile_hurt_function_common_hurt(
     end
     init_character_anim_with(hurt_side_obj_char,hurt_side_obj_char["character_animation"])
 end
-function common_game_scene_projectile_RC_red_yellow_hurt_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
+function common_game_scene_projectile_RC_red_yellow_hurt_function(
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile
+)
     -- idle unblock punish counter GP parry
     -- stand crouch air OTG wallstick
     local obj_stage_main = obj_stage_game_scene_main
@@ -1333,8 +1335,9 @@ function common_game_scene_projectile_apply_damage_heat(
     end
 end
 function common_game_scene_char_apply_hurt_velocity(
-    hit_side_obj_char,hurt_side_obj_char,FD_block,hurt_horizontal_velocity,hurt_horizontal_friction,
-    hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    hit_side_obj_char,hurt_side_obj_char,FD_block,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
     fix_direction
 )
     hurt_horizontal_velocity = fix_direction
@@ -1348,16 +1351,19 @@ function common_game_scene_char_apply_hurt_velocity(
         hit_side_obj_char,hurt_side_obj_char,hurt_horizontal_friction,hurt_horizontal_velocity,FD_block
     )
     common_game_scene_char_apply_hurt_velocity_sub_hurt_side(
-        hit_side_obj_char,hurt_side_obj_char,hurt_horizontal_friction,hurt_vertical_gravity,hurt_horizontal_velocity,
-        hurt_vertical_velocity,FD_block
+        hit_side_obj_char,hurt_side_obj_char,
+        hurt_horizontal_velocity,hurt_horizontal_friction,
+        hurt_vertical_velocity,hurt_vertical_gravity,
+        FD_block
     )
     hurt_side_obj_char["horizontal_velocity_correction"] =
     hurt_side_obj_char["horizontal_velocity_correction"]*hurt_horizontal_velocity_correction
     hurt_side_obj_char["gravity_correction"] = hurt_side_obj_char["gravity_correction"]*hurt_vertical_gravity_correction
 end
 function common_game_scene_char_apply_knockdown_velocity(
-    hit_side_obj_char,hurt_side_obj_char,hurt_horizontal_velocity,hurt_horizontal_friction,
-    hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction
+    hit_side_obj_char,hurt_side_obj_char,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction
 )
     hurt_horizontal_velocity =
     hurt_side_obj_char[5]*hurt_horizontal_velocity*hurt_side_obj_char["horizontal_velocity_correction"]
@@ -1369,8 +1375,9 @@ function common_game_scene_char_apply_knockdown_velocity(
     hurt_side_obj_char["horizontal_velocity_correction"]*hurt_horizontal_velocity_correction
 end
 function common_game_scene_projectile_apply_hurt_velocity(
-    hit_side_obj_char,hurt_side_obj_char,projectile,hurt_horizontal_velocity,hurt_horizontal_friction,
-    hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    hit_side_obj_char,hurt_side_obj_char,projectile,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
     fix_direction,velocity_center
 )
     hurt_horizontal_velocity = (fix_direction and (projectile[5]*hurt_horizontal_velocity))
@@ -1419,8 +1426,10 @@ function common_game_scene_char_apply_hurt_velocity_sub_hit_side(
     end
 end
 function common_game_scene_char_apply_hurt_velocity_sub_hurt_side(
-    hit_side_obj_char,hurt_side_obj_char,hurt_horizontal_friction,hurt_vertical_gravity,hurt_horizontal_velocity,
-    hurt_vertical_velocity,FD_block
+    hit_side_obj_char,hurt_side_obj_char,
+    hurt_horizontal_velocity,hurt_horizontal_friction,
+    hurt_vertical_velocity,hurt_vertical_gravity,
+    FD_block
 )
     if (hurt_horizontal_velocity >= 0 and hit_side_obj_char["collision_move_available"][1] == 0)
     or (hurt_horizontal_velocity <= 0 and hit_side_obj_char["collision_move_available"][2] == 0) then

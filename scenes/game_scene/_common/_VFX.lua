@@ -1102,7 +1102,7 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver0(active_op_sid
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_block_VFX_insert_function_argument =
-    active_op_side_obj_char["hit_block_VFX_insert_function_argument"]
+        active_op_side_obj_char["hit_block_VFX_insert_function_argument"]
     local active_op_x = active_op_hit_block_VFX_insert_function_argument[1]
     local active_op_y = active_op_hit_block_VFX_insert_function_argument[2]
     local active_op_opacity = active_op_hit_block_VFX_insert_function_argument[3]
@@ -1195,7 +1195,7 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_sid
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_block_VFX_insert_function_argument =
-    active_op_side_obj_char["hit_block_VFX_insert_function_argument"]
+        active_op_side_obj_char["hit_block_VFX_insert_function_argument"]
     local active_op_x = active_op_hit_block_VFX_insert_function_argument[1]
     local active_op_y = active_op_hit_block_VFX_insert_function_argument[2]
     local active_op_opacity = active_op_hit_block_VFX_insert_function_argument[3]
@@ -1863,7 +1863,7 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver0(active_op_side_obj_
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_block_VFX_insert_function_argument =
-    active_op_side_obj_char["hit_block_VFX_insert_function_argument"]
+        active_op_side_obj_char["hit_block_VFX_insert_function_argument"]
     local active_op_hit_VFX_dynamic_spawn_pos = active_op_side_obj_char["hit_VFX_dynamic_spawn_pos"]
     local active_op_center_x = active_op_hit_VFX_dynamic_spawn_pos[1]
     local active_op_center_y = active_op_hit_VFX_dynamic_spawn_pos[2]
@@ -1927,7 +1927,7 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver1(active_op_side_obj_
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_block_VFX_insert_function_argument =
-    active_op_side_obj_char["hit_block_VFX_insert_function_argument"]
+        active_op_side_obj_char["hit_block_VFX_insert_function_argument"]
     local active_op_hit_VFX_dynamic_spawn_pos = active_op_side_obj_char["hit_VFX_dynamic_spawn_pos"]
     local active_op_center_x = active_op_hit_VFX_dynamic_spawn_pos[1]
     local active_op_center_y = active_op_hit_VFX_dynamic_spawn_pos[2]
@@ -2465,9 +2465,7 @@ function insert_VFX_game_scene_char_block_ver0(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_VFX_spawn_anchor =
-    common_game_scene_get_VFX_spawn_anchor(
-        obj_char["player_side"]
-    )["block_ver0_spawn_anchor_pos"][obj_char["sprite_sheet"]]
+        common_game_scene_get_VFX_spawn_anchor(obj_char["player_side"])["block_ver0_spawn_anchor_pos"][obj_char["sprite_sheet"]]
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
     obj_VFX["life"] = 21
@@ -2521,9 +2519,7 @@ function insert_VFX_game_scene_char_block_ver1(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_VFX_spawn_anchor =
-    common_game_scene_get_VFX_spawn_anchor(
-        obj_char["player_side"]
-    )["block_ver1_spawn_anchor_pos"][obj_char["sprite_sheet"]]
+        common_game_scene_get_VFX_spawn_anchor(obj_char["player_side"])["block_ver1_spawn_anchor_pos"][obj_char["sprite_sheet"]]
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
     obj_VFX["life"] = 31
@@ -2580,9 +2576,7 @@ function insert_VFX_game_scene_char_block_RC_red(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_VFX_spawn_anchor =
-    common_game_scene_get_VFX_spawn_anchor(
-        obj_char["player_side"]
-    )["block_ver1_spawn_anchor_pos"][obj_char["sprite_sheet"]]
+        common_game_scene_get_VFX_spawn_anchor(obj_char["player_side"])["block_ver1_spawn_anchor_pos"][obj_char["sprite_sheet"]]
     obj_char["VFX_hit_front_table"] = {}
     obj_char["VFX_hit_back_table"] = {}
     obj_VFX["life"] = 18

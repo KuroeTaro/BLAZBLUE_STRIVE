@@ -43,10 +43,12 @@
             -- anchor_pos
             ------
 function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -125,8 +127,10 @@ function load_game_scene_anim_char_common_0_general_hurt_falled_knockout(
     res[44] = function()
         -- sub_obj_table
         insert_VFX_game_scene_stage_smoke_land_blow(
-            hurt_side_obj_char,hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],0.5,1,1,0
+            hurt_side_obj_char,
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
+            0.5,1,1,0
         )
         -- draw_correction
         hurt_side_obj_char[8] = 5
@@ -199,10 +203,12 @@ end
             -- anchor_pos
             ------
 function load_game_scene_anim_char_common_0_ground_hurt_lv0(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -221,9 +227,10 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,false,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false
+            hit_side_obj_char,hurt_side_obj_char,false,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+            false
         )
         common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
         -- enemy_friend_interaction
@@ -256,8 +263,10 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
-            hurt_side_obj_char,hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],0.5,-1,1,0
+            hurt_side_obj_char,
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
+            0.5,-1,1,0
         )
         -- character_uncommon_init
         character_uncommon_init()
@@ -291,10 +300,12 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
     return res
 end
 function load_game_scene_anim_char_common_0_ground_hurt_lv1(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -313,9 +324,10 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,false,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false
+            hit_side_obj_char,hurt_side_obj_char,false,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+            false
         )
         common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
         -- enemy_friend_interaction
@@ -348,8 +360,10 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
-            hurt_side_obj_char,hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],0.5,-1,1,0
+            hurt_side_obj_char,
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
+            0.5,-1,1,0
         )
         -- character_uncommon_init
         character_uncommon_init()
@@ -383,10 +397,12 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
     return res
 end
 function load_game_scene_anim_char_common_0_ground_hurt_lv2(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -405,9 +421,10 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,false,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false
+            hit_side_obj_char,hurt_side_obj_char,false,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+            false
         )
         common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
         -- enemy_friend_interaction
@@ -440,8 +457,10 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
-            hurt_side_obj_char,hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],0.5,-1,1,0
+            hurt_side_obj_char,
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
+            0.5,-1,1,0
         )
         -- character_uncommon_init
         character_uncommon_init()
@@ -475,10 +494,12 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
     return res
 end
 function load_game_scene_anim_char_common_0_ground_hurt_lv3(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -497,9 +518,10 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,false,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false
+            hit_side_obj_char,hurt_side_obj_char,false,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+            false
         )
         common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
         -- enemy_friend_interaction
@@ -532,8 +554,10 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
-            hurt_side_obj_char,hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],0.5,-1,1,0
+            hurt_side_obj_char,
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
+            0.5,-1,1,0
         )
         -- character_uncommon_init
         character_uncommon_init()
@@ -567,10 +591,12 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
     return res
 end
 function load_game_scene_anim_char_common_0_ground_hurt_lv4(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -589,9 +615,10 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,false,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false
+            hit_side_obj_char,hurt_side_obj_char,false,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+            false
         )
         common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
         -- enemy_friend_interaction
@@ -624,8 +651,10 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
-            hurt_side_obj_char,hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],0.5,-1,1,0
+            hurt_side_obj_char,
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
+            0.5,-1,1,0
         )
         -- character_uncommon_init
         character_uncommon_init()
@@ -691,10 +720,12 @@ end
             -- anchor_pos
             ------
 function load_game_scene_anim_char_common_0_ground_block_lv0(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -717,9 +748,10 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
             test_input_sys_press_or_hold(hurt_side_input["correction_left"])
             or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false
+            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+            false
         )
         common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
         -- enemy_friend_interaction
@@ -752,8 +784,10 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
-            hurt_side_obj_char,hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],0.5,-1,1,0
+            hurt_side_obj_char,
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
+            0.5,-1,1,0
         )
         -- character_uncommon_init
         character_uncommon_init()
@@ -781,10 +815,12 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
     return res
 end
 function load_game_scene_anim_char_common_0_ground_block_lv1(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -807,9 +843,10 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
             test_input_sys_press_or_hold(hurt_side_input["correction_left"])
             or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false
+            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+            false
         )
         common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
         -- enemy_friend_interaction
@@ -842,8 +879,10 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
-            hurt_side_obj_char,hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],0.5,-1,1,0
+            hurt_side_obj_char,
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
+            0.5,-1,1,0
         )
         -- character_uncommon_init
         character_uncommon_init()
@@ -875,10 +914,12 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
     return res
 end
 function load_game_scene_anim_char_common_0_ground_block_lv2(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -901,9 +942,10 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
             test_input_sys_press_or_hold(hurt_side_input["correction_left"])
             or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false
+            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+            false
         )
         common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
         -- enemy_friend_interaction
@@ -936,8 +978,10 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
-            hurt_side_obj_char,hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],0.5,-1,1,0
+            hurt_side_obj_char,
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
+            0.5,-1,1,0
         )
         -- character_uncommon_init
         character_uncommon_init()
@@ -967,10 +1011,12 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
     return res
 end
 function load_game_scene_anim_char_common_0_ground_block_lv3(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -993,9 +1039,10 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
             test_input_sys_press_or_hold(hurt_side_input["correction_left"])
             or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false
+            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+            false
         )
         common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
         -- enemy_friend_interaction
@@ -1028,8 +1075,10 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
-            hurt_side_obj_char,hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],0.5,-1,1,0
+            hurt_side_obj_char,
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
+            0.5,-1,1,0
         )
         -- character_uncommon_init
         character_uncommon_init()
@@ -1063,10 +1112,12 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
     return res
 end
 function load_game_scene_anim_char_common_0_ground_block_lv4(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -1089,9 +1140,10 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
             test_input_sys_press_or_hold(hurt_side_input["correction_left"])
             or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false
+            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+            false
         )
         common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
         -- enemy_friend_interaction
@@ -1124,8 +1176,10 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
-            hurt_side_obj_char,hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],0.5,-1,1,0
+            hurt_side_obj_char,
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
+            0.5,-1,1,0
         )
         -- character_uncommon_init
         character_uncommon_init()
@@ -1161,10 +1215,12 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
     return res
 end
 function load_game_scene_anim_char_common_0_air_block(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -1194,8 +1250,10 @@ function load_game_scene_anim_char_common_0_air_block(
             hurt_side_obj_char[8] = 6
             -- insert_VFX
             insert_VFX_game_scene_stage_smoke_land_blow(
-                hurt_side_obj_char,hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
-                hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],0.5,1,1,0
+                hurt_side_obj_char,
+                hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+                hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
+                0.5,1,1,0
             )
         end
     end
@@ -1219,9 +1277,10 @@ function load_game_scene_anim_char_common_0_air_block(
             test_input_sys_press_or_hold(hurt_side_input["correction_left"])
             or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false
+            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+            false
         )
         common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
         -- enemy_friend_interaction
@@ -1315,10 +1374,12 @@ function load_game_scene_anim_char_common_0_air_block(
     return res
 end
 function load_game_scene_anim_char_common_0_air_block_guard_crash(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -1350,8 +1411,10 @@ function load_game_scene_anim_char_common_0_air_block_guard_crash(
             hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data["1_4_7_air_block"]
             -- insert_VFX
             insert_VFX_game_scene_stage_smoke_land_blow(
-                hurt_side_obj_char,hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"]["1_4_7_air_block"][1],
-                hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"]["1_4_7_air_block"][2],0.5,1,1,0
+                hurt_side_obj_char,
+                hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"]["1_4_7_air_block"][1],
+                hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"]["1_4_7_air_block"][2],
+                0.5,1,1,0
             )
         end
     end
@@ -1375,9 +1438,10 @@ function load_game_scene_anim_char_common_0_air_block_guard_crash(
             test_input_sys_press_or_hold(hurt_side_input["correction_left"])
             or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false
+            hit_side_obj_char,hurt_side_obj_char,hurt_side_FD_block,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+            false
         )
         common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
         -- enemy_friend_interaction
@@ -1560,8 +1624,10 @@ function load_game_scene_anim_char_common_0_Launcher_throw_tech(hit_side_obj_cha
         -- insert VFX
         if hit_side_obj_char["height"] ~= "air" then
             insert_VFX_game_scene_stage_smoke_horizontal_shot(
-                hit_side_obj_char,hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
-                hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],0.5,1,1,0
+                hit_side_obj_char,
+                hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+                hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
+                0.5,1,1,0
             )
         end
         if teching_or_teched == "teching" then
@@ -1664,7 +1730,7 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstic
         obj_char["gravity"] = 0
         -- enemy_friend_interaction
         obj_char["self_knockdown_recovery_animation"] =
-        load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick_air(obj_char)
+            load_game_scene_anim_char_common_0_general_hurt_soft_recovery_wallstick_air(obj_char)
         obj_char["strike_inv"] = false
         obj_char["strike_inv_countdown"] = 0
         obj_char["throw_inv"] = true
@@ -1734,10 +1800,12 @@ end
             -- anchor_pos
             ------
 function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -1757,9 +1825,9 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_char_apply_knockdown_velocity(
-            hit_side_obj_char,hurt_side_obj_char,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hit_side_obj_char,hurt_side_obj_char,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction
         )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
@@ -1788,8 +1856,10 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
-            hurt_side_obj_char,hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],0.5,1,1,0
+            hurt_side_obj_char,
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
+            0.5,1,1,0
         )
         -- play_SFX
         play_obj_audio(hurt_side_stage_interactive_SFX_table["ground_hard_knockdown"])
@@ -1843,10 +1913,12 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_down(
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_down(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -1866,9 +1938,9 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_char_apply_knockdown_velocity(
-            hit_side_obj_char,hurt_side_obj_char,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hit_side_obj_char,hurt_side_obj_char,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction
         )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
@@ -1897,8 +1969,10 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
-            hurt_side_obj_char,hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],0.5,1,1,0
+            hurt_side_obj_char,
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
+            0.5,1,1,0
         )
         -- play_SFX
         play_obj_audio(hurt_side_stage_interactive_SFX_table["ground_hard_knockdown"])
@@ -1952,10 +2026,12 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_dow
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -1975,9 +2051,9 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_char_apply_knockdown_velocity(
-            hit_side_obj_char,hurt_side_obj_char,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction
+            hit_side_obj_char,hurt_side_obj_char,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction
         )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
@@ -2006,8 +2082,10 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
-            hurt_side_obj_char,hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
-            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],0.5,1,1,0
+            hurt_side_obj_char,
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
+            0.5,1,1,0
         )
         -- play_SFX
         play_obj_audio(hurt_side_stage_interactive_SFX_table["ground_hard_knockdown"])
@@ -2138,8 +2216,10 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstic
         obj_char[8] = 3
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
-            obj_char,VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
-            VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],0.5,1,1,0
+            obj_char,
+            VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1],
+            VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][2],
+            0.5,1,1,0
         )
         -- play_SFX
         play_obj_audio(stage_interactive_SFX_table["ground_hard_knockdown"])
@@ -2185,8 +2265,10 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallbrea
         hurt_side_obj_char["self_knockdown_animation"] = nil
         hurt_side_obj_char["self_knockdown_recovery_animation"] =
         load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
-            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_hard_recovery_up","OTG","5_stand_idle",nil,nil,nil,nil,
-            nil,nil,nil,nil,nil,nil,function() end
+            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_hard_recovery_up","OTG","5_stand_idle",
+            nil,nil,nil,nil,nil,nil,
+            nil,nil,nil,nil,
+            function() end
         )
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
@@ -2248,10 +2330,12 @@ end
             -- anchor_pos
             ------
 function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -2356,10 +2440,12 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -2559,10 +2645,12 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_wallstick
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -2613,8 +2701,10 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         hurt_side_obj_char["anchor_pos"] = hurt_side_anchor_data[sprite_sheet]
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
-            hurt_side_obj_char,hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][0][1],
-            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][0][2],0.5,-1,1,0
+            hurt_side_obj_char,
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][0][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][0][2],
+            0.5,-1,1,0
         )
         -- play_SFX
         play_obj_audio(hurt_side_stage_interactive_SFX_table["ground_soft_knockdown"])
@@ -2648,8 +2738,10 @@ function load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
         hurt_side_obj_char[8] = 5
         -- insert_VFX
         insert_VFX_game_scene_stage_smoke_land_blow(
-            hurt_side_obj_char,hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1][1],
-            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1][2],0.5,1,1,0
+            hurt_side_obj_char,
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1][1],
+            hurt_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"][sprite_sheet][1][2],
+            0.5,1,1,0
         )
     end
     res[24] = function()
@@ -2788,10 +2880,12 @@ end
             -- anchor_pos
             ------
 function load_game_scene_anim_char_common_0_general_hurt_launched_float(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -2799,7 +2893,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
-    local common_land_function = function(i)
+    local function common_land_function(i)
         -- state
         hurt_side_obj_char["f"] = i
         -- collide
@@ -2902,10 +2996,14 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
         update_before_land_actions[
-            math.floor((hurt_side_obj_char["velocity"][2] +
-            hurt_side_obj_char["gravity"]*hurt_side_obj_char["gravity_correction"] + 60)/
-            20) +
-            1
+            math.floor(
+                (
+                    hurt_side_obj_char["velocity"][2] + 
+                    hurt_side_obj_char["gravity"]*hurt_side_obj_char["gravity_correction"] + 
+                    60
+                )
+                /20
+            ) + 1
         ]()
     end
     res["prop_f"] = "f"
@@ -2929,9 +3027,10 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,false,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false
+            hit_side_obj_char,hurt_side_obj_char,false,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+            false
         )
         common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
         -- enemy_friend_interaction
@@ -3115,10 +3214,12 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_high(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -3146,9 +3247,10 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,false,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false
+            hit_side_obj_char,hurt_side_obj_char,false,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+            false
         )
         common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
         -- enemy_friend_interaction
@@ -3284,10 +3386,12 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_low(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -3315,9 +3419,10 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,false,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false
+            hit_side_obj_char,hurt_side_obj_char,false,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+            false
         )
         common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
         -- enemy_friend_interaction
@@ -3399,10 +3504,12 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -3430,9 +3537,10 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,false,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false
+            hit_side_obj_char,hurt_side_obj_char,false,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+            false
         )
         common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
         -- enemy_friend_interaction
@@ -3504,10 +3612,12 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -3552,9 +3662,10 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,false,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false
+            hit_side_obj_char,hurt_side_obj_char,false,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+            false
         )
         common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
         -- enemy_friend_interaction
@@ -3669,10 +3780,12 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -3700,9 +3813,10 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,false,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false
+            hit_side_obj_char,hurt_side_obj_char,false,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+            false
         )
         common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
         -- enemy_friend_interaction
@@ -3803,10 +3917,12 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -3834,9 +3950,10 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,false,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false
+            hit_side_obj_char,hurt_side_obj_char,false,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+            false
         )
         common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
         -- enemy_friend_interaction
@@ -3902,7 +4019,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
     end
     res[16] = function()
         -- state
-        hurt_side_obj_char["f"] = 1
+        hurt_side_obj_char["f"] = 0
         hurt_side_obj_char[8] = 0
         -- update
         update_before_land()
@@ -3913,10 +4030,12 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -4029,10 +4148,12 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -4179,10 +4300,12 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
     return res
 end
 function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_PRC(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -4209,10 +4332,11 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_
         hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
-        common_game_scene_projectile_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,nil,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false,"character"
+        common_game_scene_char_apply_hurt_velocity(
+            hit_side_obj_char,hurt_side_obj_char,false,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+            false
         )
         common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
         -- enemy_friend_interaction
@@ -4349,10 +4473,12 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_
 end
 -- semi_launched
 function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
-    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,character_uncommon_init
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
+    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+    self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
+    character_uncommon_init
 )
     local res = {}
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -4372,9 +4498,10 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_char_apply_hurt_velocity(
-            hit_side_obj_char,hurt_side_obj_char,false,hurt_horizontal_velocity,hurt_horizontal_friction,
-            hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
-            hurt_vertical_gravity_correction,false
+            hit_side_obj_char,hurt_side_obj_char,false,
+            hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
+            hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
+            false
         )
         common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
         -- enemy_friend_interaction
@@ -4530,7 +4657,9 @@ end
             -- game_speed_subframe
             -- game_speed_abnormal_realtime_countdown
 function load_game_scene_anim_char_common_burst_overdrive(
-    self_side_obj_char,opponent_side_obj_char,opponent_side_game_speed_force_0_countdown,overdrive_halved,
+    self_side_obj_char,opponent_side_obj_char,
+    opponent_side_game_speed_force_0_countdown,
+    overdrive_halved,
     character_uncommon_init
 )
     local res = {}
