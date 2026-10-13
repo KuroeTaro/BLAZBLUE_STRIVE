@@ -4474,7 +4474,9 @@ function load_game_scene_anim_char_common_0_general_hurt_wallbreak(
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = adv
         if not obj_projectile then
-            common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+            common_game_scene_char_apply_damage_heat(
+                hit_side_obj_char,hurt_side_obj_char,"hurt",false
+            )
         else
             common_game_scene_projectile_apply_damage_heat(
                 hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",false

@@ -668,10 +668,14 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_init(self
     return
 end
 function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_update(self_side_obj_char,opponent_side_obj_char)
+    local ability_cost = 7.5
+    if self_side_obj_char["shot_sys_scapegoat_exist"] then
+        ability_cost = 2.5
+    end
     -- hurt_state
     self_side_obj_char["hurt_state"] = self_side_obj_char["hurt_state_target"]
     -- shot_sys
-    self_side_obj_char["ability_gauge"][1] = math.max(0,self_side_obj_char["ability_gauge"][1] - 7.5)
+    self_side_obj_char["ability_gauge"][1] = math.max(0,self_side_obj_char["ability_gauge"][1] - ability_cost)
     character_animator(self_side_obj_char,self_side_obj_char["shot_sys_animation"])
     return
 end
