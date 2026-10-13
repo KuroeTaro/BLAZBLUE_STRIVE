@@ -48,7 +48,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     obj_projectile["block_risk_gauge_gain"] = 0
     obj_projectile["FD_block_heat_drain"] = 0
     obj_projectile["stand_hurt_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
-        hit_side_obj_char,hurt_side_obj_char,"0_stand_hurt_high","stand","5_stand_idle",
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,"0_stand_hurt_high","stand","5_stand_idle",
         8,5,1.00,0,2.5,1.00,
         nil,nil,nil,nil,false,"character",function() end
     )

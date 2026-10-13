@@ -604,7 +604,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_init(
     -- hurt_state
     self_side_obj_char["hurt_state"] = self_side_obj_char["hurt_state_target"]
     if self_side_obj_char["hurt_state"] == "idle" then
-        obj_char["hurt_state"] = "unblock"
+        self_side_obj_char["hurt_state"] = "unblock"
     end
     -- shot_sys
     self_side_obj_char["shot_sys_state"] = "at_the_ready"
@@ -620,7 +620,9 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_update(
         self_side_obj_char["hurt_state"] = "unblock"
     end
     -- shot_sys
-    self_side_obj_char["ability_gauge"][1] = math.max(0,self_side_obj_char["ability_gauge"][1] - 0.5)
+    if self_side_obj_char["state"] ~= "hitstop" then
+        self_side_obj_char["ability_gauge"][1] = math.max(0,self_side_obj_char["ability_gauge"][1] - 0.5)
+    end
     character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_update(
         self_side_obj_char,opponent_side_obj_char
     )
@@ -667,7 +669,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_shot_update(
     -- hurt_state
     self_side_obj_char["hurt_state"] = self_side_obj_char["hurt_state_target"]
     if self_side_obj_char["hurt_state"] == "idle" then
-        obj_char["hurt_state"] = "unblock"
+        self_side_obj_char["hurt_state"] = "unblock"
     end
     -- shot_sys
     character_animator(
@@ -764,8 +766,9 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_update(
     -- hurt_state
     self_side_obj_char["hurt_state"] = self_side_obj_char["hurt_state_target"]
     -- shot_sys
-    self_side_obj_char["ability_gauge"][1] =
-    math.max(0,self_side_obj_char["ability_gauge"][1] - ability_cost)
+    if self_side_obj_char["state"] ~= "hitstop" then
+        self_side_obj_char["ability_gauge"][1] = math.max(0,self_side_obj_char["ability_gauge"][1] - ability_cost)
+    end
     character_animator(
         self_side_obj_char,self_side_obj_char["shot_sys_animation"]
     )
