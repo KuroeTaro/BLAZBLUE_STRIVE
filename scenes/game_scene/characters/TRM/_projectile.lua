@@ -1478,19 +1478,9 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     -- 数值(集中于此便于调整): 帧数与击飞/空中打防性能套用 5H, clean_hit 只提升伤害与 hitstop
     local hit_damage = 300.0
-    local clean_hit_hit_damage = 450.0
     local hit_hurt_blockstop_countdown = 12
+    local clean_hit_hit_damage = 450.0
     local clean_hit_hurt_blockstop_countdown = 16
-    -- clean_hit: 由 hit_side 的 shot_sys 判定, 只提升伤害与 hitstop
-    local hit_side_clean_hit = hit_side_obj_char["shot_sys_at_the_steady_clean_hit"]
-    -- local load_ground_block_animation_non_clean_hit = load_game_scene_anim_char_common_0_ground_block_lv1
-    -- local load_ground_hurt_animation_non_clean_hit = load_game_scene_anim_char_common_0_general_hurt_launched_rotate
-    -- local load_air_block_animation_non_clean_hit = load_game_scene_anim_char_common_0_air_block
-    -- local load_air_hurt_animation_non_clean_hit = load_game_scene_anim_char_common_0_general_hurt_launched_rotate
-    -- local load_ground_block_animation_clean_hit = load_game_scene_anim_char_common_0_ground_block_lv1
-    -- local load_ground_hurt_animation_clean_hit = load_game_scene_anim_char_common_0_general_hurt_launched_rotate
-    -- local load_air_block_animation_clean_hit = load_game_scene_anim_char_common_0_air_block
-    -- local load_air_hurt_animation_clean_hit = load_game_scene_anim_char_common_0_general_hurt_launched_rotate
     local stand_hurt_animation_cache = load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
         hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_launched_rotate","air","knockdown_recovery",
         3.25,5,1.147,-40,2.0,1.071,nil,
@@ -1542,7 +1532,7 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
     local wallstick_hurt_animation_cache = load_game_scene_anim_char_common_0_general_hurt_wallbreak(
         hit_side_obj_char,hurt_side_obj_char,obj_projectile,true
     )
-    if hit_side_clean_hit then
+    if hit_side_obj_char["shot_sys_at_the_steady_clean_hit"] then
         hit_damage = clean_hit_hit_damage
         hit_hurt_blockstop_countdown = clean_hit_hurt_blockstop_countdown
         stand_block_animation_cache = load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_clean_hit_guard_crash_block(
@@ -1769,6 +1759,30 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_main(
     end
     return res
 end
+function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_hurt(
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
+    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
+    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,fix_direction,velocity_center,
+    character_uncommon_init
+)
+end
+function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_ground_block(
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
+    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
+    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,fix_direction,velocity_center,
+    character_uncommon_init
+)
+end
+function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_air_block(
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
+    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
+    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,fix_direction,velocity_center,
+    character_uncommon_init
+)
+end
 function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_clean_hit_guard_crash_block(
     hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
     hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
@@ -1862,4 +1876,12 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_clean_hi
         -- animation end
     end
     return res
+end
+function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_clean_hit_guard_crash_air_block(
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile,sprite_sheet,height,state_cache,hurt_horizontal_velocity,
+    hurt_horizontal_friction,hurt_horizontal_velocity_correction,hurt_vertical_velocity,hurt_vertical_gravity,
+    hurt_vertical_gravity_correction,self_knockdown_animation,self_knockdown_recovery_animation,
+    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,fix_direction,velocity_center,
+    character_uncommon_init
+)
 end
