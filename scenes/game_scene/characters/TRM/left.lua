@@ -2881,9 +2881,15 @@ function state_machine_char_game_scene_char_LP_shot_sys()
             if get_character_anim_end_state(
                 self_side_obj_char,self_side_obj_char["shot_sys_animation"]
             ) then
-                character_function_game_scene_TRM_shot_sys_at_the_ready_init(
-                    self_side_obj_char,opponent_side_obj_char
-                )
+                if self_side_obj_char["ability_gauge"][1] <= 0 then
+                    character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(
+                        self_side_obj_char,opponent_side_obj_char
+                    )
+                else
+                    character_function_game_scene_TRM_shot_sys_at_the_ready_init(
+                        self_side_obj_char,opponent_side_obj_char
+                    )
+                end
                 return
             end
         end,
@@ -5037,8 +5043,8 @@ function state_gate_game_scene_char_LP_4SP_S_to_special(
         -- _4SP_S_4dash
         -- _4SP_S_6dash
         -- _4SP_S_4S
-        if self_side_obj_char["direction_input"] == 4
-        and test_input_sys_press(self_side_input["S"])
+        if (self_side_obj_char["direction_input"] == 4 and test_input_sys_press(self_side_input["S"]))
+        or (self_side_obj_char["ability_gauge"][1] <= 0)
         then
             if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
                 self_side_obj_char[5] = -self_side_obj_char[5]

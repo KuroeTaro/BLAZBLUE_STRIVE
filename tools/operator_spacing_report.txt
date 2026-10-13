@@ -5,7 +5,7 @@ Lua 格式检查报告（运算符空格 + 行尾空白）
 规则 [4] 行尾不允许残留空白（空格 / 制表符）
 规则 [5] 行内不允许无意义的连续多个空格（≥2 个字符；字符串/注释内容除外）
 检查范围：71 个 Lua 文件（已排除 dkjson / lovebird / lume / lurker）
-违规文件：0 个 | 规则[1]：0 处 | 规则[2]：0 处 | 规则[3]：0 处 | 规则[4]：0 处 | 规则[5]：0 处
+违规文件：5 个 | 规则[1]：3 处 | 规则[2]：1 处 | 规则[3]：5 处 | 规则[4]：12 处 | 规则[5]：0 处
 
 保留 `=` 列对齐（已批准，不修改）：10 处
     scenes/char_select_scene/state_machine.lua:54:32              ["obj"]            = obj_UI_char_select_scene_char_select_left,
@@ -18,3 +18,76 @@ Lua 格式检查报告（运算符空格 + 行尾空白）
     scenes/char_select_scene/state_machine.lua:64:32              ["text"]           = obj_UI_char_select_scene_char_select_text_right,
     scenes/char_select_scene/state_machine.lua:65:32              ["icon_cover"]     = obj_UI_char_select_scene_icon_select_right,
     scenes/char_select_scene/state_machine.lua:66:32              ["bar_mark"]       = obj_UI_char_select_scene_bar_mark_right,
+
+scenes/game_scene/_common/_anim.lua  (5 处)
+    3026:55  [规则1] 行尾多余空格，应删除
+                            hurt_side_obj_char["velocity"][2] + 
+                                                              ^
+    3026:56  [规则4] 行尾残留空白，应删除
+                            hurt_side_obj_char["velocity"][2] + 
+                                                               ^
+    3027:92  [规则1] 行尾多余空格，应删除
+                            hurt_side_obj_char["gravity"]*hurt_side_obj_char["gravity_correction"] + 
+                                                                                                   ^
+    3027:93  [规则4] 行尾残留空白，应删除
+                            hurt_side_obj_char["gravity"]*hurt_side_obj_char["gravity_correction"] + 
+                                                                                                    ^
+    3030:17  [规则2] 运算符独占行首（缩进），需人工确认
+                        /20
+                        ^
+
+scenes/game_scene/characters/TRM/_character_function.lua  (10 处)
+    473:64  [规则3] 行尾多余空格，应删除
+            self_side_obj_char["shot_sys_oroboros_animation_table"][2] = 
+                                                                       ^
+    473:65  [规则4] 行尾残留空白，应删除
+            self_side_obj_char["shot_sys_oroboros_animation_table"][2] = 
+                                                                        ^
+    477:64  [规则3] 行尾多余空格，应删除
+            self_side_obj_char["shot_sys_oroboros_animation_table"][3] = 
+                                                                       ^
+    477:65  [规则4] 行尾残留空白，应删除
+            self_side_obj_char["shot_sys_oroboros_animation_table"][3] = 
+                                                                        ^
+    485:64  [规则3] 行尾多余空格，应删除
+            self_side_obj_char["shot_sys_oroboros_animation_table"][5] = 
+                                                                       ^
+    485:65  [规则4] 行尾残留空白，应删除
+            self_side_obj_char["shot_sys_oroboros_animation_table"][5] = 
+                                                                        ^
+    712:68  [规则3] 行尾多余空格，应删除
+                self_side_obj_char["shot_sys_oroboros_animation_table"][3] = 
+                                                                           ^
+    712:69  [规则4] 行尾残留空白，应删除
+                self_side_obj_char["shot_sys_oroboros_animation_table"][3] = 
+                                                                            ^
+    847:46  [规则3] 行尾多余空格，应删除
+            self_side_obj_char["shot_sys_animation"] = 
+                                                     ^
+    847:47  [规则4] 行尾残留空白，应删除
+            self_side_obj_char["shot_sys_animation"] = 
+                                                      ^
+
+scenes/game_scene/characters/TRM/_projectile.lua  (4 处)
+    204:57  [规则1] 行尾多余空格，应删除
+                    obj_projectile[2] = hurt_side_obj_char["y"] - 
+                                                                ^
+    204:58  [规则4] 行尾残留空白，应删除
+                    obj_projectile[2] = hurt_side_obj_char["y"] - 
+                                                                 ^
+    858:89  [规则4] 行尾残留空白，应删除
+                if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) 
+                                                                                                ^
+    1652:130  [规则4] 行尾残留空白，应删除
+                stand_block_animation_cache = load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_clean_hit_guard_crash_block(    
+                                                                                                                                         ^
+
+scenes/game_scene/characters/TRM/left.lua  (1 处)
+    8524:107  [规则4] 行尾残留空白，应删除
+                if (self_side_obj_char["direction_input"] ~= 4 and self_side_obj_char["direction_input"] ~= 6) and 
+                                                                                                                  ^
+
+scenes/game_scene/characters/TRM/right.lua  (1 处)
+    8524:107  [规则4] 行尾残留空白，应删除
+                if (self_side_obj_char["direction_input"] ~= 4 and self_side_obj_char["direction_input"] ~= 6) and 
+                                                                                                                  ^

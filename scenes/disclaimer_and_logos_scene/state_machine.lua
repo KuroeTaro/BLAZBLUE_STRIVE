@@ -61,7 +61,7 @@ function state_machine_UI_disclaimer_and_logos_scene_singular(obj)
             -- 跳转到kuroe_taro_s_handicraft_logo_ease_in状态
             if get_point_linear_anim_end_state(
                 obj,anim
-            )or INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
+            ) or INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
                 obj[1] = 620
                 obj[2] = 255
                 obj[4] = 0
@@ -120,7 +120,7 @@ function state_machine_UI_disclaimer_and_logos_scene_singular(obj)
             -- 设置为新的ease in 动画
             if get_point_linear_anim_end_state(
                 obj,anim
-            )or INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
+            ) or INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
                 obj[4] = 0
                 obj[8] = 2
                 init_point_linear_anim_with(
@@ -175,7 +175,7 @@ function state_machine_UI_disclaimer_and_logos_scene_singular(obj)
             -- 跳转到end 用于检测
             if get_point_linear_anim_end_state(
                 obj,anim
-            )or INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
+            ) or INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
                 obj[4] = 0
                 obj["state"] = "end"
                 SCENE_TIMER = 0
