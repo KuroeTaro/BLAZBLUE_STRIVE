@@ -17,9 +17,13 @@ function state_machine_UI_disclaimer_and_logos_scene_singular(obj)
         ["disclaimer_ease_in"] = function()
             -- 保持运行 ease in 动画
             local anim = anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_in_opacity_0_1
-            point_linear_animator(obj,anim)
+            point_linear_animator(
+                obj,anim
+            )
             -- 如果运行完毕 跳到update状态 结束的第0帧数就跳转到 update
-            if get_point_linear_anim_end_state(obj,anim) then
+            if get_point_linear_anim_end_state(
+                obj,anim
+            ) then
                 obj["state"] = "disclaimer_update"
                 SCENE_TIMER = 0
             end
@@ -48,12 +52,16 @@ function state_machine_UI_disclaimer_and_logos_scene_singular(obj)
         ["disclaimer_ease_out"] = function()
             -- 保持运行falsh out 动画
             local anim = anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_out_opacity_1_0
-            point_linear_animator(obj,anim)
+            point_linear_animator(
+                obj,anim
+            )
             -- 如果动画运行完成或者按下D键 设置新的ease in 动画
             -- 将position对应disclaimer的值改为logo的值
             -- 改变绘图f为1 也就是kuroe taro s handicraft logo
             -- 跳转到kuroe_taro_s_handicraft_logo_ease_in状态
-            if get_point_linear_anim_end_state(obj,anim)or INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
+            if get_point_linear_anim_end_state(
+                obj,anim
+            )or INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
                 obj[1] = 620
                 obj[2] = 255
                 obj[4] = 0
@@ -68,9 +76,13 @@ function state_machine_UI_disclaimer_and_logos_scene_singular(obj)
         ["kuroe_taro_s_handicraft_logo_ease_in"] = function()
             -- 保持运行falsh in 动画
             local anim = anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_in_opacity_0_1
-            point_linear_animator(obj,anim)
+            point_linear_animator(
+                obj,anim
+            )
             -- 如果ease in 动画运行完成 跳转到 update
-            if get_point_linear_anim_end_state(obj,anim) then
+            if get_point_linear_anim_end_state(
+                obj,anim
+            ) then
                 obj["state"] = "kuroe_taro_s_handicraft_logo_update"
                 SCENE_TIMER = 0
             end
@@ -100,11 +112,15 @@ function state_machine_UI_disclaimer_and_logos_scene_singular(obj)
         ["kuroe_taro_s_handicraft_logo_ease_out"] = function()
             -- 保持运行ease out 动画
             local anim = anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_out_opacity_1_0
-            point_linear_animator(obj,anim)
+            point_linear_animator(
+                obj,anim
+            )
             -- 如果运行完成或者按下d键 跳转到新的ease in
             -- 初始化透明度 因为坐标相同所以不改 图片改为 love2d logo
             -- 设置为新的ease in 动画
-            if get_point_linear_anim_end_state(obj,anim)or INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
+            if get_point_linear_anim_end_state(
+                obj,anim
+            )or INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
                 obj[4] = 0
                 obj[8] = 2
                 init_point_linear_anim_with(
@@ -117,9 +133,13 @@ function state_machine_UI_disclaimer_and_logos_scene_singular(obj)
         ["love_logo_ease_in"] = function()
             -- 保持运行 easei in 动画
             local anim = anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_in_opacity_0_1
-            point_linear_animator(obj,anim)
+            point_linear_animator(
+                obj,anim
+            )
             -- 如果动画运行完成 则跳转到update
-            if get_point_linear_anim_end_state(obj,anim) then
+            if get_point_linear_anim_end_state(
+                obj,anim
+            ) then
                 obj["state"] = "love_logo_update"
                 SCENE_TIMER = 0
             end
@@ -149,9 +169,13 @@ function state_machine_UI_disclaimer_and_logos_scene_singular(obj)
         ["love_logo_ease_out"] = function()
             -- 保持运行 ease out 动画
             local anim = anim_UI_point_linear_disclaimer_and_logos_scene_singular_ease_out_opacity_1_0
-            point_linear_animator(obj,anim)
+            point_linear_animator(
+                obj,anim
+            )
             -- 跳转到end 用于检测
-            if get_point_linear_anim_end_state(obj,anim)or INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
+            if get_point_linear_anim_end_state(
+                obj,anim
+            )or INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
                 obj[4] = 0
                 obj["state"] = "end"
                 SCENE_TIMER = 0

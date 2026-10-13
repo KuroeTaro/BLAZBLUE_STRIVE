@@ -127,14 +127,12 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,"0_general_hurt_launched_high","air","knockdown",
         7.5,5,1.00,-7.5,1.0,1.00,
         load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
-            hit_side_obj_char,hurt_side_obj_char,
-            "0_general_hurt_hard_knockdown_up","air","knockdown_recovery",
+            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_hard_knockdown_up","air","knockdown_recovery",
             -5,5,1.00,-10,2.5,1.00,
             nil,nil,nil,nil,function() end
         ),
         load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
-            hit_side_obj_char,hurt_side_obj_char,
-            "0_general_hurt_hard_recovery_up","OTG","5_stand_idle",
+            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_hard_recovery_up","OTG","5_stand_idle",
             nil,nil,nil,nil,nil,nil,
             nil,nil,nil,nil,function() end
         ),
@@ -149,14 +147,12 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,"0_general_hurt_launched_high","air","knockdown",
         7.5,5,1.00,-7.5,1.0,1.00,
         load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
-            hit_side_obj_char,hurt_side_obj_char,
-            "0_general_hurt_hard_knockdown_up","air","knockdown_recovery",
+            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_hard_knockdown_up","air","knockdown_recovery",
             -5,5,1.00,-10,2.5,1.00,
             nil,nil,nil,nil,function() end
         ),
         load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
-            hit_side_obj_char,hurt_side_obj_char,
-            "0_general_hurt_hard_recovery_up","OTG","5_stand_idle",
+            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_hard_recovery_up","OTG","5_stand_idle",
             nil,nil,nil,nil,nil,nil,
             nil,nil,nil,nil,function() end
         ),
@@ -206,12 +202,14 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,"0_general_hurt_launched_high","air","knockdown",
         7.5,5,1.00,-15,1.0,1.00,
         load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_up(
-            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_hard_knockdown_up","air","knockdown_recovery",-5,5,
-            1.00,-10,2.5,1.00,nil,nil,nil,nil,function() end
+            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_hard_knockdown_up","air","knockdown_recovery",
+            -5,5,1.00,-10,2.5,1.00,
+            nil,nil,nil,nil,function() end
         ),
         load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
-            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_hard_recovery_up","OTG","5_stand_idle",nil,nil,nil,nil,
-            nil,nil,nil,nil,nil,nil,function() end
+            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_hard_recovery_up","OTG","5_stand_idle",
+            nil,nil,nil,nil,nil,nil,
+            nil,nil,nil,nil,function() end
         ),
         nil,nil,function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
     )
@@ -258,7 +256,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     -- animation
         -- projectile_animation
     obj_projectile["projectile_animation"] = load_game_scene_anim_projectile_RC_main(obj_projectile)
-    init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
+    init_character_anim_without(
+        obj_projectile,obj_projectile["projectile_animation"]
+    )
         -- camera_animation
     obj_projectile["camera_x_shake_anim"] = nil
     obj_projectile["camera_y_shake_anim"] = nil
@@ -273,7 +273,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         end
         obj_projectile["x"] = hit_side_obj_char["x"]
         obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
-        character_animator(obj_projectile,obj_projectile["projectile_animation"])
+        character_animator(
+            obj_projectile,obj_projectile["projectile_animation"]
+        )
         obj_projectile["life"] = obj_projectile["life"] - 1
     end
     -- update_sub_frame
@@ -287,7 +289,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         obj_projectile[2] = obj_projectile["y"] - 600
         obj_projectile[5] = hit_side_obj_char[5]
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8]))
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
+        )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
@@ -349,7 +353,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
     -- animation
         -- projectile_animation
     obj_projectile["projectile_animation"] = load_game_scene_anim_projectile_RC_main(obj_projectile)
-    init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
+    init_character_anim_without(
+        obj_projectile,obj_projectile["projectile_animation"]
+    )
     -- update
     obj_projectile["update"] = function()
         if hit_side_obj_char["height"] == "air" then
@@ -359,7 +365,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
         end
         obj_projectile["x"] = hit_side_obj_char["x"]
         obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
-        character_animator(obj_projectile,obj_projectile["projectile_animation"])
+        character_animator(
+            obj_projectile,obj_projectile["projectile_animation"]
+        )
         obj_projectile["life"] = obj_projectile["life"] - 1
     end
     -- update_sub_frame
@@ -373,7 +381,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
         obj_projectile[2] = obj_projectile["y"] - 600
         obj_projectile[5] = hit_side_obj_char[5]
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8]))
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
+        )
         love.graphics.setBlendMode("add")
         love.graphics.setColor(1,1,1,1)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -437,7 +447,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
     -- animation
         -- projectile_animation
     obj_projectile["projectile_animation"] = load_game_scene_anim_projectile_RC_main(obj_projectile)
-    init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
+    init_character_anim_without(
+        obj_projectile,obj_projectile["projectile_animation"]
+    )
     -- update
     obj_projectile["update"] = function()
         if hit_side_obj_char["height"] == "air" then
@@ -447,7 +459,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
         end
         obj_projectile["x"] = hit_side_obj_char["x"]
         obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
-        character_animator(obj_projectile,obj_projectile["projectile_animation"])
+        character_animator(
+            obj_projectile,obj_projectile["projectile_animation"]
+        )
         obj_projectile["life"] = obj_projectile["life"] - 1
     end
     -- update_sub_frame
@@ -461,7 +475,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
         obj_projectile[2] = obj_projectile["y"] - 600
         obj_projectile[5] = hit_side_obj_char[5]
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8]))
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
+        )
         love.graphics.setBlendMode("add")
         love.graphics.setColor(1,1,1,1)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -549,8 +565,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         30,5,1.00,-2.5,0.5,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
-            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground",
-            "stand","5_stand_idle",
+            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
             nil,nil,nil,nil,nil,nil,
             nil,nil,nil,nil,function() end
         ),
@@ -566,8 +581,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         30,5,1.00,-2.5,1.0,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
-            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",nil,nil,
-            nil,nil,nil,nil,nil,nil,nil,nil,function() end
+            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
+            nil,nil,nil,nil,nil,nil,
+            nil,nil,nil,nil,function() end
         ),
         nil,nil,function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
     )
@@ -581,8 +597,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         30,5,1.00,-2.5,1.0,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
-            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground",
-            "stand","5_stand_idle",
+            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
             nil,nil,nil,nil,nil,nil,
             nil,nil,nil,nil,function() end
         ),
@@ -593,8 +608,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         30,5,1.00,-2.5,1.0,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
-            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground",
-            "stand","5_stand_idle",
+            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
             nil,nil,nil,nil,nil,nil,
             nil,nil,nil,nil,function() end
         ),
@@ -643,7 +657,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
     -- animation
         -- projectile_animation
     obj_projectile["projectile_animation"] = load_game_scene_anim_projectile_RC_main(obj_projectile)
-    init_character_anim_without(obj_projectile,obj_projectile["projectile_animation"])
+    init_character_anim_without(
+        obj_projectile,obj_projectile["projectile_animation"]
+    )
         -- camera_animation
     obj_projectile["camera_x_shake_anim"] = nil
     obj_projectile["camera_y_shake_anim"] = nil
@@ -658,7 +674,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         end
         obj_projectile["x"] = hit_side_obj_char["x"]
         obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
-        character_animator(obj_projectile,obj_projectile["projectile_animation"])
+        character_animator(
+            obj_projectile,obj_projectile["projectile_animation"]
+        )
         obj_projectile["life"] = obj_projectile["life"] - 1
     end
     -- update_sub_frame
@@ -672,7 +690,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         obj_projectile[2] = obj_projectile["y"] - 600
         obj_projectile[5] = hit_side_obj_char[5]
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8]))
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
+        )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
@@ -749,7 +769,9 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- game_speed
-        common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,2,1,39,45 - 27,0})
+        common_game_scene_game_speed_load_application(
+            hurt_side_obj_char,{1,2,1,39,45 - 27,0}
+        )
         -- collide
         hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][0]
         hurt_side_obj_char["pushbox_opponent_collision_active"] = true
@@ -875,7 +897,9 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- game_speed
-        common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,2,1,39,45 - 27,0})
+        common_game_scene_game_speed_load_application(
+            hurt_side_obj_char,{1,2,1,39,45 - 27,0}
+        )
         -- collide
         hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][0]
         hurt_side_obj_char["pushbox_opponent_collision_active"] = true
@@ -986,7 +1010,9 @@ function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false,"character"
         )
-        common_game_scene_projectile_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",false)
+        common_game_scene_projectile_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",false
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
@@ -1011,7 +1037,9 @@ function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- game_speed
-        common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,2,1,39,45 - 27,0})
+        common_game_scene_game_speed_load_application(
+            hurt_side_obj_char,{1,2,1,39,45 - 27,0}
+        )
         -- collide
         hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][0]
         hurt_side_obj_char["pushbox_opponent_collision_active"] = true
@@ -1182,7 +1210,9 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- game_speed
-        common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,1,1,0,0,0})
+        common_game_scene_game_speed_load_application(
+            hurt_side_obj_char,{1,1,1,0,0,0}
+        )
         -- collide
         hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][0]
         hurt_side_obj_char["pushbox_opponent_collision_active"] = true
@@ -1314,7 +1344,9 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- game_speed
-        common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,1,1,0,0,0})
+        common_game_scene_game_speed_load_application(
+            hurt_side_obj_char,{1,1,1,0,0,0}
+        )
         -- collide
         hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][0]
         hurt_side_obj_char["pushbox_opponent_collision_active"] = true
@@ -1425,7 +1457,9 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false,"character"
         )
-        common_game_scene_projectile_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",false)
+        common_game_scene_projectile_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",false
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
@@ -1450,7 +1484,9 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
         hurt_side_obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- game_speed
-        common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,1,1,0,0,0})
+        common_game_scene_game_speed_load_application(
+            hurt_side_obj_char,{1,1,1,0,0,0}
+        )
         -- collide
         hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data[sprite_sheet][0]
         hurt_side_obj_char["pushbox_opponent_collision_active"] = true

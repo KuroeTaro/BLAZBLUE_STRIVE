@@ -227,8 +227,12 @@ function preset_game_scene_training()
     obj_UI_game_scene_black_solid[4] = 1
     char_LP["character_animation"] = char_LP["init_animation_load_function"](char_LP)
     char_RP["character_animation"] = char_RP["init_animation_load_function"](char_RP)
-    init_character_anim_with(char_LP,char_LP["character_animation"])
-    init_character_anim_with(char_RP,char_RP["character_animation"])
+    init_character_anim_with(
+        char_LP,char_LP["character_animation"]
+    )
+    init_character_anim_with(
+        char_RP,char_RP["character_animation"]
+    )
 end
 function preset_game_scene_match()
 end

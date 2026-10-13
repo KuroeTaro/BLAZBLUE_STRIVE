@@ -21,7 +21,9 @@ function update_game_scene_training_black_solid_ease_in()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_game_scene_movie_cover_loop(obj_UI_game_scene_movie_cover)
     update_game_scene_char()
-    point_linear_animator(obj_UI_game_scene_black_solid,anim_UI_point_linear_game_scene_solid_ease_out_opacity_1_0)
+    point_linear_animator(
+        obj_UI_game_scene_black_solid,anim_UI_point_linear_game_scene_solid_ease_out_opacity_1_0
+    )
     -- 状态出口
     if SCENE_TIMER >= 5
     and get_point_linear_anim_end_state(
@@ -39,7 +41,9 @@ function update_game_scene_training_annoucer_ease_in()
     state_machine_UI_game_scene_movie_cover_loop(obj_UI_game_scene_movie_cover)
     update_game_scene_char()
     if SCENE_TIMER <= 5 then
-        point_linear_animator(obj_UI_game_scene_black_solid,anim_UI_point_linear_game_scene_solid_ease_out_opacity_1_0)
+        point_linear_animator(
+            obj_UI_game_scene_black_solid,anim_UI_point_linear_game_scene_solid_ease_out_opacity_1_0
+        )
         state_machine_UI_game_scene_HUD_ACT_common(obj_annoucer_game_scene_act_common,105)
     elseif SCENE_TIMER <= 30 then
         state_machine_UI_game_scene_HUD_ACT_common(obj_annoucer_game_scene_act_common,105)
@@ -50,12 +54,16 @@ function update_game_scene_training_annoucer_ease_in()
         obj_annoucer_game_scene_act_common[4] = 0
         obj_annoucer_game_scene_act_num[4] = 0
         obj_HUD_game_scene_timer[4] = 0
-        init_point_linear_anim_with(obj_HUD_game_scene_timer,anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1)
+        init_point_linear_anim_with(
+            obj_HUD_game_scene_timer,anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1
+        )
     elseif SCENE_TIMER <= 115 then
         -- do nothing
     elseif SCENE_TIMER < 135 then
         state_machine_UI_game_scene_HUD_ACT_common(obj_HUD_game_scene_ease_in,50)
-        point_linear_animator(obj_HUD_game_scene_timer,anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1)
+        point_linear_animator(
+            obj_HUD_game_scene_timer,anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1
+        )
     elseif SCENE_TIMER == 160 then
         -- input_sys save
         obj_char_game_scene_char_LP["input_sys_state"] = "save" -- none save load
@@ -354,26 +362,34 @@ function update_game_scene_training_main()
                 char_LP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
                     char_LP,char_RP,"teched"
                 )
-                init_character_anim_with(char_LP,char_LP["character_animation"])
+                init_character_anim_with(
+                    char_LP,char_LP["character_animation"]
+                )
                 char_RP["state"] = "throw_teching"
                 char_RP["physics_lock"] = false
                 char_RP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
                     char_RP,char_LP,"teching"
                 )
-                init_character_anim_with(char_RP,char_RP["character_animation"])
+                init_character_anim_with(
+                    char_RP,char_RP["character_animation"]
+                )
             elseif (char_RP["state"] == "throw_testing" and char_LP["state"] == "throw_tested") then
                 char_RP["state"] = "throw_teched"
                 char_RP["physics_lock"] = false
                 char_RP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
                     char_RP,char_LP,"teched"
                 )
-                init_character_anim_with(char_RP,char_RP["character_animation"])
+                init_character_anim_with(
+                    char_RP,char_RP["character_animation"]
+                )
                 char_LP["state"] = "throw_teching"
                 char_LP["physics_lock"] = false
                 char_LP["character_animation"] = load_game_scene_anim_char_common_0_Launcher_throw_tech(
                     char_LP,char_RP,"teching"
                 )
-                init_character_anim_with(char_LP,char_LP["character_animation"])
+                init_character_anim_with(
+                    char_LP,char_LP["character_animation"]
+                )
             end
         end
         -- 保留双康后的LP_hurt_strike_accur RP_hurt_strike_accur
@@ -399,8 +415,12 @@ function update_game_scene_training_main()
             char_RP["hit_hurt_blockstop_countdown"] = 0
             char_LP["hit_hurt_block_slowdown_countdown"] = 0
             char_RP["hit_hurt_block_slowdown_countdown"] = 0
-            common_game_scene_game_speed_load_application(char_LP,{1,1,1,0,0,0})
-            common_game_scene_game_speed_load_application(char_RP,{1,1,1,0,0,0})
+            common_game_scene_game_speed_load_application(
+                char_LP,{1,1,1,0,0,0}
+            )
+            common_game_scene_game_speed_load_application(
+                char_RP,{1,1,1,0,0,0}
+            )
             obj_camera["state"] = "main"
             obj_camera["enclose_percentage"] = 0.0
             obj_camera["enclose_position_offset"] = {0,0,0}
@@ -472,7 +492,9 @@ function update_game_scene_training_wallbreak()
     -- stage
     update_game_scene_stage_wallbreak()
     -- 场景出口
-    if get_stage_anim_end_state(obj_stage_main,anim_stage_game_scene_wallbreak_main) then
+    if get_stage_anim_end_state(
+        obj_stage_main,anim_stage_game_scene_wallbreak_main
+    ) then
         load_game_scene_stage_apply_wallbreak_end_init(
             obj_stage_main["wallbreak_hit_side_obj_char"],obj_stage_main["wallbreak_hurt_side_obj_char"]
         )
@@ -814,8 +836,12 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char_a,obj_char_b)
                     anim_stage_point_linear_game_scene_camera_shake_x,
                     anim_stage_point_linear_game_scene_camera_shake_y
                     = common_game_scene_wallstick_load_camera_shake_anim(1.5)
-                    init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-                    init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
+                    init_point_linear_anim_without(
+                        obj_camera,anim_stage_point_linear_game_scene_camera_shake_x
+                    )
+                    init_point_linear_anim_without(
+                        obj_camera,anim_stage_point_linear_game_scene_camera_shake_y
+                    )
                     obj_camera["state"] = "active"
                 end
             )
@@ -826,7 +852,9 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char_a,obj_char_b)
                     obj_wallstick[4] = 1
                     obj_wallstick["sprite_sheet"] = 1
                     obj_wallstick["pause_countdown"] = 60
-                    init_frame_anim_with(obj_wallstick,anim_state_frame_game_scene_wallstick_ease_in)
+                    init_frame_anim_with(
+                        obj_wallstick,anim_state_frame_game_scene_wallstick_ease_in
+                    )
                     obj_wallstick["state"] = "ease_in"
                 end
             )
@@ -838,7 +866,9 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char_a,obj_char_b)
                     obj_wallstick[4] = 1
                     obj_wallstick["sprite_sheet"] = 0
                     obj_wallstick["pause_countdown"] = 0
-                    init_frame_anim_with(obj_wallstick,anim_state_frame_game_scene_wallstick_ease_in)
+                    init_frame_anim_with(
+                        obj_wallstick,anim_state_frame_game_scene_wallstick_ease_in
+                    )
                     obj_wallstick["state"] = "ease_in"
                 end
             )
@@ -861,11 +891,15 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char_a,obj_char_b)
                 if obj_char_a["height"] == "air" then
                     obj_char_a["character_animation"] =
                     load_game_scene_anim_char_common_0_general_hurt_soft_knockdown_wallstick_air(obj_char_a)
-                    init_character_anim_with(obj_char_a,obj_char_a["character_animation"])
+                    init_character_anim_with(
+                        obj_char_a,obj_char_a["character_animation"]
+                    )
                 else
                     obj_char_a["character_animation"] =
                     load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallstick_ground(obj_char_a)
-                    init_character_anim_with(obj_char_a,obj_char_a["character_animation"])
+                    init_character_anim_with(
+                        obj_char_a,obj_char_a["character_animation"]
+                    )
                 end
                 -- hitstop
                 if obj_char_b["state"] ~= "hitstop" then
@@ -910,46 +944,78 @@ function update_game_scene_HUD_overdrive_timer(obj_char,timer_obj)
             if obj_char["overdrive_gauge"][3] == "on" then
                 timer_obj["state"] = "ease_in"
                 obj_char["brightness"] = obj_char["brightness_const"]
-                init_point_linear_anim_with(timer_obj,anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1)
-                init_point_linear_anim_with(obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_in)
+                init_point_linear_anim_with(
+                    timer_obj,anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1
+                )
+                init_point_linear_anim_with(
+                    obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_in
+                )
             end
         end,
         ["ease_in"] = function()
-            point_linear_animator(timer_obj,anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1)
-            point_linear_animator(obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_in)
-            if get_point_linear_anim_end_state(timer_obj,anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1)
-            and get_point_linear_anim_end_state(obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_in)
+            point_linear_animator(
+                timer_obj,anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1
+            )
+            point_linear_animator(
+                obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_in
+            )
+            if get_point_linear_anim_end_state(
+                timer_obj,anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1
+            )
+            and get_point_linear_anim_end_state(
+                obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_in
+            )
             then
                 timer_obj["state"] = "active"
                 obj_char["brightness"] = obj_char["brightness_overdrive_const"]
             elseif obj_char["overdrive_gauge"][3] == "off" then
                 timer_obj["state"] = "ease_out"
                 obj_char["brightness"] = obj_char["brightness_overdrive_const"]
-                init_point_linear_anim_with(timer_obj,anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0)
-                init_point_linear_anim_with(obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_out)
+                init_point_linear_anim_with(
+                    timer_obj,anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0
+                )
+                init_point_linear_anim_with(
+                    obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_out
+                )
             end
         end,
         ["active"] = function()
             if obj_char["overdrive_gauge"][3] == "off" then
                 timer_obj["state"] = "ease_out"
                 obj_char["brightness"] = obj_char["brightness_overdrive_const"]
-                init_point_linear_anim_with(timer_obj,anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0)
-                init_point_linear_anim_with(obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_out)
+                init_point_linear_anim_with(
+                    timer_obj,anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0
+                )
+                init_point_linear_anim_with(
+                    obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_out
+                )
             end
         end,
         ["ease_out"] = function()
-            point_linear_animator(timer_obj,anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0)
-            point_linear_animator(obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_out)
-            if get_point_linear_anim_end_state(timer_obj,anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0)
-            and get_point_linear_anim_end_state(obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_out)
+            point_linear_animator(
+                timer_obj,anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0
+            )
+            point_linear_animator(
+                obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_out
+            )
+            if get_point_linear_anim_end_state(
+                timer_obj,anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0
+            )
+            and get_point_linear_anim_end_state(
+                obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_out
+            )
             then
                 timer_obj["state"] = "default"
                 obj_char["brightness"] = obj_char["brightness_const"]
             elseif obj_char["overdrive_gauge"][3] == "on" then
                 timer_obj["state"] = "ease_in"
                 obj_char["brightness"] = obj_char["brightness_const"]
-                init_point_linear_anim_with(timer_obj,anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1)
-                init_point_linear_anim_with(obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_in)
+                init_point_linear_anim_with(
+                    timer_obj,anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1
+                )
+                init_point_linear_anim_with(
+                    obj_char,anim_char_point_linear_game_scene_overdrive_brightness_ease_in
+                )
             end
         end
     }

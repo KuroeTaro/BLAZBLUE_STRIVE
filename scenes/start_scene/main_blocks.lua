@@ -1,6 +1,8 @@
 function update_start_scene_ease_in()
     SCENE_TIMER = SCENE_TIMER + 1
-    point_linear_animator(obj_UI_start_scene_solid_color,anim_UI_point_linear_start_scene_solid_ease_in_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_solid_color,anim_UI_point_linear_start_scene_solid_ease_in_opacity
+    )
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
     if SCENE_TIMER == 10 then
         play_obj_audio(audio_SFX_start_scene_blazblue_click_echo)
@@ -63,8 +65,12 @@ function update_start_scene_1s45f_1s50f()
     point_linear_animator(
         obj_UI_start_scene_console_dabo_trig,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
     )
-    point_linear_animator(obj_UI_start_scene_option_text,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_general_ease_in_0_0p1_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_option_text,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
+    )
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_general_ease_in_0_0p1_opacity
+    )
     point_linear_animator(
         obj_UI_start_scene_main_press_any_key,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity
     )
@@ -86,8 +92,12 @@ end
 function update_start_scene_main()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     -- 场景出口
     if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["left"] == "Pressing" then
         SCENE_TIMER = 0
@@ -358,8 +368,12 @@ function update_start_scene_main()
 end
 function update_start_scene_ease_out()
     SCENE_TIMER = SCENE_TIMER + 1
-    point_linear_animator(obj_UI_start_scene_solid_color,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity)
-    point_linear_animator(audio_BGM_start_scene_NOC_high,anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_1)
+    point_linear_animator(
+        obj_UI_start_scene_solid_color,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
+    )
+    point_linear_animator(
+        audio_BGM_start_scene_NOC_high,anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_1
+    )
     update_BGM_VOLUME(audio_BGM_start_scene_NOC_high)
     -- 场景出口
     if audio_SFX_start_scene_scene_out["audio"]:isPlaying() == false then
@@ -393,13 +407,21 @@ end
 function update_start_scene_option_twitch()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
-    point_linear_animator(obj_UI_start_scene_console_dabo_trig,anim_UI_frame_start_scene_console_dabo_trig_twtich_x)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
+    point_linear_animator(
+        obj_UI_start_scene_console_dabo_trig,anim_UI_frame_start_scene_console_dabo_trig_twtich_x
+    )
     point_linear_animator(
         obj_UI_start_scene_console_dabo_trig,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
     )
-    point_linear_animator(obj_UI_start_scene_option_text,anim_UI_point_linear_start_scene_option_text_twitch_x)
+    point_linear_animator(
+        obj_UI_start_scene_option_text,anim_UI_point_linear_start_scene_option_text_twitch_x
+    )
     -- 场景出口
     if SCENE_TIMER >= 5 then
         SCENE_TIMER = 0
@@ -425,9 +447,15 @@ end
 function update_start_scene_only_console_twitch()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
-    point_linear_animator(obj_UI_start_scene_console_dabo_trig,anim_UI_frame_start_scene_console_dabo_trig_twtich_x)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
+    point_linear_animator(
+        obj_UI_start_scene_console_dabo_trig,anim_UI_frame_start_scene_console_dabo_trig_twtich_x
+    )
     point_linear_animator(
         obj_UI_start_scene_console_dabo_trig,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
     )
@@ -450,17 +478,27 @@ end
 function update_start_scene_config_ease_in()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
-    point_linear_animator(obj_UI_start_scene_shutter,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
+    point_linear_animator(
+        obj_UI_start_scene_shutter,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
+    )
     point_linear_animator(
         obj_UI_start_scene_config_menu_dabo_trig,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
     )
     point_linear_animator(
         obj_UI_start_scene_config_menu_text,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
     )
-    point_linear_animator(audio_BGM_start_scene_NOC_high,anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_0)
-    point_linear_animator(audio_BGM_start_scene_NOC_low,anim_UI_point_linear_start_scene_audio_ease_in_0_1_volume)
+    point_linear_animator(
+        audio_BGM_start_scene_NOC_high,anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_0
+    )
+    point_linear_animator(
+        audio_BGM_start_scene_NOC_low,anim_UI_point_linear_start_scene_audio_ease_in_0_1_volume
+    )
     update_BGM_VOLUME(audio_BGM_start_scene_NOC_high)
     update_BGM_VOLUME(audio_BGM_start_scene_NOC_low)
     -- 场景出口
@@ -475,8 +513,12 @@ end
 function update_start_scene_config_main()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     -- 场景出口
     if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["up"] == "Pressing" then
         SCENE_TIMER = 0
@@ -711,8 +753,12 @@ end
 function update_start_scene_config_twitch_up()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     point_linear_animator(
         obj_UI_start_scene_config_menu_dabo_trig,anim_UI_point_linear_start_scene_config_menu_dabo_trig_up_0_y
     )
@@ -730,8 +776,12 @@ end
 function update_start_scene_config_twitch_down()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     point_linear_animator(
         obj_UI_start_scene_config_menu_dabo_trig,anim_UI_point_linear_start_scene_config_menu_dabo_trig_down_0_y
     )
@@ -749,17 +799,27 @@ end
 function update_start_scene_config_ease_out()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
-    point_linear_animator(obj_UI_start_scene_shutter,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
+    point_linear_animator(
+        obj_UI_start_scene_shutter,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity
+    )
     point_linear_animator(
         obj_UI_start_scene_config_menu_dabo_trig,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity
     )
     point_linear_animator(
         obj_UI_start_scene_config_menu_text,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity
     )
-    point_linear_animator(audio_BGM_start_scene_NOC_high,anim_UI_point_linear_start_scene_audio_ease_in_0_1_volume)
-    point_linear_animator(audio_BGM_start_scene_NOC_low,anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_0)
+    point_linear_animator(
+        audio_BGM_start_scene_NOC_high,anim_UI_point_linear_start_scene_audio_ease_in_0_1_volume
+    )
+    point_linear_animator(
+        audio_BGM_start_scene_NOC_low,anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_0
+    )
     update_BGM_VOLUME(audio_BGM_start_scene_NOC_high)
     update_BGM_VOLUME(audio_BGM_start_scene_NOC_low)
     -- 场景出口
@@ -779,8 +839,12 @@ end
 function update_start_scene_config_audio_ease_in()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     point_linear_animator(
         obj_UI_start_scene_config_audio_bar_mark,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
     )
@@ -817,8 +881,12 @@ end
 function update_start_scene_config_audio_main()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     -- 场景出口
     if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["up"] == "Pressing" then
         SCENE_TIMER = 0
@@ -996,8 +1064,12 @@ end
 function update_start_scene_config_audio_bar_mark_twtich_up()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     point_linear_animator(
         obj_UI_start_scene_config_audio_bar_mark,anim_UI_point_linear_start_scene_config_audio_bar_mark_up_y
     )
@@ -1017,8 +1089,12 @@ end
 function update_start_scene_config_audio_bar_mark_twtich_down()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     point_linear_animator(
         obj_UI_start_scene_config_audio_bar_mark,anim_UI_point_linear_start_scene_config_audio_bar_mark_down_y
     )
@@ -1038,8 +1114,12 @@ end
 function update_start_scene_config_audio_bar_mark_twtich_left_with_alpha()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     -- 仅此出口使用所需table
     local alpha_bar_table = {
         obj_UI_start_scene_config_audio_BGM_bar_alpha,
@@ -1049,8 +1129,7 @@ function update_start_scene_config_audio_bar_mark_twtich_left_with_alpha()
         obj_UI_start_scene_config_audio_bar_mark,anim_UI_point_linear_start_scene_config_audio_bar_mark_left_x
     )
     point_linear_animator(
-        alpha_bar_table[AUDIO_BAR_MARK_ID + 1],
-        anim_UI_point_linear_start_scene_config_audio_general_bar_alpha_left_23_x
+        alpha_bar_table[AUDIO_BAR_MARK_ID + 1],anim_UI_point_linear_start_scene_config_audio_general_bar_alpha_left_23_x
     )
     -- 场景出口
     if SCENE_TIMER >= 5 then
@@ -1074,8 +1153,12 @@ end
 function update_start_scene_config_audio_bar_mark_twtich_left_without_alpha()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     point_linear_animator(
         obj_UI_start_scene_config_audio_bar_mark,anim_UI_point_linear_start_scene_config_audio_bar_mark_left_x
     )
@@ -1095,8 +1178,12 @@ end
 function update_start_scene_config_audio_bar_mark_twtich_right_with_alpha()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     -- 仅此出口使用所需table
     local alpha_bar_table = {
         obj_UI_start_scene_config_audio_BGM_bar_alpha,
@@ -1130,8 +1217,12 @@ end
 function update_start_scene_config_audio_bar_mark_twtich_right_without_alpha()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     point_linear_animator(
         obj_UI_start_scene_config_audio_bar_mark,anim_UI_point_linear_start_scene_config_audio_bar_mark_right_x
     )
@@ -1151,8 +1242,12 @@ end
 function update_start_scene_config_audio_ease_out()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     point_linear_animator(
         obj_UI_start_scene_config_audio_bar_mark,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity
     )
@@ -1194,8 +1289,12 @@ end
 function update_start_scene_config_controller_ease_in()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     point_linear_animator(
         obj_UI_start_scene_config_controller_bar_mark_LP,anim_UI_point_linear_start_scene_general_ease_in_0_0p5_opacity
     )
@@ -1226,8 +1325,12 @@ end
 function update_start_scene_config_controller_main()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     -- controller indi bar mark 状态机
     state_machine_UI_start_scene_config_controller(obj_UI_start_scene_config_controller_bar_mark_LP,"L")
     state_machine_UI_start_scene_config_controller(obj_UI_start_scene_config_controller_bar_mark_RP,"R")
@@ -1249,8 +1352,7 @@ function update_start_scene_config_controller_main()
             anim_UI_point_linear_start_scene_general_ease_out_0p5_0_opacity
         )
         init_point_linear_anim_with(
-            obj_UI_start_scene_config_controller_indi_text,
-            anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity
+            obj_UI_start_scene_config_controller_indi_text,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity
         )
         init_point_linear_anim_with(
             obj_UI_start_scene_config_menu_dabo_trig,anim_UI_point_linear_start_scene_general_ease_in_0p5_1_opacity
@@ -1265,15 +1367,17 @@ end
 function update_start_scene_config_controller_ease_out()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
     point_linear_animator(
-        obj_UI_start_scene_config_controller_bar_mark_LP,
-        anim_UI_point_linear_start_scene_general_ease_out_0p5_0_opacity
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
     )
     point_linear_animator(
-        obj_UI_start_scene_config_controller_bar_mark_RP,
-        anim_UI_point_linear_start_scene_general_ease_out_0p5_0_opacity
+        obj_UI_start_scene_config_controller_bar_mark_LP,anim_UI_point_linear_start_scene_general_ease_out_0p5_0_opacity
+    )
+    point_linear_animator(
+        obj_UI_start_scene_config_controller_bar_mark_RP,anim_UI_point_linear_start_scene_general_ease_out_0p5_0_opacity
     )
     point_linear_animator(
         obj_UI_start_scene_config_controller_indi_text,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity
@@ -1297,8 +1401,12 @@ end
 function update_start_scene_config_resolution_ease_in()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     point_linear_animator(
         obj_UI_start_scene_config_resolution_bar_mark,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
     )
@@ -1326,8 +1434,12 @@ end
 function update_start_scene_config_resolution_main()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["left"] == "Pressing" then
         SCENE_TIMER = 0
         play_obj_audio(audio_SFX_start_scene_left_0)
@@ -1397,11 +1509,14 @@ end
 function update_start_scene_config_resolution_bar_mark_twtich_left()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
     point_linear_animator(
-        obj_UI_start_scene_config_resolution_bar_mark,
-        anim_UI_point_linear_start_scene_config_resolution_bar_mark_left_x
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
+    point_linear_animator(
+        obj_UI_start_scene_config_resolution_bar_mark,anim_UI_point_linear_start_scene_config_resolution_bar_mark_left_x
     )
     if SCENE_TIMER >= 5 then
         SCENE_TIMER = 0
@@ -1414,8 +1529,12 @@ end
 function update_start_scene_config_resolution_bar_mark_twtich_right()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     point_linear_animator(
         obj_UI_start_scene_config_resolution_bar_mark,
         anim_UI_point_linear_start_scene_config_resolution_bar_mark_right_x
@@ -1431,8 +1550,12 @@ end
 function update_start_scene_config_resolution_ease_out()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     point_linear_animator(
         obj_UI_start_scene_config_resolution_bar_mark,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity
     )
@@ -1462,26 +1585,48 @@ end
 function update_start_scene_record_ease_in()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
-    point_linear_animator(obj_UI_start_scene_shutter,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
+    point_linear_animator(
+        obj_UI_start_scene_shutter,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
+    )
     point_linear_animator(
         obj_UI_start_scene_record_dabo_trig,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
     )
     point_linear_animator(
         obj_UI_start_scene_record_game_duration_text,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
     )
-    point_linear_animator(obj_UI_start_scene_record_num_0,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity)
-    point_linear_animator(obj_UI_start_scene_record_num_1,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity)
-    point_linear_animator(obj_UI_start_scene_record_num_2,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity)
-    point_linear_animator(obj_UI_start_scene_record_num_3,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity)
-    point_linear_animator(obj_UI_start_scene_record_num_4,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity)
-    point_linear_animator(obj_UI_start_scene_record_num_5,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_record_num_0,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
+    )
+    point_linear_animator(
+        obj_UI_start_scene_record_num_1,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
+    )
+    point_linear_animator(
+        obj_UI_start_scene_record_num_2,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
+    )
+    point_linear_animator(
+        obj_UI_start_scene_record_num_3,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
+    )
+    point_linear_animator(
+        obj_UI_start_scene_record_num_4,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
+    )
+    point_linear_animator(
+        obj_UI_start_scene_record_num_5,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
+    )
     point_linear_animator(
         obj_UI_start_scene_record_100h_plus_time_indi,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
     )
-    point_linear_animator(audio_BGM_start_scene_NOC_high,anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_0)
-    point_linear_animator(audio_BGM_start_scene_NOC_low,anim_UI_point_linear_start_scene_audio_ease_in_0_1_volume)
+    point_linear_animator(
+        audio_BGM_start_scene_NOC_high,anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_0
+    )
+    point_linear_animator(
+        audio_BGM_start_scene_NOC_low,anim_UI_point_linear_start_scene_audio_ease_in_0_1_volume
+    )
     update_BGM_VOLUME(audio_BGM_start_scene_NOC_high)
     update_BGM_VOLUME(audio_BGM_start_scene_NOC_low)
     -- 场景出口
@@ -1496,8 +1641,12 @@ end
 function update_start_scene_record_main()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     obj_UI_start_scene_record_num_0[8] = GAME_DURATION[1]
     obj_UI_start_scene_record_num_1[8] = GAME_DURATION[2]
     obj_UI_start_scene_record_num_2[8] = GAME_DURATION[3]
@@ -1594,8 +1743,12 @@ end
 function update_start_scene_record_twitch_up()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     point_linear_animator(
         obj_UI_start_scene_record_dabo_trig,anim_UI_point_linear_start_scene_config_menu_dabo_trig_up_0_y
     )
@@ -1609,8 +1762,12 @@ end
 function update_start_scene_record_twitch_down()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     point_linear_animator(
         obj_UI_start_scene_record_dabo_trig,anim_UI_point_linear_start_scene_config_menu_dabo_trig_down_0_y
     )
@@ -1624,27 +1781,49 @@ end
 function update_start_scene_record_ease_out()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
-    point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity)
-    frame_animator(obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_breath_tag_breath_loop_opacity
+    )
+    frame_animator(
+        obj_UI_start_scene_console_type_in_mark,anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
+    )
     -- 初始化此出口所需要的动画机
-    point_linear_animator(obj_UI_start_scene_shutter,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_shutter,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity
+    )
     point_linear_animator(
         obj_UI_start_scene_record_dabo_trig,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity
     )
     point_linear_animator(
         obj_UI_start_scene_record_game_duration_text,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity
     )
-    point_linear_animator(obj_UI_start_scene_record_num_0,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity)
-    point_linear_animator(obj_UI_start_scene_record_num_1,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity)
-    point_linear_animator(obj_UI_start_scene_record_num_2,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity)
-    point_linear_animator(obj_UI_start_scene_record_num_3,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity)
-    point_linear_animator(obj_UI_start_scene_record_num_4,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity)
-    point_linear_animator(obj_UI_start_scene_record_num_5,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity)
+    point_linear_animator(
+        obj_UI_start_scene_record_num_0,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity
+    )
+    point_linear_animator(
+        obj_UI_start_scene_record_num_1,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity
+    )
+    point_linear_animator(
+        obj_UI_start_scene_record_num_2,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity
+    )
+    point_linear_animator(
+        obj_UI_start_scene_record_num_3,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity
+    )
+    point_linear_animator(
+        obj_UI_start_scene_record_num_4,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity
+    )
+    point_linear_animator(
+        obj_UI_start_scene_record_num_5,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity
+    )
     point_linear_animator(
         obj_UI_start_scene_record_100h_plus_time_indi,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity
     )
-    point_linear_animator(audio_BGM_start_scene_NOC_high,anim_UI_point_linear_start_scene_audio_ease_in_0_1_volume)
-    point_linear_animator(audio_BGM_start_scene_NOC_low,anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_0)
+    point_linear_animator(
+        audio_BGM_start_scene_NOC_high,anim_UI_point_linear_start_scene_audio_ease_in_0_1_volume
+    )
+    point_linear_animator(
+        audio_BGM_start_scene_NOC_low,anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_0
+    )
     update_BGM_VOLUME(audio_BGM_start_scene_NOC_high)
     update_BGM_VOLUME(audio_BGM_start_scene_NOC_low)
     -- 场景出口

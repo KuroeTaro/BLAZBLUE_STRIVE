@@ -232,7 +232,9 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+        common_game_scene_char_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,"hurt",false
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
@@ -329,7 +331,9 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+        common_game_scene_char_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,"hurt",false
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
@@ -426,7 +430,9 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+        common_game_scene_char_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,"hurt",false
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
@@ -523,7 +529,9 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+        common_game_scene_char_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,"hurt",false
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
@@ -620,7 +628,9 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+        common_game_scene_char_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,"hurt",false
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
@@ -753,7 +763,9 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
+        common_game_scene_char_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
@@ -848,7 +860,9 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
+        common_game_scene_char_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
@@ -947,7 +961,9 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
+        common_game_scene_char_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
@@ -1044,7 +1060,9 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
+        common_game_scene_char_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
@@ -1145,7 +1163,9 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
+        common_game_scene_char_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
@@ -1282,7 +1302,9 @@ function load_game_scene_anim_char_common_0_air_block(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
+        common_game_scene_char_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
@@ -1443,7 +1465,9 @@ function load_game_scene_anim_char_common_0_air_block_guard_crash(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
+        common_game_scene_char_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = false
@@ -1537,7 +1561,9 @@ function load_game_scene_anim_char_common_0_air_block_guard_crash(
     return res
 end
 -- teching&teched
-function load_game_scene_anim_char_common_0_Launcher_throw_tech(hit_side_obj_char,hurt_side_obj_char,teching_or_teched)
+function load_game_scene_anim_char_common_0_Launcher_throw_tech(
+    hit_side_obj_char,hurt_side_obj_char,teching_or_teched
+)
     local res = {}
     local hit_side = hit_side_obj_char["player_side"]
     local hurt_side = hurt_side_obj_char["player_side"]
@@ -2267,8 +2293,7 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallbrea
         load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
             hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_hard_recovery_up","OTG","5_stand_idle",
             nil,nil,nil,nil,nil,nil,
-            nil,nil,nil,nil,
-            function() end
+            nil,nil,nil,nil,function() end
         )
         hurt_side_obj_char["strike_inv"] = false
         hurt_side_obj_char["strike_inv_countdown"] = 0
@@ -3032,7 +3057,9 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+        common_game_scene_char_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,"hurt",false
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
@@ -3252,7 +3279,9 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+        common_game_scene_char_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,"hurt",false
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
@@ -3424,7 +3453,9 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+        common_game_scene_char_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,"hurt",false
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
@@ -3542,7 +3573,9 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+        common_game_scene_char_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,"hurt",false
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
@@ -3667,7 +3700,9 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+        common_game_scene_char_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,"hurt",false
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
@@ -3818,7 +3853,9 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+        common_game_scene_char_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,"hurt",false
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
@@ -3955,7 +3992,9 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+        common_game_scene_char_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,"hurt",false
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
@@ -4338,7 +4377,9 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+        common_game_scene_char_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,"hurt",false
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
@@ -4503,7 +4544,9 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+        common_game_scene_char_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,"hurt",false
+        )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
         hurt_side_obj_char["wallhurt_wallstickable"] = true
@@ -4716,7 +4759,9 @@ function load_game_scene_anim_char_common_burst_overdrive(
         self_side_obj_char["recovery_frame"] = 0
         -- game_speed
         -- 设置为强制速度为1到动画结束
-        common_game_scene_game_speed_load_application(self_side_obj_char,{1,nil,nil,nil,nil,69})
+        common_game_scene_game_speed_load_application(
+            self_side_obj_char,{1,nil,nil,nil,nil,69}
+        )
         self_side_obj_char["hit_hurt_blockstop_countdown"] = 0
         -- collide
         self_side_obj_char["pushbox_opponent_collision_active"] = true
@@ -4737,9 +4782,15 @@ function load_game_scene_anim_char_common_burst_overdrive(
                 anim_stage_point_linear_game_scene_camera_enclosing = self_side_obj_char["camera_enclosing_anim"]
                 anim_stage_point_linear_game_scene_camera_shake_x = self_side_obj_char["camera_x_shake_anim"]
                 anim_stage_point_linear_game_scene_camera_shake_y = self_side_obj_char["camera_y_shake_anim"]
-                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_enclosing)
-                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
-                init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_y)
+                init_point_linear_anim_without(
+                    obj_camera,anim_stage_point_linear_game_scene_camera_enclosing
+                )
+                init_point_linear_anim_without(
+                    obj_camera,anim_stage_point_linear_game_scene_camera_shake_x
+                )
+                init_point_linear_anim_without(
+                    obj_camera,anim_stage_point_linear_game_scene_camera_shake_y
+                )
                 obj_camera["enclose_position_offset"] = self_side_obj_char["enclose_position_offset"]
                 obj_camera["state"] = "active"
             end
@@ -4938,7 +4989,8 @@ end
         -- game_speed_subframe
         -- game_speed_abnormal_realtime_countdown
 function load_game_scene_anim_char_common_burst_RC_red(
-    self_side_obj_char,opponent_side_obj_char,character_uncommon_update
+    self_side_obj_char,opponent_side_obj_char,
+    character_uncommon_update
 )
     local res = {}
     local self_side = self_side_obj_char["player_side"]
@@ -5024,8 +5076,12 @@ function load_game_scene_anim_char_common_burst_RC_red(
         common_game_scene_get_input_sys_cache_init(self_side)(self_side_obj_char)
         -- game_speed
         -- 设置为强制速度到动画结束
-        common_game_scene_game_speed_load_application(self_side_obj_char,{1,nil,nil,nil,nil,44})
-        common_game_scene_game_speed_load_application(opponent_side_obj_char,{1,nil,nil,nil,44,nil})
+        common_game_scene_game_speed_load_application(
+            self_side_obj_char,{1,nil,nil,nil,nil,44}
+        )
+        common_game_scene_game_speed_load_application(
+            opponent_side_obj_char,{1,nil,nil,nil,44,nil}
+        )
         -- collide
         self_side_obj_char["pushbox_opponent_collision_active"] = true
         self_side_obj_char["hitbox_table"] = {} --{ 攻击类型 是投还是打， function值 内部为命中后的逻辑,具体的box形状}
@@ -5126,7 +5182,8 @@ function load_game_scene_anim_char_common_burst_RC_red(
     return res
 end
 function load_game_scene_anim_char_common_burst_RC_blue(
-    self_side_obj_char,opponent_side_obj_char,character_uncommon_update
+    self_side_obj_char,opponent_side_obj_char,
+    character_uncommon_update
 )
     local res = {}
     local self_side = self_side_obj_char["player_side"]
@@ -5261,8 +5318,12 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         common_game_scene_get_input_sys_cache_state_machine(self_side)()
         -- game_speed
         -- 设置为强制速度到动画结束
-        common_game_scene_game_speed_load_application(self_side_obj_char,{1,nil,nil,nil,nil,39})
-        common_game_scene_game_speed_load_application(opponent_side_obj_char,{1,nil,nil,nil,39,nil})
+        common_game_scene_game_speed_load_application(
+            self_side_obj_char,{1,nil,nil,nil,nil,39}
+        )
+        common_game_scene_game_speed_load_application(
+            opponent_side_obj_char,{1,nil,nil,nil,39,nil}
+        )
         -- collide
         self_side_obj_char["hurtbox_table"] = {}
         -- update
@@ -5346,7 +5407,8 @@ function load_game_scene_anim_char_common_burst_RC_blue(
     return res
 end
 function load_game_scene_anim_char_common_burst_RC_purple(
-    self_side_obj_char,opponent_side_obj_char,character_uncommon_update
+    self_side_obj_char,opponent_side_obj_char,
+    character_uncommon_update
 )
     local res = {}
     local self_side = self_side_obj_char["player_side"]
@@ -5473,8 +5535,12 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         common_game_scene_get_input_sys_cache_state_machine(self_side)()
         -- game_speed
         -- 设置为强制速度到动画结束
-        common_game_scene_game_speed_load_application(self_side_obj_char,{1,nil,nil,nil,nil,39})
-        common_game_scene_game_speed_load_application(opponent_side_obj_char,{1,nil,nil,nil,39,nil})
+        common_game_scene_game_speed_load_application(
+            self_side_obj_char,{1,nil,nil,nil,nil,39}
+        )
+        common_game_scene_game_speed_load_application(
+            opponent_side_obj_char,{1,nil,nil,nil,39,nil}
+        )
         -- collide
         self_side_obj_char["hurtbox_table"] = {}
         -- update
@@ -5566,7 +5632,8 @@ function load_game_scene_anim_char_common_burst_RC_purple(
     return res
 end
 function load_game_scene_anim_char_common_burst_RC_yellow(
-    self_side_obj_char,opponent_side_obj_char,character_uncommon_update
+    self_side_obj_char,opponent_side_obj_char,
+    character_uncommon_update
 )
     local res = {}
     local self_side = self_side_obj_char["player_side"]
@@ -5687,8 +5754,12 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     res[13] = function()
         -- game_speed
         -- 设置为强制速度到动画结束
-        common_game_scene_game_speed_load_application(self_side_obj_char,{1,nil,nil,nil,nil,28})
-        common_game_scene_game_speed_load_application(opponent_side_obj_char,{1,nil,nil,nil,28,nil})
+        common_game_scene_game_speed_load_application(
+            self_side_obj_char,{1,nil,nil,nil,nil,28}
+        )
+        common_game_scene_game_speed_load_application(
+            opponent_side_obj_char,{1,nil,nil,nil,28,nil}
+        )
         -- draw_correction
         self_side_obj_char[8] = 3
         -- update

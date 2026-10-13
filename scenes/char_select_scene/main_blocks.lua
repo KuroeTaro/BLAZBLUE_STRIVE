@@ -26,7 +26,9 @@ function update_char_select_scene_ease_in_36f_40f()
         obj_UI_char_select_scene_glow[4] = 1
         obj_UI_char_select_scene_ring[4] = 0.75
         -- 初始化此出口所需要的动画机
-        init_point_linear_anim_with(obj_UI_char_select_scene_glow,anim_UI_point_linear_char_select_scene_glow_opacity)
+        init_point_linear_anim_with(
+            obj_UI_char_select_scene_glow,anim_UI_point_linear_char_select_scene_glow_opacity
+        )
         init_point_linear_anim_with(
             obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
         )
@@ -49,7 +51,9 @@ function update_char_select_scene_ease_in_40f_130f()
     state_machine_UI_char_select_scene_movie_cover_loop(obj_UI_char_select_scene_movie_cover)
     state_machine_UI_char_select_scene_start_0f_110f(obj_UI_char_select_scene_start_0f_110f)
     if SCENE_TIMER < 60 then
-        point_linear_animator(obj_UI_char_select_scene_glow,anim_UI_point_linear_char_select_scene_glow_opacity)
+        point_linear_animator(
+            obj_UI_char_select_scene_glow,anim_UI_point_linear_char_select_scene_glow_opacity
+        )
         point_linear_animator(
             obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
         )
@@ -63,7 +67,9 @@ function update_char_select_scene_ease_in_40f_130f()
             obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x
         )
     elseif SCENE_TIMER == 60 then
-        point_linear_animator(obj_UI_char_select_scene_glow,anim_UI_point_linear_char_select_scene_glow_opacity)
+        point_linear_animator(
+            obj_UI_char_select_scene_glow,anim_UI_point_linear_char_select_scene_glow_opacity
+        )
         point_linear_animator(
             obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
         )
@@ -84,7 +90,9 @@ function update_char_select_scene_ease_in_40f_130f()
             anim_UI_point_linear_char_select_scene_icon_select_ease_in_opacity_0_0p5
         )
     elseif SCENE_TIMER < 65 then
-        point_linear_animator(obj_UI_char_select_scene_glow,anim_UI_point_linear_char_select_scene_glow_opacity)
+        point_linear_animator(
+            obj_UI_char_select_scene_glow,anim_UI_point_linear_char_select_scene_glow_opacity
+        )
         point_linear_animator(
             obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
         )
@@ -102,7 +110,9 @@ function update_char_select_scene_ease_in_40f_130f()
             anim_UI_point_linear_char_select_scene_icon_select_ease_in_opacity_0_0p5
         )
     elseif SCENE_TIMER == 65 then
-        point_linear_animator(obj_UI_char_select_scene_glow,anim_UI_point_linear_char_select_scene_glow_opacity)
+        point_linear_animator(
+            obj_UI_char_select_scene_glow,anim_UI_point_linear_char_select_scene_glow_opacity
+        )
         point_linear_animator(
             obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
         )
@@ -142,7 +152,9 @@ function update_char_select_scene_ease_in_40f_130f()
             anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x
         )
     elseif SCENE_TIMER < 70 then
-        point_linear_animator(obj_UI_char_select_scene_glow,anim_UI_point_linear_char_select_scene_glow_opacity)
+        point_linear_animator(
+            obj_UI_char_select_scene_glow,anim_UI_point_linear_char_select_scene_glow_opacity
+        )
         point_linear_animator(
             obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
         )
@@ -172,7 +184,9 @@ function update_char_select_scene_ease_in_40f_130f()
             anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x
         )
     elseif SCENE_TIMER == 70 then
-        point_linear_animator(obj_UI_char_select_scene_glow,anim_UI_point_linear_char_select_scene_glow_opacity)
+        point_linear_animator(
+            obj_UI_char_select_scene_glow,anim_UI_point_linear_char_select_scene_glow_opacity
+        )
         point_linear_animator(
             obj_UI_char_select_scene_glow["alpha_points"],anim_UI_point_linear_char_select_scene_glow_alpha_pt1_y
         )
@@ -547,8 +561,7 @@ function update_char_select_scene_ease_out()
         obj_UI_char_select_scene_black_solid,anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out_opacity
     )
     point_linear_animator(
-        audio_BGM_char_select_scene_moonlight_re_edit,
-        anim_UI_point_linear_char_select_scene_audio_ease_out_1_0_volume_1
+        audio_BGM_char_select_scene_moonlight_re_edit,anim_UI_point_linear_char_select_scene_audio_ease_out_1_0_volume_1
     )
     update_BGM_VOLUME(audio_BGM_char_select_scene_moonlight_re_edit)
     if audio_SFX_char_select_scene_ease_out["audio"]:isPlaying() == false then

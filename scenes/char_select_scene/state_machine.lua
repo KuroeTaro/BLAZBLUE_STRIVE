@@ -237,10 +237,11 @@ function state_machine_UI_char_select_scene_char_select(input_id)
             end
         end,
         ["locking"] = function()
-            point_linear_animator(obj,anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5)
             point_linear_animator(
-                obj_bar_mark,
-                anim_UI_point_linear_char_select_scene_control_method_bar_mark_locking_ease_out_opacity_1_0
+                obj,anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5
+            )
+            point_linear_animator(
+                obj_bar_mark,anim_UI_point_linear_char_select_scene_control_method_bar_mark_locking_ease_out_opacity_1_0
             )
             point_linear_animator(
                 obj_control_method,
@@ -250,8 +251,7 @@ function state_machine_UI_char_select_scene_char_select(input_id)
                 obj,anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5
             )
             and get_point_linear_anim_end_state(
-                obj_bar_mark,
-                anim_UI_point_linear_char_select_scene_control_method_bar_mark_locking_ease_out_opacity_1_0
+                obj_bar_mark,anim_UI_point_linear_char_select_scene_control_method_bar_mark_locking_ease_out_opacity_1_0
             )
             and get_point_linear_anim_end_state(
                 obj_control_method,
@@ -264,7 +264,9 @@ function state_machine_UI_char_select_scene_char_select(input_id)
         ["locked"] = function()
         end,
         ["unlocking"] = function()
-            point_linear_animator(obj,anim_UI_point_linear_char_select_scene_char_select_unlocking_opacity_0p5_0p25)
+            point_linear_animator(
+                obj,anim_UI_point_linear_char_select_scene_char_select_unlocking_opacity_0p5_0p25
+            )
             point_linear_animator(
                 obj_bar_mark,
                 anim_UI_point_linear_char_select_scene_control_method_bar_mark_unlocking_ease_in_opacity_0_1
@@ -297,8 +299,12 @@ end
 function state_machine_UI_char_select_scene_char_select_ease(obj,obj_char,obj_text,obj_icon_cover,input_id)
     local switch = {
         ["ease_in"] = function()
-            point_linear_animator(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_in_x)
-            point_linear_animator(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x)
+            point_linear_animator(
+                obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_in_x
+            )
+            point_linear_animator(
+                obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x
+            )
             point_linear_animator(
                 obj_icon_cover,anim_UI_point_linear_char_select_scene_icon_select_ease_in_opacity_0_0p5
             )
@@ -312,8 +318,12 @@ function state_machine_UI_char_select_scene_char_select_ease(obj,obj_char,obj_te
                 if CHAR_SELECT_LR[input_id] == 0 then
                     CHAR_SELECT_LR[input_id] = 8
                 end
-                init_point_linear_anim_with(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x)
-                init_point_linear_anim_with(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x)
+                init_point_linear_anim_with(
+                    obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
+                )
+                init_point_linear_anim_with(
+                    obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
+                )
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["right"] == "Pressing"
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
@@ -324,13 +334,21 @@ function state_machine_UI_char_select_scene_char_select_ease(obj,obj_char,obj_te
                 if CHAR_SELECT_LR[input_id] == 9 then
                     CHAR_SELECT_LR[input_id] = 1
                 end
-                init_point_linear_anim_with(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x)
-                init_point_linear_anim_with(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x)
+                init_point_linear_anim_with(
+                    obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
+                )
+                init_point_linear_anim_with(
+                    obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
+                )
             end
         end,
         ["ease_out"] = function()
-            point_linear_animator(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x)
-            point_linear_animator(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x)
+            point_linear_animator(
+                obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
+            )
+            point_linear_animator(
+                obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
+            )
             point_linear_animator(
                 obj_icon_cover,anim_UI_point_linear_char_select_scene_icon_select_ease_out_opacity_0p5_0
             )
@@ -347,8 +365,12 @@ function state_machine_UI_char_select_scene_char_select_ease(obj,obj_char,obj_te
                 obj["ease_state"] = "ease_in"
                 common_char_select_scene_reset_char_text_ease_in(obj_char,obj_text,obj_icon_cover,input_id)
                 obj[8] = CHAR_SELECT_LR[input_id]
-                init_point_linear_anim_with(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_in_x)
-                init_point_linear_anim_with(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x)
+                init_point_linear_anim_with(
+                    obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_in_x
+                )
+                init_point_linear_anim_with(
+                    obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x
+                )
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["left"] == "Pressing"
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
@@ -359,8 +381,12 @@ function state_machine_UI_char_select_scene_char_select_ease(obj,obj_char,obj_te
                 if CHAR_SELECT_LR[input_id] == 0 then
                     CHAR_SELECT_LR[input_id] = 8
                 end
-                init_point_linear_anim_with(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x)
-                init_point_linear_anim_with(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x)
+                init_point_linear_anim_with(
+                    obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
+                )
+                init_point_linear_anim_with(
+                    obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
+                )
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["right"] == "Pressing"
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
@@ -371,8 +397,12 @@ function state_machine_UI_char_select_scene_char_select_ease(obj,obj_char,obj_te
                 if CHAR_SELECT_LR[input_id] == 9 then
                     CHAR_SELECT_LR[input_id] = 1
                 end
-                init_point_linear_anim_with(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x)
-                init_point_linear_anim_with(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x)
+                init_point_linear_anim_with(
+                    obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
+                )
+                init_point_linear_anim_with(
+                    obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
+                )
             end
         end
     }
@@ -392,7 +422,9 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_
                     obj_bar_mark[2] = side_table[input_id]
                     CONTROL_METHOD[input_id] = 0
                 end
-                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)
+                init_point_linear_anim_with(
+                    obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y
+                )
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["down"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
@@ -403,12 +435,18 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_
                     obj_bar_mark[2] = side_table[input_id]
                     CONTROL_METHOD[input_id] = 1
                 end
-                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
+                init_point_linear_anim_with(
+                    obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y
+                )
             end
         end,
         ["up_twitch"] = function()
-            point_linear_animator(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)
-            if get_point_linear_anim_end_state(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y) then
+            point_linear_animator(
+                obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y
+            )
+            if get_point_linear_anim_end_state(
+                obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y
+            ) then
                 obj_bar_mark["state"] = "idle"
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["up"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
@@ -420,7 +458,9 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_
                     obj_bar_mark[2] = side_table[input_id]
                     CONTROL_METHOD[input_id] = 0
                 end
-                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)
+                init_point_linear_anim_with(
+                    obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y
+                )
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["down"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
@@ -431,12 +471,18 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_
                     obj_bar_mark[2] = side_table[input_id]
                     CONTROL_METHOD[input_id] = 1
                 end
-                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
+                init_point_linear_anim_with(
+                    obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y
+                )
             end
         end,
         ["down_twitch"] = function()
-            point_linear_animator(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
-            if get_point_linear_anim_end_state(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y) then
+            point_linear_animator(
+                obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y
+            )
+            if get_point_linear_anim_end_state(
+                obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y
+            ) then
                 obj_bar_mark["state"] = "idle"
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["up"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
@@ -448,7 +494,9 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_
                     obj_bar_mark[2] = side_table[input_id]
                     CONTROL_METHOD[input_id] = 0
                 end
-                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)
+                init_point_linear_anim_with(
+                    obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y
+                )
             elseif INPUT_SYS_CURRENT_COMMAND_STATE[input_id]["down"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
@@ -459,7 +507,9 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select(obj,obj_
                     obj_bar_mark[2] = side_table[input_id]
                     CONTROL_METHOD[input_id] = 1
                 end
-                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
+                init_point_linear_anim_with(
+                    obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y
+                )
             end
         end
     }
@@ -638,10 +688,11 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
             end
         end,
         ["locking"] = function()
-            point_linear_animator(obj,anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5)
             point_linear_animator(
-                obj_bar_mark,
-                anim_UI_point_linear_char_select_scene_control_method_bar_mark_locking_ease_out_opacity_1_0
+                obj,anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5
+            )
+            point_linear_animator(
+                obj_bar_mark,anim_UI_point_linear_char_select_scene_control_method_bar_mark_locking_ease_out_opacity_1_0
             )
             point_linear_animator(
                 obj_control_method,
@@ -651,8 +702,7 @@ function state_machine_UI_char_select_scene_char_select_train_dummy()
                 obj,anim_UI_point_linear_char_select_scene_char_select_locking_opacity_0p25_0p5
             )
             and get_point_linear_anim_end_state(
-                obj_bar_mark,
-                anim_UI_point_linear_char_select_scene_control_method_bar_mark_locking_ease_out_opacity_1_0
+                obj_bar_mark,anim_UI_point_linear_char_select_scene_control_method_bar_mark_locking_ease_out_opacity_1_0
             )
             and get_point_linear_anim_end_state(
                 obj_control_method,
@@ -673,8 +723,12 @@ end
 function state_machine_UI_char_select_scene_char_select_ease_train_dummy(obj,obj_char,obj_text,obj_icon_cover)
     local switch = {
         ["ease_in"] = function()
-            point_linear_animator(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_in_x)
-            point_linear_animator(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x)
+            point_linear_animator(
+                obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_in_x
+            )
+            point_linear_animator(
+                obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x
+            )
             point_linear_animator(
                 obj_icon_cover,anim_UI_point_linear_char_select_scene_icon_select_ease_in_opacity_0_0p5
             )
@@ -688,8 +742,12 @@ function state_machine_UI_char_select_scene_char_select_ease_train_dummy(obj,obj
                 if CHAR_SELECT_LR["R"] == 0 then
                     CHAR_SELECT_LR["R"] = 8
                 end
-                init_point_linear_anim_with(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x)
-                init_point_linear_anim_with(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x)
+                init_point_linear_anim_with(
+                    obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
+                )
+                init_point_linear_anim_with(
+                    obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
+                )
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["right"] == "Pressing"
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
@@ -700,13 +758,21 @@ function state_machine_UI_char_select_scene_char_select_ease_train_dummy(obj,obj
                 if CHAR_SELECT_LR["R"] == 9 then
                     CHAR_SELECT_LR["R"] = 1
                 end
-                init_point_linear_anim_with(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x)
-                init_point_linear_anim_with(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x)
+                init_point_linear_anim_with(
+                    obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
+                )
+                init_point_linear_anim_with(
+                    obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
+                )
             end
         end,
         ["ease_out"] = function()
-            point_linear_animator(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x)
-            point_linear_animator(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x)
+            point_linear_animator(
+                obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
+            )
+            point_linear_animator(
+                obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
+            )
             point_linear_animator(
                 obj_icon_cover,anim_UI_point_linear_char_select_scene_icon_select_ease_out_opacity_0p5_0
             )
@@ -723,8 +789,12 @@ function state_machine_UI_char_select_scene_char_select_ease_train_dummy(obj,obj
                 obj["ease_state"] = "ease_in"
                 common_char_select_scene_reset_char_text_ease_in(obj_char,obj_text,obj_icon_cover,"R")
                 obj[8] = CHAR_SELECT_LR["R"]
-                init_point_linear_anim_with(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_in_x)
-                init_point_linear_anim_with(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x)
+                init_point_linear_anim_with(
+                    obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_in_x
+                )
+                init_point_linear_anim_with(
+                    obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_in_x
+                )
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["left"] == "Pressing"
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
@@ -735,8 +805,12 @@ function state_machine_UI_char_select_scene_char_select_ease_train_dummy(obj,obj
                 if CHAR_SELECT_LR["R"] == 0 then
                     CHAR_SELECT_LR["R"] = 8
                 end
-                init_point_linear_anim_with(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x)
-                init_point_linear_anim_with(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x)
+                init_point_linear_anim_with(
+                    obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
+                )
+                init_point_linear_anim_with(
+                    obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
+                )
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["right"] == "Pressing"
             and (obj["select_state"] == "idle" or obj["select_state"] == "unselecting")
             then
@@ -747,8 +821,12 @@ function state_machine_UI_char_select_scene_char_select_ease_train_dummy(obj,obj
                 if CHAR_SELECT_LR["R"] == 9 then
                     CHAR_SELECT_LR["R"] = 1
                 end
-                init_point_linear_anim_with(obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x)
-                init_point_linear_anim_with(obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x)
+                init_point_linear_anim_with(
+                    obj_char,anim_UI_point_linear_char_select_scene_char_select_char_ease_out_x
+                )
+                init_point_linear_anim_with(
+                    obj_text,anim_UI_point_linear_char_select_scene_char_select_text_ease_out_x
+                )
             end
         end
     }
@@ -767,7 +845,9 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select_train_du
                     obj_bar_mark[2] = 699
                     CONTROL_METHOD["R"] = 0
                 end
-                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)
+                init_point_linear_anim_with(
+                    obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y
+                )
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["down"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
@@ -777,12 +857,18 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select_train_du
                     obj_bar_mark[2] = 739
                     CONTROL_METHOD["R"] = 1
                 end
-                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
+                init_point_linear_anim_with(
+                    obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y
+                )
             end
         end,
         ["up_twitch"] = function()
-            point_linear_animator(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)
-            if get_point_linear_anim_end_state(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y) then
+            point_linear_animator(
+                obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y
+            )
+            if get_point_linear_anim_end_state(
+                obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y
+            ) then
                 obj_bar_mark["state"] = "idle"
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["up"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
@@ -793,7 +879,9 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select_train_du
                     obj_bar_mark[2] = 699
                     CONTROL_METHOD["R"] = 0
                 end
-                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)
+                init_point_linear_anim_with(
+                    obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y
+                )
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["down"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
@@ -803,12 +891,18 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select_train_du
                     obj_bar_mark[2] = 739
                     CONTROL_METHOD["R"] = 1
                 end
-                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
+                init_point_linear_anim_with(
+                    obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y
+                )
             end
         end,
         ["down_twitch"] = function()
-            point_linear_animator(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
-            if get_point_linear_anim_end_state(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y) then
+            point_linear_animator(
+                obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y
+            )
+            if get_point_linear_anim_end_state(
+                obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y
+            ) then
                 obj_bar_mark["state"] = "idle"
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["up"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
@@ -819,7 +913,9 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select_train_du
                     obj_bar_mark[2] = 699
                     CONTROL_METHOD["R"] = 0
                 end
-                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y)
+                init_point_linear_anim_with(
+                    obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_up_y
+                )
             elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["down"] == "Pressing"
             and (obj["select_state"] == "selecting" or obj["select_state"] == "selected")
             then
@@ -829,7 +925,9 @@ function state_machine_UI_char_select_scene_char_select_bar_mark_select_train_du
                     obj_bar_mark[2] = 739
                     CONTROL_METHOD["R"] = 1
                 end
-                init_point_linear_anim_with(obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y)
+                init_point_linear_anim_with(
+                    obj_bar_mark,anim_UI_point_linear_char_select_scene_bar_mark_down_y
+                )
             end
         end
     }

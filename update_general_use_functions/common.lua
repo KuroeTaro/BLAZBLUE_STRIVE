@@ -1,4 +1,6 @@
-function common_sprite_sheet_load(json_file,image)
+function common_sprite_sheet_load(
+    json_file,image
+)
     -- 读取 JSON 文件
     local file = love.filesystem.read(json_file)
     local data = JSON.decode(file)

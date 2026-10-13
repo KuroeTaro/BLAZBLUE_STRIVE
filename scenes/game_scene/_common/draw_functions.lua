@@ -202,7 +202,10 @@ function draw_game_scene_main()
     draw_solid(obj_UI_game_scene_black_solid)
 end
 -- x y z opacity sx sy r f
-function draw_game_scene_add_to_sprite_batch_bars(obj,image_sprite_sheet,quad_name,percentage)
+function draw_game_scene_add_to_sprite_batch_bars(
+    obj,image_sprite_sheet,quad_name,
+    percentage
+)
     local x = draw_resolution_correction(obj[1])
     local y = draw_resolution_correction(obj[2])
     local r = obj[7]
@@ -215,7 +218,10 @@ function draw_game_scene_add_to_sprite_batch_bars(obj,image_sprite_sheet,quad_na
     image_sprite_sheet["sprite_batch"]:add(quad,x,y,r,sx,sy)
     image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
 end
-function draw_game_scene_add_to_sprite_batch_heat_bar_extra(obj,image_sprite_sheet,quad_name,mark_value)
+function draw_game_scene_add_to_sprite_batch_heat_bar_extra(
+    obj,image_sprite_sheet,quad_name,
+    mark_value
+)
     local x = draw_resolution_correction(obj[1])
     local y = draw_resolution_correction(obj[2])
     local r = obj[7]
@@ -244,7 +250,10 @@ function draw_game_scene_add_to_sprite_batch_heat_bar_extra(obj,image_sprite_she
     end
     image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
 end
-function draw_game_scene_add_to_sprite_batch_risk_bars(obj,image_sprite_sheet,quad_name,risk_value)
+function draw_game_scene_add_to_sprite_batch_risk_bars(
+    obj,image_sprite_sheet,quad_name,
+    risk_value
+)
     local x = draw_resolution_correction(obj[1])
     local y = draw_resolution_correction(obj[2])
     local r = obj[7]
@@ -268,7 +277,10 @@ function draw_game_scene_add_to_sprite_batch_risk_bars(obj,image_sprite_sheet,qu
     end
     image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
 end
-function draw_game_scene_add_to_sprite_batch_overdrive_pie(obj,image_sprite_sheet,overdrive_value)
+function draw_game_scene_add_to_sprite_batch_overdrive_pie(
+    obj,image_sprite_sheet,
+    overdrive_value
+)
     local x = draw_resolution_correction(obj[1])
     local y = draw_resolution_correction(obj[2])
     local r = obj[7]
@@ -339,7 +351,9 @@ function draw_game_scene_add_to_sprite_batch_round_timer(obj,image_sprite_sheet)
     end
     image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
 end
-function draw_game_scene_add_to_sprite_batch_round_win_marks(obj,image_sprite_sheet,quad_name,mark_value)
+function draw_game_scene_add_to_sprite_batch_round_win_marks(
+    obj,image_sprite_sheet,quad_name,mark_value
+)
     local x = draw_resolution_correction(obj[1])
     local y = draw_resolution_correction(obj[2])
     local r = obj[7]
@@ -361,7 +375,9 @@ function draw_game_scene_add_to_sprite_batch_round_win_marks(obj,image_sprite_sh
     end
     image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
 end
-function draw_game_scene_add_to_sprite_batch_overdrive_timer(obj,image_sprite_sheet,time)
+function draw_game_scene_add_to_sprite_batch_overdrive_timer(
+    obj,image_sprite_sheet,time
+)
     local x = draw_resolution_correction(obj[1])
     local y = draw_resolution_correction(obj[2])
     local r = obj[7]

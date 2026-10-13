@@ -585,7 +585,9 @@ function unload_start_scene_all()
     unrequire_prefix("scenes.start_scene.")
 end
 function preset_start_scene()
-    init_point_linear_anim_with(obj_UI_start_scene_solid_color,anim_UI_point_linear_start_scene_solid_ease_in_opacity)
+    init_point_linear_anim_with(
+        obj_UI_start_scene_solid_color,anim_UI_point_linear_start_scene_solid_ease_in_opacity
+    )
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
     play_obj_audio(audio_BGM_start_scene_NOC_high)
     play_obj_audio(audio_BGM_start_scene_NOC_low)

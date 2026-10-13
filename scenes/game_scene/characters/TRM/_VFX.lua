@@ -23,10 +23,14 @@ function insert_VFX_game_scene_char_TRM_2P_move(obj_char)
     obj_VFX["animation"]["prop"] = 8
     obj_VFX["animation"]["length"] = 8
     obj_VFX["animation"]["loop"] = false
-    init_frame_anim_without(obj_VFX,obj_VFX["animation"])
+    init_frame_anim_without(
+        obj_VFX,obj_VFX["animation"]
+    )
     obj_VFX["update"] = function()
         if obj_char["state"] == "2P" then
-            frame_animator(obj_VFX,obj_VFX["animation"])
+            frame_animator(
+                obj_VFX,obj_VFX["animation"]
+            )
             obj_VFX["life"] = obj_VFX["life"] - 1
         elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
@@ -46,7 +50,9 @@ function insert_VFX_game_scene_char_TRM_2P_move(obj_char)
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8])
+        )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
     table.insert(obj_char["VFX_common_front_table"],obj_VFX)
@@ -79,10 +85,14 @@ function insert_VFX_game_scene_char_TRM_6P_move(obj_char)
     obj_VFX["animation"]["prop"] = 8
     obj_VFX["animation"]["length"] = 15
     obj_VFX["animation"]["loop"] = false
-    init_frame_anim_without(obj_VFX,obj_VFX["animation"])
+    init_frame_anim_without(
+        obj_VFX,obj_VFX["animation"]
+    )
     obj_VFX["update"] = function()
         if obj_char["state"] == "6P" then
-            frame_animator(obj_VFX,obj_VFX["animation"])
+            frame_animator(
+                obj_VFX,obj_VFX["animation"]
+            )
             obj_VFX["life"] = obj_VFX["life"] - 1
         elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
@@ -102,7 +112,9 @@ function insert_VFX_game_scene_char_TRM_6P_move(obj_char)
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8])
+        )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
@@ -134,10 +146,14 @@ function insert_VFX_game_scene_char_TRM_5P_move(obj_char)
     obj_VFX["animation"]["prop"] = 8
     obj_VFX["animation"]["length"] = 8
     obj_VFX["animation"]["loop"] = false
-    init_frame_anim_without(obj_VFX,obj_VFX["animation"])
+    init_frame_anim_without(
+        obj_VFX,obj_VFX["animation"]
+    )
     obj_VFX["update"] = function()
         if obj_char["state"] == "5P" then
-            frame_animator(obj_VFX,obj_VFX["animation"])
+            frame_animator(
+                obj_VFX,obj_VFX["animation"]
+            )
             obj_VFX["life"] = obj_VFX["life"] - 1
         elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
@@ -157,7 +173,9 @@ function insert_VFX_game_scene_char_TRM_5P_move(obj_char)
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8])
+        )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
     table.insert(obj_char["VFX_common_front_table"],obj_VFX)
@@ -187,10 +205,14 @@ function insert_VFX_game_scene_char_TRM_2S_move(obj_char)
     obj_VFX["animation"]["prop"] = 8
     obj_VFX["animation"]["length"] = 6
     obj_VFX["animation"]["loop"] = false
-    init_frame_anim_without(obj_VFX,obj_VFX["animation"])
+    init_frame_anim_without(
+        obj_VFX,obj_VFX["animation"]
+    )
     obj_VFX["update"] = function()
         if obj_char["state"] == "2S" then
-            frame_animator(obj_VFX,obj_VFX["animation"])
+            frame_animator(
+                obj_VFX,obj_VFX["animation"]
+            )
             obj_VFX["life"] = obj_VFX["life"] - 1
         elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
@@ -210,7 +232,9 @@ function insert_VFX_game_scene_char_TRM_2S_move(obj_char)
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8])
+        )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
     table.insert(obj_char["VFX_common_front_table"],obj_VFX)
@@ -245,10 +269,14 @@ function insert_VFX_game_scene_char_TRM_6S_move(obj_char)
     obj_VFX["animation"]["prop"] = 8
     obj_VFX["animation"]["length"] = 36
     obj_VFX["animation"]["loop"] = false
-    init_frame_anim_without(obj_VFX,obj_VFX["animation"])
+    init_frame_anim_without(
+        obj_VFX,obj_VFX["animation"]
+    )
     obj_VFX["update"] = function()
         if obj_char["state"] == "6S" then
-            frame_animator(obj_VFX,obj_VFX["animation"])
+            frame_animator(
+                obj_VFX,obj_VFX["animation"]
+            )
             obj_VFX["life"] = obj_VFX["life"] - 1
         elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
@@ -268,7 +296,9 @@ function insert_VFX_game_scene_char_TRM_6S_move(obj_char)
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8])
+        )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
@@ -303,10 +333,14 @@ function insert_VFX_game_scene_char_TRM_cS_move(obj_char)
     obj_VFX["animation"]["prop"] = 8
     obj_VFX["animation"]["length"] = 19
     obj_VFX["animation"]["loop"] = false
-    init_frame_anim_without(obj_VFX,obj_VFX["animation"])
+    init_frame_anim_without(
+        obj_VFX,obj_VFX["animation"]
+    )
     obj_VFX["update"] = function()
         if obj_char["state"] == "cS" then
-            frame_animator(obj_VFX,obj_VFX["animation"])
+            frame_animator(
+                obj_VFX,obj_VFX["animation"]
+            )
             obj_VFX["life"] = obj_VFX["life"] - 1
         elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
@@ -326,14 +360,18 @@ function insert_VFX_game_scene_char_TRM_cS_move(obj_char)
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8])
+        )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_common_front_table"],obj_VFX)
 end
-function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
+function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(
+    hit_side_obj_char,hurt_side_obj_char
+)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
@@ -362,7 +400,9 @@ function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit
     obj_VFX["animation"]["prop"] = 8
     obj_VFX["animation"]["length"] = 16
     obj_VFX["animation"]["loop"] = false
-    init_frame_anim_without(obj_VFX,obj_VFX["animation"])
+    init_frame_anim_without(
+        obj_VFX,obj_VFX["animation"]
+    )
     if hit_side_obj_char["x"] > hurt_side_obj_char["x"] then
         obj_VFX[1] = hit_side_obj_char["shot_sys_reticle"][1] + 230 + 160
         obj_VFX[5] = -1
@@ -373,7 +413,9 @@ function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit
         end
     end
     obj_VFX["update"] = function()
-        frame_animator(obj_VFX,obj_VFX["animation"])
+        frame_animator(
+            obj_VFX,obj_VFX["animation"]
+        )
         obj_VFX["life"] = obj_VFX["life"] - 1
     end
     obj_VFX["draw_sync"] = function()
@@ -392,7 +434,9 @@ function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(hit
         local image_sprite_sheet = hit_side_image_sprite_sheet
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8].."")
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+        )
         love.graphics.setColor(35/255,35/255,35/255,175/255)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
@@ -423,10 +467,14 @@ function insert_VFX_game_scene_char_TRM_5Launcher_move_slash(obj_char)
     obj_VFX["animation"]["prop"] = 8
     obj_VFX["animation"]["length"] = 3
     obj_VFX["animation"]["loop"] = false
-    init_frame_anim_without(obj_VFX,obj_VFX["animation"])
+    init_frame_anim_without(
+        obj_VFX,obj_VFX["animation"]
+    )
     obj_VFX["update"] = function()
         if obj_char["state"] == "5Launcher" then
-            frame_animator(obj_VFX,obj_VFX["animation"])
+            frame_animator(
+                obj_VFX,obj_VFX["animation"]
+            )
             obj_VFX["life"] = obj_VFX["life"] - 1
         elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
@@ -446,7 +494,9 @@ function insert_VFX_game_scene_char_TRM_5Launcher_move_slash(obj_char)
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8])
+        )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
     table.insert(obj_char["VFX_common_front_table"],obj_VFX)
@@ -476,10 +526,14 @@ function insert_VFX_game_scene_char_TRM_5Launcher_move_glow(obj_char)
     obj_VFX["animation"]["prop"] = 8
     obj_VFX["animation"]["length"] = 18
     obj_VFX["animation"]["loop"] = false
-    init_frame_anim_without(obj_VFX,obj_VFX["animation"])
+    init_frame_anim_without(
+        obj_VFX,obj_VFX["animation"]
+    )
     obj_VFX["update"] = function()
         if obj_char["state"] == "5Launcher" then
-            frame_animator(obj_VFX,obj_VFX["animation"])
+            frame_animator(
+                obj_VFX,obj_VFX["animation"]
+            )
             obj_VFX["life"] = obj_VFX["life"] - 1
         elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
@@ -499,7 +553,9 @@ function insert_VFX_game_scene_char_TRM_5Launcher_move_glow(obj_char)
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8])
+        )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
@@ -532,12 +588,16 @@ function insert_VFX_game_scene_char_TRM_j5S_move(obj_char)
     obj_VFX["animation"]["prop"] = 8
     obj_VFX["animation"]["length"] = 9
     obj_VFX["animation"]["loop"] = false
-    init_frame_anim_without(obj_VFX,obj_VFX["animation"])
+    init_frame_anim_without(
+        obj_VFX,obj_VFX["animation"]
+    )
     obj_VFX["update"] = function()
         if obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
         else
-            frame_animator(obj_VFX,obj_VFX["animation"])
+            frame_animator(
+                obj_VFX,obj_VFX["animation"]
+            )
             obj_VFX["life"] = obj_VFX["life"] - 1
         end
     end
@@ -564,7 +624,9 @@ function insert_VFX_game_scene_char_TRM_j5S_move(obj_char)
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8])
+        )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
@@ -603,7 +665,9 @@ function insert_VFX_game_scene_char_TRM_6SP_P_curse_ball_spawner(obj_char)
     obj_VFX["x_point_linear_animation"]["prop"] = "x_offset"
     obj_VFX["x_point_linear_animation"]["length"] = 9
     obj_VFX["x_point_linear_animation"]["loop"] = false
-    init_point_linear_anim_without(obj_VFX,obj_VFX["x_point_linear_animation"])
+    init_point_linear_anim_without(
+        obj_VFX,obj_VFX["x_point_linear_animation"]
+    )
     -- y_point_linear_animation
     obj_VFX["y_point_linear_animation"] = {}
     obj_VFX["y_point_linear_animation"][0] = {-395,1}
@@ -616,7 +680,9 @@ function insert_VFX_game_scene_char_TRM_6SP_P_curse_ball_spawner(obj_char)
     obj_VFX["y_point_linear_animation"]["prop"] = "y_offset"
     obj_VFX["y_point_linear_animation"]["length"] = 9
     obj_VFX["y_point_linear_animation"]["loop"] = false
-    init_point_linear_anim_without(obj_VFX,obj_VFX["y_point_linear_animation"])
+    init_point_linear_anim_without(
+        obj_VFX,obj_VFX["y_point_linear_animation"]
+    )
     -- opacity_point_linear_animation
     obj_VFX["opacity_point_linear_animation"] = {}
     obj_VFX["opacity_point_linear_animation"][0] = {0,1}
@@ -630,14 +696,22 @@ function insert_VFX_game_scene_char_TRM_6SP_P_curse_ball_spawner(obj_char)
     obj_VFX["opacity_point_linear_animation"]["prop"] = 4
     obj_VFX["opacity_point_linear_animation"]["length"] = 9
     obj_VFX["opacity_point_linear_animation"]["loop"] = false
-    init_point_linear_anim_without(obj_VFX,obj_VFX["opacity_point_linear_animation"])
+    init_point_linear_anim_without(
+        obj_VFX,obj_VFX["opacity_point_linear_animation"]
+    )
     obj_VFX["update"] = function()
         if obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
         else
-            point_linear_animator(obj_VFX,obj_VFX["x_point_linear_animation"])
-            point_linear_animator(obj_VFX,obj_VFX["y_point_linear_animation"])
-            point_linear_animator(obj_VFX,obj_VFX["opacity_point_linear_animation"])
+            point_linear_animator(
+                obj_VFX,obj_VFX["x_point_linear_animation"]
+            )
+            point_linear_animator(
+                obj_VFX,obj_VFX["y_point_linear_animation"]
+            )
+            point_linear_animator(
+                obj_VFX,obj_VFX["opacity_point_linear_animation"]
+            )
             obj_VFX["life"] = obj_VFX["life"] - 1
         end
     end
@@ -653,7 +727,9 @@ function insert_VFX_game_scene_char_TRM_6SP_P_curse_ball_spawner(obj_char)
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8])
+        )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
     table.insert(obj_char["VFX_common_front_table"],obj_VFX)
@@ -686,7 +762,9 @@ function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
     obj_VFX["x_point_linear_animation"]["prop"] = "x_offset"
     obj_VFX["x_point_linear_animation"]["length"] = 5
     obj_VFX["x_point_linear_animation"]["loop"] = false
-    init_point_linear_anim_without(obj_VFX,obj_VFX["x_point_linear_animation"])
+    init_point_linear_anim_without(
+        obj_VFX,obj_VFX["x_point_linear_animation"]
+    )
     -- y_point_linear_animation
     obj_VFX["y_point_linear_animation"] = {}
     obj_VFX["y_point_linear_animation"][0] = {-352.5,2}
@@ -695,7 +773,9 @@ function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
     obj_VFX["y_point_linear_animation"]["prop"] = "y_offset"
     obj_VFX["y_point_linear_animation"]["length"] = 5
     obj_VFX["y_point_linear_animation"]["loop"] = false
-    init_point_linear_anim_without(obj_VFX,obj_VFX["y_point_linear_animation"])
+    init_point_linear_anim_without(
+        obj_VFX,obj_VFX["y_point_linear_animation"]
+    )
     -- frame_animation
     obj_VFX["frame_animation"] = {}
     obj_VFX["frame_animation"][0] = 0
@@ -706,14 +786,22 @@ function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
     obj_VFX["frame_animation"]["prop"] = 8
     obj_VFX["frame_animation"]["length"] = 4
     obj_VFX["frame_animation"]["loop"] = false
-    init_frame_anim_without(obj_VFX,obj_VFX["frame_animation"])
+    init_frame_anim_without(
+        obj_VFX,obj_VFX["frame_animation"]
+    )
     obj_VFX["update"] = function()
         if obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
         else
-            point_linear_animator(obj_VFX,obj_VFX["x_point_linear_animation"])
-            point_linear_animator(obj_VFX,obj_VFX["y_point_linear_animation"])
-            frame_animator(obj_VFX,obj_VFX["frame_animation"])
+            point_linear_animator(
+                obj_VFX,obj_VFX["x_point_linear_animation"]
+            )
+            point_linear_animator(
+                obj_VFX,obj_VFX["y_point_linear_animation"]
+            )
+            frame_animator(
+                obj_VFX,obj_VFX["frame_animation"]
+            )
             obj_VFX["life"] = obj_VFX["life"] - 1
         end
     end
@@ -729,7 +817,9 @@ function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8])
+        )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
@@ -772,7 +862,9 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     obj_VFX["frame_animation"]["prop"] = 8
     obj_VFX["frame_animation"]["length"] = 300
     obj_VFX["frame_animation"]["loop"] = false
-    init_frame_anim_without(obj_VFX,obj_VFX["frame_animation"])
+    init_frame_anim_without(
+        obj_VFX,obj_VFX["frame_animation"]
+    )
     -- opacity_ease_in_point_linear_animation
     obj_VFX["opacity_ease_in_point_linear_animation"] = {}
     obj_VFX["opacity_ease_in_point_linear_animation"][0] = {0,20}
@@ -788,10 +880,16 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     obj_VFX["opacity_ease_out_point_linear_animation"]["length"] = 20
     obj_VFX["opacity_ease_out_point_linear_animation"]["loop"] = false
     local function update_frame_animation()
-        frame_animator(obj_VFX,obj_VFX["frame_animation"])
-        if get_frame_anim_end_state(obj_VFX,obj_VFX["frame_animation"]) then
+        frame_animator(
+            obj_VFX,obj_VFX["frame_animation"]
+        )
+        if get_frame_anim_end_state(
+            obj_VFX,obj_VFX["frame_animation"]
+        ) then
             obj_VFX["FCT"][8] = 120
-            frame_animator(obj_VFX,obj_VFX["frame_animation"])
+            frame_animator(
+                obj_VFX,obj_VFX["frame_animation"]
+            )
         end
     end
     obj_VFX["update"] = function()
@@ -801,7 +899,9 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
                 if hit_side_shot_sys_curse_ban_state[hit_side_obj_char["state"]]
                 or (not hit_side_obj_char["shot_sys_curse"]) then
                     obj_VFX["state"] = "end"
-                    init_point_linear_anim_with(obj_VFX,obj_VFX["opacity_ease_out_point_linear_animation"])
+                    init_point_linear_anim_with(
+                        obj_VFX,obj_VFX["opacity_ease_out_point_linear_animation"]
+                    )
                     play_obj_audio(hit_side_move_SFX_table["6SP_P_curse_end"])
                 end
                 if hurt_side_obj_char["state"] == "wallbreak_hurt" then
@@ -811,8 +911,12 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
             end,
             ["end"] = function()
                 update_frame_animation()
-                point_linear_animator(obj_VFX,obj_VFX["opacity_ease_out_point_linear_animation"])
-                if get_point_linear_anim_end_state(obj_VFX,obj_VFX["opacity_ease_out_point_linear_animation"])
+                point_linear_animator(
+                    obj_VFX,obj_VFX["opacity_ease_out_point_linear_animation"]
+                )
+                if get_point_linear_anim_end_state(
+                    obj_VFX,obj_VFX["opacity_ease_out_point_linear_animation"]
+                )
                 or hurt_side_obj_char["state"] == "wallbreak_hurt" then
                     obj_VFX["life"] = 0
                 end
@@ -822,22 +926,32 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
                 and hurt_side_obj_char["state"] ~= "wallbreak_hurt" then
                     obj_VFX[4] = 0
                     obj_VFX["state"] = "ease_in_after_wallbreak"
-                    init_frame_anim_with(obj_VFX,obj_VFX["frame_animation"])
-                    init_point_linear_anim_with(obj_VFX,obj_VFX["opacity_ease_in_point_linear_animation"])
+                    init_frame_anim_with(
+                        obj_VFX,obj_VFX["frame_animation"]
+                    )
+                    init_point_linear_anim_with(
+                        obj_VFX,obj_VFX["opacity_ease_in_point_linear_animation"]
+                    )
                     obj_VFX["FCT"][8] = 60
                     obj_VFX[8] = 30
                 end
             end,
             ["ease_in_after_wallbreak"] = function()
                 update_frame_animation()
-                point_linear_animator(obj_VFX,obj_VFX["opacity_ease_in_point_linear_animation"])
-                if get_point_linear_anim_end_state(obj_VFX,obj_VFX["opacity_ease_in_point_linear_animation"]) then
+                point_linear_animator(
+                    obj_VFX,obj_VFX["opacity_ease_in_point_linear_animation"]
+                )
+                if get_point_linear_anim_end_state(
+                    obj_VFX,obj_VFX["opacity_ease_in_point_linear_animation"]
+                ) then
                     obj_VFX["state"] = "loop"
                 end
                 if hit_side_shot_sys_curse_ban_state[hit_side_obj_char["state"]]
                 or (not hit_side_obj_char["shot_sys_curse"]) then
                     obj_VFX["state"] = "end"
-                    init_point_linear_anim_with(obj_VFX,obj_VFX["opacity_ease_out_point_linear_animation"])
+                    init_point_linear_anim_with(
+                        obj_VFX,obj_VFX["opacity_ease_out_point_linear_animation"]
+                    )
                 end
                 if hurt_side_obj_char["state"] == "wallbreak_hurt" then
                     obj_VFX[4] = 0
@@ -864,7 +978,9 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
         hit_side_image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_VFX,hit_side_image_sprite_sheet,tostring(obj_VFX[8]))
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,hit_side_image_sprite_sheet,tostring(obj_VFX[8])
+        )
         love.graphics.setColor(1,1,1,obj_VFX[4])
         love.graphics.setBlendMode("subtract")
         love.graphics.draw(hit_side_image_sprite_sheet["sprite_batch"])
@@ -873,7 +989,9 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     end
     table.insert(hurt_side_obj_char["VFX_status_back_table"],obj_VFX)
 end
-function insert_VFX_game_scene_char_TRM_4SP_S_H_at_the_steady_projectile_hit_blast(hit_side_obj_char,hurt_side_obj_char)
+function insert_VFX_game_scene_char_TRM_4SP_S_H_at_the_steady_projectile_hit_blast(
+    hit_side_obj_char,hurt_side_obj_char
+)
     -- x y z opacity sx sy r f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
@@ -923,9 +1041,13 @@ function insert_VFX_game_scene_char_TRM_4SP_S_H_at_the_steady_projectile_hit_bla
     obj_VFX["animation"]["prop"] = 8
     obj_VFX["animation"]["length"] = 17
     obj_VFX["animation"]["loop"] = false
-    init_frame_anim_without(obj_VFX,obj_VFX["animation"])
+    init_frame_anim_without(
+        obj_VFX,obj_VFX["animation"]
+    )
     obj_VFX["update"] = function()
-        frame_animator(obj_VFX,obj_VFX["animation"])
+        frame_animator(
+            obj_VFX,obj_VFX["animation"]
+        )
         obj_VFX["life"] = obj_VFX["life"] - 1
     end
     obj_VFX["draw_sync"] = function()
@@ -946,7 +1068,9 @@ function insert_VFX_game_scene_char_TRM_4SP_S_H_at_the_steady_projectile_hit_bla
         local image_sprite_sheet = hit_side_image_sprite_sheet
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8].."")
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+        )
         love.graphics.setColor(35/255,35/255,35/255,225/255)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
@@ -982,10 +1106,14 @@ function insert_VFX_game_scene_char_TRM_6SP_S_move(obj_char)
     obj_VFX["animation"]["prop"] = 8
     obj_VFX["animation"]["length"] = 21
     obj_VFX["animation"]["loop"] = false
-    init_frame_anim_without(obj_VFX,obj_VFX["animation"])
+    init_frame_anim_without(
+        obj_VFX,obj_VFX["animation"]
+    )
     obj_VFX["update"] = function()
         if obj_char["state"] == "6SP_S" then
-            frame_animator(obj_VFX,obj_VFX["animation"])
+            frame_animator(
+                obj_VFX,obj_VFX["animation"]
+            )
             obj_VFX["life"] = obj_VFX["life"] - 1
         elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             -- do nothing
@@ -1005,7 +1133,9 @@ function insert_VFX_game_scene_char_TRM_6SP_S_move(obj_char)
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8])
+        )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
@@ -1045,9 +1175,13 @@ function insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char,sprite_sheet)
     obj_VFX["animation"]["prop"] = 8
     obj_VFX["animation"]["length"] = 30
     obj_VFX["animation"]["loop"] = false
-    init_frame_anim_without(obj_VFX,obj_VFX["animation"])
+    init_frame_anim_without(
+        obj_VFX,obj_VFX["animation"]
+    )
     obj_VFX["update"] = function()
-        frame_animator(obj_VFX,obj_VFX["animation"])
+        frame_animator(
+            obj_VFX,obj_VFX["animation"]
+        )
         obj_VFX["life"] = obj_VFX["life"] - 1
     end
     obj_VFX["draw_sync"] = function()
@@ -1063,7 +1197,9 @@ function insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char,sprite_sheet)
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8]))
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,tostring(obj_VFX[8])
+        )
         love.graphics.setColor(5/255,5/255,5/255,0.5)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
@@ -1116,9 +1252,13 @@ function insert_VFX_game_scene_char_TRM_oroboros_blast(obj_char,sprite_sheet)
     obj_VFX["animation"]["prop"] = 8
     obj_VFX["animation"]["length"] = 15
     obj_VFX["animation"]["loop"] = false
-    init_frame_anim_without(obj_VFX,obj_VFX["animation"])
+    init_frame_anim_without(
+        obj_VFX,obj_VFX["animation"]
+    )
     obj_VFX["update"] = function()
-        frame_animator(obj_VFX,obj_VFX["animation"])
+        frame_animator(
+            obj_VFX,obj_VFX["animation"]
+        )
         obj_VFX["life"] = obj_VFX["life"] - 1
     end
     obj_VFX["draw_sync"] = function()
@@ -1151,7 +1291,9 @@ function insert_VFX_game_scene_char_TRM_oroboros_blast(obj_char,sprite_sheet)
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8].."")
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+        )
         love.graphics.setColor(55/255,55/255,55/255,255/255)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
