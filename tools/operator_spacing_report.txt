@@ -78,16 +78,16 @@ scenes/game_scene/characters/TRM/_projectile.lua  (4 处)
     858:89  [规则4] 行尾残留空白，应删除
                 if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) 
                                                                                                 ^
-    1652:130  [规则4] 行尾残留空白，应删除
+    1675:130  [规则4] 行尾残留空白，应删除
                 stand_block_animation_cache = load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_clean_hit_guard_crash_block(    
                                                                                                                                          ^
 
 scenes/game_scene/characters/TRM/left.lua  (1 处)
-    8524:107  [规则4] 行尾残留空白，应删除
+    8520:107  [规则4] 行尾残留空白，应删除
                 if (self_side_obj_char["direction_input"] ~= 4 and self_side_obj_char["direction_input"] ~= 6) and 
                                                                                                                   ^
 
 scenes/game_scene/characters/TRM/right.lua  (1 处)
-    8524:107  [规则4] 行尾残留空白，应删除
+    8520:107  [规则4] 行尾残留空白，应删除
                 if (self_side_obj_char["direction_input"] ~= 4 and self_side_obj_char["direction_input"] ~= 6) and 
                                                                                                                   ^

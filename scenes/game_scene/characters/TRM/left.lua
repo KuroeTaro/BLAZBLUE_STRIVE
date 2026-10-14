@@ -4032,7 +4032,6 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move(
     if self_side_obj_char["direction_input"] == 6
     and test_input_sys_press_or_hold(self_side_input["SP"])
     and test_input_sys_press(self_side_input["K"])
-    and (not self_side_obj_char["shot_sys_scapegoat_exist"])
     then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
@@ -4147,7 +4146,6 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(
     if self_side_obj_char["direction_input"] == 6
     and test_input_sys_press_or_hold(self_side_input["SP"])
     and test_input_sys_press_or_hold(self_side_input["K"])
-    and (not self_side_obj_char["shot_sys_scapegoat_exist"])
     then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
@@ -4921,7 +4919,6 @@ function state_gate_game_scene_char_LP_4SP_P_to_special(
     if self_side_obj_char["direction_input"] == 6
     and test_input_sys_press_or_hold(self_side_input["SP"])
     and test_input_sys_press(self_side_input["K"])
-    and (not self_side_obj_char["shot_sys_scapegoat_exist"])
     then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
             self_side_obj_char[5] = -self_side_obj_char[5]
@@ -5026,7 +5023,6 @@ function state_gate_game_scene_char_LP_4SP_S_to_special(
         -- _6SP_K
         if self_side_obj_char["direction_input"] == 6
         and test_input_sys_press(self_side_input["K"])
-        and (not self_side_obj_char["shot_sys_scapegoat_exist"])
         then
             if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
                 self_side_obj_char[5] = -self_side_obj_char[5]

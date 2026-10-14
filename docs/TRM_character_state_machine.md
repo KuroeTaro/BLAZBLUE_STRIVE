@@ -304,7 +304,7 @@ end
 | 派生 | 代码现状 |
 |---|---|
 | → `4SP_P`(4/1+P), → `6SP_P`(6+P) | 已实现(直接转态) |
-| → `4SP_K`(4+K), → `6SP_K`(6+K) | 已实现; `6SP_K` 额外要求场上无 scapegoat(`shot_sys_scapegoat_exist == false`) |
+| → `4SP_K`(4+K), → `6SP_K`(6+K) | 已实现; `6SP_K` 不再要求场上无 scapegoat(`shot_sys_scapegoat_exist`)——已有 scapegoat 时再次召唤会让上一个转入 `ease_out` 收招, 使场上同时只有一个可用的 scapegoat(`insert_projectile_game_scene_char_TRM_6SP_K`) |
 | → `4SP_S_4S`(4+S) | **已实现但状态名不一致**: 写的是 `state = "4SP_S_4S"`, 而 dispatch 表与门函数名为 `4SP_S_4S`、动画 loader 为 `load_game_scene_anim_char_TRM_4SP_S_4S` → 见 §6 待核对项 |
 | → `4SP_S_4dash / 4SP_S_6dash / 4SP_S_2Launcher / 4SP_S_6Launcher / 4SP_S_5Launcher / 4SP_S_6UA / 4UA / 5UA` | **占位**: 代码里是 `-- _4UA` 等注释, 门为空, `_anim.lua` 无对应 loader |
 

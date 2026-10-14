@@ -99,11 +99,11 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     )
     obj_projectile["projectile_active"] = false
     obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
-    obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
     obj_projectile["hit_SFX"] = hit_side_move_SFX_table["5H_projectile_hit"]
     obj_projectile["hit_block_SFX"] = hit_side_move_SFX_table["5H_projectile_block"]
     obj_projectile["hit_counter_SFX"] = hit_side_move_SFX_table["5H_projectile_counter"]
     obj_projectile["hit_whiff_SFX"] = hit_side_move_SFX_table["5H_projectile_whiff"]
+    obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_ver1
     obj_projectile["enemy_interact_function"] = function()
         if collision_projectile_hit_confirm_test(obj_projectile,hurt_side_obj_char) then
             -- projectile_active
@@ -842,6 +842,9 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
     -- enemy_interact_function
     obj_projectile["hitbox_table"] = {}
     obj_projectile["projectile_active"] = true
+    obj_projectile["hit_SFX"] = hit_side_move_SFX_table["6SP_P_curse_ball_hit"]
+    obj_projectile["hit_whiff_SFX"] = hit_side_move_SFX_table["6SP_P_whiff"]
+    obj_projectile["ground_bounce_SFX"] = hit_side_move_SFX_table["6SP_P_curse_ball_ground_bounce"]
     obj_projectile["hit_VFX_insert_function"] = function()
         for i = 1,#hurt_side_obj_char["VFX_status_back_table"] do
             local current_VFX = hurt_side_obj_char["VFX_status_back_table"][i]
@@ -851,9 +854,6 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
         end
         insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_obj_char)
     end
-    obj_projectile["hit_SFX"] = hit_side_move_SFX_table["6SP_P_curse_ball_hit"]
-    obj_projectile["hit_whiff_SFX"] = hit_side_move_SFX_table["6SP_P_whiff"]
-    obj_projectile["ground_bounce_SFX"] = hit_side_move_SFX_table["6SP_P_curse_ball_ground_bounce"]
     obj_projectile["enemy_interact_function"] = function()
         if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) 
         or collision_projectile_hit_confirm_test(obj_projectile,hurt_side_obj_char)
@@ -1120,7 +1120,7 @@ end
 --                              ease_in_SFX ease_out_SFX
 -- animation                    projectile_animation
 -- update/update_sub_frame/draw
--- uncommon                     projectile_exist_countdown projectile_anchor_pos
+-- uncommon                     projectile_name projectile_exist_countdown projectile_anchor_pos
 --                              projectile_buff projectile_buff_f projectile_buff_animation projectile_buff_anchor_pos
 --                              state_cache VFX_hit_front_table VFX_hit_back_table
 -- projectile_init_fix
@@ -1130,8 +1130,29 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
     local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local active_side = active_op_side_obj_char["player_side"]
+    local active_side_projectile_back_table = active_op_side_obj_char["projectile_back_table"]
     local active_side_projectile_sprite_sheet_table = common_game_scene_get_projectile_sprite_sheet_table(active_side)
     local active_side_move_SFX_table = common_game_scene_get_SFX_move(active_side)
+    local function scapegoat_projectile_ease_out(projectile)
+        -- state
+        projectile["state"] = "ease_out"
+        projectile["sprite_sheet"] = "6SP_K_scapegoat_ease_out_projectile"
+        -- init_animation
+        projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_K_projectile_ease_out(
+            active_op_side_obj_char,passive_op_side_obj_char,projectile
+        )
+        init_character_anim_with(
+            projectile,projectile["projectile_animation"]
+        )
+        -- uncommon
+        -- state
+        projectile["projectile_active"] = false
+        -- collision
+        projectile["hurtbox_table"] = {}
+        -- play_SFX
+        play_obj_audio(projectile["ease_out_SFX"])
+        stop_obj_audio(projectile["ease_in_SFX"])
+    end
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 15
@@ -1164,8 +1185,8 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
         active_op_side_obj_char["shot_sys_scapegoat_exist"] = false
     end
     -- enemy_interact_function
-    obj_projectile["projectile_active"] = true
     obj_projectile["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
+    obj_projectile["projectile_active"] = true
     obj_projectile["ease_in_SFX"] = active_side_move_SFX_table["6SP_K_scapegoat_ease_in"]
     obj_projectile["ease_out_SFX"] = active_side_move_SFX_table["6SP_K_scapegoat_ease_out"]
     obj_projectile["enemy_interact_function"] = function()
@@ -1287,26 +1308,10 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
                 )
                 obj_projectile["projectile_exist_countdown"] = obj_projectile["projectile_exist_countdown"] - 1
                 if obj_projectile["projectile_exist_countdown"] <= 0 then
-                    -- state
-                    obj_projectile["state"] = "ease_out"
-                    obj_projectile["sprite_sheet"] = "6SP_K_scapegoat_ease_out_projectile"
-                    -- init_animation
-                    obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_6SP_K_projectile_ease_out(
-                        active_op_side_obj_char,passive_op_side_obj_char,obj_projectile
-                    )
-                    init_character_anim_with(
-                        obj_projectile,obj_projectile["projectile_animation"]
-                    )
-                    -- uncommon
-                    -- state
-                    obj_projectile["projectile_active"] = false
-                    -- collision
-                    obj_projectile["hurtbox_table"] = {}
+                    -- ease_out_transition
+                    scapegoat_projectile_ease_out(obj_projectile)
                     -- shot_sys_scapegoat
                     active_op_side_obj_char["shot_sys_scapegoat_exist"] = false
-                    -- play_SFX
-                    play_obj_audio(obj_projectile["ease_out_SFX"])
-                    stop_obj_audio(obj_projectile["ease_in_SFX"])
                 end
             end,
             ["ease_out"] = function()
@@ -1455,6 +1460,7 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
     obj_projectile["contrast"] = active_op_side_obj_char["contrast"]
     obj_projectile["brightness"] = active_op_side_obj_char["brightness"]
     -- unique
+    obj_projectile["projectile_name"] = "scapegoat"
     obj_projectile["projectile_exist_countdown"] = 240
     obj_projectile["projectile_anchor_pos"] = {185,515}
     obj_projectile["projectile_buff"] = {0,0,0,1,1,1,0,0}
@@ -1474,6 +1480,15 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
     active_op_side_obj_char["y"] - obj_projectile["projectile_buff_anchor_pos"][2]
     obj_projectile["projectile_buff"][5] = active_op_side_obj_char[5]
     -- insert_projectile
+    -- 上一个 scapegoat 还存在时, 先让它 ease_out 收招再召唤新的(场上同时只有一个可用的 scapegoat)
+    for j = 1,#active_side_projectile_back_table do
+        local current_projectile = active_side_projectile_back_table[j]
+        -- 只顶替还存活(ease_in/idle)的; 已在收招/受击的交给它自己的状态机走完
+        if current_projectile["projectile_name"] == "scapegoat"
+        and current_projectile["projectile_active"] then
+            scapegoat_projectile_ease_out(current_projectile)
+        end
+    end
     table.insert(active_op_side_obj_char["projectile_back_table"],obj_projectile)
 end
 function load_game_scene_anim_char_TRM_6SP_K_projectile_ease_in(

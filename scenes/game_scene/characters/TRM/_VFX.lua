@@ -840,7 +840,6 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     else
         obj_VFX["y_offset"] = 400
     end
-    obj_VFX["status_name"] = "TRM_6SP_P_arua"
     obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
@@ -854,6 +853,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     obj_VFX[7] = 0
     obj_VFX[8] = 0
     obj_VFX["state"] = "loop"
+    obj_VFX["status_name"] = "TRM_6SP_P_arua"
     -- frame_animation
     obj_VFX["frame_animation"] = {}
     for i = 0,149 do
