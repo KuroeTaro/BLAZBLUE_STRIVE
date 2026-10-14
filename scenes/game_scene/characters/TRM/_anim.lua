@@ -8546,7 +8546,7 @@ function load_game_scene_anim_char_TRM_4SP_S_4S(
         hit_side_obj_char["active_frame"] = 0
         hit_side_obj_char["recovery_frame"] = 0
         -- input_sys_cache
-        hit_side_obj_char["input_sys_state"] = "none" -- none save load
+        hit_side_obj_char["input_sys_state"] = "save" -- none save load
         common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
         -- collide
         hit_side_obj_char["pushbox"] = {0,-185,120,370}
@@ -8569,11 +8569,6 @@ function load_game_scene_anim_char_TRM_4SP_S_4S(
     res[6] = function()
         -- draw_correction
         hit_side_obj_char[8] = 1
-    end
-    res[11] = function()
-        -- input_sys_cache
-        hit_side_obj_char["input_sys_state"] = "save" -- none save load
-        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
     end
     res[16] = function()
         -- state
@@ -8834,7 +8829,6 @@ function load_game_scene_anim_char_TRM_6SP_S(
         -- state_number
         hit_side_obj_char["friction"] = 5
         hit_side_obj_char["gravity"] = 2.5
-        hit_side_obj_char["ability_gauge"][1] = math.max(0,hit_side_obj_char["ability_gauge"][1] - 50)
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
         hit_side_obj_char["hit_damage_correction_factor"] = 1

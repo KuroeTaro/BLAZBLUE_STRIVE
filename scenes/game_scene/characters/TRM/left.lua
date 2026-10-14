@@ -2881,7 +2881,7 @@ function state_machine_char_game_scene_char_LP_shot_sys()
             if get_character_anim_end_state(
                 self_side_obj_char,self_side_obj_char["shot_sys_animation"]
             ) then
-                if self_side_obj_char["ability_gauge"][1] <= 0 then
+                if shot_sys_at_the_ready_ban_state then
                     character_function_game_scene_TRM_shot_sys_at_the_ready_ease_out_init(
                         self_side_obj_char,opponent_side_obj_char
                     )

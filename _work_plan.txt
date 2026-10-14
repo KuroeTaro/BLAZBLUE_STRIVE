@@ -37,8 +37,4 @@ __WORK_PLAN__
     -- and so call up is toward the inside of the ring Y is negative
     -- the other side is Y positive
 
-
-修改cl动画 命中不改 但是打防动画的CL是崩防 //ok
-音效添加和修正 //ok
-ability_gauge消费算法 //ok
 update_function

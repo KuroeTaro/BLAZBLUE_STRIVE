@@ -922,7 +922,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
                     obj_projectile,obj_projectile["projectile_animation"]
                 ) then
                     obj_projectile[8] = 0
-                    obj_projectile["velocity"] = {obj_projectile[5]*50,-27.5}
+                    obj_projectile["velocity"] = {obj_projectile[5]*60,-22.5}
                     obj_projectile["state"] = "in_air"
                     obj_projectile["hitbox_table"] = {{0,0,110,135},{0,0,135,110}}
                     obj_projectile["gravity"] = 5
@@ -986,7 +986,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
                 -- 这里只做地面反弹判定, 不再自加 velocity, 避免双倍位移与无视慢速/冻结。
                 if obj_projectile["y"] > -25 then
                     obj_projectile["y"] = -25
-                    obj_projectile["velocity"] = {obj_projectile[5]*50,-67.5}
+                    obj_projectile["velocity"] = {obj_projectile[5]*60,-62.5}
                     play_obj_audio(obj_projectile["ground_bounce_SFX"])
                 end
             end,
