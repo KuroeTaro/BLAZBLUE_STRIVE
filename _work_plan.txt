@@ -36,5 +36,5 @@ __WORK_PLAN__
     -- the ground of the ring at y = 0
     -- and so call up is toward the inside of the ring Y is negative
     -- the other side is Y positive
-
+2d j2k TRM_0_wallbreak_hit.png
 update_function

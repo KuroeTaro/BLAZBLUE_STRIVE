@@ -11,7 +11,7 @@ function love.conf(t)
         love.filesystem.write('resolution_config.lua','16000900')
     end
     t.console = true
-    t.window.title = "BLAZBLUE_STRIVE.ver.1/4.005"
+    t.window.title = "BLAZBLUE_STRIVE.ver.1/4.010"
     t.window.vsync = 0
     t.window.msaa = 0
     t.modules.physics = false
