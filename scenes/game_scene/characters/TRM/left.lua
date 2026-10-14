@@ -573,7 +573,7 @@ function load_game_scene_box_anchor_data_LP()
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_soft_knockdown_wallstick_air"] = {}
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_soft_knockdown_wallstick_air"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_soft_knockdown_wallstick_air"] = {}
-    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_soft_knockdown_wallstick_air"][0] = {{0,-120,240,400}}
+    obj_hurtboxs_data_game_scene_char_LP["0_general_hurt_soft_knockdown_wallstick_air"][0] = {{0,-120,240,600}}
     obj_anchor_data_game_scene_char_LP["0_general_hurt_soft_knockdown_wallstick_air"] = {210,345}
     -- 0_general_hurt_hard_knockdown_down
     obj_pushboxs_data_game_scene_char_LP["0_general_hurt_hard_knockdown_down"] = {}
