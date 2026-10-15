@@ -55,9 +55,9 @@ function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
     local obj_camera = obj_stage_game_scene_camera
     obj_VFX["y_offset"] = 0
     if obj_char["height"] == "air" then
-        obj_VFX["y_offset"] = 745
+        obj_VFX["y_offset"] = 645
     else
-        obj_VFX["y_offset"] = 875
+        obj_VFX["y_offset"] = 775
     end
     obj_VFX["life"] = 35
     obj_VFX[1] = obj_char["x"] - obj_char[5]*(860)
@@ -82,9 +82,9 @@ function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
     end
     obj_VFX["draw_sync"] = function()
         if obj_char["height"] == "air" then
-            obj_VFX["y_offset"] = 745
+            obj_VFX["y_offset"] = 645
         else
-            obj_VFX["y_offset"] = 875
+            obj_VFX["y_offset"] = 775
         end
         obj_VFX[1] = obj_char["x"] - obj_char[5]*(860)
         obj_VFX[2] = obj_char["y"] - obj_char[6]*obj_VFX["y_offset"]

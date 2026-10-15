@@ -145,6 +145,9 @@ function character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(
 )
     local random_offset = (math.random(2) == 1) and 1 or 0
     local random_index = math.random(1,2)
+    if self_side_obj_char["shot_sys_curse"] then
+        offset_multiplier = offset_multiplier*0.25
+    end
     if random_index == 1 then
         self_side_obj_char["shot_sys_reticle_stage_pos_current"][1] = opponent_side_obj_char["x"] - 160
             + (math.random()*2 - 1)*offset_multiplier

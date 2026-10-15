@@ -4,17 +4,17 @@ __WORK_PLAN__
 -- 更新碎墙美术资产
 各个必杀
     -- 双手构
-        -- 动画
-        -- shot_sys状态机更新
-        -- 角色状态机更新
-        -- 快速CL条件（满足其一）
-            -- 0.对方处于被打时进入双手构
-            -- 1.对方处于被打防从单手构进入双手构
-        -- 快速瞄准条件（满足其一）
-            -- 0.满足快速CL条件
-            -- 1.对方处于被诅咒状态
-    -- 双手构开枪/蓄力开枪
-    -- 双手构中段
+        -- 动画 //ok
+        -- shot_sys状态机更新 //ok
+        -- 角色状态机更新 //ok
+        -- 快速CL条件（满足其一） //ok
+            -- 0.对方处于被打时进入双手构 //ok
+            -- 1.对方处于被打防从单手构进入双手构 //ok
+        -- 快速瞄准条件（满足其一） //ok
+            -- 0.满足快速CL条件 //ok
+            -- 1.对方处于被诅咒状态 //ok
+    -- 双手构开枪/蓄力开枪 //ok
+    -- 双手构投无敌中段
     -- 双手构打击无敌下端
     -- 双手构全无敌击飞
     -- 链子
@@ -36,5 +36,5 @@ __WORK_PLAN__
     -- the ground of the ring at y = 0
     -- and so call up is toward the inside of the ring Y is negative
     -- the other side is Y positive
-2d j2k TRM_0_wallbreak_hit.png
+
 update_function

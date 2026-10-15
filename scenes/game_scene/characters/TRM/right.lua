@@ -489,7 +489,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_pushboxs_data_game_scene_char_RP["0_wallbreak_hit"][0] = air_pushbox
     obj_hurtboxs_data_game_scene_char_RP["0_wallbreak_hit"] = {}
     obj_hurtboxs_data_game_scene_char_RP["0_wallbreak_hit"][0] = {}
-    obj_anchor_data_game_scene_char_RP["0_wallbreak_hit"] = {280,510}
+    obj_anchor_data_game_scene_char_RP["0_wallbreak_hit"] = {315,510}
     -- 0_wallbreak_hurt_adv
     obj_pushboxs_data_game_scene_char_RP["0_wallbreak_hurt_adv"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_wallbreak_hurt_adv"][0] = air_pushbox
