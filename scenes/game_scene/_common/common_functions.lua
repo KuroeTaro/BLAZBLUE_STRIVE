@@ -43,7 +43,7 @@ function common_game_scene_test_and_apply_wallbreak(
     if (wallhurt_wallstick_on_side_cache ~= 0 and hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"])
     or (hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"])
     then
-        -- apply extra wallbreak health damage and knockout special
+        -- apply_extra_wallbreak_health_damage_and_knockout_special
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = collision_side
         table.insert(
             obj_stage_game_scene_main["wallbreak_active_application_table"],
@@ -271,25 +271,25 @@ function common_game_scene_block_test(hit_obj,hurt_side_obj_char)
     local hurt_side_FD_block =
         test_input_sys_press_or_hold(hurt_side_input["correction_left"])
         or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
-    -- low mid high all
-    -- air non_air
+    -- low_mid_high_all
+    -- air_non_air
     -- FD
-        -- air low ok
-        -- air mid ok
-        -- air high ok
-        -- air all ok
+        -- air_low_ok
+        -- air_mid_ok
+        -- air_high_ok
+        -- air_all_ok
         -- non_air low block_direction == 1 ok
         -- non_air mid block_direction == 4||7 ok
-        -- non_air high ok
-        -- non_air all ok
+        -- non_air_high_ok
+        -- non_air_all_ok
     -- not_FD
-        -- air low ok
-        -- air mid ok
-        -- air all ok
+        -- air_low_ok
+        -- air_mid_ok
+        -- air_all_ok
         -- non_air low block_direction == 1 ok
         -- non_air mid block_direction == 4||7 ok
-        -- non_air high ok
-        -- non_air all ok
+        -- non_air_high_ok
+        -- non_air_all_ok
     if hurt_side_obj_char["hurt_state"] == "idle" and common_game_scene_check_block_direction(hurt_side_obj_char) then
         if hurt_side_FD_block then
             if hurt_side_obj_char["height"] == "air" then
@@ -356,7 +356,7 @@ function common_game_scene_strike_hit_function(hit_side_obj_char,hurt_side_obj_c
         hurt_side_obj_char["hurt_state"] = "counter"
     end
     -- counter
-    if hurt_side_obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
+    if hurt_side_obj_char["hurt_state"] == "counter" then -- idle_unblock_punish_counter_GP_parry
         hit_side_obj_char["hit_damage"] = hit_side_obj_char["hit_damage"]*1.1
         hit_side_obj_char["hit_counter_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
         play_obj_audio(hit_side_obj_char["hit_counter_SFX"])
@@ -374,8 +374,8 @@ function common_game_scene_strike_hit_function(hit_side_obj_char,hurt_side_obj_c
     hit_side_obj_char["active_frame"] = hit_side_obj_char["active_frame"] + 1
 end
 function common_game_scene_strike_hurt_function(hit_side_obj_char,hurt_side_obj_char)
-    -- idle unblock punish counter GP parry
-    -- stand crouch air OTG wallstick
+    -- idle_unblock_punish_counter_GP_parry
+    -- stand_crouch_air_OTG_wallstick
     local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local wallhurt_wallstick_on_side_cache = hurt_side_obj_char["wallhurt_wallstick_on_side"]
@@ -400,20 +400,20 @@ function common_game_scene_strike_hurt_function(hit_side_obj_char,hurt_side_obj_
     if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
         hurt_side_obj_char["hurt_state"] = "counter"
     end
-    -- idle block
+    -- idle_block
     if block_bool then
         common_game_scene_strike_hurt_function_common_block(
             hit_side_obj_char,hurt_side_obj_char,obj_stage_main,obj_camera
         )
     -- GP
-    elseif hurt_side_obj_char["hurt_state"] == "GP" then -- idle unblock punish counter GP parry
-        -- insert GP
+    elseif hurt_side_obj_char["hurt_state"] == "GP" then -- idle_unblock_punish_counter_GP_parry
+        -- insert_GP
         common_game_scene_strike_hurt_function_GP_hurt(
             hit_side_obj_char,hurt_side_obj_char,obj_stage_main,obj_camera
         )
     -- parry
-    elseif hurt_side_obj_char["hurt_state"] == "parry" then -- idle unblock punish counter GP parry
-        -- parry function
+    elseif hurt_side_obj_char["hurt_state"] == "parry" then -- idle_unblock_punish_counter_GP_parry
+        -- parry_function
         hurt_side_obj_char["parry_function"](hit_side_obj_char,hurt_side_obj_char)
     -- idle_and_unblock
     else
@@ -638,7 +638,7 @@ function common_game_scene_projectile_hit_function(hit_side_obj_char,hurt_side_o
     -- block_test
     local block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
     -- counter
-    if hurt_side_obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
+    if hurt_side_obj_char["hurt_state"] == "counter" then -- idle_unblock_punish_counter_GP_parry
         obj_projectile["hit_damage"] = obj_projectile["hit_damage"]*1.1
         obj_projectile["hit_counter_VFX_insert_function"](obj_projectile,hurt_side_obj_char)
         play_obj_audio(obj_projectile["hit_counter_SFX"])
@@ -654,8 +654,8 @@ function common_game_scene_projectile_hit_function(hit_side_obj_char,hurt_side_o
     end
 end
 function common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
-    -- idle unblock punish counter GP parry
-    -- stand crouch air OTG wallstick
+    -- idle_unblock_punish_counter_GP_parry
+    -- stand_crouch_air_OTG_wallstick
     local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local wallhurt_wallstick_on_side_cache = hurt_side_obj_char["wallhurt_wallstick_on_side"]
@@ -680,7 +680,7 @@ function common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_
     if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
         hurt_side_obj_char["hurt_state"] = "counter"
     end
-    -- if block
+    -- if_block
     if block_bool then
         common_game_scene_projectile_hurt_function_common_block(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,obj_stage_main,obj_camera
@@ -690,7 +690,7 @@ function common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,obj_stage_main,obj_camera
         )
     elseif hurt_side_obj_char["hurt_state"] == "parry" then
-        -- parry function
+        -- parry_function
         hurt_side_obj_char["parry_function"](obj_projectile,hurt_side_obj_char)
     else
         -- insert_VFX
@@ -906,8 +906,8 @@ end
 function common_game_scene_projectile_RC_red_yellow_hurt_function(
     hit_side_obj_char,hurt_side_obj_char,obj_projectile
 )
-    -- idle unblock punish counter GP parry
-    -- stand crouch air OTG wallstick
+    -- idle_unblock_punish_counter_GP_parry
+    -- stand_crouch_air_OTG_wallstick
     local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local wallhurt_wallstick_on_side_cache = hurt_side_obj_char["wallhurt_wallstick_on_side"]
@@ -928,7 +928,7 @@ function common_game_scene_projectile_RC_red_yellow_hurt_function(
             hurt_side_obj_char["height"] = "stand"
         end
     end
-    -- if block
+    -- if_block
     if block_bool then
         common_game_scene_projectile_RC_red_yellow_hurt_function_common_block(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,obj_stage_main,obj_camera
@@ -1290,76 +1290,76 @@ function common_game_scene_char_apply_damage_heat(
     hit_side_obj_char,hurt_side_obj_char,block_or_hurt,FD_block
 )
     local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
+    local hurt_damage = hit_side_obj_char["hit_damage"]*hurt_side_obj_char["damage_correction"]
+    local hurt_overdrive_gain =
+        hurt_damage/hurt_side_obj_char["health_gauge"][1]*hit_side_obj_char["overdrive_gauge"][2]
     if block_or_hurt == "hurt" then
         -- hit_side
-            -- apply heat gain
+            -- apply_heat_gain
             hit_side_obj_char["heat_gauge"][1] = math.min(
                 hit_side_obj_char["heat_gauge"][1] +
                 hit_side_obj_char["hit_heat_gain"]*hit_side_obj_char["heat_penalty"],
-                -- hit_heat_gain
                 hit_side_obj_char["heat_gauge"][2]
             )
         -- hurt_side
-            -- apply hit damage
+            -- apply_hit_damage
             hurt_side_obj_char["health_gauge"][1] = math.max(
-                hurt_side_obj_char["health_gauge"][1] -
-                hit_side_obj_char["hit_damage"]*hurt_side_obj_char["damage_correction"],
-                -- hit_damage
+                hurt_side_obj_char["health_gauge"][1] - hurt_damage,
                 0
             )
-            -- apply heat gain
+            -- apply_heat_gain
             hurt_side_obj_char["heat_gauge"][1] = math.min(
                 hurt_side_obj_char["heat_gauge"][1] +
                 hit_side_obj_char["hurt_heat_gain"]*hurt_side_obj_char["heat_penalty"],
-                -- hurt_heat_gain
                 hurt_side_obj_char["heat_gauge"][2]
             )
-            -- apply risk gauge and damage_correction
+            -- apply_overdrive_gain
+            hurt_side_obj_char["overdrive_gauge"][1] = math.min(
+                hurt_side_obj_char["overdrive_gauge"][1] + hurt_overdrive_gain,
+                hurt_side_obj_char["overdrive_gauge"][2]
+            )
+            -- apply_risk_gauge_and_damage_correction
             if hurt_side_obj_char["risk_gauge"][1] < 0 then
                 hurt_side_obj_char["damage_correction"] =
                 hurt_side_obj_char["damage_correction"]*hit_side_obj_char["hit_damage_correction_factor"] -- hit_damage_correction_factor
             else
                 hurt_side_obj_char["risk_gauge"][1] = math.max(hurt_side_obj_char["risk_gauge"][1] - 100,0)
             end
-            -- apply wallbreak damage
+            -- apply_wallbreak_damage
             hurt_side_obj_char["wallstick_gauge"][1] = math.min(
                 hurt_side_obj_char["wallstick_gauge"][1] + hit_side_obj_char["hit_wallbreak_damage"],
-                -- hit_wallbreak_damage
                 hurt_side_obj_char["wallstick_gauge"][2]
             )
     elseif not FD_block then
         -- hit_side
-            -- apply heat gain
+            -- apply_heat_gain
             hit_side_obj_char["heat_gauge"][1] = math.min(
                 hit_side_obj_char["heat_gauge"][1] +
                 hit_side_obj_char["blocked_heat_gain"]*hit_side_obj_char["heat_penalty"],
-                -- blocked_heat_gain
                 hit_side_obj_char["heat_gauge"][2]
             )
         -- hurt_side
-            -- apply heat gain
+            -- apply_heat_gain
             hurt_side_obj_char["heat_gauge"][1] = math.min(
                 hurt_side_obj_char["heat_gauge"][1] +
                 hit_side_obj_char["block_heat_gain"]*hurt_side_obj_char["heat_penalty"],
-                -- block_heat_gain
                 hurt_side_obj_char["heat_gauge"][2]
             )
-            -- apply risk gauge
+            -- apply_risk_gauge
             hurt_side_obj_char["risk_gauge"][1] = math.min(
                 hurt_side_obj_char["risk_gauge"][1] + hit_side_obj_char["block_risk_gauge_gain"],
-                -- block_risk_gauge_gain
                 hurt_side_obj_char["risk_gauge"][2]
             )
     else
         -- hit_side
-            -- apply heat gain
+            -- apply_heat_gain
             hit_side_obj_char["heat_gauge"][1] = math.min(
                 hit_side_obj_char["heat_gauge"][1] +
                 hit_side_obj_char["blocked_heat_gain"]*hit_side_obj_char["heat_penalty"],
                 hit_side_obj_char["heat_gauge"][2]
             )
         -- hurt_side
-            -- apply heat drain
+            -- apply_heat_drain
             hurt_side_obj_char["heat_gauge"][1] = math.max(
                 hurt_side_obj_char["heat_gauge"][1] -
                 hit_side_obj_char["FD_block_heat_drain"]*hurt_side_obj_char["heat_penalty"],
@@ -1372,68 +1372,76 @@ function common_game_scene_projectile_apply_damage_heat(
     hit_side_obj_char,hurt_side_obj_char,obj_projectile,block_or_hurt,FD_block
 )
     local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
+    local hurt_damage = hit_side_obj_char["hit_damage"]*hurt_side_obj_char["damage_correction"]
+    local hurt_overdrive_gain =
+        hurt_damage/hurt_side_obj_char["health_gauge"][1]*hit_side_obj_char["overdrive_gauge"][2]
     if block_or_hurt == "hurt" then
         -- hit_side
-            -- apply heat gain
+            -- apply_heat_gain
             hit_side_obj_char["heat_gauge"][1] = math.min(
                 hit_side_obj_char["heat_gauge"][1] + obj_projectile["hit_heat_gain"]*hit_side_obj_char["heat_penalty"],
                 hit_side_obj_char["heat_gauge"][2]
             )
         -- hurt_side
-            -- apply hit damage
+            -- apply_hit_damage
             hurt_side_obj_char["health_gauge"][1] = math.max(
                 hurt_side_obj_char["health_gauge"][1] -
                 obj_projectile["hit_damage"]*hurt_side_obj_char["damage_correction"],
                 0
             )
-            -- apply heat gain
+            -- apply_heat_gain
             hurt_side_obj_char["heat_gauge"][1] = math.min(
                 hurt_side_obj_char["heat_gauge"][1] +
                 obj_projectile["hurt_heat_gain"]*hurt_side_obj_char["heat_penalty"],
                 hurt_side_obj_char["heat_gauge"][2]
             )
-            -- apply risk gauge and damage_correction
+            -- apply_overdrive_gain
+            hurt_side_obj_char["overdrive_gauge"][1] = math.min(
+                hurt_side_obj_char["overdrive_gauge"][1] + hurt_overdrive_gain,
+                hurt_side_obj_char["overdrive_gauge"][2]
+            )
+            -- apply_risk_gauge_and_damage_correction
             if hurt_side_obj_char["risk_gauge"][1] < 0 then
                 hurt_side_obj_char["damage_correction"] =
                 hurt_side_obj_char["damage_correction"]*hit_side_obj_char["hit_damage_correction_factor"]
             else
                 hurt_side_obj_char["risk_gauge"][1] = math.max(hurt_side_obj_char["risk_gauge"][1] - 100,0)
             end
-            -- apply wallbreak damage
+            -- apply_wallbreak_damage
             hurt_side_obj_char["wallstick_gauge"][1] = math.min(
                 hurt_side_obj_char["wallstick_gauge"][1] + obj_projectile["hit_wallbreak_damage"],
                 hurt_side_obj_char["wallstick_gauge"][2]
             )
     elseif not FD_block then
         -- hit_side
-            -- apply heat gain
+            -- apply_heat_gain
             hit_side_obj_char["heat_gauge"][1] = math.min(
                 hit_side_obj_char["heat_gauge"][1] +
                 obj_projectile["blocked_heat_gain"]*hit_side_obj_char["heat_penalty"],
                 hit_side_obj_char["heat_gauge"][2]
             )
         -- hurt_side
-            -- apply heat gain
+            -- apply_heat_gain
             hurt_side_obj_char["heat_gauge"][1] = math.min(
                 hurt_side_obj_char["heat_gauge"][1] +
                 hit_side_obj_char["block_heat_gain"]*hurt_side_obj_char["heat_penalty"],
                 hurt_side_obj_char["heat_gauge"][2]
             )
-            -- apply risk gauge
+            -- apply_risk_gauge
             hurt_side_obj_char["risk_gauge"][1] = math.min(
                 hurt_side_obj_char["risk_gauge"][1] + hit_side_obj_char["block_risk_gauge_gain"],
                 hurt_side_obj_char["risk_gauge"][2]
             )
     else
         -- hit_side
-            -- apply heat gain
+            -- apply_heat_gain
             hit_side_obj_char["heat_gauge"][1] = math.min(
                 hit_side_obj_char["heat_gauge"][1] +
                 obj_projectile["blocked_heat_gain"]*hit_side_obj_char["heat_penalty"],
                 hit_side_obj_char["heat_gauge"][2]
             )
         -- hurt_side
-            -- apply heat drain
+            -- apply_heat_drain
             hurt_side_obj_char["heat_gauge"][1] = math.max(
                 hurt_side_obj_char["heat_gauge"][1] -
                 obj_projectile["FD_block_heat_drain"]*hurt_side_obj_char["heat_penalty"],

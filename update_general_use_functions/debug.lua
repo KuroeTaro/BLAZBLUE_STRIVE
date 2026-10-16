@@ -398,11 +398,12 @@ function update_character_frame_adv_info_init(self_side_obj_char,opponent_side_o
     self_side_obj_char["last_move_state"] = self_side_obj_char["move_state"]
 end
 function update_character_frame_info(self_side_obj_char,opponent_side_obj_char)
-    if self_side_obj_char["move_state"] == "none" and opponent_side_obj_char["move_state"] ~= "none" then
-        self_side_obj_char["frame_adv"] = self_side_obj_char["frame_adv"] + 1
+    local run_at_current_frame = common_game_scene_character_run_at_this_frame(self_side_obj_char)
+    if not run_at_current_frame then
         return
     end
-    if self_side_obj_char["game_speed"] == 0 or opponent_side_obj_char["game_speed"] == 0 then
+    if self_side_obj_char["move_state"] == "none" and opponent_side_obj_char["move_state"] ~= "none" then
+        self_side_obj_char["frame_adv"] = self_side_obj_char["frame_adv"] + 1
         return
     end
     if self_side_obj_char["move_state"] == "startup" then

@@ -10355,8 +10355,7 @@ function update_game_scene_char_RP_inv_state_countdown()
     local obj_char = obj_char_game_scene_char_RP
     if obj_char["state"] == "hitstop"
     or obj_char["state"] == "hurtstop"
-    or obj_char["state"] == "blockstop"
-    or obj_char["game_speed_force_1_countdown"] > 0 then
+    or obj_char["state"] == "blockstop" then
         return
     end
     if obj_char["strike_inv_countdown"] > 1 then
@@ -10383,8 +10382,7 @@ function update_game_scene_char_RP_positive_bonus_countdown()
     if (not obj_char["positive_bonus"])
     or obj_char["state"] == "hitstop"
     or obj_char["state"] == "hurtstop"
-    or obj_char["state"] == "blockstop"
-    or obj_char["game_speed_force_1_countdown"] > 0 then
+    or obj_char["state"] == "blockstop" then
         return
     end
     if obj_char["positive_bonus_countdown"] > 1 then
@@ -10410,8 +10408,7 @@ function update_game_scene_char_RP_ability_penalty_countdown()
     if (obj_char["ability_penalty"] == 1)
     or obj_char["state"] == "hitstop"
     or obj_char["state"] == "hurtstop"
-    or obj_char["state"] == "blockstop"
-    or obj_char["game_speed_force_1_countdown"] > 0 then
+    or obj_char["state"] == "blockstop" then
         return
     end
     if obj_char["ability_penalty_countdown"] > 1 then
@@ -10426,8 +10423,7 @@ function update_game_scene_char_RP_heat_penalty_countdown()
     if (obj_char["heat_penalty"] == 1)
     or obj_char["state"] == "hitstop"
     or obj_char["state"] == "hurtstop"
-    or obj_char["state"] == "blockstop"
-    or obj_char["game_speed_force_1_countdown"] > 0 then
+    or obj_char["state"] == "blockstop" then
         return
     end
     if obj_char["heat_penalty_countdown"] > 1 then
@@ -10441,8 +10437,7 @@ function update_game_scene_char_RP_overdrive_countdown()
     local obj_char = obj_char_game_scene_char_RP
     if obj_char["state"] == "hitstop"
     or obj_char["state"] == "hurtstop"
-    or obj_char["state"] == "blockstop"
-    or obj_char["game_speed_force_1_countdown"] > 0 then
+    or obj_char["state"] == "blockstop" then
         return
     end
     if obj_char["state"] == "burst_overdrive" then
@@ -10494,8 +10489,7 @@ function update_game_scene_char_RP_shot_sys_curse_countdown()
     if (not obj_char["shot_sys_curse"])
     or obj_char["state"] == "hitstop"
     or obj_char["state"] == "hurtstop"
-    or obj_char["state"] == "blockstop"
-    or obj_char["game_speed_force_1_countdown"] > 0 then
+    or obj_char["state"] == "blockstop" then
         return
     end
     if obj_char["shot_sys_curse_countdown"] > 1

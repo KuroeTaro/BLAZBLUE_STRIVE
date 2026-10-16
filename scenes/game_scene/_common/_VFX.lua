@@ -110,7 +110,7 @@ end
 function insert_VFX_game_scene_char_overdrive_partical(active_op_side_obj_char,passive_op_side_obj_char)
     local side_table = {
         ["L"] = {0,0,1,1,1,1,0,0},
-        ["R"] = {1600,0,1,1,1,1,0,0}
+        ["R"] = {1600,0,1,1,-1,1,0,0}
     }
     local obj_VFX = side_table[active_op_side_obj_char["player_side"]]
     local obj_camera = obj_stage_game_scene_camera

@@ -25,8 +25,7 @@ __WORK_PLAN__
     -- hz24d6246d
 
 -- 5Launcher_hold
--- knockout场景
--- 碎墙的血量伤害应用和碎墙knockout
+-- knockout和碎墙knockout场景
 
 -- 开始界面重做
 -- 联机
@@ -37,4 +36,7 @@ __WORK_PLAN__
     -- and so call up is toward the inside of the ring Y is negative
     -- the other side is Y positive
 
-update_function
+-- 设置积极状态 (通过碎墙获得)
+-- 设置OD槽获得 (受伤和积极状态)
+-- 碎墙的血量伤害应用
+-- 写各个gauge_update_对应的UI（各个子组件的state_machine）
