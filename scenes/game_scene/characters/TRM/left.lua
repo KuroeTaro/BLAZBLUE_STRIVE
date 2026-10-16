@@ -164,21 +164,11 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["hit_counter_SFX"] = nil
     obj_char_game_scene_char_LP["hit_throw_SFX"] = nil
     obj_char_game_scene_char_LP["hit_whiff_SFX"] = nil
-    -- update_function
-    obj_char_game_scene_char_LP["health_gauge_update_function"] = function()
-    end
-    obj_char_game_scene_char_LP["ability_gauge_update_function"] = function()
-    end
-    obj_char_game_scene_char_LP["heat_gauge_update_function"] = function()
-    end
-    obj_char_game_scene_char_LP["overdrive_gauge_update_function"] = function()
-    end
-    obj_char_game_scene_char_LP["risk_gauge_update_function"] = function()
-    end
-    obj_char_game_scene_char_LP["wallstick_gauge_update_function"] = function()
-    end
     -- update_function_cache
-    obj_char_game_scene_char_LP["health_gauge_update_fade_pause_countdown"] = 0
+    obj_char_game_scene_char_LP["health_gauge_update_pause"] = false
+    obj_char_game_scene_char_LP["risk_gauge_update_pause"] = false
+    obj_char_game_scene_char_LP["wallstick_gauge_update_pause"] = false
+    obj_char_game_scene_char_LP["health_gauge_update_pause_countdown"] = 0
     obj_char_game_scene_char_LP["risk_gauge_update_pause_countdown"] = 0
     obj_char_game_scene_char_LP["wallstick_gauge_update_pause_countdown"] = 0
     obj_char_game_scene_char_LP["health_gauge_update_pause_state"] = {
@@ -194,6 +184,36 @@ function load_game_scene_obj_char_LP()
         ["hurtstop"] = true,
         ["wallstick"] = true,
         ["wallbreak_hit"] = true,
+        ["wallbreak_hurt"] = true,
+        ["knockdown"] = true,
+        ["knockdown_recovery"] = true,
+        ["knockout"] = true
+    }
+    obj_char_game_scene_char_LP["risk_gauge_update_pause_state"] = {
+        ["before_ease_in"] = true,
+        ["active_FD_block"] = true,
+        ["block"] = true,
+        ["hurt"] = true,
+        ["throw_success"] = true,
+        ["throw_hurt_success"] = true,
+        ["throw_testing"] = true,
+        ["throw_tested"] = true,
+        ["blockstop"] = true,
+        ["hurtstop"] = true,
+        ["wallstick"] = true,
+        ["wallbreak_hit"] = true,
+        ["wallbreak_hurt"] = true,
+        ["knockdown"] = true,
+        ["knockdown_recovery"] = true,
+        ["knockout"] = true
+    }
+    obj_char_game_scene_char_LP["wallstick_gauge_update_pause_state"] = {
+        ["before_ease_in"] = true,
+        ["hurt"] = true,
+        ["throw_success"] = true,
+        ["throw_hurt_success"] = true,
+        ["hurtstop"] = true,
+        ["wallstick"] = true,
         ["wallbreak_hurt"] = true,
         ["knockdown"] = true,
         ["knockdown_recovery"] = true,
@@ -381,7 +401,6 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["shot_sys_at_the_steady_state_table"] = {
         ["at_the_steady_lock"] = true,
         ["at_the_steady_lock_to_off"] = true,
-        ["at_the_steady_lock_to_ready"] = true,
         ["at_the_steady_shot"] = true
     }
     -- draw_correction
@@ -2732,6 +2751,7 @@ function state_machine_char_game_scene_char_LP()
         end
     }
     if run_at_current_frame then
+        update_game_scene_char_LP_gauge_update_function()
         update_game_scene_char_LP_countdown()
     end
     local this_function = switch[self_side_obj_char["state"]]
@@ -4274,7 +4294,7 @@ function state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver(
     return false
 end
 -- 合并门：等价于依次调用 UA_move -> special_move -> normal_move
-function state_gate_game_scene_char_LP_common_air_to_dash_move(
+function state_gate_game_scene_char_LP_common_air_to_dash_move_PP(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
     -- _4dash_air_backdash
@@ -4308,7 +4328,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move(
         return true
     end
 end
-function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(
+function state_gate_game_scene_char_LP_common_air_to_dash_move_HH(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
     -- _4dash_air_backdash
@@ -4342,7 +4362,7 @@ function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(
         return true
     end
 end
-function state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_4dash_only(
+function state_gate_game_scene_char_LP_common_air_to_dash_move_HP(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
     -- _4dash_air_backdash
@@ -5306,7 +5326,7 @@ function state_gate_game_scene_char_LP_from_throw_success(
         -- air
         if self_side_obj_char["height"] == "air" then
             -- _common_air_to_move
-            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(
+            if state_gate_game_scene_char_LP_common_air_to_dash_move_HH(
                 self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
             ) then
                 return true
@@ -5482,7 +5502,7 @@ function state_gate_game_scene_char_LP_from_throw_tech(
             )
             self_side_obj_char["state"] = "7_8_9_jump_air"
             -- _common_air_to_move
-            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(
+            if state_gate_game_scene_char_LP_common_air_to_dash_move_HH(
                 self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
             ) then
                 return true
@@ -6713,7 +6733,7 @@ function state_gate_game_scene_char_LP_from_7_8_9_jump_air(
     -- _common_air_idle_to_move
     if self_side_obj_char["idle_cancel"] then
         -- _common_air_idle_to_move
-        if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_4dash_only(
+        if state_gate_game_scene_char_LP_common_air_to_dash_move_HP(
             self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
         ) then
             -- save_input_sys_cache_from_pre_jump_and_7_8_9_jump_air
@@ -7283,7 +7303,7 @@ function state_gate_game_scene_char_LP_from_burst_RC_red(
                 self_side_obj_char,self_side_obj_char["character_animation"]
             )
             -- _common_air_idle_to_move
-            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(
+            if state_gate_game_scene_char_LP_common_air_to_dash_move_HH(
                 self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
             ) then
                 return true
@@ -7414,7 +7434,7 @@ function state_gate_game_scene_char_LP_from_burst_RC_blue(
                 self_side_obj_char,self_side_obj_char["character_animation"]
             )
             -- _common_air_idle_to_move
-            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(
+            if state_gate_game_scene_char_LP_common_air_to_dash_move_HH(
                 self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
             ) then
                 return true
@@ -7540,7 +7560,7 @@ function state_gate_game_scene_char_LP_from_burst_RC_purple(
                 self_side_obj_char,self_side_obj_char["character_animation"]
             )
             -- _common_air_idle_to_move
-            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(
+            if state_gate_game_scene_char_LP_common_air_to_dash_move_HH(
                 self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
             ) then
                 return true
@@ -7604,7 +7624,7 @@ function state_gate_game_scene_char_LP_from_burst_RC_yellow(
                 self_side_obj_char,self_side_obj_char["character_animation"]
             )
             -- _common_air_idle_to_move
-            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(
+            if state_gate_game_scene_char_LP_common_air_to_dash_move_HH(
                 self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
             ) then
                 return true
@@ -7664,7 +7684,7 @@ function state_gate_game_scene_char_LP_from_burst_overdrive(
                 self_side_obj_char,self_side_obj_char["character_animation"]
             )
             -- _common_air_idle_to_move
-            if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(
+            if state_gate_game_scene_char_LP_common_air_to_dash_move_HH(
                 self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
             ) then
                 return true
@@ -10248,6 +10268,79 @@ function draw_game_scene_char_LP_black_overlay()
         object["draw"]()
     end
 end
+-- gauge_update_function
+function update_game_scene_char_LP_health_gauge_update_function()
+    local obj_char = obj_char_game_scene_char_LP
+    -- update_if_not_health_gauge_update_pause
+    if obj_char["health_gauge_update_pause_state"][obj_char["state"]] then
+        obj_char["health_gauge_update_pause"] = true
+        obj_char["health_gauge_update_pause_countdown"] = 15
+    end
+    if not obj_char["health_gauge_update_pause"] then
+        obj_char["health_gauge"][2] =
+        math.max(obj_char["health_gauge"][1],obj_char["health_gauge"][2] - 25)
+    end
+end
+function update_game_scene_char_LP_ability_gauge_update_function()
+    -- no_update_in_this_character
+end
+function update_game_scene_char_LP_heat_gauge_update_function()
+    local self_side_obj_char = obj_char_game_scene_char_LP
+    local opponent_side_obj_char = obj_char_game_scene_char_RP
+    -- update_if_positive_bonus
+    if self_side_obj_char["positive_bonus"] then
+        self_side_obj_char["heat_gauge"][1] =
+        math.min(self_side_obj_char["heat_gauge"][1] + 0.25,self_side_obj_char["heat_gauge"][2])
+    end
+    -- update_if_enclose
+    if self_side_obj_char["velocity"][1]*(opponent_side_obj_char["x"]-self_side_obj_char["x"]) > 0 
+    and self_side_obj_char["move_state"] == "none"
+    and math.abs(self_side_obj_char["velocity"][1]) > 20.0 
+    then
+        self_side_obj_char["heat_gauge"][1] =
+        math.min(self_side_obj_char["heat_gauge"][1] + 0.25,self_side_obj_char["heat_gauge"][2])
+    end
+end
+function update_game_scene_char_LP_overdrive_gauge_update_function()
+    local obj_char = obj_char_game_scene_char_LP
+    -- update_if_positive_bonus
+    if obj_char["positive_bonus"] then
+        obj_char["overdrive_gauge"][1] =
+        math.min(obj_char["overdrive_gauge"][1] + 1.25,obj_char["overdrive_gauge"][2])
+    end
+end
+function update_game_scene_char_LP_risk_gauge_update_function()
+    local obj_char = obj_char_game_scene_char_LP
+    -- update_if_not_risk_gauge_update_pause
+    if obj_char["risk_gauge_update_pause_state"][obj_char["state"]] then
+        obj_char["risk_gauge_update_pause"] = true
+        obj_char["risk_gauge_update_pause_countdown"] = 120
+    end
+    if not obj_char["risk_gauge_update_pause"] then
+        obj_char["risk_gauge"][1] =
+        math.max(obj_char["risk_gauge"][1] - 1.25,0)
+    end
+end
+function update_game_scene_char_LP_wallstick_gauge_update_function()
+    local obj_char = obj_char_game_scene_char_LP
+    -- update_if_not_wallstick_gauge_update_pause
+    if obj_char["wallstick_gauge_update_pause_state"][obj_char["state"]] then
+        obj_char["wallstick_gauge_update_pause"] = true
+        obj_char["wallstick_gauge_update_pause_countdown"] = 15
+    end
+    if not obj_char["wallstick_gauge_update_pause"] then
+        obj_char["wallstick_gauge"][1] =
+        math.max(obj_char["wallstick_gauge"][1] - 0.25,0)
+    end
+end
+function update_game_scene_char_LP_gauge_update_function()
+    update_game_scene_char_LP_health_gauge_update_function()
+    update_game_scene_char_LP_ability_gauge_update_function()
+    update_game_scene_char_LP_heat_gauge_update_function()
+    update_game_scene_char_LP_overdrive_gauge_update_function()
+    update_game_scene_char_LP_risk_gauge_update_function()
+    update_game_scene_char_LP_wallstick_gauge_update_function()
+end
 -- countdown
     -- inv
     -- positive_bonus
@@ -10304,10 +10397,13 @@ function update_game_scene_char_LP_positive_bonus_countdown()
         obj_char["positive_bonus_countdown"] = 0
     end
 end
-function update_game_scene_char_LP_health_gauge_update_fade_pause_countdown()
+function update_game_scene_char_LP_health_gauge_update_pause_countdown()
     local obj_char = obj_char_game_scene_char_LP
-    obj_char["health_gauge_update_fade_pause_countdown"] = 
-    math.max(0,obj_char["health_gauge_update_fade_pause_countdown"] - 1)
+    obj_char["health_gauge_update_pause_countdown"] = 
+    math.max(0,obj_char["health_gauge_update_pause_countdown"] - 1)
+    if obj_char["health_gauge_update_pause_countdown"] == 0 then
+        obj_char["health_gauge_update_pause"] = false
+    end
 end
 function update_game_scene_char_LP_ability_penalty_countdown()
     local obj_char = obj_char_game_scene_char_LP
@@ -10379,13 +10475,19 @@ function update_game_scene_char_LP_overdrive_countdown()
 end
 function update_game_scene_char_LP_risk_gauge_update_pause_countdown()
     local obj_char = obj_char_game_scene_char_LP
-    obj_char["wallstick_gauge_update_pause_countdown"] = 
-    math.max(0,obj_char["wallstick_gauge_update_pause_countdown"] - 1)
+    obj_char["risk_gauge_update_pause_countdown"] = 
+    math.max(0,obj_char["risk_gauge_update_pause_countdown"] - 1)
+    if obj_char["risk_gauge_update_pause_countdown"] == 0 then
+        obj_char["risk_gauge_update_pause"] = false
+    end
 end
 function update_game_scene_char_LP_wallstick_gauge_update_pause_countdown()
     local obj_char = obj_char_game_scene_char_LP
     obj_char["wallstick_gauge_update_pause_countdown"] = 
     math.max(0,obj_char["wallstick_gauge_update_pause_countdown"] - 1)
+    if obj_char["wallstick_gauge_update_pause_countdown"] == 0 then
+        obj_char["wallstick_gauge_update_pause"] = false
+    end
 end
 function update_game_scene_char_LP_shot_sys_curse_countdown()
     local obj_char = obj_char_game_scene_char_LP
@@ -10408,7 +10510,7 @@ function update_game_scene_char_LP_countdown()
     -- countdown
     update_game_scene_char_LP_inv_state_countdown()
     update_game_scene_char_LP_positive_bonus_countdown()
-    update_game_scene_char_LP_health_gauge_update_fade_pause_countdown()
+    update_game_scene_char_LP_health_gauge_update_pause_countdown()
     update_game_scene_char_LP_ability_penalty_countdown()
     update_game_scene_char_LP_heat_penalty_countdown()
     update_game_scene_char_LP_overdrive_countdown()

@@ -68,7 +68,7 @@ if 条件  (709 行)  随机样例：
  146  scenes/game_scene/characters/TRM/left.lua           :3411
       if self_side_obj_char["y"] < -320 and test_input_sys_press(self_side_input["dash"]) and self_side_obj_char["air_move"]["air_dash"][1] > 0 then
  165  scenes/game_scene/characters/TRM/left.lua           :4170
-      if state_gate_game_scene_char_LP_common_air_to_dash_move_hold_ver_all(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
+      if state_gate_game_scene_char_LP_common_air_to_dash_move_HH(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
  148  scenes/game_scene/characters/TRM/left.lua           :4457
       if state_gate_game_scene_char_LP_from_7_8_9_jump_air(self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char) then
  158  scenes/game_scene/characters/TRM/left.lua           :4729

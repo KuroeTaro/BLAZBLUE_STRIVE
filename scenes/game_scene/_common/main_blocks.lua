@@ -458,8 +458,6 @@ function update_game_scene_training_main()
     update_game_scene_test_and_apply_wallstick()
     -- 更新application_table
     update_game_scene_application_table()
-    -- 更新资源槽
-    update_game_scene_gauge()
     -- 更新场景
     update_game_scene_stage()
     -- 更新HUD
@@ -657,26 +655,6 @@ function update_game_scene_gravity()
         if current_projectile["gravity_update_function"] then
             current_projectile["gravity_update_function"]()
         end
-    end
-end
-function update_game_scene_gauge()
-    local char_LP = obj_char_game_scene_char_LP
-    local char_RP = obj_char_game_scene_char_RP
-    local LP_run_at_this_frame = common_game_scene_character_run_at_this_frame(char_LP)
-    local RP_run_at_this_frame = common_game_scene_character_run_at_this_frame(char_RP)
-    if LP_run_at_this_frame then
-        char_LP["health_gauge_update_function"]()
-        char_LP["overdrive_gauge_update_function"]()
-        char_LP["ability_gauge_update_function"]()
-        char_LP["risk_gauge_update_function"]()
-        char_LP["wallstick_gauge_update_function"]()
-    end
-    if RP_run_at_this_frame then
-        char_RP["health_gauge_update_function"]()
-        char_RP["overdrive_gauge_update_function"]()
-        char_RP["ability_gauge_update_function"]()
-        char_RP["risk_gauge_update_function"]()
-        char_RP["wallstick_gauge_update_function"]()
     end
 end
 function update_game_scene_application_table()

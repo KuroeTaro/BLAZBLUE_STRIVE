@@ -248,7 +248,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main(
         -- state_number
         obj_projectile["hit_damage"] = 300.0
         obj_projectile["hit_damage_correction_factor"] = 1
-        obj_projectile["hit_heat_gain"] = 10.0
+        obj_projectile["hit_heat_gain"] = 5.0
         obj_projectile["hit_wallbreak_damage"] = 20.0
         obj_projectile["hurt_heat_gain"] = 2.0
         obj_projectile["blocked_heat_gain"] = 8.0
@@ -1858,7 +1858,7 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_main(
         -- state_number
         -- hit_damage 已由 insert_..._shot 依 clean_hit 决定
         obj_projectile["hit_damage_correction_factor"] = 1
-        obj_projectile["hit_heat_gain"] = 10.0
+        obj_projectile["hit_heat_gain"] = 5.0
         obj_projectile["hit_wallbreak_damage"] = 20.0
         obj_projectile["hurt_heat_gain"] = 2.0
         obj_projectile["blocked_heat_gain"] = 8.0
@@ -1933,8 +1933,8 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_hurt(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             fix_direction,velocity_center
         )
-        common_game_scene_char_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"hurt",false
+        common_game_scene_projectile_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",false
         )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
@@ -2044,8 +2044,8 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_ground_b
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             fix_direction,velocity_center
         )
-        common_game_scene_char_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
+        common_game_scene_projectile_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
@@ -2176,8 +2176,8 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_air_bloc
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             fix_direction,velocity_center
         )
-        common_game_scene_char_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
+        common_game_scene_projectile_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
@@ -2304,8 +2304,8 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_clean_hi
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             fix_direction,velocity_center
         )
-        common_game_scene_char_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
+        common_game_scene_projectile_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
@@ -2438,8 +2438,8 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_clean_hi
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             fix_direction,velocity_center
         )
-        common_game_scene_char_apply_damage_heat(
-            hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
+        common_game_scene_projectile_apply_damage_heat(
+            hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
         hurt_side_obj_char["wallhurt_wallstick_on_side"] = 0
