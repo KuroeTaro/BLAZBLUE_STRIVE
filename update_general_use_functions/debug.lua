@@ -443,7 +443,9 @@ function draw_debug_info_all(x_offset,y_offset)
     -- love.graphics.print("Global variables: " .. globalCount,250+x_offset,90+y_offset)
     -- 绘制角色帧数
     if obj_char_game_scene_char_LP and obj_char_game_scene_char_RP then
-        love.graphics.print("LP_current_f : " .. obj_char_game_scene_char_LP["f"],0 + x_offset,315 + 15*3 + y_offset)
+        love.graphics.print(
+            "LP_current_f : " .. obj_char_game_scene_char_LP["f"],0 + x_offset,315 + 15*3 + y_offset
+        )
         love.graphics.print(
             "LP_startup   : " .. obj_char_game_scene_char_LP["startup_frame"],0 + x_offset,315 + 15*4 + y_offset
         )
@@ -477,7 +479,9 @@ function draw_debug_info_all(x_offset,y_offset)
             "LP_direction_input : " .. obj_char_game_scene_char_LP["direction_input"],0 + x_offset,
             315 + 15*13 + y_offset
         )
-        love.graphics.print("RP_current_f : " .. obj_char_game_scene_char_RP["f"],300 + x_offset,315 + 15*3 + y_offset)
+        love.graphics.print(
+            "RP_current_f : " .. obj_char_game_scene_char_RP["f"],300 + x_offset,315 + 15*3 + y_offset
+        )
         love.graphics.print(
             "RP_startup   : " .. obj_char_game_scene_char_RP["startup_frame"],300 + x_offset,315 + 15*4 + y_offset
         )
@@ -516,8 +520,12 @@ function draw_debug_info_all(x_offset,y_offset)
     love.graphics.print(
         "DEBUG_TRAINNING_COUNTER : " .. tostring(DEBUG_TRAINNING_COUNTER),250 + x_offset,170 + 15*0 + y_offset
     )
-    love.graphics.print("DEBUG_TRAINNING_HEIGHT : " .. DEBUG_TRAINNING_HEIGHT,250 + x_offset,170 + 15*1 + y_offset)
-    love.graphics.print("DEBUG_TRAINNING_BLOCK : " .. DEBUG_TRAINNING_BLOCK,250 + x_offset,170 + 15*2 + y_offset)
+    love.graphics.print(
+        "DEBUG_TRAINNING_HEIGHT : " .. DEBUG_TRAINNING_HEIGHT,250 + x_offset,170 + 15*1 + y_offset
+    )
+    love.graphics.print(
+        "DEBUG_TRAINNING_BLOCK : " .. DEBUG_TRAINNING_BLOCK,250 + x_offset,170 + 15*2 + y_offset
+    )
     love.graphics.print(
         "DEBUG_TRAINNING_WALLSTICK_SOFT_RECOVER_POS : " .. DEBUG_TRAINNING_WALLSTICK_SOFT_RECOVER_POS,250 + x_offset,
         170 + 15*3 + y_offset
