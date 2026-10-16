@@ -122,7 +122,6 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
                 -- state_number
                 obj_projectile["hit_damage"] = obj_projectile["hit_damage"]*1.1
                 -- insert_VFX
-                insert_VFX_game_scene_char_TRM_oroboros_blast_trajectory(hit_side_obj_char,5)
                 insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(
                     hit_side_obj_char,hurt_side_obj_char
                 )
@@ -131,7 +130,6 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
                 stop_obj_audio(obj_projectile["hit_whiff_SFX"])
             elseif not hurt_side_block_bool then
                 -- insert_VFX
-                insert_VFX_game_scene_char_TRM_oroboros_blast_trajectory(hit_side_obj_char,5)
                 insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(
                     hit_side_obj_char,hurt_side_obj_char
                 )
@@ -140,7 +138,6 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
                 stop_obj_audio(obj_projectile["hit_whiff_SFX"])
             elseif hurt_side_block_bool then
                 -- insert_VFX
-                insert_VFX_game_scene_char_TRM_oroboros_blast_trajectory(hit_side_obj_char,5)
                 insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(
                     hit_side_obj_char,hurt_side_obj_char
                 )
@@ -1737,8 +1734,7 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
                 -- state_number
                 obj_projectile["hit_damage"] = obj_projectile["hit_damage"]*1.1
                 -- insert_VFX
-                insert_VFX_game_scene_char_TRM_oroboros_blast_trajectory(hit_side_obj_char,5)
-                insert_VFX_game_scene_char_blast_special(hit_side_obj_char,hurt_side_obj_char)
+                insert_VFX_game_scene_char_blast_special_projectile(hit_side_obj_char,hurt_side_obj_char)
                 insert_VFX_game_scene_char_TRM_4SP_S_H_at_the_steady_projectile_hit_blast(
                     hit_side_obj_char,hurt_side_obj_char
                 )
@@ -1747,8 +1743,7 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
                 stop_obj_audio(obj_projectile["hit_whiff_SFX"])
             elseif not hurt_side_block_bool then
                 -- insert_VFX
-                insert_VFX_game_scene_char_TRM_oroboros_blast_trajectory(hit_side_obj_char,5)
-                insert_VFX_game_scene_char_blast_special(hit_side_obj_char,hurt_side_obj_char)
+                insert_VFX_game_scene_char_blast_special_projectile(hit_side_obj_char,hurt_side_obj_char)
                 insert_VFX_game_scene_char_TRM_4SP_S_H_at_the_steady_projectile_hit_blast(
                     hit_side_obj_char,hurt_side_obj_char
                 )
@@ -1757,7 +1752,6 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
                 stop_obj_audio(obj_projectile["hit_whiff_SFX"])
             elseif hurt_side_block_bool then
                 -- insert_VFX
-                insert_VFX_game_scene_char_TRM_oroboros_blast_trajectory(hit_side_obj_char,5)
                 insert_VFX_game_scene_char_TRM_4SP_S_H_at_the_steady_projectile_hit_blast(
                     hit_side_obj_char,hurt_side_obj_char
                 )

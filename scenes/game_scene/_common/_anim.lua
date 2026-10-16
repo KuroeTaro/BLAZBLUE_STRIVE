@@ -4773,7 +4773,7 @@ function load_game_scene_anim_char_common_burst_overdrive(
         self_side_obj_char[8] = 0
         -- camera_animation_load
         self_side_obj_char["camera_x_shake_anim"],self_side_obj_char["camera_y_shake_anim"] =
-        common_game_scene_overdrive_load_camera_shake_anim()
+        common_game_scene_overdrive_load_camera_shake_anim(2.0)
         self_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
         -- camera_animation_application
         table.insert(

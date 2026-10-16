@@ -26,7 +26,7 @@ state_gate_game_scene_char_LP_from_<当前状态>(...)  ← 状态门: 判断是
 
 关键点:
 
-- **主分发函数**: `state_machine_char_game_scene_char_LP/RP()`(`left.lua` L1680 / `right.lua` L1680)。它只做两件事: ①按 `obj["state"]` 查 switch 表执行该状态的帧逻辑; ②每帧更新 `update_game_scene_char_LP_uncommon_countdown()`。
+- **主分发函数**: `state_machine_char_game_scene_char_LP/RP()`(`left.lua` L1680 / `right.lua` L1680)。它只做两件事: ①按 `obj["state"]` 查 switch 表执行该状态的帧逻辑; ②每帧更新 `update_game_scene_char_LP_countdown()`。
 - **状态门(gate)**: `state_gate_..._from_<state>()`, 一个状态对应一个门, 门内决定「什么时候、能否进入哪个新状态」。命中后直接改写 `obj["state"]` 并 `return true` 终止本帧判定。
 - **公共门(common)**: `state_gate_..._common_<...>()`, 是**从任意姿态/状态起手**共用的一套「判定入口」, 例如 `common_ground_to_attack_move` = 「若按下任意地面普通技则进入对应状态」, 在多个状态门里被复用。
 - 门函数**可互相调用**: `from_A` 内部经常会先切到中立态, 然后马上调用 `from_5_stand_idle`/`common_*` 再继续判断(实现「收招后立刻又能出下一招」)。

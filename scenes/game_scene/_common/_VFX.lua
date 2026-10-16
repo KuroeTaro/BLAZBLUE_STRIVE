@@ -2456,7 +2456,7 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
     active_op_side_obj_char["VFX_hit_back_table"] = {}
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
-    obj_VFX["life"] = 13
+    obj_VFX["life"] = 26
     obj_VFX["r_cache"] = r_table_cache
     obj_VFX["x_table"] = obj_x_table
     obj_VFX["y_table"] = obj_y_table
@@ -2487,6 +2487,446 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
     obj_VFX["animation"][24] = 6
     obj_VFX["animation"]["prop"] = 8
     obj_VFX["animation"]["length"] = 26
+    obj_VFX["animation"]["loop"] = false
+    obj_VFX["update"] = function()
+        if active_op_side_obj_char["state"] == "hitstop" then
+            return
+        end
+        frame_animator(
+            obj_VFX,obj_VFX["animation"]
+        )
+        obj_VFX["life"] = obj_VFX["life"] - 1
+    end
+    obj_VFX["draw_sync"] = function()
+        local x = -active_op_side_obj_char[5]*(active_op_side_obj_char["x"] - passive_op_side_obj_char["x"])
+        local y = -active_op_side_obj_char[6]*((active_op_side_obj_char["y"] - passive_op_side_obj_char["y"]) + 100)
+        local dx = -1410
+        local dy = -200
+        local center_black_offset = {}
+        local center_white_offset = {}
+        local active_op_r0 = (0.523 + (math.random()*0.087))*active_op_side_obj_char[5]
+        local r_table_cache = {
+            active_op_r0,
+            active_op_r0 + (1.570 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5],
+            active_op_r0 + (3.141 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5],
+            active_op_r0 + (4.712 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5]
+        }
+        local rot_x_table_cache = {
+            dx*active_op_side_obj_char[5]*math.cos(r_table_cache[1]) -
+            dy*active_op_side_obj_char[6]*math.sin(r_table_cache[1]),
+            dx*active_op_side_obj_char[5]*math.cos(r_table_cache[2]) -
+            dy*active_op_side_obj_char[6]*math.sin(r_table_cache[2]),
+            dx*active_op_side_obj_char[5]*math.cos(r_table_cache[3]) -
+            dy*active_op_side_obj_char[6]*math.sin(r_table_cache[3]),
+            dx*active_op_side_obj_char[5]*math.cos(r_table_cache[4]) -
+            dy*active_op_side_obj_char[6]*math.sin(r_table_cache[4])
+        }
+        local rot_y_table_cache = {
+            dx*active_op_side_obj_char[5]*math.sin(r_table_cache[1]) +
+            dy*active_op_side_obj_char[6]*math.cos(r_table_cache[1]),
+            dx*active_op_side_obj_char[5]*math.sin(r_table_cache[2]) +
+            dy*active_op_side_obj_char[6]*math.cos(r_table_cache[2]),
+            dx*active_op_side_obj_char[5]*math.sin(r_table_cache[3]) +
+            dy*active_op_side_obj_char[6]*math.cos(r_table_cache[3]),
+            dx*active_op_side_obj_char[5]*math.sin(r_table_cache[4]) +
+            dy*active_op_side_obj_char[6]*math.cos(r_table_cache[4])
+        }
+        local obj_x_table = {
+            active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[1],
+            active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[2],
+            active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[3],
+            active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[4]
+        }
+        local obj_y_table = {
+            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[1],
+            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[2],
+            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[3],
+            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[4]
+        }
+        local obj_center = {
+            active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x - 500),
+            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y - 500)
+        }
+        obj_VFX["r_cache"] = r_table_cache
+        obj_VFX["x_table"] = obj_x_table
+        obj_VFX["y_table"] = obj_y_table
+        obj_VFX["center_table"] = obj_center
+        obj_VFX["sub_obj"] = {
+            [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+                active_op_side_obj_char[6],r_table_cache[1],0},
+            [2] = {obj_x_table[2],obj_y_table[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+                active_op_side_obj_char[6],r_table_cache[2],0},
+            [3] = {obj_x_table[3],obj_y_table[3],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+                active_op_side_obj_char[6],r_table_cache[3],0},
+            [4] = {obj_x_table[4],obj_y_table[4],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+                active_op_side_obj_char[6],r_table_cache[4],0},
+            [5] = {obj_center[1],obj_center[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+                active_op_side_obj_char[6],0,0}
+        }
+        obj_VFX["draw_sync"] = function() end
+    end
+    obj_VFX["draw"] = function()
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_special_lighting_0
+        obj_VFX["draw_sync"]()
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX["sub_obj"][1],image_sprite_sheet,""..obj_VFX[8]..""
+        )
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX["sub_obj"][3],image_sprite_sheet,""..obj_VFX[8]..""
+        )
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_special_lighting_1
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX["sub_obj"][2],image_sprite_sheet,""..obj_VFX[8]..""
+        )
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX["sub_obj"][4],image_sprite_sheet,""..obj_VFX[8]..""
+        )
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_special_radial
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX["sub_obj"][5],image_sprite_sheet,""..obj_VFX[8]..""
+        )
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+    end
+    table.insert(active_op_side_obj_char["VFX_hit_back_table"],obj_VFX)
+    -- partical
+    local obj_VFX = {0,0,0,1,1,1,0,0}
+    obj_VFX["life"] = 30
+    obj_VFX[1] = obj_camera["3d_pos_x"] + obj_camera["enclose_position_offset"][1] - 900
+    obj_VFX[2] = obj_camera["3d_pos_y"] + obj_camera["enclose_position_offset"][2] - 550
+    obj_VFX[3] = 0
+    obj_VFX[4] = 1
+    obj_VFX[5] = 1
+    obj_VFX[6] = 1
+    obj_VFX[7] = 0
+    obj_VFX[8] = 0
+    obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["animation"] = {}
+    for i = 0,29 do
+        obj_VFX["animation"][i] = i
+    end
+    obj_VFX["animation"]["prop"] = 8
+    obj_VFX["animation"]["length"] = 30
+    obj_VFX["animation"]["loop"] = false
+    init_frame_anim_without(
+        obj_VFX,obj_VFX["animation"]
+    )
+    obj_VFX["update"] = function()
+        if active_op_side_obj_char["state"] == "hitstop" then
+            return
+        end
+        frame_animator(
+            obj_VFX,obj_VFX["animation"]
+        )
+        obj_VFX["life"] = obj_VFX["life"] - 1
+    end
+    obj_VFX["draw_sync"] = function()
+        obj_VFX[1] = obj_camera["3d_pos_x"] + obj_camera["enclose_position_offset"][1] - 900
+        obj_VFX[2] = obj_camera["3d_pos_y"] + obj_camera["enclose_position_offset"][2] - 550
+        obj_VFX["draw_sync"] = function() end
+    end
+    obj_VFX["draw"] = function()
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_partical_ver1_counter
+        obj_VFX["draw_sync"]()
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+        )
+        love.graphics.setBlendMode("add")
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setBlendMode("alpha")
+    end
+    table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
+end
+function insert_VFX_game_scene_char_blast_special_projectile(active_op_side_obj_char,passive_op_side_obj_char)
+    -- x y z opacity sx sy r f
+    local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
+    local x = -active_op_side_obj_char[5]*(active_op_side_obj_char["x"] - passive_op_side_obj_char["x"])
+    local y = -active_op_side_obj_char[6]*((active_op_side_obj_char["y"] - passive_op_side_obj_char["y"]) + 100)
+    local dx = -1410
+    local dy = -200
+    local center_black_offset = {}
+    local center_white_offset = {}
+    local active_op_r0 = (0.523 + (math.random()*0.087))*active_op_side_obj_char[5]
+    local r_table_cache = {
+        active_op_r0,
+        active_op_r0 + (1.570 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5],
+        active_op_r0 + (3.141 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5],
+        active_op_r0 + (4.712 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5]
+    }
+    local rot_x_table_cache = {
+        dx*active_op_side_obj_char[5]*math.cos(r_table_cache[1]) -
+        dy*active_op_side_obj_char[6]*math.sin(r_table_cache[1]),
+        dx*active_op_side_obj_char[5]*math.cos(r_table_cache[2]) -
+        dy*active_op_side_obj_char[6]*math.sin(r_table_cache[2]),
+        dx*active_op_side_obj_char[5]*math.cos(r_table_cache[3]) -
+        dy*active_op_side_obj_char[6]*math.sin(r_table_cache[3]),
+        dx*active_op_side_obj_char[5]*math.cos(r_table_cache[4]) -
+        dy*active_op_side_obj_char[6]*math.sin(r_table_cache[4])
+    }
+    local rot_y_table_cache = {
+        dx*active_op_side_obj_char[5]*math.sin(r_table_cache[1]) +
+        dy*active_op_side_obj_char[6]*math.cos(r_table_cache[1]),
+        dx*active_op_side_obj_char[5]*math.sin(r_table_cache[2]) +
+        dy*active_op_side_obj_char[6]*math.cos(r_table_cache[2]),
+        dx*active_op_side_obj_char[5]*math.sin(r_table_cache[3]) +
+        dy*active_op_side_obj_char[6]*math.cos(r_table_cache[3]),
+        dx*active_op_side_obj_char[5]*math.sin(r_table_cache[4]) +
+        dy*active_op_side_obj_char[6]*math.cos(r_table_cache[4])
+    }
+    local obj_x_table = {
+        active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[1],
+        active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[2],
+        active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[3],
+        active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[4]
+    }
+    local obj_y_table = {
+        active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[1],
+        active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[2],
+        active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[3],
+        active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[4]
+    }
+    local obj_center = {
+        active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x - 500),
+        active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y - 500)
+    }
+    active_op_side_obj_char["VFX_hit_front_table"] = {}
+    active_op_side_obj_char["VFX_hit_back_table"] = {}
+    passive_op_side_obj_char["VFX_hit_front_table"] = {}
+    passive_op_side_obj_char["VFX_hit_back_table"] = {}
+    obj_VFX["life"] = 37
+    obj_VFX["r_cache"] = r_table_cache
+    obj_VFX["x_table"] = obj_x_table
+    obj_VFX["y_table"] = obj_y_table
+    obj_VFX["center_table"] = obj_center
+    -- x y z opacity sx sy r f
+    obj_VFX["sub_obj"] = {
+        [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+            active_op_side_obj_char[6],r_table_cache[1],0},
+        [2] = {obj_x_table[2],obj_y_table[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+            active_op_side_obj_char[6],r_table_cache[2],0},
+        [3] = {obj_x_table[3],obj_y_table[3],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+            active_op_side_obj_char[6],r_table_cache[3],0},
+        [4] = {obj_x_table[4],obj_y_table[4],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+            active_op_side_obj_char[6],r_table_cache[4],0},
+        [5] = {obj_center[1],obj_center[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+            active_op_side_obj_char[6],0,0}
+    }
+    obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["animation"] = {}
+    obj_VFX["animation"][0] = 0
+    obj_VFX["animation"][17] = 1
+    obj_VFX["animation"][22] = 2
+    obj_VFX["animation"][26] = 3
+    obj_VFX["animation"][30] = 4
+    obj_VFX["animation"][33] = 5
+    obj_VFX["animation"][35] = 6
+    obj_VFX["animation"]["prop"] = 8
+    obj_VFX["animation"]["length"] = 37
+    obj_VFX["animation"]["loop"] = false
+    obj_VFX["update"] = function()
+        if active_op_side_obj_char["state"] == "hitstop" then
+            return
+        end
+        frame_animator(
+            obj_VFX,obj_VFX["animation"]
+        )
+        obj_VFX["life"] = obj_VFX["life"] - 1
+    end
+    obj_VFX["draw_sync"] = function()
+        local x = -active_op_side_obj_char[5]*(active_op_side_obj_char["x"] - passive_op_side_obj_char["x"])
+        local y = -active_op_side_obj_char[6]*((active_op_side_obj_char["y"] - passive_op_side_obj_char["y"]) + 100)
+        local dx = -1410
+        local dy = -200
+        local center_black_offset = {}
+        local center_white_offset = {}
+        local active_op_r0 = (0.523 + (math.random()*0.087))*active_op_side_obj_char[5]
+        local r_table_cache = {
+            active_op_r0,
+            active_op_r0 + (1.570 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5],
+            active_op_r0 + (3.141 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5],
+            active_op_r0 + (4.712 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5]
+        }
+        local rot_x_table_cache = {
+            dx*active_op_side_obj_char[5]*math.cos(r_table_cache[1]) -
+            dy*active_op_side_obj_char[6]*math.sin(r_table_cache[1]),
+            dx*active_op_side_obj_char[5]*math.cos(r_table_cache[2]) -
+            dy*active_op_side_obj_char[6]*math.sin(r_table_cache[2]),
+            dx*active_op_side_obj_char[5]*math.cos(r_table_cache[3]) -
+            dy*active_op_side_obj_char[6]*math.sin(r_table_cache[3]),
+            dx*active_op_side_obj_char[5]*math.cos(r_table_cache[4]) -
+            dy*active_op_side_obj_char[6]*math.sin(r_table_cache[4])
+        }
+        local rot_y_table_cache = {
+            dx*active_op_side_obj_char[5]*math.sin(r_table_cache[1]) +
+            dy*active_op_side_obj_char[6]*math.cos(r_table_cache[1]),
+            dx*active_op_side_obj_char[5]*math.sin(r_table_cache[2]) +
+            dy*active_op_side_obj_char[6]*math.cos(r_table_cache[2]),
+            dx*active_op_side_obj_char[5]*math.sin(r_table_cache[3]) +
+            dy*active_op_side_obj_char[6]*math.cos(r_table_cache[3]),
+            dx*active_op_side_obj_char[5]*math.sin(r_table_cache[4]) +
+            dy*active_op_side_obj_char[6]*math.cos(r_table_cache[4])
+        }
+        local obj_x_table = {
+            active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[1],
+            active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[2],
+            active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[3],
+            active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[4]
+        }
+        local obj_y_table = {
+            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[1],
+            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[2],
+            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[3],
+            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[4]
+        }
+        local obj_center = {
+            active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x - 500),
+            active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y - 500)
+        }
+        obj_VFX["r_cache"] = r_table_cache
+        obj_VFX["x_table"] = obj_x_table
+        obj_VFX["y_table"] = obj_y_table
+        obj_VFX["center_table"] = obj_center
+        obj_VFX["sub_obj"] = {
+            [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+                active_op_side_obj_char[6],r_table_cache[1],0},
+            [2] = {obj_x_table[2],obj_y_table[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+                active_op_side_obj_char[6],r_table_cache[2],0},
+            [3] = {obj_x_table[3],obj_y_table[3],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+                active_op_side_obj_char[6],r_table_cache[3],0},
+            [4] = {obj_x_table[4],obj_y_table[4],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+                active_op_side_obj_char[6],r_table_cache[4],0},
+            [5] = {obj_center[1],obj_center[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+                active_op_side_obj_char[6],0,0}
+        }
+        obj_VFX["draw_sync"] = function() end
+    end
+    obj_VFX["draw"] = function()
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_special_lighting_0
+        obj_VFX["draw_sync"]()
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX["sub_obj"][1],image_sprite_sheet,""..obj_VFX[8]..""
+        )
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX["sub_obj"][3],image_sprite_sheet,""..obj_VFX[8]..""
+        )
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_special_lighting_1
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX["sub_obj"][2],image_sprite_sheet,""..obj_VFX[8]..""
+        )
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX["sub_obj"][4],image_sprite_sheet,""..obj_VFX[8]..""
+        )
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_special_radial
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX["sub_obj"][5],image_sprite_sheet,""..obj_VFX[8]..""
+        )
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+    end
+    table.insert(active_op_side_obj_char["VFX_hit_back_table"],obj_VFX)
+end
+function insert_VFX_game_scene_char_counter_blast_special_projectile(active_op_side_obj_char,passive_op_side_obj_char)
+    -- x y z opacity sx sy r f
+    local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
+    local x = -active_op_side_obj_char[5]*(active_op_side_obj_char["x"] - passive_op_side_obj_char["x"])
+    local y = -active_op_side_obj_char[6]*((active_op_side_obj_char["y"] - passive_op_side_obj_char["y"]) + 100)
+    local dx = -1410
+    local dy = -200
+    local center_black_offset = {}
+    local center_white_offset = {}
+    local active_op_r0 = (0.523 + (math.random()*0.087))*active_op_side_obj_char[5]
+    local r_table_cache = {
+        active_op_r0,
+        active_op_r0 + (1.570 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5],
+        active_op_r0 + (3.141 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5],
+        active_op_r0 + (4.712 + (math.random() - 0.5)*0.174)*active_op_side_obj_char[5]
+    }
+    local rot_x_table_cache = {
+        dx*active_op_side_obj_char[5]*math.cos(r_table_cache[1]) -
+        dy*active_op_side_obj_char[6]*math.sin(r_table_cache[1]),
+        dx*active_op_side_obj_char[5]*math.cos(r_table_cache[2]) -
+        dy*active_op_side_obj_char[6]*math.sin(r_table_cache[2]),
+        dx*active_op_side_obj_char[5]*math.cos(r_table_cache[3]) -
+        dy*active_op_side_obj_char[6]*math.sin(r_table_cache[3]),
+        dx*active_op_side_obj_char[5]*math.cos(r_table_cache[4]) -
+        dy*active_op_side_obj_char[6]*math.sin(r_table_cache[4])
+    }
+    local rot_y_table_cache = {
+        dx*active_op_side_obj_char[5]*math.sin(r_table_cache[1]) +
+        dy*active_op_side_obj_char[6]*math.cos(r_table_cache[1]),
+        dx*active_op_side_obj_char[5]*math.sin(r_table_cache[2]) +
+        dy*active_op_side_obj_char[6]*math.cos(r_table_cache[2]),
+        dx*active_op_side_obj_char[5]*math.sin(r_table_cache[3]) +
+        dy*active_op_side_obj_char[6]*math.cos(r_table_cache[3]),
+        dx*active_op_side_obj_char[5]*math.sin(r_table_cache[4]) +
+        dy*active_op_side_obj_char[6]*math.cos(r_table_cache[4])
+    }
+    local obj_x_table = {
+        active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[1],
+        active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[2],
+        active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[3],
+        active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x) + rot_x_table_cache[4]
+    }
+    local obj_y_table = {
+        active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[1],
+        active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[2],
+        active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[3],
+        active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y) + rot_y_table_cache[4]
+    }
+    local obj_center = {
+        active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x - 500),
+        active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y - 500)
+    }
+    active_op_side_obj_char["VFX_hit_front_table"] = {}
+    active_op_side_obj_char["VFX_hit_back_table"] = {}
+    passive_op_side_obj_char["VFX_hit_front_table"] = {}
+    passive_op_side_obj_char["VFX_hit_back_table"] = {}
+    obj_VFX["life"] = 37
+    obj_VFX["r_cache"] = r_table_cache
+    obj_VFX["x_table"] = obj_x_table
+    obj_VFX["y_table"] = obj_y_table
+    obj_VFX["center_table"] = obj_center
+    -- x y z opacity sx sy r f
+    obj_VFX["sub_obj"] = {
+        [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+            active_op_side_obj_char[6],r_table_cache[1],0},
+        [2] = {obj_x_table[2],obj_y_table[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+            active_op_side_obj_char[6],r_table_cache[2],0},
+        [3] = {obj_x_table[3],obj_y_table[3],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+            active_op_side_obj_char[6],r_table_cache[3],0},
+        [4] = {obj_x_table[4],obj_y_table[4],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+            active_op_side_obj_char[6],r_table_cache[4],0},
+        [5] = {obj_center[1],obj_center[2],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
+            active_op_side_obj_char[6],0,0}
+    }
+    obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["animation"] = {}
+    obj_VFX["animation"][0] = 0
+    obj_VFX["animation"][17] = 1
+    obj_VFX["animation"][22] = 2
+    obj_VFX["animation"][26] = 3
+    obj_VFX["animation"][30] = 4
+    obj_VFX["animation"][33] = 5
+    obj_VFX["animation"][35] = 6
+    obj_VFX["animation"]["prop"] = 8
+    obj_VFX["animation"]["length"] = 37
     obj_VFX["animation"]["loop"] = false
     obj_VFX["update"] = function()
         if active_op_side_obj_char["state"] == "hitstop" then

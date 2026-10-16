@@ -41,16 +41,16 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["friction"] = 1
     obj_char_game_scene_char_LP["gravity"] = 2.5
     obj_char_game_scene_char_LP["health_gauge"] = {12000,12000,12000}
-    obj_char_game_scene_char_LP["heat_gauge"] = {0.0,200.0} -- 0.0 - 200.0
     obj_char_game_scene_char_LP["ability_gauge"] = {600.0,600.0} -- 0.0 - 600.0
+    obj_char_game_scene_char_LP["heat_gauge"] = {0.0,200.0} -- 0.0 - 200.0
     obj_char_game_scene_char_LP["overdrive_gauge"] = {600.0,600.0,"off"} -- 0.0 - 600.0
     obj_char_game_scene_char_LP["overdrive_timer"] = {0,0,0,0} -- 0f 00:00
     obj_char_game_scene_char_LP["risk_gauge"] = {0.0,300.0} -- 0.0 - 300.0
     obj_char_game_scene_char_LP["wallstick_gauge"] = {0.0,200.0} -- 0.0 - 200.0
-    obj_char_game_scene_char_LP["heat_penalty"] = 1
-    obj_char_game_scene_char_LP["heat_penalty_countdown"] = 0
     obj_char_game_scene_char_LP["ability_penalty"] = 1
     obj_char_game_scene_char_LP["ability_penalty_countdown"] = 0
+    obj_char_game_scene_char_LP["heat_penalty"] = 1
+    obj_char_game_scene_char_LP["heat_penalty_countdown"] = 0
     obj_char_game_scene_char_LP["positive_bonus"] = false
     obj_char_game_scene_char_LP["positive_bonus_heat_gain_buff"] = 1
     obj_char_game_scene_char_LP["positive_bonus_hit_damage_buff"] = 1
@@ -166,14 +166,21 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["hit_whiff_SFX"] = nil
     -- update_function
     obj_char_game_scene_char_LP["health_gauge_update_function"] = function()
-        character_function_game_scene_TRM_health_gauge_update_function(obj_char_game_scene_char_LP)
     end
-    obj_char_game_scene_char_LP["overdrive_gauge_update_function"] = function() end
-    obj_char_game_scene_char_LP["ability_gauge_update_function"] = function() end
-    obj_char_game_scene_char_LP["risk_gauge_update_function"] = function() end
-    obj_char_game_scene_char_LP["wallstick_gauge_update_function"] = function() end
+    obj_char_game_scene_char_LP["ability_gauge_update_function"] = function()
+    end
+    obj_char_game_scene_char_LP["heat_gauge_update_function"] = function()
+    end
+    obj_char_game_scene_char_LP["overdrive_gauge_update_function"] = function()
+    end
+    obj_char_game_scene_char_LP["risk_gauge_update_function"] = function()
+    end
+    obj_char_game_scene_char_LP["wallstick_gauge_update_function"] = function()
+    end
     -- update_function_cache
-    obj_char_game_scene_char_LP["health_gauge_update_health_countdown"] = 0
+    obj_char_game_scene_char_LP["health_gauge_update_fade_pause_countdown"] = 0
+    obj_char_game_scene_char_LP["risk_gauge_update_pause_countdown"] = 0
+    obj_char_game_scene_char_LP["wallstick_gauge_update_pause_countdown"] = 0
     obj_char_game_scene_char_LP["health_gauge_update_pause_state"] = {
         ["before_ease_in"] = true,
         ["active_FD_block"] = true,
@@ -397,10 +404,10 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["enclose_position_offset"] = {0,0,0}
 end
 function load_game_scene_anim_char_LP()
-    local self_side_obj_char = obj_char_game_scene_char_LP
-    self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+    local obj_char = obj_char_game_scene_char_LP
+    obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
     init_character_anim_with(
-        self_side_obj_char,self_side_obj_char["character_animation"]
+        obj_char,obj_char["character_animation"]
     )
     -- 加载角色会使用的线性动画和帧动画
 end
@@ -804,7 +811,6 @@ function load_game_scene_canvas_char_LP()
     -- CANVAS
     local width = love.graphics.getWidth()
     local height = love.graphics.getHeight()
-    CANVAS_CHAR_BLAST_TRAJECTORY_LP = love.graphics.newCanvas(width,height)
 end
 function load_game_scene_wallbreak_start_init_LP()
     -- state
@@ -2726,7 +2732,7 @@ function state_machine_char_game_scene_char_LP()
         end
     }
     if run_at_current_frame then
-        update_game_scene_char_LP_uncommon_countdown()
+        update_game_scene_char_LP_countdown()
     end
     local this_function = switch[self_side_obj_char["state"]]
     if this_function then this_function() end
@@ -2905,156 +2911,156 @@ function state_machine_char_game_scene_char_LP_shot_sys()
     if this_function then this_function() end
 end
 function state_machine_char_game_scene_char_LP_shot_sys_oroboros()
-    local self_side_obj_char = obj_char_game_scene_char_LP
-    local run_at_current_frame = common_game_scene_character_run_at_this_frame(self_side_obj_char)
+    local obj_char = obj_char_game_scene_char_LP
+    local run_at_current_frame = common_game_scene_character_run_at_this_frame(obj_char)
     local switch = {
         ["off"] = function()
         end,
         ["ease_in"] = function()
             if run_at_current_frame then
                 character_animator(
-                    self_side_obj_char["shot_sys_oroboros_front"],
-                    self_side_obj_char["shot_sys_oroboros_animation_table"][1]
+                    obj_char["shot_sys_oroboros_front"],
+                    obj_char["shot_sys_oroboros_animation_table"][1]
                 )
                 character_animator(
-                    self_side_obj_char["shot_sys_oroboros_front"],
-                    self_side_obj_char["shot_sys_oroboros_animation_table"][2]
+                    obj_char["shot_sys_oroboros_front"],
+                    obj_char["shot_sys_oroboros_animation_table"][2]
                 )
                 character_animator(
-                    self_side_obj_char["shot_sys_oroboros_mid"],
-                    self_side_obj_char["shot_sys_oroboros_animation_table"][3]
+                    obj_char["shot_sys_oroboros_mid"],
+                    obj_char["shot_sys_oroboros_animation_table"][3]
                 )
                 character_animator(
-                    self_side_obj_char["shot_sys_oroboros_back"],
-                    self_side_obj_char["shot_sys_oroboros_animation_table"][4]
+                    obj_char["shot_sys_oroboros_back"],
+                    obj_char["shot_sys_oroboros_animation_table"][4]
                 )
                 character_animator(
-                    self_side_obj_char["shot_sys_oroboros_back"],
-                    self_side_obj_char["shot_sys_oroboros_animation_table"][5]
+                    obj_char["shot_sys_oroboros_back"],
+                    obj_char["shot_sys_oroboros_animation_table"][5]
                 )
-                character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(self_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(obj_char)
             end
             if get_character_anim_end_state(
-                self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3]
+                obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3]
             ) then
-                self_side_obj_char["shot_sys_oroboros_front"][4] = 1
-                self_side_obj_char["shot_sys_oroboros_back"][4] = 1
-                self_side_obj_char["shot_sys_oroboros_animation_table"][3] =
+                obj_char["shot_sys_oroboros_front"][4] = 1
+                obj_char["shot_sys_oroboros_back"][4] = 1
+                obj_char["shot_sys_oroboros_animation_table"][3] =
                 load_game_scene_anim_char_TRM_5H_oroboros_at_the_ready_mid_loop(
-                    self_side_obj_char["shot_sys_oroboros_mid"]
+                    obj_char["shot_sys_oroboros_mid"]
                 )
                 init_character_anim_with(
-                    self_side_obj_char["shot_sys_oroboros_mid"],
-                    self_side_obj_char["shot_sys_oroboros_animation_table"][3]
+                    obj_char["shot_sys_oroboros_mid"],
+                    obj_char["shot_sys_oroboros_animation_table"][3]
                 )
-                character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(self_side_obj_char)
-                self_side_obj_char["shot_sys_oroboros_state"] = "main"
+                character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(obj_char)
+                obj_char["shot_sys_oroboros_state"] = "main"
                 return
             end
         end,
         ["main"] = function()
             if run_at_current_frame then
                 character_animator(
-                    self_side_obj_char["shot_sys_oroboros_front"],
-                    self_side_obj_char["shot_sys_oroboros_animation_table"][2]
+                    obj_char["shot_sys_oroboros_front"],
+                    obj_char["shot_sys_oroboros_animation_table"][2]
                 )
                 character_animator(
-                    self_side_obj_char["shot_sys_oroboros_mid"],
-                    self_side_obj_char["shot_sys_oroboros_animation_table"][3]
+                    obj_char["shot_sys_oroboros_mid"],
+                    obj_char["shot_sys_oroboros_animation_table"][3]
                 )
                 character_animator(
-                    self_side_obj_char["shot_sys_oroboros_back"],
-                    self_side_obj_char["shot_sys_oroboros_animation_table"][5]
+                    obj_char["shot_sys_oroboros_back"],
+                    obj_char["shot_sys_oroboros_animation_table"][5]
                 )
-                character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(self_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(obj_char)
             end
         end,
         ["ease_out"] = function()
             if run_at_current_frame then
                 character_animator(
-                    self_side_obj_char["shot_sys_oroboros_front"],
-                    self_side_obj_char["shot_sys_oroboros_animation_table"][1]
+                    obj_char["shot_sys_oroboros_front"],
+                    obj_char["shot_sys_oroboros_animation_table"][1]
                 )
                 character_animator(
-                    self_side_obj_char["shot_sys_oroboros_front"],
-                    self_side_obj_char["shot_sys_oroboros_animation_table"][2]
+                    obj_char["shot_sys_oroboros_front"],
+                    obj_char["shot_sys_oroboros_animation_table"][2]
                 )
                 character_animator(
-                    self_side_obj_char["shot_sys_oroboros_mid"],
-                    self_side_obj_char["shot_sys_oroboros_animation_table"][3]
+                    obj_char["shot_sys_oroboros_mid"],
+                    obj_char["shot_sys_oroboros_animation_table"][3]
                 )
                 character_animator(
-                    self_side_obj_char["shot_sys_oroboros_back"],
-                    self_side_obj_char["shot_sys_oroboros_animation_table"][4]
+                    obj_char["shot_sys_oroboros_back"],
+                    obj_char["shot_sys_oroboros_animation_table"][4]
                 )
                 character_animator(
-                    self_side_obj_char["shot_sys_oroboros_back"],
-                    self_side_obj_char["shot_sys_oroboros_animation_table"][5]
+                    obj_char["shot_sys_oroboros_back"],
+                    obj_char["shot_sys_oroboros_animation_table"][5]
                 )
-                character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(self_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(obj_char)
             end
             if get_character_anim_end_state(
-                self_side_obj_char["shot_sys_oroboros_mid"],self_side_obj_char["shot_sys_oroboros_animation_table"][3]
+                obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3]
             ) then
-                self_side_obj_char["shot_sys_oroboros_state"] = "off"
-                self_side_obj_char["shot_sys_oroboros_state_cache"] = "off"
-                self_side_obj_char["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
-                self_side_obj_char["shot_sys_oroboros_front"]["f_8"] = 0
-                self_side_obj_char["shot_sys_oroboros_front"]["f_4"] = 0
-                self_side_obj_char["shot_sys_oroboros_front"]["sprite_sheet"] = "5H_oroboros_loop_front"
-                self_side_obj_char["shot_sys_oroboros_mid"] = {0,0,0,0,1,1,0,0}
-                self_side_obj_char["shot_sys_oroboros_mid"]["f_8"] = 0
-                self_side_obj_char["shot_sys_oroboros_mid"]["sprite_sheet"] = "5H_oroboros_loop_mid"
-                self_side_obj_char["shot_sys_oroboros_back"] = {0,0,0,0,1,1,0,0}
-                self_side_obj_char["shot_sys_oroboros_back"]["f_8"] = 0
-                self_side_obj_char["shot_sys_oroboros_back"]["f_4"] = 0
-                self_side_obj_char["shot_sys_oroboros_back"]["sprite_sheet"] = "5H_oroboros_loop_back"
+                obj_char["shot_sys_oroboros_state"] = "off"
+                obj_char["shot_sys_oroboros_state_cache"] = "off"
+                obj_char["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
+                obj_char["shot_sys_oroboros_front"]["f_8"] = 0
+                obj_char["shot_sys_oroboros_front"]["f_4"] = 0
+                obj_char["shot_sys_oroboros_front"]["sprite_sheet"] = "5H_oroboros_loop_front"
+                obj_char["shot_sys_oroboros_mid"] = {0,0,0,0,1,1,0,0}
+                obj_char["shot_sys_oroboros_mid"]["f_8"] = 0
+                obj_char["shot_sys_oroboros_mid"]["sprite_sheet"] = "5H_oroboros_loop_mid"
+                obj_char["shot_sys_oroboros_back"] = {0,0,0,0,1,1,0,0}
+                obj_char["shot_sys_oroboros_back"]["f_8"] = 0
+                obj_char["shot_sys_oroboros_back"]["f_4"] = 0
+                obj_char["shot_sys_oroboros_back"]["sprite_sheet"] = "5H_oroboros_loop_back"
                 return
             end
         end,
         ["shot"] = function()
             if run_at_current_frame then
                 character_animator(
-                    self_side_obj_char["shot_sys_oroboros_front"],
-                    self_side_obj_char["shot_sys_oroboros_animation_table"][1]
+                    obj_char["shot_sys_oroboros_front"],
+                    obj_char["shot_sys_oroboros_animation_table"][1]
                 )
                 character_animator(
-                    self_side_obj_char["shot_sys_oroboros_front"],
-                    self_side_obj_char["shot_sys_oroboros_animation_table"][2]
+                    obj_char["shot_sys_oroboros_front"],
+                    obj_char["shot_sys_oroboros_animation_table"][2]
                 )
                 character_animator(
-                    self_side_obj_char["shot_sys_oroboros_back"],
-                    self_side_obj_char["shot_sys_oroboros_animation_table"][4]
+                    obj_char["shot_sys_oroboros_back"],
+                    obj_char["shot_sys_oroboros_animation_table"][4]
                 )
                 character_animator(
-                    self_side_obj_char["shot_sys_oroboros_back"],
-                    self_side_obj_char["shot_sys_oroboros_animation_table"][5]
+                    obj_char["shot_sys_oroboros_back"],
+                    obj_char["shot_sys_oroboros_animation_table"][5]
                 )
                 character_animator(
-                    self_side_obj_char,self_side_obj_char["shot_sys_oroboros_animation_table"][6]
+                    obj_char,obj_char["shot_sys_oroboros_animation_table"][6]
                 )
-                character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(self_side_obj_char)
+                character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(obj_char)
             end
             if get_character_anim_end_state(
-                self_side_obj_char,self_side_obj_char["shot_sys_oroboros_animation_table"][6]
+                obj_char,obj_char["shot_sys_oroboros_animation_table"][6]
             ) then
-                self_side_obj_char["shot_sys_oroboros_aim_r"] = 0.42
-                self_side_obj_char["shot_sys_oroboros_offset_amount"] = 0
-                self_side_obj_char["shot_sys_oroboros_animation_table"][3] =
+                obj_char["shot_sys_oroboros_aim_r"] = 0.42
+                obj_char["shot_sys_oroboros_offset_amount"] = 0
+                obj_char["shot_sys_oroboros_animation_table"][3] =
                 load_game_scene_anim_char_TRM_5H_oroboros_at_the_ready_mid_loop(
-                    self_side_obj_char["shot_sys_oroboros_mid"]
+                    obj_char["shot_sys_oroboros_mid"]
                 )
                 init_character_anim_with(
-                    self_side_obj_char["shot_sys_oroboros_mid"],
-                    self_side_obj_char["shot_sys_oroboros_animation_table"][3]
+                    obj_char["shot_sys_oroboros_mid"],
+                    obj_char["shot_sys_oroboros_animation_table"][3]
                 )
-                character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(self_side_obj_char)
-                self_side_obj_char["shot_sys_oroboros_state"] = "main"
+                character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update(obj_char)
+                obj_char["shot_sys_oroboros_state"] = "main"
                 return
             end
         end
     }
-    local this_function = switch[self_side_obj_char["shot_sys_oroboros_state"]]
+    local this_function = switch[obj_char["shot_sys_oroboros_state"]]
     if this_function then this_function() end
 end
 function state_machine_char_game_scene_char_LP_shot_sys_reticle()
@@ -9760,15 +9766,15 @@ end
 -- draw
 function draw_game_scene_char_LP_logic_graphic_pos_sync()
     local obj = nil
-    local self_side_obj_char = obj_char_game_scene_char_LP
-    local oroboros_ease_current = self_side_obj_char["shot_sys_oroboros_ease_current"]
-    local shot_offset_amount = self_side_obj_char["shot_sys_oroboros_offset_amount"]
-    local shot_r = self_side_obj_char["shot_sys_oroboros_aim_r"]*self_side_obj_char[5]
+    local obj_char = obj_char_game_scene_char_LP
+    local oroboros_ease_current = obj_char["shot_sys_oroboros_ease_current"]
+    local shot_offset_amount = obj_char["shot_sys_oroboros_offset_amount"]
+    local shot_r = obj_char["shot_sys_oroboros_aim_r"]*obj_char[5]
     local dx = -15
     local dy = -50
     local rot_dx = nil
     local rot_dy = nil
-    if self_side_obj_char[5] > 0 then
+    if obj_char[5] > 0 then
         shot_r = math.min(shot_r,0.42)
         shot_r = math.max(shot_r,-0.8)
     else
@@ -9777,54 +9783,54 @@ function draw_game_scene_char_LP_logic_graphic_pos_sync()
     end
     -- x y z opacity sx sy r f
     -- shot_sys_oroboros_back
-    obj = self_side_obj_char["shot_sys_oroboros_back"]
+    obj = obj_char["shot_sys_oroboros_back"]
     obj[1] = oroboros_ease_current[1] + oroboros_ease_current[3]*(dx - math.cos(shot_r)*shot_offset_amount*0.5)
     obj[2] = oroboros_ease_current[2] + oroboros_ease_current[4]*(dy - math.sin(shot_r)*shot_offset_amount*0.5)
-    obj[3] = self_side_obj_char[3]
-    obj[5] = self_side_obj_char[5]
-    obj[6] = self_side_obj_char[6]
-    obj[7] = self_side_obj_char[7]
+    obj[3] = obj_char[3]
+    obj[5] = obj_char[5]
+    obj[6] = obj_char[6]
+    obj[7] = obj_char[7]
     -- character
-    self_side_obj_char[1] =
-        self_side_obj_char["x"] + self_side_obj_char["hurtstop_wiggle_current_x"] -
-        self_side_obj_char[5]*self_side_obj_char["anchor_pos"][1]
-    self_side_obj_char[2] =
-        self_side_obj_char["y"] + self_side_obj_char["hurtstop_wiggle_current_y"] -
-        self_side_obj_char[6]*self_side_obj_char["anchor_pos"][2]
+    obj_char[1] =
+        obj_char["x"] + obj_char["hurtstop_wiggle_current_x"] -
+        obj_char[5]*obj_char["anchor_pos"][1]
+    obj_char[2] =
+        obj_char["y"] + obj_char["hurtstop_wiggle_current_y"] -
+        obj_char[6]*obj_char["anchor_pos"][2]
     -- shot_sys_oroboros_mid
-    obj = self_side_obj_char["shot_sys_oroboros_mid"]
+    obj = obj_char["shot_sys_oroboros_mid"]
     dx = -80
     dy = -95
     rot_dx = dx*oroboros_ease_current[3]*math.cos(shot_r) - dy*oroboros_ease_current[4]*math.sin(shot_r)
     rot_dy = dx*oroboros_ease_current[3]*math.sin(shot_r) + dy*oroboros_ease_current[4]*math.cos(shot_r)
     obj[1] = oroboros_ease_current[1] + rot_dx
     obj[2] = oroboros_ease_current[2] + rot_dy
-    obj[3] = self_side_obj_char[3]
-    obj[5] = self_side_obj_char[5]
-    obj[6] = self_side_obj_char[6]
+    obj[3] = obj_char[3]
+    obj[5] = obj_char[5]
+    obj[6] = obj_char[6]
     obj[7] = shot_r
     -- shot_sys_oroboros_front
-    obj = self_side_obj_char["shot_sys_oroboros_front"]
+    obj = obj_char["shot_sys_oroboros_front"]
     dx = -80
     dy = -80
     obj[1] = oroboros_ease_current[1] + oroboros_ease_current[3]*(dx - math.cos(shot_r)*shot_offset_amount*0.7)
     obj[2] = oroboros_ease_current[2] + oroboros_ease_current[4]*(dy - math.sin(shot_r)*shot_offset_amount*0.7)
-    obj[3] = self_side_obj_char[3]
-    obj[5] = self_side_obj_char[5]
-    obj[6] = self_side_obj_char[6]
-    obj[7] = self_side_obj_char[7]
+    obj[3] = obj_char[3]
+    obj[5] = obj_char[5]
+    obj[6] = obj_char[6]
+    obj[7] = obj_char[7]
 end
 function draw_game_scene_char_LP()
     local obj = {0,0,0,0,0,0,0,0}
-    local self_side_obj_char = obj_char_game_scene_char_LP
+    local obj_char = obj_char_game_scene_char_LP
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = nil
     local shader = shader_game_scene_brightness_contrast
-    shader:send("contrast",self_side_obj_char["contrast"])
-    shader:send("brightness",self_side_obj_char["brightness"])
+    shader:send("contrast",obj_char["contrast"])
+    shader:send("brightness",obj_char["brightness"])
     -- draw_back
     -- x y z opacity sx sy r f
-    obj = self_side_obj_char["shot_sys_oroboros_back"]
+    obj = obj_char["shot_sys_oroboros_back"]
     image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(
@@ -9832,16 +9838,16 @@ function draw_game_scene_char_LP()
     )
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     -- draw_3d_image_table(obj_camera,obj,character_image_table)
-    image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[self_side_obj_char["sprite_sheet"]]
+    image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj_char["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(
-        obj_camera,self_side_obj_char,image_sprite_sheet,tostring(self_side_obj_char[8])
+        obj_camera,obj_char,image_sprite_sheet,tostring(obj_char[8])
     )
     love.graphics.setShader(shader)
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     love.graphics.setShader()
     -- draw_mid
-    obj = self_side_obj_char["shot_sys_oroboros_mid"]
+    obj = obj_char["shot_sys_oroboros_mid"]
     image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(
@@ -9849,7 +9855,7 @@ function draw_game_scene_char_LP()
     )
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     -- draw_front
-    obj = self_side_obj_char["shot_sys_oroboros_front"]
+    obj = obj_char["shot_sys_oroboros_front"]
     image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(
@@ -9858,7 +9864,7 @@ function draw_game_scene_char_LP()
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
 end
 function draw_game_scene_char_LP_shadow()
-    local self_side_obj_char = obj_char_game_scene_char_LP
+    local obj_char = obj_char_game_scene_char_LP
     local obj_camera = obj_stage_game_scene_camera
     local light_obj = obj_stage_game_scene_glow_with_linear_fade_alpha
     local light_x = light_obj["glow_3d_pos"][1]
@@ -9880,14 +9886,14 @@ function draw_game_scene_char_LP_shadow()
     draw_game_scene_char_LP()
     -- 所有飞行道具与角色一样获得阴影效果
     love.graphics.setBlendMode("alpha")
-    for i = #self_side_obj_char["projectile_RC_table"],1,-1 do
-        self_side_obj_char["projectile_RC_table"][i]["draw"]()
+    for i = #obj_char["projectile_RC_table"],1,-1 do
+        obj_char["projectile_RC_table"][i]["draw"]()
     end
-    for i = #self_side_obj_char["projectile_back_table"],1,-1 do
-        self_side_obj_char["projectile_back_table"][i]["draw"]()
+    for i = #obj_char["projectile_back_table"],1,-1 do
+        obj_char["projectile_back_table"][i]["draw"]()
     end
-    for i = #self_side_obj_char["projectile_front_table"],1,-1 do
-        self_side_obj_char["projectile_front_table"][i]["draw"]()
+    for i = #obj_char["projectile_front_table"],1,-1 do
+        obj_char["projectile_front_table"][i]["draw"]()
     end
     love.graphics.setBlendMode("alpha")
     local center_blur_start = 0.5
@@ -9905,20 +9911,20 @@ function draw_game_scene_char_LP_shadow()
     love.graphics.setShader()
     love.graphics.setCanvas()
     -- local opacity = math.max(0,(obj["y"] - 345)/20)*0.5
-    love.graphics.setColor(0,0,0,self_side_obj_char["shadow_opacity"])
+    love.graphics.setColor(0,0,0,obj_char["shadow_opacity"])
     love.graphics.draw(DRAW_SHADOW_CANVAS)
     love.graphics.setColor(1,1,1,1)
 end
 function draw_game_scene_char_LP_attachment_front()
     -- shot_sys_reticle
-    local self_side_obj_char = obj_char_game_scene_char_LP
+    local obj_char = obj_char_game_scene_char_LP
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet =
-    image_sprite_sheet_table_char_game_scene_LP[self_side_obj_char["shot_sys_reticle_sprite_sheet"]]
+    image_sprite_sheet_table_char_game_scene_LP[obj_char["shot_sys_reticle_sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(
-        obj_camera,self_side_obj_char["shot_sys_reticle"],image_sprite_sheet,
-        tostring(self_side_obj_char["shot_sys_reticle"][8])
+        obj_camera,obj_char["shot_sys_reticle"],image_sprite_sheet,
+        tostring(obj_char["shot_sys_reticle"][8])
     )
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
 end
@@ -9929,21 +9935,21 @@ function draw_game_scene_char_LP_pushbox()
     if not DEBUG_HITBOX_SHOWS then
         return
     end
-    local self_side_obj_char = obj_char_game_scene_char_LP
+    local obj_char = obj_char_game_scene_char_LP
     local obj_camera = obj_stage_game_scene_camera
     -- push box
     local color = DEBUG_BOX_COLOR_YELLOW
     local draw_box = {
-        self_side_obj_char["x"] + (self_side_obj_char["pushbox"][1] - self_side_obj_char["pushbox"][3]/2)*
-        self_side_obj_char[5],
-        self_side_obj_char["y"] + self_side_obj_char["pushbox"][2] - self_side_obj_char["pushbox"][4]/2,
-        self_side_obj_char[3],self_side_obj_char[5],1
+        obj_char["x"] + (obj_char["pushbox"][1] - obj_char["pushbox"][3]/2)*
+        obj_char[5],
+        obj_char["y"] + obj_char["pushbox"][2] - obj_char["pushbox"][4]/2,
+        obj_char[3],obj_char[5],1
     }
-    draw_box["w"] = self_side_obj_char["pushbox"][3]
-    draw_box["h"] = self_side_obj_char["pushbox"][4]
+    draw_box["w"] = obj_char["pushbox"][3]
+    draw_box["h"] = obj_char["pushbox"][4]
     draw_3d_color_box(obj_camera,draw_box,color)
-    for i = 1,#self_side_obj_char["projectile_front_table"] do
-        local current_projectile = self_side_obj_char["projectile_front_table"][i]
+    for i = 1,#obj_char["projectile_front_table"] do
+        local current_projectile = obj_char["projectile_front_table"][i]
         local current_pushbox = current_projectile["pushbox"]
         if current_pushbox then
             local draw_box = {
@@ -9956,8 +9962,8 @@ function draw_game_scene_char_LP_pushbox()
             draw_3d_color_box(obj_camera,draw_box,color)
         end
     end
-    for i = 1,#self_side_obj_char["projectile_back_table"] do
-        local current_projectile = self_side_obj_char["projectile_back_table"][i]
+    for i = 1,#obj_char["projectile_back_table"] do
+        local current_projectile = obj_char["projectile_back_table"][i]
         local current_pushbox = current_projectile["pushbox"]
         if current_pushbox then
             local draw_box = {
@@ -9975,23 +9981,23 @@ function draw_game_scene_char_LP_hurtbox()
     if not DEBUG_HITBOX_SHOWS then
         return
     end
-    local self_side_obj_char = obj_char_game_scene_char_LP
+    local obj_char = obj_char_game_scene_char_LP
     local obj_camera = obj_stage_game_scene_camera
     -- hurt box
     local color = DEBUG_BOX_COLOR_BLUE
-    for i = 1,#self_side_obj_char["hurtbox_table"] do
-        local current_hurtbox = self_side_obj_char["hurtbox_table"][i]
+    for i = 1,#obj_char["hurtbox_table"] do
+        local current_hurtbox = obj_char["hurtbox_table"][i]
         local draw_box = {
-            self_side_obj_char["x"] + (current_hurtbox[1] - current_hurtbox[3]/2)*self_side_obj_char[5],
-            self_side_obj_char["y"] + current_hurtbox[2] - current_hurtbox[4]/2,
-            self_side_obj_char[3],self_side_obj_char[5],1
+            obj_char["x"] + (current_hurtbox[1] - current_hurtbox[3]/2)*obj_char[5],
+            obj_char["y"] + current_hurtbox[2] - current_hurtbox[4]/2,
+            obj_char[3],obj_char[5],1
         }
         draw_box["w"] = current_hurtbox[3]
         draw_box["h"] = current_hurtbox[4]
         draw_3d_color_box(obj_camera,draw_box,color)
     end
-    for i = 1,#self_side_obj_char["projectile_front_table"] do
-        local current_projectile = self_side_obj_char["projectile_front_table"][i]
+    for i = 1,#obj_char["projectile_front_table"] do
+        local current_projectile = obj_char["projectile_front_table"][i]
         if current_projectile["hurtbox_table"] then
             for j = 1,#current_projectile["hurtbox_table"] do
                 local current_hurtbox = current_projectile["hurtbox_table"][j]
@@ -10008,8 +10014,8 @@ function draw_game_scene_char_LP_hurtbox()
             end
         end
     end
-    for i = 1,#self_side_obj_char["projectile_back_table"] do
-        local current_projectile = self_side_obj_char["projectile_back_table"][i]
+    for i = 1,#obj_char["projectile_back_table"] do
+        local current_projectile = obj_char["projectile_back_table"][i]
         if current_projectile["hurtbox_table"] then
             for j = 1,#current_projectile["hurtbox_table"] do
                 local current_hurtbox = current_projectile["hurtbox_table"][j]
@@ -10031,23 +10037,23 @@ function draw_game_scene_char_LP_hitbox()
     if not DEBUG_HITBOX_SHOWS then
         return
     end
-    local self_side_obj_char = obj_char_game_scene_char_LP
+    local obj_char = obj_char_game_scene_char_LP
     local obj_camera = obj_stage_game_scene_camera
     -- hit box
     local color = DEBUG_BOX_COLOR_RED
-    for i = 1,#self_side_obj_char["hitbox_table"] do
-        local current_hitbox = self_side_obj_char["hitbox_table"][i]
+    for i = 1,#obj_char["hitbox_table"] do
+        local current_hitbox = obj_char["hitbox_table"][i]
         local draw_box = {
-            self_side_obj_char["x"] + (current_hitbox[1] - current_hitbox[3]/2)*self_side_obj_char[5],
-            self_side_obj_char["y"] + current_hitbox[2] - current_hitbox[4]/2,
-            self_side_obj_char[3],self_side_obj_char[5],1
+            obj_char["x"] + (current_hitbox[1] - current_hitbox[3]/2)*obj_char[5],
+            obj_char["y"] + current_hitbox[2] - current_hitbox[4]/2,
+            obj_char[3],obj_char[5],1
         }
         draw_box["w"] = current_hitbox[3]
         draw_box["h"] = current_hitbox[4]
         draw_3d_color_box(obj_camera,draw_box,color)
     end
-    for i = 1,#self_side_obj_char["projectile_front_table"] do
-        local current_projectile = self_side_obj_char["projectile_front_table"][i]
+    for i = 1,#obj_char["projectile_front_table"] do
+        local current_projectile = obj_char["projectile_front_table"][i]
         if current_projectile["hitbox_table"] then
             for j = 1,#current_projectile["hitbox_table"] do
                 local current_hitbox = current_projectile["hitbox_table"][j]
@@ -10064,8 +10070,8 @@ function draw_game_scene_char_LP_hitbox()
             end
         end
     end
-    for i = 1,#self_side_obj_char["projectile_back_table"] do
-        local current_projectile = self_side_obj_char["projectile_back_table"][i]
+    for i = 1,#obj_char["projectile_back_table"] do
+        local current_projectile = obj_char["projectile_back_table"][i]
         if current_projectile["hitbox_table"] then
             for j = 1,#current_projectile["hitbox_table"] do
                 local current_hitbox = current_projectile["hitbox_table"][j]
@@ -10082,8 +10088,8 @@ function draw_game_scene_char_LP_hitbox()
             end
         end
     end
-    for i = 1,#self_side_obj_char["projectile_RC_table"] do
-        local current_projectile = self_side_obj_char["projectile_RC_table"][i]
+    for i = 1,#obj_char["projectile_RC_table"] do
+        local current_projectile = obj_char["projectile_RC_table"][i]
         for j = 1,#current_projectile["hitbox_table"] do
             local current_hitbox = current_projectile["hitbox_table"][j]
             if current_hitbox then
@@ -10243,22 +10249,114 @@ function draw_game_scene_char_LP_black_overlay()
     end
 end
 -- countdown
+    -- inv
+    -- positive_bonus
+    -- health
+    -- ability
+    -- heat
+    -- overdrive
+    -- risk
+    -- wallstick
+    -- shot_sys_curse
+function update_game_scene_char_LP_inv_state_countdown()
+    local obj_char = obj_char_game_scene_char_LP
+    if obj_char["state"] == "hitstop"
+    or obj_char["state"] == "hurtstop"
+    or obj_char["state"] == "blockstop"
+    or obj_char["game_speed_force_1_countdown"] > 0 then
+        return
+    end
+    if obj_char["strike_inv_countdown"] > 1 then
+        obj_char["strike_inv_countdown"] = obj_char["strike_inv_countdown"] - 1
+    else
+        obj_char["strike_inv"] = false
+        obj_char["strike_inv_countdown"] = 0
+    end
+    if obj_char["throw_inv_countdown"] > 1 then
+        obj_char["throw_inv_countdown"] = obj_char["throw_inv_countdown"] - 1
+    else
+        obj_char["throw_inv"] = false
+        obj_char["throw_inv_countdown"] = 0
+    end
+    if obj_char["projectile_inv_countdown"] > 1 then
+        obj_char["projectile_inv_countdown"] = obj_char["projectile_inv_countdown"] - 1
+    else
+        obj_char["projectile_inv"] = false
+        obj_char["projectile_inv_countdown"] = 0
+    end
+end
+function update_game_scene_char_LP_positive_bonus_countdown()
+    local obj_char = obj_char_game_scene_char_LP
+    if (not obj_char["positive_bonus"])
+    or obj_char["state"] == "hitstop"
+    or obj_char["state"] == "hurtstop"
+    or obj_char["state"] == "blockstop"
+    or obj_char["game_speed_force_1_countdown"] > 0 then
+        return
+    end
+    if obj_char["positive_bonus_countdown"] > 1 then
+        obj_char["positive_bonus_countdown"] = obj_char["positive_bonus_countdown"] - 1
+    else
+        obj_char["positive_bonus"] = false
+        obj_char["positive_bonus_heat_gain_buff"] = 1
+        obj_char["positive_bonus_hit_damage_buff"] = 1
+        obj_char["positive_bonus_hurt_damage_buff"] = 1
+        obj_char["positive_bonus_countdown"] = 0
+    end
+end
+function update_game_scene_char_LP_health_gauge_update_fade_pause_countdown()
+    local obj_char = obj_char_game_scene_char_LP
+    obj_char["health_gauge_update_fade_pause_countdown"] = 
+    math.max(0,obj_char["health_gauge_update_fade_pause_countdown"] - 1)
+end
+function update_game_scene_char_LP_ability_penalty_countdown()
+    local obj_char = obj_char_game_scene_char_LP
+    if (obj_char["ability_penalty"] == 1)
+    or obj_char["state"] == "hitstop"
+    or obj_char["state"] == "hurtstop"
+    or obj_char["state"] == "blockstop"
+    or obj_char["game_speed_force_1_countdown"] > 0 then
+        return
+    end
+    if obj_char["ability_penalty_countdown"] > 1 then
+        obj_char["ability_penalty_countdown"] = obj_char["ability_penalty_countdown"] - 1
+    else
+        obj_char["ability_penalty"] = 1
+        obj_char["ability_penalty_countdown"] = 0
+    end
+end
+function update_game_scene_char_LP_heat_penalty_countdown()
+    local obj_char = obj_char_game_scene_char_LP
+    if (obj_char["heat_penalty"] == 1)
+    or obj_char["state"] == "hitstop"
+    or obj_char["state"] == "hurtstop"
+    or obj_char["state"] == "blockstop"
+    or obj_char["game_speed_force_1_countdown"] > 0 then
+        return
+    end
+    if obj_char["heat_penalty_countdown"] > 1 then
+        obj_char["heat_penalty_countdown"] = obj_char["heat_penalty_countdown"] - 1
+    else
+        obj_char["heat_penalty"] = 1
+        obj_char["heat_penalty_countdown"] = 0
+    end
+end
 function update_game_scene_char_LP_overdrive_countdown()
-    local self_side_obj_char = obj_char_game_scene_char_LP
-    if self_side_obj_char["state"] == "hitstop"
-    or self_side_obj_char["state"] == "hurtstop"
-    or self_side_obj_char["state"] == "blockstop"
-    or self_side_obj_char["game_speed_force_1_countdown"] > 0 then
+    local obj_char = obj_char_game_scene_char_LP
+    if obj_char["state"] == "hitstop"
+    or obj_char["state"] == "hurtstop"
+    or obj_char["state"] == "blockstop"
+    or obj_char["game_speed_force_1_countdown"] > 0 then
         return
     end
-    if self_side_obj_char["state"] == "burst_overdrive" then
+    if obj_char["state"] == "burst_overdrive" then
         return
     end
-    local t = self_side_obj_char["overdrive_timer"]
+    local t = obj_char["overdrive_timer"]
     -- 归零判定 (逐位判断, 到 00:00 才结束)
     if t[1] == 0 and t[2] == 0 and t[3] == 0 and t[4] == 0 then
-        self_side_obj_char["overdrive_timer"] = {0,0,0,0}
-        self_side_obj_char["overdrive_gauge"][3] = "off"
+        obj_char["overdrive_timer"] = {0,0,0,0}
+        obj_char["overdrive_gauge"][3] = "off"
         return
     end
     -- 每调用推进 1 帧 (后两位 t3t4 = 帧 00..59)
@@ -10279,108 +10377,43 @@ function update_game_scene_char_LP_overdrive_countdown()
         end
     end
 end
-function update_game_scene_char_LP_inv_state_countdown()
-    local self_side_obj_char = obj_char_game_scene_char_LP
-    if self_side_obj_char["state"] == "hitstop"
-    or self_side_obj_char["state"] == "hurtstop"
-    or self_side_obj_char["state"] == "blockstop"
-    or self_side_obj_char["game_speed_force_1_countdown"] > 0 then
-        return
-    end
-    if self_side_obj_char["strike_inv_countdown"] > 1 then
-        self_side_obj_char["strike_inv_countdown"] = self_side_obj_char["strike_inv_countdown"] - 1
-    else
-        self_side_obj_char["strike_inv"] = false
-        self_side_obj_char["strike_inv_countdown"] = 0
-    end
-    if self_side_obj_char["throw_inv_countdown"] > 1 then
-        self_side_obj_char["throw_inv_countdown"] = self_side_obj_char["throw_inv_countdown"] - 1
-    else
-        self_side_obj_char["throw_inv"] = false
-        self_side_obj_char["throw_inv_countdown"] = 0
-    end
-    if self_side_obj_char["projectile_inv_countdown"] > 1 then
-        self_side_obj_char["projectile_inv_countdown"] = self_side_obj_char["projectile_inv_countdown"] - 1
-    else
-        self_side_obj_char["projectile_inv"] = false
-        self_side_obj_char["projectile_inv_countdown"] = 0
-    end
+function update_game_scene_char_LP_risk_gauge_update_pause_countdown()
+    local obj_char = obj_char_game_scene_char_LP
+    obj_char["wallstick_gauge_update_pause_countdown"] = 
+    math.max(0,obj_char["wallstick_gauge_update_pause_countdown"] - 1)
 end
-function update_game_scene_char_LP_heat_penalty_countdown()
-    local self_side_obj_char = obj_char_game_scene_char_LP
-    if (self_side_obj_char["heat_penalty"] == 1)
-    or self_side_obj_char["state"] == "hitstop"
-    or self_side_obj_char["state"] == "hurtstop"
-    or self_side_obj_char["state"] == "blockstop"
-    or self_side_obj_char["game_speed_force_1_countdown"] > 0 then
-        return
-    end
-    if self_side_obj_char["heat_penalty_countdown"] > 1 then
-        self_side_obj_char["heat_penalty_countdown"] = self_side_obj_char["heat_penalty_countdown"] - 1
-    else
-        self_side_obj_char["heat_penalty"] = 1
-        self_side_obj_char["heat_penalty_countdown"] = 0
-    end
-end
-function update_game_scene_char_LP_ability_penalty_countdown()
-    local self_side_obj_char = obj_char_game_scene_char_LP
-    if (self_side_obj_char["ability_penalty"] == 1)
-    or self_side_obj_char["state"] == "hitstop"
-    or self_side_obj_char["state"] == "hurtstop"
-    or self_side_obj_char["state"] == "blockstop"
-    or self_side_obj_char["game_speed_force_1_countdown"] > 0 then
-        return
-    end
-    if self_side_obj_char["ability_penalty_countdown"] > 1 then
-        self_side_obj_char["ability_penalty_countdown"] = self_side_obj_char["ability_penalty_countdown"] - 1
-    else
-        self_side_obj_char["ability_penalty"] = 1
-        self_side_obj_char["ability_penalty_countdown"] = 0
-    end
-end
-function update_game_scene_char_LP_positive_bonus_countdown()
-    local self_side_obj_char = obj_char_game_scene_char_LP
-    if (not self_side_obj_char["positive_bonus"])
-    or self_side_obj_char["state"] == "hitstop"
-    or self_side_obj_char["state"] == "hurtstop"
-    or self_side_obj_char["state"] == "blockstop"
-    or self_side_obj_char["game_speed_force_1_countdown"] > 0 then
-        return
-    end
-    if self_side_obj_char["positive_bonus_countdown"] > 1 then
-        self_side_obj_char["positive_bonus_countdown"] = self_side_obj_char["positive_bonus_countdown"] - 1
-    else
-        self_side_obj_char["positive_bonus"] = false
-        self_side_obj_char["positive_bonus_heat_gain_buff"] = 1
-        self_side_obj_char["positive_bonus_hit_damage_buff"] = 1
-        self_side_obj_char["positive_bonus_hurt_damage_buff"] = 1
-        self_side_obj_char["positive_bonus_countdown"] = 0
-    end
+function update_game_scene_char_LP_wallstick_gauge_update_pause_countdown()
+    local obj_char = obj_char_game_scene_char_LP
+    obj_char["wallstick_gauge_update_pause_countdown"] = 
+    math.max(0,obj_char["wallstick_gauge_update_pause_countdown"] - 1)
 end
 function update_game_scene_char_LP_shot_sys_curse_countdown()
-    local self_side_obj_char = obj_char_game_scene_char_LP
-    if (not self_side_obj_char["shot_sys_curse"])
-    or self_side_obj_char["state"] == "hitstop"
-    or self_side_obj_char["state"] == "hurtstop"
-    or self_side_obj_char["state"] == "blockstop"
-    or self_side_obj_char["game_speed_force_1_countdown"] > 0 then
+    local obj_char = obj_char_game_scene_char_LP
+    if (not obj_char["shot_sys_curse"])
+    or obj_char["state"] == "hitstop"
+    or obj_char["state"] == "hurtstop"
+    or obj_char["state"] == "blockstop"
+    or obj_char["game_speed_force_1_countdown"] > 0 then
         return
     end
-    if self_side_obj_char["shot_sys_curse_countdown"] > 1
-    and (not self_side_obj_char["shot_sys_curse_ban_state"][self_side_obj_char["state"]]) then
-        self_side_obj_char["shot_sys_curse_countdown"] = self_side_obj_char["shot_sys_curse_countdown"] - 1
+    if obj_char["shot_sys_curse_countdown"] > 1
+    and (not obj_char["shot_sys_curse_ban_state"][obj_char["state"]]) then
+        obj_char["shot_sys_curse_countdown"] = obj_char["shot_sys_curse_countdown"] - 1
     else
-        self_side_obj_char["shot_sys_curse"] = false
-        self_side_obj_char["shot_sys_curse_countdown"] = 0
+        obj_char["shot_sys_curse"] = false
+        obj_char["shot_sys_curse_countdown"] = 0
     end
 end
-function update_game_scene_char_LP_uncommon_countdown()
+function update_game_scene_char_LP_countdown()
     -- countdown
-    update_game_scene_char_LP_overdrive_countdown()
     update_game_scene_char_LP_inv_state_countdown()
-    update_game_scene_char_LP_heat_penalty_countdown()
-    update_game_scene_char_LP_ability_penalty_countdown()
     update_game_scene_char_LP_positive_bonus_countdown()
+    update_game_scene_char_LP_health_gauge_update_fade_pause_countdown()
+    update_game_scene_char_LP_ability_penalty_countdown()
+    update_game_scene_char_LP_heat_penalty_countdown()
+    update_game_scene_char_LP_overdrive_countdown()
+    update_game_scene_char_LP_risk_gauge_update_pause_countdown()
+    update_game_scene_char_LP_wallstick_gauge_update_pause_countdown()
     update_game_scene_char_LP_shot_sys_curse_countdown()
     -- basic_prop_cache
     for i = 1,8 do

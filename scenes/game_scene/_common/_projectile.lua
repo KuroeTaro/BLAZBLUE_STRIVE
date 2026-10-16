@@ -215,7 +215,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     )
     obj_projectile["projectile_active"] = true
     obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
-    obj_projectile["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_special
+    obj_projectile["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_special_projectile
     obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC_red
     obj_projectile["hit_SFX"] = hit_side_move_SFX_table["red_RC_hit"]
     obj_projectile["hit_block_SFX"] = hit_side_move_SFX_table["red_RC_block"]
