@@ -14,7 +14,7 @@ function run_table_order_load()
         end
         i = i + 1
     end
-    -- pop image data
+    -- pop_image_data
     i = 1
     while (i<=THREAD_AMOUNT)
     do
@@ -23,7 +23,7 @@ function run_table_order_load()
         end
         i = i + 1
     end
-    -- load asset data to variables
+    -- load_asset_data_to_variables
     i = 1
     while (i<=THREAD_AMOUNT)
     do

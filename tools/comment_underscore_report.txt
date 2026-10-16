@@ -1,0 +1,87 @@
+Lua 注释下划线检查报告（英文标签型注释内的空格 -> 下划线）
+规则：`--` 注释内容若由 ASCII 单词（字母/数字/下划线）构成且词间为单个空格，则词间空格替换为下划线
+      其余注释（含非 ASCII / 运算符标点 / 纯数字词 / 代码关键字开头 / 缩进对齐 / 长注释）保持原样
+检查范围：47 个 Lua 文件（scenes/、update_general_use_functions/）
+
+========================================================================================================
+A. 需要替换（英文标签型注释含空格）  (0 处)
+========================================================================================================
+
+  （无）
+
+========================================================================================================
+B. 保持原样（分类统计）
+========================================================================================================
+
+  已符合（无空格）：7453 处
+  含非 ASCII（中文等）：939 处
+  含运算符/标点（代码片段）：577 处
+  长注释：0 处
+  含纯数字词（帧数/数值列表）：5 处
+  以代码关键字开头（被注释掉的代码）：3 处
+  其他（空注释/纯符号/无法归类）：28 处
+
+========================================================================================================
+C. 需人工确认（未替换）  (55 处)
+========================================================================================================
+
+  [AlignIndent] `--` 后缩进 ≥2 空格或含制表符：表格列头 / 被注释掉的缩进代码
+  [MultiSpace] 标签内容含连续多个空格：对齐写法，无法确认为单个标签
+
+  scenes/game_scene/_common/_projectile.lua       6:1     [AlignIndent]  --                              hit_damage hit_damage_correction_factor
+  scenes/game_scene/_common/_projectile.lua       7:1     [AlignIndent]  --                              hit_heat_gain hit_wallbreak_damage hurt_heat_gain
+  scenes/game_scene/_common/_projectile.lua       8:1     [AlignIndent]  --                              blocked_heat_gain block_heat_gain block_risk_gauge_gain FD_block_heat_drain
+  scenes/game_scene/_common/_projectile.lua       9:1     [AlignIndent]  --                              stand_hurt_animation stand_block_animation
+  scenes/game_scene/_common/_projectile.lua      10:1     [AlignIndent]  --                              crouch_hurt_animation crouch_block_animation
+  scenes/game_scene/_common/_projectile.lua      11:1     [AlignIndent]  --                              air_hurt_animation air_block_animation
+  scenes/game_scene/_common/_projectile.lua      12:1     [AlignIndent]  --                              OTG_hurt_animation wallstick_hurt_animation
+  scenes/game_scene/_common/_projectile.lua      13:1     [AlignIndent]  --                              projectile_active projectile_counter_ver_function
+  scenes/game_scene/_common/_projectile.lua      14:1     [AlignIndent]  --                              block_SFX counter_SFX hit_SFX_whiff_SFX
+  scenes/game_scene/_common/_projectile.lua      16:1     [AlignIndent]  --                              hit_VFX_insert_function hit_VFX_insert_function_argument
+  scenes/game_scene/_common/_projectile.lua      17:1     [AlignIndent]  --                              hit_counter_VFX_insert_function hit_counter_VFX_insert_function_argument
+  scenes/game_scene/_common/_projectile.lua      18:1     [AlignIndent]  --                              hit_block_VFX_insert_function hit_block_VFX_insert_function_argument
+  scenes/game_scene/_common/_projectile.lua      20:1     [MultiSpace]  -- friendly_interact_function   same_as_above
+  scenes/game_scene/_common/_projectile.lua      84:1     [AlignIndent]  --                              hit_heat_gain hit_wallbreak_damage hurt_heat_gain
+  scenes/game_scene/_common/_projectile.lua      85:1     [AlignIndent]  --                              blocked_heat_gain block_heat_gain block_risk_gauge_gain FD_block_heat_drain
+  scenes/game_scene/_common/_projectile.lua      86:1     [AlignIndent]  --                              stand_hurt_animation stand_block_animation
+  scenes/game_scene/_common/_projectile.lua      87:1     [AlignIndent]  --                              crouch_hurt_animation crouch_block_animation
+  scenes/game_scene/_common/_projectile.lua      88:1     [AlignIndent]  --                              air_hurt_animation air_block_animation
+  scenes/game_scene/_common/_projectile.lua      89:1     [AlignIndent]  --                              OTG_hurt_animation wallstick_hurt_animation
+  scenes/game_scene/_common/_projectile.lua      90:1     [AlignIndent]  --                              projectile_active projectile_counter_ver_function
+  scenes/game_scene/_common/_projectile.lua      91:1     [AlignIndent]  --                              block_SFX counter_SFX hit_SFX_whiff_SFX
+  scenes/game_scene/_common/_projectile.lua     317:1     [MultiSpace]  -- animation                    projectile_animation
+  scenes/game_scene/_common/_projectile.lua     505:1     [AlignIndent]  --                              hit_heat_gain hit_wallbreak_damage hurt_heat_gain
+  scenes/game_scene/_common/_projectile.lua     506:1     [AlignIndent]  --                              blocked_heat_gain block_heat_gain block_risk_gauge_gain FD_block_heat_drain
+  scenes/game_scene/_common/_projectile.lua     507:1     [AlignIndent]  --                              stand_hurt_animation stand_block_animation
+  scenes/game_scene/_common/_projectile.lua     508:1     [AlignIndent]  --                              crouch_hurt_animation crouch_block_animation
+  scenes/game_scene/_common/_projectile.lua     509:1     [AlignIndent]  --                              air_hurt_animation air_block_animation
+  scenes/game_scene/_common/_projectile.lua     510:1     [AlignIndent]  --                              OTG_hurt_animation wallstick_hurt_animation
+  scenes/game_scene/_common/_projectile.lua     511:1     [AlignIndent]  --                              projectile_active projectile_counter_ver_function
+  scenes/game_scene/_common/_projectile.lua     512:1     [AlignIndent]  --                              block_SFX counter_SFX hit_SFX_whiff_SFX
+  scenes/game_scene/_common/_projectile.lua     513:1     [AlignIndent]  --                              hit_VFX_insert_function hit_SFX
+  scenes/game_scene/characters/TRM/_projectile.lua       5:1     [AlignIndent]  --                              hit_damage hit_damage_correction_factor
+  scenes/game_scene/characters/TRM/_projectile.lua       6:1     [AlignIndent]  --                              hit_heat_gain hit_wallbreak_damage hurt_heat_gain
+  scenes/game_scene/characters/TRM/_projectile.lua       7:1     [AlignIndent]  --                              blocked_heat_gain block_heat_gain block_risk_gauge_gain FD_block_heat_drain
+  scenes/game_scene/characters/TRM/_projectile.lua       8:1     [AlignIndent]  --                              stand_hurt_animation stand_block_animation
+  scenes/game_scene/characters/TRM/_projectile.lua       9:1     [AlignIndent]  --                              crouch_hurt_animation crouch_block_animation
+  scenes/game_scene/characters/TRM/_projectile.lua      10:1     [AlignIndent]  --                              air_hurt_animation air_block_animation
+  scenes/game_scene/characters/TRM/_projectile.lua      11:1     [AlignIndent]  --                              OTG_hurt_animation wallstick_hurt_animation
+  scenes/game_scene/characters/TRM/_projectile.lua      12:1     [AlignIndent]  --                              projectile_active projectile_counter_ver_function
+  scenes/game_scene/characters/TRM/_projectile.lua      13:1     [AlignIndent]  --                              block_SFX counter_SFX hit_SFX_whiff_SFX
+  scenes/game_scene/characters/TRM/_projectile.lua     814:1     [AlignIndent]  --                              block_SFX counter_SFX hit_SFX_whiff_SFX
+  scenes/game_scene/characters/TRM/_projectile.lua     817:1     [MultiSpace]  -- animation                    projectile_animation
+  scenes/game_scene/characters/TRM/_projectile.lua    1117:1     [AlignIndent]  --                              ease_in_SFX ease_out_SFX
+  scenes/game_scene/characters/TRM/_projectile.lua    1118:1     [MultiSpace]  -- animation                    projectile_animation
+  scenes/game_scene/characters/TRM/_projectile.lua    1121:1     [AlignIndent]  --                              projectile_buff projectile_buff_f projectile_buff_animation projectile_buff_anchor_pos
+  scenes/game_scene/characters/TRM/_projectile.lua    1122:1     [AlignIndent]  --                              state_cache VFX_hit_front_table VFX_hit_back_table
+  scenes/game_scene/characters/TRM/_projectile.lua    1573:1     [AlignIndent]  --                              hit_damage hit_damage_correction_factor
+  scenes/game_scene/characters/TRM/_projectile.lua    1574:1     [AlignIndent]  --                              hit_heat_gain hit_wallbreak_damage hurt_heat_gain
+  scenes/game_scene/characters/TRM/_projectile.lua    1575:1     [AlignIndent]  --                              blocked_heat_gain block_heat_gain block_risk_gauge_gain FD_block_heat_drain
+  scenes/game_scene/characters/TRM/_projectile.lua    1576:1     [AlignIndent]  --                              stand_hurt_animation stand_block_animation
+  scenes/game_scene/characters/TRM/_projectile.lua    1577:1     [AlignIndent]  --                              crouch_hurt_animation crouch_block_animation
+  scenes/game_scene/characters/TRM/_projectile.lua    1578:1     [AlignIndent]  --                              air_hurt_animation air_block_animation
+  scenes/game_scene/characters/TRM/_projectile.lua    1579:1     [AlignIndent]  --                              OTG_hurt_animation wallstick_hurt_animation
+  scenes/game_scene/characters/TRM/_projectile.lua    1580:1     [AlignIndent]  --                              projectile_active projectile_counter_ver_function
+  scenes/game_scene/characters/TRM/_projectile.lua    1581:1     [AlignIndent]  --                              block_SFX counter_SFX hit_SFX_whiff_SFX
+
+TOTAL: A=0  C=55

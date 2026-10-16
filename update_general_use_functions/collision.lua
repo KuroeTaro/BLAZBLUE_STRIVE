@@ -331,7 +331,7 @@ function collision_throw_hit_confirm_test(hit_obj,hurt_obj)
     return false
 end
 function collision_projectile_hit_confirm_test(hit_obj,hurt_obj)
-    -- none strike throw projectile all
+    -- none_strike_throw_projectile_all
     if hit_obj["hit_type"] == "none" then
         return false
     end
@@ -456,7 +456,7 @@ end
     --     obj_A["velocity"][1] = res_velocity
     --     obj_B["velocity"][1] = res_velocity
     -- end
--- capsule collision detection and relocation
+-- capsule_collision_detection_and_relocation
 -- -------------------------------------------------------------------------------------------------
     -- function collision_box_to_capsule(box)
     --     local res = {

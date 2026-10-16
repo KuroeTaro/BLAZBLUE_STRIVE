@@ -1,6 +1,6 @@
 -- global_projectile_prop_table
 -- 1-8 type life x y velocity projectile_clash_type f
--- state state_cache physics_lock sprite_sheet
+-- state_state_cache_physics_lock_sprite_sheet
 -- projectile_clashed_function	projectile_clash_box_table
 -- enemy_interact_function		hitbox hit_type	hit_guard_type hit_hurt_blockstop_countdown
 --                              hit_damage hit_damage_correction_factor
@@ -24,7 +24,7 @@
 -- update/update_sub_frame/draw
 -- uncommon
 -- projectile_init_fix
--- min_require common_projectile_hit_function
+-- min_require_common_projectile_hit_function
     -- state
     -- state_cache
     -- physics_lock
@@ -43,19 +43,19 @@
     -- hit_block_SFX
     -- hit_counter_VFX_insert_function
     -- hit_counter_SFX
--- min_require common_projectile_hurt_function
+-- min_require_common_projectile_hurt_function
     -- hit_guard_type
     -- hit_hurt_blockstop_countdown
     -- camera_x_shake_anim
     -- camera_y_shake_anim
     -- camera_enclosing_anim
     -- enclose_position_offset
-    -- stand_block_animation crouch_block_animation air_block_animation
-    -- stand_hurt_animation crouch_hurt_animation air_hurt_animation OTG_hurt_animation wallstick_hurt_animation
+    -- stand_block_animation_crouch_block_animation_air_block_animation
+    -- stand_hurt_animation_crouch_hurt_animation_air_hurt_animation_OTG_hurt_animation_wallstick_hurt_animation
     -- projectile_counter_ver_function
     -- hurt_block_VFX_insert_function
     -- hurt_block_SFX
--- min_require common_projectile_clashed_by_char
+-- min_require_common_projectile_clashed_by_char
     -- state
     -- state_cache
     -- physics_lock
@@ -222,7 +222,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     obj_projectile["hit_counter_SFX"] = hit_side_move_SFX_table["red_RC_counter"]
     obj_projectile["hit_whiff_SFX"] = hit_side_move_SFX_table["red_RC_whiff"]
     obj_projectile["enemy_interact_function"] = function()
-        -- if hit
+        -- if_hit
         if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char)
         and obj_projectile["projectile_active"] and (not hurt_side_obj_char["strike_inv"]) then
             -- projectile_active
@@ -234,7 +234,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
                 hurt_side_obj_char["hurt_state"] = "counter"
             end
             -- insert_projectile_VFX_SFX_counter_apply
-            if hurt_side_obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
+            if hurt_side_obj_char["hurt_state"] == "counter" then -- idle_unblock_punish_counter_GP_parry
                 obj_projectile["projectile_counter_ver_function"]()
                 obj_projectile["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
                 play_obj_audio(obj_projectile["hit_counter_SFX"])
@@ -296,7 +296,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
     end
-    -- uncommon nil
+    -- uncommon_nil
     -- projectile_init_fix
     if hit_side_obj_char["height"] == "air" then
         obj_projectile["y_offset"] = 150
@@ -319,7 +319,7 @@ end
 -- uncommon
 -- projectile_init_fix
 function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj_char,hurt_side_obj_char)
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
@@ -337,7 +337,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
     obj_projectile["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
     obj_projectile["projectile_active"] = true
     obj_projectile["enemy_interact_function"] = function()
-        -- if hit
+        -- if_hit
         if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char)
         and obj_projectile["projectile_active"] then
             -- physics_lock
@@ -413,7 +413,7 @@ end
 -- uncommon
 -- projectile_init_fix
 function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_obj_char,hurt_side_obj_char)
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
@@ -431,7 +431,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
     obj_projectile["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
     obj_projectile["projectile_active"] = true
     obj_projectile["enemy_interact_function"] = function()
-        -- if hit
+        -- if_hit
         if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char)
         and obj_projectile["projectile_active"] then
             -- physics_lock
@@ -623,7 +623,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
     obj_projectile["hit_counter_SFX"] = hit_side_move_SFX_table["yellow_RC_counter"]
     obj_projectile["hit_whiff_SFX"] = hit_side_move_SFX_table["yellow_RC_whiff"]
     obj_projectile["enemy_interact_function"] = function()
-        -- if hit
+        -- if_hit
         if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char)
         and obj_projectile["projectile_active"] and (not hurt_side_obj_char["strike_inv"]) then
             -- projectile_active
@@ -635,7 +635,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
                 hurt_side_obj_char["hurt_state"] = "counter"
             end
             -- insert_projectile_VFX_SFX_counter_apply
-            if hurt_side_obj_char["hurt_state"] == "counter" then -- idle unblock punish counter GP parry
+            if hurt_side_obj_char["hurt_state"] == "counter" then -- idle_unblock_punish_counter_GP_parry
                 obj_projectile["projectile_counter_ver_function"]()
                 obj_projectile["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
                 play_obj_audio(obj_projectile["hit_counter_SFX"])
@@ -697,7 +697,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setBlendMode("alpha")
     end
-    -- uncommon nil
+    -- uncommon_nil
     -- projectile_init_fix
     if hit_side_obj_char["height"] == "air" then
         obj_projectile["y_offset"] = 150
@@ -735,9 +735,9 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
             or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
-        hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
-        hurt_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
-        hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
+        hurt_side_obj_char["height"] = height -- stand_crouch_air_OTG_wallstick
+        hurt_side_obj_char["hurt_state_target"] = "idle" -- idle_unblock_punish_counter_GP_parry
+        hurt_side_obj_char["move_state"] = "recovery" -- none_startup_active_recovery
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_projectile_apply_hurt_velocity(
@@ -766,7 +766,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
         -- input_sys_cache
-        hurt_side_obj_char["input_sys_state"] = "save" -- none save load
+        hurt_side_obj_char["input_sys_state"] = "save" -- none_save_load
         common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- game_speed
         common_game_scene_game_speed_load_application(
@@ -795,7 +795,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
     end
     res[6] = function()
         -- input_sys_cache
-        hurt_side_obj_char["input_sys_state"] = "save" -- none save load
+        hurt_side_obj_char["input_sys_state"] = "save" -- none_save_load
         common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- draw_correction
         hurt_side_obj_char[8] = 2
@@ -809,7 +809,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
         hurt_side_obj_char[8] = 0
     end
     res[12] = function()
-        -- animation end
+        -- animation_end
     end
     return res
 end
@@ -863,9 +863,9 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
             or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
-        hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
-        hurt_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
-        hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
+        hurt_side_obj_char["height"] = height -- stand_crouch_air_OTG_wallstick
+        hurt_side_obj_char["hurt_state_target"] = "idle" -- idle_unblock_punish_counter_GP_parry
+        hurt_side_obj_char["move_state"] = "recovery" -- none_startup_active_recovery
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_projectile_apply_hurt_velocity(
@@ -894,7 +894,7 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
         -- input_sys_cache
-        hurt_side_obj_char["input_sys_state"] = "save" -- none save load
+        hurt_side_obj_char["input_sys_state"] = "save" -- none_save_load
         common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- game_speed
         common_game_scene_game_speed_load_application(
@@ -939,7 +939,7 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
         update_before_land()
     end
     res[13] = function()
-        -- land animation start
+        -- land_animation_start
     end
     res[16] = function()
         -- collide
@@ -957,7 +957,7 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
     end
     res[26] = function()
         -- input_sys_cache
-        hurt_side_obj_char["input_sys_state"] = "save" -- none save load
+        hurt_side_obj_char["input_sys_state"] = "save" -- none_save_load
         common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
     end
     res[28] = function()
@@ -967,7 +967,7 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
         hurt_side_obj_char[8] = 8
     end
     res[32] = function()
-        -- animation end
+        -- animation_end
     end
     return res
 end
@@ -999,9 +999,9 @@ function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
-        hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
-        hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
-        hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
+        hurt_side_obj_char["height"] = height -- stand_crouch_air_OTG_wallstick
+        hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle_unblock_punish_counter_GP_parry
+        hurt_side_obj_char["move_state"] = "recovery" -- none_startup_active_recovery
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_projectile_apply_hurt_velocity(
@@ -1034,7 +1034,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
         -- input_sys_cache
-        hurt_side_obj_char["input_sys_state"] = "save" -- none save load
+        hurt_side_obj_char["input_sys_state"] = "save" -- none_save_load
         common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- game_speed
         common_game_scene_game_speed_load_application(
@@ -1176,9 +1176,9 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
             or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
-        hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
-        hurt_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
-        hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
+        hurt_side_obj_char["height"] = height -- stand_crouch_air_OTG_wallstick
+        hurt_side_obj_char["hurt_state_target"] = "idle" -- idle_unblock_punish_counter_GP_parry
+        hurt_side_obj_char["move_state"] = "recovery" -- none_startup_active_recovery
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_projectile_apply_hurt_velocity(
@@ -1207,7 +1207,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
         -- input_sys_cache
-        hurt_side_obj_char["input_sys_state"] = "save" -- none save load
+        hurt_side_obj_char["input_sys_state"] = "save" -- none_save_load
         common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- game_speed
         common_game_scene_game_speed_load_application(
@@ -1244,7 +1244,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
     end
     res[11] = function()
         -- input_sys_cache
-        hurt_side_obj_char["input_sys_state"] = "save" -- none save load
+        hurt_side_obj_char["input_sys_state"] = "save" -- none_save_load
         common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
     end
     res[12] = function()
@@ -1256,7 +1256,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
         hurt_side_obj_char[8] = 0
     end
     res[17] = function()
-        -- animation end
+        -- animation_end
     end
     return res
 end
@@ -1310,9 +1310,9 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
             or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
-        hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
-        hurt_side_obj_char["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
-        hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
+        hurt_side_obj_char["height"] = height -- stand_crouch_air_OTG_wallstick
+        hurt_side_obj_char["hurt_state_target"] = "idle" -- idle_unblock_punish_counter_GP_parry
+        hurt_side_obj_char["move_state"] = "recovery" -- none_startup_active_recovery
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_projectile_apply_hurt_velocity(
@@ -1341,7 +1341,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
         -- input_sys_cache
-        hurt_side_obj_char["input_sys_state"] = "save" -- none save load
+        hurt_side_obj_char["input_sys_state"] = "save" -- none_save_load
         common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- game_speed
         common_game_scene_game_speed_load_application(
@@ -1386,7 +1386,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
         update_before_land()
     end
     res[13] = function()
-        -- land animation start
+        -- land_animation_start
     end
     res[16] = function()
         -- collide
@@ -1404,7 +1404,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
     end
     res[26] = function()
         -- input_sys_cache
-        hurt_side_obj_char["input_sys_state"] = "save" -- none save load
+        hurt_side_obj_char["input_sys_state"] = "save" -- none_save_load
         common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
     end
     res[28] = function()
@@ -1414,7 +1414,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
         hurt_side_obj_char[8] = 8
     end
     res[32] = function()
-        -- animation end
+        -- animation_end
     end
     return res
 end
@@ -1446,9 +1446,9 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
-        hurt_side_obj_char["height"] = height -- stand crouch air OTG wallstick
-        hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle unblock punish counter GP parry
-        hurt_side_obj_char["move_state"] = "recovery" -- none startup active recovery
+        hurt_side_obj_char["height"] = height -- stand_crouch_air_OTG_wallstick
+        hurt_side_obj_char["hurt_state_target"] = "unblock" -- idle_unblock_punish_counter_GP_parry
+        hurt_side_obj_char["move_state"] = "recovery" -- none_startup_active_recovery
         hurt_side_obj_char["idle_cancel"] = false
         -- state_number
         common_game_scene_projectile_apply_hurt_velocity(
@@ -1481,7 +1481,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
         hurt_side_obj_char["active_frame"] = 0
         hurt_side_obj_char["recovery_frame"] = 0
         -- input_sys_cache
-        hurt_side_obj_char["input_sys_state"] = "save" -- none save load
+        hurt_side_obj_char["input_sys_state"] = "save" -- none_save_load
         common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
         -- game_speed
         common_game_scene_game_speed_load_application(

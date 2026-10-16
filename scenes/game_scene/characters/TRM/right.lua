@@ -4,7 +4,7 @@
 -- obj_char_game_scene_char_RP = {0,0,0,1,-1,1,0,0} -> obj_char_game_scene_char_LP = {0,0,0,1,-1,1,0,0}
 -- obj_char_game_scene_char_RP["x"] = 320 -> obj_char_game_scene_char_LP["x"] = 320
 function load_game_scene_obj_char_RP()
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     obj_char_game_scene_char_RP = {0,0,0,1,-1,1,0,0} -- obj[1-8]都为图形上的数据 obj[8]为图形上的帧数
     obj_char_game_scene_char_RP["basic_prop_cache"] = {0,0,0,1,1,1,0,0}
     obj_char_game_scene_char_RP["x"] = 320
@@ -21,12 +21,12 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["state"] = "before_ease_in"
     obj_char_game_scene_char_RP["state_cache"] = "none"
     obj_char_game_scene_char_RP["sprite_sheet"] = "5_stand_idle"
-    obj_char_game_scene_char_RP["height"] = "stand" -- stand crouch air OTG wallstick
-    obj_char_game_scene_char_RP["hit_type"] = "none" -- none strike throw projectile all
-    obj_char_game_scene_char_RP["hit_guard_type"] = "none" -- none all low mid high
-    obj_char_game_scene_char_RP["hurt_state"] = "idle" -- idle unblock punish counter GP parry
-    obj_char_game_scene_char_RP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
-    obj_char_game_scene_char_RP["move_state"] = "none" -- none startup active recovery
+    obj_char_game_scene_char_RP["height"] = "stand" -- stand_crouch_air_OTG_wallstick
+    obj_char_game_scene_char_RP["hit_type"] = "none" -- none_strike_throw_projectile_all
+    obj_char_game_scene_char_RP["hit_guard_type"] = "none" -- none_all_low_mid_high
+    obj_char_game_scene_char_RP["hurt_state"] = "idle" -- idle_unblock_punish_counter_GP_parry
+    obj_char_game_scene_char_RP["hurt_state_target"] = "idle" -- idle_unblock_punish_counter_GP_parry
+    obj_char_game_scene_char_RP["move_state"] = "none" -- none_startup_active_recovery
     obj_char_game_scene_char_RP["last_move_state"] = "none" -- none startup active recovery'
     obj_char_game_scene_char_RP["hit_cancel"] = false
     obj_char_game_scene_char_RP["idle_cancel"] = false
@@ -113,7 +113,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["frame_adv"] = 0
     obj_char_game_scene_char_RP["last_hitstop_frame"] = 0
     -- input_sys_cache
-    obj_char_game_scene_char_RP["input_sys_state"] = "none" -- none save load
+    obj_char_game_scene_char_RP["input_sys_state"] = "none" -- none_save_load
     obj_char_game_scene_char_RP["input_sys_cache"] = {}
     obj_char_game_scene_char_RP["input_sys_state_negative_edge"] = "none"
     obj_char_game_scene_char_RP["input_sys_cache_negative_edge"] = {}
@@ -823,7 +823,7 @@ function load_game_scene_box_anchor_data_RP()
     }
 end
 function load_game_scene_shader_char_RP()
-    -- shader_global_variable no_shader_in_this_case
+    -- shader_global_variable_no_shader_in_this_case
     shader_game_scene_RP = {}
 end
 function load_game_scene_canvas_char_RP()
@@ -936,12 +936,12 @@ end
 function load_game_scene_wallbreak_end_init_RP()
     -- state
     obj_char_game_scene_char_RP["state_cache"] = "none"
-    obj_char_game_scene_char_RP["hit_type"] = "none" -- none strike throw projectile all
-    obj_char_game_scene_char_RP["hit_guard_type"] = "none" -- none all low mid high
-    obj_char_game_scene_char_RP["hurt_state"] = "idle" -- idle unblock punish counter GP parry
-    obj_char_game_scene_char_RP["hurt_state_target"] = "idle" -- idle unblock punish counter GP parry
-    obj_char_game_scene_char_RP["move_state"] = "none" -- none startup active recovery
-    obj_char_game_scene_char_RP["last_move_state"] = "none" -- none startup active recovery
+    obj_char_game_scene_char_RP["hit_type"] = "none" -- none_strike_throw_projectile_all
+    obj_char_game_scene_char_RP["hit_guard_type"] = "none" -- none_all_low_mid_high
+    obj_char_game_scene_char_RP["hurt_state"] = "idle" -- idle_unblock_punish_counter_GP_parry
+    obj_char_game_scene_char_RP["hurt_state_target"] = "idle" -- idle_unblock_punish_counter_GP_parry
+    obj_char_game_scene_char_RP["move_state"] = "none" -- none_startup_active_recovery
+    obj_char_game_scene_char_RP["last_move_state"] = "none" -- none_startup_active_recovery
     obj_char_game_scene_char_RP["hit_cancel"] = false
     obj_char_game_scene_char_RP["idle_cancel"] = false
     obj_char_game_scene_char_RP["physics_lock"] = false
@@ -1270,7 +1270,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end
         end,
-        -- attack P
+        -- attack_P
         [16] = function()
             local load_name_table = {
                 "2P",
@@ -1285,7 +1285,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end
         end,
-        -- attack K
+        -- attack_K
         [17] = function()
             local load_name_table = {
                 "2K",
@@ -1300,7 +1300,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end
         end,
-        -- attack S
+        -- attack_S
         [18] = function()
             local load_name_table = {
                 "2S",
@@ -1316,7 +1316,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end
         end,
-        -- attack H
+        -- attack_H
         [19] = function()
             local load_name_table = {
                 "5H"
@@ -1329,7 +1329,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end
         end,
-        -- attack 5H_oroboros
+        -- attack_5H_oroboros
         [20] = function()
             local load_name_table = {
                 "5H_oroboros_ease_in_mid",
@@ -1347,7 +1347,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end
         end,
-        -- attack 5H_reticle
+        -- attack_5H_reticle
         [21] = function()
             local load_name_table = {
                 "5H_reticle_ease_out",
@@ -1365,7 +1365,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end
         end,
-        -- attack Launcher
+        -- attack_Launcher
         [22] = function()
             local load_name_table = {
                 "2Launcher",
@@ -1553,7 +1553,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end
         end,
-        -- move_VFX Launcher
+        -- move_VFX_Launcher
         [34] = function()
             local load_name_table = {
                 "5Launcher",
@@ -1567,7 +1567,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end
         end,
-        -- move_VFX air
+        -- move_VFX_air
         [35] = function()
             local load_name_table = {
                 "j5S"
@@ -1580,7 +1580,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 )
             end
         end,
-        -- move_VFX special
+        -- move_VFX_special
         [36] = function()
             local load_name_table = {
                 "6SP_P_curse_ball_spawner",
@@ -1718,7 +1718,7 @@ function order_load_game_scene_char_RP_audio(load_order)
                 update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
             end
         end,
-        -- move_SFX 5H
+        -- move_SFX_5H
         [6] = function()
             local load_name_table = {
                 "5H_knife_clip_0","5H_knife_clip_1","5H_knife_clip_2","5H_knife_whiff",
@@ -1798,7 +1798,7 @@ function order_load_game_scene_char_RP_audio(load_order)
                 update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
             end
         end,
-        -- move_SFX overdrive
+        -- move_SFX_overdrive
         [11] = function()
             local load_name_table = {
                 "overdrive"
@@ -5123,7 +5123,7 @@ function state_gate_game_scene_char_RP_from_block(
     ) then
         return
     end
-    self_side_obj_char["input_sys_state"] = "load" -- none save load
+    self_side_obj_char["input_sys_state"] = "load" -- none_save_load
     state_machine_char_game_scene_char_RP_input_sys_cache()
     -- _5_stand_idle
     if self_side_obj_char["height"] == "stand" then
@@ -5215,8 +5215,8 @@ function state_gate_game_scene_char_RP_from_hurt(
     if get_character_anim_end_state(
         self_side_obj_char,self_side_obj_char["character_animation"]
     ) then
-        self_side_obj_char["input_sys_state"] = "load" -- none save load
-        -- something could use for combo HUD
+        self_side_obj_char["input_sys_state"] = "load" -- none_save_load
+        -- something_could_use_for_combo_HUD
         -- print("hurt animation end")
         state_machine_char_game_scene_char_RP_input_sys_cache()
         -- _5_stand_idle
@@ -5434,7 +5434,7 @@ function state_gate_game_scene_char_RP_from_throw_testing(
         )
     elseif self_side_obj_char["f"] > 9 then
         -- uncommon_input_sys_cache_for_throw_direction_input_apply
-        self_side_obj_char["input_sys_state"] = "load" -- none save load
+        self_side_obj_char["input_sys_state"] = "load" -- none_save_load
         common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
         -- continue
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
@@ -5488,7 +5488,7 @@ function state_gate_game_scene_char_RP_from_throw_tech(
         self_side_obj_char,self_side_obj_char["character_animation"]
     ) then
         -- input_sys_cache
-        self_side_obj_char["input_sys_state"] = "load" -- none save load
+        self_side_obj_char["input_sys_state"] = "load" -- none_save_load
         state_machine_char_game_scene_char_RP_input_sys_cache()
         -- air
         if self_side_obj_char["height"] == "air" then
@@ -5550,7 +5550,7 @@ function state_gate_game_scene_char_RP_from_hitstop(
         self_side_obj_char["state"] = self_side_obj_char["state_cache"]
         self_side_obj_char["physics_lock"] = false
         -- input_sys_cache
-        self_side_obj_char["input_sys_state"] = "load" -- none save load
+        self_side_obj_char["input_sys_state"] = "load" -- none_save_load
         state_machine_char_game_scene_char_RP_input_sys_cache()
         -- _overdrive
         if state_gate_game_scene_char_RP_common_to_burst_overdrive(
@@ -5580,7 +5580,7 @@ function state_gate_game_scene_char_RP_from_blockstop(
         self_side_obj_char["state"] = self_side_obj_char["state_cache"]
         self_side_obj_char["physics_lock"] = false
         -- input_sys_cache
-        self_side_obj_char["input_sys_state"] = "load" -- none save load
+        self_side_obj_char["input_sys_state"] = "load" -- none_save_load
         state_machine_char_game_scene_char_RP_input_sys_cache()
         -- _burst
         if state_gate_game_scene_char_RP_common_to_burst_overdrive(
@@ -5600,7 +5600,7 @@ function state_gate_game_scene_char_RP_from_hurtstop(
         self_side_obj_char["state"] = self_side_obj_char["state_cache"]
         self_side_obj_char["physics_lock"] = false
         -- input_sys_cache
-        self_side_obj_char["input_sys_state"] = "load" -- none save load
+        self_side_obj_char["input_sys_state"] = "load" -- none_save_load
         state_machine_char_game_scene_char_RP_input_sys_cache()
         -- _burst
         if state_gate_game_scene_char_RP_common_to_burst_overdrive(
@@ -5662,7 +5662,7 @@ function state_gate_game_scene_char_RP_from_knockdown_recovery(
         self_side_obj_char,self_side_obj_char["character_animation"]
     ) then
         -- input_sys_cache
-        self_side_obj_char["input_sys_state"] = "load" -- none save load
+        self_side_obj_char["input_sys_state"] = "load" -- none_save_load
         state_machine_char_game_scene_char_RP_input_sys_cache()
         -- _5_stand_idle
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
@@ -5693,7 +5693,7 @@ function state_gate_game_scene_char_RP_from_knockdown_recovery_wallstick(
         self_side_obj_char,self_side_obj_char["character_animation"]
     ) then
         -- input_sys_cache
-        self_side_obj_char["input_sys_state"] = "load" -- none save load
+        self_side_obj_char["input_sys_state"] = "load" -- none_save_load
         state_machine_char_game_scene_char_RP_input_sys_cache()
         self_side_obj_char["state"] = self_side_obj_char["state_cache"]
         if self_side_obj_char["state"] == "5_stand_idle" then
@@ -6739,7 +6739,7 @@ function state_gate_game_scene_char_RP_from_7_8_9_jump_air(
             -- save_input_sys_cache_from_pre_jump_and_7_8_9_jump_air
             load_input_sys_cache_manual_release(self_side_input,self_side_obj_char,"dash")
             load_input_sys_cache_recache(self_side_input,self_side_obj_char)
-            self_side_obj_char["input_sys_state"] = "save" -- none save load
+            self_side_obj_char["input_sys_state"] = "save" -- none_save_load
             return true
         end
         if state_gate_game_scene_char_RP_common_air_to_special_move(
@@ -7200,7 +7200,7 @@ function state_gate_game_scene_char_RP_from_6dash_dash_cancel(
         stop_obj_audio(self_side_stage_interactive_SFX_table["ground_dash_loop"])
         self_side_obj_char["state"] = "5_stand_dash_skid"
         -- input_sys_cache
-        self_side_obj_char["input_sys_state"] = "load" -- none save load
+        self_side_obj_char["input_sys_state"] = "load" -- none_save_load
         common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
         -- _from_5_stand_dash_skid
         state_gate_game_scene_char_RP_from_5_stand_dash_skid(
@@ -7284,7 +7284,7 @@ function state_gate_game_scene_char_RP_from_burst_RC_red(
         self_side_obj_char["heat_penalty"] = 0.1
         self_side_obj_char["heat_penalty_countdown"] = 240
         -- input_sys_cache
-        self_side_obj_char["input_sys_state"] = "load" -- none save load
+        self_side_obj_char["input_sys_state"] = "load" -- none_save_load
         common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
         -- init_character_anim
         if self_side_obj_char["height"] == "air" then
@@ -7415,7 +7415,7 @@ function state_gate_game_scene_char_RP_from_burst_RC_blue(
         self_side_obj_char["heat_penalty"] = 0.1
         self_side_obj_char["heat_penalty_countdown"] = 120
         -- input_sys_cache
-        self_side_obj_char["input_sys_state"] = "load" -- none save load
+        self_side_obj_char["input_sys_state"] = "load" -- none_save_load
         common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
         -- init_character_anim
         if self_side_obj_char["height"] == "air" then
@@ -7541,7 +7541,7 @@ function state_gate_game_scene_char_RP_from_burst_RC_purple(
         self_side_obj_char["heat_penalty"] = 0.1
         self_side_obj_char["heat_penalty_countdown"] = 60
         -- input_sys_cache
-        self_side_obj_char["input_sys_state"] = "load" -- none save load
+        self_side_obj_char["input_sys_state"] = "load" -- none_save_load
         common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
         -- init_character_anim
         if self_side_obj_char["height"] == "air" then
@@ -7605,7 +7605,7 @@ function state_gate_game_scene_char_RP_from_burst_RC_yellow(
         self_side_obj_char["heat_penalty"] = 0.1
         self_side_obj_char["heat_penalty_countdown"] = 480
         -- input_sys_cache
-        self_side_obj_char["input_sys_state"] = "load" -- none save load
+        self_side_obj_char["input_sys_state"] = "load" -- none_save_load
         common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
         -- init_character_anim
         if self_side_obj_char["height"] == "air" then
@@ -7662,11 +7662,11 @@ function state_gate_game_scene_char_RP_from_burst_overdrive(
     if get_character_anim_end_state(
         self_side_obj_char,self_side_obj_char["character_animation"]
     ) then
-        -- to stand_idle
+        -- to_stand_idle
         self_side_obj_char["idle_cancel"] = true
         self_side_obj_char["physics_lock"] = false
         -- input_sys_cache
-        self_side_obj_char["input_sys_state"] = "load" -- none save load
+        self_side_obj_char["input_sys_state"] = "load" -- none_save_load
         common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
         if self_side_obj_char["height"] == "air" then
             self_side_obj_char["character_animation"] =
@@ -9801,7 +9801,7 @@ function draw_game_scene_char_RP_logic_graphic_pos_sync()
         shot_r = math.max(shot_r,-0.42)
         shot_r = math.min(shot_r,0.8)
     end
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     -- shot_sys_oroboros_back
     obj = obj_char["shot_sys_oroboros_back"]
     obj[1] = oroboros_ease_current[1] + oroboros_ease_current[3]*(dx - math.cos(shot_r)*shot_offset_amount*0.5)
@@ -9849,7 +9849,7 @@ function draw_game_scene_char_RP()
     shader:send("contrast",obj_char["contrast"])
     shader:send("brightness",obj_char["brightness"])
     -- draw_back
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     obj = obj_char["shot_sys_oroboros_back"]
     image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
@@ -9957,7 +9957,7 @@ function draw_game_scene_char_RP_pushbox()
     end
     local obj_char = obj_char_game_scene_char_RP
     local obj_camera = obj_stage_game_scene_camera
-    -- push box
+    -- push_box
     local color = DEBUG_BOX_COLOR_YELLOW
     local draw_box = {
         obj_char["x"] + (obj_char["pushbox"][1] - obj_char["pushbox"][3]/2)*
@@ -10003,7 +10003,7 @@ function draw_game_scene_char_RP_hurtbox()
     end
     local obj_char = obj_char_game_scene_char_RP
     local obj_camera = obj_stage_game_scene_camera
-    -- hurt box
+    -- hurt_box
     local color = DEBUG_BOX_COLOR_BLUE
     for i = 1,#obj_char["hurtbox_table"] do
         local current_hurtbox = obj_char["hurtbox_table"][i]
@@ -10059,7 +10059,7 @@ function draw_game_scene_char_RP_hitbox()
     end
     local obj_char = obj_char_game_scene_char_RP
     local obj_camera = obj_stage_game_scene_camera
-    -- hit box
+    -- hit_box
     local color = DEBUG_BOX_COLOR_RED
     for i = 1,#obj_char["hitbox_table"] do
         local current_hitbox = obj_char["hitbox_table"][i]

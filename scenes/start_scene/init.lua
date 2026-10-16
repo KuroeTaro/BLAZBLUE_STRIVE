@@ -4,8 +4,8 @@ function load_start_scene_obj()
     CANVAS_BAR_ALPHA_ONLY = love.graphics.newCanvas(232,16)
     CANVAS_RECORD = love.graphics.newCanvas(320,40)
     CANVAS_RECORD_ALPHA_ONLY = love.graphics.newCanvas(320,40)
-    -- x y z opacity sx sy r f
-    -- solid color
+    -- x_y_z_opacity_sx_sy_r_f
+    -- solid_color
     obj_UI_start_scene_solid_color = {0,0,0,1,1,1,0,0}
     obj_UI_start_scene_solid_color["FCT"] = {0,0,0,0,0,0,0,0}
     obj_UI_start_scene_solid_color["LCT"] = {0,0,0,0,0,0,0,0}
@@ -486,7 +486,7 @@ function load_start_scene_audio()
     audio_SFX_start_scene_exit_1["LCD"] = {0}
     audio_SFX_start_scene_exit_1["audio"] = love.audio.newSource("asset/start_scene/audio/SFX_exit_1.ogg","static")
     update_SFX_VOLUME(audio_SFX_start_scene_exit_1)
-    -- up down left right
+    -- up_down_left_right
     audio_SFX_start_scene_up_0 = {1}
     audio_SFX_start_scene_up_0["LCT"] = {0}
     audio_SFX_start_scene_up_0["LCD"] = {0}
@@ -552,7 +552,7 @@ function load_start_scene_audio()
     audio_BGM_start_scene_NOC_low["LCD"] = {0}
     audio_BGM_start_scene_NOC_low["audio"] = love.audio.newSource("asset/start_scene/audio/BGM_NOC_low.ogg","stream")
     update_BGM_VOLUME(audio_BGM_start_scene_NOC_low)
-    -- audio anim
+    -- audio_anim
     anim_UI_point_linear_start_scene_audio_ease_in_0_1_volume = {}
     anim_UI_point_linear_start_scene_audio_ease_in_0_1_volume[0] = {0,5}
     anim_UI_point_linear_start_scene_audio_ease_in_0_1_volume[5] = {1,5}

@@ -347,14 +347,14 @@ function order_load_game_scene_stage_frames(load_order)
             )
         end,
         [3] = function()
-            -- stage images
+            -- stage_images
             image_stage_game_scene_ground = love.graphics.newImage(ASSET_DATA[13][7])
             image_stage_game_scene_stage_liner_fade_alpha = love.graphics.newImage(ASSET_DATA[13][8])
             image_stage_game_scene_stair = love.graphics.newImage(ASSET_DATA[13][9])
             image_stage_game_scene_tile_map = love.graphics.newImage(ASSET_DATA[13][10])
         end,
         [4] = function()
-            -- stage sprite_batch
+            -- stage_sprite_batch
             image_sprite_batch_stage_game_scene_ground = love.graphics.newSpriteBatch(image_stage_game_scene_ground)
             image_sprite_batch_stage_game_scene_stair = love.graphics.newSpriteBatch(image_stage_game_scene_stair)
             image_sprite_batch_stage_game_scene_ground:clear()
@@ -379,7 +379,7 @@ function order_load_game_scene_stage_audio(load_order)
     local switch =
     {
         [1] = function()
-            -- audio_global_variable no_BGM_in_this_case
+            -- audio_global_variable_no_BGM_in_this_case
             audio_BGM_game_scene_stage = {}
             audio_SFX_game_scene_stage = {}
             audio_environment_game_scene_stage = {}
@@ -605,8 +605,8 @@ function load_game_scene_stage_apply_wallbreak_end_init(
 end
 -- update
 function update_game_scene_stage()
-    -- static stage no update need
-    -- glow update no need for this stage
+    -- static_stage_no_update_need
+    -- glow_update_no_need_for_this_stage
     -- camera_update
     state_machine_stage_game_scene_camera()
     -- wallstick_update
@@ -1260,8 +1260,8 @@ function load_game_scene_anim_point_linear_character_hurt_side_wallbreak(
     anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["length"] = 150
     anim_stage_frame_game_scene_char_hurt_side_wallbreak_frame["loop"] = false
 end
--- camera 150f
--- char_hurt_side 150f
+-- camera_150f
+-- char_hurt_side_150f
 -- char_hit_side 105f-150f
 -- after_debris 105f-150f
 -- dynamic 0f-60f

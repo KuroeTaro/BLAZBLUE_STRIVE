@@ -119,22 +119,22 @@ function draw_game_scene_main()
         obj_HUD_game_scene_overdrive_pie_RP,image_sprite_sheet,
         R_character["overdrive_gauge"][1]*6/R_character["overdrive_gauge"][2]
     )
-    -- overdrive text
+    -- overdrive_text
     draw_2d_image_sprite_batch(obj_HUD_game_scene_overdrive_text_LP,image_sprite_sheet,"HUD_overdrive_text")
     draw_2d_image_sprite_batch(obj_HUD_game_scene_overdrive_text_RP,image_sprite_sheet,"HUD_overdrive_text")
-    -- match point
+    -- match_point
     draw_2d_image_sprite_batch(obj_HUD_game_scene_match_point_LP,image_sprite_sheet,"HUD_match_point")
     draw_2d_image_sprite_batch(obj_HUD_game_scene_match_point_RP,image_sprite_sheet,"HUD_match_point")
-    -- round timer
+    -- round_timer
     draw_game_scene_add_to_sprite_batch_round_timer(obj_HUD_game_scene_timer,image_sprite_sheet)
-    -- win mark
+    -- win_mark
     draw_game_scene_add_to_sprite_batch_round_win_marks(
         obj_HUD_game_scene_win_marks_LP,image_sprite_sheet,"HUD_win_mark",WIN_MARK["L"]
     )
     draw_game_scene_add_to_sprite_batch_round_win_marks(
         obj_HUD_game_scene_win_marks_RP,image_sprite_sheet,"HUD_win_mark",WIN_MARK["R"]
     )
-    -- overdrive timer
+    -- overdrive_timer
     draw_game_scene_add_to_sprite_batch_overdrive_timer(
         obj_HUD_game_scene_overdrive_timer_LP,image_sprite_sheet,L_character["overdrive_timer"]
     )
@@ -201,7 +201,7 @@ function draw_game_scene_main()
     -- 绘制ease in black solid
     draw_solid(obj_UI_game_scene_black_solid)
 end
--- x y z opacity sx sy r f
+-- x_y_z_opacity_sx_sy_r_f
 function draw_game_scene_add_to_sprite_batch_bars(
     obj,image_sprite_sheet,quad_name,
     percentage

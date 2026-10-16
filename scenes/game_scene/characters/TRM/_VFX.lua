@@ -33,7 +33,7 @@ function insert_VFX_game_scene_char_TRM_2P_move(obj_char)
             )
             obj_VFX["life"] = obj_VFX["life"] - 1
         elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
-            -- do nothing
+            -- do_nothing
         else
             obj_VFX["life"] = 0
         end
@@ -95,7 +95,7 @@ function insert_VFX_game_scene_char_TRM_6P_move(obj_char)
             )
             obj_VFX["life"] = obj_VFX["life"] - 1
         elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
-            -- do nothing
+            -- do_nothing
         else
             obj_VFX["life"] = 0
         end
@@ -156,7 +156,7 @@ function insert_VFX_game_scene_char_TRM_5P_move(obj_char)
             )
             obj_VFX["life"] = obj_VFX["life"] - 1
         elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
-            -- do nothing
+            -- do_nothing
         else
             obj_VFX["life"] = 0
         end
@@ -215,7 +215,7 @@ function insert_VFX_game_scene_char_TRM_2S_move(obj_char)
             )
             obj_VFX["life"] = obj_VFX["life"] - 1
         elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
-            -- do nothing
+            -- do_nothing
         else
             obj_VFX["life"] = 0
         end
@@ -279,7 +279,7 @@ function insert_VFX_game_scene_char_TRM_6S_move(obj_char)
             )
             obj_VFX["life"] = obj_VFX["life"] - 1
         elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
-            -- do nothing
+            -- do_nothing
         else
             obj_VFX["life"] = 0
         end
@@ -343,7 +343,7 @@ function insert_VFX_game_scene_char_TRM_cS_move(obj_char)
             )
             obj_VFX["life"] = obj_VFX["life"] - 1
         elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
-            -- do nothing
+            -- do_nothing
         else
             obj_VFX["life"] = 0
         end
@@ -372,7 +372,7 @@ end
 function insert_VFX_game_scene_char_TRM_5H_at_the_ready_projectile_hit_blast(
     hit_side_obj_char,hurt_side_obj_char
 )
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local hit_side = hit_side_obj_char["player_side"]
@@ -477,7 +477,7 @@ function insert_VFX_game_scene_char_TRM_5Launcher_move_slash(obj_char)
             )
             obj_VFX["life"] = obj_VFX["life"] - 1
         elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
-            -- do nothing
+            -- do_nothing
         else
             obj_VFX["life"] = 0
         end
@@ -536,7 +536,7 @@ function insert_VFX_game_scene_char_TRM_5Launcher_move_glow(obj_char)
             )
             obj_VFX["life"] = obj_VFX["life"] - 1
         elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
-            -- do nothing
+            -- do_nothing
         else
             obj_VFX["life"] = 0
         end
@@ -593,7 +593,7 @@ function insert_VFX_game_scene_char_TRM_j5S_move(obj_char)
     )
     obj_VFX["update"] = function()
         if obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
-            -- do nothing
+            -- do_nothing
         else
             frame_animator(
                 obj_VFX,obj_VFX["animation"]
@@ -701,7 +701,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_curse_ball_spawner(obj_char)
     )
     obj_VFX["update"] = function()
         if obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
-            -- do nothing
+            -- do_nothing
         else
             point_linear_animator(
                 obj_VFX,obj_VFX["x_point_linear_animation"]
@@ -791,7 +791,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
     )
     obj_VFX["update"] = function()
         if obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
-            -- do nothing
+            -- do_nothing
         else
             point_linear_animator(
                 obj_VFX,obj_VFX["x_point_linear_animation"]
@@ -992,7 +992,7 @@ end
 function insert_VFX_game_scene_char_TRM_4SP_S_H_at_the_steady_projectile_hit_blast(
     hit_side_obj_char,hurt_side_obj_char
 )
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local hit_side = hit_side_obj_char["player_side"]
@@ -1116,7 +1116,7 @@ function insert_VFX_game_scene_char_TRM_6SP_S_move(obj_char)
             )
             obj_VFX["life"] = obj_VFX["life"] - 1
         elseif obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
-            -- do nothing
+            -- do_nothing
         else
             obj_VFX["life"] = 0
         end
@@ -1207,7 +1207,7 @@ function insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char,sprite_sheet)
     table.insert(obj_char["VFX_common_back_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_TRM_oroboros_blast(obj_char,sprite_sheet)
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local oroboros_pos = {

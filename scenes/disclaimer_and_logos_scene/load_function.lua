@@ -11,7 +11,7 @@ function load_disclaimer_logos_scene_prep()
     THREAD_AMOUNT = 1 -- 线程数目
     THREAD_ONCE_TABLE = {false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     ASSET_DATA = {} -- 保持为nil
-    ORDER_LOAD_TABLE = {order_load_disclaimer_and_logo_scene_1_general} -- load function table
+    ORDER_LOAD_TABLE = {order_load_disclaimer_and_logo_scene_1_general} -- load_function_table
     CURRENT_ORDER_TABLE = {1} -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
     ORDER_SIZE_TABLE = {1} -- 每个load function的最大值
     LOAD_ONCE_TABLE = {false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推

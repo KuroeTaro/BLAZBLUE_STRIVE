@@ -27,7 +27,7 @@ function set_nuGC(time_budget,memory_ceiling,disable_otherwise)
 		collectgarbage("step",1)
 		steps = steps + 1
 	end
-	--safety net
+	--safety_net
 	if collectgarbage("count")/1024 > memory_ceiling then
 		collectgarbage("collect")
 	end

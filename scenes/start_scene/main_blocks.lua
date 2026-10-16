@@ -403,7 +403,7 @@ function update_start_scene_ease_out()
         if this_function then this_function() end
     end
 end
--- option twitch
+-- option_twitch
 function update_start_scene_option_twitch()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -556,9 +556,9 @@ function update_start_scene_config_main()
         SCENE_TIMER = 0
         local switch = {
             [0] = function()
-                -- audio config
+                -- audio_config
                 play_obj_audio(audio_SFX_start_scene_confirm_0)
-                -- current bar mark ID
+                -- current_bar_mark_ID
                 AUDIO_BAR_MARK_ID = 0
                 -- 初始化此出口所需属性
                 obj_UI_start_scene_config_audio_bar_mark[4] = 0
@@ -611,7 +611,7 @@ function update_start_scene_config_main()
                 current_draw_block = draw_start_scene_config_audio_sub_scene
             end,
             [1] = function()
-                -- controller config
+                -- controller_config
                 play_obj_audio(audio_SFX_start_scene_confirm_0)
                 -- 初始化此出口所需属性
                 obj_UI_start_scene_config_controller_bar_mark_LP["state"] = "off_state"
@@ -646,9 +646,9 @@ function update_start_scene_config_main()
                 current_draw_block = draw_start_scene_config_controller_sub_scene
             end,
             [2] = function()
-                -- resolution config
+                -- resolution_config
                 play_obj_audio(audio_SFX_start_scene_confirm_0)
-                -- current bar mark ID
+                -- current_bar_mark_ID
                 get_current_resolution()
                 -- 初始化此出口所需属性
                 obj_UI_start_scene_config_resolution_w_x_h[8] = RES_PARTTEN
@@ -683,7 +683,7 @@ function update_start_scene_config_main()
                 current_draw_block = draw_start_scene_config_resolution_sub_scene
             end,
             [3] = function()
-                -- back to config main
+                -- back_to_config_main
                 play_obj_audio(audio_SFX_start_scene_confirm_0)
                 -- 初始化此出口所需属性
                 obj_UI_start_scene_shutter[4] = 1
@@ -835,7 +835,7 @@ function update_start_scene_config_ease_out()
         current_draw_block = draw_start_scene_main
     end
 end
-    -- config audio
+    -- config_audio
 function update_start_scene_config_audio_ease_in()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -1274,7 +1274,7 @@ function update_start_scene_config_audio_ease_out()
     )
     if SCENE_TIMER >= 5 then
         SCENE_TIMER = 0
-        -- init bar mark ID
+        -- init_bar_mark_ID
         AUDIO_BAR_MARK_ID = 0
         -- 存档
         write_volume_config()
@@ -1285,7 +1285,7 @@ function update_start_scene_config_audio_ease_out()
         current_draw_block = draw_start_scene_config_sub_scene
     end
 end
-    -- config controller
+    -- config_controller
 function update_start_scene_config_controller_ease_in()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
@@ -1397,7 +1397,7 @@ function update_start_scene_config_controller_ease_out()
         current_draw_block = draw_start_scene_config_sub_scene
     end
 end
-    -- config resolution
+    -- config_resolution
 function update_start_scene_config_resolution_ease_in()
     SCENE_TIMER = SCENE_TIMER + 1
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)

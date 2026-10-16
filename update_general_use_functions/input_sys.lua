@@ -277,7 +277,7 @@ function get_input_sys_current_command(INPUT_SYS_CURRENT_COMMAND,INPUT_SYS_CURRE
             end
         end
     elseif INPUT_SYS_CURRENT_CONTROLLER[1] == "network" then
-        -- rollback netcode predict part gose
+        -- rollback_netcode_predict_part_gose
     end
 end
 --输入状态机

@@ -2,7 +2,7 @@
 -- 其他场景有load和unload配套使用
 function init_load_scene_obj()
     -- 场景object
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     -- load_text
     obj_UI_load_scene_loading_text = {1350,800,nil,0,1,1,0,0}
     obj_UI_load_scene_loading_text["FCT"] = {0,0,0,0,0,0,0,0}
@@ -23,7 +23,7 @@ function init_load_scene_obj()
     obj_UI_load_scene_dabo_trig["state"] = "default"
 end
 function init_load_scene_anim()
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     -- 1 2 3 4       5  6  7 8
     -- loading_text_ease_in_opacity
     anim_UI_frame_load_scene_loading_text_ease_in_opacity = {}

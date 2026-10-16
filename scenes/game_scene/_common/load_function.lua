@@ -272,7 +272,7 @@ function order_load_game_scene_VFX_move(load_order)
     local switch =
     {
         [1] = function()
-            -- hit normal part1
+            -- hit_normal_part1
             image_sprite_sheet_VFX_game_scene_air_blow =
             common_sprite_sheet_load(
                 "asset/game_scene/common/texture/VFX/hit_VFX/air_blow.json",
@@ -295,7 +295,7 @@ function order_load_game_scene_VFX_move(load_order)
             )
         end,
         [2] = function()
-            -- hit normal part2
+            -- hit_normal_part2
             image_sprite_sheet_VFX_game_scene_block_FD =
             common_sprite_sheet_load(
                 "asset/game_scene/common/texture/VFX/hit_VFX/block_FD.json",
@@ -315,7 +315,7 @@ function order_load_game_scene_VFX_move(load_order)
             image_VFX_game_scene_FD_bubble = love.graphics.newImage(ASSET_DATA[6]["FD_bubble"])
         end,
         [3] = function()
-            -- hit normal part3
+            -- hit_normal_part3
             image_sprite_sheet_VFX_game_scene_partical_ver1_counter =
             common_sprite_sheet_load(
                 "asset/game_scene/common/texture/VFX/hit_VFX/partical_ver1_counter.json",
@@ -343,7 +343,7 @@ function order_load_game_scene_VFX_move(load_order)
             )
         end,
         [4] = function()
-            -- hit special
+            -- hit_special
             image_sprite_sheet_VFX_game_scene_special_lighting_0 =
             common_sprite_sheet_load(
                 "asset/game_scene/common/texture/VFX/hit_VFX/_special/lighting_0.json",

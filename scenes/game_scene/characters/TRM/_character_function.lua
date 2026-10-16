@@ -83,7 +83,7 @@ function character_function_game_scene_TRM_hitstop_air_jump_cancel(
     -- save_input_sys_cache_from_j5S_and_7_8_9_jump_air
     load_input_sys_cache_manual_release(self_side_input,self_side_obj_char,"up")
     load_input_sys_cache_recache(self_side_input,self_side_obj_char)
-    self_side_obj_char["input_sys_state"] = "save" -- none save load
+    self_side_obj_char["input_sys_state"] = "save" -- none_save_load
 end
 function character_function_game_scene_TRM_histop_ground_jump_cancel(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
@@ -106,7 +106,7 @@ function character_function_game_scene_TRM_hitstop_force_delay_gatling_cancel_in
 )
     if obj_char["state"] == "j2K" then
         load_input_sys_cache_recache(input,obj_char)
-        obj_char["input_sys_state"] = "save" -- none save load
+        obj_char["input_sys_state"] = "save" -- none_save_load
     end
 end
 -- shot_sys_function
@@ -225,25 +225,25 @@ function character_function_game_scene_TRM_shot_sys_at_the_ready_block_test(
     local hurt_side_FD_block =
         test_input_sys_press_or_hold(hurt_side_input["correction_left"])
         or test_input_sys_press_or_hold(hurt_side_input["correction_right"])
-    -- low mid high all
-    -- air non_air
+    -- low_mid_high_all
+    -- air_non_air
     -- FD
-        -- air low ok
-        -- air mid ok
-        -- air high ok
-        -- air all ok
+        -- air_low_ok
+        -- air_mid_ok
+        -- air_high_ok
+        -- air_all_ok
         -- non_air low block_direction == 1 ok
         -- non_air mid block_direction == 4||7 ok
-        -- non_air high ok
-        -- non_air all ok
+        -- non_air_high_ok
+        -- non_air_all_ok
     -- not_FD
-        -- air low ok
-        -- air mid ok
-        -- air all ok
+        -- air_low_ok
+        -- air_mid_ok
+        -- air_all_ok
         -- non_air low block_direction == 1 ok
         -- non_air mid block_direction == 4||7 ok
-        -- non_air high ok
-        -- non_air all ok
+        -- non_air_high_ok
+        -- non_air_all_ok
     if hurt_side_obj_char["hurt_state"] == "idle" and common_game_scene_check_block_direction(hurt_side_obj_char) then
         if hurt_side_FD_block then
             if hurt_side_obj_char["height"] == "air" then

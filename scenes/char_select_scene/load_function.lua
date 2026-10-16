@@ -19,7 +19,7 @@ function load_char_select_scene_prep()
         order_load_char_select_scene_UI_char,
         order_load_char_select_scene_UI_start_0_110f,
         order_load_char_select_scene_UI_movie_cover
-    } -- load function table
+    } -- load_function_table
     CURRENT_ORDER_TABLE = {1,1,1} -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
     ORDER_SIZE_TABLE = {2,1,1} -- 每个load function的最大值
     LOAD_ONCE_TABLE = {false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
@@ -33,14 +33,14 @@ function order_load_char_select_scene_UI_char(load_order)
     local switch =
     {
         [1] = function()
-            -- global use shape image
+            -- global_use_shape_image
             image_UI_char_select_scene_bar_mark = love.graphics.newImage(ASSET_DATA[1][1])
             image_UI_char_select_scene_char_select_left_alpha = love.graphics.newImage(ASSET_DATA[1][2])
             image_UI_char_select_scene_char_select_right_alpha = love.graphics.newImage(ASSET_DATA[1][3])
             image_UI_char_select_scene_control_method_L = love.graphics.newImage(ASSET_DATA[1][4])
             image_UI_char_select_scene_control_method_R = love.graphics.newImage(ASSET_DATA[1][5])
             image_UI_char_select_scene_ring = love.graphics.newImage(ASSET_DATA[1][6])
-                -- char icon alpha image name
+                -- char_icon_alpha_image_name
             image_table_UI_char_select_scene_char_icon_alpha = {}
             for i = 1,8 do
                 image_table_UI_char_select_scene_char_icon_alpha[i] =

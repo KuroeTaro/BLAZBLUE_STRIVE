@@ -388,7 +388,7 @@ function set_spawn_pos()
     if this_function then this_function() end
 end
 function update_character_frame_adv_info_init(self_side_obj_char,opponent_side_obj_char)
-    -- none startup active recovery
+    -- none_startup_active_recovery
     if self_side_obj_char["last_move_state"] == "none" and self_side_obj_char["move_state"] ~= "none" then
         if opponent_side_obj_char["move_state"] == "none" then
             opponent_side_obj_char["frame_adv"] = 0

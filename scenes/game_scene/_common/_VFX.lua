@@ -411,9 +411,9 @@ function insert_VFX_game_scene_char_RC_black_overlay(obj_char)
     end
     table.insert(obj_char["VFX_black_overlay_table"],obj_VFX)
 end
--- blast slash directional ray_impact
+-- blast_slash_directional_ray_impact
 function insert_VFX_game_scene_char_blast_attack_socket_ver0(active_op_side_obj_char,passive_op_side_obj_char)
-    -- active_op_x active_op_y z active_op_opacity active_op_sx active_op_sy active_op_r f
+    -- active_op_x_active_op_y_z_active_op_opacity_active_op_sx_active_op_sy_active_op_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_VFX_insert_function_argument = active_op_side_obj_char["hit_VFX_insert_function_argument"]
@@ -511,7 +511,7 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver0(active_op_side_obj_
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_blast_attack_socket_ver1(active_op_side_obj_char,passive_op_side_obj_char)
-    -- active_op_x active_op_y z active_op_opacity active_op_sx active_op_sy active_op_r f
+    -- active_op_x_active_op_y_z_active_op_opacity_active_op_sx_active_op_sy_active_op_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_VFX_insert_function_argument = active_op_side_obj_char["hit_VFX_insert_function_argument"]
@@ -715,7 +715,7 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver1(active_op_side_obj_
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_counter_blast_attack_socket_ver0(active_op_side_obj_char,passive_op_side_obj_char)
-    -- active_op_x active_op_y z active_op_opacity active_op_sx active_op_sy active_op_r f
+    -- active_op_x_active_op_y_z_active_op_opacity_active_op_sx_active_op_sy_active_op_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_counter_VFX_insert_function_argument =
@@ -822,7 +822,7 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver0(active_op_s
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_side_obj_char,passive_op_side_obj_char)
-    -- active_op_x active_op_y z active_op_opacity active_op_sx active_op_sy active_op_r f
+    -- active_op_x_active_op_y_z_active_op_opacity_active_op_sx_active_op_sy_active_op_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_counter_VFX_insert_function_argument =
@@ -1170,7 +1170,7 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_block_blast_attack_socket_ver0(active_op_side_obj_char,passive_op_side_obj_char)
-    -- active_op_x active_op_y z active_op_opacity active_op_sx active_op_sy active_op_r f
+    -- active_op_x_active_op_y_z_active_op_opacity_active_op_sx_active_op_sy_active_op_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_block_VFX_insert_function_argument =
@@ -1269,7 +1269,7 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver0(active_op_sid
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_side_obj_char,passive_op_side_obj_char)
-    -- active_op_x active_op_y z active_op_opacity active_op_sx active_op_sy active_op_r f
+    -- active_op_x_active_op_y_z_active_op_opacity_active_op_sx_active_op_sy_active_op_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_block_VFX_insert_function_argument =
@@ -1474,7 +1474,7 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_sid
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_blast_dynamic_ver0(active_op_side_obj_char,passive_op_side_obj_char)
-    -- x y z active_op_opacity active_op_sx active_op_sy active_op_r f
+    -- x_y_z_active_op_opacity_active_op_sx_active_op_sy_active_op_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_VFX_insert_function_argument = active_op_side_obj_char["hit_VFX_insert_function_argument"]
@@ -1543,7 +1543,7 @@ function insert_VFX_game_scene_char_blast_dynamic_ver0(active_op_side_obj_char,p
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_blast_dynamic_ver1(active_op_side_obj_char,passive_op_side_obj_char)
-    -- x y z active_op_opacity active_op_sx active_op_sy active_op_r f
+    -- x_y_z_active_op_opacity_active_op_sx_active_op_sy_active_op_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_VFX_insert_function_argument = active_op_side_obj_char["hit_VFX_insert_function_argument"]
@@ -1682,7 +1682,7 @@ function insert_VFX_game_scene_char_blast_dynamic_ver1(active_op_side_obj_char,p
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_counter_blast_dynamic_ver0(active_op_side_obj_char,passive_op_side_obj_char)
-    -- x y z active_op_opacity active_op_sx active_op_sy active_op_r f
+    -- x_y_z_active_op_opacity_active_op_sx_active_op_sy_active_op_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_VFX_insert_function_argument = active_op_side_obj_char["hit_VFX_insert_function_argument"]
@@ -1759,7 +1759,7 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver0(active_op_side_ob
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_obj_char,passive_op_side_obj_char)
-    -- x y z active_op_opacity active_op_sx active_op_sy active_op_r f
+    -- x_y_z_active_op_opacity_active_op_sx_active_op_sy_active_op_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_VFX_insert_function_argument = active_op_side_obj_char["hit_VFX_insert_function_argument"]
@@ -1995,7 +1995,7 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_block_blast_dynamic_ver0(active_op_side_obj_char,passive_op_side_obj_char)
-    -- x y z active_op_opacity active_op_sx active_op_sy active_op_r f
+    -- x_y_z_active_op_opacity_active_op_sx_active_op_sy_active_op_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_block_VFX_insert_function_argument =
@@ -2065,7 +2065,7 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver0(active_op_side_obj_
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_block_blast_dynamic_ver1(active_op_side_obj_char,passive_op_side_obj_char)
-    -- x y z active_op_opacity active_op_sx active_op_sy active_op_r f
+    -- x_y_z_active_op_opacity_active_op_sx_active_op_sy_active_op_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_hit_block_VFX_insert_function_argument =
@@ -2205,7 +2205,7 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver1(active_op_side_obj_
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passive_op_side_obj_char)
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local x = -active_op_side_obj_char[5]*(active_op_side_obj_char["x"] - passive_op_side_obj_char["x"])
@@ -2266,7 +2266,7 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
     obj_VFX["x_table"] = obj_x_table
     obj_VFX["y_table"] = obj_y_table
     obj_VFX["center_table"] = obj_center
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     obj_VFX["sub_obj"] = {
         [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
             active_op_side_obj_char[6],r_table_cache[1],0},
@@ -2400,7 +2400,7 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
     table.insert(active_op_side_obj_char["VFX_hit_back_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_char,passive_op_side_obj_char)
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local x = -active_op_side_obj_char[5]*(active_op_side_obj_char["x"] - passive_op_side_obj_char["x"])
@@ -2461,7 +2461,7 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
     obj_VFX["x_table"] = obj_x_table
     obj_VFX["y_table"] = obj_y_table
     obj_VFX["center_table"] = obj_center
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     obj_VFX["sub_obj"] = {
         [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
             active_op_side_obj_char[6],r_table_cache[1],0},
@@ -2645,7 +2645,7 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_blast_special_projectile(active_op_side_obj_char,passive_op_side_obj_char)
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local x = -active_op_side_obj_char[5]*(active_op_side_obj_char["x"] - passive_op_side_obj_char["x"])
@@ -2706,7 +2706,7 @@ function insert_VFX_game_scene_char_blast_special_projectile(active_op_side_obj_
     obj_VFX["x_table"] = obj_x_table
     obj_VFX["y_table"] = obj_y_table
     obj_VFX["center_table"] = obj_center
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     obj_VFX["sub_obj"] = {
         [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
             active_op_side_obj_char[6],r_table_cache[1],0},
@@ -2840,7 +2840,7 @@ function insert_VFX_game_scene_char_blast_special_projectile(active_op_side_obj_
     table.insert(active_op_side_obj_char["VFX_hit_back_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_counter_blast_special_projectile(active_op_side_obj_char,passive_op_side_obj_char)
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local x = -active_op_side_obj_char[5]*(active_op_side_obj_char["x"] - passive_op_side_obj_char["x"])
@@ -2901,7 +2901,7 @@ function insert_VFX_game_scene_char_counter_blast_special_projectile(active_op_s
     obj_VFX["x_table"] = obj_x_table
     obj_VFX["y_table"] = obj_y_table
     obj_VFX["center_table"] = obj_center
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     obj_VFX["sub_obj"] = {
         [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
             active_op_side_obj_char[6],r_table_cache[1],0},
@@ -3085,7 +3085,7 @@ function insert_VFX_game_scene_char_counter_blast_special_projectile(active_op_s
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_block_ver0(obj_char)
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_VFX_spawn_anchor =
@@ -3145,7 +3145,7 @@ function insert_VFX_game_scene_char_block_ver0(obj_char)
     table.insert(obj_char["VFX_hit_front_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_block_ver1(obj_char)
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_VFX_spawn_anchor =
@@ -3208,7 +3208,7 @@ function insert_VFX_game_scene_char_block_ver1(obj_char)
     table.insert(obj_char["VFX_hit_front_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_block_RC_red(obj_char)
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_VFX_spawn_anchor =
@@ -3271,7 +3271,7 @@ function insert_VFX_game_scene_char_block_RC_red(obj_char)
     table.insert(obj_char["VFX_hit_front_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_block_RC_yellow(obj_char)
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local active_op_VFX_spawn_anchor =
@@ -3414,7 +3414,7 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
     table.insert(obj_char["VFX_hit_front_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_throw_tech(active_op_side_obj_char,passive_op_side_obj_char,x,y,opacity,sx,sy,r)
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     active_op_side_obj_char["VFX_hit_front_table"] = {}
@@ -3462,7 +3462,7 @@ function insert_VFX_game_scene_char_throw_tech(active_op_side_obj_char,passive_o
 end
 -- smoke
 function insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,x,y,opacity,sx,sy,r)
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     obj_VFX["life"] = 30
@@ -3524,7 +3524,7 @@ end
 function insert_VFX_game_scene_stage_smoke_horizontal_shot(
     obj_char,x,y,opacity,sx,sy,r
 )
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     obj_VFX["life"] = 75
@@ -3567,7 +3567,7 @@ end
 function insert_VFX_game_scene_stage_smoke_land_blow(
     obj_char,x,y,opacity,sx,sy,r
 )
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     obj_VFX["life"] = 63
@@ -3608,7 +3608,7 @@ function insert_VFX_game_scene_stage_smoke_land_blow(
     table.insert(obj_char["VFX_common_back_table"],obj_VFX)
 end
 function insert_VFX_game_scene_stage_smoke_vertical_shot(obj_char,x,y,opacity,sx,sy,r)
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     obj_VFX["life"] = 72
@@ -3650,7 +3650,7 @@ function insert_VFX_game_scene_stage_smoke_vertical_shot(obj_char,x,y,opacity,sx
 end
 -- shockwave
 function insert_VFX_game_scene_stage_4dash_air_backdash_shockwave(obj_char,x,y,opacity,sx,sy,r)
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     obj_VFX["life"] = 26
@@ -3694,7 +3694,7 @@ function insert_VFX_game_scene_stage_4dash_air_backdash_shockwave(obj_char,x,y,o
     table.insert(obj_char["VFX_common_back_table"],obj_VFX)
 end
 function insert_VFX_game_scene_stage_6dash_air_dash_shockwave(obj_char,x,y,opacity,sx,sy,r)
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     obj_VFX["life"] = 26
@@ -3735,7 +3735,7 @@ function insert_VFX_game_scene_stage_6dash_air_dash_shockwave(obj_char,x,y,opaci
 end
 -- burst
 function insert_VFX_game_scne_stage_dash_cancel_blow(obj_char,x,y,opacity,sx,sy,r)
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     obj_VFX["life"] = 36
@@ -3777,7 +3777,7 @@ function insert_VFX_game_scne_stage_dash_cancel_blow(obj_char,x,y,opacity,sx,sy,
 end
 -- GP
 function insert_VFX_game_scene_char_GP(obj_char)
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     obj_VFX["life"] = 42
     obj_VFX["update"] = function()
@@ -3880,7 +3880,7 @@ function insert_VFX_HUD_game_scene_counter_ver0_2(obj_char)
     table.insert(obj_char["VFX_HUD_table"],obj_VFX)
 end
 function insert_VFX_HUD_game_scene_counter_ver3(obj_char)
-    -- x y z opacity sx sy r f
+    -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,0,1,1,0,0}
     obj_VFX["x"] = 800
     obj_VFX["y"] = 600

@@ -58,17 +58,17 @@ function update_game_scene_training_annoucer_ease_in()
             obj_HUD_game_scene_timer,anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1
         )
     elseif SCENE_TIMER <= 115 then
-        -- do nothing
+        -- do_nothing
     elseif SCENE_TIMER < 135 then
         state_machine_UI_game_scene_HUD_ACT_common(obj_HUD_game_scene_ease_in,50)
         point_linear_animator(
             obj_HUD_game_scene_timer,anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1
         )
     elseif SCENE_TIMER == 160 then
-        -- input_sys save
-        obj_char_game_scene_char_LP["input_sys_state"] = "save" -- none save load
+        -- input_sys_save
+        obj_char_game_scene_char_LP["input_sys_state"] = "save" -- none_save_load
         init_input_sys_cache_LP(obj_char_game_scene_char_LP)
-        obj_char_game_scene_char_RP["input_sys_state"] = "save" -- none save load
+        obj_char_game_scene_char_RP["input_sys_state"] = "save" -- none_save_load
         init_input_sys_cache_RP(obj_char_game_scene_char_RP)
     elseif SCENE_TIMER < 165 then
         state_machine_UI_game_scene_HUD_ACT_common(obj_HUD_game_scene_ease_in,50)

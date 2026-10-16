@@ -135,7 +135,7 @@ function load_char_select_scene_anim()
     anim_UI_point_linear_char_select_scene_black_solid_ease_out_opacity["length"] = 15
     anim_UI_point_linear_char_select_scene_black_solid_ease_out_opacity["loop"] = false
     anim_UI_point_linear_char_select_scene_black_solid_ease_out_opacity["fix_type"] = true
-    --glow opacity anim
+    --glow_opacity_anim
     anim_UI_point_linear_char_select_scene_glow_opacity = {}
     anim_UI_point_linear_char_select_scene_glow_opacity[0] = {1.00,2}
     anim_UI_point_linear_char_select_scene_glow_opacity[2] = {0.82,5}
@@ -147,7 +147,7 @@ function load_char_select_scene_anim()
     anim_UI_point_linear_char_select_scene_glow_opacity["length"] = 30
     anim_UI_point_linear_char_select_scene_glow_opacity["loop"] = false
     anim_UI_point_linear_char_select_scene_glow_opacity["fix_type"] = true
-    --glow alpha anim
+    --glow_alpha_anim
     anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x = {}
     anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x[0] = {587,2}
     anim_UI_point_linear_char_select_scene_glow_alpha_pt5_x[2] = {530,5}
@@ -477,7 +477,7 @@ function load_char_select_scene_audio()
         "asset/char_select_scene/audio/SFX_exit_1.ogg","static"
     )
     update_SFX_VOLUME(audio_SFX_char_select_scene_exit_1)
-    -- up down left right
+    -- up_down_left_right
     audio_SFX_char_select_scene_up_0 = {1}
     audio_SFX_char_select_scene_up_0["LCT"] = {0}
     audio_SFX_char_select_scene_up_0["LCD"] = {0}
@@ -534,7 +534,7 @@ function load_char_select_scene_audio()
         "asset/char_select_scene/audio/SFX_right_1.ogg","static"
     )
     update_SFX_VOLUME(audio_SFX_char_select_scene_right_1)
-    -- scene audio
+    -- scene_audio
     audio_SFX_char_select_scene_ease_out = {1}
     audio_SFX_char_select_scene_ease_out["LCT"] = {0}
     audio_SFX_char_select_scene_ease_out["LCD"] = {0}
@@ -549,7 +549,7 @@ function load_char_select_scene_audio()
         "asset/char_select_scene/audio/BGM_moonlight_re_edit.ogg","stream"
     )
     update_BGM_VOLUME(audio_BGM_char_select_scene_moonlight_re_edit)
-    -- audio anim
+    -- audio_anim
     anim_UI_point_linear_char_select_scene_audio_ease_out_1_0_volume_1 = {}
     anim_UI_point_linear_char_select_scene_audio_ease_out_1_0_volume_1[0] = {1,40}
     anim_UI_point_linear_char_select_scene_audio_ease_out_1_0_volume_1[40] = {0,40}
