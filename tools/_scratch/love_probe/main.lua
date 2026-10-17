@@ -493,6 +493,20 @@ function love.load()
             (e["ability_penalty"] == 1 and e["ability_penalty_countdown"] == 0
                 and e["heat_penalty"] == 1 and e["heat_penalty_countdown"] == 0)
             and "OK" or "MISMATCH"))
+
+        -- 碎墙额外伤害:50 基础伤害 / 全角色 420 血,按百分比换算到本作 12000
+        local w1 = mk_char("R")
+        w1["health_gauge"] = { 12000, 12000 }
+        common_game_scene_apply_wallbreak_damage(w1)
+        log(string.format("  碎墙伤害 满血: 12000 -> %.2f  扣了 %.2f (%.3f%%)  %s",
+            w1["health_gauge"][1], 12000 - w1["health_gauge"][1],
+            (12000 - w1["health_gauge"][1]) / 12000 * 100,
+            (math.abs((12000 - w1["health_gauge"][1]) - 12000 * 50 / 420) < 0.01) and "OK" or "MISMATCH"))
+        local w2 = mk_char("R")
+        w2["health_gauge"] = { 500, 12000 }
+        common_game_scene_apply_wallbreak_damage(w2)
+        log(string.format("  碎墙伤害 残血 500: -> %.2f  %s",
+            w2["health_gauge"][1], (w2["health_gauge"][1] == 0) and "OK 不会变负" or "MISMATCH"))
     else
         log("  common_game_scene_apply_positive_bonus not found")
     end

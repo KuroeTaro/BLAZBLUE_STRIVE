@@ -9909,7 +9909,6 @@ function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock_to_off(o
     res[0] = function()
         -- shot_sys
         obj_char["shot_sys_reticle_sprite_sheet"] = "4SP_S_reticle_lock_to_off"
-        obj_char["shot_sys_reticle"][4] = 1
         obj_char["shot_sys_reticle"][8] = 0
         -- insert_VFX
         insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char,"4SP_S_switch_move_VFX")

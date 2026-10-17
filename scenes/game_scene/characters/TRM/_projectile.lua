@@ -38,15 +38,15 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     obj_projectile["hit_type"] = "strike"
     obj_projectile["hit_guard_type"] = "all"
     obj_projectile["hit_hurt_blockstop_countdown"] = 12
-    obj_projectile["hit_damage"] = 0
+    obj_projectile["hit_damage"] = 300.0
     obj_projectile["hit_damage_correction_factor"] = 1
-    obj_projectile["hit_heat_gain"] = 0
-    obj_projectile["hit_wallbreak_damage"] = 0
-    obj_projectile["hurt_heat_gain"] = 0
-    obj_projectile["blocked_heat_gain"] = 0
-    obj_projectile["block_heat_gain"] = 0
-    obj_projectile["block_risk_gauge_gain"] = 0
-    obj_projectile["FD_block_heat_drain"] = 0
+    obj_projectile["hit_heat_gain"] = 5.0
+    obj_projectile["hit_wallbreak_damage"] = 20.0
+    obj_projectile["hurt_heat_gain"] = 2.0
+    obj_projectile["blocked_heat_gain"] = 8.0
+    obj_projectile["block_heat_gain"] = 2.0
+    obj_projectile["block_risk_gauge_gain"] = 25.0
+    obj_projectile["FD_block_heat_drain"] = 5.0
     obj_projectile["stand_hurt_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
         hit_side_obj_char,hurt_side_obj_char,obj_projectile,"0_stand_hurt_high","stand","5_stand_idle",
         8,5,1.00,0,2.5,1.00,
@@ -145,16 +145,6 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
                 play_obj_audio(obj_projectile["hit_block_SFX"])
                 stop_obj_audio(obj_projectile["hit_whiff_SFX"])
             end
-            -- 通用受击/防御动画读取 hit_side 角色的数值, 命中时自 projectile 同步以维持原有伤害与热量
-            hit_side_obj_char["hit_damage"] = obj_projectile["hit_damage"]
-            hit_side_obj_char["hit_damage_correction_factor"] = obj_projectile["hit_damage_correction_factor"]
-            hit_side_obj_char["hit_heat_gain"] = obj_projectile["hit_heat_gain"]
-            hit_side_obj_char["hit_wallbreak_damage"] = obj_projectile["hit_wallbreak_damage"]
-            hit_side_obj_char["hurt_heat_gain"] = obj_projectile["hurt_heat_gain"]
-            hit_side_obj_char["blocked_heat_gain"] = obj_projectile["blocked_heat_gain"]
-            hit_side_obj_char["block_heat_gain"] = obj_projectile["block_heat_gain"]
-            hit_side_obj_char["block_risk_gauge_gain"] = obj_projectile["block_risk_gauge_gain"]
-            hit_side_obj_char["FD_block_heat_drain"] = obj_projectile["FD_block_heat_drain"]
             -- common_hurt_function
             common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
         end
@@ -168,7 +158,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main(
         hit_side_obj_char,hurt_side_obj_char,obj_projectile
     )
-    init_character_anim_without(
+    init_character_anim_with(
         obj_projectile,obj_projectile["projectile_animation"]
     )
         -- camera_animation
@@ -245,16 +235,6 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_main(
         if hit_side_test_shot_sys_at_the_ready_ban_state then
             obj_projectile["projectile_active"] = false
         end
-        -- state_number
-        obj_projectile["hit_damage"] = 300.0
-        obj_projectile["hit_damage_correction_factor"] = 1
-        obj_projectile["hit_heat_gain"] = 5.0
-        obj_projectile["hit_wallbreak_damage"] = 20.0
-        obj_projectile["hurt_heat_gain"] = 2.0
-        obj_projectile["blocked_heat_gain"] = 8.0
-        obj_projectile["block_heat_gain"] = 2.0
-        obj_projectile["block_risk_gauge_gain"] = 25.0
-        obj_projectile["FD_block_heat_drain"] = 5.0
         -- draw_correction
         obj_projectile[8] = 0
         -- play_SFX
@@ -1694,13 +1674,13 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
     obj_projectile["hit_hurt_blockstop_countdown"] = hit_hurt_blockstop_countdown
     obj_projectile["hit_damage"] = hit_damage
     obj_projectile["hit_damage_correction_factor"] = 1
-    obj_projectile["hit_heat_gain"] = 0
-    obj_projectile["hit_wallbreak_damage"] = 0
-    obj_projectile["hurt_heat_gain"] = 0
-    obj_projectile["blocked_heat_gain"] = 0
-    obj_projectile["block_heat_gain"] = 0
-    obj_projectile["block_risk_gauge_gain"] = 0
-    obj_projectile["FD_block_heat_drain"] = 0
+    obj_projectile["hit_heat_gain"] = 5.0
+    obj_projectile["hit_wallbreak_damage"] = 20.0
+    obj_projectile["hurt_heat_gain"] = 2.0
+    obj_projectile["blocked_heat_gain"] = 8.0
+    obj_projectile["block_heat_gain"] = 2.0
+    obj_projectile["block_risk_gauge_gain"] = 25.0
+    obj_projectile["FD_block_heat_drain"] = 5.0
     obj_projectile["stand_hurt_animation"] = stand_hurt_animation_cache
     obj_projectile["stand_block_animation"] = stand_block_animation_cache
     obj_projectile["crouch_hurt_animation"] = crouch_hurt_animation_cache
@@ -1759,16 +1739,6 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
                 play_obj_audio(obj_projectile["hit_block_SFX"])
                 stop_obj_audio(obj_projectile["hit_whiff_SFX"])
             end
-            -- 通用受击/防御动画读取 hit_side 角色的数值, 命中时自 projectile 同步以维持原有伤害与热量
-            hit_side_obj_char["hit_damage"] = obj_projectile["hit_damage"]
-            hit_side_obj_char["hit_damage_correction_factor"] = obj_projectile["hit_damage_correction_factor"]
-            hit_side_obj_char["hit_heat_gain"] = obj_projectile["hit_heat_gain"]
-            hit_side_obj_char["hit_wallbreak_damage"] = obj_projectile["hit_wallbreak_damage"]
-            hit_side_obj_char["hurt_heat_gain"] = obj_projectile["hurt_heat_gain"]
-            hit_side_obj_char["blocked_heat_gain"] = obj_projectile["blocked_heat_gain"]
-            hit_side_obj_char["block_heat_gain"] = obj_projectile["block_heat_gain"]
-            hit_side_obj_char["block_risk_gauge_gain"] = obj_projectile["block_risk_gauge_gain"]
-            hit_side_obj_char["FD_block_heat_drain"] = obj_projectile["FD_block_heat_drain"]
             -- common_hurt_function
             common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
         end
@@ -1782,7 +1752,7 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
     obj_projectile["projectile_animation"] = load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_main(
         hit_side_obj_char,hurt_side_obj_char,obj_projectile
     )
-    init_character_anim_without(
+    init_character_anim_with(
         obj_projectile,obj_projectile["projectile_animation"]
     )
         -- camera_animation
@@ -1855,16 +1825,6 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_main(
         if hit_side_test_shot_sys_ban_state then
             obj_projectile["projectile_active"] = false
         end
-        -- state_number
-        -- hit_damage 已由 insert_..._shot 依 clean_hit 决定
-        obj_projectile["hit_damage_correction_factor"] = 1
-        obj_projectile["hit_heat_gain"] = 5.0
-        obj_projectile["hit_wallbreak_damage"] = 20.0
-        obj_projectile["hurt_heat_gain"] = 2.0
-        obj_projectile["blocked_heat_gain"] = 8.0
-        obj_projectile["block_heat_gain"] = 2.0
-        obj_projectile["block_risk_gauge_gain"] = 25.0
-        obj_projectile["FD_block_heat_drain"] = 5.0
         -- draw_correction
         obj_projectile[8] = 0
         -- play_SFX
