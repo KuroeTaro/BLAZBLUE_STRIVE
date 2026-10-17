@@ -36,7 +36,7 @@ __WORK_PLAN__
     -- and so call up is toward the inside of the ring Y is negative
     -- the other side is Y positive
 
--- OD 音效放大
+-- OD 音效放大 //ok
 -- 多模态测试 制作粒子和诅咒特效
 -- RC添加粒子 添加第二次badge
 -- 设置积极状态 (通过碎墙获得)
