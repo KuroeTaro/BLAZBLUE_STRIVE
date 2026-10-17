@@ -462,12 +462,12 @@ end
 -- 第 0 帧约 19%,第 20 帧到峰值,保持到第 47 帧,之后线性淡出
 function draw_VFX_game_scene_partical_3d_overdrive_opacity(frame)
     if frame < 20 then
-        return 0.19 + 0.81*frame/20
+        return (0.19 + 0.81*frame/20)*0.625
     end
     if frame < 47 then
-        return 1.00
+        return 0.625
     end
-    return math.min(1.00,math.max(0.00,(70 - frame)/22))
+    return math.min(1.00,math.max(0.00,(70 - frame)/22))*0.625
 end
 -- partical_ver1_counter:12 帧渐入 + 24 帧渐出,总共 36 帧
 -- (_VFX.lua 里 counter 粒子 VFX 的 life / 帧动画长度也同步改成 36)

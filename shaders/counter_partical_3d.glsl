@@ -1,5 +1,6 @@
 // 程序化 3D 粒子 —— 取代
 // asset/game_scene/common/texture/VFX/hit_VFX/partical_ver1_counter.dds
+// (该资产已随本次改造从仓库删除)
 //
 // 以 overdrive_partical_3d.glsl 为基础重写。
 //
@@ -31,9 +32,9 @@ extern vec2 resolution;    // CANVAS 像素尺寸
 
 // ---- 渐变调参:只改这两个浮点数(和 OD 用同一套) ----
 // 两者都是「屏幕归一化 y」:0.0 = 屏幕最上方,1.0 = 屏幕最下方
-//   GRADIENT_START 处不透明度 = 1.0(往这个点上方都保持 1.0)
-//   GRADIENT_END   处不透明度 = 0.0(往这个点下方都保持 0.0)
-// 现在是:屏幕垂直中央(0.5)满值,向下线性衰减到底边(1.0)为 0
+//   GRADIENT_START 处不透明度 = 1.0,起点外侧恒为 1.0
+//   GRADIENT_END   处不透明度 = 0.0,终点外侧恒为 0.0
+// 反向渐变(下亮上暗)直接把 START 写得比 END 大,例如 1.0 / 0.0
 #define GRADIENT_START 0.75
 #define GRADIENT_END 1.0
 
@@ -74,7 +75,10 @@ void add_layer(
                 continue;
             }
             vec2 particle = (cid + h.xy) * cell;
-            float radius_particle = radius * (0.70 + 0.60 * h.z);
+            // 单颗粒径:和 OD 同一条做法,用与亮度无关的随机数,偏向小颗粒、少数偏大
+            // (E[倍率^2] ≈ 1.01,整体亮度基本不变)
+            float size_seed = fract(h.x * 7.31 + h.w * 4.13);
+            float radius_particle = radius * (0.30 + 1.70 * size_seed * size_seed);
             float t = length((particle - pw) * project) / radius_particle;
             if (t >= 1.0) {
                 continue;

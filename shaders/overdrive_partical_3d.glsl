@@ -1,4 +1,5 @@
-// 程序化 3D 粒子尘埃 —— 取代 asset/game_scene/common/texture/VFX/overdrive_partical.dds
+// 程序化 3D 粒子尘埃 —— 取代
+// asset/game_scene/common/texture/VFX/overdrive_partical.dds(该资产已随本次改造从仓库删除)
 //
 // 原资产:70 帧 1600x900 的整屏白色微尘序列图。实测每帧约 1.2% 像素被点亮,
 //         单颗 2~3 像素,亮度 0.09~1.0,位置基本固定、亮度缓慢呼吸;
@@ -45,8 +46,9 @@ extern vec2 resolution;    // CANVAS 像素尺寸
 
 // ---- 渐变调参:只改这两个浮点数 ----
 // 两者都是「屏幕归一化 y」:0.0 = 屏幕最上方,1.0 = 屏幕最下方
-//   GRADIENT_START 处不透明度 = 1.0(往这个点上方都保持 1.0)
-//   GRADIENT_END   处不透明度 = 0.0(往这个点下方都保持 0.0)
+//   GRADIENT_START 处不透明度 = 1.0,起点外侧恒为 1.0
+//   GRADIENT_END   处不透明度 = 0.0,终点外侧恒为 0.0
+// 反向渐变(下亮上暗)直接把 START 写得比 END 大,例如 1.0 / 0.0
 #define GRADIENT_START 0.75
 #define GRADIENT_END 1.0
 
@@ -93,8 +95,10 @@ void add_layer(
                 continue;
             }
             vec2 particle = (cid + h.xy) * cell;
-            // 单颗粒径随机:原资产的微尘大小并不一致,少数是明显更大的亮斑
-            float radius_particle = radius * (0.55 + 0.90 * h.z);
+            // 单颗粒径:用一条和亮度无关的随机数,分布偏向小颗粒、少数是大亮斑
+            // (u*u 让 <1 的一侧更密,最大值约 2.06 倍;E[倍率^2] ≈ 1.06,整体亮度基本不变)
+            float size_seed = fract(h.x * 7.31 + h.w * 4.13);
+            float radius_particle = radius * (0.30 + 1.76 * size_seed * size_seed);
             float t = length((particle - pw) * project) / radius_particle;
             if (t >= 1.0) {
                 continue;
