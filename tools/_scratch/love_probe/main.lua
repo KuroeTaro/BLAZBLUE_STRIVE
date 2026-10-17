@@ -151,6 +151,46 @@ function love.load()
         end
     end
 
+    -- ---- 黑幕 overlay 重构后的行为验证 ----
+    log("")
+    for _, rel in ipairs({
+        "update_general_use_functions/animator.lua",
+        "draw_general_use_functions.lua",
+        "scenes/game_scene/_common/_VFX.lua",
+    }) do
+        local c, e = loadfile(REPO .. "/" .. rel)
+        if not c then
+            log("SYNTAX FAIL " .. rel .. " : " .. tostring(e))
+        else
+            local ok, runerr = pcall(c)
+            log((ok and "SYNTAX OK   " or "RUN FAIL    ") .. rel
+                .. (ok and "" or (" : " .. tostring(runerr))))
+        end
+    end
+    if type(insert_VFX_game_scene_char_overdrive_black_overlay) == "function" then
+        local fake_char = {
+            overdrive_gauge = { 1, 2, "on" },
+            VFX_black_overlay_table = {},
+        }
+        insert_VFX_game_scene_char_overdrive_black_overlay(fake_char)
+        local ov = fake_char["VFX_black_overlay_table"][1]
+        local seq = {}
+        for f = 0, 40 do
+            if f == 36 then fake_char["overdrive_gauge"][3] = "off" end
+            ov["update"]()
+            if f <= 4 or f % 5 == 0 or f >= 35 then
+                seq[#seq + 1] = string.format("f%d=%.3f", f, ov[4])
+            end
+        end
+        log("  black_overlay opacity: " .. table.concat(seq, " "))
+        log(string.format("  after 40 frames: life=%d state=%s", ov["life"], tostring(ov["state"])))
+        -- 真的画一次,确认 draw_solid 能跑
+        local dok, derr = pcall(ov["draw"])
+        log("  draw: " .. (dok and "OK" or ("FAIL " .. tostring(derr))))
+    else
+        log("  black_overlay function not found")
+    end
+
     flush()
     love.event.quit()
 end

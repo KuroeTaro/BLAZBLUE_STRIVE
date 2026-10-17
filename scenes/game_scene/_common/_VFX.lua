@@ -141,33 +141,15 @@ function insert_VFX_game_scene_char_overdrive_partical(active_op_side_obj_char,p
     table.insert(active_op_side_obj_char["VFX_common_back_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_char)
-    local obj_VFX = {0,0,0,1,0,0,0,0}
-    local obj_camera = obj_stage_game_scene_camera
-    obj_VFX["y_offset"] = 0
-    if active_op_side_obj_char["height"] == "air" then
-        obj_VFX["y_offset"] = 245
-    else
-        obj_VFX["y_offset"] = 345
-    end
+    -- 纯全屏 solid overlay:只保留透明度设计
+    -- 渐入 0.00 -> 0.50(33 帧),OD 结束后 10 帧线性淡出
+    local obj_VFX = {0,0,0,1,1,1,0,0}
+    obj_VFX["rgb"] = {0,0,0}
     obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
     obj_VFX["life"] = 42
-    obj_VFX[1] = active_op_side_obj_char["x"]
-    obj_VFX[2] = active_op_side_obj_char["y"] - active_op_side_obj_char[6]*obj_VFX["y_offset"]
-    obj_VFX[3] = active_op_side_obj_char[3]
-    obj_VFX[4] = 1
-    obj_VFX[5] = 0
-    obj_VFX[6] = 0
-    obj_VFX[7] = 0
-    obj_VFX[8] = 0
-    obj_VFX["cood_res"] = draw_3d_point_to_2D(obj_camera,obj_VFX)
     obj_VFX["state"] = "ease_in"
-    obj_VFX["blur_shader"] = shader_game_scene_gaussian_blur
-    obj_VFX["blur_shader"]:send("Directions",16)
-    obj_VFX["blur_shader"]:send("Quality",5)
-    obj_VFX["blur_shader"]:send("Size",8)
-    obj_VFX["blur_shader"]:send("resolution",{love.graphics.getWidth(),love.graphics.getHeight()})
     obj_VFX["opacity_ease_in_anim"] = {}
     obj_VFX["opacity_ease_in_anim"][0] = {0.00,1}
     obj_VFX["opacity_ease_in_anim"][1] = {0.04,3}
@@ -191,27 +173,12 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
     obj_VFX["opacity_ease_out_anim"]["length"] = 10
     obj_VFX["opacity_ease_out_anim"]["loop"] = false
     obj_VFX["opacity_ease_out_anim"]["fix_type"] = true
-    obj_VFX["size_anim"] = {}
-    obj_VFX["size_anim"][0] = {200,28}
-    obj_VFX["size_anim"][28] = {800,33}
-    obj_VFX["size_anim"][33] = {2600,33}
-    obj_VFX["size_anim"]["prop"] = 5
-    obj_VFX["size_anim"]["length"] = 33
-    obj_VFX["size_anim"]["loop"] = false
-    obj_VFX["size_anim"]["fix_type"] = true
-    obj_VFX["draw_canvas"] = love.graphics.newCanvas(love.graphics.getWidth(),love.graphics.getHeight())
-    init_point_linear_anim_without(
-        obj_VFX,obj_VFX["size_anim"]
-    )
     init_point_linear_anim_without(
         obj_VFX,obj_VFX["opacity_ease_in_anim"]
     )
     obj_VFX["update"] = function()
         local switch = {
             ["ease_in"] = function()
-                point_linear_animator(
-                    obj_VFX,obj_VFX["size_anim"]
-                )
                 point_linear_animator(
                     obj_VFX,obj_VFX["opacity_ease_in_anim"]
                 )
@@ -240,31 +207,8 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
         if this_function then this_function() end
         obj_VFX["life"] = obj_VFX["life"] - 1
     end
-    obj_VFX["draw_sync"] = function()
-        if active_op_side_obj_char["height"] == "air" then
-            obj_VFX["y_offset"] = 245
-        else
-            obj_VFX["y_offset"] = 345
-        end
-        obj_VFX[1] = active_op_side_obj_char["x"]
-        obj_VFX[2] = active_op_side_obj_char["y"] - active_op_side_obj_char[6]*obj_VFX["y_offset"]
-        obj_VFX[3] = active_op_side_obj_char[3]
-        obj_VFX["draw_sync"] = function() end
-    end
     obj_VFX["draw"] = function()
-        obj_VFX["draw_sync"]()
-        obj_VFX["blur_shader"]:send("resolution",{love.graphics.getWidth(),love.graphics.getHeight()})
-        love.graphics.setCanvas(obj_VFX["draw_canvas"])
-        love.graphics.clear(0,0,0,0)
-        love.graphics.setColor(0,0,0,obj_VFX[4])
-        love.graphics.circle(
-            "fill",obj_VFX["cood_res"][1],obj_VFX["cood_res"][2],draw_resolution_correction(obj_VFX[5])
-        )
-        love.graphics.setColor(1,1,1,1)
-        love.graphics.setCanvas()
-        love.graphics.setShader(obj_VFX["blur_shader"])
-        love.graphics.draw(obj_VFX["draw_canvas"])
-        love.graphics.setShader()
+        draw_solid(obj_VFX)
     end
     table.insert(active_op_side_obj_char["VFX_black_overlay_table"],obj_VFX)
 end
@@ -741,7 +685,7 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver0(active_op_s
     active_op_side_obj_char["VFX_hit_back_table"] = {}
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
-    obj_VFX["life"] = 27
+    obj_VFX["life"] = 13
     obj_VFX[1] = active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(active_op_center_x)
     obj_VFX[2] = active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(active_op_center_y)
     obj_VFX[3] = active_op_side_obj_char[3]
@@ -755,20 +699,20 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver0(active_op_s
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
     obj_VFX["animation"] = {}
     obj_VFX["animation"][0] = 0
-    obj_VFX["animation"][2] = 1
-    obj_VFX["animation"][4] = 2
-    obj_VFX["animation"][6] = 3
-    obj_VFX["animation"][8] = 4
-    obj_VFX["animation"][10] = 5
-    obj_VFX["animation"][11] = 6
-    obj_VFX["animation"][12] = 7
-    obj_VFX["animation"][13] = 8
-    obj_VFX["animation"][14] = 9
-    obj_VFX["animation"][16] = 10
-    obj_VFX["animation"][18] = 11
-    obj_VFX["animation"][21] = 12
+    obj_VFX["animation"][1] = 1
+    obj_VFX["animation"][2] = 2
+    obj_VFX["animation"][3] = 3
+    obj_VFX["animation"][4] = 4
+    obj_VFX["animation"][5] = 5
+    obj_VFX["animation"][6] = 6
+    obj_VFX["animation"][7] = 7
+    obj_VFX["animation"][8] = 8
+    obj_VFX["animation"][9] = 9
+    obj_VFX["animation"][10] = 10
+    obj_VFX["animation"][11] = 11
+    obj_VFX["animation"][12] = 12
     obj_VFX["animation"]["prop"] = 8
-    obj_VFX["animation"]["length"] = 27
+    obj_VFX["animation"]["length"] = 13
     obj_VFX["animation"]["loop"] = false
     init_frame_anim_without(
         obj_VFX,obj_VFX["animation"]
@@ -1689,7 +1633,7 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver0(active_op_side_ob
     active_op_side_obj_char["VFX_hit_back_table"] = {}
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
-    obj_VFX["life"] = 27
+    obj_VFX["life"] = 13
     obj_VFX[1] = active_op_center_x
     obj_VFX[2] = active_op_center_y
     obj_VFX[3] = active_op_side_obj_char[3]
@@ -1703,20 +1647,20 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver0(active_op_side_ob
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
     obj_VFX["animation"] = {}
     obj_VFX["animation"][0] = 0
-    obj_VFX["animation"][2] = 1
-    obj_VFX["animation"][4] = 2
-    obj_VFX["animation"][6] = 3
-    obj_VFX["animation"][8] = 4
-    obj_VFX["animation"][10] = 5
-    obj_VFX["animation"][11] = 6
-    obj_VFX["animation"][12] = 7
-    obj_VFX["animation"][13] = 8
-    obj_VFX["animation"][14] = 9
-    obj_VFX["animation"][16] = 10
-    obj_VFX["animation"][18] = 11
-    obj_VFX["animation"][21] = 12
+    obj_VFX["animation"][1] = 1
+    obj_VFX["animation"][2] = 2
+    obj_VFX["animation"][3] = 3
+    obj_VFX["animation"][4] = 4
+    obj_VFX["animation"][5] = 5
+    obj_VFX["animation"][6] = 6
+    obj_VFX["animation"][7] = 7
+    obj_VFX["animation"][8] = 8
+    obj_VFX["animation"][9] = 9
+    obj_VFX["animation"][10] = 10
+    obj_VFX["animation"][11] = 11
+    obj_VFX["animation"][12] = 12
     obj_VFX["animation"]["prop"] = 8
-    obj_VFX["animation"]["length"] = 27
+    obj_VFX["animation"]["length"] = 13
     obj_VFX["animation"]["loop"] = false
     init_frame_anim_without(
         obj_VFX,obj_VFX["animation"]

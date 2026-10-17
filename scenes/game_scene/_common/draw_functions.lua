@@ -472,5 +472,5 @@ end
 -- partical_ver1_counter:12 帧渐入 + 24 帧渐出,总共 36 帧
 -- (_VFX.lua 里 counter 粒子 VFX 的 life / 帧动画长度也同步改成 36)
 function draw_VFX_game_scene_partical_3d_counter_opacity(frame)
-    return math.min(1.00,math.max(0.00,(24 - frame)/24))*0.5
+    return math.min(1.00,math.max(0.00,(24 - frame)/24))*0.425
 end
