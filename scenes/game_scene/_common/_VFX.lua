@@ -131,16 +131,12 @@ function insert_VFX_game_scene_char_overdrive_partical(active_op_side_obj_char,p
             obj_VFX["life"] = 0
         end
     end
-    obj_VFX["draw_sync"] = function()
-    end
+    -- 粒子场改由 shader 按摄像机位置实时重建,不再需要序列图与 2D 锚点
     obj_VFX["draw"] = function()
-        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_overdrive_partical
-        obj_VFX["draw_sync"]()
-        image_sprite_sheet["sprite_batch"]:clear()
-        draw_2d_image_sprite_batch(obj_VFX,image_sprite_sheet,""..obj_VFX[8].."")
-        love.graphics.setBlendMode("add")
-        love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setBlendMode("alpha")
+        draw_VFX_game_scene_partical_3d_canvas(
+            obj_VFX,shader_game_scene_overdrive_partical_3d,
+            obj_VFX[8],draw_VFX_game_scene_partical_3d_overdrive_opacity(obj_VFX[8])
+        )
     end
     table.insert(active_op_side_obj_char["VFX_common_back_table"],obj_VFX)
 end
@@ -1120,7 +1116,7 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
     table.insert(active_op_side_obj_char["VFX_hit_back_table"],obj_VFX)
     -- partical
     local obj_VFX = {0,0,0,1,1,1,0,0}
-    obj_VFX["life"] = 30
+    obj_VFX["life"] = 36
     obj_VFX[1] = obj_camera["3d_pos_x"] + obj_camera["enclose_position_offset"][1] - 900
     obj_VFX[2] = obj_camera["3d_pos_y"] + obj_camera["enclose_position_offset"][2] - 550
     obj_VFX[3] = 0
@@ -1133,11 +1129,11 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
     obj_VFX["animation"] = {}
-    for i = 0,29 do
+    for i = 0,35 do
         obj_VFX["animation"][i] = i
     end
     obj_VFX["animation"]["prop"] = 8
-    obj_VFX["animation"]["length"] = 30
+    obj_VFX["animation"]["length"] = 36
     obj_VFX["animation"]["loop"] = false
     init_frame_anim_without(
         obj_VFX,obj_VFX["animation"]
@@ -1151,21 +1147,12 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
         )
         obj_VFX["life"] = obj_VFX["life"] - 1
     end
-    obj_VFX["draw_sync"] = function()
-        obj_VFX[1] = obj_camera["3d_pos_x"] + obj_camera["enclose_position_offset"][1] - 900
-        obj_VFX[2] = obj_camera["3d_pos_y"] + obj_camera["enclose_position_offset"][2] - 550
-        obj_VFX["draw_sync"] = function() end
-    end
+    -- 粒子场改由 shader 按摄像机位置实时重建,不再需要序列图与 2D 锚点
     obj_VFX["draw"] = function()
-        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_partical_ver1_counter
-        obj_VFX["draw_sync"]()
-        image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+        draw_VFX_game_scene_partical_3d_canvas(
+            obj_VFX,shader_game_scene_counter_partical_3d,
+            obj_VFX[8],draw_VFX_game_scene_partical_3d_counter_opacity(obj_VFX[8])
         )
-        love.graphics.setBlendMode("add")
-        love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setBlendMode("alpha")
     end
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
@@ -1945,7 +1932,7 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
     table.insert(active_op_side_obj_char["VFX_hit_back_table"],obj_VFX)
     -- partical
     local obj_VFX = {0,0,0,1,1,1,0,0}
-    obj_VFX["life"] = 30
+    obj_VFX["life"] = 36
     obj_VFX[1] = obj_camera["3d_pos_x"] + obj_camera["enclose_position_offset"][1] - 900
     obj_VFX[2] = obj_camera["3d_pos_y"] + obj_camera["enclose_position_offset"][2] - 550
     obj_VFX[3] = 0
@@ -1958,11 +1945,11 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
     obj_VFX["animation"] = {}
-    for i = 0,29 do
+    for i = 0,35 do
         obj_VFX["animation"][i] = i
     end
     obj_VFX["animation"]["prop"] = 8
-    obj_VFX["animation"]["length"] = 30
+    obj_VFX["animation"]["length"] = 36
     obj_VFX["animation"]["loop"] = false
     init_frame_anim_without(
         obj_VFX,obj_VFX["animation"]
@@ -1976,21 +1963,12 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
         )
         obj_VFX["life"] = obj_VFX["life"] - 1
     end
-    obj_VFX["draw_sync"] = function()
-        obj_VFX[1] = obj_camera["3d_pos_x"] + obj_camera["enclose_position_offset"][1] - 900
-        obj_VFX[2] = obj_camera["3d_pos_y"] + obj_camera["enclose_position_offset"][2] - 550
-        obj_VFX["draw_sync"] = function() end
-    end
+    -- 粒子场改由 shader 按摄像机位置实时重建,不再需要序列图与 2D 锚点
     obj_VFX["draw"] = function()
-        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_partical_ver1_counter
-        obj_VFX["draw_sync"]()
-        image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+        draw_VFX_game_scene_partical_3d_canvas(
+            obj_VFX,shader_game_scene_counter_partical_3d,
+            obj_VFX[8],draw_VFX_game_scene_partical_3d_counter_opacity(obj_VFX[8])
         )
-        love.graphics.setBlendMode("add")
-        love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setBlendMode("alpha")
     end
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
@@ -2595,7 +2573,7 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
     table.insert(active_op_side_obj_char["VFX_hit_back_table"],obj_VFX)
     -- partical
     local obj_VFX = {0,0,0,1,1,1,0,0}
-    obj_VFX["life"] = 30
+    obj_VFX["life"] = 36
     obj_VFX[1] = obj_camera["3d_pos_x"] + obj_camera["enclose_position_offset"][1] - 900
     obj_VFX[2] = obj_camera["3d_pos_y"] + obj_camera["enclose_position_offset"][2] - 550
     obj_VFX[3] = 0
@@ -2608,11 +2586,11 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
     obj_VFX["animation"] = {}
-    for i = 0,29 do
+    for i = 0,35 do
         obj_VFX["animation"][i] = i
     end
     obj_VFX["animation"]["prop"] = 8
-    obj_VFX["animation"]["length"] = 30
+    obj_VFX["animation"]["length"] = 36
     obj_VFX["animation"]["loop"] = false
     init_frame_anim_without(
         obj_VFX,obj_VFX["animation"]
@@ -2626,21 +2604,12 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
         )
         obj_VFX["life"] = obj_VFX["life"] - 1
     end
-    obj_VFX["draw_sync"] = function()
-        obj_VFX[1] = obj_camera["3d_pos_x"] + obj_camera["enclose_position_offset"][1] - 900
-        obj_VFX[2] = obj_camera["3d_pos_y"] + obj_camera["enclose_position_offset"][2] - 550
-        obj_VFX["draw_sync"] = function() end
-    end
+    -- 粒子场改由 shader 按摄像机位置实时重建,不再需要序列图与 2D 锚点
     obj_VFX["draw"] = function()
-        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_partical_ver1_counter
-        obj_VFX["draw_sync"]()
-        image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+        draw_VFX_game_scene_partical_3d_canvas(
+            obj_VFX,shader_game_scene_counter_partical_3d,
+            obj_VFX[8],draw_VFX_game_scene_partical_3d_counter_opacity(obj_VFX[8])
         )
-        love.graphics.setBlendMode("add")
-        love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setBlendMode("alpha")
     end
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
@@ -3035,7 +3004,7 @@ function insert_VFX_game_scene_char_counter_blast_special_projectile(active_op_s
     table.insert(active_op_side_obj_char["VFX_hit_back_table"],obj_VFX)
     -- partical
     local obj_VFX = {0,0,0,1,1,1,0,0}
-    obj_VFX["life"] = 30
+    obj_VFX["life"] = 36
     obj_VFX[1] = obj_camera["3d_pos_x"] + obj_camera["enclose_position_offset"][1] - 900
     obj_VFX[2] = obj_camera["3d_pos_y"] + obj_camera["enclose_position_offset"][2] - 550
     obj_VFX[3] = 0
@@ -3048,11 +3017,11 @@ function insert_VFX_game_scene_char_counter_blast_special_projectile(active_op_s
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
     obj_VFX["animation"] = {}
-    for i = 0,29 do
+    for i = 0,35 do
         obj_VFX["animation"][i] = i
     end
     obj_VFX["animation"]["prop"] = 8
-    obj_VFX["animation"]["length"] = 30
+    obj_VFX["animation"]["length"] = 36
     obj_VFX["animation"]["loop"] = false
     init_frame_anim_without(
         obj_VFX,obj_VFX["animation"]
@@ -3066,21 +3035,12 @@ function insert_VFX_game_scene_char_counter_blast_special_projectile(active_op_s
         )
         obj_VFX["life"] = obj_VFX["life"] - 1
     end
-    obj_VFX["draw_sync"] = function()
-        obj_VFX[1] = obj_camera["3d_pos_x"] + obj_camera["enclose_position_offset"][1] - 900
-        obj_VFX[2] = obj_camera["3d_pos_y"] + obj_camera["enclose_position_offset"][2] - 550
-        obj_VFX["draw_sync"] = function() end
-    end
+    -- 粒子场改由 shader 按摄像机位置实时重建,不再需要序列图与 2D 锚点
     obj_VFX["draw"] = function()
-        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_partical_ver1_counter
-        obj_VFX["draw_sync"]()
-        image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+        draw_VFX_game_scene_partical_3d_canvas(
+            obj_VFX,shader_game_scene_counter_partical_3d,
+            obj_VFX[8],draw_VFX_game_scene_partical_3d_counter_opacity(obj_VFX[8])
         )
-        love.graphics.setBlendMode("add")
-        love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setBlendMode("alpha")
     end
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end

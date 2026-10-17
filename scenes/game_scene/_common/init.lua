@@ -5,6 +5,11 @@ function load_game_scene_common_obj()
     DRAW_MAIN_CHARACTER_CANVAS = love.graphics.newCanvas(width,height)
     DRAW_CHARACTER_CANVAS = love.graphics.newCanvas(width,height)
     DRAW_SHADOW_CANVAS = love.graphics.newCanvas(width,height)
+    -- glsl 程序化粒子(取代 overdrive_partical / partical_ver1_counter 序列图)
+    -- 这张 CANVAS 固定贴在屏幕上,不随摄像机移动;
+    -- 每帧把摄像机位置送进 shader 重新绘制,由 shader 自己做 3D 投影与视差,
+    -- 因此不需要为了掩盖画布边缘而放大 CANVAS。
+    DRAW_VFX_PARTICAL_3D_CANVAS = love.graphics.newCanvas(width,height)
     load_game_scene_canvas_char_LP()
     load_game_scene_canvas_char_RP()
     load_game_scene_obj_char_LP()
@@ -55,14 +60,24 @@ function load_game_scene_common_shader(i)
         [1] = function() shader_game_scene_fractal_noise = love.graphics.newShader(
             "shaders/game_fractal_noise.glsl"
         ) end,
-        [2] = function() shader_game_scene_radial_blur = love.graphics.newShader("shaders/radial_blur.glsl") end,
+        [2] = function() shader_game_scene_radial_blur = love.graphics.newShader(
+            "shaders/radial_blur.glsl"
+        ) end,
         [3] = function() shader_game_scene_shadow_radial_blur = love.graphics.newShader(
             "shaders/shadow_radial_blur.glsl"
         ) end,
         [4] = function() shader_game_scene_brightness_contrast = love.graphics.newShader(
             "shaders/brightness_contrast.glsl"
         ) end,
-        [5] = function() shader_game_scene_gaussian_blur = love.graphics.newShader("shaders/gaussian_blur.glsl") end
+        [5] = function() shader_game_scene_gaussian_blur = love.graphics.newShader(
+            "shaders/gaussian_blur.glsl"
+        ) end,
+        [6] = function() shader_game_scene_overdrive_partical_3d = love.graphics.newShader(
+            "shaders/overdrive_partical_3d.glsl"
+        ) end,
+        [7] = function() shader_game_scene_counter_partical_3d = love.graphics.newShader(
+            "shaders/counter_partical_3d.glsl"
+        ) end
     }
     local this_function = switch[i]
     if this_function then this_function() end

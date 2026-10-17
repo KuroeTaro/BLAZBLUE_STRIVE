@@ -16,8 +16,7 @@ thread_data["block_ver0_sprite_batch"] = compress_module("asset/game_scene/commo
 thread_data["block_ver1_sprite_batch"] = compress_module("asset/game_scene/common/texture/VFX/hit_VFX/block_ver1.dds")
 thread_data["counter_glow"] = compress_module("asset/game_scene/common/texture/VFX/hit_VFX/counter_glow.dds")
 thread_data["FD_bubble"] = compress_module("asset/game_scene/common/texture/VFX/hit_VFX/FD_bubble.dds")
-thread_data["partical_ver1_counter_sprite_batch"] =
-compress_module("asset/game_scene/common/texture/VFX/hit_VFX/partical_ver1_counter.dds")
+-- partical_ver1_counter_sprite_batch 已改由 shaders/counter_partical_3d.glsl 程序化生成
 thread_data["slash_ver0_sprite_batch"] = compress_module("asset/game_scene/common/texture/VFX/hit_VFX/slash_ver0.dds")
 thread_data["slash_ver0_counter_sprite_batch"] =
 compress_module("asset/game_scene/common/texture/VFX/hit_VFX/slash_ver0_counter.dds")

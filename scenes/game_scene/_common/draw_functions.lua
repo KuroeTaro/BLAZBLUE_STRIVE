@@ -428,3 +428,49 @@ function draw_game_scene_act_common(obj,image_sprite_sheet)
     end
     draw_2d_image_sprite_batch(obj,image_sprite_sheet,""..f.."")
 end
+-- glsl 程序化粒子
+-- DRAW_VFX_PARTICAL_3D_CANVAS 固定贴在 (0,0),不随摄像机移动。
+-- 每次绘制都把摄像机位置与特效平面 z 送进 shader,由 shader 重建世界空间粒子场,
+-- 因此摄像机横移/推拉时粒子会产生真实视差,而画面四周永远是满的。
+-- obj_VFX[3] 是特效所在的世界平面 z
+-- time 是逻辑帧计数(顿帧时调用方不推进它,闪烁也会跟着冻结)
+-- opacity 是整体不透明度(亮度包络)
+-- 这版 LOVE 的 Shader:send 不接受「多个数字」形式,vec 必须给表;
+-- 下面两张表复用同一份,避免每帧新建(项目开了 nuGC)
+function draw_VFX_game_scene_partical_3d_canvas(obj_VFX,shader,time,opacity)
+    local obj_camera = obj_stage_game_scene_camera
+    local camera_pos = {obj_camera[1],obj_camera[2],obj_camera[3]}
+    local width,height = DRAW_VFX_PARTICAL_3D_CANVAS:getDimensions()
+    local partical_3d_res = {width,height}
+    love.graphics.setCanvas(DRAW_VFX_PARTICAL_3D_CANVAS)
+    love.graphics.clear(0,0,0,0)
+    love.graphics.setShader(shader)
+    shader:send("time",time)
+    shader:send("opacity",opacity)
+    shader:send("camera_pos",camera_pos)
+    shader:send("anchor_z",obj_VFX[3])
+    shader:send("resolution",partical_3d_res)
+    love.graphics.rectangle("fill",0,0,width,height)
+    love.graphics.setShader()
+    love.graphics.setCanvas()
+    love.graphics.setBlendMode("add")
+    love.graphics.setColor(1,1,1,1)
+    love.graphics.draw(DRAW_VFX_PARTICAL_3D_CANVAS)
+    love.graphics.setBlendMode("alpha")
+end
+-- overdrive_partical:原序列图 70 帧的亮度包络
+-- 第 0 帧约 19%,第 20 帧到峰值,保持到第 47 帧,之后线性淡出
+function draw_VFX_game_scene_partical_3d_overdrive_opacity(frame)
+    if frame < 20 then
+        return 0.19 + 0.81*frame/20
+    end
+    if frame < 47 then
+        return 1.00
+    end
+    return math.min(1.00,math.max(0.00,(70 - frame)/22))
+end
+-- partical_ver1_counter:12 帧渐入 + 24 帧渐出,总共 36 帧
+-- (_VFX.lua 里 counter 粒子 VFX 的 life / 帧动画长度也同步改成 36)
+function draw_VFX_game_scene_partical_3d_counter_opacity(frame)
+    return math.min(1.00,math.max(0.00,(24 - frame)/24))*0.5
+end

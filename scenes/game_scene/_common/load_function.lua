@@ -43,7 +43,7 @@ function load_game_scene_prep()
         order_load_game_scene_stage_frames
     }
     CURRENT_ORDER_TABLE = {1,1,1,1,1,1,1,1,1,1,1,1,1} -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
-    ORDER_SIZE_TABLE = {12,4,3,1,1,4,3,11,39,11,39,3,4} -- 每个load function的最大值
+    ORDER_SIZE_TABLE = {14,4,3,1,1,4,3,11,39,11,39,3,4} -- 每个load function的最大值
     LOAD_ONCE_TABLE = {false,false,false,false,false,false,false,false,false,false,false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     LOADING_FUNCTION_AMOUNT = 13 -- 和线程数相同
     -- GAME_MODE = 0
@@ -119,6 +119,12 @@ function order_load_game_scene_common(load_order)
                 )
             end
             image_game_scene_alpha_gradient_mask = love.graphics.newImage(alpha_gradient_mask_image_data)
+        end,
+        [13] = function()
+            load_game_scene_common_shader(6)
+        end,
+        [14] = function()
+            load_game_scene_common_shader(7)
         end
     }
     local this_function = switch[load_order]
@@ -205,11 +211,8 @@ function order_load_game_scene_VFX_overdrive_heat(load_order)
                 "asset/game_scene/common/texture/VFX/overdrive_airflow.json",
                 love.graphics.newImage(ASSET_DATA[7]["overdrive_airflow_sprite_batch"])
             )
-            image_sprite_sheet_VFX_game_scene_overdrive_partical =
-            common_sprite_sheet_load(
-                "asset/game_scene/common/texture/VFX/overdrive_partical.json",
-                love.graphics.newImage(ASSET_DATA[7]["overdrive_partical_sprite_batch"])
-            )
+            -- overdrive_partical 已由 shaders/overdrive_partical_3d.glsl 程序化生成,
+            -- 不再加载 70 帧 1600x900 的 overdrive_partical.dds
         end,
         [2] = function()
             -- RC
@@ -316,11 +319,8 @@ function order_load_game_scene_VFX_move(load_order)
         end,
         [3] = function()
             -- hit_normal_part3
-            image_sprite_sheet_VFX_game_scene_partical_ver1_counter =
-            common_sprite_sheet_load(
-                "asset/game_scene/common/texture/VFX/hit_VFX/partical_ver1_counter.json",
-                love.graphics.newImage(ASSET_DATA[6]["partical_ver1_counter_sprite_batch"])
-            )
+            -- partical_ver1_counter 已由 shaders/counter_partical_3d.glsl 程序化生成,
+            -- 不再加载 30 帧 1800x1100 的 partical_ver1_counter.dds
             image_sprite_sheet_VFX_game_scene_slash_ver0 =
             common_sprite_sheet_load(
                 "asset/game_scene/common/texture/VFX/hit_VFX/slash_ver0.json",
