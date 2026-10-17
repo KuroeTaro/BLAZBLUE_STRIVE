@@ -1289,13 +1289,13 @@ function common_game_scene_projectile_pair_interact(
     end
 end
 -- damage/velocity_apply
-function common_game_scene_char_apply_damage_heat(
+function common_game_scene_char_apply_damage(
     hit_side_obj_char,hurt_side_obj_char,block_or_hurt,FD_block
 )
     local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
     local hurt_damage = hit_side_obj_char["hit_damage"]*hurt_side_obj_char["damage_correction"]
     local hurt_overdrive_gain =
-        hurt_damage/hurt_side_obj_char["health_gauge"][1]*hit_side_obj_char["overdrive_gauge"][2]
+        hurt_damage/hurt_side_obj_char["health_gauge"][2]*hit_side_obj_char["overdrive_gauge"][2]
     if block_or_hurt == "hurt" then
         -- hit_side
             -- apply_heat_gain
@@ -1371,13 +1371,13 @@ function common_game_scene_char_apply_damage_heat(
             )
     end
 end
-function common_game_scene_projectile_apply_damage_heat(
+function common_game_scene_projectile_apply_damage(
     hit_side_obj_char,hurt_side_obj_char,obj_projectile,block_or_hurt,FD_block
 )
     local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
     local hurt_damage = hit_side_obj_char["hit_damage"]*hurt_side_obj_char["damage_correction"]
     local hurt_overdrive_gain =
-        hurt_damage/hurt_side_obj_char["health_gauge"][1]*hit_side_obj_char["overdrive_gauge"][2]
+        hurt_damage/hurt_side_obj_char["health_gauge"][2]*hit_side_obj_char["overdrive_gauge"][2]
     if block_or_hurt == "hurt" then
         -- hit_side
             -- apply_heat_gain

@@ -10305,7 +10305,10 @@ function update_game_scene_char_RP_heat_gauge_update_function()
     -- update_if_positive_bonus
     if self_side_obj_char["positive_bonus"] then
         self_side_obj_char["heat_gauge"][1] =
-        math.min(self_side_obj_char["heat_gauge"][1] + 0.25,self_side_obj_char["heat_gauge"][2])
+        math.min(
+            self_side_obj_char["heat_gauge"][1] + 0.25,
+            self_side_obj_char["heat_gauge"][2]
+        )
     end
     -- update_if_enclose
     if self_side_obj_char["velocity"][1]*(opponent_side_obj_char["x"]-self_side_obj_char["x"]) > 0 
@@ -10313,7 +10316,10 @@ function update_game_scene_char_RP_heat_gauge_update_function()
     and math.abs(self_side_obj_char["velocity"][1]) > 20.0 
     then
         self_side_obj_char["heat_gauge"][1] =
-        math.min(self_side_obj_char["heat_gauge"][1] + 0.25,self_side_obj_char["heat_gauge"][2])
+        math.min(
+            self_side_obj_char["heat_gauge"][1] + 0.25*self_side_obj_char["heat_penalty"],
+            self_side_obj_char["heat_gauge"][2]
+        )
     end
 end
 function update_game_scene_char_RP_overdrive_gauge_update_function()

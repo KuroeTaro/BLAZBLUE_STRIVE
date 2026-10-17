@@ -4039,22 +4039,22 @@ function load_game_scene_anim_char_TRM_cS(
         hit_side_obj_char["block_heat_gain"] = 2.0
         hit_side_obj_char["block_risk_gauge_gain"] = 25.0
         hit_side_obj_char["FD_block_heat_drain"] = 5.0
-        hit_side_obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv4(
+        hit_side_obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv3(
             hit_side_obj_char,hurt_side_obj_char,"0_stand_hurt_high","stand","5_stand_idle",
             42.5,5,1.00,0,2.5,1.00,
             nil,nil,nil,nil,function() end
         )
-        hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv4(
+        hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv3(
             hit_side_obj_char,hurt_side_obj_char,"4_stand_block_high","stand","5_stand_idle",
             42.5,5,1.00,0,2.5,1.00,
             nil,nil,nil,nil,function() end
         )
-        hit_side_obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv4(
+        hit_side_obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv3(
             hit_side_obj_char,hurt_side_obj_char,"0_crouch_hurt","crouch","1_2_3_crouch",
             42.5,5,1.00,0,2.5,1.00,
             nil,nil,nil,nil,function() end
         )
-        hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv4(
+        hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv3(
             hit_side_obj_char,hurt_side_obj_char,"1_crouch_block","crouch","1_2_3_crouch",
             42.5,5,1.00,0,2.5,1.00,
             nil,nil,nil,nil,function() end
@@ -5200,7 +5200,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(
         update_y_37f_43f(37)
         hurt_side_obj_char["physics_lock"] = false
         -- state_number
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"hurt",false
         )
         common_game_scene_char_apply_hurt_velocity(

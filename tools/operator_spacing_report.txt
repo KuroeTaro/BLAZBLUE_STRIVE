@@ -5,7 +5,7 @@ Lua 格式检查报告（运算符空格 + 行尾空白）
 规则 [4] 行尾不允许残留空白（空格 / 制表符）
 规则 [5] 行内不允许无意义的连续多个空格（≥2 个字符；字符串/注释内容除外）
 检查范围：71 个 Lua 文件（已排除 dkjson / lovebird / lume / lurker）
-违规文件：5 个 | 规则[1]：3 处 | 规则[2]：1 处 | 规则[3]：5 处 | 规则[4]：12 处 | 规则[5]：0 处
+违规文件：5 个 | 规则[1]：7 处 | 规则[2]：1 处 | 规则[3]：11 处 | 规则[4]：22 处 | 规则[5]：0 处
 
 保留 `=` 列对齐（已批准，不修改）：10 处
     scenes/char_select_scene/state_machine.lua:54:32              ["obj"]            = obj_UI_char_select_scene_char_select_left,
@@ -37,57 +37,117 @@ scenes/game_scene/_common/_anim.lua  (5 处)
                         ^
 
 scenes/game_scene/characters/TRM/_character_function.lua  (10 处)
-    473:64  [规则3] 行尾多余空格，应删除
+    447:64  [规则3] 行尾多余空格，应删除
             self_side_obj_char["shot_sys_oroboros_animation_table"][2] = 
                                                                        ^
-    473:65  [规则4] 行尾残留空白，应删除
+    447:65  [规则4] 行尾残留空白，应删除
             self_side_obj_char["shot_sys_oroboros_animation_table"][2] = 
                                                                         ^
-    477:64  [规则3] 行尾多余空格，应删除
+    451:64  [规则3] 行尾多余空格，应删除
             self_side_obj_char["shot_sys_oroboros_animation_table"][3] = 
                                                                        ^
-    477:65  [规则4] 行尾残留空白，应删除
+    451:65  [规则4] 行尾残留空白，应删除
             self_side_obj_char["shot_sys_oroboros_animation_table"][3] = 
                                                                         ^
-    485:64  [规则3] 行尾多余空格，应删除
+    459:64  [规则3] 行尾多余空格，应删除
             self_side_obj_char["shot_sys_oroboros_animation_table"][5] = 
                                                                        ^
-    485:65  [规则4] 行尾残留空白，应删除
+    459:65  [规则4] 行尾残留空白，应删除
             self_side_obj_char["shot_sys_oroboros_animation_table"][5] = 
                                                                         ^
-    712:68  [规则3] 行尾多余空格，应删除
+    686:68  [规则3] 行尾多余空格，应删除
                 self_side_obj_char["shot_sys_oroboros_animation_table"][3] = 
                                                                            ^
-    712:69  [规则4] 行尾残留空白，应删除
+    686:69  [规则4] 行尾残留空白，应删除
                 self_side_obj_char["shot_sys_oroboros_animation_table"][3] = 
                                                                             ^
-    847:46  [规则3] 行尾多余空格，应删除
+    821:46  [规则3] 行尾多余空格，应删除
             self_side_obj_char["shot_sys_animation"] = 
                                                      ^
-    847:47  [规则4] 行尾残留空白，应删除
+    821:47  [规则4] 行尾残留空白，应删除
             self_side_obj_char["shot_sys_animation"] = 
                                                       ^
 
 scenes/game_scene/characters/TRM/_projectile.lua  (4 处)
-    204:57  [规则1] 行尾多余空格，应删除
+    201:57  [规则1] 行尾多余空格，应删除
                     obj_projectile[2] = hurt_side_obj_char["y"] - 
                                                                 ^
-    204:58  [规则4] 行尾残留空白，应删除
+    201:58  [规则4] 行尾残留空白，应删除
                     obj_projectile[2] = hurt_side_obj_char["y"] - 
                                                                  ^
-    858:89  [规则4] 行尾残留空白，应删除
+    855:89  [规则4] 行尾残留空白，应删除
                 if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char) 
                                                                                                 ^
-    1675:130  [规则4] 行尾残留空白，应删除
+    1664:130  [规则4] 行尾残留空白，应删除
                 stand_block_animation_cache = load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_clean_hit_guard_crash_block(    
                                                                                                                                          ^
 
-scenes/game_scene/characters/TRM/left.lua  (1 处)
-    8520:107  [规则4] 行尾残留空白，应删除
+scenes/game_scene/characters/TRM/left.lua  (11 处)
+    8561:107  [规则4] 行尾残留空白，应删除
                 if (self_side_obj_char["direction_input"] ~= 4 and self_side_obj_char["direction_input"] ~= 6) and 
                                                                                                                   ^
+    10314:70  [规则1] 左侧缺少空格，应为 1 个空格
+            if self_side_obj_char["velocity"][1]*(opponent_side_obj_char["x"]-self_side_obj_char["x"]) > 0 
+                                                                             ^
+    10314:70  [规则1] 右侧缺少空格，应为 1 个空格
+            if self_side_obj_char["velocity"][1]*(opponent_side_obj_char["x"]-self_side_obj_char["x"]) > 0 
+                                                                             ^
+    10314:99  [规则4] 行尾残留空白，应删除
+            if self_side_obj_char["velocity"][1]*(opponent_side_obj_char["x"]-self_side_obj_char["x"]) > 0 
+                                                                                                          ^
+    10316:59  [规则4] 行尾残留空白，应删除
+            and math.abs(self_side_obj_char["velocity"][1]) > 20.0 
+                                                                  ^
+    10421:53  [规则3] 行尾多余空格，应删除
+            obj_char["health_gauge_update_pause_countdown"] = 
+                                                            ^
+    10421:54  [规则4] 行尾残留空白，应删除
+            obj_char["health_gauge_update_pause_countdown"] = 
+                                                             ^
+    10494:51  [规则3] 行尾多余空格，应删除
+            obj_char["risk_gauge_update_pause_countdown"] = 
+                                                          ^
+    10494:52  [规则4] 行尾残留空白，应删除
+            obj_char["risk_gauge_update_pause_countdown"] = 
+                                                           ^
+    10502:56  [规则3] 行尾多余空格，应删除
+            obj_char["wallstick_gauge_update_pause_countdown"] = 
+                                                               ^
+    10502:57  [规则4] 行尾残留空白，应删除
+            obj_char["wallstick_gauge_update_pause_countdown"] = 
+                                                                ^
 
-scenes/game_scene/characters/TRM/right.lua  (1 处)
-    8520:107  [规则4] 行尾残留空白，应删除
+scenes/game_scene/characters/TRM/right.lua  (11 处)
+    8561:107  [规则4] 行尾残留空白，应删除
                 if (self_side_obj_char["direction_input"] ~= 4 and self_side_obj_char["direction_input"] ~= 6) and 
                                                                                                                   ^
+    10314:70  [规则1] 左侧缺少空格，应为 1 个空格
+            if self_side_obj_char["velocity"][1]*(opponent_side_obj_char["x"]-self_side_obj_char["x"]) > 0 
+                                                                             ^
+    10314:70  [规则1] 右侧缺少空格，应为 1 个空格
+            if self_side_obj_char["velocity"][1]*(opponent_side_obj_char["x"]-self_side_obj_char["x"]) > 0 
+                                                                             ^
+    10314:99  [规则4] 行尾残留空白，应删除
+            if self_side_obj_char["velocity"][1]*(opponent_side_obj_char["x"]-self_side_obj_char["x"]) > 0 
+                                                                                                          ^
+    10316:59  [规则4] 行尾残留空白，应删除
+            and math.abs(self_side_obj_char["velocity"][1]) > 20.0 
+                                                                  ^
+    10421:53  [规则3] 行尾多余空格，应删除
+            obj_char["health_gauge_update_pause_countdown"] = 
+                                                            ^
+    10421:54  [规则4] 行尾残留空白，应删除
+            obj_char["health_gauge_update_pause_countdown"] = 
+                                                             ^
+    10494:51  [规则3] 行尾多余空格，应删除
+            obj_char["risk_gauge_update_pause_countdown"] = 
+                                                          ^
+    10494:52  [规则4] 行尾残留空白，应删除
+            obj_char["risk_gauge_update_pause_countdown"] = 
+                                                           ^
+    10502:56  [规则3] 行尾多余空格，应删除
+            obj_char["wallstick_gauge_update_pause_countdown"] = 
+                                                               ^
+    10502:57  [规则4] 行尾残留空白，应删除
+            obj_char["wallstick_gauge_update_pause_countdown"] = 
+                                                                ^

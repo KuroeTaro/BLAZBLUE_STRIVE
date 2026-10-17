@@ -350,49 +350,49 @@ D1 明细：单行放得下却换了行（应合并）（1465 处）
   scenes/game_scene/_common/_VFX.lua:3647  参=2  自身=62  物理行=43  形态=OCG
       point_linear_animator(obj_VFX,obj_VFX["opacity_anim"])
   scenes/game_scene/_common/_anim.lua:235  参=4  自身=99  物理行=61  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
   scenes/game_scene/_common/_anim.lua:334  参=4  自身=99  物理行=61  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
   scenes/game_scene/_common/_anim.lua:433  参=4  自身=99  物理行=61  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
   scenes/game_scene/_common/_anim.lua:532  参=4  自身=99  物理行=61  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
   scenes/game_scene/_common/_anim.lua:631  参=4  自身=99  物理行=61  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
   scenes/game_scene/_common/_anim.lua:766  参=4  自身=113  物理行=75  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
   scenes/game_scene/_common/_anim.lua:863  参=4  自身=113  物理行=75  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
   scenes/game_scene/_common/_anim.lua:964  参=4  自身=113  物理行=75  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
   scenes/game_scene/_common/_anim.lua:1063  参=4  自身=113  物理行=75  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
   scenes/game_scene/_common/_anim.lua:1166  参=4  自身=113  物理行=75  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
   scenes/game_scene/_common/_anim.lua:1305  参=4  自身=113  物理行=75  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
   scenes/game_scene/_common/_anim.lua:1468  参=4  自身=113  物理行=75  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
   scenes/game_scene/_common/_anim.lua:3058  参=4  自身=99  物理行=61  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
   scenes/game_scene/_common/_anim.lua:3280  参=4  自身=99  物理行=61  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
   scenes/game_scene/_common/_anim.lua:3454  参=4  自身=99  物理行=61  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
   scenes/game_scene/_common/_anim.lua:3574  参=4  自身=99  物理行=61  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
   scenes/game_scene/_common/_anim.lua:3701  参=4  自身=99  物理行=61  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
   scenes/game_scene/_common/_anim.lua:3854  参=4  自身=99  物理行=61  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
   scenes/game_scene/_common/_anim.lua:3993  参=4  自身=99  物理行=61  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
   scenes/game_scene/_common/_anim.lua:4378  参=4  自身=99  物理行=61  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
   scenes/game_scene/_common/_anim.lua:4545  参=4  自身=99  物理行=61  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
   scenes/game_scene/_common/_anim.lua:4645  参=4  自身=103  物理行=65  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
   scenes/game_scene/_common/_anim.lua:4760  参=2  自身=96  物理行=54  形态=OCG
       common_game_scene_game_speed_load_application(self_side_obj_char,{1,nil,nil,nil,nil,69})
   scenes/game_scene/_common/_anim.lua:4783  参=2  自身=110  物理行=82  形态=OCG
@@ -446,7 +446,7 @@ D1 明细：单行放得下却换了行（应合并）（1465 处）
   scenes/game_scene/_common/_projectile.lua:900  参=2  自身=93  物理行=54  形态=OCG
       common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,2,1,39,45 -27,0})
   scenes/game_scene/_common/_projectile.lua:1013  参=5  自身=120  物理行=76  形态=OCG
-      common_game_scene_projectile_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",fals
+      common_game_scene_projectile_apply_damage(hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",fals
   scenes/game_scene/_common/_projectile.lua:1040  参=2  自身=93  物理行=54  形态=OCG
       common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,2,1,39,45 -27,0})
   scenes/game_scene/_common/_projectile.lua:1213  参=2  自身=87  物理行=54  形态=OCG
@@ -454,7 +454,7 @@ D1 明细：单行放得下却换了行（应合并）（1465 处）
   scenes/game_scene/_common/_projectile.lua:1347  参=2  自身=87  物理行=54  形态=OCG
       common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,1,1,0,0,0})
   scenes/game_scene/_common/_projectile.lua:1460  参=5  自身=120  物理行=76  形态=OCG
-      common_game_scene_projectile_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",fals
+      common_game_scene_projectile_apply_damage(hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",fals
   scenes/game_scene/_common/_projectile.lua:1487  参=2  自身=87  物理行=54  形态=OCG
       common_game_scene_game_speed_load_application(hurt_side_obj_char,{1,1,1,0,0,0})
   scenes/game_scene/_common/common_functions.lua:51  参=2  自身=102  物理行=65  形态=OCG
@@ -766,7 +766,7 @@ D1 明细：单行放得下却换了行（应合并）（1465 处）
   scenes/game_scene/characters/TRM/_anim.lua:5154  参=3  自身=83  物理行=59  形态=OCG
       common_game_scene_create_hurtstop_wiggle_animation(9,"hurtstop_wiggle_y",7)
   scenes/game_scene/characters/TRM/_anim.lua:5169  参=4  自身=99  物理行=61  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
   scenes/game_scene/characters/TRM/_anim.lua:5172  参=10  自身=115  物理行=75  形态=OCG
       common_game_scene_char_apply_hurt_velocity(hit_side_obj_char,hurt_side_obj_char,false,12.5,1,1,0,0,1,false)
   scenes/game_scene/characters/TRM/_anim.lua:5364  参=2  自身=110  物理行=82  形态=OCG
@@ -908,9 +908,9 @@ D1 明细：单行放得下却换了行（应合并）（1465 处）
   scenes/game_scene/characters/TRM/_projectile.lua:224  参=2  自身=114  物理行=77  形态=OCG
       character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
   scenes/game_scene/characters/TRM/_projectile.lua:571  参=5  自身=120  物理行=76  形态=OCG
-      common_game_scene_projectile_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",fals
+      common_game_scene_projectile_apply_damage(hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",fals
   scenes/game_scene/characters/TRM/_projectile.lua:678  参=5  自身=120  物理行=76  形态=OCG
-      common_game_scene_projectile_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",fals
+      common_game_scene_projectile_apply_damage(hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",fals
   scenes/game_scene/characters/TRM/_projectile.lua:879  参=2  自身=91  物理行=69  形态=OCG
       init_character_anim_with(obj_projectile,obj_projectile["projectile_animation"])
   scenes/game_scene/characters/TRM/_projectile.lua:902  参=2  自身=86  物理行=61  形态=OCG
@@ -988,15 +988,15 @@ D1 明细：单行放得下却换了行（应合并）（1465 处）
   scenes/game_scene/characters/TRM/_projectile.lua:1817  参=2  自身=114  物理行=77  形态=OCG
       character_function_game_scene_TRM_shot_sys_at_the_ready_aim_process_init(hit_side_obj_char,hurt_side_obj_char)
   scenes/game_scene/characters/TRM/_projectile.lua:1923  参=4  自身=99  物理行=61  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"hurt",false)
   scenes/game_scene/characters/TRM/_projectile.lua:2034  参=4  自身=113  物理行=75  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
   scenes/game_scene/characters/TRM/_projectile.lua:2166  参=4  自身=113  物理行=75  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
   scenes/game_scene/characters/TRM/_projectile.lua:2294  参=4  自身=113  物理行=75  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
   scenes/game_scene/characters/TRM/_projectile.lua:2428  参=4  自身=113  物理行=75  形态=OCG
-      common_game_scene_char_apply_damage_heat(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
+      common_game_scene_char_apply_damage(hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block)
   scenes/game_scene/characters/TRM/left.lua:402  参=2  自身=90  物理行=68  形态=OCG
       init_character_anim_with(self_side_obj_char,self_side_obj_char["character_animation"])
   scenes/game_scene/characters/TRM/left.lua:1824  参=2  自身=96  物理行=80  形态=OCG
@@ -3235,7 +3235,7 @@ D8a 明细：长字符串字面量 / 称名过长（6 处）
       OCG:30
   update_heat_gauge_state                              总   29 换行   0  -
       single:29
-  common_game_scene_char_apply_damage_heat             总   28 换行  28  首行止于`(` / 续行+4 / `)`独占 / `)`回原缩进
+  common_game_scene_char_apply_damage             总   28 换行  28  首行止于`(` / 续行+4 / `)`独占 / `)`回原缩进
       OCG:28
   love.audio.newSource                                 总   28 换行  28  首行止于`(` / 续行+4 / `)`独占 / `)`回原缩进
       OCG:28

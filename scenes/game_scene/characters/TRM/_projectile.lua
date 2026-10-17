@@ -318,7 +318,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             fix_direction,velocity_center
         )
-        common_game_scene_projectile_apply_damage_heat(
+        common_game_scene_projectile_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
@@ -441,7 +441,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             fix_direction,velocity_center
         )
-        common_game_scene_projectile_apply_damage_heat(
+        common_game_scene_projectile_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
@@ -565,7 +565,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_hurt(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             fix_direction,velocity_center
         )
-        common_game_scene_projectile_apply_damage_heat(
+        common_game_scene_projectile_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",false
         )
         -- enemy_friend_interaction
@@ -672,7 +672,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_and_OTG_hu
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             fix_direction,velocity_center
         )
-        common_game_scene_projectile_apply_damage_heat(
+        common_game_scene_projectile_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",false
         )
         -- enemy_friend_interaction
@@ -1933,7 +1933,7 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_hurt(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             fix_direction,velocity_center
         )
-        common_game_scene_projectile_apply_damage_heat(
+        common_game_scene_projectile_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",false
         )
         -- enemy_friend_interaction
@@ -2044,7 +2044,7 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_ground_b
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             fix_direction,velocity_center
         )
-        common_game_scene_projectile_apply_damage_heat(
+        common_game_scene_projectile_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
@@ -2176,7 +2176,7 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_air_bloc
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             fix_direction,velocity_center
         )
-        common_game_scene_projectile_apply_damage_heat(
+        common_game_scene_projectile_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
@@ -2304,7 +2304,7 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_clean_hi
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             fix_direction,velocity_center
         )
-        common_game_scene_projectile_apply_damage_heat(
+        common_game_scene_projectile_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
@@ -2438,7 +2438,7 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_clean_hi
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             fix_direction,velocity_center
         )
-        common_game_scene_projectile_apply_damage_heat(
+        common_game_scene_projectile_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction

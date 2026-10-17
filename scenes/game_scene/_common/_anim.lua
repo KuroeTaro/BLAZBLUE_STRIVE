@@ -232,7 +232,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv0(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"hurt",false
         )
         -- enemy_friend_interaction
@@ -331,7 +331,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv1(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"hurt",false
         )
         -- enemy_friend_interaction
@@ -430,7 +430,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv2(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"hurt",false
         )
         -- enemy_friend_interaction
@@ -529,7 +529,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv3(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"hurt",false
         )
         -- enemy_friend_interaction
@@ -628,7 +628,7 @@ function load_game_scene_anim_char_common_0_ground_hurt_lv4(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"hurt",false
         )
         -- enemy_friend_interaction
@@ -763,7 +763,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
@@ -860,7 +860,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
@@ -961,7 +961,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
@@ -1060,7 +1060,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
@@ -1163,7 +1163,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
@@ -1302,7 +1302,7 @@ function load_game_scene_anim_char_common_0_air_block(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
@@ -1465,7 +1465,7 @@ function load_game_scene_anim_char_common_0_air_block_guard_crash(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
@@ -3057,7 +3057,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"hurt",false
         )
         -- enemy_friend_interaction
@@ -3279,7 +3279,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"hurt",false
         )
         -- enemy_friend_interaction
@@ -3453,7 +3453,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"hurt",false
         )
         -- enemy_friend_interaction
@@ -3573,7 +3573,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"hurt",false
         )
         -- enemy_friend_interaction
@@ -3700,7 +3700,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"hurt",false
         )
         -- enemy_friend_interaction
@@ -3853,7 +3853,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"hurt",false
         )
         -- enemy_friend_interaction
@@ -3992,7 +3992,7 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"hurt",false
         )
         -- enemy_friend_interaction
@@ -4377,7 +4377,7 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"hurt",false
         )
         -- enemy_friend_interaction
@@ -4544,7 +4544,7 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false
         )
-        common_game_scene_char_apply_damage_heat(
+        common_game_scene_char_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,"hurt",false
         )
         -- enemy_friend_interaction
@@ -4644,11 +4644,11 @@ function load_game_scene_anim_char_common_0_general_hurt_wallbreak(
         hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"] = false
         hurt_side_obj_char["wallhurt_wallbreak_adv"] = adv
         if not obj_projectile then
-            common_game_scene_char_apply_damage_heat(
+            common_game_scene_char_apply_damage(
                 hit_side_obj_char,hurt_side_obj_char,"hurt",false
             )
         else
-            common_game_scene_projectile_apply_damage_heat(
+            common_game_scene_projectile_apply_damage(
                 hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",false
             )
         end

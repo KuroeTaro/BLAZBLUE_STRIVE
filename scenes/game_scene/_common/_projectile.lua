@@ -746,7 +746,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false,"character"
         )
-        common_game_scene_projectile_apply_damage_heat(
+        common_game_scene_projectile_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
@@ -874,7 +874,7 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false,"character"
         )
-        common_game_scene_projectile_apply_damage_heat(
+        common_game_scene_projectile_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
@@ -1010,7 +1010,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_air_and_OTG_hurt(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false,"character"
         )
-        common_game_scene_projectile_apply_damage_heat(
+        common_game_scene_projectile_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",false
         )
         -- enemy_friend_interaction
@@ -1187,7 +1187,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false,"character"
         )
-        common_game_scene_projectile_apply_damage_heat(
+        common_game_scene_projectile_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
@@ -1321,7 +1321,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false,"character"
         )
-        common_game_scene_projectile_apply_damage_heat(
+        common_game_scene_projectile_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"block",hurt_side_FD_block
         )
         -- enemy_friend_interaction
@@ -1457,7 +1457,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
             hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
             false,"character"
         )
-        common_game_scene_projectile_apply_damage_heat(
+        common_game_scene_projectile_apply_damage(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"hurt",false
         )
         -- enemy_friend_interaction
