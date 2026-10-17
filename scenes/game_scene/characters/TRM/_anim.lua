@@ -1926,7 +1926,7 @@ function load_game_scene_anim_char_TRM_2P(
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0
@@ -2153,7 +2153,7 @@ function load_game_scene_anim_char_TRM_6P(
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0
@@ -2408,7 +2408,7 @@ function load_game_scene_anim_char_TRM_5P(
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0
@@ -2637,7 +2637,7 @@ function load_game_scene_anim_char_TRM_2K(
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0
@@ -2898,7 +2898,7 @@ function load_game_scene_anim_char_TRM_6K(
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0
@@ -3177,7 +3177,7 @@ function load_game_scene_anim_char_TRM_5K(
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0
@@ -3443,7 +3443,7 @@ function load_game_scene_anim_char_TRM_2S(
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0
@@ -3721,7 +3721,7 @@ function load_game_scene_anim_char_TRM_6S(
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0
@@ -4031,7 +4031,7 @@ function load_game_scene_anim_char_TRM_cS(
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0
@@ -4274,7 +4274,7 @@ function load_game_scene_anim_char_TRM_fS(
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0
@@ -4627,7 +4627,7 @@ function load_game_scene_anim_char_TRM_2Launcher(
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0
@@ -4911,7 +4911,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher(
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0
@@ -5322,7 +5322,7 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success(
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0
@@ -5618,7 +5618,7 @@ function load_game_scene_anim_char_TRM_5Launcher(
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0
@@ -5888,7 +5888,7 @@ function load_game_scene_anim_char_TRM_j5P(
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0
@@ -6113,7 +6113,7 @@ function load_game_scene_anim_char_TRM_j2K(
         hit_side_obj_char["gravity"] = 2.575
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0
@@ -6355,7 +6355,7 @@ function load_game_scene_anim_char_TRM_j5K(
         hit_side_obj_char["gravity"] = 2.575
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0
@@ -6580,7 +6580,7 @@ function load_game_scene_anim_char_TRM_j5S(
         hit_side_obj_char["gravity"] = 2.575
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0
@@ -6822,7 +6822,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0
@@ -7225,7 +7225,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher_success(
         hit_side_obj_char["gravity"] = math.max(math.abs(hit_side_obj_char["y"] + 180)/200,1)
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0
@@ -7473,7 +7473,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(
         hit_side_obj_char["gravity"] = 3.5
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0
@@ -8723,7 +8723,7 @@ function load_game_scene_anim_char_TRM_4SP_S_H(
         hit_side_obj_char["hurt_state_target"] = "counter" -- idle_unblock_punish_counter_GP_parry
         hit_side_obj_char["move_state"] = "startup" -- none_startup_active_recovery
         hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = true
         -- state_number
         hit_side_obj_char["friction"] = 5
         hit_side_obj_char["gravity"] = 2.5
@@ -8836,7 +8836,7 @@ function load_game_scene_anim_char_TRM_6SP_S(
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
         hit_side_obj_char["hit_damage"] = 300.0
-        hit_side_obj_char["hit_damage_correction_factor"] = 1
+        hit_side_obj_char["hit_damage_correction_factor"] = 0.9
         hit_side_obj_char["hit_heat_gain"] = 5.0
         hit_side_obj_char["hit_wallbreak_damage"] = 20.0
         hit_side_obj_char["hurt_heat_gain"] = 2.0

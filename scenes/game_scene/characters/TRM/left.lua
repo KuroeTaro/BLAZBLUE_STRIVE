@@ -955,15 +955,6 @@ function load_game_scene_wallbreak_end_init_LP()
     obj_char_game_scene_char_LP["friction"] = 1
     obj_char_game_scene_char_LP["gravity"] = 2.5
     obj_char_game_scene_char_LP["wallstick_gauge"] = {0.0,200.0} -- 0.0 - 200.0
-    obj_char_game_scene_char_LP["heat_penalty"] = 1
-    obj_char_game_scene_char_LP["heat_penalty_countdown"] = 0
-    obj_char_game_scene_char_LP["ability_penalty"] = 1
-    obj_char_game_scene_char_LP["ability_penalty_countdown"] = 0
-    obj_char_game_scene_char_LP["positive_bonus"] = false
-    obj_char_game_scene_char_LP["positive_bonus_heat_gain_buff"] = 1
-    obj_char_game_scene_char_LP["positive_bonus_hit_damage_buff"] = 1
-    obj_char_game_scene_char_LP["positive_bonus_hurt_damage_buff"] = 1
-    obj_char_game_scene_char_LP["positive_bonus_countdown"] = 0
     -- enemy_friend_interaction
     obj_char_game_scene_char_LP["hit_damage"] = 0
     obj_char_game_scene_char_LP["hit_damage_correction_factor"] = 1
@@ -9689,6 +9680,7 @@ function state_gate_game_scene_char_LP_from_4SP_S_H(
             self_side_obj_char,opponent_side_obj_char,"4SP_S",{155,510}
         )
         self_side_obj_char["f"] = 23
+        self_side_obj_char["state"] = "4SP_S"
         return true
     end
 end
@@ -10327,7 +10319,7 @@ function update_game_scene_char_LP_overdrive_gauge_update_function()
     -- update_if_positive_bonus
     if obj_char["positive_bonus"] then
         obj_char["overdrive_gauge"][1] =
-        math.min(obj_char["overdrive_gauge"][1] + 0.48,obj_char["overdrive_gauge"][2])
+        math.min(obj_char["overdrive_gauge"][1] + 200/300,obj_char["overdrive_gauge"][2])
     end
 end
 function update_game_scene_char_LP_risk_gauge_update_function()

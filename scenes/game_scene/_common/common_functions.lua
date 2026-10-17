@@ -34,14 +34,17 @@ function common_game_scene_apply_positive_bonus(obj_char)
     obj_char["positive_bonus_heat_gain_buff"] = 1.5
     obj_char["positive_bonus_hit_damage_buff"] = 1.1
     obj_char["positive_bonus_hurt_damage_buff"] = 0.9
-    -- 积极状态清除技能惩罚和热量惩罚(1 = 无惩罚)
     obj_char["ability_penalty"] = 1
     obj_char["ability_penalty_countdown"] = 0
     obj_char["heat_penalty"] = 1
     obj_char["heat_penalty_countdown"] = 0
 end
 function common_game_scene_apply_wallbreak_damage(obj_char)
-    local damage = obj_char["health_gauge"][2]*0.12
+    local damage = 0.06*
+        obj_char["health_gauge"][2]*
+        obj_char["damage_correction"]*
+        obj_char["positive_bonus_hurt_damage_buff"]
+    damage = math.max(obj_char["health_gauge"][2]*0.03,damage)
     obj_char["health_gauge"][1] = math.max(obj_char["health_gauge"][1] - damage,0)
 end
 function common_game_scene_test_and_apply_wallbreak(

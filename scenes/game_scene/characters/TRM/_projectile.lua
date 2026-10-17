@@ -39,7 +39,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
     obj_projectile["hit_guard_type"] = "all"
     obj_projectile["hit_hurt_blockstop_countdown"] = 12
     obj_projectile["hit_damage"] = 300.0
-    obj_projectile["hit_damage_correction_factor"] = 1
+    obj_projectile["hit_damage_correction_factor"] = 0.9
     obj_projectile["hit_heat_gain"] = 5.0
     obj_projectile["hit_wallbreak_damage"] = 20.0
     obj_projectile["hurt_heat_gain"] = 2.0
@@ -1673,7 +1673,7 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
     obj_projectile["hit_guard_type"] = "all"
     obj_projectile["hit_hurt_blockstop_countdown"] = hit_hurt_blockstop_countdown
     obj_projectile["hit_damage"] = hit_damage
-    obj_projectile["hit_damage_correction_factor"] = 1
+    obj_projectile["hit_damage_correction_factor"] = 0.9
     obj_projectile["hit_heat_gain"] = 5.0
     obj_projectile["hit_wallbreak_damage"] = 20.0
     obj_projectile["hurt_heat_gain"] = 2.0
