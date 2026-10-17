@@ -5148,6 +5148,8 @@ function load_game_scene_anim_char_common_burst_RC_red(
         self_side_obj_char[8] = 5
         -- insert_VFX
         insert_VFX_game_scene_char_RC_blast(self_side_obj_char,1,1,{1.00,0.28,0.22})
+        -- 同色但更亮的 badge,和 blast 同时插入
+        insert_VFX_game_scene_char_RC_badge_blast(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_red_badge,{1.00,0.42,0.42})
         -- update
         update_state()
     end
@@ -5375,6 +5377,8 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         self_side_obj_char[8] = 5
         -- insert_VFX
         insert_VFX_game_scene_char_RC_blast(self_side_obj_char,1,1,{0.35,0.65,1.00})
+        -- 同色但更亮的 badge,和 blast 同时插入
+        insert_VFX_game_scene_char_RC_badge_blast(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_blue_badge,{0.64,0.81,1.00})
         -- update
         update_state()
     end
@@ -5602,6 +5606,8 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         self_side_obj_char[8] = 5
         -- insert_VFX
         insert_VFX_game_scene_char_RC_blast(self_side_obj_char,1,1.25,{0.78,0.40,1.00})
+        -- 同色但更亮的 badge,和 blast 同时插入
+        insert_VFX_game_scene_char_RC_badge_blast(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_purple_badge,{0.88,0.67,1.00})
         -- update
         update_state()
     end
@@ -5785,6 +5791,8 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         self_side_obj_char[8] = 5
         -- insert_VFX
         insert_VFX_game_scene_char_RC_blast(self_side_obj_char,1,1.25,{1.00,0.88,0.30})
+        -- 同色但更亮的 badge,和 blast 同时插入
+        insert_VFX_game_scene_char_RC_badge_blast(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_yellow_badge,{1.00,0.93,0.62})
         -- update
         update_state()
     end

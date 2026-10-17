@@ -14,6 +14,20 @@ local function flush()
     if f then f:write(table.concat(lines, "\n")); f:close() end
 end
 
+-- 出错时把已经跑过的日志和错误信息写出来,然后立刻退出
+-- (不能只 return 一个空函数,那样窗口会一直停在错误画面,外面 -Wait 会挂死)
+function love.errorhandler(msg)
+    local f = io.open(OUT_PATH, "w")
+    if f then
+        f:write(table.concat(lines, "\n"))
+        f:write("\nERROR: " .. tostring(msg) .. "\n")
+        f:write(debug.traceback("", 2))
+        f:close()
+    end
+    love.event.quit(1)
+    return function() love.event.quit(1) end
+end
+
 local function readFile(path)
     local f = io.open(path, "rb")
     if not f then return nil end
@@ -253,12 +267,12 @@ function love.load()
             { "yellow", 1.25, { 1.00, 0.88, 0.30 }, 1 },
         }
         for _, cfg in ipairs(configs) do
-            local name, scale, col, layers = cfg[1], cfg[2], cfg[3], cfg[4]
+            local name, scale, col = cfg[1], cfg[2], cfg[3]
             local fc = {
                 x = 300, y = -120, [3] = 0, [5] = 1, [6] = 1, [7] = 0,
                 height = "stand", VFX_common_back_table = {},
             }
-            insert_VFX_game_scene_char_RC_blast(fc, 1, scale, col, layers)
+            insert_VFX_game_scene_char_RC_blast(fc, 1, scale, col)
             local v = fc["VFX_common_back_table"][1]
             local sx, sy, yo = fc[5], fc[6], 880
             local bcx = fc["x"]
@@ -304,8 +318,8 @@ function love.load()
                 x = 300, y = 400, [3] = 0, [5] = 1, [6] = 1, [7] = 0,
                 height = "stand", VFX_common_back_table = {},
             }
-            insert_VFX_game_scene_char_RC_partical(fc, cfg[3], cfg[4])
-            local layers = cfg[4]
+            insert_VFX_game_scene_char_RC_partical(fc, cfg[3])
+
             fc["VFX_common_back_table"][1]["draw"]()
             love.graphics.setCanvas()
             local d = cv:newImageData()
@@ -323,10 +337,8 @@ function love.load()
                     v0[1], v0[2], v0[5], v0[8], wsb:getCount(), tostring(wsheet.frames["0"][3])))
                 savePng(d, "partical_debug")
             end
-            -- add 叠加 layers 次 -> 渲染值 = min(1, tint*layers)
-            local er = math.min(1, cfg[3][1] * layers)
-            local eg = math.min(1, cfg[3][2] * layers)
-            local eb = math.min(1, cfg[3][3] * layers)
+            -- 单层:渲染值就是 tint 本身
+            local er, eg, eb = cfg[3][1], cfg[3][2], cfg[3][3]
             log(string.format("  partical %-6s 期望=(%.2f,%.2f,%.2f) 渲染=(%.2f,%.2f,%.2f) %s",
                 cfg[1], er, eg, eb, br, bg, bb,
                 (math.abs(br - er) < 0.02 and math.abs(bg - eg) < 0.02
@@ -334,7 +346,75 @@ function love.load()
         end
 
 
-        -- 空中 + 左右翻转再验一次
+        -- RC badge 两个版本
+        image_sprite_sheet_VFX_game_scene_RC_red_badge = wsheet
+        local function badge_char()
+            return {
+                x = 300, y = 400, [3] = 0, [5] = 1, [6] = 1, [7] = 0,
+                height = "stand", VFX_hit_front_table = {},
+            }
+        end
+        -- 版本 1:满速 / 100% / 纯白
+        local c1 = badge_char()
+        insert_VFX_game_scene_char_RC_badge(c1, image_sprite_sheet_VFX_game_scene_RC_red_badge)
+        local v1 = c1["VFX_hit_front_table"][1]
+        local seq1 = {}
+        for f = 0, 14 do
+            v1["update"]()
+            seq1[#seq1 + 1] = tostring(v1[8])
+        end
+        log("  badge v1 帧序列: " .. table.concat(seq1, ","))
+        love.graphics.setCanvas(cv)
+        love.graphics.clear(0, 0, 0, 1)
+        v1["draw"]()
+        love.graphics.setCanvas()
+        local d1 = cv:newImageData()
+        local best1, q1, q2, q3 = -1, 0, 0, 0
+        local pt1 = draw_3d_point_to_2D(obj_stage_game_scene_camera, v1)
+        for yy1 = pt1[2] - 10, pt1[2] + 40 do
+            for xx1 = pt1[1] - 10, pt1[1] + 40 do
+                local r, g, b = d1:getPixel(xx1, yy1)
+                local m = r + g + b
+                if m > best1 then best1 = m; q1, q2, q3 = r, g, b end
+            end
+        end
+        log(string.format("  badge v1 颜色=(%.2f,%.2f,%.2f) 缩放=%.2f 中心=(%.1f,%.1f)",
+            q1, q2, q3, v1[5] / c1[5], v1[1] + 600 * v1[5], v1[2] + 600 * v1[6]))
+        -- 版本 2:半速 / 75% / 带颜色
+        local c2 = badge_char()
+        insert_VFX_game_scene_char_RC_badge_blast(c2, image_sprite_sheet_VFX_game_scene_RC_red_badge, { 1.00, 0.60, 0.57 })
+        local v2 = c2["VFX_hit_front_table"][1]
+        local seq2, life2 = {}, 0
+        for f = 0, 29 do
+            v2["update"]()
+            if f < 6 or f >= 26 then seq2[#seq2 + 1] = tostring(v2[8]) end
+            life2 = v2["life"]
+        end
+        log("  badge v2 帧序列(前6+后5, 共 30 次 update): " .. table.concat(seq2, ","))
+        log(string.format("  badge v2 30 次 update 后 life=%d", life2))
+        love.graphics.setCanvas(cv)
+        love.graphics.clear(0, 0, 0, 1)
+        v2["draw"]()
+        love.graphics.setCanvas()
+        local d2 = cv:newImageData()
+        local best4, w1, w2, w3 = -1, 0, 0, 0
+        local pt2 = draw_3d_point_to_2D(obj_stage_game_scene_camera, v2)
+        for yy2b = pt2[2] - 10, pt2[2] + 40 do
+            for xx2b = pt2[1] - 10, pt2[1] + 40 do
+                local r, g, b = d2:getPixel(xx2b, yy2b)
+                local m = r + g + b
+                if m > best4 then best4 = m; w1, w2, w3 = r, g, b end
+            end
+        end
+        local cx1, cy1 = v1[1] + 600 * v1[5], v1[2] + 600 * v1[6]
+        local cx2, cy2 = v2[1] + 600 * v2[5], v2[2] + 600 * v2[6]
+        log(string.format("  badge v2 颜色=(%.2f,%.2f,%.2f) 期望=(1.00,0.60,0.57) %s",
+            w1, w2, w3,
+            (math.abs(w1 - 1.00) < 0.02 and math.abs(w2 - 0.60) < 0.02
+                and math.abs(w3 - 0.57) < 0.02) and "OK" or "MISMATCH"))
+        log(string.format("  badge v2 缩放=%.2f(期望 0.75)  中心=(%.1f,%.1f) v1中心=(%.1f,%.1f) %s",
+            v2[5] / c2[5], cx2, cy2, cx1, cy1,
+            (math.abs(cx2 - cx1) < 0.01 and math.abs(cy2 - cy1) < 0.01) and "OK 重合" or "MISMATCH"))
 
         -- 空中 + 左右翻转再验一次
         local fake2 = {
