@@ -10306,7 +10306,7 @@ function update_game_scene_char_LP_heat_gauge_update_function()
     if self_side_obj_char["positive_bonus"] then
         self_side_obj_char["heat_gauge"][1] =
         math.min(
-            self_side_obj_char["heat_gauge"][1] + 0.25,
+            self_side_obj_char["heat_gauge"][1] + 0.28,
             self_side_obj_char["heat_gauge"][2]
         )
     end
@@ -10327,7 +10327,7 @@ function update_game_scene_char_LP_overdrive_gauge_update_function()
     -- update_if_positive_bonus
     if obj_char["positive_bonus"] then
         obj_char["overdrive_gauge"][1] =
-        math.min(obj_char["overdrive_gauge"][1] + 1.25,obj_char["overdrive_gauge"][2])
+        math.min(obj_char["overdrive_gauge"][1] + 0.48,obj_char["overdrive_gauge"][2])
     end
 end
 function update_game_scene_char_LP_risk_gauge_update_function()
@@ -10426,6 +10426,12 @@ function update_game_scene_char_LP_health_gauge_update_pause_countdown()
 end
 function update_game_scene_char_LP_ability_penalty_countdown()
     local obj_char = obj_char_game_scene_char_LP
+    -- 积极状态:持续清除技能惩罚
+    if obj_char["positive_bonus"] then
+        obj_char["ability_penalty"] = 1
+        obj_char["ability_penalty_countdown"] = 0
+        return
+    end
     if (obj_char["ability_penalty"] == 1)
     or obj_char["state"] == "hitstop"
     or obj_char["state"] == "hurtstop"
@@ -10441,6 +10447,12 @@ function update_game_scene_char_LP_ability_penalty_countdown()
 end
 function update_game_scene_char_LP_heat_penalty_countdown()
     local obj_char = obj_char_game_scene_char_LP
+    -- 积极状态:持续清除热量惩罚
+    if obj_char["positive_bonus"] then
+        obj_char["heat_penalty"] = 1
+        obj_char["heat_penalty_countdown"] = 0
+        return
+    end
     if (obj_char["heat_penalty"] == 1)
     or obj_char["state"] == "hitstop"
     or obj_char["state"] == "hurtstop"

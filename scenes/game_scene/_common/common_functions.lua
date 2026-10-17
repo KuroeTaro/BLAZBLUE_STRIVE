@@ -28,6 +28,27 @@ function common_game_scene_toggle_ease_in(toggle_value)
     obj_annoucer_game_scene_lets_dance[4] = toggle_value
 end
 -- wallbreak/wallstick
+-- Positive Bonus(碎墙时给进攻方)
+-- 数据参考 GGST/Dustloop(https://dustloop.com/w/GGST/Mechanics#Positive_Bonus):
+--   持续 300F(5 秒)
+--   Tension 每秒自动 +8.4%(heat_gauge 上限 200 -> 16.8/秒 -> 0.28/帧)
+--   Tension 获取速率 x1.5
+--   造成伤害 x1.1,受到伤害 x0.9
+--   Burst 每秒自动 +4.8%(overdrive_gauge 上限 600 -> 28.8/秒 -> 0.48/帧)
+-- 计时/自动增长在 update_game_scene_char_*_positive_bonus_countdown 和
+-- *_heat_gauge_update_function / *_overdrive_gauge_update_function 里
+function common_game_scene_apply_positive_bonus(obj_char)
+    obj_char["positive_bonus"] = true
+    obj_char["positive_bonus_countdown"] = 300
+    obj_char["positive_bonus_heat_gain_buff"] = 1.5
+    obj_char["positive_bonus_hit_damage_buff"] = 1.1
+    obj_char["positive_bonus_hurt_damage_buff"] = 0.9
+    -- 积极状态清除技能惩罚和热量惩罚(1 = 无惩罚)
+    obj_char["ability_penalty"] = 1
+    obj_char["ability_penalty_countdown"] = 0
+    obj_char["heat_penalty"] = 1
+    obj_char["heat_penalty_countdown"] = 0
+end
 function common_game_scene_test_and_apply_wallbreak(
     hit_side_obj_char,hurt_side_obj_char,wallhurt_wallstick_on_side_cache
 )
@@ -48,6 +69,8 @@ function common_game_scene_test_and_apply_wallbreak(
         table.insert(
             obj_stage_game_scene_main["wallbreak_active_application_table"],
             function()
+                -- 碎墙:给进攻方 Positive Bonus
+                common_game_scene_apply_positive_bonus(hit_side_obj_char)
                 load_game_scene_stage_apply_wallbreak_start_init(
                     hit_side_obj_char,hurt_side_obj_char
                 )
@@ -1294,6 +1317,8 @@ function common_game_scene_char_apply_damage(
 )
     local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
     local hurt_damage = hit_side_obj_char["hit_damage"]*hurt_side_obj_char["damage_correction"]
+        *hit_side_obj_char["positive_bonus_hit_damage_buff"]
+        *hurt_side_obj_char["positive_bonus_hurt_damage_buff"]
     local hurt_overdrive_gain =
         hurt_damage/hurt_side_obj_char["health_gauge"][2]*hit_side_obj_char["overdrive_gauge"][2]
     if block_or_hurt == "hurt" then
@@ -1301,7 +1326,8 @@ function common_game_scene_char_apply_damage(
             -- apply_heat_gain
             hit_side_obj_char["heat_gauge"][1] = math.min(
                 hit_side_obj_char["heat_gauge"][1] +
-                hit_side_obj_char["hit_heat_gain"]*hit_side_obj_char["heat_penalty"],
+                hit_side_obj_char["hit_heat_gain"]*hit_side_obj_char["heat_penalty"]
+                *hit_side_obj_char["positive_bonus_heat_gain_buff"],
                 hit_side_obj_char["heat_gauge"][2]
             )
         -- hurt_side
@@ -1313,7 +1339,8 @@ function common_game_scene_char_apply_damage(
             -- apply_heat_gain
             hurt_side_obj_char["heat_gauge"][1] = math.min(
                 hurt_side_obj_char["heat_gauge"][1] +
-                hit_side_obj_char["hurt_heat_gain"]*hurt_side_obj_char["heat_penalty"],
+                hit_side_obj_char["hurt_heat_gain"]*hurt_side_obj_char["heat_penalty"]
+                *hurt_side_obj_char["positive_bonus_heat_gain_buff"],
                 hurt_side_obj_char["heat_gauge"][2]
             )
             -- apply_overdrive_gain
@@ -1338,14 +1365,16 @@ function common_game_scene_char_apply_damage(
             -- apply_heat_gain
             hit_side_obj_char["heat_gauge"][1] = math.min(
                 hit_side_obj_char["heat_gauge"][1] +
-                hit_side_obj_char["blocked_heat_gain"]*hit_side_obj_char["heat_penalty"],
+                hit_side_obj_char["blocked_heat_gain"]*hit_side_obj_char["heat_penalty"]
+                *hit_side_obj_char["positive_bonus_heat_gain_buff"],
                 hit_side_obj_char["heat_gauge"][2]
             )
         -- hurt_side
             -- apply_heat_gain
             hurt_side_obj_char["heat_gauge"][1] = math.min(
                 hurt_side_obj_char["heat_gauge"][1] +
-                hit_side_obj_char["block_heat_gain"]*hurt_side_obj_char["heat_penalty"],
+                hit_side_obj_char["block_heat_gain"]*hurt_side_obj_char["heat_penalty"]
+                *hurt_side_obj_char["positive_bonus_heat_gain_buff"],
                 hurt_side_obj_char["heat_gauge"][2]
             )
             -- apply_risk_gauge
@@ -1358,7 +1387,8 @@ function common_game_scene_char_apply_damage(
             -- apply_heat_gain
             hit_side_obj_char["heat_gauge"][1] = math.min(
                 hit_side_obj_char["heat_gauge"][1] +
-                hit_side_obj_char["blocked_heat_gain"]*hit_side_obj_char["heat_penalty"],
+                hit_side_obj_char["blocked_heat_gain"]*hit_side_obj_char["heat_penalty"]
+                *hit_side_obj_char["positive_bonus_heat_gain_buff"],
                 hit_side_obj_char["heat_gauge"][2]
             )
         -- hurt_side
@@ -1376,26 +1406,32 @@ function common_game_scene_projectile_apply_damage(
 )
     local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side_obj_char["player_side"]]
     local hurt_damage = hit_side_obj_char["hit_damage"]*hurt_side_obj_char["damage_correction"]
+        *hit_side_obj_char["positive_bonus_hit_damage_buff"]
+        *hurt_side_obj_char["positive_bonus_hurt_damage_buff"]
     local hurt_overdrive_gain =
         hurt_damage/hurt_side_obj_char["health_gauge"][2]*hit_side_obj_char["overdrive_gauge"][2]
     if block_or_hurt == "hurt" then
         -- hit_side
             -- apply_heat_gain
             hit_side_obj_char["heat_gauge"][1] = math.min(
-                hit_side_obj_char["heat_gauge"][1] + obj_projectile["hit_heat_gain"]*hit_side_obj_char["heat_penalty"],
+                hit_side_obj_char["heat_gauge"][1] + obj_projectile["hit_heat_gain"]*hit_side_obj_char["heat_penalty"]
+                *hit_side_obj_char["positive_bonus_heat_gain_buff"],
                 hit_side_obj_char["heat_gauge"][2]
             )
         -- hurt_side
             -- apply_hit_damage
             hurt_side_obj_char["health_gauge"][1] = math.max(
                 hurt_side_obj_char["health_gauge"][1] -
-                obj_projectile["hit_damage"]*hurt_side_obj_char["damage_correction"],
+                obj_projectile["hit_damage"]*hurt_side_obj_char["damage_correction"]
+                *hit_side_obj_char["positive_bonus_hit_damage_buff"]
+                *hurt_side_obj_char["positive_bonus_hurt_damage_buff"],
                 0
             )
             -- apply_heat_gain
             hurt_side_obj_char["heat_gauge"][1] = math.min(
                 hurt_side_obj_char["heat_gauge"][1] +
-                obj_projectile["hurt_heat_gain"]*hurt_side_obj_char["heat_penalty"],
+                obj_projectile["hurt_heat_gain"]*hurt_side_obj_char["heat_penalty"]
+                *hurt_side_obj_char["positive_bonus_heat_gain_buff"],
                 hurt_side_obj_char["heat_gauge"][2]
             )
             -- apply_overdrive_gain
@@ -1427,7 +1463,8 @@ function common_game_scene_projectile_apply_damage(
             -- apply_heat_gain
             hurt_side_obj_char["heat_gauge"][1] = math.min(
                 hurt_side_obj_char["heat_gauge"][1] +
-                hit_side_obj_char["block_heat_gain"]*hurt_side_obj_char["heat_penalty"],
+                hit_side_obj_char["block_heat_gain"]*hurt_side_obj_char["heat_penalty"]
+                *hurt_side_obj_char["positive_bonus_heat_gain_buff"],
                 hurt_side_obj_char["heat_gauge"][2]
             )
             -- apply_risk_gauge

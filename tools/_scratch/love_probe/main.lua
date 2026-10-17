@@ -236,6 +236,7 @@ function love.load()
         "scenes/game_scene/_common/_VFX.lua",
         "scenes/game_scene/_common/_anim.lua",
         "scenes/game_scene/_common/_projectile.lua",
+        "scenes/game_scene/_common/common_functions.lua",
         "scenes/game_scene/_common/load_function.lua",
         "threads/game_scene/VFX_overdrive_heat.lua",
     }) do
@@ -323,9 +324,10 @@ function love.load()
             fc["VFX_common_back_table"][1]["draw"]()
             love.graphics.setCanvas()
             local d = cv:newImageData()
+            local ppt = draw_3d_point_to_2D(obj_stage_game_scene_camera, fc["VFX_common_back_table"][1])
             local best, br, bg, bb = -1, 0, 0, 0
-            for yy = 0, 899 do
-                for xx = 0, 1599 do
+            for yy = ppt[2] - 10, ppt[2] + 40 do
+                for xx = ppt[1] - 10, ppt[1] + 40 do
                     local r, g, b = d:getPixel(xx, yy)
                     local m = r + g + b
                     if m > best then best = m; br, bg, bb = r, g, b end
@@ -351,7 +353,9 @@ function love.load()
         local function badge_char()
             return {
                 x = 300, y = 400, [3] = 0, [5] = 1, [6] = 1, [7] = 0,
-                height = "stand", VFX_hit_front_table = {},
+                height = "stand",
+                VFX_hit_front_table = {},
+                VFX_common_front_table = {},
             }
         end
         -- 版本 1:满速 / 100% / 纯白
@@ -383,7 +387,7 @@ function love.load()
         -- 版本 2:半速 / 75% / 带颜色
         local c2 = badge_char()
         insert_VFX_game_scene_char_RC_badge_blast(c2, image_sprite_sheet_VFX_game_scene_RC_red_badge, { 1.00, 0.60, 0.57 })
-        local v2 = c2["VFX_hit_front_table"][1]
+        local v2 = c2["VFX_common_front_table"][1]
         local seq2, life2 = {}, 0
         for f = 0, 29 do
             v2["update"]()
@@ -412,7 +416,7 @@ function love.load()
             w1, w2, w3,
             (math.abs(w1 - 1.00) < 0.02 and math.abs(w2 - 0.60) < 0.02
                 and math.abs(w3 - 0.57) < 0.02) and "OK" or "MISMATCH"))
-        log(string.format("  badge v2 缩放=%.2f(期望 0.75)  中心=(%.1f,%.1f) v1中心=(%.1f,%.1f) %s",
+        log(string.format("  badge v2 缩放=%.2f  中心=(%.1f,%.1f) v1中心=(%.1f,%.1f) %s",
             v2[5] / c2[5], cx2, cy2, cx1, cy1,
             (math.abs(cx2 - cx1) < 0.01 and math.abs(cy2 - cy1) < 0.01) and "OK 重合" or "MISMATCH"))
 
@@ -433,6 +437,64 @@ function love.load()
             and "OK" or "MISMATCH"))
     else
         log("  insert_VFX_game_scene_char_RC_blast not found")
+    end
+
+    -- ---- Positive Bonus ----
+    if type(common_game_scene_apply_positive_bonus) == "function" then
+        INPUT_SYS_CURRENT_COMMAND_STATE = { L = {}, R = {} }
+        local function mk_char(side)
+            return {
+                player_side = side,
+                hit_damage = 100, damage_correction = 1,
+                hit_damage_correction_factor = 1, hit_wallbreak_damage = 0,
+                hit_heat_gain = 10, hurt_heat_gain = 5,
+                blocked_heat_gain = 3, block_heat_gain = 2,
+                heat_penalty = 1, heat_gauge = { 0, 200 },
+                overdrive_gauge = { 0, 600 }, health_gauge = { 1000, 1000 },
+                risk_gauge = { 0, 100 }, wallstick_gauge = { 0, 100 },
+                positive_bonus = false,
+                positive_bonus_heat_gain_buff = 1,
+                positive_bonus_hit_damage_buff = 1,
+                positive_bonus_hurt_damage_buff = 1,
+            }
+        end
+        local a, b = mk_char("L"), mk_char("R")
+        common_game_scene_char_apply_damage(a, b, "hurt", false)
+        log(string.format("  PB 未开启 : 伤害=%.2f  攻方heat=%.2f  守方heat=%.2f",
+            1000 - b["health_gauge"][1], a["heat_gauge"][1], b["heat_gauge"][1]))
+
+        local c, d = mk_char("L"), mk_char("R")
+        common_game_scene_apply_positive_bonus(c)
+        common_game_scene_apply_positive_bonus(d)
+        log(string.format("  PB 开启   : countdown=%d heatbuff=%.2f hitbuff=%.2f hurtbuff=%.2f",
+            c["positive_bonus_countdown"],
+            c["positive_bonus_heat_gain_buff"],
+            c["positive_bonus_hit_damage_buff"],
+            c["positive_bonus_hurt_damage_buff"]))
+        common_game_scene_char_apply_damage(c, d, "hurt", false)
+        log(string.format("  PB 开启   : 伤害=%.2f  攻方heat=%.2f  守方heat=%.2f",
+            1000 - d["health_gauge"][1], c["heat_gauge"][1], d["heat_gauge"][1]))
+        log(string.format("  每秒自动增长: tension=%.2f/200 (%.1f%%)  burst=%.2f/600 (%.1f%%)",
+            0.28 * 60, 0.28 * 60 / 200 * 100, 0.48 * 60, 0.48 * 60 / 600 * 100))
+
+        -- 积极状态清除 ability_penalty / heat_penalty
+        local e = mk_char("L")
+        e["ability_penalty"] = 0.35
+        e["ability_penalty_countdown"] = 120
+        e["heat_penalty"] = 0.20
+        e["heat_penalty_countdown"] = 60
+        log(string.format("  PB 前惩罚 : ability=%.2f/%d  heat=%.2f/%d",
+            e["ability_penalty"], e["ability_penalty_countdown"],
+            e["heat_penalty"], e["heat_penalty_countdown"]))
+        common_game_scene_apply_positive_bonus(e)
+        log(string.format("  PB 后惩罚 : ability=%.2f/%d  heat=%.2f/%d  (期望 1.00/0  1.00/0) %s",
+            e["ability_penalty"], e["ability_penalty_countdown"],
+            e["heat_penalty"], e["heat_penalty_countdown"],
+            (e["ability_penalty"] == 1 and e["ability_penalty_countdown"] == 0
+                and e["heat_penalty"] == 1 and e["heat_penalty_countdown"] == 0)
+            and "OK" or "MISMATCH"))
+    else
+        log("  common_game_scene_apply_positive_bonus not found")
     end
 
     flush()
