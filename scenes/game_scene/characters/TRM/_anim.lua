@@ -816,7 +816,6 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(
 )
     local res = {}
     local side = obj_char["player_side"]
-    local input = INPUT_SYS_CURRENT_COMMAND_STATE[side]
     local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(side)
     local width_table = {200,200,200,230,260,270,235,200}
     local function update_maintain_horizontal_velocity()

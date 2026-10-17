@@ -1,4 +1,3 @@
-local filesys_module = require "love.filesystem"
 local auido_module = require "love.sound"
 local sound_module = auido_module.newSoundData
 local thread_data = {}

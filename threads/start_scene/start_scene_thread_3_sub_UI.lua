@@ -1,9 +1,5 @@
-local filesys_module = require "love.filesystem"
 local image_module = require "love.image"
-local auido_module = require "love.sound"
 local compress_module = image_module.newCompressedData
-local non_compress_module = image_module.newImageData
-local sound_module = auido_module.newSoundData
 local thread_data = {}
 -- resolution text in config resolution sub UI only
 thread_data[1] = compress_module("asset/start_scene/texture/config/1280_x_720.dds")

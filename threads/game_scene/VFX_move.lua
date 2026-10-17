@@ -1,9 +1,5 @@
-local filesys_module = require "love.filesystem"
 local image_module = require "love.image"
-local auido_module = require "love.sound"
 local compress_module = image_module.newCompressedData
-local non_compress_module = image_module.newImageData
-local sound_module = auido_module.newSoundData
 local thread_data = {}
 -- hit_VFX
 thread_data["air_blow_sprite_batch"] = compress_module("asset/game_scene/common/texture/VFX/hit_VFX/air_blow.dds")

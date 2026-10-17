@@ -139,7 +139,6 @@ function draw_char_select_scene_glow(obj,f_shader,r_shader)
     local sx = draw_resolution_correction(obj[5])
     local sy = draw_resolution_correction(obj[6])
     local opacity = obj[4]
-    local r = obj[7]
     if opacity == 0 then
         return
     end

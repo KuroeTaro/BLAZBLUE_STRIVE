@@ -2316,10 +2316,6 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
     obj_VFX["life"] = 26
-    obj_VFX["r_cache"] = r_table_cache
-    obj_VFX["x_table"] = obj_x_table
-    obj_VFX["y_table"] = obj_y_table
-    obj_VFX["center_table"] = obj_center
     -- x_y_z_opacity_sx_sy_r_f
     obj_VFX["sub_obj"] = {
         [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
@@ -2406,10 +2402,6 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
             active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x - 500),
             active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y - 500)
         }
-        obj_VFX["r_cache"] = r_table_cache
-        obj_VFX["x_table"] = obj_x_table
-        obj_VFX["y_table"] = obj_y_table
-        obj_VFX["center_table"] = obj_center
         obj_VFX["sub_obj"] = {
             [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
                 active_op_side_obj_char[6],r_table_cache[1],0},
@@ -2511,10 +2503,6 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
     obj_VFX["life"] = 26
-    obj_VFX["r_cache"] = r_table_cache
-    obj_VFX["x_table"] = obj_x_table
-    obj_VFX["y_table"] = obj_y_table
-    obj_VFX["center_table"] = obj_center
     -- x_y_z_opacity_sx_sy_r_f
     obj_VFX["sub_obj"] = {
         [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
@@ -2601,10 +2589,6 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
             active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x - 500),
             active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y - 500)
         }
-        obj_VFX["r_cache"] = r_table_cache
-        obj_VFX["x_table"] = obj_x_table
-        obj_VFX["y_table"] = obj_y_table
-        obj_VFX["center_table"] = obj_center
         obj_VFX["sub_obj"] = {
             [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
                 active_op_side_obj_char[6],r_table_cache[1],0},
@@ -2747,10 +2731,6 @@ function insert_VFX_game_scene_char_blast_special_projectile(active_op_side_obj_
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
     obj_VFX["life"] = 37
-    obj_VFX["r_cache"] = r_table_cache
-    obj_VFX["x_table"] = obj_x_table
-    obj_VFX["y_table"] = obj_y_table
-    obj_VFX["center_table"] = obj_center
     -- x_y_z_opacity_sx_sy_r_f
     obj_VFX["sub_obj"] = {
         [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
@@ -2837,10 +2817,6 @@ function insert_VFX_game_scene_char_blast_special_projectile(active_op_side_obj_
             active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x - 500),
             active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y - 500)
         }
-        obj_VFX["r_cache"] = r_table_cache
-        obj_VFX["x_table"] = obj_x_table
-        obj_VFX["y_table"] = obj_y_table
-        obj_VFX["center_table"] = obj_center
         obj_VFX["sub_obj"] = {
             [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
                 active_op_side_obj_char[6],r_table_cache[1],0},
@@ -2942,10 +2918,6 @@ function insert_VFX_game_scene_char_counter_blast_special_projectile(active_op_s
     passive_op_side_obj_char["VFX_hit_front_table"] = {}
     passive_op_side_obj_char["VFX_hit_back_table"] = {}
     obj_VFX["life"] = 37
-    obj_VFX["r_cache"] = r_table_cache
-    obj_VFX["x_table"] = obj_x_table
-    obj_VFX["y_table"] = obj_y_table
-    obj_VFX["center_table"] = obj_center
     -- x_y_z_opacity_sx_sy_r_f
     obj_VFX["sub_obj"] = {
         [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
@@ -3032,10 +3004,6 @@ function insert_VFX_game_scene_char_counter_blast_special_projectile(active_op_s
             active_op_side_obj_char["x"] + active_op_side_obj_char[5]*(x - 500),
             active_op_side_obj_char["y"] + active_op_side_obj_char[6]*(y - 500)
         }
-        obj_VFX["r_cache"] = r_table_cache
-        obj_VFX["x_table"] = obj_x_table
-        obj_VFX["y_table"] = obj_y_table
-        obj_VFX["center_table"] = obj_center
         obj_VFX["sub_obj"] = {
             [1] = {obj_x_table[1],obj_y_table[1],active_op_side_obj_char[3],1,active_op_side_obj_char[5],
                 active_op_side_obj_char[6],r_table_cache[1],0},

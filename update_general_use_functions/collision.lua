@@ -98,7 +98,6 @@ end
 function collision_pushbox_state_relocate_in_character_x(obj_char_LP,obj_char_RP,mid_anchor)
     local box_L = collision_box_to_real_world_box(obj_char_LP,obj_char_LP["pushbox"])
     local box_R = collision_box_to_real_world_box(obj_char_RP,obj_char_RP["pushbox"])
-    local obj_camera = obj_stage_game_scene_camera
     if obj_char_LP["x"] < obj_char_RP["x"] then
         if (box_R[1] + box_R[3]/2) - (box_L[1] - box_L[3]/2) > 1840 then
             obj_char_LP["x"] = mid_anchor - 920 + box_L[3]/2
@@ -366,10 +365,6 @@ function collision_uncondicational_hit_confirm_test(hit_obj,hurt_obj)
         end
     end
     return false
-end
-function collision_all_hit_type_hit_confirm_test(hit_obj,hurt_obj)
-    return collision_uncondicational_hit_confirm_test(hit_obj,hurt_obj)
-    or collision_projectile_hit_confirm_test(hit_obj,hurt_obj)
 end
 -- optimal CCD algo but not 100% currect
 -------------------------------------------------------------------------------------------------

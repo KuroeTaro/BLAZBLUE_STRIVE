@@ -1,0 +1,203 @@
+==============================================================================
+仓库静态检查报告
+  lua 文件 75 个
+==============================================================================
+
+## 1. 定义了但没有任何引用的 function (45)
+  draw_sector                                                    draw_general_use_functions.lua:95
+  insert_VFX_game_scene_char_blast_dynamic_ver0                  scenes\game_scene\_common\_VFX.lua:1539
+  insert_VFX_game_scene_char_counter_blast_dynamic_ver0          scenes\game_scene\_common\_VFX.lua:1747
+  insert_VFX_game_scene_char_block_blast_dynamic_ver0            scenes\game_scene\_common\_VFX.lua:2051
+  insert_VFX_game_scene_char_counter_blast_special_projectile    scenes\game_scene\_common\_VFX.lua:2887
+  load_game_scene_anim_char_common_0_general_hurt_falled_knockout scenes\game_scene\_common\_anim.lua:45
+  load_game_scene_anim_char_common_0_ground_hurt_lv4             scenes\game_scene\_common\_anim.lua:601
+  load_game_scene_anim_char_common_0_ground_block_lv4            scenes\game_scene\_common\_anim.lua:1132
+  load_game_scene_anim_char_common_0_air_block_guard_crash       scenes\game_scene\_common\_anim.lua:1398
+  load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_head_down scenes\game_scene\_common\_anim.lua:1941
+  load_game_scene_anim_char_common_0_general_hurt_launched_float scenes\game_scene\_common\_anim.lua:2907
+  load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy scenes\game_scene\_common\_anim.lua:3537
+  load_game_scene_anim_char_common_0_general_hurt_launched_mid_up scenes\game_scene\_common\_anim.lua:3647
+  load_game_scene_anim_char_common_0_general_hurt_launched_rolling scenes\game_scene\_common\_anim.lua:3817
+  load_game_scene_anim_char_common_0_general_hurt_launched_rotate scenes\game_scene\_common\_anim.lua:3956
+  load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce scenes\game_scene\_common\_anim.lua:4071
+  common_game_scene_anim_0_update_function_unwallstick           scenes\game_scene\_common\common_functions.lua:81
+  common_game_scene_get_SFX_random_0_or_1                        scenes\game_scene\_common\common_functions.lua:151
+  common_game_scene_char_enclose_heat_gain                       scenes\game_scene\_common\common_functions.lua:358
+  common_game_scene_projectile_hit_function                      scenes\game_scene\_common\common_functions.lua:657
+  unload_game_scene_all                                          scenes\game_scene\_common\init.lua:230
+  update_game_scene_HUD_overdrive_text                           scenes\game_scene\_common\main_blocks.lua:1003
+  state_gate_game_scene_char_LP_common_ground_to_dash_move_PP    scenes\game_scene\characters\TRM\left.lua:3513
+  state_gate_game_scene_char_LP_common_ground_to_dash_move_NH    scenes\game_scene\characters\TRM\left.lua:3603
+  state_gate_game_scene_char_LP_common_ground_to_attack_move     scenes\game_scene\characters\TRM\left.lua:4256
+  state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver scenes\game_scene\characters\TRM\left.lua:4279
+  state_gate_game_scene_char_LP_common_air_to_dash_move_PP       scenes\game_scene\characters\TRM\left.lua:4303
+  state_gate_game_scene_char_LP_common_air_to_attack_move        scenes\game_scene\characters\TRM\left.lua:4405
+  state_gate_game_scene_char_RP_common_ground_to_dash_move_PP    scenes\game_scene\characters\TRM\right.lua:3513
+  state_gate_game_scene_char_RP_common_ground_to_dash_move_NH    scenes\game_scene\characters\TRM\right.lua:3603
+  state_gate_game_scene_char_RP_common_ground_to_attack_move     scenes\game_scene\characters\TRM\right.lua:4256
+  state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver scenes\game_scene\characters\TRM\right.lua:4279
+  state_gate_game_scene_char_RP_common_air_to_dash_move_PP       scenes\game_scene\characters\TRM\right.lua:4303
+  state_gate_game_scene_char_RP_common_air_to_attack_move        scenes\game_scene\characters\TRM\right.lua:4405
+  init_stage_anim_without                                        update_general_use_functions\animator.lua:201
+  collision_projectile_clash_test                                update_general_use_functions\collision.lua:296
+  collision_all_hit_type_hit_confirm_test                        update_general_use_functions\collision.lua:370
+  common_queue_new                                               update_general_use_functions\common.lua:24
+  common_queue_push                                              update_general_use_functions\common.lua:30
+  common_queue_pop                                               update_general_use_functions\common.lua:40
+  common_ringbuffer_new                                          update_general_use_functions\common.lua:45
+  common_ringbuffer_push                                         update_general_use_functions\common.lua:53
+  common_ringbuffer_get                                          update_general_use_functions\common.lua:60
+  get_global_val_num                                             update_general_use_functions\garbage_collection.lua:39
+  load_input_sys_cache_negative_edge_recache                     update_general_use_functions\input_sys.lua:328
+
+## 2. 被重复定义(后者覆盖前者)的 function (0)
+
+## 3. 写了但从来没被读过的 table 字段 (写>=1, 读=0) 共 14
+  ["r_cache"]  写了 8 次
+      scenes\game_scene\_common\_VFX.lua:2319  obj_VFX["r_cache"] = r_table_cache
+      scenes\game_scene\_common\_VFX.lua:2409  obj_VFX["r_cache"] = r_table_cache
+      scenes\game_scene\_common\_VFX.lua:2514  obj_VFX["r_cache"] = r_table_cache
+      scenes\game_scene\_common\_VFX.lua:2604  obj_VFX["r_cache"] = r_table_cache
+  ["x_table"]  写了 8 次
+      scenes\game_scene\_common\_VFX.lua:2320  obj_VFX["x_table"] = obj_x_table
+      scenes\game_scene\_common\_VFX.lua:2410  obj_VFX["x_table"] = obj_x_table
+      scenes\game_scene\_common\_VFX.lua:2515  obj_VFX["x_table"] = obj_x_table
+      scenes\game_scene\_common\_VFX.lua:2605  obj_VFX["x_table"] = obj_x_table
+  ["y_table"]  写了 8 次
+      scenes\game_scene\_common\_VFX.lua:2321  obj_VFX["y_table"] = obj_y_table
+      scenes\game_scene\_common\_VFX.lua:2411  obj_VFX["y_table"] = obj_y_table
+      scenes\game_scene\_common\_VFX.lua:2516  obj_VFX["y_table"] = obj_y_table
+      scenes\game_scene\_common\_VFX.lua:2606  obj_VFX["y_table"] = obj_y_table
+  ["center_table"]  写了 8 次
+      scenes\game_scene\_common\_VFX.lua:2322  obj_VFX["center_table"] = obj_center
+      scenes\game_scene\_common\_VFX.lua:2412  obj_VFX["center_table"] = obj_center
+      scenes\game_scene\_common\_VFX.lua:2517  obj_VFX["center_table"] = obj_center
+      scenes\game_scene\_common\_VFX.lua:2607  obj_VFX["center_table"] = obj_center
+  ["shot_sys_oroboros_state_cache"]  写了 6 次
+      scenes\game_scene\characters\TRM\left.lua:239  obj_char_game_scene_char_LP["shot_sys_oroboros_state_cache"] = "off"
+      scenes\game_scene\characters\TRM\left.lua:890  obj_char_game_scene_char_LP["shot_sys_oroboros_state_cache"] = "off"
+      scenes\game_scene\characters\TRM\left.lua:3032  obj_char["shot_sys_oroboros_state_cache"] = "off"
+      scenes\game_scene\characters\TRM\right.lua:239  obj_char_game_scene_char_RP["shot_sys_oroboros_state_cache"] = "off"
+  ["shot_sys_camera_shake_anim_table"]  写了 4 次
+      scenes\game_scene\characters\TRM\left.lua:235  obj_char_game_scene_char_LP["shot_sys_camera_shake_anim_table"] = {}
+      scenes\game_scene\characters\TRM\left.lua:886  obj_char_game_scene_char_LP["shot_sys_camera_shake_anim_table"] = {}
+      scenes\game_scene\characters\TRM\right.lua:235  obj_char_game_scene_char_RP["shot_sys_camera_shake_anim_table"] = {}
+      scenes\game_scene\characters\TRM\right.lua:886  obj_char_game_scene_char_RP["shot_sys_camera_shake_anim_table"] = {}
+  ["shot_sys_reticle_state_cache"]  写了 4 次
+      scenes\game_scene\characters\TRM\left.lua:279  obj_char_game_scene_char_LP["shot_sys_reticle_state_cache"] = "off"
+      scenes\game_scene\characters\TRM\left.lua:930  obj_char_game_scene_char_LP["shot_sys_reticle_state_cache"] = "off"
+      scenes\game_scene\characters\TRM\right.lua:279  obj_char_game_scene_char_RP["shot_sys_reticle_state_cache"] = "off"
+      scenes\game_scene\characters\TRM\right.lua:930  obj_char_game_scene_char_RP["shot_sys_reticle_state_cache"] = "off"
+  ["input_sys_cache_hit_jump_cancel"]  写了 2 次
+      scenes\game_scene\characters\TRM\left.lua:120  obj_char_game_scene_char_LP["input_sys_cache_hit_jump_cancel"] = {}
+      scenes\game_scene\characters\TRM\right.lua:120  obj_char_game_scene_char_RP["input_sys_cache_hit_jump_cancel"] = {}
+  ["width"]  写了 2 次
+      update_general_use_functions\animator.lua:3  -- obj["width"] = 1208
+      update_general_use_functions\animator.lua:81  -- obj["width"] = 1208
+  ["buffer"]  写了 1 次
+      lovebird.lua:429  lovebird.pages["buffer"] = [[ <?lua echo(lovebird.buffer) ?> ]]
+  ["env.json"]  写了 1 次
+      lovebird.lua:432  lovebird.pages["env.json"] = [[
+  ["&"]  写了 1 次
+      lovebird.lua:550  ["&"] = "&amp;",
+  ["'"]  写了 1 次
+      lovebird.lua:552  ["'"] = "&#039;",
+  [" .. serialize(k, stk) .. "]  写了 1 次
+      lume.lua:575  rtn[#rtn + 1] = "[" .. serialize(k, stk) .. "]=" .. serialize(v, stk)
+
+## 4. 点了但没读的属性(写>=2, 读=0)共 2
+  .width  写了 2 次
+      conf.lua:6  t.window.width = width
+      conf.lua:9  t.window.width = 1600
+  .height  写了 2 次
+      conf.lua:7  t.window.height = height
+      conf.lua:10  t.window.height = 900
+
+## 5. 只读不写的字段(运行期必为 nil)共 19
+  ["sprite_batch"]  读了 254 次
+  ["frames"]  读了 10 次
+  ["friction_update_function"]  读了 8 次
+  ["friendly_interact_function"]  读了 4 次
+  ["overdrive_badge"]  读了 4 次
+  ["Content-Length"]  读了 2 次
+  [" .. chars .. "]  读了 2 次
+  ["overdrive_airflow_sprite_batch"]  读了 2 次
+  ["burst_front_sprite_batch"]  读了 2 次
+  ["blast_ver0_counter_sprite_batch"]  读了 2 次
+  ["slash_ver0_counter_sprite_batch"]  读了 2 次
+  ["special_lighting_0_sprite_batch"]  读了 2 次
+  ["special_lighting_1_sprite_batch"]  读了 2 次
+  ["special_radial_sprite_batch"]  读了 2 次
+  ["HUD_counter_ver0_2"]  读了 2 次
+  ["HUD_counter_ver3"]  读了 2 次
+  ["HUD_positive_bouns_LP"]  读了 2 次
+  ["HUD_positive_bouns_RP"]  读了 2 次
+  ["air_dash_shockwave"]  读了 2 次
+
+## 6. 全局变量只写不读 共 0
+
+## 7. local 变量只出现一次(声明后从未使用)共 64
+  scenes\char_select_scene\draw_functions.lua:142  local r = obj[7]
+  scenes\game_scene\_common\common_functions.lua:211  local opponent_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[opponent_side_obj_char["player_side"]]
+  scenes\game_scene\_common\main_blocks.lua:778  local stage_collision = false
+  scenes\game_scene\characters\TRM\_anim.lua:819  local input = INPUT_SYS_CURRENT_COMMAND_STATE[side]
+  scenes\game_scene\characters\TRM\_character_function.lua:117  local random_offset = (math.random(2) == 1) and 1 or 0
+  scenes\game_scene\characters\TRM\left.lua:4662  local backward_dash_state = {
+  scenes\game_scene\characters\TRM\left.lua:5427  local self_side = self_side_obj_char["player_side"]
+  scenes\game_scene\characters\TRM\right.lua:4662  local backward_dash_state = {
+  scenes\game_scene\characters\TRM\right.lua:5427  local self_side = self_side_obj_char["player_side"]
+  scenes\game_scene\stage\alpha.lua:933  local x_dst = 2290
+  scenes\game_scene\stage\alpha.lua:934  local obj_camera_start_x = obj_camera["3d_pos_x"]
+  threads\char_select_scene\char_select_thread_1_char.lua:1  local filesys_module = require "love.filesystem"
+  threads\char_select_scene\char_select_thread_1_char.lua:5  local non_compress_module = image_module.newImageData
+  threads\char_select_scene\char_select_thread_1_char.lua:6  local sound_module = auido_module.newSoundData
+  threads\char_select_scene\char_select_thread_2_start_0_110f.lua:1  local filesys_module = require "love.filesystem"
+  threads\char_select_scene\char_select_thread_2_start_0_110f.lua:5  local non_compress_module = image_module.newImageData
+  threads\char_select_scene\char_select_thread_2_start_0_110f.lua:6  local sound_module = auido_module.newSoundData
+  threads\char_select_scene\char_select_thread_3_movie_cover.lua:1  local filesys_module = require "love.filesystem"
+  threads\char_select_scene\char_select_thread_3_movie_cover.lua:5  local non_compress_module = image_module.newImageData
+  threads\char_select_scene\char_select_thread_3_movie_cover.lua:6  local sound_module = auido_module.newSoundData
+  threads\disclaimer_and_logos_scene\disclaimer_and_logos_scene_thread_1_general.lua:1  local filesys_module = require "love.filesystem"
+  threads\disclaimer_and_logos_scene\disclaimer_and_logos_scene_thread_1_general.lua:5  local non_compress_module = image_module.newImageData
+  threads\disclaimer_and_logos_scene\disclaimer_and_logos_scene_thread_1_general.lua:6  local sound_module = auido_module.newSoundData
+  threads\game_scene\UI_HUD.lua:1  local filesys_module = require "love.filesystem"
+  threads\game_scene\UI_HUD.lua:6  local sound_module = auido_module.newSoundData
+  threads\game_scene\UI_act.lua:1  local filesys_module = require "love.filesystem"
+  threads\game_scene\UI_act.lua:5  local non_compress_module = image_module.newImageData
+  threads\game_scene\UI_act.lua:6  local sound_module = auido_module.newSoundData
+  threads\game_scene\UI_lets_dance.lua:1  local filesys_module = require "love.filesystem"
+  threads\game_scene\UI_lets_dance.lua:5  local non_compress_module = image_module.newImageData
+  threads\game_scene\UI_lets_dance.lua:6  local sound_module = auido_module.newSoundData
+  threads\game_scene\VFX_HUD.lua:1  local filesys_module = require "love.filesystem"
+  threads\game_scene\VFX_HUD.lua:6  local sound_module = auido_module.newSoundData
+  threads\game_scene\VFX_move.lua:1  local filesys_module = require "love.filesystem"
+  threads\game_scene\VFX_move.lua:5  local non_compress_module = image_module.newImageData
+  threads\game_scene\VFX_move.lua:6  local sound_module = auido_module.newSoundData
+  threads\game_scene\VFX_overdrive_heat.lua:1  local filesys_module = require "love.filesystem"
+  threads\game_scene\VFX_overdrive_heat.lua:5  local non_compress_module = image_module.newImageData
+  threads\game_scene\VFX_overdrive_heat.lua:6  local sound_module = auido_module.newSoundData
+  threads\game_scene\characters\TRM_left_audio.lua:1  local filesys_module = require "love.filesystem"
+  threads\game_scene\characters\TRM_left_texture.lua:1  local filesys_module = require "love.filesystem"
+  threads\game_scene\characters\TRM_left_texture.lua:5  local non_compress_module = image_module.newImageData
+  threads\game_scene\characters\TRM_left_texture.lua:6  local sound_module = auido_module.newSoundData
+  threads\game_scene\characters\TRM_right_audio.lua:1  local filesys_module = require "love.filesystem"
+  threads\game_scene\characters\TRM_right_texture.lua:1  local filesys_module = require "love.filesystem"
+  threads\game_scene\characters\TRM_right_texture.lua:5  local non_compress_module = image_module.newImageData
+  threads\game_scene\characters\TRM_right_texture.lua:6  local sound_module = auido_module.newSoundData
+  threads\game_scene\common.lua:1  local filesys_module = require "love.filesystem"
+  threads\game_scene\common.lua:5  local non_compress_module = image_module.newImageData
+  threads\game_scene\common.lua:6  local sound_module = auido_module.newSoundData
+  threads\game_scene\stage\alpha.lua:1  local filesys_module = require "love.filesystem"
+  threads\game_scene\stage\alpha.lua:5  local non_compress_module = image_module.newImageData
+  threads\game_scene\stage\alpha.lua:6  local sound_module = auido_module.newSoundData
+  threads\game_scene\stage\alpha_audio.lua:1  local filesys_module = require "love.filesystem"
+  threads\start_scene\start_scene_thread_1_main_UI.lua:1  local filesys_module = require "love.filesystem"
+  threads\start_scene\start_scene_thread_1_main_UI.lua:5  local non_compress_module = image_module.newImageData
+  threads\start_scene\start_scene_thread_1_main_UI.lua:6  local sound_module = auido_module.newSoundData
+  threads\start_scene\start_scene_thread_2_main_UI_BG.lua:1  local filesys_module = require "love.filesystem"
+  threads\start_scene\start_scene_thread_2_main_UI_BG.lua:5  local non_compress_module = image_module.newImageData
+  threads\start_scene\start_scene_thread_2_main_UI_BG.lua:6  local sound_module = auido_module.newSoundData
+  threads\start_scene\start_scene_thread_3_sub_UI.lua:1  local filesys_module = require "love.filesystem"
+  threads\start_scene\start_scene_thread_3_sub_UI.lua:5  local non_compress_module = image_module.newImageData
+  threads\start_scene\start_scene_thread_3_sub_UI.lua:6  local sound_module = auido_module.newSoundData
+  update_general_use_functions\collision.lua:101  local obj_camera = obj_stage_game_scene_camera

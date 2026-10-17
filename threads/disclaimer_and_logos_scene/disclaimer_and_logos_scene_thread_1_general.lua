@@ -1,9 +1,5 @@
-local filesys_module = require "love.filesystem"
 local image_module = require "love.image"
-local auido_module = require "love.sound"
 local compress_module = image_module.newCompressedData
-local non_compress_module = image_module.newImageData
-local sound_module = auido_module.newSoundData
 local thread_data = {}
 thread_data[1] = compress_module("asset/disclaimer_and_logo_scene/texture/disclaimer_text.dds")
 thread_data[2] = compress_module("asset/disclaimer_and_logo_scene/texture/kuroe_taro_s_handicraft_logo.dds")

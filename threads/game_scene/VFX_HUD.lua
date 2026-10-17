@@ -1,9 +1,6 @@
-local filesys_module = require "love.filesystem"
 local image_module = require "love.image"
-local auido_module = require "love.sound"
 local compress_module = image_module.newCompressedData
 local non_compress_module = image_module.newImageData
-local sound_module = auido_module.newSoundData
 local thread_data = {}
 -- HUD_VFX
 thread_data["HUD_punish"] = non_compress_module("asset/game_scene/common/texture/VFX/HUD_VFX/PUINISH_HUD_VFX.png")

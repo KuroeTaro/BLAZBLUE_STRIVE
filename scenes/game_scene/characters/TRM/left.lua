@@ -117,7 +117,6 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["input_sys_cache"] = {}
     obj_char_game_scene_char_LP["input_sys_state_negative_edge"] = "none"
     obj_char_game_scene_char_LP["input_sys_cache_negative_edge"] = {}
-    obj_char_game_scene_char_LP["input_sys_cache_hit_jump_cancel"] = {}
     init_input_sys_cache_LP(obj_char_game_scene_char_LP)
     init_input_sys_cache_negative_edge_LP(obj_char_game_scene_char_LP)
     -- game_speed
@@ -232,11 +231,9 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["shot_sys_scapegoat_exist"] = false
     -- shot_sys/anim/uncommon
     obj_char_game_scene_char_LP["shot_sys_animation"] = nil
-    obj_char_game_scene_char_LP["shot_sys_camera_shake_anim_table"] = {}
     -- shot_sys_oroboros/uncommon
     obj_char_game_scene_char_LP["shot_sys_oroboros_f"] = 0
     obj_char_game_scene_char_LP["shot_sys_oroboros_state"] = "off"
-    obj_char_game_scene_char_LP["shot_sys_oroboros_state_cache"] = "off"
     obj_char_game_scene_char_LP["shot_sys_oroboros_aim_r"] = 0.42
     obj_char_game_scene_char_LP["shot_sys_oroboros_animation_table"] = {}
     -- shot_sys_oroboros_sub_obj
@@ -276,7 +273,6 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["shot_sys_reticle_f_4"] = 0
     obj_char_game_scene_char_LP["shot_sys_reticle_f_8"] = 0
     obj_char_game_scene_char_LP["shot_sys_reticle_state"] = "off"
-    obj_char_game_scene_char_LP["shot_sys_reticle_state_cache"] = "off"
     obj_char_game_scene_char_LP["shot_sys_reticle_animation_table"] = {}
     obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_current"] = {0,0}
     obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_target"] = {0,0}
@@ -883,11 +879,9 @@ function load_game_scene_wallbreak_mid_init_LP()
     obj_char_game_scene_char_LP["shot_sys_at_the_steady_clean_hit"] = false
     obj_char_game_scene_char_LP["shot_sys_scapegoat_exist"] = false
     obj_char_game_scene_char_LP["shot_sys_animation"] = nil
-    obj_char_game_scene_char_LP["shot_sys_camera_shake_anim_table"] = {}
     -- shot_sys_oroboros/uncommon
     obj_char_game_scene_char_LP["shot_sys_oroboros_f"] = 0
     obj_char_game_scene_char_LP["shot_sys_oroboros_state"] = "off"
-    obj_char_game_scene_char_LP["shot_sys_oroboros_state_cache"] = "off"
     obj_char_game_scene_char_LP["shot_sys_oroboros_aim_r"] = 0.42
     obj_char_game_scene_char_LP["shot_sys_oroboros_animation_table"] = {}
     -- shot_sys_oroboros_sub_obj
@@ -927,7 +921,6 @@ function load_game_scene_wallbreak_mid_init_LP()
     obj_char_game_scene_char_LP["shot_sys_reticle_f_4"] = 0
     obj_char_game_scene_char_LP["shot_sys_reticle_f_8"] = 0
     obj_char_game_scene_char_LP["shot_sys_reticle_state"] = "off"
-    obj_char_game_scene_char_LP["shot_sys_reticle_state_cache"] = "off"
     obj_char_game_scene_char_LP["shot_sys_reticle_animation_table"] = {}
     obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_current"] = {0,0}
     obj_char_game_scene_char_LP["shot_sys_reticle_stage_pos_target"] = {0,0}
@@ -3029,7 +3022,6 @@ function state_machine_char_game_scene_char_LP_shot_sys_oroboros()
                 obj_char["shot_sys_oroboros_mid"],obj_char["shot_sys_oroboros_animation_table"][3]
             ) then
                 obj_char["shot_sys_oroboros_state"] = "off"
-                obj_char["shot_sys_oroboros_state_cache"] = "off"
                 obj_char["shot_sys_oroboros_front"] = {0,0,0,0,1,1,0,0}
                 obj_char["shot_sys_oroboros_front"]["f_8"] = 0
                 obj_char["shot_sys_oroboros_front"]["f_4"] = 0
@@ -4659,10 +4651,6 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_blue(
             ["6dash_dash_cancel"] = true,
             ["6dash_air_dash"] = true
         }
-        local backward_dash_state = {
-            ["4dash_backdash"] = true,
-            ["4dash_air_backdash"] = true
-        }
         local velocity_cache_uncommon_case = {
             ["7_8_9_pre_jump"] = {0,-25},
             ["6dash_dash_cancel"] = {7.5*self_side_obj_char[5],0},
@@ -5424,7 +5412,6 @@ end
 function state_gate_game_scene_char_LP_from_throw_testing(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
-    local self_side = self_side_obj_char["player_side"]
     local opponent_side = opponent_side_obj_char["player_side"]
     self_side_obj_char["f"] = self_side_obj_char["f"] + 1
     if opponent_side_obj_char["hurt_state"] == "idle" and

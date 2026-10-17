@@ -114,7 +114,6 @@ end
 function character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(
     self_side_obj_char,opponent_side_obj_char,offset_multiplier
 )
-    local random_offset = (math.random(2) == 1) and 1 or 0
     local random_index = math.random(1,2)
     if self_side_obj_char["shot_sys_curse"] then
         offset_multiplier = offset_multiplier*0.25
