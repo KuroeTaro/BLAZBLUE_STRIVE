@@ -20,6 +20,8 @@ thread_data["RC_yellow_badge_sprite_batch"] = compress_module("asset/game_scene/
 thread_data["UA_common_sprite_batch"] = compress_module("asset/game_scene/common/texture/VFX/UA_common.dds")
 -- burst_VFX
 thread_data["burst_back_sprite_batch"] = compress_module("asset/game_scene/common/texture/VFX/burst_VFX/burst_back.dds")
+-- RC blast:burst_back 的独立副本(方便以后单独改 RC 的图,不影响 burst_back)
+thread_data["RC_blast_sprite_batch"] = compress_module("asset/game_scene/common/texture/VFX/RC_blast.dds")
 thread_data["burst_front_sprite_batch"] =
 compress_module("asset/game_scene/common/texture/VFX/burst_VFX/burst_front.dds")
 thread_data["burst_ring"] = compress_module("asset/game_scene/common/texture/VFX/burst_VFX/burst_ring.dds")

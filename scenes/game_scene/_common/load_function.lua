@@ -43,7 +43,7 @@ function load_game_scene_prep()
         order_load_game_scene_stage_frames
     }
     CURRENT_ORDER_TABLE = {1,1,1,1,1,1,1,1,1,1,1,1,1} -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
-    ORDER_SIZE_TABLE = {14,4,3,1,1,4,3,11,39,11,39,3,4} -- 每个load function的最大值
+    ORDER_SIZE_TABLE = {14,4,3,1,1,4,4,11,39,11,39,3,4} -- 每个load function的最大值
     LOAD_ONCE_TABLE = {false,false,false,false,false,false,false,false,false,false,false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     LOADING_FUNCTION_AMOUNT = 13 -- 和线程数相同
     -- GAME_MODE = 0
@@ -266,6 +266,14 @@ function order_load_game_scene_VFX_overdrive_heat(load_order)
                 love.graphics.newImage(ASSET_DATA[7]["burst_front_sprite_batch"])
             )
             image_VFX_game_scene_burst_ring = love.graphics.newImage(ASSET_DATA[7]["burst_ring"])
+        end,
+        [4] = function()
+            -- RC blast(burst_back 的独立副本)
+            image_sprite_sheet_VFX_game_scene_RC_blast =
+            common_sprite_sheet_load(
+                "asset/game_scene/common/texture/VFX/RC_blast.json",
+                love.graphics.newImage(ASSET_DATA[7]["RC_blast_sprite_batch"])
+            )
         end
     }
     local this_function = switch[load_order]

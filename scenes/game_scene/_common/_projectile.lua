@@ -99,6 +99,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
+    local shockwave_color = {1.00,0.28,0.22}
     local hit_side = hit_side_obj_char["player_side"]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     -- clear_projectile_RC_table
@@ -292,9 +293,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         draw_3d_image_sprite_batch(
             obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
         )
-        love.graphics.setBlendMode("add")
+        love.graphics.setColor(shockwave_color[1],shockwave_color[2],shockwave_color[3],1)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setBlendMode("alpha")
+        love.graphics.setColor(1,1,1,1)
     end
     -- uncommon_nil
     -- projectile_init_fix
@@ -323,6 +324,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
+    local shockwave_color = {0.35,0.65,1.00}
     -- clear_projectile_RC_table
     hit_side_obj_char["projectile_RC_table"] = {}
     -- common
@@ -384,11 +386,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
         draw_3d_image_sprite_batch(
             obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
         )
-        love.graphics.setBlendMode("add")
-        love.graphics.setColor(1,1,1,1)
+        love.graphics.setColor(shockwave_color[1],shockwave_color[2],shockwave_color[3],1)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
-        love.graphics.setBlendMode("alpha")
     end
     -- uncommon
     -- projectile_init_fix
@@ -417,6 +417,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
+    local shockwave_color = {0.78,0.40,1.00}
     -- clear_projectile_RC_table
     hit_side_obj_char["projectile_RC_table"] = {}
     -- common
@@ -478,11 +479,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
         draw_3d_image_sprite_batch(
             obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
         )
-        love.graphics.setBlendMode("add")
-        love.graphics.setColor(1,1,1,1)
+        love.graphics.setColor(shockwave_color[1],shockwave_color[2],shockwave_color[3],1)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
-        love.graphics.setBlendMode("alpha")
     end
     -- uncommon
     -- projectile_init_fix
@@ -520,6 +519,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
+    local shockwave_color = {1.00,0.88,0.30}
     local hit_side = hit_side_obj_char["player_side"]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     -- clear_projectile_RC_table
@@ -693,9 +693,9 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         draw_3d_image_sprite_batch(
             obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
         )
-        love.graphics.setBlendMode("add")
+        love.graphics.setColor(shockwave_color[1],shockwave_color[2],shockwave_color[3],1)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setBlendMode("alpha")
+        love.graphics.setColor(1,1,1,1)
     end
     -- uncommon_nil
     -- projectile_init_fix

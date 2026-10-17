@@ -1,0 +1,218 @@
+function draw_resolution_correction(length)
+    local ratio = love.graphics.getWidth()/1600
+    local result = length*ratio
+    return result
+end
+function draw_2d_image(obj,image)
+    local x = draw_resolution_correction(obj[1])
+    local y = draw_resolution_correction(obj[2])
+    local sx = draw_resolution_correction(obj[5])
+    local sy = draw_resolution_correction(obj[6])
+    local r = obj[7]
+    local opacity = obj[4]
+    if opacity == 0 then
+        return
+    end
+    love.graphics.setColor(1,1,1,obj[4])
+    love.graphics.draw(image,x,y,r,sx,sy)
+    love.graphics.setColor(1,1,1,1)
+end
+function draw_2d_image_table(obj,image_table)
+    local x = draw_resolution_correction(obj[1])
+    local y = draw_resolution_correction(obj[2])
+    local sx = draw_resolution_correction(obj[5])
+    local sy = draw_resolution_correction(obj[6])
+    local r = obj[7]
+    local f = obj[8]
+    local opacity = obj[4]
+    if opacity == 0 then
+        return
+    end
+    love.graphics.setColor(1,1,1,obj[4])
+    love.graphics.draw(image_table[f],x,y,r,sx,sy)
+    love.graphics.setColor(1,1,1,1)
+end
+function draw_solid(obj)
+    local w = love.graphics.getWidth()
+    local h = love.graphics.getHeight()
+    local opacity = obj[4]
+    if opacity == 0 then
+        return
+    end
+    love.graphics.setColor(obj["rgb"][1],obj["rgb"][2],obj["rgb"][3],obj[4])
+    love.graphics.rectangle("fill",0,0,w,h)
+    love.graphics.setColor(1,1,1,1)
+end
+function draw_3d_image(obj_camera,obj,image)
+    local z = obj[3]
+    local sx = obj[5]
+    local sy = obj[6]
+    local r = obj[7]
+    local f = obj[8]
+    local opacity = obj[4]
+    local camera_z = obj_camera[3]
+    local scale = draw_resolution_correction(800)/(z - camera_z)
+    local cood_res = draw_3d_point_to_2D(obj_camera,obj)
+    if opacity == 0 then
+        return
+    end
+    love.graphics.setColor(1,1,1,opacity)
+    love.graphics.draw(image,cood_res[1],cood_res[2],r,sx*scale,sy*scale)
+    love.graphics.setColor(1,1,1,1)
+end
+function draw_3d_image_table(obj_camera,obj,image_table)
+    local z = obj[3]
+    local sx = obj[5]
+    local sy = obj[6]
+    local r = obj[7]
+    local f = obj[8]
+    local opacity = obj[4]
+    local camera_z = obj_camera[3]
+    local scale = draw_resolution_correction(800)/(z - camera_z)
+    local cood_res = draw_3d_point_to_2D(obj_camera,obj)
+    if opacity == 0 then
+        return
+    end
+    love.graphics.setColor(1,1,1,opacity)
+    love.graphics.draw(image_table[f],cood_res[1],cood_res[2],r,sx*scale,sy*scale)
+    love.graphics.setColor(1,1,1,1)
+end
+function draw_3d_point_to_2D(obj_camera,obj)
+    -- x y z opacity sx sy r f
+    local x = obj[1]
+    local y = obj[2]
+    local z = obj[3]
+    local camera_x = obj_camera[1]
+    local camera_y = obj_camera[2]
+    local camera_z = obj_camera[3]
+    local scale = draw_resolution_correction(800)/(z - camera_z)
+    local cood_res = {
+        scale*(x - camera_x) + draw_resolution_correction(800),
+        scale*(y - camera_y) + draw_resolution_correction(450)
+    }
+    return cood_res
+end
+function draw_sector(x,y,radius,startAngle,endAngle,segments)
+    -- 计算每个三角形的角度增量
+    local angleIncrement = (endAngle - startAngle)/segments
+    -- 画扇形
+    for i = 0,segments do
+        local angle1 = startAngle + i*angleIncrement
+        local angle2 = startAngle + (i + 1)*angleIncrement
+        -- 计算每个三角形的三个顶点
+        local x1 = x + radius*math.cos(angle1)
+        local y1 = y + radius*math.sin(angle1)
+        local x2 = x + radius*math.cos(angle2)
+        local y2 = y + radius*math.sin(angle2)
+        -- 绘制三角形
+        love.graphics.polygon("fill",x,y,x1,y1,x2,y2)
+    end
+end
+function draw_2d_image_sprite_batch(obj,image_sprite_sheet,quad_name)
+    local x = draw_resolution_correction(obj[1])
+    local y = draw_resolution_correction(obj[2])
+    local sx = draw_resolution_correction(obj[5])
+    local sy = draw_resolution_correction(obj[6])
+    local r = obj[7]
+    local opacity = obj[4]
+    if opacity == 0 then
+        return
+    end
+    local frame = image_sprite_sheet["frames"][quad_name]
+    local quad = love.graphics.newQuad(frame[1],frame[2],frame[3],frame[4],frame[5],frame[6])
+    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,opacity)
+    image_sprite_sheet["sprite_batch"]:add(quad,x,y,r,sx,sy)
+    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
+end
+function draw_3d_image_sprite_batch(
+    obj_camera,obj,image_sprite_sheet,quad_name
+)
+    local z = obj[3]
+    local sx = obj[5]
+    local sy = obj[6]
+    local r = obj[7]
+    local opacity = obj[4]
+    local camera_z = obj_camera[3]
+    local scale = draw_resolution_correction(800)/(z - camera_z)
+    local cood_res = draw_3d_point_to_2D(obj_camera,obj)
+    if opacity == 0 then
+        return
+    end
+    local frame = image_sprite_sheet["frames"][quad_name]
+    local quad = love.graphics.newQuad(frame[1],frame[2],frame[3],frame[4],frame[5],frame[6])
+    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,opacity)
+    image_sprite_sheet["sprite_batch"]:add(quad,cood_res[1],cood_res[2],r,sx*scale,sy*scale)
+    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
+end
+-- 染色精灵的统一绘制(配合 shaders/vfx_tint_sprite.glsl)
+-- tint        : {r,g,b}
+-- brightness  : 覆盖度倍率(整体亮度),1 = 原始
+-- contrast    : <1 压低对比、摊开光晕;1 = 原样
+-- use_alpha_blend: true 用普通混合(如 RC blast),false 用加算(partical / shockwave)
+-- 颜色只乘在 coverage 上,所以调亮不会把颜色推成白色
+function draw_VFX_game_scene_tinted_sprite_batch(
+    image_sprite_sheet,tint,brightness,contrast,use_alpha_blend
+)
+    local shader = shader_game_scene_vfx_tint_sprite
+    if not shader then
+        -- 兜底:没加载到 shader 时退化成原来的纯色绘制
+        love.graphics.setColor(tint[1],tint[2],tint[3],1)
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setColor(1,1,1,1)
+        return
+    end
+    shader:send("tint",tint)
+    shader:send("brightness",brightness)
+    shader:send("contrast",contrast)
+    love.graphics.setShader(shader)
+    love.graphics.setColor(1,1,1,1)
+    if use_alpha_blend then
+        love.graphics.setBlendMode("alpha","premultiplied")
+    else
+        love.graphics.setBlendMode("add","premultiplied")
+    end
+    love.graphics.draw(image_sprite_sheet["sprite_batch"])
+    love.graphics.setBlendMode("alpha")
+    love.graphics.setShader()
+end
+function draw_3d_color_box(obj_camera,obj_box,color)
+    local cood_res = draw_3d_point_to_2D(obj_camera,obj_box)
+    local x = draw_resolution_correction(cood_res[1])
+    local y = draw_resolution_correction(cood_res[2])
+    local sx = obj_box[4]
+    local sy = obj_box[5]
+    local z = obj_box[3]
+    local camera_z = obj_camera[3]
+    local scale = draw_resolution_correction(800)/(z - camera_z)
+    love.graphics.setColor(color[1],color[2],color[3],color[4])
+    love.graphics.rectangle("fill",cood_res[1],cood_res[2],obj_box["w"]*scale*sx,obj_box["h"]*scale*sy)
+    love.graphics.setColor(1,1,1,1)
+end
+-- draw_capsule_collider
+---------------------------------------------------------------------------------------------------
+    -- function draw_3d_capsule(obj_camera,obj_box,color)
+    --     local cood_res = draw_3d_point_to_2D(obj_camera,obj_box)
+    --     local x = draw_resolution_correction(cood_res[1])
+    --     local y = draw_resolution_correction(cood_res[2])
+    --     local z = obj_box[3]
+    --     local camera_z = obj_camera[3]
+    --     local scale = draw_resolution_correction(800)/(z-camera_z)
+    --     local h = obj_box["h"]*scale
+    --     local r = obj_box["r"]*scale
+    --     local top = y - h/2 + r
+    --     local bottom = y + h/2 - r
+    --     local midH = h - 2*r
+    --     love.graphics.setColor(color[1],color[2],color[3],color[4])
+    --     love.graphics.rectangle("fill", x - r, top, r*2, midH)
+    --     love.graphics.arc("fill", x, top, r, -math.pi, 0)
+    --     love.graphics.arc("fill", x, bottom, r, 0, math.pi)
+    --     love.graphics.setColor(1,1,1,1)
+    -- end
+    -- local draw_capsule = {
+    --     obj_char["x"] + obj_char["pushbox"][1]*obj_char[5],
+    --     obj_char["y"] + obj_char["pushbox"][2],
+    --     obj_char[3],obj_char[5],1
+    -- }
+    -- draw_capsule["r"] = obj_char["pushbox"][3]/2
+    -- draw_capsule["h"] = obj_char["pushbox"][4]
+    -- draw_3d_capsule(obj_camera,draw_capsule,color)

@@ -142,7 +142,7 @@ function insert_VFX_game_scene_char_overdrive_partical(active_op_side_obj_char,p
 end
 function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_char)
     -- 纯全屏 solid overlay:只保留透明度设计
-    -- 渐入 0.00 -> 0.50(33 帧),OD 结束后 10 帧线性淡出
+    -- 渐入 0.00 -> 0.825(33 帧),OD 结束后 10 帧线性淡出
     local obj_VFX = {0,0,0,1,1,1,0,0}
     obj_VFX["rgb"] = {0,0,0}
     obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
@@ -150,6 +150,7 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
     obj_VFX["life"] = 42
     obj_VFX["state"] = "ease_in"
+    -- 峰值 0.825(原 0.50 整体 *1.65,曲线形状不变)
     obj_VFX["opacity_ease_in_anim"] = {}
     obj_VFX["opacity_ease_in_anim"][0] = {0.00,1}
     obj_VFX["opacity_ease_in_anim"][1] = {0.04,3}
@@ -167,7 +168,7 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
     obj_VFX["opacity_ease_in_anim"]["loop"] = false
     obj_VFX["opacity_ease_in_anim"]["fix_type"] = true
     obj_VFX["opacity_ease_out_anim"] = {}
-    obj_VFX["opacity_ease_out_anim"][0] = {0.50,10}
+    obj_VFX["opacity_ease_out_anim"][0] = {0.5,10}
     obj_VFX["opacity_ease_out_anim"][10] = {0.00,10}
     obj_VFX["opacity_ease_out_anim"]["prop"] = 4
     obj_VFX["opacity_ease_out_anim"]["length"] = 10
@@ -186,7 +187,7 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
                 if active_op_side_obj_char["overdrive_gauge"][3] == "off" then
                     obj_VFX["state"] = "ease_out"
                     obj_VFX["life"] = 10
-                    obj_VFX[4] = 0.50
+                    obj_VFX[4] = 0.825
                     init_point_linear_anim_with(
                         obj_VFX,obj_VFX["opacity_ease_out_anim"]
                     )
@@ -262,6 +263,72 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
     end
     table.insert(obj_char["VFX_common_back_table"],obj_VFX)
 end
+function insert_VFX_game_scene_char_RC_blast(obj_char,opacity,blast_scale,color)
+    local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
+    local badge_half_size = 600
+    local blast_half_size = 500
+    local blast_half_world = blast_half_size*blast_scale
+    local center_offset = badge_half_size - blast_half_world
+    obj_VFX["y_offset"] = 0
+    if obj_char["height"] == "air" then
+        obj_VFX["y_offset"] = 750
+    else
+        obj_VFX["y_offset"] = 880
+    end
+    obj_VFX["life"] = 30
+    obj_VFX[1] = obj_char["x"] - obj_char[5]*(blast_half_world)
+    obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"] - center_offset)
+    obj_VFX[3] = obj_char[3]
+    obj_VFX[4] = opacity
+    obj_VFX[5] = obj_char[5]*blast_scale
+    obj_VFX[6] = obj_char[6]*blast_scale
+    obj_VFX[7] = obj_char[7]
+    obj_VFX[8] = 0
+    obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
+    -- 线性帧动画:第 i 帧在 i*2 处出现
+    obj_VFX["frame_animation"] = {}
+    for i = 0,14 do
+        obj_VFX["frame_animation"][i*2] = i
+    end
+    obj_VFX["frame_animation"]["prop"] = 8
+    obj_VFX["frame_animation"]["length"] = 30
+    obj_VFX["frame_animation"]["loop"] = false
+    init_frame_anim_without(
+        obj_VFX,obj_VFX["frame_animation"]
+    )
+    obj_VFX["update"] = function()
+        frame_animator(
+            obj_VFX,obj_VFX["frame_animation"]
+        )
+        obj_VFX["life"] = obj_VFX["life"] - 1
+    end
+    -- 每帧跟随角色刷新位置
+    obj_VFX["draw_sync"] = function()
+        if obj_char["height"] == "air" then
+            obj_VFX["y_offset"] = 750
+        else
+            obj_VFX["y_offset"] = 880
+        end
+        obj_VFX[1] = obj_char["x"] - obj_char[5]*(blast_half_world)
+        obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"] - center_offset)
+        -- obj_VFX["draw_sync"] = function() end
+    end
+    obj_VFX["draw"] = function()
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_blast
+        obj_VFX["draw_sync"]()
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+        )
+        love.graphics.setColor(color[1],color[2],color[3],1)
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setColor(1,1,1,1)
+    end
+    table.insert(obj_char["VFX_common_back_table"],obj_VFX)
+end
 function insert_VFX_game_scene_char_RC_partical(obj_char,color)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
@@ -310,9 +377,9 @@ function insert_VFX_game_scene_char_RC_partical(obj_char,color)
         draw_3d_image_sprite_batch(
             obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
         )
-        love.graphics.setBlendMode("add")
+        love.graphics.setColor(color[1],color[2],color[3],1)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setBlendMode("alpha")
+        love.graphics.setColor(1,1,1,1)
     end
     table.insert(obj_char["VFX_common_back_table"],obj_VFX)
 end
@@ -324,8 +391,8 @@ function insert_VFX_game_scene_char_RC_black_overlay(obj_char)
     obj_VFX["life"] = 95
     obj_VFX["opacity_anim"] = {}
     obj_VFX["opacity_anim"][0] = {0.00,20}
-    obj_VFX["opacity_anim"][20] = {0.50,85}
-    obj_VFX["opacity_anim"][85] = {0.50,95}
+    obj_VFX["opacity_anim"][20] = {0.825,85}
+    obj_VFX["opacity_anim"][85] = {0.825,95}
     obj_VFX["opacity_anim"][95] = {0,95}
     obj_VFX["opacity_anim"]["prop"] = 4
     obj_VFX["opacity_anim"]["length"] = 95

@@ -5094,7 +5094,7 @@ function load_game_scene_anim_char_common_burst_RC_red(
         self_side_obj_char["VFX_hit_back_table"] = {}
         opponent_side_obj_char["VFX_hit_back_table"] = {}
         insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_red_badge)
-        insert_VFX_game_scene_char_RC_partical(self_side_obj_char)
+        insert_VFX_game_scene_char_RC_partical(self_side_obj_char,{1.00,0.28,0.22})
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
         -- update
         update_state()
@@ -5146,6 +5146,8 @@ function load_game_scene_anim_char_common_burst_RC_red(
     res[27] = function()
         -- draw_correction
         self_side_obj_char[8] = 5
+        -- insert_VFX
+        insert_VFX_game_scene_char_RC_blast(self_side_obj_char,1,1,{1.00,0.28,0.22})
         -- update
         update_state()
     end
@@ -5288,7 +5290,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         self_side_obj_char["VFX_hit_back_table"] = {}
         opponent_side_obj_char["VFX_hit_back_table"] = {}
         insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_blue_badge)
-        insert_VFX_game_scene_char_RC_partical(self_side_obj_char)
+        insert_VFX_game_scene_char_RC_partical(self_side_obj_char,{0.35,0.65,1.00})
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
         -- update
         update_state()
@@ -5371,6 +5373,8 @@ function load_game_scene_anim_char_common_burst_RC_blue(
     res[27] = function()
         -- draw_correction
         self_side_obj_char[8] = 5
+        -- insert_VFX
+        insert_VFX_game_scene_char_RC_blast(self_side_obj_char,1,1,{0.35,0.65,1.00})
         -- update
         update_state()
     end
@@ -5556,7 +5560,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         self_side_obj_char["VFX_hit_back_table"] = {}
         opponent_side_obj_char["VFX_hit_back_table"] = {}
         insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_purple_badge)
-        insert_VFX_game_scene_char_RC_partical(self_side_obj_char)
+        insert_VFX_game_scene_char_RC_partical(self_side_obj_char,{0.78,0.40,1.00})
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
         -- play_SFX
         play_obj_audio(self_side_move_SFX_table["purple_RC"])
@@ -5596,6 +5600,8 @@ function load_game_scene_anim_char_common_burst_RC_purple(
     res[27] = function()
         -- draw_correction
         self_side_obj_char[8] = 5
+        -- insert_VFX
+        insert_VFX_game_scene_char_RC_blast(self_side_obj_char,1,1.25,{0.78,0.40,1.00})
         -- update
         update_state()
     end
@@ -5743,7 +5749,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         self_side_obj_char["VFX_hit_back_table"] = {}
         opponent_side_obj_char["VFX_hit_back_table"] = {}
         insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_yellow_badge)
-        insert_VFX_game_scene_char_RC_partical(self_side_obj_char)
+        insert_VFX_game_scene_char_RC_partical(self_side_obj_char,{1.00,0.88,0.30})
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
         -- play_SFX
         play_obj_audio(self_side_move_SFX_table["yellow_RC_whiff"])
@@ -5777,6 +5783,8 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     res[27] = function()
         -- draw_correction
         self_side_obj_char[8] = 5
+        -- insert_VFX
+        insert_VFX_game_scene_char_RC_blast(self_side_obj_char,1,1.25,{1.00,0.88,0.30})
         -- update
         update_state()
     end

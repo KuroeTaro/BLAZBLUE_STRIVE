@@ -191,6 +191,170 @@ function love.load()
         log("  black_overlay function not found")
     end
 
+    -- ---- RC black overlay(峰值 0.825)----
+    if type(insert_VFX_game_scene_char_RC_black_overlay) == "function" then
+        local rc_char = { VFX_black_overlay_table = {} }
+        insert_VFX_game_scene_char_RC_black_overlay(rc_char)
+        local rcov = rc_char["VFX_black_overlay_table"][1]
+        local rcseq = {}
+        for f = 0, 96 do
+            rcov["update"]()
+            if f == 0 or f == 10 or f == 20 or f == 21 or f == 60 or f == 85 or f == 90 or f == 94 then
+                rcseq[#rcseq + 1] = string.format("f%d=%.3f", f, rcov[4])
+            end
+        end
+        log("  RC_black_overlay opacity: " .. table.concat(rcseq, " "))
+        local rdok, rderr = pcall(rcov["draw"])
+        log("  RC_black_overlay draw: " .. (rdok and "OK" or ("FAIL " .. tostring(rderr))))
+    end
+
+    -- 只编译不执行的文件
+    for _, rel in ipairs({ "scenes/game_scene/_common/init.lua" }) do
+        local cc, ee = loadfile(REPO .. "/" .. rel)
+        log("COMPILE " .. (cc and "OK   " or "FAIL ") .. rel .. (cc and "" or (" : " .. tostring(ee))))
+    end
+
+    -- ---- RC blast:帧步进 / 中心对齐 / 绘制 ----
+    log("")
+    for _, rel in ipairs({
+        "update_general_use_functions/animator.lua",
+        "draw_general_use_functions.lua",
+        "scenes/game_scene/_common/_VFX.lua",
+        "scenes/game_scene/_common/_anim.lua",
+        "scenes/game_scene/_common/_projectile.lua",
+        "scenes/game_scene/_common/load_function.lua",
+        "threads/game_scene/VFX_overdrive_heat.lua",
+    }) do
+        local c, e = loadfile(REPO .. "/" .. rel)
+        if not c then
+            log("SYNTAX FAIL " .. rel .. " : " .. tostring(e))
+        else
+            local okr, errr = pcall(c)
+            log((okr and "SYNTAX OK   " or "RUN FAIL    ") .. rel
+                .. (okr and "" or (" : " .. tostring(rerr or errr))))
+        end
+    end
+    if type(insert_VFX_game_scene_char_RC_blast) == "function" then
+        -- 造一个假的 sprite sheet(4x4 图,15 个相同 quad),只为跑通绘制路径
+        local dummy = love.graphics.newImage(love.image.newImageData(4, 4))
+        local sb = love.graphics.newSpriteBatch(dummy, 8, "dynamic", { "position", "color" })
+        local sheet = { sprite_batch = sb, frames = {} }
+        for i = 0, 14 do
+            sheet.frames[tostring(i)] = { 0, 0, 4, 4, 4, 4 }
+        end
+        image_sprite_sheet_VFX_game_scene_RC_blast = sheet
+        obj_stage_game_scene_camera = { 0, -365, -800 }
+
+        -- 与 _anim.lua 里四个 RC 的实际调用保持一致(第 4 项 = 叠几层,红是 2)
+        local configs = {
+            { "red",    2,    { 1.00, 0.28, 0.22 }, 2 },
+            { "blue",   2,    { 0.35, 0.65, 1.00 }, 1 },
+            { "purple", 1.25, { 0.78, 0.40, 1.00 }, 1 },
+            { "yellow", 1.25, { 1.00, 0.88, 0.30 }, 1 },
+        }
+        for _, cfg in ipairs(configs) do
+            local name, scale, col, layers = cfg[1], cfg[2], cfg[3], cfg[4]
+            local fc = {
+                x = 300, y = -120, [3] = 0, [5] = 1, [6] = 1, [7] = 0,
+                height = "stand", VFX_common_back_table = {},
+            }
+            insert_VFX_game_scene_char_RC_blast(fc, 1, scale, col, layers)
+            local v = fc["VFX_common_back_table"][1]
+            local sx, sy, yo = fc[5], fc[6], 880
+            local bcx = fc["x"]
+            local bcy = (fc["y"] - sy * yo) + sy * 600
+            local half = 500 * (v[5] / sx)
+            local cx, cy = v[1] + sx * half, v[2] + sy * half
+            local dok, derr = pcall(v["draw"])
+            log(string.format("  %-6s alpha=%.2f scale=%d size=%4.0f  centre=(%.1f,%.1f) badge=(%.1f,%.1f) %s  draw:%s",
+                name, v[4], scale, half * 2, cx, cy, bcx, bcy,
+                (math.abs(bcx - cx) < 0.01 and math.abs(bcy - cy) < 0.01) and "OK" or "MISMATCH",
+                dok and "OK" or tostring(derr)))
+            if name == "red" then
+                -- 顺便验一次帧步进(2f 一帧、life 30)
+                local seq, life_end = {}, 0
+                for f = 0, 33 do
+                    v["update"]()
+                    if f % 2 == 0 or f == 32 then seq[#seq + 1] = tostring(v[8]) end
+                    life_end = v["life"]
+                end
+                log("    frames @0,2,4,...: " .. table.concat(seq, ","))
+                log(string.format("    after 34 updates: life=%d", life_end))
+            end
+        end
+
+        -- RC_partical 的颜色:用纯白 dummy 图 add 到黑画布,读最亮像素即得实际 tint
+        -- 先把染色 shader 编译好(直接读源码,绕过 love.filesystem 沙箱)
+        local id = love.image.newImageData(8, 8)
+        for y = 0, 7 do
+            for x = 0, 7 do id:setPixel(x, y, 1, 1, 1, 1) end
+        end
+        local wimg = love.graphics.newImage(id)
+        local wsb = love.graphics.newSpriteBatch(wimg, 8, "dynamic", { "position", "color" })
+        local wsheet = { sprite_batch = wsb, frames = {} }
+        for i = 0, 14 do wsheet.frames[tostring(i)] = { 0, 0, 8, 8, 8, 8 } end
+        image_sprite_sheet_VFX_game_scene_RC_partical = wsheet
+        local cv = love.graphics.newCanvas(1600, 900)
+        for _, cfg in ipairs(configs) do
+            love.graphics.setCanvas(cv)
+            love.graphics.clear(0, 0, 0, 1)
+            -- RC_partical 的贴图是 600x600,左上角在 (x-600, y-y_offset);
+            -- 这里 dummy 只有 8x8,所以把角色挪到能让它落在画面里的位置
+            local fc = {
+                x = 300, y = 400, [3] = 0, [5] = 1, [6] = 1, [7] = 0,
+                height = "stand", VFX_common_back_table = {},
+            }
+            insert_VFX_game_scene_char_RC_partical(fc, cfg[3], cfg[4])
+            local layers = cfg[4]
+            fc["VFX_common_back_table"][1]["draw"]()
+            love.graphics.setCanvas()
+            local d = cv:newImageData()
+            local best, br, bg, bb = -1, 0, 0, 0
+            for yy = 0, 899 do
+                for xx = 0, 1599 do
+                    local r, g, b = d:getPixel(xx, yy)
+                    local m = r + g + b
+                    if m > best then best = m; br, bg, bb = r, g, b end
+                end
+            end
+            if cfg[1] == "red" then
+                local v0 = fc["VFX_common_back_table"][1]
+                log(string.format("    [debug] obj[1]=%.1f obj[2]=%.1f obj[5]=%.1f obj[8]=%d batch_count=%d frames0=%s",
+                    v0[1], v0[2], v0[5], v0[8], wsb:getCount(), tostring(wsheet.frames["0"][3])))
+                savePng(d, "partical_debug")
+            end
+            -- add 叠加 layers 次 -> 渲染值 = min(1, tint*layers)
+            local er = math.min(1, cfg[3][1] * layers)
+            local eg = math.min(1, cfg[3][2] * layers)
+            local eb = math.min(1, cfg[3][3] * layers)
+            log(string.format("  partical %-6s 期望=(%.2f,%.2f,%.2f) 渲染=(%.2f,%.2f,%.2f) %s",
+                cfg[1], er, eg, eb, br, bg, bb,
+                (math.abs(br - er) < 0.02 and math.abs(bg - eg) < 0.02
+                    and math.abs(bb - eb) < 0.02) and "OK" or "MISMATCH"))
+        end
+
+
+        -- 空中 + 左右翻转再验一次
+
+        -- 空中 + 左右翻转再验一次
+        local fake2 = {
+            x = -450, y = -600, [3] = 0, [5] = -1, [6] = 1, [7] = 0,
+            height = "air", VFX_common_back_table = {},
+        }
+        insert_VFX_game_scene_char_RC_blast(fake2, 1, 1.25, { 0.35, 0.65, 1.00 })
+        local b2 = fake2["VFX_common_back_table"][1]
+        local half2 = 500 * (b2[5] / fake2[5])
+        local bcx2 = fake2["x"]
+        local bcy2 = (fake2["y"] - fake2[6] * 750) + fake2[6] * 600
+        log(string.format("  air(flip) badge=(%.1f,%.1f) blast=(%.1f,%.1f) %s",
+            bcx2, bcy2, b2[1] + fake2[5] * half2, b2[2] + fake2[6] * half2,
+            (math.abs(bcx2 - (b2[1] + fake2[5] * half2)) < 0.01
+                and math.abs(bcy2 - (b2[2] + fake2[6] * half2)) < 0.01)
+            and "OK" or "MISMATCH"))
+    else
+        log("  insert_VFX_game_scene_char_RC_blast not found")
+    end
+
     flush()
     love.event.quit()
 end
