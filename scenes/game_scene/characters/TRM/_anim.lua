@@ -4039,22 +4039,22 @@ function load_game_scene_anim_char_TRM_cS(
         hit_side_obj_char["block_heat_gain"] = 2.0
         hit_side_obj_char["block_risk_gauge_gain"] = 25.0
         hit_side_obj_char["FD_block_heat_drain"] = 5.0
-        hit_side_obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv3(
+        hit_side_obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv4(
             hit_side_obj_char,hurt_side_obj_char,"0_stand_hurt_high","stand","5_stand_idle",
             42.5,5,1.00,0,2.5,1.00,
             nil,nil,nil,nil,function() end
         )
-        hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv3(
+        hit_side_obj_char["stand_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv4(
             hit_side_obj_char,hurt_side_obj_char,"4_stand_block_high","stand","5_stand_idle",
             42.5,5,1.00,0,2.5,1.00,
             nil,nil,nil,nil,function() end
         )
-        hit_side_obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv3(
+        hit_side_obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_ground_hurt_lv4(
             hit_side_obj_char,hurt_side_obj_char,"0_crouch_hurt","crouch","1_2_3_crouch",
             42.5,5,1.00,0,2.5,1.00,
             nil,nil,nil,nil,function() end
         )
-        hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv3(
+        hit_side_obj_char["crouch_block_animation"] = load_game_scene_anim_char_common_0_ground_block_lv4(
             hit_side_obj_char,hurt_side_obj_char,"1_crouch_block","crouch","1_2_3_crouch",
             42.5,5,1.00,0,2.5,1.00,
             nil,nil,nil,nil,function() end
@@ -7814,7 +7814,7 @@ function load_game_scene_anim_char_TRM_4SP_P(
         hit_side_obj_char["hit_type"] = "none" -- none_strike_throw_burst
         hit_side_obj_char["hit_guard_type"] = "none" -- none_all_low_mid_high
         hit_side_obj_char["hurt_state_target"] = "idle" -- idle_unblock_punish_counter_GP_parry
-        hit_side_obj_char["move_state"] = "recovery" -- none_startup_active_recovery
+        hit_side_obj_char["move_state"] = "none" -- none_startup_active_recovery
         hit_side_obj_char["hit_cancel"] = false
         hit_side_obj_char["idle_cancel"] = true
         -- state_number
@@ -8660,12 +8660,6 @@ function load_game_scene_anim_char_TRM_4SP_S_H(
         hit_side_obj_char[8] = 1
     end
     res[2] = function()
-        -- state
-        hit_side_obj_char["hit_cancel"] = false
-        hit_side_obj_char["idle_cancel"] = true
-        -- input_sys_cache
-        hit_side_obj_char["input_sys_state"] = "load" -- none_save_load
-        common_game_scene_get_input_sys_cache_state_machine(hit_side)()
         -- draw_correction
         hit_side_obj_char[8] = 2
     end
@@ -8678,6 +8672,12 @@ function load_game_scene_anim_char_TRM_4SP_S_H(
         hit_side_obj_char[8] = 1
     end
     res[7] = function()
+        -- state
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = true
+        -- input_sys_cache
+        hit_side_obj_char["input_sys_state"] = "load" -- none_save_load
+        common_game_scene_get_input_sys_cache_state_machine(hit_side)()
         -- draw_correction
         hit_side_obj_char[8] = 2
     end
