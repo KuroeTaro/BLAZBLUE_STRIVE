@@ -3,7 +3,11 @@ function common_game_scene_HUD_timer_reset()
     ROUND_TIMER[2] = 9
     ROUND_TIMER[3] = 5
     ROUND_TIMER[4] = 9
-    obj_HUD_game_scene_timer["state"] = "off"
+    if GAME_MODE == 0 then
+        obj_HUD_game_scene_timer["state"] = "off"
+    else
+        obj_HUD_game_scene_timer["state"] = "on"
+    end
 end
 function common_game_scene_toggle_dynamic_HUD(toggle_value)
     obj_HUD_game_scene_timer[4] = toggle_value

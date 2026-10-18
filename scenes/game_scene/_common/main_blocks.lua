@@ -924,6 +924,7 @@ end
 function update_game_scene_HUD()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
+    -- round_timer
     update_game_scene_HUD_timer(obj_HUD_game_scene_timer)
     -- win_marks
     update_game_scene_win_marks(obj_HUD_game_scene_win_marks_LP)

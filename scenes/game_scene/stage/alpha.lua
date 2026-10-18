@@ -583,7 +583,9 @@ function load_game_scene_stage_apply_wallbreak_end_init(
     end
     load_game_scene_wallbreak_end_init_LP()
     load_game_scene_wallbreak_end_init_RP()
-    obj_HUD_game_scene_timer["state"] = "on"
+    if GAME_MODE ~= 0 then
+        obj_HUD_game_scene_timer["state"] = "on"
+    end
     common_game_scene_init_input_sys_state_for_wallbreak(hurt_side_obj_char)
     common_game_scene_init_input_sys_state_for_wallbreak(hit_side_obj_char)
     init_character_anim_with(

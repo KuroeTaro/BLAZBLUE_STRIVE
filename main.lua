@@ -119,7 +119,7 @@ function love.load()
 	modify_quit_game_reocrd()
 	JSON = require("dkjson")
 	-- character_select_scene & game_scene
-	GAME_MODE = 0 -- 1.训练模式 2.本地多人 3.在线多人
+	GAME_MODE = 0 -- 0.训练模式 1.本地多人 2.在线多人
 	CHAR_SELECT_LR = {}
 	CHAR_SELECT_LR["L"] = 4
 	CHAR_SELECT_LR["R"] = 5

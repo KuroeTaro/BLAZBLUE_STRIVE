@@ -35,5 +35,3 @@ __WORK_PLAN__
     -- the ground of the ring at y = 0
     -- and so call up is toward the inside of the ring Y is negative
     -- the other side is Y positive
-
--- 上墙后的输入缓存问题
