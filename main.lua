@@ -137,7 +137,7 @@ function love.load()
 	}
 		-- train_mode
 	TRAINING_MODE_CONFIG = {}
-	TRAINING_MODE_CONFIG["announcer"] = true
+	TRAINING_MODE_CONFIG["announcer"] = false
 		-- network
 	NETWORK_MATCH_SIDE = "L"
 	NETWORK_OTHER_SIDE = "R"

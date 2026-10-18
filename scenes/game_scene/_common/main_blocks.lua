@@ -7,7 +7,7 @@ function update_game_scene_training_before_ease_in()
         init_point_linear_anim_with(
             obj_UI_game_scene_black_solid,anim_UI_point_linear_game_scene_solid_ease_out_opacity_1_0
         )
-        if TRAINING_MODE_CONFIG["announcer"] == false then
+        if not TRAINING_MODE_CONFIG["announcer"] then
             current_update_block = update_game_scene_training_black_solid_ease_in
             common_game_scene_toggle_dynamic_HUD(1)
         else
@@ -70,6 +70,14 @@ function update_game_scene_training_annoucer_ease_in()
         init_input_sys_cache_LP(obj_char_game_scene_char_LP)
         obj_char_game_scene_char_RP["input_sys_state"] = "save" -- none_save_load
         init_input_sys_cache_RP(obj_char_game_scene_char_RP)
+        obj_char_game_scene_char_LP["input_sys_state_negative_edge"] = "save" -- none_save_load
+        common_game_scene_get_input_sys_cache_negative_edge_init("L")(obj_char_game_scene_char_LP)
+        obj_char_game_scene_char_RP["input_sys_state_negative_edge"] = "save" -- none_save_load
+        common_game_scene_get_input_sys_cache_negative_edge_init("R")(obj_char_game_scene_char_RP)
+        state_machine_char_game_scene_char_LP_input_sys_cache()
+        state_machine_char_game_scene_char_RP_input_sys_cache()
+        state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
+        state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
     elseif SCENE_TIMER < 165 then
         state_machine_UI_game_scene_HUD_ACT_common(obj_HUD_game_scene_ease_in,50)
         state_machine_UI_game_scene_HUD_ACT_common(obj_annoucer_game_scene_lets_dance,40)
@@ -106,15 +114,16 @@ function update_game_scene_training_annoucer_ease_in()
         current_update_block = update_game_scene_training_main
         obj_char_game_scene_char_LP["state"] = "5_stand_idle"
         obj_char_game_scene_char_RP["state"] = "5_stand_idle"
-        state_machine_char_game_scene_char_LP_input_sys_cache()
-        state_machine_char_game_scene_char_RP_input_sys_cache()
-        state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
-        state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
+        obj_char_game_scene_char_LP["input_sys_state"] = "load" -- none_save_load
+        obj_char_game_scene_char_RP["input_sys_state"] = "load" -- none_save_load
+        obj_char_game_scene_char_LP["input_sys_state_negative_edge"] = "load" -- none_save_load
+        obj_char_game_scene_char_RP["input_sys_state_negative_edge"] = "load" -- none_save_load
+        update_game_scene_training_main()
         -- HUD
         common_game_scene_toggle_dynamic_HUD(1)
         common_game_scene_toggle_ease_in(0)
         common_game_scene_HUD_timer_reset()
-        obj_HUD_game_scene_timer["state"] = "on"
+        obj_HUD_game_scene_timer["state"] = "off"
     end
 end
 function update_game_scene_training_main()

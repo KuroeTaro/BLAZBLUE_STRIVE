@@ -132,7 +132,7 @@ end
 function update_try_joystick_reconnect_iterate(side)
     local current_contoller = INPUT_SYS_CURRENT_CONTROLLER[side]
     local last_controller_ID = INPUT_SYS_LAST_JOYSTICK_ID[side]
-    if (last_controller_ID and current_contoller[1] ~= "joystick") == false then
+    if not (last_controller_ID and current_contoller[1] ~= "joystick") then
         return
     end
     for i = 1,#INPUT_SYS_CURRENT_JOYSTICK_TABLE,1 do

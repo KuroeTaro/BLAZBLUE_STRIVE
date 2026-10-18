@@ -295,7 +295,10 @@ end
 function collision_projectile_clash_test(obj_A,obj_B)
 end
 function collision_strike_hit_confirm_test(hit_obj,hurt_obj)
-    if hit_obj["hit_type"] ~= "strike" or hurt_obj["strike_inv"] == true or hit_obj["strike_active"] == false then
+    if hit_obj["hit_type"] ~= "strike" 
+    or hurt_obj["strike_inv"] 
+    or (not hit_obj["strike_active"])
+    then
         return false
     end
     for i = 1,#hit_obj["hitbox_table"] do
@@ -312,8 +315,8 @@ function collision_strike_hit_confirm_test(hit_obj,hurt_obj)
 end
 function collision_throw_hit_confirm_test(hit_obj,hurt_obj)
     if hit_obj["hit_type"] ~= "throw"
-    or hurt_obj["throw_inv"] == true
-    or hit_obj["throw_active"] == false
+    or hurt_obj["throw_inv"]
+    or (not hit_obj["throw_active"])
     or collision_throw_air_or_not_test(hit_obj,hurt_obj)
     or math.abs(hit_obj["x"] - hurt_obj["x"]) > hit_obj["default_throw_distance"] then
         return false

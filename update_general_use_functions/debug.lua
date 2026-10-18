@@ -3,9 +3,9 @@ function set_pause()
     {
         ["Released"] = function()
             if love.keyboard.isDown("f1") or test_input_sys_press(INPUT_SYS_CURRENT_COMMAND_STATE["L"]["back"]) then
-                if DEBUG_PAUSE == false then
+                if not DEBUG_PAUSE then
                     DEBUG_PAUSE = true
-                elseif DEBUG_PAUSE == true then
+                else
                     DEBUG_PAUSE = false
                 end
                 DEBUG_PAUSE_STATE = "Pressing"
@@ -41,9 +41,9 @@ function set_show_info()
         ["Released"] = function()
             if love.keyboard.isDown("f2") then
                 DEBUG_INFO_SHOWS_STATE = "Pressing"
-                if DEBUG_INFO_SHOWS == false then
+                if not DEBUG_INFO_SHOWS then
                     DEBUG_INFO_SHOWS = true
-                elseif DEBUG_INFO_SHOWS == true then
+                else
                     DEBUG_INFO_SHOWS = false
                 end
             end
@@ -77,9 +77,9 @@ function set_show_hitbox()
         ["Released"] = function()
             if love.keyboard.isDown("f3") then
                 DEBUG_HITBOX_SHOWS_STATE = "Pressing"
-                if DEBUG_HITBOX_SHOWS == false then
+                if not DEBUG_HITBOX_SHOWS then
                     DEBUG_HITBOX_SHOWS = true
-                elseif DEBUG_HITBOX_SHOWS == true then
+                else
                     DEBUG_HITBOX_SHOWS = false
                 end
             end
@@ -140,9 +140,9 @@ function set_toggle()
         ["Released"] = function()
             if love.keyboard.isDown("0") then
                 DEBUG_TRAINNING_TOGGLE_STATE = "Pressing"
-                if DEBUG_TRAINNING_TOGGLE == false then
+                if not DEBUG_TRAINNING_TOGGLE then
                     DEBUG_TRAINNING_TOGGLE = true
-                elseif DEBUG_TRAINNING_TOGGLE == true then
+                else
                     DEBUG_TRAINNING_TOGGLE = false
                 end
             end
@@ -176,9 +176,9 @@ function set_counter()
         ["Released"] = function()
             if love.keyboard.isDown("1") then
                 DEBUG_TRAINNING_COUNTER_STATE = "Pressing"
-                if DEBUG_TRAINNING_COUNTER == false then
+                if not DEBUG_TRAINNING_COUNTER then
                     DEBUG_TRAINNING_COUNTER = true
-                elseif DEBUG_TRAINNING_COUNTER == true then
+                else
                     DEBUG_TRAINNING_COUNTER = false
                 end
             end
@@ -326,9 +326,9 @@ function set_throw_clash()
         ["Released"] = function()
             if love.keyboard.isDown("5") then
                 DEBUG_TRAINNING_THROW_CLASH_STATE = "Pressing"
-                if DEBUG_TRAINNING_THROW_CLASH == false then
+                if not DEBUG_TRAINNING_THROW_CLASH then
                     DEBUG_TRAINNING_THROW_CLASH = true
-                elseif DEBUG_TRAINNING_THROW_CLASH == true then
+                else
                     DEBUG_TRAINNING_THROW_CLASH = false
                 end
             end

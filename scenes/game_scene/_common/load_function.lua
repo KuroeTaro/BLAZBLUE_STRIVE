@@ -46,8 +46,6 @@ function load_game_scene_prep()
     ORDER_SIZE_TABLE = {14,4,3,1,1,4,4,11,39,11,39,3,4} -- 每个load function的最大值
     LOAD_ONCE_TABLE = {false,false,false,false,false,false,false,false,false,false,false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     LOADING_FUNCTION_AMOUNT = 13 -- 和线程数相同
-    -- GAME_MODE = 0
-    -- TRAINING_MODE_CONFIG["announcer"] = true
     -- 训练模式
     if GAME_MODE == 0 then
         NEXT_UPDATE_BLOCK = update_game_scene_training_before_ease_in
