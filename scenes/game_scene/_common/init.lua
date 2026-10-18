@@ -130,8 +130,8 @@ function load_game_scene_announcer_HUD_obj()
     obj_HUD_game_scene_timer["FCT"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_timer["LCT"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_timer["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_HUD_game_scene_timer["state"] = "default"
-    -- bars
+    obj_HUD_game_scene_timer["state"] = "off"
+    -- gauges
     obj_HUD_game_scene_health_bar_LP = {685,65,nil,0,-1,1,0,0}
     obj_HUD_game_scene_health_bar_RP = {915,65,nil,0,1,1,0,0}
     obj_HUD_game_scene_health_bar_LP_fade = {685,65,nil,0,-1,1,0,0}
@@ -142,12 +142,13 @@ function load_game_scene_announcer_HUD_obj()
     obj_HUD_game_scene_ability_bar_RP = {930,102,nil,0,1,1,0,0}
     obj_HUD_game_scene_overdrive_pie_LP = {131,75,nil,0,1,1,0,0}
     obj_HUD_game_scene_overdrive_pie_RP = {1469,75,nil,0,-1,1,0,0}
+    obj_HUD_game_scene_risk_LP = {255,127,nil,0,1,1,0,0}
+    obj_HUD_game_scene_risk_RP = {1345,127,nil,0,-1,1,0,0}
+    -- points
     obj_HUD_game_scene_win_marks_LP = {750,115,nil,0,1,1,0,0}
     obj_HUD_game_scene_win_marks_RP = {850,115,nil,0,-1,1,0,0}
     obj_HUD_game_scene_match_point_LP = {717,85,nil,0,1,1,0,0}
     obj_HUD_game_scene_match_point_RP = {883,85,nil,0,-1,1,0,0}
-    obj_HUD_game_scene_risk_LP = {255,127,nil,0,1,1,0,0}
-    obj_HUD_game_scene_risk_RP = {1345,127,nil,0,-1,1,0,0}
     -- overdrive_text
     obj_HUD_game_scene_overdrive_text_LP = {205,102,nil,0,1,1,0,0}
     obj_HUD_game_scene_overdrive_text_LP["FCT"] = {0,0,0,0,0,0,0,0}

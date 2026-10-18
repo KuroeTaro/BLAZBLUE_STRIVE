@@ -72,6 +72,7 @@ function love.run()
 	end
 end
 function love.load()
+	-- debug
 	DEBUG_GAP_NUM = 0
 	DEBUG_LAST_SLEEP = 0
 	DEBUG_PAUSE = false
@@ -126,6 +127,15 @@ function love.load()
 	CONTROL_METHOD["L"] = 1
 	CONTROL_METHOD["R"] = 1
 	-- game_scene
+		-- collision
+	COLLIDE_TICK = 16
+		-- game_speed
+	GAME_SPEED_APPLY_FIELD_NAME_TABLE = {
+		"0","game_speed","game_speed_subframe",
+		"game_speed_abnormal_realtime_countdown",
+		"game_speed_force_0_countdown","game_speed_force_1_countdown"
+	}
+		-- train_mode
 	TRAINING_MODE_CONFIG = {}
 	TRAINING_MODE_CONFIG["announcer"] = false
 		-- network
@@ -135,21 +145,15 @@ function love.load()
 	ROLLBACK_INPUT_STATE_TABLE = {}
 	ROLLBACK_GAME_CACHE_TABLE = {}
 		-- draw & HUD
-	CHARACTER_VISUAL_FRONT = "L"
+	ROUND_COUNTER = 1
+	ROUND_TIMER = {9,9,6,0} -- 99s and 60f
 	WIN_MARK = {}
 	WIN_MARK["L"] = 0
 	WIN_MARK["R"] = 0
 	MATCH_POINT = {}
 	MATCH_POINT["L"] = 0
 	MATCH_POINT["R"] = 0
-	ROUND_COUNTER = 1
-	ROUND_TIMER = {9,9,6,0} -- 99s and 60f
-	COLLIDE_TICK = 16
-	GAME_SPEED_APPLY_FIELD_NAME_TABLE = {
-		"0","game_speed","game_speed_subframe",
-		"game_speed_abnormal_realtime_countdown",
-		"game_speed_force_0_countdown","game_speed_force_1_countdown"
-	}
+	CHARACTER_VISUAL_FRONT = "L"
 	-- to be continue
 	-- non-character global variable
 -------------------------------------------------

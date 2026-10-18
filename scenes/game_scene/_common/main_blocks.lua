@@ -915,6 +915,52 @@ function update_game_scene_HUD()
     update_game_scene_HUD_overdrive_timer(obj_char_game_scene_char_LP,obj_HUD_game_scene_overdrive_timer_LP)
     update_game_scene_HUD_overdrive_timer(obj_char_game_scene_char_RP,obj_HUD_game_scene_overdrive_timer_RP)
 end
+function update_game_scene_HUD_timer(timer_obj)
+    local switch = {
+        ["off"] = function()
+        end,
+        ["pause"] = function()
+        end,
+        ["on"] = function()
+        end
+    }
+    local this_function = switch[timer_obj["state"]]
+    if this_function then this_function() end
+end
+function update_game_scene_win_marks(win_marks_obj)
+    local switch = {
+        ["add_one"] = function()
+        end,
+        ["off"] = function()
+        end
+    }
+    local this_function = switch[win_marks_obj["state"]]
+    if this_function then this_function() end
+end
+function update_game_scene_match_point(match_point_obj)
+    local switch = {
+        ["add_one"] = function()
+        end,
+        ["off"] = function()
+        end
+    }
+    local this_function = switch[win_marks_obj["state"]]
+    if this_function then this_function() end
+end
+function update_game_scene_HUD_overdrive_text(obj_char,text_obj)
+    local switch = {
+        ["off"] = function()
+        end,
+        ["ease_in"] = function()
+        end,
+        ["ready"] = function()
+        end,
+        ["ease_out"] = function()
+        end
+    }
+    local this_function = switch[text_obj["state"]]
+    if this_function then this_function() end
+end
 function update_game_scene_HUD_overdrive_timer(obj_char,timer_obj)
     local switch = {
         ["default"] = function()
@@ -999,17 +1045,42 @@ function update_game_scene_HUD_overdrive_timer(obj_char,timer_obj)
     local this_function = switch[timer_obj["state"]]
     if this_function then this_function() end
 end
-function update_game_scene_HUD_overdrive_text(obj_char,text_obj)
-    local switch = {
-        ["off"] = function()
-        end,
-        ["ease_in"] = function()
-        end,
-        ["ready"] = function()
-        end,
-        ["ease_out"] = function()
-        end
-    }
-    local this_function = switch[text_obj["state"]]
-    if this_function then this_function() end
-end
+
+    -- -- HUD_timer()
+    -- obj_HUD_game_scene_timer = {780,85,nil,0,1,1,0,0}
+    -- obj_HUD_game_scene_timer["FCT"] = {0,0,0,0,0,0,0,0}
+    -- obj_HUD_game_scene_timer["LCT"] = {0,0,0,0,0,0,0,0}
+    -- obj_HUD_game_scene_timer["LCD"] = {0,0,0,0,0,0,0,0}
+    -- obj_HUD_game_scene_timer["state"] = "default"
+    -- -- gauges
+    -- obj_HUD_game_scene_health_bar_LP = {685,65,nil,0,-1,1,0,0}
+    -- obj_HUD_game_scene_health_bar_RP = {915,65,nil,0,1,1,0,0}
+    -- obj_HUD_game_scene_health_bar_LP_fade = {685,65,nil,0,-1,1,0,0}
+    -- obj_HUD_game_scene_health_bar_RP_fade = {915,65,nil,0,1,1,0,0}
+    -- obj_HUD_game_scene_heat_bar_LP = {678,124,nil,0,-1,1,0,0}
+    -- obj_HUD_game_scene_heat_bar_RP = {922,124,nil,0,1,1,0,0}
+    -- obj_HUD_game_scene_ability_bar_LP = {670,102,nil,0,-1,1,0,0}
+    -- obj_HUD_game_scene_ability_bar_RP = {930,102,nil,0,1,1,0,0}
+    -- obj_HUD_game_scene_overdrive_pie_LP = {131,75,nil,0,1,1,0,0}
+    -- obj_HUD_game_scene_overdrive_pie_RP = {1469,75,nil,0,-1,1,0,0}
+    -- obj_HUD_game_scene_risk_LP = {255,127,nil,0,1,1,0,0}
+    -- obj_HUD_game_scene_risk_RP = {1345,127,nil,0,-1,1,0,0}
+    -- -- points(need_state_machine)
+    -- obj_HUD_game_scene_win_marks_LP = {750,115,nil,0,1,1,0,0}
+    -- obj_HUD_game_scene_win_marks_RP = {850,115,nil,0,-1,1,0,0}
+    -- obj_HUD_game_scene_match_point_LP = {717,85,nil,0,1,1,0,0}
+    -- obj_HUD_game_scene_match_point_RP = {883,85,nil,0,-1,1,0,0}
+    -- -- overdrive_text
+    -- obj_HUD_game_scene_overdrive_text_LP = {205,102,nil,0,1,1,0,0}
+    -- obj_HUD_game_scene_overdrive_text_RP = {1250,102,nil,0,1,1,0,0}
+    -- -- overdrive_timer
+    -- obj_HUD_game_scene_overdrive_timer_LP = {217,149,nil,0,1,1,0,0}
+    -- obj_HUD_game_scene_overdrive_timer_LP["state"] = "default"
+    -- obj_HUD_game_scene_overdrive_timer_RP = {1265,149,nil,0,1,1,0,0}
+    -- obj_HUD_game_scene_overdrive_timer_RP["state"] = "default"
+    -- -- background_gauge
+    -- obj_HUD_game_scene_background_gauge = {0,0,nil,0,1,1,0,0}
+    -- obj_HUD_game_scene_background_gauge["FCT"] = {0,0,0,0,0,0,0,0}
+    -- obj_HUD_game_scene_background_gauge["LCT"] = {0,0,0,0,0,0,0,0}
+    -- obj_HUD_game_scene_background_gauge["LCD"] = {0,0,0,0,0,0,0,0}
+    -- obj_HUD_game_scene_background_gauge["state"] = "default"
