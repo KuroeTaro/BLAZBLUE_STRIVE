@@ -5537,8 +5537,10 @@ function state_gate_game_scene_char_RP_from_hitstop(
         self_side_obj_char["state"] = self_side_obj_char["state_cache"]
         self_side_obj_char["physics_lock"] = false
         -- input_sys_cache
-        self_side_obj_char["input_sys_state"] = "load" -- none_save_load
-        state_machine_char_game_scene_char_RP_input_sys_cache()
+        if self_side_obj_char["hit_cancel"] then
+            self_side_obj_char["input_sys_state"] = "load" -- none_save_load
+            state_machine_char_game_scene_char_RP_input_sys_cache()
+        end
         -- _overdrive
         if state_gate_game_scene_char_RP_common_to_burst_overdrive(
             self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char,"overdrive"
