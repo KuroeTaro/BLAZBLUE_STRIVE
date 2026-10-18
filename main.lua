@@ -146,6 +146,7 @@ function love.load()
 	ROLLBACK_GAME_CACHE_TABLE = {}
 		-- draw & HUD
 	ROUND_COUNTER = 1
+	ROUND_FT = 2
 	ROUND_TIMER = {9,9,6,0} -- 99s and 60f
 	WIN_MARK = {}
 	WIN_MARK["L"] = 0

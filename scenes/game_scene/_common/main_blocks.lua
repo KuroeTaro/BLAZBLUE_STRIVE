@@ -979,7 +979,9 @@ function update_game_scene_win_marks(win_marks_obj)
 end
 function update_game_scene_match_point(match_point_obj)
     local switch = {
-        ["add_one"] = function()
+        ["on"] = function()
+        end,
+        ["ease_in"] = function()
         end,
         ["off"] = function()
         end
