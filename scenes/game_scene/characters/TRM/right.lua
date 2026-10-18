@@ -5532,12 +5532,6 @@ end
 function state_gate_game_scene_char_RP_from_hitstop(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
-    -- _[any_SP_hit_state_saved_in_state_cache]
-    if self_side_obj_char["hit_hurt_blockstop_countdown"] <= 10 then
-        if test_input_sys_press_or_hold(self_side_input["down"]) then
-            self_side_obj_char["input_sys_cache"]["down"] = true
-        end
-    end
     if self_side_obj_char["hit_hurt_blockstop_countdown"] <= 0 then
         -- original_state
         self_side_obj_char["state"] = self_side_obj_char["state_cache"]

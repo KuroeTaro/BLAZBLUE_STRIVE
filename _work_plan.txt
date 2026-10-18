@@ -36,5 +36,4 @@ __WORK_PLAN__
     -- and so call up is toward the inside of the ring Y is negative
     -- the other side is Y positive
 
--- 写各个gauge_update_对应的UI（各个子组件的state_machine）
 -- 上墙后的输入缓存问题
