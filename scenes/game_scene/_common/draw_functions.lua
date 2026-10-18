@@ -363,15 +363,22 @@ function draw_game_scene_add_to_sprite_batch_round_win_marks(
     local frame = image_sprite_sheet["frames"][quad_name]
     local quad = love.graphics.newQuad(frame[1],frame[2],frame[3],frame[4],frame[5],frame[6])
     local offset_counter = 0
+    local full_count = math.floor(mark_value)
     image_sprite_sheet["sprite_batch"]:setColor(1,1,1,opacity)
     for i = 1,10,1 do
-        if mark_value >= 1 then
+        if full_count >= 1 then
             image_sprite_sheet["sprite_batch"]:add(quad,x - offset_counter*15*sx,y + offset_counter*3*sy,r,sx,sy)
-            mark_value = mark_value - 1
+            full_count = full_count - 1
             offset_counter = offset_counter + 1
         else
             break
         end
+    end
+    -- 小数部分:整格都画完之后,按剩余值在 batch 里补一个半透明的 sprite
+    local remain = mark_value - math.floor(mark_value)
+    if remain > 0 and offset_counter < 10 then
+        image_sprite_sheet["sprite_batch"]:setColor(1,1,1,opacity*remain)
+        image_sprite_sheet["sprite_batch"]:add(quad,x - offset_counter*15*sx,y + offset_counter*3*sy,r,sx,sy)
     end
     image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
 end

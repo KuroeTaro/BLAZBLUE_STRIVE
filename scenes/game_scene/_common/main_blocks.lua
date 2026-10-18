@@ -925,6 +925,9 @@ function update_game_scene_HUD()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
     update_game_scene_HUD_timer(obj_HUD_game_scene_timer)
+    -- win marks(add_one / off)
+    update_game_scene_win_marks(obj_HUD_game_scene_win_marks_LP)
+    update_game_scene_win_marks(obj_HUD_game_scene_win_marks_RP)
     update_game_scene_HUD_overdrive_timer(obj_char_game_scene_char_LP,obj_HUD_game_scene_overdrive_timer_LP)
     update_game_scene_HUD_overdrive_timer(obj_char_game_scene_char_RP,obj_HUD_game_scene_overdrive_timer_RP)
 end
@@ -960,6 +963,13 @@ end
 function update_game_scene_win_marks(win_marks_obj)
     local switch = {
         ["add_one"] = function()
+            local side = win_marks_obj["side"]
+            local target = win_marks_obj["target"]
+            WIN_MARK[side] = math.min(WIN_MARK[side] + 0.05,target)
+            if WIN_MARK[side] >= target then
+                win_marks_obj["target"] = nil
+                win_marks_obj["state"] = "off"
+            end
         end,
         ["off"] = function()
         end

@@ -147,6 +147,13 @@ function load_game_scene_announcer_HUD_obj()
     -- points
     obj_HUD_game_scene_win_marks_LP = {750,115,nil,0,1,1,0,0}
     obj_HUD_game_scene_win_marks_RP = {850,115,nil,0,-1,1,0,0}
+    -- win_marks
+    obj_HUD_game_scene_win_marks_LP["side"] = "L"
+    obj_HUD_game_scene_win_marks_RP["side"] = "R"
+    obj_HUD_game_scene_win_marks_LP["state"] = "off"
+    obj_HUD_game_scene_win_marks_RP["state"] = "off"
+    obj_HUD_game_scene_win_marks_LP["target"] = 0
+    obj_HUD_game_scene_win_marks_RP["target"] = 0
     obj_HUD_game_scene_match_point_LP = {717,85,nil,0,1,1,0,0}
     obj_HUD_game_scene_match_point_RP = {883,85,nil,0,-1,1,0,0}
     -- overdrive_text

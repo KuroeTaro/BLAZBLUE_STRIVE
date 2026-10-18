@@ -37,5 +37,4 @@ __WORK_PLAN__
     -- the other side is Y positive
 
 -- 写各个gauge_update_对应的UI（各个子组件的state_machine）
--- 编写collision_projectile_clash_test
 -- 上墙后的输入缓存问题

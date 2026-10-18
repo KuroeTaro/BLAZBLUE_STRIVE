@@ -554,6 +554,44 @@ function love.load()
         log(string.format("  碎墙结束 set_state(on) : state=%s", obj_HUD_game_scene_timer["state"]))
     end
 
+    -- ---- win marks:add_one 线性 + 绘制半透明余格 ----
+    if type(update_game_scene_win_marks) == "function" then
+        WIN_MARK = { L = 0, R = 0 }
+        local obj = { side = "L", state = "add_one" }
+        local frames = 0
+        while obj["state"] == "add_one" and frames < 100 do
+            update_game_scene_win_marks(obj)
+            frames = frames + 1
+        end
+        log(string.format("  win_marks add_one: %d 帧 value=%.2f state=%s target=%s",
+            frames, WIN_MARK["L"], obj["state"], tostring(obj["target"])))
+        obj["state"] = "add_one"; frames = 0
+        while obj["state"] == "add_one" and frames < 100 do
+            update_game_scene_win_marks(obj); frames = frames + 1
+        end
+        log(string.format("  win_marks 第二次 add_one: %d 帧 value=%.2f (期望 2.00)", frames, WIN_MARK["L"]))
+        -- 动画途中重复触发不应多算
+        WIN_MARK["R"] = 0
+        local objR = { side = "R", state = "add_one" }
+        for i = 1,10 do update_game_scene_win_marks(objR) end
+        local mid = WIN_MARK["R"]
+        objR["state"] = "add_one"
+        for i = 1,20 do update_game_scene_win_marks(objR) end
+        log(string.format("  win_marks 重复触发: 中途=%.2f 最终=%.2f (期望 1.00)", mid, WIN_MARK["R"]))
+    end
+    if type(draw_game_scene_add_to_sprite_batch_round_win_marks) == "function" then
+        local wimg = love.graphics.newImage(love.image.newImageData(4,4))
+        local wsb = love.graphics.newSpriteBatch(wimg,32,"dynamic",{"position","color"})
+        local wsheet = { sprite_batch = wsb, frames = { HUD_win_mark = {0,0,10,10,4,4} } }
+        local wobj = {750,115,nil,1,1,1,0,0}
+        local cases = { {0,"0 个"}, {0.5,"半格"}, {1.0,"1 格"}, {1.5,"1 格+半"}, {2.75,"2 格+0.75"}, {3.0,"3 格"} }
+        for _, cs in ipairs(cases) do
+            wsb:clear()
+            draw_game_scene_add_to_sprite_batch_round_win_marks(wobj,wsheet,"HUD_win_mark",cs[1])
+            log(string.format("  win_marks 绘制 value=%.2f (%-8s) -> sprite 数=%d", cs[1], cs[2], wsb:getCount()))
+        end
+    end
+
     flush()
     love.event.quit()
 end
