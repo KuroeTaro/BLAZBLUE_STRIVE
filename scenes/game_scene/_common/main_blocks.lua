@@ -110,8 +110,11 @@ function update_game_scene_training_annoucer_ease_in()
         state_machine_char_game_scene_char_RP_input_sys_cache()
         state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
         state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
+        -- HUD
         common_game_scene_toggle_dynamic_HUD(1)
         common_game_scene_toggle_ease_in(0)
+        common_game_scene_HUD_timer_reset()
+        obj_HUD_game_scene_timer["state"] = "on"
     end
 end
 function update_game_scene_training_main()
@@ -912,6 +915,7 @@ end
 function update_game_scene_HUD()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
+    update_game_scene_HUD_timer(obj_HUD_game_scene_timer)
     update_game_scene_HUD_overdrive_timer(obj_char_game_scene_char_LP,obj_HUD_game_scene_overdrive_timer_LP)
     update_game_scene_HUD_overdrive_timer(obj_char_game_scene_char_RP,obj_HUD_game_scene_overdrive_timer_RP)
 end
@@ -919,9 +923,26 @@ function update_game_scene_HUD_timer(timer_obj)
     local switch = {
         ["off"] = function()
         end,
-        ["pause"] = function()
-        end,
         ["on"] = function()
+            ROUND_TIMER[4] = ROUND_TIMER[4] - 1
+            if ROUND_TIMER[4] < 0 then
+                ROUND_TIMER[4] = 9
+                ROUND_TIMER[3] = ROUND_TIMER[3] - 1
+                if ROUND_TIMER[3] < 0 then
+                    ROUND_TIMER[3] = 5
+                    if ROUND_TIMER[2] > 0 then
+                        ROUND_TIMER[2] = ROUND_TIMER[2] - 1
+                    elseif ROUND_TIMER[1] > 0 then
+                        ROUND_TIMER[1] = ROUND_TIMER[1] - 1
+                        ROUND_TIMER[2] = 9
+                    else
+                        ROUND_TIMER[1] = 0
+                        ROUND_TIMER[2] = 0
+                        ROUND_TIMER[3] = 0
+                        ROUND_TIMER[4] = 0
+                    end
+                end
+            end
         end
     }
     local this_function = switch[timer_obj["state"]]

@@ -237,6 +237,7 @@ function love.load()
         "scenes/game_scene/_common/_anim.lua",
         "scenes/game_scene/_common/_projectile.lua",
         "scenes/game_scene/_common/common_functions.lua",
+        "scenes/game_scene/_common/main_blocks.lua",
         "scenes/game_scene/_common/load_function.lua",
         "threads/game_scene/VFX_overdrive_heat.lua",
     }) do
@@ -494,14 +495,16 @@ function love.load()
                 and e["heat_penalty"] == 1 and e["heat_penalty_countdown"] == 0)
             and "OK" or "MISMATCH"))
 
-        -- 碎墙额外伤害:50 基础伤害 / 全角色 420 血,按百分比换算到本作 12000
+        -- 碎墙额外伤害(当前公式:6% 血量上限,保底 3%)
         local w1 = mk_char("R")
+        w1["damage_correction"] = 1
+        w1["positive_bonus_hurt_damage_buff"] = 1
         w1["health_gauge"] = { 12000, 12000 }
         common_game_scene_apply_wallbreak_damage(w1)
         log(string.format("  碎墙伤害 满血: 12000 -> %.2f  扣了 %.2f (%.3f%%)  %s",
             w1["health_gauge"][1], 12000 - w1["health_gauge"][1],
             (12000 - w1["health_gauge"][1]) / 12000 * 100,
-            (math.abs((12000 - w1["health_gauge"][1]) - 12000 * 50 / 420) < 0.01) and "OK" or "MISMATCH"))
+            (math.abs((12000 - w1["health_gauge"][1]) - 12000 * 0.06) < 0.01) and "OK" or "MISMATCH"))
         local w2 = mk_char("R")
         w2["health_gauge"] = { 500, 12000 }
         common_game_scene_apply_wallbreak_damage(w2)
@@ -509,6 +512,46 @@ function love.load()
             w2["health_gauge"][1], (w2["health_gauge"][1] == 0) and "OK 不会变负" or "MISMATCH"))
     else
         log("  common_game_scene_apply_positive_bonus not found")
+    end
+
+    -- ---- round timer state machine(off / on,状态由外部驱动)----
+    if type(update_game_scene_HUD_timer) == "function" then
+        obj_HUD_game_scene_timer = { 780, 85, nil, 1, 1, 1, 0, 0 }
+        ROUND_TIMER = { 9, 9, 5, 9 }
+        local function show(tag)
+            return string.format("  timer[%-16s] 显示=%d%d 帧=%d%d state=%s",
+                tag, ROUND_TIMER[1], ROUND_TIMER[2], ROUND_TIMER[3], ROUND_TIMER[4],
+                obj_HUD_game_scene_timer["state"])
+        end
+        local function tick(n)
+            for i = 1,(n or 1) do update_game_scene_HUD_timer(obj_HUD_game_scene_timer) end
+        end
+        common_game_scene_HUD_timer_reset()
+        log(show("reset"))
+        obj_HUD_game_scene_timer["state"] = "on"
+        tick(1);  log(show("1帧"))
+        tick(59); log(show("60帧 应掉1秒"))
+        tick(60); log(show("120帧 应再掉1秒"))
+        -- 跨十位:90 秒 -> 89
+        ROUND_TIMER = { 9, 0, 5, 9 }
+        tick(60); log(show("90秒跑60帧"))
+        -- off 时完全不动
+        obj_HUD_game_scene_timer["state"] = "off"
+        local snap = table.concat(ROUND_TIMER,",")
+        tick(300)
+        log(string.format("  timer[off 300帧     ] %s (应不变) %s",
+            table.concat(ROUND_TIMER,","),
+            (table.concat(ROUND_TIMER,",") == snap) and "OK" or "MISMATCH"))
+        -- 时间到停在 00 00(不内部改 state)
+        ROUND_TIMER = { 0, 0, 0, 1 }
+        obj_HUD_game_scene_timer["state"] = "on"
+        tick(2)
+        log(show("倒数到 0"))
+        -- 碎墙:外部 off -> on
+        obj_HUD_game_scene_timer["state"] = "off"
+        log(string.format("  碎墙开始 set_state(off): state=%s", obj_HUD_game_scene_timer["state"]))
+        obj_HUD_game_scene_timer["state"] = "on"
+        log(string.format("  碎墙结束 set_state(on) : state=%s", obj_HUD_game_scene_timer["state"]))
     end
 
     flush()
