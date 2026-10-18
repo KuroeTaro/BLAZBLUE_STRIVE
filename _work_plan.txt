@@ -39,3 +39,4 @@ __WORK_PLAN__
 -- 写各个gauge_update_对应的UI（各个子组件的state_machine）
 -- collision_projectile_clash_test
 -- 上墙后的输入缓存问题
+-- 拔枪后的单双切准心抽搐
