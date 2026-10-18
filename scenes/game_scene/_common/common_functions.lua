@@ -9,8 +9,8 @@ function common_game_scene_toggle_dynamic_HUD(toggle_value)
     obj_HUD_game_scene_timer[4] = toggle_value
     obj_HUD_game_scene_win_marks_LP[4] = toggle_value
     obj_HUD_game_scene_win_marks_RP[4] = toggle_value
-    obj_HUD_game_scene_match_point_LP[4] = MATCH_POINT["L"]
-    obj_HUD_game_scene_match_point_RP[4] = MATCH_POINT["R"]
+    obj_HUD_game_scene_match_point_LP[4] = toggle_value*MATCH_POINT["L"]
+    obj_HUD_game_scene_match_point_RP[4] = toggle_value*MATCH_POINT["R"]
     obj_HUD_game_scene_health_bar_LP[4] = toggle_value
     obj_HUD_game_scene_health_bar_RP[4] = toggle_value
     obj_HUD_game_scene_health_bar_LP_fade[4] = toggle_value*0.5
@@ -2035,9 +2035,11 @@ function common_game_scene_init_chars_trainning()
     obj_char_game_scene_char_LP["brightness"] = -0.05
     obj_char_game_scene_char_LP["brightness_const"] = -0.05
     obj_char_game_scene_char_LP["brightness_overdrive_const"] = 0.15
+    obj_char_game_scene_char_LP["overdrive_brightness_state"] = "default"
     obj_char_game_scene_char_LP["contrast"] = 0.8
     obj_char_game_scene_char_RP["brightness"] = -0.05
     obj_char_game_scene_char_RP["brightness_const"] = -0.05
+    obj_char_game_scene_char_RP["overdrive_brightness_state"] = "default"
     obj_char_game_scene_char_RP["contrast"] = 0.8
     obj_char_game_scene_char_RP["brightness_overdrive_const"] = 0.15
     if CHAR_SELECT_LR["L"] == CHAR_SELECT_LR["R"] then

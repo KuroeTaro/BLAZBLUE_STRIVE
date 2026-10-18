@@ -155,18 +155,28 @@ function load_game_scene_announcer_HUD_obj()
     obj_HUD_game_scene_win_marks_LP["target"] = 0
     obj_HUD_game_scene_win_marks_RP["target"] = 0
     obj_HUD_game_scene_match_point_LP = {717,85,nil,0,1,1,0,0}
+    obj_HUD_game_scene_match_point_LP["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_HUD_game_scene_match_point_LP["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_HUD_game_scene_match_point_LP["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_HUD_game_scene_match_point_LP["side"] = "L"
+    obj_HUD_game_scene_match_point_LP["state"] = "stop"
     obj_HUD_game_scene_match_point_RP = {883,85,nil,0,-1,1,0,0}
+    obj_HUD_game_scene_match_point_RP["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_HUD_game_scene_match_point_RP["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_HUD_game_scene_match_point_RP["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_HUD_game_scene_match_point_RP["side"] = "R"
+    obj_HUD_game_scene_match_point_RP["state"] = "stop"
     -- overdrive_text
-    obj_HUD_game_scene_overdrive_text_LP = {205,102,nil,0,1,1,0,0}
+    obj_HUD_game_scene_overdrive_text_LP = {205,102,nil,1,1,1,0,0}
     obj_HUD_game_scene_overdrive_text_LP["FCT"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_overdrive_text_LP["LCT"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_overdrive_text_LP["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_HUD_game_scene_overdrive_text_LP["state"] = "default"
-    obj_HUD_game_scene_overdrive_text_RP = {1250,102,nil,0,1,1,0,0}
+    obj_HUD_game_scene_overdrive_text_LP["state"] = "ready"
+    obj_HUD_game_scene_overdrive_text_RP = {1250,102,nil,1,1,1,0,0}
     obj_HUD_game_scene_overdrive_text_RP["FCT"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_overdrive_text_RP["LCT"] = {0,0,0,0,0,0,0,0}
     obj_HUD_game_scene_overdrive_text_RP["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_HUD_game_scene_overdrive_text_RP["state"] = "default"
+    obj_HUD_game_scene_overdrive_text_RP["state"] = "ready"
     -- overdrive_timer
     obj_HUD_game_scene_overdrive_timer_LP = {217,149,nil,0,1,1,0,0}
     obj_HUD_game_scene_overdrive_timer_LP["FCT"] = {0,0,0,0,0,0,0,0}

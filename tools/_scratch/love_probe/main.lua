@@ -557,7 +557,7 @@ function love.load()
     -- ---- win marks:add_one 线性 + 绘制半透明余格 ----
     if type(update_game_scene_win_marks) == "function" then
         WIN_MARK = { L = 0, R = 0 }
-        local obj = { side = "L", state = "add_one" }
+        local obj = { side = "L", state = "add_one", target = 1 }
         local frames = 0
         while obj["state"] == "add_one" and frames < 100 do
             update_game_scene_win_marks(obj)
@@ -565,14 +565,14 @@ function love.load()
         end
         log(string.format("  win_marks add_one: %d 帧 value=%.2f state=%s target=%s",
             frames, WIN_MARK["L"], obj["state"], tostring(obj["target"])))
-        obj["state"] = "add_one"; frames = 0
+        obj["state"] = "add_one"; obj["target"] = 2; frames = 0
         while obj["state"] == "add_one" and frames < 100 do
             update_game_scene_win_marks(obj); frames = frames + 1
         end
         log(string.format("  win_marks 第二次 add_one: %d 帧 value=%.2f (期望 2.00)", frames, WIN_MARK["L"]))
         -- 动画途中重复触发不应多算
         WIN_MARK["R"] = 0
-        local objR = { side = "R", state = "add_one" }
+        local objR = { side = "R", state = "add_one", target = 1 }
         for i = 1,10 do update_game_scene_win_marks(objR) end
         local mid = WIN_MARK["R"]
         objR["state"] = "add_one"
@@ -590,6 +590,129 @@ function love.load()
             draw_game_scene_add_to_sprite_batch_round_win_marks(wobj,wsheet,"HUD_win_mark",cs[1])
             log(string.format("  win_marks 绘制 value=%.2f (%-8s) -> sprite 数=%d", cs[1], cs[2], wsb:getCount()))
         end
+    end
+
+    -- ---- match point:先到 ROUND_FT-1 的一方点亮 + ease_in ----
+    if type(update_game_scene_match_point) == "function" then
+        ROUND_FT = 2
+        WIN_MARK = { L = 1, R = 0 }
+        MATCH_POINT = { L = 0, R = 0 }
+        anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1 = {
+            [0] = {0,10}, [10] = {1,10},
+            prop = 4, length = 10, loop = false, fix_type = true
+        }
+        local function mk_mp(x,sx,side)
+            local o = { x, 85, nil, 0, sx, 1, 0, 0 }
+            o[1] = x; o[2] = 85; o[3] = 0; o[4] = 0; o[5] = sx
+            o[6] = 1; o[7] = 0; o[8] = 0
+            o["side"] = side
+            o["state"] = "off"
+            return o
+        end
+        local lp = mk_mp(717,1,"L")
+        local rp = mk_mp(883,-1,"R")
+        local samples = {}
+        for f = 1,14 do
+            update_game_scene_match_point(lp)
+            update_game_scene_match_point(rp)
+            if f <= 12 then samples[#samples+1] = string.format("%.2f", lp[4]) end
+        end
+        log("  match_point LP 透明度(每帧): " .. table.concat(samples, " "))
+        log(string.format("  match_point LP: state=%s opacity=%.2f MATCH_POINT=%s (期望 on/1.00/1)",
+            lp["state"], lp[4], tostring(MATCH_POINT["L"])))
+        log(string.format("  match_point RP: state=%s opacity=%.2f MATCH_POINT=%s (期望 off/0.00/0)",
+            rp["state"], rp[4], tostring(MATCH_POINT["R"])))
+        -- 双方都到 match point
+        WIN_MARK["R"] = 1
+        for f = 1,14 do update_game_scene_match_point(rp) end
+        log(string.format("  match_point 双方: LP=%s RP=%s (期望 on/on)",
+            lp["state"], rp["state"]))
+    end
+
+    -- ---- overdrive text:off / ease_in / ready / ease_out ----
+    if type(update_game_scene_HUD_overdrive_text) == "function" then
+        anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1 = {
+            [0] = {0,10}, [10] = {1,10}, prop = 4, length = 10, loop = false, fix_type = true
+        }
+        anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0 = {
+            [0] = {1,10}, [10] = {0,10}, prop = 4, length = 10, loop = false, fix_type = true
+        }
+        local char = { overdrive_gauge = { 600, 600, "off" } }
+        local text = { 205, 102, nil, 0, 1, 1, 0, 0, state = "off" }
+        text["FCT"] = {0,0,0,0,0,0,0,0}
+        text["LCT"] = {0,0,0,0,0,0,0,0}
+        text["LCD"] = {0,0,0,0,0,0,0,0}
+        local function tick(n)
+            for i = 1,(n or 1) do update_game_scene_HUD_overdrive_text(char,text) end
+        end
+        local function show(tag)
+            return string.format("  overdrive_text[%-14s] state=%-8s opacity=%.2f",
+                tag, text["state"], text[4])
+        end
+        -- 槽满:off -> ease_in
+        tick(1);  log(show("满槽 第1帧"))
+        tick(4);  log(show("满槽 第5帧"))
+        tick(6);  log(show("满槽 第11帧"))
+        -- 保持 ready
+        tick(30); log(show("保持 30帧"))
+        -- 槽不满:ready -> ease_out
+        char["overdrive_gauge"][1] = 500
+        tick(1);  log(show("掉槽 第1帧"))
+        tick(4);  log(show("掉槽 第5帧"))
+        tick(6);  log(show("掉槽 第11帧"))
+        -- 再满一次
+        char["overdrive_gauge"][1] = 600
+        tick(12); log(show("再满 12帧"))
+        log(string.format("  期望序列: off -> ease_in(0→1) -> ready -> ease_out(1→0) -> off"))
+    end
+
+    -- ---- overdrive timer / brightness 拆分 ----
+    if type(update_game_scene_HUD_overdrive_timer) == "function"
+    and type(update_game_scene_HUD_overdrive_brightness) == "function" then
+        anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1 = {
+            [0] = {0,10}, [10] = {1,10}, prop = 4, length = 10, loop = false, fix_type = true
+        }
+        anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0 = {
+            [0] = {1,10}, [10] = {0,10}, prop = 4, length = 10, loop = false, fix_type = true
+        }
+        anim_char_point_linear_game_scene_overdrive_brightness_ease_in = {
+            [0] = {0,32}, [32] = {0.2,32}, prop = "brightness", length = 32, loop = false, fix_type = false
+        }
+        anim_char_point_linear_game_scene_overdrive_brightness_ease_out = {
+            [0] = {0.2,10}, [10] = {0,10}, prop = "brightness", length = 10, loop = false, fix_type = false
+        }
+        local char = {
+            overdrive_gauge = { 600, 600, "off" },
+            brightness = -0.05,
+            brightness_const = -0.05,
+            brightness_overdrive_const = 0.15,
+            overdrive_brightness_state = "default"
+        }
+        char["FCT"] = {0,0,0,0,0,0,0,0}
+        char["LCT"] = {0,0,0,0,0,0,0,0}
+        char["LCD"] = {0,0,0,0,0,0,0,0}
+        local timer = { 0, 0, 0, 0, 1, 1, 0, 0, state = "default" }
+        timer["FCT"] = {0,0,0,0,0,0,0,0}
+        timer["LCT"] = {0,0,0,0,0,0,0,0}
+        timer["LCD"] = {0,0,0,0,0,0,0,0}
+        local function tick(n)
+            for i = 1,(n or 1) do
+                update_game_scene_HUD_overdrive_timer(char,timer)
+                update_game_scene_HUD_overdrive_brightness(char)
+            end
+        end
+        local function show(tag)
+            return string.format("  overdrive[%-10s] timer=%-8s op=%.2f | brightness=%-8s value=%+.3f",
+                tag, timer["state"], timer[4], char["overdrive_brightness_state"], char["brightness"])
+        end
+        char["overdrive_gauge"][3] = "on"
+        tick(1);  log(show("on 第1帧"))
+        tick(11); log(show("on 第12帧"))
+        tick(22); log(show("on 第34帧"))
+        char["overdrive_gauge"][3] = "off"
+        tick(1);  log(show("off 第1帧"))
+        tick(11); log(show("off 第12帧"))
+        tick(24); log(show("off 第36帧"))
     end
 
     flush()
