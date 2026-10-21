@@ -9064,6 +9064,10 @@ function load_game_scene_anim_char_TRM_6SP_S(
     return res
 end
 -- _SP_H
+    -- 地面 "SP_H"：帧 0-3（480x520），anchor_pos {320,495}
+    -- 空中 "jSP_H"：帧 0-3（520x400），anchor_pos {370,330}
+    -- 链子 projectile "SP_H_chain_projectile"：128x52 单帧，沿链路重复
+    -- 蛇头 projectile "SP_H_oroboros_projectile"：帧 0-1（180x120）
 -- _SP_H_P
 -- _SP_H_K
 -- _SP_H_S

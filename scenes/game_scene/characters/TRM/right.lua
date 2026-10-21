@@ -1392,7 +1392,9 @@ function order_load_game_scene_char_RP_frames(load_order)
                 "4SP_K",
                 "6SP_K",
                 "4SP_S",
-                "6SP_S"
+                "6SP_S",
+                "SP_H",
+                "jSP_H"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] =
@@ -1446,7 +1448,9 @@ function order_load_game_scene_char_RP_frames(load_order)
                 "6SP_P_curse_ball_loop",
                 "6SP_K_scapegoat_buff_flow",
                 "6SP_K_scapegoat_ease_in",
-                "6SP_K_scapegoat_ease_out"
+                "6SP_K_scapegoat_ease_out",
+                "SP_H_chain",
+                "SP_H_oroboros"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_projectile_game_scene_RP[v.."_projectile"] =
