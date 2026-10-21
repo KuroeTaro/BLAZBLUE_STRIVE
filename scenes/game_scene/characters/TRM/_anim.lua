@@ -669,7 +669,7 @@ function load_game_scene_anim_char_TRM_6_walk_to_stand_idle(obj_char)
         obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = {155,510}
+        obj_char["anchor_pos"] = {155,515}
     end
     res[3] = function()
         -- draw_correction
@@ -9068,6 +9068,241 @@ end
     -- 空中 "jSP_H"：帧 0-3（520x400），anchor_pos {370,330}
     -- 链子 projectile "SP_H_chain_projectile"：128x52 单帧，沿链路重复
     -- 蛇头 projectile "SP_H_oroboros_projectile"：帧 0-1（180x120）
+    -- 帧数参考 BBCF 5D：startup 16 / active 5 / recovery 30 / total 59
+    -- 姿势时间轴来自 AE Time Remap（Units Per Second 60）：
+    --   0-3:0 / 4-8:1 / 9-14:2 / 15-19:3 / 20-23:1 / 24-27:2 / 28-31:3
+    --   32-35:1 / 36-39:2 / 40-43:3 / 44-47:1 / 48-53:2 / 54-58:0
+    -- 攻击判定全部来自飞行道具，本体 strike_active 恒为 false
+function load_game_scene_anim_char_TRM_SP_H(
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,anchor_pos
+)
+    local res = {}
+    local hit_side = hit_side_obj_char["player_side"]
+    res["prop_f"] = "f"
+    res["anim_length"] = 59
+    res[0] = function()
+        -- pre_set
+        common_game_scene_reset_velocity_by_ground_friction(hit_side_obj_char)
+        -- state
+        hit_side_obj_char["sprite_sheet"] = sprite_sheet
+        hit_side_obj_char["height"] = "stand" -- stand_crouch_air_OTG_wallstick
+        hit_side_obj_char["hit_type"] = "none" -- none_strike_throw_burst
+        hit_side_obj_char["hit_guard_type"] = "none" -- none_all_low_mid_high
+        hit_side_obj_char["hurt_state_target"] = "counter" -- idle_unblock_punish_counter_GP_parry
+        hit_side_obj_char["move_state"] = "recovery" -- none_startup_active_recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
+        -- state_number
+        hit_side_obj_char["friction"] = 5
+        hit_side_obj_char["gravity"] = 2.5
+        -- enemy_friend_interaction
+        hit_side_obj_char["strike_active"] = false -- 本体无判定 恒为 false
+        hit_side_obj_char["strike_inv"] = false
+        hit_side_obj_char["strike_inv_countdown"] = 0
+        hit_side_obj_char["throw_inv"] = false
+        hit_side_obj_char["throw_inv_countdown"] = 0
+        hit_side_obj_char["projectile_inv"] = false
+        hit_side_obj_char["projectile_inv_countdown"] = 0
+        hit_side_obj_char["horizontal_velocity_correction"] = 1
+        hit_side_obj_char["gravity_correction"] = 1
+        hit_side_obj_char["damage_correction"] = 1
+        -- frame_data
+        hit_side_obj_char["startup_frame"] = 0
+        hit_side_obj_char["active_frame"] = 0
+        hit_side_obj_char["recovery_frame"] = 0
+        -- collide
+        hit_side_obj_char["pushbox"] = {0,-185,120,370}
+        hit_side_obj_char["pushbox_opponent_collision_active"] = true
+        hit_side_obj_char["hitbox_table"] = {}
+        hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
+        hit_side_obj_char["collision_ground_height_offset"] = 0
+        -- shot_sys_oroboros
+        hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        -- draw_correction
+        hit_side_obj_char[8] = 0
+        hit_side_obj_char["anchor_pos"] = anchor_pos
+        -- visual_front
+        CHARACTER_VISUAL_FRONT = hit_side
+    end
+    res[4] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[9] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 2
+    end
+    res[15] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 3
+    end
+    res[16] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 3
+        -- 飞行道具（链子 + 蛇头）在此帧生成 后续实现
+    end
+    res[20] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[21] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[24] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 2
+    end
+    res[28] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 3
+    end
+    res[32] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[36] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 2
+    end
+    res[40] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 3
+    end
+    res[44] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[48] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 2
+    end
+    res[50] = function()
+        -- state
+        hit_side_obj_char["move_state"] = "none" -- none_startup_active_recovery
+        hit_side_obj_char["hurt_state_target"] = "idle" -- idle_unblock_punish_counter_GP_parry
+        hit_side_obj_char["idle_cancel"] = true
+        -- draw_correction
+        hit_side_obj_char[8] = 2
+    end
+    res[54] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 0
+    end
+    res[59] = function()
+        -- animation_end
+    end
+    return res
+end
+function load_game_scene_anim_char_TRM_jSP_H(
+    hit_side_obj_char,hurt_side_obj_char
+)
+    local res = {}
+    local hit_side = hit_side_obj_char["player_side"]
+    res["prop_f"] = "f"
+    res["anim_length"] = 43
+    -- 姿势时间轴来自 AE Time Remap（Units Per Second 60）：
+    --   0-5:0 / 6-9:1 / 10-13:2 / 14-17:3 / 18-21:1 / 22-25:2 / 26-29:3
+    --   30-33:1 / 34-37:2 / 38-41:3 / 42:0
+    res[0] = function()
+        -- state
+        hit_side_obj_char["sprite_sheet"] = "jSP_H"
+        hit_side_obj_char["height"] = "air" -- stand_crouch_air_OTG_wallstick
+        hit_side_obj_char["hit_type"] = "none" -- none_strike_throw_burst
+        hit_side_obj_char["hit_guard_type"] = "none" -- none_all_low_mid_high
+        hit_side_obj_char["hurt_state_target"] = "counter" -- idle_unblock_punish_counter_GP_parry
+        hit_side_obj_char["move_state"] = "recovery" -- none_startup_active_recovery
+        hit_side_obj_char["hit_cancel"] = false
+        hit_side_obj_char["idle_cancel"] = false
+        -- state_number
+        -- 起手直接中立：横纵速度归零，34f 之前不受重力
+        hit_side_obj_char["velocity"] = {0,0}
+        hit_side_obj_char["velocity_cache"] = {0,0}
+        hit_side_obj_char["friction"] = 4
+        hit_side_obj_char["gravity"] = 0
+        -- enemy_friend_interaction
+        hit_side_obj_char["strike_active"] = false -- 本体无判定 恒为 false
+        hit_side_obj_char["strike_inv"] = false
+        hit_side_obj_char["strike_inv_countdown"] = 0
+        hit_side_obj_char["throw_inv"] = false
+        hit_side_obj_char["throw_inv_countdown"] = 0
+        hit_side_obj_char["projectile_inv"] = false
+        hit_side_obj_char["projectile_inv_countdown"] = 0
+        hit_side_obj_char["horizontal_velocity_correction"] = 1
+        hit_side_obj_char["gravity_correction"] = 1
+        hit_side_obj_char["damage_correction"] = 1
+        -- frame_data
+        hit_side_obj_char["startup_frame"] = 0
+        hit_side_obj_char["active_frame"] = 0
+        hit_side_obj_char["recovery_frame"] = 0
+        -- game_speed
+        hit_side_obj_char["hit_hurt_blockstop_countdown"] = 17
+        -- collide
+        hit_side_obj_char["pushbox"] = {0,-100,120,200}
+        hit_side_obj_char["pushbox_opponent_collision_active"] = true
+        hit_side_obj_char["hitbox_table"] = {}
+        hit_side_obj_char["hurtbox_table"] = {{0,-140,260,300}}
+        hit_side_obj_char["collision_ground_height_offset"] = 185
+        -- shot_sys_oroboros
+        hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        -- draw_correction
+        hit_side_obj_char[8] = 0
+        hit_side_obj_char["anchor_pos"] = {370,330}
+        -- visual_front
+        CHARACTER_VISUAL_FRONT = hit_side
+    end
+    res[6] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[10] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 2
+    end
+    res[14] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 3
+    end
+    res[18] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[22] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 2
+    end
+    res[26] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 3
+    end
+    res[30] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[34] = function()
+        -- state
+        hit_side_obj_char["move_state"] = "none" -- none_startup_active_recovery
+        hit_side_obj_char["hurt_state_target"] = "idle" -- idle_unblock_punish_counter_GP_parry
+        hit_side_obj_char["idle_cancel"] = true
+        -- state_number
+        -- 34f 起恢复重力，速度由重力自然累加
+        hit_side_obj_char["gravity"] = 2.5
+        -- draw_correction
+        hit_side_obj_char[8] = 2
+    end
+    res[38] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 3
+    end
+    res[42] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 0
+    end
+    res[43] = function()
+        -- animation_end
+    end
+    return res
+end
 -- _SP_H_P
 -- _SP_H_K
 -- _SP_H_S
