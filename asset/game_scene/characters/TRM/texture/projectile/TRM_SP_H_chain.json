@@ -1,0 +1,20 @@
+{"frames": {
+
+"0":
+{
+	"frame": {"x":0,"y":0,"w":128,"h":52},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":52},
+	"sourceSize": {"w":128,"h":52}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_SP_H_chain",
+	"format": "RGBA8888",
+	"size": {"w":128,"h":52},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:a519c97745db085e891e3a73a1096ec1:d4b38785061905db87413d417155be59:fa9fade4a416eb07362e0659dcc6cb94$"
+}
+}

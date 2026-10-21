@@ -1,0 +1,28 @@
+{"frames": {
+
+"0":
+{
+	"frame": {"x":0,"y":0,"w":180,"h":120},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":180,"h":120},
+	"sourceSize": {"w":180,"h":120}
+},
+"1":
+{
+	"frame": {"x":180,"y":0,"w":180,"h":120},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":180,"h":120},
+	"sourceSize": {"w":180,"h":120}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_SP_H_oroboros",
+	"format": "RGBA8888",
+	"size": {"w":360,"h":120},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:8b02446b1b9424442214de90a80edd77:27251b085bf558f3aba543ceea90a278:b26a7665ddd3e560d40bd21f3bd18d57$"
+}
+}
