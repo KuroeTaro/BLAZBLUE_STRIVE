@@ -821,6 +821,9 @@ end
 function load_game_scene_shader_char_RP()
     -- shader_global_variable_no_shader_in_this_case
     shader_game_scene_RP = {}
+    shader_game_scene_RP["drive_sys_chain_fade"] = love.graphics.newShader(
+        "shaders/characters/TRM/drive_sys_chain_fade.glsl"
+    )
 end
 function load_game_scene_canvas_char_RP()
     -- CANVAS
