@@ -9136,18 +9136,6 @@ function load_game_scene_anim_char_TRM_SP_H(
         -- draw_correction
         hit_side_obj_char[8] = 3
     end
-    res[16] = function()
-        -- draw_correction
-        hit_side_obj_char[8] = 3
-        -- drive_sys
-        local drive_sys_start_pos = character_function_game_scene_TRM_drive_sys_start_pos(hit_side_obj_char)
-        local drive_sys_end_pos = character_function_game_scene_TRM_drive_sys_end_pos(
-            hit_side_obj_char,drive_sys_start_pos
-        )
-        character_function_game_scene_TRM_drive_sys_on_fly_init(
-            hit_side_obj_char,hurt_side_obj_char,drive_sys_start_pos,drive_sys_end_pos
-        )
-    end
     res[20] = function()
         -- draw_correction
         hit_side_obj_char[8] = 1
@@ -9266,18 +9254,6 @@ function load_game_scene_anim_char_TRM_jSP_H(
     res[14] = function()
         -- draw_correction
         hit_side_obj_char[8] = 3
-    end
-    res[16] = function()
-        -- draw_correction
-        hit_side_obj_char[8] = 3
-        -- drive_sys
-        local drive_sys_start_pos = character_function_game_scene_TRM_drive_sys_start_pos(hit_side_obj_char)
-        local drive_sys_end_pos = character_function_game_scene_TRM_drive_sys_end_pos(
-            hit_side_obj_char,drive_sys_start_pos
-        )
-        character_function_game_scene_TRM_drive_sys_on_fly_init(
-            hit_side_obj_char,hurt_side_obj_char,drive_sys_start_pos,drive_sys_end_pos
-        )
     end
     res[18] = function()
         -- draw_correction
