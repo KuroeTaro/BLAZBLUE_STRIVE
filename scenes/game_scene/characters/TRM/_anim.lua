@@ -9208,9 +9208,6 @@ function load_game_scene_anim_char_TRM_jSP_H(
     local hit_side = hit_side_obj_char["player_side"]
     res["prop_f"] = "f"
     res["anim_length"] = 43
-    -- 姿势时间轴来自 AE Time Remap（Units Per Second 60）：
-    --   0-5:0 / 6-9:1 / 10-13:2 / 14-17:3 / 18-21:1 / 22-25:2 / 26-29:3
-    --   30-33:1 / 34-37:2 / 38-41:3 / 42:0
     res[0] = function()
         -- state
         hit_side_obj_char["sprite_sheet"] = "jSP_H"
