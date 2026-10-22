@@ -2,19 +2,19 @@
 
 "0":
 {
-	"frame": {"x":0,"y":0,"w":128,"h":52},
+	"frame": {"x":0,"y":0,"w":160,"h":80},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":52},
-	"sourceSize": {"w":128,"h":52}
+	"spriteSourceSize": {"x":0,"y":0,"w":160,"h":80},
+	"sourceSize": {"w":160,"h":80}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "TRM_SP_H_chain",
 	"format": "RGBA8888",
-	"size": {"w":128,"h":52},
+	"size": {"w":160,"h":80},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:a519c97745db085e891e3a73a1096ec1:d4b38785061905db87413d417155be59:fa9fade4a416eb07362e0659dcc6cb94$"
+	"smartupdate": "$TexturePacker:SmartUpdate:bbb00acf9c12f1c3f4c1e9ca40a207bb:251770fe1b15d36cde4b087bb3a11aba:fa9fade4a416eb07362e0659dcc6cb94$"
 }
 }
