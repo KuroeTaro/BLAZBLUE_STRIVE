@@ -1811,6 +1811,9 @@ function update_game_scene_char_RP_attachment()
     state_machine_char_game_scene_char_RP_shot_sys()
     state_machine_char_game_scene_char_RP_shot_sys_reticle()
     state_machine_char_game_scene_char_RP_shot_sys_oroboros()
+    character_function_game_scene_TRM_drive_sys_state_machine(
+        obj_char_game_scene_char_RP,obj_char_game_scene_char_LP
+    )
 end
 function state_machine_char_game_scene_char_RP()
     -- 拉后最高优先级 然后是拉下 然后是拉前 然后是跳
@@ -4920,7 +4923,9 @@ function state_gate_game_scene_char_RP_to_5H(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
     -- _5H
-    if test_input_sys_press(self_side_input["H"]) and self_side_obj_char["shot_sys_state"] == "off" then
+    if test_input_sys_press(self_side_input["H"])
+    and not test_input_sys_press_or_hold(self_side_input["SP"])
+    and self_side_obj_char["shot_sys_state"] == "off" then
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5H(self_side_obj_char)
         init_character_anim_with(
             self_side_obj_char,self_side_obj_char["character_animation"]
@@ -9972,6 +9977,10 @@ function draw_game_scene_char_RP()
         obj_camera,obj,image_sprite_sheet,tostring(obj[8])
     )
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
+    -- draw_drive_sys（在 shot_sys chain_front 之前）
+    character_function_game_scene_TRM_drive_sys_draw(
+        obj_char,common_game_scene_get_projectile_sprite_sheet_table(obj_char["player_side"]),obj_camera
+    )
     -- draw_front
     obj = obj_char["shot_sys_oroboros_front"]
     image_sprite_sheet = image_sprite_sheet_table_char_game_scene_RP[obj["sprite_sheet"]]
