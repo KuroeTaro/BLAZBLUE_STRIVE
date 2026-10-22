@@ -1,0 +1,9 @@
+[dev] installed
+[dev] prep true nil
+[dev] routine true
+[dev] before: state=5_stand_idle
+[dev] ground gate(SP+H) -> true  state=SP_H
+[dev] t+30f: state=SP_H anim_f=30 draw_f=3 move_state=recovery
+[dev] air gate(SP+H) -> true  state=jSP_H
+[dev] t+30f: state=5_stand_idle anim_f=20 draw_f=2 move_state=none
+[dev] quitting.

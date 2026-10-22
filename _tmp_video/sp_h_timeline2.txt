@@ -1,0 +1,110 @@
+[dev] installed
+ground f=1 draw_f=0
+ground f=2 draw_f=0
+ground f=3 draw_f=0
+ground f=4 draw_f=1
+ground f=5 draw_f=1
+ground f=6 draw_f=1
+ground f=7 draw_f=1
+ground f=8 draw_f=1
+ground f=9 draw_f=2
+ground f=10 draw_f=2
+ground f=11 draw_f=2
+ground f=12 draw_f=2
+ground f=13 draw_f=2
+ground f=14 draw_f=2
+ground f=15 draw_f=3
+ground f=16 draw_f=3
+ground f=17 draw_f=3
+ground f=18 draw_f=3
+ground f=19 draw_f=3
+ground f=20 draw_f=1
+ground f=21 draw_f=1
+ground f=22 draw_f=1
+ground f=23 draw_f=1
+ground f=24 draw_f=2
+ground f=25 draw_f=2
+ground f=26 draw_f=2
+ground f=27 draw_f=2
+ground f=28 draw_f=3
+ground f=29 draw_f=3
+ground f=30 draw_f=3
+ground f=31 draw_f=3
+ground f=32 draw_f=1
+ground f=33 draw_f=1
+ground f=34 draw_f=1
+ground f=35 draw_f=1
+ground f=36 draw_f=2
+ground f=37 draw_f=2
+ground f=38 draw_f=2
+ground f=39 draw_f=2
+ground f=40 draw_f=3
+ground f=41 draw_f=3
+ground f=42 draw_f=3
+ground f=43 draw_f=3
+ground f=44 draw_f=1
+ground f=45 draw_f=1
+ground f=46 draw_f=1
+ground f=47 draw_f=1
+ground f=48 draw_f=2
+ground f=49 draw_f=2
+ground f=50 draw_f=2
+ground f=51 draw_f=2
+ground f=52 draw_f=2
+ground f=53 draw_f=2
+ground f=54 draw_f=0
+ground f=55 draw_f=0
+ground f=56 draw_f=0
+ground f=57 draw_f=0
+ground f=58 draw_f=0
+ground f=59 draw_f=0
+ground f=60 draw_f=0
+ground f=61 draw_f=0
+ground f=62 draw_f=0
+[dev] ground end state=5_stand_idle
+air f=1 draw_f=0 gravity=0
+air f=2 draw_f=0 gravity=0
+air f=3 draw_f=0 gravity=0
+air f=4 draw_f=0 gravity=0
+air f=5 draw_f=0 gravity=0
+air f=6 draw_f=1 gravity=0
+air f=7 draw_f=1 gravity=0
+air f=8 draw_f=1 gravity=0
+air f=9 draw_f=1 gravity=0
+air f=10 draw_f=2 gravity=0
+air f=11 draw_f=2 gravity=0
+air f=12 draw_f=2 gravity=0
+air f=13 draw_f=2 gravity=0
+air f=14 draw_f=3 gravity=0
+air f=15 draw_f=3 gravity=0
+air f=16 draw_f=3 gravity=0
+air f=17 draw_f=3 gravity=0
+air f=18 draw_f=1 gravity=0
+air f=19 draw_f=1 gravity=0
+air f=20 draw_f=1 gravity=0
+air f=21 draw_f=1 gravity=0
+air f=22 draw_f=2 gravity=0
+air f=23 draw_f=2 gravity=0
+air f=24 draw_f=2 gravity=0
+air f=25 draw_f=2 gravity=0
+air f=26 draw_f=3 gravity=0
+air f=27 draw_f=3 gravity=0
+air f=28 draw_f=3 gravity=0
+air f=29 draw_f=3 gravity=0
+air f=30 draw_f=1 gravity=0
+air f=31 draw_f=1 gravity=0
+air f=32 draw_f=1 gravity=0
+air f=33 draw_f=1 gravity=0
+air f=34 draw_f=2 gravity=2.5
+air f=35 draw_f=2 gravity=2.5
+air f=36 draw_f=2 gravity=2.5
+air f=37 draw_f=2 gravity=2.5
+air f=38 draw_f=3 gravity=2.5
+air f=39 draw_f=3 gravity=2.5
+air f=40 draw_f=3 gravity=2.5
+air f=41 draw_f=3 gravity=2.5
+air f=42 draw_f=0 gravity=2.5
+air f=43 draw_f=5 gravity=2.5
+air f=44 draw_f=5 gravity=2.5
+[dev] air end state=7_8_9_jump_air
+[dev] quit

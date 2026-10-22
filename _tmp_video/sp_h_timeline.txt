@@ -1,0 +1,116 @@
+[dev] installed
+ground f=1 draw_f=0 move_state=startup
+ground f=2 draw_f=0 move_state=startup
+ground f=3 draw_f=0 move_state=startup
+ground f=4 draw_f=1 move_state=startup
+ground f=5 draw_f=1 move_state=startup
+ground f=6 draw_f=1 move_state=startup
+ground f=7 draw_f=1 move_state=startup
+ground f=8 draw_f=1 move_state=startup
+ground f=9 draw_f=2 move_state=startup
+ground f=10 draw_f=2 move_state=startup
+ground f=11 draw_f=2 move_state=startup
+ground f=12 draw_f=2 move_state=startup
+ground f=13 draw_f=2 move_state=startup
+ground f=14 draw_f=2 move_state=startup
+ground f=15 draw_f=3 move_state=startup
+ground f=16 draw_f=3 move_state=active
+ground f=17 draw_f=3 move_state=active
+ground f=18 draw_f=3 move_state=active
+ground f=19 draw_f=3 move_state=active
+ground f=20 draw_f=1 move_state=active
+ground f=21 draw_f=1 move_state=recovery
+ground f=22 draw_f=1 move_state=recovery
+ground f=23 draw_f=1 move_state=recovery
+ground f=24 draw_f=2 move_state=recovery
+ground f=25 draw_f=2 move_state=recovery
+ground f=26 draw_f=2 move_state=recovery
+ground f=27 draw_f=2 move_state=recovery
+ground f=28 draw_f=3 move_state=recovery
+ground f=29 draw_f=3 move_state=recovery
+ground f=30 draw_f=3 move_state=recovery
+ground f=31 draw_f=3 move_state=recovery
+ground f=32 draw_f=1 move_state=recovery
+ground f=33 draw_f=1 move_state=recovery
+ground f=34 draw_f=1 move_state=recovery
+ground f=35 draw_f=1 move_state=recovery
+ground f=36 draw_f=2 move_state=recovery
+ground f=37 draw_f=2 move_state=recovery
+ground f=38 draw_f=2 move_state=recovery
+ground f=39 draw_f=2 move_state=recovery
+ground f=40 draw_f=3 move_state=recovery
+ground f=41 draw_f=3 move_state=recovery
+ground f=42 draw_f=3 move_state=recovery
+ground f=43 draw_f=3 move_state=recovery
+ground f=44 draw_f=1 move_state=recovery
+ground f=45 draw_f=1 move_state=recovery
+ground f=46 draw_f=1 move_state=recovery
+ground f=47 draw_f=1 move_state=recovery
+ground f=48 draw_f=2 move_state=recovery
+ground f=49 draw_f=2 move_state=recovery
+ground f=50 draw_f=2 move_state=none
+ground f=51 draw_f=2 move_state=none
+ground f=52 draw_f=2 move_state=none
+ground f=53 draw_f=2 move_state=none
+ground f=54 draw_f=0 move_state=none
+ground f=55 draw_f=0 move_state=none
+ground f=56 draw_f=0 move_state=none
+ground f=57 draw_f=0 move_state=none
+ground f=58 draw_f=0 move_state=none
+ground f=59 draw_f=0 move_state=none
+ground f=60 draw_f=0 move_state=none
+ground f=61 draw_f=0 move_state=none
+ground f=62 draw_f=0 move_state=none
+ground f=63 draw_f=0 move_state=none
+ground f=64 draw_f=0 move_state=none
+[dev] ground end state=5_stand_idle
+air f=1 draw_f=0 vy=0.0 gravity=0 state=jSP_H
+air f=2 draw_f=0 vy=0.0 gravity=0 state=jSP_H
+air f=3 draw_f=0 vy=0.0 gravity=0 state=jSP_H
+air f=4 draw_f=0 vy=0.0 gravity=0 state=jSP_H
+air f=5 draw_f=0 vy=0.0 gravity=0 state=jSP_H
+air f=6 draw_f=1 vy=0.0 gravity=0 state=jSP_H
+air f=7 draw_f=1 vy=0.0 gravity=0 state=jSP_H
+air f=8 draw_f=1 vy=0.0 gravity=0 state=jSP_H
+air f=9 draw_f=1 vy=0.0 gravity=0 state=jSP_H
+air f=10 draw_f=2 vy=0.0 gravity=0 state=jSP_H
+air f=11 draw_f=2 vy=0.0 gravity=0 state=jSP_H
+air f=12 draw_f=2 vy=0.0 gravity=0 state=jSP_H
+air f=13 draw_f=2 vy=0.0 gravity=0 state=jSP_H
+air f=14 draw_f=3 vy=0.0 gravity=0 state=jSP_H
+air f=15 draw_f=3 vy=0.0 gravity=0 state=jSP_H
+air f=16 draw_f=3 vy=0.0 gravity=0 state=jSP_H
+air f=17 draw_f=3 vy=0.0 gravity=0 state=jSP_H
+air f=18 draw_f=1 vy=0.0 gravity=0 state=jSP_H
+air f=19 draw_f=1 vy=0.0 gravity=0 state=jSP_H
+air f=20 draw_f=1 vy=0.0 gravity=0 state=jSP_H
+air f=21 draw_f=1 vy=0.0 gravity=0 state=jSP_H
+air f=22 draw_f=2 vy=0.0 gravity=0 state=jSP_H
+air f=23 draw_f=2 vy=0.0 gravity=0 state=jSP_H
+air f=24 draw_f=2 vy=0.0 gravity=0 state=jSP_H
+air f=25 draw_f=2 vy=0.0 gravity=0 state=jSP_H
+air f=26 draw_f=3 vy=0.0 gravity=0 state=jSP_H
+air f=27 draw_f=3 vy=0.0 gravity=0 state=jSP_H
+air f=28 draw_f=3 vy=0.0 gravity=0 state=jSP_H
+air f=29 draw_f=3 vy=0.0 gravity=0 state=jSP_H
+air f=30 draw_f=1 vy=0.0 gravity=0 state=jSP_H
+air f=31 draw_f=1 vy=0.0 gravity=0 state=jSP_H
+air f=32 draw_f=1 vy=0.0 gravity=0 state=jSP_H
+air f=33 draw_f=1 vy=0.0 gravity=0 state=jSP_H
+air f=34 draw_f=2 vy=2.5 gravity=2.5 state=jSP_H
+air f=35 draw_f=2 vy=5.0 gravity=2.5 state=jSP_H
+air f=36 draw_f=2 vy=7.5 gravity=2.5 state=jSP_H
+air f=37 draw_f=2 vy=10.0 gravity=2.5 state=jSP_H
+air f=38 draw_f=3 vy=12.5 gravity=2.5 state=jSP_H
+air f=39 draw_f=3 vy=15.0 gravity=2.5 state=jSP_H
+air f=40 draw_f=3 vy=17.5 gravity=2.5 state=jSP_H
+air f=41 draw_f=3 vy=20.0 gravity=2.5 state=jSP_H
+air f=42 draw_f=0 vy=22.5 gravity=2.5 state=jSP_H
+air f=43 draw_f=5 vy=25.0 gravity=2.5 state=7_8_9_jump_air
+air f=44 draw_f=5 vy=27.5 gravity=2.5 state=7_8_9_jump_air
+air f=45 draw_f=5 vy=30.0 gravity=2.5 state=7_8_9_jump_air
+air f=46 draw_f=5 vy=32.5 gravity=2.5 state=7_8_9_jump_air
+air f=47 draw_f=6 vy=35.0 gravity=2.5 state=7_8_9_jump_air
+air f=48 draw_f=7 vy=37.5 gravity=2.5 state=7_8_9_jump_air
+[dev] air end state=7_8_9_jump_air
+[dev] quit

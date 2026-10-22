@@ -1,0 +1,64 @@
+[dev] installed
+[chain] f=1 (no projectile) state=SP_H
+[chain] f=2 (no projectile) state=SP_H
+[chain] f=3 (no projectile) state=SP_H
+[chain] f=4 (no projectile) state=SP_H
+[chain] f=5 (no projectile) state=SP_H
+[chain] f=6 (no projectile) state=SP_H
+[chain] f=7 (no projectile) state=SP_H
+[chain] f=8 (no projectile) state=SP_H
+[chain] f=9 (no projectile) state=SP_H
+[chain] f=10 (no projectile) state=SP_H
+[chain] f=11 (no projectile) state=SP_H
+[chain] f=12 (no projectile) state=SP_H
+[chain] f=13 (no projectile) state=SP_H
+[chain] f=14 (no projectile) state=SP_H
+[chain] f=15 (no projectile) state=SP_H
+[chain] f=16 len=58 life=40 active=true hit=false head=1
+[chain] f=17 len=117 life=39 active=true hit=false head=1
+[chain] f=18 len=175 life=38 active=true hit=false head=1
+[chain] f=19 len=233 life=37 active=true hit=false head=1
+[chain] f=20 len=292 life=36 active=true hit=false head=1
+[chain] f=21 len=350 life=35 active=true hit=false head=1
+[chain] f=22 len=408 life=34 active=true hit=false head=1
+[chain] f=23 len=467 life=33 active=true hit=false head=1
+[chain] f=24 len=525 life=32 active=true hit=false head=1
+[chain] f=25 len=583 life=31 active=true hit=false head=1
+[chain] f=26 len=642 life=30 active=true hit=false head=1
+[chain] f=27 len=700 life=29 active=true hit=false head=1
+[chain] f=28 len=700 life=28 active=true hit=false head=0
+[chain] f=29 len=700 life=27 active=true hit=false head=0
+[chain] f=30 len=700 life=26 active=true hit=false head=0
+[chain] f=31 len=700 life=25 active=true hit=false head=0
+[chain] f=32 len=700 life=24 active=true hit=false head=0
+[chain] f=33 len=700 life=23 active=true hit=false head=0
+[chain] f=34 len=700 life=22 active=true hit=false head=0
+[chain] f=35 len=700 life=21 active=true hit=false head=0
+[chain] f=36 len=700 life=20 active=true hit=false head=0
+[chain] f=37 len=700 life=19 active=true hit=false head=0
+[chain] f=38 len=700 life=18 active=true hit=false head=0
+[chain] f=39 len=700 life=17 active=true hit=false head=0
+[chain] f=40 len=700 life=16 active=true hit=false head=0
+[chain] f=41 len=700 life=15 active=true hit=false head=0
+[chain] f=42 len=700 life=14 active=true hit=false head=0
+[chain] f=43 len=700 life=13 active=true hit=false head=0
+[chain] f=44 len=700 life=12 active=true hit=false head=0
+[chain] f=45 len=700 life=11 active=true hit=false head=0
+[chain] f=46 len=630 life=10 active=false hit=false head=0
+[chain] f=47 len=560 life=9 active=false hit=false head=0
+[chain] f=48 len=490 life=8 active=false hit=false head=0
+[chain] f=49 len=420 life=7 active=false hit=false head=0
+[chain] f=50 len=350 life=6 active=false hit=false head=0
+[chain] f=51 len=280 life=5 active=false hit=false head=0
+[chain] f=52 len=210 life=4 active=false hit=false head=0
+[chain] f=53 len=140 life=3 active=false hit=false head=0
+[chain] f=54 len=70 life=2 active=false hit=false head=0
+[chain] f=55 len=0 life=1 active=false hit=false head=0
+[chain] f=56 (no projectile) state=SP_H
+[chain] f=57 (no projectile) state=SP_H
+[chain] f=58 (no projectile) state=SP_H
+[chain] f=59 (no projectile) state=5_stand_idle
+[chain] f=60 (no projectile) state=5_stand_idle
+[chain] f=61 (no projectile) state=5_stand_idle
+[chain] f=62 (no projectile) state=5_stand_idle
+[dev] quit

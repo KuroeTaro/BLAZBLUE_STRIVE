@@ -1,0 +1,12 @@
+[dev] installed
+[miss] f=1 drive=nil tip=-1
+[miss] f=16 drive=on_fly tip=90
+[miss] f=23 drive=bite_miss tip=700
+[miss] f=41 drive=pull_back tip=700
+[miss] f=57 drive=off tip=0
+[hit] f=1 drive=off tip=0 rp=5_stand_idle hp=12000
+[hit] f=16 drive=on_fly tip=90 rp=5_stand_idle hp=12000
+[hit] f=21 drive=bite_hit tip=540 rp=hurtstop hp=11750
+[hit] f=33 drive=pull_back tip=540 rp=hurt hp=11750
+[hit] f=45 drive=off tip=0 rp=hurt hp=11750
+[dev] quit

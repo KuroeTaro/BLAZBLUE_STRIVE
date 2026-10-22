@@ -8845,7 +8845,7 @@ function load_game_scene_anim_char_TRM_6SP_S(
         hit_side_obj_char["FD_block_heat_drain"] = 5.0
         hit_side_obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_launched_high(
             hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_launched_high","air","knockdown_recovery",
-            7.5,5,1.087,-37.5,2.5,1.087,
+            7.5,5,1.14,-37.5,2.5,1.07,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
@@ -8861,7 +8861,7 @@ function load_game_scene_anim_char_TRM_6SP_S(
         )
         hit_side_obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_launched_high(
             hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_launched_high","air","knockdown_recovery",
-            7.5,5,1.087,-37.5,2.5,1.087,
+            7.5,5,1.14,-37.5,2.5,1.07,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
@@ -8877,7 +8877,7 @@ function load_game_scene_anim_char_TRM_6SP_S(
         )
         hit_side_obj_char["air_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_launched_high(
             hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_launched_high","air","knockdown_recovery",
-            7.5,5,1.087,-37.5,2.5,1.087,
+            7.5,5,1.14,-37.5,2.5,1.07,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
@@ -8893,7 +8893,7 @@ function load_game_scene_anim_char_TRM_6SP_S(
         )
         hit_side_obj_char["OTG_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_launched_high(
             hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_launched_high","air","knockdown_recovery",
-            27.5,5,1.087,-5,2.5,1.087,
+            27.5,5,1.14,-5,2.5,1.07,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
@@ -9139,7 +9139,14 @@ function load_game_scene_anim_char_TRM_SP_H(
     res[16] = function()
         -- draw_correction
         hit_side_obj_char[8] = 3
-        -- 飞行道具（链子 + 蛇头）在此帧生成 后续实现
+        -- drive_sys
+        local drive_sys_start_pos = character_function_game_scene_TRM_drive_sys_start_pos(hit_side_obj_char)
+        local drive_sys_end_pos = character_function_game_scene_TRM_drive_sys_end_pos(
+            hit_side_obj_char,drive_sys_start_pos
+        )
+        character_function_game_scene_TRM_drive_sys_on_fly_init(
+            hit_side_obj_char,hurt_side_obj_char,drive_sys_start_pos,drive_sys_end_pos
+        )
     end
     res[20] = function()
         -- draw_correction
@@ -9262,6 +9269,18 @@ function load_game_scene_anim_char_TRM_jSP_H(
     res[14] = function()
         -- draw_correction
         hit_side_obj_char[8] = 3
+    end
+    res[16] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 3
+        -- drive_sys
+        local drive_sys_start_pos = character_function_game_scene_TRM_drive_sys_start_pos(hit_side_obj_char)
+        local drive_sys_end_pos = character_function_game_scene_TRM_drive_sys_end_pos(
+            hit_side_obj_char,drive_sys_start_pos
+        )
+        character_function_game_scene_TRM_drive_sys_on_fly_init(
+            hit_side_obj_char,hurt_side_obj_char,drive_sys_start_pos,drive_sys_end_pos
+        )
     end
     res[18] = function()
         -- draw_correction

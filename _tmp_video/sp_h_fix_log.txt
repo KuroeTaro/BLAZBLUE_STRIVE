@@ -1,0 +1,43 @@
+[dev] installed
+[dev] prep true nil
+[dev] routine true
+[dev] forced SP_H
+[ground] f=6 draw_f=0 anim_f=6 state=SP_H
+[ground] f=12 draw_f=2 anim_f=12 state=SP_H
+[ground] f=18 draw_f=2 anim_f=18 state=SP_H
+[ground] f=24 draw_f=3 anim_f=24 state=SP_H
+[ground] f=30 draw_f=3 anim_f=30 state=SP_H
+[ground] f=36 draw_f=3 anim_f=36 state=SP_H
+[ground] f=42 draw_f=2 anim_f=42 state=SP_H
+[ground] f=48 draw_f=3 anim_f=48 state=SP_H
+[ground] f=54 draw_f=1 anim_f=54 state=SP_H
+[ground] f=60 draw_f=0 anim_f=1 state=5_stand_idle
+[dev] ground end state=5_stand_idle
+[dev] forced jSP_H  y=-600
+[air] f=2 y=-600.0 vy=0.00 gravity=0 draw_f=0 state=jSP_H
+[air] f=4 y=-600.0 vy=0.00 gravity=0 draw_f=0 state=jSP_H
+[air] f=6 y=-600.0 vy=0.00 gravity=0 draw_f=1 state=jSP_H
+[air] f=8 y=-600.0 vy=0.00 gravity=0 draw_f=1 state=jSP_H
+[air] f=10 y=-600.0 vy=0.00 gravity=0 draw_f=2 state=jSP_H
+[air] f=12 y=-600.0 vy=0.00 gravity=0 draw_f=2 state=jSP_H
+[air] f=14 y=-600.0 vy=0.00 gravity=0 draw_f=2 state=jSP_H
+[air] f=16 y=-600.0 vy=0.00 gravity=0 draw_f=2 state=jSP_H
+[air] f=18 y=-600.0 vy=0.00 gravity=0 draw_f=3 state=jSP_H
+[air] f=20 y=-600.0 vy=0.00 gravity=0 draw_f=3 state=jSP_H
+[air] f=22 y=-600.0 vy=0.00 gravity=0 draw_f=3 state=jSP_H
+[air] f=24 y=-600.0 vy=0.00 gravity=0 draw_f=3 state=jSP_H
+[air] f=26 y=-600.0 vy=0.00 gravity=0 draw_f=3 state=jSP_H
+[air] f=28 y=-600.0 vy=0.00 gravity=0 draw_f=3 state=jSP_H
+[air] f=30 y=-600.0 vy=0.00 gravity=0 draw_f=3 state=jSP_H
+[air] f=32 y=-600.0 vy=0.00 gravity=0 draw_f=3 state=jSP_H
+[air] f=34 y=-600.0 vy=2.50 gravity=2.5 draw_f=3 state=jSP_H
+[air] f=36 y=-592.5 vy=7.50 gravity=2.5 draw_f=2 state=jSP_H
+[air] f=38 y=-575.0 vy=12.50 gravity=2.5 draw_f=2 state=jSP_H
+[air] f=40 y=-547.5 vy=17.50 gravity=2.5 draw_f=1 state=jSP_H
+[air] f=42 y=-510.0 vy=22.50 gravity=2.5 draw_f=0 state=jSP_H
+[air] f=44 y=-462.5 vy=27.50 gravity=2.5 draw_f=0 state=jSP_H
+[air] f=46 y=-405.0 vy=32.50 gravity=2.5 draw_f=5 state=7_8_9_jump_air
+[air] f=48 y=-337.5 vy=37.50 gravity=2.5 draw_f=5 state=7_8_9_jump_air
+[air] f=50 y=-260.0 vy=42.50 gravity=2.5 draw_f=7 state=7_8_9_jump_air
+[dev] air end state=7_8_9_jump_air
+[dev] quit

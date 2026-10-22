@@ -1,0 +1,24 @@
+[dev] installed
+[dev] jump directly into game scene
+[dev] load_game_scene_prep -> true nil
+[dev] load_scene_prep_routine -> true nil
+[dev] forced SP_H
+[ground] f=8 state=SP_H anim_f=8 draw_f=1 move_state=startup
+[ground] f=16 state=SP_H anim_f=16 draw_f=2 move_state=active
+[ground] f=24 state=SP_H anim_f=24 draw_f=3 move_state=recovery
+[ground] f=32 state=SP_H anim_f=32 draw_f=3 move_state=recovery
+[ground] f=40 state=SP_H anim_f=40 draw_f=3 move_state=recovery
+[ground] f=48 state=SP_H anim_f=48 draw_f=2 move_state=recovery
+[ground] f=56 state=SP_H anim_f=56 draw_f=0 move_state=none
+[ground] f=64 state=5_stand_idle anim_f=5 draw_f=0 move_state=none
+[dev] ground done, final state=5_stand_idle
+[dev] forced jSP_H  y=-700
+[air] f=8 state=jSP_H anim_f=8 draw_f=1 y=-500.0 move_state=startup
+[air] f=16 state=jSP_H anim_f=16 draw_f=2 y=-500.0 move_state=active
+[air] f=24 state=jSP_H anim_f=24 draw_f=3 y=-500.0 move_state=recovery
+[air] f=32 state=jSP_H anim_f=32 draw_f=3 y=-500.0 move_state=recovery
+[air] f=40 state=jSP_H anim_f=40 draw_f=1 y=-500.0 move_state=none
+[air] f=48 state=7_8_9_jump_air anim_f=24 draw_f=5 y=-500.0 move_state=none
+[air] f=56 state=7_8_9_jump_air anim_f=32 draw_f=8 y=-500.0 move_state=none
+[dev] air done, final state=7_8_9_jump_air
+[dev] quitting.

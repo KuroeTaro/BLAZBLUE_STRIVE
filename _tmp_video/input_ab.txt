@@ -1,0 +1,28 @@
+[dev] installed
+[A] 注入 SP=Holding + H=Pressing
+  [A] f=1 state=SP_H anim_f=0
+  [A] f=2 state=SP_H anim_f=1
+  [A] f=3 state=SP_H anim_f=2
+  [A] f=4 state=SP_H anim_f=3
+  [A] f=5 state=SP_H anim_f=4
+  [A] f=6 state=SP_H anim_f=5
+  [A] f=7 state=SP_H anim_f=6
+  [A] f=8 state=SP_H anim_f=7
+  [A] f=9 state=SP_H anim_f=8
+  [A] f=10 state=SP_H anim_f=9
+  [A] f=11 state=SP_H anim_f=10
+  [A] f=12 state=SP_H anim_f=11
+[B] 注入 仅 H=Pressing
+  [B] f=1 state=5H anim_f=0
+  [B] f=2 state=5H anim_f=1
+  [B] f=3 state=5H anim_f=2
+  [B] f=4 state=5H anim_f=3
+  [B] f=5 state=5H anim_f=4
+  [B] f=6 state=5H anim_f=5
+  [B] f=7 state=5H anim_f=6
+  [B] f=8 state=5H anim_f=7
+  [B] f=9 state=5H anim_f=8
+  [B] f=10 state=5H anim_f=9
+  [B] f=11 state=5H anim_f=10
+  [B] f=12 state=5H anim_f=11
+[dev] quit

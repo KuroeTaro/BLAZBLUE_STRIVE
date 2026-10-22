@@ -1,0 +1,13 @@
+[dev] installed
+[miss] f=1 drive=nil tip=-1/-1
+[miss] f=16 drive=on_fly tip=90/700
+[miss] f=23 drive=bite_miss tip=700/700
+[miss] f=41 drive=pull_back tip=700/700
+[miss] f=57 drive=off tip=0/0
+[dev] miss phase end state=off
+[hit] f=1 drive=off tip=0 rp_state=5_stand_idle hp=12000
+[hit] f=16 drive=on_fly tip=90 rp_state=5_stand_idle hp=12000
+[hit] f=18 drive=bite_hit tip=270 rp_state=hurtstop hp=11750
+[hit] f=30 drive=pull_back tip=270 rp_state=hurt hp=11750
+[hit] f=36 drive=off tip=0 rp_state=hurt hp=11750
+[dev] quit
