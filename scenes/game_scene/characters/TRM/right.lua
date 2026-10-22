@@ -9977,7 +9977,7 @@ function draw_game_scene_char_RP()
         obj_camera,obj,image_sprite_sheet,tostring(obj[8])
     )
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
-    -- draw_drive_sys（在 shot_sys chain_front 之前）
+    -- draw_drive_sys
     character_function_game_scene_TRM_drive_sys_draw(
         obj_char,common_game_scene_get_projectile_sprite_sheet_table(obj_char["player_side"]),obj_camera
     )
