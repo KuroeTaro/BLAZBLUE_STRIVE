@@ -327,8 +327,8 @@ function load_game_scene_obj_char_LP()
         ["4SP_S_4dash"] = true,
         ["4SP_S_6dash"] = true,
         ["4SP_S_2Launcher"] = true,
-        ["4SP_S_6Launcher"] = true,
         ["4SP_S_5Launcher"] = true,
+        ["4SP_S_8Launcher"] = true,
         ["SP_H"] = true,
         ["jSP_H"] = true,
         ["4UA"] = true,
@@ -2563,16 +2563,6 @@ function state_machine_char_game_scene_char_LP()
                 self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
             )
         end,
-        ["4SP_S_6Launcher"] = function()
-            if run_at_current_frame then
-                character_animator(
-                    self_side_obj_char,self_side_obj_char["character_animation"]
-                )
-            end
-            state_gate_game_scene_char_LP_from_4SP_S_6Launcher(
-                self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
-            )
-        end,
         ["4SP_S_5Launcher"] = function()
             if run_at_current_frame then
                 character_animator(
@@ -2580,6 +2570,16 @@ function state_machine_char_game_scene_char_LP()
                 )
             end
             state_gate_game_scene_char_LP_from_4SP_S_5Launcher(
+                self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+            )
+        end,
+        ["4SP_S_8Launcher"] = function()
+            if run_at_current_frame then
+                character_animator(
+                    self_side_obj_char,self_side_obj_char["character_animation"]
+                )
+            end
+            state_gate_game_scene_char_LP_from_4SP_S_8Launcher(
                 self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
             )
         end,
@@ -4097,8 +4097,8 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move(
         -- _4SP_S_6dash
         -- _4SP_S_4S
         -- _4SP_S_2Launcher
-        -- _4SP_S_6Launcher
         -- _4SP_S_5Launcher
+        -- _4SP_S_8Launcher
     -- _6SP_S
     if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3)
     and self_side_obj_char["shot_sys_at_the_ready_6SP_S_pass_state"][self_side_obj_char["shot_sys_state"]]
@@ -4225,8 +4225,8 @@ function state_gate_game_scene_char_LP_common_ground_to_special_move_hold_ver(
         -- _4SP_S_6dash
         -- _4SP_S_4S
         -- _4SP_S_2Launcher
-        -- _4SP_S_6Launcher
         -- _4SP_S_5Launcher
+        -- _4SP_S_8Launcher
     -- _6SP_S
     if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 3)
     and self_side_obj_char["shot_sys_at_the_ready_6SP_S_pass_state"][self_side_obj_char["shot_sys_state"]]
@@ -5141,8 +5141,8 @@ function state_gate_game_scene_char_LP_4SP_S_to_special(
             return true
         end
         -- _4SP_S_2Launcher
-        -- _4SP_S_6Launcher
         -- _4SP_S_5Launcher
+        -- _4SP_S_8Launcher
 end
 -- from_gate
 function state_gate_game_scene_char_LP_from_active_FD_block(
@@ -9724,7 +9724,7 @@ function state_gate_game_scene_char_LP_from_4SP_S_2Launcher(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
 end
-function state_gate_game_scene_char_LP_from_4SP_S_6Launcher(
+function state_gate_game_scene_char_LP_from_4SP_S_8Launcher(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
 end

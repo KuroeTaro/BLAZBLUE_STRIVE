@@ -184,7 +184,7 @@ obj_char["camera_enclosing_anim"] = nil
 4SP_S_4S
 4SP_S_H
 4SP_S_2Launcher
-4SP_S_6Launcher
+4SP_S_8Launcher
 4SP_S_5Launcher
 6SP_S
 SP_H

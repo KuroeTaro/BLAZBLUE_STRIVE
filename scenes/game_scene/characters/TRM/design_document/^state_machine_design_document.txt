@@ -416,7 +416,7 @@ _4SP_S
     _6SP_K||_4SP_S_6K
     _4SP_S_4SP_S||_4SP_S_4S
     _4SP_S_2Launcher
-    _4SP_S_6Launcher
+    _4SP_S_8Launcher
     _4SP_S_5Launcher
     _6SP_S||_4SP_S_6S
     _4SP_S_SP_H||_4SP_S_H
@@ -453,7 +453,7 @@ _4SP_S_H||_4SP_S_SP_H
 _4SP_S_2Launcher
     _burst_RC_purple
     _5_stand_idle
-_4SP_S_6Launcher
+_4SP_S_8Launcher
     _burst_RC_purple
     _5_stand_idle
 _4SP_S_5Launcher

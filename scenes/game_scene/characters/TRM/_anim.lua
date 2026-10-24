@@ -8807,8 +8807,8 @@ function load_game_scene_anim_char_TRM_4SP_S_H(
     return res
 end
 -- _4SP_S_2Launcher
--- _4SP_S_6Launcher
 -- _4SP_S_5Launcher
+-- _4SP_S_8Launcher
 -- _6SP_S
 function load_game_scene_anim_char_TRM_6SP_S(
     hit_side_obj_char,hurt_side_obj_char,sprite_sheet,anchor_pos

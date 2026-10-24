@@ -79,7 +79,7 @@
    "4SP_S_6dash",
    "4SP_S_4S",
    "4SP_S_2Launcher",
-   "4SP_S_6Launcher",
+   "4SP_S_8Launcher",
    "4SP_S_5Launcher",
    "6SP_S",
    "SP_H",
@@ -167,7 +167,7 @@
      ],
      [
       "from",
-      "4SP_S_6Launcher"
+      "4SP_S_8Launcher"
      ],
      [
       "from",
@@ -5415,9 +5415,9 @@
     "reach": []
    },
    {
-    "name": "state_gate_game_scene_char_LP_from_4SP_S_6Launcher",
+    "name": "state_gate_game_scene_char_LP_from_4SP_S_8Launcher",
     "kind": "from",
-    "state": "4SP_S_6Launcher",
+    "state": "4SP_S_8Launcher",
     "line": null,
     "self_writes": [],
     "opp_writes": [],

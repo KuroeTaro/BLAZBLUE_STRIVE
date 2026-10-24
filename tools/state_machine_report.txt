@@ -275,7 +275,7 @@ common_to_burst_overdrive                                         direct->{burst
     (has non-literal self state write, e.g. = state_cache)
     calls -> common:{to_burst_RC_purple, to_burst_overdrive} ; from:{5_stand_idle}
 [from_4SP_S_2Launcher]
-[from_4SP_S_6Launcher]
+[from_4SP_S_8Launcher]
 [from_4SP_S_5Launcher]
 [from_6SP_S]
     direct_self_state -> 5_stand_idle
