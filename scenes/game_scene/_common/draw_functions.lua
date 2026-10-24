@@ -9,9 +9,6 @@ function draw_game_scene_main()
     draw_game_scene_char_RP_black_overlay()
     -- 绘制wallbreak_背景
     draw_game_scene_stage_wallbreak_at_character_back()
-    -- 绘制背侧VFX
-    draw_game_scene_char_LP_VFX_back()
-    draw_game_scene_char_RP_VFX_back()
     -- 绘制角色阴影
     draw_game_scene_char_LP_shadow()
     draw_game_scene_char_RP_shadow()
@@ -21,6 +18,9 @@ function draw_game_scene_main()
     -- 绘制背侧飞行道具
     draw_game_scene_char_LP_projectile_back()
     draw_game_scene_char_RP_projectile_back()
+    -- 绘制背侧VFX
+    draw_game_scene_char_LP_VFX_back()
+    draw_game_scene_char_RP_VFX_back()
     -- 绘制背侧挂件
     draw_game_scene_char_LP_attachment_back()
     draw_game_scene_char_RP_attachment_back()

@@ -8845,7 +8845,7 @@ function load_game_scene_anim_char_TRM_6SP_S(
         hit_side_obj_char["FD_block_heat_drain"] = 5.0
         hit_side_obj_char["stand_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_launched_high(
             hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_launched_high","air","knockdown_recovery",
-            7.5,5,1.14,-37.5,2.5,1.07,
+            7.5,5,1.125,-37.5,2.5,1.07,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
@@ -8861,7 +8861,7 @@ function load_game_scene_anim_char_TRM_6SP_S(
         )
         hit_side_obj_char["crouch_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_launched_high(
             hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_launched_high","air","knockdown_recovery",
-            7.5,5,1.14,-37.5,2.5,1.07,
+            7.5,5,1.125,-37.5,2.5,1.07,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
@@ -8877,7 +8877,7 @@ function load_game_scene_anim_char_TRM_6SP_S(
         )
         hit_side_obj_char["air_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_launched_high(
             hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_launched_high","air","knockdown_recovery",
-            7.5,5,1.14,-37.5,2.5,1.07,
+            7.5,5,1.125,-37.5,2.5,1.07,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
@@ -8893,7 +8893,7 @@ function load_game_scene_anim_char_TRM_6SP_S(
         )
         hit_side_obj_char["OTG_hurt_animation"] = load_game_scene_anim_char_common_0_general_hurt_launched_high(
             hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_launched_high","air","knockdown_recovery",
-            27.5,5,1.14,-5,2.5,1.07,
+            27.5,5,1.125,-5,2.5,1.07,
             nil,
             load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
                 hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
