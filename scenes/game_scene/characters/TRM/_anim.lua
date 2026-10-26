@@ -3983,7 +3983,7 @@ function load_game_scene_anim_char_TRM_6S(
         -- draw_correction
         hit_side_obj_char[8] = 11
     end
-    res[54] = function()
+    res[55] = function()
         -- draw_correction
         hit_side_obj_char[8] = 12
     end

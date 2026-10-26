@@ -1417,7 +1417,9 @@ function order_load_game_scene_char_RP_frames(load_order)
                 "4SP_S_H",
                 "4SP_S_2Launcher",
                 "4SP_S_5Launcher",
-                "4SP_S_8Launcher"
+                "4SP_S_8Launcher",
+                "4SP_P_4dash",
+                "4SP_P_6dash"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_char_game_scene_RP[v] =

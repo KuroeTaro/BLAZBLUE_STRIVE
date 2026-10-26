@@ -129,6 +129,8 @@ local load_attack_name_table = {
     "4SP_S_2Launcher",
     "4SP_S_5Launcher",
     "4SP_S_8Launcher",
+    "4SP_P_4dash",
+    "4SP_P_6dash",
     "6SP_S",
     "SP_H",
     "jSP_H"
