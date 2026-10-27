@@ -4134,10 +4134,6 @@ function state_gate_game_scene_char_RP_common_ground_to_special_move(
         self_side_obj_char["state"] = "SP_H"
         return true
     end
-        -- _SP_H_P
-        -- _SP_H_K
-        -- _SP_H_S
-        -- _SP_H_H
 end
 function state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
@@ -4262,10 +4258,6 @@ function state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(
         self_side_obj_char["state"] = "SP_H"
         return true
     end
-        -- _SP_H_P
-        -- _SP_H_K
-        -- _SP_H_S
-        -- _SP_H_H
 end
 function state_gate_game_scene_char_RP_common_ground_to_UA_move(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
@@ -4283,53 +4275,7 @@ function state_gate_game_scene_char_RP_common_ground_to_UA_move_hold_ver(
     -- _5UA
     -- _4SP_S_6UA
 end
-function state_gate_game_scene_char_RP_common_ground_to_attack_move(
-    self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
-)
-    -- _UA_move
-    if state_gate_game_scene_char_RP_common_ground_to_UA_move(
-        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
-    ) then
-        return true
-    end
-    -- _special_move
-    if state_gate_game_scene_char_RP_common_ground_to_special_move(
-        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
-    ) then
-        return true
-    end
-    -- _normal_move
-    if state_gate_game_scene_char_RP_common_ground_to_normal_move(
-        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
-    ) then
-        return true
-    end
-    return false
-end
-function state_gate_game_scene_char_RP_common_ground_to_attack_move_hold_ver(
-    self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
-)
-    -- _UA_move
-    if state_gate_game_scene_char_RP_common_ground_to_UA_move_hold_ver(
-        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
-    ) then
-        return true
-    end
-    -- _special_move
-    if state_gate_game_scene_char_RP_common_ground_to_special_move_hold_ver(
-        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
-    ) then
-        return true
-    end
-    -- _normal_move
-    if state_gate_game_scene_char_RP_common_ground_to_normal_move_hold_ver(
-        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
-    ) then
-        return true
-    end
-    return false
-end
--- 合并门：等价于依次调用 UA_move -> special_move -> normal_move
+-- air
 function state_gate_game_scene_char_RP_common_air_to_dash_move_PP(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
@@ -4432,12 +4378,10 @@ function state_gate_game_scene_char_RP_common_air_to_dash_move_HP(
         return true
     end
 end
-function state_gate_game_scene_char_RP_common_air_to_attack_move(
+function state_gate_game_scene_char_RP_common_air_to_normal_move(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
     local direction_input_true_table = {[4] = true,[6] = true,[7] = true,[9] = true}
-    -- _burst_overdrive
-    -- _burst_RC_blue
     -- _active_FD_block
     -- _jSP_S
     -- _jSP_H
@@ -4525,12 +4469,10 @@ function state_gate_game_scene_char_RP_common_air_to_attack_move(
     end
     return false
 end
-function state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(
+function state_gate_game_scene_char_RP_common_air_to_normal_move_hold_ver(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
     local direction_input_true_table = {[4] = true,[6] = true,[7] = true,[9] = true}
-    -- _burst_overdrive
-    -- _burst_RC_blue
     -- _active_FD_block
     -- _jSP_S
     -- _jSP_H
@@ -5042,10 +4984,20 @@ function state_gate_game_scene_char_RP_4SP_P_to_special(
         return true
     end
     -- _SP_H
-        -- _SP_H_P
-        -- _SP_H_K
-        -- _SP_H_S
-        -- _SP_H_H
+    if test_input_sys_press_or_hold(self_side_input["SP"]) and
+    test_input_sys_press_or_hold(self_side_input["H"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
+        end
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_SP_H(
+            self_side_obj_char,opponent_side_obj_char,"SP_H",{320,495}
+        )
+        init_character_anim_with(
+            self_side_obj_char,self_side_obj_char["character_animation"]
+        )
+        self_side_obj_char["state"] = "SP_H"
+        return true
+    end
 end
 function state_gate_game_scene_char_RP_4SP_S_to_special(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
@@ -6791,7 +6743,7 @@ function state_gate_game_scene_char_RP_from_7_8_9_jump_air(
         ) then
             return true
         end
-        if state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(
+        if state_gate_game_scene_char_RP_common_air_to_normal_move_hold_ver(
             self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
         ) then
             return true
@@ -7274,7 +7226,7 @@ function state_gate_game_scene_char_RP_from_burst_RC_red(
                 self_side_obj_char["velocity"][2] = self_side_obj_char["velocity"][2]*5
                 return true
             end
-            if state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(
+            if state_gate_game_scene_char_RP_common_air_to_normal_move_hold_ver(
                 self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
             ) then
                 common_game_scene_game_speed_load_application(
@@ -7402,7 +7354,7 @@ function state_gate_game_scene_char_RP_from_burst_RC_blue(
                 self_side_obj_char["velocity"][2]*1 + self_side_obj_char["velocity_cache"][2]*1.25
                 return true
             end
-            if state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(
+            if state_gate_game_scene_char_RP_common_air_to_normal_move_hold_ver(
                 self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
             ) then
                 common_game_scene_game_speed_load_application(
@@ -7531,7 +7483,7 @@ function state_gate_game_scene_char_RP_from_burst_RC_purple(
                 self_side_obj_char["velocity"][2] = self_side_obj_char["velocity"][2]*5
                 return true
             end
-            if state_gate_game_scene_char_RP_common_air_to_attack_move_hold_ver(
+            if state_gate_game_scene_char_RP_common_air_to_normal_move_hold_ver(
                 self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
             ) then
                 common_game_scene_game_speed_load_application(

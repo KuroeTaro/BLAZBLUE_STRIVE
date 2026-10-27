@@ -900,7 +900,7 @@
     ]
    },
    {
-    "name": "state_gate_game_scene_char_LP_common_air_to_attack_move",
+    "name": "state_gate_game_scene_char_LP_common_air_to_normal_move",
     "kind": "common",
     "state": "air_to_attack_move",
     "line": null,
@@ -933,7 +933,7 @@
     ]
    },
    {
-    "name": "state_gate_game_scene_char_LP_common_air_to_attack_move_hold_ver",
+    "name": "state_gate_game_scene_char_LP_common_air_to_normal_move_hold_ver",
     "kind": "common",
     "state": "air_to_attack_move_hold_ver",
     "line": null,

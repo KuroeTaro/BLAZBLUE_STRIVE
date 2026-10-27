@@ -31,7 +31,7 @@
   state_gate_game_scene_char_LP_common_ground_to_attack_move     scenes\game_scene\characters\TRM\left.lua:4256
   state_gate_game_scene_char_LP_common_ground_to_attack_move_hold_ver scenes\game_scene\characters\TRM\left.lua:4279
   state_gate_game_scene_char_LP_common_air_to_dash_move_PP       scenes\game_scene\characters\TRM\left.lua:4303
-  state_gate_game_scene_char_LP_common_air_to_attack_move        scenes\game_scene\characters\TRM\left.lua:4405
+  state_gate_game_scene_char_LP_common_air_to_normal_move        scenes\game_scene\characters\TRM\left.lua:4405
   state_gate_game_scene_char_RP_common_ground_to_dash_move_PP    scenes\game_scene\characters\TRM\right.lua:3513
   state_gate_game_scene_char_RP_common_ground_to_dash_move_NH    scenes\game_scene\characters\TRM\right.lua:3603
   state_gate_game_scene_char_RP_common_ground_to_attack_move     scenes\game_scene\characters\TRM\right.lua:4256
