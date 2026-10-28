@@ -5252,6 +5252,8 @@ function load_game_scene_anim_char_TRM_4_6Launcher_success_hurt(
         update_y_37f_43f(40)
     end
     res[44] = function()
+        -- state
+        hurt_side_obj_char["y"] = 0
         hurt_side_obj_char["sprite_sheet"] = "0_general_hurt_hard_knockdown_up"
         -- collide
         hurt_side_obj_char["pushbox"] = hurt_side_pushbox_data["0_general_hurt_hard_knockdown_up"][0]
@@ -7777,7 +7779,6 @@ function load_game_scene_anim_char_TRM_4SP_P(
         hit_side_obj_char["friction"] = 5
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
-        hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
         hit_side_obj_char["throw_inv"] = false
@@ -8450,7 +8451,6 @@ function load_game_scene_anim_char_TRM_4SP_S(
         hit_side_obj_char["friction"] = 5
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
-        hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
         hit_side_obj_char["throw_inv"] = false
@@ -8559,9 +8559,8 @@ function load_game_scene_anim_char_TRM_4SP_S_4dash(
         hit_side_obj_char["friction"] = 7
         hit_side_obj_char["gravity"] = 1.0
         -- enemy_friend_interaction
-        hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
-        hit_side_obj_char["strike_inv"] = false
-        hit_side_obj_char["strike_inv_countdown"] = 0
+        hit_side_obj_char["strike_inv"] = true
+        hit_side_obj_char["strike_inv_countdown"] = 7
         hit_side_obj_char["throw_inv"] = false
         hit_side_obj_char["throw_inv_countdown"] = 0
         hit_side_obj_char["projectile_inv"] = false
@@ -8635,7 +8634,7 @@ function load_game_scene_anim_char_TRM_4SP_S_4dash(
         -- state
         hit_side_obj_char["hurt_state_target"] = "idle" -- idle_unblock_punish_counter_GP_parry
         hit_side_obj_char["move_state"] = "none"
-        hit_side_obj_char["hit_cancel"] = true
+        hit_side_obj_char["hit_cancel"] = false
         hit_side_obj_char["idle_cancel"] = true
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "load" -- none_save_load
@@ -8679,13 +8678,13 @@ function load_game_scene_anim_char_TRM_4SP_S_6dash(
         hit_side_obj_char["height"] = "stand" -- stand_crouch_air_OTG_wallstick
         hit_side_obj_char["hurt_state_target"] = "unblock" -- idle_unblock_punish_counter_GP_parry
         hit_side_obj_char["move_state"] = "recovery" -- none_startup_active_recovery
+        hit_side_obj_char["hit_cancel"] = false
         hit_side_obj_char["idle_cancel"] = false
         -- state_number
         hit_side_obj_char["velocity"] = {18.0*hit_side_obj_char[5],0}
         hit_side_obj_char["friction"] = 7
         hit_side_obj_char["gravity"] = 1.0
         -- enemy_friend_interaction
-        hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
         hit_side_obj_char["throw_inv"] = false
@@ -8716,6 +8715,16 @@ function load_game_scene_anim_char_TRM_4SP_S_6dash(
         -- draw_correction
         hit_side_obj_char[8] = 0
         hit_side_obj_char["anchor_pos"] = {290,495}
+        -- insert_VFX
+        insert_VFX_game_scene_stage_smoke_horizontal_shot(
+            hit_side_obj_char,-320,-185,0.5,1.0,1.0,0
+        )
+        -- update
+        update_horizontal_velocity()
+    end
+    res[3] = function()
+        -- state
+        hit_side_obj_char["hit_cancel"] = true
         -- update
         update_horizontal_velocity()
     end
@@ -8741,6 +8750,11 @@ function load_game_scene_anim_char_TRM_4SP_S_6dash(
         -- draw_correction
         hit_side_obj_char[8] = 4
     end
+    res[14] = function()
+        -- input_sys_cache
+        hit_side_obj_char["input_sys_state"] = "save" -- none_save_load
+        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
+    end
     res[16] = function()
         -- draw_correction
         hit_side_obj_char[8] = 5
@@ -8753,7 +8767,11 @@ function load_game_scene_anim_char_TRM_4SP_S_6dash(
         -- state
         hit_side_obj_char["hurt_state_target"] = "idle" -- idle_unblock_punish_counter_GP_parry
         hit_side_obj_char["move_state"] = "none"
+        hit_side_obj_char["hit_cancel"] = false
         hit_side_obj_char["idle_cancel"] = true
+        -- input_sys_cache
+        hit_side_obj_char["input_sys_state"] = "load" -- none_save_load
+        common_game_scene_get_input_sys_cache_state_machine(hit_side)()
         -- draw_correction
         hit_side_obj_char[8] = 7
     end
@@ -8787,7 +8805,6 @@ function load_game_scene_anim_char_TRM_4SP_S_4S(
         hit_side_obj_char["friction"] = 5
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
-        hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
         hit_side_obj_char["throw_inv"] = false
@@ -8870,7 +8887,6 @@ function load_game_scene_anim_char_TRM_4SP_S_H(
         hit_side_obj_char["friction"] = 5
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
-        hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
         hit_side_obj_char["throw_inv"] = false
@@ -8975,7 +8991,6 @@ function load_game_scene_anim_char_TRM_4SP_S_H(
         hit_side_obj_char["friction"] = 5
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
-        hit_side_obj_char["strike_active"] = false -- 防止在同一动作的active多次触发
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
         hit_side_obj_char["throw_inv"] = false
@@ -10071,7 +10086,6 @@ function load_game_scene_anim_char_TRM_SP_H(
         hit_side_obj_char["friction"] = 5
         hit_side_obj_char["gravity"] = 2.5
         -- enemy_friend_interaction
-        hit_side_obj_char["strike_active"] = false -- 本体无判定 恒为 false
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
         hit_side_obj_char["throw_inv"] = false
@@ -10194,7 +10208,6 @@ function load_game_scene_anim_char_TRM_jSP_H(
         hit_side_obj_char["friction"] = 4
         hit_side_obj_char["gravity"] = 0
         -- enemy_friend_interaction
-        hit_side_obj_char["strike_active"] = false -- 本体无判定 恒为 false
         hit_side_obj_char["strike_inv"] = false
         hit_side_obj_char["strike_inv_countdown"] = 0
         hit_side_obj_char["throw_inv"] = false
