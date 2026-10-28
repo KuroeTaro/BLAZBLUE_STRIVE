@@ -5064,7 +5064,31 @@ function state_gate_game_scene_char_LP_4SP_S_to_special(
             return true
         end
         -- _4SP_S_4dash
+        if self_side_obj_char["direction_input"] == 4
+        and test_input_sys_press(self_side_input["dash"])
+        then
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S_4dash(
+                self_side_obj_char,opponent_side_obj_char
+            )
+            init_character_anim_with(
+                self_side_obj_char,self_side_obj_char["character_animation"]
+            )
+            self_side_obj_char["state"] = "4SP_S_4dash"
+            return true
+        end
         -- _4SP_S_6dash
+        if self_side_obj_char["direction_input"] == 6
+        and test_input_sys_press(self_side_input["dash"])
+        then
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S_6dash(
+                self_side_obj_char,opponent_side_obj_char
+            )
+            init_character_anim_with(
+                self_side_obj_char,self_side_obj_char["character_animation"]
+            )
+            self_side_obj_char["state"] = "4SP_S_6dash"
+            return true
+        end
         -- _4SP_S_4S
         if (self_side_obj_char["direction_input"] == 4 and test_input_sys_press(self_side_input["S"]))
         or (self_side_obj_char["ability_gauge"][1] <= 0)
@@ -9306,6 +9330,19 @@ function state_gate_game_scene_char_LP_from_j4_6Launcher(
         end
         return true
     end
+    -- idle_cancel
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_air_to_dash_move_HH(
+            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+        ) then
+            return true
+        end
+        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(
+            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+        ) then
+            return true
+        end
+    end
     -- _7_8_9_jump_air
     if get_character_anim_end_state(
         self_side_obj_char,self_side_obj_char["character_animation"]
@@ -9597,10 +9634,82 @@ end
 function state_gate_game_scene_char_LP_from_4SP_S_4dash(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
+    -- _overdrive
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(
+        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char,"overdrive"
+    ) then
+        return true
+    end
+    -- _PRC
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(
+        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+    ) then
+        return true
+    end
+    -- _common_ground_idle_to_move
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_from_5_stand_idle(
+            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+        ) then
+            return true
+        end
+    end
+    -- _5_stand_idle
+    if get_character_anim_end_state(
+        self_side_obj_char,self_side_obj_char["character_animation"]
+    ) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(
+            self_side_obj_char,self_side_obj_char["character_animation"]
+        )
+        self_side_obj_char["state"] = "5_stand_idle"
+        if state_gate_game_scene_char_LP_from_5_stand_idle(
+            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+        ) then
+            return true
+        end
+        return true
+    end
 end
 function state_gate_game_scene_char_LP_from_4SP_S_6dash(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
+    -- _overdrive
+    if state_gate_game_scene_char_LP_common_to_burst_overdrive(
+        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char,"overdrive"
+    ) then
+        return true
+    end
+    -- _PRC
+    if not self_side_obj_char["idle_cancel"] and state_gate_game_scene_char_LP_common_to_burst_RC_purple(
+        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+    ) then
+        return true
+    end
+    -- _common_ground_idle_to_move
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_from_5_stand_idle(
+            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+        ) then
+            return true
+        end
+    end
+    -- _5_stand_idle
+    if get_character_anim_end_state(
+        self_side_obj_char,self_side_obj_char["character_animation"]
+    ) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(
+            self_side_obj_char,self_side_obj_char["character_animation"]
+        )
+        self_side_obj_char["state"] = "5_stand_idle"
+        if state_gate_game_scene_char_LP_from_5_stand_idle(
+            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+        ) then
+            return true
+        end
+        return true
+    end
 end
 function state_gate_game_scene_char_LP_from_4SP_S_4S(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
