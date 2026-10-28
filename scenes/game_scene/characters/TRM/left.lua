@@ -5077,8 +5077,7 @@ function state_gate_game_scene_char_LP_4SP_S_to_special(
             return true
         end
         -- _4SP_S_6dash
-        if self_side_obj_char["direction_input"] == 6
-        and test_input_sys_press(self_side_input["dash"])
+        if test_input_sys_press(self_side_input["dash"])
         then
             self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S_6dash(
                 self_side_obj_char,opponent_side_obj_char

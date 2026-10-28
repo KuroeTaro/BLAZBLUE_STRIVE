@@ -8573,10 +8573,10 @@ function load_game_scene_anim_char_TRM_4SP_S_4dash(
         hit_side_obj_char["active_frame"] = 0
         hit_side_obj_char["recovery_frame"] = 0
         -- collide
-        hit_side_obj_char["pushbox"] = {0,-185,120,370}
+        hit_side_obj_char["pushbox"] = {0,-142.5,120,285}
         hit_side_obj_char["pushbox_opponent_collision_active"] = true
         hit_side_obj_char["hitbox_table"] = {}
-        hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
+        hit_side_obj_char["hurtbox_table"] = {{0,-190,380,380}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- shot_sys
         if hit_side_obj_char["shot_sys_at_the_steady_state_table"][hit_side_obj_char["shot_sys_state"]] then
@@ -8605,6 +8605,8 @@ function load_game_scene_anim_char_TRM_4SP_S_4dash(
         hit_side_obj_char[8] = 2
     end
     res[9] = function()
+        -- collide
+        hit_side_obj_char["hurtbox_table"] = {{0,-160,380,320}}
         -- draw_correction
         hit_side_obj_char[8] = 3
         insert_VFX_game_scene_stage_smoke_horizontal_shot(
@@ -8623,10 +8625,15 @@ function load_game_scene_anim_char_TRM_4SP_S_4dash(
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none_save_load
         common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
+        -- collide
+        hit_side_obj_char["pushbox"] = {0,-185,120,370}
+        hit_side_obj_char["hurtbox_table"] = {{0,-190,240,380}}
         -- draw_correction
         hit_side_obj_char[8] = 6
     end
     res[28] = function()
+        -- collide
+        hit_side_obj_char["hurtbox_table"] = {{0,-210,200,420}}
         -- draw_correction
         hit_side_obj_char[8] = 7
     end
@@ -8639,6 +8646,9 @@ function load_game_scene_anim_char_TRM_4SP_S_4dash(
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "load" -- none_save_load
         common_game_scene_get_input_sys_cache_state_machine(hit_side)()
+        -- collide
+        hit_side_obj_char["pushbox"] = {0,-185,120,370}
+        hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         -- draw_correction
         hit_side_obj_char[8] = 8
     end
@@ -8702,7 +8712,7 @@ function load_game_scene_anim_char_TRM_4SP_S_6dash(
         hit_side_obj_char["pushbox"] = {0,-185,120,370}
         hit_side_obj_char["pushbox_opponent_collision_active"] = true
         hit_side_obj_char["hitbox_table"] = {}
-        hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
+        hit_side_obj_char["hurtbox_table"] = {{0,-200,220,400}}
         hit_side_obj_char["collision_ground_height_offset"] = 0
         -- shot_sys
         if hit_side_obj_char["shot_sys_at_the_steady_state_table"][hit_side_obj_char["shot_sys_state"]] then
@@ -8729,12 +8739,17 @@ function load_game_scene_anim_char_TRM_4SP_S_6dash(
         update_horizontal_velocity()
     end
     res[4] = function()
+        -- collide
+        hit_side_obj_char["pushbox"] = {0,-142.5,120,285}
+        hit_side_obj_char["hurtbox_table"] = {{0,-180,380,360}}
         -- draw_correction
         hit_side_obj_char[8] = 1
         -- update
         update_horizontal_velocity()
     end
     res[7] = function()
+        -- collide
+        hit_side_obj_char["hurtbox_table"] = {{0,-145,480,290}}
         -- draw_correction
         hit_side_obj_char[8] = 2
         -- update
@@ -8747,23 +8762,28 @@ function load_game_scene_anim_char_TRM_4SP_S_6dash(
         update_horizontal_velocity()
     end
     res[13] = function()
-        -- draw_correction
-        hit_side_obj_char[8] = 4
-    end
-    res[14] = function()
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "save" -- none_save_load
         common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
+        -- draw_correction
+        hit_side_obj_char[8] = 4
     end
     res[16] = function()
         -- draw_correction
         hit_side_obj_char[8] = 5
     end
     res[20] = function()
+        -- collide
+        hit_side_obj_char["pushbox"] = {0,-185,120,370}
+        hit_side_obj_char["hurtbox_table"] = {{0,-190,300,380}}
         -- draw_correction
         hit_side_obj_char[8] = 6
     end
     res[24] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 7
+    end
+    res[28] = function()
         -- state
         hit_side_obj_char["hurt_state_target"] = "idle" -- idle_unblock_punish_counter_GP_parry
         hit_side_obj_char["move_state"] = "none"
@@ -8772,10 +8792,9 @@ function load_game_scene_anim_char_TRM_4SP_S_6dash(
         -- input_sys_cache
         hit_side_obj_char["input_sys_state"] = "load" -- none_save_load
         common_game_scene_get_input_sys_cache_state_machine(hit_side)()
-        -- draw_correction
-        hit_side_obj_char[8] = 7
-    end
-    res[28] = function()
+        -- collide
+        hit_side_obj_char["pushbox"] = {0,-185,120,370}
+        hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
         -- draw_correction
         hit_side_obj_char[8] = 8
     end
