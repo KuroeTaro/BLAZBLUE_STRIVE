@@ -1,0 +1,482 @@
+[
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/attack/TRM_4SP_S_4dash.DDS",
+    "bytes": 2808148,
+    "sha256": "37d130937df71fffb5ae8418555877c8e0716190101977ac17e67ebc8e903766"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/attack/TRM_4SP_S_4dash.json",
+    "bytes": 2206,
+    "sha256": "055804d08b2e2b3c4e9f67effda50904e4e53f36ff496290d9f857cdb6b9f7ff"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/attack/TRM_4SP_S_4dash.png",
+    "bytes": 818837,
+    "sha256": "6ff8ff5a1df98e005e98fe2f63c713703e01c10c542578eaa76585dc0995d547"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/attack/TRM_4SP_S_6dash.DDS",
+    "bytes": 2527348,
+    "sha256": "82758787a7844938363479a0fa5298d0e31cbb9ae599624d26c127be4e35a63a"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/attack/TRM_4SP_S_6dash.json",
+    "bytes": 2022,
+    "sha256": "6e2dd1732417e3e3d89c7facad94c373c6f587b342f3bf7b4aad62a1635d6ea6"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/attack/TRM_4SP_S_6dash.png",
+    "bytes": 759192,
+    "sha256": "fcbc03b6f401eb3f06fa9327d6a401b94177b149689a387a400646f1950ab2bd"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/attack/TRM_4SP_S_2Launcher.DDS",
+    "bytes": 4860148,
+    "sha256": "ee92c828d37be045d6942ca089d67cbaf17baa2f3d84abf447024492ede3c823"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/attack/TRM_4SP_S_2Launcher.json",
+    "bytes": 3151,
+    "sha256": "139dba6893f1b4e968ccde7de003a55436ea9ba35e4f0527ec1cae3cfdb35e11"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/attack/TRM_4SP_S_2Launcher.png",
+    "bytes": 1511746,
+    "sha256": "1ad63dc3b9c0c5c5382e337328d5c0680ab49da26df2908049a01104caac8f56"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/attack/TRM_4SP_S_5Launcher.DDS",
+    "bytes": 4039348,
+    "sha256": "2f1eb3691e973137b560ab00a6e6d2be77644419e55500572696598c556752f8"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/attack/TRM_4SP_S_5Launcher.json",
+    "bytes": 2389,
+    "sha256": "6576ccb679deb0f9e49be7e36035f08d8b63d97c48c8274aa50777173017e4b9"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/attack/TRM_4SP_S_5Launcher.png",
+    "bytes": 1017817,
+    "sha256": "05e3e9a7326a9d6fcf3980cbf34f2bb098e5bcee8449dce118740f2dc948d61b"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/attack/TRM_4SP_S_8Launcher.DDS",
+    "bytes": 5869748,
+    "sha256": "58668627c933f0ac8cc52d5eb9c15c7d78cf6c3717c238464f2879ff2c4e50f9"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/attack/TRM_4SP_S_8Launcher.json",
+    "bytes": 2389,
+    "sha256": "34b21409f14366c3349cd7327162731e462ed95d54322db8a14a719fb843ad32"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/attack/TRM_4SP_S_8Launcher.png",
+    "bytes": 1124201,
+    "sha256": "3117dc6866de87e4267d12b18c973f96ea36aeb247d880e312549a8a3b9f7b29"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/attack/TRM_SP_H.DDS",
+    "bytes": 998548,
+    "sha256": "ff218eeaff477dd0d7e671bc49926a27d473cabbfe6f20ccde2fca28abef820e"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/attack/TRM_SP_H.json",
+    "bytes": 1081,
+    "sha256": "bf6c542e4418f04a5a13ff56cae8b974bad1e13d932b96a46418cfbeff112ae8"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/attack/TRM_SP_H.png",
+    "bytes": 364012,
+    "sha256": "0a3b2b7c53082b106fce0a9643d7adaa1d89900cccf6f04eb874187d8364d899"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/attack/TRM_jSP_H.DDS",
+    "bytes": 832148,
+    "sha256": "e6439e67cd7d1f1e51f1e5a094e92117e01895981b788bdc04da76a5baa06b54"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/attack/TRM_jSP_H.json",
+    "bytes": 1082,
+    "sha256": "6d43e18882baacd15770194ec145336b3a2456d89aec62407242899621ef462b"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/attack/TRM_jSP_H.png",
+    "bytes": 376382,
+    "sha256": "a1f7b9d0a85233d604d5149ff5d0dd958426443540b62565008a0be8bf8aca09"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/projectile/TRM_SP_H_chain.DDS",
+    "bytes": 12948,
+    "sha256": "5b938bf61ec511c1b4994833f16aa2bc87a4c3c7a972ba3f73e46a50a8220b79"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/projectile/TRM_SP_H_chain.json",
+    "bytes": 529,
+    "sha256": "e394efd59f25312d0b3c2aaf6d9eefb1adf4221085d55d3344fd06bb53c19cff"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/projectile/TRM_SP_H_chain.png",
+    "bytes": 7048,
+    "sha256": "33e9700d748d6015bafdd0f0e17d368bd42f954f457d2ffccbf0048db338e569"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/projectile/TRM_SP_H_oroboros.DDS",
+    "bytes": 43348,
+    "sha256": "3062276175d61153a6e0f50879bc9154570b5ab430fc5fa36978f1dbb36f51bd"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/projectile/TRM_SP_H_oroboros.json",
+    "bytes": 720,
+    "sha256": "f551ff0351a273a2570e93edd59d9170840fff64eaff28dd95b02cae9b9f39fc"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/projectile/TRM_SP_H_oroboros.png",
+    "bytes": 27416,
+    "sha256": "7d3a446087d0459b87af0fbdb78d67b33d77b8afd7e6059125caaffcf8c22ecd"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4PS_S_4dash/0.png",
+    "bytes": 103688,
+    "sha256": "569e5c127046f5485fb5a2b4d860400541af63d8563d6567b6146e73598c787c"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4PS_S_4dash/1.png",
+    "bytes": 101079,
+    "sha256": "645e6da29ebfeca5a71fee72b8c5788157008998aa726eb25701f667b591288e"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4PS_S_4dash/2.png",
+    "bytes": 98771,
+    "sha256": "cbce0db905305185a9813fca129cb001b45016715be3eca0fdd97e5abeb4720a"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4PS_S_4dash/3.png",
+    "bytes": 84416,
+    "sha256": "3c8120d9383d8e887427a379c0e52d816c2e6c10c33109a19815ee3df5855708"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4PS_S_4dash/4.png",
+    "bytes": 77956,
+    "sha256": "e011a4d7dc051edf29c8683269d0e38c3949916844d4018a20739ea7d327aac1"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4PS_S_4dash/5.png",
+    "bytes": 74904,
+    "sha256": "154195cfe8c7ef97f7ec96a8e53906ba36156eddaa269fe51ef80d3cea3c2655"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4PS_S_4dash/6.png",
+    "bytes": 79670,
+    "sha256": "cd59444d0c4ffbe9c935fdf15bfc5d14e584b70a278de299da64e4c21f2fbbf5"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4PS_S_4dash/7.png",
+    "bytes": 87283,
+    "sha256": "d61e861c50b1e09e2abdeb7a4a7603bb9009c0c47b66c05bd6dc04d26ee32073"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4PS_S_4dash/8.png",
+    "bytes": 79931,
+    "sha256": "e409afdaf8f118bacb4276473d2550715400653b296ed7f5bdb359ddeabb96c7"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4PS_S_4dash/9.png",
+    "bytes": 94474,
+    "sha256": "69db3cff8cf97d305188afe81a5194c4f8a854ccca832e9e3c62a640d09773f1"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4PS_S_6dash/0.png",
+    "bytes": 90225,
+    "sha256": "00df6212ff9fa7a15408b47aaa0335bdfb94ee80905daab983d5d7a1af5b6d75"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4PS_S_6dash/1.png",
+    "bytes": 85716,
+    "sha256": "0fc7330a9310fbb524d28b06b23f2e4ee84318adc2fde004cd739d271ca63179"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4PS_S_6dash/2.png",
+    "bytes": 92774,
+    "sha256": "f30f3865c53af873ea6ad3b6fa194f4aa8a9de618ab821a4b68c91c06951a7de"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4PS_S_6dash/3.png",
+    "bytes": 91121,
+    "sha256": "ef7c5f4e58319aead604b7b59b73a96e5f2662b3ddc5236f0a1a9d564f5455ee"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4PS_S_6dash/4.png",
+    "bytes": 81366,
+    "sha256": "11231ef373f5ce3f9713067d59531f0096c0046f1970c184bc97543f1278b542"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4PS_S_6dash/5.png",
+    "bytes": 82697,
+    "sha256": "118264b63d1ddd0271c763ecc1f8843a452dd3dc8c8edf0543617d7000a405d5"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4PS_S_6dash/6.png",
+    "bytes": 78730,
+    "sha256": "105edc635b82dbf578aee9931cdffc8495879758a55687b7abf0f71f0b07065c"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4PS_S_6dash/7.png",
+    "bytes": 70556,
+    "sha256": "1a57732fad1e4d4d56ca8079547a4bf7e4439c71de48b9daaa7741d8312c67f5"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4PS_S_6dash/8.png",
+    "bytes": 98202,
+    "sha256": "bc71355651e1859092e240671f7b5d3dc06b8ec8530522b1222bb7994e0a31cc"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_2Launcher/0.png",
+    "bytes": 101229,
+    "sha256": "d8510eb0f744aa7f799cf5e69ca8be83930d9122e08418c0e6c0b0ce7b90c2a8"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_2Launcher/1.png",
+    "bytes": 121043,
+    "sha256": "181f6489ae0993f1f33006a9016b04b459bdf3f1bdc9c268bf34045fde145732"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_2Launcher/10.png",
+    "bytes": 79791,
+    "sha256": "808f991e1d3d51866b27156630d7c659ee14b7c24c7a3f4962123d77777bc0f8"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_2Launcher/11.png",
+    "bytes": 80570,
+    "sha256": "8eb2bc3ebcd23b48a0a40744223d4307327bf91abff278626a41f32f3bfcbaa8"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_2Launcher/12.png",
+    "bytes": 88622,
+    "sha256": "686893e2adfd1f8b1de7dc1c79088d00737fe4f56c7596f7bf10249f51fae42a"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_2Launcher/13.png",
+    "bytes": 80901,
+    "sha256": "de465f7ef9255f95c95e1323cf0c9b6a49b3b9e94c7ea9e3b4234dccf06a346f"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_2Launcher/14.png",
+    "bytes": 94439,
+    "sha256": "2859a1b3c19a679b765280387aa95a3494aff1550796a95c241560971cfb5b45"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_2Launcher/2.png",
+    "bytes": 126983,
+    "sha256": "a94ca2f0876d799d9392468b571d5d9af0ddbeb40027f9f27c87242bc13a31dd"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_2Launcher/3.png",
+    "bytes": 118812,
+    "sha256": "26a6a44380cba361779089b4d379311f2b6f4dc2f7dcfe2d07f966655a1668ee"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_2Launcher/4.png",
+    "bytes": 122656,
+    "sha256": "a9c83f860f0eaad615202f3b33621d6dcc7fe3e1432ccc1240a53cc4be3776cc"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_2Launcher/5.png",
+    "bytes": 117860,
+    "sha256": "9b6e81a5d512bcf2646585f7f2b6eb0e9e553b446eacc29d45cdff75f7dde706"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_2Launcher/6.png",
+    "bytes": 108628,
+    "sha256": "7919db0f1cbd542ce99029d338763a758e08aa5564aabb30d73d5d1c9072b6f1"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_2Launcher/7.png",
+    "bytes": 92735,
+    "sha256": "5138ac67ac2b92b6ad83cd9a7b473e408455351a9f2b0d493cc953d37ce2e88d"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_2Launcher/8.png",
+    "bytes": 98854,
+    "sha256": "ba11feea60921373e33909001a0fdb292a54e875ac2947ae88363cff1aba844e"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_2Launcher/9.png",
+    "bytes": 89401,
+    "sha256": "6c5ee439361312fbed2c9370f3f5c6a0b29d6ed259063a82997a372c11037849"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_5Launcher/0.png",
+    "bytes": 84552,
+    "sha256": "c345f8fa953396370d1ecf942bf18e3acb5fce976e52c49ce831e0ad6f5befe6"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_5Launcher/1.png",
+    "bytes": 94069,
+    "sha256": "9a69b2e67fdcc4fcf8abae8cedb0d36bd5c44ee1fdb812284f01ff42e4ca46b2"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_5Launcher/10.png",
+    "bytes": 102590,
+    "sha256": "b955d5122a32dfc1e7ef030a1f33a2d2f159dec045518d4e97e481e4623d798c"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_5Launcher/2.png",
+    "bytes": 96873,
+    "sha256": "7e2070935b339810af11c7a41378e8353a7d1591cfe0562d919e8737c13cceaa"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_5Launcher/3.png",
+    "bytes": 84884,
+    "sha256": "a44bc4155d27c01d751d71131daa9b213e95e7534ef8633d1d56e341de6a3703"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_5Launcher/4.png",
+    "bytes": 82078,
+    "sha256": "829019910e6ca677d6b7504a22432c25b85698da8d3ed7b8f282bc5eb9289721"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_5Launcher/5.png",
+    "bytes": 85714,
+    "sha256": "798e74f73767a8f29540ee6a53b0d107d975996f1959bee3cf23042c3370c213"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_5Launcher/6.png",
+    "bytes": 89702,
+    "sha256": "6620ff071cfc5756e71910c70fbcaa8dc3d370472bd2c00fbff6c22558dbacc1"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_5Launcher/7.png",
+    "bytes": 98174,
+    "sha256": "505e39f0e8bddc33966c3630d82876a4dca0efa568bad579fa843cae795abb3a"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_5Launcher/8.png",
+    "bytes": 97781,
+    "sha256": "12c5a8ba09325132a14590759acf6dc43df4762ff113e4a11af1a7459ff843d5"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_5Launcher/9.png",
+    "bytes": 102832,
+    "sha256": "5f7e3d466fd1e63ea334305b47899e16ff72d566f5e789bfc7eddc261d2762dc"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_8Launcher/0.png",
+    "bytes": 98319,
+    "sha256": "be675e17f5cf7b7005e42306a87c2a6eb468fe41212949f36ac2718e935c85b2"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_8Launcher/1.png",
+    "bytes": 96227,
+    "sha256": "76e530370b335e84073853237cf491ea82e7cd4c6c78f8bd91535de0aa7b35b1"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_8Launcher/10.png",
+    "bytes": 104228,
+    "sha256": "713fa512f12e11a04e4325e1d33e6643491331488b1e9574b2bad1ca848be0aa"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_8Launcher/2.png",
+    "bytes": 104946,
+    "sha256": "787deb2a202009309bd6ab590bebdbc00f3a092c58d9fb8e8b4ca26205e1e90e"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_8Launcher/3.png",
+    "bytes": 90761,
+    "sha256": "cbf03afef10252e43476a70950ad86ad756e2007120e9ebee9d982d405750bf6"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_8Launcher/4.png",
+    "bytes": 91346,
+    "sha256": "d3ca1ed5509cbfc3e67c902037aae18a7b4a87d93ea7c48c2036628234f12452"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_8Launcher/5.png",
+    "bytes": 100314,
+    "sha256": "5c0cd0c75b6a94fa9cfeb61bad69df2e536da2cd316302008a41db7b6f630991"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_8Launcher/6.png",
+    "bytes": 99437,
+    "sha256": "66c973e5bd62e1e049a5dc112276163c881ac0796e9e83a71396e14de6936aa7"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_8Launcher/7.png",
+    "bytes": 118493,
+    "sha256": "c85c14e39eaffb1d7c875051274272ba1de775166fc5744b1c86dc448ec4f503"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_8Launcher/8.png",
+    "bytes": 116956,
+    "sha256": "a76349f7624fa7bd3e08c56dbaafbcbf4cd157d85dd151a0b36c608f9d7ce9dd"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/4SP_S_8Launcher/9.png",
+    "bytes": 113061,
+    "sha256": "f77f9c07552a4bfabc303f0bb6379e459326cd89b4c5c43022271886bb160d20"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/SP_H/chain/0.png",
+    "bytes": 7244,
+    "sha256": "4d2c770e2b8e8950950cebf95e9d1dfb9d1584c466017e002acc23b3b347585e"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/SP_H/character/air/0.png",
+    "bytes": 96011,
+    "sha256": "100ac0327c101c89e0064c78034009731e507d894f2b29866ce4096bd88754fd"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/SP_H/character/air/1.png",
+    "bytes": 95414,
+    "sha256": "217f3e7cb5ad3c44511a0e3d843a1230cd1b02492a052ca4c6ac64c53ad0eb90"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/SP_H/character/air/2.png",
+    "bytes": 95604,
+    "sha256": "4176b15bf8b53dcf650cfbe6265e1cdedf9985014bdb8a1fd91c59c758ace181"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/SP_H/character/air/3.png",
+    "bytes": 97038,
+    "sha256": "e7fce4d88c776d93ec60a1e89aa082421d0262405bf973f220af97d15f07daef"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/SP_H/character/ground/0.png",
+    "bytes": 94884,
+    "sha256": "671eba13e0b42cbd5d52980bbe7b5001179fe08e3e8029eae7509cdc3dc707be"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/SP_H/character/ground/1.png",
+    "bytes": 94459,
+    "sha256": "2b3b64e9d45a998b8a2ab85adb81f2826752acf98f6dd27d5be0e9d8529b8ea1"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/SP_H/character/ground/2.png",
+    "bytes": 94227,
+    "sha256": "1b2bed4a8bafe67b9dddc0cb57d477a3eb161cc6597d1041d1225a5f05c1037b"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/SP_H/character/ground/3.png",
+    "bytes": 97358,
+    "sha256": "3207c5442f7270783a48676a68b368eb9e499fb7c8406ca8a42b79d9ddcdeb3f"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/SP_H/oroboros/0.png",
+    "bytes": 12178,
+    "sha256": "1fd81384a2209a0f8a2b36937662370d51e0e99e0f9ef59814060a149e699b78"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/texture/_IMG/attack/SP_H/oroboros/1.png",
+    "bytes": 16187,
+    "sha256": "91929610320af1b74c4fd9ec0173449bef6d0e6b88f576bad9639db912f4283f"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/audio/move_SFX/special/SP_H/SP_H_whiff.ogg",
+    "bytes": 56486,
+    "sha256": "93bcc091afb83bedfd2a9736b3d28369707778b55febd319d2f102a9bce98d5f"
+  },
+  {
+    "rel": "asset/game_scene/characters/TRM/audio/move_SFX/special/SP_H/SP_H_whiff.wav",
+    "bytes": 777796,
+    "sha256": "05ad7088d973a9fd80fb546a08b1a17740de6be36bd77384d7d418c90c4fddcc"
+  }
+]

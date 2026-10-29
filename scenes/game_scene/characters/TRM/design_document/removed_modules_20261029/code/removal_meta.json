@@ -1,0 +1,1352 @@
+{
+  "modules": [
+    "4SP_S_4dash",
+    "4SP_S_6dash",
+    "4SP_S_2Launcher",
+    "4SP_S_5Launcher",
+    "4SP_S_8Launcher",
+    "SP_H",
+    "SP_H_P",
+    "SP_H_K",
+    "SP_H_S",
+    "SP_H_H",
+    "jSP_S",
+    "jSP_H",
+    "jSP_H_P",
+    "jSP_H_K",
+    "jSP_H_S",
+    "jSP_H_H"
+  ],
+  "files": {
+    "anim": {
+      "rel": "scenes/game_scene/characters/TRM/_anim.lua",
+      "sha_before": "fec4ed8b7282b0543c85083ed233ea6ae10d26b8db9f969888b02d667a2dd909",
+      "lines_before": 11294
+    },
+    "left": {
+      "rel": "scenes/game_scene/characters/TRM/left.lua",
+      "sha_before": "43169fc157be08260c5a1bf5612b5a1f7ae62d5af041154e93fca821d8dd3953",
+      "lines_before": 10707
+    },
+    "right": {
+      "rel": "scenes/game_scene/characters/TRM/right.lua",
+      "sha_before": "f513ab00ad1f66e8f13300509a18fd23c900d99860b7b06f308e850375ad605d",
+      "lines_before": 10707
+    },
+    "ltex": {
+      "rel": "threads/game_scene/characters/TRM_left_texture.lua",
+      "sha_before": "51f1aa79f4f77655205e2f35ddc6cdbf3f03d296fba17345363bda31cfd65cf1",
+      "lines_before": 202
+    },
+    "rtex": {
+      "rel": "threads/game_scene/characters/TRM_right_texture.lua",
+      "sha_before": "178650de3f8cf6862ac6d34960bdedf884f7f36d301b6682cc65d6fdf6dfc008",
+      "lines_before": 202
+    }
+  },
+  "summary": {
+    "anim": {
+      "removed": 1251,
+      "remaining": 10043
+    },
+    "left": {
+      "removed": 477,
+      "remaining": 10230
+    },
+    "right": {
+      "removed": 477,
+      "remaining": 10230
+    },
+    "ltex": {
+      "removed": 9,
+      "remaining": 193
+    },
+    "rtex": {
+      "removed": 9,
+      "remaining": 193
+    }
+  },
+  "chunks": [
+    {
+      "file": "anim",
+      "kind": "animation",
+      "name": "4SP_S_4dash",
+      "start": 8541,
+      "end": 8669
+    },
+    {
+      "file": "anim",
+      "kind": "animation",
+      "name": "4SP_S_6dash",
+      "start": 8671,
+      "end": 8818
+    },
+    {
+      "file": "anim",
+      "kind": "animation",
+      "name": "4SP_S_2Launcher",
+      "start": 9103,
+      "end": 9383
+    },
+    {
+      "file": "anim",
+      "kind": "animation",
+      "name": "4SP_S_5Launcher",
+      "start": 9385,
+      "end": 9608
+    },
+    {
+      "file": "anim",
+      "kind": "animation",
+      "name": "4SP_S_8Launcher",
+      "start": 9610,
+      "end": 9833
+    },
+    {
+      "file": "anim",
+      "kind": "animation",
+      "name": "SP_H",
+      "start": 10096,
+      "end": 10210
+    },
+    {
+      "file": "anim",
+      "kind": "animation",
+      "name": "jSP_H",
+      "start": 10217,
+      "end": 10321
+    },
+    {
+      "file": "anim",
+      "kind": "comment",
+      "name": "4SP_S_4dash",
+      "start": 8540,
+      "end": 8540
+    },
+    {
+      "file": "anim",
+      "kind": "comment",
+      "name": "4SP_S_6dash",
+      "start": 8670,
+      "end": 8670
+    },
+    {
+      "file": "anim",
+      "kind": "comment",
+      "name": "4SP_S_2Launcher",
+      "start": 9102,
+      "end": 9102
+    },
+    {
+      "file": "anim",
+      "kind": "comment",
+      "name": "4SP_S_5Launcher",
+      "start": 9384,
+      "end": 9384
+    },
+    {
+      "file": "anim",
+      "kind": "comment",
+      "name": "4SP_S_8Launcher",
+      "start": 9609,
+      "end": 9609
+    },
+    {
+      "file": "anim",
+      "kind": "comment",
+      "name": "SP_H",
+      "start": 10086,
+      "end": 10095
+    },
+    {
+      "file": "anim",
+      "kind": "comment",
+      "name": "SP_H_P",
+      "start": 10211,
+      "end": 10211
+    },
+    {
+      "file": "anim",
+      "kind": "comment",
+      "name": "SP_H_K",
+      "start": 10212,
+      "end": 10212
+    },
+    {
+      "file": "anim",
+      "kind": "comment",
+      "name": "SP_H_S",
+      "start": 10213,
+      "end": 10213
+    },
+    {
+      "file": "anim",
+      "kind": "comment",
+      "name": "SP_H_H",
+      "start": 10214,
+      "end": 10214
+    },
+    {
+      "file": "anim",
+      "kind": "comment",
+      "name": "jSP_S",
+      "start": 10215,
+      "end": 10215
+    },
+    {
+      "file": "anim",
+      "kind": "comment",
+      "name": "jSP_H",
+      "start": 10216,
+      "end": 10216
+    },
+    {
+      "file": "anim",
+      "kind": "comment",
+      "name": "jSP_H_P",
+      "start": 10322,
+      "end": 10322
+    },
+    {
+      "file": "anim",
+      "kind": "comment",
+      "name": "jSP_H_K",
+      "start": 10323,
+      "end": 10323
+    },
+    {
+      "file": "anim",
+      "kind": "comment",
+      "name": "jSP_H_S",
+      "start": 10324,
+      "end": 10324
+    },
+    {
+      "file": "anim",
+      "kind": "comment",
+      "name": "jSP_H_H",
+      "start": 10325,
+      "end": 10325
+    },
+    {
+      "file": "left",
+      "kind": "state_ban_table",
+      "name": "4SP_S_4dash",
+      "start": 327,
+      "end": 327
+    },
+    {
+      "file": "left",
+      "kind": "state_ban_table",
+      "name": "4SP_S_6dash",
+      "start": 328,
+      "end": 328
+    },
+    {
+      "file": "left",
+      "kind": "state_ban_table",
+      "name": "4SP_S_2Launcher",
+      "start": 329,
+      "end": 329
+    },
+    {
+      "file": "left",
+      "kind": "state_ban_table",
+      "name": "4SP_S_5Launcher",
+      "start": 330,
+      "end": 330
+    },
+    {
+      "file": "left",
+      "kind": "state_ban_table",
+      "name": "4SP_S_8Launcher",
+      "start": 331,
+      "end": 331
+    },
+    {
+      "file": "left",
+      "kind": "state_ban_table",
+      "name": "SP_H",
+      "start": 332,
+      "end": 332
+    },
+    {
+      "file": "left",
+      "kind": "state_ban_table",
+      "name": "jSP_H",
+      "start": 333,
+      "end": 333
+    },
+    {
+      "file": "left",
+      "kind": "state_dispatch",
+      "name": "4SP_S_4dash",
+      "start": 2518,
+      "end": 2527
+    },
+    {
+      "file": "left",
+      "kind": "state_dispatch",
+      "name": "4SP_S_6dash",
+      "start": 2528,
+      "end": 2537
+    },
+    {
+      "file": "left",
+      "kind": "state_dispatch",
+      "name": "4SP_S_2Launcher",
+      "start": 2558,
+      "end": 2567
+    },
+    {
+      "file": "left",
+      "kind": "state_dispatch",
+      "name": "4SP_S_5Launcher",
+      "start": 2568,
+      "end": 2577
+    },
+    {
+      "file": "left",
+      "kind": "state_dispatch",
+      "name": "4SP_S_8Launcher",
+      "start": 2578,
+      "end": 2587
+    },
+    {
+      "file": "left",
+      "kind": "state_dispatch",
+      "name": "SP_H",
+      "start": 2598,
+      "end": 2607
+    },
+    {
+      "file": "left",
+      "kind": "state_dispatch",
+      "name": "SP_H_P",
+      "start": 2608,
+      "end": 2617
+    },
+    {
+      "file": "left",
+      "kind": "state_dispatch",
+      "name": "SP_H_K",
+      "start": 2618,
+      "end": 2627
+    },
+    {
+      "file": "left",
+      "kind": "state_dispatch",
+      "name": "SP_H_S",
+      "start": 2628,
+      "end": 2637
+    },
+    {
+      "file": "left",
+      "kind": "state_dispatch",
+      "name": "SP_H_H",
+      "start": 2638,
+      "end": 2647
+    },
+    {
+      "file": "left",
+      "kind": "state_dispatch",
+      "name": "jSP_S",
+      "start": 2648,
+      "end": 2657
+    },
+    {
+      "file": "left",
+      "kind": "state_dispatch",
+      "name": "jSP_H",
+      "start": 2658,
+      "end": 2667
+    },
+    {
+      "file": "left",
+      "kind": "state_dispatch",
+      "name": "jSP_H_P",
+      "start": 2668,
+      "end": 2677
+    },
+    {
+      "file": "left",
+      "kind": "state_dispatch",
+      "name": "jSP_H_K",
+      "start": 2678,
+      "end": 2687
+    },
+    {
+      "file": "left",
+      "kind": "state_dispatch",
+      "name": "jSP_H_S",
+      "start": 2688,
+      "end": 2697
+    },
+    {
+      "file": "left",
+      "kind": "state_dispatch",
+      "name": "jSP_H_H",
+      "start": 2698,
+      "end": 2707
+    },
+    {
+      "file": "left",
+      "kind": "gate_function",
+      "name": "4SP_S_4dash",
+      "start": 9636,
+      "end": 9675
+    },
+    {
+      "file": "left",
+      "kind": "gate_function",
+      "name": "4SP_S_6dash",
+      "start": 9676,
+      "end": 9715
+    },
+    {
+      "file": "left",
+      "kind": "gate_function",
+      "name": "4SP_S_2Launcher",
+      "start": 9788,
+      "end": 9791
+    },
+    {
+      "file": "left",
+      "kind": "gate_function",
+      "name": "4SP_S_5Launcher",
+      "start": 9796,
+      "end": 9799
+    },
+    {
+      "file": "left",
+      "kind": "gate_function",
+      "name": "4SP_S_8Launcher",
+      "start": 9792,
+      "end": 9795
+    },
+    {
+      "file": "left",
+      "kind": "gate_function",
+      "name": "SP_H",
+      "start": 9834,
+      "end": 9869
+    },
+    {
+      "file": "left",
+      "kind": "gate_function",
+      "name": "SP_H_P",
+      "start": 9870,
+      "end": 9873
+    },
+    {
+      "file": "left",
+      "kind": "gate_function",
+      "name": "SP_H_K",
+      "start": 9874,
+      "end": 9877
+    },
+    {
+      "file": "left",
+      "kind": "gate_function",
+      "name": "SP_H_S",
+      "start": 9878,
+      "end": 9881
+    },
+    {
+      "file": "left",
+      "kind": "gate_function",
+      "name": "SP_H_H",
+      "start": 9882,
+      "end": 9885
+    },
+    {
+      "file": "left",
+      "kind": "gate_function",
+      "name": "jSP_S",
+      "start": 9886,
+      "end": 9889
+    },
+    {
+      "file": "left",
+      "kind": "gate_function",
+      "name": "jSP_H",
+      "start": 9890,
+      "end": 9924
+    },
+    {
+      "file": "left",
+      "kind": "gate_function",
+      "name": "jSP_H_P",
+      "start": 9925,
+      "end": 9928
+    },
+    {
+      "file": "left",
+      "kind": "gate_function",
+      "name": "jSP_H_K",
+      "start": 9929,
+      "end": 9932
+    },
+    {
+      "file": "left",
+      "kind": "gate_function",
+      "name": "jSP_H_S",
+      "start": 9933,
+      "end": 9936
+    },
+    {
+      "file": "left",
+      "kind": "gate_function",
+      "name": "jSP_H_H",
+      "start": 9937,
+      "end": 9940
+    },
+    {
+      "file": "left",
+      "kind": "transition_block",
+      "name": "4SP_S_4dash",
+      "start": 5069,
+      "end": 5081
+    },
+    {
+      "file": "left",
+      "kind": "transition_block",
+      "name": "4SP_S_6dash",
+      "start": 5082,
+      "end": 5093
+    },
+    {
+      "file": "left",
+      "kind": "transition_block",
+      "name": "SP_H",
+      "start": 4125,
+      "end": 4139
+    },
+    {
+      "file": "left",
+      "kind": "transition_block",
+      "name": "SP_H",
+      "start": 4249,
+      "end": 4263
+    },
+    {
+      "file": "left",
+      "kind": "transition_block",
+      "name": "SP_H",
+      "start": 4989,
+      "end": 5003
+    },
+    {
+      "file": "left",
+      "kind": "transition_block",
+      "name": "jSP_H",
+      "start": 4570,
+      "end": 4584
+    },
+    {
+      "file": "left",
+      "kind": "sprite_load_item",
+      "name": "SP_H",
+      "start": 1399,
+      "end": 1399
+    },
+    {
+      "file": "left",
+      "kind": "sprite_load_item",
+      "name": "jSP_H",
+      "start": 1400,
+      "end": 1400
+    },
+    {
+      "file": "left",
+      "kind": "sprite_load_item",
+      "name": "4SP_S_4dash",
+      "start": 1415,
+      "end": 1415
+    },
+    {
+      "file": "left",
+      "kind": "sprite_load_item",
+      "name": "4SP_S_6dash",
+      "start": 1416,
+      "end": 1416
+    },
+    {
+      "file": "left",
+      "kind": "sprite_load_item",
+      "name": "4SP_S_2Launcher",
+      "start": 1420,
+      "end": 1420
+    },
+    {
+      "file": "left",
+      "kind": "sprite_load_item",
+      "name": "4SP_S_5Launcher",
+      "start": 1421,
+      "end": 1421
+    },
+    {
+      "file": "left",
+      "kind": "sprite_load_item",
+      "name": "4SP_S_8Launcher",
+      "start": 1422,
+      "end": 1422
+    },
+    {
+      "file": "left",
+      "kind": "sprite_load_item",
+      "name": "SP_H_chain",
+      "start": 1460,
+      "end": 1460
+    },
+    {
+      "file": "left",
+      "kind": "sprite_load_item",
+      "name": "SP_H_oroboros",
+      "start": 1461,
+      "end": 1461
+    },
+    {
+      "file": "left",
+      "kind": "comment",
+      "name": "4SP_S_4dash",
+      "start": 4101,
+      "end": 4101
+    },
+    {
+      "file": "left",
+      "kind": "comment",
+      "name": "4SP_S_6dash",
+      "start": 4102,
+      "end": 4102
+    },
+    {
+      "file": "left",
+      "kind": "comment",
+      "name": "4SP_S_2Launcher",
+      "start": 4104,
+      "end": 4104
+    },
+    {
+      "file": "left",
+      "kind": "comment",
+      "name": "4SP_S_5Launcher",
+      "start": 4105,
+      "end": 4105
+    },
+    {
+      "file": "left",
+      "kind": "comment",
+      "name": "4SP_S_8Launcher",
+      "start": 4106,
+      "end": 4106
+    },
+    {
+      "file": "left",
+      "kind": "comment",
+      "name": "4SP_S_4dash",
+      "start": 4225,
+      "end": 4225
+    },
+    {
+      "file": "left",
+      "kind": "comment",
+      "name": "4SP_S_6dash",
+      "start": 4226,
+      "end": 4226
+    },
+    {
+      "file": "left",
+      "kind": "comment",
+      "name": "4SP_S_2Launcher",
+      "start": 4228,
+      "end": 4228
+    },
+    {
+      "file": "left",
+      "kind": "comment",
+      "name": "4SP_S_5Launcher",
+      "start": 4229,
+      "end": 4229
+    },
+    {
+      "file": "left",
+      "kind": "comment",
+      "name": "4SP_S_8Launcher",
+      "start": 4230,
+      "end": 4230
+    },
+    {
+      "file": "left",
+      "kind": "comment",
+      "name": "jSP_S",
+      "start": 4389,
+      "end": 4389
+    },
+    {
+      "file": "left",
+      "kind": "comment",
+      "name": "jSP_H",
+      "start": 4390,
+      "end": 4390
+    },
+    {
+      "file": "left",
+      "kind": "comment",
+      "name": "jSP_S",
+      "start": 4480,
+      "end": 4480
+    },
+    {
+      "file": "left",
+      "kind": "comment",
+      "name": "jSP_H",
+      "start": 4481,
+      "end": 4481
+    },
+    {
+      "file": "left",
+      "kind": "comment",
+      "name": "4SP_S_2Launcher",
+      "start": 5123,
+      "end": 5123
+    },
+    {
+      "file": "left",
+      "kind": "comment",
+      "name": "4SP_S_5Launcher",
+      "start": 5124,
+      "end": 5124
+    },
+    {
+      "file": "left",
+      "kind": "comment",
+      "name": "4SP_S_8Launcher",
+      "start": 5125,
+      "end": 5125
+    },
+    {
+      "file": "right",
+      "kind": "state_ban_table",
+      "name": "4SP_S_4dash",
+      "start": 327,
+      "end": 327
+    },
+    {
+      "file": "right",
+      "kind": "state_ban_table",
+      "name": "4SP_S_6dash",
+      "start": 328,
+      "end": 328
+    },
+    {
+      "file": "right",
+      "kind": "state_ban_table",
+      "name": "4SP_S_2Launcher",
+      "start": 329,
+      "end": 329
+    },
+    {
+      "file": "right",
+      "kind": "state_ban_table",
+      "name": "4SP_S_5Launcher",
+      "start": 330,
+      "end": 330
+    },
+    {
+      "file": "right",
+      "kind": "state_ban_table",
+      "name": "4SP_S_8Launcher",
+      "start": 331,
+      "end": 331
+    },
+    {
+      "file": "right",
+      "kind": "state_ban_table",
+      "name": "SP_H",
+      "start": 332,
+      "end": 332
+    },
+    {
+      "file": "right",
+      "kind": "state_ban_table",
+      "name": "jSP_H",
+      "start": 333,
+      "end": 333
+    },
+    {
+      "file": "right",
+      "kind": "state_dispatch",
+      "name": "4SP_S_4dash",
+      "start": 2518,
+      "end": 2527
+    },
+    {
+      "file": "right",
+      "kind": "state_dispatch",
+      "name": "4SP_S_6dash",
+      "start": 2528,
+      "end": 2537
+    },
+    {
+      "file": "right",
+      "kind": "state_dispatch",
+      "name": "4SP_S_2Launcher",
+      "start": 2558,
+      "end": 2567
+    },
+    {
+      "file": "right",
+      "kind": "state_dispatch",
+      "name": "4SP_S_5Launcher",
+      "start": 2568,
+      "end": 2577
+    },
+    {
+      "file": "right",
+      "kind": "state_dispatch",
+      "name": "4SP_S_8Launcher",
+      "start": 2578,
+      "end": 2587
+    },
+    {
+      "file": "right",
+      "kind": "state_dispatch",
+      "name": "SP_H",
+      "start": 2598,
+      "end": 2607
+    },
+    {
+      "file": "right",
+      "kind": "state_dispatch",
+      "name": "SP_H_P",
+      "start": 2608,
+      "end": 2617
+    },
+    {
+      "file": "right",
+      "kind": "state_dispatch",
+      "name": "SP_H_K",
+      "start": 2618,
+      "end": 2627
+    },
+    {
+      "file": "right",
+      "kind": "state_dispatch",
+      "name": "SP_H_S",
+      "start": 2628,
+      "end": 2637
+    },
+    {
+      "file": "right",
+      "kind": "state_dispatch",
+      "name": "SP_H_H",
+      "start": 2638,
+      "end": 2647
+    },
+    {
+      "file": "right",
+      "kind": "state_dispatch",
+      "name": "jSP_S",
+      "start": 2648,
+      "end": 2657
+    },
+    {
+      "file": "right",
+      "kind": "state_dispatch",
+      "name": "jSP_H",
+      "start": 2658,
+      "end": 2667
+    },
+    {
+      "file": "right",
+      "kind": "state_dispatch",
+      "name": "jSP_H_P",
+      "start": 2668,
+      "end": 2677
+    },
+    {
+      "file": "right",
+      "kind": "state_dispatch",
+      "name": "jSP_H_K",
+      "start": 2678,
+      "end": 2687
+    },
+    {
+      "file": "right",
+      "kind": "state_dispatch",
+      "name": "jSP_H_S",
+      "start": 2688,
+      "end": 2697
+    },
+    {
+      "file": "right",
+      "kind": "state_dispatch",
+      "name": "jSP_H_H",
+      "start": 2698,
+      "end": 2707
+    },
+    {
+      "file": "right",
+      "kind": "gate_function",
+      "name": "4SP_S_4dash",
+      "start": 9636,
+      "end": 9675
+    },
+    {
+      "file": "right",
+      "kind": "gate_function",
+      "name": "4SP_S_6dash",
+      "start": 9676,
+      "end": 9715
+    },
+    {
+      "file": "right",
+      "kind": "gate_function",
+      "name": "4SP_S_2Launcher",
+      "start": 9788,
+      "end": 9791
+    },
+    {
+      "file": "right",
+      "kind": "gate_function",
+      "name": "4SP_S_5Launcher",
+      "start": 9796,
+      "end": 9799
+    },
+    {
+      "file": "right",
+      "kind": "gate_function",
+      "name": "4SP_S_8Launcher",
+      "start": 9792,
+      "end": 9795
+    },
+    {
+      "file": "right",
+      "kind": "gate_function",
+      "name": "SP_H",
+      "start": 9834,
+      "end": 9869
+    },
+    {
+      "file": "right",
+      "kind": "gate_function",
+      "name": "SP_H_P",
+      "start": 9870,
+      "end": 9873
+    },
+    {
+      "file": "right",
+      "kind": "gate_function",
+      "name": "SP_H_K",
+      "start": 9874,
+      "end": 9877
+    },
+    {
+      "file": "right",
+      "kind": "gate_function",
+      "name": "SP_H_S",
+      "start": 9878,
+      "end": 9881
+    },
+    {
+      "file": "right",
+      "kind": "gate_function",
+      "name": "SP_H_H",
+      "start": 9882,
+      "end": 9885
+    },
+    {
+      "file": "right",
+      "kind": "gate_function",
+      "name": "jSP_S",
+      "start": 9886,
+      "end": 9889
+    },
+    {
+      "file": "right",
+      "kind": "gate_function",
+      "name": "jSP_H",
+      "start": 9890,
+      "end": 9924
+    },
+    {
+      "file": "right",
+      "kind": "gate_function",
+      "name": "jSP_H_P",
+      "start": 9925,
+      "end": 9928
+    },
+    {
+      "file": "right",
+      "kind": "gate_function",
+      "name": "jSP_H_K",
+      "start": 9929,
+      "end": 9932
+    },
+    {
+      "file": "right",
+      "kind": "gate_function",
+      "name": "jSP_H_S",
+      "start": 9933,
+      "end": 9936
+    },
+    {
+      "file": "right",
+      "kind": "gate_function",
+      "name": "jSP_H_H",
+      "start": 9937,
+      "end": 9940
+    },
+    {
+      "file": "right",
+      "kind": "transition_block",
+      "name": "4SP_S_4dash",
+      "start": 5069,
+      "end": 5081
+    },
+    {
+      "file": "right",
+      "kind": "transition_block",
+      "name": "4SP_S_6dash",
+      "start": 5082,
+      "end": 5093
+    },
+    {
+      "file": "right",
+      "kind": "transition_block",
+      "name": "SP_H",
+      "start": 4125,
+      "end": 4139
+    },
+    {
+      "file": "right",
+      "kind": "transition_block",
+      "name": "SP_H",
+      "start": 4249,
+      "end": 4263
+    },
+    {
+      "file": "right",
+      "kind": "transition_block",
+      "name": "SP_H",
+      "start": 4989,
+      "end": 5003
+    },
+    {
+      "file": "right",
+      "kind": "transition_block",
+      "name": "jSP_H",
+      "start": 4570,
+      "end": 4584
+    },
+    {
+      "file": "right",
+      "kind": "sprite_load_item",
+      "name": "SP_H",
+      "start": 1399,
+      "end": 1399
+    },
+    {
+      "file": "right",
+      "kind": "sprite_load_item",
+      "name": "jSP_H",
+      "start": 1400,
+      "end": 1400
+    },
+    {
+      "file": "right",
+      "kind": "sprite_load_item",
+      "name": "4SP_S_4dash",
+      "start": 1415,
+      "end": 1415
+    },
+    {
+      "file": "right",
+      "kind": "sprite_load_item",
+      "name": "4SP_S_6dash",
+      "start": 1416,
+      "end": 1416
+    },
+    {
+      "file": "right",
+      "kind": "sprite_load_item",
+      "name": "4SP_S_2Launcher",
+      "start": 1420,
+      "end": 1420
+    },
+    {
+      "file": "right",
+      "kind": "sprite_load_item",
+      "name": "4SP_S_5Launcher",
+      "start": 1421,
+      "end": 1421
+    },
+    {
+      "file": "right",
+      "kind": "sprite_load_item",
+      "name": "4SP_S_8Launcher",
+      "start": 1422,
+      "end": 1422
+    },
+    {
+      "file": "right",
+      "kind": "sprite_load_item",
+      "name": "SP_H_chain",
+      "start": 1460,
+      "end": 1460
+    },
+    {
+      "file": "right",
+      "kind": "sprite_load_item",
+      "name": "SP_H_oroboros",
+      "start": 1461,
+      "end": 1461
+    },
+    {
+      "file": "right",
+      "kind": "comment",
+      "name": "4SP_S_4dash",
+      "start": 4101,
+      "end": 4101
+    },
+    {
+      "file": "right",
+      "kind": "comment",
+      "name": "4SP_S_6dash",
+      "start": 4102,
+      "end": 4102
+    },
+    {
+      "file": "right",
+      "kind": "comment",
+      "name": "4SP_S_2Launcher",
+      "start": 4104,
+      "end": 4104
+    },
+    {
+      "file": "right",
+      "kind": "comment",
+      "name": "4SP_S_5Launcher",
+      "start": 4105,
+      "end": 4105
+    },
+    {
+      "file": "right",
+      "kind": "comment",
+      "name": "4SP_S_8Launcher",
+      "start": 4106,
+      "end": 4106
+    },
+    {
+      "file": "right",
+      "kind": "comment",
+      "name": "4SP_S_4dash",
+      "start": 4225,
+      "end": 4225
+    },
+    {
+      "file": "right",
+      "kind": "comment",
+      "name": "4SP_S_6dash",
+      "start": 4226,
+      "end": 4226
+    },
+    {
+      "file": "right",
+      "kind": "comment",
+      "name": "4SP_S_2Launcher",
+      "start": 4228,
+      "end": 4228
+    },
+    {
+      "file": "right",
+      "kind": "comment",
+      "name": "4SP_S_5Launcher",
+      "start": 4229,
+      "end": 4229
+    },
+    {
+      "file": "right",
+      "kind": "comment",
+      "name": "4SP_S_8Launcher",
+      "start": 4230,
+      "end": 4230
+    },
+    {
+      "file": "right",
+      "kind": "comment",
+      "name": "jSP_S",
+      "start": 4389,
+      "end": 4389
+    },
+    {
+      "file": "right",
+      "kind": "comment",
+      "name": "jSP_H",
+      "start": 4390,
+      "end": 4390
+    },
+    {
+      "file": "right",
+      "kind": "comment",
+      "name": "jSP_S",
+      "start": 4480,
+      "end": 4480
+    },
+    {
+      "file": "right",
+      "kind": "comment",
+      "name": "jSP_H",
+      "start": 4481,
+      "end": 4481
+    },
+    {
+      "file": "right",
+      "kind": "comment",
+      "name": "4SP_S_2Launcher",
+      "start": 5123,
+      "end": 5123
+    },
+    {
+      "file": "right",
+      "kind": "comment",
+      "name": "4SP_S_5Launcher",
+      "start": 5124,
+      "end": 5124
+    },
+    {
+      "file": "right",
+      "kind": "comment",
+      "name": "4SP_S_8Launcher",
+      "start": 5125,
+      "end": 5125
+    },
+    {
+      "file": "ltex",
+      "kind": "thread_asset_item",
+      "name": "4SP_S_4dash",
+      "start": 126,
+      "end": 126
+    },
+    {
+      "file": "ltex",
+      "kind": "thread_asset_item",
+      "name": "4SP_S_6dash",
+      "start": 127,
+      "end": 127
+    },
+    {
+      "file": "ltex",
+      "kind": "thread_asset_item",
+      "name": "4SP_S_2Launcher",
+      "start": 131,
+      "end": 131
+    },
+    {
+      "file": "ltex",
+      "kind": "thread_asset_item",
+      "name": "4SP_S_5Launcher",
+      "start": 132,
+      "end": 132
+    },
+    {
+      "file": "ltex",
+      "kind": "thread_asset_item",
+      "name": "4SP_S_8Launcher",
+      "start": 133,
+      "end": 133
+    },
+    {
+      "file": "ltex",
+      "kind": "thread_asset_item",
+      "name": "SP_H",
+      "start": 135,
+      "end": 135
+    },
+    {
+      "file": "ltex",
+      "kind": "thread_asset_item",
+      "name": "jSP_H",
+      "start": 136,
+      "end": 136
+    },
+    {
+      "file": "ltex",
+      "kind": "thread_asset_item",
+      "name": "SP_H_chain",
+      "start": 192,
+      "end": 192
+    },
+    {
+      "file": "ltex",
+      "kind": "thread_asset_item",
+      "name": "SP_H_oroboros",
+      "start": 193,
+      "end": 193
+    },
+    {
+      "file": "rtex",
+      "kind": "thread_asset_item",
+      "name": "4SP_S_4dash",
+      "start": 126,
+      "end": 126
+    },
+    {
+      "file": "rtex",
+      "kind": "thread_asset_item",
+      "name": "4SP_S_6dash",
+      "start": 127,
+      "end": 127
+    },
+    {
+      "file": "rtex",
+      "kind": "thread_asset_item",
+      "name": "4SP_S_2Launcher",
+      "start": 131,
+      "end": 131
+    },
+    {
+      "file": "rtex",
+      "kind": "thread_asset_item",
+      "name": "4SP_S_5Launcher",
+      "start": 132,
+      "end": 132
+    },
+    {
+      "file": "rtex",
+      "kind": "thread_asset_item",
+      "name": "4SP_S_8Launcher",
+      "start": 133,
+      "end": 133
+    },
+    {
+      "file": "rtex",
+      "kind": "thread_asset_item",
+      "name": "SP_H",
+      "start": 135,
+      "end": 135
+    },
+    {
+      "file": "rtex",
+      "kind": "thread_asset_item",
+      "name": "jSP_H",
+      "start": 136,
+      "end": 136
+    },
+    {
+      "file": "rtex",
+      "kind": "thread_asset_item",
+      "name": "SP_H_chain",
+      "start": 192,
+      "end": 192
+    },
+    {
+      "file": "rtex",
+      "kind": "thread_asset_item",
+      "name": "SP_H_oroboros",
+      "start": 193,
+      "end": 193
+    }
+  ]
+}
