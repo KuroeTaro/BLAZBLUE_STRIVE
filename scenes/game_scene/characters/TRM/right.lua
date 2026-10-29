@@ -5067,7 +5067,7 @@ function state_gate_game_scene_char_RP_4SP_S_to_special(
             return true
         end
         -- _4SP_S_4dash
-        if self_side_obj_char["direction_input"] == 4
+        if common_game_scene_check_block_direction(self_side_obj_char)
         and test_input_sys_press_or_hold(self_side_input["SP"])
         and test_input_sys_press(self_side_input["dash"])
         then
@@ -5081,7 +5081,8 @@ function state_gate_game_scene_char_RP_4SP_S_to_special(
             return true
         end
         -- _4SP_S_6dash
-        if test_input_sys_press_or_hold(self_side_input["SP"])
+        if common_game_scene_check_forward_direction(self_side_obj_char)
+        and test_input_sys_press_or_hold(self_side_input["SP"])
         and test_input_sys_press(self_side_input["dash"])
         then
             self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S_6dash(

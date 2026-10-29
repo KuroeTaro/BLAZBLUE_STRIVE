@@ -8572,6 +8572,9 @@ function load_game_scene_anim_char_TRM_4SP_S_4dash(
         hit_side_obj_char["startup_frame"] = 0
         hit_side_obj_char["active_frame"] = 0
         hit_side_obj_char["recovery_frame"] = 0
+        -- input_sys_cache
+        hit_side_obj_char["input_sys_state"] = "save" -- none_save_load
+        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
         -- collide
         hit_side_obj_char["pushbox"] = {0,-142.5,120,285}
         hit_side_obj_char["pushbox_opponent_collision_active"] = true
@@ -8595,8 +8598,6 @@ function load_game_scene_anim_char_TRM_4SP_S_4dash(
         )
     end
     res[3] = function()
-        -- state
-        hit_side_obj_char["hit_cancel"] = true
         -- draw_correction
         hit_side_obj_char[8] = 1
     end
@@ -8614,6 +8615,11 @@ function load_game_scene_anim_char_TRM_4SP_S_4dash(
         )
     end
     res[13] = function()
+        -- state
+        hit_side_obj_char["hit_cancel"] = true
+        -- input_sys_cache
+        hit_side_obj_char["input_sys_state"] = "load" -- none_save_load
+        common_game_scene_get_input_sys_cache_state_machine(hit_side)()
         -- draw_correction
         hit_side_obj_char[8] = 4
     end
@@ -8668,7 +8674,7 @@ function load_game_scene_anim_char_TRM_4SP_S_6dash(
     local res = {}
     local hit_side = hit_side_obj_char["player_side"]
     local hit_side_stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(hit_side)
-    local dash_acceleration = 7
+    local dash_acceleration = 5
     local function update_horizontal_velocity()
         hit_side_obj_char["velocity"] = {
             hit_side_obj_char[5]*dash_acceleration + hit_side_obj_char["velocity"][1],0
@@ -8691,7 +8697,7 @@ function load_game_scene_anim_char_TRM_4SP_S_6dash(
         hit_side_obj_char["hit_cancel"] = false
         hit_side_obj_char["idle_cancel"] = false
         -- state_number
-        hit_side_obj_char["velocity"] = {21.0*hit_side_obj_char[5],0}
+        hit_side_obj_char["velocity"] = {15.0*hit_side_obj_char[5],0}
         hit_side_obj_char["friction"] = 7
         hit_side_obj_char["gravity"] = 1.0
         -- enemy_friend_interaction
@@ -8708,6 +8714,9 @@ function load_game_scene_anim_char_TRM_4SP_S_6dash(
         hit_side_obj_char["startup_frame"] = 0
         hit_side_obj_char["active_frame"] = 0
         hit_side_obj_char["recovery_frame"] = 0
+        -- input_sys_cache
+        hit_side_obj_char["input_sys_state"] = "save" -- none_save_load
+        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
         -- collide
         hit_side_obj_char["pushbox"] = {0,-185,120,370}
         hit_side_obj_char["pushbox_opponent_collision_active"] = true
@@ -8762,7 +8771,11 @@ function load_game_scene_anim_char_TRM_4SP_S_6dash(
         update_horizontal_velocity()
     end
     res[13] = function()
+        -- state
+        hit_side_obj_char["hit_cancel"] = true
         -- input_sys_cache
+        hit_side_obj_char["input_sys_state"] = "load" -- none_save_load
+        common_game_scene_get_input_sys_cache_state_machine(hit_side)()
         hit_side_obj_char["input_sys_state"] = "save" -- none_save_load
         common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
         -- draw_correction
@@ -10008,14 +10021,12 @@ function load_game_scene_anim_char_TRM_6SP_S(
         -- collide
         hit_side_obj_char["hitbox_table"] = {}
         hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30},{120,-425,150,280}}
-        -- draw_correction
-        hit_side_obj_char[8] = 4
-    end
-    res[14] = function()
         -- shot_sys
         character_function_game_scene_TRM_shot_sys_at_the_ready_ease_in_init(
             hit_side_obj_char,hurt_side_obj_char
         )
+        -- draw_correction
+        hit_side_obj_char[8] = 4
     end
     res[15] = function()
         -- collide
@@ -11075,73 +11086,70 @@ function load_game_scene_anim_char_TRM_4SP_S_reticle_at_the_steady_lock(obj_char
     local side = obj_char["player_side"]
     local move_SFX_table = common_game_scene_get_SFX_move(side)
     local opacity_cache = obj_char["shot_sys_reticle"][4]
+    local function opacity_update(i)
+        obj_char["shot_sys_reticle"][4] = i/5 + opacity_cache*(5-i)/5
+    end
     res["prop_f"] = "shot_sys_reticle_f"
     res["anim_length"] = 27
     res[0] = function()
         -- shot_sys
-        obj_char["shot_sys_reticle"][4] = opacity_cache*0.8
+        obj_char["shot_sys_reticle"][8] = 0
+        obj_char["shot_sys_reticle_sprite_sheet"] = "4SP_S_reticle_lock"
         -- play_SFX
         play_obj_audio(move_SFX_table["4SP_S_reticle_lock"])
+        -- update
+        opacity_update(0)
     end
     res[1] = function()
         -- shot_sys
-        obj_char["shot_sys_reticle"][4] = opacity_cache*0.6
+        obj_char["shot_sys_reticle"][8] = 1
+        -- update
+        opacity_update(1)
     end
     res[2] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][4] = opacity_cache*0.4
+        -- update
+        opacity_update(2)
     end
     res[3] = function()
         -- shot_sys
-        obj_char["shot_sys_reticle"][4] = opacity_cache*0.2
+        obj_char["shot_sys_reticle"][8] = 2
+        -- update
+        opacity_update(3)
     end
     res[4] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][4] = 0
+        -- update
+        opacity_update(4)
     end
     res[5] = function()
         -- shot_sys
         obj_char["shot_sys_reticle"][4] = 1
-        obj_char["shot_sys_reticle"][8] = 0
-        obj_char["shot_sys_reticle_sprite_sheet"] = "4SP_S_reticle_lock"
-    end
-    res[6] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 1
-    end
-    res[8] = function()
-        -- shot_sys
-        obj_char["shot_sys_reticle"][8] = 2
-    end
-    res[10] = function()
-        -- shot_sys
         obj_char["shot_sys_reticle"][8] = 3
     end
-    res[12] = function()
+    res[7] = function()
         -- shot_sys
         obj_char["shot_sys_reticle"][8] = 4
     end
-    res[14] = function()
+    res[9] = function()
         -- shot_sys
         obj_char["shot_sys_reticle"][8] = 5
     end
-    res[16] = function()
+    res[12] = function()
         -- shot_sys
         obj_char["shot_sys_reticle"][8] = 6
     end
-    res[18] = function()
+    res[15] = function()
         -- shot_sys
         obj_char["shot_sys_reticle"][8] = 7
     end
-    res[20] = function()
+    res[18] = function()
         -- shot_sys
         obj_char["shot_sys_reticle"][8] = 8
     end
-    res[22] = function()
+    res[21] = function()
         -- shot_sys
         obj_char["shot_sys_reticle"][8] = 9
     end
-    res[25] = function()
+    res[24] = function()
         -- shot_sys
         obj_char["shot_sys_reticle"][8] = 10
     end

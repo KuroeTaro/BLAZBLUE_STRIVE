@@ -377,9 +377,9 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_reticle_pos_up
     self_side_obj_char,opponent_side_obj_char
 )
     local self_side_obj_char_shot_sys_at_the_steady_aim = self_side_obj_char["shot_sys_at_the_steady_aim"]
-    local self_side_div_value = 4.75
+    local self_side_div_value = 9
     if self_side_obj_char_shot_sys_at_the_steady_aim then
-        self_side_div_value = 1.25
+        self_side_div_value = 2
     end
     -- update_shot_sys_reticle_visual_offset
     self_side_obj_char["shot_sys_reticle_stage_pos_target"] = {
@@ -720,7 +720,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_lock_init(
     )
     if self_side_obj_char["shot_sys_reticle_state"] == "off" then
         character_function_game_scene_TRM_shot_sys_init_new_reticle_pos(
-            self_side_obj_char,opponent_side_obj_char,800
+            self_side_obj_char,opponent_side_obj_char,200
         )
     end
     character_function_game_scene_TRM_shot_sys_at_the_steady_reticle_pos_update_lock(
