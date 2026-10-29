@@ -1,0 +1,179 @@
+diff --git a/scenes/game_scene/characters/TRM/left.lua b/scenes/game_scene/characters/TRM/left.lua
+index 6037f3e5..1a2b49b5 100644
+--- a/scenes/game_scene/characters/TRM/left.lua
++++ b/scenes/game_scene/characters/TRM/left.lua
+@@ -3217,18 +3217,11 @@ function state_machine_char_game_scene_char_LP_input_sys_cache()
+         ["none"] = function()
+         end,
+         ["save"] = function()
+-            if test_input_sys_press(self_side_input["up"]) then
+-                self_side_obj_char["input_sys_cache"]["up"] = true
+-            end
+-            if test_input_sys_press(self_side_input["down"]) then
+-                self_side_obj_char["input_sys_cache"]["down"] = true
+-            end
+-            if test_input_sys_press_or_hold(self_side_input["left"]) then
+-                self_side_obj_char["input_sys_cache"]["left"] = true
+-                self_side_obj_char["input_sys_cache"]["right"] = false
+-            elseif test_input_sys_press_or_hold(self_side_input["right"]) then
+-                self_side_obj_char["input_sys_cache"]["left"] = false
+-                self_side_obj_char["input_sys_cache"]["right"] = true
++            -- 直接缓存“已按当前朝向解算”的 direction_input，
++            -- 不再缓存原始左右键、留到 load 时用新朝向重新解算
++            if not self_side_obj_char["input_sys_cache"]["direction_locked"] then
++                self_side_obj_char["input_sys_cache"]["direction"] =
++                self_side_obj_char["direction_input"]
+             end
+             if test_input_sys_press(self_side_input["P"]) then
+                 self_side_obj_char["input_sys_cache"]["P"] = true
+@@ -3282,12 +3275,18 @@ function state_machine_char_game_scene_char_LP_input_sys_cache()
+             end
+         end,
+         ["load"] = function()
+-            for i = 1,20 do
++            -- 方向从缓存还原（i 从 5 开始，跳过 up/down/left/right）
++            for i = 5,20 do
+                 if self_side_obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] then
+                     self_side_input[INPUT_SYS_COMMAND_TABLE[i]] = "Pressing"
+                 end
+             end
+-            common_game_scene_update_input_sys_direction(self_side_obj_char,opponent_side_obj_char)
++            local cached_direction = self_side_obj_char["input_sys_cache"]["direction"]
++            if cached_direction then
++                self_side_obj_char["direction_input"] = cached_direction
++            else
++                common_game_scene_update_input_sys_direction(self_side_obj_char,opponent_side_obj_char)
++            end
+             self_side_obj_char["input_sys_state"] = "none"
+             init_input_sys_cache_LP(self_side_obj_char)
+         end,
+@@ -3331,6 +3330,8 @@ function init_input_sys_cache_LP(obj_char)
+     for i = 1,20 do
+         obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] = false
+     end
++    obj_char["input_sys_cache"]["direction"] = nil
++    obj_char["input_sys_cache"]["direction_locked"] = false
+ end
+ function init_input_sys_cache_negative_edge_LP(obj_char)
+     for i = 1,20 do
+
+diff --git a/scenes/game_scene/characters/TRM/right.lua b/scenes/game_scene/characters/TRM/right.lua
+index 706fcfd4..36e0a867 100644
+--- a/scenes/game_scene/characters/TRM/right.lua
++++ b/scenes/game_scene/characters/TRM/right.lua
+@@ -3217,18 +3217,11 @@ function state_machine_char_game_scene_char_RP_input_sys_cache()
+         ["none"] = function()
+         end,
+         ["save"] = function()
+-            if test_input_sys_press(self_side_input["up"]) then
+-                self_side_obj_char["input_sys_cache"]["up"] = true
+-            end
+-            if test_input_sys_press(self_side_input["down"]) then
+-                self_side_obj_char["input_sys_cache"]["down"] = true
+-            end
+-            if test_input_sys_press_or_hold(self_side_input["left"]) then
+-                self_side_obj_char["input_sys_cache"]["left"] = true
+-                self_side_obj_char["input_sys_cache"]["right"] = false
+-            elseif test_input_sys_press_or_hold(self_side_input["right"]) then
+-                self_side_obj_char["input_sys_cache"]["left"] = false
+-                self_side_obj_char["input_sys_cache"]["right"] = true
++            -- 直接缓存“已按当前朝向解算”的 direction_input，
++            -- 不再缓存原始左右键、留到 load 时用新朝向重新解算
++            if not self_side_obj_char["input_sys_cache"]["direction_locked"] then
++                self_side_obj_char["input_sys_cache"]["direction"] =
++                self_side_obj_char["direction_input"]
+             end
+             if test_input_sys_press(self_side_input["P"]) then
+                 self_side_obj_char["input_sys_cache"]["P"] = true
+@@ -3282,12 +3275,18 @@ function state_machine_char_game_scene_char_RP_input_sys_cache()
+             end
+         end,
+         ["load"] = function()
+-            for i = 1,20 do
++            -- 方向从缓存还原（i 从 5 开始，跳过 up/down/left/right）
++            for i = 5,20 do
+                 if self_side_obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] then
+                     self_side_input[INPUT_SYS_COMMAND_TABLE[i]] = "Pressing"
+                 end
+             end
+-            common_game_scene_update_input_sys_direction(self_side_obj_char,opponent_side_obj_char)
++            local cached_direction = self_side_obj_char["input_sys_cache"]["direction"]
++            if cached_direction then
++                self_side_obj_char["direction_input"] = cached_direction
++            else
++                common_game_scene_update_input_sys_direction(self_side_obj_char,opponent_side_obj_char)
++            end
+             self_side_obj_char["input_sys_state"] = "none"
+             init_input_sys_cache_RP(self_side_obj_char)
+         end,
+@@ -3331,6 +3330,8 @@ function init_input_sys_cache_RP(obj_char)
+     for i = 1,20 do
+         obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] = false
+     end
++    obj_char["input_sys_cache"]["direction"] = nil
++    obj_char["input_sys_cache"]["direction_locked"] = false
+ end
+ function init_input_sys_cache_negative_edge_RP(obj_char)
+     for i = 1,20 do
+
+diff --git a/scenes/game_scene/characters/TRM/_anim.lua b/scenes/game_scene/characters/TRM/_anim.lua
+index 51f2998f..a51305d7 100644
+--- a/scenes/game_scene/characters/TRM/_anim.lua
++++ b/scenes/game_scene/characters/TRM/_anim.lua
+@@ -4965,10 +4965,12 @@ function load_game_scene_anim_char_TRM_4_6Launcher(
+         -- input_sys_cache
+         hit_side_obj_char["input_sys_state"] = "save" -- none_save_load
+         common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
+-        if test_input_sys_press_or_hold(hit_side_input["left"]) then
+-            hit_side_obj_char["input_sys_cache"]["left"] = true
+-        elseif test_input_sys_press_or_hold(hit_side_input["right"]) then
+-            hit_side_obj_char["input_sys_cache"]["right"] = true
++        -- 记住起手瞬间的投掷方向（解算后的 direction_input）
++        if test_input_sys_press_or_hold(hit_side_input["left"]) or
++        test_input_sys_press_or_hold(hit_side_input["right"]) then
++            hit_side_obj_char["input_sys_cache"]["direction"] =
++            hit_side_obj_char["direction_input"]
++            hit_side_obj_char["input_sys_cache"]["direction_locked"] = true
+         end
+         -- game_speed
+         hit_side_obj_char["hit_hurt_blockstop_countdown"] = 0
+@@ -6897,10 +6899,12 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(
+         -- input_sys_cache
+         hit_side_obj_char["input_sys_state"] = "save" -- none_save_load
+         common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
+-        if test_input_sys_press_or_hold(hit_side_input["left"]) then
+-            hit_side_obj_char["input_sys_cache"]["left"] = true
+-        elseif test_input_sys_press_or_hold(hit_side_input["right"]) then
+-            hit_side_obj_char["input_sys_cache"]["right"] = true
++        -- 记住起手瞬间的投掷方向（解算后的 direction_input）
++        if test_input_sys_press_or_hold(hit_side_input["left"]) or
++        test_input_sys_press_or_hold(hit_side_input["right"]) then
++            hit_side_obj_char["input_sys_cache"]["direction"] =
++            hit_side_obj_char["direction_input"]
++            hit_side_obj_char["input_sys_cache"]["direction_locked"] = true
+         end
+         -- game_speed
+         hit_side_obj_char["hit_hurt_blockstop_countdown"] = 0
+
+diff --git a/scenes/game_scene/_common/main_blocks.lua b/scenes/game_scene/_common/main_blocks.lua
+index 3c665dc0..4c6040ee 100644
+--- a/scenes/game_scene/_common/main_blocks.lua
++++ b/scenes/game_scene/_common/main_blocks.lua
+@@ -158,12 +158,14 @@ function update_game_scene_training_main()
+     end
+     -- 获得输入 更新角色 状态 速度 和 碰撞盒
+     -- 会被game_speed限制
++    -- 先解算本帧方向，再跑输入缓存：
++    -- save 直接记录 direction_input；load 直接还原 direction_input
++    common_game_scene_update_input_sys_direction(char_LP,char_RP)
++    common_game_scene_update_input_sys_direction(char_RP,char_LP)
+     state_machine_char_game_scene_char_LP_input_sys_cache()
+     state_machine_char_game_scene_char_RP_input_sys_cache()
+     state_machine_char_game_scene_char_LP_input_sys_cache_negative_edge()
+     state_machine_char_game_scene_char_RP_input_sys_cache_negative_edge()
+-    common_game_scene_update_input_sys_direction(char_LP,char_RP)
+-    common_game_scene_update_input_sys_direction(char_RP,char_LP)
+     -- debug_delete_after
+     if DEBUG_TRAINNING_TOGGLE then
+         INPUT_SYS_CURRENT_COMMAND_STATE["R"]["left"] = "Released"
+

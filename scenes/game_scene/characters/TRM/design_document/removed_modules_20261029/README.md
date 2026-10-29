@@ -109,3 +109,10 @@
 - `_tmp_video/*`：调参日志。
 
 > 这些文件不参与运行时加载，也不含可执行的状态注册；如需彻底清理可另行处理。
+
+## 8. 输入缓存方向修复（direction_input 缓存）
+
+把输入缓存从「记原始左右键、load 时用新朝向重算」改为「直接记解算后的 direction_input」，修掉了 4SP_P 取消帧把 5P 判成 6P 的问题。
+
+- 补丁：`code/input_cache_direction.patch`（LF，`core.autocrlf=true` 下 `git apply` 可直接套回，实测可逐字复现）
+- 涉及文件：`left.lua` / `right.lua`（save / load / init_input_sys_cache_*）、`_anim.lua`（4_6Launcher、j4_6Launcher 投技方向锁定）、`scenes/game_scene/_common/main_blocks.lua`（方向解算调到输入缓存之前）
