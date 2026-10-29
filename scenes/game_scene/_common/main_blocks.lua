@@ -927,11 +927,14 @@ function update_game_scene_HUD()
     -- round_timer
     update_game_scene_HUD_timer(obj_HUD_game_scene_timer)
     -- win_marks
-    update_game_scene_win_marks(obj_HUD_game_scene_win_marks_LP)
-    update_game_scene_win_marks(obj_HUD_game_scene_win_marks_RP)
+    update_game_scene_HUD_win_marks(obj_HUD_game_scene_win_marks_LP)
+    update_game_scene_HUD_win_marks(obj_HUD_game_scene_win_marks_RP)
     -- match_point
-    update_game_scene_match_point(obj_HUD_game_scene_match_point_LP)
-    update_game_scene_match_point(obj_HUD_game_scene_match_point_RP)
+    update_game_scene_HUD_match_point(obj_HUD_game_scene_match_point_LP)
+    update_game_scene_HUD_match_point(obj_HUD_game_scene_match_point_RP)
+    -- positive_bonus
+    update_game_scene_HUD_positive_bonus_text(obj_char_game_scene_char_LP,obj_HUD_game_scene_positive_bonus_text_LP)
+    update_game_scene_HUD_positive_bonus_text(obj_char_game_scene_char_RP,obj_HUD_game_scene_positive_bonus_text_RP)
     -- overdrive
     update_game_scene_HUD_overdrive_text(obj_char_game_scene_char_LP,obj_HUD_game_scene_overdrive_text_LP)
     update_game_scene_HUD_overdrive_text(obj_char_game_scene_char_RP,obj_HUD_game_scene_overdrive_text_RP)
@@ -969,7 +972,7 @@ function update_game_scene_HUD_timer(timer_obj)
     local this_function = switch[timer_obj["state"]]
     if this_function then this_function() end
 end
-function update_game_scene_win_marks(win_marks_obj)
+function update_game_scene_HUD_win_marks(win_marks_obj)
     local switch = {
         ["add_one"] = function()
             local side = win_marks_obj["side"]
@@ -986,7 +989,7 @@ function update_game_scene_win_marks(win_marks_obj)
     local this_function = switch[win_marks_obj["state"]]
     if this_function then this_function() end
 end
-function update_game_scene_match_point(match_point_obj)
+function update_game_scene_HUD_match_point(match_point_obj)
     local side = match_point_obj["side"]
     local match_point_requirement = ROUND_FT - 1
     local anim = anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1
@@ -1008,6 +1011,39 @@ function update_game_scene_match_point(match_point_obj)
         end
     }
     local this_function = switch[match_point_obj["state"]]
+    if this_function then this_function() end
+end
+function update_game_scene_HUD_positive_bonus_text(obj_char,text_obj)
+    local anim_ease_in = anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1
+    local anim_ease_out = anim_UI_point_linear_game_scene_timer_ease_out_opacity_1_0
+    local positive_bonus = obj_char["positive_bonus"]
+    local switch = {
+        ["off"] = function()
+            if positive_bonus then
+                text_obj["state"] = "ease_in"
+                init_point_linear_anim_with(text_obj,anim_ease_in)
+            end
+        end,
+        ["ease_in"] = function()
+            point_linear_animator(text_obj,anim_ease_in)
+            if get_point_linear_anim_end_state(text_obj,anim_ease_in) then
+                text_obj["state"] = "ready"
+            end
+        end,
+        ["ready"] = function()
+            if not positive_bonus then
+                text_obj["state"] = "ease_out"
+                init_point_linear_anim_with(text_obj,anim_ease_out)
+            end
+        end,
+        ["ease_out"] = function()
+            point_linear_animator(text_obj,anim_ease_out)
+            if get_point_linear_anim_end_state(text_obj,anim_ease_out) then
+                text_obj["state"] = "off"
+            end
+        end
+    }
+    local this_function = switch[text_obj["state"]]
     if this_function then this_function() end
 end
 function update_game_scene_HUD_overdrive_text(obj_char,text_obj)
@@ -1130,42 +1166,3 @@ function update_game_scene_HUD_overdrive_brightness(obj_char)
     local this_function = switch[obj_char["overdrive_brightness_state"]]
     if this_function then this_function() end
 end
-
-    -- -- HUD_timer()
-    -- obj_HUD_game_scene_timer = {780,85,nil,0,1,1,0,0}
-    -- obj_HUD_game_scene_timer["FCT"] = {0,0,0,0,0,0,0,0}
-    -- obj_HUD_game_scene_timer["LCT"] = {0,0,0,0,0,0,0,0}
-    -- obj_HUD_game_scene_timer["LCD"] = {0,0,0,0,0,0,0,0}
-    -- obj_HUD_game_scene_timer["state"] = "default"
-    -- -- gauges
-    -- obj_HUD_game_scene_health_bar_LP = {685,65,nil,0,-1,1,0,0}
-    -- obj_HUD_game_scene_health_bar_RP = {915,65,nil,0,1,1,0,0}
-    -- obj_HUD_game_scene_health_bar_LP_fade = {685,65,nil,0,-1,1,0,0}
-    -- obj_HUD_game_scene_health_bar_RP_fade = {915,65,nil,0,1,1,0,0}
-    -- obj_HUD_game_scene_heat_bar_LP = {678,124,nil,0,-1,1,0,0}
-    -- obj_HUD_game_scene_heat_bar_RP = {922,124,nil,0,1,1,0,0}
-    -- obj_HUD_game_scene_ability_bar_LP = {670,102,nil,0,-1,1,0,0}
-    -- obj_HUD_game_scene_ability_bar_RP = {930,102,nil,0,1,1,0,0}
-    -- obj_HUD_game_scene_overdrive_pie_LP = {131,75,nil,0,1,1,0,0}
-    -- obj_HUD_game_scene_overdrive_pie_RP = {1469,75,nil,0,-1,1,0,0}
-    -- obj_HUD_game_scene_risk_LP = {255,127,nil,0,1,1,0,0}
-    -- obj_HUD_game_scene_risk_RP = {1345,127,nil,0,-1,1,0,0}
-    -- -- points(need_state_machine)
-    -- obj_HUD_game_scene_win_marks_LP = {750,115,nil,0,1,1,0,0}
-    -- obj_HUD_game_scene_win_marks_RP = {850,115,nil,0,-1,1,0,0}
-    -- obj_HUD_game_scene_match_point_LP = {717,85,nil,0,1,1,0,0}
-    -- obj_HUD_game_scene_match_point_RP = {883,85,nil,0,-1,1,0,0}
-    -- -- overdrive_text
-    -- obj_HUD_game_scene_overdrive_text_LP = {205,102,nil,0,1,1,0,0}
-    -- obj_HUD_game_scene_overdrive_text_RP = {1250,102,nil,0,1,1,0,0}
-    -- -- overdrive_timer
-    -- obj_HUD_game_scene_overdrive_timer_LP = {217,149,nil,0,1,1,0,0}
-    -- obj_HUD_game_scene_overdrive_timer_LP["state"] = "default"
-    -- obj_HUD_game_scene_overdrive_timer_RP = {1265,149,nil,0,1,1,0,0}
-    -- obj_HUD_game_scene_overdrive_timer_RP["state"] = "default"
-    -- -- background_gauge
-    -- obj_HUD_game_scene_background_gauge = {0,0,nil,0,1,1,0,0}
-    -- obj_HUD_game_scene_background_gauge["FCT"] = {0,0,0,0,0,0,0,0}
-    -- obj_HUD_game_scene_background_gauge["LCT"] = {0,0,0,0,0,0,0,0}
-    -- obj_HUD_game_scene_background_gauge["LCD"] = {0,0,0,0,0,0,0,0}
-    -- obj_HUD_game_scene_background_gauge["state"] = "default"

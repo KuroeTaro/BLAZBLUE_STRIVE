@@ -555,28 +555,28 @@ function love.load()
     end
 
     -- ---- win marks:add_one 线性 + 绘制半透明余格 ----
-    if type(update_game_scene_win_marks) == "function" then
+    if type(update_game_scene_HUD_win_marks) == "function" then
         WIN_MARK = { L = 0, R = 0 }
         local obj = { side = "L", state = "add_one", target = 1 }
         local frames = 0
         while obj["state"] == "add_one" and frames < 100 do
-            update_game_scene_win_marks(obj)
+            update_game_scene_HUD_win_marks(obj)
             frames = frames + 1
         end
         log(string.format("  win_marks add_one: %d 帧 value=%.2f state=%s target=%s",
             frames, WIN_MARK["L"], obj["state"], tostring(obj["target"])))
         obj["state"] = "add_one"; obj["target"] = 2; frames = 0
         while obj["state"] == "add_one" and frames < 100 do
-            update_game_scene_win_marks(obj); frames = frames + 1
+            update_game_scene_HUD_win_marks(obj); frames = frames + 1
         end
         log(string.format("  win_marks 第二次 add_one: %d 帧 value=%.2f (期望 2.00)", frames, WIN_MARK["L"]))
         -- 动画途中重复触发不应多算
         WIN_MARK["R"] = 0
         local objR = { side = "R", state = "add_one", target = 1 }
-        for i = 1,10 do update_game_scene_win_marks(objR) end
+        for i = 1,10 do update_game_scene_HUD_win_marks(objR) end
         local mid = WIN_MARK["R"]
         objR["state"] = "add_one"
-        for i = 1,20 do update_game_scene_win_marks(objR) end
+        for i = 1,20 do update_game_scene_HUD_win_marks(objR) end
         log(string.format("  win_marks 重复触发: 中途=%.2f 最终=%.2f (期望 1.00)", mid, WIN_MARK["R"]))
     end
     if type(draw_game_scene_add_to_sprite_batch_round_win_marks) == "function" then
@@ -593,7 +593,7 @@ function love.load()
     end
 
     -- ---- match point:先到 ROUND_FT-1 的一方点亮 + ease_in ----
-    if type(update_game_scene_match_point) == "function" then
+    if type(update_game_scene_HUD_match_point) == "function" then
         ROUND_FT = 2
         WIN_MARK = { L = 1, R = 0 }
         MATCH_POINT = { L = 0, R = 0 }
@@ -613,8 +613,8 @@ function love.load()
         local rp = mk_mp(883,-1,"R")
         local samples = {}
         for f = 1,14 do
-            update_game_scene_match_point(lp)
-            update_game_scene_match_point(rp)
+            update_game_scene_HUD_match_point(lp)
+            update_game_scene_HUD_match_point(rp)
             if f <= 12 then samples[#samples+1] = string.format("%.2f", lp[4]) end
         end
         log("  match_point LP 透明度(每帧): " .. table.concat(samples, " "))
@@ -624,7 +624,7 @@ function love.load()
             rp["state"], rp[4], tostring(MATCH_POINT["R"])))
         -- 双方都到 match point
         WIN_MARK["R"] = 1
-        for f = 1,14 do update_game_scene_match_point(rp) end
+        for f = 1,14 do update_game_scene_HUD_match_point(rp) end
         log(string.format("  match_point 双方: LP=%s RP=%s (期望 on/on)",
             lp["state"], rp["state"]))
     end

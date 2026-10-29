@@ -184,6 +184,22 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":144,"h":20},
 	"sourceSize": {"w":144,"h":20}
 },
+"HUD_positive_bouns_text_LP":
+{
+	"frame": {"x":0,"y":180,"w":160,"h":70},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":160,"h":70},
+	"sourceSize": {"w":160,"h":70}
+},
+"HUD_positive_bouns_text_RP":
+{
+	"frame": {"x":160,"y":180,"w":160,"h":70},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":160,"h":70},
+	"sourceSize": {"w":160,"h":70}
+},
 "HUD_risk_bar":
 {
 	"frame": {"x":159,"y":20,"w":23,"h":23},
@@ -203,10 +219,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "-",
+	"image": "HUD_common",
 	"format": "RGBA8888",
-	"size": {"w":520,"h":180},
+	"size": {"w":512,"h":256},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:5232ab7ced40847286fff805663fcd6a:2d955721981cad663b693e1d747b0832:fa6357ca9b94727214381b07ee3f9bc1$"
+	"smartupdate": "$TexturePacker:SmartUpdate:cab611aae6b242d9687759a065499958:03122c7237c8539a745e7398a79df168:36bcea6b38709575ed41a64c6a178113$"
 }
 }

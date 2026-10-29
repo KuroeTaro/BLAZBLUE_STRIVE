@@ -58,6 +58,18 @@ function draw_game_scene_main()
     image_sprite_sheet["sprite_batch"]:clear()
     local L_character = obj_char_game_scene_char_LP
     local R_character = obj_char_game_scene_char_RP
+    -- round_timer
+    draw_game_scene_add_to_sprite_batch_round_timer(obj_HUD_game_scene_timer,image_sprite_sheet)
+    -- match_point
+    draw_2d_image_sprite_batch(obj_HUD_game_scene_match_point_LP,image_sprite_sheet,"HUD_match_point")
+    draw_2d_image_sprite_batch(obj_HUD_game_scene_match_point_RP,image_sprite_sheet,"HUD_match_point")
+    -- win_mark
+    draw_game_scene_add_to_sprite_batch_round_win_marks(
+        obj_HUD_game_scene_win_marks_LP,image_sprite_sheet,"HUD_win_mark",WIN_MARK["L"]
+    )
+    draw_game_scene_add_to_sprite_batch_round_win_marks(
+        obj_HUD_game_scene_win_marks_RP,image_sprite_sheet,"HUD_win_mark",WIN_MARK["R"]
+    )
     -- health
     draw_game_scene_add_to_sprite_batch_bars(
         obj_HUD_game_scene_health_bar_LP,image_sprite_sheet,"HUD_health_bar",
@@ -101,15 +113,6 @@ function draw_game_scene_main()
         obj_HUD_game_scene_heat_bar_RP,image_sprite_sheet,"HUD_heat_mark",
         R_character["heat_gauge"][1]*4/R_character["heat_gauge"][2]
     )
-    -- risk
-    draw_game_scene_add_to_sprite_batch_risk_bars(
-        obj_HUD_game_scene_risk_LP,image_sprite_sheet,"HUD_risk_bar",
-        L_character["risk_gauge"][1]*3/L_character["risk_gauge"][2]
-    )
-    draw_game_scene_add_to_sprite_batch_risk_bars(
-        obj_HUD_game_scene_risk_RP,image_sprite_sheet,"HUD_risk_bar",
-        R_character["risk_gauge"][1]*3/R_character["risk_gauge"][2]
-    )
     -- overdrive
     draw_game_scene_add_to_sprite_batch_overdrive_pie(
         obj_HUD_game_scene_overdrive_pie_LP,image_sprite_sheet,
@@ -119,21 +122,21 @@ function draw_game_scene_main()
         obj_HUD_game_scene_overdrive_pie_RP,image_sprite_sheet,
         R_character["overdrive_gauge"][1]*6/R_character["overdrive_gauge"][2]
     )
+    -- risk
+    draw_game_scene_add_to_sprite_batch_risk_bars(
+        obj_HUD_game_scene_risk_LP,image_sprite_sheet,"HUD_risk_bar",
+        L_character["risk_gauge"][1]*3/L_character["risk_gauge"][2]
+    )
+    draw_game_scene_add_to_sprite_batch_risk_bars(
+        obj_HUD_game_scene_risk_RP,image_sprite_sheet,"HUD_risk_bar",
+        R_character["risk_gauge"][1]*3/R_character["risk_gauge"][2]
+    )
+    -- positive_bonus_text
+    draw_2d_image_sprite_batch(obj_HUD_game_scene_positive_bonus_text_LP,image_sprite_sheet,"HUD_positive_bouns_text_LP")
+    draw_2d_image_sprite_batch(obj_HUD_game_scene_positive_bonus_text_RP,image_sprite_sheet,"HUD_positive_bouns_text_RP")
     -- overdrive_text
     draw_2d_image_sprite_batch(obj_HUD_game_scene_overdrive_text_LP,image_sprite_sheet,"HUD_overdrive_text")
     draw_2d_image_sprite_batch(obj_HUD_game_scene_overdrive_text_RP,image_sprite_sheet,"HUD_overdrive_text")
-    -- match_point
-    draw_2d_image_sprite_batch(obj_HUD_game_scene_match_point_LP,image_sprite_sheet,"HUD_match_point")
-    draw_2d_image_sprite_batch(obj_HUD_game_scene_match_point_RP,image_sprite_sheet,"HUD_match_point")
-    -- round_timer
-    draw_game_scene_add_to_sprite_batch_round_timer(obj_HUD_game_scene_timer,image_sprite_sheet)
-    -- win_mark
-    draw_game_scene_add_to_sprite_batch_round_win_marks(
-        obj_HUD_game_scene_win_marks_LP,image_sprite_sheet,"HUD_win_mark",WIN_MARK["L"]
-    )
-    draw_game_scene_add_to_sprite_batch_round_win_marks(
-        obj_HUD_game_scene_win_marks_RP,image_sprite_sheet,"HUD_win_mark",WIN_MARK["R"]
-    )
     -- overdrive_timer
     draw_game_scene_add_to_sprite_batch_overdrive_timer(
         obj_HUD_game_scene_overdrive_timer_LP,image_sprite_sheet,L_character["overdrive_timer"]
@@ -142,6 +145,7 @@ function draw_game_scene_main()
         obj_HUD_game_scene_overdrive_timer_RP,image_sprite_sheet,R_character["overdrive_timer"]
     )
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
+    -- VFX_HUD
     draw_game_scene_char_LP_VFX_HUD()
     draw_game_scene_char_RP_VFX_HUD()
     -- 透过上帝光和HUD

@@ -94,20 +94,12 @@ function order_load_game_scene_common(load_order)
             load_game_scene_common_shader(5)
         end,
         [10] = function()
-            load_game_scene_shader_char_LP()
+            load_game_scene_common_shader(6)
         end,
         [11] = function()
-            load_game_scene_shader_char_RP()
+            load_game_scene_common_shader(7)
         end,
         [12] = function()
-            image_sprite_sheet_UI_game_scene_movie_cover =
-            common_sprite_sheet_load(
-                "asset/game_scene/common/texture/movie_cover.json",
-                love.graphics.newImage(ASSET_DATA[1]["movie_cover_sprite_batch"])
-            )
-            -- VFX_image
-            -- alpha过渡用渐变图(前段线性渐变 后段实心)
-            -- 以premultiplied(RGB=alpha)存储,供乘算遮罩使用
             local alpha_gradient_ramp_ratio = 0.15
             local alpha_gradient_mask_image_data = love.image.newImageData(256,1)
             for alpha_gradient_x = 0,255 do
@@ -116,13 +108,18 @@ function order_load_game_scene_common(load_order)
                     alpha_gradient_x,0,alpha_gradient_ramp,alpha_gradient_ramp,alpha_gradient_ramp,alpha_gradient_ramp
                 )
             end
+            image_sprite_sheet_UI_game_scene_movie_cover =
+            common_sprite_sheet_load(
+                "asset/game_scene/common/texture/movie_cover.json",
+                love.graphics.newImage(ASSET_DATA[1]["movie_cover_sprite_batch"])
+            )
             image_game_scene_alpha_gradient_mask = love.graphics.newImage(alpha_gradient_mask_image_data)
         end,
         [13] = function()
-            load_game_scene_common_shader(6)
+            load_game_scene_shader_char_LP()
         end,
         [14] = function()
-            load_game_scene_common_shader(7)
+            load_game_scene_shader_char_RP()
         end
     }
     local this_function = switch[load_order]
@@ -379,9 +376,6 @@ function order_load_game_scene_VFX_HUD(load_order)
                 -- counter
             image_VFX_game_scene_HUD_counter_ver0_2 = love.graphics.newImage(ASSET_DATA[5]["HUD_counter_ver0_2"])
             image_VFX_game_scene_HUD_counter_ver3 = love.graphics.newImage(ASSET_DATA[5]["HUD_counter_ver3"])
-                -- positive_bonus
-            image_VFX_game_scene_HUD_positive_bouns_LP = love.graphics.newImage(ASSET_DATA[5]["HUD_positive_bouns_LP"])
-            image_VFX_game_scene_HUD_positive_bouns_RP = love.graphics.newImage(ASSET_DATA[5]["HUD_positive_bouns_RP"])
         end
     }
     local this_function = switch[load_order]
