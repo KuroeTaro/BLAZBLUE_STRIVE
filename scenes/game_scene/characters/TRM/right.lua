@@ -3393,15 +3393,18 @@ function state_machine_char_game_scene_char_RP_input_sys_cache()
         ["none"] = function()
         end,
         ["save"] = function()
-            if test_input_sys_press_or_hold(self_side_input["left"]) then
+            if test_input_sys_press(self_side_input["left"]) then
                 self_side_obj_char["input_sys_cache"]["left"] = true
                 self_side_obj_char["input_sys_cache"]["right"] = false
-            elseif test_input_sys_press_or_hold(self_side_input["right"]) then
+            elseif test_input_sys_press(self_side_input["right"]) then
                 self_side_obj_char["input_sys_cache"]["left"] = false
                 self_side_obj_char["input_sys_cache"]["right"] = true
             end
             if test_input_sys_press(self_side_input["up"]) then
                 self_side_obj_char["input_sys_cache"]["up"] = true
+            end
+            if test_input_sys_press(self_side_input["down"]) then
+                self_side_obj_char["input_sys_cache"]["down"] = true
             end
             if test_input_sys_press(self_side_input["P"]) then
                 self_side_obj_char["input_sys_cache"]["P"] = true
@@ -5065,6 +5068,7 @@ function state_gate_game_scene_char_RP_4SP_S_to_special(
         end
         -- _4SP_S_4dash
         if self_side_obj_char["direction_input"] == 4
+        and test_input_sys_press_or_hold(self_side_input["SP"])
         and test_input_sys_press(self_side_input["dash"])
         then
             self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S_4dash(
@@ -5077,7 +5081,8 @@ function state_gate_game_scene_char_RP_4SP_S_to_special(
             return true
         end
         -- _4SP_S_6dash
-        if test_input_sys_press(self_side_input["dash"])
+        if test_input_sys_press_or_hold(self_side_input["SP"])
+        and test_input_sys_press(self_side_input["dash"])
         then
             self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_4SP_S_6dash(
                 self_side_obj_char,opponent_side_obj_char

@@ -8668,7 +8668,7 @@ function load_game_scene_anim_char_TRM_4SP_S_6dash(
     local res = {}
     local hit_side = hit_side_obj_char["player_side"]
     local hit_side_stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(hit_side)
-    local dash_acceleration = 6
+    local dash_acceleration = 7
     local function update_horizontal_velocity()
         hit_side_obj_char["velocity"] = {
             hit_side_obj_char[5]*dash_acceleration + hit_side_obj_char["velocity"][1],0
@@ -8691,7 +8691,7 @@ function load_game_scene_anim_char_TRM_4SP_S_6dash(
         hit_side_obj_char["hit_cancel"] = false
         hit_side_obj_char["idle_cancel"] = false
         -- state_number
-        hit_side_obj_char["velocity"] = {18.0*hit_side_obj_char[5],0}
+        hit_side_obj_char["velocity"] = {21.0*hit_side_obj_char[5],0}
         hit_side_obj_char["friction"] = 7
         hit_side_obj_char["gravity"] = 1.0
         -- enemy_friend_interaction
