@@ -3217,18 +3217,18 @@ function state_machine_char_game_scene_char_RP_input_sys_cache()
         ["none"] = function()
         end,
         ["save"] = function()
-            if test_input_sys_press(self_side_input["left"]) then
-                self_side_obj_char["input_sys_cache"]["left"] = true
-                self_side_obj_char["input_sys_cache"]["right"] = false
-            elseif test_input_sys_press(self_side_input["right"]) then
-                self_side_obj_char["input_sys_cache"]["left"] = false
-                self_side_obj_char["input_sys_cache"]["right"] = true
-            end
             if test_input_sys_press(self_side_input["up"]) then
                 self_side_obj_char["input_sys_cache"]["up"] = true
             end
             if test_input_sys_press(self_side_input["down"]) then
                 self_side_obj_char["input_sys_cache"]["down"] = true
+            end
+            if test_input_sys_press_or_hold(self_side_input["left"]) then
+                self_side_obj_char["input_sys_cache"]["left"] = true
+                self_side_obj_char["input_sys_cache"]["right"] = false
+            elseif test_input_sys_press_or_hold(self_side_input["right"]) then
+                self_side_obj_char["input_sys_cache"]["left"] = false
+                self_side_obj_char["input_sys_cache"]["right"] = true
             end
             if test_input_sys_press(self_side_input["P"]) then
                 self_side_obj_char["input_sys_cache"]["P"] = true
