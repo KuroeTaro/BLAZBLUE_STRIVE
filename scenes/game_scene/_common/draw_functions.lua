@@ -469,19 +469,106 @@ function draw_VFX_game_scene_partical_3d_canvas(obj_VFX,shader,time,opacity)
     love.graphics.draw(DRAW_VFX_PARTICAL_3D_CANVAS)
     love.graphics.setBlendMode("alpha")
 end
--- overdrive_partical:原序列图 70 帧的亮度包络
--- 第 0 帧约 19%,第 20 帧到峰值,保持到第 47 帧,之后线性淡出
-function draw_VFX_game_scene_partical_3d_overdrive_opacity(frame)
-    if frame < 20 then
-        return (0.19 + 0.81*frame/20)*0.625
-    end
-    if frame < 47 then
-        return 0.625
-    end
-    return math.min(1.00,math.max(0.00,(70 - frame)/22))*0.625
-end
 -- partical_ver1_counter:12 帧渐入 + 24 帧渐出,总共 36 帧
 -- (_VFX.lua 里 counter 粒子 VFX 的 life / 帧动画长度也同步改成 36)
 function draw_VFX_game_scene_partical_3d_counter_opacity(frame)
     return math.min(1.00,math.max(0.00,(24 - frame)/24))*0.425
+end
+-- overdrive_badge_partical:徽章收缩聚集 / 放大爆发 + 冲击波
+-- 粒子部分:一张预生成的 quad mesh(数量见 OVERDRIVE_BADGE_PARTICAL_CONFIG),
+--   位置/尺寸/拖尾全部由 shaders/overdrive_badge_particle.glsl 的顶点着色器
+--   按粒子编号 + 帧号算出来,所以只占一次 draw call,CPU 侧没有逐粒子开销。
+-- 顶点数据直接塞进 LOVE 的默认顶点格式(VertexPosition = 角点、VertexTexCoord.x = 粒子编号),
+-- 不使用自定义 attribute,所以 11.x / 12.0 都不会有顶点格式的弃用警告,
+-- 也不依赖 12.0 里自定义 attribute 的绑定位置。
+-- 冲击波部分:shaders/overdrive_badge_partical_3d.glsl 全屏逐像素求值。
+-- center / radius 每帧用 3D 投影重算,所以两者都跟着角色位置与镜头推拉走;
+-- 直接以 add 混合画在屏幕上,和原 badge 同属角色背侧层。
+-- 所有可调数值都来自 _overdrive_badge_partical_config.lua,这里只负责送 uniform。
+-- 三张表复用同一份,避免每帧新建(项目开了 nuGC)
+local VFX_GAME_SCENE_BADGE_CENTER = {0,0}
+local VFX_GAME_SCENE_BADGE_RESOLUTION = {0,0}
+local VFX_GAME_SCENE_BADGE_PARTICLE_MESH = nil
+local VFX_GAME_SCENE_BADGE_PARTICLE_MESH_COUNT = 0
+function common_game_scene_get_overdrive_badge_particle_mesh()
+    local config = OVERDRIVE_BADGE_PARTICAL_CONFIG
+    local particle_count = config.particle_count
+    if VFX_GAME_SCENE_BADGE_PARTICLE_MESH ~= nil
+    and VFX_GAME_SCENE_BADGE_PARTICLE_MESH_COUNT == particle_count then
+        return VFX_GAME_SCENE_BADGE_PARTICLE_MESH
+    end
+    -- 每颗粒子两个三角形:角点顺序 (0,0)(1,0)(1,1) / (0,0)(1,1)(0,1)
+    local corner_table = {
+        {0,0},{1,0},{1,1},
+        {0,0},{1,1},{0,1}
+    }
+    local vertices = {}
+    local write = 0
+    for i = 0,particle_count - 1,1 do
+        for c = 1,6,1 do
+            write = write + 1
+            -- x,y = 角点(0/1),u = 粒子编号,v = 0,颜色固定白
+            vertices[write] = {corner_table[c][1],corner_table[c][2],i,0,1,1,1,1}
+        end
+    end
+    VFX_GAME_SCENE_BADGE_PARTICLE_MESH =
+    love.graphics.newMesh(vertices,"triangles","static")
+    VFX_GAME_SCENE_BADGE_PARTICLE_MESH_COUNT = particle_count
+    return VFX_GAME_SCENE_BADGE_PARTICLE_MESH
+end
+function draw_VFX_game_scene_overdrive_badge_partical(
+    obj_VFX,shockwave_shader,particle_shader,frame,opacity
+)
+    local obj_camera = obj_stage_game_scene_camera
+    local width,height = love.graphics.getDimensions()
+    local projection = draw_resolution_correction(800)/(obj_VFX[3] - obj_camera[3])
+    local coords = draw_3d_point_to_2D(obj_camera,obj_VFX)
+    VFX_GAME_SCENE_BADGE_CENTER[1] = coords[1]
+    VFX_GAME_SCENE_BADGE_CENTER[2] = coords[2]
+    VFX_GAME_SCENE_BADGE_RESOLUTION[1] = width
+    VFX_GAME_SCENE_BADGE_RESOLUTION[2] = height
+    local radius = 500*projection
+    local config = OVERDRIVE_BADGE_PARTICAL_CONFIG
+    local particle_mesh = common_game_scene_get_overdrive_badge_particle_mesh()
+    love.graphics.setBlendMode("add")
+    love.graphics.setColor(1,1,1,1)
+    -- 粒子:收缩段(phase 0)与爆发段(phase 1)在 28-29 帧重叠
+    if frame <= 29 or frame >= 28 then
+        particle_shader:send("time",frame)
+        particle_shader:send("opacity",opacity)
+        particle_shader:send("center",VFX_GAME_SCENE_BADGE_CENTER)
+        particle_shader:send("radius",radius)
+        particle_shader:send("scale_anim",obj_VFX["scale_anim"])
+        particle_shader:send("size_scale",config.size_scale)
+        particle_shader:send("spin_scale",config.spin_scale)
+        particle_shader:send("trail_scale",config.trail_scale)
+        particle_shader:send("start_radius_min",config.converge_start_min)
+        particle_shader:send("start_radius_max",config.converge_start_max)
+        particle_shader:send("target_radius_ratio",config.converge_target)
+        love.graphics.setShader(particle_shader)
+        if frame <= 29 then
+            particle_shader:send("phase",0)
+            love.graphics.draw(particle_mesh)
+        end
+        if frame >= 28 then
+            particle_shader:send("phase",1)
+            love.graphics.draw(particle_mesh)
+        end
+    end
+    -- 冲击波 / 中心闪光 / 蓄力光
+    love.graphics.setShader(shockwave_shader)
+    shockwave_shader:send("time",frame)
+    shockwave_shader:send("opacity",opacity)
+    shockwave_shader:send("center",VFX_GAME_SCENE_BADGE_CENTER)
+    shockwave_shader:send("radius",radius)
+    shockwave_shader:send("resolution",VFX_GAME_SCENE_BADGE_RESOLUTION)
+    shockwave_shader:send("shockwave_radius_start",config.shockwave_radius_start)
+    shockwave_shader:send("shockwave_radius_grow",config.shockwave_radius_grow)
+    shockwave_shader:send("shockwave_width_base",config.shockwave_width_base)
+    shockwave_shader:send("shockwave_width_grow",config.shockwave_width_grow)
+    shockwave_shader:send("shockwave_brightness",config.shockwave_brightness)
+    love.graphics.rectangle("fill",0,0,width,height)
+    love.graphics.setColor(1,1,1,1)
+    love.graphics.setBlendMode("alpha")
+    love.graphics.setShader()
 end

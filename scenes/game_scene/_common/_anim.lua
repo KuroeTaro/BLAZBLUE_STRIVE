@@ -4798,7 +4798,7 @@ function load_game_scene_anim_char_common_burst_overdrive(
         -- insert_VFX
         self_side_obj_char["VFX_common_back_table"] = {}
         insert_VFX_game_scene_char_overdrive_badge(self_side_obj_char)
-        insert_VFX_game_scene_char_overdrive_partical(self_side_obj_char,opponent_side_obj_char)
+        insert_VFX_game_scene_char_overdrive_badge_partical(self_side_obj_char)
         insert_VFX_game_scene_char_overdrive_black_overlay(self_side_obj_char)
         -- play_SFX
         play_obj_audio(self_side_move_SFX_table["overdrive"])

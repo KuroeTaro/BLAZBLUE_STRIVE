@@ -1601,13 +1601,10 @@ function order_load_game_scene_char_LP_frames(load_order)
                 )
             end
         end,
-        -- overdrive_badge
+        -- overdrive_badge(单张 static,缩放/透明度由 _VFX.lua 的时间轴重建)
         [39] = function()
-            image_sprite_sheet_VFX_game_scene_LP_overdrive_badge =
-            common_sprite_sheet_load(
-                "asset/game_scene/characters/TRM/texture/overdrive_badge/TRM_overdrive_badge.json",
-                love.graphics.newImage(PLAYER_ASSET_DATA["overdrive_badge"])
-            )
+            image_VFX_game_scene_LP_overdrive_badge_static =
+            love.graphics.newImage(PLAYER_ASSET_DATA["overdrive_badge_static"])
         end
     }
     local this_function = switch[load_order]

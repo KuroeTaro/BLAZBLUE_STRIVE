@@ -4,7 +4,6 @@ local thread_data = {}
 -- overdrive_VFX
 thread_data["overdrive_airflow_sprite_batch"] =
 compress_module("asset/game_scene/common/texture/VFX/overdrive_airflow.dds")
--- overdrive_partical_sprite_batch 已改由 shaders/overdrive_partical_3d.glsl 程序化生成
 -- RC_VFX
 thread_data["RC_partical_sprite_batch"] = compress_module("asset/game_scene/common/texture/VFX/RC_partical.dds")
 thread_data["RC_shockwave_sprite_batch"] = compress_module("asset/game_scene/common/texture/VFX/RC_shockwave.dds")

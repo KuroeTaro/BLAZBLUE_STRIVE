@@ -188,6 +188,7 @@ for i,v in ipairs(load_projectile_name_table) do
     compress_module("asset/game_scene/characters/TRM/texture/projectile/".."TRM_"..v..".dds")
 end
 -- overdrive_badge
-thread_data["overdrive_badge"] =
-compress_module("asset/game_scene/characters/TRM/texture/overdrive_badge/TRM_overdrive_badge.dds")
+-- 70 帧 14000x5000 的序列图不再加载,改用单张 static + _VFX.lua 的时间轴重建
+thread_data["overdrive_badge_static"] =
+compress_module("asset/game_scene/characters/TRM/texture/overdrive_badge/TRM_overdrive_badge_static.dds")
 love.thread.getChannel('thread_data_9'):push(thread_data)

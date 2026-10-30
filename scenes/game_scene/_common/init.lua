@@ -5,7 +5,7 @@ function load_game_scene_common_obj()
     DRAW_MAIN_CHARACTER_CANVAS = love.graphics.newCanvas(width,height)
     DRAW_CHARACTER_CANVAS = love.graphics.newCanvas(width,height)
     DRAW_SHADOW_CANVAS = love.graphics.newCanvas(width,height)
-    -- glsl 程序化粒子(取代 overdrive_partical / partical_ver1_counter 序列图)
+    -- glsl 程序化粒子(取代 partical_ver1_counter 序列图)
     -- 这张 CANVAS 固定贴在屏幕上,不随摄像机移动;
     -- 每帧把摄像机位置送进 shader 重新绘制,由 shader 自己做 3D 投影与视差,
     -- 因此不需要为了掩盖画布边缘而放大 CANVAS。
@@ -72,11 +72,14 @@ function load_game_scene_common_shader(i)
         [5] = function() shader_game_scene_gaussian_blur = love.graphics.newShader(
             "shaders/gaussian_blur.glsl"
         ) end,
-        [6] = function() shader_game_scene_overdrive_partical_3d = love.graphics.newShader(
-            "shaders/overdrive_partical_3d.glsl"
-        ) end,
-        [7] = function() shader_game_scene_counter_partical_3d = love.graphics.newShader(
+        [6] = function() shader_game_scene_counter_partical_3d = love.graphics.newShader(
             "shaders/counter_partical_3d.glsl"
+        ) end,
+        [7] = function() shader_game_scene_overdrive_badge_partical_3d = love.graphics.newShader(
+            "shaders/overdrive_badge_partical_3d.glsl"
+        ) end,
+        [8] = function() shader_game_scene_overdrive_badge_particle = love.graphics.newShader(
+            "shaders/overdrive_badge_particle.glsl"
         ) end
     }
     local this_function = switch[i]

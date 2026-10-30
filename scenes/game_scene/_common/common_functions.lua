@@ -117,10 +117,11 @@ function common_game_scene_get_VFX_spawn_anchor(side)
     }
     return side_table[side]
 end
-function common_game_scene_get_overdrive_badge_image_sprite_sheet_table(side)
+-- overdrive_badge:单张 static 贴图(缩放/透明度由 _VFX.lua 的时间轴重建)
+function common_game_scene_get_overdrive_badge_image_table(side)
     local side_table = {
-        ["L"] = image_sprite_sheet_VFX_game_scene_LP_overdrive_badge,
-        ["R"] = image_sprite_sheet_VFX_game_scene_RP_overdrive_badge
+        ["L"] = image_VFX_game_scene_LP_overdrive_badge_static,
+        ["R"] = image_VFX_game_scene_RP_overdrive_badge_static
     }
     return side_table[side]
 end

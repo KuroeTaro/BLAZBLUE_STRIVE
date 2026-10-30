@@ -1,16 +1,19 @@
 -- overdrive
+-- TRM_overdrive_badge 的 70 帧「缩放 + 亮度」时间轴见
+-- scenes/_scene_config/_overdrive_badge_anim.lua(启动时加载为全局 OVERDRIVE_BADGE_ANIM)。
+-- 序列图里烘焙好的缩放/透明度在运行时按这张表重建;
+-- static 只有一帧,所以直接用 Image 画(圆的原点在中心),不再走 sprite_batch 查帧。
+
 function insert_VFX_game_scene_char_overdrive_badge(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
-    local image_sprite_sheet = common_game_scene_get_overdrive_badge_image_sprite_sheet_table(obj_char["player_side"])
+    local image = common_game_scene_get_overdrive_badge_image_table(obj_char["player_side"])
     if obj_char["height"] == "air" then
         obj_VFX["y_offset"] = 715
     else
         obj_VFX["y_offset"] = 845
     end
     obj_VFX["life"] = 70
-    obj_VFX[1] = obj_char["x"] - obj_char[5]*(500)
-    obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"])
     obj_VFX[3] = obj_char[3]
     obj_VFX[4] = 1
     obj_VFX[5] = obj_char[5]
@@ -29,24 +32,85 @@ function insert_VFX_game_scene_char_overdrive_badge(obj_char)
             obj_VFX["life"] = 0
         end
     end
+    -- 只在第一次绘制时同步一次位置:徽章固定在 OD 起手的世界坐标上,
+    -- 之后的镜头推拉由 draw_3d_point_to_2D 每帧重新投影
     obj_VFX["draw_sync"] = function()
-        obj_VFX[1] = obj_char["x"] - obj_char[5]*(500)
-        obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"])
+        obj_VFX[1] = obj_char["x"]
+        obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"] - 500)
         obj_VFX[3] = obj_char[3]
-        obj_VFX[5] = obj_char[5]
-        obj_VFX[6] = obj_char[6]
-        obj_VFX[7] = obj_char[7]
         obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
-        image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
-        )
+        local anim = OVERDRIVE_BADGE_ANIM[obj_VFX[8]]
+        local opacity = obj_VFX[4]*anim[2]
+        if opacity <= 0 then
+            return
+        end
+        local projection = draw_resolution_correction(800)/(obj_VFX[3] - obj_camera[3])
+        local coords = draw_3d_point_to_2D(obj_camera,obj_VFX)
+        local scale = projection*anim[1]
         love.graphics.setBlendMode("add")
-        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setColor(1,1,1,opacity)
+        -- 原点放在 1000x1000 的正中心,缩放/镜像都绕中心做
+        love.graphics.draw(
+            image,coords[1],coords[2],obj_VFX[7],
+            obj_VFX[5]*scale,obj_VFX[6]*scale,500,500
+        )
+        love.graphics.setColor(1,1,1,1)
         love.graphics.setBlendMode("alpha")
+    end
+    table.insert(obj_char["VFX_common_back_table"],obj_VFX)
+end
+-- overdrive_badge_partical
+-- 徽章收缩时:圆头 + 条状拖尾的粒子螺旋向中心聚集;
+-- 徽章突然放大时:更大的粒子从内向外爆发,同时放出一圈冲击波。
+-- 全部由 shaders/overdrive_badge_partical_3d.glsl 程序化生成,不需要任何贴图。
+function insert_VFX_game_scene_char_overdrive_badge_partical(obj_char)
+    local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
+    if obj_char["height"] == "air" then
+        obj_VFX["y_offset"] = 715
+    else
+        obj_VFX["y_offset"] = 845
+    end
+    obj_VFX["life"] = 70
+    obj_VFX[3] = obj_char[3]
+    obj_VFX[4] = 1
+    obj_VFX[5] = obj_char[5]
+    obj_VFX[6] = obj_char[6]
+    obj_VFX[7] = obj_char[7]
+    obj_VFX[8] = 0
+    obj_VFX["f"] = -1
+    obj_VFX["scale_anim"] = 1
+    obj_VFX["update"] = function()
+        obj_VFX["f"] = obj_VFX["f"] + 1
+        if obj_VFX["f"] >= 1 then
+            obj_VFX["f"] = 0
+            obj_VFX[8] = obj_VFX[8] + 1
+        end
+        local anim = OVERDRIVE_BADGE_ANIM[obj_VFX[8]]
+        if anim then
+            obj_VFX["scale_anim"] = anim[1]
+        end
+        obj_VFX["life"] = obj_VFX["life"] - 1
+        if obj_char["state"] ~= "burst_overdrive" then
+            obj_VFX["life"] = 0
+        end
+    end
+    obj_VFX["draw_sync"] = function()
+        obj_VFX[1] = obj_char["x"]
+        obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"] - 500)
+        obj_VFX[3] = obj_char[3]
+        obj_VFX["draw_sync"] = function() end
+    end
+    obj_VFX["draw"] = function()
+        obj_VFX["draw_sync"]()
+        draw_VFX_game_scene_overdrive_badge_partical(
+            obj_VFX,shader_game_scene_overdrive_badge_partical_3d,
+            shader_game_scene_overdrive_badge_particle,
+            obj_VFX[8],obj_VFX[4]
+        )
     end
     table.insert(obj_char["VFX_common_back_table"],obj_VFX)
 end
@@ -106,39 +170,6 @@ function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
         love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_common_back_table"],obj_VFX)
-end
-function insert_VFX_game_scene_char_overdrive_partical(active_op_side_obj_char,passive_op_side_obj_char)
-    local side_table = {
-        ["L"] = {0,0,1,1,1,1,0,0},
-        ["R"] = {1600,0,1,1,-1,1,0,0}
-    }
-    local obj_VFX = side_table[active_op_side_obj_char["player_side"]]
-    local obj_camera = obj_stage_game_scene_camera
-    active_op_side_obj_char["VFX_hit_front_table"] = {}
-    active_op_side_obj_char["VFX_hit_back_table"] = {}
-    passive_op_side_obj_char["VFX_hit_front_table"] = {}
-    passive_op_side_obj_char["VFX_hit_back_table"] = {}
-    obj_VFX["life"] = 70
-    obj_VFX["f"] = -1
-    obj_VFX["update"] = function()
-        obj_VFX["f"] = obj_VFX["f"] + 1
-        if obj_VFX["f"] >= 1 then
-            obj_VFX[8] = obj_VFX[8] + 1
-            obj_VFX["f"] = 0
-        end
-        obj_VFX["life"] = obj_VFX["life"] - 1
-        if active_op_side_obj_char["state"] ~= "burst_overdrive" then
-            obj_VFX["life"] = 0
-        end
-    end
-    -- 粒子场改由 shader 按摄像机位置实时重建,不再需要序列图与 2D 锚点
-    obj_VFX["draw"] = function()
-        draw_VFX_game_scene_partical_3d_canvas(
-            obj_VFX,shader_game_scene_overdrive_partical_3d,
-            obj_VFX[8],draw_VFX_game_scene_partical_3d_overdrive_opacity(obj_VFX[8])
-        )
-    end
-    table.insert(active_op_side_obj_char["VFX_common_back_table"],obj_VFX)
 end
 function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_char)
     -- 纯全屏 solid overlay:只保留透明度设计
