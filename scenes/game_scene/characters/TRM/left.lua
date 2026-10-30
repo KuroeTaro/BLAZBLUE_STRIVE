@@ -3217,18 +3217,35 @@ function state_machine_char_game_scene_char_LP_input_sys_cache()
         ["none"] = function()
         end,
         ["save"] = function()
-            if test_input_sys_press(self_side_input["up"]) then
-                self_side_obj_char["input_sys_cache"]["up"] = true
-            end
-            if test_input_sys_press(self_side_input["down"]) then
-                self_side_obj_char["input_sys_cache"]["down"] = true
-            end
-            if test_input_sys_press(self_side_input["left"]) then
-                self_side_obj_char["input_sys_cache"]["left"] = true
-                self_side_obj_char["input_sys_cache"]["right"] = false
-            elseif test_input_sys_press(self_side_input["right"]) then
-                self_side_obj_char["input_sys_cache"]["left"] = false
-                self_side_obj_char["input_sys_cache"]["right"] = true
+            if test_input_sys_press_or_hold(self_side_input["SP"]) then
+                self_side_obj_char["input_sys_cache"]["SP"] = true
+                if test_input_sys_press(self_side_input["up"]) then
+                    self_side_obj_char["input_sys_cache"]["up"] = true
+                end
+                if test_input_sys_press(self_side_input["down"]) then
+                    self_side_obj_char["input_sys_cache"]["down"] = true
+                end
+                if test_input_sys_press_or_hold(self_side_input["left"]) then
+                    self_side_obj_char["input_sys_cache"]["left"] = true
+                    self_side_obj_char["input_sys_cache"]["right"] = false
+                elseif test_input_sys_press_or_hold(self_side_input["right"]) then
+                    self_side_obj_char["input_sys_cache"]["left"] = false
+                    self_side_obj_char["input_sys_cache"]["right"] = true
+                end
+            else
+                if test_input_sys_press(self_side_input["up"]) then
+                    self_side_obj_char["input_sys_cache"]["up"] = true
+                end
+                if test_input_sys_press(self_side_input["down"]) then
+                    self_side_obj_char["input_sys_cache"]["down"] = true
+                end
+                if test_input_sys_press(self_side_input["left"]) then
+                    self_side_obj_char["input_sys_cache"]["left"] = true
+                    self_side_obj_char["input_sys_cache"]["right"] = false
+                elseif test_input_sys_press(self_side_input["right"]) then
+                    self_side_obj_char["input_sys_cache"]["left"] = false
+                    self_side_obj_char["input_sys_cache"]["right"] = true
+                end
             end
             if test_input_sys_press(self_side_input["P"]) then
                 self_side_obj_char["input_sys_cache"]["P"] = true
@@ -3250,9 +3267,12 @@ function state_machine_char_game_scene_char_LP_input_sys_cache()
                 self_side_obj_char["input_sys_cache"]["S"] = false
                 self_side_obj_char["input_sys_cache"]["K"] = false
                 self_side_obj_char["input_sys_cache"]["Launcher"] = true
-            end
-            if test_input_sys_press_or_hold(self_side_input["SP"]) then
-                self_side_obj_char["input_sys_cache"]["SP"] = true
+                if test_input_sys_press_or_hold(self_side_input["up"]) then
+                    self_side_obj_char["input_sys_cache"]["up"] = true
+                end
+                if test_input_sys_press_or_hold(self_side_input["down"]) then
+                    self_side_obj_char["input_sys_cache"]["down"] = true
+                end
             end
             if test_input_sys_press(self_side_input["RC"]) then
                 self_side_obj_char["input_sys_cache"]["RC"] = true
@@ -3266,23 +3286,9 @@ function state_machine_char_game_scene_char_LP_input_sys_cache()
             if test_input_sys_press(self_side_input["UA"]) then
                 self_side_obj_char["input_sys_cache"]["UA"] = true
             end
-            if test_input_sys_press(self_side_input["correction_up"]) then
-                self_side_obj_char["input_sys_cache"]["correction_up"] = true
-                self_side_obj_char["input_sys_cache"]["correction_down"] = false
-            elseif test_input_sys_press(self_side_input["correction_down"]) then
-                self_side_obj_char["input_sys_cache"]["correction_up"] = false
-                self_side_obj_char["input_sys_cache"]["correction_down"] = true
-            end
-            if test_input_sys_press(self_side_input["correction_left"]) then
-                self_side_obj_char["input_sys_cache"]["correction_left"] = true
-                self_side_obj_char["input_sys_cache"]["correction_right"] = false
-            elseif test_input_sys_press(self_side_input["correction_right"]) then
-                self_side_obj_char["input_sys_cache"]["correction_left"] = false
-                self_side_obj_char["input_sys_cache"]["correction_right"] = true
-            end
         end,
         ["load"] = function()
-            for i = 1,20 do
+            for i = 1,16 do
                 if self_side_obj_char["input_sys_cache"][INPUT_SYS_COMMAND_TABLE[i]] then
                     self_side_input[INPUT_SYS_COMMAND_TABLE[i]] = "Pressing"
                 end
