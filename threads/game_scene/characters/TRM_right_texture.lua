@@ -74,7 +74,7 @@ end
 -- 攻击类
 local load_attack_name_table = {
     "burst_overdrive_ground",
-    "burst_overdrive_RC_air",
+    "burst_overdrive_RC_burst_air",
     "burst_RC_ground",
     "2P",
     "6P",

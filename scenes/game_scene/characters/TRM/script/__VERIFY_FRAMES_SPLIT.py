@@ -25,7 +25,7 @@ ORIGINAL = [
     "6dash_air_dash","6dash_dash","7_8_9[Launcher]_follow_jump","7_8_9_jump_air_to_stand_idle","7_8_9_pre_jump",
     "7_jump","8_jump","9_jump",
     # attack
-    "burst_overdrive_ground","burst_overdrive_RC_air","burst_RC_ground","2P","6P","5P","2K","6K","5K","2S","6S","cS","fS",
+    "burst_overdrive_ground","burst_overdrive_RC_burst_air","burst_RC_ground","2P","6P","5P","2K","6K","5K","2S","6S","cS","fS",
     "5H","5H_oroboros_ease_in_mid","5H_oroboros_ease_out_mid","5H_oroboros_loop_back","5H_oroboros_loop_front",
     "5H_oroboros_loop_mid","5H_oroboros_shot","5H_reticle_ease_out","5H_reticle_locked","5H_reticle_locking",
     "5H_reticle_shot","5H_reticle_unlocked","5H_reticle_unlocking","2Launcher","4_6Launcher","4_6Launcher_success",
