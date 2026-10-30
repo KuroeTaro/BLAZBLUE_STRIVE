@@ -1435,7 +1435,7 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
     obj_projectile["hurtstop_wiggle_current_y"] = 0
     -- compatibility_draw
     obj_projectile["contrast"] = active_op_side_obj_char["contrast"]
-    obj_projectile["brightness"] = active_op_side_obj_char["brightness"]
+    obj_projectile["brightness"] = active_op_side_obj_char["brightness_const"]
     -- unique
     obj_projectile["projectile_name"] = "scapegoat"
     obj_projectile["projectile_exist_countdown"] = 240

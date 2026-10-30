@@ -7,23 +7,23 @@
 OVERDRIVE_BADGE_PARTICAL_CONFIG =
 {
     -- 粒子数量(两个阶段共用同一张 mesh,收缩段/爆发段各用这么多颗)
-    particle_count = 300,
+    particle_count = 600,
     -- 粒子大小倍率:1.0 = 最初 120 颗那版,0.2 = 现在的 1/5
     size_scale = 0.25,
     -- 旋转速度倍率:1.0 = 最初 0.55 rad,0.4 = 现在的 0.22 rad
-    spin_scale = 0.25,
+    spin_scale = 0.0,
     -- 拖尾长度倍率:1.0 = 现在,2.0 = 现在的两倍
-    trail_scale = 1.50,
+    trail_scale = 3.50,
     -- 收缩段起始半径(× 徽章半径 R):在 [min,max] 之间随机
     converge_start_min = 1.75,
-    converge_start_max = 2.25,
+    converge_start_max = 3.25,
     -- 收缩段终点(× R):0.02 表示收束到中心附近,0 = 正中心
-    converge_target = 0.65,
+    converge_target = 0.425,
     -- 冲击波环的起始半径 / 扩散到多远(× R)
-    shockwave_radius_start = 0.85,
-    shockwave_radius_grow = 2.60,
+    shockwave_radius_start = 0.5,
+    shockwave_radius_grow = 3.75,
     -- 冲击波环的厚度(× R):从 base 随扩散线性长到 grow
-    shockwave_width_base = 0.045,
+    shockwave_width_base = 0.15,
     shockwave_width_grow = 0.240,
     -- 冲击波整体亮度
     shockwave_brightness = 0.85,

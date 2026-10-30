@@ -8,6 +8,7 @@ function insert_VFX_game_scene_char_overdrive_badge(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local image = common_game_scene_get_overdrive_badge_image_table(obj_char["player_side"])
+    local anim = OVERDRIVE_BADGE_ANIM
     if obj_char["height"] == "air" then
         obj_VFX["y_offset"] = 715
     else
@@ -15,18 +16,20 @@ function insert_VFX_game_scene_char_overdrive_badge(obj_char)
     end
     obj_VFX["life"] = 70
     obj_VFX[3] = obj_char[3]
-    obj_VFX[4] = 1
+    obj_VFX[4] = 0
     obj_VFX[5] = obj_char[5]
     obj_VFX[6] = obj_char[6]
     obj_VFX[7] = obj_char[7]
-    obj_VFX[8] = 0
-    obj_VFX["f"] = -1
+    obj_VFX["scale_anim"] = 1
+    obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCT"]["scale_anim"] = 0
+    obj_VFX["LCD"]["scale_anim"] = 0
+    init_point_linear_anim_without(obj_VFX,anim.scale)
+    init_point_linear_anim_without(obj_VFX,anim.alpha)
     obj_VFX["update"] = function()
-        obj_VFX["f"] = obj_VFX["f"] + 1
-        if obj_VFX["f"] >= 1 then
-            obj_VFX["f"] = 0
-            obj_VFX[8] = obj_VFX[8] + 1
-        end
+        point_linear_animator(obj_VFX,anim.scale)
+        point_linear_animator(obj_VFX,anim.alpha)
         obj_VFX["life"] = obj_VFX["life"] - 1
         if obj_char["state"] ~= "burst_overdrive" then
             obj_VFX["life"] = 0
@@ -42,14 +45,13 @@ function insert_VFX_game_scene_char_overdrive_badge(obj_char)
     end
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
-        local anim = OVERDRIVE_BADGE_ANIM[obj_VFX[8]]
-        local opacity = obj_VFX[4]*anim[2]
+        local opacity = obj_VFX[4]
         if opacity <= 0 then
             return
         end
         local projection = draw_resolution_correction(800)/(obj_VFX[3] - obj_camera[3])
         local coords = draw_3d_point_to_2D(obj_camera,obj_VFX)
-        local scale = projection*anim[1]
+        local scale = projection*obj_VFX["scale_anim"]
         love.graphics.setBlendMode("add")
         love.graphics.setColor(1,1,1,opacity)
         -- 原点放在 1000x1000 的正中心,缩放/镜像都绕中心做
@@ -83,16 +85,19 @@ function insert_VFX_game_scene_char_overdrive_badge_partical(obj_char)
     obj_VFX[8] = 0
     obj_VFX["f"] = -1
     obj_VFX["scale_anim"] = 1
+    obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCT"]["scale_anim"] = 0
+    obj_VFX["LCD"]["scale_anim"] = 0
+    init_point_linear_anim_without(obj_VFX,OVERDRIVE_BADGE_ANIM.scale)
     obj_VFX["update"] = function()
+        -- 帧号只用于粒子的 phase / 时间轴;缩放交给 point_linear_anim
         obj_VFX["f"] = obj_VFX["f"] + 1
         if obj_VFX["f"] >= 1 then
             obj_VFX["f"] = 0
             obj_VFX[8] = obj_VFX[8] + 1
         end
-        local anim = OVERDRIVE_BADGE_ANIM[obj_VFX[8]]
-        if anim then
-            obj_VFX["scale_anim"] = anim[1]
-        end
+        point_linear_animator(obj_VFX,OVERDRIVE_BADGE_ANIM.scale)
         obj_VFX["life"] = obj_VFX["life"] - 1
         if obj_char["state"] ~= "burst_overdrive" then
             obj_VFX["life"] = 0

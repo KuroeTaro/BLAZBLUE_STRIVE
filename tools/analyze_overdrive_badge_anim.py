@@ -17,7 +17,9 @@
 用法:
     python tools/analyze_overdrive_badge_anim.py
 输出:
-    控制台直接打印可粘贴回 _overdrive_badge_anim.lua 的 {缩放,亮度} 表。
+    控制台打印逐帧的 {缩放,亮度} 参考值。
+    注意:_overdrive_badge_anim.lua 现在用 point_linear_anim 关键帧(线性插值),
+    这些逐帧值只用来挑关键帧 / 核对误差,不需要整表贴回去。
 """
 import json
 import math
