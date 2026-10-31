@@ -215,7 +215,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         nil,nil,function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
     )
     obj_projectile["projectile_active"] = true
-    obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
+    obj_projectile["projectile_counter_ver_function"] = function() end
     obj_projectile["hit_VFX_insert_function"] = insert_VFX_game_scene_char_blast_special_projectile
     obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC_red
     obj_projectile["hit_SFX"] = hit_side_move_SFX_table["red_RC_hit"]
@@ -293,7 +293,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         draw_3d_image_sprite_batch(
             obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
         )
-        love.graphics.setColor(shockwave_color[1],shockwave_color[2],shockwave_color[3],1)
+        love.graphics.setColor(shockwave_color[1],shockwave_color[2],shockwave_color[3],0.5)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
     end
@@ -386,7 +386,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
         draw_3d_image_sprite_batch(
             obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
         )
-        love.graphics.setColor(shockwave_color[1],shockwave_color[2],shockwave_color[3],1)
+        love.graphics.setColor(shockwave_color[1],shockwave_color[2],shockwave_color[3],0.5)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
     end
@@ -479,7 +479,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
         draw_3d_image_sprite_batch(
             obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
         )
-        love.graphics.setColor(shockwave_color[1],shockwave_color[2],shockwave_color[3],1)
+        love.graphics.setColor(shockwave_color[1],shockwave_color[2],shockwave_color[3],0.5)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
     end
@@ -615,7 +615,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         nil,nil,function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
     )
     obj_projectile["projectile_active"] = true
-    obj_projectile["projectile_counter_ver_function"] = common_game_scene_counter_ver0
+    obj_projectile["projectile_counter_ver_function"] = function() end
     obj_projectile["hit_VFX_insert_function"] = function() end
     obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC_yellow
     obj_projectile["hit_SFX"] = hit_side_move_SFX_table["yellow_RC_hit"]
@@ -693,7 +693,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         draw_3d_image_sprite_batch(
             obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
         )
-        love.graphics.setColor(shockwave_color[1],shockwave_color[2],shockwave_color[3],1)
+        love.graphics.setColor(shockwave_color[1],shockwave_color[2],shockwave_color[3],0.5)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
     end
