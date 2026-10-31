@@ -1,0 +1,8 @@
+-- global
+GAME_MODE = 0 -- 0.训练模式 1.本地多人 2.在线多人
+CHAR_SELECT_LR = {}
+CHAR_SELECT_LR["L"] = 4
+CHAR_SELECT_LR["R"] = 5
+CONTROL_METHOD = {}
+CONTROL_METHOD["L"] = 1
+CONTROL_METHOD["R"] = 1
