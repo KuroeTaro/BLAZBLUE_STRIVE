@@ -249,7 +249,10 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
     end
     table.insert(active_op_side_obj_char["VFX_black_overlay_table"],obj_VFX)
 end
-function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
+function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet,scale)
+    local badge_half_size = 600
+    local badge_offset = badge_half_size*scale
+    local center_offset = badge_half_size - badge_offset
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     obj_VFX["y_offset"] = 0
@@ -259,12 +262,12 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
         obj_VFX["y_offset"] = 880
     end
     obj_VFX["life"] = 15
-    obj_VFX[1] = obj_char["x"] - obj_char[5]*(600)
-    obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"])
+    obj_VFX[1] = obj_char["x"] - obj_char[5]*(badge_offset)
+    obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"] - center_offset)
     obj_VFX[3] = obj_char[3]
     obj_VFX[4] = 1
-    obj_VFX[5] = obj_char[5]
-    obj_VFX[6] = obj_char[6]
+    obj_VFX[5] = obj_char[5]*scale
+    obj_VFX[6] = obj_char[6]*scale
     obj_VFX[7] = obj_char[7]
     obj_VFX[8] = -1
     obj_VFX["update"] = function()
@@ -282,8 +285,8 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
         else
             obj_VFX["y_offset"] = 880
         end
-        obj_VFX[1] = obj_char["x"] - obj_char[5]*(600)
-        obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"])
+        obj_VFX[1] = obj_char["x"] - obj_char[5]*(badge_offset)
+        obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"] - center_offset)
         obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
@@ -298,7 +301,10 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet)
     end
     table.insert(obj_char["VFX_hit_front_table"],obj_VFX)
 end
-function insert_VFX_game_scene_char_RC_badge_blast(obj_char,image_sprite_sheet,color)
+function insert_VFX_game_scene_char_RC_badge_blast(obj_char,image_sprite_sheet,color,scale)
+    local badge_half_size = 600
+    local badge_offset = badge_half_size*scale
+    local center_offset = badge_half_size - badge_offset
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     obj_VFX["y_offset"] = 0
@@ -308,12 +314,12 @@ function insert_VFX_game_scene_char_RC_badge_blast(obj_char,image_sprite_sheet,c
         obj_VFX["y_offset"] = 880
     end
     obj_VFX["life"] = 30
-    obj_VFX[1] = obj_char["x"] - obj_char[5]*(600)
-    obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"])
+    obj_VFX[1] = obj_char["x"] - obj_char[5]*(badge_offset)
+    obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"] - center_offset)
     obj_VFX[3] = obj_char[3]
     obj_VFX[4] = 1
-    obj_VFX[5] = obj_char[5]
-    obj_VFX[6] = obj_char[6]
+    obj_VFX[5] = obj_char[5]*scale
+    obj_VFX[6] = obj_char[6]*scale
     obj_VFX[7] = obj_char[7]
     obj_VFX[8] = -1
     obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
@@ -346,8 +352,8 @@ function insert_VFX_game_scene_char_RC_badge_blast(obj_char,image_sprite_sheet,c
         else
             obj_VFX["y_offset"] = 880
         end
-        obj_VFX[1] = obj_char["x"] - obj_char[5]*(600)
-        obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"])
+        obj_VFX[1] = obj_char["x"] - obj_char[5]*(badge_offset)
+        obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"] - center_offset)
         obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()

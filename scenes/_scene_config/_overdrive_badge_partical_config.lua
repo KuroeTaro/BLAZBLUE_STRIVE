@@ -7,16 +7,16 @@
 OVERDRIVE_BADGE_PARTICAL_CONFIG =
 {
     -- 粒子数量(两个阶段共用同一张 mesh,收缩段/爆发段各用这么多颗)
-    particle_count = 600,
+    particle_count = 300,
     -- 粒子大小倍率:1.0 = 最初 120 颗那版,0.2 = 现在的 1/5
-    size_scale = 0.25,
+    size_scale = 0.20,
     -- 旋转速度倍率:1.0 = 最初 0.55 rad,0.4 = 现在的 0.22 rad
     spin_scale = 0.0,
     -- 拖尾长度倍率:1.0 = 现在,2.0 = 现在的两倍
-    trail_scale = 3.50,
+    trail_scale = 5.75,
     -- 收缩段起始半径(× 徽章半径 R):在 [min,max] 之间随机
     converge_start_min = 1.75,
-    converge_start_max = 3.25,
+    converge_start_max = 6.25,
     -- 收缩段终点(× R):0.02 表示收束到中心附近,0 = 正中心
     converge_target = 0.425,
     -- 冲击波环的起始半径 / 扩散到多远(× R)

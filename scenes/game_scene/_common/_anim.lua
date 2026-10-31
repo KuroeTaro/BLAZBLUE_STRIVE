@@ -5093,7 +5093,7 @@ function load_game_scene_anim_char_common_burst_RC_red(
         opponent_side_obj_char["VFX_hit_front_table"] = {}
         self_side_obj_char["VFX_hit_back_table"] = {}
         opponent_side_obj_char["VFX_hit_back_table"] = {}
-        insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_red_badge)
+        insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_red_badge,1)
         insert_VFX_game_scene_char_RC_partical(self_side_obj_char,{1.00,0.28,0.22})
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
         -- update
@@ -5149,7 +5149,7 @@ function load_game_scene_anim_char_common_burst_RC_red(
         -- insert_VFX
         insert_VFX_game_scene_char_RC_blast(self_side_obj_char,1,1,{1.00,0.28,0.22})
         -- 同色但更亮的 badge,和 blast 同时插入
-        insert_VFX_game_scene_char_RC_badge_blast(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_red_badge,{1.00,0.42,0.42})
+        insert_VFX_game_scene_char_RC_badge_blast(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_red_badge,{1.00,0.28,0.22},1.75)
         -- update
         update_state()
     end
@@ -5291,7 +5291,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         opponent_side_obj_char["VFX_hit_front_table"] = {}
         self_side_obj_char["VFX_hit_back_table"] = {}
         opponent_side_obj_char["VFX_hit_back_table"] = {}
-        insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_blue_badge)
+        insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_blue_badge,1)
         insert_VFX_game_scene_char_RC_partical(self_side_obj_char,{0.35,0.65,1.00})
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
         -- update
@@ -5378,7 +5378,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         -- insert_VFX
         insert_VFX_game_scene_char_RC_blast(self_side_obj_char,1,1,{0.35,0.65,1.00})
         -- 同色但更亮的 badge,和 blast 同时插入
-        insert_VFX_game_scene_char_RC_badge_blast(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_blue_badge,{0.64,0.81,1.00})
+        insert_VFX_game_scene_char_RC_badge_blast(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_blue_badge,{0.64,0.81,1.00},1.75)
         -- update
         update_state()
     end
@@ -5563,7 +5563,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         opponent_side_obj_char["VFX_hit_front_table"] = {}
         self_side_obj_char["VFX_hit_back_table"] = {}
         opponent_side_obj_char["VFX_hit_back_table"] = {}
-        insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_purple_badge)
+        insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_purple_badge,1)
         insert_VFX_game_scene_char_RC_partical(self_side_obj_char,{0.78,0.40,1.00})
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
         -- play_SFX
@@ -5607,7 +5607,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         -- insert_VFX
         insert_VFX_game_scene_char_RC_blast(self_side_obj_char,1,1,{0.78,0.40,1.00})
         -- 同色但更亮的 badge,和 blast 同时插入
-        insert_VFX_game_scene_char_RC_badge_blast(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_purple_badge,{0.88,0.67,1.00})
+        insert_VFX_game_scene_char_RC_badge_blast(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_purple_badge,{0.88,0.67,1.00},1.75)
         -- update
         update_state()
     end
@@ -5754,7 +5754,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         opponent_side_obj_char["VFX_hit_front_table"] = {}
         self_side_obj_char["VFX_hit_back_table"] = {}
         opponent_side_obj_char["VFX_hit_back_table"] = {}
-        insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_yellow_badge)
+        insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_yellow_badge,1)
         insert_VFX_game_scene_char_RC_partical(self_side_obj_char,{1.00,0.88,0.30})
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
         -- play_SFX
@@ -5792,7 +5792,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         -- insert_VFX
         insert_VFX_game_scene_char_RC_blast(self_side_obj_char,1,1,{1.00,0.88,0.30})
         -- 同色但更亮的 badge,和 blast 同时插入
-        insert_VFX_game_scene_char_RC_badge_blast(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_yellow_badge,{1.00,0.93,0.62})
+        insert_VFX_game_scene_char_RC_badge_blast(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_yellow_badge,{1.00,0.93,0.62},1.75)
         -- update
         update_state()
     end
@@ -5907,4 +5907,23 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         -- aniamtion_end
     end
     return res
+end
+-- burst
+function load_game_scene_anim_char_common_burst_ground_burst(
+    self_side_obj_char,opponent_side_obj_char,
+    character_uncommon_update
+)
+    local res = {}
+    local self_side = self_side_obj_char["player_side"]
+    local self_side_height = self_side_obj_char["height"]
+    local self_side_pushbox_data = common_game_scene_get_pushbox(self_side)
+    local self_side_hurtbox_data = common_game_scene_get_hurtbox(self_side)
+    local self_side_anchor_data = common_game_scene_get_anchor(self_side)
+    local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1] - 100)
+    local self_side_move_SFX_table = common_game_scene_get_SFX_move(self_side)
+end
+function load_game_scene_anim_char_common_burst_air_burst(
+    self_side_obj_char,opponent_side_obj_char,
+    character_uncommon_update
+)
 end

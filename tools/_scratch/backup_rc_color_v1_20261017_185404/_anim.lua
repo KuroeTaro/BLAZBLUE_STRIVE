@@ -5093,7 +5093,7 @@ function load_game_scene_anim_char_common_burst_RC_red(
         opponent_side_obj_char["VFX_hit_front_table"] = {}
         self_side_obj_char["VFX_hit_back_table"] = {}
         opponent_side_obj_char["VFX_hit_back_table"] = {}
-        insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_red_badge)
+        insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_red_badge,1)
         insert_VFX_game_scene_char_RC_partical(self_side_obj_char,{1.00,0.28,0.22})
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
         -- update
@@ -5289,7 +5289,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         opponent_side_obj_char["VFX_hit_front_table"] = {}
         self_side_obj_char["VFX_hit_back_table"] = {}
         opponent_side_obj_char["VFX_hit_back_table"] = {}
-        insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_blue_badge)
+        insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_blue_badge,1)
         insert_VFX_game_scene_char_RC_partical(self_side_obj_char,{0.35,0.65,1.00})
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
         -- update
@@ -5559,7 +5559,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         opponent_side_obj_char["VFX_hit_front_table"] = {}
         self_side_obj_char["VFX_hit_back_table"] = {}
         opponent_side_obj_char["VFX_hit_back_table"] = {}
-        insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_purple_badge)
+        insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_purple_badge,1)
         insert_VFX_game_scene_char_RC_partical(self_side_obj_char,{0.78,0.40,1.00})
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
         -- play_SFX
@@ -5748,7 +5748,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         opponent_side_obj_char["VFX_hit_front_table"] = {}
         self_side_obj_char["VFX_hit_back_table"] = {}
         opponent_side_obj_char["VFX_hit_back_table"] = {}
-        insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_yellow_badge)
+        insert_VFX_game_scene_char_RC_badge(self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_yellow_badge,1)
         insert_VFX_game_scene_char_RC_partical(self_side_obj_char,{1.00,0.88,0.30})
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
         -- play_SFX
