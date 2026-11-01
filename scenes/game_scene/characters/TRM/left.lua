@@ -803,6 +803,9 @@ function load_game_scene_box_anchor_data_LP()
     obj_pushboxs_data_game_scene_char_LP["burst_overdrive_RC"]["air"] = air_pushbox
     obj_hurtboxs_data_game_scene_char_LP["burst_overdrive_RC"]["air"] = {{0,-120,230,500}}
     obj_anchor_data_game_scene_char_LP["burst_overdrive_RC"]["air"] = {330,485}
+    obj_pushboxs_data_game_scene_char_LP["burst_overdrive_RC"]["burst_to_8jump"] = {{0,-120,230,500}}
+    obj_hurtboxs_data_game_scene_char_LP["burst_overdrive_RC"]["burst_to_8jump"] = {{0,-120,230,500}}
+    obj_anchor_data_game_scene_char_LP["burst_overdrive_RC"]["burst_to_8jump"] = {330,485}
     -- wallstick
     obj_VFX_spawn_anchor_data_game_scene_char_LP["wallstick_spawn_anchor_pos"] = {
         ["stand"] = 1175,
@@ -1787,7 +1790,20 @@ function order_load_game_scene_char_LP_audio(load_order)
                 )
                 update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[v])
             end
-        end
+        end,
+        -- move_SFX_burst
+        [12] = function()
+            local load_name_table = {
+                "burst"
+            }
+            for i,v in ipairs(load_name_table) do
+                audio_SFX_game_scene_move_SFX_LP[v] = {1,LCT = {0},LCD = {0}}
+                audio_SFX_game_scene_move_SFX_LP[v]["audio"] = love.audio.newSource(
+                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
+                )
+                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_LP[v])
+            end
+        end,
     }
     local this_function = switch[load_order]
     if this_function then this_function() end

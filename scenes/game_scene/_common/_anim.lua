@@ -4715,6 +4715,7 @@ function laod_game_scene_anim_char_common_burst_burst(
         -- draw_correction
         self_side_obj_char["VFX_common_front_table"] = {}
         self_side_obj_char[8] = 0
+        self_side_obj_char["anchor_pos"] = self_side_anchor_data["burst_overdrive_RC"]["air"]
         -- character_uncommon_init
         character_uncommon_init(self_side_obj_char)
     end
@@ -4764,12 +4765,12 @@ function laod_game_scene_anim_char_common_burst_burst(
         -- draw_correction
         self_side_obj_char[8] = 5
         -- insert_VFX
+        self_side_obj_char["VFX_common_front_table"] = {}
         self_side_obj_char["VFX_common_back_table"] = {}
-        insert_VFX_game_scene_char_overdrive_badge(self_side_obj_char)
-        insert_VFX_game_scene_char_overdrive_badge_partical(self_side_obj_char)
-        insert_VFX_game_scene_char_overdrive_black_overlay(self_side_obj_char)
+        insert_VFX_game_scene_char_burst_front(self_side_obj_char)
+        insert_VFX_game_scene_char_burst_back(self_side_obj_char)
         -- play_SFX
-        play_obj_audio(self_side_move_SFX_table["overdrive"])
+        play_obj_audio(self_side_move_SFX_table["burst"])
     end
     res[13] = function()
         -- draw_correction
@@ -4820,13 +4821,19 @@ function laod_game_scene_anim_char_common_burst_burst(
         -- draw_correction
         self_side_obj_char[8] = 8
     end
-    res[44] = function()
+    res[43] = function()
         -- draw_correction
         self_side_obj_char[8] = 6
     end
-    res[47] = function()
+    res[45] = function()
+        -- state
+        self_side_obj_char["sprite_sheet"] = "8_jump"
+        -- collide
+        self_side_obj_char["pushbox"] = self_side_pushbox_data["burst_overdrive_RC"]["burst_to_8jump"]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"]["burst_to_8jump"]
         -- draw_correction
         self_side_obj_char[8] = 7
+        self_side_obj_char["anchor_pos"] = self_side_anchor_data["burst_overdrive_RC"]["burst_to_8jump"]
     end
     res[50] = function()
         -- draw_correction

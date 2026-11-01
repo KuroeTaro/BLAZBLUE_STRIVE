@@ -69,7 +69,8 @@ local move_SFX_folder_table = {
     },
     {folder = "special/6SP_S",files = {"6SP_S_block","6SP_S_counter","6SP_S_hit","6SP_S_whiff"}},
     -- overdrive
-    {folder = "overdrive",files = {"overdrive"}}
+    {folder = "overdrive",files = {"overdrive"}},
+    {folder = "burst",files = {"burst"}}
 }
 for i = 1,#move_SFX_folder_table do
     local folder = move_SFX_folder_table[i].folder
