@@ -794,15 +794,15 @@ function load_game_scene_box_anchor_data_LP()
     obj_VFX_spawn_anchor_data_game_scene_char_LP["FD_block_spawn_anchor_pos"]["crouch"] = {-300,-420}
     obj_VFX_spawn_anchor_data_game_scene_char_LP["FD_block_spawn_anchor_pos"]["air"] = {-300,-440}
     -- RC
-    obj_pushboxs_data_game_scene_char_LP["RC"] = {}
-    obj_hurtboxs_data_game_scene_char_LP["RC"] = {}
-    obj_anchor_data_game_scene_char_LP["RC"] = {}
-    obj_pushboxs_data_game_scene_char_LP["RC"]["stand"] = stand_pushbox
-    obj_hurtboxs_data_game_scene_char_LP["RC"]["stand"] = {{0,-250,230,500}}
-    obj_anchor_data_game_scene_char_LP["RC"]["stand"] = {300,615}
-    obj_pushboxs_data_game_scene_char_LP["RC"]["air"] = air_pushbox
-    obj_hurtboxs_data_game_scene_char_LP["RC"]["air"] = {{0,-120,230,500}}
-    obj_anchor_data_game_scene_char_LP["RC"]["air"] = {330,485}
+    obj_pushboxs_data_game_scene_char_LP["burst_overdrive_RC"] = {}
+    obj_hurtboxs_data_game_scene_char_LP["burst_overdrive_RC"] = {}
+    obj_anchor_data_game_scene_char_LP["burst_overdrive_RC"] = {}
+    obj_pushboxs_data_game_scene_char_LP["burst_overdrive_RC"]["stand"] = stand_pushbox
+    obj_hurtboxs_data_game_scene_char_LP["burst_overdrive_RC"]["stand"] = {{0,-250,230,500}}
+    obj_anchor_data_game_scene_char_LP["burst_overdrive_RC"]["stand"] = {300,615}
+    obj_pushboxs_data_game_scene_char_LP["burst_overdrive_RC"]["air"] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_LP["burst_overdrive_RC"]["air"] = {{0,-120,230,500}}
+    obj_anchor_data_game_scene_char_LP["burst_overdrive_RC"]["air"] = {330,485}
     -- wallstick
     obj_VFX_spawn_anchor_data_game_scene_char_LP["wallstick_spawn_anchor_pos"] = {
         ["stand"] = 1175,
@@ -1239,7 +1239,7 @@ function order_load_game_scene_char_LP_frames(load_order)
         [15] = function()
             local load_name_table = {
                 "burst_overdrive_ground",
-                "burst_overdrive_RC_burst_air",
+                "burst_overdrive_RC_air",
                 "burst_RC_ground"
             }
             for i,v in ipairs(load_name_table) do
@@ -3254,8 +3254,8 @@ function state_machine_char_game_scene_char_LP_input_sys_cache()
             if test_input_sys_press_or_hold(self_side_input["SP"]) then
                 self_side_obj_char["input_sys_cache"]["SP"] = true
             end
-            if test_input_sys_press(self_side_input["RC"]) then
-                self_side_obj_char["input_sys_cache"]["RC"] = true
+            if test_input_sys_press(self_side_input["burst_overdrive_RC"]) then
+                self_side_obj_char["input_sys_cache"]["burst_overdrive_RC"] = true
             end
             if test_input_sys_press(self_side_input["burst"]) then
                 self_side_obj_char["input_sys_cache"]["burst"] = true
@@ -4364,7 +4364,7 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_red(
     if self_side_obj_char["heat_gauge"][1] < 100.0 then
         return
     end
-    if test_input_sys_press(self_side_input["RC"]) then
+    if test_input_sys_press(self_side_input["burst_overdrive_RC"]) then
         self_side_obj_char["velocity_cache"] = {0,0}
         if test_input_sys_press_or_hold(self_side_input["dash"]) then
             if test_input_sys_press_or_hold(self_side_input["up"]) then
@@ -4383,7 +4383,7 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_red(
         end
         self_side_obj_char["physics_lock"] = false
         if self_side_obj_char["height"] == "air" then
-            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_burst_air"
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
             self_side_obj_char["anchor_pos"] = {330,485}
             self_side_obj_char["pushbox"] = {0,-100,120,200}
             self_side_obj_char["collision_ground_height_offset"] = 185
@@ -4414,7 +4414,7 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_blue(
     if self_side_obj_char["heat_gauge"][1] < 100.0 then
         return
     end
-    if test_input_sys_press(self_side_input["RC"]) then
+    if test_input_sys_press(self_side_input["burst_overdrive_RC"]) then
         local forward_dash_state = {
             ["6dash_dash"] = true,
             ["6dash_dash_cancel"] = true,
@@ -4456,7 +4456,7 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_blue(
         self_side_obj_char["velocity_cache"][2] = math.min(self_side_obj_char["velocity_cache"][2],12.5)
         self_side_obj_char["physics_lock"] = false
         if self_side_obj_char["height"] == "air" then
-            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_burst_air"
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
             self_side_obj_char["anchor_pos"] = {330,485}
             self_side_obj_char["pushbox"] = {0,-100,120,200}
             self_side_obj_char["collision_ground_height_offset"] = 185
@@ -4487,7 +4487,7 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_purple(
     if self_side_obj_char["heat_gauge"][1] < 100.0 then
         return
     end
-    if test_input_sys_press(self_side_input["RC"]) then
+    if test_input_sys_press(self_side_input["burst_overdrive_RC"]) then
         self_side_obj_char["velocity_cache"] = {0,0}
         if test_input_sys_press_or_hold(self_side_input["dash"]) then
             if test_input_sys_press_or_hold(self_side_input["up"]) then
@@ -4506,7 +4506,7 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_purple(
         end
         self_side_obj_char["physics_lock"] = false
         if self_side_obj_char["height"] == "air" then
-            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_burst_air"
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
             self_side_obj_char["anchor_pos"] = {330,485}
             self_side_obj_char["pushbox"] = {0,-100,120,200}
             self_side_obj_char["collision_ground_height_offset"] = 185
@@ -4537,14 +4537,14 @@ function state_gate_game_scene_char_LP_common_to_burst_RC_yellow(
     if self_side_obj_char["heat_gauge"][1] < 100.0 then
         return
     end
-    if test_input_sys_press(self_side_input["RC"])
+    if test_input_sys_press(self_side_input["burst_overdrive_RC"])
     -- and self_side_obj_char["height"] ~= "air"
     then
         self_side_obj_char["velocity"] = {0,0}
         self_side_obj_char["velocity_cache"] = {0,0}
         self_side_obj_char["physics_lock"] = false
         if self_side_obj_char["height"] == "air" then
-            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_burst_air"
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
             self_side_obj_char["anchor_pos"] = {330,485}
             self_side_obj_char["pushbox"] = {0,-100,120,200}
             self_side_obj_char["collision_ground_height_offset"] = 185
@@ -4593,7 +4593,7 @@ function state_gate_game_scene_char_LP_common_to_burst_overdrive(
         local obj_camera = obj_stage_game_scene_camera
         local height = self_side_obj_char["height"]
         if height == "air" then
-            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_burst_air"
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
             self_side_obj_char["anchor_pos"] = {330,485}
             self_side_obj_char["pushbox"] = {0,-100,120,200}
             self_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}

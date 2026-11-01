@@ -5018,14 +5018,14 @@ function load_game_scene_anim_char_common_burst_RC_red(
             self_side_obj_char["y"] = 0
             self_side_obj_char["height"] = "stand"
             self_side_obj_char["sprite_sheet"] = "burst_RC_ground"
-            self_side_obj_char["pushbox"] = self_side_pushbox_data["RC"]["stand"]
-            self_side_obj_char["anchor_pos"] = self_side_anchor_data["RC"]["stand"]
+            self_side_obj_char["pushbox"] = self_side_pushbox_data["burst_overdrive_RC"]["stand"]
+            self_side_obj_char["anchor_pos"] = self_side_anchor_data["burst_overdrive_RC"]["stand"]
             self_side_obj_char["collision_ground_height_offset"] = 0
         elseif self_side_height ~= "air" and not collision_test_char_on_ground(self_side_obj_char) then
             self_side_obj_char["height"] = "air"
-            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_burst_air"
-            self_side_obj_char["pushbox"] = self_side_pushbox_data["RC"]["air"]
-            self_side_obj_char["anchor_pos"] = self_side_anchor_data["RC"]["air"]
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
+            self_side_obj_char["pushbox"] = self_side_pushbox_data["burst_overdrive_RC"]["air"]
+            self_side_obj_char["anchor_pos"] = self_side_anchor_data["burst_overdrive_RC"]["air"]
             self_side_obj_char["collision_ground_height_offset"] = 185
         end
         character_uncommon_update(self_side_obj_char)
@@ -5213,14 +5213,14 @@ function load_game_scene_anim_char_common_burst_RC_blue(
             self_side_obj_char["y"] = 0
             self_side_obj_char["height"] = "stand"
             self_side_obj_char["sprite_sheet"] = "burst_RC_ground"
-            self_side_obj_char["pushbox"] = self_side_pushbox_data["RC"]["stand"]
-            self_side_obj_char["anchor_pos"] = self_side_anchor_data["RC"]["stand"]
+            self_side_obj_char["pushbox"] = self_side_pushbox_data["burst_overdrive_RC"]["stand"]
+            self_side_obj_char["anchor_pos"] = self_side_anchor_data["burst_overdrive_RC"]["stand"]
             self_side_obj_char["collision_ground_height_offset"] = 0
         elseif self_side_height ~= "air" and not collision_test_char_on_ground(self_side_obj_char) then
             self_side_obj_char["height"] = "air"
-            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_burst_air"
-            self_side_obj_char["pushbox"] = self_side_pushbox_data["RC"]["air"]
-            self_side_obj_char["anchor_pos"] = self_side_anchor_data["RC"]["air"]
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
+            self_side_obj_char["pushbox"] = self_side_pushbox_data["burst_overdrive_RC"]["air"]
+            self_side_obj_char["anchor_pos"] = self_side_anchor_data["burst_overdrive_RC"]["air"]
             self_side_obj_char["collision_ground_height_offset"] = 185
         end
         character_uncommon_update(self_side_obj_char)
@@ -5243,7 +5243,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
     for i = 0,4 do
         res[i] = function()
             -- collide
-            self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
+            self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"][self_side_obj_char["height"]]
             -- update
             update_state()
             update_heat_gauge_state()
@@ -5281,7 +5281,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         -- collide
         self_side_obj_char["pushbox_opponent_collision_active"] = true
         self_side_obj_char["hitbox_table"] = {} --{ 攻击类型 是投还是打， function值 内部为命中后的逻辑,具体的box形状}
-        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 0
         -- insert_VFX
@@ -5298,7 +5298,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
     end
     res[3] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 1
         -- update
@@ -5440,14 +5440,14 @@ function load_game_scene_anim_char_common_burst_RC_purple(
             self_side_obj_char["y"] = 0
             self_side_obj_char["height"] = "stand"
             self_side_obj_char["sprite_sheet"] = "burst_RC_ground"
-            self_side_obj_char["pushbox"] = self_side_pushbox_data["RC"]["stand"]
-            self_side_obj_char["anchor_pos"] = self_side_anchor_data["RC"]["stand"]
+            self_side_obj_char["pushbox"] = self_side_pushbox_data["burst_overdrive_RC"]["stand"]
+            self_side_obj_char["anchor_pos"] = self_side_anchor_data["burst_overdrive_RC"]["stand"]
             self_side_obj_char["collision_ground_height_offset"] = 0
         elseif self_side_height ~= "air" and not collision_test_char_on_ground(self_side_obj_char) then
             self_side_obj_char["height"] = "air"
-            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_burst_air"
-            self_side_obj_char["pushbox"] = self_side_pushbox_data["RC"]["air"]
-            self_side_obj_char["anchor_pos"] = self_side_anchor_data["RC"]["air"]
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
+            self_side_obj_char["pushbox"] = self_side_pushbox_data["burst_overdrive_RC"]["air"]
+            self_side_obj_char["anchor_pos"] = self_side_anchor_data["burst_overdrive_RC"]["air"]
             self_side_obj_char["collision_ground_height_offset"] = 185
         end
         character_uncommon_update(self_side_obj_char)
@@ -5470,7 +5470,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
     for i = 0,4 do
         res[i] = function()
             -- collide
-            self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
+            self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"][self_side_obj_char["height"]]
             -- update
             update_state()
             update_heat_gauge_state()
@@ -5517,7 +5517,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
     end
     res[3] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 1
         -- update
@@ -5667,14 +5667,14 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
             self_side_obj_char["y"] = 0
             self_side_obj_char["height"] = "stand"
             self_side_obj_char["sprite_sheet"] = "burst_RC_ground"
-            self_side_obj_char["pushbox"] = self_side_pushbox_data["RC"]["stand"]
-            self_side_obj_char["anchor_pos"] = self_side_anchor_data["RC"]["stand"]
+            self_side_obj_char["pushbox"] = self_side_pushbox_data["burst_overdrive_RC"]["stand"]
+            self_side_obj_char["anchor_pos"] = self_side_anchor_data["burst_overdrive_RC"]["stand"]
             self_side_obj_char["collision_ground_height_offset"] = 0
         elseif self_side_height ~= "air" and not collision_test_char_on_ground(self_side_obj_char) then
             self_side_obj_char["height"] = "air"
-            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_burst_air"
-            self_side_obj_char["pushbox"] = self_side_pushbox_data["RC"]["air"]
-            self_side_obj_char["anchor_pos"] = self_side_anchor_data["RC"]["air"]
+            self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
+            self_side_obj_char["pushbox"] = self_side_pushbox_data["burst_overdrive_RC"]["air"]
+            self_side_obj_char["anchor_pos"] = self_side_anchor_data["burst_overdrive_RC"]["air"]
             self_side_obj_char["collision_ground_height_offset"] = 185
         end
         character_uncommon_update(self_side_obj_char)
@@ -5812,13 +5812,13 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         self_side_obj_char["hurt_state_target"] = "counter" -- idle_unblock_punish_counter_GP_parry
         self_side_obj_char["move_state"] = "recovery" -- none_startup_active_recovery
         -- collide
-        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"][self_side_obj_char["height"]]
         -- update
         update_state()
     end
     res[43] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 6
         -- update
@@ -5826,7 +5826,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     end
     res[47] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 7
         -- update
@@ -5834,7 +5834,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     end
     res[51] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 5
         -- update
@@ -5842,7 +5842,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     end
     res[55] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 6
         -- update
@@ -5850,7 +5850,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     end
     res[59] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 7
         -- update
@@ -5858,7 +5858,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     end
     res[63] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 5
         -- update
@@ -5873,7 +5873,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     end
     res[67] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 6
         -- update
@@ -5881,7 +5881,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     end
     res[69] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 8
         -- update
@@ -5889,7 +5889,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     end
     res[72] = function()
         -- collide
-        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["RC"][self_side_obj_char["height"]]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 9
         -- update

@@ -35,21 +35,21 @@ scenes/game_scene/_common/_anim.lua   (9 处)
 
   [L]  1368:43               hurt_side_obj_char["height"]  = "stand"
 
-  [L]  5115:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["stand"]
+  [L]  5115:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["burst_overdrive_RC"]["stand"]
 
-  [L]  5121:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["air"]
+  [L]  5121:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["burst_overdrive_RC"]["air"]
 
-  [L]  5304:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["stand"]
+  [L]  5304:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["burst_overdrive_RC"]["stand"]
 
-  [L]  5310:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["air"]
+  [L]  5310:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["burst_overdrive_RC"]["air"]
 
-  [L]  5525:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["stand"]
+  [L]  5525:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["burst_overdrive_RC"]["stand"]
 
-  [L]  5531:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["air"]
+  [L]  5531:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["burst_overdrive_RC"]["air"]
 
-  [L]  5746:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["stand"]
+  [L]  5746:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["burst_overdrive_RC"]["stand"]
 
-  [L]  5752:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["RC"]["air"]
+  [L]  5752:44               self_side_obj_char["pushbox"]  = self_side_pushbox_data["burst_overdrive_RC"]["air"]
 
 ====================================================================================================
 scenes/game_scene/_common/_projectile.lua   (2 处)

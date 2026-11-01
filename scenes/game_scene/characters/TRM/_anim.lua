@@ -8041,10 +8041,10 @@ function load_game_scene_anim_char_TRM_6SP_P(
     res[8] = function()
         -- draw_correction
         hit_side_obj_char[8] = 1
-        -- insert_VFX
-        insert_VFX_game_scene_char_TRM_6SP_P_curse_ball_spawner(hit_side_obj_char)
         -- insert_projectile
         insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side_obj_char)
+        -- insert_VFX
+        insert_VFX_game_scene_char_TRM_6SP_P_curse_ball_spawner(hit_side_obj_char)
         -- update
         update_horizontal_velocity(8)
     end
