@@ -320,7 +320,7 @@ end
 function insert_VFX_game_scene_char_RC_blast(obj_char,opacity,blast_scale,color)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
-    local blast_half_size = 500
+    local blast_half_size = 540
     local blast_half_world = blast_half_size*blast_scale
     local center_offset = 600 - blast_half_world
     obj_VFX["y_offset"] = 0
@@ -329,7 +329,7 @@ function insert_VFX_game_scene_char_RC_blast(obj_char,opacity,blast_scale,color)
     else
         obj_VFX["y_offset"] = 880
     end
-    obj_VFX["life"] = 30
+    obj_VFX["life"] = 32
     obj_VFX[1] = obj_char["x"] - obj_char[5]*(blast_half_world)
     obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"] - center_offset)
     obj_VFX[3] = obj_char[3]
@@ -344,10 +344,10 @@ function insert_VFX_game_scene_char_RC_blast(obj_char,opacity,blast_scale,color)
     -- 线性帧动画:第 i 帧在 i*2 处出现
     obj_VFX["frame_animation"] = {}
     for i = 0,14 do
-        obj_VFX["frame_animation"][i*2] = i
+        obj_VFX["frame_animation"][i*2+1] = i
     end
     obj_VFX["frame_animation"]["prop"] = 8
-    obj_VFX["frame_animation"]["length"] = 30
+    obj_VFX["frame_animation"]["length"] = 32
     obj_VFX["frame_animation"]["loop"] = false
     init_frame_anim_without(
         obj_VFX,obj_VFX["frame_animation"]
