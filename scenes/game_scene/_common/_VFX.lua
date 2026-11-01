@@ -1,7 +1,117 @@
 -- burst
 function insert_VFX_game_scene_char_burst_front(obj_char)
+    local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
+    local x_offset = 1050
+    local y_offset = 1435
+    obj_VFX["life"] = 10
+    obj_VFX[1] = obj_char["x"] - obj_char[5]*x_offset
+    obj_VFX[2] = obj_char["y"] - obj_char[6]*y_offset
+    obj_VFX[3] = obj_char[3]
+    obj_VFX[4] = 0.5
+    obj_VFX[5] = obj_char[5]
+    obj_VFX[6] = obj_char[6]
+    obj_VFX[7] = obj_char[7]
+    obj_VFX[8] = 0
+    obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
+    -- 线性帧动画:第 i 帧在 i*2 处出现
+    obj_VFX["frame_animation"] = {}
+    for i = 0,9 do
+        obj_VFX["frame_animation"][i] = i
+    end
+    obj_VFX["frame_animation"]["prop"] = 8
+    obj_VFX["frame_animation"]["length"] = 10
+    obj_VFX["frame_animation"]["loop"] = false
+    init_frame_anim_without(
+        obj_VFX,obj_VFX["frame_animation"]
+    )
+    obj_VFX["update"] = function()
+        frame_animator(
+            obj_VFX,obj_VFX["frame_animation"]
+        )
+        obj_VFX["life"] = obj_VFX["life"] - 1
+    end
+    -- 每帧跟随角色刷新位置
+    obj_VFX["draw_sync"] = function()
+        obj_VFX[1] = obj_char["x"] - obj_char[5]*x_offset
+        obj_VFX[2] = obj_char["y"] - obj_char[6]*y_offset
+        -- obj_VFX["draw_sync"] = function() end
+    end
+    obj_VFX["draw"] = function()
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_burst_front
+        obj_VFX["draw_sync"]()
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+        )
+        love.graphics.setBlendMode("add")
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setBlendMode("alpha")
+    end
+    table.insert(obj_char["VFX_common_front_table"],obj_VFX)
 end
-function insert_VFX_game_scene_char_burst_back(obj_char,opacity,scale,color)
+function insert_VFX_game_scene_char_burst_back(obj_char)
+    local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
+    local x_offset = 540
+    local y_offset = 0
+    if obj_char["height"] == "air" then
+        y_offset = 690
+    else
+        y_offset = 820
+    end
+    obj_VFX["life"] = 32
+    obj_VFX[1] = obj_char["x"] - obj_char[5]*x_offset
+    obj_VFX[2] = obj_char["y"] - obj_char[6]*y_offset
+    obj_VFX[3] = obj_char[3]
+    obj_VFX[4] = 1
+    obj_VFX[5] = obj_char[5]
+    obj_VFX[6] = obj_char[6]
+    obj_VFX[7] = obj_char[7]
+    obj_VFX[8] = 0
+    obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
+    -- 线性帧动画:第 i 帧在 i*2 处出现
+    obj_VFX["frame_animation"] = {}
+    for i = 0,14 do
+        obj_VFX["frame_animation"][i*2+1] = i
+    end
+    obj_VFX["frame_animation"]["prop"] = 8
+    obj_VFX["frame_animation"]["length"] = 32
+    obj_VFX["frame_animation"]["loop"] = false
+    init_frame_anim_without(
+        obj_VFX,obj_VFX["frame_animation"]
+    )
+    obj_VFX["update"] = function()
+        frame_animator(
+            obj_VFX,obj_VFX["frame_animation"]
+        )
+        obj_VFX["life"] = obj_VFX["life"] - 1
+    end
+    -- 每帧跟随角色刷新位置
+    obj_VFX["draw_sync"] = function()
+        if obj_char["height"] == "air" then
+            y_offset = 690
+        else
+            y_offset = 820
+        end
+        obj_VFX[1] = obj_char["x"] - obj_char[5]*x_offset
+        obj_VFX[2] = obj_char["y"] - obj_char[6]*y_offset
+        -- obj_VFX["draw_sync"] = function() end
+    end
+    obj_VFX["draw"] = function()
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_burst_back
+        obj_VFX["draw_sync"]()
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+        )
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+    end
+    table.insert(obj_char["VFX_common_back_table"],obj_VFX)
 end
 -- overdrive
 function insert_VFX_game_scene_char_overdrive_badge(obj_char)
@@ -252,9 +362,9 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet,scale,c
     local x_offset = 600*scale
     local y_offset = 0
     if obj_char["height"] == "air" then
-        y_offset = 150 + x_offset
+        y_offset = 600*scale + 150
     else
-        y_offset = 280 + x_offset
+        y_offset = 600*scale + 280
     end
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
@@ -288,9 +398,9 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet,scale,c
     end
     obj_VFX["draw_sync"] = function()
         if obj_char["height"] == "air" then
-            y_offset = 150 + x_offset
+            y_offset = 600*scale + 150
         else
-            y_offset = 280 + x_offset
+            y_offset = 600*scale + 280
         end
         obj_VFX[1] = obj_char["x"] - obj_char[5]*x_offset
         obj_VFX[2] = obj_char["y"] - obj_char[6]*y_offset
@@ -316,9 +426,9 @@ function insert_VFX_game_scene_char_RC_blast(obj_char,opacity,scale,color)
     local x_offset = 540*scale
     local y_offset = 0
     if obj_char["height"] == "air" then
-        y_offset = 150 + x_offset
+        y_offset = 540*scale + 150
     else
-        y_offset = 280 + x_offset
+        y_offset = 540*scale + 280
     end
     obj_VFX["life"] = 32
     obj_VFX[1] = obj_char["x"] - obj_char[5]*x_offset
@@ -352,9 +462,9 @@ function insert_VFX_game_scene_char_RC_blast(obj_char,opacity,scale,color)
     -- 每帧跟随角色刷新位置
     obj_VFX["draw_sync"] = function()
         if obj_char["height"] == "air" then
-            y_offset = 150 + x_offset
+            y_offset = 540*scale + 150
         else
-            y_offset = 280 + x_offset
+            y_offset = 540*scale + 280
         end
         obj_VFX[1] = obj_char["x"] - obj_char[5]*x_offset
         obj_VFX[2] = obj_char["y"] - obj_char[6]*y_offset
