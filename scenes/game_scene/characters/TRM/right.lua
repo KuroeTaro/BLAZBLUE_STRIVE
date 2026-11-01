@@ -7422,8 +7422,8 @@ function state_gate_game_scene_char_RP_from_burst_overdrive(
             self_side_obj_char["character_animation"] =
             load_game_scene_anim_char_TRM_7_8_9_jump_air(
                 self_side_obj_char,"8_jump",{350,430},
-                self_side_obj_char["velocity_cache"][1]*0.75,
-                self_side_obj_char["velocity_cache"][2]*0.75,nil
+                self_side_obj_char["velocity_cache"][1]*0.425,
+                self_side_obj_char["velocity_cache"][2]*0.425,nil
             )
             init_character_anim_with(
                 self_side_obj_char,self_side_obj_char["character_animation"]
