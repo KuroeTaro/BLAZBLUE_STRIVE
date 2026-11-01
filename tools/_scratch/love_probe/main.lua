@@ -279,7 +279,7 @@ function love.load()
             local sx, sy, yo = fc[5], fc[6], 880
             local bcx = fc["x"]
             local bcy = (fc["y"] - sy * yo) + sy * 600
-            local half = 500 * (v[5] / sx)
+            local half = 540 * (v[5] / sx)
             local cx, cy = v[1] + sx * half, v[2] + sy * half
             local dok, derr = pcall(v["draw"])
             log(string.format("  %-6s alpha=%.2f scale=%d size=%4.0f  centre=(%.1f,%.1f) badge=(%.1f,%.1f) %s  draw:%s",
@@ -428,7 +428,7 @@ function love.load()
         }
         insert_VFX_game_scene_char_RC_blast(fake2, 1, 1.25, { 0.35, 0.65, 1.00 })
         local b2 = fake2["VFX_common_back_table"][1]
-        local half2 = 500 * (b2[5] / fake2[5])
+        local half2 = 540 * (b2[5] / fake2[5])
         local bcx2 = fake2["x"]
         local bcy2 = (fake2["y"] - fake2[6] * 750) + fake2[6] * 600
         log(string.format("  air(flip) badge=(%.1f,%.1f) blast=(%.1f,%.1f) %s",

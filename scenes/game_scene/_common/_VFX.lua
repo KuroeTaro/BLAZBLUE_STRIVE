@@ -1,7 +1,7 @@
 -- burst
 function insert_VFX_game_scene_char_burst_front(obj_char)
 end
-function insert_VFX_game_scene_char_burst_back(obj_char,opacity,blast_scale,color)
+function insert_VFX_game_scene_char_burst_back(obj_char,opacity,scale,color)
 end
 -- overdrive
 function insert_VFX_game_scene_char_overdrive_badge(obj_char)
@@ -249,20 +249,18 @@ end
 -- RC 徽章:15 张序列图隔帧换一张,30 帧播完,画在 VFX_common_front_table
 -- color:{r,g,b} 染色
 function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet,scale,color)
-    local badge_half_size = 600
-    local badge_offset = badge_half_size*scale
-    local center_offset = badge_half_size - badge_offset
+    local x_offset = 600*scale
+    local y_offset = 0
+    if obj_char["height"] == "air" then
+        y_offset = 150 + x_offset
+    else
+        y_offset = 280 + x_offset
+    end
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
-    obj_VFX["y_offset"] = 0
-    if obj_char["height"] == "air" then
-        obj_VFX["y_offset"] = 750
-    else
-        obj_VFX["y_offset"] = 880
-    end
     obj_VFX["life"] = 30
-    obj_VFX[1] = obj_char["x"] - obj_char[5]*(badge_offset)
-    obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"] - center_offset)
+    obj_VFX[1] = obj_char["x"] - obj_char[5]*x_offset
+    obj_VFX[2] = obj_char["y"] - obj_char[6]*y_offset
     obj_VFX[3] = obj_char[3]
     obj_VFX[4] = 1
     obj_VFX[5] = obj_char[5]*scale
@@ -283,11 +281,6 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet,scale,c
         obj_VFX,obj_VFX["animation"]
     )
     obj_VFX["update"] = function()
-        if obj_char["height"] == "air" then
-            obj_VFX["y_offset"] = 750
-        else
-            obj_VFX["y_offset"] = 880
-        end
         frame_animator(
             obj_VFX,obj_VFX["animation"]
         )
@@ -295,12 +288,12 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet,scale,c
     end
     obj_VFX["draw_sync"] = function()
         if obj_char["height"] == "air" then
-            obj_VFX["y_offset"] = 750
+            y_offset = 150 + x_offset
         else
-            obj_VFX["y_offset"] = 880
+            y_offset = 280 + x_offset
         end
-        obj_VFX[1] = obj_char["x"] - obj_char[5]*(badge_offset)
-        obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"] - center_offset)
+        obj_VFX[1] = obj_char["x"] - obj_char[5]*x_offset
+        obj_VFX[2] = obj_char["y"] - obj_char[6]*y_offset
         obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
@@ -317,25 +310,23 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet,scale,c
     end
     table.insert(obj_char["VFX_common_front_table"],obj_VFX)
 end
-function insert_VFX_game_scene_char_RC_blast(obj_char,opacity,blast_scale,color)
+function insert_VFX_game_scene_char_RC_blast(obj_char,opacity,scale,color)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
-    local blast_half_size = 540
-    local blast_half_world = blast_half_size*blast_scale
-    local center_offset = 600 - blast_half_world
-    obj_VFX["y_offset"] = 0
+    local x_offset = 540*scale
+    local y_offset = 0
     if obj_char["height"] == "air" then
-        obj_VFX["y_offset"] = 750
+        y_offset = 150 + x_offset
     else
-        obj_VFX["y_offset"] = 880
+        y_offset = 280 + x_offset
     end
     obj_VFX["life"] = 32
-    obj_VFX[1] = obj_char["x"] - obj_char[5]*(blast_half_world)
-    obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"] - center_offset)
+    obj_VFX[1] = obj_char["x"] - obj_char[5]*x_offset
+    obj_VFX[2] = obj_char["y"] - obj_char[6]*y_offset
     obj_VFX[3] = obj_char[3]
     obj_VFX[4] = opacity
-    obj_VFX[5] = obj_char[5]*blast_scale
-    obj_VFX[6] = obj_char[6]*blast_scale
+    obj_VFX[5] = obj_char[5]*scale
+    obj_VFX[6] = obj_char[6]*scale
     obj_VFX[7] = obj_char[7]
     obj_VFX[8] = 0
     obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
@@ -361,12 +352,12 @@ function insert_VFX_game_scene_char_RC_blast(obj_char,opacity,blast_scale,color)
     -- 每帧跟随角色刷新位置
     obj_VFX["draw_sync"] = function()
         if obj_char["height"] == "air" then
-            obj_VFX["y_offset"] = 750
+            y_offset = 150 + x_offset
         else
-            obj_VFX["y_offset"] = 880
+            y_offset = 280 + x_offset
         end
-        obj_VFX[1] = obj_char["x"] - obj_char[5]*(blast_half_world)
-        obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"] - center_offset)
+        obj_VFX[1] = obj_char["x"] - obj_char[5]*x_offset
+        obj_VFX[2] = obj_char["y"] - obj_char[6]*y_offset
         -- obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
