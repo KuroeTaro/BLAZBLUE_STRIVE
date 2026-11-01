@@ -1,0 +1,41 @@
+love 11
+load draw_general_use_functions.lua                 OK 
+load scenes/_scene_config/_game_scenel_config.lua   OK 
+load scenes/game_scene/_common/draw_functions.lua   OK 
+cfg charge: brightness=0.95 r_start=1.65 r_end=0.05 w_start=0.13 w_end=0.035 soft=1.15
+[left] char_x=300 -> badge center=(1100.0,470.0)
+[mid] char_x=0 -> badge center=(800.0,470.0)
+
+径向亮度峰值(只留冲击波 shader,中心 800,470):
+  f00  peak_r=0.000R  亮度=0.000
+  f01  peak_r=0.000R  亮度=0.000
+  f02  peak_r=1.648R  亮度=0.038
+  f03  peak_r=1.640R  亮度=0.078
+  f04  peak_r=1.620R  亮度=0.108
+  f05  peak_r=1.588R  亮度=0.132
+  f06  peak_r=1.544R  亮度=0.158
+  f07  peak_r=1.484R  亮度=0.191
+  f08  peak_r=1.416R  亮度=0.224
+  f09  peak_r=1.328R  亮度=0.253
+  f10  peak_r=1.228R  亮度=0.290
+  f11  peak_r=1.112R  亮度=0.320
+  f12  peak_r=0.976R  亮度=0.358
+  f13  peak_r=0.828R  亮度=0.401
+  f14  peak_r=0.660R  亮度=0.456
+  f15  peak_r=0.476R  亮度=0.536
+  f16  peak_r=0.272R  亮度=0.683
+  f17  peak_r=0.080R  亮度=0.559
+  f18  peak_r=0.968R  亮度=0.409
+  f19  peak_r=0.776R  亮度=0.464
+  f20  peak_r=0.564R  亮度=0.535
+  f21  peak_r=0.320R  亮度=0.679
+  f22  peak_r=0.080R  亮度=0.536
+  f23  peak_r=1.256R  亮度=0.350
+  f24  peak_r=1.088R  亮度=0.396
+  f25  peak_r=0.884R  亮度=0.453
+  f26  peak_r=0.644R  亮度=0.542
+  f27  peak_r=0.368R  亮度=0.720
+  f28  peak_r=0.080R  亮度=0.763
+  f29  peak_r=0.772R  亮度=0.516
+  f30  peak_r=1.052R  亮度=0.519
+done

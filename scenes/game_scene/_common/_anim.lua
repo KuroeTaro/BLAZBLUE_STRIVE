@@ -4738,8 +4738,8 @@ function load_game_scene_anim_char_common_burst_overdrive(
         self_side_obj_char["air_move"]["jump"] = {1,1}
         self_side_obj_char["air_move"]["air_dash"] = {1,1}
         -- state_number
+        self_side_obj_char["velocity_cache"] = self_side_obj_char["velocity"]
         self_side_obj_char["velocity"] = {0,0}
-        self_side_obj_char["velocity_cache"] = {0,0}
         self_side_obj_char["friction"] = 1
         self_side_obj_char["gravity"] = 2.5
         self_side_obj_char["overdrive_gauge"][3] = "on"

@@ -59,6 +59,16 @@ OVERDRIVE_BADGE_PARTICAL_CONFIG =
     converge_start_max = 6.25,
     -- 收缩段终点(× R):0.02 表示收束到中心附近,0 = 正中心
     converge_target = 0.425,
+    -- 收缩段「往中心收束的充能波」:从外圈一层层往中心砸
+    charge_brightness = 1.175,
+    -- 充能波起始半径(× R)、撞进中心的半径(× R)
+    charge_radius_start = 2.65,
+    charge_radius_end = 0.05,
+    -- 充能波厚度(× R):从 start 收到 end
+    charge_width_start = 0.475,
+    charge_width_end = 0.025,
+    -- 充能波边缘柔和度:1.0 = 默认,调大更糊、调小更利(外圈还有一段固定羽化)
+    charge_softness = 0.02,
     -- 冲击波环的起始半径 / 扩散到多远(× R)
     shockwave_radius_start = 0.5,
     shockwave_radius_grow = 3.75,
