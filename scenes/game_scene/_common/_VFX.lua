@@ -1,9 +1,9 @@
+-- burst
+function insert_VFX_game_scene_char_burst_front(obj_char)
+end
+function insert_VFX_game_scene_char_burst_back(obj_char)
+end
 -- overdrive
--- TRM_overdrive_badge 的 70 帧「缩放 + 亮度」时间轴见
--- scenes/_scene_config/_overdrive_badge_anim.lua(启动时加载为全局 OVERDRIVE_BADGE_ANIM)。
--- 序列图里烘焙好的缩放/透明度在运行时按这张表重建;
--- static 只有一帧,所以直接用 Image 画(圆的原点在中心),不再走 sprite_batch 查帧。
-
 function insert_VFX_game_scene_char_overdrive_badge(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
@@ -64,10 +64,6 @@ function insert_VFX_game_scene_char_overdrive_badge(obj_char)
     end
     table.insert(obj_char["VFX_common_back_table"],obj_VFX)
 end
--- overdrive_badge_partical
--- 徽章收缩时:圆头 + 条状拖尾的粒子螺旋向中心聚集;
--- 徽章突然放大时:更大的粒子从内向外爆发,同时放出一圈冲击波。
--- 全部由 shaders/overdrive_badge_partical_3d.glsl 程序化生成,不需要任何贴图。
 function insert_VFX_game_scene_char_overdrive_badge_partical(obj_char)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
@@ -249,59 +245,10 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
     end
     table.insert(active_op_side_obj_char["VFX_black_overlay_table"],obj_VFX)
 end
-function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet,scale)
-    local badge_half_size = 600
-    local badge_offset = badge_half_size*scale
-    local center_offset = badge_half_size - badge_offset
-    local obj_VFX = {0,0,0,1,1,1,0,0}
-    local obj_camera = obj_stage_game_scene_camera
-    obj_VFX["y_offset"] = 0
-    if obj_char["height"] == "air" then
-        obj_VFX["y_offset"] = 750
-    else
-        obj_VFX["y_offset"] = 880
-    end
-    obj_VFX["life"] = 15
-    obj_VFX[1] = obj_char["x"] - obj_char[5]*(badge_offset)
-    obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"] - center_offset)
-    obj_VFX[3] = obj_char[3]
-    obj_VFX[4] = 1
-    obj_VFX[5] = obj_char[5]*scale
-    obj_VFX[6] = obj_char[6]*scale
-    obj_VFX[7] = obj_char[7]
-    obj_VFX[8] = -1
-    obj_VFX["update"] = function()
-        if obj_char["height"] == "air" then
-            obj_VFX["y_offset"] = 750
-        else
-            obj_VFX["y_offset"] = 880
-        end
-        obj_VFX[8] = obj_VFX[8] + 1
-        obj_VFX["life"] = obj_VFX["life"] - 1
-    end
-    obj_VFX["draw_sync"] = function()
-        if obj_char["height"] == "air" then
-            obj_VFX["y_offset"] = 750
-        else
-            obj_VFX["y_offset"] = 880
-        end
-        obj_VFX[1] = obj_char["x"] - obj_char[5]*(badge_offset)
-        obj_VFX[2] = obj_char["y"] - obj_char[6]*(obj_VFX["y_offset"] - center_offset)
-        obj_VFX["draw_sync"] = function() end
-    end
-    obj_VFX["draw"] = function()
-        obj_VFX["draw_sync"]()
-        image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
-        )
-        love.graphics.setBlendMode("add")
-        love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        love.graphics.setBlendMode("alpha")
-    end
-    table.insert(obj_char["VFX_hit_front_table"],obj_VFX)
-end
-function insert_VFX_game_scene_char_RC_badge_blast(obj_char,image_sprite_sheet,color,scale)
+-- RC
+-- RC 徽章:15 张序列图隔帧换一张,30 帧播完,画在 VFX_common_front_table
+-- color:{r,g,b} 染色
+function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet,scale,color)
     local badge_half_size = 600
     local badge_offset = badge_half_size*scale
     local center_offset = badge_half_size - badge_offset
@@ -321,7 +268,7 @@ function insert_VFX_game_scene_char_RC_badge_blast(obj_char,image_sprite_sheet,c
     obj_VFX[5] = obj_char[5]*scale
     obj_VFX[6] = obj_char[6]*scale
     obj_VFX[7] = obj_char[7]
-    obj_VFX[8] = -1
+    obj_VFX[8] = 0
     obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
@@ -373,10 +320,9 @@ end
 function insert_VFX_game_scene_char_RC_blast(obj_char,opacity,blast_scale,color)
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
-    local badge_half_size = 600
     local blast_half_size = 500
     local blast_half_world = blast_half_size*blast_scale
-    local center_offset = badge_half_size - blast_half_world
+    local center_offset = 600 - blast_half_world
     obj_VFX["y_offset"] = 0
     if obj_char["height"] == "air" then
         obj_VFX["y_offset"] = 750

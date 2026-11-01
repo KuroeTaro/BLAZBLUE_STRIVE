@@ -359,16 +359,16 @@ function love.load()
                 VFX_common_front_table = {},
             }
         end
-        -- 版本 1:满速 / 100% / 纯白
+        -- 版本 1:纯白
         local c1 = badge_char()
-        insert_VFX_game_scene_char_RC_badge(c1, image_sprite_sheet_VFX_game_scene_RC_red_badge)
-        local v1 = c1["VFX_hit_front_table"][1]
+        insert_VFX_game_scene_char_RC_badge(c1, image_sprite_sheet_VFX_game_scene_RC_red_badge, 1, { 1.00, 1.00, 1.00 })
+        local v1 = c1["VFX_common_front_table"][1]
         local seq1 = {}
-        for f = 0, 14 do
+        for f = 0, 29 do
             v1["update"]()
             seq1[#seq1 + 1] = tostring(v1[8])
         end
-        log("  badge v1 帧序列: " .. table.concat(seq1, ","))
+        log("  badge v1 帧序列(30 次 update): " .. table.concat(seq1, ","))
         love.graphics.setCanvas(cv)
         love.graphics.clear(0, 0, 0, 1)
         v1["draw"]()
@@ -385,9 +385,9 @@ function love.load()
         end
         log(string.format("  badge v1 颜色=(%.2f,%.2f,%.2f) 缩放=%.2f 中心=(%.1f,%.1f)",
             q1, q2, q3, v1[5] / c1[5], v1[1] + 600 * v1[5], v1[2] + 600 * v1[6]))
-        -- 版本 2:半速 / 75% / 带颜色
+        -- 版本 2:带颜色
         local c2 = badge_char()
-        insert_VFX_game_scene_char_RC_badge_blast(c2, image_sprite_sheet_VFX_game_scene_RC_red_badge, { 1.00, 0.60, 0.57 })
+        insert_VFX_game_scene_char_RC_badge(c2, image_sprite_sheet_VFX_game_scene_RC_red_badge, 1, { 1.00, 0.60, 0.57 })
         local v2 = c2["VFX_common_front_table"][1]
         local seq2, life2 = {}, 0
         for f = 0, 29 do
