@@ -4,8 +4,10 @@
 // (shaders/overdrive_badge_particle.glsl),这里只保留需要逐像素求值的
 // 冲击波环、爆发中心闪光与收束末端的蓄力光,开销很低。
 //
-// 收缩段(粒子向中心飞行,0..28 帧)额外压三条「往中心收起」的充能波:
+// 收缩段(粒子向中心飞行,0..28 帧)额外压若干条「往中心收起」的充能波:
 // 从画面外圈一圈圈往中心砸,越收越细越亮,最后一条正好在爆发帧撞进中心。
+// 条数由 charge_count 控制,飞行快慢由 charge_speed 控制;所有波的起跑时间
+// 按条数均分铺开,保证最后一条仍然在 BURST_START 撞进中心(节奏不会散)。
 //
 // 坐标约定与 draw_3d_point_to_2D 一致:
 //     g = screen_coords / (resolution.x / 1600.0)  -> 1600x900 设计坐标
@@ -26,47 +28,60 @@ extern float charge_radius_start;     // 充能波起始半径(× R),从画面�
 extern float charge_radius_end;       // 充能波撞进中心的半径(× R)
 extern float charge_width_start;      // 充能波起始厚度(× R)
 extern float charge_width_end;        // 充能波收起时的厚度(× R)
-extern float charge_softness;         // 充能波边缘柔和度:1.0 = 默认,越大越糊
+extern float charge_count;            // 充能波个数(同时往里收的波有几条),取整
+extern float charge_speed;            // 充能波飞行速度倍率:1.0 = 基准,越大飞得越快
+extern float charge_softness;         // 充能波整体模糊程度:越大整条波越虚,越小越锐利
 
 #define BURST_START 28.0
 #define SHOCKWAVE_END 26.0
-
-// 三条充能波的起跑时间 / 寿命:越接近爆发,起跑间隔与寿命一起收紧,
-// 于是往中心收的波一次比一次快,最后一条正好在 BURST_START 撞进中心。
-#define CHARGE_RING_A_START 1.0
-#define CHARGE_RING_A_LIFE 16.0
-#define CHARGE_RING_B_START 9.0
-#define CHARGE_RING_B_LIFE 13.0
-#define CHARGE_RING_C_START 17.0
-#define CHARGE_RING_C_LIFE 11.0
+// 波数上限:循环写成常量上界,超出部分的圈直接跳过,老驱动也能编过
+#define CHARGE_RING_MAX 12
+// 速度 = 1.0 时,一条波从最外圈飞到中心需要的帧数
+#define CHARGE_BASE_LIFE 16.0
+// 第一条波最早也从这一帧起跑(太早的话外圈还没铺开)
+#define CHARGE_FIRST_START 1.0
+// 模糊核宽度 = 波宽 w × CHARGE_BLUR_SCALE × charge_softness:
+//   1.0 = 基准模糊,数值延续旧版「边缘柔和度」的手感(1.75 依旧是一条能看清的环)
+#define CHARGE_BLUR_SCALE 0.55
+// 模糊增益:把峰值抬回旧版光晕剖面接近的亮度(配合下面的 1/sigma 能量守恒)
+#define CHARGE_BLUR_GAIN 0.90
+// 峰值上限:太锐的时候别直接顶到全白
+#define CHARGE_BLUR_AMP_MAX 2.50
 
 // 单条往中心收束的充能波:u = 0 从最外圈出发,u = 1 砸进中心。
-// 半径先慢后快(pow 2.30),厚度同步变细、亮度同步变高;
-// 剖面 = 芯 + 羽化光晕 + 外侧单边尾迹,方向感靠尾迹,边缘靠光晕羽化。
+// 半径先慢后快(pow 2.30),厚度同步变细、亮度同步变高。
+// 剖面不再拆成「清晰的芯 + 一大圈羽化光晕」,而是把整条波(主体 + 外侧尾迹)
+// 统一按 charge_softness 做一次高斯模糊:只有单峰,没有光晕那种第二层鼓包;
+// 模糊半径变大时峰值按 1/sigma 下降,所以总光量基本守恒,不会越糊越亮。
 void add_charge_ring(float d, float u, float width_mul, inout vec3 accum) {
     if (u <= 0.0 || u > 1.0) {
         return;
     }
     float e = pow(u,2.30);
-    float ring = radius * mix(charge_radius_start,charge_radius_end,e);
-    float w = radius * mix(charge_width_start,charge_width_end,e) * width_mul;
-    // 一道冲击波拆成三层:清晰的芯 + 一大圈羽化光晕 + 外侧单边衰减的尾迹。
-    // 羽化全靠 bloom,所以外缘不会出现生硬的分界,芯也还在,不会糊成一团。
+    // max(...,1e-3):半径 / 厚度调到 0 时不产生除零
+    float ring = max(radius * mix(charge_radius_start,charge_radius_end,e),1.0e-3);
+    float w = max(radius * mix(charge_width_start,charge_width_end,e) * width_mul,1.0e-3);
     float delta = (d - ring) / w;
-    float core_w = 0.55 * charge_softness;
-    float bloom_w = 2.40 * charge_softness;
-    float core = exp(-delta * delta / (core_w * core_w));
-    float bloom = exp(-delta * delta / (bloom_w * bloom_w));
-    float wake = (d > ring) ? exp(-(d - ring) / (w * 3.60)) : 0.0;
+    // 整体模糊半径(以波宽 w 为单位)
+    float sigma = clamp(charge_softness * CHARGE_BLUR_SCALE,0.20,4.40);
+    // 主体:单个高斯,就是整条波被糊开之后的剖面
+    float body = exp(-(delta * delta) / (2.0 * sigma * sigma));
+    // 外侧单边尾迹:同一个模糊核把「环内 / 环外」的硬边也抹平了,
+    // 所以过渡宽度跟着 sigma 走,不再用 d > ring 的硬判断切一刀
+    float side = smoothstep(-1.5 * sigma,0.0,delta);
+    float wake = exp(-max(delta,0.0) * 0.2778) * side;
     // 已经被扫过的那一片留一层很淡的余辉(从中心一路柔到环上,不留边界)
     float inner = 1.0 - smoothstep(0.0,ring,d);
     float bright = smoothstep(0.0,0.10,u) * mix(0.25,0.95,pow(u,1.30));
     bright += pow(u,14.0) * 0.70;
-    float shape = core * 0.62 + bloom * 0.55 + wake * 0.30 + inner * 0.06;
+    // 1/sigma:模糊把光摊开,峰值随之下降(能量守恒),乘固定增益补回观感亮度
+    float amp = min(CHARGE_BLUR_GAIN / sigma,CHARGE_BLUR_AMP_MAX);
+    float shape = (body + wake * 0.30 + inner * 0.06) * amp;
     accum += vec3(shape * bright * charge_brightness);
 }
 
-// 三条波错开起跑,保证收缩段每一帧都至少有一条在往中心收
+// 按 charge_count 条波错开起跑:起跑时间从第一帧均匀铺到「爆发帧 - 寿命」,
+// 每条波的飞行寿命相同(速度一致),于是越靠后的波越晚出发、也越细一点。
 void add_charge_shockwave(float d, float frame, inout vec3 accum) {
     if (frame > BURST_START) {
         return;
@@ -77,10 +92,25 @@ void add_charge_shockwave(float d, float frame, inout vec3 accum) {
     if (fade <= 0.0) {
         return;
     }
+    // 条数取整并夹在 [1,CHARGE_RING_MAX];速度为 0 时按最慢处理,避免除零
+    int count = int(clamp(floor(charge_count + 0.5),1.0,float(CHARGE_RING_MAX)));
+    // 速度越快寿命越短;寿命最长也只会顶到爆发帧,否则最后一条来不及撞进中心
+    float life = min(CHARGE_BASE_LIFE / clamp(charge_speed,0.05,8.0),BURST_START);
+    // 最后一条正好在 BURST_START 撞进中心
+    float last_start = BURST_START - life;
+    float first_start = min(CHARGE_FIRST_START,last_start);
+    float span = last_start - first_start;
     vec3 wave = vec3(0.0);
-    add_charge_ring(d,(frame - CHARGE_RING_A_START) / CHARGE_RING_A_LIFE,1.00,wave);
-    add_charge_ring(d,(frame - CHARGE_RING_B_START) / CHARGE_RING_B_LIFE,0.82,wave);
-    add_charge_ring(d,(frame - CHARGE_RING_C_START) / CHARGE_RING_C_LIFE,0.66,wave);
+    for (int i = 0; i < CHARGE_RING_MAX; i = i + 1) {
+        if (i < count) {
+            // t = 0 是第一条(最外圈最早起跑),t = 1 是最后一条(撞进爆发帧)
+            float t = (count > 1) ? float(i) / float(count - 1) : 1.0;
+            float start = first_start + span * t;
+            // 越靠后的波越细,收束的层次感更好(1.00 -> 0.66)
+            float width_mul = mix(1.00,0.66,t);
+            add_charge_ring(d,(frame - start) / life,width_mul,wave);
+        }
+    }
     accum += wave * fade;
 }
 

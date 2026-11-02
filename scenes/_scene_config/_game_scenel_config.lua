@@ -67,7 +67,12 @@ OVERDRIVE_BADGE_PARTICAL_CONFIG =
     -- 充能波厚度(× R):从 start 收到 end
     charge_width_start = 0.475,
     charge_width_end = 0.025,
-    -- 充能波边缘柔和度:1.0 = 默认,调大更糊、调小更利(外圈还有一段固定羽化)
+    -- 充能波个数:同一段时间里往中心收的波有几条(取整,1..12)
+    --   条数越多越密、整体越亮;起跑时间按条数均分,最后一条始终在爆发帧撞进中心
+    charge_count = 2,
+    -- 充能波飞行速度倍率:1.0 = 基准,越大飞得越快(单条寿命更短、起跑更晚)
+    charge_speed = 1.0,
+    -- 充能波整体模糊程度:越大整条波越虚(峰值降低、覆盖面变宽),越小越锐利
     charge_softness = 1.75,
     -- 冲击波环的起始半径 / 扩散到多远(× R)
     shockwave_radius_start = 0.5,

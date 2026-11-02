@@ -482,7 +482,8 @@ end
 -- 不使用自定义 attribute,所以 11.x / 12.0 都不会有顶点格式的弃用警告,
 -- 也不依赖 12.0 里自定义 attribute 的绑定位置。
 -- 冲击波 / 向内收束充能波部分:shaders/overdrive_badge_partical_3d.glsl 全屏逐像素求值。
--- 充能波在收缩段(0-28 帧)从外圈一层层往中心砸,28 帧撞进中心后接爆发冲击波。
+-- 充能波在收缩段(0-28 帧)从外圈一层层往中心砸,28 帧撞进中心后接爆发冲击波;
+--   条数 / 飞行速度 / 整体模糊分别由 charge_count / charge_speed / charge_softness 控制。
 -- center / radius 每帧用 3D 投影重算,所以两者都跟着角色位置与镜头推拉走;
 -- 直接以 add 混合画在屏幕上,和原 badge 同属角色背侧层。
 -- 所有可调数值都来自 _overdrive_badge_partical_config.lua,这里只负责送 uniform。
@@ -573,6 +574,8 @@ function draw_VFX_game_scene_overdrive_badge_partical(
     shockwave_shader:send("charge_radius_end",config.charge_radius_end)
     shockwave_shader:send("charge_width_start",config.charge_width_start)
     shockwave_shader:send("charge_width_end",config.charge_width_end)
+    shockwave_shader:send("charge_count",config.charge_count)
+    shockwave_shader:send("charge_speed",config.charge_speed)
     shockwave_shader:send("charge_softness",config.charge_softness)
     love.graphics.rectangle("fill",0,0,width,height)
     love.graphics.setColor(1,1,1,1)
