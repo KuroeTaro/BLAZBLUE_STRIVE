@@ -2271,7 +2271,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_knockdown_wallbrea
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     local sprite_sheet = "0_general_hurt_hard_knockdown_up"
     res["prop_f"] = "f"
     res["anim_length"] = 7
@@ -2367,7 +2366,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_down(
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 30
     res[0] = function()
@@ -2477,7 +2475,6 @@ function load_game_scene_anim_char_common_0_general_hurt_hard_recovery_up(
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 30
     res[0] = function()
@@ -2917,7 +2914,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_float(
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     local function common_land_function(i)
         -- state
         hurt_side_obj_char["f"] = i
@@ -3253,7 +3249,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_high(
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -3427,7 +3422,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_low(
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -3547,7 +3541,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_hori_heavy
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -3657,7 +3650,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_mid_up(
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     local function update_before_falling()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -3827,7 +3819,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rolling(
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -3966,7 +3957,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_rotate(
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -4081,7 +4071,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_wallbounce(
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -4199,7 +4188,6 @@ function load_game_scene_anim_char_common_0_general_hurt_launched_groundbounce(
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -4351,7 +4339,6 @@ function load_game_scene_anim_char_common_0_general_hurt_lanuched_throw_success_
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     local function update_before_land()
         hurt_side_obj_char["throw_inv"] = true
         hurt_side_obj_char["throw_inv_countdown"] = 1
@@ -4526,7 +4513,6 @@ function load_game_scene_anim_char_common_0_general_hurt_semi_launched_mid(
     local hurt_side_pushbox_data = common_game_scene_get_pushbox(hurt_side)
     local hurt_side_hurtbox_data = common_game_scene_get_hurtbox(hurt_side)
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
-    local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 29
     res[0] = function()
@@ -4672,19 +4658,53 @@ function laod_game_scene_anim_char_common_burst_burst(
     local self_side_pushbox_data = common_game_scene_get_pushbox(self_side)
     local self_side_hurtbox_data = common_game_scene_get_hurtbox(self_side)
     local self_side_anchor_data = common_game_scene_get_anchor(self_side)
-    local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1] - 100)
+    local self_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(self_side)
     local self_side_move_SFX_table = common_game_scene_get_SFX_move(self_side)
+    local self_side_stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(self_side)
+    local function update_before_land()
+        if collision_test_char_on_ground(self_side_obj_char) then
+            -- state
+            self_side_obj_char["sprite_sheet"] = "7_8_9_jump_air_to_stand_idle"
+            self_side_obj_char["y"] = 0
+            self_side_obj_char["f"] = 59
+            self_side_obj_char["height"] = "stand"
+            -- state_number
+            self_side_obj_char["velocity"][2] = 0
+            self_side_obj_char["friction"] = 1
+            self_side_obj_char["gravity"] = 2.5
+            -- input_sys_cache
+            self_side_obj_char["input_sys_state"] = "save" -- none_save_load
+            common_game_scene_get_input_sys_cache_init(self_side)(self_side_obj_char)
+            -- collide
+            self_side_obj_char["pushbox"] = self_side_pushbox_data["burst_overdrive_RC"]["burst_to_stand_idle"]
+            self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"]["burst_to_stand_idle"]
+            self_side_obj_char["collision_ground_height_offset"] = 0
+            -- draw_correction
+            self_side_obj_char[8] = 0
+            self_side_obj_char["anchor_pos"] = self_side_anchor_data["burst_overdrive_RC"]["burst_to_stand_idle"]
+            -- insert_VFX
+            insert_VFX_game_scene_stage_smoke_land_blow(
+                self_side_obj_char,
+                self_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"]["burst_to_stand_idle"][1],
+                self_side_VFX_spawn_anchor_data["stage_VFX_spawn_anchor"]["burst_to_stand_idle"][2],
+                0.5,1,1,0
+            )
+            -- play_SFX
+            play_obj_audio(self_side_stage_interactive_SFX_table["ground_land"])
+        end
+    end
     res["prop_f"] = "f"
     res["anim_length"] = 70
     res[0] = function()
         -- state
+        self_side_obj_char["y"] = math.min(self_side_obj_char["y"],-265)
         self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
         self_side_obj_char["height"] = "air"
         self_side_obj_char["hurt_state_target"] = "idle" -- idle_unblock_punish_counter_GP_parry
         self_side_obj_char["move_state"] = "startup" -- none_startup_active_recovery
+        self_side_obj_char["idle_cancel"] = false
         -- state_number
         if self_side_height ~= "air" then
-            self_side_obj_char["y"] = -265
             self_side_obj_char["velocity"] = {0,-15}
         else
             self_side_obj_char["velocity"] = {0,0}
@@ -4713,7 +4733,6 @@ function laod_game_scene_anim_char_common_burst_burst(
         self_side_obj_char["hurtbox_table"] = {}
         self_side_obj_char["collision_ground_height_offset"] = 185
         -- draw_correction
-        self_side_obj_char["VFX_common_front_table"] = {}
         self_side_obj_char[8] = 0
         self_side_obj_char["anchor_pos"] = self_side_anchor_data["burst_overdrive_RC"]["air"]
         -- character_uncommon_init
@@ -4820,43 +4839,60 @@ function laod_game_scene_anim_char_common_burst_burst(
         self_side_obj_char["collision_ground_height_offset"] = 185
         -- draw_correction
         self_side_obj_char[8] = 8
+        -- update
+        update_before_land()
     end
     res[43] = function()
         -- draw_correction
         self_side_obj_char[8] = 6
+        -- update
+        update_before_land()
     end
     res[45] = function()
         -- state
         self_side_obj_char["sprite_sheet"] = "8_jump"
         -- collide
-        self_side_obj_char["pushbox"] = self_side_pushbox_data["burst_overdrive_RC"]["burst_to_8jump"]
-        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"]["burst_to_8jump"]
+        self_side_obj_char["pushbox"] = self_side_pushbox_data["burst_overdrive_RC"]["burst_to_8_jump"]
+        self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"]["burst_to_8_jump"]
         -- draw_correction
-        self_side_obj_char[8] = 7
-        self_side_obj_char["anchor_pos"] = self_side_anchor_data["burst_overdrive_RC"]["burst_to_8jump"]
+        self_side_obj_char[8] = 6
+        self_side_obj_char["anchor_pos"] = self_side_anchor_data["burst_overdrive_RC"]["burst_to_8_jump"]
+        -- update
+        update_before_land()
     end
     res[50] = function()
         -- draw_correction
-        self_side_obj_char[8] = 5
-    end
-    res[53] = function()
-        -- draw_correction
-        self_side_obj_char[8] = 6
-    end
-    res[56] = function()
-        -- draw_correction
         self_side_obj_char[8] = 7
+        -- update
+        update_before_land()
     end
-    res[60] = function()
-        -- input_sys_cache
-        self_side_obj_char["input_sys_state"] = "save" -- none_save_load
-        common_game_scene_get_input_sys_cache_init(self_side)(self_side_obj_char)
+    res[54] = function()
         -- draw_correction
         self_side_obj_char[8] = 8
+        -- update
+        update_before_land()
     end
-    res[65] = function()
+    res[58] = function()
+        -- state
+        self_side_obj_char["f"] = 50
         -- draw_correction
-        self_side_obj_char[8] = 9
+        self_side_obj_char[8] = 7
+        -- update
+        update_before_land()
+    end
+    res[59] = function()
+        -- land_frame
+    end
+    res[64] = function()
+        -- state
+        hit_side_obj_char["hurt_state_target"] = "idle" -- idle_unblock_punish_counter_GP_parry
+        hit_side_obj_char["move_state"] = "none" -- none_startup_active_recovery
+        hit_side_obj_char["idle_cancel"] = true
+        -- input_sys_cache
+        hit_side_obj_char["input_sys_state"] = "load" -- none_save_load
+        common_game_scene_get_input_sys_cache_state_machine(hit_side)()
+        -- draw_correction
+        self_side_obj_char[8] = 1
     end
     res[70] = function()
         -- animation_end
@@ -4973,7 +5009,6 @@ function load_game_scene_anim_char_common_burst_overdrive(
         self_side_obj_char["hurtbox_table"] = {}
         self_side_obj_char["collision_ground_height_offset"] = 0
         -- draw_correction
-        self_side_obj_char["VFX_common_front_table"] = {}
         self_side_obj_char[8] = 0
         -- camera_animation_load
         self_side_obj_char["camera_x_shake_anim"],self_side_obj_char["camera_y_shake_anim"] =
@@ -5000,6 +5035,7 @@ function load_game_scene_anim_char_common_burst_overdrive(
             end
         )
         -- insert_VFX
+        self_side_obj_char["VFX_common_front_table"] = {}
         self_side_obj_char["VFX_common_back_table"] = {}
         insert_VFX_game_scene_char_overdrive_badge(self_side_obj_char)
         insert_VFX_game_scene_char_overdrive_badge_partical(self_side_obj_char)
