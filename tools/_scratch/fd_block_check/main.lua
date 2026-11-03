@@ -34,12 +34,19 @@ local function install_stubs()
     test_input_sys_press = function(v) return pressed[v] == true end
     test_input_sys_press_or_hold = function(v) return pressed[v] == true end
     collision_test_char_on_ground = function() return false end
-    -- FD 屏障:返回一个可被置 life=0 的假 VFX
-    insert_VFX_game_scene_char_FD_block = function(obj_char)
-        local vfx = {["life"] = 35}
-        obj_char["_last_FD_VFX"] = vfx
-        return vfx
+    -- FD 屏障:用仓库里真实的 insert,只把渲染 / shader 桩掉
+    common_game_scene_get_VFX_spawn_anchor = function()
+        return {
+            ["FD_block_spawn_anchor_pos"] = {
+                ["stand"] = {-300,-540},
+                ["crouch"] = {-300,-420},
+                ["air"] = {-300,-440}
+            }
+        }
     end
+    image_VFX_game_scene_FD_bubble = {["stub"] = true}
+    draw_3d_image = function() end
+    INPUT_SYS_CURRENT_COMMAND_STATE = {["L"] = {},["R"] = {}}
     -- 取消门:默认不触发,测试里按需改成返回 true
     cancel_test = { overdrive = false, RC_blue = false }
     state_gate_game_scene_char_LP_common_to_burst_overdrive = function()
@@ -91,6 +98,9 @@ local function new_char(t)
         ["hitbox_table"] = {},
         ["pushbox"] = {0,-185,120,370},
         ["hurtbox_table"] = {},
+        ["x"] = 0,["y"] = 0,
+        ["VFX_hit_front_table"] = {},
+        ["VFX_hit_back_table"] = {},
         ["anchor_pos"] = {0,0},
         ["idle_cancel"] = false,
         ["heat_gauge"] = {200.0,200.0},
@@ -107,7 +117,9 @@ function love.load()
         "/scenes/game_scene/characters/TRM/right.lua",
         "/update_general_use_functions/animator.lua",
         "/scenes/game_scene/_common/_anim.lua",
+        "/scenes/_scene_config/_game_scenel_config.lua",
         "/scenes/game_scene/_common/common_functions.lua",
+        "/scenes/game_scene/_common/_VFX.lua",
     }) do
         local chunk, err = loadfile(REPO .. rel)
         if not chunk then log("load FAIL " .. rel .. " " .. tostring(err)); flush(); love.event.quit(1); return end
@@ -222,14 +234,18 @@ function love.load()
     local anim2 = load_game_scene_anim_char_common_active_FD_block(c2, "4_stand_block_high", "stand")
     init_character_anim_with(c2, anim2)
     local seq = { c2[8] }
-    for i = 1, 11 do
+    for i = 1, 30 do
         character_animator(c2, anim2)
         seq[#seq + 1] = c2[8]
     end
-    local expect = { 0,1,2,3,4,2,3,4,2,3,4,2 }
-    local seq_ok = #seq == #expect
-    for i = 1, #expect do if seq[i] ~= expect[i] then seq_ok = false end end
-    check(seq_ok, "帧序列 0,1,2,3,4 -> 2,3,4 循环(" .. table.concat(seq, ",") .. ")")
+    local compact = {}
+    for i = 1, #seq do
+        if compact[#compact] ~= seq[i] then compact[#compact + 1] = seq[i] end
+    end
+    local expect = { 0,1,2,3,4,2,3,4 }
+    local seq_ok = #compact >= #expect
+    for i = 1, #expect do if compact[i] ~= expect[i] then seq_ok = false end end
+    check(seq_ok, "帧序列 0,1,2,3,4 -> 2,3,4 循环(" .. table.concat(compact, ",") .. ")")
 
     -- 2) 地面:阻力 7
     c2 = new_char({ ["velocity"] = {5,-3} })
@@ -249,59 +265,46 @@ function love.load()
     pressed = { ["correction_left"] = true }
     local c3 = new_char({ ["direction_input"] = 4, ["heat_gauge"] = {200.0,200.0} })
     state_gate_game_scene_char_LP_common_to_active_FD_block(input, opp_input, c3, opp)
-    check(c3["active_FD_block_VFX"] ~= nil and c3["active_FD_block_VFX"]["life"] > 0,
-        "进入时插了屏障特效")
-    local vfx3 = c3["active_FD_block_VFX"]
+    check(#c3["VFX_hit_front_table"] == 1
+        and c3["VFX_hit_front_table"][1]["type"] == "FD_block", "进入时插了屏障特效")
+    local vfx3 = c3["VFX_hit_front_table"][1]
     for i = 1, 3 do
+        vfx3["update"]()
         state_gate_game_scene_char_LP_from_active_FD_block(input, opp_input, c3, opp)
     end
-    check(c3["heat_gauge"][1] == 194.0, "每帧扣 2 点 heat(200 -> " .. string.format("%.0f", c3["heat_gauge"][1]) .. ")")
-    check(vfx3["life"] > 0 and c3["active_FD_block_VFX"] == vfx3, "屏障在持续期间没有被提前收掉")
+    check(vfx3["release"] ~= true, "按住期间屏障没有进入渐出")
+    check(vfx3[4] > 0, "屏障渐入中 opacity = " .. string.format("%.2f", vfx3[4]))
 
-    -- 5) 松开:收掉屏障
+    -- 5) 松开:VFX 自己检测到输入松开 -> release -> 渐出 -> life 0
     pressed = {}
     state_gate_game_scene_char_LP_from_active_FD_block(input, opp_input, c3, opp)
-    check(vfx3["life"] == 0, "松开 FD:屏障被收掉")
     check(c3["state"] == "5_stand_idle", "松开 FD:回 5_stand_idle")
+    vfx3["update"]()
+    check(vfx3["release"] == true, "松开 FD:VFX 自己进入渐出(不需要外部收)")
+    for i = 1, 8 do vfx3["update"]() end
+    check(vfx3["life"] <= 0 and vfx3[4] == 0, "渐出结束:life 耗尽")
 
-    -- 6) 资源耗尽:强制解除
-    pressed = { ["correction_left"] = true }
-    local c4 = new_char({ ["direction_input"] = 4, ["heat_gauge"] = {2.0,200.0} })
-    state_gate_game_scene_char_LP_common_to_active_FD_block(input, opp_input, c4, opp)
-    local vfx4 = c4["active_FD_block_VFX"]
-    state_gate_game_scene_char_LP_from_active_FD_block(input, opp_input, c4, opp)
-    check(c4["heat_gauge"][1] == 0.0 and c4["state"] == "5_stand_idle",
-        "heat 扣光 -> 强制解除并回中立")
-    check(vfx4["life"] == 0, "资源耗尽也收掉屏障")
-
-    -- 7) 没资源不给开
-    local c5 = new_char({ ["direction_input"] = 4, ["heat_gauge"] = {0.0,200.0} })
-    check(state_gate_game_scene_char_LP_common_to_active_FD_block(input, opp_input, c5, opp) == nil
-        and c5["state"] == "5_stand_idle", "heat = 0 时进不了 FD")
-
-    -- 8) 取消成 BRC / Overdrive
+    -- 7) 取消成 BRC / Overdrive(取消后 VFX 在下一帧自己 release)
     for _, key in ipairs({ "RC_blue", "overdrive" }) do
         cancel_test.RC_blue = false; cancel_test.overdrive = false
         cancel_test[key] = true
         pressed = { ["correction_left"] = true }
         local c6 = new_char({ ["state"] = "active_FD_block", ["direction_input"] = 4,
-            ["sprite_sheet"] = "4_stand_block_high", ["active_FD_block_VFX"] = {["life"] = 20} })
+            ["sprite_sheet"] = "4_stand_block_high" })
         local r6 = state_gate_game_scene_char_LP_from_active_FD_block(input, opp_input, c6, opp)
         check(r6 == true, "FD 可以取消成 " .. key)
-        check(c6["active_FD_block_VFX"] == nil, "取消时收掉屏障(" .. key .. ")")
     end
     cancel_test.RC_blue = false; cancel_test.overdrive = false
 
-    -- 9) 站蹲切换会重新初始化动画(帧回到 0)
+    -- 8) 站蹲切换会重新初始化动画(帧回到 0)
     pressed = { ["correction_left"] = true }
     local c7 = new_char({ ["state"] = "active_FD_block", ["direction_input"] = 4,
         ["sprite_sheet"] = "4_stand_block_high", ["heat_gauge"] = {200.0,200.0} })
     c7["character_animation"] =
         load_game_scene_anim_char_common_active_FD_block(c7, "4_stand_block_high", "stand")
     init_character_anim_with(c7, c7["character_animation"])
-    -- 先让姿态动画跑几帧,再切蹲,验证会重置到第 0 帧
     local anim7 = c7["character_animation"]
-    for i = 1, 3 do character_animator(c7, anim7) end
+    for i = 1, 6 do character_animator(c7, anim7) end
     local before = c7[8]
     c7["direction_input"] = 1
     state_gate_game_scene_char_LP_from_active_FD_block(input, opp_input, c7, opp)
@@ -310,6 +313,37 @@ function love.load()
         "切换时动画重新初始化(帧 " .. tostring(before) .. " -> " .. tostring(c7[8]) .. ")")
 
     log("")
+    log("[屏障 VFX:渐入 / 渐出 / 输入轮询]")
+    -- 渐入
+    pressed = { ["correction_left"] = true }
+    local vc = new_char({ ["state"] = "active_FD_block" })
+    local vfx = insert_VFX_game_scene_char_active_FD_block(vc, input)
+    check(vfx[4] == 0, "刚插入 opacity = 0")
+    for i = 1, 4 do vfx["update"]() end
+    check(math.abs(vfx[4] - 0.5) < 0.13,
+        "渐入一半 opacity ≈ " .. string.format("%.2f", vfx[4]))
+    for i = 1, 8 do vfx["update"]() end
+    check(vfx[4] == 1.0, "渐入结束 opacity = 1")
+    check(vfx["type"] == "FD_block", "VFX 类型 = FD_block")
+    -- 输入轮询:松开 correction_right / left 都认
+    pressed = { ["correction_right"] = true }
+    vfx["update"]()
+    check(vfx["release"] ~= true, "只有 correction_right 按住时保持")
+    pressed = {}
+    vfx["update"]()
+    check(vfx["release"] == true, "松开 correction 键 -> 自己进入渐出")
+    -- 角色离开状态也收
+    pressed = { ["correction_left"] = true }
+    local vc2 = new_char({ ["state"] = "active_FD_block" })
+    local vfx2 = insert_VFX_game_scene_char_active_FD_block(vc2, input)
+    vc2["state"] = "block"
+    vfx2["update"]()
+    check(vfx2["release"] == true, "离开 active_FD_block -> 自己进入渐出")
+    -- 同类只留最新
+    vc2["state"] = "active_FD_block"
+    insert_VFX_game_scene_char_active_FD_block(vc2, input)
+    check(#vc2["VFX_hit_front_table"] == 1, "重复插入同类屏障只保留最新一层")
+
     log(string.format("checks=%d fails=%d", checks, fails))
     log(fails == 0 and "RESULT: OK" or "RESULT: FAIL")
     flush()

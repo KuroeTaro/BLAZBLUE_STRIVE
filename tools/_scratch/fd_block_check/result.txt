@@ -29,26 +29,31 @@
   ok   RP 松开回中立
 
 [帧序列 / 速度重力 / 资源 / 屏障 / 取消]
-  ok   帧序列 0,1,2,3,4 -> 2,3,4 循环(0,1,2,3,4,2,3,4,2,3,4,2)
+  ok   帧序列 0,1,2,3,4 -> 2,3,4 循环(0,1,2,3,4,2,3,4)
   ok   地面进入:friction = 7
   ok   地面进入:gravity = 2.5
   ok   空中进入:保留原有速度
   ok   空中进入:gravity = 2.75
   ok   空中进入:friction = 1
   ok   进入时插了屏障特效
-  ok   每帧扣 2 点 heat(200 -> 194)
-  ok   屏障在持续期间没有被提前收掉
-  ok   松开 FD:屏障被收掉
+  ok   按住期间屏障没有进入渐出
+  ok   屏障渐入中 opacity = 0.38
   ok   松开 FD:回 5_stand_idle
-  ok   heat 扣光 -> 强制解除并回中立
-  ok   资源耗尽也收掉屏障
-  ok   heat = 0 时进不了 FD
+  ok   松开 FD:VFX 自己进入渐出(不需要外部收)
+  ok   渐出结束:life 耗尽
   ok   FD 可以取消成 RC_blue
-  ok   取消时收掉屏障(RC_blue)
   ok   FD 可以取消成 overdrive
-  ok   取消时收掉屏障(overdrive)
   ok   站 -> 蹲:换成 1_crouch_block
-  ok   切换时动画重新初始化(帧 3 -> 0)
+  ok   切换时动画重新初始化(帧 1 -> 0)
 
-checks=44 fails=0
+[屏障 VFX:渐入 / 渐出 / 输入轮询]
+  ok   刚插入 opacity = 0
+  ok   渐入一半 opacity ≈ 0.50
+  ok   渐入结束 opacity = 1
+  ok   VFX 类型 = FD_block
+  ok   只有 correction_right 按住时保持
+  ok   松开 correction 键 -> 自己进入渐出
+  ok   离开 active_FD_block -> 自己进入渐出
+  ok   重复插入同类屏障只保留最新一层
+checks=48 fails=0
 RESULT: OK

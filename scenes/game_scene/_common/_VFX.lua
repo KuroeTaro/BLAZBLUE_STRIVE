@@ -356,8 +356,6 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(active_op_side_obj_c
     table.insert(active_op_side_obj_char["VFX_black_overlay_table"],obj_VFX)
 end
 -- RC
--- RC 徽章:15 张序列图隔帧换一张,30 帧播完,画在 VFX_common_front_table
--- color:{r,g,b} 染色
 function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet,scale,color)
     local x_offset = 600*scale
     local y_offset = 0
@@ -3184,6 +3182,90 @@ function insert_VFX_game_scene_char_counter_blast_special_projectile(active_op_s
         )
     end
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
+end
+-- block
+-- active_FD_block 的常驻气泡屏障(FD_bubble 那张球罩)
+--   · update 里实时读 FD 键(correction_left / correction_right):
+--     松手、或者角色已经不在 active_FD_block 状态,就进入渐出;
+--   · 渐入 / 渐出都在 VFX 自己身上算(写进 obj_VFX[4] 当透明度),
+--     渐出结束自动 life = 0;
+--   · 不需要外部保存句柄,也不依赖 countdown 之类的刷新计数。
+function insert_VFX_game_scene_char_active_FD_block(obj_char,input)
+    local fade_in_frame = 8
+    local fade_out_frame = 8
+    local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
+    local FD_VFX_spawn_anchor_table =
+        common_game_scene_get_VFX_spawn_anchor(obj_char["player_side"])["FD_block_spawn_anchor_pos"]
+    local FD_VFX_spawn_anchor =
+        FD_VFX_spawn_anchor_table[obj_char["height"]] or FD_VFX_spawn_anchor_table["stand"]
+    -- 同类屏障只留最新一层,不动其它 VFX
+    local keep_table = {}
+    for i = 1,#obj_char["VFX_hit_front_table"] do
+        local vfx = obj_char["VFX_hit_front_table"][i]
+        if vfx["type"] ~= "FD_block" then
+            keep_table[#keep_table + 1] = vfx
+        end
+    end
+    obj_char["VFX_hit_front_table"] = keep_table
+    -- state
+    obj_VFX["type"] = "FD_block"
+    obj_VFX["input"] = input or INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
+    obj_VFX["age"] = 0
+    obj_VFX["release"] = false
+    obj_VFX["release_age"] = 0
+    obj_VFX["life"] = 999999
+    obj_VFX[4] = 0
+    -- position
+    obj_VFX[1] = obj_char["x"] + obj_char[5]*(FD_VFX_spawn_anchor[1])
+    obj_VFX[2] = obj_char["y"] + obj_char[6]*(FD_VFX_spawn_anchor[2])
+    obj_VFX[3] = obj_char[3]
+    obj_VFX[5] = obj_char[5]
+    obj_VFX[6] = obj_char[6]
+    obj_VFX[7] = 0
+    obj_VFX[8] = 0
+    obj_VFX["update"] = function()
+        obj_VFX["age"] = obj_VFX["age"] + 1
+        -- 实时检测 FD 键输入
+        local holding_FD =
+            test_input_sys_press_or_hold(obj_VFX["input"]["correction_left"])
+            or test_input_sys_press_or_hold(obj_VFX["input"]["correction_right"])
+        if (not holding_FD) or (obj_char["state"] ~= "active_FD_block") then
+            obj_VFX["release"] = true
+        end
+        -- 渐入
+        local fade_in_ratio = math.min(1.0,obj_VFX["age"]/math.max(fade_in_frame,1))
+        -- 渐出
+        local fade_out_ratio = 1.0
+        if obj_VFX["release"] then
+            obj_VFX["release_age"] = obj_VFX["release_age"] + 1
+            fade_out_ratio =
+                math.max(0.0,1.0 - obj_VFX["release_age"]/math.max(fade_out_frame,1))
+            if fade_out_ratio <= 0.0 then
+                obj_VFX["life"] = 0
+            end
+        end
+        obj_VFX[4] = fade_in_ratio * fade_out_ratio
+        obj_VFX["life"] = obj_VFX["life"] - 1
+    end
+    obj_VFX["draw_sync"] = function()
+        FD_VFX_spawn_anchor =
+            FD_VFX_spawn_anchor_table[obj_char["height"]] or FD_VFX_spawn_anchor_table["stand"]
+        obj_VFX[1] = obj_char["x"] + obj_char[5]*(FD_VFX_spawn_anchor[1])
+        obj_VFX[2] = obj_char["y"] + obj_char[6]*(FD_VFX_spawn_anchor[2])
+        obj_VFX[3] = obj_char[3]
+        obj_VFX[5] = obj_char[5]
+        obj_VFX[6] = obj_char[6]
+    end
+    obj_VFX["draw"] = function()
+        obj_VFX["draw_sync"]()
+        love.graphics.setBlendMode("add")
+        draw_3d_image(obj_camera,obj_VFX,image_VFX_game_scene_FD_bubble)
+        love.graphics.setBlendMode("alpha")
+        love.graphics.setColor(1,1,1,1)
+    end
+    table.insert(obj_char["VFX_hit_front_table"],obj_VFX)
+    return obj_VFX
 end
 function insert_VFX_game_scene_char_block_ver0(obj_char)
     -- x_y_z_opacity_sx_sy_r_f

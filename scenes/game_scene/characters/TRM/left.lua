@@ -4922,9 +4922,8 @@ function state_gate_game_scene_char_LP_common_to_active_FD_block(
         self_side_obj_char,self_side_obj_char["character_animation"]
     )
     self_side_obj_char["state"] = "active_FD_block"
-    -- 屏障特效
-    self_side_obj_char["active_FD_block_VFX_countdown"] = 30
-    self_side_obj_char["active_FD_block_VFX"] = insert_VFX_game_scene_char_FD_block(self_side_obj_char)
+    -- 屏障特效:VFX 自己在 update 里盯着 FD 键,松手 / 离场自动渐出
+    insert_VFX_game_scene_char_active_FD_block(self_side_obj_char,self_side_input)
     return true
 end
 -- from_gate
@@ -4937,13 +4936,11 @@ function state_gate_game_scene_char_LP_from_active_FD_block(
     if state_gate_game_scene_char_LP_common_to_burst_overdrive(
         self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char,"overdrive"
     ) then
-        clear_FD_block_VFX()
         return true
     end
     if state_gate_game_scene_char_LP_common_to_burst_RC_blue(
         self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
     ) then
-        clear_FD_block_VFX()
         return true
     end
     if (not holding_FD) or (not common_game_scene_check_block_direction(self_side_obj_char))
@@ -4951,14 +4948,6 @@ function state_gate_game_scene_char_LP_from_active_FD_block(
         return state_gate_game_scene_char_LP_from_active_FD_block_to_idle(
             self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
         )
-    end
-    -- 屏障特效:快放完就续一发
-    self_side_obj_char["active_FD_block_VFX_countdown"] =
-        (self_side_obj_char["active_FD_block_VFX_countdown"] or 0) - 1
-    if self_side_obj_char["active_FD_block_VFX_countdown"] <= 0 then
-        self_side_obj_char["active_FD_block_VFX_countdown"] = 30
-        self_side_obj_char["active_FD_block_VFX"] =
-            insert_VFX_game_scene_char_FD_block(self_side_obj_char)
     end
     -- 空中落地后切成站姿
     if self_side_obj_char["height"] == "air"
@@ -4987,11 +4976,6 @@ end
 function state_gate_game_scene_char_LP_from_active_FD_block_to_idle(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
-    -- 兜底:收掉屏障
-    if self_side_obj_char["active_FD_block_VFX"] ~= nil then
-        self_side_obj_char["active_FD_block_VFX"]["life"] = 0
-        self_side_obj_char["active_FD_block_VFX"] = nil
-    end
     -- input_sys_cache
     self_side_obj_char["input_sys_state"] = "load" -- none_save_load
     common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
