@@ -8,4 +8,4 @@ thread_data["HUD_counter_ver0_2"] =
 compress_module("asset/game_scene/common/texture/VFX/HUD_VFX/_counter_VFX/HUD_counter_ver0_2.dds")
 thread_data["HUD_counter_ver3"] =
 compress_module("asset/game_scene/common/texture/VFX/HUD_VFX/_counter_VFX/HUD_counter_ver3.dds")
-love.thread.getChannel('thread_data_5'):push(thread_data)
+love.thread.getChannel('thread_data_6'):push(thread_data)

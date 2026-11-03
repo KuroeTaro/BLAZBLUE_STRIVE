@@ -1,0 +1,73 @@
+== 1. 语法编译 ==
+  OK   scenes/game_scene/_common/load_function.lua
+  OK   scenes/game_scene/_common/_projectile.lua
+  OK   scenes/game_scene/characters/TRM/left.lua
+  OK   scenes/game_scene/characters/TRM/right.lua
+  OK   scenes/game_scene/stage/alpha.lua
+  OK   threads/game_scene/common.lua
+  OK   threads/game_scene/UI_act.lua
+  OK   threads/game_scene/UI_HUD.lua
+  OK   threads/game_scene/UI_lets_dance.lua
+  OK   threads/game_scene/projectile.lua
+  OK   threads/game_scene/VFX_HUD.lua
+  OK   threads/game_scene/VFX_move.lua
+  OK   threads/game_scene/VFX_overdrive_heat.lua
+  OK   threads/game_scene/characters/TRM_left_audio.lua
+  OK   threads/game_scene/characters/TRM_left_texture.lua
+  OK   threads/game_scene/characters/TRM_right_audio.lua
+  OK   threads/game_scene/characters/TRM_right_texture.lua
+  OK   threads/game_scene/stage/alpha_audio.lua
+  OK   threads/game_scene/stage/alpha.lua
+== 2. 线程脚本 push 的通道号 ==
+  [ 1] threads/game_scene/common.lua                      channel=1  keys=1
+  [ 2] threads/game_scene/UI_act.lua                      channel=2  keys=4
+  [ 3] threads/game_scene/UI_HUD.lua                      channel=3  keys=3
+  [ 4] threads/game_scene/UI_lets_dance.lua               channel=4  keys=1
+  [ 5] threads/game_scene/projectile.lua                  channel=5  keys=1
+  [ 6] threads/game_scene/VFX_HUD.lua                     channel=6  keys=3
+  [ 7] threads/game_scene/VFX_move.lua                    channel=7  keys=16
+  [ 8] threads/game_scene/VFX_overdrive_heat.lua          channel=8  keys=10
+  [ 9] threads/game_scene/characters/TRM_left_audio.lua   channel=9  keys=3
+  [10] threads/game_scene/characters/TRM_left_texture.lua channel=10  keys=144
+  [11] threads/game_scene/characters/TRM_right_audio.lua  channel=11  keys=3
+  [12] threads/game_scene/characters/TRM_right_texture.lua channel=12  keys=144
+  [13] threads/game_scene/stage/alpha_audio.lua           channel=13  keys=2
+  [14] threads/game_scene/stage/alpha.lua                 channel=14  keys=16
+  push 顺序: 1,2,3,4,5,6,7,8,9,10,11,12,13,14
+== 2.5 从 load_game_scene_prep 解析顺序表 ==
+  ORDER_LOAD_TABLE=14  ORDER_SIZE_TABLE=14  THREAD_AMOUNT=14  LOADING_FUNCTION_AMOUNT=14
+  [ 1] order_load_game_scene_common                   size=15
+  [ 2] order_load_game_scene_UI_act                   size=4
+  [ 3] order_load_game_scene_UI_HUD                   size=3
+  [ 4] order_load_game_scene_UI_lets_dance            size=1
+  [ 5] order_load_game_scene_projectile               size=1
+  [ 6] order_load_game_scene_VFX_HUD                  size=1
+  [ 7] order_load_game_scene_VFX_move                 size=4
+  [ 8] order_load_game_scene_VFX_overdrive_RC_burst_UA size=3
+  [ 9] order_load_game_scene_char_LP_audio            size=12
+  [10] order_load_game_scene_char_LP_frames           size=39
+  [11] order_load_game_scene_char_RP_audio            size=12
+  [12] order_load_game_scene_char_RP_frames           size=39
+  [13] order_load_game_scene_stage_audio              size=3
+  [14] order_load_game_scene_stage_frames             size=4
+== 3. 顺序执行 order_load_game_scene_* ==
+  [ 1] order_load_game_scene_common     size=15 done
+  [ 2] order_load_game_scene_UI_act     size=4 done
+  [ 3] order_load_game_scene_UI_HUD     size=3 done
+  [ 4] order_load_game_scene_UI_lets_dance size=1 done
+  [ 5] order_load_game_scene_projectile size=1 done
+  [ 6] order_load_game_scene_VFX_HUD    size=1 done
+  [ 7] order_load_game_scene_VFX_move   size=4 done
+  [ 8] order_load_game_scene_VFX_overdrive_RC_burst_UA size=3 done
+  [ 9] order_load_game_scene_char_LP_audio size=12 done
+  [10] order_load_game_scene_char_LP_frames size=39 done
+  [11] order_load_game_scene_char_RP_audio size=12 done
+  [12] order_load_game_scene_char_RP_frames size=39 done
+  [13] order_load_game_scene_stage_audio size=3 done
+  [14] order_load_game_scene_stage_frames size=4 done
+  共执行 141 个 load step,校验 json 330 个
+== 4. 关键变量 ==
+  image_sprite_sheet_projectile_game_scene_RC_shockwave = true
+  未定义全局(已 no-op): load_game_scene_box_anchor_data,load_game_scene_common_anim,load_game_scene_common_audio,load_game_scene_common_obj,load_game_scene_common_shader
+
+RESULT: OK

@@ -25,4 +25,4 @@ thread_data["special_lighting_1_sprite_batch"] =
 compress_module("asset/game_scene/common/texture/VFX/hit_VFX/_special/lighting_1.dds")
 thread_data["special_radial_sprite_batch"] =
 compress_module("asset/game_scene/common/texture/VFX/hit_VFX/_special/radial.dds")
-love.thread.getChannel('thread_data_6'):push(thread_data)
+love.thread.getChannel('thread_data_7'):push(thread_data)
