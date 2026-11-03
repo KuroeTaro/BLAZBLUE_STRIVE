@@ -220,8 +220,8 @@ function update_game_scene_training_main()
             char_LP["x"] = char_LP["x"] + char_LP_velocity[1]/(COLLIDE_TICK*char_LP_final_game_speed)
             char_LP["y"] = char_LP["y"] + char_LP_velocity[2]/(COLLIDE_TICK*char_LP_final_game_speed)
             -- RC更新位置 1/COLLIDE_TICK
-            for i = 1,#char_LP["projectile_RC_table"] do
-                local current_projectile = char_LP["projectile_RC_table"][i]
+            for i = 1,#char_LP["projectile_burst_RC_table"] do
+                local current_projectile = char_LP["projectile_burst_RC_table"][i]
                 current_projectile["x"] =
                 current_projectile["x"] + current_projectile["velocity"][1]/(COLLIDE_TICK*char_LP_final_game_speed)
                 current_projectile["y"] =
@@ -248,8 +248,8 @@ function update_game_scene_training_main()
             char_RP["x"] = char_RP["x"] + char_RP_velocity[1]/(COLLIDE_TICK*char_RP_final_game_speed)
             char_RP["y"] = char_RP["y"] + char_RP_velocity[2]/(COLLIDE_TICK*char_RP_final_game_speed)
             -- RC更新位置 1/COLLIDE_TICK
-            for i = 1,#char_RP["projectile_RC_table"] do
-                local current_projectile = char_RP["projectile_RC_table"][i]
+            for i = 1,#char_RP["projectile_burst_RC_table"] do
+                local current_projectile = char_RP["projectile_burst_RC_table"][i]
                 current_projectile["x"] =
                 current_projectile["x"] + current_projectile["velocity"][1]/(COLLIDE_TICK*char_RP_final_game_speed)
                 current_projectile["y"] =
@@ -304,12 +304,12 @@ function update_game_scene_training_main()
         -- friendly_interact_function
             -- interaction_with_friendly
         -- 检测飞行道具人物交互
-        for i = 1,#char_LP["projectile_RC_table"] do
-            local current_projectile = char_LP["projectile_RC_table"][i]
+        for i = 1,#char_LP["projectile_burst_RC_table"] do
+            local current_projectile = char_LP["projectile_burst_RC_table"][i]
             current_projectile["enemy_interact_function"]()
         end
-        for i = 1,#char_RP["projectile_RC_table"] do
-            local current_projectile = char_RP["projectile_RC_table"][i]
+        for i = 1,#char_RP["projectile_burst_RC_table"] do
+            local current_projectile = char_RP["projectile_burst_RC_table"][i]
             current_projectile["enemy_interact_function"]()
         end
         -- projectile_interaction

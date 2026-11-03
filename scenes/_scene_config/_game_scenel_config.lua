@@ -88,14 +88,15 @@ OVERDRIVE_BADGE_PARTICAL_CONFIG =
 -- R = 基准半径(设计像素,已含透视),半径 / 厚度都是 × 倍率。
 BURST_SHOCKWAVE_PROJECTILE_CONFIG =
 {
-    -- 生命(帧):冲击波从起手到完全淡出总共走这么多帧
-    life = 32,
+    -- 生命(帧):固定 11 帧(原 32 帧的扩散时长按 3 倍速压缩 → 10 帧走完 + 1 帧收尾)
+    --   本体活到视觉放完为止,所以这份时长就是画面实际长度,不再有空转帧
+    life = 12,
     -- 基准半径(设计像素):下面的 × 倍率都乘它
     radius = 500,
     -- 主环:起始半径(× R)、到结尾扩散到多远(× R)
     --   1.55 左右正好在「快出画」时淡完,再大就有一半life浪费在画面外
-    radius_start = 0.25,
-    radius_grow = 1.55,
+    radius_start = 0.75,
+    radius_grow = 1.25,
     -- 主环厚度(× R):从 base 随扩散线性长到 grow
     width_base = 0.09,
     width_grow = 0.22,
@@ -103,14 +104,14 @@ BURST_SHOCKWAVE_PROJECTILE_CONFIG =
     brightness = 1.00,
     -- 内侧回波:半径倍率 + 亮度倍率(0 = 不要回波)
     echo_scale = 0.78,
-    echo_strength = 0.38,
+    echo_strength = 0,
     -- 起手中心闪光:强度 + 大小(× R),0 = 不要闪光
     flash_strength = 0.55,
     flash_size = 0.42,
     -- 淡出曲线:越大结尾收得越快
-    fade_power = 1.90,
-    -- 颜色(和 RC 冲击波的黄一致)
-    color = {1.00,0.88,0.30},
+    fade_power = 2.75,
+    -- 颜色:白色
+    color = {1.00,1.00,1.00},
 }
 OVERDRIVE_BADGE_ANIM =
 {

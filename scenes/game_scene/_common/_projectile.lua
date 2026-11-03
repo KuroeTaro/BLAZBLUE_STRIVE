@@ -103,7 +103,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     local hit_side = hit_side_obj_char["player_side"]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     -- clear_projectile_RC_table
-    hit_side_obj_char["projectile_RC_table"] = {}
+    hit_side_obj_char["projectile_burst_RC_table"] = {}
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 30
@@ -310,7 +310,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     obj_projectile[2] = obj_projectile["y"] - 600
     obj_projectile[5] = hit_side_obj_char[5]
     -- insert_projectile
-    table.insert(hit_side_obj_char["projectile_RC_table"],obj_projectile)
+    table.insert(hit_side_obj_char["projectile_burst_RC_table"],obj_projectile)
 end
 function load_game_scene_anim_char_RC_red_projectile_ground_block(
     hit_side_obj_char,hurt_side_obj_char,obj_projectile,fix_direction,velocity_center,sprite_sheet,height,state_cache,
@@ -767,7 +767,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
     local image_sprite_sheet = image_sprite_sheet_projectile_game_scene_RC_shockwave
     local shockwave_color = {0.35,0.65,1.00}
     -- clear_projectile_RC_table
-    hit_side_obj_char["projectile_RC_table"] = {}
+    hit_side_obj_char["projectile_burst_RC_table"] = {}
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 30
@@ -844,7 +844,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
     obj_projectile[2] = obj_projectile["y"] - 600
     obj_projectile[5] = hit_side_obj_char[5]
     -- insert_projectile
-    table.insert(hit_side_obj_char["projectile_RC_table"],obj_projectile)
+    table.insert(hit_side_obj_char["projectile_burst_RC_table"],obj_projectile)
 end
 -- insert_projectile_game_scene_char_common_RC_shockwave_purple
 -- 1-8 type life x y velocity projectile_clash_type f
@@ -860,7 +860,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
     local image_sprite_sheet = image_sprite_sheet_projectile_game_scene_RC_shockwave
     local shockwave_color = {0.78,0.40,1.00}
     -- clear_projectile_RC_table
-    hit_side_obj_char["projectile_RC_table"] = {}
+    hit_side_obj_char["projectile_burst_RC_table"] = {}
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 30
@@ -937,7 +937,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
     obj_projectile[2] = obj_projectile["y"] - 600
     obj_projectile[5] = hit_side_obj_char[5]
     -- insert_projectile
-    table.insert(hit_side_obj_char["projectile_RC_table"],obj_projectile)
+    table.insert(hit_side_obj_char["projectile_burst_RC_table"],obj_projectile)
 end
 -- insert_projectile_game_scene_char_common_RC_shockwave_yellow
 -- 1-8 type life x y velocity projectile_clash_type f
@@ -964,7 +964,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
     local hit_side = hit_side_obj_char["player_side"]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     -- clear_projectile_RC_table
-    hit_side_obj_char["projectile_RC_table"] = {}
+    hit_side_obj_char["projectile_burst_RC_table"] = {}
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 30
@@ -1151,7 +1151,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
     obj_projectile[2] = obj_projectile["y"] - 600
     obj_projectile[5] = hit_side_obj_char[5]
     -- insert_projectile
-    table.insert(hit_side_obj_char["projectile_RC_table"],obj_projectile)
+    table.insert(hit_side_obj_char["projectile_burst_RC_table"],obj_projectile)
 end
 function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
     hit_side_obj_char,hurt_side_obj_char,obj_projectile,fix_direction,velocity_center,sprite_sheet,height,state_cache,
@@ -1603,19 +1603,23 @@ end
 -- burst shockwave 的帧时间轴:0..life-1 每帧推进一步,直接喂给 shader 的 time
 -- (和 load_game_scene_anim_projectile_RC_main 同构,只是步长改成 1 帧、长度取自 config)
 function load_game_scene_anim_projectile_burst_shockwave(obj_projectile)
-    local life = BURST_SHOCKWAVE_PROJECTILE_CONFIG.life
     local res = {}
     res["prop_f"] = "f"
-    res["anim_length"] = life
-    for i = 0,life - 1 do
+    res["anim_length"] = 12
+    for i = 0,12 - 1 do
         res[i + 1] = function()
             obj_projectile[8] = i
         end
     end
-    res[1] = function()
-        -- collision:和 RC_shockwave 一样,第 1 帧之后不再判定,只作为视觉
+    res[2] = function()
+        obj_projectile[8] = 1
+        obj_projectile["hitbox_table"] = {{0,0,4000,4000}}
+        obj_projectile["projectile_active"] = true
+    end
+    res[3] = function()
+        obj_projectile[8] = 2
         obj_projectile["hitbox_table"] = {}
-        obj_projectile[8] = 0
+        obj_projectile["projectile_active"] = false
     end
     return res
 end
@@ -1643,16 +1647,14 @@ end
 function insert_projectile_game_scene_char_common_burst_shockwave(hit_side_obj_char,hurt_side_obj_char)
     local obj_projectile = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
-    -- 画面由 shader 程序化生成,数值来自 BURST_SHOCKWAVE_PROJECTILE_CONFIG
-    local config = BURST_SHOCKWAVE_PROJECTILE_CONFIG
     local shader = shader_game_scene_burst_shockwave_projectile_3d
     local hit_side = hit_side_obj_char["player_side"]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     -- clear_projectile_RC_table
-    hit_side_obj_char["projectile_RC_table"] = {}
+    hit_side_obj_char["projectile_burst_RC_table"] = {}
     -- common
     obj_projectile["type"] = "projectile"
-    obj_projectile["life"] = config.life
+    obj_projectile["life"] = 12
     obj_projectile["x"] = hit_side_obj_char["x"]
     obj_projectile["y"] = hit_side_obj_char["y"]
     obj_projectile["velocity"] = {hit_side_obj_char["velocity"][1],hit_side_obj_char["velocity"][2]}
@@ -1660,7 +1662,7 @@ function insert_projectile_game_scene_char_common_burst_shockwave(hit_side_obj_c
     obj_projectile["f"] = -1
     obj_projectile[3] = hit_side_obj_char[3]
     -- enemy_interact_function
-    obj_projectile["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
+    obj_projectile["hitbox_table"] = {}
     obj_projectile["hit_guard_type"] = "all"
     obj_projectile["hit_damage"] = 0
     obj_projectile["hit_damage_correction_factor"] = 1
@@ -1673,7 +1675,7 @@ function insert_projectile_game_scene_char_common_burst_shockwave(hit_side_obj_c
     obj_projectile["FD_block_heat_drain"] = 0
     obj_projectile["stand_hurt_animation"] = load_game_scene_anim_char_burst_shockwave_projectile_ground_air_and_OTG_hurt(
         hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,"0_general_hurt_launched_high","air","knockdown_recovery",
-        30,5,1.00,-2.5,0.5,1.00,
+        30,5,1.00,-27.5,2.5,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
@@ -1689,7 +1691,7 @@ function insert_projectile_game_scene_char_common_burst_shockwave(hit_side_obj_c
     )
     obj_projectile["crouch_hurt_animation"] = load_game_scene_anim_char_burst_shockwave_projectile_ground_air_and_OTG_hurt(
         hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,"0_general_hurt_launched_high","air","knockdown_recovery",
-        30,5,1.00,-2.5,0.5,1.00,
+        30,5,1.00,-27.5,2.5,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
@@ -1705,7 +1707,7 @@ function insert_projectile_game_scene_char_common_burst_shockwave(hit_side_obj_c
     )
     obj_projectile["air_hurt_animation"] = load_game_scene_anim_char_burst_shockwave_projectile_ground_air_and_OTG_hurt(
         hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,"0_general_hurt_launched_high","air","knockdown_recovery",
-        30,5,1.00,-2.5,1.0,1.00,
+        30,5,1.00,-27.5,2.5,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
@@ -1721,7 +1723,7 @@ function insert_projectile_game_scene_char_common_burst_shockwave(hit_side_obj_c
     )
     obj_projectile["OTG_hurt_animation"] = load_game_scene_anim_char_burst_shockwave_projectile_ground_air_and_OTG_hurt(
         hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,"0_general_hurt_launched_high","air","knockdown_recovery",
-        30,5,1.00,-2.5,1.0,1.00,
+        30,5,1.00,-27.5,2.5,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
@@ -1732,7 +1734,7 @@ function insert_projectile_game_scene_char_common_burst_shockwave(hit_side_obj_c
     )
     obj_projectile["wallstick_hurt_animation"] = load_game_scene_anim_char_burst_shockwave_projectile_ground_air_and_OTG_hurt(
         hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,"0_general_hurt_launched_high","air","knockdown_recovery",
-        30,5,1.00,-2.5,1.0,1.00,
+        30,5,1.00,-27.5,2.5,1.00,
         nil,
         load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
             hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
@@ -1741,15 +1743,11 @@ function insert_projectile_game_scene_char_common_burst_shockwave(hit_side_obj_c
         ),
         nil,nil,function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
     )
-    obj_projectile["projectile_active"] = true
+    obj_projectile["projectile_active"] = false
     obj_projectile["projectile_counter_ver_function"] = function() end
     obj_projectile["hit_VFX_insert_function"] = function() end
     -- 目前没有 burst 专用的 block VFX,沿用 RC_yellow 的(同一套 block_ver1 通用特效)
-    obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC_yellow
-    obj_projectile["hit_SFX"] = hit_side_move_SFX_table["burst"]
-    obj_projectile["hit_block_SFX"] = hit_side_move_SFX_table["burst"]
-    obj_projectile["hit_counter_SFX"] = hit_side_move_SFX_table["burst"]
-    obj_projectile["hit_whiff_SFX"] = hit_side_move_SFX_table["burst"]
+    obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_burst
     obj_projectile["enemy_interact_function"] = function()
         -- if_hit
         if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char)
@@ -1761,20 +1759,6 @@ function insert_projectile_game_scene_char_common_burst_shockwave(hit_side_obj_c
             -- risk_gauge
             if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
                 hurt_side_obj_char["hurt_state"] = "counter"
-            end
-            -- insert_projectile_VFX_SFX_counter_apply
-            if hurt_side_obj_char["hurt_state"] == "counter" then -- idle_unblock_punish_counter_GP_parry
-                obj_projectile["projectile_counter_ver_function"]()
-                obj_projectile["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
-                play_obj_audio(obj_projectile["hit_counter_SFX"])
-                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
-            elseif not block_bool then
-                obj_projectile["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
-                play_obj_audio(obj_projectile["hit_SFX"])
-                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
-            else
-                play_obj_audio(obj_projectile["hit_block_SFX"])
-                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
             end
             -- common_hurt_function
             common_game_scene_projectile_RC_red_yellow_hurt_function(
@@ -1839,7 +1823,7 @@ function insert_projectile_game_scene_char_common_burst_shockwave(hit_side_obj_c
     obj_projectile[2] = obj_projectile["y"]
     obj_projectile[5] = hit_side_obj_char[5]
     -- insert_projectile
-    table.insert(hit_side_obj_char["projectile_RC_table"],obj_projectile)
+    table.insert(hit_side_obj_char["projectile_burst_RC_table"],obj_projectile)
 end
 function load_game_scene_anim_char_burst_shockwave_projectile_ground_block(
     hit_side_obj_char,hurt_side_obj_char,obj_projectile,fix_direction,velocity_center,sprite_sheet,height,state_cache,

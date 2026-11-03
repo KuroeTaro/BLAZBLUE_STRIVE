@@ -206,7 +206,7 @@ index d0db00b..5a6444b 100644
      local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
 +    local shockwave_color = {0.35,0.65,1.00}
      -- clear_projectile_RC_table
-     hit_side_obj_char["projectile_RC_table"] = {}
+     hit_side_obj_char["projectile_burst_RC_table"] = {}
      -- common
 @@ -385,7 +389,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
              obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
@@ -223,7 +223,7 @@ index d0db00b..5a6444b 100644
      local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
 +    local shockwave_color = {0.78,0.40,1.00}
      -- clear_projectile_RC_table
-     hit_side_obj_char["projectile_RC_table"] = {}
+     hit_side_obj_char["projectile_burst_RC_table"] = {}
      -- common
 @@ -479,7 +484,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
              obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])

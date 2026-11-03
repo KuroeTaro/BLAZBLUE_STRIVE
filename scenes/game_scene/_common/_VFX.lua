@@ -3308,6 +3308,69 @@ function insert_VFX_game_scene_char_block_ver1(obj_char)
     end
     table.insert(obj_char["VFX_hit_front_table"],obj_VFX)
 end
+function insert_VFX_game_scene_char_block_burst(obj_char)
+    -- x_y_z_opacity_sx_sy_r_f
+    local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
+    local active_op_VFX_spawn_anchor =
+        common_game_scene_get_VFX_spawn_anchor(obj_char["player_side"])["block_ver1_spawn_anchor_pos"][obj_char["sprite_sheet"]]
+    obj_char["VFX_hit_front_table"] = {}
+    obj_char["VFX_hit_back_table"] = {}
+    obj_VFX["life"] = 31
+    obj_VFX[1] = obj_char["x"] + obj_char[5]*(active_op_VFX_spawn_anchor[1])
+    obj_VFX[2] = obj_char["y"] + obj_char[6]*(active_op_VFX_spawn_anchor[2])
+    obj_VFX[3] = obj_char[3]
+    obj_VFX[4] = 0.75
+    obj_VFX[5] = obj_char[5]
+    obj_VFX[6] = obj_char[6]
+    obj_VFX[7] = 0
+    obj_VFX[8] = 0
+    obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_VFX["animation"] = {}
+    obj_VFX["animation"][0] = 0
+    obj_VFX["animation"][12] = 1
+    obj_VFX["animation"][14] = 2
+    obj_VFX["animation"][17] = 3
+    obj_VFX["animation"][20] = 4
+    obj_VFX["animation"][23] = 5
+    obj_VFX["animation"][27] = 6
+    obj_VFX["animation"]["prop"] = 8
+    obj_VFX["animation"]["length"] = 31
+    obj_VFX["animation"]["loop"] = false
+    init_frame_anim_without(
+        obj_VFX,obj_VFX["animation"]
+    )
+    obj_VFX[1] = obj_char["x"] + obj_char[5]*(active_op_VFX_spawn_anchor[1])
+    obj_VFX["update"] = function()
+        frame_animator(
+            obj_VFX,obj_VFX["animation"]
+        )
+        obj_VFX["life"] = obj_VFX["life"] - 1
+    end
+    obj_VFX["draw_sync"] = function()
+        obj_VFX[1] = obj_char["x"] + obj_char[5]*(active_op_VFX_spawn_anchor[1])
+        obj_VFX[2] = obj_char["y"] + obj_char[6]*(active_op_VFX_spawn_anchor[2])
+        obj_VFX[5] = obj_char[5]
+        obj_VFX[6] = obj_char[6]
+        -- obj_VFX["draw_sync"] = function() end
+    end
+    obj_VFX["draw"] = function()
+        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_block_ver1
+        obj_VFX["draw_sync"]()
+        obj_VFX[1] = obj_char["x"] + obj_char[5]*(active_op_VFX_spawn_anchor[1])
+        obj_VFX[2] = obj_char["y"] + obj_char[6]*(active_op_VFX_spawn_anchor[2])
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+        )
+        love.graphics.setBlendMode("add")
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setBlendMode("alpha")
+    end
+    table.insert(obj_char["VFX_hit_front_table"],obj_VFX)
+end
 function insert_VFX_game_scene_char_block_RC_red(obj_char)
     -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}

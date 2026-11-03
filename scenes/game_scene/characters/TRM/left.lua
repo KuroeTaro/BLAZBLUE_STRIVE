@@ -139,7 +139,7 @@ function load_game_scene_obj_char_LP()
     -- sub_obj_table
     obj_char_game_scene_char_LP["projectile_front_table"] = {}
     obj_char_game_scene_char_LP["projectile_back_table"] = {}
-    obj_char_game_scene_char_LP["projectile_RC_table"] = {}
+    obj_char_game_scene_char_LP["projectile_burst_RC_table"] = {}
     obj_char_game_scene_char_LP["VFX_HUD_table"] = {}
     obj_char_game_scene_char_LP["VFX_status_front_table"] = {}
     obj_char_game_scene_char_LP["VFX_status_back_table"] = {}
@@ -793,7 +793,7 @@ function load_game_scene_box_anchor_data_LP()
     obj_VFX_spawn_anchor_data_game_scene_char_LP["FD_block_spawn_anchor_pos"]["stand"] = {-300,-540}
     obj_VFX_spawn_anchor_data_game_scene_char_LP["FD_block_spawn_anchor_pos"]["crouch"] = {-300,-420}
     obj_VFX_spawn_anchor_data_game_scene_char_LP["FD_block_spawn_anchor_pos"]["air"] = {-300,-440}
-    -- RC
+    -- RC / overdrive 霸(启动瞬间在 burst_overdrive_ground / burst_overdrive_RC_air 上)
     obj_pushboxs_data_game_scene_char_LP["burst_overdrive_RC"] = {}
     obj_hurtboxs_data_game_scene_char_LP["burst_overdrive_RC"] = {}
     obj_anchor_data_game_scene_char_LP["burst_overdrive_RC"] = {}
@@ -801,11 +801,17 @@ function load_game_scene_box_anchor_data_LP()
     obj_hurtboxs_data_game_scene_char_LP["burst_overdrive_RC"]["stand"] = {{0,-250,230,500}}
     obj_anchor_data_game_scene_char_LP["burst_overdrive_RC"]["stand"] = {300,615}
     obj_pushboxs_data_game_scene_char_LP["burst_overdrive_RC"]["air"] = air_pushbox
-    obj_hurtboxs_data_game_scene_char_LP["burst_overdrive_RC"]["air"] = {{0,-120,230,500}}
+    obj_hurtboxs_data_game_scene_char_LP["burst_overdrive_RC"]["air"] = {{0,-150,230,380}}
     obj_anchor_data_game_scene_char_LP["burst_overdrive_RC"]["air"] = {330,485}
-    obj_pushboxs_data_game_scene_char_LP["burst_overdrive_RC"]["burst_to_8jump"] = {{0,-120,230,500}}
-    obj_hurtboxs_data_game_scene_char_LP["burst_overdrive_RC"]["burst_to_8jump"] = {{0,-120,230,500}}
-    obj_anchor_data_game_scene_char_LP["burst_overdrive_RC"]["burst_to_8jump"] = {330,485}
+    -- burst_to_8_jump:对应动画 load_game_scene_anim_char_TRM_7_8_9_jump_air(sprite_sheet = "8_jump",anchor = {350,430})
+    obj_pushboxs_data_game_scene_char_LP["burst_overdrive_RC"]["burst_to_8_jump"] = air_pushbox
+    obj_hurtboxs_data_game_scene_char_LP["burst_overdrive_RC"]["burst_to_8_jump"] = {{0,-180,200,380}}
+    obj_anchor_data_game_scene_char_LP["burst_overdrive_RC"]["burst_to_8_jump"] = {350,430}
+    -- burst_to_stand_idle:对应动画 load_game_scene_anim_char_TRM_7_8_9_jump_air_to_stand_idle(sprite_sheet = "7_8_9_jump_air_to_stand_idle")
+    obj_pushboxs_data_game_scene_char_LP["burst_overdrive_RC"]["burst_to_stand_idle"] = stand_pushbox
+    obj_hurtboxs_data_game_scene_char_LP["burst_overdrive_RC"]["burst_to_stand_idle"] = {{0,-190,180,380}}
+    obj_anchor_data_game_scene_char_LP["burst_overdrive_RC"]["burst_to_stand_idle"] = {325,480}
+    obj_VFX_spawn_anchor_data_game_scene_char_LP["stage_VFX_spawn_anchor"]["burst_to_stand_idle"] = {-355,-160}
     -- wallstick
     obj_VFX_spawn_anchor_data_game_scene_char_LP["wallstick_spawn_anchor_pos"] = {
         ["stand"] = 1175,
@@ -4948,7 +4954,8 @@ function state_gate_game_scene_char_LP_from_hurt(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
     -- burst
-    if test_input_sys_press(self_side_input["burst"]) then
+    if test_input_sys_press(self_side_input["burst"]) 
+    and self_side_obj_char["overdrive_gauge"][1] >= self_side_obj_char["overdrive_gauge"][2] then
         -- animation
         self_side_obj_char["character_animation"] =
         load_game_scene_anim_char_common_burst_burst(
@@ -7501,68 +7508,30 @@ end
 function state_gate_game_scene_char_LP_from_burst_burst(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
-    -- 收招后段(动画第 64 帧把 idle_cancel 打开)之后才允许转出;
-    -- 动画播完也兜底处理一次,免得停在 burst_burst 里出不来
-    if not self_side_obj_char["idle_cancel"]
-    and not get_character_anim_end_state(
+    -- idle_cancel
+    if self_side_obj_char["idle_cancel"] then
+        if state_gate_game_scene_char_LP_common_ground_to_dash_move_HH(
+            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+        ) then
+            return true
+        end
+        if state_gate_game_scene_char_LP_from_5_stand_idle(
+            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+        ) then
+            return true
+        end
+    end
+    -- _5_stand_idle
+    if get_character_anim_end_state(
         self_side_obj_char,self_side_obj_char["character_animation"]
     ) then
-        return
-    end
-    -- state
-    self_side_obj_char["idle_cancel"] = true
-    self_side_obj_char["physics_lock"] = false
-    -- input_sys_cache
-    self_side_obj_char["input_sys_state"] = "load" -- none_save_load
-    common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
-    if self_side_obj_char["height"] == "air" then
-        -- _7_8_9_jump_air
-        self_side_obj_char["character_animation"] =
-        load_game_scene_anim_char_TRM_7_8_9_jump_air(
-            self_side_obj_char,"8_jump",{350,430},
-            self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2],nil
-        )
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
         init_character_anim_with(
             self_side_obj_char,self_side_obj_char["character_animation"]
         )
-        self_side_obj_char["state"] = "7_8_9_jump_air"
-        self_side_obj_char["idle_cancel"] = true
-        self_side_obj_char["f"] = 20
-        character_animator(
-            self_side_obj_char,self_side_obj_char["character_animation"]
-        )
-        -- _common_air_idle_to_move
-        if state_gate_game_scene_char_LP_common_air_to_dash_move_HH(
-            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
-        ) then
-            return true
-        end
-        if state_gate_game_scene_char_LP_from_7_8_9_jump_air(
-            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
-        ) then
-            return true
-        end
+        self_side_obj_char["state"] = "5_stand_idle"
         return true
     end
-    -- _5_stand_idle:落地后回到站姿中立,直接走它那套 state_gate
-    self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
-    init_character_anim_with(
-        self_side_obj_char,self_side_obj_char["character_animation"]
-    )
-    self_side_obj_char["state"] = "5_stand_idle"
-    -- _common_ground_idle_to_move
-    if state_gate_game_scene_char_LP_common_ground_to_dash_move_HH(
-        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
-    ) then
-        return true
-    end
-    -- _5_stand_idle
-    if state_gate_game_scene_char_LP_from_5_stand_idle(
-        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
-    ) then
-        return true
-    end
-    return true
 end
 function state_gate_game_scene_char_LP_from_2P(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
@@ -9696,8 +9665,8 @@ function draw_game_scene_char_LP_shadow()
     draw_game_scene_char_LP()
     -- 所有飞行道具与角色一样获得阴影效果
     love.graphics.setBlendMode("alpha")
-    for i = #obj_char["projectile_RC_table"],1,-1 do
-        obj_char["projectile_RC_table"][i]["draw"]()
+    for i = #obj_char["projectile_burst_RC_table"],1,-1 do
+        obj_char["projectile_burst_RC_table"][i]["draw"]()
     end
     for i = #obj_char["projectile_back_table"],1,-1 do
         obj_char["projectile_back_table"][i]["draw"]()
@@ -9898,8 +9867,8 @@ function draw_game_scene_char_LP_hitbox()
             end
         end
     end
-    for i = 1,#obj_char["projectile_RC_table"] do
-        local current_projectile = obj_char["projectile_RC_table"][i]
+    for i = 1,#obj_char["projectile_burst_RC_table"] do
+        local current_projectile = obj_char["projectile_burst_RC_table"][i]
         for j = 1,#current_projectile["hitbox_table"] do
             local current_hitbox = current_projectile["hitbox_table"][j]
             if current_hitbox then
@@ -9917,11 +9886,11 @@ function draw_game_scene_char_LP_hitbox()
 end
 -- projectile
 function update_game_scene_char_LP_projectile()
-    for i = #obj_char_game_scene_char_LP["projectile_RC_table"],1,-1 do -- 反向遍历，便于删除元素
-        local object = obj_char_game_scene_char_LP["projectile_RC_table"][i]
+    for i = #obj_char_game_scene_char_LP["projectile_burst_RC_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["projectile_burst_RC_table"][i]
         object["update"](object)
         if object["life"] <= 0 then
-            table.remove(obj_char_game_scene_char_LP["projectile_RC_table"],i) -- 寿命耗尽，从列表中移除
+            table.remove(obj_char_game_scene_char_LP["projectile_burst_RC_table"],i) -- 寿命耗尽，从列表中移除
         end
     end
     for i = #obj_char_game_scene_char_LP["projectile_front_table"],1,-1 do -- 反向遍历，便于删除元素
@@ -9952,8 +9921,8 @@ function draw_game_scene_char_LP_projectile_back()
     end
 end
 function draw_game_scene_char_LP_projectile_RC()
-    for i = #obj_char_game_scene_char_LP["projectile_RC_table"],1,-1 do -- 反向遍历，便于删除元素
-        local object = obj_char_game_scene_char_LP["projectile_RC_table"][i]
+    for i = #obj_char_game_scene_char_LP["projectile_burst_RC_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["projectile_burst_RC_table"][i]
         object["draw"]()
     end
 end

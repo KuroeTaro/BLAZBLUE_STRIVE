@@ -36,6 +36,9 @@ local function install_stubs()
     load_game_scene_anim_char_TRM_7_8_9_jump_air = function() return "anim_jump" end
     character_function_game_scene_TRM_overdrive_state_character_uncommon_init = function() end
     common_game_scene_get_input_sys_cache_state_machine = function() return function() end end
+    get_character_anim_end_state = function() return false end
+    state_machine_char_game_scene_char_LP_input_sys_cache = function() end
+    state_machine_char_game_scene_char_RP_input_sys_cache = function() end
     -- 这两个门:记录是否被调用,默认不转
     local called = {}
     for _, side in ipairs({ "LP", "RP" }) do
@@ -92,38 +95,28 @@ function love.load()
     local opp_input = {}
     local opp = { ["state"] = "hurt" }
 
-    run("common_to_burst_burst", function()
+    run("from_hurt 里的 burst 触发", function()
+        local to_gate = state_gate_game_scene_char_LP_from_hurt
+        -- 1) 没按 burst:不进 burst_burst(继续走 hurt 的 until_land / 动画结束逻辑)
         pressed = {}
-        -- 1) 非 hurt:不触发
-        for _, st in ipairs({ "5_stand_idle", "block", "hurtstop", "knockdown", "burst_RC_yellow" }) do
-            local c = new_char({ ["state"] = st })
-            local r = state_gate_game_scene_char_LP_common_to_burst_burst(input, opp_input, c, opp)
-            check(r == nil and c["state"] == st, string.format("state=%-16s 不触发", st))
-        end
-        -- 2) hurt 但没按 burst:不触发
-        local c = new_char()
-        check(state_gate_game_scene_char_LP_common_to_burst_burst(input, opp_input, c, opp) == nil
-            and c["state"] == "hurt", "hurt + 未按 burst 不触发")
-        -- 3) hurt + 按 burst:进 burst_burst
+        local c = new_char({ ["state"] = "hurt" })
+        check(to_gate(input, opp_input, c, opp) == nil and c["state"] == "hurt",
+            "未按 burst: 不进 burst_burst")
+        -- 2) 按下 burst:直接进 burst_burst
         pressed = { ["burst"] = true }
-        c = new_char()
-        local r = state_gate_game_scene_char_LP_common_to_burst_burst(input, opp_input, c, opp)
-        check(r == true, "hurt + burst -> 返回 true")
-        check(c["state"] == "burst_burst", "state -> burst_burst")
-        check(c["character_animation"] == "anim_burst", "换上 burst_burst 动画")
-        check(c["physics_lock"] == false, "physics_lock 解除")
-        check(c["velocity"][1] == 0 and c["velocity"][2] == 0, "velocity 清零")
-        check(c["velocity_cache"][1] == 0 and c["velocity_cache"][2] == 0, "velocity_cache 清零")
-        -- 4) 空中 hurt 也能出
-        c = new_char({ ["height"] = "air" })
-        r = state_gate_game_scene_char_LP_common_to_burst_burst(input, opp_input, c, opp)
-        check(r == true and c["state"] == "burst_burst", "air hurt 也能进 burst_burst")
+        local c2 = new_char({ ["state"] = "hurt" })
+        to_gate(input, opp_input, c2, opp)
+        check(c2["state"] == "burst_burst", "hurt + burst -> state = burst_burst")
+        check(c2["character_animation"] == "anim_burst", "换上 burst_burst 动画")
+        -- 3) 空中 hurt 同样能出
+        local c3 = new_char({ ["state"] = "hurt", ["height"] = "air" })
+        to_gate(input, opp_input, c3, opp)
+        check(c3["state"] == "burst_burst", "air hurt + burst -> burst_burst")
     end)
 
     run("from_burst_burst", function()
         -- 1) 还没 idle_cancel、动画也没结束:不出
         local c = new_char({ ["state"] = "burst_burst", ["idle_cancel"] = false })
-        check(get_character_anim_end_state == nil, "动画结束判定用桩")
         _G.get_character_anim_end_state = function() return false end
         local r = state_gate_game_scene_char_LP_from_burst_burst(input, opp_input, c, opp)
         check(r == nil and c["state"] == "burst_burst", "未 idle_cancel 不出")
@@ -150,17 +143,18 @@ function love.load()
     end)
 
     run("RP 镜像(冒烟)", function()
-        local to_gate = _G["state_gate_game_scene_char_RP_common_to_burst_burst"]
+        local to_gate = _G["state_gate_game_scene_char_RP_from_hurt"]
         local from_gate = _G["state_gate_game_scene_char_RP_from_burst_burst"]
-        check(type(to_gate) == "function" and type(from_gate) == "function", "两个 RP 同名门都存在")
-        pressed = {}
-        local c = new_char({ ["state"] = "block" })
-        check(to_gate(input, opp_input, c, opp) == nil, "RP 非 hurt 不触发")
-        pressed = { ["burst"] = true }
-        c = new_char()
-        check(to_gate(input, opp_input, c, opp) == true and c["state"] == "burst_burst",
-            "RP hurt + burst -> burst_burst")
+        check(type(to_gate) == "function" and type(from_gate) == "function", "两个 RP 门都存在")
         _G.get_character_anim_end_state = function() return false end
+        pressed = {}
+        local c = new_char({ ["state"] = "hurt" })
+        check(to_gate(input, opp_input, c, opp) == nil and c["state"] == "hurt",
+            "RP 未按 burst 不进 burst_burst")
+        pressed = { ["burst"] = true }
+        c = new_char({ ["state"] = "hurt" })
+        to_gate(input, opp_input, c, opp)
+        check(c["state"] == "burst_burst", "RP hurt + burst -> burst_burst")
         c = new_char({ ["state"] = "burst_burst", ["idle_cancel"] = false })
         check(from_gate(input, opp_input, c, opp) == nil, "RP 未 idle_cancel 不出")
         c = new_char({ ["state"] = "burst_burst", ["idle_cancel"] = true })

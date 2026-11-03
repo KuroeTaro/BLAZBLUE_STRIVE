@@ -28,7 +28,7 @@ extern float shockwave_flash_size;     // 起手中心闪光半径(× R)
 extern float shockwave_fade_power;     // 淡出曲线:越大结尾收得越快
 
 vec4 effect(vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords) {
-    // 0..1 的进度:life 帧对应 0..life-1
+    // 0..1 的进度:life 帧对应 0..life-1(life 就是实际时长,不再做倍速换算)
     float p = clamp(time / max(life - 1.0,1.0),0.0,1.0);
     vec2 g = screen_coords / (resolution.x / 1600.0);
     float d = length(g - center);

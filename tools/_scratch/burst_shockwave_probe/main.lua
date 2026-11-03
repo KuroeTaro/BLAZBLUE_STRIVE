@@ -39,9 +39,11 @@ local function bad(msg) fails = fails + 1; log("  !! " .. tostring(msg)) end
 
 function love.load()
     for _, rel in ipairs({
+        "update_general_use_functions/animator.lua",
         "scenes/_scene_config/_game_scenel_config.lua",
         "draw_general_use_functions.lua",
-        "scenes/game_scene/_common/draw_functions.lua"
+        "scenes/game_scene/_common/draw_functions.lua",
+        "scenes/game_scene/_common/_projectile.lua"
     }) do
         local ok, err = pcall(dofile, REPO .. "/" .. rel)
         log(string.format("load %-52s %s %s", rel, ok and "OK" or "FAIL", ok and "" or tostring(err)))
@@ -122,13 +124,38 @@ function love.load()
     }
     for _, c in ipairs(cases) do
         local obj = {c.x, c.y, 0, 1, 1, 1, 0, 0}
-        local f = 13
+        local f = 4 -- speed=3 后 13 帧已经放完了
         love.graphics.setCanvas(cv)
         love.graphics.clear(0.02, 0.02, 0.03, 1)
         draw_projectile_game_scene_burst_shockwave(shader, obj, f, c.op)
         love.graphics.setCanvas()
         savePng(cv:newImageData(), "case_" .. c.name)
         log(string.format("case %-8s f%d done", c.name, f))
+    end
+
+    -- 4) 攻击判定:按真实 tick 顺序模拟(先判定 enemy_interact,再 projectile update,最后角色 update 生成)
+    log("")
+    log("攻击判定逐帧(判定发生在 animator 之前):")
+    local obj_proj = {0,-345,0,1,1,1,0,0}
+    obj_proj["hitbox_table"] = {}          -- 生成时(0f 之前)是关的
+    local proj_anim = load_game_scene_anim_projectile_burst_shockwave(obj_proj)
+    init_character_anim_without(obj_proj, proj_anim)
+    local alive_frames = {}
+    for tick = 1, 16 do
+        -- 1) 这一 tick 的判定看到的状态
+        local f_seen = obj_proj[8]
+        local alive = obj_proj["hitbox_table"] ~= nil and #obj_proj["hitbox_table"] > 0
+        if alive then alive_frames[#alive_frames + 1] = f_seen end
+        -- 2) 之后才推进动画
+        character_animator(obj_proj, proj_anim)
+        log(string.format("  tick %02d: 判定时 f=%s hitbox=%s -> 推进后 f=%s",
+            tick, tostring(f_seen), tostring(alive), tostring(obj_proj[8])))
+    end
+    log("  有判定的帧: " .. table.concat(alive_frames, ","))
+    local ok2 = #alive_frames == 1 and alive_frames[1] == 2
+    log("  期望只有 2f 有判定: " .. (ok2 and "OK" or "FAIL"))
+    if not ok2 then
+        fails = fails + 1
     end
 
     log("")

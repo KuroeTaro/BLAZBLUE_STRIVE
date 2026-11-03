@@ -139,7 +139,7 @@ function load_game_scene_obj_char_LP()
     -- sub_obj_table
     obj_char_game_scene_char_LP["projectile_front_table"] = {}
     obj_char_game_scene_char_LP["projectile_back_table"] = {}
-    obj_char_game_scene_char_LP["projectile_RC_table"] = {}
+    obj_char_game_scene_char_LP["projectile_burst_RC_table"] = {}
     obj_char_game_scene_char_LP["VFX_HUD_table"] = {}
     obj_char_game_scene_char_LP["VFX_status_front_table"] = {}
     obj_char_game_scene_char_LP["VFX_status_back_table"] = {}
@@ -10077,8 +10077,8 @@ function draw_game_scene_char_LP_shadow()
     draw_game_scene_char_LP()
     -- 所有飞行道具与角色一样获得阴影效果
     love.graphics.setBlendMode("alpha")
-    for i = #obj_char["projectile_RC_table"],1,-1 do
-        obj_char["projectile_RC_table"][i]["draw"]()
+    for i = #obj_char["projectile_burst_RC_table"],1,-1 do
+        obj_char["projectile_burst_RC_table"][i]["draw"]()
     end
     for i = #obj_char["projectile_back_table"],1,-1 do
         obj_char["projectile_back_table"][i]["draw"]()
@@ -10279,8 +10279,8 @@ function draw_game_scene_char_LP_hitbox()
             end
         end
     end
-    for i = 1,#obj_char["projectile_RC_table"] do
-        local current_projectile = obj_char["projectile_RC_table"][i]
+    for i = 1,#obj_char["projectile_burst_RC_table"] do
+        local current_projectile = obj_char["projectile_burst_RC_table"][i]
         for j = 1,#current_projectile["hitbox_table"] do
             local current_hitbox = current_projectile["hitbox_table"][j]
             if current_hitbox then
@@ -10298,11 +10298,11 @@ function draw_game_scene_char_LP_hitbox()
 end
 -- projectile
 function update_game_scene_char_LP_projectile()
-    for i = #obj_char_game_scene_char_LP["projectile_RC_table"],1,-1 do -- 反向遍历，便于删除元素
-        local object = obj_char_game_scene_char_LP["projectile_RC_table"][i]
+    for i = #obj_char_game_scene_char_LP["projectile_burst_RC_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["projectile_burst_RC_table"][i]
         object["update"](object)
         if object["life"] <= 0 then
-            table.remove(obj_char_game_scene_char_LP["projectile_RC_table"],i) -- 寿命耗尽，从列表中移除
+            table.remove(obj_char_game_scene_char_LP["projectile_burst_RC_table"],i) -- 寿命耗尽，从列表中移除
         end
     end
     for i = #obj_char_game_scene_char_LP["projectile_front_table"],1,-1 do -- 反向遍历，便于删除元素
@@ -10333,8 +10333,8 @@ function draw_game_scene_char_LP_projectile_back()
     end
 end
 function draw_game_scene_char_LP_projectile_RC()
-    for i = #obj_char_game_scene_char_LP["projectile_RC_table"],1,-1 do -- 反向遍历，便于删除元素
-        local object = obj_char_game_scene_char_LP["projectile_RC_table"][i]
+    for i = #obj_char_game_scene_char_LP["projectile_burst_RC_table"],1,-1 do -- 反向遍历，便于删除元素
+        local object = obj_char_game_scene_char_LP["projectile_burst_RC_table"][i]
         object["draw"]()
     end
 end

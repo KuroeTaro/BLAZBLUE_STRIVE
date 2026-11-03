@@ -439,16 +439,16 @@ function draw_game_scene_act_common(obj,image_sprite_sheet)
     end
     draw_2d_image_sprite_batch(obj,image_sprite_sheet,""..f.."")
 end
--- glsl 程序化粒子
--- DRAW_VFX_PARTICAL_3D_CANVAS 固定贴在 (0,0),不随摄像机移动。
--- 每次绘制都把摄像机位置与特效平面 z 送进 shader,由 shader 重建世界空间粒子场,
--- 因此摄像机横移/推拉时粒子会产生真实视差,而画面四周永远是满的。
--- obj_VFX[3] 是特效所在的世界平面 z
--- time 是逻辑帧计数(顿帧时调用方不推进它,闪烁也会跟着冻结)
--- opacity 是整体不透明度(亮度包络)
--- 这版 LOVE 的 Shader:send 不接受「多个数字」形式,vec 必须给表;
--- 下面两张表复用同一份,避免每帧新建(项目开了 nuGC)
+-- glsl_draws
 function draw_VFX_game_scene_partical_3d_canvas(obj_VFX,shader,time,opacity)
+    -- DRAW_VFX_PARTICAL_3D_CANVAS 固定贴在 (0,0),不随摄像机移动。
+    -- 每次绘制都把摄像机位置与特效平面 z 送进 shader,由 shader 重建世界空间粒子场,
+    -- 因此摄像机横移/推拉时粒子会产生真实视差,而画面四周永远是满的。
+    -- obj_VFX[3] 是特效所在的世界平面 z
+    -- time 是逻辑帧计数(顿帧时调用方不推进它,闪烁也会跟着冻结)
+    -- opacity 是整体不透明度(亮度包络)
+    -- 这版 LOVE 的 Shader:send 不接受「多个数字」形式,vec 必须给表;
+    -- 下面两张表复用同一份,避免每帧新建(项目开了 nuGC)
     local obj_camera = obj_stage_game_scene_camera
     local camera_pos = {obj_camera[1],obj_camera[2],obj_camera[3]}
     local width,height = DRAW_VFX_PARTICAL_3D_CANVAS:getDimensions()
@@ -469,32 +469,33 @@ function draw_VFX_game_scene_partical_3d_canvas(obj_VFX,shader,time,opacity)
     love.graphics.draw(DRAW_VFX_PARTICAL_3D_CANVAS)
     love.graphics.setBlendMode("alpha")
 end
--- partical_ver1_counter:12 帧渐入 + 24 帧渐出,总共 36 帧
--- (_VFX.lua 里 counter 粒子 VFX 的 life / 帧动画长度也同步改成 36)
 function draw_VFX_game_scene_partical_3d_counter_opacity(frame)
+    -- partical_ver1_counter:12 帧渐入 + 24 帧渐出,总共 36 帧
+    -- (_VFX.lua 里 counter 粒子 VFX 的 life / 帧动画长度也同步改成 36)
     return math.min(1.00,math.max(0.00,(24 - frame)/24))*0.425
 end
--- overdrive_badge_partical:徽章收缩聚集 / 放大爆发 + 冲击波
--- 粒子部分:一张预生成的 quad mesh(数量见 OVERDRIVE_BADGE_PARTICAL_CONFIG),
---   位置/尺寸/拖尾全部由 shaders/overdrive_badge_particle.glsl 的顶点着色器
---   按粒子编号 + 帧号算出来,所以只占一次 draw call,CPU 侧没有逐粒子开销。
--- 顶点数据直接塞进 LOVE 的默认顶点格式(VertexPosition = 角点、VertexTexCoord.x = 粒子编号),
--- 不使用自定义 attribute,所以 11.x / 12.0 都不会有顶点格式的弃用警告,
--- 也不依赖 12.0 里自定义 attribute 的绑定位置。
--- 冲击波 / 向内收束充能波部分:shaders/overdrive_badge_partical_3d.glsl 全屏逐像素求值。
--- 充能波在收缩段(0-28 帧)从外圈一层层往中心砸,28 帧撞进中心后接爆发冲击波;
---   条数 / 飞行速度 / 整体模糊分别由 charge_count / charge_speed / charge_softness 控制。
--- center / radius 每帧用 3D 投影重算,所以两者都跟着角色位置与镜头推拉走;
--- 直接以 add 混合画在屏幕上,和原 badge 同属角色背侧层。
--- 所有可调数值都来自 _overdrive_badge_partical_config.lua,这里只负责送 uniform。
--- 三张表复用同一份,避免每帧新建(项目开了 nuGC)
-local VFX_GAME_SCENE_BADGE_CENTER = {0,0}
-local VFX_GAME_SCENE_BADGE_RESOLUTION = {0,0}
-local VFX_GAME_SCENE_BADGE_PARTICLE_MESH = nil
-local VFX_GAME_SCENE_BADGE_PARTICLE_MESH_COUNT = 0
+
 function common_game_scene_get_overdrive_badge_particle_mesh()
+    -- overdrive_badge_partical:徽章收缩聚集 / 放大爆发 + 冲击波
+    -- 粒子部分:一张预生成的 quad mesh(数量见 OVERDRIVE_BADGE_PARTICAL_CONFIG),
+    --   位置/尺寸/拖尾全部由 shaders/overdrive_badge_particle.glsl 的顶点着色器
+    --   按粒子编号 + 帧号算出来,所以只占一次 draw call,CPU 侧没有逐粒子开销。
+    -- 顶点数据直接塞进 LOVE 的默认顶点格式(VertexPosition = 角点、VertexTexCoord.x = 粒子编号),
+    -- 不使用自定义 attribute,所以 11.x / 12.0 都不会有顶点格式的弃用警告,
+    -- 也不依赖 12.0 里自定义 attribute 的绑定位置。
+    -- 冲击波 / 向内收束充能波部分:shaders/overdrive_badge_partical_3d.glsl 全屏逐像素求值。
+    -- 充能波在收缩段(0-28 帧)从外圈一层层往中心砸,28 帧撞进中心后接爆发冲击波;
+    --   条数 / 飞行速度 / 整体模糊分别由 charge_count / charge_speed / charge_softness 控制。
+    -- center / radius 每帧用 3D 投影重算,所以两者都跟着角色位置与镜头推拉走;
+    -- 直接以 add 混合画在屏幕上,和原 badge 同属角色背侧层。
+    -- 所有可调数值都来自 _overdrive_badge_partical_config.lua,这里只负责送 uniform。
+    -- 三张表复用同一份,避免每帧新建(项目开了 nuGC)
     local config = OVERDRIVE_BADGE_PARTICAL_CONFIG
     local particle_count = config.particle_count
+    local VFX_GAME_SCENE_BADGE_CENTER = {0,0}
+    local VFX_GAME_SCENE_BADGE_RESOLUTION = {0,0}
+    local VFX_GAME_SCENE_BADGE_PARTICLE_MESH = nil
+    local VFX_GAME_SCENE_BADGE_PARTICLE_MESH_COUNT = 0
     if VFX_GAME_SCENE_BADGE_PARTICLE_MESH ~= nil
     and VFX_GAME_SCENE_BADGE_PARTICLE_MESH_COUNT == particle_count then
         return VFX_GAME_SCENE_BADGE_PARTICLE_MESH
@@ -523,8 +524,10 @@ function draw_VFX_game_scene_overdrive_badge_partical(
 )
     local obj_camera = obj_stage_game_scene_camera
     local width,height = love.graphics.getDimensions()
-    local projection = draw_resolution_correction(800)/(obj_VFX[3] - obj_camera[3])
     local coords = draw_3d_point_to_2D(obj_camera,obj_VFX)
+    local projection = draw_resolution_correction(800)/(obj_VFX[3] - obj_camera[3])
+    local VFX_GAME_SCENE_BADGE_CENTER = {0,0}
+    local VFX_GAME_SCENE_BADGE_RESOLUTION = {0,0}
     VFX_GAME_SCENE_BADGE_CENTER[1] = coords[1]
     VFX_GAME_SCENE_BADGE_CENTER[2] = coords[2]
     VFX_GAME_SCENE_BADGE_RESOLUTION[1] = width

@@ -4695,9 +4695,14 @@ function load_game_scene_anim_char_common_burst_burst(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 70
+    for i = 41,57 do
+        res[i] = function()
+            update_before_land()
+        end
+    end
     res[0] = function()
         -- state
-        self_side_obj_char["y"] = math.min(self_side_obj_char["y"],-265)
+        self_side_obj_char["y"] = math.min(self_side_obj_char["y"],-150)
         self_side_obj_char["sprite_sheet"] = "burst_overdrive_RC_air"
         self_side_obj_char["height"] = "air"
         self_side_obj_char["hurt_state_target"] = "idle" -- idle_unblock_punish_counter_GP_parry
@@ -4705,7 +4710,7 @@ function load_game_scene_anim_char_common_burst_burst(
         self_side_obj_char["idle_cancel"] = false
         -- state_number
         if self_side_height ~= "air" then
-            self_side_obj_char["velocity"] = {0,-15}
+            self_side_obj_char["velocity"] = {0,-17.5}
         else
             self_side_obj_char["velocity"] = {0,0}
         end
@@ -4783,6 +4788,10 @@ function load_game_scene_anim_char_common_burst_burst(
         )
         -- draw_correction
         self_side_obj_char[8] = 5
+        -- insert_projectile
+        insert_projectile_game_scene_char_common_burst_shockwave(
+            self_side_obj_char,opponent_side_obj_char
+        )
         -- insert_VFX
         self_side_obj_char["VFX_common_front_table"] = {}
         self_side_obj_char["VFX_common_back_table"] = {}
@@ -4844,7 +4853,7 @@ function load_game_scene_anim_char_common_burst_burst(
     end
     res[43] = function()
         -- draw_correction
-        self_side_obj_char[8] = 6
+        self_side_obj_char[8] = 9
         -- update
         update_before_land()
     end

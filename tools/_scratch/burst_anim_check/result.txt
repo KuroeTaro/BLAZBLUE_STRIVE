@@ -1,6 +1,12 @@
+  burst_to_8_jump pushbox = {0,-100,120,200} ok
+  burst_to_8_jump anchor = {350,430} ok
+  burst_to_8_jump hurtbox = {{0,-180,200,380}} ok
+  burst_to_stand_idle pushbox = {0,-185,120,370} ok
+  burst_to_stand_idle anchor = {325,480} ok
+  burst_to_stand_idle hurtbox = {{0,-190,180,380}} ok
 anim_length = 70
 有回调的帧: 0,10,13,16,19,2,22,25,28,31,34,37,4,40,43,45,50,54,58,59,6,64,70,8
-anim[64] = function: 0x01a63687e028
+anim[64] = function: 0x014d0ab576c0
 最终 idle_cancel = true , f = 101
 idle_cancel 首次为 true 的帧: 82
 碰撞检测: nil

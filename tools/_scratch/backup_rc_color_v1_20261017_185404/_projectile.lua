@@ -103,7 +103,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     local hit_side = hit_side_obj_char["player_side"]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     -- clear_projectile_RC_table
-    hit_side_obj_char["projectile_RC_table"] = {}
+    hit_side_obj_char["projectile_burst_RC_table"] = {}
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 30
@@ -312,7 +312,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
     obj_projectile[2] = obj_projectile["y"] - 600
     obj_projectile[5] = hit_side_obj_char[5]
     -- insert_projectile
-    table.insert(hit_side_obj_char["projectile_RC_table"],obj_projectile)
+    table.insert(hit_side_obj_char["projectile_burst_RC_table"],obj_projectile)
 end
 -- insert_projectile_game_scene_char_common_RC_shockwave_blue
 -- 1-8 type life x y velocity projectile_clash_type f
@@ -328,7 +328,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
     local shockwave_color = {0.35,0.65,1.00}
     -- clear_projectile_RC_table
-    hit_side_obj_char["projectile_RC_table"] = {}
+    hit_side_obj_char["projectile_burst_RC_table"] = {}
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 30
@@ -407,7 +407,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
     obj_projectile[2] = obj_projectile["y"] - 600
     obj_projectile[5] = hit_side_obj_char[5]
     -- insert_projectile
-    table.insert(hit_side_obj_char["projectile_RC_table"],obj_projectile)
+    table.insert(hit_side_obj_char["projectile_burst_RC_table"],obj_projectile)
 end
 -- insert_projectile_game_scene_char_common_RC_shockwave_purple
 -- 1-8 type life x y velocity projectile_clash_type f
@@ -423,7 +423,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
     local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_RC_shockwave
     local shockwave_color = {0.78,0.40,1.00}
     -- clear_projectile_RC_table
-    hit_side_obj_char["projectile_RC_table"] = {}
+    hit_side_obj_char["projectile_burst_RC_table"] = {}
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 30
@@ -502,7 +502,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
     obj_projectile[2] = obj_projectile["y"] - 600
     obj_projectile[5] = hit_side_obj_char[5]
     -- insert_projectile
-    table.insert(hit_side_obj_char["projectile_RC_table"],obj_projectile)
+    table.insert(hit_side_obj_char["projectile_burst_RC_table"],obj_projectile)
 end
 -- insert_projectile_game_scene_char_common_RC_shockwave_yellow
 -- 1-8 type life x y velocity projectile_clash_type f
@@ -529,7 +529,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
     local hit_side = hit_side_obj_char["player_side"]
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     -- clear_projectile_RC_table
-    hit_side_obj_char["projectile_RC_table"] = {}
+    hit_side_obj_char["projectile_burst_RC_table"] = {}
     -- common
     obj_projectile["type"] = "projectile"
     obj_projectile["life"] = 30
@@ -718,7 +718,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
     obj_projectile[2] = obj_projectile["y"] - 600
     obj_projectile[5] = hit_side_obj_char[5]
     -- insert_projectile
-    table.insert(hit_side_obj_char["projectile_RC_table"],obj_projectile)
+    table.insert(hit_side_obj_char["projectile_burst_RC_table"],obj_projectile)
 end
 function load_game_scene_anim_char_RC_red_projectile_ground_block(
     hit_side_obj_char,hurt_side_obj_char,obj_projectile,fix_direction,velocity_center,sprite_sheet,height,state_cache,
