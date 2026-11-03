@@ -1,5 +1,5 @@
 -- RP -> RP
--- ASSET_DATA[12] -> ASSET_DATA[12]
+-- ASSET_DATA[10] -> ASSET_DATA[12]
 -- "R" -> "R"
 -- obj_char_game_scene_char_RP = {0,0,0,1,-1,1,0,0} -> obj_char_game_scene_char_LP = {0,0,0,1,-1,1,0,0}
 -- obj_char_game_scene_char_RP["x"] = 320 -> obj_char_game_scene_char_LP["x"] = 320
@@ -1006,7 +1006,7 @@ function load_game_scene_wallbreak_end_init_RP()
 end
 -- order_load
 function order_load_game_scene_char_RP_frames(load_order)
-    local PLAYER_ASSET_DATA = ASSET_DATA[12]
+    local PLAYER_ASSET_DATA = ASSET_DATA[10]
     local switch =
     {
         -- universal 0_ 通用受伤/击飞 part1
@@ -3270,7 +3270,7 @@ function state_machine_char_game_scene_char_RP_input_sys_cache()
             if test_input_sys_press_or_hold(self_side_input["SP"]) then
                 self_side_obj_char["input_sys_cache"]["SP"] = true
             end
-            if test_input_sys_press(self_side_input["burst_overdrive_RC"]) then
+            if test_input_sys_press(self_side_input["RC"]) then
                 self_side_obj_char["input_sys_cache"]["burst_overdrive_RC"] = true
             end
             if test_input_sys_press(self_side_input["burst"]) then
@@ -3361,6 +3361,7 @@ function init_input_sys_cache_negative_edge_RP(obj_char)
 end
 -- 状态机连接门
 -- to_gate
+-- ground
 function state_gate_game_scene_char_RP_common_ground_to_dash_move_PP(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
@@ -4374,13 +4375,19 @@ function state_gate_game_scene_char_RP_common_air_to_special_move_hold_ver(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
 end
+-- burst
+function state_gate_game_scene_char_RP_common_to_burst_burst(
+    self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+)
+end
+-- RC
 function state_gate_game_scene_char_RP_common_to_burst_RC_red(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
     if self_side_obj_char["heat_gauge"][1] < 100.0 then
         return
     end
-    if test_input_sys_press(self_side_input["burst_overdrive_RC"]) then
+    if test_input_sys_press(self_side_input["RC"]) then
         self_side_obj_char["velocity_cache"] = {0,0}
         if test_input_sys_press_or_hold(self_side_input["dash"]) then
             if test_input_sys_press_or_hold(self_side_input["up"]) then
@@ -4430,7 +4437,7 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_blue(
     if self_side_obj_char["heat_gauge"][1] < 100.0 then
         return
     end
-    if test_input_sys_press(self_side_input["burst_overdrive_RC"]) then
+    if test_input_sys_press(self_side_input["RC"]) then
         local forward_dash_state = {
             ["6dash_dash"] = true,
             ["6dash_dash_cancel"] = true,
@@ -4503,7 +4510,7 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_purple(
     if self_side_obj_char["heat_gauge"][1] < 100.0 then
         return
     end
-    if test_input_sys_press(self_side_input["burst_overdrive_RC"]) then
+    if test_input_sys_press(self_side_input["RC"]) then
         self_side_obj_char["velocity_cache"] = {0,0}
         if test_input_sys_press_or_hold(self_side_input["dash"]) then
             if test_input_sys_press_or_hold(self_side_input["up"]) then
@@ -4553,7 +4560,7 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_yellow(
     if self_side_obj_char["heat_gauge"][1] < 100.0 then
         return
     end
-    if test_input_sys_press(self_side_input["burst_overdrive_RC"])
+    if test_input_sys_press(self_side_input["RC"])
     -- and self_side_obj_char["height"] ~= "air"
     then
         self_side_obj_char["velocity"] = {0,0}
@@ -4585,6 +4592,7 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_yellow(
         return true
     end
 end
+-- overdrive
 function state_gate_game_scene_char_RP_common_to_burst_overdrive(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char,type
 )
