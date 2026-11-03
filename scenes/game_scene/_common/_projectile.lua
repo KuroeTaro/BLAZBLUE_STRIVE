@@ -1605,8 +1605,8 @@ end
 function load_game_scene_anim_projectile_burst_shockwave(obj_projectile)
     local res = {}
     res["prop_f"] = "f"
-    res["anim_length"] = 12
-    for i = 0,12 - 1 do
+    res["anim_length"] = 24
+    for i = 0,24 - 1 do
         res[i + 1] = function()
             obj_projectile[8] = i
         end
@@ -1654,7 +1654,7 @@ function insert_projectile_game_scene_char_common_burst_shockwave(hit_side_obj_c
     hit_side_obj_char["projectile_burst_RC_table"] = {}
     -- common
     obj_projectile["type"] = "projectile"
-    obj_projectile["life"] = 12
+    obj_projectile["life"] = 24
     obj_projectile["x"] = hit_side_obj_char["x"]
     obj_projectile["y"] = hit_side_obj_char["y"]
     obj_projectile["velocity"] = {hit_side_obj_char["velocity"][1],hit_side_obj_char["velocity"][2]}
