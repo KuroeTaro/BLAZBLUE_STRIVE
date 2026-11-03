@@ -4931,14 +4931,9 @@ end
 function state_gate_game_scene_char_LP_from_active_FD_block(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
-    -- 离开 FD 时立刻收掉屏障
-    local function clear_FD_block_VFX()
-        if self_side_obj_char["active_FD_block_VFX"] ~= nil then
-            self_side_obj_char["active_FD_block_VFX"]["life"] = 0
-            self_side_obj_char["active_FD_block_VFX"] = nil
-        end
-    end
-    -- FD 中可以直接取消成 Overdrive / BRC
+    local holding_FD =
+        test_input_sys_press_or_hold(self_side_input["correction_left"])
+        or test_input_sys_press_or_hold(self_side_input["correction_right"])
     if state_gate_game_scene_char_LP_common_to_burst_overdrive(
         self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char,"overdrive"
     ) then
@@ -4951,23 +4946,8 @@ function state_gate_game_scene_char_LP_from_active_FD_block(
         clear_FD_block_VFX()
         return true
     end
-    -- 资源:按住期间每帧扣 heat,扣光强制解除
-    self_side_obj_char["heat_gauge"][1] = math.max(
-        0.0,self_side_obj_char["heat_gauge"][1] - 0.2
-    )
-    if self_side_obj_char["heat_gauge"][1] <= 0.0 then
-        clear_FD_block_VFX()
-        return state_gate_game_scene_char_LP_from_active_FD_block_to_idle(
-            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
-        )
-    end
-    -- 松开 FD 键 或 松开防御方向 -> 回中立
-    local holding_FD =
-        test_input_sys_press_or_hold(self_side_input["correction_left"])
-        or test_input_sys_press_or_hold(self_side_input["correction_right"])
-    if (not holding_FD)
-    or (not common_game_scene_check_block_direction(self_side_obj_char)) then
-        clear_FD_block_VFX()
+    if (not holding_FD) or (not common_game_scene_check_block_direction(self_side_obj_char))
+    then
         return state_gate_game_scene_char_LP_from_active_FD_block_to_idle(
             self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
         )

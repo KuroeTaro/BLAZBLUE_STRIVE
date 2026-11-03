@@ -4675,6 +4675,9 @@ function load_game_scene_anim_char_common_active_FD_block(
             obj_char["friction"] = 7
             obj_char["gravity"] = 2.5
         end
+        obj_char["heat_gauge"][1] = math.max(
+            0.0,obj_char["heat_gauge"][1] - 0.5
+        )
         -- enemy_friend_interaction
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
