@@ -80,6 +80,10 @@ function load_game_scene_common_shader(i)
         ) end,
         [8] = function() shader_game_scene_overdrive_badge_particle = love.graphics.newShader(
             "shaders/overdrive_badge_particle.glsl"
+        ) end,
+        -- burst shockwave 飞行道具(程序化冲击波,不需要贴图)
+        [9] = function() shader_game_scene_burst_shockwave_projectile_3d = love.graphics.newShader(
+            "shaders/burst_shockwave_projectile_3d.glsl"
         ) end
     }
     local this_function = switch[i]

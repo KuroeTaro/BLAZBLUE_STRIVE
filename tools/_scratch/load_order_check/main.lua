@@ -19,6 +19,9 @@ local function bad(msg) fail = fail + 1; log("  !! " .. tostring(msg)) end
 ----------------------------------------------------------------------
 local FILES = {
     "scenes/game_scene/_common/load_function.lua",
+    "scenes/game_scene/_common/init.lua",
+    "scenes/game_scene/_common/draw_functions.lua",
+    "scenes/game_scene/_common/_projectile.lua",
     "scenes/game_scene/_common/_projectile.lua",
     "scenes/game_scene/characters/TRM/left.lua",
     "scenes/game_scene/characters/TRM/right.lua",
@@ -160,6 +163,10 @@ local function install_stubs()
     love.audio.newSource = function(a, b) assert(a ~= nil, "newSource(nil)"); return { source = true } end
 
     _G.common_sprite_sheet_load = stub_sprite_sheet_load
+    _G.requested_shaders = {}
+    _G.load_game_scene_common_shader = function(i)
+        _G.requested_shaders[#_G.requested_shaders + 1] = i
+    end
     _G.update_SFX_VOLUME = function() end
     _G.update_BGM_VOLUME = function() end
     -- 其余未定义全局:返回 no-op 函数(只影响初始化类调用,不影响贴图 key 检查)
@@ -246,6 +253,14 @@ function love.load()
     -- 直接读真实的 load_game_scene_prep 里的两张表,避免自检表漂移
     derive_tables_from_load_function()
     run_orders()
+
+    log("== 3.5 shader 加载顺序 ==")
+    local shader_set = {}
+    for _, i in ipairs(_G.requested_shaders) do shader_set[i] = true end
+    local missing = {}
+    for i = 1,9 do if not shader_set[i] then missing[#missing + 1] = i end end
+    log("  请求的 shader: " .. table.concat(_G.requested_shaders, ","))
+    if #missing > 0 then bad("有 shader 没被排进加载顺序: " .. table.concat(missing, ",")) end
 
     log("== 4. 关键变量 ==")
     log("  image_sprite_sheet_projectile_game_scene_RC_shockwave = " ..

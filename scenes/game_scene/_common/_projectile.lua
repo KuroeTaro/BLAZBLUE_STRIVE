@@ -1600,6 +1600,25 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_air_and_OTG_hurt(
     end
     return res
 end
+-- burst shockwave 的帧时间轴:0..life-1 每帧推进一步,直接喂给 shader 的 time
+-- (和 load_game_scene_anim_projectile_RC_main 同构,只是步长改成 1 帧、长度取自 config)
+function load_game_scene_anim_projectile_burst_shockwave(obj_projectile)
+    local life = BURST_SHOCKWAVE_PROJECTILE_CONFIG.life
+    local res = {}
+    res["prop_f"] = "f"
+    res["anim_length"] = life
+    for i = 0,life - 1 do
+        res[i + 1] = function()
+            obj_projectile[8] = i
+        end
+    end
+    res[1] = function()
+        -- collision:和 RC_shockwave 一样,第 1 帧之后不再判定,只作为视觉
+        obj_projectile["hitbox_table"] = {}
+        obj_projectile[8] = 0
+    end
+    return res
+end
 -- insert_projectile_game_scene_char_common_burst_shockwave
 -- 1-8 type life x y velocity projectile_clash_type f
 -- enemy_interact_function		hitbox hit_guard_type hit_damage hit_damage_correction_factor
@@ -1617,7 +1636,210 @@ end
 -- update/update_sub_frame/draw
 -- uncommon
 -- projectile_init_fix
+-- 与 RC_shockwave_yellow 只有两处不同:
+--   1) 受击 / 格挡动画用 burst_shockwave_projectile_* 那一套;
+--   2) 画面不画序列帧,由 shaders/burst_shockwave_projectile_3d.glsl 程序化生成,
+--      数值见 BURST_SHOCKWAVE_PROJECTILE_CONFIG。
 function insert_projectile_game_scene_char_common_burst_shockwave(hit_side_obj_char,hurt_side_obj_char)
+    local obj_projectile = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
+    -- 画面由 shader 程序化生成,数值来自 BURST_SHOCKWAVE_PROJECTILE_CONFIG
+    local config = BURST_SHOCKWAVE_PROJECTILE_CONFIG
+    local shader = shader_game_scene_burst_shockwave_projectile_3d
+    local hit_side = hit_side_obj_char["player_side"]
+    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
+    -- clear_projectile_RC_table
+    hit_side_obj_char["projectile_RC_table"] = {}
+    -- common
+    obj_projectile["type"] = "projectile"
+    obj_projectile["life"] = config.life
+    obj_projectile["x"] = hit_side_obj_char["x"]
+    obj_projectile["y"] = hit_side_obj_char["y"]
+    obj_projectile["velocity"] = {hit_side_obj_char["velocity"][1],hit_side_obj_char["velocity"][2]}
+    obj_projectile["projectile_clash_type"] = 0 -- -1: 只要接触双方同时必然消失 0: 不与其他飞道交互 1-3：飞行道具等级
+    obj_projectile["f"] = -1
+    obj_projectile[3] = hit_side_obj_char[3]
+    -- enemy_interact_function
+    obj_projectile["hitbox_table"] = {{0,0,1000,800},{0,0,800,1000}}
+    obj_projectile["hit_guard_type"] = "all"
+    obj_projectile["hit_damage"] = 0
+    obj_projectile["hit_damage_correction_factor"] = 1
+    obj_projectile["hit_heat_gain"] = 0
+    obj_projectile["hit_wallbreak_damage"] = 0
+    obj_projectile["hurt_heat_gain"] = 0
+    obj_projectile["blocked_heat_gain"] = 0
+    obj_projectile["block_heat_gain"] = 0
+    obj_projectile["block_risk_gauge_gain"] = 0
+    obj_projectile["FD_block_heat_drain"] = 0
+    obj_projectile["stand_hurt_animation"] = load_game_scene_anim_char_burst_shockwave_projectile_ground_air_and_OTG_hurt(
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,"0_general_hurt_launched_high","air","knockdown_recovery",
+        30,5,1.00,-2.5,0.5,1.00,
+        nil,
+        load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
+            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
+            nil,nil,nil,nil,nil,nil,
+            nil,nil,nil,nil,function() end
+        ),
+        nil,nil,function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
+    )
+    obj_projectile["stand_block_animation"] = load_game_scene_anim_char_burst_shockwave_projectile_ground_block(
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,"4_stand_block_high","stand","5_stand_idle",
+        42.5,5,1.00,0,2.5,1.00,
+        nil,nil,nil,nil,function() end
+    )
+    obj_projectile["crouch_hurt_animation"] = load_game_scene_anim_char_burst_shockwave_projectile_ground_air_and_OTG_hurt(
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,"0_general_hurt_launched_high","air","knockdown_recovery",
+        30,5,1.00,-2.5,0.5,1.00,
+        nil,
+        load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
+            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
+            nil,nil,nil,nil,nil,nil,
+            nil,nil,nil,nil,function() end
+        ),
+        nil,nil,function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
+    )
+    obj_projectile["crouch_block_animation"] = load_game_scene_anim_char_burst_shockwave_projectile_ground_block(
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,"1_crouch_block","crouch","1_2_3_crouch",
+        42.5,5,1.00,0,2.5,1.00,
+        nil,nil,nil,nil,function() end
+    )
+    obj_projectile["air_hurt_animation"] = load_game_scene_anim_char_burst_shockwave_projectile_ground_air_and_OTG_hurt(
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,"0_general_hurt_launched_high","air","knockdown_recovery",
+        30,5,1.00,-2.5,1.0,1.00,
+        nil,
+        load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
+            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
+            nil,nil,nil,nil,nil,nil,
+            nil,nil,nil,nil,function() end
+        ),
+        nil,nil,function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
+    )
+    obj_projectile["air_block_animation"] = load_game_scene_anim_char_burst_shockwave_projectile_air_block(
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,"1_4_7_air_block","air","5_stand_idle",
+        7.5,5,1.00,-7.5,2.5,1.00,
+        nil,nil,nil,nil,function() end
+    )
+    obj_projectile["OTG_hurt_animation"] = load_game_scene_anim_char_burst_shockwave_projectile_ground_air_and_OTG_hurt(
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,"0_general_hurt_launched_high","air","knockdown_recovery",
+        30,5,1.00,-2.5,1.0,1.00,
+        nil,
+        load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
+            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
+            nil,nil,nil,nil,nil,nil,
+            nil,nil,nil,nil,function() end
+        ),
+        nil,nil,function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
+    )
+    obj_projectile["wallstick_hurt_animation"] = load_game_scene_anim_char_burst_shockwave_projectile_ground_air_and_OTG_hurt(
+        hit_side_obj_char,hurt_side_obj_char,obj_projectile,true,nil,"0_general_hurt_launched_high","air","knockdown_recovery",
+        30,5,1.00,-2.5,1.0,1.00,
+        nil,
+        load_game_scene_anim_char_common_0_general_hurt_soft_recovery_ground(
+            hit_side_obj_char,hurt_side_obj_char,"0_general_hurt_soft_recovery_ground","stand","5_stand_idle",
+            nil,nil,nil,nil,nil,nil,
+            nil,nil,nil,nil,function() end
+        ),
+        nil,nil,function() hurt_side_obj_char["y"] = math.min(hurt_side_obj_char["y"],-200) end
+    )
+    obj_projectile["projectile_active"] = true
+    obj_projectile["projectile_counter_ver_function"] = function() end
+    obj_projectile["hit_VFX_insert_function"] = function() end
+    -- 目前没有 burst 专用的 block VFX,沿用 RC_yellow 的(同一套 block_ver1 通用特效)
+    obj_projectile["hurt_block_VFX_insert_function"] = insert_VFX_game_scene_char_block_RC_yellow
+    obj_projectile["hit_SFX"] = hit_side_move_SFX_table["burst"]
+    obj_projectile["hit_block_SFX"] = hit_side_move_SFX_table["burst"]
+    obj_projectile["hit_counter_SFX"] = hit_side_move_SFX_table["burst"]
+    obj_projectile["hit_whiff_SFX"] = hit_side_move_SFX_table["burst"]
+    obj_projectile["enemy_interact_function"] = function()
+        -- if_hit
+        if collision_uncondicational_hit_confirm_test(obj_projectile,hurt_side_obj_char)
+        and obj_projectile["projectile_active"] and (not hurt_side_obj_char["strike_inv"]) then
+            -- projectile_active
+            obj_projectile["projectile_active"] = false
+            -- block_test
+            local block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
+            -- risk_gauge
+            if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
+                hurt_side_obj_char["hurt_state"] = "counter"
+            end
+            -- insert_projectile_VFX_SFX_counter_apply
+            if hurt_side_obj_char["hurt_state"] == "counter" then -- idle_unblock_punish_counter_GP_parry
+                obj_projectile["projectile_counter_ver_function"]()
+                obj_projectile["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
+                play_obj_audio(obj_projectile["hit_counter_SFX"])
+                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
+            elseif not block_bool then
+                obj_projectile["hit_VFX_insert_function"](hit_side_obj_char,hurt_side_obj_char)
+                play_obj_audio(obj_projectile["hit_SFX"])
+                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
+            else
+                play_obj_audio(obj_projectile["hit_block_SFX"])
+                stop_obj_audio(obj_projectile["hit_whiff_SFX"])
+            end
+            -- common_hurt_function
+            common_game_scene_projectile_RC_red_yellow_hurt_function(
+                hit_side_obj_char,hurt_side_obj_char,obj_projectile
+            )
+        end
+    end
+    -- animation
+        -- projectile_animation
+    obj_projectile["projectile_animation"] = load_game_scene_anim_projectile_burst_shockwave(obj_projectile)
+    init_character_anim_without(
+        obj_projectile,obj_projectile["projectile_animation"]
+    )
+        -- camera_animation
+    obj_projectile["camera_x_shake_anim"] = nil
+    obj_projectile["camera_y_shake_anim"] = nil
+    obj_projectile["camera_enclosing_anim"] = nil
+    obj_projectile["enclose_position_offset"] = {0,0,0}
+    -- update
+    obj_projectile["update"] = function()
+        if hit_side_obj_char["height"] == "air" then
+            obj_projectile["y_offset"] = 150
+        else
+            obj_projectile["y_offset"] = 280
+        end
+        obj_projectile["x"] = hit_side_obj_char["x"]
+        obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
+        character_animator(
+            obj_projectile,obj_projectile["projectile_animation"]
+        )
+        obj_projectile["life"] = obj_projectile["life"] - 1
+    end
+    -- update_sub_frame
+    obj_projectile["update_sub_frame"] = function()
+        obj_projectile["x"] = hit_side_obj_char["x"]
+        obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
+    end
+    -- draw
+    obj_projectile["draw"] = function()
+        -- [1][2] 直接放世界坐标:shader 自己按 center 求值,不需要序列帧的锚点偏移
+        obj_projectile[1] = obj_projectile["x"]
+        obj_projectile[2] = obj_projectile["y"]
+        obj_projectile[5] = hit_side_obj_char[5]
+        -- 画角色阴影时 projectile["draw"] 也会被调用一次(画进 DRAW_CHARACTER_CANVAS),
+        -- 全屏 shader 会把那张 canvas 的 alpha 填满 -> 只在主画布(getCanvas() == nil)上画
+        if love.graphics.getCanvas() == nil then
+            draw_projectile_game_scene_burst_shockwave(
+                shader,obj_projectile,obj_projectile[8],obj_projectile[4]
+            )
+        end
+    end
+    -- uncommon_nil
+    -- projectile_init_fix
+    if hit_side_obj_char["height"] == "air" then
+        obj_projectile["y_offset"] = 150
+    else
+        obj_projectile["y_offset"] = 280
+    end
+    obj_projectile["x"] = hit_side_obj_char["x"]
+    obj_projectile["y"] = hit_side_obj_char["y"] - obj_projectile["y_offset"]
+    obj_projectile[1] = obj_projectile["x"]
+    obj_projectile[2] = obj_projectile["y"]
+    obj_projectile[5] = hit_side_obj_char[5]
+    -- insert_projectile
+    table.insert(hit_side_obj_char["projectile_RC_table"],obj_projectile)
 end
 function load_game_scene_anim_char_burst_shockwave_projectile_ground_block(
     hit_side_obj_char,hurt_side_obj_char,obj_projectile,fix_direction,velocity_center,sprite_sheet,height,state_cache,

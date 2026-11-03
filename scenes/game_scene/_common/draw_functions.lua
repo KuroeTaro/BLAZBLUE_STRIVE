@@ -582,3 +582,45 @@ function draw_VFX_game_scene_overdrive_badge_partical(
     love.graphics.setBlendMode("alpha")
     love.graphics.setShader()
 end
+-- projectile:burst shockwave —— 程序化冲击波飞行道具的全屏绘制入口
+-- 和 overdrive badge 的冲击波同一套坐标约定:shader 内部把屏幕像素换算成
+-- 1600x900 设计坐标,center / radius 都按设计像素送,所以分辨率变化不用重算。
+-- 数值全部来自 BURST_SHOCKWAVE_PROJECTILE_CONFIG。
+-- 复用两张表,避免每帧新建(nuGC)
+local PROJECTILE_GAME_SCENE_BURST_SHOCKWAVE_CENTER = {0,0}
+local PROJECTILE_GAME_SCENE_BURST_SHOCKWAVE_RESOLUTION = {0,0}
+function draw_projectile_game_scene_burst_shockwave(shader,obj_projectile,frame,opacity)
+    local config = BURST_SHOCKWAVE_PROJECTILE_CONFIG
+    local obj_camera = obj_stage_game_scene_camera
+    local width,height = love.graphics.getDimensions()
+    local projection = draw_resolution_correction(800)/(obj_projectile[3] - obj_camera[3])
+    local coords = draw_3d_point_to_2D(obj_camera,obj_projectile)
+    PROJECTILE_GAME_SCENE_BURST_SHOCKWAVE_CENTER[1] = coords[1]
+    PROJECTILE_GAME_SCENE_BURST_SHOCKWAVE_CENTER[2] = coords[2]
+    PROJECTILE_GAME_SCENE_BURST_SHOCKWAVE_RESOLUTION[1] = width
+    PROJECTILE_GAME_SCENE_BURST_SHOCKWAVE_RESOLUTION[2] = height
+    shader:send("time",frame)
+    shader:send("life",config.life)
+    shader:send("opacity",opacity)
+    shader:send("center",PROJECTILE_GAME_SCENE_BURST_SHOCKWAVE_CENTER)
+    shader:send("radius",config.radius*projection)
+    shader:send("resolution",PROJECTILE_GAME_SCENE_BURST_SHOCKWAVE_RESOLUTION)
+    shader:send("tint",config.color)
+    shader:send("shockwave_radius_start",config.radius_start)
+    shader:send("shockwave_radius_grow",config.radius_grow)
+    shader:send("shockwave_width_base",config.width_base)
+    shader:send("shockwave_width_grow",config.width_grow)
+    shader:send("shockwave_brightness",config.brightness)
+    shader:send("shockwave_echo_scale",config.echo_scale)
+    shader:send("shockwave_echo_strength",config.echo_strength)
+    shader:send("shockwave_flash_strength",config.flash_strength)
+    shader:send("shockwave_flash_size",config.flash_size)
+    shader:send("shockwave_fade_power",config.fade_power)
+    -- add 混合:冲击波是纯发光,黑的地方叠不脏画面
+    love.graphics.setBlendMode("add")
+    love.graphics.setColor(1,1,1,1)
+    love.graphics.setShader(shader)
+    love.graphics.rectangle("fill",0,0,width,height)
+    love.graphics.setShader()
+    love.graphics.setBlendMode("alpha")
+end
