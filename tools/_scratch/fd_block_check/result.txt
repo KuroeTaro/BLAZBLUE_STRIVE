@@ -46,17 +46,15 @@
   ok   切换时动画重新初始化(帧 1 -> 0)
 
 [屏障 VFX:循环环 / 渐入 / 状态清理 / 挡刀重置]
-  ok   屏障类型 = FD_block
+  ok   插入屏障
   ok   环从最小半径 / 0 亮度开始
   ok   刚插入 opacity = 0
   ok   渐入结束 opacity 正确
   ok   update 里不递减 life(999999)
   ok   环在一个循环内持续放大(0.54 -> 0.99)
   ok   环先渐入再渐出(峰值 0.85, 末尾 0.04)
-  ok   循环回到起始大小(0.45)
   ok   挡住攻击时复用同一个屏障对象
-  ok   挡住攻击时帧数清零重播(48 -> 0)
-  ok   重播不影响已经渐入好的透明度
+  ok   挡住攻击时环的帧数清零重播
   ok   状态 active_FD_block 时保留
   ok   状态 block 时保留
   ok   状态 blockstop 时保留
@@ -64,14 +62,23 @@
   ok   状态 5_stand_idle 时清除
   ok   状态 hurt_stand 时清除
   ok   状态 7_8_9_jump_air 时清除
+  ok   状态 FD_block_to_idle 时清除
   ok   同一个角色只保留一层屏障
 
-[block -> active_FD_block 出口]
-  ok   挡住后还按着 FD -> 回 active_FD_block
-  ok   回到站姿防御
-  ok   动画直接跳到循环段(f = 7, loop_frame = 8)
-  ok   block -> FD 之后状态正确
-  ok   block -> FD 沿用同一层屏障(不重新渐入)
-  ok   没按 FD 时不回 active_FD_block
-checks=64 fails=0
+[block -> FD_block_to_idle 出口]
+  ok   FD 挡结束 -> 出口是 FD_block_to_idle
+  ok   收招动画 8 帧
+  ok   收招结束还按着 FD -> 回 active_FD_block
+  ok   动画直接跳到循环段(f = 7)
+  ok   收招结束没按 FD -> 回 5_stand_idle
+  ok   普通 block 结束 -> 回 5_stand_idle
+
+[block 动画的 loop_frame / FD 截断]
+  ok   FD 挡:动画截到 loop_frame(19 -> 16)
+  ok   FD 挡:记下 FD_block 标记
+  ok   改了副本,没有污染原动画表
+  ok   非 FD 挡:标记清掉
+  ok   _anim.lua 的 loop_frame 标记数 = 8
+  ok   _projectile.lua 的 loop_frame 标记数 = 6
+checks=69 fails=0
 RESULT: OK

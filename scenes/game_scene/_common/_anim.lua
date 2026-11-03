@@ -4645,10 +4645,6 @@ function load_game_scene_anim_char_common_0_general_hurt_wallbreak(
     return res
 end
 -- active_FD_block
--- 按住「防御方向 + FD 键(correction_left/right)」时的防御姿态(GGST 的 Faultless Defense)
--- 帧序列:0 1 2 3 4(起手),之后在 2 3 4 之间循环;
--- 空中进入时保留原有速度、重力 2.75;地面进入阻力 7。
--- 判定盒沿用 block 系列 sprite_sheet 的数据,进出状态由 state_gate_* 负责
 function load_game_scene_anim_char_common_active_FD_block(
     obj_char,sprite_sheet,height
 )

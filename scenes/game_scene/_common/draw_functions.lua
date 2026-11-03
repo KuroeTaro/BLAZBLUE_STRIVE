@@ -669,6 +669,7 @@ function draw_VFX_game_scene_char_FD_block(shader,obj_VFX,opacity)
     shader:send("impact_alpha",obj_VFX["impact_alpha"] or 0.0)
     shader:send("impact_width",config.impact_width)
     shader:send("impact_inner_feather",config.impact_inner_feather)
+    shader:send("impact_opacity",config.impact_opacity)
     -- add 混合:屏障是纯发光
     love.graphics.setBlendMode("add")
     love.graphics.setColor(1,1,1,1)

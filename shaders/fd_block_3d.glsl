@@ -31,6 +31,7 @@ extern float impact_radius;     // 环半径(× R),0 = 不画
 extern float impact_alpha;      // 环峰值
 extern float impact_width;      // 环外侧收边厚度
 extern float impact_inner_feather; // 环内侧羽化(× R)
+extern float impact_opacity;    // 环单独的透明度(球罩用 opacity)
 
 vec4 effect(vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords) {
     vec2 g = screen_coords / (resolution.x / 1600.0);
@@ -52,6 +53,7 @@ vec4 effect(vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords) {
     float highlight = pow(max(0.0,dot(n,normalize(vec2(-0.45,0.89)))),8.0) * bubble_highlight;
     float shape = shell * (bubble_brightness + highlight)
         + inner_fade * bubble_inner_brightness;
+    float ring_shape = 0.0;
 
     // 命中环
     if (impact_alpha > 0.0) {
@@ -62,8 +64,9 @@ vec4 effect(vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords) {
         // 外侧:高斯收边
         float outer_delta = (r - impact_radius) / max(impact_width,1.0e-3);
         float outer_side = (r <= impact_radius) ? 1.0 : exp(-outer_delta * outer_delta);
-        shape += inner_side * outer_side * impact_alpha;
+        ring_shape = inner_side * outer_side * impact_alpha;
     }
 
-    return vec4(tint * shape * opacity,1.0);
+    // 球罩跟着整体 opacity,命中环用自己那份 impact_opacity
+    return vec4(tint * (shape * opacity + ring_shape * impact_opacity),1.0);
 }

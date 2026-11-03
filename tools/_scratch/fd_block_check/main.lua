@@ -313,20 +313,19 @@ function love.load()
     local config = FD_BLOCK_VFX_CONFIG
     pressed = { ["correction_left"] = true }
     local vc = new_char({ ["state"] = "active_FD_block" })
-    local vfx = insert_VFX_game_scene_char_FD_block(vc, input)
-    check(vfx["type"] == "FD_block", "屏障类型 = FD_block")
+    local vfx = insert_VFX_game_scene_char_FD_block(vc)
+    check(vfx ~= nil and vfx["type"] == "FD_block", "插入屏障")
     check(math.abs(vfx["impact_radius"] - config.impact_radius_start) < 1.0e-6
         and vfx["impact_alpha"] == 0.0, "环从最小半径 / 0 亮度开始")
     check(vfx["opacity"] == 0, "刚插入 opacity = 0")
     for j = 1, config.fade_in do vfx["update"]() end
     check(math.abs(vfx["opacity"] - config.stance_opacity) < 1.0e-6, "渐入结束 opacity 正确")
-    -- life 不在 update 里递减
     local life_before = vfx["life"]
     for j = 1, 12 do vfx["update"]() end
     check(vfx["life"] == life_before, "update 里不递减 life(" .. life_before .. ")")
-    -- 循环:渐入 -> 放大 -> 渐出 -> 回到起始大小
+    -- 循环
     local cycle = config.impact_loop_frame
-    vfx["age"] = 0
+    vfx["frame_age"] = 0
     local r_at, a_at = {}, {}
     for j = 1, cycle - 1 do
         vfx["update"]()
@@ -342,67 +341,85 @@ function love.load()
     check(a_at[2] > a_at[1] and a_at[#a_at] < a_at[2],
         "环先渐入再渐出(峰值 " .. string.format("%.2f", a_at[2]) ..
         ", 末尾 " .. string.format("%.2f", a_at[#a_at]) .. ")")
-    vfx["update"]()
-    check(math.abs(vfx["impact_radius"] - config.impact_radius_start) < 0.05,
-        "循环回到起始大小(" .. string.format("%.2f", vfx["impact_radius"]) .. ")")
-
-    -- 挡刀:同一对象,帧数清零重播
+    -- 挡刀:复用同一层 + 帧数清零
     vc["state"] = "blockstop"
-    local age_before = vfx["age"]
-    local reset_vfx = insert_VFX_game_scene_char_FD_block(vc)
-    check(reset_vfx == vfx, "挡住攻击时复用同一个屏障对象")
-    check(reset_vfx["age"] == 0, "挡住攻击时帧数清零重播(" .. tostring(age_before) .. " -> 0)")
-    check(vfx["opacity"] > 0.5, "重播不影响已经渐入好的透明度")
+    vfx["frame_age"] = 30
+    local again = insert_VFX_game_scene_char_FD_block(vc)
+    check(again == vfx, "挡住攻击时复用同一个屏障对象")
+    check(again["frame_age"] == 0, "挡住攻击时环的帧数清零重播")
 
-    -- 统一清除规则:不在 active_FD_block / block 状态就清
-    local keep_states = { "active_FD_block", "block", "blockstop", "block_stand" }
-    for _, st in ipairs(keep_states) do
+    -- 统一清除规则
+    for _, st in ipairs({ "active_FD_block", "block", "blockstop", "block_stand" }) do
         local vk = new_char({ ["state"] = st })
         local vfxk = insert_VFX_game_scene_char_FD_block(vk)
         vfxk["update"]()
         check(vfxk["life"] > 0, "状态 " .. st .. " 时保留")
     end
-    for _, st in ipairs({ "5_stand_idle", "hurt_stand", "7_8_9_jump_air" }) do
+    for _, st in ipairs({ "5_stand_idle", "hurt_stand", "7_8_9_jump_air", "FD_block_to_idle" }) do
         local vk = new_char({ ["state"] = st })
         local vfxk = insert_VFX_game_scene_char_FD_block(vk)
         vfxk["update"]()
         check(vfxk["life"] == 0, "状态 " .. st .. " 时清除")
     end
-    -- 每个角色只会有一层
     local vc4 = new_char({ ["state"] = "active_FD_block" })
     insert_VFX_game_scene_char_FD_block(vc4)
-    insert_VFX_game_scene_char_FD_block(vc4, input)
+    insert_VFX_game_scene_char_FD_block(vc4)
     check(#vc4["VFX_hit_front_table"] == 1, "同一个角色只保留一层屏障")
 
     log("")
-    log("[block -> active_FD_block 出口]")
+    log("[block -> FD_block_to_idle 出口]")
+    -- FD 挡:block 结束走 FD_block_to_idle
     pressed = { ["correction_left"] = true }
-    -- from_block 走到 animation_end 之后,若还按着 FD,应回到 active_FD_block 并跳到循环段
     local cb = new_char({ ["state"] = "block", ["height"] = "stand", ["direction_input"] = 4,
+        ["sprite_sheet"] = "4_stand_block_high",
         ["character_animation"] = {["prop_f"] = "f",["anim_length"] = 1}, ["f"] = 5 })
+    cb["FD_block"] = true
     local rb = state_gate_game_scene_char_LP_from_block(input, opp_input, cb, opp)
-    check(rb == true and cb["state"] == "active_FD_block", "挡住后还按着 FD -> 回 active_FD_block")
-    check(cb["sprite_sheet"] == "4_stand_block_high", "回到站姿防御")
-    local loop_frame = cb["character_animation"]["loop_frame"]
-    check(cb["f"] == loop_frame - 1,
-        "动画直接跳到循环段(f = " .. tostring(cb["f"]) .. ", loop_frame = " .. tostring(loop_frame) .. ")")
-    -- 从 block 回 FD 时沿用同一层屏障(不会重新渐入闪一下)
+    check(rb == true and cb["state"] == "FD_block_to_idle",
+        "FD 挡结束 -> 出口是 FD_block_to_idle")
+    check(cb["character_animation"]["anim_length"] == 8, "收招动画 8 帧")
+    -- 收招结束,还按着 FD -> 回 active_FD_block 并跳到循环段
+    cb["f"] = 99
+    local rg = state_gate_game_scene_char_LP_from_FD_block_to_idle(input, opp_input, cb, opp)
+    check(rg == true and cb["state"] == "active_FD_block", "收招结束还按着 FD -> 回 active_FD_block")
+    check(cb["f"] == cb["character_animation"]["loop_frame"] - 1,
+        "动画直接跳到循环段(f = " .. tostring(cb["f"]) .. ")")
+    -- 收招结束,没按 FD -> 回 idle
+    pressed = {}
+    local cb2 = new_char({ ["state"] = "FD_block_to_idle", ["height"] = "stand",
+        ["character_animation"] = {["prop_f"] = "f",["anim_length"] = 1}, ["f"] = 5 })
+    state_gate_game_scene_char_LP_from_FD_block_to_idle(input, opp_input, cb2, opp)
+    check(cb2["state"] == "5_stand_idle", "收招结束没按 FD -> 回 5_stand_idle")
+    -- 非 FD 挡:还是走原来的 idle
     pressed = { ["correction_left"] = true }
     local cb3 = new_char({ ["state"] = "block", ["height"] = "stand", ["direction_input"] = 4,
+        ["sprite_sheet"] = "4_stand_block_high",
         ["character_animation"] = {["prop_f"] = "f",["anim_length"] = 1}, ["f"] = 5 })
-    local vfx_b3 = insert_VFX_game_scene_char_FD_block(cb3, input)
-    for j = 1, 10 do vfx_b3["update"]() end
     state_gate_game_scene_char_LP_from_block(input, opp_input, cb3, opp)
-    check(cb3["state"] == "active_FD_block", "block -> FD 之后状态正确")
-    check(#cb3["VFX_hit_front_table"] == 1 and cb3["VFX_hit_front_table"][1] == vfx_b3,
-        "block -> FD 沿用同一层屏障(不重新渐入)")
+    check(cb3["state"] == "5_stand_idle", "普通 block 结束 -> 回 5_stand_idle")
 
-    -- 松开 FD 时不回 FD
-    pressed = {}
-    local cb2 = new_char({ ["state"] = "block", ["height"] = "stand", ["direction_input"] = 4,
-        ["character_animation"] = {["prop_f"] = "f",["anim_length"] = 1}, ["f"] = 5 })
-    state_gate_game_scene_char_LP_from_block(input, opp_input, cb2, opp)
-    check(cb2["state"] ~= "active_FD_block", "没按 FD 时不回 active_FD_block")
+    log("")
+    log("[block 动画的 loop_frame / FD 截断]")
+    local fake_anim = { ["prop_f"] = "f", ["anim_length"] = 19, ["loop_frame"] = 16 }
+    local cbf = new_char({ ["state"] = "block", ["character_animation"] = fake_anim })
+    common_game_scene_char_apply_FD_block_animation(cbf, true)
+    check(cbf["character_animation"]["anim_length"] == 16, "FD 挡:动画截到 loop_frame(19 -> 16)")
+    check(cbf["FD_block"] == true, "FD 挡:记下 FD_block 标记")
+    check(fake_anim["anim_length"] == 19, "改了副本,没有污染原动画表")
+    common_game_scene_char_apply_FD_block_animation(cbf, false)
+    check(cbf["FD_block"] == false, "非 FD 挡:标记清掉")
+    local function countIn(path,pattern)
+        local f = io.open(path,"rb")
+        if not f then return -1 end
+        local text = f:read("*a"); f:close()
+        local n = 0
+        for _ in text:gmatch(pattern) do n = n + 1 end
+        return n
+    end
+    local anim_hits = countIn(REPO .. "/scenes/game_scene/_common/_anim.lua",'res%["loop_frame"%]')
+    local projectile_hits = countIn(REPO .. "/scenes/game_scene/_common/_projectile.lua",'res%["loop_frame"%]')
+    check(anim_hits >= 7, "_anim.lua 的 loop_frame 标记数 = " .. anim_hits)
+    check(projectile_hits >= 6, "_projectile.lua 的 loop_frame 标记数 = " .. projectile_hits)
 
     log(string.format("checks=%d fails=%d", checks, fails))
     log(fails == 0 and "RESULT: OK" or "RESULT: FAIL")

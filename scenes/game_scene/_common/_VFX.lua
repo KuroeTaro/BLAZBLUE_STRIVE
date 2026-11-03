@@ -3208,10 +3208,13 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
         end
         obj_VFX["impact_alpha"] = math.max(config.impact_peak*alpha,0.0)
     end
+    -- 已有屏障:复用同一层,把环的帧数清零重播
     for i = 1,#obj_char["VFX_hit_front_table"] do
         local vfx = obj_char["VFX_hit_front_table"][i]
         if vfx["type"] == "FD_block" then
-            return
+            vfx["frame_age"] = 0
+            FD_block_apply_frame(vfx,config)
+            return vfx
         end
     end
     -- state
@@ -3239,6 +3242,7 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
         end
         obj_VFX["fade_age"] = obj_VFX["fade_age"] + 1
         obj_VFX["frame_age"] = obj_VFX["frame_age"] + 1
+        FD_block_apply_frame(obj_VFX,config)
         obj_VFX["opacity"] =
             math.min(1.0,obj_VFX["fade_age"]/math.max(config.fade_in,1)) * config.stance_opacity
     end
@@ -3259,6 +3263,7 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
             )
         end
     end
+    FD_block_apply_frame(obj_VFX,config)
     table.insert(obj_char["VFX_hit_front_table"],obj_VFX)
     return obj_VFX
 end

@@ -138,6 +138,7 @@ FD_BLOCK_VFX_CONFIG =
     impact_fade_in = 0.22,
     impact_fade_out = 0.55,
     impact_width = 0.030,
+    impact_opacity = 0.500, -- 命中环单独的透明度(球罩用 opacity)
     impact_inner_feather = 0.30,
     -- 常驻(active_FD_block)屏障:渐入帧数 + 稳定后的透明度
     fade_in = 8,

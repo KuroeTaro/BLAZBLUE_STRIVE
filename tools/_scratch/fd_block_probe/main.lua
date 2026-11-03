@@ -83,7 +83,7 @@ function love.load()
     -- 1) 常驻球罩:渐入
     pressed = {["correction_left"] = true}
     local stance = new_char()
-    local stance_vfx = insert_VFX_game_scene_char_FD_block(stance,{["correction_left"] = "correction_left"})
+    local stance_vfx = insert_VFX_game_scene_char_FD_block(stance)
     for i = 1, 15 do
         stance_vfx["update"]()
         if i == 1 or i == 4 or i == 8 or i == 15 then
@@ -105,12 +105,12 @@ function love.load()
     end
     -- 3) 挡刀:把已有屏障的帧数清零
     local combo = new_char()
-    local combo_vfx = insert_VFX_game_scene_char_FD_block(combo,{["correction_left"] = "correction_left"})
+    local combo_vfx = insert_VFX_game_scene_char_FD_block(combo)
     for i = 1, 20 do combo_vfx["update"]() end
-    local age_before = combo_vfx["age"]
+    local age_before = combo_vfx["frame_age"] or 0
     local reset_vfx = insert_VFX_game_scene_char_FD_block(combo)
     log(string.format("挡刀重置: 同一对象=%s age %d -> %d, impact_alpha=%.2f",
-        tostring(reset_vfx == combo_vfx), age_before, reset_vfx["age"], reset_vfx["impact_alpha"]))
+        tostring(reset_vfx == combo_vfx), age_before, reset_vfx["frame_age"] or 0, reset_vfx["impact_alpha"] or 0))
     -- 4) 离开 active_FD_block / block 状态:直接清除
     stance["state"] = "5_stand_idle"
     stance_vfx["update"]()
