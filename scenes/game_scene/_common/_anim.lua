@@ -4646,7 +4646,7 @@ function load_game_scene_anim_char_common_0_general_hurt_wallbreak(
 end
 -- active_common_move
 -- burst_burst
-function laod_game_scene_anim_char_common_burst_burst(
+function load_game_scene_anim_char_common_burst_burst(
     self_side_obj_char,opponent_side_obj_char,
     character_uncommon_init
 )
@@ -4884,13 +4884,13 @@ function laod_game_scene_anim_char_common_burst_burst(
         -- land_frame
     end
     res[64] = function()
-        -- state
-        hit_side_obj_char["hurt_state_target"] = "idle" -- idle_unblock_punish_counter_GP_parry
-        hit_side_obj_char["move_state"] = "none" -- none_startup_active_recovery
-        hit_side_obj_char["idle_cancel"] = true
+        -- state(收招后段:把 idle_cancel 打开,from_burst_burst 就是靠它放行)
+        self_side_obj_char["hurt_state_target"] = "idle" -- idle_unblock_punish_counter_GP_parry
+        self_side_obj_char["move_state"] = "none" -- none_startup_active_recovery
+        self_side_obj_char["idle_cancel"] = true
         -- input_sys_cache
-        hit_side_obj_char["input_sys_state"] = "load" -- none_save_load
-        common_game_scene_get_input_sys_cache_state_machine(hit_side)()
+        self_side_obj_char["input_sys_state"] = "load" -- none_save_load
+        common_game_scene_get_input_sys_cache_state_machine(self_side)()
         -- draw_correction
         self_side_obj_char[8] = 1
     end

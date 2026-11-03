@@ -2,7 +2,8 @@
   OK   scenes/game_scene/_common/load_function.lua
   OK   scenes/game_scene/_common/init.lua
   OK   scenes/game_scene/_common/draw_functions.lua
-  OK   scenes/game_scene/_common/_projectile.lua
+  OK   scenes/game_scene/_common/_anim.lua
+  OK   scenes/game_scene/characters/TRM/_character_function.lua
   OK   scenes/game_scene/_common/_projectile.lua
   OK   scenes/game_scene/characters/TRM/left.lua
   OK   scenes/game_scene/characters/TRM/right.lua

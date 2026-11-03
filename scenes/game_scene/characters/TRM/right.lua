@@ -1,5 +1,5 @@
 -- RP -> RP
--- ASSET_DATA[10] -> ASSET_DATA[12]
+-- ASSET_DATA[12] -> ASSET_DATA[12]
 -- "R" -> "R"
 -- obj_char_game_scene_char_RP = {0,0,0,1,-1,1,0,0} -> obj_char_game_scene_char_LP = {0,0,0,1,-1,1,0,0}
 -- obj_char_game_scene_char_RP["x"] = 320 -> obj_char_game_scene_char_LP["x"] = 320
@@ -1005,8 +1005,203 @@ function load_game_scene_wallbreak_end_init_RP()
     obj_char_game_scene_char_RP["VFX_hit_back_table"] = {}
 end
 -- order_load
+function order_load_game_scene_char_RP_audio(load_order)
+    local PLAYER_AUDIO_DATA = ASSET_DATA[11]
+    local switch =
+    {
+        -- stage_interactive_SFX 通用 移动/跳跃/落地/墙
+        [1] = function()
+            -- audio_global_variables
+            audio_SFX_game_scene_stage_interactive_SFX_RP = {}
+            audio_SFX_game_scene_move_SFX_RP = {}
+            local load_name_table = {
+                "air_backdash","air_dash","air_jump","air_SP_jump",
+                "ground_dash_cancel","ground_dash_loop","ground_dash_skid","ground_dash_start_up",
+                "ground_hard_knockdown","ground_land","ground_soft_knockdown",
+                "ground_step_0","ground_step_1","wall_wallbreak","wall_wallstick"
+            }
+            for i,v in ipairs(load_name_table) do
+                audio_SFX_game_scene_stage_interactive_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
+                audio_SFX_game_scene_stage_interactive_SFX_RP[v]["audio"] = love.audio.newSource(
+                    PLAYER_AUDIO_DATA["stage_interactive_SFX"][v],"static"
+                )
+                update_SFX_VOLUME(audio_SFX_game_scene_stage_interactive_SFX_RP[v])
+            end
+        end,
+        -- move_SFX common + RC
+        [2] = function()
+            local load_name_table = {
+                "common_oroboros",
+                "blue_RC","purple_RC",
+                "red_RC_block","red_RC_counter","red_RC_hit","red_RC_whiff",
+                "yellow_RC_block","yellow_RC_counter","yellow_RC_hit","yellow_RC_whiff"
+            }
+            for i,v in ipairs(load_name_table) do
+                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
+                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
+                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
+                )
+                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
+            end
+        end,
+        -- move_SFX 地面P
+        [3] = function()
+            local load_name_table = {
+                "2P_block","2P_counter","2P_hit","2P_whiff",
+                "6P_block","6P_counter","6P_hit","6P_whiff",
+                "5P_block","5P_counter","5P_hit","5P_whiff"
+            }
+            for i,v in ipairs(load_name_table) do
+                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
+                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
+                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
+                )
+                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
+            end
+        end,
+        -- move_SFX 地面K
+        [4] = function()
+            local load_name_table = {
+                "2K_block","2K_counter","2K_hit","2K_whiff",
+                "6K_block","6K_counter","6K_hit","6K_whiff",
+                "5K_block","5K_counter","5K_hit","5K_whiff"
+            }
+            for i,v in ipairs(load_name_table) do
+                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
+                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
+                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
+                )
+                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
+            end
+        end,
+        -- move_SFX 地面S
+        [5] = function()
+            local load_name_table = {
+                "2S_block","2S_counter","2S_hit","2S_whiff",
+                "6S_block","6S_counter","6S_hit","6S_whiff",
+                "cS_block","cS_counter","cS_hit","cS_whiff",
+                "fS_block","fS_counter","fS_hit","fS_whiff"
+            }
+            for i,v in ipairs(load_name_table) do
+                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
+                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
+                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
+                )
+                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
+            end
+        end,
+        -- move_SFX_5H
+        [6] = function()
+            local load_name_table = {
+                "5H_knife_clip_0","5H_knife_clip_1","5H_knife_clip_2","5H_knife_whiff",
+                "5H_projectile_block","5H_projectile_counter","5H_projectile_hit","5H_projectile_whiff",
+                "5H_oroboros_blast",
+                "5H_reticle_ease_in","5H_reticle_ease_out","5H_reticle_locking"
+            }
+            for i,v in ipairs(load_name_table) do
+                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
+                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
+                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
+                )
+                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
+            end
+        end,
+        -- move_SFX 地面Launcher
+        [7] = function()
+            local load_name_table = {
+                "2Launcher_block","2Launcher_counter","2Launcher_hit","2Launcher_whiff",
+                "4_6Launcher_hit","4_6Launcher_throw","4_6Launcher_whiff",
+                "5Launcher_block","5Launcher_counter","5Launcher_hit","5Launcher_whiff"
+            }
+            for i,v in ipairs(load_name_table) do
+                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
+                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
+                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
+                )
+                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
+            end
+        end,
+        -- move_SFX 空中j系 part1
+        [8] = function()
+            local load_name_table = {
+                "j5P_block","j5P_counter","j5P_hit","j5P_whiff",
+                "j2K_block","j2K_counter","j2K_hit","j2K_whiff",
+                "j5K_block","j5K_counter","j5K_hit","j5K_whiff",
+                "j5S_block","j5S_counter","j5S_hit","j5S_whiff"
+            }
+            for i,v in ipairs(load_name_table) do
+                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
+                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
+                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
+                )
+                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
+            end
+        end,
+        -- move_SFX 空中j系 part2
+        [9] = function()
+            local load_name_table = {
+                "j4_6Launcher_hit","j4_6Launcher_throw","j4_6Launcher_whiff",
+                "j5Launcher_block","j5Launcher_counter","j5Launcher_hit","j5Launcher_whiff"
+            }
+            for i,v in ipairs(load_name_table) do
+                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
+                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
+                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
+                )
+                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
+            end
+        end,
+        -- move_SFX 必杀
+        [10] = function()
+            local load_name_table = {
+                "4SP_P_clip_0","4SP_P_clip_1","4SP_P_clip_2","4SP_P_knife_whiff",
+                "6SP_P_whiff","6SP_P_curse_ball_ground_bounce","6SP_P_curse_ball_hit","6SP_P_curse_end",
+                "4SP_K_whiff",
+                "6SP_K_scapegoat_ease_in","6SP_K_scapegoat_ease_out",
+                "4SP_S_H_projectile_block","4SP_S_H_projectile_counter","4SP_S_H_projectile_hit","4SP_S_H_projectile_whiff",
+                "4SP_S_reticle_lock","4SP_S_reticle_unlock",
+                "6SP_S_block","6SP_S_counter","6SP_S_hit","6SP_S_whiff"
+            }
+            for i,v in ipairs(load_name_table) do
+                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
+                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
+                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
+                )
+                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
+            end
+        end,
+        -- move_SFX_overdrive
+        [11] = function()
+            local load_name_table = {
+                "overdrive"
+            }
+            for i,v in ipairs(load_name_table) do
+                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
+                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
+                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
+                )
+                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
+            end
+        end,
+        -- move_SFX_burst
+        [12] = function()
+            local load_name_table = {
+                "burst"
+            }
+            for i,v in ipairs(load_name_table) do
+                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
+                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
+                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
+                )
+                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
+            end
+        end,
+    }
+    local this_function = switch[load_order]
+    if this_function then this_function() end
+end
 function order_load_game_scene_char_RP_frames(load_order)
-    local PLAYER_ASSET_DATA = ASSET_DATA[10]
+    local PLAYER_ASSET_DATA = ASSET_DATA[12]
     local switch =
     {
         -- universal 0_ 通用受伤/击飞 part1
@@ -1609,201 +1804,6 @@ function order_load_game_scene_char_RP_frames(load_order)
             image_VFX_game_scene_RP_overdrive_badge_static =
             love.graphics.newImage(PLAYER_ASSET_DATA["overdrive_badge_static"])
         end
-    }
-    local this_function = switch[load_order]
-    if this_function then this_function() end
-end
-function order_load_game_scene_char_RP_audio(load_order)
-    local PLAYER_AUDIO_DATA = ASSET_DATA[11]
-    local switch =
-    {
-        -- stage_interactive_SFX 通用 移动/跳跃/落地/墙
-        [1] = function()
-            -- audio_global_variables
-            audio_SFX_game_scene_stage_interactive_SFX_RP = {}
-            audio_SFX_game_scene_move_SFX_RP = {}
-            local load_name_table = {
-                "air_backdash","air_dash","air_jump","air_SP_jump",
-                "ground_dash_cancel","ground_dash_loop","ground_dash_skid","ground_dash_start_up",
-                "ground_hard_knockdown","ground_land","ground_soft_knockdown",
-                "ground_step_0","ground_step_1","wall_wallbreak","wall_wallstick"
-            }
-            for i,v in ipairs(load_name_table) do
-                audio_SFX_game_scene_stage_interactive_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
-                audio_SFX_game_scene_stage_interactive_SFX_RP[v]["audio"] = love.audio.newSource(
-                    PLAYER_AUDIO_DATA["stage_interactive_SFX"][v],"static"
-                )
-                update_SFX_VOLUME(audio_SFX_game_scene_stage_interactive_SFX_RP[v])
-            end
-        end,
-        -- move_SFX common + RC
-        [2] = function()
-            local load_name_table = {
-                "common_oroboros",
-                "blue_RC","purple_RC",
-                "red_RC_block","red_RC_counter","red_RC_hit","red_RC_whiff",
-                "yellow_RC_block","yellow_RC_counter","yellow_RC_hit","yellow_RC_whiff"
-            }
-            for i,v in ipairs(load_name_table) do
-                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
-                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
-                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
-                )
-                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
-            end
-        end,
-        -- move_SFX 地面P
-        [3] = function()
-            local load_name_table = {
-                "2P_block","2P_counter","2P_hit","2P_whiff",
-                "6P_block","6P_counter","6P_hit","6P_whiff",
-                "5P_block","5P_counter","5P_hit","5P_whiff"
-            }
-            for i,v in ipairs(load_name_table) do
-                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
-                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
-                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
-                )
-                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
-            end
-        end,
-        -- move_SFX 地面K
-        [4] = function()
-            local load_name_table = {
-                "2K_block","2K_counter","2K_hit","2K_whiff",
-                "6K_block","6K_counter","6K_hit","6K_whiff",
-                "5K_block","5K_counter","5K_hit","5K_whiff"
-            }
-            for i,v in ipairs(load_name_table) do
-                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
-                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
-                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
-                )
-                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
-            end
-        end,
-        -- move_SFX 地面S
-        [5] = function()
-            local load_name_table = {
-                "2S_block","2S_counter","2S_hit","2S_whiff",
-                "6S_block","6S_counter","6S_hit","6S_whiff",
-                "cS_block","cS_counter","cS_hit","cS_whiff",
-                "fS_block","fS_counter","fS_hit","fS_whiff"
-            }
-            for i,v in ipairs(load_name_table) do
-                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
-                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
-                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
-                )
-                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
-            end
-        end,
-        -- move_SFX_5H
-        [6] = function()
-            local load_name_table = {
-                "5H_knife_clip_0","5H_knife_clip_1","5H_knife_clip_2","5H_knife_whiff",
-                "5H_projectile_block","5H_projectile_counter","5H_projectile_hit","5H_projectile_whiff",
-                "5H_oroboros_blast",
-                "5H_reticle_ease_in","5H_reticle_ease_out","5H_reticle_locking"
-            }
-            for i,v in ipairs(load_name_table) do
-                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
-                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
-                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
-                )
-                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
-            end
-        end,
-        -- move_SFX 地面Launcher
-        [7] = function()
-            local load_name_table = {
-                "2Launcher_block","2Launcher_counter","2Launcher_hit","2Launcher_whiff",
-                "4_6Launcher_hit","4_6Launcher_throw","4_6Launcher_whiff",
-                "5Launcher_block","5Launcher_counter","5Launcher_hit","5Launcher_whiff"
-            }
-            for i,v in ipairs(load_name_table) do
-                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
-                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
-                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
-                )
-                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
-            end
-        end,
-        -- move_SFX 空中j系 part1
-        [8] = function()
-            local load_name_table = {
-                "j5P_block","j5P_counter","j5P_hit","j5P_whiff",
-                "j2K_block","j2K_counter","j2K_hit","j2K_whiff",
-                "j5K_block","j5K_counter","j5K_hit","j5K_whiff",
-                "j5S_block","j5S_counter","j5S_hit","j5S_whiff"
-            }
-            for i,v in ipairs(load_name_table) do
-                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
-                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
-                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
-                )
-                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
-            end
-        end,
-        -- move_SFX 空中j系 part2
-        [9] = function()
-            local load_name_table = {
-                "j4_6Launcher_hit","j4_6Launcher_throw","j4_6Launcher_whiff",
-                "j5Launcher_block","j5Launcher_counter","j5Launcher_hit","j5Launcher_whiff"
-            }
-            for i,v in ipairs(load_name_table) do
-                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
-                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
-                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
-                )
-                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
-            end
-        end,
-        -- move_SFX 必杀
-        [10] = function()
-            local load_name_table = {
-                "4SP_P_clip_0","4SP_P_clip_1","4SP_P_clip_2","4SP_P_knife_whiff",
-                "6SP_P_whiff","6SP_P_curse_ball_ground_bounce","6SP_P_curse_ball_hit","6SP_P_curse_end",
-                "4SP_K_whiff",
-                "6SP_K_scapegoat_ease_in","6SP_K_scapegoat_ease_out",
-                "4SP_S_H_projectile_block","4SP_S_H_projectile_counter","4SP_S_H_projectile_hit","4SP_S_H_projectile_whiff",
-                "4SP_S_reticle_lock","4SP_S_reticle_unlock",
-                "6SP_S_block","6SP_S_counter","6SP_S_hit","6SP_S_whiff"
-            }
-            for i,v in ipairs(load_name_table) do
-                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
-                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
-                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
-                )
-                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
-            end
-        end,
-        -- move_SFX_overdrive
-        [11] = function()
-            local load_name_table = {
-                "overdrive"
-            }
-            for i,v in ipairs(load_name_table) do
-                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
-                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
-                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
-                )
-                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
-            end
-        end,
-        -- move_SFX_burst
-        [12] = function()
-            local load_name_table = {
-                "burst"
-            }
-            for i,v in ipairs(load_name_table) do
-                audio_SFX_game_scene_move_SFX_RP[v] = {1,LCT = {0},LCD = {0}}
-                audio_SFX_game_scene_move_SFX_RP[v]["audio"] = love.audio.newSource(
-                    PLAYER_AUDIO_DATA["move_SFX"][v],"static"
-                )
-                update_SFX_VOLUME(audio_SFX_game_scene_move_SFX_RP[v])
-            end
-        end,
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
@@ -3271,7 +3271,7 @@ function state_machine_char_game_scene_char_RP_input_sys_cache()
                 self_side_obj_char["input_sys_cache"]["SP"] = true
             end
             if test_input_sys_press(self_side_input["RC"]) then
-                self_side_obj_char["input_sys_cache"]["burst_overdrive_RC"] = true
+                self_side_obj_char["input_sys_cache"]["RC"] = true
             end
             if test_input_sys_press(self_side_input["burst"]) then
                 self_side_obj_char["input_sys_cache"]["burst"] = true
@@ -4375,11 +4375,6 @@ function state_gate_game_scene_char_RP_common_air_to_special_move_hold_ver(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
 end
--- burst
-function state_gate_game_scene_char_RP_common_to_burst_burst(
-    self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
-)
-end
 -- RC
 function state_gate_game_scene_char_RP_common_to_burst_RC_red(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
@@ -4952,11 +4947,19 @@ end
 function state_gate_game_scene_char_RP_from_hurt(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
-    -- _burst
-    if state_gate_game_scene_char_RP_common_to_burst_overdrive(
-        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char,"burst"
-    ) then
-        return true
+    -- burst
+    if test_input_sys_press(self_side_input["burst"]) then
+        -- animation
+        self_side_obj_char["character_animation"] =
+        load_game_scene_anim_char_common_burst_burst(
+            self_side_obj_char,opponent_side_obj_char,
+            character_function_game_scene_TRM_overdrive_state_character_uncommon_init
+        )
+        self_side_obj_char["state"] = "burst_burst"
+        init_character_anim_with(
+            self_side_obj_char,self_side_obj_char["character_animation"]
+        )
+        return
     end
     -- until_land
     if self_side_obj_char["height"] == "air" then
@@ -7498,6 +7501,68 @@ end
 function state_gate_game_scene_char_RP_from_burst_burst(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
+    -- 收招后段(动画第 64 帧把 idle_cancel 打开)之后才允许转出;
+    -- 动画播完也兜底处理一次,免得停在 burst_burst 里出不来
+    if not self_side_obj_char["idle_cancel"]
+    and not get_character_anim_end_state(
+        self_side_obj_char,self_side_obj_char["character_animation"]
+    ) then
+        return
+    end
+    -- state
+    self_side_obj_char["idle_cancel"] = true
+    self_side_obj_char["physics_lock"] = false
+    -- input_sys_cache
+    self_side_obj_char["input_sys_state"] = "load" -- none_save_load
+    common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
+    if self_side_obj_char["height"] == "air" then
+        -- _7_8_9_jump_air
+        self_side_obj_char["character_animation"] =
+        load_game_scene_anim_char_TRM_7_8_9_jump_air(
+            self_side_obj_char,"8_jump",{350,430},
+            self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2],nil
+        )
+        init_character_anim_with(
+            self_side_obj_char,self_side_obj_char["character_animation"]
+        )
+        self_side_obj_char["state"] = "7_8_9_jump_air"
+        self_side_obj_char["idle_cancel"] = true
+        self_side_obj_char["f"] = 20
+        character_animator(
+            self_side_obj_char,self_side_obj_char["character_animation"]
+        )
+        -- _common_air_idle_to_move
+        if state_gate_game_scene_char_RP_common_air_to_dash_move_HH(
+            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+        ) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_from_7_8_9_jump_air(
+            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+        ) then
+            return true
+        end
+        return true
+    end
+    -- _5_stand_idle:落地后回到站姿中立,直接走它那套 state_gate
+    self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+    init_character_anim_with(
+        self_side_obj_char,self_side_obj_char["character_animation"]
+    )
+    self_side_obj_char["state"] = "5_stand_idle"
+    -- _common_ground_idle_to_move
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(
+        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+    ) then
+        return true
+    end
+    -- _5_stand_idle
+    if state_gate_game_scene_char_RP_from_5_stand_idle(
+        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+    ) then
+        return true
+    end
+    return true
 end
 function state_gate_game_scene_char_RP_from_2P(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char

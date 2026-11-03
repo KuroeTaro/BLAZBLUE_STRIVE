@@ -1,0 +1,39 @@
+
+[common_to_burst_burst]
+  ok   state=5_stand_idle     不触发
+  ok   state=block            不触发
+  ok   state=hurtstop         不触发
+  ok   state=knockdown        不触发
+  ok   state=burst_RC_yellow  不触发
+  ok   hurt + 未按 burst 不触发
+  ok   hurt + burst -> 返回 true
+  ok   state -> burst_burst
+  ok   换上 burst_burst 动画
+  ok   physics_lock 解除
+  ok   velocity 清零
+  ok   velocity_cache 清零
+  ok   air hurt 也能进 burst_burst
+
+[from_burst_burst]
+  ok   动画结束判定用桩
+  ok   未 idle_cancel 不出
+  ok   idle_cancel 之后 -> 返回 true
+  ok   state -> 5_stand_idle
+  ok   换上 5_stand_idle 动画
+  ok   调用了 common_ground_to_dash_move_HH
+  ok   调用了 from_5_stand_idle
+  ok   physics_lock 解除
+  ok   air -> 7_8_9_jump_air
+  ok   air 帧数校正 f=20
+  ok   动画播完兜底 -> 5_stand_idle
+
+[RP 镜像(冒烟)]
+  ok   两个 RP 同名门都存在
+  ok   RP 非 hurt 不触发
+  ok   RP hurt + burst -> burst_burst
+  ok   RP 未 idle_cancel 不出
+  ok   RP idle_cancel 之后 -> 5_stand_idle
+  ok   RP 走了 5_stand_idle 那套门
+
+checks=30 fails=0
+RESULT: OK
