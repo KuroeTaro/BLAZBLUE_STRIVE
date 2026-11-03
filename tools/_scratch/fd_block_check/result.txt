@@ -1,0 +1,54 @@
+[common_to_active_FD_block]
+  ok   后 + correction_left -> 返回 true
+  ok   state -> active_FD_block
+  ok   站姿用 4_stand_block_high
+  ok   站姿 pushbox = stand_pushbox
+  ok   站姿 hurtbox = stand_hurtbox
+  ok   站姿 anchor = {150,510}
+  ok   height/ground offset 正确
+  ok   后 + correction_right 也能进
+  ok   中立方向 + FD 不进
+  ok   只按后不按 FD 不进
+  ok   蹲防 -> 1_crouch_block / crouch
+  ok   蹲姿 pushbox = crouch_pushbox
+  ok   空中 FD -> 1_4_7_air_block / air
+  ok   空中 ground offset = 185
+
+[from_active_FD_block]
+  ok   按着不放:留在 active_FD_block
+  ok   方向改成蹲:切 1_crouch_block,仍在 active_FD_block
+  ok   松开 FD -> 返回 true
+  ok   松开 FD -> 回 5_stand_idle
+  ok   回中立后走了 from_5_stand_idle 的门
+  ok   蹲姿松开 -> 1_2_3_crouch
+  ok   空中松开 -> 7_8_9_jump_air
+  ok   松开防御方向(仍按 FD)-> 回中立
+
+[RP 镜像]
+  ok   RP 也能进 active_FD_block
+  ok   RP 松开回中立
+
+[帧序列 / 速度重力 / 资源 / 屏障 / 取消]
+  ok   帧序列 0,1,2,3,4 -> 2,3,4 循环(0,1,2,3,4,2,3,4,2,3,4,2)
+  ok   地面进入:friction = 7
+  ok   地面进入:gravity = 2.5
+  ok   空中进入:保留原有速度
+  ok   空中进入:gravity = 2.75
+  ok   空中进入:friction = 1
+  ok   进入时插了屏障特效
+  ok   每帧扣 2 点 heat(200 -> 194)
+  ok   屏障在持续期间没有被提前收掉
+  ok   松开 FD:屏障被收掉
+  ok   松开 FD:回 5_stand_idle
+  ok   heat 扣光 -> 强制解除并回中立
+  ok   资源耗尽也收掉屏障
+  ok   heat = 0 时进不了 FD
+  ok   FD 可以取消成 RC_blue
+  ok   取消时收掉屏障(RC_blue)
+  ok   FD 可以取消成 overdrive
+  ok   取消时收掉屏障(overdrive)
+  ok   站 -> 蹲:换成 1_crouch_block
+  ok   切换时动画重新初始化(帧 3 -> 0)
+
+checks=44 fails=0
+RESULT: OK

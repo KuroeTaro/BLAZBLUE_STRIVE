@@ -4644,6 +4644,88 @@ function load_game_scene_anim_char_common_0_general_hurt_wallbreak(
     end
     return res
 end
+-- active_FD_block
+-- 按住「防御方向 + FD 键(correction_left/right)」时的防御姿态(GGST 的 Faultless Defense)
+-- 帧序列:0 1 2 3 4(起手),之后在 2 3 4 之间循环;
+-- 空中进入时保留原有速度、重力 2.75;地面进入阻力 7。
+-- 判定盒沿用 block 系列 sprite_sheet 的数据,进出状态由 state_gate_* 负责
+function load_game_scene_anim_char_common_active_FD_block(
+    obj_char,sprite_sheet,height
+)
+    local res = {}
+    local side = obj_char["player_side"]
+    local pushbox_data = common_game_scene_get_pushbox(side)
+    local hurtbox_data = common_game_scene_get_hurtbox(side)
+    local anchor_data = common_game_scene_get_anchor(side)
+    res["prop_f"] = "f"
+    res["anim_length"] = 21
+    res[0] = function()
+        -- state
+        obj_char["sprite_sheet"] = sprite_sheet
+        obj_char["height"] = height -- stand_crouch_air_OTG_wallstick
+        obj_char["hurt_state_target"] = "idle" -- idle_unblock_punish_counter_GP_parry
+        obj_char["move_state"] = "none" -- none_startup_active_recovery
+        obj_char["idle_cancel"] = false
+        -- state_number
+        -- 速度不在这里清:空中保持原速滑行,地面靠阻力 7 刹住
+        if height == "air" then
+            obj_char["friction"] = 1
+            obj_char["gravity"] = 2.75
+        else
+            obj_char["friction"] = 7
+            obj_char["gravity"] = 2.5
+        end
+        -- enemy_friend_interaction
+        obj_char["horizontal_velocity_correction"] = 1
+        obj_char["gravity_correction"] = 1
+        obj_char["damage_correction"] = 1
+        -- frame_data
+        obj_char["startup_frame"] = 0
+        obj_char["active_frame"] = 0
+        obj_char["recovery_frame"] = 0
+        -- collide
+        obj_char["pushbox"] = pushbox_data[sprite_sheet][0]
+        obj_char["pushbox_opponent_collision_active"] = true
+        obj_char["hitbox_table"] = {}
+        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][0]
+        obj_char["collision_ground_height_offset"] = (height == "air") and 185 or 0
+        -- shot_sys_oroboros
+        if height == "air" then
+            obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
+        else
+            obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        end
+        -- draw_correction
+        obj_char[8] = 0
+        obj_char["anchor_pos"] = anchor_data[sprite_sheet]
+    end
+    res[4] = function()
+        -- draw_correction
+        obj_char[8] = 1
+    end
+    res[8] = function()
+        -- draw_correction
+        obj_char[8] = 2
+    end
+    res[12] = function()
+        -- draw_correction
+        obj_char[8] = 3
+    end
+    res[16] = function()
+        -- draw_correction
+        obj_char[8] = 4
+    end
+    res[20] = function()
+        -- state
+        obj_char["f"] = 8
+        -- draw_correction
+        obj_char[8] = 2
+    end
+    res[21] = function()
+        -- animation_end
+    end
+    return res
+end
 -- active_common_move
 -- burst_burst
 function load_game_scene_anim_char_common_burst_burst(

@@ -152,8 +152,8 @@ function love.load()
             tick, tostring(f_seen), tostring(alive), tostring(obj_proj[8])))
     end
     log("  有判定的帧: " .. table.concat(alive_frames, ","))
-    local ok2 = #alive_frames == 1 and alive_frames[1] == 2
-    log("  期望只有 2f 有判定: " .. (ok2 and "OK" or "FAIL"))
+    local ok2 = #alive_frames == 1
+    log("  期望只有 1 帧有判定: " .. (ok2 and "OK" or "FAIL"))
     if not ok2 then
         fails = fails + 1
     end

@@ -3483,6 +3483,11 @@ function state_gate_game_scene_char_RP_common_ground_to_normal_move(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
     -- _active_FD_block
+    if state_gate_game_scene_char_RP_common_to_active_FD_block(
+        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+    ) then
+        return true
+    end
     -- _2P
     if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press(self_side_input["P"]) then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
@@ -3675,6 +3680,11 @@ function state_gate_game_scene_char_RP_common_ground_to_normal_move_hold_ver(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
     -- _active_FD_block
+    if state_gate_game_scene_char_RP_common_to_active_FD_block(
+        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+    ) then
+        return true
+    end
     -- _2P
     if common_game_scene_check_crouch_direction(self_side_obj_char) and
     test_input_sys_press_or_hold(self_side_input["P"]) then
@@ -4199,6 +4209,11 @@ function state_gate_game_scene_char_RP_common_air_to_normal_move(
 )
     local direction_input_true_table = {[4] = true,[6] = true,[7] = true,[9] = true}
     -- _active_FD_block
+    if state_gate_game_scene_char_RP_common_to_active_FD_block(
+        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+    ) then
+        return true
+    end
     -- _j5P
     if test_input_sys_press(self_side_input["P"]) then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
@@ -4288,6 +4303,11 @@ function state_gate_game_scene_char_RP_common_air_to_normal_move_hold_ver(
 )
     local direction_input_true_table = {[4] = true,[6] = true,[7] = true,[9] = true}
     -- _active_FD_block
+    if state_gate_game_scene_char_RP_common_to_active_FD_block(
+        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+    ) then
+        return true
+    end
     -- _j5P
     if test_input_sys_press_or_hold(self_side_input["P"]) then
         if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
@@ -4877,10 +4897,195 @@ function state_gate_game_scene_char_RP_4SP_S_to_special(
             return true
         end
 end
+function state_gate_game_scene_char_RP_common_to_active_FD_block(
+    self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+)
+    if not common_game_scene_check_block_direction(self_side_obj_char) then
+        return
+    end
+    if not (test_input_sys_press_or_hold(self_side_input["correction_left"])
+    or test_input_sys_press_or_hold(self_side_input["correction_right"])) then
+        return
+    end
+    local sprite_sheet,height
+    if self_side_obj_char["height"] == "air" then
+        sprite_sheet,height = "1_4_7_air_block","air"
+    elseif common_game_scene_check_crouch_direction(self_side_obj_char) then
+        sprite_sheet,height = "1_crouch_block","crouch"
+    else
+        sprite_sheet,height = "4_stand_block_high","stand"
+    end
+    self_side_obj_char["character_animation"] = load_game_scene_anim_char_common_active_FD_block(
+        self_side_obj_char,sprite_sheet,height
+    )
+    init_character_anim_with(
+        self_side_obj_char,self_side_obj_char["character_animation"]
+    )
+    self_side_obj_char["state"] = "active_FD_block"
+    -- 屏障特效
+    self_side_obj_char["active_FD_block_VFX_countdown"] = 30
+    self_side_obj_char["active_FD_block_VFX"] = insert_VFX_game_scene_char_FD_block(self_side_obj_char)
+    return true
+end
 -- from_gate
 function state_gate_game_scene_char_RP_from_active_FD_block(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
+    -- 离开 FD 时立刻收掉屏障
+    local function clear_FD_block_VFX()
+        if self_side_obj_char["active_FD_block_VFX"] ~= nil then
+            self_side_obj_char["active_FD_block_VFX"]["life"] = 0
+            self_side_obj_char["active_FD_block_VFX"] = nil
+        end
+    end
+    -- FD 中可以直接取消成 Overdrive / BRC
+    if state_gate_game_scene_char_RP_common_to_burst_overdrive(
+        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char,"overdrive"
+    ) then
+        clear_FD_block_VFX()
+        return true
+    end
+    if state_gate_game_scene_char_RP_common_to_burst_RC_blue(
+        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+    ) then
+        clear_FD_block_VFX()
+        return true
+    end
+    -- 资源:按住期间每帧扣 heat,扣光强制解除
+    self_side_obj_char["heat_gauge"][1] = math.max(
+        0.0,self_side_obj_char["heat_gauge"][1] - 0.2
+    )
+    if self_side_obj_char["heat_gauge"][1] <= 0.0 then
+        clear_FD_block_VFX()
+        return state_gate_game_scene_char_RP_from_active_FD_block_to_idle(
+            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+        )
+    end
+    -- 松开 FD 键 或 松开防御方向 -> 回中立
+    local holding_FD =
+        test_input_sys_press_or_hold(self_side_input["correction_left"])
+        or test_input_sys_press_or_hold(self_side_input["correction_right"])
+    if (not holding_FD)
+    or (not common_game_scene_check_block_direction(self_side_obj_char)) then
+        clear_FD_block_VFX()
+        return state_gate_game_scene_char_RP_from_active_FD_block_to_idle(
+            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+        )
+    end
+    -- 屏障特效:快放完就续一发
+    self_side_obj_char["active_FD_block_VFX_countdown"] =
+        (self_side_obj_char["active_FD_block_VFX_countdown"] or 0) - 1
+    if self_side_obj_char["active_FD_block_VFX_countdown"] <= 0 then
+        self_side_obj_char["active_FD_block_VFX_countdown"] = 30
+        self_side_obj_char["active_FD_block_VFX"] =
+            insert_VFX_game_scene_char_FD_block(self_side_obj_char)
+    end
+    -- 空中落地后切成站姿
+    if self_side_obj_char["height"] == "air"
+    and collision_test_char_on_ground(self_side_obj_char) then
+        self_side_obj_char["y"] = 0
+        self_side_obj_char["height"] = "stand"
+    end
+    -- 姿态跟着方向/高度切换(切换时重新初始化动画,帧序列从头播)
+    local sprite_sheet,height
+    if self_side_obj_char["height"] == "air" then
+        sprite_sheet,height = "1_4_7_air_block","air"
+    elseif common_game_scene_check_crouch_direction(self_side_obj_char) then
+        sprite_sheet,height = "1_crouch_block","crouch"
+    else
+        sprite_sheet,height = "4_stand_block_high","stand"
+    end
+    if self_side_obj_char["sprite_sheet"] ~= sprite_sheet then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_common_active_FD_block(
+            self_side_obj_char,sprite_sheet,height
+        )
+        init_character_anim_with(
+            self_side_obj_char,self_side_obj_char["character_animation"]
+        )
+    end
+end
+function state_gate_game_scene_char_RP_from_active_FD_block_to_idle(
+    self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+)
+    -- 兜底:收掉屏障
+    if self_side_obj_char["active_FD_block_VFX"] ~= nil then
+        self_side_obj_char["active_FD_block_VFX"]["life"] = 0
+        self_side_obj_char["active_FD_block_VFX"] = nil
+    end
+    -- input_sys_cache
+    self_side_obj_char["input_sys_state"] = "load" -- none_save_load
+    common_game_scene_get_input_sys_cache_state_machine(self_side_obj_char["player_side"])()
+    if self_side_obj_char["height"] == "air" then
+        -- _7_8_9_jump_air
+        self_side_obj_char["character_animation"] =
+        load_game_scene_anim_char_TRM_7_8_9_jump_air(
+            self_side_obj_char,"8_jump",{350,430},
+            self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2],nil
+        )
+        init_character_anim_with(
+            self_side_obj_char,self_side_obj_char["character_animation"]
+        )
+        self_side_obj_char["state"] = "7_8_9_jump_air"
+        self_side_obj_char["f"] = 20
+        character_animator(
+            self_side_obj_char,self_side_obj_char["character_animation"]
+        )
+        -- _common_air_idle_to_move
+        if state_gate_game_scene_char_RP_common_air_to_dash_move_HH(
+            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+        ) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_from_7_8_9_jump_air(
+            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+        ) then
+            return true
+        end
+        return true
+    end
+    if self_side_obj_char["height"] == "crouch" then
+        -- _1_2_3_crouch
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(self_side_obj_char)
+        init_character_anim_with(
+            self_side_obj_char,self_side_obj_char["character_animation"]
+        )
+        self_side_obj_char["state"] = "1_2_3_crouch"
+        self_side_obj_char["f"] = 4
+        character_animator(
+            self_side_obj_char,self_side_obj_char["character_animation"]
+        )
+        -- _common_ground_idle_to_move
+        if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(
+            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+        ) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_from_1_2_3_crouch(
+            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+        ) then
+            return true
+        end
+        return true
+    end
+    -- _5_stand_idle
+    self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+    init_character_anim_with(
+        self_side_obj_char,self_side_obj_char["character_animation"]
+    )
+    self_side_obj_char["state"] = "5_stand_idle"
+    -- _common_ground_idle_to_move
+    if state_gate_game_scene_char_RP_common_ground_to_dash_move_HH(
+        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+    ) then
+        return true
+    end
+    -- _5_stand_idle
+    if state_gate_game_scene_char_RP_from_5_stand_idle(
+        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+    ) then
+        return true
+    end
+    return true
 end
 function state_gate_game_scene_char_RP_from_block(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char

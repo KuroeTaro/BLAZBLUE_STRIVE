@@ -22,6 +22,7 @@ local FILES = {
     "scenes/game_scene/_common/init.lua",
     "scenes/game_scene/_common/draw_functions.lua",
     "scenes/game_scene/_common/_anim.lua",
+    "scenes/game_scene/_common/_VFX.lua",
     "scenes/game_scene/characters/TRM/_character_function.lua",
     "scenes/game_scene/_common/_projectile.lua",
     "scenes/game_scene/characters/TRM/left.lua",

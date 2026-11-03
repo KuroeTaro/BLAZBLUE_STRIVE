@@ -52,6 +52,7 @@ local function install_stubs()
     end
     insert_VFX_game_scene_stage_smoke_land_blow = function() end
     insert_VFX_game_scene_char_burst_front = function() end
+    insert_projectile_game_scene_char_common_burst_shockwave = function() end
     insert_VFX_game_scene_char_burst_back = function() end
     play_obj_audio = function() end
     init_point_linear_anim_without = function() end

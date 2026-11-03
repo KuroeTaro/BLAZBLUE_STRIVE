@@ -4,15 +4,21 @@ load draw_general_use_functions.lua                       OK
 load scenes/game_scene/_common/draw_functions.lua         OK 
 load scenes/game_scene/_common/_projectile.lua            OK 
 shader compile: OK
-config: life=11 radius=500 r_start=0.75 r_grow=1.25 w_base=0.09 w_grow=0.22 bright=1
+config: life=24 radius=350 r_start=0.75 r_grow=1.25 w_base=0.09 w_grow=0.22 bright=1
 
 逐帧径向亮度峰值(只画 shader):
-  f00  peak_r=366px (0.73R)  亮度=1.000
-  f02  peak_r=598px (1.20R)  亮度=0.565
-  f04  peak_r=774px (1.55R)  亮度=0.271
-  f06  peak_r=876px (1.75R)  亮度=0.102
-  f08  peak_r=866px (1.73R)  亮度=0.031
-  f10  peak_r=518px (1.04R)  亮度=0.024
+  f00  peak_r=256px (0.51R)  亮度=1.000
+  f02  peak_r=334px (0.67R)  亮度=0.804
+  f04  peak_r=400px (0.80R)  亮度=0.616
+  f06  peak_r=458px (0.92R)  亮度=0.459
+  f08  peak_r=512px (1.02R)  亮度=0.333
+  f10  peak_r=566px (1.13R)  亮度=0.231
+  f12  peak_r=590px (1.18R)  亮度=0.153
+  f14  peak_r=618px (1.24R)  亮度=0.098
+  f16  peak_r=650px (1.30R)  亮度=0.063
+  f18  peak_r=656px (1.31R)  亮度=0.039
+  f20  peak_r=624px (1.25R)  亮度=0.027
+  f22  peak_r=518px (1.04R)  亮度=0.024
 case left     f4 done
 case right    f4 done
 case half_op  f4 done
@@ -21,8 +27,8 @@ case half_op  f4 done
   tick 01: 判定时 f=0 hitbox=false -> 推进后 f=0
   tick 02: 判定时 f=0 hitbox=false -> 推进后 f=0
   tick 03: 判定时 f=0 hitbox=false -> 推进后 f=1
-  tick 04: 判定时 f=1 hitbox=false -> 推进后 f=2
-  tick 05: 判定时 f=2 hitbox=true -> 推进后 f=3
+  tick 04: 判定时 f=1 hitbox=true -> 推进后 f=2
+  tick 05: 判定时 f=2 hitbox=false -> 推进后 f=3
   tick 06: 判定时 f=3 hitbox=false -> 推进后 f=4
   tick 07: 判定时 f=4 hitbox=false -> 推进后 f=5
   tick 08: 判定时 f=5 hitbox=false -> 推进后 f=6
@@ -30,11 +36,11 @@ case half_op  f4 done
   tick 10: 判定时 f=7 hitbox=false -> 推进后 f=8
   tick 11: 判定时 f=8 hitbox=false -> 推进后 f=9
   tick 12: 判定时 f=9 hitbox=false -> 推进后 f=10
-  tick 13: 判定时 f=10 hitbox=false -> 推进后 f=10
-  tick 14: 判定时 f=10 hitbox=false -> 推进后 f=10
-  tick 15: 判定时 f=10 hitbox=false -> 推进后 f=10
-  tick 16: 判定时 f=10 hitbox=false -> 推进后 f=10
-  有判定的帧: 2
-  期望只有 2f 有判定: OK
+  tick 13: 判定时 f=10 hitbox=false -> 推进后 f=11
+  tick 14: 判定时 f=11 hitbox=false -> 推进后 f=12
+  tick 15: 判定时 f=12 hitbox=false -> 推进后 f=13
+  tick 16: 判定时 f=13 hitbox=false -> 推进后 f=14
+  有判定的帧: 1
+  期望只有 1 帧有判定: OK
 
 RESULT: OK

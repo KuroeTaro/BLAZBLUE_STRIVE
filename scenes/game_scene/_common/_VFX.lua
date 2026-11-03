@@ -3576,6 +3576,8 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
         love.graphics.setColor(1,1,1,1)
     end
     table.insert(obj_char["VFX_hit_front_table"],obj_VFX)
+    -- 返回给调用方,方便提前收掉(fd 状态解除时用)
+    return obj_VFX
 end
 function insert_VFX_game_scene_char_throw_tech(active_op_side_obj_char,passive_op_side_obj_char,x,y,opacity,sx,sy,r)
     -- x_y_z_opacity_sx_sy_r_f

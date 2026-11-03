@@ -7,23 +7,17 @@
 
 [from_burst_burst]
   ok   未 idle_cancel 不出
-  ok   idle_cancel 之后 -> 返回 true
-  ok   state -> 5_stand_idle
-  ok   换上 5_stand_idle 动画
-  ok   调用了 common_ground_to_dash_move_HH
-  ok   调用了 from_5_stand_idle
-  ok   physics_lock 解除
-  ok   air -> 7_8_9_jump_air
-  ok   air 帧数校正 f=20
-  ok   动画播完兜底 -> 5_stand_idle
+  ok   idle_cancel: 调用了 common_ground_to_dash_move_HH
+  ok   idle_cancel: 调用了 from_5_stand_idle
+  ok   idle_cancel: 门没转就留在 burst_burst
+  ok   动画播完 -> 5_stand_idle
 
 [RP 镜像(冒烟)]
   ok   两个 RP 门都存在
-  ok   RP 未按 burst 不进 burst_burst
   ok   RP hurt + burst -> burst_burst
   ok   RP 未 idle_cancel 不出
-  ok   RP idle_cancel 之后 -> 5_stand_idle
   ok   RP 走了 5_stand_idle 那套门
+  ok   RP 动画播完 -> 5_stand_idle
 
-checks=20 fails=0
+checks=14 fails=0
 RESULT: OK
