@@ -3184,85 +3184,80 @@ function insert_VFX_game_scene_char_counter_blast_special_projectile(active_op_s
     table.insert(active_op_side_obj_char["VFX_hit_front_table"],obj_VFX)
 end
 -- block
--- active_FD_block 的常驻气泡屏障(FD_bubble 那张球罩)
---   · update 里实时读 FD 键(correction_left / correction_right):
---     松手、或者角色已经不在 active_FD_block 状态,就进入渐出;
---   · 渐入 / 渐出都在 VFX 自己身上算(写进 obj_VFX[4] 当透明度),
---     渐出结束自动 life = 0;
---   · 不需要外部保存句柄,也不依赖 countdown 之类的刷新计数。
-function insert_VFX_game_scene_char_active_FD_block(obj_char,input)
-    local fade_in_frame = 8
-    local fade_out_frame = 8
+function insert_VFX_game_scene_char_FD_block(obj_char)
+    local config = FD_BLOCK_VFX_CONFIG
     local obj_VFX = {0,0,0,1,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
-    local FD_VFX_spawn_anchor_table =
+    local anchor_table =
         common_game_scene_get_VFX_spawn_anchor(obj_char["player_side"])["FD_block_spawn_anchor_pos"]
-    local FD_VFX_spawn_anchor =
-        FD_VFX_spawn_anchor_table[obj_char["height"]] or FD_VFX_spawn_anchor_table["stand"]
-    -- 同类屏障只留最新一层,不动其它 VFX
-    local keep_table = {}
+    local anchor = anchor_table[obj_char["height"]] or anchor_table["stand"]
+    local function FD_block_apply_frame(obj_VFX,config)
+        local cycle = math.max(config.impact_loop_frame,1)
+        local phase = (obj_VFX["frame_age"] % cycle)/cycle
+        obj_VFX["impact_radius"] =
+            config.impact_radius_start
+            + (config.impact_radius_end - config.impact_radius_start)*phase
+        local fade_in = math.max(config.impact_fade_in,1.0e-6)
+        local fade_out = math.min(math.max(config.impact_fade_out,0.0),1.0 - 1.0e-6)
+        local alpha = 1.0
+        if phase < fade_in then
+            alpha = phase/fade_in
+        end
+        if phase > fade_out then
+            alpha = alpha * (1.0 - (phase - fade_out)/(1.0 - fade_out))
+        end
+        obj_VFX["impact_alpha"] = math.max(config.impact_peak*alpha,0.0)
+    end
     for i = 1,#obj_char["VFX_hit_front_table"] do
         local vfx = obj_char["VFX_hit_front_table"][i]
-        if vfx["type"] ~= "FD_block" then
-            keep_table[#keep_table + 1] = vfx
+        if vfx["type"] == "FD_block" then
+            return
         end
     end
-    obj_char["VFX_hit_front_table"] = keep_table
     -- state
     obj_VFX["type"] = "FD_block"
-    obj_VFX["input"] = input or INPUT_SYS_CURRENT_COMMAND_STATE[obj_char["player_side"]]
-    obj_VFX["age"] = 0
-    obj_VFX["release"] = false
-    obj_VFX["release_age"] = 0
+    obj_VFX["fade_age"] = 0
+    obj_VFX["frame_age"] = 0
+    obj_VFX["opacity"] = 0.0
+    obj_VFX["impact_radius"] = 0.0
+    obj_VFX["impact_alpha"] = 0.0
     obj_VFX["life"] = 999999
-    obj_VFX[4] = 0
     -- position
-    obj_VFX[1] = obj_char["x"] + obj_char[5]*(FD_VFX_spawn_anchor[1])
-    obj_VFX[2] = obj_char["y"] + obj_char[6]*(FD_VFX_spawn_anchor[2])
+    obj_VFX[1] = obj_char["x"] + obj_char[5]*(anchor[1])
+    obj_VFX[2] = obj_char["y"] + obj_char[6]*(anchor[2])
     obj_VFX[3] = obj_char[3]
+    obj_VFX[4] = 1
     obj_VFX[5] = obj_char[5]
     obj_VFX[6] = obj_char[6]
     obj_VFX[7] = 0
     obj_VFX[8] = 0
     obj_VFX["update"] = function()
-        obj_VFX["age"] = obj_VFX["age"] + 1
-        -- 实时检测 FD 键输入
-        local holding_FD =
-            test_input_sys_press_or_hold(obj_VFX["input"]["correction_left"])
-            or test_input_sys_press_or_hold(obj_VFX["input"]["correction_right"])
-        if (not holding_FD) or (obj_char["state"] ~= "active_FD_block") then
-            obj_VFX["release"] = true
+        local state = obj_char["state"]
+        if state ~= "active_FD_block" and string.sub(state,1,5) ~= "block" then
+            obj_VFX["life"] = 0
+            return
         end
-        -- 渐入
-        local fade_in_ratio = math.min(1.0,obj_VFX["age"]/math.max(fade_in_frame,1))
-        -- 渐出
-        local fade_out_ratio = 1.0
-        if obj_VFX["release"] then
-            obj_VFX["release_age"] = obj_VFX["release_age"] + 1
-            fade_out_ratio =
-                math.max(0.0,1.0 - obj_VFX["release_age"]/math.max(fade_out_frame,1))
-            if fade_out_ratio <= 0.0 then
-                obj_VFX["life"] = 0
-            end
-        end
-        obj_VFX[4] = fade_in_ratio * fade_out_ratio
-        obj_VFX["life"] = obj_VFX["life"] - 1
+        obj_VFX["fade_age"] = obj_VFX["fade_age"] + 1
+        obj_VFX["frame_age"] = obj_VFX["frame_age"] + 1
+        obj_VFX["opacity"] =
+            math.min(1.0,obj_VFX["fade_age"]/math.max(config.fade_in,1)) * config.stance_opacity
     end
     obj_VFX["draw_sync"] = function()
-        FD_VFX_spawn_anchor =
-            FD_VFX_spawn_anchor_table[obj_char["height"]] or FD_VFX_spawn_anchor_table["stand"]
-        obj_VFX[1] = obj_char["x"] + obj_char[5]*(FD_VFX_spawn_anchor[1])
-        obj_VFX[2] = obj_char["y"] + obj_char[6]*(FD_VFX_spawn_anchor[2])
+        FD_block_apply_frame(obj_VFX,config)
+        anchor = anchor_table[obj_char["height"]] or anchor_table["stand"]
+        obj_VFX[1] = obj_char["x"] + obj_char[5]*(anchor[1])
+        obj_VFX[2] = obj_char["y"] + obj_char[6]*(anchor[2])
         obj_VFX[3] = obj_char[3]
         obj_VFX[5] = obj_char[5]
         obj_VFX[6] = obj_char[6]
     end
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
-        love.graphics.setBlendMode("add")
-        draw_3d_image(obj_camera,obj_VFX,image_VFX_game_scene_FD_bubble)
-        love.graphics.setBlendMode("alpha")
-        love.graphics.setColor(1,1,1,1)
+        if love.graphics.getCanvas() == nil then
+            draw_VFX_game_scene_char_FD_block(
+                shader_game_scene_fd_block_3d,obj_VFX,obj_VFX["opacity"]
+            )
+        end
     end
     table.insert(obj_char["VFX_hit_front_table"],obj_VFX)
     return obj_VFX
@@ -3578,88 +3573,6 @@ function insert_VFX_game_scene_char_block_RC_yellow(obj_char)
         love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_hit_front_table"],obj_VFX)
-end
-function insert_VFX_game_scene_char_FD_block(obj_char)
-    local obj_VFX = {0,0,0,1,1,1,0,0}
-    local obj_camera = obj_stage_game_scene_camera
-    local active_op_FD_VFX_spawn_anchor_table =
-        common_game_scene_get_VFX_spawn_anchor(obj_char["player_side"])["FD_block_spawn_anchor_pos"]
-    local active_op_FD_VFX_spawn_anchor = active_op_FD_VFX_spawn_anchor_table[obj_char["height"]]
-    obj_char["VFX_hit_front_table"] = {}
-    obj_char["VFX_hit_back_table"] = {}
-    obj_VFX["life"] = 35
-    obj_VFX[1] = obj_char["x"] + obj_char[5]*(active_op_FD_VFX_spawn_anchor[1])
-    obj_VFX[2] = obj_char["y"] + obj_char[6]*(active_op_FD_VFX_spawn_anchor[2])
-    obj_VFX[3] = obj_char[3]
-    obj_VFX[4] = 0
-    obj_VFX[5] = obj_char[5]
-    obj_VFX[6] = obj_char[6]
-    obj_VFX[7] = 0
-    obj_VFX[8] = 0
-    obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
-    obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
-    obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
-    obj_VFX["animation"] = {}
-    obj_VFX["animation"][0] = 0
-    obj_VFX["animation"][12] = 1
-    obj_VFX["animation"][14] = 2
-    obj_VFX["animation"][17] = 3
-    obj_VFX["animation"][20] = 4
-    obj_VFX["animation"][23] = 5
-    obj_VFX["animation"][27] = 6
-    obj_VFX["animation"][31] = 7
-    obj_VFX["animation"]["prop"] = 8
-    obj_VFX["animation"]["length"] = 35
-    obj_VFX["animation"]["loop"] = false
-    init_frame_anim_without(
-        obj_VFX,obj_VFX["animation"]
-    )
-    obj_VFX["opacity_point_linear_animation"] = {}
-    obj_VFX["opacity_point_linear_animation"][0] = {0.75,15}
-    obj_VFX["opacity_point_linear_animation"][15] = {0.9,25}
-    obj_VFX["opacity_point_linear_animation"][25] = {0.9,35}
-    obj_VFX["opacity_point_linear_animation"][35] = {0,35}
-    obj_VFX["opacity_point_linear_animation"]["prop"] = 4
-    obj_VFX["opacity_point_linear_animation"]["length"] = 35
-    obj_VFX["opacity_point_linear_animation"]["loop"] = false
-    obj_VFX["opacity_point_linear_animation"]["fix_type"] = true
-    init_point_linear_anim_without(
-        obj_VFX,obj_VFX["opacity_point_linear_animation"]
-    )
-    obj_VFX["update"] = function()
-        frame_animator(
-            obj_VFX,obj_VFX["animation"]
-        )
-        point_linear_animator(
-            obj_VFX,obj_VFX["opacity_point_linear_animation"]
-        )
-        obj_VFX["life"] = obj_VFX["life"] - 1
-    end
-    obj_VFX["draw_sync"] = function()
-        active_op_FD_VFX_spawn_anchor = active_op_FD_VFX_spawn_anchor_table[obj_char["height"]]
-        obj_VFX[1] = obj_char["x"] + obj_char[5]*(active_op_FD_VFX_spawn_anchor[1])
-        obj_VFX[2] = obj_char["y"] + obj_char[6]*(active_op_FD_VFX_spawn_anchor[2])
-        obj_VFX[5] = obj_char[5]
-        obj_VFX[6] = obj_char[6]
-        -- obj_VFX["draw_sync"] = function() end
-    end
-    obj_VFX["draw"] = function()
-        local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_block_FD
-        obj_VFX["draw_sync"]()
-        love.graphics.setColor(1,1,1,obj_VFX[4])
-        image_sprite_sheet["sprite_batch"]:clear()
-        draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
-        )
-        love.graphics.setBlendMode("add")
-        love.graphics.draw(image_sprite_sheet["sprite_batch"])
-        draw_3d_image(obj_camera,obj_VFX,image_VFX_game_scene_FD_bubble)
-        love.graphics.setBlendMode("alpha")
-        love.graphics.setColor(1,1,1,1)
-    end
-    table.insert(obj_char["VFX_hit_front_table"],obj_VFX)
-    -- 返回给调用方,方便提前收掉(fd 状态解除时用)
-    return obj_VFX
 end
 function insert_VFX_game_scene_char_throw_tech(active_op_side_obj_char,passive_op_side_obj_char,x,y,opacity,sx,sy,r)
     -- x_y_z_opacity_sx_sy_r_f

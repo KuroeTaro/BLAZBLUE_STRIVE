@@ -4659,6 +4659,8 @@ function load_game_scene_anim_char_common_active_FD_block(
     local anchor_data = common_game_scene_get_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 21
+    -- 循环段从这里开始(res[loop_frame] = 站立循环的起始帧)
+    res["loop_frame"] = 8
     res[0] = function()
         -- state
         obj_char["sprite_sheet"] = sprite_sheet

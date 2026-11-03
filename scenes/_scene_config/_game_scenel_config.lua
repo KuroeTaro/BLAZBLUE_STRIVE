@@ -113,6 +113,38 @@ BURST_SHOCKWAVE_PROJECTILE_CONFIG =
     -- 颜色:白色
     color = {1.00,1.00,1.00},
 }
+-- FD 屏障:把 FD_bubble(球罩)+ block_FD(8 帧命中环)合并成一个 shader
+-- 半径 / 环位置都是 × 基准半径(R = 设计像素,已含透视)
+FD_BLOCK_VFX_CONFIG =
+{
+    -- FD_bubble / block_FD 贴图都是 600x600,半径 300
+    base_radius = 300,
+    -- 球罩(照 FD_bubble 的 alpha 剖面:边缘最亮 0.43,往中心按 r^2.2 掉,球面处截断)
+    bubble_size = 0.92,
+    bubble_edge = 0.16,
+    bubble_power = 2.20,
+    bubble_brightness = 0.43,
+    bubble_highlight = 0.0,
+    bubble_wobble = 0.010,
+    -- 内圈:一圈带羽化的径向渐变,从中心亮起,渐变到半径的一半就收干净
+    bubble_inner_size = 0.50,
+    bubble_inner_feather = 0.42,
+    bubble_inner_brightness = 0.20,
+    -- 命中环:循环动画(渐入 -> 放大 -> 渐出 -> 回到原始大小重新渐入)
+    impact_loop_frame = 48,
+    impact_radius_start = 0.45,
+    impact_radius_end = 1.00,
+    impact_peak = 0.85,
+    impact_fade_in = 0.22,
+    impact_fade_out = 0.55,
+    impact_width = 0.030,
+    impact_inner_feather = 0.30,
+    -- 常驻(active_FD_block)屏障:渐入帧数 + 稳定后的透明度
+    fade_in = 8,
+    stance_opacity = 0.90,
+    -- 颜色
+    color = {1.00,1.00,1.00},
+}
 OVERDRIVE_BADGE_ANIM =
 {
     -- 缩放:1.000 -> 0.790(收缩)-> 1.000(放大)-> 1.110(淡出时继续放大)

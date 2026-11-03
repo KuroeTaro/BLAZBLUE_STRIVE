@@ -1,0 +1,12 @@
+load scenes/_scene_config/_game_scenel_config.lua         OK 
+load draw_general_use_functions.lua                       OK 
+load scenes/game_scene/_common/draw_functions.lua         OK 
+load scenes/game_scene/_common/_VFX.lua                   OK 
+shader compile: OK
+挡刀重置: 同一对象=true age 20 -> 0, impact_alpha=0.00
+离开 FD 状态后 life = 0(应为 0)
+原贴图加载: bubble=true block=true
+对照图帧数 = 8
+
+frames=13
+RESULT: OK

@@ -35,25 +35,43 @@
   ok   空中进入:保留原有速度
   ok   空中进入:gravity = 2.75
   ok   空中进入:friction = 1
-  ok   进入时插了屏障特效
-  ok   按住期间屏障没有进入渐出
-  ok   屏障渐入中 opacity = 0.38
+  ok   进入时插了常驻屏障
+  ok   渐入结束 opacity ≈ 0.90
+  ok   常驻屏障不会自己到期
   ok   松开 FD:回 5_stand_idle
-  ok   松开 FD:VFX 自己进入渐出(不需要外部收)
-  ok   渐出结束:life 耗尽
+  ok   松开 FD:屏障直接清除(life = 0),不做渐出
   ok   FD 可以取消成 RC_blue
   ok   FD 可以取消成 overdrive
   ok   站 -> 蹲:换成 1_crouch_block
   ok   切换时动画重新初始化(帧 1 -> 0)
 
-[屏障 VFX:渐入 / 渐出 / 输入轮询]
+[屏障 VFX:循环环 / 渐入 / 状态清理 / 挡刀重置]
+  ok   屏障类型 = FD_block
+  ok   环从最小半径 / 0 亮度开始
   ok   刚插入 opacity = 0
-  ok   渐入一半 opacity ≈ 0.50
-  ok   渐入结束 opacity = 1
-  ok   VFX 类型 = FD_block
-  ok   只有 correction_right 按住时保持
-  ok   松开 correction 键 -> 自己进入渐出
-  ok   离开 active_FD_block -> 自己进入渐出
-  ok   重复插入同类屏障只保留最新一层
-checks=48 fails=0
+  ok   渐入结束 opacity 正确
+  ok   update 里不递减 life(999999)
+  ok   环在一个循环内持续放大(0.54 -> 0.99)
+  ok   环先渐入再渐出(峰值 0.85, 末尾 0.04)
+  ok   循环回到起始大小(0.45)
+  ok   挡住攻击时复用同一个屏障对象
+  ok   挡住攻击时帧数清零重播(48 -> 0)
+  ok   重播不影响已经渐入好的透明度
+  ok   状态 active_FD_block 时保留
+  ok   状态 block 时保留
+  ok   状态 blockstop 时保留
+  ok   状态 block_stand 时保留
+  ok   状态 5_stand_idle 时清除
+  ok   状态 hurt_stand 时清除
+  ok   状态 7_8_9_jump_air 时清除
+  ok   同一个角色只保留一层屏障
+
+[block -> active_FD_block 出口]
+  ok   挡住后还按着 FD -> 回 active_FD_block
+  ok   回到站姿防御
+  ok   动画直接跳到循环段(f = 7, loop_frame = 8)
+  ok   block -> FD 之后状态正确
+  ok   block -> FD 沿用同一层屏障(不重新渐入)
+  ok   没按 FD 时不回 active_FD_block
+checks=64 fails=0
 RESULT: OK

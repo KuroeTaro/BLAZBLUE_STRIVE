@@ -260,7 +260,7 @@ function love.load()
     local shader_set = {}
     for _, i in ipairs(_G.requested_shaders) do shader_set[i] = true end
     local missing = {}
-    for i = 1,9 do if not shader_set[i] then missing[#missing + 1] = i end end
+    for i = 1,10 do if not shader_set[i] then missing[#missing + 1] = i end end
     log("  请求的 shader: " .. table.concat(_G.requested_shaders, ","))
     if #missing > 0 then bad("有 shader 没被排进加载顺序: " .. table.concat(missing, ",")) end
 

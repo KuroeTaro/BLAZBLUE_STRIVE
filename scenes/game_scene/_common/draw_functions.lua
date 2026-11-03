@@ -627,3 +627,53 @@ function draw_projectile_game_scene_burst_shockwave(shader,obj_projectile,frame,
     love.graphics.setShader()
     love.graphics.setBlendMode("alpha")
 end
+-- VFX:FD 屏障(FD_bubble 球罩 + block_FD 命中环,同一个 shader 画)
+-- 半径 / 环位置按设计像素送,和 overdrive / burst shockwave 同一套坐标约定。
+-- opacity:整体透明度(命中时的包络 / 常驻时的渐入);
+-- 命中环的半径与峰值由 VFX 每帧从 8 帧表插值好放在 obj_VFX 上,这里直接送。
+-- 复用两张表,避免每帧新建(nuGC)
+local FD_BLOCK_VFX_CENTER = {0,0}
+local FD_BLOCK_VFX_RESOLUTION = {0,0}
+function draw_VFX_game_scene_char_FD_block(shader,obj_VFX,opacity)
+    if opacity <= 0.0 then
+        return
+    end
+    local config = FD_BLOCK_VFX_CONFIG
+    local obj_camera = obj_stage_game_scene_camera
+    local width,height = love.graphics.getDimensions()
+    local projection = draw_resolution_correction(800)/(obj_VFX[3] - obj_camera[3])
+    local coords = draw_3d_point_to_2D(obj_camera,obj_VFX)
+    -- 锚点给的是原贴图的左上角(600x600,半径 300),shader 需要的是圆心:
+    -- 半径乘朝向,翻转时圆心也在另一边
+    local radius = config.base_radius*projection
+    FD_BLOCK_VFX_CENTER[1] = coords[1] + obj_VFX[5]*radius
+    FD_BLOCK_VFX_CENTER[2] = coords[2] + obj_VFX[6]*radius
+    FD_BLOCK_VFX_RESOLUTION[1] = width
+    FD_BLOCK_VFX_RESOLUTION[2] = height
+    shader:send("time",obj_VFX["age"] or 0)
+    shader:send("opacity",opacity)
+    shader:send("center",FD_BLOCK_VFX_CENTER)
+    shader:send("radius",radius)
+    shader:send("resolution",FD_BLOCK_VFX_RESOLUTION)
+    shader:send("tint",config.color)
+    shader:send("bubble_size",config.bubble_size)
+    shader:send("bubble_edge",config.bubble_edge)
+    shader:send("bubble_power",config.bubble_power)
+    shader:send("bubble_brightness",config.bubble_brightness)
+    shader:send("bubble_inner_size",config.bubble_inner_size)
+    shader:send("bubble_inner_feather",config.bubble_inner_feather)
+    shader:send("bubble_inner_brightness",config.bubble_inner_brightness)
+    shader:send("bubble_highlight",config.bubble_highlight)
+    shader:send("bubble_wobble",config.bubble_wobble)
+    shader:send("impact_radius",obj_VFX["impact_radius"] or 0.0)
+    shader:send("impact_alpha",obj_VFX["impact_alpha"] or 0.0)
+    shader:send("impact_width",config.impact_width)
+    shader:send("impact_inner_feather",config.impact_inner_feather)
+    -- add 混合:屏障是纯发光
+    love.graphics.setBlendMode("add")
+    love.graphics.setColor(1,1,1,1)
+    love.graphics.setShader(shader)
+    love.graphics.rectangle("fill",0,0,width,height)
+    love.graphics.setShader()
+    love.graphics.setBlendMode("alpha")
+end

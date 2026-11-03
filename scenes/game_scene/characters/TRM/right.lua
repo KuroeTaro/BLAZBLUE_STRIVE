@@ -4900,6 +4900,8 @@ end
 function state_gate_game_scene_char_RP_common_to_active_FD_block(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
+    local sprite_sheet = "none"
+    local height = 0
     if not common_game_scene_check_block_direction(self_side_obj_char) then
         return
     end
@@ -4907,7 +4909,6 @@ function state_gate_game_scene_char_RP_common_to_active_FD_block(
     or test_input_sys_press_or_hold(self_side_input["correction_right"])) then
         return
     end
-    local sprite_sheet,height
     if self_side_obj_char["height"] == "air" then
         sprite_sheet,height = "1_4_7_air_block","air"
     elseif common_game_scene_check_crouch_direction(self_side_obj_char) then
@@ -4922,8 +4923,7 @@ function state_gate_game_scene_char_RP_common_to_active_FD_block(
         self_side_obj_char,self_side_obj_char["character_animation"]
     )
     self_side_obj_char["state"] = "active_FD_block"
-    -- 屏障特效:VFX 自己在 update 里盯着 FD 键,松手 / 离场自动渐出
-    insert_VFX_game_scene_char_active_FD_block(self_side_obj_char,self_side_input)
+    insert_VFX_game_scene_char_FD_block(self_side_obj_char,self_side_input)
     return true
 end
 -- from_gate
