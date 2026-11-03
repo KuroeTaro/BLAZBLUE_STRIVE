@@ -34,7 +34,7 @@ function load_game_scene_prep()
         order_load_game_scene_UI_lets_dance,
         order_load_game_scene_VFX_HUD,
         order_load_game_scene_VFX_move,
-        order_load_game_scene_VFX_overdrive_heat,
+        order_load_game_scene_VFX_overdrive_RC_burst_UA,
         order_load_game_scene_char_LP_audio,
         order_load_game_scene_char_LP_frames,
         order_load_game_scene_char_RP_audio,
@@ -199,7 +199,9 @@ function order_load_game_scene_UI_lets_dance(load_order)
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
-function order_load_game_scene_VFX_overdrive_heat(load_order)
+function order_load_game_scene_projectile(load_order)
+end
+function order_load_game_scene_VFX_overdrive_RC_burst_UA(load_order)
     local switch =
     {
         [1] = function()
@@ -249,12 +251,6 @@ function order_load_game_scene_VFX_overdrive_heat(load_order)
             )
         end,
         [3] = function()
-            -- UA
-            image_sprite_sheet_VFX_game_scene_UA_common =
-            common_sprite_sheet_load(
-                "asset/game_scene/common/texture/VFX/UA_common.json",
-                love.graphics.newImage(ASSET_DATA[7]["UA_common_sprite_batch"])
-            )
             -- burst
             image_sprite_sheet_VFX_game_scene_burst_back =
             common_sprite_sheet_load(
@@ -265,6 +261,12 @@ function order_load_game_scene_VFX_overdrive_heat(load_order)
             common_sprite_sheet_load(
                 "asset/game_scene/common/texture/VFX/burst_VFX/burst_front.json",
                 love.graphics.newImage(ASSET_DATA[7]["burst_front_sprite_batch"])
+            )
+            -- UA
+            image_sprite_sheet_VFX_game_scene_UA_common =
+            common_sprite_sheet_load(
+                "asset/game_scene/common/texture/VFX/UA_common.json",
+                love.graphics.newImage(ASSET_DATA[7]["UA_common_sprite_batch"])
             )
         end
     }

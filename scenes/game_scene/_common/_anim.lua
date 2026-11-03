@@ -6164,22 +6164,3 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     end
     return res
 end
--- burst
-function load_game_scene_anim_char_common_burst_ground_burst(
-    self_side_obj_char,opponent_side_obj_char,
-    character_uncommon_update
-)
-    local res = {}
-    local self_side = self_side_obj_char["player_side"]
-    local self_side_height = self_side_obj_char["height"]
-    local self_side_pushbox_data = common_game_scene_get_pushbox(self_side)
-    local self_side_hurtbox_data = common_game_scene_get_hurtbox(self_side)
-    local self_side_anchor_data = common_game_scene_get_anchor(self_side)
-    local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1] - 100)
-    local self_side_move_SFX_table = common_game_scene_get_SFX_move(self_side)
-end
-function load_game_scene_anim_char_common_burst_air_burst(
-    self_side_obj_char,opponent_side_obj_char,
-    character_uncommon_update
-)
-end
