@@ -41,9 +41,9 @@ function love.load()
     }
 
     local start = love.timer.getTime()
-    local texture_count, shader_count = preset_load_scene_asset_warm_up()
+    local texture_count, shader_count = set_load_scene_asset_warm_up()
     local ms = (love.timer.getTime() - start)*1000
-    log(string.format("preset_load_scene_asset_warm_up(): 贴图/图集 %d 个、shader %d 个,耗时 %.2f ms",
+    log(string.format("set_load_scene_asset_warm_up(): 贴图/图集 %d 个、shader %d 个,耗时 %.2f ms",
         texture_count, shader_count, ms))
     log("暖机后 canvas / shader 已还原: " ..
         tostring(love.graphics.getCanvas() == nil) .. " / " ..
@@ -54,8 +54,8 @@ function love.load()
 
     -- 再跑一次应该更快(缓存命中)
     local again = love.timer.getTime()
-    preset_load_scene_asset_warm_up()
-    log(string.format("第二次 preset_load_scene_asset_warm_up(): %.2f ms(缓存命中)", (love.timer.getTime() - again)*1000))
+    set_load_scene_asset_warm_up()
+    log(string.format("第二次 set_load_scene_asset_warm_up(): %.2f ms(缓存命中)", (love.timer.getTime() - again)*1000))
 
     log("")
     log(fails == 0 and "RESULT: OK" or ("RESULT: FAIL (" .. fails .. ")"))

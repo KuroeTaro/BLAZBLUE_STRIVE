@@ -125,7 +125,7 @@ end-- 资产暖机:每次 load_scene 把所有 order 跑完之后,统一在这�
 --   枚举方式:遍历 _G 的 userdata;表则看 { sprite_batch = ..., frames = ... } / { image = ... },
 --   以及名字里带 shader 的「shader 表」(例如 shader_game_scene_LP / RP)。
 --   单个资产出错只 pcall 跳过,不影响加载;结束时图形状态全部还原。
-function preset_load_scene_asset_warm_up()
+function set_load_scene_asset_warm_up()
     local warm_up_canvas = love.graphics.newCanvas(8,8)
     local warm_up_image = love.graphics.newImage(love.image.newImageData(1,1))
     local texture_count = 0
