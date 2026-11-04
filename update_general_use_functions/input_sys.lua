@@ -235,35 +235,35 @@ function get_input_sys_current_command(INPUT_SYS_CURRENT_COMMAND,INPUT_SYS_CURRE
         end
         -- 使用左摇杆
             -- 不使用可删除
-        if get_joystick_axis_command(INPUT_SYS_CURRENT_CONTROLLER[2],INPUT_SYS_AXIS_TABLE[3]) > 0.5 then
+        if get_joystick_axis_command(INPUT_SYS_CURRENT_CONTROLLER[2],INPUT_SYS_AXIS_TABLE[3]) > 0.2 then
             INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[4]] = 1
             INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[3]] = 0
-        elseif get_joystick_axis_command(INPUT_SYS_CURRENT_CONTROLLER[2],INPUT_SYS_AXIS_TABLE[3]) < -0.5 then
+        elseif get_joystick_axis_command(INPUT_SYS_CURRENT_CONTROLLER[2],INPUT_SYS_AXIS_TABLE[3]) < -0.2 then
             INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[3]] = 1
             INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[4]] = 0
         end
-        if get_joystick_axis_command(INPUT_SYS_CURRENT_CONTROLLER[2],INPUT_SYS_AXIS_TABLE[4]) > 0.5 then
+        if get_joystick_axis_command(INPUT_SYS_CURRENT_CONTROLLER[2],INPUT_SYS_AXIS_TABLE[4]) > 0.2 then
             INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[2]] = 1
             INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[1]] = 0
-        elseif get_joystick_axis_command(INPUT_SYS_CURRENT_CONTROLLER[2],INPUT_SYS_AXIS_TABLE[4]) < -0.5 then
+        elseif get_joystick_axis_command(INPUT_SYS_CURRENT_CONTROLLER[2],INPUT_SYS_AXIS_TABLE[4]) < -0.2 then
             INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[1]] = 1
             INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[2]] = 0
         end
         -- 使用右摇杆特殊输入
-        if get_joystick_axis_command(INPUT_SYS_CURRENT_CONTROLLER[2],INPUT_SYS_AXIS_TABLE[5]) > 0.5 then
+        if get_joystick_axis_command(INPUT_SYS_CURRENT_CONTROLLER[2],INPUT_SYS_AXIS_TABLE[5]) > 0.2 then
             INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[20]] = 1
             INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[19]] = 0
-        elseif get_joystick_axis_command(INPUT_SYS_CURRENT_CONTROLLER[2],INPUT_SYS_AXIS_TABLE[5]) < -0.5 then
+        elseif get_joystick_axis_command(INPUT_SYS_CURRENT_CONTROLLER[2],INPUT_SYS_AXIS_TABLE[5]) < -0.2 then
             INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[19]] = 1
             INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[20]] = 0
         else
             INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[19]] = 0
             INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[20]] = 0
         end
-        if get_joystick_axis_command(INPUT_SYS_CURRENT_CONTROLLER[2],INPUT_SYS_AXIS_TABLE[6]) > 0.5 then
+        if get_joystick_axis_command(INPUT_SYS_CURRENT_CONTROLLER[2],INPUT_SYS_AXIS_TABLE[6]) > 0.2 then
             INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[18]] = 1
             INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[17]] = 0
-        elseif get_joystick_axis_command(INPUT_SYS_CURRENT_CONTROLLER[2],INPUT_SYS_AXIS_TABLE[6]) < -0.5 then
+        elseif get_joystick_axis_command(INPUT_SYS_CURRENT_CONTROLLER[2],INPUT_SYS_AXIS_TABLE[6]) < -0.2 then
             INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[17]] = 1
             INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[18]] = 0
         else
