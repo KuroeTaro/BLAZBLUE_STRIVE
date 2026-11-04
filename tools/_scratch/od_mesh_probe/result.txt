@@ -2,11 +2,11 @@ load scenes/_scene_config/_game_scenel_config.lua         OK
 load draw_general_use_functions.lua                       OK 
 load scenes/game_scene/_common/draw_functions.lua         OK 
 particle_count = 300
-第一次 0.430 ms / 第二次 0.0003 ms
+第一次 0.452 ms / 第二次 0.0002 ms
   ok   mesh 创建成功
   ok   第二次返回同一个 mesh(缓存生效)
   ok   顶点数 = particle_count*6(1800)
-60 次调用耗时 0.027 ms
+60 次调用耗时 0.021 ms
   ok   60 帧里没有重建 mesh
 
 RESULT: OK

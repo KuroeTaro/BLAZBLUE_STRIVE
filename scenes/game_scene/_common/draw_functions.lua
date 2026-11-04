@@ -474,13 +474,7 @@ function draw_VFX_game_scene_partical_3d_counter_opacity(frame)
     -- (_VFX.lua 里 counter 粒子 VFX 的 life / 帧动画长度也同步改成 36)
     return math.min(1.00,math.max(0.00,(24 - frame)/24))*0.425
 end
-
--- overdrive badge 粒子的 mesh 缓存:必须放在文件作用域,否则每次调用都会重建一份
--- (原来的局部变量写法导致每帧都 newMesh 上传顶点数据,第一次开 OD 和之后每帧都在卡)
-local VFX_GAME_SCENE_BADGE_CENTER = {0,0}
-local VFX_GAME_SCENE_BADGE_RESOLUTION = {0,0}
-local VFX_GAME_SCENE_BADGE_PARTICLE_MESH = nil
-local VFX_GAME_SCENE_BADGE_PARTICLE_MESH_COUNT = 0
+-- overdrive badge 粒子的 mesh:全局缓存,启动后 particle_count 不变,建一次就够
 function common_game_scene_get_overdrive_badge_particle_mesh()
     -- overdrive_badge_partical:徽章收缩聚集 / 放大爆发 + 冲击波
     -- 粒子部分:一张预生成的 quad mesh(数量见 OVERDRIVE_BADGE_PARTICAL_CONFIG),
@@ -495,13 +489,11 @@ function common_game_scene_get_overdrive_badge_particle_mesh()
     -- center / radius 每帧用 3D 投影重算,所以两者都跟着角色位置与镜头推拉走;
     -- 直接以 add 混合画在屏幕上,和原 badge 同属角色背侧层。
     -- 所有可调数值都来自 _overdrive_badge_partical_config.lua,这里只负责送 uniform。
-    -- 三张表复用同一份,避免每帧新建(项目开了 nuGC)
-    local config = OVERDRIVE_BADGE_PARTICAL_CONFIG
-    local particle_count = config.particle_count
-    if VFX_GAME_SCENE_BADGE_PARTICLE_MESH ~= nil
-    and VFX_GAME_SCENE_BADGE_PARTICLE_MESH_COUNT == particle_count then
+    -- 全局缓存:particle_count 启动后不会变,建一次就够
+    if VFX_GAME_SCENE_BADGE_PARTICLE_MESH ~= nil then
         return VFX_GAME_SCENE_BADGE_PARTICLE_MESH
     end
+    local particle_count = OVERDRIVE_BADGE_PARTICAL_CONFIG.particle_count
     -- 每颗粒子两个三角形:角点顺序 (0,0)(1,0)(1,1) / (0,0)(1,1)(0,1)
     local corner_table = {
         {0,0},{1,0},{1,1},
@@ -518,7 +510,6 @@ function common_game_scene_get_overdrive_badge_particle_mesh()
     end
     VFX_GAME_SCENE_BADGE_PARTICLE_MESH =
     love.graphics.newMesh(vertices,"triangles","static")
-    VFX_GAME_SCENE_BADGE_PARTICLE_MESH_COUNT = particle_count
     return VFX_GAME_SCENE_BADGE_PARTICLE_MESH
 end
 function draw_VFX_game_scene_overdrive_badge_partical(
@@ -528,10 +519,6 @@ function draw_VFX_game_scene_overdrive_badge_partical(
     local width,height = love.graphics.getDimensions()
     local coords = draw_3d_point_to_2D(obj_camera,obj_VFX)
     local projection = draw_resolution_correction(800)/(obj_VFX[3] - obj_camera[3])
-    VFX_GAME_SCENE_BADGE_CENTER[1] = coords[1]
-    VFX_GAME_SCENE_BADGE_CENTER[2] = coords[2]
-    VFX_GAME_SCENE_BADGE_RESOLUTION[1] = width
-    VFX_GAME_SCENE_BADGE_RESOLUTION[2] = height
     local radius = 500*projection
     local config = OVERDRIVE_BADGE_PARTICAL_CONFIG
     local particle_mesh = common_game_scene_get_overdrive_badge_particle_mesh()
@@ -541,7 +528,7 @@ function draw_VFX_game_scene_overdrive_badge_partical(
     if frame <= 29 or frame >= 28 then
         particle_shader:send("time",frame)
         particle_shader:send("opacity",opacity)
-        particle_shader:send("center",VFX_GAME_SCENE_BADGE_CENTER)
+        particle_shader:send("center",coords)
         particle_shader:send("radius",radius)
         particle_shader:send("scale_anim",obj_VFX["scale_anim"])
         particle_shader:send("size_scale",config.size_scale)
@@ -564,9 +551,9 @@ function draw_VFX_game_scene_overdrive_badge_partical(
     love.graphics.setShader(shockwave_shader)
     shockwave_shader:send("time",frame)
     shockwave_shader:send("opacity",opacity)
-    shockwave_shader:send("center",VFX_GAME_SCENE_BADGE_CENTER)
+    shockwave_shader:send("center",coords)
     shockwave_shader:send("radius",radius)
-    shockwave_shader:send("resolution",VFX_GAME_SCENE_BADGE_RESOLUTION)
+    shockwave_shader:send("resolution",{width,height})
     shockwave_shader:send("shockwave_radius_start",config.shockwave_radius_start)
     shockwave_shader:send("shockwave_radius_grow",config.shockwave_radius_grow)
     shockwave_shader:send("shockwave_width_base",config.shockwave_width_base)
@@ -589,25 +576,18 @@ end
 -- 和 overdrive badge 的冲击波同一套坐标约定:shader 内部把屏幕像素换算成
 -- 1600x900 设计坐标,center / radius 都按设计像素送,所以分辨率变化不用重算。
 -- 数值全部来自 BURST_SHOCKWAVE_PROJECTILE_CONFIG。
--- 复用两张表,避免每帧新建(nuGC)
-local PROJECTILE_GAME_SCENE_BURST_SHOCKWAVE_CENTER = {0,0}
-local PROJECTILE_GAME_SCENE_BURST_SHOCKWAVE_RESOLUTION = {0,0}
 function draw_projectile_game_scene_burst_shockwave(shader,obj_projectile,frame,opacity)
     local config = BURST_SHOCKWAVE_PROJECTILE_CONFIG
     local obj_camera = obj_stage_game_scene_camera
     local width,height = love.graphics.getDimensions()
     local projection = draw_resolution_correction(800)/(obj_projectile[3] - obj_camera[3])
     local coords = draw_3d_point_to_2D(obj_camera,obj_projectile)
-    PROJECTILE_GAME_SCENE_BURST_SHOCKWAVE_CENTER[1] = coords[1]
-    PROJECTILE_GAME_SCENE_BURST_SHOCKWAVE_CENTER[2] = coords[2]
-    PROJECTILE_GAME_SCENE_BURST_SHOCKWAVE_RESOLUTION[1] = width
-    PROJECTILE_GAME_SCENE_BURST_SHOCKWAVE_RESOLUTION[2] = height
     shader:send("time",frame)
     shader:send("life",config.life)
     shader:send("opacity",opacity)
-    shader:send("center",PROJECTILE_GAME_SCENE_BURST_SHOCKWAVE_CENTER)
+    shader:send("center",coords)
     shader:send("radius",config.radius*projection)
-    shader:send("resolution",PROJECTILE_GAME_SCENE_BURST_SHOCKWAVE_RESOLUTION)
+    shader:send("resolution",{width,height})
     shader:send("tint",config.color)
     shader:send("shockwave_radius_start",config.radius_start)
     shader:send("shockwave_radius_grow",config.radius_grow)
@@ -631,9 +611,6 @@ end
 -- 半径 / 环位置按设计像素送,和 overdrive / burst shockwave 同一套坐标约定。
 -- opacity:整体透明度(命中时的包络 / 常驻时的渐入);
 -- 命中环的半径与峰值由 VFX 每帧从 8 帧表插值好放在 obj_VFX 上,这里直接送。
--- 复用两张表,避免每帧新建(nuGC)
-local FD_BLOCK_VFX_CENTER = {0,0}
-local FD_BLOCK_VFX_RESOLUTION = {0,0}
 function draw_VFX_game_scene_char_FD_block(shader,obj_VFX,opacity)
     if opacity <= 0.0 then
         return
@@ -646,15 +623,12 @@ function draw_VFX_game_scene_char_FD_block(shader,obj_VFX,opacity)
     -- 锚点给的是原贴图的左上角(600x600,半径 300),shader 需要的是圆心:
     -- 半径乘朝向,翻转时圆心也在另一边
     local radius = config.base_radius*projection
-    FD_BLOCK_VFX_CENTER[1] = coords[1] + obj_VFX[5]*radius
-    FD_BLOCK_VFX_CENTER[2] = coords[2] + obj_VFX[6]*radius
-    FD_BLOCK_VFX_RESOLUTION[1] = width
-    FD_BLOCK_VFX_RESOLUTION[2] = height
+    local center = {coords[1] + obj_VFX[5]*radius,coords[2] + obj_VFX[6]*radius}
     shader:send("time",obj_VFX["age"] or 0)
     shader:send("opacity",opacity)
-    shader:send("center",FD_BLOCK_VFX_CENTER)
+    shader:send("center",center)
     shader:send("radius",radius)
-    shader:send("resolution",FD_BLOCK_VFX_RESOLUTION)
+    shader:send("resolution",{width,height})
     shader:send("tint",config.color)
     shader:send("bubble_size",config.bubble_size)
     shader:send("bubble_edge",config.bubble_edge)
