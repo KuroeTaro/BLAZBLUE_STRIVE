@@ -475,6 +475,12 @@ function draw_VFX_game_scene_partical_3d_counter_opacity(frame)
     return math.min(1.00,math.max(0.00,(24 - frame)/24))*0.425
 end
 
+-- overdrive badge 粒子的 mesh 缓存:必须放在文件作用域,否则每次调用都会重建一份
+-- (原来的局部变量写法导致每帧都 newMesh 上传顶点数据,第一次开 OD 和之后每帧都在卡)
+local VFX_GAME_SCENE_BADGE_CENTER = {0,0}
+local VFX_GAME_SCENE_BADGE_RESOLUTION = {0,0}
+local VFX_GAME_SCENE_BADGE_PARTICLE_MESH = nil
+local VFX_GAME_SCENE_BADGE_PARTICLE_MESH_COUNT = 0
 function common_game_scene_get_overdrive_badge_particle_mesh()
     -- overdrive_badge_partical:徽章收缩聚集 / 放大爆发 + 冲击波
     -- 粒子部分:一张预生成的 quad mesh(数量见 OVERDRIVE_BADGE_PARTICAL_CONFIG),
@@ -492,10 +498,6 @@ function common_game_scene_get_overdrive_badge_particle_mesh()
     -- 三张表复用同一份,避免每帧新建(项目开了 nuGC)
     local config = OVERDRIVE_BADGE_PARTICAL_CONFIG
     local particle_count = config.particle_count
-    local VFX_GAME_SCENE_BADGE_CENTER = {0,0}
-    local VFX_GAME_SCENE_BADGE_RESOLUTION = {0,0}
-    local VFX_GAME_SCENE_BADGE_PARTICLE_MESH = nil
-    local VFX_GAME_SCENE_BADGE_PARTICLE_MESH_COUNT = 0
     if VFX_GAME_SCENE_BADGE_PARTICLE_MESH ~= nil
     and VFX_GAME_SCENE_BADGE_PARTICLE_MESH_COUNT == particle_count then
         return VFX_GAME_SCENE_BADGE_PARTICLE_MESH
@@ -526,8 +528,6 @@ function draw_VFX_game_scene_overdrive_badge_partical(
     local width,height = love.graphics.getDimensions()
     local coords = draw_3d_point_to_2D(obj_camera,obj_VFX)
     local projection = draw_resolution_correction(800)/(obj_VFX[3] - obj_camera[3])
-    local VFX_GAME_SCENE_BADGE_CENTER = {0,0}
-    local VFX_GAME_SCENE_BADGE_RESOLUTION = {0,0}
     VFX_GAME_SCENE_BADGE_CENTER[1] = coords[1]
     VFX_GAME_SCENE_BADGE_CENTER[2] = coords[2]
     VFX_GAME_SCENE_BADGE_RESOLUTION[1] = width

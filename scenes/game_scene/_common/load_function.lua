@@ -44,7 +44,7 @@ function load_game_scene_prep()
         order_load_game_scene_stage_frames
     }
     CURRENT_ORDER_TABLE = {1,1,1,1,1,1,1,1,1,1,1,1,1,1} -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
-    ORDER_SIZE_TABLE = {17,4,3,1,1,1,4,3,12,39,12,39,3,4} -- 每个load function的最大值
+    ORDER_SIZE_TABLE = {17,4,3,1,1,1,4,4,12,39,12,39,3,4} -- 每个load function的最大值
     LOAD_ONCE_TABLE = {false,false,false,false,false,false,false,false,false,false,false,false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     LOADING_FUNCTION_AMOUNT = 14 -- 和线程数相同
     -- 训练模式
@@ -283,6 +283,11 @@ function order_load_game_scene_VFX_overdrive_RC_burst_UA(load_order)
                 "asset/game_scene/common/texture/VFX/UA_common.json",
                 love.graphics.newImage(ASSET_DATA[8]["UA_common_sprite_batch"])
             )
+        end,
+        [4] = function()
+            -- overdrive badge 粒子 mesh:在这里先生成好
+            -- (顶点数据上传是首次使用才会有的一次性开销,不提前做的话第一次开 OD 会卡)
+            common_game_scene_get_overdrive_badge_particle_mesh()
         end
     }
     local this_function = switch[load_order]

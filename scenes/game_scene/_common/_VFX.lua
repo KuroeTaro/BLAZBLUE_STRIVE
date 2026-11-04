@@ -3231,7 +3231,7 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
     obj_VFX["opacity"] = 0.0
     obj_VFX["impact_radius"] = 0.0
     obj_VFX["impact_alpha"] = 0.0
-    obj_VFX["life"] = 999999
+    obj_VFX["life"] = 42
     -- position
     obj_VFX[1] = obj_char["x"] + obj_char[5]*(anchor[1])
     obj_VFX[2] = obj_char["y"] + obj_char[6]*(anchor[2])
