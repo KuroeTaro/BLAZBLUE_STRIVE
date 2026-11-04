@@ -3208,7 +3208,6 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
         end
         obj_VFX["impact_alpha"] = math.max(config.impact_peak*alpha,0.0)
     end
-    -- 已有屏障:复用同一层,把环的帧数清零重播
     for i = 1,#obj_char["VFX_hit_front_table"] do
         local vfx = obj_char["VFX_hit_front_table"][i]
         if vfx["type"] == "FD_block" then

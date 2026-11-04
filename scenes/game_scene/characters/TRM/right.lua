@@ -5009,6 +5009,19 @@ function state_gate_game_scene_char_RP_from_active_FD_block_to_idle(
             return true
         end
     end
+    if self_side_obj_char["height"] == "air" then
+        -- _common_air_idle_to_move
+        if state_gate_game_scene_char_RP_common_air_to_dash_move_HH(
+            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+        ) then
+            return true
+        end
+        if state_gate_game_scene_char_RP_from_7_8_9_jump_air(
+            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+        ) then
+            return true
+        end
+    end
     -- 没有有效输入:动画播完才回中立
     if not get_character_anim_end_state(
         self_side_obj_char,self_side_obj_char["character_animation"]
@@ -5016,7 +5029,6 @@ function state_gate_game_scene_char_RP_from_active_FD_block_to_idle(
         return
     end
     -- to_idle_state_if_animation_end
-    -- _5_stand_idle
     if self_side_obj_char["height"] == "stand" then
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
         init_character_anim_with(
@@ -5036,7 +5048,6 @@ function state_gate_game_scene_char_RP_from_active_FD_block_to_idle(
             return true
         end
     end
-    -- _1_2_3_crouch
     if self_side_obj_char["height"] == "crouch" then
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_1_2_3_crouch(self_side_obj_char)
         init_character_anim_with(
@@ -5055,6 +5066,34 @@ function state_gate_game_scene_char_RP_from_active_FD_block_to_idle(
         end
         -- _1_2_3_crouch
         if state_gate_game_scene_char_RP_from_1_2_3_crouch(
+            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+        ) then
+            return true
+        end
+    end
+    if self_side_obj_char["height"] == "air" then
+        self_side_obj_char["character_animation"] =
+        load_game_scene_anim_char_TRM_7_8_9_jump_air(
+            self_side_obj_char,"8_jump",{350,430},
+            self_side_obj_char["velocity"][1],self_side_obj_char["velocity"][2],nil
+        )
+        init_character_anim_with(
+            self_side_obj_char,self_side_obj_char["character_animation"]
+        )
+        self_side_obj_char["state"] = "7_8_9_jump_air"
+        self_side_obj_char["idle_cancel"] = true
+        self_side_obj_char["f"] = 20
+        character_animator(
+            self_side_obj_char,self_side_obj_char["character_animation"]
+        )
+        -- _common_air_idle_to_move
+        if state_gate_game_scene_char_RP_common_air_to_dash_move_HH(
+            self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+        ) then
+            return true
+        end
+        -- _7_8_9_jump_air
+        if state_gate_game_scene_char_RP_from_7_8_9_jump_air(
             self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
         ) then
             return true
