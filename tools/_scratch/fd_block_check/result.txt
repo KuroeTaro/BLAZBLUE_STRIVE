@@ -18,7 +18,9 @@
   ok   按着不放:留在 active_FD_block
   ok   方向改成蹲:切 1_crouch_block,仍在 active_FD_block
   ok   松开 FD -> 返回 true
-  ok   松开 FD -> 回 5_stand_idle
+  ok   松开 FD -> 先进收招状态
+  ok   收招动画 10 帧
+  ok   收招放完 -> 回 5_stand_idle
   ok   回中立后走了 from_5_stand_idle 的门
   ok   蹲姿松开 -> 1_2_3_crouch
   ok   空中松开 -> 7_8_9_jump_air
@@ -26,7 +28,7 @@
 
 [RP 镜像]
   ok   RP 也能进 active_FD_block
-  ok   RP 松开回中立
+  ok   RP 松开 -> 先进收招状态
 
 [帧序列 / 速度重力 / 资源 / 屏障 / 取消]
   ok   帧序列 0,1,2,3,4 -> 2,3,4 循环(0,1,2,3,4,2,3,4)
@@ -38,7 +40,7 @@
   ok   进入时插了常驻屏障
   ok   渐入结束 opacity ≈ 0.90
   ok   常驻屏障不会自己到期
-  ok   松开 FD:回 5_stand_idle
+  ok   松开 FD:先进收招状态
   ok   松开 FD:屏障直接清除(life = 0),不做渐出
   ok   FD 可以取消成 RC_blue
   ok   FD 可以取消成 overdrive
@@ -65,20 +67,11 @@
   ok   状态 FD_block_to_idle 时清除
   ok   同一个角色只保留一层屏障
 
-[block -> FD_block_to_idle 出口]
-  ok   FD 挡结束 -> 出口是 FD_block_to_idle
-  ok   收招动画 8 帧
-  ok   收招结束还按着 FD -> 回 active_FD_block
-  ok   动画直接跳到循环段(f = 7)
-  ok   收招结束没按 FD -> 回 5_stand_idle
-  ok   普通 block 结束 -> 回 5_stand_idle
 
-[block 动画的 loop_frame / FD 截断]
-  ok   FD 挡:动画截到 loop_frame(19 -> 16)
-  ok   FD 挡:记下 FD_block 标记
-  ok   改了副本,没有污染原动画表
-  ok   非 FD 挡:标记清掉
-  ok   _anim.lua 的 loop_frame 标记数 = 8
-  ok   _projectile.lua 的 loop_frame 标记数 = 6
-checks=69 fails=0
+[收招期间可以被输入打断]
+  ok   收招期间把输入交给 idle 的门处理
+  ok   收招期间有有效输入 -> 立刻返回(不等动画播完)
+  ok   收招中没输入 -> 继续留在收招状态
+  ok   收招播完没输入 -> 回 5_stand_idle
+checks=63 fails=0
 RESULT: OK

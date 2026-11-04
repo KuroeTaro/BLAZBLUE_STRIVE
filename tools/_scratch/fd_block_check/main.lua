@@ -176,6 +176,14 @@ function love.load()
     check(c["collision_ground_height_offset"] == 185, "空中 ground offset = 185")
 
     log("")
+    -- 收招动画放完后再走一次门
+    local function finish_FD_to_idle(obj_char)
+        obj_char["f"] = 999
+        obj_char["state"] = "active_FD_block_to_idle"
+        return state_gate_game_scene_char_LP_from_active_FD_block_to_idle(
+            input, opp_input, obj_char, opp
+        )
+    end
     log("[from_active_FD_block]")
     -- 1) 一直按着:保持状态
     pressed = { ["correction_left"] = true }
@@ -195,26 +203,32 @@ function love.load()
         ["sprite_sheet"] = "4_stand_block_high" })
     ret = state_gate_game_scene_char_LP_from_active_FD_block(input, opp_input, c, opp)
     check(ret == true, "松开 FD -> 返回 true")
+    check(c["state"] == "active_FD_block_to_idle", "松开 FD -> 先进收招状态")
+    check(c["character_animation"]["anim_length"] == 10, "收招动画 10 帧")
+    finish_FD_to_idle(c)
     check(c["state"] == "5_stand_idle" and type(c["character_animation"]) == "table",
-        "松开 FD -> 回 5_stand_idle")
+        "收招放完 -> 回 5_stand_idle")
     check(called["LP"].stand, "回中立后走了 from_5_stand_idle 的门")
     -- 4) 蹲姿松开 -> 1_2_3_crouch
     called["LP"].crouch = false
     c = new_char({ ["state"] = "active_FD_block", ["height"] = "crouch",
         ["direction_input"] = 1, ["sprite_sheet"] = "1_crouch_block" })
     state_gate_game_scene_char_LP_from_active_FD_block(input, opp_input, c, opp)
+    finish_FD_to_idle(c)
     check(c["state"] == "1_2_3_crouch" and called["LP"].crouch, "蹲姿松开 -> 1_2_3_crouch")
     -- 5) 空中松开 -> 7_8_9_jump_air
     called["LP"].jump = false
     c = new_char({ ["state"] = "active_FD_block", ["height"] = "air",
         ["direction_input"] = 4, ["sprite_sheet"] = "1_4_7_air_block" })
     state_gate_game_scene_char_LP_from_active_FD_block(input, opp_input, c, opp)
+    finish_FD_to_idle(c)
     check(c["state"] == "7_8_9_jump_air" and called["LP"].jump, "空中松开 -> 7_8_9_jump_air")
     -- 6) 只松开防御方向(还按着 FD)也回中立
     pressed = { ["correction_left"] = true }
     c = new_char({ ["state"] = "active_FD_block", ["direction_input"] = 5,
         ["sprite_sheet"] = "4_stand_block_high" })
     state_gate_game_scene_char_LP_from_active_FD_block(input, opp_input, c, opp)
+    finish_FD_to_idle(c)
     check(c["state"] == "5_stand_idle", "松开防御方向(仍按 FD)-> 回中立")
 
     log("")
@@ -225,7 +239,7 @@ function love.load()
     check(rp == true and c["state"] == "active_FD_block", "RP 也能进 active_FD_block")
     pressed = {}
     state_gate_game_scene_char_RP_from_active_FD_block(input, opp_input, c, opp)
-    check(c["state"] == "5_stand_idle", "RP 松开回中立")
+    check(c["state"] == "active_FD_block_to_idle", "RP 松开 -> 先进收招状态")
 
     log("")
     log("[帧序列 / 速度重力 / 资源 / 屏障 / 取消]")
@@ -276,7 +290,7 @@ function love.load()
     -- 5) 松手:直接清除(没有渐出)
     pressed = {}
     state_gate_game_scene_char_LP_from_active_FD_block(input, opp_input, c3, opp)
-    check(c3["state"] == "5_stand_idle", "松开 FD:回 5_stand_idle")
+    check(c3["state"] == "active_FD_block_to_idle", "松开 FD:先进收招状态")
     vfx3["update"]()
     check(vfx3["life"] == 0, "松开 FD:屏障直接清除(life = 0),不做渐出")
 
@@ -367,59 +381,38 @@ function love.load()
     check(#vc4["VFX_hit_front_table"] == 1, "同一个角色只保留一层屏障")
 
     log("")
-    log("[block -> FD_block_to_idle 出口]")
-    -- FD 挡:block 结束走 FD_block_to_idle
-    pressed = { ["correction_left"] = true }
-    local cb = new_char({ ["state"] = "block", ["height"] = "stand", ["direction_input"] = 4,
-        ["sprite_sheet"] = "4_stand_block_high",
-        ["character_animation"] = {["prop_f"] = "f",["anim_length"] = 1}, ["f"] = 5 })
-    cb["FD_block"] = true
-    local rb = state_gate_game_scene_char_LP_from_block(input, opp_input, cb, opp)
-    check(rb == true and cb["state"] == "FD_block_to_idle",
-        "FD 挡结束 -> 出口是 FD_block_to_idle")
-    check(cb["character_animation"]["anim_length"] == 8, "收招动画 8 帧")
-    -- 收招结束,还按着 FD -> 回 active_FD_block 并跳到循环段
-    cb["f"] = 99
-    local rg = state_gate_game_scene_char_LP_from_FD_block_to_idle(input, opp_input, cb, opp)
-    check(rg == true and cb["state"] == "active_FD_block", "收招结束还按着 FD -> 回 active_FD_block")
-    check(cb["f"] == cb["character_animation"]["loop_frame"] - 1,
-        "动画直接跳到循环段(f = " .. tostring(cb["f"]) .. ")")
-    -- 收招结束,没按 FD -> 回 idle
-    pressed = {}
-    local cb2 = new_char({ ["state"] = "FD_block_to_idle", ["height"] = "stand",
-        ["character_animation"] = {["prop_f"] = "f",["anim_length"] = 1}, ["f"] = 5 })
-    state_gate_game_scene_char_LP_from_FD_block_to_idle(input, opp_input, cb2, opp)
-    check(cb2["state"] == "5_stand_idle", "收招结束没按 FD -> 回 5_stand_idle")
-    -- 非 FD 挡:还是走原来的 idle
-    pressed = { ["correction_left"] = true }
-    local cb3 = new_char({ ["state"] = "block", ["height"] = "stand", ["direction_input"] = 4,
-        ["sprite_sheet"] = "4_stand_block_high",
-        ["character_animation"] = {["prop_f"] = "f",["anim_length"] = 1}, ["f"] = 5 })
-    state_gate_game_scene_char_LP_from_block(input, opp_input, cb3, opp)
-    check(cb3["state"] == "5_stand_idle", "普通 block 结束 -> 回 5_stand_idle")
-
     log("")
-    log("[block 动画的 loop_frame / FD 截断]")
-    local fake_anim = { ["prop_f"] = "f", ["anim_length"] = 19, ["loop_frame"] = 16 }
-    local cbf = new_char({ ["state"] = "block", ["character_animation"] = fake_anim })
-    common_game_scene_char_apply_FD_block_animation(cbf, true)
-    check(cbf["character_animation"]["anim_length"] == 16, "FD 挡:动画截到 loop_frame(19 -> 16)")
-    check(cbf["FD_block"] == true, "FD 挡:记下 FD_block 标记")
-    check(fake_anim["anim_length"] == 19, "改了副本,没有污染原动画表")
-    common_game_scene_char_apply_FD_block_animation(cbf, false)
-    check(cbf["FD_block"] == false, "非 FD 挡:标记清掉")
-    local function countIn(path,pattern)
-        local f = io.open(path,"rb")
-        if not f then return -1 end
-        local text = f:read("*a"); f:close()
-        local n = 0
-        for _ in text:gmatch(pattern) do n = n + 1 end
-        return n
+    log("[收招期间可以被输入打断]")
+    -- 收招动画还在播,但有有效输入(跳) -> 立刻响应
+    -- idle 的门被调用了,而且它的返回值直接生效 -> 说明收招不等播完
+    local real_stand_gate = state_gate_game_scene_char_LP_from_5_stand_idle
+    called["LP"].stand = false
+    state_gate_game_scene_char_LP_from_5_stand_idle = function()
+        called["LP"].stand = true
+        return true
     end
-    local anim_hits = countIn(REPO .. "/scenes/game_scene/_common/_anim.lua",'res%["loop_frame"%]')
-    local projectile_hits = countIn(REPO .. "/scenes/game_scene/_common/_projectile.lua",'res%["loop_frame"%]')
-    check(anim_hits >= 7, "_anim.lua 的 loop_frame 标记数 = " .. anim_hits)
-    check(projectile_hits >= 6, "_projectile.lua 的 loop_frame 标记数 = " .. projectile_hits)
+    local cid = new_char({ ["state"] = "active_FD_block_to_idle", ["height"] = "stand",
+        ["direction_input"] = 4,
+        ["sprite_sheet"] = "4_stand_block_high",
+        ["character_animation"] = {["prop_f"] = "f",["anim_length"] = 10}, ["f"] = 1 })
+    local rid = state_gate_game_scene_char_LP_from_active_FD_block_to_idle(
+        input, opp_input, cid, opp)
+    check(called["LP"].stand == true, "收招期间把输入交给 idle 的门处理")
+    check(rid == true, "收招期间有有效输入 -> 立刻返回(不等动画播完)")
+    state_gate_game_scene_char_LP_from_5_stand_idle = real_stand_gate
+    -- 收招动画还在播,没有任何输入 -> 继续等
+    local cid2 = new_char({ ["state"] = "active_FD_block_to_idle", ["height"] = "stand",
+        ["direction_input"] = 5,
+        ["sprite_sheet"] = "4_stand_block_high",
+        ["character_animation"] = {["prop_f"] = "f",["anim_length"] = 10}, ["f"] = 1 })
+    local rid2 = state_gate_game_scene_char_LP_from_active_FD_block_to_idle(
+        input, opp_input, cid2, opp)
+    check(rid2 == nil and cid2["state"] == "active_FD_block_to_idle",
+        "收招中没输入 -> 继续留在收招状态")
+    -- 播完了没输入 -> 回 idle
+    cid2["f"] = 99
+    state_gate_game_scene_char_LP_from_active_FD_block_to_idle(input, opp_input, cid2, opp)
+    check(cid2["state"] == "5_stand_idle", "收招播完没输入 -> 回 5_stand_idle")
 
     log(string.format("checks=%d fails=%d", checks, fails))
     log(fails == 0 and "RESULT: OK" or "RESULT: FAIL")

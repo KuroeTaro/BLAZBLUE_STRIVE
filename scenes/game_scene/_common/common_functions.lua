@@ -347,6 +347,15 @@ function common_game_scene_block_test(hit_obj,hurt_side_obj_char)
     end
     return block_bool
 end
+function common_game_scene_FD_block_test(hit_side_input,hit_side_obj_char,hurt_side_obj_char)
+    local FD_input = 
+        test_input_sys_press_or_hold(hit_side_input["correction_left"]) 
+        or test_input_sys_press_or_hold(hit_side_input["correction_right"])
+    if common_game_scene_check_block_direction(hit_side_obj_char) and FD_input then
+        return true
+    end
+    return false
+end
 -- hit/hurt_function
 -- strike
 function common_game_scene_strike_hit_function(hit_side_obj_char,hurt_side_obj_char)
