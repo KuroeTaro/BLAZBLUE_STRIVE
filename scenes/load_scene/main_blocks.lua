@@ -61,6 +61,12 @@ function update_load_scene_general()
     -- 加载图像的实际线程功能
     -- local loop_time = love.timer.getTime()
     run_table_order_load()
+    -- 当前场景所有资产加载完之后,统一预热一次(贴图 / 序列帧图集 / shader / canvas)
+    -- 只跑一次;单个资产出错内部已经 pcall 掉了
+    if LOADING_FUNCTION_AMOUNT == 0 and (not ASSET_WARM_UP_DONE) then
+        ASSET_WARM_UP_DONE = true
+        preset_load_scene_asset_warm_up()
+    end
     -- loop_time = love.timer.getTime() - loop_time
     -- if loop_time > 0.1 then
     --     print("run_table_order_load",loop_time)

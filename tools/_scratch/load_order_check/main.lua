@@ -19,6 +19,9 @@ local function bad(msg) fail = fail + 1; log("  !! " .. tostring(msg)) end
 ----------------------------------------------------------------------
 local FILES = {
     "scenes/game_scene/_common/load_function.lua",
+    "update_general_use_functions/thread_load.lua",
+    "scenes/load_scene/main_blocks.lua",
+    "scenes/load_scene/init.lua",
     "scenes/game_scene/_common/init.lua",
     "scenes/game_scene/_common/draw_functions.lua",
     "scenes/game_scene/_common/_anim.lua",

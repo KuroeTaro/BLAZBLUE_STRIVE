@@ -58,6 +58,7 @@ function init_order_load_table()
     ORDER_SIZE_TABLE = {}
 	LOAD_ONCE_TABLE = {}
     LOADING_FUNCTION_AMOUNT = 0
+    ASSET_WARM_UP_DONE = false
 	NEXT_UPDATE_BLOCK = nil
 	NEXT_DRAW_BLOCK = nil
     NEXT_PRESET = nil

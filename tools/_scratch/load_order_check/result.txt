@@ -1,5 +1,8 @@
 == 1. 语法编译 ==
   OK   scenes/game_scene/_common/load_function.lua
+  OK   update_general_use_functions/thread_load.lua
+  OK   scenes/load_scene/main_blocks.lua
+  OK   scenes/load_scene/init.lua
   OK   scenes/game_scene/_common/init.lua
   OK   scenes/game_scene/_common/draw_functions.lua
   OK   scenes/game_scene/_common/_anim.lua

@@ -116,4 +116,86 @@ function init_load_scene_audio()
         "asset/load_scene/audio/start_load.ogg","static"
     )
     update_SFX_VOLUME(audio_UI_SFX_load_scene_general_start_load)
+end-- 资产暖机:每次 load_scene 把所有 order 跑完之后,统一在这里预热一次
+--   覆盖当前场景的所有美术资产(不区分类别,按类型扫):
+--     · Shader:1x1 贴图 + 8x8 canvas 空绘制一次(编译 / 链接 / 首次采样都跑过)
+--     · Image:缩到很小画一次,让驱动把整张纹理传上显存
+--     · SpriteBatch(序列帧图集):取它的 texture 画一次
+--     · Canvas:同样画一次
+--   枚举方式:遍历 _G 的 userdata;表则看 { sprite_batch = ..., frames = ... } / { image = ... },
+--   以及名字里带 shader 的「shader 表」(例如 shader_game_scene_LP / RP)。
+--   单个资产出错只 pcall 跳过,不影响加载;结束时图形状态全部还原。
+function preset_load_scene_asset_warm_up()
+    local warm_up_canvas = love.graphics.newCanvas(8,8)
+    local warm_up_image = love.graphics.newImage(love.image.newImageData(1,1))
+    local texture_count = 0
+    local shader_count = 0
+
+    local function draw_texture(texture)
+        if texture == nil then
+            return
+        end
+        pcall(function()
+            love.graphics.setCanvas(warm_up_canvas)
+            love.graphics.setBlendMode("replace")
+            love.graphics.setColor(1,1,1,1)
+            love.graphics.setShader()
+            -- 缩到很小画一次:只为让驱动把整张纹理传上显存
+            love.graphics.draw(texture,0,0,0,0.05,0.05)
+        end)
+        texture_count = texture_count + 1
+    end
+
+    local function draw_shader(shader)
+        if shader == nil then
+            return
+        end
+        pcall(function()
+            love.graphics.setCanvas(warm_up_canvas)
+            love.graphics.clear(0,0,0,1)
+            love.graphics.setBlendMode("replace")
+            love.graphics.setColor(1,1,1,1)
+            love.graphics.setShader(shader)
+            love.graphics.draw(warm_up_image,0,0)
+            love.graphics.setShader()
+        end)
+        shader_count = shader_count + 1
+    end
+
+    local function warm_up_object(value)
+        if type(value) ~= "userdata" or value.typeOf == nil then
+            return
+        end
+        if value:typeOf("Shader") then
+            draw_shader(value)
+        elseif value:typeOf("Image") then
+            draw_texture(value)
+        elseif value:typeOf("SpriteBatch") then
+            draw_texture(value:getTexture())
+        elseif value:typeOf("Canvas") then
+            draw_texture(value)
+        end
+    end
+
+    for name, value in pairs(_G) do
+        warm_up_object(value)
+        if type(value) == "table" then
+            -- 序列帧表:{ sprite_batch = ..., frames = ... } 或 { image = ... }
+            warm_up_object(value["sprite_batch"])
+            warm_up_object(value["image"])
+            -- shader 表:shader_game_scene_LP / RP 这种
+            if type(name) == "string" and string.find(name,"shader") ~= nil then
+                for _, shader in pairs(value) do
+                    warm_up_object(shader)
+                end
+            end
+        end
+    end
+
+    -- 收尾:图形状态还原
+    love.graphics.setShader()
+    love.graphics.setCanvas()
+    love.graphics.setColor(1,1,1,1)
+    love.graphics.setBlendMode("alpha")
+    return texture_count,shader_count
 end
