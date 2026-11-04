@@ -116,14 +116,16 @@ function init_load_scene_audio()
         "asset/load_scene/audio/start_load.ogg","static"
     )
     update_SFX_VOLUME(audio_UI_SFX_load_scene_general_start_load)
-end-- 资产暖机:每次 load_scene 把所有 order 跑完之后,统一在这里预热一次
---   覆盖当前场景的所有美术资产(不区分类别,按类型扫):
+end
+-- 资产暖机:每次 load_scene 把所有 order 跑完之后,统一在这里预热一次
+--   项目里的美术资产命名有规律,所以这里按「名字前缀 + 类型」找,不做全量 typeOf 扫描:
+--     · shader*   -> Shader,或 shader 表(shader_game_scene_LP / RP 这种一张表里装多个)
+--     · image*    -> Image / SpriteBatch / 序列帧表 { sprite_batch = ..., frames = ... }
+--                    (还有 image_sprite_sheet_table_* 这种一层套一层的,往里探两层)
+--     · *CANVAS  -> Canvas(DRAW_MAIN_CHARACTER_CANVAS 之类)
+--   预热方式:
 --     · Shader:1x1 贴图 + 8x8 canvas 空绘制一次(编译 / 链接 / 首次采样都跑过)
---     · Image:缩到很小画一次,让驱动把整张纹理传上显存
---     · SpriteBatch(序列帧图集):取它的 texture 画一次
---     · Canvas:同样画一次
---   枚举方式:遍历 _G 的 userdata;表则看 { sprite_batch = ..., frames = ... } / { image = ... },
---   以及名字里带 shader 的「shader 表」(例如 shader_game_scene_LP / RP)。
+--     · 贴图 / 图集 texture / Canvas:缩到很小画一次,让驱动把整张纹理传上显存
 --   单个资产出错只 pcall 跳过,不影响加载;结束时图形状态全部还原。
 function set_load_scene_asset_warm_up()
     local warm_up_canvas = love.graphics.newCanvas(8,8)
@@ -162,31 +164,69 @@ function set_load_scene_asset_warm_up()
         shader_count = shader_count + 1
     end
 
-    local function warm_up_object(value)
+    -- image* 的 userdata:可能是 Image,也可能是 image_sprite_batch_* 这种单独的 SpriteBatch
+    local function draw_image_object(value)
         if type(value) ~= "userdata" or value.typeOf == nil then
             return
         end
-        if value:typeOf("Shader") then
-            draw_shader(value)
-        elseif value:typeOf("Image") then
-            draw_texture(value)
-        elseif value:typeOf("SpriteBatch") then
+        if value:typeOf("SpriteBatch") then
             draw_texture(value:getTexture())
-        elseif value:typeOf("Canvas") then
+        elseif value:typeOf("Image") then
             draw_texture(value)
         end
     end
 
+    -- image* 的表:序列帧表(可能一层套一层),只探两层,顺便防环
+    local visited_table = {}
+    local function draw_image_table(value,depth)
+        if type(value) ~= "table" or depth <= 0 or visited_table[value] then
+            return
+        end
+        visited_table[value] = true
+        draw_image_object(value["sprite_batch"])
+        draw_image_object(value["image"])
+        for _, child in pairs(value) do
+            if type(child) == "table" then
+                draw_image_table(child,depth - 1)
+            end
+        end
+    end
+
+    -- shader* 的表:一张表里装多个 shader(shader_game_scene_LP / RP)
+    local function draw_shader_table(value,depth)
+        if type(value) ~= "table" or depth <= 0 or visited_table[value] then
+            return
+        end
+        visited_table[value] = true
+        for _, child in pairs(value) do
+            if type(child) == "userdata" then
+                draw_shader(child)
+            elseif type(child) == "table" then
+                draw_shader_table(child,depth - 1)
+            end
+        end
+    end
+
     for name, value in pairs(_G) do
-        warm_up_object(value)
-        if type(value) == "table" then
-            -- 序列帧表:{ sprite_batch = ..., frames = ... } 或 { image = ... }
-            warm_up_object(value["sprite_batch"])
-            warm_up_object(value["image"])
-            -- shader 表:shader_game_scene_LP / RP 这种
-            if type(name) == "string" and string.find(name,"shader") ~= nil then
-                for _, shader in pairs(value) do
-                    warm_up_object(shader)
+        if type(name) == "string" then
+            if string.sub(name,1,6) == "shader" then
+                -- shader*
+                if type(value) == "userdata" then
+                    draw_shader(value)
+                elseif type(value) == "table" then
+                    draw_shader_table(value,2)
+                end
+            elseif string.sub(name,1,5) == "image" then
+                -- image*
+                if type(value) == "userdata" then
+                    draw_image_object(value)
+                elseif type(value) == "table" then
+                    draw_image_table(value,2)
+                end
+            elseif string.find(name,"CANVAS") ~= nil then
+                -- *CANVAS
+                if type(value) == "userdata" then
+                    draw_texture(value)
                 end
             end
         end

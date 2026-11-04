@@ -1,6 +1,7 @@
 dofile scenes/load_scene/init.lua: OK
-set_load_scene_asset_warm_up(): 贴图/图集 3 个、shader 3 个,耗时 0.58 ms
-暖机后 canvas / shader 已还原: true / true
-第二次 set_load_scene_asset_warm_up(): 5.05 ms(缓存命中)
+set_load_scene_asset_warm_up(): 贴图/图集/canvas 6 个、shader 2 个,耗时 0.67 ms
+  ok   image* + *CANVAS 命中 6 个(实际 6)
+  ok   shader* 命中 2 个(实际 2)
+  ok   暖机后 canvas / shader 已还原
 
 RESULT: OK
