@@ -4653,10 +4653,20 @@ function load_game_scene_anim_char_common_active_FD_block(
     local pushbox_data = common_game_scene_get_pushbox(side)
     local hurtbox_data = common_game_scene_get_hurtbox(side)
     local anchor_data = common_game_scene_get_anchor(side)
+    local function update_heat_gauge()
+        obj_char["heat_gauge"][1] = math.max(
+            0.0,obj_char["heat_gauge"][1] - 0.5
+        )
+    end
     res["prop_f"] = "f"
     res["anim_length"] = 21
-    -- 循环段从这里开始(res[loop_frame] = 站立循环的起始帧)
     res["loop_frame"] = 8
+    for i = 0,20 do
+        res[i] = function()
+            -- update
+            update_heat_gauge()
+        end
+    end
     res[0] = function()
         -- state
         obj_char["sprite_sheet"] = sprite_sheet
@@ -4672,9 +4682,6 @@ function load_game_scene_anim_char_common_active_FD_block(
             obj_char["friction"] = 7
             obj_char["gravity"] = 2.5
         end
-        obj_char["heat_gauge"][1] = math.max(
-            0.0,obj_char["heat_gauge"][1] - 0.5
-        )
         -- enemy_friend_interaction
         obj_char["horizontal_velocity_correction"] = 1
         obj_char["gravity_correction"] = 1
@@ -4692,28 +4699,40 @@ function load_game_scene_anim_char_common_active_FD_block(
         -- draw_correction
         obj_char[8] = 0
         obj_char["anchor_pos"] = anchor_data[sprite_sheet]
+        -- update
+        update_heat_gauge()
     end
     res[4] = function()
         -- draw_correction
         obj_char[8] = 1
+        -- update
+        update_heat_gauge()
     end
     res[8] = function()
         -- draw_correction
         obj_char[8] = 2
+        -- update
+        update_heat_gauge()
     end
     res[12] = function()
         -- draw_correction
         obj_char[8] = 3
+        -- update
+        update_heat_gauge()
     end
     res[16] = function()
         -- draw_correction
         obj_char[8] = 4
+        -- update
+        update_heat_gauge()
     end
     res[20] = function()
         -- state
         obj_char["f"] = 8
         -- draw_correction
         obj_char[8] = 2
+        -- update
+        update_heat_gauge()
     end
     res[21] = function()
         -- animation_end
