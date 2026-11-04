@@ -28,6 +28,17 @@ function load_start_scene_prep()
 	NEXT_DRAW_BLOCK = draw_start_scene_main
     NEXT_PRESET = preset_start_scene
 end
+-- require
+function load_start_select_scene_require()
+    require_all_in_folder("scenes/start_scene")
+    -- require("scenes/start_scene/common_functions")
+    -- require("scenes/start_scene/draw_functions")
+    -- require("scenes/start_scene/init")
+    -- require("scenes/start_scene/load_function")
+    -- require("scenes/start_scene/main_blocks")
+    -- require("scenes/start_scene/state_machine")
+    -- require("scenes/start_scene/sub_blocks")
+end
 -- 分步骤将素材加载
 function order_load_start_scene_main_UI(load_order)
     local switch =
@@ -148,15 +159,4 @@ function order_load_start_scene_sub_UI(load_order)
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
-end
--- require
-function load_start_select_scene_require()
-    require_all_in_folder("scenes/start_scene")
-    -- require("scenes/start_scene/common_functions")
-    -- require("scenes/start_scene/draw_functions")
-    -- require("scenes/start_scene/init")
-    -- require("scenes/start_scene/load_function")
-    -- require("scenes/start_scene/main_blocks")
-    -- require("scenes/start_scene/state_machine")
-    -- require("scenes/start_scene/sub_blocks")
 end

@@ -20,6 +20,16 @@ function load_disclaimer_logos_scene_prep()
 	NEXT_DRAW_BLOCK = draw_disclaimer_and_logos_scene_main
     NEXT_PRESET = preset_disclaimer_and_logos_scene
 end
+-- require
+function load_disclaimer_and_logos_scene_require()
+    require_all_in_folder("scenes/disclaimer_and_logos_scene")
+    -- require("scenes/disclaimer_and_logos_scene/draw_functions")
+    -- require("scenes/disclaimer_and_logos_scene/init")
+    -- require("scenes/disclaimer_and_logos_scene/load_function")
+    -- require("scenes/disclaimer_and_logos_scene/main_blocks")
+    -- require("scenes/disclaimer_and_logos_scene/state_machine")
+    -- require("scenes/disclaimer_and_logos_scene/sub_blocks")
+end
 -- 分步骤将素材加载
 function order_load_disclaimer_and_logo_scene_1_general(load_order)
     local switch =
@@ -36,14 +46,4 @@ function order_load_disclaimer_and_logo_scene_1_general(load_order)
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
-end
--- require
-function load_disclaimer_and_logos_scene_require()
-    require_all_in_folder("scenes/disclaimer_and_logos_scene")
-    -- require("scenes/disclaimer_and_logos_scene/draw_functions")
-    -- require("scenes/disclaimer_and_logos_scene/init")
-    -- require("scenes/disclaimer_and_logos_scene/load_function")
-    -- require("scenes/disclaimer_and_logos_scene/main_blocks")
-    -- require("scenes/disclaimer_and_logos_scene/state_machine")
-    -- require("scenes/disclaimer_and_logos_scene/sub_blocks")
 end

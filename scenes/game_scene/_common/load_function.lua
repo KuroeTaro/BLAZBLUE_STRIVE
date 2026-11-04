@@ -44,7 +44,7 @@ function load_game_scene_prep()
         order_load_game_scene_stage_frames
     }
     CURRENT_ORDER_TABLE = {1,1,1,1,1,1,1,1,1,1,1,1,1,1} -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
-    ORDER_SIZE_TABLE = {17,4,3,1,1,1,4,4,12,39,12,39,3,4} -- 每个load function的最大值
+    ORDER_SIZE_TABLE = {17,4,3,1,1,1,4,3,12,39,12,39,3,4} -- 每个load function的最大值
     LOAD_ONCE_TABLE = {false,false,false,false,false,false,false,false,false,false,false,false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     LOADING_FUNCTION_AMOUNT = 14 -- 和线程数相同
     -- 训练模式
@@ -63,6 +63,38 @@ function load_game_scene_prep()
         NEXT_DRAW_BLOCK = draw_game_scene_synchronizing
         NEXT_PRESET = preset_game_scene_match
     end
+end
+function load_game_scene_require(LP_name,RP_name,stage_name)
+    require_all_in_folder("scenes/game_scene/_common")
+    require("scenes.game_scene.characters." .. LP_name .. ".left")
+    require("scenes.game_scene.characters." .. RP_name .. ".right")
+    require("scenes.game_scene.characters." .. LP_name .. "._character_function")
+    require("scenes.game_scene.characters." .. RP_name .. "._character_function")
+    require("scenes.game_scene.characters." .. LP_name .. "._anim")
+    require("scenes.game_scene.characters." .. RP_name .. "._anim")
+    require("scenes.game_scene.characters." .. LP_name .. "._projectile")
+    require("scenes.game_scene.characters." .. RP_name .. "._projectile")
+    require("scenes.game_scene.characters." .. LP_name .. "._VFX")
+    require("scenes.game_scene.characters." .. RP_name .. "._VFX")
+    require("scenes.game_scene.stage." .. stage_name)
+end
+function load_game_scene_thread_table(LP_name,RP_name,stage_name)
+    local res_table = {}
+    table.insert(res_table,"threads/game_scene/common.lua")
+    table.insert(res_table,"threads/game_scene/UI_act.lua")
+    table.insert(res_table,"threads/game_scene/UI_HUD.lua")
+    table.insert(res_table,"threads/game_scene/UI_lets_dance.lua")
+    table.insert(res_table,"threads/game_scene/projectile.lua")
+    table.insert(res_table,"threads/game_scene/VFX_HUD.lua")
+    table.insert(res_table,"threads/game_scene/VFX_move.lua")
+    table.insert(res_table,"threads/game_scene/VFX_overdrive_heat.lua")
+    table.insert(res_table,"threads/game_scene/characters/" .. LP_name .. "_audio.lua")
+    table.insert(res_table,"threads/game_scene/characters/" .. LP_name .. "_texture.lua")
+    table.insert(res_table,"threads/game_scene/characters/" .. RP_name .. "_audio.lua")
+    table.insert(res_table,"threads/game_scene/characters/" .. RP_name .. "_texture.lua")
+    table.insert(res_table,"threads/game_scene/stage/" .. stage_name .. "_audio.lua")
+    table.insert(res_table,"threads/game_scene/stage/" .. stage_name .. ".lua")
+    return res_table
 end
 function order_load_game_scene_common(load_order)
     local switch =
@@ -231,6 +263,9 @@ function order_load_game_scene_VFX_overdrive_RC_burst_UA(load_order)
                 "asset/game_scene/common/texture/VFX/overdrive_airflow.json",
                 love.graphics.newImage(ASSET_DATA[8]["overdrive_airflow_sprite_batch"])
             )
+            -- overdrive_badge_partical_mesh
+            image_mesh_VFX_game_scene_overdrive_badge_partical =
+            common_game_scene_get_overdrive_badge_particle_mesh()
         end,
         [2] = function()
             -- RC
@@ -283,11 +318,6 @@ function order_load_game_scene_VFX_overdrive_RC_burst_UA(load_order)
                 "asset/game_scene/common/texture/VFX/UA_common.json",
                 love.graphics.newImage(ASSET_DATA[8]["UA_common_sprite_batch"])
             )
-        end,
-        [4] = function()
-            -- overdrive badge 粒子 mesh:在这里先生成好
-            -- (顶点数据上传是首次使用才会有的一次性开销,不提前做的话第一次开 OD 会卡)
-            common_game_scene_get_overdrive_badge_particle_mesh()
         end
     }
     local this_function = switch[load_order]
@@ -399,36 +429,4 @@ function order_load_game_scene_VFX_HUD(load_order)
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
-end
-function load_game_scene_require(LP_name,RP_name,stage_name)
-    require_all_in_folder("scenes/game_scene/_common")
-    require("scenes.game_scene.characters." .. LP_name .. ".left")
-    require("scenes.game_scene.characters." .. RP_name .. ".right")
-    require("scenes.game_scene.characters." .. LP_name .. "._character_function")
-    require("scenes.game_scene.characters." .. RP_name .. "._character_function")
-    require("scenes.game_scene.characters." .. LP_name .. "._anim")
-    require("scenes.game_scene.characters." .. RP_name .. "._anim")
-    require("scenes.game_scene.characters." .. LP_name .. "._projectile")
-    require("scenes.game_scene.characters." .. RP_name .. "._projectile")
-    require("scenes.game_scene.characters." .. LP_name .. "._VFX")
-    require("scenes.game_scene.characters." .. RP_name .. "._VFX")
-    require("scenes.game_scene.stage." .. stage_name)
-end
-function load_game_scene_thread_table(LP_name,RP_name,stage_name)
-    local res_table = {}
-    table.insert(res_table,"threads/game_scene/common.lua")
-    table.insert(res_table,"threads/game_scene/UI_act.lua")
-    table.insert(res_table,"threads/game_scene/UI_HUD.lua")
-    table.insert(res_table,"threads/game_scene/UI_lets_dance.lua")
-    table.insert(res_table,"threads/game_scene/projectile.lua")
-    table.insert(res_table,"threads/game_scene/VFX_HUD.lua")
-    table.insert(res_table,"threads/game_scene/VFX_move.lua")
-    table.insert(res_table,"threads/game_scene/VFX_overdrive_heat.lua")
-    table.insert(res_table,"threads/game_scene/characters/" .. LP_name .. "_audio.lua")
-    table.insert(res_table,"threads/game_scene/characters/" .. LP_name .. "_texture.lua")
-    table.insert(res_table,"threads/game_scene/characters/" .. RP_name .. "_audio.lua")
-    table.insert(res_table,"threads/game_scene/characters/" .. RP_name .. "_texture.lua")
-    table.insert(res_table,"threads/game_scene/stage/" .. stage_name .. "_audio.lua")
-    table.insert(res_table,"threads/game_scene/stage/" .. stage_name .. ".lua")
-    return res_table
 end

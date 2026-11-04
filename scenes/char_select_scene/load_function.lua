@@ -28,6 +28,10 @@ function load_char_select_scene_prep()
 	NEXT_DRAW_BLOCK = draw_char_select_scene_ease_in_0f_36f
     NEXT_PRESET = preset_char_select_scene
 end
+-- reuqire
+function load_char_select_scene_require()
+    require_all_in_folder("scenes/char_select_scene")
+end
 -- 分步骤将素材加载
 function order_load_char_select_scene_UI_char(load_order)
     local switch =
@@ -97,8 +101,4 @@ function order_load_char_select_scene_UI_movie_cover(load_order)
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
-end
--- reuqire
-function load_char_select_scene_require()
-    require_all_in_folder("scenes/char_select_scene")
 end

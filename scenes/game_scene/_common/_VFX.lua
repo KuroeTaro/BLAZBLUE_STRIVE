@@ -2506,7 +2506,7 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
     obj_VFX["draw"] = function()
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_special_lighting_0
         obj_VFX["draw_sync"]()
-        love.graphics.setColor(255/255,195/255,85/255,1)
+        love.graphics.setColor(255/255,175/255,60/255,1)
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
             obj_camera,obj_VFX["sub_obj"][1],image_sprite_sheet,""..obj_VFX[8]..""
@@ -2695,7 +2695,7 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
     obj_VFX["draw"] = function()
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_special_lighting_0
         obj_VFX["draw_sync"]()
-        love.graphics.setColor(255/255,195/255,85/255,1)
+        love.graphics.setColor(255/255,175/255,60/255,1)
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
             obj_camera,obj_VFX["sub_obj"][1],image_sprite_sheet,""..obj_VFX[8]..""
@@ -2925,7 +2925,7 @@ function insert_VFX_game_scene_char_blast_special_projectile(active_op_side_obj_
     obj_VFX["draw"] = function()
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_special_lighting_0
         obj_VFX["draw_sync"]()
-        love.graphics.setColor(255/255,195/255,85/255,1)
+        love.graphics.setColor(255/255,175/255,60/255,1)
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
             obj_camera,obj_VFX["sub_obj"][1],image_sprite_sheet,""..obj_VFX[8]..""
@@ -3114,7 +3114,7 @@ function insert_VFX_game_scene_char_counter_blast_special_projectile(active_op_s
     obj_VFX["draw"] = function()
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_special_lighting_0
         obj_VFX["draw_sync"]()
-        love.graphics.setColor(255/255,195/255,85/255,1)
+        love.graphics.setColor(255/255,175/255,60/255,1)
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
             obj_camera,obj_VFX["sub_obj"][1],image_sprite_sheet,""..obj_VFX[8]..""

@@ -490,9 +490,6 @@ function common_game_scene_get_overdrive_badge_particle_mesh()
     -- 直接以 add 混合画在屏幕上,和原 badge 同属角色背侧层。
     -- 所有可调数值都来自 _overdrive_badge_partical_config.lua,这里只负责送 uniform。
     -- 全局缓存:particle_count 启动后不会变,建一次就够
-    if VFX_GAME_SCENE_BADGE_PARTICLE_MESH ~= nil then
-        return VFX_GAME_SCENE_BADGE_PARTICLE_MESH
-    end
     local particle_count = OVERDRIVE_BADGE_PARTICAL_CONFIG.particle_count
     -- 每颗粒子两个三角形:角点顺序 (0,0)(1,0)(1,1) / (0,0)(1,1)(0,1)
     local corner_table = {
@@ -508,9 +505,7 @@ function common_game_scene_get_overdrive_badge_particle_mesh()
             vertices[write] = {corner_table[c][1],corner_table[c][2],i,0,1,1,1,1}
         end
     end
-    VFX_GAME_SCENE_BADGE_PARTICLE_MESH =
-    love.graphics.newMesh(vertices,"triangles","static")
-    return VFX_GAME_SCENE_BADGE_PARTICLE_MESH
+    return love.graphics.newMesh(vertices,"triangles","static")
 end
 function draw_VFX_game_scene_overdrive_badge_partical(
     obj_VFX,shockwave_shader,particle_shader,frame,opacity
@@ -521,7 +516,7 @@ function draw_VFX_game_scene_overdrive_badge_partical(
     local projection = draw_resolution_correction(800)/(obj_VFX[3] - obj_camera[3])
     local radius = 500*projection
     local config = OVERDRIVE_BADGE_PARTICAL_CONFIG
-    local particle_mesh = common_game_scene_get_overdrive_badge_particle_mesh()
+    local particle_mesh = image_mesh_VFX_game_scene_overdrive_badge_partical
     love.graphics.setBlendMode("add")
     love.graphics.setColor(1,1,1,1)
     -- 粒子:收缩段(phase 0)与爆发段(phase 1)在 28-29 帧重叠
@@ -620,8 +615,6 @@ function draw_VFX_game_scene_char_FD_block(shader,obj_VFX,opacity)
     local width,height = love.graphics.getDimensions()
     local projection = draw_resolution_correction(800)/(obj_VFX[3] - obj_camera[3])
     local coords = draw_3d_point_to_2D(obj_camera,obj_VFX)
-    -- 锚点给的是原贴图的左上角(600x600,半径 300),shader 需要的是圆心:
-    -- 半径乘朝向,翻转时圆心也在另一边
     local radius = config.base_radius*projection
     local center = {coords[1] + obj_VFX[5]*radius,coords[2] + obj_VFX[6]*radius}
     shader:send("time",obj_VFX["age"] or 0)
