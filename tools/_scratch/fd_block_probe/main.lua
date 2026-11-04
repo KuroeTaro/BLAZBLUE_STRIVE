@@ -114,7 +114,14 @@ function love.load()
     -- 4) 离开 active_FD_block / block 状态:直接清除
     stance["state"] = "5_stand_idle"
     stance_vfx["update"]()
-    log("离开 FD 状态后 life = " .. tostring(stance_vfx["life"]) .. "(应为 0)")
+    log("离开 FD 后 state = " .. tostring(stance_vfx["state"]) .. "(应为 ease_out)")
+    local fade = {}
+    for i = 1, FD_BLOCK_VFX_CONFIG.ease_out_frame do
+        stance_vfx["update"]()
+        fade[#fade + 1] = string.format("%.2f", stance_vfx["opacity"])
+    end
+    log("淡出序列 = " .. table.concat(fade, " -> ") ..
+        "  life = " .. tostring(stance_vfx["life"]))
 
     -- 4) 原贴图 vs shader 对照:同一帧各画一次
     local function loadPng(path)

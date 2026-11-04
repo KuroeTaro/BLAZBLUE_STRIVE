@@ -3211,6 +3211,9 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
     for i = 1,#obj_char["VFX_hit_front_table"] do
         local vfx = obj_char["VFX_hit_front_table"][i]
         if vfx["type"] == "FD_block" then
+            -- 复用:回到 active 并让环重播
+            vfx["state"] = "active"
+            vfx["ease_out_age"] = 0
             vfx["frame_age"] = 0
             FD_block_apply_frame(vfx,config)
             return vfx
@@ -3218,6 +3221,11 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
     end
     -- state
     obj_VFX["type"] = "FD_block"
+    -- 状态机:active(跟踪角色位置 + 循环环) / ease_out(停止跟踪 + 淡出)
+    obj_VFX["state"] = "active"
+    obj_VFX["ease_out_age"] = 0
+    obj_VFX["opacity_cache"] = 0.0
+    obj_VFX["impact_alpha_cache"] = 0.0
     obj_VFX["fade_age"] = 0
     obj_VFX["frame_age"] = 0
     obj_VFX["opacity"] = 0.0
@@ -3234,19 +3242,41 @@ function insert_VFX_game_scene_char_FD_block(obj_char)
     obj_VFX[7] = 0
     obj_VFX[8] = 0
     obj_VFX["update"] = function()
-        local state = obj_char["state"]
-        if state ~= "active_FD_block" and string.sub(state,1,5) ~= "block" then
+        if obj_VFX["state"] == "active" then
+            -- active:持续跟踪角色位置 + 循环命中环
+            local char_state = obj_char["state"]
+            if char_state ~= "active_FD_block" and string.sub(char_state,1,5) ~= "block" then
+                -- 离开 FD / block:进 ease_out,先把当前透明度存下来
+                obj_VFX["state"] = "ease_out"
+                obj_VFX["ease_out_age"] = 0
+                obj_VFX["opacity_cache"] = obj_VFX["opacity"]
+                obj_VFX["impact_alpha_cache"] = obj_VFX["impact_alpha"]
+                return
+            end
+            obj_VFX["fade_age"] = obj_VFX["fade_age"] + 1
+            obj_VFX["frame_age"] = obj_VFX["frame_age"] + 1
+            FD_block_apply_frame(obj_VFX,config)
+            obj_VFX["opacity"] =
+                math.min(1.0,obj_VFX["fade_age"]/math.max(config.fade_in,1)) * config.stance_opacity
+            return
+        end
+        -- ease_out:不再跟踪角色位置,只把透明度(和环)淡出
+        obj_VFX["ease_out_age"] = obj_VFX["ease_out_age"] + 1
+        local ratio = 1.0 - obj_VFX["ease_out_age"]/math.max(config.ease_out_frame,1)
+        if ratio <= 0.0 then
+            obj_VFX["opacity"] = 0.0
+            obj_VFX["impact_alpha"] = 0.0
             obj_VFX["life"] = 0
             return
         end
-        obj_VFX["fade_age"] = obj_VFX["fade_age"] + 1
-        obj_VFX["frame_age"] = obj_VFX["frame_age"] + 1
-        FD_block_apply_frame(obj_VFX,config)
-        obj_VFX["opacity"] =
-            math.min(1.0,obj_VFX["fade_age"]/math.max(config.fade_in,1)) * config.stance_opacity
+        obj_VFX["opacity"] = obj_VFX["opacity_cache"] * ratio
+        obj_VFX["impact_alpha"] = obj_VFX["impact_alpha_cache"] * ratio
     end
     obj_VFX["draw_sync"] = function()
-        FD_block_apply_frame(obj_VFX,config)
+        if obj_VFX["state"] ~= "active" then
+            -- ease_out:位置停在离开时的那一帧
+            return
+        end
         anchor = anchor_table[obj_char["height"]] or anchor_table["stand"]
         obj_VFX[1] = obj_char["x"] + obj_char[5]*(anchor[1])
         obj_VFX[2] = obj_char["y"] + obj_char[6]*(anchor[2])

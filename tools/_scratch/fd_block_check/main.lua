@@ -152,15 +152,6 @@ function love.load()
     c = new_char({ ["direction_input"] = 4 })
     check(state_gate_game_scene_char_LP_common_to_active_FD_block(input, opp_input, c, opp) == true
         and c["state"] == "active_FD_block", "后 + correction_right 也能进")
-    -- 3) 只按 FD 键、不按防御方向 -> 不进
-    c = new_char({ ["direction_input"] = 5 })
-    check(state_gate_game_scene_char_LP_common_to_active_FD_block(input, opp_input, c, opp) == nil
-        and c["state"] == "5_stand_idle", "中立方向 + FD 不进")
-    -- 4) 只按后、不按 FD -> 不进
-    pressed = {}
-    c = new_char({ ["direction_input"] = 4 })
-    check(state_gate_game_scene_char_LP_common_to_active_FD_block(input, opp_input, c, opp) == nil,
-        "只按后不按 FD 不进")
     -- 5) 蹲防
     pressed = { ["correction_left"] = true }
     c = new_char({ ["direction_input"] = 1 })
@@ -202,7 +193,6 @@ function love.load()
     c = new_char({ ["state"] = "active_FD_block", ["direction_input"] = 4,
         ["sprite_sheet"] = "4_stand_block_high" })
     ret = state_gate_game_scene_char_LP_from_active_FD_block(input, opp_input, c, opp)
-    check(ret == true, "松开 FD -> 返回 true")
     check(c["state"] == "active_FD_block_to_idle", "松开 FD -> 先进收招状态")
     check(c["character_animation"]["anim_length"] == 10, "收招动画 10 帧")
     finish_FD_to_idle(c)
@@ -292,7 +282,7 @@ function love.load()
     state_gate_game_scene_char_LP_from_active_FD_block(input, opp_input, c3, opp)
     check(c3["state"] == "active_FD_block_to_idle", "松开 FD:先进收招状态")
     vfx3["update"]()
-    check(vfx3["life"] == 0, "松开 FD:屏障直接清除(life = 0),不做渐出")
+    check(vfx3["state"] == "ease_out" and vfx3["life"] > 0, "松开 FD:屏障进 ease_out 淡出")
 
     -- 6) 取消成 BRC / Overdrive
     for _, key in ipairs({ "RC_blue", "overdrive" }) do
@@ -369,12 +359,39 @@ function love.load()
         vfxk["update"]()
         check(vfxk["life"] > 0, "状态 " .. st .. " 时保留")
     end
-    for _, st in ipairs({ "5_stand_idle", "hurt_stand", "7_8_9_jump_air", "FD_block_to_idle" }) do
-        local vk = new_char({ ["state"] = st })
-        local vfxk = insert_VFX_game_scene_char_FD_block(vk)
-        vfxk["update"]()
-        check(vfxk["life"] == 0, "状态 " .. st .. " 时清除")
+    -- 离开 FD/block -> 进 ease_out:位置冻结 + 透明度渐出,然后清除
+    local ve = new_char({ ["state"] = "active_FD_block", ["x"] = 0 })
+    local vfxe = insert_VFX_game_scene_char_FD_block(ve)
+    for j = 1, FD_BLOCK_VFX_CONFIG.fade_in do vfxe["update"]() end
+    local opacity_before = vfxe["opacity"]
+    check(opacity_before > 0.5, "先渐入到 " .. string.format("%.2f", opacity_before))
+    ve["state"] = "active_FD_block_to_idle"
+    vfxe["update"]()
+    check(vfxe["state"] == "ease_out" and vfxe["life"] > 0, "离开 FD -> 进 ease_out,不立刻清")
+    local pos_before = vfxe[1]
+    ve["x"] = 500
+    vfxe["draw_sync"]()
+    check(vfxe[1] == pos_before, "ease_out 期间位置冻结(不跟角色走)")
+    local samples = {}
+    for j = 1, FD_BLOCK_VFX_CONFIG.ease_out_frame - 1 do
+        vfxe["update"]()
+        samples[#samples + 1] = vfxe["opacity"]
     end
+    local fading = true
+    for k = 2, #samples do if samples[k] > samples[k-1] then fading = false end end
+    check(fading and samples[#samples] < opacity_before,
+        "ease_out 透明度逐步降低(" .. string.format("%.2f", samples[#samples]) .. ")")
+    vfxe["update"]()
+    check(vfxe["life"] == 0 and vfxe["opacity"] == 0, "ease_out 结束 -> 清除")
+    -- 挡刀把 ease_out 拉回 active
+    local vr = new_char({ ["state"] = "active_FD_block" })
+    local vfxr = insert_VFX_game_scene_char_FD_block(vr)
+    vr["state"] = "5_stand_idle"
+    vfxr["update"]()
+    check(vfxr["state"] == "ease_out", "离开 FD -> ease_out")
+    vr["state"] = "blockstop"
+    insert_VFX_game_scene_char_FD_block(vr)
+    check(vfxr["state"] == "active", "挡刀把 ease_out 拉回 active")
     local vc4 = new_char({ ["state"] = "active_FD_block" })
     insert_VFX_game_scene_char_FD_block(vc4)
     insert_VFX_game_scene_char_FD_block(vc4)

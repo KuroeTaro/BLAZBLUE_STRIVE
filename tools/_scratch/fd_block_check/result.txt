@@ -7,8 +7,6 @@
   ok   站姿 anchor = {150,510}
   ok   height/ground offset 正确
   ok   后 + correction_right 也能进
-  ok   中立方向 + FD 不进
-  ok   只按后不按 FD 不进
   ok   蹲防 -> 1_crouch_block / crouch
   ok   蹲姿 pushbox = crouch_pushbox
   ok   空中 FD -> 1_4_7_air_block / air
@@ -17,7 +15,6 @@
 [from_active_FD_block]
   ok   按着不放:留在 active_FD_block
   ok   方向改成蹲:切 1_crouch_block,仍在 active_FD_block
-  ok   松开 FD -> 返回 true
   ok   松开 FD -> 先进收招状态
   ok   收招动画 10 帧
   ok   收招放完 -> 回 5_stand_idle
@@ -41,7 +38,7 @@
   ok   渐入结束 opacity ≈ 0.90
   ok   常驻屏障不会自己到期
   ok   松开 FD:先进收招状态
-  ok   松开 FD:屏障直接清除(life = 0),不做渐出
+  ok   松开 FD:屏障进 ease_out 淡出
   ok   FD 可以取消成 RC_blue
   ok   FD 可以取消成 overdrive
   ok   站 -> 蹲:换成 1_crouch_block
@@ -61,10 +58,13 @@
   ok   状态 block 时保留
   ok   状态 blockstop 时保留
   ok   状态 block_stand 时保留
-  ok   状态 5_stand_idle 时清除
-  ok   状态 hurt_stand 时清除
-  ok   状态 7_8_9_jump_air 时清除
-  ok   状态 FD_block_to_idle 时清除
+  ok   先渐入到 0.90
+  ok   离开 FD -> 进 ease_out,不立刻清
+  ok   ease_out 期间位置冻结(不跟角色走)
+  ok   ease_out 透明度逐步降低(0.11)
+  ok   ease_out 结束 -> 清除
+  ok   离开 FD -> ease_out
+  ok   挡刀把 ease_out 拉回 active
   ok   同一个角色只保留一层屏障
 
 

@@ -142,6 +142,8 @@ FD_BLOCK_VFX_CONFIG =
     impact_inner_feather = 0.30,
     -- 常驻(active_FD_block)屏障:渐入帧数 + 稳定后的透明度
     fade_in = 8,
+    -- 离开 FD / block 后淡出的帧数(先停止跟踪位置,再淡出)
+    ease_out_frame = 8,
     stance_opacity = 0.90,
     -- 颜色
     color = {1.00,1.00,1.00},

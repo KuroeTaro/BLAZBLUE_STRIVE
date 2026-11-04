@@ -4,7 +4,8 @@ load scenes/game_scene/_common/draw_functions.lua         OK
 load scenes/game_scene/_common/_VFX.lua                   OK 
 shader compile: OK
 挡刀重置: 同一对象=true age 20 -> 0, impact_alpha=0.00
-离开 FD 状态后 life = 0(应为 0)
+离开 FD 后 state = ease_out(应为 ease_out)
+淡出序列 = 0.79 -> 0.68 -> 0.56 -> 0.45 -> 0.34 -> 0.23 -> 0.11 -> 0.00  life = 0
 原贴图加载: bubble=true block=true
 对照图帧数 = 8
 
