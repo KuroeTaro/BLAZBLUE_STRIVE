@@ -26,6 +26,7 @@ extern float bubble_inner_feather;   // 内圈羽化宽度(× R)
 extern float bubble_inner_brightness;// 内圈亮度
 extern float bubble_highlight;  // 左上高光
 extern float bubble_wobble;     // 呼吸幅度
+extern float bubble_wobble_frequency;   // 呼吸频率
 // 命中环
 extern float impact_radius;     // 环半径(× R),0 = 不画
 extern float impact_alpha;      // 环峰值
@@ -39,7 +40,7 @@ vec4 effect(vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords) {
     float r = length(rel) / max(radius,1.0e-3);
 
     // 球罩:FD_bubble 的 alpha 剖面 = 越靠边缘越亮,到球面处截断
-    float size = bubble_size * (1.0 + bubble_wobble * sin(time * 0.35));
+    float size = bubble_size * (1.0 + bubble_wobble * sin(time * bubble_wobble_frequency));
     float bubble_t = clamp(r / max(size,1.0e-3),0.0,1.0);
     float bubble_body = pow(bubble_t,bubble_power);
     float bubble_cut = 1.0 - smoothstep(size,size + max(bubble_edge,1.0e-3),r);

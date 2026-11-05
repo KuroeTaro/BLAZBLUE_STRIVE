@@ -20,7 +20,7 @@ __WORK_PLAN__
 RC美术资产更新
 超必杀旋风美术资产更新
 
-爆霸  更新789jump_air的hurt_box_data
+更新789jump_air的hurt_box_data 更新FD音效
 超必杀
     -- hz2626b
     -- tm6246改机械降神

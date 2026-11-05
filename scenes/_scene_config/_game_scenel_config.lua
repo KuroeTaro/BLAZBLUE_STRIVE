@@ -120,25 +120,26 @@ FD_BLOCK_VFX_CONFIG =
     -- FD_bubble / block_FD 贴图都是 600x600,半径 300
     base_radius = 300,
     -- 球罩(照 FD_bubble 的 alpha 剖面:边缘最亮 0.43,往中心按 r^2.2 掉,球面处截断)
-    bubble_size = 0.92,
-    bubble_edge = 0.16,
+    bubble_size = 0.875,
+    bubble_edge = 0.15,
     bubble_power = 2.20,
-    bubble_brightness = 0.43,
-    bubble_highlight = 0.0,
-    bubble_wobble = 0.010,
+    bubble_brightness = 0.5,
+    bubble_highlight = 0.1,
+    bubble_wobble = 0.025,
+    bubble_wobble_frequency = 0.075,
     -- 内圈:一圈带羽化的径向渐变,从中心亮起,渐变到半径的一半就收干净
     bubble_inner_size = 0.50,
-    bubble_inner_feather = 0.42,
+    bubble_inner_feather = 0.45,
     bubble_inner_brightness = 0.20,
     -- 命中环:循环动画(渐入 -> 放大 -> 渐出 -> 回到原始大小重新渐入)
-    impact_loop_frame = 48,
-    impact_radius_start = 0.45,
+    impact_loop_frame = 50,
+    impact_radius_start = 0.75,
     impact_radius_end = 1.00,
     impact_peak = 0.85,
-    impact_fade_in = 0.22,
+    impact_fade_in = 0.25,
     impact_fade_out = 0.55,
     impact_width = 0.030,
-    impact_opacity = 0.500, -- 命中环单独的透明度(球罩用 opacity)
+    impact_opacity = 0.250, -- 命中环单独的透明度(球罩用 opacity)
     impact_inner_feather = 0.30,
     -- 常驻(active_FD_block)屏障:渐入帧数 + 稳定后的透明度
     fade_in = 8,

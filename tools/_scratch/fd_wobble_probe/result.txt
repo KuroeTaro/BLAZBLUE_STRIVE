@@ -1,0 +1,7 @@
+load scenes/_scene_config/_game_scenel_config.lua       OK 
+load draw_general_use_functions.lua                     OK 
+load scenes/game_scene/_common/draw_functions.lua       OK 
+load scenes/game_scene/_common/_VFX.lua                 OK 
+frame_age 0..35 右边缘 x 采样(每 3 帧): 911 917 917 911 904 904 911 917 917 910 904 904
+边缘 x 范围 = 903 .. 918, 摆幅 = 15 px; 理论摆幅 = 5.5 px (2*wobble*size*R)
+RESULT: wobble 已生效
