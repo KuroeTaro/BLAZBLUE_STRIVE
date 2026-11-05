@@ -75,10 +75,8 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["init_animation_load_function"] = load_game_scene_anim_char_TRM_5_stand_idle
     obj_char_game_scene_char_LP["stand_hurt_animation"] = nil
     obj_char_game_scene_char_LP["stand_block_animation"] = nil
-    obj_char_game_scene_char_LP["stand_FD_block_animation"] = nil
     obj_char_game_scene_char_LP["crouch_hurt_animation"] = nil
     obj_char_game_scene_char_LP["crouch_block_animation"] = nil
-    obj_char_game_scene_char_LP["crouch_FD_block_animation"] = nil
     obj_char_game_scene_char_LP["air_hurt_animation"] = nil
     obj_char_game_scene_char_LP["air_block_animation"] = nil
     obj_char_game_scene_char_LP["OTG_hurt_animation"] = nil

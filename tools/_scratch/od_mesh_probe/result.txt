@@ -1,12 +1,14 @@
 load scenes/_scene_config/_game_scenel_config.lua         OK 
-load draw_general_use_functions.lua                       OK 
-load scenes/game_scene/_common/draw_functions.lua         OK 
+load update_general_use_functions/common.lua              OK 
 particle_count = 300
-第一次 0.452 ms / 第二次 0.0002 ms
+建 300 颗粒子耗时 0.501 ms
   ok   mesh 创建成功
-  ok   第二次返回同一个 mesh(缓存生效)
   ok   顶点数 = particle_count*6(1800)
-60 次调用耗时 0.021 ms
-  ok   60 帧里没有重建 mesh
+  ok   每次调用返回新 mesh(缓存交给调用方)
+  ok   3 颗粒子 -> 18 顶点
+  ok   usage=dynamic 可用
+  ok   particle_count<1 被夹到 1 颗
+  ok   非数字 particle_count 报错
+连续建 10 次耗时 4.562 ms
 
 RESULT: OK

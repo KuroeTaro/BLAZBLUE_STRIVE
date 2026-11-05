@@ -1,6 +1,4 @@
-function common_sprite_sheet_load(
-    json_file,image
-)
+function common_sprite_sheet_load(json_file,image)
     -- 读取 JSON 文件
     local file = love.filesystem.read(json_file)
     local data = JSON.decode(file)
@@ -20,6 +18,37 @@ function common_sprite_sheet_load(
         sprite_batch = sprite_batch,
         frames = frames
     }
+end
+function common_particle_mesh_new(particle_count,mesh_usage)
+    -- 通用「按粒子编号生成 quad mesh」工厂:任意数量的粒子共用一次 draw call。
+    -- 顶点数据沿用 LOVE 默认顶点格式(不自定义 attribute,11.x / 12.0 行为一致):
+    --     VertexPosition.xy = quad 角点(0/1)
+    --     VertexTexCoord.x  = 粒子编号(0..particle_count-1)
+    --     VertexTexCoord.y  = 0,颜色固定白
+    -- 位置 / 尺寸 / 旋转 / 拖尾都交给顶点着色器按「粒子编号 + 当前帧」算,
+    -- 所以 CPU 侧没有逐粒子开销;同一批粒子只换 uniform,不必重建 mesh。
+    -- particle_count:粒子数量,小于 1 时按 1 处理
+    -- mesh_usage:"static"(默认,建一次反复画)/ "dynamic" / "stream"(CPU 侧改顶点)
+    -- 返回:love.graphics.newMesh 生成的 mesh
+    assert(type(particle_count) == "number","common_particle_mesh_new: particle_count 必须是数字")
+    particle_count = math.floor(particle_count)
+    if particle_count < 1 then
+        particle_count = 1
+    end
+    local usage = mesh_usage or "static"
+    -- 每颗粒子两个三角形,角点顺序(屏幕坐标 y 向下):(0,0)(1,0)(1,1) / (0,0)(1,1)(0,1)
+    local corner_x = {0,1,1,0,1,0}
+    local corner_y = {0,0,1,0,1,1}
+    local vertices = {}
+    local write = 0
+    for i = 0,particle_count - 1,1 do
+        for c = 1,6,1 do
+            write = write + 1
+            -- x,y = 角点(0/1),u = 粒子编号,v = 0
+            vertices[write] = {corner_x[c],corner_y[c],i,0,1,1,1,1}
+        end
+    end
+    return love.graphics.newMesh(vertices,"triangles",usage)
 end
 function common_queue_new(length)
     local res = {}

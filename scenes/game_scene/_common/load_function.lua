@@ -265,7 +265,7 @@ function order_load_game_scene_VFX_overdrive_RC_burst_UA(load_order)
             )
             -- overdrive_badge_partical_mesh
             image_mesh_VFX_game_scene_overdrive_badge_partical =
-            common_game_scene_get_overdrive_badge_particle_mesh()
+            common_particle_mesh_new(OVERDRIVE_BADGE_PARTICAL_CONFIG.particle_count)
         end,
         [2] = function()
             -- RC

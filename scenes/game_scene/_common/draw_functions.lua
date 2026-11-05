@@ -474,38 +474,6 @@ function draw_VFX_game_scene_partical_3d_counter_opacity(frame)
     -- (_VFX.lua 里 counter 粒子 VFX 的 life / 帧动画长度也同步改成 36)
     return math.min(1.00,math.max(0.00,(24 - frame)/24))*0.425
 end
-function common_game_scene_get_overdrive_badge_particle_mesh()
-    -- overdrive_badge_partical:徽章收缩聚集 / 放大爆发 + 冲击波
-    -- 粒子部分:一张预生成的 quad mesh(数量见 OVERDRIVE_BADGE_PARTICAL_CONFIG),
-    --   位置/尺寸/拖尾全部由 shaders/overdrive_badge_particle.glsl 的顶点着色器
-    --   按粒子编号 + 帧号算出来,所以只占一次 draw call,CPU 侧没有逐粒子开销。
-    -- 顶点数据直接塞进 LOVE 的默认顶点格式(VertexPosition = 角点、VertexTexCoord.x = 粒子编号),
-    -- 不使用自定义 attribute,所以 11.x / 12.0 都不会有顶点格式的弃用警告,
-    -- 也不依赖 12.0 里自定义 attribute 的绑定位置。
-    -- 冲击波 / 向内收束充能波部分:shaders/overdrive_badge_partical_3d.glsl 全屏逐像素求值。
-    -- 充能波在收缩段(0-28 帧)从外圈一层层往中心砸,28 帧撞进中心后接爆发冲击波;
-    --   条数 / 飞行速度 / 整体模糊分别由 charge_count / charge_speed / charge_softness 控制。
-    -- center / radius 每帧用 3D 投影重算,所以两者都跟着角色位置与镜头推拉走;
-    -- 直接以 add 混合画在屏幕上,和原 badge 同属角色背侧层。
-    -- 所有可调数值都来自 _overdrive_badge_partical_config.lua,这里只负责送 uniform。
-    -- 全局缓存:particle_count 启动后不会变,建一次就够
-    local particle_count = OVERDRIVE_BADGE_PARTICAL_CONFIG.particle_count
-    -- 每颗粒子两个三角形:角点顺序 (0,0)(1,0)(1,1) / (0,0)(1,1)(0,1)
-    local corner_table = {
-        {0,0},{1,0},{1,1},
-        {0,0},{1,1},{0,1}
-    }
-    local vertices = {}
-    local write = 0
-    for i = 0,particle_count - 1,1 do
-        for c = 1,6,1 do
-            write = write + 1
-            -- x,y = 角点(0/1),u = 粒子编号,v = 0,颜色固定白
-            vertices[write] = {corner_table[c][1],corner_table[c][2],i,0,1,1,1,1}
-        end
-    end
-    return love.graphics.newMesh(vertices,"triangles","static")
-end
 function draw_VFX_game_scene_overdrive_badge_partical(
     obj_VFX,shockwave_shader,particle_shader,frame,opacity
 )

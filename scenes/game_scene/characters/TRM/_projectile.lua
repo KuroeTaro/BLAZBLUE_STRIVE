@@ -1985,7 +1985,7 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_ground_b
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
-    res["anim_length"] = 12
+    res["anim_length"] = 20
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
@@ -2045,26 +2045,28 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_ground_b
     end
     res[1] = function()
         -- draw_correction
-        hurt_side_obj_char[8] = 3
+        hurt_side_obj_char[8] = 4
     end
     res[6] = function()
         -- draw_correction
-        hurt_side_obj_char[8] = 2
-    end
-    res[7] = function()
-        -- input_sys_cache
-        hurt_side_obj_char["input_sys_state"] = "save" -- none_save_load
-        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
+        hurt_side_obj_char[8] = 3
     end
     res[9] = function()
         -- draw_correction
+        hurt_side_obj_char[8] = 2
+    end
+    res[12] = function()
+        -- input_sys_cache
+        hurt_side_obj_char["input_sys_state"] = "save" -- none_save_load
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
+        -- draw_correction
         hurt_side_obj_char[8] = 1
     end
-    res[10] = function()
+    res[14] = function()
         -- draw_correction
         hurt_side_obj_char[8] = 0
     end
-    res[12] = function()
+    res[17] = function()
         -- animation_end
     end
     return res

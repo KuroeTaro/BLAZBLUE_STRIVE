@@ -1,4 +1,4 @@
--- 验证 overdrive badge 粒子 mesh 只创建一次(之前是函数内 local 缓存 -> 每帧重建)
+-- 验证通用粒子 mesh 工厂 common_particle_mesh_new:数量换算、usage 参数、下限保护、创建开销
 local REPO = "H:/_love/BLAZBLUE_STRIVE"
 local DIR = REPO .. "/tools/_scratch/od_mesh_probe"
 local lines = {}
@@ -22,36 +22,31 @@ function love.load()
     end
     for _, rel in ipairs({
         "scenes/_scene_config/_game_scenel_config.lua",
-        "draw_general_use_functions.lua",
-        "scenes/game_scene/_common/draw_functions.lua"
+        "update_general_use_functions/common.lua"
     }) do
         local ok, err = pcall(dofile, REPO .. "/" .. rel)
         log(string.format("load %-52s %s %s", rel, ok and "OK" or "FAIL", ok and "" or tostring(err)))
         if not ok then fails = fails + 1 end
     end
-    local config = OVERDRIVE_BADGE_PARTICAL_CONFIG
-    log("particle_count = " .. tostring(config.particle_count))
+    local count = OVERDRIVE_BADGE_PARTICAL_CONFIG.particle_count
+    log("particle_count = " .. tostring(count))
 
     local t1 = love.timer.getTime()
-    local mesh1 = common_game_scene_get_overdrive_badge_particle_mesh()
-    local ms1 = (love.timer.getTime() - t1)*1000
-    local t2 = love.timer.getTime()
-    local mesh2 = common_game_scene_get_overdrive_badge_particle_mesh()
-    local ms2 = (love.timer.getTime() - t2)*1000
-    log(string.format("第一次 %.3f ms / 第二次 %.4f ms", ms1, ms2))
-    check(mesh1 ~= nil and type(mesh1) == "userdata", "mesh 创建成功")
-    check(mesh1 == mesh2, "第二次返回同一个 mesh(缓存生效)")
-    check(mesh2:getVertexCount() == config.particle_count*6,
-        "顶点数 = particle_count*6(" .. tostring(mesh2:getVertexCount()) .. ")")
+    local mesh = common_particle_mesh_new(count)
+    log(string.format("建 %d 颗粒子耗时 %.3f ms", count, (love.timer.getTime() - t1)*1000))
+    check(mesh ~= nil and type(mesh) == "userdata", "mesh 创建成功")
+    check(mesh:getVertexCount() == count*6,
+        "顶点数 = particle_count*6(" .. tostring(mesh:getVertexCount()) .. ")")
+    check(common_particle_mesh_new(count) ~= mesh, "每次调用返回新 mesh(缓存交给调用方)")
+    check(common_particle_mesh_new(3):getVertexCount() == 18, "3 颗粒子 -> 18 顶点")
+    check(common_particle_mesh_new(2,"dynamic"):getVertexCount() == 12, "usage=dynamic 可用")
+    check(common_particle_mesh_new(0):getVertexCount() == 6, "particle_count<1 被夹到 1 颗")
+    local ok_bad = pcall(common_particle_mesh_new,"x")
+    check(not ok_bad, "非数字 particle_count 报错")
 
-    local before = mesh2
-    local stable = true
-    local t3 = love.timer.getTime()
-    for i = 1,60 do
-        if common_game_scene_get_overdrive_badge_particle_mesh() ~= before then stable = false end
-    end
-    log(string.format("60 次调用耗时 %.3f ms", (love.timer.getTime() - t3)*1000))
-    check(stable, "60 帧里没有重建 mesh")
+    local t2 = love.timer.getTime()
+    for i = 1,10 do common_particle_mesh_new(count) end
+    log(string.format("连续建 10 次耗时 %.3f ms", (love.timer.getTime() - t2)*1000))
 
     log("")
     log(fails == 0 and "RESULT: OK" or ("RESULT: FAIL (" .. fails .. ")"))

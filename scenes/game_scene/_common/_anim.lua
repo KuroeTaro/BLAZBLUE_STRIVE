@@ -4782,7 +4782,7 @@ function load_game_scene_anim_char_common_active_FD_block_to_idle(
         obj_char["sprite_sheet"] = sprite_sheet
         obj_char["height"] = height -- stand_crouch_air_OTG_wallstick
         obj_char["hurt_state_target"] = "idle" -- idle_unblock_punish_counter_GP_parry
-        obj_char["move_state"] = "recovery" -- none_startup_active_recovery
+        obj_char["move_state"] = "none" -- none_startup_active_recovery
         obj_char["idle_cancel"] = true
         -- state_number
         -- 速度不在这里清:空中保持原速滑行,地面靠阻力刹住
