@@ -75,8 +75,10 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["init_animation_load_function"] = load_game_scene_anim_char_TRM_5_stand_idle
     obj_char_game_scene_char_LP["stand_hurt_animation"] = nil
     obj_char_game_scene_char_LP["stand_block_animation"] = nil
+    obj_char_game_scene_char_LP["stand_FD_block_animation"] = nil
     obj_char_game_scene_char_LP["crouch_hurt_animation"] = nil
     obj_char_game_scene_char_LP["crouch_block_animation"] = nil
+    obj_char_game_scene_char_LP["crouch_FD_block_animation"] = nil
     obj_char_game_scene_char_LP["air_hurt_animation"] = nil
     obj_char_game_scene_char_LP["air_block_animation"] = nil
     obj_char_game_scene_char_LP["OTG_hurt_animation"] = nil
@@ -4964,7 +4966,7 @@ function state_gate_game_scene_char_LP_from_active_FD_block(
         return true
     end
     -- idle_state_gate
-    if common_game_scene_FD_block_test(self_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not common_game_scene_FD_block_test(self_side_input,self_side_obj_char,opponent_side_obj_char) then
         self_side_obj_char["character_animation"] =
         load_game_scene_anim_char_common_active_FD_block_to_idle(
             self_side_obj_char,self_side_obj_char["sprite_sheet"],self_side_obj_char["height"]
@@ -5119,6 +5121,12 @@ function state_gate_game_scene_char_LP_from_block(
         self_side_obj_char,self_side_obj_char["character_animation"]
     ) then
         return
+    end
+    -- _FD_block
+    if common_game_scene_FD_block_from_block_gate(
+        self_side_input,self_side_obj_char
+    ) then
+        return true
     end
     self_side_obj_char["input_sys_state"] = "load" -- none_save_load
     state_machine_char_game_scene_char_LP_input_sys_cache()

@@ -1234,14 +1234,32 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
     end
     return res
 end
+-- 0_ground_FD_block
+-- 地面防御动画的 FD 版本
+-- 与原地面防御动画相比只有视觉帧 obj_char[8] 不同:
+-- 只使用 2/3/4 三帧循环,每 4F 切换一次
+-- 逻辑帧(状态/判定/VFX/帧数据)全部复用原动画
 function load_game_scene_anim_char_common_0_ground_FD_block(
-    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,
-    hurt_horizontal_velocity,hurt_horizontal_friction,hurt_horizontal_velocity_correction,
-    hurt_vertical_velocity,hurt_vertical_gravity,hurt_vertical_gravity_correction,
-    self_knockdown_animation,self_knockdown_recovery_animation,
-    self_wallbounce_hurt_animation,self_groundbounce_hurt_animation,
-    character_uncommon_init
+    obj_char,block_animation
 )
+    local res = {}
+    local anim_length = block_animation["anim_length"] or 0
+    for key,value in pairs(block_animation) do
+        if type(key) ~= "number" then
+            res[key] = value
+        end
+    end
+    for i = 0,anim_length do
+        local block_frame_function = block_animation[i]
+        local FD_frame = 2 + math.floor(i/4)%3
+        res[i] = function()
+            if block_frame_function then
+                block_frame_function()
+            end
+            obj_char[8] = FD_frame
+        end
+    end
+    return res
 end
 function load_game_scene_anim_char_common_0_air_block(
     hit_side_obj_char,hurt_side_obj_char,sprite_sheet,height,state_cache,

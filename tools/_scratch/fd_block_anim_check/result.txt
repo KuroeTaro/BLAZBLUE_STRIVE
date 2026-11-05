@@ -1,0 +1,45 @@
+[FD 动画构造器]
+  ok   anim_length 与普通版本一致
+  ok   prop_f 与普通版本一致
+  ok   原动画第 0 帧逻辑仍然执行
+  ok   第 0 帧视觉帧 = 2
+  ok   视觉帧 2/3/4 每 4F 循环(2,3,4,2)
+  ok   原动画第 5/12 帧逻辑仍然执行
+
+[缓存 / hurt 防御部分]
+  ok   地面 + FD:FD_block_state_cache = true
+  ok   记录 FD 防御高度 = stand
+  ok   创建了 stand_FD_block_animation
+  ok   站姿 FD 防御使用 stand_FD_block_animation
+  ok   普通防御的 sprite_sheet/逻辑被复用
+  ok   FD 防御第 0 帧视觉帧 = 2
+  ok   FD 防御动画序列 2 -> 3 -> 4(2,2,2,2,3,3,3,3,4)
+  ok   hurt 设好 cache -> block 出口直接进 active_FD_block 并跳过 8f
+  ok   同一防御动画的 FD 版本会复用缓存
+  ok   无 FD:FD_block_state_cache = false
+  ok   无 FD:使用普通 stand_block_animation
+  ok   无 FD:不会创建 FD 版本
+  ok   蹲姿 FD:cache = true
+  ok   蹲姿 FD:高度 = crouch
+  ok   蹲姿 FD:使用 crouch_FD_block_animation
+  ok   蹲姿 FD:第 0 帧视觉帧 = 2
+  ok   空中 FD:cache = false
+  ok   空中 FD:使用普通 air_block_animation
+
+[block 出口]
+  ok   继续 FD + 高度不变:进入 active_FD_block
+  ok   跳过前 8f:f = 8(实际 8)
+  ok   跳过前 8f:视觉帧 = 2(实际 2)
+  ok   进入 active_FD_block 使用 4_stand_block_high
+  ok   第 0 帧与第 8 帧的逻辑都执行(heat 100 -> 99)
+  ok   继续 FD + 高度变化:进入 active_FD_block
+  ok   高度变化:不从 8f 开始(f = 0)
+  ok   高度变化:切到蹲姿 1_crouch_block
+  ok   高度变化:第 0 帧视觉帧 = 0
+  ok   没有继续 FD:进入 active_FD_block_to_idle
+  ok   收招动画 10 帧
+  ok   cache = false:保持原逻辑回 5_stand_idle
+  ok   RP 镜像:继续 FD 同样跳过 8f 进入 active_FD_block
+
+checks=37 fails=0
+RESULT: OK
