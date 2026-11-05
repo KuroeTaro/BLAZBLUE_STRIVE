@@ -745,6 +745,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv0(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 10
+    res["block_type"] = "normal"
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
@@ -842,6 +843,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv1(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 12
+    res["block_type"] = "normal"
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
@@ -943,6 +945,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv2(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 14
+    res["block_type"] = "normal"
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
@@ -1042,6 +1045,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv3(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 17
+    res["block_type"] = "normal"
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
@@ -1145,6 +1149,7 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 19
+    res["block_type"] = "normal"
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
@@ -1311,6 +1316,7 @@ function load_game_scene_anim_char_common_0_air_block(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 32
+    res["block_type"] = "normal"
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
@@ -1474,6 +1480,7 @@ function load_game_scene_anim_char_common_0_air_block_guard_crash(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 43
+    res["block_type"] = "guard_crash"
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = "1_4_7_air_block_guard_crash"
@@ -4687,6 +4694,7 @@ function load_game_scene_anim_char_common_active_FD_block(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 21
+    res["block_type"] = "normal"
     res["loop_frame"] = 8
     for i = 0,20 do
         res[i] = function()
@@ -4777,6 +4785,7 @@ function load_game_scene_anim_char_common_active_FD_block_to_idle(
     local anchor_data = common_game_scene_get_anchor(side)
     res["prop_f"] = "f"
     res["anim_length"] = 10
+    res["block_type"] = "normal"
     res[0] = function()
         -- state
         obj_char["sprite_sheet"] = sprite_sheet

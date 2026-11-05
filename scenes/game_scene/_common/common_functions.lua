@@ -132,6 +132,18 @@ function common_game_scene_get_FD_block_animation(
     end
     return FD_block_animation
 end
+-- set
+function common_game_scene_set_FD_block_animation(hit_obj,hurt_obj)
+    local source_block_anim = hurt_obj["character_animation"]
+    local final_block_anim = hurt_obj["character_animation"]
+    if source_block_anim["block_type"] == "normal" then
+        final_block_anim = 
+        load_game_scene_anim_char_common_0_ground_FD_block(
+            hurt_obj,source_block_anim
+        )
+    end
+    hurt_obj["character_animation"] = final_block_anim
+end
 -- overdrive_badge:单张 static 贴图(缩放/透明度由 _VFX.lua 的时间轴重建)
 function common_game_scene_get_overdrive_badge_image_table(side)
     local side_table = {
@@ -521,32 +533,32 @@ function common_game_scene_strike_hurt_function_common_block(
         hurt_side_obj_char["height"] = "stand"
     end
     -- FD_block
-    local FD_block =
-        hurt_side_obj_char["height"] ~= "air" and hurt_side_FD_block
-    hurt_side_obj_char["FD_block_state_cache"] = FD_block
-    if FD_block then
-        hurt_side_obj_char["FD_block_height_cache"] = hurt_side_obj_char["height"]
-    end
-    if hurt_side_obj_char["height"] == "stand" then
-        if FD_block then
-            hurt_side_obj_char["character_animation"] =
-            common_game_scene_get_FD_block_animation(
-                hit_side_obj_char,hurt_side_obj_char,"stand_block_animation","stand_FD_block_animation"
-            )
-        else
+    if hurt_side_FD_block then
+        if hurt_side_obj_char["height"] == "stand" then
+            hurt_side_obj_char["FD_block_state_cache"] = true
+            hurt_side_obj_char["FD_block_height_cache"] = hurt_side_obj_char["height"]
             hurt_side_obj_char["character_animation"] = hit_side_obj_char["stand_block_animation"]
-        end
-    elseif hurt_side_obj_char["height"] == "crouch" then
-        if FD_block then
-            hurt_side_obj_char["character_animation"] =
-            common_game_scene_get_FD_block_animation(
-                hit_side_obj_char,hurt_side_obj_char,"crouch_block_animation","crouch_FD_block_animation"
-            )
-        else
+            common_game_scene_set_FD_block_animation(hit_side_obj_char,hurt_side_obj_char)
+        elseif hurt_side_obj_char["height"] == "crouch" then
+            hurt_side_obj_char["FD_block_state_cache"] = true
+            hurt_side_obj_char["FD_block_height_cache"] = hurt_side_obj_char["height"]
             hurt_side_obj_char["character_animation"] = hit_side_obj_char["crouch_block_animation"]
+            common_game_scene_set_FD_block_animation(hit_side_obj_char,hurt_side_obj_char)
+        elseif hurt_side_obj_char["height"] == "air" then
+            hurt_side_obj_char["FD_block_state_cache"] = false
+            hurt_side_obj_char["FD_block_height_cache"] = "none"
+            hurt_side_obj_char["character_animation"] = hit_side_obj_char["air_block_animation"]
         end
-    elseif hurt_side_obj_char["height"] == "air" then
-        hurt_side_obj_char["character_animation"] = hit_side_obj_char["air_block_animation"]
+    else
+        hurt_side_obj_char["FD_block_state_cache"] = false
+        hurt_side_obj_char["FD_block_height_cache"] = "none"
+        if hurt_side_obj_char["height"] == "stand" then
+            hurt_side_obj_char["character_animation"] = hit_side_obj_char["stand_block_animation"]
+        elseif hurt_side_obj_char["height"] == "crouch" then
+            hurt_side_obj_char["character_animation"] = hit_side_obj_char["crouch_block_animation"]
+        elseif hurt_side_obj_char["height"] == "air" then
+            hurt_side_obj_char["character_animation"] = hit_side_obj_char["air_block_animation"]
+        end
     end
     init_character_anim_with(
         hurt_side_obj_char,hurt_side_obj_char["character_animation"]
@@ -819,32 +831,32 @@ function common_game_scene_projectile_hurt_function_common_block(
         hurt_side_obj_char["height"] = "stand"
     end
     -- FD_block
-    local FD_block =
-        hurt_side_obj_char["height"] ~= "air" and hurt_side_FD_block
-    hurt_side_obj_char["FD_block_state_cache"] = FD_block
-    if FD_block then
-        hurt_side_obj_char["FD_block_height_cache"] = hurt_side_obj_char["height"]
-    end
-    if hurt_side_obj_char["height"] == "stand" then
-        if FD_block then
-            hurt_side_obj_char["character_animation"] =
-            common_game_scene_get_FD_block_animation(
-                obj_projectile,hurt_side_obj_char,"stand_block_animation","stand_FD_block_animation"
-            )
-        else
+    if hurt_side_FD_block then
+        if hurt_side_obj_char["height"] == "stand" then
+            hurt_side_obj_char["FD_block_state_cache"] = true
+            hurt_side_obj_char["FD_block_height_cache"] = hurt_side_obj_char["height"]
             hurt_side_obj_char["character_animation"] = obj_projectile["stand_block_animation"]
-        end
-    elseif hurt_side_obj_char["height"] == "crouch" then
-        if FD_block then
-            hurt_side_obj_char["character_animation"] =
-            common_game_scene_get_FD_block_animation(
-                obj_projectile,hurt_side_obj_char,"crouch_block_animation","crouch_FD_block_animation"
-            )
-        else
+            common_game_scene_set_FD_block_animation(obj_projectile,hurt_side_obj_char)
+        elseif hurt_side_obj_char["height"] == "crouch" then
+            hurt_side_obj_char["FD_block_state_cache"] = true
+            hurt_side_obj_char["FD_block_height_cache"] = hurt_side_obj_char["height"]
             hurt_side_obj_char["character_animation"] = obj_projectile["crouch_block_animation"]
+            common_game_scene_set_FD_block_animation(obj_projectile,hurt_side_obj_char)
+        elseif hurt_side_obj_char["height"] == "air" then
+            hurt_side_obj_char["FD_block_state_cache"] = false
+            hurt_side_obj_char["FD_block_height_cache"] = "none"
+            hurt_side_obj_char["character_animation"] = obj_projectile["air_block_animation"]
         end
-    elseif hurt_side_obj_char["height"] == "air" then
-        hurt_side_obj_char["character_animation"] = obj_projectile["air_block_animation"]
+    else
+        hurt_side_obj_char["FD_block_state_cache"] = false
+        hurt_side_obj_char["FD_block_height_cache"] = "none"
+        if hurt_side_obj_char["height"] == "stand" then
+            hurt_side_obj_char["character_animation"] = obj_projectile["stand_block_animation"]
+        elseif hurt_side_obj_char["height"] == "crouch" then
+            hurt_side_obj_char["character_animation"] = obj_projectile["crouch_block_animation"]
+        elseif hurt_side_obj_char["height"] == "air" then
+            hurt_side_obj_char["character_animation"] = obj_projectile["air_block_animation"]
+        end
     end
     init_character_anim_with(
         hurt_side_obj_char,hurt_side_obj_char["character_animation"]
@@ -1066,32 +1078,32 @@ function common_game_scene_projectile_RC_red_yellow_hurt_function_common_block(
         hurt_side_obj_char["height"] = "stand"
     end
     -- FD_block
-    local FD_block =
-        hurt_side_obj_char["height"] ~= "air" and hurt_side_FD_block
-    hurt_side_obj_char["FD_block_state_cache"] = FD_block
-    if FD_block then
-        hurt_side_obj_char["FD_block_height_cache"] = hurt_side_obj_char["height"]
-    end
-    if hurt_side_obj_char["height"] == "stand" then
-        if FD_block then
-            hurt_side_obj_char["character_animation"] =
-            common_game_scene_get_FD_block_animation(
-                obj_projectile,hurt_side_obj_char,"stand_block_animation","stand_FD_block_animation"
-            )
-        else
+    if hurt_side_FD_block then
+        if hurt_side_obj_char["height"] == "stand" then
+            hurt_side_obj_char["FD_block_state_cache"] = true
+            hurt_side_obj_char["FD_block_height_cache"] = hurt_side_obj_char["height"]
             hurt_side_obj_char["character_animation"] = obj_projectile["stand_block_animation"]
-        end
-    elseif hurt_side_obj_char["height"] == "crouch" then
-        if FD_block then
-            hurt_side_obj_char["character_animation"] =
-            common_game_scene_get_FD_block_animation(
-                obj_projectile,hurt_side_obj_char,"crouch_block_animation","crouch_FD_block_animation"
-            )
-        else
+            common_game_scene_set_FD_block_animation(obj_projectile,hurt_side_obj_char)
+        elseif hurt_side_obj_char["height"] == "crouch" then
+            hurt_side_obj_char["FD_block_state_cache"] = true
+            hurt_side_obj_char["FD_block_height_cache"] = hurt_side_obj_char["height"]
             hurt_side_obj_char["character_animation"] = obj_projectile["crouch_block_animation"]
+            common_game_scene_set_FD_block_animation(obj_projectile,hurt_side_obj_char)
+        elseif hurt_side_obj_char["height"] == "air" then
+            hurt_side_obj_char["FD_block_state_cache"] = false
+            hurt_side_obj_char["FD_block_height_cache"] = "none"
+            hurt_side_obj_char["character_animation"] = obj_projectile["air_block_animation"]
         end
-    elseif hurt_side_obj_char["height"] == "air" then
-        hurt_side_obj_char["character_animation"] = obj_projectile["air_block_animation"]
+    else
+        hurt_side_obj_char["FD_block_state_cache"] = false
+        hurt_side_obj_char["FD_block_height_cache"] = "none"
+        if hurt_side_obj_char["height"] == "stand" then
+            hurt_side_obj_char["character_animation"] = obj_projectile["stand_block_animation"]
+        elseif hurt_side_obj_char["height"] == "crouch" then
+            hurt_side_obj_char["character_animation"] = obj_projectile["crouch_block_animation"]
+        elseif hurt_side_obj_char["height"] == "air" then
+            hurt_side_obj_char["character_animation"] = obj_projectile["air_block_animation"]
+        end
     end
     init_character_anim_with(
         hurt_side_obj_char,hurt_side_obj_char["character_animation"]
@@ -1741,9 +1753,7 @@ function common_game_scene_get_character_effective_game_speed(obj_char)
     end
     return game_speed
 end
-function common_game_scene_game_speed_load_application(
-    obj_char,application_table
-)
+function common_game_scene_game_speed_load_application(obj_char,application_table)
     for i = 1,6 do
         if application_table[i] ~= nil then
             obj_char["game_speed_application"][i] = application_table[i]

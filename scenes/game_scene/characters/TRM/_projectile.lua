@@ -280,6 +280,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_ground_block(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 12
+    res["block_type"] = "normal"
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
@@ -403,6 +404,7 @@ function load_game_scene_anim_char_TRM_5H_at_the_ready_projectile_air_block(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 32
+    res["block_type"] = "normal"
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
@@ -1573,9 +1575,7 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     -- 数值(集中于此便于调整): 帧数与击飞/空中打防性能套用 5H, clean_hit 只提升伤害与 hitstop
     local hit_damage = 300.0
-    local hit_hurt_blockstop_countdown = 12
     local clean_hit_hit_damage = 450.0
-    local clean_hit_hurt_blockstop_countdown = 16
     local stand_hurt_animation_cache = load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_hurt(
         hit_side_obj_char,hurt_side_obj_char,obj_projectile,"0_general_hurt_launched_rotate","air","knockdown_recovery",
         3.25,5,1.147,-40,2.0,1.071,
@@ -1640,7 +1640,6 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
     )
     if hit_side_obj_char["shot_sys_at_the_steady_clean_hit"] then
         hit_damage = clean_hit_hit_damage
-        hit_hurt_blockstop_countdown = clean_hit_hurt_blockstop_countdown
         stand_block_animation_cache = load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_clean_hit_guard_crash_block(    
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,"4_stand_block_guard_crash","stand","5_stand_idle",
             12,5,1.00,0,2.5,1.00,
@@ -1671,7 +1670,7 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
     obj_projectile["hitbox_table"] = {}
     obj_projectile["hit_type"] = "strike"
     obj_projectile["hit_guard_type"] = "all"
-    obj_projectile["hit_hurt_blockstop_countdown"] = hit_hurt_blockstop_countdown
+    obj_projectile["hit_hurt_blockstop_countdown"] = 12
     obj_projectile["hit_damage"] = hit_damage
     obj_projectile["hit_damage_correction_factor"] = 0.9
     obj_projectile["hit_heat_gain"] = 5.0
@@ -1985,7 +1984,8 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_ground_b
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
-    res["anim_length"] = 20
+    res["anim_length"] = 23
+    res["block_type"] = "normal"
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
@@ -2047,26 +2047,28 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_ground_b
         -- draw_correction
         hurt_side_obj_char[8] = 4
     end
-    res[6] = function()
+    res[7] = function()
         -- draw_correction
         hurt_side_obj_char[8] = 3
     end
-    res[9] = function()
+    res[12] = function()
         -- draw_correction
         hurt_side_obj_char[8] = 2
     end
-    res[12] = function()
-        -- input_sys_cache
-        hurt_side_obj_char["input_sys_state"] = "save" -- none_save_load
-        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
+    res[15] = function()
         -- draw_correction
         hurt_side_obj_char[8] = 1
     end
-    res[14] = function()
+    res[18] = function()
+        -- input_sys_cache
+        hurt_side_obj_char["input_sys_state"] = "save" -- none_save_load
+        common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
+    end
+    res[19] = function()
         -- draw_correction
         hurt_side_obj_char[8] = 0
     end
-    res[17] = function()
+    res[23] = function()
         -- animation_end
     end
     return res
@@ -2120,6 +2122,7 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_air_bloc
     end
     res["prop_f"] = "f"
     res["anim_length"] = 32
+    res["block_type"] = "normal"
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
@@ -2247,7 +2250,8 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_clean_hi
     local hurt_side_anchor_data = common_game_scene_get_anchor(hurt_side)
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
-    res["anim_length"] = 27
+    res["anim_length"] = 35
+    res["block_type"] = "guard_crash"
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = sprite_sheet
@@ -2309,24 +2313,24 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_clean_hi
         -- draw_correction
         hurt_side_obj_char[8] = 1
     end
-    res[4] = function()
+    res[7] = function()
         -- draw_correction
         hurt_side_obj_char[8] = 2
     end
-    res[16] = function()
+    res[21] = function()
         -- draw_correction
         hurt_side_obj_char[8] = 3
     end
-    res[20] = function()
+    res[27] = function()
         -- draw_correction
         hurt_side_obj_char[8] = 4
     end
-    res[22] = function()
+    res[30] = function()
         -- input_sys_cache
         hurt_side_obj_char["input_sys_state"] = "save" -- none_save_load
         common_game_scene_get_input_sys_cache_init(hurt_side)(hurt_side_obj_char)
     end
-    res[27] = function()
+    res[35] = function()
         -- animation_end
     end
     return res
@@ -2382,6 +2386,7 @@ function load_game_scene_anim_char_TRM_4SP_S_H_at_the_steady_projectile_clean_hi
     end
     res["prop_f"] = "f"
     res["anim_length"] = 43
+    res["block_type"] = "guard_crash"
     res[0] = function()
         -- state
         hurt_side_obj_char["sprite_sheet"] = "1_4_7_air_block_guard_crash"

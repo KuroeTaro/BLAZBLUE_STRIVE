@@ -328,6 +328,7 @@ function load_game_scene_anim_char_RC_red_projectile_ground_block(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 12
+    res["block_type"] = "normal"
     res[0] = function()
         local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local hurt_side_FD_block =
@@ -456,6 +457,7 @@ function load_game_scene_anim_char_RC_red_projectile_air_block(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 32
+    res["block_type"] = "normal"
     res[0] = function()
         local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local hurt_side_FD_block =
@@ -1169,6 +1171,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_ground_block(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 17
+    res["block_type"] = "normal"
     res[0] = function()
         local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local hurt_side_FD_block =
@@ -1303,6 +1306,7 @@ function load_game_scene_anim_char_RC_yellow_projectile_air_block(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 32
+    res["block_type"] = "normal"
     res[0] = function()
         local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local hurt_side_FD_block =
@@ -1841,6 +1845,7 @@ function load_game_scene_anim_char_burst_shockwave_projectile_ground_block(
     local hurt_side_VFX_spawn_anchor_data = common_game_scene_get_VFX_spawn_anchor(hurt_side)
     res["prop_f"] = "f"
     res["anim_length"] = 17
+    res["block_type"] = "normal"
     res[0] = function()
         local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local hurt_side_FD_block =
@@ -1975,6 +1980,7 @@ function load_game_scene_anim_char_burst_shockwave_projectile_air_block(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 32
+    res["block_type"] = "normal"
     res[0] = function()
         local hurt_side_input = INPUT_SYS_CURRENT_COMMAND_STATE[hurt_side]
         local hurt_side_FD_block =

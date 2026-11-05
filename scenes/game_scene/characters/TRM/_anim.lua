@@ -2524,7 +2524,7 @@ function load_game_scene_anim_char_TRM_5P(
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 0
-        hit_side_obj_char["anchor_pos"] = {233,510}
+        hit_side_obj_char["anchor_pos"] = {200,510}
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_hit_load_camera_shake_anim(0.25,15)
