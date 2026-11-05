@@ -193,7 +193,7 @@ function insert_projectile_game_scene_char_TRM_5H_at_the_ready_shot(hit_side_obj
         end
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
+            obj_camera,obj_projectile,image_sprite_sheet,obj_projectile[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -984,7 +984,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
                 obj_projectile[2] = obj_projectile["y"] - 80
                 image_sprite_sheet["sprite_batch"]:clear()
                 draw_3d_image_sprite_batch(
-                    obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
+                    obj_camera,obj_projectile,image_sprite_sheet,obj_projectile[8]
                 )
                 love.graphics.setColor(1,1,1,obj_projectile[4])
                 love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -996,7 +996,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
                 obj_projectile[2] = obj_projectile["y"] - 80
                 image_sprite_sheet["sprite_batch"]:clear()
                 draw_3d_image_sprite_batch(
-                    obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
+                    obj_camera,obj_projectile,image_sprite_sheet,obj_projectile[8]
                 )
                 love.graphics.setColor(1,1,1,obj_projectile[4])
                 love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1008,7 +1008,7 @@ function insert_projectile_game_scene_char_TRM_6SP_P(hit_side_obj_char,hurt_side
                 obj_projectile[2] = obj_projectile["y"] - 250
                 image_sprite_sheet["sprite_batch"]:clear()
                 draw_3d_image_sprite_batch(
-                    obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
+                    obj_camera,obj_projectile,image_sprite_sheet,obj_projectile[8]
                 )
                 love.graphics.setColor(1,1,1,obj_projectile[4])
                 love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1343,7 +1343,7 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
                 local image_sprite_sheet = active_side_projectile_sprite_sheet_table[obj_projectile["sprite_sheet"]]
                 image_sprite_sheet["sprite_batch"]:clear()
                 draw_3d_image_sprite_batch(
-                    obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
+                    obj_camera,obj_projectile,image_sprite_sheet,obj_projectile[8]
                 )
                 love.graphics.setShader(shader)
                 love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1353,7 +1353,7 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
                 image_sprite_sheet["sprite_batch"]:clear()
                 draw_3d_image_sprite_batch(
                     obj_camera,obj_projectile["projectile_buff"],image_sprite_sheet,
-                    tostring(obj_projectile["projectile_buff"][8])
+                    obj_projectile["projectile_buff"][8]
                 )
                 love.graphics.setColor(1,1,1,obj_projectile["projectile_buff"][4])
                 love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1363,7 +1363,7 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
                 local image_sprite_sheet = active_side_projectile_sprite_sheet_table[obj_projectile["sprite_sheet"]]
                 image_sprite_sheet["sprite_batch"]:clear()
                 draw_3d_image_sprite_batch(
-                    obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
+                    obj_camera,obj_projectile,image_sprite_sheet,obj_projectile[8]
                 )
                 love.graphics.setShader(shader)
                 love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1373,7 +1373,7 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
                 image_sprite_sheet["sprite_batch"]:clear()
                 draw_3d_image_sprite_batch(
                     obj_camera,obj_projectile["projectile_buff"],image_sprite_sheet,
-                    tostring(obj_projectile["projectile_buff"][8])
+                    obj_projectile["projectile_buff"][8]
                 )
                 love.graphics.setColor(1,1,1,obj_projectile["projectile_buff"][4])
                 love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1383,7 +1383,7 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
                 local image_sprite_sheet = active_side_projectile_sprite_sheet_table[obj_projectile["sprite_sheet"]]
                 image_sprite_sheet["sprite_batch"]:clear()
                 draw_3d_image_sprite_batch(
-                    obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
+                    obj_camera,obj_projectile,image_sprite_sheet,obj_projectile[8]
                 )
                 love.graphics.setShader(shader)
                 love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1393,7 +1393,7 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
                 local image_sprite_sheet = active_side_projectile_sprite_sheet_table[obj_projectile["sprite_sheet"]]
                 image_sprite_sheet["sprite_batch"]:clear()
                 draw_3d_image_sprite_batch(
-                    obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
+                    obj_camera,obj_projectile,image_sprite_sheet,obj_projectile[8]
                 )
                 love.graphics.setShader(shader)
                 love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1403,7 +1403,7 @@ function insert_projectile_game_scene_char_TRM_6SP_K(active_op_side_obj_char,pas
                 local image_sprite_sheet = active_side_projectile_sprite_sheet_table[obj_projectile["sprite_sheet"]]
                 image_sprite_sheet["sprite_batch"]:clear()
                 draw_3d_image_sprite_batch(
-                    obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
+                    obj_camera,obj_projectile,image_sprite_sheet,obj_projectile[8]
                 )
                 love.graphics.setShader(shader)
                 love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1781,7 +1781,7 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
         local image_sprite_sheet = hit_side_projectile_sprite_sheet_table[obj_projectile["sprite_sheet"]]
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
+            obj_camera,obj_projectile,image_sprite_sheet,obj_projectile[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])

@@ -49,7 +49,7 @@ function draw_game_scene_main()
     local image_sprite_sheet = image_sprite_sheet_announcer_game_scene_HUD_ease_in
     if obj[4] ~= 0 then
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_2d_image_sprite_batch(obj,image_sprite_sheet,""..obj[8].."")
+        draw_2d_image_sprite_batch(obj,image_sprite_sheet,obj[8])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         -- draw_2d_image_table(obj_HUD_game_scene_ease_in,image_table_announcer_game_scene_HUD_ease_in) -- 1 draw call 16
     end
@@ -175,14 +175,14 @@ function draw_game_scene_main()
     if obj[4] ~= 0 then
         image_sprite_sheet = image_sprite_sheet_table_announcer_game_scene_act_number[ROUND_COUNTER]
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_2d_image_sprite_batch(obj,image_sprite_sheet,""..obj[8].."")
+        draw_2d_image_sprite_batch(obj,image_sprite_sheet,obj[8])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
     obj = obj_annoucer_game_scene_lets_dance
     if obj[4] ~= 0 then
         image_sprite_sheet = image_sprite_sheet_announcer_game_scene_lets_dance
         image_sprite_sheet["sprite_batch"]:clear()
-        draw_2d_image_sprite_batch(obj,image_sprite_sheet,""..obj[8].."")
+        draw_2d_image_sprite_batch(obj,image_sprite_sheet,obj[8])
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
     -- draw_game_scene_act_common(obj_annoucer_game_scene_act_common,image_table_announcer_game_scene_act_common)
@@ -191,7 +191,7 @@ function draw_game_scene_main()
     obj = obj_UI_game_scene_movie_cover
     image_sprite_sheet = image_sprite_sheet_UI_game_scene_movie_cover
     image_sprite_sheet["sprite_batch"]:clear()
-    draw_2d_image_sprite_batch(obj,image_sprite_sheet,""..obj[8].."")
+    draw_2d_image_sprite_batch(obj,image_sprite_sheet,obj[8])
     love.graphics.setBlendMode("add")
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     love.graphics.setBlendMode("alpha")
@@ -434,10 +434,10 @@ function draw_game_scene_act_common(obj,image_sprite_sheet)
     if opacity == 0 then
         return
     end
-    if image_sprite_sheet["frames"][""..f..""] == nil then
+    if image_sprite_sheet["frames"][f] == nil then
         f = 50
     end
-    draw_2d_image_sprite_batch(obj,image_sprite_sheet,""..f.."")
+    draw_2d_image_sprite_batch(obj,image_sprite_sheet,f)
 end
 -- glsl_draws
 function draw_VFX_game_scene_partical_3d_canvas(obj_VFX,shader,time,opacity)

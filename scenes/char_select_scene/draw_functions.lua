@@ -7,7 +7,7 @@ function draw_char_select_scene_ease_in_0f_36f()
     local image_sprite_sheet = image_sprite_sheet_UI_char_select_scene_start_0_110f
     local obj = obj_UI_char_select_scene_start_0f_110f
     image_sprite_sheet["sprite_batch"]:clear()
-    draw_2d_image_sprite_batch(obj,image_sprite_sheet,tostring(obj[8]))
+    draw_2d_image_sprite_batch(obj,image_sprite_sheet,obj[8])
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     love.graphics.setBlendMode("add")
     -- draw_2d_image_table(
@@ -17,7 +17,7 @@ function draw_char_select_scene_ease_in_0f_36f()
     image_sprite_sheet = image_sprite_sheet_UI_char_select_scene_movie_cover
     obj = obj_UI_char_select_scene_movie_cover
     image_sprite_sheet["sprite_batch"]:clear()
-    draw_2d_image_sprite_batch(obj,image_sprite_sheet,tostring(obj[8]))
+    draw_2d_image_sprite_batch(obj,image_sprite_sheet,obj[8])
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     love.graphics.setBlendMode("alpha")
     draw_solid(obj_UI_char_select_scene_black_solid)
@@ -30,7 +30,7 @@ function draw_char_select_scene_ease_in_36f_40f()
     local image_sprite_sheet = image_sprite_sheet_UI_char_select_scene_start_0_110f
     local obj = obj_UI_char_select_scene_start_0f_110f
     image_sprite_sheet["sprite_batch"]:clear()
-    draw_2d_image_sprite_batch(obj,image_sprite_sheet,tostring(obj[8]))
+    draw_2d_image_sprite_batch(obj,image_sprite_sheet,obj[8])
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     love.graphics.setBlendMode("add")
     -- draw_2d_image_table(
@@ -40,7 +40,7 @@ function draw_char_select_scene_ease_in_36f_40f()
     image_sprite_sheet = image_sprite_sheet_UI_char_select_scene_movie_cover
     obj = obj_UI_char_select_scene_movie_cover
     image_sprite_sheet["sprite_batch"]:clear()
-    draw_2d_image_sprite_batch(obj,image_sprite_sheet,tostring(obj[8]))
+    draw_2d_image_sprite_batch(obj,image_sprite_sheet,obj[8])
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     love.graphics.setBlendMode("alpha")
 end
@@ -52,7 +52,7 @@ function draw_char_select_scene_ease_in_40f_130f()
     local image_sprite_sheet = image_sprite_sheet_UI_char_select_scene_start_0_110f
     local obj = obj_UI_char_select_scene_start_0f_110f
     image_sprite_sheet["sprite_batch"]:clear()
-    draw_2d_image_sprite_batch(obj,image_sprite_sheet,tostring(obj[8]))
+    draw_2d_image_sprite_batch(obj,image_sprite_sheet,obj[8])
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     draw_2d_image(
         obj_UI_char_select_scene_icon_select_left,
@@ -77,7 +77,7 @@ function draw_char_select_scene_ease_in_40f_130f()
     image_sprite_sheet = image_sprite_sheet_UI_char_select_scene_movie_cover
     obj = obj_UI_char_select_scene_movie_cover
     image_sprite_sheet["sprite_batch"]:clear()
-    draw_2d_image_sprite_batch(obj,image_sprite_sheet,tostring(obj[8]))
+    draw_2d_image_sprite_batch(obj,image_sprite_sheet,obj[8])
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     -- draw_2d_image_table(
     --     obj_UI_char_select_scene_movie_cover,
@@ -94,7 +94,7 @@ function draw_char_select_scene_main()
     local image_sprite_sheet = image_sprite_sheet_UI_char_select_scene_start_0_110f
     local obj = obj_UI_char_select_scene_start_0f_110f
     image_sprite_sheet["sprite_batch"]:clear()
-    draw_2d_image_sprite_batch(obj,image_sprite_sheet,tostring(obj[8]))
+    draw_2d_image_sprite_batch(obj,image_sprite_sheet,obj[8])
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     draw_2d_image(
         obj_UI_char_select_scene_icon_select_left,
@@ -123,7 +123,7 @@ function draw_char_select_scene_main()
     image_sprite_sheet = image_sprite_sheet_UI_char_select_scene_movie_cover
     obj = obj_UI_char_select_scene_movie_cover
     image_sprite_sheet["sprite_batch"]:clear()
-    draw_2d_image_sprite_batch(obj,image_sprite_sheet,tostring(obj[8]))
+    draw_2d_image_sprite_batch(obj,image_sprite_sheet,obj[8])
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     love.graphics.setBlendMode("alpha")
     draw_solid(obj_UI_char_select_scene_black_solid)

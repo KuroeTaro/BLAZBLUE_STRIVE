@@ -24,6 +24,7 @@
 import json
 import math
 import os
+import re
 
 import numpy as np
 from PIL import Image
@@ -41,8 +42,19 @@ SCALE_MAX = 1.40
 SCALE_STEP = 0.005
 
 
+def load_sheet_json(path):
+    """
+    图集 json 的序号 key 是裸数字(tools/json_frame_key_to_number.py 改过),
+    标准 json 解析器不认,读之前把 "frames" 里的裸数字 key 补回引号。
+    """
+    with open(path, encoding="utf-8") as f:
+        text = f.read()
+    text = re.sub(r'(?<![\w"])(\d+)(?=\s*:)', r'"\1"', text)
+    return json.loads(text)
+
+
 def load_frames():
-    meta = json.load(open(SHEET_JSON, encoding="utf-8"))
+    meta = load_sheet_json(SHEET_JSON)
     Image.MAX_IMAGE_PIXELS = None
     sheet = Image.open(SHEET_PNG).convert("L")
     tile = 1000

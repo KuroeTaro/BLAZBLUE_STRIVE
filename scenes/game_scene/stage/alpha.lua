@@ -837,7 +837,7 @@ function draw_game_scene_stage_static()
     image_sprite_sheet = image_sprite_sheet_stage_game_scene_wallstick[obj["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(
-        obj_camera,obj,image_sprite_sheet,""..obj[8]..""
+        obj_camera,obj,image_sprite_sheet,obj[8]
     )
     love.graphics.setBlendMode("add")
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -912,7 +912,7 @@ function draw_game_scene_stage_wallbreak_at_character_front()
     image_sprite_sheet = image_sprite_sheet_stage_game_scene_wallbreak_after_debris
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(
-        obj_camera,obj,image_sprite_sheet,""..obj[8]..""
+        obj_camera,obj,image_sprite_sheet,obj[8]
     )
     love.graphics.setBlendMode("add")
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -921,7 +921,7 @@ function draw_game_scene_stage_wallbreak_at_character_front()
     image_sprite_sheet = image_sprite_sheet_stage_game_scene_wallbreak_dynamic
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(
-        obj_camera,obj,image_sprite_sheet,""..obj[8]..""
+        obj_camera,obj,image_sprite_sheet,obj[8]
     )
     love.graphics.setBlendMode("add")
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -929,7 +929,7 @@ function draw_game_scene_stage_wallbreak_at_character_front()
     obj = obj_stage_game_scene_wallbreak_smoke
     image_sprite_sheet = image_sprite_sheet_stage_game_scene_wallbreak_smoke
     image_sprite_sheet["sprite_batch"]:clear()
-    draw_2d_image_sprite_batch(obj,image_sprite_sheet,""..obj[8].."")
+    draw_2d_image_sprite_batch(obj,image_sprite_sheet,obj[8])
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
 end
 -- stage_animation_load_function

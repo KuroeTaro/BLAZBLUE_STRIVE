@@ -1,6 +1,6 @@
 {"frames": {
 
-"0":
+0:
 {
 	"frame": {"x":0,"y":0,"w":380,"h":260},
 	"rotated": false,
@@ -8,7 +8,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":380,"h":260},
 	"sourceSize": {"w":380,"h":260}
 },
-"1":
+1:
 {
 	"frame": {"x":0,"y":260,"w":380,"h":260},
 	"rotated": false,
@@ -16,7 +16,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":380,"h":260},
 	"sourceSize": {"w":380,"h":260}
 },
-"2":
+2:
 {
 	"frame": {"x":0,"y":520,"w":380,"h":260},
 	"rotated": false,

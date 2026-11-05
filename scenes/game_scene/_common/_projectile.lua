@@ -291,7 +291,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
         obj_projectile[5] = hit_side_obj_char[5]
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
+            obj_camera,obj_projectile,image_sprite_sheet,obj_projectile[8]
         )
         love.graphics.setColor(shockwave_color[1],shockwave_color[2],shockwave_color[3],0.5)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -827,7 +827,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_blue(hit_side_obj
         obj_projectile[5] = hit_side_obj_char[5]
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
+            obj_camera,obj_projectile,image_sprite_sheet,obj_projectile[8]
         )
         love.graphics.setColor(shockwave_color[1],shockwave_color[2],shockwave_color[3],0.5)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -920,7 +920,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_purple(hit_side_o
         obj_projectile[5] = hit_side_obj_char[5]
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
+            obj_camera,obj_projectile,image_sprite_sheet,obj_projectile[8]
         )
         love.graphics.setColor(shockwave_color[1],shockwave_color[2],shockwave_color[3],0.5)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1134,7 +1134,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
         obj_projectile[5] = hit_side_obj_char[5]
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_projectile,image_sprite_sheet,tostring(obj_projectile[8])
+            obj_camera,obj_projectile,image_sprite_sheet,obj_projectile[8]
         )
         love.graphics.setColor(shockwave_color[1],shockwave_color[2],shockwave_color[3],0.5)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])

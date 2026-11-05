@@ -44,7 +44,7 @@ function insert_VFX_game_scene_char_burst_front(obj_char)
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -107,7 +107,7 @@ function insert_VFX_game_scene_char_burst_back(obj_char)
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
@@ -274,7 +274,7 @@ function insert_VFX_game_scene_char_overdrive_airflow(obj_char)
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -408,7 +408,7 @@ function insert_VFX_game_scene_char_RC_badge(obj_char,image_sprite_sheet,scale,c
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.setColor(color[1],color[2],color[3],1)
@@ -473,7 +473,7 @@ function insert_VFX_game_scene_char_RC_blast(obj_char,opacity,scale,color)
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setColor(color[1],color[2],color[3],1)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -527,7 +527,7 @@ function insert_VFX_game_scene_char_RC_partical(obj_char,color)
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setColor(color[1],color[2],color[3],1)
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -661,7 +661,7 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver0(active_op_side_obj_
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -761,7 +761,7 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver1(active_op_side_obj_
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -865,7 +865,7 @@ function insert_VFX_game_scene_char_blast_attack_socket_ver1(active_op_side_obj_
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -972,7 +972,7 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver0(active_op_s
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1073,7 +1073,7 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1177,7 +1177,7 @@ function insert_VFX_game_scene_char_counter_blast_attack_socket_ver1(active_op_s
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1410,7 +1410,7 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver0(active_op_sid
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1511,7 +1511,7 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_sid
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1615,7 +1615,7 @@ function insert_VFX_game_scene_char_block_blast_attack_socket_ver1(active_op_sid
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1684,7 +1684,7 @@ function insert_VFX_game_scene_char_blast_dynamic_ver0(active_op_side_obj_char,p
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1755,7 +1755,7 @@ function insert_VFX_game_scene_char_blast_dynamic_ver1(active_op_side_obj_char,p
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1823,7 +1823,7 @@ function insert_VFX_game_scene_char_blast_dynamic_ver1(active_op_side_obj_char,p
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1900,7 +1900,7 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver0(active_op_side_ob
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -1971,7 +1971,7 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -2034,7 +2034,7 @@ function insert_VFX_game_scene_char_counter_blast_dynamic_ver1(active_op_side_ob
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -2197,7 +2197,7 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver0(active_op_side_obj_
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -2269,7 +2269,7 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver1(active_op_side_obj_
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -2337,7 +2337,7 @@ function insert_VFX_game_scene_char_block_blast_dynamic_ver1(active_op_side_obj_
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -2509,25 +2509,25 @@ function insert_VFX_game_scene_char_blast_special(active_op_side_obj_char,passiv
         love.graphics.setColor(255/255,175/255,60/255,1)
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX["sub_obj"][1],image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX["sub_obj"][1],image_sprite_sheet,obj_VFX[8]
         )
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX["sub_obj"][3],image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX["sub_obj"][3],image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         image_sprite_sheet = image_sprite_sheet_VFX_game_scene_special_lighting_1
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX["sub_obj"][2],image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX["sub_obj"][2],image_sprite_sheet,obj_VFX[8]
         )
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX["sub_obj"][4],image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX["sub_obj"][4],image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         image_sprite_sheet = image_sprite_sheet_VFX_game_scene_special_radial
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX["sub_obj"][5],image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX["sub_obj"][5],image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
@@ -2698,25 +2698,25 @@ function insert_VFX_game_scene_char_counter_blast_special(active_op_side_obj_cha
         love.graphics.setColor(255/255,175/255,60/255,1)
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX["sub_obj"][1],image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX["sub_obj"][1],image_sprite_sheet,obj_VFX[8]
         )
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX["sub_obj"][3],image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX["sub_obj"][3],image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         image_sprite_sheet = image_sprite_sheet_VFX_game_scene_special_lighting_1
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX["sub_obj"][2],image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX["sub_obj"][2],image_sprite_sheet,obj_VFX[8]
         )
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX["sub_obj"][4],image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX["sub_obj"][4],image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         image_sprite_sheet = image_sprite_sheet_VFX_game_scene_special_radial
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX["sub_obj"][5],image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX["sub_obj"][5],image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
@@ -2928,25 +2928,25 @@ function insert_VFX_game_scene_char_blast_special_projectile(active_op_side_obj_
         love.graphics.setColor(255/255,175/255,60/255,1)
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX["sub_obj"][1],image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX["sub_obj"][1],image_sprite_sheet,obj_VFX[8]
         )
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX["sub_obj"][3],image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX["sub_obj"][3],image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         image_sprite_sheet = image_sprite_sheet_VFX_game_scene_special_lighting_1
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX["sub_obj"][2],image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX["sub_obj"][2],image_sprite_sheet,obj_VFX[8]
         )
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX["sub_obj"][4],image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX["sub_obj"][4],image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         image_sprite_sheet = image_sprite_sheet_VFX_game_scene_special_radial
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX["sub_obj"][5],image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX["sub_obj"][5],image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
@@ -3117,25 +3117,25 @@ function insert_VFX_game_scene_char_counter_blast_special_projectile(active_op_s
         love.graphics.setColor(255/255,175/255,60/255,1)
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX["sub_obj"][1],image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX["sub_obj"][1],image_sprite_sheet,obj_VFX[8]
         )
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX["sub_obj"][3],image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX["sub_obj"][3],image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         image_sprite_sheet = image_sprite_sheet_VFX_game_scene_special_lighting_1
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX["sub_obj"][2],image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX["sub_obj"][2],image_sprite_sheet,obj_VFX[8]
         )
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX["sub_obj"][4],image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX["sub_obj"][4],image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         image_sprite_sheet = image_sprite_sheet_VFX_game_scene_special_radial
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX["sub_obj"][5],image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX["sub_obj"][5],image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
         love.graphics.setColor(1,1,1,1)
@@ -3348,7 +3348,7 @@ function insert_VFX_game_scene_char_block_ver0(obj_char)
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -3411,7 +3411,7 @@ function insert_VFX_game_scene_char_block_ver1(obj_char)
         obj_VFX[2] = obj_char["y"] + obj_char[6]*(active_op_VFX_spawn_anchor[2])
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -3474,7 +3474,7 @@ function insert_VFX_game_scene_char_block_burst(obj_char)
         obj_VFX[2] = obj_char["y"] + obj_char[6]*(active_op_VFX_spawn_anchor[2])
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -3537,7 +3537,7 @@ function insert_VFX_game_scene_char_block_RC_red(obj_char)
         obj_VFX[2] = obj_char["y"] + obj_char[6]*(active_op_VFX_spawn_anchor[2])
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -3600,7 +3600,7 @@ function insert_VFX_game_scene_char_block_RC_yellow(obj_char)
         obj_VFX[2] = obj_char["y"] + obj_char[6]*(active_op_VFX_spawn_anchor[2])
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -3647,7 +3647,7 @@ function insert_VFX_game_scene_char_throw_tech(active_op_side_obj_char,passive_o
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -3710,7 +3710,7 @@ function insert_VFX_game_scene_stage_smoke_dash_shot(obj_char,x,y,opacity,sx,sy,
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
@@ -3753,7 +3753,7 @@ function insert_VFX_game_scene_stage_smoke_horizontal_shot(
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
@@ -3796,7 +3796,7 @@ function insert_VFX_game_scene_stage_smoke_land_blow(
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
@@ -3837,7 +3837,7 @@ function insert_VFX_game_scene_stage_smoke_vertical_shot(obj_char,x,y,opacity,sx
         image_sprite_sheet["sprite_batch"]:clear()
         obj_VFX["draw_sync"]()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
@@ -3882,7 +3882,7 @@ function insert_VFX_game_scene_stage_4dash_air_backdash_shockwave(obj_char,x,y,o
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
@@ -3922,7 +3922,7 @@ function insert_VFX_game_scene_stage_6dash_air_dash_shockwave(obj_char,x,y,opaci
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end
@@ -3964,7 +3964,7 @@ function insert_VFX_game_scne_stage_dash_cancel_blow(obj_char,x,y,opacity,sx,sy,
         obj_VFX["draw_sync"]()
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(
-            obj_camera,obj_VFX,image_sprite_sheet,""..obj_VFX[8]..""
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
         )
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
     end

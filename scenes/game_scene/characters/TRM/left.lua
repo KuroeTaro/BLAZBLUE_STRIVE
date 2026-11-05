@@ -9886,14 +9886,14 @@ function draw_game_scene_char_LP()
     image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(
-        obj_camera,obj,image_sprite_sheet,tostring(obj[8])
+        obj_camera,obj,image_sprite_sheet,obj[8]
     )
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     -- draw_3d_image_table(obj_camera,obj,character_image_table)
     image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj_char["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(
-        obj_camera,obj_char,image_sprite_sheet,tostring(obj_char[8])
+        obj_camera,obj_char,image_sprite_sheet,obj_char[8]
     )
     love.graphics.setShader(shader)
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -9903,7 +9903,7 @@ function draw_game_scene_char_LP()
     image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(
-        obj_camera,obj,image_sprite_sheet,tostring(obj[8])
+        obj_camera,obj,image_sprite_sheet,obj[8]
     )
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     -- draw_front
@@ -9911,7 +9911,7 @@ function draw_game_scene_char_LP()
     image_sprite_sheet = image_sprite_sheet_table_char_game_scene_LP[obj["sprite_sheet"]]
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(
-        obj_camera,obj,image_sprite_sheet,tostring(obj[8])
+        obj_camera,obj,image_sprite_sheet,obj[8]
     )
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
 end
@@ -9976,7 +9976,7 @@ function draw_game_scene_char_LP_attachment_front()
     image_sprite_sheet["sprite_batch"]:clear()
     draw_3d_image_sprite_batch(
         obj_camera,obj_char["shot_sys_reticle"],image_sprite_sheet,
-        tostring(obj_char["shot_sys_reticle"][8])
+        obj_char["shot_sys_reticle"][8]
     )
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
 end

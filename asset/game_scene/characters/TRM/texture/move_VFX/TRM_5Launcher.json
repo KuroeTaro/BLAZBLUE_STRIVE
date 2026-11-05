@@ -1,6 +1,6 @@
 {"frames": {
 
-"0":
+0:
 {
 	"frame": {"x":0,"y":0,"w":520,"h":280},
 	"rotated": false,
@@ -8,7 +8,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":520,"h":280},
 	"sourceSize": {"w":520,"h":280}
 },
-"1":
+1:
 {
 	"frame": {"x":520,"y":0,"w":520,"h":280},
 	"rotated": false,
