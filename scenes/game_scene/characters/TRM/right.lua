@@ -34,6 +34,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["air_move"] = {}
     obj_char_game_scene_char_RP["air_move"]["jump"] = {1,1}
     obj_char_game_scene_char_RP["air_move"]["air_dash"] = {1,1}
+    obj_char_game_scene_char_RP["FD_block_state_cache"] = false
     -- state_number
     obj_char_game_scene_char_RP["velocity"] = {0,0}
     obj_char_game_scene_char_RP["velocity_debug"] = {0,0}
@@ -4905,7 +4906,7 @@ function state_gate_game_scene_char_RP_common_to_active_FD_block(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
     local sprite_sheet = "none"
-    local height = 0
+    local height = "none"
     if self_side_obj_char["height"] == "air" then
         sprite_sheet,height = "1_4_7_air_block","air"
     elseif common_game_scene_check_crouch_direction(self_side_obj_char) then
@@ -4928,10 +4929,7 @@ function state_gate_game_scene_char_RP_from_active_FD_block(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
     local sprite_sheet = "none"
-    local height = 0
-    local holding_FD =
-        test_input_sys_press_or_hold(self_side_input["correction_left"])
-        or test_input_sys_press_or_hold(self_side_input["correction_right"])
+    local height = "none"
     if state_gate_game_scene_char_RP_common_to_burst_overdrive(
         self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char,"overdrive"
     ) then
@@ -4966,7 +4964,7 @@ function state_gate_game_scene_char_RP_from_active_FD_block(
         return true
     end
     -- idle_state_gate
-    if (not holding_FD) or (not common_game_scene_check_block_direction(self_side_obj_char)) then
+    if common_game_scene_FD_block_test(self_side_input,self_side_obj_char,opponent_side_obj_char) then
         self_side_obj_char["character_animation"] =
         load_game_scene_anim_char_common_active_FD_block_to_idle(
             self_side_obj_char,self_side_obj_char["sprite_sheet"],self_side_obj_char["height"]
