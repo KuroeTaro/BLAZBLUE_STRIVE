@@ -7248,6 +7248,23 @@ function state_gate_game_scene_char_RP_from_6dash_dash_cancel(
     if get_character_anim_end_state(
         self_side_obj_char,self_side_obj_char["character_animation"]
     ) then
+        -- _6dash_dash
+        if (self_side_obj_char["direction_input"] == 5 or self_side_obj_char["direction_input"] == 6)
+        and test_input_sys_press_or_hold(self_side_input["dash"])
+        then
+            local velocity_cache = self_side_obj_char["velocity"][1]
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_6dash_dash(self_side_obj_char)
+            init_character_anim_without(
+                self_side_obj_char,self_side_obj_char["character_animation"]
+            )
+            self_side_obj_char["f"] = 27
+            character_animator(
+                self_side_obj_char,self_side_obj_char["character_animation"]
+            )
+            self_side_obj_char["velocity"][1] = velocity_cache
+            self_side_obj_char["state"] = "6dash_dash"
+            return true
+        end
         -- init_character_anim
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_dash_skid(self_side_obj_char)
         init_character_anim_with(
