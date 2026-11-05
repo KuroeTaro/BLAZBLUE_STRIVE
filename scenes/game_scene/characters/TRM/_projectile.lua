@@ -1761,7 +1761,7 @@ function insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot(hit_si
     obj_projectile["camera_enclosing_anim"] = nil
     obj_projectile["enclose_position_offset"] = nil
     obj_projectile["camera_x_shake_anim"],obj_projectile["camera_y_shake_anim"] =
-    common_game_scene_hit_load_camera_shake_anim(0.75,15)
+    common_game_scene_hit_load_camera_shake_anim(0.35,15)
     obj_projectile["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
     -- update
     obj_projectile["update"] = function()

@@ -117,6 +117,21 @@ function common_game_scene_get_VFX_spawn_anchor(side)
     }
     return side_table[side]
 end
+function common_game_scene_get_FD_block_animation(
+    hit_obj,hurt_obj,block_anim_name,FD_block_anim_name
+)
+    local block_animation = hit_obj[block_anim_name]
+    local FD_block_animation = hit_obj[FD_block_anim_name]
+    if FD_block_animation == nil
+    or FD_block_animation["source_block_animation"] ~= block_animation then
+        FD_block_animation = load_game_scene_anim_char_common_0_ground_FD_block(
+            hurt_obj,block_animation
+        )
+        FD_block_animation["source_block_animation"] = block_animation
+        hit_obj[FD_block_anim_name] = FD_block_animation
+    end
+    return FD_block_animation
+end
 -- overdrive_badge:单张 static 贴图(缩放/透明度由 _VFX.lua 的时间轴重建)
 function common_game_scene_get_overdrive_badge_image_table(side)
     local side_table = {
@@ -356,75 +371,6 @@ function common_game_scene_FD_block_test(hit_side_input,hit_side_obj_char,hurt_s
     end
     return false
 end
--- FD_block_animation
--- 取得某个地面防御动画的 FD 版本,按高度姿态缓存在打击方对象上
--- stand_FD_block_animation / crouch_FD_block_animation
--- 原防御动画每次动作都会重新创建,所以缓存必须跟着原动画走
-function common_game_scene_get_FD_block_animation(hit_obj,hurt_obj,height)
-    local block_animation = hit_obj[height .. "_block_animation"]
-    local FD_block_animation = hit_obj[height .. "_FD_block_animation"]
-    if FD_block_animation == nil
-    or FD_block_animation["source_block_animation"] ~= block_animation then
-        FD_block_animation = load_game_scene_anim_char_common_0_ground_FD_block(
-            hurt_obj,block_animation
-        )
-        FD_block_animation["source_block_animation"] = block_animation
-        hit_obj[height .. "_FD_block_animation"] = FD_block_animation
-    end
-    return FD_block_animation
-end
--- FD_block_from_block
--- block 状态出口的 FD 处理
--- 返回 true 表示已经切换到 FD 状态,调用方应立即返回
--- FD_block_state_cache 为 false 时保持普通防御的原有逻辑
-function common_game_scene_FD_block_from_block_gate(
-    self_side_input,self_side_obj_char
-)
-    if not self_side_obj_char["FD_block_state_cache"] then
-        return false
-    end
-    -- 目标姿态
-    local sprite_sheet = "none"
-    local height = "none"
-    if self_side_obj_char["height"] == "air" then
-        sprite_sheet,height = "1_4_7_air_block","air"
-    elseif common_game_scene_check_crouch_direction(self_side_obj_char) then
-        sprite_sheet,height = "1_crouch_block","crouch"
-    else
-        sprite_sheet,height = "4_stand_block_high","stand"
-    end
-    -- 没有继续 FD 的输入:进入 FD 收招
-    if not common_game_scene_FD_block_test(
-        self_side_input,self_side_obj_char,self_side_obj_char
-    ) then
-        self_side_obj_char["character_animation"] =
-        load_game_scene_anim_char_common_active_FD_block_to_idle(
-            self_side_obj_char,sprite_sheet,height
-        )
-        init_character_anim_with(
-            self_side_obj_char,self_side_obj_char["character_animation"]
-        )
-        self_side_obj_char["state"] = "active_FD_block_to_idle"
-        return true
-    end
-    -- 继续 FD:进入常驻 FD 防御
-    self_side_obj_char["character_animation"] =
-    load_game_scene_anim_char_common_active_FD_block(
-        self_side_obj_char,sprite_sheet,height
-    )
-    init_character_anim_with(
-        self_side_obj_char,self_side_obj_char["character_animation"]
-    )
-    -- 姿态没有变化:入场动作已经播过,跳过前 8f 直接进入循环段
-    if self_side_obj_char["FD_block_height_cache"] == height then
-        self_side_obj_char["f"] = 7
-        character_animator(
-            self_side_obj_char,self_side_obj_char["character_animation"]
-        )
-    end
-    self_side_obj_char["state"] = "active_FD_block"
-    return true
-end
 -- hit/hurt_function
 -- strike
 function common_game_scene_strike_hit_function(hit_side_obj_char,hurt_side_obj_char)
@@ -585,7 +531,7 @@ function common_game_scene_strike_hurt_function_common_block(
         if FD_block then
             hurt_side_obj_char["character_animation"] =
             common_game_scene_get_FD_block_animation(
-                hit_side_obj_char,hurt_side_obj_char,"stand"
+                hit_side_obj_char,hurt_side_obj_char,"stand_block_animation","stand_FD_block_animation"
             )
         else
             hurt_side_obj_char["character_animation"] = hit_side_obj_char["stand_block_animation"]
@@ -594,7 +540,7 @@ function common_game_scene_strike_hurt_function_common_block(
         if FD_block then
             hurt_side_obj_char["character_animation"] =
             common_game_scene_get_FD_block_animation(
-                hit_side_obj_char,hurt_side_obj_char,"crouch"
+                hit_side_obj_char,hurt_side_obj_char,"crouch_block_animation","crouch_FD_block_animation"
             )
         else
             hurt_side_obj_char["character_animation"] = hit_side_obj_char["crouch_block_animation"]
@@ -883,7 +829,7 @@ function common_game_scene_projectile_hurt_function_common_block(
         if FD_block then
             hurt_side_obj_char["character_animation"] =
             common_game_scene_get_FD_block_animation(
-                obj_projectile,hurt_side_obj_char,"stand"
+                obj_projectile,hurt_side_obj_char,"stand_block_animation","stand_FD_block_animation"
             )
         else
             hurt_side_obj_char["character_animation"] = obj_projectile["stand_block_animation"]
@@ -892,7 +838,7 @@ function common_game_scene_projectile_hurt_function_common_block(
         if FD_block then
             hurt_side_obj_char["character_animation"] =
             common_game_scene_get_FD_block_animation(
-                obj_projectile,hurt_side_obj_char,"crouch"
+                obj_projectile,hurt_side_obj_char,"crouch_block_animation","crouch_FD_block_animation"
             )
         else
             hurt_side_obj_char["character_animation"] = obj_projectile["crouch_block_animation"]
@@ -1098,7 +1044,7 @@ function common_game_scene_projectile_RC_red_yellow_hurt_function_common_block(
     hurt_side_obj_char["last_hitstop_frame"] = 0
     -- camera_shake_enclose
     obj_projectile["camera_x_shake_anim"],obj_projectile["camera_y_shake_anim"] =
-    common_game_scene_hit_load_camera_shake_anim(1.0,30)
+    common_game_scene_hit_load_camera_shake_anim(0.35,30)
     table.insert(
         obj_stage_main["camera_active_application_table"],
         function()
@@ -1130,7 +1076,7 @@ function common_game_scene_projectile_RC_red_yellow_hurt_function_common_block(
         if FD_block then
             hurt_side_obj_char["character_animation"] =
             common_game_scene_get_FD_block_animation(
-                obj_projectile,hurt_side_obj_char,"stand"
+                obj_projectile,hurt_side_obj_char,"stand_block_animation","stand_FD_block_animation"
             )
         else
             hurt_side_obj_char["character_animation"] = obj_projectile["stand_block_animation"]
@@ -1139,7 +1085,7 @@ function common_game_scene_projectile_RC_red_yellow_hurt_function_common_block(
         if FD_block then
             hurt_side_obj_char["character_animation"] =
             common_game_scene_get_FD_block_animation(
-                obj_projectile,hurt_side_obj_char,"crouch"
+                obj_projectile,hurt_side_obj_char,"crouch_block_animation","crouch_FD_block_animation"
             )
         else
             hurt_side_obj_char["character_animation"] = obj_projectile["crouch_block_animation"]
@@ -1173,7 +1119,7 @@ function common_game_scene_projectile_RC_red_yellow_hurt_function_common_hurt(
     end
     -- insert_camera_shake_enclose
     obj_projectile["camera_x_shake_anim"],obj_projectile["camera_y_shake_anim"] =
-    common_game_scene_hit_load_camera_shake_anim(1.0,30)
+    common_game_scene_hit_load_camera_shake_anim(0.35,30)
     obj_projectile["camera_enclosing_anim"] = common_game_scene_red_RC_hit_load_camera_enclose_anim()
     obj_projectile["enclose_position_offset"] = {
         0,

@@ -3369,6 +3369,55 @@ function init_input_sys_cache_negative_edge_RP(obj_char)
     end
 end
 -- 状态机连接门
+-- sub_gate
+function state_gate_game_scene_char_RP_sub_from_FD_block(
+    self_side_input,self_side_obj_char
+)
+    if not self_side_obj_char["FD_block_state_cache"] then
+        return false
+    end
+    -- 目标姿态
+    local sprite_sheet = "none"
+    local height = "none"
+    if self_side_obj_char["height"] == "air" then
+        sprite_sheet,height = "1_4_7_air_block","air"
+    elseif common_game_scene_check_crouch_direction(self_side_obj_char) then
+        sprite_sheet,height = "1_crouch_block","crouch"
+    else
+        sprite_sheet,height = "4_stand_block_high","stand"
+    end
+    -- 没有继续 FD 的输入:进入 FD 收招
+    if not common_game_scene_FD_block_test(
+        self_side_input,self_side_obj_char,self_side_obj_char
+    ) then
+        self_side_obj_char["character_animation"] =
+        load_game_scene_anim_char_common_active_FD_block_to_idle(
+            self_side_obj_char,sprite_sheet,height
+        )
+        init_character_anim_with(
+            self_side_obj_char,self_side_obj_char["character_animation"]
+        )
+        self_side_obj_char["state"] = "active_FD_block_to_idle"
+        return true
+    end
+    -- 继续 FD:进入常驻 FD 防御
+    self_side_obj_char["character_animation"] =
+    load_game_scene_anim_char_common_active_FD_block(
+        self_side_obj_char,sprite_sheet,height
+    )
+    init_character_anim_with(
+        self_side_obj_char,self_side_obj_char["character_animation"]
+    )
+    -- 姿态没有变化:入场动作已经播过,跳过前 8f 直接进入循环段
+    if self_side_obj_char["FD_block_height_cache"] == height then
+        self_side_obj_char["f"] = 7
+        character_animator(
+            self_side_obj_char,self_side_obj_char["character_animation"]
+        )
+    end
+    self_side_obj_char["state"] = "active_FD_block"
+    return true
+end
 -- to_gate
 -- ground
 function state_gate_game_scene_char_RP_common_ground_to_dash_move_PP(
@@ -4408,6 +4457,29 @@ function state_gate_game_scene_char_RP_common_air_to_special_move_hold_ver(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
 end
+-- active_FD_block
+function state_gate_game_scene_char_RP_common_to_active_FD_block(
+    self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+)
+    local sprite_sheet = "none"
+    local height = "none"
+    if self_side_obj_char["height"] == "air" then
+        sprite_sheet,height = "1_4_7_air_block","air"
+    elseif common_game_scene_check_crouch_direction(self_side_obj_char) then
+        sprite_sheet,height = "1_crouch_block","crouch"
+    else
+        sprite_sheet,height = "4_stand_block_high","stand"
+    end
+    self_side_obj_char["character_animation"] = load_game_scene_anim_char_common_active_FD_block(
+        self_side_obj_char,sprite_sheet,height
+    )
+    init_character_anim_with(
+        self_side_obj_char,self_side_obj_char["character_animation"]
+    )
+    self_side_obj_char["state"] = "active_FD_block"
+    insert_VFX_game_scene_char_FD_block(self_side_obj_char,self_side_input)
+    return true
+end
 -- RC
 function state_gate_game_scene_char_RP_common_to_burst_RC_red(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
@@ -4904,28 +4976,6 @@ function state_gate_game_scene_char_RP_4SP_S_to_special(
             return true
         end
 end
-function state_gate_game_scene_char_RP_common_to_active_FD_block(
-    self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
-)
-    local sprite_sheet = "none"
-    local height = "none"
-    if self_side_obj_char["height"] == "air" then
-        sprite_sheet,height = "1_4_7_air_block","air"
-    elseif common_game_scene_check_crouch_direction(self_side_obj_char) then
-        sprite_sheet,height = "1_crouch_block","crouch"
-    else
-        sprite_sheet,height = "4_stand_block_high","stand"
-    end
-    self_side_obj_char["character_animation"] = load_game_scene_anim_char_common_active_FD_block(
-        self_side_obj_char,sprite_sheet,height
-    )
-    init_character_anim_with(
-        self_side_obj_char,self_side_obj_char["character_animation"]
-    )
-    self_side_obj_char["state"] = "active_FD_block"
-    insert_VFX_game_scene_char_FD_block(self_side_obj_char,self_side_input)
-    return true
-end
 -- from_gate
 function state_gate_game_scene_char_RP_from_active_FD_block(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
@@ -5123,7 +5173,7 @@ function state_gate_game_scene_char_RP_from_block(
         return
     end
     -- _FD_block
-    if common_game_scene_FD_block_from_block_gate(
+    if state_gate_game_scene_char_RP_sub_from_FD_block(
         self_side_input,self_side_obj_char
     ) then
         return true

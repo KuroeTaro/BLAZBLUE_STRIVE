@@ -2272,7 +2272,7 @@ function load_game_scene_anim_char_TRM_6P(
         hit_side_obj_char["anchor_pos"] = {280,495}
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
-        common_game_scene_hit_load_camera_shake_anim(0.42,15)
+        common_game_scene_hit_load_camera_shake_anim(0.25,15)
         hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
@@ -2756,7 +2756,7 @@ function load_game_scene_anim_char_TRM_2K(
         hit_side_obj_char["anchor_pos"] = {290,300}
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
-        common_game_scene_hit_load_camera_shake_anim(0.25,15)
+        common_game_scene_hit_load_camera_shake_anim(0.30,15)
         hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
@@ -3016,7 +3016,7 @@ function load_game_scene_anim_char_TRM_6K(
         hit_side_obj_char["anchor_pos"] = {370,540}
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
-        common_game_scene_hit_load_camera_shake_anim(0.42,15)
+        common_game_scene_hit_load_camera_shake_anim(0.30,15)
         hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
@@ -3299,7 +3299,7 @@ function load_game_scene_anim_char_TRM_5K(
         hit_side_obj_char["anchor_pos"] = {235,510}
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
-        common_game_scene_hit_load_camera_shake_anim(0.25,15)
+        common_game_scene_hit_load_camera_shake_anim(0.30,15)
         hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
@@ -3563,7 +3563,7 @@ function load_game_scene_anim_char_TRM_2S(
         hit_side_obj_char["anchor_pos"] = {292,405}
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
-        common_game_scene_hit_load_camera_shake_anim(0.42,15)
+        common_game_scene_hit_load_camera_shake_anim(0.35,15)
         hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
@@ -3853,7 +3853,7 @@ function load_game_scene_anim_char_TRM_6S(
         hit_side_obj_char["anchor_pos"] = {375,510}
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
-            common_game_scene_hit_load_camera_shake_anim(0.42,15)
+            common_game_scene_hit_load_camera_shake_anim(0.35,15)
         hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
@@ -4152,7 +4152,7 @@ function load_game_scene_anim_char_TRM_cS(
         hit_side_obj_char["anchor_pos"] = {320,510}
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
-        common_game_scene_hit_load_camera_shake_anim(0.42,15)
+        common_game_scene_hit_load_camera_shake_anim(0.35,15)
         hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
@@ -4395,7 +4395,7 @@ function load_game_scene_anim_char_TRM_fS(
         hit_side_obj_char["anchor_pos"] = {320,510}
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
-        common_game_scene_hit_load_camera_shake_anim(0.42,15)
+        common_game_scene_hit_load_camera_shake_anim(0.30,15)
         hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
@@ -4772,7 +4772,7 @@ function load_game_scene_anim_char_TRM_2Launcher(
         hit_side_obj_char["anchor_pos"] = {330,310}
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
-        common_game_scene_hit_load_camera_shake_anim(0.25,15)
+        common_game_scene_hit_load_camera_shake_anim(0.30,15)
         hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
@@ -5760,7 +5760,7 @@ function load_game_scene_anim_char_TRM_5Launcher(
         hit_side_obj_char["anchor_pos"] = {415,635}
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
-        common_game_scene_hit_load_camera_shake_anim(0.42,15)
+        common_game_scene_hit_load_camera_shake_anim(0.30,15)
         hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
         -- play_SFX
         play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
@@ -6256,7 +6256,7 @@ function load_game_scene_anim_char_TRM_j2K(
         hit_side_obj_char["anchor_pos"] = {240,480}
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
-        common_game_scene_hit_load_camera_shake_anim(0.42,15)
+        common_game_scene_hit_load_camera_shake_anim(0.35,15)
         hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
@@ -6497,7 +6497,7 @@ function load_game_scene_anim_char_TRM_j5K(
         hit_side_obj_char["anchor_pos"] = {330,370}
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
-        common_game_scene_hit_load_camera_shake_anim(0.25,15)
+        common_game_scene_hit_load_camera_shake_anim(0.30,15)
         hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
@@ -6721,7 +6721,7 @@ function load_game_scene_anim_char_TRM_j5S(
         hit_side_obj_char["anchor_pos"] = {350,330}
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
-        common_game_scene_hit_load_camera_shake_anim(0.42,15)
+        common_game_scene_hit_load_camera_shake_anim(0.35,15)
         hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
@@ -7619,7 +7619,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(
         hit_side_obj_char["anchor_pos"] = {325,380}
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
-        common_game_scene_hit_load_camera_shake_anim(0.42,15)
+        common_game_scene_hit_load_camera_shake_anim(0.35,15)
         hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
@@ -8965,7 +8965,7 @@ function load_game_scene_anim_char_TRM_6SP_S(
         hit_side_obj_char["anchor_pos"] = anchor_pos
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
-        common_game_scene_hit_load_camera_shake_anim(0.54,10)
+        common_game_scene_hit_load_camera_shake_anim(0.35,10)
         hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
@@ -9141,7 +9141,7 @@ function load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot(
                 -- cameara_animation_load
                 anim_stage_point_linear_game_scene_camera_shake_x,
                 anim_stage_point_linear_game_scene_camera_shake_y =
-                common_game_scene_hit_load_camera_shake_anim(0.1,15)
+                common_game_scene_hit_load_camera_shake_anim(0.25,15)
                 init_point_linear_anim_without(
                     obj_camera,anim_stage_point_linear_game_scene_camera_shake_x
                 )

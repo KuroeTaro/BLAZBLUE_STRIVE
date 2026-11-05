@@ -474,7 +474,6 @@ function draw_VFX_game_scene_partical_3d_counter_opacity(frame)
     -- (_VFX.lua 里 counter 粒子 VFX 的 life / 帧动画长度也同步改成 36)
     return math.min(1.00,math.max(0.00,(24 - frame)/24))*0.425
 end
--- overdrive badge 粒子的 mesh:全局缓存,启动后 particle_count 不变,建一次就够
 function common_game_scene_get_overdrive_badge_particle_mesh()
     -- overdrive_badge_partical:徽章收缩聚集 / 放大爆发 + 冲击波
     -- 粒子部分:一张预生成的 quad mesh(数量见 OVERDRIVE_BADGE_PARTICAL_CONFIG),
