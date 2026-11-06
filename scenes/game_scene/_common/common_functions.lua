@@ -564,9 +564,10 @@ function common_game_scene_strike_hurt_function_common_block(
         hurt_side_obj_char,hurt_side_obj_char["character_animation"]
     )
     -- block_VFX
-    hit_side_obj_char["hurt_block_VFX_insert_function"](hurt_side_obj_char)
     if hurt_side_FD_block then
         insert_VFX_game_scene_char_FD_block(hurt_side_obj_char)
+    else
+        hit_side_obj_char["hurt_block_VFX_insert_function"](hurt_side_obj_char)
     end
 end
 function common_game_scene_strike_hurt_function_GP_hurt(
@@ -862,9 +863,10 @@ function common_game_scene_projectile_hurt_function_common_block(
         hurt_side_obj_char,hurt_side_obj_char["character_animation"]
     )
     -- block_VFX
-    obj_projectile["hurt_block_VFX_insert_function"](hurt_side_obj_char)
     if hurt_side_FD_block then
         insert_VFX_game_scene_char_FD_block(hurt_side_obj_char)
+    else
+        obj_projectile["hurt_block_VFX_insert_function"](hurt_side_obj_char)
     end
 end
 function common_game_scene_projectile_hurt_function_common_GP_hurt(
@@ -1109,9 +1111,10 @@ function common_game_scene_projectile_RC_red_yellow_hurt_function_common_block(
         hurt_side_obj_char,hurt_side_obj_char["character_animation"]
     )
     -- block_VFX
-    obj_projectile["hurt_block_VFX_insert_function"](hurt_side_obj_char)
     if hurt_side_FD_block then
         insert_VFX_game_scene_char_FD_block(hurt_side_obj_char)
+    else
+        obj_projectile["hurt_block_VFX_insert_function"](hurt_side_obj_char)
     end
 end
 function common_game_scene_projectile_RC_red_yellow_hurt_function_common_hurt(
