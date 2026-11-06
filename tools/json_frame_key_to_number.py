@@ -7,12 +7,16 @@
     Lua 侧查表就得写 frames[""..f..""]。改成裸数字 key 之后 dkjson 解码出来就是数字 key,
     代码可以直接 frames[f]。
 
+    TexturePacker 若用「文件名」当帧名,key 会带扩展名("0.png" / "1.png"),
+    这类也按序号处理:"0.png" -> 0。纯名字的 key("HUD_match_point" / "TRM_6SP_K_idle.png")不动。
+
     dkjson 的 scantable 用 scanvalue 解析 key,数字是合法 value,所以 {0:{...}} 能正常解码成
     tbl[0] = {...}。非数字的 key(HUD_xxx / 5H / 0.png)必须保持带引号的字符串,本脚本一律不动。
 
 规则:
     - 只处理 "frames" 对象**直接子级**的 key;
-    - 只处理纯十进制整数(不允许前导 0,除非就是 "0");
+    - 只处理纯十进制整数,或「十进制整数 + 扩展名」("0" / "0.png",不允许前导 0,除非就是 "0");
+      "TRM_6SP_K_idle.png" 这种带名字的不算;
     - 其余字节(缩进/换行/换行符 CRLF/转义/其他 key 与 value)原样保留;
     - 幂等:已经是裸数字的 key 不会被重复处理。
 
@@ -86,8 +90,18 @@ def skip_ws(text, i):
     return i
 
 
+EXT_KEY_RE = re.compile(r"^(\d+)\.[A-Za-z][A-Za-z0-9]*$")
+
+
 def is_plain_int(s):
     return s.isdigit() and (s == "0" or not s.startswith("0"))
+
+
+def ordinal_of(raw):
+    """把 "0" / "0.png" 归一成 "0";不是序号返回 None。"""
+    m = EXT_KEY_RE.match(raw)
+    s = m.group(1) if m else raw
+    return s if is_plain_int(s) else None
 
 
 def collect_key_spans(text):
@@ -134,8 +148,10 @@ def convert(text, to_number):
         return text, 0
     edits = []
     for start, end, raw, quoted in spans:
-        if to_number and quoted and is_plain_int(raw):
-            edits.append((start, end, raw))
+        if to_number and quoted:
+            ordinal = ordinal_of(raw)
+            if ordinal is not None:
+                edits.append((start, end, ordinal))
         elif (not to_number) and (not quoted) and is_plain_int(raw):
             edits.append((start, end, '"' + raw + '"'))
     for start, end, new in reversed(edits):

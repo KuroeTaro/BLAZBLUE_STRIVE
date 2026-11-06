@@ -438,6 +438,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_VFX_spawn_anchor_data_game_scene_char_RP["block_ver0_spawn_anchor_pos"] = {}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["block_ver1_spawn_anchor_pos"] = {}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["wallstick_spawn_anchor_pos"] = {}
+    -- public
     -- 0_crouch_hurt
     obj_pushboxs_data_game_scene_char_RP["0_crouch_hurt"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_crouch_hurt"][0] = crouch_pushbox
@@ -465,8 +466,7 @@ function load_game_scene_box_anchor_data_RP()
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_falled_knockout"][9] = {{0,-150,362,300}}
     obj_hurtboxs_data_game_scene_char_RP["0_general_hurt_falled_knockout"][10] = OTG_hurtbox
     obj_anchor_data_game_scene_char_RP["0_general_hurt_falled_knockout"] = {330,456}
-    obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["0_general_hurt_falled_knockout"] =
-    {-370,-150}
+    obj_VFX_spawn_anchor_data_game_scene_char_RP["stage_VFX_spawn_anchor"]["0_general_hurt_falled_knockout"] = {-370,-150}
     -- 0_stand_hurt_high
     obj_pushboxs_data_game_scene_char_RP["0_stand_hurt_high"] = {}
     obj_pushboxs_data_game_scene_char_RP["0_stand_hurt_high"][0] = stand_pushbox
@@ -820,6 +820,31 @@ function load_game_scene_box_anchor_data_RP()
         ["air"] = 1025,
         ["OTG"] = 1175
     }
+    -- private
+    obj_hurtboxs_data_game_scene_char_RP["7_jump"] = {}
+    obj_hurtboxs_data_game_scene_char_RP["7_jump"][0] = {{0,-180,200,380}}
+    obj_hurtboxs_data_game_scene_char_RP["7_jump"][2] = {{0,-145,340,310}}
+    obj_hurtboxs_data_game_scene_char_RP["7_jump"][3] = {{0,-155,230,330}}
+    obj_hurtboxs_data_game_scene_char_RP["7_jump"][4] = {{0,-147.5,250,315}}
+    obj_hurtboxs_data_game_scene_char_RP["7_jump"][5] = {{0,-120,320,260}}
+    obj_hurtboxs_data_game_scene_char_RP["7_jump"][6] = {{0,-135,310,290}}
+    obj_hurtboxs_data_game_scene_char_RP["7_jump"][7] = {{0,-165,290,350}}
+    obj_hurtboxs_data_game_scene_char_RP["8_jump"] = {}
+    obj_hurtboxs_data_game_scene_char_RP["8_jump"][0] = {{0,-180,200,380}}
+    obj_hurtboxs_data_game_scene_char_RP["8_jump"][2] = {{0,-180,200,380}}
+    obj_hurtboxs_data_game_scene_char_RP["8_jump"][3] = {{0,-145,230,310}}
+    obj_hurtboxs_data_game_scene_char_RP["8_jump"][4] = {{0,-130,240,280}}
+    obj_hurtboxs_data_game_scene_char_RP["8_jump"][5] = {{0,-160,215,340}}
+    obj_hurtboxs_data_game_scene_char_RP["8_jump"][6] = {{0,-180,200,380}}
+    obj_hurtboxs_data_game_scene_char_RP["8_jump"][7] = {{0,-180,200,380}}
+    obj_hurtboxs_data_game_scene_char_RP["9_jump"] = {}
+    obj_hurtboxs_data_game_scene_char_RP["9_jump"][0] = {{0,-180,200,380}}
+    obj_hurtboxs_data_game_scene_char_RP["9_jump"][2] = {{0,-145,340,310}}
+    obj_hurtboxs_data_game_scene_char_RP["9_jump"][3] = {{0,-130,230,280}}
+    obj_hurtboxs_data_game_scene_char_RP["9_jump"][4] = {{0,-150,220,320}}
+    obj_hurtboxs_data_game_scene_char_RP["9_jump"][5] = {{0,-130,260,280}}
+    obj_hurtboxs_data_game_scene_char_RP["9_jump"][6] = {{0,-155,210,330}}
+    obj_hurtboxs_data_game_scene_char_RP["9_jump"][7] = {{0,-180,200,380}}
 end
 function load_game_scene_shader_char_RP()
     -- shader_global_variable_no_shader_in_this_case
@@ -4282,10 +4307,8 @@ function state_gate_game_scene_char_RP_common_air_to_normal_move(
         return true
     end
     -- _j2K
-    if common_game_scene_check_crouch_direction(self_side_obj_char) and test_input_sys_press(self_side_input["K"]) then
-        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
-            self_side_obj_char[5] = -self_side_obj_char[5]
-        end
+    if common_game_scene_check_crouch_direction(self_side_obj_char)
+    and test_input_sys_press(self_side_input["K"]) then
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(
             self_side_obj_char,opponent_side_obj_char
         )
@@ -4377,11 +4400,8 @@ function state_gate_game_scene_char_RP_common_air_to_normal_move_hold_ver(
         return true
     end
     -- _j2K
-    if common_game_scene_check_crouch_direction(self_side_obj_char) and
-    test_input_sys_press_or_hold(self_side_input["K"]) then
-        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
-            self_side_obj_char[5] = -self_side_obj_char[5]
-        end
+    if common_game_scene_check_crouch_direction(self_side_obj_char)
+    and test_input_sys_press_or_hold(self_side_input["K"]) then
         self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(
             self_side_obj_char,opponent_side_obj_char
         )
@@ -8937,11 +8957,8 @@ function state_gate_game_scene_char_RP_from_j5P(
     if self_side_obj_char["hit_cancel"] and self_side_obj_char["character_mode"] == "RW.Baby.Blue" then
         -- _j2K
         if self_side_obj_char["y"] < -240 and
-        common_game_scene_check_crouch_direction(self_side_obj_char) and
-        test_input_sys_press(self_side_input["K"]) then
-            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
-                self_side_obj_char[5] = -self_side_obj_char[5]
-            end
+        common_game_scene_check_crouch_direction(self_side_obj_char)
+        and test_input_sys_press(self_side_input["K"]) then
             self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(
                 self_side_obj_char,opponent_side_obj_char
             )
@@ -9081,11 +9098,8 @@ function state_gate_game_scene_char_RP_from_j2K(
         end
         -- _j2K
         if self_side_obj_char["y"] < -240 and
-        common_game_scene_check_crouch_direction(self_side_obj_char) and
-        test_input_sys_press(self_side_input["K"]) then
-            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
-                self_side_obj_char[5] = -self_side_obj_char[5]
-            end
+        common_game_scene_check_crouch_direction(self_side_obj_char)
+        and test_input_sys_press(self_side_input["K"]) then
             self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(
                 self_side_obj_char,opponent_side_obj_char
             )
@@ -9211,11 +9225,8 @@ function state_gate_game_scene_char_RP_from_j5K(
         end
         -- _j2K
         if self_side_obj_char["y"] < -240 and
-        common_game_scene_check_crouch_direction(self_side_obj_char) and
-        test_input_sys_press(self_side_input["K"]) then
-            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
-                self_side_obj_char[5] = -self_side_obj_char[5]
-            end
+        common_game_scene_check_crouch_direction(self_side_obj_char)
+        and test_input_sys_press(self_side_input["K"]) then
             self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(
                 self_side_obj_char,opponent_side_obj_char
             )
@@ -9327,11 +9338,8 @@ function state_gate_game_scene_char_RP_from_j5S(
         end
         -- _j2K
         if self_side_obj_char["y"] < -240 and
-        common_game_scene_check_crouch_direction(self_side_obj_char) and
-        test_input_sys_press(self_side_input["K"]) then
-            if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
-                self_side_obj_char[5] = -self_side_obj_char[5]
-            end
+        common_game_scene_check_crouch_direction(self_side_obj_char)
+        and test_input_sys_press(self_side_input["K"]) then
             self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_j2K(
                 self_side_obj_char,opponent_side_obj_char
             )

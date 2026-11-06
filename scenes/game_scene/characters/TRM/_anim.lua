@@ -824,8 +824,8 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(
 )
     local res = {}
     local side = obj_char["player_side"]
+    local hurtbox_data = common_game_scene_get_hurtbox(side)
     local stage_interactive_SFX_table = common_game_scene_get_SFX_stage_interactive(side)
-    local width_table = {200,200,200,230,260,270,235,200}
     local function update_maintain_horizontal_velocity()
         obj_char["velocity"][1] = horizontal_velocity
     end
@@ -834,15 +834,12 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(
         if obj_char["velocity"][2] >= - 16.0 and obj_char["f"] <= 8 then
             obj_char["f"] = 9
             update_maintain_horizontal_velocity()
-            obj_char["hurtbox_table"] = {{0,-150,width_table[2],320}}
+            obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][2]
             obj_char[8] = 2
         end
     end
     res["prop_f"] = "f"
     res["anim_length"] = 35
-    if sprite_sheet == "8_jump" then
-        width_table = {200,200,200,200,200,200,200,200}
-    end
     for i = 1,8 do
         res[i] = function()
             -- update
@@ -878,7 +875,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(
         obj_char["pushbox"] = {0,-100,120,200}
         obj_char["pushbox_opponent_collision_active"] = true
         obj_char["hitbox_table"] = {}
-        obj_char["hurtbox_table"] = {{0,-180,width_table[1],380}}
+        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][0]
         obj_char["collision_ground_height_offset"] = 185
         -- shot_sys_oroboros
         obj_char["shot_sys_oroboros_anchor_pos"] = {-130,-320}
@@ -915,7 +912,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(
     res[9] = function()
         -- 上升到下降的转换阶段
         -- collide
-        obj_char["hurtbox_table"] = {{0,-150,width_table[3],320}}
+        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][2]
         -- draw_correction
         obj_char[8] = 2
         -- update
@@ -923,7 +920,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(
     end
     res[13] = function()
         -- collide
-        obj_char["hurtbox_table"] = {{0,-145,width_table[4],310}}
+        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][3]
         -- draw_correction
         obj_char[8] = 3
         -- update
@@ -931,7 +928,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(
     end
     res[17] = function()
         -- collide
-        obj_char["hurtbox_table"] = {{0,-130,width_table[5],280}}
+        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][4]
         -- draw_correction
         obj_char[8] = 4
         -- update
@@ -939,7 +936,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(
     end
     res[21] = function()
         -- collide
-        obj_char["hurtbox_table"] = {{0,-125,width_table[6],270}}
+        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][5]
         -- draw_correction
         obj_char[8] = 5
         -- update
@@ -947,7 +944,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(
     end
     res[25] = function()
         -- collide
-        obj_char["hurtbox_table"] = {{0,-150,width_table[7],320}}
+        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][6]
         -- draw_correction
         obj_char[8] = 6
         -- update
@@ -956,7 +953,7 @@ function load_game_scene_anim_char_TRM_7_8_9_jump_air(
     res[26] = function()
         -- 下降阶段开始
         -- collide
-        obj_char["hurtbox_table"] = {{0,-180,width_table[8],380}}
+        obj_char["hurtbox_table"] = hurtbox_data[sprite_sheet][7]
         -- draw_correction
         obj_char[8] = 7
         -- update

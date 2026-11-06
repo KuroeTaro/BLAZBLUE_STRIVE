@@ -75,10 +75,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "TRM_9_jump",
+	"image": "TRM_9_jump.png",
 	"format": "RGBA8888",
 	"size": {"w":1620,"h":1680},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:a73ebe255e15ee3aec42d59c08b0de01:8675dfa20e873b8b135f3b08a9d6d277:9d715ece9572afdb26d55564d1928e4c$"
+	"smartupdate": "$TexturePacker:SmartUpdate:9462975f39bdd76d8c20adbee1f38612:e284688a5c79fcbce4ad5612df6e17a5:9d715ece9572afdb26d55564d1928e4c$"
 }
 }

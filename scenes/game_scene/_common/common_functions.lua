@@ -1797,7 +1797,7 @@ function common_game_scene_create_hurtstop_wiggle_animation(
     local mid_length = (length - length%4)/4
     local res_anim = {}
     res_anim[0] = {0,mid_length}
-    res_anim[mid_length] = {wiggle_amount/4,length}
+    res_anim[mid_length] = {wiggle_amount/8,length}
     res_anim[length] = {0,length}
     res_anim["prop"] = prop
     res_anim["length"] = length
