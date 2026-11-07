@@ -798,7 +798,7 @@ function load_game_scene_box_anchor_data_LP()
     -- FD_block
     obj_VFX_spawn_anchor_data_game_scene_char_LP["FD_block_spawn_anchor_pos"] = {}
     obj_VFX_spawn_anchor_data_game_scene_char_LP["FD_block_spawn_anchor_pos"]["stand"] = {-300,-540}
-    obj_VFX_spawn_anchor_data_game_scene_char_LP["FD_block_spawn_anchor_pos"]["crouch"] = {-300,-420}
+    obj_VFX_spawn_anchor_data_game_scene_char_LP["FD_block_spawn_anchor_pos"]["crouch"] = {-300,-380}
     obj_VFX_spawn_anchor_data_game_scene_char_LP["FD_block_spawn_anchor_pos"]["air"] = {-300,-440}
     -- RC
     obj_pushboxs_data_game_scene_char_LP["burst_overdrive_RC"] = {}

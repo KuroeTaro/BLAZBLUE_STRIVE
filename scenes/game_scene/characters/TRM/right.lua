@@ -792,7 +792,7 @@ function load_game_scene_box_anchor_data_RP()
     -- FD_block
     obj_VFX_spawn_anchor_data_game_scene_char_RP["FD_block_spawn_anchor_pos"] = {}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["FD_block_spawn_anchor_pos"]["stand"] = {-300,-540}
-    obj_VFX_spawn_anchor_data_game_scene_char_RP["FD_block_spawn_anchor_pos"]["crouch"] = {-300,-420}
+    obj_VFX_spawn_anchor_data_game_scene_char_RP["FD_block_spawn_anchor_pos"]["crouch"] = {-300,-380}
     obj_VFX_spawn_anchor_data_game_scene_char_RP["FD_block_spawn_anchor_pos"]["air"] = {-300,-440}
     -- RC / overdrive 霸(启动瞬间在 burst_overdrive_ground / burst_overdrive_RC_air 上)
     obj_pushboxs_data_game_scene_char_RP["burst_overdrive_RC"] = {}
