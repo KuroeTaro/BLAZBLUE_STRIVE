@@ -313,10 +313,15 @@ function order_load_game_scene_VFX_overdrive_RC_burst_UA(load_order)
                 love.graphics.newImage(ASSET_DATA[8]["burst_front_sprite_batch"])
             )
             -- UA
-            image_sprite_sheet_VFX_game_scene_UA_common =
+            image_sprite_sheet_VFX_game_scene_UA_back =
             common_sprite_sheet_load(
-                "asset/game_scene/common/texture/VFX/UA_common.json",
-                love.graphics.newImage(ASSET_DATA[8]["UA_common_sprite_batch"])
+                "asset/game_scene/common/texture/VFX/UA_back.json",
+                love.graphics.newImage(ASSET_DATA[8]["UA_back_sprite_batch"])
+            )
+            image_sprite_sheet_VFX_game_scene_UA_front =
+            common_sprite_sheet_load(
+                "asset/game_scene/common/texture/VFX/UA_front.json",
+                love.graphics.newImage(ASSET_DATA[8]["UA_front_sprite_batch"])
             )
         end
     }

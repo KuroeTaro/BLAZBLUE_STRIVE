@@ -570,6 +570,58 @@ function insert_VFX_game_scene_char_RC_black_overlay(obj_char)
     end
     table.insert(obj_char["VFX_black_overlay_table"],obj_VFX)
 end
+-- UA
+function insert_VFX_game_scene_char_UA(obj_char,layer,x_offset,y_offset)
+    local obj_VFX = {0,0,0,1,1,1,0,0}
+    local obj_camera = obj_stage_game_scene_camera
+    local image_sprite_sheet = nil
+    local VFX_insert_table = nil
+    if layer == "front" then
+        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_UA_front
+        VFX_insert_table = "VFX_common_front_table"
+    elseif layer == "back" then
+        image_sprite_sheet = image_sprite_sheet_VFX_game_scene_UA_back
+        VFX_insert_table = "VFX_common_back_table"
+    end
+    obj_VFX["life"] = 20
+    obj_VFX[1] = obj_char["x"] - obj_char[5]*x_offset
+    obj_VFX[2] = obj_char["y"] - obj_char[6]*y_offset
+    obj_VFX[3] = obj_char[3]
+    obj_VFX[4] = 1
+    obj_VFX[5] = obj_char[5]
+    obj_VFX[6] = obj_char[6]
+    obj_VFX[7] = obj_char[7]
+    obj_VFX[8] = 0
+    obj_VFX["f"] = -1
+    obj_VFX["update"] = function()
+        obj_VFX["f"] = obj_VFX["f"] + 1
+        if obj_VFX["f"] >= 1 then
+            obj_VFX[8] = obj_VFX[8] + 1
+            obj_VFX["f"] = 0
+        end
+        obj_VFX["life"] = obj_VFX["life"] - 1
+    end
+    obj_VFX["draw_sync"] = function()
+        obj_VFX[1] = obj_char["x"] - obj_char[5]*x_offset
+        obj_VFX[2] = obj_char["y"] - obj_char[6]*y_offset
+        obj_VFX[3] = obj_char[3]
+        obj_VFX[5] = obj_char[5]
+        obj_VFX[6] = obj_char[6]
+        obj_VFX[7] = obj_char[7]
+        obj_VFX["draw_sync"] = function() end
+    end
+    obj_VFX["draw"] = function()
+        obj_VFX["draw_sync"]()
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(
+            obj_camera,obj_VFX,image_sprite_sheet,obj_VFX[8]
+        )
+        love.graphics.setColor(color[1],color[2],color[3],1)
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+        love.graphics.setColor(1,1,1,1)
+    end
+    table.insert(obj_char[VFX_insert_table],obj_VFX)
+end
 -- blast_slash_directional_ray_impact
 function insert_VFX_game_scene_char_blast_attack_socket_ver0(active_op_side_obj_char,passive_op_side_obj_char)
     -- active_op_x_active_op_y_z_active_op_opacity_active_op_sx_active_op_sy_active_op_r_f

@@ -1,0 +1,9 @@
+  thread key UA_back_sprite_batch   -> asset/game_scene/common/texture/VFX/UA_back.dds
+  thread key UA_front_sprite_batch  -> asset/game_scene/common/texture/VFX/UA_front.dds
+  order 3 加载的 json: asset/game_scene/common/texture/VFX/overdrive_airflow.json asset/game_scene/common/texture/VFX/RC_blast.json asset/game_scene/common/texture/VFX/RC_partical.json asset/game_scene/common/texture/VFX/RC_red_badge.json asset/game_scene/common/texture/VFX/RC_blue_badge.json asset/game_scene/common/texture/VFX/RC_purple_badge.json asset/game_scene/common/texture/VFX/RC_yellow_badge.json asset/game_scene/common/texture/VFX/burst_VFX/burst_back.json asset/game_scene/common/texture/VFX/burst_VFX/burst_front.json asset/game_scene/common/texture/VFX/UA_back.json asset/game_scene/common/texture/VFX/UA_front.json
+  image_sprite_sheet_VFX_game_scene_UA_back            = asset/game_scene/common/texture/VFX/UA_back.json
+  image_sprite_sheet_VFX_game_scene_UA_front           = asset/game_scene/common/texture/VFX/UA_front.json
+  UA_back.json 帧=20 归一后 0..19 miss= meta.image=UA_common_back.png size=16000x2400
+  UA_front.json 帧=20 归一后 0..19 miss= meta.image=UA_common_front.png size=16000x2400
+
+RESULT: OK
