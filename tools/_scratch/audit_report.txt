@@ -173,9 +173,9 @@
   threads\game_scene\VFX_move.lua:1  local filesys_module = require "love.filesystem"
   threads\game_scene\VFX_move.lua:5  local non_compress_module = image_module.newImageData
   threads\game_scene\VFX_move.lua:6  local sound_module = auido_module.newSoundData
-  threads\game_scene\VFX_overdrive_heat.lua:1  local filesys_module = require "love.filesystem"
-  threads\game_scene\VFX_overdrive_heat.lua:5  local non_compress_module = image_module.newImageData
-  threads\game_scene\VFX_overdrive_heat.lua:6  local sound_module = auido_module.newSoundData
+  threads\game_scene\VFX_burst_overdrive_RC_UA.lua:1  local filesys_module = require "love.filesystem"
+  threads\game_scene\VFX_burst_overdrive_RC_UA.lua:5  local non_compress_module = image_module.newImageData
+  threads\game_scene\VFX_burst_overdrive_RC_UA.lua:6  local sound_module = auido_module.newSoundData
   threads\game_scene\characters\TRM_left_audio.lua:1  local filesys_module = require "love.filesystem"
   threads\game_scene\characters\TRM_left_texture.lua:1  local filesys_module = require "love.filesystem"
   threads\game_scene\characters\TRM_left_texture.lua:5  local non_compress_module = image_module.newImageData

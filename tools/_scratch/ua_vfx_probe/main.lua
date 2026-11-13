@@ -23,10 +23,10 @@ love.thread.getChannel = function(name)
     local n = tonumber(tostring(name):match("thread_data_(%d+)"))
     return { push = function(self, data) captured[n] = data; return true end }
 end
-assert(loadfile(REPO .. "/threads/game_scene/VFX_overdrive_heat.lua"))()
+assert(loadfile(REPO .. "/threads/game_scene/VFX_burst_overdrive_RC_UA.lua"))()
 
 local asset = captured[8]
-if asset == nil then bad("VFX_overdrive_heat.lua 没有 push 到 thread_data_8") end
+if asset == nil then bad("VFX_burst_overdrive_RC_UA.lua 没有 push 到 thread_data_8") end
 local ua_keys = {}
 for k, v in pairs(asset) do
     if k:match("^UA_") then
@@ -42,7 +42,7 @@ for _, k in ipairs(ua_keys) do
     if not asset[k].path:match("%.dds$") then bad(k .. " 不是 dds") end
 end
 
--- 2) 用桩跑 order_load_game_scene_VFX_overdrive_RC_burst_UA
+-- 2) 用桩跑 order_load_game_scene_VFX_burst_overdrive_RC_UA
 love.graphics = love.graphics or {}
 love.graphics.newImage = function(a, b, c)
     assert(a ~= nil, "love.graphics.newImage(nil) -> ASSET_DATA[8] 少了 key")
@@ -63,9 +63,9 @@ _G.common_sprite_sheet_load = function(json_path, image)
 end
 ASSET_DATA = { [8] = asset }
 assert(loadfile(REPO .. "/scenes/game_scene/_common/load_function.lua"))()
-order_load_game_scene_VFX_overdrive_RC_burst_UA(1)
-order_load_game_scene_VFX_overdrive_RC_burst_UA(2)
-order_load_game_scene_VFX_overdrive_RC_burst_UA(3)
+order_load_game_scene_VFX_burst_overdrive_RC_UA(1)
+order_load_game_scene_VFX_burst_overdrive_RC_UA(2)
+order_load_game_scene_VFX_burst_overdrive_RC_UA(3)
 log("  order 3 加载的 json: " .. table.concat(json_seen, " "))
 for _, name in ipairs({ "image_sprite_sheet_VFX_game_scene_UA_back", "image_sprite_sheet_VFX_game_scene_UA_front" }) do
     local v = rawget(_G, name)

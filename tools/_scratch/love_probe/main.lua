@@ -239,7 +239,7 @@ function love.load()
         "scenes/game_scene/_common/common_functions.lua",
         "scenes/game_scene/_common/main_blocks.lua",
         "scenes/game_scene/_common/load_function.lua",
-        "threads/game_scene/VFX_overdrive_heat.lua",
+        "threads/game_scene/VFX_burst_overdrive_RC_UA.lua",
     }) do
         local c, e = loadfile(REPO .. "/" .. rel)
         if not c then

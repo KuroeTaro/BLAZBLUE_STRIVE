@@ -19,7 +19,7 @@
   OK   threads/game_scene/projectile.lua
   OK   threads/game_scene/VFX_HUD.lua
   OK   threads/game_scene/VFX_move.lua
-  OK   threads/game_scene/VFX_overdrive_heat.lua
+  OK   threads/game_scene/VFX_burst_overdrive_RC_UA.lua
   OK   threads/game_scene/characters/TRM_left_audio.lua
   OK   threads/game_scene/characters/TRM_left_texture.lua
   OK   threads/game_scene/characters/TRM_right_audio.lua
@@ -34,7 +34,7 @@
   [ 5] threads/game_scene/projectile.lua                  channel=5  keys=1
   [ 6] threads/game_scene/VFX_HUD.lua                     channel=6  keys=3
   [ 7] threads/game_scene/VFX_move.lua                    channel=7  keys=16
-  [ 8] threads/game_scene/VFX_overdrive_heat.lua          channel=8  keys=11
+  [ 8] threads/game_scene/VFX_burst_overdrive_RC_UA.lua          channel=8  keys=11
   [ 9] threads/game_scene/characters/TRM_left_audio.lua   channel=9  keys=3
   [10] threads/game_scene/characters/TRM_left_texture.lua channel=10  keys=144
   [11] threads/game_scene/characters/TRM_right_audio.lua  channel=11  keys=3
@@ -51,7 +51,7 @@
   [ 5] order_load_game_scene_projectile               size=1
   [ 6] order_load_game_scene_VFX_HUD                  size=1
   [ 7] order_load_game_scene_VFX_move                 size=4
-  [ 8] order_load_game_scene_VFX_overdrive_RC_burst_UA size=3
+  [ 8] order_load_game_scene_VFX_burst_overdrive_RC_UA size=3
   [ 9] order_load_game_scene_char_LP_audio            size=12
   [10] order_load_game_scene_char_LP_frames           size=39
   [11] order_load_game_scene_char_RP_audio            size=12
@@ -66,8 +66,8 @@
   [ 5] order_load_game_scene_projectile size=1 done
   [ 6] order_load_game_scene_VFX_HUD    size=1 done
   [ 7] order_load_game_scene_VFX_move   size=4 done
-  !! order_load_game_scene_VFX_overdrive_RC_burst_UA(1) -> ...ZBLUE_STRIVE/scenes/game_scene/_common/load_function.lua:268: attempt to index global 'OVERDRIVE_BADGE_PARTICAL_CONFIG' (a function value)
-  [ 8] order_load_game_scene_VFX_overdrive_RC_burst_UA size=3 done
+  !! order_load_game_scene_VFX_burst_overdrive_RC_UA(1) -> ...ZBLUE_STRIVE/scenes/game_scene/_common/load_function.lua:268: attempt to index global 'OVERDRIVE_BADGE_PARTICAL_CONFIG' (a function value)
+  [ 8] order_load_game_scene_VFX_burst_overdrive_RC_UA size=3 done
   [ 9] order_load_game_scene_char_LP_audio size=12 done
   [10] order_load_game_scene_char_LP_frames size=39 done
   [11] order_load_game_scene_char_RP_audio size=12 done

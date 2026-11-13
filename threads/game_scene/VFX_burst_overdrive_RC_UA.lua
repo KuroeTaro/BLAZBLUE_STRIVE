@@ -1,6 +1,10 @@
 local image_module = require "love.image"
 local compress_module = image_module.newCompressedData
 local thread_data = {}
+-- burst_VFX
+thread_data["burst_back_sprite_batch"] = compress_module("asset/game_scene/common/texture/VFX/burst_VFX/burst_back.dds")
+thread_data["burst_front_sprite_batch"] =
+compress_module("asset/game_scene/common/texture/VFX/burst_VFX/burst_front.dds")
 -- overdrive_VFX
 thread_data["overdrive_airflow_sprite_batch"] =
 compress_module("asset/game_scene/common/texture/VFX/overdrive_airflow.dds")
@@ -14,8 +18,4 @@ thread_data["RC_yellow_badge_sprite_batch"] = compress_module("asset/game_scene/
 -- UA_VFX
 thread_data["UA_back_sprite_batch"] = compress_module("asset/game_scene/common/texture/VFX/UA_back.dds")
 thread_data["UA_front_sprite_batch"] = compress_module("asset/game_scene/common/texture/VFX/UA_front.dds")
--- burst_VFX
-thread_data["burst_back_sprite_batch"] = compress_module("asset/game_scene/common/texture/VFX/burst_VFX/burst_back.dds")
-thread_data["burst_front_sprite_batch"] =
-compress_module("asset/game_scene/common/texture/VFX/burst_VFX/burst_front.dds")
 love.thread.getChannel('thread_data_8'):push(thread_data)

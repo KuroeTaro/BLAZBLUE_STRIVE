@@ -35,7 +35,7 @@ function load_game_scene_prep()
         order_load_game_scene_projectile,
         order_load_game_scene_VFX_HUD,
         order_load_game_scene_VFX_move,
-        order_load_game_scene_VFX_overdrive_RC_burst_UA,
+        order_load_game_scene_VFX_burst_overdrive_RC_UA,
         order_load_game_scene_char_LP_audio,
         order_load_game_scene_char_LP_frames,
         order_load_game_scene_char_RP_audio,
@@ -87,7 +87,7 @@ function load_game_scene_thread_table(LP_name,RP_name,stage_name)
     table.insert(res_table,"threads/game_scene/projectile.lua")
     table.insert(res_table,"threads/game_scene/VFX_HUD.lua")
     table.insert(res_table,"threads/game_scene/VFX_move.lua")
-    table.insert(res_table,"threads/game_scene/VFX_overdrive_heat.lua")
+    table.insert(res_table,"threads/game_scene/VFX_burst_overdrive_RC_UA.lua")
     table.insert(res_table,"threads/game_scene/characters/" .. LP_name .. "_audio.lua")
     table.insert(res_table,"threads/game_scene/characters/" .. LP_name .. "_texture.lua")
     table.insert(res_table,"threads/game_scene/characters/" .. RP_name .. "_audio.lua")
@@ -253,10 +253,21 @@ function order_load_game_scene_projectile(load_order)
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
-function order_load_game_scene_VFX_overdrive_RC_burst_UA(load_order)
+function order_load_game_scene_VFX_burst_overdrive_RC_UA(load_order)
     local switch =
     {
         [1] = function()
+            -- burst
+            image_sprite_sheet_VFX_game_scene_burst_back =
+            common_sprite_sheet_load(
+                "asset/game_scene/common/texture/VFX/burst_VFX/burst_back.json",
+                love.graphics.newImage(ASSET_DATA[8]["burst_back_sprite_batch"])
+            )
+            image_sprite_sheet_VFX_game_scene_burst_front =
+            common_sprite_sheet_load(
+                "asset/game_scene/common/texture/VFX/burst_VFX/burst_front.json",
+                love.graphics.newImage(ASSET_DATA[8]["burst_front_sprite_batch"])
+            )
             -- overdrive
             image_sprite_sheet_VFX_game_scene_overdrive_airflow =
             common_sprite_sheet_load(
@@ -301,17 +312,6 @@ function order_load_game_scene_VFX_overdrive_RC_burst_UA(load_order)
             )
         end,
         [3] = function()
-            -- burst
-            image_sprite_sheet_VFX_game_scene_burst_back =
-            common_sprite_sheet_load(
-                "asset/game_scene/common/texture/VFX/burst_VFX/burst_back.json",
-                love.graphics.newImage(ASSET_DATA[8]["burst_back_sprite_batch"])
-            )
-            image_sprite_sheet_VFX_game_scene_burst_front =
-            common_sprite_sheet_load(
-                "asset/game_scene/common/texture/VFX/burst_VFX/burst_front.json",
-                love.graphics.newImage(ASSET_DATA[8]["burst_front_sprite_batch"])
-            )
             -- UA
             image_sprite_sheet_VFX_game_scene_UA_back =
             common_sprite_sheet_load(
