@@ -1229,10 +1229,6 @@ function load_game_scene_anim_char_common_0_ground_block_lv4(
     return res
 end
 -- 0_ground_FD_block
--- 地面防御动画的 FD 版本
--- 与原地面防御动画相比只有视觉帧 obj_char[8] 不同:
--- 只使用 2/3/4 三帧循环,每 4F 切换一次
--- 逻辑帧(状态/判定/VFX/帧数据)全部复用原动画
 function load_game_scene_anim_char_common_0_ground_FD_block(
     obj_char,block_animation
 )
@@ -1583,7 +1579,7 @@ function load_game_scene_anim_char_common_0_air_block_guard_crash(
     end
     return res
 end
--- teching&teched
+-- teching_teched
 function load_game_scene_anim_char_common_0_Launcher_throw_tech(
     hit_side_obj_char,hurt_side_obj_char,teching_or_teched
 )
