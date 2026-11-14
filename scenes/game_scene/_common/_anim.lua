@@ -5385,7 +5385,6 @@ function load_game_scene_anim_char_common_burst_overdrive(
     return res
 end
 -- RC
--- logic_attack_by_projectile
 -- 需要修改的角色属性
     -- 我方
         -- sprite_sheet
