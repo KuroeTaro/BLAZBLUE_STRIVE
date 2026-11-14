@@ -5437,10 +5437,23 @@ function load_game_scene_anim_char_common_burst_RC_red(
     local self_side_anchor_data = common_game_scene_get_anchor(self_side)
     local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1] - 100)
     local self_side_move_SFX_table = common_game_scene_get_SFX_move(self_side)
-    local function update_heat_gauge_state()
-        if self_side_obj_char["heat_gauge"][1] > goal_heat_gauge_remain then
-            self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - 5
-        end
+    local function update_heat_gauge_0_9f()
+        local f = self_side_obj_char["f"]
+        local heat_gauge_decrease = (79.5 - f)/10
+        self_side_obj_char["heat_gauge"][1] =
+        math.max(
+            goal_heat_gauge_remain,
+            self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
+        )
+    end
+    local function update_heat_gauge_10_25f()
+        local f = self_side_obj_char["f"]
+        local heat_gauge_decrease = 3.02734375 - (f - 10)*0.1953125
+        self_side_obj_char["heat_gauge"][1] =
+        math.max(
+            goal_heat_gauge_remain,
+            self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
+        )
     end
     local function update_state()
         -- move_state
@@ -5469,17 +5482,31 @@ function load_game_scene_anim_char_common_burst_RC_red(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 45
-    for i = 0,44 do
+    for i = 26,44 do
         res[i] = function()
             -- update
             update_state()
         end
     end
-    for i = 0,24 do
+    for i = 5,9 do
         res[i] = function()
             -- update
             update_state()
-            update_heat_gauge_state()
+            update_heat_gauge_0_9f()
+        end
+    end
+    for i = 10,25 do
+        res[i] = function()
+            -- update
+            update_state()
+            update_heat_gauge_10_25f()
+        end
+    end
+    for i = 0,4 do
+        res[i] = function()
+            -- update
+            update_state()
+            update_heat_gauge_0_9f()
         end
     end
     res[0] = function()
@@ -5537,14 +5564,14 @@ function load_game_scene_anim_char_common_burst_RC_red(
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_0_9f()
     end
     res[3] = function()
         -- draw_correction
         self_side_obj_char[8] = 1
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_0_9f()
     end
     res[7] = function()
         -- state
@@ -5558,21 +5585,21 @@ function load_game_scene_anim_char_common_burst_RC_red(
         play_obj_audio(self_side_move_SFX_table["red_RC_whiff"])
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_0_9f()
     end
     res[13] = function()
         -- draw_correction
         self_side_obj_char[8] = 3
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_10_25f()
     end
     res[24] = function()
         -- state
         self_side_obj_char["idle_cancel"] = false
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_10_25f()
     end
     res[26] = function()
         -- draw_correction
@@ -5587,7 +5614,6 @@ function load_game_scene_anim_char_common_burst_RC_red(
         self_side_obj_char[8] = 5
         -- insert_VFX
         insert_VFX_game_scene_char_RC_blast(self_side_obj_char,1,1,{1.00,0.28,0.22})
-        -- 同色但更亮的 badge,和 blast 同时插入
         insert_VFX_game_scene_char_RC_badge(
             self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_red_badge,1.75,{1.00,0.28,0.22}
         )
@@ -5638,10 +5664,23 @@ function load_game_scene_anim_char_common_burst_RC_blue(
     local self_side_anchor_data = common_game_scene_get_anchor(self_side)
     local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1] - 100)
     local self_side_move_SFX_table = common_game_scene_get_SFX_move(self_side)
-    local function update_heat_gauge_state()
-        if self_side_obj_char["heat_gauge"][1] > goal_heat_gauge_remain then
-            self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - 5
-        end
+    local function update_heat_gauge_0_9f()
+        local f = self_side_obj_char["f"]
+        local heat_gauge_decrease = (79.5 - f)/10
+        self_side_obj_char["heat_gauge"][1] =
+        math.max(
+            goal_heat_gauge_remain,
+            self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
+        )
+    end
+    local function update_heat_gauge_10_25f()
+        local f = self_side_obj_char["f"]
+        local heat_gauge_decrease = 3.02734375 - (f - 10)*0.1953125
+        self_side_obj_char["heat_gauge"][1] =
+        math.max(
+            goal_heat_gauge_remain,
+            self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
+        )
     end
     local function update_state()
         -- move_state
@@ -5670,17 +5709,24 @@ function load_game_scene_anim_char_common_burst_RC_blue(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 45
-    for i = 0,44 do
+    for i = 26,44 do
         res[i] = function()
             -- update
             update_state()
         end
     end
-    for i = 0,24 do
+    for i = 5,9 do
         res[i] = function()
             -- update
             update_state()
-            update_heat_gauge_state()
+            update_heat_gauge_0_9f()
+        end
+    end
+    for i = 10,25 do
+        res[i] = function()
+            -- update
+            update_state()
+            update_heat_gauge_10_25f()
         end
     end
     for i = 0,4 do
@@ -5689,7 +5735,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
             self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"][self_side_obj_char["height"]]
             -- update
             update_state()
-            update_heat_gauge_state()
+            update_heat_gauge_0_9f()
         end
     end
     res[0] = function()
@@ -5739,7 +5785,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         insert_VFX_game_scene_char_RC_black_overlay(self_side_obj_char)
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_0_9f()
     end
     res[3] = function()
         -- collide
@@ -5748,7 +5794,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         self_side_obj_char[8] = 1
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_0_9f()
     end
     res[5] = function()
         -- state
@@ -5775,7 +5821,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         self_side_obj_char["hurtbox_table"] = {}
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_0_9f()
     end
     res[7] = function()
         -- draw_correction
@@ -5784,28 +5830,28 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         play_obj_audio(self_side_move_SFX_table["blue_RC"])
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_0_9f()
     end
-    res[10] = function()
+    res[9] = function()
         -- state
         self_side_obj_char["idle_cancel"] = true
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_0_9f()
     end
     res[13] = function()
         -- draw_correction
         self_side_obj_char[8] = 3
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_10_25f()
     end
-    res[24] = function()
+    res[25] = function()
         -- state
         self_side_obj_char["idle_cancel"] = false
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_10_25f()
     end
     res[26] = function()
         -- draw_correction
@@ -5820,7 +5866,6 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         self_side_obj_char[8] = 5
         -- insert_VFX
         insert_VFX_game_scene_char_RC_blast(self_side_obj_char,1,1,{0.35,0.65,1.00})
-        -- 同色但更亮的 badge,和 blast 同时插入
         insert_VFX_game_scene_char_RC_badge(
             self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_blue_badge,1.75,{0.64,0.81,1.00}
         )
@@ -5871,10 +5916,23 @@ function load_game_scene_anim_char_common_burst_RC_purple(
     local self_side_anchor_data = common_game_scene_get_anchor(self_side)
     local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1] - 100)
     local self_side_move_SFX_table = common_game_scene_get_SFX_move(self_side)
-    local function update_heat_gauge_state()
-        if self_side_obj_char["heat_gauge"][1] > goal_heat_gauge_remain then
-            self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - 5
-        end
+    local function update_heat_gauge_0_9f()
+        local f = self_side_obj_char["f"]
+        local heat_gauge_decrease = (79.5 - f)/10
+        self_side_obj_char["heat_gauge"][1] =
+        math.max(
+            goal_heat_gauge_remain,
+            self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
+        )
+    end
+    local function update_heat_gauge_10_25f()
+        local f = self_side_obj_char["f"]
+        local heat_gauge_decrease = 3.02734375 - (f - 10)*0.1953125
+        self_side_obj_char["heat_gauge"][1] =
+        math.max(
+            goal_heat_gauge_remain,
+            self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
+        )
     end
     local function update_state()
         -- move_state
@@ -5903,17 +5961,24 @@ function load_game_scene_anim_char_common_burst_RC_purple(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 45
-    for i = 0,44 do
+    for i = 26,44 do
         res[i] = function()
             -- update
             update_state()
         end
     end
-    for i = 0,24 do
+    for i = 5,9 do
         res[i] = function()
             -- update
             update_state()
-            update_heat_gauge_state()
+            update_heat_gauge_0_9f()
+        end
+    end
+    for i = 10,25 do
+        res[i] = function()
+            -- update
+            update_state()
+            update_heat_gauge_10_25f()
         end
     end
     for i = 0,4 do
@@ -5922,7 +5987,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
             self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"][self_side_obj_char["height"]]
             -- update
             update_state()
-            update_heat_gauge_state()
+            update_heat_gauge_0_9f()
         end
     end
     res[0] = function()
@@ -5962,7 +6027,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         self_side_obj_char[8] = 0
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_0_9f()
     end
     res[3] = function()
         -- collide
@@ -5971,7 +6036,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         self_side_obj_char[8] = 1
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_0_9f()
     end
     res[5] = function()
         -- state
@@ -5998,7 +6063,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         self_side_obj_char["hurtbox_table"] = {}
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_0_9f()
     end
     res[7] = function()
         -- draw_correction
@@ -6017,28 +6082,28 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         play_obj_audio(self_side_move_SFX_table["purple_RC"])
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_0_9f()
     end
     res[10] = function()
         -- state
         self_side_obj_char["idle_cancel"] = true
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_10_25f()
     end
     res[13] = function()
         -- draw_correction
         self_side_obj_char[8] = 3
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_10_25f()
     end
     res[24] = function()
         -- state
         self_side_obj_char["idle_cancel"] = false
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_10_25f()
     end
     res[26] = function()
         -- draw_correction
@@ -6053,7 +6118,6 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         self_side_obj_char[8] = 5
         -- insert_VFX
         insert_VFX_game_scene_char_RC_blast(self_side_obj_char,1,1,{0.78,0.40,1.00})
-        -- 同色但更亮的 badge,和 blast 同时插入
         insert_VFX_game_scene_char_RC_badge(
             self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_purple_badge,1.75,{0.88,0.67,1.00}
         )
@@ -6104,10 +6168,23 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     local self_side_anchor_data = common_game_scene_get_anchor(self_side)
     local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1] - 100)
     local self_side_move_SFX_table = common_game_scene_get_SFX_move(self_side)
-    local function update_heat_gauge_state()
-        if self_side_obj_char["heat_gauge"][1] > goal_heat_gauge_remain then
-            self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - 5
-        end
+    local function update_heat_gauge_0_9f()
+        local f = self_side_obj_char["f"]
+        local heat_gauge_decrease = (79.5 - f)/10
+        self_side_obj_char["heat_gauge"][1] =
+        math.max(
+            goal_heat_gauge_remain,
+            self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
+        )
+    end
+    local function update_heat_gauge_10_25f()
+        local f = self_side_obj_char["f"]
+        local heat_gauge_decrease = 3.02734375 - (f - 10)*0.1953125
+        self_side_obj_char["heat_gauge"][1] =
+        math.max(
+            goal_heat_gauge_remain,
+            self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
+        )
     end
     local function update_state()
         -- move_state
@@ -6136,17 +6213,31 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     end
     res["prop_f"] = "f"
     res["anim_length"] = 75
-    for i = 0,75 do
+    for i = 26,75 do
         res[i] = function()
             -- update
             update_state()
         end
     end
-    for i = 0,24 do
+    for i = 5,9 do
         res[i] = function()
             -- update
             update_state()
-            update_heat_gauge_state()
+            update_heat_gauge_0_9f()
+        end
+    end
+    for i = 10,25 do
+        res[i] = function()
+            -- update
+            update_state()
+            update_heat_gauge_10_25f()
+        end
+    end
+    for i = 0,4 do
+        res[i] = function()
+            -- update
+            update_state()
+            update_heat_gauge_0_9f()
         end
     end
     res[0] = function()
@@ -6186,14 +6277,14 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         self_side_obj_char[8] = 0
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_0_9f()
     end
     res[3] = function()
         -- draw_correction
         self_side_obj_char[8] = 1
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_0_9f()
     end
     res[7] = function()
         -- draw_correction
@@ -6212,7 +6303,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         play_obj_audio(self_side_move_SFX_table["yellow_RC_whiff"])
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_0_9f()
     end
     res[13] = function()
         -- game_speed
@@ -6227,7 +6318,7 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         self_side_obj_char[8] = 3
         -- update
         update_state()
-        update_heat_gauge_state()
+        update_heat_gauge_10_25f()
     end
     res[26] = function()
         -- draw_correction
@@ -6242,7 +6333,6 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
         self_side_obj_char[8] = 5
         -- insert_VFX
         insert_VFX_game_scene_char_RC_blast(self_side_obj_char,1,1,{1.00,0.88,0.30})
-        -- 同色但更亮的 badge,和 blast 同时插入
         insert_VFX_game_scene_char_RC_badge(
             self_side_obj_char,image_sprite_sheet_VFX_game_scene_RC_yellow_badge,1.75,{1.00,0.93,0.62}
         )

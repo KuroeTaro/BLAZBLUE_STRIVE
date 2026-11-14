@@ -4505,7 +4505,7 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_red(
     if self_side_obj_char["heat_gauge"][1] < 100.0 then
         return
     end
-    if test_input_sys_press(self_side_input["RC"]) then
+    if test_input_sys_press_or_hold(self_side_input["RC"]) then
         self_side_obj_char["velocity_cache"] = {0,0}
         if test_input_sys_press_or_hold(self_side_input["dash"]) then
             if test_input_sys_press_or_hold(self_side_input["up"]) then
@@ -4555,7 +4555,7 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_blue(
     if self_side_obj_char["heat_gauge"][1] < 100.0 then
         return
     end
-    if test_input_sys_press(self_side_input["RC"]) then
+    if test_input_sys_press_or_hold(self_side_input["RC"]) then
         local forward_dash_state = {
             ["6dash_dash"] = true,
             ["6dash_dash_cancel"] = true,
@@ -4628,7 +4628,7 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_purple(
     if self_side_obj_char["heat_gauge"][1] < 100.0 then
         return
     end
-    if test_input_sys_press(self_side_input["RC"]) then
+    if test_input_sys_press_or_hold(self_side_input["RC"]) then
         self_side_obj_char["velocity_cache"] = {0,0}
         if test_input_sys_press_or_hold(self_side_input["dash"]) then
             if test_input_sys_press_or_hold(self_side_input["up"]) then
@@ -4678,7 +4678,7 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_yellow(
     if self_side_obj_char["heat_gauge"][1] < 100.0 then
         return
     end
-    if test_input_sys_press(self_side_input["RC"])
+    if test_input_sys_press_or_hold(self_side_input["RC"])
     -- and self_side_obj_char["height"] ~= "air"
     then
         self_side_obj_char["velocity"] = {0,0}
@@ -4761,7 +4761,7 @@ function state_gate_game_scene_char_RP_common_to_burst_overdrive(
             self_side_obj_char["character_animation"] =
             load_game_scene_anim_char_common_burst_overdrive(
                 self_side_obj_char,opponent_side_obj_char,
-                70 - 23,
+                70 - 8,
                 true,
                 character_function_game_scene_TRM_overdrive_state_character_uncommon_init
             )
