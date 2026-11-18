@@ -8,13 +8,19 @@ function common_sprite_sheet_load(json_file,image)
     -- 遍历 JSON 数据，生成 Love2D 兼容的表
     -- 序号帧的 key 在 json 里已经是裸数字(tools/json_frame_key_to_number.py),
     -- 这里再兜底一次:TexturePacker 重新导出把 key 变回 "0" / "0.png" 时也不会查不到。
-    for name,frame in pairs(data.frames) do
-        local frame_key = tonumber(name)
-        if not frame_key then
-            -- "0.png" 这种「序号 + 扩展名」的帧名归一到数字
-            frame_key = tonumber(tostring(name):match("^(%d+)%.[%a]+$"))
-        end
-        frames[frame_key or name] = {
+    -- for name,frame in pairs(data.frames) do
+    --     local frame_key = tonumber(name)
+    --     if not frame_key then
+    --         -- "0.png" 这种「序号 + 扩展名」的帧名归一到数字
+    --         frame_key = tonumber(tostring(name):match("^(%d+)%.[%a]+$"))
+    --     end
+    --     frames[frame_key or name] = {
+    --         frame.frame.x,frame.frame.y,frame.frame.w,frame.frame.h,
+    --         image:getDimensions()
+    --     }
+    -- end
+    for frame_key,frame in pairs(data.frames) do
+        frames[frame_key] = {
             frame.frame.x,frame.frame.y,frame.frame.w,frame.frame.h,
             image:getDimensions()
         }
