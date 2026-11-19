@@ -4173,14 +4173,42 @@ function state_gate_game_scene_char_RP_common_ground_to_UA_move(
 )
     -- _4UA
     -- _5UA_startup
-    -- _4SP_S_6UA
+    if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 5)
+    and self_side_obj_char["heat_gauge"][1] >= self_side_obj_char["heat_gauge"][2]
+    and test_input_sys_press(self_side_input["UA"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
+        end
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5UA_startup(
+            self_side_obj_char,opponent_side_obj_char,"5UA_startup",{305,495}
+        )
+        init_character_anim_with(
+            self_side_obj_char,self_side_obj_char["character_animation"]
+        )
+        self_side_obj_char["state"] = "5UA_startup"
+        return true
+    end
 end
 function state_gate_game_scene_char_RP_common_ground_to_UA_move_hold_ver(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
     -- _4UA
     -- _5UA_startup
-    -- _4SP_S_6UA
+    if (self_side_obj_char["direction_input"] == 6 or self_side_obj_char["direction_input"] == 5)
+    and self_side_obj_char["heat_gauge"][1] >= self_side_obj_char["heat_gauge"][2]
+    and test_input_sys_press_or_hold(self_side_input["UA"]) then
+        if not common_game_scene_get_character_facing_currect(self_side_obj_char,opponent_side_obj_char) then
+            self_side_obj_char[5] = -self_side_obj_char[5]
+        end
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5UA_startup(
+            self_side_obj_char,opponent_side_obj_char,"5UA_startup",{305,495}
+        )
+        init_character_anim_with(
+            self_side_obj_char,self_side_obj_char["character_animation"]
+        )
+        self_side_obj_char["state"] = "5UA_startup"
+        return true
+    end
 end
 -- air
 function state_gate_game_scene_char_RP_common_air_to_dash_move_PP(
@@ -9835,6 +9863,7 @@ end
 function state_gate_game_scene_char_RP_from_5UA_startup(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
+
 end
 function state_gate_game_scene_char_RP_from_5UA_follow(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
