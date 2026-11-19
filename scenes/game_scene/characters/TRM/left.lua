@@ -34,6 +34,7 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["air_move"] = {}
     obj_char_game_scene_char_LP["air_move"]["jump"] = {1,1}
     obj_char_game_scene_char_LP["air_move"]["air_dash"] = {1,1}
+    obj_char_game_scene_char_LP["auto_derive_state_cache"] = "none"
     obj_char_game_scene_char_LP["FD_block_state_cache"] = false
     -- state_number
     obj_char_game_scene_char_LP["velocity"] = {0,0}
@@ -9863,11 +9864,55 @@ end
 function state_gate_game_scene_char_LP_from_5UA_startup(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
-
+    -- _PRC
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(
+        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+    ) then
+        return true
+    end
+    -- _5UA_follow
+    if get_character_anim_end_state(
+        self_side_obj_char,self_side_obj_char["character_animation"]
+    ) then
+        if self_side_obj_char["auto_derive_state_cache"] == "50_heat" then
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5UA_50_heat_follow(
+                self_side_obj_char,opponent_side_obj_char,"5UA_50_heat_follow",{205,500}
+            )
+            init_character_anim_with(
+                self_side_obj_char,self_side_obj_char["character_animation"]
+            )
+        elseif self_side_obj_char["auto_derive_state_cache"] == "100_heat" then
+            self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5UA_100_heat_follow(
+                self_side_obj_char,opponent_side_obj_char,"5UA_100_heat_follow_0",{665,690}
+            )
+            init_character_anim_with(
+                self_side_obj_char,self_side_obj_char["character_animation"]
+            )
+        end
+        self_side_obj_char["state"] = "5UA_follow"
+        return true
+    end
 end
 function state_gate_game_scene_char_LP_from_5UA_follow(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
+    -- _PRC
+    if state_gate_game_scene_char_LP_common_to_burst_RC_purple(
+        self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
+    ) then
+        return true
+    end
+    -- _5_stand_idle
+    if get_character_anim_end_state(
+        self_side_obj_char,self_side_obj_char["character_animation"]
+    ) then
+        self_side_obj_char["character_animation"] = load_game_scene_anim_char_TRM_5_stand_idle(self_side_obj_char)
+        init_character_anim_with(
+            self_side_obj_char,self_side_obj_char["character_animation"]
+        )
+        self_side_obj_char["state"] = "5_stand_idle"
+        return true
+    end
 end
 function state_gate_game_scene_char_LP_from_4SP_S_6UA(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char

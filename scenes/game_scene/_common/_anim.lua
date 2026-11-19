@@ -4825,7 +4825,6 @@ function load_game_scene_anim_char_common_burst_burst(
 )
     local res = {}
     local obj_camera = obj_stage_game_scene_camera
-    local obj_stage_main = obj_stage_game_scene_main
     local self_side = self_side_obj_char["player_side"]
     local self_side_height = self_side_obj_char["height"]
     local self_side_pushbox_data = common_game_scene_get_pushbox(self_side)
@@ -4935,13 +4934,15 @@ function load_game_scene_anim_char_common_burst_burst(
     res[10] = function()
         -- state_number
         self_side_obj_char["velocity"] = {0,0}
+        -- draw_correction
+        self_side_obj_char[8] = 5
         -- camera_animation_load
         self_side_obj_char["camera_x_shake_anim"],self_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_overdrive_load_camera_shake_anim(2.0)
         self_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
         -- camera_animation_application
         table.insert(
-            obj_stage_main["camera_active_application_table"],
+            obj_stage_game_scene_main["camera_active_application_table"],
             function()
                 anim_stage_point_linear_game_scene_camera_enclosing = self_side_obj_char["camera_enclosing_anim"]
                 anim_stage_point_linear_game_scene_camera_shake_x = self_side_obj_char["camera_x_shake_anim"]
@@ -4959,8 +4960,6 @@ function load_game_scene_anim_char_common_burst_burst(
                 obj_camera["state"] = "active"
             end
         )
-        -- draw_correction
-        self_side_obj_char[8] = 5
         -- insert_projectile
         insert_projectile_game_scene_char_common_burst_shockwave(
             self_side_obj_char,opponent_side_obj_char
@@ -5129,7 +5128,6 @@ function load_game_scene_anim_char_common_burst_overdrive(
 )
     local res = {}
     local obj_camera = obj_stage_game_scene_camera
-    local obj_stage_main = obj_stage_game_scene_main
     local self_side = self_side_obj_char["player_side"]
     local self_side_move_SFX_table = common_game_scene_get_SFX_move(self_side)
     local function update_move_overdrive_state()
@@ -5204,7 +5202,7 @@ function load_game_scene_anim_char_common_burst_overdrive(
         -- }
         -- camera_animation_application
         table.insert(
-            obj_stage_main["camera_active_application_table"],
+            obj_stage_game_scene_main["camera_active_application_table"],
             function()
                 anim_stage_point_linear_game_scene_camera_enclosing = self_side_obj_char["camera_enclosing_anim"]
                 anim_stage_point_linear_game_scene_camera_shake_x = self_side_obj_char["camera_x_shake_anim"]
@@ -5425,25 +5423,16 @@ function load_game_scene_anim_char_common_burst_RC_red(
     local self_side_pushbox_data = common_game_scene_get_pushbox(self_side)
     local self_side_hurtbox_data = common_game_scene_get_hurtbox(self_side)
     local self_side_anchor_data = common_game_scene_get_anchor(self_side)
-    local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1] - 100)
     local self_side_move_SFX_table = common_game_scene_get_SFX_move(self_side)
     local function update_heat_gauge_0_9f()
         local f = self_side_obj_char["f"]
         local heat_gauge_decrease = (79.5 - f)/10
-        self_side_obj_char["heat_gauge"][1] =
-        math.max(
-            goal_heat_gauge_remain,
-            self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
-        )
+        self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
     end
     local function update_heat_gauge_10_25f()
         local f = self_side_obj_char["f"]
         local heat_gauge_decrease = 3.02734375 - (f - 10)*0.1953125
-        self_side_obj_char["heat_gauge"][1] =
-        math.max(
-            goal_heat_gauge_remain,
-            self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
-        )
+        self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
     end
     local function update_state()
         -- move_state
@@ -5647,30 +5636,22 @@ function load_game_scene_anim_char_common_burst_RC_blue(
     character_uncommon_update
 )
     local res = {}
+    local obj_camera = obj_stage_game_scene_camera
     local self_side = self_side_obj_char["player_side"]
     local self_side_height = self_side_obj_char["height"]
     local self_side_pushbox_data = common_game_scene_get_pushbox(self_side)
     local self_side_hurtbox_data = common_game_scene_get_hurtbox(self_side)
     local self_side_anchor_data = common_game_scene_get_anchor(self_side)
-    local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1] - 100)
     local self_side_move_SFX_table = common_game_scene_get_SFX_move(self_side)
     local function update_heat_gauge_0_9f()
         local f = self_side_obj_char["f"]
         local heat_gauge_decrease = (79.5 - f)/10
-        self_side_obj_char["heat_gauge"][1] =
-        math.max(
-            goal_heat_gauge_remain,
-            self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
-        )
+        self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
     end
     local function update_heat_gauge_10_25f()
         local f = self_side_obj_char["f"]
         local heat_gauge_decrease = 3.02734375 - (f - 10)*0.1953125
-        self_side_obj_char["heat_gauge"][1] =
-        math.max(
-            goal_heat_gauge_remain,
-            self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
-        )
+        self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
     end
     local function update_state()
         -- move_state
@@ -5763,6 +5744,29 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         self_side_obj_char["hurtbox_table"] = self_side_hurtbox_data["burst_overdrive_RC"][self_side_obj_char["height"]]
         -- draw_correction
         self_side_obj_char[8] = 0
+        -- camera_animation_load
+        self_side_obj_char["camera_x_shake_anim"],self_side_obj_char["camera_y_shake_anim"] =
+        common_game_scene_overdrive_load_camera_shake_anim(0.0)
+        self_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        -- camera_animation_application
+        table.insert(
+            obj_stage_game_scene_main["camera_active_application_table"],
+            function()
+                anim_stage_point_linear_game_scene_camera_enclosing = self_side_obj_char["camera_enclosing_anim"]
+                anim_stage_point_linear_game_scene_camera_shake_x = self_side_obj_char["camera_x_shake_anim"]
+                anim_stage_point_linear_game_scene_camera_shake_y = self_side_obj_char["camera_y_shake_anim"]
+                init_point_linear_anim_without(
+                    obj_camera,anim_stage_point_linear_game_scene_camera_enclosing
+                )
+                init_point_linear_anim_without(
+                    obj_camera,anim_stage_point_linear_game_scene_camera_shake_x
+                )
+                init_point_linear_anim_without(
+                    obj_camera,anim_stage_point_linear_game_scene_camera_shake_y
+                )
+                obj_camera["state"] = "active"
+            end
+        )
         -- insert_VFX
         self_side_obj_char["VFX_hit_front_table"] = {}
         opponent_side_obj_char["VFX_hit_front_table"] = {}
@@ -5899,30 +5903,22 @@ function load_game_scene_anim_char_common_burst_RC_purple(
     character_uncommon_update
 )
     local res = {}
+    local obj_camera = obj_stage_game_scene_camera
     local self_side = self_side_obj_char["player_side"]
     local self_side_height = self_side_obj_char["height"]
     local self_side_pushbox_data = common_game_scene_get_pushbox(self_side)
     local self_side_hurtbox_data = common_game_scene_get_hurtbox(self_side)
     local self_side_anchor_data = common_game_scene_get_anchor(self_side)
-    local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1] - 100)
     local self_side_move_SFX_table = common_game_scene_get_SFX_move(self_side)
     local function update_heat_gauge_0_9f()
         local f = self_side_obj_char["f"]
         local heat_gauge_decrease = (79.5 - f)/10
-        self_side_obj_char["heat_gauge"][1] =
-        math.max(
-            goal_heat_gauge_remain,
-            self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
-        )
+        self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
     end
     local function update_heat_gauge_10_25f()
         local f = self_side_obj_char["f"]
         local heat_gauge_decrease = 3.02734375 - (f - 10)*0.1953125
-        self_side_obj_char["heat_gauge"][1] =
-        math.max(
-            goal_heat_gauge_remain,
-            self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
-        )
+        self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
     end
     local function update_state()
         -- move_state
@@ -6015,6 +6011,29 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         self_side_obj_char["hurtbox_table"] = {}
         -- draw_correction
         self_side_obj_char[8] = 0
+        -- camera_animation_load
+        self_side_obj_char["camera_x_shake_anim"],self_side_obj_char["camera_y_shake_anim"] =
+        common_game_scene_overdrive_load_camera_shake_anim(0.0)
+        self_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        -- camera_animation_application
+        table.insert(
+            obj_stage_game_scene_main["camera_active_application_table"],
+            function()
+                anim_stage_point_linear_game_scene_camera_enclosing = self_side_obj_char["camera_enclosing_anim"]
+                anim_stage_point_linear_game_scene_camera_shake_x = self_side_obj_char["camera_x_shake_anim"]
+                anim_stage_point_linear_game_scene_camera_shake_y = self_side_obj_char["camera_y_shake_anim"]
+                init_point_linear_anim_without(
+                    obj_camera,anim_stage_point_linear_game_scene_camera_enclosing
+                )
+                init_point_linear_anim_without(
+                    obj_camera,anim_stage_point_linear_game_scene_camera_shake_x
+                )
+                init_point_linear_anim_without(
+                    obj_camera,anim_stage_point_linear_game_scene_camera_shake_y
+                )
+                obj_camera["state"] = "active"
+            end
+        )
         -- update
         update_state()
         update_heat_gauge_0_9f()
@@ -6156,25 +6175,16 @@ function load_game_scene_anim_char_common_burst_RC_yellow(
     local self_side_pushbox_data = common_game_scene_get_pushbox(self_side)
     local self_side_hurtbox_data = common_game_scene_get_hurtbox(self_side)
     local self_side_anchor_data = common_game_scene_get_anchor(self_side)
-    local goal_heat_gauge_remain = math.max(0,self_side_obj_char["heat_gauge"][1] - 100)
     local self_side_move_SFX_table = common_game_scene_get_SFX_move(self_side)
     local function update_heat_gauge_0_9f()
         local f = self_side_obj_char["f"]
         local heat_gauge_decrease = (79.5 - f)/10
-        self_side_obj_char["heat_gauge"][1] =
-        math.max(
-            goal_heat_gauge_remain,
-            self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
-        )
+        self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
     end
     local function update_heat_gauge_10_25f()
         local f = self_side_obj_char["f"]
         local heat_gauge_decrease = 3.02734375 - (f - 10)*0.1953125
-        self_side_obj_char["heat_gauge"][1] =
-        math.max(
-            goal_heat_gauge_remain,
-            self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
-        )
+        self_side_obj_char["heat_gauge"][1] = self_side_obj_char["heat_gauge"][1] - heat_gauge_decrease
     end
     local function update_state()
         -- move_state
