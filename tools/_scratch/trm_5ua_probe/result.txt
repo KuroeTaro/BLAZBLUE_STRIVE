@@ -1,0 +1,9 @@
+  L thread keys: 7/7 命中(裸名)
+  R thread keys: 7/7 命中(裸名)
+  LP frames 1..39 执行完, json=150, char 表 5UA=7/7
+  RP frames 1..39 执行完, json=300, char 表 5UA=7/7
+  anim 引用 5UA_startup -> char 表已加载
+  anim 引用 5UA_50_heat_follow -> char 表已加载
+  anim 引用 5UA_100_heat_follow_0 -> char 表已加载
+
+RESULT: OK

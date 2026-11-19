@@ -1498,10 +1498,10 @@ function order_load_game_scene_char_LP_frames(load_order)
             local load_name_table = {
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_UA_game_scene_LP[v.."_UA"] =
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/UA/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_UA"])
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1509,10 +1509,10 @@ function order_load_game_scene_char_LP_frames(load_order)
             local load_name_table = {
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_UA_game_scene_LP[v.."_UA"] =
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/UA/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_UA"])
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1520,10 +1520,10 @@ function order_load_game_scene_char_LP_frames(load_order)
             local load_name_table = {
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_UA_game_scene_LP[v.."_UA"] =
+                image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/UA/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_UA"])
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
             end
         end,

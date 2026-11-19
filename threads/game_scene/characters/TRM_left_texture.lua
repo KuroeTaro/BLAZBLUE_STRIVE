@@ -127,6 +127,14 @@ local load_attack_name_table = {
     "4SP_S_4S",
     "4SP_S_H",
     "6SP_S",
+        -- UA 超必杀 5UA
+    "5UA_startup",
+    "5UA_50_heat_follow",
+    "5UA_100_heat_follow_0",
+    "5UA_100_heat_follow_1",
+    "5UA_100_heat_follow_2",
+    "5UA_100_heat_follow_3",
+    "5UA_100_heat_follow_4",
 }
 for i,v in ipairs(load_attack_name_table) do
     thread_data[v] = compress_module("asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".dds")

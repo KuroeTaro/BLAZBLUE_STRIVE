@@ -1708,14 +1708,20 @@ function order_load_game_scene_char_RP_frames(load_order)
         end,
         -- UA 超必杀
         [30] = function()
-            image_sprite_sheet_table_UA_game_scene_RP = {}
             local load_name_table = {
+                "5UA_startup",
+                "5UA_50_heat_follow",
+                "5UA_100_heat_follow_0",
+                "5UA_100_heat_follow_1",
+                "5UA_100_heat_follow_2",
+                "5UA_100_heat_follow_3",
+                "5UA_100_heat_follow_4"
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_UA_game_scene_RP[v.."_UA"] =
+                image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
-                    "asset/game_scene/characters/TRM/texture/UA/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_UA"])
+                    "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1723,10 +1729,10 @@ function order_load_game_scene_char_RP_frames(load_order)
             local load_name_table = {
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_UA_game_scene_RP[v.."_UA"] =
+                image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
-                    "asset/game_scene/characters/TRM/texture/UA/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_UA"])
+                    "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1734,10 +1740,10 @@ function order_load_game_scene_char_RP_frames(load_order)
             local load_name_table = {
             }
             for i,v in ipairs(load_name_table) do
-                image_sprite_sheet_table_UA_game_scene_RP[v.."_UA"] =
+                image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
-                    "asset/game_scene/characters/TRM/texture/UA/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_UA"])
+                    "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
+                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
                 )
             end
         end,

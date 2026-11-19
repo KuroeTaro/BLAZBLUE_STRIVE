@@ -9122,6 +9122,126 @@ function load_game_scene_anim_char_TRM_5UA_startup(
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
+    res[3] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[6] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 2
+    end
+    res[17] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 3
+    end
+    res[24] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 4
+    end
+    res[30] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[35] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 3
+    end
+    res[40] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 5
+    end
+    res[44] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 6
+    end
+    res[49] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 7
+    end
+    res[58] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 8
+    end
+    res[63] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 9
+    end
+    res[67] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 10
+    end
+    res[71] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 11
+    end
+    res[75] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 9
+    end
+    res[79] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 10
+    end
+    res[83] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 11
+    end
+    res[87] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 9
+    end
+    res[91] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 10
+    end
+    res[95] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 11
+    end
+    res[99] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 9
+    end
+    res[103] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 10
+    end
+    res[107] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 11
+    end
+    res[111] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 9
+    end
+    res[115] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 10
+    end
+    res[119] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 11
+    end
+    res[123] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 12
+    end
+    res[129] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 13
+    end
+    res[137] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 14
+    end
+    res[145] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 15
+    end
+    res[151] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 15
+    end
     res[152] = function()
         -- aniamtion_end
     end
@@ -9178,6 +9298,18 @@ function load_game_scene_anim_char_TRM_5UA_50_heat_follow(
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
+    res[6] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[11] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 2
+    end
+    res[18] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 3
+    end
     res[25] = function()
         -- aniamtion_end
     end
@@ -9233,6 +9365,106 @@ function load_game_scene_anim_char_TRM_5UA_100_heat_follow(
         hit_side_obj_char["anchor_pos"] = {305,495}
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
+    end
+    res[6] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[12] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 2
+    end
+    res[18] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 3
+    end
+    res[24] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 4
+    end
+    res[30] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 5
+    end
+    res[36] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 0
+    end
+    res[42] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[48] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 2
+    end
+    res[54] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 3
+    end
+    res[60] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 0
+    end
+    res[66] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[72] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 2
+    end
+    res[78] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 3
+    end
+    res[84] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 4
+    end
+    res[90] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 5
+    end
+    res[96] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 0
+    end
+    res[102] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[108] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 2
+    end
+    res[114] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 3
+    end
+    res[121] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 4
+    end
+    res[128] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 5
+    end
+    res[134] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 6
+    end
+    res[140] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 0
+    end
+    res[158] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 1
+    end
+    res[164] = function()
+        -- draw_correction
+        hit_side_obj_char[8] = 2
     end
     res[168] = function()
         -- aniamtion_end
