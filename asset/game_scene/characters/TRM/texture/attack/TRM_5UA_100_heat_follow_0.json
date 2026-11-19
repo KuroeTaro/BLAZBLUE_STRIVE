@@ -1,0 +1,60 @@
+{"frames": {
+
+0:
+{
+	"frame": {"x":0,"y":0,"w":860,"h":720},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":860,"h":720},
+	"sourceSize": {"w":860,"h":720}
+},
+1:
+{
+	"frame": {"x":860,"y":0,"w":860,"h":720},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":860,"h":720},
+	"sourceSize": {"w":860,"h":720}
+},
+2:
+{
+	"frame": {"x":1720,"y":0,"w":860,"h":720},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":860,"h":720},
+	"sourceSize": {"w":860,"h":720}
+},
+3:
+{
+	"frame": {"x":2580,"y":0,"w":860,"h":720},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":860,"h":720},
+	"sourceSize": {"w":860,"h":720}
+},
+4:
+{
+	"frame": {"x":3440,"y":0,"w":860,"h":720},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":860,"h":720},
+	"sourceSize": {"w":860,"h":720}
+},
+5:
+{
+	"frame": {"x":4300,"y":0,"w":860,"h":720},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":860,"h":720},
+	"sourceSize": {"w":860,"h":720}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_5UA_100_heat_follow_0.png",
+	"format": "RGBA8888",
+	"size": {"w":5160,"h":720},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:090d35e20510eeb753c0f78af9e6968f:8f743e92c38724efbd5bf3dcb15d7ad9:857ef50022365894ecee88119596019e$"
+}
+}

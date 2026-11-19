@@ -1,0 +1,44 @@
+{"frames": {
+
+0:
+{
+	"frame": {"x":0,"y":0,"w":1020,"h":660},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1020,"h":660},
+	"sourceSize": {"w":1020,"h":660}
+},
+1:
+{
+	"frame": {"x":1020,"y":0,"w":1020,"h":660},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1020,"h":660},
+	"sourceSize": {"w":1020,"h":660}
+},
+2:
+{
+	"frame": {"x":0,"y":660,"w":1020,"h":660},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1020,"h":660},
+	"sourceSize": {"w":1020,"h":660}
+},
+3:
+{
+	"frame": {"x":1020,"y":660,"w":1020,"h":660},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1020,"h":660},
+	"sourceSize": {"w":1020,"h":660}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_5UA_100_heat_follow_1.png",
+	"format": "RGBA8888",
+	"size": {"w":2040,"h":1320},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:4dadee0ddd59ea06679c3705edfa90b2:3751f7524afbf896670d69e263bf8a9f:adc07d106e92569fc63638aebb3f8bee$"
+}
+}

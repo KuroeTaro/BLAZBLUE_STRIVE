@@ -9070,8 +9070,175 @@ function load_game_scene_anim_char_TRM_6SP_S(
     return res
 end
 -- _4UA
--- _6UA
 -- _5UA
+function load_game_scene_anim_char_TRM_5UA_startup(
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,anchor_pos
+)
+    local res = {}
+    local hit_side = hit_side_obj_char["player_side"]
+    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
+    res["prop_f"] = "f"
+    res["anim_length"] = 152
+    res[0] = function()
+        -- pre_set
+        common_game_scene_reset_velocity_by_ground_friction(hit_side_obj_char)
+        -- state
+        hit_side_obj_char["sprite_sheet"] = "5UA_startup"
+        hit_side_obj_char["height"] = "stand" -- stand_crouch_air_OTG_wallstick
+        hit_side_obj_char["hurt_state_target"] = "counter" -- idle_unblock_punish_counter_GP_parry
+        hit_side_obj_char["move_state"] = "startup" -- none_startup_active_recovery
+        hit_side_obj_char["idle_cancel"] = false
+        -- state_number
+        hit_side_obj_char["friction"] = 5
+        hit_side_obj_char["gravity"] = 2.5
+        -- enemy_friend_interaction
+        hit_side_obj_char["strike_inv"] = false
+        hit_side_obj_char["strike_inv_countdown"] = 0
+        hit_side_obj_char["throw_inv"] = false
+        hit_side_obj_char["throw_inv_countdown"] = 0
+        hit_side_obj_char["projectile_inv"] = false
+        hit_side_obj_char["projectile_inv_countdown"] = 0
+        hit_side_obj_char["horizontal_velocity_correction"] = 1
+        hit_side_obj_char["gravity_correction"] = 1
+        hit_side_obj_char["damage_correction"] = 1
+        -- frame_data
+        hit_side_obj_char["startup_frame"] = 0
+        hit_side_obj_char["active_frame"] = 0
+        hit_side_obj_char["recovery_frame"] = 0
+        -- input_sys_cache
+        hit_side_obj_char["input_sys_state"] = "save" -- none_save_load
+        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
+        -- collide
+        hit_side_obj_char["pushbox"] = {0,-185,120,370}
+        hit_side_obj_char["pushbox_opponent_collision_active"] = true
+        hit_side_obj_char["hitbox_table"] = {}
+        hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
+        hit_side_obj_char["collision_ground_height_offset"] = 0
+        -- shot_sys_oroboros
+        hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        -- draw_correction
+        hit_side_obj_char[8] = 0
+        hit_side_obj_char["anchor_pos"] = {305,495}
+        -- visual_front
+        CHARACTER_VISUAL_FRONT = hit_side
+    end
+    res[152] = function()
+        -- aniamtion_end
+    end
+    return res
+end
+function load_game_scene_anim_char_TRM_5UA_50_heat_follow(
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,anchor_pos
+)
+    local res = {}
+    local hit_side = hit_side_obj_char["player_side"]
+    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
+    res["prop_f"] = "f"
+    res["anim_length"] = 25
+    res[0] = function()
+        -- pre_set
+        common_game_scene_reset_velocity_by_ground_friction(hit_side_obj_char)
+        -- state
+        hit_side_obj_char["sprite_sheet"] = "5UA_50_heat_follow"
+        hit_side_obj_char["height"] = "stand" -- stand_crouch_air_OTG_wallstick
+        hit_side_obj_char["hurt_state_target"] = "counter" -- idle_unblock_punish_counter_GP_parry
+        hit_side_obj_char["move_state"] = "recovery" -- none_startup_active_recovery
+        hit_side_obj_char["idle_cancel"] = false
+        -- state_number
+        hit_side_obj_char["friction"] = 5
+        hit_side_obj_char["gravity"] = 2.5
+        -- enemy_friend_interaction
+        hit_side_obj_char["strike_inv"] = false
+        hit_side_obj_char["strike_inv_countdown"] = 0
+        hit_side_obj_char["throw_inv"] = false
+        hit_side_obj_char["throw_inv_countdown"] = 0
+        hit_side_obj_char["projectile_inv"] = false
+        hit_side_obj_char["projectile_inv_countdown"] = 0
+        hit_side_obj_char["horizontal_velocity_correction"] = 1
+        hit_side_obj_char["gravity_correction"] = 1
+        hit_side_obj_char["damage_correction"] = 1
+        -- frame_data
+        hit_side_obj_char["startup_frame"] = 0
+        hit_side_obj_char["active_frame"] = 0
+        hit_side_obj_char["recovery_frame"] = 0
+        -- input_sys_cache
+        hit_side_obj_char["input_sys_state"] = "save" -- none_save_load
+        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
+        -- collide
+        hit_side_obj_char["pushbox"] = {0,-185,120,370}
+        hit_side_obj_char["pushbox_opponent_collision_active"] = true
+        hit_side_obj_char["hitbox_table"] = {}
+        hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
+        hit_side_obj_char["collision_ground_height_offset"] = 0
+        -- shot_sys_oroboros
+        hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        -- draw_correction
+        hit_side_obj_char[8] = 0
+        hit_side_obj_char["anchor_pos"] = {305,495}
+        -- visual_front
+        CHARACTER_VISUAL_FRONT = hit_side
+    end
+    res[25] = function()
+        -- aniamtion_end
+    end
+    return res
+end
+function load_game_scene_anim_char_TRM_5UA_100_heat_follow(
+    hit_side_obj_char,hurt_side_obj_char,sprite_sheet,anchor_pos
+)
+    local res = {}
+    local hit_side = hit_side_obj_char["player_side"]
+    local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
+    res["prop_f"] = "f"
+    res["anim_length"] = 168
+    res[0] = function()
+        -- pre_set
+        common_game_scene_reset_velocity_by_ground_friction(hit_side_obj_char)
+        -- state
+        hit_side_obj_char["sprite_sheet"] = "5UA_100_heat_follow_0"
+        hit_side_obj_char["height"] = "stand" -- stand_crouch_air_OTG_wallstick
+        hit_side_obj_char["hurt_state_target"] = "counter" -- idle_unblock_punish_counter_GP_parry
+        hit_side_obj_char["move_state"] = "recovery" -- none_startup_active_recovery
+        hit_side_obj_char["idle_cancel"] = false
+        -- state_number
+        hit_side_obj_char["friction"] = 5
+        hit_side_obj_char["gravity"] = 2.5
+        -- enemy_friend_interaction
+        hit_side_obj_char["strike_inv"] = false
+        hit_side_obj_char["strike_inv_countdown"] = 0
+        hit_side_obj_char["throw_inv"] = false
+        hit_side_obj_char["throw_inv_countdown"] = 0
+        hit_side_obj_char["projectile_inv"] = false
+        hit_side_obj_char["projectile_inv_countdown"] = 0
+        hit_side_obj_char["horizontal_velocity_correction"] = 1
+        hit_side_obj_char["gravity_correction"] = 1
+        hit_side_obj_char["damage_correction"] = 1
+        -- frame_data
+        hit_side_obj_char["startup_frame"] = 0
+        hit_side_obj_char["active_frame"] = 0
+        hit_side_obj_char["recovery_frame"] = 0
+        -- input_sys_cache
+        hit_side_obj_char["input_sys_state"] = "save" -- none_save_load
+        common_game_scene_get_input_sys_cache_init(hit_side)(hit_side_obj_char)
+        -- collide
+        hit_side_obj_char["pushbox"] = {0,-185,120,370}
+        hit_side_obj_char["pushbox_opponent_collision_active"] = true
+        hit_side_obj_char["hitbox_table"] = {}
+        hit_side_obj_char["hurtbox_table"] = {{0,-215,170,430},{0,-445,100,30}}
+        hit_side_obj_char["collision_ground_height_offset"] = 0
+        -- shot_sys_oroboros
+        hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
+        -- draw_correction
+        hit_side_obj_char[8] = 0
+        hit_side_obj_char["anchor_pos"] = {305,495}
+        -- visual_front
+        CHARACTER_VISUAL_FRONT = hit_side
+    end
+    res[168] = function()
+        -- aniamtion_end
+    end
+    return res
+end
 -- _4SP_S_UA
 -- attachment_animation
 -- 5H

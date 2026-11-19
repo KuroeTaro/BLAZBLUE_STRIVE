@@ -1,0 +1,36 @@
+{"frames": {
+
+0:
+{
+	"frame": {"x":0,"y":0,"w":460,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":500},
+	"sourceSize": {"w":460,"h":500}
+},
+1:
+{
+	"frame": {"x":460,"y":0,"w":460,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":500},
+	"sourceSize": {"w":460,"h":500}
+},
+2:
+{
+	"frame": {"x":920,"y":0,"w":460,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":500},
+	"sourceSize": {"w":460,"h":500}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_5UA_100_heat_follow_4.png",
+	"format": "RGBA8888",
+	"size": {"w":1380,"h":500},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:dbda43cbfffde8f5998a6466c2656834:9790a08d02f15cfe37c0001fbbf20605:10ed983ba08db2d7b304ab7206a84a50$"
+}
+}

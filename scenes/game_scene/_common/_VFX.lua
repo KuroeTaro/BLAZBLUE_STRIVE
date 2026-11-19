@@ -588,8 +588,8 @@ function insert_VFX_game_scene_char_UA(obj_char,layer,x_offset,y_offset)
     obj_VFX[2] = obj_char["y"] - obj_char[6]*y_offset
     obj_VFX[3] = obj_char[3]
     obj_VFX[4] = 1
-    obj_VFX[5] = obj_char[5]
-    obj_VFX[6] = obj_char[6]
+    obj_VFX[5] = obj_char[5]*1.5
+    obj_VFX[6] = obj_char[6]*1.5
     obj_VFX[7] = obj_char[7]
     obj_VFX[8] = 0
     obj_VFX["f"] = -1
@@ -605,8 +605,8 @@ function insert_VFX_game_scene_char_UA(obj_char,layer,x_offset,y_offset)
         obj_VFX[1] = obj_char["x"] - obj_char[5]*x_offset
         obj_VFX[2] = obj_char["y"] - obj_char[6]*y_offset
         obj_VFX[3] = obj_char[3]
-        obj_VFX[5] = obj_char[5]
-        obj_VFX[6] = obj_char[6]
+        obj_VFX[5] = obj_char[5]*1.5
+        obj_VFX[6] = obj_char[6]*1.5
         obj_VFX[7] = obj_char[7]
         obj_VFX["draw_sync"] = function() end
     end

@@ -326,8 +326,8 @@ function load_game_scene_obj_char_LP()
         ["4SP_P"] = true,
         ["4SP_S"] = true,
         ["4UA"] = true,
-        ["6UA"] = true,
-        ["5UA"] = true,
+        ["5UA_startup"] = true,
+        ["5UA_follow"] = true,
         ["4SP_S_6UA"] = true
     }
     obj_char_game_scene_char_LP["shot_sys_at_the_ready_instant_aim_state"] = {
@@ -2584,23 +2584,23 @@ function state_machine_char_game_scene_char_LP()
                 self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
             )
         end,
-        ["6UA"] = function()
+        ["5UA_startup"] = function()
             if run_at_current_frame then
                 character_animator(
                     self_side_obj_char,self_side_obj_char["character_animation"]
                 )
             end
-            state_gate_game_scene_char_LP_from_6UA(
+            state_gate_game_scene_char_LP_from_5UA_startup(
                 self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
             )
         end,
-        ["5UA"] = function()
+        ["5UA_follow"] = function()
             if run_at_current_frame then
                 character_animator(
                     self_side_obj_char,self_side_obj_char["character_animation"]
                 )
             end
-            state_gate_game_scene_char_LP_from_5UA(
+            state_gate_game_scene_char_LP_from_5UA_follow(
                 self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
             )
         end,
@@ -4166,16 +4166,14 @@ function state_gate_game_scene_char_LP_common_ground_to_UA_move(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
     -- _4UA
-    -- _6UA
-    -- _5UA
+    -- _5UA_startup
     -- _4SP_S_6UA
 end
 function state_gate_game_scene_char_LP_common_ground_to_UA_move_hold_ver(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
     -- _4UA
-    -- _6UA
-    -- _5UA
+    -- _5UA_startup
     -- _4SP_S_6UA
 end
 -- air
@@ -9707,7 +9705,7 @@ function state_gate_game_scene_char_LP_from_4SP_S(
         return true
     end
     -- _4UA
-    -- _5UA
+    -- _5UA_startup
     -- _4SP_S_6UA
     -- _派生
     if self_side_obj_char["idle_cancel"] then
@@ -9768,7 +9766,7 @@ function state_gate_game_scene_char_LP_from_4SP_S_H(
         return true
     end
     -- _4UA
-    -- _5UA
+    -- _5UA_startup
     -- _4SP_S_6UA
     -- _派生
     if self_side_obj_char["idle_cancel"] then
@@ -9828,11 +9826,11 @@ function state_gate_game_scene_char_LP_from_4UA(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
 end
-function state_gate_game_scene_char_LP_from_6UA(
+function state_gate_game_scene_char_LP_from_5UA_startup(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
 end
-function state_gate_game_scene_char_LP_from_5UA(
+function state_gate_game_scene_char_LP_from_5UA_follow(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
 end
