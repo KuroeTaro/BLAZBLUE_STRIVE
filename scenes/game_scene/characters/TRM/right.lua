@@ -31,11 +31,11 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["hit_cancel"] = false
     obj_char_game_scene_char_RP["idle_cancel"] = false
     obj_char_game_scene_char_RP["physics_lock"] = false
+    obj_char_game_scene_char_RP["FD_block_state_cache"] = false
     obj_char_game_scene_char_RP["air_move"] = {}
     obj_char_game_scene_char_RP["air_move"]["jump"] = {1,1}
     obj_char_game_scene_char_RP["air_move"]["air_dash"] = {1,1}
-    obj_char_game_scene_char_RP["auto_derive_state_cache"] = "none"
-    obj_char_game_scene_char_RP["FD_block_state_cache"] = false
+    obj_char_game_scene_char_RP["auto_derive_state_cache"] = "50_heat"
     -- state_number
     obj_char_game_scene_char_RP["velocity"] = {0,0}
     obj_char_game_scene_char_RP["velocity_debug"] = {0,0}

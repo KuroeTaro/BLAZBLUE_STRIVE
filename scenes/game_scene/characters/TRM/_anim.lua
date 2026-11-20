@@ -9294,7 +9294,7 @@ function load_game_scene_anim_char_TRM_5UA_50_heat_follow(
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 0
-        hit_side_obj_char["anchor_pos"] = {305,495}
+        hit_side_obj_char["anchor_pos"] = {205,500}
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
@@ -9362,7 +9362,7 @@ function load_game_scene_anim_char_TRM_5UA_100_heat_follow(
         hit_side_obj_char["shot_sys_oroboros_anchor_pos"] = {-110,-455}
         -- draw_correction
         hit_side_obj_char[8] = 0
-        hit_side_obj_char["anchor_pos"] = {305,495}
+        hit_side_obj_char["anchor_pos"] = {665,690}
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
@@ -9387,8 +9387,11 @@ function load_game_scene_anim_char_TRM_5UA_100_heat_follow(
         hit_side_obj_char[8] = 5
     end
     res[36] = function()
+        -- state
+        hit_side_obj_char["sprite_sheet"] = "5UA_100_heat_follow_1"
         -- draw_correction
         hit_side_obj_char[8] = 0
+        hit_side_obj_char["anchor_pos"] = {460,625}
     end
     res[42] = function()
         -- draw_correction
@@ -9403,8 +9406,11 @@ function load_game_scene_anim_char_TRM_5UA_100_heat_follow(
         hit_side_obj_char[8] = 3
     end
     res[60] = function()
+        -- state
+        hit_side_obj_char["sprite_sheet"] = "5UA_100_heat_follow_2"
         -- draw_correction
         hit_side_obj_char[8] = 0
+        hit_side_obj_char["anchor_pos"] = {755,795}
     end
     res[66] = function()
         -- draw_correction
@@ -9427,8 +9433,11 @@ function load_game_scene_anim_char_TRM_5UA_100_heat_follow(
         hit_side_obj_char[8] = 5
     end
     res[96] = function()
+        -- state
+        hit_side_obj_char["sprite_sheet"] = "5UA_100_heat_follow_3"
         -- draw_correction
         hit_side_obj_char[8] = 0
+        hit_side_obj_char["anchor_pos"] = {740,725}
     end
     res[102] = function()
         -- draw_correction
@@ -9455,8 +9464,11 @@ function load_game_scene_anim_char_TRM_5UA_100_heat_follow(
         hit_side_obj_char[8] = 6
     end
     res[140] = function()
+        -- state
+        hit_side_obj_char["sprite_sheet"] = "5UA_100_heat_follow_4"
         -- draw_correction
         hit_side_obj_char[8] = 0
+        hit_side_obj_char["anchor_pos"] = {210,470}
     end
     res[158] = function()
         -- draw_correction
