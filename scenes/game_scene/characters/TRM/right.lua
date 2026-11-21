@@ -1668,12 +1668,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 "4SP_S_H_hit",
                 "4SP_S_H_miss",
                 "5H_hit",
-                "5H_miss",
-                "6SP_P_curse_ball_blast",
-                "6SP_P_curse_ball_loop",
-                "6SP_K_scapegoat_buff_flow",
-                "6SP_K_scapegoat_ease_in",
-                "6SP_K_scapegoat_ease_out",
+                "5H_miss"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_projectile_game_scene_RP[v.."_projectile"] =
@@ -1685,6 +1680,11 @@ function order_load_game_scene_char_RP_frames(load_order)
         end,
         [28] = function()
             local load_name_table = {
+                "6SP_P_curse_ball_blast",
+                "6SP_P_curse_ball_loop",
+                "6SP_K_scapegoat_buff_flow",
+                "6SP_K_scapegoat_ease_in",
+                "6SP_K_scapegoat_ease_out",
                 "6SP_K_scapegoat_hurt",
                 "6SP_K_scapegoat_idle"
             }
@@ -1698,6 +1698,7 @@ function order_load_game_scene_char_RP_frames(load_order)
         end,
         [29] = function()
             local load_name_table = {
+                "5UA_100_heat_follow_all_screen"
             }
             for i,v in ipairs(load_name_table) do
                 image_sprite_sheet_table_projectile_game_scene_RP[v.."_projectile"] =

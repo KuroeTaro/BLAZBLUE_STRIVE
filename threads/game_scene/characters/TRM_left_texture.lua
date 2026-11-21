@@ -190,6 +190,7 @@ local load_projectile_name_table = {
     "6SP_K_scapegoat_ease_out",
     "6SP_K_scapegoat_hurt",
     "6SP_K_scapegoat_idle",
+    "5UA_100_heat_follow_all_screen"
 }
 for i,v in ipairs(load_projectile_name_table) do
     thread_data[v.."_projectile"] =

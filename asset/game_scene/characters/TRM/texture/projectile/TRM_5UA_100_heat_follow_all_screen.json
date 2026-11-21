@@ -1,0 +1,20 @@
+{"frames": {
+
+0:
+{
+	"frame": {"x":0,"y":0,"w":1912,"h":2048},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1912,"h":2048},
+	"sourceSize": {"w":1912,"h":2048}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TRM_5UA_100_heat_follow_all_screen.png",
+	"format": "RGBA8888",
+	"size": {"w":1912,"h":2048},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c38220b464a28d4e356230955c70aef5:37b4e37301c7f23393e14dc967297d58:d74b0580a1fc95afb24e7ee99117c388$"
+}
+}

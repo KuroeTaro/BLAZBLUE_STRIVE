@@ -43,10 +43,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "TRM_5H_shot_oroboros_blast",
+	"image": "TRM_4SP_S_H_shot_oroboros_blast.png",
 	"format": "RGBA8888",
 	"size": {"w":520,"h":2000},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:f5fff0bdc979f77b6be112e704524933:11a25b85a82bfdfaa4e4954bdd6c4c9c:3233ef7b1af7b312b39ca5c651fe8264$"
+	"smartupdate": "$TexturePacker:SmartUpdate:a5b5d02b687af0b3eb1f6708bcdefedb:4249b0a4ed973df53e626919425030be:a9c8ac96e67c2e2c0a198fb0de70464b$"
 }
 }
