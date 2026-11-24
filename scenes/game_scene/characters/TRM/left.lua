@@ -924,6 +924,15 @@ function load_game_scene_config_char_LP()
             lum_gamma = 2.0   -- 亮度曲线:1 = 线性;>1 中间调变暗、整体更暗(最亮处不变);<1 反之
         }
     }
+    -- 6SP_P 诅咒光环的粒子数据贴图(rgba32f,宽 = max_particles,高 = 2):代替 uniform 数组
+    -- 加载时建一次,同一侧释放的光环共用(每次 draw 前重新写入再上传,GL 按调用顺序执行,不会互相覆盖)
+    config_game_scene_LP["6SP_P_arua_particle_image_data"] = love.image.newImageData(
+        config_game_scene_LP["6SP_P_arua"]["max_particles"],2,"rgba32f"
+    )
+    config_game_scene_LP["6SP_P_arua_particle_image"] = love.graphics.newImage(
+        config_game_scene_LP["6SP_P_arua_particle_image_data"]
+    )
+    config_game_scene_LP["6SP_P_arua_particle_image"]:setFilter("nearest","nearest")
 end
 function load_game_scene_wallbreak_start_init_LP()
     -- state
@@ -1119,7 +1128,8 @@ function order_load_game_scene_char_LP_audio(load_order)
                 "ground_hard_knockdown","ground_land","ground_soft_knockdown",
                 "ground_step_0","ground_step_1","wall_wallbreak","wall_wallstick"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 audio_SFX_game_scene_stage_interactive_SFX_LP[v] = {1,LCT = {0},LCD = {0}}
                 audio_SFX_game_scene_stage_interactive_SFX_LP[v]["audio"] = love.audio.newSource(
                     PLAYER_AUDIO_DATA["stage_interactive_SFX"][v],"static"
@@ -1135,7 +1145,8 @@ function order_load_game_scene_char_LP_audio(load_order)
                 "red_RC_block","red_RC_counter","red_RC_hit","red_RC_whiff",
                 "yellow_RC_block","yellow_RC_counter","yellow_RC_hit","yellow_RC_whiff"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 audio_SFX_game_scene_move_SFX_LP[v] = {1,LCT = {0},LCD = {0}}
                 audio_SFX_game_scene_move_SFX_LP[v]["audio"] = love.audio.newSource(
                     PLAYER_AUDIO_DATA["move_SFX"][v],"static"
@@ -1150,7 +1161,8 @@ function order_load_game_scene_char_LP_audio(load_order)
                 "6P_block","6P_counter","6P_hit","6P_whiff",
                 "5P_block","5P_counter","5P_hit","5P_whiff"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 audio_SFX_game_scene_move_SFX_LP[v] = {1,LCT = {0},LCD = {0}}
                 audio_SFX_game_scene_move_SFX_LP[v]["audio"] = love.audio.newSource(
                     PLAYER_AUDIO_DATA["move_SFX"][v],"static"
@@ -1165,7 +1177,8 @@ function order_load_game_scene_char_LP_audio(load_order)
                 "6K_block","6K_counter","6K_hit","6K_whiff",
                 "5K_block","5K_counter","5K_hit","5K_whiff"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 audio_SFX_game_scene_move_SFX_LP[v] = {1,LCT = {0},LCD = {0}}
                 audio_SFX_game_scene_move_SFX_LP[v]["audio"] = love.audio.newSource(
                     PLAYER_AUDIO_DATA["move_SFX"][v],"static"
@@ -1181,7 +1194,8 @@ function order_load_game_scene_char_LP_audio(load_order)
                 "cS_block","cS_counter","cS_hit","cS_whiff",
                 "fS_block","fS_counter","fS_hit","fS_whiff"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 audio_SFX_game_scene_move_SFX_LP[v] = {1,LCT = {0},LCD = {0}}
                 audio_SFX_game_scene_move_SFX_LP[v]["audio"] = love.audio.newSource(
                     PLAYER_AUDIO_DATA["move_SFX"][v],"static"
@@ -1197,7 +1211,8 @@ function order_load_game_scene_char_LP_audio(load_order)
                 "5H_oroboros_blast",
                 "5H_reticle_ease_in","5H_reticle_ease_out","5H_reticle_locking"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 audio_SFX_game_scene_move_SFX_LP[v] = {1,LCT = {0},LCD = {0}}
                 audio_SFX_game_scene_move_SFX_LP[v]["audio"] = love.audio.newSource(
                     PLAYER_AUDIO_DATA["move_SFX"][v],"static"
@@ -1212,7 +1227,8 @@ function order_load_game_scene_char_LP_audio(load_order)
                 "4_6Launcher_hit","4_6Launcher_throw","4_6Launcher_whiff",
                 "5Launcher_block","5Launcher_counter","5Launcher_hit","5Launcher_whiff"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 audio_SFX_game_scene_move_SFX_LP[v] = {1,LCT = {0},LCD = {0}}
                 audio_SFX_game_scene_move_SFX_LP[v]["audio"] = love.audio.newSource(
                     PLAYER_AUDIO_DATA["move_SFX"][v],"static"
@@ -1228,7 +1244,8 @@ function order_load_game_scene_char_LP_audio(load_order)
                 "j5K_block","j5K_counter","j5K_hit","j5K_whiff",
                 "j5S_block","j5S_counter","j5S_hit","j5S_whiff"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 audio_SFX_game_scene_move_SFX_LP[v] = {1,LCT = {0},LCD = {0}}
                 audio_SFX_game_scene_move_SFX_LP[v]["audio"] = love.audio.newSource(
                     PLAYER_AUDIO_DATA["move_SFX"][v],"static"
@@ -1242,7 +1259,8 @@ function order_load_game_scene_char_LP_audio(load_order)
                 "j4_6Launcher_hit","j4_6Launcher_throw","j4_6Launcher_whiff",
                 "j5Launcher_block","j5Launcher_counter","j5Launcher_hit","j5Launcher_whiff"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 audio_SFX_game_scene_move_SFX_LP[v] = {1,LCT = {0},LCD = {0}}
                 audio_SFX_game_scene_move_SFX_LP[v]["audio"] = love.audio.newSource(
                     PLAYER_AUDIO_DATA["move_SFX"][v],"static"
@@ -1261,7 +1279,8 @@ function order_load_game_scene_char_LP_audio(load_order)
                 "4SP_S_reticle_lock","4SP_S_reticle_unlock",
                 "6SP_S_block","6SP_S_counter","6SP_S_hit","6SP_S_whiff"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 audio_SFX_game_scene_move_SFX_LP[v] = {1,LCT = {0},LCD = {0}}
                 audio_SFX_game_scene_move_SFX_LP[v]["audio"] = love.audio.newSource(
                     PLAYER_AUDIO_DATA["move_SFX"][v],"static"
@@ -1274,7 +1293,8 @@ function order_load_game_scene_char_LP_audio(load_order)
             local load_name_table = {
                 "overdrive"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 audio_SFX_game_scene_move_SFX_LP[v] = {1,LCT = {0},LCD = {0}}
                 audio_SFX_game_scene_move_SFX_LP[v]["audio"] = love.audio.newSource(
                     PLAYER_AUDIO_DATA["move_SFX"][v],"static"
@@ -1287,7 +1307,8 @@ function order_load_game_scene_char_LP_audio(load_order)
             local load_name_table = {
                 "burst"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 audio_SFX_game_scene_move_SFX_LP[v] = {1,LCT = {0},LCD = {0}}
                 audio_SFX_game_scene_move_SFX_LP[v]["audio"] = love.audio.newSource(
                     PLAYER_AUDIO_DATA["move_SFX"][v],"static"
@@ -1312,7 +1333,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "0_crouch_hurt",
                 "0_general_hurt_falled_knockout"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
@@ -1328,7 +1350,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "0_general_hurt_hard_knockdown_up",
                 "0_general_hurt_hard_knockdown_wallstick_ground"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
@@ -1343,7 +1366,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "0_general_hurt_hard_recovery_up",
                 "0_general_hurt_hard_recovery_wallstick_ground"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
@@ -1360,7 +1384,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "0_general_hurt_launched_low",
                 "0_general_hurt_launched_mid_hori_heavy"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
@@ -1376,7 +1401,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "0_general_hurt_launched_rotate",
                 "0_general_hurt_launched_wallbounce"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
@@ -1390,7 +1416,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "0_general_hurt_semi_launched_mid",
                 "0_general_hurt_semi_launched_rotate"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
@@ -1407,7 +1434,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "0_ground_Launcher_teched",
                 "0_ground_Launcher_teching"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
@@ -1425,7 +1453,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "0_wallbreak_hurt_adv",
                 "0_wallbreak_hurt_non_adv"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
@@ -1440,7 +1469,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "1_2_3_crouch_to_stand_idle",
                 "1_2_3_crouch_turn"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
@@ -1459,7 +1489,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "4_stand_block_high",
                 "4_stand_block_mid"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
@@ -1475,7 +1506,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "4dash_air_backdash",
                 "4dash_backdash"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
@@ -1490,7 +1522,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "5_stand_dash_skid",
                 "5_stand_turn"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
@@ -1506,7 +1539,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "6dash_air_dash",
                 "6dash_dash"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
@@ -1524,7 +1558,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "8_jump",
                 "9_jump"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
@@ -1539,7 +1574,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "burst_overdrive_RC_air",
                 "burst_RC_ground"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
@@ -1554,7 +1590,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "6P",
                 "5P"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
@@ -1569,7 +1606,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "6K",
                 "5K"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
@@ -1585,7 +1623,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "cS",
                 "fS"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
@@ -1598,7 +1637,8 @@ function order_load_game_scene_char_LP_frames(load_order)
             local load_name_table = {
                 "5H"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
@@ -1616,7 +1656,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "5H_oroboros_loop_mid",
                 "5H_oroboros_shot"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
@@ -1634,7 +1675,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "5H_reticle_unlocked",
                 "5H_reticle_unlocking"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
@@ -1650,7 +1692,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "4_6Launcher_success",
                 "5Launcher"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
@@ -1669,7 +1712,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "j4_6Launcher_success",
                 "j5Launcher"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
@@ -1687,7 +1731,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "4SP_S",
                 "6SP_S",
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
@@ -1704,7 +1749,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "4SP_S_4S",
                 "4SP_S_H",
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
@@ -1719,7 +1765,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "4SP_S_reticle_lock",
                 "4SP_S_reticle_shot"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
@@ -1736,7 +1783,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "5H_hit",
                 "5H_miss"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_projectile_game_scene_LP[v.."_projectile"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/projectile/TRM_"..v..".json",
@@ -1754,7 +1802,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "6SP_K_scapegoat_hurt",
                 "6SP_K_scapegoat_idle"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_projectile_game_scene_LP[v.."_projectile"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/projectile/TRM_"..v..".json",
@@ -1766,7 +1815,8 @@ function order_load_game_scene_char_LP_frames(load_order)
             local load_name_table = {
                 "5UA_100_heat_follow_all_screen"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_projectile_game_scene_LP[v.."_projectile"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/projectile/TRM_"..v..".json",
@@ -1785,7 +1835,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "5UA_100_heat_follow_3",
                 "5UA_100_heat_follow_4"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
@@ -1796,7 +1847,8 @@ function order_load_game_scene_char_LP_frames(load_order)
         [31] = function()
             local load_name_table = {
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
@@ -1807,7 +1859,8 @@ function order_load_game_scene_char_LP_frames(load_order)
         [32] = function()
             local load_name_table = {
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_char_game_scene_LP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
@@ -1829,7 +1882,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "5H_shot_oroboros_blast",
                 "5H_switch"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_VFX_game_scene_LP[v.."_move_VFX"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
@@ -1843,7 +1897,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "5Launcher",
                 "5Launcher_glow"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_VFX_game_scene_LP[v.."_move_VFX"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
@@ -1856,7 +1911,8 @@ function order_load_game_scene_char_LP_frames(load_order)
             local load_name_table = {
                 "j5S"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_VFX_game_scene_LP[v.."_move_VFX"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
@@ -1874,7 +1930,8 @@ function order_load_game_scene_char_LP_frames(load_order)
                 "4SP_S_H_shot_oroboros_blast",
                 "6SP_S"
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_VFX_game_scene_LP[v.."_move_VFX"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
@@ -1885,7 +1942,8 @@ function order_load_game_scene_char_LP_frames(load_order)
         [37] = function()
             local load_name_table = {
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_VFX_game_scene_LP[v.."_move_VFX"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
@@ -1896,7 +1954,8 @@ function order_load_game_scene_char_LP_frames(load_order)
         [38] = function()
             local load_name_table = {
             }
-            for i,v in ipairs(load_name_table) do
+            for i = 1,#load_name_table do
+                local v = load_name_table[i]
                 image_sprite_sheet_table_VFX_game_scene_LP[v.."_move_VFX"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
@@ -1928,6 +1987,38 @@ function order_load_game_scene_char_LP_shader(load_order)
             shader_game_scene_LP["6SP_P_arua"] = love.graphics.newShader(
                 "shaders/characters/TRM/6SP_P_arua.glsl"
             )
+        end,
+        -- 6SP_P 诅咒光环暖机:按游戏里真实的绘制状态画一次(float 数据贴图、alpha 混合、循环里真的有粒子),
+        -- 让驱动在加载时就把这条管线准备好,避免第一次释放时卡顿。config 在 order_load_game_scene_common 里已经加载
+        [3] = function()
+            local config = config_game_scene_LP["6SP_P_arua"]
+            local shader_config = config["shader"]
+            local unit = shader_config["unit"]
+            local shader = shader_game_scene_LP["6SP_P_arua"]
+            local image_data = config_game_scene_LP["6SP_P_arua_particle_image_data"]
+            local image = config_game_scene_LP["6SP_P_arua_particle_image"]
+            for name,value in pairs(shader_config) do
+                shader:send(name,value)
+            end
+            -- 一个在世界原点出生、处在半生的粒子
+            image_data:setPixel(0,0,0,0,0,0)
+            image_data:setPixel(0,1,1,0,0,0)
+            image:replacePixels(image_data)
+            shader:send("time",shader_config["life"]*0.5)
+            shader:send("particle_count",1)
+            shader:send("particle_data",image)
+            shader:send("particle_data_width",config["max_particles"])
+            shader:send("area_origin",{-unit,-unit})
+            shader:send("area_size",{unit*2,unit*2})
+            shader:send("noise_offset",{0,0})
+            local canvas = love.graphics.newCanvas(8,8)
+            love.graphics.push("all")
+            love.graphics.setCanvas(canvas)
+            love.graphics.setShader(shader)
+            love.graphics.setColor(1,1,1,0.75)
+            love.graphics.setBlendMode(config["blend_mode"])
+            love.graphics.draw(config_game_scene_LP["6SP_P_arua_quad_image"],0,0,0,8,8)
+            love.graphics.pop()
         end
     }
     local this_function = switch[load_order]

@@ -863,10 +863,9 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     obj_VFX["config"] = hit_side_config["6SP_P_arua"]
     obj_VFX["6SP_P_arua_RNG"] = hit_side_config["6SP_P_arua_RNG"]
     obj_VFX["6SP_P_arua_quad_image"] = hit_side_config["6SP_P_arua_quad_image"]
-    -- 粒子数据贴图(rgba32f,宽 = max_particles,高 = 2):代替 uniform 数组,每个 obj_VFX 自己一张
-    obj_VFX["particle_image_data"] = love.image.newImageData(obj_VFX["config"]["max_particles"],2,"rgba32f")
-    obj_VFX["particle_image"] = love.graphics.newImage(obj_VFX["particle_image_data"])
-    obj_VFX["particle_image"]:setFilter("nearest","nearest")
+    -- 粒子数据贴图在 config 加载时已经建好(同一侧共用),释放时不新建
+    obj_VFX["particle_image_data"] = hit_side_config["6SP_P_arua_particle_image_data"]
+    obj_VFX["particle_image"] = hit_side_config["6SP_P_arua_particle_image"]
     -- draw 里复用的表(投影用的点、send 用的 vec2),不每帧新建
     obj_VFX["corner_point"] = {0,0,0}
     obj_VFX["area_origin"] = {0,0}

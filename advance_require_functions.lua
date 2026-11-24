@@ -1,7 +1,8 @@
 function require_all_in_folder(folder)
     -- 获取文件夹内的所有文件和子文件夹
     local files = love.filesystem.getDirectoryItems(folder)
-    for _,file in ipairs(files) do
+    for i = 1,#files do
+        local file = files[i]
         local filePath = folder .. "/" .. file
         -- 检查是否是文件
         if love.filesystem.getInfo(filePath,"file") then

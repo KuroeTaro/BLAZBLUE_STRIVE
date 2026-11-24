@@ -68,7 +68,8 @@ local load_universal_name_table = {
     "8_jump",
     "9_jump"
 }
-for i,v in ipairs(load_universal_name_table) do
+for i = 1,#load_universal_name_table do
+    local v = load_universal_name_table[i]
     thread_data[v] = compress_module("asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".dds")
 end
 -- 攻击类
@@ -136,7 +137,8 @@ local load_attack_name_table = {
     "5UA_100_heat_follow_3",
     "5UA_100_heat_follow_4",
 }
-for i,v in ipairs(load_attack_name_table) do
+for i = 1,#load_attack_name_table do
+    local v = load_attack_name_table[i]
     thread_data[v] = compress_module("asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".dds")
 end
 -- 角色move_VFX类
@@ -172,7 +174,8 @@ local load_move_VFX_name_table = {
     "4SP_S_H_shot_oroboros_blast",
     "6SP_S"
 }
-for i,v in ipairs(load_move_VFX_name_table) do
+for i = 1,#load_move_VFX_name_table do
+    local v = load_move_VFX_name_table[i]
     thread_data[v.."_move_VFX"] =
     compress_module("asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".dds")
 end
@@ -191,7 +194,8 @@ local load_projectile_name_table = {
     "6SP_K_scapegoat_idle",
     "5UA_100_heat_follow_all_screen"
 }
-for i,v in ipairs(load_projectile_name_table) do
+for i = 1,#load_projectile_name_table do
+    local v = load_projectile_name_table[i]
     thread_data[v.."_projectile"] =
     compress_module("asset/game_scene/characters/TRM/texture/projectile/".."TRM_"..v..".dds")
 end
