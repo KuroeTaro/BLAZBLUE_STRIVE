@@ -1984,8 +1984,14 @@ function order_load_game_scene_char_RP_shader(load_order)
                 "shaders/characters/TRM/drive_sys_chain_fade.glsl"
             )
         end,
-        -- 6SP_P 诅咒光环(程序化生成)
+        -- drive_sys 锁链渐变暖机:游戏里是画锁链的 sprite_batch(common_shader_warm_up 见 update_general_use_functions/common.lua)
         [2] = function()
+            common_shader_warm_up(
+                shader_game_scene_RP["drive_sys_chain_fade"],"alpha",common_shader_warm_up_sprite_batch()
+            )
+        end,
+        -- 6SP_P 诅咒光环(程序化生成)
+        [3] = function()
             shader_game_scene_RP["6SP_P_arua"] = love.graphics.newShader(
                 "shaders/characters/TRM/6SP_P_arua.glsl"
             )
@@ -1994,7 +2000,7 @@ function order_load_game_scene_char_RP_shader(load_order)
         -- 让驱动在加载时就把这条管线准备好,避免第一次释放时卡顿。config / image_table_VFX 在 order_load_game_scene_common 里已经加载
         -- 游戏里光环是直接画在屏幕(默认帧缓冲)上的,和 8x8 canvas 的格式不同,驱动可能会按目标重新编译 shader,
         -- 所以 canvas 画完再对屏幕用 alpha 0 画一次(这里在 update 里跑,love.draw 开头会 clear,画面上看不到)
-        [3] = function()
+        [4] = function()
             local config = config_game_scene_RP["6SP_P_arua"]
             local shader_config = config["shader"]
             local unit = shader_config["unit"]
@@ -2015,17 +2021,17 @@ function order_load_game_scene_char_RP_shader(load_order)
             shader:send("area_origin",{-unit,-unit})
             shader:send("area_size",{unit*2,unit*2})
             shader:send("noise_offset",{0,0})
-            local canvas = love.graphics.newCanvas(100,100)
+            local canvas = love.graphics.newCanvas(8,8)
             love.graphics.push("all")
             love.graphics.setCanvas(canvas)
             love.graphics.setShader(shader)
             love.graphics.setColor(1,1,1,0.75)
             love.graphics.setBlendMode(config["blend_mode"])
-            love.graphics.draw(texture_table_game_scene_RP["6SP_P_arua_quad_image"],0,0,0,100,100)
+            love.graphics.draw(texture_table_game_scene_RP["6SP_P_arua_quad_image"],0,0,0,8,8)
             -- 屏幕(和游戏里同一个绘制目标)
             love.graphics.setCanvas()
             love.graphics.setColor(1,1,1,0)
-            love.graphics.draw(texture_table_game_scene_RP["6SP_P_arua_quad_image"],0,0,0,100,100)
+            love.graphics.draw(texture_table_game_scene_RP["6SP_P_arua_quad_image"],0,0,0,8,8)
             love.graphics.pop()
         end
     }

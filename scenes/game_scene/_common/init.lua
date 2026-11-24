@@ -98,6 +98,53 @@ function load_game_scene_common_shader(i)
     local this_function = switch[i]
     if this_function then this_function() end
 end
+-- 公共 shader 的暖机,编号和 load_game_scene_common_shader 一一对应(common_shader_warm_up 见 update_general_use_functions/common.lua)
+function load_game_scene_common_shader_warm_up(i)
+    local switch = {
+        -- 场景光晕:全屏 rectangle 画进 canvas
+        [1] = function() common_shader_warm_up(
+            shader_game_scene_fractal_noise,"alpha"
+        ) end,
+        -- 场景光晕:把 canvas 画进 canvas
+        [2] = function() common_shader_warm_up(
+            shader_game_scene_radial_blur,"alpha",love.graphics.newCanvas(8,8)
+        ) end,
+        -- 角色阴影:把 DRAW_CHARACTER_CANVAS 画进 DRAW_SHADOW_CANVAS
+        [3] = function() common_shader_warm_up(
+            shader_game_scene_shadow_radial_blur,"alpha",love.graphics.newCanvas(8,8)
+        ) end,
+        -- 角色 / 飞行道具:画 sprite_batch
+        [4] = function() common_shader_warm_up(
+            shader_game_scene_brightness_contrast,"alpha",common_shader_warm_up_sprite_batch()
+        ) end,
+        -- 目前没有地方用,按贴图画
+        [5] = function() common_shader_warm_up(
+            shader_game_scene_gaussian_blur,"alpha",love.graphics.newCanvas(8,8)
+        ) end,
+        -- counter 粒子:全屏 rectangle 画进 DRAW_VFX_PARTICAL_3D_CANVAS
+        [6] = function() common_shader_warm_up(
+            shader_game_scene_counter_partical_3d,"alpha"
+        ) end,
+        -- overdrive 冲击波:全屏 rectangle,add
+        [7] = function() common_shader_warm_up(
+            shader_game_scene_overdrive_badge_partical_3d,"add"
+        ) end,
+        -- overdrive 粒子:画粒子 Mesh(顶点着色器),add
+        [8] = function() common_shader_warm_up(
+            shader_game_scene_overdrive_badge_particle,"add",common_particle_mesh_new(1)
+        ) end,
+        -- burst 冲击波:全屏 rectangle,add
+        [9] = function() common_shader_warm_up(
+            shader_game_scene_burst_shockwave_projectile_3d,"add"
+        ) end,
+        -- FD 屏障:全屏 rectangle,add
+        [10] = function() common_shader_warm_up(
+            shader_game_scene_fd_block_3d,"add"
+        ) end
+    }
+    local this_function = switch[i]
+    if this_function then this_function() end
+end
 function load_game_scene_announcer_HUD_obj()
     -- black_solid
     obj_UI_game_scene_black_solid = {0,0,nil,0,1,1,0,0}

@@ -21,7 +21,7 @@ function load_char_select_scene_prep()
         order_load_char_select_scene_UI_movie_cover
     } -- load_function_table
     CURRENT_ORDER_TABLE = {1,1,1} -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
-    ORDER_SIZE_TABLE = {2,1,1} -- 每个load function的最大值
+    ORDER_SIZE_TABLE = {4,1,1} -- 每个load function的最大值
     LOAD_ONCE_TABLE = {false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     LOADING_FUNCTION_AMOUNT = 3 -- 和线程数相同
 	NEXT_UPDATE_BLOCK = update_char_select_scene_ease_in_0f_36f
@@ -70,6 +70,15 @@ function order_load_char_select_scene_UI_char(load_order)
             load_char_select_scene_anim()
             load_char_select_scene_audio()
             load_char_select_scene_shader()
+        end,
+        -- shader 暖机:和上面的编译错开,一帧一个(common_shader_warm_up 见 update_general_use_functions/common.lua)
+        -- 背景光晕:fractal_noise 全屏 rectangle 画进 canvas
+        [3] = function()
+            common_shader_warm_up(shader_char_select_scene_fractal_noise,"alpha")
+        end,
+        -- 背景光晕:radial_blur 把 canvas 画进 canvas
+        [4] = function()
+            common_shader_warm_up(shader_char_select_scene_radial_blur,"alpha",love.graphics.newCanvas(8,8))
         end
     }
     local this_function = switch[load_order]

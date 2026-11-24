@@ -52,7 +52,7 @@ function load_game_scene_prep()
         order_load_game_scene_stage_shader
     }
     CURRENT_ORDER_TABLE = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1} -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
-    ORDER_SIZE_TABLE = {5,1,4,3,1,1,1,4,3,1,10,12,39,3,12,39,3,3,4,1} -- 每个load function的最大值
+    ORDER_SIZE_TABLE = {5,1,4,3,1,1,1,4,3,1,20,12,39,4,12,39,4,3,4,1} -- 每个load function的最大值
     LOAD_ONCE_TABLE = {
         false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
     } -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
@@ -431,7 +431,8 @@ function order_load_game_scene_VFX_HUD(load_order)
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
--- 公共 shader:每帧编译一个(load_game_scene_common_shader(i) 见 init.lua)
+-- 公共 shader:奇数步编译一个,偶数步给刚编译的那个暖机(错开一帧)
+-- load_game_scene_common_shader(i) / load_game_scene_common_shader_warm_up(i) 见 init.lua
 function order_load_game_scene_shader(load_order)
     local switch =
     {
@@ -439,31 +440,61 @@ function order_load_game_scene_shader(load_order)
             load_game_scene_common_shader(1)
         end,
         [2] = function()
-            load_game_scene_common_shader(2)
+            load_game_scene_common_shader_warm_up(1)
         end,
         [3] = function()
-            load_game_scene_common_shader(3)
+            load_game_scene_common_shader(2)
         end,
         [4] = function()
-            load_game_scene_common_shader(4)
+            load_game_scene_common_shader_warm_up(2)
         end,
         [5] = function()
-            load_game_scene_common_shader(5)
+            load_game_scene_common_shader(3)
         end,
         [6] = function()
-            load_game_scene_common_shader(6)
+            load_game_scene_common_shader_warm_up(3)
         end,
         [7] = function()
-            load_game_scene_common_shader(7)
+            load_game_scene_common_shader(4)
         end,
         [8] = function()
-            load_game_scene_common_shader(8)
+            load_game_scene_common_shader_warm_up(4)
         end,
         [9] = function()
-            load_game_scene_common_shader(9)
+            load_game_scene_common_shader(5)
         end,
         [10] = function()
+            load_game_scene_common_shader_warm_up(5)
+        end,
+        [11] = function()
+            load_game_scene_common_shader(6)
+        end,
+        [12] = function()
+            load_game_scene_common_shader_warm_up(6)
+        end,
+        [13] = function()
+            load_game_scene_common_shader(7)
+        end,
+        [14] = function()
+            load_game_scene_common_shader_warm_up(7)
+        end,
+        [15] = function()
+            load_game_scene_common_shader(8)
+        end,
+        [16] = function()
+            load_game_scene_common_shader_warm_up(8)
+        end,
+        [17] = function()
+            load_game_scene_common_shader(9)
+        end,
+        [18] = function()
+            load_game_scene_common_shader_warm_up(9)
+        end,
+        [19] = function()
             load_game_scene_common_shader(10)
+        end,
+        [20] = function()
+            load_game_scene_common_shader_warm_up(10)
         end
     }
     local this_function = switch[load_order]

@@ -119,19 +119,16 @@ function init_load_scene_audio()
 end
 -- 资产暖机:每次 load_scene 把所有 order 跑完之后,统一在这里预热一次
 --   项目里的美术资产命名有规律,所以这里按「名字前缀 + 类型」找,不做全量 typeOf 扫描:
---     · shader*   -> Shader,或 shader 表(shader_game_scene_LP / RP 这种一张表里装多个)
 --     · image*    -> Image / SpriteBatch / 序列帧表 { sprite_batch = ..., frames = ... }
 --                    (还有 image_sprite_sheet_table_* 这种一层套一层的,往里探两层)
 --     · *CANVAS  -> Canvas(DRAW_MAIN_CHARACTER_CANVAS 之类)
+--   shader 不在这里:各场景在自己的 order_load 里 newShader 之后紧跟一步暖机(common_shader_warm_up)
 --   预热方式:
---     · Shader:1x1 贴图 + 8x8 canvas 空绘制一次(编译 / 链接 / 首次采样都跑过)
 --     · 贴图 / 图集 texture / Canvas:缩到很小画一次,让驱动把整张纹理传上显存
 --   单个资产出错只 pcall 跳过,不影响加载;结束时图形状态全部还原。
 function set_load_scene_asset_warm_up()
     local warm_up_canvas = love.graphics.newCanvas(8,8)
-    local warm_up_image = love.graphics.newImage(love.image.newImageData(1,1))
     local texture_count = 0
-    local shader_count = 0
 
     local function draw_texture(texture)
         if texture == nil then
@@ -146,22 +143,6 @@ function set_load_scene_asset_warm_up()
             love.graphics.draw(texture,0,0,0,0.05,0.05)
         end)
         texture_count = texture_count + 1
-    end
-
-    local function draw_shader(shader)
-        if shader == nil then
-            return
-        end
-        pcall(function()
-            love.graphics.setCanvas(warm_up_canvas)
-            love.graphics.clear(0,0,0,1)
-            love.graphics.setBlendMode("replace")
-            love.graphics.setColor(1,1,1,1)
-            love.graphics.setShader(shader)
-            love.graphics.draw(warm_up_image,0,0)
-            love.graphics.setShader()
-        end)
-        shader_count = shader_count + 1
     end
 
     -- image* 的 userdata:可能是 Image,也可能是 image_sprite_batch_* 这种单独的 SpriteBatch
@@ -192,31 +173,9 @@ function set_load_scene_asset_warm_up()
         end
     end
 
-    -- shader* 的表:一张表里装多个 shader(shader_game_scene_LP / RP)
-    local function draw_shader_table(value,depth)
-        if type(value) ~= "table" or depth <= 0 or visited_table[value] then
-            return
-        end
-        visited_table[value] = true
-        for _, child in pairs(value) do
-            if type(child) == "userdata" then
-                draw_shader(child)
-            elseif type(child) == "table" then
-                draw_shader_table(child,depth - 1)
-            end
-        end
-    end
-
     for name, value in pairs(_G) do
         if type(name) == "string" then
-            if string.sub(name,1,6) == "shader" then
-                -- shader*
-                if type(value) == "userdata" then
-                    draw_shader(value)
-                elseif type(value) == "table" then
-                    draw_shader_table(value,2)
-                end
-            elseif string.sub(name,1,5) == "image" then
+            if string.sub(name,1,5) == "image" then
                 -- image*
                 if type(value) == "userdata" then
                     draw_image_object(value)
@@ -237,5 +196,5 @@ function set_load_scene_asset_warm_up()
     love.graphics.setCanvas()
     love.graphics.setColor(1,1,1,1)
     love.graphics.setBlendMode("alpha")
-    return texture_count,shader_count
+    return texture_count
 end

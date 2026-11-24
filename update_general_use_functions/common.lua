@@ -107,3 +107,38 @@ function common_ringbuffer_get(rb,index)
     local pos = ((latest - index) % rb["length"]) + 1
     return rb["content"][pos]
 end
+-- shader 暖机:在 order_load 里 newShader 的下一步调用(和编译错开一帧,一帧只做一件重活)
+-- 很多驱动拖到第一次真正绘制才完成编译 / 链接,还可能按绘制目标格式、混合模式、顶点格式再编译一次,
+-- 所以按游戏里的画法画一次:同样的混合模式、同样的图元(rectangle / 贴图 / SpriteBatch / Mesh)。
+-- 先画进 8x8 canvas,再对屏幕用 alpha 0 画一次(屏幕和 canvas 格式不同,驱动可能按目标重新编译);
+-- 这里在 update 里跑,love.draw 开头会 clear,画面上看不到。
+-- 普通 uniform 的数值不影响编译,这里不 send(没 send 的 extern 是 0,Image 是 LOVE 的默认贴图)
+-- drawable 为 nil 时画 rectangle(全屏程序化 shader 的画法),否则 draw(drawable)
+function common_shader_warm_up(shader,blend_mode,drawable)
+    local canvas = love.graphics.newCanvas(8,8)
+    love.graphics.push("all")
+    love.graphics.setShader(shader)
+    love.graphics.setBlendMode(blend_mode)
+    love.graphics.setCanvas(canvas)
+    love.graphics.setColor(1,1,1,1)
+    if drawable == nil then
+        love.graphics.rectangle("fill",0,0,8,8)
+    else
+        love.graphics.draw(drawable,0,0)
+    end
+    -- 屏幕(和游戏里同一个绘制目标)
+    love.graphics.setCanvas()
+    love.graphics.setColor(1,1,1,0)
+    if drawable == nil then
+        love.graphics.rectangle("fill",0,0,8,8)
+    else
+        love.graphics.draw(drawable,0,0)
+    end
+    love.graphics.pop()
+end
+-- 暖机用的 SpriteBatch(角色 / 锁链这类用 sprite_batch 画的 shader)
+function common_shader_warm_up_sprite_batch()
+    local sprite_batch = love.graphics.newSpriteBatch(love.graphics.newCanvas(8,8),1)
+    sprite_batch:add(0,0)
+    return sprite_batch
+end
