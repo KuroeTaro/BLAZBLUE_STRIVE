@@ -1987,8 +1987,10 @@ function order_load_game_scene_char_RP_shader(load_order)
                 "shaders/characters/TRM/6SP_P_arua.glsl"
             )
         end,
-        -- 6SP_P 诅咒光环暖机:按游戏里真实的绘制状态画一次(float 数据贴图、alpha 混合、循环里真的有粒子),
+        -- 6SP_P 诅咒光环暖机:按游戏里真实的绘制状态画一次(float 数据贴图、config 的混合模式、循环里真的有粒子),
         -- 让驱动在加载时就把这条管线准备好,避免第一次释放时卡顿。config 在 order_load_game_scene_common 里已经加载
+        -- 游戏里光环是直接画在屏幕(默认帧缓冲)上的,和 8x8 canvas 的格式不同,驱动可能会按目标重新编译 shader,
+        -- 所以 canvas 画完再对屏幕用 alpha 0 画一次(这里在 update 里跑,love.draw 开头会 clear,画面上看不到)
         [3] = function()
             local config = config_game_scene_RP["6SP_P_arua"]
             local shader_config = config["shader"]
@@ -2016,6 +2018,10 @@ function order_load_game_scene_char_RP_shader(load_order)
             love.graphics.setShader(shader)
             love.graphics.setColor(1,1,1,0.75)
             love.graphics.setBlendMode(config["blend_mode"])
+            love.graphics.draw(config_game_scene_RP["6SP_P_arua_quad_image"],0,0,0,8,8)
+            -- 屏幕(和游戏里同一个绘制目标)
+            love.graphics.setCanvas()
+            love.graphics.setColor(1,1,1,0)
             love.graphics.draw(config_game_scene_RP["6SP_P_arua_quad_image"],0,0,0,8,8)
             love.graphics.pop()
         end
