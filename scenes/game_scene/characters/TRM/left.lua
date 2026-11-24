@@ -933,6 +933,61 @@ function load_game_scene_config_char_LP()
         config_game_scene_LP["6SP_P_arua_particle_image_data"]
     )
     config_game_scene_LP["6SP_P_arua_particle_image"]:setFilter("nearest","nearest")
+    -- 5UA_100_heat_follow 扩散光环的随机数发生器:只给视觉特效用,每次加载新建一次
+    config_game_scene_LP["5UA_100_heat_follow_arua_RNG"] = love.math.newRandomGenerator(os.time())
+    -- 5UA_100_heat_follow 扩散光环用的 1x1 白图:shader 画在它上面,拉伸成光环的绘制正方形
+    local heat_follow_arua_quad_image_data = love.image.newImageData(1,1)
+    heat_follow_arua_quad_image_data:setPixel(0,0,1,1,1,1)
+    config_game_scene_LP["5UA_100_heat_follow_arua_quad_image"] = love.graphics.newImage(heat_follow_arua_quad_image_data)
+    -- 5UA_100_heat_follow 扩散光环(_VFX.lua 的 insert_VFX_game_scene_char_TRM_5UA_100_heat_follow_arua 使用)
+    -- 纯色,三个阶段:ease_in(膨胀 + 不透明度 0 -> 1)/ loop / ease_out(从内往外消失 + 不透明度 -> 0)
+    -- 时间单位 tick(60 tick = 1 秒);长度类参数以 unit 世界单位为 1.0
+    -- 半径是噪波扭曲前的基准半径,实际轮廓会被噪波往里 / 往外推大约 0.3 ~ 0.5
+    -- shader 表里的每一项都会按同名 uniform 送进 shader
+    config_game_scene_LP["5UA_100_heat_follow_arua"] = {
+        unit = 400,           -- 长度单位(世界单位):原序列帧一帧的半边 = 1.0
+        x_offset = 0,         -- 光环中心相对角色 x 的偏移(世界单位,跟朝向翻转)
+        y_offset = -215,      -- 光环中心相对角色 y 的偏移(世界单位,负 = 往上)
+        blend_mode = "alpha", -- 绘制混合模式:"alpha" / "add" / "subtract"
+        -- ease_in:外径从 min 膨胀到 max,不透明度 0 -> 1(线性)
+        ease_in_length = 12,               -- 时长(tick)
+        ease_in_outer_radius_min = 0.58,   -- 外径最小半径(出生时)
+        ease_in_outer_radius_max = 0.95,   -- 外径最大半径(ease_in 结束时,loop 阶段保持这个外径)
+        ease_in_power = 2.0,               -- 膨胀曲线:1 = 线性,越大前期越快
+        -- loop:外径 = ease_in_outer_radius_max,内径 = ease_out_inner_radius_min,不透明度 1
+        loop_length = 132,                 -- 时长(tick);也可以提前调用 obj_VFX["start_ease_out"]() 结束
+        -- ease_out:外径 / 内径一起往外推,不透明度 -> 0(线性)
+        ease_out_length = 24,              -- 时长(tick)
+        ease_out_outer_radius_min = 0.95,  -- 外径最小半径(ease_out 开始时)
+        ease_out_outer_radius_max = 1.1,   -- 外径最大半径(ease_out 结束时)
+        ease_out_inner_radius_min = -0.5,  -- 内径最小半径(ease_out 开始时);负 = 洞还没破开,约 <= -0.5 时完全没有洞
+        ease_out_inner_radius_max = 1.6,   -- 内径最大半径(ease_out 结束时);要比外径最大半径大,才会整个吃掉
+        ease_out_power = 1.5,              -- 外径 / 内径往外推的曲线:1 = 线性,越大前期越快
+        shader = {
+            area_half = 1.7,         -- 绘制正方形的半边长:要盖住最大外径 + 噪波扩出去的部分
+            -- 运动(三个阶段都一直在动)
+            flow_speed = 0.006,      -- 从内向外运动的速度(半径 1.0 处每 tick 走多远)
+            churn_speed = 0.015,     -- 轮廓翻滚速度(每 tick)
+            -- domain warp
+            warp_scale = 1.6,        -- warp 噪波频率
+            warp_octaves = 3,        -- warp 噪波复杂度(层数 1-8,可以是小数)
+            warp_strength = 0.55,    -- warp 强度:越大轮廓越卷
+            -- 形状噪波(只决定形状,没有内部纹理)
+            noise_scale = 3.0,       -- 细节噪波频率:越大碎片越细
+            noise_octaves = 6,       -- 细节噪波复杂度(层数 1-8,可以是小数)
+            noise_roughness = 0.55,  -- 细节噪波每层衰减:越大边缘越毛糙
+            noise_contrast = 3.5,    -- 细节噪波强度:越大边缘外的碎块越多
+            edge_distort = 0.35,     -- 大块轮廓起伏幅度(半径单位)
+            edge_scale = 3.2,        -- 大块轮廓噪波频率
+            edge_octaves = 5,        -- 大块轮廓噪波复杂度
+            edge_roughness = 0.55,   -- 大块轮廓噪波每层衰减
+            -- alpha
+            shape = 3.2,             -- 边缘陡度:越大噪波相对越弱、轮廓越接近圆
+            edge_softness = 0.35,    -- 边缘过渡宽度:越大越软(>0)
+            -- 颜色
+            tint = {0.0,0.0,0.0}     -- 纯色(RGB 0-1)
+        }
+    }
 end
 function load_game_scene_wallbreak_start_init_LP()
     -- state
@@ -2017,6 +2072,33 @@ function order_load_game_scene_char_LP_shader(load_order)
             love.graphics.setColor(1,1,1,0.75)
             love.graphics.setBlendMode(config["blend_mode"])
             love.graphics.draw(config_game_scene_LP["6SP_P_arua_quad_image"],0,0,0,8,8)
+            love.graphics.pop()
+        end,
+        -- 5UA_100_heat_follow 扩散光环(程序化生成)
+        [4] = function()
+            shader_game_scene_LP["5UA_100_heat_follow_arua"] = love.graphics.newShader(
+                "shaders/characters/TRM/5UA_100_heat_follow_arua.glsl"
+            )
+        end,
+        -- 5UA_100_heat_follow 扩散光环暖机:按游戏里真实的绘制状态画一次,避免第一次释放时卡顿
+        [5] = function()
+            local config = config_game_scene_LP["5UA_100_heat_follow_arua"]
+            local shader_config = config["shader"]
+            local shader = shader_game_scene_LP["5UA_100_heat_follow_arua"]
+            for name,value in pairs(shader_config) do
+                shader:send(name,value)
+            end
+            shader:send("time",0)
+            shader:send("noise_offset",{0,0})
+            shader:send("outer_radius",config["ease_in_outer_radius_max"])
+            shader:send("inner_radius",config["ease_out_inner_radius_min"])
+            local canvas = love.graphics.newCanvas(8,8)
+            love.graphics.push("all")
+            love.graphics.setCanvas(canvas)
+            love.graphics.setShader(shader)
+            love.graphics.setColor(1,1,1,1)
+            love.graphics.setBlendMode(config["blend_mode"])
+            love.graphics.draw(config_game_scene_LP["5UA_100_heat_follow_arua_quad_image"],0,0,0,8,8)
             love.graphics.pop()
         end
     }

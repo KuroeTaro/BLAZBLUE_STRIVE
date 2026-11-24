@@ -52,7 +52,7 @@ function load_game_scene_prep()
         order_load_game_scene_stage_shader
     }
     CURRENT_ORDER_TABLE = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1} -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
-    ORDER_SIZE_TABLE = {5,1,4,3,1,1,1,4,3,1,10,12,39,3,12,39,3,3,4,1} -- 每个load function的最大值
+    ORDER_SIZE_TABLE = {5,1,4,3,1,1,1,4,3,1,10,12,39,5,12,39,5,3,4,1} -- 每个load function的最大值
     LOAD_ONCE_TABLE = {
         false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
     } -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
