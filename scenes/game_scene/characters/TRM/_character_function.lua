@@ -916,84 +916,6 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_shot_update(
     )
     return
 end
--- VFX 资源池
--- 同一侧共用的 GPU 资源(数据贴图 / shader)改成按 VFX 实例独占:
--- LÖVE 12(Vulkan)下 Image:replacePixels 的上传不按 draw 顺序执行(实测 upload_order_probe = NOT IN ORDER),
--- 同一帧里 写 A -> 画 A -> 写 B -> 画 B 时,A 会读到 B 的数据(6SP_P:B 的粒子被 A 的包围盒切出一条直线)。
--- 池在加载时建好(资源数 = 池大小,运行时不新建),insert 时领一个槽位:
---   · 槽位的主人寿命耗尽(life <= 0),或者已经不在它所在的 VFX 表里(回合重置时表会整个换掉),就算空闲
---   · 没有空闲槽位时抢最旧的那个,被抢的 VFX 立刻结束(life = 0;它的 update / draw 也会检查槽位主人)
---   · 同时占用数创新高、或者被迫抢槽位时在控制台打印,用来目测池大小够不够
--- pool = {name, slots = {{资源字段...,owner,owner_char,owner_table,serial},...}, serial, peak}
-function character_function_game_scene_TRM_VFX_pool_new(name)
-    return {["name"] = name,["slots"] = {},["serial"] = 0,["peak"] = 0}
-end
-function character_function_game_scene_TRM_VFX_pool_slot_in_use(slot)
-    local owner = slot["owner"]
-    if owner == nil or owner["life"] <= 0 then
-        return false
-    end
-    local list = slot["owner_char"][slot["owner_table"]]
-    if list == nil then
-        return false
-    end
-    for i = 1,#list do
-        if list[i] == owner then
-            return true
-        end
-    end
-    return false
-end
--- obj_VFX 还没有插进 owner_char[owner_table](insert 函数最后才插),领到的槽位在插入之后才算"在用"
-function character_function_game_scene_TRM_VFX_pool_acquire(pool,obj_VFX,owner_char,owner_table)
-    local slots = pool["slots"]
-    local free_slot = nil
-    local oldest_slot = nil
-    local in_use = 0
-    for i = 1,#slots do
-        local slot = slots[i]
-        if character_function_game_scene_TRM_VFX_pool_slot_in_use(slot) then
-            in_use = in_use + 1
-            if oldest_slot == nil or slot["serial"] < oldest_slot["serial"] then
-                oldest_slot = slot
-            end
-        else
-            slot["owner"] = nil
-            if free_slot == nil then
-                free_slot = slot
-            end
-        end
-    end
-    local slot = free_slot
-    if slot == nil then
-        print(string.format("[VFX pool] %s: %d/%d in use, stealing the oldest one",pool["name"],in_use,#slots))
-        oldest_slot["owner"]["life"] = 0
-        slot = oldest_slot
-    else
-        in_use = in_use + 1
-        if in_use > pool["peak"] then
-            pool["peak"] = in_use
-            print(string.format("[VFX pool] %s: new peak %d/%d",pool["name"],in_use,#slots))
-        end
-    end
-    pool["serial"] = pool["serial"] + 1
-    slot["serial"] = pool["serial"]
-    slot["owner"] = obj_VFX
-    slot["owner_char"] = owner_char
-    slot["owner_table"] = owner_table
-    return slot
-end
--- 调试:用红框画出 VFX 的绘制范围(屏幕坐标),目测裁切线是不是和绘制范围的边重合
-function character_function_game_scene_TRM_VFX_debug_draw_area(x,y,w,h)
-    local previous_shader = love.graphics.getShader()
-    love.graphics.setShader()
-    love.graphics.setBlendMode("alpha")
-    love.graphics.setLineWidth(2)
-    love.graphics.setColor(1,0,0,1)
-    love.graphics.rectangle("line",x,y,w,h)
-    love.graphics.setColor(1,1,1,1)
-    love.graphics.setShader(previous_shader)
-end
 -- VFX
 -- 6SP_P
 -- 诅咒光环(insert_VFX_game_scene_char_TRM_6SP_P_arua 见 _VFX.lua,shader 见 shaders/characters/TRM/6SP_P_arua.glsl)
@@ -1101,12 +1023,6 @@ function character_function_game_scene_TRM_6SP_P_arua_draw(obj_camera,obj_VFX,sh
         image_data:setPixel(i - 1,1,particle[6],0,0,0)
     end
     obj_VFX["particle_image"]:replacePixels(image_data)
-    -- 包围盒往外多扩 area_margin(shader 按世界坐标算,范围扩大不改变图案,只是多算一些空像素)
-    local margin = config["area_margin"]*unit
-    min_x = min_x - margin
-    min_y = min_y - margin
-    max_x = max_x + margin
-    max_y = max_y + margin
     -- 包围盒投影到屏幕(和 draw_3d_image_sprite_batch 同一套透视)
     local corner_point = obj_VFX["corner_point"]
     corner_point[1] = min_x
@@ -1142,9 +1058,4 @@ function character_function_game_scene_TRM_6SP_P_arua_draw(obj_camera,obj_VFX,sh
     love.graphics.setBlendMode("alpha")
     love.graphics.setColor(1,1,1,1)
     love.graphics.setShader(previous_shader)
-    if config["debug_draw_area"] then
-        character_function_game_scene_TRM_VFX_debug_draw_area(
-            corner[1],corner[2],area_size[1]*scale,area_size[2]*scale
-        )
-    end
 end

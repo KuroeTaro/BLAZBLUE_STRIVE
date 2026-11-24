@@ -873,8 +873,6 @@ function load_game_scene_config_char_RP()
         spawn_pow = 1.25,     -- 出生位置分布:<1 往外散,>1 往中心挤
         spawn_y = 0.175,      -- 出生范围中心的竖直偏移(正 = 往下)
         outer_shrink = 0.25,  -- 外圈粒子缩小比例
-        area_margin = 0.25,   -- 绘制范围(所有粒子的包围盒)往外多扩多少(相对 unit;只多算空像素,不改变图案)
-        debug_draw_area = false, -- true = 用红框画出每帧的绘制范围(目测裁切线是不是和它的边重合)
         shader = {
             unit = 400,              -- 长度单位(世界单位):长度类参数以它为 1.0(原序列帧一帧 800x800,半径 = 1.0)
             -- 粒子
@@ -923,31 +921,18 @@ function load_game_scene_config_char_RP()
             lum_contrast = 5.0,      -- 对比度:越大明暗分得越开
             lum_min = 0.0,           -- 最暗处亮度(0 = 黑)
             lum_max = 1.0,           -- 最亮处亮度(1 = tint 原色)
-            lum_gamma = 2.0,  -- 亮度曲线:1 = 线性;>1 中间调变暗、整体更暗(最亮处不变);<1 反之
-            -- 调试
-            debug_view = 0    -- 1 = 不画噪波:每个粒子画成自己颜色的半透明圆 + 圆周线(看切线是不是某个粒子的边)
+            lum_gamma = 2.0   -- 亮度曲线:1 = 线性;>1 中间调变暗、整体更暗(最亮处不变);<1 反之
         }
     }
-    -- 6SP_P 诅咒光环的粒子数据贴图池(rgba32f,宽 = max_particles,高 = 2):代替 uniform 数组
-    -- 每个光环 insert 时独占一张(不再同一侧共用一张,原因见 _character_function.lua 的 VFX 资源池)
-    -- 池大小 = 同一侧能同时存在的 6SP_P 光环数(含 end 阶段还在消散的);用完时抢最旧的那个
-    config_game_scene_RP["6SP_P_arua_particle_image_pool_size"] = 64
-    config_game_scene_RP["6SP_P_arua_particle_image_pool"] =
-        character_function_game_scene_TRM_VFX_pool_new("RP 6SP_P_arua particle_image")
-    for i = 1,config_game_scene_RP["6SP_P_arua_particle_image_pool_size"] do
-        local particle_image_data = love.image.newImageData(
-            config_game_scene_RP["6SP_P_arua"]["max_particles"],2,"rgba32f"
-        )
-        local particle_image = love.graphics.newImage(particle_image_data)
-        particle_image:setFilter("nearest","nearest")
-        config_game_scene_RP["6SP_P_arua_particle_image_pool"]["slots"][i] = {
-            ["image_data"] = particle_image_data,
-            ["image"] = particle_image
-        }
-    end
-    -- 5UA_100_heat_follow 扩散光环的 shader 池:每个光环 insert 时独占一个 shader(各自的 uniform 互不影响)
-    -- 池大小 = 同一侧能同时存在的 5UA 光环数;shader 在 order_load_game_scene_char_RP_shader 的 [4] 里按这个数编译
-    config_game_scene_RP["5UA_100_heat_follow_arua_shader_pool_size"] = 2
+    -- 6SP_P 诅咒光环的粒子数据贴图(rgba32f,宽 = max_particles,高 = 2):代替 uniform 数组
+    -- 加载时建一次,同一侧释放的光环共用(每次 draw 前重新写入再上传,GL 按调用顺序执行,不会互相覆盖)
+    config_game_scene_RP["6SP_P_arua_particle_image_data"] = love.image.newImageData(
+        config_game_scene_RP["6SP_P_arua"]["max_particles"],2,"rgba32f"
+    )
+    config_game_scene_RP["6SP_P_arua_particle_image"] = love.graphics.newImage(
+        config_game_scene_RP["6SP_P_arua_particle_image_data"]
+    )
+    config_game_scene_RP["6SP_P_arua_particle_image"]:setFilter("nearest","nearest")
     -- 5UA_100_heat_follow 扩散光环的随机数发生器:只给视觉特效用,每次加载新建一次
     config_game_scene_RP["5UA_100_heat_follow_arua_RNG"] = love.math.newRandomGenerator(os.time())
     -- 5UA_100_heat_follow 扩散光环用的 1x1 白图:shader 画在它上面,拉伸成光环的绘制正方形
@@ -964,7 +949,6 @@ function load_game_scene_config_char_RP()
         x_offset = 0,         -- 光环中心相对角色 x 的偏移(世界单位,跟朝向翻转)
         y_offset = -215,      -- 光环中心相对角色 y 的偏移(世界单位,负 = 往上)
         blend_mode = "alpha", -- 绘制混合模式:"alpha" / "add" / "subtract"
-        debug_draw_area = false, -- true = 用红框画出绘制范围(目测裁切线是不是和它的边重合)
         -- ease_in:外径从 min 膨胀到 max,不透明度 0 -> 1(线性)
         ease_in_length = 12,               -- 时长(tick)
         ease_in_outer_radius_min = 0.58,   -- 外径最小半径(出生时)
@@ -980,8 +964,7 @@ function load_game_scene_config_char_RP()
         ease_out_inner_radius_max = 1.6,   -- 内径最大半径(ease_out 结束时);要比外径最大半径大,才会整个吃掉
         ease_out_power = 1.5,              -- 外径 / 内径往外推的曲线:1 = 线性,越大前期越快
         shader = {
-            area_half = 2.0,         -- 绘制正方形的半边长:要盖住最大外径 + 噪波扩出去的部分
-                                     -- (从 0.85*area_half 开始圆形淡出到 0,所以实际可见半径约 0.85*area_half)
+            area_half = 1.7,         -- 绘制正方形的半边长:要盖住最大外径 + 噪波扩出去的部分
             -- 运动(三个阶段都一直在动)
             flow_speed = 0.006,      -- 从内向外运动的速度(半径 1.0 处每 tick 走多远)
             churn_speed = 0.015,     -- 轮廓翻滚速度(每 tick)
@@ -2061,18 +2044,23 @@ function order_load_game_scene_char_RP_shader(load_order)
         end,
         -- 6SP_P 诅咒光环暖机:按游戏里真实的绘制状态画一次(float 数据贴图、alpha 混合、循环里真的有粒子),
         -- 让驱动在加载时就把这条管线准备好,避免第一次释放时卡顿。config 在 order_load_game_scene_common 里已经加载
-        -- 池里的每张数据贴图都上传 / 画一次
         [3] = function()
             local config = config_game_scene_RP["6SP_P_arua"]
             local shader_config = config["shader"]
             local unit = shader_config["unit"]
             local shader = shader_game_scene_RP["6SP_P_arua"]
-            local slots = config_game_scene_RP["6SP_P_arua_particle_image_pool"]["slots"]
+            local image_data = config_game_scene_RP["6SP_P_arua_particle_image_data"]
+            local image = config_game_scene_RP["6SP_P_arua_particle_image"]
             for name,value in pairs(shader_config) do
                 shader:send(name,value)
             end
+            -- 一个在世界原点出生、处在半生的粒子
+            image_data:setPixel(0,0,0,0,0,0)
+            image_data:setPixel(0,1,1,0,0,0)
+            image:replacePixels(image_data)
             shader:send("time",shader_config["life"]*0.5)
             shader:send("particle_count",1)
+            shader:send("particle_data",image)
             shader:send("particle_data_width",config["max_particles"])
             shader:send("area_origin",{-unit,-unit})
             shader:send("area_size",{unit*2,unit*2})
@@ -2080,52 +2068,37 @@ function order_load_game_scene_char_RP_shader(load_order)
             local canvas = love.graphics.newCanvas(8,8)
             love.graphics.push("all")
             love.graphics.setCanvas(canvas)
+            love.graphics.setShader(shader)
             love.graphics.setColor(1,1,1,0.75)
             love.graphics.setBlendMode(config["blend_mode"])
-            for i = 1,#slots do
-                -- 一个在世界原点出生、处在半生的粒子
-                local image_data = slots[i]["image_data"]
-                image_data:setPixel(0,0,0,0,0,0)
-                image_data:setPixel(0,1,1,0,0,0)
-                slots[i]["image"]:replacePixels(image_data)
-                shader:send("particle_data",slots[i]["image"])
-                love.graphics.setShader(shader)
-                love.graphics.draw(config_game_scene_RP["6SP_P_arua_quad_image"],0,0,0,8,8)
-            end
+            love.graphics.draw(config_game_scene_RP["6SP_P_arua_quad_image"],0,0,0,8,8)
             love.graphics.pop()
         end,
-        -- 5UA_100_heat_follow 扩散光环(程序化生成):按 shader 池大小编译,每个光环独占一个
+        -- 5UA_100_heat_follow 扩散光环(程序化生成)
         [4] = function()
-            local pool = character_function_game_scene_TRM_VFX_pool_new("RP 5UA_100_heat_follow_arua shader")
-            for i = 1,config_game_scene_RP["5UA_100_heat_follow_arua_shader_pool_size"] do
-                pool["slots"][i] = {
-                    ["shader"] = love.graphics.newShader("shaders/characters/TRM/5UA_100_heat_follow_arua.glsl")
-                }
-            end
-            shader_game_scene_RP["5UA_100_heat_follow_arua_pool"] = pool
+            shader_game_scene_RP["5UA_100_heat_follow_arua"] = love.graphics.newShader(
+                "shaders/characters/TRM/5UA_100_heat_follow_arua.glsl"
+            )
         end,
-        -- 5UA_100_heat_follow 扩散光环暖机:按游戏里真实的绘制状态画一次,避免第一次释放时卡顿(池里每个 shader 都画)
+        -- 5UA_100_heat_follow 扩散光环暖机:按游戏里真实的绘制状态画一次,避免第一次释放时卡顿
         [5] = function()
             local config = config_game_scene_RP["5UA_100_heat_follow_arua"]
             local shader_config = config["shader"]
-            local slots = shader_game_scene_RP["5UA_100_heat_follow_arua_pool"]["slots"]
+            local shader = shader_game_scene_RP["5UA_100_heat_follow_arua"]
+            for name,value in pairs(shader_config) do
+                shader:send(name,value)
+            end
+            shader:send("time",0)
+            shader:send("noise_offset",{0,0})
+            shader:send("outer_radius",config["ease_in_outer_radius_max"])
+            shader:send("inner_radius",config["ease_out_inner_radius_min"])
             local canvas = love.graphics.newCanvas(8,8)
             love.graphics.push("all")
             love.graphics.setCanvas(canvas)
+            love.graphics.setShader(shader)
             love.graphics.setColor(1,1,1,1)
             love.graphics.setBlendMode(config["blend_mode"])
-            for i = 1,#slots do
-                local shader = slots[i]["shader"]
-                for name,value in pairs(shader_config) do
-                    shader:send(name,value)
-                end
-                shader:send("time",0)
-                shader:send("noise_offset",{0,0})
-                shader:send("outer_radius",config["ease_in_outer_radius_max"])
-                shader:send("inner_radius",config["ease_out_inner_radius_min"])
-                love.graphics.setShader(shader)
-                love.graphics.draw(config_game_scene_RP["5UA_100_heat_follow_arua_quad_image"],0,0,0,8,8)
-            end
+            love.graphics.draw(config_game_scene_RP["5UA_100_heat_follow_arua_quad_image"],0,0,0,8,8)
             love.graphics.pop()
         end
     }

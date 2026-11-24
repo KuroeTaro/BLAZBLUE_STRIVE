@@ -1,4 +1,3 @@
-#pragma language glsl3
 // TRM 6SP_P 诅咒光环(curse aura)—— 程序化版本
 // 参考:asset/game_scene/characters/TRM/texture/_IMG/projectile/6SP_P_curse_arua_example(带 alpha 的序列帧)
 //
@@ -77,9 +76,6 @@ extern float haze_width;        // 烟丝比实心块多扩出去多少(>0)
 // ---------------- 整体 ----------------
 extern vec3 tint;               // 颜色(乘在亮度噪波上)
 
-// ---------------- 调试 ----------------
-extern float debug_view;        // 1 = 不画噪波:每个粒子画成自己颜色的半透明圆 + 圆周线,看切线是不是某个粒子的边
-
 // ---------------- 亮度噪波(稳定向上移动,决定颜色深浅) ----------------
 extern float lum_speed;         // 向上移动速度(每序列帧多少,400 世界单位 = 1.0)
 extern float lum_scale;         // 频率(每 400 世界单位几个周期):越大明暗变化越碎
@@ -90,25 +86,10 @@ extern float lum_min;           // 最暗处亮度
 extern float lum_max;           // 最亮处亮度
 extern float lum_gamma;         // 亮度曲线:1 = 线性,>1 中间调变暗(最亮 / 最暗不变),<1 中间调变亮
 
-// 调试用:0..1 -> 色相
-vec3 debug_hue(float k) {
-    return clamp(abs(fract(k + vec3(0.0, 2.0 / 3.0, 1.0 / 3.0)) * 6.0 - 3.0) - 1.0, 0.0, 1.0);
-}
-
-// 格点哈希(整数运算):输入是整数格点坐标(value_noise 里 floor 的结果 + 0 / 1),输出 0..1
-// 旧版用浮点 fract 链(fract(p * 0.1031) ...),对输入的最后几位非常敏感;GPU 编译器会把
-// hash12(i + vec2(0.0, 1.0)) 重排成 fract(i * 0.1031 + 0.1031) 之类的形式,同一个格点在相邻两个格子里
-// 算出不同的值,噪波沿格线断开 → 粒子里出现一像素宽、沿格线的水平 / 垂直直线(有概率出现)。
-// 整数运算对同一个格点永远得到同一个结果,不受编译器重排影响。
 float hash12(vec2 p) {
-    uvec2 q = uvec2(ivec2(floor(p + 0.5)));
-    uint h = q.x * 1597334677u ^ q.y * 3812015801u;
-    h ^= h >> 16u;
-    h *= 2246822519u;
-    h ^= h >> 13u;
-    h *= 3266489917u;
-    h ^= h >> 16u;
-    return float(h >> 8u) * (1.0 / 16777216.0);
+    vec3 p3 = fract(vec3(p.xyx) * 0.1031);
+    p3 += dot(p3, p3.yzx + 33.33);
+    return fract((p3.x + p3.y) * p3.z);
 }
 
 float value_noise(vec2 p) {
@@ -179,11 +160,9 @@ vec4 effect(vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords) {
         shared_lum = lum_noise(lum_p);
     }
     float col = 0.0;   // 预乘后的亮度
-    vec3 debug_rgb = vec3(0.0);   // 调试:预乘后的颜色
 
     // ---- 粒子:决定哪里有东西 ----
     float alpha = 0.0;
-    bool debug = debug_view > 0.5;
     int count = int(particle_count + 0.5);
     for (int i = 0; i < count; i++) {
         // count 对所有像素都一样,读贴图时控制流是一致的
@@ -197,15 +176,6 @@ vec4 effect(vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords) {
         float size = mix(size_start, size_end, 1.0 - (1.0 - age) * (1.0 - age)) * pb.x * unit;
         float raw_d = length(world - center) / size;
         if (raw_d >= 1.0) continue;
-
-        if (debug) {
-            // 半透明填充 + 圆周线,颜色按种子分(相邻出生的粒子颜色不同)
-            float da = max(0.2, smoothstep(0.955, 0.985, raw_d));
-            col = col * (1.0 - da) + 1.0 * da;
-            alpha = alpha * (1.0 - da) + da;
-            debug_rgb = debug_rgb * (1.0 - da) + debug_hue(fract(pa.w * 0.618)) * da;
-            continue;
-        }
 
         float na = shared_na;
         float edge_offset = shared_edge;
@@ -241,9 +211,6 @@ vec4 effect(vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords) {
     }
     if (alpha <= 0.002) {
         return vec4(0.0);
-    }
-    if (debug) {
-        return vec4(debug_rgb / alpha, alpha) * color;
     }
     float lum = col / alpha;
 

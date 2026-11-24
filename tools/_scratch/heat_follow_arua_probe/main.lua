@@ -62,7 +62,6 @@ function love.load()
         "scenes/game_scene/_common/common_functions.lua",
         "scenes/game_scene/characters/TRM/left.lua",
         "scenes/game_scene/characters/TRM/right.lua",
-        "scenes/game_scene/characters/TRM/_character_function.lua",
         "scenes/game_scene/characters/TRM/_VFX.lua"
     }) do
         local ok,err = pcall(dofile,REPO .. "/" .. rel)
@@ -80,7 +79,7 @@ function love.load()
             if not ok then fails = fails + 1 end
         end
     end
-    local shader = shader_game_scene_LP["5UA_100_heat_follow_arua_pool"]["slots"][1]["shader"]
+    local shader = shader_game_scene_LP["5UA_100_heat_follow_arua"]
     local config = config_game_scene_LP["5UA_100_heat_follow_arua"]
     local warn = shader:getWarnings()
     if warn and warn ~= "" then log("shader warnings: " .. warn) end

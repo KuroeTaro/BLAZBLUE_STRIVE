@@ -1,8 +1,0 @@
-love version: 12.0.0.Bestest Friend
-renderer: Vulkan | 1.4.312 | Nvidia | NVIDIA GeForce GTX 1070
-canvas                       want 0.14 0.29 0.43 0.57 0.71 0.86
-canvas                       got  0.00 0.00 0.00 0.00 0.00 0.00   -> NOT IN ORDER (每次绘制没有看到自己那次上传的数据)
-screen (like in game)        want 0.14 0.29 0.43 0.57 0.71 0.86
-screen (like in game)        got  0.00 0.00 0.00 0.00 0.00 0.00   -> NOT IN ORDER (每次绘制没有看到自己那次上传的数据)
-
-RESULT: uploads NOT IN ORDER

@@ -65,7 +65,6 @@ local function reload()
         dofile(REPO .. "/draw_general_use_functions.lua")
         dofile(REPO .. "/scenes/game_scene/_common/common_functions.lua")
         dofile(REPO .. "/scenes/game_scene/characters/TRM/left.lua")
-        dofile(REPO .. "/scenes/game_scene/characters/TRM/_character_function.lua")
         dofile(REPO .. "/scenes/game_scene/characters/TRM/_VFX.lua")
         load_game_scene_config_char_LP()
         shader_game_scene_LP = {}
