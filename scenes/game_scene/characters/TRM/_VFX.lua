@@ -826,10 +826,10 @@ function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
     end
     table.insert(obj_char["VFX_common_front_table"],obj_VFX)
 end
--- 6SP_P 诅咒光环(shaders/characters/TRM/6SP_P_arua.glsl)
--- 粒子的发射 / 回收 / 绘制见 _character_function.lua 的 character_function_game_scene_TRM_6SP_P_arua_*
--- 参数在 left.lua / right.lua 的 load_game_scene_config_char_LP / RP 里
 function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_obj_char)
+    -- 6SP_P 诅咒光环(shaders/characters/TRM/6SP_P_arua.glsl)
+    -- 粒子的发射 / 回收 / 绘制见 _character_function.lua 的 character_function_game_scene_TRM_6SP_P_arua_*
+    -- 参数在 left.lua / right.lua 的 load_game_scene_config_char_LP / RP 里
     local obj_VFX = {0,0,0,0.75,0,0,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local hit_side = hit_side_obj_char["player_side"]
@@ -1114,6 +1114,8 @@ function insert_VFX_game_scene_char_TRM_6SP_S_move(obj_char)
         love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_common_front_table"],obj_VFX)
+end
+function insert_VFX_game_scene_char_TRM_5UA_100_heat_follow_arua(obj_char)
 end
 -- attachment
 function insert_VFX_game_scene_char_TRM_oroboros_switch(obj_char,sprite_sheet)
