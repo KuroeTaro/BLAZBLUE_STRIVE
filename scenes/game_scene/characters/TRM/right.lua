@@ -885,6 +885,8 @@ function load_game_scene_config_char_RP()
         spawn_pow = 1.25,     -- 出生位置分布:<1 往外散,>1 往中心挤
         spawn_y = 0.175,      -- 出生范围中心的竖直偏移(正 = 往下)
         outer_shrink = 0.25,  -- 外圈粒子缩小比例
+        -- 编译期开关(不是 uniform):加载 shader 时按它插 #define PER_PARTICLE,改了要重新加载场景
+        per_particle_noise = 1,  -- 1 = 每个粒子一张独立噪波(更耗);0 = 所有粒子共用一张
         shader = {
             unit = 400,              -- 长度单位(世界单位):长度类参数以它为 1.0(原序列帧一帧 800x800,半径 = 1.0)
             -- 粒子
@@ -901,7 +903,6 @@ function load_game_scene_config_char_RP()
             noise_roughness = 0.6,   -- 每层衰减:越大边缘越毛糙
             noise_contrast = 7.5,    -- 对比度
             noise_brightness = 0.0,  -- 亮度偏移:越大实心面积越多
-            per_particle_noise = 1,  -- 1 = 每个粒子一张独立噪波(更耗);0 = 所有粒子共用一张
             -- 粒子边缘(不是圆形)
             edge_distort = 0.5,      -- 边缘扭曲幅度(相对粒子半径,0 = 纯圆)
             edge_scale = 10.0,       -- 边缘噪波频率
@@ -1991,10 +1992,16 @@ function order_load_game_scene_char_RP_shader(load_order)
             )
         end,
         -- 6SP_P 诅咒光环(程序化生成)
+        -- per_particle_noise 是编译期开关:读出源码,按 config 在 #pragma 那行后面插 #define,
+        -- shader 里只编译用得到的那条路径(config 在 order_load_game_scene_common 里已经加载)
         [3] = function()
-            shader_game_scene_RP["6SP_P_arua"] = love.graphics.newShader(
-                "shaders/characters/TRM/6SP_P_arua.glsl"
-            )
+            local source = love.filesystem.read("shaders/characters/TRM/6SP_P_arua.glsl")
+            if config_game_scene_RP["6SP_P_arua"]["per_particle_noise"] == 1 then
+                source = string.gsub(
+                    source,"#pragma language glsl3","#pragma language glsl3\n#define PER_PARTICLE",1
+                )
+            end
+            shader_game_scene_RP["6SP_P_arua"] = love.graphics.newShader(source)
         end,
         -- 6SP_P 诅咒光环暖机:按游戏里真实的绘制状态画一次(float 数据贴图、config 的混合模式、循环里真的有粒子),
         -- 让驱动在加载时就把这条管线准备好,避免第一次释放时卡顿。config / image_table_VFX 在 order_load_game_scene_common 里已经加载

@@ -9,7 +9,8 @@
 //     粒子只决定「哪里有东西」,形状由噪波决定:
 //       val = 形状噪波 + 中心偏向 - 生命周期阈值 - 边缘切除
 //     边缘距离被边缘噪波扭曲,所以轮廓不是圆形
-//   · per_particle_noise = 1 时每个粒子用自己的种子偏移噪波,重叠的粒子图案各不相同
+//   · 定义了 PER_PARTICLE 时每个粒子用自己的种子偏移噪波,重叠的粒子图案各不相同
+//     (编译期开关:Lua 加载时按 config 的 per_particle_noise 在 #pragma 后面插 #define PER_PARTICLE)
 //   · 多个粒子按出生顺序逐个 over 叠加(后出生的在上面),每个粒子的形状 / 边缘 / 亮度纹理各自独立
 //   · 颜色 = tint * 亮度噪波;亮度噪波只平移不变形,以 lum_speed 稳定往上移动
 //     输出 vec4(tint * 亮度, alpha),用 alpha 混合画
@@ -49,7 +50,6 @@ extern float noise_octaves;     // 复杂度(层数 1-8,可以是小数)
 extern float noise_roughness;   // 每层衰减:越大边缘越毛糙
 extern float noise_contrast;    // 对比度
 extern float noise_brightness;  // 亮度偏移:越大实心面积越多
-extern float per_particle_noise;// 1 = 每个粒子一张独立噪波,0 = 所有粒子共用一张
 
 // ---------------- 粒子边缘 ----------------
 extern float edge_distort;      // 边缘扭曲幅度(相对粒子半径,0 = 纯圆)
@@ -115,14 +115,17 @@ float value_noise(vec2 p) {
 }
 
 // octaves 最多 8 层,小数部分让最后一层按比例加入
+// 循环上限用 uniform 算出来的 n,不用常量 8:常量上限会被驱动整段展开
+// (fbm 被内联到好几处,每处 8 层 × 4 次 hash12,展开后代码量巨大,编译非常慢)。
+// n 对所有像素都一样,运行时没有分支发散。
 float fbm(vec2 p, float octaves, float gain) {
     float v = 0.0;
     float a = 0.5;
     float total = 0.0;
     mat2 m = mat2(1.6, -1.2, 1.2, 1.6);
-    for (int i = 0; i < 8; i++) {
+    int n = int(ceil(clamp(octaves, 0.0, 8.0)));
+    for (int i = 0; i < n; i++) {
         float w = clamp(octaves - float(i), 0.0, 1.0);
-        if (w <= 0.0) break;
         v += a * w * value_noise(p);
         total += a * w;
         p = m * p + vec2(17.3, 9.1);
@@ -159,17 +162,14 @@ vec4 effect(vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords) {
     // 亮度噪波:只平移、不变形,以 lum_speed 稳定往上移动
     vec2 lum_p = (world / unit + vec2(0.0, lum_speed * time)) * lum_scale + noise_offset * 0.7 + vec2(40.0, 20.0);
 
-    // per_particle_noise = 0:所有粒子共用一张噪波,每个像素只算一次
-    // per_particle_noise = 1:每个粒子按自己的种子偏移采样,各自一张噪波(在循环里算)
-    bool per_particle = per_particle_noise > 0.5;
-    float shared_na = 0.0;
-    float shared_edge = 0.0;
-    float shared_lum = 0.0;
-    if (!per_particle) {
-        shared_na = shape_noise(shape_p);
-        shared_edge = edge_noise(edge_p);
-        shared_lum = lum_noise(lum_p);
-    }
+    // 没定义 PER_PARTICLE:所有粒子共用一张噪波,每个像素只算一次
+    // 定义了 PER_PARTICLE:每个粒子按自己的种子偏移采样,各自一张噪波(在循环里算)
+    // 用 #ifdef 而不是运行时分支:用不到的那条路径不会被编译进来,fbm 的调用点从 6 处降到 3 处
+#ifndef PER_PARTICLE
+    float shared_na = shape_noise(shape_p);
+    float shared_edge = edge_noise(edge_p);
+    float shared_lum = lum_noise(lum_p);
+#endif
     float col = 0.0;   // 预乘后的亮度
 
     // ---- 粒子:决定哪里有东西 ----
@@ -188,15 +188,15 @@ vec4 effect(vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords) {
         float raw_d = length(world - center) / size;
         if (raw_d >= 1.0) continue;
 
+#ifdef PER_PARTICLE
+        // 种子 -> 每个粒子自己的噪波偏移;仍在上飘坐标系里采样,和粒子之间保持相对运动
+        vec2 po = vec2(fract(pa.w * 0.1371), fract(pa.w * 0.2917)) * 173.0;
+        float na = shape_noise(shape_p + po);
+        float edge_offset = edge_noise(edge_p + po.yx);
+#else
         float na = shared_na;
         float edge_offset = shared_edge;
-        vec2 po = vec2(0.0);
-        if (per_particle) {
-            // 种子 -> 每个粒子自己的噪波偏移;仍在上飘坐标系里采样,和粒子之间保持相对运动
-            po = vec2(fract(pa.w * 0.1371), fract(pa.w * 0.2917)) * 173.0;
-            na = shape_noise(shape_p + po);
-            edge_offset = edge_noise(edge_p + po.yx);
-        }
+#endif
         float d = raw_d + edge_offset;
 
         float th = th_born - (th_born - th_full) * smoothstep(0.0, appear, age)
@@ -212,8 +212,12 @@ vec4 effect(vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords) {
         a *= fade * smoothstep(1.0, 0.9, raw_d) * particle_opacity;
         if (a <= 0.001) continue;
 
-        // 每个粒子自己的亮度纹理(per_particle_noise = 1 时按种子偏移,各不相同)
-        float plum = per_particle ? lum_noise(lum_p + po.yx * 0.61) : shared_lum;
+        // 每个粒子自己的亮度纹理(PER_PARTICLE 时按种子偏移,各不相同)
+#ifdef PER_PARTICLE
+        float plum = lum_noise(lum_p + po.yx * 0.61);
+#else
+        float plum = shared_lum;
+#endif
 
         // 逐个粒子做 over 叠加:后出生的盖在先出生的上面,
         // 每个粒子保留自己的纹理,重叠处能看出是两个不同的粒子
