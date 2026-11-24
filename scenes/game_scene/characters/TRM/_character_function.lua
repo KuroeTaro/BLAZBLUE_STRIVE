@@ -916,3 +916,7 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_shot_update(
     )
     return
 end
+-- get_function
+-- reset_function
+-- update_function
+-- insert_function

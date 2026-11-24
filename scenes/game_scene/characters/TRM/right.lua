@@ -853,11 +853,18 @@ function load_game_scene_shader_char_RP()
     shader_game_scene_RP["drive_sys_chain_fade"] = love.graphics.newShader(
         "shaders/characters/TRM/drive_sys_chain_fade.glsl"
     )
+    -- 6SP_P 诅咒光环:程序化生成,替代 TRM_6SP_P_arua.png 序列帧
+    shader_game_scene_RP["6SP_P_arua"] = love.graphics.newShader(
+        "shaders/characters/TRM/6SP_P_arua.glsl"
+    )
 end
 function load_game_scene_canvas_char_RP()
     -- CANVAS
     local width = love.graphics.getWidth()
     local height = love.graphics.getHeight()
+end
+function load_game_scene_config_char_RP()
+    config_game_scene_RP = {}
 end
 function load_game_scene_wallbreak_start_init_RP()
     -- state
