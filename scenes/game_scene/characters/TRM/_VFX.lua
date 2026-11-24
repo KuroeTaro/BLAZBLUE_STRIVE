@@ -863,9 +863,12 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     obj_VFX["config"] = hit_side_config["6SP_P_arua"]
     obj_VFX["6SP_P_arua_RNG"] = hit_side_config["6SP_P_arua_RNG"]
     obj_VFX["6SP_P_arua_quad_image"] = hit_side_config["6SP_P_arua_quad_image"]
-    -- 粒子数据贴图在 config 加载时已经建好(同一侧共用),释放时不新建
-    obj_VFX["particle_image_data"] = hit_side_config["6SP_P_arua_particle_image_data"]
-    obj_VFX["particle_image"] = hit_side_config["6SP_P_arua_particle_image"]
+    -- 粒子数据贴图:从释放方 config 的贴图池里领一张独占(池在 config 加载时已经建好,释放时不新建)
+    obj_VFX["particle_image_slot"] = character_function_game_scene_TRM_VFX_pool_acquire(
+        hit_side_config["6SP_P_arua_particle_image_pool"],obj_VFX,hurt_side_obj_char,"VFX_status_back_table"
+    )
+    obj_VFX["particle_image_data"] = obj_VFX["particle_image_slot"]["image_data"]
+    obj_VFX["particle_image"] = obj_VFX["particle_image_slot"]["image"]
     -- draw 里复用的表(投影用的点、send 用的 vec2),不每帧新建
     obj_VFX["corner_point"] = {0,0,0}
     obj_VFX["area_origin"] = {0,0}
@@ -889,6 +892,11 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
         character_function_game_scene_TRM_6SP_P_arua_update_particles(obj_VFX,obj_VFX[1] + 400,obj_VFX[2] + 400,0.5)
     end
     obj_VFX["update"] = function()
+        -- 贴图被新的光环抢走了:立刻结束
+        if obj_VFX["particle_image_slot"]["owner"] ~= obj_VFX then
+            obj_VFX["life"] = 0
+            return
+        end
         local switch = {
             ["loop"] = function()
                 update_particles()
@@ -954,8 +962,8 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     end
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
-        -- obj_VFX[4] 只当显示开关用(破墙期间 = 0 隐藏)
-        if obj_VFX[4] == 0 then
+        -- obj_VFX[4] 只当显示开关用(破墙期间 = 0 隐藏);贴图被抢走了也不画(不能再往别人的贴图里写)
+        if obj_VFX[4] == 0 or obj_VFX["particle_image_slot"]["owner"] ~= obj_VFX then
             return
         end
         character_function_game_scene_TRM_6SP_P_arua_draw(obj_camera,obj_VFX,hit_side_shader)
@@ -1125,7 +1133,7 @@ function insert_VFX_game_scene_char_TRM_5UA_100_heat_follow_arua(obj_char)
     local obj_VFX = {0,0,0,0,1,1,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local side = obj_char["player_side"]
-    local shader = common_game_scene_get_shader(side)["5UA_100_heat_follow_arua"]
+    local shader_pool = common_game_scene_get_shader(side)["5UA_100_heat_follow_arua_pool"]
     local side_config = common_game_scene_get_config(side)
     local config = side_config["5UA_100_heat_follow_arua"]
     local shader_config = config["shader"]
@@ -1144,6 +1152,11 @@ function insert_VFX_game_scene_char_TRM_5UA_100_heat_follow_arua(obj_char)
     obj_VFX["FCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCT"] = {0,0,0,0,0,0,0,0}
     obj_VFX["LCD"] = {0,0,0,0,0,0,0,0}
+    -- shader:从 shader 池里领一个独占(池在加载时已经编译好,释放时不新建)
+    obj_VFX["shader_slot"] = character_function_game_scene_TRM_VFX_pool_acquire(
+        shader_pool,obj_VFX,obj_char,"VFX_common_back_table"
+    )
+    local shader = obj_VFX["shader_slot"]["shader"]
     -- config 里的 shader 参数在释放时送一次(shader 会一直保留 uniform 的值,不用每帧送)
     -- shader 子表里的每一项都必须是 shader 里用到的 uniform
     for name,value in pairs(shader_config) do
@@ -1205,6 +1218,11 @@ function insert_VFX_game_scene_char_TRM_5UA_100_heat_follow_arua(obj_char)
     }
     -- 角色 hitstop / wallbreak_hit 时暂停,其他时候按自己的阶段播
     obj_VFX["update"] = function()
+        -- shader 被新的光环抢走了:立刻结束
+        if obj_VFX["shader_slot"]["owner"] ~= obj_VFX then
+            obj_VFX["life"] = 0
+            return
+        end
         if obj_char["state"] == "hitstop" or obj_char["state"] == "wallbreak_hit" then
             return
         end
@@ -1221,7 +1239,7 @@ function insert_VFX_game_scene_char_TRM_5UA_100_heat_follow_arua(obj_char)
     end
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
-        if obj_VFX[4] == 0 then
+        if obj_VFX[4] == 0 or obj_VFX["shader_slot"]["owner"] ~= obj_VFX then
             return
         end
         -- 以光环中心为中心的正方形投影到屏幕(和 draw_3d_image_sprite_batch 同一套透视)
@@ -1245,6 +1263,11 @@ function insert_VFX_game_scene_char_TRM_5UA_100_heat_follow_arua(obj_char)
         love.graphics.setBlendMode("alpha")
         love.graphics.setColor(1,1,1,1)
         love.graphics.setShader(previous_shader)
+        if config["debug_draw_area"] then
+            character_function_game_scene_TRM_VFX_debug_draw_area(
+                corner[1],corner[2],half*2*scale,half*2*scale
+            )
+        end
     end
     table.insert(obj_char["VFX_common_back_table"],obj_VFX)
 end

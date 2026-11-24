@@ -19,8 +19,12 @@ function draw_game_scene_main()
     draw_game_scene_char_LP_projectile_back()
     draw_game_scene_char_RP_projectile_back()
     -- 绘制背侧VFX
-    draw_game_scene_char_LP_VFX_back()
-    draw_game_scene_char_RP_VFX_back()
+    -- 调试:DEBUG_VFX_BACK_DRAW_ON_TOP = true 时背侧 VFX 改到整帧最后画(在所有东西上面),
+    -- 用来判断画面上的切线是 VFX 自己画出来的,还是被之后画的东西(角色 canvas / 挂件 / 上帝光 / HUD)盖出来的
+    if not DEBUG_VFX_BACK_DRAW_ON_TOP then
+        draw_game_scene_char_LP_VFX_back()
+        draw_game_scene_char_RP_VFX_back()
+    end
     -- 绘制背侧挂件
     draw_game_scene_char_LP_attachment_back()
     draw_game_scene_char_RP_attachment_back()
@@ -202,6 +206,11 @@ function draw_game_scene_main()
     draw_game_scene_char_RP_pushbox()
     draw_game_scene_char_LP_hitbox()
     draw_game_scene_char_RP_hitbox()
+    -- 调试:背侧 VFX 改到最上层画(见上面 DEBUG_VFX_BACK_DRAW_ON_TOP)
+    if DEBUG_VFX_BACK_DRAW_ON_TOP then
+        draw_game_scene_char_LP_VFX_back()
+        draw_game_scene_char_RP_VFX_back()
+    end
     -- 绘制ease in black solid
     draw_solid(obj_UI_game_scene_black_solid)
 end

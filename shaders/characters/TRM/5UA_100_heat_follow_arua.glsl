@@ -1,3 +1,4 @@
+#pragma language glsl3
 // TRM 5UA_100_heat_follow 扩散光环 —— 程序化版本(纯色,三阶段)
 // 参考:asset/game_scene/characters/TRM/texture/_IMG/move_VFX/5UA_100_heat_follow_ease_arua
 //
@@ -57,10 +58,20 @@ extern vec3 tint;               // 纯色(RGB 0-1)
 
 const float LN2 = 0.6931472;
 
+// 格点哈希(整数运算):输入是整数格点坐标(value_noise 里 floor 的结果 + 0 / 1),输出 0..1
+// 旧版用浮点 fract 链(fract(p * 0.1031) ...),对输入的最后几位非常敏感;GPU 编译器会把
+// hash12(i + vec2(0.0, 1.0)) 重排成 fract(i * 0.1031 + 0.1031) 之类的形式,同一个格点在相邻两个格子里
+// 算出不同的值,噪波沿格线断开 → 粒子里出现一像素宽、沿格线的水平 / 垂直直线(有概率出现)。
+// 整数运算对同一个格点永远得到同一个结果,不受编译器重排影响。
 float hash12(vec2 p) {
-    vec3 p3 = fract(vec3(p.xyx) * 0.1031);
-    p3 += dot(p3, p3.yzx + 33.33);
-    return fract((p3.x + p3.y) * p3.z);
+    uvec2 q = uvec2(ivec2(floor(p + 0.5)));
+    uint h = q.x * 1597334677u ^ q.y * 3812015801u;
+    h ^= h >> 16u;
+    h *= 2246822519u;
+    h ^= h >> 13u;
+    h *= 3266489917u;
+    h ^= h >> 16u;
+    return float(h >> 8u) * (1.0 / 16777216.0);
 }
 
 float value_noise(vec2 p) {
