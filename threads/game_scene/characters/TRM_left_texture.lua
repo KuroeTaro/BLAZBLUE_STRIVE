@@ -165,7 +165,6 @@ local load_move_VFX_name_table = {
         -- special
     -- "4SP_P",
     -- "6SP_P",
-    "6SP_P_arua",
     "6SP_P_curse_ball_spawn_halo",
     "6SP_P_curse_ball_spawner",
     "4SP_S_switch",
@@ -200,4 +199,4 @@ end
 -- 70 帧 14000x5000 的序列图不再加载,改用单张 static + _VFX.lua 的时间轴重建
 thread_data["overdrive_badge_static"] =
 compress_module("asset/game_scene/characters/TRM/texture/overdrive_badge/TRM_overdrive_badge_static.dds")
-love.thread.getChannel('thread_data_10'):push(thread_data)
+love.thread.getChannel('thread_data_13'):push(thread_data)

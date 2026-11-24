@@ -18,4 +18,4 @@ thread_data["RC_yellow_badge_sprite_batch"] = compress_module("asset/game_scene/
 -- UA_VFX
 thread_data["UA_back_sprite_batch"] = compress_module("asset/game_scene/common/texture/VFX/UA_back.dds")
 thread_data["UA_front_sprite_batch"] = compress_module("asset/game_scene/common/texture/VFX/UA_front.dds")
-love.thread.getChannel('thread_data_8'):push(thread_data)
+love.thread.getChannel('thread_data_9'):push(thread_data)

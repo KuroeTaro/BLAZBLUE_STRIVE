@@ -827,254 +827,16 @@ function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
     table.insert(obj_char["VFX_common_front_table"],obj_VFX)
 end
 -- 6SP_P 诅咒光环(shaders/characters/TRM/6SP_P_arua.glsl)
--- 粒子固定在世界坐标里:每个粒子死亡后,在受击方当前位置附近随机找一个世界坐标重新出生,
--- 之后只在世界里上飘,角色走开了也留在原地,直到死亡。
--- 长度类参数以 400 世界单位为 1.0(原序列帧一帧 800x800,半径 = 1.0)。
--- shader 表里的每一项都会按同名 uniform 送进 shader。
-VFX_CONFIG_GAME_SCENE_CHAR_TRM_6SP_P_ARUA = {
-    -- 发射(Lua 端)
-    emit_rate = 3.75,     -- 发射频率(每序列帧发射几个粒子,1 序列帧 = 2 tick;可以是小数)
-                          -- 稳定时同时存在的粒子数 ≈ emit_rate * life
-    max_particles = 128,  -- 同时存在的粒子上限(0 = 不限制;设成正数可以加回上限)
-    prewarm = false,      -- true = 一出现就按稳定状态铺满;false = 从 0 个开始发射
-    blend_mode = "alpha", -- 绘制混合模式:"alpha" / "add" / "subtract"
-    spawn_r = 0.50,       -- 出生范围半径
-    spawn_pow = 1.25,     -- 出生位置分布:<1 往外散,>1 往中心挤
-    spawn_y = 0.175,      -- 出生范围中心的竖直偏移(正 = 往下)
-    outer_shrink = 0.25,  -- 外圈粒子缩小比例
-    shader = {
-        -- 粒子
-        life = 12,               -- 寿命(序列帧)
-        rise = 0.4,              -- 一生上飘多远(rise*400/life = 每帧速度,现在约 3.6/帧,和参考一致)
-        size_start = 0.4,        -- 出生时半径
-        size_end = 0.4,          -- 死亡时半径
-        shape = 0.25,            -- 越靠粒子中心越容易显示
-        -- 内容运动:纹理跟着上飘
-        content_follow = 0.42,   -- 纹理跟着上飘的比例(1 = 和粒子同速,0 = 固定在世界里)
-        -- 形状噪波(决定 alpha)
-        noise_scale = 4.75,      -- 频率(每 400 世界单位几个周期):越大碎片越细
-        noise_octaves = 8,       -- 复杂度(层数 1-8,可以是小数)
-        noise_roughness = 0.6,   -- 每层衰减:越大边缘越毛糙
-        noise_contrast = 7.5,    -- 对比度
-        noise_brightness = 0.0,  -- 亮度偏移:越大实心面积越多
-        per_particle_noise = 1,  -- 1 = 每个粒子一张独立噪波(更耗);0 = 所有粒子共用一张
-        -- 粒子边缘(不是圆形)
-        edge_distort = 0.5,      -- 边缘扭曲幅度(相对粒子半径,0 = 纯圆)
-        edge_scale = 10.0,       -- 边缘噪波频率
-        edge_octaves = 3,        -- 边缘噪波复杂度
-        edge_roughness = 0.5,    -- 边缘噪波每层衰减
-        edge_cut = 1.2,          -- 外圈切除强度:越大外圈越干净
-        edge_start = 0.3,        -- 从粒子半径的多少开始切除
-        -- 生命周期
-        th_born = 1.4,              -- 出生时阈值(高 = 几乎看不见)
-        th_full = 0.38,             -- 完全显现时的阈值(越小越实)
-        th_dead = 1.4,              -- 死亡时阈值
-        appear = 0.25,              -- 生命前多少比例用来显现
-        dissolve = 0.4,             -- 从生命的多少比例开始消散
-        particle_fade_in = 0.15,    -- 单个粒子出生淡入(占寿命比例,>0)
-        particle_fade_out = 0.25,   -- 单个粒子死亡淡出(占寿命比例,>0)
-        particle_opacity = 0.825,   -- 单个粒子本身的不透明度(0-1),不是整体透明度
-        -- alpha 软硬 / 烟丝
-        edge_softness = 0.25,    -- 实心块边缘宽度:越大越软(>0)
-        haze_strength = 0.4,     -- 半透明烟丝的不透明度
-        haze_width = 1.6,        -- 烟丝比实心块多扩出去多少(>0)
-        -- 整体
-        -- tint = {0.84,0.96,0.77},          -- 颜色(RGB 0-1),乘在下面的亮度噪波上
-        tint = {0.83,1.0,0.79},          -- 颜色(RGB 0-1),乘在下面的亮度噪波上
-        -- 亮度噪波(只平移不变形,稳定往上移动;决定颜色深浅)
-        lum_speed = 0.0275,      -- 向上移动速度(每序列帧,400 世界单位 = 1.0;0.025 ≈ 10/帧)
-        lum_scale = 7.0,         -- 频率(每 400 世界单位几个周期):越大明暗变化越碎
-        lum_octaves = 4,         -- 复杂度(层数 1-8,可以是小数)
-        lum_roughness = 0.55,    -- 每层衰减:越大细节越多
-        lum_contrast = 5.0,      -- 对比度:越大明暗分得越开
-        lum_min = 0.0,           -- 最暗处亮度(0 = 黑)
-        lum_max = 1.0,           -- 最亮处亮度(1 = tint 原色)
-        lum_gamma = 2.0   -- 亮度曲线:1 = 线性;>1 中间调变暗、整体更暗(最亮处不变);<1 反之
-    }
-}
-local TRM_6SP_P_ARUA_UNIT = 400
--- 用独立的随机数发生器,不动全局的 love.math.random
-local rng_game_scene_char_TRM_6SP_P_arua = nil
-local function get_rng_game_scene_char_TRM_6SP_P_arua()
-    if not rng_game_scene_char_TRM_6SP_P_arua then
-        rng_game_scene_char_TRM_6SP_P_arua = love.math.newRandomGenerator(os.time())
-    end
-    return rng_game_scene_char_TRM_6SP_P_arua
-end
--- 在 (center_x,center_y) 附近给一个粒子分配新的世界坐标出生点
--- particle = {x,y,birth,seed,-,size_mul}
-local function spawn_particle_game_scene_char_TRM_6SP_P_arua(particle,birth,center_x,center_y)
-    local config = VFX_CONFIG_GAME_SCENE_CHAR_TRM_6SP_P_ARUA
-    local rng = get_rng_game_scene_char_TRM_6SP_P_arua()
-    local rr = rng:random()^config["spawn_pow"]
-    local angle = rng:random()*math.pi*2
-    local radius = config["spawn_r"]*rr*TRM_6SP_P_ARUA_UNIT
-    particle[1] = center_x + math.cos(angle)*radius
-    particle[2] = center_y + math.sin(angle)*radius + config["spawn_y"]*TRM_6SP_P_ARUA_UNIT
-    particle[3] = birth
-    particle[4] = rng:random()*1000
-    particle[5] = 1
-    particle[6] = 1 - config["outer_shrink"]*rr
-end
--- 粒子上限:max_particles <= 0 或没填 = 不限制
-local function get_max_particles_game_scene_char_TRM_6SP_P_arua()
-    local max_count = VFX_CONFIG_GAME_SCENE_CHAR_TRM_6SP_P_ARUA["max_particles"]
-    if not max_count or max_count <= 0 then
-        return math.huge
-    end
-    return max_count
-end
--- 粒子数据贴图(rgba32f,宽 = 容量,高 = 2):代替 uniform 数组,没有长度上限
--- 每个 obj_VFX 自己一张,容量不够时按 2 倍扩容
-local function get_particle_data_game_scene_char_TRM_6SP_P_arua(obj_VFX,count)
-    local data = obj_VFX["particle_data"]
-    if not data or data["capacity"] < count then
-        local capacity = data and data["capacity"] or 64
-        while capacity < count do
-            capacity = capacity*2
-        end
-        local image_data = love.image.newImageData(capacity,2,"rgba32f")
-        local image = love.graphics.newImage(image_data)
-        image:setFilter("nearest","nearest")
-        data = {["capacity"] = capacity,["image_data"] = image_data,["image"] = image}
-        obj_VFX["particle_data"] = data
-    end
-    return data
-end
--- 清空并重新开始发射;prewarm 时按稳定状态预先铺满(出生时间按发射频率往前排)
-local function reset_particles_game_scene_char_TRM_6SP_P_arua(obj_VFX,center_x,center_y)
-    local config = VFX_CONFIG_GAME_SCENE_CHAR_TRM_6SP_P_ARUA
-    local life = config["shader"]["life"]
-    local rate = config["emit_rate"]
-    local rng = get_rng_game_scene_char_TRM_6SP_P_arua()
-    obj_VFX["particles"] = {}
-    obj_VFX["emit_accumulator"] = 0
-    if config["prewarm"] and rate > 0 then
-        local count = math.min(math.floor(rate*life),get_max_particles_game_scene_char_TRM_6SP_P_arua())
-        for i = 1,count do
-            local particle = {}
-            spawn_particle_game_scene_char_TRM_6SP_P_arua(
-                particle,obj_VFX["shader_time"] - (i - rng:random())/rate,center_x,center_y
-            )
-            obj_VFX["particles"][i] = particle
-        end
-    end
-end
--- 每 tick:移除寿命到了的粒子,再按发射频率在受击方当前位置发射新粒子
--- dt = 这一 tick 前进了多少序列帧
-local function update_particles_game_scene_char_TRM_6SP_P_arua(obj_VFX,center_x,center_y,dt)
-    local config = VFX_CONFIG_GAME_SCENE_CHAR_TRM_6SP_P_ARUA
-    local life = config["shader"]["life"]
-    local rate = config["emit_rate"]
-    local time = obj_VFX["shader_time"]
-    local particles = obj_VFX["particles"]
-    for i = #particles,1,-1 do
-        if time - particles[i][3] >= life then
-            table.remove(particles,i)
-        end
-    end
-    -- 结束阶段停止发射,已有粒子照常走完寿命
-    if rate <= 0 or obj_VFX["emitting"] == false then
-        return
-    end
-    local max_count = get_max_particles_game_scene_char_TRM_6SP_P_arua()
-    local accumulator = obj_VFX["emit_accumulator"] + rate*dt
-    while accumulator >= 1 do
-        accumulator = accumulator - 1
-        if #particles < max_count then
-            local particle = {}
-            -- 出生时间精确到 tick 内部,发射频率高时也不会扎堆
-            spawn_particle_game_scene_char_TRM_6SP_P_arua(
-                particle,time - accumulator/rate,center_x,center_y
-            )
-            particles[#particles + 1] = particle
-        end
-    end
-    obj_VFX["emit_accumulator"] = accumulator
-end
--- 6SP_P 诅咒光环用的 1x1 白图:shader 画在它上面,拉伸成所有粒子的包围盒
-local function get_image_game_scene_char_TRM_6SP_P_arua_quad()
-    if not image_game_scene_char_TRM_6SP_P_arua_quad then
-        local image_data = love.image.newImageData(1,1)
-        image_data:setPixel(0,0,1,1,1,1)
-        image_game_scene_char_TRM_6SP_P_arua_quad = love.graphics.newImage(image_data)
-    end
-    return image_game_scene_char_TRM_6SP_P_arua_quad
-end
-local function draw_VFX_game_scene_char_TRM_6SP_P_arua(obj_camera,obj_VFX,shader)
-    local shader_config = VFX_CONFIG_GAME_SCENE_CHAR_TRM_6SP_P_ARUA["shader"]
-    local time = obj_VFX["shader_time"]
-    local life = shader_config["life"]
-    local unit = TRM_6SP_P_ARUA_UNIT
-    local active = {}
-    local min_x,min_y,max_x,max_y = math.huge,math.huge,-math.huge,-math.huge
-    for _,particle in ipairs(obj_VFX["particles"]) do
-        local age = (time - particle[3])/life
-        if age >= 0 and age < 1 then
-            local spread = 1 - (1 - age)*(1 - age)
-            local size = (shader_config["size_start"]
-                + (shader_config["size_end"] - shader_config["size_start"])*spread)*particle[6]*unit
-            local x = particle[1]
-            local y = particle[2] - shader_config["rise"]*unit*age
-            min_x = math.min(min_x,x - size)
-            min_y = math.min(min_y,y - size)
-            max_x = math.max(max_x,x + size)
-            max_y = math.max(max_y,y + size)
-            active[#active + 1] = particle
-        end
-    end
-    local count = #active
-    if count == 0 then
-        return
-    end
-    -- 写进数据贴图:第 0 行 x,y,birth,seed;第 1 行 size_mul
-    local data = get_particle_data_game_scene_char_TRM_6SP_P_arua(obj_VFX,count)
-    local image_data = data["image_data"]
-    for i = 1,count do
-        local particle = active[i]
-        image_data:setPixel(i - 1,0,particle[1],particle[2],particle[3],particle[4])
-        image_data:setPixel(i - 1,1,particle[6],0,0,0)
-    end
-    data["image"]:replacePixels(image_data)
-    -- 包围盒投影到屏幕(和 draw_3d_image_sprite_batch 同一套透视)
-    local scale = draw_resolution_correction(800)/(obj_VFX[3] - obj_camera[3])
-    local corner = draw_3d_point_to_2D(obj_camera,{min_x,min_y,obj_VFX[3]})
-    for name,value in pairs(shader_config) do
-        if shader:hasUniform(name) then
-            shader:send(name,value)
-        end
-    end
-    shader:send("time",time)
-    shader:send("particle_count",count)
-    shader:send("particle_data",data["image"])
-    shader:send("particle_data_width",data["capacity"])
-    shader:send("area_origin",{min_x,min_y})
-    shader:send("area_size",{max_x - min_x,max_y - min_y})
-    shader:send("noise_offset",obj_VFX["noise_offset"])
-    local previous_shader = love.graphics.getShader()
-    love.graphics.setShader(shader)
-    -- 不做整体透明度:透明度全部来自每个粒子自己(particle_fade_in / out、particle_opacity)
-    local config = VFX_CONFIG_GAME_SCENE_CHAR_TRM_6SP_P_ARUA
-    love.graphics.setColor(1,1,1,0.75)
-    -- shader 输出 (tint*亮度噪波, alpha),默认 alpha 混合
-    love.graphics.setBlendMode(config["blend_mode"])
-    love.graphics.draw(
-        get_image_game_scene_char_TRM_6SP_P_arua_quad(),
-        corner[1],corner[2],0,
-        (max_x - min_x)*scale,(max_y - min_y)*scale
-    )
-    love.graphics.setBlendMode("alpha")
-    love.graphics.setColor(1,1,1,1)
-    love.graphics.setShader(previous_shader)
-end
+-- 粒子的发射 / 回收 / 绘制见 _character_function.lua 的 character_function_game_scene_TRM_6SP_P_arua_*
+-- 参数在 left.lua / right.lua 的 load_game_scene_config_char_LP / RP 里
 function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_obj_char)
     local obj_VFX = {0,0,0,0.75,0,0,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local hit_side = hit_side_obj_char["player_side"]
     local hit_side_shot_sys_curse_ban_state = hit_side_obj_char["shot_sys_curse_ban_state"]
-    -- 画面由 shaders/characters/TRM/6SP_P_arua.glsl 程序化生成,不再用 6SP_P_arua_move_VFX 序列帧
-    local hit_side_shader_table = {["L"] = shader_game_scene_LP,["R"] = shader_game_scene_RP}
-    local hit_side_shader = hit_side_shader_table[hit_side] and hit_side_shader_table[hit_side]["6SP_P_arua"]
+    -- 画面由 shaders/characters/TRM/6SP_P_arua.glsl 程序化生成
+    local hit_side_shader = common_game_scene_get_shader(hit_side)["6SP_P_arua"]
+    local hit_side_config = common_game_scene_get_config(hit_side)
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     if hurt_side_obj_char["height"] == "air" then
         obj_VFX["y_offset"] = 550
@@ -1097,59 +859,40 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     obj_VFX[8] = 0
     obj_VFX["state"] = "loop"
     obj_VFX["status_name"] = "TRM_6SP_P_arua"
-    -- shader 用的连续时间(单位:序列帧),只增不跳,循环 149 -> 60 时画面没有接缝
+    -- 参数和随机数发生器都用释放方(hit side)的 config
+    obj_VFX["config"] = hit_side_config["6SP_P_arua"]
+    obj_VFX["6SP_P_arua_RNG"] = hit_side_config["6SP_P_arua_RNG"]
+    obj_VFX["6SP_P_arua_quad_image"] = hit_side_config["6SP_P_arua_quad_image"]
+    -- 粒子数据贴图(rgba32f,宽 = max_particles,高 = 2):代替 uniform 数组,每个 obj_VFX 自己一张
+    obj_VFX["particle_image_data"] = love.image.newImageData(obj_VFX["config"]["max_particles"],2,"rgba32f")
+    obj_VFX["particle_image"] = love.graphics.newImage(obj_VFX["particle_image_data"])
+    obj_VFX["particle_image"]:setFilter("nearest","nearest")
+    -- draw 里复用的表(投影用的点、send 用的 vec2),不每帧新建
+    obj_VFX["corner_point"] = {0,0,0}
+    obj_VFX["area_origin"] = {0,0}
+    obj_VFX["area_size"] = {0,0}
+    -- config 里的 shader 参数在释放时送一次(shader 会一直保留 uniform 的值,不用每帧送)
+    -- shader 子表里的每一项都必须是 shader 里用到的 uniform
+    for name,value in pairs(obj_VFX["config"]["shader"]) do
+        hit_side_shader:send(name,value)
+    end
+    -- shader 用的连续时间(单位:序列帧,1 序列帧 = 2 tick),只增不跳
     obj_VFX["shader_time"] = 0
     obj_VFX["emitting"] = true
-    -- 每次释放随机一个噪波偏移,图案不重复(噪波本身固定在世界里)
-    local rng = get_rng_game_scene_char_TRM_6SP_P_arua()
-    obj_VFX["noise_offset"] = {rng:random()*100,rng:random()*100}
+    -- 每次释放随机一个噪波偏移,图案不重复
+    obj_VFX["noise_offset"] = {obj_VFX["6SP_P_arua_RNG"]:random()*100,obj_VFX["6SP_P_arua_RNG"]:random()*100}
     -- 粒子出生范围的中心 = 原来那一帧 800x800 的中心
-    reset_particles_game_scene_char_TRM_6SP_P_arua(obj_VFX,obj_VFX[1] + 400,obj_VFX[2] + 400)
-    -- frame_animation
-    obj_VFX["frame_animation"] = {}
-    for i = 0,149 do
-        obj_VFX["frame_animation"][i*2] = i
-    end
-    obj_VFX["frame_animation"]["prop"] = 8
-    obj_VFX["frame_animation"]["length"] = 300
-    obj_VFX["frame_animation"]["loop"] = false
-    init_frame_anim_without(
-        obj_VFX,obj_VFX["frame_animation"]
-    )
-    -- opacity_ease_in_point_linear_animation
-    obj_VFX["opacity_ease_in_point_linear_animation"] = {}
-    obj_VFX["opacity_ease_in_point_linear_animation"][0] = {0,20}
-    obj_VFX["opacity_ease_in_point_linear_animation"][20] = {0.75,20}
-    obj_VFX["opacity_ease_in_point_linear_animation"]["prop"] = 4
-    obj_VFX["opacity_ease_in_point_linear_animation"]["length"] = 20
-    obj_VFX["opacity_ease_in_point_linear_animation"]["loop"] = false
-    -- opacity_ease_out_point_linear_animation
-    obj_VFX["opacity_ease_out_point_linear_animation"] = {}
-    obj_VFX["opacity_ease_out_point_linear_animation"][0] = {0.75,20}
-    obj_VFX["opacity_ease_out_point_linear_animation"][20] = {0,20}
-    obj_VFX["opacity_ease_out_point_linear_animation"]["prop"] = 4
-    obj_VFX["opacity_ease_out_point_linear_animation"]["length"] = 20
-    obj_VFX["opacity_ease_out_point_linear_animation"]["loop"] = false
-    local function update_frame_animation()
+    character_function_game_scene_TRM_6SP_P_arua_reset_particles(obj_VFX,obj_VFX[1] + 400,obj_VFX[2] + 400)
+    -- 每 tick:时间前进半个序列帧,跟着受击方位置发射 / 回收粒子
+    local function update_particles()
         obj_VFX["shader_time"] = obj_VFX["shader_time"] + 0.5
         obj_VFX["draw_sync"]()
-        update_particles_game_scene_char_TRM_6SP_P_arua(obj_VFX,obj_VFX[1] + 400,obj_VFX[2] + 400,0.5)
-        frame_animator(
-            obj_VFX,obj_VFX["frame_animation"]
-        )
-        if get_frame_anim_end_state(
-            obj_VFX,obj_VFX["frame_animation"]
-        ) then
-            obj_VFX["FCT"][8] = 120
-            frame_animator(
-                obj_VFX,obj_VFX["frame_animation"]
-            )
-        end
+        character_function_game_scene_TRM_6SP_P_arua_update_particles(obj_VFX,obj_VFX[1] + 400,obj_VFX[2] + 400,0.5)
     end
     obj_VFX["update"] = function()
         local switch = {
             ["loop"] = function()
-                update_frame_animation()
+                update_particles()
                 if hit_side_shot_sys_curse_ban_state[hit_side_obj_char["state"]]
                 or (not hit_side_obj_char["shot_sys_curse"]) then
                     -- 结束:停止发射,等已有粒子自然死亡(最多一个 life)
@@ -1163,7 +906,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
                 end
             end,
             ["end"] = function()
-                update_frame_animation()
+                update_particles()
                 -- 粒子全部死亡后关掉
                 if #obj_VFX["particles"] == 0
                 or hurt_side_obj_char["state"] == "wallbreak_hurt" then
@@ -1173,21 +916,16 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
             ["wallbreak"] = function()
                 if hurt_side_obj_char["state"] ~= "wallbreak_hit"
                 and hurt_side_obj_char["state"] ~= "wallbreak_hurt" then
-                    -- 破墙结束:重新显示,粒子从 0 开始自然发射出来(不做整体淡入)
+                    -- 破墙结束:重新显示,粒子从 0 开始自然发射出来
                     obj_VFX[4] = 0.75
                     obj_VFX["state"] = "ease_in_after_wallbreak"
-                    init_frame_anim_with(
-                        obj_VFX,obj_VFX["frame_animation"]
-                    )
-                    obj_VFX["FCT"][8] = 60
-                    obj_VFX[8] = 30
                     -- 破墙后换了场地,旧粒子留在原来的世界坐标没有意义,全部在新位置重新出生
                     obj_VFX["draw_sync"]()
-                    reset_particles_game_scene_char_TRM_6SP_P_arua(obj_VFX,obj_VFX[1] + 400,obj_VFX[2] + 400)
+                    character_function_game_scene_TRM_6SP_P_arua_reset_particles(obj_VFX,obj_VFX[1] + 400,obj_VFX[2] + 400)
                 end
             end,
             ["ease_in_after_wallbreak"] = function()
-                update_frame_animation()
+                update_particles()
                 obj_VFX["state"] = "loop"
                 if hit_side_shot_sys_curse_ban_state[hit_side_obj_char["state"]]
                 or (not hit_side_obj_char["shot_sys_curse"]) then
@@ -1214,15 +952,14 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
         obj_VFX[1] = hurt_side_obj_char["x"] - 400
         obj_VFX[2] = math.min(hurt_side_obj_char["y"] - hurt_side_obj_char[6]*obj_VFX["y_offset"],-677.5)
         obj_VFX[3] = hurt_side_obj_char[3]
-        -- obj_VFX["draw_sync"] = function() end
     end
     obj_VFX["draw"] = function()
         obj_VFX["draw_sync"]()
-        -- obj_VFX[4] 只当显示开关用(破墙期间 = 0 隐藏),不参与透明度
-        if obj_VFX[4] == 0 or not hit_side_shader then
+        -- obj_VFX[4] 只当显示开关用(破墙期间 = 0 隐藏)
+        if obj_VFX[4] == 0 then
             return
         end
-        draw_VFX_game_scene_char_TRM_6SP_P_arua(obj_camera,obj_VFX,hit_side_shader)
+        character_function_game_scene_TRM_6SP_P_arua_draw(obj_camera,obj_VFX,hit_side_shader)
     end
     table.insert(hurt_side_obj_char["VFX_status_back_table"],obj_VFX)
 end

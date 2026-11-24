@@ -916,7 +916,146 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_shot_update(
     )
     return
 end
--- get_function
--- reset_function
--- update_function
--- insert_function
+-- VFX
+-- 6SP_P
+-- 诅咒光环(insert_VFX_game_scene_char_TRM_6SP_P_arua 见 _VFX.lua,shader 见 shaders/characters/TRM/6SP_P_arua.glsl)
+-- 粒子固定在世界坐标里:按发射频率在受击方当前位置附近出生,之后只在世界里上飘,
+-- 角色走开了也留在原地,直到死亡。参数 / 随机数发生器在 obj_VFX["config"] / obj_VFX["6SP_P_arua_RNG"]
+-- (来自 config_game_scene_LP / RP),长度类参数以 config["shader"]["unit"] 世界单位为 1.0。
+-- 在 (center_x,center_y) 附近给一个粒子分配新的世界坐标出生点
+-- particle = {x,y,birth,seed,-,size_mul}
+function character_function_game_scene_TRM_6SP_P_arua_spawn_particle(obj_VFX,particle,birth,center_x,center_y)
+    local config = obj_VFX["config"]
+    local RNG = obj_VFX["6SP_P_arua_RNG"]
+    local rr = RNG:random()^config["spawn_pow"]
+    local angle = RNG:random()*math.pi*2
+    local unit = config["shader"]["unit"]
+    local radius = config["spawn_r"]*rr*unit
+    particle[1] = center_x + math.cos(angle)*radius
+    particle[2] = center_y + math.sin(angle)*radius + config["spawn_y"]*unit
+    particle[3] = birth
+    particle[4] = RNG:random()*1000
+    particle[5] = 1
+    particle[6] = 1 - config["outer_shrink"]*rr
+end
+-- 清空并重新开始发射;prewarm 时按稳定状态预先铺满(出生时间按发射频率往前排)
+function character_function_game_scene_TRM_6SP_P_arua_reset_particles(obj_VFX,center_x,center_y)
+    local config = obj_VFX["config"]
+    local life = config["shader"]["life"]
+    local rate = config["emit_rate"]
+    local RNG = obj_VFX["6SP_P_arua_RNG"]
+    obj_VFX["particles"] = {}
+    obj_VFX["emit_accumulator"] = 0
+    if config["prewarm"] then
+        local count = math.min(math.floor(rate*life),config["max_particles"])
+        for i = 1,count do
+            local particle = {}
+            character_function_game_scene_TRM_6SP_P_arua_spawn_particle(
+                obj_VFX,particle,obj_VFX["shader_time"] - (count - i + RNG:random())/rate,center_x,center_y
+            )
+            -- 按出生时间从早到晚排,shader 里后面的粒子盖在前面的上面
+            obj_VFX["particles"][i] = particle
+        end
+    end
+end
+-- 每 tick:移除寿命到了的粒子,再按发射频率在受击方当前位置发射新粒子
+-- dt = 这一 tick 前进了多少序列帧
+function character_function_game_scene_TRM_6SP_P_arua_update_particles(obj_VFX,center_x,center_y,dt)
+    local config = obj_VFX["config"]
+    local life = config["shader"]["life"]
+    local rate = config["emit_rate"]
+    local max_count = config["max_particles"]
+    local time = obj_VFX["shader_time"]
+    local particles = obj_VFX["particles"]
+    for i = #particles,1,-1 do
+        if time - particles[i][3] >= life then
+            table.remove(particles,i)
+        end
+    end
+    -- 结束阶段停止发射,已有粒子照常走完寿命
+    if not obj_VFX["emitting"] then
+        return
+    end
+    local accumulator = obj_VFX["emit_accumulator"] + rate*dt
+    while accumulator >= 1 do
+        accumulator = accumulator - 1
+        if #particles < max_count then
+            local particle = {}
+            -- 出生时间精确到 tick 内部,发射频率高时也不会扎堆
+            character_function_game_scene_TRM_6SP_P_arua_spawn_particle(
+                obj_VFX,particle,time - accumulator/rate,center_x,center_y
+            )
+            particles[#particles + 1] = particle
+        end
+    end
+    obj_VFX["emit_accumulator"] = accumulator
+end
+-- 每帧不新建表:粒子数据直接写进 obj_VFX 自己的数据贴图,send 用的 vec2 / 投影用的点都复用 obj_VFX 里的表
+-- update 里时间前进后立刻回收寿命到了的粒子,所以这里的粒子全都活着,直接全部画
+function character_function_game_scene_TRM_6SP_P_arua_draw(obj_camera,obj_VFX,shader)
+    local config = obj_VFX["config"]
+    local shader_config = config["shader"]
+    local unit = shader_config["unit"]
+    local life = shader_config["life"]
+    local rise = shader_config["rise"]*unit
+    local size_start = shader_config["size_start"]*unit
+    local size_range = (shader_config["size_end"] - shader_config["size_start"])*unit
+    local time = obj_VFX["shader_time"]
+    local particles = obj_VFX["particles"]
+    local count = #particles
+    if count == 0 then
+        return
+    end
+    local image_data = obj_VFX["particle_image_data"]
+    local min_x,min_y,max_x,max_y = math.huge,math.huge,-math.huge,-math.huge
+    for i = 1,count do
+        local particle = particles[i]
+        local age = (time - particle[3])/life
+        local size = (size_start + size_range*(1 - (1 - age)*(1 - age)))*particle[6]
+        local x = particle[1]
+        local y = particle[2] - rise*age
+        min_x = math.min(min_x,x - size)
+        min_y = math.min(min_y,y - size)
+        max_x = math.max(max_x,x + size)
+        max_y = math.max(max_y,y + size)
+        -- 写进数据贴图:第 0 行 x,y,birth,seed;第 1 行 size_mul
+        image_data:setPixel(i - 1,0,particle[1],particle[2],particle[3],particle[4])
+        image_data:setPixel(i - 1,1,particle[6],0,0,0)
+    end
+    obj_VFX["particle_image"]:replacePixels(image_data)
+    -- 包围盒投影到屏幕(和 draw_3d_image_sprite_batch 同一套透视)
+    local corner_point = obj_VFX["corner_point"]
+    corner_point[1] = min_x
+    corner_point[2] = min_y
+    corner_point[3] = obj_VFX[3]
+    local scale = draw_resolution_correction(800)/(obj_VFX[3] - obj_camera[3])
+    local corner = draw_3d_point_to_2D(obj_camera,corner_point)
+    local area_origin = obj_VFX["area_origin"]
+    area_origin[1] = min_x
+    area_origin[2] = min_y
+    local area_size = obj_VFX["area_size"]
+    area_size[1] = max_x - min_x
+    area_size[2] = max_y - min_y
+    -- config 里的参数在 insert 时已经送过(shader 会一直保留),这里只送每帧会变的
+    shader:send("time",time)
+    shader:send("particle_count",count)
+    shader:send("particle_data",obj_VFX["particle_image"])
+    shader:send("particle_data_width",config["max_particles"])
+    shader:send("area_origin",area_origin)
+    shader:send("area_size",area_size)
+    shader:send("noise_offset",obj_VFX["noise_offset"])
+    local previous_shader = love.graphics.getShader()
+    love.graphics.setShader(shader)
+    -- 透明度来自每个粒子自己(particle_fade_in / out、particle_opacity)
+    love.graphics.setColor(1,1,1,0.75)
+    -- shader 输出 (tint*亮度噪波, alpha),默认 alpha 混合
+    love.graphics.setBlendMode(config["blend_mode"])
+    love.graphics.draw(
+        obj_VFX["6SP_P_arua_quad_image"],
+        corner[1],corner[2],0,
+        area_size[1]*scale,area_size[2]*scale
+    )
+    love.graphics.setBlendMode("alpha")
+    love.graphics.setColor(1,1,1,1)
+    love.graphics.setShader(previous_shader)
+end

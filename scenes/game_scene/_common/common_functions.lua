@@ -166,6 +166,20 @@ function common_game_scene_get_VFX_sprite_sheet_table(side)
     }
     return side_table[side]
 end
+function common_game_scene_get_shader(side)
+    local side_table = {
+        ["L"] = shader_game_scene_LP,
+        ["R"] = shader_game_scene_RP
+    }
+    return side_table[side]
+end
+function common_game_scene_get_config(side)
+    local side_table = {
+        ["L"] = config_game_scene_LP,
+        ["R"] = config_game_scene_RP
+    }
+    return side_table[side]
+end
 function common_game_scene_get_SFX_stage_interactive(side)
     local side_table = {
         ["L"] = audio_SFX_game_scene_stage_interactive_SFX_LP,

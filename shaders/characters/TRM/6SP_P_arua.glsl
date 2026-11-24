@@ -15,13 +15,13 @@
 //
 // 坐标约定:shader 画在 1x1 白图上,Lua 把它拉伸成所有粒子的包围盒,
 //   texture_coords 0..1 对应 area_origin .. area_origin + area_size(世界坐标),y 向下为正。
-//   长度类参数以 400 世界单位为 1.0(原序列帧一帧 800x800,半径 = 1.0)。
+//   长度类参数以 unit 世界单位为 1.0(原序列帧一帧 800x800,半径 = 1.0)。
 // 粒子数据:不用 uniform 数组(有长度上限),而是放在一张 rgba32f 数据贴图里,
 //   宽 = 容量(Lua 按需扩容),第 0 行 = x, y, birth, seed;第 1 行 = size_mul, -, -, -。
 //   循环次数 = particle_count,没有编译期上限。
 // 所有参数都在 _VFX.lua 的 VFX_CONFIG_GAME_SCENE_CHAR_TRM_6SP_P_ARUA 里。
 
-const float UNIT = 400.0;
+extern float unit;              // 长度单位(世界单位),由 config 的 shader.unit 送进来
 
 // ---------------- 每帧由 Lua 送进来 ----------------
 extern float time;                       // 连续时间,单位:序列帧,只增不跳
@@ -142,11 +142,11 @@ vec4 effect(vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords) {
 
     // ---- 上飘坐标系:纹理跟着往上飘 ----
     float rise_speed = rise / life;                        // 每序列帧上飘多少(400 单位制)
-    vec2 c = world / UNIT + vec2(0.0, rise_speed * time * content_follow);
+    vec2 c = world / unit + vec2(0.0, rise_speed * time * content_follow);
     vec2 shape_p = c * noise_scale + noise_offset;
     vec2 edge_p = c * edge_scale + noise_offset * 1.3 + vec2(50.0, 20.0);
     // 亮度噪波:只平移、不变形,以 lum_speed 稳定往上移动
-    vec2 lum_p = (world / UNIT + vec2(0.0, lum_speed * time)) * lum_scale + noise_offset * 0.7 + vec2(40.0, 20.0);
+    vec2 lum_p = (world / unit + vec2(0.0, lum_speed * time)) * lum_scale + noise_offset * 0.7 + vec2(40.0, 20.0);
 
     // per_particle_noise = 0:所有粒子共用一张噪波,每个像素只算一次
     // per_particle_noise = 1:每个粒子按自己的种子偏移采样,各自一张噪波(在循环里算)
@@ -172,8 +172,8 @@ vec4 effect(vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords) {
         float age = (time - pa.z) / life;
         if (age < 0.0 || age >= 1.0) continue;
 
-        vec2 center = pa.xy + vec2(0.0, -rise * UNIT * age);
-        float size = mix(size_start, size_end, 1.0 - (1.0 - age) * (1.0 - age)) * pb.x * UNIT;
+        vec2 center = pa.xy + vec2(0.0, -rise * unit * age);
+        float size = mix(size_start, size_end, 1.0 - (1.0 - age) * (1.0 - age)) * pb.x * unit;
         float raw_d = length(world - center) / size;
         if (raw_d >= 1.0) continue;
 

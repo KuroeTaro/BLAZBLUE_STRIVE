@@ -1,5 +1,5 @@
 -- LP -> RP
--- ASSET_DATA[10] -> ASSET_DATA[12]
+-- ASSET_DATA[12] -> ASSET_DATA[15]  ASSET_DATA[13] -> ASSET_DATA[16]
 -- "L" -> "R"
 -- obj_char_game_scene_char_LP = {0,0,0,1,1,1,0,0} -> obj_char_game_scene_char_RP = {0,0,0,1,-1,1,0,0}
 -- obj_char_game_scene_char_LP["x"] = -320 -> obj_char_game_scene_char_RP["x"] = 320
@@ -847,17 +847,6 @@ function load_game_scene_box_anchor_data_LP()
     obj_hurtboxs_data_game_scene_char_LP["9_jump"][6] = {{0,-155,210,330}}
     obj_hurtboxs_data_game_scene_char_LP["9_jump"][7] = {{0,-180,200,380}}
 end
-function load_game_scene_shader_char_LP()
-    -- shader_global_variable_no_shader_in_this_case
-    shader_game_scene_LP = {}
-    shader_game_scene_LP["drive_sys_chain_fade"] = love.graphics.newShader(
-        "shaders/characters/TRM/drive_sys_chain_fade.glsl"
-    )
-    -- 6SP_P 诅咒光环:程序化生成,替代 TRM_6SP_P_arua.png 序列帧
-    shader_game_scene_LP["6SP_P_arua"] = love.graphics.newShader(
-        "shaders/characters/TRM/6SP_P_arua.glsl"
-    )
-end
 function load_game_scene_canvas_char_LP()
     -- CANVAS
     local width = love.graphics.getWidth()
@@ -865,6 +854,76 @@ function load_game_scene_canvas_char_LP()
 end
 function load_game_scene_config_char_LP()
     config_game_scene_LP = {}
+    -- 随机数发生器:只给视觉特效用,不动全局的 love.math.random;每次加载新建一次(L / R 种子不同)
+    config_game_scene_LP["6SP_P_arua_RNG"] = love.math.newRandomGenerator(os.time())
+    -- 6SP_P 诅咒光环用的 1x1 白图:shader 画在它上面,拉伸成所有粒子的包围盒
+    local quad_image_data = love.image.newImageData(1,1)
+    quad_image_data:setPixel(0,0,1,1,1,1)
+    config_game_scene_LP["6SP_P_arua_quad_image"] = love.graphics.newImage(quad_image_data)
+    -- 6SP_P 诅咒光环(_VFX.lua 的 insert_VFX_game_scene_char_TRM_6SP_P_arua / _character_function.lua 使用)
+    -- 长度类参数以 shader.unit 世界单位为 1.0;shader 表里的每一项都会按同名 uniform 送进 shader
+    config_game_scene_LP["6SP_P_arua"] = {
+        -- 发射(Lua 端)
+        emit_rate = 3.75,     -- 发射频率(每序列帧发射几个粒子,1 序列帧 = 2 tick;可以是小数)
+                              -- 稳定时同时存在的粒子数 ≈ emit_rate * life
+        max_particles = 128,  -- 同时存在的粒子上限(也是粒子数据贴图的宽度)
+        prewarm = false,      -- true = 一出现就按稳定状态铺满;false = 从 0 个开始发射
+        blend_mode = "alpha", -- 绘制混合模式:"alpha" / "add" / "subtract"
+        spawn_r = 0.50,       -- 出生范围半径
+        spawn_pow = 1.25,     -- 出生位置分布:<1 往外散,>1 往中心挤
+        spawn_y = 0.175,      -- 出生范围中心的竖直偏移(正 = 往下)
+        outer_shrink = 0.25,  -- 外圈粒子缩小比例
+        shader = {
+            unit = 400,              -- 长度单位(世界单位):长度类参数以它为 1.0(原序列帧一帧 800x800,半径 = 1.0)
+            -- 粒子
+            life = 12,               -- 寿命(序列帧)
+            rise = 0.4,              -- 一生上飘多远(rise*400/life = 每帧速度,现在约 3.6/帧,和参考一致)
+            size_start = 0.4,        -- 出生时半径
+            size_end = 0.4,          -- 死亡时半径
+            shape = 0.25,            -- 越靠粒子中心越容易显示
+            -- 内容运动:纹理跟着上飘
+            content_follow = 0.42,   -- 纹理跟着上飘的比例(1 = 和粒子同速,0 = 固定在世界里)
+            -- 形状噪波(决定 alpha)
+            noise_scale = 4.75,      -- 频率(每 400 世界单位几个周期):越大碎片越细
+            noise_octaves = 8,       -- 复杂度(层数 1-8,可以是小数)
+            noise_roughness = 0.6,   -- 每层衰减:越大边缘越毛糙
+            noise_contrast = 7.5,    -- 对比度
+            noise_brightness = 0.0,  -- 亮度偏移:越大实心面积越多
+            per_particle_noise = 1,  -- 1 = 每个粒子一张独立噪波(更耗);0 = 所有粒子共用一张
+            -- 粒子边缘(不是圆形)
+            edge_distort = 0.5,      -- 边缘扭曲幅度(相对粒子半径,0 = 纯圆)
+            edge_scale = 10.0,       -- 边缘噪波频率
+            edge_octaves = 3,        -- 边缘噪波复杂度
+            edge_roughness = 0.5,    -- 边缘噪波每层衰减
+            edge_cut = 1.2,          -- 外圈切除强度:越大外圈越干净
+            edge_start = 0.3,        -- 从粒子半径的多少开始切除
+            -- 生命周期
+            th_born = 1.4,              -- 出生时阈值(高 = 几乎看不见)
+            th_full = 0.38,             -- 完全显现时的阈值(越小越实)
+            th_dead = 1.4,              -- 死亡时阈值
+            appear = 0.25,              -- 生命前多少比例用来显现
+            dissolve = 0.4,             -- 从生命的多少比例开始消散
+            particle_fade_in = 0.15,    -- 单个粒子出生淡入(占寿命比例,>0)
+            particle_fade_out = 0.25,   -- 单个粒子死亡淡出(占寿命比例,>0)
+            particle_opacity = 0.825,   -- 单个粒子本身的不透明度(0-1),不是整体透明度
+            -- alpha 软硬 / 烟丝
+            edge_softness = 0.25,    -- 实心块边缘宽度:越大越软(>0)
+            haze_strength = 0.4,     -- 半透明烟丝的不透明度
+            haze_width = 1.6,        -- 烟丝比实心块多扩出去多少(>0)
+            -- 整体
+            -- tint = {0.83,1.0,0.79},          -- 颜色(RGB 0-1),乘在下面的亮度噪波上
+            tint = {0.83,1.0,0.79},          -- 颜色(RGB 0-1),乘在下面的亮度噪波上
+            -- 亮度噪波(只平移不变形,稳定往上移动;决定颜色深浅)
+            lum_speed = 0.0275,      -- 向上移动速度(每序列帧,400 世界单位 = 1.0;0.025 ≈ 10/帧)
+            lum_scale = 7.0,         -- 频率(每 400 世界单位几个周期):越大明暗变化越碎
+            lum_octaves = 4,         -- 复杂度(层数 1-8,可以是小数)
+            lum_roughness = 0.55,    -- 每层衰减:越大细节越多
+            lum_contrast = 5.0,      -- 对比度:越大明暗分得越开
+            lum_min = 0.0,           -- 最暗处亮度(0 = 黑)
+            lum_max = 1.0,           -- 最亮处亮度(1 = tint 原色)
+            lum_gamma = 2.0   -- 亮度曲线:1 = 线性;>1 中间调变暗、整体更暗(最亮处不变);<1 反之
+        }
+    }
 end
 function load_game_scene_wallbreak_start_init_LP()
     -- state
@@ -1046,7 +1105,7 @@ function load_game_scene_wallbreak_end_init_LP()
 end
 -- order_load
 function order_load_game_scene_char_LP_audio(load_order)
-    local PLAYER_AUDIO_DATA = ASSET_DATA[9]
+    local PLAYER_AUDIO_DATA = ASSET_DATA[12]
     local switch =
     {
         -- stage_interactive_SFX 通用 移动/跳跃/落地/墙
@@ -1241,7 +1300,7 @@ function order_load_game_scene_char_LP_audio(load_order)
     if this_function then this_function() end
 end
 function order_load_game_scene_char_LP_frames(load_order)
-    local PLAYER_ASSET_DATA = ASSET_DATA[10]
+    local PLAYER_ASSET_DATA = ASSET_DATA[13]
     local switch =
     {
         -- universal 0_ 通用受伤/击飞 part1
@@ -1810,7 +1869,6 @@ function order_load_game_scene_char_LP_frames(load_order)
             local load_name_table = {
                 "6SP_P_curse_ball_spawner",
                 "6SP_P_curse_ball_spawn_halo",
-                "6SP_P_arua",
                 "4SP_S_switch",
                 "4SP_S_H_hit_blast",
                 "4SP_S_H_shot_oroboros_blast",
@@ -1850,6 +1908,26 @@ function order_load_game_scene_char_LP_frames(load_order)
         [39] = function()
             image_VFX_game_scene_LP_overdrive_badge_static =
             love.graphics.newImage(PLAYER_ASSET_DATA["overdrive_badge_static"])
+        end
+    }
+    local this_function = switch[load_order]
+    if this_function then this_function() end
+end
+-- 角色 shader:每帧编译一个(shader 只能在主线程编译,所以没有对应的线程)
+function order_load_game_scene_char_LP_shader(load_order)
+    local switch =
+    {
+        [1] = function()
+            shader_game_scene_LP = {}
+            shader_game_scene_LP["drive_sys_chain_fade"] = love.graphics.newShader(
+                "shaders/characters/TRM/drive_sys_chain_fade.glsl"
+            )
+        end,
+        -- 6SP_P 诅咒光环(程序化生成)
+        [2] = function()
+            shader_game_scene_LP["6SP_P_arua"] = love.graphics.newShader(
+                "shaders/characters/TRM/6SP_P_arua.glsl"
+            )
         end
     }
     local this_function = switch[load_order]

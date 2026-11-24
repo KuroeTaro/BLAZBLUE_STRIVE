@@ -1,5 +1,23 @@
 function load_game_scene_common_obj()
-    -- CANVAS
+    load_game_scene_announcer_HUD_obj()
+    load_game_scene_obj_char_LP()
+    load_game_scene_obj_char_RP()
+    load_game_scene_obj_stage()
+end
+function load_game_scene_common_anim()
+    load_game_scene_announcer_HUD_anim()
+    load_game_scene_anim_char_LP()
+    load_game_scene_anim_char_RP()
+    load_game_scene_anim_stage()
+end
+-- 以下几个只在加载时调用一次(order_load_game_scene_common),训练模式重置不会重新加载
+-- 碰撞盒 / 锚点数据
+function load_game_scene_common_box_anchor_data()
+    load_game_scene_box_anchor_data_LP()
+    load_game_scene_box_anchor_data_RP()
+end
+-- canvas(公共绘制用 canvas + 角色 canvas)
+function load_game_scene_common_canvas()
     local width = love.graphics.getWidth()
     local height = love.graphics.getHeight()
     DRAW_MAIN_CHARACTER_CANVAS = love.graphics.newCanvas(width,height)
@@ -8,20 +26,11 @@ function load_game_scene_common_obj()
     DRAW_VFX_PARTICAL_3D_CANVAS = love.graphics.newCanvas(width,height)
     load_game_scene_canvas_char_LP()
     load_game_scene_canvas_char_RP()
-    load_game_scene_obj_char_LP()
-    load_game_scene_obj_char_RP()
-    load_game_scene_obj_stage()
-    load_game_scene_announcer_HUD_obj()
 end
-function load_game_scene_common_anim()
-    load_game_scene_anim_char_LP()
-    load_game_scene_anim_char_RP()
-    load_game_scene_anim_stage()
-    load_game_scene_announcer_HUD_anim()
-end
-function load_game_scene_box_anchor_data()
-    load_game_scene_box_anchor_data_LP()
-    load_game_scene_box_anchor_data_RP()
+-- 角色 config(参数表 + 随机数发生器)
+function load_game_scene_common_config()
+    load_game_scene_config_char_LP()
+    load_game_scene_config_char_RP()
 end
 function load_game_scene_common_audio()
     -- audio_global_variable

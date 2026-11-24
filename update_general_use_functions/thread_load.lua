@@ -2,12 +2,17 @@ function run_table_order_load()
     local i = 1
     while (i<=THREAD_AMOUNT)
     do
-        if THREAD_TABLE[i] == nil then
+        -- false = 没有线程(只在主线程加载,例如 shader):不等线程数据,直接当作已就绪
+        if THREAD_TABLE[i] == false then
+            THREAD_ONCE_TABLE[i] = true
+            if ASSET_DATA[i] == nil then
+                ASSET_DATA[i] = {}
+            end
+        elseif THREAD_TABLE[i] == nil then
             THREAD_ONCE_TABLE[i] = true
             i = i + 1
             break
-        end
-        if not THREAD_ONCE_TABLE[i] then
+        elseif not THREAD_ONCE_TABLE[i] then
             local thread = love.thread.newThread(THREAD_TABLE[i])
             thread:start()
             THREAD_ONCE_TABLE[i] = true
