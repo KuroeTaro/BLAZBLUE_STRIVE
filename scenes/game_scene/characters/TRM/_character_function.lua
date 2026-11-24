@@ -1047,7 +1047,7 @@ function character_function_game_scene_TRM_6SP_P_arua_draw(obj_camera,obj_VFX,sh
     local previous_shader = love.graphics.getShader()
     love.graphics.setShader(shader)
     -- 透明度来自每个粒子自己(particle_fade_in / out、particle_opacity)
-    love.graphics.setColor(1,1,1,0.75)
+    love.graphics.setColor(1,1,1,1)
     -- shader 输出 (tint*亮度噪波, alpha),默认 alpha 混合
     love.graphics.setBlendMode(config["blend_mode"])
     love.graphics.draw(

@@ -852,7 +852,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     obj_VFX[1] = hurt_side_obj_char["x"] - 400
     obj_VFX[2] = math.min(hurt_side_obj_char["y"] - hurt_side_obj_char[6]*obj_VFX["y_offset"],-677.5)
     obj_VFX[3] = hurt_side_obj_char[3]
-    obj_VFX[4] = 0.75
+    obj_VFX[4] = 1
     obj_VFX[5] = 1
     obj_VFX[6] = 1
     obj_VFX[7] = 0

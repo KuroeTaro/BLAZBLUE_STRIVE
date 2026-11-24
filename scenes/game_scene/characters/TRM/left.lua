@@ -868,7 +868,7 @@ function load_game_scene_config_char_LP()
                               -- 稳定时同时存在的粒子数 ≈ emit_rate * life
         max_particles = 128,  -- 同时存在的粒子上限(也是粒子数据贴图的宽度)
         prewarm = false,      -- true = 一出现就按稳定状态铺满;false = 从 0 个开始发射
-        blend_mode = "alpha", -- 绘制混合模式:"alpha" / "add" / "subtract"
+        blend_mode = "add", -- 绘制混合模式:"alpha" / "add" / "subtract"
         spawn_r = 0.50,       -- 出生范围半径
         spawn_pow = 1.25,     -- 出生位置分布:<1 往外散,>1 往中心挤
         spawn_y = 0.175,      -- 出生范围中心的竖直偏移(正 = 往下)
