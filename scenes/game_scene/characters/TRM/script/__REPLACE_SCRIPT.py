@@ -22,8 +22,8 @@ def replace_content(line: str) -> str:
     # 3) 对手占位符换回 LP（right 的对手是 LP）
     line = line.replace('obj_char_game_scene_char_OPPONENT','obj_char_game_scene_char_LP')
     # 4) 其余映射
-    line = line.replace('ASSET_DATA[9]','ASSET_DATA[11]')
-    line = line.replace('ASSET_DATA[10]','ASSET_DATA[12]')
+    line = line.replace('ASSET_DATA[12]','ASSET_DATA[15]')
+    line = line.replace('ASSET_DATA[13]','ASSET_DATA[16]')
     line = line.replace('"L"','"R"')
     # 4b) 对称 input：left 里 local opponent_side_input = ...["R"]，
     #     生成 right 后对手是 LP，需把输入状态换回 ["L"]（必须放在 "L"->"R" 之后）

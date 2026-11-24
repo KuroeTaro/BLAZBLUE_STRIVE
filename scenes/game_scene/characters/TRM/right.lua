@@ -855,7 +855,7 @@ end
 function load_game_scene_config_char_RP()
     config_game_scene_RP = {}
     -- 随机数发生器:只给视觉特效用,不动全局的 love.math.random;每次加载新建一次(L / R 种子不同)
-    config_game_scene_RP["6SP_P_arua_RNG"] = love.math.newRandomGenerator(os.time() + 1)
+    config_game_scene_RP["6SP_P_arua_RNG"] = love.math.newRandomGenerator(os.time())
     -- 6SP_P 诅咒光环用的 1x1 白图:shader 画在它上面,拉伸成所有粒子的包围盒
     local quad_image_data = love.image.newImageData(1,1)
     quad_image_data:setPixel(0,0,1,1,1,1)
@@ -911,7 +911,7 @@ function load_game_scene_config_char_RP()
             haze_strength = 0.4,     -- 半透明烟丝的不透明度
             haze_width = 1.6,        -- 烟丝比实心块多扩出去多少(>0)
             -- 整体
-            -- tint = {0.84,0.96,0.77},          -- 颜色(RGB 0-1),乘在下面的亮度噪波上
+            -- tint = {0.83,1.0,0.79},          -- 颜色(RGB 0-1),乘在下面的亮度噪波上
             tint = {0.83,1.0,0.79},          -- 颜色(RGB 0-1),乘在下面的亮度噪波上
             -- 亮度噪波(只平移不变形,稳定往上移动;决定颜色深浅)
             lum_speed = 0.0275,      -- 向上移动速度(每序列帧,400 世界单位 = 1.0;0.025 ≈ 10/帧)
