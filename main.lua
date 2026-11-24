@@ -1,6 +1,6 @@
 -- setup force hot compilation
-require("jit.opt").start("hotloop=42","hotexit=7")
--- include required modules
+require("jit.opt").start("hotloop=1","hotexit=120")
+---- include required modules
 require("advance_require_functions")
 require("draw_general_use_functions")
 require_all_in_folder("update_general_use_functions")

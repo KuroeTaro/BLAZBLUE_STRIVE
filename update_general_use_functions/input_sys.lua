@@ -282,36 +282,40 @@ function get_input_sys_current_command(INPUT_SYS_CURRENT_COMMAND,INPUT_SYS_CURRE
 end
 --输入状态机
 function state_machine_input(INPUT_SYS_CURRENT_COMMAND_STATE,INPUT_SYS_CURRENT_COMMAND)
-    for i = 1,20 do
-        local switch =
-        {
-            ["Released"] = function()
-                if INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i]] == 1 then
-                    INPUT_SYS_CURRENT_COMMAND_STATE[INPUT_SYS_COMMAND_TABLE[i]] = "Pressing"
-                end
-            end,
-            ["Releasing"] = function()
-                if INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i]] == 1 then
-                    INPUT_SYS_CURRENT_COMMAND_STATE[INPUT_SYS_COMMAND_TABLE[i]] = "Pressing"
-                else
-                    INPUT_SYS_CURRENT_COMMAND_STATE[INPUT_SYS_COMMAND_TABLE[i]] = "Released"
-                end
-            end,
-            ["Pressing"] = function()
-                if INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i]] == 1 then
-                    INPUT_SYS_CURRENT_COMMAND_STATE[INPUT_SYS_COMMAND_TABLE[i]] = "Holding"
-                else
-                    INPUT_SYS_CURRENT_COMMAND_STATE[INPUT_SYS_COMMAND_TABLE[i]] = "Releasing"
-                end
-            end,
-            ["Holding"] = function()
-                if INPUT_SYS_CURRENT_COMMAND[INPUT_SYS_COMMAND_TABLE[i]] == 0 then
-                    INPUT_SYS_CURRENT_COMMAND_STATE[INPUT_SYS_COMMAND_TABLE[i]] = "Releasing"
-                end
+    -- switch 放在循环外(每次调用只建一次),按键名作为参数传进去:
+    -- 原来在循环里建闭包并捕获循环变量 i,每轮结束都要关闭 upvalue,LuaJIT 录制到这里会 abort,
+    -- 整个输入循环都编译不了
+    local switch =
+    {
+        ["Released"] = function(command_name)
+            if INPUT_SYS_CURRENT_COMMAND[command_name] == 1 then
+                INPUT_SYS_CURRENT_COMMAND_STATE[command_name] = "Pressing"
             end
-        }
-        local this_function = switch[INPUT_SYS_CURRENT_COMMAND_STATE[INPUT_SYS_COMMAND_TABLE[i]]]
-        if this_function then this_function() end
+        end,
+        ["Releasing"] = function(command_name)
+            if INPUT_SYS_CURRENT_COMMAND[command_name] == 1 then
+                INPUT_SYS_CURRENT_COMMAND_STATE[command_name] = "Pressing"
+            else
+                INPUT_SYS_CURRENT_COMMAND_STATE[command_name] = "Released"
+            end
+        end,
+        ["Pressing"] = function(command_name)
+            if INPUT_SYS_CURRENT_COMMAND[command_name] == 1 then
+                INPUT_SYS_CURRENT_COMMAND_STATE[command_name] = "Holding"
+            else
+                INPUT_SYS_CURRENT_COMMAND_STATE[command_name] = "Releasing"
+            end
+        end,
+        ["Holding"] = function(command_name)
+            if INPUT_SYS_CURRENT_COMMAND[command_name] == 0 then
+                INPUT_SYS_CURRENT_COMMAND_STATE[command_name] = "Releasing"
+            end
+        end
+    }
+    for i = 1,20 do
+        local command_name = INPUT_SYS_COMMAND_TABLE[i]
+        local this_function = switch[INPUT_SYS_CURRENT_COMMAND_STATE[command_name]]
+        if this_function then this_function(command_name) end
     end
 end
 -- 加载后input_sys_cahce重新缓存

@@ -97,11 +97,6 @@ function load_game_scene_common_shader(i)
     }
     local this_function = switch[i]
     if this_function then this_function() end
-    -- shader_game_scene_fractal_noise = love.graphics.newShader("shaders/game_fractal_noise.glsl")
-    -- shader_game_scene_radial_blur = love.graphics.newShader("shaders/radial_blur.glsl")
-    -- shader_game_scene_shadow_radial_blur = love.graphics.newShader("shaders/shadow_radial_blur.glsl")
-    -- shader_game_scene_brightness_contrast = love.graphics.newShader("shaders/brightness_contrast.glsl")
-    -- shader_game_scene_gaussian_blur = love.graphics.newShader("shaders/gaussian_blur.glsl")
 end
 function load_game_scene_announcer_HUD_obj()
     -- black_solid
