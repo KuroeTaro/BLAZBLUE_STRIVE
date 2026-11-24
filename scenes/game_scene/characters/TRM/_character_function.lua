@@ -990,7 +990,7 @@ function character_function_game_scene_TRM_6SP_P_arua_update_particles(obj_VFX,c
     end
     obj_VFX["emit_accumulator"] = accumulator
 end
--- 每帧不新建表:粒子数据写进释放方 config 里的数据贴图(同一侧共用,draw 前写入再上传),send 用的 vec2 / 投影用的点都复用 obj_VFX 里的表
+-- 每帧不新建表:粒子数据写进释放方 image_table_VFX 里的数据贴图(同一侧共用,draw 前写入再上传),send 用的 vec2 / 投影用的点都复用 obj_VFX 里的表
 -- update 里时间前进后立刻回收寿命到了的粒子,所以这里的粒子全都活着,直接全部画
 function character_function_game_scene_TRM_6SP_P_arua_draw(obj_camera,obj_VFX,shader)
     local config = obj_VFX["config"]

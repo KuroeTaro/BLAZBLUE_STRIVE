@@ -828,7 +828,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
 end
 -- 6SP_P 诅咒光环(shaders/characters/TRM/6SP_P_arua.glsl)
 -- 粒子的发射 / 回收 / 绘制见 _character_function.lua 的 character_function_game_scene_TRM_6SP_P_arua_*
--- 参数在 left.lua / right.lua 的 load_game_scene_config_char_LP / RP 里
+-- 参数在 left.lua / right.lua 的 load_game_scene_config_char_LP / RP 里,贴图在 load_game_scene_texture_LP / RP 里
 function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_obj_char)
     local obj_VFX = {0,0,0,0.75,0,0,0,0}
     local obj_camera = obj_stage_game_scene_camera
@@ -837,6 +837,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     -- 画面由 shaders/characters/TRM/6SP_P_arua.glsl 程序化生成
     local hit_side_shader = common_game_scene_get_shader(hit_side)["6SP_P_arua"]
     local hit_side_config = common_game_scene_get_config(hit_side)
+    local hit_side_image_table = common_game_scene_get_texture_table(hit_side)
     local hit_side_move_SFX_table = common_game_scene_get_SFX_move(hit_side)
     if hurt_side_obj_char["height"] == "air" then
         obj_VFX["y_offset"] = 550
@@ -862,10 +863,10 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
     -- 参数和随机数发生器都用释放方(hit side)的 config
     obj_VFX["config"] = hit_side_config["6SP_P_arua"]
     obj_VFX["6SP_P_arua_RNG"] = hit_side_config["6SP_P_arua_RNG"]
-    obj_VFX["6SP_P_arua_quad_image"] = hit_side_config["6SP_P_arua_quad_image"]
-    -- 粒子数据贴图在 config 加载时已经建好(同一侧共用),释放时不新建
-    obj_VFX["particle_image_data"] = hit_side_config["6SP_P_arua_particle_image_data"]
-    obj_VFX["particle_image"] = hit_side_config["6SP_P_arua_particle_image"]
+    -- 贴图用释放方的 image_table_VFX(canvas 加载时已经建好,同一侧共用),释放时不新建
+    obj_VFX["6SP_P_arua_quad_image"] = hit_side_image_table["6SP_P_arua_quad_image"]
+    obj_VFX["particle_image_data"] = hit_side_image_table["6SP_P_arua_particle_image_data"]
+    obj_VFX["particle_image"] = hit_side_image_table["6SP_P_arua_particle_image"]
     -- draw 里复用的表(投影用的点、send 用的 vec2),不每帧新建
     obj_VFX["corner_point"] = {0,0,0}
     obj_VFX["area_origin"] = {0,0}

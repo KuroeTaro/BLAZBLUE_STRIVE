@@ -114,7 +114,8 @@ function load_game_scene_thread_table(LP_name,RP_name,stage_name)
     return res_table
 end
 function order_load_game_scene_common(load_order)
-    -- LP / RP 数据按 left.lua / right.lua 里的声明顺序加载:obj -> anim -> box / anchor -> canvas -> config(audio / shader / UI 见各自的 order_load)
+    -- LP / RP 数据按 left.lua / right.lua 里的声明顺序加载:obj -> anim -> box / anchor -> config -> canvas
+    -- (canvas 里的贴图要用 config 的参数,所以 config 在前;audio / shader / UI 见各自的 order_load)
     local switch =
     {
         [1] = function()
@@ -127,10 +128,10 @@ function order_load_game_scene_common(load_order)
             load_game_scene_common_box_anchor_data()
         end,
         [4] = function()
-            load_game_scene_common_canvas()
+            load_game_scene_common_config()
         end,
         [5] = function()
-            load_game_scene_common_config()
+            load_game_scene_common_texture()
         end
     }
     local this_function = switch[load_order]

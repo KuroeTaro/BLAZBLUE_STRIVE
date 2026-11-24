@@ -825,7 +825,7 @@ function load_game_scene_shader_char_LP()
         "shaders/characters/TRM/drive_sys_chain_fade.glsl"
     )
 end
-function load_game_scene_canvas_char_LP()
+function load_game_scene_texture_LP()
     -- CANVAS
     local width = love.graphics.getWidth()
     local height = love.graphics.getHeight()

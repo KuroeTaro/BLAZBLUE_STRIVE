@@ -166,6 +166,14 @@ function common_game_scene_get_VFX_sprite_sheet_table(side)
     }
     return side_table[side]
 end
+-- 角色程序化 VFX 用的贴图(load_game_scene_texture_LP / RP 里建)
+function common_game_scene_get_texture_table(side)
+    local side_table = {
+        ["L"] = texture_table_game_scene_LP,
+        ["R"] = texture_table_game_scene_RP
+    }
+    return side_table[side]
+end
 function common_game_scene_get_shader(side)
     local side_table = {
         ["L"] = shader_game_scene_LP,

@@ -847,19 +847,31 @@ function load_game_scene_box_anchor_data_LP()
     obj_hurtboxs_data_game_scene_char_LP["9_jump"][6] = {{0,-155,210,330}}
     obj_hurtboxs_data_game_scene_char_LP["9_jump"][7] = {{0,-180,200,380}}
 end
-function load_game_scene_canvas_char_LP()
+function load_game_scene_texture_LP()
     -- CANVAS
     local width = love.graphics.getWidth()
     local height = love.graphics.getHeight()
+    -- 程序化 VFX 用的贴图(_VFX.lua 通过 common_game_scene_get_texture_table 取用)
+    -- 尺寸要用 config 的参数,所以 order_load_game_scene_common 里 config 在 canvas 之前加载
+    texture_table_game_scene_LP = {}
+    -- 6SP_P 诅咒光环用的 1x1 白图:shader 画在它上面,拉伸成所有粒子的包围盒
+    local quad_image_data = love.image.newImageData(1,1)
+    quad_image_data:setPixel(0,0,1,1,1,1)
+    texture_table_game_scene_LP["6SP_P_arua_quad_image"] = love.graphics.newImage(quad_image_data)
+    -- 6SP_P 诅咒光环的粒子数据贴图(rgba32f,宽 = max_particles,高 = 2):代替 uniform 数组
+    -- 加载时建一次,同一侧释放的光环共用(每次 draw 前重新写入再上传,GL 按调用顺序执行,不会互相覆盖)
+    texture_table_game_scene_LP["6SP_P_arua_particle_image_data"] = love.image.newImageData(
+        config_game_scene_LP["6SP_P_arua"]["max_particles"],2,"rgba32f"
+    )
+    texture_table_game_scene_LP["6SP_P_arua_particle_image"] = love.graphics.newImage(
+        texture_table_game_scene_LP["6SP_P_arua_particle_image_data"]
+    )
+    texture_table_game_scene_LP["6SP_P_arua_particle_image"]:setFilter("nearest","nearest")
 end
 function load_game_scene_config_char_LP()
     config_game_scene_LP = {}
     -- 随机数发生器:只给视觉特效用,不动全局的 love.math.random;每次加载新建一次(L / R 种子不同)
     config_game_scene_LP["6SP_P_arua_RNG"] = love.math.newRandomGenerator(os.time())
-    -- 6SP_P 诅咒光环用的 1x1 白图:shader 画在它上面,拉伸成所有粒子的包围盒
-    local quad_image_data = love.image.newImageData(1,1)
-    quad_image_data:setPixel(0,0,1,1,1,1)
-    config_game_scene_LP["6SP_P_arua_quad_image"] = love.graphics.newImage(quad_image_data)
     -- 6SP_P 诅咒光环(_VFX.lua 的 insert_VFX_game_scene_char_TRM_6SP_P_arua / _character_function.lua 使用)
     -- 长度类参数以 shader.unit 世界单位为 1.0;shader 表里的每一项都会按同名 uniform 送进 shader
     config_game_scene_LP["6SP_P_arua"] = {
@@ -924,15 +936,6 @@ function load_game_scene_config_char_LP()
             lum_gamma = 2.0   -- 亮度曲线:1 = 线性;>1 中间调变暗、整体更暗(最亮处不变);<1 反之
         }
     }
-    -- 6SP_P 诅咒光环的粒子数据贴图(rgba32f,宽 = max_particles,高 = 2):代替 uniform 数组
-    -- 加载时建一次,同一侧释放的光环共用(每次 draw 前重新写入再上传,GL 按调用顺序执行,不会互相覆盖)
-    config_game_scene_LP["6SP_P_arua_particle_image_data"] = love.image.newImageData(
-        config_game_scene_LP["6SP_P_arua"]["max_particles"],2,"rgba32f"
-    )
-    config_game_scene_LP["6SP_P_arua_particle_image"] = love.graphics.newImage(
-        config_game_scene_LP["6SP_P_arua_particle_image_data"]
-    )
-    config_game_scene_LP["6SP_P_arua_particle_image"]:setFilter("nearest","nearest")
 end
 function load_game_scene_wallbreak_start_init_LP()
     -- state
@@ -1988,7 +1991,7 @@ function order_load_game_scene_char_LP_shader(load_order)
             )
         end,
         -- 6SP_P 诅咒光环暖机:按游戏里真实的绘制状态画一次(float 数据贴图、config 的混合模式、循环里真的有粒子),
-        -- 让驱动在加载时就把这条管线准备好,避免第一次释放时卡顿。config 在 order_load_game_scene_common 里已经加载
+        -- 让驱动在加载时就把这条管线准备好,避免第一次释放时卡顿。config / image_table_VFX 在 order_load_game_scene_common 里已经加载
         -- 游戏里光环是直接画在屏幕(默认帧缓冲)上的,和 8x8 canvas 的格式不同,驱动可能会按目标重新编译 shader,
         -- 所以 canvas 画完再对屏幕用 alpha 0 画一次(这里在 update 里跑,love.draw 开头会 clear,画面上看不到)
         [3] = function()
@@ -1996,8 +1999,8 @@ function order_load_game_scene_char_LP_shader(load_order)
             local shader_config = config["shader"]
             local unit = shader_config["unit"]
             local shader = shader_game_scene_LP["6SP_P_arua"]
-            local image_data = config_game_scene_LP["6SP_P_arua_particle_image_data"]
-            local image = config_game_scene_LP["6SP_P_arua_particle_image"]
+            local image_data = texture_table_game_scene_LP["6SP_P_arua_particle_image_data"]
+            local image = texture_table_game_scene_LP["6SP_P_arua_particle_image"]
             for name,value in pairs(shader_config) do
                 shader:send(name,value)
             end
@@ -2018,11 +2021,11 @@ function order_load_game_scene_char_LP_shader(load_order)
             love.graphics.setShader(shader)
             love.graphics.setColor(1,1,1,0.75)
             love.graphics.setBlendMode(config["blend_mode"])
-            love.graphics.draw(config_game_scene_LP["6SP_P_arua_quad_image"],0,0,0,8,8)
+            love.graphics.draw(texture_table_game_scene_LP["6SP_P_arua_quad_image"],0,0,0,8,8)
             -- 屏幕(和游戏里同一个绘制目标)
             love.graphics.setCanvas()
             love.graphics.setColor(1,1,1,0)
-            love.graphics.draw(config_game_scene_LP["6SP_P_arua_quad_image"],0,0,0,8,8)
+            love.graphics.draw(texture_table_game_scene_LP["6SP_P_arua_quad_image"],0,0,0,8,8)
             love.graphics.pop()
         end
     }
