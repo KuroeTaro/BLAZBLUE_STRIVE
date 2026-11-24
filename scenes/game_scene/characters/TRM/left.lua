@@ -1972,7 +1972,6 @@ function order_load_game_scene_char_LP_frames(load_order)
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
--- 角色 shader:每帧编译一个(shader 只能在主线程编译,所以没有对应的线程)
 function order_load_game_scene_char_LP_shader(load_order)
     local switch =
     {
