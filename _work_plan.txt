@@ -16,7 +16,7 @@ __WORK_PLAN__
     -- 双手构开枪/蓄力开枪 //ok
 
 order_load order_require order_thread order_warm_up
-local switch
+local switch to file top
 
 超必杀旋风美术资产更新
 
