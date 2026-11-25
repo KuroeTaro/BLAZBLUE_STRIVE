@@ -29,7 +29,7 @@ function run_table_order_load()
         step_time = love.timer.getTime() - step_time
         if DEBUG_ORDER_LOAD_TIMING then
             DEBUG_ORDER_LOAD_LAST_STEP = string.format("require_queue %s %.2fms",step_name,step_time*1000)
-            DEBUG_ORDER_LOAD_LAST_STEP_FRAME = FRAMES_DRAWN
+            DEBUG_ORDER_LOAD_LAST_STEP_FRAME = DEBUG_UPDATE_COUNT
             if step_time > DEBUG_ORDER_LOAD_TIMING_THRESHOLD then
                 print("[require_queue] " .. string.format("%-62s %.2fms",step_name,step_time*1000))
             end
@@ -98,14 +98,14 @@ function run_table_order_load()
             end
         end
     end
-    -- 暖机队列:每帧做一项,做完才执行下一步 order_load(见下面的「资源加载 / 暖机」)
+    -- 暖机队列:每帧做一项,做完才执行下一步 order_load(见 warm_up.lua)
     if #WARM_UP_QUEUE > 0 then
         local step_time = love.timer.getTime()
         local step_name = warm_up_queue_step()
         step_time = love.timer.getTime() - step_time
         if DEBUG_ORDER_LOAD_TIMING then
             DEBUG_ORDER_LOAD_LAST_STEP = string.format("warm_up %s %.2fms",step_name,step_time*1000)
-            DEBUG_ORDER_LOAD_LAST_STEP_FRAME = FRAMES_DRAWN
+            DEBUG_ORDER_LOAD_LAST_STEP_FRAME = DEBUG_UPDATE_COUNT
             if step_time > DEBUG_ORDER_LOAD_TIMING_THRESHOLD then
                 print("[warm_up] " .. string.format("%-62s %.2fms",step_name,step_time*1000))
             end
@@ -120,7 +120,7 @@ function run_table_order_load()
         and (not LOAD_ONCE_TABLE[i])
         then
             -- 计时包住这一步本身(旧的计时在 break 之后才结束,真正执行了的那一步反而量不到)
-            -- 这一步新建的纹理 / shader 登记进暖机队列,从下一帧开始暖机(不算在这一步的耗时里)
+            -- 这一步新建的纹理 / shader 登记进暖机队列,从下一帧开始暖机(不算在这一步的耗时里,见 warm_up.lua)
             local load_order = CURRENT_ORDER_TABLE[i]
             local step_time = love.timer.getTime()
             warm_up_record_begin(ORDER_LOAD_TABLE[i] .. "[" .. load_order .. "]")
@@ -144,142 +144,6 @@ function run_table_order_load()
         end
         i = i + 1
     end
-end
--- ---------------- 资源加载 / 暖机(纹理和 shader 同一套流程) ----------------
--- 只调 newImage / newShader 时,很多驱动会把真正的上传 / 编译 / 链接拖到第一次绘制,
--- 不暖机的话第一次在游戏里用到才卡。统一的做法:
---   1. order_load 的一步里只「建」资源,建的时候登记进暖机队列 WARM_UP_QUEUE
---        纹理:照常 love.graphics.newImage / newCanvas(序列帧图集走 common_sprite_sheet_load,里面也是 newImage)
---              这一步执行期间这两个函数被临时包一层,新建的纹理自动登记
---        shader:用 common_new_shader(source,blend_mode,drawable_kind,prepare) 建,同时登记游戏里的画法
---   2. 之后每帧做队列里的一项,队列空了才执行下一步 order_load(建和暖机错开一帧,一帧只做一件重活)
---        纹理:这一步建的全部纹理合成一项,每张缩成 8x8 往 8x8 canvas 上画一次(整张都被采样到)
---        shader:每个 shader 一项,按登记的画法先画进 8x8 canvas,再对屏幕用 alpha 0 画一次
---              (驱动可能按绘制目标格式、混合模式、顶点格式再编译一次,所以按游戏里的画法画;
---               在 update 里跑,love.draw 开头会 clear,画面上看不到)
---   common_new_shader 的参数:
---     blend_mode:游戏里画这个 shader 用的混合模式
---     drawable_kind:游戏里画的图元
---       "rectangle"   全屏程序化(love.graphics.rectangle)
---       "texture"     画贴图 / canvas
---       "sprite_batch" 画 SpriteBatch
---       "mesh"        画粒子 mesh(顶点着色器,common_particle_mesh_new)
---     prepare:可选,画之前调一次 prepare(shader),例如送真实的数据贴图;
---              普通 uniform 的数值不影响编译(没 send 的 extern 是 0,Image 是 LOVE 的默认贴图),一般不用传
-WARM_UP_QUEUE = {}
-local warm_up_step_name = ""
-local warm_up_texture_list = nil
-local warm_up_shader_list = nil
-local warm_up_new_image = nil
-local warm_up_new_canvas = nil
-local warm_up_target_canvas = nil   -- 暖机画到这张 8x8 canvas 上
-local warm_up_source_canvas = nil   -- "texture" / "sprite_batch" 画的贴图
-local warm_up_sprite_batch = nil
-local warm_up_mesh = nil
-local function warm_up_record_image(...)
-    local texture = warm_up_new_image(...)
-    warm_up_texture_list[#warm_up_texture_list + 1] = texture
-    if DEBUG_ORDER_LOAD_TIMING then
-        DEBUG_RESOURCE_ORIGIN[texture] = warm_up_step_name
-    end
-    return texture
-end
-local function warm_up_record_canvas(...)
-    local texture = warm_up_new_canvas(...)
-    warm_up_texture_list[#warm_up_texture_list + 1] = texture
-    if DEBUG_ORDER_LOAD_TIMING then
-        DEBUG_RESOURCE_ORIGIN[texture] = warm_up_step_name
-    end
-    return texture
-end
--- order_load 的一步开始:之后 newImage / newCanvas 新建的纹理都登记下来
-function warm_up_record_begin(step_name)
-    warm_up_step_name = step_name
-    warm_up_texture_list = {}
-    warm_up_shader_list = {}
-    warm_up_new_image = love.graphics.newImage
-    warm_up_new_canvas = love.graphics.newCanvas
-    love.graphics.newImage = warm_up_record_image
-    love.graphics.newCanvas = warm_up_record_canvas
-end
--- order_load 的一步结束:换回原来的函数,这一步登记的东西排进暖机队列(纹理一项,shader 各一项)
-function warm_up_record_end()
-    love.graphics.newImage = warm_up_new_image
-    love.graphics.newCanvas = warm_up_new_canvas
-    if #warm_up_texture_list > 0 then
-        WARM_UP_QUEUE[#WARM_UP_QUEUE + 1] = {"texture",warm_up_step_name,warm_up_texture_list}
-    end
-    for k = 1,#warm_up_shader_list do
-        WARM_UP_QUEUE[#WARM_UP_QUEUE + 1] = warm_up_shader_list[k]
-    end
-    warm_up_texture_list = nil
-    warm_up_shader_list = nil
-end
--- 建 shader,并登记暖机时的画法(只在 order_load 里调用)
-function common_new_shader(source,blend_mode,drawable_kind,prepare)
-    local shader = love.graphics.newShader(source)
-    if DEBUG_ORDER_LOAD_TIMING then
-        DEBUG_RESOURCE_ORIGIN[shader] = warm_up_step_name
-    end
-    warm_up_shader_list[#warm_up_shader_list + 1] = {
-        "shader",warm_up_step_name,shader,blend_mode,drawable_kind,prepare
-    }
-    return shader
-end
-local function warm_up_draw(drawable_kind)
-    if drawable_kind == "rectangle" then
-        love.graphics.rectangle("fill",0,0,8,8)
-    elseif drawable_kind == "texture" then
-        love.graphics.draw(warm_up_source_canvas,0,0)
-    elseif drawable_kind == "sprite_batch" then
-        love.graphics.draw(warm_up_sprite_batch)
-    elseif drawable_kind == "mesh" then
-        love.graphics.draw(warm_up_mesh)
-    end
-end
--- 做暖机队列里的第一项,返回这一项的说明(给加载计时打印用)
-function warm_up_queue_step()
-    if warm_up_target_canvas == nil then
-        warm_up_target_canvas = love.graphics.newCanvas(8,8)
-        warm_up_source_canvas = love.graphics.newCanvas(8,8)
-        warm_up_sprite_batch = love.graphics.newSpriteBatch(warm_up_source_canvas,1)
-        warm_up_sprite_batch:add(0,0)
-        warm_up_mesh = common_particle_mesh_new(1)
-    end
-    local item = table.remove(WARM_UP_QUEUE,1)
-    love.graphics.push("all")
-    if item[1] == "texture" then
-        local texture_list = item[3]
-        love.graphics.setCanvas(warm_up_target_canvas)
-        love.graphics.setShader()
-        love.graphics.setBlendMode("replace")
-        love.graphics.setColor(1,1,1,1)
-        for k = 1,#texture_list do
-            local texture = texture_list[k]
-            local width,height = texture:getDimensions()
-            love.graphics.draw(texture,0,0,0,8/width,8/height)
-        end
-        love.graphics.pop()
-        return string.format("%s texture %d",item[2],#texture_list)
-    end
-    local shader = item[3]
-    local drawable_kind = item[5]
-    local prepare = item[6]
-    if prepare ~= nil then
-        prepare(shader)
-    end
-    love.graphics.setShader(shader)
-    love.graphics.setBlendMode(item[4])
-    -- 8x8 canvas
-    love.graphics.setCanvas(warm_up_target_canvas)
-    love.graphics.setColor(1,1,1,1)
-    warm_up_draw(drawable_kind)
-    -- 屏幕(和游戏里同一个绘制目标)
-    love.graphics.setCanvas()
-    love.graphics.setColor(1,1,1,0)
-    warm_up_draw(drawable_kind)
-    love.graphics.pop()
-    return string.format("%s shader %s",item[2],drawable_kind)
 end
 -- 读文本:线程读过的直接取(见上面的 __text),没读过的照常在主线程读盘,并打印出来方便补到线程里
 function common_read_text(path)
@@ -320,11 +184,68 @@ end
 DEBUG_ORDER_LOAD_TIMING = true
 DEBUG_ORDER_LOAD_TIMING_THRESHOLD = 0.004 -- 秒,超过才打印
 DEBUG_ORDER_LOAD_LAST_STEP = ""           -- 最近执行的一步,例如 "order_load_game_scene_shader[11] 23.40ms"
-DEBUG_ORDER_LOAD_LAST_STEP_FRAME = -1     -- 执行那一步时的 FRAMES_DRAWN
+DEBUG_ORDER_LOAD_LAST_STEP_FRAME = -1     -- 执行那一步时的 DEBUG_UPDATE_COUNT
+-- love.update 的次数(main.lua 里加);不用 FRAMES_DRAWN,它会被 game_duration.lua 定期清零
+DEBUG_UPDATE_COUNT = 0
 DEBUG_ORDER_LOAD_TOTAL = {}               -- 每个 order_load 函数的累计耗时(下标和 ORDER_LOAD_TABLE 一致)
 DEBUG_REQUIRE_QUEUE_STEP = false          -- 正在做 require 队列的一项(debug_wrap_require 不重复打印)
 -- 纹理 / shader -> 建它的那一步 order_load(例如 "order_load_game_scene_char_LP_frames[37]"),给慢绘制打印用
 DEBUG_RESOURCE_ORIGIN = setmetatable({},{__mode = "k"})
+-- 慢调用探针:把 DEBUG_SLOW_CALL_FUNCTION_TABLE 里的全局函数包一层计时(require 队列每 require 完一个模块补包一次),
+-- 单次调用超过阈值就打印,带调用深度:
+--     [call] 深度 2   23.10ms  character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation
+-- 内层先打印、外层后打印,外层的时间包含内层
+DEBUG_SLOW_CALL_THRESHOLD = 0.002 -- 秒
+DEBUG_SLOW_CALL_FUNCTION_TABLE = {
+    -- 5H / 4SP_S_H 第一次用时卡顿的那条路径
+    "character_function_game_scene_TRM_shot_sys_at_the_ready_shot_init",
+    "character_function_game_scene_TRM_shot_sys_at_the_steady_shot_init",
+    "load_game_scene_anim_char_TRM_5H",
+    "load_game_scene_anim_char_TRM_4SP_S_H",
+    "load_game_scene_anim_char_TRM_5H_shot_sys_at_the_ready_shot",
+    "load_game_scene_anim_char_TRM_5H_oroboros_at_the_ready_shot",
+    "load_game_scene_anim_char_TRM_5H_reticle_at_the_ready_shot",
+    "character_function_game_scene_TRM_shot_sys_at_the_ready_aim_r_calculation",
+    "character_function_game_scene_TRM_shot_sys_at_the_ready_oroboros_pos_update",
+    "insert_projectile_game_scene_char_TRM_4SP_S_H_at_the_steady_shot",
+    "insert_VFX_game_scene_char_TRM_oroboros_blast",
+    "insert_VFX_game_scene_char_TRM_4SP_S_H_at_the_steady_projectile_hit_blast",
+    "init_character_anim_with",
+    "init_character_anim_without",
+    "play_obj_audio",
+    -- 6SP_P 诅咒光环:释放时在 update 里建 VFX 并给 shader 送 uniform(Shader:send),之后每帧发射粒子
+    "insert_VFX_game_scene_char_TRM_6SP_P_arua",
+    "character_function_game_scene_TRM_6SP_P_arua_reset_particles",
+    "character_function_game_scene_TRM_6SP_P_arua_update_particles",
+    "character_function_game_scene_TRM_6SP_P_arua_draw"
+}
+local debug_slow_call_wrapped = setmetatable({},{__mode = "k"})
+local debug_slow_call_depth = 0
+function debug_wrap_slow_call_functions()
+    for i = 1,#DEBUG_SLOW_CALL_FUNCTION_TABLE do
+        local name = DEBUG_SLOW_CALL_FUNCTION_TABLE[i]
+        local original = _G[name]
+        if type(original) == "function" and not debug_slow_call_wrapped[original] then
+            local wrapper = function(...)
+                debug_slow_call_depth = debug_slow_call_depth + 1
+                local depth = debug_slow_call_depth
+                local start_time = love.timer.getTime()
+                local result_1,result_2,result_3,result_4 = original(...)
+                local spend_time = love.timer.getTime() - start_time
+                debug_slow_call_depth = depth - 1
+                if spend_time > DEBUG_SLOW_CALL_THRESHOLD then
+                    print(string.format(
+                        "[call] 深度 %d %8.2fms  %s",
+                        depth,spend_time*1000,name
+                    ))
+                end
+                return result_1,result_2,result_3,result_4
+            end
+            debug_slow_call_wrapped[wrapper] = true
+            _G[name] = wrapper
+        end
+    end
+end
 -- 慢绘制探针:main.lua 在 DEBUG_ORDER_LOAD_TIMING 打开时调用,把 love.graphics.draw / rectangle 包一层,
 -- 单次调用超过阈值就打印当时的绘制状态,用来找「第一次用某个招式卡一下」到底卡在哪个资源上:
 --     [draw] 35.20ms SpriteBatch 4096x2048 纹理:order_load_game_scene_char_LP_frames[37] shader:默认 blend:add 目标:屏幕
@@ -377,7 +298,7 @@ end
 function debug_order_load_timing_record(i,load_order,step_time)
     local name = ORDER_LOAD_TABLE[i]
     DEBUG_ORDER_LOAD_LAST_STEP = string.format("%s[%d] %.2fms",name,load_order,step_time*1000)
-    DEBUG_ORDER_LOAD_LAST_STEP_FRAME = FRAMES_DRAWN
+    DEBUG_ORDER_LOAD_LAST_STEP_FRAME = DEBUG_UPDATE_COUNT
     DEBUG_ORDER_LOAD_TOTAL[i] = (DEBUG_ORDER_LOAD_TOTAL[i] or 0) + step_time
     if step_time > DEBUG_ORDER_LOAD_TIMING_THRESHOLD then
         print("[order_load] " .. DEBUG_ORDER_LOAD_LAST_STEP)

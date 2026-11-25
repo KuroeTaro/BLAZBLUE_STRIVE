@@ -73,6 +73,12 @@ local function require_queue_expand_folder(folder)
         table.insert(REQUIRE_QUEUE,1,{"path",folder .. "/" .. item_table[i]})
     end
 end
+-- 慢调用探针(调试用,见 thread_load.lua):新 require 进来的函数补包一层计时
+local function require_queue_after_require()
+    if DEBUG_ORDER_LOAD_TIMING then
+        debug_wrap_slow_call_functions()
+    end
+end
 -- 做队列里的第一项,返回这一项的说明(给加载计时打印用)
 function require_queue_step()
     local item = table.remove(REQUIRE_QUEUE,1)
@@ -86,9 +92,11 @@ function require_queue_step()
             require_queue_expand_folder(value)
         elseif info.type == "file" and value:sub(-4) == ".lua" then
             require((value:gsub("%.lua$",""):gsub("/",".")))
+            require_queue_after_require()
         end
     else
         require(value)
+        require_queue_after_require()
     end
     return kind .. " " .. value
 end

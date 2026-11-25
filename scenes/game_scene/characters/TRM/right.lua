@@ -1977,7 +1977,7 @@ function order_load_game_scene_char_RP_frames(load_order)
     if this_function then this_function() end
 end
 function order_load_game_scene_char_RP_shader(load_order)
-    -- 每一步建一个 shader,暖机由加载流程排到下一帧(common_new_shader 见 update_general_use_functions/thread_load.lua)
+    -- 每一步建一个 shader,暖机由加载流程排到下一帧(common_new_shader 见 update_general_use_functions/warm_up.lua)
     local switch =
     {
         -- drive_sys 锁链渐变:游戏里是画锁链的 sprite_batch

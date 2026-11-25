@@ -1,5 +1,5 @@
 -- setup force hot compilation
-require("jit.opt").start("hotloop=1","hotexit=30")
+require("jit.opt").start("hotloop=1","hotexit=120")
 ---- include required modules
 require("advance_require_functions")
 require("draw_general_use_functions")
@@ -81,7 +81,7 @@ function love.run()
 			-- 加载中(最近 1 个逻辑帧执行过 order_load)把那一步也带上:
 			-- 驱动拖到 present 才做的编译 / 上传会算进这一帧的 present
 			local last_step = ""
-			if FRAMES_DRAWN - DEBUG_ORDER_LOAD_LAST_STEP_FRAME <= 1 then
+			if DEBUG_UPDATE_COUNT - DEBUG_ORDER_LOAD_LAST_STEP_FRAME <= 1 then
 				last_step = " | 最近一步 " .. DEBUG_ORDER_LOAD_LAST_STEP
 			end
 			print(string.format(
@@ -94,6 +94,8 @@ function love.run()
 	end
 end
 function love.load()
+	-- 启动时的暖机(见 update_general_use_functions/warm_up.lua)
+	init_warm_up()
 	-- 所有可调配置都在 scenes/_scene_config 下,启动时一次性全部加载
 	require_all_in_folder("scenes/_scene_config")
 	init_input()
@@ -154,6 +156,7 @@ function love.update()
 	end
 	FPS = love.timer.getFPS()
 	FRAMES_DRAWN = FRAMES_DRAWN + 1
+	DEBUG_UPDATE_COUNT = DEBUG_UPDATE_COUNT + 1
 end
 function love.draw()
 	love.graphics.clear(7/255,19/255,31/255,1)

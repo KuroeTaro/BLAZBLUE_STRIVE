@@ -55,7 +55,7 @@ function load_game_scene_common_audio()
     )
     update_SFX_VOLUME(audio_SFX_game_scene_common["common_throw_tech"])
 end
--- 公共 shader:每一步建一个,暖机由加载流程排到下一帧(common_new_shader 见 update_general_use_functions/thread_load.lua)
+-- 公共 shader:每一步建一个,暖机由加载流程排到下一帧(common_new_shader 见 update_general_use_functions/warm_up.lua)
 -- 后两个参数是游戏里的画法(混合模式 / 图元),暖机按它画
 function load_game_scene_common_shader(i)
     local switch = {

@@ -59,7 +59,7 @@ function update_load_scene_general()
     )
     -- 加载图像的实际线程功能
     -- local loop_time = love.timer.getTime()
-    -- 纹理 / shader 建好之后由加载流程统一排进暖机队列,下一帧开始暖机(见 thread_load.lua)
+    -- 纹理 / shader 建好之后由加载流程统一排进暖机队列,下一帧开始暖机(见 warm_up.lua)
     run_table_order_load()
     -- loop_time = love.timer.getTime() - loop_time
     -- if loop_time > 0.1 then
