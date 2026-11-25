@@ -33,13 +33,13 @@ end
 --   1. order_load 的一步里只「建」资源,建的时候登记进暖机队列 WARM_UP_QUEUE
 --        纹理:照常 love.graphics.newImage / newCanvas(序列帧图集走 common_sprite_sheet_load,里面也是 newImage)
 --              这一步执行期间这两个函数被临时包一层,新建的纹理自动登记
---        shader:用 common_new_shader(source,blend_mode,drawable_kind,prepare) 建,同时登记游戏里的画法
+--        shader:用 common_shader_new(source,blend_mode,drawable_kind,prepare) 建,同时登记游戏里的画法
 --   2. 之后每帧做队列里的一项,队列空了才执行下一步 order_load(建和暖机错开一帧,一帧只做一件重活)
 --        纹理:这一步建的全部纹理合成一项,每张缩成 8x8 往 8x8 canvas 上画一次(整张都被采样到)
 --        shader:每个 shader 一项,按登记的画法先画进 8x8 canvas,再对屏幕用 alpha 0 画一次
 --              (驱动可能按绘制目标格式、混合模式、顶点格式再编译一次,所以按游戏里的画法画;
 --               在 update 里跑,love.draw 开头会 clear,画面上看不到)
---   common_new_shader 的参数:
+--   common_shader_new 的参数:
 --     blend_mode:游戏里画这个 shader 用的混合模式
 --     drawable_kind:游戏里画的图元
 --       "rectangle"   全屏程序化(love.graphics.rectangle)
@@ -74,6 +74,17 @@ local function warm_up_record_canvas(...)
     end
     return texture
 end
+local function warm_up_draw(drawable_kind)
+    if drawable_kind == "rectangle" then
+        love.graphics.rectangle("fill",0,0,8,8)
+    elseif drawable_kind == "texture" then
+        love.graphics.draw(warm_up_source_canvas,0,0)
+    elseif drawable_kind == "sprite_batch" then
+        love.graphics.draw(warm_up_sprite_batch)
+    elseif drawable_kind == "mesh" then
+        love.graphics.draw(warm_up_mesh)
+    end
+end
 -- order_load 的一步开始:之后 newImage / newCanvas 新建的纹理都登记下来
 function warm_up_record_begin(step_name)
     warm_up_step_name = step_name
@@ -96,28 +107,6 @@ function warm_up_record_end()
     end
     warm_up_texture_list = nil
     warm_up_shader_list = nil
-end
--- 建 shader,并登记暖机时的画法(只在 order_load 里调用)
-function common_new_shader(source,blend_mode,drawable_kind,prepare)
-    local shader = love.graphics.newShader(source)
-    if DEBUG_ORDER_LOAD_TIMING then
-        DEBUG_RESOURCE_ORIGIN[shader] = warm_up_step_name
-    end
-    warm_up_shader_list[#warm_up_shader_list + 1] = {
-        "shader",warm_up_step_name,shader,blend_mode,drawable_kind,prepare
-    }
-    return shader
-end
-local function warm_up_draw(drawable_kind)
-    if drawable_kind == "rectangle" then
-        love.graphics.rectangle("fill",0,0,8,8)
-    elseif drawable_kind == "texture" then
-        love.graphics.draw(warm_up_source_canvas,0,0)
-    elseif drawable_kind == "sprite_batch" then
-        love.graphics.draw(warm_up_sprite_batch)
-    elseif drawable_kind == "mesh" then
-        love.graphics.draw(warm_up_mesh)
-    end
 end
 -- 做暖机队列里的第一项,返回这一项的说明(给加载计时打印用)
 function warm_up_queue_step()

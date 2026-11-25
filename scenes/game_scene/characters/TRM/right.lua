@@ -1977,13 +1977,13 @@ function order_load_game_scene_char_RP_frames(load_order)
     if this_function then this_function() end
 end
 function order_load_game_scene_char_RP_shader(load_order)
-    -- 每一步建一个 shader,暖机由加载流程排到下一帧(common_new_shader 见 update_general_use_functions/warm_up.lua)
+    -- 每一步建一个 shader,暖机由加载流程排到下一帧(common_shader_new 见 update_general_use_functions/warm_up.lua)
     local switch =
     {
         -- drive_sys 锁链渐变:游戏里是画锁链的 sprite_batch
         [1] = function()
             shader_game_scene_RP = {}
-            shader_game_scene_RP["drive_sys_chain_fade"] = common_new_shader(
+            shader_game_scene_RP["drive_sys_chain_fade"] = common_shader_new(
                 common_read_text("shaders/characters/TRM/drive_sys_chain_fade.glsl"),"alpha","sprite_batch"
             )
         end,
@@ -2001,7 +2001,7 @@ function order_load_game_scene_char_RP_shader(load_order)
                     source,"#pragma language glsl3","#pragma language glsl3\n#define PER_PARTICLE",1
                 )
             end
-            shader_game_scene_RP["6SP_P_arua"] = common_new_shader(
+            shader_game_scene_RP["6SP_P_arua"] = common_shader_new(
                 source,config["blend_mode"],"texture",function(shader)
                     local shader_config = config["shader"]
                     local unit = shader_config["unit"]

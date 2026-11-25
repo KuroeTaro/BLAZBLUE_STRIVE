@@ -1,5 +1,4 @@
 -- char_select_scene
--- char_select_scene
 LEFT_CHAR_SELECT_CHAR_POSITION = {
 	{-400,-5,0},
 	{-400,-5,0},
@@ -50,4 +49,3 @@ ICON_COVER_POSITION = {
 	{1116,122},
 	{1327,121}
 }
--- game_scene

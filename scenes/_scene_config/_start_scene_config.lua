@@ -1,5 +1,4 @@
 -- start_scene
--- start_scene
 OPTION_ID = 0
 SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID = 0
 AUDIO_BAR_MARK_ID = 0

@@ -528,17 +528,14 @@ function load_char_select_scene_audio()
     anim_UI_point_linear_char_select_scene_audio_ease_out_1_0_volume_1["loop"] = false
     anim_UI_point_linear_char_select_scene_audio_ease_out_1_0_volume_1["fix_type"] = true
 end
--- 每一步建一个 shader,暖机由加载流程排到下一帧(common_new_shader 见 update_general_use_functions/warm_up.lua)
--- 源码由 threads/char_select_scene/char_select_thread_4_audio_shader.lua 读好(common_read_text 直接取)
--- 后两个参数是游戏里的画法(混合模式 / 图元),暖机按它画
 function load_char_select_scene_shader(i)
     local switch = {
         -- 背景光晕:全屏 rectangle 画进 canvas
-        [1] = function() shader_char_select_scene_fractal_noise = common_new_shader(
+        [1] = function() shader_char_select_scene_fractal_noise = common_shader_new(
             common_read_text("shaders/char_select_fractal_noise.glsl"),"alpha","rectangle"
         ) end,
         -- 背景光晕:把 canvas 画进 canvas
-        [2] = function() shader_char_select_scene_radial_blur = common_new_shader(
+        [2] = function() shader_char_select_scene_radial_blur = common_shader_new(
             common_read_text("shaders/radial_blur.glsl"),"alpha","texture"
         ) end
     }

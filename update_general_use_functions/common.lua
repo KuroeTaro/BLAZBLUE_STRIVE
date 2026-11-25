@@ -63,6 +63,16 @@ function common_particle_mesh_new(particle_count,mesh_usage)
     end
     return love.graphics.newMesh(vertices,"triangles",usage)
 end
+function common_shader_new(source,blend_mode,drawable_kind,prepare)
+    local shader = love.graphics.newShader(source)
+    if DEBUG_ORDER_LOAD_TIMING then
+        DEBUG_RESOURCE_ORIGIN[shader] = warm_up_step_name
+    end
+    warm_up_shader_list[#warm_up_shader_list + 1] = {
+        "shader",warm_up_step_name,shader,blend_mode,drawable_kind,prepare
+    }
+    return shader
+end
 function common_queue_new(length)
     local res = {}
     res["length"] = length

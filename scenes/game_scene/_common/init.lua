@@ -55,44 +55,44 @@ function load_game_scene_common_audio()
     )
     update_SFX_VOLUME(audio_SFX_game_scene_common["common_throw_tech"])
 end
--- 公共 shader:每一步建一个,暖机由加载流程排到下一帧(common_new_shader 见 update_general_use_functions/warm_up.lua)
+-- 公共 shader:每一步建一个,暖机由加载流程排到下一帧(common_shader_new 见 update_general_use_functions/warm_up.lua)
 -- 后两个参数是游戏里的画法(混合模式 / 图元),暖机按它画
 function load_game_scene_common_shader(i)
     local switch = {
         -- 场景光晕:全屏 rectangle 画进 canvas
-        [1] = function() shader_game_scene_fractal_noise = common_new_shader(
+        [1] = function() shader_game_scene_fractal_noise = common_shader_new(
             common_read_text("shaders/game_fractal_noise.glsl"),"alpha","rectangle"
         ) end,
         -- 场景光晕:把 canvas 画进 canvas
-        [2] = function() shader_game_scene_radial_blur = common_new_shader(
+        [2] = function() shader_game_scene_radial_blur = common_shader_new(
             common_read_text("shaders/radial_blur.glsl"),"alpha","texture"
         ) end,
         -- 角色阴影:把 DRAW_CHARACTER_CANVAS 画进 DRAW_SHADOW_CANVAS
-        [3] = function() shader_game_scene_shadow_radial_blur = common_new_shader(
+        [3] = function() shader_game_scene_shadow_radial_blur = common_shader_new(
             common_read_text("shaders/shadow_radial_blur.glsl"),"alpha","texture"
         ) end,
         -- 角色 / 飞行道具:画 sprite_batch
-        [4] = function() shader_game_scene_brightness_contrast = common_new_shader(
+        [4] = function() shader_game_scene_brightness_contrast = common_shader_new(
             common_read_text("shaders/brightness_contrast.glsl"),"alpha","sprite_batch"
         ) end,
         -- counter 粒子:全屏 rectangle 画进 DRAW_VFX_PARTICAL_3D_CANVAS
-        [5] = function() shader_game_scene_counter_partical_3d = common_new_shader(
+        [5] = function() shader_game_scene_counter_partical_3d = common_shader_new(
             common_read_text("shaders/counter_partical_3d.glsl"),"alpha","rectangle"
         ) end,
         -- overdrive 冲击波:全屏 rectangle,add
-        [6] = function() shader_game_scene_overdrive_badge_partical_3d = common_new_shader(
+        [6] = function() shader_game_scene_overdrive_badge_partical_3d = common_shader_new(
             common_read_text("shaders/overdrive_badge_partical_3d.glsl"),"add","rectangle"
         ) end,
         -- overdrive 粒子:画粒子 Mesh(顶点着色器),add
-        [7] = function() shader_game_scene_overdrive_badge_particle = common_new_shader(
+        [7] = function() shader_game_scene_overdrive_badge_particle = common_shader_new(
             common_read_text("shaders/overdrive_badge_particle.glsl"),"add","mesh"
         ) end,
         -- burst shockwave 飞行道具(程序化冲击波,不需要贴图):全屏 rectangle,add
-        [8] = function() shader_game_scene_burst_shockwave_projectile_3d = common_new_shader(
+        [8] = function() shader_game_scene_burst_shockwave_projectile_3d = common_shader_new(
             common_read_text("shaders/burst_shockwave_projectile_3d.glsl"),"add","rectangle"
         ) end,
         -- FD 屏障(FD_bubble 球罩 + block_FD 命中环,同一个 shader):全屏 rectangle,add
-        [9] = function() shader_game_scene_fd_block_3d = common_new_shader(
+        [9] = function() shader_game_scene_fd_block_3d = common_shader_new(
             common_read_text("shaders/fd_block_3d.glsl"),"add","rectangle"
         ) end
     }
