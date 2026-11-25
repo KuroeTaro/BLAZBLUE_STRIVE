@@ -1,11 +1,5 @@
-local filesys_module = require "love.filesystem"
-local image_module = require "love.image"
-local auido_module = require "love.sound"
-local compress_module = image_module.newCompressedData
-local non_compress_module = image_module.newImageData
-local sound_module = auido_module.newSoundData
+local thread_text = {}
 local thread_data = {}
--- 通用类
 local load_universal_name_table = {
     "0_air_Launcher_teched",
     "0_air_Launcher_teching",
@@ -68,11 +62,6 @@ local load_universal_name_table = {
     "8_jump",
     "9_jump"
 }
-for i = 1,#load_universal_name_table do
-    local v = load_universal_name_table[i]
-    thread_data[v] = compress_module("asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".dds")
-end
--- 攻击类
 local load_attack_name_table = {
     "burst_overdrive_ground",
     "burst_overdrive_RC_air",
@@ -137,11 +126,6 @@ local load_attack_name_table = {
     "5UA_100_heat_follow_3",
     "5UA_100_heat_follow_4",
 }
-for i = 1,#load_attack_name_table do
-    local v = load_attack_name_table[i]
-    thread_data[v] = compress_module("asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".dds")
-end
--- 角色move_VFX类
 local load_move_VFX_name_table = {
     "2P",
     "6P",
@@ -174,12 +158,6 @@ local load_move_VFX_name_table = {
     "4SP_S_H_shot_oroboros_blast",
     "6SP_S"
 }
-for i = 1,#load_move_VFX_name_table do
-    local v = load_move_VFX_name_table[i]
-    thread_data[v.."_move_VFX"] =
-    compress_module("asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".dds")
-end
--- projectile
 local load_projectile_name_table = {
     "4SP_S_H_hit",
     "4SP_S_H_miss",
@@ -194,6 +172,30 @@ local load_projectile_name_table = {
     "6SP_K_scapegoat_idle",
     "5UA_100_heat_follow_all_screen"
 }
+local thread_common = require "threads.thread_common"
+local filesys_module = require "love.filesystem"
+local image_module = require "love.image"
+local auido_module = require "love.sound"
+local compress_module = thread_common.with_sibling_json(thread_common.new_compressed_data,thread_text)
+local non_compress_module = thread_common.with_sibling_json(image_module.newImageData,thread_text)
+local sound_module = auido_module.newSoundData
+-- 通用类
+for i = 1,#load_universal_name_table do
+    local v = load_universal_name_table[i]
+    thread_data[v] = compress_module("asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".dds")
+end
+-- 攻击类
+for i = 1,#load_attack_name_table do
+    local v = load_attack_name_table[i]
+    thread_data[v] = compress_module("asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".dds")
+end
+-- 角色move_VFX类
+for i = 1,#load_move_VFX_name_table do
+    local v = load_move_VFX_name_table[i]
+    thread_data[v.."_move_VFX"] =
+    compress_module("asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".dds")
+end
+-- projectile
 for i = 1,#load_projectile_name_table do
     local v = load_projectile_name_table[i]
     thread_data[v.."_projectile"] =
@@ -203,4 +205,5 @@ end
 -- 70 帧 14000x5000 的序列图不再加载,改用单张 static + _VFX.lua 的时间轴重建
 thread_data["overdrive_badge_static"] =
 compress_module("asset/game_scene/characters/TRM/texture/overdrive_badge/TRM_overdrive_badge_static.dds")
+thread_data["__text"] = thread_text
 love.thread.getChannel('thread_data_13'):push(thread_data)

@@ -1,6 +1,9 @@
-local image_module = require "love.image"
-local compress_module = image_module.newCompressedData
+require "love.filesystem"
+local thread_text = {}
 local thread_data = {}
+local thread_common = require "threads.thread_common"
+local image_module = require "love.image"
+local compress_module = thread_common.with_sibling_json(thread_common.new_compressed_data,thread_text)
 -- hit_VFX
 thread_data["air_blow_sprite_batch"] = compress_module("asset/game_scene/common/texture/VFX/hit_VFX/air_blow.dds")
 thread_data["blast_ver0_sprite_batch"] = compress_module("asset/game_scene/common/texture/VFX/hit_VFX/blast_ver0.dds")
@@ -25,4 +28,5 @@ thread_data["special_lighting_1_sprite_batch"] =
 compress_module("asset/game_scene/common/texture/VFX/hit_VFX/_special/lighting_1.dds")
 thread_data["special_radial_sprite_batch"] =
 compress_module("asset/game_scene/common/texture/VFX/hit_VFX/_special/radial.dds")
+thread_data["__text"] = thread_text
 love.thread.getChannel('thread_data_8'):push(thread_data)

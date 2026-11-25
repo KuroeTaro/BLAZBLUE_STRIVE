@@ -1,6 +1,7 @@
-local image_module = require "love.image"
-local compress_module = image_module.newCompressedData
+require "love.filesystem"
 local thread_data = {}
+local thread_common = require "threads.thread_common"
+local compress_module = thread_common.new_compressed_data
 -- global use shape image
 thread_data[1] = compress_module("asset/start_scene/texture/scene_global/dabo_trig.dds")
 thread_data[2] = compress_module("asset/start_scene/texture/scene_global/type_in_mark.dds")

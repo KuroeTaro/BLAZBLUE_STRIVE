@@ -1,9 +1,8 @@
-local image_module = require "love.image"
-local compress_module = image_module.newCompressedData
+require "love.filesystem"
+local thread_text = {}
 local thread_data = {}
--- movie_cover
--- for i = 1,10 do
---     thread_data[i] = compress_module("asset/char_select_scene/texture/movie_cover/"..(i-1)..".dds")
--- end
+local thread_common = require "threads.thread_common"
+local compress_module = thread_common.with_sibling_json(thread_common.new_compressed_data,thread_text)
 thread_data["movie_cover"] = compress_module("asset/char_select_scene/texture/movie_cover.dds")
+thread_data["__text"] = thread_text
 love.thread.getChannel('thread_data_3'):push(thread_data)

@@ -19,9 +19,9 @@ vec4 effect(vec4 color,Image tex,vec2 texture_coords,vec2 screen_coords){
     vec2 uv = screen_coords.xy / 900;
     uv *= 0.5;
     float v = 0.0;
-    for (float i = 0.0; i < 12.0; i += 1.0){
-        float t = mod(1 + i,12.0);
-        float l = 1 - t;
+    // t = 1..11:原来是 i = 0..11、t = mod(1 + i,12),最后一圈 t = 0 时权重 (1 - t/12)*(t/12) = 0,
+    // 算了等于没算,这里直接少跑那一圈(结果不变,展开后的代码少一份)
+    for (float t = 1.0; t < 12.0; t += 1.0){
         float e = exp2(t);
         v += noise(uv * e + vec2(input_x,time*0.5)) * (1.0 - (t / 12.0)) * (t / 12.0);
     }

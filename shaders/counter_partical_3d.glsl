@@ -66,10 +66,17 @@ void add_layer(
     float radius_world = radius_ref * d_ref / FOCAL;
     float project = FOCAL / d;
     float radius = radius_world * project;
-    vec2 base = floor(pw / cell);
-    for (int j = -1; j <= 1; ++j) {
-        for (int i = -1; i <= 1; ++i) {
-            vec2 cid = base + vec2(float(i), float(j));
+    // 只查 2x2 个格子:自己这格 + 像素靠近的那一侧的邻格(x / y 各自判断)
+    // 粒子在自己的格子里,最大半径 = 2.0 * radius_ref(size_seed = 1),
+    // 只要 2.0 * radius_ref < 0.5 * spacing_ref,离像素远的那一侧格子里的粒子就碰不到这个像素,
+    // 结果和 3x3 逐像素一致(现在 4 层里最大是 2 * 1.875 / 22.3 = 0.17 格)。
+    // 以后调大 radius_ref 或调小 spacing_ref 超过这个比例,要改回 3x3
+    vec2 f = pw / cell;
+    vec2 base = floor(f);
+    vec2 side = step(0.5, fract(f)) * 2.0 - 1.0;
+    for (int j = 0; j <= 1; ++j) {
+        for (int i = 0; i <= 1; ++i) {
+            vec2 cid = base + vec2(float(i), float(j)) * side;
             vec4 h = hash42(cid + seed);
             if (h.w > keep) {
                 continue;

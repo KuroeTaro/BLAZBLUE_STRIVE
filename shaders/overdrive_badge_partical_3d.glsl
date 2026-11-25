@@ -34,7 +34,9 @@ extern float charge_softness;         // 充能波整体模糊程度:越大整�
 
 #define BURST_START 28.0
 #define SHOCKWAVE_END 26.0
-// 波数上限:循环写成常量上界,超出部分的圈直接跳过,老驱动也能编过
+// 波数上限:charge_count 取整后夹在 [1,CHARGE_RING_MAX]
+// 循环上限直接用 count(uniform 算出来,所有像素都一样),不用常量 CHARGE_RING_MAX:
+// 常量上限会被驱动整段展开成 12 份,每份好几个 pow / exp,编译很慢
 #define CHARGE_RING_MAX 12
 // 速度 = 1.0 时,一条波从最外圈飞到中心需要的帧数
 #define CHARGE_BASE_LIFE 16.0
@@ -101,15 +103,13 @@ void add_charge_shockwave(float d, float frame, inout vec3 accum) {
     float first_start = min(CHARGE_FIRST_START,last_start);
     float span = last_start - first_start;
     vec3 wave = vec3(0.0);
-    for (int i = 0; i < CHARGE_RING_MAX; i = i + 1) {
-        if (i < count) {
-            // t = 0 是第一条(最外圈最早起跑),t = 1 是最后一条(撞进爆发帧)
-            float t = (count > 1) ? float(i) / float(count - 1) : 1.0;
-            float start = first_start + span * t;
-            // 越靠后的波越细,收束的层次感更好(1.00 -> 0.66)
-            float width_mul = mix(1.00,0.66,t);
-            add_charge_ring(d,(frame - start) / life,width_mul,wave);
-        }
+    for (int i = 0; i < count; i = i + 1) {
+        // t = 0 是第一条(最外圈最早起跑),t = 1 是最后一条(撞进爆发帧)
+        float t = (count > 1) ? float(i) / float(count - 1) : 1.0;
+        float start = first_start + span * t;
+        // 越靠后的波越细,收束的层次感更好(1.00 -> 0.66)
+        float width_mul = mix(1.00,0.66,t);
+        add_charge_ring(d,(frame - start) / life,width_mul,wave);
     }
     accum += wave * fade;
 }

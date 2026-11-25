@@ -1977,69 +1977,52 @@ function order_load_game_scene_char_LP_frames(load_order)
     if this_function then this_function() end
 end
 function order_load_game_scene_char_LP_shader(load_order)
+    -- 每一步建一个 shader,暖机由加载流程排到下一帧(common_new_shader 见 update_general_use_functions/thread_load.lua)
     local switch =
     {
+        -- drive_sys 锁链渐变:游戏里是画锁链的 sprite_batch
         [1] = function()
             shader_game_scene_LP = {}
-            shader_game_scene_LP["drive_sys_chain_fade"] = love.graphics.newShader(
-                "shaders/characters/TRM/drive_sys_chain_fade.glsl"
-            )
-        end,
-        -- drive_sys 锁链渐变暖机:游戏里是画锁链的 sprite_batch(common_shader_warm_up 见 update_general_use_functions/common.lua)
-        [2] = function()
-            common_shader_warm_up(
-                shader_game_scene_LP["drive_sys_chain_fade"],"alpha",common_shader_warm_up_sprite_batch()
+            shader_game_scene_LP["drive_sys_chain_fade"] = common_new_shader(
+                common_read_text("shaders/characters/TRM/drive_sys_chain_fade.glsl"),"alpha","sprite_batch"
             )
         end,
         -- 6SP_P 诅咒光环(程序化生成)
         -- per_particle_noise 是编译期开关:读出源码,按 config 在 #pragma 那行后面插 #define,
         -- shader 里只编译用得到的那条路径(config 在 order_load_game_scene_common 里已经加载)
-        [3] = function()
-            local source = love.filesystem.read("shaders/characters/TRM/6SP_P_arua.glsl")
-            if config_game_scene_LP["6SP_P_arua"]["per_particle_noise"] == 1 then
+        -- 游戏里是 1x1 白图拉伸画在屏幕上,混合模式用 config 的;
+        -- 暖机前按真实状态送一个粒子(float 数据贴图、循环里真的有粒子),
+        -- 粒子数据贴图在 order_load_game_scene_common 里已经建好
+        [2] = function()
+            local config = config_game_scene_LP["6SP_P_arua"]
+            local source = common_read_text("shaders/characters/TRM/6SP_P_arua.glsl")
+            if config["per_particle_noise"] == 1 then
                 source = string.gsub(
                     source,"#pragma language glsl3","#pragma language glsl3\n#define PER_PARTICLE",1
                 )
             end
-            shader_game_scene_LP["6SP_P_arua"] = love.graphics.newShader(source)
-        end,
-        -- 6SP_P 诅咒光环暖机:按游戏里真实的绘制状态画一次(float 数据贴图、config 的混合模式、循环里真的有粒子),
-        -- 让驱动在加载时就把这条管线准备好,避免第一次释放时卡顿。config / image_table_VFX 在 order_load_game_scene_common 里已经加载
-        -- 游戏里光环是直接画在屏幕(默认帧缓冲)上的,和 8x8 canvas 的格式不同,驱动可能会按目标重新编译 shader,
-        -- 所以 canvas 画完再对屏幕用 alpha 0 画一次(这里在 update 里跑,love.draw 开头会 clear,画面上看不到)
-        [4] = function()
-            local config = config_game_scene_LP["6SP_P_arua"]
-            local shader_config = config["shader"]
-            local unit = shader_config["unit"]
-            local shader = shader_game_scene_LP["6SP_P_arua"]
-            local image_data = texture_table_game_scene_LP["6SP_P_arua_particle_image_data"]
-            local image = texture_table_game_scene_LP["6SP_P_arua_particle_image"]
-            for name,value in pairs(shader_config) do
-                shader:send(name,value)
-            end
-            -- 一个在世界原点出生、处在半生的粒子
-            image_data:setPixel(0,0,0,0,0,0)
-            image_data:setPixel(0,1,1,0,0,0)
-            image:replacePixels(image_data)
-            shader:send("time",shader_config["life"]*0.5)
-            shader:send("particle_count",1)
-            shader:send("particle_data",image)
-            shader:send("particle_data_width",config["max_particles"])
-            shader:send("area_origin",{-unit,-unit})
-            shader:send("area_size",{unit*2,unit*2})
-            shader:send("noise_offset",{0,0})
-            local canvas = love.graphics.newCanvas(8,8)
-            love.graphics.push("all")
-            love.graphics.setCanvas(canvas)
-            love.graphics.setShader(shader)
-            love.graphics.setColor(1,1,1,0.75)
-            love.graphics.setBlendMode(config["blend_mode"])
-            love.graphics.draw(texture_table_game_scene_LP["6SP_P_arua_quad_image"],0,0,0,8,8)
-            -- 屏幕(和游戏里同一个绘制目标)
-            love.graphics.setCanvas()
-            love.graphics.setColor(1,1,1,0)
-            love.graphics.draw(texture_table_game_scene_LP["6SP_P_arua_quad_image"],0,0,0,8,8)
-            love.graphics.pop()
+            shader_game_scene_LP["6SP_P_arua"] = common_new_shader(
+                source,config["blend_mode"],"texture",function(shader)
+                    local shader_config = config["shader"]
+                    local unit = shader_config["unit"]
+                    local image_data = texture_table_game_scene_LP["6SP_P_arua_particle_image_data"]
+                    local image = texture_table_game_scene_LP["6SP_P_arua_particle_image"]
+                    for name,value in pairs(shader_config) do
+                        shader:send(name,value)
+                    end
+                    -- 一个在世界原点出生、处在半生的粒子
+                    image_data:setPixel(0,0,0,0,0,0)
+                    image_data:setPixel(0,1,1,0,0,0)
+                    image:replacePixels(image_data)
+                    shader:send("time",shader_config["life"]*0.5)
+                    shader:send("particle_count",1)
+                    shader:send("particle_data",image)
+                    shader:send("particle_data_width",config["max_particles"])
+                    shader:send("area_origin",{-unit,-unit})
+                    shader:send("area_size",{unit*2,unit*2})
+                    shader:send("noise_offset",{0,0})
+                end
+            )
         end
     }
     local this_function = switch[load_order]

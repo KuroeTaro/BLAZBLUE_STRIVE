@@ -1,10 +1,3 @@
--- thread_table 线程table正常放
--- thread_amount 从1开始数有多少就是多少
--- thread_once_table thread_amount量的false
--- ASSET_DATA = {}
--- load_functions_table 每个thread对应一个 load function
--- CURRENT_ORDER_TABLE 全是 1
--- order_size_table 对应 每个具体的 load_function的 order最大值
 function load_game_scene_prep()
     local char_id_to_name = {
         "PLT",
@@ -24,72 +17,82 @@ function load_game_scene_prep()
     local thread_stage_name = stage_name
     load_game_scene_require(LP_name,RP_name,stage_name)
     THREAD_TABLE = load_game_scene_thread_table(thread_LP_name,thread_RP_name,thread_stage_name)
+    THREAD_NO_LIMIT_TABLE = {
+        [10] = true, -- audio
+        [11] = true, -- shader
+        [12] = true, -- LP audio
+        [14] = true, -- LP shader
+        [15] = true, -- RP audio
+        [17] = true, -- RP shader
+        [18] = true  -- stage audio
+    }
     THREAD_AMOUNT = 20 -- 线程数目(含没有线程的 false 项)
     THREAD_ONCE_TABLE = {
         false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
     } -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     ASSET_DATA = {} -- 保持为nil
+    -- 函数名字符串:prep 的时候 left.lua / alpha.lua 这些还没 require,执行时再从 _G 取
     ORDER_LOAD_TABLE = {
-        order_load_game_scene_common,
-        order_load_game_scene_UI_global,
-        order_load_game_scene_UI_act,
-        order_load_game_scene_UI_HUD,
-        order_load_game_scene_UI_lets_dance,
-        order_load_game_scene_projectile,
-        order_load_game_scene_VFX_HUD,
-        order_load_game_scene_VFX_move,
-        order_load_game_scene_VFX_burst_overdrive_RC_UA,
-        order_load_game_scene_audio,
-        order_load_game_scene_shader,
-        order_load_game_scene_char_LP_audio,
-        order_load_game_scene_char_LP_frames,
-        order_load_game_scene_char_LP_shader,
-        order_load_game_scene_char_RP_audio,
-        order_load_game_scene_char_RP_frames,
-        order_load_game_scene_char_RP_shader,
-        order_load_game_scene_stage_audio,
-        order_load_game_scene_stage_frames,
-        order_load_game_scene_stage_shader
+        "order_load_game_scene_common",
+        "order_load_game_scene_UI_global",
+        "order_load_game_scene_UI_act",
+        "order_load_game_scene_UI_HUD",
+        "order_load_game_scene_UI_lets_dance",
+        "order_load_game_scene_projectile",
+        "order_load_game_scene_VFX_HUD",
+        "order_load_game_scene_VFX_move",
+        "order_load_game_scene_VFX_burst_overdrive_RC_UA",
+        "order_load_game_scene_audio",
+        "order_load_game_scene_shader",
+        "order_load_game_scene_char_LP_audio",
+        "order_load_game_scene_char_LP_frames",
+        "order_load_game_scene_char_LP_shader",
+        "order_load_game_scene_char_RP_audio",
+        "order_load_game_scene_char_RP_frames",
+        "order_load_game_scene_char_RP_shader",
+        "order_load_game_scene_stage_audio",
+        "order_load_game_scene_stage_frames",
+        "order_load_game_scene_stage_shader"
     }
     CURRENT_ORDER_TABLE = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1} -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
-    ORDER_SIZE_TABLE = {5,1,4,3,1,1,1,4,3,1,20,12,39,4,12,39,4,3,4,1} -- 每个load function的最大值
+    ORDER_SIZE_TABLE = {7,1,4,3,1,1,1,4,3,1,9,12,39,2,12,39,2,3,4,1} -- 每个load function的最大值
     LOAD_ONCE_TABLE = {
         false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
     } -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     LOADING_FUNCTION_AMOUNT = 20 -- 和线程数相同
     -- 训练模式
     if GAME_MODE == 0 then
-        NEXT_UPDATE_BLOCK = update_game_scene_training_before_ease_in
-        NEXT_DRAW_BLOCK = draw_game_scene_main
-        NEXT_PRESET = preset_game_scene_training
+        NEXT_UPDATE_BLOCK = "update_game_scene_training_before_ease_in"
+        NEXT_DRAW_BLOCK = "draw_game_scene_main"
+        NEXT_PRESET = "preset_game_scene_training"
     -- 本地多人模式
     elseif GAME_MODE == 1 then
-        NEXT_UPDATE_BLOCK = update_game_scene_local_match_before_ease_in
-        NEXT_DRAW_BLOCK = draw_game_scene_main
-        NEXT_PRESET = preset_game_scene_match
+        NEXT_UPDATE_BLOCK = "update_game_scene_local_match_before_ease_in"
+        NEXT_DRAW_BLOCK = "draw_game_scene_main"
+        NEXT_PRESET = "preset_game_scene_match"
     -- 线上多人模式
     elseif GAME_MODE == 2 then
-        NEXT_UPDATE_BLOCK = update_game_scene_online_match_synchronizing
-        NEXT_DRAW_BLOCK = draw_game_scene_synchronizing
-        NEXT_PRESET = preset_game_scene_match
+        NEXT_UPDATE_BLOCK = "update_game_scene_online_match_synchronizing"
+        NEXT_DRAW_BLOCK = "draw_game_scene_main"
+        NEXT_PRESET = "preset_game_scene_match"
     end
 end
 function load_game_scene_require(LP_name,RP_name,stage_name)
-    require_all_in_folder("scenes/game_scene/_common")
-    require("scenes.game_scene.characters." .. LP_name .. ".left")
-    require("scenes.game_scene.characters." .. RP_name .. ".right")
-    require("scenes.game_scene.characters." .. LP_name .. "._character_function")
-    require("scenes.game_scene.characters." .. RP_name .. "._character_function")
-    require("scenes.game_scene.characters." .. LP_name .. "._anim")
-    require("scenes.game_scene.characters." .. RP_name .. "._anim")
-    require("scenes.game_scene.characters." .. LP_name .. "._projectile")
-    require("scenes.game_scene.characters." .. RP_name .. "._projectile")
-    require("scenes.game_scene.characters." .. LP_name .. "._VFX")
-    require("scenes.game_scene.characters." .. RP_name .. "._VFX")
-    require("scenes.game_scene.stage." .. stage_name)
+    require_queue_push_folder("scenes/game_scene/_common")
+    require_queue_push_module("scenes.game_scene.characters." .. LP_name .. ".left")
+    require_queue_push_module("scenes.game_scene.characters." .. RP_name .. ".right")
+    require_queue_push_module("scenes.game_scene.characters." .. LP_name .. "._character_function")
+    require_queue_push_module("scenes.game_scene.characters." .. RP_name .. "._character_function")
+    require_queue_push_module("scenes.game_scene.characters." .. LP_name .. "._anim")
+    require_queue_push_module("scenes.game_scene.characters." .. RP_name .. "._anim")
+    require_queue_push_module("scenes.game_scene.characters." .. LP_name .. "._projectile")
+    require_queue_push_module("scenes.game_scene.characters." .. RP_name .. "._projectile")
+    require_queue_push_module("scenes.game_scene.characters." .. LP_name .. "._VFX")
+    require_queue_push_module("scenes.game_scene.characters." .. RP_name .. "._VFX")
+    require_queue_push_module("scenes.game_scene.stage." .. stage_name)
 end
 function load_game_scene_thread_table(LP_name,RP_name,stage_name)
-    -- false = 没有线程(只在主线程加载,例如 shader / audio / 纯计算的数据),run_table_order_load 会直接当作数据已就绪
+    -- false = 没有线程(只在主线程加载,例如纯计算的数据),run_table_order_load 会直接当作数据已就绪
     local res_table = {}
     table.insert(res_table,false) -- common
     table.insert(res_table,"threads/game_scene/UI_global.lua")
@@ -100,21 +103,21 @@ function load_game_scene_thread_table(LP_name,RP_name,stage_name)
     table.insert(res_table,"threads/game_scene/VFX_HUD.lua")
     table.insert(res_table,"threads/game_scene/VFX_move.lua")
     table.insert(res_table,"threads/game_scene/VFX_burst_overdrive_RC_UA.lua")
-    table.insert(res_table,false) -- audio
-    table.insert(res_table,false) -- shader
+    table.insert(res_table,"threads/game_scene/audio.lua")
+    table.insert(res_table,"threads/game_scene/shader.lua") -- shader 源码
     table.insert(res_table,"threads/game_scene/characters/" .. LP_name .. "_audio.lua")
     table.insert(res_table,"threads/game_scene/characters/" .. LP_name .. "_texture.lua")
-    table.insert(res_table,false) -- LP shader
+    table.insert(res_table,"threads/game_scene/characters/" .. LP_name .. "_shader.lua") -- LP shader 源码
     table.insert(res_table,"threads/game_scene/characters/" .. RP_name .. "_audio.lua")
     table.insert(res_table,"threads/game_scene/characters/" .. RP_name .. "_texture.lua")
-    table.insert(res_table,false) -- RP shader
+    table.insert(res_table,"threads/game_scene/characters/" .. RP_name .. "_shader.lua") -- RP shader 源码
     table.insert(res_table,"threads/game_scene/stage/" .. stage_name .. "_audio.lua")
     table.insert(res_table,"threads/game_scene/stage/" .. stage_name .. ".lua")
     table.insert(res_table,false) -- stage shader
     return res_table
 end
 function order_load_game_scene_common(load_order)
-    -- LP / RP 数据按 left.lua / right.lua 里的声明顺序加载:obj -> anim -> box / anchor -> config -> canvas
+    -- LP / RP 数据按 left.lua / right.lua 里的声明顺序加载:obj -> anim -> box / anchor -> config -> canvas -> 贴图
     -- (canvas 里的贴图要用 config 的参数,所以 config 在前;audio / shader / UI 见各自的 order_load)
     local switch =
     {
@@ -132,12 +135,18 @@ function order_load_game_scene_common(load_order)
         end,
         [5] = function()
             load_game_scene_common_texture()
+        end,
+        -- 角色的程序化 VFX 贴图单独一步(要用 config,config 在 [4])
+        [6] = function()
+            load_game_scene_texture_LP()
+        end,
+        [7] = function()
+            load_game_scene_texture_RP()
         end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
--- 全局 UI(和具体模式无关的 UI,例如 movie cover)
 function order_load_game_scene_UI_global(load_order)
     local switch =
     {
@@ -152,7 +161,6 @@ function order_load_game_scene_UI_global(load_order)
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
--- 公共 audio(load_game_scene_common_audio 见 init.lua)
 function order_load_game_scene_audio(load_order)
     local switch =
     {
@@ -431,8 +439,8 @@ function order_load_game_scene_VFX_HUD(load_order)
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
--- 公共 shader:奇数步编译一个,偶数步给刚编译的那个暖机(错开一帧)
--- load_game_scene_common_shader(i) / load_game_scene_common_shader_warm_up(i) 见 init.lua
+-- 公共 shader:每一步建一个,暖机由加载流程排到下一帧
+-- load_game_scene_common_shader(i) 见 init.lua
 function order_load_game_scene_shader(load_order)
     local switch =
     {
@@ -440,61 +448,28 @@ function order_load_game_scene_shader(load_order)
             load_game_scene_common_shader(1)
         end,
         [2] = function()
-            load_game_scene_common_shader_warm_up(1)
-        end,
-        [3] = function()
             load_game_scene_common_shader(2)
         end,
-        [4] = function()
-            load_game_scene_common_shader_warm_up(2)
-        end,
-        [5] = function()
+        [3] = function()
             load_game_scene_common_shader(3)
         end,
-        [6] = function()
-            load_game_scene_common_shader_warm_up(3)
-        end,
-        [7] = function()
+        [4] = function()
             load_game_scene_common_shader(4)
         end,
-        [8] = function()
-            load_game_scene_common_shader_warm_up(4)
-        end,
-        [9] = function()
+        [5] = function()
             load_game_scene_common_shader(5)
         end,
-        [10] = function()
-            load_game_scene_common_shader_warm_up(5)
-        end,
-        [11] = function()
+        [6] = function()
             load_game_scene_common_shader(6)
         end,
-        [12] = function()
-            load_game_scene_common_shader_warm_up(6)
-        end,
-        [13] = function()
+        [7] = function()
             load_game_scene_common_shader(7)
         end,
-        [14] = function()
-            load_game_scene_common_shader_warm_up(7)
-        end,
-        [15] = function()
+        [8] = function()
             load_game_scene_common_shader(8)
         end,
-        [16] = function()
-            load_game_scene_common_shader_warm_up(8)
-        end,
-        [17] = function()
+        [9] = function()
             load_game_scene_common_shader(9)
-        end,
-        [18] = function()
-            load_game_scene_common_shader_warm_up(9)
-        end,
-        [19] = function()
-            load_game_scene_common_shader(10)
-        end,
-        [20] = function()
-            load_game_scene_common_shader_warm_up(10)
         end
     }
     local this_function = switch[load_order]

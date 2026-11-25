@@ -1,38 +1,32 @@
--- thread_table 线程table正常放
--- thread_amount 从1开始数有多少就是多少
--- thread_once_table thread_amount量的false
--- ASSET_DATA = {}
--- load_functions_table 每个thread对应一个 load function
--- CURRENT_ORDER_TABLE 全是 1
--- order_size_table 对应 每个具体的 load_function的 order最大值
 function load_char_select_scene_prep()
     load_char_select_scene_require()
     THREAD_TABLE = {
         "threads/char_select_scene/char_select_thread_1_char.lua",
         "threads/char_select_scene/char_select_thread_2_start_0_110f.lua",
-        "threads/char_select_scene/char_select_thread_3_movie_cover.lua"
+        "threads/char_select_scene/char_select_thread_3_movie_cover.lua",
+        "threads/char_select_scene/char_select_thread_4_audio_shader.lua"
     }
-    THREAD_AMOUNT = 3 -- 线程数目
-    THREAD_ONCE_TABLE = {false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
+    THREAD_AMOUNT = 4 -- 线程数目
+    THREAD_ONCE_TABLE = {false,false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     ASSET_DATA = {} -- 保持为nil
+    -- 函数名字符串:执行时再从 _G 取(prep 的时候这个场景的模块还在 require 队列里)
     ORDER_LOAD_TABLE = {
-        order_load_char_select_scene_UI_char,
-        order_load_char_select_scene_UI_start_0_110f,
-        order_load_char_select_scene_UI_movie_cover
+        "order_load_char_select_scene_UI_char",
+        "order_load_char_select_scene_UI_start_0_110f",
+        "order_load_char_select_scene_UI_movie_cover",
+        "order_load_char_select_scene_audio_shader"
     } -- load_function_table
-    CURRENT_ORDER_TABLE = {1,1,1} -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
-    ORDER_SIZE_TABLE = {4,1,1} -- 每个load function的最大值
-    LOAD_ONCE_TABLE = {false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
-    LOADING_FUNCTION_AMOUNT = 3 -- 和线程数相同
-	NEXT_UPDATE_BLOCK = update_char_select_scene_ease_in_0f_36f
-	NEXT_DRAW_BLOCK = draw_char_select_scene_ease_in_0f_36f
-    NEXT_PRESET = preset_char_select_scene
+    CURRENT_ORDER_TABLE = {1,1,1,1} -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
+    ORDER_SIZE_TABLE = {2,1,1,3} -- 每个load function的最大值
+    LOAD_ONCE_TABLE = {false,false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
+    LOADING_FUNCTION_AMOUNT = 4 -- 和线程数相同
+	NEXT_UPDATE_BLOCK = "update_char_select_scene_ease_in_0f_36f"
+	NEXT_DRAW_BLOCK = "draw_char_select_scene_ease_in_0f_36f"
+    NEXT_PRESET = "preset_char_select_scene"
 end
--- reuqire
 function load_char_select_scene_require()
-    require_all_in_folder("scenes/char_select_scene")
+    require_queue_push_folder("scenes/char_select_scene")
 end
--- 分步骤将素材加载
 function order_load_char_select_scene_UI_char(load_order)
     local switch =
     {
@@ -68,17 +62,6 @@ function order_load_char_select_scene_UI_char(load_order)
         [2] = function()
             load_char_select_scene_obj()
             load_char_select_scene_anim()
-            load_char_select_scene_audio()
-            load_char_select_scene_shader()
-        end,
-        -- shader 暖机:和上面的编译错开,一帧一个(common_shader_warm_up 见 update_general_use_functions/common.lua)
-        -- 背景光晕:fractal_noise 全屏 rectangle 画进 canvas
-        [3] = function()
-            common_shader_warm_up(shader_char_select_scene_fractal_noise,"alpha")
-        end,
-        -- 背景光晕:radial_blur 把 canvas 画进 canvas
-        [4] = function()
-            common_shader_warm_up(shader_char_select_scene_radial_blur,"alpha",love.graphics.newCanvas(8,8))
         end
     }
     local this_function = switch[load_order]
@@ -106,6 +89,25 @@ function order_load_char_select_scene_UI_movie_cover(load_order)
             common_sprite_sheet_load(
                 "asset/char_select_scene/texture/movie_cover.json",love.graphics.newImage(ASSET_DATA[3]["movie_cover"])
             )
+        end
+    }
+    local this_function = switch[load_order]
+    if this_function then this_function() end
+end
+-- audio / shader:static SFX 的 SoundData 和 shader 源码由
+-- threads/char_select_scene/char_select_thread_4_audio_shader.lua 在线程里读好
+-- shader 每一步建一个,暖机由加载流程排到下一帧(load_char_select_scene_shader(i) 见 init.lua)
+function order_load_char_select_scene_audio_shader(load_order)
+    local switch =
+    {
+        [1] = function()
+            load_char_select_scene_audio()
+        end,
+        [2] = function()
+            load_char_select_scene_shader(1)
+        end,
+        [3] = function()
+            load_char_select_scene_shader(2)
         end
     }
     local this_function = switch[load_order]

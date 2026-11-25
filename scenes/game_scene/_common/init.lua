@@ -10,13 +10,10 @@ function load_game_scene_common_anim()
     load_game_scene_anim_char_RP()
     load_game_scene_anim_stage()
 end
--- 以下几个只在加载时调用一次(order_load_game_scene_common),训练模式重置不会重新加载
--- 碰撞盒 / 锚点数据
 function load_game_scene_common_box_anchor_data()
     load_game_scene_box_anchor_data_LP()
     load_game_scene_box_anchor_data_RP()
 end
--- canvas(公共绘制用 canvas + 角色 canvas / 程序化 VFX 贴图,要用 config 的参数,在 config 之后加载)
 function load_game_scene_common_texture()
     local width = love.graphics.getWidth()
     local height = love.graphics.getHeight()
@@ -24,10 +21,8 @@ function load_game_scene_common_texture()
     DRAW_CHARACTER_CANVAS = love.graphics.newCanvas(width,height)
     DRAW_SHADOW_CANVAS = love.graphics.newCanvas(width,height)
     DRAW_VFX_PARTICAL_3D_CANVAS = love.graphics.newCanvas(width,height)
-    load_game_scene_texture_LP()
-    load_game_scene_texture_RP()
+    -- 角色的程序化 VFX 贴图(load_game_scene_texture_LP / RP)在 order_load_game_scene_common 里单独一步
 end
--- 角色 config(参数表 + 随机数发生器)
 function load_game_scene_common_config()
     load_game_scene_config_char_LP()
     load_game_scene_config_char_RP()
@@ -40,7 +35,7 @@ function load_game_scene_common_audio()
     audio_SFX_game_scene_common["annoucer_ease_in"]["LCT"] = {0}
     audio_SFX_game_scene_common["annoucer_ease_in"]["LCD"] = {0}
     audio_SFX_game_scene_common["annoucer_ease_in"]["audio"] = love.audio.newSource(
-        "asset/game_scene/common/audio/annoucer_ease_in.ogg","static"
+        ASSET_DATA[10]["annoucer_ease_in"],"static"
     )
     update_SFX_VOLUME(audio_SFX_game_scene_common["annoucer_ease_in"])
     -- throw_tech_SFX
@@ -48,7 +43,7 @@ function load_game_scene_common_audio()
     audio_SFX_game_scene_common["common_risk_force_counter"]["LCT"] = {0}
     audio_SFX_game_scene_common["common_risk_force_counter"]["LCD"] = {0}
     audio_SFX_game_scene_common["common_risk_force_counter"]["audio"] = love.audio.newSource(
-        "asset/game_scene/common/audio/common_risk_force_counter.ogg","static"
+        ASSET_DATA[10]["common_risk_force_counter"],"static"
     )
     update_SFX_VOLUME(audio_SFX_game_scene_common["common_risk_force_counter"])
     -- throw_tech_SFX
@@ -56,90 +51,49 @@ function load_game_scene_common_audio()
     audio_SFX_game_scene_common["common_throw_tech"]["LCT"] = {0}
     audio_SFX_game_scene_common["common_throw_tech"]["LCD"] = {0}
     audio_SFX_game_scene_common["common_throw_tech"]["audio"] = love.audio.newSource(
-        "asset/game_scene/common/audio/common_throw_tech.ogg","static"
+        ASSET_DATA[10]["common_throw_tech"],"static"
     )
     update_SFX_VOLUME(audio_SFX_game_scene_common["common_throw_tech"])
 end
+-- 公共 shader:每一步建一个,暖机由加载流程排到下一帧(common_new_shader 见 update_general_use_functions/thread_load.lua)
+-- 后两个参数是游戏里的画法(混合模式 / 图元),暖机按它画
 function load_game_scene_common_shader(i)
     local switch = {
-        [1] = function() shader_game_scene_fractal_noise = love.graphics.newShader(
-            "shaders/game_fractal_noise.glsl"
-        ) end,
-        [2] = function() shader_game_scene_radial_blur = love.graphics.newShader(
-            "shaders/radial_blur.glsl"
-        ) end,
-        [3] = function() shader_game_scene_shadow_radial_blur = love.graphics.newShader(
-            "shaders/shadow_radial_blur.glsl"
-        ) end,
-        [4] = function() shader_game_scene_brightness_contrast = love.graphics.newShader(
-            "shaders/brightness_contrast.glsl"
-        ) end,
-        [5] = function() shader_game_scene_gaussian_blur = love.graphics.newShader(
-            "shaders/gaussian_blur.glsl"
-        ) end,
-        [6] = function() shader_game_scene_counter_partical_3d = love.graphics.newShader(
-            "shaders/counter_partical_3d.glsl"
-        ) end,
-        [7] = function() shader_game_scene_overdrive_badge_partical_3d = love.graphics.newShader(
-            "shaders/overdrive_badge_partical_3d.glsl"
-        ) end,
-        [8] = function() shader_game_scene_overdrive_badge_particle = love.graphics.newShader(
-            "shaders/overdrive_badge_particle.glsl"
-        ) end,
-        -- burst shockwave 飞行道具(程序化冲击波,不需要贴图)
-        [9] = function() shader_game_scene_burst_shockwave_projectile_3d = love.graphics.newShader(
-            "shaders/burst_shockwave_projectile_3d.glsl"
-        ) end,
-        -- FD 屏障(FD_bubble 球罩 + block_FD 命中环,同一个 shader)
-        [10] = function() shader_game_scene_fd_block_3d = love.graphics.newShader(
-            "shaders/fd_block_3d.glsl"
-        ) end
-    }
-    local this_function = switch[i]
-    if this_function then this_function() end
-end
--- 公共 shader 的暖机,编号和 load_game_scene_common_shader 一一对应(common_shader_warm_up 见 update_general_use_functions/common.lua)
-function load_game_scene_common_shader_warm_up(i)
-    local switch = {
         -- 场景光晕:全屏 rectangle 画进 canvas
-        [1] = function() common_shader_warm_up(
-            shader_game_scene_fractal_noise,"alpha"
+        [1] = function() shader_game_scene_fractal_noise = common_new_shader(
+            common_read_text("shaders/game_fractal_noise.glsl"),"alpha","rectangle"
         ) end,
         -- 场景光晕:把 canvas 画进 canvas
-        [2] = function() common_shader_warm_up(
-            shader_game_scene_radial_blur,"alpha",love.graphics.newCanvas(8,8)
+        [2] = function() shader_game_scene_radial_blur = common_new_shader(
+            common_read_text("shaders/radial_blur.glsl"),"alpha","texture"
         ) end,
         -- 角色阴影:把 DRAW_CHARACTER_CANVAS 画进 DRAW_SHADOW_CANVAS
-        [3] = function() common_shader_warm_up(
-            shader_game_scene_shadow_radial_blur,"alpha",love.graphics.newCanvas(8,8)
+        [3] = function() shader_game_scene_shadow_radial_blur = common_new_shader(
+            common_read_text("shaders/shadow_radial_blur.glsl"),"alpha","texture"
         ) end,
         -- 角色 / 飞行道具:画 sprite_batch
-        [4] = function() common_shader_warm_up(
-            shader_game_scene_brightness_contrast,"alpha",common_shader_warm_up_sprite_batch()
-        ) end,
-        -- 目前没有地方用,按贴图画
-        [5] = function() common_shader_warm_up(
-            shader_game_scene_gaussian_blur,"alpha",love.graphics.newCanvas(8,8)
+        [4] = function() shader_game_scene_brightness_contrast = common_new_shader(
+            common_read_text("shaders/brightness_contrast.glsl"),"alpha","sprite_batch"
         ) end,
         -- counter 粒子:全屏 rectangle 画进 DRAW_VFX_PARTICAL_3D_CANVAS
-        [6] = function() common_shader_warm_up(
-            shader_game_scene_counter_partical_3d,"alpha"
+        [5] = function() shader_game_scene_counter_partical_3d = common_new_shader(
+            common_read_text("shaders/counter_partical_3d.glsl"),"alpha","rectangle"
         ) end,
         -- overdrive 冲击波:全屏 rectangle,add
-        [7] = function() common_shader_warm_up(
-            shader_game_scene_overdrive_badge_partical_3d,"add"
+        [6] = function() shader_game_scene_overdrive_badge_partical_3d = common_new_shader(
+            common_read_text("shaders/overdrive_badge_partical_3d.glsl"),"add","rectangle"
         ) end,
         -- overdrive 粒子:画粒子 Mesh(顶点着色器),add
-        [8] = function() common_shader_warm_up(
-            shader_game_scene_overdrive_badge_particle,"add",common_particle_mesh_new(1)
+        [7] = function() shader_game_scene_overdrive_badge_particle = common_new_shader(
+            common_read_text("shaders/overdrive_badge_particle.glsl"),"add","mesh"
         ) end,
-        -- burst 冲击波:全屏 rectangle,add
-        [9] = function() common_shader_warm_up(
-            shader_game_scene_burst_shockwave_projectile_3d,"add"
+        -- burst shockwave 飞行道具(程序化冲击波,不需要贴图):全屏 rectangle,add
+        [8] = function() shader_game_scene_burst_shockwave_projectile_3d = common_new_shader(
+            common_read_text("shaders/burst_shockwave_projectile_3d.glsl"),"add","rectangle"
         ) end,
-        -- FD 屏障:全屏 rectangle,add
-        [10] = function() common_shader_warm_up(
-            shader_game_scene_fd_block_3d,"add"
+        -- FD 屏障(FD_bubble 球罩 + block_FD 命中环,同一个 shader):全屏 rectangle,add
+        [9] = function() shader_game_scene_fd_block_3d = common_new_shader(
+            common_read_text("shaders/fd_block_3d.glsl"),"add","rectangle"
         ) end
     }
     local this_function = switch[i]

@@ -1,4 +1,3 @@
--- 此功能也是一个场景离开时用的场景出口示例
 function update_load_scene_load_pre_timer()
     -- 场景时间更新
     SCENE_TIMER = SCENE_TIMER + 1
@@ -60,19 +59,15 @@ function update_load_scene_general()
     )
     -- 加载图像的实际线程功能
     -- local loop_time = love.timer.getTime()
+    -- 纹理 / shader 建好之后由加载流程统一排进暖机队列,下一帧开始暖机(见 thread_load.lua)
     run_table_order_load()
-    -- 当前场景所有资产加载完之后,统一预热一次(贴图 / 序列帧图集 / shader / canvas)
-    -- 只跑一次;单个资产出错内部已经 pcall 掉了
-    if LOADING_FUNCTION_AMOUNT == 0 and (not ASSET_WARM_UP_DONE) then
-        ASSET_WARM_UP_DONE = true
-        set_load_scene_asset_warm_up()
-    end
     -- loop_time = love.timer.getTime() - loop_time
     -- if loop_time > 0.1 then
     --     print("run_table_order_load",loop_time)
     -- end
     -- 场景出口
-    if LOADING_FUNCTION_AMOUNT == 0 and SCENE_TIMER >= 60 then
+    -- 最后一步 order_load 登记的暖机也要做完才出场景
+    if LOADING_FUNCTION_AMOUNT == 0 and #WARM_UP_QUEUE == 0 and SCENE_TIMER >= 60 then
         -- 将SCENE_TIMER设为 0
         -- 所有obj如果动画机正常运行应该处都处于正确的位置 不进行直接修改
         -- 如果出现了错误 请修改动画机
@@ -137,10 +132,11 @@ function update_load_scene_ease_out()
         -- 改变audio
         love.audio.stop()
         -- 初始化下一个场景所需要动画机器
-        NEXT_PRESET()
+        -- NEXT_* 是 prep 里存的函数名(prep 的时候下一个场景的模块还没 require),这里再从 _G 取
+        _G[NEXT_PRESET]()
         -- 下一个场景为 在prep预存的下一场景指针
-        current_update_block = NEXT_UPDATE_BLOCK
-        current_draw_block = NEXT_DRAW_BLOCK
+        current_update_block = _G[NEXT_UPDATE_BLOCK]
+        current_draw_block = _G[NEXT_DRAW_BLOCK]
         -- 初始化线程加载用function的输入
         -- 如果是一般的scene 需要使用 unload
         init_order_load_table()

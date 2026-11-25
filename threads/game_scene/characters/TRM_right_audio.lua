@@ -1,23 +1,11 @@
-local filesys_module = require "love.filesystem"
-local auido_module = require "love.sound"
-local sound_module = auido_module.newSoundData
-local thread_data = {}
 local base = "asset/game_scene/characters/TRM/audio/"
--- stage_interactive_SFX
-thread_data["stage_interactive_SFX"] = {}
+local thread_data = {}
 local file_name_table = {
     "air_backdash","air_dash","air_jump","air_SP_jump",
     "ground_dash_cancel","ground_dash_loop","ground_dash_skid","ground_dash_start_up",
     "ground_hard_knockdown","ground_land","ground_soft_knockdown",
     "ground_step_0","ground_step_1","wall_wallbreak","wall_wallstick"
 }
-for i = 1,#file_name_table do
-    local key = file_name_table[i]
-    thread_data["stage_interactive_SFX"][key] = sound_module(base .. "stage_interactive_SFX/" .. key .. ".ogg")
-end
--- move_SFX
-thread_data["move_SFX"] = {}
-thread_data["move_SFX_keys"] = {}
 local move_SFX_folder_table = {
     {folder = "common",files = {"common_oroboros"}},
     {folder = "RC",files = {
@@ -72,6 +60,18 @@ local move_SFX_folder_table = {
     {folder = "overdrive",files = {"overdrive"}},
     {folder = "burst",files = {"burst"}}
 }
+local filesys_module = require "love.filesystem"
+local thread_common = require "threads.thread_common"
+local sound_module = thread_common.new_sound_data
+-- stage_interactive_SFX
+thread_data["stage_interactive_SFX"] = {}
+for i = 1,#file_name_table do
+    local key = file_name_table[i]
+    thread_data["stage_interactive_SFX"][key] = sound_module(base .. "stage_interactive_SFX/" .. key .. ".ogg")
+end
+-- move_SFX
+thread_data["move_SFX"] = {}
+thread_data["move_SFX_keys"] = {}
 for i = 1,#move_SFX_folder_table do
     local folder = move_SFX_folder_table[i].folder
     local file_name_table = move_SFX_folder_table[i].files

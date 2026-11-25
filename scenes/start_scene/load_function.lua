@@ -1,45 +1,32 @@
--- thread_table 线程table正常放
--- thread_amount 从1开始数有多少就是多少
--- thread_once_table thread_amount量的false
--- ASSET_DATA = {}
--- load_functions_table 每个thread对应一个 load function
--- CURRENT_ORDER_TABLE 全是 1
--- order_size_table 对应 每个具体的 load_function的 order最大值
 function load_start_scene_prep()
     load_start_select_scene_require()
     THREAD_TABLE = {
         "threads/start_scene/start_scene_thread_1_main_UI.lua",
         "threads/start_scene/start_scene_thread_2_main_UI_BG.lua",
-        "threads/start_scene/start_scene_thread_3_sub_UI.lua"
+        "threads/start_scene/start_scene_thread_3_sub_UI.lua",
+        "threads/start_scene/start_scene_thread_4_audio.lua"
     }
-    THREAD_AMOUNT = 3 -- 线程数目
-    THREAD_ONCE_TABLE = {false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
+    THREAD_AMOUNT = 4 -- 线程数目
+    THREAD_ONCE_TABLE = {false,false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     ASSET_DATA = {} -- 保持为nil
+    -- 函数名字符串:执行时再从 _G 取(prep 的时候这个场景的模块还在 require 队列里)
     ORDER_LOAD_TABLE = {
-        order_load_start_scene_main_UI,
-        order_load_start_scene_main_UI_BG,
-        order_load_start_scene_sub_UI
+        "order_load_start_scene_main_UI",
+        "order_load_start_scene_main_UI_BG",
+        "order_load_start_scene_sub_UI",
+        "order_load_start_scene_audio"
     } -- load_function_table
-    CURRENT_ORDER_TABLE = {1,1,1} -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
-    ORDER_SIZE_TABLE = {2,1,1} -- 每个load function的最大值
-    LOAD_ONCE_TABLE = {false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
-    LOADING_FUNCTION_AMOUNT = 3 -- 和线程数相同
-	NEXT_UPDATE_BLOCK = update_start_scene_ease_in
-	NEXT_DRAW_BLOCK = draw_start_scene_main
-    NEXT_PRESET = preset_start_scene
+    CURRENT_ORDER_TABLE = {1,1,1,1} -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
+    ORDER_SIZE_TABLE = {2,1,1,1} -- 每个load function的最大值
+    LOAD_ONCE_TABLE = {false,false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
+    LOADING_FUNCTION_AMOUNT = 4 -- 和线程数相同
+	NEXT_UPDATE_BLOCK = "update_start_scene_ease_in"
+	NEXT_DRAW_BLOCK = "draw_start_scene_main"
+    NEXT_PRESET = "preset_start_scene"
 end
--- require
 function load_start_select_scene_require()
-    require_all_in_folder("scenes/start_scene")
-    -- require("scenes/start_scene/common_functions")
-    -- require("scenes/start_scene/draw_functions")
-    -- require("scenes/start_scene/init")
-    -- require("scenes/start_scene/load_function")
-    -- require("scenes/start_scene/main_blocks")
-    -- require("scenes/start_scene/state_machine")
-    -- require("scenes/start_scene/sub_blocks")
+    require_queue_push_folder("scenes/start_scene")
 end
--- 分步骤将素材加载
 function order_load_start_scene_main_UI(load_order)
     local switch =
     {
@@ -101,7 +88,6 @@ function order_load_start_scene_main_UI(load_order)
         [2] = function()
             load_start_scene_obj()
             load_start_scene_anim()
-            load_start_scene_audio()
         end
     }
     local this_function = switch[load_order]
@@ -155,6 +141,16 @@ function order_load_start_scene_sub_UI(load_order)
                 image_table_UI_start_scene_game_duration_number[i - 13] = love.graphics.newImage(ASSET_DATA[3][i])
             end
             image_UI_start_scene_time_indi_barcode = love.graphics.newImage(ASSET_DATA[3][23])
+        end
+    }
+    local this_function = switch[load_order]
+    if this_function then this_function() end
+end
+function order_load_start_scene_audio(load_order)
+    local switch =
+    {
+        [1] = function()
+            load_start_scene_audio()
         end
     }
     local this_function = switch[load_order]
